@@ -10,22 +10,24 @@ horaires d'un trimestre dans un répertoire (par exemple hiver04 ou
 h2004). Ainsi, les fichiers d'importation et les fichiers produits
 pendant la construction d'un horaire seront ensemble.
 
-La construction d'un nouvel horaire avec \dx{} comporte trois principales étapes. Elle débute par une
-phase de préparation (phase 1), se poursuit par une phase de modification et d'épuration des données (phase 2) et se termine par la construction à proprement parler (phase 3). La construction de l'horaire peut se poursuivre au delà de la phase 3, par l'utilisation d'outils permettant de raffiner l'horaire (Affectation manuelle, rapports, etc).
+La construction d'un nouvel horaire avec \dx{} comporte cinq phases: 
+\begin{itemize}
+    \item Phase 1: elle concerne la préparation de données;
+    \item Phase 2: elle concerne la modification et d'épuration des données;
+    \item Phase 3: elle concerne la construction à proprement parler;
+    \item Phase 4: elle concerne l'utilisation d'outils permettant de raffiner l'horaire (Affectation manuelle, rapports, etc);
+    \item Phase 5: elle concerne l'exportation de l'horaire.
+\end{itemize}    
 
-Nous vous présenterons dans ce chapitre les phases de
-préparation d'un horaire avec \dx{}, de modification et d'épuration des données, les
-caractéristiques particulières de la construction d'un horaire de
-cours et d'un horaire d'examen, et nous terminerons les outils de raffinement de l'horaire. Toutefois, les options du logiciel ne seront pas toutes présentées.
+Nous vous présenterons dans ce chapitre toutes ces phases appliquées à la construction d'un horaire de cours et d'un horaire d'examen. Toutefois, les options du logiciel ne seront pas toutes présentées.
 
-\section{Production d'un horaire de cours}
+\section{Production d'un horaire de cours}\label{prepacours}
 
-\subsection{Préparation de l'horaire}\label{finprepa}
+\subsection{Phase 1: préparation de l'horaire}\label{finprepa}
 
 \begin{enumerate}
     \item Lancer \dx{}.
-    \item Aller au menu \textbf{\emph{Fichier}}, \Rar
-    puis sélectionner le menu \textbf{\emph{Nouvel horaire}}
+    \item Aller au menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Nouvel horaire}}
     et enfin sélectionner le sous-menu \textbf{\emph{Horaire cycle}}.
     Une boîte de dialogue comme celle
 de la Figure \ref{selectgrillecyc} doit apparaître et elle vous
@@ -84,7 +86,7 @@ Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à
 
 La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
 
-\subsection{Modification et épurations des données}
+\subsection{Phase 2: modification et épurations des données}
 
 Le but de cette étape est de permettre de construire l'horaire uniquement à partir de données propres. Cette modification et/ou épuration peut se faire sur les activités, les événements, les groupes d'étudiants, les enseignants ou les locaux.
 
@@ -121,8 +123,8 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
         \caption{Affectation d'événement}\label{eventc}
       \end{center}
     \end{figure}
-
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre.\\
+    
+Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
     \item Ajouter ou supprimer un groupe ou un événement en cliquant sur le menu \textbf{\emph{Modification}} et le sous menu \textbf{\emph{Activité}} pour voir apparaître la fenêtre d'\textbf{\emph{Activités}} de la figure \ref{modifactc}.
 
@@ -210,7 +212,7 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
  \end{itemize}
 
-\subsection{Construction de l'horaire}
+\subsection{Phase 3: construction de l'horaire}
 
 Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation initiale est faite à la section \ref{finprepa}.
 
@@ -242,10 +244,10 @@ Il est également possible de revenir à l'état initial de l'horaire (l'état de l'
 Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
 
 
-\section{Raffinement de l'horaire}
+\subsection{Phase 4: raffinement de l'horaire}
 Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, formation de groupes, modification, rapports), les voies et moyens d'amélioration de l'horaire construit.
 
-\subsection{Affectation manuelle}
+\subsubsection{Affectation manuelle}
 
 L'affectation manuelle permet à l'utilisateur de placer individuellement les événements dans la grille horaire. Elle se fait à partir de la fenêtre d'\textbf{\emph{Affection manuelle}} (voir figure \ref{manc}) obtenue à partir du sous-menu \textbf{\emph{Affectation manuelle}} du menu \textbf{\emph{Affectation}}.
 
@@ -263,7 +265,25 @@ La fenêtre d'affectation manuelle offre deux possibilités d'utilisation:
     \item \textbf{Modification d'un événement:} sélectionner un événement et cliquer sur le bouton \textbf{\emph{Modifier}} pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
     \item \textbf{Recherche de potentiels conflits:} pour rechercher les potentiels conflits générés par un événement, double-cliquer sur l'événement en question pour voir apparaître une nouvelle grille horaire (voir figure \ref{man1c}) vous informant sur les conflits que peut généré l'événement dans chaque période de la grille horaire. \\
 
-Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte).
+Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte). Les périodes possédant déjà des conflits avant le lancement de l'amélioration manuelle sont aussi représentées par la couleur rouge; il faut dans ce cas, après le lancement de l'affectation manuelle, regarder pour chaque événement de la période les potentiels conflits avec le nouvel événement.
+
+\subsubsection{Exemple: interprétation d'une période de couleur rouge}
+
+Les données ci-dessous représentent une période la grille horaire d'affectation manuelle de l'événement GEI220.1.01.1.
+\begin{verbatim}
+ADM111.1.02.1 0 1 0
+GEI100.1.01.1 5 0 0
+GEI200.1.01.1 5 0 1
+     13 2 1
+\end{verbatim}
+
+Elles sont interprétées de la manière suivante:
+\begin{itemize}
+    \item La ligne \verb!ADM111.1.02.1! \textcolor[rgb]{1.00,0.00,0.00}{0 1 0} représente les potentiels conflits entre les événements \verb!ADM111.1.02.1! et \verb!GEI220.1.01.1!. Elle indique 0 conflit d'étudiants, 1 conflit d'enseignants et 0 conflit de locaux.
+    \item La ligne \verb!GEI100.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 0} représente les potentiels conflits entre les événements \verb!GEI100.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux.
+    \item La ligne \verb!GEI200.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 1} représente les potentiels conflits entre les événements \verb!GEI200.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 1 conflit de locaux.
+    \item La ligne \textcolor[rgb]{1.00,0.00,0.00}{13 2 1} représente la somme des potentiels conflits de la période (10 conflicts d'étudiants, 1 conflit d'enseignants, 1 conflit de locaux) aux conflits réels existant dans la période (3 conflits d'étudiants, 1 conflit d'enseignants et 0 conflit de locaux).
+\end{itemize}    
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -275,7 +295,7 @@ Une représentation par les couleurs, de la grille horaire d'affectation manuelle
 
 \end{enumerate}
 
-\subsection{Modification des activités}
+\subsubsection{Modification des activités}
 
 La fonctionnalité de modification des activités permet d'ajouter ou supprimer une nature à une activité, d'ajouter ou supprimer un groupe à une nature d'activité, d'ajouter ou supprimer un bloc à un groupe et enfin modifier la durée d'un événement ou affecter un événement comme présenté dans la figure \ref{eventc}. Il faut cependant noter qu'elle ne permet pas d'ajouter une activité.
 
@@ -350,7 +370,7 @@ Double cliquer sur une activité pour faire apparaître la fenêtre de natures de l
     \item Pour supprimer un bloc, cliquer simplement sur le bouton \textbf{\emph{Supprimer}} et le dernier bloc de la liste sera supprimé. Si la liste ne possède qu'un seul bloc, ce dernier ne pourra pas être supprimé.
 \end{itemize}
 
-\subsection{Formation de groupes}
+\subsubsection{Formation de groupes}
 
 La formation de groupe communément appelé «brassage d'étudiants dans les groupes» peut se faire de trois façons distinctes:
 
@@ -360,7 +380,7 @@ La formation de groupe communément appelé «brassage d'étudiants dans les groupes
     \item En cliquant sur \textbf{\emph{Optimisé}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en autorisant tous les écarts entre les différents groupes d'une même activité.
 \end{itemize}
 
-\subsection{Rapports}
+\subsubsection{Rapports}
 
 La fonctionnalité rapport permet de visualiser le rapport complet des événements placés dans la grille horaire, de visualiser le rapport de conflits générés par les événements placés dans la grille horaire et de visualiser les erreurs survenues lors de l'importation de données.
 
@@ -452,11 +472,17 @@ Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers 
     \end{center}
 \end{figure}
 
+\subsection{Phase 5: Exportation}
 
+Pour exporter les données, aller au menu \textbf{\emph{Fichier}}, puis sélectionner \textbf{\emph{Exporter}}; deux fichiers seront créés dans le repertoire racine de votre document avec les noms suivants:
+\begin{itemize}
+    \item \verb!«nom du document»_Export_1.txt! (il contient l'horaire);
+    \item \verb!«nom du document»_Export_2.txt! (il contient les étudiants, leurs choix d'activité et leurs groupes).
+\end{itemize}     
 
-\section{Production d'un horaire d'examen}
+\section{Production d'un horaire d'examen}\label{prepaexam}
 
-\subsection{Préparation de l'horaire}\label{finprepae}
+\subsection{Phase 1: préparation de l'horaire}\label{finprepae}
 
 \begin{enumerate}
     \item Lancer \dx{}.
@@ -524,7 +550,7 @@ Cette affectation initiale permettrait donc d'épurer les données et d'initialise
 
 La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
 
-\subsection{Modification et épurations des données}
+\subsection{Phase 2: modification et épurations des données}
 
 Le but de cette étape est de permettre de construire l'horaire uniquement à partir de données propres. Cette modification et/ou épuration peut se faire sur les activités, les événements, les groupes d'étudiants, les enseignants ou les locaux.
 
@@ -561,9 +587,9 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
         \caption{Affectation d'événement}\label{evente}
       \end{center}
     \end{figure}
-
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre.\\
-
+    
+Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
+    
 \item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignante}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
 
     \begin{figure}[h]
@@ -590,7 +616,7 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
  \end{itemize}
 
-\subsection{Construction de l'horaire}
+\subsection{Phase 3: construction de l'horaire}
 
 Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepae}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation initiale est faite à la section \ref{finprepae}.
 
@@ -621,10 +647,10 @@ Il est également possible de revenir à l'état initial de l'horaire (l'état de l'
 
 Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
 
-\section{Raffinement de l'horaire}
+\subsection{Phase 4: raffinement de l'horaire}
 Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, modification, rapports), les voies et moyens d'amélioration de l'horaire construit.
 
-\subsection{Affectation manuelle}
+\subsubsection{Affectation manuelle}
 
 L'affectation manuelle permet à l'utilisateur de placer individuellement les événements dans la grille horaire. Elle se fait à partir de la fenêtre d'\textbf{\emph{Affection manuelle}} (voir figure \ref{man}) obtenue à partir du sous-menu \textbf{\emph{Affectation manuelle}} du menu \textbf{\emph{Affectation}}.
 
@@ -642,7 +668,25 @@ La fenêtre d'affectation manuelle offre deux possibilités d'utilisation:
     \item \textbf{Modification d'un événement:} sélectionner un événement et cliquer sur le bouton \textbf{\emph{Modifier}} pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
     \item \textbf{Recherche de potentiels conflits:} pour rechercher les potentiels conflits générés par un événement, double-cliquer sur l'événement en question pour voir apparaître une nouvelle grille horaire (voir figure \ref{man1}) vous informant sur les conflits que peut généré l'événement dans chaque période de la grille horaire. \\
 
-Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte).
+Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte). Les périodes possédant déjà des conflits avant le lancement de l'amélioration manuelle sont aussi représentées par la couleur rouge; il faut dans ce cas, après le lancement de l'affectation manuelle, regarder pour chaque événement de la période les potentiels conflits avec le nouvel événement.
+
+\subsubsection{Exemple: interprétation d'une période de couleur rouge}
+
+Les données ci-dessous représentent une période la grille horaire d'affectation manuelle de l'événement GEI220.1.01.1.
+\begin{verbatim}
+ADM111.1.01.1 0 0 0
+GEI100.1.01.1 5 0 0
+GEI200.1.01.1 5 0 1
+     13 0 1
+\end{verbatim}
+
+Elles sont interprétées de la manière suivante:
+\begin{itemize}
+    \item La ligne \verb!ADM111.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{0 0 0} représente les potentiels conflits entre les événements \verb!ADM111.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 0 conflit d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux.
+    \item La ligne \verb!GEI100.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 0} représente les potentiels conflits entre les événements \verb!GEI100.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux.
+    \item La ligne \verb!GEI200.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 1} représente les potentiels conflits entre les événements \verb!GEI200.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 1 conflit de locaux.
+    \item La ligne \textcolor[rgb]{1.00,0.00,0.00}{13 0 1} représente la somme des potentiels conflits de la période (10 conflicts d'étudiants, 0 conflit d'enseignants, 1 conflit de locaux) aux conflits réels existant dans la période (3 conflits d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux).
+\end{itemize}    
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -655,7 +699,7 @@ Une représentation par les couleurs, de la grille horaire d'affectation manuelle
 \end{enumerate}
 
 
-\subsection{Modification des activités}
+\subsubsection{Modification des activités}
 
 La fonctionnalité de modification des activités permet d'ajouter ou supprimer une nature à une activité, d'ajouter ou supprimer un groupe à une nature d'activité, d'ajouter ou supprimer un bloc à un groupe et enfin modifier la durée d'un événement ou affecter un événement comme présenté dans la figure \ref{evente}. Il faut cependant noter qu'elle ne permet pas d'ajouter une activité.
 
@@ -734,7 +778,7 @@ Double cliquer sur une activité pour faire apparaître la fenêtre de natures de l
     \item Pour supprimer un bloc, cliquer simplement sur le bouton \textbf{\emph{Supprimer}} et le dernier bloc de la liste sera supprimé. Si la liste ne possède qu'un seul bloc, ce dernier ne pourra pas être supprimé.
 \end{itemize}
 
-\subsection{Rapports}
+\subsubsection{Rapports}
 
 La fonctionnalité rapport permet de visualiser le rapport complet des événements placés dans la grille horaire, de visualiser le rapport de conflits générés par les événements placés dans la grille horaire et de visualiser les erreurs survenues lors de l'importation de données.
 
@@ -825,3 +869,11 @@ Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers 
         \caption{Options du rapport de conflits}\label{rapconfoptionse}
     \end{center}
 \end{figure}
+
+\subsection{Phase 5: Exportation}
+
+Pour exporter les données, aller au menu \textbf{\emph{Fichier}}, puis sélectionner \textbf{\emph{Exporter}}; deux fichiers seront créés dans le repertoire racine de votre document avec les noms suivants:
+\begin{itemize}
+    \item \verb!«nom du document»_Export_1.txt! (il contient l'horaire);
+    \item \verb!«nom du document»_Export_2.txt! (il contient les étudiants, leurs examens).
+\end{itemize}     
