@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
 <DXTimeTable>
 	<TTcycle>
 		<cycleID>1</cycleID>
@@ -12,8 +12,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
+								<BeginTime>8:30</BeginTime>
+								<EndTime>11:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -23,8 +23,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
+								<BeginTime>13:00</BeginTime>
+								<EndTime>16:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -51,8 +51,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
+								<BeginTime>8:30</BeginTime>
+								<EndTime>11:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -62,8 +62,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
+								<BeginTime>13:00</BeginTime>
+								<EndTime>16:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -90,8 +90,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
+								<BeginTime>8:30</BeginTime>
+								<EndTime>11:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -101,8 +101,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
+								<BeginTime>13:00</BeginTime>
+								<EndTime>16:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -129,8 +129,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
+								<BeginTime>8:30</BeginTime>
+								<EndTime>11:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -140,8 +140,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
+								<BeginTime>13:00</BeginTime>
+								<EndTime>16:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -168,8 +168,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
+								<BeginTime>8:30</BeginTime>
+								<EndTime>11:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -179,8 +179,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
+								<BeginTime>13:00</BeginTime>
+								<EndTime>16:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -198,240 +198,6 @@
 					</TTsequence>
 				</TTsequences>
 				<dayRef>5</dayRef>
-				<dayID>Ve</dayID>
-			</TTday>
-			<TTday>
-				<TTsequences>
-					<TTsequence>
-						<sequenceID>AM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
-								<priority>2</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>PM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
-								<priority>2</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>EM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>19:00</BeginTime>
-								<EndTime>22:00</EndTime>
-								<priority>2</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-				</TTsequences>
-				<dayRef>6</dayRef>
-				<dayID>Sa</dayID>
-			</TTday>
-			<TTday>
-				<TTsequences>
-					<TTsequence>
-						<sequenceID>AM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>PM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>EM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>19:00</BeginTime>
-								<EndTime>22:00</EndTime>
-								<priority>1</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-				</TTsequences>
-				<dayRef>7</dayRef>
-				<dayID>Lu</dayID>
-			</TTday>
-			<TTday>
-				<TTsequences>
-					<TTsequence>
-						<sequenceID>AM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>PM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>EM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>19:00</BeginTime>
-								<EndTime>22:00</EndTime>
-								<priority>1</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-				</TTsequences>
-				<dayRef>8</dayRef>
-				<dayID>Ma</dayID>
-			</TTday>
-			<TTday>
-				<TTsequences>
-					<TTsequence>
-						<sequenceID>AM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>PM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>EM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>19:00</BeginTime>
-								<EndTime>22:00</EndTime>
-								<priority>1</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-				</TTsequences>
-				<dayRef>9</dayRef>
-				<dayID>Me</dayID>
-			</TTday>
-			<TTday>
-				<TTsequences>
-					<TTsequence>
-						<sequenceID>AM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>PM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>EM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>19:00</BeginTime>
-								<EndTime>22:00</EndTime>
-								<priority>1</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-				</TTsequences>
-				<dayRef>10</dayRef>
-				<dayID>Je</dayID>
-			</TTday>
-			<TTday>
-				<TTsequences>
-					<TTsequence>
-						<sequenceID>AM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
-								<EndTime>12:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>PM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
-								<EndTime>17:00</EndTime>
-								<priority>0</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-					<TTsequence>
-						<sequenceID>EM</sequenceID>
-						<TTperiods>
-							<TTperiod>
-								<periodID>1</periodID>
-								<BeginTime>19:00</BeginTime>
-								<EndTime>22:00</EndTime>
-								<priority>2</priority>
-							</TTperiod>
-						</TTperiods>
-					</TTsequence>
-				</TTsequences>
-				<dayRef>11</dayRef>
 				<dayID>Ve</dayID>
 			</TTday>
 		</TTdays>
