@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.16 $  $Date: 2004-06-21 15:38:17 $
+ * Title: OpenTTDlg $Revision: 1.17 $  $Date: 2004-09-10 13:31:01 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -27,12 +27,11 @@ import java.awt.Dimension;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
-import com.iLib.gDialog.FatalProblemDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DFileFilter;
+import eLib.exit.dialog.FatalProblemDlg;
 
 
 

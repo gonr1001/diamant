@@ -1,19 +1,10 @@
 package dInterface.dAlgorithms;
 
-/**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 import dInternal.dOptimization.SelectAlgorithm;
+import eLib.exit.dialog.InformationDlg;
 
 public class AlgorithmsCmd implements Command{
 

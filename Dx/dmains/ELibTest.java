@@ -1,0 +1,68 @@
+/**
+ *
+ * Title: ILibTest $Revision: 1.2 $  $Date: 2004-09-10 13:31:05 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.2 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
+ */
+
+//------------------------------
+/* Attention to execute this class you must have a batch file as
+ * follows :this file must be used with the terminal application
+ *
+ * java -classpath "d:\Program Files\JBuilder7\extras\junit\junit.jar";
+ *                  d:\Developpements\Temp\theLibrary\classes\
+ *                  junit.swingui.TestRunner
+ *                  ILibTest
+ *
+ * junit must be added as a library.
+ */
+
+package dmains;
+
+import eTest.ByteInputFileTest;
+import eTest.FilterFileTest;
+import eTest.SimpleTest;
+import junit.framework.*;
+
+/**
+ * Description: TestSuite that runs all the sample tests
+ *
+ */
+
+public class ELibTest {
+
+	public static void main (String[] args) {
+		junit.textui.TestRunner.run (suite());
+	}
+	// The tests are very poor at the moment
+	public static Test suite ( ) {
+		TestSuite suite= new TestSuite("Library ILib.gX tests");
+			suite.addTest(SimpleTest.suite());
+			suite.addTest(ByteInputFileTest.suite());
+            suite.addTest(FilterFileTest.suite());
+            //suite.addTest(StudentTest.suite());
+            //suite.addTest(SetOfExamsTest.suite());
+            //suite.addTest(PotentialConflictsTest.suite());
+            //suite.addTest(LoadDataTest.suite());
+            //suite.addTest(PeriodTest.suite());
+            //suite.addTest(TimeTableTest.suite());
+	    return suite;
+	} //end suite
+} /* end ILibTest */

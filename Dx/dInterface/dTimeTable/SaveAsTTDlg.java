@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.4 $  $Date: 2004-06-21 15:38:17 $
+ * Title: SaveAsTTDlg $Revision: 1.5 $  $Date: 2004-09-10 13:31:02 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -33,12 +33,11 @@ package dInterface.dTimeTable;
 
 import javax.swing.JFileChooser;
 
-import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
+import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.dialog.InformationDlg;
 public class SaveAsTTDlg extends SaveAsDlg {
 
   /**

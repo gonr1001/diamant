@@ -13,9 +13,10 @@ package dInternal.dUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.InPut.readFile;
+
 import dConstants.DConst;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.ReadXMLFile;
 
 
 
@@ -34,7 +35,7 @@ public class XMLTools {
    int numberfoElements=0;
    String error="";//DConst.ERROR_XML_FILE;
    try{
-     readFile xmlFile = new readFile();
+     ReadXMLFile xmlFile = new ReadXMLFile();
      Document  doc = xmlFile.getDocumentFile(fileName);
      ReadXMLElement list= new ReadXMLElement();
      element= list.getRootElement(doc);

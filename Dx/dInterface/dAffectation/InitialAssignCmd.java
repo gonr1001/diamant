@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.2 $  $Date: 2004-06-09 19:29:17 $
+ * Title: PLAFCmd $Revision: 1.3 $  $Date: 2004-09-10 13:30:59 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,17 +14,16 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
 
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
+import eLib.exit.dialog.InformationDlg;
 
 
 public class InitialAssignCmd implements Command {

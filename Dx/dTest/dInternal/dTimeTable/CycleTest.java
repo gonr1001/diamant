@@ -18,15 +18,16 @@ import junit.framework.TestSuite;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.InPut.readFile;
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.ReadXMLFile;
+import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.output.WriteXMLFile;
 
 public class CycleTest extends TestCase {
    String _path;
@@ -35,11 +36,11 @@ public class CycleTest extends TestCase {
      super(name);
      _path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
      //
-     readFile xmlFile;
+     ReadXMLFile xmlFile;
     Element  item;
     _cycle= new Cycle();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       //System.out.println(path+"cycle.xml");//debug
       Document  doc = xmlFile.getDocumentFile(_path+"cycle.xml");
       ReadXMLElement list= new ReadXMLElement();
@@ -182,7 +183,7 @@ public class CycleTest extends TestCase {
   * test that write the cycle xml tag
   * */
  public void test_writeXMLtag(){
-   readFile xmlFile;
+   ReadXMLFile xmlFile;
    Element  item;
    Cycle cycle= new Cycle();
    Cycle newCycle= new Cycle();
@@ -192,15 +193,15 @@ public class CycleTest extends TestCase {
    cycle.addDays(3);
 
    try{
-     xmlFile = new readFile();
+     xmlFile = new ReadXMLFile();
      //System.out.println(path+"cycle.xml");//debug
      Document  doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
-     BuildXMLElement wr= new BuildXMLElement();
+     WriteXMLElement wr= new WriteXMLElement();
      doc=wr.getNewDocument();
      //write xml file
      Element ttCycle= cycle.writeXMLtag(doc);
      doc= wr.buildDOM(doc,ttCycle);
-     writeFile.write(doc,_path+"SaveCycle.xml");
+     WriteXMLFile.write(doc,_path+"SaveCycle.xml");
 
      // read xml file
      doc = xmlFile.getDocumentFile(_path+"SaveCycle.xml");

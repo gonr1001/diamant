@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.20 $  $Date: 2004-06-21 15:38:18 $
+ * Title: Preferences $Revision: 1.21 $  $Date: 2004-09-10 13:31:02 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -24,12 +24,13 @@ package dInternal;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gException.IOFileException;
-import com.iLib.gIO.ByteOutputFile;
-import com.iLib.gIO.FilterFile;
+
 
 import dInterface.DApplication;
+import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.IOFileException;
+import eLib.exit.txt.ByteOutputFile;
+import eLib.exit.txt.FilterFile;
 
 public class Preferences {
   private final String CR_LF = "\r\n";
@@ -103,7 +104,7 @@ public class Preferences {
   private void writeFile(String name, String data) {
     try {
       ByteOutputFile bof = new ByteOutputFile(name);
-      bof.writeFile(data.getBytes());
+      bof.writeFileFromBytes(data.getBytes());
       bof.close();
     } catch(IOFileException iofe) {
       new FatalProblemDlg(_dApplic.getJFrame(),

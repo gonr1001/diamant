@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.31 $  $Date: 2004-06-21 18:02:47 $
+ * Title: SectionDlg $Revision: 1.32 $  $Date: 2004-09-10 13:31:00 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -42,8 +42,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
@@ -58,6 +56,7 @@ import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfStudents;
 import dInternal.dDataTxt.StudentAttach;
 import dInternal.dDataTxt.Type;
+import eLib.exit.dialog.InformationDlg;
 
 public class SectionDlg extends JDialog implements ActionListener{
   private DApplication _dApplic;

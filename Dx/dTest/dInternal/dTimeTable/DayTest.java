@@ -18,15 +18,16 @@ import junit.framework.TestSuite;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.InPut.readFile;
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.ReadXMLFile;
+import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.output.WriteXMLFile;
 
 
 public class DayTest extends TestCase {
@@ -47,11 +48,11 @@ String path;
    * test to read the day xml tag
    * */
   public void test_readXMLtag(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  eDay;
     Day day= new Day();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       Document  doc = xmlFile.getDocumentFile(path+"day.xml");
       ReadXMLElement list= new ReadXMLElement();
       eDay = list.getRootElement(doc);
@@ -91,14 +92,14 @@ String path;
 
 
   public void test_writeXMLtag(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  eSetOfSequences;
     Day firstDay = new Day();
     Day savedDay = new Day();
     SetOfResources setOfSequences = new SetOfResources(4);
 
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       Document  doc;
       Sequence seq;
       for (int i = 1; i < 4; i++){
@@ -108,11 +109,11 @@ String path;
 
       }
       firstDay.setSetOfSequences(setOfSequences);
-      BuildXMLElement wr = new BuildXMLElement();
+      WriteXMLElement wr = new WriteXMLElement();
       doc = wr.getNewDocument();
       eSetOfSequences = firstDay.writeXMLtag(doc);
       doc= wr.buildDOM(doc, eSetOfSequences);
-      writeFile.write(doc, path+"SavedDay.xml");
+      WriteXMLFile.write(doc, path+"SavedDay.xml");
 
       // read xml file
       doc = xmlFile.getDocumentFile(path+"SavedDay.xml");

@@ -13,13 +13,13 @@ import java.io.File;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gIO.FilterFile;
 
 import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.Preferences;
 import dInternal.dTimeTable.TTStructure;
+import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.txt.FilterFile;
 
 public class LoadData {
   //Vector _v;

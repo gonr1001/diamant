@@ -6,14 +6,15 @@ import java.util.Vector;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.OutPut.BuildXMLElement;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dUtil.ArrayValue;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.output.WriteXMLElement;
 
 public class Period extends DXObject {
 
@@ -215,9 +216,9 @@ public class Period extends DXObject {
        * @Element the xml tag of this period
    * */
    public Element writeXMLtag(Document doc){
-    BuildXMLElement xmlElt;
+    WriteXMLElement xmlElt;
     try{
-      xmlElt = new BuildXMLElement();
+      xmlElt = new WriteXMLElement();
       String time= _beginHour[0]+":"+_beginHour[1];
       Element eltPer= xmlElt.createElement(doc,Sequence._TAGITEM);
         Element child0=xmlElt.createElement(doc,_TAGITEM,time);

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.51 $  $Date: 2004-06-21 15:38:16 $
+ * Title: DApplication $Revision: 1.52 $  $Date: 2004-09-10 13:30:58 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -41,11 +41,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.log4j.Logger;
 
-import com.iLib.gDialog.FatalProblemDlg;
-
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
 import dInternal.Preferences;
+import eLib.exit.dialog.FatalProblemDlg;
 
 public class DApplication implements ActionListener {
   private static Logger _logger = Logger.getLogger(DApplication.class.getName());

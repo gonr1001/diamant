@@ -15,7 +15,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import com.iLib.gIO.FilterFile;
 
 import dConstants.DConst;
 import dInternal.dDataTxt.Activity;
@@ -25,6 +24,7 @@ import dInternal.dDataTxt.Section;
 import dInternal.dDataTxt.SetOfActivities;
 import dInternal.dDataTxt.Type;
 import dInternal.dDataTxt.Unity;
+import eLib.exit.txt.FilterFile;
 
 
 public class SetOfActivitiesTest  extends TestCase{

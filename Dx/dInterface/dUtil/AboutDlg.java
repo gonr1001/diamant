@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.5 $  $Date: 2004-06-21 15:38:17 $
+ * Title: AboutDlg $Revision: 1.6 $  $Date: 2004-09-10 13:31:02 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -23,10 +23,9 @@ package dInterface.dUtil;
 
 import javax.swing.JDialog;
 
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
+import eLib.exit.dialog.InformationDlg;
 /**
  *
  * AboutDlg is a class used to display the about dialog.

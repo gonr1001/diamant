@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="binaries/|theLibrary/" kind="src" path=""/>
-	<classpathentry excluding="log4j-1.2.8.jar/|theLibrary.jar/|xmlLibrary.jar/" kind="src" path="theLibrary"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="theLibrary/theLibrary.jar"/>
-	<classpathentry kind="lib" path="theLibrary/xmlLibrary.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
-	<classpathentry kind="lib" path="theLibrary/log4j-1.2.8.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/eclipse/plugins/org.apache.ant_1.6.1/lib/ant.jar"/>
+	<classpathentry kind="lib" path="D:/Developpements/DiamantExtreme/jars/log4j-1.2.8.jar"/>
+	<classpathentry kind="lib" path="D:/Developpements/DiamantExtreme/jars/xerces/xerces.jar"/>
 	<classpathentry kind="output" path="binaries"/>
 </classpath>

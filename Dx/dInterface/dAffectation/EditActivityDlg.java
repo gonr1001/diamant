@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.47 $  $Date: 2004-06-23 05:45:50 $
+ * Title: EditActivityDlg $Revision: 1.48 $  $Date: 2004-09-10 13:30:59 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.47 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.48 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -53,8 +53,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gDialog.InformationDlg;
+
 
 import dConstants.DConst;
 import dInterface.DApplication;
@@ -77,6 +76,8 @@ import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.dialog.InformationDlg;
 
 
 
@@ -215,7 +216,7 @@ public class EditActivityDlg
         if(!apply){
           new FatalProblemDlg(this,"Valeur erronée");
           break;
-        } else
+        }
           _applyPanel.setFirstDisable();
       } // end for
       if(apply){
@@ -246,7 +247,7 @@ public class EditActivityDlg
       if(_unities.get(i)!= null){
         _currentActivityIndex = i;
         jtp.addTab(((Resource)_unities.get(i)).getID(),
-                   buildUnityPanel(i, true, null));
+                   buildUnityPanel(i));
       }  // end if
     }// end for
     return jtp;
@@ -257,7 +258,7 @@ public class EditActivityDlg
    * Builds a panel to be placed in a tab of the tabbedPane
    * @return the JPanel to be placed in a tab of the tabbedPane
    */
-  private JPanel buildUnityPanel(int index, boolean first, Vector newInstructors){
+  private JPanel buildUnityPanel(int index){
     JPanel myPanel = new JPanel();
     myPanel.setLayout(new GridLayout(4,1));
     JPanel timePanel = buildTimePanel();

@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.7 $  $Date: 2004-06-21 15:38:17 $
+ * Title: DefFileToImportDlg $Revision: 1.8 $  $Date: 2004-09-10 13:31:00 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,14 +33,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gDialog.InformationDlg;
-import com.iLib.gException.IOFileException;
-import com.iLib.gIO.ByteOutputFile;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
+import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.IOFileException;
+import eLib.exit.txt.ByteOutputFile;
 
 
 /**
@@ -234,7 +233,7 @@ public class DefFilesToImportDlg extends JDialog
     thefiles += _tfRooms.getText()+ CR_LF;
     thefiles += _tfActivities.getText()+ CR_LF;
     thefiles += _tfStudents.getText();
-    bof.writeFile(thefiles.getBytes());
+    bof.writeFileFromBytes(thefiles.getBytes());
     bof.close();
   } catch(IOFileException iofe) {
      new FatalProblemDlg(_dApplic.getJFrame(),

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.44 $  $Date: 2004-06-21 15:38:16 $
+ * Title: DMediator $Revision: 1.45 $  $Date: 2004-09-10 13:30:59 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -27,10 +27,9 @@ import java.util.Vector;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
-import com.iLib.gDialog.FatalProblemDlg;
-
 import dConstants.DConst;
 import dInterface.dTimeTable.SaveCmd;
+import eLib.exit.dialog.FatalProblemDlg;
 
 public class DMediator {
   private DApplication _dApplic;
@@ -152,15 +151,13 @@ public class DMediator {
   } //end getCurrentDoc
 
   //-------------------------------------------
-  public JInternalFrame getCurrentFrame() {
-    DDocument currentDoc = getCurrentDoc();
-    if (currentDoc != null) {
-      return currentDoc.getJIF();
-    } // end if
-    else {
-      return null;
-    } // end else
-  } //end getCurrentFrame
+	public JInternalFrame getCurrentFrame() {
+		DDocument currentDoc = getCurrentDoc();
+		if (currentDoc != null) {
+			return currentDoc.getJIF();
+		} // end if
+		return null;
+	} //end getCurrentFrame
   /**
 * Prompts to save if document has changed.
 * This checks the document to see if it has changed since it was

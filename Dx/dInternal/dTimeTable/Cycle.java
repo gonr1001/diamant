@@ -7,14 +7,15 @@ import java.util.StringTokenizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.OutPut.BuildXMLElement;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DisplayAttributs;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.output.WriteXMLElement;
 
 public class Cycle extends DXObject{
 
@@ -170,9 +171,9 @@ public class Cycle extends DXObject{
     * @Element the xml tag of the set of days
    * */
    public Element writeXMLtag(Document doc){
-    BuildXMLElement xmlElt;
+    WriteXMLElement xmlElt;
     try{
-      xmlElt = new BuildXMLElement();
+      xmlElt = new WriteXMLElement();
       Element eltDays= xmlElt.createElement(doc,TTStructure._TAGITEM3);
       for (int i=0; i<_setOfDays.size(); i++){
         Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM);

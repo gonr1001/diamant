@@ -19,14 +19,15 @@ import junit.framework.TestSuite;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.InPut.readFile;
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dTimeTable.Period;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.ReadXMLFile;
+import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.output.WriteXMLFile;
 
 
 public class PeriodTest extends TestCase {
@@ -48,11 +49,11 @@ String path;
    * test that read the period xml tag
    * */
   public void test_readXMLtag(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  item, ID;
     Period period= new Period();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"period.xml");
       ReadXMLElement list= new ReadXMLElement();
@@ -71,11 +72,11 @@ String path;
    *
    */
   public void test_eventsInPeriod(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  item, ID;
     Period period= new Period();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"period.xml");
       ReadXMLElement list= new ReadXMLElement();
@@ -104,11 +105,11 @@ String path;
    * test that gives the end hour
    * */
   public void test_getEndHour(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  item, ID;
     Period period= new Period();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"period.xml");
       ReadXMLElement list= new ReadXMLElement();
@@ -127,12 +128,12 @@ String path;
    * test that gives the end hour
    * */
   public void test_writeXMLtag(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  item, ID;
     Period period= new Period();
     Period periodS= new Period();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       //System.out.println(path+"period.xml");//debug
       Document  doc;// = xmlFile.getDocumentFile(path+"period.xml");
       /*ReadXMLElement list= new ReadXMLElement();
@@ -141,11 +142,11 @@ String path;
       //write xml file
       period.setBeginHour(9,30);
       period.setPriority(2);
-      BuildXMLElement wr= new BuildXMLElement();
+      WriteXMLElement wr= new WriteXMLElement();
       doc=wr.getNewDocument();
        Element ttPeriod= period.writeXMLtag(doc);
       doc= wr.buildDOM(doc,ttPeriod);
-      writeFile.write(doc,path+"SavePeriod.xml");
+      WriteXMLFile.write(doc,path+"SavePeriod.xml");
 
       // read xml file
       doc = xmlFile.getDocumentFile(path+"SavePeriod.xml");

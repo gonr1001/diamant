@@ -14,11 +14,10 @@ import java.awt.Dimension;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
-import com.iLib.gDialog.FatalProblemDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
+import eLib.exit.dialog.FatalProblemDlg;
 
 public class ImportSelectiveFileDlg extends JDialog {
 

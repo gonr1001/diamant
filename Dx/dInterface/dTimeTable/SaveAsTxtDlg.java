@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.5 $  $Date: 2004-06-21 15:38:17 $
+ * Title: SaveAsTxtDlg $Revision: 1.6 $  $Date: 2004-09-10 13:31:02 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -35,11 +35,10 @@ import java.io.FileWriter;
 
 import javax.swing.JFileChooser;
 
-import com.iLib.gDialog.FatalProblemDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
+import eLib.exit.dialog.FatalProblemDlg;
 
 public class SaveAsTxtDlg extends SaveAsDlg{
 

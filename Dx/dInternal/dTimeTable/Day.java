@@ -5,12 +5,13 @@ package dInternal.dTimeTable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.OutPut.BuildXMLElement;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.output.WriteXMLElement;
 
 public class Day extends DXObject{
 
@@ -98,9 +99,9 @@ public class Day extends DXObject{
      * @Element the xml tag of the set of sequences
    * */
    public Element writeXMLtag(Document doc){
-    BuildXMLElement xmlElt;
+    WriteXMLElement xmlElt;
     try{
-      xmlElt = new BuildXMLElement();
+      xmlElt = new WriteXMLElement();
       Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM2);
       for (int i=0; i<_setOfSequences.size(); i++){
         Element eltSeqs= xmlElt.createElement(doc,_TAGITEM);

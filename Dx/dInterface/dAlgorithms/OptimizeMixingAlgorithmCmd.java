@@ -9,12 +9,11 @@ package dInterface.dAlgorithms;
  * @version 1.0
  */
 
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 import dInternal.dOptimization.SelectAlgorithm;
+import eLib.exit.dialog.InformationDlg;
 
 public class OptimizeMixingAlgorithmCmd implements Command{
 

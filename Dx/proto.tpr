@@ -50,6 +50,8 @@ Root.9=D:/Program Files/JBuilder7/jdk1.4.1/j2sdk1.4.1_02/jre/lib/rt.jar
 Root.9.access=import
 Root.9.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
 Root.9.package_prefix=
+Project.JDK=D:\\Borland\\Together6.2\\jdk
+projectfile.encoding=Cp1252
 [testingframework]
 none.created=true
 server.config.0.isLocal=true
@@ -65,16 +67,16 @@ server.config.1.url=http://localhost:9080/tf
 server.config.2.url=http://localhost:9080/tf
 server.config.3.url=http://localhost:9080/tf
 [editor]
-recent.file.0=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
-recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dInterface\\TestsSuite.java
-recent.file.2=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\InstructorAttach.java
-recent.file.3=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfResources.java
-recent.file.4=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfActivities.java
-recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\dAux\\MyFileCmd.java
-recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfActivitiesEvent.java
-recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\StandardReportData.java
-recent.file.8=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfInstructorsListener.java
-recent.file.9=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfRoomsListener.java
+recent.file.0=D:\\Program Files\\JBuilder7\\extras\\xerces\\build.xml
+recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
+recent.file.2=D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dInterface\\TestsSuite.java
+recent.file.3=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\InstructorAttach.java
+recent.file.4=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfResources.java
+recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfActivities.java
+recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dAux\\MyFileCmd.java
+recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfActivitiesEvent.java
+recent.file.8=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\StandardReportData.java
+recent.file.9=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfInstructorsListener.java
 [runtimeargs]
 applet_vmoptions0=-classic
 applet_vmoptions1=-classic
@@ -107,11 +109,12 @@ Developer.DebugWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,19,-1,-1,-1,-1}${0,1,-1,
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.proto={{0,2,-1,0,0,0,0,1,0,1,1,23,75,17,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,23,75,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,17,14,81,1003,615}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 names.Developer={<default>}
-Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
+Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,1,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 [lastOpenProjectName]
 Developer=<default>
 [compiler]
 cross-bootclasspath=D:/TogetherSoft/Together6.0/jdk/jre/lib/rt.jar
+cross-compilation_enabled=false
 [newDiagramExpert]
 includeInCurrentDiagram=false
 [model]
@@ -129,3 +132,13 @@ navigationTree=true
 Messages.maximumMessageCount=1000
 [print]
 diagram=current
+[diagramconverter]
+nativemode=false
+[builder]
+userCompilingTool_enabled=false
+[parser]
+java.java14syntax=true
+[jdkit]
+homedir=D:\\Borland\\Together6.2\\jdk
+[vcs]
+provider.class=CVS LAN

@@ -5,13 +5,14 @@ package dInternal.dTimeTable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.OutPut.BuildXMLElement;
+
 import dConstants.DConst;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.output.WriteXMLElement;
 
 public class Sequence extends DXObject{
 
@@ -97,9 +98,9 @@ public class Sequence extends DXObject{
      * @Element the xml tag of the set of periods
    * */
    public Element writeXMLtag(Document doc){
-    BuildXMLElement xmlElt;
+    WriteXMLElement xmlElt;
     try{
-      xmlElt = new BuildXMLElement();
+      xmlElt = new WriteXMLElement();
       Element eltPers= xmlElt.createElement(doc,Day._TAGITEM2);
       for (int i=0; i<_setOfPeriods.size(); i++){
         Element period= ((Period)_setOfPeriods.getResourceAt(i).getAttach()).writeXMLtag(doc);

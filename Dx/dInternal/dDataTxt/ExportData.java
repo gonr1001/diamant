@@ -11,12 +11,12 @@ package dInternal.dDataTxt;
 
 import java.util.StringTokenizer;
 
-import com.iLib.gIO.FilterFile;
 
 import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.txt.FilterFile;
 
 
 public class ExportData {

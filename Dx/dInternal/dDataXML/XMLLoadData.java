@@ -10,14 +10,14 @@ package dInternal.dDataXML;
  */
 
 import java.io.File;
+
 import java.util.Vector;
 
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.InPut.readFile;
 
-import com.iLib.gIO.FilterFile;
+
+
 
 import dConstants.DConst;
 import dInternal.DModel;
@@ -27,6 +27,9 @@ import dInternal.dDataTxt.SetOfInstructors;
 import dInternal.dDataTxt.SetOfStudents;
 import dInternal.dDataXML.rooms.SetOfCategories;
 import dInternal.dUtil.XMLTools;
+import eLib.exit.txt.FilterFile;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.ReadXMLFile;
 
 public class XMLLoadData {
   //XML tags
@@ -148,7 +151,7 @@ public class XMLLoadData {
    * @return String the error message, empty if it does not found error
    * */
   private String loadImportFile(String fileName){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     //Element  item, ID;
     int numberfoElements=0;
     String error="";//DConst.ERROR_XML_FILE;

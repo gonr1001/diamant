@@ -18,14 +18,15 @@ import junit.framework.TestSuite;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import xml.InPut.ReadXMLElement;
-import xml.InPut.readFile;
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
+
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
+import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.ReadXMLFile;
+import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.output.WriteXMLFile;
 
 
 public class SequenceTest extends TestCase {
@@ -47,11 +48,11 @@ String path;
    * test that read the sequence xml tag
    * */
   public void test_readXMLtag(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  setOfPers;
     Sequence sequence = new Sequence();
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"sequence.xml");
       ReadXMLElement list= new ReadXMLElement();
@@ -94,23 +95,23 @@ String path;
    * test for writing a sequence XMLTag
    * */
   public void test_writeXMLtag(){
-    readFile xmlFile;
+    ReadXMLFile xmlFile;
     Element  eSetOfPers;
     Sequence firstSequence = new Sequence();
     Sequence savedSequence = new Sequence();
     SetOfResources setOfPeriods = new SetOfResources(4);
     try{
-      xmlFile = new readFile();
+      xmlFile = new ReadXMLFile();
       for (int i = 1; i < 5; i++){
         setOfPeriods.addResource(new Resource(Integer.toString(i), new Period()),1);
       }
       firstSequence.setSetOfPeriods(setOfPeriods);
-      BuildXMLElement wr= new BuildXMLElement();
+      WriteXMLElement wr= new WriteXMLElement();
       Document  doc;
       doc = wr.getNewDocument();
       eSetOfPers = firstSequence.writeXMLtag(doc);
       doc = wr.buildDOM(doc,eSetOfPers);
-      writeFile.write(doc,path+"SavedSequence.xml");
+      WriteXMLFile.write(doc,path+"SavedSequence.xml");
 
       // read xml file
       doc = xmlFile.getDocumentFile(path+"SavedSequence.xml");

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.113 $  $Date: 2004-06-21 15:38:16 $
+ * Title: DDocument $Revision: 1.114 $  $Date: 2004-09-10 13:30:59 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.113 $
+ * @version $Revision: 1.114 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -32,8 +32,6 @@ import java.io.File;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-
-import com.iLib.gDialog.FatalProblemDlg;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
@@ -58,6 +56,7 @@ import dInternal.dOptimization.SetOfEventsListener;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
+import eLib.exit.dialog.FatalProblemDlg;
 
 //import dInterface.dUtil.DXTools;
 //debug

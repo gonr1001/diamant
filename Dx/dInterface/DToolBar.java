@@ -1,7 +1,8 @@
 package dInterface;
 
 /**
- * Title: DToolBar $Revision: 1.48 $  $Date: 2004-09-08 19:05:04 $
+ *
+ * Title: DToolBar $Revision: 1.49 $  $Date: 2004-09-10 13:30:59 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +18,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: syay1801 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -33,8 +34,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
-import com.iLib.gDialog.InformationDlg;
-
 import dConstants.DConst;
 import dInterface.dTimeTable.PeriodPanel;
 import dInterface.dUtil.DXJComboBox;
@@ -47,6 +46,7 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.dialog.InformationDlg;
 
 //-------------------------------------------
 /**
