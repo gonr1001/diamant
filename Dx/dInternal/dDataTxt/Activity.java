@@ -20,7 +20,7 @@ public class Activity extends DXObject{
   /**  is in activities file the line between type of rooms and
    activity is fixed or not */
   public String _idemLine;
-  private SetOfResources _natures;
+  private SetOfResources _setOfTypes; // contents Resources of class Type
 
 
   /**
@@ -29,7 +29,7 @@ public class Activity extends DXObject{
   public Activity() {
     //naturesList= new SetOfResources(0);
     //Resource groups = new Resource();
-    _natures= new SetOfResources(0);
+    _setOfTypes= new SetOfResources(0);
   }
 
   /**
@@ -37,11 +37,11 @@ public class Activity extends DXObject{
    * @param String the ID of the nature
    * @return boolean result of the operation
    * */
-  public boolean addNature(String id){
+  public boolean addType(String id){
     //Resource actNature =
-    Nature nature= new Nature();
-    Resource actNature = new Resource(id,nature);
-    return _natures.addResource(actNature,1);
+    Type nature= new Type();
+    Resource actType = new Resource(id,nature);
+    return _setOfTypes.addResource(actType,1);
   }
 
   /**
@@ -50,9 +50,9 @@ public class Activity extends DXObject{
    * @param Nature the nature to be added
    * @return boolean result of the operation
    * */
-  public boolean addNature(Nature nature, String id){
-    Resource actNature = new Resource(id,nature);
-    return _natures.addResource(actNature,1);
+  public boolean addType(Type type, String id){
+    Resource actType = new Resource(id,type);
+    return _setOfTypes.addResource(actType,1);
   }
 
   /**
@@ -60,8 +60,8 @@ public class Activity extends DXObject{
    * @param String the ID of the nature
    * @return boolean result of the operation
    * */
-  public boolean removeNature(String id){
-    return _natures.removeResource(id);
+  public boolean removeType(String id){
+    return _setOfTypes.removeResource(id);
   }
 
   /**
@@ -69,8 +69,8 @@ public class Activity extends DXObject{
    * @param Resource the nature resource
    * @return boolean result of the operation
    * */
-  public boolean setNature(Resource nature){
-    return _natures.setResource(nature);
+  public boolean setType(Resource type){
+    return _setOfTypes.setResource(type);
   }
 
   /**
@@ -78,16 +78,16 @@ public class Activity extends DXObject{
    * @param String the ID of the nature
    * @return Resource the nature object
    * */
-  public Resource getNature(String id){
-    return _natures.getResource(id);
+  public Resource getType(String id){
+    return _setOfTypes.getResource(id);
   }
 
   /**
    * return the nature list
    * @return SetOfResources the list of nature object
    * */
-  public SetOfResources getNaturesList(){
-    return _natures;
+  public SetOfResources getSetOfTypes(){
+    return _setOfTypes;
   }
 
   /**
@@ -159,7 +159,7 @@ public class Activity extends DXObject{
    * @return the string itself
    * */
   public String toWrite(){
-    return _natures.toWrite();
+    return _setOfTypes.toWrite();
   }
 
 }

@@ -10,16 +10,16 @@ package dInternal.dData;
  */
 import dInternal.dUtil.DXObject;
 
-public class Nature extends DXObject{
+public class Type extends DXObject{
 
   /**the group list*/
-  private SetOfResources _groupList;
+  private SetOfResources _setOfSections;
 
   /**
    * Constructor
    * */
-  public Nature() {
-    _groupList= new SetOfResources(0);
+  public Type() {
+    _setOfSections= new SetOfResources(0);
   }
 
   /**
@@ -27,10 +27,9 @@ public class Nature extends DXObject{
    * @param String the ID of the group
    * @return boolean result of the operation
    * */
-  public boolean addGroup(String id){
-    Group group= new Group();
-    Resource actGroup = new Resource(id,group);
-    return _groupList.addResource(actGroup,1);
+  public boolean addSection(String id){
+    Section section= new Section();
+    return _setOfSections.addResource(new Resource(id,section),1);
   }
 
   /**
@@ -39,9 +38,8 @@ public class Nature extends DXObject{
    * @param Group the group to be added
    * @return boolean result of the operation
    * */
-  public boolean addGroup(String id, Group group){
-    Resource actGroup = new Resource(id,group);
-    return _groupList.addResource(actGroup,1);
+  public boolean addSection(String id, Section section){
+    return _setOfSections.addResource(new Resource(id,section),1);
   }
 
   /**
@@ -49,8 +47,8 @@ public class Nature extends DXObject{
    * @param String the ID of the group
    * @return boolean result of the operation
    * */
-  public boolean removeGroup(String id){
-    return _groupList.removeResource(id);
+  public boolean removeSection(String id){
+    return _setOfSections.removeResource(id);
   }
 
   /**
@@ -58,8 +56,8 @@ public class Nature extends DXObject{
    * @param Resource the group resource
    * @return boolean result of the operation
    * */
-  public boolean setGroup(Resource group){
-    return _groupList.setResource(group);
+  public boolean setSection(Resource group){
+    return _setOfSections.setResource(group);
   }
 
   /**
@@ -67,16 +65,16 @@ public class Nature extends DXObject{
    * @param String the ID of the Group
    * @return Resource the nature object
    * */
-  public Resource getGroup(String id){
-    return _groupList.getResource(id);
+  public Resource getSection(String id){
+    return _setOfSections.getResource(id);
   }
 
   /**
    * return the group list
    * @return SetOfResources the list of nature object
    * */
-  public SetOfResources getGroupList(){
-    return _groupList;
+  public SetOfResources getSetOfSections(){
+    return _setOfSections;
   }
 
   /**
@@ -84,6 +82,6 @@ public class Nature extends DXObject{
    * @return the string itself
    * */
   public String toWrite(){
-   return _groupList.toWrite();
+   return _setOfSections.toWrite();
   }
 }

@@ -11,7 +11,7 @@ package dInternal.dData;
 import dInternal.dUtil.DXObject;
 
 
-public class Group extends DXObject{
+public class Section extends DXObject{
 
   /**the bloc list*/
   private SetOfResources _blocList;
@@ -19,7 +19,7 @@ public class Group extends DXObject{
   /**
    * Constructor
    * */
-  public Group() {
+  public Section() {
     _blocList= new SetOfResources(0);
   }
 
@@ -28,10 +28,10 @@ public class Group extends DXObject{
    * @param String the ID of the bloc
    * @return boolean result of the operation
    * */
-  public boolean addBloc(String id){
-    Bloc bloc= new Bloc();
-    Resource actBloc = new Resource(id,bloc);
-    return _blocList.addResource(actBloc,1);
+  public boolean addUnity(String id){
+    Unity bloc= new Unity();
+    //Resource actBloc = new Resource(id,bloc);
+    return _blocList.addResource(new Resource(id,bloc),1);
   }
 
   /**
@@ -40,9 +40,9 @@ public class Group extends DXObject{
    * @param Bloc the bloc to be added
    * @return boolean result of the operation
    * */
-  public boolean addBloc(String id, Bloc bloc){
-    Resource actBloc = new Resource(id,bloc);
-    return _blocList.addResource(actBloc,1);
+  public boolean addUnity(String id, Unity unity){
+    //Resource actBloc = new Resource(id,bloc);
+    return _blocList.addResource(new Resource(id,unity),1);
   }
 
   /**
@@ -50,7 +50,7 @@ public class Group extends DXObject{
    * @param String the ID of the bloc
    * @return boolean result of the operation
    * */
-  public boolean removeBloc(String id){
+  public boolean removeUnity(String id){
     return _blocList.removeResource(id);
   }
 
@@ -59,8 +59,8 @@ public class Group extends DXObject{
    * @param Resource the bloc resource
    * @return boolean result of the operation
    * */
-  public boolean setBloc(Resource group){
-    return _blocList.setResource(group);
+  public boolean setUnity(Resource section){
+    return _blocList.setResource(section);
   }
 
   /**
@@ -68,7 +68,7 @@ public class Group extends DXObject{
    * @param String the ID of the bloc
    * @return Resource the nature object
    * */
-  public Resource getBloc(String id){
+  public Resource getUnity(String id){
     return _blocList.getResource(id);
   }
 
@@ -77,7 +77,7 @@ public class Group extends DXObject{
    * @param String the ID of the bloc
    * @return Resource the nature object
    * */
-  public SetOfResources getBlocList(){
+  public SetOfResources getSetOfUnities(){
     return _blocList;
   }
 

@@ -10,7 +10,7 @@ package dInternal.dData;
  */
 import dInternal.dUtil.DXObject;
 
-public class Bloc extends DXObject{
+public class Unity extends DXObject{
 
   /** duration of the bloc (in minutes)*/
   private int _duration;
@@ -18,10 +18,10 @@ public class Bloc extends DXObject{
    *-1= no prefer sequence; 0= AM; 1=PM; 2= evening
    */
   private int _preferSequence=-1;
-  /**if bloc is fixed in a period*/
-  private boolean _fixed;
-  /**if bloc is solidify in a period*/
-  private boolean _solidify;
+  /**if bloc is assigned in a period*/
+  private boolean _assign;
+  /**if bloc is permanent assigned in a period*/
+  private boolean _permanent;
   /**prefer function rooms of this bloc*/
   private SetOfResources _preferFunctionSetOfRooms;
   /**activities that must be placed before this bloc*/
@@ -29,16 +29,18 @@ public class Bloc extends DXObject{
   /**activities that must be placed after this bloc*/
   private SetOfResources _activitiesAfter;
   /**all cycles where bloc is assigned*/
-  private SetOfResources _cycleAssignmentList;
+  private SetOfResources _setOfAssignments;
+
+  private boolean _isCyclic= true;
 
   /**
    * Constructor
    * */
-  public Bloc() {
+  public Unity() {
     _preferFunctionSetOfRooms = new SetOfResources(0);
     _activitiesBefore = new SetOfResources(0);
     _activitiesAfter = new SetOfResources(0);
-    _cycleAssignmentList = new SetOfResources(0);
+    _setOfAssignments = new SetOfResources(0);
   }
 
   /**
@@ -61,24 +63,32 @@ public class Bloc extends DXObject{
    * set if bloc is fixed
    * @param boolean the bloc state
    * */
-  public void setFixed(boolean fixed){
-    _fixed = fixed;
+  public void setAssign(boolean assign){
+    _assign = assign;
   }
 
   /**
    * get fixed state of the bloc
    * @param boolean the bloc state
    * */
-  public boolean getFixed(){
-    return _fixed;
+  public boolean isAssign(){
+    return _assign;
+  }
+
+  /**
+   * is permanent state of the bloc
+   * @param boolean the bloc state
+   * */
+  public boolean isPermanent(){
+    return _permanent;
   }
 
   /**
    * set if bloc is solidify
    * @param boolean the bloc state
    * */
-  public void setSolidify(boolean solidify){
-    _solidify = solidify;
+  public void setPermanent(boolean permanent){
+    _permanent = permanent;
   }
 
   /**
@@ -95,9 +105,8 @@ public class Bloc extends DXObject{
    * @param String the cycle ID
    * @return boolean the operation result
    * */
-  public boolean addCycleAssignment(String cycle){
-    Resource cycleAss = new Resource(cycle, new DXObject());
-    return _cycleAssignmentList.addResource(cycleAss,1);
+  public boolean addAssignment(String cycle){
+    return _setOfAssignments.addResource(new Resource(cycle, new DXObject()),1);
   }
 
   /**
@@ -105,16 +114,16 @@ public class Bloc extends DXObject{
    * @param String the cycle ID
    * @return Resource the operation result
    * */
-  public Resource getCycleAssignment(String cycle){
-    return _cycleAssignmentList.getResource(cycle);
+  public Resource getAssignment(String cycle){
+    return _setOfAssignments.getResource(cycle);
   }
 
   /**
    * get the cycle assignment list
    * @return SetOfResources the cycle assignment list
    * */
-  public SetOfResources getCycleAssignmentList(){
-    return _cycleAssignmentList;
+  public SetOfResources getSetOfAssignments(){
+    return _setOfAssignments;
   }
 
   /**
@@ -122,8 +131,8 @@ public class Bloc extends DXObject{
    * @param Resource the cycleAssignment resource
    * @return boolean the operation result
    * */
-  public boolean addCycleAssignment(Resource cycleAss){
-    return _cycleAssignmentList.addResource(cycleAss,1);
+  public boolean addAssignment(Resource cycleAss){
+    return _setOfAssignments.addResource(cycleAss,1);
   }
   /**
    * add activity in activity before list
@@ -131,8 +140,7 @@ public class Bloc extends DXObject{
    * @return boolean the operation result
    * */
   public boolean addActivityBefore(String activityName){
-    Resource activityBefore= new Resource(activityName, new DXObject());
-    return _activitiesBefore.addResource(activityBefore,1);
+    return _activitiesBefore.addResource(new Resource(activityName, new DXObject()),1);
   }
 
   /**
@@ -141,8 +149,7 @@ public class Bloc extends DXObject{
    * @return boolean the operation result
    * */
   public boolean addActivityAfter(String activityName){
-    Resource activityAfter= new Resource(activityName, new DXObject());
-    return _activitiesAfter.addResource(activityAfter,1);
+    return _activitiesAfter.addResource(new Resource(activityName, new DXObject()),1);
   }
 
   /**
@@ -151,8 +158,7 @@ public class Bloc extends DXObject{
    * @return boolean the operation result
    * */
   public boolean addPreferFunctionRoom(String function){
-    Resource functionRoom= new Resource(function, new DXObject());
-    return _preferFunctionSetOfRooms.addResource(functionRoom,1);
+    return _preferFunctionSetOfRooms.addResource(new Resource(function, new DXObject()),1);
   }
 
   /**
@@ -205,8 +211,8 @@ public class Bloc extends DXObject{
    * @param String the cycle ID
    * @return boolean the operation result
    * */
-  public boolean removeCycleAssignment(String cycle){
-    return _cycleAssignmentList.removeResource(cycle);
+  public boolean CycleAssignment(String cycle){
+    return _setOfAssignments.removeResource(cycle);
   }
 
   /**

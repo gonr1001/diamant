@@ -11,20 +11,24 @@ package dInternal.dData;
 import dInternal.dUtil.DXObject;
 import java.util.Calendar;
 
-public class CycleAssignment extends DXObject{
+public class Assignment extends DXObject{
 
   /**contains the day, the begin hour and the begin minute*/
   private int[] _dateAndTime={0,0,0};
-  /**instructor name*/
-  private String _instructor;
-  /** room name*/
-  private String _room;
+  /**instructor name valid only for initialization*/
+  private String _instructorName;
+  /** instructor key */
+  long  _instructorKey = -1;
+  /** room valid only for initialization*/
+  private String _roomName;
+  /** room key */
+  long  _roomKey = -1;
   /** room is fixed*/
   private boolean _roomFixed= false;
   /**
    *Constructor
    */
-  public CycleAssignment() {
+  public Assignment() {
 
   }
 
@@ -45,7 +49,16 @@ public class CycleAssignment extends DXObject{
    * @param String the instructor name
    * */
   public void setInstructor(String instructor){
-    _instructor = instructor;
+    _instructorName = instructor;
+  }
+
+  /**
+   * set the instructor key
+   * @param long the instructor key
+   * */
+  public void setInstructor(long instructor){
+    _instructorKey = instructor;
+    _instructorName = null;
   }
 
   /**
@@ -53,15 +66,23 @@ public class CycleAssignment extends DXObject{
    * @param String the room name
    * */
   public void setRoom(String room){
-    _room = room;
+    _roomName = room;
   }
 
+  /**
+   * set the room key
+   * @param long the room key
+   * */
+  public void setRoom(long room){
+    _roomKey = room;
+    _roomName = null;
+  }
   /**
    * set the room state
    * @param boolean the room state (true if room is fixed and false otherwise)
    * */
   public void setRoomState(boolean fixed){
-    this._roomFixed = fixed;
+    _roomFixed = fixed;
   }
 
   /**
@@ -76,18 +97,33 @@ public class CycleAssignment extends DXObject{
    * get instructor name of the bloc in this week
    * @return String the instructor name
    * */
-  public String getInstructor(){
-    return _instructor;
+  public String getInstructorName(){
+    return _instructorName;
+  }
+
+  /**
+   * get instructor key of the unit
+   * @return String the instructor key
+   * */
+  public long getInstructorKey(){
+    return _instructorKey;
   }
 
   /**
    * get room name of the bloc in this week
    * @return String the room name
    * */
-  public String getRoom(){
-    return _room;
+  public String getRoomName(){
+    return _roomName;
   }
 
+  /**
+   * get room key of the unit
+   * @return long the room key
+   * */
+  public long getRoomKey(){
+    return _roomKey;
+  }
   /**
    * get room state of the bloc in this week
    * @return boolean the room state (true if room is fixed and false otherwise)
