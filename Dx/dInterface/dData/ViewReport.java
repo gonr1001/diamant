@@ -200,12 +200,13 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
         currentField = strFields.nextToken();
 
         if(DXToolsMethods.countTokens(currentField,",") >1)
-          currentField = buildSpecialLine(resultLine.length(), currentField);
+          currentField = buildSpecialLine(resultLine.length(),fieldsLengths[j], currentField);
         else {
-        currentField =DXToolsMethods.getToken(currentField, ",", 0);
+          currentField =DXToolsMethods.getToken(currentField, ",", 0);
+          currentField = adjustSize(currentField,fieldsLengths[j]);
+          currentField = currentField + "|  ";
         }
-        currentField = adjustSize(currentField,fieldsLengths[j]);
-        currentField = currentField + "|  ";
+
         resultLine += currentField;
       }//end internal for
       resultLine += DConst.CR_LF;
@@ -214,17 +215,36 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     _jTextArea.setCaretPosition(0);
   }
 
-  private String buildSpecialLine(int i, String currentField) {
-
-
-    return currentField;
+  /**
+   *
+   * @param i
+   * @param currentField
+   * @return
+   */
+  private String buildSpecialLine(int blankSizeBefore, int size, String currentField) {
+    String result="";
+    int nbToken =DXToolsMethods.countTokens(currentField, ",");
+    result+= adjustSize(DXToolsMethods.getToken(currentField,",",0),size)+ "|  "+DConst.CR_LF;
+    for (int i=1; i< nbToken-1; i++){
+      result+= adjustSize("", blankSizeBefore) + adjustSize(DXToolsMethods.getToken(currentField,",",i),size)+ "|  "+DConst.CR_LF;
+    }
+    result+= adjustSize("", blankSizeBefore) + adjustSize(DXToolsMethods.getToken(currentField,",",nbToken-1),size)+ "|  ";
+    return result;
   }
 
+  /**
+   *
+   * @param str the string to adjust
+   * @param size
+   * @param toEnd
+   * @return
+   */
   private String adjustSize(String str, int size) {
-    String blanks = "                                                                          ";
+    String blanks =" ";
+    for (int i=0; i< 10; i++)
+        blanks +="             ";
     str += blanks;
-
-    return str.substring(0,size);
+    return str= str.substring(0,size);;
   }
 
 }

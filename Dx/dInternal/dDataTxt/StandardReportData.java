@@ -11,6 +11,7 @@ package dInternal.dData;
 
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
+import dInternal.dConditionsTest.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dConditionsTest.ConflictsAttach;
@@ -238,6 +239,15 @@ public class StandardReportData {
                   _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities()),
                   _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));
               }
+              if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
+               long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
+               str= _dm.getSetOfInstructors().getResource(instKey).getID();
+              }
+              if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
+               long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();
+               str= _dm.getSetOfRooms().getResource(roomKey).getID();
+              }
+
               report+=day.getKey()+";"+
                       day.getID()+";"+
                       seq.getID()+";"+

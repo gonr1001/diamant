@@ -24,7 +24,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   private Vector _eventsRescList;
   private int _mixingType;// 0= balance student mixing,  1= balance student
   // mixing with acceptable variation, 2= optimize student mixing
-  private int ACCEPTABLEVARIATION=25;
+  private int ACCEPTABLEVARIATION=15;
 
   /**
    *

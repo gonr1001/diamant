@@ -178,8 +178,11 @@ public class SetOfEvents extends SetOfResources{
      DXToolsMethods.getToken(eventIDTwo,".",2));
     String res = "";
     for(int i=0; i<studentOneInSection.size(); i++) {
-      if (studentTwoInSection.contains(studentOneInSection.get(i)))
-          res += studentOneInSection.get(i)+ ",";
+      if (studentTwoInSection.contains(studentOneInSection.get(i))){
+        String id= _dm.getSetOfStudents().getResource(Long.parseLong(studentOneInSection.get(i).toString())).getID();
+        String matricule= "00"+studentOneInSection.get(i).toString();
+          res += matricule.substring(matricule.length()-SetOfStudents._ENDSTUDENTMATRICULE)+"-"+ id + ",";
+      }
     }
 
 

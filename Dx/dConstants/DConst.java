@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.73 $  $Date: 2003-12-02 16:41:33 $
+ * Title: DConst $Revision: 1.74 $  $Date: 2003-12-03 00:05:58 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.73 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.74 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -282,8 +282,8 @@ public class DConst {
   public final static String R_STUDENT_CONFLICT = res.getString("RStudentConflict");//Conflit d'étudiant
   public final static String R_ROOM_CONFLICT = res.getString("RRoomConflict");//Conflit de salle
   public final static String R_INSTRUCTOR_CONFLICT = res.getString("RInstructorConflict");//Conflit d'insdtructor
- public final static String  R_ELEMENTS_IN_CONFLICT = res.getString("RElementsInConflict");//Elements en conflit
-   //the associated string length for each item above
+  public final static String  R_ELEMENTS_IN_CONFLICT = res.getString("RElementsInConflict");//Elements en conflit
+  //the associated string length for each item above
   public final static String R_SEQUENCE_ID_L = "9";
   public final static String R_UNITY_BEGIN_H_L = "16";
   public final static String R_PERIOD_BEGIN_H_L = "16";
@@ -291,10 +291,10 @@ public class DConst {
   public final static String R_EVENT2_ID_L = "13";
   public final static String R_NUMBER_OF_CONFLICTS_L = "9";
   public final static String R_TYPE_OF_CONFLICT_L = "15";
-  public final static String R_STUDENT_CONFLICT_L = "12";
+  public final static String R_STUDENT_CONFLICT_L = "8";
   public final static String R_ROOM_CONFLICT_L = "10";
   public final static String R_INSTRUCTOR_CONFLICT_L = "15";
-  public final static String R_ELEMENTS_IN_CONFLICT_L = "15";
+  public final static String R_ELEMENTS_IN_CONFLICT_L = "20";
   //Help dialogs
   public final static String ABOUT_TD = res.getString("aboutTD");//A propos de, repete
   public final static String ABOUT_D = res.getString("aboutD");// \nCopyRight\n 2000 - 2003
