@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.126 $  $Date: 2005-01-21 15:27:25 $
+ * Title: DDocument $Revision: 1.127 $  $Date: 2005-01-21 15:54:42 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.126 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.127 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInterface;
@@ -97,9 +97,9 @@ SetOfRoomsListener, SetOfEventsListener{
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	} // end constructor DDocument()
 	public void internalFrameActivated(InternalFrameEvent e) {
-		//e.toString();
+		e.toString();
 		_dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
-	}
+	} // end internalFrameActivated 
 	//-------------------------------------------
 	public final JInternalFrame getJIF() {
 		return _jif;
@@ -191,6 +191,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	}// end actionPerformed
 	//-------------------------------------------
 	public void changeInDModel(DModelEvent  e, Component component) {
+		e.toString();
 		setCursor(Cursor.WAIT_CURSOR, component);
 		_dm.setModified();
 		
@@ -222,6 +223,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param e
 	 */
 	public void changeInTTStructure(TTStructureEvent  e) {
+		e.toString();
 		System.out.println("I was in ttstructure listener");
 		setCursor(Cursor.WAIT_CURSOR);
 		_dm.setModified();
@@ -229,7 +231,7 @@ SetOfRoomsListener, SetOfEventsListener{
 		_dm.setStateBarComponent();
 		_stateBar.upDateDStateBar(_dm.getSetOfStates());
 		setCursor(Cursor.DEFAULT_CURSOR);
-	}
+	} // end changeInTTStructure
 	//-------------------------------------------
 	/**
 	 *
@@ -237,6 +239,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param component
 	 */
 	public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
+		e.toString();
 		setCursor(Cursor.WAIT_CURSOR, component);
 		
 		_dm.setModified();
@@ -256,6 +259,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param component
 	 */
 	public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
+		e.toString();
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm.setModified();
 		// TODO _dm.getSetOfActivities().buildStudentRegisteredList(_dm.getSetOfStudents());
@@ -273,6 +277,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param component
 	 */
 	public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
+		e.toString();
 		setCursor(Cursor.WAIT_CURSOR, component);
 		
 		_dm.setModified();
@@ -293,6 +298,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param component
 	 */
 	public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
+		e.toString();
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm.setModified();
 		_dm.getSetOfStates().sendEvent();
@@ -306,6 +312,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param component
 	 */
 	public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
+		e.toString();
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm.setModified();
 		_dm.getSetOfStates().sendEvent();
