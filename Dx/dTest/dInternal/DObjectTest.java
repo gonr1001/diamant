@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObjectTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: DObjectTest $Revision $  $Date: 2005-02-09 14:09:34 $
 * Description: 	DObjectTest is a class used to test the class 
 * 				DObject using the class DValue
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -48,15 +48,15 @@ public class DObjectTest extends TestCase{
   }
 
   public void testAetSelectedField(){
-  	assertTrue(a.getSelectedField()==0);
+  	 assertEquals("testAetSelectedField: assertEquals", true, (a.getSelectedField()==0));
   }
   public void testAcompareByField(){
-  	assertTrue(a.compareByField(2,"2")== false);
+  	assertEquals("testAcompareByField: assertEquals", false, (a.compareByField(2,"2")));
   }  
   public void testAsetField(){
   	a.setField(1,"2");
-  	assertTrue(a.getIntValue()==-1);
-  	assertTrue(a.getStringValue().compareTo("")==0);
+  	assertEquals("testAsetField1: assertEquals", true, (a.getIntValue()==-1));
+  	assertEquals("testAsetField2: assertEquals", true, (a.getStringValue().compareTo("")==0));
   }
   public void testAtoWrite(){
   	//System.out.println("\""+a.toWrite()+"\"");
