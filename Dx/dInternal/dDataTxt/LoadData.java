@@ -42,6 +42,12 @@ public class LoadData {
   /***
    *constructor
    */
+  public LoadData() {
+    _dm = null;
+   String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
+   _functionFileName=path+"DXfunctions.sig";
+   _caractFileName=path+"DXcaracteristics.sig";
+  }
   public LoadData(String args, DModel dm) {
   	_dm = dm;
     String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
