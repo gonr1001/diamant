@@ -46,18 +46,12 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
   private Object [] _currentActivities = new Object[0];
   private SetOfActivities _activities;
-  private String [] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
+  private String [] _buttonsNames = {DConst.BUT_APPLY, DConst.BUT_CLOSE};
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
   /**
    * the vectors containing the activities ID
    */
   private Vector _rightVec, _leftVec;
-
-  private static String ACTLIST = DConst.ACT_LIST;
-  private static String NOT_INCLUDED = DConst.NOT_INCLUDED;
-  private static String INCLUDED = DConst.INCLUDED;
-
-
 
   /**
    * Dafault constructor
@@ -65,11 +59,10 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
 
   public ActivityDlg() {
-
   }
 
   public ActivityDlg(DApplication dApplic) {
-    super(dApplic.getJFrame(), ACTLIST, true);
+    super(dApplic.getJFrame(), DConst.ACT_LIST, true);
     _dApplic = dApplic;
     _jd = this;  //to pass this dialog to the EditActivityDlg
     if (_dApplic.getDMediator().getCurrentDoc() == null)
@@ -91,7 +84,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _rightList.addMouseListener(mouseListenerLists);
     //_visibleList = new JList(_visibleVec);
     JPanel listPanel = DXTools.listPanel(_rightList, 150, 300);
-    _lNoVisible = new JLabel(_rightVec.size() + " " + NOT_INCLUDED);
+    _lNoVisible = new JLabel(_rightVec.size() + " " + DConst.NOT_INCLUDED);
     JPanel rightPanel = new JPanel(new BorderLayout());
     rightPanel.add(_lNoVisible, BorderLayout.NORTH);
     rightPanel.add(listPanel, BorderLayout.SOUTH);
@@ -99,7 +92,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _leftVec = _activities.getIDsByField(3, "true");
     _leftList = new JList(_leftVec);
     _leftList.addMouseListener(mouseListenerLists);
-    _lVisible = new JLabel(_leftVec.size() + " " + INCLUDED);
+    _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);
     listPanel = DXTools.listPanel(_leftList, 150, 300);
     JPanel leftPanel = new JPanel();
     leftPanel = new JPanel(new BorderLayout());
@@ -115,9 +108,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //buttonsPanel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //Setting the button APPLY disable
-    _buttonsPanel.getComponent(1).setEnabled(false);
+    _buttonsPanel.getComponent(0).setEnabled(false);
     //placing the elements into the JDialog
-    setSize(400, 390);
+    setSize(400, 400);
     setResizable(false);
     getContentPane().add(_centerPanel, BorderLayout.CENTER);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
@@ -149,30 +142,30 @@ public class ActivityDlg extends JDialog implements ActionListener {
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //If buttons CANCEL
-    if (command.equals(_buttonsNames[2]))
+    if (command.equals(_buttonsNames[1]))
         dispose();
     //If button APPLY
-    if (command.equals(_buttonsNames[1])){
-      setActivitesVisibility();
-      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
-      _buttonsPanel.getComponent(1).setEnabled(false);
-    }
-    //if button OK
     if (command.equals(_buttonsNames[0])){
       setActivitesVisibility();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
-      dispose();
+      _buttonsPanel.getComponent(0).setEnabled(false);
     }
+    //if button OK
+   /* if (command.equals(_buttonsNames[0])){
+      setActivitesVisibility();
+      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      dispose();
+    }*/
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       if (command.equals(_arrowsNames[1]))
         DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
       else
         DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 1);
-      _lNoVisible.setText(_rightVec.size() + " " + NOT_INCLUDED);
-      _lVisible.setText(_leftVec.size() + " " + INCLUDED);
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _lNoVisible.setText(_rightVec.size() + " " + DConst.NOT_INCLUDED);
+      _lVisible.setText(_leftVec.size() + " " + DConst.INCLUDED);
+      _buttonsPanel.getComponent(0).setEnabled(true);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
   }//end method
