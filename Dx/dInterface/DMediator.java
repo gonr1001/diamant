@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.7 $  $Date: 2003-05-22 17:36:08 $
+ * Title: DMediator $Revision: 1.8 $  $Date: 2003-05-23 09:30:58 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -26,7 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 
-import dInternal.dTimetable.TTStructure;
+import dInternal.dTimeTable.TTStructure;
 
 public class DMediator {
   private DApplication _dApplic;

@@ -7,50 +7,50 @@ package id1nifldg0t3hxrdg0tcyqu;
 */
 class diagram {
 /**
-@__ref <oiref:java#Class#dInternal.dTimetable.TTStructure:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.Day:oiref><oihard>
 @__modelType reference 
 */
 class reference {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.SetOfCycles:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.SetOfSequences:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#dInternal.dTimeTable.SetOfPeriods:oiref><oihard>
 @__modelType reference 
 */
 class reference2 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.Cycle:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.TTStructure:oiref><oihard>
 @__modelType reference 
 */
 class reference3 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.SetOfDays:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.SetOfDays:oiref><oihard>
 @__modelType reference 
 */
 class reference4 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.Day:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.SetOfCycles:oiref><oihard>
 @__modelType reference 
 */
 class reference5 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.SetOfSequences:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.Cycle:oiref><oihard>
 @__modelType reference 
 */
 class reference6 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.Sequence:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.Sequence:oiref><oihard>
 @__modelType reference 
 */
 class reference7 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimetable.SetOfPeriods:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimeTable.Period:oiref><oihard>
 @__modelType reference 
 */
 class reference8 {
-}/**
-@__ref <oiref:java#Class#dInternal.dTimetable.Period:oiref><oihard>
-@__modelType reference 
-*/
-class reference9 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -61,20 +61,28 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfPeriods:oiref>=330,450,137,130,0:oigroup>
+@__positions <oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfSequences:oiref>=444,4,139,110,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Day#_setOfSequences:oiref>=413,59,444,59:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfCycles#_cycle:oiref>=460,120,540,120:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfCycles#_cycle:oiref>=365,262,521,320:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.Period:oiref>=1,1,105,142,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Cycle#_setOfDays:oiref>=521,286,485,286:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Day#_setOfSequences:oiref>=470,310,550,310:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.TTStructure:oiref>=213,313,200,254,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.Sequence:oiref>=4,314,199,142,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.TTStructure#_setOfCycles:oiref>=313,313,313,282:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Cycle#_setOfDays:oiref>=615,210,115,250:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.Cycle:oiref>=540,30,150,180,0:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfCycles:oiref>=330,40,130,160,0:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfPeriods#_period:oiref>=142,192,106,122:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfPeriods:oiref>=142,172,103,110,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfDays#_day:oiref>=190,315,300,315:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.Period:oiref>=550,443,120,177,0:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfDays:oiref>=382,192,103,110,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfSequences#_sequence:oiref>=513,114,187,314:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfSequences#_sequence:oiref>=625,380,140,450:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.Sequence:oiref>=70,450,140,170,0:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfDays:oiref>=40,250,150,130,0:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.Day:oiref>=300,240,170,160,0:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfSequences:oiref>=550,240,150,140,0:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.TTStructure:oiref>=30,40,210,170,0:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfDays#_day:oiref>=397,192,397,161:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Sequence#_setOfPeriods:oiref>=172,314,172,282:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfCycles:oiref>=262,172,103,110,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.Day:oiref>=213,3,200,158,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.Cycle:oiref>=521,271,184,174,1:oigroup>
 <oigroup:<oiref:java#Member#dInternal.dTimetable.Day#_setOfSequences:oiref>=320,290,148,16,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.TTStructure#_setOfCycles:oiref>=240,120,330,120:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfPeriods#_period:oiref>=467,515,550,515:oigroup>

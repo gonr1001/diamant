@@ -75,7 +75,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,430,141,117,1:oigroup>
 <oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=199,570,115,100,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
-<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,169,340,1:oigroup>
+<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,169,324,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.TTParameters:oiref>=290,10,143,254,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.TTParametersListener:oiref>=410,410,170,117,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,382,1:oigroup>

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.17 $  $Date: 2003-05-22 17:36:08 $
+ * Title: DDocument $Revision: 1.18 $  $Date: 2003-05-23 09:30:58 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -37,7 +37,7 @@ import dInternal.dData.Status;
 import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
-import dInternal.dTimetable.TTStructure;
+import dInternal.dTimeTable.TTStructure;
 import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;

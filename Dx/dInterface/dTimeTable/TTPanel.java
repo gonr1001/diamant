@@ -22,7 +22,7 @@ import javax.swing.border.*;
 import java.awt.event.*;
 
 import dInternal.TTParameters;
-import dInternal.dTimetable.TTStructure;
+import dInternal.dTimeTable.TTStructure;
 
 public class TTPanel extends JScrollPane {
   //DDocument _dd;
