@@ -23,7 +23,7 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
+
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -36,7 +36,7 @@ import javax.swing.border.EtchedBorder;
 import dInternal.dData.Activity;
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.SetOfStudents;
-import dInternal.dData.SetOfResources;
+
 import dInternal.dData.StudentAttach;
 import dInternal.dData.Section;
 import dInternal.dData.Type;

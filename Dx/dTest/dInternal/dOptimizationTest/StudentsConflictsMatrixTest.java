@@ -10,15 +10,12 @@ package dTest.dInternal.dConditionsTest;
  */
 import junit.framework.*;
 
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+
 import dInternal.dConditionsTest.StudentsConflictsMatrix;
-import dInternal.dConditionsTest.EventAttach;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.SetOfStudents;
+
 import dInternal.DModel;
 import dInterface.DDocument;
-import java.util.Vector;
+
 import java.io.File;
 
 public class StudentsConflictsMatrixTest extends TestCase{

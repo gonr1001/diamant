@@ -12,7 +12,7 @@ import junit.framework.*;
 import dInternal.dData.Resource;
 import dInternal.dData.InstructorAttach;
 import dInternal.dData.SetOfInstructors;
-import java.util.Vector;
+
 
 public class SetOfResourcesTest extends TestCase {
 

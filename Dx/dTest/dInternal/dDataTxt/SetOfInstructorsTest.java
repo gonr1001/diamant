@@ -10,12 +10,11 @@ package dTest.dInternal.dData;
  */
 
 import junit.framework.*;
-import dInternal.dData.Resource;
-import dInternal.dData.InstructorAttach;
+
 import dInternal.dData.SetOfInstructors;
 import dResources.DConst;
-import java.util.Vector;
-import java.util.StringTokenizer;
+
+
 
 public class SetOfInstructorsTest  extends TestCase{
 

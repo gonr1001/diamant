@@ -10,8 +10,7 @@ package dTest.dInternal.dData;
  */
 
 import junit.framework.*;
-import dInternal.dData.Activity;
-import java.util.Vector;
+
 
 public class AssignmentTest extends TestCase {
 

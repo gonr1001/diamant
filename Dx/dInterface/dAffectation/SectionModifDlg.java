@@ -17,7 +17,7 @@ import dInternal.dData.Resource;
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;
-import javax.swing.JFrame;
+
 
 public class SectionModifDlg extends SetOfElementsInterface{
 

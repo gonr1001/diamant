@@ -9,10 +9,7 @@ package dTest.dInternal.dData;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.dData.Resource;
-import dInternal.dData.InstructorAttach;
-import dInternal.dData.SetOfInstructors;
-import java.util.Vector;
+
 
 public class ResourceTest extends TestCase {
 

@@ -13,7 +13,7 @@ import dInterface.Command;
 import dInterface.DApplication;
 import dInternal.dAlgorithms.SelectAlgorithm;
 import dResources.DConst;
-import java.util.Vector;
+
 import com.iLib.gDialog.InformationDlg;
 
 public class OptimizeMixingAlgorithmCmd implements Command{

@@ -12,7 +12,7 @@ package dTest.dInternal.dData;
 //public class RoomAttachTest {
 import junit.framework.*;
 import dInternal.dData.RoomAttach;
-import dInternal.dUtil.DXValue;
+
 import java.util.Vector;
 
 public class RoomAttachTest extends TestCase {

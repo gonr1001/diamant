@@ -13,7 +13,7 @@ import junit.framework.*;
 import java.io.File;
 import java.util.Vector;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.Cycle;
+
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.SetOfStudents;
 import dInternal.dData.SetOfInstructors;

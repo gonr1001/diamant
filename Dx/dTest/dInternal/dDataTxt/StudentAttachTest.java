@@ -11,7 +11,7 @@ package dTest.dInternal.dData;
 import junit.framework.*;
 import dInternal.dData.StudentAttach;
 import dInternal.dUtil.DXValue;
-import java.util.Vector;
+
 
 public class StudentAttachTest extends TestCase {
   //private StudentAttach _student;

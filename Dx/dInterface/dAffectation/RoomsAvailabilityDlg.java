@@ -9,7 +9,7 @@ import dInternal.DModel;
 import dInternal.dData.RoomAttach;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dTimeTable.TTStructure;
+
 import dResources.DConst;
 
 

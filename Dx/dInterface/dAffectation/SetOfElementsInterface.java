@@ -10,7 +10,7 @@ package dInterface.dAffectation;
  */
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -19,16 +19,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import java.util.StringTokenizer;
+
 import java.util.Vector;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
 
-import dInternal.dUtil.DXToolsMethods;
+
+
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;

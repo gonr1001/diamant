@@ -14,14 +14,11 @@ import java.io.File;
 import dInternal.dData.Activity;
 import dInternal.dData.Type;
 import com.iLib.gIO.FilterFile;
-import dInternal.dData.Section;
-import dInternal.dData.Unity;
-import dInternal.dData.Assignment;
+
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Resource;
 import dResources.DConst;
-import java.util.Vector;
-import java.util.StringTokenizer;
+
 
 public class SetOfActivitiesTest  extends TestCase{
 

@@ -10,12 +10,11 @@ package dTest.dInternal.dData;
  */
 
 import junit.framework.*;
-import dInternal.dData.Resource;
-import dInternal.dData.RoomAttach;
+
+
 import dInternal.dData.SetOfRooms;
 import dResources.DConst;
-import java.util.Vector;
-import java.util.StringTokenizer;
+
 
 public class SetOfRoomsTest  extends TestCase{
 

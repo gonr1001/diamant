@@ -9,7 +9,7 @@
  * @version 1.0
  */
 import junit.framework.*;
-import junit.extensions.jfcunit.JFCTestCase;
+
 import dTest.dInterface.InstructorDlgTest;
 
 public class DRunInterTest  {

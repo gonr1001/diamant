@@ -10,8 +10,7 @@ package dTest.dInternal.dData;
  */
 import junit.framework.*;
 import dInternal.dData.RoomsAttributesInterpretor;
-import dInternal.dUtil.DXValue;
-import java.util.Vector;
+
 
 public class RoomsAttributesInterpretorTest extends TestCase {
   //private StudentAttach _student;

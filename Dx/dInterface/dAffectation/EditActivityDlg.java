@@ -12,11 +12,11 @@ package dInterface.dAffectation;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import java.awt.Component;
+
 import java.awt.event.*;
 import java.awt.Dimension;
 import java.util.Vector;
-import java.util.StringTokenizer;
+
 import javax.swing.event.*;
 import javax.swing.*;
 

@@ -3,15 +3,10 @@ package dTest.dInternal.dConditionsTest;
 import junit.framework.*;
 import dInternal.dConditionsTest.SetOfEvents;
 import dInternal.dConditionsTest.EventAttach;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.SetOfInstructors;
-import dInternal.dTimeTable.TTStructure;
-import dInternal.dData.SetOfRooms;
-import dInternal.dData.Resource;
-import dInternal.dData.LoadData;
+
 import dInternal.DModel;
 import dInterface.DDocument;
-import java.util.Vector;
+
 import java.io.File;
 import java.util.StringTokenizer;
 

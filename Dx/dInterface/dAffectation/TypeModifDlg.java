@@ -13,12 +13,12 @@ import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DConst;
 import dInternal.dData.Activity;
-import dInternal.dData.Type;
+
 import dInternal.dData.Resource;
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;
-import javax.swing.JFrame;
+
 
 public class TypeModifDlg extends SetOfElementsInterface{
 
