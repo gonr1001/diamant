@@ -63,6 +63,11 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Dafault constructor
    * @param dApplic The application object (for extracting the JFrame)
    */
+
+  public ActivityDlg() {
+
+  }
+
   public ActivityDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), ACTLIST, true);
     _dApplic = dApplic;
@@ -79,7 +84,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   /**
    * Initialize the dialog
    */
-  private void jbInit(){
+  protected void jbInit(){
     //right panel
     _rightVec = _activities.getIDsByField(3, "false");
     _rightList = new JList(_rightVec);
