@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.35 $  $Date: 2003-07-07 09:44:24 $
+ * Title: DModel $Revision: 1.36 $  $Date: 2003-07-07 10:56:55 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -56,24 +56,22 @@ public class DModel {
     _ttStruct = new TTStructure();
     _error = _ttStruct.loadTTStructure(ttStructPath);
 
-      _modified = true;
+      _modified = false;
 
        _type = type;
 
   }
 
   //for open
-  public DModel(DApplication dApplic, String fullPath) {
+  public DModel(DApplication dApplic, String fullPath, int type) {
     _error = "";
     _status = new Status();
-    //_ttParameters = new TTParameters();
-    _dApplic = dApplic;//
-    // must initiate type and
+    _dApplic = dApplic;
+    // must initiate type and ttStructure
     loadTimeTable(fullPath);
-    //rreadTT(fileName);
-    //importData("hello");
-    //test1_setAvailability();
-    _modified = true;
+    _type = type;
+
+    _modified = false;
   }
 
   //for new TTStructure _dApplic, fullPath, type, onlyStruc
@@ -131,26 +129,26 @@ public DModel(DApplication dApplic, int i, TTStructure t){}
   public String loadTimeTable(String fileName){
     LoadData loadD = new LoadData();
     Vector project = loadD.loadProject(fileName);
-    if(project.size()!=0){
+    if (project.size()!=0) {
       setVersion((String)project.get(0));
       _ttStruct= (TTStructure)project.get(1);
-     // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
-     // addTTStructureListener(this);
+      // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
+      // addTTStructureListener(this);
       _setOfInstructors = (SetOfInstructors)project.get(2);
       _setOfRooms= (SetOfRooms)project.get(3);
       _setOfActivities=(SetOfActivities)project.get(4);
       _setOfStudents = (SetOfStudents)project.get(5);
       if( _setOfRooms.getError().length()!=0){
-       return _setOfRooms.getError();
+        return _setOfRooms.getError();
       }
       if( _setOfInstructors.getError().length()!=0){
-       return _setOfInstructors.getError();
+        return _setOfInstructors.getError();
       }
       if( _setOfActivities.getError().length()!=0){
-       return _setOfActivities.getError();
+        return _setOfActivities.getError();
       }
       if( _setOfStudents.getError().length()!=0){
-       return _setOfStudents.getError();
+        return _setOfStudents.getError();
       }
     }
     _ttStruct.sendEvent();// a deplacer

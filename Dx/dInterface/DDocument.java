@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.43 $  $Date: 2003-07-07 09:44:24 $
+ * Title: DDocument $Revision: 1.44 $  $Date: 2003-07-07 10:56:55 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -66,10 +66,11 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
   public DDocument(DApplication dApplic, String fullPath, int type, String ttStructPath) {
     _dApplic = dApplic;
     if (ttStructPath != null) {  // for a new timetable
-    _dm = new DModel(_dApplic, type, ttStructPath);
+      _dm = new DModel(_dApplic, type, ttStructPath);
     } else {  //for an open timetable
-      _dm = new DModel(_dApplic, fullPath);
-    } _dm.getTTStructure().addTTStructureListener(this);
+      _dm = new DModel(_dApplic, type, fullPath);
+    }
+    _dm.getTTStructure().addTTStructureListener(this);
     buidDocument(fullPath);
   } // end constructor DDocument()
 
@@ -102,7 +103,7 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
     _dApplic = dApplic;
     TTStructure ttStruct = new TTStructure();
     ttStruct.loadTTStructure(fileName);
-    _dm = new DModel(_dApplic,_documentName);
+    _dm = new DModel(_dApplic,_documentName, 0);
     // read TTstructure
     // TTStructure ttStruct = new TTStructure();
     // read TTstructure

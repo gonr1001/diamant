@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.20 $  $Date: 2003-07-07 09:44:24 $
+ * Title: DMediator $Revision: 1.21 $  $Date: 2003-07-07 10:56:55 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -33,6 +33,7 @@ import dInterface.dTimeTable.SaveCmd;
 
 
 import dInternal.dTimeTable.TTStructure;
+import dResources.DConst;
 
 public class DMediator {
   private DApplication _dApplic;
@@ -55,7 +56,7 @@ public class DMediator {
     if (ttStructPath != null) {  //for new TimeTable
       currentDoc = new DDocument(_dApplic, fullPath, type, ttStructPath);
     } else {                 //for open TimeTable
-      currentDoc = new DDocument(_dApplic, fullPath, 0, null);
+      currentDoc = new DDocument(_dApplic, fullPath, type, null);
     }
     _documents.addElement(currentDoc);
     //_dApplic.getToolBar().setToolBars(ttStruct);

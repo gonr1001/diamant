@@ -241,7 +241,7 @@ public class LoadData {
 
      }else{
        new FatalProblemDlg("I was in"+getClass().toString()+" LoadData class and loadProject. extract failed!!!" );
-       System.exit(52);
+       System.exit(1);
      }
      return extract;
   }
