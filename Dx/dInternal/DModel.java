@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.84 $  $Date: 2004-02-05 17:31:49 $
+ * Title: DModel $Revision: 1.85 $  $Date: 2004-02-10 19:50:58 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.84 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.85 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -47,11 +47,11 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   protected int _constructionState=0;// tell where the time construction is
   private String _version;
   private String _error;
-  protected SetOfStates _setOfStates;
-  protected SetOfInstructors _setOfInstructors=null;
-  protected SetOfRooms _setOfRooms=null;
-  protected SetOfStudents _setOfStudents=null;
-  protected SetOfActivities _setOfActivities=null;
+  protected static SetOfStates _setOfStates;
+  protected static SetOfInstructors _setOfInstructors=null;
+  protected static SetOfRooms _setOfRooms=null;
+  protected static SetOfStudents _setOfStudents=null;
+  protected static SetOfActivities _setOfActivities=null;
  // private DApplication _dApplic;
   private DDocument _dDocument;
   protected TTStructure _ttStruct;

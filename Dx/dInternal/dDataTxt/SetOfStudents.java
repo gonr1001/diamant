@@ -19,6 +19,10 @@ import dInternal.dData.Resource;
 public class SetOfStudents extends SetOfResources{
 
   private byte[] _dataloaded; //_st;// student in text format
+  /** _ttWithStudents give the type of setOfStudents
+   * 0= timetable with students; 1= time table without students
+   */
+  private int _ttWithStudents=0;
   public static final int _BEGINSTUDENTMATRICULE=0;
   public static final int _ENDSTUDENTMATRICULE=8;
   public static final int _BEGINSTUDENTNAME=21;
@@ -40,6 +44,43 @@ public class SetOfStudents extends SetOfResources{
   }
 
   /**
+   * Analyse student data coming from a file (_dataloaded) by a finite-state machine.
+   * For a timetable with students
+   * @param beginPosition
+   * @return
+   */
+  public boolean analyseTokens(int beginPosition){
+    switch(_ttWithStudents){
+     case 0: return analyseTokensWithStudents(beginPosition);
+     case 1: return analyseTokensWithoutStudents(beginPosition);
+    }
+    return false;
+  }
+
+  /**
+  * build a ListOfStudent using
+  * student data coming from a file (_dataloaed) by a finite-state machine
+  * @param int  beginPosition, an integer (start state of the finite-state machine)
+  * @return  boolean. "true" if the analysis proceeded successfully and false otherwise
+  *
+  * <p>
+  * Requires: _dataloaded must be scanned by analyseTokens.
+  *
+  * <p>
+  * Modifies: the associated ListOfResources is created and
+  *           built.
+  *
+  * <p>
+  * Effect: nothing.
+  * */
+  public void buildStudentList(int beginPosition){
+    switch(_ttWithStudents){
+     case 0: buildStudentListWithStudents(beginPosition);
+     case 1: buildStudentListWithoutStudents(beginPosition);
+    }
+  }
+
+  /**
    * Analyse student data coming from a file (_dataloaded) by a finite-state machine
    * @param int  beginPosition, an integer (start state of the finite-state machine)
    * @return  boolean. "true" if the analysis proceeded successfully and false otherwise
@@ -55,7 +96,7 @@ public class SetOfStudents extends SetOfResources{
    *         if some bad data is found the a FatalProblemDlg is displayed
    *         then the application exits
    * */
-  public boolean analyseTokens(int beginPosition){
+  private boolean analyseTokensWithStudents(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state=0;
@@ -159,6 +200,27 @@ public class SetOfStudents extends SetOfResources{
   }
 
   /**
+   * Analyse student data coming from a file (_dataloaded) by a finite-state machine
+   * @param int  beginPosition, an integer (start state of the finite-state machine)
+   * @return  boolean. "true" if the analysis proceeded successfully and false otherwise
+   *
+   * <p>
+   * Requires: _dataloaded must be initiaklized by the constructor.
+   *
+   * <p>
+   * Modifies: nothing.
+   *
+   * <p>
+   * Effect: the _dataloaded array is scanned looking for bad data,
+   *         if some bad data is found the a FatalProblemDlg is displayed
+   *         then the application exits
+   * */
+  private boolean analyseTokensWithoutStudents(int beginPosition){
+
+    return true;
+  }
+
+  /**
    * build a ListOfStudent using
    * student data coming from a file (_dataloaed) by a finite-state machine
    * @param int  beginPosition, an integer (start state of the finite-state machine)
@@ -174,7 +236,7 @@ public class SetOfStudents extends SetOfResources{
    * <p>
    * Effect: nothing.
    * */
-  public void buildStudentList(int beginPosition){
+  private void buildStudentListWithStudents(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state=0;
@@ -210,6 +272,27 @@ public class SetOfStudents extends SetOfResources{
           break;
       }// end switch (position)
     }// end while (st.hasMoreElements())
+  }
+
+
+  /**
+ * build a ListOfStudent using
+ * student data coming from a file (_dataloaed) by a finite-state machine
+ * @param int  beginPosition, an integer (start state of the finite-state machine)
+ * @return  boolean. "true" if the analysis proceeded successfully and false otherwise
+ *
+ * <p>
+ * Requires: _dataloaded must be scanned by analyseTokens.
+ *
+ * <p>
+ * Modifies: the associated ListOfResources is created and
+ *           built.
+ *
+ * <p>
+ * Effect: nothing.
+ * */
+ private void buildStudentListWithoutStudents(int beginPosition){
+
   }
 
   /**
@@ -288,7 +371,6 @@ public class SetOfStudents extends SetOfResources{
 
  /**
   * @todo Cette methode n'est pas valide  22/10/03
-  * AlexJ
   * @param activityID
   * @param typeID
   * @param group

@@ -51,10 +51,10 @@ public class DModelProcess {
    */
   public void setStateBarComponent(){
     if (_dm._constructionState>0){//_visibleVec = _activities.getIDsByField(3, "true");
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(_dm._setOfActivities.getIDsByField(3, "true").size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(_dm._setOfInstructors.size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(_dm._setOfRooms.size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(_dm._setOfStudents.size());
+      ((State)_dm._setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(DModel._setOfActivities.getIDsByField(3, "true").size());
+      ((State)_dm._setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(DModel._setOfInstructors.size());
+      ((State)_dm._setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(DModel._setOfRooms.size());
+      ((State)_dm._setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(DModel._setOfStudents.size());
 
       ((State)_dm._setOfStates.getResource(DConst.SB_T_EVENT).getAttach()).setValue(_dm._setOfEvents.size());
       ((State)_dm._setOfStates.getResource(DConst.SB_T_ASSIG).getAttach()).setValue(_dm._setOfEvents.getNumberOfEventAssign());
@@ -77,11 +77,11 @@ public class DModelProcess {
   */
  public void buildSetOfEvents(){
    _dm._setOfEvents.getSetOfResources().removeAllElements();
-   if (_dm._setOfActivities != null){
+   if (DModel._setOfActivities != null){
      _dm._setOfEvents.build();
      //updateEventsInTTS();
-     if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
-       _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
+     if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
+       DModel._setOfActivities.buildStudentRegisteredList(DModel._setOfStudents);
      //_dm._conditionTest = new TestConditions(_dm);
    }// end if (_setOfActivities!=null)
 
