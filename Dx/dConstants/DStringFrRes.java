@@ -1,6 +1,6 @@
 /**
  *
- * Title: DStringFrRes $Revision: 1.14 $  $Date: 2003-05-12 08:58:27 $
+ * Title: DStringFrRes $Revision: 1.15 $  $Date: 2003-05-12 14:32:51 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -43,8 +43,14 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "saveAs", "Enregistrer sous" },
     //Separator
     { "impM", "Importer manuellement" },
-    { "defF", "Definir fichier import auto" },
-    { "impA", "Importer automatiquement" },
+
+    { "defFM", "Definir fichiers à importer" },
+    { "defFTD", "Definir fichiers pour l'importation automatique"},
+    { "defFD", "To be defined" },
+
+    { "impAM", "Importer automatiquement" },
+    { "impATD", "Importation de fichiers"},
+    { "impAD", "To be defined" },
     { "expo", "Exporter" },
     //Separator
     { "exit", "Quitter" },
@@ -70,7 +76,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "help", "Aide"},
     { "aboutM", "A propos de "},
     { "aboutTD", "A propos de "},
-    { "aboutD", "Diamant 1.5, \nCopyRight\n 2000 - 2003"},
+    { "aboutD",  " \nCopyRight\n 2000 - 2003"},
+
+    {"butOK", "Ok"},
+    {"butCancel", "Annuler"},
+    {"butApply", "Appliquer"},
+
 
     //Instructor constants
     {"instText1","Wrong number of instructors in the instructor file:"},

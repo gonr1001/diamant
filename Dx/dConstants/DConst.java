@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.12 $  $Date: 2003-05-09 14:28:46 $
+ * Title: DConst $Revision: 1.13 $  $Date: 2003-05-12 14:32:51 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.13 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -43,8 +43,16 @@ public class DConst {
   public final static String SAVE_AS  = res.getString("saveAs");
 
   public final static String IMP_M  = res.getString("impM");
-  public final static String DEF_F  = res.getString("defF");
-  public final static String IMP_A  = res.getString("impA");
+
+  public final static String DEF_F_M  = res.getString("defFM");
+  public final static String DEF_F_TD  = res.getString("defFTD");
+  public final static String DEF_F_D  = res.getString("defFD");
+
+  public final static String IMP_A_M  = res.getString("impAM");
+  public final static String IMP_A_TD  = res.getString("impATD");
+  public final static String IMP_A_D  = res.getString("impAD");
+
+
   public final static String EXPO  = res.getString("expo");
 
   public final static String EXIT  = res.getString("exit");
@@ -83,6 +91,11 @@ public class DConst {
 
 
    public final static String HELP = res.getString("help");
+
+   public final static String BUT_OK = res.getString("butOK");
+   public final static String BUT_CANCEL = res.getString("butCancel");
+   public final static String BUT_APPLY = res.getString("butApply");
+
 
    final static String CONTENTS = "Contenu";
    final static String INDEX = "Index";

@@ -52,6 +52,7 @@
   <property category="sys" name="WorkingDirectory" value="."/>
   <file path="dInterface/DefFilesToImportCmd.java"/>
   <file path="dInterface/DefFilesToImportDlg.java"/>
+  <file path="dResources/DFileFilter.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>

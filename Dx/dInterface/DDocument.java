@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.12 $  $Date: 2003-05-05 16:52:58 $
+ * Title: DDocument $Revision: 1.13 $  $Date: 2003-05-12 14:32:51 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -57,7 +57,7 @@ public class DDocument implements ActionListener, DModelListener{
 
   //-------------------------------------------
   public DDocument(DApplication dApplic) {
-        System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
+   //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the _jif */
   final int MIN_HEIGHT = 512;

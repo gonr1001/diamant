@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.11 $  $Date: 2003-05-12 08:58:27 $
+ * Title: DMenuBar $Revision: 1.12 $  $Date: 2003-05-12 14:32:51 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -122,13 +122,13 @@ mTime.add(mOTime);
     mImpM.addActionListener(_dApplic);
     */
 
-    CmdMenu mDefF = new CmdMenu(DConst.DEF_F);
+    CmdMenu mDefF = new CmdMenu(DConst.DEF_F_M);
     menu.add(mDefF);
     mDefF.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mDefF.setCommand(new DefFilesToImportCmd(_dApplic.getJFrame()));
+    mDefF.setCommand(new DefFilesToImportCmd());
     mDefF.addActionListener(_dApplic);
 
-    CmdMenu mImpA = new CmdMenu(DConst.IMP_A);
+    CmdMenu mImpA = new CmdMenu(DConst.IMP_A_M);
     menu.add(mImpA);
     mImpA.setFont( new java.awt.Font( mfont, font, nPT ) );
     mImpA.setCommand(new ImportCmd(_dApplic.getJFrame()));
