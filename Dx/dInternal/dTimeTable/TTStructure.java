@@ -10,8 +10,8 @@ public class TTStructure {
   private int _row;
 
   public TTStructure() {
-    _col=4;
-    _row=10;
+    _col=5;
+    _row= 10;
   }
 
  public SetOfResources getSetOfCycles() {
@@ -20,6 +20,10 @@ public class TTStructure {
 
  public void setSetOfResources(SetOfResources setOfCycles) {
  }
+
+public Period getPeriod(){
+  return new Period();
+}
 
  public String toWrite() {
     return "";

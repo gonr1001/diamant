@@ -68,7 +68,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.Period:oiref>=1,1,105,142,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Cycle#_setOfDays:oiref>=521,286,485,286:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Day#_setOfSequences:oiref>=470,310,550,310:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimeTable.TTStructure:oiref>=213,313,200,254,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.TTStructure:oiref>=213,313,200,270,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.Sequence:oiref>=4,314,199,142,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.TTStructure#_setOfCycles:oiref>=313,313,313,282:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Cycle#_setOfDays:oiref>=615,210,115,250:oigroup>
