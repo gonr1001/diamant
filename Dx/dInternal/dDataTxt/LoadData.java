@@ -22,6 +22,9 @@ public class LoadData {
   String _roomsFileName;
   String _activitiesFileName;
   String _studentsFileName;
+  String _functionFileName;
+  String _caractFileName;
+  RoomsAttributesInterpretor _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
   private static String _SEP= File.separator;
  // private SetOfInstructors _instructorsList;
   //private SetOfRooms _roomsList;
@@ -34,6 +37,10 @@ public class LoadData {
    */
   public LoadData(String args) {
     _v = new Vector(); // to eliminate
+    String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator;
+    _functionFileName=path+"DXfunctions.sig";
+    _caractFileName=path+"DXcaracteristics.sig";
+    _roomsAttributesInterpretor= extractRoomsAttributesInterpretor();
     verifyImportDataFile(args);
   }
 
@@ -72,6 +79,17 @@ public class LoadData {
    // _v.add(extractStudents(args[1]));
   }
 
+  public RoomsAttributesInterpretor extractRoomsAttributesInterpretor(){
+    RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
+    byte[]  dataloaded = preLoad(_functionFileName);
+    if (dataloaded != null)
+      attr.loadSetOfFunctions(dataloaded);
+    dataloaded = preLoad(_caractFileName);
+    if (dataloaded != null)
+      attr.loadSetOfCaracteristics(dataloaded);
+    return attr;
+  }
+
   public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
     byte[]  dataloaded = preLoad(_instructorFileName);
     SetOfInstructors _instructorsList= new SetOfInstructors(dataloaded,5,14);;
@@ -104,7 +122,7 @@ public class LoadData {
          roomsList.setSetOfResources(currentList.getSetOfResources());
 
      if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfRooms(0);
+       roomsList.buildSetOfRooms(0, _roomsAttributesInterpretor);
        return roomsList;
      }
    } else {// (NullPointerException npe) {

@@ -11,6 +11,7 @@ package dInternal.dData;
 
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXValue;
+import java.util.StringTokenizer;
 
 public class RoomsAttributesInterpretor {
 
@@ -83,19 +84,43 @@ public class RoomsAttributesInterpretor {
 
   /**
    * @todo implement method
-   * @param String the file name of the function description
+   * @param byte[] the file contains of the function description
    * */
-  public boolean loadSetOfFunctions(String file){
-
+  public boolean loadSetOfFunctions(byte[] dataloaded){
+    String token;
+    StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
+    int state=0;
+    while (st.hasMoreElements()){
+      state =0;
+      token = st.nextToken();
+      StringTokenizer currentLine = new StringTokenizer(token,";" );
+      if (currentLine.countTokens()==2){
+       addFunction(Integer.parseInt(currentLine.nextToken()),
+                        currentLine.nextToken());
+      }else
+        return false;
+    }// end while (st.hasMoreElements()
     return true;
   }
 
   /**
    * @todo implement method
-   * @param String the file name of the caracteristic description
+   * @param byte[] the file contains of the caracteristic description
    * */
-  public boolean loadSetOfCaracteristics(String file){
-
+  public boolean loadSetOfCaracteristics(byte[] dataloaded){
+    String token;
+    StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
+    int state=0;
+    while (st.hasMoreElements()){
+      state =0;
+      token = st.nextToken();
+      StringTokenizer currentLine = new StringTokenizer(token,";" );
+      if (currentLine.countTokens()==2){
+       addCaracteristic(Integer.parseInt(currentLine.nextToken()),
+                        currentLine.nextToken());
+      }else
+        return false;
+    }// end while (st.hasMoreElements()
     return true;
   }
 

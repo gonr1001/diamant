@@ -17,6 +17,7 @@ public class SetOfRooms extends SetOfResources{
   private byte[] _dataloaded; //_st;// rooms in text format
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
+  //private RoomsAttributesInterpretor _attr;
 
  /***
   * constructor
@@ -98,7 +99,7 @@ public class SetOfRooms extends SetOfResources{
    *use StringTokenizer st: rooms in text format
    *
    */
-  public void buildSetOfRooms(int beginPosition){
+  public void buildSetOfRooms(int beginPosition, RoomsAttributesInterpretor attr){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state = 0;
@@ -131,11 +132,18 @@ public class SetOfRooms extends SetOfResources{
                   state=2;
                   break;
                 case 2:
-                  room.setFunction(token.trim());
+                  int funtion= Integer.parseInt(token.trim());
+                  if (attr.getSetOfFunctions().getIndexOfResource(funtion)!=-1)
+                    room.setFunction(funtion);
                   state=3;
                   break;
                 case 3:
-                  room.setCaracteristics(token.trim());
+                  StringTokenizer caract= new StringTokenizer(token.trim(),",");
+                  while(caract.hasMoreTokens()){
+                    int caracteristic= attr.getSetOfCaracteristics().getIndexOfResource(
+                      Integer.parseInt(caract.nextToken().trim()));
+                    room.addCaracteristics(caracteristic);
+                  }
                   state = 4;
                   break;
                 case 4:

@@ -11,18 +11,20 @@ package dInternal.dData;
 import java.util.Vector;
 import java.util.StringTokenizer;
 import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXValue;
 
 public class RoomAttach extends DXObject{
 
   private int _capacity=0;
   private String _description="";
-  private String _function="";
-  private String _caracteristics="";
+  private int _function=-1;
+  private SetOfResources _setOfCaracteristics;
   private Vector _roomDisp;//
   private final String CR_LF = "\r\n";
 
   public RoomAttach() {
     _roomDisp = new Vector();
+    _setOfCaracteristics= new SetOfResources(3);
   }
   /**
    * add an availability day in roomDisp
@@ -35,7 +37,7 @@ public class RoomAttach extends DXObject{
    * add function
    * INPUT: funct (a string)
    * */
-  public void setFunction(String funct){
+  public void setFunction(int funct){
     _function= funct;
   }
 
@@ -57,17 +59,21 @@ public class RoomAttach extends DXObject{
 
   /***
    * add caracteristics
-   * INPUT: carac (a string)
+   * @param int the caracrteristic to add in the room
    * */
-  public void setCaracteristics(String carac){
-    _caracteristics=carac;
+  public boolean addCaracteristics(int  carac){
+    if(carac!=-1){
+      _setOfCaracteristics.setCurrentKey(carac);
+      return _setOfCaracteristics.addResource(new Resource("",new DXValue()),0);
+    }
+    return false;
   }
 
   /**
    * Remove an availibility day
    * INPUT: day number. day =1 equals roomDisp position = 0
    * */
-  public boolean removeDispDay(int day){
+  public boolean removeAvailDay(int day){
     if (day>0)
       if (day <= _roomDisp.size()){
         _roomDisp.remove(day-1);
@@ -105,14 +111,14 @@ public class RoomAttach extends DXObject{
 
   /**
    * */
-  public String getFunction(){
+  public int getFunction(){
     return _function;
   }
 
   /**
    * */
-  public String getCaracteristics(){
-    return _caracteristics;
+  public SetOfResources getSetOfCaracteristics(){
+    return _setOfCaracteristics;
   }
 
   public int[][] getRoomAvailability(){
@@ -136,7 +142,9 @@ public class RoomAttach extends DXObject{
     String str = "";
     for(int i = 0; i < a.length; i++) {
       for(int j=0; j <a[i].length; j++) {
-        str += a[i][j] + " ";
+        str += a[i][j];
+        if (j< a[i].length-1)
+          str += " ";
       } // end for j
       _roomDisp.add(str);
       str = "";
@@ -160,6 +168,12 @@ public class RoomAttach extends DXObject{
    * OUTPUT: String of roomID and room availability
    * */
   public String toWrite(){
+    String _caracteristics="";
+    for (int i=0; i< _setOfCaracteristics.size(); i++){
+      _caracteristics+=_setOfCaracteristics.getResourceAt(i).getKey();
+      if (i< _setOfCaracteristics.size()-1)
+        _caracteristics+=",";
+    }
     String roomInfo=_capacity+";"+_function+";"+_caracteristics+";"
                    +_description+";";
     return roomInfo;
