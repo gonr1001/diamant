@@ -258,8 +258,6 @@ public void sendEvent(Component component) {
   SetOfStudentsEvent event = new SetOfStudentsEvent(this);
   for (int i=0; i< _SOSListeners.size(); i++) {
     SetOfStudentsListener sosl = (SetOfStudentsListener) _SOSListeners.elementAt(i);
-    System.out.println("ChangeIn SetOfStudents: event "+ event);//debug
-    System.out.println("ChangeIn SetOfStudents: component "+component);//debug
     sosl.changeInSetOfStudents(event, component);
     System.out.println("SetOfStudents listener started: "+i);//debug
   }
