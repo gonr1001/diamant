@@ -450,12 +450,14 @@ complexes.
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
-\begin{picture}(12,3)
-  \put(0,1){\framebox(3.5,1){interface utilisateur}}
-  \put(3.5,1.5){\vector(1,0){0.5}}
-  \put(4,1){\framebox(3.5,1){logique d'affaires}}
-  \put(7.5,1.5){\vector(1,0){0.5}}
-  \put(8,1){\framebox(4,1){persistance de données}}
+\begin{picture}(3,5)
+  \put(3,1){\framebox(4,1){interface utilisateur}}
+  \put(4.5,2){\vector(0,1){0.5}}
+  \put(5.5,2.5){\vector(0,-1){0.5}}
+  \put(3,2.5){\framebox(4,1){logique d'affaires}}
+  \put(4.5,3.5){\vector(0,1){0.5}}
+  \put(5.5,4){\vector(0,-1){0.5}}
+  \put(3,4){\framebox(4,1){persistance de données}}
 \end{picture}
 
 \caption{L'architecture trois tiers.}\label{fig:phThree}
@@ -516,12 +518,122 @@ plusieurs instances possibles pour implémenter cette architecture.
 Nous montrons ici une liste d'instances possibles, il faut
 remarquer qu'elle n'est pas exhaustive.
 
+\begin{table}
+\begin{tabular}{|c||c|c|c|}\hline
+Technologie & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
+Langage pour affichage & HTML et JSP& Applet Java & Visual Basic\\
+\hline
 
-Java, jsp, jdbc, xml.
+Format pour échanger données & XML & Text & Text\\ \hline
 
-\section{\tictac}
-Instance de l'architecture
+Langage pour coder la logique d'affaire & Java & Java & Visual Basic\\
+\hline
 
+La persistance de données & Base de données & Base de données & Base de données \\
+\hline
+
+\end{tabular}
+
+\caption{ Des instances de l'architecture}\label{tb:tbOne}
+\end{table}
+
+Tel que nous avons remarqué l'ensemble des instances montrées dans
+le tableau \ref{tb:tbOne} n'est pas exhaustive, il y a quelques
+autres.
+
+De la même façon, les ensembles que nous proposons sont faits
+d'une manière arbitraire. Pour sa construction nous avons pris en
+considération une certaine logique, nous avons mit ensemble les
+éléments qui ont des caractéristiques communes ou bien qui
+appartiennent à un même fabricant logiciel.
+
+Pour le volet Base de données, nous n'avons pas mentionné le nom
+spécifique d'un système administrateur de base de données, le
+choix reste ouvert.
+
+
+Nous pouvons dire que notre architecture est ouverte, étant donné
+qu'elle accepte plusieurs instances. (\textbf{? Je ne suis pas sûr
+si cela est suffisante pour montrer l'ouverture.})
+
+L'architecture est aussi extensible, parce que nous pourrions
+changer les modules d'une manière facile, par exemple, nous
+pouvons commencer avec un élément de persistance de données comme
+un fichier en format texte plain, et après, nous pourrions
+effectuer quelques changements dans la couche d'interface
+utilisateur pour pouvoir utiliser des fichiers avec le format XML.
+Après, si nous voulons faire évoluer la partie stockage du système
+à un système de bases de données, il faudrait faire des
+changements dans la couche d'interface d'horaires et la couche de
+persistance des données. Tous ces changements sans jamais toucher
+la couche de la logique d'affaires.
+
+\begin{table}
+\begin{tabular}{|c||c|c|c|}\hline
+Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
+Langage pour affichage & HTML et JSP & HTML et JSP & HTML et JSP\\
+\hline
+
+Format pour échanger données & Text & XML & Base de données\\
+\hline
+
+Langage pour coder la logique d'affaire & Java & Java & Java\\
+\hline
+
+La persistance de données & Text & XML & Base de données \\
+\hline
+
+\end{tabular}
+
+\caption{ L'evolution d'une instance de
+l'architecture}\label{tb:tbTwo}
+\end{table}
+
+\section{\tictac, notre instance de l'architecture}
+
+Une fois que nous avons établi l'architectura et que nous sachons
+qu'elle est ouverte et extensible, il faut que l'instance que nous
+allons implémenter soit aussi ouverte et extensible. Nous avons
+montré trois options d'instances de l'architecture (voir Tableau
+\ref{tb:tbOne}), pour l'implémentation de \tictac(), nous avons
+choisi l'option 1.
+
+Nous montrons ici une analyse de ce choix:
+
+\begin{description}
+
+\item [Langage pour affichage:] Pour langage d'affichage et saisie
+de données nous avons choisi HTML, étant donnée que ce langage est
+le standard pour la création de pages Web, et nous voulons
+profiter de tous le bénéfices qu'offre la Web pour les
+applications de type transactionnelle.
+
+\item [Format pour échanger données:] Pour échanger les données
+nous avons choisi XML. XML (eXtensible Markup Language) nous
+permet de stocker, d'échanger et d'afficher des données ou de
+l'information d'une manière structurée, le langage permette aussi
+de manipuler, de transformer et de visualiser les données avec de
+nombreux différents outils de formatage. Par exemple, des
+informations ou des données stockées dans un document XML peuvent
+être affichées dans un navigateur Web. De plus, quand des
+documents XML sont stockées dans une base de données, ils peuvent
+être l'objet de requêtes et retrouvés comme avec tout autre format
+de données.
+
+\item [Langage pour coder la logique d'affaire:] Nous avons choisi
+Java. Java est un langage interprété (qui utilise la machine
+virtuel JVM). Il y a plusieurs versions de cette machine virtuelle
+pour plusieurs plateformes différentes - ce qui signifie que les
+programmeurs peuvent écrire pour ce langage en utilisant une
+plateforme, et faire tourner leurs programmes sur autres.
+
+\item [La persistance de données:] Pour l'implémentation de la
+couche persistance de données nous avons choisi une base de
+données. Une base de données est une entité dans laquelle il est
+possible de stocker des données de façon structurée et avec le
+moins de redondance possible. Ces données doivent pouvoir être
+utilisées par des programmes, par des utilisateurs différents.
+\end{description}
 
 \section{Conclusions}
 
