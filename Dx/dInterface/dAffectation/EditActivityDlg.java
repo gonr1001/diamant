@@ -59,6 +59,8 @@ public class EditActivityDlg extends JDialog implements ActionListener{
     JPanel jp = new JPanel();
     jp.setPreferredSize(new Dimension(100,100));
     JTabbedPane tabbedPane = new JTabbedPane();
+    tabbedPane.addTab(_currentActivity, blocPanel());
+
 
     /**
     * @todo I'm waiting for the design of the dialog
@@ -84,7 +86,7 @@ public class EditActivityDlg extends JDialog implements ActionListener{
    * It builds a panel to be placed in a tab of the tabbedPane
    * @return a JPanel to be placed in a tab of the tabbedPane
    */
-  public JPanel panel(){
+  public JPanel blocPanel(){
     String [] comboIni = {"1", "2", "3"};
     JPanel panel = new JPanel(new GridLayout(9,2));
     JLabel duration, day, hour, room, instructor1, instructor2, instructor3;

@@ -31,6 +31,7 @@ import dAux.DoNothingCmd;
 import dAux.DoNothingDlg;
 import dInterface.DApplication;
 import dInternal.dData.SetOfActivities;
+import dInternal.dData.Activity;
 
 public class ActivityDlg extends JDialog implements ActionListener {
 
@@ -38,10 +39,12 @@ public class ActivityDlg extends JDialog implements ActionListener {
   /**
    * the vectors containing the activities ID
    */
+  private String _currentActivity;
   private Vector _noVisibleVec, _visibleVec;
   private JButton _show, _cancel, _toRight, _toLeft;
   private JPanel _listsPanel, _buttonsPanel1, _buttonsPanel2;
   private JDialog _jd;
+  private SetOfActivities _activities;
   /**
    * the lists containing the activities ID
    */
@@ -53,7 +56,6 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   public ActivityDlg(DApplication dApplic) {
      super(dApplic.getJFrame(), "Liste des activités", true);
-     //dApplic.getJFrame().setEnabled(false);
      _dApplic = dApplic;
      _jd = this;
      jbInit();
@@ -72,10 +74,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
 
   private void jbInit(){
     _show = new JButton("Afficher");
-    _show.setPreferredSize(new Dimension(75,22));
+    _show.setPreferredSize(new Dimension(80,22));
     _cancel = new JButton("Annuler");
-    _cancel.setPreferredSize(new Dimension(75,22));
-    //_cancel.addActionListener(this);
+    _cancel.setPreferredSize(new Dimension(80,22));
     _listsPanel = new JPanel();
     //left panel
     JPanel rightPanel = new JPanel();
@@ -102,9 +103,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _buttonsPanel1.setPreferredSize(new Dimension(50,70));
     //the buttons _toLeft and _toRight
     _toRight = new JButton("»»");
-    _toRight.setPreferredSize(new Dimension(50,30));
+    _toRight.setPreferredSize(new Dimension(50,35));
     _toLeft = new JButton("««");
-    _toLeft.setPreferredSize(new Dimension(50,30));
+    _toLeft.setPreferredSize(new Dimension(50,35));
     _buttonsPanel1.add(_toRight, BorderLayout.NORTH);
     _buttonsPanel1.add(_toLeft, BorderLayout.SOUTH);
     //placing the panels and buttons into the _listsPanel
@@ -132,9 +133,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
       _noVisibleVec = new Vector();
       _visibleVec = new Vector();
     }else{
-      SetOfActivities activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-      _visibleVec = activities.getIDsByField(3, "true");
-      _noVisibleVec = activities.getIDsByField(3, "false");
+      _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
+      _visibleVec = _activities.getIDsByField(3, "true");
+      _noVisibleVec = _activities.getIDsByField(3, "false");
     } //end if (_dApplic.getDMediator().getCurrentDoc() == null)
 
   }
@@ -144,14 +145,19 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
 
   private void triggerListeners(){
-    MouseListener mouseListener = new MouseAdapter(){
+    MouseListener mouseListenerLists = new MouseAdapter(){
       public void mouseClicked(MouseEvent e) {
-        String currentActivity = "";
+        if (((JList)e.getSource()).getModel().getSize() == 0)
+          return;
+        if (e.getSource().equals(_visibleList))
+          _noVisibleList.clearSelection();
+        else
+          _visibleList.clearSelection();
+          _currentActivity = (String)((JList)e.getSource()).getSelectedValue();
+          _currentActivity = _currentActivity.trim();
+          System.out.println("_currentActivity " + _currentActivity);//debug
         if (e.getClickCount() == 2) {
-            currentActivity = (String)((JList)e.getSource()).getSelectedValue();
-            currentActivity = currentActivity.trim();
-            new EditActivityDlg(_jd,_dApplic, currentActivity);
-            //new DoNothingDlg(_dApplic,"Nothing");
+            new EditActivityDlg(_jd,_dApplic, _currentActivity);
           }//end if
         }// end public void mouseClicked
     };//end definition of MouseListener mouseListener = new MouseAdapter(){
@@ -160,8 +166,8 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _show.addActionListener(this);
     _toLeft.addActionListener(this);
     _toRight.addActionListener(this);
-    _noVisibleList.addMouseListener(mouseListener);
-    _visibleList.addMouseListener(mouseListener);
+    _noVisibleList.addMouseListener(mouseListenerLists);
+    _visibleList.addMouseListener(mouseListenerLists);
 
   }//end triggerListeners()
 
@@ -174,12 +180,29 @@ public class ActivityDlg extends JDialog implements ActionListener {
     String command = e.getActionCommand();
     if (command.equals("Annuler"))
         dispose();
-    if (command.equals("Afficher"))
-        new EditActivityDlg(this, _dApplic, "A");
-    if (command.equals("««"))
-        new DoNothingDlg(_dApplic,"Nothing");
-    if (command.equals("»»"))
-        new DoNothingDlg(_dApplic,"Nothing");
-  }
+    if (command.equals("Afficher")){
+      if (_currentActivity != null)
+      new EditActivityDlg(this, _dApplic, _currentActivity);
+    }// end if (command.equals("Afficher"))
+    if (command.equals("««")){
+      ((Activity)(_activities.getResource(_currentActivity).getAttach())).setActivityVisibility(true);
+      setVectors();
+      _noVisibleList.setListData(_noVisibleVec);
+      //_noVisibleList.repaint();
+      _visibleList.setListData(_visibleVec);
+      //_visibleList.repaint();
+      //repaint();
+    }
 
+    if (command.equals("»»")){
+      ((Activity)(_activities.getResource(_currentActivity).getAttach())).setActivityVisibility(false);
+      setVectors();
+      _noVisibleList.setListData(_noVisibleVec);
+      _visibleList.setListData(_visibleVec);
+      //_noVisibleList.repaint();
+      //_visibleList.repaint();
+      //repaint();
+    }
+
+  }//end method
 }
