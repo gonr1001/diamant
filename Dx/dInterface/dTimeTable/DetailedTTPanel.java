@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.9 $  $Date: 2003-10-06 18:37:31 $
+ * Title: DetailedTTPanel $Revision: 1.10 $  $Date: 2003-10-07 13:09:54 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -35,7 +35,7 @@ import java.awt.Component;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import java.awt.GridBagLayout;
+//import java.awt.GridBagLayout;
 //import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Dimension;
@@ -59,7 +59,7 @@ public class DetailedTTPanel extends TTPanel {
   final int VERTICAL_ADJUST = 115;
   final int HORIZONTAL_ADJUST = 8;
   int []_lines; //={10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130,140};
-  int _totalSize;
+  int _totalHeight;
   private MouseListener _mouseListener;
 
   //private JScrollPane _jScrollPaneOne;
@@ -91,6 +91,10 @@ public class DetailedTTPanel extends TTPanel {
     //Taille avec trous
     _lines = new int [_tts.getCurrentCycle().getMaxNumberOfPeriodsADay()+
            _tts.getCurrentCycle().getCurrentDay().getSetOfSequences().size()-1];
+    for(int i = 0; i < _lines.length; i++) {
+      _lines[i] = -1;
+    }
+
     int [] a = {};
     int pos =0;
     for (int i = 0; i < _tts.getCurrentCycle().getSetOfDays().size() ; i++ ) {
@@ -109,9 +113,9 @@ public class DetailedTTPanel extends TTPanel {
         //_lines[pos] = 3;
       } //for j
     } //for i
-    _totalSize = 0;
+    _totalHeight = 0;
     for(int i = 0; i < _lines.length; i++) {
-      _totalSize += _lines[i];
+      _totalHeight += _lines[i];
     }
   }
 
@@ -128,7 +132,7 @@ public class DetailedTTPanel extends TTPanel {
     if(lastPeriod.getEndHour(_periodLenght)[1] != 0)
       _lastHour++;
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-    int totalHeight = _totalSize * LINE_HEIGHT;
+    int totalHeight = _totalHeight * LINE_HEIGHT;
 
     //_jScrollPaneOne.setMinimumSize(new Dimension(totalWidth, totalHeight));
     //putting panels in the screen
@@ -152,7 +156,7 @@ public class DetailedTTPanel extends TTPanel {
     if(lastPeriod.getEndHour(_periodLenght)[1] != 0)
       _lastHour++;
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-     int totalHeight = _totalSize * LINE_HEIGHT;
+     int totalHeight = _totalHeight * LINE_HEIGHT;
 
     //_jScrollPaneTwo.setMinimumSize(new Dimension(totalWidth, totalHeight));
     //putting panels in the screen
@@ -199,37 +203,95 @@ public class DetailedTTPanel extends TTPanel {
   }
 //-------------------------------------------
   private JPanel createColumnHeader() {
-    JPanel panel = new JPanel(new GridLayout(1, 0));
+    JPanel panel = new JPanel();
+    panel.setLayout(new GridLayout(1,0));//BoxLayout(panel, BoxLayout.X_AXIS));//1, 0));
     Cycle cycle = _tts.getCurrentCycle();
-    for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
-      Resource day = cycle.getSetOfDays().getResourceAt(i);
-      panel.add(new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
-    }
+    //panel.setMinimumSize(new Dimension(PERIOD_WIDTH * cycle.getSetOfDays().size(),
+                                         //HEADER_HEIGHT));
     panel.setPreferredSize(new Dimension(PERIOD_WIDTH * cycle.getSetOfDays().size(),
                                          HEADER_HEIGHT));
+    //panel.setMaximumSize(new Dimension(PERIOD_WIDTH * cycle.getSetOfDays().size(),
+                                         //HEADER_HEIGHT));
     panel.setBorder(BorderFactory.createEtchedBorder());
+    for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
+      Resource day = cycle.getSetOfDays().getResourceAt(i);
+       JLabel l = new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER);
+       //l.setMinimumSize(new Dimension(PERIOD_WIDTH,
+                                         //HEADER_HEIGHT));
+       //l.setPreferredSize(new Dimension(PERIOD_WIDTH,
+                                        // HEADER_HEIGHT));
+       //l.setMaximumSize(new Dimension(PERIOD_WIDTH,
+                                        // HEADER_HEIGHT));
+      panel.add(l);//new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
+    }
+
     return panel;
   }
 //-------------------------------------------
   private JPanel createRowHeader(int height) {
     JPanel panel = new JPanel();
-    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));//(new GridLayout(0,1));
+    GridBagLayout gridBL = new GridBagLayout();
+    GridBagConstraints c = new GridBagConstraints();
+    panel.setLayout(new GridBagLayout());//(new GridLayout(0,1));
+    panel.setPreferredSize(new Dimension(ROW_WIDTH, 1000));// _totalHeight * LINE_HEIGHT));
+    System.out.println("W & H" + ROW_WIDTH + " " + _totalHeight * LINE_HEIGHT);
+    //c.gridwidth = 1;
+    //c.gridheight = _totalHeight * LINE_HEIGHT;
+    //c.fill = GridBagConstraints.HORIZONTAL;
+    //c.fill = GridBagConstraints.NONE;//.VERTICAL;
+    c.fill = GridBagConstraints.VERTICAL;
+
     Cycle cycle =_tts.getCurrentCycle();
-    Day day = _tts.getCurrentCycle().getCurrentDay();
-    int numbOfSequences = day.getSetOfSequences().size();
+    //Day day = _tts.getCurrentCycle().getCurrentDay();
+    //int numbOfSequences = day.getSetOfSequences().size();
     JLabel label;
     Period firstPer = _tts.getCurrentCycle().getFirstPeriod();
-    int j = 0;
+    //int j = 0;
     String [] hour = _tts.getCurrentCycle().getHourOfPeriodsADay();
+    int offset = 0;
     for (int i = 0; i < _lines.length ; i++) {
       label = new JLabel(hour[i] ) ; // + ":00");
       label.setSize(new Dimension(ROW_WIDTH, _lines[i] * LINE_HEIGHT));
+      c.gridx = 0;
+      c.gridy = i;
+      System.out.println("gridx & gridy" + c.gridx + " " + c.gridy);
       //System.out.println("TTPanel Row header viewlabel.getText()" + label.getText());//Debug
-      label.setVerticalAlignment(JLabel.TOP);
-      panel.setBorder(BorderFactory.createEtchedBorder());
+      //label.setVerticalAlignment(JLabel.TOP);
+      //c.gridwidth = 1;
+      if (_lines[i] != -1) {
+        c.gridheight = offset + _lines[i] * LINE_HEIGHT;
+        offset += _lines[i] * LINE_HEIGHT;
+        c.ipady = offset;
+      } else {
+
+        c.gridheight = offset + LINE_HEIGHT;
+        offset += LINE_HEIGHT;
+      }
+      System.out.println("gridwidth & gridheight" + c.gridwidth + " " + c.gridheight);
+
+      //c.ipady = _lines[i] * LINE_HEIGHT;
+      System.out.println("ipadx & ipady" + c.ipadx + " " + c.ipady);
+
+      //_lines[i] * LINE_HEIGHT; //(period.getBeginHour()[0] -
+           //_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0]);//period.getEndHour(_periodLenght)[0];
+/*
+if ( period.getEndHour(_periodLenght)[1] == 0 ){
+  c.gridheight =_lines[pos-1] * LINE_HEIGHT;// period.getEndHour(_periodLenght)[0]- period.getBeginHour()[0];
+  c.insets = new Insets( period.getBeginHour()[1], 0, 0, 0 );
+} else {
+  c.gridheight =_lines[pos-1] * LINE_HEIGHT;// period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
+  c.insets = new Insets( period.getBeginHour()[1], 0, _lines[pos-1] * LINE_HEIGHT - period.getEndHour(_periodLenght)[1]), 0 );
+}*/
+      gridBL.setConstraints(label, c);
+      label.setBorder(BorderFactory.createEtchedBorder());
       panel.add(label);
-      j++;
+
+      //j++;
     }
+    //c.gridwidth = 1;
+   //    c.gridheight = _lines.length;
+
+  //gridBL.setConstraints(panel, c);
     //panel.setPreferredSize(new Dimension(ROW_WIDTH, height));
     return panel;
   }
@@ -257,7 +319,10 @@ public class DetailedTTPanel extends TTPanel {
     gridbag.rowHeights = new int [nbPerADay];
     for (int i = 0; i < nbPerADay; i++) {
       gridbag.rowWeights[i] = 1;
-      gridbag.rowHeights[i] = _lines[i] *LINE_HEIGHT;
+      if (_lines[i] != -1 )
+        gridbag.rowHeights[i] = _lines[i] *LINE_HEIGHT;
+      else
+        gridbag.rowHeights[i] = LINE_HEIGHT;
     }
     PeriodPanel periodPanel = null;
     GridBagConstraints c = null;
@@ -277,14 +342,15 @@ public class DetailedTTPanel extends TTPanel {
           c = new GridBagConstraints();
           c.fill = GridBagConstraints.BOTH;
           c.gridx = i;
-          c.gridy = (period.getBeginHour()[0] - _tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0]);//period.getEndHour(_periodLenght)[0];
+          c.gridy = _lines[pos-1] * LINE_HEIGHT; //(period.getBeginHour()[0] -
+                     //_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0]);//period.getEndHour(_periodLenght)[0];
 
           if ( period.getEndHour(_periodLenght)[1] == 0 ){
-            c.gridheight = period.getEndHour(_periodLenght)[0]- period.getBeginHour()[0];
+            c.gridheight =_lines[pos-1] * LINE_HEIGHT;// period.getEndHour(_periodLenght)[0]- period.getBeginHour()[0];
             c.insets = new Insets( period.getBeginHour()[1], 0, 0, 0 );
           } else {
-            c.gridheight = period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
-            c.insets = new Insets( period.getBeginHour()[1], 0,(PERIOD_HEIGHT- period.getEndHour(_periodLenght)[1]), 0 );
+            c.gridheight =_lines[pos-1] * LINE_HEIGHT;// period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
+            c.insets = new Insets( period.getBeginHour()[1], 0, _lines[pos-1] * LINE_HEIGHT /*- period.getEndHour(_periodLenght)[1])*/, 0 );
           }
           gridbag.setConstraints(periodPanel, c);
           panel.add(periodPanel, c);
