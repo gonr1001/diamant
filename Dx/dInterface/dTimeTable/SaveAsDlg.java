@@ -1,9 +1,9 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.20 $  $Date: 2004-09-10 13:31:02 $
- * Description: SaveAsDlg(DApplication dApplic) can created by SaveAsCmd, SaveCmd
- *              SaveAsDlg(DApplication dApplic, String data) or can created
+ * Title: SaveAsDlg $Revision: 1.21 $  $Date: 2004-12-01 17:16:42 $
+ * Description: SaveAsDlg(DApplication dApplic) can be created by SaveAsCmd, SaveCmd
+ *              SaveAsDlg(DApplication dApplic, String data) can be created
  *                        by ConflicReport, FullReport,
  *                        ImportReport.
  *
@@ -18,7 +18,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -41,7 +41,7 @@ import eLib.exit.dialog.InformationDlg;
  */
 
 public abstract class SaveAsDlg  {
-  private final String CR_LF = "\r\n";
+  //private final String CR_LF = "\r\n";
   protected DApplication _dApplic;
   /**
     *
@@ -102,7 +102,7 @@ public abstract class SaveAsDlg  {
    private void doFileExist(String currentFile, String data, boolean report) {
 
      String fileName = currentFile.substring(currentFile.lastIndexOf(File.separator)+1);
-     String message =  fileName + " " + DConst.EXISTS + CR_LF + DConst.REPLACE;
+     String message =  fileName + " " + DConst.EXISTS + DConst.CR_LF + DConst.REPLACE;
      int resp= JOptionPane.showConfirmDialog(_dApplic.getJFrame(),
          message, DConst.SAVE_AS, JOptionPane.YES_NO_OPTION);
      if( resp== JOptionPane.OK_OPTION){
@@ -117,6 +117,6 @@ public abstract class SaveAsDlg  {
 
    } // doFileExist
 
-   protected abstract String inNewFile(String currentFile , String data);
+   protected abstract String inNewFile(String currentFile, String data);
    protected abstract String setExtension(JFileChooser fc);
 }//end class

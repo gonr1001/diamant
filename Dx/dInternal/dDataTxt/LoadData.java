@@ -1,6 +1,6 @@
 /**
 *
-* Title: LoadData $Revision: 1.56 $  $Date: 2004-11-05 13:53:49 $
+* Title: LoadData $Revision: 1.57 $  $Date: 2004-12-01 17:16:45 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.56 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.57 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 

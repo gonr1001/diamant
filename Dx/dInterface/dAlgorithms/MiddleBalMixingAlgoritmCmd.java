@@ -31,8 +31,8 @@ public class MiddleBalMixingAlgoritmCmd implements Command{
 
   public void execute(DApplication dApplic) {
     DConst.USER_TEST_ACTIV= _USER_TEST_ACTIV;
-    System.out.println("MiddleBalMixingAlgoritmCmd");//debug
-    (new SelectAlgorithm(dApplic.getDMediator().getCurrentDoc().getDM(),_selectedContext)).execute();
+    //System.out.println("MiddleBalMixingAlgoritmCmd");//debug
+    (new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();
     new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
   }
 }

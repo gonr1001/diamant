@@ -7,40 +7,35 @@ package id44ctxdfshg4rzdfshpi37;
 */
 class diagram {
 /**
-@__ref <oiref:java#Class#dAux.DoNothingCmd:oiref><oihard>
+@__ref <oiref:java#Class#dDeveloper.MyFileCmd:oiref><oihard>
 @__modelType reference 
 */
 class reference {
 }/**
-@__ref <oiref:java#Class#dAux.Header:oiref><oihard>
+@__ref <oiref:java#Class#dDeveloper.DoNothingDlg:oiref><oihard>
 @__modelType reference 
 */
-class reference36 {
+class reference124 {
 }/**
-@__ref <oiref:java#Class#dAux.DoNothingDlg:oiref><oihard>
+@__ref <oiref:java#Class#dDeveloper.DoNothingCmd:oiref><oihard>
 @__modelType reference 
 */
-class reference37 {
+class reference125 {
 }/**
-@__ref <oiref:java#Class#dAux.ConfirmDlg:oiref><oihard>
+@__ref <oiref:java#Class#dDeveloper.ShowAllCmd:oiref><oihard>
 @__modelType reference 
 */
-class reference1 {
+class reference126 {
 }/**
-@__ref <oiref:java#Class#dAux.StateZeroCmd:oiref><oihard>
+@__ref <oiref:java#Class#dDeveloper.StateZeroCmd:oiref><oihard>
 @__modelType reference 
 */
-class reference2 {
+class reference127 {
 }/**
-@__ref <oiref:java#Class#dAux.ShowAllCmd:oiref><oihard>
+@__ref <oiref:java#Class#dDeveloper.Header:oiref><oihard>
 @__modelType reference 
 */
-class reference3 {
-}/**
-@__ref <oiref:java#Class#dAux.MyFileCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference7 {
+class reference128 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -51,13 +46,7 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:java#Class#dAux.DoNothingDlg:oiref>=10,170,99,126,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.DoNothingCmd:oiref>=10,10,109,126,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.StateZeroCmd:oiref>=149,119,101,117,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.Header:oiref>=139,10,83,85,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.MyFileCmd:oiref>=265,355,88,117,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.ConfirmDlg:oiref>=266,179,138,158,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.ShowAllCmd:oiref>=163,293,92,117,1:oigroup>
+@__positions 
 */
 class __positions {
 }

@@ -39,7 +39,7 @@ import eLib.exit.dialog.InformationDlg;
      String input= perso.showInputDialog();
      if(input!=null){
        int personalizeAcceptableVariation=Integer.parseInt(input);
-       (new SelectAlgorithm(personalizeAcceptableVariation,dApplic.getDMediator().getCurrentDoc().getDM())).execute();
+       (new SelectAlgorithm(personalizeAcceptableVariation,dApplic.getDModel())).execute();
        new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
      }
    }

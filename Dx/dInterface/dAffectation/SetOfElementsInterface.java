@@ -1,17 +1,31 @@
+/**
+*
+* Title: SetOfElementsInterface $Revision: 1.8 $  $Date: 2004-12-01 17:16:40 $
+* Description: SetOfElementsInterface is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.8 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
+
 package dInterface.dAffectation;
 
-/**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
- */
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -39,16 +53,16 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
   protected JList[] _listOfElements;
   private JPanel[] _panelOfElements;
   private Vector[] _vectorOfElements;
-  private Object[] _selectedItems;
+  //private Object[] _selectedItems;
   protected int _selectedPanel=0;
-  private String _title;
+  //private String _title;
   private int _numberOfPanel;
   private String _elementsToDisplay;
   private int _WIDTH=300;
   private int _MINHEIGHT=160;
   private int _LINEHEIGHT=20;
   private int _MAXHEIGHT=400;
-  private JDialog _jDialog;
+  //private JDialog _jDialog;
   protected DApplication _dApplic;
 
 
@@ -61,18 +75,18 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
   public SetOfElementsInterface(Dialog parent, DApplication dApplic,String title, String elementsToDisplay, int numberOfPanel) {
     super(parent, title, true);
     _parent = parent;
-    _title= title;
+    //_title= title;
     _dApplic= dApplic;
     _elementsToDisplay= elementsToDisplay;
-    _jDialog= this;
+    //_jDialog= this;
     _numberOfPanel=numberOfPanel;
     _listOfElements = new JList[_numberOfPanel];
     _panelOfElements= new JPanel[_numberOfPanel];
     _vectorOfElements= new Vector[_numberOfPanel];
     _labelOfElements= new JLabel[_numberOfPanel];
-    _dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
-    _panelDim = new Dimension((_WIDTH-100),
-                               _MINHEIGHT-buttonsPanelHeight-20);
+    //_dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
+    //_panelDim = new Dimension((_WIDTH-100),
+     //                          _MINHEIGHT-buttonsPanelHeight-20);
   }//end method
 
 
@@ -80,6 +94,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
    * Initialise the dialog
    */
   public void initDialog(){
+  	int FACTOR = 50;
     getContentPane().setLayout(new BorderLayout());
     setSize(_dialogDim);
     setResizable(true);
@@ -87,7 +102,17 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
     setPanels();
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     setLocationRelativeTo(_parent);
-    setVisible(true);
+    
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+    this.setBounds(screenSize.width/ 6,
+                   screenSize.height/ 4,
+                   screenSize.width/ 3,
+                   screenSize.height/ 2 + FACTOR );
+	this.pack();
+    this.setResizable(true);
+    this.setVisible(true);
+    //setVisible(true);
   }
 
    /**
@@ -126,28 +151,31 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
    * arrows panels
    */
   private void setPanels(){
-    //Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.5), (int)_dialogDim.getHeight()-buttonsPanelHeight);
-
-      _listOfElements[_selectedPanel] = new JList(_vectorOfElements[_selectedPanel]);
-      _listOfElements[_selectedPanel].addMouseListener(mouseListenerLists);
-      JLabel titleLabel = new JLabel(_elementsToDisplay+ " : ");
-      _labelOfElements[_selectedPanel] = new JLabel(String.valueOf(_vectorOfElements[_selectedPanel].size()));
-      _labelOfElements[_selectedPanel].setForeground(DConst.COLOR_QUANTITY_DLGS);
-      //The listContainerPanel
-      JPanel listPanel = DXTools.listPanel(_listOfElements[_selectedPanel]
-      , (int)_panelDim.getWidth(), (int)_panelDim.getHeight());
-      JPanel listContainerPanel = new JPanel();
-      listContainerPanel.setPreferredSize(new Dimension((int)_panelDim.getWidth(), (int)_panelDim.getHeight()+10));
-      listContainerPanel.add(titleLabel);
-      listContainerPanel.add(_labelOfElements[_selectedPanel] );
-      listContainerPanel.add(listPanel);
-      //the _centerPanel
-      _panelOfElements[_selectedPanel] = new JPanel();
-      //_panelOfElements[_selectedPanel].setPreferredSize(panelDim);
-      //_panelOfElements[_selectedPanel].add(_leftArrowsPanel);
-      _panelOfElements[_selectedPanel].add(listContainerPanel);
-      //_panelOfElements[_selectedPanel].add(_rightArrowsPanel);
-    getContentPane().add(_panelOfElements[_selectedPanel], BorderLayout.CENTER);
+  	_listOfElements[_selectedPanel] = new JList(_vectorOfElements[_selectedPanel]);
+  	_listOfElements[_selectedPanel].addMouseListener(mouseListenerLists);
+  	JLabel titleLabel = new JLabel(_elementsToDisplay+ " : ");
+  	_labelOfElements[_selectedPanel] = new JLabel(String.valueOf(_vectorOfElements[_selectedPanel].size()));
+  	_labelOfElements[_selectedPanel].setForeground(DConst.COLOR_QUANTITY_DLGS);
+  	//The listContainerPanel
+  	JPanel listPanel = DXTools.listPanel(_listOfElements[_selectedPanel]
+														 , (int)_panelDim.getWidth(), (int)_panelDim.getHeight());
+  	JPanel listContainerPanel = new JPanel();
+  	JPanel topContainerPanel = new JPanel();
+  	topContainerPanel.setLayout(new BorderLayout());
+  	topContainerPanel.add(titleLabel,BorderLayout.WEST);
+  	topContainerPanel.add(_labelOfElements[_selectedPanel],BorderLayout.EAST );
+  	listContainerPanel.setLayout(new BorderLayout());
+  	//listContainerPanel.setPreferredSize(new Dimension((int)_panelDim.getWidth(), (int)_panelDim.getHeight()+10));
+  	listContainerPanel.add(topContainerPanel,BorderLayout.NORTH);
+  	//listContainerPanel.add(_labelOfElements[_selectedPanel],BorderLayout.CENTER );
+  	listContainerPanel.add(listPanel,BorderLayout.SOUTH);
+  	//the _centerPanel
+  	_panelOfElements[_selectedPanel] = new JPanel();
+  	//_panelOfElements[_selectedPanel].setPreferredSize(panelDim);
+  	//_panelOfElements[_selectedPanel].add(_leftArrowsPanel);
+  	_panelOfElements[_selectedPanel].add(listContainerPanel);
+  	//_panelOfElements[_selectedPanel].add(_rightArrowsPanel);
+  	getContentPane().add(_panelOfElements[_selectedPanel], BorderLayout.CENTER);
   }//end method
 
 

@@ -1,6 +1,6 @@
 /**
 *
-* Title: ImportReport $Revision: 1.2 $  $Date: 2004-10-21 13:39:46 $
+* Title: ImportReport $Revision: 1.3 $  $Date: 2004-12-01 17:16:42 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *

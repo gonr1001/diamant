@@ -26,6 +26,16 @@ class reference8 {
 @__modelType reference 
 */
 class reference1 {
+}/**
+@__ref <oiref:java#Class#dInternal.dUtil.ArrayValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference30 {
+}/**
+@__ref <oiref:java#Class#dInternal.dUtil.XMLTools:oiref><oihard>
+@__modelType reference 
+*/
+class reference31 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

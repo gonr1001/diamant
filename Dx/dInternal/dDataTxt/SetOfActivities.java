@@ -1078,7 +1078,6 @@ public class SetOfActivities extends SetOfResources{
    for (int i=0; i< _SOAListeners.size(); i++) {
      SetOfActivitiesListener soal = (SetOfActivitiesListener) _SOAListeners.elementAt(i);
      soal.changeInSetOfActivities(event, component);
-     //System.out.println("SetOfActivities listener started: "+i);//debug
    }
   }
 

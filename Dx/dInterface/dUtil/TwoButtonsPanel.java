@@ -1,6 +1,6 @@
 /**
  *
- * Title: TwoButtonsPanel $Revision: 1.4 $  $Date: 2004-05-14 15:01:19 $
+ * Title: TwoButtonsPanel $Revision: 1.5 $  $Date: 2004-12-01 17:16:43 $
  * Description: TwoButtonsPanel is a class used to have two buttons in a panel:
  *              Apply and Close
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -47,11 +47,9 @@ public class TwoButtonsPanel extends ButtonsPanel {
   }
 
   public void setMiddleEnable() {
-    ;
   }
 
   public void setMiddleDisable() {
-    ;
   }
   
   public boolean isFirstEnable() {

@@ -4,8 +4,7 @@ import javax.swing.*;
 
 
 public class FileExitCmd implements Command{
-	private MyApplication frame;
-	
+		
 	public FileExitCmd (){
 		
 	}

@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.15 $  $Date: 2004-10-21 13:39:44 $
+ * Title: FullReport $Revision: 1.16 $  $Date: 2004-12-01 17:16:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *

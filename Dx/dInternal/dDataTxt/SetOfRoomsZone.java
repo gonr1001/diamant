@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRoomsZone $Revision: 1.3 $  $Date: 2004-11-05 13:53:52 $
+* Title: SetOfRoomsZone $Revision: 1.4 $  $Date: 2004-12-01 17:16:46 $
 * Description: SetOfRoomsZone is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.4 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 

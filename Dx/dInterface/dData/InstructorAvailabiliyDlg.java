@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.20 $  $Date: 2004-10-21 19:47:44 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.21 $  $Date: 2004-12-01 17:16:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.21 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -38,6 +38,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
 
 import dConstants.DConst;
 import dInterface.DApplication;
@@ -61,7 +62,7 @@ import dInternal.dDataTxt.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: syay1801 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
@@ -201,14 +202,14 @@ public class InstructorAvailabiliyDlg  extends JDialog
     gridPanel.add(new JLabel("")); // top left corner
     for (int i = 0; i < day.length; i++)
       //first line :  name of days
-      gridPanel.add(new JLabel(day[i], JLabel.CENTER));
+      gridPanel.add(new JLabel(day[i], SwingConstants.CENTER));
 
     _currentAvailbility = _currentInstr.getMatrixAvailability();
 
     for (int j = 0; j < nbPer; j++) {
       // first column : the time of the period
 
-      gridPanel.add(new JLabel(time[j], JLabel.RIGHT));
+      gridPanel.add(new JLabel(time[j], SwingConstants.RIGHT));
       // create a button for each day for the period
       //System.out.println(" DAInstructorDialog NbDays: "+nbDay+"   NbPerDays: "+nbPer); //DEBUG
       for (int i = 0; i < nbDay; i++) {

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRooms $Revision: 1.28 $  $Date: 2004-11-09 15:41:43 $
+* Title: SetOfRooms $Revision: 1.29 $  $Date: 2004-12-01 17:16:46 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.28 $
+* @version $Revision: 1.29 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */

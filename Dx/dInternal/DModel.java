@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.110 $  $Date: 2004-10-21 13:39:46 $
+ * Title: DModel $Revision: 1.111 $  $Date: 2004-12-01 17:16:43 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.110 $
+ * @version $Revision: 1.111 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -42,6 +42,8 @@ import dInternal.dDataTxt.SetOfStates;
 import dInternal.dDataTxt.SetOfStudents;
 import dInternal.dDataTxt.Type;
 import dInternal.dDataTxt.Unity;
+//import dInternal.dDataTxt.*;
+//import dInternal.dData.*;
 import dInternal.dDataXML.XMLLoadData;
 import dInternal.dDataXML.rooms.SetOfCategories;
 import dInternal.dOptimization.SetOfEvents;
@@ -108,6 +110,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   }
   
   public DModel(boolean flag) {
+  	flag=flag && true;
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
   }
   //-----------------------------
@@ -641,11 +644,11 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 
 
  public void changeInDModel(DModelEvent  e, Component c) {
-
+ 	
   }// end actionPerformed
 
   public void changeInTTStructure(TTStructureEvent  e) {
-
+  	
   }// end actionPerformed
 
   /**

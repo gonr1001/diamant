@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.45 $  $Date: 2004-11-05 13:53:52 $
+ * Title: SetOfStudents $Revision: 1.46 $  $Date: 2004-12-01 17:16:46 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the students and their attributes.
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.45 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.46 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -257,13 +257,13 @@ public class SetOfStudents extends SetOfResources{
 			if (!isErrorEmpty())
 				return false;
 			String h=DXToolsMethods.getToken(token," ",0);
-			if(h.equalsIgnoreCase(DConst.LINE_DESCRIPTOR_S)){
+			if(h.equalsIgnoreCase(String.valueOf(DConst.LINE_DESCRIPTOR_S))){
 				analyseStudentLine(token,line);
 				numberOfStudents++;
 			}
-			if(h.equalsIgnoreCase(DConst.LINE_DESCRIPTOR_C))
+			if(h.equalsIgnoreCase(String.valueOf(DConst.LINE_DESCRIPTOR_C)))
 				analyseCourseLine(token, line);	
-			if(h.equalsIgnoreCase(DConst.LINE_DESCRIPTOR_T))
+			if(h.equalsIgnoreCase(String.valueOf(DConst.LINE_DESCRIPTOR_T)))
 				analyseTotalLine(token, line, numberOfStudents);
 			
 		}// end while (st.hasMoreElements())

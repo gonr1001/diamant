@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.52 $  $Date: 2004-11-05 13:53:48 $
+ * Title: EditActivityDlg $Revision: 1.53 $  $Date: 2004-12-01 17:16:39 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.52 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.53 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -60,7 +60,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
-import dInternal.DModel;
+//import dInternal.DModel;
 import dInternal.dDataTxt.Activity;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.RoomAttach;
@@ -86,7 +86,6 @@ public class EditActivityDlg
     implements ActionListener, ChangeListener{
 
   private DApplication _dApplic;
-  private DModel _dm;
   private EventsDlgInterface _evDlgInt = null;
   private int _currentActivityIndex = 0;
 
@@ -142,7 +141,7 @@ public class EditActivityDlg
                                   String currentActivity, boolean canBeModified){
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
-    _dm = dApplic.getDMediator().getCurrentDoc().getDM();
+    //_dm = dApplic.getDMediator().getCurrentDoc().getDM();
     _canBeModified = canBeModified;
     _unities = buildUnitiesVector(currentActivity);
     _instructorsLists = new JList[_unities.size()];
@@ -220,7 +219,7 @@ public class EditActivityDlg
           _applyPanel.setFirstDisable();
       } // end for
       if(apply){
-        _dm.getTTStructure().sendEvent();
+      	_dApplic.getDModel().getTTStructure().sendEvent();
         if(_evDlgInt!=null)
          _evDlgInt.initializePanel();
         //dispose();
@@ -413,7 +412,7 @@ public class EditActivityDlg
   } //end isFixedButtonSelected
 
   private JPanel buildDurationPanel() {
-    Vector thePeriods = buildThePeriods(_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsInASequence());
+    Vector thePeriods = buildThePeriods(_dApplic.getDModel().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsInASequence());
     JPanel durationPanel = new JPanel();
     JComboBox periodsCB = new JComboBox(thePeriods);
 
@@ -532,39 +531,39 @@ public class EditActivityDlg
       if(secID.length()!=0){
         String unitID= DXToolsMethods.getToken(activityName,".",3);
         if(unitID.length()!=0){
-          unities.add(_dm.getSetOfEvents().
+          unities.add(_dApplic.getDModel().getSetOfEvents().
                       getResource(activityName));
 
         }else{// else unitID.length()!=0
-          Section sect= _dm.getSetOfActivities().getSection(actID,typID,secID);
+          Section sect= _dApplic.getDModel().getSetOfActivities().getSection(actID,typID,secID);
           for (int i=0; i<sect.getSetOfUnities().size(); i++){
-            unities.add(_dm.getSetOfEvents().
+            unities.add(_dApplic.getDModel().getSetOfEvents().
             getResource(actID+"."+typID+"."+secID+"."+sect.getSetOfUnities()
             .getResourceAt(i).getID()+"."));
           }// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
         }// end else unitID.length()!=0
       }else{// else if(secID.length()!=0)
-        Type type= _dm.getSetOfActivities().getType(actID,typID);
+        Type type= _dApplic.getDModel().getSetOfActivities().getType(actID,typID);
         for(int i=0; i< type.getSetOfSections().size(); i++){
-          Section sect= _dm.getSetOfActivities().getSection(actID,typID,type.getSetOfSections().getResourceAt(i).getID());
+          Section sect= _dApplic.getDModel().getSetOfActivities().getSection(actID,typID,type.getSetOfSections().getResourceAt(i).getID());
           for (int j=0; j<sect.getSetOfUnities().size(); j++){
-            unities.add(_dm.getSetOfEvents().
+            unities.add(_dApplic.getDModel().getSetOfEvents().
             getResource(actID+"."+typID+"."+type.getSetOfSections().getResourceAt(i).getID()
             +"."+sect.getSetOfUnities().getResourceAt(j).getID()+"."));
           }// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
         }// end for(int i=0; i< type.getSetOfSections().size(); i++)
       }// end else if(secID.length()!=0)
     }else{// else if(typID.length()!=0)
-      Activity activity = (Activity)_dm.getSetOfActivities().getResource(actID).getAttach();
+      Activity activity = (Activity)_dApplic.getDModel().getSetOfActivities().getResource(actID).getAttach();
       for(int a=0; a<activity.getSetOfTypes().size(); a++ ){
         typID= activity.getSetOfTypes().getResourceAt(a).getID();
-        Type type= _dm.getSetOfActivities().getType(actID,typID);
+        Type type= _dApplic.getDModel().getSetOfActivities().getType(actID,typID);
         for(int i=0; i< type.getSetOfSections().size(); i++){
-          Section sect= _dm.getSetOfActivities().getSection(actID,typID,type.getSetOfSections().getResourceAt(i).getID());
+          Section sect= _dApplic.getDModel().getSetOfActivities().getSection(actID,typID,type.getSetOfSections().getResourceAt(i).getID());
           for (int j=0; j<sect.getSetOfUnities().size(); j++){
-            unities.add(_dm.getSetOfEvents().
-            getResource(actID+"."+typID+"."+type.getSetOfSections().getResourceAt(i).getID()
-            +"."+sect.getSetOfUnities().getResourceAt(j).getID()+"."));
+            unities.add(_dApplic.getDModel().getSetOfEvents().getResource(
+            		actID+"."+typID+"."+type.getSetOfSections().getResourceAt(i).getID()
+                    +"."+sect.getSetOfUnities().getResourceAt(j).getID()+"."));
           }// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
         }// end for(int i=0; i< type.getSetOfSections().size(); i++)
       }
@@ -579,7 +578,7 @@ public class EditActivityDlg
    */
   private String buildDuration(){
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-    int duration = event.getDuration()/_dm.getTTStructure().getPeriodLenght();
+    int duration = event.getDuration()/_dApplic.getDModel().getTTStructure().getPeriodLenght();
     return String.valueOf(duration);
   }
 
@@ -592,7 +591,7 @@ public class EditActivityDlg
   private Vector[] buildHourList(){
     Vector list[] = {new Vector(), new Vector()};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-    Cycle cycle= _dm.getTTStructure().getCurrentCycle();
+    Cycle cycle= _dApplic.getDModel().getTTStructure().getCurrentCycle();
     long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));
     long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));
@@ -600,7 +599,7 @@ public class EditActivityDlg
     list[0].add(period.getBeginHour()[0]+":"+period.getBeginHour()[1]);
     Day day = (Day)cycle.getSetOfDays().getResource(dayKey).getAttach();
     int[] avoidPriority={};
-    int duration = event.getDuration()/_dm.getTTStructure().getPeriodLenght();
+    int duration = event.getDuration()/_dApplic.getDModel().getTTStructure().getPeriodLenght();
     for (int i=0; i< day.getSetOfSequences().size(); i++){
       Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(i).getAttach();
       for (int j=0; j< seq.getSetOfPeriods().size(); j++){
@@ -622,7 +621,7 @@ public class EditActivityDlg
   private Vector[] buildDayList(){
     Vector list[] = {new Vector(1), new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-    Cycle cycle= _dm.getTTStructure().getCurrentCycle();
+    Cycle cycle= _dApplic.getDModel().getTTStructure().getCurrentCycle();
     long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     Resource day = cycle.getSetOfDays().getResource(dayKey);
     list[0].add(day.getKey()+"."+day.getID());
@@ -638,7 +637,7 @@ public class EditActivityDlg
   private Vector buildCurrentInstructorList(int index){
     Vector v = new Vector();//, new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
-    SetOfInstructors soi= _dm.getSetOfInstructors();
+    SetOfInstructors soi= _dApplic.getDModel().getSetOfInstructors();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     long keys [] = event.getInstructorKey();
     for (int i = 0 ; i < keys.length ; i ++ ) {
@@ -652,7 +651,7 @@ public class EditActivityDlg
   private Vector buildInstructorList(int index){
     Vector v = new Vector();//, new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
-    SetOfInstructors soi= _dm.getSetOfInstructors();
+    SetOfInstructors soi= _dApplic.getDModel().getSetOfInstructors();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     //long keys [] = event.getInstructorKey();
     for(int i=0; i< soi.size(); i++)
@@ -668,7 +667,7 @@ public class EditActivityDlg
   private Vector[] buildRoomList(String category){
     Vector list[] = {new Vector(1), new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-    SetOfRooms sor= _dm.getSetOfRooms();
+    SetOfRooms sor= _dApplic.getDModel().getSetOfRooms();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     Resource room = sor.getResource(event.getRoomKey());
     if(room!=null)
@@ -685,7 +684,7 @@ public class EditActivityDlg
 
   private String getCapacity(String str) {
 
-    SetOfRooms sor= _dm.getSetOfRooms();
+    SetOfRooms sor= _dApplic.getDModel().getSetOfRooms();
     Resource res = 	sor.getResource(str);
     if (res == null) {
       return "000";
@@ -734,10 +733,10 @@ public class EditActivityDlg
    * apply change in a event
    */
   private boolean applyChanges(){
-    Cycle cycle= _dm.getTTStructure().getCurrentCycle();
+    Cycle cycle= _dApplic.getDModel().getTTStructure().getCurrentCycle();
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     //remove event
-    _dm.getConditionsTest().removeEventInTTs(_dm.getTTStructure(),(Resource)_unities.get(_currentActivityIndex),false);
+    _dApplic.getDModel().getConditionsTest().removeEventInTTs(_dApplic.getDModel().getTTStructure(),(Resource)_unities.get(_currentActivityIndex),false);
 
     JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
     String duration = getSelectedDuration(tpane);
@@ -757,17 +756,17 @@ public class EditActivityDlg
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
       Integer.parseInt(DXToolsMethods.getToken(hour,":",1))};
     String periodKey= cycle.getPeriod(daytime);
-    event.setDuration( Integer.parseInt(duration)*_dm.getTTStructure().getPeriodLenght());
+    event.setDuration( Integer.parseInt(duration)*_dApplic.getDModel().getTTStructure().getPeriodLenght());
     event.setKey(4,periodKey);
     event.setKey(1,intructorKeys);
-    event.setKey(2,Long.toString(getResourceKey(_dm.getSetOfRooms(),room)));
+    event.setKey(2,Long.toString(getResourceKey(_dApplic.getDModel().getSetOfRooms(),room)));
     event.setAssignState(assignBut);
     event.setPermanentState(fixedBut);
     Vector vect= new Vector();
     vect.add(_unities.get(_currentActivityIndex));
-    _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),vect);
+    _dApplic.getDModel().getSetOfEvents().updateActivities(_dApplic.getDModel().getSetOfActivities(),vect);
     //add event
-    _dm.getConditionsTest().addEventInTTs(_dm.getTTStructure(),(Resource)_unities.get(_currentActivityIndex),false);
+    _dApplic.getDModel().getConditionsTest().addEventInTTs(_dApplic.getDModel().getTTStructure(),(Resource)_unities.get(_currentActivityIndex),false);
     return true;
   }
 
@@ -775,7 +774,7 @@ public class EditActivityDlg
   private String  getInstructorKeys(ListModel lm){
     String a =  "";
     for (int i = 0 ; i < lm.getSize(); i++) {
-      long key = _dm.getSetOfInstructors().getResource((String) lm.getElementAt(i)).getKey();
+      long key = _dApplic.getDModel().getSetOfInstructors().getResource((String) lm.getElementAt(i)).getKey();
       a+= key + ":";
     }
     return a;

@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.7 $  $Date: 2004-11-05 13:53:48 $
+ * Title: SaveAsTTDlg $Revision: 1.8 $  $Date: 2004-12-01 17:16:42 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.8 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -38,6 +38,7 @@ import dInterface.DApplication;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+
 public class SaveAsTTDlg extends SaveAsDlg {
 
   /**
@@ -53,13 +54,13 @@ public class SaveAsTTDlg extends SaveAsDlg {
   public SaveAsTTDlg(DApplication dApplic, String str) {
     super(dApplic);
     saveAs(null,false); //no data, no report
-  } // end constructor*/
+  } // end constructor
 
   public String inNewFile(String currentFile, String data) {
     return _dApplic.getDMediator().saveCurrentDoc(currentFile);
   }
 
-   public  void doSave(String fileName, String str) {
+   public  void doSave(String fileName) { //. String str) {
      String error = "";
      error = _dApplic.getDMediator().saveCurrentDoc(fileName);
      if (error.length() == 0)

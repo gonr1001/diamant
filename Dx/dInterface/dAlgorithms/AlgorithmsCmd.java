@@ -14,7 +14,7 @@ public class AlgorithmsCmd implements Command{
   }
 
   public void execute(DApplication dApplic) {
-    (new SelectAlgorithm(dApplic.getDMediator().getCurrentDoc().getDM(),_selectedContext)).execute();
+    (new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();
     new InformationDlg(dApplic.getJFrame(), DConst.TT_BUILD_MESSAGE);
   }
 }

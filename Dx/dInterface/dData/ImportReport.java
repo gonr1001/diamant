@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.13 $  $Date: 2004-10-21 13:39:44 $
+ * Title: ImportReport $Revision: 1.14 $  $Date: 2004-12-01 17:16:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -99,7 +99,7 @@ public class ImportReport extends ViewReport implements ActionListener {
     //String command = e.getActionCommand();
     //if "Option" button
     if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
-       ; // it is disabled
+       //; // it is disabled
     //if "Close" button
     if (e.getActionCommand().equals(DConst.BUT_CLOSE))
        //System.out.println("_buttonsNames[2]");

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.127 $  $Date: 2004-11-09 15:41:42 $
+ * Title: DConst $Revision: 1.128 $  $Date: 2004-12-01 17:16:37 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.127 $
+ * @version $Revision: 1.128 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,13 +28,16 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "5 nov 2004";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;
+  	public final static String V_DATE = "30 nov 2004";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = false;
     public static boolean USER_TEST_ACTIV = true; // comm
 	public final static String JVM = "1.4.2_03";
 	
-	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6;" },
-
+	public final static String FILE_VER_NAME1_5 = res.getString("fileVerName1_5"); // "Diamant1.5" 
+	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6" 
+	public final static String FILE_VER_NAME_XML1_7 = res.getString("fileVerNameXML1_7"); // "DiamantXML1.7" 
+	
+	
   //********** Shared and others constants ***************************
   public final static String APP_NAME = res.getString("appName");//Diamant 1.6
   public final static String BUT_CLOSE  = res.getString("close");//Fermer
@@ -116,9 +119,9 @@ public class DConst {
   public final static String CR_LF = "\r\n";//
   
   //Student file constants
-  public final static String LINE_DESCRIPTOR_S = "E";
-  public final static String LINE_DESCRIPTOR_C = "C";
-  public final static String LINE_DESCRIPTOR_T = "T";
+  public final static char LINE_DESCRIPTOR_S = 'E';
+  public final static char LINE_DESCRIPTOR_C = 'C';
+  public final static char LINE_DESCRIPTOR_T = 'T';
 
   //**********Menu names constants ***************************
   //File menu
@@ -476,6 +479,37 @@ public class DConst {
   public static final int ACT_SITE_LENGTH = 3;
   public static final int ACT_CAPACITY_LENGTH = 5;
   
+  // rooms and sites
+  public static final int ROOM_NAME_TOKEN = 0;
+  public static final int ROOM_CAPACITY_TOKEN = 1;
+  public static final int ROOM_FUNCTION_TOKEN = 2;
+  public static final int ROOM_CARACTERICTICS_TOKEN= 3;
+  public static final int ROOM_SITE_TOKEN = 4;
+  public static final int ROOM_CATEGORY_TOKEN= 5;
+  public static final int ROOM_DESCRIPTION_TOKEN= 5;
+  public static final String ROOM_STANDARD_SITE= "SHE";
+  public static final String ROOM_STANDARD_CAT= "CAT 1";
+  
+  // students
+  public static final int STUDENT_COURSE_LENGTH = 7;
+  public static final String STUDENT_STANDARD_SITE= "SHE";
+  public static final int STUDENT_NAME_LINE = 0;
+  public static final int STUDENT_COURSE_LINE = 1;
+  public static final int STUDENT_LINE_DESC_TOKEN=0;
+  public static final String STUDENT_TOKEN_SEPARATOR= " ";
+  public static final int STUDENT_MAT_TOKEN=1;
+  public static final int STUDENT_COURSE_TOKEN=1;
+  public static final int STUDENT_SITE_TOKEN=2;
+  public static final int STUDENT_FIRST_NAME_TOKEN=2;
+  public static final int STUDENT_LAST_NAME_TOKEN=3;
+  
+  // activities
+  public static final String ACTIVITY_STANDARD_SITE= "SHE";
+  public static final String ACTIVITY_STANDARD_CAPACITY= "99999";
+  public static final String ACTIVITY_NAME_TOKEN_SEPARATOR= " ";
+  public static final int ACTIVITY_SITE_TOKEN=2;
+  //public static final char STUDENT_NAME_DESC_TOKEN='E';
+  //public static final char STUDENT_COURSES_DESC_TOKEN='C';
   /*public DConst() {
   }*/
 }

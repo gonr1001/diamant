@@ -1,7 +1,7 @@
 package eLib.exit.txt;
 /**
  *
- * Title: FilterFile $Revision: 1.3 $  $Date: 2004-11-09 15:41:46 $
+ * Title: FilterFile $Revision: 1.4 $  $Date: 2004-12-01 17:16:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package eLib.exit.txt;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -173,10 +173,10 @@ public class FilterFile {
   		b[0] =  (byte) str.charAt(i);
   		if (!isIn(_charKnown, b))
   			_charKnown +=  new String (b);
-  	}
-  	
+  	}  	
   }
-  
+
+
 	private boolean isIn(String str, byte[] b) {
   	
 		for (int i = 0; i < str.length(); i ++) {

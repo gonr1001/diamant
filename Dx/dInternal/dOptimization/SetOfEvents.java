@@ -43,75 +43,73 @@ public class SetOfEvents extends SetOfResources{
    * @param cycle
    */
   public void build(SetOfActivities soa, SetOfResources soie){
-    String unityKey;
-    for (int i=0; i< soa.size(); i++){
-      Resource activity= soa.getResourceAt(i);
-      long instructorKey=-1, roomKey; //=-1;
-      if(((Activity)activity.getAttach()).getActivityVisibility()){
-        for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
-          Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
-          for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
-            Resource section = ((Type)type.getAttach()).getSetOfSections().getResourceAt(k);
-            for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++){
-              Resource unity= ((Section)section.getAttach()).getSetOfUnities().getResourceAt(l);
-              Assignment assignment = (Assignment)((Unity)unity.getAttach()).getAssignment(
-                  _dm.getTTStructure().getCurrentCycleResource().getID()).getAttach();
-              if(assignment!=null){
-                unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
-                String unityID = activity.getID()+"."+ type.getID()+"."+section.getID()+"."+unity.getID()+".";
-                if(DXToolsMethods.getToken(assignment.getPeriodKey(),".",0).equalsIgnoreCase("0")){
-                  String perKeys= _dm.getTTStructure().getCurrentCycle().getPeriod(assignment.getDateAndTime());
-                  Period per= _dm.getTTStructure().getCurrentCycle().getPeriodByPeriodKey(perKeys);
-                  if(per!=null)
-                    assignment.setPeriodKey(perKeys);
-                  else
-                    assignment.setPeriodKey("1.1.1");
-                }// end if(assignment.getPeriodKey()[0]==0)
-                //System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
-                String instructorNames [] = assignment.getInstructorNames();
-                for (int m = 0 ; m < instructorNames.length; m++) {
-                  int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(instructorNames[m]);
-                  if(instructorIndex!=-1){
-                    instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
-                    assignment.addInstructorKeys(instructorKey);
-                  }else{
-                    DXValue error= new DXValue();
-                    error.setStringValue("Erreur --> "+ unityID+": "+ instructorNames[m] +" Inexistant ");
-                    soie.addResource(new Resource("2",error),0);
-                  }
-                }
-
-
-                int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
-                if(roomIndex != -1){
-                  roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
-                  //assignment.setRoomKey(roomKey);
-                }else{
-                  roomKey = -1;
-                  DXValue error= new DXValue();
-                  String str = assignment.getRoomName();
-                  if (str.equals(DConst.NO_ROOM_INTERNAL))
-                    str = DConst.NO_ROOM_EXTERNAL;
-                  error.setStringValue("Erreur --> " + unityID + ": "+ str + " Inexistant ");
-                  soie.addResource(new Resource("3", error), 0);
-                }
-                //int[] dayTime = assignment.getDateAndTime();
-
-                EventAttach event = new EventAttach(unityKey, assignment.getSetInstructorKeys(), roomKey,
-                    ((Unity)unity.getAttach()).getDuration(),assignment.getPeriodKey());
-                event.setAssignState(((Unity)unity.getAttach()).isAssign());
-                event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
-                //System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
-                this.addResource(new Resource(unityID, event),0);
-                //System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
-              }// end if(assignement!=null)
-            }// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
-          }// end for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++)
-        }//for(int j=0; j< activity.getSetOfTypes().size(); j++)
-      }//end if(((Activity)activity.getAttach()).getActivityVisibility())
-    }// end for (int i=0; i< soa.size(); i++)
-
-  }
+  	String unityKey;
+  	for (int i=0; i< soa.size(); i++){
+  		Resource activity= soa.getResourceAt(i);
+  		long instructorKey=-1, roomKey; //=-1;
+  		if(((Activity)activity.getAttach()).getActivityVisibility()){
+  			for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
+  				Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
+  				for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
+  					Resource section = ((Type)type.getAttach()).getSetOfSections().getResourceAt(k);
+  					for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++){
+  						Resource unity= ((Section)section.getAttach()).getSetOfUnities().getResourceAt(l);
+  						Assignment assignment = (Assignment)((Unity)unity.getAttach()).getAssignment(
+  								_dm.getTTStructure().getCurrentCycleResource().getID()).getAttach();
+  						if(assignment!=null){
+  							unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
+  							String unityID = activity.getID()+"."+ type.getID()+"."+section.getID()+"."+unity.getID()+".";
+  							if(DXToolsMethods.getToken(assignment.getPeriodKey(),".",0).equalsIgnoreCase("0")){
+  								String perKeys= _dm.getTTStructure().getCurrentCycle().getPeriod(assignment.getDateAndTime());
+  								Period per= _dm.getTTStructure().getCurrentCycle().getPeriodByPeriodKey(perKeys);
+  								if(per!= null)
+  									assignment.setPeriodKey(perKeys);
+  								else
+  									assignment.setPeriodKey("1.1.1");
+  							}// end if(assignment.getPeriodKey()[0]==0)
+  							//System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
+  							String instructorNames [] = assignment.getInstructorNames();
+  							for (int m = 0 ; m < instructorNames.length; m++) {
+  								int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(instructorNames[m]);
+  								if(instructorIndex!=-1){
+  									instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
+  									assignment.addInstructorKeys(instructorKey);
+  								}else{
+  									DXValue error= new DXValue();
+  									error.setStringValue("Erreur --> "+ unityID+": "+ instructorNames[m] +" Inexistant ");
+  									soie.addResource(new Resource("2",error),0);
+  								}
+  							}
+  							
+  							int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
+  							if(roomIndex != -1){
+  								roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
+  								//assignment.setRoomKey(roomKey);
+  							}else{
+  								roomKey = -1;
+  								DXValue error= new DXValue();
+  								String str = assignment.getRoomName();
+  								if (str.equals(DConst.NO_ROOM_INTERNAL))
+  									str = DConst.NO_ROOM_EXTERNAL;
+  								error.setStringValue("Erreur --> " + unityID + ": "+ str + " Inexistant ");
+  								soie.addResource(new Resource("3", error), 0);
+  							}
+  							//int[] dayTime = assignment.getDateAndTime();
+  							
+  							EventAttach event = new EventAttach(unityKey, assignment.getSetInstructorKeys(), roomKey,
+  									((Unity)unity.getAttach()).getDuration(),assignment.getPeriodKey());
+  							event.setAssignState(((Unity)unity.getAttach()).isAssign());
+  							event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
+  							//System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
+  							this.addResource(new Resource(unityID, event),0);
+  							//System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
+  						}// end if(assignement!=null)
+  					}// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
+  				}// end for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++)
+  			}//for(int j=0; j< activity.getSetOfTypes().size(); j++)
+  		}//end if(((Activity)activity.getAttach()).getActivityVisibility())
+  	}// end for (int i=0; i< soa.size(); i++)
+  } //end build
 
   /**
    * get the complet activity name of an event

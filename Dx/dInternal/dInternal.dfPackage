@@ -50,17 +50,38 @@ class reference1 {
 */
 class reference2 {
 }/**
-@__ref <oiref:design#Class#id3tjuzdls46i76dls47cd4.diagram:oiref><oihard>
+@__ref <oiref:design#Class#idaqxpe0ltzkmze0lu4p3m.diagram:oiref><oihard>
 @__modelType reference
-@__fqn <oiref:#Package#dInternal.dAlgorithms:oiref> 
+@__fqn <oiref:#Package#dInternal.dOptimization:oiref> 
 */
-class reference3 {
+class reference130 {
 }/**
-@__ref <oiref:design#Class#id4h1ycdlcg4xmcdlcg5gd9.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id2y77ke0ltzkmze0lu4p36.diagram:oiref><oihard>
 @__modelType reference
-@__fqn <oiref:#Package#dInternal.dConditionsTest:oiref> 
+@__fqn <oiref:#Package#dInternal.dDataXML:oiref> 
 */
-class reference4 {
+class reference131 {
+}/**
+@__ref <oiref:design#Class#idb44ve1dvw65xe1dvwx7g.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#dInternal.dData:oiref> 
+*/
+class reference29 {
+}/**
+@__ref <oiref:java#Class#dInternal.DResource:oiref><oihard>
+@__modelType reference 
+*/
+class reference81 {
+}/**
+@__ref <oiref:java#Class#dInternal.DSetOfResources:oiref><oihard>
+@__modelType reference 
+*/
+class reference82 {
+}/**
+@__ref <oiref:java#Class#dInternal.DObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference73 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -71,20 +92,25 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.DModelProcess#_dm:oiref>=216,232,216,292:oigroup>
-<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=327,290,200,414,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=327,630,93,101,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,10,141,117,1:oigroup>
-<oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=391,10,115,116,1:oigroup>
+@__positions <oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=327,864,128,164,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DSetOfResources:oiref>=738,669,200,750,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DObject:oiref>=-60,230,174,245,1:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=261,292,261,200:oigroup>
 <oigroup:<oiref:java#Implements#dInternal.DModel#dInternal.DModelListener:oiref>=129,292,129,127:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=261,292,261,232:oigroup>
+<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=847,10,169,564,1:oigroup>
+<oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=391,10,115,148,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=171,10,200,222,1:oigroup>
-<oigroup:<oiref:design#Class#id3tjuzdls46i76dls47cd4.diagram:oiref>=386,139,149,116,1:oigroup>
-<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=847,10,169,548,1:oigroup>
-<oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=327,864,128,164,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=107,292,200,862,1:oigroup>
-<oigroup:<oiref:design#Class#id4h1ycdlcg4xmcdlcg5gd9.diagram:oiref>=542,435,177,244,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=327,630,93,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.DModelProcess#_dm:oiref>=216,200,216,292:oigroup>
+<oigroup:<oiref:design#Class#id2y77ke0ltzkmze0lu4p36.diagram:oiref>=382,174,98,87,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DXObject:oiref>=951,805,174,245,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DResource:oiref>=517,8,183,254,1:oigroup>
+<oigroup:<oiref:design#Class#idb44ve1dvw65xe1dvwx7g.diagram:oiref>=5,137,61,78,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,10,141,117,1:oigroup>
+<oigroup:<oiref:design#Class#idaqxpe0ltzkmze0lu4p3m.diagram:oiref>=543,525,177,324,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=107,292,200,1118,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=327,290,200,446,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=171,10,200,190,1:oigroup>
 */
 class __positions {
 }

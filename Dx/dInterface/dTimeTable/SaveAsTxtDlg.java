@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.6 $  $Date: 2004-09-10 13:31:02 $
+ * Title: SaveAsTxtDlg $Revision: 1.7 $  $Date: 2004-12-01 17:16:42 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -78,7 +78,7 @@ public class SaveAsTxtDlg extends SaveAsDlg{
     * @param data the data to be stored
     * @return
     */
-   private String saveReport(String currentFile, String data){
+  /* private String saveReport(String currentFile, String data){
      String error = "";
      try{
        FileWriter fw = new FileWriter(currentFile);
@@ -90,7 +90,7 @@ public class SaveAsTxtDlg extends SaveAsDlg{
        new FatalProblemDlg(error);
        return error;
      }
-   }// saveReport
+   }// saveReport*/
 
    public String setExtension(JFileChooser fc){
      fc.setFileFilter( new DFileFilter ( new String[] {DConst.TXT},

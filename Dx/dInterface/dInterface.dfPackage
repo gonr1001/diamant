@@ -86,11 +86,11 @@ class reference22 {
 */
 class reference2 {
 }/**
-@__ref <oiref:design#Class#id1a4hbdvgywwumdvgyxpkv.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id2osfse0ltzkmze0lu4p2r.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInterface.dAlgorithms:oiref> 
 */
-class reference1 {
+class reference93 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -104,7 +104,6 @@ class __options {
 @__positions <oigroup:<oiref:java#Implements#dInterface.dTimeTable.AppInTTCmd#dInterface.Command:oiref>=613,1126,1063,705:oigroup>
 <oigroup:<oiref:java#Class#dInterface.DToolBar:oiref>=105,3,200,654,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.AboutCmd:oiref>=1050,1126,88,101,1:oigroup>
-<oigroup:<oiref:design#Class#id1a4hbdvgywwumdvgyxpkv.diagram:oiref>=541,400,182,116,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.DApplication:oiref>=323,1126,200,574,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.PLAFDlg:oiref>=690,1652,170,318,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.CommandHolder:oiref>=1023,212,151,130,1:oigroup>

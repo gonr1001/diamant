@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.34 $  $Date: 2004-11-05 13:53:48 $
+ * Title: SectionDlg $Revision: 1.35 $  $Date: 2004-12-01 17:16:39 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.35 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
 
  */
@@ -50,7 +50,7 @@ import dInterface.dUtil.DXTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.dDataTxt.Activity;
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.Section;
+//import dInternal.dDataTxt.Section;
 import dInternal.dDataTxt.SetOfActivities;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfStudents;
@@ -70,7 +70,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   //private Section _section;
   private SetOfActivities _activities;
   private SetOfStudents _students;
-  private String _actID, _typeID, _sortID;
+  private String _actID, _typeID ;//_sortID;
   private String[] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
 
   private Type _type;
@@ -232,7 +232,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     int GroupPanelHeight = (int)((_scrollPane.getPreferredSize().getHeight())/2);
     int infoPanelHeight = 25;
     Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
-    Dimension scrollContDim = new Dimension(insideWidth-5, GroupPanelHeight-infoPanelHeight-10);
+    //Dimension scrollContDim = new Dimension(insideWidth-5, GroupPanelHeight-infoPanelHeight-10);
     JPanel groupPanel = new JPanel();
     groupPanel.setPreferredSize(groupPanelDim);
     groupPanel.addMouseListener(mouseListenerGroupPanel);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: Period $Revision: 1.34 $  $Date: 2004-11-05 13:53:53 $
+ * Title: Period $Revision: 1.35 $  $Date: 2004-12-01 17:16:47 $
  * Description: Period is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.35 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal.dTimeTable;
