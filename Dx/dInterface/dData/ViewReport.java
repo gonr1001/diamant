@@ -147,10 +147,20 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
 
   protected int [] fieldsLengths(Vector right,  Vector allOpt){
     int [] a = new int [right.size()];
-    for(int i= 0; i< right.size(); i++)
-      a [i] = ( ((FieldRecord)((DXValue)allOpt.get(i)).getObjectValue())._n);//.get(indexElementIn((String)right.get(i),allOpt)))._n;
+
+    for(int i = 0; i < right.size(); i++) {
+      for(int j = 0; j < allOpt.size(); j++){
+        if(((FieldRecord)((DXValue)allOpt.get(j)).getObjectValue())._str.compareTo((String) right.get(i)) == 0) {
+          a [i] = ( ((FieldRecord)((DXValue)allOpt.get(j)).getObjectValue())._n);
+          break;
+        }
+      }
+    }
+
     return a;
   }
+
+
   protected Vector getOptions(Vector opt) {
     Vector v = new Vector();
     for (int i=0; i< opt.size(); i++)

@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.94 $  $Date: 2004-02-24 17:19:02 $
+ * Title: DStringFrRes $Revision: 1.95 $  $Date: 2004-02-25 14:22:26 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.94 $
+ * @version $Revision: 1.95 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,7 +29,6 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 	{ "appName", "Diamant 1.5 " },
 	{ "vDate", "24 fév 2004" },
 	{ "bye", "bye" },
-
     /**
     *  the menus and dialogs
     */
@@ -292,26 +291,28 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"ReportOpFieldsChoiced","Champs choisis"},
     {"Report","Rapport"},
     {"ReportProducedAt","Produit en"},
-    {"RActivityName","Nom"},
-    {"RTypeName","Nature"},
-    {"RSectionName","Groupe"},
-    {"RUnityName","Bloc"},
+
+    {"RActivityName","Acti"},
+    {"RTypeName","Nat"},
+    {"RSectionName","Grp"},
+    {"RUnityName","Blc"},
     {"RDuration","Durée"},
-    {"RDayNumber","Jour(Nu.)"},
+    {"RDayNumber","JNum"},
     {"RDayName","Jour"},
     {"RActivityBeginHour","Début"},
     {"RActivityEndHour","Fin"},
     {"RInstructorName","Enseignant"},
     {"RRoomName","Local"},
     {"RStudentName","Étudiant"},
-    {"RStudentSizeName","Nb Etu"},
-    {"RSequenceID","Séquence"},
-    {"RPeriodBeginH", "Périod(H. début)"},
+    {"RStudentSizeName","Nomb É"},
+
+    {"RSequenceID","PérJour"},
+    {"RPeriodBegin", "Début"},
     {"REvent1_ID","Événement 1"},
     {"REvent2_ID","Événement 2"},
-    {"RNumberOfConflicts","Conflit(s)"},
+    {"RNumberOfConflicts","Numb C"},
     {"RTypeOfConflict","Type Conf"},
-    {"RStudentConflict","C-Étudiant"},
+    {"RStudentConflict", "C-Étudiant"},
     {"RRoomConflict","C. C-Local"},
     {"RInstructorConflict","C-Instructor"},
     {"RElementsInConflict", "Conflits"},

@@ -106,7 +106,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
         //v.add(new DXValue(3,
          //     new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
         v.add(new DXValue(4,
-              new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN_H)));
+              new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN)));
         v.add(new DXValue(5,
         new FieldRecord(Integer.parseInt(DConst.R_EVENT1_ID_L), DConst.R_EVENT1_ID)));
         v.add(new DXValue(6,

@@ -54,11 +54,8 @@ public class FullReport extends ViewReport implements ActionListener {
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
     _rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
-
     showReport();
-
-
-  }
+  } //FullReport
 
   private void showReport() {
     _elements = _options.size() - _rightVec.size();
@@ -89,11 +86,11 @@ public class FullReport extends ViewReport implements ActionListener {
   private Vector buildAllOptionsVector() {
     Vector v = new Vector();
     v.add(new DXValue(0,
-    new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME)));
+                      new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME)));
     v.add(new DXValue(1,
                       new FieldRecord(Integer.parseInt(DConst.R_TYPE_NAME_L), DConst.R_TYPE_NAME)));
-   v.add(new DXValue(2,
-                     new FieldRecord(Integer.parseInt(DConst.R_SECTION_NAME_L), DConst.R_SECTION_NAME)));
+    v.add(new DXValue(2,
+                      new FieldRecord(Integer.parseInt(DConst.R_SECTION_NAME_L), DConst.R_SECTION_NAME)));
     v.add(new DXValue(3,
                       new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
     v.add(new DXValue(4,
@@ -108,8 +105,8 @@ public class FullReport extends ViewReport implements ActionListener {
                       new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_END_HOUR_L), DConst.R_ACTIVITY_END_HOUR)));
     v.add(new DXValue(9,
                       new FieldRecord(Integer.parseInt(DConst.R_INSTRUCTOR_NAME_L), DConst.R_INSTRUCTOR_NAME)));
-   v.add(new DXValue(10,
-                     new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME)));
+    v.add(new DXValue(10,
+                      new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME)));
     v.add(new DXValue(11,
                       new FieldRecord(Integer.parseInt(DConst.R_STUDENT_SIZE_L), DConst.R_STUDENT_SIZE_NAME)));
     return v;
