@@ -249,6 +249,10 @@ base de données pendant la production de l'horaire.  L 'évolution
 présente les instances de données à différents instants du
 processus.
 
+La répartition de données sur une seule base de données (physique)
+ou sur plusieurs bases (base de données repartie) est un problème
+d'implémentation. De manière conceptuelle il s'agit d'une seule
+base de données.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
@@ -271,17 +275,13 @@ horaire}}
 horaire}\label{fig:fTwo}
 \end{figure}
 
-La répartition de données sur une seule base de données (physique)
-ou sur plusieurs bases (base de données repartie) est un problème
-d'implémentation. De manière conceptuelle il s'agit d'une seule
-base de données.
-
 
 \begin{description}
-    \item[Données de base] Ces données sont les données définis à long
+    \item[Données de base] Ces données sont les données définies à long
     terme dans la base.  L'information des activités pédagogiques d'un
     programme, les programmes offerts, les enseignants, les
-    caractéristiques de salles de cours, étudiants.
+    caractéristiques de salles de cours, les étudiants sont des exemples de
+    ce type d'information.
     Il s'agit en général des informations qui sont partagées par
     d'autres applications. Par exemple un étudiant est décrit par son
     nom, prénom, matricule, programme suivi. Une application qui
@@ -295,12 +295,14 @@ de l'institution.
     \item[Données période $p$] Ces données sont nécessaires à la
     construction d'un horaire pour la période concernée,
 elles contiennent les cours qui seront
-    offerts, la disponibilité de enseignants, etc. Ces données sont
+    offerts à cette période, la disponibilité de enseignants pour $p$, etc.
+    Ces données sont
     un préalable à la construction d'un horaire et sont saisies avant
     chaque construction. Cependant, ces données vont changer (mises-à-jour) pendant
 la construction de l'horaire. Par exemple lorsque on trouve un
 enseignant externe pour un cours donné, on saisira ses
-informations nom et disponibilité dans la base.
+informations nom et disponibilité dans la base, même si la
+construction de l'horaire est déjà démarré.
 
     \item[Données horaire] Ces donnés sont le résultat de  la
     construction de l'horaire. Elles vont contenir toutes les
@@ -308,91 +310,42 @@ informations nom et disponibilité dans la base.
     personnalisés.
 \end{description}
 
-Nous considérons que les données du trimestre commencent à exister
-à un instant $t_{0}$ avant que les cours du trimestre commencent
-et ne sont plus pertinentes  à l'instant $t_{f}$ qui est la fin du
-trimestre.
-
-Étapes de construction~:
-
-Pré-condition les données de base ont été saisies et validés.
-
-\begin{enumerate}
-    \item  Choisir les activités pédagogiques du trimestre
-
-    \item  Choisir les enseignants disponibles et associer une
-    disponibilité
-
-    \item  Choisir les locaux disponibles et et associer une
-    disponibilité
-
-    \item  Associer un format aux activités pédagogiques, associer un
-    nombre de groupes à chaque type d'activité
-
-    \item  Définir la grille horaire.
-\end{enumerate}
-
-De plus, lorsque un logiciel de construction est utilisé, il est
-possible de considérer que toutes les données nécessaires ont été
-correctement saisies et que il y n'aura aucun changement pendant
-la construction de l'horaire; une deuxième possibilité, qui semble
-plus réaliste est de considérer que certains données peuvent
-changer, par exemple certains cours sont enseignés par de
-intervenants externes, mais la personne n'est pas encore trouvé,
-sa disponibilité n'est pas connue, donc l'horaire est construit
-sur des hypothèses qui peuvent s'avérer fausses.
-
-Avant de parler de effectuer la construction avec un logiciel, il
-faut faire une verification des données.
-
-La construction peut se faire de manière automatique, le logiciel
-va produire un horaire au complet. La construction peut se faire
-de manière manuelle, ave construit avec des hypothèse
-
-On suppose que lorsque on décide de produire un horaire il existe
-une base de données contenant tous les cours qu'une Faculté peut
-offrir, tous les enseignants d'une Faculté, tous les locaux
-disponibles pour cette Faculté.
+Il est à noter qu'il existe deux grandes activités  dans la
+production~: la saisie (mise-à-jour) de données et  la
+construction de l'horaire. En général ces deux activités sont
+effectuées par un ensemble de personnes. Il est aussi nécessaire
+de voir comment ces activités s'effectuent dans le temps.
 
 
+information\begin{figure}[htb] \begin{center}
+\setlength{\unitlength}{0.1cm}
+%\fbox{%
+\begin{picture}(90,40)
+\put(-1,7){ \shortstack{b.}} \put(0, 10){\vector(1,0){90}}
+
+\put(-1,22){ \shortstack{a.}}\put(0, 25){\vector(1,0){90}}
+\end{picture}%}
+\end{center}
+
+\caption{Les activités de saisie et construction}\label{fig:fTime}
+\end{figure}
+
+La figure \ref{fig:fTime} nous montre l'évolution de ces
+activités. Dans le cas a. la saisie et la construction sont deux
+activités réalisées en séquence. Ceci arrive dans des cas très
+rares. Dans le cas b. la saisie (surtout mis-à-jour) se fait au
+même temps que la construction. Ceci est le cas général, beaucoup
+de données sont figées, comme l'offre de cours, cependant si
+pendant la construction on trouve des situations où les conflits
+font qu'il faut faire des changements sur les données, format d'un
+cours, passer de 3h consécutives à 2h consécutives plus 1h.
+D'autres cas peuvent se présenter.
+
+En fonction de chaque instance de système, il faut définir le
+schéma de la base de données, et les rôles et privileges des
+utilisateurs.
 
 
-
-Nous considérons que les données du trimestre commencent à exister
-à un instant $t_{0}$ avant que les cours du trimestre commencent
-et ne sont plus pertinentes  à l'instant $t_{f}$ qui est la fin du
-trimestre.
-
-
-
-
-La première tâche à faire est celle de définir les cours qui
-seront offerts à l'horaire pendant le trimestre. Ensuite on défini
-les enseignants qui seront en charge de chacun des cours plus leur
-disponibilité, et on défini le format du cours (2 heures LM + 1
-heure LM + 3 Lab), puis le nombre de groupes, éventuellement si
-l'horaire un cours est déjà défini.
-
-Lorsque tous ces informations sont saisies, le programme \diamant{}
-peut commencé à être utilisé pour la construction de l'horaire.
-
-La première étape est de charger les informations qui sont dans la
-base de données et faire une première validation des données. Les
-conflits entre deux cours, la disponibilité d'un enseignant, et autres.
-
-Lorsque la première validation est faite, on peux commencer à parler
-de la construction de l'horaire en mode manuel ou en mode automatique
-ou en utilisant le deux.
-
-Lorsque l'horaire est défini et satisfaisant, les données sont
-transférés à la base de données, pour construire les fichiers
-nécessaires à la livraison de l'horaire.
-
-Verification de contraintes (bd) Dans le système que nous
-proposons, nous essayons de limiter le plus possible
-d'intervention humaine afin de réduire des erreurs de
-manipulation. Nous essayons de réduire aussi le sources possible
-d'erreurs en vérifiant l'entrée de données.
 
 \section{La decomposition modulaire, top-down, alternatives et
 justifications} \label{sec:archi}
@@ -667,9 +620,9 @@ retrouvés comme avec tout autre format de données.
 \item [Langage pour coder la logique d'affaire:] Nous avons choisi
 Java. Java est un langage interprété qui utilise la machine
 virtuel Java JVM. Il y a plusieurs versions de cette machine
-virtuelle pour plusieurs plateformes différentes, ce qui signifie
+virtuelle pour plusieurs plate-formes différentes, ce qui signifie
 que les programmeurs peuvent écrire pour ce langage en utilisant
-une plateforme, et faire tourner leurs programmes sur autres.
+une plate-forme, et faire tourner leurs programmes sur autres.
 
 \item [La persistance de données:] Pour l'implémentation de la
 couche persistance de données nous avons choisi d'utiliser une
@@ -722,15 +675,16 @@ existants.
     afin de perturber le moins possible les utilisateurs du système.
 \end{itemize}
 
-Nous utiliserons comme source d'inspiration primaire pour la
-modèlisation de la production d'un horaire, le processus actuel de
-l'Université de Sherbrooke. Ensuite nous établirons un modèle plus
-génèral.
+
 
 Présentation de ...
 
 Architecture + justifications
 
+Dans le système que nous proposons, nous essayons de limiter le
+plus possible d'intervention humaine afin de réduire des erreurs
+de manipulation. Nous essayons de réduire aussi le sources
+possible d'erreurs en vérifiant l'entrée de données.
 \bibliography{bibDiamant,bibProg}
 
 \section{Glossaire}
