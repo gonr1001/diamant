@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.36 $  $Date: 2004-06-04 14:41:47 $
+ * Title: EditActivityDlg $Revision: 1.37 $  $Date: 2004-06-04 15:45:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.37 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -79,23 +79,23 @@ import dInterface.dUtil.TwoButtonsPanel;
 
 
 
-public class EditActivityDlg 
-		extends JDialog 
+public class EditActivityDlg
+		extends JDialog
 		implements ActionListener, ChangeListener{
 
 	private DApplication _dApplic;
 	private DModel _dm;
 	private EventsDlgInterface _evDlgInt = null;
 	private int _currentActivityIndex = 0;
-	
+
 	private JTabbedPane _tabbedPane;
 	private JScrollPane _jScrollPane;
 	private ButtonsPanel _applyPanel;
 	private boolean _canBeModified = false;
 	private Vector _unities = new Vector();           // contains event resource
 	private JList [] _instructorsLists;
-	
-	 
+
+
 	  /**
 	   * Constructor for EditActivityDlg in the case of one or more
 	   *        events
@@ -104,78 +104,78 @@ public class EditActivityDlg
 	   * @param currentActivity The activity choiced in the activityDialog
 	   * @param canBeModified
 	   */
-	  
-	  
-	  public EditActivityDlg(JDialog dialog, 
-	  							DApplication dApplic, 
-	  							String currentActivity, 
+
+
+	  public EditActivityDlg(JDialog dialog,
+	  							DApplication dApplic,
+	  							String currentActivity,
 	  							boolean canBeModified) {
 	    super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
 	    continueContructor(dialog, dApplic, currentActivity, canBeModified);
-	 
+
 	  } // end EditActivityDlg
-	
+
 	  /**
 	   * Constructor for EditActivityDlg, in the case of one event
 	   * @param dialog The parent dialog of this dialog
 	   * @param dApplic The application
 	   * @param currentActivity The activity choiced in the dialog
-	   * @param evDlg, 
+	   * @param evDlg,
 	   * @param isModified
 	   */
-	  public EditActivityDlg(JDialog dialog, 
-	  							DApplication dApplic, 
-	  							String currentActivity, 
-	  							EventsDlgInterface evDlg, 
+	  public EditActivityDlg(JDialog dialog,
+	  							DApplication dApplic,
+	  							String currentActivity,
+	  							EventsDlgInterface evDlg,
 	  							boolean canBeModified) {
 	    super(dialog, DConst.EVENTS_DLG_TITLE);
 		_evDlgInt= evDlg;
 		continueContructor(dialog, dApplic, currentActivity, canBeModified);
-	
+
 	  }
-	  
-	private void continueContructor(JDialog dialog, DApplication dApplic, 
+
+	private void continueContructor(JDialog dialog, DApplication dApplic,
 	  								String currentActivity, boolean canBeModified){
 		setLocationRelativeTo(dialog);
 		_dApplic = dApplic;
 		_dm = dApplic.getDMediator().getCurrentDoc().getDM();
 		_canBeModified = canBeModified;
-			//to verify  
-		
+			//to verify
+
 		_unities = buildUnitiesVector(currentActivity);
 		_instructorsLists = new JList[_unities.size()];
 		    //to verify
 		initialize();
 	}
-  
-  
+
+
 
   /**
    * Initialize the dialog
    */
 	private void initialize(){
 		int FACTOR = 50;
-		
+
 		_tabbedPane = buildTabbedPane();
-		//myJPanel.add(_tabbedPane, BorderLayout.CENTER);	    
+		//myJPanel.add(_tabbedPane, BorderLayout.CENTER);
 	    this.getContentPane().add(_tabbedPane, BorderLayout.CENTER);
 	    _tabbedPane.addChangeListener(this);
 		_currentActivityIndex=0;
 	    _tabbedPane.setSelectedIndex(_currentActivityIndex);
-	    
+
 		String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
 		_applyPanel = new TwoButtonsPanel(this, a);
-		//myJPanel.add(_tabbedPane, BorderLayout.SOUTH);	 
+		//myJPanel.add(_tabbedPane, BorderLayout.SOUTH);
 		getContentPane().add(_applyPanel, BorderLayout.SOUTH);
 		_applyPanel.setFirstDisable();
-	    
+
 	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    
-	    this.setBounds(screenSize.width/ 6, 
-						screenSize.height/ 4, 
-						screenSize.width/ 3, 
-						screenSize.height/ 2 + FACTOR );	
-						
+
+	    this.setBounds(screenSize.width/ 6,
+						screenSize.height/ 4,
+						screenSize.width/ 3,
+						screenSize.height/ 2 + FACTOR );
+
 	    this.setResizable(true);
 	    this.setVisible(true);
 	  } // end init
@@ -212,25 +212,25 @@ public class EditActivityDlg
 	          _evDlgInt.initializePanel();
 	        //dispose();
 	      }
-	
+
 	    } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
 	              || command.equals(DConst.BUT_FIGE)){// a comboBox has changed
 	      //System.out.println("Enable appliquer ... ");
 		  _applyPanel.setFirstEnable();
-		 
+
 	    } else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
 	     //if (instructorsLists[_currentActivityIndex]= null)
-	      new SelectInstructors(_dApplic, this, 
-	      						makeVector(_instructorsLists[_currentActivityIndex]), 
+	      new SelectInstructors(_dApplic, this,
+	      						makeVector(_instructorsLists[_currentActivityIndex]),
 	      						buildInstructorList(_currentActivityIndex));
 	    }
-	
+
 	  }
-  
+
 	private JTabbedPane buildTabbedPane() {
 		JTabbedPane jtp = new JTabbedPane();
 		_instructorsLists =  new JList[_unities.size()] ;
-		for (int i=0; i< _unities.size(); i++){  	
+		for (int i=0; i< _unities.size(); i++){
 			if(_unities.get(i)!= null){
 				_currentActivityIndex = i;
 				jtp.addTab(((Resource)_unities.get(i)).getID(),
@@ -246,43 +246,43 @@ public class EditActivityDlg
 	 * @return the JPanel to be placed in a tab of the tabbedPane
 	 */
 	private JPanel buildUnityPanel(int index, boolean first, Vector newInstructors){
-		JPanel myPanel = new JPanel(); 
-		myPanel.setLayout(new GridLayout(4,1));	
+		JPanel myPanel = new JPanel();
+		myPanel.setLayout(new GridLayout(4,1));
 		JPanel timePanel = buildTimePanel();
 		JPanel instructorPanel = buildInstructorPanel(index);
 		JPanel roomPanel = buildRoomPanel();
 		JPanel fixingPanel = buildFixingPanel(index);
-		
+
 		myPanel.add(timePanel);
 		myPanel.add(instructorPanel);
 		myPanel.add(roomPanel);
 		myPanel.add(fixingPanel);
- 		
+
 	  	return myPanel;
 	} // end buildUnityPanel
-	
-    
+
+
 	private JPanel buildTimePanel() {
 		JPanel myPanel = new JPanel();
-		
+
 		JPanel durationPanel = buildDurationPanel();
 		JPanel dayPanel = buildDayPanel();
 		JPanel hourPanel = buildHourPanel();
-		
+
 		myPanel.add(durationPanel);
 		myPanel.add(dayPanel);
 		myPanel.add(hourPanel);
-		
+
 		return myPanel;
 	} // buildTimePanel
-	
-		
+
+
 	private JPanel buildInstructorPanel(int index) {
 		JPanel myPanel = new JPanel();
 		JPanel instructorsPanel = new JPanel();
 		Vector vect = buildCurrentInstructorList(index);
 		_instructorsLists[index] = new JList(vect.toArray());
-	   
+
 		_jScrollPane = new JScrollPane(_instructorsLists[index]);
 		_jScrollPane.setPreferredSize(new Dimension(170, 40));
 
@@ -294,18 +294,18 @@ public class EditActivityDlg
 		instructorsPanel.add(_jScrollPane);
 		instructorsPanel.add(jButtonChange); //to be used when adding instructors
 
-		myPanel.add(instructorsPanel);		
-		return myPanel;		
+		myPanel.add(instructorsPanel);
+		return myPanel;
 	} // end buildInstructorPanel
-	
-	private JList getInstructorsList(JPanel jPanel) {		
+
+	private JList getInstructorsList(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(1);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
 		JScrollPane jsp = (JScrollPane) myJPanel.getComponent(0);
-		
+
 		return (JList)(jsp.getViewport()).getComponent(0);
 	} // getInstructorsList
-	
+
 	private JPanel buildRoomPanel() {
 		JPanel myPanel = new JPanel();
 		JPanel roomPanel = new JPanel();
@@ -315,37 +315,37 @@ public class EditActivityDlg
 		roomCB.setActionCommand("name");
 		roomCB.setSelectedItem(vectR[0].get(0).toString());
 		roomCB.addActionListener(this);
-	   
-	   
-		Vector[] vectC =  buildCategoryRoomList();
+
+
+		/*Vector[] vectC =  buildCategoryRoomList();
 		JComboBox categoryRoomCB = new JComboBox(vectC[1]);
 		categoryRoomCB.setSelectedItem(vectC[0].get(0).toString());
 		categoryRoomCB.setActionCommand("cat");
-		categoryRoomCB.addActionListener(this);
-		
-		
+		categoryRoomCB.addActionListener(this);*/
+
+
 		JPanel roomName = new JPanel();
 		roomName.setBorder(new TitledBorder(new EtchedBorder(), "Name"));
 		JPanel categoryRoom = new JPanel();
 		categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), "Cat"));
 		roomName.add(roomCB);
-		categoryRoom.add(categoryRoomCB);
+		//categoryRoom.add(categoryRoomCB);
 		roomPanel.add(roomName);
 		//roomPanel.add(categoryRoom);
 		myPanel.add(roomPanel);
-		
+
 		return myPanel;
 
 	} //end  buildRoomPanel
-	
-	private String getSelectedRoom(JPanel jPanel) {		
+
+	private String getSelectedRoom(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(2);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
 		JPanel roomJPanel = (JPanel) myJPanel.getComponent(0);
-		return ((JComboBox)roomJPanel.getComponent(0)).getSelectedItem().toString();		
+		return ((JComboBox)roomJPanel.getComponent(0)).getSelectedItem().toString();
 	} // end getSelectedRoom
-	
-	
+
+
 	private JPanel buildFixingPanel(int index) {
 		EventAttach event = (EventAttach)((Resource)_unities.get(index)).getAttach();
 		JPanel myPanel = new JPanel();
@@ -355,32 +355,32 @@ public class EditActivityDlg
 		assigned.setSelected(event.getAssignState());
 		assigned.addActionListener(this);
 		JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
-    
+
 		fixed.setSelected(event.getPermanentState());
 		fixed.addActionListener(this);
-	   		
+
 		fixingPanel.add(assigned);
 		fixingPanel.add(fixed);
-		myPanel.add(fixingPanel);		
+		myPanel.add(fixingPanel);
 		return myPanel;
-	
+
 	} // end buildFixingPanel
-	
+
 	private boolean isAssignedButtonSelected(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(3);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
-		
+
 		return ((JToggleButton)(myJPanel.getComponent(0))).isSelected();
-		
+
 	} // end isAssignedButtonSelected
- 
+
 	private boolean isFixedButtonSelected(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(3);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
-		
+
 		return ((JToggleButton)(myJPanel.getComponent(1))).isSelected();
 	} //end isFixedButtonSelected
-	
+
 	private JPanel buildDurationPanel() {
 		Vector thePeriods = buildThePeriods(_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsInASequence());
 		JPanel durationPanel = new JPanel();
@@ -389,53 +389,53 @@ public class EditActivityDlg
 		durationPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_TIME_LENGTH));
 		durationPanel.setName(DConst.R_TIME_LENGTH);
 		durationPanel.add(periodsCB);
-		
+
 		if (_canBeModified) {
 			periodsCB.setSelectedItem(buildDuration());
 			periodsCB.addActionListener(this);
 		} else {
-			periodsCB.setSelectedItem(buildDuration());		
+			periodsCB.setSelectedItem(buildDuration());
 			periodsCB.setEnabled(false);
 		}
-	
+
 		return durationPanel;
 	} // end buildDurationPanel
-	
+
 	private String getSelectedDuration(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(0);
 		JPanel dP = (JPanel) externalPanel.getComponent(0);
 		return ((JComboBox)dP.getComponent(0)).getSelectedItem().toString();
 	} // end getSelectedDuration
-	
+
 	private JPanel buildDayPanel() {
 		JPanel dayPanel = new JPanel();
 		Vector[] vect = buildDayList();
 		JComboBox dayCB = new JComboBox(vect[1]);
-						
+
 		dayPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_DAY_NAME));
 		dayPanel.add(dayCB);
 		dayCB.setSelectedItem(vect[0].get(0).toString());
 		dayCB.addActionListener(this);
-						
+
 		return dayPanel;
 	} // end buildDayPanel
-	
+
 	private String getSelectedDay(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(0);
 		JPanel dP = (JPanel) externalPanel.getComponent(1);
 		return ((JComboBox) dP.getComponent(0)).getSelectedItem().toString();
 	} //end getSelectedDay
-	
+
 	private JPanel buildHourPanel() {
 		JPanel hourPanel = new JPanel();
 		Vector[] vect = buildHourList();
 		JComboBox hourCB = new JComboBox(vect[1]);
-						
+
 		hourPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ACTIVITY_BEGIN_HOUR));
 		hourPanel.add(hourCB);
 		hourCB.setSelectedItem(vect[0].get(0).toString());
-		hourCB.addActionListener(this);			
-			
+		hourCB.addActionListener(this);
+
 		return hourPanel;
 	} // end buildHourPanel
 
@@ -444,23 +444,23 @@ public class EditActivityDlg
 		JPanel hP = (JPanel) externalPanel.getComponent(2);
 		return ((JComboBox) hP.getComponent(0)).getSelectedItem().toString();
 	} // end getSelectedHour
-	
+
 	private Vector makeVector(JList jList) {
 	  Vector v = new Vector();
 	  if (jList!= null) {
 		  for (int i = 0; i < jList.getModel().getSize(); i++)
 				  v.add(jList.getModel().getElementAt(i));
-  	
+
 	  }
-  	
+
 	  return v;
 	}
-	
-	
+
+
   public void updateInstructorList(Vector v) {
    _instructorsLists[_currentActivityIndex].setListData(v);
    _jScrollPane.repaint();
-   
+
    //instructorsLists[_currentActivityIndex] = new JList(v.toArray());
    _applyPanel.setFirstEnable();
   }
@@ -470,12 +470,12 @@ public class EditActivityDlg
    * @param e
    */
    public void stateChanged(ChangeEvent ce) {
-   	
+
 	if(!_applyPanel.isFirstEnable()){
 		 _currentActivityIndex = ((JTabbedPane)ce.getSource()).getSelectedIndex();
   		_tabbedPane.setSelectedIndex(_currentActivityIndex);
 
-	} else { 
+	} else {
 		_tabbedPane.removeChangeListener(this);
 		_tabbedPane.setSelectedIndex(_currentActivityIndex);
 		new InformationDlg(this, "Appliquer ou fermer pour continuer", "Operation interdite");
@@ -495,7 +495,7 @@ public class EditActivityDlg
     //System.out.println("CounTokens: "+nbTokens);// debug
     String actID= DXToolsMethods.getToken(activityName,".",0);
     String typID= DXToolsMethods.getToken(activityName,".",1);
-    
+
     if(typID.length()!=0){
       String secID= DXToolsMethods.getToken(activityName,".",2);
       if(secID.length()!=0){
@@ -555,8 +555,8 @@ public class EditActivityDlg
   /**
    * build the hour list
    * @return Vector[] of two elements the first is a Vector containing
-   * 
-   *                  the second contains 
+   *
+   *                  the second contains
    */
   private Vector[] buildHourList(){
     Vector list[] = {new Vector(), new Vector()};
@@ -613,11 +613,11 @@ public class EditActivityDlg
     for (int i = 0 ; i < keys.length ; i ++ ) {
       Resource instructor = soi.getResource(keys[i]);
       if(instructor != null)
-        v.add(instructor.getID());   
+        v.add(instructor.getID());
     }
 	return v;
   }
-    
+
 	private Vector buildInstructorList(int index){
 		Vector v = new Vector();//, new Vector(1)};
 		EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
@@ -684,10 +684,10 @@ public class EditActivityDlg
     JList instructor = getInstructorsList(tpane);
     ListModel lm = (ListModel) instructor.getModel();
     String  intructorKeys = getInstructorKeys(lm);
-    
+
 	String room = getSelectedRoom(tpane);
 
-    boolean assignBut = isAssignedButtonSelected(tpane); 
+    boolean assignBut = isAssignedButtonSelected(tpane);
 //= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(0)).isSelected();
     boolean fixedBut = isFixedButtonSelected(tpane); //= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
@@ -733,9 +733,9 @@ public class EditActivityDlg
 	for (int i=0; i <= size ; i++) {
 		v.addElement(Integer.toString(i));
 	}
-  	
+
 	return v;
-  	
+
   }
 }// end class
 
