@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.131 $  $Date: 2005-01-21 21:56:51 $
+ * Title: DConst $Revision: 1.132 $  $Date: 2005-01-25 05:30:01 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.131 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.132 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -486,7 +486,7 @@ public class DConst {
   public static final int ROOM_CARACTERICTICS_TOKEN= 3;
   public static final int ROOM_SITE_TOKEN = 4;
   public static final int ROOM_CATEGORY_TOKEN= 5;
-  public static final int ROOM_DESCRIPTION_TOKEN= 5;
+  public static final int ROOM_DESCRIPTION_TOKEN= 6;
   public static final String ROOM_STANDARD_SITE= "SHE";
   public static final String ROOM_STANDARD_CAT= "CAT 1";
   

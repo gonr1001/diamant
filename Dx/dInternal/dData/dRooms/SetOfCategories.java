@@ -1,6 +1,6 @@
 /**
 *
-* Title: Category $Revision: 1.3 $  $Date: 2005-01-24 21:27:56 $
+* Title: Category $Revision: 1.4 $  $Date: 2005-01-25 05:30:01 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,12 +15,14 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.4 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
 package dInternal.dData.dRooms;
+
+import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DResource;
@@ -63,12 +65,19 @@ public class SetOfCategories extends DSetOfResources{
 	
 	public String toWrite(){
 		String reslist="";
-	    if(getSetOfResources().size()>0){	      
-	        for (int i=0; i< getSetOfResources().size()-1; i++)
-	          reslist+= ((DResource)getSetOfResources().get(i)).toWrite(DConst.CR_LF)+DConst.CR_LF;
-	        reslist+= ((DResource)getSetOfResources().get(getSetOfResources().size()-1)).toWrite(DConst.CR_LF);
-	      }	   
-	    return reslist;	
+		Vector resourceList = getSetOfResources();
+		if(resourceList.size()>0){
+			SetOfRooms setOfRooms;
+			for (int i=0; i< resourceList.size()-1; i++){
+				setOfRooms = (SetOfRooms)((DResource)resourceList.get(i)).getAttach();
+				//reslist+= ((DResource)resourceList.get(i)).toWrite(";")+DConst.CR_LF;
+				reslist+= setOfRooms.toWrite();
+			}
+			setOfRooms = (SetOfRooms)((DResource)resourceList.get(resourceList.size()-1)).getAttach();
+			reslist+= setOfRooms.toWrite();
+			//reslist+= ((DResource)resourceList.get(resourceList.size()-1)).toWrite(";");
+		}// end if(_resourceList.size()>0)
+		return reslist;
 	}
 
 	/* (non-Javadoc)
