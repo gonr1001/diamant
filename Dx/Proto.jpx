@@ -91,7 +91,7 @@
     <property category="archiving" name="executableFiles.3" value="Proto2-linux"/>
     <property category="archiving" name="executableFiles.4" value="Proto2-solaris"/>
     <property category="archiving" name="executableFiles.5" value="Proto2-mac"/>
-    <property category="archiving" name="libraryStates.1" value="3:theLibrary"/>
+    <property category="archiving" name="libraryStates.1" value="1:theLibrary"/>
     <property category="archiving" name="libraryStates.2" value="3:Log4j"/>
     <property category="archiving" name="manifestMainClass" value="DRun"/>
     <property category="archiving" name="targetPath" value="D%|/Developpements/DiamantExtreme/Diamant1.5/tictac.jar"/>
