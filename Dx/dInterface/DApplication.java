@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.17 $  $Date: 2003-07-07 10:56:55 $
+ * Title: DApplication $Revision: 1.18 $  $Date: 2003-09-05 13:46:20 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -73,6 +73,7 @@ public class DApplication implements ActionListener {
   private Preferences _preferences;
   private DMediator _mediator;
   private String _currentDir;
+  private DMenuBar _dMenuBar;
   private DToolBar _tbar;
 
   //-------------------------------------------
@@ -108,7 +109,8 @@ public class DApplication implements ActionListener {
       });
     JPanel panel = new JPanel(new BorderLayout(0,0));
     jFrame.setContentPane(panel);
-    jFrame.setJMenuBar(new DMenuBar( this ));  //constructs the menu bar
+    _dMenuBar = new DMenuBar( this );
+    jFrame.setJMenuBar(_dMenuBar);  //constructs the menu bar
 
     //JPanel jpToolBar = new JPanel();
 
@@ -129,8 +131,7 @@ public class DApplication implements ActionListener {
     panel.setMaximumSize(_screenSize);
     panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH,
                                          _screenSize.height - ADJUST_HEIGHT));
-    panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH,
-                                         500));
+    panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
     jFrame.pack();
     jFrame.setVisible(true);
     return jFrame;
@@ -158,6 +159,10 @@ public class DApplication implements ActionListener {
     public DMediator getDMediator(){
       return _mediator;
     } // end getJFrame
+
+    public DMenuBar getMenuBar(){
+      return _dMenuBar;
+    } // end getDesktop
 
     public DToolBar getToolBar(){
       return _tbar;
