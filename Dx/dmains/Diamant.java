@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.11 $  $Date: 2004-05-31 13:53:13 $
+ * Title: ClassName $Revision: 1.12 $  $Date: 2004-06-02 20:39:07 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,8 +16,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.12 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -68,7 +68,7 @@ public class DRun {
         if (GUI) {
           _logger.warn("hello_with_a_GUI");
           _logger.warn("Java version: "+ System.getProperty("java.version"));
-		  	System.out.println(System.getProperty("java.version") + " r "  + DConst.JVM);
+
           if (0 <= System.getProperty("java.version").compareTo(DConst.JVM)) {
 			DApplication _dApplic = new DApplication();
           }

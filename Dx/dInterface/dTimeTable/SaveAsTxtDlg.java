@@ -1,25 +1,45 @@
-package dInterface.dTimeTable;
-
 /**
- * <p>Title: Diamant 1.5</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
+ *
+ * Title: SaveAsTxtDlg $Revision: 1.2 $  $Date: 2004-06-02 20:39:07 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.2 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
  */
 
-import java.io.File;
+
+/**
+ * Description: SaveAsTxtDlg is a class used to
+ *
+ */
+package dInterface.dTimeTable;
+
+
+
 import java.io.FileWriter;
 
-import javax.swing.JDialog;
+
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JInternalFrame;
+
 
 import com.iLib.gDialog.FatalProblemDlg;
 
-import com.iLib.gDialog.InformationDlg;
+
 
 import dInterface.DApplication;
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.3 $  $Date: 2004-02-03 13:52:47 $
+ * Title: AboutDlg $Revision: 1.4 $  $Date: 2004-06-02 20:39:07 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -24,16 +24,14 @@ package dInterface.dUtil;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.util.Vector;
 
 import dInterface.DApplication;
-import com.iLib.gDialog.InformationDlg;
+
 import dResources.DConst;
 /**
  *

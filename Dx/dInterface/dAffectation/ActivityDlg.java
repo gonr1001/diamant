@@ -120,7 +120,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   }//end method
 
   /**
-   * Defins the mouse adapter and actions for the JListis
+   * Define the mouse adapter and actions for the JList is
    */
   private MouseListener mouseListenerLists = new MouseAdapter(){
     public void mouseClicked(MouseEvent e) {

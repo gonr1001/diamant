@@ -1,7 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.3 $  $Date: 2004-05-14 15:01:19 $
- * Description: AboutDlg is a class representing the Dialog About
+ * Title: ButtonsPanel $Revision: 1.4 $  $Date: 2004-06-02 20:39:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,19 +13,21 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
+
+
+/**
+ * Description: ButtonsPanel is a class used to
+ *
+ */
 package dInterface.dUtil;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
-import javax.swing.JButton;
 
-import dResources.DConst;
 
 public abstract class ButtonsPanel extends JPanel {
   public ButtonsPanel(){}
@@ -37,7 +38,7 @@ public abstract class ButtonsPanel extends JPanel {
   public abstract void setMiddleDisable();
 
 /**
- * @return
+ * @return 
  */
 public boolean isFirstEnable() {
 	// TODO Auto-generated method stub
