@@ -1,3 +1,25 @@
+/**
+*
+* Title: ConditionsTest $Revision: 1.10 $  $Date: 2005-02-02 19:32:43 $
+* Description: ConditionsTest is a class used to display a
+*               ConditionsTest with buttons
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr-fdl. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr-fdl.
+*
+* @version $Version$
+* @author  $Author: garr2701 $
+* @since JDK1.3
+*/
+
 package dTest.dInternal.dOptimizationTest;
 
 import java.io.File;

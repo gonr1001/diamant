@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.130 $  $Date: 2005-02-01 21:27:15 $
+ * Title: DDocument $Revision: 1.131 $  $Date: 2005-02-02 19:32:43 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.130 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.131 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInterface;
@@ -205,12 +205,13 @@ SetOfRoomsListener, SetOfEventsListener*/{
 	//-------------------------------------------
 	
 	public void update(Observable dm, Object component) {
-		setCursor(Cursor.WAIT_CURSOR, (Component)component);
+		component.toString();
+		setCursor(Cursor.WAIT_CURSOR);
 		_ttPane.updateTTPane(((DModel)dm).getTTStructure());
 		_stateBar.upDateDStateBar(((DModel)dm).getSetOfStates());
 		
-		setCursor(Cursor.DEFAULT_CURSOR, (Component)component);
-	}// end actionPerformed
+		setCursor(Cursor.DEFAULT_CURSOR);
+	}// end update
 	//-------------------------------------------
 	
 
