@@ -59,6 +59,10 @@ public class SetOfStates extends SetOfResources{
 
   public void incrementModification() {}
 
+  public void addState(String id, State state){
+    this.addResource(new Resource(id, state),0);
+  }
+
   /**
    *
    * @param sosl

@@ -149,16 +149,11 @@ public class GroupDlg extends JDialog implements ActionListener{
    */
   private void setNotAssignedPanel(){
     Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.40), (int)dialogSize.getHeight()-130);
-    Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10, (int)panelDim.getHeight()-33);
-    Dimension listDim = new Dimension((int)scrollDim.getWidth()-10,(int)scrollDim.getHeight()-20);
-    //JScrollPane scrollPane = new JScrollPane();
-    //scrollPane.setPreferredSize(scrollDim);
+    //Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10, (int)panelDim.getHeight()-33);
+    //Dimension listDim = new Dimension((int)scrollDim.getWidth()-10,(int)scrollDim.getHeight()-20);
     _notAssignedVector = _students.getStudentsByGroup(_actID, "1", -1);
     _notAssignedList = new JList(_notAssignedVector);
-    //_notAssignedList.setPreferredSize(listDim);
     _notAssignedList.addMouseListener(mouseListenerLists);
-    //scrollPane.getViewport().add(_notAssignedList);
-    //_notAssignedPanel.add(scrollPane);
     _notAssignedPanel = DXTools.listPanel(_notAssignedList, (int)((dialogSize.getWidth()-50)*0.40), (int)dialogSize.getHeight()-130);
     _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_NOT_ASSIGNED));
     _notAssignedPanel.setPreferredSize(panelDim);
@@ -214,21 +209,23 @@ public class GroupDlg extends JDialog implements ActionListener{
     int infoPanelHeight = 25;
     Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
     Dimension scrollContDim = new Dimension((int)insideWidth-5, GroupPanelHeight-infoPanelHeight-20);
-    Dimension scrollDim = new Dimension((int)scrollContDim.getWidth(), (int)scrollContDim.getHeight()-3);
+    //Dimension scrollDim = new Dimension((int)scrollContDim.getWidth(), (int)scrollContDim.getHeight()-3);
     JPanel groupPanel = new JPanel();
     groupPanel.setPreferredSize(groupPanelDim);
     groupPanel.addMouseListener(mouseListenerGroupPanel);
     JPanel infoPanel = new JPanel();
     //The scrollPane
-    JPanel scrollContainer = new JPanel();
-    scrollContainer.setPreferredSize(scrollContDim);
-    JScrollPane scroll = new JScrollPane();
-    scroll.setPreferredSize(scrollDim);
+
+    //scrollContainer.setPreferredSize(scrollContDim);
+    //JScrollPane scroll = new JScrollPane();
+    //scroll.setPreferredSize(scrollDim);
     _assignedVectors[groupNumber] = _students.getStudentsByGroup(_actID, "1", groupNumber);
     _assignedLists[groupNumber] = new JList(_assignedVectors[groupNumber]);
     _assignedLists[groupNumber].addMouseListener(mouseListenerLists);
-    scroll.getViewport().add(_assignedLists[groupNumber]);
-    scrollContainer.add(scroll);
+    JPanel scrollContainer = new JPanel();
+    scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (int)insideWidth-5, GroupPanelHeight-infoPanelHeight-20);
+    //scroll.getViewport().add(_assignedLists[groupNumber]);
+    //scrollContainer.add(scroll);
     //The infoPanel
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
     numberOfElements = _assignedVectors[groupNumber].size();
@@ -243,6 +240,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     infoPanel.add(new JLabel(" - "));
     infoPanel.add(lNumber);
     infoPanel.add(_lNumberOfElements[groupNumber]);
+    //adding the sub-panels to the panel
     groupPanel.add(infoPanel);
     groupPanel.add(scrollContainer);
     return groupPanel;
