@@ -15,4 +15,4 @@ K1-2043      ; 59 ; 0110      ;3,11,14,15,24,43            ;gradins en U;
 K1-2044      ; 55 ; 0110      ;3,11,14,15,24,43            ;gradins en U;
 K1-2045      ; 59 ; 0110   ;3,11,14,15,24,43            ;gradins tables paralleles et porte mitoyenne coulissante;
 K1-2046      ; 59 ; 0110      ;3,11,14,15,24,43 ;  xx;
-xxxxxx       ; 999; 0110      ;3,11,14,15,24,43            ;gradins tables paralleles et porte mitoyenne coulissante;
+xxxxx       ; 999; 0110      ;3,11,14,15,24,43            ;gradins tables paralleles et porte mitoyenne coulissante;
