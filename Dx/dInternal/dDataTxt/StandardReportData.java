@@ -13,6 +13,7 @@ import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dConditionsTest.EventAttach;
+import dInterface.dUtil.DXTools;
 import dResources.DConst;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -23,6 +24,7 @@ public class StandardReportData {
   private int _AHOUR=60;// a hour= 60 minutes
   private String _HOURSEPARATOR="h";
   private String _activitiesReport="";
+  public String _studentsReport="";
 
   /**
    * Constructor
@@ -31,6 +33,7 @@ public class StandardReportData {
   public StandardReportData(DModel dm) {
     _dm=dm;
     _activitiesReport= buildActivitiesReport();
+    _studentsReport = this.buildStudentsReport();
   }
 
   /**
@@ -89,8 +92,12 @@ public class StandardReportData {
     return actlist;
   }
 
+
   /**
-   *
+   * 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
+   * 5= day number where activity is assign, 6= day name where activity is assign
+   * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
+   * 10= room name
    * @return
    */
   public String getActivitiesReport(int principalAct, int[] otherAct){
@@ -121,6 +128,17 @@ public class StandardReportData {
   }
 
   /**
+   * 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
+   * 5= day number where activity is assign, 6= day name where activity is assign
+   * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
+   * 10= room name
+   * @return
+   */
+  public String getStudentsReport(int principalAct, int[] otherAct){
+    return "";
+  }
+
+  /**
    *
    * @param str
    * @param tokenNumber
@@ -148,6 +166,49 @@ public class StandardReportData {
    * @return
    */
   public String buildStudentsReport(){
-    return "";
+    String studlist="";
+    for (int i=0; i< _dm.getSetOfStudents().size(); i++){
+      StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
+      String line = _dm.getSetOfStudents().getResourceAt(i).toWrite(" ");
+      StringTokenizer strTokens= new StringTokenizer(line.substring(SetOfStudents._ENDSTUDENTNUMBEROFCOURSE,line.length()));//+SetOfResources.CR_LF;
+      String name_mat = line.substring(0,SetOfStudents._BEGINSTUDENTNUMBEROFCOURSE);
+      String str= name_mat.substring(0,SetOfStudents._ENDSTUDENTMATRICULE)+";"+
+            name_mat.substring(SetOfStudents._ENDSTUDENTMATRICULE,SetOfStudents._BEGINSTUDENTNAME)
+            +";"+name_mat.substring(SetOfStudents._BEGINSTUDENTNAME,SetOfStudents._ENDSTUDENTNAME)+";";
+      String strcrs="";
+      while(strTokens.hasMoreTokens()){
+        String course= strTokens.nextToken();
+        String sect="";
+        int group= Integer.parseInt(course.substring(SetOfStudents._COURSELENGTH, SetOfStudents._COURSEGROUPLENGTH));
+        sect=course.substring(0,SetOfStudents._COURSELENGTH-1)+"."+
+                course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH)+
+                "."+Character.toString(DXTools.STIConvertGroup(group))+".";
+        Section section= _dm.getSetOfActivities().getSection(course.substring(0,SetOfStudents._COURSELENGTH-1)
+            ,course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH),
+            Character.toString(DXTools.STIConvertGroup(group)));
+        for(int j=0; j<section.getSetOfUnities().size(); j++){
+          Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(j).getAttach();
+          Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
+              ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
+          StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
+              ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
+          long dayKey= Long.parseLong(dtime.nextToken());
+          long seqKey= Long.parseLong(dtime.nextToken());
+          long perKey= Long.parseLong(dtime.nextToken());
+          Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
+          String hour= "00"+period.getBeginHour()[0];
+          String minute= "00"+period.getBeginHour()[1];
+          String time= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
+                    minute.substring(minute.length()-2,minute.length());
+          strcrs+=sect+Integer.toString(j+1)+"-Jour:"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
+              ).getResource(dayKey).getKey()+"-"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
+              ).getResource(dayKey).getID()+"-"+time+",";
+
+        }// end for(int j=0; j<section.getSetOfUnities().size(); j++)
+      }// end while(strTokens.hasMoreTokens())
+      studlist+= str+strcrs+";"+SetOfResources.CR_LF;
+    }// end for (int i=0; i< _dm.getSetOfStudents().size(); i++)
+
+    return studlist;
   }
 }

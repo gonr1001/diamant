@@ -217,6 +217,8 @@ public static int STIConvertGroup(String STIGroupID){
    return  (char)((int)'A' +STIGroupNumber-1);
  }
 
+
+
  /**
   * Creates a panel of buttons to be placed at the bottom of a Dialog.
   * This method adds the ActionListener for each button

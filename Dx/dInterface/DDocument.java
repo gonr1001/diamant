@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.73 $  $Date: 2003-09-18 19:58:08 $
+ * Title: DDocument $Revision: 1.74 $  $Date: 2003-09-19 16:10:54 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.73 $
+ * @version $Revision: 1.74 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -233,7 +233,7 @@ public class DDocument  extends InternalFrameAdapter implements
      */
     public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
       component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
+      _dm.setModified();
       _dm.getSetOfStates().sendEvent();
 
       component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -265,7 +265,7 @@ public class DDocument  extends InternalFrameAdapter implements
      */
     public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
       component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
+      _dm.setModified();
       _dm.getSetOfStates().sendEvent();
 
       component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -278,7 +278,7 @@ public class DDocument  extends InternalFrameAdapter implements
      */
     public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
       component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
+      _dm.setModified();
       _dm.getSetOfStates().sendEvent();
 
       component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));

@@ -20,17 +20,17 @@ import dInternal.dUtil.DXToolsMethods;
 public class SetOfStudents extends SetOfResources{
 
   private byte[] _dataloaded; //_st;// student in text format
-  private static final int _BEGINSTUDENTMATRICULE=0;
-  private static final int _ENDSTUDENTMATRICULE=8;
-  private static final int _BEGINSTUDENTNAME=21;
-  private static final int _ENDSTUDENTNAME=30;
-  private static final int _BEGINSTUDENTNUMBEROFCOURSE=30;
-  private static final int _ENDSTUDENTNUMBEROFCOURSE=32;
+  public static final int _BEGINSTUDENTMATRICULE=0;
+  public static final int _ENDSTUDENTMATRICULE=8;
+  public static final int _BEGINSTUDENTNAME=21;
+  public static final int _ENDSTUDENTNAME=30;
+  public static final int _BEGINSTUDENTNUMBEROFCOURSE=30;
+  public static final int _ENDSTUDENTNUMBEROFCOURSE=32;
   private String _error="";
   private Vector _SOSListeners = new Vector(1);
   /** Course length*/
-  private int _COURSELENGTH = 7;
-  private int _COURSEGROUPLENGTH = 9;
+  public static final int _COURSELENGTH = 7;
+  public static final int _COURSEGROUPLENGTH = 9;
 
   /**
    * INPUTS: byte[]  dataloaded (information from the student file in byte type)

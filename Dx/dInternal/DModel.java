@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.71 $  $Date: 2003-09-19 09:10:20 $
+ * Title: DModel $Revision: 1.72 $  $Date: 2003-09-19 16:10:54 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.71 $
+ * @version $Revision: 1.72 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -393,10 +393,16 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
 
   }// end actionPerformed*/
 
-  public String getStandardReport(){
+  public String[] getStandardReport(){
     StandardReportData dataR = new StandardReportData(this);
-    int [] table={0,1,2,6,7,8,10};
-    return dataR.getActivitiesReport(9,table);
+    /* 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
+    * 5= day number where activity is assign, 6= day name where activity is assign
+    * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
+    * 10= room name
+    */
+    int [] table={1,2,6,7,8,10};
+    String[] stdR={dataR.getActivitiesReport(0,table),dataR._studentsReport};
+    return stdR;
   }
 
 

@@ -34,7 +34,7 @@ public class SetOfRoomsTest  extends TestCase{
    * in the rooms file
    * */
   public void test_analyseTokens(){
-    String tokens= ";32;211;08,11,14,57;laboratoire de chimie;"+"\r\n"+
+    String tokens= ";32;211;08,11,14,57;laboratoire de chimie;xx;"+"\r\n"+
                    "D13013;40;211;08,11,57;laboratoire de chimie;"+"\r\n"+
                    "D13014;20;211;08,44,57;laboratoire de chimie;"+"\r\n"+
                    "D20051;30;210;8,11,27,44;laboratoire informatique;"+"\r\n"+

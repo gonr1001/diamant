@@ -535,11 +535,43 @@ public class SetOfActivities extends SetOfResources{
    */
 
   public Unity getUnity(long actKey, long typeKey, long secKey, long unitKey){
-    Activity a = (Activity)getResource(actKey).getAttach();
+    /*Activity a = (Activity)getResource(actKey).getAttach();
     Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
     Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
-    Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();
-    return u;
+    Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();*/
+    Resource a = getResource(actKey);
+    if(a!=null){
+      Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
+      if(t!=null){
+        Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
+        if(s!=null){
+          Resource u= ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
+          if(u!=null)
+            return (Unity)u.getAttach();
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   *
+   * @param actID
+   * @param typeID
+   * @param secID
+   * @return
+   */
+  public Section getSection(String actID, String typeID, String secID){
+    Resource a = getResource(actID);
+    if(a!=null){
+      Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
+      if(t!=null){
+        Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secID);
+        if(s!=null)
+          return (Section)s.getAttach();
+      }
+    }
+    return null;
   }
 
   /**
