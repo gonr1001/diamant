@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.115 $  $Date: 2004-09-29 19:00:39 $
+ * Title: DDocument $Revision: 1.116 $  $Date: 2004-10-06 15:37:55 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.115 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.116 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -305,6 +305,7 @@ public class DDocument  extends InternalFrameAdapter implements
   	Vector traceParams=new Vector();
   	traceParams.add(e);
   	traceParams.add(component);
+  	
   	logger.info(trace.write(this, traceParams));	
     //-----------------------------
     setCursor(Cursor.WAIT_CURSOR, component);
@@ -494,4 +495,6 @@ public class DDocument  extends InternalFrameAdapter implements
       pve.printStackTrace();
     }
   } // end buidDocument
+  
+ 
 } /* end DDocument class */

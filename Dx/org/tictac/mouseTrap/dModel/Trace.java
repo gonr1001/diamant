@@ -34,14 +34,15 @@ public class Trace {
 	
 	public String write(Object obj, Vector info){
 		String method=methodData();
+		info.trimToSize();
 		String str="<i>\n";
 		str+=formatIdClassMethod(obj.hashCode(), obj.getClass().getName(),method);
 		str+="<p>";
 		for (int i=0; i<info.size();i++){
-			str+="<s>";
-			str+="<t>"+info.get(i).getClass().getName()+"</t>";
-			str+="<v>"+info.get(i).toString()+"</v>";
-			str+="</s>";
+				str+="<s>";
+				str+="<t>"+info.get(i).getClass().getName()+"</t>";
+				str+="<v>"+info.get(i).toString()+"</v>";
+				str+="</s>";
 		}
 		str+="</p></i>\n";
 		return str;
