@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.123 $  $Date: 2005-02-03 16:26:49 $
+ * Title: DMenuBar $Revision: 1.124 $  $Date: 2005-02-03 20:50:42 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.123 $
+ * @version $Revision: 1.124 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -799,7 +799,7 @@ public class DMenuBar extends JMenuBar{
 	
 	private void setAfterInitialAssign() {
 		//the menu _file
-		updateMenuBar();
+		//updateMenuBar();
 		_boolMenuFile = true;
 		//the submenus
 		_boolNewTTable = false;
@@ -1289,8 +1289,8 @@ public class DMenuBar extends JMenuBar{
 		setAfterInitialAssign();
 	}
 	
-	private void updateMenuBar(){
+	public void updateMenuBar(){ //must be private
 		if(_dApplic.getDModel().isMultiSite())
-			;//createMultiSiteMenu();
+			createMultiSiteMenu();
 	}
 } /* end class DMenuBar */

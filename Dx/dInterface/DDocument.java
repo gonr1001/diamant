@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.131 $  $Date: 2005-02-02 19:32:43 $
+ * Title: DDocument $Revision: 1.132 $  $Date: 2005-02-03 20:50:41 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.131 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.132 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -43,10 +43,7 @@ import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
 
 
-import dInternal.dData.dInstructors.SetOfInstructorsEvent;
 
-
-import dInternal.dData.dRooms.SetOfRoomsEvent;
 
 
 
@@ -64,10 +61,7 @@ import eLib.exit.dialog.FatalProblemDlg;
  *
  */
 
-public class DDocument  extends InternalFrameAdapter implements Observer
-/*ActionListener, DModelListener, TTStructureListener, DSetOfStatesListener,*/
-/*SetOfActivitiesListener, SetOfStudentsListener  /*,SetOfInstructorsListener,
-SetOfRoomsListener, SetOfEventsListener*/{
+public class DDocument  extends InternalFrameAdapter implements Observer {
 	
 	private DMediator _dMediator;
 	private JInternalFrame _jif;
@@ -103,6 +97,7 @@ SetOfRoomsListener, SetOfEventsListener*/{
 			_documentName = modifiyDocumentName(ttName);
 			buidDocument(true, true);
 			_ttPane.updateTTPane(_dm.getTTStructure());
+			_stateBar.upDateDStateBar(_dm.getSetOfStates());
 			_jif.addInternalFrameListener(this);
 		}
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -254,7 +249,7 @@ SetOfRoomsListener, SetOfEventsListener*/{
 	 * @param e
 	 * @param component
 	 */
-	public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
+/*	public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
 		e.toString();
 		System.out.println("I was in changeInSetOfInstructors");
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -262,21 +257,21 @@ SetOfRoomsListener, SetOfEventsListener*/{
 		_dm.getSetOfStates().sendEvent();
 		
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	}// end ac
+	}// end ac*/
 	
 	/**
 	 *
 	 * @param e
 	 * @param component
 	 */
-	public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
+/*	public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
 		e.toString();
 		System.out.println("I was in changeInSetOfRooms");
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm.setModified();
 		_dm.getSetOfStates().sendEvent();
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	}// end changeInSetOfRooms
+	}// end changeInSetOfRooms*/
 	//-------------------------------------------
 	public void displaySimple(){
 		close();
@@ -322,7 +317,7 @@ SetOfRoomsListener, SetOfEventsListener*/{
 		_dm.addObserver(this);
 		_stateBar = new DStateBar(_dm.getSetOfStates());
 		_dm.setStateBarComponent();
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
+		//_stateBar.upDateDStateBar(_dm.getSetOfStates());
 		
 		_jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 		
@@ -341,6 +336,7 @@ SetOfRoomsListener, SetOfEventsListener*/{
 		_jif.pack();
 		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
 		_jif.setVisible(true);
+	
 		//to comment if work with jifs
 		try {
 			_jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.15 $  $Date: 2004-12-16 19:20:53 $
+ * Title: TTPane $Revision: 1.16 $  $Date: 2005-02-03 20:50:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -255,7 +255,7 @@ public abstract class TTPane {
      */
      _mouseListener = new MouseAdapter() {
        public void mouseClicked(MouseEvent e) {
-        System.out.println("Un clic sur la periode: ");
+        
         if ((e.getClickCount() == 1) && (_toolBar!=null)) {
           PeriodPanel perpanel= (PeriodPanel)e.getSource();
           if(_lastActivePanel != null)

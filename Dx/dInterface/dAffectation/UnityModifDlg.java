@@ -76,15 +76,15 @@ private String _title;
       int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
       _section.addUnity(ID,nbCycle, true);
       init();
-      _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+     
+      _dApplic.getDModel().changeInModelByUnityModifDlg(this);
     }
     if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
       if(_section.getSetOfUnities().size()>1){
      _section.getSetOfUnities().removeResourceAt(_section.getSetOfUnities().size()-1);
       init();
-      _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      //_dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
+      _dApplic.getDModel().changeInModelByUnityModifDlg(this);
       }
     }
 

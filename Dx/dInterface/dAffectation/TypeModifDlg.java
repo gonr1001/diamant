@@ -74,7 +74,7 @@ private DApplication _dApplic;
         type.addSection("01",nbCycle,true);
         init();
          Vector students= activity.getStudentRegistered();
-         _dApplic.getDModel().changeInDmodelByModifyAdd(this, students, _activity.getID()+"201;0");
+         _dApplic.getDModel().changeInDModelByModifyAdd(this, students, _activity.getID()+"201;0");
          /*_dApplic.getDModel().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
          _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
         _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/

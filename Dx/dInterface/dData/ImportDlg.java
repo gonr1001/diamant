@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.19 $  $Date: 2005-01-21 21:56:52 $
+ * Title: ImportDlg $Revision: 1.20 $  $Date: 2005-02-03 20:50:43 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -74,9 +74,9 @@ public class ImportDlg extends JDialog {
        dApplic.setCurrentDir(fil);
 
        String error = "";
-       if (dApplic.getDMediator().getCurrentDoc() != null)
-         error= dApplic.getDModel().importData(fil);
-       else
+       if (dApplic.getDMediator().getCurrentDoc() != null) {
+         error = dApplic.getDModel().importData(fil);        
+       } else
          error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
        if(error.length()==0){
          new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
@@ -84,6 +84,7 @@ public class ImportDlg extends JDialog {
          new FatalProblemDlg(dApplic.getJFrame(),error);
               System.exit(1);
        }
+       dApplic.getDModel().changeInDModelByImportDlg(this);
        dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
        dApplic.getMenuBar().postImportCmd();

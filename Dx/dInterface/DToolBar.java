@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.56 $  $Date: 2005-02-03 16:26:49 $
+ * Title: DToolBar $Revision: 1.57 $  $Date: 2005-02-03 20:50:42 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -67,8 +67,6 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
   private JTextField _setNumberOfDays;
   private JLabel _lSetNumberOfDays, _lDaySelector, _lDayNameSelector,
                  _lPeriodIndicator, _lPeriodTypeSelector;
-  //private JToolBar.Separator _jtbSep [];
-//  private String _error = "";
   private TTStructure _tts;
 
   //-------------------------------------------
@@ -199,7 +197,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
         int index= _tts.getCurrentCycle().getCurrentDayIndex();
         Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
         resc.setID((String)_dayNameSelector.getSelectedItem());
-        System.out.println("DToolbar.dayNameSelector");//debug
+        //System.out.println("DToolbar.dayNameSelector");//debug
         //Treat event
         _dApplic.getDModel().changeInDModelByToolBar(this);
       }//end actionPerformed
@@ -465,7 +463,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
 
 
   public void update(Observable o, Object arg) {
-  	_dApplic.getDMediator().getCurrentDoc().getTTPane().updateTTPane(_tts); 	
+  	_dApplic.getDMediator().getCurrentDoc().update(o, arg); 	
   }
 
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.119 $  $Date: 2005-02-01 21:27:16 $
+ * Title: DModel $Revision: 1.120 $  $Date: 2005-02-03 20:50:43 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.119 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.120 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -408,11 +408,11 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 		}
 		_constructionState=1;
 		buildSetOfEvents();
-		_setOfStates.sendEvent();
-		this.getConditionsTest().initAllConditions();
+		//_setOfStates.sendEvent();
 		
 		_dDocument.setCursor(Cursor.DEFAULT_CURSOR);
 		setImportDone(true);
+	
 		return "";
 	}
 	
@@ -591,14 +591,22 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	
 	public void ChangeInDModelByModifyRemove(Object obj){
 		getConditionsTest().setMatrixBuilded(false,false);
-        //getSetOfActivities().sendEvent(this);
 		changeInDModel(obj);
 	}
 	
-	public void changeInDmodelByModifyAdd(Object obj, Vector students, String id){
+	public void changeInDModelBySectionModDlg(Object obj){
+		this.getConditionsTest().setMatrixBuilded(false,false);
+		changeInDModel(obj);
+	}
+	
+	public void changeInModelByUnityModifDlg(Object obj){
+		this.getConditionsTest().setMatrixBuilded(false,false);
+		changeInDModel(obj);
+	}
+	
+	public void changeInDModelByModifyAdd(Object obj, Vector students, String id){
 		getSetOfStudents().addActivityToStudents(students,id);
 		getConditionsTest().setMatrixBuilded(false,false);
-		//getSetOfActivities().sendEvent(this);
 		changeInDModel(obj);
 	}
 	
@@ -653,6 +661,16 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 		changeInDModel(obj);
 	}
 	
+	public void changeInDModelByImportDlg(Object obj) {	
+		this.setChanged();
+		//change model
+		this.setModified();		
+		this.setStateBarComponent();
+		//this.getSetOfActivities().sortSetOfResourcesByID();
+		//notify
+		this.notifyObservers(obj);
+		this.clearChanged();
+	}
 	public void changeInDModelByRoomsDlg(Object obj) {	
 		changeInDModel(obj);
 	}
@@ -719,6 +737,8 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 		e.toString();
 		c.toString();
 	}// end changeInDModel
+	
+
 	
 	public void changeInTTStructure(TTStructureEvent  e) {
 		e.toString();
