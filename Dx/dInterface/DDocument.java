@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.103 $  $Date: 2004-02-13 00:54:06 $
+ * Title: DDocument $Revision: 1.104 $  $Date: 2004-02-16 19:29:09 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.103 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.104 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -321,7 +321,6 @@ public class DDocument  extends InternalFrameAdapter implements
   }
   //-------------------------------------------
   private void  buidDocument(boolean simple, boolean vertical){
-    //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
     /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
     final int MIN_HEIGHT = 512;

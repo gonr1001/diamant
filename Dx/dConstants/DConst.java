@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.78 $  $Date: 2004-02-11 14:22:21 $
+ * Title: DConst $Revision: 1.79 $  $Date: 2004-02-16 19:29:09 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.78 $
+ * @version $Revision: 1.79 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -150,7 +150,7 @@ public class DConst {
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
   public final static String INITIAL_ASSIGN_M = res.getString("initialAssignM");//Affectation Initiale
   public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Affectation Initiale
-  public final static String STUDENTMIXING = res.getString("studentMixing");//Brassage d'étudiants
+  public final static String STUDENTS_REPARTITION = res.getString("studentRepartition");//Brassage d'étudiants
   public final static String STUDENTMIXINGBAL = res.getString("studentMixingBal");//Brassage d'étudiants balancé
   public final static String STUDENTMIXINGMIDBAL = res.getString("studentMixingMidBal");//Brassage d'étudiants balancé
   public final static String STUDENTMIXINGOPTI = res.getString("studentMixingOpti");//Brassage d'étudiants optimal
@@ -158,8 +158,11 @@ public class DConst {
   public final static String REPORTS = res.getString("ReportM");//Rapports
   //Preferences menu
   public final static String PREF = res.getString("pref");//Preferences
-  public final static String PLAF_M = res.getString("plafM");//ptions L&F
-  public final static String CONFLICTS = res.getString("conflicts");//ptions L&F
+  public final static String PLAF_M = res.getString("plafM");//options L&F
+  public final static String CONFLICTS = res.getString("conflicts");//options L&F
+
+  public final static String DISPLAY_TT = res.getString("displayTT");//"affichage grille"
+
   //Help menu
   public final static String HELP = res.getString("help");//Aide
   public final static String ABOUT_M = res.getString("aboutM");//A propos de

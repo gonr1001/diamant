@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.8 $  $Date: 2003-10-28 14:19:06 $
+ * Title: DetailedTTPane $Revision: 1.9 $  $Date: 2004-02-16 19:29:09 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -85,10 +85,10 @@ public class DetailedTTPane extends TTPane {
    }
    if (vertical) {
      _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
-     _jSplitPane.setDividerLocation(d.height/2);
+     _jSplitPane.setDividerLocation(0.0);
    } else {
       _jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
-      _jSplitPane.setDividerLocation(d.width /2);
+      _jSplitPane.setDividerLocation(0.0);
    }
     _jSplitPane.setOneTouchExpandable(true);
 

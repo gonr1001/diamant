@@ -49,13 +49,7 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
   private TTPane _ttPane;
   private TTStructure _ttStruct;
   private DToolBar _toolBar;
-  //private DModel _dm;
-  //private JFrame _jFrame;
-  //private JDialog _jd;
 
-
-  //private String FRAMENAME="Amélioration Manuelle";
-  //private int INITIALPOSITION=25;
   /**
    * constructor
    */

@@ -79,6 +79,6 @@ public class ManualImprovementDlg extends EventsDlgInterface{
   protected void doubleClicMouseProcess(){
    Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
     ManualImprovementDetailed frameResult =
-        new ManualImprovementDetailed(this,_toolBar,event.getID(), _dm);
+        new ManualImprovementDetailed(this,_toolBar, event.getID(), _dm);
   }
 }//end class

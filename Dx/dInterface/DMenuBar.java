@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.98 $  $Date: 2004-02-16 17:31:56 $
+ * Title: DMenuBar $Revision: 1.99 $  $Date: 2004-02-16 19:29:09 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.98 $
+ * @version $Revision: 1.99 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -60,7 +60,7 @@ import dAux.StateZeroCmd;
 
 public class DMenuBar extends JMenuBar{
   private DApplication _dApplic;
-  private final boolean _DEVELOPMENT = true;
+  private final boolean _DEVELOPMENT = false;
 
   private final String _mfont = DConst.MFONTDialog;
   private final int _font = Font.PLAIN;
@@ -116,12 +116,14 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolMActivityModif;
 
   // the optimisation menus
-  private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,
-  _mStudentsMiddleMixingBalance,_mStudentsMixingOptimize;
-  private boolean _boolMOpti, _boolMInit, _boolFirstAlgo,
+  private CmdMenu
+  _initialAssign,
+  _doOptimization, _mStudentsMixingBalance,
+  _mStudentsMiddleMixingBalance, _mStudentsMixingOptimize;
+  private boolean _boolInitialAssign, _boolDoOptimization,
   _boolStudentsMixingBalance,_boolStudentsMixingOptimize;
-  private JMenu _studentsMixing;
-
+  private JMenu _studentsRepartition;
+  private boolean _boolStudentsRepartition;
   //the report menus
   private CmdMenu _mReport;
 
@@ -149,16 +151,6 @@ public class DMenuBar extends JMenuBar{
     createMenuBar();
   }
 
-  /**
-   * Constructor
-   * @param jframe
-   * @param operation 1= createPreferencesMenu
-   */
- /* public DMenuBar(JFrame jframe, int operation) {
-    super();
-    if(operation == 1)
-      createManualPreferencesMenu(jframe);
-  }*/
 
   /**
    *
@@ -360,48 +352,43 @@ public class DMenuBar extends JMenuBar{
     _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _optimisation );
     // Items in menu Optimisation.
-    _mInit = new CmdMenu(DConst.INITIAL_ASSIGN_M);
-    _mInit.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mInit.setCommand(new InitialAffectCmd(_dApplic));
-    _mInit.addActionListener(_dApplic);
-    _optimisation.add(_mInit);
+    _initialAssign = new CmdMenu(DConst.INITIAL_ASSIGN_M);
+    _initialAssign.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _initialAssign.setCommand(new InitialAssignCmd(_dApplic));
+    _initialAssign.addActionListener(_dApplic);
+    _optimisation.add(_initialAssign);
 
-    // First Algo Item in menu Optimisation.
-    _mFirstAlgo = new CmdMenu(DConst.FIRSTALGORITHM);
-    _mFirstAlgo.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mFirstAlgo.setCommand(new AlgorithmsCmd());
-    _mFirstAlgo.addActionListener(_dApplic);
-    _optimisation.add(_mFirstAlgo);
+    // _doOptimization Item in menu Optimisation.
+    _doOptimization = new CmdMenu(DConst.FIRSTALGORITHM);
+    _doOptimization.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _doOptimization.setCommand(new AlgorithmsCmd());
+    _doOptimization.addActionListener(_dApplic);
+    _optimisation.add(_doOptimization);
 
     // Items in menu StudentMixing.
-    _studentsMixing = new JMenu(DConst.STUDENTMIXING);
-    _studentsMixing.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _studentsRepartition = new JMenu(DConst.STUDENTS_REPARTITION);
+    _studentsRepartition.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
     _mStudentsMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
     _mStudentsMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
     _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd());
     _mStudentsMixingBalance.addActionListener(_dApplic);
-    _studentsMixing.add(_mStudentsMixingBalance);
+    _studentsRepartition.add(_mStudentsMixingBalance);
 
     _mStudentsMiddleMixingBalance= new CmdMenu(DConst.STUDENTMIXINGMIDBAL);
     _mStudentsMiddleMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
     _mStudentsMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd());
     _mStudentsMiddleMixingBalance.addActionListener(_dApplic);
-    _studentsMixing.add(_mStudentsMiddleMixingBalance);
+    _studentsRepartition.add(_mStudentsMiddleMixingBalance);
 
     _mStudentsMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
     _mStudentsMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mStudentsMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd());
     _mStudentsMixingOptimize.addActionListener(_dApplic);
-    _studentsMixing.add(_mStudentsMixingOptimize);
+    _studentsRepartition.add(_mStudentsMixingOptimize);
 
-    _optimisation.add(_studentsMixing);
-    /*_mOpti = new CmdMenu(DConst.PLAF_M);
-    _mOpti.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mOpti.setCommand(new PLAFCmd(_dApplic));
-    _mOpti.addActionListener(_dApplic);
-    _optimisation.add(_mOpti);
-    */
+    _optimisation.add(_studentsRepartition);
+
   }//end createOptimisationMenu
 
 
@@ -442,7 +429,7 @@ public class DMenuBar extends JMenuBar{
 
 
     // Items in menu PREFERENCES.
-    _view = new JMenu("affichage");
+    _view = new JMenu(DConst.DISPLAY_TT);
     _view.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
     _viewSimple = new CmdMenu("simple");
@@ -579,7 +566,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu optimization
     _boolOptimization = false;
-    _boolMOpti= true;
+    //_boolMOpti= true;
 
     //the menu report
     _boolReport = false;
@@ -631,7 +618,10 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
     _boolOptimization = true;
-    _boolMOpti= true;
+    _boolInitialAssign = true;
+    _boolDoOptimization= false;
+    _boolStudentsRepartition = false;
+
 
     //the report menu
     _boolReport = true;
@@ -652,6 +642,61 @@ public class DMenuBar extends JMenuBar{
     setMenus();
   } //end setImport
 
+  private void setAfterInitialAssign() {
+    //the menu _file
+    _boolFile = true;
+    //the submenus
+    _boolNewTTable = false;
+    _boolNewTTableCy = _boolNewTTableEx = true;
+
+    _boolNewTTStruc = false;
+    _boolNewTTStrucCy = _boolNewTTStrucEx = true;
+    _boolOpenTTable  = _boolOpenTTStruc = false;
+    _boolClose = true;
+    _boolSave = _boolSaveAs = true;
+    _boolDefineFiles = true;
+    _boolImport = false;
+    _boolExport = true;
+    _boolExit = true;
+
+
+    //the menu assign
+    _boolAssign= true;
+    _boolActivities = true;
+    _boolSections= true;
+    _boolInstructorAvailability= true;
+    _boolRoomsAvailability= true;
+    _boolEvents= true;
+
+    //the menu modification
+    _boolModification = true;
+    _boolMActivityModif = true;
+
+    //the menu otimization
+    _boolOptimization = true;
+    _boolInitialAssign = true;
+    _boolDoOptimization= true;
+    _boolStudentsRepartition = true;
+
+
+    //the report menu
+    _boolReport = true;
+
+    //the menu preferences
+    // always_boolPreferences= true;
+    // always _boolLookAndFeel =true;
+
+    //the menu help
+    // always _boolHelp= true;
+    // always _boolAbout = true;
+
+    //the menu dev
+    if (_DEVELOPMENT) {
+      _boolDev = true;
+      _boolMyFile = _boolShowAll = _boolStateZero = true;
+    }
+    setMenus();
+  } //end setImport
   private void setNewTTCy() {
     //the menu _file
     _boolFile = true;
@@ -684,7 +729,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
     _boolOptimization = false;
-    _boolMOpti= true;
+    //_boolMOpti= true;
 
     //the report menu
     _boolReport = false;
@@ -737,7 +782,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
     _boolOptimization = false;
-    _boolMOpti= true;
+    //_boolMOpti= true;
 
 
     //the report menu
@@ -791,7 +836,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
     _boolOptimization = false;
-    _boolMOpti= true;
+    //_boolMOpti= true;
 
     //the report menu
     _boolReport = false;
@@ -841,7 +886,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
     _boolOptimization = true;
-    _boolMOpti= true;
+    //_boolMOpti= true;
 
     //the report menu
     _boolReport = true;
@@ -940,7 +985,11 @@ public class DMenuBar extends JMenuBar{
   }
   private void setOptimisationMenu() {
     _optimisation.setEnabled(_boolOptimization);
-    //_mOpti.setEnabled(_boolMOpti);
+    //if (_boolDoOptimization) {
+      _initialAssign.setEnabled(_boolInitialAssign);
+      _doOptimization.setEnabled(_boolDoOptimization);
+      _studentsRepartition.setEnabled(_boolStudentsRepartition);
+
   }
   private void setReportMenu() {
     _report.setEnabled(_boolReport);
@@ -1020,6 +1069,9 @@ public class DMenuBar extends JMenuBar{
   }
 
   public void postConflict(){
+  }
 
+  public void postInitialAssign(){
+    setAfterInitialAssign();
   }
 } /* end class DMenuBar */

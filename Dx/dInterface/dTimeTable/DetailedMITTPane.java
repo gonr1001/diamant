@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.3 $  $Date: 2003-12-15 21:52:56 $
+ * Title: DetailedTTPane $Revision: 1.4 $  $Date: 2004-02-16 19:29:09 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -50,7 +50,8 @@ public class DetailedMITTPane extends TTPane {
     initDetailedTTPane(vertical, d);
   } // end  DetailedTTPane
 
-  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d, String eventName) {
+  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical,
+                          Dimension d, String eventName) {
     super(tts, toolBar);
     _eventName = eventName;
     initDetailedTTPane(vertical, d);
@@ -63,8 +64,10 @@ public class DetailedMITTPane extends TTPane {
   public void updateTTPane(TTStructure ttp){
     _tts = ttp;
     findRowHeaders();
-    initTTPane(_jScrollPaneOne);
+
     initTTPane(_jScrollPaneTwo);
+    initTTPane(_jScrollPaneOne);
+
   }
  //-------------------------------------------
   public int getIpady(int i) {
@@ -86,15 +89,16 @@ public class DetailedMITTPane extends TTPane {
     _jScrollPaneTwo = new JScrollPane();
    findRowHeaders();
    if(_tts!=null){
-     initTTPane(_jScrollPaneOne);
+
      initTTPane(_jScrollPaneTwo);
+     initTTPane(_jScrollPaneOne);
    }
    if (vertical) {
-     _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
-     _jSplitPane.setDividerLocation(d.height/2);
+     _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,_jScrollPaneTwo, _jScrollPaneOne);
+     _jSplitPane.setDividerLocation(0.0);
    } else {
       _jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
-      _jSplitPane.setDividerLocation(d.width /2);
+      _jSplitPane.setDividerLocation(0.0);
    }
     _jSplitPane.setOneTouchExpandable(true);
 

@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.88 $  $Date: 2004-02-13 21:49:21 $
+ * Title: DStringFrRes $Revision: 1.89 $  $Date: 2004-02-16 19:29:09 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.88 $
+ * @version $Revision: 1.89 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -27,7 +27,7 @@ package dResources;
 public class DStringFrRes extends java.util.ListResourceBundle {
   static final Object[][] contents = new String[][]{
 	{ "appName", "Diamant 1.5 " },
-	{ "vDate", "9 fév 2004" },
+	{ "vDate", "16 fév 2004" },
 	{ "bye", "bye" },
 
     /**
@@ -43,14 +43,14 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "nTTCyTD", "Grille horaire cycle"},
     { "nTTCyM", "Cycle"},
 
-    { "nTTEx", "Horaire examen..." },
+    { "nTTEx", "Horaire examen ..." },
     { "nTTExTD", "Grille horaire examen"},
     { "nTTExM", "Examen"},
 
-    { "open", "Ouvrir horaire..." },
+    { "open", "Ouvrir horaire ..." },
     { "oTTTD", "Horaire" },
 
-    { "openTTS", "Ouvrir grille..." },
+    { "openTTS", "Ouvrir grille ..." },
     { "oTTSTD", "Grille" },
 
     { "close", "Fermer" },
@@ -59,7 +59,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "saveAs", "Enregistrer sous ..." },
 
 
-    { "defFM", "Definir fichiers à importer" },
+    { "defFM", "Definir fichiers à importer ..." },
     { "defFTD", "Definir fichiers pour l'importation automatique"},
     { "defFD1", "Les cours" },
     { "defFD2", "Les étudiants" },
@@ -71,7 +71,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "defFD8", "Fichiers d'importation" },
 
 
-    { "impAM", "Importer automatiquement" },
+    { "impAM", "Importer automatiquement ..." },
     { "impATD", "Importation de fichiers"},
     { "impAD", "To be defined" },
     { "impASuc","Fichiers importés avec succes!!!"},
@@ -120,7 +120,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "OptimizationM", "Optimisation"},
     {"initialAssignM", "Affectation Initiale"},
     {"firstAlgo", "Construire l'horaire"},
-    {"studentMixing", "Brassage d'étudiants"},
+    {"studentRepartition", "Formation de groupes"},
     {"studentMixingBal", "Balancé"},
     {"studentMixingMidBal", "Intermédiaire"},
     {"studentMixingOpti", "Optimisé"},
@@ -140,12 +140,16 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "plafM", "Options L&F"},
     { "plafTD", "Options L&F"},
     { "plafD", "Choisisez un L&F"},
-    {"conflicts","Options Conflits"},
+    { "conflicts","Options Conflits ..."},
+    { "displayTT","Affichage grille"},
+
+
+
     //Help
     { "help", "Aide"},
-    { "aboutM", "A propos de "},
+    { "aboutM", "A propos de ..."},
     { "aboutTD", "A propos de "},
-    { "aboutD",  " \nCopyRight\n 2000 - 2003"},
+    { "aboutD",  " \nCopyRight\n 2000 - 2004"},
 
     // common buttons
     {"butOK", "Ok"},
