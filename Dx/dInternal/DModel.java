@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.98 $  $Date: 2004-06-04 13:18:48 $
+ * Title: DModel $Revision: 1.99 $  $Date: 2004-06-04 14:41:48 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.98 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.99 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -24,16 +24,16 @@ import java.util.Vector;
 
 import java.awt.Component;
 import java.awt.Cursor;
+import java.io.File;
 import dInterface.DDocument;
 import dInternal.dData.*;
 import dInternal.dXMLData.*;
+import dInternal.dXMLData.rooms.SetOfCategories;
 import dInternal.dConditionsTest.*;
 
 import dInternal.dUtil.DXValue;
 
 import dInternal.dTimeTable.TTStructure;
-import dInternal.DModelEvent;
-import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dConditionsTest.SetOfEvents;
@@ -53,6 +53,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   protected static SetOfStates _setOfStates;
   protected static SetOfInstructors _setOfInstructors=null;
   protected static SetOfRooms _setOfRooms=null;
+  protected static SetOfCategories _setOfCategories=null;
   protected static SetOfStudents _setOfStudents=null;
   protected static SetOfActivities _setOfActivities=null;
  // private DApplication _dApplic;
@@ -109,7 +110,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     _conditionTest = new TestConditions(this);
     _type = type;
     _modified = false;
-    System.out.println("Max number of periods in a sequence: "+ _ttStruct.getCurrentCycle().getMaxNumberOfPeriodsInASequence());//debug
+    //System.out.println("Max number of periods in a sequence: "+ _ttStruct.getCurrentCycle().getMaxNumberOfPeriodsInASequence());//debug
   }
 
   /**
@@ -196,6 +197,13 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public String loadTimeTable(String fileName){
+//	debug for xml file to be remove
+	 // ysyam
+	 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+	 XMLLoadData xmlloadData = new XMLLoadData(filename, this);
+	 _setOfCategories= xmlloadData.extractRooms(null, true);
+	 // end debug
+    
     LoadData loadD = new LoadData(this);
     Vector project = loadD.loadProject(fileName);
 
@@ -297,8 +305,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public String importData(String str) {
     // debug for xml file to be remove
     // ysyam
-    XMLLoadData xmlloadData = new XMLLoadData(str, this);
-    xmlloadData.extractRooms(null, true);
+    String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+    XMLLoadData xmlloadData = new XMLLoadData(filename, this);
+    _setOfCategories= xmlloadData.extractRooms(null, true);
     // end debug
 
     LoadData loadData = new LoadData(str, this);
@@ -391,6 +400,16 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public SetOfRooms getSetOfRooms(){
     return _setOfRooms;
   }
+  
+  /**
+	 *
+	 * @return
+	 */
+	public SetOfCategories getSetOfCategories(){
+	  return _setOfCategories;
+	}
+  
+  
 
   /**
    *

@@ -8,9 +8,9 @@ package dInternal.dXMLData.rooms;
  * @author  ysyam
  * @version 1.0
  */
-import java.util.StringTokenizer;
+
 import java.util.Vector;
-import java.io.File;
+
 import java.awt.Component;
 import dResources.DConst;
 
@@ -18,8 +18,9 @@ import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
-import dResources.DConst;
+
 import org.w3c.dom.*;
+import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.RoomsAttributesInterpretor;
 import dInternal.dData.SetOfRoomsListener;
@@ -139,14 +140,14 @@ public class SetOfCategories extends SetOfResources{
         Element category= list.getElement(_setofcat,_ROOMTAGITEM1,i);
         ID= list.getElementValue(category,_ROOMTAGITEM1_1);
         //Element setofrooms = list.getElement(category,_ROOMTAGITEM1_2,1);
-        System.out.println(" Category ID: "+ID);//debug
+        //System.out.println(" Category ID: "+ID);//debug
         error= XMLTools.tagError(category,_ROOMTAGITEM1_2);
         if(error.length()==0){
             Element setofrooms= list.getElement(category,_ROOMTAGITEM1_2,0);
             //read rooms
             readRoomsTag(setofrooms);// read rooms
         }// end if(error.length()==0)
-        //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
+        addResource(new Resource(ID,null),0);
       }// end for (int i=0; i< size; i++)
     }// end if(error.length()==0)
     return error;
@@ -168,7 +169,7 @@ public class SetOfCategories extends SetOfResources{
        capacity= list.getElementValue(room,_ROOMTAGITEM2_2);
        Element caracteristics= list.getElement(room,_ROOMTAGITEM2_3,i);
        Element availabilities= list.getElement(room,_ROOMTAGITEM2_4,i);
-       System.out.println(" Room name: "+name+ " Capacity: "+ capacity);//debug
+       //System.out.println(" Room name: "+name+ " Capacity: "+ capacity);//debug
        //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
      }// end for (int i=0; i< size; i++)
    }// end if(error.length()==0)

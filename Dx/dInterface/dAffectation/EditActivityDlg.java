@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.35 $  $Date: 2004-06-04 13:21:41 $
+ * Title: EditActivityDlg $Revision: 1.36 $  $Date: 2004-06-04 14:41:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -69,6 +69,7 @@ import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
+import dInternal.dXMLData.rooms.SetOfCategories;
 
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;
@@ -93,8 +94,7 @@ public class EditActivityDlg
 	private boolean _canBeModified = false;
 	private Vector _unities = new Vector();           // contains event resource
 	private JList [] _instructorsLists;
-	//private Vector _thePeriods;
-
+	
 	 
 	  /**
 	   * Constructor for EditActivityDlg in the case of one or more
@@ -171,9 +171,9 @@ public class EditActivityDlg
 	    
 	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	    
-	    this.setBounds(screenSize.width/ 4, 
+	    this.setBounds(screenSize.width/ 6, 
 						screenSize.height/ 4, 
-						screenSize.width/ 2, 
+						screenSize.width/ 3, 
 						screenSize.height/ 2 + FACTOR );	
 						
 	    this.setResizable(true);
@@ -188,10 +188,10 @@ public class EditActivityDlg
 	    String command = e.getActionCommand();
 		System.out.println(command);
 		if (command.equals("name")) {
-		  System.out.println("change in Name");
+		  //System.out.println("change in Name");
 		}
 		if (command.equals("cat")) {
-		  System.out.println("change in Cat");
+		  //System.out.println("change in Cat");
 		}
 	    if (command.equals(DConst.BUT_CLOSE)) {  // fermer
 	      dispose();
@@ -217,12 +217,7 @@ public class EditActivityDlg
 	              || command.equals(DConst.BUT_FIGE)){// a comboBox has changed
 	      //System.out.println("Enable appliquer ... ");
 		  _applyPanel.setFirstEnable();
-		  if (command.equals("name")) {
-		  	System.out.println("change in Name");
-		  }
-		  if (command.equals("cat")) {
-			System.out.println("change in Cat");
-		  }
+		 
 	    } else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
 	     //if (instructorsLists[_currentActivityIndex]= null)
 	      new SelectInstructors(_dApplic, this, 
@@ -336,7 +331,7 @@ public class EditActivityDlg
 		roomName.add(roomCB);
 		categoryRoom.add(categoryRoomCB);
 		roomPanel.add(roomName);
-		roomPanel.add(categoryRoom);
+		//roomPanel.add(categoryRoom);
 		myPanel.add(roomPanel);
 		
 		return myPanel;
@@ -346,8 +341,8 @@ public class EditActivityDlg
 	private String getSelectedRoom(JPanel jPanel) {		
 		JPanel externalPanel = (JPanel) jPanel.getComponent(2);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
-	
-		return ((JComboBox)myJPanel.getComponent(0)).getSelectedItem().toString();		
+		JPanel roomJPanel = (JPanel) myJPanel.getComponent(0);
+		return ((JComboBox)roomJPanel.getComponent(0)).getSelectedItem().toString();		
 	} // end getSelectedRoom
 	
 	
@@ -396,7 +391,7 @@ public class EditActivityDlg
 		durationPanel.add(periodsCB);
 		
 		if (_canBeModified) {
-			periodsCB.setSelectedItem(thePeriods.get(0).toString());
+			periodsCB.setSelectedItem(buildDuration());
 			periodsCB.addActionListener(this);
 		} else {
 			periodsCB.setSelectedItem(buildDuration());		
@@ -658,15 +653,15 @@ public class EditActivityDlg
   private Vector[] buildCategoryRoomList(){
 	Vector list[] = {new Vector(1), new Vector(1)};
 	EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-	SetOfRooms sor= _dm.getSetOfRooms();
+	SetOfCategories soc= _dm.getSetOfCategories();
 	//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-	Resource room = sor.getResource(event.getRoomKey());
-	if(room!=null)
-	  list[0].add(room.getID());
-	else
-	  list[0].add(DConst.NO_ROOM_INTERNAL);
-	for(int i=0; i< sor.size(); i++)
-	  list[1].add(sor.getResourceAt(i).getID());
+	//Resource room = sor.getResource(event.getRoomKey());
+	//if(room!=null)
+	  //list[0].add(room.getID());
+	//else
+	 list[0].add(DConst.NO_ROOM_INTERNAL);
+	for(int i=0; i< soc.size(); i++)
+	  list[1].add(soc.getResourceAt(i).getID());
 	list[1].add(DConst.NO_ROOM_INTERNAL);
 	return list;
   }
