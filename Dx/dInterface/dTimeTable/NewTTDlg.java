@@ -2,8 +2,8 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.5 $  $Date: 2003-05-23 15:34:10 $
- * Description: ImportDlg is created by DefFileToImportCmd
+ * Title: NewTTDlg $Revision: 1.6 $  $Date: 2003-06-02 15:05:36 $
+ * Description: NewTTDlg is created by NewTTDCmd
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -45,7 +45,6 @@ import dInternal.dTimeTable.TTStructure;
  */
 
 public class NewTTDlg extends JDialog {
-  //DApplication _dApplic;
   /**
     * the constructor will displays the dialog
     *
@@ -54,8 +53,8 @@ public class NewTTDlg extends JDialog {
     * @since           JDK1.3
     */
 
-   public NewTTDlg(DApplication dApplic) {
-     loadTTData(dApplic);
+   public NewTTDlg(DApplication dApplic, int type) {
+     loadTTData(dApplic, type);
    } // end constructor
 
    /**
@@ -63,14 +62,28 @@ public class NewTTDlg extends JDialog {
    /**
     *
     * */
-   private void loadTTData(DApplication dApplic){
+   private void loadTTData(DApplication dApplic, int type) {
      JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
-     fc.setFileFilter( new DFileFilter (new String[] {DConst.DGH},
-         DConst.DGH_FILE) );
+     String str1= "";
+     String  str2 = "";
+     String  str3 = "" ;
+     if (type == DConst.CYCLE) {
+       str1 = DConst.DGH;
+       str2 = DConst.DGH_FILE;
+       str3 = DConst.NTT_CY_TD;
+     }
+     if (type == DConst.EXAM) {
+       str1 = DConst.DGH;
+       str2 = DConst.DGH_FILE;
+       str3 = DConst.NTT_EX_TD;
+     }
+
+     fc.setFileFilter( new DFileFilter (new String[] {str1},
+         str2) );
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-     int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.NEW_TT_M);
+     int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
 
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
@@ -80,7 +93,7 @@ public class NewTTDlg extends JDialog {
        dApplic.setCurrentDir(fil);
        //load grille,
        TTStructure ttStruct = new TTStructure();
-       String error = "";// ttStruct.loadData(fil);
+       String error = ttStruct.rloadData(fil);
 
        dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
 
@@ -92,7 +105,6 @@ public class NewTTDlg extends JDialog {
        dispose();
 
      }
-   }// end method
+   }// end loadTTData
 
-
-} /* end class NewDlg */
+} /* end class NewTTDlg */

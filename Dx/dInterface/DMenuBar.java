@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.23 $  $Date: 2003-05-29 18:03:03 $
+ * Title: DMenuBar $Revision: 1.24 $  $Date: 2003-06-02 15:05:36 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -33,6 +33,8 @@ import javax.swing.JMenu;
 import dInterface.dData.*;
 import dInterface.dTimeTable.NewTTExCmd;
 import dInterface.dTimeTable.NewTTCyCmd;
+import dInterface.dTimeTable.OpenTTCmd;
+
 
 import dInterface.dTimeTable.NewTTSCmd;
 import dInterface.dTimeTable.OpenTTSCmd;
@@ -85,17 +87,11 @@ public class DMenuBar extends JMenuBar{
 
     menu.add(mNewTT);
 
-    //CmdMenu mNewTT = new CmdMenu(DConst.NEW_TT);
-    //menu.add(mNewTT);
-    //mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
-    //mNewTT.setCommand(new NewTTCmd());
-    //mNewTT.addActionListener(_dApplic);
-
-    CmdMenu mOpen = new CmdMenu(DConst.OPEN);
-    menu.add(mOpen);
-    mOpen.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mOpen.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    mOpen.addActionListener(_dApplic);
+    CmdMenu mOpenTT = new CmdMenu(DConst.OPEN);
+    menu.add(mOpenTT);
+    mOpenTT.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mOpenTT.setCommand(new OpenTTCmd());
+    mOpenTT.addActionListener(_dApplic);
 
     CmdMenu mClose = new CmdMenu(DConst.CLOSE);
     menu.add(mClose);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.18 $  $Date: 2003-05-23 15:34:10 $
+ * Title: DModel $Revision: 1.19 $  $Date: 2003-06-02 15:05:36 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -23,6 +23,7 @@ package dInternal;
 import java.util.Vector;
 import java.io.*;
 import javax.swing.JFrame;
+import dInterface.DApplication;
 import dInternal.dData.*;
 
 import dInternal.dTimeTable.TTStructure;
@@ -36,19 +37,26 @@ public class DModel{
   private SetOfRooms _setOfRooms;
   private SetOfStudents _setOfStudents;
   private SetOfActivities _setOfActivities;
-  private JFrame _jFrame;
+  private DApplication _dApplic;
   private TTStructure _ttStruct;
 
 
-  public DModel(JFrame jFrame, TTStructure ttStruct) {
+  public DModel(DApplication dApplic, TTStructure ttStruct) {
     _status = new Status();
     //_ttParameters = new TTParameters();
-    _jFrame = jFrame;
+    _dApplic = dApplic;
     _ttStruct = ttStruct;
     //importData("hello");
     //test1_setAvailability();
   }
-
+  public DModel(JFrame jFrame, TTStructure ttStruct) {
+    _status = new Status();
+    //_ttParameters = new TTParameters();
+    //_dApplic = dApplic;
+    _ttStruct = ttStruct;
+    //importData("hello");
+    //test1_setAvailability();
+  }
   public Status getStatus() {
     return _status;
   }

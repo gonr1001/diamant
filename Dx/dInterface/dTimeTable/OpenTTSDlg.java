@@ -61,7 +61,7 @@ import dResources.DConst;
      dApplic.setCurrentDir(fil);
      //load grille,
      TTStructure ttStruct = new TTStructure();
-     String error = ttStruct.loadData(fil);
+     String error = ttStruct.rloadData(fil);
 
      new TTDefinitionDlg(dApplic);
  //    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);

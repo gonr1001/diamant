@@ -81,9 +81,10 @@ public Period getPeriod(){
    String [] a = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
    return a[i];
  }
- public String loadData(String  fils) {
+ public String rloadData(String  fils) {
+   System.out.println("TTStructure.loadData must load the data file  into TTStructure");
    return new String("");
-  }
+ }
   public String getError() {
     return new String("");
   }

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.22 $  $Date: 2003-05-27 17:15:11 $
+ * Title: DDocument $Revision: 1.23 $  $Date: 2003-06-02 15:05:36 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -56,47 +56,17 @@ public class DDocument implements ActionListener, DModelListener{
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
   //-------------------------------------------
-  public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
-   //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
-  /* MIN_HEIGHT is needed to ajdust the minimum
-   * height of the _jif */
-  final int MIN_HEIGHT = 512;
-  /* MIN_WIDTH is needed to ajdust the minimum
-   * width of the _jif */
-  final int MIN_WIDTH = 512;
-  /* MIN_HEIGHT is needed to ajdust the minimum
-   * height of the _jif */
-  final int MAX_HEIGHT = 1024;
-  /* MIN_WIDTH is needed to ajdust the minimum
-   * width of the _jif */
-  final int MAX_WIDTH = 1024;
-  _dApplic = dApplic;
-    //_mediator = mediator;
-    _dm = new DModel(_dApplic.getJFrame(),ttStruct);
-    _jif = new JInternalFrame(title,true,true,true,true);
-    //_bottomLablel = new JLabel("hello");
-    _statusPanel = initStatusPanel();
-    _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
-    _ttPanel = new TTPanel(_dm);
-    //_ttPanel.setPreferredSize( new Dimension(20 , 20) );//_jif.getContentPane().getWidth()+ 500,
-         // _jif.getContentPane().getHeight() + 500) );
-    _dm.addDModelListener(this);
-    _modified = false;
+  public DDocument(DApplication dApplic, String title) {
+    _dApplic = dApplic;
+    // read TTstructure
+    TTStructure ttStruct = new TTStructure();
+     // read TTstructure
+    buidDocument(title, ttStruct);
+  } // end constructor DDocument()
 
-    _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
-    _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
-    _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
-    _jif.pack();
-    _dApplic.getDesktop().add(_jif, new Integer(1));
-    _jif.setVisible(true);
-    try {
-      _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel to be present when the _jif is resized
-    }
-    catch (java.beans.PropertyVetoException pve) {
-      new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
-      System.exit(52);
-      pve.printStackTrace();
-    }
+  public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
+    _dApplic = dApplic;
+    buidDocument(title, ttStruct);
   } // end constructor DDocument()
 
 
@@ -177,4 +147,47 @@ public class DDocument implements ActionListener, DModelListener{
       this.updateStatusPanel();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
     }// end actionPerformed
+
+  private void  buidDocument(String title, TTStructure ttStruct){
+    //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
+/* MIN_HEIGHT is needed to ajdust the minimum
+    * height of the _jif */
+    final int MIN_HEIGHT = 512;
+/* MIN_WIDTH is needed to ajdust the minimum
+    * width of the _jif */
+    final int MIN_WIDTH = 512;
+/* MIN_HEIGHT is needed to ajdust the minimum
+    * height of the _jif */
+    final int MAX_HEIGHT = 1024;
+/* MIN_WIDTH is needed to ajdust the minimum
+    * width of the _jif */
+    final int MAX_WIDTH = 1024;
+
+    //_mediator = mediator;
+    _dm = new DModel(_dApplic,ttStruct);
+    _jif = new JInternalFrame(title,true,true,true,true);
+    //_bottomLablel = new JLabel("hello");
+    _statusPanel = initStatusPanel();
+    _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
+    _ttPanel = new TTPanel(_dm);
+    //_ttPanel.setPreferredSize( new Dimension(20 , 20) );//_jif.getContentPane().getWidth()+ 500,
+    // _jif.getContentPane().getHeight() + 500) );
+    _dm.addDModelListener(this);
+    _modified = false;
+
+    _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
+    _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
+    _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
+    _jif.pack();
+    _dApplic.getDesktop().add(_jif, new Integer(1));
+    _jif.setVisible(true);
+    try {
+      _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel to be present when the _jif is resized
+    }
+    catch (java.beans.PropertyVetoException pve) {
+      new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
+      System.exit(52);
+      pve.printStackTrace();
+    }
+  }
 } /* end DDocument class */
