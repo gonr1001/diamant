@@ -24,6 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTabbedPane;
 
 import dInterface.DApplication;
+import dInterface.dTimeTable.SaveAsDlg;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dData.Resource;
@@ -39,7 +40,8 @@ public class ReportDlg extends JDialog implements ActionListener{
   private JDialog _jd = this;
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
-  private String[] _buttonsNames = {DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+  private String _reportData;
+  private String[] _buttonsNames = {DConst.BUT_OPTIONS, DConst.BUT_CLOSE, DConst.BUT_SAVE, DConst.BUT_SAVE_AS};
   private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private SetOfResources[] _resources;
 
@@ -120,13 +122,13 @@ public class ReportDlg extends JDialog implements ActionListener{
       ((DXValue)res.getAttach()).setBooleanValue(true);
       _resources[_tabbedPane.getSelectedIndex()] = selectedResources;
     }//end for
-    String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
+    _reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
     JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
     jta.setFont(DConst.JLISTS_FONT);
-    jta.setText(reportData);
+    jta.setText(_reportData);
     //buildReport(fieldsNames, fieldLengths, reportData);
-    buildReport(fieldsNames, fieldLengths, subFields, reportData);
+    buildReport(fieldsNames, fieldLengths, subFields, _reportData);
   }//end method
 
   /**
@@ -191,12 +193,24 @@ public class ReportDlg extends JDialog implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //If "Option" button
+    //if "Option" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
         new ReportOptionsDlg(_dApplic, _jd, _resources[_tabbedPane.getSelectedIndex()], _tabbedPane.getSelectedIndex());
-    //If "Close" button
+    //if "Close" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
       dispose();
+    //if "Save" button
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
+      System.out.println("");
+    //if "Save as" button
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(3))){
+      if (_reportData != null){
+        JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
+        JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
+        new SaveAsDlg(_dApplic, jta.getText());
+      }
+    }
+
   }//end method
 
 

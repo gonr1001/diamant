@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.65 $  $Date: 2003-10-22 15:01:15 $
+ * Title: DConst $Revision: 1.66 $  $Date: 2003-10-22 17:40:46 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.65 $
+ * @version $Revision: 1.66 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -42,23 +42,27 @@ public class DConst {
   public final static String BUT_FIGE = res.getString("butFige");//Figer
   public final static String BUT_ADD = res.getString("butAdd");//Ajouter
   public final static String BUT_REMOVE = res.getString("butRemove");//Remove
+  public final static String BUT_SAVE = res.getString("butSave");//Enregistrer
+  public final static String BUT_SAVE_AS = res.getString("butSaveAs");//Enregistrer sous
   public final static String SORT_TITLE = res.getString("sortTitle");//Trier
   public final static String TOKENSEPARATOR = ".";//Sans titre
   public final static String NO_NAME = res.getString("noName");//Sans titre
   public final static String DIA = res.getString("dia");//dia
   public final static String DIM = res.getString("dim");//dim
   public final static String XML = res.getString("xml");//xml
+  public final static String TXT = res.getString("txt");//txt
   public final static String DOT_DIA = res.getString("dotDia");//.dia
   public final static String DOT_DIM = res.getString("dotDim");//.dim
   public final static String DOT_XML = res.getString("dotXml");//.xml
+  public final static String DOT_TXT = res.getString("dotTxt");//.txt
   public final static String SIG = res.getString("sig");//sig
   public final static String DGH = res.getString("dgh");//dgh, unp
-  public final static String TXT = res.getString("txt");//txt
   public final static String DIM_FILE = res.getString("dimFile");//*.dim
   public final static String DIA_FILE = res.getString("diaFile");//*.dia
   public final static String SIG_FILE = res.getString("sigFile");//*.sig
   public final static String DGH_FILE = res.getString("dghFile");//*.dgh, unp
   public final static String XML_FILE = res.getString("xmlFile");//*.xml
+  public final static String TXT_FILE = res.getString("txtFile");//*.txt
   public final static String PROBLEM = res.getString("problem");//À corriger, unp
 
   public final static String MFONTDialog = "Dialog";// unp????pas trouve dans DStringFrRes

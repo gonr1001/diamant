@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.64 $  $Date: 2003-10-22 15:01:15 $
+ * Title: DStringFrRes $Revision: 1.65 $  $Date: 2003-10-22 17:40:47 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -156,14 +156,19 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"butFige", "Figer"},
     {"butAdd", "Ajouter"},
     {"butRemove", "Supprimer"},
+    {"butSave","Enregistrer"},
+    {"butSaveAs","Enregistrer sous..."},
+
     // common titles
     {"noName", "Sans titre"},
     {"dia", "dia"},
     {"dim", "dim"},
     {"xml", "xml"},
+    {"txt","txt"},
     {"dotDia", ".dia"},
     {"dotDim", ".dim"},
     {"dotXml", ".xml"},
+    {"dotTxt",".txt"},
     {"sig", "sig"},
     {"txt", "txt"},
     {"dgh", "dgh"},
@@ -172,6 +177,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"diaFile", "Fichier Diamant (*.dia)"},
     {"dghFile", "Fichier Grille Horaire (*.dgh)"},
     {"xmlFile", "Fichier Grille Horaire (*.xml)"},
+    {"txtFile", "Fichier Rapport (*.txt)"},
     {"problem", "À corriger"},
     {"sortTitle", "Trier"},
 
@@ -276,11 +282,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"RInstructorName","Instructor"},
     {"RRoomName","Salle"},
     {"RSequenceID","Séquence"},
-    {"RUnityBeginH", "Unité(h. début)"},
+    {"RUnityBeginH", "Unité(H. début)"},
     {"REvent1_ID","Événement 1"},
     {"REvent2_ID","Événement 2"},
-    {"RNumberOfConflicts","No. conf."},
-    {"RTypeOfConflict","Type conflit"},
+    {"RNumberOfConflicts","Conf.(No.)"},
+    {"RTypeOfConflict","Conflit(Type)"},
     {"RStudentConflict","C-Étudiant"},
     {"RRoomConflict","C. C-Salle"},
     {"RInstructorConflict","C-Instructor"},

@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.11 $  $Date: 2003-07-14 09:30:40 $
+ * Title: SaveAsDlg $Revision: 1.12 $  $Date: 2003-10-22 17:40:46 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -78,12 +79,22 @@ public class SaveAsDlg extends JDialog
    public SaveAsDlg(DApplication dApplic) {
      //super(dApplic.getJFrame());
      _dApplic = dApplic;
-     saveAs();
+     //saveAs();
+     saveAs(null);
+   } // end constructor
+
+   /**
+    * Constructor
+    * @param dApplic The application
+    * @param fileType -1 if the file type is "dia" or "xml". 0 if "txt"
+    */
+   public SaveAsDlg(DApplication dApplic, String data) {
+     _dApplic = dApplic;
+     saveAs(data);
    } // end constructor
 
 
-
-
+/*
    public void saveAs() {
      File file;
      String DOTEXT="";
@@ -142,4 +153,98 @@ public class SaveAsDlg extends JDialog
        }
      }// end if(returnVal == JFileChooser.APPROVE_OPTION)
    }//end saveAs() method
+
+   */
+
+   public void saveAs(String data) {
+     File file;
+     String DOTEXT="";
+     String error  = "";
+     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
+     if (data == null){
+       if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
+         fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
+             DConst.DIA_FILE ) );
+         DOTEXT= DConst.DOT_DIA;
+       }
+       else{
+         fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
+             DConst.XML_FILE ) );
+         DOTEXT= DConst.DOT_XML;
+       }
+     }else{//end if (data == null)
+       fc.setFileFilter( new DFileFilter ( new String[] {DConst.TXT},
+             DConst.TXT_FILE ) );
+         DOTEXT= DConst.DOT_TXT;
+     }
+
+  fc.setMultiSelectionEnabled( false );
+
+  // Display the file chooser in a dialog
+  int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
+
+  // If the file chooser exited sucessfully,
+  // and a file was selected, continue
+  if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+    // Save the file name
+    String currentFile = fc.getSelectedFile().getAbsolutePath();
+    System.out.println("currentFile " + currentFile);
+    if ( !currentFile.endsWith(DOTEXT) )
+      currentFile = currentFile.concat(DOTEXT);
+
+
+    // If there is a file with this file name in the same path
+    file = new File(currentFile);
+    if (file.exists()){
+      String fileName = currentFile.substring(currentFile.lastIndexOf(File.separator)+1);
+      int resp= ConfirmDlg.showMessage(_dApplic, "Remplacer le fichier " + fileName + " existante?");
+      if( resp== ConfirmDlg.OK_OPTION){
+        //if it's a "dia" or "xml" file
+        if(data == null){
+          _dApplic.getDMediator().saveCurrentDoc(currentFile);
+          new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+        }
+        //if it'a a txt file
+        if (data != null){
+          saveWithData(currentFile, data);
+        }//end if (fileType == 0)
+      }
+      if(resp == ConfirmDlg.NO_OPTION){
+        saveAs(data);
+      }
+      if(resp == ConfirmDlg.CANCEL_OPTION){
+
+      }
+    }else{
+      if(data == null){
+        error = _dApplic.getDMediator().saveCurrentDoc(currentFile);
+      }
+      //if it's a txt file
+      if (data != null){
+        error = saveWithData(currentFile, data);
+        if (error.length() == 0)
+          new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+        else
+          new FatalProblemDlg(error);
+      }//end if (data != null)
+    }//end else if(file.exists())
+  }// end if(returnVal == JFileChooser.APPROVE_OPTION)
+   }//end saveAs() method
+
+   private String saveWithData(String currentFile, String data){
+     String error = "";
+     try{
+          FileWriter fw = new FileWriter(currentFile);
+          fw.write(data);
+          fw.close();
+          return error;
+        }catch(Exception e){
+          error = "Problem with the file";
+          new FatalProblemDlg(error);
+          return error;
+        }
+   }
+
+
 }//end class
