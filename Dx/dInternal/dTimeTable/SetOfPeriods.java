@@ -3,10 +3,30 @@
 package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
-public class SetOfPeriods extends SetOfResources {
-    public SetOfPeriods() {
-      super(4);
-    }
+public class SetOfPeriods {
 
-    private Period _period;
+  /**
+   * Constructor
+   * */
+  public SetOfPeriods() {
+     _setOfPeriods= new SetOfResources(4);
+  }
+
+  /**
+   * get the set of periods
+   * @return SetOfResources the set of periods
+   * */
+  public SetOfResources getSetOfPeriods(){
+    return _setOfPeriods;
+  }
+
+  /**
+   * set the set of periods
+   * @param SetOfResources the set of periods
+   * */
+  public void setSetOfPeriods(SetOfResources setOfPeriods){
+    _setOfPeriods= setOfPeriods;
+  }
+
+    private SetOfResources _setOfPeriods;
 }

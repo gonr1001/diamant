@@ -32,12 +32,16 @@ public class TTPanel extends JScrollPane {
   private int UWIDTH =  100; // timeTable.nbDays * MINWIDTH;
   private int UHEIGHT =  60;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
+  private int _periodLenght;
+
+
 //  private int MINWIDTH =  500; // timeTable.nbDays * MINWIDTH;
 //  private int MINHEIGHT =  600;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
   public TTPanel(DModel dm) {
     super();
     _dm = dm;
+    _periodLenght= _dm.getTTStructure().getPeriodLenght();
     initTTPanel();
   }
 
@@ -115,14 +119,15 @@ public class TTPanel extends JScrollPane {
         c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.gridx = i;
-        c.gridy = period._beginHour[0] - period._endHour[0];
-        if ( period._endHour[1] == 0 ){
-          c.gridheight = period._endHour[0] - period._beginHour[0];
-          c.insets = new Insets( period._beginHour[1]*UHEIGHT/60, 0, 0, 0 );
+        c.gridy = period.getBeginHour()[0] - period.getEndHour(_periodLenght)[0];
+        if ( period.getEndHour(_periodLenght)[1] == 0 ){
+          c.gridheight = period.getEndHour(_periodLenght)[0] - period.getBeginHour()[0];
+          c.insets = new Insets( 0/*period._beginHour[0]*UHEIGHT/60*/, 0, 0, 0 );
+
         } else {
-          c.gridheight = period._endHour[0] + 1 - period._beginHour[0];
-          c.insets = new Insets( period._beginHour[0]*UHEIGHT/60, 0,
-                                 (60 - period._beginHour[0]*UHEIGHT/60), 0 );
+          c.gridheight = period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
+          c.insets = new Insets( period.getBeginHour()[0]*UHEIGHT/60, 0,
+                                 (60- period.getBeginHour()[0]*UHEIGHT/60), 0 );
 
         }
         //c.insets = new Insets(10, 0, 0, 0 );

@@ -3,12 +3,17 @@ package dInternal.dTimeTable;
 import dInternal.dData.SetOfResources;
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
+import xml.InPut.readFile;
+import xml.InPut.ReadXMLElement;
 import xml.Const.Tag;
 import org.w3c.dom.*;
 //import javax.xml.parsers.FactoryConfigurationError;
 
 public class TTStructure {
   private SetOfCycles _setOfCycles;
+  private int _periodLenght=60;
+  private int _nbOfStCycles=1;
+  private int _nbOfStDays=5;
   //DXTimeTable tag
   public static final String ITEM2= "DXTimeTable";
   //subtag
@@ -24,8 +29,16 @@ public class TTStructure {
   public TTStructure() {
     _col=6;
     _row= 15;
-    saveStandardTT("StandardTTC.xml");
+    CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
 
+  }
+
+  public int getPeriodLenght(){
+    return _periodLenght;
+  }
+
+  public void setPeriodLenght(int periodL){
+     _periodLenght= periodL;
   }
 
  public SetOfResources getSetOfCycles() {
@@ -72,7 +85,60 @@ public Period getPeriod(){
     return new String("");
   }
 
-  public void saveStandardTT(String fileName){
+  /**
+   * Create a sequence of periods
+   * @param Document the xml document where we are working
+   * @param String String the sequence ID (AM, PM or EM= evening)
+   * @param int the number of periods in the sequence
+   * @param int the lenght of each period in the sequence
+   * @param int[2] the begin time of the period. the first element of the table
+   * is the our, and the second is the minutes
+   * @param int the prioryti of each period
+   * @return Element the sequence element
+   * */
+  private Element CreateSeqPeriods(Document doc, String seqID, int nbOfPeriods, int periodLenght, int[] beginTime, int priority){
+    //add PM periods
+    BuildXMLElement xmlElt;
+    try{
+      xmlElt = new BuildXMLElement();
+      Element eltSeq= xmlElt.createElement(doc,ITEM2_subTag[4]);
+      Element eltPers= xmlElt.createElement(doc,ITEM2_subTag[5]);
+      int hour=beginTime[0];
+      for (int i=0; i<nbOfPeriods; i++){
+        int mn= (beginTime[1]+periodLenght*i)%60;//
+        hour=beginTime[0]+(beginTime[1]+periodLenght*i)/60;
+        String time= hour+":"+mn;
+        Element child0=xmlElt.createElement(doc,ITEM2_subConst[5],time);
+        int mn1= (mn+periodLenght)%60;//
+        int hour1=hour+(mn+periodLenght)/60;
+        time= hour1+":"+mn1;
+        Element child01=xmlElt.createElement(doc,ITEM2_subConst[6],time);
+        Element child1=xmlElt.createElement(doc,ITEM2_subConst[4],Integer.toString(priority));
+        Element eltPer= xmlElt.createElement(doc,ITEM2_subTag[6]);
+        eltPer= xmlElt.appendChildInElement(eltPer, child0);
+        eltPer= xmlElt.appendChildInElement(eltPer, child01);
+        eltPer= xmlElt.appendChildInElement(eltPer, child1);
+        eltPers=xmlElt.appendChildInElement(eltPers, eltPer);
+      }
+      Element childSeq=xmlElt.createElement(doc,ITEM2_subConst[3],seqID);
+      eltSeq= xmlElt.appendChildInElement(eltSeq, childSeq);
+      eltSeq= xmlElt.appendChildInElement(eltSeq, eltPers);
+
+      return eltSeq;
+    } catch(Exception e){
+      System.out.println("TTStructure: "+e);//debug
+      return null;
+    }
+  }
+
+  /**
+   * Create and save a standard TimeTable
+   * @param String the timetable file name
+   * @param int the number of cycles
+   * @param int the number of days in each cycle
+   * @return boolean the result of the operation
+   * */
+  public boolean CreateStandardTT(String fileName, int nbOfCycles, int nbOfDays){
     BuildXMLElement wr;
     try{
       wr= new BuildXMLElement();
@@ -83,74 +149,24 @@ public Period getPeriod(){
       Element eltDay;
       Element eltSeqs;
       Element eltSeq;
-      Element eltPers;
-      //Element child0;
-      //Element child1;
-      for (int cyc=0; cyc<3; cyc++){
+      for (int cyc=0; cyc<nbOfCycles; cyc++){
         eltCycle= wr.createElement(doc,ITEM2_subTag[0]);
         eltDays= wr.createElement(doc,ITEM2_subTag[1]);
-        for (int day=0; day<5; day++){
+        for (int day=0; day<nbOfDays; day++){
           eltDay= wr.createElement(doc,ITEM2_subTag[2]);
           eltSeqs= wr.createElement(doc,ITEM2_subTag[3]);
 
           //add AM periods
-          eltSeq= wr.createElement(doc,ITEM2_subTag[4]);
-          eltPers= wr.createElement(doc,ITEM2_subTag[5]);
-          for (int i=0; i<4; i++){
-            String time= Integer.toString(8+i)+":30";
-            Element child0=wr.createElement(doc,ITEM2_subConst[5],time);
-            time= Integer.toString(9+i)+":30";
-            Element child01=wr.createElement(doc,ITEM2_subConst[6],time);
-            Element child1=wr.createElement(doc,ITEM2_subConst[4],"0");
-            Element eltPer= wr.createElement(doc,ITEM2_subTag[6]);
-            eltPer= wr.appendChildInElement(eltPer, child0);
-            eltPer= wr.appendChildInElement(eltPer, child01);
-            eltPer= wr.appendChildInElement(eltPer, child1);
-            eltPers=wr.appendChildInElement(eltPers, eltPer);
-          }
-          Element childSeq=wr.createElement(doc,ITEM2_subConst[3],"AM");
-          eltSeq= wr.appendChildInElement(eltSeq, childSeq);
-          eltSeq= wr.appendChildInElement(eltSeq, eltPers);
+          int [] beginT={8,30};
+          eltSeq= CreateSeqPeriods(doc,"AM",8,30,beginT,0);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
-
           //add PM periods
-          eltSeq= wr.createElement(doc,ITEM2_subTag[4]);
-          eltPers= wr.createElement(doc,ITEM2_subTag[5]);
-          for (int i=4; i<9; i++){
-            String time= Integer.toString(8+i)+":30";
-            Element child0=wr.createElement(doc,ITEM2_subConst[5],time);
-            time= Integer.toString(9+i)+":30";
-            Element child01=wr.createElement(doc,ITEM2_subConst[6],time);
-            Element child1=wr.createElement(doc,ITEM2_subConst[4],"0");
-            Element eltPer= wr.createElement(doc,ITEM2_subTag[6]);
-            eltPer= wr.appendChildInElement(eltPer, child0);
-            eltPer= wr.appendChildInElement(eltPer, child01);
-            eltPer= wr.appendChildInElement(eltPer, child1);
-            eltPers=wr.appendChildInElement(eltPers, eltPer);
-          }
-          childSeq=wr.createElement(doc,ITEM2_subConst[3],"PM");
-          eltSeq= wr.appendChildInElement(eltSeq, childSeq);
-          eltSeq= wr.appendChildInElement(eltSeq, eltPers);
+          beginT[0]=13; beginT[1]=00;
+          eltSeq= CreateSeqPeriods(doc,"PM",10,30,beginT,0);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
-
           //add Evening periods
-          eltSeq= wr.createElement(doc,ITEM2_subTag[4]);
-          eltPers= wr.createElement(doc,ITEM2_subTag[5]);
-          for (int i=0; i<3; i++){
-            String time= Integer.toString(19+i)+":00";
-            Element child0=wr.createElement(doc,ITEM2_subConst[5],time);
-            time= Integer.toString(20+i)+":00";
-            Element child01=wr.createElement(doc,ITEM2_subConst[6],time);
-            Element child1=wr.createElement(doc,ITEM2_subConst[4],"1");
-            Element eltPer= wr.createElement(doc,ITEM2_subTag[6]);
-            eltPer= wr.appendChildInElement(eltPer, child0);
-            eltPer= wr.appendChildInElement(eltPer, child01);
-            eltPer= wr.appendChildInElement(eltPer, child1);
-            eltPers=wr.appendChildInElement(eltPers, eltPer);
-          }
-          childSeq=wr.createElement(doc,ITEM2_subConst[3],"EM");
-          eltSeq= wr.appendChildInElement(eltSeq, childSeq);
-          eltSeq= wr.appendChildInElement(eltSeq, eltPers);
+          beginT[0]=19; beginT[1]=00;
+          eltSeq= CreateSeqPeriods(doc,"EM",6,30,beginT,1);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
 
           // add sequences in a day
@@ -170,13 +186,39 @@ public Period getPeriod(){
       // create document and write in the file
       doc= wr.buildDOM(doc,eltTT);
       writeFile.write(doc,fileName);
+      return true;
     } catch(Exception e){
       System.out.println("TTStructure: "+e);//debug
+      return false;
     }
-    /*catch(FactoryConfigurationError e){
-      System.out.println("Factory: "+e);//debug
-    }*/
+  }// end of CreateStandardTT method
 
+  /**
+   * */
+  public boolean loadTTStructure(String fileName){
+    readFile xmlFile;
+    Element root, item, ID;
+    try{
+      xmlFile = new readFile();
+      Document  doc = xmlFile.getDocumentFile(fileName);
+      ReadXMLElement list= new ReadXMLElement();
+      root= list.getRootElement(doc);
+      //root = list.getRootElement(file);//("resourceList.xml");
+      item= list.getDOMelement(root,ITEM2);
+      int size= list.getSize(item,Tag.ITEM2_subTag[0]);
+      //item = list.getDOMelement(item, tagConst.ITEM2_subTag[0]);
+      for (int i=0; i< size; i++){
+        Element cycle= list.getElement(item,Tag.ITEM2_subTag[0],i);
+        Element days= list.getElement((Element)cycle,Tag.ITEM2_subTag[1],0);
+        //System.out.println(" days Size: "+list.getSize((Element)days,Tag.ITEM2_subTag[2]));
+        System.out.println("Cycle lenght: "+list.getElementValue(cycle,Tag.ITEM2_subConst[1]));
+
+      }// end for i
+    }catch(Exception e){
+      System.out.println(e);
+      return false;
+    }
+    return true;
 
   }
 

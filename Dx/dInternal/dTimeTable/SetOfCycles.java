@@ -3,11 +3,27 @@
 package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
-public class SetOfCycles extends SetOfResources {
+public class SetOfCycles {
 
-    public SetOfCycles() {
-      super(4);
-    }
+  public SetOfCycles() {
+    _setOfCycles = new SetOfResources(4);
+  }
 
-    private Cycle _cycle;
+  /**
+   * get the set of cycles
+   * @return SetOfResources the set of cycles
+   * */
+  public SetOfResources getSetOfSequences(){
+    return _setOfCycles;
+  }
+
+  /**
+   * set the set of cycles
+   * @param SetOfResources the set of cycles
+   * */
+  public void setSetOfSequences(SetOfResources setOfCycles){
+    _setOfCycles= setOfCycles;
+  }
+
+  private SetOfResources _setOfCycles;
 }

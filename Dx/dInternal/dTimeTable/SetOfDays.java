@@ -3,11 +3,26 @@
 package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
-public class SetOfDays extends SetOfResources {
+public class SetOfDays {
     public SetOfDays() {
-      super(4);
+      _setOfDays = new SetOfResources(4);
     }
 
+    /**
+     * get the set of days
+     * @return SetOfResources the set of days
+     * */
+    public SetOfResources getSetOfSequences(){
+      return _setOfDays;
+    }
 
-    private Day _day;
+    /**
+     * set the set of days
+     * @param SetOfResources the set of days
+     * */
+    public void setSetOfSequences(SetOfResources setOfDays){
+      _setOfDays= setOfDays;
+    }
+
+  private SetOfResources _setOfDays;
 }

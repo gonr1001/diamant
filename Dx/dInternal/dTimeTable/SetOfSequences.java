@@ -4,10 +4,30 @@ package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
 
-public class SetOfSequences extends SetOfResources {
-    public SetOfSequences() {
-      super(4);
-    }
+public class SetOfSequences {
 
-    private Sequence _sequence;
+  /**
+   * Constructor
+   * */
+  public SetOfSequences() {
+    _setOfSequences = new SetOfResources(4);
+  }
+
+  /**
+   * get the set of sequences
+   * @return SetOfResources the set of sequences
+   * */
+  public SetOfResources getSetOfSequences(){
+    return _setOfSequences;
+  }
+
+  /**
+   * set the set of sequences
+   * @param SetOfResources the set of sequences
+   * */
+  public void setSetOfSequences(SetOfResources setOfSequences){
+    _setOfSequences= setOfSequences;
+  }
+
+  private SetOfResources _setOfSequences;
 }
