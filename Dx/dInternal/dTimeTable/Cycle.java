@@ -3,10 +3,12 @@
 package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
+import dInternal.dData.Resource;
 import dInternal.dUtil.DXObject;
 import xml.InPut.ReadXMLElement;
+import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
-
+import org.w3c.dom.Document;
 
 public class Cycle extends DXObject{
     public Cycle() {
@@ -44,12 +46,36 @@ public class Cycle extends DXObject{
         System.out.println(" Day ID: "+ID);//debug
         Element sequences= list.getElement(day,_TAGITEM2,0);
         setOfSequences.readXMLtag(sequences);
+        _setOfDays.addResource(new Resource(ID,setOfSequences),0);
       }// end for (int i=0; i< size; i++)
 
     }
 
+   /**
+   * */
+   public Element writeXMLtag(Document doc){
+    BuildXMLElement xmlElt;
+    try{
+      xmlElt = new BuildXMLElement();
+      Element eltDays= xmlElt.createElement(doc,SetOfCycles._TAGITEM3);
+      for (int i=0; i<_setOfDays.size(); i++){
+        Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM);
+        Element day= ((Day)_setOfDays.getResourceAt(i).getAttach()).writeXMLtag(doc);
+        Element dayID= xmlElt.createElement(doc,_TAGITEM1,_setOfDays.getResourceAt(i).getID());
+        eltDay= xmlElt.appendChildInElement(eltDay, day);
+        eltDay= xmlElt.appendChildInElement(eltDay, dayID);
+        eltDays= xmlElt.appendChildInElement(eltDays, eltDay);
+      }
+      return eltDays;
+    } catch(Exception e){
+      System.out.println("Cycle: "+e);//debug
+      return null;
+    }
+   }
+
   private SetOfResources _setOfDays;
-  private String _TAGITEM="TTday";
-  private String _TAGITEM1="dayID";
-  private String _TAGITEM2="TTsequences";
+  private int _periodLength;
+  static final String _TAGITEM="TTday";
+  static final String _TAGITEM1="dayID";
+  static final String _TAGITEM2="TTsequences";
 }

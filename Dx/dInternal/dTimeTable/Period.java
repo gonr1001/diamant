@@ -2,7 +2,10 @@ package dInternal.dTimeTable;
 
 import dInternal.dUtil.DXObject;
 import xml.InPut.ReadXMLElement;
+import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
+import java.util.StringTokenizer;
+import org.w3c.dom.Document;
 
 public class Period extends DXObject {
 
@@ -87,20 +90,37 @@ public class Period extends DXObject {
   /**
     *
     * */
-   public void readXMLtag(Element setPeriod){
-     ReadXMLElement list= new ReadXMLElement();
-      Period period = new Period();
-      String begin, end, prior;
-      //int size= list.getSize(setofPers,_TAGITEM);
-      //System.out.println(" Periods Size: "+size);//debug
-        //Element per= list.getElement(setPeriod,_TAGITEM,i);
-        begin= list.getElementValue(setPeriod,_TAGITEM);
-        end= list.getElementValue(setPeriod,_TAGITEM1);
-        prior= list.getElementValue(setPeriod,_TAGITEM2);
-        System.out.println(" Period properties -- begin: "+begin+" end: "+end+" Priority: "+prior);//debug
-        //Element periods= list.getElement(sequence,_TAGITEM2,0);
-        //period.readXMLtag(per);
+     public void readXMLtag(Element setPeriod){
+        ReadXMLElement list= new ReadXMLElement();
+        Period period = new Period();
+        String begin, end, prior;
+         begin= list.getElementValue(setPeriod,_TAGITEM);
+         StringTokenizer time= new StringTokenizer(begin,":");
+         end= list.getElementValue(setPeriod,_TAGITEM1);
+         prior= list.getElementValue(setPeriod,_TAGITEM2);
+         _beginHour[0]= Integer.parseInt(time.nextToken());
+         _beginHour[1]= Integer.parseInt(time.nextToken());
+         _priority= Integer.parseInt(prior);
+         System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
+     }
 
+  /**
+   * */
+   public Element writeXMLtag(Document doc){
+    BuildXMLElement xmlElt;
+    try{
+      xmlElt = new BuildXMLElement();
+      String time= _beginHour[0]+":"+_beginHour[1];
+      Element eltPer= xmlElt.createElement(doc,Sequence._TAGITEM);
+        Element child0=xmlElt.createElement(doc,_TAGITEM,time);
+        Element child1=xmlElt.createElement(doc,_TAGITEM2,Integer.toString(_priority));
+        eltPer= xmlElt.appendChildInElement(eltPer, child0);
+        eltPer= xmlElt.appendChildInElement(eltPer, child1);
+      return eltPer;
+    } catch(Exception e){
+      System.out.println("Period: "+e);//debug
+      return null;
+    }
    }
 
   private int nbStudConflict = 0;
@@ -108,7 +128,8 @@ public class Period extends DXObject {
   private int nbRoomConflict= 0;
   private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
   private int _priority;// 0= normal; 1= low; 2= null
-  private String _TAGITEM="BeginTime";
-  private String _TAGITEM1="EndTime";
-  private String _TAGITEM2="priority";
+  private static final String  _TAGITEM="BeginTime";
+  private static final String _TAGITEM1="EndTime";
+  private static final String _TAGITEM2="priority";
+
 }

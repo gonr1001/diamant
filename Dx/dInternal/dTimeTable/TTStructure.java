@@ -15,7 +15,7 @@ public class TTStructure {
   private int _nbOfStCycles=2;
   private int _nbOfStDays=5;
   //DXTimeTable tag
-  public static final String ITEM2= "DXTimeTable";
+  static final String ITEM2= "DXTimeTable";
   //subtag
   public static final String [] ITEM2_subTag={"TTcycle","TTdays","TTday",
     "TTsequences","TTsequence","TTperiods","TTperiod"};
@@ -30,8 +30,9 @@ public class TTStructure {
     _setOfCycles= new SetOfCycles();
     _col=6;
     _row= 15;
-    CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
     loadTTStructure("StandardTTC.xml");
+    saveTTStructure("test.xml");
 
   }
 
@@ -214,5 +215,25 @@ public Period getPeriod(){
     return true;
 
   }
+
+  /**
+   *
+   * */
+   public boolean saveTTStructure(String fileName){
+    BuildXMLElement wr;
+    try{
+      wr= new BuildXMLElement();
+      Document doc= wr.getNewDocument();
+      Element ttStruc= _setOfCycles.writeXMLtag(doc);
+      // create document and write in the file
+      doc= wr.buildDOM(doc,ttStruc);
+      writeFile.write(doc,fileName);
+      return true;
+    } catch(Exception e){
+      System.out.println("TTStructure: "+e);//debug
+      return false;
+    }
+
+   }
 
 }
