@@ -9,24 +9,44 @@
 						<sequenceID>AM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>8:30</BeginTime>
+								<BeginTime>8:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>9:30</BeginTime>
+								<BeginTime>8:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>10:30</BeginTime>
+								<BeginTime>9:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>11:30</BeginTime>
+								<BeginTime>9:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:00</BeginTime>
+								<priority>0</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -34,29 +54,54 @@
 						<sequenceID>PM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>13:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>14:30</BeginTime>
+								<BeginTime>13:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>15:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>16:30</BeginTime>
+								<BeginTime>14:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>17:30</BeginTime>
+								<BeginTime>15:00</BeginTime>
 								<priority>0</priority>
 								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>15:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:00</BeginTime>
+								<priority>0</priority>
+								<periodID>9</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:30</BeginTime>
+								<priority>0</priority>
+								<periodID>10</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -64,19 +109,44 @@
 						<sequenceID>EM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>19:00</BeginTime>
+								<BeginTime>18:00</BeginTime>
 								<priority>1</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>20:00</BeginTime>
+								<BeginTime>18:30</BeginTime>
 								<priority>1</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>21:00</BeginTime>
+								<BeginTime>19:00</BeginTime>
 								<priority>1</priority>
 								<periodID>3</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>19:30</BeginTime>
+								<priority>1</priority>
+								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:00</BeginTime>
+								<priority>1</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:30</BeginTime>
+								<priority>1</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:00</BeginTime>
+								<priority>1</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:30</BeginTime>
+								<priority>1</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -90,24 +160,44 @@
 						<sequenceID>AM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>8:30</BeginTime>
+								<BeginTime>8:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>9:30</BeginTime>
+								<BeginTime>8:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>10:30</BeginTime>
+								<BeginTime>9:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>11:30</BeginTime>
+								<BeginTime>9:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:00</BeginTime>
+								<priority>0</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -115,29 +205,54 @@
 						<sequenceID>PM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>13:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>14:30</BeginTime>
+								<BeginTime>13:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>15:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>16:30</BeginTime>
+								<BeginTime>14:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>17:30</BeginTime>
+								<BeginTime>15:00</BeginTime>
 								<priority>0</priority>
 								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>15:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:00</BeginTime>
+								<priority>0</priority>
+								<periodID>9</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:30</BeginTime>
+								<priority>0</priority>
+								<periodID>10</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -145,19 +260,44 @@
 						<sequenceID>EM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>19:00</BeginTime>
+								<BeginTime>18:00</BeginTime>
 								<priority>1</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>20:00</BeginTime>
+								<BeginTime>18:30</BeginTime>
 								<priority>1</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>21:00</BeginTime>
+								<BeginTime>19:00</BeginTime>
 								<priority>1</priority>
 								<periodID>3</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>19:30</BeginTime>
+								<priority>1</priority>
+								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:00</BeginTime>
+								<priority>1</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:30</BeginTime>
+								<priority>1</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:00</BeginTime>
+								<priority>1</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:30</BeginTime>
+								<priority>1</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -171,24 +311,44 @@
 						<sequenceID>AM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>8:30</BeginTime>
+								<BeginTime>8:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>9:30</BeginTime>
+								<BeginTime>8:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>10:30</BeginTime>
+								<BeginTime>9:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>11:30</BeginTime>
+								<BeginTime>9:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:00</BeginTime>
+								<priority>0</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -196,29 +356,54 @@
 						<sequenceID>PM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>13:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>14:30</BeginTime>
+								<BeginTime>13:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>15:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>16:30</BeginTime>
+								<BeginTime>14:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>17:30</BeginTime>
+								<BeginTime>15:00</BeginTime>
 								<priority>0</priority>
 								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>15:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:00</BeginTime>
+								<priority>0</priority>
+								<periodID>9</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:30</BeginTime>
+								<priority>0</priority>
+								<periodID>10</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -226,19 +411,44 @@
 						<sequenceID>EM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>19:00</BeginTime>
+								<BeginTime>18:00</BeginTime>
 								<priority>1</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>20:00</BeginTime>
+								<BeginTime>18:30</BeginTime>
 								<priority>1</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>21:00</BeginTime>
+								<BeginTime>19:00</BeginTime>
 								<priority>1</priority>
 								<periodID>3</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>19:30</BeginTime>
+								<priority>1</priority>
+								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:00</BeginTime>
+								<priority>1</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:30</BeginTime>
+								<priority>1</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:00</BeginTime>
+								<priority>1</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:30</BeginTime>
+								<priority>1</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -252,24 +462,44 @@
 						<sequenceID>AM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>8:30</BeginTime>
+								<BeginTime>8:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>9:30</BeginTime>
+								<BeginTime>8:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>10:30</BeginTime>
+								<BeginTime>9:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>11:30</BeginTime>
+								<BeginTime>9:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:00</BeginTime>
+								<priority>0</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -277,29 +507,54 @@
 						<sequenceID>PM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>13:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>14:30</BeginTime>
+								<BeginTime>13:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>15:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>16:30</BeginTime>
+								<BeginTime>14:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>17:30</BeginTime>
+								<BeginTime>15:00</BeginTime>
 								<priority>0</priority>
 								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>15:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:00</BeginTime>
+								<priority>0</priority>
+								<periodID>9</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:30</BeginTime>
+								<priority>0</priority>
+								<periodID>10</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -307,19 +562,44 @@
 						<sequenceID>EM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>19:00</BeginTime>
+								<BeginTime>18:00</BeginTime>
 								<priority>1</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>20:00</BeginTime>
+								<BeginTime>18:30</BeginTime>
 								<priority>1</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>21:00</BeginTime>
+								<BeginTime>19:00</BeginTime>
 								<priority>1</priority>
 								<periodID>3</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>19:30</BeginTime>
+								<priority>1</priority>
+								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:00</BeginTime>
+								<priority>1</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:30</BeginTime>
+								<priority>1</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:00</BeginTime>
+								<priority>1</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:30</BeginTime>
+								<priority>1</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -333,24 +613,44 @@
 						<sequenceID>AM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>8:30</BeginTime>
+								<BeginTime>8:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>9:30</BeginTime>
+								<BeginTime>8:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>10:30</BeginTime>
+								<BeginTime>9:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>11:30</BeginTime>
+								<BeginTime>9:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:00</BeginTime>
+								<priority>0</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>10:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>11:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -358,29 +658,54 @@
 						<sequenceID>PM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>13:00</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>14:30</BeginTime>
+								<BeginTime>13:30</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>15:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>16:30</BeginTime>
+								<BeginTime>14:30</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>17:30</BeginTime>
+								<BeginTime>15:00</BeginTime>
 								<priority>0</priority>
 								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>15:30</BeginTime>
+								<priority>0</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:00</BeginTime>
+								<priority>0</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>16:30</BeginTime>
+								<priority>0</priority>
+								<periodID>8</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:00</BeginTime>
+								<priority>0</priority>
+								<periodID>9</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>17:30</BeginTime>
+								<priority>0</priority>
+								<periodID>10</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
@@ -388,19 +713,44 @@
 						<sequenceID>EM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>19:00</BeginTime>
+								<BeginTime>18:00</BeginTime>
 								<priority>2</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>20:00</BeginTime>
+								<BeginTime>18:30</BeginTime>
 								<priority>2</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>21:00</BeginTime>
+								<BeginTime>19:00</BeginTime>
 								<priority>2</priority>
 								<periodID>3</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>19:30</BeginTime>
+								<priority>2</priority>
+								<periodID>4</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:00</BeginTime>
+								<priority>2</priority>
+								<periodID>5</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>20:30</BeginTime>
+								<priority>2</priority>
+								<periodID>6</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:00</BeginTime>
+								<priority>2</priority>
+								<periodID>7</periodID>
+							</TTperiod>
+							<TTperiod>
+								<BeginTime>21:30</BeginTime>
+								<priority>2</priority>
+								<periodID>8</periodID>
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
