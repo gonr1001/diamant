@@ -363,6 +363,7 @@ public class SetOfActivities extends SetOfResources{
         case 13://idem
           activity.setIdemLine(token.trim());
           position = 14;
+
           break;
         case 14://activity is fixed or not
           stLine = new StringTokenizer(token);
@@ -554,6 +555,6 @@ public class SetOfActivities extends SetOfResources{
   }
 
   private int _NUMBEROFCYCLE = 1;
-  private int _COURSENAMELENGTH=6;
+  final static public int _COURSENAMELENGTH=6;
   private int _ACTIVITYLENGTH=10;
 }

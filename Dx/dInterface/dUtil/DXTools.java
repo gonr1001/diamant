@@ -162,8 +162,22 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
   }
   */
 
- public static int STIConvertGroup(String STIGroupID){
+ /**
+  *
+  * @param STIGroupID
+  * @return
+  */
+public static int STIConvertGroup(String STIGroupID){
    return  (int)STIGroupID.charAt(0) -(int)'A'+1;
+ }
+
+ /**
+  *
+  * @param STIGroupNumber
+  * @return
+  */
+ public static char STIConvertGroup(int STIGroupNumber){
+   return  (char)((int)'A' +STIGroupNumber-1);
  }
 
  /**

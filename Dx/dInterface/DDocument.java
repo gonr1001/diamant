@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.65 $  $Date: 2003-09-08 15:23:19 $
+ * Title: DDocument $Revision: 1.66 $  $Date: 2003-09-09 17:13:32 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.65 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.66 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInterface;
@@ -160,7 +160,7 @@ public class DDocument  extends InternalFrameAdapter implements
     /*
     */
     public void changeInStateBar (SetOfStatesEvent e){
-      _dm.buildSetOfEvents();
+      //_dm.buildSetOfEvents();
       _dm.setStateBarComponent();
       _stateBar.upDateDStateBar(_dm.getSetOfStates());
     }

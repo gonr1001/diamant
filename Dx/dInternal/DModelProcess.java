@@ -89,9 +89,10 @@ public class DModelProcess {
      _dm._setOfEvents.build(_dm._ttStruct.getCurrentCycleResource(), _dm._setOfActivities, _dm._setOfInstructors, _dm._setOfRooms);
      updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
-        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
-     StudentsConflictsMatrix matrix = new StudentsConflictsMatrix();
-     matrix.buildMatrix(_dm._setOfActivities, _dm._setOfStudents);
+       _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
+     ConditionsTest conditionTest = new ConditionsTest(_dm._setOfActivities, _dm._setOfStudents);
+     //System.out.println(conditionTest.getConflictsMatrix().toWriteMatrix());
+     _dm._setOfStates.sendEvent();
    }// end if (_setOfActivities!=null)
 
   }

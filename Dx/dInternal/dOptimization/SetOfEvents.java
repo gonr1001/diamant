@@ -12,7 +12,9 @@ import dInternal.dData.SetOfInstructors;
 import dInternal.dData.SetOfRooms;
 import dInternal.dTimeTable.Cycle;
 
+
 public class SetOfEvents extends SetOfResources{
+
 
   /**
    * Constructor
@@ -75,4 +77,5 @@ public class SetOfEvents extends SetOfResources{
     }// end for (int i=0; i< this.size(); i++)
     return count;
   }
+
 }// end class

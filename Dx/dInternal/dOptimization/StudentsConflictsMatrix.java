@@ -8,6 +8,9 @@ package dInternal.dConditionsTest;
  * @author ysyam
  * @version 1.0
  */
+
+import dInterface.dUtil.DXTools;
+
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Activity;
 import dInternal.dData.Type;
@@ -16,6 +19,7 @@ import dInternal.dData.StudentAttach;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import dInternal.dUtil.DXValue;
+
 
 public class StudentsConflictsMatrix {
 
@@ -38,11 +42,45 @@ public class StudentsConflictsMatrix {
     firstStudentGroupAssignment(soa,sos);
     _theMatrix = new int[_allSections.size()+1][_allSections.size()+1];
     for(int i=0; i< sos.size(); i++){
-      StudentAttach student = (StudentAttach)sos.getResourceAt(0).getAttach();
-      for(int j=0; j< student.getCoursesList().size(); j++){
-
+      StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();
+      for(int j=0; j< student.getCoursesList().size()-1; j++){
+        for (int k=j; k< student.getCoursesList().size(); k++){
+          String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, soa._COURSENAMELENGTH)
+                   +"."+student.getCoursesList().getResourceAt(j).getID().substring(soa._COURSENAMELENGTH)+"."+
+                   DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
+          String course2 = student.getCoursesList().getResourceAt(k).getID().substring(0, soa._COURSENAMELENGTH)
+                         +"."+student.getCoursesList().getResourceAt(k).getID().substring(soa._COURSENAMELENGTH)+"."+
+                           DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
+          int[] index= getSectionsKeys(course1, course2);
+          if((index[0]!=-1) && (index[1]!=-1)){
+            _theMatrix[index[0]][index[1]]++;
+          }
+        }// end for (int k=j; k< student.getCoursesList().size()
       }// end for(int j=0; j< ((Activity)rescActivity.getAttach()).get
     }// end for(int i=0; i< soa.size(); i++)
+
+  }
+
+  /**
+   *
+   * @param str1
+   * @param str2
+   * @return
+   */
+  private int[] getSectionsKeys(String str1, String str2){
+    int[] keys ={-1,-1};
+    Resource resc1 = _allSections.getResource(str1);
+    Resource resc2 = _allSections.getResource(str2);
+    if((resc1!= null) && (resc2!= null)){
+      if(resc1.getKey()<resc2.getKey()){
+        keys[0]= (int)resc1.getKey();
+        keys[1]= (int)resc2.getKey();
+      }else{
+        keys[1]= (int)resc1.getKey();
+        keys[0]= (int)resc2.getKey();
+      }
+    }
+    return keys;
   }
 
   /**
@@ -86,7 +124,26 @@ public class StudentsConflictsMatrix {
         }// end for (int k=0; k< ((Activity)rescActivity.getAttach()).getSetOfTypes()
       }// end for (int j=0; j< ((Activity)rescActivity.getAttach()).
     }// end for (int i=0; i< soa.size(); i++)
+  }
 
+  /**
+   *
+   * @return
+   */
+  public String toWriteMatrix(){
+    String str="";
+    for (int i=1; i< _allSections.size()+1; i++){
+      str+= _allSections.getResourceAt(i-1).getID()+" --> ";
+      for (int j=1; j< _allSections.size()+1; j++){
+        if (_theMatrix[i][j]<10)
+          str+=_theMatrix[i][j]+"  ";
+        else
+          if (_theMatrix[i][j]<100)
+            str+=_theMatrix[i][j]+" ";
+      }// end for (int j=0; j< _theMatrix[i].length; j++)
+      str+= SetOfResources.CR_LF;
+    }// end for (int i=0; i< _allSections.size(); i++)
+    return str;
   }
 
 }// end class
