@@ -137,7 +137,8 @@ via une barre d'outils.
 
 
 \subsection{Caractéristiques externes}
-Dans ce livrable les menus \pro{Fichier}, \pro{Grille Horaire} sont complets et fonctionnels.
+Dans ce livrable les menus \pro{Fichier}, \pro{Grille Horaire}
+sont complets et fonctionnels.
 
 Dans le menu \pro{Fichier} les sous menus \pro{Nouvel horaire},
 \pro{Ouvrir horaire},
@@ -159,17 +160,17 @@ Le sous-menu \pro{Ouvrir horaire}
 affiche une boîte de dialogue permettant
 de choisir le fichier \pro{.dia} contenant un horaire.
 
-Le sous-menu \pro{Fermer} ferme l'horaire à l'écran, si nécessaire
-il affiche un dialogue demandant s'il faut sauvegarder, si c'est le cas,
-les dialogue de sauvegarde de fichier suivent.
+Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
+il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
+les dialogue d'enregistrement de fichier suivent.
 
 
-Le sous-menu \pro{Enregistrer} enregistre l'horaire à l'écran,
+Le sous-menu \pro{Enregistrer} enregistre sur un fichier l'horaire à l'écran,
 si le nom de l'horaire est \pro{Sans titre} un dialogue de sauvegarde
 demandant le nom du fichier est affiché. Si le nom du fichier existe
 un dialogue demandant s'il faut l'écraser est affiché.
 
-Le sous-menu \pro{Enregistrer sous} enregistre l'horaire à l'écran,
+Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier l'horaire à l'écran,
 un dialogue de sauvegarde
 demandant le nom du fichier est affiché. Si le nom du fichier existe
 un dialogue demandant s'il faut l'écraser est affiché.
@@ -179,18 +180,75 @@ Les sous menus \pro{Définir fichiers à importer}
 et \pro{Importer automatiquement}
 sont fonctionnels. Gardent les mêmes caractéristiques du livrable 1.
 
-affiche une boîte de dialogue permettant
-de choisir le fichier \pro{.dia} contenant un horaire.
 
-de choisir les fichiers à importer; ensuite une autre boîte de dialogue permet
-d'indiquer le nom du fichier \pro{.dim} nécessaire à sauvegarder les nom des fichiers.
-Le sous menu \pro{Importer automatiquement} permet d'afficher une boîte de dialogue afin
-de choisir le nom du fichier \pro{.dim}nécessaire pour faire l'importation.
+Le sous-menu \pro{Exporter} affiche un dialogue pour exporter les données,
+mais le fichier n'est pas produit. Un dialogue indique la méthode à appeler.
 
-Si pendant l'importation une erreur arrive une boîte de dialogue indique le problème
-rencontré.
-Si l'importation se passe sans erreur une boîte de dialogue indique le succès de
-l'importation.
+Le sous-menu \pro{Quitter} quitte l'application en fermant
+les fenêtres ouvertes et en demandant s'il faut faire les sauvegardes
+des fichiers.
+Cliquer sur la X de l'application fait la même chose que \pro{Quitter}.
+
+
+
+Dans le menu \pro{Grille Horaire} les sous-menus \pro{Nouvelle grille},
+\pro{Ouvrir Grille},
+\pro{Fermer},
+\pro{Enregistrer} et
+\pro{Enregistrer sous}
+sont fonctionnels.
+Lorsqu'un utilisateur travaille sur la grille horaire, c'est sur la structure
+de la grille. Il peut définir la taille de la grille en jours et la priorité
+des périodes.
+Lorsque un sous-menu \pro{Nouvelle grille} ou un sous-menu
+\pro{Ouvrir Grille} sont activés l'utilisateur travaille sur la grille
+horaire et une barre d'outils est affichée à l'écran.
+
+
+Le sous-menu \pro{Nouvelle grille} affiche la barre d'outils et
+ouvre une fenêtre avec une grille horaire par default.
+
+Le sous-menu \pro{Ouvrir grille} ouvre une boîte de dialogue
+pour choisir le fichier contenant la grille horaire (\pro{.dtt},
+une fois le fichier choisi, affiche la barre d'outils et
+ouvre une fenêtre avec une grille horaire correspondant au fichier.
+
+La barre à outils permet de changer les nombre de jours d'une grille
+horaire, de changer le nom associé à une journée
+et de changer la priorité d'une période ou d'un ensemble
+des périodes.
+
+Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
+il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
+les dialogue d'enregistrement de fichier suivent.
+
+Le sous-menu \pro{Enregistrer} enregistre sur un fichier
+la grille horaire à l'écran,
+si le nom de la grille horaire est \pro{Sans titre} un dialogue de sauvegarde
+demandant le nom du fichier est affiché. Si le nom du fichier existe
+un dialogue demandant s'il faut l'écraser est affiché.
+
+Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier
+la grille horaire à l'écran,
+un dialogue de sauvegarde
+demandant le nom du fichier est affiché. Si le nom du fichier existe
+un dialogue demandant s'il faut l'écraser est affiché.
+
+
+Les sous menus \pro{Définir fichiers à importer}
+et \pro{Importer automatiquement}
+sont fonctionnels. Gardent les mêmes caractéristiques du livrable 1.
+
+
+Le sous-menu \pro{Exporter} affiche un dialogue pour exporter les données,
+mais le fichier n'est pas produit. Un dialogue indique la méthode à appeler.
+
+Le sous-menu \pro{Quitter} quitte l'application en fermant
+les fenêtres ouvertes et en demandant s'il faut faire les sauvegardes
+des fichiers.
+Cliquer sur la X de l'application fait la même chose que \pro{Quitter}.
+
+
 
 Dans le menu \pro{Preferences} le sous menu \pro{Options L \& F}
 est fonctionnel. Une boîte de dialogue est affichée et il est possible de
@@ -198,7 +256,6 @@ changer de Look \& Feel de toute l'application.
 
 Dans le menu \pro{Aide} le sous menu \pro{À propos de Diamant 1.5}
 est fonctionnel. Une boîte de dialogue est affichée.
-
 \subsection{Caractéristiques internes}
 
 Les classes finies (au moins à 90\%) :

@@ -64,7 +64,7 @@ import dResources.DConst;
      TTStructure ttStruct = new TTStructure();
      String error = ttStruct.rloadData(fil);
 
-     new TTDefinitionDlg(dApplic);
+     //new TTDefinitionDlg(dApplic);
  //    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
 
      if(error.length()==0){
