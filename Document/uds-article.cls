@@ -166,11 +166,12 @@
 
 \newcommand{\Titre}[1]{\def\letitre{#1}}
 \newcommand{\Auteur}[2]{\def\lauteurPrenom{#1} \def\lauteurNom{#2}}
-\newcommand{\Auteurs}[1]{\def\lenoma{#1}}
+\newcommand{\Auteurs}[1]{\def\lesAuteurs{#1}}
 \newcommand{\Date}[1]{\def\ladate{#1}}
 \newcommand{\Logo}[1]{\def\lelogo{#1}}
 
 \def\lafaculte{Facult\'e de g\'enie}
+%\def\lauteurs
 \def\laspecialite{\lenoma}
 \def\ledepartement{G\'enie \'electrique et g\'enie informatique}
 \def\ladresse{Sherbrooke (Qu\'ebec) Canada} 
@@ -182,13 +183,14 @@
 \vspace*{-0.5 in}%
 \begin{center}%
 \mbox{\includegraphics[draft=false,height=25pt]{udslogo.eps}} \\[0.5ex] %
-{\renewcommand{\arraystretch}{1}\begin{tabular}{c}\Large\lafaculte\\\large\ledepartement\end{tabular}}
+{\renewcommand{\arraystretch}{1}\begin{tabular}{c}\Large\lafaculte\\\large s\ledepartement\end{tabular}}
 \vfill{\LARGE\bf\sf\begin{tabular}{c}\letitre\end{tabular}}\par%
 \ifx\empty\lelogo
     \typeout{}\typeout{-----Pas d'image de logo)}\typeout{}%
   \else
     \mbox{\includegraphics[draft=false,height=45pt]{\lelogo}} \\[0.5ex] %
-{\renewcommand{\arraystretch}{1}\begin{tabular}{c}\large \\ \letype\\ \large \laspecialite\end{tabular} \\ (\ladate)}\vfill%
+\vfill{\large \begin{tabular}{c}~ \\ \letype \\  \lesAuteurs \end{tabular}}
+\vfill{(\ladate)}\vfill%
 \vfill{\large \ladresse}%
 \end{center}
 \end{titlepage}
