@@ -46,7 +46,7 @@ public class RefinedStudMixAlgo{
    */
   public void build(String actID, String typeID,Vector allConvexGroups){
     SetOfResources sumOfConvex= buildSumOfConvexGroups(allConvexGroups);
-    setStudInGroup(actID,typeID,allConvexGroups,sumOfConvex);
+    mixStudentsInGroup(actID,typeID,allConvexGroups,sumOfConvex);
   }
 
   /**
@@ -83,61 +83,101 @@ public class RefinedStudMixAlgo{
   * @param typeID
   * @param allConvGroup
   */
- private void setStudInGroup(String activityID, String typeID, Vector allConvGroups, SetOfResources sumList){
-   //SetOfResources studentRegistered = (SetOfResources)allConvGroups.get(0);
+ private void mixStudentsInGroup(String activityID, String typeID, Vector allConvGroups, SetOfResources sumList){
    Vector sizeOfGroups= new Vector();
    Type type= _dm.getSetOfActivities().getType(activityID,typeID);
+   System.out.println("*****************Activity: "+ activityID+typeID);// debug
    for(int i=0; i< type.getSetOfSections().size(); i++){
      DXValue size= new DXValue();
      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
      size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
-     //size.setIntValue(0);
      sizeOfGroups.add(size);
     }// end for(int i=0; i< type.getSetOfSections().size(); i++)
-    SetOfResources removeStudents= new SetOfResources(65);
-
-    while(sumList.size()>0){
+    Vector removedStudents= new Vector();
+    Vector placedStudents = new Vector();
+    Vector students= buildVectorOfKeys(sumList);
+    int level=0;
+    while(students.size()>0){
       boolean studentAffected= false;
-      for (int i=0; i< sumList.size(); i++){
-        //System.out.println("Student: "+ );
-        long studentKey= sumList.getResourceAt(sumList.size()-1).getKey();
-        System.out.println("Student: "+ studentKey);
-        int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups);
+      for (int i=0; i< students.size(); i++){
+        long studentKey= Long.parseLong((String)students.get(students.size()-1));
+        int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups,level);
         if(groupIndex!=-1){
-          StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
-          int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
-              groupIndex).getID());//int group= i+1;
-          DXValue value= (DXValue)sizeOfGroups.get(groupIndex);
-          value.setIntValue(value.getIntValue()+1);
-          student.setInGroup(activityID+typeID, group,false);
-          sumList.removeResource(studentKey);
+          sizeOfGroups= setStudentInAGroup(studentKey,groupIndex,sizeOfGroups,activityID,typeID);
+          students.remove(String.valueOf(studentKey));// .removeResource(studentKey);
+          placedStudents.add(String.valueOf(studentKey));
           studentAffected=true;
+          System.out.println("+++ Student: "+studentKey+" added +++");//debug
           break;
         } else{// end if(groupIndex!=-1)
-          Resource resc = sumList.getResourceAt(sumList.size()-1);
-          sumList.removeResource(resc.getKey());
-          removeStudents.setCurrentKey(resc.getKey());
-          removeStudents.addResource(resc,0);
-          sumList.sortSetOfResourcesByID();
+          students.remove(String.valueOf(studentKey));
+          removedStudents.add(String.valueOf(studentKey));
         }// end else if(groupIndex!=-1)
-
-
       }// end for (int i=0; i< studentRegistered.size(); i++)
-      if((sumList.size()==0) || studentAffected){
-        for(int i=0; i< removeStudents.size(); i++){
-          Resource resc= removeStudents.getResourceAt(i);
-          sumList.setCurrentKey(resc.getKey());
-          sumList.addResource(resc,0);
+      if((students.size()==0) || studentAffected){
+        if(!studentAffected){
+          level++;
+          System.out.println("--- End iteration Level: "+level+" ---");//debug
+        }
+        students.trimToSize();
+        for(int i=removedStudents.size()-1; i>=0; i--){
+          String StudKey= (String)removedStudents.get(i);
+          students.add(StudKey);
         }// end for(int i=0; i< removeStudents.size(); i++)
-        removeStudents.getSetOfResources().removeAllElements();
-        sumList.sortSetOfResourcesByID();
-        if(sumList.size()==0)
-          System.out.println("--- End iteration---");//debug
+        removedStudents.removeAllElements();
+        removedStudents.trimToSize();
       }// end if(sumList==0)
-
     }// end while(studentRegistered.size()>0)
+ }
 
+ /**
+  *
+  * @param studentKey
+  * @param groupIndex
+  * @param sizeOfGroups
+  * @param activityID
+  * @param typeID
+  * @return
+  */
+ private Vector setStudentInAGroup(long studentKey, int groupIndex, Vector sizeOfGroups,
+                                 String activityID, String typeID){
+   Type type= _dm.getSetOfActivities().getType(activityID,typeID);
+   StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
+   int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
+       groupIndex).getID());//int group= i+1;
+   DXValue value= (DXValue)sizeOfGroups.get(groupIndex);
+   value.setIntValue(value.getIntValue()+1);
+   student.setInGroup(activityID+typeID, group,false);
+   return sizeOfGroups;
+ }
 
+ /**
+  * build a vector containing keys of resources
+  * @param sor
+  * @return
+  */
+ private Vector buildVectorOfKeys(SetOfResources sor){
+   Vector vOfKeys = new Vector();
+   for (int i=0; i< sor.size(); i++){
+     long key = sor.getResourceAt(i).getKey();
+     vOfKeys.add(String.valueOf(key));
+   }
+
+   return vOfKeys;
+ }
+
+ /**
+  * remove in a setofresources, keys containing in a vector
+  * @param vOfKeys
+  * @param sor
+  * @return
+  */
+ private SetOfResources removeKeys(SetOfResources sor, Vector vOfKeys){
+   for (int i=0; i< vOfKeys.size(); i++){
+     String key = (String)vOfKeys.get(i);
+     sor.removeResource(Long.parseLong(key));
+   }
+   return sor;
  }
 
  /**
@@ -147,7 +187,7 @@ public class RefinedStudMixAlgo{
   * @param eligibleGroups
   * @return
   */
- private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector sizeOfGroups){
+ private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector sizeOfGroups, int level){
    SetOfResources setOfConflicts= new SetOfResources(99);
    Vector eligibleGroups= new Vector();
    for(int i=0; i< allConvexGroups.size(); i++){
@@ -157,7 +197,7 @@ public class RefinedStudMixAlgo{
      setOfConflicts.addResource(new Resource(conf,new DXValue()),0);
    }// end for(int i=0; i< allConvexGroups.size(); i++)
    setOfConflicts.sortSetOfResourcesByID();
-   Vector bestGroupsIndex= getBestGroupsIndex(setOfConflicts,0);
+   Vector bestGroupsIndex= getBestGroupsIndex(setOfConflicts,level);
    for (int i=0; i< setOfConflicts.size(); i++){
      int groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
      if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION)){
@@ -201,7 +241,19 @@ public class RefinedStudMixAlgo{
   private Vector getBestGroupsIndex(SetOfResources setOfConflicts, int level){
     Vector bestGroupsIndex= new Vector();
     setOfConflicts.sortSetOfResourcesByID();
+    int iteration=0;
     String bestNumOfConf= setOfConflicts.getResourceAt(0).getID();
+    // search level
+    for (int i=0; i< setOfConflicts.size(); i++){
+      if(level== iteration)
+        break;
+      String numOfC= setOfConflicts.getResourceAt(i).getID();
+      if(!numOfC.equalsIgnoreCase(bestNumOfConf)){
+        bestNumOfConf= numOfC;
+        iteration++;
+      }// end if(numOfC.equalsIgnoreCase(bestNumOfConf))
+    }// end for (int i=0; i< setOfConflicts.size(); i++)
+
     int bestNumberOfConflicts=Integer.parseInt(bestNumOfConf);
     int groupIndex= (int)setOfConflicts.getResourceAt(0).getKey()-1;
     bestGroupsIndex.add(new DXValue(groupIndex, null));
