@@ -53,10 +53,10 @@ import dResources.DConst;
 
 public class ManualImprovementResultFrame extends JDialog implements ActionListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize
-   * minus the barSize (the value is a guess) at the bottom */
-  private final static int ADJUST_HEIGHT = 92;
+  * minus the barSize (the value is a guess) at the bottom */
+  private final static int ADJUST_HEIGHT = 88;
   /* ADJUST_WIDTH is needed to ajdust the screenSize
-   * minus border pixels (the value is a guess) at each side of the screen */
+  * minus border pixels (the value is a guess) at each side of the screen */
   private final static int ADJUST_WIDTH = 6;
   //private JInternalFrame _jif;
   private TTPane _ttPane;
@@ -67,8 +67,8 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
   //private JDialog _jd;
 
 
-  private String FRAMENAME="Amélioration Manuelle";
-  private int INITIALPOSITION=25;
+  //private String FRAMENAME="Amélioration Manuelle";
+  //private int INITIALPOSITION=25;
   /**
    * constructor
    */
@@ -76,14 +76,10 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
                                       String eventName,  DModel dm) {
     super(jDialog, eventName, true);
     TTStructure oldTTS= dm.getTTStructure();
-    _ttStruct= new TTStructure();
+    _ttStruct = new TTStructure();
     _ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
     _toolBar= toolbar;
     initDlg(eventName, dm);
-
-        //createFrame(eventName, simple);
-    //jd.setLocationRelativeTo(this);
-    //setLocationRelativeTo(jd);
   }
 
   /**
@@ -94,34 +90,34 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
     return _ttStruct;
   }*/
 
-  /**
-   *
-   * @return
-   */
+ /**
+  *
+  * @return
+  */
   /*public JFrame getJFrame(){
     return _jFrame;
   }*/
 
-  /**
-   *
-   * @param e
-   */
+ /**
+  *
+  * @param e
+  */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
   }
 
 
-public void initDlg(String eventName, DModel dm){
-  Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+  public void initDlg(String eventName, DModel dm){
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
- //Dimension frameDim = new Dimension(700,650);
-  this.setSize( new Dimension(screenSize.width - ADJUST_WIDTH,
-                                         screenSize.height - ADJUST_HEIGHT));
-  _ttPane = new SimpleTTPane(_ttStruct,_toolBar);
+    //Dimension frameDim = new Dimension(700,650);
+    this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
+                                screenSize.height - ADJUST_HEIGHT));
+    _ttPane = new SimpleTTPane(_ttStruct,_toolBar);
 
-  Resource event = dm.getSetOfEvents().getResource(eventName);
-  buildNewTTSTestConditions(event, dm);
-  String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
+    Resource event = dm.getSetOfEvents().getResource(eventName);
+    buildNewTTSTestConditions(event, dm);
+    String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
     long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",2))};
@@ -129,46 +125,46 @@ public void initDlg(String eventName, DModel dm){
     int seqIndex= ((Day)_ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
                    getAttach()).getSetOfSequences().getIndexOfResource(perKey[1]);
     int perIndex= ((Sequence)((Day)_ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
-                   getAttach()).getSetOfSequences().getResourceAt(seqIndex).getAttach()).
+                              getAttach()).getSetOfSequences().getResourceAt(seqIndex).getAttach()).
                   getSetOfPeriods().getIndexOfResource(perKey[2]);
     //int[] perKeyIndex={};
     int duration = ((EventAttach)event.getAttach()).getDuration()/ dm.getTTStructure().getPeriodLenght();
     setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
     //_frameResult.setColorOfPanel(event.getID());
 
-  this.getContentPane().add(_ttPane.getPane());
-  this.show();
-}
+    this.getContentPane().add(_ttPane.getPane());
+    this.show();
+  }
 
-private void buildNewTTSTestConditions(Resource event, DModel dm){
-  dm.getConditionsTest().buildAllConditions(_ttStruct);
-  //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
-  String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
-  boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
-  boolean inAPeriod= ((EventAttach)event.getAttach()).isPlaceInAPeriod();
-  if(event!=null){
-    ((EventAttach)event.getAttach()).setAssignState(true);
-    dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1);
-    ((EventAttach)event.getAttach()).setAssignState(false);
-    for(int i=0; i< _ttStruct.getCurrentCycle().getSetOfDays().size(); i++){
-      Resource day= _ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
-      for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-        Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
-        for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
-          Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
-          int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
-          String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
-          ((EventAttach)event.getAttach()).setKey(4,periodKey);
-          ((EventAttach)event.getAttach()).setAssignState(true);
-          dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1);
-          ((EventAttach)event.getAttach()).setAssignState(false);
-        }// end for(int k=0; k< ((Sequence)seq.getAttach())
-      }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
-    }// end for(int i=0; i< _newTTS.getCurrentCycle()
-  }// end if(event!=null){
-  ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
-  ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
-  ((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
+  private void buildNewTTSTestConditions(Resource event, DModel dm){
+    dm.getConditionsTest().buildAllConditions(_ttStruct);
+    //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+    String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
+    boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
+    boolean inAPeriod= ((EventAttach)event.getAttach()).isPlaceInAPeriod();
+    if (event!=null) {
+      ((EventAttach)event.getAttach()).setAssignState(true);
+      dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1);
+      ((EventAttach)event.getAttach()).setAssignState(false);
+      for(int i=0; i< _ttStruct.getCurrentCycle().getSetOfDays().size(); i++){
+        Resource day= _ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+        for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+          Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+          for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
+            Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+            int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
+            String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+            ((EventAttach)event.getAttach()).setKey(4,periodKey);
+            ((EventAttach)event.getAttach()).setAssignState(true);
+            dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1);
+            ((EventAttach)event.getAttach()).setAssignState(false);
+          }// end for(int k=0; k< ((Sequence)seq.getAttach())
+        }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
+      }// end for(int i=0; i< _newTTS.getCurrentCycle()
+    }// end if(event!=null){
+    ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
+    ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
+    ((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
   }
 
   /**
@@ -179,13 +175,13 @@ private void buildNewTTSTestConditions(Resource event, DModel dm){
     JInternalFrame jif;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     Dimension frameDim = new Dimension(700,650);
-   //_documentName = title;
+    //_documentName = title;
    jif = new JInternalFrame(FRAMENAME, true, true, true, true);
    //jif.addInternalFrameListener(this);
    jif.setDefaultCloseOperation(jif.DO_NOTHING_ON_CLOSE);
    jif.setTitle(FRAMENAME);
-    //_simpleView= simpleView;
-    //jif.addInternalFrameListener(this);
+   //_simpleView= simpleView;
+   //jif.addInternalFrameListener(this);
    jif.setMinimumSize(frameDim);
    jif.setPreferredSize(frameDim);
 
@@ -200,11 +196,11 @@ private void buildNewTTSTestConditions(Resource event, DModel dm){
    return jif;
   } // end buidDocument*/
 
-  /**
-   *
-   * @param str
-   * @return
-   */
+ /**
+  *
+  * @param str
+  * @return
+  */
  /* protected void createFrame( String eventName, boolean simple) {
     setTitle(eventName);
     JPanel panel = new JPanel(new BorderLayout(0,0));
@@ -227,34 +223,34 @@ private void buildNewTTSTestConditions(Resource event, DModel dm){
       });
         pack();
         show();
-      //doLayout();
+        //doLayout();
       setLocation(INITIALPOSITION,INITIALPOSITION);
       setVisible(true);
     } //end createUI*/
 
-    /**
-     *
-     */
-    protected void setColorOfPanel(int dayIndex, int seqIndex, int perIndex, int duration, boolean isAssign){
-      for (int i=0; i< ((JPanel)_ttPane.getViewport().getComponent(0)).getComponentCount(); i++){
-        PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPane.getViewport().getComponent(0)).getComponent(i);
-        Period period= _ttStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
-            perPanel.getPeriodRef()[1],perPanel.getPeriodRef()[2]);
-        int[] ppKey={};
-        if((dayIndex==perPanel.getPeriodRef()[0]) &&
-           (seqIndex==perPanel.getPeriodRef()[1]) &&
-           (perIndex<=perPanel.getPeriodRef()[2])&&
-           (perPanel.getPeriodRef()[2]<= (perIndex+duration-1)) &&
-           (isAssign)) {
-          perPanel.setPanelColor(4);
-        } else{
-          if((period.getNbInstConflict()+period.getNbRoomConflict()+period.getNbStudConflict())!=0){
-            perPanel.setPanelColor(3);
-          }// end if((period.getNbInstConflict()+period.getNbRoomConfli
-        }
+   /**
+    *
+    */
+  protected void setColorOfPanel(int dayIndex, int seqIndex, int perIndex, int duration, boolean isAssign){
+    for (int i=0; i< ((JPanel)_ttPane.getViewport().getComponent(0)).getComponentCount(); i++){
+      PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPane.getViewport().getComponent(0)).getComponent(i);
+      Period period= _ttStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
+          perPanel.getPeriodRef()[1],perPanel.getPeriodRef()[2]);
+      int[] ppKey={};
+      if((dayIndex==perPanel.getPeriodRef()[0]) &&
+         (seqIndex==perPanel.getPeriodRef()[1]) &&
+         (perIndex<=perPanel.getPeriodRef()[2])&&
+         (perPanel.getPeriodRef()[2]<= (perIndex+duration-1)) &&
+         (isAssign)) {
+        perPanel.setPanelColor(4);
+      } else{
+        if((period.getNbInstConflict()+period.getNbRoomConflict()+period.getNbStudConflict()) != 0){
+          perPanel.setPanelColor(3);
+        }// end if((period.getNbInstConflict()+period.getNbRoomConfli
+      }
 
-      }// end for (int i=0; i< ((JPanel)_ttPanel.getViewport().
-    }
+    }// end for (int i=0; i< ((JPanel)_ttPanel.getViewport().
+  }
 
 
 
