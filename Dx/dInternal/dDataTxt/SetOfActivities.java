@@ -47,14 +47,15 @@ public class ActivitiesList extends ResourceList{
         case 1:// activity name
           if (token.trim().length()==this._ACTIVITYLENGTH){
             new FatalProblemDlg(
-            "Wrong student name at line: "+line+  "in the student file:" +
-            "\n" + "I was in StudentList class and in analyseTokens method ");
+            "Wrong activity name at line: "+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ");
             System.exit(1);
           }
           position = 2;
           break;
         case 2://activity visibility
           position = 2;
+          isIntValue(token.trim(),"activity name at line: "+line);
           break;
       }// end switch (position)
 
@@ -145,6 +146,18 @@ public class ActivitiesList extends ResourceList{
        return removeResource(courseName.substring(0,_COURSENAMELENGTH));
     }
    return false;
+  }
+
+  /**
+   * */
+  private void isIntValue(String value, String message){
+    try{
+      (new Integer (value.trim())).intValue();
+    }catch (NumberFormatException exc){
+      new FatalProblemDlg("Wrong "+message +" in the activity file:" +
+      "\n" + "I was in activitiesList class and in analyseTokens method ");
+      System.exit(1);
+    }
   }
 
   private int _COURSENAMELENGTH=6;

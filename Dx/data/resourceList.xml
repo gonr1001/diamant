@@ -98,23 +98,29 @@
 		</activitiesList>
 	</DXData>
 	<DXTimeTable>
-		<week>
-			<day>
-				<sequences>
-					<typeOfSequence>AM</typeOfSequence>
-					<periods>
-						<period>
-							<priority>0</priority>
-							<time>8:00-8:30</time>
-						</period>
-						<period>
-							<priority>0</priority>
-							<time>8:30-9:00</time>
-						</period>
-					</periods>
-				</sequences>
-			</day>
-		</week>
+		<TTcycle>
+			<cycleID>1</cycleID>
+			<TTdays>
+				<TTday>
+					<dayID>1</dayID>
+					<TTsequences>
+						<TTsequence>
+							<daySequence>AM</daySequence>
+							<TTperiods>
+								<TTperiod>
+									<priority>0</priority>
+									<time>8:00-8:15</time>
+								</TTperiod>
+								<TTperiod>
+									<priority>0</priority>
+									<time>8:15-8:30</time>
+								</TTperiod>
+							</TTperiods>
+						</TTsequence>
+					</TTsequences>
+				</TTday>
+			</TTdays>
+		</TTcycle>
 	</DXTimeTable>
 	<DXConstraints>
 		<weight>
