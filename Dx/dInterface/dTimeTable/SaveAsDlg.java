@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.7 $  $Date: 2003-06-25 08:36:11 $
+ * Title: SaveAsDlg $Revision: 1.8 $  $Date: 2003-07-07 14:21:58 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.8 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -111,8 +111,8 @@ public class SaveAsDlg extends JDialog
       // If there is a file with this file name in the same path
       file = new File(currentFile);
       if (file.exists()){
-        System.out.println("I exists");
-        int resp= ConfirmDlg.showMessage(_dApplic, currentFile);
+        String fileName = currentFile.substring(currentFile.lastIndexOf(File.separator)+1);
+        int resp= ConfirmDlg.showMessage(_dApplic, "Remplacer le fichier " + fileName + " existante?");
         if( resp== ConfirmDlg.OK_OPTION){
         _dApplic.getDMediator().saveCurrentDoc(currentFile);
         new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
