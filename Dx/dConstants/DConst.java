@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.101 $  $Date: 2004-05-13 14:18:00 $
+ * Title: DConst $Revision: 1.102 $  $Date: 2004-05-18 17:28:14 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.101 $
+ * @version $Revision: 1.102 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -27,7 +27,8 @@ import java.awt.Font;
 
 public class DConst {
 
-  static ResourceBundle res = ResourceBundle.getBundle("dResources.DStringFrRes");
+  
+	static ResourceBundle res = ResourceBundle.getBundle("dResources.DStringFrRes");
   public final static String V_DATE = "20 Avril 2004";//res.getString("vDate");
   public final static boolean DEVELOPMENT = true;
 
@@ -145,6 +146,7 @@ public class DConst {
   //Assign menu
   public final static String ASSIGN = res.getString("assign");//Affectation
   public final static String INST_ASSIGN_M = res.getString("instAssignM");//Enseignants
+  public final static String LISTS_INSTRUCTOR_TD = res.getString("listsInstructorTD"); // "Listes d'enseignants"},
   public final static String ACTI_ASSIGN_M = res.getString("ActiAssignM");//Activités
   public final static String GROUP_ASSIGN_M = res.getString("GroupAssignM");//Groupes
   public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Locaux

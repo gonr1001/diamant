@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.22 $  $Date: 2004-05-14 15:01:19 $
+ * Title: SectionDlg $Revision: 1.23 $  $Date: 2004-05-18 17:28:13 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -440,13 +440,12 @@ public class SectionDlg extends JDialog implements ActionListener{
 	private  SetOfStudents getSortStudents(JList list, int sortIndex) {
 		//sortIndex= 0; // to comment
 		SetOfStudents students = new SetOfStudents();
-		if (list != null) {
-		
-		for (int i= 0; i < list.getModel().getSize(); i++ ) {
-			String str = (String) list.getModel().getElementAt(i);
-			Resource resource = getStudent(str, sortIndex);
-			students.addStudent(resource.getKey(),resource.getID(),((StudentAttach)resource.getAttach()).getAuxField(), new StudentAttach() );
-		}
+		if (list != null) {		
+			for (int i= 0; i < list.getModel().getSize(); i++ ) {
+				String str = (String) list.getModel().getElementAt(i);
+				Resource resource = getStudent(str, sortIndex);
+				students.addStudent(resource.getKey(),resource.getID(),((StudentAttach)resource.getAttach()).getAuxField(), new StudentAttach() );
+			}
 		}
 		return students;
 	}

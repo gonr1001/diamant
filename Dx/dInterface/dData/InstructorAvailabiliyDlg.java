@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.12 $  $Date: 2004-05-14 15:01:19 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.13 $  $Date: 2004-05-18 17:28:14 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -26,6 +26,7 @@ package dInterface.dData;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import dInterface.DApplication;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -163,7 +164,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    */
   public void itemStateChanged( ItemEvent event ) {
 	_applyPanel.setFirstDisable();
-    if ( event.getStateChange() == event.SELECTED ) {
+    if ( event.getStateChange() == ItemEvent.SELECTED ) {
       Object source = event.getSource();
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);

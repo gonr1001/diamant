@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.114 $  $Date: 2004-05-14 15:01:19 $
+ * Title: DStringFrRes $Revision: 1.115 $  $Date: 2004-05-18 17:28:14 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.114 $
+ * @version $Revision: 1.115 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -112,7 +112,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Assign
     { "assign", "Affectation" },
     { "instAssignM", "Enseignants ..." },
+	{ "listsInstructorTD", "Listes d'enseignants"},
     { "instAssignTD", "Disponibilité enseignants"},
+    
     {"ActiAssignM", "Activités ..."},
     {"GroupAssignM", "Groupes ..."},
     {"LocauxAssignM", "Locaux ..."},
@@ -124,12 +126,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     //Optimization
     { "OptimizationM", "Optimisation"},
-    {"initialAssignM", "Affectation Initiale"},
-    {"firstAlgo", "Construire l'horaire"},
-    {"studentRepartition", "Formation de groupes"},
-    {"studentMixingBal", "Balancé"},
-    {"studentMixingMidBal", "Intermédiaire"},
-    {"studentMixingOpti", "Optimisé"},
+    { "initialAssignM", "Affectation Initiale"},
+    { "firstAlgo", "Construire l'horaire"},
+    { "studentRepartition", "Formation de groupes"},
+    { "studentMixingBal", "Balancé"},
+    { "studentMixingMidBal", "Intermédiaire"},
+    { "studentMixingOpti", "Optimisé"},
 
 
     //Modification

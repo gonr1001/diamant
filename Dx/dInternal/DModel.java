@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.93 $  $Date: 2004-05-18 16:07:31 $
+ * Title: DModel $Revision: 1.94 $  $Date: 2004-05-18 17:28:14 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.93 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.94 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -36,7 +36,7 @@ import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dConditionsTest.SetOfEvents;
-import com.iLib.gDialog.InformationDlg;
+
 
 import dResources.DConst;
 

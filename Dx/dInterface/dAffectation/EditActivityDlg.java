@@ -1,13 +1,34 @@
-package dInterface.dAffectation;
+/**
+ *
+ * Title: EditActivityDlg $Revision: 1.33 $  $Date: 2004-05-18 17:28:13 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.33 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
+ */
+
 
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
+ * Description: EditActivityDlg is a class used to
+ *
+ */package dInterface.dAffectation;
+
+
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -29,66 +50,82 @@ import dInternal.dData.*;
 import dInternal.dUtil.DXToolsMethods;
 
 import com.iLib.gDialog.FatalProblemDlg;
+import com.iLib.gDialog.InformationDlg;
 
+import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 
-public class EditActivityDlg extends JDialog implements ActionListener, ChangeListener{
+
+
+public class EditActivityDlg 
+		extends JDialog 
+		implements ActionListener, ChangeListener{
 
   private DApplication _dApplic;
-  private EventsDlgInterface _evDlgInt=null;
-  private int _currentActivityIndex=0;
-  private Vector _setOfInstructors= new Vector(1);// contains strings
+  private EventsDlgInterface _evDlgInt = null;
+  private int _currentActivityIndex = 0;
   private boolean _isModified = false;
-  private Vector _unities = new Vector();// contains event resource
+  private Vector _unities = new Vector();           // contains event resource
+  private JList [] _instructorsLists;
+  private JScrollPane _jScrollPane;
   private JTabbedPane _tabbedPane;
-  private TwoButtonsPanel _buttonsPanel;
-
+  private ButtonsPanel _applyPanel;
+ 
   /**
-   * Constructor
+   * Constructor for activities
    * @param activityDialog The parent dialog of this dialog
    * @param dApplic The application
    * @param currentActivity The ativiti choiced in the activityDialog
    */
   
   
-  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, boolean isModified) {
+  public EditActivityDlg(JDialog dialog, 
+  							DApplication dApplic, 
+  							String currentActivity, 
+  							boolean isModified) {
     super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
-    _isModified= isModified;
+    _isModified = isModified;
     _unities = buildUnitiesVector(currentActivity);
-    init();
+	initialize();
   } // end EditActivityDlg
 
   /**
-   * Constructor
+   * Constructor for one event
    * @param dialog The parent dialog of this dialog
    * @param dApplic The application
    * @param currentActivity The activity choiced in the dialog
    * @param evDlg, 
    * @param isModified
    */
-  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg, boolean isModified) {
+  public EditActivityDlg(JDialog dialog, 
+  							DApplication dApplic, 
+  							String currentActivity, 
+  							EventsDlgInterface evDlg, 
+  							boolean isModified) {
     super(dialog, DConst.EVENTS_DLG_TITLE);
-    setLocationRelativeTo(dialog);
-    _dApplic = dApplic;
-    _evDlgInt= evDlg;
+	_evDlgInt= evDlg;
+    setLocationRelativeTo(dialog);	
+    _dApplic = dApplic;    
     _isModified= isModified;
     _unities = buildUnitiesVector(currentActivity);
-    init();
+    initialize();
 
   }
   /**
    * Initialize the dialog
    */
-  private void init(){
+  private void initialize(){
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
-    _buttonsPanel = new TwoButtonsPanel(this, a);
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
+    _applyPanel = new TwoButtonsPanel(this, a);
+    getContentPane().add(_applyPanel, BorderLayout.SOUTH);
     _tabbedPane = new JTabbedPane();
     //_tabbedPane.
     // Panels for tabbed Pane
+	_instructorsLists =  new JList[_unities.size()] ;
     for (int i=0; i< _unities.size(); i++){
+    	
       if(_unities.get(i)!=null){
         _currentActivityIndex=i;
         _tabbedPane.addTab(((Resource)_unities.get(i)).getID(), createUnityPanel(i, true, null));
@@ -98,12 +135,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
     _tabbedPane.addChangeListener(this);
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
+    
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    Dimension unitySize = new Dimension(350, 270 );
+    Dimension unitySize = new Dimension(350, 270);
     setBounds((screenSize.width - unitySize.width) / 2, (screenSize.height -
         unitySize.height) / 2, unitySize.width, unitySize.height);
-
-
     setResizable(true);
     setVisible(true);
   } // end init
@@ -117,7 +153,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
     } else if (command.equals(DConst.BUT_APPLY )) {  // apply
-      boolean apply=false;
+      boolean apply = false;
       for(int i=0; i< this._unities.size(); i++){
         _currentActivityIndex=i;
         apply = applyChanges();
@@ -125,7 +161,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
           new FatalProblemDlg(this,"Valeur eronnée");
           break;
         } else
-          _buttonsPanel.setFirstDisable();
+		_applyPanel.setFirstDisable();
       } // end for
       if(apply){
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
@@ -137,19 +173,33 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
               || command.equals(DConst.BUT_FIGE)){// comboBox has changed
       //System.out.println("Enable appliquer ... ");
-      _buttonsPanel.setFirstEnable();
-    }else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
-      new SelectInstructors(_dApplic, this, buildInstructorList());
+	  _applyPanel.setFirstEnable();
+    } else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
+     //if (instructorsLists[_currentActivityIndex]= null)
+      new SelectInstructors(_dApplic, this, 
+      						makeVector(_instructorsLists[_currentActivityIndex]), 
+      						buildInstructorList(_currentActivityIndex));
     }
 
   }
+  
+  private Vector makeVector(JList jList) {
+  	Vector v = new Vector();
+  	if (jList!= null) {
+		for (int i = 0; i < jList.getModel().getSize(); i++)
+				v.add(jList.getModel().getElementAt(i));
+  	
+  	}
+  	
+  	return v;
+  }
 
-  public void setInstructorList(Vector v) {
-    _tabbedPane.setSelectedIndex(_currentActivityIndex);
-    JPanel jp = (JPanel)_tabbedPane.getComponentAt(_currentActivityIndex);
-    JPanel jpb = createUnityPanel(_currentActivityIndex, false, v);
-   _tabbedPane.setComponentAt(_currentActivityIndex,jpb);
-   _buttonsPanel.setFirstEnable();
+  public void updateInstructorList(Vector v) {
+   _instructorsLists[_currentActivityIndex].setListData(v);
+   _jScrollPane.repaint();
+   
+   //instructorsLists[_currentActivityIndex] = new JList(v.toArray());
+   _applyPanel.setFirstEnable();
   }
 
   /**
@@ -157,9 +207,18 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * @param e
    */
    public void stateChanged( ChangeEvent ce) {
-    _currentActivityIndex = ((JTabbedPane)ce.getSource()).getSelectedIndex();
-    _tabbedPane.setSelectedIndex(_currentActivityIndex);
-  }
+   	
+	if(!_applyPanel.isFirstEnable()){
+		 _currentActivityIndex = ((JTabbedPane)ce.getSource()).getSelectedIndex();
+  		_tabbedPane.setSelectedIndex(_currentActivityIndex);
+
+	} else { 
+		_tabbedPane.removeChangeListener(this);
+		_tabbedPane.setSelectedIndex(_currentActivityIndex);
+		new InformationDlg(this, "Appliquer ou fermer pour continuer", "Operation interdite");
+		_tabbedPane.addChangeListener(this);
+	}
+   }// end state change
 
 
   /**
@@ -170,7 +229,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
     JLabel duration, day, hour, room, instructor;
     JComboBox  cbDuration, cbDay, cbHour, cbRoom;
-    JList instructorsList;
+    //JList instructorsList;
     JScrollPane cbInstructor;
     JToggleButton place, fix;
     duration = new JLabel(DConst.R_TIME_LENGTH);
@@ -195,14 +254,17 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     cbRoom = new JComboBox(vect[1]);
     cbRoom.addActionListener(this);
     cbRoom.setSelectedItem(vect[0].get(0).toString());
-    if (first) {
-      vect = buildInstructorList();
-      instructorsList = new JList(vect[0].toArray());
-    } else {
-      instructorsList = new JList(newInstructors);
-    }
-    cbInstructor = new JScrollPane(instructorsList);
-    cbInstructor.setPreferredSize(new Dimension(170, 40));
+    
+	vect[0] = buildCurrentInstructorList(index);
+	_instructorsLists[index] = new JList(vect[0].toArray());
+   // if (first) {
+   //   vect = buildInstructorList();
+   //   instructorsList = new JList(vect[0].toArray());
+   // } else {
+   //   instructorsList = new JList(newInstructors);
+   // }
+    _jScrollPane = new JScrollPane(_instructorsLists[index]);
+	_jScrollPane.setPreferredSize(new Dimension(170, 40));
     place = new JToggleButton(DConst.BUT_PLACE);
     place.setSelected(event.getAssignState());
     place.addActionListener(this);
@@ -230,7 +292,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     // instructor
     panel = new JPanel(); //new GridLayout(1,3));
     panel.add(instructor);
-    panel.add(cbInstructor);
+    panel.add(_jScrollPane);
     JButton jButtonChange = new JButton( DConst.BUT_CHANGE );
     //jButtonChange.setPreferredSize(new Dimension(75, 22));
     jButtonChange.addActionListener(this);
@@ -242,7 +304,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     buttomPanel.add(fix);
     centerPanel.add(panel);
     centerPanel.add(buttomPanel);
-    _buttonsPanel.setFirstDisable();
+	_applyPanel.setFirstDisable();
     return centerPanel;
   }
 
@@ -370,24 +432,30 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    *build the instructor list
    * @return
    */
-  private Vector[] buildInstructorList(){
-    Vector list[] = {new Vector(1), new Vector(1)};
-    EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+  private Vector buildCurrentInstructorList(int index){
+    Vector v = new Vector();//, new Vector(1)};
+    EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
     SetOfInstructors soi= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     long keys [] = event.getInstructorKey();
     for (int i = 0 ; i < keys.length ; i ++ ) {
       Resource instructor = soi.getResource(keys[i]);
-      if(instructor!=null)
-        list[0].add(instructor.getID());
-     // else
-      //  list[0].add(DConst.NO_ROOM_INTERNAL);
+      if(instructor != null)
+        v.add(instructor.getID());   
     }
-
+	return v;
+  }
+    
+	private Vector buildInstructorList(int index){
+		Vector v = new Vector();//, new Vector(1)};
+		EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
+		SetOfInstructors soi= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors();
+		//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+		long keys [] = event.getInstructorKey();
     for(int i=0; i< soi.size(); i++)
-      list[1].add(soi.getResourceAt(i).getID());
-    list[1].add(DConst.NO_ROOM_INTERNAL);
-    return list;
+      v.add(soi.getResourceAt(i).getID());
+    v.add(DConst.NO_ROOM_INTERNAL);
+    return v;
   }
 
   /**
@@ -474,3 +542,12 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   }
 
 }// end class
+
+/*
+if(!_buttonsPanel.isFirstEnable()){
+	new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0], this, false);
+	_buttonsPanel.setFirstDisable();
+} else { 
+	new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer", "Operation interdite");
+}
+*/
