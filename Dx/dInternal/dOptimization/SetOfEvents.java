@@ -80,14 +80,14 @@ public class SetOfEvents extends SetOfResources{
    * @param soa
    * @return
    */
-  public String getEventID(String eventKey, SetOfActivities soa){
-    String id= eventKey;
-    StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
+  public String getEventID(String eventID, SetOfActivities soa){
+    String id= eventID;
+    StringTokenizer event1 = new StringTokenizer(eventID,DConst.TOKENSEPARATOR);
     if(event1.countTokens()>=4){
-      Resource activity = soa.getResource(Long.parseLong(event1.nextToken()));
-      Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(Long.parseLong(event1.nextToken()));
-      Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(Long.parseLong(event1.nextToken()));
-      Resource unity = ((Section)section.getAttach()).getSetOfUnities().getResource(Long.parseLong(event1.nextToken()));
+      Resource activity = soa.getResource(event1.nextToken());
+      Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
+      Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
+      Resource unity = ((Section)section.getAttach()).getSetOfUnities().getResource(event1.nextToken());
       id= activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
           DConst.TOKENSEPARATOR+section.getID()+DConst.TOKENSEPARATOR+unity.getID();
     }

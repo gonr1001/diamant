@@ -81,6 +81,26 @@ class reference {
 @__modelType reference 
 */
 class reference31 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.DetailedTTPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference18 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.DetailedPeriodPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference19 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.SimplePeriodPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference20 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.SimpleTTPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

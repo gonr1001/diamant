@@ -41,6 +41,16 @@ class reference29 {
 @__modelType reference 
 */
 class reference30 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.ViewDetailedCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference16 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.ViewSimpleCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -17,9 +17,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import java.util.Vector;
+
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTabbedPane;
 import javax.swing.text.JTextComponent;
 
@@ -27,6 +30,7 @@ import javax.swing.text.JTextComponent;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
+import dInternal.dData.SetOfResources;
 import dInternal.dData.StandardReportData;
 
 import dResources.DConst;
@@ -34,10 +38,10 @@ import dResources.DConst;
 public class ReportDlg extends JDialog implements ActionListener{
 
   private DApplication _dApplic = null;
-  private int[] _reportList;
   private JDialog _jd = this;
   private JPanel _buttonsPanel;
-  private StandardReportData srd;
+  private JTabbedPane _tabbedPane;
+  private StandardReportData _srd;
   private String[] _buttonsNames = {DConst.BUT_OK, "OPTIONS", DConst.BUT_CANCEL};
 
   public ReportDlg(DApplication dApplic) {
@@ -49,40 +53,97 @@ public class ReportDlg extends JDialog implements ActionListener{
   }//end constructor
 
   private void jbInit(){
-    Dimension dialogDim = new Dimension(300,400);
+    Dimension dialogDim = new Dimension(600,600);
     Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-60);
+    Dimension tabDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-60);
     getContentPane().setLayout(new BorderLayout());
     setSize(dialogDim);
     setResizable(true);
     //the tabbedPane
-    JTabbedPane tabbedPane = new JTabbedPane();
-    //tabbedPane.setPreferredSize(tabbedPaneDim);
-    tabbedPane.addTab("Report 1", actReport(dialogDim));
+    _tabbedPane = new JTabbedPane();
+    _tabbedPane.setPreferredSize(tabbedPaneDim);
+    _tabbedPane.addTab("Activities Report", createTabPanel(tabbedPaneDim, ""));
+    _tabbedPane.addTab("Students Report", createTabPanel(tabbedPaneDim, ""));
     //the buttons panel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-
-    getContentPane().add(tabbedPane, BorderLayout.NORTH);
+    //_buttonsPanel = DXTools.buttonsPanel2(this, _buttonsNames, tabbedPaneDim);
+    getContentPane().add(_tabbedPane, BorderLayout.NORTH);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
   }
 
-  private JPanel actReport(Dimension dialogDim){
-    return new JPanel();
+  /**
+   * Builds a panel contained into a tab of a tabbedPanel. This panel contains
+   * a JTextArea for displaying a String
+   * @param dim The panel dimension
+   * @param reportData The String to be displayed in this panel
+   * @return
+   */
+  private JPanel createTabPanel(Dimension dim, String reportData){
+    JTextArea jta = new JTextArea(reportData);
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setPreferredSize(dim);
+    JScrollPane scrollPane = new JScrollPane();
+    scrollPane.getViewport().setLayout(new BorderLayout());
+    scrollPane.getViewport().add(jta, BorderLayout.CENTER);
+    panel.add(scrollPane, BorderLayout.CENTER);
+    return panel;
+  }
+
+  /**
+   *
+   * @param mainFieldKey
+   * @param otherFieldsKeys
+   */
+  public void setReport(int mainFieldKey, int[] otherFieldsKeys){
+    if (_tabbedPane.getSelectedIndex() == -1)
+      return;
+    String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
+    JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
+    JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
+    jta.removeAll();
+    jta.append(reportData);
+  }
+
+  public void setReport(SetOfResources selectedResources){
+    if (_tabbedPane.getSelectedIndex() == -1)
+      return;
+    if (selectedResources.size() <= 0)
+      return;
+    int mainKey = 0;
+    int[] otherKeys = new int[selectedResources.size()-1];
+    for (int i = 0; i < selectedResources.size(); i++){
+      if (i == 0)
+        mainKey = (int) selectedResources.getResourceAt(i).getKey()-1;
+      else{
+        otherKeys[i-1] = (int) selectedResources.getResourceAt(i).getKey()-1;
+      }//end if~else (i==0)
+    }//end for
+    String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainKey, otherKeys);
+    JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
+    JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
+    jta.removeAll();
+    jta.append(reportData);
   }
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    System.out.println("command "+command);
     //If buttons OPTIONS
-    //if (command.equals("OPTIONS"))
+    if (command.equals("OPTIONS"))
         new ReportOptionsDlg(_dApplic, _jd, 0);
   }
 
-  public void setFieldReportList(int[] newReportList){
-    _reportList = newReportList;
-  }
-
-  public StandardReportData getReportData(){
-    return srd;
+  private String getReportData(int reportIndex, int mainFieldKey, int[] otherFieldsKeys){
+    _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
+    String dataReport = "";
+    switch (reportIndex){
+      case 0 :
+        dataReport = _srd.getActivitiesReport(mainFieldKey, otherFieldsKeys);
+        break;
+      case 1 :
+        dataReport = _srd.getStudentsReport(mainFieldKey, otherFieldsKeys);
+        break;
+    }
+    return dataReport;
   }
 
 

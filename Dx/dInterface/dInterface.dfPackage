@@ -103,9 +103,10 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInterface.AbstractDocument#_dApplic:oiref>=514,195,489,1126:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.CmdButton#dInterface.CommandHolder:oiref>=1141,402,1141,342:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_activities:oiref>=180,1652,1038,544:oigroup>
-<oigroup:<oiref:java#Class#dInterface.DDocument:oiref>=413,604,200,766,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.DDocument:oiref>=413,604,200,798,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mReport:oiref>=142,1652,1012,544:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dData.InstructorAvailabilityCmd#dInterface.Command:oiref>=1364,1126,1117,705:oigroup>
-<oigroup:<oiref:java#Class#dInterface.DMenuBar:oiref>=30,1652,200,2046,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.DMenuBar:oiref>=30,1652,200,2158,1:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.ExitCmd#dInterface.Command:oiref>=1506,1126,1126,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_myFile:oiref>=55,1652,954,544:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.NewCmd#dInterface.Command:oiref>=715,1126,1072,705:oigroup>
@@ -124,9 +125,9 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mOpti:oiref>=155,1652,1021,544:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DApplication#_dMenuBar:oiref>=323,1668,230,1668:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.CmdButton#_cmd:oiref>=1126,560,1126,604:oigroup>
-<oigroup:<oiref:design#Class#id17ivedfxus9pndfyc1s47.diagram:oiref>=256,48,155,196,1:oigroup>
+<oigroup:<oiref:design#Class#id17ivedfxus9pndfyc1s47.diagram:oiref>=256,48,155,212,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_dApplic:oiref>=613,1208,523,1208:oigroup>
-<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,109,292,1:oigroup>
+<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,135,356,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.PLAFCmd:oiref>=779,1126,88,101,1:oigroup>
 <oigroup:<oiref:design#Class#id1qvh0dky34z86dky35imi.diagram:oiref>=426,2,146,276,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.PLAFDlg:oiref>=690,1652,170,318,1:oigroup>
@@ -154,7 +155,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInterface.Command:oiref>=1054,604,90,101,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dData.InstructorAvailabiliyDlg:oiref>=1280,10,174,574,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_dMediator:oiref>=413,1232,203,1232:oigroup>
-<oigroup:<oiref:design#Class#id4ixp8dfxus9pndfyc2jys.diagram:oiref>=174,206,104,164,1:oigroup>
+<oigroup:<oiref:design#Class#id4ixp8dfxus9pndfyc2jys.diagram:oiref>=174,206,120,196,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.DToolBar:oiref>=105,3,200,654,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DApplication#_tbar:oiref>=456,1126,238,657:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMediator#_dApplic:oiref>=203,1184,323,1184:oigroup>

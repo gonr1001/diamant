@@ -272,6 +272,20 @@ public static int STIConvertGroup(String STIGroupID){
    return panel;
  }//end method
 
+ /*
+ public static JPanel buttonsPanel2(ActionListener parentDialog, String [] buttonsNames, Dimension parentDim){
+   JPanel panel = new JPanel();
+   panel.setPreferredSize(new Dimension((int)parentDim.getWidth(), 35));
+   JButton button;
+   for(int i = 0; i<buttonsNames.length; i++){
+     button = new JButton(buttonsNames[i]);
+     button.addActionListener(parentDialog);
+     panel.add(button) ;
+   }
+   return panel;
+ }//end method
+ */
+
 
  /**
   * Build a panel containing the arrows for information transfert. This panel implements the

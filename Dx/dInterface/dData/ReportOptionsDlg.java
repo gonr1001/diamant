@@ -32,14 +32,14 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 
   private DApplication _dApplic;
   private JButton _toRight, _toLeft;
-  private JDialog _jd;
+  private ReportDlg _parentDlg;
   /**
    * the lists containing the activities ID
    */
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
   private Object [] _currentActivities = new Object[0];
-  private ReportDlg _rdlg;
+  //private ReportDlg _rdlg;
   private SetOfResources _resources;
   private String [] _buttonsNames = {DConst.BUT_OK, DConst.BUT_CANCEL};
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT, "+", "-"};
@@ -54,7 +54,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     _leftVec = new Vector();
-    _rdlg = (ReportDlg)parentDlg;
+    _parentDlg = (ReportDlg)parentDlg;
     setListVectors(reportType);
     jbInit();
     setLocationRelativeTo(dApplic.getJFrame());
@@ -86,9 +86,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     //centerPanel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
     //buttonsPanel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    //Setting the button APPLY disable
-    //_buttonsPanel.getComponent(1).setEnabled(false);
-
+    //The parent dialog listen the button "OK" of this panel
+    //((JButton)_buttonsPanel.getComponent(0)).addActionListener(_parentDlg);
     //placing the elements into the JDialog
     setSize(dlgDim);
     setResizable(false);
@@ -132,7 +131,6 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         String [] elements =
         {
           DConst.R_ACTIVITY_NAME,
-          DConst.R_ACTIVITY_NAME,
           DConst.R_TYPE_NAME,
           DConst.R_SECTION_NAME,
           DConst.R_UNITY_NAME,
@@ -145,19 +143,6 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
           DConst.R_ROOM_NAME,
         };
         reportElements = elements;
-        /*
-        _leftVec.add(DConst.R_ACTIVITY_NAME + " " + 0);
-        _leftVec.add(DConst.R_TYPE_NAME + " " + 0);
-        _leftVec.add(DConst.R_SECTION_NAME + " " + 0);
-        _leftVec.add(DConst.R_UNITY_NAME + " " + 0);
-        _leftVec.add(DConst.R_DURATION + " " + 0);
-        _leftVec.add(DConst.R_DAY_NUMBER + " " + 0);
-        _leftVec.add(DConst.R_DAY_NAME + " " + 0);
-        _leftVec.add(DConst.R_ACTIVITY_BEGIN_HOUR + " " + 0);
-        _leftVec.add(DConst.R_ACTI_END_HOUR + " " + 0);
-        _leftVec.add(DConst.R_INSTRUCTOR_NAME + " " + 0);
-        _leftVec.add(DConst.R_ROOM_NAME + " " + 0);
-        */
         break;
       case 1://_studentsReport
         _leftVec.add("Un");
@@ -193,10 +178,15 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         dispose();
     //if button OK
     if (command.equals(_buttonsNames[0])){
-      int[] keys = new int[_rightVec.size()];
-      for (int i = 0; i < _rightVec.size(); i++)
-        keys[i] = (int) _resources.getResource((String)_rightVec.elementAt(i)).getKey();
-      _rdlg.setFieldReportList(keys);
+      System.out.println("ok ");
+      SetOfResources selectedResources = new SetOfResources(0);
+      Resource r = null;
+      for (int i = 0; i < _rightVec.size(); i++){
+        r = _resources.getResource((String)_rightVec.elementAt(i));
+        selectedResources.setCurrentKey(r.getKey());
+        selectedResources.addResource(r, 0);
+      }
+      _parentDlg.setReport(selectedResources);
       _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       dispose();
     }

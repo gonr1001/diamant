@@ -51,6 +51,11 @@ class reference37 {
 @__modelType reference 
 */
 class reference38 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ReportOptionsDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference15 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
