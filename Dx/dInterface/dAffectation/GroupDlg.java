@@ -87,10 +87,10 @@ public class GroupDlg extends JDialog implements ActionListener{
     setSize(400,400);
     setResizable(false);
     setTitlePanel();
-    getContentPane().add(_titlePanel, BorderLayout.NORTH);
     setNotAssignedPanel();
     setAssignedPanel();
     //setGroupPanels();
+    getContentPane().add(_titlePanel, BorderLayout.NORTH);
     getContentPane().add(_notAssignedPanel, BorderLayout.WEST);
     getContentPane().add(_assignedPanel, BorderLayout.EAST);
     triggerListeners();
@@ -122,6 +122,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     _titlePanel.setPreferredSize(new Dimension(350,100));
     _titlePanel.add(actIDPanel);
     _titlePanel.add(actTypePanel);
+    setCurrents();
   }
 
   /*
@@ -164,16 +165,15 @@ public class GroupDlg extends JDialog implements ActionListener{
     Vector assignedVector;
     JList assignedList;
     System.out.println("_currNumberOfSections "+_currNumberOfSections);
-    for (int i = 0; i < /*_currNumberOfSections*/ 3; i++){
-      /*assignedVector = _students.getStudentsByGroup(this._currActivityID, "1", i);
+    for (int i = 0; i < _currNumberOfSections; i++){
+      assignedVector = _students.getStudentsByGroup(this._currActivityID, "1", i);
       assignedList = new JList(assignedVector);
       _assignedPanel.add(new JScrollPane());
       System.out.println("_assignedPanel.add(new JScrollPane())");
       scrollPane = (JScrollPane)_assignedPanel.getComponent(i);
       System.out.println("scrollPane " + scrollPane);
       scrollPane.setPreferredSize(new Dimension(100,100));
-      scrollPane.getViewport().add(assignedList);*/
-     _assignedPanel.add(new JButton("i " + i));
+      scrollPane.getViewport().add(assignedList);
     }
   }
 
@@ -222,13 +222,18 @@ public class GroupDlg extends JDialog implements ActionListener{
       _notAssignedVector = _students.getStudentsByGroup((String)_activitiesCombo.getSelectedItem(), "1", -1);
       _notAssignedList.setListData(_notAssignedVector);
       setCurrents();
+      _assignedPanel.removeAll();
       setAssignedPanel();
+
+      _assignedPanel.repaint();
       //setGroupPanels();
     }//end if (e.getSource().equals(_activitiesCombo))
     if (e.getSource().equals(_typesCombo)){
       _currTypeID = (String)_typesCombo.getSelectedItem();
       setCurrents();
+      _assignedPanel.removeAll();
       setAssignedPanel();
+      _assignedPanel.repaint();
       //setGroupPanels();
     }
   }//end method
