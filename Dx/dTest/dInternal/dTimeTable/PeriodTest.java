@@ -11,8 +11,12 @@ package dTest.dInternal.dTimeTable;
 
 import junit.framework.*;
 import java.io.File;
+import java.util.Vector;
 
 import dInternal.dTimeTable.Period;
+import dInternal.dConditionsTest.ConflictsAttach;
+import dInternal.dData.Resource;
+import dInternal.dData.SetOfResources;
 
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
@@ -58,6 +62,38 @@ String path;
     assertEquals("test_readXMLtag : assertEquals 1(Hour):", period.getBeginHour()[0], 8);
     assertEquals("test_readXMLtag : assertEquals 2(Minute):", period.getBeginHour()[1], 15);
     assertEquals("test_readXMLtag : assertEquals 3(priotity):", period.getPriority(), 0);
+  }
+
+  /**
+   *
+   */
+  public void test_eventsInPeriod(){
+    readFile xmlFile;
+    Element  item, ID;
+    Period period= new Period();
+    try{
+      xmlFile = new readFile();
+      //System.out.println(path+"period.xml");//debug
+      Document  doc = xmlFile.getDocumentFile(path+"period.xml");
+      ReadXMLElement list= new ReadXMLElement();
+      item= list.getRootElement(doc);
+      period.readXMLtag(item);
+      //_setOfCycles.readXMLtag(root);
+    }catch(Exception e){
+      System.out.println(e);
+    }
+    ConflictsAttach confAttach= new ConflictsAttach();
+     Vector vec= new Vector();
+     vec.add("YS,RGR,AJ");
+     confAttach.addConflict("AMC640.1.02.1",3,"student",vec);
+     period.getEventsInPeriod().addResource(new Resource("GEI200.1.01.1",confAttach),0);
+     vec= new Vector();
+     vec.add("Alex");
+     confAttach= new ConflictsAttach();
+     confAttach.addConflict("AMC645.1.01.1",1,"Instructor",vec);
+     period.getEventsInPeriod().addResource(new Resource("ADM111.1.01.1",confAttach),0);
+     SetOfResources sor= period.getConflictsEventsInPeriod("GEI200.1.01.1");
+     assertEquals("test_eventsInPeriod : assertEquals :", 2, sor.size());
   }
 
 
