@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.5 $  $Date: 2004-09-10 13:31:02 $
+ * Title: SaveAsTTDlg $Revision: 1.6 $  $Date: 2004-10-21 14:27:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -70,7 +70,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 
    public String setExtension(JFileChooser fc){
      if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
-       fc.setFileFilter(new DFileFilter (new String[] {DConst.DIA},
+       fc.setFileFilter(new DFileFilter (new String[] {DConst.DOT_DIA},
            DConst.DIA_FILE) );
        return DConst.DOT_DIA;
      } else {

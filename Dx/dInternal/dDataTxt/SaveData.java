@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.15 $  $Date: 2004-10-21 13:39:47 $
+* Title: SaveData $Revision: 1.16 $  $Date: 2004-10-21 14:27:41 $
 * Description: DConst is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.15 $
+* @version $Revision: 1.16 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -74,7 +74,7 @@ public class SaveData {
     diaData+=students.toWrite()+DConst.CR_LF;
     diaData+=DConst.SAVE_SEPARATOR;
     filter= new FilterFile(diaData.getBytes(),"");
-    filter.saveFile(fileName + DConst.DIA);
+    filter.saveFile(fileName + DConst.DOT_DIA);
     return error;
   }
 
