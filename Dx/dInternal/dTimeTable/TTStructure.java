@@ -3,6 +3,7 @@ package dInternal.dTimeTable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import java.io.File;
+import org.tictac.mouseTrap.dModel.Trace;
 
 import java.util.Vector;
 
@@ -59,6 +60,7 @@ public class TTStructure {
   static final String _TAGITEM3="TTdays";
   
   //+++++++++++++++++++++++++++++
+  Trace trace=new Trace();
   public TTStructure() {
     _setOfCycles= new SetOfResources(4);
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
@@ -249,17 +251,8 @@ public class TTStructure {
 //}
   
   public String loadTTStructure(String fileName){
-  	//+++++++++++++++++++++++++++++
-	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
-	 	"<method>loadTTStructure</method>\n" +"<params>\n"+
-		"<simple>\n<type>String</type>\n<value>"+fileName+"</value>\n</simple>\n"+
-		"</params>\n</instruction>\n");
-	
-	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
-		 	"<method>saveTTStructure</method>\n" +"<params>\n"+
-			"<simple>\n<type>String</type>\n<value>D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"tt.xml"+"</value>\n</simple>\n"+
-			"</params>\n</instruction>\n");
-		
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,"loadTTStructure",fileName));	
     //-----------------------------
 	
     ReadXMLFile xmlFile;
@@ -317,6 +310,7 @@ public class TTStructure {
    * @return String the error message, empty if it does not found error
    * */
    public String saveTTStructure(String fileName){
+   	logger.info(trace.write(this,"saveTTStructure","D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"traceOut.xml"));
     WriteXMLElement wr;
     try{
       wr= new WriteXMLElement();

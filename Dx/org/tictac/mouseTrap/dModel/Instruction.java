@@ -5,6 +5,8 @@ import java.util.Vector;
 import java.lang.reflect.InvocationTargetException;
 
 public class Instruction {
+	private ListObj _listObj;
+	private int _id;
 	private Class   _class;
 	private Method 	_method;
 	private Class  	_typeParams[];	
@@ -12,8 +14,10 @@ public class Instruction {
 	private Class  	_typeRet ;
 	private Object  _valueRet;
 
-	public Instruction(String sclass, String smethod, Vector sparams){
+	public Instruction(ListObj listObj, String sid, String sclass, String smethod, Vector sparams){
 		try{
+			_listObj=listObj;
+			_id= Integer.parseInt(sid);
 			_class = (new MyClass()).getClass(sclass); //class
 			_method = (new MyMethod()).getTheMethod(_class, smethod, sparams);//method and type
 			_typeParams = _method.getParameterTypes();
@@ -26,7 +30,7 @@ public class Instruction {
 		}
 	}
 
-	public Object doIt (Object prevobj){
+	public ListObj doIt (){
 		Object methobj=null;
 		
 		//		Precondition in public method
@@ -45,16 +49,17 @@ public class Instruction {
 			}
 			Vector v=new Vector();
 			v.add(new Boolean("true"));
-			if (    prevobj==null || 
-				   (prevobj.getClass().getName()).compareTo(_class.getName()) !=0){
+			
+			methobj=_listObj.found(_id);
+			if (methobj==null){
 				methobj = (new MyObject()).createObject(_class.getName(),v);
-			}else{
-				methobj=prevobj;
+				_listObj.add(_id,methobj);
 			}
+			
 			
 			Object retobj = _method.invoke(methobj, _valueParams);  //That's the execution
 			
-			if (retobj!=null){
+			if (retobj!=null || retobj!=""){
 				//Only if we have a return value
 				Object retval = (new MyReturn()).getTheReturn(_typeRet,retobj.toString());
 				System.out.println("Return:" + retval.toString());
@@ -66,6 +71,6 @@ public class Instruction {
 		}catch (Exception e) {
 			System.out.println("Instruction.doIt Caught Exception: " + e.getMessage());		
 		}
-		return methobj;
+		return _listObj;
 	}
 }

@@ -8,6 +8,7 @@ import org.jdom.Element;
 
 public class ExecuteMT {
 	private String fileName;
+	private ListObj listObj=new ListObj();
 	
 	public ExecuteMT (String file){
 		fileName=file;
@@ -24,16 +25,18 @@ public class ExecuteMT {
 	}			
 				
 	public void doTree(Element root){
+		String sid;
 		String sclass;
 		String smethod;
 		Vector sparams = new Vector();
-		Object prevobj=null;
+		
 		try{
 			List instructions = root.getChildren("instruction");
 			System.out.println("This log have "+ instructions.size() +" registered");
 			Iterator i = instructions.iterator();
 			while (i.hasNext()) {
 				Element instruction = (Element) i.next();
+				sid = instruction.getChild("Id").getText();
 				sclass = instruction.getChild("class").getText();
 				smethod = instruction.getChild("method").getText(); 
 				System.out.print("\t" + sclass + " for " + smethod);
@@ -48,8 +51,9 @@ public class ExecuteMT {
 					}
 				}
 				
-				Instruction instructionToDo = new Instruction(sclass, smethod, sparams);				
-				prevobj=instructionToDo.doIt(prevobj);
+				Instruction instructionToDo = new Instruction(listObj, sid, sclass, smethod, sparams);
+				listObj=instructionToDo.doIt();
+				//
 	  		}
 		}catch (Exception e) {
 			System.out.println("ExecuteMT.doTree Caught Exception: " + e.getMessage());

@@ -19,6 +19,7 @@ import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DisplayAttributs;
 import eLib.exit.xml.input.ReadXMLElement;
 import eLib.exit.xml.output.WriteXMLElement;
+import org.tictac.mouseTrap.dModel.Trace;
 
 public class Cycle extends DXObject{
 
@@ -26,6 +27,7 @@ public class Cycle extends DXObject{
   //private int _currentDayIndex=0;
 
   //+++++++++++++++++++++++++++++
+	Trace trace=new Trace();
 	public Cycle() {
 		_setOfDays = new SetOfResources(4);
 	    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
@@ -43,31 +45,11 @@ public class Cycle extends DXObject{
    *
    * */
   public void addDays(int nbDays){
-	/*//+++++++++++++++++++++++++++++
-	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
-	 	"<method>loadTTStructure</method>\n" +"<params>\n"+
-		"<simple>\n<type>String</type>\n<value>"+fileName+"</value>\n</simple>\n"+
-		"</params>\n</instruction>\n");
-	
-	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
-		 	"<method>saveTTStructure</method>\n" +"<params>\n"+
-			"<simple>\n<type>String</type>\n<value>D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"tt.xml"+"</value>\n</simple>\n"+
-			"</params>\n</instruction>\n");
-		
-    //-----------------------------
-	*/
 	//+++++++++++++++++++++++++++++
-	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
-	 	"<method>addDays</method>\n" +"<params>\n"+
-		"<simple>\n<type>int</type>\n<value>"+nbDays+"</value>\n</simple>\n"+
-		"</params>\n</instruction>\n");
-	
-	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
-		 	"<method>toString</method>\n" +"<params>\n"+
-			"<simple>\n<type></type>\n<value></value>\n</simple>\n"+
-			"</params>\n</instruction>\n");
-		
+  	//logger.info(trace.write(this,"addDays",nbDays));
+	//logger.info(trace.write(this,"toString"));
     //-----------------------------
+
 	
     int size= _setOfDays.size();
     Resource day= _setOfDays.getResourceAt(size-1);
