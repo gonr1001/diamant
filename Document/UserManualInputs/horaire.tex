@@ -352,7 +352,106 @@ Double cliquer sur une activité pour faire apparaître la fenêtre de natures de l
 
 \subsection{Formation de groupes}
 
+La formation de groupe communément appelé «brassage d'étudiants dans les groupes» peut se faire de trois façons distinctes:
+
+\begin{itemize}
+    \item En cliquant sur \textbf{\emph{Balancé}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en ne tolérant qu'un écart d'un étudiant entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{Intermédiaire}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant une fois de plus les conflits, mais en tolérant cette fois ci un écart de 15 (\textcolor[rgb]{1.00,0.00,0.00}{valeur à paramétrer si besoin se fait sentir}) étudiants au plus entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{Optimisé}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en autorisant tous les écarts entre les différents groupes d'une même activité.
+\end{itemize}    
+
 \subsection{Rapports}
+
+La fonctionnalité rapport permet de visualiser le rapport complet des événements placés dans la grille horaire, de visualiser le rapport de conflits générés par les événements placés dans la grille horaire et de visualiser les erreurs survenues lors de l'importation de données.
+
+\subsubsection{Rapport complet}
+
+Le rapport complet permet de visualiser les événements placés dans la grille horaire (voir figure \ref{rapfullc}). 
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=4.0in]{UserManualInputs/images/rap_full.eps}
+        \caption{Rapport complet}\label{rapfullc}
+    \end{center}
+\end{figure}
+
+Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
+
+\begin{itemize}
+    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
+    \item \emph{Acti}: nom de l'activité,
+    \item \emph{Nat}: nature de l'activité,
+    \item \emph{Grp}: groupe de l'activité,
+    \item \emph{Blc}: bloc de l'activité,
+    \item \emph{Nomb É}: nombre d'étudiants,
+    \item \emph{Durée}: durée de l'événement,
+    \item \emph{Début}: heure de début de l'événement,
+    \item \emph{Fin}: heure de fin de l'événement,
+    \item \emph{Enseignant}: nom de l'enseignant,
+    \item \emph{Local}: nom du local.
+\end{itemize}    
+    
+Les informations à afficher pour chaque événement peuvent être définies à partir de la fenêtre d'\textbf{\emph{Option de rapport}}, en cliquant sur le bouton \textbf{\emph{Options}} à partir de la fenêtre de \textbf{\emph{Rapport complet}} (voir figure \ref{rapfullc}). 
+
+\subsubsection{Option de rapport complet}
+
+Cette fenêtre d'\textbf{\emph{Option de rapport}} (voir figure \ref{rapfulloptionsc}) permet de choisir les information à afficher dans le rapport complet. L'ordre d'apparition des champs dans la colonne \emph{Champs choisis} (du haut vers le bas), définit l'ordre dans lequel ces champs apparaîtront dans le rapport complet (de la gauche vers la droite).
+
+Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers une autre et les boutons avec les signes $+$ ou $-$ pour déplacer un champ du haut vers le bas et vice-versa.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/rap_full_options.eps}
+        \caption{Options du rapport complet}\label{rapfulloptionsc}
+    \end{center}
+\end{figure}
+
+
+\subsubsection{Rapport de conflits}
+
+Le rapport de conflits permet de visualiser les conflits générés par les événements placés dans la grille horaire (voir figure \ref{rapconfc}). 
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=4.0in]{UserManualInputs/images/rap_conflicts.eps}
+        \caption{Rapport de conflits}\label{rapconfc}
+    \end{center}
+\end{figure}
+
+Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
+
+\begin{itemize}
+    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
+    \item \emph{PérJour}: période de la journée (AM, PM),
+    \item \emph{Événement 1 }: premier événement en conflit,
+    \item \emph{Événement 2}: événement avec lequel l'événement 1 est en conflit ou description du conflit si l'événement 1 présente un conflit interne (disponibilité de l'enseignant, disponibilité du local et/ou capacité du local inférieur au nombre d'étudiants).
+    \item \emph{Début}: heure de début de l'événement,
+    \item \emph{Type Conf}: type de conflits (étudiant, enseignant ou local),
+    \item \emph{Numb C}: nombre de conflits,
+    \item \emph{Conflits}: détail du conflit (liste des étudiants en conflit, nom du local ou de l'enseignant en conflit).
+\end{itemize}    
+    
+Les informations à afficher pour chaque conflit peuvent être définies à partir de la fenêtre d'\textbf{\emph{Option de conflits}}, en cliquant sur le bouton \textbf{\emph{Options}} à partir de la fenêtre de \textbf{\emph{Rapport de conflits}} (voir figure \ref{rapconfc}). 
+
+\subsubsection{Option de rapport de conflits}
+
+Cette fenêtre d'\textbf{\emph{Option de conflits}} (voir figure \ref{rapconfoptionsc}) permet de choisir les information à afficher dans le rapport de conflits. L'ordre d'apparition des champs dans la colonne \emph{Champs choisis} (du haut vers le bas), définit l'ordre dans lequel ces champs apparaîtront dans le rapport complet (de la gauche vers la droite).
+
+Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers une autre et les boutons avec les signes $+$ ou $-$ pour déplacer un champ du haut vers le bas et vice-versa.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/rap_conflicts_options.eps}
+        \caption{Options du rapport de conflits}\label{rapconfoptionsc}
+    \end{center}
+\end{figure}
+
 
 
 \section{Production d'un horaire d'examen}
@@ -641,14 +740,89 @@ La fonctionnalité rapport permet de visualiser le rapport complet des événements
 
 \subsubsection{Rapport complet}
 
-Le rapport complet permet de visualiser les événements placés dans la grille horaire (voir figure ). 
+Le rapport complet permet de visualiser les événements placés dans la grille horaire (voir figure \ref{rapfulle}). 
 
 \begin{figure}[h]
 % Requires \usepackage{graphicx}
     \begin{center}
         \includegraphics[width=4.0in]{UserManualInputs/images/rap_full.eps}
-        \caption{Rapport complet}\label{rap_fulle}
+        \caption{Rapport complet}\label{rapfulle}
     \end{center}
 \end{figure}
+
+Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
+
+\begin{itemize}
+    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
+    \item \emph{Acti}: nom de l'activité,
+    \item \emph{Nat}: nature de l'activité,
+    \item \emph{Grp}: groupe de l'activité,
+    \item \emph{Blc}: bloc de l'activité,
+    \item \emph{Nomb É}: nombre d'étudiants,
+    \item \emph{Durée}: durée de l'événement,
+    \item \emph{Début}: heure de début de l'événement,
+    \item \emph{Fin}: heure de fin de l'événement,
+    \item \emph{Enseignant}: nom de l'enseignant,
+    \item \emph{Local}: nom du local.
+\end{itemize}    
     
-Les informations fournies pour chaque événement peuvent être de 
+Les informations à afficher pour chaque événement peuvent être définies à partir de la fenêtre d'\textbf{\emph{Option de rapport}}, en cliquant sur le bouton \textbf{\emph{Options}} à partir de la fenêtre de \textbf{\emph{Rapport complet}} (voir figure \ref{rapfulle}). 
+
+\subsubsection{Option de rapport complet}
+
+Cette fenêtre d'\textbf{\emph{Option de rapport}} (voir figure \ref{rapfulloptionse}) permet de choisir les information à afficher dans le rapport complet. L'ordre d'apparition des champs dans la colonne \emph{Champs choisis} (du haut vers le bas), définit l'ordre dans lequel ces champs apparaîtront dans le rapport complet (de la gauche vers la droite).
+
+Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers une autre et les boutons avec les signes $+$ ou $-$ pour déplacer un champ du haut vers le bas et vice-versa.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/rap_full_options.eps}
+        \caption{Options du rapport complet}\label{rapfulloptionse}
+    \end{center}
+\end{figure}
+
+
+\subsubsection{Rapport de conflits}
+
+Le rapport de conflits permet de visualiser les conflits générés par les événements placés dans la grille horaire (voir figure \ref{rapconfe}). 
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=4.0in]{UserManualInputs/images/rap_conflicts.eps}
+        \caption{Rapport de conflits}\label{rapconfe}
+    \end{center}
+\end{figure}
+
+Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
+
+\begin{itemize}
+    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
+    \item \emph{PérJour}: période de la journée (AM, PM),
+    \item \emph{Événement 1 }: premier événement en conflit,
+    \item \emph{Événement 2}: événement avec lequel l'événement 1 est en conflit ou description du conflit si l'événement 1 présente un conflit interne (disponibilité de l'enseignant, disponibilité du local et/ou capacité du local inférieur au nombre d'étudiants).
+    \item \emph{Début}: heure de début de l'événement,
+    \item \emph{Type Conf}: type de conflits (étudiant, enseignant ou local),
+    \item \emph{Numb C}: nombre de conflits,
+    \item \emph{Conflits}: détail du conflit (liste des étudiants en conflit, nom du local ou de l'enseignant en conflit).
+\end{itemize}    
+    
+Les informations à afficher pour chaque conflit peuvent être définies à partir de la fenêtre d'\textbf{\emph{Option de conflits}}, en cliquant sur le bouton \textbf{\emph{Options}} à partir de la fenêtre de \textbf{\emph{Rapport de conflits}} (voir figure \ref{rapconfe}). 
+
+\subsubsection{Option de rapport de conflits}
+
+Cette fenêtre d'\textbf{\emph{Option de conflits}} (voir figure \ref{rapconfoptionse}) permet de choisir les information à afficher dans le rapport de conflits. L'ordre d'apparition des champs dans la colonne \emph{Champs choisis} (du haut vers le bas), définit l'ordre dans lequel ces champs apparaîtront dans le rapport complet (de la gauche vers la droite).
+
+Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers une autre et les boutons avec les signes $+$ ou $-$ pour déplacer un champ du haut vers le bas et vice-versa.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/rap_conflicts_options.eps}
+        \caption{Options du rapport de conflits}\label{rapconfoptionse}
+    \end{center}
+\end{figure}
+
