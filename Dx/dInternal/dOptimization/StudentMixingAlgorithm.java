@@ -183,7 +183,10 @@ public class StudentMixingAlgorithm implements Algorithm {
       for (int j=0; j< student.getCoursesList().size(); j++){
         String actID= student.getCoursesList().getResourceAt(j).getID();
         int group= student.getGroup(actID);
-        if(group<=0){
+        Section sect=_dm.getSetOfActivities().getSection(actID.substring(0,
+            SetOfActivities._COURSENAMELENGTH),actID.substring(
+            SetOfActivities._COURSENAMELENGTH),Character.toString(DXTools.STIConvertGroup(group)));
+        if((group<=0) || sect==null){
           group=1;
           student.setInGroup(actID,group,false);
         }

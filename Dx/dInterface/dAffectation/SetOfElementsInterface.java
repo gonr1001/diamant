@@ -49,9 +49,10 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
   private Object[] _selectedItems;
   protected int _selectedPanel=0;
   private String _title;
+  private int _numberOfPanel;
   private String _elementsToDisplay;
   private int _WIDTH=300;
-  private int _MINHEIGHT=140;
+  private int _MINHEIGHT=160;
   private int _LINEHEIGHT=20;
   private int _MAXHEIGHT=400;
   private JDialog _jDialog;
@@ -71,10 +72,11 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
     _dApplic= dApplic;
     _elementsToDisplay= elementsToDisplay;
     _jDialog= this;
-    _listOfElements = new JList[numberOfPanel];
-    _panelOfElements= new JPanel[numberOfPanel];
-    _vectorOfElements= new Vector[numberOfPanel];
-    _labelOfElements= new JLabel[numberOfPanel];
+    _numberOfPanel=numberOfPanel;
+    _listOfElements = new JList[_numberOfPanel];
+    _panelOfElements= new JPanel[_numberOfPanel];
+    _vectorOfElements= new Vector[_numberOfPanel];
+    _labelOfElements= new JLabel[_numberOfPanel];
     _dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
     _panelDim = new Dimension((int)(_WIDTH-100),
                                _MINHEIGHT-buttonsPanelHeight-20);

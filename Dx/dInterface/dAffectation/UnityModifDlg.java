@@ -40,6 +40,9 @@ private String _title;
     initDialog();
   }
 
+  /**
+   *
+   */
   private void init(){
     Vector [] vect= new Vector[1];
     vect[0]= _section.getSetOfUnities().getNamesVector(1);
@@ -76,11 +79,14 @@ private String _title;
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
     }
     if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
+      if(_section.getSetOfUnities().size()>1){
      _section.getSetOfUnities().removeResourceAt(_section.getSetOfUnities().size()-1);
       init();
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      }
     }
 
   }
+
 
 }

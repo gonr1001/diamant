@@ -30,15 +30,21 @@ private String _title;
    */
   public SectionModifDlg(Dialog parent, DApplication dApplic,String title,Resource type) {
     super(parent,dApplic,title+type.getID()+".","Nombre de sections",1);
-    Vector [] vect= new Vector[1];
+    //Vector [] vect= new Vector[1];
     _type= type;
     _title= title;
-    vect[0]= ((Type)_type.getAttach()).getSetOfSections().getNamesVector(1);
      _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-     //_buttonsPanel.getComponent(0).setEnabled(false);
-     //_buttonsPanel.getComponent(1).setEnabled(false);
+     init();
+     initDialog();
+  }
+
+  /**
+   *
+   */
+  private void init(){
+    Vector [] vect= new Vector[1];
+    vect[0]= ((Type)_type.getAttach()).getSetOfSections().getNamesVector(1);
     setVectorsOfElements(vect);
-    initDialog();
   }
 
   /**
@@ -56,9 +62,28 @@ private String _title;
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
+    Type type= (Type)_type.getAttach();
     //boolean _change = false, _restore = false;
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
+    }
+    if (command.equals(DConst.BUT_ADD)) {  // Ajouter
+      Resource section= type.getSetOfSections().getResourceAt(
+          ((Type)_type.getAttach()).getSetOfSections().size()-1);
+      String ID= Character.toString(DXTools.STIConvertGroup(
+          DXTools.STIConvertGroup(section.getID())+1));
+      int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
+      type.addSection(ID,nbCycle,true);
+      init();
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+    }
+    if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
+      if(((Type)_type.getAttach()).getSetOfSections().size()>1){
+      ((Type)_type.getAttach()).getSetOfSections().removeResourceAt(
+          ((Type)_type.getAttach()).getSetOfSections().size()-1);
+      init();
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      }
     }
 
   }

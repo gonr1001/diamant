@@ -34,8 +34,8 @@ private Resource _activity;
     _activity= activity;
     vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
      _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-     //_buttonsPanel.getComponent(0).setEnabled(false);
-     //_buttonsPanel.getComponent(1).setEnabled(false);
+     _buttonsPanel.getComponent(0).setEnabled(false);
+     _buttonsPanel.getComponent(1).setEnabled(false);
     setVectorsOfElements(vect);
     initDialog();
   }

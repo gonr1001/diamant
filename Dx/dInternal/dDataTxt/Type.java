@@ -9,6 +9,7 @@ package dInternal.dData;
  * @version 1.0
  */
 import dInternal.dUtil.DXObject;
+import dInterface.dUtil.DXTools;
 
 public class Type extends DXObject{
 
@@ -30,6 +31,19 @@ public class Type extends DXObject{
   public boolean addSection(String id){
     Section section= new Section();
     return _setOfSections.addResource(new Resource(id,section),1);
+  }
+
+  /**
+   * add a group object in the list
+   * @param String the ID of the group
+   * @return boolean result of the operation
+   * */
+  public boolean addSection(String id, int nbCycle, boolean isManualCreated){
+    Section section= new Section();
+    section.addUnity("1",nbCycle, isManualCreated);
+    Resource rescsection=new Resource(id,section);
+    rescsection.setManuallyCreated(isManualCreated);
+    return _setOfSections.addResource(rescsection,1);
   }
 
   /**
@@ -82,7 +96,7 @@ public class Type extends DXObject{
    * @return the string itself
    * */
   public String toWrite(){
-   return _setOfSections.toWrite();
+    return _setOfSections.toWrite();
   }
   /**
    * compare this resource with the specified resource
