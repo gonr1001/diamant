@@ -12,7 +12,7 @@ public class ReadPrintFile {
 
 
     //InputStreamReader isr = new InputStreamReader(_fis);rgr21333ffss
-    // System.out.println(isr.getEncoding());ddnew
+    // System.out.println(isr.getEncoding());ddnew sur branch
     b = inputFile.readFileAsBytes();
     inputFile.close();
 	int i = 0;
