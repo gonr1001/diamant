@@ -1,1 +1,31 @@
-\chapter*{Préface} 
+\chapter*{Introduction}
+
+\diamant{} est un logiciel de construction d'horaire dans lequel le chargement de données se fait à partir de 4 fichiers de texte:
+\begin{enumerate}
+    \item Le fichier de locaux.
+    \item Le fichier d'instructeurs.
+    \item Le fichier d'étudiants.
+    \item Le fichier d'activités.
+\end{enumerate}    
+
+Chaque fichier contient une liste d'éléments qui constitue les ressources dont le logiciel a besoin pour fonctionner. Ces ressources sont classifiées dans 4 catégories:
+\begin{enumerate}
+    \item Locaux.
+    \item Instructeurs.
+    \item Étudiants.
+    \item Activités.
+\end{enumerate}    
+
+Pour stocker l'information contenue dans chaque fichier, nous avons développé pour la version 1.5 de \diamant{} la structure de données \emph{Resource} (pour plus de détails se reporter à la section 1.1). Cette structure de données contient les informations d'un élément d'une ressource donnée (locaux, instructeurs, étudiants ou activités).
+
+L'information contenue dans un fichier est stockée dans la structure de données \emph{ResourceList}  (pour plus de détails se reporter à la section 1.2). ResourceList est un ensemble constitué d'une liste d'éléments de type  Resource et contient par conséquent la liste des éléments d'un fichier. 
+
+Cette approche donne les avantages suivants :
+\begin{itemize}
+    \item Le traitement de tous les fichiers est fait avec la même structure, ce qui favorise la modularité, la clarté de l'application et le traitement des données de façon uniforme et centralisée.
+    \item On obtient moins de lignes de code, ce qui diminue les efforts de tests et de debbugage.
+\end{itemize}    
+
+Une fois les données chargés dans \diamant{}, une série de  classes et de méthodes sont chargés du traitement de l'information (ajout, suppression, tri, recherche et édition d'éléments).
+
+Nous vous présenterons dans ce document, la description du format des fichiers, les structures de données et les classes développées.

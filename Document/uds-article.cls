@@ -1,7 +1,8 @@
 %------   IDENTIFICATION   --------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uds-these}[2002/10/30 v2.0  Standard UdeS thesis class]
+\ProvidesClass{uds-article}[2002/10/30 v2.0  Standard UdeS article class]
+% --- Réalisé à partir du style de thèse de l'UdeS initialement conçu par M. Charles-Antoine Brunet ----
 
 %------   INITIAL CODE   --------------------------------------------------
 
@@ -167,6 +168,7 @@
 \newcommand{\Auteur}[2]{\def\lauteurPrenom{#1} \def\lauteurNom{#2}}
 \newcommand{\Auteurs}[1]{\def\lenoma{#1}}
 \newcommand{\Date}[1]{\def\ladate{#1}}
+\newcommand{\Logo}[1]{\def\lelogo{#1}}
 
 \def\lafaculte{Facult\'e de g\'enie}
 \def\laspecialite{\lenoma}
@@ -179,11 +181,15 @@
 \renewcommand{\baselinestretch}{1}\small\normalsize 
 \vspace*{-0.5 in}%
 \begin{center}%
-\mbox{\includegraphics[draft=false,height=36pt]{udslogo.eps}} \\[0.5ex] %
+\mbox{\includegraphics[draft=false,height=25pt]{udslogo.eps}} \\[0.5ex] %
 {\renewcommand{\arraystretch}{1}\begin{tabular}{c}\Large\lafaculte\\\large\ledepartement\end{tabular}}
 \vfill{\LARGE\bf\sf\begin{tabular}{c}\letitre\end{tabular}}\par%
-{\renewcommand{\arraystretch}{1}\vfill\begin{tabular}{c}\large \letype\\ \large \laspecialite\end{tabular}}\vfill%
-\vfill{\large \ladresse \hfill \ladate}%
+\ifx\empty\lelogo
+    \typeout{}\typeout{-----Pas d'image de logo)}\typeout{}%
+  \else
+    \mbox{\includegraphics[draft=false,height=45pt]{\lelogo}} \\[0.5ex] %
+{\renewcommand{\arraystretch}{1}\begin{tabular}{c}\large \\ \letype\\ \large \laspecialite\end{tabular} \\ (\ladate)}\vfill%
+\vfill{\large \ladresse}%
 \end{center}
 \end{titlepage}
 \newpage\if@twoside\null\thispagestyle{empty}\newpage\fi%
@@ -220,21 +226,21 @@
   \ifx\empty\fichierResume
     \typeout{}\typeout{-----Pas de resume}\typeout{}%
   \else
-    \include{\fichierResume}\toNextPage
+    \input{\fichierResume}
   \fi%
   \ifx\empty\fichierMerci
     \typeout{}\typeout{-----Pas de remerciements}\typeout{}%
   \else
-    \include{\fichierMerci}\toNextPage
+    \input{\fichierMerci}\toNextPage
   \fi%
   \renewcommand{\baselinestretch}{1}\small\normalsize%
-  \tableofcontents\toNextPage
-  \listoffigures\toNextPage
+  \tableofcontents
+  \listoffigures
   \listoftables\toNextPage
   \ifx\empty\fichierLexique
     \typeout{}\typeout{-----Pas de lexique (glossaire)}\typeout{}%
   \else
-    \include{\fichierLexique}\toNextPage
+    \input{\fichierLexique}\toNextPage
   \fi%
   \setcounter{page}{1}\pagenumbering{arabic}%
 }{%

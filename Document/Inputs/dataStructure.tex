@@ -1,0 +1,45 @@
+\chapter{Description de la structure de données de \diamant{}} 
+
+Le noeud principal de la structure de données de \diamant{} est représenté par la classe \emph{LoadData} (voir figure \ref{datastruct}). Cette classe contient la liste des différentes ressources, à savoir:
+
+\begin{itemize}
+    \item \emph{StudentsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des étudiants.\\
+    \item \emph{RoomsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des locaux.\\
+    \item \emph{InstructorsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'instructeurs.\\
+    \item \emph{ActivitiesList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'activités.\\
+\end{itemize}  
+
+Chacune des listes de ressources citées ci-dessus hérite de la super classe \emph{ResourceList}. \emph{ResourceList} contient la liste de tous les éléments d'une ressource. Cette liste d'éléments est en réalité une liste d'objects de type \emph{Resource}. L'object \emph{Resource} décrit quand à lui un élément par sa clé (\emph{resourceKey}), son identifiant (\emph{resourceID}) et la nature de cet object (\emph{resourceObject}). Il est à noter que \emph{resourceObject} peut être de type \emph{Instructor} ou \emph{Activity} ou \emph{Room} ou encore \emph{Student}
+
+Nous décrirons chacune des structures dans les prochaines sections.
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=430pt]{Images/loaddata.eps}
+    \caption{Structure de données}\label{datastruct}
+  \end{center}
+\end{figure}
+
+
+\section{\emph{LoadData}}
+
+\section{\emph{StudentsList}}
+
+\section{\emph{RoomsList}}
+
+\section{\emph{InstructorsList}}
+
+\section{\emph{ActivitiesList}}
+
+\section{\emph{ResourceList}}
+
+\section{\emph{Resource}}
+
+\section{\emph{Instructor}}
+
+\section{\emph{Room}}
+
+\section{\emph{Student}}
+
+\section{\emph{Activity}}
