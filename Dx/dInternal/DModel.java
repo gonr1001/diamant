@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.47 $  $Date: 2003-07-29 10:25:44 $
+ * Title: DModel $Revision: 1.48 $  $Date: 2003-07-29 10:38:24 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.47 $
+ * @version $Revision: 1.48 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -102,11 +102,11 @@ public class DModel {
     Vector project = loadD.loadProject(fileName);
 
     // begin debug
-    /*String path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator;
+    String path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator;
     LoadData _lData= new LoadData();
     Vector _timeTable = _lData.loadProject(path+"fichier1.dia");
     boolean res= ((SetOfRooms)project.get(3)).isEquals((SetOfRooms)_timeTable.get(3));
-    *///end debug
+    //end debug
     if (project.size()!=0) {
       setVersion((String)project.get(0));
       _ttStruct= (TTStructure)project.get(1);
