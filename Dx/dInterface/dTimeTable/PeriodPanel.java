@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.17 $  $Date: 2003-12-12 16:11:04 $
+ * Title: PeriodPanel $Revision: 1.18 $  $Date: 2003-12-15 19:31:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -50,11 +50,13 @@ public  abstract class PeriodPanel extends JPanel{
   protected int _TTSseq;
   protected int _TTSperiod;
   protected int _panelRefNo;
+  protected String _str;
 
   protected PeriodPanel(){
   }
 
   protected PeriodPanel(int refNo, String str) {
+    _str = str;
     _panelRefNo= refNo;
     StringTokenizer st = new StringTokenizer(str,".");
     _TTSday= Integer.parseInt(st.nextToken()) -1;
