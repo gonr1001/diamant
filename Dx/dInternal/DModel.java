@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.6 $  $Date: 2003-03-14 15:50:22 $
+ * Title: DModel $Revision: 1.7 $  $Date: 2003-03-14 16:02:08 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -82,10 +82,6 @@ public class DModel{
   public synchronized void removeTTParametersListener(DModelListener dml) {
     _dmListeners.removeElement(dml);
   }
-
-/*  public void changeDModel() {
-    sendEvent();
-  }*/
 
   public void setParameters(int [] a) {
     _ttParameters.setValues(a);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.4 $  $Date: 2003-03-14 15:50:22 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.5 $  $Date: 2003-03-14 16:02:08 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -64,7 +64,6 @@ public class InstructorAvailabiliyDlg  extends JDialog
                                 "13:30 ", "14:30 ", "15:30 ", "16:30 ", "17:30 ",
                                 "18:30 ", "19:00 ", "20:00 ", "21:00 "};
 
-  final static String TITLE = "Enseignants";
   final static String MES00 = "Disponibilités";
   final static String BUT00 = "Appliquer";
   final static String BUT01 = "OK";
@@ -84,10 +83,8 @@ public class InstructorAvailabiliyDlg  extends JDialog
   int nbPerParJour;
   private boolean modified = false;
   private DModel _dm;
-  //private InstructorsList _insList; // clone of the dictionnary
   private Instructor  _currentInstr;
   private int [][] _currentAvailbility;
-  //private String _sel;
 
 
   /**
@@ -100,9 +97,6 @@ public class InstructorAvailabiliyDlg  extends JDialog
     super(jFrame, str, true);
     try {
       _dm = dm;
-      //nbPer = _ddv._timeTable.nbPeriodPerDay+2;
-      //nbDay = _ddv._timeTable.nbDays;
-      //setTIME();
       jbInit();
       pack();
       setLocationRelativeTo(jFrame);
@@ -158,18 +152,12 @@ public class InstructorAvailabiliyDlg  extends JDialog
         _dm.incrementModification();
       modified = false;
       butApply.setEnabled(false);
-    /*  _ddv.actualTT(_ddv._dicInstr.getInstr(_sel), true);
-      _ddv._dicInstr = (DDicInstructors)dicIns.clone();
-      _ddv.actualTT(_inst, false);//
-      _ddv._mHasChanged = modified;
-      _ddv.newReport = true;
-      //_ddv.actualTT();*/
+
       dispose();
     } else if (command.equals( BUT00 )) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentInstr.setInstAvailability(_currentAvailbility);
       _dm.incrementModification();
-//      _dm.changeDModel();
       modified = false;
       butApply.setEnabled( false );
     // if a button of the grid has been pressed
@@ -227,8 +215,6 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
     for (int j = 0; j < nbPer; j++) {
       // first column : the time of the period
-      //if ((_ddv._timeTable.isCycle) && (_ddv._timeTable.nbPeriodPerDay==12))
-      //TIME = _ddv._timeTable._hBegin;
 
       gridPanel.add(new JLabel(TIME[j], JLabel.RIGHT));
       // create a button for each day for the period
@@ -244,42 +230,5 @@ public class InstructorAvailabiliyDlg  extends JDialog
     }
     return gridPanel;
   }
-
-  /** Set TIME
-   * */
-  private void setTIME(){
-    TIME = new String [nbPer];
-    int _itr =0;
-    int _h = 8, _mn = 30;
-    String _heure = _h+"h"+_mn;
-  /*  DPeriod _per;
-    Vector _creuse = creusePer(_ddv);
-    for (int i=0; i<_ddv._timeTable.nbPeriodPerDay; i++){
-      if (_ddv._timeTable.get(i)!=null){
-        _per = (DPeriod)_ddv._timeTable.get(i);
-        _h = new Integer (_per.timeBegin.get(Calendar.HOUR_OF_DAY)).intValue();
-        _mn = new Integer (_per.timeBegin.get(Calendar.MINUTE)).intValue();
-        _heure = _h+"h"+(_mn < 10 ? "0"+ Integer.toString(_mn):Integer.toString(_mn));
-        TIME[_itr] = _heure;
-        if(isCreuse(_per.timeEnd.get(Calendar.HOUR_OF_DAY),_creuse)){
-          _itr++;
-          _mn = _per.timeBegin.get(Calendar.MINUTE);
-          _heure = _per.timeEnd.get(Calendar.HOUR_OF_DAY) +"h"+( _mn< 10 ? "0"+ Integer.toString(_mn):Integer.toString(_mn));
-          System.out.println("Heure: "+_heure);//debug
-          TIME[_itr] = _heure;
-      }
-      } else{
-        _h = _h+ _ddv._timeTable.durPeriod;
-        _heure = _h+"h"+_mn;
-        TIME[_itr] = _heure;
-      }
-      _itr++;
-
-    }
-*/
-  }
-  // end SetTIME
-
-
 
 } /* end InstructorAvailabilityDlg */
