@@ -134,7 +134,8 @@ public class LoadData {
 
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
-    filter.appendToCharKnown("ÔËé-',; ()ê.à");
+    filter.setCharKnown("");
+    filter.appendToCharKnown("éÉèÈàÀÇçëËïÏÔËé-',; ()ê.à");
     if (filter.validFile(str)) {
       return filter.getByteArray();
     } else return null;
