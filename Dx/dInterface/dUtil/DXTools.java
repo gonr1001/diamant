@@ -76,13 +76,14 @@ public class DXTools{
    }
 
    /**
-   * Search the indices to be showed as selected in a JList. The search is made in the vector that
+   * Search the indexes to be showed as selected in a JList.
+   * The search is made in the vector that
    * contains the list items
    * @param Vector (itemsList) the items list where we are searching indices
    * @param Object [] (selectedItemsList) the selected items array to be found in the itemsList
    * @return An array containing the indices of the items to be showed as selected
    * */
-  public static int[] getIndicesToSelect(Vector itemsList, Object[] selectedItemsList){
+  public static int[] getIndicesOfIntersection(Vector itemsList, Object[] selectedItemsList){
    int [] indices = new int[selectedItemsList.length];//the place for keeping the indices to set selected
    for (int i = 0; i < selectedItemsList.length; i++){
      indices[i] = itemsList.indexOf(selectedItemsList[i]);
@@ -111,7 +112,7 @@ public class DXTools{
       destinationVector = resources.getIDsByField(fieldIndex, valueDestination);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
-      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
+      int[] indices = getIndicesOfIntersection(destinationVector, elementsToTransfer);
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
     }
@@ -188,7 +189,7 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
       destinationVector = destinationRes.getNamesVector(sortIndex);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
-      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
+      int[] indices = getIndicesOfIntersection(destinationVector, elementsToTransfer);
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
     }//end for

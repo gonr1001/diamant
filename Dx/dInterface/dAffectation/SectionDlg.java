@@ -563,7 +563,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       destinationRes.getNamesVector(destinationVector);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
-      int[] indices = DXTools.getIndicesToSelect(destinationVector, elementsToTransfer);
+      int[] indices = DXTools.getIndicesOfIntersection(destinationVector, elementsToTransfer);
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
     }//end for

@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.22 $  $Date: 2003-11-25 15:29:34 $
+ * Title: ReportOptionsDlg $Revision: 1.23 $  $Date: 2003-11-25 15:53:25 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,7 +17,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -91,19 +91,27 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
    */
   private void reportOptionsDlgInit(){
     Dimension dlgDim = new Dimension(DConst.DIALOG_DIM, DConst.DIALOG_DIM);
-    Dimension centerPanelDim = new Dimension((int)dlgDim.getWidth()-DConst.CENTER_WIDTH, (int)dlgDim.getHeight()-DConst.CENTER_HEIGHT);
-    Dimension listPanelDim = new Dimension((int)centerPanelDim.getWidth()/2-DConst.LIST_LENGHT, (int)centerPanelDim.getHeight());
+    Dimension centerPanelDim =
+        new Dimension((int)dlgDim.getWidth()-DConst.CENTER_WIDTH,
+                      (int)dlgDim.getHeight()-DConst.CENTER_HEIGHT);
+    Dimension listPanelDim =
+        new Dimension((int)centerPanelDim.getWidth()/2-DConst.LIST_LENGHT,
+                      (int)centerPanelDim.getHeight());
 
     String[] leftLabelsInfo = {DConst.REPORT_OP_FIELDS_NOT_CHOICED};
-    ;
+
     String[] rightLabelsInfo = {DConst.REPORT_OP_FIELDS__CHOICED};
     //the centerPanel
     JPanel centerPanel = new JPanel();
     centerPanel.setPreferredSize(centerPanelDim);
-    centerPanel.add(setListPanel(listPanelDim, _leftList,  DConst.REPORT_OP_FIELDS_NOT_CHOICED));
+    centerPanel.add(setListPanel(listPanelDim,
+                                 _leftList,
+                                 DConst.REPORT_OP_FIELDS_NOT_CHOICED));
 
     centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames,true));
-    centerPanel.add(setListPanel(listPanelDim, _rightList,  DConst.REPORT_OP_FIELDS__CHOICED));
+    centerPanel.add(setListPanel(listPanelDim,
+                                 _rightList,
+                                 DConst.REPORT_OP_FIELDS__CHOICED));
 
     //buttonsPanel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
@@ -120,7 +128,7 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
       res.add(v.get(i));
     }
     return res;
-  }
+  }// end rigth
 
   private Vector left(Vector v , int e) {
     Vector res = new Vector();
@@ -128,13 +136,16 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
       res.add(v.get(i));
     }
     return res;
-  }
+  }// end left
 
-  private static JPanel setListPanel(Dimension panelDim, JList theList, String  labelsInfo ){
+  private static JPanel setListPanel(Dimension panelDim,
+                                     JList theList,
+                                     String labelsInfo ){
     Dimension infoPanelDim = new Dimension((int)panelDim.getWidth(), 20);
-    Dimension listPanelDim = new Dimension((int)panelDim.getWidth(), (int)(panelDim.getHeight() - infoPanelDim.getHeight()));
-    //list.setListData(vec);
-    //list.addMouseListener(ml);
+    Dimension listPanelDim =
+        new Dimension((int)panelDim.getWidth(),
+        (int)(panelDim.getHeight() - infoPanelDim.getHeight()));
+
     JPanel panelList = new JPanel(new BorderLayout());
     panelList.setPreferredSize(listPanelDim);
     JScrollPane scrollPane = new JScrollPane();
@@ -142,8 +153,6 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
     scrollPane.getViewport().add(theList);
     panelList.add(scrollPane);
 
-
-    //JPanel listPanel = listPanel(list, (int)listPanelDim.getWidth(), (int)listPanelDim.getHeight());
     //the panel
     JPanel panel = new JPanel();
     panel.setPreferredSize(panelDim);
@@ -153,44 +162,27 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
     return panel;
   }
 
-  /**
-   * Search the indices to be showed as selected in a JList. The search is made in the vector that
-   * contains the list items
-   * @param Vector (itemsList) the items list where we are searching indices
-   * @param Object [] (selectedItemsList) the selected items array to be found in the itemsList
-   * @return An array containing the indices of the items to be showed as selected
-   * */
-/* private static int[] getIndicesToSelect(Vector itemsList, Object[] selectedItemsList){
- int [] indices = new int[selectedItemsList.length];//the place for keeping the indices to set selected
- for (int i = 0; i < selectedItemsList.length; i++){
-   indices[i] = itemsList.indexOf(selectedItemsList[i]);
- }
-  return indices;
-  }*/
-
   private void listTransfers(Object [] elementsToTransfer,
                              Vector source,
                              JList s,
                              Vector destination,
                              JList d,
-                             boolean flag){
+                             boolean left){
     if (elementsToTransfer.length != 0){
-      String currentElement;
       for (int i = 0; i < elementsToTransfer.length; i++){
         source.remove(elementsToTransfer[i]);
         destination.add(elementsToTransfer[i]);
       }
-
-      if(flag)
+      if(left)
         destination= DXTools.sortVector(destination);
       else
         source=DXTools.sortVector(source);
-      int[] indices = DXTools.getIndicesToSelect(destination, elementsToTransfer);
+      int[] indexes = DXTools.getIndicesOfIntersection(destination, elementsToTransfer);
       d.setListData(destination);
-      d.setSelectedIndices(indices);
+      d.setSelectedIndices(indexes);
       s.setListData(source);
       s.clearSelection();
-    }//end for
+    }//end if
   }
 
   public void actionPerformed(ActionEvent e){
@@ -212,11 +204,21 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       //toLeft button
       if (command.equals(_arrowsNames[1]))
-        listTransfers(_rightList.getSelectedValues(),_rightVec,_rightList,_leftVec, _leftList,true);
+        listTransfers(_rightList.getSelectedValues(),
+                      _rightVec,
+                      _rightList,
+                      _leftVec,
+                      _leftList,
+                      true);
 
       else
         //toRight button
-        listTransfers(_leftList.getSelectedValues(),_leftVec, _leftList,_rightVec,_rightList,false);
+        listTransfers(_leftList.getSelectedValues(),
+                      _leftVec,
+                      _leftList,
+                      _rightVec,
+                      _rightList,
+                      false);
 
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
     if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3])){
@@ -224,25 +226,18 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
       if (_rightList.getSelectedIndices().length == 1) {
         String selectedValue = (String)_rightList.getSelectedValue();
         i = _rightList.getSelectedIndex();
-        //SetOfResources s = buildChoicedResources(_resources, _rightVec);
-        //Vector v;*/
         //toUp button
         if (command.equals(_arrowsNames[2]))
-          swap(_rightVec,i,i-1);//v = transposeInSet(true, s, selectedValue).getNamesVector(0);
+          swap(_rightVec,i,i-1);
         //toDown button
         else
-          swap(_rightVec,i,i+1);//v = transposeInSet(false, s, selectedValue).getNamesVector(0);
-        //_rightVec = new Vector(v);
-        //_rightList.setListData(_rightVec);
-        //rgr _dApplic.getPreferences().setSelectedOptions(_rightVec);
-        //rgr _dApplic.getPreferences().save();
+          swap(_rightVec,i,i+1);
         _rightList.setListData(_rightVec);
         _rightList.setSelectedValue(selectedValue, true);
       }
     }//end if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3]))
-
-
   }
+
   private void swap(Vector v, int s, int d) {
     Object aux = v.get(s);
     if (d >=0 && d < v.size()) {
