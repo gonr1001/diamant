@@ -460,31 +460,17 @@ public class SectionDlg extends JDialog implements ActionListener{
     String studentData;
     for(int i = 0; i < _notAssignedVector.size(); i++){
       studentData = (String)_notAssignedVector.elementAt(i);
-      /*
-      if (_sortIndex == 0)
-        studentID = studentData.substring(0,DConst.STUDENT_ID_LENGTH).trim();
-      if (_sortIndex == 1)
-        studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
-      if (_sortIndex == 2)
-        studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
-      s = (StudentAttach)_students.getResource(studentID).getAttach();
-      */
       s = getStudentAttach(studentData, _sortIndex);
       s.setInGroup(_actID+_typeID, -1, false);
+      //System.out.println("Student: "+studentData+" -Activity: "+String.valueOf(_actID+_typeID)+
+                         //" -StudentAttach Group: "+ s.getGroup(_actID+_typeID));
     }//end for(int i = 0; i < _notAssignedVector.size(); i++)
     for(int j = 0; j < _assignedVectors.length; j++){
       for(int k = 0; k < _assignedVectors[j].size(); k++){
         studentData = (String)_assignedVectors[j].elementAt(k);
-        /*
-        if (_sortIndex == 0)
-          studentID = studentData.substring(0,DConst.STUDENT_ID_LENGTH).trim();
-        if (_sortIndex == 1)
-          studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
-        if (_sortIndex == 2)
-          studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
-        s = (StudentAttach)_students.getResource(studentID).getAttach();
-        */
         s = getStudentAttach(studentData, _sortIndex);
+        //System.out.println("Student: "+studentData+" -Activity: "+String.valueOf(_actID+_typeID)+
+                        // " -StudentAttach: "+ s);
         if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
           s.setInGroup(_actID+_typeID, j+1, true);
         else
@@ -579,13 +565,16 @@ public class SectionDlg extends JDialog implements ActionListener{
   private StudentAttach getStudentAttach(String studentData, int sortIndex){
     StudentAttach s;
     String studentID = null;
+    long studentKey;
     if (_sortIndex == 0)
-      studentID = studentData.substring(0,DConst.STUDENT_ID_LENGTH).trim();
+      studentID = studentData.substring(DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH).trim();
     if (_sortIndex == 1)
-      studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
+      studentID = studentData.substring(0, DConst.STUDENT_KEY_LENGTH).trim();
     if (_sortIndex == 2)
-      studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
-    s = (StudentAttach)_students.getResource(studentID).getAttach();
+      studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH+1).trim();
+    //System.out.println("studentkey " + studentID);
+    studentKey = Long.parseLong(studentID);
+    s = (StudentAttach)_students.getResource(studentKey).getAttach();
     return s;
   }//end method
 }//end class
