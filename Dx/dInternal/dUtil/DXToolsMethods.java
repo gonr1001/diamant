@@ -214,10 +214,6 @@ public class DXToolsMethods {
      int[] endH = per.getEndHour(periodLenght);
      int beginIndex;
      int endIndex;
-
-
-     //int indexSize =
-
      beginIndex= beginH[0]- DConst.STIBEGINHOUR;
      if (beginIndex<0)
        return false;
