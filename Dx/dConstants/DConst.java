@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.14 $  $Date: 2003-05-12 15:27:06 $
+ * Title: DConst $Revision: 1.15 $  $Date: 2003-05-12 15:31:44 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.15 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -46,7 +46,14 @@ public class DConst {
 
   public final static String DEF_F_M  = res.getString("defFM");
   public final static String DEF_F_TD  = res.getString("defFTD");
-  public final static String DEF_F_D  = res.getString("defFD");
+
+  public final static String DEF_F_D1  = res.getString("defFD1"); // "Les cours"
+  public final static String DEF_F_D2  = res.getString("defFD2"); // "Inscription d'étudiants"
+  public final static String DEF_F_D3  = res.getString("defFD3"); // "Disponibilités d'enseignants"
+  public final static String DEF_F_D4  = res.getString("defFD4"); // "Les locaux"
+  public final static String DEF_F_D5  = res.getString("defFD5"); //"Au moins un champ ne contient aucune valeur.\n"
+  public final static String DEF_F_D6  = res.getString("defFD6"); // "Veuillez entrer un fichier pour chaque type demandé."
+
 
   public final static String IMP_A_M  = res.getString("impAM");
   public final static String IMP_A_TD  = res.getString("impATD");
@@ -95,7 +102,7 @@ public class DConst {
    public final static String BUT_OK = res.getString("butOK");
    public final static String BUT_CANCEL = res.getString("butCancel");
    public final static String BUT_APPLY = res.getString("butApply");
-
+   public final static String BUT_BROWSE = res.getString("butBrowse");
 
    final static String CONTENTS = "Contenu";
    final static String INDEX = "Index";

@@ -1,0 +1,61 @@
+package dInterface;
+/**
+ *
+ * Title: ImportDlg $Revision: 1.1 $  $Date: 2003-05-12 15:33:28 $
+ * Description: ImportDlg is created by DefFileToImportCmd
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.1 $
+ * @author  $Author: rgr $
+ * @since JDK1.3
+ */
+
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.util.ResourceBundle;
+import dInterface.DApplication;
+
+/**
+ *
+ * ImportDlg is a class used to show a dialog
+ *
+ */
+
+public class ImportDlg extends JDialog {
+
+  final static String STR = "rgr, \n ImportDlg \n Not Implemented yet, \nWorking on that!!";
+  /**
+    * the constructor will displays the dialog
+    *
+    * @param jframe    the parent of the dialog
+    * @param str       the title of the window dialog
+    * @since           JDK1.3
+    */
+   public ImportDlg(JFrame jframe, String str) {
+      JOptionPane.showMessageDialog( jframe,
+                                       STR,
+                                       str,
+                                       JOptionPane.INFORMATION_MESSAGE );
+   } // end constructor
+
+   public ImportDlg(DApplication dApplic, String str) {
+   JOptionPane.showMessageDialog( dApplic.getJFrame(),
+                                    STR,
+                                    str,
+                                    JOptionPane.INFORMATION_MESSAGE );
+   } // end constructor
+} /* end class ImportDlg */
+
+
