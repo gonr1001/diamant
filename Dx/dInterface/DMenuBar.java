@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.52 $  $Date: 2003-08-29 12:01:45 $
+ * Title: DMenuBar $Revision: 1.53 $  $Date: 2003-09-02 08:45:05 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.52 $
+ * @version $Revision: 1.53 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -291,7 +291,7 @@ public class DMenuBar extends JMenuBar{
     //_file.setEnabled(false);
     //_mNewTT.setEnabled(false);
     _mNTTCy.setEnabled(true);
-    _mNTTEx.setEnabled(false);
+    _mNTTEx.setEnabled(true);
 
   }
 
