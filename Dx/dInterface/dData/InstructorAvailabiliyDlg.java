@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.11 $  $Date: 2004-04-07 15:41:01 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.12 $  $Date: 2004-05-14 15:01:19 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -32,7 +32,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;
 //import dInterface.dUtil.DXTools;
 import dInternal.dData.InstructorAttach;
-import dInternal.DModel;
+
 
 import dResources.DConst;
 
@@ -85,7 +85,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    */
   //public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
     public InstructorAvailabiliyDlg(DApplication dApplic) {
-    super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
+    super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD +"rgr", false);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
@@ -98,7 +98,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure()._weekTable[i];
     nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
-      jbInit();
+      initialize();
       pack();
       setLocationRelativeTo(_dApplic.getJFrame());
       setVisible(true);
@@ -111,7 +111,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
   /**
    * Component's initialisation and placement.
    */
-  private void jbInit() throws Exception {
+  private void initialize() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all instructors
     chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getNamesVector(1));
@@ -136,16 +136,8 @@ public class InstructorAvailabiliyDlg  extends JDialog
   public void actionPerformed( ActionEvent event) {
     String command = event.getActionCommand();
     if (command.equals(DConst.BUT_CLOSE)) {  // close
-      //"Enseignants --> Bouton Annuler pressé\n"
       dispose();
-   /* } else if (command.equals(DConst.BUT_APPLY)) {  // OK
-   /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n");
-       _currentInstr.setAvailability(_currentAvailbility);
-      modified = false;
-      butApply.setEnabled(false);
-      dispose();*/
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
-    /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentInstr.setAvailability(_currentAvailbility);
       modified = false;
       _applyPanel.setFirstDisable();
@@ -170,6 +162,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    * combobox item selected
    */
   public void itemStateChanged( ItemEvent event ) {
+	_applyPanel.setFirstDisable();
     if ( event.getStateChange() == event.SELECTED ) {
       Object source = event.getSource();
       if (source.equals( chooser ) ) {

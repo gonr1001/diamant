@@ -16,7 +16,6 @@ import javax.swing.JFileChooser;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gDialog.InformationDlg;
 
 import dResources.DConst;
 

@@ -18,7 +18,7 @@ import dInterface.dUtil.DXTools;
 
 
 import dResources.DConst;
-
+import com.iLib.gDialog.InformationDlg;
 public class EventsDlg extends EventsDlgInterface{
 
 
@@ -27,9 +27,9 @@ public class EventsDlg extends EventsDlgInterface{
    * @param dApplic The application
    */
   public EventsDlg(DApplication dApplic, String title) {
-    super(dApplic,title);
-    buildArrowButtons();
-    jbInit();
+    super(dApplic, title);
+    buildArrowButtons(true);
+	initialize();
   }//end method
 
   public ButtonsPanel setButtons() {
@@ -42,6 +42,17 @@ public class EventsDlg extends EventsDlgInterface{
 
   }
 
+
+  /**
+   * build buttom to use in the dialog
+   */
+  public void buildArrowButtons(boolean enableArrows){
+	String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
+	_leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames, enableArrows);
+	_rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames, enableArrows);
+  }
+  
+  
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if the source is one of the the _leftArrowsPanel buttons
@@ -79,21 +90,18 @@ public class EventsDlg extends EventsDlgInterface{
     }// end if Button APPLY
   }//end method
 
-  /**
-  * build buttom to use in the dialog
-  */
-/* public void buildArrowButtons(){
-   String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
-   _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
-   _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
- }*/
 
  /**
  *
  */
  protected void doubleClicMouseProcess(){
-   new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this, false);
+ 	if(!_buttonsPanel.isFirstEnable()){
+		new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0], this, false);
+		_buttonsPanel.setFirstDisable();
+ 	} else { 
+ 		new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer", "Operation interdite");
+ 	}
  } // end doubleClicMouseProcess
 
 
-}//end class
+}//end EventsDlg

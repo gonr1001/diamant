@@ -14,8 +14,10 @@ import java.awt.event.ActionEvent;
 
 import dInterface.DApplication;
 import dInterface.DToolBar;
-import dInterface.dUtil.DXTools;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 
@@ -43,8 +45,8 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     super(dApplic,title);
     _toolBar= dApplic.getToolBar();
     _dm= dApplic.getDMediator().getCurrentDoc().getDM();
-    buildArrowButtons();
-    jbInit();
+    buildArrowButtons(false);
+	initialize();
   }//end method
 
   public ButtonsPanel setButtons() {
@@ -53,27 +55,50 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     _buttonsPanel = new TwoButtonsPanel(this, a);
     return _buttonsPanel;
   }
-
+  /**
+   * build buttom to use in the dialog
+   */
+  public void buildArrowButtons(boolean enableArrows) {
+	
+	_leftArrowsPanel = new JPanel();
+	_rightArrowsPanel = new JPanel();
+  }
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if the source is one of the the _leftArrowsPanel buttons
+/*
+	if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0))) ||
+		 (e.getSource().equals(_leftArrowsPanel.getComponent(1))) ){
+	  //if "toRight" button
+	  if (e.getSource().equals(_leftArrowsPanel.getComponent(0)))
+		DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1);
+	  else
+		DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
+	  _leftLabel.setText(String.valueOf(_leftVector.size()));
+	  _centerLabel.setText(String.valueOf(_centerVector.size()));
+	  _buttonsPanel.setFirstEnable();
+	}//end if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) || (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
+	//if the source is one of the the _rightArrowsPanel buttons
+	if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
+		 (e.getSource().equals(_rightArrowsPanel.getComponent(1))) ){
+	  //if "toRight" button
+	  if (e.getSource().equals(_rightArrowsPanel.getComponent(0)))
+		DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1);
+	  else
+		DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);
+	  _rightLabel.setText(String.valueOf(_rightVector.size()));
+	  _centerLabel.setText(String.valueOf(_centerVector.size()));
+	  _buttonsPanel.setFirstEnable();
+	}//end if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0)))*/
     //if Button CLOSE is pressed
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
     if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
-      new EditActivityDlg(_jdialog, _dApplic, (String)selectedItems[0], false);
+      new EditActivityDlg(_jDialog, _dApplic, (String)selectedItems[0], this, false);
     }
   }//end method
 
-  /**
-  * build buttom to use in the dialog
-  */
-/* protected void buildArrowButtons(){
-   String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
-   _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
-   _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
- } // end buildArrowButtons*/
-
+ 
  /**
   *
   */

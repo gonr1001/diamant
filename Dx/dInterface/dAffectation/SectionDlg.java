@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.21 $  $Date: 2004-05-12 12:38:59 $
+ * Title: SectionDlg $Revision: 1.22 $  $Date: 2004-05-14 15:01:19 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -75,7 +75,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   private SetOfStudents _students;
   private String _actID, _typeID, _sortID;
   private String[] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
-  private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
+ 
   private Type _type;
   private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[], _sortVector;
 
@@ -93,7 +93,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
     _students = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents();
     if (_activities != null && _students != null){
-      jbInit();
+      initiation();
       setLocationRelativeTo(dApplic.getJFrame());
       setVisible(true);
     }
@@ -102,12 +102,15 @@ public class SectionDlg extends JDialog implements ActionListener{
   /**
    * Initilize the Dialog
    */
-  private void jbInit(){
+  private void initiation(){
     Dimension dialogDim = new Dimension(550,550);
     getContentPane().setLayout(new BorderLayout());
     setSize(dialogDim);
     setResizable(false);
-    setTopPanel();
+    JPanel top = initTopPanel();
+	getContentPane().add(top, BorderLayout.NORTH);
+	
+	
     //_applyPanel
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _applyPanel = new TwoButtonsPanel(this, a);
@@ -115,14 +118,15 @@ public class SectionDlg extends JDialog implements ActionListener{
     _applyPanel.setFirstDisable();
     getContentPane().add(_applyPanel, BorderLayout.SOUTH);
     setLists(_sortIndex, false);
-    setCenterPanel(dialogDim);
+	setCenterPanel(dialogDim);
+    
   }
 
 
   /**
    * Set the panel containing the activity end type JComboBoxes
    */
-  private void setTopPanel(){
+  private JPanel initTopPanel(){
     JPanel actPanel, typePanel, sortPanel;
     //This vector contains the activities whose their champ visibility = true
     _actVector = new Vector();
@@ -163,11 +167,12 @@ public class SectionDlg extends JDialog implements ActionListener{
     topPanel.add(actPanel);
     topPanel.add(typePanel);
     topPanel.add(sortPanel);
-    getContentPane().add(topPanel, BorderLayout.NORTH);
+   
     //adding the actionListeners
     _actCombo.addActionListener(this);
     _typeCombo.addActionListener(this);
     _sortCombo.addActionListener(this);
+    return topPanel;
 
   }
 
@@ -287,6 +292,8 @@ public class SectionDlg extends JDialog implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
+    
+    // combo
     //if activity combo box
     if (e.getSource().equals(_actCombo)){
       _actID = (String)_actCombo.getSelectedItem();
@@ -299,7 +306,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       }//end for
       _typeID = (String)_typeVector.get(0);
       setCurrents();
-      setLists(_sortIndex, false);
+      setListsLoad(_sortIndex, false);
       setScrollPane(_scrollPane.getPreferredSize());
       _applyPanel.setFirstEnable();
     }//end if (e.getSource().equals(_actCombo))
@@ -307,7 +314,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     if (e.getSource().equals(_typeCombo)){
       _typeID = (String)_typeCombo.getSelectedItem();
       setCurrents();
-      setLists(_sortIndex, false);
+      setListsLoad(_sortIndex, false);
       setScrollPane(_scrollPane.getPreferredSize());
       _applyPanel.setFirstEnable();
     }//end if (e.getSource().equals(_typeCombo))
@@ -321,22 +328,8 @@ public class SectionDlg extends JDialog implements ActionListener{
       setLists(_sortIndex, true);
     }//end if (e.getSource().equals(_typeCombo))
     //if sort button
-    /*
-    if (e.getSource().equals(_sortButton)){
-      if (_sortIndex == 0){
-        _sortIndex = 1;
-        _sortButton.setText(DConst.SORT_BY_PROGRAM);
-      }
-      else if (_sortIndex == 1){
-        _sortIndex = 2;
-        _sortButton.setText(DConst.SORT_BY_NAME);
-      }
-      else if (_sortIndex == 2){
-        _sortIndex = 0;
-        _sortButton.setText(DConst.SORT_BY_MATRICUL);
-      }
-      setLists(_sortIndex, true);
-    }//end if (e.getSource().equals(_sortButton))*/
+    
+    //buttons
     //if Button CLOSE is pressed
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
@@ -351,21 +344,15 @@ public class SectionDlg extends JDialog implements ActionListener{
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
-   /* //if Button OK is pressed
-    if (command.equals(_buttonsNames[0])){
-      setStudentsInGroups();
-      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
-      dispose();
-    }// end if (command.equals(OK))
-    */
+	
+	// Arrows
     if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0])) && _currentAssignedGroup > -1){
     //if "toLeft" button is pressed
       if (command.equals(_arrowsNames[1])){
         if (_currentAssignedGroup > -1){
           listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true, _sortIndex);
           //_buttonsPanel.getComponent(1).setEnabled(true);
-          _sortCombo.setEnabled(false);
+          //_sortCombo.setEnabled(false);
           _applyPanel.setFirstEnable();
           _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
         }
@@ -375,7 +362,7 @@ public class SectionDlg extends JDialog implements ActionListener{
           listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup], DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
           //_buttonsPanel.getComponent(1).setEnabled(true);
           //_sortButton.setEnabled(false);
-          _sortCombo.setEnabled(false);
+          //_sortCombo.setEnabled(false);
           _applyPanel.setFirstEnable();
         }
       }
@@ -450,27 +437,51 @@ public class SectionDlg extends JDialog implements ActionListener{
     }
   }//end method
 
+	private  SetOfStudents getSortStudents(JList list, int sortIndex) {
+		//sortIndex= 0; // to comment
+		SetOfStudents students = new SetOfStudents();
+		if (list != null) {
+		
+		for (int i= 0; i < list.getModel().getSize(); i++ ) {
+			String str = (String) list.getModel().getElementAt(i);
+			Resource resource = getStudent(str, sortIndex);
+			students.addStudent(resource.getKey(),resource.getID(),((StudentAttach)resource.getAttach()).getAuxField(), new StudentAttach() );
+		}
+		}
+		return students;
+	}
 
-
-  /**
-   * Sets the vectors containig the students assigned to the groups and the
-   * list whose DataModel are that vectors
-   */
-  /*
-  private void setAssignedLists(){
-    _assignedVectors = new Vector[_numberOfSections];
-    _assignedLists = new JList[_numberOfSections];
-    for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, i+1, _sortIndex);
-      _assignedLists[i] = new JList(_assignedVectors[i]);
-      _assignedLists[i].setFont(DConst.JLISTS_FONT);
-      _assignedLists[i].addMouseListener(mouseListenerLists);
-    }
-  }
-*/
-
+ 
+	private void setListsLoad(int sortIndex, boolean forUpdate){
+		_notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
+		if (_notAssignedList == null){
+		  _notAssignedList = new JList(_notAssignedVector);
+		  _notAssignedList.setFont(DConst.JLISTS_FONT);
+		  _notAssignedList.addMouseListener(mouseListenerLists);
+		}
+		else
+		  _notAssignedList.setListData(_notAssignedVector);
+		if (!forUpdate){
+		  _assignedVectors = new Vector[_numberOfSections];
+		  _assignedLists = new JList[_numberOfSections];
+		}
+		Type type=_activities.getType(_actID,_typeID);
+		for(int i=0; i< type.getSetOfSections().size(); i++){
+		  int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());
+		//for(int i = 0; i < _numberOfSections; i++){
+		  _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, group, _sortIndex);
+		  //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
+		  if (!forUpdate){
+			_assignedLists[i] = new JList(_assignedVectors[i]);
+			_assignedLists[i].setFont(DConst.JLISTS_FONT);
+			_assignedLists[i].addMouseListener(mouseListenerLists);
+		  }
+		  else
+			_assignedLists[i].setListData(_assignedVectors[i]);
+		}
+	  }//end method
   private void setLists(int sortIndex, boolean forUpdate){
-    _notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
+    _notAssignedVector = getSortStudents(_notAssignedList, sortIndex).getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
     if (_notAssignedList == null){
       _notAssignedList = new JList(_notAssignedVector);
       _notAssignedList.setFont(DConst.JLISTS_FONT);
@@ -486,7 +497,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     for(int i=0; i< type.getSetOfSections().size(); i++){
       int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());
     //for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, group, _sortIndex);
+      _assignedVectors[i] = getSortStudents(_assignedLists[i], sortIndex).getStudentsByGroup(_actID, _typeID, group, _sortIndex);
       //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
       if (!forUpdate){
         _assignedLists[i] = new JList(_assignedVectors[i]);
@@ -627,6 +638,22 @@ public class SectionDlg extends JDialog implements ActionListener{
     return s;
   }//end method
 
+  
+   private Resource getStudent(String studentData, int sortIndex){
+	 Resource s;
+	 String studentID = null;
+	 long studentKey;
+	 if (_sortIndex == 0)
+	   studentID = studentData.substring(DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH).trim();
+	 if (_sortIndex == 1)
+	   studentID = studentData.substring(0, DConst.STUDENT_KEY_LENGTH).trim();
+	 if (_sortIndex == 2)
+	   studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH+1).trim();
+	 //System.out.println("studentkey " + studentID);
+	 studentKey = Long.parseLong(studentID);
+	 s = _students.getResource(studentKey);
+	 return s;
+   }//end method
    private Vector buildSortVector() {
      Vector v = new Vector();
      v.add(DConst.SORT_BY_NAME);

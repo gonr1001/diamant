@@ -1,13 +1,35 @@
-package dInterface.dAffectation;
+/**
+ *
+ * Title: EventsDlgInterface $Revision: 1.11 $  $Date: 2004-05-14 15:01:19 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.11 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
+ */
+
 
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
+ * Description: EventsDlgInterface is a class used to
+ *
  */
+package dInterface.dAffectation;
+
+
 
 import java.awt.BorderLayout;
 
@@ -42,7 +64,7 @@ import dResources.DConst;
 public abstract class EventsDlgInterface extends JDialog implements ActionListener{
 
   protected DApplication _dApplic;
-  private Dimension _dialogDim = new Dimension(600, 400);
+  protected Dimension _dialogDim = new Dimension(600, 400);
   protected EventAttach _currEvent;
   protected int buttonsPanelHeight = 80;
   protected JLabel _leftLabel, _centerLabel, _rightLabel;
@@ -55,7 +77,7 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected String _eventFullKey;
   protected Unity _currUnity;
   protected Vector _leftVector, _centerVector, _rightVector;
-  protected JDialog _jdialog;
+  protected JDialog _jDialog;
 
 
 
@@ -63,22 +85,26 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   /**
    * Constructor
    * @param dApplic The application
+   * @param title the title of the dialog
    */
   public EventsDlgInterface(DApplication dApplic, String title) {
     super(dApplic.getJFrame(), title, true);
     _dApplic = dApplic;
-    _jdialog= this;
+    _jDialog= this;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
     _events = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents();
   }//end method
 
-
+  public abstract void actionPerformed(ActionEvent e);
+  public abstract void buildArrowButtons(boolean enableArrows);
+  public abstract ButtonsPanel setButtons();  
+  
   /**
    * Initialise the dialog
    */
-  protected void jbInit(){
+  protected void initialize(){
     getContentPane().setLayout(new BorderLayout());
     setSize(_dialogDim);
     setResizable(false);
@@ -87,15 +113,11 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
     setCenterPanel();
     setRightPanel();
     _buttonsPanel = setButtons();
-    //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    //setting disable the APPLY button
-   // if (_buttonsPanel.getComponentCount()>1)
-     // _buttonsPanel.getComponent(1).setEnabled(false);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     setLocationRelativeTo(_dApplic.getJFrame());
     setVisible(true);
   }
-  public abstract ButtonsPanel setButtons() ;
+
   /**
    * initialize label in each panel
    */
@@ -111,11 +133,7 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   /**
    * build buttom to use in the dialog
    */
-  public void buildArrowButtons(){
-    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
-    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
-    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
-  }
+
 
   /**
    * Sets the _centerPanel, the panel containing the _centerList and the
@@ -196,9 +214,8 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
     getContentPane().add(panelContainer, BorderLayout.EAST);
   }//end method
 
-  public void actionPerformed(ActionEvent e){
-
-  }//end method
+  
+  
 
   /**
    * Builds the vectors _rightVector, _centerVector, _leftVector for their

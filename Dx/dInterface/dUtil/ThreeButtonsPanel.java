@@ -1,6 +1,6 @@
 /**
  *
- * Title: ThreeButtonsPanel $Revision: 1.1 $  $Date: 2004-04-07 15:41:01 $
+ * Title: ThreeButtonsPanel $Revision: 1.2 $  $Date: 2004-05-14 15:01:19 $
  * Description: ThreeButtonsPanel is a class used to have three buttons in a panel:
  *               X, Apply and Close
  *
@@ -15,19 +15,19 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
 
-import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
+
 import javax.swing.JButton;
 
-import dResources.DConst;
+
 
 public class ThreeButtonsPanel extends ButtonsPanel {
 

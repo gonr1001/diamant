@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.2 $  $Date: 2004-04-07 18:08:28 $
+ * Title: AboutDlg $Revision: 1.3 $  $Date: 2004-05-14 15:01:19 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -35,5 +35,13 @@ public abstract class ButtonsPanel extends JPanel {
   public abstract void setFirstDisable();
   public abstract void setMiddleEnable();
   public abstract void setMiddleDisable();
+
+/**
+ * @return
+ */
+public boolean isFirstEnable() {
+	// TODO Auto-generated method stub
+	return false;
+}
 }
 

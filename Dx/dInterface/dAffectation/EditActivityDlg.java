@@ -38,7 +38,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private EventsDlgInterface _evDlgInt=null;
   private int _currentActivityIndex=0;
   private Vector _setOfInstructors= new Vector(1);// contains strings
-  private boolean _isModified=false;
+  private boolean _isModified = false;
   private Vector _unities = new Vector();// contains event resource
   private JTabbedPane _tabbedPane;
   private TwoButtonsPanel _buttonsPanel;
@@ -49,6 +49,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * @param dApplic The application
    * @param currentActivity The ativiti choiced in the activityDialog
    */
+  
+  
   public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, boolean isModified) {
     super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
     setLocationRelativeTo(dialog);
@@ -60,12 +62,14 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
 
   /**
    * Constructor
-   * @param activityDialog The parent dialog of this dialog
+   * @param dialog The parent dialog of this dialog
    * @param dApplic The application
-   * @param currentActivity The ativiti choiced in the activityDialog
+   * @param currentActivity The activity choiced in the dialog
+   * @param evDlg, 
+   * @param isModified
    */
   public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg, boolean isModified) {
-    super(dialog, "Affectation xxx");
+    super(dialog, DConst.EVENTS_DLG_TITLE);
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
     _evDlgInt= evDlg;

@@ -70,7 +70,7 @@ public class RoomsAvailabilityDlg  extends JDialog
       day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure()._weekTable[i];
     nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
-      jbInit();
+      initialize();
       pack();
       setLocationRelativeTo(_dApplic.getJFrame());
       setVisible(true);
@@ -83,7 +83,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   /**
    * Component's initialisation and placement.
    */
-  private void jbInit() throws Exception {
+  private void initialize() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all rooms
     chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getNamesVector(1));
@@ -108,19 +108,9 @@ public class RoomsAvailabilityDlg  extends JDialog
   public void actionPerformed( ActionEvent event) {
     String command = event.getActionCommand();
     if (command.equals(DConst.BUT_CLOSE)) {  // close
-      //"Enseignants --> Bouton Annuler pressé\n"
       dispose();
- /*   } else if (command.equals(_buttonsNames[0])) {  // OK
-   /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n");
-       _currentRoom.setAvailability(_currentAvailbility);
-        //_dm.incrementModification();
-      _modified = false;
-      butApply.setEnabled(false);
-      dispose();*/
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
-    /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentRoom.setAvailability(_currentAvailbility);
-      //_dm.incrementModification();
       _modified = false;
       _applyPanel.setFirstDisable();
     // if a button of the grid has been pressed
@@ -143,6 +133,7 @@ public class RoomsAvailabilityDlg  extends JDialog
    * combobox item selected
    */
   public void itemStateChanged( ItemEvent event ) {
+	_applyPanel.setFirstDisable();
     if ( event.getStateChange() == event.SELECTED ) {
       Object source = event.getSource();
       if (source.equals( chooser ) ) {

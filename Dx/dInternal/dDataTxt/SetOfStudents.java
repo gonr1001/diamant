@@ -43,6 +43,10 @@ public class SetOfStudents extends SetOfResources{
     _dataloaded = dataloaded;
   }
 
+  public SetOfStudents() {
+	super(1);
+	//_dataloaded = dataloaded;
+  }
   /**
    *
    * @param dataloaded
