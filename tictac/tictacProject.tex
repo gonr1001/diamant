@@ -1,0 +1,143 @@
+% -*- TeX -*- -*- FR -*-
+\documentclass[francais,letterpaper]{uds-article}
+
+%-----------------------------------------------------------------------------
+%----- Identification des packages nécessaires
+%-----------------------------------------------------------------------------
+
+\usepackage{babel}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+%\usepackage{udstitle,dfd}
+%\newcommand{\diamant}{Diamant}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\textwidth}{6.0in}
+%\setlength{\parskip}{0.2in}
+\newcounter{auxcounter}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
+
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small \normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small \normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small \normalsize}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+
+
+\newcommand{\bv}{\verb}
+
+\newcommand{\bve}{\verb*}
+
+\newcommand{\brun}{\noindent $\triangleright$}
+\newcommand{\erun}{$\triangleleft$}
+
+\newcommand{\ang}{\textsf}
+\newcommand{\key}{\textsf}
+\newcommand{\ita}{\textit}
+\newcommand{\bld}{\textbf}
+\newcommand{\dos}{\textsc}
+\newcommand{\pro}{\texttt}
+
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\dia}{DIAMANT 1.0}
+\newcommand{\dx}{DIAMANT 1.5}
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\sig}{SIG}
+\newcommand{\tict}{TicTac}
+\newcommand{\dbug}{DiamantBug}
+
+%-----------------------------------------------------------------------------
+%----- Page Titre
+%-----------------------------------------------------------------------------
+
+\Titre{DX\\
+Planification \tict{} et \dbug\\
+\dx{}}
+\Logo{Images/logoDX.eps}
+\Auteurs{Ruben Gonzalez-Rubio, \\
+Domingo Palao, \\
+et Alexander Jaramillo }
+ \Date{\today}
+
+%-----------------------------------------------------------------------------
+%----- Identification des fichiers des pages préliminaires et bibliographique
+%-----------------------------------------------------------------------------
+
+\FichierResume{}
+\FichierRemerciements{}
+\FichierGlossaire{} % \FichierLexique est équivalent
+\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
+
+%-----------------------------------------------------------------------------
+%----- Le document
+%-----------------------------------------------------------------------------
+
+\includeonly{UserManualInputs/intro,UserManualInputs/menus,UserManualInputs/horaire}
+
+\begin{document}
+\begin{articleDX}
+
+%\input{UserManualInputs/intro}
+%\input{UserManualInputs/horaire}
+%\input{UserManualInputs/menus}
+
+\section{Les livrables de \dbug}
+\begin{itemize}
+\item Standard de codage
+
+\item Liste d'outils de développement, guide d'installation des
+outils. Avec des pages témoin de chaque outil en état de marche.
+
+\item Guide de la gestion de la configuration
+
+\item Guide de l'administrateur du site Web et de la base de
+données
+
+\item Description de l'architecture (en utilisant Struts)
+
+\item Schéma de l'information de la base de données
+
+\item Modèles objet et relationnel, ansi que l'interface entre les
+deux.
+
+
+\end{itemize}
+\section{Les livrables de \tict}
+\begin{itemize}
+\item Standard de codage
+
+\item Liste d'outils de développement, guide d'installation des
+outils. Avec des pages témoin de chaque outil en état de marche.
+
+\item Guide de la gestion de la configuration
+
+\item Guide de l'administrateur du site Web et de la base de
+données
+
+\item Description de l'architecture (en utilisant Struts)
+
+\item Schéma de l'information de la base de données
+
+\item Modèles objet et relationnel, ansi que l'interface entre les
+deux.
+
+\end{itemize}
+
+%\part{Une partie}
+%\include{revue}
+%\include{theorie}
+
+%\part{Dernière partie}
+%\include{conclu}
+%\input{Inputs/glossaire}
+%\input{Inputs/index}
+%\include{formules}
+\end{articleDX}
+\end{document}
