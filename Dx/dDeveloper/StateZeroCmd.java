@@ -1,4 +1,4 @@
-package dInterface;
+package dAux;
 
 /**
  * <p>Title: Diamant</p>
@@ -10,13 +10,15 @@ package dInterface;
  */
 
 
-public class helloCmd implements Command{
+import dInterface.Command;
+import dInterface.DApplication;
 
-  public helloCmd(DApplication dApplic) {
+public class StateZeroCmd implements Command {
 
+  public StateZeroCmd() {
   }
 
   public void execute(DApplication dApplic) {
-    new helloDlg(dApplic);
-  }
+    dApplic.getMenuBar().postStateZero();
+  } // end execute
 }
