@@ -55,7 +55,8 @@ public class TTPanel { //extends JScrollPane {
     super();
     _dm = dm;
     _jScrollPaneOne = new JScrollPane();
-_jScrollPaneTwo = new JScrollPane();
+    _jScrollPaneTwo = new JScrollPane();
+    //_jScrollPaneTwo= _jScrollPaneOne;//debug
     if(_dm.getTTStructure()!=null){
       initTTPaneOne();
       initTTPaneTwo();
@@ -106,7 +107,7 @@ _jScrollPaneTwo = new JScrollPane();
     MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * UHEIGHT;
 
     Point point= new Point(0,0);
-    point = _jScrollPaneOne.getViewport().getViewPosition();
+    point = _jScrollPaneTwo.getViewport().getViewPosition();
     _jScrollPaneTwo.setColumnHeaderView(createColumnHeader());
     _jScrollPaneTwo.setRowHeaderView(createRowHeader());
     _jScrollPaneTwo.setViewportView(createViewPort());
