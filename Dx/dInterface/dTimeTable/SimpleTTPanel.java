@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPanel $Revision: 1.11 $  $Date: 2003-10-06 18:37:31 $
+ * Title: SimpleTTPanel $Revision: 1.12 $  $Date: 2003-10-08 18:15:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -61,10 +61,6 @@ import dInternal.dTimeTable.TTStructure;
 public class SimpleTTPanel extends TTPanel {
 
   private MouseListener _mouseListener;
-  //private JSplitPane _jSplitPane;
-  //private PeriodPanel _lastActivPpanel = null;
-
-
 
   public SimpleTTPanel(TTStructure tts, DToolBar toolBar) {
     super(tts, toolBar);
@@ -101,6 +97,7 @@ public class SimpleTTPanel extends TTPanel {
    //  Point point = _jScrollPaneOne.getViewport().getViewPosition();
     _jScrollPaneOne.getViewport().setViewPosition(_jScrollPaneOne.getViewport().getViewPosition());
     manageActions();
+
   }
   //-------------------------------------------
   /**
@@ -137,18 +134,6 @@ public class SimpleTTPanel extends TTPanel {
     initTTPaneOne();
   }
   //-------------------------------------------
-  private JPanel createColumnHeader() {
-    JPanel panel = new JPanel(new GridLayout(1, 0));
-    Cycle cycle = _tts.getCurrentCycle();
-    for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
-      Resource day = cycle.getSetOfDays().getResourceAt(i);
-      panel.add(new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
-    }
-    panel.setPreferredSize(new Dimension(PERIOD_WIDTH * cycle.getSetOfDays().size(), HEADER_HEIGHT));
-    panel.setBorder(BorderFactory.createEtchedBorder());
-    return panel;
-  }
-  //-------------------------------------------
   private JPanel createRowHeader(int height) {
     JPanel panel = new JPanel(new GridLayout(0,1));
     Cycle cycle =_tts.getCurrentCycle();
@@ -169,7 +154,7 @@ public class SimpleTTPanel extends TTPanel {
   }
   //-------------------------------------------
   private JPanel createViewPort(int width, int height) {
-    Cycle cycle =_tts.getCurrentCycle();//.getCycle(_dm.getCurrentCycle());
+    Cycle cycle =_tts.getCurrentCycle();
     GridBagLayout gridbag =new GridBagLayout();
     JPanel panel =  new JPanel( gridbag );
     panel.setBackground(SystemColor.window);
@@ -205,7 +190,7 @@ public class SimpleTTPanel extends TTPanel {
           Period period= _tts.getCurrentCycle().getPeriod(sequence,k+1);
           periodPanel = new SimplePeriodPanel(count,i,j,k);
           periodPanel.addMouseListener(_mouseListener);
-          periodPanel.createPanel(period, PERIOD_WIDTH, SMALL_PERIOD_HEIGHT);
+          periodPanel.createPanel(period, PERIOD_WIDTH, LINE_HEIGHT );
           count++;
           c = new GridBagConstraints();
           c.fill = GridBagConstraints.BOTH;

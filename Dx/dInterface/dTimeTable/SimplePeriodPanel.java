@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.3 $  $Date: 2003-10-03 02:52:04 $
+ * Title: SimplePeriodPanel $Revision: 1.4 $  $Date: 2003-10-08 18:15:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.4 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -62,6 +62,7 @@ public class SimplePeriodPanel extends PeriodPanel{
    * */
   public void createPanel( Period period, int w, int h){
     setLayout(new GridLayout(2,1));
+    setMinimumSize(new Dimension(w, h));
     setPreferredSize(new Dimension(w, h));
     setBorder(new BevelBorder(BevelBorder.RAISED));
     setValue(period);
