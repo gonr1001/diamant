@@ -87,11 +87,11 @@ public class TTPanel extends JScrollPane {
           PeriodPanel perpanel= (PeriodPanel)e.getSource();
           if(_lastActivPpanel!=null)
             _lastActivPpanel.setPanelBackGroundColor(0);
-          _dm.getDApplication().getToolBar().setcomboBoxStatus(false);
+          _dm.getDApplication().getToolBar().setComboBoxStatus(false);
           _dm.getDApplication().getToolBar().setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
           //_dm.getDApplication().getToolBar().selectBar(1);
            perpanel.setPanelBackGroundColor(1);
-           _dm.getDApplication().getToolBar().setcomboBoxStatus(true);
+           _dm.getDApplication().getToolBar().setComboBoxStatus(true);
           _lastActivPpanel=perpanel;
          System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
                             +_dm.getTTStructure().getPeriod(_dm.getTTStructure(

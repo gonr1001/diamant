@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.26 $  $Date: 2003-08-27 09:14:21 $
+ * Title: ToolBar $Revision: 1.27 $  $Date: 2003-08-27 15:23:21 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -96,39 +96,40 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
 
     //JComboBox toolBarSelector initialisation
     _toolBarSelector = new JComboBox(_toolBarNames);
-    _toolBarSelector.setPreferredSize(new Dimension(200, DConst.NPT11* 2));
-    _toolBarSelector.setMaximumSize(new Dimension(200, DConst.NPT11 * 3));
+    int c = 2;
+    _toolBarSelector.setPreferredSize(new Dimension(200, DConst.NPT11* c ));
+    _toolBarSelector.setMaximumSize(new Dimension(200, DConst.NPT11 * c));
     add(_toolBarSelector);
 
     //JComboBox daySelector initialisation
     String [] amountDays = {"1","2","3","4","5","6","7"};
     _daySelector = new JComboBox(amountDays);
-    _daySelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
-    _daySelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    _daySelector.setPreferredSize(new Dimension(50,DConst.NPT11 * c));
+    _daySelector.setMaximumSize(new Dimension(50,DConst.NPT11 * c));
 
     //JComboBox dayNameSelector initialisation
     _dayNameSelector = new JComboBox(TTStructure._weekTable);
-    _dayNameSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
-    _dayNameSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    _dayNameSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * c));
+    _dayNameSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * c));
 
     //JComboBox periodIndicator initialisation
     String [] periodIndexes = {"1","2","3","4","5","6","7"};
     _periodSelector = new JComboBox(periodIndexes);
-    _periodSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
-    _periodSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    _periodSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * c));
+    _periodSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * c));
     _periodSelector.setEditable(true);
 
     //JComboBox periodTypeSelector initialisation
     String [] periodTypes = {"B","N","Z"};
     _periodTypeSelector = new JComboBox(periodTypes);
-    _periodTypeSelector.setPreferredSize(new Dimension(100, DConst.NPT11 * 2));
-    _periodTypeSelector.setMaximumSize(new Dimension(100, DConst.NPT11 * 2));
+    _periodTypeSelector.setPreferredSize(new Dimension(100, DConst.NPT11 * c));
+    _periodTypeSelector.setMaximumSize(new Dimension(100, DConst.NPT11 * c));
 
     _toolBarSelector.setSelectedIndex(0);
     addBarOne();// index 0
   }
 
-  public void setcomboBoxStatus(boolean status){
+  public void setComboBoxStatus(boolean status){
     _comboBoxStatus=status;
   }
 
@@ -169,13 +170,21 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
       }//end actionPerformed
     });//end addActionListener
 
+    //ActionListener al = new ActionListener();
     _daySelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         int item = _daySelector.getSelectedIndex();
         if(item!=-1){
           Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(item);
           _tts.getCurrentCycle().setCurrentDayIndex(item);
+          ActionListener [] al =_dayNameSelector.getActionListeners();
+          for (int i = 0; i <al.length; i++) {
+            _dayNameSelector.removeActionListener(al[i]);
+          }
           _dayNameSelector.setSelectedItem(resc.getID());
+          for (int i = 0; i <al.length; i++) {
+            _dayNameSelector.addActionListener(al[i]);
+          }
         }
       }//end actionPerformed
     });//end addActionListener
@@ -327,8 +336,8 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     }
     //System.out.println("Day selector size: "+daySelector.getItemCount());//debug
     _daySelector.setSelectedIndex(0);
-    resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(0);
-    _dayNameSelector.setSelectedItem(resc.getID());
+    //rgr resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(0);
+    //_dayNameSelector.setSelectedItem(resc.getID()); //rgr
     //System.out.println("Day selected index: "+daySelector.getSelectedIndex());//debug
 
     //
@@ -376,7 +385,6 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     addSeparator();
     add(_lDayNameSelector);
     add(_dayNameSelector);
-
     repaint();
   }//end methode
 
@@ -402,7 +410,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     removeAll();
     add(_toolBarSelector);
     repaint();
-  }//end removeBarTwo()
+  }//end removeBar()
 
   /**
    * */
