@@ -6,4 +6,4 @@ French
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
 éÉèÈàÀÇçëËïÏÔôÙù-'()Êê
 selectedOptionsInFullReport;Jour(Nu.);Jour;Début;Fin;Enseignant;Local;Nb Etu;Nom;Section;Type;Unité;Durée;
-selectedOptionsInConflictReport;Jour(Nu.);Jour;Périod(H. début);Événement 1;Événement 2;Conflit(Type);Conf.(No.);Conflits;
+selectedOptionsInConflictReport;Jour(Nu.);Jour;Périod(H. début);Événement 1;Événement 2;Conflit(Type);Conf.(No.);Conflits;Séquence;Unité;
