@@ -23,7 +23,7 @@ public class SetOfEvents extends SetOfResources{
   public Vector _soeListeners = new Vector(1);
   protected boolean _isEventPlaced=false;
 
-  /**
+  /***
    * Constructor
    */
   public SetOfEvents() {
