@@ -24,7 +24,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   private Vector _eventsRescList;
   private int _mixingType;// 0= balance student mixing,  1= balance student
   // mixing with acceptable variation, 2= optimize student mixing
-  private int ACCEPTABLEVARIATION=30;
+  private int ACCEPTABLEVARIATION=5;
 
   /**
    *
@@ -43,6 +43,7 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @param vectorOfEvents
    */
   public void build(){
+
     Vector eventRescList=buildEventsVector();
     compileStudents(eventRescList);
     //compileStudents(eventRescList);
@@ -50,6 +51,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     for (int i=eventRescList.size()-1; i>=0; i--)
       secondVec.add(eventRescList.get(i));
     compileStudents(secondVec);
+
   }
 
   /**
@@ -64,11 +66,11 @@ public class StudentMixingAlgorithm implements Algorithm {
       String actID= DXToolsMethods.getToken(_eventsRescList.get(i).toString(),".",0);
       String typeID= DXToolsMethods.getToken(_eventsRescList.get(i).toString(),".",1);
       Type type= _dm.getSetOfActivities().getType(actID,typeID);
+       Vector studentRegistered= buildStudentsRegistered(actID,typeID);
       for (int j=0; j< type.getSetOfSections().size(); j++){
         Resource section= type.getSetOfSections().getResourceAt(j);
         //make it for each section of an activity type
         SetOfResources associatesEvents= buildOtherAssociatesEvents(actID,typeID,section.getID());
-        Vector studentRegistered= buildStudentsRegistered(actID,typeID);
         SetOfResources convGroup= buildConvexGroup(associatesEvents,studentRegistered);
         allConvexGroups.add(convGroup);
         //
@@ -78,7 +80,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     _dm.getConditionsTest().setMatrixBuilded(false);
     _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
     _dm.sendEvent(null);
-    System.out.println("Mixing type: "+_mixingType);// debug
+    //System.out.println("Mixing type: "+_mixingType);// debug
   }
 
   /**
@@ -193,7 +195,7 @@ public class StudentMixingAlgorithm implements Algorithm {
      * number of potential conflicts of the student
      */
     SetOfResources convexGroup= new SetOfResources(1);//
-    int[][] convexMatrix= new int[associatesEvents.size()][studentsReg.size()];
+  //  int[][] convexMatrix= new int[associatesEvents.size()][studentsReg.size()];
     for (int i=0; i< studentsReg.size(); i++){
       long studentKey= Long.parseLong(studentsReg.get(i).toString());
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
@@ -293,13 +295,13 @@ public class StudentMixingAlgorithm implements Algorithm {
 
         int bGroup=((Integer)includeGroupsList.get(0)).intValue();
         if(((SetOfResources)allConvGroup.get( bGroup)).size()>0){
-          System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
+          //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
           int bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
               bGroup)).getResourceAt(0).getID());
 
 
           for(int i=1; i< includeGroupsList.size(); i++){
-            if(bConf>=Integer.parseInt(((SetOfResources)allConvGroup.get(
+            if(bConf>Integer.parseInt(((SetOfResources)allConvGroup.get(
                 ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
             bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
             ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
