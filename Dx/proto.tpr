@@ -67,16 +67,16 @@ server.config.1.url=http://localhost:9080/tf
 server.config.2.url=http://localhost:9080/tf
 server.config.3.url=http://localhost:9080/tf
 [editor]
-recent.file.0=C:\\Documents and Settings\\gonr1001\\Desktop\\Diamant\\facs\\genie\\GrilleCoursGenie.xml
-recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
-recent.file.2=D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dInterface\\TestsSuite.java
-recent.file.3=D:\\Program Files\\JBuilder7\\extras\\xerces\\build.xml
-recent.file.4=D:\\Developpements\\DiamantExtreme\\Diamant1.5\\Horaire\\horaire0.xml
-recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\data\\finfir\\80\\erreur.xml
-recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\TTxmlFiles\\StandardTTC.xml
-recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dDataTxt\\SetOfInstructors.java
-recent.file.8=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\DSetOfResources.java
-recent.file.9=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\dRooms\\SetOfSitesListener.java
+recent.file.0=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
+recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dInterface\\TestsSuite.java
+recent.file.2=D:\\Program Files\\JBuilder7\\extras\\xerces\\build.xml
+recent.file.3=D:\\Developpements\\DiamantExtreme\\Diamant1.5\\Horaire\\horaire0.xml
+recent.file.4=D:\\Developpements\\DiamantExtreme\\Dx\\data\\finfir\\80\\erreur.xml
+recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\TTxmlFiles\\StandardTTC.xml
+recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dDataTxt\\SetOfInstructors.java
+recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\DSetOfResources.java
+recent.file.8=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\dRooms\\SetOfSitesListener.java
+recent.file.9=C:\\Documents and Settings\\gonr1001\\Desktop\\Diamant\\facs\\genie\\GrilleCoursGenie.xml
 [runtimeargs]
 applet_vmoptions0=-classic
 applet_vmoptions1=-classic
@@ -109,7 +109,7 @@ Developer.DebugWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,19,-1,-1,-1,-1}${0,1,-1,
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.proto={{0,2,-1,0,0,0,0,1,0,1,1,23,75,17,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,23,75,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,17,14,81,1003,615}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 names.Developer={<default>}
-Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,1,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
+Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,1,31,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 [lastOpenProjectName]
 Developer=<default>
 [compiler]
