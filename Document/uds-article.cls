@@ -216,7 +216,7 @@
   \bibliographystyle{\bibStyle}
   \renewcommand{\contentsname}{TABLE DES MATI\`ERES}
   \renewcommand{\listfigurename}{LISTE DES FIGURES}
-  %\renewcommand{\listtablename}{LISTE DES TABLEAUX}
+  \renewcommand{\listtablename}{LISTE DES TABLEAUX}
   \renewcommand{\chaptername}{CHAPITRE}
   \renewcommand{\refname}{BIBLIOGRAPHIE}
   \renewcommand{\appendixname}{ANNEXE}

@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: DToolBar $Revision: 1.43 $  $Date: 2004-05-13 14:18:00 $
+ * Title: DToolBar $Revision: 1.44 $  $Date: 2004-05-27 13:29:34 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -339,29 +339,29 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   /**
   *
    */
-  public void setToolBarTwo(){
-    _periodSelector.disableActionListeners();
-    _comboBoxStatus=false;
-    JPanel thePane= (JPanel)_dApplic.getDMediator().getCurrentDoc().getTTPane(
-        ).getViewport().getComponent(0);
-    //int nbOfPeriods= ttPanel.getComponentCount();
-    _periodSelector.removeAllItems();
-    for (int i=0; i< thePane.getComponentCount(); i++){
-      PeriodPanel ppanel= (PeriodPanel)thePane.getComponent(i);
-      if(ppanel.getPanelRefNo()!=0){
-        _periodSelector.addItem(Integer.toString(ppanel.getPanelRefNo()));
-      }
-    }// end for (int i=0; i< ttPanel.getComponentCount(); i++)
-_periodTypeSelector.disableActionListeners();
-    _periodTypeSelector.removeAllItems();
-
-    for (int i=0; i< _tts._priorityTable.length; i++)
-      _periodTypeSelector.addItem(_tts._priorityTable[i]);
-    //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug
-    _periodTypeSelector.enableActionListeners();
-    _comboBoxStatus=true;
-    _periodSelector.enableActionListeners();
-  }
+	  public void setToolBarTwo(){
+	    _periodSelector.disableActionListeners();
+	    _comboBoxStatus=false;
+	    JPanel thePane= (JPanel)_dApplic.getDMediator().getCurrentDoc().getTTPane(
+	        ).getViewport().getComponent(0);
+	    //int nbOfPeriods= ttPanel.getComponentCount();
+	    _periodSelector.removeAllItems();
+	    for (int i=0; i< thePane.getComponentCount(); i++){
+	      PeriodPanel ppanel= (PeriodPanel)thePane.getComponent(i);
+	      if(ppanel.getPanelRefNo()!=0){
+	        _periodSelector.addItem(Integer.toString(ppanel.getPanelRefNo()));
+	      }
+	    }// end for (int i=0; i< ttPanel.getComponentCount(); i++)
+		_periodTypeSelector.disableActionListeners();
+	    _periodTypeSelector.removeAllItems();
+	
+	    for (int i=0; i< _tts._priorityTable.length; i++)
+	      _periodTypeSelector.addItem(_tts._priorityTable[i]);
+	    //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug
+	    _periodTypeSelector.enableActionListeners();
+	    _comboBoxStatus=true;
+	    _periodSelector.enableActionListeners();
+	  }
 
   /**
    *

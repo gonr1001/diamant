@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.13 $  $Date: 2004-05-18 17:28:14 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.14 $  $Date: 2004-05-27 13:29:34 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -86,7 +86,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    */
   //public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
     public InstructorAvailabiliyDlg(DApplication dApplic) {
-    super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD +"rgr", false);
+    super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
