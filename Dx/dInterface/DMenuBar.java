@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.41 $  $Date: 2003-07-15 15:26:58 $
+ * Title: DMenuBar $Revision: 1.42 $  $Date: 2003-07-16 16:42:31 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -30,6 +30,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenu;
 
+import dInterface.dAffectation.*;
 import dInterface.dData.*;
 import dInterface.dTimeTable.NewTTExCmd;
 import dInterface.dTimeTable.NewTTCyCmd;
@@ -302,7 +303,7 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mActi = new CmdMenu("Activités");
     menu.add(mActi);
     mActi.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mActi.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mActi.setCommand(new ActivityCmd(_dApplic));
     mActi.addActionListener(_dApplic);
 
     CmdMenu mSect = new CmdMenu("Groupes");

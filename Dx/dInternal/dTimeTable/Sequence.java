@@ -78,7 +78,7 @@ public class Sequence extends DXObject{
       Period period = new Period();
       Element per= list.getElement(setofPers,_TAGITEM,i);
       String periodID= list.getElementValue(per,_TAGITEM1);
-      System.out.println("period.readXMLtag(per) "+ period.readXMLtag(per));
+      //System.out.println("period.readXMLtag(per) "+ period.readXMLtag(per));//debug
       if (!period.readXMLtag(per).equals("")){
         _error = _errorMessage;
         return _error;

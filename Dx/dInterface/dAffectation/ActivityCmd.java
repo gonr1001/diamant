@@ -19,8 +19,8 @@ import dInterface.DApplication;
 
 public class ActivityCmd implements Command{
 
-  public ActivityCmd(JFrame jFrame) {
-    System.out.print("ActivityCmd");
+  public ActivityCmd(DApplication dApplic) {
+
   }
 
   public void execute(DApplication dApplic) {

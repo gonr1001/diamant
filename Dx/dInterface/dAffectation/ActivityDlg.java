@@ -10,8 +10,10 @@ package dInterface.dAffectation;
  */
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.awt.Dimension;
 
 import java.util.Vector;
@@ -26,57 +28,118 @@ import javax.swing.JScrollPane;
 import dAux.DoNothingCmd;
 import dAux.DoNothingDlg;
 import dInterface.DApplication;
+import dInternal.dData.SetOfActivities;
 
-public class ActivityDlg extends JDialog implements ActionListener{
+public class ActivityDlg extends JDialog implements ActionListener {
+
 
   private DApplication _dApplic;
-  private Vector noVisibleVec, visibleVec;
-  private JPanel _leftJp, _rigthJp ;
-  private BorderLayout _bly;
-  private JList noVisibleList;
-  private JList visibleList;
-
-
-  public ActivityDlg(DApplication dApplic) {
-     _dApplic = dApplic;
-     //super(_dApplic.getJFrame(),"Act");
-     //new DoNothingDlg(dApplic,"Nothing");
-     jbInit();
-  }
-
-  public void actionPerformed(ActionEvent e){
-
-  }
+  private Vector _noVisibleVec, _visibleVec;
+  private JButton _show, _cancel;
+  private JPanel _listsPanel, _buttonsPanel;
+  private JList _noVisibleList, _visibleList;
 
   /**
-   *
+   * Dafault constructor
+   * @param dApplic The application object (for extracting the JFrame)
+   */
+  public ActivityDlg(DApplication dApplic) {
+     super(dApplic.getJFrame(), "Liste des activités");
+     _dApplic = dApplic;
+     jbInit();
+     setLocationRelativeTo(dApplic.getJFrame());
+     setVisible(true);
+     this.actionManager();
+     //new DoNothingDlg(dApplic,"Nothing");
+
+  }
+
+
+
+  /**
+   * Initialize the dialog
    */
 
   public void jbInit(){
-    _bly = new BorderLayout();
+    _show = new JButton("Afficher");
+    _show.setPreferredSize(new Dimension(75,22));
+    _cancel = new JButton("Annuler");
+    _cancel.setPreferredSize(new Dimension(75,22));
+    _listsPanel = new JPanel();
     //left panel
-    noVisibleVec = new Vector();
-    noVisibleVec.add("1");
-    noVisibleList = new JList(noVisibleVec);
-    noVisibleList.setPreferredSize(new Dimension(190,340));
-    _leftJp = new JPanel(new BorderLayout());
-    _leftJp.add(new JLabel("NVis"), BorderLayout.NORTH);
-    _leftJp.add(noVisibleList, BorderLayout.SOUTH);
-
+    JPanel leftPanel = new JPanel();
+    JScrollPane leftSPane = new JScrollPane();
+    setVectors();
+    _noVisibleList = new JList(_noVisibleVec);
+    leftSPane.setPreferredSize(new Dimension(150,300));
+    leftSPane.getViewport().add(_noVisibleList);
+    leftPanel = new JPanel(new BorderLayout());
+    leftPanel.add(new JLabel(_noVisibleVec.size() + " " + "Non placée(s)"), BorderLayout.NORTH);
+    leftPanel.add(leftSPane, BorderLayout.CENTER);
     //right panel
-    visibleVec = new Vector();
-    visibleVec.add("2");
-    visibleList = new JList(visibleVec);
-    visibleList.setPreferredSize(new Dimension(190,340));
-    _rigthJp = new JPanel(new BorderLayout());
-    _rigthJp.add(new JLabel("Vis"),BorderLayout.NORTH);
-    _rigthJp.add(visibleList, BorderLayout.SOUTH);
+    JPanel rightPanel = new JPanel();
+    JScrollPane rightSPane = new JScrollPane();
+    _visibleList = new JList(_visibleVec);
+    rightSPane = new JScrollPane();
+    rightSPane.setPreferredSize(new Dimension(150,300));
+    rightSPane.getViewport().add(_visibleList);
+    rightPanel = new JPanel(new BorderLayout());
+    rightPanel.add(new JLabel(_visibleVec.size() + " " + "placée(s)"), BorderLayout.NORTH);
+    rightPanel.add(rightSPane, BorderLayout.CENTER);
+    //placing the panels into the _listsPanel
+    _listsPanel.add(leftPanel, BorderLayout.EAST);
+    _listsPanel.add(rightPanel, BorderLayout.WEST);
+    //buttons panel
+    _buttonsPanel = new JPanel();
+    _buttonsPanel.add(_show);
+    _buttonsPanel.add(_cancel);
 
-    setSize(400,400);
-    getContentPane().add(_leftJp, _bly.WEST);
-    getContentPane().add(_rigthJp, _bly.EAST);
-    setVisible(true);
+    //placing the elements into the JDialog
+    setSize(320, 340);
+    setResizable(false);
+    getContentPane().add(_listsPanel, BorderLayout.CENTER);
+    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
+    //setVisible(true);
+  }//end method
+
+  /**
+   * Set the vectors _noVisibleVec and _visibleVec with the values found in the SetOfActivities
+   */
+  private void setVectors(){
+    if (_dApplic.getDMediator().getCurrentDoc() == null){
+      _noVisibleVec = new Vector();
+      _visibleVec = new Vector();
+    }else{
+      SetOfActivities activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
+      _visibleVec = activities.getIDByVisibility(true);
+      _noVisibleVec = activities.getIDByVisibility(false);
+    } //end if (_dApplic.getDMediator().getCurrentDoc() == null)
+
   }
+
+
+
+  private void actionManager(){
+    _cancel.addActionListener(this);
+    _show.addActionListener(this);
+    /*
+    _cancel.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+
+
+      }//end actionPerformed
+    });//end addActionListener
+    */
+  }
+
+  public void actionPerformed(ActionEvent e){
+    String command = e.getActionCommand();
+    if (command.equals("Annuler"))
+        dispose();
+    if (command.equals("Afficher"))
+        dispose();
+  }
+
 
 
 }

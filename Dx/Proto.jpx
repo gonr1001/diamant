@@ -7,7 +7,7 @@
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
-  <property category="runtime" name="ConfigurationCount" value="2"/>
+  <property category="runtime" name="ConfigurationCount" value="3"/>
   <property category="runtime" name="DefaultConfiguration" value="-1"/>
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.0" name="ConfigurationName" value="LoadData"/>
@@ -28,6 +28,10 @@
   <property category="runtime.2" name="ConfigurationName" value="InterfaceTests"/>
   <property category="runtime.2" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
   <property category="runtime.2" name="application.class" value="DRunInterTest"/>
+  <property category="runtime.3" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="runtime.3" name="ConfigurationName" value="dTest.dInterface.TestsSuite"/>
+  <property category="runtime.3" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
+  <property category="runtime.3" name="application.class" value="dTest.dInterface.TestsSuite"/>
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
   <property category="sys" name="AuthorLabel" value="@author"/>
   <property category="sys" name="BackupPath" value="../../Temp/Dx/Proto/bak"/>
