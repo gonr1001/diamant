@@ -111,9 +111,9 @@ public class TestRoomsConditions implements Condition{
   private int roomCapacityConflicts(Period period, String eventKey){
     EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
-    Resource activity = _dm.getSetOfActivities().getResource(Long.parseLong(event1.nextToken()));
-    Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(Long.parseLong(event1.nextToken()));
-    Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(Long.parseLong(event1.nextToken()));
+    Resource activity = _dm.getSetOfActivities().getResource(event1.nextToken());
+    Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
+    Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
     int nbOfStudents= _dm.getSetOfStudents().getStudentsByGroup(activity.getID(),
         type.getID(), DXTools.STIConvertGroup(section.getID())).size();
     long roomKey = event.getRoomKey();

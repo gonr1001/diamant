@@ -1,12 +1,33 @@
 package dInterface.dTimeTable;
 
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
+ *
+ * Title: PeriodPanel $Revision: 1.6 $  $Date: 2003-09-29 20:36:32 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.6 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
+ */
+
+
+/**
+ * Description: PeriodPanel is a class used to
+ *
  */
 
 import java.awt.Dimension;
@@ -21,12 +42,12 @@ import javax.swing.border.BevelBorder;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
 
-public class PeriodPanel extends JPanel{
+public abstract class PeriodPanel extends JPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;
-  private int _TTSday;
-  private int _TTSseq;
-  private int _TTSperiod;
-  private int _panelRefNo;
+  protected int _TTSday;
+  protected int _TTSseq;
+  protected int _TTSperiod;
+  protected int _panelRefNo;
 
   public PeriodPanel(int refNo, int day, int seq, int per) {
     _panelRefNo= refNo;
@@ -38,7 +59,7 @@ public class PeriodPanel extends JPanel{
   /**
    *
    * */
-  public void createPanel( Period period,int w, int h){
+  public void createPanel( Period period, int w, int h){
     setLayout(new GridLayout(2,1));
     setPreferredSize(new Dimension(w, h));
     setBorder(new BevelBorder(BevelBorder.RAISED));

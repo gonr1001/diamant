@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.1 $  $Date: 2003-09-29 18:28:58 $
+ * Title: DetailedTTPanel $Revision: 1.2 $  $Date: 2003-09-29 20:36:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -67,7 +67,7 @@ public class DetailedTTPanel extends TTPanel {
 
   private int _periodLenght;
   private MouseListener _mouseListener;
-  private PeriodPanel _lastActivPpanel=null;
+  private DetailedPeriodPanel _lastActivPanel = null;
   private JSplitPane _jSplitPane;
 
   private JScrollPane _jScrollPaneOne;
@@ -149,15 +149,15 @@ public class DetailedTTPanel extends TTPanel {
 
       public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 1) {
-          PeriodPanel perpanel= (PeriodPanel)e.getSource();
-          if(_lastActivPpanel!=null)
-            _lastActivPpanel.setPanelBackGroundColor(0);
+          DetailedPeriodPanel perpanel= (DetailedPeriodPanel)e.getSource();
+          if(_lastActivPanel!=null)
+            _lastActivPanel.setPanelBackGroundColor(0);
           _dm.getDDocument().getDMediator().getDApplication().getToolBar().setComboBoxStatus(false);
           _dm.getDDocument().getDMediator().getDApplication().getToolBar().setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
           //_dm.getDApplication().getToolBar().selectBar(1);
            perpanel.setPanelBackGroundColor(1);
            _dm.getDDocument().getDMediator().getDApplication().getToolBar().setComboBoxStatus(true);
-          _lastActivPpanel=perpanel;
+          _lastActivPanel=perpanel;
          System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
                             +_dm.getTTStructure().getCurrentCycle().getPeriodByIndex(
                             perpanel.getPeriodRef()[0],perpanel.getPeriodRef()[1],perpanel.getPeriodRef()[2]).toString());//debug
@@ -225,7 +225,7 @@ public class DetailedTTPanel extends TTPanel {
       gridbag.rowWeights[i] = 1;
       gridbag.rowHeights[i] = UHEIGHT;
     }
-    PeriodPanel periodPanel = null;
+    DetailedPeriodPanel periodPanel = null;
     GridBagConstraints c = null;
     nbSeq = _dm.getTTStructure().getCurrentCycle().getMaxNumberOfSeqs();
     int count = 1;
@@ -235,7 +235,7 @@ public class DetailedTTPanel extends TTPanel {
         Sequence sequence= _dm.getTTStructure().getCurrentCycle().getSequence(day,j+1);
         for(int k = 0; k < sequence.getSetOfPeriods().size(); k ++) {
           Period period= _dm.getTTStructure().getCurrentCycle().getPeriod(sequence,k+1);
-          periodPanel = new PeriodPanel(count,i,j,k);
+          periodPanel = new DetailedPeriodPanel(count,i,j,k);
           periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period,UWIDTH, UHEIGHT);
           count++;

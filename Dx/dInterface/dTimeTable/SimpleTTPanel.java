@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPanel $Revision: 1.3 $  $Date: 2003-09-29 18:28:58 $
+ * Title: SimpleTTPanel $Revision: 1.4 $  $Date: 2003-09-29 20:36:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -239,7 +239,7 @@ public class SimpleTTPanel extends TTPanel {
         Sequence sequence= _dm.getTTStructure().getCurrentCycle().getSequence(day,j+1);
         for(int k = 0; k < sequence.getSetOfPeriods().size(); k ++) {
           Period period= _dm.getTTStructure().getCurrentCycle().getPeriod(sequence,k+1);
-          periodPanel = new PeriodPanel(count,i,j,k);
+          periodPanel = new SimplePeriodPanel(count,i,j,k);
           periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period,UWIDTH, UHEIGHT);
           count++;

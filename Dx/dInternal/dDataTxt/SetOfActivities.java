@@ -555,6 +555,36 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
+   * Return the unity specified by the parameters
+   * @param actKey the activity ID
+   * @param typeKey the type ID
+   * @param secKey the section ID
+   * @param unitKey the unity ID
+   * @return The unity wanted
+   */
+
+  public Unity getUnity(String actID, String typeID, String secID, String unitID){
+    /*Activity a = (Activity)getResource(actKey).getAttach();
+    Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
+    Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
+    Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();*/
+    Resource a = getResource(actID);
+    if(a!=null){
+      Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
+      if(t!=null){
+        Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secID);
+        if(s!=null){
+          Resource u= ((Section)s.getAttach()).getSetOfUnities().getResource(unitID);
+          if(u!=null)
+            return (Unity)u.getAttach();
+        }
+      }
+    }
+    return null;
+  }
+
+
+  /**
    *
    * @param actID
    * @param typeID
@@ -591,6 +621,23 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
+   *
+   * @param vect
+   * @return
+   */
+  public Vector getUnitiesNames(Vector vect){
+    Vector result= new Vector();
+    for (int i=0; i< vect.size(); i++){
+      long actKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i).toString(),".",0));
+      long typeKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i).toString(),".",1));
+      long secKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i).toString(),".",2));
+      long unitKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i).toString(),".",3));
+      result.add(getUnityCompleteName(actKey, typeKey, secKey, unitKey));
+     }// end for (int i=0; i< vect.size(); i++)
+    return result;
+  }
+
+  /**
    * Sets a field belonging a Unity
    * @param actKey the activity key
    * @param typeKey the type key
@@ -607,6 +654,17 @@ public class SetOfActivities extends SetOfResources{
     u.getAttach().setField(fieldIndex, fieldValue);
   }
 
+
+
+  /**
+   *
+   * @param actID
+   * @param typeID
+   * @param secID
+   * @param unitID
+   * @param fieldIndex
+   * @param fieldValue
+   */
   public void setUnityField(String actID, String typeID, String secID, String unitID, int fieldIndex, String fieldValue){
     Resource a = getResource(actID);
     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);

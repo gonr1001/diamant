@@ -57,8 +57,8 @@ public class TestConditions {
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){
       Resource event = _dm.getSetOfEvents().getResourceAt(i);
       StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
-      long[] evKey = {Long.parseLong(eventKey.nextToken()),Long.parseLong(eventKey.nextToken()),
-      Long.parseLong(eventKey.nextToken()),Long.parseLong(eventKey.nextToken())};
+      String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
+      eventKey.nextToken(),eventKey.nextToken()};
       if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
         StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
         long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};

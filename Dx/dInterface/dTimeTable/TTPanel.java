@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.44 $  $Date: 2003-09-29 20:21:47 $
+ * Title: TTPanel $Revision: 1.45 $  $Date: 2003-09-29 20:36:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.45 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -70,7 +70,7 @@ public abstract class TTPanel {
 
   //abstract public JSplitPane getJSplitPane();
 
-    public PeriodPanel getPeriodPanel(int i){
+   abstract  public PeriodPanel getPeriodPanel(int i);/*{
       return new PeriodPanel(0,0,0,0);
-    }
+    }*/
 }

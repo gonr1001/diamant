@@ -31,9 +31,9 @@ public class TestStudentsConditions implements Condition {
 
   public int executeTest(Period period, String eventKey, int operation){
     StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
-    Resource activity = _soa.getResource(Long.parseLong(event1.nextToken()));
-    Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(Long.parseLong(event1.nextToken()));
-    Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(Long.parseLong(event1.nextToken()));
+    Resource activity = _soa.getResource(event1.nextToken());
+    Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
+    Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
     String key1= activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
                  DConst.TOKENSEPARATOR+section.getID();
     int number=0;
@@ -43,9 +43,9 @@ public class TestStudentsConditions implements Condition {
       for (int i=0; i< period.getEventsInPeriod().size(); i++){
         StringTokenizer event2 = new StringTokenizer(period.getEventsInPeriod()
         .getResourceAt(i).getID(),DConst.TOKENSEPARATOR);
-        activity = _soa.getResource(Long.parseLong(event2.nextToken()));
-        type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(Long.parseLong(event2.nextToken()));
-        section = ((Type)type.getAttach()).getSetOfSections().getResource(Long.parseLong(event2.nextToken()));
+        activity = _soa.getResource(event2.nextToken());
+        type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event2.nextToken());
+        section = ((Type)type.getAttach()).getSetOfSections().getResource(event2.nextToken());
         String key2=  activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
                  DConst.TOKENSEPARATOR+section.getID();
         //String key2 = period.getEventsInPeriod().getResourceAt(i).getID();
