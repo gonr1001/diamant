@@ -499,7 +499,11 @@ public class SetOfActivities extends SetOfResources{
               lineRoomFixed+= "1 ";
             else
               lineRoomFixed+= "0 ";
-            lineRoomType+= bloc.getPreferFunctionRoom().getResourceAt(0).getID()+" ";
+            SetOfResources pfunctionRoom= bloc.getPreferFunctionRoom();
+            if(pfunctionRoom.size()>0)
+              lineRoomType+= pfunctionRoom.getResourceAt(0).getID()+" ";
+            else
+              lineRoomType+= "0 ";
 
             if (bloc.isPermanent()){
               LineActFixed+= "1 ";
@@ -719,6 +723,7 @@ public class SetOfActivities extends SetOfResources{
 
 
 
+  private String NULLINFORMATION = "xxxxxx";
   private int _NUMBEROFCYCLE = 1;
   final static public int _COURSENAMELENGTH=6;
   private int _ACTIVITYLENGTH=10;

@@ -45,8 +45,9 @@ public class Section extends DXObject{
       Assignment cycleAss = new Assignment();
       cycleAss.setDateAndTime(1, 9,0);
       Unity newUnity= new Unity();
-      for (int i=1; i<= NumberOfCycle; i++)
+      for (int i=1; i<= NumberOfCycle; i++){
         newUnity.addAssignment(new Resource(Integer.toString(i),cycleAss));
+      }
       Resource newUnitResc= new Resource(id, newUnity);
       newUnitResc.setManuallyCreated(isManualCreated);
       return _blocList.addResource(newUnitResc,1) ;
