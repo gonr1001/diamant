@@ -41,6 +41,25 @@ public class DisplayAttributs {
   }
 
   /**
+   * constructor
+   */
+  public DisplayAttributs(){
+
+  }
+
+  /**
+    * set atributs
+    * @param periodKey
+    * @param hourToDisplay
+    * @param eventsInPeriods
+    */
+   public void setAttributs(String periodKey, String hourToDisplay, SetOfResources eventsInPeriods) {
+    _periodKey= periodKey;
+    _hourToDisplay= hourToDisplay;
+    _eventsInPeriods= eventsInPeriods;
+  }
+
+  /**
    *
    * @return
    */
@@ -54,6 +73,14 @@ public class DisplayAttributs {
    */
   public String getHourToDisplay(){
     return _hourToDisplay;
+  }
+
+  /**
+   *
+   * @param hourToDisplay
+   */
+  public void setHourToDisplay(String hourToDisplay){
+    _hourToDisplay= hourToDisplay;
   }
 
   /**

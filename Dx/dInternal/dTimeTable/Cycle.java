@@ -421,8 +421,48 @@ public Period getLastPeriod(){
    * @return
    */
   public void getAttributsToDisplay(int periodLength){
-    buildAttributsRowTodisplay(periodLength);
-
+    SetOfResources rowAtt=buildAttributsRowTodisplay(periodLength);
+    DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()];
+    for(int i=0; i< _setOfDays.size(); i++){
+      Resource day =_setOfDays.getResourceAt(i);
+      for (int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+        Resource seq = ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
+          Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          String periodKey= day.getKey()+"."+seq.getKey()+"."+per.getKey()+".";
+          String hour="00"+((Period)per.getAttach()).getBeginHour()[0];
+          String minute= "00"+((Period)per.getAttach()).getBeginHour()[1];
+          String beginHour= hour.substring(hour.length()-2,hour.length())+":"+
+                            minute.substring(minute.length()-2,minute.length());
+          int index= rowAtt.getIndexOfResource(beginHour);
+          DisplayAttributs attrib= new DisplayAttributs(periodKey,beginHour,((Period)per.getAttach()).getEventsInPeriod());
+          matrixToDisplay[i][index]=attrib;
+        }// end for(int k=0; k< seq.getSetOfPeriods().size(); k++)
+        if(j< ((Day)day.getAttach()).getSetOfSequences().size()-1){
+          DXValue value= new DXValue();
+          value.setIntValue(-1);
+          Period per = (Period)((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(
+              ((Sequence)seq.getAttach()).getSetOfPeriods().size()-1).getAttach();
+          String hour="00"+per.getEndHour(periodLength)[0];
+          String minute= "00"+per.getEndHour(periodLength)[1];
+          String endHour= hour.substring(hour.length()-2,hour.length())+":"+
+                          minute.substring(minute.length()-2,minute.length());
+          int index= rowAtt.getIndexOfResource(endHour);
+          DisplayAttributs attrib= new DisplayAttributs("",endHour,null);
+          matrixToDisplay[i][index]=attrib;
+        }
+      }// end for (int j=0; j< day.getSetOfSequences().size(); j++)
+    }// end for(int i=0; i< _setOfDays.size(); i++)
+    for (int i=0; i< matrixToDisplay.length; i++){
+      for (int j=0; j< matrixToDisplay[i].length-1; j++){
+        if(matrixToDisplay[i][j+1]==null){
+          DisplayAttributs attrib= new DisplayAttributs(matrixToDisplay[i][j].getPeriodKey()
+          ,rowAtt.getResourceAt(j+1).getID(),matrixToDisplay[i][j].getEventsInPeriods());
+          matrixToDisplay[i][j+1]=attrib;
+        }
+      }// end for (int j=0; j< matrixToDisplay[i].length; j++)
+    }// end for (int i=0; i< matrixToDisplay.length; i++)
+    System.out.println();
   }
 
   /**
@@ -459,9 +499,7 @@ public Period getLastPeriod(){
       }// end for (int j=0; j< day.getSetOfSequences().size(); j++)
     }// end for(int i=0; i< _setOfDays.size(); i++)
     //attrib.sortSetOfResourcesByKey();
-    for (int i=0; i< attrib.size(); i++){
-      System.out.println(attrib.getResourceAt(i).getID());//debug
-    }// end
+
     return attrib;
   }
 
