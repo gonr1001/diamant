@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.40 $  $Date: 2003-07-14 17:23:02 $
+ * Title: DMenuBar $Revision: 1.41 $  $Date: 2003-07-15 15:26:58 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.41 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -64,13 +64,6 @@ public class DMenuBar extends JMenuBar{
     this.add(menu);
 
     // Items in menu FILE.
-    /* This menu will be deleted in the final version */
-    /*CmdMenu mHello = new CmdMenu("Hello");
-    menu.add(mHello);
-    mHello.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mHello.setCommand(new HelloCmd());
-    mHello.addActionListener(_dApplic);
-    menu.addSeparator();*/
 
     JMenu mNewTT = new JMenu(DConst.NEW_TT);
     mNewTT.setFont( new java.awt.Font(_mfont, _font, _nPT));
@@ -89,11 +82,34 @@ public class DMenuBar extends JMenuBar{
 
     menu.add(mNewTT);
 
+    JMenu mNewTTS = new JMenu(DConst.NEW_TTS);
+    mNewTTS.setFont(new java.awt.Font(_mfont, _font, _nPT ));
+
+    CmdMenu mNTTSCy = new CmdMenu(DConst.NTTS_CY);
+    mNTTSCy.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    mNTTSCy.setCommand(new NewTTSCyCmd());
+    mNTTSCy.addActionListener(_dApplic);
+    mNewTTS.add(mNTTSCy);
+
+    CmdMenu mNTTSEx = new CmdMenu(DConst.NTTS_EX);
+    mNTTSEx.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    mNTTSEx.setCommand(new NewTTSExCmd());
+    mNTTSEx.addActionListener(_dApplic);
+    mNewTTS.add(mNTTSEx);
+
+    menu.add(mNewTTS);
+
     CmdMenu mOpenTT = new CmdMenu(DConst.OPEN);
     menu.add(mOpenTT);
     mOpenTT.setFont(new java.awt.Font(_mfont, _font, _nPT));
     mOpenTT.setCommand(new OpenTTCmd());
     mOpenTT.addActionListener(_dApplic);
+
+    CmdMenu mOpenTTS = new CmdMenu(DConst.OPEN_TTS);
+    menu.add(mOpenTTS);
+    mOpenTTS.setFont(new java.awt.Font( _mfont, _font, _nPT));
+    mOpenTTS.setCommand(new OpenTTSCmd());
+    mOpenTTS.addActionListener(_dApplic);
 
     CmdMenu mClose = new CmdMenu(DConst.CLOSE);
     menu.add(mClose);
@@ -116,26 +132,6 @@ public class DMenuBar extends JMenuBar{
     mSaveAs.addActionListener(_dApplic);
 
     menu.addSeparator();
-/*
-    JMenu mDTTS = new JMenu(DConst.DTTS);
-    mDTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
-
-
-    CmdMenu mNTTS = new CmdMenu(DConst.NTTS);
-    mNTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNTTS.setCommand(new NewTTSCmd());
-    mNTTS.addActionListener(_dApplic);
-    mDTTS.add(mNTTS);
-
-    CmdMenu mOTTS = new CmdMenu(DConst.OTTS);
-    mOTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mOTTS.setCommand(new OpenTTSCmd());
-    mOTTS.addActionListener(_dApplic);
-    mDTTS.add(mOTTS);
-
-    menu.add(mDTTS);
-
-    menu.addSeparator();*/
 
     CmdMenu mDefF = new CmdMenu(DConst.DEF_F_M);
     menu.add(mDefF);
@@ -203,7 +199,7 @@ public class DMenuBar extends JMenuBar{
 
 */
 
-
+/*
     //Build the menu Def TTStructure.
     menu = new JMenu(DConst.FILE_TTS);
     menu.setFont( new java.awt.Font(_mfont, _font, _nPT) );
@@ -251,7 +247,7 @@ public class DMenuBar extends JMenuBar{
     mSAsTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     mSAsTTS.setCommand(new SaveAsCmd());
     mSAsTTS.addActionListener(_dApplic);
-/*
+
     menu.addSeparator();
 
     JMenu mDTTS = new JMenu(DConst.DTTS);
