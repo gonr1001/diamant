@@ -1,5 +1,7 @@
 package dInternal.dTimeTable;
 
+
+import java.util.Vector;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import xml.OutPut.BuildXMLElement;
@@ -11,6 +13,7 @@ import org.w3c.dom.*;
 //import javax.xml.parsers.FactoryConfigurationError;
 
 public class TTStructure {
+  private Vector _ttsListeners = new Vector();
   private SetOfCycles _setOfCycles;
   //private int _periodLenght=60;
   private int _nbOfStCycles=2;
@@ -160,7 +163,11 @@ public class TTStructure {
   public int getNumberOfDays(Cycle cycle){
     return cycle.getSetOfDays().size();
   }
-
+  public void setNumberOfDays(int nOfD, long currCycle){
+    Cycle cycle = (Cycle) _setOfCycles.getSetOfCycles().getResource(currCycle).getAttach();
+    cycle.getSetOfDays().addResource(new Resource("6", new Day()),4);
+    //cycle..getSetOfDays().size();
+  }
   /**
    * get the max number of sequences in one day in a cycle
    * @param Cycle the cycle where we want to find the max number of sequences
@@ -410,6 +417,29 @@ public class TTStructure {
       return e.toString();//debug
     }
 
+   }
+
+   public void modification() {
+     sendEvent();
+   }
+
+   public void sendEvent() {
+     TTStructureEvent event = new TTStructureEvent(this);
+     for (int i=0; i< _ttsListeners.size(); i++) {
+       TTStructureListener dml = (TTStructureListener) _ttsListeners.elementAt(i);
+      // dml.chageInTTStructure(event);
+     }
+   }
+
+   public synchronized void addTTStructureListener(TTStructureListener dml) {
+     if (_ttsListeners.contains(dml)){
+       return;
+     }
+     _ttsListeners.addElement(dml);
+   }
+
+   public synchronized void removeTTStructureListener(TTStructureListener dml) {
+     _ttsListeners.removeElement(dml);
    }
 
 }

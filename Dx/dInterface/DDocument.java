@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.27 $  $Date: 2003-06-09 13:53:26 $
+ * Title: DDocument $Revision: 1.28 $  $Date: 2003-06-10 16:00:16 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -39,6 +39,8 @@ import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.TTStructureListener;
+import dInternal.dTimeTable.TTStructureEvent;
 import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;
@@ -48,7 +50,7 @@ import dInterface.dTimeTable.CloseCmd;
 import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
-public class DDocument implements ActionListener, DModelListener{
+public class DDocument implements ActionListener, DModelListener, TTStructureListener{
   private boolean _modified;
   private DApplication _dApplic;
   private JInternalFrame _jif;
@@ -64,6 +66,7 @@ public class DDocument implements ActionListener, DModelListener{
      _dApplic = dApplic;
      _documentName = title;
      _dm = new DModel(_dApplic, ttStruct);
+     ttStruct.addTTStructureListener(this);
      buidDocument();
      _modified=true;
   } // end constructor DDocument()
@@ -172,6 +175,11 @@ public class DDocument implements ActionListener, DModelListener{
     }// end actionPerformed
 
     public void changeInDModel(DModelEvent  e) {
+      this.updateStatusPanel();
+      _ttPanel.updateTTPanel(_dm.getTTStructure());
+    }// end actionPerformed
+
+    public void changeInTTStructure(TTStructureEvent  e) {
       this.updateStatusPanel();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
     }// end actionPerformed

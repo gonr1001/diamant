@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.4 $  $Date: 2003-06-10 13:54:49 $
+ * Title: ToolBar $Revision: 1.5 $  $Date: 2003-06-10 16:00:16 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: alexj $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -32,6 +32,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+
+import dInternal.dTimeTable.TTStructure;
 
 import dResources.DConst;
 //-------------------------------------------
@@ -116,7 +118,7 @@ public class DToolBar extends JToolBar {
 
 
 
-    setToolBar.addActionListener(new ActionListener() {
+   setToolBar.addActionListener(new ActionListener() {
      public void actionPerformed(ActionEvent e) {
        JComboBox cb = (JComboBox)e.getSource();
        int  i = cb.getSelectedIndex();
@@ -126,7 +128,32 @@ public class DToolBar extends JToolBar {
        }
      }
     });
-
+/*
+   // fir BarOne
+   setToolBar.addActionListener(new ActionListener() {
+     public void actionPerformed(ActionEvent e) {
+       TTStructure tts = _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure();
+       String command = e.getActionCommand();
+  /*  if (command.equals( BUT02 )) {  // cancel
+      //"Enseignants --> Bouton Annuler pressé\n"
+      dispose();
+    } else if (command.equals( BUT01 )) {  // OK
+   //   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n");
+       _currentInstr.setAvailability(_currentAvailbility);
+        _dm.incrementModification();
+      modified = false;
+      butApply.setEnabled(false);
+      dispose();
+    } else*//* if (command.equals("Apply" )) {  // apply
+    /*  "Enseignants --> Bouton Appliquer pressé\n");*/
+      //tts.set
+     // tts.modification();
+      //modified = false;
+      //butApply.setEnabled( false );
+    // if a button of the grid has been pressed
+    //}
+    // }
+    //});*/
 
 /*
     //Create the first button.
