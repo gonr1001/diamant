@@ -560,3 +560,257 @@ some kind of multiple inheritance.
 \bibliography{bibDiamant,bibProg}
 
 \end{document}
+
+{\bf Introduction. } La production d'horaires est une tâche
+périodique pour plusieurs institutions d'enseignement, en
+particulier pour les Universités qui produisent un ou plusieurs
+horaires par année pour les cours et les examens, selon le numéro
+de sessions qui offrent aux étudiants. Afin de simplifier le texte
+dans l'article nous allons traiter uniquement le cas d'horaires de
+cours, nous considérons que les horaires d'examens sont un cas
+particulier des horaires de cours dans lesquels il peut avoir
+moins de contrains.
+
+Dans cet article nous nous intéressons au processus global de la
+production des horaires à partir de la saisie de données jusqu'à
+la livraison des horaires généraux et personnalisés, selon
+l'intérêt de l'utilisateur.
+
+Dans la littérature nous avons trouvé que la plupart des
+recherches envisagent un bon algorithme d'optimisation dans la
+fabrication des horaires, mais il y a très peu d'information sur
+la modélisation des données et presque rien pour l'intégration des
+systèmes d'horaires dans l'ensemble des systèmes d'information des
+Universités.
+
+Nous croyons que le système d'horaires n'est qu'un sous-ensemble
+de tout le système d'information d'une institution d'éducation
+supérieure. Notre but est la création d'un système de production
+d'horaires avec une approche que nous appellerons plus génie
+logiciel, nous cherchons l'interaction avec plusieurs systèmes de
+gestion d'information de l'université, ainsi que la création d'un
+logiciel avec hauts niveaux de qualité \cite{meyer97}.
+
+La production d'horaires est automatisé à différents degrés, par
+exemple: elle peut comporter un logiciel de construction
+d'horaires qui peut produire un fichier contenant l'horaire qui
+sera affiché dans une place connue ou mise en format HTML afin de
+l'afficher sur le Web. Dans certains cas, la production se fait
+manuellement. Le degré d'automatisation est varié selon la
+complexité de l'institution.
+
+La production d'horaires ne doit pas être interrompue.
+L'institution doit faire le choix entre implanter un nouveau
+système et oublier le système actuel ou faire des changements
+graduels au système existant. Le risque de la première option est
+trop élevé, car si un problème arrive, le nouveau système peut se
+trouver dans une impasse représentant un coût important. La
+deuxième solution présente un risque modéré, car pour chaque
+nouveau composant ajouté au système il est possible de revenir à
+l'ancien composant, assurant ainsi la production d'horaires.
+
+L'objectif de cet article est de montre le processus de
+modélisation de la production d'horaires pour prendre des
+décisions permettant son automatisation. Ceci peut faciliter les
+développement et l'implantation d'un système sur deux points de
+vue:
+\begin {itemize}
+\item Le développement d'interfaces logicielles entre les
+différents constituants du système, ceci peut conduire à
+développer de nouveau modules ou à la modification de modules
+existants.
+
+\item L'intégration graduelle de nouveaux modules dans le temps,
+afin de perturber le moins possible les utilisateurs du système.
+\end {itemize}
+
+Nous utiliserons comme source d'inspiration primaire pour la
+modélisation de la production d'un horaire, le processus actuel de
+l'Université de Sherbrooke. Ensuite nous établirons un modèle plus
+général.
+
+Cet article propose:
+
+\begin {itemize}
+\item Un analyse
+\end{itemize}
+
+
+\section{La production  d'horaires à l'Université}
+
+\subsection{Le contexte}
+
+La production des horaires est devenue plus complexe avec
+l'apparition des systèmes logiciels que d'une manière intégrale
+gèrent les informations des universités.
+
+Nous connaissons bien le processus de création d'horaires pour une
+université pour avoir développé deux versions du logiciel Diamant.
+Diamant est un logiciel qui permet la génération d'horaires de
+manière interactive et automatisé qui est utilisé pour créer des
+horaires dans plusieurs facultés de l'Université de Sherbrooke
+\cite{gonzalezrubio00}. Pendante ces travaux, nous avons constaté
+que l'intégration du système de création d'horaires avec le reste
+des systèmes dans l'Université est devenue complexe, à cause de
+plusieurs facteurs, entre autres : ·   L'existence de plusieurs
+systèmes, matérielle, systèmes d'exploitation, logiciel, etc. ·
+Incompatibilités entre les formats d'échange des fichiers. ·   Des
+anciens systèmes qui n'étaient pas conçus pour s'adapter aux
+nouveaux besoins des utilisateurs.
+
+Nous avons trouvé que la plupart des recherches sur la gestion et
+construction des horaires sont centrées dans le fait de trouver le
+meilleur algorithme d'optimisation pour la affectation des
+ressources, mais il y a très peu de recherche sur les structures
+de données pour modéliser les horaires, ou la façon d'intégrer un
+système d'horaires dans l'ensemble des systèmes de gestion
+scolaire, Bourke, Kingston et Pepper \cite{burke97} on fait un
+travail dans lequel ils proposent des structures de données pour
+modéliser les horaires.
+
+Tout d'abord le processus de production d'horaires sera défini
+comme le processus commençant lorsque on commence à la saisie de
+données pour le trimestre  et fini lorsque toutes les personnes
+concernées reçoivent l'horaire sur un support papier ou sur le
+Web, voir figure 1.
+
+Signalons que à l'Université de Sherbrooke il existe des Facultés
+où les étudiants font un pré-choix et d'autres où les horaires
+sont fait sans pré-choix. Dans le deux cas il faut livrer
+l'horaire aux personnes concernées.
+
+La figure 1 est une vue de très haut niveau de la production
+d'horaires.
+
+Le système de production d'horaires est composé de plusieurs
+tâches, chaque tâche peut être effectué manuellement ou à l'aide
+d'un ou plusieurs logiciels, qui peuvent fonctionner de manière
+autonome, mais coordonnée.
+
+Les données représentent l'information nécessaire à la production
+d'horaires, dans le schéma il n'est pas indiqué que ces données
+peuvent être manipulés par les tâches du système de production
+d'horaires. Une tâche va produire parfois de nouvelles données,
+qui seront utilisés par les tâches suivantes dans le processus. En
+simplifiant les données peuvent être contenues dans des fichiers
+ou dans une base de données ou encore dans de fichiers et dans une
+base de données. Dans ce qui suit on parlera de base de données
+pour se référer  aux données.
+
+Papier ou Web. Il s'agit des sorties du système il' peuvent être
+des fichiers produits à partir des données de manière automatique,
+semi-automatique ou manuellement. Par exemple à partir de données
+un programme peut fabriquer toutes les lettres à envoyer aux
+étudiants (de manière personnalisée). Une personne peut produire
+les lettres personnalisées avec un traitement de textes, avec un
+fichier des données pour la personnalisation. Une personne va
+produire des le lettres personnalisées en lisant les données
+nécessaires sur un fichier.
+
+\subsection{L'évolution des données}
+ La figure 2 montre l'évolution
+des données dans la base de données pendant la production de
+l'horaire.  La base de données est la même, l'évolution présente
+les instances de données à différents instants du processus.
+
+\begin{itemize}
+\item Base de données. Ces données sont les données définies à
+long terme.  L'information des activités pédagogiques d'un
+programme, les programmes offerts, les enseignants, les
+caractéristiques de salles de cours, les étudiants.  Il s'agit en
+général des informations qui sont partagées par d'autres
+applications. Par exemple un étudiant est décrit par son nom,
+prénom, matricule, programme suivi. Une application qui utilisé
+les données des étudiants est par exemple celle qui permet
+d'imprimer les notes d'un étudiant.
+
+\item Données trimestre Ces données sont nécessaires à la
+construction de l'horaire, elles concernent les cours qui seront
+offerts, la disponibilité de enseignants, etc. Ces données sont un
+préalable à la construction d'un horaire et sont saisies avant et
+pendant chaque cycle de construction.
+
+\item Données horaire. Elles sont le résultat de la tâche de la
+construction de l'horaire. Elles vont contenir toutes les
+informations nécessaires pour imprimer ou afficher des horaires
+personnalisés.
+
+\end{itemize}
+Nous considérons que les données du trimestre commencent à exister
+à un instant $t_0$ avant que les cours du trimestre commencent et
+ne sont plus pertinentes  à l'instant $t_f$ qui est la fin du
+trimestre.
+
+
+\subsection {Étapes de construction:}
+
+Pré-condition les données de base ont été saisies et validés.
+
+\begin{enumerate}
+\item Choisir les activités pédagogiques du trimestre.
+
+\item Choisir les enseignants disponibles et associer une
+disponibilité.
+
+\item Choisir les locaux disponibles et associer une
+disponibilité.
+
+\item Associer un format aux activités pédagogiques, c'est-à-dire,
+associer un nombre de groupes à chaque type d'activité.
+
+\item Définir la grille horaire.
+
+\end{enumerate}
+
+Il y a deux possibilités pendant qu'un logiciel de construction
+d'horaires est utilisé :
+
+\begin{enumerate}
+\item Il est possible de considérer que toutes les données
+nécessaires ont été correctement saisies et que il y n'aura aucun
+changement pendant la construction de l'horaire;
+
+\item Ou bien, une deuxième possibilité, qui semble plus réaliste
+est de considérer que certains données peuvent changer, par
+exemple certains cours sont enseignés par de intervenants
+externes, mais la personne n'est pas encore trouvé, sa
+disponibilité n'est pas connue, donc l'horaire est construit sur
+des hypothèses qui peuvent s'avérer fausses.
+\end{enumerate}
+
+Avant de parler de effectuer la construction avec un logiciel, il
+faut faire une vérification des données.
+
+La construction peut se faire de manière automatique, le logiciel
+va produire un horaire au complet. La construction peut se faire
+de manière manuelle, avec construit avec des hypothèses.
+
+On suppose que lorsque on décide de produire un horaire qu'il
+existe une base de données contenant tous les cours qu'une Faculté
+peut offre, tous les enseignants, tous les locaux disponibles
+ainsi que l'information concernant aux étudiants.
+
+La première tâche à faire est celle de définir les cours qui
+seront offerts à l'horaire pendant le trimestre. Ensuite on défini
+les enseignants qui seront en charge de chacun des cours plus leur
+disponibilité, et on défini le format du cours (2 heures de Leçon
+Magistrale + 1 heure de Leçon Magistrale + 3 heures de
+Laboratoire), puis le nombre de groupes, éventuellement si
+l'horaire un cours est déjà défini.
+
+Lorsque tous ces informations sont saisies, le programme de
+production d'horaires peut commencé à être utilisé pour la
+construction.
+
+La première étape est de charger les informations qui sont dans la
+base de données et faire une première validation des données. Les
+conflits entre deux cours, la disponibilité d'un enseignant, et
+autres.
+
+Lorsque la première validation est faite, on peut commencer à
+parler de la construction de l'horaire en mode manuel ou en mode
+automatique ou en utilisant le deux.
+
+Lorsque l'horaire est défini et satisfaisant, les données sont
+transférées à la base de données, pour construire les fichiers
+nécessaires à la livraison de l'horaire.
