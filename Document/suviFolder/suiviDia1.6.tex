@@ -1,487 +1,1 @@
-\documentclass[francais]{article}
-\bibliographystyle{unsrt}
-%\usepackage[T1]{fontenc}
-%\usepackage[applemac]{inputenc}
-%\usepackage{french}
-\usepackage{babel}
-\usepackage[latin1]{inputenc}
-
-%\usepackage{program}
-\usepackage{epsf}
-\usepackage{verbatim}
-%\usepackage{moreverb}
-\usepackage{latexsym}
-
-
-\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125em it}
-%\usepackage[dvipsone]{color}
-
-\setlength{\topmargin}{0 in}
-\setlength{\headheight}{0 in}
-\setlength{\headsep}{0 in}
-\setlength{\topskip}{0 in}
-\setlength{\textheight}{9 in}
-\setlength{\footskip}{0.25 in}
-%\setlength{\footheight}{0.25 in}
-\setlength{\oddsidemargin}{0 in}
-\setlength{\evensidemargin}{0 in}
-\setlength{\textwidth}{6.5 in}
-\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
-
-\newcommand{\bi}{\begin{itemize}}
-\newcommand{\ei}{\end{itemize}}
-
-
-% Number algorithms separately:
-%\newtheorem{algorithm}{Algorithm}
-
-% Number algorithms within sections:
-\newtheorem{algorithm}{Algorithme}[section]
-
-% For "floating" algorithms, use:
-% \begin{figure}
-% \begin{program}
-% ...
-% \end{program}
-% \end{figure}
-
-\newcommand{\bv}{\verb}
-
-\newcommand{\bve}{\verb*}
-
-\newcommand{\brun}{\noindent $\triangleright$}
-\newcommand{\erun}{$\triangleleft$}
-
-\newcommand{\key}{\textsf}
-\newcommand{\ita}{\textit}
-\newcommand{\dos}{\textsc}
-\newcommand{\bld}{\textbf}
-\newcommand{\ang}{\textsf}
-\newcommand{\pro}{\texttt}
-%\renewcommand{\thesection}{\Roman{section}}
-%\renewcommand{\thesubsection}{\Roman{subsection}}
-%\usepackage{graphics}
-%
-\renewcommand{\labelenumi}{\arabic{enumi}.}
-\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
-\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}.}
-
-
-
-\newcommand{\sch}{Schneider}
-
-\newcommand{\saphir}{SAPHIR}
-\newcommand{\diamant}{DIAMANT}
-\newcommand{\diaBug}{diamantBug}
-\newcommand{\diaDotc}{DIAMANT 1.5}
-\newcommand{\diaDots}{DIAMANT 1.6}
-\newcommand{\diaDe}{DIAMANT 2.0}
-\newcommand{\diaTr}{DIAMANT 3.0}
-\newcommand{\inno}{Innovallia}
-
-\newcommand{\mef}{Maestro \`{e} Fresco}
-\newcommand{\uds}{Universit\'{e} de Sherbrooke}
-\newcommand{\mm}{GAMMI}
-
-
-\title{\bf{Suivi Projet \diaDots{} de \eXit}}
-\input{author.tex}
-
-%\author{Ruben Gonzalez Rubio \\
-
-% Modif sur page de notes ˆ la place de e.mail
-% Nouvelle figure use1.eps pour gestionnaires.
-
-\begin{document}
-%\input{actives.tex}\StdMacActives
-\maketitle
-
-
-\input{intro.tex}
-
-\input{weeks.tex}
-
-
-\tableofcontents
-
-
-\setcounter{section}{0}
-\renewcommand{\labelenumi}{\thesubsection.\arabic{enumi}.}
-\renewcommand{\labelenumii}{\thesubsection.\arabic{enumi}.\arabic{enumii}.}
-%\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
-%\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}.}
-
-
-
-\input{activities/ajoutFonc/ajoutFonc.tex}
-
-\input{activities/mouseTrap/mouseTrap.tex}
-
-\input{activities/bugs/bugs.tex}
-
-\input{activities/packages/packages.tex}
-
-\input{activities/ant/ant.tex}
-
-\bibliography{bibDiamant}
-\end{document}
-
-
-
-
-\subsection{Activit\'{e}s}
-\begin{enumerate}
-    \item Activit\'{e} niveau 1 (Voir section \ref{act1}).
-    \begin{enumerate}
-    \item Sous-activit\'{e} niveau 2b  (Voir section \ref{act11}).
-    \begin{enumerate}
-        \item Sous-sous-activit\'{e} niveau 3
-        \begin{enumerate}
-        \item Sous-sous-sous-activit\'{e} niveau 4  (fini le 4 sep04)
-        \item Sous-sous-sous-activit\'{e} niveau 4  (en cours)
-        \end{enumerate}
-    \end{enumerate}
-     \end{enumerate}
- \end{enumerate}
-
-\subsection{Dur\'{e}e du projet}
-\paragraph{Date de d\'{e}part~:}
-\paragraph{Estimations et contraintes}
-
-\documentclass[francais]{article}
-\bibliographystyle{unsrt}
-%\usepackage[T1]{fontenc}
-%\usepackage[applemac]{inputenc}
-%\usepackage{french}
-\usepackage{babel}
-\usepackage[latin1]{inputenc}
-
-%\usepackage{program}
-\usepackage{epsf}
-\usepackage{verbatim}
-%\usepackage{moreverb}
-\usepackage{latexsym}
-
-
-\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125em it}
-%\usepackage[dvipsone]{color}
-
-\setlength{\topmargin}{0 in}
-\setlength{\headheight}{0 in}
-\setlength{\headsep}{0 in}
-\setlength{\topskip}{0 in}
-\setlength{\textheight}{9 in}
-\setlength{\footskip}{0.25 in}
-%\setlength{\footheight}{0.25 in}
-\setlength{\oddsidemargin}{0 in}
-\setlength{\evensidemargin}{0 in}
-\setlength{\textwidth}{6.5 in}
-\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
-
-\newcommand{\bi}{\begin{itemize}}
-\newcommand{\ei}{\end{itemize}}
-
-
-% Number algorithms separately:
-%\newtheorem{algorithm}{Algorithm}
-
-% Number algorithms within sections:
-\newtheorem{algorithm}{Algorithme}[section]
-
-% For "floating" algorithms, use:
-% \begin{figure}
-% \begin{program}
-% ...
-% \end{program}
-% \end{figure}
-
-\newcommand{\bv}{\verb}
-
-\newcommand{\bve}{\verb*}
-
-\newcommand{\brun}{\noindent $\triangleright$}
-\newcommand{\erun}{$\triangleleft$}
-
-\newcommand{\key}{\textsf}
-\newcommand{\ita}{\textit}
-\newcommand{\dos}{\textsc}
-\newcommand{\bld}{\textbf}
-\newcommand{\ang}{\textsf}
-\newcommand{\pro}{\texttt}
-%\renewcommand{\thesection}{\Roman{section}}
-%\renewcommand{\thesubsection}{\Roman{subsection}}
-%\usepackage{graphics}
-%
-\renewcommand{\labelenumi}{\arabic{enumi}.}
-\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}
-\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
-\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}.}
-
-
-
-\newcommand{\sch}{Schneider}
-
-\newcommand{\saphir}{SAPHIR}
-\newcommand{\diamant}{DIAMANT}
-\newcommand{\diaBug}{diamantBug}
-\newcommand{\diaDotc}{DIAMANT 1.5}
-\newcommand{\diaDots}{DIAMANT 1.6}
-\newcommand{\diaDe}{DIAMANT 2.0}
-\newcommand{\diaTr}{DIAMANT 3.0}
-\newcommand{\inno}{Innovallia}
-
-\newcommand{\mef}{Maestro \`{e} Fresco}
-\newcommand{\uds}{Universit\'{e} de Sherbrooke}
-\newcommand{\mm}{GAMMI}
-
-
-\title{\bf{Suivi Projet \diaDots{} de \eXit}}
-\author{Ruben Gonzalez Rubio \\
-D\'{e}partement de g\'{e}nie \'{e}lectrique et de g\'{e}nie
-informatique\\Universit\'{e} de Sherbrooke\\
-Ruben.Gonzalez-Rubio@USherbrooke.ca}
-\date{1 septembre 04}
-
-
-
-% Modif sur page de notes ˆ la place de e.mail
-% Nouvelle figure use1.eps pour gestionnaires.
-
-\begin{document}
-%\input{actives.tex}\StdMacActives
-\maketitle
-
-Imprimé le~: \date{\today}
-
-\input{intro.tex}
-
-
-
-\subsection{Activit\'{e}s}
-\begin{enumerate}
-    \item Ajout des fonctionnalités (Voir section \ref{act1}).
-        \begin{enumerate}
-            \item Horaire sans étudiants. (Voir section \ref{act11}).
-            \item Définition des ensembles et grille partielle (bug. 8, 12) (Voir section \ref{act12}).
-    \item Assignation  automatique des locaux. (Voir section \ref{act13}).
-    \item Le nombre de cours dans une période doit prendre en
-    compte la capacité de locaux (bug. 3). (Voir section \ref{act14}).
-    \item Importation sélective (bug. 11, 20).  Fichier exportation .horaire.(Voir section \ref{act15}).
-    \item Algorithme d'optimisation plus efficace (bug. 38).(Voir section \ref{act16}).
-    \item Affectation manuelle plus efficace. (Voir section \ref{act17}).
-    \item Toolbar et horaire. (Voir section \ref{act18}).
-    \item Raccourcis clavier (bug. 71). (Voir section \ref{act19}).
-    \item Avoir une fonction "Undo" permettant de revenir en arrière sur la dernière
-    action effectuée et une fonction "Redo" pour refaire une action défaite (bug.
-    4).(Voir section \ref{act20}).
-     \item Code de couleur (bug. 22). (Voir section \ref{act21}).
-        \end{enumerate}
-    \item Ajout de MouseTrap (Voir section \ref{act2}).
-        \begin{enumerate}
-            \item Validation du prototype. (Voir section
-            \ref{act21}).
-            \item Modification du code. (Voir section
-            \ref{act22}).
-        \end{enumerate}
-
-    \item Correction de bugs (Voir section \ref{act3}).
-        \begin{enumerate}
-            \item Mauvais clonage de périodes (bug 62). (Voir section
-            \ref{act31}). (fini 13 sep 04, 1
-            jour).
-            \item Revoir les messages et les exceptions  lorsqu'un fichier est incorrect(bug. 69).(Voir section
-            \ref{act32}).
-            \item Revoir le rapport d'importation (bug. 70). (Voir section
-            \ref{act33}).
-            \item Entête de rapports. (Voir section \ref{act34}).
-            \item Reorganization de packages et classes (Voir section \ref{act35}).
-        \end{enumerate}
-    \item Reorganization de packages et classes (Voir section \ref{act4}).
-        \begin{enumerate}
-            \item Intégrer les librairies (Voir section \ref{act41}).
-            (fini 3 sep 04, 1 jour).
-            \item Inspection de les librairies (Voir section \ref{act42}).
-            (fini 13 sep 04, 2 jour)
-            \item Finir organization (Voir section \ref{act43}). (fini 13 sep 04, 1
-            jour).
-        \end{enumerate}
-    \item Ant (Voir section \ref{act5}).
-        \begin{enumerate}
-            \item Faire les targets pour chaque étape (Voir section \ref{act51}).(fini 13 sep 04, 1
-            jour),
-        \end{enumerate}
-\end{enumerate}
-
-\subsection{Dur\'{e}e du projet} Une année.
-\paragraph{Date de d\'{e}part~:} 1 septembre 2004
-\paragraph{Estimations et contraintes}
-
-
-\setcounter{section}{0}
-\renewcommand{\labelenumi}{\thesubsection.\arabic{enumi}.}
-\renewcommand{\labelenumii}{\thesubsection.\arabic{enumi}.\arabic{enumii}.}
-%\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}
-%\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}.}
-
-
-\section{Ajout des fonctionnalités} \label{act1}
-\subsection*{But de l'activit\'{e}}
-Ajouter des fonctionnalités demandées par les utilisateurs.
-\subsection*{Description}
-La liste de caractéristiques à ajouter~:
-
-\begin{itemize}
-    \item Horaire sans étudiants. \label{nostudents}
-    \item Définition des ensembles et grille partielle (bug. 8, 12) \label{parti}.
-    \item Assignation  automatique des locaux. \label{rooms}
-    \item Le nombre de cours dans une période doit prendre en
-    compte la capacité de locaux (bug. 3).
-    \item Importation sélective (bug. 11, 20).  Fichier exportation .horaire.\label{select}
-    \item Algorithme d'optimisation plus efficace (bug. 38). \label{optim}
-    \item Affectation manuelle plus efficace.\label{affect}
-    \item Toolbar et horaire \label{toolbar}
-    \item Raccourcis clavier (bug. 71). \label{clavier}
-    \item Avoir une fonction "Undo" permettant de revenir en arrière sur la dernière
-    action effectuée et une fonction "Redo" pour refaire une action défaite (bug. 4).
-     \item Code de couleur (bug. 22). \label{couleur}
-
-\end{itemize}
-
-\input{activities/act1.1.tex}
-
-%\input{activities/act1.1.2.1.1.tex}
-
-\section{Ajout de MouseTrap} \label{act2}
-\subsection*{But de l'activit\'{e}}
-MouseTrap doit servir à garder la trace de l'activité d'un
-utilisateur afin de faire exécuter le programme par un développeur
-qui doit trouver le problème conduisant à un bug.
-\subsection*{Description}
-Description de l'activit\'{e} 1, \`{a} d\'{e}crire.
-
-\input{activities/act2.1.tex}
-
-%\input{activities/act1.1.2.1.1.tex}
-
-\section{Correction de bugs} \label{act3}
-\subsection*{But de l'activit\'{e}}
-Correction de bugs.
-\subsection*{Description}
-\begin{itemize}
-    \item Mauvais clonage de périodes. Horaire d'examens avec horaire de cycle.
-    J'ai ajouté deux jours à la grille d'examen qui en contenait 10.
-    Je n'ai pas été capable de modifier la priorité associée à chacune
-    des périodes des jours 11 et 12. (bug 62).
-    \item Revoir les messages et les exceptions  lorsqu'un fichier est incorrect(bug. 69).
-    \item Revoir le rapport d'importation (bug. 70).
-    \item Entête de rapports.
-\end{itemize}
-
-
-\input{activities/act3.1.tex}
-
-%\input{activities/act1.1.2.1.1.tex}
-
-
-\section{Reorganization de packages et classes} \label{act4}
-\subsection*{But de l'activit\'{e}}
-Faire du refactoring afin d'avoir des noms plus clairs et de
-modules packages plus indépendants.
-
-\subsection*{Description}
-
-Une nouvelle organization de packages était nécessaire. De plus
-certaines règles pour les noms et les packages ont été ajoutées.
-
-Voilà le résultat et comment choisir un package pour une nouvelle
-classe.
-
-\begin{description}
-  \item[\verb!dConstant!] Contient \verb!DConst! et
-  \verb!DStringFrRes!, cette dernière contient les chaînes en
-  Fran\c{c}ais.
-  \item[\verb!dDeveloper!] Contient les classes qui ne sont pas
-  inclues avec la version livrable.
-  \item[\verb!dInterface!] Contient les classes  qui affichent
-  quelque
-  chose à l'écran.
-    \begin{description}
-    \item[\verb!x!] à définir.
-    \item[\verb!y!] à définir.
-    \item[\verb!z!] à définir.
-    \end{description}
-  \item[\verb!dInternal!]
-
-    \begin{description}
-    \item Contient classe \verb!DModel! contenant les données de
-    l'application
-    \item[\verb!dDataTxt!] Contient les classes où on traite les
-    données textuelles de l'extérieur.
-    \item[\verb!dDataXML!] Contient les classes où on traite les
-    données XML de l'extérieur.
-    \item[\verb!dOptimization!] Contient les classes où on traite
-    l'optimisation : algorithmes ou conditions ou structures
-    auxiliaires.
-    \item[\verb!dTimeTable!] Contient les classes nécessaires à la
-    grille horaire.
-    \item[\verb!dUtil!] Contient les classes génériques, mais nécessaires uniquement à
-    \diamant{}, utilisées
-    dans \verb!dInternal!
-    \end{description}
-  \item[\verb!dmains!] Contient les \verb!main!s pour lancer les
-  différentes applications.
-  \item[\verb!dTest!]
-    \begin{description}
-    \item[\verb!dInterface!]
-    \item[\verb!dInternal!]
-        \begin{description}
-        \item[\verb!dDataTxt!]Contient les classes pour tester les
-    données textuelles de l'extérieur.
-        \item[\verb!dDataXML!]Contient les classes pour tester les
-    données XML de l'extérieur.
-        \item[\verb!dOptimization!] Contient les classes pour
-        tester les classes de
-    l'optimisation : algorithmes ou conditions ou structures
-    auxiliaires.
-        \item[\verb!dTimeTable!]Contient les classes nécessaires
-        au test de classes de la
-    grille horaire.
-        \item[\verb!dUtil!]Contient les classes nécessaires
-        au test de classes de la
-    \verb!dUtil!.
-    \end{description}
-    \item[\verb!dOptimization!]
-    \item[\verb!dTimeTable!]
-    \item[\verb!dUtil!]
-    \end{description}
-\end{description}
-
-
-Une librairie unique des classes génériques regroupant entre
-autres les libraries \verb!theLibrary! et \verb!xmlLibrary! plus
-d'autres classes non dépendantes de \diamant{}. Tout sur un
-package qui fera un \pro{.jar} indépendant.
-
-\input{activities/act4.1.tex}
-
-%\input{activities/act1.1.2.1.1.tex}
-
-
-\section{Ant} \label{act5}
-\subsection*{But de l'activit\'{e}}
-Produire un ou des fichiers Ant afin d'automatiser la construction
-du \pro{.zip} livré aux utilisateurs. Ceci doit se faire en
-évitant les redondances de fichiers.
-\subsection*{Description}
-Description un fichier Ant \cite{hatcher03} peut réaliser
-plusieurs tâches, comme par exemple effacer des répertoires copier
-des fichiers et bien entendu compiler et fabriquer des \pro{.jar}.
-Les sous-activités indiquent les targets (terminologie Ant pour
-une tâche.
-
-%\input{activities/act5.1.tex}
-
-%\input{activities/act1.1.2.1.1.tex}
-\bibliography{bibDiamant}
-\end{document}
+\documentclass[francais]{article}\bibliographystyle{unsrt}%\usepackage[T1]{fontenc}%\usepackage[applemac]{inputenc}%\usepackage{french}\usepackage{babel}\usepackage[latin1]{inputenc}%\usepackage{program}\usepackage{epsf}\usepackage{verbatim}%\usepackage{moreverb}\usepackage{latexsym}\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125em it}%\usepackage[dvipsone]{color}\setlength{\topmargin}{0 in}\setlength{\headheight}{0 in}\setlength{\headsep}{0 in}\setlength{\topskip}{0 in}\setlength{\textheight}{9 in}\setlength{\footskip}{0.25 in}%\setlength{\footheight}{0.25 in}\setlength{\oddsidemargin}{0 in}\setlength{\evensidemargin}{0 in}\setlength{\textwidth}{6.5 in}\setlength{\parskip}{1.5ex plus0.5ex minus0ex}\newcommand{\bi}{\begin{itemize}}\newcommand{\ei}{\end{itemize}}% Number algorithms separately:%\newtheorem{algorithm}{Algorithm}% Number algorithms within sections:\newtheorem{algorithm}{Algorithme}[section]% For "floating" algorithms, use:% \begin{figure}% \begin{program}% ...% \end{program}% \end{figure}\newcommand{\bv}{\verb}\newcommand{\bve}{\verb*}\newcommand{\brun}{\noindent $\triangleright$}\newcommand{\erun}{$\triangleleft$}\newcommand{\key}{\textsf}\newcommand{\ita}{\textit}\newcommand{\dos}{\textsc}\newcommand{\bld}{\textbf}\newcommand{\ang}{\textsf}\newcommand{\pro}{\texttt}%\renewcommand{\thesection}{\Roman{section}}%\renewcommand{\thesubsection}{\Roman{subsection}}%\usepackage{graphics}%\renewcommand{\labelenumi}{\arabic{enumi}.}\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}.}\newcommand{\sch}{Schneider}\newcommand{\saphir}{SAPHIR}\newcommand{\diamant}{DIAMANT}\newcommand{\diaBug}{diamantBug}\newcommand{\diaDotc}{DIAMANT 1.5}\newcommand{\diaDots}{DIAMANT 1.6}\newcommand{\diaDe}{DIAMANT 2.0}\newcommand{\diaTr}{DIAMANT 3.0}\newcommand{\inno}{Innovallia}\newcommand{\mef}{Maestro \`{e} Fresco}\newcommand{\uds}{Universit\'{e} de Sherbrooke}\newcommand{\mm}{GAMMI}\title{\bf{Suivi Projet \diaDots{} de \eXit}}\input{author.tex}%\author{Ruben Gonzalez Rubio \\% Modif sur page de notes ˆ la place de e.mail% Nouvelle figure use1.eps pour gestionnaires.\begin{document}%\input{actives.tex}\StdMacActives\maketitle\input{intro.tex}\input{weeks.tex}\tableofcontents\setcounter{section}{0}\renewcommand{\labelenumi}{\thesubsection.\arabic{enumi}.}\renewcommand{\labelenumii}{\thesubsection.\arabic{enumi}.\arabic{enumii}.}%\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}%\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}.} \input{activities/ajoutFonc/ajoutFonc.tex}\input{activities/mouseTrap/mouseTrap.tex}\input{activities/bugs/bugs.tex}\input{activities/packages/packages.tex}\input{activities/ant/ant.tex}\bibliography{bibDiamant}\end{document}\subsection{Activit\'{e}s}\begin{enumerate}    \item Activit\'{e} niveau 1 (Voir section \ref{act1}).    \begin{enumerate}    \item Sous-activit\'{e} niveau 2b  (Voir section \ref{act11}).    \begin{enumerate}        \item Sous-sous-activit\'{e} niveau 3        \begin{enumerate}        \item Sous-sous-sous-activit\'{e} niveau 4  (fini le 4 sep04)        \item Sous-sous-sous-activit\'{e} niveau 4  (en cours)        \end{enumerate}    \end{enumerate}     \end{enumerate} \end{enumerate}\subsection{Dur\'{e}e du projet}\paragraph{Date de d\'{e}part~:}\paragraph{Estimations et contraintes}
