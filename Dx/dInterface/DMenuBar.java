@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.95 $  $Date: 2003-12-15 20:35:59 $
+ * Title: DMenuBar $Revision: 1.96 $  $Date: 2004-02-03 13:52:47 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.95 $
+ * @version $Revision: 1.96 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -335,7 +335,7 @@ public class DMenuBar extends JMenuBar{
     _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _optimisation );
     // Items in menu Optimisation.
-    _mInit = new CmdMenu(DConst.INITIAL_AFFECT_M);
+    _mInit = new CmdMenu(DConst.INITIAL_ASSIGN_M);
     _mInit.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mInit.setCommand(new InitialAffectCmd(_dApplic));
     _mInit.addActionListener(_dApplic);

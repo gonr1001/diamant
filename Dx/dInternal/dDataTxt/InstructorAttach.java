@@ -9,9 +9,11 @@ package dInternal.dData;
  * @version 1.0
  */
 import java.util.Vector;
+
 import java.util.StringTokenizer;
 import dInternal.dUtil.DXObject;
 
+import dInternal.dUtil.DXToolsMethods;
 /**
  * @todo new name InstructorFields
  * @todo finish comments
@@ -91,6 +93,14 @@ public class InstructorAttach extends DXObject {
     } //end for i
   }
 
+  public void  setFullAvailability(){
+    String str = "";
+    for (int i = 0; i < _instructorAvailability.size(); i++){
+      str = _instructorAvailability.get(i).toString();
+      str = str.replaceAll("5","1");
+       _instructorAvailability.setElementAt(str, i);
+    }
+  }
   /**
    * return the value of the selected key
    * INPUT: choice, an integer. choice =

@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.5 $  $Date: 2003-09-23 10:06:31 $
+ * Title: PLAFCmd $Revision: 1.6 $  $Date: 2004-02-03 13:52:47 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.6 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -34,7 +34,7 @@ public class InitialAffectCmd implements Command {
   //------------------------------
     public void execute(DApplication dApplic) {
         dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(dApplic.getJFrame());
-        new InformationDlg(dApplic.getJFrame(), DConst.INITIAL_AFFECT_MESSAGE);
+        new InformationDlg(dApplic.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
 
     } // end execute
 } /* end class PLAFCmd */

@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.2 $  $Date: 2003-12-04 19:56:11 $
+ * Title: AboutDlg $Revision: 1.3 $  $Date: 2004-02-03 13:52:47 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.3 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
@@ -49,6 +49,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
   private JTextField _textField2;
   private JTextField _textField3;
   private JTextField _textField4;
+  private JTextField _textField5;
   /**
    * the constructor will displays the dialog
    *
@@ -76,7 +77,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
       _textField2 = new JTextField(""+a[2]);
       _textField3 = new JTextField(""+a[3]);
       _textField4 = new JTextField(""+a[4]);
-      jPanel.setLayout(new GridLayout(5,2));
+      _textField5 = new JTextField(""+a[5]);
+      jPanel.setLayout(new GridLayout(6,2));
       jPanel.add(new JLabel("Max Conflits Étu entre 2 Eve ="));
       jPanel.add(_textField0);
 
@@ -93,6 +95,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
       jPanel.add(_textField4);
 
 
+      jPanel.add(new JLabel("Périodes d'écart ="));
+      jPanel.add(_textField5);
 
 
 
@@ -118,6 +122,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
         v.add(_textField2.getText());
         v.add(_textField3.getText());
         v.add(_textField4.getText());
+        v.add(_textField5.getText());
         _dApplic.getPreferences().setConflicLimits(v);
         _dApplic.getPreferences().save();
         dispose();
@@ -142,6 +147,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
       return 4;
     if(!testText(_textField4.getText(), 0, 9999))
       return 5;
+    if(!testText(_textField5.getText(), 0, 4))
+      return 6;
     return 0;
   }
 

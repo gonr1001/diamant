@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.81 $  $Date: 2003-11-21 21:19:35 $
+ * Title: DModel $Revision: 1.82 $  $Date: 2004-02-03 13:52:47 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.81 $
+ * @version $Revision: 1.82 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -212,7 +212,31 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     return"";
   }
 
+  public void prepareExamsData(){
+    // supprime natures2
+    // supprime groups
+    // supprime events
+    for(int i =0; i < _setOfActivities.size(); i++) {
+      Activity activity = (Activity)_setOfActivities.getResourceAt(i).getAttach();
+      activity.getSetOfTypes().getSetOfResources().removeAllElements();
+      activity.addType("1");
+      Type type = (Type) activity.getSetOfTypes().getResource("1").getAttach();
+      type.addSection("A");
+      Section section = (Section) type.getSetOfSections().getResource("A").getAttach();
+      section.addUnity("1",1,true);
+      ((Unity) section.getSetOfUnities().getResource("1").getAttach()).setDuration(180);
+      //unity.addAssignment("1");
+    }
+    // set new instructor availability
+    for(int i = 0; i < _setOfInstructors.size(); i++) {
+      ((InstructorAttach) _setOfInstructors.getResourceAt(i).getAttach()).setFullAvailability();
+    }
 
+    for(int i = 0; i < _setOfRooms.size(); i++) {
+      ((RoomAttach) _setOfRooms.getResourceAt(i).getAttach()).setFullAvailability();
+    }
+
+  }
   /**
    *
    * @return
@@ -348,6 +372,14 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public TTStructure getTTStructure() {
     return _ttStruct;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public int getTypeOfSchedule(){
+    return _type;
   }
 
   /**

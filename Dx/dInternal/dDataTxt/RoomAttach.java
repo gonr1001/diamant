@@ -19,18 +19,18 @@ public class RoomAttach extends DXObject{
   private String _description="";
   private int _function=-1;
   private SetOfResources _setOfCaracteristics;
-  private Vector _roomAvail;//
+  private Vector _roomAvailability;//
   private final String CR_LF = "\r\n";
 
   public RoomAttach() {
-    _roomAvail = new Vector();
+    _roomAvailability = new Vector();
     _setOfCaracteristics= new SetOfResources(3);
   }
   /**
    * add an availability day in roomDisp
    */
   public void addAvailability(String disp){
-    _roomAvail.add(disp);
+    _roomAvailability.add(disp);
   }
 
   /***
@@ -75,8 +75,8 @@ public class RoomAttach extends DXObject{
    * */
   public boolean removeAvailDay(int day){
     if (day>0)
-      if (day <= _roomAvail.size()){
-        _roomAvail.remove(day-1);
+      if (day <= _roomAvailability.size()){
+        _roomAvailability.remove(day-1);
         return true;
       }
     return false;
@@ -87,15 +87,15 @@ public class RoomAttach extends DXObject{
    * INPUT: Vector of new room availability (roomDisp)
    * */
   public void setAvailability(Vector roomDisp){
-    _roomAvail= new Vector();
-    _roomAvail= (Vector)roomDisp.clone();
+    _roomAvailability= new Vector();
+    _roomAvailability= (Vector)roomDisp.clone();
   }
 
   /**
    *
    * */
   public Vector getVectorAvailability(){
-    return _roomAvail;
+    return _roomAvailability;
   }
   /*
   */
@@ -122,12 +122,12 @@ public class RoomAttach extends DXObject{
   }
 
   public int[][] getMatrixAvailability(){
-    String jour = (String) _roomAvail.get(0);
+    String jour = (String) _roomAvailability.get(0);
     StringTokenizer st = new StringTokenizer(jour);
-    int[][] a = new int[_roomAvail.size()][st.countTokens()];
+    int[][] a = new int[_roomAvailability.size()][st.countTokens()];
     int nbOfTokens = st.countTokens();
-    for(int i = 0; i < _roomAvail.size(); i++) {
-      jour = (String) _roomAvail.get(i);
+    for(int i = 0; i < _roomAvailability.size(); i++) {
+      jour = (String) _roomAvailability.get(i);
       st = new StringTokenizer(jour);
       nbOfTokens = st.countTokens();
       for(int j=0; j < nbOfTokens; j++) {
@@ -138,7 +138,7 @@ public class RoomAttach extends DXObject{
   }
 
   public void  setAvailability(int[][] a){
-    _roomAvail = new Vector();
+    _roomAvailability = new Vector();
     String str = "";
     for(int i = 0; i < a.length; i++) {
       for(int j=0; j <a[i].length; j++) {
@@ -146,7 +146,7 @@ public class RoomAttach extends DXObject{
         if (j< a[i].length-1)
           str += " ";
       } // end for j
-      _roomAvail.add(str);
+      _roomAvailability.add(str);
       str = "";
     } //end for i
   }
@@ -163,6 +163,14 @@ public class RoomAttach extends DXObject{
     return -1;
   }
 
+  public void  setFullAvailability(){
+    String str = "";
+    for (int i = 0; i < _roomAvailability.size(); i++){
+      str = _roomAvailability.get(i).toString();
+      str = str.replaceAll("5","1");
+       _roomAvailability.setElementAt(str, i);
+    }
+  }
   /**
    * Print local information
    * OUTPUT: String of roomID and room availability
@@ -176,10 +184,10 @@ public class RoomAttach extends DXObject{
     }
 
     String avail="";
-    for(int i=0; i< _roomAvail.size()-1; i++)
-      avail += (String)_roomAvail.get(i)+",";
-    //System.out.println("Room: "+_capacity+" -- "+_caracteristics+_roomAvail.size());//debug
-    avail += (String)_roomAvail.get(_roomAvail.size()-1);
+    for(int i=0; i< _roomAvailability.size()-1; i++)
+      avail += (String)_roomAvailability.get(i)+",";
+    //System.out.println("Room: "+_capacity+" -- "+_caracteristics+_roomAvailability.size());//debug
+    avail += (String)_roomAvailability.get(_roomAvailability.size()-1);
     String roomInfo=_capacity+";"+_function+";"+_caracteristics+";"
                    +_description+";"+avail+";";
     return roomInfo;
@@ -191,7 +199,7 @@ public class RoomAttach extends DXObject{
   public void setStandardAvailability(){
     String stAvail="1 1 1 1 1 1 1 1 1 1 1 1";
     for (int i=0; i< 5; i++)
-      _roomAvail.add(stAvail);
+      _roomAvailability.add(stAvail);
   }
 
   /**
@@ -211,7 +219,7 @@ public class RoomAttach extends DXObject{
       if(!_description.equals(roomAttach._description))
         return false;
     else
-      if (!_roomAvail.equals(roomAttach._roomAvail))
+      if (!_roomAvailability.equals(roomAttach._roomAvailability))
         return false;
     else
       if (!_setOfCaracteristics.isEquals(roomAttach._setOfCaracteristics))

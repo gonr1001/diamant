@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.75 $  $Date: 2003-12-03 21:27:02 $
+ * Title: DConst $Revision: 1.76 $  $Date: 2004-02-03 13:52:47 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.75 $
+ * @version $Revision: 1.76 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -148,7 +148,7 @@ public class DConst {
   public final static String ACTIVITY_MODIF_M = res.getString("ActModifM");//Modification évenements
   //Optimization menu
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
-  public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale
+  public final static String INITIAL_ASSIGN_M = res.getString("initialAssignM");//Affectation Initiale
   public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Affectation Initiale
   public final static String STUDENTMIXING = res.getString("studentMixing");//Brassage d'étudiants
   public final static String STUDENTMIXINGBAL = res.getString("studentMixingBal");//Brassage d'étudiants balancé
@@ -227,7 +227,7 @@ public class DConst {
    public final static String MANUALIMPROVEMENT_DLG_TITLE = res.getString("ManImpDlgTitle");//Évenements
 
   //Optimisation dialogs
-  public final static String INITIAL_AFFECT_MESSAGE = res.getString("InitialAffectMessage");//Affectation initiale effectuée
+  public final static String INITIAL_ASSIGN_MESSAGE = res.getString("InitialAssignMessage");//Affectation initiale effectuée
   public final static String TT_BUILD_MESSAGE = res.getString("TTBuildMessage");//Construction d'horaire terminée
   public final static String STUDENTS_MIXING_MESSAGE = res.getString("StudentsMixingMessage");//brassage d'étudiants terminé
   //Preferences dialogs

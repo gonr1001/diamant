@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.100 $  $Date: 2003-11-21 21:19:35 $
+ * Title: DDocument $Revision: 1.101 $  $Date: 2004-02-03 13:52:47 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.100 $
+ * @version $Revision: 1.101 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -183,6 +183,10 @@ public class DDocument  extends InternalFrameAdapter implements
     setCursor(Cursor.WAIT_CURSOR, component);
 
     _dm.setModified();
+    if (_dm.getTypeOfSchedule() == 2) {
+      _dm.prepareExamsData();
+    }
+    //System.out.println("Type of Schedule: "+_dm.getTypeOfSchedule());
     _dm.buildSetOfEvents();
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
