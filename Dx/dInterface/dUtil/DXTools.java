@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.util.Vector;
 
+import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -77,7 +78,7 @@ public class DXTools{
    * @param Object [] (selectedItemsList) the selected items array to be found in the itemsList
    * @return An array containing the indices of the items to be showed as selected
    * */
-  public static int[] getIndicesToSelected(Vector itemsList, Object[] selectedItemsList){
+  public static int[] getIndicesToSelect(Vector itemsList, Object[] selectedItemsList){
    int [] indices = new int[selectedItemsList.length];//the place for keeping the indices to set selected
    for (int i = 0; i < selectedItemsList.length; i++){
      indices[i] = itemsList.indexOf(selectedItemsList[i]);
@@ -106,7 +107,7 @@ public class DXTools{
       destinationVector = resources.getIDsByField(fieldIndex, valueDestination);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
-      int[] indices = getIndicesToSelected(destinationVector, elementsToTransfer);
+      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
     }
@@ -115,21 +116,29 @@ public class DXTools{
 public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector){
   if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
     return;
+  SetOfResources destinationRes = new SetOfResources(0);
+  Resource res;
   Object [] elementsToTransfer = sourceList.getSelectedValues();
+
   if (elementsToTransfer.length != 0){
       String currentElement;
       for (int i = 0; i < elementsToTransfer.length; i++){
         sourceVector.remove(elementsToTransfer[i]);
         destinationVector.add(elementsToTransfer[i]);
       }
-
+      for(int j = 0; j < destinationVector.size(); j++){
+        res = new Resource((String)destinationVector.elementAt(j),null);
+        destinationRes.addResource(res, 1);
+      }
+      destinationRes.sortSetOfResourcesByID();
+      destinationVector = destinationRes.getNamesVector();
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
-      int[] indices = getIndicesToSelected(destinationVector, elementsToTransfer);
+      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
-    }
-}
+    }//end for
+}//end method
 
 
   /**

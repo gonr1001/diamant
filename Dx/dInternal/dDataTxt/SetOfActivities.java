@@ -495,6 +495,15 @@ public class SetOfActivities extends SetOfResources{
     return actlist;
   }
 
+  /**
+   * Return the unity specified by the parameters
+   * @param actKey the activity key
+   * @param typeKey the type key
+   * @param secKey the section key
+   * @param unitKey the unity key
+   * @return The unity wanted
+   */
+
   public Unity getUnity(long actKey, long typeKey, long secKey, long unitKey){
     Activity a = (Activity)getResource(actKey).getAttach();
     Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
@@ -503,12 +512,45 @@ public class SetOfActivities extends SetOfResources{
     return u;
   }
 
+  /**
+   * Return the name of the unity specified by the parameters
+   * @param actKey the activity key
+   * @param typeKey the type key
+   * @param secKey the section key
+   * @param unitKey the unity key
+   * @return The name of the unity wanted
+   */
   public String getUnityCompleteName(long actKey, long typeKey, long secKey, long unitKey){
     Resource a = getResource(actKey);
     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
     Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
     return a.getID()+t.getID()+" "+s.getID()+u.getID();
+  }
+
+  /**
+   * Sets a field belonging a Unity
+   * @param actKey the activity key
+   * @param typeKey the type key
+   * @param secKey the section key
+   * @param unitKey the unity key
+   * @param fieldIndex The index identifaying the field
+   * @param fieldValue The value to be setted in the field
+   */
+  public void setUnityField(long actKey, long typeKey, long secKey, long unitKey, int fieldIndex, String fieldValue){
+    Resource a = getResource(actKey);
+    Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
+    Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
+    Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
+    u.getAttach().setField(fieldIndex, fieldValue);
+  }
+
+  public void setUnityField(String actID, String typeID, String secID, String unitID, int fieldIndex, String fieldValue){
+    Resource a = getResource(actID);
+    Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
+    Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secID);
+    Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitID);
+    u.getAttach().setField(fieldIndex, fieldValue);
   }
 
   private int _NUMBEROFCYCLE = 1;

@@ -77,6 +77,10 @@ public class Unity extends DXObject{
     _assign = assign;
   }
 
+  public void setCyclic(boolean cyclic){
+    _isCyclic = cyclic;
+  }
+
   /**
    * get fixed state of the bloc
    * @param boolean the bloc state
@@ -254,16 +258,47 @@ public class Unity extends DXObject{
       return false;
     return true;
   }
-
-
   /**
+    * Set a field according to the argument fieldIndex
+    * @param fieldIndex The index of a field
+    * @param value The set value to the field
+  */
+  public void setField(int fieldIndex, String value){
+   boolean boolValue;
+   int intValue;
+    switch(fieldIndex){
+      case 0:
+        intValue = Integer.parseInt(value);
+        setDuration(intValue);
+        break;
+      case 1:
+        intValue = Integer.parseInt(value);
+        setPreferSequence(intValue);
+        break;
+      case 2:
+        boolValue = Boolean.valueOf(value).booleanValue();
+        setAssign(boolValue);
+        break;
+        case 3:
+        boolValue = Boolean.valueOf(value).booleanValue();
+        setPermanent(boolValue);
+          break;
+        case 4:
+          boolValue = Boolean.valueOf(value).booleanValue();
+          setCyclic(boolValue);
+          break;
+   }
+ }
+
+
+ /**
    * It compares a field with the value defined by the argument "value"
    * @param fieldIndex the index of the field
    * @param value the value to be compared
    * @return true if the attribute value is equal to the argument "value"
    */
 
-  public boolean compareByField(int fieldIndex, String value){
+ public boolean compareByField(int fieldIndex, String value){
    boolean boolValue;
    int intValue;
     switch(fieldIndex){
