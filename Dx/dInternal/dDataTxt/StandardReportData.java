@@ -173,6 +173,7 @@ public class StandardReportData {
       dxValue.setObjectValue(vec);
       setOf.addResource(new Resource(ID, dxValue),0);
     }// end while(theReport.hasMoreTokens())
+    setOf.sortSetOfResourcesByID();
     String report="";
     for (int i=0;i< setOf.size(); i++){
       report+=setOf.getResourceAt(i).getID()+";";//+setOf.CR_LF;

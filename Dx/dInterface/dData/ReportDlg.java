@@ -67,7 +67,7 @@ public class ReportDlg extends JDialog implements ActionListener{
   }//end constructor
 
   /**
-   * Doalog initialization
+   * Dialog initialization
    */
   private void jbInit(){
     Dimension dialogDim = new Dimension(1000,600);

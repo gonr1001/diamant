@@ -143,7 +143,7 @@ public class SetOfRooms extends SetOfResources{
             while (currentLine.hasMoreElements()){
               token = currentLine.nextToken();
               switch (state){
-                case 0: roomID = token;
+                case 0: roomID = token.trim();
                   state = 1;
                   break;
                 case 1:
