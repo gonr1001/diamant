@@ -101,12 +101,12 @@ public class StandardReportData {
                   ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
               String hour= "00"+Integer.toString(bloc.getDuration()/_AHOUR);
               String minute= "00"+Integer.toString(bloc.getDuration()%_AHOUR);
-              StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
+              /*StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
                   ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
               long dayKey= Long.parseLong(dtime.nextToken());
               long seqKey= Long.parseLong(dtime.nextToken());
-              long perKey= Long.parseLong(dtime.nextToken());
-              Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
+              long perKey= Long.parseLong(dtime.nextToken());*/
+              Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByPeriodKey(currentCycAss.getPeriodKey());
               if((bloc.isAssign()) && period.getPriority()!=2){
                 String activityName =_dm.getSetOfActivities().getResourceAt(i).getID();
                 actlist+= _dm.getSetOfActivities().getResourceAt(i).getID()+";";// write activity name
@@ -117,17 +117,8 @@ public class StandardReportData {
                 actlist+= section.getSetOfUnities().getResourceAt(l).getID()+";";
                 actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
                         minute.substring(minute.length()-2,minute.length())+";";
-                /*Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
-                    ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
-                String hour= "00"+Integer.toString(bloc.getDuration()/_AHOUR);
-                String minute= "00"+Integer.toString(bloc.getDuration()%_AHOUR);
-                actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
-                          minute.substring(minute.length()-2,minute.length())+";";
-                StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
-                    ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
-                long dayKey= Long.parseLong(dtime.nextToken());
-                long seqKey= Long.parseLong(dtime.nextToken());
-                long perKey= Long.parseLong(dtime.nextToken());*/
+
+                long dayKey= Long.parseLong(DXToolsMethods.getToken(currentCycAss.getPeriodKey(),".",0));
                 actlist+=dayKey+";";
                 actlist+= _dm.getTTStructure().getCurrentCycle().getSetOfDays(
                     ).getResource(dayKey).getID()+";";//.getID()

@@ -14,7 +14,10 @@ import dInternal.dUtil.DXObject;
 public class Assignment extends DXObject{
 
   /**contains the key of the day, the begin hour and the begin minute*/
-  private int[] _dateAndTime={0,0,0};
+  private int[] _dateAndTime={1,8,30};
+  /**String the period complete key a.b.c where a= day key, b= sequence key
+   * c= period key*/
+  private String _periodKey ="0.0.0";
   /**instructor name valid only for initialization*/
   private String _instructorName="";
   /** instructor key */
@@ -42,6 +45,14 @@ public class Assignment extends DXObject{
     _dateAndTime[0]=day;
     _dateAndTime[1]=hour;
     _dateAndTime[2]=minute;
+  }
+
+  /**
+   * set period key of the bloc in this week
+   * @param String the period complete key a.b.c where a= day key, b= sequence key
+   * c= period key*/
+  public void setPeriodKey(String periodKey){
+    _periodKey = periodKey;
   }
 
   /**
@@ -87,11 +98,21 @@ public class Assignment extends DXObject{
 
   /**
    * get date and time of the bloc in this week
-   * @return Calendar the day, begin hour and begin minute
+   * @return int[]
    * */
   public int[] getDateAndTime(){
     return _dateAndTime;
   }
+
+  /**
+   * get dayKey, sequence Key and period Key of the bloc in this week
+   * @return String String the period complete key a.b.c where a= day key, b= sequence key
+   * c= period key
+   * */
+  public String getPeriodKey(){
+    return _periodKey;
+  }
+
 
   /**
    * get instructor name of the bloc in this week

@@ -386,10 +386,10 @@ ji-322;50;620;11,14,15,20,44;y;5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5
 ASL1091  A
 1
 1
-ASL109
+ASL109 ASL109 
 2
 3 2 
-3 7 3 2 
+3.2.4 3.1.4 
 1 1 
 ------ ------ 
 0 0 
@@ -398,10 +398,10 @@ ASL109
 EPD1041  A
 1
 1
-BACON-BROCHU,G.
+BACON-BROCHU,G. BACON-BROCHU,G. 
 2
 2 2 
-2 11 5 1 
+2.3.2 5.1.2 
 1 1 
 Studio Studio 
 0 0 
@@ -410,10 +410,10 @@ Studio Studio
 EPD1041  B
 1
 1
-BACON-BROCHU,G.
+BACON-BROCHU,G. BACON-BROCHU,G. 
 2
 2 2 
-2 13 5 6 
+2.3.6 5.2.2 
 1 1 
 ------ Studio 
 0 0 
@@ -422,10 +422,10 @@ BACON-BROCHU,G.
 EPK3141  A
 1
 1
-TÈTREAULT,L.
+TÈTREAULT,L. 
 1
 3 
-4 2 
+4.1.4 
 1 
 ------ 
 0 
@@ -434,10 +434,10 @@ TÈTREAULT,L.
 EPK8021  A
 0
 1
-GAGNON,D.
+GAGNON,D. 
 1
 3 
-3 6 
+0.0.0 
 1 
 ------ 
 0 
@@ -446,10 +446,10 @@ GAGNON,D.
 EPS1101  A
 1
 1
-LAROCHE,J.
+LAROCHE,J. 
 1
 1 
-2 1 
+2.1.2 
 1 
 ------ 
 0 
@@ -458,10 +458,10 @@ LAROCHE,J.
 EPS1101  B
 1
 1
-LAROCHE,J.
+LAROCHE,J. 
 1
 1 
-2 3 
+2.1.6 
 1 
 ------ 
 0 
@@ -470,10 +470,10 @@ LAROCHE,J.
 EPS1102  A
 1
 1
-LAB.EPS110
+LAB.EPS110 
 1
 2 
-2 7 
+2.2.4 
 1 
 ------ 
 0 
@@ -482,10 +482,10 @@ LAB.EPS110
 EPS1102  B
 1
 1
-LAB.EPS110
+LAB.EPS110 
 1
 2 
-2 3 
+2.1.6 
 1 
 ------ 
 0 
@@ -494,10 +494,10 @@ LAB.EPS110
 EPS1102  C
 1
 1
-LAB.EPS110
+LAB.EPS110 
 1
 2 
-2 1 
+2.1.2 
 1 
 ------ 
 0 
@@ -506,10 +506,10 @@ LAB.EPS110
 EPS1102  D
 1
 1
-LAB.EPS110
+LAB.EPS110 
 1
 2 
-3 1 
+3.1.2 
 1 
 ------ 
 0 
@@ -518,10 +518,10 @@ LAB.EPS110
 EPS1121  A
 1
 1
-EPS112
+EPS112 
 1
 3 
-3 11 
+3.3.2 
 1 
 ------ 
 0 
@@ -530,10 +530,10 @@ EPS112
 EPS1121  B
 1
 1
-EPS112
+EPS112 
 1
 3 
-4 11 
+4.3.2 
 1 
 ------ 
 0 
@@ -542,10 +542,10 @@ EPS112
 EPS1121  C
 1
 1
-EPS112
+EPS112 
 1
 3 
-2 11 
+2.3.2 
 1 
 ------ 
 0 
@@ -554,10 +554,10 @@ EPS112
 EPS1221  A
 1
 1
-HINCE,R.
+HINCE,R. 
 1
 4 
-3 6 
+3.2.2 
 1 
 Orford 
 0 
@@ -566,10 +566,10 @@ Orford
 EPS1241  A
 1
 1
-LOISEAU,S.
+LOISEAU,S. 
 1
 3 
-4 1 
+4.1.2 
 1 
 Gym-1 
 0 
@@ -578,10 +578,10 @@ Gym-1
 EPS1241  B
 1
 1
-LOISEAU,S.
+LOISEAU,S. 
 1
 3 
-2 11 
+2.3.2 
 1 
 Gym-1 
 0 
@@ -590,10 +590,10 @@ Gym-1
 EPS1241  C
 1
 1
-LOISEAU,S.
+LOISEAU,S. 
 1
 3 
-1 2 
+1.1.4 
 0 
 Gym-1 
 0 
@@ -602,10 +602,10 @@ Gym-1
 EPS1242  A
 1
 1
-LAB.EPS124
+LAB.EPS124 
 1
 0 
-5 14 
+5.3.8 
 1 
 ------ 
 0 
@@ -614,10 +614,10 @@ LAB.EPS124
 EPS1251  A
 1
 1
-BOURGAULT,A.
+BOURGAULT,A. 
 1
 2 
-5 1 
+5.1.2 
 1 
 ------ 
 0 
@@ -626,10 +626,10 @@ BOURGAULT,A.
 EPS1251  B
 1
 1
-BOURGAULT,A.
+BOURGAULT,A. 
 1
 2 
-5 8 
+5.2.6 
 1 
 ------ 
 0 
@@ -638,10 +638,10 @@ BOURGAULT,A.
 EPS1301  A
 1
 1
-DOUCET,C.
+DOUCET,C. 
 1
 3 
-2 1 
+2.1.2 
 1 
 Stade 
 0 
@@ -650,10 +650,10 @@ Stade
 EPS1301  B
 1
 1
-ROY,Y.
+ROY,Y. 
 1
 3 
-2 6 
+2.2.2 
 1 
 Stade 
 0 
@@ -662,10 +662,10 @@ Stade
 EPS1301  C
 1
 1
-ROY,Y.
+ROY,Y. 
 1
 3 
-4 6 
+4.2.2 
 1 
 Stade 
 0 
@@ -674,10 +674,10 @@ Stade
 EPS1321  A
 1
 1
-LEVASSEUR,M.-A.
+LEVASSEUR,M.-A. 
 1
 3 
-3 1 
+3.1.2 
 1 
 Piscine 
 0 
@@ -686,10 +686,10 @@ Piscine
 EPS1321  B
 1
 1
-LEVASSEUR,M.-A.
+LEVASSEUR,M.-A. 
 1
 3 
-3 1 
+3.1.2 
 1 
 Piscine 
 0 
@@ -698,10 +698,10 @@ Piscine
 EPS1321  C
 1
 1
-LEVASSEUR,M.-A.
+LEVASSEUR,M.-A. 
 1
 3 
-3 2 
+3.1.4 
 0 
 Piscine 
 0 
@@ -710,10 +710,10 @@ Piscine
 EPS1322  A
 1
 1
-LEVASSEUR,M.-A.
+LEVASSEUR,M.-A. 
 1
 0 
-5 12 
+5.3.4 
 1 
 ------ 
 0 
@@ -722,10 +722,10 @@ LEVASSEUR,M.-A.
 EPS1391  A
 1
 1
-SÈGUIN,B.
+SÈGUIN,B. 
 1
 1 
-5 1 
+5.1.2 
 1 
 ------ 
 0 
@@ -734,10 +734,10 @@ SÈGUIN,B.
 EPS1392  A
 1
 1
-SÈGUIN,B.
+SÈGUIN,B. 
 1
 2 
-2 6 
+2.2.2 
 1 
 ------ 
 0 
@@ -746,10 +746,10 @@ SÈGUIN,B.
 EPS1392  B
 1
 1
-SÈGUIN,B.
+SÈGUIN,B. 
 1
 2 
-5 6 
+5.2.2 
 1 
 ------ 
 0 
@@ -758,10 +758,10 @@ SÈGUIN,B.
 EPS1431  A
 1
 1
-EPS143
+EPS143 
 1
 3 
-3 6 
+3.2.2 
 1 
 Stade 
 0 
@@ -770,10 +770,10 @@ Stade
 EPS1441  A
 1
 1
-LOISEAU,S.
+LOISEAU,S. 
 1
 3 
-2 2 
+2.1.4 
 1 
 Gym-1 
 0 
@@ -782,10 +782,10 @@ Gym-1
 EPS1451  A
 1
 1
-BOURGAULT,A.
+BOURGAULT,A. 
 1
 3 
-5 1 
+5.1.2 
 1 
 ------ 
 0 
@@ -794,10 +794,10 @@ BOURGAULT,A.
 EPS2001  A
 1
 1
-EPS200
+EPS200 
 1
 3 
-1 6 
+1.2.2 
 1 
 ------ 
 0 
@@ -806,10 +806,10 @@ EPS200
 EPS2041  A
 1
 1
-EPS204
+EPS204 EPS204 
 2
 2 2 
-1 8 4 3 
+1.2.6 4.1.6 
 1 1 
 ------ ------ 
 0 0 
@@ -818,10 +818,10 @@ EPS204
 EPS2041  B
 1
 1
-BEAUDOIN,A.-J.
+BEAUDOIN,A.-J. BEAUDOIN,A.-J. 
 2
 2 2 
-4 1 5 6 
+4.1.2 5.2.2 
 1 1 
 ------ ------ 
 0 0 
@@ -830,10 +830,10 @@ BEAUDOIN,A.-J.
 EPS2051  A
 1
 1
-BEAUDOIN,A.-J.
+BEAUDOIN,A.-J. BEAUDOIN,A.-J. 
 2
 2 3 
-5 8 3 1 
+5.2.6 3.1.2 
 1 1 
 ------ ------ 
 0 0 
@@ -842,10 +842,10 @@ BEAUDOIN,A.-J.
 EPS2051  B
 1
 1
-BEAUDOIN,A.-J.
+BEAUDOIN,A.-J. BEAUDOIN,A.-J. 
 2
 2 2 
-3 3 3 1 
+3.1.6 3.1.2 
 1 1 
 ------ ------ 
 0 0 
@@ -854,10 +854,10 @@ BEAUDOIN,A.-J.
 EPS2071  A
 1
 1
-BEAUDOIN,A.-J.
+BEAUDOIN,A.-J. 
 1
 2 
-4 3 
+4.1.6 
 1 
 ------ 
 0 
@@ -866,10 +866,10 @@ BEAUDOIN,A.-J.
 EPS2111  A
 1
 1
-DEMERS,P.
+DEMERS,P. 
 1
 4 
-5 6 
+5.2.2 
 1 
 ------ 
 0 
@@ -878,10 +878,10 @@ DEMERS,P.
 EPS2121  A
 1
 1
-GAUTHIER,P.
+GAUTHIER,P. GAUTHIER,P. 
 2
 2 2 
-1 3 4 6 
+1.1.1 4.2.1 
 1 1 
 ------ ------ 
 0 0 
@@ -890,10 +890,10 @@ GAUTHIER,P.
 EPS2121  B
 1
 1
-GAUTHIER,P.
+GAUTHIER,P. GAUTHIER,P. 
 2
 2 2 
-1 6 4 8 
+1.2.1 4.2.5 
 1 1 
 ------ ------ 
 0 0 
@@ -902,10 +902,10 @@ GAUTHIER,P.
 EPS2131  A
 1
 1
-PARADIS,L.-P.
+PARADIS,L.-P. 
 1
 3 
-1 11 
+1.3.2 
 1 
 ------ 
 0 
@@ -914,10 +914,10 @@ PARADIS,L.-P.
 EPS2141  A
 1
 1
-DIONNE,I.
+DIONNE,I. 
 1
 3 
-1 1 
+1.1.2 
 1 
 ------ 
 0 
@@ -926,10 +926,10 @@ DIONNE,I.
 EPS3011  A
 1
 1
-DUFRESNE,N.
+DUFRESNE,N. 
 1
 3 
-1 1 
+1.1.2 
 1 
 ------ 
 0 
@@ -938,10 +938,10 @@ DUFRESNE,N.
 EPS3011  B
 1
 1
-DUFRESNE,N.
+DUFRESNE,N. 
 1
 3 
-1 6 
+1.2.2 
 1 
 ------ 
 0 
@@ -950,10 +950,10 @@ DUFRESNE,N.
 EPS3012  A
 1
 1
-DUFRESNE,N.
+DUFRESNE,N. 
 1
 3 
-3 1 
+3.1.2 
 1 
 Gym-2 
 0 
@@ -962,10 +962,10 @@ Gym-2
 EPS3012  B
 1
 1
-DESBIENS,J.-F.
+DESBIENS,J.-F. 
 1
 3 
-4 1 
+4.1.2 
 1 
 Gym-2 
 0 
@@ -974,10 +974,10 @@ Gym-2
 EPS3012  C
 1
 1
-LEMIEUX,G.-B.
+LEMIEUX,G.-B. 
 1
 3 
-3 6 
+3.2.2 
 1 
 Gym-2 
 0 
@@ -986,10 +986,10 @@ Gym-2
 EPS3012  D
 1
 1
-DUQUETTE,J.
+DUQUETTE,J. 
 1
 3 
-5 2 
+5.1.4 
 1 
 Gym-1 
 0 
@@ -998,10 +998,10 @@ Gym-1
 EPS3012  E
 1
 1
-PAGE,B.
+PAGE,B. 
 1
 3 
-2 1 
+2.1.2 
 1 
 Gym-2 
 0 
@@ -1010,10 +1010,10 @@ Gym-2
 EPS3081  A
 1
 1
-SPALLANZANI,C.
+SPALLANZANI,C. SPALLANZANI,C. 
 2
 2 2 
-3 6 1 3 
+3.2.2 1.1.6 
 1 1 
 ------ ------ 
 0 0 
@@ -1022,10 +1022,10 @@ SPALLANZANI,C.
 EPS3081  B
 1
 1
-SPALLANZANI,C.
+SPALLANZANI,C. SPALLANZANI,C. 
 2
 2 2 
-3 3 2 1 
+3.1.6 2.1.2 
 1 1 
 ------ ------ 
 0 0 
@@ -1034,10 +1034,10 @@ SPALLANZANI,C.
 EPS3111  A
 1
 1
-THERRIEN,RICHARD
+THERRIEN,RICHARD THERRIEN,RICHARD 
 2
 2 2 
-2 11 3 13 
+2.3.2 3.3.6 
 1 1 
 ------ ------ 
 0 0 
@@ -1046,10 +1046,10 @@ THERRIEN,RICHARD
 EPS3111  B
 1
 1
-THERRIEN,RICHARD
+THERRIEN,RICHARD THERRIEN,RICHARD 
 2
 2 2 
-2 13 3 11 
+2.3.6 3.3.2 
 1 1 
 ------ ------ 
 0 0 
@@ -1058,10 +1058,10 @@ THERRIEN,RICHARD
 EPS4041  A
 0
 1
-BARRETTE,R.
+BARRETTE,R. 
 1
 1 
-5 12 
+0.0.0 
 1 
 ------ 
 0 
@@ -1070,10 +1070,10 @@ BARRETTE,R.
 EPS4051  A
 0
 1
-BARRETTE,R.
+BARRETTE,R. 
 1
 1 
-5 12 
+0.0.0 
 1 
 ------ 
 0 
@@ -1082,10 +1082,10 @@ BARRETTE,R.
 EPS4071  A
 1
 1
-BARRETTE,R.
+BARRETTE,R. 
 1
 2 
-4 8 
+4.2.6 
 1 
 ------ 
 0 
@@ -1094,10 +1094,10 @@ BARRETTE,R.
 EPS5001  A
 1
 1
-LEMIEUX,G.-B.
+LEMIEUX,G.-B. 
 1
 2 
-3 1 
+3.1.2 
 1 
 ------ 
 0 
@@ -1106,10 +1106,10 @@ LEMIEUX,G.-B.
 EPS5001  B
 1
 1
-LEMIEUX,G.-B.
+LEMIEUX,G.-B. 
 1
 2 
-4 8 
+4.2.6 
 1 
 ------ 
 0 
@@ -1118,10 +1118,10 @@ LEMIEUX,G.-B.
 EPS5011  A
 1
 1
-EPS501
+EPS501 
 1
 3 
-1 7 
+1.2.4 
 1 
 ------ 
 0 
@@ -1130,10 +1130,10 @@ EPS501
 EPS5031  A
 1
 1
-LEMIEUX,G.-B./SPALLANZANI,C.
+LEMIEUX,G.-B./SPALLANZANI,C. 
 1
 3 
-5 1 
+5.1.2 
 1 
 ------ 
 0 
@@ -1142,10 +1142,10 @@ LEMIEUX,G.-B./SPALLANZANI,C.
 FRP4031  A
 1
 1
-TÈTREAULT,L.
+TÈTREAULT,L. 
 1
 3 
-2 1 
+2.1.2 
 1 
 ------ 
 0 
@@ -1154,10 +1154,10 @@ TÈTREAULT,L.
 FRP4091  A
 1
 1
-TÈTREAULT,L.
+TÈTREAULT,L. 
 1
 3 
-1 6 
+1.2.2 
 1 
 ------ 
 0 
@@ -1166,10 +1166,10 @@ TÈTREAULT,L.
 HPE2821  A
 1
 1
-HPE282
+HPE282 
 1
 3 
-1 6 
+1.2.2 
 1 
 ------ 
 0 
@@ -1178,10 +1178,10 @@ HPE282
 KIN2001  A
 1
 1
-LEVASSEUR,M.-A.
+LEVASSEUR,M.-A. 
 1
 4 
-1 1 
+1.1.2 
 1 
 ------ 
 0 
@@ -1190,10 +1190,10 @@ LEVASSEUR,M.-A.
 KIN2001  B
 1
 1
-RODRIGUE,M.
+RODRIGUE,M. 
 1
 4 
-4 6 
+4.2.2 
 1 
 ------ 
 0 
@@ -1202,10 +1202,10 @@ RODRIGUE,M.
 KIN2121  A
 1
 1
-NADEAU,M.
+NADEAU,M. 
 1
 3 
-1 1 
+1.1.2 
 1 
 ------ 
 0 
@@ -1214,10 +1214,10 @@ NADEAU,M.
 KIN2121  B
 1
 1
-NADEAU,M.
+NADEAU,M. 
 1
 3 
-4 1 
+4.1.2 
 1 
 ------ 
 0 
@@ -1226,10 +1226,10 @@ NADEAU,M.
 KIN2131  A
 1
 1
-LAROCHE,J.
+LAROCHE,J. 
 1
 1 
-1 6 
+1.2.2 
 1 
 ------ 
 0 
@@ -1238,10 +1238,10 @@ LAROCHE,J.
 KIN2131  B
 1
 1
-LAROCHE,J.
+LAROCHE,J. 
 1
 1 
-1 7 
+1.2.4 
 1 
 ------ 
 0 
@@ -1250,10 +1250,10 @@ LAROCHE,J.
 KIN2132  A
 1
 1
-LAB.KIN213
+LAB.KIN213 
 1
 2 
-2 8 
+2.2.6 
 1 
 ------ 
 0 
@@ -1262,10 +1262,10 @@ LAB.KIN213
 KIN2132  B
 1
 1
-LAB.KIN213
+LAB.KIN213 
 1
 2 
-2 6 
+2.2.2 
 1 
 ------ 
 0 
@@ -1274,10 +1274,10 @@ LAB.KIN213
 KIN2132  C
 1
 1
-LAB.KIN213
+LAB.KIN213 
 1
 2 
-4 1 
+4.1.2 
 1 
 ------ 
 0 
@@ -1286,10 +1286,10 @@ LAB.KIN213
 KIN2132  D
 1
 1
-LAB.KIN213
+LAB.KIN213 
 1
 2 
-1 8 
+1.2.6 
 1 
 ------ 
 0 
@@ -1298,10 +1298,10 @@ LAB.KIN213
 KIN2151  A
 1
 1
-BOISSY,P.
+BOISSY,P. 
 1
 4 
-1 1 
+1.1.1 
 1 
 ------ 
 0 
@@ -1310,10 +1310,10 @@ BOISSY,P.
 KIN2151  B
 1
 1
-BOISSY,P.
+BOISSY,P. 
 1
 4 
-4 1 
+4.1.1 
 1 
 ------ 
 0 
@@ -1322,22 +1322,22 @@ BOISSY,P.
 KIN2152  A
 1
 1
-KIN215
+KIN215 
 1
 0 
-5 12 
+5.3.4 
 1 
 ------ 
 0 
 0
-1 ;1 
+0 ;0 
 KIN2191  A
 1
 1
-B…LISLE,M.
+B…LISLE,M. 
 1
 3 
-3 6 
+3.2.2 
 1 
 ------ 
 0 
@@ -1346,10 +1346,10 @@ B…LISLE,M.
 KIN2331  A
 1
 1
-FARRAR,D.
+FARRAR,D. 
 1
 2 
-3 11 
+3.3.2 
 1 
 ------ 
 0 
@@ -1358,10 +1358,10 @@ FARRAR,D.
 KIN2332  A
 1
 1
-JOLIN,L.
+JOLIN,L. 
 1
 2 
-1 11 
+1.3.2 
 1 
 ------ 
 0 
@@ -1370,10 +1370,10 @@ JOLIN,L.
 KIN2332  B
 1
 1
-JOLIN,L.
+JOLIN,L. 
 1
 2 
-1 12 
+1.3.4 
 1 
 ------ 
 0 
@@ -1382,10 +1382,10 @@ JOLIN,L.
 KIN2381  A
 1
 1
-HAMEL,J.
+HAMEL,J. 
 1
 4 
-4 6 
+4.2.2 
 1 
 ------ 
 0 
@@ -1394,10 +1394,10 @@ HAMEL,J.
 KIN2381  B
 1
 1
-HAMEL,J.
+HAMEL,J. 
 1
 4 
-4 1 
+4.1.2 
 1 
 ------ 
 0 
@@ -1406,10 +1406,10 @@ HAMEL,J.
 KIN2421  A
 1
 1
-FARRAR,D.
+FARRAR,D. 
 1
 2 
-3 13 
+3.3.6 
 1 
 ------ 
 0 
@@ -1418,10 +1418,10 @@ FARRAR,D.
 KIN2421  B
 1
 1
-FARRAR,D.
+FARRAR,D. 
 1
 2 
-3 11 
+3.3.2 
 1 
 ------ 
 0 
@@ -1430,10 +1430,10 @@ FARRAR,D.
 KIN2431  A
 1
 1
-ROY,M.
+ROY,M. 
 1
 3 
-4 6 
+4.2.2 
 1 
 ------ 
 0 
@@ -1442,10 +1442,10 @@ ROY,M.
 KIN3001  A
 1
 1
-LAFLAMME,L.
+LAFLAMME,L. 
 1
 3 
-1 6 
+1.2.2 
 1 
 ------ 
 0 
@@ -1454,10 +1454,10 @@ LAFLAMME,L.
 KIN3141  A
 1
 1
-THERRIEN,R.
+THERRIEN,R. 
 1
 3 
-1 1 
+1.1.2 
 1 
 ------ 
 0 
@@ -1466,10 +1466,10 @@ THERRIEN,R.
 KIN3501  A
 1
 1
-ROY,M.
+ROY,M. 
 1
 4 
-1 1 
+1.1.2 
 1 
 ------ 
 0 
@@ -1478,10 +1478,10 @@ ROY,M.
 KIN3511  A
 1
 1
-ROY,M.
+ROY,M. 
 1
 3 
-3 1 
+3.1.2 
 1 
 ------ 
 0 

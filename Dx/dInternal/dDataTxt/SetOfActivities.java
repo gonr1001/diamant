@@ -126,16 +126,17 @@ public class SetOfActivities extends SetOfResources{
               DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
-          if(((numberOfUnitys*2)-(stLine.countTokens()))!=0){
-            _error= DConst.ACTI_TEXT5+_line+"ActivityList";
+          int typeOfData= DXToolsMethods.countTokens(token,".");
+          if((((numberOfUnitys*2)-(stLine.countTokens()))!=0) && (typeOfData==1)){
+            _error= DConst.ACTI_TEXT5+_line+" ActivityList";
             return false;
           }
-          while(stLine.hasMoreElements()){
+          /*while(stLine.hasMoreElements()){
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
                 DConst.ACTI_TEXT8+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
-          }
+          }*/
           position = 10;
           break;
         case 10://fixed rooms
@@ -316,14 +317,22 @@ public class SetOfActivities extends SetOfResources{
         case 9://days and periods of blocs
           stLine = new StringTokenizer(token);
           counter=1;
-           while(stLine.hasMoreElements()){
-             unityResource= section.getUnity(Integer.toString(counter));
-             Unity bloc= (Unity)unityResource.getAttach();
-             Assignment cycleAss = new Assignment();
-             int dayKey=Integer.parseInt(stLine.nextToken().trim());
-             int [] time= DXToolsMethods.convertSTIPeriods(Integer.parseInt(stLine.nextToken().trim()));
-             cycleAss.setDateAndTime(dayKey, time[0],time[1]);
-             cycleAss.setInstructor(instructorName);
+          while(stLine.hasMoreElements()){
+            unityResource= section.getUnity(Integer.toString(counter));
+            Unity bloc= (Unity)unityResource.getAttach();
+            Assignment cycleAss = new Assignment();
+            int typeOfData= DXToolsMethods.countTokens(token,".");
+            if(typeOfData==1){
+              String day= stLine.nextToken().trim();
+              String period= stLine.nextToken().trim();
+              int dayKey=Integer.parseInt(day);
+              int [] time= DXToolsMethods.convertSTIPeriods(Integer.parseInt(period));
+              cycleAss.setDateAndTime(dayKey, time[0],time[1]);
+            }else{// else if(typeOfData==1)
+              String period= stLine.nextToken().trim();
+              cycleAss.setPeriodKey(period);
+            }// end else if(typeOfData==1)
+            cycleAss.setInstructor(instructorName);
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                bloc.addAssignment(new Resource(Integer.toString(i),cycleAss));
               counter++;
@@ -347,13 +356,20 @@ public class SetOfActivities extends SetOfResources{
         case 11://Preferred rooms
           stLine = new StringTokenizer(token);
           counter=1;
+          StringTokenizer instLine = new StringTokenizer(instructorName);
            while(stLine.hasMoreElements()){
              unityResource= section.getUnity(Integer.toString(counter));
              Unity bloc= (Unity)unityResource.getAttach();
              String room= stLine.nextToken().trim();
-             for (int i=1; i<= _NUMBEROFCYCLE; i++)
+             String inst="";
+             if(instLine.hasMoreElements())
+               inst= instLine.nextToken().trim();
+             for (int i=1; i<= _NUMBEROFCYCLE; i++){
                ((Assignment)bloc.getAssignment(Integer.toString(i)
                    ).getAttach()).setRoom(room);
+               ((Assignment)bloc.getAssignment(Integer.toString(i)
+                   ).getAttach()).setInstructor(inst);
+             }
               counter++;
            }// end while(stLine.hasMoreElements())
           position = 12;
@@ -491,9 +507,10 @@ public class SetOfActivities extends SetOfResources{
             lineDuration += bloc.getDuration()/60+" ";//
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();
-            instName = firstCycAss.getInstructorName();
-            lineTime+=Integer.toString(firstCycAss.getDateAndTime()[0])+" "+
-                     DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";//
+            instName += firstCycAss.getInstructorName()+" ";
+            /*lineTime+=Integer.toString(firstCycAss.getDateAndTime()[0])+" "+
+                     DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";*/
+            lineTime+= firstCycAss.getPeriodKey()+" ";
             lineRoomName+= firstCycAss.getRoomName()+" ";//
             if(firstCycAss.getRoomState())
               lineRoomFixed+= "1 ";

@@ -53,6 +53,14 @@ public class SetOfEvents extends SetOfResources{
             if(assignment!=null){
               unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
               String unityID = activity.getID()+"."+ type.getID()+"."+section.getID()+"."+unity.getID()+".";
+              if(DXToolsMethods.getToken(assignment.getPeriodKey(),".",0).equalsIgnoreCase("0")){
+                String perKeys= _dm.getTTStructure().getCurrentCycle().getPeriod(assignment.getDateAndTime());
+                Period per= _dm.getTTStructure().getCurrentCycle().getPeriodByPeriodKey(perKeys);
+                if(per!=null)
+                  assignment.setPeriodKey(perKeys);
+                else
+                  assignment.setPeriodKey("1.1.1");
+              }// end if(assignment.getPeriodKey()[0]==0)
               int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(assignment.getInstructorName());
               if(instructorIndex!=-1){
                 instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
@@ -74,11 +82,10 @@ public class SetOfEvents extends SetOfResources{
                 error.setStringValue("Erreur --> " + unityID + ": "+ str + " Inexistant ");
                 _dm.getSetOfImportErrors().addResource(new Resource("3", error), 0);
               }
-              int[] dayTime = assignment.getDateAndTime();
+              //int[] dayTime = assignment.getDateAndTime();
 
               EventAttach event = new EventAttach(unityKey, instructorKey, roomKey,
-                  ((Unity)unity.getAttach()).getDuration(),
-                  ((Cycle)_dm.getTTStructure().getCurrentCycleResource().getAttach()).getPeriod(dayTime));
+                  ((Unity)unity.getAttach()).getDuration(),assignment.getPeriodKey());
               event.setAssignState(((Unity)unity.getAttach()).isAssign());
               event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
               //System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
@@ -141,11 +148,12 @@ public class SetOfEvents extends SetOfResources{
           _dm.getTTStructure().getCurrentCycleIndex()).getAttach();
       assignment.setInstructor(getRescName(_dm.getSetOfInstructors(),event.getInstructorKey()));
       assignment.setRoom(getRescName(_dm.getSetOfRooms(),event.getRoomKey()));
-      long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+     /* long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
       long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));
-      long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));
-      Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
-      assignment.setDateAndTime((int)dayKey,period.getBeginHour()[0],period.getBeginHour()[1]);
+      long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));*/
+      //Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
+      //assignment.setDateAndTime((int)dayKey,period.getBeginHour()[0],period.getBeginHour()[1]);
+      assignment.setPeriodKey(event.getPeriodKey());
       unity.setAssign(event.getAssignState());
       unity.setPermanent(event.getPermanentState());
       unity.setDuration(event.getDuration());
