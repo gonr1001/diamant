@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.46 $  $Date: 2004-10-14 18:59:34 $
+ * Title: DiamantTest 1.5Test $Revision: 1.47 $  $Date: 2004-10-21 19:54:10 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -103,9 +103,7 @@ public class DiamantTest {
           suite.addTest(InstructorsConditionsTest.suite());
           suite.addTest(RoomsConditionsTest.suite());
           suite.addTest(StudentsConditionsTest.suite());
-          suite.addTest(ConditionsTest.suite());
-          
-          
+          suite.addTest(ConditionsTest.suite());        
           suite.addTest(ScanFileTest.suite());
 
       return suite;

@@ -1,18 +1,28 @@
-package dInterface.dTimeTable;
-
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
-
+*
+* Title: DConst $Revision: 1.24 $  $Date: 2004-10-21 19:54:10 $
+* Description: DConst is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.24 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
+package dInterface.dTimeTable;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
@@ -25,12 +35,11 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.dDataTxt.Resource;
 
-public class ManualImprovementDlg extends EventsDlgInterface{
+public class ManualImprovementDlg extends EventsDlgInterface {
 
    private DModel _dm;
    private DToolBar _toolBar;
-   private JFrame _jFrame;
-
+   
   /**
    * Constructor
    * @param dApplic The application
@@ -53,37 +62,12 @@ public class ManualImprovementDlg extends EventsDlgInterface{
    * build buttom to use in the dialog
    */
   public void buildArrowButtons(boolean enableArrows) {
-
 	_leftArrowsPanel = new JPanel();
 	_rightArrowsPanel = new JPanel();
   }
+  
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //if the source is one of the the _leftArrowsPanel buttons
-/*
-	if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0))) ||
-		 (e.getSource().equals(_leftArrowsPanel.getComponent(1))) ){
-	  //if "toRight" button
-	  if (e.getSource().equals(_leftArrowsPanel.getComponent(0)))
-		DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1);
-	  else
-		DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
-	  _leftLabel.setText(String.valueOf(_leftVector.size()));
-	  _centerLabel.setText(String.valueOf(_centerVector.size()));
-	  _buttonsPanel.setFirstEnable();
-	}//end if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) || (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
-	//if the source is one of the the _rightArrowsPanel buttons
-	if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
-		 (e.getSource().equals(_rightArrowsPanel.getComponent(1))) ){
-	  //if "toRight" button
-	  if (e.getSource().equals(_rightArrowsPanel.getComponent(0)))
-		DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1);
-	  else
-		DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);
-	  _rightLabel.setText(String.valueOf(_rightVector.size()));
-	  _centerLabel.setText(String.valueOf(_centerVector.size()));
-	  _buttonsPanel.setFirstEnable();
-	}//end if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0)))*/
     //if Button CLOSE is pressed
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
@@ -98,7 +82,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
   */
   protected void doubleClicMouseProcess(){
    Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
-    ManualImprovementDetailed frameResult =
+    //ManualImprovementDetailed frameResult =
         new ManualImprovementDetailed(this,_toolBar, event.getID(), _dm);
   }
 }//end class
