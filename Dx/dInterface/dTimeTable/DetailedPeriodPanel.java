@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.4 $  $Date: 2003-10-03 02:52:04 $
+ * Title: DetailedPeriodPanel $Revision: 1.5 $  $Date: 2003-10-06 15:15:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.5 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -49,10 +49,7 @@ import dInternal.dData.Activity;
 
 public class DetailedPeriodPanel extends PeriodPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;
-  /*private int _TTSday;
-  private int _TTSseq;
-  private int _TTSperiod;
-  private int _panelRefNo;*/
+
   private JList _jList;
   private Vector _vec;
   private String [] arr = {"ADM111", "GEI442"};
@@ -91,7 +88,7 @@ public class DetailedPeriodPanel extends PeriodPanel{
     //_vec = period.getEventsInPeriod().getNamesVector().size;
   //_vec = getUnitiesNames(_vec);
 
-   _jList  = new JList(_vec );
+    _jList  = new JList(_vec);
     //JLabel vec = new JLabel("moi");
     //_rightList.addMouseListener(mouseListenerLists);
 

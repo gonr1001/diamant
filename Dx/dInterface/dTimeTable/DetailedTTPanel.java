@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.7 $  $Date: 2003-10-06 12:32:01 $
+ * Title: DetailedTTPanel $Revision: 1.8 $  $Date: 2003-10-06 15:15:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -55,61 +55,33 @@ import dInternal.dTimeTable.*;
 
 
 public class DetailedTTPanel extends TTPanel {
-
-
+  final int VERTICAL_ADJUST = 115;
+  final int HORIZONTAL_ADJUST = 8;
   private MouseListener _mouseListener;
-  private JSplitPane _jSplitPane;
-  //private PeriodPanel _lastActivPpanel = null;
-  //private DetailedPeriodPanel _lastActivPanel = null;
-  //private JSplitPane _jSplitPane;
 
   //private JScrollPane _jScrollPaneOne;
   private JScrollPane _jScrollPaneTwo;
 
-  public DetailedTTPanel(TTStructure tts, DToolBar toolBar) {
+  public DetailedTTPanel(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d) {
     super(tts, toolBar);
-    _jScrollPaneTwo = new JScrollPane();
-    _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JLabel("A"),new JLabel("B"));
-    /*if(_tts!=null){
-      initTTPaneOne();
-      initTTPaneTwo();
-    }
-    //_jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
-*/
-    /*_jSplitPane.setTopComponent(new JLabel("A")); //_jScrollPaneOne);
-    _jSplitPane.setBottomComponent(new JLabel("B")); //(_jScrollPane);
-    _jSplitPane.setOneTouchExpandable(true);
-    _jSplitPane.setDividerLocation(100);*/
-    //Dimension minSize= new Dimension (100, 100);
-    //_jScrollPaneOne.setMinimumSize(minSize);
-  } // end  SimpleTTPanel
-
-  //-------------------------------------------
-
-
-
-/*  public DetailedTTPanel(DModel dm) {
-    super(dm);
+    //_jSplitPane = new JSplitPane();
     _jScrollPaneOne = new JScrollPane();
-
-    //_jScrollPaneTwo= _jScrollPaneOne;//debug
+    _jScrollPaneTwo = new JScrollPane();
     if(_tts!=null){
       initTTPaneOne();
       initTTPaneTwo();
     }
-    //_jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,_jScrollPane,_jScrollPane);
+    System.out.println("H " + d.height + "  W " + d.width);
 
-    _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
-
-
-
-    _jSplitPane.setTopComponent(_jScrollPaneOne);
-    _jSplitPane.setBottomComponent(_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
-     _jSplitPane.setOneTouchExpandable(true);
-       _jSplitPane.setDividerLocation(0);
-    Dimension minSize= new Dimension (100, 100);
-    _jScrollPaneOne.setMinimumSize(minSize);
-  }*/
+    if (vertical) {
+      _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
+      _jSplitPane.setDividerLocation((d.height - VERTICAL_ADJUST)/2);
+    } else {
+       _jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
+       _jSplitPane.setDividerLocation((HORIZONTAL_ADJUST)/2);
+    }
+    _jSplitPane.setOneTouchExpandable(true);
+  } // end  SimpleTTPanel
 
   //-------------------------------------------
   private void initTTPaneOne() {
@@ -125,239 +97,117 @@ public class DetailedTTPanel extends TTPanel {
       _lastHour++;
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
     int totalHeight = (_lastHour -_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0])
-                  * SMALL_PERIOD_HEIGHT;
+                    * PERIOD_HEIGHT;
 
     //_jScrollPaneOne.setMinimumSize(new Dimension(totalWidth, totalHeight));
     //putting panels in the screen
     _jScrollPaneOne.setColumnHeaderView(createColumnHeader());
     _jScrollPaneOne.setRowHeaderView(createRowHeader(totalHeight));
     _jScrollPaneOne.setViewportView(createViewPort(totalWidth, totalHeight));
-   //  Point point = _jScrollPaneOne.getViewport().getViewPosition();
+    //  Point point = _jScrollPaneOne.getViewport().getViewPosition();
     _jScrollPaneOne.getViewport().setViewPosition(_jScrollPaneOne.getViewport().getViewPosition());
     manageActions();
   }
   //-------------------------------------------
- private void initTTPaneTwo() {
-   // calculating totalWidth;
-   _periodLenght = _tts.getPeriodLenght();
-   Cycle cycle =_tts.getCurrentCycle();
-   int totalWidth = cycle.getNumberOfDays() * PERIOD_WIDTH;
-
-   // calculating totalHeight;
-   Period lastPeriod = _tts.getCurrentCycle().getLastPeriod();
-   _lastHour = lastPeriod.getEndHour(_periodLenght)[0];
-   if(lastPeriod.getEndHour(_periodLenght)[1] != 0)
-     _lastHour++;
-   //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-   int totalHeight = (_lastHour -_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0])
-                 * SMALL_PERIOD_HEIGHT;
-
-   //_jScrollPaneTwo.setMinimumSize(new Dimension(totalWidth, totalHeight));
-   //putting panels in the screen
-   _jScrollPaneTwo.setColumnHeaderView(createColumnHeader());
-   _jScrollPaneTwo.setRowHeaderView(createRowHeader(totalHeight));
-   _jScrollPaneTwo.setViewportView(createViewPort(totalWidth, totalHeight));
-  //  Point point = _jScrollPaneTwo.getViewport().getViewPosition();
-   _jScrollPaneTwo.getViewport().setViewPosition(_jScrollPaneOne.getViewport().getViewPosition());
-   manageActions();
- }
-  //-------------------------------------------
-
-  //-------------------------------------------
-/* private void initTTPaneTwo() {
-    _periodLenght= _tts.getPeriodLenght();
+  private void initTTPaneTwo() {
+    // calculating totalWidth;
+    _periodLenght = _tts.getPeriodLenght();
     Cycle cycle =_tts.getCurrentCycle();
-    MinWidth = cycle.getNumberOfDays() * UWIDTH;
+    int totalWidth = cycle.getNumberOfDays() * PERIOD_WIDTH;
+
+    // calculating totalHeight;
     Period lastPeriod = _tts.getCurrentCycle().getLastPeriod();
-    LASTHOUR=lastPeriod.getEndHour(_periodLenght)[0];
-    if(lastPeriod.getEndHour(_periodLenght)[1]!=0)
-      LASTHOUR++;
+    _lastHour = lastPeriod.getEndHour(_periodLenght)[0];
+    if(lastPeriod.getEndHour(_periodLenght)[1] != 0)
+      _lastHour++;
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-    MinHeight = (LASTHOUR-_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * PERIOD_HEIGHT;
+    int totalHeight = (_lastHour -_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0])
+                    * PERIOD_HEIGHT;
 
-    Point point= new Point(0,0);
-    point = _jScrollPaneTwo.getViewport().getViewPosition();
+    //_jScrollPaneTwo.setMinimumSize(new Dimension(totalWidth, totalHeight));
+    //putting panels in the screen
     _jScrollPaneTwo.setColumnHeaderView(createColumnHeader());
-    _jScrollPaneTwo.setRowHeaderView(createRowHeader());
-    _jScrollPaneTwo.setViewportView(createViewPort());
-    _jScrollPaneTwo.getViewport().setViewPosition(point);
+    _jScrollPaneTwo.setRowHeaderView(createRowHeader(totalHeight));
+    _jScrollPaneTwo.setViewportView(createViewPort(totalWidth, totalHeight));
+    //  Point point = _jScrollPaneTwo.getViewport().getViewPosition();
+    _jScrollPaneTwo.getViewport().setViewPosition(_jScrollPaneTwo.getViewport().getViewPosition());
     manageActions();
-
   }
+  //-------------------------------------------
   /**
    *
    * */
-
-  //-------------------------------------------
-/**
- *
- * */
-private void manageActions(){
-  //JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
+  private void manageActions(){
+    //JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
   /*
-   * Mouse listener for this Panel
+    * Mouse listener for this Panel
    */
-   _mouseListener = new MouseAdapter() {
+    _mouseListener = new MouseAdapter() {
 
-    public void mouseClicked(MouseEvent e) {
-      if ((e.getClickCount() == 1) && (_toolBar!=null)) {
-        PeriodPanel perpanel= (PeriodPanel)e.getSource();
-        if(_lastActivPanel != null)
-          _lastActivPanel.setPanelBackGroundColor(0);
-        _toolBar.setComboBoxStatus(false);
-        _toolBar.setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
-        //_dm.getDApplication().getToolBar().selectBar(1);
-         perpanel.setPanelBackGroundColor(1);
-         _toolBar.setComboBoxStatus(true);
-        _lastActivPanel=perpanel;
-       System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
-                          +_tts.getCurrentCycle().getPeriodByIndex(
-                          perpanel.getPeriodRef()[0],perpanel.getPeriodRef()[1],perpanel.getPeriodRef()[2]).toString());//debug
-      }
-    }
-  };
-}
-//-------------------------------------------
-public void updateTTPanel(TTStructure ttp){
-  initTTPaneOne();
-  initTTPaneTwo();
-}
-//-------------------------------------------
-private JPanel createColumnHeader() {
-  JPanel panel = new JPanel(new GridLayout(1, 0));
-  Cycle cycle = _tts.getCurrentCycle();
-  for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
-    Resource day = cycle.getSetOfDays().getResourceAt(i);
-    panel.add(new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
-  }
-  panel.setPreferredSize(new Dimension(PERIOD_WIDTH * cycle.getSetOfDays().size(), HEADER_HEIGHT));
-  panel.setBorder(BorderFactory.createEtchedBorder());
-  return panel;
-}
-//-------------------------------------------
-private JPanel createRowHeader(int height) {
-  JPanel panel = new JPanel(new GridLayout(0,1));
-  Cycle cycle =_tts.getCurrentCycle();
-  Day day = _tts.getCurrentCycle().getCurrentDay();
-  int numbOfSequences = day.getSetOfSequences().size();
-  JLabel label;
-  Period firstPer = _tts.getCurrentCycle().getFirstPeriod();
-  for (int i = firstPer.getBeginHour()[0]; i < _lastHour; i++) {
-    label = new JLabel(Integer.toString(i) + ":00");
-    label.setSize(new Dimension(ROW_WIDTH, SMALL_PERIOD_HEIGHT));
-    //System.out.println("TTPanel Row header viewlabel.getText()" + label.getText());//Debug
-    label.setVerticalAlignment(JLabel.TOP);
-    panel.setBorder(BorderFactory.createEtchedBorder());
-    panel.add(label);
-   }
-   panel.setPreferredSize(new Dimension(ROW_WIDTH, height));
-   return panel;
-}
-//-------------------------------------------
-private JPanel createViewPort(int width, int height) {
-  Cycle cycle =_tts.getCurrentCycle();//.getCycle(_dm.getCurrentCycle());
-  GridBagLayout gridbag =new GridBagLayout();
-  JPanel panel =  new JPanel( gridbag );
-  panel.setBackground(SystemColor.window);
-  panel.setMinimumSize(new Dimension(width/10, height/10));
-
-  _jScrollPaneOne.setPreferredSize(new Dimension(panel.getPreferredSize().width +50,
-                                 panel.getPreferredSize().height + 50) );
-  int nbDays,nbSeq,nbPerADay;
-  nbDays = cycle.getSetOfDays().size();
-  //System.out.println("nb of Days: " + nbDays);//Debug
-  gridbag.columnWeights = new double [nbDays];
-  gridbag.columnWidths = new int [nbDays];
-  for (int i = 0; i < nbDays; i++) {
-    gridbag.columnWeights[i] = 1;
-    gridbag.columnWidths[i] = PERIOD_WIDTH;
-  }
-  nbPerADay = _lastHour-_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0];
-  gridbag.rowWeights = new double [nbPerADay];
-  gridbag.rowHeights = new int [nbPerADay];
-  for (int i = 0; i < nbPerADay; i++) {
-    gridbag.rowWeights[i] = 1;
-    gridbag.rowHeights[i] = SMALL_PERIOD_HEIGHT;
-  }
-  PeriodPanel periodPanel = null;
-  GridBagConstraints c = null;
-  nbSeq = _tts.getCurrentCycle().getMaxNumberOfSeqs();
-  int count = 1;
-  for (int i = 0; i < nbDays ; i++ ) {
-    Day day= _tts.getCurrentCycle().getDayByRefNo(i+1);
-    for(int j = 0; j < nbSeq; j ++) {
-      Sequence sequence= _tts.getCurrentCycle().getSequence(day,j+1);
-      for(int k = 0; k < sequence.getSetOfPeriods().size(); k ++) {
-        Period period= _tts.getCurrentCycle().getPeriod(sequence,k+1);
-        periodPanel = new DetailedPeriodPanel(count,i,j,k);
-        periodPanel.addMouseListener(_mouseListener);
-        periodPanel.createPanel(period, PERIOD_WIDTH, SMALL_PERIOD_HEIGHT);
-        count++;
-        c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = i;
-        c.gridy = (period.getBeginHour()[0] - _tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0]);//period.getEndHour(_periodLenght)[0];
-
-        if ( period.getEndHour(_periodLenght)[1] == 0 ){
-          c.gridheight = period.getEndHour(_periodLenght)[0]- period.getBeginHour()[0];
-          c.insets = new Insets( period.getBeginHour()[1], 0, 0, 0 );
-        } else {
-          c.gridheight = period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
-          c.insets = new Insets( period.getBeginHour()[1], 0,(SMALL_PERIOD_HEIGHT- period.getEndHour(_periodLenght)[1]), 0 );
+      public void mouseClicked(MouseEvent e) {
+        if ((e.getClickCount() == 1) && (_toolBar!=null)) {
+          PeriodPanel perpanel= (PeriodPanel)e.getSource();
+          if(_lastActivPanel != null)
+            _lastActivPanel.setPanelBackGroundColor(0);
+          _toolBar.setComboBoxStatus(false);
+          _toolBar.setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
+          //_dm.getDApplication().getToolBar().selectBar(1);
+          perpanel.setPanelBackGroundColor(1);
+          _toolBar.setComboBoxStatus(true);
+          _lastActivPanel=perpanel;
+          System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
+                             +_tts.getCurrentCycle().getPeriodByIndex(
+                             perpanel.getPeriodRef()[0],perpanel.getPeriodRef()[1],perpanel.getPeriodRef()[2]).toString());//debug
         }
-        gridbag.setConstraints(periodPanel, c);
-        panel.add(periodPanel, c);
-      }//end for k
-    } // end for j
-  }//end for i
-   return panel;
-}
-//-------------------------------------------
-/**
- * @param int the period panel reference
- * */
-public PeriodPanel getPeriodPanel(int ppRef){
-  JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
-  for (int i=0; i< thePanel.getComponentCount(); i++){
-    PeriodPanel ppanel= (PeriodPanel)thePanel.getComponent(i);
-    if(ppanel.getPanelRefNo()==ppRef)
-      return ppanel;
+      }
+    };
   }
-  return null;
-}
 //-------------------------------------------
-public JViewport getViewport() {
-  return _jScrollPaneOne.getViewport();
-}
+  public void updateTTPanel(TTStructure ttp){
+    initTTPaneOne();
+    initTTPaneTwo();
+  }
 //-------------------------------------------
-public JScrollPane getJScrollPane() {
-  return _jScrollPaneOne;
-}
+  private JPanel createColumnHeader() {
+    JPanel panel = new JPanel(new GridLayout(1, 0));
+    Cycle cycle = _tts.getCurrentCycle();
+    for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
+      Resource day = cycle.getSetOfDays().getResourceAt(i);
+      panel.add(new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
+    }
+    panel.setPreferredSize(new Dimension(PERIOD_WIDTH * cycle.getSetOfDays().size(), HEADER_HEIGHT));
+    panel.setBorder(BorderFactory.createEtchedBorder());
+    return panel;
+  }
 //-------------------------------------------
-public Component getPanel() {
-  return _jScrollPaneOne;
-}
-
-
-public JSplitPane getJSplitPane() {
-  return _jSplitPane;
-}
-
-  ///////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-/*
-  private JPanel createViewPort() {
-    Cycle cycle =_tts.getCurrentCycle();//.getCycle(_dm.getCurrentCycle());
+  private JPanel createRowHeader(int height) {
+    JPanel panel = new JPanel(new GridLayout(0,1));
+    Cycle cycle =_tts.getCurrentCycle();
+    Day day = _tts.getCurrentCycle().getCurrentDay();
+    int numbOfSequences = day.getSetOfSequences().size();
+    JLabel label;
+    Period firstPer = _tts.getCurrentCycle().getFirstPeriod();
+    for (int i = firstPer.getBeginHour()[0]; i < _lastHour; i++) {
+      label = new JLabel(Integer.toString(i) + ":00");
+      label.setSize(new Dimension(ROW_WIDTH, PERIOD_HEIGHT));
+      //System.out.println("TTPanel Row header viewlabel.getText()" + label.getText());//Debug
+      label.setVerticalAlignment(JLabel.TOP);
+      panel.setBorder(BorderFactory.createEtchedBorder());
+      panel.add(label);
+    }
+    panel.setPreferredSize(new Dimension(ROW_WIDTH, height));
+    return panel;
+  }
+//-------------------------------------------
+  private JPanel createViewPort(int width, int height) {
+    Cycle cycle =_tts.getCurrentCycle();
     GridBagLayout gridbag =new GridBagLayout();
     JPanel panel =  new JPanel( gridbag );
     panel.setBackground(SystemColor.window);
-    panel.setPreferredSize(new Dimension(MinWidth, MinHeight));
-    _jScrollPaneOne.setPreferredSize(new Dimension(panel.getPreferredSize().width + 40,
-                                   panel.getPreferredSize().height + 50));
+    panel.setMinimumSize(new Dimension(width/10, height/10));
+
+    _jScrollPaneOne.setPreferredSize(new Dimension(panel.getPreferredSize().width +50,
+        panel.getPreferredSize().height + 50) );
     int nbDays,nbSeq,nbPerADay;
     nbDays = cycle.getSetOfDays().size();
     //System.out.println("nb of Days: " + nbDays);//Debug
@@ -365,16 +215,16 @@ public JSplitPane getJSplitPane() {
     gridbag.columnWidths = new int [nbDays];
     for (int i = 0; i < nbDays; i++) {
       gridbag.columnWeights[i] = 1;
-      gridbag.columnWidths[i] = UWIDTH;
+      gridbag.columnWidths[i] = PERIOD_WIDTH;
     }
-    nbPerADay = LASTHOUR-_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0];
+    nbPerADay = _lastHour - _tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0];
     gridbag.rowWeights = new double [nbPerADay];
     gridbag.rowHeights = new int [nbPerADay];
     for (int i = 0; i < nbPerADay; i++) {
       gridbag.rowWeights[i] = 1;
       gridbag.rowHeights[i] = PERIOD_HEIGHT;
     }
-    DetailedPeriodPanel periodPanel = null;
+    PeriodPanel periodPanel = null;
     GridBagConstraints c = null;
     nbSeq = _tts.getCurrentCycle().getMaxNumberOfSeqs();
     int count = 1;
@@ -386,7 +236,7 @@ public JSplitPane getJSplitPane() {
           Period period= _tts.getCurrentCycle().getPeriod(sequence,k+1);
           periodPanel = new DetailedPeriodPanel(count,i,j,k);
           periodPanel.addMouseListener(_mouseListener);
-          periodPanel.createPanel(period,UWIDTH, PERIOD_HEIGHT);
+          periodPanel.createPanel(period, PERIOD_WIDTH, PERIOD_HEIGHT);
           count++;
           c = new GridBagConstraints();
           c.fill = GridBagConstraints.BOTH;
@@ -405,12 +255,12 @@ public JSplitPane getJSplitPane() {
         }//end for k
       } // end for j
     }//end for i
-     return panel;
+    return panel;
   }
-
-  /**
-   * @param int the period panel reference
-   * *//*
+//-------------------------------------------
+/**
+ * @param int the period panel reference
+ * */
   public PeriodPanel getPeriodPanel(int ppRef){
     JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
     for (int i=0; i< thePanel.getComponentCount(); i++){
@@ -419,11 +269,26 @@ public JSplitPane getJSplitPane() {
         return ppanel;
     }
     return null;
-  }*/
+  }
+//-------------------------------------------
+  public JViewport getViewport() {
+    return _jScrollPaneOne.getViewport();
+  }
+//-------------------------------------------
+  public JScrollPane getJScrollPane() {
+    return _jScrollPaneOne;
+  }
+  //-------------------------------------------
+  public Component getPanel() {
+    return _jSplitPane;
+  }
+  //-------------------------------------------
 
+  public JSplitPane getJSplitPane() {
+    return _jSplitPane;
+  }
 
 
 }
-
 
 

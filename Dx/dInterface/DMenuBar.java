@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.77 $  $Date: 2003-10-03 18:54:46 $
+ * Title: DMenuBar $Revision: 1.78 $  $Date: 2003-10-06 15:15:07 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.77 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.78 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -46,7 +46,8 @@ import dInterface.dTimeTable.ManualImprovementCmd;
 import dInterface.dUtil.AboutCmd;
 import dInterface.dUtil.ExitCmd;
 import dInterface.dUtil.PLAFCmd;
-import dInterface.dUtil.ViewDetailedCmd;
+import dInterface.dUtil.ViewHorizontalSplitCmd;
+import dInterface.dUtil.ViewVerticalSplitCmd;
 import dInterface.dUtil.ViewSimpleCmd;
 
 
@@ -98,8 +99,9 @@ public class DMenuBar extends JMenuBar{
   private CmdMenu _mReport;
 
   // the preferences menus
-  private CmdMenu _lookAndFeel, _viewSimple, _viewDetailed;
-  private boolean _boolLookAndFeel, _boolView, _boolViewSimple, _boolViewDetailed;
+  private CmdMenu _lookAndFeel, _viewSimple, _viewDetailedHorizontal, _viewDetailedVertical;
+  private boolean _boolLookAndFeel, _boolView, _boolViewSimple,
+                  _bool_ViewDetailedHorizontal, _boolViewDetailedVertical;
    private JMenu _view;
   // the help menus
   private CmdMenu _about;
@@ -382,11 +384,17 @@ public class DMenuBar extends JMenuBar{
     _viewSimple.addActionListener(_dApplic);
     _view.add(_viewSimple);
 
-    _viewDetailed = new CmdMenu("complexe");
-    _viewDetailed.setFont( new java.awt.Font(_mfont, _font, _nPT));
-    _viewDetailed.setCommand(new ViewDetailedCmd());
-    _viewDetailed.addActionListener(_dApplic);
-    _view.add(_viewDetailed);
+    _viewDetailedHorizontal = new CmdMenu("Det + Split H");//, this);
+    _viewDetailedHorizontal.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _viewDetailedHorizontal.setCommand(new ViewHorizontalSplitCmd());
+    _viewDetailedHorizontal.addActionListener(_dApplic);
+    _view.add(_viewDetailedHorizontal);
+
+    _viewDetailedVertical = new CmdMenu("Det + Split V");//, this);
+    _viewDetailedVertical.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _viewDetailedVertical.setCommand(new ViewVerticalSplitCmd());
+    _viewDetailedVertical.addActionListener(_dApplic);
+    _view.add(_viewDetailedVertical);
 
     _preferences.add(_view);
 
@@ -406,11 +414,17 @@ public class DMenuBar extends JMenuBar{
    _preferences.add(_viewSimple);
 
    // Items in menu PREFERENCES.
-   _viewDetailed = new CmdMenu("complexe");//, this);
-   _viewDetailed.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   _viewDetailed.setCommand(new DoNothingCmd(jframe));
-   _viewDetailed.addActionListener(_dApplic);
-   _preferences.add(_viewDetailed);
+   _viewDetailedHorizontal = new CmdMenu("Det + Split H");//, this);
+   _viewDetailedHorizontal.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _viewDetailedHorizontal.setCommand(new DoNothingCmd(jframe));
+   _viewDetailedHorizontal.addActionListener(_dApplic);
+   _preferences.add(_viewDetailedHorizontal);
+
+   _viewDetailedVertical = new CmdMenu("Det + Split V");//, this);
+   _viewDetailedVertical.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _viewDetailedVertical.setCommand(new DoNothingCmd(jframe));
+   _viewDetailedVertical.addActionListener(_dApplic);
+   _preferences.add(_viewDetailedVertical);
 
 
   } // end createPreferencesMenu

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.7 $  $Date: 2003-10-02 23:34:25 $
+ * Title: PeriodPanel $Revision: 1.8 $  $Date: 2003-10-06 15:15:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.8 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -66,7 +66,7 @@ public abstract class PeriodPanel extends JPanel{
     setValue(period);
   }
 
-  public void setValue(Period period){
+  public abstract void setValue(Period period); /*{
     JPanel topPanel = new JPanel();
     JPanel bottomPanel = new JPanel();
     JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
@@ -90,7 +90,7 @@ public abstract class PeriodPanel extends JPanel{
     add(bottomPanel);
     // set period panel color
     setPanelColor( period.getPriority());
-  }
+  } */
 
   /**
    * @return int the period reference number

@@ -105,7 +105,7 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
    if (simple)
      _ttPanel = new SimpleTTPanel(_ttStruct,_toolBar);
    else
-     _ttPanel = new DetailedTTPanel(_ttStruct,_toolBar);
+     _ttPanel = new DetailedTTPanel(_ttStruct,_toolBar,false, jif.getSize());
 
    jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
    jif.pack();

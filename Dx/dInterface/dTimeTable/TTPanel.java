@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.51 $  $Date: 2003-10-06 12:32:01 $
+ * Title: TTPanel $Revision: 1.52 $  $Date: 2003-10-06 15:15:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -52,24 +52,18 @@ import dInterface.DToolBar;
 public abstract class TTPanel {
 
   protected final int PERIOD_WIDTH =  100;  // for the screen
-  protected final int PERIOD_HEIGHT = 60;  // for the screen
+  protected final int PERIOD_HEIGHT = 400;  // for the screen
   protected final int SMALL_PERIOD_HEIGHT = 40;  // for the screen
-  protected final int HEADER_HEIGHT = PERIOD_HEIGHT / 3 ;
+  protected final int HEADER_HEIGHT = SMALL_PERIOD_HEIGHT / 2 ;
   protected final int ROW_WIDTH =  35;    // timeTable.nbDays * MINWIDTH;
   protected int _lastHour;
   //protected DModel _dm;
   protected TTStructure _tts;
   protected DToolBar _toolBar;
   protected JScrollPane _jScrollPaneOne;
-
+  protected JSplitPane _jSplitPane;
   protected PeriodPanel _lastActivPanel = null;
   protected int _periodLenght;
-
-  /*public TTPanel(DModel dm) {
-    _dm = dm;
-    _jScrollPaneOne = new JScrollPane();
-    _jSplitPane = new JSplitPane();
-  }*/
 
   /**
    * constructor
@@ -79,8 +73,8 @@ public abstract class TTPanel {
   public TTPanel(TTStructure tts, DToolBar toolBar) {
     _tts = tts;
     _toolBar = toolBar;
-    _jScrollPaneOne = new JScrollPane();
-
+    _jScrollPaneOne = null;
+    _jSplitPane = null;
   }
   //-------------------------------------------
   abstract public void updateTTPanel(TTStructure ttp);

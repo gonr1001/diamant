@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.90 $  $Date: 2003-10-06 12:32:01 $
+ * Title: DDocument $Revision: 1.91 $  $Date: 2003-10-06 15:15:07 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.90 $
+ * @version $Revision: 1.91 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -78,7 +78,7 @@ public class DDocument  extends InternalFrameAdapter implements
       _dm.getTTStructure().addTTStructureListener(this);
       //ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
       _documentName = modifiyDocumentName(ttName);
-      buidDocument(true);
+      buidDocument(true, true);
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _jif.addInternalFrameListener(this);
     }
@@ -293,15 +293,20 @@ public class DDocument  extends InternalFrameAdapter implements
   //-------------------------------------------
   public void displaySimple(){
     close();
-    buidDocument(true);
+    buidDocument(true, true);
   }
   //-------------------------------------------
-  public void displayDetailed(){
+  public void displayHorizontalSplit(){
     close();
-    buidDocument(false);
+    buidDocument(false, false);
+  }
+
+  public void displayVericalSplit(){
+    close();
+    buidDocument(false, true);
   }
   //-------------------------------------------
-  private void  buidDocument(boolean simple){
+  private void  buidDocument(boolean simple, boolean vertical){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
     /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
@@ -331,11 +336,17 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
+    System.out.println("H " +_jif.getSize().height + "  W " + _jif.getSize().width);
+    //_jif.getSize();
 
-    if (simple)
+    if (simple) { //if (!simple) {
       _ttPanel = new SimpleTTPanel(_dm.getTTStructure(), _dMediator.getDApplication().getToolBar());
-    else
-      _ttPanel = new DetailedTTPanel(_dm.getTTStructure(), _dMediator.getDApplication().getToolBar());
+    } else {
+      _ttPanel = new DetailedTTPanel(_dm.getTTStructure(),
+                                     _dMediator.getDApplication().getToolBar(),
+                                     vertical,
+                                     _dMediator.getDApplication().getJFrame().getSize());
+    }
     _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
