@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.34 $  $Date: 2004-06-02 20:39:07 $
+ * Title: EditActivityDlg $Revision: 1.35 $  $Date: 2004-06-04 13:21:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -86,13 +86,14 @@ public class EditActivityDlg
 	private DModel _dm;
 	private EventsDlgInterface _evDlgInt = null;
 	private int _currentActivityIndex = 0;
+	
+	private JTabbedPane _tabbedPane;
+	private JScrollPane _jScrollPane;
+	private ButtonsPanel _applyPanel;
 	private boolean _canBeModified = false;
 	private Vector _unities = new Vector();           // contains event resource
 	private JList [] _instructorsLists;
-	private JScrollPane _jScrollPane;
-	private JTabbedPane _tabbedPane;
-	private ButtonsPanel _applyPanel;
-	private Vector _thePeriods;
+	//private Vector _thePeriods;
 
 	 
 	  /**
@@ -140,7 +141,7 @@ public class EditActivityDlg
 		_dm = dApplic.getDMediator().getCurrentDoc().getDM();
 		_canBeModified = canBeModified;
 			//to verify  
-		_thePeriods = buildThePeriods(dApplic.getDMediator().getCurrentDoc().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsInASequence());
+		
 		_unities = buildUnitiesVector(currentActivity);
 		_instructorsLists = new JList[_unities.size()];
 		    //to verify
@@ -173,7 +174,7 @@ public class EditActivityDlg
 	    this.setBounds(screenSize.width/ 4, 
 						screenSize.height/ 4, 
 						screenSize.width/ 2, 
-						screenSize.height/ 2 );	
+						screenSize.height/ 2 + FACTOR );	
 						
 	    this.setResizable(true);
 	    this.setVisible(true);
@@ -185,19 +186,26 @@ public class EditActivityDlg
 	   */
 	  public void actionPerformed(ActionEvent e){
 	    String command = e.getActionCommand();
+		System.out.println(command);
+		if (command.equals("name")) {
+		  System.out.println("change in Name");
+		}
+		if (command.equals("cat")) {
+		  System.out.println("change in Cat");
+		}
 	    if (command.equals(DConst.BUT_CLOSE)) {  // fermer
 	      dispose();
 	    } else if (command.equals(DConst.BUT_APPLY )) {  // apply
-	      boolean apply = false;
-	      for(int i=0; i< this._unities.size(); i++){
-	        _currentActivityIndex=i;
-	        apply = applyChanges();
-	        if(!apply){
-	          new FatalProblemDlg(this,"Valeur erronée");
-	          break;
-	        } else
-			_applyPanel.setFirstDisable();
-	      } // end for
+	      		boolean apply = false;
+	      		for(int i=0; i< this._unities.size(); i++){
+	        		_currentActivityIndex=i;
+	       			 apply = applyChanges();
+	        		if(!apply){
+	          			new FatalProblemDlg(this,"Valeur erronée");
+	          		break;
+	       	 } else
+				_applyPanel.setFirstDisable();
+		} // end for
 	      if(apply){
 	        _dm.getTTStructure().sendEvent();
 	        if(_evDlgInt!=null)
@@ -206,9 +214,15 @@ public class EditActivityDlg
 	      }
 	
 	    } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
-	              || command.equals(DConst.BUT_FIGE)){// comboBox has changed
+	              || command.equals(DConst.BUT_FIGE)){// a comboBox has changed
 	      //System.out.println("Enable appliquer ... ");
 		  _applyPanel.setFirstEnable();
+		  if (command.equals("name")) {
+		  	System.out.println("change in Name");
+		  }
+		  if (command.equals("cat")) {
+			System.out.println("change in Cat");
+		  }
 	    } else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
 	     //if (instructorsLists[_currentActivityIndex]= null)
 	      new SelectInstructors(_dApplic, this, 
@@ -300,13 +314,29 @@ public class EditActivityDlg
 	private JPanel buildRoomPanel() {
 		JPanel myPanel = new JPanel();
 		JPanel roomPanel = new JPanel();
-		Vector[] vect =  buildRoomList();
-		JComboBox roomCB = new JComboBox(vect[1]);
-		roomCB.setSelectedItem(vect[0].get(0).toString());
+		roomPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ROOM_NAME));
+		Vector[] vectR =  buildRoomList();
+		JComboBox roomCB = new JComboBox(vectR[1]);
+		roomCB.setActionCommand("name");
+		roomCB.setSelectedItem(vectR[0].get(0).toString());
 		roomCB.addActionListener(this);
 	   
-		roomPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ROOM_NAME));
-		roomPanel.add(roomCB);
+	   
+		Vector[] vectC =  buildCategoryRoomList();
+		JComboBox categoryRoomCB = new JComboBox(vectC[1]);
+		categoryRoomCB.setSelectedItem(vectC[0].get(0).toString());
+		categoryRoomCB.setActionCommand("cat");
+		categoryRoomCB.addActionListener(this);
+		
+		
+		JPanel roomName = new JPanel();
+		roomName.setBorder(new TitledBorder(new EtchedBorder(), "Name"));
+		JPanel categoryRoom = new JPanel();
+		categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), "Cat"));
+		roomName.add(roomCB);
+		categoryRoom.add(categoryRoomCB);
+		roomPanel.add(roomName);
+		roomPanel.add(categoryRoom);
 		myPanel.add(roomPanel);
 		
 		return myPanel;
@@ -357,15 +387,16 @@ public class EditActivityDlg
 	} //end isFixedButtonSelected
 	
 	private JPanel buildDurationPanel() {
+		Vector thePeriods = buildThePeriods(_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsInASequence());
 		JPanel durationPanel = new JPanel();
-		JComboBox periodsCB = new JComboBox(_thePeriods);
+		JComboBox periodsCB = new JComboBox(thePeriods);
 
 		durationPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_TIME_LENGTH));
 		durationPanel.setName(DConst.R_TIME_LENGTH);
 		durationPanel.add(periodsCB);
 		
 		if (_canBeModified) {
-			periodsCB.setSelectedItem(_thePeriods.get(0).toString());
+			periodsCB.setSelectedItem(thePeriods.get(0).toString());
 			periodsCB.addActionListener(this);
 		} else {
 			periodsCB.setSelectedItem(buildDuration());		
@@ -622,6 +653,22 @@ public class EditActivityDlg
       list[1].add(sor.getResourceAt(i).getID());
     list[1].add(DConst.NO_ROOM_INTERNAL);
     return list;
+  }
+
+  private Vector[] buildCategoryRoomList(){
+	Vector list[] = {new Vector(1), new Vector(1)};
+	EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+	SetOfRooms sor= _dm.getSetOfRooms();
+	//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+	Resource room = sor.getResource(event.getRoomKey());
+	if(room!=null)
+	  list[0].add(room.getID());
+	else
+	  list[0].add(DConst.NO_ROOM_INTERNAL);
+	for(int i=0; i< sor.size(); i++)
+	  list[1].add(sor.getResourceAt(i).getID());
+	list[1].add(DConst.NO_ROOM_INTERNAL);
+	return list;
   }
 
   /**
