@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+//import dInterface.dUtil.DXTools;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.EventAttach;
@@ -321,7 +321,8 @@ public class StandardReportData {
    */
   private String buildStudentsReport(){
   	StringBuffer studlist= new StringBuffer("");
-    int size= _dm.getSetOfStudents().size();
+    /*
+  	int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
       //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
@@ -369,6 +370,7 @@ public class StandardReportData {
       }// end while(strTokens.hasMoreTokens())
       studlist.append( str+strcrs+";"+DConst.CR_LF);
     }// end for (int i=0; i< _dm.getSetOfStudents().size(); i++)
+    */
     return studlist.toString();
   }
 

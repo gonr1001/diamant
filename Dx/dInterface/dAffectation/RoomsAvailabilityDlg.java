@@ -1,6 +1,6 @@
 /**
 *
-* Title: RoomsAvailabilityDlg $Revision: 1.18 $  $Date: 2005-02-08 16:24:41 $
+* Title: RoomsAvailabilityDlg $Revision: 1.19 $  $Date: 2005-02-08 21:24:23 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.18 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.19 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 *
 * Our convention is that: It's necessary to indicate explicitly
@@ -95,12 +95,12 @@ public class RoomsAvailabilityDlg  extends JDialog
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     //_dm = _dApplic.getDMediator().getCurrentDoc().getDM();
-    time= _dApplic.getDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
-    nbDay= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getNumberOfActiveDays();
+    time = _dApplic.getDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
+    nbDay = _dApplic.getDModel().getTTStructure().getNumberOfActiveDays();
     day = new String[nbDay];
     for(int i=0; i< nbDay; i++)
-      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getWeekTable()[i];
-    nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
+      day[i]= _dApplic.getDModel().getTTStructure().getWeekTable()[i];
+    nbPer= _dApplic.getDModel().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       initialize();
       pack();

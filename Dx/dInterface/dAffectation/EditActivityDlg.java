@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.56 $  $Date: 2005-02-08 21:21:17 $
+ * Title: EditActivityDlg $Revision: 1.57 $  $Date: 2005-02-08 21:24:23 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.56 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.57 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -168,7 +168,6 @@ public class EditActivityDlg
 
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _applyPanel = new TwoButtonsPanel(this, a);
-    //myJPanel.add(_tabbedPane, BorderLayout.SOUTH);
     getContentPane().add(_applyPanel, BorderLayout.SOUTH);
     _applyPanel.setFirstDisable();
 
@@ -189,21 +188,17 @@ public class EditActivityDlg
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //System.out.println(command);
 	if (command.equals(DConst.CATEGORY_AC)) {
 		_roomCB.disableActionListeners();
-		//JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
-		Vector[] vectR =  buildRoomList();//getSelectedCategory(tpane));
+		Vector[] vectR =  buildRoomList();
 		_roomCB = new DXJComboBox(vectR[1]);
 		_roomCB.enableActionListeners();
-	  //System.out.println("change in Cat");
 	  _applyPanel.setFirstEnable();
 	}
     if (command.equals(DConst.NAME_AC)) {
       JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
       String roomName = getSelectedRoom(tpane);
       _capacity[_currentActivityIndex].setText(getCapacity(roomName));
-      //System.out.println("Get Capacity: " + getCapacity(roomName));
 	  _applyPanel.setFirstEnable();
     }
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
@@ -223,16 +218,13 @@ public class EditActivityDlg
       	_dApplic.getDModel().changeInDModelByEditActivityDlg(this);
         if(_evDlgInt!=null)
          _evDlgInt.initializePanel();
-        //dispose();
       }
 
       } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
                 || command.equals(DConst.BUT_FIGE)){// a comboBox has changed
-        //System.out.println("Enable appliquer ... ");
         _applyPanel.setFirstEnable();
 
       } else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
-        //if (instructorsLists[_currentActivityIndex]= null)
         new SelectInstructors(_dApplic, this,
                               makeVector(_instructorsLists[_currentActivityIndex]),
                               buildInstructorList());
