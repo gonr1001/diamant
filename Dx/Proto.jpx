@@ -77,7 +77,7 @@
     <property category="archiving" name="extraDeployRoots.6" value="C:dAux.*"/>
     <property category="archiving" name="extraDeployRoots.7" value="C:dDeveloper.*"/>
     <property category="archiving" name="libraryStates.1" value="1:theLibrary"/>
-    <property category="archiving" name="libraryStates.2" value="1:Log4j"/>
+    <property category="archiving" name="libraryStates.2" value="3:Log4j"/>
     <property category="archiving" name="manifestMainClass" value="dmains.Diamant"/>
     <property category="archiving" name="outPathState" value="1"/>
     <property category="archiving" name="targetPath" value="D%|/Developpements/DiamantExtreme/Diamant1.5/tictac.jar"/>

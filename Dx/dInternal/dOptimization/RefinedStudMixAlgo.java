@@ -101,6 +101,7 @@ public class RefinedStudMixAlgo{
       for (int i=0; i< sumList.size(); i++){
         //System.out.println("Student: "+ );
         long studentKey= sumList.getResourceAt(sumList.size()-1).getKey();
+        System.out.println("Student: "+ studentKey);
         int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups);
         if(groupIndex!=-1){
           StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
@@ -130,6 +131,8 @@ public class RefinedStudMixAlgo{
         }// end for(int i=0; i< removeStudents.size(); i++)
         removeStudents.getSetOfResources().removeAllElements();
         sumList.sortSetOfResourcesByID();
+        if(sumList.size()==0)
+          System.out.println("--- End iteration---");//debug
       }// end if(sumList==0)
 
     }// end while(studentRegistered.size()>0)
@@ -154,7 +157,7 @@ public class RefinedStudMixAlgo{
      setOfConflicts.addResource(new Resource(conf,new DXValue()),0);
    }// end for(int i=0; i< allConvexGroups.size(); i++)
    setOfConflicts.sortSetOfResourcesByID();
-   Vector bestGroupsIndex= getBestGroupsIndex(setOfConflicts);
+   Vector bestGroupsIndex= getBestGroupsIndex(setOfConflicts,0);
    for (int i=0; i< setOfConflicts.size(); i++){
      int groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
      if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION)){
@@ -195,7 +198,7 @@ public class RefinedStudMixAlgo{
    * @param setOfConflicts
    * @return
    */
-  public Vector getBestGroupsIndex(SetOfResources setOfConflicts){
+  private Vector getBestGroupsIndex(SetOfResources setOfConflicts, int level){
     Vector bestGroupsIndex= new Vector();
     setOfConflicts.sortSetOfResourcesByID();
     String bestNumOfConf= setOfConflicts.getResourceAt(0).getID();
@@ -206,7 +209,7 @@ public class RefinedStudMixAlgo{
       String NumOfConf = setOfConflicts.getResourceAt(i).getID();
       int NumberOfConflicts = Integer.parseInt(NumOfConf);
       groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
-      if(NumberOfConflicts==bestNumberOfConflicts){
+      if(NumberOfConflicts <= bestNumberOfConflicts){
         bestGroupsIndex.add(new DXValue(groupIndex, null));
       }// end if(NumberOfConflicts==bestNumberOfConflicts)
     }// end for (int i=0; i< setOfConflicts.size(); i++)
