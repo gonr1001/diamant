@@ -51,51 +51,61 @@ Université de Sherbrooke,\\
 
 \section{Introduction}
 La production d'horaires est une tâche périodique effectué dans
-beaucoup d'institutions d'enseignement. Le coût de cette tâche
-peut être important dans certains institutions. Ces institutions
+beaucoup d'insti\-tutions d'enseignement. Le coût de cette tâche
+peut être important dans certaines institutions. Ces institutions
 produisent un ou plusieurs horaires par année pour les cours et
 les examens. Il existe de logiciels pour effectuer la construction
 d'horaires, on peut citer comme exemples
-\cite{gonzalezrubio00,ferland94}. En général ces logiciels vont
-avoir comme entrée un ou plusieurs fichiers, la sortie est aussi
-composée d'un ou plusieurs fichiers. Travailler de cette manière
-pose au moins deux problèmes~: le premier est qu'il faut
-construire les fichiers à chaque fois qu'un horaire est produit;
-le deuxième est que les changements pour prendre en compte une
-nouvelle information sont difficiles, provocant un changement dans
-le format de données et dans l'application. Le premier problème
-est plus grand dans le cas où les fichiers sont produits
-manuellement erreurs de frappe ou d'inattention produisent des
-effets difficiles à trouver. Dans le cas où les fichiers sont
-produits de manière automatique, il faut vérifier la validité et
-la cohérence des données. Le deuxième problème ne se manifeste que
-s'un changement doit être introduit dans le système (logiciel et
-production de fichiers) ou si le logiciel est utilisé à plusieurs
-sites différents. Les changements viennent de la part des
+\cite{gonzalezrubio00,ferland94}, mais il existe d'autres. En
+général ces logiciels vont avoir comme entrée un ou plusieurs
+fichiers, leur sortie est constituée d'un ou plusieurs fichiers.
+Travailler de cette manière pose au moins deux problèmes~: le
+premier est qu'il faut construire les fichiers en entrée à chaque
+fois qu'un horaire est produit; le deuxième est la prise en compte
+des changements. Le premier problème peut avoir deux cas~:
+production manuelle des fichiers ou production automatisée. si les
+fichiers sont produits manuellement les erreurs de frappe ou
+d'inattention peuvent produire des effets inattendus dans le
+logiciel et sont difficiles à trouver, car il faut vérifier le
+tout manuellement. Dans le cas, où les fichiers sont produits de
+manière automatique, il faut que le logiciel s'assurer de vérifier
+la validité et la cohérence des toutes les données. Le deuxième
+problème se manifeste lorsqu'un changement est introduit dans le
+système (soit dans l'application de construction, soit dans celui
+de la production de fichiers) ou si l'application de construction
+est utilisé à plusieurs sites différents sans une compatibilité
+parfaite des données. Les changements viennent de la part des
 utilisateurs, par exemple une nouvelle nomenclature pour les
 locaux; prise en compte de nouvelles données pour former des
 groupes (toutes les filles d'une promotion doivent être dans le
 même groupe), etc.. S'il existe plusieurs instances du logiciel,
 utilisées dans de sites différents, il faut que le logiciel puisse
 traiter les données des différents sites ou que les sites adoptent
-le format de fichiers.
+le format de fichiers. Le coût de ces problèmes est le coût de la
+modification dans le logiciel. Il peut être élevé si les logiciels
+ne sont pas préparés, c'est-à-dire si le logiciels n'ont pas été
+conçus pour être modifiables (extensibles). L'autre facteur qui
+peut augmenter le coût est de modifier un système monolithique ou
+fermé, une modification peut affecter tout le système.
 
 
 Dans cet article nous proposons l'architecture  d'un système de
 production des horaires de cours et des examens ayant les
 caractéristiques suivantes~: ouverte et extensible. Une telle
 architecture doit aider à faire face plus facilement aux problèmes
-mentionnées. L'architecture met en oeuvre des bases de données,
-des sites Web et le logiciel de construction d'horaires. La base
-de données va aider à vérifier la validité des données, elle va
-fournir les données nécessaires au logiciel de construction
-d'horaires et s'occupe aussi du formatage de données. Les sites
-Web sont utilisés principalement pour la saisie de données, ceci
+mentionnées en réduisant le coût de modifications et en validant
+les données à l'endroit nécessaire dans le processus.
+L'architecture met en oeuvre des bases de données, des sites Web
+et le logiciel de construction d'horaires. La base de données va
+aider à vérifier la validité des données au moment de la saisie,
+elle va fournir les données nécessaires au logiciel de
+construction d'horaires dans le format nécessaire. Les sites Web
+sont utilisés principalement pour la saisie de données, ceci
 permet de vérifier aussi la validité des données avant que la
-donnée soit dans la base. Autre fonction du site Web est d'offrir
-les horaires de manière personnalisé. Avec l'aide du logiciel de
-construction d'horaires, il est possible de fabriquer un horaire
-avec un minimum de conflits.
+donnée soit entrée dans la base. Autre fonction du site Web est
+d'offrir les horaires de manière personnalisé. Avec l'aide du
+logiciel de construction d'horaires, il est possible de fabriquer
+un horaire avec un minimum de conflits.
 
 Pour arriver à cette architecture, nous avons procédé en deux
 étapes, nous avons analysé le flot des données dans un système
@@ -105,21 +115,26 @@ architecture ouverte. Ensuite nous avons défini l'architecture,
 ses modules et la responsabilité de chaque module évitant les
 traitements redondants.
 
-Une fois l'architecture définie nous proposons une instance en
+Une fois l'architecture définie, nous l'avons créer une instance,
+adapté au système implanté à l'Université de Sherbrooke, en
 utilisant des technologies existantes. Ainsi nous pouvons mettre
 en évidence que les objectifs de ouverture et extensibilité ont
 été atteints.
 
-\subsection{Travaux similaires}
-Burke et al. \cite{burke97} il est proposé d'avoir un Standard
-pour le format de données pour des instances de horaires, leur but
-était de comparer des algorithmes (programmes) dans de benchmarks.
-\cite{ozcan03} suggère aussi un autre standard cette fois avec le
-langage XML. Il nous semble que bien que souhaitable un standard
-est un but très difficile à atteindre. Notre approche permet soit
-au niveau de la base de données de générer un fichier ou données
-respectant un format défini, soit de générer différents fichiers
-pour différents programmes.
+Beaucoup de recherche est faite dans la construction d'horaires
+algorithmes et formulations mathématiques et plusieurs logiciels
+ont été proposés voir \cite{patat97,patat00,patat02}, peu
+d'efforts ont été consacrés au problème de la production
+d'horaires, 
+ . Burke et al. \cite{burke97} il est proposé d'avoir
+un Standard pour le format de données pour des instances de
+horaires, leur but était de comparer des algorithmes (programmes)
+dans de benchmarks. \cite{ozcan03} suggère aussi un autre standard
+cette fois avec le langage XML. Il nous semble que bien que
+souhaitable un standard est un but très difficile à atteindre.
+Notre approche permet soit au niveau de la base de données de
+générer un fichier ou données respectant un format défini, soit de
+générer différents fichiers pour différents programmes.
 
 White \cite{white00} met en évidence que le Web doit être utilisé
 come un moyen de diffusion de horaires. Nous allons un peu plus
