@@ -267,7 +267,9 @@ public static int STIConvertGroupToInt(String STIGroupID){
   * @return
   */
  public static String STIConvertGroup(int STIGroupNumber){
-   return  Integer.toString(STIGroupNumber);
+    String str = "00" + Integer.toString(STIGroupNumber);
+    return str.substring(str.length()-2, str.length());
+
  }
 
 
