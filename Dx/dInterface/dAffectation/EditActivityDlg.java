@@ -32,6 +32,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 public class EditActivityDlg extends JDialog implements ActionListener, ChangeListener{
 
   private DApplication _dApplic;
+  private EventsDlgInterface _evDlgInt=null;
   private int _currentActivityIndex=0;
   private String _DURATION= "Durée:";
   private String _DAY= "Jour:";
@@ -57,6 +58,24 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
+    _isModified= isModified;
+    //_activityName = currentActivity;
+    buildUnitiesVector(currentActivity);
+    jbInit();
+
+  }
+
+  /**
+   * Constructor
+   * @param activityDialog The parent dialog of this dialog
+   * @param dApplic The application
+   * @param currentActivity The ativiti choiced in the activityDialog
+   */
+  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg,boolean isModified) {
+    super(dialog, "Affectation d'évenement");
+    setLocationRelativeTo(dialog);
+    _dApplic = dApplic;
+    _evDlgInt= evDlg;
     _isModified= isModified;
     //_activityName = currentActivity;
     buildUnitiesVector(currentActivity);
@@ -118,12 +137,16 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
       }
       if(apply){
       _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+      if(_evDlgInt!=null)
+        _evDlgInt.initializePanel();
       dispose();
       }
 
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
       if( applyChanges()){
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        if(_evDlgInt!=null)
+          _evDlgInt.initializePanel();
       }else
         new FatalProblemDlg(this,"Valeur eronnée");
     }

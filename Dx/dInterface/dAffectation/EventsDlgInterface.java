@@ -97,7 +97,18 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
     setVisible(true);
   }
 
-
+  /**
+   * initialize label in each panel
+   */
+  public void initializePanel(){
+    buildVectors();
+    _leftLabel.setText(String.valueOf(_leftVector.size()));
+    _leftList.setListData(_leftVector);
+    _centerLabel.setText(String.valueOf(_centerVector.size()));
+    _centerList.setListData(_centerVector);
+    _rightLabel.setText(String.valueOf(_rightVector.size()));
+    _rightList.setListData(_rightVector);
+  }
   /**
    * build buttom to use in the dialog
    */

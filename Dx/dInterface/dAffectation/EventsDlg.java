@@ -91,11 +91,11 @@ public class EventsDlg extends EventsDlgInterface{
  *
  */
  protected void doubleClicMouseProcess(){
-   new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0],false);
-   EventAttach event=(EventAttach)_dApplic.getDMediator().getCurrentDoc().getDM().
+   new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
+  /* EventAttach event=(EventAttach)_dApplic.getDMediator().getCurrentDoc().getDM().
     getSetOfEvents().getResource((String)selectedItems[0]).getAttach();
    if(event.getAssignState() || event.getPermanentState())
-     jbInit();
+     jbInit();*/
   }
 
 

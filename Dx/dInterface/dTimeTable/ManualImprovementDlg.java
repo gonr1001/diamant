@@ -29,7 +29,7 @@ import dResources.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 
-   private String[] _buttonsNames = {"Modifier", DConst.BUT_CLOSE};
+   private String[] _buttonsNames = {"Modifier",DConst.BUT_APPLY, DConst.BUT_CLOSE};
    private DModel _dm;
 //   private TTStructure _newTTS;
    private DToolBar _toolBar;
@@ -56,10 +56,10 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     String command = e.getActionCommand();
     //if the source is one of the the _leftArrowsPanel buttons
     //if Button CLOSE is pressed
-    if (command.equals(_buttonsNames[1]))
+    if (command.equals(_buttonsNames[2]))
       dispose();
     if ((command.equals(_buttonsNames[0])) && (selectedItems!=null)){
-      new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0],false);
+      new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
     }
   }//end method
 
