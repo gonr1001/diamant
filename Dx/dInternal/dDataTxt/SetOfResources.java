@@ -15,10 +15,11 @@ abstract class ResourceList {
 
   private Vector _resourceList;// contains list of resource (instructor, rooms, student or activity)
   private Resource _resource;
-  int _stateSort=0;
+  int _stateSort=0;// give type of the last sort
   private StringTokenizer _st;// resource in text format
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
+  private int _currentKey=0;
   private static final String CR_LF = "\r\n";
 
   /**
@@ -63,6 +64,8 @@ abstract class ResourceList {
    *
    * */
   public void addResource(Resource resource){
+    resource.setKey(_currentKey);
+    _currentKey++;
     _resourceList.add(resource);
   }
 
@@ -133,9 +136,9 @@ abstract class ResourceList {
        Instructor inst= new Instructor();
        inst.addDispDay("1 1 1 5 5");
        inst.addDispDay("5 5 1 1 5");
-       Resource resc = new Resource(0,"Alex", inst);
+       Resource resc = new Resource("Alex", inst);
        System.out.println(resc.toString());//debug
-       resc = new Resource(1,"Yannick", inst);
+       resc = new Resource("Yannick", inst);
        System.out.println(resc.toString());//debug
 
     } // end main

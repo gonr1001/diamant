@@ -11,12 +11,11 @@ package dInternal;
 
 public class Resource {
   private static final String CR_LF = "\r\n";
-  private int _resourcekey;
+  private int _resourcekey=0;
   private String _resourceID;// can be a name, an ID, a CIP code
   private Object _resourseObjet;
 
-  public Resource( int key, String id, Object obj) {
-    _resourcekey = key;
+  public Resource( String id, Object obj) {
     _resourceID = id;
     _resourseObjet = new Object();
     _resourseObjet = obj;
@@ -24,6 +23,10 @@ public class Resource {
 
   public int getKey(){
     return _resourcekey;
+  }
+
+  protected void setKey(int k){
+    _resourcekey=k;
   }
 
   /**

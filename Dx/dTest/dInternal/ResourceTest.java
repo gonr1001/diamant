@@ -38,7 +38,7 @@ public class ResourceTest extends TestCase {
     _inst = new Instructor();
     _inst.addDispDay("1 1 1 5 5");
     _inst.addDispDay("5 5 5 1 5");
-    _resc = new Resource(1,"Yan",_inst);
+    _resc = new Resource("Yan",_inst);
     InstructorsList ilist = new InstructorsList(data, 4,5);
     ilist.addResource(_resc);
     ilist.addResource(_resc);
