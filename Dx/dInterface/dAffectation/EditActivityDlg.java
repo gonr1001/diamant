@@ -38,14 +38,9 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private DApplication _dApplic;
   private EventsDlgInterface _evDlgInt=null;
   private int _currentActivityIndex=0;
-
   private Vector _setOfInstructors= new Vector(1);// contains strings
-
-  //private String NO_ROOM_INTERNAL= "------";
   private boolean _isModified=false;
-
   private Vector _unities = new Vector();// contains event resource
-
   private JTabbedPane _tabbedPane;
   private TwoButtonsPanel _buttonsPanel;
 
@@ -61,36 +56,19 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     _dApplic = dApplic;
     _isModified= isModified;
     _unities = buildUnitiesVector(currentActivity);
-    jbInit();
-
-  }
-
-  /**
-   * Constructor
-   * @param activityDialog The parent dialog of this dialog
-   * @param dApplic The application
-   * @param currentActivity The ativiti choiced in the activityDialog
-   */
-/*  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg, boolean isModified) {
-    super(dialog, "Affectation xxx");
-    setLocationRelativeTo(dialog);
-    _dApplic = dApplic;
-    _evDlgInt= evDlg;
-    _isModified= isModified;
-    _unities = buildUnitiesVector(currentActivity);
-    jbInit();
-
-  }*/
+    init();
+  } // end EditActivityDlg
 
   /**
    * Initialize the dialog
    */
-  private void jbInit(){
+  private void init(){
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _buttonsPanel = new TwoButtonsPanel(this, a);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
        _tabbedPane = new JTabbedPane();
     //_tabbedPane.
+    // Panels for tabbed Pane
     for (int i=0; i< _unities.size(); i++){
       if(_unities.get(i)!=null){
         _currentActivityIndex=i;
@@ -139,13 +117,16 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
       */
 
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
-      if( applyChanges()){
-        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
-        _buttonsPanel.setFirstDisable();
-        if(_evDlgInt!=null)
-          _evDlgInt.initializePanel();
-      }else
-        new FatalProblemDlg(this,"Valeur eronnée");
+      boolean apply=false;
+      for(int i=0; i< this._unities.size(); i++){
+        _currentActivityIndex=i;
+        apply = applyChanges();
+        if(!apply){
+          new FatalProblemDlg(this,"Valeur eronnée");
+          break;
+        } else
+          _buttonsPanel.setFirstDisable();
+      }
     } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
               || command.equals(DConst.BUT_FIGE)){// comboBox has changed
       //System.out.println("Enable appliquer ... ");
@@ -157,13 +138,12 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   }
 
   public void setInstructorList(Vector v) {
-
-    System.out.println("hello" + ((String) v.toArray()[0]));
-
+    //System.out.println("hello" + ((String) v.toArray()[0]));
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
     JPanel jp = (JPanel)_tabbedPane.getComponentAt(_currentActivityIndex);
     JPanel jpb = createUnityPanel(_currentActivityIndex, false, v);
    _tabbedPane.setComponentAt(_currentActivityIndex,jpb);
+   _buttonsPanel.setFirstEnable();
     //_tabbedPane.addTab(((Resource)_unities.get(_currentActivityIndex)).getID(), createUnityPanel(_currentActivityIndex,false));
 
 
@@ -209,7 +189,6 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     hour = new JLabel(DConst.R_ACTIVITY_BEGIN_HOUR);
     room = new JLabel(DConst.R_ROOM_NAME);
     instructor = new JLabel(DConst.R_INSTRUCTOR_NAME);
-    //resDuration= new JLabel(buildDuration());
     JTextField resDuration= new JTextField(2);
     resDuration.setText(buildDuration());
     resDuration.setEnabled(_isModified);
@@ -458,7 +437,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     String day= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
     String hour= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(3)).getSelectedItem().toString();
     String room= ((JComboBox)((JPanel)tpane.getComponent(2)).getComponent(1)).getSelectedItem().toString();
-    String instructor= ((JComboBox)((JPanel)tpane.getComponent(3)).getComponent(1)).getSelectedItem().toString();
+   // String instructor= ((JComboBox)((JPanel)tpane.getComponent(3)).getComponent(1)).getSelectedItem().toString();
+    JList instructor= ((JList)((JScrollPane)((JPanel)tpane.getComponent(3)).getComponent(1)).getViewport().getComponent(0));
+    ListModel lm = (ListModel) instructor.getModel();
+    String  intructorKeys = getInstructorKeys(lm);
     boolean assignBut= ((JToggleButton)((JPanel)tpane.getComponent(4)).getComponent(0)).isSelected();
     boolean permanentBut= ((JToggleButton)((JPanel)tpane.getComponent(4)).getComponent(1)).isSelected();
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
@@ -467,8 +449,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     event.setDuration( Integer.parseInt(duration)*_dApplic.getDMediator()
                  .getCurrentDoc().getDM().getTTStructure().getPeriodLenght());
     event.setKey(4,periodKey);
-    event.setKey(1,Long.toString(getResourceKey(_dApplic.getDMediator().getCurrentDoc().
-                                  getDM().getSetOfInstructors(),instructor)));
+    event.setKey(1,intructorKeys);
     event.setKey(2,Long.toString(getResourceKey(_dApplic.getDMediator().getCurrentDoc().
                                   getDM().getSetOfRooms(),room)));
     event.setAssignState(assignBut);
@@ -481,6 +462,15 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     return true;
   }
 
+
+  private String  getInstructorKeys(ListModel lm){
+    String a =  "";
+    for (int i = 0 ; i < lm.getSize(); i++) {
+      long key = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getResource((String) lm.getElementAt(i)).getKey();
+      a+= key + ":";
+    }
+    return a;
+  }
   /**
    * get a resource key
    * @param soresc

@@ -10,6 +10,8 @@ package dInternal.dConditionsTest;
  */
 
 import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXToolsMethods;
+
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import java.util.Vector;
@@ -171,7 +173,13 @@ public class EventAttach extends DXObject {
     switch(field){
       case 0: _principalRescKey = value;
         break;
-      case 1: //_setInstructorKeys = ///_instructorRescKey = Long.parseLong(value);
+      case 1: _setInstructorKeys.getSetOfResources().removeAllElements();
+             int n = DXToolsMethods.countTokens(value,":");
+            for (int i = 0; i < n; i++ ){
+              _setInstructorKeys.setCurrentKey(Long.parseLong( DXToolsMethods.getToken(value,":",i)));
+              _setInstructorKeys.addResource(new Resource("",null),0);
+            }
+              ///_instructorRescKey = Long.parseLong(value);
         break;
       case 2: _roomRescKey = Long.parseLong(value);
         break;

@@ -111,10 +111,11 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   /**
    * build buttom to use in the dialog
    */
-  protected void buildButtons(){
-
+  public void buildArrowButtons(){
+    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
+    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
+    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
   }
-
 
   /**
    * Sets the _centerPanel, the panel containing the _centerList and the

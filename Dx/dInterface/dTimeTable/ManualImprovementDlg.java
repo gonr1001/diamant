@@ -31,9 +31,7 @@ import dResources.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 
-  // private String[] _buttonsNames = {DConst.BUT_CHANGE,DConst.BUT_APPLY, DConst.BUT_CLOSE};
    private DModel _dm;
-//   private TTStructure _newTTS;
    private DToolBar _toolBar;
    private JFrame _jFrame;
 
@@ -43,12 +41,9 @@ public class ManualImprovementDlg extends EventsDlgInterface{
    */
   public ManualImprovementDlg(DApplication dApplic, String title) {
     super(dApplic,title);
-   // TTStructure oldTTS= dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure();
-   // _newTTS= new TTStructure();
-   // _newTTS.setTTStructureDocument(oldTTS.getTTStructureDocument());
     _toolBar= dApplic.getToolBar();
     _dm= dApplic.getDMediator().getCurrentDoc().getDM();
-    buildButtons();
+    buildArrowButtons();
     jbInit();
   }//end method
 
@@ -56,9 +51,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     //_applyPanel
     String [] a = {DConst.BUT_CHANGE, DConst.BUT_CLOSE};;
     _buttonsPanel = new TwoButtonsPanel(this, a);
-
     return _buttonsPanel;
-
   }
 
   public void actionPerformed(ActionEvent e){
@@ -68,20 +61,18 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
     if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
-      //new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
-      new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0],false);
+      new EditActivityDlg(_jdialog, _dApplic, (String)selectedItems[0], false);
     }
   }//end method
 
   /**
   * build buttom to use in the dialog
   */
- protected void buildButtons(){
-   //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+/* protected void buildArrowButtons(){
    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
- }
+ } // end buildArrowButtons*/
 
  /**
   *

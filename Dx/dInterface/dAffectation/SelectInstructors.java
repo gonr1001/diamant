@@ -108,7 +108,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
     _centerPanel.add(_arrowsPanel, BorderLayout.CENTER);
     _centerPanel.add(rightPanel, BorderLayout.WEST);
     //_applyPanel
-    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    String [] a ={DConst.BUT_VALIDATE, DConst.BUT_CLOSE};
     _buttonsPanel = new TwoButtonsPanel(this, a);
     //Setting the button APPLY disable
     _buttonsPanel.setFirstDisable();
@@ -145,7 +145,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
     if (command.equals(DConst.BUT_CLOSE))
         dispose();
     //If button APPLY
-    if (command.equals(DConst.BUT_APPLY)){
+    if (command.equals(DConst.BUT_VALIDATE)){
       _ead.setInstructorList(_leftVec);
       //setActivitesVisibility();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);

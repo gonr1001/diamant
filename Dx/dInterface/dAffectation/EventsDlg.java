@@ -29,7 +29,7 @@ public class EventsDlg extends EventsDlgInterface{
    */
   public EventsDlg(DApplication dApplic, String title) {
     super(dApplic,title);
-    buildButtons();
+    buildArrowButtons();
     jbInit();
   }//end method
 
@@ -89,8 +89,7 @@ public class EventsDlg extends EventsDlgInterface{
   /**
   * build buttom to use in the dialog
   */
- protected void buildButtons(){
-   //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+ public void buildArrowButtons(){
    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
@@ -100,13 +99,8 @@ public class EventsDlg extends EventsDlgInterface{
  *
  */
  protected void doubleClicMouseProcess(){
-   //new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
    new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], false);
-  /* EventAttach event=(EventAttach)_dApplic.getDMediator().getCurrentDoc().getDM().
-    getSetOfEvents().getResource((String)selectedItems[0]).getAttach();
-   if(event.getAssignState() || event.getPermanentState())
-     jbInit();*/
-  }
+ } // end doubleClicMouseProcess
 
 
 }//end class

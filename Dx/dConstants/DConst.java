@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.94 $  $Date: 2004-04-08 13:19:01 $
+ * Title: DConst $Revision: 1.95 $  $Date: 2004-04-13 17:11:03 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.94 $
+ * @version $Revision: 1.95 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -37,6 +37,7 @@ public class DConst {
   public final static String BUT_OK = res.getString("butOK");//Ok
   public final static String BUT_CANCEL = res.getString("butCancel");//Annuler
   public final static String BUT_APPLY = res.getString("butApply");//Appliquer
+  public final static String BUT_VALIDATE = res.getString("butValidate");//Valider
   public final static String BUT_OPTIONS = res.getString("butOptions");//Options
   public final static String BUT_BROWSE = res.getString("butBrowse");//Parcourir
   public final static String BUT_PLACE = res.getString("butPlace");//Placer

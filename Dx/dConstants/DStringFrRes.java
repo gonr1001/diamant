@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.108 $  $Date: 2004-04-07 16:35:34 $
+ * Title: DStringFrRes $Revision: 1.109 $  $Date: 2004-04-13 17:11:03 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.108 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.109 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -158,6 +158,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"butOK", "Ok"},
     {"butCancel", "Annuler"},
     {"butApply", "Appliquer"},
+    {"butValidate","Valider"},
     {"butOptions", "Options"},
     {"butBrowse", "Parcourir"},
     {"butPlace", "Placer"},
