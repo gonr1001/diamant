@@ -77,9 +77,13 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     getContentPane().add(_bottomPanel, BorderLayout.SOUTH);
     _tabbedPane = new JTabbedPane();
     //_tabbedPane.
-    for (int i=0; i< _unities.size(); i++)
-      if(_unities.get(i)!=null)
+    for (int i=0; i< _unities.size(); i++){
+      if(_unities.get(i)!=null){
+        _currentActivityIndex=i;
         _tabbedPane.addTab(((Resource)_unities.get(i)).getID(), createUnityPanel(i));
+      }
+    }// end for
+    _currentActivityIndex=0;
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
     _tabbedPane.addChangeListener(this);
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
@@ -98,9 +102,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //boolean _change = false, _restore = false;
-    System.out.println("Selected panel: "+command);//debug
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
-
+      for(int i=0; i< this._unities.size(); i++){
+        _currentActivityIndex=i;
+        applyChanges();
+      }
       dispose();
 
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
@@ -116,7 +122,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    */
    public void stateChanged( ChangeEvent ce) {
     _currentActivityIndex = ((JTabbedPane)ce.getSource()).getSelectedIndex();
-    _tabbedPane.setComponentAt( _currentActivityIndex, createUnityPanel(_currentActivityIndex) );
+    System.out.println("_currentActivityIndex: "+_currentActivityIndex);//debug
+    //_tabbedPane.setComponentAt( _currentActivityIndex, ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex)));//createUnityPanel(_currentActivityIndex) );
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
   }
 
@@ -349,6 +356,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private void applyChanges(){
     Cycle cycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle();
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+    //remove event
+    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),-1);
     JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
     String day= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
     String hour= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(3)).getSelectedItem().toString();
@@ -369,6 +378,9 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     Vector vect= new Vector();
     vect.add(_unities.get(_currentActivityIndex));
     _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().updateActivities(vect);
+    //add event
+    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1);
+    //_dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
   }
 
   /**

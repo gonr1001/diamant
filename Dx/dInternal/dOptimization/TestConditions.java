@@ -68,26 +68,37 @@ public class TestConditions {
     _dm.getSetOfEvents()._isEventPlaced=true;
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){
       Resource event = _dm.getSetOfEvents().getResourceAt(i);
-      StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
-      String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
+      this.addOrRemEventInTTs(event,1);
+    }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
+  }
+
+  /**
+   * add or remove an event in tts
+   * @param event
+   * @param int operation -1= remove event, 0= do nothing, 1= add event
+   * @return
+   */
+  public boolean addOrRemEventInTTs(Resource event, int operation){
+    StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
+    String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
       eventKey.nextToken(),eventKey.nextToken()};
-      if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
-        StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
-        long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
-        int duration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
-        int[] avoidPriority={};
-        if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration, avoidPriority))
+    if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
+      StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
+      long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
+      int duration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
+      int[] avoidPriority={};
+      if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration, avoidPriority)){
         for (int j=0; j< duration; j++){
           Period per = _dm.getTTStructure().getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
-            cond.executeTest(per,event.getID(),1);
+            cond.executeTest(per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
-      }// end if (_dm.getSetOfActivities().getUnity(
-
-
-    }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
-
+        return true;
+      }// end if (_dm.getTTStructure().getCurrentCycle().isPeriod
+    }// end if (_dm.getSetOfActivities().getUnity(
+    return false;
   }
-}
+
+}// end class
