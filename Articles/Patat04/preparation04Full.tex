@@ -10,10 +10,9 @@
 \newcommand{\diamant}{DIAMANT}
 \newcommand{\tictac}{Tic-Tac}
 \newcommand{\xp}{eXtreme Programming}
-\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125em
-it}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
 
-% Pour la création du titre
+
 \title{\bf{L'architecture d'un système de production des horaires
 de cours et des examens dans une Université (document préparatoire)}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao}
@@ -22,7 +21,6 @@ Université de Sherbrooke,\\
 \email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
 \email{Domingo.Palao@USherbrooke.ca} }
 \date{}
-
 
 \begin{document}
 
@@ -38,7 +36,7 @@ logiciel.
 En particulier nous avons développé une architecture~:
 
 \begin{enumerate}
-\item Ouverte
+\item Ouvert
 
 \item Modulaire
 
@@ -113,7 +111,7 @@ logiciels avec autres composants. Il est aussi compliqué si nous
 voulons comparer des algorithmes en mesurant sa performance, il y
 a eu quand même quelques efforts pour trouver une architecture
 standardisée pour faire des benchmarks entre les logiciels de
-construction d'horaires \cite{kingston02}.
+construction d'horaires \cite{kingston00}.
 
 \item [Pourquoi votre solution est-elle meilleure?] Notre solution
 est basée sur un analyse d'alternatives sur les points clés de la
@@ -192,20 +190,19 @@ l'article?]Une description précise de l'auditoire, le niveau
 technique, la taille, etc. Nous avons ciblé trois types de
 lecteurs :
 \begin{enumerate}
-\item Potentiellement faire la publication de l'article dans PATAT
-2004. Un auditoire ouvert mais surtout des chercheurs en
-informatique ou en recherche opérationnelle qui travaillent dans
-le domaine de la conception d'horaires, peut-être avec une bonne
-connaissance de mathématiques ou de l'informatique ou de la
-recherche opérationnelle, ou les trois ensemble.
+\item Faire la publication de l'article dans PATAT 2004. Un
+auditoire ouvert mais surtout des chercheurs en informatique ou en
+recherche opérationnelle qui travaillent dans le domaine de la
+conception d'horaires, peut-être avec une bonne connaissance de
+mathématiques ou de l'informatique ou de la recherche
+opérationnelle, ou les trois ensemble.
 
 \item Les nouveaux developpeurs qui se intégreront à l'équipe de
 travail \eXit{}. Quelques étudiantes en génie qui pourraient
 s'ajouter au groupe \eXit{}, avec un baccalauréat ou une maîtrise
 en génie ou en informatique.
 
- \item Les
-utilisateurs du {\tictac}, qui auront besoin de connaître quelques
+ \item Les utilisateurs du {\tictac}, qui auront besoin de connaître quelques
 caractéristiques du système. Moins d'une dizaine de lecteurs avec
 très peu des connaissances informatiques, mais de l'expérience
 dans le processus de la conception d'horaires.
@@ -222,16 +219,15 @@ d'un système de production d'horaires.
 
 Vision globale de l'article
 
-\begin{enumerate}
-\item Identification de la question que vous avez posée. On se
+\begin{description}
+\item [Identification de la question que vous avez posée.] On se
 questionne sur le fait de pouvoir faire la conception d'un
 logiciel pour la production d'horaires qui puisse interagir avec
 d'autres modules d'un système intégrale de gestion de
 l'information d'une Université.
 
-\item L'identification du résultat obtenu.
- Dans l'étape du design
-de {\tictac}, nous avons une approche génie logiciel  de la
+\item [L'identification du résultat obtenu.] Dans l'étape du
+design de {\tictac}, nous avons une approche génie logiciel  de la
 conception de ce système. Nous avons pris en considération
 plusieurs qualités de logiciel qui s'appliquent à tout logiciel
 basé sur l'architecture Web, mais surtout l'application des
@@ -239,38 +235,43 @@ technologies qui nous permettront de développer un logiciel
 extensible, robuste, réutilisable et compatible avec son
 environnement.
 
-\item Le type de validation que vous allez offrir.
-La réalisation
-du système {\tictac} servira comme preuve de notre approche, étant
-donnée qu'il devra s'intégrer avec d'autres systèmes de gestion
-d'information universitaire. Nous allons utiliser des exemples
-concrets pour montrer la validité de notre manière de concevoir ce
-type de logiciel.
+\item [Le type de validation que vous allez offrir.] La
+réalisation du système {\tictac} servira comme preuve de notre
+approche, étant donnée qu'il devra s'intégrer avec d'autres
+systèmes de gestion d'information universitaire. Nous allons
+utiliser des exemples concrets pour montrer la validité de notre
+manière de concevoir ce type de logiciel.
 
-\item Il faudra choisir une structure de document qui vous
-permettra d'explique vos démarches.
+\item [Structure du document] Il faudra choisir une structure de
+document qui vous permettra d'explique vos démarches.
 
 \begin{enumerate}
 \item Résumé.
 
-\item Introduction (motivation, définition du problème, la
-question spécifique que vous allez travailler, panorama générale,
-travail connexe).
+\item Introduction
+
+\begin{enumerate}
+\item Motivation
+
+\item Définition du problème
+
+\item La question spécifique que vous allez travailler
+
+\item Panorama générale
+
+\item Travail connexe.
+\end{enumerate}
 
 \item Les données
 
 \item La decomposition modulaire, top-down, alternatives et
 justifications
-
 \item Technologies possibles et justifications.
-
 \item \tictac
 
 \item Conclusions
-
-
 \end{enumerate}
-\end{enumerate}
+\end{description}
 
 \section{Première brouillon du résumé}
 
@@ -314,24 +315,25 @@ futur.
 {\bf Mots clé :} Production d'horaires, Génie logiciel, Qualité.
 
 \section{Plan de travail}
+\begin{itemize}
+\item 16 décembre 2003 Design détaille.
 
-16 décembre 03 design détaille.
+\item 12 janvier 2004 Implementation.
 
-12 janvier 04 implementation.
+\item 16 janvier 2004 Version en anglais.
 
-16 janvier 04 version en anglais.
-
-22 janvier 04 version finale en anglais à poster en Federal
-express.
-
+\item 22 janvier 2004 Version finale en anglais à envoyer par le
+site web http://mat.gsia.cmu.edu/PATAT04
+\end{itemize}
 
 \section{Contraintes du Call for Papers}
-26 janv 04. Version en anglais.
+\begin{itemize}
+\item 26 janvier 2004. Version en anglais.
 
-En anglais 10 à 20 pages.
+\item En anglais 10 à 20 pages.
 
-Voir comment soumettre //mat.gsia.cmu.edu/PATAT04
-
+\item Voir comment soumettre //mat.gsia.cmu.edu/PATAT04
+\end{itemize}
 \bibliography{bibDiamant,bibProg}
 
 \end{document}
