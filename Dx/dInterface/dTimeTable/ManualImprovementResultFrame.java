@@ -62,7 +62,7 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
   private TTPane _ttPane;
   private TTStructure _ttStruct;
   private DToolBar _toolBar;
-  private DModel _dm;
+  //private DModel _dm;
   //private JFrame _jFrame;
   //private JDialog _jd;
 
@@ -72,15 +72,14 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
   /**
    * constructor
    */
-  public ManualImprovementResultFrame(JDialog jd, TTStructure tts, DToolBar toolbar,
+  public ManualImprovementResultFrame(JDialog jDialog, DToolBar toolbar,
                                       String eventName,  DModel dm) {
-    super(jd, eventName, true);
+    super(jDialog, eventName, true);
     TTStructure oldTTS= dm.getTTStructure();
     _ttStruct= new TTStructure();
     _ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
     _toolBar= toolbar;
-    _dm = dm;
-    initDlg(eventName);
+    initDlg(eventName, dm);
 
         //createFrame(eventName, simple);
     //jd.setLocationRelativeTo(this);
@@ -91,9 +90,9 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
    *
    * @return
    */
-  public TTStructure getTTS(){
+ /* public TTStructure getTTS(){
     return _ttStruct;
-  }
+  }*/
 
   /**
    *
@@ -112,7 +111,7 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
   }
 
 
-public void initDlg(String eventName){
+public void initDlg(String eventName, DModel dm){
   Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
  //Dimension frameDim = new Dimension(700,650);
@@ -120,8 +119,8 @@ public void initDlg(String eventName){
                                          screenSize.height - ADJUST_HEIGHT));
   _ttPane = new SimpleTTPane(_ttStruct,_toolBar);
 
-  Resource event = _dm.getSetOfEvents().getResource(eventName);
-  buildNewTTSTestConditions(event);
+  Resource event = dm.getSetOfEvents().getResource(eventName);
+  buildNewTTSTestConditions(event, dm);
   String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
     long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
@@ -133,8 +132,7 @@ public void initDlg(String eventName){
                    getAttach()).getSetOfSequences().getResourceAt(seqIndex).getAttach()).
                   getSetOfPeriods().getIndexOfResource(perKey[2]);
     //int[] perKeyIndex={};
-    int duration = ((EventAttach)event.getAttach()).getDuration()/ 60 ; //_dApplic.getDMediator()
-                 //.getCurrentDoc().getDM().getTTStructure().getPeriodLenght();
+    int duration = ((EventAttach)event.getAttach()).getDuration()/ dm.getTTStructure().getPeriodLenght();
     setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
     //_frameResult.setColorOfPanel(event.getID());
 
@@ -142,15 +140,15 @@ public void initDlg(String eventName){
   this.show();
 }
 
-private void buildNewTTSTestConditions(Resource event){
-  _dm.getConditionsTest().buildAllConditions(_ttStruct);
+private void buildNewTTSTestConditions(Resource event, DModel dm){
+  dm.getConditionsTest().buildAllConditions(_ttStruct);
   //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
   String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
   boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
   boolean inAPeriod= ((EventAttach)event.getAttach()).isPlaceInAPeriod();
   if(event!=null){
     ((EventAttach)event.getAttach()).setAssignState(true);
-    _dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1);
+    dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1);
     ((EventAttach)event.getAttach()).setAssignState(false);
     for(int i=0; i< _ttStruct.getCurrentCycle().getSetOfDays().size(); i++){
       Resource day= _ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
@@ -162,7 +160,7 @@ private void buildNewTTSTestConditions(Resource event){
           String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
           ((EventAttach)event.getAttach()).setKey(4,periodKey);
           ((EventAttach)event.getAttach()).setAssignState(true);
-          _dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1);
+          dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1);
           ((EventAttach)event.getAttach()).setAssignState(false);
         }// end for(int k=0; k< ((Sequence)seq.getAttach())
       }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
@@ -177,7 +175,7 @@ private void buildNewTTSTestConditions(Resource event){
    *
    * @param simple
    */
-  protected JInternalFrame  buildInternalFrame(boolean simple){
+ /* protected JInternalFrame  buildInternalFrame(boolean simple){
     JInternalFrame jif;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     Dimension frameDim = new Dimension(700,650);
@@ -200,14 +198,14 @@ private void buildNewTTSTestConditions(Resource event){
    jif.pack();
    jif.setVisible(true);
    return jif;
-  } // end buidDocument
+  } // end buidDocument*/
 
   /**
    *
    * @param str
    * @return
    */
-  protected void createFrame( String eventName, boolean simple) {
+ /* protected void createFrame( String eventName, boolean simple) {
     setTitle(eventName);
     JPanel panel = new JPanel(new BorderLayout(0,0));
     setContentPane(panel);
@@ -232,7 +230,7 @@ private void buildNewTTSTestConditions(Resource event){
       //doLayout();
       setLocation(INITIALPOSITION,INITIALPOSITION);
       setVisible(true);
-    } //end createUI
+    } //end createUI*/
 
     /**
      *

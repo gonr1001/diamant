@@ -19,14 +19,11 @@ import dInternal.dTimeTable.TTStructure;
 
 public class ManualImprovementCmd implements Command {
 
-  //ManualImprovementResultFrame _manImpResF;
+
   public ManualImprovementCmd() {
   } //end OpenTTCmd
 
   public void execute(DApplication dApplic) {
-   //_manImpResF= new ManualImprovementResultFrame(dApplic);
     new ManualImprovementDlg(dApplic,DConst.MANUALIMPROVEMENT_DLG_TITLE);
-    //(new ManualImprovementResultFrame(dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure(),
-      //                               dApplic.getToolBar())).createFrame("ADM111",true);
   } // end execute
 } /* end ManualImprovementCmd class */
