@@ -44,21 +44,55 @@ Le fichier XML contenant les informations sur la grille horaire est organisé de 
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
-    \includegraphics[width=200pt]{Images/TTxmlModel.eps}
-    \caption{Schema de la grille horaire}\label{xmltt}
+    \includegraphics[width=400pt]{Images/TTxmlModel.eps}
+    \caption{Schema du fichier XML de la grille horaire}\label{xmltt}
   \end{center}
 \end{figure}
 
 
 \section{Modélisation de la grille horaire}
 
-La nouvelle structure de la grille horaire de \diamant{} se présente une forme hiérarchique avec à son sommet la grille horaire complète et à la base les périodes.
+\subsection{Organisation hiérarchique}\label{hierar}
+
+La nouvelle structure de la grille horaire de \diamant{} se présente sous une forme hiérarchique avec à son sommet la grille horaire complète et à la base les périodes (voir figure \ref{orgtt}), elle est décrite comme suit:
+
+\begin{itemize}
+    \item Niveau 1: il correspond à la grille horaire complete et est constitué de plusieurs éléments de niveau 2.\\
+    
+    \item Niveau 2: il correspond à l'ensemble des cycles de la grille horaire. Chaque éléments du niveau 2 (un cycle) est constitué de plusieurs éléments de niveau 3.\\
+
+    \item Niveau 3: il correspond à l'ensemble des jours d'un cycle. Chaque éléments du niveau 3 (une journée) est constitué de plusieurs éléments de niveau 4.\\
+
+    \item Niveau 4: il correspond à l'ensemble des séquences d'une journée. chaque éléments du niveau 4 (une séquence) est constitué de plusieurs éléments de niveau 5.\\
+
+    \item Niveau 5: il est l'entité élémentaire de la grille horaire et il correspond à une période dans laquelle devra être affectée une activité.
+\end{itemize}     
+
 
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
     \includegraphics[width=200pt]{Images/organigramme.eps}
     \caption{Schema hierarchique de la grille horaire}\label{orgtt}
+  \end{center}
+\end{figure}
+
+\subsection{Modélisation objet}
+
+Cette modélisation consiste à présenter le diagramme de classes de la grille horaire. Ce diagramme respecte la hiérarchie décrite à la section \ref{hierar} et est composé de 3 types de classes (voir figure \ref{diagclass}):
+
+\begin{itemize}
+    \item Type 1: ce type ne concerne que la classe \emph{TTStructure} correspondant au sommet (niveau 1) de la grille horaire.\\
+
+    \item Type 2: ce type concerne les classes fonctionnant comme des ensembles d'éléments (\emph{SetOfCycles, SetOfDays, SetOfSequences et SetOfPeriods}). Ces classes héritent de la classe \emph{SetOfResources} pour construire et manipuler leurs ensembles respectifs (voir l'article \emph{Chargement et traitement de données à partir des fichiers textes }).\\
+    \item Type 3: ce type concerne les classes fonctionnant comme des éléments d'ensembles (\emph{Cycle, Day, Sequence et Period}). Ces classes héritent de la classe \emph{DXObject} afin de pouvoir être intégrées à leurs ensembles respectifs.
+\end{itemize}    
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=450pt]{Images/dTimetable.eps}
+    \caption{Diagramme de classes de la grille horaire}\label{diagclass}
   \end{center}
 \end{figure}
 
