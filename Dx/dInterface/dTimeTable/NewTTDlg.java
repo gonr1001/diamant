@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.6 $  $Date: 2003-06-02 15:05:36 $
+ * Title: NewTTDlg $Revision: 1.7 $  $Date: 2003-06-02 15:34:29 $
  * Description: NewTTDlg is created by NewTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -68,12 +68,12 @@ public class NewTTDlg extends JDialog {
      String  str2 = "";
      String  str3 = "" ;
      if (type == DConst.CYCLE) {
-       str1 = DConst.DGH;
+       str1 = "xml";//DConst.DGH;
        str2 = DConst.DGH_FILE;
        str3 = DConst.NTT_CY_TD;
      }
      if (type == DConst.EXAM) {
-       str1 = DConst.DGH;
+       str1 = "xml";//DConst.DGH;
        str2 = DConst.DGH_FILE;
        str3 = DConst.NTT_EX_TD;
      }
@@ -93,7 +93,7 @@ public class NewTTDlg extends JDialog {
        dApplic.setCurrentDir(fil);
        //load grille,
        TTStructure ttStruct = new TTStructure();
-       String error = ttStruct.rloadData(fil);
+       String error = ttStruct.loadTTStructure(fil);
 
        dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
 

@@ -200,7 +200,7 @@ public Period getPeriod(){
 
   /**
    * */
-  public boolean loadTTStructure(String fileName){
+  public String loadTTStructure(String fileName){
     readFile xmlFile;
     Element root, item, ID;
     try{
@@ -211,9 +211,9 @@ public Period getPeriod(){
       _setOfCycles.readXMLtag(root);
     }catch(Exception e){
       System.out.println(e);
-      return false;
+      return e.toString();
     }
-    return true;
+    return "";
 
   }
 
