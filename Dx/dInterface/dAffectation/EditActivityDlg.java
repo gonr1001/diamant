@@ -94,7 +94,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     for (int i=0; i< _unities.size(); i++){
       if(_unities.get(i)!=null){
         _currentActivityIndex=i;
-        _tabbedPane.addTab(((Resource)_unities.get(i)).getID(), createUnityPanel(i));
+        _tabbedPane.addTab(((Resource)_unities.get(i)).getID(), createUnityPanel(i, true, null));
       }
     }// end for
     _currentActivityIndex=0;
@@ -151,9 +151,32 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
       //System.out.println("Enable appliquer ... ");
       _buttonsPanel.setFirstEnable();
     }else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
-      new SelectInstructors(_dApplic,buildInstructorList());
+      new SelectInstructors(_dApplic, this, buildInstructorList());
     }
 
+  }
+
+  public void setInstructorList(Vector v) {
+
+    System.out.println("hello" + ((String) v.toArray()[0]));
+
+    _tabbedPane.setSelectedIndex(_currentActivityIndex);
+    JPanel jp = (JPanel)_tabbedPane.getComponentAt(_currentActivityIndex);
+    JPanel jpb = createUnityPanel(_currentActivityIndex, false, v);
+   _tabbedPane.setComponentAt(_currentActivityIndex,jpb);
+    //_tabbedPane.addTab(((Resource)_unities.get(_currentActivityIndex)).getID(), createUnityPanel(_currentActivityIndex,false));
+
+
+  /*  for (int i=0; i< _unities.size(); i++){
+      if(_unities.get(i)!=null){
+        _currentActivityIndex=i;
+        _tabbedPane.addTab(((Resource)_unities.get(i)).getID(), createUnityPanel(i, false));
+      }
+    }// end for
+    _currentActivityIndex=0;
+    getContentPane().add(_tabbedPane, BorderLayout.CENTER);
+    _tabbedPane.addChangeListener(this);
+    _tabbedPane.setSelectedIndex(_currentActivityIndex);*/
   }
 
   /**
@@ -172,7 +195,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * Builds a panel to be placed in a tab of the tabbedPane
    * @return a JPanel to be placed in a tab of the tabbedPane
    */
-  public JPanel createUnityPanel(int index){
+  public JPanel createUnityPanel(int index, boolean first, Vector v){
     JPanel centerPanel = new JPanel(new GridLayout(0,1));
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
     JPanel panel = new JPanel();
@@ -202,9 +225,14 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     cbRoom = new JComboBox(vect[1]);
     cbRoom.addActionListener(this);
     cbRoom.setSelectedItem(vect[0].get(0).toString());
-    vect = buildInstructorList();
-    //String [] a = {"rgr", "ys"};
-    instructorsList = new JList(vect[0].toArray());
+    if (first) {
+      vect = buildInstructorList();
+      //String [] a = {"rgr", "ys"};
+      instructorsList = new JList(vect[0].toArray());
+    } else {
+      //String [] a = {"rgr", "ys"};
+      instructorsList = new JList(v);
+    }
     cbInstructor = new JScrollPane(instructorsList);
     //cbInstructor.addActionListener(this);
     cbInstructor.setPreferredSize(new Dimension(163,25));

@@ -399,7 +399,7 @@ ji-322;50;620;11,14,15,20,44;y;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1
 ASL1091  05
 1
 1
------- ;------ ;
+ ; ;
 2
 3 3 
 1.1.1 4.1.1 
@@ -411,7 +411,7 @@ ASL1091  05
 EPD1041  01
 1
 1
------- ;------ ;
+ ; ;
 2
 2 2 
 2.2.5 5.1.1 
@@ -423,7 +423,7 @@ EPD1041  01
 EPD1041  02
 1
 1
------- ;------ ;
+ ; ;
 2
 2 2 
 4.2.5 5.1.3 
@@ -435,7 +435,7 @@ EPD1041  02
 EPK3141  01
 1
 1
------- ;
+ ;
 1
 3 
 3.1.1 
@@ -447,7 +447,7 @@ EPK3141  01
 EPK8021  01
 1
 1
-GAGNON,D. ;
+GAGNON,D. : ;
 1
 3 
 3.2.1 
@@ -459,7 +459,7 @@ GAGNON,D. ;
 EPS1101  01
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 2.1.1 
@@ -471,7 +471,7 @@ LAROCHE,J. ;
 EPS1101  02
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 2.1.3 
@@ -483,7 +483,7 @@ LAROCHE,J. ;
 EPS1102  11
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 3.1.1 
@@ -495,7 +495,7 @@ LAROCHE,J. ;
 EPS1102  12
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 3.1.3 
@@ -507,7 +507,7 @@ LAROCHE,J. ;
 EPS1102  13
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 2.2.1 
@@ -519,7 +519,7 @@ LAROCHE,J. ;
 EPS1102  14
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 2.2.3 
@@ -531,7 +531,7 @@ LAROCHE,J. ;
 EPS1121  01
 1
 1
-BEAUDRY,C. ;
+BEAUDRY,C. : ;
 1
 2 
 1.2.5 
@@ -543,7 +543,7 @@ BEAUDRY,C. ;
 EPS1121  02
 1
 1
-BEAUDRY,C. ;
+BEAUDRY,C. : ;
 1
 2 
 1.3.1 
@@ -555,7 +555,7 @@ BEAUDRY,C. ;
 EPS1122  11
 1
 1
-BEAUDRY,C. ;
+BEAUDRY,C. : ;
 1
 3 
 2.2.1 
@@ -567,7 +567,7 @@ BEAUDRY,C. ;
 EPS1122  12
 1
 1
-BEAUDRY,C. ;
+BEAUDRY,C. : ;
 1
 3 
 3.1.1 
@@ -579,7 +579,7 @@ BEAUDRY,C. ;
 EPS1122  13
 1
 1
-BEAUDRY,C. ;
+BEAUDRY,C. : ;
 1
 3 
 4.2.1 
@@ -591,7 +591,7 @@ BEAUDRY,C. ;
 EPS1241  01
 1
 1
-LOISEAU,S. ;LOISEAU,S. ;
+LOISEAU,S. : ;LOISEAU,S. : ;
 2
 2 1 
 5.1.2 5.1.1 
@@ -603,7 +603,7 @@ LOISEAU,S. ;LOISEAU,S. ;
 EPS1241  02
 1
 1
-LOISEAU,S. ;LOISEAU,S. ;
+LOISEAU,S. : ;LOISEAU,S. : ;
 2
 2 1 
 3.2.2 3.2.1 
@@ -615,7 +615,7 @@ LOISEAU,S. ;LOISEAU,S. ;
 EPS1241  03
 1
 1
-LOISEAU,S. ;LOISEAU,S. ;
+LOISEAU,S. : ;LOISEAU,S. : ;
 2
 2 1 
 4.1.2 4.1.1 
@@ -627,7 +627,7 @@ LOISEAU,S. ;LOISEAU,S. ;
 EPS1251  01
 1
 1
-BOURGAULT,A. ;
+BOURGAULT,A. : ;
 1
 2 
 5.1.1 
@@ -639,7 +639,7 @@ BOURGAULT,A. ;
 EPS1251  02
 1
 1
-BOURGAULT,A. ;
+BOURGAULT,A. : ;
 1
 2 
 5.1.3 
@@ -651,7 +651,7 @@ BOURGAULT,A. ;
 EPS1301  01
 1
 1
-DOUCET,C. ;DOUCET,C. ;
+DOUCET,C. : ;DOUCET,C. : ;
 2
 2 1 
 5.1.2 5.1.1 
@@ -663,7 +663,7 @@ DOUCET,C. ;DOUCET,C. ;
 EPS1301  02
 1
 1
-ROY,Y. ;ROY,Y. ;
+ROY,Y. : ;ROY,Y. : ;
 2
 2 1 
 1.2.2 1.2.1 
@@ -675,7 +675,7 @@ ROY,Y. ;ROY,Y. ;
 EPS1301  03
 1
 1
-ROY,Y. ;ROY,Y. ;
+ROY,Y. : ;ROY,Y. : ;
 2
 2 1 
 2.2.2 2.2.1 
@@ -687,7 +687,7 @@ ROY,Y. ;ROY,Y. ;
 EPS1321  01
 1
 1
-LEVASSEUR,M.-A. ;
+LEVASSEUR,M.-A. : ;
 1
 1 
 1.2.5 
@@ -699,7 +699,7 @@ LEVASSEUR,M.-A. ;
 EPS1321  02
 1
 1
-LEVASSEUR,M.-A. ;
+LEVASSEUR,M.-A. : ;
 1
 1 
 1.3.1 
@@ -711,7 +711,7 @@ LEVASSEUR,M.-A. ;
 EPS1322  11
 1
 1
-LEVASSEUR,M.-A. ;
+LEVASSEUR,M.-A. : ;
 1
 2 
 2.1.1 
@@ -723,7 +723,7 @@ LEVASSEUR,M.-A. ;
 EPS1322  12
 1
 1
-LEVASSEUR,M.-A. ;
+LEVASSEUR,M.-A. : ;
 1
 2 
 5.2.1 
@@ -735,7 +735,7 @@ LEVASSEUR,M.-A. ;
 EPS1322  13
 1
 1
-LEVASSEUR,M.-A. ;
+LEVASSEUR,M.-A. : ;
 1
 2 
 3.1.1 
@@ -747,7 +747,7 @@ LEVASSEUR,M.-A. ;
 EPS1391  01
 1
 1
------- ;
+ ;
 1
 1 
 4.2.5 
@@ -759,7 +759,7 @@ EPS1391  01
 EPS1392  11
 1
 1
------- ;
+ ;
 1
 2 
 5.2.1 
@@ -771,7 +771,7 @@ EPS1392  11
 EPS1392  12
 1
 1
------- ;
+ ;
 1
 2 
 5.1.1 
@@ -783,7 +783,7 @@ EPS1392  12
 EPS1431  01
 1
 1
------- ;------ ;
+ ; ;
 2
 2 1 
 4.2.2 4.2.1 
@@ -795,7 +795,7 @@ EPS1431  01
 EPS1441  01
 1
 1
-LOISEAU,S. ;LOISEAU,S. ;
+LOISEAU,S. : ;LOISEAU,S. : ;
 2
 2 1 
 4.2.2 4.2.1 
@@ -807,7 +807,7 @@ LOISEAU,S. ;LOISEAU,S. ;
 EPS1451  01
 1
 1
-BOURGAULT,A. ;
+BOURGAULT,A. : ;
 1
 3 
 5.2.1 
@@ -819,7 +819,7 @@ BOURGAULT,A. ;
 EPS2001  01
 1
 1
------- ;
+ ;
 1
 3 
 3.2.1 
@@ -831,7 +831,7 @@ EPS2001  01
 EPS2041  01
 1
 1
------- ;------ ;
+ ; ;
 2
 2 2 
 2.1.3 3.2.1 
@@ -843,7 +843,7 @@ EPS2041  01
 EPS2051  01
 1
 1
-BEAUDOIN,A.-J. ;BEAUDOIN,A.-J. ;
+BEAUDOIN,A.-J. : ;BEAUDOIN,A.-J. : ;
 2
 3 2 
 1.1.1 3.1.1 
@@ -855,7 +855,7 @@ BEAUDOIN,A.-J. ;BEAUDOIN,A.-J. ;
 EPS2051  02
 1
 1
-BEAUDOIN,A.-J. ;BEAUDOIN,A.-J. ;
+BEAUDOIN,A.-J. : ;BEAUDOIN,A.-J. : ;
 2
 3 2 
 1.2.1 3.1.3 
@@ -867,7 +867,7 @@ BEAUDOIN,A.-J. ;BEAUDOIN,A.-J. ;
 EPS2051  03
 1
 1
-BEAUDOIN,A.-J. ;BEAUDOIN,A.-J. ;
+BEAUDOIN,A.-J. : ;BEAUDOIN,A.-J. : ;
 2
 2 2 
 2.2.1 4.2.1 
@@ -879,7 +879,7 @@ BEAUDOIN,A.-J. ;BEAUDOIN,A.-J. ;
 EPS2071  01
 1
 1
-BEAUDOIN,A.-J. ;
+BEAUDOIN,A.-J. : ;
 1
 2 
 5.1.3 
@@ -891,7 +891,7 @@ BEAUDOIN,A.-J. ;
 EPS2111  01
 1
 1
-DEMERS,P. ;
+DEMERS,P. : ;
 1
 4 
 2.1.1 
@@ -903,7 +903,7 @@ DEMERS,P. ;
 EPS2121  01
 1
 1
-GAUTHIER,P. ;GAUTHIER,P. ;
+GAUTHIER,P. : ;GAUTHIER,P. : ;
 2
 2 2 
 4.2.1 2.2.1 
@@ -915,7 +915,7 @@ GAUTHIER,P. ;GAUTHIER,P. ;
 EPS2121  02
 1
 1
-GAUTHIER,P. ;GAUTHIER,P. ;
+GAUTHIER,P. : ;GAUTHIER,P. : ;
 2
 2 2 
 4.2.3 2.2.3 
@@ -927,7 +927,7 @@ GAUTHIER,P. ;GAUTHIER,P. ;
 EPS2131  01
 1
 1
-PARADIS,L.-P. ;
+PARADIS,L.-P. : ;
 1
 3 
 4.3.1 
@@ -939,7 +939,7 @@ PARADIS,L.-P. ;
 EPS2141  01
 1
 1
------- ;
+ ;
 1
 3 
 1.2.1 
@@ -951,7 +951,7 @@ EPS2141  01
 EPS3011  01
 1
 1
------- ;
+ ;
 1
 3 
 1.1.1 
@@ -963,7 +963,7 @@ EPS3011  01
 EPS3011  02
 1
 1
------- ;
+ ;
 1
 3 
 1.2.1 
@@ -975,7 +975,7 @@ EPS3011  02
 EPS3012  11
 1
 1
-DUFRESNE,N. ;
+DUFRESNE,N. : ;
 1
 3 
 3.2.1 
@@ -987,7 +987,7 @@ DUFRESNE,N. ;
 EPS3012  12
 1
 1
-LEMIEUX,G.-B. ;
+LEMIEUX,G.-B. : ;
 1
 3 
 3.2.1 
@@ -999,7 +999,7 @@ LEMIEUX,G.-B. ;
 EPS3012  13
 1
 1
-DESBIENS,J.-F. ;
+DESBIENS,J.-F. : ;
 1
 3 
 4.1.1 
@@ -1011,7 +1011,7 @@ DESBIENS,J.-F. ;
 EPS3012  14
 1
 1
-PAGE,B. ;
+PAGE,B. : ;
 1
 3 
 4.1.1 
@@ -1023,7 +1023,7 @@ PAGE,B. ;
 EPS3012  15
 1
 1
-PAGE,B. ;
+PAGE,B. : ;
 1
 3 
 5.2.1 
@@ -1035,7 +1035,7 @@ PAGE,B. ;
 EPS3081  01
 1
 1
-SPALLANZANI,C. ;SPALLANZANI,C. ;
+SPALLANZANI,C. : ;SPALLANZANI,C. : ;
 2
 2 2 
 1.1.3 3.2.3 
@@ -1047,7 +1047,7 @@ SPALLANZANI,C. ;SPALLANZANI,C. ;
 EPS3111  01
 1
 1
-THERRIEN,R. ;THERRIEN,R. ;
+THERRIEN,R. : ;THERRIEN,R. : ;
 2
 2 2 
 4.3.1 2.2.5 
@@ -1059,7 +1059,7 @@ THERRIEN,R. ;THERRIEN,R. ;
 EPS3111  02
 1
 1
-THERRIEN,R. ;THERRIEN,R. ;
+THERRIEN,R. : ;THERRIEN,R. : ;
 2
 2 2 
 4.2.5 2.3.1 
@@ -1071,7 +1071,7 @@ THERRIEN,R. ;THERRIEN,R. ;
 EPS4071  01
 1
 1
------- ;
+ ;
 1
 2 
 3.2.1 
@@ -1083,7 +1083,7 @@ EPS4071  01
 EPS5001  01
 1
 1
-LEMIEUX,G.-B. ;
+LEMIEUX,G.-B. : ;
 1
 3 
 4.1.1 
@@ -1095,7 +1095,7 @@ LEMIEUX,G.-B. ;
 EPS5001  02
 1
 1
-LEMIEUX,G.-B. ;
+LEMIEUX,G.-B. : ;
 1
 3 
 5.2.1 
@@ -1107,7 +1107,7 @@ LEMIEUX,G.-B. ;
 EPS5011  01
 1
 1
-LEMIEUX,G.-B. ;
+LEMIEUX,G.-B. : ;
 1
 3 
 4.1.1 
@@ -1119,7 +1119,7 @@ LEMIEUX,G.-B. ;
 EPS5031  01
 1
 1
-LEMIEUX,G.-B./SPALLANZANI,C. ;
+LEMIEUX,G.-B./SPALLANZANI,C. : ;
 1
 3 
 5.1.1 
@@ -1131,7 +1131,7 @@ LEMIEUX,G.-B./SPALLANZANI,C. ;
 FRP4031  05
 1
 1
-LÉTOURNEAU,M.-D. ;
+LÉTOURNEAU,M.-D. : ;
 1
 3 
 4.3.1 
@@ -1143,7 +1143,7 @@ LÉTOURNEAU,M.-D. ;
 FRP4031  06
 1
 1
-LÉTOURNEAU,M.-D. ;
+LÉTOURNEAU,M.-D. : ;
 1
 3 
 3.3.1 
@@ -1155,7 +1155,7 @@ LÉTOURNEAU,M.-D. ;
 FRP4091  05
 1
 1
------- ;
+ ;
 1
 3 
 3.3.1 
@@ -1167,7 +1167,7 @@ FRP4091  05
 HPE2821  01
 1
 1
------- ;
+ ;
 1
 3 
 1.2.1 
@@ -1179,7 +1179,7 @@ HPE2821  01
 KIN2001  01
 1
 1
------- ;
+ ;
 1
 2 
 1.1.3 
@@ -1191,7 +1191,7 @@ KIN2001  01
 KIN2001  02
 1
 1
------- ;
+ ;
 1
 2 
 4.2.3 
@@ -1203,7 +1203,7 @@ KIN2001  02
 KIN2121  01
 1
 1
-NADEAU,M. ;
+NADEAU,M. : ;
 1
 3 
 3.1.1 
@@ -1215,7 +1215,7 @@ NADEAU,M. ;
 KIN2121  02
 1
 1
-NADEAU,M. ;
+NADEAU,M. : ;
 1
 3 
 5.2.1 
@@ -1227,7 +1227,7 @@ NADEAU,M. ;
 KIN2131  01
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 1 
 1.1.1 
@@ -1239,7 +1239,7 @@ LAROCHE,J. ;
 KIN2131  02
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 1 
 1.1.2 
@@ -1251,7 +1251,7 @@ LAROCHE,J. ;
 KIN2132  11
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 1.2.1 
@@ -1263,7 +1263,7 @@ LAROCHE,J. ;
 KIN2132  12
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 1.2.3 
@@ -1275,7 +1275,7 @@ LAROCHE,J. ;
 KIN2132  13
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 3.2.1 
@@ -1287,7 +1287,7 @@ LAROCHE,J. ;
 KIN2132  14
 1
 1
-LAROCHE,J. ;
+LAROCHE,J. : ;
 1
 2 
 3.2.3 
@@ -1299,7 +1299,7 @@ LAROCHE,J. ;
 KIN2151  01
 1
 1
-BOISSY,P. ;BOISSY,P. ;
+BOISSY,P. : ;BOISSY,P. : ;
 2
 2 2 
 2.1.1 2.1.3 
@@ -1311,7 +1311,7 @@ BOISSY,P. ;BOISSY,P. ;
 KIN2151  02
 1
 1
-BOISSY,P. ;BOISSY,P. ;
+BOISSY,P. : ;BOISSY,P. : ;
 2
 2 2 
 4.1.1 4.1.3 
@@ -1323,7 +1323,7 @@ BOISSY,P. ;BOISSY,P. ;
 KIN2191  01
 1
 1
-BÉLISLE,M. ;
+BÉLISLE,M. : ;
 1
 3 
 1.2.1 
@@ -1335,7 +1335,7 @@ BÉLISLE,M. ;
 KIN2331  01
 1
 1
-FARRAR,D. ;
+FARRAR,D. : ;
 1
 2 
 2.2.1 
@@ -1347,7 +1347,7 @@ FARRAR,D. ;
 KIN2331  02
 1
 1
-FARRAR,D. ;
+FARRAR,D. : ;
 1
 2 
 3.3.1 
@@ -1359,7 +1359,7 @@ FARRAR,D. ;
 KIN2332  11
 1
 1
-JOLIN,L. ;
+JOLIN,L. : ;
 1
 2 
 2.3.1 
@@ -1371,7 +1371,7 @@ JOLIN,L. ;
 KIN2332  12
 1
 1
-JOLIN,L. ;
+JOLIN,L. : ;
 1
 2 
 4.3.1 
@@ -1383,7 +1383,7 @@ JOLIN,L. ;
 KIN2381  01
 1
 1
-HAMEL,J. ;
+HAMEL,J. : ;
 1
 4 
 4.1.1 
@@ -1395,7 +1395,7 @@ HAMEL,J. ;
 KIN2381  02
 1
 1
-HAMEL,J. ;
+HAMEL,J. : ;
 1
 4 
 3.2.1 
@@ -1407,7 +1407,7 @@ HAMEL,J. ;
 KIN2421  01
 1
 1
-FARRAR,D. ;
+FARRAR,D. : ;
 1
 2 
 3.2.5 
@@ -1419,7 +1419,7 @@ FARRAR,D. ;
 KIN2421  02
 1
 1
-FARRAR,D. ;
+FARRAR,D. : ;
 1
 2 
 3.3.1 
@@ -1431,7 +1431,7 @@ FARRAR,D. ;
 KIN2421  03
 1
 1
-FARRAR,D. ;
+FARRAR,D. : ;
 1
 2 
 2.2.1 
@@ -1443,7 +1443,7 @@ FARRAR,D. ;
 KIN2431  01
 1
 1
-ROY,M. ;
+ROY,M. : ;
 1
 3 
 1.1.1 
@@ -1455,7 +1455,7 @@ ROY,M. ;
 KIN3001  01
 1
 1
------- ;
+ ;
 1
 3 
 1.1.1 
@@ -1467,7 +1467,7 @@ KIN3001  01
 KIN3141  01
 1
 1
-THERRIEN,R. ;
+THERRIEN,R. : ;
 1
 3 
 2.2.1 
@@ -1479,7 +1479,7 @@ THERRIEN,R. ;
 KIN3501  01
 1
 1
-ROY,M. ;
+ROY,M. : ;
 1
 4 
 5.1.1 
@@ -1491,7 +1491,7 @@ ROY,M. ;
 KIN3511  01
 1
 1
-ROY,M. ;
+ROY,M. : ;
 1
 3 
 3.1.1 

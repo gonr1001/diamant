@@ -44,8 +44,8 @@ public class SelectInstructors extends JDialog implements ActionListener {
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel;
   private ButtonsPanel _buttonsPanel;
-
-  private String [] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
+  private DApplication _dApplic;
+  private EditActivityDlg _ead;
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
   /**
    * the vectors containing the instructors ID
@@ -62,9 +62,10 @@ public class SelectInstructors extends JDialog implements ActionListener {
    * @param dApplic The application object (for extracting the JFrame)
    */
 
-  public SelectInstructors(DApplication dApplic, Vector[] twoColumnList) {
+  public SelectInstructors(DApplication dApplic, EditActivityDlg ead, Vector[] twoColumnList) {
     super(dApplic.getJFrame(), DConst.INST_ASSIGN_M, true);
-    //_dApplic = dApplic;
+    _dApplic = dApplic;
+    _ead = ead;
     _leftVec= twoColumnList[0];
     _rightVec= twoColumnList[1];
     for (int i=0; i< _leftVec.size(); i++)
@@ -145,10 +146,14 @@ public class SelectInstructors extends JDialog implements ActionListener {
         dispose();
     //If button APPLY
     if (command.equals(DConst.BUT_APPLY)){
+      _ead.setInstructorList(_leftVec);
       //setActivitesVisibility();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+
+      //_dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
       _buttonsPanel.setFirstDisable();
+
     }
     //if button OK
    /* if (command.equals(_buttonsNames[0])){
