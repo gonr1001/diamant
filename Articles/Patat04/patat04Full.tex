@@ -505,40 +505,44 @@ sont capables de gérer des bases de données complexes.
 
 
 Pour chaque élément de l'architecture que nous avons présenté dans
-la section antérieure, nous proposons un composant qui fait partie
-de l'application de production d'horaires. Dans cette section nous
-allons montrer l'intégration entre le flot des données propre à un
-système de production d'horaires et l'architecture proposée.
+la sous-section antérieure, nous proposons un composant qui fait
+partie de l'application de production d'horaires. Dans cette
+sous-section nous allons montrer l'intégration entre le flot des
+données propre à un système de production d'horaires et
+l'architecture proposée.
 
 La conception de haut niveau de notre système de production
 d'horaires est simple (voir figure \ref{fig:fOne})~:
 
 \begin{enumerate}
-\item Nous avons des données qui entrent dans le système. Ces
-données sont gérées par la couche d'interface. Il y a trois
-sources possibles des données (voir figure \ref{fig:fTwo}):
+\item Nous avons défini trois catégories des  données  dans un
+système de production. La figure \ref{fig:fTwo} montre ces
+categories. La couche d'interface  traite ces données de la
+manière suivante~:
 
 \begin{enumerate}
-\item La saisie directe des données d'une période. Cette activité
-est faite par l'utilisateur commis. Normalement, ces données
+
+\item Les données générées par d'autres systèmes (données de
+base). Depuis long temps, les fichiers sont utilisés pour
+d'échanger de l'information entre deux systèmes. C'est pour cette
+raison que notre système doit être capable de recevoir et envoyer
+des fichiers dans un format compatible entre plusieurs systèmes.
+
+\item La saisie directe des données d'une période $P$. Cette
+activité est faite par un commis. Normalement, ces données
 changent à chaque création d'un horaire. Pour saisir les données,
 l'utilisateur commis a une page Web qui est affichée par un
-navigateur où il aura tous les champs à remplir. À cette étape, la
+navigateur où il aura des champs à remplir. À cette étape, la
 couche d'interface peut faire quelques validations minimales de la
 cohérence de données, par exemple, vérifier que le type de données
 est correct, vérifier que les champs qui sont obligatoires sont
 remplis, etc. Dépendant de la taille de l'institution, il peut
-avoir plusieurs utilisateurs commis qui travaillent au même temps
-dans l'application, il faut en conséquence, prendre les mesures
+avoir plusieurs commis qui travaillent au même temps dans
+l'application, il faut en conséquence, prendre les mesures
 nécessaires pour permettre le travail concurrent dans la couche de
 persistance de données.
 
-\item Les données générées par d'autres systèmes (données de
-base). Depuis long temps il est prouvé que la meilleure manière
-d'échanger de l'information entre deux systèmes est le transfert
-de fichiers. C'est pour cette raison que notre système doit être
-capable de recevoir et envoyer des fichiers dans un format
-compatible entre plusieurs systèmes.
+
 
 \item Les données horaire sont créées par l'application de
 création d'horaires. Cette application est gérée par l'utilisateur
@@ -563,13 +567,13 @@ Il faut tenir en considération que la couche d'interface
 communique uniquement avec la couche de logique d'affaires. Une
 application n'est pas capable d'ajouter, modifier ou effacer des
 données directement dans la base de données, elle doit passer
-irrémédiablement par la couche de logique d'affaires. Cette
+obligatoirement par la couche de logique d'affaires. Cette
 caractéristique nous permet d'assurer la cohérence des données.
 
 \item Les données sont traitées selon certaines règles et
 contraintes, ces règles sont définies par chaque institution et
-elles sont codées dans la couche logique d'affaires. C'est ici que
-nous pourrons exprimer des contraints propres à chaque
+elles sont appliques par la couche logique d'affaires. C'est ici
+que nous pourrons exprimer des contraints propres à chaque
 institution, par exemple, la quantité maximale d'étudiants dans un
 groupe, tous les cours de mathématique se déroulent le matin, etc.
 
@@ -622,9 +626,6 @@ la figure \ref{fig:fFour}.
   \put (19,0.5){\makebox(0,0){\scriptsize Couche de persistance des données}}
   \put (5,0.5){\framebox(6,1){\tiny Serveur Base Données}}
 
-
-
-
 \end{picture}
 \caption{L'implementation de l'architecture trois couches pour le
 système de production d'horaires.}\label{fig:fFour}
@@ -634,8 +635,8 @@ système de production d'horaires.}\label{fig:fFour}
 \section{Technologies possibles}\label{sec:tech}
 
 Pour l'implémentation de l'architecture, il faut en premier lieu,
-trouver quels sont les éléments technologiques nécessaires. Nous
-trouvons qu'il faut avoir~:
+faire un survol  des éléments technologiques nécessaires. Les
+besoins sont~:
 
 \begin{enumerate}
 \item Un langage pour faciliter l'affichage des données vers
@@ -650,7 +651,7 @@ l'échange des données avec les autres systèmes.
 \item Un outil pour gérer la persistance des données.
 \end{enumerate}
 
-Après notre analyse, nous avons constaté qu'il n'y a pas une seule
+Après un analyse, nous avons constaté qu'il n'y a pas une seule
 option, plutôt il y a plusieurs possibilités pour implémenter
 cette architecture.
 
@@ -676,12 +677,9 @@ La persistance de données & Base de données & Base de données & Base de données 
 l'architecture}\label{tb:tbOne}
 \end{table}
 
-Pour la construction de chaque instance nous avons pris en
-considération une certaine logique, nous avons mit ensemble les
-éléments qui ont des caractéristiques communes ou bien qui
-appartiennent à un même famille de logiciels et qui sont ouverts,
-c'est un critère de construction qui a été choisi de manière
-arbitraire.
+Pour la construction de chaque instance  nous avons mit ensemble
+les éléments qui ont des caractéristiques communes ou bien qui
+appartiennent à un même famille de logiciels et qui sont ouverts.
 
 Pour le volet base de données, nous n'avons pas mentionné le nom
 spécifique d'un système de gestion de base de données, le choix
@@ -754,13 +752,13 @@ nous a amené à notre choix:
 
 \begin{description}
 
-\item [Langage pour affichage:] Pour langage d'affichage et saisie
+\item [Langage pour affichage.] Pour langage d'affichage et saisie
 de données nous avons choisi HTML et JSP, étant donnée que ces
 langages sont le standard pour la création de pages Web, et nous
 voulons profiter de tous le bénéfices qu'offre un site Web pour
 les applications de type transactionnelle.
 
-\item [Format pour échanger données:] Pour échanger les données
+\item [Format pour échanger données.] Pour échanger les données
 nous avons choisi XML. Le langage XML (eXtensible Markup Language)
 nous permet de stocker, d'échanger et d'afficher des données ou de
 l'information d'une manière structurée. Le langage permet aussi de
@@ -771,14 +769,14 @@ un navigateur Web. De plus, quand des documents XML sont stockées
 dans une base de données, ils peuvent être l'objet de requêtes et
 retrouvés comme tout autre format de données.
 
-\item [Langage pour coder la logique d'affaire:] Nous avons choisi
+\item [Langage pour coder la logique d'affaire.] Nous avons choisi
 Java. Java est un langage interprété qui utilise la machine
 virtuel Java (JVM). Il y a plusieurs versions de cette machine
 virtuelle pour plusieurs plate-formes différentes, ce qui signifie
 que les programmeurs peuvent écrire pour ce langage en utilisant
 une plate-forme, et faire tourner leurs programmes sur autres.
 
-\item [La persistance de données:] Pour l'implémentation de la
+\item [La persistance de données.] Pour l'implémentation de la
 couche persistance de données nous avons choisi d'utiliser une
 base de données. Une base de données est une entité dans laquelle
 il est possible de stocker des données de façon structurée avec le
@@ -802,40 +800,46 @@ les institutions.
 
 \section{Conclusions}\label{sec:conc}
 
-Nous avons présenté une architecture pour la production d'horaires
-dans une institution d'enseignement. Un objectif a guidé notre
-démarche~: avoir une architecture ouverte et extensible. Dans la
-présentation de l'architecture nous avons montré qu'elle possède
-les deux qualités. Notre architecture est ouverte, étant donné
-qu'elle accepte plusieurs instances. L'architecture est aussi
-extensible, parce que nous pourrions changer les modules d'une
-manière facile.
+Nous avons présenté l'architecture d'un système de production
+d'horaires dans une institution d'enseignement. Un objectif a
+guidé notre démarche~: avoir une architecture ouverte et
+extensible. Afin d'assurer une vie plus longue au système.
+
+Nous avons commencé par montrer les besoins d'échanges
+d'information d'un tel système afin de mieux présenter comment
+l'architecture est capable de satisfaire ces besoins. De plus,
+dans la présentation de l'architecture nous avons montré qu'elle
+possède les deux qualités. Notre architecture est ouverte~: il est
+possible de construire plusieurs instances. L'architecture est
+aussi extensible, parce que nous pourrions changer les modules
+d'une manière facile. Les responsabilités de chaque module étant
+définies, permet de identifier la partie du système affecté par
+une modification. Il est nécessaire de continuer les
+développements en continuant à avoir comme objectif la ouverture
+(compatibilité) et l'extensibilité dans tout le logiciel.
+
+Il est maintenant possible de répondre à la question~: Est-ce que
+la construction d'horaires peut bénéficier de développements
+associés à la production de horaires? Notre experience dans le
+développement de logiciels de construction d'horaires nous a
+montré que~: la plus part de problèmes dans le logiciel viennent
+du fait que les données en entrée ont des erreurs. Le logiciel de
+construction doit dédier une grosse partie de son code pour
+détecter ses erreurs. De plus les utilisateurs prennent un temps
+important pour vérifier la cohérence de données avant de commencer
+le travail de construction. Alors, la réponse est oui, il existe
+de bénéfices. En développant un système de production il est plus
+facile d'assurer que le logiciel de construction a comme
+responsabilité la construction de l'horaire et pas celle de
+vérification de données.
+
+D'autres bénéfices sont aussi à envisager, comme par exemple
+consulter son horaire par le Web (à jour) depuis sa residence,
+surtout dans des pays ou parfois il fait $-30^\circ$.
 
 
-Nous arrivons à l'objectif de modéliser le processus de production
-d'horaires pour prendre des décisions permettant son
-automatisation. Ceci peut faciliter les développement et
-l'implantation d'un système sur deux points de vue~:
 
 
-\begin{itemize}
-
-\item Le développement d'interfaces logiciels entre les différents
-constituants du système, ceci peut conduire à développer de
-nouveau modules ou à la modification de modules existants.
-
-\item L'intégration graduelle de nouveaux modules dans le temps,
-afin de perturber le moins possible les utilisateurs du système.
-\end{itemize}
-
-Dans le système que nous proposons, nous essayons de limiter le
-plus possible d'intervention humaine afin de réduire des erreurs
-de manipulation. Nous essayons de réduire aussi le sources
-possible d'erreurs en vérifiant l'entrée de données.
-
-Le travail futur est de continuer à concevoir le système au
-complet en gardant les lignes directrices de extensibilité et
-d'ouverture.
 
 \bibliography{bibDiamant,bibProg}
 
