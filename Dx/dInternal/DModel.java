@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.56 $  $Date: 2003-08-22 14:03:06 $
+ * Title: DModel $Revision: 1.57 $  $Date: 2003-08-28 00:23:02 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -33,6 +33,7 @@ import dInternal.DModelEvent;
 import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
+import dInternal.dConditionsTest.SetOfEvents;
 
 
 
@@ -51,6 +52,7 @@ public class DModel implements  DModelListener, TTStructureListener {
   private SetOfActivities _setOfActivities=null;
   private DApplication _dApplic;
   private TTStructure _ttStruct;
+  private SetOfEvents _setOfEvents;
   private int _currentCycle = 1;
 
   //for new and open Timetable
@@ -131,6 +133,7 @@ public class DModel implements  DModelListener, TTStructureListener {
       if( _setOfStudents.getError().length()!=0){
         return _setOfStudents.getError();
       }
+      this.buildSetOfEvents();// yannick
     }
     _constructionState=1;
     //_setOfStates.sendEvent();
@@ -139,57 +142,57 @@ public class DModel implements  DModelListener, TTStructureListener {
 
 
   /***/
-public String getVersion(){
-  return _version;
-}
+  public String getVersion(){
+    return _version;
+  }
 
-/**
- * */
-public void setVersion(String version){
-  _version=version;
+  /**
+   * */
+  public void setVersion(String version){
+    _version=version;
   }
 
   public String importData(String str) {
     LoadData loadData = new LoadData(str);
     // import set of instructors
-      _setOfInstructors = loadData.extractInstructors(null, false);
-      resizeInstructorsAvailability();//
-     if( _setOfInstructors.getError().length()!=0){
-       return _setOfInstructors.getError();
-     }
+    _setOfInstructors = loadData.extractInstructors(null, false);
+    resizeInstructorsAvailability();//
+    if( _setOfInstructors.getError().length()!=0){
+      return _setOfInstructors.getError();
+    }
 
-     // import set of rooms
-      _setOfRooms = loadData.extractRooms(null, false);
-     if( _setOfRooms.getError().length()!=0){
-       return _setOfRooms.getError();
-     }
+    // import set of rooms
+    _setOfRooms = loadData.extractRooms(null, false);
+    if( _setOfRooms.getError().length()!=0){
+      return _setOfRooms.getError();
+    }
 
-     // import set of activities
-     _setOfActivities = loadData.extractActivities(null, false);
-     if( _setOfActivities.getError().length()!=0){
-       return _setOfActivities.getError();
-     }
+    // import set of activities
+    _setOfActivities = loadData.extractActivities(null, false);
+    if( _setOfActivities.getError().length()!=0){
+      return _setOfActivities.getError();
+    }
 
-     // import set of students
-     _setOfStudents = loadData.extractStudents(null, false);
-     if(_setOfStudents.getError().length()!=0){
-       return _setOfStudents.getError();
-     }
-     _constructionState=1;
-     //_setOfStates.sendEvent();
-     return "";
+    // import set of students
+    _setOfStudents = loadData.extractStudents(null, false);
+    if(_setOfStudents.getError().length()!=0){
+      return _setOfStudents.getError();
+    }
+    _constructionState=1;
+    //_setOfStates.sendEvent();
+    return "";
   }
 
   private String rreadTT(String fileName){
     JOptionPane.showMessageDialog(_dApplic.getJFrame(),
-                         "rreadTT was here",
-                          "trace",
-                             JOptionPane.OK_OPTION);
+                                  "rreadTT was here",
+                                  "trace",
+                                  JOptionPane.OK_OPTION);
     return "";
   }
 /*  public String loadTTStruct(String str) {
     LoadData loadData = new LoadData(str);
-    // import set of instructors
+  // import set of instructors
       _ttStruct = loadData.extractTTStruct();
      if( _ttStruct.getError().length()!=0){
        return _ttStruct.getError();
@@ -214,7 +217,7 @@ public void setVersion(String version){
   }
 
   public int getCurrentCycle() {
-  return _currentCycle;
+    return _currentCycle;
   }
 
 //this method must be renamed to saveTT
@@ -287,23 +290,38 @@ public void setVersion(String version){
   }
 
 
- private void resizeInstructorsAvailability(){
-   int [][] matrix;
-   InstructorAttach attach;
-   for (int i=0; i< _setOfInstructors.size(); i++){
-     attach = (InstructorAttach)_setOfInstructors.getResourceAt(i).getAttach();
-     matrix=attach.getMatrixAvailability();
-     matrix = DXToolsMethods.resizeAvailability(matrix,_ttStruct);
-     attach.setAvailability(matrix);
-   }
+  /**
+   * resize instructor availability
+   */
+  private void resizeInstructorsAvailability(){
+    int [][] matrix;
+    InstructorAttach attach;
+    for (int i=0; i< _setOfInstructors.size(); i++){
+      attach = (InstructorAttach)_setOfInstructors.getResourceAt(i).getAttach();
+      matrix=attach.getMatrixAvailability();
+      matrix = DXToolsMethods.resizeAvailability(matrix,_ttStruct);
+      attach.setAvailability(matrix);
+    }
+  }
+
+  /**
+   * build set of events
+   */
+  public void buildSetOfEvents(){
+    _setOfEvents = new SetOfEvents();
+    if (_setOfActivities!=null){
+      String cycle = _ttStruct.getSetOfCycles().getSetOfCycles().getResourceAt(
+          _ttStruct.getCurrentCycleIndex()).getID();
+      _setOfEvents.build(cycle, _setOfActivities, _setOfInstructors, _setOfRooms);
+    }// end if (_setOfActivities!=null)
   }
 
   public void changeInDModel(DModelEvent  e) {
 
   }// end actionPerformed
 
-   public void changeInTTStructure(TTStructureEvent  e) {
+  public void changeInTTStructure(TTStructureEvent  e) {
 
-   }// end actionPerformed*/
+  }// end actionPerformed*/
 
 } /* end class DModel */

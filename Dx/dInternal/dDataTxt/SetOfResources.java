@@ -34,7 +34,7 @@ public class SetOfResources extends DXObject{
   /**
    * Constructor
    * 0= activities, 1= students, 2= instructors, 3 = rooms, 4= ttstructure
-   * 5= states
+   * 5= states, 6 = events
    * @param int resType  The resource type
    * */
   public SetOfResources( int resType) {

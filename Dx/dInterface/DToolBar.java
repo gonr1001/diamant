@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.27 $  $Date: 2003-08-27 15:23:21 $
+ * Title: ToolBar $Revision: 1.28 $  $Date: 2003-08-28 00:23:02 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,14 +17,15 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: rgr $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
 
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.lang.Exception;
 
 import javax.swing.JButton;
@@ -33,6 +34,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+
+import dInterface.dUtil.DXJComboBox;
 
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.Cycle;
@@ -61,7 +64,8 @@ import com.iLib.gDialog.FatalProblemDlg;
 public class DToolBar extends JToolBar implements TTStructureListener{// implements ActionListener{
   private DApplication _dApplic;
   private static final String _toolBarNames [] = {DConst.TB_DAYS, DConst.TB_PER};
-  private JComboBox _toolBarSelector, _daySelector, _dayNameSelector, _periodSelector, _periodTypeSelector;
+  private JComboBox _toolBarSelector, _daySelector, _periodSelector;
+  private DXJComboBox _dayNameSelector, _periodTypeSelector;
   private boolean _comboBoxStatus = true;
   private JButton _sameLine, _sameColumn;
   private JTextField _setNumberOfDays;
@@ -108,7 +112,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     _daySelector.setMaximumSize(new Dimension(50,DConst.NPT11 * c));
 
     //JComboBox dayNameSelector initialisation
-    _dayNameSelector = new JComboBox(TTStructure._weekTable);
+    _dayNameSelector = new DXJComboBox(TTStructure._weekTable);
     _dayNameSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * c));
     _dayNameSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * c));
 
@@ -121,7 +125,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
 
     //JComboBox periodTypeSelector initialisation
     String [] periodTypes = {"B","N","Z"};
-    _periodTypeSelector = new JComboBox(periodTypes);
+    _periodTypeSelector = new DXJComboBox(periodTypes);
     _periodTypeSelector.setPreferredSize(new Dimension(100, DConst.NPT11 * c));
     _periodTypeSelector.setMaximumSize(new Dimension(100, DConst.NPT11 * c));
 
@@ -177,14 +181,16 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         if(item!=-1){
           Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(item);
           _tts.getCurrentCycle().setCurrentDayIndex(item);
-          ActionListener [] al =_dayNameSelector.getActionListeners();
+         /* ActionListener [] al =_dayNameSelector.getActionListeners();
           for (int i = 0; i <al.length; i++) {
             _dayNameSelector.removeActionListener(al[i]);
-          }
+          }*/
+          _dayNameSelector.disableActionListener();
           _dayNameSelector.setSelectedItem(resc.getID());
-          for (int i = 0; i <al.length; i++) {
+          _dayNameSelector.enableActionListener();
+          /*for (int i = 0; i <al.length; i++) {
             _dayNameSelector.addActionListener(al[i]);
-          }
+          }*/
         }
       }//end actionPerformed
     });//end addActionListener
@@ -284,7 +290,9 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         _periodSelector.setSelectedItem(Integer.toString(ppanel.getPanelRefNo()));
         period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
+        _periodTypeSelector.disableActionListener();
         _periodTypeSelector.setSelectedItem(_tts._priorityTable[period.getPriority()]);
+        _periodTypeSelector.enableActionListener();
       }else{
         new FatalProblemDlg(_dApplic.getJFrame(),"Période non trouvée");
         _periodSelector.setSelectedIndex(0);

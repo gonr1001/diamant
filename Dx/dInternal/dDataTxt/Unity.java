@@ -211,7 +211,7 @@ public class Unity extends DXObject{
    * @param String the cycle ID
    * @return boolean the operation result
    * */
-  public boolean CycleAssignment(String cycle){
+  public boolean removeCycleAssignment(String cycle){
     return _setOfAssignments.removeResource(cycle);
   }
 
