@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.3 $  $Date: 2003-12-15 21:48:16 $
+ * Title: DetailedPeriodPanel $Revision: 1.4 $  $Date: 2003-12-15 21:52:56 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -55,8 +55,8 @@ public class DetailedPeriodPanelMI extends PeriodPanel{
     this.setBackground(Color.WHITE);
   }
 
-  public DetailedPeriodPanelMI(int refNo, String eventName) {
-    super(refNo, eventName);
+  public DetailedPeriodPanelMI(int refNo, String str, String eventName) {
+    super(refNo, str);
     _eventName = eventName;
   }
   /**
