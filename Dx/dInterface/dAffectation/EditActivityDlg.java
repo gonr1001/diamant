@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.44 $  $Date: 2004-06-10 15:11:31 $
+ * Title: EditActivityDlg $Revision: 1.45 $  $Date: 2004-06-11 14:04:55 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -77,6 +77,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;
 
 import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
 
 
@@ -93,6 +94,7 @@ public class EditActivityDlg
   private JTabbedPane _tabbedPane;
   private JScrollPane _jScrollPane;
   private ButtonsPanel _applyPanel;
+  private DXJComboBox _roomCB;
   private JLabel [] _capacity;
   private boolean _canBeModified = false;
   private Vector _unities = new Vector();           // contains event resource
@@ -188,18 +190,22 @@ public class EditActivityDlg
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    System.out.println(command);
-    if (command.equals("name")) {
+    //System.out.println(command);
+	if (command.equals(DConst.CATEGORY_AC)) {
+		_roomCB.disableActionListeners();
+		JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
+		Vector[] vectR =  buildRoomList(getSelectedCategory(tpane));
+		_roomCB = new DXJComboBox(vectR[1]);
+		_roomCB.enableActionListeners();
+	  //System.out.println("change in Cat");
+	  _applyPanel.setFirstEnable();
+	}
+    if (command.equals(DConst.NAME_AC)) {
       JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
       String roomName = getSelectedRoom(tpane);
       _capacity[_currentActivityIndex].setText(getCapacity(roomName));
-	  //_capacity.repaint();
-      //_capacity.setText("HElep" ) ; //getCapacity(roomName));
-     // _capacity.repaint();
-      System.out.println("Get Capacity: " + getCapacity(roomName));
-    }
-    if (command.equals("cat")) {
-      System.out.println("change in Cat");
+      //System.out.println("Get Capacity: " + getCapacity(roomName));
+	  _applyPanel.setFirstEnable();
     }
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
@@ -323,26 +329,26 @@ public class EditActivityDlg
     Vector[] vectC =  buildCategoryRoomList();
     JComboBox categoryRoomCB = new JComboBox(vectC[1]);
     categoryRoomCB.setSelectedItem(vectC[0].get(0).toString());
-    categoryRoomCB.setActionCommand("cat");
+    categoryRoomCB.setActionCommand(DConst.CATEGORY_AC);
     categoryRoomCB.addActionListener(this);
 
-    Vector[] vectR =  buildRoomList();
-    JComboBox roomCB = new JComboBox(vectR[1]);
-    roomCB.setActionCommand("name");
-    roomCB.setSelectedItem(vectR[0].get(0).toString());
-    roomCB.addActionListener(this);
+    Vector[] vectR =  buildRoomList(vectC[0].get(0).toString());
+    _roomCB = new DXJComboBox(vectR[1]);
+    _roomCB.setActionCommand(DConst.NAME_AC);
+    _roomCB.setSelectedItem(vectR[0].get(0).toString());
+    _roomCB.addActionListener(this);
 
     //Vector[] vectCapacity  = buildCapacityList();
     String capacity = getCapacity(vectR[0].get(0).toString());
     _capacity [index] = new JLabel(capacity);
 
     JPanel categoryRoom = new JPanel();
-    categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), "Cat"));
+    categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), DConst.CATEGORY_LABEL));
     categoryRoom.add(categoryRoomCB);
     JPanel roomName = new JPanel();
-    roomName.setBorder(new TitledBorder(new EtchedBorder(), "Name"));
+    roomName.setBorder(new TitledBorder(new EtchedBorder(), DConst.NAME_LABEL));
 
-    roomName.add(roomCB);
+    roomName.add(_roomCB);
     roomName.add(_capacity[index]);
 
     roomPanel.add(categoryRoom);
@@ -364,7 +370,14 @@ public class EditActivityDlg
     return ((JComboBox)roomJPanel.getComponent(0)).getSelectedItem().toString();
   } // end getSelectedRoom
 
-
+  private String getSelectedCategory(JPanel jPanel) {
+	 JPanel externalPanel = (JPanel) jPanel.getComponent(2);
+	 JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
+	 JPanel catJPanel = (JPanel) myJPanel.getComponent(0);
+	 return ((JComboBox)catJPanel.getComponent(0)).getSelectedItem().toString();
+   } // end getSelectedCategory
+   
+   
   private JPanel buildFixingPanel(int index) {
     EventAttach event = (EventAttach)((Resource)_unities.get(index)).getAttach();
     JPanel myPanel = new JPanel();
@@ -653,7 +666,7 @@ public class EditActivityDlg
    *build the room list
    * @return
    */
-  private Vector[] buildRoomList(){
+  private Vector[] buildRoomList(String category){
     Vector list[] = {new Vector(1), new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     SetOfRooms sor= _dm.getSetOfRooms();

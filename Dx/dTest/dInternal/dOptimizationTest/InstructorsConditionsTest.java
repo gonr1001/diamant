@@ -1,7 +1,7 @@
 package dTest.dInternal.dOptimizationTest;
 
 import junit.framework.*;
-import java.util.Vector;
+
 
 import dInternal.DModel;
 import dInternal.dTimeTable.Period;
@@ -9,7 +9,7 @@ import dInternal.dOptimization.TestInstructorsConditions;
 import dInterface.DDocument;
 
 import java.io.File;
-import java.util.StringTokenizer;
+
 
 
 public class InstructorsConditionsTest extends TestCase {

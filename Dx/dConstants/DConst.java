@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.110 $  $Date: 2004-06-09 19:29:16 $
+ * Title: DConst $Revision: 1.111 $  $Date: 2004-06-11 14:04:55 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.110 $
+ * @version $Revision: 1.111 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -414,7 +414,13 @@ public class DConst {
   public final static String ROOM_SEP = res.getString("roomSep"); // "-Locaux-";
   public final static String STUDENT_SEP = res.getString("studentSep"); // "-Etudiants-";
 
-
+  public final static String NAME_AC = res.getString("nameAC"); // "nameAC";
+  public final static String CATEGORY_AC = res.getString("categoryAC"); // "categoryAC";
+  
+  public final static String NAME_LABEL = res.getString("nameLabel"); // "Nom";
+  public final static String CATEGORY_LABEL = res.getString("categoryLabel"); // "Category";
+  
+  
   public DConst() {
   }
 }

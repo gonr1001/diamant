@@ -40,7 +40,6 @@ public class Cycle extends DXObject{
         lastIndWeek=i;
         break;
       }
-
     for (int i=size; i< (size+nbDays); i++){
       lastIndWeek++;
       String dayID= TTStructure._weekTable[lastIndWeek%TTStructure.getNumberOfActiveDays()];

@@ -59,10 +59,6 @@ public class LoadData {
   public LoadData(DModel dm) {
 	initLoadData();
    _dm = dm;
-/*   if (_dm != null)
-      _chars =_dm.getDDocument().getDMediator(
-      ).getDApplication(
-      ).getPreferences()._acceptedChars;*/
   }
   private void initLoadData() {
     _dm = null;
@@ -308,11 +304,6 @@ public class LoadData {
      }
      return extract;
   }
-
-
-  public static void main(String[] args) {
-
-  } // end main
 
 
 }
