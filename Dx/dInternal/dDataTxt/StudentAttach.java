@@ -178,10 +178,12 @@ public class StudentAttach extends DXObject{
   /**
    *
    * */
-  public String externalKey(String str){
+  public String externalKey(String str, String id){
     String temp="0000000"+ str;
     temp= temp.substring(temp.length()-8,temp.length());
-    return temp+ _auxField;
+    String nbCours="000"+_courses.size();
+    nbCours= nbCours.substring(nbCours.length()-2,nbCours.length());
+    return temp+ _auxField+id+nbCours;
   }
 
   /**

@@ -103,7 +103,7 @@ public class Resource {
   public String toWrite(String separator){
     String instInfo;
     String id= _resourceID;
-    id=_resourceAttach.externalKey( Long.toString(_resourceKey))+id;
+    id=_resourceAttach.externalKey( Long.toString(_resourceKey), id);//+id;
     instInfo= id + separator;
     instInfo += _resourceAttach.toWrite();
     return instInfo;

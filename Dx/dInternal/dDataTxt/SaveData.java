@@ -48,12 +48,14 @@ public class SaveData {
     diaData+=LoadData._saveSeparator+CR_LF;
     diaData+=fileName+".xml"+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
+    diaData+=inst.size()+CR_LF;
     diaData+=inst.toWrite()+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
     diaData+=rooms.toWrite()+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
     diaData+=act.toWrite()+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
+    diaData+=students.size()+CR_LF;
     diaData+=students.toWrite()+CR_LF;
     diaData+=LoadData._saveSeparator;
     filter= new FilterFile(diaData.getBytes());
