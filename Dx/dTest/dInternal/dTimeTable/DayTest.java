@@ -14,7 +14,11 @@ import dInternal.dData.Activity;
 import java.util.Vector;
 import java.io.File;
 
+import dInternal.dData.Resource;
+import dInternal.dData.SetOfResources;
+
 import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Sequence;
 
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
@@ -47,7 +51,6 @@ String path;
     Day day= new Day();
     try{
       xmlFile = new readFile();
-      //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"day.xml");
       ReadXMLElement list= new ReadXMLElement();
       eDay = list.getRootElement(doc);
@@ -62,56 +65,67 @@ String path;
   }
 
   /**
-   * test that gives the end hour
+   * test to generate a clon of a day
    * */
 
-  /**
-   * test that gives the end hour
-   * */
+  public void test_cloneDay(){
+    Day firstDay = new Day();
+    Day clonedDay = new Day();
+    SetOfResources setOfSequences = new SetOfResources(4);
 
-  /*
+    for (int i = 1; i < 4; i++){
+      setOfSequences.addResource(new Resource(Integer.toString(i), new Sequence()),0);
+    }
+    firstDay.setSetOfSequences(setOfSequences);
+    clonedDay = firstDay.cloneDay();
+
+    assertEquals("test_cloneDay : assertEquals 1 (Size of setOfSequences): ", firstDay.getSetOfSequences().size(), clonedDay.getSetOfSequences().size());
+    assertEquals("test_cloneDay : assertEquals 2 (ID of sequence 1): ", firstDay.getSetOfSequences().getResourceAt(0).getID(), firstDay.getSetOfSequences().getResourceAt(0).getID());
+    assertEquals("test_cloneDay : assertEquals 3 (ID of sequence 2): ", firstDay.getSetOfSequences().getResourceAt(1).getID(), firstDay.getSetOfSequences().getResourceAt(1).getID());
+    assertEquals("test_cloneDay : assertEquals 4 (ID of sequence 3): ", firstDay.getSetOfSequences().getResourceAt(2).getID(), firstDay.getSetOfSequences().getResourceAt(2).getID());
+
+  }//end of method
+
+
+
+
   public void test_writeXMLtag(){
     readFile xmlFile;
-    Element  item, ID;
-    Period period= new Period();
-    Period periodS= new Period();
+    Element  eSetOfSequences;
+    Day firstDay = new Day();
+    Day savedDay = new Day();
+    SetOfResources setOfSequences = new SetOfResources(4);
+
     try{
       xmlFile = new readFile();
-      //System.out.println(path+"period.xml");//debug
-      Document  doc;// = xmlFile.getDocumentFile(path+"period.xml");
-
-    */
-      /*ReadXMLElement list= new ReadXMLElement();
-      item= list.getRootElement(doc);
-      period.readXMLtag(item);*/
-      //write xml file
-
-  /*
-  period.setBeginHour(9,30);
-      period.setPriority(2);
-      BuildXMLElement wr= new BuildXMLElement();
-      doc=wr.getNewDocument();
-       Element ttPeriod= period.writeXMLtag(doc);
-      doc= wr.buildDOM(doc,ttPeriod);
-      writeFile.write(doc,path+"SavePeriod.xml");
+      Document  doc;
+      for (int i = 1; i < 4; i++){
+        setOfSequences.addResource(new Resource(Integer.toString(i), new Sequence()),1);
+      }
+      firstDay.setSetOfSequences(setOfSequences);
+      BuildXMLElement wr = new BuildXMLElement();
+      doc = wr.getNewDocument();
+      eSetOfSequences = firstDay.writeXMLtag(doc);
+      doc= wr.buildDOM(doc, eSetOfSequences);
+      writeFile.write(doc, path+"SavedDay.xml");
 
       // read xml file
-      doc = xmlFile.getDocumentFile(path+"SavePeriod.xml");
+      doc = xmlFile.getDocumentFile(path+"SavedDay.xml");
       ReadXMLElement list= new ReadXMLElement();
-      item= list.getRootElement(doc);
-      periodS= new Period();
-      periodS.readXMLtag(item);
-      //Element ttStruc= _setOfCycles.writeXMLtag(doc);
-      // create document and write in the file
+      eSetOfSequences = list.getRootElement(doc);
+      savedDay = new Day();
+      savedDay.readXMLtag(eSetOfSequences);
 
-      //_setOfCycles.readXMLtag(root);
     }catch(Exception e){
       System.out.println(e);
     }
-    assertEquals("test_writeXMLtag : assertEquals (beginHour):", periodS.getBeginHour()[0], period.getBeginHour()[0]);
-    assertEquals("test_writeXMLtag : assertEquals (beginMinute):", periodS.getBeginHour()[1], period.getBeginHour()[1]);
-    assertEquals("test_writeXMLtag : assertEquals (priority):", periodS.getPriority(), period.getPriority());
-  }
 
-*/
-}
+    assertEquals("test_writeXMLtag : assertEquals 1 (setOfSequences size): ", firstDay.getSetOfSequences().size(), savedDay.getSetOfSequences().size());
+    assertEquals("test_writeXMLtag : assertEquals 2 (ID of sequence 1): ", firstDay.getSetOfSequences().getResourceAt(0).getID(), savedDay.getSetOfSequences().getResourceAt(0).getID());
+    assertEquals("test_writeXMLtag : assertEquals 3 (ID of sequence 2): ", firstDay.getSetOfSequences().getResourceAt(1).getID(), savedDay.getSetOfSequences().getResourceAt(1).getID());
+    assertEquals("test_writeXMLtag : assertEquals 4 (ID of sequence 3): ", firstDay.getSetOfSequences().getResourceAt(2).getID(), savedDay.getSetOfSequences().getResourceAt(2).getID());
+
+  }//end of method
+
+
+}//end of class

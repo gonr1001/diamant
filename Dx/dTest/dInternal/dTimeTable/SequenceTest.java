@@ -73,18 +73,18 @@ String path;
 
   public void test_cloneSequence(){
     Sequence firstSequence = new Sequence();
-    Sequence clonSequence = new Sequence();
+    Sequence clonedSequence = new Sequence();
     SetOfResources setOfPeriods = new SetOfResources(4);
 
     for (int i = 0; i < 3; i++){
         setOfPeriods.addResource(new Resource(Integer.toString(i), new Period()),0);
     }
     firstSequence.setSetOfPeriods(setOfPeriods);
-    clonSequence = firstSequence.cloneSequence();
+    clonedSequence = firstSequence.cloneSequence();
 
-    assertEquals("test_cloneSequence : assertEquals 1 (Size of setOfResources):", firstSequence.getSetOfPeriods().size(), clonSequence.getSetOfPeriods().size());
-    assertEquals("test_cloneSequence : assertEquals 2 (ID of period 1):", firstSequence.getSetOfPeriods().getResourceAt(0).getID(), clonSequence.getSetOfPeriods().getResourceAt(0).getID());
-    assertEquals("test_cloneSequence : assertEquals 3 (ID of period 2):", firstSequence.getSetOfPeriods().getResourceAt(1).getID(), clonSequence.getSetOfPeriods().getResourceAt(1).getID());
+    assertEquals("test_cloneSequence : assertEquals 1 (Size of setOfResources):", firstSequence.getSetOfPeriods().size(), clonedSequence.getSetOfPeriods().size());
+    assertEquals("test_cloneSequence : assertEquals 2 (ID of period 1):", firstSequence.getSetOfPeriods().getResourceAt(0).getID(), clonedSequence.getSetOfPeriods().getResourceAt(0).getID());
+    assertEquals("test_cloneSequence : assertEquals 3 (ID of period 2):", firstSequence.getSetOfPeriods().getResourceAt(1).getID(), clonedSequence.getSetOfPeriods().getResourceAt(1).getID());
 
   }
 
