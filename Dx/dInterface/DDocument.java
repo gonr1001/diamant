@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.106 $  $Date: 2004-04-27 18:13:10 $
+ * Title: DDocument $Revision: 1.107 $  $Date: 2004-05-17 18:12:14 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.106 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.107 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -191,6 +191,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.buildSetOfEvents();
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
+    _dm.getSetOfActivities().sortSetOfResourcesByID();
 
     _ttPane.updateTTPane(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
@@ -233,7 +234,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.setStateBarComponent();
     _ttPane.updateTTPane(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
-
+    _dm.getSetOfActivities().sortSetOfResourcesByID();
     setCursor(Cursor.DEFAULT_CURSOR, component);
   }// end ac
 
@@ -250,6 +251,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.setStateBarComponent();
     _ttPane.updateTTPane(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
+    _dm.getSetOfActivities().sortSetOfResourcesByID();
     component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   }// end ac
 

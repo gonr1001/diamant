@@ -235,6 +235,7 @@ public class LoadData {
       ((SetOfActivities)setOfResc).setDataToLoad(dataloaded,false);
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfStudents")){
       // implement selective import for students
+      ((SetOfStudents)setOfResc).setDataToLoad(dataloaded);
     } else {// (NullPointerException npe) {
       new FatalProblemDlg("I was in LoadData class, No resource class available!!!" );
     }
@@ -250,6 +251,7 @@ public class LoadData {
       new FatalProblemDlg("I was in LoadData class and extractInstructors. preload failed!!!" );
       //System.exit(52);
     }
+    //setOfResc.sortSetOfResourcesByID();
     return setOfResc;
   }
 

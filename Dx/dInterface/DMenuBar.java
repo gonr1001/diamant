@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.106 $  $Date: 2004-04-16 16:54:13 $
+ * Title: DMenuBar $Revision: 1.107 $  $Date: 2004-05-17 18:12:15 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.106 $
+ * @version $Revision: 1.107 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -100,7 +100,7 @@ public class DMenuBar extends JMenuBar{
   _importSelectRoom,
   _importSelectInst,
   _importSelectAct,
-  ImportSelectStud,
+  _importSelectStud,
   _export,        //
   _exit;
   private boolean _boolNewTTableCy, _boolNewTTableEx, _boolNewTTStrucCy,
@@ -550,6 +550,13 @@ public class DMenuBar extends JMenuBar{
     _importSelectAct.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ACT));
     _importSelectAct.addActionListener(_dApplic);
     _importSelect.add(_importSelectAct);
+
+    // students selective import
+    _importSelectStud = new CmdMenu(DConst.IMP_SELECT_STUD);
+    _importSelectStud.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _importSelectStud.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_STUD));
+    _importSelectStud.addActionListener(_dApplic);
+    _importSelect.add(_importSelectStud);
 
     _dev.add(_importSelect);
 
