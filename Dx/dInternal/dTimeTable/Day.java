@@ -28,6 +28,33 @@ public class Day extends DXObject{
   }
 
   /**
+   * @param int the index of the sequence
+   * */
+  public Sequence getSequence(int sequenceIndex){
+    return (Sequence)_setOfSequences.getResourceAt((sequenceIndex)).getAttach();
+  }
+
+  /**
+   * */
+  public Sequence getCurrentSequence(){
+    return getSequence(_currentSequenceIndex) ;
+  }
+
+  /**
+  * */
+ public int getCurrentSequenceIndex(){
+   return _currentSequenceIndex ;
+  }
+
+  /**
+   * */
+  public void setCurrentSequenceIndex(int curSequenceIndex){
+    _currentSequenceIndex = curSequenceIndex;
+  }
+
+
+
+  /**
    * set the set of sequences
    * @param SetOfResources the set of sequences
    * */
@@ -83,6 +110,7 @@ public class Day extends DXObject{
 
 
   private SetOfResources _setOfSequences;
+  private int _currentSequenceIndex = 0;
   static final String _TAGITEM="TTsequence";
   static final String _TAGITEM1="sequenceID";
   static final String _TAGITEM2="TTperiods";

@@ -28,6 +28,33 @@ public class Sequence extends DXObject{
   }
 
   /**
+   * */
+  public Period getPeriod(int periodIndex){
+    return (Period)_setOfPeriods.getResourceAt((periodIndex)).getAttach();
+  }
+
+  /**
+   * */
+  public Period getCurrentPeriod(){
+    return getPeriod(_currentPeriodIndex) ;
+  }
+
+  /**
+  * */
+ public int getCurrentPeriodIndex(){
+   return _currentPeriodIndex ;
+  }
+
+  /**
+   * */
+  public void setCurrentPeriodIndex(int curPeriodIndex){
+    _currentPeriodIndex = curPeriodIndex;
+  }
+
+
+
+
+  /**
    * set the set of periods
    * @param SetOfResources the set of periods
    * */
@@ -77,6 +104,7 @@ public class Sequence extends DXObject{
 
 
    private SetOfResources _setOfPeriods;
+   private int _currentPeriodIndex = 0;
    static final String _TAGITEM="TTperiod";
    static final String _TAGITEM1="periodID";
 

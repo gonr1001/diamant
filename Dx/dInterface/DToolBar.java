@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.12 $  $Date: 2003-06-16 15:10:40 $
+ * Title: ToolBar $Revision: 1.13 $  $Date: 2003-06-17 12:09:42 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -35,6 +35,9 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.Cycle;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
@@ -58,7 +61,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   private DApplication _dApplic;
   private static final String _toolBarNames [] = {"Jours", "Periods"};
   JComboBox toolBarSelector, daySelector, dayNameSelector, periodSelector, periodTypeSelector;
-  JButton stdDays, addDay, removeDay, sameLine, sameColumn;
+  JButton sameLine, sameColumn;
   JTextField setNumberOfDays;
   JLabel lSetNumberOfDays, lDaySelector, lDayNameSelector, lPeriodIndicator, lPeriodTypeSelector;
   JToolBar.Separator jtbSep [];
@@ -88,10 +91,12 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         //int  i = cb.getSelectedIndex();
         int i = toolBarSelector.getSelectedIndex();
          System.out.println("ToolBar selector: "+i);//debug
-        switch (i){
+         selectBar(i);
+        /*switch (i){
           case 0: addBarOne(); break;
           case 1: addBarTwo(); break;
         }// end switch
+        */
       }//end actionPerformed
     });//end addActionListener
 
@@ -145,23 +150,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
       }//end actionPerformed
     });//end addActionListener
 
-    stdDays.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
 
-      }//end actionPerformed
-    });//end addActionListener
-
-    addDay.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-
-      }//end actionPerformed
-    });//end addActionListener
-
-    removeDay.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-
-      }//end actionPerformed
-    });//end addActionListener
 
 
     //*** Actions for the elements of the bar two
@@ -169,28 +158,21 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     periodSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
          String item= (String)periodSelector.getSelectedItem();
-        if(DXToolsMethods.isIntValue(item)){
-          PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
-              ).getPeriodPanel(Integer.parseInt(item) );
-          Period period;
-          if(ppanel!=null){
-            period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
-                                   ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
-            periodTypeSelector.setSelectedItem(_tts._priorityTable[period.getPriority()]);
-          }else{
-            new FatalProblemDlg(_dApplic.getJFrame(),"Période non trouvée");
-            periodSelector.setSelectedIndex(0);
-          }// end if(ppanel!=null)
-        }else{// end if(DXToolsMethods.isIntValue(item))
-          new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
-          periodSelector.setSelectedIndex(0);
-        }
+         setPeriodSelector(item);
 
       }//end actionPerformed
     });//end addActionListener
 
     periodTypeSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        String item= (String)periodSelector.getSelectedItem();
+        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+              ).getPeriodPanel(Integer.parseInt(item) );
+          Period period;
+          period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
+                                   ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
+          period.setPriority(periodTypeSelector.getSelectedIndex());
+          _tts.sendEvent();
 
       }//end actionPerformed
     });//end addActionListener
@@ -198,16 +180,63 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
 
     sameLine.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-
+        String item= (String)periodSelector.getSelectedItem();
+        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+              ).getPeriodPanel(Integer.parseInt(item) );
+        Cycle cycle = _tts.getCurrentCycle();
+        Period per;
+        for(int i = 0; i < cycle.getSetOfDays().size(); i++){
+          per = _tts.getPeriod(cycle, i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
+          per.setPriority(periodTypeSelector.getSelectedIndex());
+        }
+        _tts.sendEvent();
       }//end actionPerformed
     });//end addActionListener
 
 
     sameColumn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        String item= (String)periodSelector.getSelectedItem();
+        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+              ).getPeriodPanel(Integer.parseInt(item) );
+        int dayIndex = ppanel.getPeriodRef()[0];
+        Day day = _tts.getCurrentCycle().getDay(dayIndex);
+        Sequence seq;
+        Period per;
+        for (int i = 0; i < day.getSetOfSequences().size(); i++){
+          seq = day.getSequence(i);
+          for (int j = 0; j < seq.getSetOfPeriods().size(); j++ ){
+            per = seq.getPeriod(j);
+            per.setPriority(periodTypeSelector.getSelectedIndex());
+          }
+        }
+        _tts.sendEvent();
 
       }//end actionPerformed
     });//end addActionListener
+  }
+
+  /**
+   *
+   * */
+  public void setPeriodSelector(String item){
+    if(DXToolsMethods.isIntValue(item)){
+      PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+          ).getPeriodPanel(Integer.parseInt(item) );
+      Period period;
+      if(ppanel!=null){
+        periodSelector.setSelectedItem(Integer.toString(ppanel.getPanelRefNo()));
+        period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
+                               ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
+        periodTypeSelector.setSelectedItem(_tts._priorityTable[period.getPriority()]);
+      }else{
+        new FatalProblemDlg(_dApplic.getJFrame(),"Période non trouvée");
+        periodSelector.setSelectedIndex(0);
+      }// end if(ppanel!=null)
+    }else{// end if(DXToolsMethods.isIntValue(item))
+      new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
+      periodSelector.setSelectedIndex(0);
+    }
   }
 
   private void jbInit(){
@@ -218,12 +247,8 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     lPeriodTypeSelector = new JLabel("Priorité Période ");
 
     //The JButton Objects initialisation
-    stdDays = new JButton("Standard");
-    addDay = new JButton("Ajouter");
-    removeDay = new JButton("Supprimer");
-
-    sameLine = new JButton("Toute la journée");
-    sameColumn = new JButton("Toute la ligne");
+    sameLine = new JButton("Toute la ligne");
+    sameColumn = new JButton("Toute la journée");
 
 
     //textField objects initialisation
@@ -280,6 +305,20 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     _tts.addTTStructureListener(this);
     setToolBarOne();
     setToolBarTwo();
+  }
+
+  /**
+   *
+   * */
+  public void selectBar(int choice){
+    switch (choice){
+         case 0: addBarOne();
+           toolBarSelector.setSelectedIndex(0);
+           break;
+         case 1: addBarTwo();
+           toolBarSelector.setSelectedIndex(1);
+           break;
+        }// end switch
   }
 
   /**
@@ -346,11 +385,6 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     addSeparator();
     add(lDayNameSelector);
     add(dayNameSelector);
-    add(stdDays);
-    addSeparator();
-    add(addDay);
-    addSeparator();
-    add(removeDay);
 
     repaint();
   }//end methode
@@ -366,9 +400,9 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     add(lPeriodTypeSelector);
     add(periodTypeSelector);
     addSeparator();
-    add(sameLine);
-    addSeparator();
     add(sameColumn);
+    addSeparator();
+    add(sameLine);
 
     repaint();
   }//end addBarTwo()

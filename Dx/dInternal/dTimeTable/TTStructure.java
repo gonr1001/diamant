@@ -220,13 +220,13 @@ public class TTStructure {
    * @param int the index of the period int the sequence
    * @return Period the period
    * */
-  public Period getPeriod(Cycle cycle, int dayRefNo, int seqRefNo, int perRef){
+  public Period getPeriod(Cycle cycle, int dayIndex, int seqIndex, int perIndex){
     if(cycle!=null){
-      Day day =(Day)cycle.getSetOfDays().getResource(dayRefNo).getAttach();
+      Day day =(Day)cycle.getSetOfDays().getResourceAt(dayIndex).getAttach();
       if(day!=null){
-        Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqRefNo).getAttach();
+        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(seqIndex).getAttach();
         if (seq!=null){
-          return (Period)seq.getSetOfPeriods().getResource(perRef).getAttach();
+          return (Period)seq.getSetOfPeriods().getResourceAt(perIndex).getAttach();
         }
       }
     }

@@ -37,6 +37,8 @@ public class TTPanel extends JScrollPane {
   private int UHEIGHT =  60;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
   private int _periodLenght;
+  private MouseListener _mouseListener;
+  private PeriodPanel _lastActivPpanel=null;
 
 
 //  private int MINWIDTH =  500; // timeTable.nbDays * MINWIDTH;
@@ -51,10 +53,38 @@ public class TTPanel extends JScrollPane {
   }
 
   private void initTTPanel() {
+
     setColumnHeaderView(createColumnHeader());
     setRowHeaderView(createRowHeader());
     setViewportView(createViewPort());
+    manageActions();
     //System.out.println(((JPanel)getViewport().getComponent(0)).getComponentCount()); //
+  }
+
+  /**
+   *
+   * */
+  private void manageActions(){
+    //JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
+    /*
+     * Mouse listener for this Panel
+     */
+     _mouseListener = new MouseAdapter() {
+
+      public void mouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 1) {
+          if(_lastActivPpanel!=null)
+            _lastActivPpanel.setPanelBackGroundColor(0);
+          PeriodPanel perpanel= (PeriodPanel)e.getSource();
+          _dm.getDApplication().getToolBar().setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
+          _dm.getDApplication().getToolBar().selectBar(1);
+           perpanel.setPanelBackGroundColor(1);
+
+          _lastActivPpanel=perpanel;
+         System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo());//debug
+        }
+      }
+    };
   }
 
   public void updateTTPanel(TTStructure ttp){
@@ -101,6 +131,7 @@ public class TTPanel extends JScrollPane {
   }
 
   private JPanel createViewPort() {
+
     GridBagLayout gridbag =new GridBagLayout();
     JPanel panel =  new JPanel( gridbag );
     panel.setBackground(SystemColor.window);
@@ -130,7 +161,8 @@ public class TTPanel extends JScrollPane {
         Sequence sequence= _dm.getTTStructure().getSequence(day,j+1);
         for(int k = 0; k < sequence.getSetOfPeriods().size(); k ++) {
           Period period= _dm.getTTStructure().getPeriod(sequence,k+1);
-          periodPanel = new PeriodPanel(count,i+1,j+1,k+1);//(period, count, UWIDTH, UHEIGHT);
+          periodPanel = new PeriodPanel(count,i,j,k);//(period, count, UWIDTH, UHEIGHT);
+          periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period,UWIDTH, UHEIGHT);
           count++;
           c = new GridBagConstraints();

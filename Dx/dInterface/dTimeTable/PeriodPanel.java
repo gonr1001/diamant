@@ -105,4 +105,20 @@ public class PeriodPanel extends JPanel{
    }
 
   }
+  /**
+   *
+   * */
+  public void setPanelBackGroundColor(int init ){
+    Color color= Color.BLUE;
+  switch(init){
+    case 0: color= new Color(236,233,216);//getBackground()
+      break;
+    case 1: color= Color.BLUE;
+      break;
+    case 2: ;
+      break;
+   }
+    setBackground(color);
+  }
+
 }
