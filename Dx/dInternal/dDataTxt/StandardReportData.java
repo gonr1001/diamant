@@ -17,7 +17,7 @@ import dResources.DConst;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-public class ReportData {
+public class StandardReportData {
 
   private DModel _dm;
   private int _AHOUR=60;// a hour= 60 minutes
@@ -28,7 +28,7 @@ public class ReportData {
    * Constructor
    * @param dm
    */
-  public ReportData(DModel dm) {
+  public StandardReportData(DModel dm) {
     _dm=dm;
     _activitiesReport= buildActivitiesReport();
   }
