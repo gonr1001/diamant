@@ -2,8 +2,11 @@
 
 package dInternal.dTimeTable;
 
+import java.io.File;
 import java.util.StringTokenizer;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -22,16 +25,50 @@ public class Cycle extends DXObject{
   //private Day _currentDay;
   //private int _currentDayIndex=0;
 
+  //+++++++++++++++++++++++++++++
+	public Cycle() {
+		_setOfDays = new SetOfResources(4);
+	    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
+	  }
 
-
-  public Cycle() {
-    _setOfDays = new SetOfResources(4);
-  }
-
+	  //public class Data {
+	  static Logger logger = Logger.getLogger(TTStructure.class.getName());
+	  public Cycle(boolean flag) {
+	  	_setOfDays = new SetOfResources(4);
+	    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
+	  }
+  //-----------------------------
+  
   /**
    *
    * */
   public void addDays(int nbDays){
+	/*//+++++++++++++++++++++++++++++
+	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
+	 	"<method>loadTTStructure</method>\n" +"<params>\n"+
+		"<simple>\n<type>String</type>\n<value>"+fileName+"</value>\n</simple>\n"+
+		"</params>\n</instruction>\n");
+	
+	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
+		 	"<method>saveTTStructure</method>\n" +"<params>\n"+
+			"<simple>\n<type>String</type>\n<value>D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"tt.xml"+"</value>\n</simple>\n"+
+			"</params>\n</instruction>\n");
+		
+    //-----------------------------
+	*/
+	//+++++++++++++++++++++++++++++
+	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
+	 	"<method>addDays</method>\n" +"<params>\n"+
+		"<simple>\n<type>int</type>\n<value>"+nbDays+"</value>\n</simple>\n"+
+		"</params>\n</instruction>\n");
+	
+	logger.info("<instruction>\n<class>"+this.getClass().getName()+"</class>\n"+
+		 	"<method>toString</method>\n" +"<params>\n"+
+			"<simple>\n<type></type>\n<value></value>\n</simple>\n"+
+			"</params>\n</instruction>\n");
+		
+    //-----------------------------
+	
     int size= _setOfDays.size();
     Resource day= _setOfDays.getResourceAt(size-1);
     String lastDayID= day.getID();
@@ -47,7 +84,6 @@ public class Cycle extends DXObject{
       _setOfDays.setCurrentKey(i+1);
       _setOfDays.addResource(new Resource(dayID,((Day)day.getAttach()).cloneDay()),0);
     }
-
   }
 
   /**
