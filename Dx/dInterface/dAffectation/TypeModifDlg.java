@@ -75,6 +75,7 @@ private DApplication _dApplic;
         init();
          Vector students= activity.getStudentRegistered();
          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
+         _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false);
         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       }
     }
