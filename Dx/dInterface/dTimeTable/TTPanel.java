@@ -27,12 +27,14 @@ import dInternal.dTimeTable.Period;
 
 public class TTPanel extends JScrollPane {
   private DModel _dm;
-  private int UWIDTH =  75; // timeTable.nbDays * MINWIDTH;
-  private int UHEIGHT =  50;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
+  private int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
+  private int VWIDTH =  36; // timeTable.nbDays * MINWIDTH;
+  private int UWIDTH =  100; // timeTable.nbDays * MINWIDTH;
+  private int UHEIGHT =  60;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
-  private int MINWIDTH =  500; // timeTable.nbDays * MINWIDTH;
-  private int MINHEIGHT =  600;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
-  private JLabel _x;
+//  private int MINWIDTH =  500; // timeTable.nbDays * MINWIDTH;
+//  private int MINHEIGHT =  600;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
+
   public TTPanel(DModel dm) {
     super();
     _dm = dm;
@@ -46,17 +48,16 @@ public class TTPanel extends JScrollPane {
   }
 
   public void updateTTPanel(TTStructure ttp){
-    _x.setText("Change done");
+    //
   }
 
   private JPanel createColumnHeader() {
     JPanel panel = new JPanel(new GridLayout(1, 0));
-
     for (int i = 0; i < _dm.getTTStructure().getColumn() ; i++){
-      //panel.add(new JLabel("Jour " + (i + 1) + " : "+ _dmgetTTStructure.getDayID(i), JLabel.CENTER));
-      panel.add(new JLabel("Jour " + (i + 1) + " : "+ "lun", JLabel.CENTER));
+      panel.add(new JLabel("J " + (i + 1) + " : "+ _dm.getTTStructure().getDayName(i), JLabel.CENTER));
+      //panel.add(new JLabel("Jour " + (i + 1) + " : "+ "lun", JLabel.CENTER));
     }
-    panel.setPreferredSize(new Dimension(UWIDTH, UHEIGHT/2));
+    panel.setPreferredSize(new Dimension(UWIDTH *_dm.getTTStructure().getColumn(), HHEIGHT));
 
     panel.setBorder(BorderFactory.createEtchedBorder());
     return panel;
@@ -66,14 +67,15 @@ public class TTPanel extends JScrollPane {
     JPanel panel = new JPanel(new GridLayout(0,1));
 
     JLabel label;
-    for (int i = 0;/*timeTable.getEarliest()*/ i < _dm.getTTStructure().getRow() /*timeTable.getLatest()*/; i++) {
+    for (int i = _dm.getTTStructure().getBegingTime(); i < _dm.getTTStructure().getEndTime(); i++) {
       label = new JLabel(Integer.toString(i) + ":00");
       label.setVerticalAlignment(JLabel.TOP);
       panel.setBorder(BorderFactory.createEtchedBorder());
       panel.add(label);
     }
-
-    panel.setPreferredSize(new Dimension(UWIDTH/2, UHEIGHT *_dm.getTTStructure().getRow() ));  //size for the vertical panel
+    //panel.setPreferredSize(new Dimension(VWIDTH, UHEIGHT *_dm.getTTStructure().getRow() ));  //size for the vertical panel
+    panel.setPreferredSize(new Dimension(VWIDTH, UHEIGHT *
+               (_dm.getTTStructure().getEndTime() - _dm.getTTStructure().getBegingTime())));  //size for the vertical panelreturn panel;
     return panel;
   }
 
@@ -89,49 +91,45 @@ public class TTPanel extends JScrollPane {
     gridbag.columnWidths = new int [nbCols];
     for (int i = 0; i < nbCols; i++) {
       gridbag.columnWeights[i] = 1;
-      gridbag.columnWidths[i] = 30;
+      gridbag.columnWidths[i] =  UWIDTH;
+
     }
     int nbRows = _dm.getTTStructure().getRow();
     gridbag.rowWeights = new double [nbRows];
     gridbag.rowHeights = new int [nbRows];
     for (int i = 0; i < nbRows; i++) {
       gridbag.rowWeights[i] = 1;
-      gridbag.rowHeights[i] = 20;
+      gridbag.rowHeights[i] = UHEIGHT;
     }
-    //_x = new JLabel ("hello");
-    //panel.add(_x);
-    //////////////
-    /*
-  //System.out.println("DTTPanel timeTable size :"+ timeTable.size());//debug
-    */
-    PeriodPanel period = null;
+    PeriodPanel periodPanel = null;
     GridBagConstraints c = null;
     int count = 0;
     for (int i = 0; i < _dm.getTTStructure().getColumn() ; i++ ) {
       for(int j = 0; j < _dm.getTTStructure().getRow(); j ++) {
-
-        Period per = _dm.getTTStructure().getPeriod();
+        Period period = _dm.getTTStructure().getPeriod();
        //  Period per = _dm.getTTStructure().getPeriod(i,j);
         //if (per != null)//debug
         //  System.out.println("DTTPanel period :"+ i);//debug
-        period = new PeriodPanel(count);//_ddv, per, view, i);
+        periodPanel = new PeriodPanel(count, UWIDTH, UHEIGHT);
         count++;
         c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.gridx = i;
-        c.gridy = j ; //per.timeBegin.get(Calendar.HOUR_OF_DAY) - timeTable.getEarliest();
-      //if ( per.timeEnd.get(Calendar.MINUTE) == 0 ){
-        // nbCells = hfin - hdebut
-        c.gridheight = 1;
-            //per.timeEnd.get(Calendar.HOUR_OF_DAY) -
-            //    per.timeBegin.get(Calendar.HOUR_OF_DAY);
-       // c.insets = new Insets( per.timeBegin.get(Calendar.MINUTE)*MINHEIGHT/60,
-         //       0, 0, 0 );
-        c.insets = new Insets(0, 0, 0, 0 );
-        gridbag.setConstraints(period, c);
-        panel.add(period, c);
-      } // end for
-      }//end for
+        c.gridy = period._beginHour[0] - period._endHour[0];
+        if ( period._endHour[1] == 0 ){
+          c.gridheight = period._endHour[0] - period._beginHour[0];
+          c.insets = new Insets( 0/*period._beginHour[0]*UHEIGHT/60*/, 0, 0, 0 );
+        } else {
+          c.gridheight = period._endHour[0] + 1 - period._beginHour[0];
+          c.insets = new Insets( period._beginHour[0]*UHEIGHT/60, 0,
+                                 (60- period._beginHour[0]*UHEIGHT/60), 0 );
+
+        }
+        //c.insets = new Insets(10, 0, 0, 0 );
+        gridbag.setConstraints(periodPanel, c);
+        panel.add(periodPanel, c);
+      } // end for j
+    }//end for i
       /*} else {
         // nbCells = (hfin + 1) - hdebut
         c.gridheight = per.timeEnd.get(Calendar.HOUR_OF_DAY) + 1 -
@@ -176,16 +174,7 @@ public class DTTPanel extends JScrollPane{
 
 
   public DTTPanel(DTimeTable tt, DDocumentView ddv, int viewType) {
-    try{
-      _ddv = ddv;
-      timeTable = tt;
-      perVect = new Vector();
-      view = viewType;
-      jbInit();
-    }
-    catch(Exception e) {
-      e.printStackTrace();
-    }
+
   }
 
   private void jbInit() throws Exception {
@@ -218,31 +207,10 @@ public class DTTPanel extends JScrollPane{
     int minWidth = timeTable.nbDays * MINWIDTH;
     int minHeight = (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
     // create column header
-    JPanel panel = new JPanel(new GridLayout(1, 0));
-    //panel = confDialog();
-    //panel.setPreferredSize(new Dimension(minWidth, 20));
-    //setColumnHeaderView(panel);
-    //panel = new JPanel(new GridLayout(1, 0));
-    int nbds=0;
-    for (int j=0;j< _ddv._constraint._jour.length; j++)
-      if (_ddv._constraint._jour[j]==1)
-        nbds++;
-    for (int x = 0; x < timeTable.nbDays; x++){
-      panel.add(new JLabel("Jour " + Integer.toString(x + 1)+" : "+ _ddv._constraint._nameDays[x%nbds].substring(0,3), JLabel.CENTER));
-    }
-    panel.setPreferredSize(new Dimension(minWidth, 20));
-    setColumnHeaderView(panel);
-    // create row header
-    panel = new JPanel(new GridLayout(0,1));
-    JLabel label;
-    for (int y = timeTable.getEarliest(); y < timeTable.getLatest(); y++) {
-      label = new JLabel(Integer.toString(y) + ":00");
-      label.setVerticalAlignment(JLabel.TOP);
-        panel.add(label);
-    }
-    panel.setPreferredSize(new Dimension(35, minHeight));
-    setRowHeaderView(panel);
 
+    // create row header
+
+   // create ViewPort
     panel = new JPanel(gridbag);
     panel.setBackground(SystemColor.window);
     panel.setPreferredSize(new Dimension(minWidth, minHeight));
@@ -370,12 +338,12 @@ public class DTTPanel extends JScrollPane{
 }
 */
 class PeriodPanel extends JPanel{
-  private int UWIDTH =  75; // timeTable.nbDays * MINWIDTH;
-  private int UHEIGHT =  50;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
+//  private int UWIDTH =  75; // timeTable.nbDays * MINWIDTH;
+//  private int UHEIGHT =  50;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
-  public PeriodPanel(int c) {
+  public PeriodPanel(int c, int w, int h) {
     setLayout(new GridLayout(2,1));
-    setPreferredSize(new Dimension(UWIDTH, UHEIGHT));
+    setPreferredSize(new Dimension(w, h));
     setBorder(new BevelBorder(BevelBorder.RAISED));
     JPanel topPanel = new JPanel();
     JPanel bottomPanel = new JPanel();

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.21 $  $Date: 2003-05-27 14:12:37 $
+ * Title: DDocument $Revision: 1.22 $  $Date: 2003-05-27 17:15:11 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -43,7 +43,7 @@ import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;
 
-
+import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
 public class DDocument implements ActionListener, DModelListener{
@@ -85,14 +85,18 @@ public class DDocument implements ActionListener, DModelListener{
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
-    //_jif.setPreferredSize(new Dimension(200, 200));
     _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
     _jif.pack();
-    //JLayeredPane.DEFAULT_LAYER
-    //_dApplic.getDesktop().add(_jif, new Integer(1));
-    _dApplic.getDesktop().add(_jif, JLayeredPane.DEFAULT_LAYER);
-    _dApplic.getDesktop().getDesktopManager().maximizeFrame(_jif);
+    _dApplic.getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);
+    try {
+      _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel to be present when the _jif is resized
+    }
+    catch (java.beans.PropertyVetoException pve) {
+      new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
+      System.exit(52);
+      pve.printStackTrace();
+    }
   } // end constructor DDocument()
 
 

@@ -15,8 +15,8 @@ public class TTStructure {
   private int _row;
 
   public TTStructure() {
-    _col=6;
-    _row= 15;
+    _col=5;
+    _row= 14;
     saveStandardTT("StandardTTC.txt");
   }
 
@@ -44,13 +44,18 @@ public Period getPeriod(){
  }
 
 
- public int[] getBegingTime(){
-   int [] b = {8, 30} ;
-   return b;
+ public int getBegingTime(){
+   int [] b = {8, 00} ;
+   return b[0];
  }
- public int[] getEndTime(){
+ public int getEndTime(){
    int [] b = {22, 0} ;
-   return b;
+   return b[0];
+ }
+
+ public String getDayName(int i) {
+   String [] a = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
+   return a[i];
  }
  public String loadData(String  fils) {
    return new String("");
