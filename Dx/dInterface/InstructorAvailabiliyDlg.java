@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.6 $  $Date: 2003-03-17 16:58:57 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.7 $  $Date: 2003-04-30 15:18:34 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -27,7 +27,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import dInternal.Instructor;
+import dInternal.dData.Instructor;
 import dInternal.DModel;
 
 /*import dInternal.DModelListener;
@@ -113,14 +113,14 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private void jbInit() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all instructors
-    chooser = new JComboBox(_dm.getInstructorsList().getNamesVector());
+    chooser = new JComboBox(_dm.getSetOfInstructors().getNamesVector());
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _currentInstr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
+    _currentInstr = (Instructor)_dm.getSetOfInstructors().getResource(sel).getObject();
     centerPanel = makeGridPanel(_currentInstr);
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
@@ -184,7 +184,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        _currentInstr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
+        _currentInstr = (Instructor)_dm.getSetOfInstructors().getResource(sel).getObject();
         centerPanel = makeGridPanel(_currentInstr);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();

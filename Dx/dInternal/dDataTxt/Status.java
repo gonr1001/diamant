@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: miniDia</p>

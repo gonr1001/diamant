@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: miniDia</p>
@@ -10,7 +10,7 @@ package dInternal;
  */
 import java.util.Vector;
 import java.util.StringTokenizer;
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
 public class Instructor extends DXObject {
 

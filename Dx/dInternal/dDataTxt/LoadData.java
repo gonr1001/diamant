@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: miniDia</p>
@@ -23,9 +23,9 @@ public class LoadData {
   String _activitiesFileName;
   String _studentsFileName;
   private static String _SEP= File.separator;
- // private InstructorsList _instructorsList;
-  //private RoomsList _roomsList;
-  //private StudentsList _studentList;
+ // private SetOfInstructors _instructorsList;
+  //private SetOfRooms _roomsList;
+  //private SetOfStudents _studentList;
 
   private final int NUMBER_OF_TOKENS = 4;
   private final String CR_LF = "\r\n";
@@ -72,18 +72,18 @@ public class LoadData {
    // _v.add(extractStudents(args[1]));
   }
 
-  public InstructorsList extractInstructors(InstructorsList currentList, boolean merge){
+  public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
     byte[]  dataloaded = preLoad(_instructorFileName);
     if (dataloaded != null) {
       //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
       //return analyseInstructorTokens (st);
-     InstructorsList _instructorsList = new InstructorsList(dataloaded,5,14);
+     SetOfInstructors _instructorsList = new SetOfInstructors(dataloaded,5,14);
      if (merge)
        if(currentList!=null)
-         _instructorsList.setResourceList(currentList.getResourceList());
+         _instructorsList.setSetOfResources(currentList.getSetOfResources());
 
       if (_instructorsList.analyseTokens()){
-        _instructorsList.buildInstructorsList();
+        _instructorsList.buildSetOfInstructors();
         return _instructorsList;
       }
     } else {// (NullPointerException npe) {
@@ -93,18 +93,18 @@ public class LoadData {
     return null;
   }
 
-  public RoomsList extractRooms(InstructorsList currentList, boolean merge){
+  public SetOfRooms extractRooms(SetOfInstructors currentList, boolean merge){
    byte[]  dataloaded = preLoad(_roomsFileName);
    if (dataloaded != null) {
      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
      //return analyseInstructorTokens (st);
-    RoomsList roomsList = new RoomsList(dataloaded,5,14);
+    SetOfRooms roomsList = new SetOfRooms(dataloaded,5,14);
     if (merge)
        if(currentList!=null)
-         roomsList.setResourceList(currentList.getResourceList());
+         roomsList.setSetOfResources(currentList.getSetOfResources());
 
      if (roomsList.analyseTokens(0)){
-       roomsList.buildRoomsList(0);
+       roomsList.buildSetOfRooms(0);
        return roomsList;
      }
    } else {// (NullPointerException npe) {
@@ -124,15 +124,15 @@ public class LoadData {
 
   }
 
-  public StudentsList extractStudents(InstructorsList currentList, boolean merge){
+  public SetOfStudents extractStudents(SetOfInstructors currentList, boolean merge){
     byte[]  dataloaded = preLoad(_studentsFileName);
    if (dataloaded != null) {
      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
      //return analyseInstructorTokens (st);
-    StudentsList studentsList = new StudentsList(dataloaded);
+    SetOfStudents studentsList = new SetOfStudents(dataloaded);
     if (merge)
        if(currentList!=null)
-         studentsList.setResourceList(currentList.getResourceList());
+         studentsList.setSetOfResources(currentList.getSetOfResources());
 
      if (studentsList.analyseTokens(0)){
        studentsList.buildStudentList(0);
@@ -145,18 +145,18 @@ public class LoadData {
    return null;
   }
 
-  public ActivitiesList extractActivities(ActivitiesList currentList, boolean merge){
+  public SetOfActivities extractActivities(SetOfActivities currentList, boolean merge){
     byte[]  dataloaded = preLoad(_activitiesFileName);
    if (dataloaded != null) {
      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
      //return analyseInstructorTokens (st);
-    ActivitiesList activitiesList = new ActivitiesList(dataloaded);
+    SetOfActivities activitiesList = new SetOfActivities(dataloaded);
     if (merge)
        if(currentList!=null)
-         activitiesList.setResourceList(currentList.getResourceList());
+         activitiesList.setSetOfResources(currentList.getSetOfResources());
 
      if (activitiesList.analyseTokens(1)){
-       activitiesList.buildActivitiesList(1);
+       activitiesList.buildSetOfActivities(1);
        return activitiesList;
      }
    } else {// (NullPointerException npe) {
@@ -175,15 +175,15 @@ public class LoadData {
     LoadData ldata=  new LoadData(path);
 
     /**Irstructor test*/
-    InstructorsList insList = ldata.extractInstructors(null,false);
-    insList.sortResourceListByID();
+    SetOfInstructors insList = ldata.extractInstructors(null,false);
+    insList.sortSetOfResourcesByID();
 
     /**Room test*/
-    RoomsList roomlist = ldata.extractRooms(null, true);
-    roomlist.sortResourceListByID();
+    SetOfRooms roomlist = ldata.extractRooms(null, true);
+    roomlist.sortSetOfResourcesByID();
 
     /** Student test*/
-    StudentsList studentList = ldata.extractStudents(null, true);
+    SetOfStudents studentList = ldata.extractStudents(null, true);
     Student yan = new Student();
     yan.addCourse("GEI4421");
     yan.addCourse("GEI4501");
@@ -192,10 +192,10 @@ public class LoadData {
     yan.addCourse("GEI4421");
     yan.addCourse("GEI4501");
     studentList.addStudent(99872506,"YANNICK SYAM","",yan);
-    studentList.sortResourceListByID();
+    studentList.sortSetOfResourcesByID();
 
     /** Activities test*/
-    ActivitiesList activitiesList = ldata.extractActivities(null, true);
+    SetOfActivities activitiesList = ldata.extractActivities(null, true);
 
     /**Concat 2 instrutors files and 2 activities files*/
     ldata=  new LoadData(pathSave+"filedata1.sig");

@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: Proto</p>
@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
 
-public class InstructorsList extends ResourceList{
+public class SetOfInstructors extends SetOfResources{
 
 //private Vector instructorsList;// contains list of Instructor
 private byte[] _dataloaded; //_st;// instructors in text format
@@ -24,7 +24,7 @@ private int _numberOfColumns;// represent number of period a day.
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay,
   * */
- public InstructorsList( byte[]  dataloaded, int nbDay, int nbPerDay) {
+ public SetOfInstructors( byte[]  dataloaded, int nbDay, int nbPerDay) {
    super(nbDay, nbPerDay,2);
    _dataloaded = dataloaded;
    _numberOfLines = nbDay;
@@ -101,7 +101,7 @@ private int _numberOfColumns;// represent number of period a day.
    *use StringTokenizer st: instructors in text format
    *
    */
-  public void buildInstructorsList(){
+  public void buildSetOfInstructors(){
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     String token;
     Vector avail= new Vector();

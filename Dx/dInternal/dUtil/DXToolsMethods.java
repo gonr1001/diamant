@@ -1,4 +1,4 @@
-package dResources;
+package dInternal.dUtil;
 
 /**
  * <p>Title: miniDia</p>

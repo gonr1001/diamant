@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
 
-public class StudentsList extends ResourceList{
+public class SetOfStudents extends SetOfResources{
 
   private byte[] _dataloaded; //_st;// student in text format
   private static final int _BEGINSTUDENTMATRICULE=0;
@@ -28,7 +28,7 @@ public class StudentsList extends ResourceList{
   /**
    * INPUTS: byte[]  dataloaded (information from the student file in byte type)
    * */
-  public StudentsList(byte[] dataloaded) {
+  public SetOfStudents(byte[] dataloaded) {
     super(1);
     _dataloaded = dataloaded;
   }

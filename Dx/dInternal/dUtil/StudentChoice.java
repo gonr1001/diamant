@@ -1,4 +1,4 @@
-package dResources;
+package dInternal.dUtil;
 
 /**
  * Wrapper class for use with generic student choice.

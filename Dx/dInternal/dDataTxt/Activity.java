@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -8,7 +8,7 @@ package dInternal;
  * @author ysyam, alexander
  * @version 1.0
  */
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
 
 public class Activity extends DXObject{
@@ -20,16 +20,16 @@ public class Activity extends DXObject{
   /**  is in activities file the line between type of rooms and
    activity is fixed or not */
   public String _idemLine;
-  private ResourceList _natures;
+  private SetOfResources _natures;
 
 
   /**
    * Constructor
    * */
   public Activity() {
-    //naturesList= new ResourceList(0);
+    //naturesList= new SetOfResources(0);
     //Resource groups = new Resource();
-    _natures= new ResourceList(0);
+    _natures= new SetOfResources(0);
   }
 
   /**
@@ -84,9 +84,9 @@ public class Activity extends DXObject{
 
   /**
    * return the nature list
-   * @return ResourceList the list of nature object
+   * @return SetOfResources the list of nature object
    * */
-  public ResourceList getNaturesList(){
+  public SetOfResources getNaturesList(){
     return _natures;
   }
 

@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -8,7 +8,7 @@ package dInternal;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
 public class Bloc extends DXObject{
 
@@ -23,22 +23,22 @@ public class Bloc extends DXObject{
   /**if bloc is solidify in a period*/
   private boolean _solidify;
   /**prefer function rooms of this bloc*/
-  private ResourceList _preferFunctionRoomsList;
+  private SetOfResources _preferFunctionSetOfRooms;
   /**activities that must be placed before this bloc*/
-  private ResourceList _activitiesBefore;
+  private SetOfResources _activitiesBefore;
   /**activities that must be placed after this bloc*/
-  private ResourceList _activitiesAfter;
+  private SetOfResources _activitiesAfter;
   /**all cycles where bloc is assigned*/
-  private ResourceList _cycleAssignmentList;
+  private SetOfResources _cycleAssignmentList;
 
   /**
    * Constructor
    * */
   public Bloc() {
-    _preferFunctionRoomsList = new ResourceList(0);
-    _activitiesBefore = new ResourceList(0);
-    _activitiesAfter = new ResourceList(0);
-    _cycleAssignmentList = new ResourceList(0);
+    _preferFunctionSetOfRooms = new SetOfResources(0);
+    _activitiesBefore = new SetOfResources(0);
+    _activitiesAfter = new SetOfResources(0);
+    _cycleAssignmentList = new SetOfResources(0);
   }
 
   /**
@@ -111,9 +111,9 @@ public class Bloc extends DXObject{
 
   /**
    * get the cycle assignment list
-   * @return ResourceList the cycle assignment list
+   * @return SetOfResources the cycle assignment list
    * */
-  public ResourceList getCycleAssignmentList(){
+  public SetOfResources getCycleAssignmentList(){
     return _cycleAssignmentList;
   }
 
@@ -152,7 +152,7 @@ public class Bloc extends DXObject{
    * */
   public boolean addPreferFunctionRoom(String function){
     Resource functionRoom= new Resource(function, new DXObject());
-    return _preferFunctionRoomsList.addResource(functionRoom,1);
+    return _preferFunctionSetOfRooms.addResource(functionRoom,1);
   }
 
   /**
@@ -160,8 +160,8 @@ public class Bloc extends DXObject{
    * @param String the room function
    * @return boolean the operation result
    * */
-  public ResourceList getPreferFunctionRoom(){
-    return _preferFunctionRoomsList;
+  public SetOfResources getPreferFunctionRoom(){
+    return _preferFunctionSetOfRooms;
   }
 
   /**
@@ -169,8 +169,8 @@ public class Bloc extends DXObject{
    * @param String the room function
    * @return boolean the operation result
    * */
-  public void setPreferFunctionRoom(ResourceList preferFuncList){
-    _preferFunctionRoomsList=preferFuncList;
+  public void setPreferFunctionRoom(SetOfResources preferFuncList){
+    _preferFunctionSetOfRooms=preferFuncList;
   }
 
   /**
@@ -197,7 +197,7 @@ public class Bloc extends DXObject{
    * @return boolean the operation result
    * */
   public boolean removePreferFunctionRoom(String activityName){
-    return _preferFunctionRoomsList.removeResource(activityName);
+    return _preferFunctionSetOfRooms.removeResource(activityName);
   }
 
   /**

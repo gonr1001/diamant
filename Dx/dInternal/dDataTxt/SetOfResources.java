@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: miniDia</p>
@@ -10,14 +10,14 @@ package dInternal;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
-public class ResourceList extends DXObject{
+public class SetOfResources extends DXObject{
 
   /**contains list of resource (instructor, rooms, student or activity)*/
   private Vector _resourceList;
-  /**give type of the last sort _stateSort 0= sortResourceListByKey;
-   * 1= sortResourceListByID; 2= sortResourceListBySelectedField
+  /**give type of the last sort _stateSort 0= sortSetOfResourcesByKey;
+   * 1= sortSetOfResourcesByID; 2= sortSetOfResourcesBySelectedField
    */
   int _stateSort=0;
   /**resource in text format*/
@@ -34,14 +34,14 @@ public class ResourceList extends DXObject{
   /**
    * Constructor call with byte[]  dataloaded
    * */
-  public ResourceList( int resType) {
+  public SetOfResources( int resType) {
     _resourceList = new Vector(1,1);
     _resourceType = resType;
   }
   /**
    * Constructor call with byte[]  dataloaded and resource type resType
    * */
-/*  public ResourceList(byte[]  dataloaded, int resType) {
+/*  public SetOfResources(byte[]  dataloaded, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _resourceList = new Vector(1,1);
     _resourceType = resType;
@@ -51,7 +51,7 @@ public class ResourceList extends DXObject{
    * Constructor call with byte[]  dataloaded,  int nbDay (number of days),
    * int ndPerDay (number of period a day) and resource type resType
    * */
-  public ResourceList(int nbDay, int ndPerDay, int resType) {
+  public SetOfResources(int nbDay, int ndPerDay, int resType) {
     //_st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _numberOfLines = nbDay;
     _numberOfColumns = ndPerDay;
@@ -62,7 +62,7 @@ public class ResourceList extends DXObject{
   /**
    * methode analyse st, a stringtokenizer variable
    * @param
-   * @return Vector
+   * @return <{Vector}>
    */
   public boolean analyseTokens(){
 
@@ -74,12 +74,12 @@ public class ResourceList extends DXObject{
    *use StringTokenizer st: instructors in text format
    *
    */
-  public void buildResourceList(){
+  public void buildSetOfResources(){
 
   }
 
   /**
-   * Add a Resource to ResourceList
+   * Add a Resource to SetOfResources
    * @param resource a Resource object
    * @param insertType an integer. it select the type of insert you want to do
    * insertType=0 (insert by using key); insertType=1 (insert by using ID)
@@ -90,7 +90,7 @@ public class ResourceList extends DXObject{
     //if (getIndexOfResource(resource.getID()) == -1){
       resource.setKey(_currentKey);
       //if (_stateSort!=0)
-        //this.sortResourceListByKey();
+        //this.sortSetOfResourcesByKey();
       int index = 0;
       int add=-1;
       if (insertType==0){
@@ -124,7 +124,7 @@ public class ResourceList extends DXObject{
    * set the resource list
    * @param Vector the vector of resource list to set
    * */
-  public void setResourceList(Vector rlist){
+  public void setSetOfResources(Vector rlist){
     _resourceList = rlist;
   }
 
@@ -132,7 +132,7 @@ public class ResourceList extends DXObject{
    * get the resource list
    * @return Vector the vector of resource list
    * */
-  public Vector getResourceList(){
+  public Vector getSetOfResources(){
     return _resourceList;
   }
 
@@ -144,7 +144,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Set the current key of the ResourceList
+   * Set the current key of the SetOfResources
    * @param currentkey, a long integer
    * */
   public void setCurrentKey(long currentkey){
@@ -152,7 +152,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Remove a Resource from ResourceList
+   * Remove a Resource from SetOfResources
    * @param int the position of the resource in the resourcelist
    * @return boolean result of the operation. true if resource removed
    * succesfully and false otherwise
@@ -166,7 +166,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Remove a Resource from ResourceList
+   * Remove a Resource from SetOfResources
    * @param ResourceID, a String
    * @return boolean result of the operation. true if resource removed
    * succesfully and false otherwise
@@ -181,7 +181,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Remove a Resource from ResourceList
+   * Remove a Resource from SetOfResources
    * @param key, a long integer
    * @return boolean result of the operation. true if resource removed
    * succesfully and false otherwise
@@ -196,7 +196,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Get a Resource from the ResourceList
+   * Get a Resource from the SetOfResources
    * @param long integer, the key of the Resource
    * @return Resource null if Resource didn't found
    * */
@@ -208,7 +208,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Get a Resource from the ResourceList
+   * Get a Resource from the SetOfResources
    * @param integer, the position of the Resource
    * @return Resource null if Resource didn't found
    * */
@@ -232,7 +232,7 @@ public class ResourceList extends DXObject{
     return searchID(id);
   }
   /**
-  * Set a Resource in the ResourceList
+  * Set a Resource in the SetOfResources
   * @param Resource the resource to set
   * @return boolean true if Resource set succesful and false otherwise
   * */
@@ -246,7 +246,7 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Get a Resource from the ResourceList
+   * Get a Resource from the SetOfResources
    * @param String The ID of Resource
    * @return Resource null if Resource didn't found
    * */
@@ -259,25 +259,25 @@ public class ResourceList extends DXObject{
   }
 
   /**
-   * Sort the ResourceList by Resource's ID from smallest to biggest
+   * Sort the SetOfResources by Resource's ID from smallest to biggest
    * */
-  public void sortResourceListByID(){
+  public void sortSetOfResourcesByID(){
     sort(0,_resourceList.size()-1,1,0);
     _stateSort=1;
   }
 
   /**
-   * Sort the ResourceList by Resource's Key from smallest to biggest
+   * Sort the SetOfResources by Resource's Key from smallest to biggest
    * */
-  public void sortResourceListByKey(){
+  public void sortSetOfResourcesByKey(){
     sort(0,_resourceList.size()-1,0,0);
     _stateSort=0;
   }
 
   /**
-  * Sort the ResourceList by Resource object selected field from smallest to biggest
+  * Sort the SetOfResources by Resource object selected field from smallest to biggest
   * */
- public void sortResourceListBySelectedObjectField(int field){
+ public void sortSetOfResourcesBySelectedObjectField(int field){
    sort(0,_resourceList.size()-1,2,field);
    _stateSort=2;
   }
@@ -309,7 +309,7 @@ public class ResourceList extends DXObject{
   public Vector getNamesVector(){
     Vector namesVector =new Vector();
     if(_stateSort!=1)
-      sortResourceListByID();
+      sortSetOfResourcesByID();
     for (int i=0; i< this._resourceList.size(); i++)
       namesVector.add(((Resource)_resourceList.get(i)).getID());
    return namesVector;
@@ -411,12 +411,12 @@ public class ResourceList extends DXObject{
 
   /**
    * finds a index in a sorted vector, using the binary search algorithm
-   * @param long the Resource key from wich to find index in ResourceList
-   * @return int index of the Resource in ResourceList
+   * @param long the Resource key from wich to find index in SetOfResources
+   * @return int index of the Resource in SetOfResources
    * */
   private int searchKey(long key){
     if (_stateSort!=0)
-      sortResourceListByKey();
+      sortSetOfResourcesByKey();
     int low = 0;
     int high = _resourceList.size()-1;
     long middleKey=0;
@@ -447,12 +447,12 @@ public class ResourceList extends DXObject{
 
   /**
    * finds a index in a sorted vector, using the binary search algorithm
-   * @param String the Resource ID from wich to find index in ResourceList
-   * @return int index of the Resource in ResourceList
+   * @param String the Resource ID from wich to find index in SetOfResources
+   * @return int index of the Resource in SetOfResources
    * */
   private int searchID(String id){
     if (_stateSort!=1)
-      this.sortResourceListByID();
+      this.sortSetOfResourcesByID();
     int low = 0;
     int high = _resourceList.size()-1;
     while(low <= high){
@@ -472,12 +472,12 @@ public class ResourceList extends DXObject{
 
   /**
    * finds a index in a sorted vector, using the binary search algorithm
-   * @param String the Resource ID from wich to find index in ResourceList
-   * @return int index of the Resource in ResourceList
+   * @param String the Resource ID from wich to find index in SetOfResources
+   * @return int index of the Resource in SetOfResources
    * */
   private int searchWhereToInsert(String id){
     if (_stateSort!=1)
-      this.sortResourceListByID();
+      this.sortSetOfResourcesByID();
     int low = 0;
     int high = _resourceList.size()-1;
     while(low <= high){
@@ -498,12 +498,12 @@ public class ResourceList extends DXObject{
   /**
    * finds a index where to insert a RESOURCE in a sorted vector, using the
    * binary search algorithm
-   * @param long the Resource key from wich to find index in ResourceList
-   * @return int index of the Resource in ResourceList
+   * @param long the Resource key from wich to find index in SetOfResources
+   * @return int index of the Resource in SetOfResources
    * */
   private int searchWhereToInsert(long key){
     if (_stateSort!=0)
-      sortResourceListByKey();
+      sortSetOfResourcesByKey();
     int low = 0;
     int high = _resourceList.size()-1;
     long middleKey=0;

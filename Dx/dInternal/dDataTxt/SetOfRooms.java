@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: miniDia</p>
@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
 
-public class RoomsList extends ResourceList{
+public class SetOfRooms extends SetOfResources{
 
   private byte[] _dataloaded; //_st;// rooms in text format
   private int _numberOfLines;// represent number of days
@@ -23,7 +23,7 @@ public class RoomsList extends ResourceList{
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay (number of days), int nbPerDay (number of periods a day)
   * */
-  public RoomsList(byte[] dataloaded, int nbDay, int nbPerDay) {
+  public SetOfRooms(byte[] dataloaded, int nbDay, int nbPerDay) {
     super(nbDay, nbPerDay,3);
     _dataloaded = dataloaded;
     _numberOfLines = nbDay;
@@ -98,7 +98,7 @@ public class RoomsList extends ResourceList{
    *use StringTokenizer st: rooms in text format
    *
    */
-  public void buildRoomsList(int beginPosition){
+  public void buildSetOfRooms(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state = 0;

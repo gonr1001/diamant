@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -8,7 +8,7 @@ package dInternal;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 import java.util.Calendar;
 
 public class CycleAssignment extends DXObject{

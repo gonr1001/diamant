@@ -9,9 +9,9 @@ package dTest.dInternal;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.Resource;
-import dInternal.Instructor;
-import dInternal.InstructorsList;
+import dInternal.dData.Resource;
+import dInternal.dData.Instructor;
+import dInternal.dData.SetOfInstructors;
 import java.util.Vector;
 
 public class ResourceTest extends TestCase {
@@ -39,7 +39,7 @@ public class ResourceTest extends TestCase {
     _inst.addDispDay("1 1 1 5 5");
     _inst.addDispDay("5 5 5 1 5");
     _resc = new Resource("Yan",_inst);
-    InstructorsList ilist = new InstructorsList(data, 4,5);
+    SetOfInstructors ilist = new SetOfInstructors(data, 4,5);
     ilist.addResource(_resc,1);
     ilist.addResource(_resc,1);
     assertEquals("Instructor Dispo equals :", _inst.getInstDisp(), ((Instructor)_resc.getObject()).getInstDisp());
@@ -54,7 +54,7 @@ public class ResourceTest extends TestCase {
     _inst.addDispDay("1 1 1 5 5");
     _inst.addDispDay("5 5 5 1 5");
     _resc = new Resource("Yan",_inst);
-    InstructorsList ilist = new InstructorsList(data, 4,5);
+    SetOfInstructors ilist = new SetOfInstructors(data, 4,5);
     ilist.addResource(_resc,1);
     assertEquals("Resource name equals :", "Yan", ilist.getResource("Yan").getID());
   }
@@ -67,7 +67,7 @@ public class ResourceTest extends TestCase {
     _inst.addDispDay("1 1 1 5 5");
     _inst.addDispDay("5 5 5 1 5");
     _resc = new Resource("Yan",_inst);
-    InstructorsList ilist = new InstructorsList(data, 4,5);
+    SetOfInstructors ilist = new SetOfInstructors(data, 4,5);
     ilist.addResource(_resc,1);
     ilist.addResource(_resc,1);
     assertEquals("Resource size equals :", 1, ilist.size());

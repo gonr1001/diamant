@@ -9,7 +9,7 @@ package dTest.dInternal;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.Instructor;
+import dInternal.dData.Instructor;
 import java.util.Vector;
 
 public class InstructorTest extends TestCase {

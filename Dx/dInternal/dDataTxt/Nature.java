@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -8,18 +8,18 @@ package dInternal;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
 public class Nature extends DXObject{
 
   /**the group list*/
-  private ResourceList _groupList;
+  private SetOfResources _groupList;
 
   /**
    * Constructor
    * */
   public Nature() {
-    _groupList= new ResourceList(0);
+    _groupList= new SetOfResources(0);
   }
 
   /**
@@ -73,9 +73,9 @@ public class Nature extends DXObject{
 
   /**
    * return the group list
-   * @return ResourceList the list of nature object
+   * @return SetOfResources the list of nature object
    * */
-  public ResourceList getGroupList(){
+  public SetOfResources getGroupList(){
     return _groupList;
   }
 

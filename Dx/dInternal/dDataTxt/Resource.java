@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: miniDia</p>
@@ -8,7 +8,7 @@ package dInternal;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
 public class Resource {
   private static final String CR_LF = "\r\n";
@@ -19,7 +19,7 @@ public class Resource {
   /**Resource ID it can be a name, an ID, a CIP code*/
   private String _resourceID;
   /**the resource temporary message. the message to be write before _resourceID
-   in toString method*/
+ *    in toString method*/
   private String _tempMessage="";
   /**Resource Object*/
   private DXObject _resourceObjet;

@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -9,8 +9,8 @@ package dInternal;
  * @version 1.0
  */
 import java.util.Vector;
-import dResources.StudentChoice;
-import dResources.DXObject;
+import dInternal.dUtil.StudentChoice;
+import dInternal.dUtil.DXObject;
 
 public class Student extends DXObject{
 

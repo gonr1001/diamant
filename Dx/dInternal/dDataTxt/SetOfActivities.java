@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -11,9 +11,9 @@ package dInternal;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
-import dResources.DXToolsMethods;
+import dInternal.dUtil.DXToolsMethods;
 
-public class SetOfActivities extends ResourceList{
+public class SetOfActivities extends SetOfResources{
 
   /**activities in text format*/
   private byte[] _dataloaded;
@@ -446,7 +446,7 @@ public class SetOfActivities extends ResourceList{
         }// for (int k=0; k< nature.size(); k++)
       }// end for(int j=0; j< activity.size(); j++)
 
-    }// end for (int i=0; i<getResourceList().size(); i++)
+    }// end for (int i=0; i<getSetOfResources().size(); i++)
     return actlist;
   }
 

@@ -1,4 +1,4 @@
-package dInternal;
+package dInternal.dData;
 
 /**
  * <p>Title: DX</p>
@@ -8,19 +8,19 @@ package dInternal;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dResources.DXObject;
+import dInternal.dUtil.DXObject;
 
 
 public class Group extends DXObject{
 
   /**the bloc list*/
-  private ResourceList _blocList;
+  private SetOfResources _blocList;
 
   /**
    * Constructor
    * */
   public Group() {
-    _blocList= new ResourceList(0);
+    _blocList= new SetOfResources(0);
   }
 
   /**
@@ -77,7 +77,7 @@ public class Group extends DXObject{
    * @param String the ID of the bloc
    * @return Resource the nature object
    * */
-  public ResourceList getBlocList(){
+  public SetOfResources getBlocList(){
     return _blocList;
   }
 
