@@ -239,7 +239,7 @@ public class Period extends DXObject {
    */
   public SetOfResources getConflictsEventsInPeriod(String event){
     Vector inPeriod= new Vector();
-    event="EPS122.1.A.1.";//debug
+    //event="EPS122.1.A.1.";//debug
     SetOfResources setOfConf = new SetOfResources(99);
     for (int i=0; i< _eventsInPeriod.size(); i++){
       Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
