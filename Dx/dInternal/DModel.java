@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.50 $  $Date: 2003-07-31 15:44:38 $
+ * Title: DModel $Revision: 1.51 $  $Date: 2003-08-01 10:28:03 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
+ * @version $Revision: 1.51 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -115,9 +115,9 @@ public class DModel {
       if (_ttStruct.getError().length() != 0)
         return _ttStruct.getError();
       _setOfInstructors = (SetOfInstructors)project.get(2);
+      resizeInstructorsAvailability();//
       _setOfRooms= (SetOfRooms)project.get(3);
       _setOfActivities=(SetOfActivities)project.get(4);
-      resizeInstructorsAvailability();//
       _setOfStudents = (SetOfStudents)project.get(5);
       if( _setOfRooms.getError().length()!=0){
         return _setOfRooms.getError();
@@ -152,6 +152,7 @@ public void setVersion(String version){
     LoadData loadData = new LoadData(str);
     // import set of instructors
       _setOfInstructors = loadData.extractInstructors(null, false);
+      resizeInstructorsAvailability();//
      if( _setOfInstructors.getError().length()!=0){
        return _setOfInstructors.getError();
      }
@@ -226,6 +227,7 @@ public void setVersion(String version){
 
   public String saveTimeTable(String filename) {
     SaveData saveD= new SaveData("1.5");
+    //resizeInstructorsAvailability();//
     String error = "";
     if(_isTimeTable){
       error = saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
