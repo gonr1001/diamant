@@ -62,13 +62,13 @@ public class SetOfActivities extends SetOfResources{
           position = 2;
           break;
         case 2://activity visibility
-          _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",DConst.ACTI_TEXT2
-                +_line,"ActivityList");
-          if(_error.length()!=0)
-            return false;
-          _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT2+_line,"ActivityList");
-          if(_error.length()!=0)
-            return false;
+            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",DConst.ACTI_TEXT2
+            +_line,"ActivityList");
+            if(_error.length()!=0)
+              return false;
+            _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT2+_line,"ActivityList");
+            if(_error.length()!=0)
+              return false;
           position = 3;
           break;
         case 3://number of activities
@@ -199,22 +199,29 @@ public class SetOfActivities extends SetOfResources{
           }
           position = 14;
           break;
-        case 14://pre-affected rooms
-          stLine = new StringTokenizer(token);
-          _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+_line,"ActivityList");
-          if(_error.length()!=0)
-            return false;
-          while(stLine.hasMoreElements()){
-            sousString = stLine.nextToken();
-            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
-                DConst.ACTI_TEXT12+_line,"ActivityList");
+        case 14://pre-affected cours
+          StringTokenizer visiToken = new StringTokenizer(new String (token),";" );
+          //System.out.println("Activity affect Tokens: "+activityName+" --> "+token);//debug
+          int nbTokens= visiToken.countTokens();
+          for(int i=0; i<nbTokens; i++){
+            token= visiToken.nextToken();
+            //System.out.println("One token: "+token);//debug
+            stLine = new StringTokenizer(token);
+            _error= DXToolsMethods.checkIfLineIsEmpty(token,
+                DConst.ACTI_TEXT6+_line,"ActivityList");
             if(_error.length()!=0)
-            return false;
-          }
-          position = beginPosition;
-          if(st.hasMoreElements())
-            _line++;
+              return false;
+            while(stLine.hasMoreElements()){
+              sousString = stLine.nextToken();
+              _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+                  DConst.ACTI_TEXT12+_line,"ActivityList");
+              if(_error.length()!=0)
+                return false;
+            }
+            position = beginPosition;
+            if(st.hasMoreElements())
+              _line++;
+          }//for(int i=0; i<nbTokens; i++)
           break;
 
       }// end switch (position)
@@ -368,15 +375,26 @@ public class SetOfActivities extends SetOfResources{
 
           break;
         case 14://activity is fixed or not
-          stLine = new StringTokenizer(token);
+          StringTokenizer visiToken = new StringTokenizer(new String (token),";" );
+          int nbTokens= visiToken.countTokens();
+          stLine = new StringTokenizer(visiToken.nextToken());
+          StringTokenizer assignLine= null;
+          if(nbTokens==2)
+            assignLine= new StringTokenizer(visiToken.nextToken());
           counter=1;
-           while(stLine.hasMoreElements()){
-             int fix= Integer.parseInt(stLine.nextToken().trim());
-             unityResource= section.getUnity(Integer.toString(counter));
-             ((Unity)unityResource.getAttach()).setPermanent(fix==1);
-             ((Unity)unityResource.getAttach()).setAssign(fix==1);
-             counter++;
-           }// end while(stLine.hasMoreElements())
+          while(stLine.hasMoreElements()){
+            int fix= Integer.parseInt(stLine.nextToken().trim());
+            unityResource= section.getUnity(Integer.toString(counter));
+            ((Unity)unityResource.getAttach()).setPermanent(fix==1);
+            if( (nbTokens==2) && (assignLine.hasMoreElements()) ){
+              int fix1= Integer.parseInt(assignLine.nextToken().trim());
+              ((Unity)unityResource.getAttach()).setAssign(fix1==1);
+            }else
+              ((Unity)unityResource.getAttach()).setAssign(fix==1);
+            counter++;
+          }// end while(stLine.hasMoreElements())
+
+
           position = beginPosition;
           this.addResource(activityResource,1);
           break;
@@ -465,7 +483,7 @@ public class SetOfActivities extends SetOfResources{
           Section section= (Section)nature.getSetOfSections().getResourceAt(k).getAttach();
           Unity bloc;
           String instName="",lineDuration="", lineTime="", lineRoomFixed="",
-          lineRoomName="", lineRoomType="", LineActFixed="";
+          lineRoomName="", lineRoomType="", LineActFixed="", LineActAssign="";
           /* duration, time of each bloc*/
           for(int l=0; l< section.getSetOfUnities().size(); l++){
             bloc= (Unity)section.getSetOfUnities().getResourceAt(l).getAttach();
@@ -481,15 +499,24 @@ public class SetOfActivities extends SetOfResources{
             else
               lineRoomFixed+= "0 ";
             lineRoomType+= bloc.getPreferFunctionRoom().getResourceAt(0).getID()+" ";
-            if (bloc.isAssign())
+
+            if (bloc.isPermanent()){
               LineActFixed+= "1 ";
-            else
+            }else{
               LineActFixed+= "0 ";
+            }
+
+            if(bloc.isAssign()){
+              LineActAssign+="1 ";
+            }else{
+              LineActAssign+="0 ";
+            }
+
           }// end for(int l=0; l< group.getUnityList().size(); l++)
           actlist+=instName+CR_LF+section.getSetOfUnities().size()+CR_LF+
                    lineDuration+CR_LF+lineTime+CR_LF+lineRoomFixed+CR_LF+
                    lineRoomName+CR_LF+lineRoomType+CR_LF;//write the number of blocs
-          actlist+=activity.getIdemLine()+CR_LF+LineActFixed+CR_LF;
+          actlist+=activity.getIdemLine()+CR_LF+LineActFixed+";"+LineActAssign+CR_LF;
 
         }// for (int k=0; k< nature.size(); k++)
       }// end for(int j=0; j< activity.size(); j++)
