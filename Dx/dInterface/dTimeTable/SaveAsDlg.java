@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.15 $  $Date: 2004-03-23 20:46:38 $
+ * Title: SaveAsDlg $Revision: 1.16 $  $Date: 2004-05-18 19:25:16 $
  * Description: SaveAsDlg(DApplication dApplic) can created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) or can created
  *                        by ConflicReport, FullReport,
@@ -18,21 +18,17 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 
 import java.io.File;
-import java.io.FileWriter;
 
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JInternalFrame;
 
-import com.iLib.gDialog.FatalProblemDlg;
 
 import com.iLib.gDialog.InformationDlg;
 
@@ -41,7 +37,7 @@ import dInterface.DApplication;
 //import dAux.ConfirmDlg;
 
 import dResources.DConst;
-import dResources.DFileFilter;
+
 
 /**
  *
