@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.35 $  $Date: 2003-10-29 17:49:01 $
+ * Title: DApplication $Revision: 1.36 $  $Date: 2003-11-10 16:03:30 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -26,6 +26,7 @@ import dInternal.Preferences;
 import dResources.DConst;
 import com.iLib.gDialog.FatalProblemDlg;
 
+import java.io.InputStreamReader;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
@@ -84,7 +85,9 @@ public class DApplication implements ActionListener {
                                    "pref"
                                    + File.separator +
                                    "pref.txt", this);
+
     System.out.println(System.getProperty("user.dir"));
+    System.out.println(System.getProperty("file.encoding"));
     _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     _mediator = new DMediator(this);
     _currentDir = System.getProperty("user.dir");

@@ -1,12 +1,17 @@
 import java.io.*;
 
 import com.iLib.gIO.ByteInputFile;
+import java.io.InputStreamReader;
 public class ReadPrintFile {
 
   public static void main(String[] args) throws Exception{
+
+    //FileInputStream _fis = new FileInputStream(args[0]);
     byte [] b;
     ByteInputFile inputFile= new ByteInputFile (args[0]);
 
+    //InputStreamReader isr = new InputStreamReader(_fis);
+   // System.out.println(isr.getEncoding());
     b = inputFile.readFileAsBytes();
     inputFile.close();
  /*   if (!inputFile.available()||!inputFile.canRead()){
