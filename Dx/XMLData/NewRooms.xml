@@ -2,7 +2,7 @@
 <!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
 <SetofCategories>
 	<category>
-		<categoryID>Catégorie 1</categoryID>
+		<categoryID>Catégorie A</categoryID>
 		<setofrooms>
 			<room>
 				<name>C1-4145</name>
@@ -57,7 +57,7 @@
 		</setofrooms>
 	</category>
 	<category>
-		<categoryID>Catégorie 2</categoryID>
+		<categoryID>Catégorie B</categoryID>
 		<setofrooms>
 			<room>
 				<name>K1-4145</name>
@@ -78,18 +78,6 @@
 				<capacity>18</capacity>
 				<caracteristics>
 					<caracteristic>laboratoire</caracteristic>
-				</caracteristics>
-				<avalaibility>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-				</avalaibility>
-			</room>
-			<room>
-				<name>K1-2140</name>
-				<capacity>12</capacity>
-				<caracteristics>
-					<caracteristic>ordinateur</caracteristic>
 				</caracteristics>
 				<avalaibility>
 					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
@@ -120,30 +108,6 @@
 				<caracteristics>
 					<caracteristic>laboratoire</caracteristic>
 					<caracteristic>multimédia</caracteristic>
-					<caracteristic>ordinateur</caracteristic>
-				</caracteristics>
-				<avalaibility>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-				</avalaibility>
-			</room>
-			<room>
-				<name>D1-3325</name>
-				<capacity>18</capacity>
-				<caracteristics>
-					<caracteristic>laboratoire</caracteristic>
-				</caracteristics>
-				<avalaibility>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-					<day>1 1 1 1 5 1 1 1 1 1 5 5 5 5</day>
-				</avalaibility>
-			</room>
-			<room>
-				<name>D1-2140</name>
-				<capacity>12</capacity>
-				<caracteristics>
 					<caracteristic>ordinateur</caracteristic>
 				</caracteristics>
 				<avalaibility>

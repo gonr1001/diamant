@@ -1,4 +1,4 @@
-package dInternal.dXMLData;
+package dInternal.dXMLData.rooms;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -57,8 +57,7 @@ public class SetOfRoomsCategories extends SetOfResources{
     super(3);
     _numberOfLines = nbDay;
     _numberOfColumns = nbPerDay;
-    fileName =System.getProperty("user.dir")+ File.separator+"devData"+File.separator+"NewRooms.xml";// to remove
-    _error=loadCategoryStructure(fileName);
+    _error=readCategoryTag(fileName);
   }
 
   /**
@@ -66,31 +65,15 @@ public class SetOfRoomsCategories extends SetOfResources{
    * @param dataloaded
    */
   public void setDataToLoad(String fileName, int nbDay, int nbPerDay){
-    _error=loadCategoryStructure(fileName);
+    _error=readCategoryTag(fileName);
     _numberOfLines = nbDay;
     _numberOfColumns = nbPerDay;
   }
 
   /***
    * */
-  public boolean analyseTokens(int beginPosition){
-    ReadXMLElement list= new ReadXMLElement();
-   String ID="";
-   int size= list.getSize(_setofcat,_ROOMTAGITEM1);
-   if (size == 0){
-     _error = DConst.ERROR_XML_FILE;
-     return false;
-   }
-  for (int i=0; i< size; i++){
-    SetOfResources setOfRooms = new SetOfResources(66);
-    Element category= list.getElement(_setofcat,_ROOMTAGITEM1,i);
-    ID= list.getElementValue(category,_ROOMTAGITEM1_1);
-    int numberOfRooms= list.getSize(category,_ROOMTAGITEM1_2);
-    //_periodLenght= Integer.parseInt(list.getElementValue(cycle,_TAGITEM2));
-    System.out.println(" Category ID: "+ID+" number of rooms: "+numberOfRooms);//debug
-    //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
+  public boolean analyseTokens(){
 
-   }// end for (int i=0; i< size; i++)
     return true;
   }
 
@@ -103,7 +86,7 @@ public class SetOfRoomsCategories extends SetOfResources{
    *use StringTokenizer st: rooms in text format
    *
    */
-  public void buildSetOfResources(int beginPosition){
+  public void buildSetOfResources(){
 
   }
 
@@ -141,16 +124,54 @@ public class SetOfRoomsCategories extends SetOfResources{
     //System.out.println("addSetOfRooms Listener ...");//debug
   }
 
+
   /**
-   * it load the xml category file
-   * @param String the xml file containing the xml category structure
-   * @return String the error message, empty if it does not found error
-   * */
-  private String loadCategoryStructure(String fileName){
-    readFile xmlFile;
-    Element  item, ID;
-    String error="";
+   * Read categories in the xml file
+   * @return
+   */
+  private String readCategoryTag(String fileName){
     _setofcat= XMLTools.getRootDocument(fileName);
+    ReadXMLElement list= new ReadXMLElement();
+    String ID="";
+    String error= XMLTools.tagError(_setofcat,_ROOMTAGITEM1);
+    if(error.length()==0){
+      for (int i=0; i< XMLTools.tagSize(_setofcat,_ROOMTAGITEM1); i++){
+        Element category= list.getElement(_setofcat,_ROOMTAGITEM1,i);
+        ID= list.getElementValue(category,_ROOMTAGITEM1_1);
+        //Element setofrooms = list.getElement(category,_ROOMTAGITEM1_2,1);
+        System.out.println(" Category ID: "+ID);//debug
+        error= XMLTools.tagError(category,_ROOMTAGITEM1_2);
+        if(error.length()==0){
+            Element setofrooms= list.getElement(category,_ROOMTAGITEM1_2,0);
+            //read rooms
+            readRoomsTag(setofrooms);// read rooms
+        }// end if(error.length()==0)
+        //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
+      }// end for (int i=0; i< size; i++)
+    }// end if(error.length()==0)
+    return error;
+  }
+
+  /**
+   * read rooms of a category
+   * @param setofrooms
+   * @return
+   */
+  private String readRoomsTag(Element setofrooms){
+    ReadXMLElement list= new ReadXMLElement();
+   String name="", capacity="";
+   String error= XMLTools.tagError(setofrooms,_ROOMTAGITEM2);
+   if(error.length()==0){
+     for (int i=0; i< XMLTools.tagSize(setofrooms,_ROOMTAGITEM2); i++){
+       Element room= list.getElement(setofrooms,_ROOMTAGITEM2,i);
+       name= list.getElementValue(room,_ROOMTAGITEM2_1);
+       capacity= list.getElementValue(room,_ROOMTAGITEM2_2);
+       Element caracteristics= list.getElement(room,_ROOMTAGITEM2_3,i);
+       Element availabilities= list.getElement(room,_ROOMTAGITEM2_4,i);
+       System.out.println(" Room name: "+name+ " Capacity: "+ capacity);//debug
+       //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
+     }// end for (int i=0; i< size; i++)
+   }// end if(error.length()==0)
     return error;
   }
 

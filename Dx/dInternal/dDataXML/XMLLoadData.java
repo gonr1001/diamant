@@ -29,6 +29,7 @@ import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
 import dResources.DConst;
 import org.w3c.dom.*;
+import dInternal.dXMLData.rooms.SetOfRoomsCategories;
 
 public class XMLLoadData {
   //XML tags

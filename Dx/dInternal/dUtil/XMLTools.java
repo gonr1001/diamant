@@ -44,4 +44,40 @@ public class XMLTools {
     }
     return element;
   }
+
+  /**
+   * check if a tag exist in a xml element
+   * @param element
+   * @param tag
+   * @return
+   */
+  public final static String tagError(Element element, String tag){
+    ReadXMLElement list= new ReadXMLElement();
+    String error="";
+    if(element==null){
+      return DConst.ERROR_XML_FILE;
+    }else{
+      int size= list.getSize(element,tag);
+      if (size == 0){
+        error = DConst.ERROR_XML_FILE;
+      }
+    }// end else if(element==null)
+
+    return error;
+
+  }
+
+  /**
+   * return the number of occurence of an element représent by its tag
+   * @param element
+   * @param tag
+   * @return
+   */
+  public final static int tagSize(Element element, String tag){
+    ReadXMLElement list= new ReadXMLElement();
+    if (element==null)
+      return 0;
+    return list.getSize(element,tag);
+  }
+
 }
