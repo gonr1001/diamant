@@ -51,7 +51,7 @@ public class StudentMixingAlgorithm implements Algorithm {
         Resource section= type.getSetOfSections().getResourceAt(j);
         //make it for each section of an activity type
         SetOfResources associatesEvents= buildOtherAssociatesEvents(actID,typeID,section.getID());
-        Vector studentRegistered= buildStudentsRegistered(actID);
+        Vector studentRegistered= buildStudentsRegistered(actID,typeID);
         SetOfResources convGroup= buildConvexGroup(associatesEvents,studentRegistered);
         allConvexGroups.add(convGroup);
         //
@@ -59,6 +59,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       setStudentsInGroup(actID,typeID,allConvexGroups);
     }//end for(int i=0; i< _eventsRescList.size(); i++)
     _dm.getConditionsTest().setMatrixBuilded(false);
+    _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
     _dm.sendEvent(null);
     System.out.println("Mixing type: "+_mixingType);// debug
   }
@@ -128,13 +129,24 @@ public class StudentMixingAlgorithm implements Algorithm {
   }
 
   /**
-   * get the liste of all students registered in the activity
+   * get the liste of all students registered in the activity who are not fixe
+   * in a group
    * @param activityID
    * @return
    */
-  private Vector buildStudentsRegistered(String activityID){
+  private Vector buildStudentsRegistered(String activityID, String typeID){
+    Vector studentR= new Vector(1);
     Activity activity= (Activity)_dm.getSetOfActivities().getResource(activityID).getAttach();
-    return activity.getStudentRegistered();
+    Vector studentList= activity.getStudentRegistered();
+    for (int i=0; i< studentList.size(); i++){
+      long studentKey= Long.parseLong(studentList.get(i).toString());
+      StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
+      int group= student.getGroup(activityID+typeID);
+      if(!student.isFixedInGroup(activityID+typeID,group)){
+        studentR.add(Long.toString(studentKey));
+      }// end if(student.isFixedInGroup(activityID+typeID,group))
+    }// end for (int i=0; i< student.size(); i++)
+    return studentR;
   }
 
   /**

@@ -417,6 +417,55 @@ public Period getLastPeriod(){
   }
 
   /**
+   *
+   * @return
+   */
+  public void getAttributsToDisplay(int periodLength){
+    buildAttributsRowTodisplay(periodLength);
+
+  }
+
+  /**
+   *
+   * @param periodLength
+   * @return
+   */
+  private SetOfResources buildAttributsRowTodisplay(int periodLength){
+    SetOfResources attrib= new SetOfResources(4);
+    for(int i=0; i< _setOfDays.size(); i++){
+      Day day =(Day)_setOfDays.getResourceAt(i).getAttach();
+      for (int j=0; j< day.getSetOfSequences().size(); j++){
+        Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+        for(int k=0; k< seq.getSetOfPeriods().size(); k++){
+          DXValue value= new DXValue();
+          value.setIntValue(1);
+          Period per = (Period)seq.getSetOfPeriods().getResourceAt(k).getAttach();
+          String hour="00"+per.getBeginHour()[0];
+          String minute= "00"+per.getBeginHour()[1];
+          String beginHour= hour.substring(hour.length()-2,hour.length())+":"+
+                            minute.substring(minute.length()-2,minute.length());
+          attrib.addResource(new Resource(beginHour,value),1);
+        }// end for(int k=0; k< seq.getSetOfPeriods().size(); k++)
+        if(j< day.getSetOfSequences().size()-1){
+          DXValue value= new DXValue();
+          value.setIntValue(-1);
+          Period per = (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
+          String hour="00"+per.getEndHour(periodLength)[0];
+          String minute= "00"+per.getEndHour(periodLength)[1];
+          String endHour= hour.substring(hour.length()-2,hour.length())+":"+
+                          minute.substring(minute.length()-2,minute.length());
+          attrib.addResource(new Resource(endHour,value),1);
+        }
+      }// end for (int j=0; j< day.getSetOfSequences().size(); j++)
+    }// end for(int i=0; i< _setOfDays.size(); i++)
+    //attrib.sortSetOfResourcesByKey();
+    for (int i=0; i< attrib.size(); i++){
+      System.out.println(attrib.getResourceAt(i).getID());//debug
+    }// end
+    return attrib;
+  }
+
+  /**
    * get a sequence in a day
    * @param Day the day where we want to find a sequence
    * @param String the sequence ID (AM, PM, EM)
