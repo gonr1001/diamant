@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.99 $  $Date: 2004-05-05 21:25:30 $
+ * Title: DConst $Revision: 1.100 $  $Date: 2004-05-12 16:03:34 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.99 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.100 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -392,7 +392,7 @@ public class DConst {
   public final static String SB_T_EVENT = res.getString("sbTEvent"); // Blo
   public final static String SB_T_ASSIG = res.getString("sbTAssig"); // Pla
 
-  public final static String SB_CONF = res.getString("sbConf"); // Conflicts
+  public final static String SB_CONF = res.getString("sbConf");    // Conflicts
   public final static String SB_C_INST = res.getString("sbCInst"); // Ens
   public final static String SB_C_ROOM = res.getString("sbCRoom"); // Loc
   public final static String SB_C_STUD = res.getString("sbCStud"); // Stu

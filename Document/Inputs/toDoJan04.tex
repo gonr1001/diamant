@@ -168,12 +168,27 @@ disjoints.
 \[ p = \{ e_0 \cup \ldots \cup e_i \cup \ldots \cup e_n \}
 \]
 
-où  $e_0  \ldots \cup e_i  \ldots e_n$ sont disjoints.
+où  $e_0  \ldots e_i  \ldots e_n$ sont disjoints.
 
 Étapes :
 
 \begin {enumerate}
-\item
+\item Changer la boîte de dialogue pour affecter un local et le
+figer.
+
+\item Prendre en compte un type de local, qui servira à indiquer
+une liste de locaux.
+
+\[ \mbox{Locaux} = \{ e_{l0} \cup \ldots \cup e_{li} \cup \ldots \cup e_{ln} \}
+\]
+
+où  $e_{l0} \ldots e_{li}  \ldots  e_{ln}$ sont disjoints.
+
+\item Changer les fichiers de \diamant{}afin de prendre les
+nouvelles informations.
+
+\item Changer l'algorithme.
+
 \end {enumerate}
 
 \subsection{Fonctionnalité \ref{affecIni}~: Automate pour menu Affectation initiale}
