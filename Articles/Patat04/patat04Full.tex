@@ -252,7 +252,7 @@ sauve\-garde de données et le logiciel de construction d'horaires.
 
 \item[Données.] Elles représentent les données nécessaires à la
 production d'horaires. Nous allons sauvegarder toutes les données
-nécessaires dans un système de sauvegarde de données. Dans la
+nécessaires dans un système de sauve\-garde de données. Dans la
 figure, il n'est pas indiqué que ces données peuvent être
 manipulées par des modules du système de production d'horaires.
 Par exemple, le module de saisie de pré-choix, va sauvegarder les
@@ -264,9 +264,9 @@ remises dans l'entrepôt des données.
 
 \item[Papier ou Page Web.] Il s'agit de la sortie du système une
 fois que l'horaire est construit. Ces sorties peuvent être des
-fichiers, qui seront imprimés sur papier ou des données qui seront
-affichés sur une page Web, dans le deux cas les données sources se
-trouvent dans  l'entrepôt des données.
+fichiers qui seront imprimés sur papier, ou des données qui seront
+affichées sur une page Web, dans les deux cas les données sources
+se trouvent dans  l'entrepôt des données.
 
 \end{description}
 
@@ -278,10 +278,10 @@ La figure \ref{fig:fTwo} montre l'évolution des données pendant la
 production de l'horaire. L'évolution présente les instances des
 données à différents instants du processus.
 
-L'entrepôt des données peut représenter   une seule base de
-données ou sur plusieurs bases (base de données repartie) est un
-décision  d'implémentation. De manière conceptuelle il s'agit d'un
-entrepôt des données ou d'une seule base de données.
+L'entrepôt des données peut représenter une seule ou plusieurs
+bases de données, on peut penser à une base de données répartie.
+Le choix de la base est un décision d'implémentation. De manière
+conceptuelle il s'agit d'un seul entrepôt des données.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
@@ -324,12 +324,13 @@ base de données complète de l'institution.
 \item[Données période $P$.] Ces données sont nécessaires à la
 construction d'un horaire pour la période concernée, elles
 contiennent les cours qui seront offerts à cette période, la
-disponibilité de enseignants pour cette période, etc. Ces données
+disponibilité des enseignants pour cette période, etc. Ces données
 sont un préalable à la construction d'un horaire et sont saisies
 avant chaque construction. Cependant, ces données vont changer
 (mises-à-jour) pendant la construction de l'horaire. Par exemple
-lorsque on trouve un enseignant externe pour un cours donné, on
-saisira ses informations nom et disponibilité dans la base.
+lorsqu'on trouve un enseignant externe pour un cours donné, on
+saisira des informations telles que son nom et sa disponibilité
+dans la base.
 
 \item[Données horaire.] Ces donnés sont le résultat de  la
 construction de l'horaire. Elles vont contenir toutes les
@@ -339,11 +340,11 @@ généraux et personnalisés.
 \end{description}
 
 En plus de la construction d'horaires de cours, le système doit
-servir à construire les horaires d'examens. L'évolution de
+servir à cons\-truire les horaires d'examens. L'évolution de
 données, dans le cas d'examens,  suit le même chemin que celui de
-l'horaire de cours. Sauf que le données extraits de la base
-peuvent être différents, par exemple, pour un horaire d'examens la
-disponibilité des enseignants peut ne pas être nécessaire.
+l'horaire de cours. Par contre  les données extraites de la base
+peuvent être différentes, par exemple, pour un horaire d'examens
+la disponibilité des enseignants peut ne pas être nécessaire.
 
 
 Il existe deux grandes activités dans la production~: la saisie
@@ -356,7 +357,7 @@ l'horaire.
 \setlength{\unitlength}{0.1cm}
 
 \begin{picture}(90,40)
- \put(-6,7){ \shortstack{b)}}
+ \put(-6,7){ \shortstack{$b)$}}
  \put(0, 10){\vector(1,0){90}}
  \put(5,9){\line(0,1){2}}
  \put(4,7){\shortstack{$t_0$}}
@@ -366,7 +367,7 @@ l'horaire.
  \put(45, 14){\vector(1,0){40}}
  \put(9,13){ \shortstack{Saisie}}
  \put(54,16){ \shortstack{Construction}}
- \put(-6,22){ \shortstack{a)}}
+ \put(-6,22){ \shortstack{$a)$}}
  \put(0, 25){\vector(1,0){90}}
  \put(5, 24){\line(0,1){2}}
  \put(4,22){ \shortstack{$t_0$}}
@@ -379,39 +380,43 @@ l'horaire.
 \end{picture}%}
 \end{center}
 
-\caption{Les activités de saisie et construction pour une période
-$P$}\label{fig:fTime}
+\caption{Les activités de saisie et de construction pour une
+période $P$}\label{fig:fTime}
 \end{figure}
 
 La figure \ref{fig:fTime} nous montre les deux cas de l'évolution
-de ces activités. Dans le cas a. la saisie et la construction sont
-deux activités réalisées en séquence. Ceci représente le cas
-idéal. Dans le cas b. qui montre la réalité, la saisie (surtout
-les mises-à-jour) se fait au même temps que la construction.
-Beaucoup de données sont figées, comme l'offre de cours,
-cependant, si pendant la construction on trouve des situations où
-les conflits obligent à faire des changements sur les données, par
-exemple, le format d'un cours, qui passe de 3h consécutives à 2h
-consécutives plus 1h. D'autres cas peuvent se présenter.
+de ces activités. Dans le cas $a)$ la saisie et la construction
+sont deux activités réalisées en séquence. Ceci représente le cas
+idéal. Dans le cas $b)$ qui montre la réalité, la saisie (surtout
+les mises-à-jour) se fait en même temps que la construction. Au
+départ d'une construction, des données sont fixées, mais si le
+logiciel ou le responsable ne trouvent pas une solution
+satisfaisante il faut faire des changements même dans certains
+données fixés.
+
+%%Beaucoup de données sont figées, comme l'offre de cours,
+%cependant, si pendant la construction on trouve des situations où
+%les conflits obligent à faire des changements sur les données, par
+%exemple, le format d'un cours, qui passe de 3h consécutives à 2h
+%consécutives plus 1h. D'autres cas peuvent se présenter.
 
 
-Les activités de saisie et de construction peuvent être effectués
-par un ensemble d'utilisateurs. Chacun aura un rôle et des
-privileges associés pour pouvoir changer les données permis par
-son rôle.
+Les activités de saisie et de construction peuvent être effectuées
+par plusieurs d'utilisateurs. Chacun a un rôle et des privilèges
+associés pour pouvoir changer certaines données.
 
 Afin de simplifier, nous considérons deux types d'utilisateurs~:
-le commis et le responsable de la construction. Le commis est
-celui qui va saisir les informations dans la base de données, le
-responsable de la construction de l'horaire  interagit avec le
-programme de construction d'horaires.
+le commis et le responsable de la construction. Le commis saisit
+les informations dans la base de données, le responsable de la
+construction de l'horaire  interagit avec le programme de
+construction d'horaires.
 
-Le commis va saisir ou mettre-à-jour  une donnée dans la base si
-la donnée est valide,  elle est accepté et entrée dans la base.
-Par exemple si la donne attendue est un entier dans un intervalle,
-et que la donnée entrée correspond à l'ensemble de valeurs
-attendues; elle sera entrée dans la base. Sinon, le système doit
-forcer le commis à rentrer une nouvelle valeur.
+Le commis va saisir ou mettre à jour  une donnée dans la base si
+la donnée est valide,  elle est acceptée et entrée dans la base.
+Par exemple, si la donnée attendue est un entier dans un
+intervalle, et que la donnée entrée correspond à l'ensemble de
+valeurs attendues  elle sera entrée dans la base. Sinon, le
+système doit forcer le commis à rentrer une nouvelle valeur.
 
 La construction d'horaires est une activité de nature itérative.
 En général, les algorithmes de construction d'horaires proposent
@@ -448,15 +453,16 @@ composition et les contraintes de ces modèles \cite{shaw96}.
 
 De façon générale, quand nous avons un problème complexe, la
 meilleure approche est de découper le problème en fragments qui
-sont plus faciles à gérer avec des solutions simples. Après, si
-nous mettons ensemble ces petites solutions, nous allons arriver à
-la solution de notre problème complexe \cite{buschmann96}.
+sont plus faciles à gérer avec des solutions simples. Par la
+suite, si nous mettons ensemble ces petites solutions, nous allons
+arriver à la solution de notre problème complexe
+\cite{buschmann96}.
 
 À l'heure actuelle il y a plusieurs architectures disponibles pour
 développer des applications logicielles,  la plus adaptée pour le
 système de production d'horaire est celle en couches.
 
-L'architecture montré dans la figure \ref{fig:fThree} propose la
+L'architecture montrée dans la figure \ref{fig:fThree} propose la
 division du système en trois couches, chacune avec une fonction
 bien définie~:
 
@@ -465,18 +471,18 @@ bien définie~:
 à l'utilisateur, de permettre la saisie de données, ainsi que
 d'assurer les échanges  avec d'autres systèmes.
 
-\item [La couche de logique d'affaires.] Elle est responsable de
-assurer les échanges avec l'interface en validant et en vérifiant
-les données saisies et en envoyant les données à présenter dans un
-format adéquat. Elle assure aussi les échanges avec la couche de
-persistance. Les règles d'affaires servent à assurer la cohérence
-du système.
+\item [La couche de logique d'affaires.] Elle est responsable
+d'assurer les échanges avec l'interface en validant et en
+vérifiant les données saisies et en envoyant les données à
+présenter dans un format adéquat. Elle assure aussi les échanges
+avec la couche de persistance. Les règles d'affaires servent à
+assurer la cohérence du système.
 
 \item [La couche de persistance des données.] Elle gère le
 stockage physique des données, soit dans des fichiers avec un
-certain format, ou dans un système de bases de données
-traditionnelle ou bien dans d'autres modèles de persistance qui
-sont capables de gérer des bases de données complexes.
+certain format, ou dans un système de gestion de bases de données
+traditionnel ou bien dans d'autres modèles de persistance qui sont
+capables de gérer des bases de données complexes.
 \end {description}
 
 \begin{figure}
@@ -508,9 +514,9 @@ La conception de haut niveau de notre système de production
 d'horaires est simple (voir figure \ref{fig:fOne})~:
 
 \begin{enumerate}
-\item Nous avons défini trois catégories des  données  dans un
+\item Nous avons défini trois catégories de  données  dans un
 système de production. La figure \ref{fig:fTwo} montre ces
-categories. La couche d'interface  traite ces données de la
+catégories. La couche d'interface  traite ces données de la
 manière suivante~:
 
 \begin{enumerate}
@@ -520,10 +526,11 @@ de données appartenant à l'institution. Cette base peut avoir ses
 propres interfaces pour la saisie et l'affichage de données. Le
 système de production a besoin d'une partie de ces données. Il est
 nécessaire d'avoir une interface avec d'autres systèmes, sa
-responsabilité est de chercher les données nécessaires et de le
-placer dans le système de production. À noter que les utilisateurs
-du système pour des raisons de sécurité ne doivent pas avoir le
-droit de modifier les données de l'institution.
+responsabilité est de chercher les données nécessaires et de
+sauvegarder ces données dans le système de production. À noter que
+pour des raisons de sécurité, les utilisateurs du système  ne
+doivent pas avoir le droit de modifier les données de
+l'institution.
 
 \item La saisie directe des données d'une période $P$. Cette
 activité est faite par un commis. Normalement, ces données
@@ -534,14 +541,14 @@ couche d'interface peut faire quelques validations minimales de la
 cohérence de données, par exemple, vérifier que le type de données
 est correct, vérifier que les champs qui sont obligatoires sont
 remplis, etc. Dépendant de la taille de l'institution, il peut
-avoir plusieurs commis qui travaillent au même temps dans
+avoir plusieurs commis qui travaillent en même temps dans
 l'application, il faut en conséquence, prendre les mesures
 nécessaires pour permettre le travail concurrent dans la couche de
 persistance de données.
 
 
 
-\item Les données horaire sont créées par l'application de
+\item Les données de l'horaire sont créées par l'application de
 création d'horaires. Cette application est gérée par l'utilisateur
 responsable de la création d'horaires. Étant donné que cette
 activité est de nature itérative, il peut avoir un certain nombre
@@ -550,17 +557,15 @@ création d'horaires doit analyser pour trouver celle qui lui
 convient le mieux. Une fois qu'il a trouvé cette version, il doit
 appliquer l'opération "commit" pour rendre disponible
 l'information au reste des utilisateurs. Ce sont les données qui
-sortent de notre système, et ils sont envoyés vers d'autres
-systèmes ou bien vers d'autres utilisateurs, par exemple, les
-étudiants qui vont recevoir un papier avec leur horaire
-personnalisé ou bien, il peut consulter cette information en
-utilisant un site Web crée pour ces fins, ou bien, l'organisme
-d'administration central de l'institution qui doit être informé de
-l'affectation des horaires.
+sortent du système. Ces données sont envoyées vers d'autres
+systèmes ou bien vers d'autres utilisateurs. Par exemple, les
+étudiants vont recevoir un papier avec leur horaire personnalisé
+ou bien, ils peuvent consulter cette information en utilisant un
+site Web crée pour ces fins.
 
 \end{enumerate}
 
-Il faut tenir en considération que la couche d'interface
+Il faut prendre en considération que la couche d'interface
 communique uniquement avec la couche de logique d'affaires. Une
 application n'est pas capable d'ajouter, modifier ou effacer des
 données directement dans la base de données, elle doit passer
@@ -569,13 +574,13 @@ caractéristique nous permet d'assurer la cohérence des données.
 
 \item Les données sont traitées selon certaines règles et
 contraintes, ces règles sont définies par chaque institution et
-elles sont appliques par la couche logique d'affaires. C'est ici
-que nous pourrons exprimer des contraints propres à chaque
+elles sont appliquées par la couche logique d'affaires. C'est ici
+que nous pourrons exprimer des contraintes propres à chaque
 institution, par exemple, la quantité maximale d'étudiants dans un
 groupe, tous les cours de mathématique se déroulent le matin, etc.
 
 \item Les données résultats de ces traitements doivent être
-stockes dans quelque part pour pouvoir être utilisées après sa
+stockées dans quelque part pour pouvoir être utilisées après leur
 génération. C'est la couche de persistance de données qui est
 responsable de cette tâche. Dans un système de production
 d'horaires, les données peuvent être stockées dans une base de
@@ -584,7 +589,7 @@ XML, dans un fichier texte ou bien dans autre moyen de stockage
 pertinent.
 \end{enumerate}
 
-Ces éléments de composition et ses relations sont illustrés dans
+Ces éléments de composition et leur relations sont illustrés dans
 la figure \ref{fig:fFour}.
 
 \begin{figure}
@@ -610,7 +615,7 @@ la figure \ref{fig:fFour}.
 
 
   \put (0,3){\line(1,0){22}}
-  \put (19,3.5){\makebox(0,0){\scriptsize couche de logique d'affaires}}
+  \put (19,3.5){\makebox(0,0){\scriptsize Couche de logique d'affaires}}
   \put (2,3.5){\framebox(4,1){\tiny Serveur Web}}
   \put (8,3.5){\framebox(4,1){\tiny Règles d'affaires}}
   \put (6,4){\vector(1,0){2}} %RA -> SW
@@ -624,7 +629,7 @@ la figure \ref{fig:fFour}.
   \put (5,0.5){\framebox(6,1){\tiny Serveur Base Données}}
 
 \end{picture}
-\caption{L'implementation de l'architecture trois couches pour le
+\caption{L'implémentation de l'architecture trois couches pour le
 système de production d'horaires.}\label{fig:fFour}
 \end{figure}
 
@@ -648,7 +653,7 @@ l'échange des données avec les autres systèmes.
 \item Un outil pour gérer la persistance des données.
 \end{enumerate}
 
-Après un analyse, nous avons constaté qu'il n'y a pas une seule
+Après  analyse, nous avons constaté qu'il n'y a pas qu'une seule
 option, plutôt il y a plusieurs possibilités pour implémenter
 cette architecture.
 
@@ -660,10 +665,10 @@ exhaustive.
 \begin{tabular}{|c||c|c|c|}\hline
 Technologie & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
 Langage pour affichage & HTML et JSP& Applet Java & Visual Basic\\
+\hline Format pour échanger les données & XML & Text & Text\\
 \hline
-Format pour échanger données & XML & Text & Text\\ \hline
 
-Langage pour coder la logique d'affaire & Java & Java & Visual Basic\\
+Langage pour coder la logique d'affaires & Java & Java & Visual Basic\\
 \hline
 
 La persistance de données & Base de données & Base de données & Base de données \\
@@ -674,13 +679,13 @@ La persistance de données & Base de données & Base de données & Base de données 
 l'architecture}\label{tb:tbOne}
 \end{table}
 
-Pour la construction de chaque instance  nous avons mit ensemble
+Pour la construction de chaque instance  nous avons mis ensemble
 les éléments qui ont des caractéristiques communes ou bien qui
-appartiennent à un même famille de logiciels et qui sont ouverts.
+appartiennent à une même famille de logiciels et qui sont ouverts.
 
 Pour le volet base de données, nous n'avons pas mentionné le nom
 spécifique d'un système de gestion de base de données, le choix
-reste ouvert à l'implementation.
+reste ouvert à l'implémentation.
 
 Notre architecture est ouverte, étant donné qu'elle accepte
 plusieurs instances. L'architecture est aussi extensible, parce
@@ -689,13 +694,14 @@ exemple, nous pouvons commencer avec un élément de persistance de
 données comme un fichier en format texte plain, et après, nous
 pourrions effectuer quelques changements dans l'élément
 d'interface pour pouvoir interagir avec des fichiers en format
-XML. Après, si nous voulons faire évoluer cette partie de
-persistance de données vers un système de bases de données, il
+XML. Ensuite, si nous voulons faire évoluer cette partie de
+persistance de données vers un système de base de données, il
 faudrait faire des changements dans la couche d'interface et
 programmer l'élément de persistance des données. Tous ces
-changements sans jamais toucher l'élément de la logique
-d'affaires. Dans le Tableau \ref{tb:tbTwo}, nous montrons
-l'évolution possible d'une instance de notre architecture.
+changements doivent être effectués sans jamais toucher l'élément
+de la logique d'affaires. Dans le Tableau \ref{tb:tbTwo}, nous
+montrons l'évolution possible d'une instance de notre
+architecture.
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
@@ -703,10 +709,10 @@ Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
 Langage pour affichage & HTML et JSP & HTML et JSP & HTML et JSP\\
 \hline
 
-Format pour échanger données & Text & XML & SQL, Base de données\\
+Format pour échanger les données & Text & XML & SQL, Base de données\\
 \hline
 
-Langage pour coder la logique d'affaire & Java & Java & Java\\
+Langage pour coder la logique d'affaires & Java & Java & Java\\
 \hline
 
 La persistance de données & Text & XML & SQL, Base de données \\
@@ -715,7 +721,7 @@ La persistance de données & Text & XML & SQL, Base de données \\
 \end{tabular}
 ~ \\
 
-\caption{ L'evolution d'une instance de
+\caption{ L'évolution d'une instance de
 l'architecture}\label{tb:tbTwo}
 \end{table}
 
@@ -733,42 +739,45 @@ montré trois options d'instances de l'architecture (voir Tableau
 \ref{tb:tbOne}), pour notre implémentation, nous avons choisi
 l'option 1 de ce tableau.
 
-De le départ, il faut savoir que un élément est ouvert s'il est
+Dès le départ, il faut savoir qu'un élément est ouvert s'il est
 construit avec des standards approuvés, ou bien, s'il est
 construit avec une spécification privée mais rendue publique par
 les développeurs.
 \footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
-Il faut aussi tenir en compte que un élément est extensible s'il
-est facile d'adapter ce produit aux changements dans la
-spécification\cite{meyer97}.
+
+Il faut aussi tenir  compte qu'un élément est extensible s'il est
+facile d'adapter ce produit aux changements dans la spécification
+\cite{meyer97}.
 
 
-Avec ces considerations en main, nous montrons ici l'analyse qui
+
+Avec ces considérations en main, nous montrons ici l'analyse qui
 nous a amené à notre choix:
 
 \begin{description}
 
 \item [Langage pour affichage.] Pour langage d'affichage et saisie
-de données nous avons choisi HTML et JSP, étant donnée que ces
+de données nous avons choisi HTML et JSP, étant donné que ces
 langages sont le standard pour la création de pages Web, et nous
-voulons profiter de tous le bénéfices qu'offre un site Web pour
+voulons profiter de tous les bénéfices qu'offre un site Web pour
 les applications de type transactionnelle.
 
-\item [Format pour échanger données.] Pour échanger les données
-nous avons choisi XML. Le langage XML (eXtensible Markup Language)
-nous permet de stocker, d'échanger et d'afficher des données ou de
-l'information d'une manière structurée. Le langage permet aussi de
-manipuler, de transformer et de visualiser les données avec de
-nombreux outils de formatage, par exemple, des informations ou des
-données stockées dans un document XML peuvent être affichées dans
-un navigateur Web. De plus, quand des documents XML sont stockées
-dans une base de données, ils peuvent être l'objet de requêtes et
-retrouvés comme tout autre format de données.
+\item [Format pour l'échange de données.] Pour échanger les
+données nous avons choisi XML. Le langage XML (eXtensible Markup
+Language) nous permet de stocker, d'échanger et d'afficher des
+données ou de l'information d'une manière structurée. Le langage
+permet aussi de manipuler, de transformer et de visualiser les
+données avec de nombreux outils de formatage, par exemple, des
+informations ou des données stockées dans un document XML peuvent
+être affichées dans un navigateur Web. De plus, lorsque des
+documents XML sont stockés dans une base de données, ils peuvent
+être l'objet de requêtes et retrouvés comme tout autre format de
+données.
 
-\item [Langage pour coder la logique d'affaire.] Nous avons choisi
-Java. Java est un langage interprété qui utilise la machine
-virtuel Java (JVM). Il y a plusieurs versions de cette machine
+\item [Langage pour coder la logique d'affaires.] Nous avons
+choisi Java. Java est un langage interprété qui utilise la machine
+virtuelle Java (JVM). Il y a plusieurs versions de cette machine
 virtuelle pour plusieurs plate-formes différentes, ce qui signifie
 que les programmeurs peuvent écrire pour ce langage en utilisant
 une plate-forme, et faire tourner leurs programmes sur autres.
@@ -788,52 +797,57 @@ Java et un grande nombre de bases de données, en utilisant la
 philosophie "Write Once, Run Anywhere".
 \end{description}
 
-Même si ce n'est pas la seule option pour l'implementation de
+Même si ce n'est pas la seule option pour l'implémentation de
 notre système de production d'horaires, nous sommes convaincus que
 notre choix nous permettra de faire évoluer le système par
-versions en ajoutant ou en modifiant caractéristiques demandés par
-les institutions.
+versions en ajoutant ou en modifiant les caractéristiques
+demandées par les institutions.
 
 
-\section{Conclusions}\label{sec:conc}
+\section{Conclusion}\label{sec:conc}
 
 Nous avons présenté l'architecture d'un système de production
 d'horaires dans une institution d'enseignement. Un objectif a
 guidé notre démarche~: avoir une architecture ouverte et
-extensible. Afin d'assurer une vie plus longue au système.
+extensible afin d'assurer une vie plus longue au système.
 
 Nous avons commencé par montrer les besoins d'échanges
 d'information d'un tel système afin de mieux présenter comment
-l'architecture est capable de satisfaire ces besoins. De plus,
+l'architecture est capable de sa\-tisfaire ces besoins. De plus,
 dans la présentation de l'architecture nous avons montré qu'elle
 possède les deux qualités. Notre architecture est ouverte~: il est
 possible de construire plusieurs instances. L'architecture est
 aussi extensible, parce que nous pourrions changer les modules
 d'une manière facile. Les responsabilités de chaque module étant
-définies, permet de identifier la partie du système affecté par
-une modification. Il est nécessaire de continuer les
-développements en continuant à avoir comme objectif la ouverture
+définies, il est possible  d'identifier la partie du système
+affectée par une modification. Il est nécessaire de continuer les
+développements en continuant à avoir comme objectif l'ouverture
 (compatibilité) et l'extensibilité dans tout le logiciel.
 
 Il est maintenant possible de répondre à la question~: Est-ce que
 la construction d'horaires peut bénéficier de développements
-associés à la production de horaires? Notre experience dans le
+associés à la production d'horaires? Notre expérience dans le
 développement de logiciels de construction d'horaires nous a
-montré que~: la plus part de problèmes dans le logiciel viennent
-du fait que les données en entrée ont des erreurs. Le logiciel de
+montré que~: la plupart des problèmes dans le logiciel viennent du
+fait que les données en entrée ont des erreurs. Le logiciel de
 construction doit dédier une grosse partie de son code pour
-détecter ses erreurs. De plus les utilisateurs prennent un temps
+détecter ces erreurs. De plus, les utilisateurs prennent un temps
 important pour vérifier la cohérence de données avant de commencer
 le travail de construction. Alors, la réponse est oui, il existe
-de bénéfices. En développant un système de production il est plus
+des bénéfices. En développant un système de production il est plus
 facile d'assurer que le logiciel de construction a comme
-responsabilité la construction de l'horaire et pas celle de
+responsabilité la construction de l'horaire et non celle de
 vérification de données.
 
 D'autres bénéfices sont aussi à envisager, comme par exemple
+<<<<<<< patat04Full.tex
+consulter son horaire par le Web (à jour) depuis sa résidence,
+surtout dans des pays ou parfois il fait $-30^\circ$ et moins.
+=======
 consulter son horaire par le Web (à jour) depuis sa residence,
 surtout dans des pays où parfois il fait $-30^\circ$, cela est
 bien apprécié.
+>>>>>>> 1.54
 
 
 
