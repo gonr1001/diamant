@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.1 $  $Date: 2003-01-24 18:41:16 $
+ * Title: DDocument $Revision: 1.2 $  $Date: 2003-01-31 16:43:04 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -42,11 +42,14 @@ public class DDocument {
   //-------------------------------------------
   public DDocument(DView dView,
                             DMediator mediator) {
-    _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
     _dView = dView;
     _mediator = mediator;
     _dm = new DModel();
+    _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
+    JPanel ttPanel = new TTPanel();
     _modified = false;
+    JScrollPane jsp = new JScrollPane(ttPanel);
+    _jif.getContentPane().add(jsp, BorderLayout.CENTER);
     _jif.setBounds(10, 10, 600, 550);
     _dView.getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);

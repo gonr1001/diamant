@@ -1,6 +1,6 @@
 /**
  *
- * Title: NewCmd $Revision: 1.3 $  $Date: 2003-01-24 18:26:51 $
+ * Title: NewCmd $Revision: 1.4 $  $Date: 2003-01-31 16:43:14 $
  * Description: NewCmd is a class used to have a new
  *  			document window
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -26,7 +26,7 @@ import javax.swing.JFrame;
 public class NewCmd implements Command {
   DMediator _med;
 
-  public NewCmd( DMediator med) {
+  public NewCmd(DMediator med) {
       _med = med;
   } //end NewCmd
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.4 $  $Date: 2003-01-30 18:53:55 $
+ * Title: ClassName $Revision: 1.5 $  $Date: 2003-01-31 16:42:17 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -56,11 +56,9 @@ public class DRun {
       */
 
     public static void main(String[] args) {
-        DView _dv;
-
         if (GUI) {
           System.out.println("hello_with_a_GUI");
-          _dv = new DView();
+          DView _dv = new DView();
         }
         else {
             System.out.println("hello");
