@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.37 $  $Date: 2004-02-24 16:31:02 $
+ * Title: ToolBar $Revision: 1.38 $  $Date: 2004-02-24 17:19:02 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -70,7 +70,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
     int c = 2;
     // the labels in the bar
     _lSetNumberOfDays = new JLabel("Nombre de jours ");
-    _lDaySelector = new JLabel("Jour courrant ");
+    _lDaySelector = new JLabel("Jour courant ");
     _lDayNameSelector = new JLabel("Nom du jour ");
 
     _lPeriodIndicator = new JLabel("Index Période ");
