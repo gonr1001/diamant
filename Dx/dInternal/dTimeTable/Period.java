@@ -11,9 +11,9 @@ import org.w3c.dom.Document;
 
 public class Period extends DXObject {
 
-  private int nbStudConflict = 0;
-  private int nbInstConflict = 0;
-  private int nbRoomConflict= 0;
+  private int _nbStudConflict = 0;
+  private int _nbInstConflict = 0;
+  private int _nbRoomConflict= 0;
   private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
   private int _priority;// 0= normal; 1= low; 2= null
   private String _error = "";
@@ -21,7 +21,11 @@ public class Period extends DXObject {
   static final String  _TAGITEM="BeginTime";
   static final String _TAGITEM1="EndTime";
   static final String _TAGITEM2="priority";
-  private SetOfResources _eventsInPeriod;
+  /**
+   * contains a resource where ID is the event which is place in the period,
+   * and resource attach is a conflictsattach type
+   */
+  private SetOfResources _eventsInPeriod;//
 
 
   /**
@@ -75,7 +79,7 @@ public class Period extends DXObject {
    * @param int the number of students conflicts
    * */
   public int getNbStudConflict(){
-    return nbStudConflict;
+    return _nbStudConflict;
   }
 
   /**
@@ -83,7 +87,7 @@ public class Period extends DXObject {
    * @param int the number of students conflicts
    * */
   public void addNbStudConflict(int conflict){
-     nbStudConflict+=conflict;
+     _nbStudConflict+=conflict;
   }
 
   /**
@@ -91,7 +95,7 @@ public class Period extends DXObject {
    * @param int the number of rooms conflicts
    * */
   public void addNbRoomsConflict(int conflict){
-     nbRoomConflict+=conflict;
+     _nbRoomConflict+=conflict;
   }
 
   /**
@@ -99,7 +103,7 @@ public class Period extends DXObject {
    * @param int the number of students conflicts
    * */
   public void removeNbStudConflict(int conflict){
-     nbStudConflict-=conflict;
+     _nbStudConflict-=conflict;
   }
 
   /**
@@ -107,7 +111,7 @@ public class Period extends DXObject {
    * @param int the number of rooms conflicts
    * */
   public void removeNbRoomsConflict(int conflict){
-     nbRoomConflict-=conflict;
+     _nbRoomConflict-=conflict;
   }
 
   /**
@@ -115,7 +119,7 @@ public class Period extends DXObject {
    * @param int the number of instructors conflicts
    * */
   public int getNbInstConflict(){
-    return nbInstConflict;
+    return _nbInstConflict;
   }
 
   /**
@@ -123,7 +127,7 @@ public class Period extends DXObject {
    * @param int get number of rooms conflicts
    * */
   public int getNbRoomConflict(){
-    return nbRoomConflict;
+    return _nbRoomConflict;
   }
 
   /**
@@ -191,9 +195,9 @@ public class Period extends DXObject {
    * */
   public Period clonePeriod(){
     Period newPer= new Period();
-    newPer.nbInstConflict= 0;
-    newPer.nbRoomConflict=0;
-    newPer.nbStudConflict=0;
+    newPer._nbInstConflict= 0;
+    newPer._nbRoomConflict=0;
+    newPer._nbStudConflict=0;
     newPer._priority= this._priority;
     newPer._beginHour= this._beginHour;
     return newPer;
@@ -215,6 +219,16 @@ public class Period extends DXObject {
 
     String str=_beginHour[0]+":"+_beginHour[1]+" -- "+_priority;
     return str;
+  }
+
+  /**
+   *
+   */
+  public void emptyEventsInPeriod(){
+    _eventsInPeriod = new SetOfResources(6);
+    _nbStudConflict = 0;
+    _nbInstConflict = 0;
+    _nbRoomConflict= 0;
   }
 
 

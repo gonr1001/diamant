@@ -51,6 +51,7 @@ public class TestConditions {
    */
   public void buildAllConditions(){
     _matrix.buildMatrix(_dm.getSetOfActivities(), _dm.getSetOfStudents());
+    _dm.getTTStructure().getCurrentCycle().emptyAllEventsInPeriod();
     _dm.getSetOfEvents()._isEventPlaced=true;
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){
       Resource event = _dm.getSetOfEvents().getResourceAt(i);

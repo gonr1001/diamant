@@ -130,17 +130,43 @@ public class StudentsConflictsMatrix {
       Resource rescActivity = soa.getResourceAt(i);
       for (int j=0; j< ((Activity)rescActivity.getAttach()).getSetOfTypes().size(); j++){
         Resource rescType = ((Activity)rescActivity.getAttach()).getSetOfTypes().getResourceAt(j);
-        int groupInc = 0;
+        int groupInd = 0;
+        int[] tab= new int[((Type)rescType.getAttach()).getSetOfSections().size()];
+        for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++){
+          Resource rescSection= ((Type)rescType.getAttach()).getSetOfSections().getResourceAt(z);
+          tab[z]= sos.getStudentsByGroup(rescActivity.getID(),rescType.getID(),
+              DXTools.STIConvertGroup(rescSection.getID())).size();
+        }//end for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++)
+
         for (int k=0; k< ((Activity)rescActivity.getAttach()).getStudentRegistered().size(); k++){
-          groupInc= groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
+          groupInd= this.getIndexOfSmallerValue(tab);//groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
           String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
           Resource student = sos.getResource(Long.parseLong(studentKey));
-          int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInc).getKey();
-          ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),groupValue,false);
-          groupInc++;
+          int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();
+          if(!((StudentAttach)student.getAttach()).isFixedInGroup(rescActivity.getID()+rescType.getID(),groupValue)){
+            ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),groupValue,false);
+            tab[groupInd]++;
+            //groupInc++;
+          }
         }// end for (int k=0; k< ((Activity)rescActivity.getAttach()).getSetOfTypes()
       }// end for (int j=0; j< ((Activity)rescActivity.getAttach()).
     }// end for (int i=0; i< soa.size(); i++)
+  }
+
+  /**
+   * get the index of the smaller value of a table
+   * @param tab
+   * @return
+   */
+  private int getIndexOfSmallerValue(int [] tab){
+    int inc=1000;
+    int index=0;
+    for (int i=0; i< tab.length; i++){
+      if(tab[i]<inc)
+        index=i;
+      inc= tab[i];
+    }
+    return index;
   }
 
   /**

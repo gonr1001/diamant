@@ -56,6 +56,20 @@ public class ConflictsAttach extends DXObject{
     _setOfConflicts.addResource(new Resource(eventName,confValue),0);
   }
 
+  /**
+   * merge two conflicts attach list
+   * @param cAttach
+   */
+  public void mergeConflictsAttach(ConflictsAttach cAttach){
+    for (int i=0; i< cAttach.getConflictsAttach().size(); i++){
+      Resource resc= cAttach.getConflictsAttach().getResourceAt(i);
+      _setOfConflicts.addResource(new Resource(resc.getID(),resc.getAttach()),0);
+    }// end for (int i=0; i< cAttach.getConflictsAttach().size(); i++)
+
+  }
+
+
+
 
   /**
    * remove an activity from setfo conflicts

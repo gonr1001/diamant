@@ -241,7 +241,7 @@ public class StudentAttach extends DXObject{
         String group= "00"+Integer.toString(choice.getIntValue());
         str+= group.substring(group.length()-2,group.length());
       }else
-        str+="00";
+        str+="";
       if (i< _courses.size()-1)
         str+=" ";
     }

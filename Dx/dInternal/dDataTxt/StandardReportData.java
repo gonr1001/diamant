@@ -12,6 +12,7 @@ package dInternal.dData;
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dUtil.DXValue;
+import dInternal.dConditionsTest.ConflictsAttach;
 import dInternal.dConditionsTest.EventAttach;
 import dInterface.dUtil.DXTools;
 import dResources.DConst;
@@ -44,6 +45,8 @@ public class StandardReportData {
   */
   private String _studentsReport="";
 
+  private String _conflictsReport="";
+
   /**
    * Constructor
    * @param dm
@@ -52,6 +55,7 @@ public class StandardReportData {
     _dm=dm;
     _activitiesReport= buildActivitiesReport();
     _studentsReport = buildStudentsReport();
+    _conflictsReport=buildConflictsReport();
   }
 
   /**
@@ -157,6 +161,38 @@ public class StandardReportData {
       }// end for (int j=0; j< vec.size(); j++)
       report+=setOf.CR_LF;
     }// end  for(int i=0; i< nbTokens; i++)
+    return report;
+  }
+
+  /**
+   *
+   * @return
+   */
+  private String buildConflictsReport(){
+    String report="";
+    for(int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(); i++){
+      Resource day= _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
+      for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+        Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
+          Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          ((Period)per.getAttach()).getEventsInPeriod().sortSetOfResourcesByID();
+          for(int x=0; x< ((Period)per.getAttach()).getEventsInPeriod().size(); x++){
+            Resource confEvents= ((Period)per.getAttach()).getEventsInPeriod().getResourceAt(x);
+            ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().sortSetOfResourcesByID();
+            for(int y=0; y< ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().size(); y++){
+              Resource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
+              DXValue confValue= (DXValue)confAttach.getAttach();
+              report+=day.getKey()+";"+day.getID()+";"+seq.getID()+";"+per.getID()+";"+
+                      _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities())+
+                      ";"+_dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities())+
+                      ";"+confValue.getIntValue()+";"+confValue.getStringValue()+";"+SetOfResources.CR_LF;
+            }// end for(int y=0; y< ((ConflictsAttach)confEvents.ge
+          }// end for(int x=0; x< ((Period)per.getAttach()).getEventsInPeriod()
+        }//end for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods()
+      }//end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size()
+    }//end for(int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(
+    System.out.println(report);//debug
     return report;
   }
 

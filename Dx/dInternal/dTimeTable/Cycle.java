@@ -320,6 +320,29 @@ public Period getLastPeriod(){
   }
 
   /**
+  * get a period position in a day
+  * @param Cycle the cycle where we want to find the period
+  * @param int the day reference number where we want to find the period
+  * @param int the sequence reference number where we want to find the period
+  * @param int the index of the period int the sequence
+  * @return int the period pesition
+  * */
+ public int getPeriodPositionInDay( long dayKey, long seqKey, long perKey){
+     Day day =(Day)getSetOfDays().getResource(dayKey).getAttach();
+     int periodPos=-1;
+     if(day!=null){
+       Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqKey).getAttach();
+       if (seq!=null){
+         periodPos=0;
+         for (int i=(int)seqKey-1; i>0; i--)
+           periodPos+= ((Sequence)day.getSetOfSequences().getResource(i).getAttach()).getSetOfPeriods().size();
+         return periodPos+ (int)perKey;
+       }
+     }
+   return -1;
+  }
+
+  /**
   * check adjacency of periods
   * @param long the day reference number where we want to find the period
   * @param long the sequence reference number where we want to find the period
@@ -426,6 +449,21 @@ public Period getLastPeriod(){
 
     }//end for (int i=0; i< getSetOfDays().size(); i++)
     return conf;
+  }
+
+  /**
+   *
+   */
+  public void emptyAllEventsInPeriod(){
+    for (int i=0; i< getSetOfDays().size(); i++){
+      Day day = (Day)getSetOfDays().getResourceAt(i).getAttach();
+      for(int j=0; j< day.getSetOfSequences().size(); j++){
+        Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+        for(int k=0; k< seq.getSetOfPeriods().size(); k++){
+          ((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).emptyEventsInPeriod();
+        }// end for(int k=0; k< seq.getSetOfPeriods().size(); k++)
+      }// end for(int j=0; j< day.getSetOfSequences().size(); j++)
+    }//end for (int i=0; i< getSetOfDays().size(); i++)
   }
 
   private SetOfResources _setOfDays;

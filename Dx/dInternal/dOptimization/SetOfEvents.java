@@ -11,8 +11,10 @@ import dInternal.dData.Assignment;
 import dInternal.dData.SetOfInstructors;
 import dInternal.dData.SetOfRooms;
 import dInternal.dTimeTable.Cycle;
+import dResources.DConst;
 
 import java.util.Vector;
+import java.util.StringTokenizer;
 import java.awt.Component;
 
 
@@ -68,6 +70,26 @@ public class SetOfEvents extends SetOfResources{
       }//end if(((Activity)activity.getAttach()).getActivityVisibility())
     }// end for (int i=0; i< soa.size(); i++)
 
+  }
+
+  /**
+   * get the complet activity name of an event
+   * @param eventKey
+   * @param soa
+   * @return
+   */
+  public String getEventID(String eventKey, SetOfActivities soa){
+    String id= eventKey;
+    StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
+    if(event1.countTokens()>=4){
+      Resource activity = soa.getResource(Long.parseLong(event1.nextToken()));
+      Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(Long.parseLong(event1.nextToken()));
+      Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(Long.parseLong(event1.nextToken()));
+      Resource unity = ((Section)section.getAttach()).getSetOfUnities().getResource(Long.parseLong(event1.nextToken()));
+      id= activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
+          DConst.TOKENSEPARATOR+section.getID()+DConst.TOKENSEPARATOR+unity.getID();
+    }
+    return id;
   }
 
   /**

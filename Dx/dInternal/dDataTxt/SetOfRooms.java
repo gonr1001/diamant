@@ -102,7 +102,7 @@ public class SetOfRooms extends SetOfResources{
                   state =0;
                 break;
               case 5:
-                System.out.println("Dispo: "+token);
+                //System.out.println("Dispo: "+token);
                 state =0;
                 break;
               }// end switch (state)
