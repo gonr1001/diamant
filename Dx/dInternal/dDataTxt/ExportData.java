@@ -87,8 +87,8 @@ public class ExportData {
           report+= DXToolsMethods.getToken(viewElt,".",0)+DXToolsMethods.getToken(viewElt,".",1)+
                    "  "+DXToolsMethods.getToken(viewElt,".",2).toLowerCase()+" ";
         }
-        report+=SetOfResources.CR_LF;
       }// end while(strTokens.hasMoreTokens())
+      report+=SetOfResources.CR_LF;
     }// end if(rTokens.hasMoreTokens())
 
     return report;
