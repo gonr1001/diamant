@@ -21,14 +21,27 @@ public class TestsSuite extends ScriptFixture {
 
     /** Return the set of scripts we want to run. */
     public static Test suite() {
-        return new ScriptTestSuite(TestsSuite.class, "D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dAbbotTest") {
-            /** Determine whether the given script should be included. */
-            public boolean accept(File file) {
-                String name = file.getName();
-                return name.startsWith("test") && name.endsWith(".xml");
-            }
-        };
-    }
+      String testsDirectory = "D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dAbbotTest\\";
+      String [] testFiles = {
+        "testNewTTCycle.xml",
+        "testAboutBox.xml"
+      };
+      for(int i = 0; i < testFiles.length; i++){
+        testFiles[i] = testsDirectory + testFiles[i];
+      }
+      return new ScriptTestSuite(TestsSuite.class, testFiles) {
+
+      };
+      // a second way for definig the tests files :
+      /* return new ScriptTestSuite(TestsSuite.class, "D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dAbbotTest") {
+        // Determine whether the given script should be included.
+        public boolean accept(File file) {
+          String name = file.getName();
+          return name.startsWith("test") && name.endsWith(".xml");
+        }
+      };
+      */
+    } // end method suite()
 
     public static void main(String[] args) {
         TestHelper.runTests(args, TestsSuite.class);
