@@ -273,18 +273,21 @@ La structure du fichier :
     \begin{enumerate}
     \item La ligne de type 2 est une chaîne de caractères correspondant au sigle du cours (\verb!ADM1111 A!. Ceci décrit la leçon magistrale du cours \verb!ADM111! avec le groupe \verb!A!).
     \item La ligne de type 3 décrit l'état du cours, c'est une valeur entière (0 si le cours est inactif et 1 dans l'autre cas). 
-    \item La ligne de type 4
+    \item La ligne de type 4 décrit le nombre d'activités associées au cours, c'est une valeur entière.
+    \item La ligne de type 5 est une chaîne de caractères correspondant au nom de l'enseignant.
+    \item La ligne de type 6
+    \item La ligne de type 7
+    \item La ligne de type 8
+    \item La ligne de type 9
+    \item La ligne de type 10
+    \item La ligne de type 11
+    \item La ligne de type 12
+    \item La ligne de type 13
     \end{enumerate}
 \end{enumerate}
 
 \begin{description}
-\item [Ligne blanche] la première ligne du fichier est une ligne blanche.
-\item [ADM1111   A]   C'est le sigle du cours (\texttt{ADM1111 A} pour la leçon magistrale du cours
-\texttt{ADM111} avec le groupe \texttt{A}).
-\item [1]  Ensuite, vient le nombre un ou zéro. \texttt{1} nous indique alors que le cours est actif, contrairement à \texttt{0}.
-\item [1]  Cet entier nous donne le nombre de \textit{fiches professeurs}. Ceci est en fait le nombre d'activités
-associées à ce cours (LM, ED, LAB, etc.).
-\item [LUC LAJOIE] Puis, commence alors la description d'une des fiches. Sur cette première ligne, on y retrouve le nom de ou des enseignants de la première fiche (avec une limite de 3 noms).
+
 \item [2] le nombre de blocs de périodes séparées de la première fiche (ex: si nous avons deux heures de cours collées à trois endroits différents dans l'horaire, l'entier sera 3).
 \item [2 1] Nous avons une suite de nombre qui correspond à la durée de chacun des blocs prévus à la ligne précédente. Dans ce cas-ci, la durée du premier bloc est de deux périodes alors que la durée du deuxième est de seulement une période.
 \item [2 1 4 2] On a une autre liste d'entiers représentant le jour et l'heure de chacun des blocs précédents. Ici, \texttt{2 1} nous indique que le premier bloc a lieu le mardi à 8h30 alors que \texttt{4 2} nous apprends que le deuxième bloc est le jeudi à 9h30.
