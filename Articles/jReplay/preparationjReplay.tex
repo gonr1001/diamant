@@ -1,0 +1,325 @@
+\documentclass{llncs}
+\bibliographystyle{alpha}
+\usepackage[T1]{fontenc}
+\usepackage{dfd,hhline}
+\usepackage{verbatim}
+
+\setlength{\parskip}{1.5explus0.5ex minus0ex}
+
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\tictac}{Tic-Tac}
+\newcommand{\xp}{eXtreme Programming}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+
+\title{\bf{jReplay \\(document préparatoire)}}
+\author{Ruben Gonzalez-Rubio \\Rosa Lourdes Garcia-Diaz}
+\institute{Département de génie électrique et de génie informatique \\
+Université de Sherbrooke,\\
+Sherbrooke, Québec, J1K 2R1 \\
+Canada\\
+\email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
+\email{Rosa.Garcia@USherbrooke.ca}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Avant de commencer}
+\subsection{Quoi, de manière précise, a été votre contribution?}
+Un outil permettant de enregistrer le comportement d'un
+utilisateur, lorsqu'il sert d'une application, et permettant aussi
+de reproduire ce comportemnt.
+
+Quelques particularités de son utilisation :
+\begin{enumerate}
+ \item Il faut ajouter très peu de lignes au code existant pour
+ faire la fonction de enregistrement.
+ \item Rééxécution rapide et sélective.
+ \item Outil de debbugage puissant, car il permet plus facilement de reproduir un bug.
+\end{enumerate}
+
+\begin{description}
+ \item [Quelle question avez-vous répondu?]
+ Comment organizer un système d'in\-for\-mation dédié à la production d'horaires
+ de cours et d'examens au niveau d'une institution d'enseignement en prenant en compte  pour le système les
+ caractéristiques~: ouverte, extensible.
+
+\item [Pourquoi est importante pour le lecteur cette réponse?]
+Nous présen\-tons les considérations de conception d'un système
+intégrant la production d'horaires de cours et la construction
+automatique d'horaires. Il montre des alternatives  d'interfaces
+entre les différents modules du système. Un lecteur peut
+s'inspirer de l'architecture présentée pour créer sa propre
+instance de système de production d'horaires. Un lecteur peut
+s'inspirer pour planifier la mise en oeuvre d'une instance
+similaire.
+
+\item [Quelle est l'extension de cette réponse?] La définition de
+l'architecture est faite suivant le flot de données tout au long
+du processus de production d'horaires. Après, nous présentons un
+découpage en modules de l'architecture avec un analyse de
+différents solutions.
+
+\end{description}
+
+\subsection{Quel est votre nouveau résultat?}
+
+\begin{description}
+
+\item [Quelle est votre contribution à la connaissance?] Offrir
+aux lecteurs un  vue globale du processus  de la production
+d'horaires et monter une architecture capable de soutenir ce
+processus. Encore, le système proposé possède les
+caractéristiques~: ouvert, modulaire, flexible, extensible.
+
+Les systèmes d'information sont plus complexes chaque jour car ils
+évoluent. Les besoins changent et le système doit s'adapter aux
+changements. Un système doit être construit de le départ en
+prenant en compte les changements qu'il va suivre.
+
+ et demandent sa division en plusieurs modules avec
+une tache bien précise à accomplir. Une fois que nous avons fait
+cette division, il faut faire l'intégration de plusieurs de ces
+modules pour avoir une réponse adequate aux besoins des
+utilisateurs. Étant donnée cette complexité, nous avons besoin de
+découper les grands problèmes en petits morceaux faciles à gérer,
+et faciles à s'intégrer, disons qu'il faut désigner des systèmes
+qui facilement pourront se contracter et s'élargir
+\cite{parnas78}. Nous voulons faire un développement basé sur les
+principes du génie logiciel.
+
+\item [Quels sont les travaux antérieurs?]Dans une recherche
+documentaire nous avons trouvé que la plupart des articles dans le
+domaine de construction de horaires sont orientés à trouver la
+meilleure méthode pour optimiser la construction des horaires,
+mais il n'y a pas une idée claire de la manière d'intégrer ces
+logiciels aux systèmes de gestion d'information plus larges. Notre
+idée de base est de montrer la différence entre la ``production''
+des horaires dans le sens d'intégrer le logiciel à l'ensemble de
+systèmes qu'interagissent pour la gestion académique et la
+``construction'' des horaires avec une signification plus
+restrictive. Nous sommes convaincus que cette approche fonctionne,
+mais il y a plusieurs problèmes au moment de vouloir intégrer les
+logiciels avec autres composants. Il est aussi compliqué si nous
+voulons comparer des algorithmes en mesurant sa performance, il y
+a eu quand même quelques efforts pour trouver une architecture
+standardisée pour faire des benchmarks entre les logiciels de
+construction d'horaires \cite{kingston00}.
+
+\item [Pourquoi votre solution est-elle meilleure?] Notre solution
+est basée sur un analyse d'alternatives sur les points clés de la
+construction d'un système. Notre idée est de construire un
+logiciel capable d'interagir avec autres logiciels existants dans
+la gestion scolaire. Nous considérons qu'il y a deux qualités du
+logiciel importantes pour réussir à cet objectif~: la flexibilité
+et l'extensibilité. Montrer par des exemples que la flexibilité et
+l'extensibilité sont bonnes.
+
+Dans notre approche nous avons mis en application les principes du
+génie logiciel,  la conception orientée-objet et les design
+patterns, qui dans la pratique offrent plus de chances de réussir
+dans l'implementation d'un système d'information complexe.
+
+\item [Quoi, de manière précise et détaillée est  nouveau dans
+votre travail?] Prendre le problème de production d'horaires comme
+un système intégrant collecte de données et construction.
+
+La présentation d'un cadre de travail afin de développer un
+système qui cherche la qualité de l'extensibilité et la facile
+intégration avec les systèmes existantes ainsi que les systèmes
+qui seront développés dans le futur.
+
+Notre approche modulaire nous permettre d'offrir plusieurs
+alternatives aux concepteurs des logiciels qui pourront développer
+de modules qui interagissent avec d'autres modules dans un grand
+système de gestion d'une Université.
+\end{description}
+
+
+\subsection{Pourquoi votre lecteur doit croire à votre résultat?}
+
+\begin{description}
+\item [Quel standard a été utilisé pour évaluer votre solution?]
+Étude analytique de solutions proposées.
+
+Nous arrivons à un problème, dans le génie logiciel il n'y a pas
+encore des standards pour le développement des systèmes, même s'il
+y a quelques normes ISO qui essaient d'encadrer le développement
+du logiciel, elles sont trop rigides et ne reflètent pas la
+réalité du développement du logiciel.Nous utilisons les
+technologies et les méthodologies les plus récemment acceptées
+dans la génie logiciel pour le développement de systèmes, il y a
+histoires de succès en utilisant {\xp}, ou les Design Patterns
+ainsi que la conception Orientée Objets, et nous voulons profiter
+de ces experiences.
+
+\item [Quelle évidence concrète montre que votre résultat est
+correct?] En plus de justifications analytiques, la réalisation du
+système {\tictac} servira comme preuve de notre approche, étant
+donnée qu'il devra s'intégrer avec d'autres systèmes de gestion
+d'information universitaire. Nous allons utiliser des exemples
+concrets pour montrer la validité de notre manière de concevoir ce
+type de logiciel.
+\end{description}
+
+\section{Application de la méthodologie}
+\subsection{Les préalables}
+
+\begin{description}
+\item [Qu'est-ce que vous voulez dire?] Description précise du
+résultat que vous voulez transmettre. Nous voulons expliquer les
+choix d'architecture, du design et de conception pour la
+réalisation d'un système de production d'horaires dans
+l'environnement d'une institution d'enseignement supérieur. Nous
+voulons montrer les avantages d'avoir une vision globale au moment
+de faire la création d'un système de production d'horaires, qui
+est capable d'interagir avec autres systèmes. Nous voulons aussi
+montrer la manière de planifier le développement du {\tictac}, le
+système de production d'horaires utilisé par plusieurs facultés de
+l'Université de Sherbrooke.
+
+ \item [Qui va lire
+l'article?]Une description précise de l'auditoire, le niveau
+technique, la taille, etc. Nous avons ciblé trois types de
+lecteurs :
+\begin{enumerate}
+\item Faire la publication de l'article dans PATAT 2004. Un
+auditoire ouvert mais surtout des chercheurs en informatique ou en
+recherche opérationnelle qui travaillent dans le domaine de la
+conception d'horaires, peut-être avec une bonne connaissance de
+mathématiques ou de l'informatique ou de la recherche
+opérationnelle, ou les trois ensemble.
+
+\item Les nouveaux développeurs qui se intégreront à l'équipe de
+travail \eXit{}. Quelques étudiantes en génie qui pourraient
+s'ajouter au groupe \eXit{}, avec un baccalauréat ou une maîtrise
+en génie ou en informatique.
+
+ \item Les utilisateurs du {\tictac}, qui auront besoin de connaître quelques
+caractéristiques du système. Moins d'une dizaine de lecteurs avec
+très peu des connaissances informatiques, mais de l'expérience
+dans le processus de la conception d'horaires.
+
+
+\end {enumerate}
+Même si les trois groupes de lecteurs semblent différents, le but
+de l'article est de montrer les concepts généraux de la conception
+d'un système de production d'horaires.
+\end{description}
+
+
+\section {L'architecture}
+
+Vision globale de l'article
+
+\begin{description}
+\item [Identification de la question que vous avez posée.] On se
+questionne sur le fait de pouvoir faire la conception d'un
+logiciel pour la production d'horaires qui puisse interagir avec
+d'autres modules d'un système intégrale de gestion de
+l'information d'une Université.
+
+\item [L'identification du résultat obtenu.] Dans l'étape du
+design de {\tictac}, nous avons une approche génie logiciel  de la
+conception de ce système. Nous avons pris en considération
+plusieurs qualités de logiciel qui s'appliquent à tout logiciel
+basé sur l'architecture Web, mais surtout l'application des
+technologies qui nous permettront de développer un logiciel
+extensible, robuste, réutilisable et compatible avec son
+environnement.
+
+\item [Le type de validation que vous allez offrir.] La
+réalisation du système {\tictac} servira comme preuve de notre
+approche, étant donnée qu'il devra s'intégrer avec d'autres
+systèmes de gestion d'information universitaire. Nous allons
+utiliser des exemples concrets pour montrer la validité de notre
+manière de concevoir ce type de logiciel.
+
+\item [Structure du document] Il faudra choisir une structure de
+document qui vous permettra d'explique vos démarches.
+
+\begin{enumerate}
+\item Résumé.
+
+\item Introduction
+
+\begin{enumerate}
+\item Motivation
+
+\item Définition du problème
+
+\item La question spécifique que vous allez travailler
+
+\item Panorama générale
+
+\item Travail connexe.
+\end{enumerate}
+
+\item Les données
+
+\item La decomposition modulaire, top-down, alternatives et
+justifications
+\item Technologies possibles et justifications.
+\item \tictac
+
+\item Conclusions
+\end{enumerate}
+\end{description}
+
+\section{Première brouillon du résumé}
+
+\paragraph{Titre~:}La production d'un horaire de cours dans une Université
+
+\input{resume.tex}
+
+
+{\bf Mots clé :} Production d'horaires, Génie logiciel, Qualité.
+
+\section{Plan de travail}
+\begin{itemize}
+\item 16 décembre 2003 Design détaille.
+
+\item 12 janvier 2004 Implementation.
+
+\item 16 janvier 2004 Version en anglais.
+
+\item 22 janvier 2004 Version finale en anglais à envoyer par le
+site web http://mat.gsia.cmu.edu/PATAT04
+\end{itemize}
+
+\section{Contraintes du Call for Papers}
+\begin{itemize}
+\item 26 janvier 2004. Version en anglais.
+
+\item En anglais 10 à 20 pages.
+
+\item Voir comment soumettre //mat.gsia.cmu.edu/PATAT04
+\end{itemize}
+\bibliography{bibDiamant,bibProg}
+
+\end{document}
+
+
+
+
+
+
+Une fois que nous avons coupé et construit le système, nous ne
+pouvons pas imaginer aujourd'hui un système, peu importe lequel,
+indépendant et isolé. Pour arriver à avoir la qualité de
+l'extensibilité dans un système il faut avoir une idée claire du
+design des le départ. Notre point de vue de la production
+d'horaires vise ces qualités.
+
+ Une fois que nous avons développé deux versions du
+logiciel {\diamant}, nous avons l'expérience suffisante pour
+savoir qu'il faut concevoir un logiciel de production d'horaires
+qui soit une partie intégrale d'un système de gestion des données
+académiques de l'Université. Même si le logiciel n'a pas un lien
+direct avec les autres logiciels, il y a toujours un échange
+d'information qu'il faut préserver pour assurer la correcte
+utilisation de l'information ainsi que sa validité et cohérence.
