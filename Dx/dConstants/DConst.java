@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.134 $  $Date: 2005-02-01 21:27:14 $
+ * Title: DConst $Revision: 1.135 $  $Date: 2005-02-02 16:27:52 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.134 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.135 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -169,10 +169,12 @@ public class DConst {
   public final static String MODIFICATION = res.getString("ModificationM");//Modification
   public final static String EVENTS_MODIF_M = res.getString("EventsModifM");//Modification évenements
   public final static String ACTIVITY_MODIF_M = res.getString("ActModifM");//Modification évenements
+  public final static String SPECIAL_IMPORT = res.getString("specialImport");//Modification évenements
   //Optimization menu
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
   public final static String M_INITIAL_ASSIGN = res.getString("initialAssignM");//Affectation Initiale
-  public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Affectation Initiale
+  public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Optimizattion
+  public final static String SECTION_PARTITION = res.getString("sectionPartition");//Formation de groupes
   public final static String STUDENTS_REPARTITION = res.getString("studentRepartition");//Brassage d'étudiants
   public final static String STUDENTMIXINGBAL = res.getString("studentMixingBal");//Brassage d'étudiants balancé
   public final static String STUDENTMIXINGMIDBAL = res.getString("studentMixingMidBal");//Brassage d'étudiants balancé

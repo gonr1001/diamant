@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.121 $  $Date: 2005-02-02 14:19:56 $
+ * Title: DMenuBar $Revision: 1.122 $  $Date: 2005-02-02 16:27:52 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.121 $
+ * @version $Revision: 1.122 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -380,7 +380,7 @@ public class DMenuBar extends JMenuBar{
 		_modification.add(_activityModif);
 		
 		// Items in menu feph.
-		_mInTest2 = new JMenu(DConst.SUBMENU2);
+		_mInTest2 = new JMenu(DConst.SPECIAL_IMPORT);
 		_mInTest2.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 		
 		
@@ -439,14 +439,14 @@ public class DMenuBar extends JMenuBar{
 		// _doOptimization Item in menu Optimisation.
 		_doOptimization = new CmdMenu(DConst.FIRSTALGORITHM);
 		_doOptimization.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_doOptimization.setCommand(new PersonalizeMixingAlgorithmCmd(true));
+		_doOptimization.setCommand(new AlgorithmsCmd());
 		_doOptimization.addActionListener(_dApplic);
 		_optimisation.add(_doOptimization);
 		
 		// _doOptimization Item in menu Optimisation.
-		_doSectionPartition = new CmdMenu(DConst.FIRSTALGORITHM);
+		_doSectionPartition = new CmdMenu(DConst.SECTION_PARTITION);
 		_doSectionPartition.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_doSectionPartition.setCommand(new AlgorithmsCmd());
+		_doSectionPartition.setCommand(new PersonalizeMixingAlgorithmCmd(true));
 		_doSectionPartition.addActionListener(_dApplic);
 		_optimisation.add(_doSectionPartition);
 /*		// Items in menu StudentMixing.
@@ -611,7 +611,7 @@ public class DMenuBar extends JMenuBar{
 		
 	} // end createInTestMenu*/
 	
-	private void createMultiSiteMenu(){
+	private void createMultiSiteMenu(){}/*
 		_multi = new JMenu("MultiSite");
 		_multi.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
 		this.add( _multi );
@@ -624,7 +624,7 @@ public class DMenuBar extends JMenuBar{
 			group.add(rbMenuItem);
 			_multi.add(rbMenuItem);
 		}
-	} // end createMultiSiteMenu
+	} // end createMultiSiteMenu*/
 	
 	private void createDevelopmentMenu(){
 		_dev = new JMenu("Development");

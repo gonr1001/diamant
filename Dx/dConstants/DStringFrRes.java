@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.130 $  $Date: 2005-01-25 15:51:19 $
+ * Title: DStringFrRes $Revision: 1.131 $  $Date: 2005-02-02 16:27:52 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.130 $
+ * @version $Revision: 1.131 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -126,11 +126,18 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"ManualAssignM","Affectation manuelle ..."},
     {"DefineSetM","Définir ensemble"},
     {"PartialTTStructureM","Grille Partielle"},
+	
+    //Modification
+    {"ModificationM","Modification"},
+    {"EventsModifM","Modification évenements"},
+    {"ActModifM","Activité ..."},
+    {"specialImport", "Importation Selective"},
 
     //Optimization
     { "OptimizationM", "Optimisation"},
     { "initialAssignM", "Affectation Initiale"},
     { "firstAlgo", "Construire l'horaire"},
+	{ "sectionPartition", "Formation de groupes"},
     { "studentRepartition", "Formation de groupes"},
     { "studentMixingBal", "Balancé"},
     { "studentMixingMidBal", "Intermédiaire"},
@@ -138,10 +145,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "studentMixingPerso", "Personalisée"},
 
 
-    //Modification
-    {"ModificationM","Modification"},
-    {"EventsModifM","Modification évenements"},
-    {"ActModifM","Activité ..."},
+
 
     //Report
     {"ReportM","Rapports"},
