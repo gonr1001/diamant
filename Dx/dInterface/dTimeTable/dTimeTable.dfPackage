@@ -12,20 +12,10 @@ class diagram {
 */
 class reference343 {
 }/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference9 {
-}/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.OpenTTSDlg:oiref><oihard>
 @__modelType reference 
 */
 class reference10 {
-}/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSDlg:oiref><oihard>
-@__modelType reference 
-*/
-class reference11 {
 }/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.OpenTTSCmd:oiref><oihard>
 @__modelType reference 
@@ -81,6 +71,16 @@ class reference16 {
 @__modelType reference 
 */
 class reference17 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSExCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSCyCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference31 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

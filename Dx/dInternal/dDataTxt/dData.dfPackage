@@ -153,7 +153,7 @@ class __options {
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfActivities#dInternal.dData.SetOfResources:oiref>=1325,410,1540,380:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.StudentAttach#_courses:oiref>=1157,776,1562,380:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.RoomAttach:oiref>=433,776,200,299,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivities:oiref>=1250,410,191,219,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivities:oiref>=1250,410,194,219,1:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfInstructors#dInternal.dData.SetOfResources:oiref>=1581,450,1581,380:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfResources:oiref>=1500,60,200,320,0:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfStates#dInternal.dData.SetOfResources:oiref>=280,92,1500,92:oigroup>

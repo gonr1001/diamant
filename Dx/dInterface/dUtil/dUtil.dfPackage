@@ -27,15 +27,20 @@ class reference1 {
 */
 class reference2 {
 }/**
-@__ref <oiref:java#Class#dInterface.dUtil.HelloCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference5 {
-}/**
 @__ref <oiref:java#Class#dInterface.dUtil.ExitCmd:oiref><oihard>
 @__modelType reference 
 */
 class reference3 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.DXJComboBox:oiref><oihard>
+@__modelType reference 
+*/
+class reference29 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.DXTools:oiref><oihard>
+@__modelType reference 
+*/
+class reference30 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
