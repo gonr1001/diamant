@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.91 $  $Date: 2004-04-16 16:54:13 $
+ * Title: DModel $Revision: 1.92 $  $Date: 2004-04-16 17:31:45 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.91 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.92 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -36,6 +36,7 @@ import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dConditionsTest.SetOfEvents;
+import com.iLib.gDialog.InformationDlg;
 
 import dResources.DConst;
 
@@ -508,10 +509,10 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   /**
    * Export data from soft to SIG
    */
-  public void exportData(){
+  public void exportData(String dir){
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     ExportData dataExp = new ExportData(this);
-    dataExp.saveExportReport(_dDocument.getDocumentName());
+    dataExp.saveExportReport(dir);
     _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
   }
 

@@ -257,6 +257,7 @@ public class DXToolsMethods {
      return "";
    }
 
+
    /**
    * remove a token in a stringtokenizer
    * @param str

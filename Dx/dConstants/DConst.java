@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.96 $  $Date: 2004-04-15 21:40:34 $
+ * Title: DConst $Revision: 1.97 $  $Date: 2004-04-16 17:31:46 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.96 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.97 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -256,6 +256,7 @@ public class DConst {
 
   //Export Dialog
    public final static String EXPORT_MESSAGE = res.getString("ExportMessage");//Message d'exportation
+   public final static String EXPORTED = res.getString("Exported");           //Message d'exportation
 
   //Optimisation dialogs
   public final static String INITIAL_ASSIGN_MESSAGE = res.getString("InitialAssignMessage");//Affectation initiale effectuée
@@ -394,7 +395,12 @@ public class DConst {
   public final static String SB_CONF = res.getString("sbConf"); // Conflicts
   public final static String SB_C_INST = res.getString("sbCInst"); // Ens
   public final static String SB_C_ROOM = res.getString("sbCRoom"); // Loc
-  public final static String SB_C_STUD = res.getString("sbCStu"); // Stu
+  public final static String SB_C_STUD = res.getString("sbCStud"); // Stu
+
+
+  public final static String TT_FILE = res.getString("ttFile"); // "S814.HORAIRE"
+  public final static String TT_STUD_FILE = res.getString("ttStudFIle"); // "S813.ASSGRO"
+
 
   public final static String ERROR_XML_FILE = res.getString("errorXMLFile"); // "XML file is corrupted";
 

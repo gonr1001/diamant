@@ -15,6 +15,7 @@ import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dUtil.DXTools;
 import com.iLib.gIO.FilterFile;
+import java.io.File;
 
 public class ExportData {
 
@@ -106,11 +107,12 @@ public class ExportData {
    *
    * @param fileName
    */
-  public void saveExportReport(String fileName){
+  public void saveExportReport(String dir){
+    //String dir = DXToolsMethods.getTokenDir(fileName,File.separator);
     FilterFile filter = new FilterFile(exportActivities().getBytes(),"");
-    filter.saveFile(DXToolsMethods.getToken(fileName,".",0)+"_Export_1.txt");
+    filter.saveFile(dir + DConst.TT_FILE);
     filter = new FilterFile(exportStudents().getBytes(), "");
-    filter.saveFile(DXToolsMethods.getToken(fileName,".",0)+"_Export_2.txt");
+    filter.saveFile(dir + DConst.TT_STUD_FILE);
   }
 
 }
