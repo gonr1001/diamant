@@ -2,8 +2,8 @@
 \section{Introduction}\ \label{horaire}
 Construire un horaire avec \dx{} suppose que l'utilisateur a déjà
 sur son ordinateur les fichiers nécessaires (ceux du STI et ceux
-de la Faculté)~: \verb!cours.sig!, \verb!choixet.sig!,
-\verb!disprof.sig! et \verb!locaux.txt!. Ces fichiers peuvent
+de la Faculté)~: \verb!cours.sig! (fichier de cours), \verb!choixet.sig! (fichier d'étudiants),
+\verb!disprof.sig! (fichier d'enseignants) et \verb!locaux.txt! (fichier de locaux). Ces fichiers peuvent
 porter n'importe quel nom, mais pour notre exemple, les noms sont
 bien explicites. Il est conseillé de regrouper toutes les
 informations concernant les horaires d'un trimestre dans un
@@ -51,7 +51,7 @@ contenant la définition de votre grille horaire.
     \end{center}
     \end{figure}
 
-    \item En cliquant sur le bouton \emph{\textbf{OK}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grillecyc}).
+    \item En cliquant sur le bouton \emph{\textbf{Grille horaire cycle}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grillecyc}).
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
@@ -64,7 +64,7 @@ contenant la définition de votre grille horaire.
 
 Il est recommandé d'enregistrer cette configuration en utilisant un nom de fichier unique et représentatif.
 
-Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de cours et le fichier créé sera \verb!E02cours.dim!. L'extension \verb!.dim! est rajouté automatiquement.
+Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de cours et le fichier créé sera \verb!E02cours.dim!. L'extension \verb!.dim! est rajoutée automatiquement.
 
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
@@ -82,7 +82,7 @@ Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de c
     toutes vos données (cours, étudiants, enseignants et locaux) seront chargées dans le logiciel et
     prêtes à être modifiées.
 
-\item Lancer \textbf{\emph{Optimisation}} \Rar \textbf{\emph{affectation initiale}} avant de passer à la phase 2. Elle exécutera les opérations suivantes:
+\item Lancer \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Affectation initiale}} avant de passer à la phase 2. Elle exécutera les opérations suivantes:
 
 \begin{enumerate}
     \item Place de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
@@ -90,7 +90,7 @@ Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de c
     \item Calcule les conflits générés.
 \end{enumerate}
 
-Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
+Cette affectation initiale permet donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
 
 \item Aller au menu \textbf{\emph{Rapports}} \Rar \textbf{\emph{Rapports...}} afin de vérifier le rapport d'importation et pouvoir y déceler les erreurs se trouvant dans les fichiers d'activités, d'étudiants, d'enseignants et de locaux.
 
@@ -107,7 +107,7 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
 
 À partir de la fenêtre \emph{liste des activités}, vous pouvez sélectionner une ou plusieurs activités et les faire passer de la colonne \emph{inclue(s)} à \emph{non inclue(s)} (non inclue(s) veut dire que les activités ne seront pas utilisées dans la construction de l'horaire). \\
 
-À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (les événements sont placées et figées dans la grille horaire) à \emph{placés} (les événements sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les événements ne sont pas encore placées dans la grille horaire).
+À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (\emph{figés} veut dire que les événements sont placés et figés dans la grille horaire) à \emph{placés} (\emph{placés} veut dire que les événements sont placés dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (\emph{non placés} veut dire que les événements ne sont pas encore placés dans la grille horaire).
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -125,7 +125,7 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
       \end{center}
     \end{figure}
 
-À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{eventc}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
+À partir de l'une ou l'autre des fenêtres (figure \ref{listactc} ou figure \ref{listeeventc}), double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{eventc}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -149,7 +149,7 @@ Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et cliquer su
       \end{center}
     \end{figure}
 
-Cliquer sur le bouton \textbf{\emph{Par matricule/Par programme/Par nom}} dans le zone \emph{trier}, pour trier les étudiants par matricule, par programme ou par nom.
+Choisir dans la liste de sélection \textbf{\emph{Par matricule/Par programme/Par nom}} de la zone \emph{trier}, pour choisir le type de tri que l'on souhaite faire.
 
 Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
@@ -183,7 +183,9 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
 Cette étape consiste à lancer le menu \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Construire l'horaire}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
 
-La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant \textbf{\emph{Préférences}} \Rar \textbf{\emph{Options Conflits}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{confc}). Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
+La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant \textbf{\emph{Préférences}} \Rar \textbf{\emph{Options Conflits}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{confc}). 
+
+Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
 
 \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -204,7 +206,7 @@ La modification des contraintes à respecter par \dx{} lors de la construction au
 
 Il est possible de modifier les contraintes et lancer ensuite la construction de l'horaire afin que le logiciel  utilise les nouvelles contraintes pour placer les événements qu'il n'a pas pu précédemment placer; tout ceci de façon itérative jusqu'à obtention d'un résultat paraissant satisfaisant aux yeux de l'utilisateur.
 
-Il est également possible de revenir à l'état initial de l'horaire (l'état de l'horaire juste après l'affectation initiale). Pour cela, il suffit de d'ouvrir la fenêtre \textbf{\emph{Liste des événements}} à partir du menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Événements}}, ensuite de sélectionner tous les événements de la colonnes des \textbf{\emph{Placés}}, puis de les faire passer de la colonne des \textbf{\emph{Placés}} à celle des \textbf{\emph{Non placés}} en cliquant sur la flèche allant de la gauche vers la droite et enfin cliquer sur le bouton Appliquer pour effectuer les changements.
+Il est également possible de revenir à l'état initial de l'horaire (l'état de l'horaire juste après l'affectation initiale). Pour cela, il suffit de d'ouvrir la fenêtre \textbf{\emph{Liste des événements}} à partir du menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Événements}}, ensuite de sélectionner tous les événements de la colonnes des \textbf{\emph{Placés}}, puis de les faire passer de la colonne des \textbf{\emph{Placés}} à celle des \textbf{\emph{Non placés}} en cliquant sur la flèche allant de la gauche vers la droite et enfin cliquer sur le bouton \textbf{\emph{Appliquer}} pour effectuer les changements.
 
 Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
 
@@ -230,11 +232,11 @@ La fenêtre d'affectation manuelle offre deux possibilités d'utilisation:
     \item \textbf{Modification d'un événement:} sélectionner un événement et cliquer sur le bouton \textbf{\emph{Modifier}} pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
     \item \textbf{Recherche de potentiels conflits:} pour rechercher les potentiels conflits générés par un événement, double-cliquer sur l'événement en question pour voir apparaître une nouvelle grille horaire (voir figure \ref{man1c}) vous informant sur les conflits que peut généré l'événement dans chaque période de la grille horaire. \\
 
-Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte). Les périodes possédant déjà des conflits avant le lancement de l'amélioration manuelle sont aussi représentées par la couleur rouge; il faut dans ce cas, après le lancement de l'affectation manuelle, regarder pour chaque événement de la période les potentiels conflits avec le nouvel événement.
+Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rose), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période: gris), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte). Les périodes possédant déjà des conflits avant le lancement de l'amélioration manuelle sont aussi représentées par la couleur rose; il faut dans ce cas, après le lancement de l'affectation manuelle, regarder pour chaque événement de la période les potentiels conflits avec le nouvel événement.
 
-\subsubsection{Exemple: interprétation d'une période de couleur rouge}
+\subsubsection{Exemple: interprétation d'une période de couleur rose}
 
-Les données ci-dessous représentent une période la grille horaire d'affectation manuelle de l'événement GEI220.1.01.1.
+Les données ci-dessous représentent une période de la grille horaire d'affectation manuelle de l'événement GEI220.1.01.1.
 \begin{verbatim}
 ADM111.1.02.1 0 1 0
 GEI100.1.01.1 5 0 0
@@ -344,9 +346,9 @@ Double cliquer sur une activité pour faire apparaître la fenêtre de natures de l
 La formation de groupe communément appelé «brassage d'étudiants dans les groupes» peut se faire de trois façons distinctes:
 
 \begin{itemize}
-    \item En cliquant sur \textbf{\emph{optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Balancé}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en ne tolérant qu'un écart d'un étudiant entre les différents groupes d'une même activité.
-    \item En cliquant sur \textbf{\emph{optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Intermédiaire}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant une fois de plus les conflits, mais en tolérant cette fois ci un écart de 15 (\textcolor[rgb]{1.00,0.00,0.00}{valeur à paramétrer si besoin se fait sentir}) étudiants au plus entre les différents groupes d'une même activité.
-    \item En cliquant sur \textbf{\emph{optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Optimisé}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en autorisant tous les écarts entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Balancé}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en ne tolérant qu'un écart d'un étudiant entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Intermédiaire}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant une fois de plus les conflits, mais en tolérant cette fois ci un écart de 15 (\textcolor[rgb]{1.00,0.00,0.00}{valeur à paramétrer si besoin se fait sentir}) étudiants au plus entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Optimisé}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en autorisant tous les écarts entre les différents groupes d'une même activité.
 \end{itemize}
 
 \subsubsection{RAPPORTS}
@@ -367,7 +369,7 @@ Le rapport complet permet de visualiser les événements placés dans la grille hor
     \end{center}
 \end{figure}
 
-Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
+Les informations affichées sont triées en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
 
 \begin{itemize}
     \item \emph{JNum}: numéro de la journée (jour 1, jour 2, ...),
@@ -444,7 +446,19 @@ Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers 
 
 \end{enumerate}  
 
-\subsubsection{OUVERTURE ET SAUVEGARDE D'UN HORAIRE}
+\subsubsection{SAUVEGARDE ET OUVERTURE D'UN HORAIRE}
+
+\subsubsection{Sauvegarde d'un horaire}
+
+Pour sauvegarder un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer ...}} ou \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer sous ...}} pour voir apparaître la fenêtre de la figure \ref{savettc}. Parcourir le disque pour trouver où enregistrer l'horaire. Entrer le nom a attribuer à l'horaire (avec ou sans extension \verb!.dia!) et cliquer sur le bouton \textbf{\emph{Enregistrer}}.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/savett.eps}
+        \caption{Sauvegarde d'un horaire}\label{savettc}
+    \end{center}
+\end{figure}
 
 \subsubsection{Ouverture d'un horaire}
 
@@ -459,19 +473,6 @@ L'opération d'ouverture d'un horaire exécutera automatiquement l'affectation ini
         \caption{Ouverture d'un horaire}\label{openttc}
     \end{center}
 \end{figure}
-
-\subsubsection{Sauvegarde d'un horaire}
-
-Pour sauvegarder un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer ...}} ou \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer sous ...}} pour voir apparaître la fenêtre de la figure \ref{savettc}. Parcourir le disque pour trouver où enregistrer l'horaire. Entrer le nom a attribuer à l'horaire (avec ou sans extension \verb!.dia!) et cliquer sur le bouton \textbf{\emph{Enregistrer}}.
-
-\begin{figure}[h]
-% Requires \usepackage{graphicx}
-    \begin{center}
-        \includegraphics[width=2.0in]{UserManualInputs/images/savett.eps}
-        \caption{Sauvegarde d'un horaire}\label{savettc}
-    \end{center}
-\end{figure}
-
 
 \subsection{Phase 5: Exportation}
 
@@ -501,7 +502,7 @@ contenant la définition de votre grille horaire.
     \end{center}
     \end{figure}
 
-    \item En cliquant sur le bouton \emph{\textbf{OK}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grilleexam}).
+    \item En cliquant sur le bouton \emph{\textbf{Grille horaire examen}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grilleexam}).
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
@@ -532,7 +533,7 @@ Exemple: choisissez le nom de fichier \verb!E02exam! pour Été 2002 horaire d'exa
     toutes vos données (cours, étudiants, enseignants et locaux) seront chargées dans le logiciel et
     prêtes à être modifiées.
 
-\item Lancer \textbf{\emph{Optimisation}} \Rar \textbf{\emph{affectation initiale}} avant de passer à la phase 2. Elle exécutera les opérations suivantes:
+\item Lancer \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Affectation initiale}} avant de passer à la phase 2. Elle exécutera les opérations suivantes:
 
 \begin{enumerate}
     \item Suppression des activités de nature 2, seulement les activités de nature 1 seront conservées pour l'horaire. Tous les événements seront initialisés de sorte à les rendre non placés et non figés.
@@ -544,7 +545,7 @@ Exemple: choisissez le nom de fichier \verb!E02exam! pour Été 2002 horaire d'exa
 
 Exemple: Pour construire l'horaire d'examen d'une activité (GEI200) possédant 2 natures (GEI200.1 et GEI200.2), chaque nature possédant 2 groupes (GEI200.1.A, GEI200.1.B et GEI200.2.A, GEI200.2.B), chaque groupe possédant 2 événements (GEI200.1.A.1, GEI200.1.A.2, GEI200.1.B.1, GEI200.1.B.2 et GEI200.2.A.1, GEI200.2.A.2, GEI200.2.B.1, GEI200.2.B.2). La suppression de nature 2, de groupes et d'événements par l'affectation initiale permettrait d'obtenir, pour l'activité GEI200, un seul événement devant servir à l'horaire d'examen, en l'occurrence GEI200.1.A.1.
 
-Cette affectation initiale permettrait donc d'épurer les données et d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
+Cette affectation initiale permet donc d'épurer les données et d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
 
 La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
 \end{enumerate}
@@ -560,7 +561,7 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
 
    À partir de la fenêtre \emph{liste des activités}, vous pouvez sélectionner une ou plusieurs activités et les faire passer de la colonne \emph{inclue(s)} à \emph{non inclue(s)} (non inclue(s) veut dire que les activités ne seront pas utilisées dans la construction de l'horaire). \\
 
-À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (les événements sont placées et figées dans la grille horaire) à \emph{placés} (les événements sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les événements ne sont pas encore placées dans la grille horaire).
+À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (\emph{figés} veut dire que les événements sont placés et figés dans la grille horaire) à \emph{placés} (\emph{placés} veut dire que les événements sont placés dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (\emph{non placés} veut dire que les événements ne sont pas encore placées dans la grille horaire).
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -667,9 +668,9 @@ La fenêtre d'affectation manuelle offre deux possibilités d'utilisation:
     \item \textbf{Modification d'un événement:} sélectionner un événement et cliquer sur le bouton \textbf{\emph{Modifier}} pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
     \item \textbf{Recherche de potentiels conflits:} pour rechercher les potentiels conflits générés par un événement, double-cliquer sur l'événement en question pour voir apparaître une nouvelle grille horaire (voir figure \ref{man1}) vous informant sur les conflits que peut généré l'événement dans chaque période de la grille horaire. \\
 
-Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte). Les périodes possédant déjà des conflits avant le lancement de l'amélioration manuelle sont aussi représentées par la couleur rouge; il faut dans ce cas, après le lancement de l'affectation manuelle, regarder pour chaque événement de la période les potentiels conflits avec le nouvel événement.
+Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rose), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte). Les périodes possédant déjà des conflits avant le lancement de l'amélioration manuelle sont aussi représentées par la couleur rose; il faut dans ce cas, après le lancement de l'affectation manuelle, regarder pour chaque événement de la période les potentiels conflits avec le nouvel événement.
 
-\subsubsection{Exemple: interprétation d'une période de couleur rouge}
+\subsubsection{Exemple: interprétation d'une période de couleur rose}
 
 Les données ci-dessous représentent une période la grille horaire d'affectation manuelle de l'événement GEI220.1.01.1.
 \begin{verbatim}
@@ -798,7 +799,7 @@ Le rapport complet permet de visualiser les événements placés dans la grille hor
     \end{center}
 \end{figure}
 
-Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
+Les informations affichées sont triées en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
 
 \begin{itemize}
     \item \emph{JNum}: numéro de la journée (jour 1, jour 2, ...),
@@ -875,12 +876,23 @@ Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers 
 \end{figure}
 
 \end{enumerate}
+\subsubsection{SAUVEGARDE ET OUVERTURE D'UN HORAIRE}
 
-\subsubsection{OUVERTURE ET SAUVEGARDE D'UN HORAIRE}
+\subsubsection{Sauvegarde d'un horaire}
+
+Pour sauvegarder un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer ...}} ou \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer sous ...}} pour voir apparaître la fenêtre de la figure \ref{savettc}. Parcourir le disque pour trouver où enregistrer l'horaire. Entrer le nom a attribuer à l'horaire (avec ou sans extension \verb!.dia!) et cliquer sur le bouton \textbf{\emph{Enregistrer}}.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/savett.eps}
+        \caption{Sauvegarde d'un horaire}\label{savettc}
+    \end{center}
+\end{figure}
 
 \subsubsection{Ouverture d'un horaire}
 
-Pour ouvrir un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Ouvrir horaire ...}} pour voir apparaître la fenêtre de la figure \ref{opentte}. Parcourir le disque pour trouver l'emplacement du fichier d'horaire (avec l'extension \verb!.dia!) à ouvrir. Sélectionner le fichier et cliquer sur le bouton \textbf{\emph{Ouvrir}} ou double-cliquer simplement sur le fichier pour l'ouvrir.
+Pour ouvrir un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Ouvrir horaire ...}} pour voir apparaître la fenêtre de la figure \ref{openttc}. Parcourir le disque pour trouver l'emplacement du fichier d'horaire (avec l'extension \verb!.dia!) à ouvrir. Sélectionner le fichier et cliquer sur le bouton \textbf{\emph{Ouvrir}} ou double-cliquer simplement sur le fichier pour l'ouvrir.
 
 L'opération d'ouverture d'un horaire exécutera automatiquement l'affectation initiale une fois les données chargées.
 
@@ -888,19 +900,7 @@ L'opération d'ouverture d'un horaire exécutera automatiquement l'affectation ini
 % Requires \usepackage{graphicx}
     \begin{center}
         \includegraphics[width=2.0in]{UserManualInputs/images/opentt.eps}
-        \caption{Ouverture d'un horaire}\label{opentte}
-    \end{center}
-\end{figure}
-
-\subsubsection{Sauvegarde d'un horaire}
-
-Pour sauvegarder un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer ...}} ou \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer sous ...}} pour voir apparaître la fenêtre de la figure \ref{savette}. Parcourir le disque pour trouver où enregistrer l'horaire. Entrer le nom a attribuer à l'horaire (avec ou sans extension \verb!.dia!) et cliquer sur le bouton \textbf{\emph{Enregistrer}}.
-
-\begin{figure}[h]
-% Requires \usepackage{graphicx}
-    \begin{center}
-        \includegraphics[width=2.0in]{UserManualInputs/images/savett.eps}
-        \caption{Sauvegarde d'un horaire}\label{savette}
+        \caption{Ouverture d'un horaire}\label{openttc}
     \end{center}
 \end{figure}
 
