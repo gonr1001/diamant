@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.1 $  $Date: 2003-05-12 15:33:28 $
+ * Title: DefFileToImportDlg $Revision: 1.2 $  $Date: 2003-05-13 09:01:22 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -92,7 +92,6 @@ public class DefFilesToImportDlg extends JDialog
   }
 
   private void initDlg() {
-
     // center Panel
     JPanel centerPanel = new JPanel(new GridLayout(4, 0));
 
@@ -102,45 +101,47 @@ public class DefFilesToImportDlg extends JDialog
             BorderFactory.createEtchedBorder(), DConst.DEF_F_D1) );
     _tfActivities = new JTextField();
     _tfActivities.setPreferredSize(new Dimension(330,22));
-    JButton butAct = new JButton(DConst.BUT_BROWSE);
-    butAct.addActionListener(this);
+    _butActivities = new JButton(DConst.BUT_BROWSE);
+    _butActivities.addActionListener(this);
     panel.add(_tfActivities);
-    panel.add(butAct);    centerPanel.add(panel, null);
+    panel.add(_butActivities);
+
+    centerPanel.add(panel, null);
 
     // panel Students
     panel = new JPanel();
     panel.setBorder( BorderFactory.createTitledBorder(
-            BorderFactory.createEtchedBorder(), "MES01" ) );
+            BorderFactory.createEtchedBorder(), DConst.DEF_F_D2) );
     _tfStudents = new JTextField();
     _tfStudents.setPreferredSize(new Dimension(330,22));
-    JButton butStud = new JButton(DConst.BUT_BROWSE);
-    butStud.addActionListener( this );
+    _butStudents = new JButton(DConst.BUT_BROWSE);
+    _butStudents.addActionListener( this );
     panel.add(_tfStudents);
-    panel.add(butStud);
+    panel.add(_butStudents);
     centerPanel.add(panel, null);
 
     // panel Teachers
     panel = new JPanel();
     panel.setBorder( BorderFactory.createTitledBorder(
-            BorderFactory.createEtchedBorder(), "MES02" ) );
+            BorderFactory.createEtchedBorder(), DConst.DEF_F_D3 ) );
     _tfInstructors = new JTextField();
     _tfInstructors.setPreferredSize(new Dimension(330,22));
-    JButton butTea = new JButton(DConst.BUT_BROWSE);
-    butTea.addActionListener( this );
+    _butInstructors = new JButton(DConst.BUT_BROWSE);
+    _butInstructors.addActionListener( this );
     panel.add(_tfInstructors);
-    panel.add(butTea);
+    panel.add(_butInstructors);
     centerPanel.add(panel, null);
 
     // panel Rooms
     panel = new JPanel();
     panel.setBorder( BorderFactory.createTitledBorder(
-            BorderFactory.createEtchedBorder(), "MES03" ) );
+            BorderFactory.createEtchedBorder(), DConst.DEF_F_D4) );
     _tfRooms = new JTextField();
     _tfRooms.setPreferredSize(new Dimension(330,22));
-    JButton butRoom = new JButton(DConst.BUT_BROWSE);
-    butRoom.addActionListener( this );
+    _butRooms = new JButton(DConst.BUT_BROWSE);
+    _butRooms.addActionListener( this );
     panel.add(_tfRooms);
-    panel.add(butRoom);
+    panel.add(_butRooms);
     centerPanel.add(panel, null);
 
     this.getContentPane().add(centerPanel, BorderLayout.CENTER);
@@ -167,7 +168,7 @@ public class DefFilesToImportDlg extends JDialog
          _tfStudents.getText().length() == 0 ||
          _tfInstructors.getText().length() == 0 ||
          _tfRooms.getText().length() == 0)
-        JOptionPane.showMessageDialog(this, "MES04", null,
+        JOptionPane.showMessageDialog(this, DConst.DEF_F_D5 + DConst.DEF_F_D6, "titre",
               JOptionPane.WARNING_MESSAGE);
       else {
         state = OK;
@@ -188,13 +189,13 @@ public class DefFilesToImportDlg extends JDialog
 
     String message;
     if (event.getSource() == _butActivities )
-      message = "MES00";
+      message = DConst.DEF_F_D1;
     else if (event.getSource() == _butStudents )
-      message = "MES01";
+      message = DConst.DEF_F_D2;
     else if (event.getSource() == _butInstructors )
-      message = "MES02";
+      message = DConst.DEF_F_D3;
     else
-      message = "MES03";
+      message = DConst.DEF_F_D4;
 
     int returnVal = fc.showDialog(this, message);
 
