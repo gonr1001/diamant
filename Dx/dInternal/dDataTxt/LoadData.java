@@ -165,23 +165,22 @@ public class LoadData {
 
   public SetOfActivities extractActivities(SetOfActivities currentList, boolean merge){
     byte[]  dataloaded = preLoad(_activitiesFileName);
+    SetOfActivities activitiesList = new SetOfActivities(dataloaded);
    if (dataloaded != null) {
      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
      //return analyseInstructorTokens (st);
-    SetOfActivities activitiesList = new SetOfActivities(dataloaded);
     if (merge)
        if(currentList!=null)
          activitiesList.setSetOfResources(currentList.getSetOfResources());
 
      if (activitiesList.analyseTokens(1)){
        activitiesList.buildSetOfActivities(1);
-       return activitiesList;
      }
    } else {// (NullPointerException npe) {
      new FatalProblemDlg("I was in LoadData class and extractActivities. preload failed!!!" );
      //System.exit(52);
    }
-   return null;
+   return activitiesList;
   }
 
 

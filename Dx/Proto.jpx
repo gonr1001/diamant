@@ -30,7 +30,7 @@
   <property category="sys" name="Copyright" value="Copyright (c) 2002"/>
   <property category="sys" name="CopyrightLabel" value="Copyright:"/>
   <property category="sys" name="DefaultPath" value="."/>
-  <property category="sys" name="Description" value="exam timetable construction with Condition Pattern"/>
+  <property category="sys" name="Description" value=" timetable construction"/>
   <property category="sys" name="DescriptionLabel" value="Description:"/>
   <property category="sys" name="DocPath" value="../Temp/Dx/Proto/doc"/>
   <property category="sys" name="ExcludeClassEnabled" value="0"/>
@@ -45,14 +45,13 @@
   <property category="sys" name="OutPath" value="../../Temp/Dx/Proto/classes"/>
   <property category="sys" name="SourcePath" value="."/>
   <property category="sys" name="TestPath" value="."/>
-  <property category="sys" name="Title" value="miniDia"/>
+  <property category="sys" name="Title" value="Diamant"/>
   <property category="sys" name="TitleLabel" value="Title:"/>
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
   <file path="dInterface/DefFilesToImportCmd.java"/>
   <file path="dInterface/DefFilesToImportDlg.java"/>
-  <file path="dResources/DFileFilter.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>

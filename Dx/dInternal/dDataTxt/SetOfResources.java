@@ -68,7 +68,6 @@ public class SetOfResources extends DXObject{
    * */
   public boolean addResource(Resource resource, int insertType){
     //if (getIndexOfResource(resource.getID()) == -1){
-      resource.setKey(_currentKey);
       //if (_stateSort!=0)
         //this.sortSetOfResourcesByKey();
       int index = 0;
@@ -86,6 +85,7 @@ public class SetOfResources extends DXObject{
       }// end else if (insertType==0)
 
       if (add==-1){
+        resource.setKey(_currentKey);
         if (index > (_resourceList.size()-1))
           _resourceList.add(resource);
         else

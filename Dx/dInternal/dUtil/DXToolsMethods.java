@@ -69,7 +69,7 @@ public class DXToolsMethods {
   public final static String isIntValue(String value, String message, String classList){
     String error="";
     try{
-      (new Integer (value.trim())).intValue();
+       Integer.parseInt(value.trim());
     }catch (NumberFormatException exc){
       error= message +" in the activity file:" +
       "\n" + "I was in "+classList+" class and in analyseTokens method ";
