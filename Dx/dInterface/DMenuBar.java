@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.80 $  $Date: 2003-10-10 14:17:48 $
+ * Title: DMenuBar $Revision: 1.81 $  $Date: 2003-10-17 21:25:00 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.80 $
+ * @version $Revision: 1.81 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -89,8 +89,9 @@ public class DMenuBar extends JMenuBar{
   _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl, _boolDefineSet, _boolPartialTTStructure;
 
   // the modification menus
-  private CmdMenu _mEventsModif;
+  private CmdMenu _mTypeModif,_mSectionModif,_mEventsModif;
   private boolean _boolMEventsModif;
+  private JMenu _mActivitiesModif;
 
   // the optimisation menus
   private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,_mStudentsMixingOptimize;
@@ -320,11 +321,35 @@ public class DMenuBar extends JMenuBar{
     this.add( _modification );
 
     // Items in menu Modification.
-    _mEventsModif = new CmdMenu(DConst.EVENTS_MODIF_M);
+    /*_mEventsModif = new CmdMenu(DConst.EVENTS_MODIF_M);
     _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     _mEventsModif.addActionListener(_dApplic);
-    _modification.add(_mEventsModif);
+    _modification.add(_mEventsModif);*/
+
+    // Items in menu StudentMixing.
+  _mActivitiesModif = new JMenu("Activité");
+  _mActivitiesModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
+
+  _mTypeModif = new CmdMenu("Type");
+  _mTypeModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
+  _mTypeModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+  _mTypeModif.addActionListener(_dApplic);
+  _mActivitiesModif.add(_mTypeModif);
+
+  _mSectionModif = new CmdMenu("Section");//, this);
+  _mSectionModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
+  _mSectionModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+  _mSectionModif.addActionListener(_dApplic);
+   _mActivitiesModif.add(_mSectionModif);
+
+   _mEventsModif = new CmdMenu("Evenement");//, this);
+   _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+   _mEventsModif.addActionListener(_dApplic);
+   _mActivitiesModif.add(_mEventsModif);
+
+    _modification.add(_mActivitiesModif);
   }//end createModificationMenu
 
 
@@ -347,7 +372,7 @@ public class DMenuBar extends JMenuBar{
     _mFirstAlgo.addActionListener(_dApplic);
     _optimisation.add(_mFirstAlgo);
 
-    // Items in menu PREFERENCES.
+    // Items in menu StudentMixing.
    _studentsMixing = new JMenu(DConst.STUDENTMIXING);
    _studentsMixing.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
