@@ -95,17 +95,22 @@ du cours (1=Leçon Magistrale et 2=autre). Le 2 derniers caractères
 au groupe d'activité dans lequel l'étudiant est assigné.
 \end{itemize}
 
-Un fichier va avoir le groupe d'activité pour certains étudiants????????????????
+Un fichier va avoir le groupe d'activité pour certains étudiants.????
 
 \subsection{Définition  et utilisation des champs}
 
-\pro{eMatricule} correspond aux indices 0 à 7 de la ligne de type deux. Il est mis dans \verb!_resourceKey!.
+\pro{long int eMatricule} correspond aux indices 0 à 7 de la ligne de type deux.
+Il est mis dans \verb!_resourceKey!.
 
-\pro{eNom} correspond aux indices 21 à 29 de la ligne de type deux. Il est mis dans \verb!_resourceID!.
+\pro{String eNom} correspond aux indices 21 à 29 de la ligne de type deux.
+Il est mis dans \verb!_resourceID!.
 
-\pro{eAux} correspond aux indices 0 à 20 de la ligne de type deux. Il est mis dans \verb!_auxField!.
+\pro{String eAuxField} correspond aux indices 8 à 20 de la ligne de type deux.
+Il est mis dans \verb!_auxField!.
 
-\pro{eSelectedCourses} correspond aux cours dans la ligne de type trois. Il est mis dans \verb!_DXObject!.
+\pro{String eSelectedCourse} il peut avoir 1 à $n$ \pro{eSelectedCourse}, qui sont considères comme
+une liste de cours, ceci correspond aux cours dans la ligne de type trois.
+Il est mis dans \verb!_DXObject!.
 
 \section{Fichier d'instructeurs}
 
