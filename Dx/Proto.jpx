@@ -5,6 +5,7 @@
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
+  <property category="debug.3" name="SmartStepRedefineClasses" value="0"/>
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="3"/>
@@ -86,5 +87,7 @@
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
   <file path="dInterface/DToolBar.java"/>
+  <file path="dInterface/helloCmd.java"/>
+  <file path="dInterface/helloDlg.java"/>
   <file path="Proto.html"/>
 </project>
