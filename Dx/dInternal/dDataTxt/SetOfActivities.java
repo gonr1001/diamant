@@ -131,7 +131,7 @@ public class SetOfActivities extends SetOfResources{
             _error= DConst.ACTI_TEXT5+_line+" ActivityList";
             return false;
           }
-          while(stLine.hasMoreElements()){
+          while(stLine.hasMoreElements()){// rgr A problem in tests allwhile is a problem in real life
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
                 DConst.ACTI_TEXT8+_line,"ActivityList");
             if(_error.length()!=0)

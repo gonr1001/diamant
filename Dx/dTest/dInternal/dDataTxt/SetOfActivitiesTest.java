@@ -105,7 +105,7 @@ public class SetOfActivitiesTest  extends TestCase{
    * in the activities file
    * */
   public void test1_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1x"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -117,7 +117,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -142,7 +142,7 @@ public class SetOfActivitiesTest  extends TestCase{
    * in the activities file
    * */
   public void test2_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1k"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -154,7 +154,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -178,7 +178,7 @@ public class SetOfActivitiesTest  extends TestCase{
    * in the activities file
    * */
   public void test3_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    ""+"\r\n"+
@@ -190,7 +190,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -214,7 +214,7 @@ public class SetOfActivitiesTest  extends TestCase{
    * in the activities file
    * */
   public void test4_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -226,7 +226,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -252,7 +252,7 @@ public class SetOfActivitiesTest  extends TestCase{
    * in the activities file
    * */
   public void test5_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -264,7 +264,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -288,7 +288,7 @@ public class SetOfActivitiesTest  extends TestCase{
    * in the activities file
    * */
   public void test6_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -300,7 +300,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -324,7 +324,7 @@ public class SetOfActivitiesTest  extends TestCase{
  * in the activities file
  * */
 public void test7_analyseTokens(){
-  String tokens= "ADM1111  A"+"\r\n"+
+  String tokens= "ADM1111  01"+"\r\n"+
                  "1"+"\r\n"+
                  "1"+"\r\n"+
                  "LUC LAJOIE"+"\r\n"+
@@ -336,7 +336,7 @@ public void test7_analyseTokens(){
                  "0"+"\r\n"+
                  "0"+"\r\n"+
                  "0"+"\r\n"+
-                 "ADM1112  A"+"\r\n"+
+                 "ADM1112  01"+"\r\n"+
                  "1"+"\r\n"+
                  "1"+"\r\n"+
                  "LUC LAJOIE"+"\r\n"+
@@ -360,7 +360,7 @@ public void test7_analyseTokens(){
    * in the activities file
    * */
   public void test8_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -372,7 +372,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -396,7 +396,7 @@ public void test7_analyseTokens(){
    * in the activities file
    * */
   public void test9_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -408,7 +408,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -432,7 +432,7 @@ public void test7_analyseTokens(){
    * in the activities file
    * */
   public void test10_analyseTokens(){
-    String tokens= "ADM1111  A"+"\r\n"+
+    String tokens= "ADM1111  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -444,7 +444,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n"+
-                   "ADM1112  A"+"\r\n"+
+                   "ADM1112  01"+"\r\n"+
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
@@ -468,7 +468,7 @@ public void test7_analyseTokens(){
   * in the activities file
   * */
  public void test11_analyseTokens(){
-   String tokens= "ADM1111  A"+"\r\n"+
+   String tokens= "ADM1111  01"+"\r\n"+
                   "1"+"\r\n"+
                   "1"+"\r\n"+
                   "LUC LAJOIE"+"\r\n"+
@@ -480,7 +480,7 @@ public void test7_analyseTokens(){
                   "0"+"\r\n"+
                   "0"+"\r\n"+
                   "0"+"\r\n"+
-                  "ADM1112  A"+"\r\n"+
+                  "ADM1112  01"+"\r\n"+
                   "1"+"\r\n"+
                   "1"+"\r\n"+
                   "LUC LAJOIE"+"\r\n"+
@@ -504,7 +504,7 @@ public void test7_analyseTokens(){
      * in the activities file
      * */
     public void test12_analyseTokens(){
-      String tokens= "ADM1111  A"+"\r\n"+
+      String tokens= "ADM1111  01"+"\r\n"+
                      "1"+"\r\n"+
                      "1"+"\r\n"+
                      "LUC LAJOIE"+"\r\n"+
@@ -516,7 +516,7 @@ public void test7_analyseTokens(){
                      "0v"+"\r\n"+
                      "0"+"\r\n"+
                      "0"+"\r\n"+
-                     "ADM1112  A"+"\r\n"+
+                     "ADM1112  01"+"\r\n"+
                      "1"+"\r\n"+
                      "1"+"\r\n"+
                      "LUC LAJOIE"+"\r\n"+
@@ -540,7 +540,7 @@ public void test7_analyseTokens(){
      * in the activities file
      * */
     public void test13_analyseTokens(){
-      String tokens= "ADM1111  A"+"\r\n"+
+      String tokens= "ADM1111  01"+"\r\n"+
                      "1"+"\r\n"+
                      "1"+"\r\n"+
                      "LUC LAJOIE"+"\r\n"+
@@ -552,7 +552,7 @@ public void test7_analyseTokens(){
                      "0"+"\r\n"+
                      "0G"+"\r\n"+
                      "0"+"\r\n"+
-                     "ADM1112  A"+"\r\n"+
+                     "ADM1112  01"+"\r\n"+
                      "1"+"\r\n"+
                      "1"+"\r\n"+
                      "LUC LAJOIE"+"\r\n"+
@@ -576,7 +576,7 @@ public void test7_analyseTokens(){
     * in the activities file
     * */
    public void test14_analyseTokens(){
-     String tokens= "ADM1111  A"+"\r\n"+
+     String tokens= "ADM1111  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "LUC LAJOIE"+"\r\n"+
@@ -588,7 +588,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0W"+"\r\n"+
-                    "ADM1112  A"+"\r\n"+
+                    "ADM1112  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "LUC LAJOIE"+"\r\n"+
@@ -612,7 +612,7 @@ public void test7_analyseTokens(){
     * in the activities file
     * */
    public void test_addActivity(){
-     String tokens= "ADM1111  A"+"\r\n"+
+     String tokens= "ADM1111  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "LUC LAJOIE"+"\r\n"+
@@ -624,7 +624,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "ADM1111  B"+"\r\n"+
+                    "ADM1111  02"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "RÉAL CAOUETTE"+"\r\n"+
@@ -636,7 +636,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "ADM1112  A"+"\r\n"+
+                    "ADM1112  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "Yannick"+"\r\n"+
@@ -648,7 +648,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "GEI4411  A"+"\r\n"+
+                    "GEI4411  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "Ruben"+"\r\n"+
