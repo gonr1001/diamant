@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.14 $  $Date: 2003-05-20 15:12:26 $
+ * Title: DMenuBar $Revision: 1.15 $  $Date: 2003-05-20 15:51:52 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -58,11 +58,11 @@ public class DMenuBar extends JMenuBar{
     mNew.addActionListener(_dApplic);
 
 
-    CmdMenu mNProj = new CmdMenu("Nouveau Projet");
+    /*CmdMenu mNProj = new CmdMenu("Nouveau Projet");
     mNProj.setFont( new java.awt.Font( mfont, font, nPT ) );
     mNProj.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mNProj.addActionListener(_dApplic);
-    menu.add(mNProj);
+    menu.add(mNProj);*/
 
     CmdMenu mOpen = new CmdMenu(DConst.OPEN);
     menu.add(mOpen);
@@ -116,11 +116,11 @@ mTime.add(mOTime);
 
     menu.addSeparator();
 
-    CmdMenu mImpM = new CmdMenu(DConst.IMP_M);
+    /*CmdMenu mImpM = new CmdMenu(DConst.IMP_M);
     menu.add(mImpM);
     mImpM.setFont( new java.awt.Font( mfont, font, nPT ) );
     mImpM.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    mImpM.addActionListener(_dApplic);
+    mImpM.addActionListener(_dApplic);*/
 
 
     CmdMenu mDefF = new CmdMenu(DConst.DEF_F_M);
