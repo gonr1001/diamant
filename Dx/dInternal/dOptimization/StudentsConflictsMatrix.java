@@ -18,7 +18,7 @@ import dInternal.DModel;
 
 public class StudentsConflictsMatrix {
 
-  private int [][] _theMatrix ;
+  private int [][] _theMatrix;
   private SetOfResources _allSections;
   private boolean _doFirstGroupAssignement=true;
 
@@ -57,6 +57,7 @@ public class StudentsConflictsMatrix {
           //System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
           if((index[0]!=-1) && (index[1]!=-1)){
             _theMatrix[index[0]][index[1]]++;
+            System.out.println(course1  + course2  + sos.getResourceAt(i).getID() + sos.getResourceAt(i).getKey());
           }
         }// end for (int k=j; k< student.getCoursesList().size()
       }// end for(int j=0; j< ((Activity)rescActivity.getAttach()).get

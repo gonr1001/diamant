@@ -22,9 +22,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.awt.Toolkit;
 
 
 import javax.swing.JDialog;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -43,26 +45,36 @@ import dInternal.dUtil.DXValue;
 import dResources.DConst;
 
 public class ReportDlg extends JDialog implements ActionListener, ChangeListener{
+  /* ADJUST_HEIGHT is needed to ajdust the screenSize
+  * minus the barSize (the value is a guess) at the bottom */
+  private final static int ADJUST_HEIGHT = 100;
+  /* ADJUST_WIDTH is needed to ajdust the screenSize
+  * minus border pixels (the value is a guess) at each side of the screen */
+  private final static int ADJUST_WIDTH = 24;
+  //private String[] _threeButtonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+  //private String[] _TwoButtonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_CLOSE};
+  private String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+  private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
 
+  //private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private DApplication _dApplic = null;
   private JDialog _jd = this;
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
   private String _reportData;
-  private String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
-  private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
+
   private SetOfResources[] _resources;
 
   public ReportDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
     _dApplic = dApplic;
-    ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
-    pBar.execute();
+    //ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
+    //pBar.execute();
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,_dApplic.getJFrame());
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
     System.out.println("Génération de rapports terminé");
-    jbInit();
+    initReportDlg();
     _resources = new SetOfResources[_tabbedPane.getComponentCount()];
     setLocationRelativeTo(dApplic.getJFrame());
     setVisible(true);
@@ -72,8 +84,11 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
   /**
    * Dialog initialization
    */
-  private void jbInit(){
-    Dimension dialogDim = new Dimension(1000,600);
+  private void initReportDlg(){
+
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    Dimension dialogDim = new Dimension(new Dimension(screenSize.width - ADJUST_WIDTH,
+                                screenSize.height - ADJUST_HEIGHT));
     Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-10, (int)dialogDim.getHeight()-60);
     Dimension tabDim = new Dimension((int)tabbedPaneDim.getWidth()-10, (int)tabbedPaneDim.getHeight()-10);
     getContentPane().setLayout(new BorderLayout());
@@ -84,10 +99,11 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     _tabbedPane.setPreferredSize(tabbedPaneDim);
     _tabbedPane.addChangeListener(this);
     for(int i = 0; i < _tabsNames.length; i++)
-      _tabbedPane.addTab(_tabsNames[i], createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
-    //adding the elements to the dialog
+       _tabbedPane.addTab(_tabsNames[i], createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
+
+    _tabbedPane.addChangeListener(this);
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-    getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+    getContentPane().add(buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
   }
 
   /**
@@ -98,6 +114,18 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
    * @return the tabPanel
    */
   private JPanel createTabPanel(Dimension dim, String message){
+ // private JPanel createTabPanel(ReportDlg rd,Dimension dim, String message){
+    JTextArea jta = new JTextArea(message);
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setPreferredSize(dim);
+    JScrollPane scrollPane = new JScrollPane();
+    scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
+    scrollPane.getViewport().setView(jta);
+    panel.add(scrollPane);
+    return panel;
+  }
+/*
+  private JPanel createTabPanelTwo(Dimension dim, String message){
     JTextArea jta = new JTextArea(message);
     JPanel panel = new JPanel();
     panel.setPreferredSize(dim);
@@ -106,9 +134,18 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     scrollPane.getViewport().setView(jta);
     panel.add(scrollPane);
     return panel;
+  }*/
+/*  private JPanel createTabPanelThree(Dimension dim, String message){
+  JTextArea jta = new JTextArea(message);
+  JPanel panel = new JPanel();
+  panel.setPreferredSize(dim);
+  JScrollPane scrollPane = new JScrollPane();
+  scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
+  scrollPane.getViewport().setView(jta);
+  panel.add(scrollPane);
+  return panel;
   }
-
-
+*/
   /**
    * build import report
    */
@@ -130,9 +167,9 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
     setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
                         getSetOfImportErrors().selectIDValue("3");
-    for (int i=0; i< setOfErrors.size(); i++)
+    for (int i=0; i< setOfErrors.size(); i++) {
       jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-
+    }
     //etudiants
     jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
     setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
@@ -142,6 +179,38 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
   }
 
+  /**
+   * build import report
+   */
+  public void setConflictReport(){
+    JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
+    JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
+    jta.setFont(DConst.JLISTS_FONT);
+    jta.setText("Rapport de conflits");
+    jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
+
+    // enseignants
+    jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
+    Vector setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
+                        getSetOfImportErrors().selectIDValue("2");
+    for (int i=0; i< setOfErrors.size(); i++)
+      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
+
+    //locaux
+    jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
+    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
+                        getSetOfImportErrors().selectIDValue("3");
+    for (int i=0; i< setOfErrors.size(); i++) {
+      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
+    }
+    //etudiants
+    jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
+    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
+                        getSetOfImportErrors().selectIDValue("1");
+    for (int i=0; i< setOfErrors.size(); i++)
+      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
+    //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
+  }
 
   /**
    * Gets the data report format from the setOfResourcesSet, gets the data report
@@ -246,10 +315,18 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
    */
   public void stateChanged( ChangeEvent ce) {
      System.out.println(((JTabbedPane)ce.getSource()).getSelectedIndex());//debug
-     if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2){
-       setImportReport();
+     if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2 ||
+         ((JTabbedPane)ce.getSource()).getSelectedIndex()==1){
+       String [] strArray = {DConst.BUT_OPTIONS};
+       buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), strArray);
+       if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
+         setImportReport();
+       else
+         setConflictReport();
      }else{// else if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
-
+        //System.out.println("gcCount" +((JPanel)this.getContentPane()).getComponentCount());//debug
+        if (((JPanel)this.getContentPane()).getComponentCount() > 0)
+           buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), null);
      }// end if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
    }
 
@@ -279,6 +356,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
       }
     }
 
+
   }//end method
 
 
@@ -302,5 +380,38 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     }//end switch
     return dataReport;
   }//end method
+  /**
+   * Creates a panel of buttons to be placed at the bottom of a Dialog.
+   * This method adds the ActionListener for each button
+   * @param parentDialog The dialog where this panel is placed
+   * @param buttonsNames An array of names of buttons
+   * @return panel
+   */
+  private JPanel buttonsPanel(ActionListener parentDialog, String [] buttonsNames){
+    JPanel panel = new JPanel();
+    JButton button;
+    for(int i = 0; i< buttonsNames.length; i++){
+      button = new JButton(buttonsNames[i]);
+      button.setActionCommand(buttonsNames[i]);
+      button.addActionListener(parentDialog);
+      panel.add(button) ;
+    }
+    return panel;
+ }//end method
 
+ private void buttonDisable(JPanel panel, String [] strArray){
+   String str= "";
+   for (int i = 0; i < panel.getComponentCount(); i++) {
+     ((JButton)panel.getComponent(i)).setEnabled(true);
+   }
+   if (strArray != null) {
+     for (int i = 0; i < strArray.length; i++) {
+       str = strArray[i];
+       for(int j = 0 ; j < panel.getComponentCount(); j++) {
+         if (((JButton)panel.getComponent(j)).getActionCommand().equals(str))
+            ((JButton)panel.getComponent(j)).setEnabled(false);
+       }
+     }
+   }
+ }//end method
 }//end class

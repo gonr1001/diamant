@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.70 $  $Date: 2003-11-14 02:41:48 $
+ * Title: DConst $Revision: 1.71 $  $Date: 2003-11-20 18:28:11 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.70 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.71 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -63,6 +63,9 @@ public class DConst {
   public final static String DGH_FILE = res.getString("dghFile");//*.dgh, unp
   public final static String XML_FILE = res.getString("xmlFile");//*.xml
   public final static String TXT_FILE = res.getString("txtFile");//*.txt
+  public final static String NO_ROOM_INTERNAL = res.getString("noRoomInternal");//"------"
+  public final static String NO_ROOM_EXTERNAL = res.getString("noRoomExternal");//"xxxxxx"
+
   public final static String PROBLEM = res.getString("problem");//À corriger, unp
 
   public final static String MFONTDialog = "Dialog";// unp????pas trouve dans DStringFrRes
@@ -95,8 +98,6 @@ public class DConst {
 
   //return constant
   public final static String CR_LF = "\r\n";//
-
-
 
   //**********Menus constants ***************************
   //File menu

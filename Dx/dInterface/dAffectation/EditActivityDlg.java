@@ -26,7 +26,7 @@ import dInternal.dConditionsTest.EventAttach;
 import dInternal.dTimeTable.*;
 import dInternal.dData.*;
 import dInternal.dUtil.DXToolsMethods;
-
+import dResources.DConst;
 import com.iLib.gDialog.FatalProblemDlg;
 
 public class EditActivityDlg extends JDialog implements ActionListener, ChangeListener{
@@ -38,7 +38,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private String _HOUR="Heure de début:";
   private String _INSTRUCTOR= "Enseignant:";
   private String _ROOM= "Local:";
-  private String _UNAVAILABLE= "------";
+  //private String NO_ROOM_INTERNAL= "------";
   private boolean _isModified=false;
   //private String _DIALOGMESSAGE= "Affectation d'évenement";
   Vector _unities = new Vector();// contains event resource
@@ -341,10 +341,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     if(instructor!=null)
       list[0].add(instructor.getID());
     else
-      list[0].add(_UNAVAILABLE);
+      list[0].add(DConst.NO_ROOM_INTERNAL);
     for(int i=0; i< soi.size(); i++)
       list[1].add(soi.getResourceAt(i).getID());
-    list[1].add(_UNAVAILABLE);
+    list[1].add(DConst.NO_ROOM_INTERNAL);
     return list;
   }
 
@@ -361,10 +361,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     if(room!=null)
       list[0].add(room.getID());
     else
-      list[0].add(_UNAVAILABLE);
+      list[0].add(DConst.NO_ROOM_INTERNAL);
     for(int i=0; i< sor.size(); i++)
       list[1].add(sor.getResourceAt(i).getID());
-    list[1].add(_UNAVAILABLE);
+    list[1].add(DConst.NO_ROOM_INTERNAL);
     return list;
   }
 
@@ -414,7 +414,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * @return the resource key or -1 if key does not found
    */
   private long getResourceKey(SetOfResources soresc, String elt){
-    if (!elt.equalsIgnoreCase(_UNAVAILABLE)){
+    if (!elt.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL)){
       return soresc.getResource(elt).getKey();
     }
     return -1;

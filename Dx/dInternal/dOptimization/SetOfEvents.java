@@ -20,7 +20,7 @@ public class SetOfEvents extends SetOfResources{
   public Vector _soeListeners = new Vector(1);
   //protected boolean _isEventPlaced=false;
   private DModel _dm;
-  private String _UNAVAILABLE= "------";
+  //private String _UNAVAILABLE= "------";
 
   /***
    * Constructor
@@ -39,7 +39,7 @@ public class SetOfEvents extends SetOfResources{
     String unityKey;
     for (int i=0; i< _dm.getSetOfActivities().size(); i++){
       Resource activity= _dm.getSetOfActivities().getResourceAt(i);
-      long instructorKey=-1, roomKey=-1;
+      long instructorKey=-1, roomKey; //=-1;
       if(((Activity)activity.getAttach()).getActivityVisibility()){
       for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
         Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
@@ -62,16 +62,20 @@ public class SetOfEvents extends SetOfResources{
               }
 
               int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
-              if(roomIndex!=-1){
+              if(roomIndex != -1){
                 roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
               }else{
+                roomKey = -1;
                 DXValue error= new DXValue();
-                error.setStringValue("Erreur --> "+ unityID+": "+assignment.getRoomName()+" Inexistant ");
-                _dm.getSetOfImportErrors().addResource(new Resource("3",error),0);
+                String str = assignment.getRoomName();
+                if (str.equals(DConst.NO_ROOM_INTERNAL))
+                  str = DConst.NO_ROOM_EXTERNAL;
+                error.setStringValue("Erreur --> " + unityID + ": "+ str + " Inexistant ");
+                _dm.getSetOfImportErrors().addResource(new Resource("3", error), 0);
               }
               int[] dayTime = assignment.getDateAndTime();
 
-              EventAttach event = new EventAttach(unityKey,instructorKey,roomKey,
+              EventAttach event = new EventAttach(unityKey, instructorKey, roomKey,
                   ((Unity)unity.getAttach()).getDuration(),
                   ((Cycle)_dm.getTTStructure().getCurrentCycleResource().getAttach()).getPeriod(dayTime));
               event.setAssignState(((Unity)unity.getAttach()).isAssign());
@@ -158,7 +162,7 @@ public class SetOfEvents extends SetOfResources{
     if (eltkey!=-1){
       return soresc.getResource(eltkey).getID();
     }
-    return _UNAVAILABLE;
+    return DConst.NO_ROOM_INTERNAL;
   }
 
 

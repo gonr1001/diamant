@@ -267,7 +267,7 @@ public static int STIConvertGroup(String STIGroupID){
   * This method adds the ActionListener for each button
   * @param parentDialog The dialog where this panel is placed
   * @param buttonsNames An array of names of buttons
-  * @return
+  * @return panel
   */
  public static JPanel buttonsPanel(ActionListener parentDialog, String [] buttonsNames){
    JPanel panel = new JPanel();

@@ -48,11 +48,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     _externalResources = res;
-    _parentDlg = (ReportDlg)parentDlg;
+    _parentDlg = (ReportDlg) parentDlg;
     setSetOfResources(reportType);
     _leftVec = getChoicedFields(_resources, false);
     _rightVec = getChoicedFields(_externalResources, true);
-    jbInit();
+    reportOptionsDlgInit();
     setLocationRelativeTo(dApplic.getJFrame());
     setResizable(false);
     setVisible(true);
@@ -63,7 +63,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
   /**
    * Initialize the dialog
    */
-  private void jbInit(){
+  private void reportOptionsDlgInit(){
     Dimension dlgDim = new Dimension(400, 400);
     Dimension centerPanelDim = new Dimension((int)dlgDim.getWidth()-20, (int)dlgDim.getHeight()-75);
     Dimension listPanelDim = new Dimension((int)centerPanelDim.getWidth()/2-30, (int)centerPanelDim.getHeight());

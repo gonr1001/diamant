@@ -71,7 +71,7 @@ public class StandardReportData {
     _studentsReport = buildStudentsReport();
     _conflictsReport=buildConflictsReport();
     _dm.getProgressBarState().setIntValue(1000);
-    System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
+   // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
   }
 
   /**
@@ -83,7 +83,7 @@ public class StandardReportData {
     int size=_dm.getSetOfActivities().size();
     for (int i=0; i<size ; i++){
       _dm.getProgressBarState().setIntValue(STATE1*i/size);
-      System.out.println("Change progess bar: "+ _dm.getProgressBarState().getIntValue());
+      //System.out.println("Change progess bar: "+ _dm.getProgressBarState().getIntValue());
       Activity activity = (Activity)_dm.getSetOfActivities().getResourceAt(i).getAttach();
       if (activity.getActivityVisibility()){
         for(int j=0; j< activity.getSetOfTypes().size(); j++){

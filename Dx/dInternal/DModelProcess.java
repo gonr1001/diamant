@@ -77,7 +77,7 @@ public class DModelProcess {
   */
  public void buildSetOfEvents(){
    _dm._setOfEvents.getSetOfResources().removeAllElements();
-   if (_dm._setOfActivities!=null){
+   if (_dm._setOfActivities != null){
      _dm._setOfEvents.build();
      //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
