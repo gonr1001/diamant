@@ -77,6 +77,7 @@
 			<pathelement path="${eclipse}/org.junit_3.8.1/junit.jar"/>
 			<pathelement path="${localJars}/log4j-1.2.8.jar"/>			
 			<pathelement path="${localJars}/xml-api.jar"/>
+			<pathelement path="${localJars}/jdom.jar"/>
 			<pathelement path="${build}"/>
 		</path>
 	</target>
@@ -84,7 +85,8 @@
 	<target name="compile" depends="compilepath" 
 		description="compile the java sources."> 
 		<javac srcdir="${srcDir}"
-			destdir="${build}"> 
+			destdir="${build}"
+			source="1.4"> 
 			<classpath refid="c.classpath"/>
 	    </javac>       	
 	</target>
