@@ -10,15 +10,19 @@ package dInterface.dUtil;
  */
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import java.util.Vector;
 
 import dInternal.dData.SetOfResources;
@@ -161,9 +165,16 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
  }//end method
 
 
- public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames, int panelWidth, int panelHeight){
+ /**
+  * Build a panel containing the arrows «« and »». This panel implements the
+  * action listeners for each arrow
+  * @param parentDialog The dialog who calls this panel
+  * @param arrowsNames It contains the symbols of the arrows
+  * @return the JPanel to be added to the dialog
+  */
+ public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames){
    JPanel panel = new JPanel(new BorderLayout());
-   panel.setPreferredSize(new Dimension(panelWidth,panelHeight));
+   panel.setPreferredSize(new Dimension(50, 70));
    JButton _toRight = new JButton(arrowsNames[0]);
    _toRight.setPreferredSize(new Dimension(50,35));
    _toRight.addActionListener(parentDialog);
@@ -174,6 +185,39 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
    panel.add(_toLeft, BorderLayout.SOUTH);
    return panel;
  }//end method
+
+
+ public static JPanel listPanel(JList theList, int panelWidth, int panelHeight){
+   JPanel panel = new JPanel(new BorderLayout());
+   panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+   JScrollPane scrollPane = new JScrollPane();
+   scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
+   scrollPane.getViewport().add(theList);
+   panel.add(scrollPane);
+   return panel;
+ }
+
+ public static JPanel infoPanel(String[][] list, int panelWidth, int panelHeight){
+   JPanel panel = new JPanel();
+   JLabel lNumber;
+   panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+   for (int i = 0; i < list.length; i++){
+     panel.add(new JLabel((String)list[i][0]));
+     lNumber = new JLabel((String)list[i][1]);
+     lNumber.setForeground(Color.blue);
+     panel.add(lNumber);
+   }
+   return panel;
+ }
+
+ public static JPanel infoListPanel(String[][] list, JList theList, int panelWidth, int panelHeight){
+   JPanel panel = new JPanel(new BorderLayout());
+   JPanel infoPanel = infoPanel(list, panelWidth, 23);
+   JPanel listPanel = listPanel(theList, panelWidth, panelHeight-23);
+   panel.add(infoPanel, BorderLayout.NORTH);
+   panel.add(listPanel, BorderLayout.SOUTH);
+   return panel;
+ }
 
 
 

@@ -57,7 +57,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   private JLabel _lVisible, _lNoVisible;
   private JList _noVisibleList, _visibleList;
-  private JPanel _listsPanel, _arrowsPanel;
+  private JPanel _centerPanel, _arrowsPanel;
 
 
   /**
@@ -82,52 +82,39 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Initialize the dialog
    */
   private void jbInit(){
-    /*_show = new JButton(SHOW);
-    _show.setPreferredSize(new Dimension(80,22));
-    _cancel = new JButton(CLOSE);
-    _cancel.setPreferredSize(new Dimension(80,22));
-    */
-    _listsPanel = new JPanel();
-    //left panel
-    JPanel rightPanel = new JPanel();
-    JScrollPane rightSPane = new JScrollPane();
-    //set the vectors
+    //right panel
     _noVisibleVec = _activities.getIDsByField(3, "false");
-    _visibleVec = _activities.getIDsByField(3, "true");
-    //set the JLists
     _noVisibleList = new JList(_noVisibleVec);
     _noVisibleList.addMouseListener(mouseListenerLists);
-    _visibleList = new JList(_visibleVec);
-    rightSPane.setPreferredSize(new Dimension(150,300));
-    rightSPane.getViewport().add(_noVisibleList);
-    rightPanel = new JPanel(new BorderLayout());
+    //_visibleList = new JList(_visibleVec);
+    JPanel listPanel = DXTools.listPanel(_noVisibleList, 150, 300);
     _lNoVisible = new JLabel(_noVisibleVec.size() + " " + NOT_INCLUDED);
-    rightPanel.add(_lNoVisible , BorderLayout.NORTH);
-    rightPanel.add(rightSPane, BorderLayout.CENTER);
-    //right panel
-    JPanel leftPanel = new JPanel();
-    JScrollPane leftSPane = new JScrollPane();
+    JPanel rightPanel = new JPanel(new BorderLayout());
+    rightPanel.add(_lNoVisible, BorderLayout.NORTH);
+    rightPanel.add(listPanel, BorderLayout.SOUTH);
+    //left panel
+    _visibleVec = _activities.getIDsByField(3, "true");
     _visibleList = new JList(_visibleVec);
     _visibleList.addMouseListener(mouseListenerLists);
-    leftSPane = new JScrollPane();
-    leftSPane.setPreferredSize(new Dimension(150,300));
-    leftSPane.getViewport().add(_visibleList);
-    leftPanel = new JPanel(new BorderLayout());
     _lVisible = new JLabel(_visibleVec.size() + " " + INCLUDED);
+    listPanel = DXTools.listPanel(_visibleList, 150, 300);
+    JPanel leftPanel = new JPanel();
+    leftPanel = new JPanel(new BorderLayout());
     leftPanel.add(_lVisible, BorderLayout.NORTH);
-    leftPanel.add(leftSPane, BorderLayout.CENTER);
+    leftPanel.add(listPanel, BorderLayout.CENTER);
     //arrows panel
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, 50, 70);
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames);
     //placing the panels and buttons into the _listsPanel
-    _listsPanel.add(leftPanel, BorderLayout.EAST);
-    _listsPanel.add(_arrowsPanel, BorderLayout.CENTER);
-    _listsPanel.add(rightPanel, BorderLayout.WEST);
+    _centerPanel = new JPanel();
+    _centerPanel.add(leftPanel, BorderLayout.EAST);
+    _centerPanel.add(_arrowsPanel, BorderLayout.CENTER);
+    _centerPanel.add(rightPanel, BorderLayout.WEST);
     //buttonsPanel
     JPanel buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //placing the elements into the JDialog
-    setSize(380, 390);
+    setSize(400, 390);
     setResizable(false);
-    getContentPane().add(_listsPanel, BorderLayout.CENTER);
+    getContentPane().add(_centerPanel, BorderLayout.CENTER);
     getContentPane().add(buttonsPanel, BorderLayout.SOUTH);
   }//end method
 

@@ -238,15 +238,11 @@ public class GroupDlg extends JDialog implements ActionListener{
     JLabel lNumber = new JLabel(NUMBER_OF_ELEMENTS + " ");
     _lNumberOfElements[groupNumber] = new JLabel(String.valueOf(numberOfElements));
     _lNumberOfElements[groupNumber].setForeground(LABEL_BORDER_COLOR);
-    //_numberbOfElements = new JTextField("num");
     infoPanel.add(lGroup);
     infoPanel.add(lGroupNumber);
     infoPanel.add(new JLabel(" - "));
     infoPanel.add(lNumber);
     infoPanel.add(_lNumberOfElements[groupNumber]);
-
-    //adding the subpanel into panel
-
     groupPanel.add(infoPanel);
     groupPanel.add(scrollContainer);
     return groupPanel;
@@ -259,7 +255,7 @@ public class GroupDlg extends JDialog implements ActionListener{
    */
   private void setCenterPanel(){
     setNotAssignedPanel();
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, 50, 70);
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames);
     setAssignedPanel();
     _centerPanel = new JPanel();
     _centerPanel.add(_notAssignedPanel);
