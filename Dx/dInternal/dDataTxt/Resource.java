@@ -67,7 +67,7 @@ public class Resource {
    *set the resource Object
    * @param DXObject the resource Object
    * */
-  public void setObject(DXObject obj){
+  public void setAttach(DXObject obj){
     _resourceAttach = obj;
   }
 

@@ -11,24 +11,27 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
+import dResources.DConst;
 
 public class SetOfInstructors extends SetOfResources{
 
 //private Vector instructorsList;// contains list of InstructorAttach
-private byte[] _dataloaded; //_st;// instructors in text format
-private int _numberOfLines;// represent number of days
-private int _numberOfColumns;// represent number of period a day.
+  private byte[] _dataloaded; //_st;// instructors in text format
+  private int _numberOfLines;// represent number of days
+  private int _numberOfColumns;// represent number of period a day.
+  private String _error="";
 
  /**
   * constructor
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay,
   * */
- public SetOfInstructors( byte[]  dataloaded, int nbDay, int nbPerDay) {
+ public SetOfInstructors(byte[]  dataloaded, int nbDay, int nbPerDay) {
    super(2);
    _dataloaded = dataloaded;
    _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;
+
   }
   /**
    * methode analyse st, a stringtokenizer variable
@@ -41,50 +44,50 @@ private int _numberOfColumns;// represent number of period a day.
     int state = 0;
     int line=0;
     int stateDispo =1;
+    int numberOfInstructors=0;
+    int countInstructor=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
       line++;
       switch (state){
         case 0:
           try{
-            (new Integer (token.trim())).intValue();
-          }catch (NumberFormatException exc){
-            new FatalProblemDlg(
-            "Wrong number of instructors in the instructor file:" +
-            "\n" + "I was in analyseInstructor class and in analyseTokens method ");
-            System.exit(1);
+            numberOfInstructors = (new Integer (token.trim())).intValue();
+          } catch (NumberFormatException exc){
+            _error = DConst.INST_TEXT1 +
+            "\n" + DConst.INST_TEXT6;
+            return false;
           }
           state=1;
           break;
         case 1:
-          if ((new StringTokenizer(token)).countTokens()==0){
-            new FatalProblemDlg(
-           "Wrong name of instructor at line: "+line+" in the instructor file:" +
-           "\n" + "I was in analyseInstructor class and in analyseTokens method ");
-            System.exit(1);
+          //if ((new StringTokenizer(token)).countTokens()==0){
+          if (token.length()==0){
+             _error = DConst.INST_TEXT2 +  line + DConst.INST_TEXT5 +
+           "\n" + DConst.INST_TEXT6;
+            return false;
           }
           state =2;
           stateDispo =1;
+          countInstructor++;
           break;
         case 2:
           // traitement des colonnes
           StringTokenizer tokenDispo = new StringTokenizer(token);
           if(tokenDispo.countTokens() != _numberOfColumns){
-            new FatalProblemDlg(
-           "Wrong number of instructor availabilities periods per day at line: "+line
-           +" in the instructor file:" +
-           "\n" + "I was in analyseInstructor class and in analyseTokens method ");
-            System.exit(1);
+             _error = DConst.INST_TEXT3+line
+           +DConst.INST_TEXT5 +
+           "\n" + DConst.INST_TEXT6;
+            return false;
           }
           // traitement de la description de la disponibilité
           while (tokenDispo.hasMoreElements()){
             String dispo = tokenDispo.nextToken();
             if ((!dispo.equalsIgnoreCase("1")) && (!dispo.equalsIgnoreCase("5"))){
-              new FatalProblemDlg(
-                  "Wrong descrition of instructor availability at line: "+line
-                  +" in the instructor file:" +
-                  "\n" + "I was in analyseInstructor class and in analyseTokens method ");
-              System.exit(1);
+               _error = DConst.INST_TEXT4+line
+                  +DConst.INST_TEXT5 +
+                  "\n" + DConst.INST_TEXT6;
+              return false;
             }
           }
 
@@ -93,6 +96,11 @@ private int _numberOfColumns;// represent number of period a day.
             state =1;
           break;
       }
+    }
+    if (countInstructor!=numberOfInstructors){
+      _error = DConst.INST_TEXT1 +
+            "\n" + DConst.INST_TEXT6;
+      return false;
     }
     return true;
   }
@@ -138,6 +146,10 @@ private int _numberOfColumns;// represent number of period a day.
          break;
       }
     }
+  }
+
+  public String getError() {
+    return _error;
   }
 
   /**

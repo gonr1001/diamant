@@ -74,10 +74,10 @@ public class LoadData {
 
   public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
     byte[]  dataloaded = preLoad(_instructorFileName);
+    SetOfInstructors _instructorsList= new SetOfInstructors(dataloaded,5,14);;
     if (dataloaded != null) {
       //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
       //return analyseInstructorTokens (st);
-     SetOfInstructors _instructorsList = new SetOfInstructors(dataloaded,5,14);
      if (merge)
        if(currentList!=null)
          _instructorsList.setSetOfResources(currentList.getSetOfResources());
@@ -88,9 +88,9 @@ public class LoadData {
       }
     } else {// (NullPointerException npe) {
       new FatalProblemDlg("I was in LoadData class and extractInstructors. preload failed!!!" );
-      System.exit(52);
+      //System.exit(52);
     }
-    return null;
+    return _instructorsList;
   }
 
   public SetOfRooms extractRooms(SetOfInstructors currentList, boolean merge){

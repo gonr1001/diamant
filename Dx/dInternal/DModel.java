@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.11 $  $Date: 2003-05-01 16:32:51 $
+ * Title: DModel $Revision: 1.12 $  $Date: 2003-05-05 16:52:58 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -22,7 +22,9 @@ package dInternal;
 
 import java.util.Vector;
 import java.io.*;
+import javax.swing.JFrame;
 import dInternal.dData.*;
+import com.iLib.gDialog.FatalProblemDlg;
 
 public class DModel{
   private Vector _dmListeners = new Vector();
@@ -31,12 +33,14 @@ public class DModel{
   private SetOfInstructors _instructorsList;
   private SetOfRooms _roomsList;
   private SetOfStudents _studentList;
+  private JFrame _jFrame;
 
-  public DModel() {
+  public DModel(JFrame jFrame) {
     _status = new Status();
     _ttParameters = new TTParameters();
+    _jFrame = jFrame;
     importData("hello");
-    test1_setAvailability();
+    //test1_setAvailability();
   }
 
   public Status getStatus() {
@@ -51,9 +55,20 @@ public class DModel{
     String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
     str = path;
     LoadData loadData = new LoadData(str);
-    _instructorsList = loadData.extractInstructors(null, false);
+    //if (loadData.doExtractOk()) {
+      _instructorsList = loadData.extractInstructors(null, false);
+     if( _instructorsList.getError().length()!=0){
+       new FatalProblemDlg(_jFrame,_instructorsList.getError());
+      System.exit(1);
+     }
+
     // _roomsList =
-    _studentList = loadData.extractStudents(null, false);
+     // _studentList = loadData.extractStudents(null, false);
+    //}
+      /*else {
+      new FatalProblemDlg(loadData.getError());
+      System.exit(1);
+    }*/
   }
 
 

@@ -234,7 +234,7 @@ public class SetOfActivities extends SetOfResources{
              blocResource= group.getBloc(Integer.toString(counter));
              Bloc bloc= (Bloc)blocResource.getAttach();
              bloc.setDuration(Integer.parseInt(stLine.nextToken().trim())*60);
-             blocResource.setObject(bloc);
+             blocResource.setAttach(bloc);
              group.setBloc(blocResource);
              counter++;
            }// end while(stLine.hasMoreElements())

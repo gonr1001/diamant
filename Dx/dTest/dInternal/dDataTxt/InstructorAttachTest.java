@@ -73,7 +73,7 @@ public class InstructorAttachTest extends TestCase {
     v.add("1 1 1 5 5");
     int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
     _inst.setAvailability(v);
-    assertEquals("test_getAvailability: assertEquals", true , compare(availMatrix, _inst.getMatrixAvailability()));
+    assertEquals("test_getAvailability: assertEquals", true, compare(availMatrix, _inst.getMatrixAvailability()));
   }
 
   public void test1_getAvailability(){
@@ -82,7 +82,7 @@ public class InstructorAttachTest extends TestCase {
     v.add("1 1 1 5 5");
     int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
     _inst.setAvailability(v);
-    assertEquals("test1_getAvailability: assertEquals", false , compare(availMatrix, _inst.getMatrixAvailability()));
+    assertEquals("test1_getAvailability: assertEquals", false, compare(availMatrix, _inst.getMatrixAvailability()));
   }
 
 

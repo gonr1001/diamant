@@ -258,7 +258,7 @@ public class SetOfResources extends DXObject{
   /**
   * Sort the SetOfResources by Resource object selected field from smallest to biggest
   * */
- public void sortSetOfResourcesBySelectedObjectField(int field){
+ public void sortSetOfResourcesBySelectedAttachField(int field){
    sort(0,_resourceList.size()-1,2,field);
    _stateSort=2;
   }

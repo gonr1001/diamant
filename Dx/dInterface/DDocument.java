@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.11 $  $Date: 2003-04-30 15:18:34 $
+ * Title: DDocument $Revision: 1.12 $  $Date: 2003-05-05 16:52:58 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -72,7 +72,7 @@ public class DDocument implements ActionListener, DModelListener{
   final int MAX_WIDTH = 1024;
   _dApplic = dApplic;
     //_mediator = mediator;
-    _dm = new DModel();
+    _dm = new DModel(_dApplic.getJFrame());
     _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
