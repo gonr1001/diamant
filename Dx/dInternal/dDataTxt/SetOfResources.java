@@ -108,6 +108,16 @@ public class SetOfResources extends DXObject{
     _resourceList = rlist;
   }
 
+  public void setSubsetOfResources(String [] IDs, int fieldIndex, String value){
+    for (int i = 0; i < IDs.length; i++)
+      (getResource(IDs[i]).getAttach()).setField(fieldIndex, value);
+  }
+
+  public void setSubsetOfResources(Object [] IDs, int fieldIndex, String value){
+    for (int i = 0; i < IDs.length; i++)
+      (getResource((String)IDs[i]).getAttach()).setField(fieldIndex, value);
+  }
+
   /**
    * get the resource list
    * @return Vector the vector of resource list

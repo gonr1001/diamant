@@ -164,12 +164,12 @@ public class Activity extends DXObject{
 
   /**
    * It compares a field with the value defined by the argument "value"
-   * @param choice the index of the field
+   * @param fieldIndex the index of the field
    * @param value the value to be compared
    * @return true if the attribute value is equal to the argument "value"
    */
-  public boolean compareByField(int choice, String value){
-   switch(choice){
+  public boolean compareByField(int fieldIndex, String value){
+   switch(fieldIndex){
       case 0:
         if (_departement.equals(value))
           return true;
@@ -188,6 +188,26 @@ public class Activity extends DXObject{
     }
     return false;
  }
+
+ /**
+  * Set a field according to the argument fieldIndex
+  * @param fieldIndex The index of a field
+  * @param value The set value to the field
+  */
+ public void setField(int fieldIndex, String value){
+   switch(fieldIndex){
+      case 0:
+        setActivityDepartment(value);
+      case 1:
+        setActivityType(value);
+      case 2:
+        int intValue = Integer.parseInt(value);
+        setActivitySession(intValue);
+      case 3:
+        boolean boolValue = Boolean.valueOf(value).booleanValue();
+        setActivityVisibility(boolValue);
+    }//end switch
+ }//end method
 
 
   /**

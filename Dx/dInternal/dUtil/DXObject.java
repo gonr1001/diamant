@@ -25,6 +25,10 @@ public class DXObject extends Object{
     return false;
   }
 
+  public void setField(int fieldIndex, String value){
+
+  }
+
   /**
    *
    * */

@@ -27,8 +27,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import dAux.DoNothingCmd;
-import dAux.DoNothingDlg;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dInternal.dData.SetOfActivities;
@@ -71,11 +69,14 @@ public class ActivityDlg extends JDialog implements ActionListener {
   public ActivityDlg(DApplication dApplic) {
      super(dApplic.getJFrame(), _listAct, true);
      _dApplic = dApplic;
-     _jd = this;
-     jbInit();
-     setLocationRelativeTo(dApplic.getJFrame());
-     setVisible(true);
-     triggerListeners();
+     _jd = this;  //to pass this dialog to the EditActivityDlg
+     if (_dApplic.getDMediator().getCurrentDoc() != null){
+       _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
+       jbInit();
+       setLocationRelativeTo(dApplic.getJFrame());
+       setVisible(true);
+       triggerListeners();
+     }
   }
 
 
@@ -91,8 +92,12 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //left panel
     JPanel rightPanel = new JPanel();
     JScrollPane rightSPane = new JScrollPane();
-    setVectors();
+    //set the vectors
+    _noVisibleVec = _activities.getIDsByField(3, "false");
+    _visibleVec = _activities.getIDsByField(3, "true");
+    //set the JLists
     _noVisibleList = new JList(_noVisibleVec);
+    _visibleList = new JList(_visibleVec);
     rightSPane.setPreferredSize(new Dimension(150,300));
     rightSPane.getViewport().add(_noVisibleList);
     rightPanel = new JPanel(new BorderLayout());
@@ -130,27 +135,13 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _buttonsPanel2.add(_cancel);
 
     //placing the elements into the JDialog
-    setSize(380, 340);
+    setSize(380, 390);
     setResizable(false);
     triggerListeners();
     getContentPane().add(_listsPanel, BorderLayout.CENTER);
     getContentPane().add(_buttonsPanel2, BorderLayout.SOUTH);
   }//end method
 
-  /**
-   * Set the vectors _noVisibleVec and _visibleVec with the values found in the SetOfActivities
-   */
-  private void setVectors(){
-    if (_dApplic.getDMediator().getCurrentDoc() == null){
-      _noVisibleVec = new Vector();
-      _visibleVec = new Vector();
-    }else{
-      _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-      _visibleVec = _activities.getIDsByField(3, "true");
-      _noVisibleVec = _activities.getIDsByField(3, "false");
-    } //end if (_dApplic.getDMediator().getCurrentDoc() == null)
-
-  }
 
   /**
    * Launch the listeners
@@ -193,97 +184,16 @@ public class ActivityDlg extends JDialog implements ActionListener {
       if (_currentActivities.length != 0)
       new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
     }// end if (command.equals("Afficher"))
-    if (command.equals(_toLeftMes))
-      actionButtonsLR(_toLeftMes);
-    if (command.equals(_toRightMes))
-      actionButtonsLR(_toRightMes);
-  }//end method
-
-  /**
-   * Execute the actions for the buttons _toLeft and _toRight
-   * @param button Identifies the button pushed
-   */
-  private void actionButtonsLR(String button){
-    boolean visible = false;
-    int i = 0;
-    if (button == _toLeftMes)
-      visible = true;
-    if (_currentActivities.length != 0){
-      for (i = 0; i < _currentActivities.length; i++)
-        ((Activity)(_activities.getResource((String)_currentActivities[i]).getAttach())).setActivityVisibility(visible);
-      setVectors();
-      _noVisibleList.setListData(_noVisibleVec);
-      _visibleList.setListData(_visibleVec);
-    }//end if (_currentActivities.length != 0)
-    //if button pressed is "_toLeft"
-    if (visible == true){
-      //_visibleList.setSelectedIndices(binaryIndexSearcher(true));
-      //_visibleList.setSelectedIndices(getIndicesToSelected(true));
-      int[] indices=DXTools.getIndicesToSelected(_visibleVec,_currentActivities);
-      _visibleList.setSelectedIndices(indices);
-      _noVisibleList.clearSelection();
-    }else{
-      //_noVisibleList.setSelectedIndices(binaryIndexSearcher(false));
-      //_noVisibleList.setSelectedIndices(getIndicesToSelected(false));
-      int[] indices=DXTools.getIndicesToSelected(_noVisibleVec,_currentActivities);
-      _noVisibleList.setSelectedIndices(indices);
-      _visibleList.clearSelection();
+    if (command.equals(_toLeftMes) || command.equals(_toRightMes)){
+      if (command.equals(_toLeftMes))
+        DXTools.actionButton(_activities, 3, "false", "true", _noVisibleList, _visibleList);
+      else
+        DXTools.actionButton(_activities, 3, "true", "false", _visibleList, _noVisibleList);
+      _noVisibleVec = _activities.getIDsByField(3, "false");
+      _visibleVec = _activities.getIDsByField(3, "true");
+      _lNoVisible.setText(_noVisibleVec.size() + " " + _notIncluded);
+      _lVisible.setText(_visibleVec.size() + " " + _included);
     }
-    _lNoVisible.setText(_noVisibleVec.size() + " " + _notIncluded);
-    _lVisible.setText(_visibleVec.size() + " " + _included);
   }//end method
-
-  /**
-   * Search the indices to be showed as selected in a JList. This method use a binary search
-   * to find these indices
-   * @param visible true if the list is the _visibleList
-   * @return An array containing the indices of the items to be showed as selected
-   */
-
-  /*private int[] binaryIndexSearcher(boolean visible){
-    Vector analyzedVec = _visibleVec;
-    int [] indices = new int[_currentActivities.length];//the place fro keeping the indices to set selected
-    if (visible == false)
-      analyzedVec = _noVisibleVec;
-    for(int i = 0; i < _currentActivities.length; i++){
-      int low = 0;
-      int high = analyzedVec.size()-1;
-      while(low <= high){
-        int mid = (low + high) / 2;
-        int diff = ((String)analyzedVec.get(mid)).compareTo((String)(_currentActivities[i]));
-        if (diff == 0){
-          indices[i] = mid;
-          System.out.println("Indices1[" + i + "}= " + indices[i]);
-          break;
-        }
-        else if(diff < 0)
-          low = mid + 1;
-        else
-          high = mid - 1;
-      }//end while
-    }//end for
-    return indices;
-  }*/
-
-  /**
-   * Search the indices to be showed as selected in a JList. The search is made in the vector that
-   * contains the list items
-   * @param visible true if the list is the _visibleList
-   * @return An array containing the indices of the items to be showed as selected
-   */
-
-  /*private int[] getIndicesToSelected( boolean visible){
-    Vector analyzedVec = _visibleVec;
-    int [] indices = new int[_currentActivities.length];//the place fro keeping the indices to set selected
-    if (visible == false)
-      analyzedVec = _noVisibleVec;
-    for (int i = 0; i < _currentActivities.length; i++){
-      indices[i] = analyzedVec.indexOf(_currentActivities[i]);
-      System.out.println("Indices2[" + i + "]= " + indices[i]);
-    }
-    return indices;
-  }*/
-
-
 
 }// end class
