@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.8 $  $Date: 2003-10-06 15:15:07 $
+ * Title: PeriodPanel $Revision: 1.9 $  $Date: 2003-10-07 19:10:28 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -42,7 +42,7 @@ import javax.swing.border.BevelBorder;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
 
-public abstract class PeriodPanel extends JPanel{
+public  class PeriodPanel extends JPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;
   protected int _TTSday;
   protected int _TTSseq;
@@ -59,14 +59,17 @@ public abstract class PeriodPanel extends JPanel{
   /**
    *
    * */
-  public void createPanel( Period period, int w, int h){
-    setLayout(new GridLayout(2,1));
-    setPreferredSize(new Dimension(w, h));
+  /*public void createPanel( Period period){ //, int w, int h){
+    setLayout(new GridLayout(3,1));
+    //setPreferredSize(new Dimension(w, h));
     setBorder(new BevelBorder(BevelBorder.RAISED));
     setValue(period);
-  }
-
-  public abstract void setValue(Period period); /*{
+  }*/
+ public  void createPanel() {}
+ public  void createPanel( Period period) {}
+  public  void createPanel(Period period, int w, int h){}
+ // public abstract void setValue(Period period);
+  /*{
     JPanel topPanel = new JPanel();
     JPanel bottomPanel = new JPanel();
     JLabel per = new JLabel (" Période "+ _panelRefNo + " ");

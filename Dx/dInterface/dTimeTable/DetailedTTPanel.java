@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.12 $  $Date: 2003-10-07 19:10:28 $
+ * Title: DetailedTTPanel $Revision: 1.13 $  $Date: 2003-10-07 19:13:06 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -308,6 +308,7 @@ public class DetailedTTPanel extends TTPanel {
           //c.fill = GridBagConstraints.BOTH;
           gridBC.gridx = i;
           gridBC.gridy = m;
+          gridBC.ipadx = PERIOD_WIDTH;
           if (_lines[m] != -1) {
             gridBC.ipady =  (_lines[m]  + 2) * LINE_HEIGHT;
   //label = new JLabel(hour[j] ) ; // + ":00");
