@@ -152,35 +152,7 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
     }//end for
 }//end method
 
-/*
-public static void listTransfers2(JList[] sourceList, JList[] destinationList, Vector[] sourceVector, Vector[] destinationVector, int typeTransfer ){
-  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
-    return;
-  SetOfResources destinationRes = new SetOfResources(0);
-  Resource res;
-  Object [][] elementsToTransfer = new Object[2];
-  elementsToTransfer[0] = sourceList[0].getSelectedValues();
-  elementsToTransfer[1] = sourceList[1].getSelectedValues();
-  if (elementsToTransfer[0].length != 0){
-      String currentElement;
-      for (int i = 0; i < elementsToTransfer.length; i++){
-        sourceVector[0].remove(elementsToTransfer[0][i]);
-        destinationVector[0].add(elementsToTransfer[i]);
-      }
-      for(int j = 0; j < destinationVector[0].size(); j++){
-        res = new Resource((String)destinationVector[0].elementAt(j),null);
-        destinationRes.addResource(res, 1);
-      }
-      destinationRes.sortSetOfResourcesByID();
-      destinationVector = destinationRes.getNamesVector();
-      sourceList.setListData(sourceVector);
-      destinationList.setListData(destinationVector);
-      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
-      destinationList.setSelectedIndices(indices);
-      sourceList.clearSelection();
-    }//end for
-}//end method
-*/
+
 
   /**
    * Set the vectors leftVector and rightVector with the values found in the SetOfActivities
@@ -251,6 +223,13 @@ public static int STIConvertGroup(String STIGroupID){
  }//end method
 
 
+ /**
+  * Builds a JPanel containing just a JList
+  * @param theList
+  * @param panelWidth
+  * @param panelHeight
+  * @return
+  */
  public static JPanel listPanel(JList theList, int panelWidth, int panelHeight){
    JPanel panel = new JPanel(new BorderLayout());
    panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
@@ -261,6 +240,13 @@ public static int STIConvertGroup(String STIGroupID){
    return panel;
  }
 
+ /**
+  * Builds a panel containing a Jlist
+  * @param list
+  * @param panelWidth
+  * @param panelHeight
+  * @return
+  */
  public static JPanel infoPanel(String[][] list, int panelWidth, int panelHeight){
    JPanel panel = new JPanel();
    JLabel lNumber;
@@ -274,14 +260,23 @@ public static int STIConvertGroup(String STIGroupID){
    return panel;
  }
 
- public static JPanel infoListPanel(String[][] list, JList theList, int panelWidth, int panelHeight){
-   JPanel panel = new JPanel(new BorderLayout());
-   JPanel infoPanel = infoPanel(list, panelWidth, 23);
-   JPanel listPanel = listPanel(theList, panelWidth, panelHeight-23);
-   panel.add(infoPanel, BorderLayout.NORTH);
-   panel.add(listPanel, BorderLayout.SOUTH);
-   return panel;
+ /**
+  * Sorts the elements of a vector
+  * @param theVector The vector to sort
+  * @return the vector sorted
+  */
+ public static Vector sortVector(Vector theVector){
+   SetOfResources resources = new SetOfResources(0);
+   Resource res;
+   for(int i = 0; i < theVector.size(); i++){
+        res = new Resource((String)theVector.elementAt(i),null);
+        resources.addResource(res, 1);
+      }
+      resources.sortSetOfResourcesByID();
+      return resources.getNamesVector();
  }
+
+
 
  /**
   * change the cursor
