@@ -1,7 +1,7 @@
-import java.io.*;
+
 
 import com.iLib.gIO.ByteInputFile;
-import java.io.InputStreamReader;
+
 public class ReadPrintFile {
 
   public static void main(String[] args) throws Exception{

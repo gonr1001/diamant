@@ -6,5 +6,6 @@
     <classpathentry kind="lib" path="theLibrary/theLibrary.jar"/>
     <classpathentry kind="lib" path="theLibrary/xmlLibrary.jar"/>
     <classpathentry kind="lib" path="D:/Program Files/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
+    <classpathentry kind="lib" path="D:/Developpements/DiamantExtreme/Dx/theLibrary/log4j-1.2.8.jar"/>
     <classpathentry kind="output" path="binaries"/>
 </classpath>
