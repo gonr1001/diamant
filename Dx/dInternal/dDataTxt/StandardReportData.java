@@ -146,7 +146,7 @@ public class StandardReportData {
         vec.add(extractToken(currentLine,otherAct[i]));
       }
       dxValue.setObjectValue(vec);
-      setOf.addResource(new Resource(ID, dxValue),1);
+      setOf.addResource(new Resource(ID, dxValue),0);
     }// end while(theReport.hasMoreTokens())
     String report="";
     for (int i=0;i< setOf.size(); i++){
@@ -223,7 +223,7 @@ public class StandardReportData {
           String minute= "00"+period.getBeginHour()[1];
           String time= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
                     minute.substring(minute.length()-2,minute.length());
-          strcrs+=sect+Integer.toString(j+1)+"-Jour:"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
+          strcrs+=sect+Integer.toString(j+1)+"-"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
               ).getResource(dayKey).getKey()+"-"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
               ).getResource(dayKey).getID()+"-"+time+",";
 

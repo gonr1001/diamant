@@ -16,6 +16,7 @@ import dInternal.dTimeTable.Period;
 import dResources.DConst;
 import java.io.File;
 import java.util.Vector;
+import java.util.StringTokenizer;
 
 public class DXToolsMethods {
 
@@ -236,6 +237,25 @@ public class DXToolsMethods {
        }// end else if(endIndex> initial[day].length)
      }//end else  if (beginIndex<0)
      return true;
+   }
+
+   /**
+    * return a token in from a stringtokenizer
+    * @param str
+    * @param delimiter
+    * @param position
+    * @return
+    */
+   public final static String getToken(String str, String delimiter, int position){
+     StringTokenizer strToken= new StringTokenizer(str,delimiter);
+     int nbTokens= strToken.countTokens();
+     for (int i=0; i< nbTokens; i++){
+       if(i==position)
+         return strToken.nextToken();
+       else
+         strToken.nextToken();
+     }
+     return "";
    }
 
 }
