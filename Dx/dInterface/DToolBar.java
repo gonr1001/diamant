@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.55 $  $Date: 2005-02-02 14:19:56 $
+ * Title: DToolBar $Revision: 1.56 $  $Date: 2005-02-03 16:26:49 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -201,7 +201,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
         resc.setID((String)_dayNameSelector.getSelectedItem());
         System.out.println("DToolbar.dayNameSelector");//debug
         //Treat event
-        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        _dApplic.getDModel().changeInDModelByToolBar(this);
       }//end actionPerformed
     });//end addActionListener
 
@@ -234,7 +234,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
         period.setPriority(_periodTypeSelector.getSelectedIndex());
         if(_comboBoxStatus){
 
-          _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        	_dApplic.getDModel().changeInDModelByToolBar(this);
         }
 
       }//end actionPerformed
@@ -253,7 +253,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
           period.setPriority(_periodTypeSelector.getSelectedIndex());
         }
 
-        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        _dApplic.getDModel().changeInDModelByToolBar(this);
       }//end actionPerformed
     });//end addActionListener
 
@@ -275,7 +275,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
           }
         }
 
-        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        _dApplic.getDModel().changeInDModelByToolBar(this);
 
       }//end actionPerformed
     });//end addActionListener
