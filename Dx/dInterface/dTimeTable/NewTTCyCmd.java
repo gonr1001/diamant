@@ -1,6 +1,6 @@
 /**
  *
- * Title: NewTTCyCmd $Revision: 1.7 $  $Date: 2004-02-13 21:49:21 $
+ * Title: NewTTCyCmd $Revision: 1.8 $  $Date: 2004-02-16 14:57:15 $
  * Description: NewTTCyCmd is a class used to have a new
  *  			document window
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,7 +33,7 @@ public class NewTTCyCmd implements Command {
 
   public void execute(DApplication dApplic) {
     new NewTTDlg(dApplic, DConst.CYCLE);
-    // this is  donein  NewTTDlg if a file is opened
+    // this is  done in  NewTTDlg if a file is opened
     // dApplic.getMenuBar().postNewTTCyCmd();
   } // end execute
 } /* end NewTTCyCmd class */
