@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.94 $  $Date: 2003-12-15 19:31:15 $
+ * Title: DMenuBar $Revision: 1.95 $  $Date: 2003-12-15 20:35:59 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.94 $
+ * @version $Revision: 1.95 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -426,7 +426,7 @@ public class DMenuBar extends JMenuBar{
     _viewSimple.addActionListener(_dApplic);
     _view.add(_viewSimple);
 
- /*   _viewDetailedHorizontal = new CmdMenu("Detaillé + Split H");//, this);
+    _viewDetailedHorizontal = new CmdMenu("Detaillé + Split H");//, this);
     _viewDetailedHorizontal.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _viewDetailedHorizontal.setCommand(new ViewHorizontalSplitCmd());
     _viewDetailedHorizontal.addActionListener(_dApplic);
@@ -436,7 +436,7 @@ public class DMenuBar extends JMenuBar{
     _viewDetailedVertical.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _viewDetailedVertical.setCommand(new ViewVerticalSplitCmd());
     _viewDetailedVertical.addActionListener(_dApplic);
-    _view.add(_viewDetailedVertical);*/
+    _view.add(_viewDetailedVertical);
 
     _preferences.add(_view);
 

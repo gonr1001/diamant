@@ -100,7 +100,7 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
     //Dimension frameDim = new Dimension(700,650);
     this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
                                 screenSize.height - ADJUST_HEIGHT));
-    _ttPane = new DetailedTTPane(_ttStruct,_toolBar,true, screenSize);
+    _ttPane = new DetailedMITTPane(_ttStruct,_toolBar, true, screenSize);
 
     Resource event = dm.getSetOfEvents().getResource(eventName);
     buildNewTTSTestConditions(event, dm);
