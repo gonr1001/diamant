@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.34 $  $Date: 2003-06-17 16:11:23 $
+ * Title: DDocument $Revision: 1.35 $  $Date: 2003-06-27 10:46:31 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -54,6 +54,7 @@ public class DDocument extends AbstractDocument implements ActionListener, DMode
   private boolean _modified;
   private DModel _dm;
   private JPanel _statusPanel;
+  private String _version;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
@@ -223,6 +224,16 @@ public class DDocument extends AbstractDocument implements ActionListener, DMode
     //comment until here
   }
 
+  /***/
+  public String getVersion(){
+    return _version;
+  }
+
+  /**
+   * */
+  public void setVersion(String version){
+    _version=version;
+  }
   /*
   * a revoir
   */

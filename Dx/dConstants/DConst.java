@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.23 $  $Date: 2003-06-02 16:42:42 $
+ * Title: DConst $Revision: 1.24 $  $Date: 2003-06-27 10:46:32 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.24 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -181,6 +181,8 @@ public class DConst {
 
    public final static int CYCLE = 1;
    public final static int EXAM = 2;
+   public final static int NBOFDAYS=5;
+   public final static int NBOFPERIODSADAY=14;
 
   public DConst() {
   }

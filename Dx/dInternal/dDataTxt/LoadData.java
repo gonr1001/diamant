@@ -35,6 +35,7 @@ public class LoadData {
 
   private final int NUMBER_OF_TOKENS = 4;
   private final String CR_LF = "\r\n";
+  private boolean _load=true;
   /***
    *constructor
    */
@@ -114,7 +115,7 @@ public class LoadData {
     return _instructorsList;
   }
 
-  public SetOfRooms extractRooms(SetOfInstructors currentList, boolean merge){
+  public SetOfRooms extractRooms(SetOfRooms currentList, boolean merge){
    byte[]  dataloaded = preLoad(_roomsFileName);
    SetOfRooms roomsList = new SetOfRooms(dataloaded,5,14);
    if (dataloaded != null) {
@@ -144,7 +145,9 @@ public class LoadData {
 
   }
 
-  public SetOfStudents extractStudents(SetOfInstructors currentList, boolean merge){
+
+
+  public SetOfStudents extractStudents(SetOfStudents currentList, boolean merge){
     byte[]  dataloaded = preLoad(_studentsFileName);
      SetOfStudents studentsList = new SetOfStudents(dataloaded);
      if (dataloaded != null) {
@@ -188,6 +191,37 @@ public class LoadData {
 
   public TTStructure extractTTStruct() {
     return new TTStructure();
+  }
+
+  /**
+   *
+   * */
+  public void loadProject(String fileName){
+     byte[]  dataloaded = preLoad(fileName);
+     Vector extract= new Vector();
+     StringTokenizer project= new StringTokenizer(dataloaded.toString(),_saveSeparator);
+     if(project.countTokens()==6){
+       // extract version
+       extract.add(project.nextToken());
+       //extract ttstructure
+       TTStructure tts= new TTStructure();
+       tts.loadTTStructure(project.nextToken());
+       extract.add(tts);
+       // extract instructor
+       SetOfInstructors _instructorsList= new SetOfInstructors(project.nextToken().getBytes(),5,14);
+       if (_instructorsList.analyseTokens(0)){
+        _instructorsList.buildSetOfInstructors(0);
+      }
+      // extract rooms
+      SetOfRooms roomsList = new SetOfRooms(project.nextToken().getBytes(),5,14);
+      if (roomsList.analyseTokens(0)){
+       roomsList.buildSetOfRooms(0, _roomsAttributesInterpretor);
+     }
+     }else{
+       new FatalProblemDlg("I was in"+getClass().toString()+" LoadData class and loadProject. extract failed!!!" );
+       System.exit(52);
+     }
+
   }
 
 

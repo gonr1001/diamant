@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.26 $  $Date: 2003-06-26 14:00:22 $
+ * Title: DModel $Revision: 1.27 $  $Date: 2003-06-27 10:46:32 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -70,6 +70,13 @@ public class DModel{
   public void incrementModification() {
     _status.incrModif();
     sendEvent();
+  }
+
+  /**
+   *
+   * */
+  public void loadProject(){
+
   }
 
   public String importData(String str) {

@@ -146,6 +146,15 @@ public class Period extends DXObject {
     return newPer;
   }
 
+  /**
+   *
+   * */
+  public String toString(){
+
+    String str=_beginHour[0]+":"+_beginHour[1]+" -- "+_priority;
+    return str;
+  }
+
   private int nbStudConflict = 0;
   private int nbInstConflict = 0;
   private int nbRoomConflict= 0;
