@@ -421,15 +421,42 @@ justifications}
 
 Abstraite trois blocs
 
-Architecture trois-tiers
+\subsection {Architecture trois-tiers}
 
-Interface avec systèmes existantes ou admin scolaire.
+De manière abstraite une architecture logicielle décrit les
+éléments composants d'un système, elle montre aussi les
+interactions entre ces éléments, les patterns qui guident sa
+composition et les contraints de ces patterns. \cite{shaw96}
 
-Interface bd et dia  tic-tac  par fichier txt xml, par jdbc ...
+De façon générale, quand nous avons un problème complexe, la
+meilleure solution est découper le problème en fragments plus
+faciles à gérer avec des solutions simples, Après si nous mettons
+ensemble ces petites solutions, nous allons arriver à la solution
+de notre problème complexe\cite{bus96}.
 
-Interface avec objets (loadData)
+À l'heure actuelle il y a plusieurs architectures disponibles pour
+développer des applications logicielles, mais nous pensons que la
+plus adaptée à notre système est celle de trois tiers.
 
-Interface entre dia et bd affichage horaires.
+Cette architecture propose la division du système en trois
+couches, chacune avec une fonction bien définit :
+
+\begin{description}
+\item [L'interface d'utilisateur:] Est responsable de valider la
+saisie des données de l'utilisateur.
+
+\item [La couche de logique d'affaires :] Est responsable du
+comportement du système - les règles d'affaires.
+
+\item [La couche de persistance :] Qui doit gérer le stockage
+physique des données, soit dans fichiers, bases de données ou
+autres modèles de persistance pour gérer bases de données
+complexes.
+\end {description}
+
+
+\subsection {Interfaces.}
+
 
 
 \section{Technologies possibles et justifications}
