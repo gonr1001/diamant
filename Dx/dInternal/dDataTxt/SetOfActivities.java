@@ -509,7 +509,6 @@ public class SetOfActivities extends SetOfResources{
     Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
     return a.getID()+t.getID()+" "+s.getID()+u.getID();
-
   }
 
   private int _NUMBEROFCYCLE = 1;
