@@ -234,7 +234,7 @@ public class TTStructure {
         return _error;
       }
     }catch(Exception e){
-      System.out.println(e);
+      System.out.println("TTStructure 1 :"+ e);
       _error= e.toString();
       return e.toString();
     }
@@ -257,7 +257,7 @@ public class TTStructure {
         return _error;
       }
     }catch(Exception e){
-      System.out.println(e);
+      System.out.println("TTStructure 2:" +e);
       _error= e.toString();
       return e.toString();
     }

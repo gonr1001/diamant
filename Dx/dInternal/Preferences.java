@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.16 $  $Date: 2003-11-21 21:19:35 $
+ * Title: Preferences $Revision: 1.17 $  $Date: 2003-11-25 21:50:12 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -60,7 +60,7 @@ public class Preferences {
       _selectedOptionsInConflictReport = st.nextToken();
       }
     } catch (Exception e) {
-      System.out.println(e);
+      System.out.println("Preferences:"+e);
     }
   }
 

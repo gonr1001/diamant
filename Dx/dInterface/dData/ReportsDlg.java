@@ -50,10 +50,10 @@ import dResources.DConst;
 public class ReportsDlg extends JDialog implements ActionListener, ChangeListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize
   * minus the barSize (the value is a guess) at the bottom */
- // private final static int ADJUST_HEIGHT = 100;
+  private final static int ADJUST_HEIGHT = 100;
   /* ADJUST_WIDTH is needed to ajdust the screenSize
   * minus border pixels (the value is a guess) at each side of the screen */
- // private final static int ADJUST_WIDTH = 24;
+  private final static int ADJUST_WIDTH = 24;
   private String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private DApplication _dApplic = null;
@@ -62,7 +62,7 @@ public class ReportsDlg extends JDialog implements ActionListener, ChangeListene
   private StandardReportData _srd;
   private String _reportData;
 
-  private SetOfResources[] _resources;
+  //private SetOfResources[] _resources;
 
   public ReportsDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
@@ -74,17 +74,57 @@ public class ReportsDlg extends JDialog implements ActionListener, ChangeListene
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
     //System.out.println("Génération de rapports terminé");
-
-    Vector v = new Vector();
-    fillVector(v);
-
-    new ReportOptionsDlg(_dApplic, this, v, 4);
-    //initReportDlg();
+    initReportDlg();
     //_resources = new SetOfResources[_tabbedPane.getComponentCount()];
     setLocationRelativeTo(dApplic.getJFrame());
     setVisible(true);
-
   }//end constructor
+
+  /**
+ * Dialog initialization
+ */
+private void initReportDlg(){
+  Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+  Dimension dialogDim = new Dimension(new Dimension(screenSize.width - ADJUST_WIDTH,
+                              screenSize.height - ADJUST_HEIGHT));
+  Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-10,
+                                          (int)dialogDim.getHeight()-60);
+  Dimension tabDim = new Dimension((int)tabbedPaneDim.getWidth()-10,
+                                   (int)tabbedPaneDim.getHeight()-10);
+  getContentPane().setLayout(new BorderLayout());
+  setSize(dialogDim);
+  setResizable(false);
+  //the tabbedPane
+  _tabbedPane = new JTabbedPane();
+  _tabbedPane.setPreferredSize(tabbedPaneDim);
+  _tabbedPane.addChangeListener(this);
+  //for(int i = 0; i < _tabsNames.length; i++)
+     _tabbedPane.addTab(_tabsNames[0], new ImportReport(_dApplic,tabbedPaneDim));
+                        //createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
+
+  _tabbedPane.addChangeListener(this);
+  getContentPane().add(_tabbedPane, BorderLayout.CENTER);
+  getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+}
+
+/**
+* Builds a panel contained into a tab of a tabbedPanel. This panel contains
+* a JTextArea for displaying a String
+* @param dim The panel dimension
+* @param message The first message to be displayed into the text area
+* @return the tabPanel
+*/
+private JPanel createTabPanel(Dimension dim, String message){
+// private JPanel createTabPanel(ReportDlg rd,Dimension dim, String message){
+ JTextArea jta = new JTextArea(message);
+ JPanel panel = new JPanel(new BorderLayout());
+ panel.setPreferredSize(dim);
+ JScrollPane scrollPane = new JScrollPane();
+ scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
+ scrollPane.getViewport().setView(jta);
+ panel.add(scrollPane);
+ return panel;
+  }
    private void fillVector(Vector v) {
 
      v.add(DConst.R_ACTIVITY_NAME);
@@ -104,4 +144,8 @@ public class ReportsDlg extends JDialog implements ActionListener, ChangeListene
    }
    public void stateChanged(ChangeEvent ce) {
    }
+/*   Vector v = new Vector();
+fillVector(v);
+
+    new ReportOptionsDlg(_dApplic, this, v, 4);*/
 }

@@ -263,6 +263,8 @@ public static int STIConvertGroup(String STIGroupID){
 
 
 
+
+
  /**
   * Creates a panel of buttons to be placed at the bottom of a Dialog.
   * This method adds the ActionListener for each button
@@ -275,12 +277,12 @@ public static int STIConvertGroup(String STIGroupID){
    JButton button;
    for(int i = 0; i<buttonsNames.length; i++){
      button = new JButton(buttonsNames[i]);
+     button.setActionCommand(buttonsNames[i]);
      button.addActionListener(parentDialog);
      panel.add(button) ;
    }
    return panel;
  }//end method
-
  /*
  public static JPanel buttonsPanel2(ActionListener parentDialog, String [] buttonsNames, Dimension parentDim){
    JPanel panel = new JPanel();

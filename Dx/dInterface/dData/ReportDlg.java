@@ -104,7 +104,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
 
     _tabbedPane.addChangeListener(this);
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-    getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+
   }
 
   /**
