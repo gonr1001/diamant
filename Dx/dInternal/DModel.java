@@ -1,6 +1,6 @@
 /**
 *
-* Title: DModel $Revision: 1.112 $  $Date: 2004-12-16 19:20:54 $
+* Title: DModel $Revision: 1.113 $  $Date: 2004-12-21 16:15:46 $
 * Description: DModel is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.112 $
+* @version $Revision: 1.113 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -47,27 +47,23 @@ import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
 
 
-//import dInternal.dDataTxt.SetOfResources;
-
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dInstructors.InstructorAttach;
 
-//import dInternal.dDataTxt.SetOfStates;
+
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
 
 import dInternal.dDataTxt.ExportData;
 
-//import dInternal.dDataTxt.LoadData;
-//import dInternal.dDataXML.XMLLoadData;
-//import dInternal.dDataXML.rooms.SetOfCategories;
+
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXValue;
-//import dInternal.DValue;
+
 
 public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
 	private Vector _dmListeners = new Vector();
@@ -148,7 +144,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		}else{
 			_error="Wrong type of file";
 		}
-		if (_error.length()==0)
+		if (_error.length()==0 && _isTimeTable)
 			_conditionTest = new TestConditions(this);
 		_type = type;
 		_modified = false;
