@@ -92,11 +92,6 @@ class reference20 {
 */
 class reference22 {
 }/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.ManualImprovementResultFrame:oiref><oihard>
-@__modelType reference 
-*/
-class reference23 {
-}/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.ManualImprovementDlg:oiref><oihard>
 @__modelType reference 
 */

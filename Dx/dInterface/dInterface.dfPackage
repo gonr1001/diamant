@@ -113,9 +113,11 @@ class __options {
 <oigroup:<oiref:java#Extends#dInterface.TTSDocument#dInterface.AbstractDocument:oiref>=490,379,490,195:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dUtil.PLAFCmd#dInterface.Command:oiref>=823,1126,1081,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_newTTableCy:oiref>=205,1652,1055,544:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_activityModif:oiref>=167,1652,1029,544:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.ExitCmd#dInterface.Command:oiref>=1506,1126,1126,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.dUtil.PLAFDlg#_dApplic:oiref>=775,1652,486,1572:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMediator#_dApplic:oiref>=203,1184,323,1184:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_initialAssign:oiref>=154,1652,1020,544:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.dTimeTable.TTDefinitionDlg#_dApplic:oiref>=586,1652,449,1572:oigroup>
 <oigroup:<oiref:java#Extends#dInterface.DDocument#dInterface.AbstractDocument:oiref>=539,604,539,195:oigroup>
 <oigroup:<oiref:java#Class#dInterface.DMediator:oiref>=10,1126,193,302,1:oigroup>
@@ -134,7 +136,7 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DToolBar#_dApplic:oiref>=171,657,389,1126:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dData.DefFilesToImportDlg:oiref>=336,1652,147,334,1:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.NewCmd#dInterface.Command:oiref>=715,1126,1072,705:oigroup>
-<oigroup:<oiref:java#Class#dInterface.DMenuBar:oiref>=30,1652,200,2398,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.DMenuBar:oiref>=30,1652,200,2382,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_lookAndFeel:oiref>=105,1652,987,544:oigroup>
 <oigroup:<oiref:java#Class#dInterface.CmdButton:oiref>=1109,402,151,158,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.dData.ImportDlg#_dApplic:oiref>=249,1652,382,1572:oigroup>
@@ -161,7 +163,7 @@ class __options {
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.TTDefinitionCmd#dInterface.Command:oiref>=1627,1126,1135,705:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref>=503,1652,167,1134,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_dApplic:oiref>=230,1660,323,1658:oigroup>
-<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,200,452,1:oigroup>
+<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,179,436,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mEventsModif:oiref>=130,1652,1004,544:oigroup>
 <oigroup:<oiref:design#Class#id4ixp8dfxus9pndfyc2jys.diagram:oiref>=174,206,153,276,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_dApplic:oiref>=613,1208,523,1208:oigroup>

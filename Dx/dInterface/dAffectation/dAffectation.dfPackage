@@ -62,11 +62,6 @@ class reference34 {
 */
 class reference35 {
 }/**
-@__ref <oiref:java#Class#dInterface.dAffectation.InitialAffectCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference36 {
-}/**
 @__ref <oiref:java#Class#dInterface.dAffectation.EventsDlgInterface:oiref><oihard>
 @__modelType reference 
 */
@@ -101,6 +96,11 @@ class reference14 {
 @__modelType reference 
 */
 class reference15 {
+}/**
+@__ref <oiref:java#Class#dInterface.dAffectation.InitialAssignCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
