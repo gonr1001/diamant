@@ -24,16 +24,20 @@
 
 
 \title{\bf{L'architecture d'un système de production des horaires
-de cours et des examens dans une Université}}
+de cours et des examens}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
 \email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
 \email{Domingo.Palao@USherbrooke.ca} }
 \date{}
-
+%%%%%%%%%%%%%%%%%%
+\pagestyle{plain} %% to be commented when sent
+%%%%%%%%%%%%%%%%%%
 \begin{document}
-\maketitle
+
+
+ \maketitle
 
 \begin{abstract} \label{intro}
 
@@ -43,9 +47,78 @@ Université de Sherbrooke,\\
 
 
 
-{\bf Mots clé :} Production d'horaires, Génie logiciel, Qualité.
+{\bf Mots clés :} Production d'horaires, Génie logiciel, Qualité.
 
 \section{Introduction}
+La production d'horaires est une tâche périodique effectué dans
+beaucoup d'institutions d'enseignement. Ces institutions
+produisent un ou plusieurs horaires par année pour les cours et
+les examens. Il existe de logiciels pour effectuer la construction
+d'horaires, on peut citer comme exemple \cite{gonzalezrubio00}. En
+générale ces logiciels vont avoir comme entrée un ou plusieurs
+fichiers, la sortie est aussi composée d'un ou plusieurs fichiers.
+Travailler de cette manière pose au moins deux problèmes~: le
+premier est qu'il faut construire les fichiers à chaque fois qu'un
+horaire sera produit; le deuxième est que les changements pour
+prendre en compte une nouvelle information sont difficiles, il
+faut changer le format de données et l'application. Le premier
+problème est plus grand lorsque les fichiers sont produits
+manuellement; si les fichiers sont produits de manière
+automatique, il faut vérifier la validité des données. Le deuxième
+problème ne se manifeste que s'un changement doit être introduit
+dans le système (logiciel et production de fichiers)ou si le
+logiciel est utilisé à plusieurs sites différents. Les changements
+viennent de la part des utilisateurs, par exemple une nouvelle
+nomenclature pour les locaux; prise en compte de nouvelles données
+pour former des groupes (toutes les filles d'une promotion doivent
+être dans le même groupe), etc.. S'il existe plusieurs instances
+du logiciel, il faut qu'il puisse traiter les données des
+différents sites ou que les sites adoptent le format de fichiers.
+
+Dans cet article nous proposons l'architecture  d'un système de
+production des horaires de cours et des examens ayant les
+caractéristiques suivantes~: ouverte et extensible. L'architecture
+met en oeuvre des bases de données, des sites Web et le logiciel
+de construction d'horaires. La bases de données va servir à
+vérifier la validité des données, elle va fournir les données
+nécessaires au logiciel de construction d'horaires et s'occupe du
+formatage de données. Les sites Web sont utilisés principalement
+pour la saisie de données, ceci permet de vérifier aussi la
+validité des données.
+
+Nous avons procédé en deux étapes, nous avons analysé le flot des
+données dans un système générique de production d'horaires, ceci
+nous a permis d'identifier les interfaces du système afin d'avoir
+une architecture ouverte. Ensuite nous avons défini
+l'architecture, ses modules et la responsabilité de chaque module.
+
+Une fois l'architecture définie nous proposons une instance en
+utilisant des technologies existantes.
+
+Nous faisons l'analyse de  Afin de simplifier le texte dans
+l'article nous allons traiter uniquement le cas d'horaires de
+cours. Dans cet article nous nous intéressons au processus global
+de la production des horaires depuis la saisie de données jusqu'à
+la livraison des horaires généraux et personnalisés. La production
+d'horaires est automatisé à différents degrés, par exemple~: elle
+peut comporter un logiciel de construction d'horaires qui peut
+produire un fichier contenant l'horaire qui sera affiché dans une
+place connue ou mise en format HTML afin de l'afficher sur le Web.
+Dans certains cas, la production se fait manuellement. Comme la
+production d'horaires ne doit pas être interrompue. L'institution
+doit faire le choix entre implanter un nouveau système et oublier
+le système actuel ou faire des changements graduels au système
+existant. Le risque de la première option est trop élevé, car si
+un problème arrive, le nouveau système peut se trouver dans un
+impasse représentant un coût important. La deuxième solution
+présente un risque modéré, car pour chaque nouveau composant
+ajouté au système il est possible de revenir à l'ancien composant,
+assurant ainsi la production d'horaires.
+
+L'objectif de cet article est de modéliser ce processus de
+production d'horaires pour prendre des décisions permettant son
+automatisation. Ceci peut faciliter les développement et
+l'implantation d'un système sur deux points de vue~:
 
 \begin{enumerate}
 \item Motivation le pourquoi du travail. Pourquoi la production
@@ -82,33 +155,7 @@ Plan de la suite
 
 \end{enumerate}
 
-La production d'horaires est une tâche périodique pour beaucoup
-d'institutions d'enseignement, en particulier pour les Universités
-(Facultés) qui produisent un ou plusieurs horaires par année pour
-les cours et les examens. Afin de simplifier le texte dans
-l'article nous allons traiter uniquement le cas d'horaires de
-cours. Dans cet article nous nous intéressons au processus global
-de la production des horaires depuis la saisie de données jusqu'à
-la livraison des horaires généraux et personnalisés. La production
-d'horaires est automatisé à différents degrés, par exemple~: elle
-peut comporter un logiciel de construction d'horaires qui peut
-produire un fichier contenant l'horaire qui sera affiché dans une
-place connue ou mise en format HTML afin de l'afficher sur le Web.
-Dans certains cas, la production se fait manuellement. Comme la
-production d'horaires ne doit pas être interrompue. L'institution
-doit faire le choix entre implanter un nouveau système et oublier
-le système actuel ou faire des changements graduels au système
-existant. Le risque de la première option est trop élevé, car si
-un problème arrive, le nouveau système peut se trouver dans un
-impasse représentant un coût important. La deuxième solution
-présente un risque modéré, car pour chaque nouveau composant
-ajouté au système il est possible de revenir à l'ancien composant,
-assurant ainsi la production d'horaires.
 
-L'objectif de cet article est de modéliser ce processus de
-production d'horaires pour prendre des décisions permettant son
-automatisation. Ceci peut faciliter les développement et
-l'implantation d'un système sur deux points de vue~:
 
 \begin{itemize}
     \item Le développement d'interfaces logiciels entre
@@ -127,17 +174,11 @@ Ensuite nous établirons un modèle plus génèral.
 
 Cet article propose~:
 
-\begin{itemize}
-    \item  un analyse
-
-    \item  deux
-
-    \item  trois
-\end{itemize}
 
 
 
-\section{Les flot de l'information dans prod hor}
+
+\section{Les flot de l'information dans production d'horaires}
 
 Le system est en production
 
