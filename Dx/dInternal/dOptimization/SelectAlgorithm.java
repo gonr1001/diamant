@@ -17,7 +17,8 @@ public class SelectAlgorithm {
  private DModel _dm;
  private Vector _algorithmToRun;
  private int _currentAlgoToExecute=0;
-  int [] _avoidPriority={1,2};
+ private int [] _avoidPriority={1,2};
+ private int [] _acceptableConflictsTable={0,0,0};
   /**
    * constructor
    */
@@ -35,7 +36,7 @@ public class SelectAlgorithm {
   private void buildAlgorithmToRun(){
     _algorithmToRun.removeAllElements();
     switch(_currentAlgoToExecute){
-      case 0: _algorithmToRun.add(new FirstAffectAlgorithm(_dm,_avoidPriority));
+      case 0: _algorithmToRun.add(new FirstAffectAlgorithm(_dm,_avoidPriority,_acceptableConflictsTable));
         break;
       case 1: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,0));
         break;
@@ -61,6 +62,15 @@ public class SelectAlgorithm {
    */
   public void setAvoidPriorityTable(int[] avoidPriority){
     _avoidPriority= avoidPriority;
+  }
+
+  /**
+   *
+   * @param int[] acceptableConflictsTable range 0= student, range 1= instructor
+   * range 2= room
+   */
+  public void setacceptableConflictsTable(int[] acceptableConflictsTable){
+    _acceptableConflictsTable= acceptableConflictsTable;
   }
 
 }// end class

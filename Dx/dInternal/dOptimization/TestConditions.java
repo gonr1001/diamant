@@ -23,6 +23,7 @@ public class TestConditions {
  private Vector _testToRun = new Vector(1);
  private boolean _matrixIsBuilded= false;
  int[] _avoidPriority={};
+  int [] _acceptableConflictsTable={};
  /**
   * Constructor
   * @param soa
@@ -32,8 +33,8 @@ public class TestConditions {
    _dm= dm;
     _matrix = new StudentsConflictsMatrix();
     _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities()));
-    _testToRun.add( new TestRoomsConditions(_dm));
     _testToRun.add( new TestInstructorsConditions(_dm));
+    _testToRun.add( new TestRoomsConditions(_dm));
   }
 
   public StudentsConflictsMatrix getConflictsMatrix(){
@@ -46,6 +47,15 @@ public class TestConditions {
    */
   public void setAvoidPriorityTable(int[] avoidPriority){
     _avoidPriority= avoidPriority;
+  }
+
+  /**
+   *
+   * @param int[] acceptableConflictsTable range 0= student, range 1= instructor
+   * range 2= room
+   */
+  public void setacceptableConflictsTable(int[] acceptableConflictsTable){
+    _acceptableConflictsTable= acceptableConflictsTable;
   }
 
   /**
@@ -110,20 +120,20 @@ public class TestConditions {
   /**
     * add or remove an event in a given tts
     * @param event
-    * @param operation
+    * @param int operation -1= remove event, 0= do nothing, 1= add event
     * @return
     */
-  public int addOrRemEventInTTs(TTStructure tts, Resource event, int operation){
+  public int[] addOrRemEventInTTs(TTStructure tts, Resource event, int operation){
      return StandardAddOrRemEventInTTs(tts,event, operation);
    }
 
    /**
     * add or remove an event in DModel tts
     * @param event
-    * @param operation
+    * @param int operation -1= remove event, 0= do nothing, 1= add event
     * @return
     */
-   public int addOrRemEventInTTs( Resource event, int operation){
+   public int[] addOrRemEventInTTs( Resource event, int operation){
      return StandardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation);
    }
 
@@ -132,10 +142,13 @@ public class TestConditions {
    * standard add or remove an event in tts
    * @param event
    * @param int operation -1= remove event, 0= do nothing, 1= add event
-   * @return
+   * @return int [] conflicts range 0= nb of students conflicts,
+   * range 1= nb of instructors conflicts
+   * range 2= nb of rooms conflicts
    */
-  private int StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation){
-    int numberOfConflicts=0;
+  private int[] StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation){
+    int[] numberOfConflicts={0,0,0};
+    int totalNumberOfConflicts=0;
     //StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
     /*String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
       eventKey.nextToken(),eventKey.nextToken()};*/
@@ -153,7 +166,7 @@ public class TestConditions {
           	//System.out.println(event.getID());
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
-            numberOfConflicts+=cond.executeTest(per,event.getID(),operation);
+            numberOfConflicts[k]+=cond.executeTest(per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
           if (operation!=0){
             ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));

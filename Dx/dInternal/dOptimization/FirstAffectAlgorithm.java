@@ -23,15 +23,17 @@ public class FirstAffectAlgorithm implements Algorithm {
 
   private Vector _placeEvent;
   private DModel _dm;
-  int [] _avoidPriority;
+  private int [] _avoidPriority;
+  private int [] _acceptableConflictsTable;
 
   /**
    * constructor
    */
-  public FirstAffectAlgorithm(DModel dm,int [] avoidPriority) {
+  public FirstAffectAlgorithm(DModel dm,int [] avoidPriority,int[] acceptableConflictsTable) {
     //_noPlaceEvent= new Vector(1);
     _placeEvent= new Vector(1);
     _avoidPriority= avoidPriority;
+    _acceptableConflictsTable= acceptableConflictsTable;
     _dm= dm;
   }
 
@@ -49,9 +51,11 @@ public class FirstAffectAlgorithm implements Algorithm {
     int currentDuration=0;
 
     _dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
+    _dm.getConditionsTest().setacceptableConflictsTable(_acceptableConflictsTable);
     for(int i=0; i< vect.size(); i++){
       currentEvent= (Resource)vect.get(i);
-      int numberOfConflicts=0;
+      boolean isNumberOfConflictsAccept=false;
+      int[] nbConf;
       /*while(((EventAttach)currentEvent.getAttach()).getAssignState())
         currentEvent= (Resource)vectorOfEvents.remove(0);*/
       if(!((EventAttach)currentEvent.getAttach()).getAssignState()){
@@ -63,9 +67,10 @@ public class FirstAffectAlgorithm implements Algorithm {
           int[] dayTime= {value.getIntValue(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
           ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
           ((EventAttach)currentEvent.getAttach()).setAssignState(true);
-          numberOfConflicts= _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,0);
+          nbConf= _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,0);
+          isNumberOfConflictsAccept= isConflictsAcceptable(nbConf);
           ((EventAttach)currentEvent.getAttach()).setAssignState(false);
-          if(numberOfConflicts==0){
+          if(isNumberOfConflictsAccept){
             ((EventAttach)currentEvent.getAttach()).setAssignState(true);
             _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,1);
             _placeEvent.add(currentEvent);
@@ -85,6 +90,19 @@ public class FirstAffectAlgorithm implements Algorithm {
    */
   private Vector buildEventsVector(){
     return _dm.getSetOfEvents().getSetOfResources();
+  }
+
+  /**
+   * check if conflicts are acceptable
+   * @param conflicts
+   * @return
+   */
+  private boolean isConflictsAcceptable(int [] conflicts){
+    for (int i=0; i< conflicts.length; i++){
+      if(_acceptableConflictsTable[i] < conflicts[i])
+        return false;
+    }
+    return true;
   }
 
   /**
