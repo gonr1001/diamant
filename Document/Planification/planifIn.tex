@@ -495,3 +495,19 @@ Les classes en construction :
     \item \pro{dResources.DFileFilter}
     \item \pro{dResources.DStringFrRes}
 \end{itemize}
+
+Les actions nécessaires à l'optimisation:
+
+\begin{itemize}
+    \item Construction de la liste d'événements à partir de la liste d'activités (2 jours pour la construction et 1 jour pour les tests).
+    \item Construction de la matrice de conflits d'étudiants (1 jour et demi pour la construction et 1 jour pour les tests).
+    \item Recherche de conflits d'étudiants(1 jour pour l'implémentation et 1/2 pour les tests).
+    \item Recherche de conflits de locaux. L'on doit rechercher les conflits de locaux entre 2 événements et les conflits de capacité de local d'un  événement (1 jour pour l'implémentation et 1/2 pour les tests).
+     \item Recherche de conflits d'enseignants. L'on doit rechercher les conflits d'enseignants entre 2 événements et les conflits de disponibilité d'un enseignant(1 jour pour l'implémentation et 1/2 pour les tests).
+    \item Affection d'un événement dans la grille horaire (1 jour pour l'implémentation et 1/2 pour les tests).
+    \item Construction de la matrice de groupe d'étudiants (1 jour pour la construction et 1/2 jour pour les tests)
+    \item Implémentation de l'algorithme de balancement des groupes d'étudiants (2 jours pour l'implémentation et 1 jour pour les tests).
+    \item Amélioration manuelle. Elle consiste à sélectionner un événement et à rechercher les potentiels conflits (enseignants, locaux, étudiants) générés par cet événements dans la grille horaire (1 jours pour l'implémentation et 1/2 jour pour les tests).
+    \item Affectation initiale. Elle consiste à placer dans la grille horaire tous les événements figés au SIG (1 jours pour l'implémentation et 1/2 jour pour les tests).
+\end{itemize}    
+
