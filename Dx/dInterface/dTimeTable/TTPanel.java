@@ -180,17 +180,18 @@ public class TTPanel extends JScrollPane {
           c.fill = GridBagConstraints.BOTH;
           c.gridx = i;
           c.gridy = period.getBeginHour()[0] - _dm.getTTStructure().getFirstPeriod(cycle).getBeginHour()[0];//period.getEndHour(_periodLenght)[0];
-          System.out.println("c.gridy : " + c.gridy);
+
           if ( period.getEndHour(_periodLenght)[1] == 0 ){
-            c.gridheight = period.getEndHour(_periodLenght)[0] - period.getBeginHour()[0];
+            c.gridheight = period.getEndHour(UHEIGHT)[0] - period.getBeginHour()[0];
             c.insets = new Insets( period.getBeginHour()[1]*UHEIGHT/_periodLenght, 0, 0, 0 );
 
           } else {
-            c.gridheight = period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
+            c.gridheight = period.getEndHour(UHEIGHT)[0] + 1 - period.getBeginHour()[0];
             c.insets = new Insets( period.getBeginHour()[1]*UHEIGHT/_periodLenght, 0,
                                    (_periodLenght- period.getBeginHour()[1]*UHEIGHT/_periodLenght), 0 );
 
           }
+          System.out.println("c.gridy : " + c.gridy+" c.gridheight: "+c.gridheight+ " c.insets: "+c.insets.toString());//debug
           gridbag.setConstraints(periodPanel, c);
           panel.add(periodPanel, c);
         }//end for k
