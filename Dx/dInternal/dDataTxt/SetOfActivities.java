@@ -51,11 +51,11 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
-   * analyse SIG activities data by a finished states machine
+   * analyse Delta activities data by a finished states machine
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
-  private boolean analyseSIGTokens(int beginPosition){
+  private boolean analyseDeltaTokens(int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
@@ -143,11 +143,11 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
-   * analyse delta activities data by a finished states machine
+   * analyse SIG activities data by a finished states machine
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
-  private boolean analyseDeltaTokens(int beginPosition){
+  private boolean analyseSIGTokens(int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
