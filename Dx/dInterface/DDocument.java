@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.58 $  $Date: 2003-08-21 20:41:11 $
+ * Title: DDocument $Revision: 1.59 $  $Date: 2003-08-22 11:39:12 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -195,7 +195,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     public void changeInDModel(DModelEvent  e) {
       //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
-      _dm.setStatesBarComponent();
+      _dm.setStateBarComponent();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       //this.updateStateBar(_dm.getState());
 

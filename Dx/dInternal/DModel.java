@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.54 $  $Date: 2003-08-21 20:41:11 $
+ * Title: DModel $Revision: 1.55 $  $Date: 2003-08-22 11:39:12 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.54 $
+ * @version $Revision: 1.55 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -29,10 +29,14 @@ import dResources.DConst;
 import dInternal.dData.LoadData;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dTimeTable.TTStructure;
+import dInternal.DModelEvent;
+import dInternal.DModelListener;
+import dInternal.dTimeTable.TTStructureListener;
+import dInternal.dTimeTable.TTStructureEvent;
 
 
 
-public class DModel {
+public class DModel implements  DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
   private int _type;
   private boolean _modified = false;
@@ -52,7 +56,7 @@ public class DModel {
   //for new and open Timetable
   //for new TTStructure and open a TTStructure from a file
   public DModel(DApplication dApplic, String fileName, int type) {
-    System.out.println("type: "+type);
+    //System.out.println("type: "+type);
     _error = "";
     _setOfStates = new SetOfStates();
     _dApplic = dApplic;
@@ -71,6 +75,9 @@ public class DModel {
     }
     _type = type;
     _modified = false;
+    if (_error.length()==0){
+      _ttStruct.addTTStructureListener(this);
+    }
   }
 
   public String getError(){
@@ -265,7 +272,7 @@ public void setVersion(String version){
   /**
    *
    */
-  public void setStatesBarComponent(){
+  public void setStateBarComponent(){
     if (_constructionState>0){
       ((State)_setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(_setOfActivities.size());
       ((State)_setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(_setOfInstructors.size());
@@ -291,4 +298,13 @@ public void setVersion(String version){
      attach.setAvailability(matrix);
    }
   }
+
+  public void changeInDModel(DModelEvent  e) {
+
+  }// end actionPerformed
+
+   public void changeInTTStructure(TTStructureEvent  e) {
+
+   }// end actionPerformed*/
+
 } /* end class DModel */
