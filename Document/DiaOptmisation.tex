@@ -1,0 +1,118 @@
+\documentclass{llncs}
+\bibliographystyle{alpha}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+
+\usepackage{dfd,hhline}
+\usepackage{verbatim}
+\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
+
+\newcommand{\ang}{\textsf}
+\newcommand{\key}{\textsf}
+\newcommand{\ita}{\textit}
+\newcommand{\bld}{\textbf}
+\newcommand{\dos}{\textsc}
+\newcommand{\pro}{\texttt}
+
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\tictac}{Tic-Tac}
+\newcommand{\xp}{eXtreme Programming}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+\title{\bf{Modèle mathématique pour construire un horaire d'examens}}
+%\author{Ruben Gonzalez Rubio \\Domingo Palao Muñoz}
+%\institute{Département de génie électrique et de génie informatique \\
+%Université de Sherbrooke,\\
+%Sherbrooke, Québec, J1K 2R1 \\
+%Canada \\
+%\email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
+%\email{Domingo.Palao@USherbrooke.ca}}
+%\date{}
+
+%%%%%%%%%%%%%%%%%%
+\pagestyle{plain} %% to be commented when sent
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small\normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small\normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small\normalsize}
+%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%\maketitle
+{\bf{Modèle mathématique pour construire un horaire d'examens}}
+%\intd
+
+Considérations de base pour l'horaire d'examens~: Il y a un examen
+pour chaque cours. Tous les examens on la même durée, donc toutes
+les périodes de la grille horaire aussi.
+
+Soit~:
+\[
+\begin{array}{l}
+i~ \mbox{définie comme le numéro de l'examen d'un cours}~(i = 1, \ldots, m) \\
+t ~\mbox{définie comme le numéro de la période dans l'horaire}~(t
+= 1 \ldots, n)\\
+\end{array}
+\]
+
+\[
+x_{i,t} \mbox{est définie} \left\{
+\begin{array}{r@{\hspace{15pt}}l}
+1 & \mbox{si l'examen}~i~\mbox{est affecté à une période de temps}~t \\
+0 &  \mbox{sinon} \\
+\end{array} \right.
+\]
+
+\[
+\begin{array}{l}
+e_{i,i'}~ \mbox{le nombre d'étudiants qui prenennt l'examen numéro}~i~\mbox{et l'examen numéro}~i'~\mbox{au même temps}\\
+\end{array}
+\]
+
+Les conflits.
+
+\[
+x_{i,t} x_{i',t}  \left\{
+\begin{array}{r@{\hspace{15pt}}l}
+1 & \mbox{si}~i~\mbox{et}~i'~\mbox{sont dans la même période de temps}~t \\
+0 &  \mbox{sinon} \\
+\end{array} \right.
+\]
+
+
+\[
+\mbox{conflits entre}~i~\mbox{et}~i' = e_{i,i'} \sum^n_{t=1}
+x_{i,t} x_{i',t}
+\]
+
+La fonction objectif est~:
+
+\[
+\mbox{min}\sum^{m-1}_{i=1}  \sum^{m}_{i'=i+1} e_{i,i'}
+\sum^n_{t=1} x_{i,t} x_{i',t}
+\]
+
+Le modèle final est~:
+\[
+%\begin{array}{l@{\hspace{15pt}}l@{\hspace{15pt}}l@{\hspace{15pt}}l}
+%~ &
+\mbox{min}\sum^{m-1}_{i=1}  \sum^{m}_{i'=i+1} e_{i,i'}
+\sum^n_{t=1} x_{i,t} x_{i',t}  ~~~~~  \mbox{total de conflits}
+%
+\]
+
+
+\[
+\begin{array}{l@{\hspace{15pt}}l@{\hspace{15pt}}l@{\hspace{15pt}}l}
+\mbox{avec les contraintes} & \sum\limits^{n}_{t=1}  x_{i,t} & i =
+1,
+\ldots, m  & \mbox{un seul examen}~i \\
+~ & x_{i,t} = 0~\mbox{ou}~1 & i = 1, \ldots, m;~ t = 1 \ldots, n &
+~ \\
+\end{array}
+\]
+
+
+\end{document}
