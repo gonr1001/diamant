@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.44 $  $Date: 2003-07-16 16:42:31 $
+ * Title: DModel $Revision: 1.45 $  $Date: 2003-07-28 10:59:06 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -105,6 +105,8 @@ public class DModel {
       _ttStruct= (TTStructure)project.get(1);
       // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
       // addTTStructureListener(this);
+      if (_ttStruct.getError().length() != 0)
+        return _ttStruct.getError();
       _setOfInstructors = (SetOfInstructors)project.get(2);
       _setOfRooms= (SetOfRooms)project.get(3);
       _setOfActivities=(SetOfActivities)project.get(4);

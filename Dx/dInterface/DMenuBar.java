@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.43 $  $Date: 2003-07-23 16:25:03 $
+ * Title: DMenuBar $Revision: 1.44 $  $Date: 2003-07-28 10:59:06 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -166,141 +166,6 @@ public class DMenuBar extends JMenuBar{
     mExit.setCommand(new ExitCmd());
     mExit.addActionListener(_dApplic);
 
-/*
-    //Build the menu EDIT.
-    menu = new JMenu(DConst.EDIT);
-    //menu.setFont( new java.awt.Font( mfont, font, nPT ) );
-    this.add( menu );
-
-    // Items in menu EDIT.
-    CmdMenu mCpy = new CmdMenu(DConst.COPY);
-    menu.add(mCpy);
-    //mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mCpy.setCommand(new DoNothingCmd(_dApplic.getJFrame())); //this, med));
-    mCpy.addActionListener(_dApplic);
-    CmdMenu mTTDef = new CmdMenu("TTDialog");//, this);
-    menu.add(mTTDef);
-    mTTDef.setFont(new java.awt.Font(mfont, font, nPT));
-    mTTDef.setCommand(new TTDefinitionCmd());//_dApplic.getJFrame(), _dApplic.getDMediator()));
-    mTTDef.addActionListener(_dApplic);
-
-*/
-
-    /*
-    JMenu mNewTT = new JMenu(DConst.NEW_TT);
-    mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
-
-    CmdMenu mNTTEx = new CmdMenu(DConst.NTT_EX);
-    mNTTEx.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNTTEx.setCommand(new NewTTExCmd());
-    mNTTEx.addActionListener(_dApplic);
-    mNewTT.add(mNTTEx);
-
-    CmdMenu mNTTCy = new CmdMenu(DConst.NTT_CY);
-    mNTTCy.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNTTCy.setCommand(new NewTTCyCmd());
-    mNTTCy.addActionListener(_dApplic);
-    mNewTT.add(mNTTCy);
-    menu.add(mNewTT);
-
-
-*/
-
-/*
-    //Build the menu Def TTStructure.
-    menu = new JMenu(DConst.FILE_TTS);
-    menu.setFont( new java.awt.Font(_mfont, _font, _nPT) );
-    this.add( menu );
-
-    JMenu mNewTTS = new JMenu(DConst.NEW_TTS);
-    mNewTTS.setFont(new java.awt.Font(_mfont, _font, _nPT ));
-
-    CmdMenu mNTTSCy = new CmdMenu(DConst.NTTS_CY);
-    mNTTSCy.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mNTTSCy.setCommand(new NewTTSCyCmd());
-    mNTTSCy.addActionListener(_dApplic);
-    mNewTTS.add(mNTTSCy);
-
-    CmdMenu mNTTSEx = new CmdMenu(DConst.NTTS_EX);
-    mNTTSEx.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mNTTSEx.setCommand(new NewTTSExCmd());
-    mNTTSEx.addActionListener(_dApplic);
-    mNewTTS.add(mNTTSEx);
-
-    menu.add(mNewTTS);
-
-    CmdMenu mOpenTTS = new CmdMenu(DConst.OPEN_TTS);
-    menu.add(mOpenTTS);
-    mOpenTTS.setFont(new java.awt.Font( _mfont, _font, _nPT));
-    mOpenTTS.setCommand(new OpenTTSCmd());
-    mOpenTTS.addActionListener(_dApplic);
-
-    CmdMenu mCTTS = new CmdMenu(DConst.CLOSE_TTS);
-    menu.add(mCTTS);
-    mCTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mCTTS.setCommand(new CloseCmd());
-    mCTTS.addActionListener(_dApplic);
-
-    menu.addSeparator();
-
-    CmdMenu mSTTS = new CmdMenu(DConst.SAVE_TTS);
-    menu.add(mSTTS);
-    mSTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mSTTS.setCommand(new SaveCmd());
-    mSTTS.addActionListener(_dApplic);
-
-    CmdMenu mSAsTTS = new CmdMenu(DConst.SAVE_AS_TTS);
-    menu.add(mSAsTTS);
-    mSAsTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mSAsTTS.setCommand(new SaveAsCmd());
-    mSAsTTS.addActionListener(_dApplic);
-
-    menu.addSeparator();
-
-    JMenu mDTTS = new JMenu(DConst.DTTS);
-    mDTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
-
-
-    CmdMenu mNTTS = new CmdMenu(DConst.NTTS);
-    mNTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNTTS.setCommand(new NewTTSCmd());
-    mNTTS.addActionListener(_dApplic);
-    mDTTS.add(mNTTS);
-
-    CmdMenu mOTTS = new CmdMenu(DConst.OTTS);
-    mOTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mOTTS.setCommand(new OpenTTSCmd());
-    mOTTS.addActionListener(_dApplic);
-    mDTTS.add(mOTTS);
-
-    menu.add(mDTTS);
-
-    menu.addSeparator();
-
-
-
-
-    CmdMenu mDefF = new CmdMenu(DConst.DEF_F_M);
-    menu.add(mDefF);
-    mDefF.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mDefF.setCommand(new DefFilesToImportCmd());
-    mDefF.addActionListener(_dApplic);
-
-    CmdMenu mImpA = new CmdMenu(DConst.IMP_A_M);
-    menu.add(mImpA);
-    mImpA.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mImpA.setCommand(new ImportCmd(_dApplic.getJFrame()));
-    mImpA.addActionListener(_dApplic);
-
-
-    CmdMenu mExpo = new CmdMenu(DConst.EXPO);
-    menu.add(mExpo);
-    mExpo.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mExpo.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    mExpo.addActionListener(_dApplic);
-
-
-*/
     //Build the menu ASSIGN.
     menu = new JMenu(DConst.ASSIGN);
     menu.setFont( new java.awt.Font( _mfont, _font, _nPT ) );

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.34 $  $Date: 2003-07-28 09:17:52 $
+ * Title: DConst $Revision: 1.35 $  $Date: 2003-07-28 10:59:06 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -114,18 +114,17 @@ public class DConst {
   public final static String SAVE_TTS  = res.getString("saveTTS");//Enregistrer grille, unp
   public final static String SAVE_AS_TTS  = res.getString("saveAsTTS");//Enregistrer grille sous, unp
 
-  public final static String ASSIGN = res.getString( "assign");
-  public final static String INST_ASSIGN_M = res.getString( "instAssignM");
-  public final static String INST_ASSIGN_TD = res.getString("instAssignTD");
-  public final static String INST_ASSIGN_D = res.getString("instAssignD");
+  public final static String ASSIGN = res.getString( "assign");//Affectation
+  public final static String INST_ASSIGN_M = res.getString( "instAssignM");//Enseignants
+  public final static String INST_ASSIGN_TD = res.getString("instAssignTD");//Disponibilité enseignants
+  public final static String INST_ASSIGN_D = res.getString("instAssignD");//To be defined, unp
 
 
 
-   public final static String PREF = res.getString("pref");
-   public final static String PLAF_M = res.getString("plafM");
-   public final static String PLAF_TD = res.getString("plafTD");
-   public final static String PLAF_D = res.getString("plafD");
-
+   public final static String PREF = res.getString("pref");//Preferences
+   public final static String PLAF_M = res.getString("plafM");//ptions L&F (for the menu)
+   public final static String PLAF_TD = res.getString("plafTD");//Options L&F REPETE unp REPETE (for the dialog)
+   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F
 
    public final static String HELP = res.getString("help");
 

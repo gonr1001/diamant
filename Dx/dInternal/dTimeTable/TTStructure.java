@@ -362,6 +362,7 @@ public class TTStructure {
       }
     }catch(Exception e){
       System.out.println(e);
+      _error= e.toString();
       return e.toString();
     }
     return _error;
