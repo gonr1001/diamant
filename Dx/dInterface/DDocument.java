@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.99 $  $Date: 2003-10-29 17:49:01 $
+ * Title: DDocument $Revision: 1.100 $  $Date: 2003-11-21 21:19:35 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.99 $
+ * @version $Revision: 1.100 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -341,7 +341,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
-    System.out.println("H " +_jif.getSize().height + "  W " + _jif.getSize().width);
+    //System.out.println("H " +_jif.getSize().height + "  W " + _jif.getSize().width);
     //_jif.getSize();
 
     if (simple) {

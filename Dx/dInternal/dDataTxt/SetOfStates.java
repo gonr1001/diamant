@@ -73,7 +73,7 @@ public class SetOfStates extends SetOfResources{
       return;
     }
     _sosListener.addElement(sosl);
-    System.out.println("addSetOfStates Listener ...");
+    //System.out.println("addSetOfStates Listener ...");
    }
 
    public void sendEvent() {

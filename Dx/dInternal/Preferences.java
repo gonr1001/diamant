@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.15 $  $Date: 2003-11-21 15:50:48 $
+ * Title: Preferences $Revision: 1.16 $  $Date: 2003-11-21 21:19:35 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -38,7 +38,8 @@ public class Preferences {
   public String _defaultDir;
   private String _fullFileName;
   public String _acceptedChars;
-  public String _selectedOptions;
+  public String _selectedOptionsInFullReport;
+  public String _selectedOptionsInConflictReport;
   private DApplication _dApplic;
 
   public Preferences(String str) {//throws InputFileException{
@@ -55,7 +56,8 @@ public class Preferences {
       _defaultDir = st.nextToken();
       _fullFileName = st.nextToken();
       _acceptedChars = st.nextToken();
-      _selectedOptions = st.nextToken();
+      _selectedOptionsInFullReport = st.nextToken();
+      _selectedOptionsInConflictReport = st.nextToken();
       }
     } catch (Exception e) {
       System.out.println(e);
@@ -84,8 +86,9 @@ public class Preferences {
            str += CR_LF;
            str += _acceptedChars;
            str += CR_LF;
-           str += _selectedOptions;
-
+           str += _selectedOptionsInFullReport;
+           str += CR_LF;
+           str += _selectedOptionsInConflictReport;
       return str;
   }
 
@@ -104,8 +107,9 @@ public class Preferences {
     } // end catch
   }// end writeFile
 
-  public Vector getSelectedOptions() {
-    StringTokenizer st = new StringTokenizer(_selectedOptions,";");
+
+  public Vector getSelectedOptionsInFullReport() {
+    StringTokenizer st = new StringTokenizer(_selectedOptionsInFullReport,";");
     String s = "selectedOptionsInFullReport";
     Vector res= new Vector();
     //st.nextToken();
@@ -114,19 +118,40 @@ public class Preferences {
          res.add(st.nextToken());
       }
     } else {
-      System.out.println("Preferences.getSelectedOptions  Help");
+      System.out.println("Preferences.getSelectedOptionsFullReport  Help");
     }
-
     return res;
+  } //end getSelectedOptionsInFullReport()
 
-  } //end selectedOptions()
-
-  public void setSelectedOptions(Vector v){
-    _selectedOptions = "selectedOptionsInFullReport"+";";
-    for (int i=0; i < v.size(); i++){
-      _selectedOptions += (String) v.elementAt(i)+";";
+  public Vector getSelectedOptionsInConflictReport() {
+    StringTokenizer st = new StringTokenizer(_selectedOptionsInConflictReport,";");
+    String s = "selectedOptionsInConflictReport";
+    Vector res= new Vector();
+    //st.nextToken();
+    if (st.nextToken().equals(s)) {
+      while (st.countTokens() > 0 ){
+         res.add(st.nextToken());
+      }
+    } else {
+      System.out.println("Preferences.getSelectedOptionsInConflictReport  Help");
     }
-  }
+    return res;
+  } //end getSelectedOptionsInConflictReport()
+
+  public void setSelectedOptionsInFullReport(Vector v){
+    _selectedOptionsInFullReport = "selectedOptionsInFullReport"+";";
+    for (int i=0; i < v.size(); i++){
+      _selectedOptionsInFullReport += (String) v.elementAt(i)+";";
+    }
+  } //end setSelectedOptionsInFullReport
+
+  public void setSelectedOptionsInConflictReport(Vector v){
+    _selectedOptionsInConflictReport = "selectedOptionsInConflictReport"+";";
+    for (int i=0; i < v.size(); i++){
+      _selectedOptionsInConflictReport += (String) v.elementAt(i)+";";
+    }
+  } //end setSelectedOptionsInConflictReport
+
 
 } /* end Preferences */
 

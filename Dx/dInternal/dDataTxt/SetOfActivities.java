@@ -14,6 +14,7 @@ import java.awt.Component;
 
 import dInternal.dUtil.DXToolsMethods;
 import dResources.DConst;
+//import d
 
 public class SetOfActivities extends SetOfResources{
 
@@ -713,8 +714,9 @@ public class SetOfActivities extends SetOfResources{
       return;
     }
     _SOAListeners.addElement(soal);
-    System.out.println("addSetOfActivities Listener ...");//debug
+    //System.out.println("addSetOfActivities Listener ...");//debug
   }
+
 
 
   private int _NUMBEROFCYCLE = 1;

@@ -51,7 +51,15 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     _parentDlg = (ReportDlg) parentDlg;
     setSetOfResources(reportType);
     _leftVec = getChoicedFields(_resources, false);
-    _rightVec = _dApplic.getPreferences().getSelectedOptions();
+
+    if (reportType == 0)
+      _rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
+    else
+      _rightVec = _dApplic.getPreferences().getSelectedOptionsInConflictReport();
+
+    for(int i = 0 ; i< _rightVec.size(); i++) {
+      _leftVec.removeElement(_rightVec.get(i));
+    }
     //_rightVec = getChoicedFields(_externalResources, true);
     reportOptionsDlgInit();
     setLocationRelativeTo(dApplic.getJFrame());
@@ -59,7 +67,30 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     setVisible(true);
   }//end constructor
 
+  public ReportOptionsDlg(DApplication dApplic,  SetOfResources res, int reportType){
+     super(dApplic.getJFrame(), DConst.REPORT_OPTIONS_DLG_TITLE, true);
+     _dApplic = dApplic;
+     if (_dApplic.getDMediator().getCurrentDoc() == null)
+       return;
+     //_parentDlg = (ReportDlg) parentDlg;
+     setSetOfResources(reportType);
+     _leftVec = getChoicedFields(_resources, false);
 
+     if (reportType == 0)
+       _rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
+    else
+      _rightVec = _dApplic.getPreferences().getSelectedOptionsInConflictReport();
+
+
+     for(int i = 0 ; i< _rightVec.size(); i++) {
+       _leftVec.removeElement(_rightVec.get(i));
+     }
+     //_rightVec = getChoicedFields(_externalResources, true);
+     //reportOptionsDlgInit();
+     //setLocationRelativeTo(dApplic.getJFrame());
+     //setResizable(false);
+     //setVisible(true);
+  }//end constructor
 
   /**
    * Initialize the dialog
@@ -184,7 +215,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     //if button OK
     if (command.equals(_buttonsNames[0])){
       _parentDlg.setReport(buildChoicedResources(_resources, _rightVec));
-      _dApplic.getPreferences().setSelectedOptions(_rightVec);
+
+      if ( _parentDlg.getTabbedPane().getSelectedIndex() == 0)
+        _dApplic.getPreferences().setSelectedOptionsInFullReport(_rightVec);
+      else
+        _dApplic.getPreferences().setSelectedOptionsInConflictReport(_rightVec);
       _dApplic.getPreferences().save();
       dispose();
     }
@@ -282,6 +317,17 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     return selectedResources;
   }//end method
 
+
+  public SetOfResources myBuildChoicedResources(){
+    Resource r = null;
+    _resources.sortSetOfResourcesByID();
+    SetOfResources selectedResources = new SetOfResources(100);
+    for (int i = 0; i < _rightVec.size(); i++){
+      r = _resources.getResource((String)_rightVec.elementAt(i));
+      selectedResources.addResource(r, 0);
+    }//end for
+    return selectedResources;
+  }//end method
   /**
    *
    * @param res

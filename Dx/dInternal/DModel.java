@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.80 $  $Date: 2003-11-12 01:24:02 $
+ * Title: DModel $Revision: 1.81 $  $Date: 2003-11-21 21:19:35 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.80 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.81 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -386,7 +386,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     for (int i=0; i< _dmListeners.size(); i++) {
       DModelListener dml = (DModelListener) _dmListeners.elementAt(i);
       dml.changeInDModel(event, component);
-      System.out.println("Dmodel listener started: "+i);//debug
+      //System.out.println("Dmodel listener started: "+i);//debug
     }
   }
 
@@ -399,7 +399,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       return;
     }
     _dmListeners.addElement(dml);
-    System.out.println("addDModelListener Listener ...");//debug
+    //System.out.println("addDModelListener Listener ...");//debug
   }
 
   /**

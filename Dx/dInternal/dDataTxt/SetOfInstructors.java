@@ -177,7 +177,7 @@ public class SetOfInstructors extends SetOfResources{
       return;
     }
     _soiListeners.addElement(soil);
-    System.out.println("addSetOfInstructors Listener ...");//debug
+   // System.out.println("addSetOfInstructors Listener ...");//debug
   }
 
 

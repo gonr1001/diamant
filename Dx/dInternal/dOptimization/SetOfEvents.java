@@ -6,6 +6,7 @@ import dInternal.dData.*;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
+import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXValue;
 import dInternal.DModel;
 import dResources.DConst;
@@ -165,6 +166,36 @@ public class SetOfEvents extends SetOfResources{
     return DConst.NO_ROOM_INTERNAL;
   }
 
+  public String getStudentConflictDescriptions(String eventIDOne, String eventIDTwo) {
+    //System.out.println("Event 1: "+eventIDOne+"  Event2: "+eventIDTwo);
+    Vector studentOne = ((Activity) _dm.getSetOfActivities().getResource(DXToolsMethods.getToken(eventIDOne,".",0)).getAttach()).getStudentRegistered();
+    Vector studentTwo = ((Activity) _dm.getSetOfActivities().getResource(DXToolsMethods.getToken(eventIDTwo,".",0)).getAttach()).getStudentRegistered();
+    Vector studentOneInSection = studentsInSection(studentOne,DXToolsMethods.getToken(eventIDOne,".",0)+
+        DXToolsMethods.getToken(eventIDOne,".",1),
+        DXToolsMethods.getToken(eventIDOne,".",2));
+    Vector studentTwoInSection = studentsInSection(studentTwo,DXToolsMethods.getToken(eventIDTwo,".",0)+
+     DXToolsMethods.getToken(eventIDTwo,".",1),
+     DXToolsMethods.getToken(eventIDTwo,".",2));
+    String res = "";
+    for(int i=0; i<studentOneInSection.size(); i++) {
+      if (studentTwoInSection.contains(studentOneInSection.get(i)))
+          res += studentOneInSection.get(i)+ ",";
+    }
+
+
+
+    return res;
+  }
+
+private Vector studentsInSection(Vector students, String activityAndType, String section){
+  Vector res = new Vector();
+  for(int i = 0; i <students.size(); i++) {
+    StudentAttach sa = (StudentAttach)_dm.getSetOfStudents().getResource(Long.parseLong((String)students.get(i))).getAttach();
+    if( sa.isInGroup(activityAndType,DXTools.STIConvertGroup(section)))
+      res.add(students.get(i));
+  }
+  return res;
+}
 
   /**
   *
@@ -187,7 +218,7 @@ public void sendEvent(Component component) {
      return;
    }
    _soeListeners.addElement(sorl);
-   System.out.println("addSetOfEvents Listener ...");//debug
+   //System.out.println("addSetOfEvents Listener ...");//debug
   }
 
 

@@ -379,7 +379,7 @@ public void sendEvent(Component component) {
      return;
    }
    _SOSListeners.addElement(sosl);
-   System.out.println("addSetOfStudents Listener ...");//debug
+   //System.out.println("addSetOfStudents Listener ...");//debug
   }
 
 }

@@ -326,7 +326,7 @@ public class TTStructure {
        return;
      }
      _ttsListeners.addElement(ttsl);
-     System.out.println("addTTStructure Listener ...");
+     //System.out.println("addTTStructure Listener ...");
    }
 
    public synchronized void removeTTStructureListener(TTStructureListener ttsl) {

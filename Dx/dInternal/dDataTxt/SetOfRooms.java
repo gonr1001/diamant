@@ -229,7 +229,7 @@ public class SetOfRooms extends SetOfResources{
       return;
     }
     _sorListeners.addElement(sorl);
-    System.out.println("addSetOfRooms Listener ...");//debug
+    //System.out.println("addSetOfRooms Listener ...");//debug
   }
 
 

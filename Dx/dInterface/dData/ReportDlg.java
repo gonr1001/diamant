@@ -33,6 +33,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTabbedPane;
 
 import dInterface.DApplication;
+import dInternal.DModel;
+import dInternal.dData.SetOfStates;
+import dInternal.dData.State;
 import dInterface.ProgressBar;
 import dInterface.dTimeTable.SaveAsDlg;
 import dInterface.dUtil.DXTools;
@@ -66,6 +69,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     _dApplic = dApplic;
     //ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
     //pBar.execute();
+    _resources = new SetOfResources[1];
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,_dApplic.getJFrame());
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
@@ -153,40 +157,32 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     for (int i=0; i< setOfErrors.size(); i++)
       jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
     //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
+    jta.setCaretPosition(0);
   }
 
   /**
    * build conflict report
    */
   public void setConflictReport(){
+    DModel dm = _dApplic.getDMediator().getCurrentDoc().getDM();
+    SetOfStates sos = dm.getSetOfStates();
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
     JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport de conflits");
     jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
-    jta.append("Nombre blocs/nombre " + "12/13" + DConst.CR_LF );
+    jta.append("Nombre de évenements " + dm.getSetOfEvents().size() + DConst.CR_LF );
+    jta.append("Nombre de évenements placés " + dm.getSetOfEvents().getNumberOfEventAssign() + DConst.CR_LF );
+    jta.append("Conflits d'étudiants " + ((State) sos.getResource(DConst.SB_C_STUD).getAttach()).getValue()  + DConst.CR_LF );
+    jta.append("Conflits d'enseignants " + ((State) sos.getResource(DConst.SB_C_INST).getAttach()).getValue()  + DConst.CR_LF );
+    jta.append("Conflits de locaux " + ((State) sos.getResource(DConst.SB_C_ROOM).getAttach()).getValue()  + DConst.CR_LF );
 
     // enseignants
-    jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
-    Vector setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("2");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
+    jta.append(DConst.CR_LF+"------------------LES CONFLITS----------------------"+DConst.CR_LF);
+    int[] otherFieldsKeys= {1,2,3,4,5,6,7,8,9};
+    jta.append(_srd.getConflictsReport(0, otherFieldsKeys));
 
-    //locaux
-    jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("3");
-    for (int i=0; i< setOfErrors.size(); i++) {
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    }
-    //etudiants
-    jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("1");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
+    jta.setCaretPosition(0);
   }
 
   /**
@@ -291,21 +287,24 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
    * @param ce
    */
   public void stateChanged( ChangeEvent ce) {
-    System.out.println(((JTabbedPane)ce.getSource()).getSelectedIndex());//debug
-     if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2 ||
-         ((JTabbedPane)ce.getSource()).getSelectedIndex()==1){
+    //System.out.println(((JTabbedPane)ce.getSource()).getSelectedIndex());//debug
+     if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2){ //||((JTabbedPane)ce.getSource()).getSelectedIndex()==1
        String [] strArray = {DConst.BUT_OPTIONS};
        //buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), strArray);
        ((JPanel)getContentPane().getComponent(1)).getComponent(1).setEnabled(false);
-       if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
+       //if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
          setImportReport();
-       else
-         setConflictReport();
+       //else
+         //setConflictReport();
      }else{// else if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
         //System.out.println("gcCount" +((JPanel)this.getContentPane()).getComponentCount());//debug
         if (((JPanel)this.getContentPane()).getComponentCount() > 0)
            //buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), null);
         ((JPanel)getContentPane().getComponent(1)).getComponent(1).setEnabled(true);
+        ReportOptionsDlg rod = new ReportOptionsDlg(_dApplic,  _resources[0], 0);
+
+        setReport(rod.myBuildChoicedResources());
+        setConflictReport();
      }// end if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
    }
 
@@ -404,4 +403,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
      }
    }
  }//end method*/
+
+ public JTabbedPane getTabbedPane() {
+   return _tabbedPane;
+ }
 }//end class
