@@ -63,9 +63,9 @@ public class ReportDlg extends JDialog implements ActionListener{
     //the tabbedPane
     _tabbedPane = new JTabbedPane();
     _tabbedPane.setPreferredSize(tabbedPaneDim);
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB1, createTabPanel(tabbedPaneDim, "Clicker sur le button Options pour définir les champs du rapport"));
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB2, createTabPanel(tabbedPaneDim, ""));
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB3, createTabPanel(tabbedPaneDim, ""));
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB1, createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB2, createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB3, createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
     //adding the elements to the dialog
     getContentPane().add(_tabbedPane, BorderLayout.NORTH);
     getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);

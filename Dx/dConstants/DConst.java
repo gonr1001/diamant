@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.58 $  $Date: 2003-10-07 13:43:24 $
+ * Title: DConst $Revision: 1.59 $  $Date: 2003-10-07 14:24:22 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -168,6 +168,8 @@ public class DConst {
   public final static String INST_ASSIGN_D = res.getString("instAssignD");//To be defined, unp
   public final static String TO_LEFT  = res.getString("toLeft");//««
   public final static String TO_RIGHT  = res.getString("toRight");//»»
+  public final static String TO_UP  = res.getString("toUp");//+
+  public final static String TO_DOWN  = res.getString("toDown");//-
   //ActivityDlg
   public final static String ACT_LIST  = res.getString("actList"); //Liste des activités
   public final static String SHOW  = res.getString("show"); //Aficher
@@ -210,6 +212,10 @@ public class DConst {
   public final static String REPORT_DLG_TAB1 = res.getString("ReportDlgTab1");//Complet
   public final static String REPORT_DLG_TAB2 = res.getString("ReportDlgTab2");//Conflits
   public final static String REPORT_DLG_TAB3 = res.getString("ReportDlgTab3");//Importation
+  public final static String REPORT_DLG_TAB_MESS = res.getString("ReportDlgTabMess");//Veuillez faire click sur le button options
+  public final static String REPORT_OPTIONS_DLG_TITLE = res.getString("ReportOptionsDlgTitle");//Options de Rapport
+  public final static String REPORT_OP_FIELDS_NOT_CHOICED = res.getString("ReportOpFieldsNotChoiced");//Champs non choisis
+  public final static String REPORT_OP_FIELDS__CHOICED = res.getString("ReportOpFieldsChoiced");//Champs choisis
   //Activities report
   public final static String R_ACTIVITY_NAME = res.getString("RActivityName");//Nom d'activité
   public final static String R_TYPE_NAME = res.getString("RTypeName");//Type

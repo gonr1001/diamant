@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.57 $  $Date: 2003-10-07 13:43:24 $
+ * Title: DStringFrRes $Revision: 1.58 $  $Date: 2003-10-07 14:24:22 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.57 $
+ * @version $Revision: 1.58 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -214,6 +214,8 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Assign Dialogs
     {"toLeft","««"},
     {"toRight","»»"},
+    {"toUp","+"},
+    {"toDown","-"},
     //ActivityDlg
     {"actList","Liste des activités"},
     {"show","Afficher"},
@@ -247,6 +249,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"ReportDlgTab1","Complet"},
     {"ReportDlgTab2","Conflits"},
     {"ReportDlgTab3","Importation"},
+    {"ReportDlgTabMess","Veuillez faire click sur le button Options pour configurer le rapport"},
+    {"ReportOptionsDlgTitle","Options de rapport"},
+    {"ReportOpFieldsNotChoiced","Champs non choisis"},
+    {"ReportOpFieldsChoiced","Champs choisis"},
+    {"",""},
     {"RActivityName","Nom"},
     {"RTypeName","Type"},
     {"RSectionName","Section"},
