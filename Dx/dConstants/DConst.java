@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.42 $  $Date: 2003-08-27 09:14:21 $
+ * Title: DConst $Revision: 1.43 $  $Date: 2003-08-27 13:43:39 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.42 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.43 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -143,9 +143,15 @@ public class DConst {
   public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
   public final static String INCLUDED  = res.getString("included");//Inclue(s)
   //InstructorAvailabiliyDlg
-  public final static String AVAILABILITY = "Disponibilités";
-
-
+  public final static String AVAILABILITY = "dispo";
+  //GroupDlg
+  public final static String ACT_STUD_NOT_ASSIGNED = res.getString("ActStudNotAss");//Étudiants non assignés
+  public final static String ACT_STUD_ASSIGNED = res.getString("ActStudAss");//Étudiants assignés
+  public final static String ACTIVITY = res.getString("Activity");//Activité
+  public final static String GROUP_DLG_TITLE = res.getString("GroupDlgTitle");//Titre du dialog
+  public final static String GROUP = res.getString("Group");//Groupe
+  public final static String NUMBER_OF_ELEMENTS = res.getString("NumberOfElements");//Nombre d'éléments
+  public final static String TYPE = res.getString("Type");//Type
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F

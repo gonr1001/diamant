@@ -62,7 +62,6 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private JPanel _listsPanel, _buttonsPanel1, _buttonsPanel2;
 
 
-
   /**
    * Dafault constructor
    * @param dApplic The application object (for extracting the JFrame)
