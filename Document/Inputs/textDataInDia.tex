@@ -31,8 +31,8 @@ structure de la grille horaire.
 
 \section{Données relatives aux enseignants}
 Le troisième type de données du fichier $.dia$ représente la
-disponibilité des enseignants, les données sont décrits dans la
-section \ref{instructor}. Mais dans la sauvegarde le nombre de
+disponibilité des enseignants, les données sont décrites dans la
+section \ref{instructor}. Mais, dans la sauvegarde le nombre de
 périodes de la disponibilité est égal au nombre de périodes de la
 grille horaire.
 
@@ -46,16 +46,23 @@ ceux décrits à la section \ref{room}).
 
 \begin{verbatim}
 C2-1007;21;212;08,11,14,57;laboratoire de chimie;1 1 1 1 1 1 1 1 1
-1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1
-1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1; 
-C1-2018;10;212;11;Matériaux composites;1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1,1 1 1
-1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1; 
-C1-3014;25;211;11;Laboratoire mécatronique;1 1 1 1 1 1 1 1 1 1
-1 1, 1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1
-1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1; 
-C1-3027;15;211;11;Petit laboratoire de communication pour élect; 1 1 1 1 1 1 1 1 1 1 1 1,1
-1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1
-1 1,1 1 1 1 1 1 1 1 1 1 1 1;
+1 1 1, \\
+1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1
+1 1 1 1,  \\
+1 1 1 1 1 1 1 1 1 1 1 1;  \\
+C1-2018;10;212;11;Matériaux composites;1 1 1 1 1 1 1 1 1 1 1 1, 1
+1 1 1 1 1 1 1 1 1 1 1, \\
+1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1
+1 1 1 1; \\
+C1-3014;25;211;11;Laboratoire mécatronique;1 1 1 1 1 1 1 1 1 1 1
+1, \\
+1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1
+1 1 1 1, \\
+1 1 1 1 1 1 1 1 1 1 1 1; C1-3027;15;211;11;Petit laboratoire de
+communication pour élect; 1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1
+1 1 1 1, \\
+1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1 1 1 1 1, 1 1 1 1 1 1 1 1
+1 1 1 1;
 \end{verbatim}
 
 \subsection{Signification des données}
@@ -70,7 +77,7 @@ Chaque ligne est composée de six types d'informations:
         \item La description du local \texttt{laboratoire de chimie} pour le premier local.
         \item La disponibilité du local. Une séquence du genre \verb!1 1 1 1 1 1 1 1 1 1 1 1!
         représente la disponibilité du local durant une journée.
-        Le séparateur \verb!,! sépare la disponibilité d'une journée à celle d'une autre. Le nombre de
+        Le séparateur virgule \verb!,! sépare la disponibilité d'une journée à celle d'une autre. Le nombre de
 périodes de la disponibilité est égal au nombre de périodes d'une journée de la
 grille horaire.
     \end{itemize}
