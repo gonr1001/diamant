@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.123 $  $Date: 2005-02-08 21:21:18 $
+ * Title: DModel $Revision: 1.124 $  $Date: 2005-02-08 21:30:29 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.123 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.124 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -430,10 +430,10 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 			_setOfInstructors= (SetOfInstructors) loadData.selectiveImport(_setOfInstructors,fileName);
 			resizeResourceAvailability(_setOfInstructors);
 			error = _setOfInstructors.getError();
-			_setOfInstructors.sendEvent(_dDocument.getJIF());
+			changeInDModel(_dDocument.getJIF());
 		}else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)){//Importation selective -- Locaux
 			_setOfSites= (SetOfSites) loadData.selectiveImport(_setOfSites, fileName);
-			resizeResourceAvailability(_setOfSites);
+			resizeSiteAvailability(_setOfSites);
 			error = _setOfSites.getError();
 			this.changeInDModel(_dDocument.getJIF());//_setOfRooms.sendEvent(_dDocument.getJIF());
 		}else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)){//Importation selective -- Activité
