@@ -301,9 +301,9 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
         if (((JPanel)this.getContentPane()).getComponentCount() > 0)
            //buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), null);
         ((JPanel)getContentPane().getComponent(1)).getComponent(1).setEnabled(true);
-        ReportOptionsDlg rod = new ReportOptionsDlg(_dApplic,  _resources[0], 0);
+        //ReportOptionsDlg rod = new ReportOptionsDlgOne(_dApplic,  _resources[0], 0);
 
-        setReport(rod.myBuildChoicedResources());
+        //setReport(rod.myBuildChoicedResources());
         setConflictReport();
      }// end if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
    }
@@ -316,10 +316,10 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     String command = e.getActionCommand();
     //if "Option" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
-        new ReportOptionsDlg(_dApplic,
+       /* new ReportOptionsDlg(_dApplic,
                              _jd,
                              _resources[_tabbedPane.getSelectedIndex()],
-                             _tabbedPane.getSelectedIndex());
+                             _tabbedPane.getSelectedIndex());*/
     //if "Close" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
       dispose();
