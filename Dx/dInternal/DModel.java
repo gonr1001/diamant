@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.104 $  $Date: 2004-06-21 15:38:18 $
+ * Title: DModel $Revision: 1.105 $  $Date: 2004-06-21 19:47:59 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.104 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.105 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -117,7 +117,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     }else{
       _error="Wrong type of file";
     }
-    _conditionTest = new TestConditions(this);
+    if (_error.length()==0)
+      _conditionTest = new TestConditions(this);
     _type = type;
     _modified = false;
     //System.out.println("Max number of periods in a sequence: "+ _ttStruct.getCurrentCycle().getMaxNumberOfPeriodsInASequence());//debug

@@ -270,15 +270,17 @@ public class LoadData {
        //tts.loadTTStructure(project.nextToken().trim());
        extract.add(tts);
        // extract instructor
-       SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
-           tts.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
-       if (instructorsList.analyseTokens(0)){
-        instructorsList.buildSetOfResources(0);
-      }
-      //debug merge instructor file: S801.DISPROF
-      //instructorsList= (SetOfInstructors) selectiveImport(instructorsList,"S801.DISPROF",true);
-      // end debug
-      extract.add(instructorsList);
+       if(tts.getError().length()==0){
+         SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
+             tts.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
+         if (instructorsList.analyseTokens(0)){
+           instructorsList.buildSetOfResources(0);
+         }
+         //debug merge instructor file: S801.DISPROF
+         //instructorsList= (SetOfInstructors) selectiveImport(instructorsList,"S801.DISPROF",true);
+         // end debug
+         extract.add(instructorsList);
+       }// end if(tts.getError().length()==0)
 
       // extract rooms
       SetOfRooms roomsList = new SetOfRooms(project.nextToken().trim().getBytes(),5,14);

@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.Resource;
-import com.iLib.gIO.FilterFile;
+//import com.iLib.gIO.FilterFile;
 
 
 import org.w3c.dom.Document;
@@ -19,6 +19,8 @@ import xml.OutPut.writeFile;
 import dConstants.DConst;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
+
+import java.io.File;
 //import javax.xml.parsers.FactoryConfigurationError;
 
 public class TTStructure {
@@ -226,7 +228,8 @@ public class TTStructure {
   public String loadTTStructure(String fileName){
     readFile xmlFile;
     Element root, item, ID;
-    boolean preload = preLoad(fileName);
+    //boolean preload = preLoad(fileName);
+    if(preLoad(fileName)){
     try{
       xmlFile = new readFile();
       Document  doc = xmlFile.getDocumentFile(fileName);
@@ -240,6 +243,9 @@ public class TTStructure {
       System.out.println("TTStructure 1 :"+ e);
       _error= e.toString();
       return e.toString();
+    }
+    }else{
+      _error= DConst.M_FILE+ " "+fileName +" Inexistant";
     }
     return _error;
   }
@@ -413,9 +419,9 @@ public class TTStructure {
    * @return
    */
   private boolean preLoad(String str) {
-   FilterFile filter = new FilterFile();
-   filter.setCharKnown("");
-   return filter.validFile(str);
+   File fil= new File(str);
+   fil.exists();
+   return fil.exists();
  }
 
 
