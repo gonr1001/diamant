@@ -23,11 +23,11 @@ private int _numberOfColumns;// represent number of period a day.
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay,
   * */
- public InstructorsList( byte[]  dataloaded, int nbDay, int ndPerDay) {
-   super( dataloaded, nbDay, ndPerDay);
+ public InstructorsList( byte[]  dataloaded, int nbDay, int nbPerDay) {
+   super(dataloaded, nbDay, nbPerDay);
    _dataloaded = dataloaded;
    _numberOfLines = nbDay;
-   _numberOfColumns = ndPerDay;
+   _numberOfColumns = nbPerDay;
   }
   /**
    * methode analyse st, a stringtokenizer variable

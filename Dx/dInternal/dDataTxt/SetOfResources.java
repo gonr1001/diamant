@@ -129,19 +129,15 @@ abstract class ResourceList {
     reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString();
     return reslist;
   }
-  /**
-   * Main
-   */
-  public static void main(String[] args) {
-       Instructor inst= new Instructor();
-       inst.addDispDay("1 1 1 5 5");
-       inst.addDispDay("5 5 1 1 5");
-       Resource resc = new Resource("Alex", inst);
-       System.out.println(resc.toString());//debug
-       resc = new Resource("Yannick", inst);
-       System.out.println(resc.toString());//debug
 
-    } // end main
+  public Vector getNamesVector(){
+    Vector namesVector =new Vector();
+    if(_stateSort!=1)
+      sortResourceListByID();
+    for (int i=0; i< this._resourceList.size(); i++)
+      namesVector.add(((Resource)_resourceList.get(i)).getID());
+   return namesVector;
+  }
 
   /**
    * Begin of private sort methods
@@ -206,5 +202,20 @@ abstract class ResourceList {
     _resourceList.setElementAt(temp,end);
   }
   //end of private sort methods
+
+  /**
+   * Main
+   */
+  public static void main(String[] args) {
+       Instructor inst= new Instructor();
+       inst.addDispDay("1 1 1 5 5");
+       inst.addDispDay("5 5 1 1 5");
+       Resource resc = new Resource("Alex", inst);
+       System.out.println(resc.toString());//debug
+       resc = new Resource("Yannick", inst);
+       System.out.println(resc.toString());//debug
+
+    } // end main
+
 
 }

@@ -13,12 +13,12 @@ public class Resource {
   private static final String CR_LF = "\r\n";
   private int _resourcekey=0;
   private String _resourceID;// can be a name, an ID, a CIP code
-  private Object _resourseObjet;
+  private Object _resourceObjet;
 
   public Resource( String id, Object obj) {
     _resourceID = id;
-    _resourseObjet = new Object();
-    _resourseObjet = obj;
+    _resourceObjet = new Object();
+    _resourceObjet = obj;
   }
 
   public int getKey(){
@@ -37,12 +37,12 @@ public class Resource {
   }
 
   public Object getObject(){
-    return _resourseObjet;
+    return _resourceObjet;
   }
 
   public void setObject(Object obj){
-    _resourseObjet = new Object();
-    _resourseObjet = obj;
+    _resourceObjet = new Object();
+    _resourceObjet = obj;
   }
 
   public void setID(String id){
@@ -52,7 +52,7 @@ public class Resource {
   public String toString(){
     String instInfo;
     instInfo= _resourceID + CR_LF;
-    instInfo += _resourseObjet.toString();
+    instInfo += _resourceObjet.toString();
     return instInfo;
   }
 

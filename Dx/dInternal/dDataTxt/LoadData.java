@@ -120,15 +120,15 @@ return null;
   }
 
   public static void main(String[] args) {
-    String path ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"filedata.sig";
-    String pathSave ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"SAVEInst.sig";
-    System.out.println("PATH: "+path);//debug
-     LoadData ldata=  new LoadData(path);
-     InstructorsList insList = ldata.extractInstructors();
-     insList.sortResourceListByID();
-     insList.sortResourceListByKey();
-       FilterFile filter= new FilterFile(insList.toString().getBytes());
-       filter.saveFile(pathSave);
+    String path ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"data"+File.separator+"filedata.sig";
+    String pathSave ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"data"+File.separator+"SAVEInst.sig";
+    System.out.println("PATH: "+ path);//debug
+    LoadData ldata=  new LoadData(path);
+    InstructorsList insList = ldata.extractInstructors();
+    insList.sortResourceListByID();
+    insList.sortResourceListByKey();
+    FilterFile filter= new FilterFile(insList.toString().getBytes());
+    filter.saveFile(pathSave);
   } // end main
 
 

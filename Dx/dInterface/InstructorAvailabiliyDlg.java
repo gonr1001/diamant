@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.2 $  $Date: 2003-03-13 15:21:01 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.3 $  $Date: 2003-03-13 17:47:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -49,8 +49,8 @@ import dInternal.*;
  */
 public class InstructorAvailabiliyDlg  extends JDialog
                                 implements ActionListener, ItemListener {
-  private int nbPer = 14;
-  private int nbDay = 5;
+  private final int nbPer = 14;
+  private final int nbDay = 5;
 
   final static String DAY[] = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
 
@@ -79,8 +79,8 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private boolean modified = false;
   private DModel _dm;
   //private InstructorsList _insList; // clone of the dictionnary
-  private Instructor _inst, instr;
-  private String _sel;
+  private Instructor  _instr;
+  //private String _sel;
 
 
   /**
@@ -89,20 +89,13 @@ public class InstructorAvailabiliyDlg  extends JDialog
    * @param owner The component on which the dialog will be displayed.
    * @param doc The active document.  Used to access the dictionnaries.
    */
-  public InstructorAvailabiliyDlg(JFrame jFrame, String str) {
-    super(jFrame, str, true);
-    pack();
-    setLocationRelativeTo(jFrame);
-    setVisible(true);
-  }
   public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
     super(jFrame, str, true);
     try {
       _dm = dm;
       //nbPer = _ddv._timeTable.nbPeriodPerDay+2;
       //nbDay = _ddv._timeTable.nbDays;
-      //dicIns = (DDicInstructors)_ddv._dicInstr.clone();
-      setTIME();
+      //setTIME();
       jbInit();
       pack();
       setLocationRelativeTo(jFrame);
@@ -111,9 +104,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     catch(Exception e) {
       e.printStackTrace();
     }
-
-
-  }
+  } // end InstructorAvailabiliyDlg
 
   /**
    * Component's initialisation and placement.
@@ -127,9 +118,9 @@ public class InstructorAvailabiliyDlg  extends JDialog
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
     //gridPanel
-    _sel = (String)chooser.getSelectedItem();
-    //_inst = _insList.getResource(_sel);
-    centerPanel = makeGridPanel( _inst);
+    String sel = (String)chooser.getSelectedItem();
+    _instr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
+    centerPanel = makeGridPanel(_instr);
     getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //button Panel
@@ -147,8 +138,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     butPanel.add(butApply, null);
     butPanel.add(butCancel, null);
     getContentPane().add(butPanel, BorderLayout.SOUTH);
-
-  }
+  } // end  jbInit()
 
   public void actionPerformed( ActionEvent event) {
 
@@ -182,9 +172,9 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
     // if a button of the grid has been pressed
     } else if ( posVect.indexOf(event.getSource() ) > -1 ) {
-      int index = posVect.indexOf(event.getSource());
-      int day = index / nbPer;
-      int per = index % nbPer;
+     // int index = posVect.indexOf(event.getSource());
+      //int day = index / nbPer;
+      //int per = index % nbPer;
   /*    instr = dicIns.getInstr((String)chooser.getSelectedItem());
       if ( ((JToggleButton)posVect.get(index)).isSelected() ){
         _ddv._jFrame._log.append("Enseignants --> "+instr.name+" rendu disponible le jour: "+day+" La période: "+per+"\n");
@@ -205,15 +195,13 @@ public class InstructorAvailabiliyDlg  extends JDialog
    * combobox item selected
    */
   public void itemStateChanged( ItemEvent event ) {
-
     if ( event.getStateChange() == event.SELECTED ) {
 
       Object source = event.getSource();
-
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
-        _sel = (String)chooser.getSelectedItem();
-        //_inst = dicIns.getInstr(_sel);
+        String sel = (String)chooser.getSelectedItem();
+        Instructor _inst = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
         centerPanel = makeGridPanel(_inst );
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();
@@ -232,7 +220,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     JPanel gridPanel = new JPanel();
     gridPanel.setLayout(new GridLayout(nbPer + 1, nbDay + 1));
     gridPanel.setBorder(BorderFactory.createTitledBorder(MES00));
-    posVect.setSize(nbPer * nbDay);
+    //posVect.setSize(nbPer * nbDay);
     gridPanel.add(new JLabel("")); // top left corner
     for (int i = 0; i < DAY.length; i++)
       //first line :  name of days
@@ -241,18 +229,18 @@ public class InstructorAvailabiliyDlg  extends JDialog
     for (int j = 0; j < nbPer; j++) {
       // first column : the time of the period
       //if ((_ddv._timeTable.isCycle) && (_ddv._timeTable.nbPeriodPerDay==12))
-       // TIME = _ddv._timeTable._hBegin;
+      //TIME = _ddv._timeTable._hBegin;
 
       gridPanel.add(new JLabel(TIME[j], JLabel.RIGHT));
       // create a button for each day for the period
       //System.out.println(" DAInstructorDialog NbDays: "+nbDay+"   NbPerDays: "+nbPer); //DEBUG
       for (int i = 0; i < nbDay; i++) {
         JToggleButton tBut = new JToggleButton();
-        //tBut.setSelected( instr.disponible[j][i] == 1 );
+        tBut.setSelected(instr.disponibility(i,j) ==1 );
         tBut.addActionListener( this );
         tBut.setPreferredSize(new Dimension(50,12));
-        gridPanel.add(tBut, null);
-        posVect.setElementAt(tBut, (i * nbPer) + j);
+        gridPanel.add(tBut);//, null);
+        posVect.add(tBut);//setElementAt(tBut, (i * nbPer) + j);
       }
     }
     return gridPanel;
@@ -320,9 +308,6 @@ public class InstructorAvailabiliyDlg  extends JDialog
       if (_hour == ((Integer)_creux.get(i)).intValue())
         res = true;
 
-    return res;
+    return true;// res;
   }
-
-
-
 } /* end InstructorAvailabilityDlg */

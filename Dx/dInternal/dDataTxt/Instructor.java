@@ -9,6 +9,7 @@ package dInternal;
  * @version 1.0
  */
 import java.util.Vector;
+import java.util.StringTokenizer;
 
 public class Instructor extends Object {
 
@@ -62,6 +63,21 @@ public class Instructor extends Object {
       instInfo += (String)_instructorDisp.get(i)+CR_LF;
     instInfo += (String)_instructorDisp.get(_instructorDisp.size()-1);
     return instInfo;
+  }
+
+  public int disponibility(int i, int j){
+    //i = jour
+    String jour = (String) _instructorDisp.get(i);
+    StringTokenizer st = new StringTokenizer(jour);
+    for(int m = 0; m < st.countTokens(); m++) {
+      if (m < j)
+        jour=st.nextToken();
+      if (m==j)
+        break;
+
+    }
+    jour =st.nextToken();
+    return Integer.parseInt(jour);
   }
 
 }

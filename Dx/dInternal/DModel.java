@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.4 $  $Date: 2003-03-13 15:21:01 $
+ * Title: DModel $Revision: 1.5 $  $Date: 2003-03-13 17:47:22 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -33,9 +33,12 @@ public class DModel{
 
   public DModel() {
     _ttParameters = new TTParameters();
+    importData("hello");
   }
 
   public void importData(String str) {
+    String path ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"data"+File.separator+"filedata.sig";
+    str = path;
     LoadData loadData = new LoadData(str);
     _instructorsList = loadData.extractInstructors();
     // _roomsList =
