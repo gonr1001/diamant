@@ -15,7 +15,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 public class StudentsList extends ResourceList{
 
-  private byte[] _dataloaded; //_st;// rooms in text format
+  private byte[] _dataloaded; //_st;// student in text format
   private static final int _BEGINSTUDENTMATRICULE=0;
   private static final int _ENDSTUDENTMATRICULE=8;
   private static final int _BEGINSTUDENTNAME=21;

@@ -1,0 +1,176 @@
+\chapter{Description des fichiers d'entrée de \diamant{}}
+
+Le présent document contient les exemples, les interprétations et l'énumération des différentes
+informations requises par \diamant{} pour la construction de
+l'horaire.
+
+\section{Fichier d'étudiants}
+
+C'est l'un des fichiers préalables à la construction de l'horaire.
+
+\subsection{Exemple des données qu'il contient}
+
+\texttt{001342\\
+00900813 203503 07 20003LUPIEN MY05\\
+CTB301101 GIS251102 GIS351102 GRH111101 GRH332101\\
+009011991290000520021AUDET FRE05\\
+CTB341101 FEC111102 FEC444101 GIS114101 MAR221107\\
+009022232035010720003AUDET STE05\\
+CTB443102 CTB451101 CTB513101 CTB563101 CTB613102\\
+009027042035010720003VEILLEUX 05\\
+CTB443101 CTB451102 CTB513102 CTB563101 CTB613102\\
+009031242035010720003FAUCHER M05}
+
+\subsection{Signification des données}
+\begin{enumerate}
+\item Le chiffre du début du fichier, \texttt{001342}, nous indique
+le nombre d'étudiants contenus dans ce fichier, soit le nombre
+d'inscriptions jusqu'à présent.
+\item La ligne de chiffres et de lettres correspond au numéro
+d'identification unique de l'étudiant (à l'exception des deux dernier entiers de la ligne).
+Ce numéro d'identification renferme plusieurs informations
+pertinentes. Soit :
+\begin{itemize}
+      \item Le matricule de l'étudiant qui correspond aux huit premiers chiffres du numéro d'identification. Dans notre exemple, \texttt{00900813} pour l'étudiant \texttt{LUPIEN} et \texttt{00901199} pour l'étudiante \texttt{AUDET}.
+      \item Le programme auquel l'étudiant appartient correspond ensuite aux six chiffres suivants. Soit \texttt{203503} dans le cas du premier étudiant.
+     \item La version du programme que l'étudiant suit correspond aux deux chiffres suivants. Soit \texttt{07} dans le cas du premier étudiant.
+      \item Des informations sur l'admission de l'étudiant sont données par les cinq chiffres suivants. Les quatre premiers correspondent à l'année d'admission tandis que le cinquième indique le trimestre d'admission. Soit \texttt{20003} dans le cas du premier étudiant.
+    \item Suit ensuite neuf places pour indiquer le nom de famille de l'étudiant suivit d'un espace et de son prénom (coupé après neuf espaces). Soit, dans notre exemple, \texttt{LUPIEN MY} dans le cas de la première étudiante.
+\end{itemize}
+
+\item Vient alors un chiffre de deux caractères qui correspond en fait au nombre de cours que suit l'étudiant. \texttt{05} dans le cas du premier étudiant.
+\item Finalement, nous avons la liste des activités suivies par l'étudiant. Soit \texttt{CTB301101} dans le cas du premier étudiant. Les 6 premiers caractères (\texttt{GEI441}) correspondent au nom du cours. Le septième caractère (\texttt{1}) correspond à la nature du cours (1=Leçon Magistrale et 2=autre). Le 2 derniers caractères (\texttt{01}) sont facultatifs dans un fichier et ils correspondent au groupe d'activité dans lequel l'étudiant est assigné
+\end{enumerate}
+
+\section{Fichier d'instructeurs}
+
+Ce fichier contient les données de disponibilités des enseignants.
+
+\subsection{Exemple des données qu'il contient}
+
+\texttt{116\\
+ATALLA, NOUREDDINE\\
+1 1 1 1 5 5 5 5 5 5 5 5 5 5\\
+5 5 5 5 5 5 5 5 5 5 5 5 5 5\\
+5 5 5 5 5 5 5 5 5 5 5 5 5 5\\
+5 5 5 5 5 5 5 5 5 5 5 5 5 5\\
+1 1 1 1 5 5 5 5 5 5 5 5 5 5\\
+BALLIVY, GÉRARD\\
+1 1 1 1 5 1 1 1 1 1 5 5 5 5\\
+1 1 1 1 5 1 1 1 1 1 5 5 5 5\\
+1 1 1 1 5 1 1 1 1 1 5 5 5 5\\
+1 1 1 5 5 1 1 1 1 5 5 5 5 5\\
+1 1 1 1 5 1 1 1 5 5 5 5 5 5\\}
+
+\subsection{Signification des données}
+
+Le fichier commence avec un chiffre représentant le nombre d'enseignants qu'il contient. Vient ensuite une suite de blocs contenant le nom d'un professeur suivi de sa disponibilité. Le nom de l'enseignant ne doit pas excéder trente caractères. Les \texttt{1} signifient que l'enseignant est disponible à la période correspondante et les 5 qu'il
+ne l'est pas du tout.
+
+Chaque ligne représente une journée, en commençant par lundi, jusqu'à vendredi. Chaque colonne correspond à une heure
+dans la journée (8h30, 9h30, 10h30, 11h30, 12h30,13h30, 14h30, 15h30, 16h30, 17h30, 18h30, 19h00, 20h00, 21h00 et 22h00). Les disponibilités sont ainsi connues entre 8h30 et 21h30.
+
+
+\section{Fichier d'activités}
+
+Ce fichier contient des informations concernant les cours offerts à une session. Nous y retrouvons la liste des
+activités associées, l'agencement du cours, le nom de l'enseignant qui le donnera, etc. C'est un fichier préalable à la construction de l'horaire.
+
+\subsection{Exemple des données qu'il contient}
+
+ADM1111  A
+1\\
+1\\
+LUC LAJOIE\\
+\\
+
+ 2\\
+ 2 1\\
+ 2 1 4 2\\
+1 1\\
+C1-387 C1-380\\
+0 0\\
+0 0\\
+0 0\\
+
+ADM1111  B\\
+1\\
+1\\
+RÉAL CAOUETTE\\
+\\
+
+ 1\\
+ 3\\
+ 2 12\\
+1\\
+C1-387\\
+0\\
+0\\
+0\\
+
+AMC6401  A\\
+1\\
+1\\
+FADI AL-HAMED\\
+\\
+
+ 2\\
+ 2 1\\
+ 2 1 4 2\\
+1\\
+D73020\\
+0\\
+0\\
+0
+
+\subsection{Signification des données}
+\begin{description}
+\item [Ligne blanche] la première ligne du fichier est une ligne blanche.
+\item [ADM1111   A]   C'est le sigle du cours (\texttt{ADM1111 A} pour la leçon magistrale du cours
+\texttt{ADM111} avec le groupe \texttt{A}).
+\item [1]  Ensuite, vient le nombre un ou zéro. \texttt{1} nous indique alors que le cours est actif, contrairement à \texttt{0}.
+\item [1]  Cet entier nous donne le nombre de \textit{fiches professeurs}. Ceci est en fait le nombre d'activités
+associées à ce cours (LM, ED, LAB, etc.).
+\item [LUC LAJOIE] Puis, commence alors la description d'une des fiches. Sur cette première ligne, on y retrouve le nom de ou des enseignants de la première fiche (avec une limite de 3 noms). 
+\item [2] le nombre de blocs de périodes séparées de la première fiche (ex: si nous avons deux heures de cours collées à trois endroits différents dans l'horaire, l'entier sera 3).
+\item [2 1] Nous avons une suite de nombre qui correspond à la durée de chacun des blocs prévus à la ligne précédente. Dans ce cas-ci, la durée du premier bloc est de deux périodes alors que la durée du deuxième est de seulement une période.
+\item [2 1 4 2] On a une autre liste d'entiers représentant le jour et l'heure de chacun des blocs précédents. Ici, \texttt{2 1} nous indique que le premier bloc a lieu le mardi à 8h30 alors que \texttt{4 2} nous apprends que le deuxième bloc est le jeudi à 9h30.
+\item [1 1] Cette ligne nous indique si le local de cette activité est fixé ou non. Effectivement, un \texttt{1} nous dit qu'il l'est alors qu'un \texttt{0} nous indique le contraire.
+\item [C1-387 C1-380] Sur cette ligne, nous avons les nom des locaux pour le premier et le deuxième bloc respectivement.
+\item [0 0] Puis vient le type de locaux requis par cette activité (voir le manuel d'utilisation de \saphir{} \cite{ruben94})
+\item [0 0] Idem (voir le manuel d'utilisation de \saphir{} \cite{ruben94})
+\item [0 0] Et finalement, cette rangée permet de savoir si le bloc à été préaffecté à l'horaire \texttt{(1)} ou non \texttt{(0)}.
+\item [ADM1111  B] Puis on recommence pour la deuxième activité ainsi de suite...
+\end{description}
+
+\section{Fichier de locaux}
+
+\subsection{Exemple des données qu'il contient}
+
+Faculté des sciences;\\
+Liste des locaux pour réservations;\\
+
+Nom du local;Capacité;Fonction;Liste des caractéristiques;Notes;\\
+
+D13012;32;211;08,11,14,57;laboratoire de chimie;\\
+D13013;40;211;08,11,57;laboratoire de chimie;\\
+D13014;20;211;08,44,57;laboratoire de chimie;\\
+D13016;18;211;08,57;laboratoire de chimie;
+
+\subsection{Signification des données}
+
+\begin{description}
+    \item[Première ligne] cette ligne représente la faculté.
+    \item[Deuxième ligne] cette ligne décrit le fichier.
+    \item[Troisième ligne] cette ligne est blanche.
+    \item[Quatrième ligne] cette ligne décrit l'organisation des informations sur les locaux.
+    \item[Cinquième ligne] cette ligne est blanche
+    \item[De la sixième à la dernière ligne ] chaque ligne donne les informations sur un local. Chaque information est séparée par un \texttt{;} et est décrite comme suit:
+    \begin{itemize}
+        \item Le nom du local \texttt{D13012} pour le premier local.
+        \item La capacité du local \texttt{32} pour le premier local.
+        \item La fonction du local \texttt{211} pour le premier local (voir le manuel d'utilisation de \saphir{} \cite{ruben94})
+        \item Liste des caractéristiques 08,11,14,57 pour le premier local (voir le manuel d'utilisation de \saphir{} \cite{ruben94}). Il peut y avoir plusieurs caractéristique, elles seront séparées par des \texttt{,}
+        \item La description du local \texttt{laboratoire de chimie} pour le premier local.
+    \end{itemize}        
+\end{description}   
