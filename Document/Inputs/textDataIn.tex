@@ -55,7 +55,7 @@ Il existe trois types de lignes :
 La structure du fichier :
 
 \begin{enumerate}
-\item Le chiffre du début du fichier $n$, \verb!001342!, nous indique
+\item La chaîne du début du fichier $n$, \verb!001342!, nous indique
 le nombre d'étudiants contenus dans ce fichier. Il s'agit d'une ligne du premier type.
 \item Ensuite il y a $n$ couples de lignes du type 2 et 3.
     \begin{enumerate}
@@ -92,7 +92,9 @@ Les détails de la ligne de type 2.
     \verb!05! dans le cas du premier étudiant (Indices 30 à 31).
 \end{itemize}
 
-Les détails de la ligne de type 3.Elle contient la liste des activités suivies par
+Les détails de la ligne de type 3.
+
+Elle contient la liste des activités suivies par
 l'étudiant séparés par un espace. Voici un exemple d'information correspondant à chaque
 cours.
 
@@ -153,11 +155,53 @@ Il existe trois types de lignes :
 \begin{enumerate}
     \item le nombre d'enseignants dans le fichier;
     \item l'identification de l'enseignant;
-    \item tableau de disponibilité.
+    \item disponibilité d'une journée.
 \end{enumerate}
 
 La structure du fichier :
-Le fichier commence avec un chiffre représentant le nombre d'enseignants qu'il contient. Vient ensuite une suite de blocs contenant le nom d'un professeur suivi de sa disponibilité. Le nom de l'enseignant ne doit pas excéder trente caractères. Les \texttt{1} signifient que l'enseignant est disponible à la période correspondante et les 5 qu'il
+
+\begin{enumerate}
+\item La chaîne du début du fichier $n$, \verb!116!, nous indique
+le nombre d'enseignants contenus dans ce fichier. Il s'agit d'une ligne du premier type.
+\item Ensuite il y a $n$ couples de lignes une de type 2 et cinq de type 3.
+    \begin{enumerate}
+    \item La ligne de type 2 est une chaîne de caractères correspondant nom et prénom
+    de l'enseignant. La chaîne ne doit pas excéder trente caractères.
+    \item La ligne de disponibilité d'une journée comporte quatorze entiers séparés par
+    un espace.
+    \end{enumerate}
+\end{enumerate}
+
+Les détails de la ligne de type 2.
+
+\begin{itemize}
+      \item Le matricule de l'étudiant qui correspond aux huit premiers caractères
+      du numéro d'identification (Indices 0 à 7).
+       Dans notre exemple, \verb!00900813! pour l'étudiant
+       \verb!LUPIEN! et \verb!00901199! pour l'étudiante \verb!AUDET!.
+      \item Le programme auquel l'étudiant appartient correspond ensuite aux
+      six caractères suivants.
+      Soit \verb!203503! dans le cas du premier étudiant (Indices 8 à 13).
+     \item L'instance du programme que l'étudiant suit correspond aux deux
+      caractères suivants.
+     Soit \verb!07! dans le cas du premier étudiant (Indices 14 à 15).
+      \item Des informations sur l'admission de l'étudiant sont données
+      par les cinq caractères suivants.
+       Les quatre premiers correspondent à l'année d'admission tandis
+       que le cinquième indique le trimestre d'admission.
+        Soit \verb!20003! dans le cas du premier étudiant (Indices 16 à 20).
+    \item Suit ensuite neuf caractères pour indiquer le nom de famille
+    de l'étudiant suivit d'un espace et de son prénom (coupé après neuf espaces) (Indices 21 à 29).
+    Soit, dans notre exemple, \verb!LUPIEN MY! dans le cas de la première étudiante.
+    Dans certains cas le nom prend les neuf caractères.
+    \item Vient alors un chiffre de deux caractères qui correspond en fait au nombre de cours que suit l'étudiant.
+    \verb!05! dans le cas du premier étudiant (Indices 30 à 31).
+\end{itemize}
+
+Les détails de la ligne de type 3.
+Le fichier commence avec un chiffre représentant le nombre d'enseignants qu'il contient.
+Vient ensuite une suite de blocs contenant le nom d'un professeur suivi de sa disponibilité.
+ Les \texttt{1} signifient que l'enseignant est disponible à la période correspondante et les 5 qu'il
 ne l'est pas du tout.
 
 Chaque ligne représente une journée, en commençant par lundi, jusqu'à vendredi. Chaque colonne correspond à une heure
