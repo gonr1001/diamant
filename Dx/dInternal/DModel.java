@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.13 $  $Date: 2003-05-06 14:59:17 $
+ * Title: DModel $Revision: 1.14 $  $Date: 2003-05-09 14:28:46 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -31,7 +31,7 @@ public class DModel{
   private TTParameters _ttParameters;
   private Status _status;
   private SetOfInstructors _setOfInstructors;
-  private SetOfRooms _roomsList;
+  private SetOfRooms _setOfRooms;
   private SetOfStudents _setOfStudents;
   private JFrame _jFrame;
 
@@ -66,6 +66,13 @@ public class DModel{
      _setOfStudents = loadData.extractStudents(null, false);
      if(_setOfStudents.getError().length()!=0){
        new FatalProblemDlg(_jFrame,_setOfStudents.getError());
+      System.exit(1);
+     }
+
+     // import set of rooms
+      _setOfRooms = loadData.extractRooms(null, false);
+     if( _setOfRooms.getError().length()!=0){
+       new FatalProblemDlg(_jFrame,_setOfRooms.getError());
       System.exit(1);
      }
 

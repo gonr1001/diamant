@@ -11,6 +11,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
+import dResources.DConst;
 
 public class SetOfRooms extends SetOfResources{
 
@@ -18,6 +19,7 @@ public class SetOfRooms extends SetOfResources{
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
   //private RoomsAttributesInterpretor _attr;
+  private String _error="";
 
  /***
   * constructor
@@ -59,27 +61,29 @@ public class SetOfRooms extends SetOfResources{
               token = currentLine.nextToken();
               switch (state){
                 case 0: if ((new StringTokenizer(token)).countTokens()==0){
-                  new FatalProblemDlg(
-                      "Wrong name of room at line: "+line+" in the room file:" +
-                      "\n" + "I was in roomList class and in analyseTokens method ");
-                  System.exit(1);
+                  _error= DConst.ROOM_TEXT1+line+DConst.ROOM_TEXT5 +
+                      "\n" + DConst.ROOM_TEXT6;
+                  return false;
                 }
                 state =1;
                 break;
 
               case 1:
-                isIntValue(token.trim(),"capacity at line "+line);
+                if(!isIntValue(token.trim(),DConst.ROOM_TEXT2+line))
+                  return false;
                 state=2;
                 break;
               case 2:
-                isIntValue(token.trim(),"function at line "+line);
+                if(!isIntValue(token.trim(),DConst.ROOM_TEXT3+line))
+                  return false;
                 state=3;
                 break;
               case 3:
                 StringTokenizer caracteristics = new StringTokenizer(token,"," );
                 while(caracteristics.hasMoreElements()){
                   String currentCaracteristic = caracteristics.nextToken();
-                  this.isIntValue(currentCaracteristic.trim(), "caracteristics at line "+line);
+                  if(!isIntValue(currentCaracteristic.trim(), DConst.ROOM_TEXT4+line))
+                    return false;
                 }
                 state = 4;
                 break;
@@ -164,11 +168,15 @@ public class SetOfRooms extends SetOfResources{
     try{
       (new Integer (value.trim())).intValue();
     }catch (NumberFormatException exc){
-      new FatalProblemDlg("Wrong "+message +" in the room file:" +
-      "\n" + "I was in roomList class and in analyseTokens method ");
-      System.exit(1);
+      _error = message +DConst.ROOM_TEXT5 +
+      "\n" + DConst.ROOM_TEXT6;
+      return false;
     }
     return true;
+  }
+
+  public String getError() {
+    return _error;
   }
 
 }

@@ -113,23 +113,22 @@ public class LoadData {
 
   public SetOfRooms extractRooms(SetOfInstructors currentList, boolean merge){
    byte[]  dataloaded = preLoad(_roomsFileName);
+   SetOfRooms roomsList = new SetOfRooms(dataloaded,5,14);
    if (dataloaded != null) {
      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
      //return analyseInstructorTokens (st);
-    SetOfRooms roomsList = new SetOfRooms(dataloaded,5,14);
     if (merge)
        if(currentList!=null)
          roomsList.setSetOfResources(currentList.getSetOfResources());
 
      if (roomsList.analyseTokens(0)){
        roomsList.buildSetOfRooms(0, _roomsAttributesInterpretor);
-       return roomsList;
      }
    } else {// (NullPointerException npe) {
      new FatalProblemDlg("I was in LoadData class and extractRooms. preload failed!!!" );
      System.exit(52);
    }
-   return null;
+   return roomsList;
   }
 
 

@@ -84,9 +84,9 @@ public class RoomAttach extends DXObject{
 
   /**
    * clear and set roomDisp
-   * INPUT: Vector of new instructor availability (roomDisp)
+   * INPUT: Vector of new room availability (roomDisp)
    * */
-  public void setRoomDisp(Vector roomDisp){
+  public void setAvailability(Vector roomDisp){
     _roomDisp= new Vector();
     _roomDisp= (Vector)roomDisp.clone();
   }
@@ -94,7 +94,7 @@ public class RoomAttach extends DXObject{
   /**
    *
    * */
-  public Vector getRoomAttachDisp(){
+  public Vector getVectorAvailability(){
     return _roomDisp;
   }
   /*
@@ -121,7 +121,7 @@ public class RoomAttach extends DXObject{
     return _setOfCaracteristics;
   }
 
-  public int[][] getRoomAvailability(){
+  public int[][] getMatrixAvailability(){
     String jour = (String) _roomDisp.get(0);
     StringTokenizer st = new StringTokenizer(jour);
     int[][] a = new int[_roomDisp.size()][st.countTokens()];
@@ -137,7 +137,7 @@ public class RoomAttach extends DXObject{
     return a;
   }
 
-  public void  setRoomAvailability(int[][] a){
+  public void  setAvailability(int[][] a){
     _roomDisp = new Vector();
     String str = "";
     for(int i = 0; i < a.length; i++) {
