@@ -24,7 +24,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   private Vector _eventsRescList;
   private int _mixingType;// 0= balance student mixing,  1= balance student
   // mixing with acceptable variation, 2= optimize student mixing
-  private int ACCEPTABLEVARIATION=15;
+  private int ACCEPTABLEVARIATION=5;
 
   /**
    *
@@ -45,14 +45,14 @@ public class StudentMixingAlgorithm implements Algorithm {
   public void build(){
 
     Vector eventRescList=buildEventsVector();
-    for(int i=0; i< 5; i++){
+    //for(int i=0; i< 5; i++){
     compileStudents(eventRescList);
     //compileStudents(eventRescList);
     Vector secondVec= new Vector();
     for (int j=eventRescList.size()-1; j>=0; j--)
       secondVec.add(eventRescList.get(j));
     compileStudents(secondVec);
-    }
+    //}
 
   }
 
