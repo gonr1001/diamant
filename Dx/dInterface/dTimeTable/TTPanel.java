@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.47 $  $Date: 2003-09-30 20:22:56 $
+ * Title: TTPanel $Revision: 1.48 $  $Date: 2003-09-30 20:55:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.47 $
+ * @version $Revision: 1.48 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -51,7 +51,7 @@ public abstract class TTPanel {
 
   //protected int MINHEIGHT = 60;
   protected int PERIOD_WIDTH =  100;  // for the screen
-  protected int PERIOD_HEIGHT = 120;  // for the screen
+  protected int PERIOD_HEIGHT = 60;  // for the screen
   protected int HEADER_HEIGHT = PERIOD_HEIGHT / 3 ;
   protected int HEIGHT =  24;   // timeTable.nbDays * MINWIDTH;
   protected int ROW_WIDTH =  35;    // timeTable.nbDays * MINWIDTH;
