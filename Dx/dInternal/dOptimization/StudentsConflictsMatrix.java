@@ -53,7 +53,8 @@ public class StudentsConflictsMatrix {
         String tokenType= DXToolsMethods.getToken(course1,".",1);
           if(dm.getSetOfActivities().getType(token,tokenType)==null){
             DXValue error= new DXValue();
-            error.setStringValue("Erreur --> "+sos.getResourceAt(i).getKey()+" - "
+            String matricule= "00000000"+sos.getResourceAt(i).getKey();
+            error.setStringValue("Erreur --> "+matricule.substring(matricule.length()-8,matricule.length())+" - "
                                  +sos.getResourceAt(i).getID()+"- Activity: "+token+tokenType+" *** INEXISTANTE");
             dm.getSetOfImportErrors().addResource(new Resource("1",error),0);
           }// end if(dm.getSetOfActivities().getResource(token)==null)
