@@ -173,8 +173,8 @@ public class Trace {
 			if (methodName.compareTo("<init>")==0){
 				methodName=getMethodName(className);
 			}
-			System.out.println("Trace.methodData ---> Class that called :"+
-										  className+" in the Method :"+methodName);								  
+			//System.out.println("Trace.methodData ---> Class that called :"+
+			//							  className+" in the Method :"+methodName);								  
 	    }catch (Exception e) {
 	      System.err.println("Trace recordData Caught Exception: " + e.getMessage());
 	    }

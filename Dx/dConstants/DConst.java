@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.117 $  $Date: 2004-09-10 13:30:58 $
+ * Title: DConst $Revision: 1.118 $  $Date: 2004-09-30 16:02:24 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.117 $
+ * @version $Revision: 1.118 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "21 Juin 2004";//res.getString("vDate");
+  	public final static String V_DATE = "30 Sep 2004";//res.getString("vDate");
 	public final static boolean DEVELOPMENT = false;
     public static boolean USER_TEST_ACTIV = true; // comm
 	public final static String JVM = "1.4.2_03";
