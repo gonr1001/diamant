@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPanel $Revision: 1.3 $  $Date: 2003-09-29 18:28:58 $
+ * Title: DetailedTTPanel $Revision: 1.1 $  $Date: 2003-09-29 18:28:58 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -26,22 +26,23 @@ package dInterface.dTimeTable;
 
 
 /**
- * Description: SimpleTTPanel is a class used to
+ * Description: DetailedTTPanel is a class used to
  *
  */
 
 import java.awt.Dimension;
+import java.awt.Component;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
+//import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.util.*;
 import java.awt.*;
 import javax.swing.BorderFactory;
 import javax.swing.JViewport;
-import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.border.*;
 import java.awt.event.*;
@@ -50,15 +51,10 @@ import dInterface.DToolBar;
 
 import dInternal.DModel;
 import dInternal.dData.Resource;
-import dInternal.dTimeTable.Cycle;
-import dInternal.dTimeTable.Day;
-import dInternal.dTimeTable.Period;
-import dInternal.dTimeTable.Sequence;
-import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.*;
 
 
-
-public class SimpleTTPanel extends TTPanel {
+public class DetailedTTPanel extends TTPanel {
 
   //private int MINHEIGHT = 60;
   private int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
@@ -72,12 +68,12 @@ public class SimpleTTPanel extends TTPanel {
   private int _periodLenght;
   private MouseListener _mouseListener;
   private PeriodPanel _lastActivPpanel=null;
-  private JPanel _jSplitPane;
+  private JSplitPane _jSplitPane;
 
   private JScrollPane _jScrollPaneOne;
-   private JScrollPane _jScrollPaneTwo;
+  private JScrollPane _jScrollPaneTwo;
 
-  public SimpleTTPanel(DModel dm) {
+  public DetailedTTPanel(DModel dm) {
     super();
     _dm = dm;
     _jScrollPaneOne = new JScrollPane();
@@ -89,16 +85,16 @@ public class SimpleTTPanel extends TTPanel {
     }
     //_jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,_jScrollPane,_jScrollPane);
 
-    _jSplitPane = new JPanel();//JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
+    _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
 
-    _jSplitPane.add(_jScrollPaneOne);
 
-    //_jSplitPane.setTopComponent(_jScrollPaneOne);
-    //_jSplitPane.setBottomComponent(null);//_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
-   //  _jSplitPane.setOneTouchExpandable(true);
-    //   _jSplitPane.setDividerLocation(0);
-    //Dimension minSize= new Dimension (100, 100);
-   // _jScrollPaneOne.setMinimumSize(minSize);
+
+    _jSplitPane.setTopComponent(_jScrollPaneOne);
+    _jSplitPane.setBottomComponent(_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
+     _jSplitPane.setOneTouchExpandable(true);
+       _jSplitPane.setDividerLocation(0);
+    Dimension minSize= new Dimension (100, 100);
+    _jScrollPaneOne.setMinimumSize(minSize);
   }
 
   private void initTTPaneOne() {
@@ -285,10 +281,12 @@ public JScrollPane getJScrollPane() {
   return _jScrollPaneOne;
 }
 
-public Component getPanel() {
-  return _jScrollPaneOne;
+public JSplitPane getJSplitPane() {
+  return _jSplitPane;
 }
-
+public Component getPanel() {
+  return _jSplitPane;
+}
 }
 
 

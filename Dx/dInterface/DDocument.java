@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.78 $  $Date: 2003-09-29 15:28:26 $
+ * Title: DDocument $Revision: 1.79 $  $Date: 2003-09-29 18:28:58 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.78 $
+ * @version $Revision: 1.79 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -36,7 +36,6 @@ import javax.swing.JDesktopPane;
 import dInternal.DModel;
 import dInternal.dData.*;
 import dInternal.dConditionsTest.*;
-//import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructure;
@@ -44,7 +43,8 @@ import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dResources.DConst;
 import java.util.StringTokenizer;
-//import javax.swing.JScrollPane;
+
+import dInterface.dTimeTable.TTPanel;
 import dInterface.dTimeTable.DetailedTTPanel;
 import dInterface.dTimeTable.SimpleTTPanel;
 
@@ -59,15 +59,15 @@ public class DDocument  extends InternalFrameAdapter implements
     ActionListener, DModelListener, TTStructureListener, SetOfStatesListener,
     SetOfActivitiesListener, SetOfStudentsListener, SetOfInstructorsListener,
     SetOfRoomsListener, SetOfEventsListener{
-  //private DApplication _dApplic;
+
   private DMediator _dMediator;
   private JInternalFrame _jif;
   private String _documentName;
-  private SimpleTTPanel _ttPanel;
+  private TTPanel _ttPanel;
   private DModel _dm;
   private DStateBar _stateBar;
   private String _version;
-  //JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+
 
 
   //for a new timetable and a open timetable
@@ -77,7 +77,6 @@ public class DDocument  extends InternalFrameAdapter implements
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm = new DModel(this, fileName, type);
     if(_dm.getError().length()==0){
-      //addTTListener(_dm.getTTStructure());
       _dm.getTTStructure().addTTStructureListener(this);
       ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
       buidDocument(ttName);
@@ -86,30 +85,27 @@ public class DDocument  extends InternalFrameAdapter implements
     }
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   } // end constructor DDocument()
- public DDocument(){
+  public DDocument(){
 
- }
+  }
   public void internalFrameActivated(InternalFrameEvent e) {
     _dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
-    //_dApplic.getToolBar().selectBar(0);
   }
 
 
   public final JInternalFrame getJIF() {
     return _jif;
   } // end getJIF
-
   //-------------------------------------------
   public final String getDocumentName() {
     return _documentName;
   } // end getDocumentName
-
   //-------------------------------------------
   public final void setDocumentName(String name) {
     _documentName = name;
     _jif.setTitle(name);
   } // end setDocumentName
-    //-------------------------------------------
+  //-------------------------------------------
 
   public void setCursor(int cursorValue, Component component){
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
@@ -122,158 +118,187 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param cursorValue
    */
   public void setCursor(int cursorValue){
-   _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-   _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
- }
+    _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+    _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+  }
 
 
   public String getError(){
     return _dm.getError();
   }
-    //-------------------------------------------
-    public boolean isModified(){
-        return _dm.getModified();
-    } // end getModified
-    //-------------------------------------------
+  //-------------------------------------------
+  public boolean isModified(){
+    return _dm.getModified();
+  } // end getModified
+  //-------------------------------------------
+  public DModel getDM(){
+    return _dm;
+  } //end getDModel
+  //-------------------------------------------
+  public DMediator getDMediator(){
+    return _dMediator;
+  } //end getDModel
+  //-------------------------------------------
+  public TTPanel getTTPanel(){
+    return _ttPanel;
+  }
+  //-------------------------------------------
+  public TTStructure getTTStructure() {
+    return _dm.getTTStructure();
+  } // end getJIF
+  //-------------------------------------------
+
+  /***/
+  public String getVersion(){
+    return _version;
+  }
 
 
-    public DModel getDM(){
-        return _dm;
-    } //end getDModel
 
-    public DMediator getDMediator(){
-      return _dMediator;
-    } //end getDModel
+  /**
+   * */
+  public void setVersion(String version){
+    _version=version;
+  }
+/*
+  * a revoir
+*/
+  public void close(){
+    _jif.dispose();
+    _jif = null;
+    _documentName = "";
+    _dm = null;
+    _ttPanel = null;
+    _stateBar = null;
 
-
-    public SimpleTTPanel getTTPanel(){
-      return _ttPanel;
+  }
+  private String modifiyDocumentName(String str) {
+    if (str.endsWith("pref"+File.separator+"StandardTTC.xml") ||
+        str.endsWith("pref"+File.separator+"StandardTTE.xml") ){
+      str = str.substring(0,str.lastIndexOf("pref"));
+      str += DConst.NO_NAME;
     }
+    return str;
+  }
 
-    public TTStructure getTTStructure() {
-      return _dm.getTTStructure();
-    } // end getJIF
-    //-------------------------------------------
+  public void actionPerformed(ActionEvent  e) {
+    if (e.getSource() instanceof CommandHolder) {
+      ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
+    }
+    else {
+      System.out.println("I do not know what to do, please help me (Action Performed)");
+    }// end if ... else
+  }// end actionPerformed
 
-     public void actionPerformed(ActionEvent  e) {
-       if (e.getSource() instanceof CommandHolder) {
-         ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
-       }
-       else {
-         System.out.println("I do not know what to do, please help me (Action Performed)");
-       }// end if ... else
-     }// end actionPerformed
-//public void changeInDModel(DModelEvent  e
-    public void changeInDModel(DModelEvent  e, Component component) {
-      //component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      setCursor(Cursor.WAIT_CURSOR, component);
 
-      _dm.setModified();
-      _dm.buildSetOfEvents();
-      //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-      _dm.getConditionsTest().buildAllConditions();
-      _dm.setStateBarComponent();
-      _ttPanel.updateTTPanel(_dm.getTTStructure());
-      _stateBar.upDateDStateBar(_dm.getSetOfStates());
+  //-------------------------------------------
+  public void changeInDModel(DModelEvent  e, Component component) {
+    setCursor(Cursor.WAIT_CURSOR, component);
 
-      setCursor(Cursor.DEFAULT_CURSOR, component);
-      //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }// end actionPerformed
+    _dm.setModified();
+    _dm.buildSetOfEvents();
+    _dm.getConditionsTest().buildAllConditions();
+    _dm.setStateBarComponent();
+
+    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    _stateBar.upDateDStateBar(_dm.getSetOfStates());
+
+    setCursor(Cursor.DEFAULT_CURSOR, component);
+  }// end actionPerformed
 
     /*
     */
-    public void changeInStateBar (SetOfStatesEvent e){
-      //_dm.buildSetOfEvents();
-      _dm.setStateBarComponent();
-      _stateBar.upDateDStateBar(_dm.getSetOfStates());
-    }
+  public void changeInStateBar (SetOfStatesEvent e){
+    _dm.setStateBarComponent();
+    _stateBar.upDateDStateBar(_dm.getSetOfStates());
+  }
 
 
-    /**
-     *
-     * @param e
-     */
-    public void changeInTTStructure(TTStructureEvent  e) {
-      System.out.println("I was here");
-      _dm.setModified();
-        _ttPanel.updateTTPanel(_dm.getTTStructure());
-    }
+  /**
+   *
+   * @param e
+   */
+  public void changeInTTStructure(TTStructureEvent  e) {
+    System.out.println("I was here");
+    _dm.setModified();
+    _ttPanel.updateTTPanel(_dm.getTTStructure());
+  }
 
-    /**
-     *
-     * @param e
-     * @param component
-     */
-    public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
-      //component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      setCursor(Cursor.WAIT_CURSOR, component);
-      _dm.setModified();
-      _dm.buildSetOfEvents();
-      //_dm.setStateBarComponent();
-      _dm.getSetOfStates().sendEvent();
-      _ttPanel.updateTTPanel(_dm.getTTStructure());
-      //_stateBar.upDateDStateBar(_dm.getSetOfStates());
-      setCursor(Cursor.DEFAULT_CURSOR, component);
-      //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }// end ac
+  /**
+   *
+   * @param e
+   * @param component
+   */
+  public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
+    //component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    setCursor(Cursor.WAIT_CURSOR, component);
+    _dm.setModified();
+    _dm.buildSetOfEvents();
+    //_dm.setStateBarComponent();
+    _dm.getSetOfStates().sendEvent();
+    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    //_stateBar.upDateDStateBar(_dm.getSetOfStates());
+    setCursor(Cursor.DEFAULT_CURSOR, component);
+    //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+  }// end ac
 
-    /**
-     *
-     * @param e
-     * @param component
-     */
-    public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      _dm.setModified();
-      _dm.getSetOfStates().sendEvent();
+  /**
+   *
+   * @param e
+   * @param component
+   */
+  public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
+    component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    _dm.setModified();
+    _dm.getSetOfStates().sendEvent();
 
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }// end ac
+    component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+  }// end ac
 
-    /**
-     *
-     * @param e
-     * @param component
-     */
-    public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
-      setCursor(Cursor.WAIT_CURSOR, component);
+  /**
+   *
+   * @param e
+   * @param component
+   */
+  public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
+    setCursor(Cursor.WAIT_CURSOR, component);
 
-      _dm.setModified();
-      _dm.buildSetOfEvents();
-      //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-      //_dm.getConditionsTest().buildAllConditions();
-      _dm.setStateBarComponent();
-      _ttPanel.updateTTPanel(_dm.getTTStructure());
-      _stateBar.upDateDStateBar(_dm.getSetOfStates());
+    _dm.setModified();
+    _dm.buildSetOfEvents();
+    //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
+    //_dm.getConditionsTest().buildAllConditions();
+    _dm.setStateBarComponent();
+    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    _stateBar.upDateDStateBar(_dm.getSetOfStates());
 
-      setCursor(Cursor.DEFAULT_CURSOR, component);
-    }// end ac
+    setCursor(Cursor.DEFAULT_CURSOR, component);
+  }// end ac
 
-    /**
-     *
-     * @param e
-     * @param component
-     */
-    public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      _dm.setModified();
-      _dm.getSetOfStates().sendEvent();
+  /**
+   *
+   * @param e
+   * @param component
+   */
+  public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
+    component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    _dm.setModified();
+    _dm.getSetOfStates().sendEvent();
 
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }// end ac
+    component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+  }// end ac
 
-    /**
-     *
-     * @param e
-     * @param component
-     */
-    public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      _dm.setModified();
-      _dm.getSetOfStates().sendEvent();
+  /**
+   *
+   * @param e
+   * @param component
+   */
+  public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
+    component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    _dm.setModified();
+    _dm.getSetOfStates().sendEvent();
 
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }// end ac
+    component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+  }// end ac
 
   private void  buidDocument(String title){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
@@ -302,61 +327,27 @@ public class DDocument  extends InternalFrameAdapter implements
     _ttPanel = new SimpleTTPanel(_dm);
 
     _dm.addDModelListener(this);
-    //_dm.getSetOfStates().addSetOfStatesListener(this);
-
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
     _dm.getSetOfStates().sendEvent();
     _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
-    _jif.getContentPane().add(_ttPanel.getJSplitPane(), BorderLayout.CENTER);
+    _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);
     //to comment if work with jifs
     try {
       _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel
-                              // to be present when the _jif is resized
+      // to be present when the _jif is resized
     }
     catch (java.beans.PropertyVetoException pve) {
       new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
       System.exit(52);
       pve.printStackTrace();
     }
-    //comment until here
-  }
-
-  /***/
-  public String getVersion(){
-    return _version;
   }
 
 
-
-  /**
-   * */
-  public void setVersion(String version){
-    _version=version;
-  }
-  /*
-  * a revoir
-  */
-  public void close(){
-    _jif.dispose();
-    _jif = null;
-    _documentName = "";
-    _dm = null;
-    _ttPanel = null;
-    _stateBar = null;
-
-  }
-  private String modifiyDocumentName(String str) {
-    if (str.endsWith("pref"+File.separator+"StandardTTC.xml") ||
-        str.endsWith("pref"+File.separator+"StandardTTE.xml") ){
-      str = str.substring(0,str.lastIndexOf("pref"));
-      str += DConst.NO_NAME;
-    }
-    return str;
-  }
 } /* end DDocument class */
