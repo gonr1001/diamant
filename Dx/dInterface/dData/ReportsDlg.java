@@ -54,7 +54,7 @@ public class ReportsDlg extends JDialog implements ActionListener, ChangeListene
   /* ADJUST_WIDTH is needed to ajdust the screenSize
   * minus border pixels (the value is a guess) at each side of the screen */
   private final static int ADJUST_WIDTH = 24;
-  private String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+
   private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private DApplication _dApplic = null;
   private JDialog _jd = this;
@@ -99,12 +99,15 @@ private void initReportDlg(){
   _tabbedPane.setPreferredSize(tabbedPaneDim);
   _tabbedPane.addChangeListener(this);
   //for(int i = 0; i < _tabsNames.length; i++)
-     _tabbedPane.addTab(_tabsNames[0], new ImportReport(_dApplic,tabbedPaneDim));
+  _tabbedPane.addTab(_tabsNames[0], new FullReport(this, _dApplic,tabbedPaneDim));
+     _tabbedPane.addTab(_tabsNames[1], new ConflictReport(this, _dApplic,tabbedPaneDim));
+     _tabbedPane.addTab(_tabsNames[2], new ImportReport(this, _dApplic, tabbedPaneDim)) ;
                         //createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
 
   _tabbedPane.addChangeListener(this);
   getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-  getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+  //getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+
 }
 
 /**
@@ -139,6 +142,10 @@ private JPanel createTabPanel(Dimension dim, String message){
      v.add(DConst.R_INSTRUCTOR_NAME);
      v.add(DConst.R_ROOM_NAME);
 
+   }
+
+   public StandardReportData getStandardReportData() {
+     return _srd;
    }
    public void actionPerformed(ActionEvent e){
    }
