@@ -125,10 +125,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
           {DConst.R_DAY_NAME, DConst.R_DAY_NAME_L},
           {DConst.R_SEQUENCE_ID, DConst.R_SEQUENCE_ID_L},
           {DConst.R_UNITY_NAME, DConst.R_UNITY_NAME_L},
+          {DConst.R_UNITY_BEGIN_H, DConst.R_UNITY_BEGIN_H_L},
           {DConst.R_EVENT1_ID, DConst.R_EVENT1_ID_L},
           {DConst.R_EVENT2_ID, DConst.R_EVENT2_ID_L},
-          {DConst.R_CONFLICT_INT, DConst.R_CONFLICT_INT_L},
-          {DConst.R_CONFLICT_STRING, DConst.R_CONFLICT_STRING_L},
+          {DConst.R_NUMBER_OF_CONFLICTS, DConst.R_NUMBER_OF_CONFLICTS_L},
+          {DConst.R_TYPE_OF_CONFLICT, DConst.R_TYPE_OF_CONFLICT_L},
         };
         reportElements = conflictsElements;
         break;

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.62 $  $Date: 2003-10-20 23:34:51 $
+ * Title: DConst $Revision: 1.63 $  $Date: 2003-10-21 18:54:00 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.62 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.63 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -73,6 +73,7 @@ public class DConst {
   public final static int STIBEGINHOUR=8;
   public final static int STIBEGINMINUTE=30;
   public final static int COURSENAMELENGTH=6;
+
   public final static int STUDENT_ID_LENGTH=9;
   public final static int STUDENT_KEY_LENGTH=8;
 
@@ -250,17 +251,26 @@ public class DConst {
   public final static String R_INSTRUCTOR_NAME_L = "25";
   public final static String R_ROOM_NAME_L = "8";
   //Conflicts report
-  public final static String R_SEQUENCE_ID = res.getString("RSequenceID");//Section
-  public final static String R_EVENT1_ID = res.getString("REvent1_ID");//Unité
-  public final static String R_EVENT2_ID = res.getString("REvent2_ID");//Durée
-  public final static String R_CONFLICT_INT = res.getString("RConflictInt");//Jour numéro
-  public final static String R_CONFLICT_STRING = res.getString("RConflictString");//Jour nom
+  public final static String R_SEQUENCE_ID = res.getString("RSequenceID");//Séquence
+  public final static String R_UNITY_BEGIN_H = res.getString("RUnityBeginH");//Période(heure de début)
+  public final static String R_EVENT1_ID = res.getString("REvent1_ID");//Evenement 1
+  public final static String R_EVENT2_ID = res.getString("REvent2_ID");//Evenement 2
+  public final static String R_NUMBER_OF_CONFLICTS = res.getString("RNumberOfConflicts");//Numéro de conflits
+  public final static String R_TYPE_OF_CONFLICT = res.getString("RTypeOfConflict");//Type de conflit
+  public final static String R_STUDENT_CONFLICT = res.getString("RStudentConflict");//Conflit d'étudiant
+  public final static String R_ROOM_CONFLICT = res.getString("RRoomConflict");//Conflit de salle
+  public final static String R_INSTRUCTOR_CONFLICT = res.getString("RInstructorConflict");//Conflit d'insdtructor
+
    //the associated string length for each item above
-  public final static String R_SEQUENCE_ID_L = "7";
-  public final static String R_EVENT1_ID_L = "5";
-  public final static String R_EVENT2_ID_L = "8";
-  public final static String R_CONFLICT_INT_L = "6";
-  public final static String R_CONFLICT_STRING_L = "6";
+  public final static String R_SEQUENCE_ID_L = "8";
+  public final static String R_UNITY_BEGIN_H_L = "12";
+  public final static String R_EVENT1_ID_L = "12";
+  public final static String R_EVENT2_ID_L = "12";
+  public final static String R_NUMBER_OF_CONFLICTS_L = "10";
+  public final static String R_TYPE_OF_CONFLICT_L = "40";
+  public final static String R_STUDENT_CONFLICT_L = "12";
+  public final static String R_ROOM_CONFLICT_L = "10";
+  public final static String R_INSTRUCTOR_CONFLICT_L = "15";
 
   //Help dialogs
   public final static String ABOUT_TD = res.getString("aboutTD");//A propos de, repete

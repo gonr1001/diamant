@@ -138,7 +138,7 @@ public class ReportDlg extends JDialog implements ActionListener{
     String fields;
     String currentField;
     String resultLine = "";
-    String blanks = "                               ";
+    String blanks = "                                                                          ";
     String underLine = "";
     int strLinesLength, strFieldsLength;
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
