@@ -1,20 +1,29 @@
-\chapter*{Checkout List pour une classe}
+\chapter{\eXit{} Conventions de codage}
+Ce document est un complément
+\subsection*{Checkout List pour une classe}
 
 
 
 \begin{enumerate}
+    \item bon nom du \verb!package!.
+    \item code en accord avec convention Java.
     \item commentaire général bien fait et à la bonne place.
     \item commentaire général avec le nom de la classe.
-    \item bon nom du package.
-    \item imports, toujours avec le noms de classes à importer, ordonnées java, swing, lib, locals.
+    \item \verb!import!s, toujours avec le nom de la classe à importer (pas de \verb!*!).
+    Ordonnées lignes comportant \verb!java!, ligne vide,
+    lignes comportant \verb!javax.swing!, ligne vide,
+    lignes comportant \verb!lib!, ligne vide lignes comportant les classes de l'application.
     \item commentaire de description de la responsabilité de la classe.
-    \item données membres, toujours private, sinon justifier.
-    \item méthode, paramètres, indiquer toutes les exceptions que la méthode
+    \item données membres, toujours \verb!private!, sinon justifier. Un
+    commentaire sur leur fonction.
+    \item les données membres commencent toujours par un \verb!_!
+    \item méthode avec commentaires sur paramètres et return, indiquer toutes les exceptions que la méthode
     peut jeter.
-    \item méthode requires, modifies, effets. requires indique les
+    \item une méthode doit aussi contenir des commentaires requires, modifies, effets. requires indique les
     contraintes possibles; modifies indique toutes les entrées
-    modifiées; effets définit le comportement.
+    modifiées; et  effets définit le comportement.
     \item méthode à redéfinir dans la plus part de classes \pro{toString}.
     \item class de tests de toutes les méthodes.
-
+    \item \verb!set! et \verb!get! n'ont pas besoin de
+    commentaires.
 \end{enumerate}

@@ -1,5 +1,5 @@
 % -*- TeX -*- -*- FR -*-
-\documentclass[francais]{uds-article}
+\documentclass[francais]{report}
 
 %-----------------------------------------------------------------------------
 %----- Identification des packages nécessaires
@@ -7,7 +7,7 @@
 
 \usepackage{babel}
 \usepackage[latin1]{inputenc}
-%\usepackage{udstitle,dfd}
+\usepackage{DxTitle}
 %\newcommand{\diamant}{Diamant}
 \setlength{\oddsidemargin}{0.25in}
 \setlength{\evensidemargin}{0.25in}
@@ -46,13 +46,15 @@
 
 \newcommand{\diamant}{DIAMANT}
 \newcommand{\saphir}{SAPHIR}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125em
+it}
 
 %-----------------------------------------------------------------------------
 %----- Page Titre
 %-----------------------------------------------------------------------------
 
 \Titre{DX\\
-CheckOut List d'une classe}
+\eXit{} Conventions de codage}
     \Logo{Images/logoDX.eps}
 \Auteurs{Yannick Syam,\\
 Alexander Jaramillo  et\\
@@ -63,20 +65,22 @@ Ruben Gonzalez-Rubio}
 %----- Identification des fichiers des pages préliminaires et bibliographique
 %-----------------------------------------------------------------------------
 
-\FichierResume{}%Inputs/resume}
-\FichierRemerciements{}
-\FichierGlossaire{} % \FichierLexique est équivalent
-\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
+%\FichierResume{}%Inputs/resume}
+%\FichierRemerciements{}
+%\FichierGlossaire{} % \FichierLexique est équivalent
+%\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
 
 %-----------------------------------------------------------------------------
 %----- Le document
 %-----------------------------------------------------------------------------
 
-\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index
-}
+%\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index
+%}
 
 \begin{document}
-\begin{articleDX}
+%\begin{articleDX}
+
+\pageTitre
 
 \input{Inputs/checkoutListIn}
 
@@ -92,5 +96,5 @@ Ruben Gonzalez-Rubio}
 %\input{Inputs/glossaire}
 %\input{Inputs/index}
 %\include{formules}
-\end{articleDX}
+% \end{articleDX}
 \end{document}
