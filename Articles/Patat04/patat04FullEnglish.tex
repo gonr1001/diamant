@@ -53,18 +53,18 @@ Web.
 
 The production of schedules is a periodic task carried out in many
 institutions of teaching. These institutions produce one or more
-schedules per year for the courses and the examinations. The
-automation of this production can reduce its cost in an important
-way. In certain cases, automation starts with the use of a
-software of construction of schedules; in others, it starts with
-the automation of the treatments associated with the work of the
-institution, as for example followed it students. There are
+schedules per year for the courses and the exams. The automation
+of this production can reduce its cost in an important way. In
+certain cases, automation starts with the use of a software of
+construction of schedules; in others, it starts with the
+automation of the treatments associated with the work of the
+institution, as for example the follow of students. There are
 software to carry out the construction of schedules, by example
-DIAMANT \cite{gonzalezrubio00} and SAPHIRE \cite{ferland94}, but,
+DIAMANT \cite{gonzalezrubio00} and SAPHIR \cite{ferland94}, but,
 there exists many others.
 
 In general, the software for the creation of schedules uses as
-input one or more files. Their output is recorded on one or more
+input one or more files. Their output is saved on one or more
 files. The work with files is a source of problems. It is
 necessary to build the input files each time that a schedule is
 produced. There exists, two cases~: a manual production of the
@@ -80,133 +80,122 @@ that of the production of files) or if the application of
 construction is used in several different sites, using different
 data formats.
 
-Une autre source de problèmes encore plus coûteuse que la
-précédente, est celle de l'introduction d'un changement dans le
-système, soit dans le logiciel de construction, ou dans logiciel
-de la production ou bien dans les deux. Les changements viennent
-de la part de responsables de l'institution, par exemple une
-nouvelle nomenclature pour les locaux; nouvelle approche
-pédagogique, qui change la constitution de groupes, etc. Ce
-problème de modifier un logiciel n'est pas propre à la production
-d'horaire. Il s'agit d'un problème général dans le développement
-des logiciels.
+Another source of problems even more expensive than the preceding
+one, is that when a change is introduced into the system, it could
+be in the software of construction, or in the software of
+production or in both. The changes come on behalf of persons in
+charge for the institution, for example a new nomenclature for the
+buildings; new teaching approach, which change the way to create
+the groups, etc. The problem to modify a software is not only for
+the production of schedules. It acts of a general problem in the
+development of software.
+
+The solution to the first problem passes by the automation of the
+checking and validation of data at the time of data acquisition,
+in order to ensure that the software of construction works with
+the right data. The second problem, is more delicate to treat, if
+the software of production were conceived to be modified
+(extensible), the cost to make a modification is weak, but if the
+system is monolithic and closed, a modification will be very
+expensive. A way of decreasing the effects of this problem is the
+development of software having the quality of extensibility.
+
+In this article we propose the architecture of a system of
+production of schedules of courses and exams having the qualities:
+open and extensible. This architecture must contribute to more
+easily work with the two problems mentioned, by reducing the cost
+of the modifications and by carrying out the checking and the
+validation of the data in precise stages of the process and by
+avoiding the redundancy of the code and the data. This
+architecture implements a database, an Internet site and a
+software of construction of schedules. The checking and the
+validation of data will be made with the input and with integrity
+constraints in the database. The Internet site is used mainly for
+the data input, at the same time, it can check the validity of the
+data, using the rules of businesses before the data will be
+entered to the database. Another function of the Internet site is
+to offer the schedules in a personalized way, once that the
+schedule is built. The database allows the retrieval of the data,
+according to various formats. Thus, the input of the software of
+construction is simplified. Of course, with the assistance of the
+software of construction of schedules, it is possible to create a
+schedule with a minimum of conflicts.
 
 
-La solution pour le premier problème passe par l'automatisation de
-la vérification et validation de données à la saisie des données,
-afin d'assurer que le logiciel de construction travaille sur les
-bonnes données. Le deuxième problème, est plus délicat à traiter,
-si l'ensemble de logiciels de production ont été conçus pour être
-modifiables (extensibles) le coût de faire une modification sera
-faible, mais si le système est monolithique et fermé une
-modification sera très coûteuse. Une manière de diminuer les
-effets de ce problème est le développement de logiciel ayant,
-entre autres, la qualité d'extensibilité.
+Many research was made in the construction of schedules:
+algorithms, mathematical formulations and several software were
+proposed in the PATAT conferences \cite{patat97, patat00,
+patat02}. On the other hand, few efforts were devoted, until now,
+to the general development of the production of schedules. We
+think that the fact of having a total sight on the process can
+help the research in construction of schedules. White
+\cite{white00} highlighted that the Web must be used to the
+diffusion of schedules. We are trying to go far proposing also to
+use it like interfaces of data input, moreover we propose the
+architecture necessary to support our ideas. De Causmaecker et al.
+\cite{decausmaecker02} introduced the idea that the semantics Web
+can be used by the researchers in the construction of schedules.
+They also introduced the idea to use XML like a language of
+communication in the construction of schedules by agents. We
+propose also the use of XML, in order to facilitate the exchanges
+between certain modules of our architecture. In Burke and Al
+\cite{burke97} it is proposed to have a standard for the data
+format, in the many software for schedule instances, their goal
+was to compare algorithms (programs) in benchmarks. In a more
+recent work, Kingston \cite{kingston02} proposes a language STTL
+and an interpreter, with the same objective. Özcan \cite{ozcan03}
+suggests also another standard to define instances of problems of
+construction of schedules, having XML as a base language. It seems
+that it would be desirable to have a standard, but it is a goal
+very hard to reach. At the place, our approach makes it possible
+to use a database like a tool of extraction and formatting, in
+this way the software of construction of schedules can receive the
+necessary data. Thus, it would be possible to generate other
+instances of problems for other software of construction of
+schedules.
+
+The development of our architecture, was divided into two parts,
+we analyzed the flow of the data in a generic system of production
+of schedules. Then we define an architecture, the basic blocks and
+the responsibility of each block which takes part in the
+architecture. The objectives to define an open and extensible
+architecture were respect during our work. This is presented in
+the sections \ref{sec:data} and \ref{sec:archi}.
+
+Once defined the architecture, we created an instance in order to
+establish it in a system of production of schedules at the
+University of Sherbrooke. We made an overflight of existing
+technologies in order to make the good choices still respecting
+the objectives of opening and extensibility. This is presented in
+the sections \ref{sec:tech} and \ref{sec:tictac}.
 
 
-Dans cet article nous proposons l'architecture  d'un système de
-production des horaires de cours et des examens ayant les qualités
-suivantes~: ouverte et extensible. Une telle architecture doit
-contribuer à faire face plus facilement aux deux problèmes
-mentionnées, en réduisant le coût des modifications et en
-effectuant la vérification et la validation des données dans des
-étapes précises du processus et en évitant la redondance du code
-et des données. Cette architecture met en \oe{}uvre une base de
-données, un site Internet et un logiciel de construction
-d'horaires. La vérification et la validation de données  se fera à
-l'entrée de données et avec de contraintes d'intégrité dans la
-base de données.  Le site Web est utilisé principalement pour la
-saisie de données, ceci permet de vérifier aussi la validité des
-données, grace au règles d'affaires avant que la donnée soit
-entrée dans la base. Autre fonction du site Web est d'offrir les
-horaires de manière personnalisé, une fois que l'horaire est
-construit. La base de données permet l'extraction des données,
-selon différents formats. Ainsi, l'entrée de données du logiciel
-de construction est facilité. Bien entendu, avec l'aide du
-logiciel de construction d'horaires, il est possible de fabriquer
-un horaire avec un minimum de conflits.
-
-Des nombreuses recherches ont été faites dans la construction
-d'horaires~: algorithmes et formulations mathématiques et
-plusieurs logiciels ont été proposés dans les conférences PATAT
-\cite{patat97,patat00,patat02}. Par contre, peu d'efforts ont été
-consacrés, jusqu'à présent, au développement général de la
-production d'horaires. Nous pensons que le fait d'avoir une vue
-globale sur le processus peut aider la recherche en construction
-d'horaires. White \cite{white00} a mis en évidence que le Web doit
-être utilisé comme un moyen de diffusion d'horaires. Nous allons
-un peu plus loin en proposant  de l'utiliser également comme
-interface d'entrée, de plus nous proposons l'architecture
-nécessaire à supporter nos idées. De Causmaecker et al
-\cite{decausmaecker02} ont introduit l'idée que la sémantique du
-Web peut être utilisé par le chercheurs en construction
-d'horaires. Ils ont aussi introduit l'idée d'utiliser XML comme
-langage de communication dans le construction d'horaires par
-agents. Nous proposons aussi l'utilisation de XML, afin de
-faciliter les échanges entre certains modules de notre
-architecture. Dans Burke et al. \cite{burke97} il est proposé
-d'avoir un standard pour le format de données pour des instances
-de horaires, leur but était de comparer des algorithmes
-(programmes) dans de benchmarks. Dans un travail plus récent,
-Kingston \cite{kingston02} propose un language STTL et un
-interpréteur, avec le même objectif. Özcan \cite{ozcan03} suggère
-aussi un autre standard pour définir des instances de problèmes de
-construction d'horaires, ayant comme base le langage XML. Il nous
-semble qu'il serait souhaitable d'avoir un standard, mais c'est un
-but très difficile à atteindre. À la place, notre approche permet
-d'utiliser une base de données comme un outil d'extraction et de
-formattage, de cette manière le logiciel de construction
-d'horaires peut recevoir les données nécessaires. Ainsi, il serait
-possible de générer des instances de problèmes pour d'autres
-logiciels de construction d'horaires.
-
-
-Le développement de notre architecture, a été divisé en deux
-étapes, nous avons analysé le flot des données dans un système
-générique de production d'horaires. Ensuite nous avons défini
-l'architecture, les blocs de base et la responsabilité de chaque
-bloc qui participe dans l'architecture. Les objectifs de définir
-une architecture ouverte et extensible ont été respectes pendant
-nos travaux. Ceci est présenté dans les sections \ref{sec:data} et
-\ref{sec:archi}.
-
-Une fois l'architecture définie, nous avons crée une instance afin
-de l'implanter dans un système de production d'horaires à
-l'Université de Sherbrooke. Nous avons fait un survol des
-technologies existantes afin de faire les bons choix respectant
-encore les objectifs d'ouverture et extensibilité ont été
-atteints. Ceci est présenté dans les sections \ref{sec:tech} et
-\ref{sec:tictac}.
-
-Nous finissons par un bilan et des conclusions à la section
+We finish by an assessment and the conclusions in the section
 \ref{sec:conc}.
 
 
-
-\section{Les flot de l'information dans la production d'horaires}
+\section{The flow of information in the production of schedules}
 \label{sec:data}
 
-Tout d'abord, nous définissons, le processus de production
-d'horaires comme un processus qui démarre lorsqu'on commence à la
-saisie de données pour la période de validité de l'horaire $P$.
-Cette période $P$ est un semestre, un  trimestre, ou une
-année\footnote{Dans l'Université de Sherbrooke on parle de
-trimestre, mais en réalité il comporte seize semaines (presque
-quatre mois), donc le système doit s'adapter à tout periode $P$.}.
-Le processus fini lorsque toutes les personnes concernées
-reçoivent l'horaire sur un support papier ou sur le Web (voir
-figure \ref{fig:fOne}) et que la période de validité de l'horaire
-touche à sa fin. Les données à saisir sont multiples, par exemple
-les cours qui vont avoir lieu dans la période $P$; le format du
-cours (3h, ou 2h+1h); les enseignants possibles ou assignées à
-certains cours; les locaux possibles ou assignées; la
-disponibilité des enseignants et des locaux, etc.. Signalons qu'il
-existe des institutions où les étudiants font un pré-choix et
-d'autres où les horaires sont fait sans pré-choix. Le pre-choix
-des étudiants fait partie des données à saisir, s'il n'y a pas de
-pré-choix, il faut indiquer le nombre d'étudiants à admettre pour
-chaque cours.
-
+First of all, we define, the process of production of schedules as
+a process which starts with the data capture for the period of
+validity of the schedule $P$. This period $P$ is one six-month
+period, one quarter, or a year\footnote{In the University of
+Sherbrooke we speaks about quarter, but it really comprises
+sixteen weeks (almost four months), therefore the system must
+adapt to any period $P$.}. The process ends when all the concerned
+people receive the schedule on a paper or the Web (see figure
+\ref{fig:fOne}) and that the period of validity of the schedule
+touches at its end. The are multiple data to feed to the system,
+for example the courses which will take place during the time $P$;
+the format of the courses (3h, or 2h+1h); possible or assigned
+teachers for certain courses; possible or assigned buildings; the
+availability of the teachers and the buildings, etc. We know that
+there are institutions where the students make a pre-choice and
+others where the schedules are made without pre-choice. The
+pre-choice of the students is part of the data to be supplied, if
+there is no pre-choice, it is necessary to indicate the number of
+students to be admitted for each course.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
@@ -217,24 +206,26 @@ chaque cours.
 
 \put( 20,20){\vector(1,0){15}}
 
-\put(35, 12){\process[Système de\\production \\ d'horaires]}
+\put(35, 12){\process[Schedule\\production\\software]}
 
 \put(55, 20){\vector(1,0){7}} \put(62, 20){\corner[y]{-10}{8}}
 \put(62, 20){\corner[y]{10}{8}}
 
-\put(70, 25){\fichier[\pro{Papier}]}
+\put(70, 25){\fichier[\pro{Paper}]}
 
 \put(70, 5){\fichier[\pro{Web}]}
 \end{picture}
 \end{center}
-\caption{La production d'horaires}\label{fig:fOne}
+\caption{Production of schedules}\label{fig:fOne}
 \end{figure}
 
-La figure \ref{fig:fOne} est une vue abstraite de la production
-d'horaires, le système de production inclue un logiciel de
-construction d'horaires.
+The figure \ref{fig:fOne} is an abstract view of the production of
+schedules, the system of production includes a software of
+construction of schedules.
 
 
+
+%*********************************************************
 
 \begin{description}
 \item[Système de production d'horaires] Il est composé de
@@ -262,8 +253,6 @@ affichés sur une page Web, dans le deux cas les données sources se
 trouvent dans  la base de données.
 
 \end{description}
-
-
 
 
 \subsection{La préparation des données}
