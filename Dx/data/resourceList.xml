@@ -100,6 +100,7 @@
 	<DXTimeTable>
 		<TTcycle>
 			<cycleID>1</cycleID>
+			<pLength>15</pLength>
 			<TTdays>
 				<TTday>
 					<dayID>1</dayID>
