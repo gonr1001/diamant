@@ -117,6 +117,16 @@ class reference2 {
 @__hidden
 */
 class reference3 {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.SetOfStatesListener:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -130,7 +140,8 @@ filter.d.state = off
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:java#Extends#dInternal.dData.SetOfRooms#dInternal.dData.SetOfResources:oiref>=1891,440,1623,380:oigroup>
+@__positions <oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesListener:oiref>=265,75,128,114,1:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.dData.SetOfRooms#dInternal.dData.SetOfResources:oiref>=1891,440,1623,380:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_setOfAssignments:oiref>=2414,776,2414,757,1658,380:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.StudentAttach:oiref>=1061,776,192,315,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfStates:oiref>=181,1,99,123,1:oigroup>
@@ -150,6 +161,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dData.State:oiref>=153,73,101,187,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Activity#_setOfTypes:oiref>=1640,520,1640,380:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesAfter:oiref>=2454,776,2454,748,1672,380:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref>=393,203,112,98,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesBefore:oiref>=2494,776,2494,738,1686,380:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructors:oiref>=1540,450,163,171,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.Activity:oiref>=1580,520,197,283,1:oigroup>

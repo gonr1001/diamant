@@ -32,6 +32,14 @@ public class EventAttach extends DXObject {
     return _principalRescKey;
   }
 
+  public long getInstructorKey(){
+    return _secondaryRescKey1;
+  }
+
+  public long getRoomKey(){
+   return _secondaryRescKey2;
+  }
+
   /**
    * Tests if the specified string is a component in the tabulist vector.
    * @param princKey

@@ -44,6 +44,12 @@ class reference47 {
 @__fqn <oiref:#Package#dInternal.dTimetable:oiref> 
 */
 class reference1 {
+}/**
+@__ref <oiref:design#Class#id1dj5idk73u5sidk73v2iw.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#dInternal.dConditionsTest:oiref> 
+*/
+class reference6 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -54,14 +60,16 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,686,1:oigroup>
-<oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=596,346,128,180,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=453,10,153,286,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
+@__positions <oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=453,10,153,286,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=453,270,93,101,1:oigroup>
-<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,112,148,1:oigroup>
-<oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=199,570,115,100,1:oigroup>
+<oigroup:<oiref:design#Class#id1dj5idk73u5sidk73v2iw.diagram:oiref>=324,134,111,84,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,430,141,117,1:oigroup>
+<oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=199,570,115,100,1:oigroup>
+<oigroup:<oiref:java#Implements#dInternal.DModel#dInternal.DModelListener:oiref>=10,488,10,488:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
+<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,129,180,1:oigroup>
+<oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=596,346,128,180,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,798,1:oigroup>
 */
 class __positions {
 }
