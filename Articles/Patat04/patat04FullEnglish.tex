@@ -20,8 +20,7 @@
 \newcommand{\xp}{eXtreme Programming}
 \def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
 
-\title{\bf{L'architecture d'un système de production des horaires
-de cours et des examens}}
+\title{\bf{The architecture of a system of production of the schedules of course and exams}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao Muñoz}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
@@ -40,52 +39,46 @@ Université de Sherbrooke,\\
 
 \maketitle
 
-\intd
+%\intd
 
 \begin{abstract} \label{intro}
-\input{resume.tex}
+\input{resumeEnglish.tex}
 \end{abstract}
 
-{\bf Mots clés :}
-Production d'horaires,
-Construction d'horaires,
-Architecture ouverte,
-Architecture extensible,
-Bases de données,
+{\bf Keywords :} Production of schedules, Construction of
+schedules, Open architecture, Extensible Architecture, Data bases,
 Web.
 
 \section{Introduction}
-La production d'horaires est une tâche périodique effectué dans
-beaucoup d'insti\-tutions d'enseignement.  Ces institutions
-produisent un ou plusieurs horaires par année pour les cours et
-les examens. L'automatisation de cette production peut réduire son
-coût de manière importante. Dans certains cas, l'automatisation
-commence par l'utilisation d'un logiciel de construction
-d'horaires; dans d'autres, elle commence par l'automatisation des
-traitements associés au fonctionnement de l'institution, comme par
-exemple le suivit des étudiants. Il existe de logiciels pour
-effectuer la construction d'horaires, on peut citer comme exemples
-DIAMANT \cite{gonzalezrubio00} et SAPHIR \cite{ferland94}, mais,
-il existe d'autres.
 
-En général, les logiciels pour la création d'horaires utilisent
-comme  entrée un ou plusieurs fichiers. Leur sortie est effectuée,
-également, sur un ou plusieurs fichiers. Travailler avec des
-fichiers est une sources de problèmes. Il faut construire les
-fichiers d'entrée à chaque fois qu'un horaire est produit. Il
-existe, deux cas~: une production manuelle des fichiers ou une
-production automatisée. Si les fichiers sont produits
-manuellement, les erreurs de frappe ou d'inattention peuvent
-produire des effets inattendus dans le logiciel. Les erreurs sont
-difficiles à trouver, car il faut vérifier toutes les données
-manuellement. Dans le cas, où les fichiers sont produits de
-manière automatique, il faut que le logiciel s'assure de vérifier
-la validité et la cohérence des toutes les données. Le deuxième
-problème se manifeste lorsqu'un changement est introduit dans le
-système (soit dans l'application de construction, soit dans celui
-de la production de fichiers) ou si l'application de construction
-est utilisé à plusieurs sites différents, utilisant de formats de
-données différents.
+The production of schedules is a periodic task carried out in many
+institutions of teaching. These institutions produce one or more
+schedules per year for the courses and the examinations. The
+automation of this production can reduce its cost in an important
+way. In certain cases, automation starts with the use of a
+software of construction of schedules; in others, it starts with
+the automation of the treatments associated with the work of the
+institution, as for example followed it students. There are
+software to carry out the construction of schedules, by example
+DIAMANT \cite{gonzalezrubio00} and SAPHIRE \cite{ferland94}, but,
+there exists many others.
+
+In general, the software for the creation of schedules uses as
+input one or more files. Their output is recorded on one or more
+files. The work with files is a source of problems. It is
+necessary to build the input files each time that a schedule is
+produced. There exists, two cases~: a manual production of the
+files or an automated production. If the files are produced
+manually, there are the typing errors that can produce unexpected
+effects in the software. The errors are difficult to find, because
+all the data should be checked manually. In the case, where the
+files are produced in an automatic way, it is necessary that the
+software is ensured to check the validity and the coherence of all
+the data. The second problem appears when a change is introduced
+into the system (either in the application of construction, or in
+that of the production of files) or if the application of
+construction is used in several different sites, using different
+data formats.
 
 Une autre source de problèmes encore plus coûteuse que la
 précédente, est celle de l'introduction d'un changement dans le
