@@ -1,5 +1,5 @@
 /**
- * Title: CmdButton $Revision: 1.1 $  $Date: 2003-02-20 11:07:28 $
+ * Title: CmdButton $Revision: 1.2 $  $Date: 2003-05-26 16:57:38 $
  * Description: CmdMenu is a class suggested by the
  *              command pattern. All menu items will be associated
  *              with a command.
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -45,9 +45,16 @@ public class CmdButton extends JButton implements CommandHolder {
     super(str);
   }
 
-/*  public CmdButton(String str, JFrame jframe) {
-    super(str);
-  }*/
+
+   public CmdButton(String icon, String toolTip) {
+     super(new ImageIcon(icon));
+     setSize(new Dimension(35,35));
+     setBorderPainted(true);
+     setMargin(new Insets(0,0,0,0));
+     setToolTipText(toolTip);
+   }
+
+
 
   //**-----------------------
   public void setCommand (Command cmd) {
@@ -58,3 +65,15 @@ public class CmdButton extends JButton implements CommandHolder {
     return _cmd;
    }
 } /* end class CmdMenu */
+
+
+
+
+
+
+
+
+
+
+
+

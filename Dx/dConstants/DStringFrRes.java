@@ -1,6 +1,7 @@
+package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.23 $  $Date: 2003-05-23 15:34:10 $
+ * Title: DStringFrRes $Revision: 1.24 $  $Date: 2003-05-26 16:57:38 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,12 +15,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 
-package dResources;
+
 
 import java.util.*;
 
