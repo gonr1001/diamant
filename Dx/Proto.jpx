@@ -46,7 +46,7 @@
   <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
   <property category="sys" name="JvmVersion" value="1.4"/>
   <property category="sys" name="LastTag" value="0"/>
-  <property category="sys" name="Libraries" value="JUnit;theLibrary;regexp;jfcunit;rt"/>
+  <property category="sys" name="Libraries" value="JUnit;theLibrary;regexp;jfcunit;rt;XMLLib"/>
   <property category="sys" name="MakeStable" value="0"/>
   <property category="sys" name="OutPath" value="../../Temp/Dx/Proto/classes"/>
   <property category="sys" name="SourcePath" value="."/>
