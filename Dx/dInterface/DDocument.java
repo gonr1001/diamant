@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.46 $  $Date: 2003-07-08 10:38:57 $
+ * Title: DDocument $Revision: 1.47 $  $Date: 2003-07-08 11:32:34 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -63,42 +63,15 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
 
 
   //for a new timetable and a open timetable
+  //for new timetable Structure and open timetable Structure from a file
   public DDocument(DApplication dApplic,String TTName, String fileName, int type) {
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, fileName, type);
-    //if(_dm.getError().length()==0){
+    if(_dm.getError().length()==0){
       addTTListener(_dm.getTTStructure());
       _dm.getTTStructure().addTTStructureListener(this);
       buidDocument(TTName);
-    //}
-  } // end constructor DDocument()
-
-
-  //for new timetable Structure
-   public DDocument(DApplication dApplic, String fullPath, int type, boolean onlyStruc) {
-     _dApplic = dApplic;
- //    TTStructure ttStruct = new TTStructure();
-     // to  be arranged
- //    ttStruct.loadTTStructure(fullPath);
-     _dm = new DModel(_dApplic, fullPath, type, onlyStruc);
-     _dm.getTTStructure().addTTStructureListener(this);
-     buidDocument(fullPath);
-     //dApplic.getToolBar().setToolBars(ttStruct);
-    // _modified=true;
-  } // end constructor DDocument()
-
-  //for open timetable structure
-  //-------------------------------------------
-  public DDocument(DApplication dApplic, String title, String fileName, boolean partial) {
-    _dApplic = dApplic;
-    TTStructure ttStruct = new TTStructure();
-    ttStruct.loadTTStructure(fileName);
-    _dm = new DModel(_dApplic,_documentName, 0);
-    // read TTstructure
-    // TTStructure ttStruct = new TTStructure();
-    // read TTstructure
-    buidDocument(title);
-    _modified=true;
+    }
   } // end constructor DDocument()
 
   public final JInternalFrame getJIF() {

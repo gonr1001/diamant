@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.23 $  $Date: 2003-07-08 10:38:57 $
+ * Title: DMediator $Revision: 1.24 $  $Date: 2003-07-08 11:32:34 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -63,26 +63,11 @@ public class DMediator {
   //for new ttStructure and for open
   public String addDoc(String fullPath, int type, boolean onlyStruc) {
     String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, fullPath, type, onlyStruc);
+    DDocument currentDoc = new DDocument(_dApplic, fullPath, fullPath, type);
     _documents.addElement(currentDoc);
     _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
     return error;
   } //end addDoc
-/*
-  //for open ttStructure
-  public String addDoc(String title, String fileName, boolean partial) {
-    String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, title, fileName, partial);
-    _documents.addElement(currentDoc);
-    return error;
-  } //end addDoc*/
-  //for open TimeTable
-/*  public String addDoc(String title) {
-    String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, title);
-    _documents.addElement(currentDoc);
-    return error;
-  } //end addDoc*/
 
   public void removeCurrentDoc(){
       _documents.remove(getCurrentDoc());

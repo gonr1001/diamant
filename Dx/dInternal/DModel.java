@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.37 $  $Date: 2003-07-07 17:35:10 $
+ * Title: DModel $Revision: 1.38 $  $Date: 2003-07-08 11:32:34 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -39,24 +39,25 @@ public class DModel {
   private String _version;
   private String _error;
   private Status _status;
-  private SetOfInstructors _setOfInstructors;
-  private SetOfRooms _setOfRooms;
-  private SetOfStudents _setOfStudents;
-  private SetOfActivities _setOfActivities;
+  private SetOfInstructors _setOfInstructors=null;
+  private SetOfRooms _setOfRooms=null;
+  private SetOfStudents _setOfStudents=null;
+  private SetOfActivities _setOfActivities=null;
   private DApplication _dApplic;
   private TTStructure _ttStruct;
   private int _currentCycle = 1;
 
-  //for new and open
+  //for new and open Timetable
+  //for new TTStructure and open a TTStructure from a file
   public DModel(DApplication dApplic, String fileName, int type) {
     _error = "";
     _status = new Status();
     _dApplic = dApplic;
     if(fileName.endsWith(".dia")){
-      loadTimeTable(fileName);
+      _error=loadTimeTable(fileName);
     }else if(fileName.endsWith(".xml")){
       _ttStruct = new TTStructure();
-      _ttStruct.loadTTStructure(fileName);
+      _error=_ttStruct.loadTTStructure(fileName);
     }else{
       _error="Wrong type of file";
     }
@@ -64,36 +65,6 @@ public class DModel {
     _modified = false;
   }
 
-  //for new TTStructure _dApplic, fullPath, type, onlyStruc
-  public DModel(DApplication dApplic, String fullPath, int type, boolean onlyStruct) {
-    _error = "";
-    _type = type;
-    _status = new Status();
-    _dApplic = dApplic;
-    _ttStruct = new TTStructure();
-    // to  be arranged
-    _ttStruct.loadTTStructure(fullPath);
-    _setOfInstructors = null;
-    _setOfRooms = null;
-    _setOfStudents = null;
-    _setOfActivities = null;
-    _modified = true;
-  }
-
-  //for open
-  public DModel(DApplication dApplic, String fullPath,  boolean onlyStruct) {
-    _error = "";
-    _status = new Status();
-    //_ttParameters = new TTParameters();
-    _dApplic = dApplic;//
-    // must initiate type and
-    loadTTStruct(fullPath);
-    //rreadTT(fileName);
-    //importData("hello");
-    //test1_setAvailability();
-    _modified = true;
-  }
-public DModel(DApplication dApplic, int i, TTStructure t){}
   public String getError(){
     return _error;
   }
