@@ -629,9 +629,10 @@ public Period getLastPeriod(){
    */
   public Period getPreviousPeriod(int steps){
     DXValue dayValue= new DXValue();
-    Period period= getCurrentDay().getCurrentSequence().getCurrentPeriod();
-    for (int i=steps; i> 0; i--){
+    Period period;//= getCurrentDay().getCurrentSequence().getCurrentPeriod();
+    //for (int i=steps; i> 0; i--){
       dayValue.setIntValue(_currentDayIndex);
+      //System.out.println("Day: "+_currentDayIndex);//debug
       //System.out.println("------ Day: "+_currentDayIndex);//debug
       period= ((Day)_setOfDays.getResourceAt(_currentDayIndex).getAttach()).getPreviousPeriod(dayValue);
 
@@ -643,8 +644,20 @@ public Period getLastPeriod(){
         getCurrentDay().setCurrentSequenceIndex(getCurrentDay().getSetOfSequences().size()-1);
         getCurrentDay().getCurrentSequence().setCurrentPeriodIndex(getCurrentDay().getCurrentSequence().getSetOfPeriods().size()-1);
       }
-    }
+    //}
     return period;
+  }
+
+  /**
+  *
+  * */
+ public String toString(){
+   String str="";
+   for(int i=0; i< _setOfDays.size(); i++){
+     Resource rescD= _setOfDays.getResourceAt(i);
+     str+= ((Day)rescD.getAttach()).toString(rescD.getID());
+   }
+   return str;
   }
 
   private SetOfResources _setOfDays;

@@ -90,7 +90,7 @@ public class TestConditions {
  /**
   *
   */
-  private void buildStudentConflictMatrix(){
+  public void buildStudentConflictMatrix(){
     if (!_matrixIsBuilded){
      _matrix.buildMatrix(_dm);
      _matrixIsBuilded= true;
@@ -161,7 +161,7 @@ public class TestConditions {
   private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
     int[] numberOfConflicts={0,0,0};
     int totalNumberOfConflicts=0;
-    extractPreference();
+    //extractPreference();
 
     if(((EventAttach)event.getAttach()).getAssignState()){//if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
@@ -174,6 +174,7 @@ public class TestConditions {
         	//System.out.println("**Event :"+ event.getID()+"  first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           int [] newPerKey={perKey[0],perKey[1],perKey[2]+j};
+          //periodVariationEvents(newPerKey);//debug
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
             numberOfConflicts[k]+=cond.executeTest(newPerKey,per,event.getID(),operation);
@@ -228,6 +229,18 @@ public class TestConditions {
    */
   public Vector getTestToRun(){
     return _testToRun;
+  }
+
+  /**
+   *
+   * @param perKey
+   * @return
+   */
+  public Vector periodVariationEvents(int[] perKey){
+    extractPreference();
+   TestStudentsConditions studTest= new TestStudentsConditions(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+   studTest.setPeriodVariationEvents(_periodVariationEvents);
+   return studTest.periodVariationEventsPeriods(perKey);
   }
 
 }// end class

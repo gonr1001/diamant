@@ -11,6 +11,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 import dInternal.dUtil.DXValue;
 
+import dResources.DConst;
+
 public class Day extends DXObject{
 
 
@@ -159,21 +161,35 @@ public class Day extends DXObject{
    * @return
    */
   public Period getPreviousPeriod(DXValue dayValue){
+    //System.out.println("Sequence: "+_currentSequenceIndex);//debug
     DXValue seqValue= new DXValue();
     seqValue.setIntValue(_currentSequenceIndex);
     Period period=  ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex)
                      .getAttach()).getPreviousPeriod(seqValue);
 
     if(seqValue.getIntValue() <= -1){
-      _currentSequenceIndex=_setOfSequences.size()-1;
+      seqValue.setIntValue(_setOfSequences.size()-1);
       dayValue.setIntValue(dayValue.getIntValue()-1);
       //getCurrentSequence().setCurrentPeriodIndex(getCurrentSequence().getSetOfPeriods().size()-1);
     }// end if(_currentSequenceIndex>= _setOfSequences.size())
-    /*if(_currentSequenceIndex!= seqValue.getIntValue()){
+    if(_currentSequenceIndex!= seqValue.getIntValue()){
       _currentSequenceIndex= seqValue.getIntValue();
+      //setCurrentSequenceIndex(_setOfSequences.size()-1);
       getCurrentSequence().setCurrentPeriodIndex(getCurrentSequence().getSetOfPeriods().size()-1);
-    }*/
+    }
     return period;
+  }
+
+  /**
+   *
+   * */
+  public String toString(String ID){
+    String str="";
+    for(int i=0; i< _setOfSequences.size(); i++){
+      Resource rescD= _setOfSequences.getResourceAt(i);
+      str+= ((Sequence)rescD.getAttach()).toString(ID+"--"+rescD.getID());
+    }
+    return str;
   }
 
 

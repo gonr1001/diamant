@@ -11,6 +11,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 import dInternal.dUtil.DXValue;
 
+import dResources.DConst;
+
 public class Sequence extends DXObject{
 
   /**
@@ -149,13 +151,25 @@ public class Sequence extends DXObject{
    * @return
    */
   public Period getPreviousPeriod(DXValue seqVal){
+    //System.out.println("Period: "+_currentPeriodIndex);//debug
     Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex--).getAttach();
     if(_currentPeriodIndex<=-1){
       _currentPeriodIndex=_setOfPeriods.size()-1;
       seqVal.setIntValue(seqVal.getIntValue()-1);
       //seqIndex++;
     }
+
     return period;
+  }
+
+  /**
+   *
+   * */
+  public String toString(String ID){
+    String str="";
+    for(int i=0; i< _setOfPeriods.size(); i++)
+      str+=ID+"--"+getPeriod(i).toString()+DConst.CR_LF;
+    return str;
   }
 
 

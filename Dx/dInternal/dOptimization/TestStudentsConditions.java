@@ -118,7 +118,7 @@ public class TestStudentsConditions implements Condition {
   * @param eventDuration (in number of periods)
   * @return
   */
- private Vector periodVariationEventsPeriods(int[] perKey){
+ protected Vector periodVariationEventsPeriods(int[] perKey){
    Vector periodsVector= new Vector(1);
    _cycle.setCurrentDaySeqPerIndex(perKey[0]-1,perKey[1]-1,perKey[2]-1);
    _cycle.getPreviousPeriod(1);

@@ -268,7 +268,6 @@ public class Period extends DXObject {
    *
    * */
   public String toString(){
-
     String str=_beginHour[0]+":"+_beginHour[1]+" -- "+_priority;
     return str;
   }

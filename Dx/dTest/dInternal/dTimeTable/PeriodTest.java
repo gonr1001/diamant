@@ -83,6 +83,7 @@ String path;
     assertEquals("test_getEndHour : assertEquals (endMinute):", period.getEndHour(60)[1], 15);
   }
 
+
   /**
    * test that gives the end hour
    * */

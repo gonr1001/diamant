@@ -26,10 +26,27 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 
 public class CycleTest extends TestCase {
-   String path;
+   String _path;
+   Cycle _cycle;
    public CycleTest(String name) {
      super(name);
-     path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+     _path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+     //
+     readFile xmlFile;
+    Element  item;
+    _cycle= new Cycle();
+    try{
+      xmlFile = new readFile();
+      //System.out.println(path+"cycle.xml");//debug
+      Document  doc = xmlFile.getDocumentFile(_path+"cycle.xml");
+      ReadXMLElement list= new ReadXMLElement();
+      item= list.getRootElement(doc);
+      _cycle.readXMLtag(item);
+      //_setOfCycles.readXMLtag(root);
+    }catch(Exception e){
+      System.out.println(e);
+    }
+    //
    }
 
    public static Test suite() {
@@ -68,24 +85,94 @@ public class CycleTest extends TestCase {
    }
 
    /**
+   * test that gives the previous period
+   * */
+  public void test_previousPeriod_1(){
+    _cycle.setCurrentDaySeqPerIndex(2,1,1);
+    _cycle.getPreviousPeriod(1);
+    Period period= _cycle.getPreviousPeriod(1);
+    assertEquals("test_previousPeriod_1 : assertEquals (BeginHour):", period.getBeginHour()[0], 13);
+    assertEquals("test_previousPeriod_1 : assertEquals (BeginMinute):", period.getBeginHour()[1], 30);
+  }
+
+  /**
+   * test that gives the previous period
+   * */
+  public void test_previousPeriod_2(){
+    _cycle.setCurrentDaySeqPerIndex(2,1,0);
+    _cycle.getPreviousPeriod(1);
+    Period period= _cycle.getPreviousPeriod(1);
+    assertEquals("test_previousPeriod_2 : assertEquals (BeginHour):", 11, period.getBeginHour()[0]);
+    assertEquals("test_previousPeriod_2 : assertEquals (BeginMinute):", 15, period.getBeginHour()[1]);
+  }
+
+  /**
+   * test that gives the previous period
+   * */
+  public void test_previousPeriod_3(){
+    _cycle.setCurrentDaySeqPerIndex(2,0,0);
+    for (int i=0; i< 3; i++)
+      _cycle.getPreviousPeriod(1);
+    Period period= _cycle.getPreviousPeriod(1);
+    assertEquals("test_previousPeriod_3 : assertEquals (BeginHour):", 19, period.getBeginHour()[0]);
+    assertEquals("test_previousPeriod_3 : assertEquals (BeginMinute):", 00, period.getBeginHour()[1]);
+  }
+
+  /**
+   * test that gives the next period
+   * */
+  public void test_NextPeriod_1(){
+    _cycle.setCurrentDaySeqPerIndex(0,0,1);
+    _cycle.getNextPeriod(1);
+    Period period= _cycle.getNextPeriod(1);
+    assertEquals("test_NextPeriod_1 : assertEquals (BeginHour):", 10, period.getBeginHour()[0]);
+    assertEquals("test_NextPeriod_1 : assertEquals (BeginMinute):", 15, period.getBeginHour()[1]);
+  }
+
+  /**
+  * test that gives the next period
+  * */
+ public void test_NextPeriod_2(){
+   _cycle.setCurrentDaySeqPerIndex(0,0,3);
+   _cycle.getNextPeriod(1);
+   Period period= _cycle.getNextPeriod(1);
+   assertEquals("test_NextPeriod_2 : assertEquals (BeginHour):", 13, period.getBeginHour()[0]);
+   assertEquals("test_NextPeriod_2 : assertEquals (BeginMinute):", 30, period.getBeginHour()[1]);
+  }
+
+  /**
+   * test that gives the next period
+   * */
+  public void test_NextPeriod_3(){
+    _cycle.setCurrentDaySeqPerIndex(1,2,2);
+    for (int i=0; i< 3; i++)
+      _cycle.getNextPeriod(1);
+    Period period= _cycle.getNextPeriod(1);
+    assertEquals("test_NextPeriod_3 : assertEquals (BeginHour):", 10, period.getBeginHour()[0]);
+    assertEquals("test_NextPeriod_3 : assertEquals (BeginMinute):", 15, period.getBeginHour()[1]);
+  }
+
+
+
+   /**
    * test that read the cycle xml tag
    * */
   public void test_readXMLtag(){
-    readFile xmlFile;
+    /*readFile xmlFile;
     Element  item;
     Cycle cycle= new Cycle();
     try{
       xmlFile = new readFile();
       //System.out.println(path+"cycle.xml");//debug
-      Document  doc = xmlFile.getDocumentFile(path+"cycle.xml");
+      Document  doc = xmlFile.getDocumentFile(_path+"cycle.xml");
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
       cycle.readXMLtag(item);
       //_setOfCycles.readXMLtag(root);
     }catch(Exception e){
       System.out.println(e);
-    }
-    assertEquals("test_readXMLtag : assertEquals 1 (number of days):", cycle.getNumberOfDays(), 7);
+    }*/
+    assertEquals("test_readXMLtag : assertEquals 1 (number of days):", _cycle.getNumberOfDays(), 7);
   }
 
   /**
@@ -110,10 +197,10 @@ public class CycleTest extends TestCase {
      //write xml file
      Element ttCycle= cycle.writeXMLtag(doc);
      doc= wr.buildDOM(doc,ttCycle);
-     writeFile.write(doc,path+"SaveCycle.xml");
+     writeFile.write(doc,_path+"SaveCycle.xml");
 
      // read xml file
-     doc = xmlFile.getDocumentFile(path+"SaveCycle.xml");
+     doc = xmlFile.getDocumentFile(_path+"SaveCycle.xml");
      ReadXMLElement list= new ReadXMLElement();
      item= list.getRootElement(doc);
      newCycle.readXMLtag(item);

@@ -32,7 +32,8 @@ public StudentsConflictsMatrixTest(String name) {
                     File.separator+"loadData.dia",0);
   _dm.buildSetOfEvents();
   //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-  _dm.getConditionsTest().initAllConditions();
+  _dm.getConditionsTest().buildStudentConflictMatrix();
+  _dm.getConditionsTest().buildAllConditions(_dm.getTTStructure());
   _dm.setStateBarComponent();
   _matrix = _dm.getConditionsTest().getConflictsMatrix();
 }
@@ -47,38 +48,40 @@ public StudentsConflictsMatrixTest(String name) {
    *
    */
   public void test_SectionKeys(){
-    String key1= "ADM111.1.A";// key 1
-    String key2 = "GIN310.1.A";//key 136
+    String key1= "GCH100.1.01";// key 1
+    String key2 = "AMC645.1.01";//key 136
     int[] index= _matrix.getSectionsKeys(key1,key2);
-    assertEquals("test1_Matrix : assertEquals", 136, index[1]);
-    assertEquals("test1_Matrix : assertEquals", 1, index[0]);
+    assertEquals("test_SectionKeys : assertEquals 1", 6, index[0]);
+    assertEquals("test_SectionKeys : assertEquals 2", 10, index[1]);
    }
 
    /**
     *
     */
    public void test1_Matrix(){
-     String key1= "ADM111.1.A";
-     String key2 = "GIN310.1.A";
+     String key1= "AMC640.1.01";
+     String key2 = "AMC645.1.01";
      assertEquals("test1_Matrix : assertEquals", 4, _matrix.getNumberOfCOnflicts(key1,key2));
+
    }
 
    /**
     *
     */
    public void test2_Matrix(){
-     String key1= "ADM111.1.B";
-     String key2 = "GIN310.1.A";
-     assertEquals("test2_Matrix : assertEquals", 3, _matrix.getNumberOfCOnflicts(key1, key2));
+     String key1= "AMC640.1.02";
+    String key2 = "AMC645.1.01";
+    assertEquals("test1_Matrix : assertEquals", 1, _matrix.getNumberOfCOnflicts(key1,key2));
+
    }
 
    /**
     *
     */
    public void test3_Matrix(){
-     String key1= "ADM111.1.C";
-     String key2 = "GIN310.1.A";
-     assertEquals("test2_Matrix : assertEquals", 3, _matrix.getNumberOfCOnflicts(key1, key2));
+     String key1= "GCH111.2.01";
+     String key2 = "AMC645.1.01";
+     assertEquals("test3_Matrix : assertEquals", 1, _matrix.getNumberOfCOnflicts(key1, key2));
    }
 
 
