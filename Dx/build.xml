@@ -170,7 +170,7 @@
 	   <target name="completepackage" depends="package">
 	        	
 	    	<copy file="${origDist}/Diamant.bat" todir="${distDir}" />
-	    	
+	   		<copy file="${distDir}/tictac.jar" todir="${srcDir}" />
 	    	<copy todir="${distDir}/pref">
 	    	 <fileset dir="${srcDir}/pref">
 	    	    <exclude name="**/CVS" />
