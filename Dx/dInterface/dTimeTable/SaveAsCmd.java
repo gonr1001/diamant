@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsCmd $Revision: 1.2 $  $Date: 2003-10-28 14:19:06 $
+ * Title: SaveAsCmd $Revision: 1.3 $  $Date: 2004-03-23 20:46:38 $
  * Description: SaveAsCmd is a class used to save a
  *  			document
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,10 +29,10 @@ import dInterface.DApplication;
 public class SaveAsCmd implements Command {
 
   public SaveAsCmd() {
-  } //end NewCmd
+  } //end SaveAsCmd
 
   public void execute(DApplication dApplic) {
-    new SaveAsDlg(dApplic);
+    new SaveAsTTDlg(dApplic);
   } // end execute
 } /* end SaveAsCmd class */
 

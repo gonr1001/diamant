@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.42 $  $Date: 2004-02-24 16:31:02 $
+ * Title: DApplication $Revision: 1.43 $  $Date: 2004-03-23 20:46:38 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -93,6 +93,7 @@ public class DApplication implements ActionListener {
     _currentDir = System.getProperty("user.dir");
 
     _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
+
     setLAF(_preferences._lookAndFeel);
 
     //updateLAF(_preferences._lookAndFeel);

@@ -36,7 +36,6 @@ import dInternal.DModel;
 import dInternal.dData.SetOfStates;
 import dInternal.dData.State;
 import dInterface.ProgressBar;
-import dInterface.dTimeTable.SaveAsDlg;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dData.Resource;

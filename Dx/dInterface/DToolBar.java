@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.38 $  $Date: 2004-02-24 17:19:02 $
+ * Title: ToolBar $Revision: 1.39 $  $Date: 2004-03-23 20:46:38 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -413,13 +413,13 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   private void selectAddRemoveDays(int nbDays){
     int signe= nbDays-_tts.getCurrentCycle().getNumberOfDays();
     if (signe>0){
-      if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous ajouter "+ signe + " jour(s)")== ConfirmDlg.OK_OPTION){
+      if (JOptionPane.showConfirmDialog(_dApplic.getJFrame(),"Voulez-vous ajouter "+ signe + " jour(s)") == JOptionPane.OK_OPTION){
         _tts.getCurrentCycle().addDays(signe);
 
       }
     }else{// else  if (signe>0)
       if(signe<0){
-        if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous supprimer "+ (-signe) + " jour(s)")== ConfirmDlg.OK_OPTION){
+        if (JOptionPane.showConfirmDialog(_dApplic.getJFrame(),"Voulez-vous supprimer "+ (-signe) + " jour(s)")== JOptionPane.OK_OPTION){
           _tts.getCurrentCycle().removeDays(-signe);
 
         }

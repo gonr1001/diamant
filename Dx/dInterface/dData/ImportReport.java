@@ -36,7 +36,7 @@ import dInternal.DModel;
 import dInternal.dData.SetOfStates;
 import dInternal.dData.State;
 import dInterface.ProgressBar;
-import dInterface.dTimeTable.SaveAsDlg;
+import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dData.Resource;
@@ -122,7 +122,7 @@ public class ImportReport extends ViewReport implements ActionListener {
                  " *****" +
                  DConst.CR_LF + DConst.CR_LF;
         data +=  jta.getText();
-        new SaveAsDlg(_dApplic, data);
+        new SaveAsTxtDlg(_dApplic, data);
     }//end if (e.getActionCommand().equals(_buttonsNames[0]))
 
   }//end method

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.85 $  $Date: 2004-03-19 19:37:37 $
+ * Title: DConst $Revision: 1.86 $  $Date: 2004-03-23 20:46:38 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.85 $
+ * @version $Revision: 1.86 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -188,6 +188,9 @@ public class DConst {
   public final static String DEF_F_TD  = res.getString("defFTD");//Definir fichiers pour l'importation automatique
   public final static String IMP_A_TD  = res.getString("impATD");//Importation de fichiers
   public final static String IMP_A_SUC  = res.getString("impASuc");//Fichiers importés avec succes!!!
+  public final static String EXISTS  = res.getString("exists");//existe
+  public final static String REPLACE  = res.getString("replace");//remplacer?
+
   //DefFilesToImportDlg
   public final static String DEF_F_D1  = res.getString("defFD1"); // "Les cours"
   public final static String DEF_F_D2  = res.getString("defFD2"); // "Inscription d'étudiants"

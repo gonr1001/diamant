@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveCmd $Revision: 1.4 $  $Date: 2003-10-28 14:24:53 $
+ * Title: SaveCmd $Revision: 1.5 $  $Date: 2004-03-23 20:46:38 $
  * Description: SaveCmd is a class used to save a
  *  			document
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,7 +33,7 @@ public class SaveCmd implements Command {
 
   public void execute(DApplication dApplic) {
     if (dApplic.getDMediator().getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
-      new SaveAsDlg(dApplic);
+      new SaveAsTTDlg(dApplic);
     else
       if (dApplic.getDMediator().getCurrentDoc().isModified())
         dApplic.getDMediator().saveCurrentDoc(dApplic.getDMediator().getCurrentDoc().getDocumentName());
