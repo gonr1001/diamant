@@ -118,19 +118,19 @@ en réduisant le coût de modifications et en effectuant la
 vérification et la validation des données à l'endroit nécessaire
 dans le processus et en évitant la redondance du code et des
 données. Cette architecture met en \oe{}uvre une bases de données,
-un sites Web et un logiciel de construction d'horaires.  La
+un site Web et un logiciel de construction d'horaires.  La
 vérification et la validation de données  se fera à l'entrée de
 données et avec de contraintes d'intégrité dans la base de
-données.  Les sites Web sont utilisés principalement pour la
-saisie de données, ceci permet de vérifier aussi la validité des
-données avant que la donnée soit entrée dans la base. Autre
-fonction du site Web est d'offrir les horaires de manière
-personnalisé, une fois que l'horaire est construit. La base de
-données permet l'extraction des données, selon différents formats.
-Ainsi, l'entrée de données du logiciel de construction est
-facilité.  Bien entendu, avec l'aide du logiciel de construction
-d'horaires, il est possible de fabriquer un horaire avec un
-minimum de conflits.
+données.  Le site Web est utilisé principalement pour la saisie de
+données, ceci permet de vérifier aussi la validité des données,
+grace au règles d'affaires avant que la donnée soit entrée dans la
+base. Autre fonction du site Web est d'offrir les horaires de
+manière personnalisé, une fois que l'horaire est construit. La
+base de données permet l'extraction des données, selon différents
+formats. Ainsi, l'entrée de données du logiciel de construction
+est facilité.  Bien entendu, avec l'aide du logiciel de
+construction d'horaires, il est possible de fabriquer un horaire
+avec un minimum de conflits.
 
 Beaucoup de recherche a été faite dans la construction
 d'horaires~: algorithmes et formulations mathématiques et
@@ -140,40 +140,40 @@ jusqu'à présent, au développement général de la production
 d'horaires. Nous pensons que le fait d'avoir une vue globale sur
 le processus peut aider la recherche en construction d'horaires.
 White \cite{white00} a mis en évidence que le Web doit être
-utilisé come un moyen de diffusion de horaires. Nous allons un peu
-plus loin en proposant  de l'utiliser également comme interface
-d'entrée, de plus nous proposons l'architecture nécessaire à
-supporter nos idées. De Causmaecker et al \cite{decausmaecker02}
-ont introduit l'idée que la sémantique du Web peut être utilisé
-par le chercheurs en construction d'horaires. Ils ont aussi
-introduit l'idée d'utiliser XML comme langage de communication
-dans le construction d'horaires par agents. Nous proposons aussi
-l'utilisation de XML, afin de faciliter les échanges entre
-certains modules de notre architecture. Dans Burke et al.
-\cite{burke97} il est proposé d'avoir un standard pour le format
-de données pour des instances de horaires, leur but était de
-comparer des algorithmes (programmes) dans de benchmarks. Dans un
-travail plus récent, Kingston \cite{kingston02} propose un
-language STTL et un interpréteur, avec le même objectif. Özcan
-\cite{ozcan03} suggère aussi un autre standard pour définir des
-instances de problèmes de construction d'horaires, ayant comme
-base le langage XML. Il nous semble qu'il serait souhaitable
-d'avoir un standard, mais c'est un but très difficile à atteindre.
-À la place, notre approche permet d'utiliser  la base de données
-comme un outil d'extraction et de formattage, de cette manière le
-logiciel de construction d'horaires peut recevoir les données
-nécessaires. Ainsi, il serait possible de générer des instances de
-problèmes pour d'autres logiciels de construction d'horaires.
+utilisé comme un moyen de diffusion de horaires. Nous allons un
+peu plus loin en proposant  de l'utiliser également comme
+interface d'entrée, de plus nous proposons l'architecture
+nécessaire à supporter nos idées. De Causmaecker et al
+\cite{decausmaecker02} ont introduit l'idée que la sémantique du
+Web peut être utilisé par le chercheurs en construction
+d'horaires. Ils ont aussi introduit l'idée d'utiliser XML comme
+langage de communication dans le construction d'horaires par
+agents. Nous proposons aussi l'utilisation de XML, afin de
+faciliter les échanges entre certains modules de notre
+architecture. Dans Burke et al. \cite{burke97} il est proposé
+d'avoir un standard pour le format de données pour des instances
+de horaires, leur but était de comparer des algorithmes
+(programmes) dans de benchmarks. Dans un travail plus récent,
+Kingston \cite{kingston02} propose un language STTL et un
+interpréteur, avec le même objectif. Özcan \cite{ozcan03} suggère
+aussi un autre standard pour définir des instances de problèmes de
+construction d'horaires, ayant comme base le langage XML. Il nous
+semble qu'il serait souhaitable d'avoir un standard, mais c'est un
+but très difficile à atteindre. À la place, notre approche permet
+d'utiliser  la base de données comme un outil d'extraction et de
+formattage, de cette manière le logiciel de construction
+d'horaires peut recevoir les données nécessaires. Ainsi, il serait
+possible de générer des instances de problèmes pour d'autres
+logiciels de construction d'horaires.
 
 
 Le développement de notre architecture, a été divisé en deux
 étapes, nous avons analysé le flot des données dans un système
 générique de production d'horaires. Ensuite nous avons défini
-l'architecture, blocs de base et la responsabilité de chaque bloc
-en évitant les traitements redondants. Les objectifs de définir
-une architecture ouverte et extensible ont été respectes pendant
-nos travaux. Ceci est présenté dans les sections \ref{sec:data} et
-\ref{sec:archi}.
+l'architecture mieux adapté à ce flot d'information. Les objectifs
+de définir une architecture ouverte et extensible ont été
+respectes pendant nos travaux. Ceci est présenté dans les sections
+\ref{sec:data} et \ref{sec:archi}.
 
 Une fois l'architecture définie, nous avons crée une instance afin
 de l'implanter dans un système de production d'horaires à
@@ -198,11 +198,11 @@ année\footnote{Dans l'Université de Sherbrooke on parle de
 trimestre, mais en réalité il comporte seize semaines (presque
 quatre mois), donc le système doit s'adapter à tout periode $P$.}.
 Le processus fini lorsque toutes le personnes concernés reçoivent
-l'horaire sur un support papier ou sur le Web, voir figure
-\ref{fig:fOne} et que la période de validité de l'horaire touche à
-sa fin. Les données à saisir sont multiples, par exemple les cours
-qui vont avoir lieu dans la période $P$; le format du cours (3h,
-ou 2h+1h); les enseignants possibles ou assignées à certains
+l'horaire sur un support papier ou sur le Web (voir figure
+\ref{fig:fOne}) et que la période de validité de l'horaire touche
+à sa fin. Les données à saisir sont multiples, par exemple les
+cours qui vont avoir lieu dans la période $P$; le format du cours
+(3h, ou 2h+1h); les enseignants possibles ou assignées à certains
 cours; les locaux possibles ou assignées; la disponibilité des
 enseignants et des locaux, etc.. Signalons qu'il existe des
 institutions où les étudiants font un pré-choix et d'autres où les
@@ -465,14 +465,6 @@ de données complexes.
 
 \subsection {L'architecture trois couches et le système de production d'horaires}
 
-Pour chaque élément de l'architecture trois couches que nous avons
-présenté, nous allons proposer un composant qui fait partie de
-l'application de production d'horaires, dans cette section nous
-allons présenter l'integration entre le flot des données propre à
-notre système de production d'horaires et l'architecture proposé.
-
-La conception de haut niveau de notre système de production
-d'horaires est simple (voir figure \ref{fig:fOne})~:
 
 Pour chaque élément de l'architecture que nous avons présenté dans
 la section antérieure, nous allons proposer un composant qui fait
@@ -762,6 +754,12 @@ les institutions.
 
 
 \section{Conclusions}\label{sec:conc}
+
+Nous avons présenté une architecture pour la production d'horaires
+dans une institution d'enseignement. Un objectif a guidé notre
+démarche~: avoir une architecture ouverte et extensible. Dans la
+présentation de l'architecture nous avons montré qu'elle possède
+les deux qualités.
 
 L'objectif de cet article est de modéliser ce processus de
 production d'horaires pour prendre des décisions permettant son
