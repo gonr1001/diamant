@@ -62,4 +62,12 @@ public class State extends DXObject{
     return value;
   }
 
+  public String getModif(){
+     return "Hello";
+  }
+
+  public void incrModif(){
+
+  }
+
 }
