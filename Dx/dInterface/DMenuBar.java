@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.48 $  $Date: 2003-07-31 15:01:35 $
+ * Title: DMenuBar $Revision: 1.49 $  $Date: 2003-08-18 15:26:33 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.48 $
+ * @version $Revision: 1.49 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -65,7 +65,7 @@ public class DMenuBar extends JMenuBar{
     this.add(menu);
 
     // Items in menu FILE.
-    CmdMenu mHello = new CmdMenu("fichier2.dia");
+    CmdMenu mHello = new CmdMenu("fichier1.dia");
     menu.add(mHello);
     mHello.setFont(new java.awt.Font(_mfont, _font, _nPT));
     mHello.setCommand(new helloCmd(_dApplic));
