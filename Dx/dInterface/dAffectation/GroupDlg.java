@@ -57,7 +57,7 @@ public class GroupDlg extends JDialog implements ActionListener{
   private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _buttonsPanel, _insidePanel, _centerPanel, _notAssignedPanel;
   private JScrollPane _scrollPane;
-  private Object [] _currentStudents = new Object[0];
+  //private Object [] _currentStudents = new Object[0];
   private Section _section;
   private SetOfActivities _activities;
   private SetOfStudents _students;
@@ -363,7 +363,7 @@ public class GroupDlg extends JDialog implements ActionListener{
                 _assignedLists[j].clearSelection();
           }//if (e.getSource().equals(_assignedLists[i]))
         }//end for(int i = 0; i<_numberOfSections; i++)
-      _currentStudents = ((JList)e.getSource()).getSelectedValues();
+      //_currentStudents = ((JList)e.getSource()).getSelectedValues();
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){
 
