@@ -1,0 +1,52 @@
+\chapter{Les hypothèses de travail}
+
+Il y a certaines caractéristiques qui donnent un degré de qualité
+à un logiciel entre autres la extensibilité et la
+compatibilité\cite{meyer2000}, permettent à un logiciel de évoluer
+d'une manière contrôlée. Pour avoir ces caractéristiques dans
+notre logiciel nous pouvons essayer de le bâtir par
+couches\cite{gonzalez2003}.
+
+Nous avons un logiciel qui est capable de créer les horaires de
+cours et des examens, il s'agit d'une outil puissante pour aider à
+la création d'horaires, mais dans\cite{gonzalez2003} nous avons
+parlé de l'importance de produire les horaires. Pour produire les
+horaires il nous faut une intégration complète de l'information.
+
+Dans le cas de l'Université de Sherbrooke nous avons le logiciel
+Diamant qui à l'heure actuel est à sa version 1.5. Ce logiciel
+reçoive ses données de travail à partir de quelques fichiers en
+format texte qui sont envoyées par les Services de Technologie de
+l'Information de l'Université. Après un certain traitement de ces
+fichiers ils sont chargés en mémoire pour créer l'horaire.
+
+Même si les fichiers texte font le travail, la quantité d'erreurs
+est trop élevée, et la plupart des erreurs sont liées à mauvaises
+données dans les fichiers.
+
+Pour essayer de résoudre ce problème nous pensons qu'il faut
+utiliser une système de bases de données pour mieux gérer les
+données.
+
+Nous sommes rendus à la étape de conception d'une nouvelle version
+du logiciel Diamant, c'est-è-dire, la version 2.0 qui va utiliser
+les données à partir d'une base de données.
+
+Pour implementer la base de données nous avons deux options:
+\begin{enumerate}
+\item Laisser la base de données dans les serveurs de Services de
+Technologie de l'Information de l'Université.
+
+\item Créer une nouvelle base de données qui aura une interface
+vers les Serveurs du Services de Technologie de l'Information de
+l'Université, mais qui stockera les données nécessaires pour le
+correct fonctionnement de Diamant 2.0.
+
+\end{enumerate}
+
+Chaque option a ses avantages mais aussi ses inconvénients, nous
+allons les analyser ici.
+
+\section{Laisser les données dans les serveurs du STI}
+
+\section{Créer une nouvelle Base de Données}

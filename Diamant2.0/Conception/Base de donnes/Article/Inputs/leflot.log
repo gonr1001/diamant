@@ -1,0 +1,11 @@
+This is e-TeX, Version 3.141592-2.1 (MiKTeX 2.4) (preloaded format=latex 2000.11.28)  13 MAY 2004 14:55
+entering extended mode
+**leflot.tex
+(leflot.tex
+LaTeX2e <2001/06/01>
+Babel <v3.7j> and hyphenation patterns for english, french, german, ngerman, du
+mylang, nohyphenation, loaded.
+! Undefined control sequence.
+l.1 \chapter
+            {Le flot d'information}
+? 
