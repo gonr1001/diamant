@@ -10,7 +10,12 @@ package dInternal.dUtil;
  */
 import java.util.StringTokenizer;
 import com.iLib.gDialog.FatalProblemDlg;
+import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Period;
+import dResources.DConst;
 import java.io.File;
+import java.util.Vector;
 
 public class DXToolsMethods {
 
@@ -149,6 +154,63 @@ public class DXToolsMethods {
     * */
    public final static boolean isFileExist(String filename){
      return (new File(filename)).exists();
+   }
+
+   /**
+    *
+    * @param initialAvail
+    * @param tt
+    * @return
+    */
+   public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure tt){
+     Day day = tt.getCurrentCycle().getCurrentDay();
+     Period per;
+     int itr=0;
+     int[][] finalAvail= new int [tt.getNumberOfActiveDays()]
+                       [tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())];
+     for (int i=0; i< day.getSetOfSequences().size(); i++){
+       for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
+         per = day.getSequence(i).getPeriod(j);
+         //boolean avail = isAvailableInRange(initialAvail)
+         for (int k=0; k< tt.getNumberOfActiveDays(); k++){
+           boolean avail = isAvailableInRange(initialAvail,k,per.getBeginHour()
+           , per.getEndHour(tt.getPeriodLenght()));
+           if (avail)
+             finalAvail[k][itr]=1;
+           else
+             finalAvail[k][itr]=5;
+         }// end for (int k=0; k< tt.getCurrentCycle().getNumberOfDays(); k++)
+         itr++;
+       }//end for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++)
+     }// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+     return finalAvail;
+   }
+
+   /**
+    * check the state availability in the range
+    * @param initial the availability matrix
+    * @param day the day where to search availability
+    * @param beginH the begin hour
+    * @param endH the end our
+    * @return boolean
+    */
+   private static boolean isAvailableInRange(int[][] initial,int day, int[] beginH, int[] endH){
+     int beginIndex;
+     int endIndex;
+     beginIndex= beginH[0]- DConst.STIBEGINHOUR;
+     if (beginIndex<0)
+       return false;
+     else{// else  if (beginIndex<0)
+       endIndex = endH[0]- DConst.STIBEGINHOUR;
+       if(endIndex> initial[day].length)
+         return false;
+       else{// else if(endIndex> initial[day].length)
+         for (int i=beginIndex; i<= endIndex; i++)
+           if(initial[day][i]==5)
+             return false;
+       }// end else if(endIndex> initial[day].length)
+     }//end else  if (beginIndex<0)
+     return true;
    }
 
 }

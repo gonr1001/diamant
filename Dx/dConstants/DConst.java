@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.37 $  $Date: 2003-07-28 14:01:01 $
+ * Title: DConst $Revision: 1.38 $  $Date: 2003-07-31 15:44:38 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.37 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.38 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -62,6 +62,8 @@ public class DConst {
   public final static int CYCLEANDEXAM = 3;
   public final static int NBOFDAYS=5;
   public final static int NBOFPERIODSADAY=14;
+  public final static int STIBEGINHOUR=8;
+  public final static int STIBEGINMINUTE=30;
   //DDocument
   public final static String V_DATE = res.getString("vDate");//13 mai 2003
   public final static String BLOCS = "BLOCS";//pas trouve dans DStringFrRes

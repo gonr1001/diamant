@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.49 $  $Date: 2003-07-31 11:17:16 $
+ * Title: DModel $Revision: 1.50 $  $Date: 2003-07-31 15:44:38 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.49 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.50 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 import dInterface.DApplication;
 import dInternal.dData.*;
 import dInternal.dData.LoadData;
-
+import dInternal.dUtil.DXToolsMethods;
 import dInternal.dTimeTable.TTStructure;
 
 
@@ -117,6 +117,7 @@ public class DModel {
       _setOfInstructors = (SetOfInstructors)project.get(2);
       _setOfRooms= (SetOfRooms)project.get(3);
       _setOfActivities=(SetOfActivities)project.get(4);
+      resizeInstructorsAvailability();//
       _setOfStudents = (SetOfStudents)project.get(5);
       if( _setOfRooms.getError().length()!=0){
         return _setOfRooms.getError();
@@ -263,11 +264,14 @@ public void setVersion(String version){
   }
 
 
-  public void test1_setAvailability(){
- Vector v = new Vector();
- v.add("1 1 1 1 5");
- v.add("1 1 1 5 5");
- int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
-
+ private void resizeInstructorsAvailability(){
+   int [][] matrix;
+   InstructorAttach attach;
+   for (int i=0; i< _setOfInstructors.size(); i++){
+     attach = (InstructorAttach)_setOfInstructors.getResourceAt(i).getAttach();
+     matrix=attach.getMatrixAvailability();
+     matrix = DXToolsMethods.resizeAvailability(matrix,_ttStruct);
+     attach.setAvailability(matrix);
+   }
   }
 } /* end class DModel */
