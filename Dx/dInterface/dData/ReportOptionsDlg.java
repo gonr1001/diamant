@@ -166,7 +166,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         dispose();
     //if button OK
     if (command.equals(_buttonsNames[0])){
-      _parentDlg.setReport(buildSelectedResources(_resources, _rightVec));
+      _parentDlg.setReport(buildChoicedResources(_resources, _rightVec));
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
@@ -181,7 +181,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3])){
       int index = -1;
       Object selectedValue = _rightList.getSelectedValue();
-      SetOfResources s = buildSelectedResources(_resources, _rightVec);
+      SetOfResources s = buildChoicedResources(_resources, _rightVec);
       Vector v;
       //toUp button
       if (command.equals(_arrowsNames[2]))
@@ -250,7 +250,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    * setOfResources
    * @return the setOfResources built
    */
-  private SetOfResources buildSelectedResources(SetOfResources fullResources, Vector vec){
+  private SetOfResources buildChoicedResources(SetOfResources fullResources, Vector vec){
     Resource r = null;
     fullResources.sortSetOfResourcesByID();
     SetOfResources selectedResources = new SetOfResources(100);

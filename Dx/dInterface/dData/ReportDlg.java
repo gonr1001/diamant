@@ -40,7 +40,7 @@ public class ReportDlg extends JDialog implements ActionListener{
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_OPTIONS, DConst.BUT_CANCEL};
-  private SetOfResources _resources;
+  private SetOfResources[] _resources;
 
   public ReportDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
@@ -69,6 +69,8 @@ public class ReportDlg extends JDialog implements ActionListener{
     //adding the elements to the dialog
     getContentPane().add(_tabbedPane, BorderLayout.NORTH);
     getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+    System.out.println("_tabbedPane.getComponentCount() "+_tabbedPane.getComponentCount());
+    _resources = new SetOfResources[_tabbedPane.getComponentCount()];
   }
 
   /**
@@ -115,7 +117,7 @@ public class ReportDlg extends JDialog implements ActionListener{
       fieldsNames[i] = selectedResources.getResourceAt(i).getID();
       fieldLengths[i] = Integer.parseInt(((DXValue)selectedResources.getResourceAt(i).getAttach()).getStringValue());
       ((DXValue)res.getAttach()).setBooleanValue(true);
-      _resources = selectedResources;
+      _resources[_tabbedPane.getSelectedIndex()] = selectedResources;
     }//end for
     String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
@@ -178,7 +180,7 @@ public class ReportDlg extends JDialog implements ActionListener{
     String command = e.getActionCommand();
     //If "Option" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
-        new ReportOptionsDlg(_dApplic, _jd, _resources, _tabbedPane.getSelectedIndex());
+        new ReportOptionsDlg(_dApplic, _jd, _resources[_tabbedPane.getSelectedIndex()], _tabbedPane.getSelectedIndex());
     //If "Cancel" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
       dispose();
