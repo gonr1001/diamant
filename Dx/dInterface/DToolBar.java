@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.51 $  $Date: 2004-11-05 13:53:48 $
+ * Title: DToolBar $Revision: 1.52 $  $Date: 2004-12-01 19:58:05 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -18,7 +18,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: syay1801 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -67,7 +67,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   private JLabel _lSetNumberOfDays, _lDaySelector, _lDayNameSelector,
                  _lPeriodIndicator, _lPeriodTypeSelector;
   private JToolBar.Separator _jtbSep [];
-  private String _error = "";
+//  private String _error = "";
   private TTStructure _tts;
 
   //-------------------------------------------
