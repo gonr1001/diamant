@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.11 $  $Date: 2003-10-24 20:21:37 $
+ * Title: Preferences $Revision: 1.12 $  $Date: 2003-10-27 15:36:24 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -45,8 +45,7 @@ public class Preferences {
     _dApplic = dApplic;
     try {
       FilterFile filter = new FilterFile();
-      filter.setCharKnown("È…Ë»‡¿«ÁÎÀÔœ‘ÙŸ˘-',; () Í.");
-      if (filter.validFile(str)) {
+      if (filter.adjustingFile(str)) {
       StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), CR_LF );
       //System.out.println(st.toString());
       _lookAndFeel = st.nextToken();
