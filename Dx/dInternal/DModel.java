@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.95 $  $Date: 2004-05-28 14:42:11 $
+ * Title: DModel $Revision: 1.96 $  $Date: 2004-05-31 13:53:13 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.95 $
+ * @version $Revision: 1.96 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -26,6 +26,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import dInterface.DDocument;
 import dInternal.dData.*;
+import dInternal.dXMLData.*;
 import dInternal.dConditionsTest.*;
 
 import dInternal.dUtil.DXValue;
@@ -294,6 +295,12 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public String importData(String str) {
+    // debug for xml file to be remove
+    // ysyam
+    XMLLoadData xmlloadData = new XMLLoadData(str, this);
+    xmlloadData.extractRooms(null, true);
+    // end debug
+
     LoadData loadData = new LoadData(str, this);
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors

@@ -1,7 +1,7 @@
 package lineInterface;
 
 /**
- * <p>Title: miniDia</p>
+ * <p>Title: Diamant 1.5</p>
  * <p>Description: exam timetable construction with Condition Pattern</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Company: UdeS</p>
@@ -22,7 +22,7 @@ public class DILigne {
 /*
  /**
   *
-  * Title: RunAkko $Revision: 1.2 $  $Date: 2003-09-12 16:44:07 $
+  * Title: RunAkko $Revision: 1.3 $  $Date: 2004-05-31 13:53:14 $
   * Description: RunAkko is a class used to call the whole application.
   *             the main method of the whole program is here.
   * Copyright (c) 2001 by rgr-fdl.
@@ -35,8 +35,8 @@ public class DILigne {
   * it only in accordance with the terms of the license agreement
   * you entered into with rgr-fdl.
   *
-  * @version $Revision: 1.2 $
-  * @author  $Author: rgr $
+  * @version $Revision: 1.3 $
+  * @author  $Author: syay1801 $
   * @since JDK1.3
   */
  /*

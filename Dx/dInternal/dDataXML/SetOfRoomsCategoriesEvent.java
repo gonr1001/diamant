@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dXMLData;
 
 
 
@@ -7,17 +7,16 @@ package dInternal.dData;
  * <p>Description: exam timetable construction with Condition Pattern</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Company: UdeS</p>
- * @author rgr
+ * @author ysyam
  * @version 1.0
  */
 
 
 import java.util.EventObject;
 
+public class SetOfRoomsCategoriesEvent extends EventObject{
 
-public class SetOfInstructorsEvent extends EventObject{
-
-  public SetOfInstructorsEvent(SetOfInstructors source) {
+  public SetOfRoomsCategoriesEvent(SetOfRoomsCategories source) {
     super (source);
   }
 }

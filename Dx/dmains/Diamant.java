@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.10 $  $Date: 2004-05-27 13:29:33 $
+ * Title: ClassName $Revision: 1.11 $  $Date: 2004-05-31 13:53:13 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,12 +16,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.11 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
-import java.io.File; 
+import java.io.File;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -69,14 +69,16 @@ public class DRun {
           _logger.warn("hello_with_a_GUI");
           _logger.warn("Java version: "+ System.getProperty("java.version"));
 		  	System.out.println(System.getProperty("java.version") + " r "  + DConst.JVM);
-          if (0 <= System.getProperty("java.version").compareTo(DConst.JVM)) {          	
+          if (0 <= System.getProperty("java.version").compareTo(DConst.JVM)) {
 			DApplication _dApplic = new DApplication();
-          }          	
-          else {
-          	new FatalProblemDlg("You need to download and install a new  \n" +
-          						"Java Virtual Machine");
           }
-          	
+          else {
+            new FatalProblemDlg("You need to download and install a new  \n" +
+                                "Java Virtual Machine");
+            System.out.println("bye");
+            System.exit(1);
+          }
+
         }
         else {
             System.out.println("hello");

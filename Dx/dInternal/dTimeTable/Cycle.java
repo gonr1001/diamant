@@ -701,6 +701,7 @@ public Period getLastPeriod(){
   private String _error = "";
   private int _currentDayIndex=0;
   private String _errorMessage = "XML file is corrupted";
+  //XML tags
   static final String _TAGITEM="TTday";
   static final String _TAGITEM1="dayRef";
   static final String _TAGITEM2="TTsequences";

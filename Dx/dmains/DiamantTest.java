@@ -1,7 +1,7 @@
 /**
  *
- * Title: miniDiaTest $Revision: 1.35 $  $Date: 2004-04-07 14:35:30 $
- * Description: miniDiaTest is a class used to call the suite test.
+ * Title: Diamant 1.5Test $Revision: 1.36 $  $Date: 2004-05-31 13:53:13 $
+ * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
  *
@@ -12,15 +12,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.36 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 //------------------------------
 
 /* Attention this file must be used with the terminal application
  * to execute you must type
- * java junit.swingui.TestRunner miniDiaTest
+ * java junit.swingui.TestRunner Diamant 1.5Test
  * in the application directory
  * eventually it is necessary to fix the CLASSPATH
  * include in .login file a line like
