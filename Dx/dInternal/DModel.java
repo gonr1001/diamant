@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.53 $  $Date: 2003-08-21 11:03:18 $
+ * Title: DModel $Revision: 1.54 $  $Date: 2003-08-21 20:41:11 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.53 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.54 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -25,6 +25,7 @@ import java.io.*;
 import javax.swing.JOptionPane;
 import dInterface.DApplication;
 import dInternal.dData.*;
+import dResources.DConst;
 import dInternal.dData.LoadData;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dTimeTable.TTStructure;
@@ -36,6 +37,7 @@ public class DModel {
   private int _type;
   private boolean _modified = false;
   private boolean _isTimeTable=true;
+  private int _constructionState=0;// tell where the time construction is
   private String _version;
   private String _error;
   private SetOfStates _setOfStates;
@@ -101,12 +103,6 @@ public class DModel {
     LoadData loadD = new LoadData();
     Vector project = loadD.loadProject(fileName);
 
-    // begin debug
-    String path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator;
-    LoadData _lData= new LoadData();
-    Vector _timeTable = _lData.loadProject(path+"fichier1.dia");
-    boolean res= ((SetOfRooms)project.get(3)).isEquals((SetOfRooms)_timeTable.get(3));
-    //end debug
     if (project.size()!=0) {
       setVersion((String)project.get(0));
       _ttStruct= (TTStructure)project.get(1);
@@ -132,7 +128,7 @@ public class DModel {
         return _setOfStudents.getError();
       }
     }
-    _ttStruct.sendEvent();// a deplacer
+    _constructionState=1;
     return"";
   }
 
@@ -174,7 +170,7 @@ public void setVersion(String version){
      if(_setOfStudents.getError().length()!=0){
        return _setOfStudents.getError();
      }
-
+     _constructionState=1;
      return "";
   }
 
@@ -246,6 +242,7 @@ public void setVersion(String version){
     for (int i=0; i< _dmListeners.size(); i++) {
       DModelListener dml = (DModelListener) _dmListeners.elementAt(i);
       dml.changeInDModel(event);
+      System.out.println("Dmodel listener started: "+i);//debug
     }
   }
 
@@ -263,6 +260,24 @@ public void setVersion(String version){
   public void setTTStructure(int [] a) {
     //_ttStruct.setValues(a);
     sendEvent();
+  }
+
+  /**
+   *
+   */
+  public void setStatesBarComponent(){
+    if (_constructionState>0){
+      ((State)_setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(_setOfActivities.size());
+      ((State)_setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(_setOfInstructors.size());
+      ((State)_setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(_setOfRooms.size());
+      ((State)_setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(_setOfStudents.size());
+
+      ((State)_setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(10);
+
+      ((State)_setOfStates.getResource(DConst.SB_C_INST).getAttach()).setValue(1);
+      ((State)_setOfStates.getResource(DConst.SB_C_ROOM).getAttach()).setValue(7);
+      ((State)_setOfStates.getResource(DConst.SB_C_STUD).getAttach()).setValue(2);
+    }
   }
 
 
