@@ -50,7 +50,7 @@ class reference1 {
 */
 class reference2 {
 }/**
-@__ref <oiref:design#Class#id2wx2gdl8bi61qdl8biqed.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id16fb7dlb0ax92dlb0bh0v.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInternal.dConditionsTest:oiref> 
 */
@@ -74,7 +74,7 @@ class __options {
 <oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=210,537,329,537:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=329,389,200,222,1:oigroup>
-<oigroup:<oiref:design#Class#id2wx2gdl8bi61qdl8biqed.diagram:oiref>=221,80,177,244,1:oigroup>
+<oigroup:<oiref:design#Class#id16fb7dlb0ax92dlb0bh0v.diagram:oiref>=221,77,177,244,1:oigroup>
 <oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,152,340,1:oigroup>
 <oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=596,346,128,164,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,798,1:oigroup>
