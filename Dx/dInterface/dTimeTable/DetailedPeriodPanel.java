@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.13 $  $Date: 2003-12-12 16:11:04 $
+ * Title: DetailedPeriodPanel $Revision: 1.14 $  $Date: 2003-12-15 17:11:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -37,7 +37,7 @@ import javax.swing.JPanel;
 
 import java.awt.Color;
 import javax.swing.JLabel;
-
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import java.awt.BorderLayout;
 import dInternal.dTimeTable.Period;
@@ -70,6 +70,7 @@ public class DetailedPeriodPanel extends PeriodPanel{
   public void setValue(Period period){
     JPanel topPanel = new JPanel();
     JPanel miPanel = new JPanel();
+    miPanel.setLayout(new GridLayout(0,1));
     JPanel bottomPanel = new JPanel();
     JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
 
@@ -90,7 +91,10 @@ public class DetailedPeriodPanel extends PeriodPanel{
     //
     topPanel.add(per);
     topPanel.add(nbAct);
-    miPanel.add(_jList);
+    for(int i = 0; i < _vec.size(); i ++) {
+      miPanel.add( new JLabel((String)_vec.get(i)));
+    }
+    //miPanel.add(_jList);
     /*bottomPanel.add(_cTeach);
     bottomPanel.add(_cRoom);
     bottomPanel.add(_cStu);*/
