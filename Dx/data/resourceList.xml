@@ -105,7 +105,7 @@
 					<dayID>1</dayID>
 					<TTsequences>
 						<TTsequence>
-							<daySequence>AM</daySequence>
+							<sequenceID>AM</sequenceID>
 							<TTperiods>
 								<TTperiod>
 									<priority>0</priority>
