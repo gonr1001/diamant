@@ -12,6 +12,16 @@ import dInternal.dUtil.DXObject;
 
 public class Unity extends DXObject{
 
+  /* Each field is linked to an index who serves for filtring and for selecting
+  * an object.
+  * Indexes :
+  * _duration -> 0
+  * _preferSequence -> 1
+  * _assign -> 2
+  * _permanent -> 3
+  * _isCyclic -> 4
+  */
+
   /** duration of the bloc (in minutes)*/
   private int _duration;
   /** prefere sequence in a day
@@ -244,5 +254,39 @@ public class Unity extends DXObject{
       return false;
     return true;
   }
+
+
+  /**
+   * It compares a field with the value defined by the argument "value"
+   * @param fieldIndex the index of the field
+   * @param value the value to be compared
+   * @return true if the attribute value is equal to the argument "value"
+   */
+
+  public boolean compareByField(int fieldIndex, String value){
+   switch(fieldIndex){
+      case 0:
+        int intValue = Integer.parseInt(value);
+        if (_duration == intValue)
+          return true;
+      case 1:
+        intValue = Integer.parseInt(value);
+        if (_preferSequence == intValue)
+          return true;
+      case 2:
+        boolean boolValue = Boolean.valueOf(value).booleanValue();
+        if (_assign == boolValue)
+          return true;
+        case 3:
+          boolValue = Boolean.valueOf(value).booleanValue();
+          if (_permanent == boolValue)
+            return true;
+        case 4:
+          boolValue = Boolean.valueOf(value).booleanValue();
+          if (_isCyclic == boolValue)
+            return true;
+   }
+    return false;
+ }
 
 }

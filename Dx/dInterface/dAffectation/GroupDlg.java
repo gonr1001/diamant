@@ -33,7 +33,6 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 
 import dInternal.dData.Activity;
-import dInterface.DApplication;
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.SetOfStudents;
 import dInternal.dData.SetOfResources;
@@ -41,6 +40,7 @@ import dInternal.dData.StudentAttach;
 import dInternal.dData.Section;
 import dInternal.dData.Type;
 
+import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
 import dResources.DConst;
@@ -85,15 +85,15 @@ public class GroupDlg extends JDialog implements ActionListener{
   public GroupDlg(DApplication dApplic){
     super(dApplic.getJFrame(), GROUP_DLG_TITLE, true);
     _dApplic = dApplic;
-    if (_dApplic.getDMediator().getCurrentDoc() != null){
-      _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-      _students = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents();
-    }
+    if (_dApplic.getDMediator().getCurrentDoc() == null)
+      return;
+    _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
+    _students = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents();
     if (_activities != null && _students != null){
       jbInit();
       setLocationRelativeTo(dApplic.getJFrame());
       setVisible(true);
-    }//end if (_activities != null && _students != null)
+    }
   }//end method
 
   /**
@@ -215,18 +215,11 @@ public class GroupDlg extends JDialog implements ActionListener{
     groupPanel.addMouseListener(mouseListenerGroupPanel);
     JPanel infoPanel = new JPanel();
     //The scrollPane
-
-    //scrollContainer.setPreferredSize(scrollContDim);
-    //JScrollPane scroll = new JScrollPane();
-    //scroll.setPreferredSize(scrollDim);
     _assignedVectors[groupNumber] = _students.getStudentsByGroup(_actID, "1", groupNumber);
     _assignedLists[groupNumber] = new JList(_assignedVectors[groupNumber]);
     _assignedLists[groupNumber].addMouseListener(mouseListenerLists);
     JPanel scrollContainer = new JPanel();
     scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (int)insideWidth-5, GroupPanelHeight-infoPanelHeight-20);
-    //scroll.getViewport().add(_assignedLists[groupNumber]);
-    //scrollContainer.add(scroll);
-    //The infoPanel
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
     numberOfElements = _assignedVectors[groupNumber].size();
     JLabel lGroup = new JLabel(GROUP);
