@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.68 $  $Date: 2003-09-10 18:23:06 $
+ * Title: DDocument $Revision: 1.69 $  $Date: 2003-09-11 11:51:42 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.68 $
+ * @version $Revision: 1.69 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -50,6 +50,8 @@ import dInterface.dTimeTable.TTPanel;
 import dInterface.dTimeTable.CloseCmd;
 
 import com.iLib.gDialog.FatalProblemDlg;
+
+//import dInterface.dUtil.DXTools;
 //debug
 
 public class DDocument  extends InternalFrameAdapter implements
@@ -72,6 +74,7 @@ public class DDocument  extends InternalFrameAdapter implements
   //for new timetable Structure and open timetable Structure from a file
   public DDocument(DApplication dApplic, String ttName, String fileName, int type) {
     _dApplic = dApplic;
+    _dApplic.getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm = new DModel(_dApplic, fileName, type);
     if(_dm.getError().length()==0){
       //addTTListener(_dm.getTTStructure());
@@ -81,7 +84,7 @@ public class DDocument  extends InternalFrameAdapter implements
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _jif.addInternalFrameListener(this);
     }
-
+    _dApplic.getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   } // end constructor DDocument()
 
   public void internalFrameActivated(InternalFrameEvent e) {
@@ -108,6 +111,11 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setTitle(name);
   } // end setDocumentName
     //-------------------------------------------
+
+  public void setCursor(int cursorValue){
+    _dApplic.getDMediator().getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+      _dApplic.getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+  }
 
   public String getError(){
     return _dm.getError();
@@ -147,16 +155,22 @@ public class DDocument  extends InternalFrameAdapter implements
          System.out.println("I do not know what to do, please help me (Action Performed)");
        }// end if ... else
      }// end actionPerformed
+//public void changeInDModel(DModelEvent  e
+    public void changeInDModel(DModelEvent  e, Component component) {
+      System.out.println("Update TTPanel in DDocument changeInDModel: ");//debug
 
-    public void changeInDModel(DModelEvent  e) {
-      //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
-      //_dm.setStateBarComponent();
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      setCursor(Cursor.WAIT_CURSOR);
+
       _dm.setModified();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _dm.buildSetOfEvents();
       _dm.setStateBarComponent();
       _stateBar.upDateDStateBar(_dm.getSetOfStates());
-      //this.updateStateBar(_dm.getState());
+
+      setCursor(Cursor.DEFAULT_CURSOR);
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+
 
     }// end actionPerformed
 
@@ -229,6 +243,8 @@ public class DDocument  extends InternalFrameAdapter implements
   public String getVersion(){
     return _version;
   }
+
+
 
   /**
    * */

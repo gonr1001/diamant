@@ -12,8 +12,8 @@ package dInternal;
  */
 
 import java.util.*;
-
+import java.awt.Component;
 
 public interface DModelListener extends EventListener{
-  void changeInDModel(DModelEvent e);
+  void changeInDModel(DModelEvent e, Component c);
 }

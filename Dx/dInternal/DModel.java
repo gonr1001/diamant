@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.65 $  $Date: 2003-09-08 17:35:02 $
+ * Title: DModel $Revision: 1.66 $  $Date: 2003-09-11 11:51:42 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.65 $
+ * @version $Revision: 1.66 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -23,6 +23,8 @@ package dInternal;
 import java.util.Vector;
 import java.io.*;
 import javax.swing.JOptionPane;
+import java.awt.Component;
+import java.awt.Cursor;
 import dInterface.DApplication;
 import dInternal.dData.*;
 import dResources.DConst;
@@ -85,7 +87,6 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       _error="Wrong type of file";
     }
     _type = type;
-    //_dmProcess = new DModelProcess(this);
     _modified = false;
   }
 
@@ -140,7 +141,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public void incrementModification() {
     //_setOfStates.incrementModification();
-    sendEvent();
+    //sendEvent();
   }
 
   /**
@@ -206,6 +207,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public String importData(String str) {
     LoadData loadData = new LoadData(str);
+    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
     _setOfInstructors = loadData.extractInstructors(null, false);
     resizeInstructorsAvailability();//
@@ -232,6 +234,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     }
     _constructionState=1;
     this.buildSetOfEvents();// yannick
+    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR);
     return "";
   }
 
@@ -313,12 +316,12 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   /**
    *
    */
-  public void sendEvent() {
+  public void sendEvent(Component component) {
     _modified = true;
     DModelEvent event = new DModelEvent(this);
     for (int i=0; i< _dmListeners.size(); i++) {
       DModelListener dml = (DModelListener) _dmListeners.elementAt(i);
-      dml.changeInDModel(event);
+      dml.changeInDModel(event, component);
       System.out.println("Dmodel listener started: "+i);//debug
     }
   }
@@ -348,7 +351,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
 
 
 
-  public void changeInDModel(DModelEvent  e) {
+  public void changeInDModel(DModelEvent  e, Component c) {
 
   }// end actionPerformed
 

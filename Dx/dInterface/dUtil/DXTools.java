@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.JComponent;
@@ -252,6 +253,23 @@ public static int STIConvertGroup(String STIGroupID){
    panel.add(listPanel, BorderLayout.SOUTH);
    return panel;
  }
+
+ /**
+  * change the cursor
+  * @param frame the parent frame
+  * @param state if 0: set DEFAULT_CURSOR; 1 = WAIT_CURSOR; 2 = HAND_CURSOR
+  */
+ public static void setCursor(Component component, int state){
+   switch (state){
+     case 0: component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+       break;
+     case 1: component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+       break;
+     case 2: component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+       break;
+   }
+ }
+
 
 
 
