@@ -1,49 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--JBuilder XML Project-->
 <project>
-  <property category="debug.0" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
-  <property category="debug.0" name="SmartStepSkipStaticInitializers" value="0"/>
-  <property category="debug.0" name="SmartStepSkipSynthetics" value="0"/>
   <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
-  <property category="debug.3" name="SmartStepRedefineClasses" value="0"/>
-  <property category="debug.4" name="SmartStepRedefineClasses" value="0"/>
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
-  <property category="optimize.1" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="optimize.1" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
-  <property category="runtime" name="ConfigurationCount" value="4"/>
+  <property category="runtime" name="ConfigurationCount" value="2"/>
   <property category="runtime" name="DefaultConfiguration" value="-1"/>
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.0" name="ConfigurationName" value="LoadData"/>
+  <property category="runtime.0" name="ConfigurationName" value="Run"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.0" name="application.class" value="DRun"/>
-  <property category="runtime.0" name="application.vmparameters" value="-classic"/>
-  <property category="runtime.0" name="appserver.ejbJarsSaved" value="1"/>
-  <property category="runtime.0" name="appserver.parameters" value="-jts -jns -jss -jdb"/>
-  <property category="runtime.0" name="appserver.servername" value="standard"/>
-  <property category="runtime.0" name="appserver.vmparameters" value="-Dvbroker.agent.port=14000 -Djava.library.path=/BorlandEnterpriseServer/lib;/BorlandEnterpriseServer/bin -Dborland.enterprise.licenseDir=/BorlandEnterpriseServer/var/servers/server/adm -Dejb.module_preload=true"/>
-  <property category="runtime.0" name="jsprunner.launchuri" value="/"/>
-  <property category="runtime.0" name="test.harness" value="junit.textui.TestRunner"/>
+  <property category="runtime.0" name="application.class" value="dmains.Diamant"/>
   <property category="runtime.1" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.1" name="ConfigurationName" value="Run"/>
+  <property category="runtime.1" name="ConfigurationName" value="File"/>
   <property category="runtime.1" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.1" name="application.class" value="DRun"/>
+  <property category="runtime.1" name="application.class" value="ReadPrintFile"/>
+  <property category="runtime.1" name="application.parameters" value="D:\Developpements\DiamantExtreme\Dx\data\fgen\aut02\disprofShort1.sig"/>
   <property category="runtime.2" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.2" name="ConfigurationName" value="dTest.dInterface.TestsSuite"/>
+  <property category="runtime.2" name="ConfigurationName" value="JUnit"/>
   <property category="runtime.2" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.2" name="application.class" value="dTest.dInterface.TestsSuite"/>
-  <property category="runtime.3" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.3" name="ConfigurationName" value="File"/>
-  <property category="runtime.3" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.3" name="application.class" value="ReadPrintFile"/>
-  <property category="runtime.3" name="application.parameters" value="D:\Developpements\DiamantExtreme\Dx\data\fgen\aut02\disprofShort1.sig"/>
-  <property category="runtime.4" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.4" name="ConfigurationName" value="JUnit"/>
-  <property category="runtime.4" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.4" name="application.class" value="junit.swingui.TestRunner"/>
-  <property category="runtime.4" name="application.parameters" value="DRunTest"/>
+  <property category="runtime.2" name="application.class" value="junit.swingui.TestRunner"/>
+  <property category="runtime.2" name="application.parameters" value="DRunTest"/>
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
   <property category="sys" name="AuthorLabel" value="@author"/>
   <property category="sys" name="BackupPath" value="../../Temp/Dx/Proto/bak"/>
@@ -96,7 +74,5 @@
     <property category="archiving" name="manifestMainClass" value="DRun"/>
     <property category="archiving" name="targetPath" value="D%|/Developpements/DiamantExtreme/Diamant1.5/tictac.jar"/>
   </node>
-  <file path="DRun.java"/>
-  <file path="DRunTest.java"/>
   <file path="Proto.html"/>
 </project>

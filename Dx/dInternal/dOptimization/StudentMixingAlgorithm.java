@@ -13,6 +13,7 @@ import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dOptimization.*;
 import dInternal.dDataTxt.*;
+import dConstants.DConst;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
 import dInterface.dUtil.DXTools;
@@ -45,13 +46,13 @@ public class StudentMixingAlgorithm implements Algorithm {
   public void build(){
 
     Vector eventRescList=buildEventsVector();
-    //for(int i=0; i< 5; i++){
+    for(int i=0; i< 2; i++)
     compileStudents(eventRescList);
     //compileStudents(eventRescList);
-    Vector secondVec= new Vector();
+    /*Vector secondVec= new Vector();
     for (int j=eventRescList.size()-1; j>=0; j--)
       secondVec.add(eventRescList.get(j));
-    compileStudents(secondVec);
+    compileStudents(secondVec);*/
     //}
 
   }
@@ -77,6 +78,8 @@ public class StudentMixingAlgorithm implements Algorithm {
         allConvexGroups.add(convGroup);
         //
       }// end
+      //System.out.println(writeConvexGroups(allConvexGroups));
+      buildSumOfConvexGroups(allConvexGroups);
       setStudentsInGroup(actID,typeID,allConvexGroups);
     }//end for(int i=0; i< _eventsRescList.size(); i++)
     _dm.getConditionsTest().setMatrixBuilded(false,false);
@@ -231,9 +234,32 @@ public class StudentMixingAlgorithm implements Algorithm {
       convexGroup.setCurrentKey(studentKey);
       convexGroup.addResource(new Resource(Integer.toString(nbOfPotentialConf),new DXValue()),0);
     }//end for (int i=0; i< studentsReg.size(); i++)
-    convexGroup.sortSetOfResourcesByID();
+    convexGroup.sortSetOfResourcesByKey();
     return convexGroup;
   }
+
+  /**
+   *
+   * @param convGroup
+   * @return
+   */
+  private String writeConvexGroups(Vector convGroups){
+    String str=DConst.SEPARATOR;
+    str+=DConst.CR_LF;
+    for(int i=0; i< convGroups.size(); i++){
+      SetOfResources group = (SetOfResources)convGroups.get(i);
+      group.sortSetOfResourcesByKey();
+      for (int j=0; j< group.size(); j++){
+        String mat= "0000"+group.getResourceAt(j).getKey();
+        str+= group.getResourceAt(j).getID()+ " --> "+ mat.substring(mat.length()-8,mat.length()) +DConst.CR_LF;
+      }// end for (int j=0; j< group.size(); j++)
+      str+=DConst.SEPARATOR;
+      str+=DConst.CR_LF;
+    }// end for(int i=0; i< convGroup.size(); i++)
+
+    return str;
+  }
+
 
   /**
    *
@@ -311,6 +337,27 @@ public class StudentMixingAlgorithm implements Algorithm {
   }
 
   /**
+   *
+   * @param sizeOfGroups
+   * @param smallerGroup
+   * @return
+   */
+ private Vector getEligibleGroups(Vector sizeOfGroups){
+   //int group=0;
+   //int min= ((DXValue)sizeOfGroups.get(0)).getIntValue();
+   Vector eligibleGroups= new Vector();
+    int smalGroupIndex = getSmallerGroup(sizeOfGroups);
+    DXValue smallerGroup= (DXValue)sizeOfGroups.get(smalGroupIndex);
+   for (int i=1; i< sizeOfGroups.size(); i++){
+     DXValue currentGroup = ((DXValue)sizeOfGroups.get(i));
+     if((currentGroup.getIntValue()- smallerGroup.getIntValue())<=ACCEPTABLEVARIATION){
+       eligibleGroups.add(currentGroup);
+     }
+   }
+   return eligibleGroups;
+  }
+
+  /**
    * return true if no student is in conflict
    * @return
    */
@@ -370,5 +417,70 @@ public class StudentMixingAlgorithm implements Algorithm {
     }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
     return resc;
   }
+
+  //-------------- New Implementation------------------------------------------------
+
+  /**
+   *
+   * @param studentRegistered
+   * @param allConvexGroups each convexgroup is sort by key (matricule)
+   * @return
+   */
+  private SetOfResources buildSumOfConvexGroups( Vector allConvexGroups){
+    // sort the the convexgroup by key (matricule)
+    for(int j=0; j< allConvexGroups.size(); j++)
+      ((SetOfResources)allConvexGroups.get(j)).sortSetOfResourcesByKey();
+
+    SetOfResources convexSum= new SetOfResources(66);
+    SetOfResources studentRegistered = (SetOfResources)allConvexGroups.get(0);
+    for(int i=0; i< studentRegistered.size(); i++){
+      int sum=0;
+      for(int j=0; j< allConvexGroups.size(); j++){
+        String conf=((SetOfResources)allConvexGroups.get(j)).getResourceAt(i).getID();
+        sum+= Integer.parseInt(conf);
+      }// end for(int j=0; j< studentRegistered.size(); j++)
+      convexSum.setCurrentKey(studentRegistered.getResourceAt(i).getKey());
+      convexSum.addResource(new Resource(Integer.toString(sum),new DXValue()),0);
+    }// end for(int i=0; i< allConvexGroups.size(); i++)
+    convexSum.sortSetOfResourcesByID();
+    return convexSum;
+  }
+
+  /**
+  *
+  * @param activityID
+  * @param typeID
+  * @param allConvGroup
+  */
+ private void setStudInGroup(String activityID, String typeID, Vector allConvGroups, SetOfResources sumList){
+   SetOfResources studentRegistered = (SetOfResources)allConvGroups.get(0);
+   Vector sizeOfGroups= new Vector();
+   Type type= _dm.getSetOfActivities().getType(activityID,typeID);
+   for(int i=0; i< type.getSetOfSections().size(); i++){
+     DXValue size= new DXValue();
+     int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
+     size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
+     //size.setIntValue(0);
+     sizeOfGroups.add(size);
+    }// end for(int i=0; i< type.getSetOfSections().size(); i++)
+
+    Vector eligibleGroups = getEligibleGroups(sizeOfGroups);
+ }
+
+ /**
+  *
+  * @param studentKey
+  * @param allConvexGrourps
+  * @param eligibleGroups
+  * @return
+  */
+ private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector eligibleGroups){
+   if(eligibleGroups.size()==allConvexGroups.size()){
+     // return the index of group  where the student has the smaller number of conflicts
+   } else if(eligibleGroups.size()< allConvexGroups.size()){
+     //return the index group where the student has 0 conflict
+   }
+   return -1;
+ }
 
 }// end class
