@@ -118,7 +118,7 @@ public class ReportDlg extends JDialog implements ActionListener{
       if (i == 0)
         mainFieldKey = (int)((DXValue)res.getAttach()).getIntValue();
       else
-        otherFieldsKeys[i-1] = (int)((DXValue)res.getAttach()).getIntValue();;
+        otherFieldsKeys[i-1] = (int)((DXValue)res.getAttach()).getIntValue();
       fieldsNames[i] = selectedResources.getResourceAt(i).getID();
       fieldLengths[i] = Integer.parseInt(((DXValue)selectedResources.getResourceAt(i).getAttach()).getStringValue());
       subFields[i] = (String[][])(((DXValue)selectedResources.getResourceAt(i).getAttach()).getObjectValue());

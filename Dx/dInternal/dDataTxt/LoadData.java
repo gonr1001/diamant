@@ -103,7 +103,7 @@ public class LoadData {
 
   public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
     byte[]  dataloaded = preLoad(_instructorFileName);
-    SetOfInstructors _instructorsList= new SetOfInstructors(dataloaded,5,14);;
+    SetOfInstructors _instructorsList= new SetOfInstructors(dataloaded,5,14);
     if (dataloaded != null) {
       //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
       //return analyseInstructorTokens (st);
