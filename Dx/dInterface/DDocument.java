@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.75 $  $Date: 2003-09-23 15:33:39 $
+ * Title: DDocument $Revision: 1.76 $  $Date: 2003-09-29 14:12:09 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.75 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.76 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -44,7 +44,9 @@ import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dResources.DConst;
 import java.util.StringTokenizer;
+//import javax.swing.JScrollPane;
 import dInterface.dTimeTable.TTPanel;
+//import dInterface.dTimeTable.SimpleTTPanel;
 
 import dInterface.dTimeTable.CloseCmd;
 
@@ -62,7 +64,6 @@ public class DDocument  extends InternalFrameAdapter implements
   private JInternalFrame _jif;
   private String _documentName;
   private TTPanel _ttPanel;
-  //private boolean _modified;
   private DModel _dm;
   private DStateBar _stateBar;
   private String _version;
@@ -309,6 +310,7 @@ public class DDocument  extends InternalFrameAdapter implements
     //_bottomLablel = new JLabel("hello");
 
     _ttPanel = new TTPanel(_dm);
+
     _dm.addDModelListener(this);
     //_dm.getSetOfStates().addSetOfStatesListener(this);
 
@@ -318,7 +320,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
-    _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
+    _jif.getContentPane().add(_ttPanel.getJSplitPane(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);

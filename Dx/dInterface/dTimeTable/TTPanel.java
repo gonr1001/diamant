@@ -16,9 +16,12 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 //import java.awt.Color;
 import javax.swing.JLabel;
+import java.awt.Dimension;
 import java.util.*;
 import java.awt.*;
 import javax.swing.BorderFactory;
+import javax.swing.JViewport;
+import javax.swing.JSplitPane;
 import javax.swing.border.*;
 import java.awt.event.*;
 
@@ -29,7 +32,7 @@ import dInternal.dData.Resource;
 import dInternal.dTimeTable.*;
 
 
-public class TTPanel extends JScrollPane {
+public class TTPanel { //extends JScrollPane {
   private DModel _dm;
   //private int MINHEIGHT = 60;
   private int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
@@ -43,16 +46,35 @@ public class TTPanel extends JScrollPane {
   private int _periodLenght;
   private MouseListener _mouseListener;
   private PeriodPanel _lastActivPpanel=null;
+  private JSplitPane _jSplitPane;
+
+  private JScrollPane _jScrollPaneOne;
+   private JScrollPane _jScrollPaneTwo;
 
   public TTPanel(DModel dm) {
     super();
     _dm = dm;
+    _jScrollPaneOne = new JScrollPane();
+_jScrollPaneTwo = new JScrollPane();
     if(_dm.getTTStructure()!=null){
-      initTTPanel();
+      initTTPaneOne();
+      initTTPaneTwo();
     }
+    //_jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,_jScrollPane,_jScrollPane);
+
+    _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
+
+
+
+    _jSplitPane.setTopComponent(_jScrollPaneOne);
+    _jSplitPane.setBottomComponent(_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
+     _jSplitPane.setOneTouchExpandable(true);
+       _jSplitPane.setDividerLocation(0);
+    Dimension minSize= new Dimension (100, 100);
+    _jScrollPaneOne.setMinimumSize(minSize);
   }
 
-  private void initTTPanel() {
+  private void initTTPaneOne() {
     _periodLenght= _dm.getTTStructure().getPeriodLenght();
     Cycle cycle =_dm.getTTStructure().getCurrentCycle();
     MinWidth = cycle.getNumberOfDays() * UWIDTH;
@@ -63,15 +85,35 @@ public class TTPanel extends JScrollPane {
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
     MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * UHEIGHT;
 
-    Point point=new Point(0,0);
-    point = getViewport().getViewPosition();//getViewport().getsc
-    setColumnHeaderView(createColumnHeader());
-    setRowHeaderView(createRowHeader());
-    setViewportView(createViewPort());
-    getViewport().setViewPosition(point);
+    Point point= new Point(0,0);
+    point = _jScrollPaneOne.getViewport().getViewPosition();
+    _jScrollPaneOne.setColumnHeaderView(createColumnHeader());
+    _jScrollPaneOne.setRowHeaderView(createRowHeader());
+    _jScrollPaneOne.setViewportView(createViewPort());
+    _jScrollPaneOne.getViewport().setViewPosition(point);
     manageActions();
-  }
 
+  }
+  private void initTTPaneTwo() {
+    _periodLenght= _dm.getTTStructure().getPeriodLenght();
+    Cycle cycle =_dm.getTTStructure().getCurrentCycle();
+    MinWidth = cycle.getNumberOfDays() * UWIDTH;
+    Period lastPeriod = _dm.getTTStructure().getCurrentCycle().getLastPeriod();
+    LASTHOUR=lastPeriod.getEndHour(_periodLenght)[0];
+    if(lastPeriod.getEndHour(_periodLenght)[1]!=0)
+      LASTHOUR++;
+    //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
+    MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * UHEIGHT;
+
+    Point point= new Point(0,0);
+    point = _jScrollPaneOne.getViewport().getViewPosition();
+    _jScrollPaneTwo.setColumnHeaderView(createColumnHeader());
+    _jScrollPaneTwo.setRowHeaderView(createRowHeader());
+    _jScrollPaneTwo.setViewportView(createViewPort());
+    _jScrollPaneTwo.getViewport().setViewPosition(point);
+    manageActions();
+
+  }
   /**
    *
    * */
@@ -102,7 +144,7 @@ public class TTPanel extends JScrollPane {
   }
 
   public void updateTTPanel(TTStructure ttp){
-    initTTPanel();
+    initTTPaneOne();
   }
 
   private JPanel createColumnHeader() {
@@ -141,7 +183,7 @@ public class TTPanel extends JScrollPane {
     JPanel panel =  new JPanel( gridbag );
     panel.setBackground(SystemColor.window);
     panel.setPreferredSize(new Dimension(MinWidth, MinHeight));
-    setPreferredSize(new Dimension(panel.getPreferredSize().width + 40,
+    _jScrollPaneOne.setPreferredSize(new Dimension(panel.getPreferredSize().width + 40,
                                    panel.getPreferredSize().height + 50));
     int nbDays,nbSeq,nbPerADay;
     nbDays = cycle.getSetOfDays().size();
@@ -197,7 +239,7 @@ public class TTPanel extends JScrollPane {
    * @param int the period panel reference
    * */
   public PeriodPanel getPeriodPanel(int ppRef){
-    JPanel thePanel= (JPanel)getViewport().getComponent(0);
+    JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
     for (int i=0; i< thePanel.getComponentCount(); i++){
       PeriodPanel ppanel= (PeriodPanel)thePanel.getComponent(i);
       if(ppanel.getPanelRefNo()==ppRef)
@@ -205,6 +247,19 @@ public class TTPanel extends JScrollPane {
     }
     return null;
   }
+
+
+public JViewport getViewport() {
+  return _jScrollPaneOne.getViewport();
+}
+
+public JScrollPane getJScrollPane() {
+  return _jScrollPaneOne;
+}
+
+public JSplitPane getJSplitPane() {
+  return _jSplitPane;
+}
 
 }
 
