@@ -1,7 +1,7 @@
-Facult» d'»ducation physique et sportive;
-Liste des locaux pour r»servations;
+Faculte d'education physique et sportive;
+Liste des locaux pour reservations;
 
-Nom du local;Capacit»;Fonction;Liste des caract»ristiques;Notes;
+Nom du local;Capacite;Fonction;Liste des caracteristiques;Notes;
 
 a8-334;160;211;08,11,14,57;laboratoire de chimie;
 a8-353;15;211;08,11,57;laboratoire de chimie;
@@ -21,9 +21,9 @@ Gym-1;100;620;11,14,15,20,44;y;
 Gym-2;100;620;11,14,15,20,44;y;
 Gym1+2;100;620;11,14,15,20,44;y;
 Judo;100;620;11,14,15,20,44;y;
-Karat»;100;620;11,14,15,20,44;y;
+Karaté;100;620;11,14,15,20,44;y;
 Studio;100;620;11,14,15,20,44;y;
 Stade;100;620;11,14,15,20,44;y;
-Ar»na;100;620;11,14,15,20,44;y;
+Aréna;100;620;11,14,15,20,44;y;
 Orford;100;620;11,14,15,20,44;y;
 Piscine;100;620;11,14,15,20,44;y;
