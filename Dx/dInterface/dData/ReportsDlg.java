@@ -98,20 +98,17 @@ public class ReportsDlg extends JDialog implements ActionListener{
 
     _tabbedPane.addTab(_tabsNames[0], new FullReport(this, _dApplic, tabbedPaneDim));
     _tabbedPane.addTab(_tabsNames[1], new ConflictReport(this, _dApplic, tabbedPaneDim));
-    _tabbedPane.addTab(_tabsNames[2], new ImportReport(this, _dApplic, tabbedPaneDim)) ;
+    if (_dApplic.getDMediator().getCurrentDoc().getDM().getImportDone()) {
+      _tabbedPane.addTab(_tabsNames[2], new ImportReport(this, _dApplic, tabbedPaneDim)) ;
+    }
 
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-
-    if (_dApplic.getDMediator().getCurrentDoc().getDM().getImportDone()) {
-      _dApplic.getDMediator().getCurrentDoc().getDM().setImportDone(false);
-    } else {
-      _tabbedPane.setEnabledAt(2,false);
-    }
   }
 
   public StandardReportData getStandardReportData() {
     return _srd;
   }
+
   public void actionPerformed(ActionEvent e){
   }
 

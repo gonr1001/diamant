@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.14 $  $Date: 2004-03-19 21:17:03 $
+ * Title: ImportDlg $Revision: 1.15 $  $Date: 2004-03-19 21:47:12 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -88,7 +88,6 @@ public class ImportDlg extends JDialog {
        }
        dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
-       dApplic.getDMediator().getCurrentDoc().getDM().setImportDone(true);
        dApplic.getMenuBar().postImportCmd();
      }
    }// end method

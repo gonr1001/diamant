@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.87 $  $Date: 2004-03-19 21:17:03 $
+ * Title: DModel $Revision: 1.88 $  $Date: 2004-03-19 21:47:12 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.87 $
+ * @version $Revision: 1.88 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -225,6 +225,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     }
     _constructionState=1;
     //_setOfStates.sendEvent();
+    setImportDone(false);
     return"";
   }
 
@@ -323,6 +324,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     _setOfStates.sendEvent();
     addAllListeners();
     _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
+   setImportDone(true);
     return "";
   }
 
