@@ -126,23 +126,24 @@ public class LoadData {
 
   public SetOfStudents extractStudents(SetOfInstructors currentList, boolean merge){
     byte[]  dataloaded = preLoad(_studentsFileName);
-   if (dataloaded != null) {
-     //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
-     //return analyseInstructorTokens (st);
-    SetOfStudents studentsList = new SetOfStudents(dataloaded);
-    if (merge)
-       if(currentList!=null)
-         studentsList.setSetOfResources(currentList.getSetOfResources());
+     SetOfStudents studentsList = new SetOfStudents(dataloaded);
+     if (dataloaded != null) {
+       //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
+       //return analyseInstructorTokens (st);
 
-     if (studentsList.analyseTokens(0)){
-       studentsList.buildStudentList(0);
-       return studentsList;
+       if (merge)
+         if(currentList!=null)
+           studentsList.setSetOfResources(currentList.getSetOfResources());
+
+       if (studentsList.analyseTokens(0)){
+         studentsList.buildStudentList(0);
+         //return studentsList;
+       }
+     } else {// (NullPointerException npe) {
+       new FatalProblemDlg("I was in LoadData class and extractStudents. preload failed!!!" );
+       System.exit(52);
      }
-   } else {// (NullPointerException npe) {
-     new FatalProblemDlg("I was in LoadData class and extractStudents. preload failed!!!" );
-     System.exit(52);
-   }
-   return null;
+     return studentsList;
   }
 
   public SetOfActivities extractActivities(SetOfActivities currentList, boolean merge){
@@ -161,7 +162,7 @@ public class LoadData {
      }
    } else {// (NullPointerException npe) {
      new FatalProblemDlg("I was in LoadData class and extractActivities. preload failed!!!" );
-     System.exit(52);
+     //System.exit(52);
    }
    return null;
   }

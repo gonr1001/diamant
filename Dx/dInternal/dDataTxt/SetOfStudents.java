@@ -67,7 +67,7 @@ public class SetOfStudents extends SetOfResources{
           try{
             numberOfStudents= (new Integer (token.trim())).intValue();
           }catch(NumberFormatException exc){
-            _error = DConst.STUD_TEXT6+ line + "\n" + DConst.STUD_TEXT5;
+            _error = DConst.STUD_TEXT6+ "\n" + DConst.STUD_TEXT5;
             return false;
           }
           position = 1;
