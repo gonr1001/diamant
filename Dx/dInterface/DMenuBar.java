@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.55 $  $Date: 2003-09-05 13:46:20 $
+ * Title: DMenuBar $Revision: 1.56 $  $Date: 2003-09-05 14:50:29 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -54,14 +54,14 @@ public class DMenuBar extends JMenuBar{
   private final int _nPT = DConst.NPT11;
   //the menus
   private JMenu _file, _assign, _optimisation, _preferences, _help,  _dev;
-  private boolean _boolFile, _boolAssign, _boolOptimisation, _boolPreferences, _boolHelp;
+  private boolean _boolFile, _boolAssign, _boolOptimisation, _boolPreferences, _boolHelp, _boolDev;
   // the file menus containing sub menus
-  private JMenu _newTT, _newTTS;
-  private boolean _boolNewTT, _boolNewTTS;
+  private JMenu _newTTable, _newTTStruc;
+  private boolean _boolNewTTable, _boolNewTTStruc;
   // the file menus
-  private CmdMenu _newTTCy, _newNTTEx, _newTTSCy, _newTTSEx, _openTT, _openTTS,
+  private CmdMenu _newTTableCy, _newNTTableEx, _newTTStrucCy, _newTTStrucEx, _openTTable, _openTTStruc,
   _close, _save, _saveAs, _defineFiles, _import, _export, _exit;
-  private boolean _boolNewTTCy, _boolNewNTTEx, _boolNewTTSCy, _boolNewTTSEx, _boolOpenTT, _boolOpenTTS,
+  private boolean _boolNewTTableCy, _boolNewTTableEx, _boolNewTTStrucCy, _boolNewTTStrucEx, _boolOpenTTable, _boolOpenTTStruc,
   _boolClose, _boolSave, _boolSaveAs,_boolDefineFiles, _boolImport, _boolExport, _boolExit;
   // the edit menus
 
@@ -110,51 +110,51 @@ public class DMenuBar extends JMenuBar{
     _file.setFont(new java.awt.Font( _mfont, _font, _nPT ));
     this.add(_file);
 
-    _newTT = new JMenu(DConst.NEW_TT);
-    _newTT.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _newTTable = new JMenu(DConst.NEW_TT);
+    _newTTable.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
-    _newTTCy = new CmdMenu(DConst.NTT_CY);
-    _newTTCy.setFont( new java.awt.Font(_mfont, _font, _nPT));
-    _newTTCy.setCommand(new NewTTCyCmd());
-    _newTTCy.addActionListener(_dApplic);
-    _newTT.add(_newTTCy);
+    _newTTableCy = new CmdMenu(DConst.NTT_CY);
+    _newTTableCy.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _newTTableCy.setCommand(new NewTTCyCmd());
+    _newTTableCy.addActionListener(_dApplic);
+    _newTTable.add(_newTTableCy);
 
-    _newNTTEx = new CmdMenu(DConst.NTT_EX);
-    _newNTTEx.setFont( new java.awt.Font(_mfont, _font, _nPT));
-    _newNTTEx.setCommand(new NewTTExCmd());
-    _newNTTEx.addActionListener(_dApplic);
-    _newTT.add(_newNTTEx);
+    _newNTTableEx = new CmdMenu(DConst.NTT_EX);
+    _newNTTableEx.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _newNTTableEx.setCommand(new NewTTExCmd());
+    _newNTTableEx.addActionListener(_dApplic);
+    _newTTable.add(_newNTTableEx);
 
-    _file.add(_newTT);
+    _file.add(_newTTable);
 
-    _newTTS = new JMenu(DConst.NEW_TTS);
-    _newTTS.setFont(new java.awt.Font(_mfont, _font, _nPT ));
+    _newTTStruc = new JMenu(DConst.NEW_TTS);
+    _newTTStruc.setFont(new java.awt.Font(_mfont, _font, _nPT ));
 
-    _newTTSCy = new CmdMenu(DConst.NTTS_CY);
-    _newTTSCy.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    _newTTSCy.setCommand(new NewTTSCyCmd());
-    _newTTSCy.addActionListener(_dApplic);
-    _newTTS.add(_newTTSCy);
+    _newTTStrucCy = new CmdMenu(DConst.NTTS_CY);
+    _newTTStrucCy.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    _newTTStrucCy.setCommand(new NewTTSCyCmd());
+    _newTTStrucCy.addActionListener(_dApplic);
+    _newTTStruc.add(_newTTStrucCy);
 
-    _newTTSEx = new CmdMenu(DConst.NTTS_EX);
-    _newTTSEx.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    _newTTSEx.setCommand(new NewTTSExCmd());
-    _newTTSEx.addActionListener(_dApplic);
-    _newTTS.add(_newTTSEx);
+    _newTTStrucEx = new CmdMenu(DConst.NTTS_EX);
+    _newTTStrucEx.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    _newTTStrucEx.setCommand(new NewTTSExCmd());
+    _newTTStrucEx.addActionListener(_dApplic);
+    _newTTStruc.add(_newTTStrucEx);
 
-    _file.add(_newTTS);
+    _file.add(_newTTStruc);
 
-    CmdMenu mOpenTT = new CmdMenu(DConst.OPEN);
-    _file.add(mOpenTT);
-    mOpenTT.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    mOpenTT.setCommand(new OpenTTCmd());
-    mOpenTT.addActionListener(_dApplic);
+    _openTTable = new CmdMenu(DConst.OPEN);
+    _openTTable.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _openTTable.setCommand(new OpenTTCmd());
+    _openTTable.addActionListener(_dApplic);
+    _file.add(_openTTable);
 
-    CmdMenu mOpenTTS = new CmdMenu(DConst.OPEN_TTS);
-    _file.add(mOpenTTS);
-    mOpenTTS.setFont(new java.awt.Font( _mfont, _font, _nPT));
-    mOpenTTS.setCommand(new OpenTTSCmd());
-    mOpenTTS.addActionListener(_dApplic);
+    _openTTStruc = new CmdMenu(DConst.OPEN_TTS);
+    _openTTStruc.setFont(new java.awt.Font( _mfont, _font, _nPT));
+    _openTTStruc.setCommand(new OpenTTSCmd());
+    _openTTStruc.addActionListener(_dApplic);
+    _file.add(_openTTStruc);
 
     CmdMenu mClose = new CmdMenu(DConst.CLOSE);
     _file.add(mClose);
@@ -300,7 +300,7 @@ public class DMenuBar extends JMenuBar{
     _dev = new JMenu("Development");
     _dev.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _dev );
-    // Items in menu FILE.
+    // Items in menu Development.
     _hello = new CmdMenu("fichier1.dia");
     _dev.add(_hello);
     _hello.setFont(new java.awt.Font(_mfont, _font, _nPT));
@@ -311,11 +311,20 @@ public class DMenuBar extends JMenuBar{
 
   private void stateZero() {
     _boolFile= true;
+    _boolNewTTable = true;
+    _boolNewTTableCy = _boolNewTTableEx = true;
+
+    _boolNewTTStruc = true;
+    _boolNewTTStrucCy = _boolNewTTStrucEx = true;
+    _boolOpenTTable  = false;
+    _boolOpenTTStruc = false;
+
     _boolAssign= true;
     _boolOptimisation=  true;
     _boolPreferences= true;
-    _boolHelp= true;
+    _boolHelp= false;
     _boolAbout = true;
+    _boolDev = false;
 
 
   }
@@ -331,7 +340,7 @@ public class DMenuBar extends JMenuBar{
   }
 
 
-  public void setMenus() {
+  private void setMenus() {
     if (_boolFile)
       setFileMenu();
     else _file.setEnabled(_boolFile);
@@ -347,15 +356,25 @@ public class DMenuBar extends JMenuBar{
     if (_boolHelp)
       setHelpMenu();
     else _optimisation.setEnabled(_boolHelp);
+    if (_boolDev)
+      setDevMenu();
+    else _optimisation.setEnabled(_boolDev);
   }
 
   public void setFileMenu() {
-    _newTTCy.setEnabled(_boolNewTTCy);
-    _newNTTEx.setEnabled(_boolNewNTTEx);
-    // _newTTSCy, _newTTSEx, _openTT, _openTTS,
-    //_close, _save, _saveAs, _defineFiles, _import, _export, _exit;
-    //private boolean _boolNewTTCy, _boolNewNTTEx, _boolNewTTSCy, _boolNewTTSEx, _boolOpenTT, _boolOpenTTS,
-    //_boolClose, _boolSave, _boolSaveAs,_boolDefineFiles, _boolImport, _boolExport, _boolExit;
+    if (_boolNewTTable) {
+      _newTTableCy.setEnabled(_boolNewTTableCy);
+      _newNTTableEx.setEnabled(_boolNewTTableEx);
+      } else _newTTable.setEnabled(_boolNewTTable);
+    if (_boolNewTTStruc) {
+      _newTTStrucCy.setEnabled(_boolNewTTStrucCy);
+      _newTTStrucEx.setEnabled(_boolNewTTStrucEx);
+      } else _newTTStruc.setEnabled(_boolNewTTStruc);
+    _openTTable.setEnabled( _boolOpenTTable);
+    _openTTStruc.setEnabled( _boolOpenTTStruc);
+  //_close, _save, _saveAs, _defineFiles, _import, _export, _exit;
+  //private boolean _boolNewTTableCy, _boolNewTTableEx, _boolNewTTStrucCy, _boolNewTTStrucEx, _boolOpenTTable, _boolOpenTTStruc,
+  //_boolClose, _boolSave, _boolSaveAs,_boolDefineFiles, _boolImport, _boolExport, _boolExit;
   }
 
   public void setAssignMenu() {
@@ -391,6 +410,9 @@ public class DMenuBar extends JMenuBar{
     _about.setEnabled(_boolAbout);
   }
 
+  public void setDevMenu() {
+    _dev.setEnabled(_boolAbout);
+  }
 
   public void setNewState(int transition) {
     int newState = automaton[_currentState][transition];
