@@ -61,7 +61,14 @@ Le modèle de \dx{} est bâti autour de quatre principaux sous-composants: le sous
 
 \subsubsection{Description du sous-composant model}
 
-Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur. Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur. La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et l'entité comportement ou processus (voir figure \ref{submodel}).
+Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur. Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur. 
+
+La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et l'entité comportement ou processus (voir figure \ref{submodel}). 
+\begin{description}
+    \item[L'entité structure: ] elle fournit les interfaces permettant d'accéder aux données (étudiants, instructeurs, locaux, activités et grille horaire).
+    \item[L'entité process: ] elle fournit les interfaces permettant de lancer les opérations sur les données (création des événements, algorithmes, etc).
+    \item[L'entité model: ] elle regroupe les interfaces offertes par l'entité structure et l'entité process.
+\end{description}    
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -70,6 +77,13 @@ Le sous-composant \verb!model! représente le point d'entrée du composant modèle 
     \caption{Description du sous-composant model}\label{submodel}
   \end{center}
 \end{figure*} 
+
+Vue le nombre d'interfaces qu'il pourrait avoir entre l'entité structure et l'entité model, vue la redondance de ces interfaces dans l'entité model, il est paru nécessaire de réorganiser ces entités et de les faire passer de trois à deux. Ainsi le sous-composant model sera réorganisé autour de deux entités: l'entité model-structure et l'entité process.
+
+\begin{description}
+    \item[L'entité process: ] elle fournit les interfaces permettant de lancer les opérations sur les données (création des événements, algorithmes, etc).
+    \item[L'entité model-structure: ] elle regroupe les interfaces offertes par l'entité process en plus de celles permettant d'accéder aux données.
+\end{description} 
 
 \subsection{Description de la vue}
 
