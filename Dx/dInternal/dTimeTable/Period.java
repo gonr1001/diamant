@@ -127,6 +127,13 @@ public class Period extends DXObject {
     }
    }
 
+  /**
+   * return the number of events in this period
+   * */
+   public int getNumberOfEvents(){
+    return 0;
+  }
+
   private int nbStudConflict = 0;
   private int nbInstConflict = 0;
   private int nbRoomConflict= 0;

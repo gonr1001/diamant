@@ -12,13 +12,13 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>8:15</BeginTime>
+								<BeginTime>8:00</BeginTime>
 								<EndTime>9:15</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 							<TTperiod>
 								<periodID>2</periodID>
-								<BeginTime>9:15</BeginTime>
+								<BeginTime>9:00</BeginTime>
 								<EndTime>10:15</EndTime>
 								<priority>1</priority>
 							</TTperiod>
