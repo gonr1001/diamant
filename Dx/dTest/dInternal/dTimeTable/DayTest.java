@@ -59,9 +59,9 @@ String path;
       System.out.println(e);
     }
     assertEquals("test_readXMLtag : assertEquals 1(Size of the SetOfSequences): ", 3, day.getSetOfSequences().size());
-    assertEquals("test_readXMLtag : assertEquals 2(Size of the first Sequence): ", "AM", day.getSetOfSequences().getResourceAt(0).getID());
-    assertEquals("test_readXMLtag : assertEquals 2(Size of the first Sequence): ", "PM", day.getSetOfSequences().getResourceAt(1).getID());
-    assertEquals("test_readXMLtag : assertEquals 2(Size of the first Sequence): ", "EM", day.getSetOfSequences().getResourceAt(2).getID());
+    assertEquals("test_readXMLtag : assertEquals 2(ID of the first Sequence): ", "AM", day.getSetOfSequences().getResourceAt(0).getID());
+    assertEquals("test_readXMLtag : assertEquals 2(ID of the 2nd Sequence): ", "PM", day.getSetOfSequences().getResourceAt(1).getID());
+    assertEquals("test_readXMLtag : assertEquals 2(ID of the 3rd Sequence): ", "EM", day.getSetOfSequences().getResourceAt(2).getID());
   }
 
   /**
