@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.18 $  $Date: 2003-07-08 12:13:18 $
+ * Title: ToolBar $Revision: 1.19 $  $Date: 2003-07-08 15:53:41 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -150,6 +150,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         int index= _tts.getCurrentCycle().getCurrentDayIndex();
         Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
         resc.setID((String)dayNameSelector.getSelectedItem());
+        _dApplic.getDMediator().getCurrentDoc().setModified();
         //Treat event
           _tts.sendEvent();
         //setToolBar(_tts);
@@ -181,6 +182,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
         period.setPriority(periodTypeSelector.getSelectedIndex());
         if(_comboBoxStatus){
+          _dApplic.getDMediator().getCurrentDoc().setModified();
           _tts.sendEvent();
         }
 
@@ -199,6 +201,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           per = _tts.getPeriod(cycle, i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
           per.setPriority(periodTypeSelector.getSelectedIndex());
         }
+        _dApplic.getDMediator().getCurrentDoc().setModified();
         _tts.sendEvent();
       }//end actionPerformed
     });//end addActionListener
@@ -220,6 +223,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
             per.setPriority(periodTypeSelector.getSelectedIndex());
           }
         }
+        _dApplic.getDMediator().getCurrentDoc().setModified();
         _tts.sendEvent();
 
       }//end actionPerformed
@@ -437,12 +441,16 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   private void selectAddRemoveDays(int nbDays){
     int signe= nbDays-_tts.getCurrentCycle().getNumberOfDays();
     if (signe>0){
-      if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous ajouter "+ signe + " jour(s)")== ConfirmDlg.OK_OPTION)
+      if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous ajouter "+ signe + " jour(s)")== ConfirmDlg.OK_OPTION){
         _tts.getCurrentCycle().addDays(signe);
+        _dApplic.getDMediator().getCurrentDoc().setModified();
+      }
     }else{// else  if (signe>0)
       if(signe<0){
-        if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous supprimer "+ (-signe) + " jour(s)")== ConfirmDlg.OK_OPTION)
+        if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous supprimer "+ (-signe) + " jour(s)")== ConfirmDlg.OK_OPTION){
           _tts.getCurrentCycle().removeDays(-signe);
+          _dApplic.getDMediator().getCurrentDoc().setModified();
+        }
       }// end if(signe<0)
 
     }// end else  if (signe>0)

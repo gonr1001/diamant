@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.47 $  $Date: 2003-07-08 11:32:34 $
+ * Title: DDocument $Revision: 1.48 $  $Date: 2003-07-08 15:53:41 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.47 $
+ * @version $Revision: 1.48 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -71,6 +71,7 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
       addTTListener(_dm.getTTStructure());
       _dm.getTTStructure().addTTStructureListener(this);
       buidDocument(TTName);
+      _ttPanel.updateTTPanel(_dm.getTTStructure());
     }
   } // end constructor DDocument()
 
