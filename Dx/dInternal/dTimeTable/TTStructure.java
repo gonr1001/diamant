@@ -95,6 +95,10 @@ public class TTStructure {
     return (Cycle)_setOfCycles.getResourceAt(_currentCycleIndex).getAttach(); ;
   }
 
+  public Resource getCurrentCycleResource(){
+   return _setOfCycles.getResourceAt(_currentCycleIndex); ;
+  }
+
 
   public void setCurrentCycleIndex(int curCyc){
     _currentCycleIndex = curCyc;//_currentCycleIndex = curCyc;

@@ -11,8 +11,11 @@ package dInternal;
 
 import dResources.DConst;
 import dInternal.dData.*;
+import dInternal.dTimeTable.*;
 import dInternal.dConditionsTest.*;
 import dInternal.dUtil.*;
+
+import java.util.StringTokenizer;
 
 public class DModelProcess {
   private DModel _dm;
@@ -30,7 +33,14 @@ public class DModelProcess {
   *
   */
  public void updateEventsInTTS(){
-
+   for (int i=0; i< _dm._setOfEvents.size(); i++){
+     EventAttach event = (EventAttach)_dm._setOfEvents.getResourceAt(i).getAttach();
+     StringTokenizer keys = new StringTokenizer(event.getPeriodKey(),".");
+     long [] dayTimeKeys = {Long.parseLong(keys.nextToken()),Long.parseLong(keys.nextToken())
+     ,Long.parseLong(keys.nextToken())};
+     Period period =_dm._ttStruct.getCurrentCycle().getPeriodByKey(dayTimeKeys[0],dayTimeKeys[1],dayTimeKeys[2]);
+     period.getEventsInPeriod().addResource(new Resource(event.getPrincipalRescKey(),null),1);
+   }// end for (int i=0; i< _dm._setOfEvents.size(); i++)
  }
 
  /**
@@ -54,6 +64,7 @@ public class DModelProcess {
       ((State)_dm._setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(_dm._setOfStudents.size());
 
       ((State)_dm._setOfStates.getResource(DConst.SB_T_EVENT).getAttach()).setValue(_dm._setOfEvents.size());
+      ((State)_dm._setOfStates.getResource(DConst.SB_T_ASSIG).getAttach()).setValue(_dm._setOfEvents.getNumberOfEventAssign());
 
       ((State)_dm._setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(10);
 
@@ -70,10 +81,10 @@ public class DModelProcess {
  public void buildSetOfEvents(){
    _dm._setOfEvents = new SetOfEvents();
    if (_dm._setOfActivities!=null){
-     String cycle = _dm._ttStruct.getSetOfCycles().getResourceAt(
-         _dm._ttStruct.getCurrentCycleIndex()).getID();
-     _dm._setOfEvents.build(cycle, _dm._setOfActivities, _dm._setOfInstructors, _dm._setOfRooms);
+     _dm._setOfEvents.build(_dm._ttStruct.getCurrentCycleResource(), _dm._setOfActivities, _dm._setOfInstructors, _dm._setOfRooms);
+     updateEventsInTTS();
    }// end if (_setOfActivities!=null)
+
   }
 
   /**

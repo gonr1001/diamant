@@ -7,6 +7,8 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dData.Resource;
 import dInternal.dUtil.*;
 
+import java.lang.Math;
+
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
@@ -287,12 +289,31 @@ public Period getLastPeriod(){
   * @param int the index of the period int the sequence
   * @return Period the period
   * */
- public Period getPeriod( int dayIndex, int seqIndex, int perIndex){
+ public Period getPeriodByIndex( int dayIndex, int seqIndex, int perIndex){
      Day day =(Day)getSetOfDays().getResourceAt(dayIndex).getAttach();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(seqIndex).getAttach();
        if (seq!=null){
          return (Period)seq.getSetOfPeriods().getResourceAt(perIndex).getAttach();
+       }
+     }
+   return null;
+  }
+
+  /**
+  * get a period
+  * @param Cycle the cycle where we want to find the period
+  * @param int the day reference number where we want to find the period
+  * @param int the sequence reference number where we want to find the period
+  * @param int the index of the period int the sequence
+  * @return Period the period
+  * */
+ public Period getPeriodByKey( long dayKey, long seqKey, long perKey){
+     Day day =(Day)getSetOfDays().getResource(dayKey).getAttach();
+     if(day!=null){
+       Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqKey).getAttach();
+       if (seq!=null){
+         return (Period)seq.getSetOfPeriods().getResource(perKey).getAttach();
        }
      }
    return null;
@@ -307,6 +328,34 @@ public Period getLastPeriod(){
   public Period getPeriod(Sequence seq, int periodRefNo ){
     return (Period)seq.getSetOfPeriods().getResource(
         Integer.toString(periodRefNo)).getAttach();
+  }
+
+  /**
+   * get a period
+   * @param int [3] the day time index rank: 0= dayindex, 1= hour , 2= minute
+   * @return String the period complete key a.b.c where a= day key, b= sequence key
+   * c= period key
+   * */
+  public String getPeriod(int[] dayTime ){
+    int error = 1000;
+    String key="";
+    Day day =(Day)_setOfDays.getResourceAt(dayTime[0]).getAttach();
+    if(day!=null){
+      for (int i=0; i< day.getSetOfSequences().size(); i++){
+        Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(i).getAttach();
+        for(int j=0; j< seq.getSetOfPeriods().size(); j++){
+          Period per = (Period)seq.getSetOfPeriods().getResourceAt(j).getAttach();
+          int newError = Math.abs((per.getBeginHour()[0]-dayTime[1])*60+ per.getBeginHour()[1] -dayTime[2]);
+          if(newError <error){
+            key = _setOfDays.getResource(TTStructure._weekTable[ dayTime[0]]).getKey()+"."+
+                  day.getSetOfSequences().getResourceAt(i).getKey()+"."+
+                  seq.getSetOfPeriods().getResourceAt(j).getKey();
+            error = newError;
+          }
+        }// for(int j=0; j< seq.getSetOfPeriods().size(); j++)
+      }// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+    }// end if(day!=null)
+    return key;
   }
 
   /**

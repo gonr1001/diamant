@@ -34,10 +34,12 @@ public class EventAttach extends DXObject {
    * @param key1
    * @param key2
    */
-  public EventAttach(String princKey, long key1, long key2) {
+  public EventAttach(String princKey, long key1, long key2, int eventDuration, String eventPeriod) {
     _principalRescKey = princKey;
     _secondaryRescKey1 = key1;
     _secondaryRescKey2 = key2;
+    _eventDuration = eventDuration;
+    _ttsKey = eventPeriod;
     _tabuList = new Vector();
   }
 
@@ -52,6 +54,23 @@ public class EventAttach extends DXObject {
   public long getRoomKey(){
    return _secondaryRescKey2;
   }
+
+  /**
+   *
+   * @return
+   */
+  public String getPeriodKey(){
+    return _ttsKey;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public int getDuration(){
+    return _eventDuration;
+  }
+
 
   /**
    * Tests if the specified string is a component in the tabulist vector.
@@ -83,6 +102,15 @@ public class EventAttach extends DXObject {
       return _tabuList.add(princKey);
     return false;
   }
+
+  public void setEventState(boolean state){
+    inTTS= state;
+  }
+
+  public boolean getEventState(){
+   return inTTS;
+ }
+
 
   /**
    * set events keys by the appropriate field

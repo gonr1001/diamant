@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.29 $  $Date: 2003-09-05 17:09:41 $
+ * Title: ToolBar $Revision: 1.30 $  $Date: 2003-09-05 18:58:00 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -225,7 +225,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
             ).getPeriodPanel(Integer.parseInt(item) );
         Period period;
-        period= _tts.getCurrentCycle().getPeriod( ppanel.getPeriodRef()[0],
+        period= _tts.getCurrentCycle().getPeriodByIndex( ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
         period.setPriority(_periodTypeSelector.getSelectedIndex());
         if(_comboBoxStatus){
@@ -245,7 +245,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         Cycle cycle = _tts.getCurrentCycle();
         Period per;
         for(int i = 0; i < cycle.getSetOfDays().size(); i++){
-          per = cycle.getPeriod( i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
+          per = cycle.getPeriodByIndex( i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
           per.setPriority(_periodTypeSelector.getSelectedIndex());
         }
         //_dApplic.getDMediator().getCurrentDoc().setModified();
@@ -288,7 +288,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
       if(ppanel!=null){
 
         _periodSelector.setSelectedItem(Integer.toString(ppanel.getPanelRefNo()));
-        period= _tts.getCurrentCycle().getPeriod( ppanel.getPeriodRef()[0],
+        period= _tts.getCurrentCycle().getPeriodByIndex( ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
         _periodTypeSelector.disableActionListener();
         _periodTypeSelector.setSelectedItem(_tts._priorityTable[period.getPriority()]);

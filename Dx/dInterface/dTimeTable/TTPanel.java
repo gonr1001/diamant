@@ -94,7 +94,7 @@ public class TTPanel extends JScrollPane {
            _dm.getDApplication().getToolBar().setComboBoxStatus(true);
           _lastActivPpanel=perpanel;
          System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
-                            +_dm.getTTStructure().getCurrentCycle().getPeriod(
+                            +_dm.getTTStructure().getCurrentCycle().getPeriodByIndex(
                             perpanel.getPeriodRef()[0],perpanel.getPeriodRef()[1],perpanel.getPeriodRef()[2]).toString());//debug
         }
       }

@@ -108,7 +108,7 @@ import org.w3c.dom.Document;
     public void test_getPeriod(){
       TTStructure tts= new TTStructure();
       tts.loadTTStructure(path+"StandardTTC.xml");
-      Period per= tts.getCurrentCycle().getPeriod(4,2,1);
+      Period per= tts.getCurrentCycle().getPeriodByIndex(4,2,1);
       assertEquals("test_getPeriod : assertEquals 1 (begin hour):",20,per.getBeginHour()[0]);
       assertEquals("test_getPeriod : assertEquals 2 (begin minute):",0,per.getBeginHour()[1]);
       assertEquals("test_getPeriod : assertEquals 3 (priority):",1,per.getPriority());

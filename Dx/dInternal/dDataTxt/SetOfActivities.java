@@ -310,9 +310,9 @@ public class SetOfActivities extends SetOfResources{
              unityResource= section.getUnity(Integer.toString(counter));
              Unity bloc= (Unity)unityResource.getAttach();
              Assignment cycleAss = new Assignment();
-             int day=Integer.parseInt(stLine.nextToken().trim());
+             int dayIndex=Integer.parseInt(stLine.nextToken().trim())-1;
              int [] time= DXToolsMethods.convertSTIPeriods(Integer.parseInt(stLine.nextToken().trim()));
-             cycleAss.setDateAndTime(day, time[0],time[1]);
+             cycleAss.setDateAndTime(dayIndex, time[0],time[1]);
              cycleAss.setInstructor(instructorName);
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                bloc.addAssignment(new Resource(Integer.toString(i),cycleAss));
