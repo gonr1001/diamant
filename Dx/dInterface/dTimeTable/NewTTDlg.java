@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.7 $  $Date: 2003-06-02 15:34:29 $
+ * Title: NewTTDlg $Revision: 1.8 $  $Date: 2003-06-02 16:42:42 $
  * Description: NewTTDlg is created by NewTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -68,13 +68,13 @@ public class NewTTDlg extends JDialog {
      String  str2 = "";
      String  str3 = "" ;
      if (type == DConst.CYCLE) {
-       str1 = "xml";//DConst.DGH;
-       str2 = DConst.DGH_FILE;
+       str1 = DConst.XML;
+       str2 = DConst.XML_FILE;
        str3 = DConst.NTT_CY_TD;
      }
      if (type == DConst.EXAM) {
-       str1 = "xml";//DConst.DGH;
-       str2 = DConst.DGH_FILE;
+       str1 = DConst.XML;
+       str2 = DConst.XML_FILE;
        str3 = DConst.NTT_EX_TD;
      }
 

@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.26 $  $Date: 2003-06-02 15:05:36 $
+ * Title: DStringFrRes $Revision: 1.27 $  $Date: 2003-06-02 16:42:42 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -112,8 +112,10 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"noName", "Sans Titre"},
     {"dia", "dia"},
     {"dim", "dim"},
+    {"xml", "xml"},
     {"dotDia", ".dia"},
     {"dotDim", ".dim"},
+    {"dotXml", ".xml"},
     {"sig", "sig"},
     {"txt", "txt"},
     {"dgh", "dgh"},
@@ -121,6 +123,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"dimFile", "Fichier Diamant (*.dim)"},
     {"diaFile", "Fichier Diamant (*.dia)"},
     {"dghFile", "Fichier Grille Horaire (*.dgh)"},
+    {"xmlFile", "Fichier Grille Horaire (*.xml)"},
     {"problem", "À corriger"},
 
 
