@@ -434,7 +434,7 @@ public class SetOfActivities extends SetOfResources{
           lineRoomName="", lineRoomType="", LineActFixed="";
           /* duration, time of each bloc*/
           for(int l=0; l< section.getSetOfUnities().size(); l++){
-            bloc= (Unity)section.getSetOfUnities().getResourceAt(l).getAttach();
+            bloc= (Unity)section.getSetOfUnities().getResourceAt(0).getAttach();
             lineDuration += bloc.getDuration()/60+" ";//
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();

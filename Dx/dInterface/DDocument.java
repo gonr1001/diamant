@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.44 $  $Date: 2003-07-07 10:56:55 $
+ * Title: DDocument $Revision: 1.45 $  $Date: 2003-07-07 17:35:10 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.45 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInterface;
@@ -62,27 +62,17 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
-  //for a new timetable
-  public DDocument(DApplication dApplic, String fullPath, int type, String ttStructPath) {
+  //for a new timetable and a open timetable
+  public DDocument(DApplication dApplic,String TTName, String fileName, int type) {
     _dApplic = dApplic;
-    if (ttStructPath != null) {  // for a new timetable
-      _dm = new DModel(_dApplic, type, ttStructPath);
-    } else {  //for an open timetable
-      _dm = new DModel(_dApplic, type, fullPath);
-    }
-    _dm.getTTStructure().addTTStructureListener(this);
-    buidDocument(fullPath);
+    _dm = new DModel(_dApplic, fileName, type);
+    //if(_dm.getError().length()==0){
+      addTTListener(_dm.getTTStructure());
+      _dm.getTTStructure().addTTStructureListener(this);
+      buidDocument(TTName);
+    //}
   } // end constructor DDocument()
 
-  //for an open timetable
-  //-------------------------------------------
-/*  public DDocument(DApplication dApplic, String fullPath) {
-    _dApplic = dApplic;
-    _dm = new DModel(_dApplic, fullPath);
-    addTTListener(_dm.getTTStructure());
-    _dm.getTTStructure().addTTStructureListener(this);
-    buidDocument(fullPath);
-  } // end constructor DDocument()*/
 
   //for new timetable Structure
    public DDocument(DApplication dApplic, String fullPath, int type, boolean onlyStruc) {

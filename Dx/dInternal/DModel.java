@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.36 $  $Date: 2003-07-07 10:56:55 $
+ * Title: DModel $Revision: 1.37 $  $Date: 2003-07-07 17:35:10 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.37 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -47,30 +47,20 @@ public class DModel {
   private TTStructure _ttStruct;
   private int _currentCycle = 1;
 
-//for new
-  public DModel(DApplication dApplic,  int type, String ttStructPath) {
-    _error = "";
-
-    _status = new Status();
-    _dApplic = dApplic;
-    _ttStruct = new TTStructure();
-    _error = _ttStruct.loadTTStructure(ttStructPath);
-
-      _modified = false;
-
-       _type = type;
-
-  }
-
-  //for open
-  public DModel(DApplication dApplic, String fullPath, int type) {
+  //for new and open
+  public DModel(DApplication dApplic, String fileName, int type) {
     _error = "";
     _status = new Status();
     _dApplic = dApplic;
-    // must initiate type and ttStructure
-    loadTimeTable(fullPath);
+    if(fileName.endsWith(".dia")){
+      loadTimeTable(fileName);
+    }else if(fileName.endsWith(".xml")){
+      _ttStruct = new TTStructure();
+      _ttStruct.loadTTStructure(fileName);
+    }else{
+      _error="Wrong type of file";
+    }
     _type = type;
-
     _modified = false;
   }
 

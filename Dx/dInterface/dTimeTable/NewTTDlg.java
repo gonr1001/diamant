@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.14 $  $Date: 2003-07-07 09:44:24 $
+ * Title: NewTTDlg $Revision: 1.15 $  $Date: 2003-07-07 17:35:10 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,8 +19,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.15 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -96,7 +96,7 @@ public class NewTTDlg extends JDialog {
          new FatalProblemDlg(dApplic.getJFrame(),error);
               System.exit(1);
        }*/
-       String error =dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, type, fil);
+       String error =dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, fil, type);
        //    dApplic.getToolBar().setToolBars(ttStruct);
        //dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        if(error.length()!=0){

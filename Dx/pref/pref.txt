@@ -1,5 +1,6 @@
-com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+javax.swing.plaf.metal.MetalLookAndFeel
 French
 D:\Developpements\DiamantExtreme\Dx\pref\StandardTTC.xml
 D:\Developpements\DiamantExtreme\Dx\pref\StandardTTE.xml
+D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
