@@ -42,11 +42,11 @@ public class TTParameters {
   public void setValues(int [] a) {
     _dim1 = a[0];
     _dim2 = a[1];
-    TTParametersEvent event = new TTParametersEvent(this);
+ /*   TTParametersEvent event = new TTParametersEvent(this);
     for (int i=0; i<_ttpListeners.size(); i++) {
       TTParametersListener l = (TTParametersListener) _ttpListeners.elementAt(i);
       l.chageInTTParameters(event);
-    }
+    }*/
   }
 
   public synchronized void addTTParametersListener(TTParametersListener ttpl) {

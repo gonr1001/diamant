@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.5 $  $Date: 2003-02-25 15:52:44 $
+ * Title: DDocument $Revision: 1.6 $  $Date: 2003-02-26 17:44:07 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -33,23 +33,22 @@ import javax.swing.JDesktopPane;
 
 import dInternal.DModel;
 import dInternal.TTParameters;
-import dInternal.TTParametersEvent;
-import dInternal.TTParametersListener;
+import dInternal.DModelEvent;
+import dInternal.DModelListener;
 import dResources.DConst;
 
-public class DDocument implements ActionListener, TTParametersListener{
+public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;
   private DView _dView;
 
   /**
-   * @link aggregationByValue
    */
   //private DMediator _mediator;
   private JInternalFrame _jif;
   private DModel _dm;
   private JLabel _bottomLablel;
   private TTPanel _ttPanel;
-  private TTParameters _ttParameters;
+  //private TTParameters _ttParameters;
 
   //-------------------------------------------
   public DDocument(DView dView) {
@@ -73,8 +72,8 @@ public class DDocument implements ActionListener, TTParametersListener{
     JPanel _bottomPanel = initBottomPanel(_bottomLablel);
     _jif.getContentPane().add(_bottomPanel, BorderLayout.SOUTH);
     _ttPanel = new TTPanel();
-    _ttParameters = new TTParameters();
-    _ttParameters.addTTParametersListener(this);
+    //_ttParameters = new TTParameters();
+    _dm.addDModelListener(this);
     _modified = false;
     _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
@@ -105,7 +104,7 @@ public class DDocument implements ActionListener, TTParametersListener{
     } //end getDModel
 
     public TTParameters getTTParameters() {
-      return _ttParameters;
+      return _dm.getTTParameters();
     } // end getJIF
 
     public TTPanel getTTPanel() {
@@ -137,9 +136,9 @@ public class DDocument implements ActionListener, TTParametersListener{
     }// end if ... else
     }// end actionPerformed
 
-    public void chageInTTParameters(TTParametersEvent  e) {
+    public void changeInDModel(DModelEvent  e) {
        _bottomLablel.setText("Change done");
-      _ttPanel.updateTTPanel(_ttParameters);
+      _ttPanel.updateTTPanel(_dm.getTTParameters());
       // repaint();
     }// end actionPerformed
 } /* end DDocument class */

@@ -34,7 +34,11 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <file path="dInternal/DModelEvent.java"/>
+  <file path="dInternal/DModelListener.java"/>
   <file path="DRun.java"/>
   <file path="Proto.html"/>
   <file path="dInternal/TTParameters.java"/>
+  <file path="dInternal/TTParametersEvent.java"/>
+  <file path="dInternal/TTParametersListener.java"/>
 </project>

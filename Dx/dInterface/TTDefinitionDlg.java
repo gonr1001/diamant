@@ -28,8 +28,8 @@ import java.util.*;
 
 
 import javax.swing.BorderFactory;
-import dInternal.TTParametersListener;
-import dInternal.TTParametersEvent;
+import dInternal.DModelListener;
+import dInternal.DModelEvent;
 
 //import diamant002.utilities.NumberTextField;
 //import diamant002.dInternal.DPeriod;
@@ -51,7 +51,7 @@ class TTDefinitionDlg extends JDialog
                    implements ActionListener,
                               ItemListener,
                               FocusListener,
-                              TTParametersListener{
+                              DModelListener{
 
   final static int CYCLE = 0;
   final static int EXAM = 1;
@@ -186,8 +186,7 @@ class TTDefinitionDlg extends JDialog
     setTitle( MES00 ) ; //_doc._projectName);
     setResizable(false);
 
-     _mediator.getCurrentDoc().getTTParameters().addTTParametersListener(this);
-
+     _mediator.getCurrentDoc().getDM().addDModelListener(this);
     panelC = new JPanel(gridbag);
     //infoPanel
     infoPanel = new JPanel(new GridLayout(0, 1));
@@ -302,7 +301,7 @@ class TTDefinitionDlg extends JDialog
     butAppliquer = new JButton( BUT03 );
     CmdButton butAppliquer = new CmdButton(BUT03);
     //butAppliquer.setCommand(new AppInTTCmd(_mediator.getCurrentDoc()));
-    butAppliquer.addActionListener(_mediator.getCurrentDoc());
+    //butAppliquer.addActionListener(_mediator.getCurrentDoc());
     butAppliquer.addActionListener(this);
 
     butPanel.add(butOk, null);
@@ -362,7 +361,7 @@ class TTDefinitionDlg extends JDialog
       _a[0]= 2;
       _a[1]= 2;
       setTitle( "hello" + _a[0] + _a[1]);
-      _mediator.getCurrentDoc().getTTParameters().setValues(_a);
+      _mediator.getCurrentDoc().getDM().setParameters(_a);
     }
 
     if (command.equals( BUT00 )) {  // Ok
@@ -670,7 +669,7 @@ class TTDefinitionDlg extends JDialog
   // implement the listener
   public void focusGained(FocusEvent e) {}
 
-  public void chageInTTParameters(TTParametersEvent e) {
+  public void changeInDModel(DModelEvent e) {
     setTitle( "Myhello" + _a[0] + _a[1]);
     //repaintDlg(_mediator.getCurrentDoc().getTTParameters());
 
