@@ -10,8 +10,8 @@ public class TTStructure {
   private int _row;
 
   public TTStructure() {
-    _col=5;
-    _row= 10;
+    _col=6;
+    _row= 15;
   }
 
  public SetOfResources getSetOfCycles() {
