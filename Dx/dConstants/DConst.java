@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.83 $  $Date: 2004-03-02 21:57:01 $
+ * Title: DConst $Revision: 1.84 $  $Date: 2004-03-04 16:36:31 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.83 $
+ * @version $Revision: 1.84 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -66,6 +66,7 @@ public class DConst {
   public final static String TXT_FILE = res.getString("txtFile");//*.txt
   public final static String NO_ROOM_INTERNAL = res.getString("noRoomInternal");//"------"
   public final static String NO_ROOM_EXTERNAL = res.getString("noRoomExternal");//"xxxxxx"
+  public final static String NO_ROOM_EXPORT = res.getString("noRoomExport");//"      "
 
   public final static String PROBLEM = res.getString("problem");//À corriger, unp
 

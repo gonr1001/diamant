@@ -11,6 +11,7 @@ package dInternal.dData;
 
 import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
+import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dUtil.DXTools;
 import com.iLib.gIO.FilterFile;
@@ -52,7 +53,10 @@ public class ExportData {
         report+=hourB.nextToken()+hourB.nextToken();
         StringTokenizer hourEnd = new StringTokenizer(rTokens.nextToken(),"h");
         report+=hourEnd.nextToken()+hourEnd.nextToken();
-        String room= rTokens.nextToken()+"          ";
+        String roomTemp=rTokens.nextToken();
+        if(roomTemp.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
+          roomTemp= DConst.NO_ROOM_EXPORT;
+        String room= roomTemp+"          ";
         report+= room.substring(0,_ROOMSIZE)+DXTools.STIConvertGroup(section);
       //}// end while(tokens.hasMoreTokens())
       report+=SetOfResources.CR_LF;
@@ -78,14 +82,14 @@ public class ExportData {
     while(strTokens.hasMoreTokens()){
       String line= strTokens.nextToken();
       StringTokenizer rTokens = new StringTokenizer(line,";");
-      report+=rTokens.nextToken()+rTokens.nextToken()+rTokens.nextToken()+"   ";
+      report+=rTokens.nextToken()+rTokens.nextToken()+rTokens.nextToken()+"  ";
       if(rTokens.hasMoreTokens()){
         StringTokenizer courses = new StringTokenizer(rTokens.nextToken(),",");
         while(courses.hasMoreTokens()){
           String course= courses.nextToken();
           String viewElt= DXToolsMethods.getToken(course,"-",0);
-          report+= DXToolsMethods.getToken(viewElt,".",0)+DXToolsMethods.getToken(viewElt,".",1)+
-                   "  "+DXToolsMethods.getToken(viewElt,".",2).toLowerCase()+" ";
+          report+= " "+DXToolsMethods.getToken(viewElt,".",0)+DXToolsMethods.getToken(viewElt,".",1)+
+                   " "+DXToolsMethods.getToken(viewElt,".",2).toLowerCase();
         }
       }// end while(strTokens.hasMoreTokens())
       report+=SetOfResources.CR_LF;
