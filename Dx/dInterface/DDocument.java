@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.38 $  $Date: 2003-07-02 16:15:47 $
+ * Title: DDocument $Revision: 1.39 $  $Date: 2003-07-03 09:45:31 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -63,10 +63,10 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
 
 
   //for new timetable
-   public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
+   public DDocument(DApplication dApplic, String title, int type, TTStructure ttStruct) {
      _dApplic = dApplic;
-     _dm = new DModel(_dApplic, ttStruct);
-     ttStruct.addTTStructureListener(this);
+     _dm = new DModel(_dApplic, type, ttStruct);
+     _dm.getTTStructure().addTTStructureListener(this);
      buidDocument(title);
      _modified=true;
   } // end constructor DDocument()
@@ -76,20 +76,18 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
   public DDocument(DApplication dApplic, String title) {
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, title);
-    // read TTstructure
-    // TTStructure ttStruct = new TTStructure();
-    // read TTstructure
+    _dm.getTTStructure().addTTStructureListener(this);
     buidDocument(title);
     _modified=true;
   } // end constructor DDocument()
 
   //for new timetable Structure
-   public DDocument(DApplication dApplic, String title, boolean partial) {
+   public DDocument(DApplication dApplic, String title, int type) {
      _dApplic = dApplic;
      TTStructure ttStruct = new TTStructure();
      // to  be arranged
      ttStruct.loadTTStructure(_dApplic.getCurrentDir()+File.separator+"pref"+File.separator+"StandardTTC.xml");
-     _dm = new DModel(_dApplic, ttStruct);
+     _dm = new DModel(_dApplic, 0, ttStruct);
      ttStruct.addTTStructureListener(this);
      buidDocument(title);
      //dApplic.getToolBar().setToolBars(ttStruct);
@@ -134,6 +132,9 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
     ttStruct.addTTStructureListener(this);
   }
 
+  public String getError(){
+    return _dm.getError();
+  }
     //-------------------------------------------
     public void setModified(){
       _modified = true;

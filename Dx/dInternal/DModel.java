@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.29 $  $Date: 2003-07-02 16:53:30 $
+ * Title: DModel $Revision: 1.30 $  $Date: 2003-07-03 09:45:31 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -34,6 +34,8 @@ import dInternal.dTimeTable.TTStructure;
 public class DModel {
   private Vector _dmListeners = new Vector();
   //private TTParameters _ttParameters;
+  private int _type;
+  private String _error;
   private Status _status;
   private SetOfInstructors _setOfInstructors;
   private SetOfRooms _setOfRooms;
@@ -44,7 +46,9 @@ public class DModel {
   private int _currentCycle = 1;
 
 //for new
-  public DModel(DApplication dApplic, TTStructure ttStruct) {
+  public DModel(DApplication dApplic, int type, TTStructure ttStruct) {
+    _error = "";
+    _type = type;
     _status = new Status();
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;
@@ -55,6 +59,7 @@ public class DModel {
 
   //for open
   public DModel(DApplication dApplic, String fileName) {
+    _error = "";
     _status = new Status();
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;
@@ -63,6 +68,9 @@ public class DModel {
     //test1_setAvailability();
   }
 
+  public String getError(){
+    return _error;
+  }
   //for new
   public DModel(DApplication dApplic, TTStructure ttStruct, boolean partial) {
     _status = new Status();

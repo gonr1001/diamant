@@ -66,7 +66,7 @@ public class NewTTSDlg extends JDialog{
     *
     * */
    private void loadTTData(DApplication dApplic){
-     dApplic.getDMediator().addDoc("Ma grille", new TTStructure());
+     //dApplic.getDMediator().addDoc("Ma grille", new TTStructure());
      //new TTDefinitionDlg(dApplic);
      /*JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
      fc.setFileFilter( new DFileFilter (new String[] {DConst.DGH},

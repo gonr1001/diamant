@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.31 $  $Date: 2003-07-02 16:53:30 $
+ * Title: DMenuBar $Revision: 1.32 $  $Date: 2003-07-03 09:45:31 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -34,7 +34,8 @@ import dInterface.dData.*;
 import dInterface.dTimeTable.NewTTExCmd;
 import dInterface.dTimeTable.NewTTCyCmd;
 import dInterface.dTimeTable.OpenTTCmd;
-import dInterface.dTimeTable.NewTTSCmd;
+import dInterface.dTimeTable.NewTTSCyCmd;
+import dInterface.dTimeTable.NewTTSExCmd;
 import dInterface.dTimeTable.OpenTTSCmd;
 import dInterface.dTimeTable.SaveAsCmd;
 import dInterface.dTimeTable.SaveCmd;
@@ -213,13 +214,13 @@ public class DMenuBar extends JMenuBar{
 
     CmdMenu mNTTSCy = new CmdMenu(DConst.NTTS_CY);
     mNTTSCy.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mNTTSCy.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mNTTSCy.setCommand(new NewTTSCyCmd());
     mNTTSCy.addActionListener(_dApplic);
     mNewTTS.add(mNTTSCy);
 
     CmdMenu mNTTSEx = new CmdMenu(DConst.NTTS_EX);
     mNTTSEx.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mNTTSEx.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mNTTSEx.setCommand(new NewTTSExCmd());
     mNTTSEx.addActionListener(_dApplic);
     mNewTTS.add(mNTTSEx);
 

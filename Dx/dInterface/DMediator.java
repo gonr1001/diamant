@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.16 $  $Date: 2003-07-02 16:15:47 $
+ * Title: DMediator $Revision: 1.17 $  $Date: 2003-07-03 09:45:31 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -50,26 +50,23 @@ public class DMediator {
   }
   //-------------------------------------------
   //for new TimeTable
-  public String addDoc(String title, TTStructure ttStruct) {
-    String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, title, ttStruct);
+  public String addDoc(String title, int type, TTStructure ttStruct) {
+    //String error = "";
+    DDocument currentDoc;
+    if (ttStruct != null) {  //for new TimeTable
+      currentDoc = new DDocument(_dApplic, title, type, ttStruct);
+    } else {                 //for open TimeTable
+      currentDoc = new DDocument(_dApplic, title);
+    }
     _documents.addElement(currentDoc);
     //_dApplic.getToolBar().setToolBars(ttStruct);
-    return error;
-  } //end addDoc
-
-  //for open TimeTable
-  public String addDoc(String title) {
-    String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, title);
-    _documents.addElement(currentDoc);
-    return error;
+    return currentDoc.getError();
   } //end addDoc
 
   //for new ttStructure
-  public String addDoc(String title, boolean partial) {
+  public String addDoc(String title, int type) {
     String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, title, partial);
+    DDocument currentDoc = new DDocument(_dApplic, title, type);
     _documents.addElement(currentDoc);
     _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
     return error;
@@ -82,6 +79,13 @@ public class DMediator {
     _documents.addElement(currentDoc);
     return error;
   } //end addDoc
+  //for open TimeTable
+/*  public String addDoc(String title) {
+    String error = "";
+    DDocument currentDoc = new DDocument(_dApplic, title);
+    _documents.addElement(currentDoc);
+    return error;
+  } //end addDoc*/
 
   public void removeCurrentDoc(){
       _documents.remove(getCurrentDoc());

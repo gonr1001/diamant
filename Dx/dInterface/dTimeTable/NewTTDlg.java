@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.11 $  $Date: 2003-07-02 16:15:47 $
+ * Title: NewTTDlg $Revision: 1.12 $  $Date: 2003-07-03 09:45:31 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -43,10 +43,9 @@ import dInternal.dTimeTable.TTStructure;
 
 /**
  *
- * ImportDlg is a class used to show a dialog
+ * NewTTDlg is a class used to show a dialog
  *
  */
-
 public class NewTTDlg extends JDialog {
   /**
     * the constructor will displays the dialog
@@ -57,7 +56,7 @@ public class NewTTDlg extends JDialog {
     */
 
    public NewTTDlg(DApplication dApplic, int type) {
-     loadTTData(dApplic, type);
+     buildDocument(dApplic, type);
    } // end constructor
 
    /**
@@ -65,7 +64,7 @@ public class NewTTDlg extends JDialog {
    /**
     *
     * */
-   private void loadTTData(DApplication dApplic, int type) {
+   private void buildDocument(DApplication dApplic, int type) {
      JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
      String str1= "";
      String  str2 = "";
@@ -81,8 +80,7 @@ public class NewTTDlg extends JDialog {
        str3 = DConst.NTT_EX_TD;
      }
 
-     fc.setFileFilter( new DFileFilter (new String[] {str1},
-         str2) );
+     fc.setFileFilter(new DFileFilter(new String[] {str1}, str2));
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
@@ -102,11 +100,10 @@ public class NewTTDlg extends JDialog {
               System.exit(1);
        }
 
-       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
+       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, type, ttStruct);
    //    dApplic.getToolBar().setToolBars(ttStruct);
        //dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
-
      }
    }// end loadTTData
 
