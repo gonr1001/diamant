@@ -83,10 +83,11 @@
     <property category="archiving" name="libraryStates.1" value="1:theLibrary"/>
     <property category="archiving" name="targetPath" value="Proto.jar"/>
   </node>
-  <file path="dInternal/DModelProcess.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
   <file path="dInterface/DToolBar.java"/>
   <file path="Proto.html"/>
+  <file path="dAux/ShowAllCmd.java"/>
+  <file path="dAux/StateZeroCmd.java"/>
 </project>
