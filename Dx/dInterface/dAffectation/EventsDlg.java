@@ -72,12 +72,6 @@ public class EventsDlg extends EventsDlgInterface{
     //if Button CLOSE is pressed
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
-    //if Button OK is pressed
-/*    if (command.equals(_buttonsNames[0])){
-      setUnities();
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
-      dispose();
-    }*/
     //if Button APPLY is pressed
     if (command.equals(DConst.BUT_APPLY)){
       setUnities();
@@ -89,11 +83,11 @@ public class EventsDlg extends EventsDlgInterface{
   /**
   * build buttom to use in the dialog
   */
- public void buildArrowButtons(){
+/* public void buildArrowButtons(){
    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
- }
+ }*/
 
  /**
  *

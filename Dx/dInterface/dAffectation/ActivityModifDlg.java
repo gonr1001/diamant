@@ -11,6 +11,7 @@ package dInterface.dAffectation;
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
+
 import dResources.DConst;
 import dInternal.dData.SetOfActivities;
 
@@ -18,10 +19,13 @@ import dInternal.dData.Resource;
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class ActivityModifDlg extends SetOfElementsInterface{
 
-  private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
+  private String[] _buttonsNames = {DConst.BUT_CLOSE};
   private SetOfActivities _soa;
 
   /**
@@ -30,12 +34,17 @@ public class ActivityModifDlg extends SetOfElementsInterface{
    */
   public ActivityModifDlg(DApplication dApplic) {
     super(new Dialog(dApplic.getJFrame()),dApplic,"Activités","Nombre d'activités",1);
+    getContentPane().add(new JLabel("hello"), BorderLayout.NORTH);
     _soa= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
     Vector [] vect= new Vector[1];
-    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");;
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    _buttonsPanel.getComponent(0).setEnabled(false);
-    _buttonsPanel.getComponent(1).setEnabled(false);
+    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");
+  /*  JButton button = new JButton( DConst.BUT_CLOSE);
+       button.setActionCommand( DConst.BUT_CLOSE);
+      button.addActionListener(this);
+      vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");;*/
+     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    // _buttonsPanel.getComponent(0).setEnabled(false);
+   // _buttonsPanel.getComponent(1).setEnabled(false);
     setVectorsOfElements(vect);
     initDialog();
   }

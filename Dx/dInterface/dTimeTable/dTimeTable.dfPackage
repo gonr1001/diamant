@@ -126,6 +126,16 @@ class reference13 {
 @__modelType reference 
 */
 class reference18 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.SaveAsTTDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.SaveAsTxtDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

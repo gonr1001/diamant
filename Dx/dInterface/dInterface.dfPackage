@@ -104,7 +104,7 @@ class __options {
 @__positions <oigroup:<oiref:java#Implements#dInterface.dTimeTable.AppInTTCmd#dInterface.Command:oiref>=613,1126,1063,705:oigroup>
 <oigroup:<oiref:java#Class#dInterface.DToolBar:oiref>=105,3,200,654,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.AboutCmd:oiref>=1050,1126,88,101,1:oigroup>
-<oigroup:<oiref:java#Class#dInterface.DApplication:oiref>=323,1126,200,558,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.DApplication:oiref>=323,1126,200,574,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.PLAFDlg:oiref>=690,1652,170,318,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.CommandHolder:oiref>=1023,212,151,130,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.CmdMenu:oiref>=938,402,151,142,1:oigroup>
@@ -163,9 +163,9 @@ class __options {
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.TTDefinitionCmd#dInterface.Command:oiref>=1627,1126,1135,705:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref>=503,1652,167,1134,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_dApplic:oiref>=230,1660,323,1658:oigroup>
-<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,179,436,1:oigroup>
+<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,179,468,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mEventsModif:oiref>=130,1652,1004,544:oigroup>
-<oigroup:<oiref:design#Class#id4ixp8dfxus9pndfyc2jys.diagram:oiref>=174,206,153,276,1:oigroup>
+<oigroup:<oiref:design#Class#id4ixp8dfxus9pndfyc2jys.diagram:oiref>=174,206,153,324,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_dApplic:oiref>=613,1208,523,1208:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.LongTask:oiref>=9,669,140,254,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.ProgressBar:oiref>=596,6,186,350,1:oigroup>

@@ -76,6 +76,21 @@ class reference9 {
 @__modelType reference 
 */
 class reference10 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.ThreeButtonsPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.TwoButtonsPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.ButtonsPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference12 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -66,7 +66,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _buttonsPanel = new TwoButtonsPanel(this, a);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
-       _tabbedPane = new JTabbedPane();
+    _tabbedPane = new JTabbedPane();
     //_tabbedPane.
     // Panels for tabbed Pane
     for (int i=0; i< _unities.size(); i++){
@@ -87,7 +87,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
 
     setResizable(true);
     setVisible(true);
-  }
+  } // end init
 
   /**
    * action performed
@@ -95,27 +95,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //boolean _change = false, _restore = false;
-    //System.out.println("Command: "+command);//debug
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
-      /*boolean apply=false;
-      for(int i=0; i< this._unities.size(); i++){
-        _currentActivityIndex=i;
-        apply = applyChanges();
-        if(!apply){
-          new FatalProblemDlg(this,"Valeur eronnée");
-          break;
-        }
-      }
-      if(apply){
-      _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
-      if(_evDlgInt!=null)
-        _evDlgInt.initializePanel();
-      dispose();
-      }
-      */
-
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
       boolean apply=false;
       for(int i=0; i< this._unities.size(); i++){
@@ -138,25 +119,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   }
 
   public void setInstructorList(Vector v) {
-    //System.out.println("hello" + ((String) v.toArray()[0]));
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
     JPanel jp = (JPanel)_tabbedPane.getComponentAt(_currentActivityIndex);
     JPanel jpb = createUnityPanel(_currentActivityIndex, false, v);
    _tabbedPane.setComponentAt(_currentActivityIndex,jpb);
    _buttonsPanel.setFirstEnable();
-    //_tabbedPane.addTab(((Resource)_unities.get(_currentActivityIndex)).getID(), createUnityPanel(_currentActivityIndex,false));
-
-
-  /*  for (int i=0; i< _unities.size(); i++){
-      if(_unities.get(i)!=null){
-        _currentActivityIndex=i;
-        _tabbedPane.addTab(((Resource)_unities.get(i)).getID(), createUnityPanel(i, false));
-      }
-    }// end for
-    _currentActivityIndex=0;
-    getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-    _tabbedPane.addChangeListener(this);
-    _tabbedPane.setSelectedIndex(_currentActivityIndex);*/
   }
 
   /**
@@ -165,8 +132,6 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    */
    public void stateChanged( ChangeEvent ce) {
     _currentActivityIndex = ((JTabbedPane)ce.getSource()).getSelectedIndex();
-    //System.out.println("_currentActivityIndex: "+_currentActivityIndex);//debug
-    //_tabbedPane.setComponentAt( _currentActivityIndex, ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex)));//createUnityPanel(_currentActivityIndex) );
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
   }
 
@@ -175,10 +140,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * Builds a panel to be placed in a tab of the tabbedPane
    * @return a JPanel to be placed in a tab of the tabbedPane
    */
-  public JPanel createUnityPanel(int index, boolean first, Vector v){
-    JPanel centerPanel = new JPanel(new GridLayout(0,1));
+  private JPanel createUnityPanel(int index, boolean first, Vector newInstructors){
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
-    JPanel panel = new JPanel();
     JLabel duration, day, hour, room, instructor;
     JComboBox  cbDuration, cbDay, cbHour, cbRoom;
     JList instructorsList;
@@ -189,9 +152,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     hour = new JLabel(DConst.R_ACTIVITY_BEGIN_HOUR);
     room = new JLabel(DConst.R_ROOM_NAME);
     instructor = new JLabel(DConst.R_INSTRUCTOR_NAME);
+
     JTextField resDuration= new JTextField(2);
     resDuration.setText(buildDuration());
     resDuration.setEnabled(_isModified);
+
     Vector[] vect = buildDayList();
     cbDay = new JComboBox(vect[1]);
     cbDay.addActionListener(this);
@@ -206,44 +171,42 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     cbRoom.setSelectedItem(vect[0].get(0).toString());
     if (first) {
       vect = buildInstructorList();
-      //String [] a = {"rgr", "ys"};
       instructorsList = new JList(vect[0].toArray());
     } else {
-      //String [] a = {"rgr", "ys"};
-      instructorsList = new JList(v);
+      instructorsList = new JList(newInstructors);
     }
     cbInstructor = new JScrollPane(instructorsList);
-    //cbInstructor.addActionListener(this);
-    cbInstructor.setPreferredSize(new Dimension(163,25));
-    //cbInstructor.setSelectedItem(vect[0].get(0).toString());
+    cbInstructor.setPreferredSize(new Dimension(170, 40));
     place = new JToggleButton(DConst.BUT_PLACE);
     place.setSelected(event.getAssignState());
     place.addActionListener(this);
     fix = new JToggleButton(DConst.BUT_FIGE);
     fix.addActionListener(this);
     fix.setSelected(event.getPermanentState());
+    JPanel centerPanel = new JPanel(new GridLayout(4,1));
+    JPanel panel = new JPanel(); //new GridLayout(1,6));
     // duration
     panel.add(duration);
     panel.add(resDuration);
     centerPanel.add(panel);
     // day and hour
-    panel = new JPanel();
+    //panel = new JPanel();
     panel.add(day);
     panel.add(cbDay);
     panel.add(hour);
     panel.add(cbHour);
     centerPanel.add(panel);
     // room
-    panel = new JPanel();
+    panel = new JPanel(); //new GridLayout(1,2));
     panel.add(room);
     panel.add(cbRoom);
     centerPanel.add(panel);
     // instructor
-    panel = new JPanel();
+    panel = new JPanel(); //new GridLayout(1,3));
     panel.add(instructor);
     panel.add(cbInstructor);
     JButton jButtonChange = new JButton( DConst.BUT_CHANGE );
-    jButtonChange.setPreferredSize(new Dimension(75, 22));
+    //jButtonChange.setPreferredSize(new Dimension(75, 22));
     jButtonChange.addActionListener(this);
     panel.add(jButtonChange); //to be used when adding instructors
     centerPanel.add(panel);
@@ -434,15 +397,15 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     String duration= ((JTextField)((JPanel)tpane.getComponent(0)).getComponent(1)).getText();
     if ((!DXToolsMethods.isIntValue(duration)) || (Integer.parseInt(duration)<0))
       return false;
-    String day= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
-    String hour= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(3)).getSelectedItem().toString();
-    String room= ((JComboBox)((JPanel)tpane.getComponent(2)).getComponent(1)).getSelectedItem().toString();
+    String day= ((JComboBox)((JPanel)tpane.getComponent(0)).getComponent(3)).getSelectedItem().toString();
+    String hour= ((JComboBox)((JPanel)tpane.getComponent(0)).getComponent(5)).getSelectedItem().toString();
+    String room= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
    // String instructor= ((JComboBox)((JPanel)tpane.getComponent(3)).getComponent(1)).getSelectedItem().toString();
-    JList instructor= ((JList)((JScrollPane)((JPanel)tpane.getComponent(3)).getComponent(1)).getViewport().getComponent(0));
+    JList instructor= ((JList)((JScrollPane)((JPanel)tpane.getComponent(2)).getComponent(1)).getViewport().getComponent(0));
     ListModel lm = (ListModel) instructor.getModel();
     String  intructorKeys = getInstructorKeys(lm);
-    boolean assignBut= ((JToggleButton)((JPanel)tpane.getComponent(4)).getComponent(0)).isSelected();
-    boolean permanentBut= ((JToggleButton)((JPanel)tpane.getComponent(4)).getComponent(1)).isSelected();
+    boolean assignBut= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(0)).isSelected();
+    boolean permanentBut= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
       Integer.parseInt(DXToolsMethods.getToken(hour,":",1))};
     String periodKey= cycle.getPeriod(daytime);
