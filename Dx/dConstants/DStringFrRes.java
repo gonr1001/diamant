@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.24 $  $Date: 2003-05-26 16:57:38 $
+ * Title: DStringFrRes $Revision: 1.25 $  $Date: 2003-05-29 18:03:03 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -39,6 +39,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "newTTTD", "Indiquez grille horaire"},
     { "newTTM", "Grille horaire"},
 
+    { "nTTEx", "Examen" },
+    { "nTTExTD", "Grille horaire Examens"},
+    { "nTTExM", "Examen"},
+
+    { "nTTCy", "Cycle" },
+    { "nTTCyTD", "Grille horaire Cycle"},
+    { "nTTCyM", "Cycle"},
 
     { "open", "Ouvrir horaire" },
     { "close", "Fermer" },

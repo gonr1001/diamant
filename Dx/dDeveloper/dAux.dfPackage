@@ -31,7 +31,9 @@ class __tags {
 */
 class __options {
 }/**
-@__positions 
+@__positions <oigroup:<oiref:java#Class#dAux.DoNothingDlg:oiref>=10,170,99,126,1:oigroup>
+<oigroup:<oiref:java#Class#dAux.DoNothingCmd:oiref>=10,10,109,126,1:oigroup>
+<oigroup:<oiref:java#Class#dAux.Header:oiref>=139,10,83,85,1:oigroup> 
 */
 class __positions {
 }

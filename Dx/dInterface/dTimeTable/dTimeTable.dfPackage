@@ -27,16 +27,6 @@ class reference342 {
 */
 class reference343 {
 }/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference31 {
-}/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTDlg:oiref><oihard>
-@__modelType reference 
-*/
-class reference32 {
-}/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSCmd:oiref><oihard>
 @__modelType reference 
 */
@@ -56,6 +46,31 @@ class reference11 {
 @__modelType reference 
 */
 class reference12 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTCyDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTExDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.PeriodPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTCyCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTExCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.22 $  $Date: 2003-05-27 17:50:28 $
+ * Title: DMenuBar $Revision: 1.23 $  $Date: 2003-05-29 18:03:03 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -31,7 +31,9 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenu;
 
 import dInterface.dData.*;
-import dInterface.dTimeTable.NewTTCmd;
+import dInterface.dTimeTable.NewTTExCmd;
+import dInterface.dTimeTable.NewTTCyCmd;
+
 import dInterface.dTimeTable.NewTTSCmd;
 import dInterface.dTimeTable.OpenTTSCmd;
 import dInterface.dUtil.*;
@@ -63,12 +65,31 @@ public class DMenuBar extends JMenuBar{
     mHello.setCommand(new HelloCmd());
     mHello.addActionListener(_dApplic);
 
+    menu.addSeparator();
 
-    CmdMenu mNewTT = new CmdMenu(DConst.NEW_TT);
-    menu.add(mNewTT);
+    JMenu mNewTT = new JMenu(DConst.NEW_TT);
     mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNewTT.setCommand(new NewTTCmd());
-    mNewTT.addActionListener(_dApplic);
+
+
+    CmdMenu mNTTEx = new CmdMenu(DConst.NTT_EX);
+    mNTTEx.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTEx.setCommand(new NewTTExCmd());
+    mNTTEx.addActionListener(_dApplic);
+    mNewTT.add(mNTTEx);
+
+    CmdMenu mNTTCy = new CmdMenu(DConst.NTT_CY);
+    mNTTCy.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTCy.setCommand(new NewTTCyCmd());
+    mNTTCy.addActionListener(_dApplic);
+    mNewTT.add(mNTTCy);
+
+    menu.add(mNewTT);
+
+    //CmdMenu mNewTT = new CmdMenu(DConst.NEW_TT);
+    //menu.add(mNewTT);
+    //mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
+    //mNewTT.setCommand(new NewTTCmd());
+    //mNewTT.addActionListener(_dApplic);
 
     CmdMenu mOpen = new CmdMenu(DConst.OPEN);
     menu.add(mOpen);

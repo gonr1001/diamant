@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.20 $  $Date: 2003-05-23 15:34:10 $
+ * Title: DConst $Revision: 1.21 $  $Date: 2003-05-29 18:03:03 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -36,6 +36,14 @@ public class DConst {
   public final static String NEW_TT = res.getString("newTT");
   public final static String NEW_TT_TD  = res.getString("newTTTD");
   public final static String NEW_TT_M  = res.getString("newTTM");
+
+  public final static String NTT_EX = res.getString("nTTEx");
+  public final static String NTT_EX_TD  = res.getString("nTTExTD");
+  public final static String NTT_EX_M  = res.getString("nTTExM");
+
+  public final static String NTT_CY = res.getString("nTTCy");
+  public final static String NTT_CY_TD  = res.getString("nTTCyTD");
+  public final static String NTT_CY_M  = res.getString("nTTCyM");
 
   // public final static String N_TT  = res.getString("nTT");
   public final static String OPEN  = res.getString("open");
