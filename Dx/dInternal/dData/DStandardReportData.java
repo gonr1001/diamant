@@ -12,6 +12,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 //import dInternal.dData.dRooms.SetOfRooms;
+//import dInterface.dUtil.DXTools;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.DResource;
@@ -23,7 +24,7 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dDataTxt.Resource;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+//import dInterface.dUtil.DXTools;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.EventAttach;
@@ -275,7 +276,7 @@ public class DStandardReportData {
                //long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
                //String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
                //str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
-              	strBuf = new StringBuffer( _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue.getStringValue(),confEvents.getID()));
+              	strBuf = new StringBuffer( _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();
@@ -331,7 +332,8 @@ public class DStandardReportData {
    */
   private String buildStudentsReport(){
   	StringBuffer studlist= new StringBuffer("");
-    int size= _dm.getSetOfStudents().size();
+    /*
+  	int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
       //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
@@ -379,6 +381,7 @@ public class DStandardReportData {
       }// end while(strTokens.hasMoreTokens())
       studlist.append( str+strcrs+";"+DConst.CR_LF);
     }// end for (int i=0; i< _dm.getSetOfStudents().size(); i++)
+    */
     return studlist.toString();
   }
 

@@ -13,6 +13,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
+import dInternal.dData.DLoadData;
 import dInternal.dData.dInstructors.SetOfInstructors;
 
 
@@ -41,8 +42,9 @@ public class DSetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 1 1 1"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
-    SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens(0);
+    DLoadData ld = new DLoadData();
+    SetOfInstructors instructorsList= new SetOfInstructors(5,14);
+    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),3);
     assertEquals("test_analyseTokens: assertEquals", DConst.INST_TEXT1,
                  instructorsList.getError().substring(0,DConst.INST_TEXT1.length()));
 
@@ -66,8 +68,9 @@ public class DSetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 1 1 1"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
-    SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens(0);
+    DLoadData ld = new DLoadData();
+    SetOfInstructors instructorsList= new SetOfInstructors(5,14);
+    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
     assertEquals("test1_analyseTokens: assertEquals", DConst.INST_TEXT3,
                  instructorsList.getError().substring(0,DConst.INST_TEXT3.length()));
 
@@ -91,8 +94,9 @@ public class DSetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 1 1 1"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
-    SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens(0);
+    DLoadData ld = new DLoadData();
+    SetOfInstructors instructorsList= new SetOfInstructors(5,14);
+    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
     assertEquals("test2_analyseTokens: assertEquals", DConst.INST_TEXT1,
                  instructorsList.getError().substring(0,DConst.INST_TEXT1.length()));
   }
@@ -115,8 +119,9 @@ public class DSetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 1 1 1 6"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
-    SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens(0);
+    DLoadData ld = new DLoadData();
+    SetOfInstructors instructorsList= new SetOfInstructors(5,14);
+    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
     assertEquals("test3_analyseTokens: assertEquals", DConst.INST_TEXT3,
                  instructorsList.getError().substring(0,DConst.INST_TEXT3.length()));
   }
@@ -139,8 +144,9 @@ public class DSetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 1 1 1"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
-    SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens(0);
+    DLoadData ld = new DLoadData();
+    SetOfInstructors instructorsList= new SetOfInstructors(5,14);
+    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
     assertEquals("test4_analyseTokens: assertEquals", DConst.INST_TEXT4,
                  instructorsList.getError().substring(0,DConst.INST_TEXT4.length()));
   }

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DResource $Revision: 1.3 $  $Date: 2005-02-04 16:20:11 $
+* Title: DResource $Revision: 1.4 $  $Date: 2005-02-09 01:38:12 $
 * Description: DResource is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.4 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -116,7 +116,7 @@ public class DResource {
   public String toWrite(String separator){
     String instInfo;
     String id= _resourceID;
-    id=_resourceAttach.externalKey( Long.toString(_resourceKey), id);//+id;
+    id= _resourceAttach.externalKey( Long.toString(_resourceKey), id);//+id;
     instInfo= id + separator;
     instInfo += _resourceAttach.toWrite();
     return instInfo;

@@ -15,11 +15,12 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
+import dInternal.DataExchange;
 
 public class SetOfInstructors extends DSetOfResources{
 
 //private Vector instructorsList;// contains list of InstructorAttach
-  private byte[] _dataloaded; //_st;// instructors in text format
+  //private byte[] _dataloaded; //_st;// instructors in text format
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
   private String _error="";
@@ -34,9 +35,8 @@ public class SetOfInstructors extends DSetOfResources{
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay,
   * */
- public SetOfInstructors(byte[]  dataloaded, int nbDay, int nbPerDay) {
+ public SetOfInstructors(int nbDay, int nbPerDay) {
    super();
-   _dataloaded = dataloaded;
    _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;
 
@@ -46,20 +46,20 @@ public class SetOfInstructors extends DSetOfResources{
    *
    * @param dataloaded
    */
-  public void setDataToLoad(byte[]  dataloaded, int nbDay, int nbPerDay){
+  /*public void setDataToLoad(byte[]  dataloaded, int nbDay, int nbPerDay){
     _dataloaded = dataloaded;
     _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;
-  }
+  }*/
 
   /**
    * methode analyse st, a stringtokenizer variable
    * INPUT:
    * OUTPUT: Vector
    */
-  public boolean analyseTokens(int beginPosition){
+  public boolean analyseTokens(DataExchange de, int beginPosition){
     String token;
-    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    StringTokenizer st = new StringTokenizer(de.getContents(),"\r\n" );
     int state = beginPosition;
     int line=0;
     int stateDispo =1;
@@ -129,9 +129,10 @@ public class SetOfInstructors extends DSetOfResources{
    *use StringTokenizer st: instructors in text format
    *
    */
-  public void buildSetOfResources(int beginPosition){
-    StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
-    String token;
+  public void buildSetOfResources(DataExchange de, int beginPosition){
+    //StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
+  	StringTokenizer st = new StringTokenizer(de.getContents(), DConst.CR_LF );
+  	String token;
     Vector avail= new Vector();
     String instID="";
     int state = beginPosition;

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.6 $  $Date: 2005-02-08 21:21:18 $
+* Title: DSetOfResources $Revision: 1.7 $  $Date: 2005-02-09 01:38:12 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.7 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -70,6 +70,16 @@ public abstract class DSetOfResources extends DObject{
   	beginPosition+=0;
   	dataloaded[0]+=0;
     return false;
+  }
+  
+  /**
+   * 
+   * @param de
+   * @param beginPosition
+   */
+  public void buildSetOfResources(DataExchange de, int beginPosition) {
+  	beginPosition+=0;
+  	de.getHeader();
   }
 
   /**

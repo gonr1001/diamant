@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuCourses $Revision: 1.5 $  $Date: 2005-02-04 16:20:11 $
+* Title: SetOfStuCourses $Revision: 1.6 $  $Date: 2005-02-09 01:38:13 $
 * Description: SetOfStuCourses is a class used as a data structure container.
 *              It contains the student courses and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.6 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -52,7 +52,7 @@ public class SetOfStuCourses extends DSetOfResources {
 	 */
 	public String getError() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	/* (non-Javadoc)
@@ -60,7 +60,7 @@ public class SetOfStuCourses extends DSetOfResources {
 	 */
 	public String toWrite() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	/* (non-Javadoc)
