@@ -6,7 +6,7 @@ public class ReadPrintFile {
 
   public static void main(String[] args) throws Exception{
 
-    //FileInputStream _fis = new FileInputStream(args[0]);
+    //FileInputStream _fis = new FileInputStream(args[0]);dev
     byte [] b;
     ByteInputFile inputFile= new ByteInputFile (args[0]);
 
@@ -20,7 +20,7 @@ public class ReadPrintFile {
      // " int: "+ b[i] +
       //" byte: " + (byte)b[i] +
       //" short: "+(short)b[i] +
-      //" HEX:" + Integer.toHexString(b[i]).toUpperCase());
+      //" HEX:" + Integer.toHexString(b[i]).toUpperCase());dev
       String str1 = "";
       String str2 = "";
       if (i+16 < b.length) {
@@ -31,19 +31,19 @@ public class ReadPrintFile {
 					str1 += "0";
 					str1 += Integer.toHexString(b[i+ j]).toUpperCase() + " ";
 				}
-			   
+
 			   if ( (byte)b[i + j ] < 126  && (byte)b[i + j] > 31 )
 				   str2 += (char) b[i + j ];
 			   else {
 			   	if ( (byte)b[i + j ] == 13  ||(byte)b[i + j] == 10 )
 			   		str2 += ".";
-			   	else 
+			   	else
 					str2 += (byte) b[i + j] + " ";
 			   }
 			 }
 			 System.out.println(str1 + "   " + str2);
 			 i += 16 ;
-      }     
+      }
 	  else {
 		for(; i < b.length ; i ++) {
 		if (b[i] > 16) {
@@ -52,19 +52,19 @@ public class ReadPrintFile {
 			str1 += "0";
 			str1 += Integer.toHexString(b[i]).toUpperCase() + " ";
 		}
-			   
+
 	   if ( (byte)b[i ] < 126  && (byte)b[ i] > 31 )
 		   str2 += (char) b[ i ];
 	   else {
 		if ( (byte)b[i ] == 13  ||(byte)b[ i] == 10 )
 			str2 += ".";
-		else 
+		else
 			str2 += (byte) b[i] + " ";
 	   }
 	 }
-	 
+
 	 System.out.println(str1 + "   " + str2);
-	 
+
 	  }
     } // end while
     System.exit(1);
