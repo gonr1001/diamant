@@ -46,5 +46,32 @@ public class ResourceTest extends TestCase {
     System.out.println("\r\n"+ilist.getResource(1));//debug
   }
 
+  public void testAddResource(){
+    Resource _resc;
+    byte [] data = {1,0,1,1,1};
+    Instructor _inst;
+    _inst = new Instructor();
+    _inst.addDispDay("1 1 1 5 5");
+    _inst.addDispDay("5 5 5 1 5");
+    _resc = new Resource("Yan",_inst);
+    InstructorsList ilist = new InstructorsList(data, 4,5);
+    ilist.addResource(_resc,1);
+    assertEquals("Resource name equals :", "Yan", ilist.getResource("Yan").getID());
+  }
+
+  public void testDuplicateResource(){
+    Resource _resc;
+    byte [] data = {1,0,1,1,1};
+    Instructor _inst;
+    _inst = new Instructor();
+    _inst.addDispDay("1 1 1 5 5");
+    _inst.addDispDay("5 5 5 1 5");
+    _resc = new Resource("Yan",_inst);
+    InstructorsList ilist = new InstructorsList(data, 4,5);
+    ilist.addResource(_resc,1);
+    ilist.addResource(_resc,1);
+    assertEquals("Resource size equals :", 1, ilist.size());
+  }
+
 
 }
