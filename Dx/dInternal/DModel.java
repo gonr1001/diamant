@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.105 $  $Date: 2004-06-21 19:47:59 $
+ * Title: DModel $Revision: 1.106 $  $Date: 2004-09-08 19:05:04 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.105 $
+ * @version $Revision: 1.106 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
