@@ -89,6 +89,8 @@ public class EventsDlg extends JDialog implements ActionListener{
     setCenterPanel();
     setRightPanel();
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    //setting disable the APPLY button
+    _buttonsPanel.getComponent(1).setEnabled(false);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
   }
 
@@ -184,7 +186,7 @@ public class EventsDlg extends JDialog implements ActionListener{
         DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector);
       _leftLabel.setText(String.valueOf(_leftVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
-      _buttonsPanel.getComponent(1).setFocusable(true);
+      _buttonsPanel.getComponent(1).setEnabled(true);
     }//end if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) || (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
     //if the source is one of the the _rightArrowsPanel buttons
     if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
@@ -196,7 +198,7 @@ public class EventsDlg extends JDialog implements ActionListener{
         DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector);
       _rightLabel.setText(String.valueOf(_rightVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
-      _buttonsPanel.getComponent(1).setFocusable(true);
+      _buttonsPanel.getComponent(1).setEnabled(true);
     }//end if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) || (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
     //if Button CANCEL is pressed
     if (command.equals(_buttonsNames[2]))
@@ -209,7 +211,7 @@ public class EventsDlg extends JDialog implements ActionListener{
     //if Button APPLY is pressed
     if (command.equals(_buttonsNames[1])){
       setUnities();
-      _buttonsPanel.getComponent(1).setFocusable(false);
+      _buttonsPanel.getComponent(1).setEnabled(false);
     }// end if Button APPLY
   }//end method
 
