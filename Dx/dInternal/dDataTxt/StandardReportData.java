@@ -45,6 +45,17 @@ public class StandardReportData {
   */
   private String _studentsReport="";
 
+  /**
+  *_conflictsReport is a string where each line contains more informations separeted
+  * by a ";" separator
+  * token number 0= day number, 1= day name, 2= sequence Id, 3= period id, 4= period begin hour
+  * 5= first event in conflict, 6= event in conflict with the first, 7= number of conflicts, 8= type of conflicts
+  * --------------------------
+  * description of the token number 8: type of conflicts
+  * type= 0: student conflict
+  * type= 1: room conflict
+  * type= 2: instructor conflict
+   */
   private String _conflictsReport="";
 
   /**
@@ -175,7 +186,15 @@ public class StandardReportData {
   }
 
   /**
-   *
+   *_conflictsReport is a string where each line contains more informations separeted
+   * by a ";" separator
+   * token number 0= day number, 1= day name, 2= sequence Id, 3= period id, 4= period begin hour
+   * 5= first event in conflict, 6= event in conflict with the first, 7= number of conflicts, 8= type of conflicts
+   * --------------------------
+   * description of the token number 8: type of conflicts
+   * type= 0: student conflict
+   * type= 1: room conflict
+   * type= 2: instructor conflict
    * @return
    */
   private String buildConflictsReport(){
@@ -193,8 +212,8 @@ public class StandardReportData {
             for(int y=0; y< ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().size(); y++){
               Resource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
               DXValue confValue= (DXValue)confAttach.getAttach();
-              report+=day.getKey()+";"+day.getID()+";"+seq.getID()+";"+per.getID()+";"+
-                      _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities())+
+              report+=day.getKey()+";"+day.getID()+";"+seq.getID()+";"+per.getID()+";"+((Period)per.getAttach()).getBeginHour()[0]+
+                      ":"+((Period)per.getAttach()).getBeginHour()[1]+";"+_dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities())+
                       ";"+_dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities())+
                       ";"+confValue.getIntValue()+";"+confValue.getStringValue()+";"+SetOfResources.CR_LF;
             }// end for(int y=0; y< ((ConflictsAttach)confEvents.ge
