@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.28 $  $Date: 2004-06-09 19:29:17 $
+ * Title: SectionDlg $Revision: 1.29 $  $Date: 2004-06-10 15:11:31 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -48,14 +48,14 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXTools;
 
-import dInternal.dData.Activity;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.SetOfStudents;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.StudentAttach;
-import dInternal.dData.Section;
-import dInternal.dData.Type;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.StudentAttach;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.Type;
 
 import dConstants.DConst;
 

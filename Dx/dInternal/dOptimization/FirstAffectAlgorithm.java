@@ -12,8 +12,8 @@ package dInternal.dOptimization;
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dOptimization.*;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXValue;
 import java.util.Vector;
 

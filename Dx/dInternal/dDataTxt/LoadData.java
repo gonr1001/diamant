@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -223,17 +223,17 @@ public class LoadData {
     int beginPosition=0;
      byte[]  dataloaded = preLoad(file);
     //SetOfResources currentsetOfResc= new SetOfResources(setOfResc.getResourceType());
-    if (str.equalsIgnoreCase("dInternal.dData.SetOfInstructors")){
+    if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfInstructors")){
       // implement selective import for instructors
       ((SetOfInstructors)setOfResc).setDataToLoad(dataloaded,5,14);
-    } else if (str.equalsIgnoreCase("dInternal.dData.SetOfRooms")){
+    } else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfRooms")){
       // implement selective import for rooms
       ((SetOfRooms)setOfResc).setDataToLoad(dataloaded,5,14);
-    } else if (str.equalsIgnoreCase("dInternal.dData.SetOfActivities")){
+    } else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfActivities")){
       // implement selective import for activities
       beginPosition=1;
       ((SetOfActivities)setOfResc).setDataToLoad(dataloaded,false);
-    } else if (str.equalsIgnoreCase("dInternal.dData.SetOfStudents")){
+    } else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
       // implement selective import for students
       ((SetOfStudents)setOfResc).setDataToLoad(dataloaded);
     } else {// (NullPointerException npe) {

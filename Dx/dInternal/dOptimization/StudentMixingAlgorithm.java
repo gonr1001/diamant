@@ -12,7 +12,7 @@ package dInternal.dOptimization;
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dOptimization.*;
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
 import dInterface.dUtil.DXTools;

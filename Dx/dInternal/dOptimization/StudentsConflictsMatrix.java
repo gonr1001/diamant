@@ -11,7 +11,7 @@ package dInternal.dOptimization;
 
 import dInterface.dUtil.DXTools;
 
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.DModel;

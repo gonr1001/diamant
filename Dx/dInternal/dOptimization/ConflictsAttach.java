@@ -11,8 +11,8 @@ package dInternal.dOptimization;
 
 
 import java.util.Vector;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.Resource;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.ArrayValue;

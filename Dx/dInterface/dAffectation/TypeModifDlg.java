@@ -12,11 +12,11 @@ package dInterface.dAffectation;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dConstants.DConst;
-import dInternal.dData.Activity;
-import dInternal.dData.Type;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Type;
+import dInternal.dDataTxt.Resource;
 
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;

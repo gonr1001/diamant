@@ -1,4 +1,4 @@
-package dInternal.dXMLData.rooms;
+package dInternal.dDataXML.rooms;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -12,8 +12,8 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
 import dConstants.DConst;
-import dInternal.dData.*;
-import dInternal.dData.RoomsAttributesInterpretor;
+import dInternal.dDataTxt.*;
+import dInternal.dDataTxt.RoomsAttributesInterpretor;
 
 public class SetOfRooms extends SetOfResources{
 

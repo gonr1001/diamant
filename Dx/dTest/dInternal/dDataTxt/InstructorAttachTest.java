@@ -1,4 +1,4 @@
-package dTest.dInternal.dData;
+package dTest.dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -9,7 +9,7 @@ package dTest.dInternal.dData;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.dData.InstructorAttach;
+import dInternal.dDataTxt.InstructorAttach;
 import java.util.Vector;
 
 public class InstructorAttachTest extends TestCase {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.10 $  $Date: 2004-06-09 19:29:17 $
+ * Title: ImportReport $Revision: 1.11 $  $Date: 2004-06-10 15:11:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -48,8 +48,8 @@ import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
 
 
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXValue;
 
 import dConstants.DConst;

@@ -3,8 +3,8 @@ package dTest.dInternal.dOptimizationTest;
 
 import junit.framework.*;
 import dInternal.dOptimization.EventAttach;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 
  public class EventAttachTest extends TestCase {
 

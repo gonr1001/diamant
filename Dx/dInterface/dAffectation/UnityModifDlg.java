@@ -12,8 +12,8 @@ package dInterface.dAffectation;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dConstants.DConst;
-import dInternal.dData.Section;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.Resource;
 
 import java.util.Vector;
 import java.awt.event.*;

@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>

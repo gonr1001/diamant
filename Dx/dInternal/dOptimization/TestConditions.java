@@ -9,7 +9,7 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 import dInternal.dTimeTable.*;
 import dInternal.DModel;
 import dConstants.DConst;

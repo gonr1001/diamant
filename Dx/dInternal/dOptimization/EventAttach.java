@@ -12,8 +12,8 @@ package dInternal.dOptimization;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXToolsMethods;
 
-import dInternal.dData.SetOfResources;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.Resource;
 import java.util.Vector;
 
 public class EventAttach extends DXObject {

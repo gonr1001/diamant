@@ -1,6 +1,6 @@
 package dInternal.dOptimization;
 
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 
 
 import dInternal.dTimeTable.Cycle;

@@ -1,4 +1,4 @@
-package dInternal.dXMLData.rooms;
+package dInternal.dDataXML.rooms;
 
 
 
@@ -13,7 +13,7 @@ package dInternal.dXMLData.rooms;
 
 import java.util.*;
 import java.awt.Component;
-import dInternal.dData.SetOfRoomsEvent;
+import dInternal.dDataTxt.SetOfRoomsEvent;
 
 public interface SetOfCategoriesListener extends EventListener{
   void changeInSetOfRooms(SetOfRoomsEvent e, Component c);

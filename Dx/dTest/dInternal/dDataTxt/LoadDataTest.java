@@ -1,4 +1,4 @@
-package dTest.dInternal.dData;
+package dTest.dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant</p>
@@ -15,12 +15,12 @@ import dInternal.Preferences;
 import java.util.Vector;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.Cycle;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.SetOfStudents;
-import dInternal.dData.SetOfInstructors;
-import dInternal.dData.SetOfRooms;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dDataTxt.SetOfInstructors;
+import dInternal.dDataTxt.SetOfRooms;
 
-import dInternal.dData.LoadData;
+import dInternal.dDataTxt.LoadData;
 
 
 

@@ -1,4 +1,4 @@
-package dTest.dInternal.dData;
+package dTest.dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -11,7 +11,7 @@ package dTest.dInternal.dData;
 
 //public class RoomAttachTest {
 import junit.framework.*;
-import dInternal.dData.RoomAttach;
+import dInternal.dDataTxt.RoomAttach;
 
 import java.util.Vector;
 

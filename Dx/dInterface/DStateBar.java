@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DStateBar $Revision: 1.7 $  $Date: 2004-06-09 19:29:16 $
+ * Title: DStateBar $Revision: 1.8 $  $Date: 2004-06-10 15:11:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -48,9 +48,9 @@ import javax.swing.JPanel;
 
 
 import dConstants.DConst;
-import dInternal.dData.Resource;
-import dInternal.dData.State;
-import dInternal.dData.SetOfStates;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.State;
+import dInternal.dDataTxt.SetOfStates;
 
 
 public class DStateBar extends JPanel {

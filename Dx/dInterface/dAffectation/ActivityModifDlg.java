@@ -13,9 +13,9 @@ import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
 import dConstants.DConst;
-import dInternal.dData.SetOfActivities;
+import dInternal.dDataTxt.SetOfActivities;
 
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;

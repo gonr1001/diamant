@@ -10,9 +10,9 @@ package dInternal.dOptimization;
  */
 import dInternal.DModel;
 
-import dInternal.dData.InstructorAttach;
+import dInternal.dDataTxt.InstructorAttach;
 
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 

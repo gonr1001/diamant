@@ -1,4 +1,4 @@
-package dInternal.dXMLData.rooms;
+package dInternal.dDataXML.rooms;
 
 
 

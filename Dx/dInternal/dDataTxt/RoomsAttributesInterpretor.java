@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -9,7 +9,7 @@ package dInternal.dData;
  * @version 1.0
  */
 
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXValue;
 import java.util.StringTokenizer;
 

@@ -2,8 +2,8 @@
 
 package dInternal.dTimeTable;
 
-import dInternal.dData.SetOfResources;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.Resource;
 import dInternal.dUtil.DXObject;
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;

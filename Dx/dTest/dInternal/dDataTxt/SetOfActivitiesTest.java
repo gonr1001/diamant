@@ -1,4 +1,4 @@
-package dTest.dInternal.dData;
+package dTest.dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -11,15 +11,15 @@ package dTest.dInternal.dData;
 
 import junit.framework.*;
 import java.io.File;
-import dInternal.dData.Activity;
-import dInternal.dData.Type;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Type;
 import com.iLib.gIO.FilterFile;
 
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.Resource;
-import dInternal.dData.Section;
-import dInternal.dData.Unity;
-import dInternal.dData.Assignment;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.Unity;
+import dInternal.dDataTxt.Assignment;
 import dConstants.DConst;
 
 

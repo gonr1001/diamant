@@ -9,7 +9,7 @@ package dInternal.dUtil;
  * @version 1.0
  */
 
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.SetOfResources;
 
 public class DisplayAttributs {
   /**

@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.43 $  $Date: 2004-06-09 20:31:18 $
+ * Title: EditActivityDlg $Revision: 1.44 $  $Date: 2004-06-10 15:11:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -58,20 +58,20 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;
-import dInternal.dData.Activity;
-import dInternal.dData.Resource;
-import dInternal.dData.RoomAttach;
-import dInternal.dData.Section;
-import dInternal.dData.SetOfInstructors;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.SetOfRooms;
-import dInternal.dData.Type;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.RoomAttach;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.SetOfInstructors;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.SetOfRooms;
+import dInternal.dDataTxt.Type;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dXMLData.rooms.SetOfCategories;
+import dInternal.dDataXML.rooms.SetOfCategories;
 
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;

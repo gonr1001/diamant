@@ -4,7 +4,7 @@ import junit.framework.*;
 import java.util.Vector;
 
 import dInternal.DModel;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.Period;

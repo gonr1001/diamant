@@ -11,10 +11,10 @@ package dInternal.dOptimization;
 
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Cycle;
-import dInternal.dData.SetOfActivities;
+import dInternal.dDataTxt.SetOfActivities;
 
 
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import dInternal.dUtil.DXToolsMethods;
 
 import java.util.Vector;

@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: DToolBar $Revision: 1.45 $  $Date: 2004-06-09 19:29:16 $
+ * Title: DToolBar $Revision: 1.46 $  $Date: 2004-06-10 15:11:31 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -30,7 +30,7 @@ import com.iLib.gDialog.*;
 
 import dInterface.dTimeTable.*;
 import dInterface.dUtil.*;
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 import dInternal.dTimeTable.*;
 import dInternal.dUtil.*;
 import dConstants.*;

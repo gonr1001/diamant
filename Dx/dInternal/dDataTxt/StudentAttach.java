@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dDataTxt;
 
 /**
  * <p>Title: DX</p>
@@ -12,7 +12,7 @@ package dInternal.dData;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.SetOfResources;
 
 public class StudentAttach extends DXObject{
 

@@ -27,8 +27,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.util.Vector;
 
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXToolsMethods;
 
 import dConstants.DConst;

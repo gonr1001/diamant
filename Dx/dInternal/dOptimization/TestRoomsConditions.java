@@ -11,11 +11,11 @@ package dInternal.dOptimization;
 import dInternal.DModel;
 import dInternal.dTimeTable.Period;
 
-import dInternal.dData.RoomAttach;
-import dInternal.dData.Activity;
-import dInternal.dData.Type;
+import dInternal.dDataTxt.RoomAttach;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Type;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import dInterface.dUtil.DXTools;
 import dConstants.DConst;
 import java.util.StringTokenizer;

@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dDataTxt;
 
 /**
  * <p>Title: DX</p>
@@ -16,7 +16,7 @@ import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DXValue;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 
 public class SetOfStudents extends SetOfResources{
 

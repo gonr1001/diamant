@@ -2,8 +2,8 @@ package dInternal.dTimeTable;
 
 
 import java.util.Vector;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.Resource;
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;

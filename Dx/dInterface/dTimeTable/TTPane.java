@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.10 $  $Date: 2003-10-28 14:24:53 $
+ * Title: TTPane $Revision: 1.11 $  $Date: 2004-06-10 15:11:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -47,7 +47,7 @@ import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 
 import dInterface.DToolBar;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 

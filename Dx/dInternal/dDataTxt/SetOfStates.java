@@ -1,4 +1,4 @@
-package dInternal.dData;
+package dInternal.dDataTxt;
 
 import dConstants.DConst;
 import java.util.Vector;

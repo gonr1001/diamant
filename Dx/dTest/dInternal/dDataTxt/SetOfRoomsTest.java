@@ -1,4 +1,4 @@
-package dTest.dInternal.dData;
+package dTest.dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -12,7 +12,7 @@ package dTest.dInternal.dData;
 import junit.framework.*;
 
 
-import dInternal.dData.SetOfRooms;
+import dInternal.dDataTxt.SetOfRooms;
 import dConstants.DConst;
 
 

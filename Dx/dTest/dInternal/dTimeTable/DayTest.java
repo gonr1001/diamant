@@ -13,8 +13,8 @@ import junit.framework.*;
 
 import java.io.File;
 
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Sequence;

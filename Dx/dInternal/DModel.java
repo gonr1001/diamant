@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.102 $  $Date: 2004-06-09 20:31:18 $
+ * Title: DModel $Revision: 1.103 $  $Date: 2004-06-10 15:11:32 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.102 $
+ * @version $Revision: 1.103 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -26,9 +26,9 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.io.File;
 import dInterface.DDocument;
-import dInternal.dData.*;
-import dInternal.dXMLData.*;
-import dInternal.dXMLData.rooms.SetOfCategories;
+import dInternal.dDataTxt.*;
+import dInternal.dDataXML.*;
+import dInternal.dDataXML.rooms.SetOfCategories;
 import dInternal.dOptimization.*;
 
 import dInternal.dUtil.DXValue;

@@ -1,4 +1,4 @@
-package dInternal.dXMLData.rooms;
+package dInternal.dDataXML.rooms;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -12,7 +12,7 @@ import java.util.Vector;
 import java.util.StringTokenizer;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 
 public class RoomAttach extends DXObject{
 

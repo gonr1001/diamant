@@ -10,7 +10,7 @@ package dInternal;
  */
 
 import dConstants.DConst;
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 
 import dInternal.dUtil.*;
 

@@ -1,4 +1,4 @@
-package dInternal.dXMLData.rooms;
+package dInternal.dDataXML.rooms;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -20,10 +20,10 @@ import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
 
 import org.w3c.dom.*;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.RoomsAttributesInterpretor;
-import dInternal.dData.SetOfRoomsListener;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.RoomsAttributesInterpretor;
+import dInternal.dDataTxt.SetOfRoomsListener;
 import dInternal.dUtil.XMLTools;
 
 public class SetOfCategories extends SetOfResources{

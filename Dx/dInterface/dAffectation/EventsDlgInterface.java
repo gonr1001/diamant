@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.13 $  $Date: 2004-06-09 20:31:18 $
+ * Title: EventsDlgInterface $Revision: 1.14 $  $Date: 2004-06-10 15:11:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -52,8 +52,8 @@ import javax.swing.JPanel;
 
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.Unity;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.Unity;
 import dInternal.dUtil.DXToolsMethods;
 
 import dInterface.DApplication;

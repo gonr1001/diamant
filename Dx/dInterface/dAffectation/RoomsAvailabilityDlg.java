@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-import dInternal.dData.RoomAttach;
+import dInternal.dDataTxt.RoomAttach;
 import dInterface.DApplication;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;

@@ -4,8 +4,8 @@ import junit.framework.*;
 import java.util.Vector;
 
 import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXValue;
 
  public class ConflictsAttachTest extends TestCase {

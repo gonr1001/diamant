@@ -1,4 +1,4 @@
-package dTest.dInternal.dData;
+package dTest.dInternal.dDataTxt;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -9,9 +9,9 @@ package dTest.dInternal.dData;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.dData.Resource;
-import dInternal.dData.InstructorAttach;
-import dInternal.dData.SetOfInstructors;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.InstructorAttach;
+import dInternal.dDataTxt.SetOfInstructors;
 
 
 public class SetOfResourcesTest extends TestCase {

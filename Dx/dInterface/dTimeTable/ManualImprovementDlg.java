@@ -26,7 +26,7 @@ import dInterface.dAffectation.EditActivityDlg;
 
 
 import dInternal.DModel;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 
 
 import dConstants.DConst;

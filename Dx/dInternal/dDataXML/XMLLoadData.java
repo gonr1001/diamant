@@ -1,4 +1,4 @@
-package dInternal.dXMLData;
+package dInternal.dDataXML;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -19,7 +19,7 @@ import com.iLib.gIO.FilterFile;
 
 import dInternal.dTimeTable.TTStructure;
 import dInternal.DModel;
-import dInternal.dData.*;
+import dInternal.dDataTxt.*;
 import dInternal.dUtil.XMLTools;
 import dInternal.Preferences;
 
@@ -29,7 +29,7 @@ import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
 import dConstants.DConst;
 import org.w3c.dom.*;
-import dInternal.dXMLData.rooms.SetOfCategories;
+import dInternal.dDataXML.rooms.SetOfCategories;
 
 public class XMLLoadData {
   //XML tags

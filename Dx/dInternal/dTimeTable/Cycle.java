@@ -4,9 +4,9 @@ package dInternal.dTimeTable;
 
 import java.util.StringTokenizer;
 
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dData.Resource;
+import dInternal.dDataTxt.Resource;
 import dInternal.dUtil.*;
 
 import java.lang.Math;

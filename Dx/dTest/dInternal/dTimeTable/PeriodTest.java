@@ -15,8 +15,8 @@ import java.util.Vector;
 
 import dInternal.dTimeTable.Period;
 import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;

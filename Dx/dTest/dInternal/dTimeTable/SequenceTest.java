@@ -15,8 +15,8 @@ import java.io.File;
 
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;

@@ -28,7 +28,7 @@ import javax.swing.JPanel;
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dData.SetOfActivities;
+import dInternal.dDataTxt.SetOfActivities;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 

@@ -32,15 +32,15 @@ import javax.swing.JTabbedPane;
 
 import dInterface.DApplication;
 import dInternal.DModel;
-import dInternal.dData.SetOfStates;
-import dInternal.dData.State;
+import dInternal.dDataTxt.SetOfStates;
+import dInternal.dDataTxt.State;
 import dInterface.ProgressBar;
 import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInterface.dUtil.DXTools;
 
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.StandardReportData;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.StandardReportData;
 import dInternal.dUtil.DXValue;
 
 import dConstants.DConst;
