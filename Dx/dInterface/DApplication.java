@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.43 $  $Date: 2004-03-23 20:46:38 $
+ * Title: DApplication $Revision: 1.44 $  $Date: 2004-04-05 18:58:14 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -40,6 +40,7 @@ import javax.swing.JFrame;
 
 import javax.swing.JDesktopPane;
 
+import org.apache.log4j.Logger;
 
 import javax.swing.JPanel;
 
@@ -50,6 +51,7 @@ import javax.swing.SwingUtilities;
 import dInterface.dTimeTable.CloseCmd;
 
 public class DApplication implements ActionListener {
+  private static Logger _logger = Logger.getLogger(DApplication.class.getName());
   /* ZERO is needed to fix Frame Location (origin)  */
   private final static int ZERO = 0;
   /* ADJUST_HEIGHT is needed to ajdust the screenSize
@@ -80,6 +82,7 @@ public class DApplication implements ActionListener {
     * DApplication initialize the data members
     */
   public DApplication() {
+    _logger.warn("hello_from DApplication");
     _preferences = new Preferences(System.getProperty("user.dir")
                                    + File.separator +
                                    "pref"
@@ -97,7 +100,7 @@ public class DApplication implements ActionListener {
     setLAF(_preferences._lookAndFeel);
 
     //updateLAF(_preferences._lookAndFeel);
-
+    _logger.warn("bye_from DApplication");
   } // end constructor
 
   //-------------------------------------------

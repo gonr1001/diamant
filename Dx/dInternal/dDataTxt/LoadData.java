@@ -33,13 +33,10 @@ public class LoadData {
   RoomsAttributesInterpretor _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
   private static String _SEP= File.separator;
   public final static String _saveSeparator="=================================";
- // private SetOfInstructors _instructorsList;
-  //private SetOfRooms _roomsList;
-  //private SetOfStudents _studentList;
 
   private final int NUMBER_OF_TOKENS = 4;
   private final String CR_LF = "\r\n";
-  private boolean _load=true;
+  private boolean _load = true;
   private String _chars;
   /***
    *constructor

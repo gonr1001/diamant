@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.8 $  $Date: 2004-02-24 15:19:40 $
+ * Title: ClassName $Revision: 1.9 $  $Date: 2004-04-05 18:58:14 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,11 +16,14 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
-// Bernard
+
+import java.io.File;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import dInterface.DApplication;
 import lineInterface.DILigne;
@@ -38,6 +41,7 @@ import lineInterface.DILigne;
 public class DRun {
 
     private final static boolean GUI = true;
+    private static Logger _logger = Logger.getLogger(DRun.class.getName());
     /**
      * The constructor is not necessary, so empty.
      * All happens in main
@@ -56,9 +60,11 @@ public class DRun {
       */
 
     public static void main(String[] args) {
+      PropertyConfigurator.configure("trace" + File.separator + "log4j.conf");
+      //BasicConfigurator.configure();
         if (GUI) {
-          System.out.println("hello_with_a_GUI");
-          System.out.println("Java version: "+System.getProperty("java.version"));
+          _logger.warn("hello_with_a_GUI");
+          _logger.warn("Java version: "+System.getProperty("java.version"));
           DApplication _dApplic = new DApplication();
         }
         else {
@@ -68,7 +74,7 @@ public class DRun {
             System.out.println("bye");
             System.exit(1);
         }
-
+        _logger.warn("bye");
     } // end main
 
 } /* end class DRun */
