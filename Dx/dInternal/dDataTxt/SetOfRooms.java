@@ -143,16 +143,16 @@ public class SetOfRooms extends SetOfResources{
                   break;
                 case 2:
                   int funtion= Integer.parseInt(token.trim());
-                  if (attr.getSetOfFunctions().getIndexOfResource(funtion)!=-1)
+                  //if (attr.getSetOfFunctions().getIndexOfResource(funtion)!=-1)
                     room.setFunction(funtion);
                   state=3;
                   break;
                 case 3:
                   StringTokenizer caract= new StringTokenizer(token.trim(),",");
                   while(caract.hasMoreTokens()){
-                    int caracteristic= attr.getSetOfCaracteristics().getIndexOfResource(
-                      Integer.parseInt(caract.nextToken().trim()));
-                    room.addCaracteristics(caracteristic);
+                    /*int caracteristic= attr.getSetOfCaracteristics().getIndexOfResource(
+                      Integer.parseInt(caract.nextToken().trim()));*/
+                    room.addCaracteristics(Integer.parseInt(caract.nextToken().trim()));
                   }
                   state = 4;
                   break;
