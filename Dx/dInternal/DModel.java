@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.19 $  $Date: 2003-06-02 15:05:36 $
+ * Title: DModel $Revision: 1.20 $  $Date: 2003-06-04 16:09:50 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -22,12 +22,12 @@ package dInternal;
 
 import java.util.Vector;
 import java.io.*;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import dInterface.DApplication;
 import dInternal.dData.*;
 
 import dInternal.dTimeTable.TTStructure;
-//import com.iLib.gDialog.FatalProblemDlg;
+
 
 public class DModel{
   private Vector _dmListeners = new Vector();
@@ -49,14 +49,7 @@ public class DModel{
     //importData("hello");
     //test1_setAvailability();
   }
-  public DModel(JFrame jFrame, TTStructure ttStruct) {
-    _status = new Status();
-    //_ttParameters = new TTParameters();
-    //_dApplic = dApplic;
-    _ttStruct = ttStruct;
-    //importData("hello");
-    //test1_setAvailability();
-  }
+
   public Status getStatus() {
     return _status;
   }
@@ -66,8 +59,6 @@ public class DModel{
   }
 
   public String importData(String str) {
-    //String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
-    //str = path;
     LoadData loadData = new LoadData(str);
     // import set of instructors
       _setOfInstructors = loadData.extractInstructors(null, false);
@@ -112,6 +103,14 @@ public class DModel{
 
   public TTStructure getTTStructure() {
     return _ttStruct;
+  }
+//this method must be renamed to saveTT
+  public String rsaveTT() {
+    JOptionPane.showMessageDialog(_dApplic.getJFrame(),
+                             "rsaveTT was here",
+                              "trace",
+                                 JOptionPane.OK_OPTION);
+    return "";
   }
 
   public void sendEvent() {
