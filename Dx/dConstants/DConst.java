@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.93 $  $Date: 2004-04-07 16:35:34 $
+ * Title: DConst $Revision: 1.94 $  $Date: 2004-04-08 13:19:01 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.93 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.94 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -275,7 +275,7 @@ public class DConst {
   public final static String R_TYPE_NAME = res.getString("RTypeName");//Type
   public final static String R_SECTION_NAME = res.getString("RSectionName");//Section
   public final static String R_UNITY_NAME = res.getString("RUnityName");//Unité
-  public final static String R_DURATION = res.getString("RDuration");//Durée
+  public final static String R_TIME_LENGTH = res.getString("RDuration");//Durée
   public final static String R_DAY_NUMBER = res.getString("RDayNumber");//Jour numéro
   public final static String R_DAY_NAME = res.getString("RDayName");//Jour nom
   public final static String R_ACTIVITY_BEGIN_HOUR = res.getString("RActivityBeginHour");//Heure de début

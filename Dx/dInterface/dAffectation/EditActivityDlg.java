@@ -36,20 +36,16 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private DApplication _dApplic;
   private EventsDlgInterface _evDlgInt=null;
   private int _currentActivityIndex=0;
-  private String _DURATION= "Durée:";
 
-  private String _HOUR="Heure de début:";
-  private String _INSTRUCTOR= "Enseignant:";// to remove
   private Vector _setOfInstructors= new Vector(1);// contains strings
-  private String _ROOM= "Local:";
+
   //private String NO_ROOM_INTERNAL= "------";
   private boolean _isModified=false;
-  //private String _DIALOGMESSAGE= "Affectation d'évenement";
+
   Vector _unities = new Vector();// contains event resource
 
   JTabbedPane _tabbedPane;
   TwoButtonsPanel _buttonsPanel;
-  //JButton _jButtonApply, _jButtonClose;
 
   /**
    * Constructor
@@ -92,15 +88,6 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private void jbInit(){
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _buttonsPanel = new TwoButtonsPanel(this, a);
-    /*_jButtonApply = new JButton( DConst.BUT_APPLY );
-    _jButtonApply.setPreferredSize(new Dimension(80, 22));
-    _jButtonApply.addActionListener(this);
-    //_jButtonApply.setEnabled(false);
-    _jButtonClose = new JButton( DConst.BUT_CLOSE );
-    _jButtonClose.setPreferredSize(new Dimension(75, 22));
-    _jButtonClose.addActionListener(this);
-    _bottomPanel.add(_jButtonApply);
-    _bottomPanel.add(_jButtonClose);*/
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     _tabbedPane = new JTabbedPane();
     //_tabbedPane.
@@ -190,11 +177,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     JLabel duration, day, hour, room, instructor;
     JComboBox  cbDuration, cbDay, cbHour, cbRoom, cbInstructor;
     JToggleButton place, fix;
-    duration = new JLabel(_DURATION);
+    duration = new JLabel(DConst.R_TIME_LENGTH);
     day = new JLabel(DConst.R_DAY_NAME);
     hour = new JLabel(DConst.R_ACTIVITY_BEGIN_HOUR);
-    room = new JLabel(_ROOM);
-    instructor = new JLabel(_INSTRUCTOR);
+    room = new JLabel(DConst.R_ROOM_NAME);
+    instructor = new JLabel(DConst.R_INSTRUCTOR_NAME);
     //resDuration= new JLabel(buildDuration());
     JTextField resDuration= new JTextField(2);
     resDuration.setText(buildDuration());

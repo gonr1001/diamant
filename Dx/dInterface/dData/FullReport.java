@@ -94,7 +94,7 @@ public class FullReport extends ViewReport implements ActionListener {
     v.add(new DXValue(3,
                       new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
     v.add(new DXValue(4,
-                      new FieldRecord(Integer.parseInt(DConst.R_DURATION_L), DConst.R_DURATION)));
+                      new FieldRecord(Integer.parseInt(DConst.R_DURATION_L), DConst.R_TIME_LENGTH)));
     v.add(new DXValue(5,
                       new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
     v.add(new DXValue(6,
