@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.10 $  $Date: 2003-06-09 16:46:58 $
+ * Title: DApplication $Revision: 1.11 $  $Date: 2003-06-10 13:48:49 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,8 +16,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.11 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -46,7 +46,6 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-//import java.lang.IllegalAccessException;
 import javax.swing.SwingUtilities;
 import dInterface.dTimeTable.SaveCmd;
 import dInterface.dTimeTable.CloseCmd;
@@ -75,6 +74,8 @@ public class DApplication implements ActionListener {
   private DMediator _mediator;
   private String _currentDir;
   private DToolBar _tbar;
+
+  //-------------------------------------------
   /**
     * DApplication initialize the data members
     */
@@ -91,8 +92,10 @@ public class DApplication implements ActionListener {
 
     _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
     setLAF(_preferences._lookAndFeel);
+
   } // end constructor
 
+  //-------------------------------------------
   private JFrame createFrame(String str) {
     JFrame jFrame= new JFrame(str + "   " + System.getProperty("user.dir"));
     jFrame.setDefaultCloseOperation(_jFrame.DO_NOTHING_ON_CLOSE);
@@ -104,15 +107,21 @@ public class DApplication implements ActionListener {
     JPanel panel = new JPanel(new BorderLayout(0,0));
     jFrame.setContentPane(panel);
     jFrame.setJMenuBar(new DMenuBar( this ));  //constructs the menu bar
+
+    JPanel jpToolBar = new JPanel();
+
     _tbar = new DToolBar(this); //constucts the tool bar
-    Container contentPane = jFrame.getContentPane();
-    contentPane.add(_tbar,BorderLayout.NORTH);
+    jpToolBar.add(_tbar);
+
+    jFrame.getContentPane().add(jpToolBar, BorderLayout.NORTH);
+    panel.add(_tbar,BorderLayout.NORTH);
+
     //hideToolBar();
+
     _jDesktopPane = new JDesktopPane();
     _jDesktopPane.setOpaque(false);
     _jDesktopPane.setDesktopManager(new DefaultDesktopManager());
-
-    contentPane.add(_jDesktopPane,BorderLayout.CENTER);
+    panel.add(_jDesktopPane,BorderLayout.CENTER);
     jFrame.setLocation(ZERO,ZERO);
     panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     panel.setMaximumSize(_screenSize);
@@ -125,9 +134,7 @@ public class DApplication implements ActionListener {
     return jFrame;
     } //end createUI
 
-
-
-
+    //-------------------------------------------
     public void actionPerformed(ActionEvent  e) {
       if (e.getSource() instanceof CommandHolder) {
         ((CommandHolder) e.getSource()).getCommand().execute(this);
@@ -150,6 +157,7 @@ public class DApplication implements ActionListener {
       return _mediator;
     } // end getJFrame
 
+    //-------------------------------------------
     public Preferences getPreferences(){
       return _preferences;
     } // end getPreferences
@@ -172,6 +180,7 @@ public class DApplication implements ActionListener {
       _tbar.setVisible(false);
     }
 
+    //-------------------------------------------
     public void setLAF(String str) {
       // Force SwingApp to come up in the System L&F
       try {
@@ -203,10 +212,20 @@ public class DApplication implements ActionListener {
         System.exit(61);
       }
 
-      SwingUtilities.updateComponentTreeUI(_jFrame);
+      //SwingUtilities.updateComponentTreeUI(_jFrame);  //To erease (AlexJ)
     } //end setLF
 
+    //-------------------------------------------
+    /**
+    * This methode updates the look and feel style
+    * @param String A look and feel style
+    **/
+    public void updateLAF(String str){
+      setLAF(str);
+      SwingUtilities.updateComponentTreeUI(_jFrame);
+    }
 
+    //-------------------------------------------
     /**
      * Closes the DDocument(s) and the application.
      * Use this method for processing close via the
@@ -219,6 +238,7 @@ public class DApplication implements ActionListener {
       closeApplic();
     }
 
+    //-------------------------------------------
     /**
      * Closes the document(s) and the application.
      * Use this method for processing close via the

@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.2 $  $Date: 2003-06-09 16:46:58 $
+ * Title: ToolBar $Revision: 1.3 $  $Date: 2003-06-10 13:48:49 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: rgr $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -25,25 +25,75 @@ package dInterface;
 
 import java.awt.*;
 import java.awt.event.*;
-//import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
-import javax.swing.JToolBar;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+
 import dResources.DConst;
-
-
+//-------------------------------------------
 /**
  *
  * ToolBar is a class used to display a toolbar with buttons
  *
  */
-
 public class DToolBar extends JToolBar {
   private DApplication _dApplic;
+  private static final String _strArray [] = {"Jours", "Periods"};
+  JPanel jp = new JPanel();
+  JComboBox setToolBar, daysList;
+  JButton addDay, removeDay, loPriority, noPriority, hiPriority, sameLine, sameColumn, doIt;
+  JTextField setDays, dayName, periodIndicator;
+  JLabel lDaysList, lSetDays, lDayName;
 
+
+  //-------------------------------------------
   public DToolBar(DApplication dApplic) {
     _dApplic =dApplic ;
+    doIt = new JButton("Do It");
+    lSetDays = new JLabel("Nomber of Days ");
+    lDaysList = new JLabel("Choise day ");
+    lDayName = new JLabel("Name of day ");
+
+    addDay = new JButton("Add day");
+    removeDay = new JButton("Remove day");
+    loPriority = new JButton("Low priority");
+    loPriority.setBackground(Color.cyan);
+
+    noPriority = new JButton("Normal priority");
+    noPriority.setBackground(Color.yellow);
+
+    hiPriority = new JButton("High priority");
+    hiPriority.setBackground(Color.red);
+    sameLine = new JButton("Apply to all line");
+    sameColumn = new JButton("Apply to all column");
+
+    dayName = new JTextField();
+    dayName.setMaximumSize(new Dimension(50, DConst.NPT11 * 2));
+
+    periodIndicator = new JTextField("Actual Period");
+    setDays = new JTextField();
+    //JComboBox setDays
+
+    setDays.setMaximumSize(new Dimension(30, DConst.NPT11 * 2));
+    String [] amountDays = {"1","2","3","4","5","6","7","8","9","10"};
+    daysList = new JComboBox(amountDays);
+    daysList.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
+    daysList.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    daysList.setEditable(true);
+
+    //JComboBox setToolBar
+    setToolBar = new JComboBox(_strArray);
+    setToolBar.setPreferredSize(new Dimension(200,DConst.NPT11* 2));
+    setToolBar.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
+    setToolBar.setSelectedIndex(0);
+
+   add(setToolBar);
+
+
     //System.out.println("Tool Bar Constructor");  // debug
 /*
     // Create the first button.
@@ -54,38 +104,31 @@ public class DToolBar extends JToolBar {
     } else{
     System.out.println(System.getProperty("user.dir"));
     }*/
-    String StrArray [] = {"Jours", "Periods"};
 
-    JPanel jp = new JPanel();
-    JComboBox jcb = new JComboBox(StrArray);
-    jcb.setPreferredSize(new Dimension(200,DConst.NPT11));
-    jcb.setMaximumSize(new Dimension(200,DConst.NPT11 * 2));
-    //BasicComboBoxRenderer cbr = new BasicComboBoxRenderer();
-    //cbr.setPreferredSize(new Dimension(200,10));
-    //cbr.setMaximumSize(new Dimension(200,10));
-    //jcb.setRenderer(cbr);*/
-    jp.add(jcb);
-    add(jp);
-    addSeparator();
-/*
-    jcb.addActionListener(new ActionListener() {
+
+
+
+
+    setToolBar.addActionListener(new ActionListener() {
      public void actionPerformed(ActionEvent e) {
        JComboBox cb = (JComboBox)e.getSource();
-       int  i =cb.getSelectedIndex();
+       int  i = cb.getSelectedIndex();
        switch (i){
-         case 0: barOne(); break;
-         case 1: barTwo(); break;
+         case 0: addBarOne(); break;
+         case 1: addBarTwo(); break;
        }
      }
-    });*/
+    });
 
-  // Create the first button.
 
+/*
+    //Create the first button.
     CmdButton select = new CmdButton( "AddText" );
     add(select);
     select.setCommand(new SelectCmd());
     select.addActionListener(_dApplic);
     addSeparator();
+*/
 
 /*
     // Do the same for the second button
@@ -122,23 +165,66 @@ public class DToolBar extends JToolBar {
       producer.addActionListener(_appFrame);
       addSeparator();*/
 
-      this.setFloatable(true);
+      //this.setFloatable(true);
   }
 
-      private void barOne() {
-        CmdButton select = new CmdButton( "barOne" );
-add(select);
-select.setCommand(new SelectCmd());
-select.addActionListener(_dApplic);
-    addSeparator();
-      }
-      private void barTwo() {
-        CmdButton select = new CmdButton( "barTwo" );
-add(select);
-select.setCommand(new SelectCmd());
-select.addActionListener(_dApplic);
-    addSeparator();
-      }
+  //-------------------------------------------
+  private void addBarOne() {
+    removeBarTwo();
+    add(lSetDays);
+    add(setDays);
+    add(lDaysList);
+    add(daysList);
+    add(lDayName);
+    add(dayName);
+    add(addDay);
+    add(removeDay);
+    add(doIt);
+
+    repaint();
+  }//end methode
+
+  //-------------------------------------------
+  private void removeBarOne() {
+    remove(lSetDays);
+    remove(setDays);
+    remove(lDaysList);
+    remove(daysList);
+    remove(lDayName);
+    remove(dayName);
+    remove(addDay);
+    remove(removeDay);
+    remove(doIt);
+
+    repaint();
+  }//end methode
+
+  //-------------------------------------------
+  private void addBarTwo() {
+    removeBarOne();
+    add(periodIndicator);
+    add(loPriority);
+    add(noPriority);
+    add(hiPriority);
+    add(doIt);
+    add(sameLine);
+    add(sameColumn);
+
+    repaint();
+  }//end methode
+
+  //-------------------------------------------
+  private void removeBarTwo() {
+    remove(periodIndicator);
+    remove(loPriority);
+    remove(noPriority);
+    remove(hiPriority);
+    remove(sameLine);
+    remove(sameColumn);
+    remove(doIt);
+
+    repaint();
+  }//end methode
 
 
 
