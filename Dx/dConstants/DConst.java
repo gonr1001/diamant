@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.9 $  $Date: 2003-05-06 14:59:17 $
+ * Title: DConst $Revision: 1.10 $  $Date: 2003-05-07 10:35:55 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.10 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -32,16 +32,23 @@ public class DConst {
 
   public final static String BLOCS = "BLOCS";
 
-
-  public final static String FILE = "Fichier";
+  public final static String FILE  = res.getString("file");
   public final static String NEW = "Nouveau";
-   final static String OPEN = "Ouvrir";
-   final static String CLOSE = "Fermer";
-   final static String SAVE = "Enregistrer";
-   final static String SAVEAS = "Enregistrer sous";
-   final static String IMPORT = "Importer";
-   final static String EXPORT = "Exporter";
-   final static String EXIT = "Quitter";
+
+  public final static String N_TT  = res.getString("nTT");
+  public final static String OPEN  = res.getString("open");
+  public final static String CLOSE  = res.getString("close");
+  //separator
+  public final static String SAVE  = res.getString("save");
+  public final static String SAVE_AS  = res.getString("saveAs");
+
+  public final static String IMP_M  = res.getString("impM");
+  public final static String DEF_F  = res.getString("defF");
+  public final static String IMP_A  = res.getString("impA");
+  public final static String EXPO  = res.getString("expo");
+
+  public final static String EXIT  = res.getString("exit");
+
 
   public final static String EDIT = "Edition";
    final static String UNDO = "Annuler";

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DoNothingDlg $Revision: 1.2 $  $Date: 2003-03-10 17:28:41 $
+ * Title: DoNothingDlg $Revision: 1.3 $  $Date: 2003-05-07 10:35:55 $
  * Description: DoNothingDlg is created by DoNotingCmd
  *              The dialog is displayed nothing is done.
  *              This class is used until
@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -36,7 +36,7 @@ import dInterface.DApplication;
 
 public class DoNothingDlg extends JDialog {
 
-  final static String STR = "rgr, \nNot Implemented Yet, \nWorking on that";
+  final static String STR = "rgr, \nNot Implemented yet, \nWorking on that!!";
   /**
     * the constructor will displays the dialog
     *
