@@ -39,13 +39,15 @@ public class ReportDlg extends JDialog implements ActionListener{
   private JDialog _jd = this;
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
-  private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_OPTIONS, DConst.BUT_CANCEL};
+  private String[] _buttonsNames = {DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+  private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private SetOfResources[] _resources;
 
   public ReportDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
     _dApplic = dApplic;
     jbInit();
+    _resources = new SetOfResources[_tabbedPane.getComponentCount()];
     setLocationRelativeTo(dApplic.getJFrame());
     setVisible(true);
   }//end constructor
@@ -55,22 +57,19 @@ public class ReportDlg extends JDialog implements ActionListener{
    */
   private void jbInit(){
     Dimension dialogDim = new Dimension(1000,600);
-    Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-70);
-    Dimension tabDim = tabbedPaneDim;//new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-70);
+    Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-10, (int)dialogDim.getHeight()-60);
+    Dimension tabDim = new Dimension((int)tabbedPaneDim.getWidth()-10, (int)tabbedPaneDim.getHeight()-10);
     getContentPane().setLayout(new BorderLayout());
     setSize(dialogDim);
-    setResizable(true);
+    setResizable(false);
     //the tabbedPane
     _tabbedPane = new JTabbedPane();
     _tabbedPane.setPreferredSize(tabbedPaneDim);
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB1, createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB2, createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB3, createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
+    for(int i = 0; i < _tabsNames.length; i++)
+      _tabbedPane.addTab(_tabsNames[i], createTabPanel(tabbedPaneDim, DConst.REPORT_DLG_TAB_MESS));
     //adding the elements to the dialog
-    getContentPane().add(_tabbedPane, BorderLayout.NORTH);
+    getContentPane().add(_tabbedPane, BorderLayout.CENTER);
     getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
-    System.out.println("_tabbedPane.getComponentCount() "+_tabbedPane.getComponentCount());
-    _resources = new SetOfResources[_tabbedPane.getComponentCount()];
   }
 
   /**
@@ -82,12 +81,12 @@ public class ReportDlg extends JDialog implements ActionListener{
    */
   private JPanel createTabPanel(Dimension dim, String message){
     JTextArea jta = new JTextArea(message);
-    JPanel panel = new JPanel(new BorderLayout());
+    JPanel panel = new JPanel();
     panel.setPreferredSize(dim);
     JScrollPane scrollPane = new JScrollPane();
-    scrollPane.getViewport().setLayout(new BorderLayout());
-    scrollPane.getViewport().add(jta, BorderLayout.CENTER);
-    panel.add(scrollPane, BorderLayout.CENTER);
+    scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
+    scrollPane.getViewport().setView(jta);
+    panel.add(scrollPane);
     return panel;
   }
 
@@ -174,15 +173,16 @@ public class ReportDlg extends JDialog implements ActionListener{
       resultLine = resultLine + DConst.CR_LF;
       jta.append(resultLine);
     }//end external for
+    jta.setCaretPosition(0);
   }
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //If "Option" button
-    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
         new ReportOptionsDlg(_dApplic, _jd, _resources[_tabbedPane.getSelectedIndex()], _tabbedPane.getSelectedIndex());
-    //If "Cancel" button
-    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
+    //If "Close" button
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
       dispose();
   }//end method
 
