@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.12 $  $Date: 2004-06-02 20:39:07 $
+ * Title: Diamant $Revision: 1.13 $  $Date: 2004-06-09 18:58:47 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,10 +16,11 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
+package dmains;
 
 import java.io.File;
 import org.apache.log4j.Logger;
@@ -33,7 +34,7 @@ import lineInterface.DILigne;
 
 /**
  *
- * DRun is used to call the whole application.
+ * Diamant is used to call the whole application.
  * It makes an instance of Dview then call doIt methode
  * which runs the application
  * The constant TITLE is the title of the jFrame
@@ -41,15 +42,16 @@ import lineInterface.DILigne;
  * or when (false) a line interface
  *
  */
-public class DRun {
+
+public class Diamant {
 
     private final static boolean GUI = true;
-    private static Logger _logger = Logger.getLogger(DRun.class.getName());
+    private static Logger _logger = Logger.getLogger(Diamant.class.getName());
     /**
      * The constructor is not necessary, so empty.
      * All happens in main
      */
-    public DRun() {}
+    public Diamant() {}
 
     /**
       * Just creating an instance of the DApplication
