@@ -76,6 +76,11 @@ class reference35 {
 @__modelType reference 
 */
 class reference36 {
+}/**
+@__ref <oiref:java#Class#dInterface.dAffectation.EventsDlgInterface:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

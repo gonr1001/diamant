@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.76 $  $Date: 2003-10-02 23:34:25 $
+ * Title: DMenuBar $Revision: 1.77 $  $Date: 2003-10-03 18:54:46 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.76 $
+ * @version $Revision: 1.77 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -109,12 +109,31 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolMyFile, _boolShowAll, _boolStateZero;
 
 
+  /**
+   * Constructor
+   * @param dApplic
+   */
   public DMenuBar(DApplication dApplic) {
     super();
     _dApplic = dApplic;
     createMenuBar();
   }
 
+  /**
+   * Constructor
+   * @param dApplic
+   * @param operation 1= createPreferencesMenu
+   */
+  public DMenuBar(JFrame jframe,int operation) {
+    super();
+   //_dApplic = dApplic;
+   if(operation==1)
+     createManualPreferencesMenu(jframe);
+  }
+
+  /**
+   *
+   */
   private void createMenuBar() {
     createFileMenu();
     createAssignMenu();
@@ -370,6 +389,29 @@ public class DMenuBar extends JMenuBar{
     _view.add(_viewDetailed);
 
     _preferences.add(_view);
+
+  } // end createPreferencesMenu
+
+  private void createManualPreferencesMenu(JFrame jframe){
+   //Build the menu PREFERENCES.
+   _preferences = new JMenu("Affichage");
+   _preferences.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+   this.add(_preferences);
+
+   // Items in menu PREFERENCES.
+   _viewSimple = new CmdMenu("simple");//, this);
+   _viewSimple.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _viewSimple.setCommand(new DoNothingCmd(jframe));
+   _viewSimple.addActionListener(_dApplic);
+   _preferences.add(_viewSimple);
+
+   // Items in menu PREFERENCES.
+   _viewDetailed = new CmdMenu("complexe");//, this);
+   _viewDetailed.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _viewDetailed.setCommand(new DoNothingCmd(jframe));
+   _viewDetailed.addActionListener(_dApplic);
+   _preferences.add(_viewDetailed);
+
 
   } // end createPreferencesMenu
 

@@ -11,7 +11,9 @@ package dInterface.dTimeTable;
 
 
 import java.awt.event.ActionEvent;
+import javax.swing.JDialog;
 import dInterface.DApplication;
+import dInterface.DToolBar;
 import dInterface.dUtil.DXTools;
 import javax.swing.JFrame;
 import dInterface.dAffectation.EventsDlgInterface;
@@ -28,10 +30,12 @@ import dResources.DConst;
 public class ManualImprovementDlg extends EventsDlgInterface{
 
    private String[] _buttonsNames = {DConst.BUT_CLOSE};
-   private ManualImprovementResultFrame _frameResult;
+   //private ManualImprovementResultFrame _frameResult;
    private DModel _dm;
-   TTStructure _newTTS;
-   JFrame _jInternalF;
+   private TTStructure _newTTS;
+   private DToolBar _toolBar;
+   private JFrame _jFrame;
+   //private JDialog _jDialog;
 
   /**
    * Constructor
@@ -42,7 +46,11 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     TTStructure oldTTS= dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure();
     _newTTS= new TTStructure();
     _newTTS.setTTStructureDocument(oldTTS.getTTStructureDocument());
-    _frameResult= new ManualImprovementResultFrame(_newTTS,dApplic.getToolBar());
+    _toolBar= dApplic.getToolBar();
+    //_jDialog=this;
+    //_frameResult= new ManualImprovementResultFrame(_jDialog,_newTTS,dApplic.getToolBar());
+    /*_frameResult= frameResult;
+    _newTTS = frameResult.getTTS();*/
     _dm= dApplic.getDMediator().getCurrentDoc().getDM();
     buildButtons();
     jbInit();
@@ -75,7 +83,10 @@ public class ManualImprovementDlg extends EventsDlgInterface{
   protected void doubleClicMouseProcess(){
     Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
     buildNewTTSTestConditions(event);
-    _jInternalF=_frameResult.createFrame(true, event.getID());
+    //setLocationRelativeTo(_frameResult.getJFrame());
+    ManualImprovementResultFrame frameResult= new ManualImprovementResultFrame(this,_newTTS,_toolBar,event.getID(),true);
+    //_frameResult.createFrame( event.getID(),true);
+    //setLocationRelativeTo(_frameResult.getJFrame());
     String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
     long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
@@ -89,7 +100,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     //int[] perKeyIndex={};
     int duration = ((EventAttach)event.getAttach()).getDuration()/_dApplic.getDMediator()
                  .getCurrentDoc().getDM().getTTStructure().getPeriodLenght();
-    _frameResult.setColorOfPanel(dayIndex,seqIndex,perIndex,duration);
+    frameResult.setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
     //_frameResult.setColorOfPanel(event.getID());
   }
 

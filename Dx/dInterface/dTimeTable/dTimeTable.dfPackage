@@ -101,6 +101,21 @@ class reference20 {
 @__modelType reference 
 */
 class reference21 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.ManualImprovementCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.ManualImprovementResultFrame:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.ManualImprovementDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference24 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

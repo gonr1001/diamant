@@ -85,15 +85,17 @@ public class StudentsConflictsMatrix {
    */
   public int[] getSectionsKeys(String str1, String str2){
     int[] keys ={-1,-1};
-    Resource resc1 = _allSections.getResource(str1);
-    Resource resc2 = _allSections.getResource(str2);
-    if((resc1!= null) && (resc2!= null)){
-      if(resc1.getKey()<resc2.getKey()){
-        keys[0]= (int)resc1.getKey();
-        keys[1]= (int)resc2.getKey();
-      }else{
-        keys[1]= (int)resc1.getKey();
-        keys[0]= (int)resc2.getKey();
+    if(_allSections!=null){
+      Resource resc1 = _allSections.getResource(str1);
+      Resource resc2 = _allSections.getResource(str2);
+      if((resc1!= null) && (resc2!= null)){
+        if(resc1.getKey()<resc2.getKey()){
+          keys[0]= (int)resc1.getKey();
+          keys[1]= (int)resc2.getKey();
+        }else{
+          keys[1]= (int)resc1.getKey();
+          keys[0]= (int)resc2.getKey();
+        }
       }
     }
     return keys;
