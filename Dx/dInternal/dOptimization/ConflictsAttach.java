@@ -15,6 +15,7 @@ import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import dInternal.dUtil.ArrayValue;
 import dResources.DConst;
 
 
@@ -75,25 +76,81 @@ public class ConflictsAttach extends DXObject{
    * @param event
    * @return
    */
-  public int [] getAllConflictsOfAnEvent(String eventName){
-    int [] nbconf={0,0,0};
-     for (int i=0; i< _setOfConflicts.size(); i++){
-      Resource conf= _setOfConflicts.getResourceAt(i);
-      if(conf.getID().equalsIgnoreCase(eventName)){
-        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
-          nbconf[0]+= ((DXValue)conf.getAttach()).getIntValue();
-        }
-        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
-          nbconf[1]+= ((DXValue)conf.getAttach()).getIntValue();
-        }
-        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
-          nbconf[2]+= ((DXValue)conf.getAttach()).getIntValue();
-        }
-      }// end if(conf.getID().equalsIgnoreCase(eventName))
-    }// end for (int i=0; i< _setOfConflicts.size(); i++)
-    return nbconf;
+  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc){
+      Vector vec= new Vector();
+      //ArrayValue arrV= new ArrayValue(0);
+       for (int i=0; i< _setOfConflicts.size(); i++){
+         int [] nbconf={0,0,0};
+        Resource conf= _setOfConflicts.getResourceAt(i);
+        String str= conf.getID();
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
+            nbconf[0]= ((DXValue)conf.getAttach()).getIntValue();
+          }
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
+            nbconf[1]= ((DXValue)conf.getAttach()).getIntValue();
+          }
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
+            nbconf[2]= ((DXValue)conf.getAttach()).getIntValue();
+          }
+          Resource resc= soc.getResource(str);
+          if(resc!=null){
+             ArrayValue arrV= (ArrayValue)resc.getAttach();
+            arrV.setIntArrayValue(arrV.getIntArrayValue(0)+nbconf[0],0);
+            arrV.setIntArrayValue(arrV.getIntArrayValue(1)+nbconf[1],1);
+            arrV.setIntArrayValue(arrV.getIntArrayValue(2)+nbconf[2],2);
+          }else{// else if(resc!=null)
+            ArrayValue arrV= new ArrayValue(0);
+            arrV.setIntArrayValue(nbconf[0],0);
+            arrV.setIntArrayValue(nbconf[1],1);
+            arrV.setIntArrayValue(nbconf[2],2);
+            soc.addResource(new Resource(str,arrV),1);
+          }// end else if(resc!=null)
+        //vec.add(str+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2]);
+      }// end for (int i=0; i< _setOfConflicts.size(); i++)
+      return soc;
   }
 
+  /**
+   *
+   * @param event
+   * @return
+   */
+  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc, String eventName){
+      Vector vec= new Vector();
+      //ArrayValue arrV= new ArrayValue(0);
+       for (int i=0; i< _setOfConflicts.size(); i++){
+         int [] nbconf={0,0,0};
+        Resource conf= _setOfConflicts.getResourceAt(i);
+        String str= conf.getID();
+        if(str.equalsIgnoreCase(eventName)){
+
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
+            nbconf[0]= ((DXValue)conf.getAttach()).getIntValue();
+          }
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
+            nbconf[1]= ((DXValue)conf.getAttach()).getIntValue();
+          }
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
+            nbconf[2]= ((DXValue)conf.getAttach()).getIntValue();
+          }
+          Resource resc= soc.getResource(str);
+          if(resc!=null){
+             ArrayValue arrV= (ArrayValue)resc.getAttach();
+            arrV.setIntArrayValue(arrV.getIntArrayValue(0)+nbconf[0],0);
+            arrV.setIntArrayValue(arrV.getIntArrayValue(1)+nbconf[1],1);
+            arrV.setIntArrayValue(arrV.getIntArrayValue(2)+nbconf[2],2);
+          }else{// else if(resc!=null)
+            ArrayValue arrV= new ArrayValue(0);
+            arrV.setIntArrayValue(nbconf[0],0);
+            arrV.setIntArrayValue(nbconf[1],1);
+            arrV.setIntArrayValue(nbconf[2],2);
+            soc.addResource(new Resource(str,arrV),1);
+          }// end else if(resc!=null)
+        //vec.add(str+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2]);
+        }// end if(str.equalsIgnoreCase(eventName))
+      }// end for (int i=0; i< _setOfConflicts.size(); i++)
+      return soc;
+  }
 
 
   /**

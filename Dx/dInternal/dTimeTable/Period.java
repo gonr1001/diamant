@@ -2,6 +2,7 @@ package dInternal.dTimeTable;
 
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import dInternal.dUtil.ArrayValue;
 import dInternal.dConditionsTest.ConflictsAttach;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
@@ -9,6 +10,7 @@ import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import org.w3c.dom.Document;
 
 public class Period extends DXObject {
@@ -236,19 +238,31 @@ public class Period extends DXObject {
    * @return
    */
   public SetOfResources getConflictsEventsInPeriod(String event){
-   // Vector inPeriod= new Vector();
+    Vector inPeriod= new Vector();
+    event="EPS122.1.A.1.";//debug
     SetOfResources setOfConf = new SetOfResources(99);
     for (int i=0; i< _eventsInPeriod.size(); i++){
       Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
       String ID= eventInPeriod.getID();
-      if (!event.equalsIgnoreCase(eventInPeriod.getID())){
+      if (event.equalsIgnoreCase(eventInPeriod.getID())){
         //inPeriod.add(_eventsInPeriod.getResourceAt(i).getID());
-        int [] nbconf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(ID);
-        ID= ID+" "+nbconf[0]+" "+nbconf[1]+" "+nbconf[1];
-      }// end if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
-      setOfConf.addResource(new Resource(ID, new DXValue()),1);
+         ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
+       // ID= ID+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2];
+      }else {// else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
+        //int [] nbconf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(ID,1);
+        //ID= ID+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2];
+        //inPeriod.add(nbconf);
+        ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf, event);
+      }// end  else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
     }// end for (int i=0; i< _eventsInPeriod.size(); i++){
-    return setOfConf;
+    SetOfResources setOfRes = new SetOfResources(99);
+    for(int i=0; i< setOfConf.size(); i++){
+      ArrayValue array = (ArrayValue)setOfConf.getResourceAt(i).getAttach();
+      String ID=setOfConf.getResourceAt(i).getID()+"  "+ array.getIntArrayValue(0)
+      +"  "+ array.getIntArrayValue(1)+"  "+ array.getIntArrayValue(2);
+      setOfRes.addResource(new Resource(ID,new DXValue()),1);
+    }
+    return setOfRes;
   }
 
 
