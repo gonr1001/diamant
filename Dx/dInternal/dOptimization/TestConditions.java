@@ -25,7 +25,7 @@ public class TestConditions {
  private int[] _avoidPriority={1,2};
  private int [] _acceptableConflictsTable={0,0,0};
  private int _periodAcceptableSize=20;
-
+ private int _periodVariationEvents=0;
  /**
   * Constructor
   * @param soa
@@ -220,6 +220,7 @@ public class TestConditions {
     for (int i=conflictsPreference[3]+1; i< 3; i++)
       _avoidPriority[inc++]=i;
     _periodAcceptableSize= conflictsPreference[4];
+    //_periodVariationEvents = conflictsPreference[5];
   }
 
   /**

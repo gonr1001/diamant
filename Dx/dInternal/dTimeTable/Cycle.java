@@ -122,6 +122,18 @@ public class Cycle extends DXObject{
     _currentDayIndex = curDayIndex;
   }
 
+  /**
+   *
+   * @param curDayIndex
+   * @param curSeqIndex
+   * @param curPerIndex
+   */
+  public void setCurrentDaySeqPerIndex(int curDayIndex, int curSeqIndex, int curPerIndex ){
+    _currentDayIndex = curDayIndex;
+    getCurrentDay().setCurrentSequenceIndex(curSeqIndex);
+    getCurrentDay().getCurrentSequence().setCurrentPeriodIndex(curPerIndex);
+  }
+
 
 
     /**
