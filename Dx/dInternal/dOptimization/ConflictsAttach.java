@@ -89,6 +89,9 @@ public class ConflictsAttach extends DXObject{
           if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
             nbconf[1]= ((DXValue)conf.getAttach()).getIntValue();
           }
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
+            nbconf[1]+= ((DXValue)conf.getAttach()).getIntValue();
+          }
           if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
             nbconf[2]= ((DXValue)conf.getAttach()).getIntValue();
           }
@@ -129,6 +132,9 @@ public class ConflictsAttach extends DXObject{
           if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
             nbconf[1]= ((DXValue)conf.getAttach()).getIntValue();
           }
+          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
+            nbconf[1]+= ((DXValue)conf.getAttach()).getIntValue();
+          }
           if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
             nbconf[2]= ((DXValue)conf.getAttach()).getIntValue();
           }
@@ -168,6 +174,25 @@ public class ConflictsAttach extends DXObject{
       }// end if(conf.getID().equalsIgnoreCase(eventName))
     }// end for (int i=0; i< _setOfConflicts.size(); i++)
     return false;
+  }
+
+  /**
+   * get an event conflicts from setof conflicts
+   * @param eventName the event name
+   * @param typeOfConflict the type of conflicts
+   * @return Vector of dxvalue containing conflict information
+   */
+  public Vector getConflicts(String eventName, String typeOfConflict){
+    Vector conflict= new Vector();
+    for (int i=0; i< _setOfConflicts.size(); i++){
+      Resource conf= _setOfConflicts.getResourceAt(i);
+      if(conf.getID().equalsIgnoreCase(eventName)){
+        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
+          conflict.add(((DXValue)conf.getAttach()));
+        }
+      }// end if(conf.getID().equalsIgnoreCase(eventName))
+    }// end for (int i=0; i< _setOfConflicts.size(); i++)
+    return conflict;
   }
 
 

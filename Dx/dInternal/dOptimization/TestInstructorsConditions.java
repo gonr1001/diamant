@@ -43,11 +43,12 @@ public class TestInstructorsConditions  implements Condition{
     int number=0;
     int nbConf1, nbConf2;
     ConflictsAttach confVal= new ConflictsAttach();
-    nbConf1= InstructorAvailibilityConflicts(period,eventKey);
+    ConflictsAttach confVal2= new ConflictsAttach();
+    nbConf1= InstructorAvailibilityConflicts(period,eventKey, confVal2);
     nbConf2= InstructorEventsConflicts(period,eventKey, confVal);
     number= nbConf1+nbConf2;
     if (nbConf1!=0)
-      confVal.addConflict("Disponibilite Enseignant",nbConf1,DConst.R_INSTRUCTOR_NAME_AVAIL,new Vector());
+      confVal.mergeConflictsAttach(confVal2);//confVal.addConflict("Disponibilite Enseignant",nbConf1,DConst.R_INSTRUCTOR_NAME_AVAIL,new Vector());
 
     switch(operation){
       case 0:
@@ -62,9 +63,12 @@ public class TestInstructorsConditions  implements Condition{
         break;
       case -1:period.getEventsInPeriod().removeResource(eventKey);
         period.removeNbInstructorsConflict(number);
-        for(int i=0; i< period.getEventsInPeriod().size(); i++)
+        for(int i=0; i< period.getEventsInPeriod().size(); i++){
           ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
            getAttach()).removeConflict(eventKey,DConst.R_INSTRUCTOR_NAME);
+        ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
+           getAttach()).removeConflict(eventKey,DConst.R_INSTRUCTOR_NAME_AVAIL);
+        }
         break;
     }
     //return 0;
@@ -78,10 +82,11 @@ public class TestInstructorsConditions  implements Condition{
    * @param eventKey
    * @return
    */
-  private int InstructorAvailibilityConflicts(Period period, String eventKey){
+  private int InstructorAvailibilityConflicts(Period period, String eventKey, ConflictsAttach confV){
     EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     long instKey[] = event.getInstructorKey();
      int nbConf=0;
+     Vector description= new Vector();// is a vector of Long containing instructor keys
     //long instKey = event.getInstructorKey();
     for (int i=0; i< instKey.length; i++){
       if(event.getPeriodKey().length()!=0){
@@ -96,14 +101,20 @@ public class TestInstructorsConditions  implements Condition{
         if(perPosition>0){
           int [][] matrix= inst.getMatrixAvailability();
           if ((dayIndexAvail < matrix.length)){
-            if(matrix[dayIndexAvail][perPosition-1]==_NOTAVAIL)
+            if(matrix[dayIndexAvail][perPosition-1]==_NOTAVAIL){
               nbConf++;
+              description.add(new Long(instKey[i]));
+            }
           }else{// else if ((dayIndexAvail < matrix.length))
             nbConf++;
+            description.add(new Long(instKey[i]));
           }// end else if ((dayIndexAvail < matrix.length))
         }// end if(perPosition>0)
       }
     }// end for (int i=0; i< instKey.length; i++)
+    if(nbConf>0){
+      confV.addConflict("Disponibilite Enseignant",nbConf,DConst.R_INSTRUCTOR_NAME_AVAIL,description);
+    }
     return nbConf;
   }
 

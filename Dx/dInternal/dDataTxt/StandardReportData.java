@@ -257,7 +257,7 @@ public class StandardReportData {
                //long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
                //String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
                //str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
-               //str = _dm.getSetOfEvents().getInstructorConflictDescriptions(confEvents.getID(),confAttach.getID());
+               str = _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue,confEvents.getID());
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();

@@ -187,7 +187,7 @@ public class SetOfEvents extends SetOfResources{
 
 
     /**
-     *
+     * for two event in conflict
      * @param eventIDOne
      * @param eventIDTwo
      * @return
@@ -206,6 +206,24 @@ public class SetOfEvents extends SetOfResources{
     }// end for (int i=0; i< instKeyOne.length; i++)
     return res;
   }
+
+  /**
+     * for instructor availibility conflict
+     * @param eventIDOne
+     * @param eventIDTwo
+     * @return
+     */
+  public String getInstructorConflictDescriptions( DXValue confAt, String eventIDOne) {
+    String res="";
+      Vector insKeys= (Vector)(confAt).getObjectValue();
+      for (int j=0; j< insKeys.size(); j++){
+        String str= _dm.getSetOfInstructors().getResource(((Long)insKeys.get(j)).longValue()).getID();
+          res += DXToolsMethods.getToken(str,",",0)+" "+DXToolsMethods.getToken(str,",",1)+":";
+      }// end for (int j=0; j< insKeys.size(); j++)
+
+    return res;
+  }
+
 
     /**
      *
