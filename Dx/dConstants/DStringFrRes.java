@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.109 $  $Date: 2004-04-13 17:11:03 $
+ * Title: DStringFrRes $Revision: 1.110 $  $Date: 2004-04-15 21:40:34 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.109 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.110 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -72,6 +72,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     { "impAM", "Importer automatiquement ..." },
     { "impATD", "Importation de fichiers"},
+    { "impSelect", "Importation selective" },//
+    { "impSelectRoom", "Locaux" },
+    { "impSelectInst", "Enseignants" },
+    { "impSelectAct", "Activités" },
+    { "impSelectStud", "Étudiants" },//
     { "impAD", "To be defined" },
     { "impASuc","Fichiers importés avec succes!!!"},
     {"exists", "existe"},

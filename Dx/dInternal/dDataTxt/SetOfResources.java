@@ -257,6 +257,14 @@ public class SetOfResources extends DXObject{
 
   /**
    *
+   * @return
+   */
+  public String getError() {
+    return "";
+  }
+
+  /**
+   *
    * */
   public int getIndexOfResource(String id){
     return searchID(id);

@@ -21,6 +21,7 @@ public class SetOfRooms extends SetOfResources{
   //private RoomsAttributesInterpretor _attr;
   private String _error="";
   private Vector _sorListeners= new Vector(1);
+  private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
  /***
   * constructor
@@ -112,12 +113,16 @@ public class SetOfRooms extends SetOfResources{
     return true;
   }
 
+  public void setAttributesInterpretor(RoomsAttributesInterpretor attr){
+    _roomsAttributesInterpretor= attr;
+  }
+
   /**
    *build rooms list.
    *use StringTokenizer st: rooms in text format
    *
    */
-  public void buildSetOfResources(int beginPosition, RoomsAttributesInterpretor attr){
+  public void buildSetOfResources(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state = 0;

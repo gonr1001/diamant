@@ -35,6 +35,5 @@ public class ImportSelectiveFileCmd implements Command {
    */
   public void execute(DApplication dApplic) {
     new ImportSelectiveFileDlg(dApplic, _selectionName);
-    //dApplic.getMenuBar().postImportCmd();
   }
 } /* end class ImportSelectiveFileCmd */

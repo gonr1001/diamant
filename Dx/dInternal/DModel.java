@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.89 $  $Date: 2004-03-26 20:45:21 $
+ * Title: DModel $Revision: 1.90 $  $Date: 2004-04-15 21:40:33 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.89 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.90 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -326,6 +326,30 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
    setImportDone(true);
     return "";
+  }
+
+  //debug merge instructor file: S801.DISPROF
+      //instructorsList= (SetOfInstructors) selectiveImport(instructorsList,"S801.DISPROF",true);
+      // end debug
+
+      /**
+      *
+      * @param str
+      * @return
+      */
+  public String SelectiveImportData(String fileName, String selectionName) {
+    String error="";
+    LoadData loadData = new LoadData();
+    if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_INST)){
+      _setOfInstructors= (SetOfInstructors) loadData.selectiveImport(_setOfInstructors,fileName,true);
+      _setOfStates.sendEvent();
+      //System.out.println("Importation selective -- instructeur");//debug
+    }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)){
+      _setOfRooms= (SetOfRooms) loadData.selectiveImport(_setOfRooms,fileName,true);
+      _setOfStates.sendEvent();
+    }
+
+    return error;
   }
 
   /**

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.95 $  $Date: 2004-04-13 17:11:03 $
+ * Title: DConst $Revision: 1.96 $  $Date: 2004-04-15 21:40:34 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.95 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.96 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -126,6 +126,11 @@ public class DConst {
   public final static String SAVE_AS  = res.getString("saveAs");//Enregistrer zouz
   public final static String DEF_F_M  = res.getString("defFM");//Definir fichiers à importer
   public final static String IMP_A_M  = res.getString("impAM");//Importer automatiquement
+  public final static String IMP_SELECT  = res.getString("impSelect");//Importation selective
+  public final static String IMP_SELECT_ROOM  = res.getString("impSelectRoom");//Importation selective de locaux
+  public final static String IMP_SELECT_INST  = res.getString("impSelectInst");//Importation selective d'enseignants
+  public final static String IMP_SELECT_ACT  = res.getString("impSelectAct");//Importation selective d'activité
+  public final static String IMP_SELECT_STUD  = res.getString("impSelectStud");//Importation selective d'étudiants
   public final static String EXPO  = res.getString("expo");//Exporter
   public final static String EXIT  = res.getString("exit");//Quitter
   //Edition Menu

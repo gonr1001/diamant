@@ -147,7 +147,8 @@ public class LoadData {
          roomsList.setSetOfResources(currentList.getSetOfResources());
 
      if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfResources(0, _roomsAttributesInterpretor);
+       roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+       roomsList.buildSetOfResources(0);
      }
    } else {// (NullPointerException npe) {
      new FatalProblemDlg("I was in LoadData class and extractRooms. preload failed!!!" );
@@ -219,14 +220,17 @@ public class LoadData {
    */
   public SetOfResources selectiveImport(SetOfResources setOfResc, String file, boolean merge){
     String str= setOfResc.getClass().getName();
+    int beginPosition=0;
      byte[]  dataloaded = preLoad(file);
     SetOfResources currentsetOfResc= new SetOfResources(setOfResc.getResourceType());
     if (str.equalsIgnoreCase("dInternal.dData.SetOfInstructors")){
       currentsetOfResc = new SetOfInstructors(dataloaded,5,14);
       // implement selective import for instructors
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfRooms")){
+      currentsetOfResc = new SetOfRooms(dataloaded,5,14);
       // implement selective import for rooms
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfActivities")){
+      beginPosition=1;
       // implement selective import for activities
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfStudents")){
       // implement selective import for students
@@ -237,12 +241,14 @@ public class LoadData {
     if (dataloaded != null) {
       if (merge && (setOfResc!=null)){
           currentsetOfResc.setSetOfResources(setOfResc.getSetOfResources());
-          currentsetOfResc.setCurrentKey((long)setOfResc.size());
+          currentsetOfResc.setCurrentKey((long)setOfResc.size()+1);
       }
 
-      if (currentsetOfResc.analyseTokens(0)){
-        currentsetOfResc.buildSetOfResources(0);
+      if (currentsetOfResc.analyseTokens(beginPosition)){
+        currentsetOfResc.buildSetOfResources(beginPosition);
         return currentsetOfResc;
+      }else{
+        new FatalProblemDlg(currentsetOfResc.getError());
       }
     } else {// (NullPointerException npe) {
       new FatalProblemDlg("I was in LoadData class and extractInstructors. preload failed!!!" );
@@ -280,8 +286,9 @@ public class LoadData {
       // extract rooms
       SetOfRooms roomsList = new SetOfRooms(project.nextToken().trim().getBytes(),5,14);
       if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfResources(3, extractRoomsAttributesInterpretor());
-     }
+        roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+        roomsList.buildSetOfResources(3);
+      }
      extract.add(roomsList);
 
      // extract activities
