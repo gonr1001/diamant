@@ -22,9 +22,9 @@ public class SetOfResources extends DXObject{
   int _stateSort=0;
   /**resource in text format*/
   private StringTokenizer _st;//
-  private int _numberOfLines;
-  private int _numberOfColumns;// represent number of period a day.
-  private long _currentKey=0;
+  //private int _numberOfLines;
+  //private int _numberOfColumns;// represent number of period a day.
+  private long _currentKey=1;
   /**0= activities, 1= students, 2= instructors, 3 = rooms*/
   private int _resourceType;
   public static final String CR_LF = "\r\n";
@@ -32,29 +32,10 @@ public class SetOfResources extends DXObject{
 
 
   /**
-   * Constructor call with byte[]  dataloaded
+   * Constructor
+   * @param int resType  The resource type
    * */
   public SetOfResources( int resType) {
-    _resourceList = new Vector(1,1);
-    _resourceType = resType;
-  }
-  /**
-   * Constructor call with byte[]  dataloaded and resource type resType
-   * */
-/*  public SetOfResources(byte[]  dataloaded, int resType) {
-    _st = new StringTokenizer(new String (dataloaded),"\r\n" );
-    _resourceList = new Vector(1,1);
-    _resourceType = resType;
-  }*/
-
-  /**
-   * Constructor call with byte[]  dataloaded,  int nbDay (number of days),
-   * int ndPerDay (number of period a day) and resource type resType
-   * */
-  public SetOfResources(int nbDay, int ndPerDay, int resType) {
-    //_st = new StringTokenizer(new String (dataloaded),"\r\n" );
-    _numberOfLines = nbDay;
-    _numberOfColumns = ndPerDay;
     _resourceList = new Vector(1,1);
     _resourceType = resType;
   }
@@ -65,7 +46,6 @@ public class SetOfResources extends DXObject{
    * @return <{Vector}>
    */
   public boolean analyseTokens(){
-
     return false;
   }
 
@@ -75,7 +55,6 @@ public class SetOfResources extends DXObject{
    *
    */
   public void buildSetOfResources(){
-
   }
 
   /**
@@ -209,6 +188,19 @@ public class SetOfResources extends DXObject{
 
   /**
    * Get a Resource from the SetOfResources
+   * @param String The ID of Resource
+   * @return Resource null if Resource didn't found
+   * */
+  public Resource getResource(String ID){
+    for (int i = 0; i < _resourceList.size(); i++){
+      if (((Resource)_resourceList.get(i)).getID().equalsIgnoreCase( ID))
+        return (Resource)_resourceList.get(i);
+    }
+    return null;
+  }
+
+  /**
+   * Get a Resource from the SetOfResources
    * @param integer, the position of the Resource
    * @return Resource null if Resource didn't found
    * */
@@ -245,18 +237,7 @@ public class SetOfResources extends DXObject{
    return false;
   }
 
-  /**
-   * Get a Resource from the SetOfResources
-   * @param String The ID of Resource
-   * @return Resource null if Resource didn't found
-   * */
-  public Resource getResource(String ID){
-    for (int i = 0; i < _resourceList.size(); i++){
-      if (((Resource)_resourceList.get(i)).getID().equalsIgnoreCase( ID))
-        return (Resource)_resourceList.get(i);
-    }
-    return null;
-  }
+
 
   /**
    * Sort the SetOfResources by Resource's ID from smallest to biggest
@@ -368,12 +349,12 @@ public class SetOfResources extends DXObject{
     int j= end+1;
     while( i< j){
       i++;
-      while(((Resource)_resourceList.get(i)).getObject().getSelectedField(field) <
-            pivot.getObject().getSelectedField(field))
+      while(((Resource)_resourceList.get(i)).getAttach().getSelectedField(field) <
+            pivot.getAttach().getSelectedField(field))
         i++;
       j--;
-      while(((Resource)_resourceList.get(j)).getObject().getSelectedField(field) >
-            pivot.getObject().getSelectedField(field))
+      while(((Resource)_resourceList.get(j)).getAttach().getSelectedField(field) >
+            pivot.getAttach().getSelectedField(field))
         j--;
       if(i < j)
         swap(i,j);

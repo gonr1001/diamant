@@ -14,7 +14,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 public class SetOfInstructors extends SetOfResources{
 
-//private Vector instructorsList;// contains list of Instructor
+//private Vector instructorsList;// contains list of InstructorAttach
 private byte[] _dataloaded; //_st;// instructors in text format
 private int _numberOfLines;// represent number of days
 private int _numberOfColumns;// represent number of period a day.
@@ -25,7 +25,7 @@ private int _numberOfColumns;// represent number of period a day.
   * int nbDay,
   * */
  public SetOfInstructors( byte[]  dataloaded, int nbDay, int nbPerDay) {
-   super(nbDay, nbPerDay,2);
+   super(2);
    _dataloaded = dataloaded;
    _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;
@@ -130,7 +130,7 @@ private int _numberOfColumns;// represent number of period a day.
          avail.add(token);
          stateDispo++;
          if (stateDispo> _numberOfLines){
-           Instructor inst = new Instructor();
+           InstructorAttach inst = new InstructorAttach();
            inst.setAvailability(avail);
            this.addResource(new Resource( instID, inst),1);
            state =1;

@@ -24,7 +24,7 @@ public class SetOfRooms extends SetOfResources{
   * int nbDay (number of days), int nbPerDay (number of periods a day)
   * */
   public SetOfRooms(byte[] dataloaded, int nbDay, int nbPerDay) {
-    super(nbDay, nbPerDay,3);
+    super(3);
     _dataloaded = dataloaded;
     _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;

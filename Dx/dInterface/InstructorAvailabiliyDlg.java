@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.8 $  $Date: 2003-05-01 16:32:51 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.9 $  $Date: 2003-05-02 13:24:05 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -27,7 +27,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import dInternal.dData.Instructor;
+import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
 
 /*import dInternal.DModelListener;
@@ -83,7 +83,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
   int nbPerParJour;
   private boolean modified = false;
   private DModel _dm;
-  private Instructor  _currentInstr;
+  private InstructorAttach  _currentInstr;
   private int [][] _currentAvailbility;
 
 
@@ -120,7 +120,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _currentInstr = (Instructor)_dm.getSetOfInstructors().getResource(sel).getObject();
+    _currentInstr = (InstructorAttach)_dm.getSetOfInstructors().getResource(sel).getAttach();
     centerPanel = makeGridPanel(_currentInstr);
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
@@ -184,7 +184,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        _currentInstr = (Instructor)_dm.getSetOfInstructors().getResource(sel).getObject();
+        _currentInstr = (InstructorAttach)_dm.getSetOfInstructors().getResource(sel).getAttach();
         centerPanel = makeGridPanel(_currentInstr);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();
@@ -199,7 +199,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    *
    * @param instr the instructor for which the grid is constructed.
    */
-  private JPanel makeGridPanel(Instructor instr) {
+  private JPanel makeGridPanel(InstructorAttach instr) {
     JPanel gridPanel = new JPanel();
     gridPanel.setLayout(new GridLayout(nbPer + 1, nbDay + 1));
     gridPanel.setBorder(BorderFactory.createTitledBorder(MES00));

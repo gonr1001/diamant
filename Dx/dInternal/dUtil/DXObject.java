@@ -32,7 +32,6 @@ public class DXObject extends Object{
    *
    * */
   public String externalKey(String str){
-
     return "";
   }
 

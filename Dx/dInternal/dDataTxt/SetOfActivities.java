@@ -196,7 +196,7 @@ public class SetOfActivities extends SetOfResources{
           activityResource = this.getResource(activityName.substring(0,_COURSENAMELENGTH));
           if(activityResource== null)
             activityResource = new Resource(activityName.substring(0,_COURSENAMELENGTH),new Activity());
-          activity = (Activity)activityResource.getObject();
+          activity = (Activity)activityResource.getAttach();
           //Resource nature;
           if (Integer.parseInt(token.trim())==1)
             activity.setActivityVisibility(true);
@@ -224,7 +224,7 @@ public class SetOfActivities extends SetOfResources{
           numberOfBloc = Integer.parseInt(token.trim());
           for (int i=1; i<= numberOfBloc; i++)
             group.addBloc(Integer.toString(i));
-          ((Nature)natureResource.getObject()).addGroup(activityName.substring(_ACTIVITYLENGTH-1),group);
+          ((Nature)natureResource.getAttach()).addGroup(activityName.substring(_ACTIVITYLENGTH-1),group);
           position = 8;
           break;
         case 8://duration of blocs
@@ -232,7 +232,7 @@ public class SetOfActivities extends SetOfResources{
           counter=1;
            while(stLine.hasMoreElements()){
              blocResource= group.getBloc(Integer.toString(counter));
-             Bloc bloc= (Bloc)blocResource.getObject();
+             Bloc bloc= (Bloc)blocResource.getAttach();
              bloc.setDuration(Integer.parseInt(stLine.nextToken().trim())*60);
              blocResource.setObject(bloc);
              group.setBloc(blocResource);
@@ -245,7 +245,7 @@ public class SetOfActivities extends SetOfResources{
           counter=1;
            while(stLine.hasMoreElements()){
              blocResource= group.getBloc(Integer.toString(counter));
-             Bloc bloc= (Bloc)blocResource.getObject();
+             Bloc bloc= (Bloc)blocResource.getAttach();
              CycleAssignment cycleAss = new CycleAssignment();
              int day=Integer.parseInt(stLine.nextToken().trim());
              int [] time= DXToolsMethods.convertSTIPeriods(Integer.parseInt(stLine.nextToken().trim()));
@@ -263,10 +263,10 @@ public class SetOfActivities extends SetOfResources{
            while(stLine.hasMoreElements()){
              blocResource= group.getBloc(Integer.toString(counter));
              int fixed= Integer.parseInt(stLine.nextToken().trim());
-             Bloc bloc= (Bloc)blocResource.getObject();
+             Bloc bloc= (Bloc)blocResource.getAttach();
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                ((CycleAssignment)bloc.getCycleAssignment(Integer.toString(i)
-                   ).getObject()).setRoomState(fixed==1);
+                   ).getAttach()).setRoomState(fixed==1);
               counter++;
            }// end while(stLine.hasMoreElements())
           position = 11;
@@ -276,11 +276,11 @@ public class SetOfActivities extends SetOfResources{
           counter=1;
            while(stLine.hasMoreElements()){
              blocResource= group.getBloc(Integer.toString(counter));
-             Bloc bloc= (Bloc)blocResource.getObject();
+             Bloc bloc= (Bloc)blocResource.getAttach();
              String room= stLine.nextToken().trim();
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                ((CycleAssignment)bloc.getCycleAssignment(Integer.toString(i)
-                   ).getObject()).setRoom(room);
+                   ).getAttach()).setRoom(room);
               counter++;
            }// end while(stLine.hasMoreElements())
           position = 12;
@@ -290,7 +290,7 @@ public class SetOfActivities extends SetOfResources{
           counter=1;
            while(stLine.hasMoreElements()){
              blocResource= group.getBloc(Integer.toString(counter));
-             Bloc bloc= (Bloc)blocResource.getObject();
+             Bloc bloc= (Bloc)blocResource.getAttach();
              String roomType= stLine.nextToken().trim();
              bloc.addPreferFunctionRoom(roomType);
              counter++;
@@ -307,7 +307,7 @@ public class SetOfActivities extends SetOfResources{
            while(stLine.hasMoreElements()){
              int fix= Integer.parseInt(stLine.nextToken().trim());
              blocResource= group.getBloc(Integer.toString(counter));
-             ((Bloc)blocResource.getObject()).setFixed(fix==1);
+             ((Bloc)blocResource.getAttach()).setFixed(fix==1);
              counter++;
            }// end while(stLine.hasMoreElements())
           position = beginPosition;
@@ -402,9 +402,9 @@ public class SetOfActivities extends SetOfResources{
   public String toWrite(){
     String actlist="";// write
     for (int i=0; i<size(); i++){
-      Activity activity = (Activity)getResourceAt(i).getObject();
+      Activity activity = (Activity)getResourceAt(i).getAttach();
       for(int j=0; j< activity.getNaturesList().size(); j++){
-        Nature nature = (Nature)(activity.getNaturesList().getResourceAt(j)).getObject();
+        Nature nature = (Nature)(activity.getNaturesList().getResourceAt(j)).getAttach();
         for (int k=0; k< nature.getGroupList().size(); k++){
           actlist+= getResourceAt(i).getID();// write activity name
           actlist+= activity.getNaturesList().getResourceAt(j).getID()+"  ";// write nature and 2 space
@@ -414,16 +414,16 @@ public class SetOfActivities extends SetOfResources{
           else
             actlist+=0+CR_LF;// write visibility of activity and go to line
           actlist+=1+CR_LF;// write number of activities and go to line
-          Group group= (Group)nature.getGroupList().getResourceAt(k).getObject();
+          Group group= (Group)nature.getGroupList().getResourceAt(k).getAttach();
           Bloc bloc;
           String instName="",lineDuration="", lineTime="", lineRoomFixed="",
           lineRoomName="", lineRoomType="", LineActFixed="";
           /* duration, time of each bloc*/
           for(int l=0; l< group.getBlocList().size(); l++){
-            bloc= (Bloc)group.getBlocList().getResourceAt(l).getObject();
+            bloc= (Bloc)group.getBlocList().getResourceAt(l).getAttach();
             lineDuration += bloc.getDuration()/60+" ";//
             CycleAssignment firstCycAss = (CycleAssignment)bloc.getCycleAssignmentList(
-                ).getResourceAt(0).getObject();
+                ).getResourceAt(0).getAttach();
             instName = firstCycAss.getInstructor();//
             lineTime+=firstCycAss.getDateAndTime()[0]+" "+
                      DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";//

@@ -10,7 +10,7 @@ package dTest.dInternal.dData;
  */
 import junit.framework.*;
 import dInternal.dData.Resource;
-import dInternal.dData.Instructor;
+import dInternal.dData.InstructorAttach;
 import dInternal.dData.SetOfInstructors;
 import java.util.Vector;
 

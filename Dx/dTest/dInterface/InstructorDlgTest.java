@@ -9,7 +9,7 @@ package dTest.dInterface;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.dData.Instructor;
+import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
 import dInterface.InstructorAvailabiliyDlg;
 import dResources.DConst;

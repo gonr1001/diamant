@@ -19,16 +19,16 @@ public class Resource {
   /**Resource ID it can be a name, an ID, a CIP code*/
   private String _resourceID;
   /**Resource Object*/
-  private DXObject _resourceObjet;
+  private DXObject _resourceAttach;
 
   /**
    * Constructor
    * @param String the id of the Resource
-   * @param DXObject the object to set in the _resourceObjet field
+   * @param DXObject the object to set in the _resourceAttach field
    * */
   public Resource(String id, DXObject obj) {
     _resourceID = id;
-    _resourceObjet = obj;
+    _resourceAttach = obj;
   }
 
   /**
@@ -59,8 +59,8 @@ public class Resource {
    * Return the resource Object
    * @return DXObject the resource Object
    * */
-  public DXObject getObject(){
-    return _resourceObjet;
+  public DXObject getAttach(){
+    return _resourceAttach;
   }
 
   /**
@@ -68,7 +68,7 @@ public class Resource {
    * @param DXObject the resource Object
    * */
   public void setObject(DXObject obj){
-    _resourceObjet = obj;
+    _resourceAttach = obj;
   }
 
   /**
@@ -103,9 +103,9 @@ public class Resource {
   public String toWrite(String separator){
     String instInfo;
     String id= _resourceID;
-    id=_resourceObjet.externalKey( Long.toString(_resourceKey))+id;
+    id=_resourceAttach.externalKey( Long.toString(_resourceKey))+id;
     instInfo= id + separator;
-    instInfo += _resourceObjet.toWrite();
+    instInfo += _resourceAttach.toWrite();
     return instInfo;
   }
 
