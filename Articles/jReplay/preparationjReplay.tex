@@ -6,9 +6,10 @@
 
 \setlength{\parskip}{1.5explus0.5ex minus0ex}
 
-\newcommand{\saphir}{SAPHIR}
+%\newcommand{\saphir}{SAPHIR}
 \newcommand{\diamant}{DIAMANT}
 \newcommand{\tictac}{Tic-Tac}
+\newcommand{\jreplay}{jReplay}
 \newcommand{\xp}{eXtreme Programming}
 \def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
 
@@ -32,14 +33,14 @@ Canada\\
 \subsection{Quoi, de manière précise, a été votre contribution?}
 Un outil permettant de enregistrer le comportement d'un
 utilisateur, lorsqu'il sert d'une application, et permettant aussi
-de reproduire ce comportemnt.
+de reproduire ce comportement.
 
 Quelques particularités de son utilisation :
 \begin{enumerate}
  \item Il faut ajouter très peu de lignes au code existant pour
  faire la fonction de enregistrement.
- \item Rééxécution rapide et sélective. High level.
- \item Outil de debbugage puissant, car il permet plus facilement de reproduir un bug.
+ \item Re-exécution rapide et sélective. \emph{High level}.
+ \item Outil de débogage puissant, car il permet plus facilement de reproduire un \emph{bug}.
 \end{enumerate}
 
 \begin{description}
@@ -72,21 +73,21 @@ L'outil.
 
 \item [Quels sont les travaux antérieurs?]
 
-debbugage telles01, \ref{mcconnell04}
+débogage telles01, \ref{mcconnell04}
 
 jUnit
 
 MVC
 
-log4j
+Log4j
 
-jacaretto
+Jacaretto
 
-abbot
+Abbot
 
-chainsaw
+Chainsaw
 
-revision de code, programmation par contrat.
+révision du code, programmation par contrat.
 
 
 \item [Pourquoi votre solution est-elle meilleure?]
@@ -96,7 +97,7 @@ Notre solution est un complément des autres outils présentés.
 \item [Quoi, de manière précise et détaillée est nouveau dans
 votre travail?]
 
-Pouvoir rééxécuter une application de manière automatique, en
+Pouvoir re-exécuter une application de manière automatique, en
 reproduisant le comportement de l'utilisateur.
 
 L'effort pour adapter un logiciel existant à jReplay et très
@@ -127,34 +128,25 @@ correct?]
 
 Description précise du résultat que vous voulez transmettre.
 
-Nous voulons expliquer les choix d'architecture, du design et de
-conception pour la réalisation d'un système de production
-d'horaires dans l'environnement d'une institution d'enseignement
-supérieur. Nous voulons montrer les avantages d'avoir une vision
-globale au moment de faire la création d'un système de production
-d'horaires, qui est capable d'interagir avec autres systèmes. Nous
-voulons aussi montrer la manière de planifier le développement du
-{\tictac}, le système de production d'horaires utilisé par
-plusieurs facultés de l'Université de Sherbrooke.
+Nous voulons montrer les avantages de l'utilisation de notre outil
+jReplay.
 
- \item [Qui va lire
-l'article?]Une description précise de l'auditoire, le niveau
-technique, la taille, etc. Nous avons ciblé trois types de
-lecteurs :
+ \item [Qui va lire l'article?]
+Une description précise de l'auditoire, le niveau technique, la
+taille, etc. Nous avons ciblé trois types de lecteurs :
 \begin{enumerate}
-\item Faire la publication de l'article dans PATAT 2004. Un
-auditoire ouvert mais surtout des chercheurs en informatique ou en
-recherche opérationnelle qui travaillent dans le domaine de la
-conception d'horaires, peut-être avec une bonne connaissance de
-mathématiques ou de l'informatique ou de la recherche
-opérationnelle, ou les trois ensemble.
+\item Faire la publication de l'article dans OOPSLA 2005.
+
+Un auditoire ouvert avec des professionnels de l'industrie  et des
+praticiens de milieu universitaire, chercheurs, étudiants, et
+éducateurs de la technologie d'objet et ses ramifications.
 
 \item Les nouveaux développeurs qui se intégreront à l'équipe de
 travail \eXit{}. Quelques étudiantes en génie qui pourraient
 s'ajouter au groupe \eXit{}, avec un baccalauréat ou une maîtrise
 en génie ou en informatique.
 
- \item Les utilisateurs du {\tictac}, qui auront besoin de connaître quelques
+ \item Les utilisateurs du {\diamant}, qui auront besoin de connaître quelques
 caractéristiques du système. Moins d'une dizaine de lecteurs avec
 très peu des connaissances informatiques, mais de l'expérience
 dans le processus de la conception d'horaires.
@@ -162,8 +154,8 @@ dans le processus de la conception d'horaires.
 
 \end {enumerate}
 Même si les trois groupes de lecteurs semblent différents, le but
-de l'article est de montrer les concepts généraux de la conception
-d'un système de production d'horaires.
+de l'article est de montrer les avantages et l'utilisation de
+l'outil {\jreplay}.
 \end{description}
 
 
@@ -172,30 +164,29 @@ d'un système de production d'horaires.
 Vision globale de l'article
 
 \begin{description}
-\item [Identification de la question que vous avez posée.] On se
-questionne sur le fait de pouvoir faire la conception d'un
-logiciel pour la production d'horaires qui puisse interagir avec
-d'autres modules d'un système intégrale de gestion de
-l'information d'une Université.
+\item [Identification de la question que vous avez posée.]
 
-\item [L'identification du résultat obtenu.] Dans l'étape du
-design de {\tictac}, nous avons une approche génie logiciel  de la
-conception de ce système. Nous avons pris en considération
-plusieurs qualités de logiciel qui s'appliquent à tout logiciel
-basé sur l'architecture Web, mais surtout l'application des
-technologies qui nous permettront de développer un logiciel
-extensible, robuste, réutilisable et compatible avec son
-environnement.
+On se questionne sur le fait de pouvoir faire un outil dans un
+langage d'haut niveau qui puisse re-exécuter l'information qui se
+trouve dans le fichier \emph{log}. L'outil devrai s'intégrer
+facilement à une logiciel avec une structure \emph{MVC}.
 
-\item [Le type de validation que vous allez offrir.] La
-réalisation du système {\tictac} servira comme preuve de notre
-approche, étant donnée qu'il devra s'intégrer avec d'autres
-systèmes de gestion d'information universitaire. Nous allons
-utiliser des exemples concrets pour montrer la validité de notre
-manière de concevoir ce type de logiciel.
 
-\item [Structure du document] Il faudra choisir une structure de
-document qui vous permettra d'explique vos démarches.
+\item [L'identification du résultat obtenu.]
+
+On doit vérifier que le résultat de la ré-exécution soit le même
+que nous avions obtenu avec la première exécution. On utilisera
+les mêmes données et on aurons les mêmes résultats.
+
+\item [Le type de validation que vous allez offrir.]
+
+La utilisation de la trace dans le logiciel {\diamant} servira
+comme preuve de notre approche.
+
+\item [Structure du document]
+
+Il faudra choisir une structure de document qui vous permettra
+d'explique vos démarches.
 
 \begin{enumerate}
 \item Résumé.
@@ -214,12 +205,17 @@ document qui vous permettra d'explique vos démarches.
 \item Travail connexe.
 \end{enumerate}
 
-\item Les données
+\item Jacareto
 
-\item La decomposition modulaire, top-down, alternatives et
-justifications
-\item Technologies possibles et justifications.
-\item \tictac
+\item Abbot
+
+\item Marathon
+
+\item Pounder
+
+\item Jemmy module
+
+\item JFCUnit
 
 \item Conclusions
 \end{enumerate}
@@ -227,54 +223,47 @@ justifications
 
 \section{Première brouillon du résumé}
 
-\paragraph{Titre~:}La production d'un horaire de cours dans une Université
+\paragraph{Titre~:}La trace de l'activité d'un utilisateur comme
+un outil de débogage
 
 \input{resume.tex}
 
 
-{\bf Mots clé :} Production d'horaires, Génie logiciel, Qualité.
+{\bf Mots clé :} Débogage, Trace, Ré-exécution.
 
 \section{Plan de travail}
 \begin{itemize}
-\item 16 décembre 2003 Design détaille.
+\item 21 janvier 2005 Design détaille.
 
-\item 12 janvier 2004 Implementation.
+\item 25 février 2005 Implementation.
 
-\item 16 janvier 2004 Version en anglais.
+\item 11 mars 2005 Version en anglais.
 
-\item 22 janvier 2004 Version finale en anglais à envoyer par le
-site web http://mat.gsia.cmu.edu/PATAT04
+\item 15 mars 2005 Version finale en anglais à envoyer par le site
+web http://www.oopsla.org/2005
 \end{itemize}
 
 \section{Contraintes du Call for Papers}
 \begin{itemize}
-\item 26 janvier 2004. Version en anglais.
+\item 18 mars 2005. Version en anglais.
 
-\item En anglais 10 à 20 pages.
+Research Paper, Onward! Paper, and Essay submissions must be no
+longer than 10,000 words (counting each figure and table as 150
+words, and also counting appendices and references) or 20 pages
+when formatted under the ACM format above.
 
-\item Voir comment soumettre //mat.gsia.cmu.edu/PATAT04
+
+
+\item En anglais, un maximum de 10 000 mots (chaque figure et
+tableau équivaut à 150 mots). En format ACM un maximum de 20
+pages.
+
+\item Voir comment soumettre
+http://dreamsongs.com/OOPSLA2005/GtSS.html
+
+%\item Submission Guidelines pour les posters
+%http://www.oopsla.org/2005/ShowPage.do?id=CallPosters#6
 \end{itemize}
 \bibliography{bibDiamant,bibProg}
 
 \end{document}
-
-
-
-
-
-
-Une fois que nous avons coupé et construit le système, nous ne
-pouvons pas imaginer aujourd'hui un système, peu importe lequel,
-indépendant et isolé. Pour arriver à avoir la qualité de
-l'extensibilité dans un système il faut avoir une idée claire du
-design des le départ. Notre point de vue de la production
-d'horaires vise ces qualités.
-
- Une fois que nous avons développé deux versions du
-logiciel {\diamant}, nous avons l'expérience suffisante pour
-savoir qu'il faut concevoir un logiciel de production d'horaires
-qui soit une partie intégrale d'un système de gestion des données
-académiques de l'Université. Même si le logiciel n'a pas un lien
-direct avec les autres logiciels, il y a toujours un échange
-d'information qu'il faut préserver pour assurer la correcte
-utilisation de l'information ainsi que sa validité et cohérence.
