@@ -59,9 +59,9 @@ server.config.2.url=http://localhost:9080/tf
 server.config.3.url=http://localhost:9080/tf
 [editor]
 recent.file.0=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dTimeTable\\TTPanel.java
-recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\CmdMenu.java
-recent.file.2=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
-recent.file.3=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dTimeTable\\TTStructure.java
+recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dTimeTable\\TTStructure.java
+recent.file.2=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\CmdMenu.java
+recent.file.3=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
 recent.file.4=D:\\Developpements\\DiamantExtreme\\Dx\\dResources\\DStringFrRes.java
 recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportCmd.java
 recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\ImportDlg.java

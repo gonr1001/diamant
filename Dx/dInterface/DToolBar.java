@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.1 $  $Date: 2003-05-26 17:19:37 $
+ * Title: ToolBar $Revision: 1.2 $  $Date: 2003-06-09 16:46:58 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -25,8 +25,12 @@ package dInterface;
 
 import java.awt.*;
 import java.awt.event.*;
+//import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import javax.swing.JToolBar;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import dResources.DConst;
 
 
 /**
@@ -40,11 +44,8 @@ public class DToolBar extends JToolBar {
 
   public DToolBar(DApplication dApplic) {
     _dApplic =dApplic ;
-    //Mediator _med = _appFrame.getMediator();
-   // StateManager _stMgr = _appFrame.getStateManager();
-
-    System.out.println("Tool Bar Constructor");  // debug
-
+    //System.out.println("Tool Bar Constructor");  // debug
+/*
     // Create the first button.
     String dir = System.getProperty("user.dir");
 
@@ -52,10 +53,35 @@ public class DToolBar extends JToolBar {
     dir = dir.substring(0, dir.lastIndexOf("build"));
     } else{
     System.out.println(System.getProperty("user.dir"));
-    }
+    }*/
+    String StrArray [] = {"Jours", "Periods"};
+
+    JPanel jp = new JPanel();
+    JComboBox jcb = new JComboBox(StrArray);
+    jcb.setPreferredSize(new Dimension(200,DConst.NPT11));
+    jcb.setMaximumSize(new Dimension(200,DConst.NPT11 * 2));
+    //BasicComboBoxRenderer cbr = new BasicComboBoxRenderer();
+    //cbr.setPreferredSize(new Dimension(200,10));
+    //cbr.setMaximumSize(new Dimension(200,10));
+    //jcb.setRenderer(cbr);*/
+    jp.add(jcb);
+    add(jp);
+    addSeparator();
+/*
+    jcb.addActionListener(new ActionListener() {
+     public void actionPerformed(ActionEvent e) {
+       JComboBox cb = (JComboBox)e.getSource();
+       int  i =cb.getSelectedIndex();
+       switch (i){
+         case 0: barOne(); break;
+         case 1: barTwo(); break;
+       }
+     }
+    });*/
+
   // Create the first button.
 
-    CmdButton select = new CmdButton( "images/select.gif", "Select" );
+    CmdButton select = new CmdButton( "AddText" );
     add(select);
     select.setCommand(new SelectCmd());
     select.addActionListener(_dApplic);
@@ -97,8 +123,24 @@ public class DToolBar extends JToolBar {
       addSeparator();*/
 
       this.setFloatable(true);
+  }
 
-}
+      private void barOne() {
+        CmdButton select = new CmdButton( "barOne" );
+add(select);
+select.setCommand(new SelectCmd());
+select.addActionListener(_dApplic);
+    addSeparator();
+      }
+      private void barTwo() {
+        CmdButton select = new CmdButton( "barTwo" );
+add(select);
+select.setCommand(new SelectCmd());
+select.addActionListener(_dApplic);
+    addSeparator();
+      }
+
+
 
 
 

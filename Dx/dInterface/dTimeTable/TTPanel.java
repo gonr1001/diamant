@@ -75,6 +75,10 @@ public class TTPanel extends JScrollPane {
     JPanel panel = new JPanel(new GridLayout(0,1));
     Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
     Day day = _dm.getTTStructure().getDay(cycle,1);
+    int numbOfSequences = day.getSetOfSequences().size();
+    //Sequence seq=
+    Period first =(Period)((Sequence)day.getSetOfSequences().getResourceAt(0).getAttach()).getSetOfPeriods().getResourceAt(0).getAttach();
+    Period last =(Period)((Sequence)day.getSetOfSequences().getResourceAt(numbOfSequences-1).getAttach()).getSetOfPeriods().getResourceAt(0).getAttach();
     JLabel label;
     for (int i = _dm.getTTStructure().rgetBegingTime(); i < _dm.getTTStructure().rgetEndTime(); i++) {
       label = new JLabel(Integer.toString(i) + ":00");

@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.7 $  $Date: 2003-06-04 16:25:17 $
+ * Title: ImportDlg $Revision: 1.8 $  $Date: 2003-06-09 16:46:58 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -62,7 +62,7 @@ public class ImportDlg extends JDialog {
     * */
    private void loadData(){
      JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
-     fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIM},
+     fc.setFileFilter(new DFileFilter ( new String[] {DConst.DIM},
          DConst.DIM_FILE ) );
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();

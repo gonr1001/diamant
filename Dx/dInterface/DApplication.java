@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.9 $  $Date: 2003-06-09 13:53:26 $
+ * Title: DApplication $Revision: 1.10 $  $Date: 2003-06-09 16:46:58 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -74,6 +74,7 @@ public class DApplication implements ActionListener {
   private Preferences _preferences;
   private DMediator _mediator;
   private String _currentDir;
+  private DToolBar _tbar;
   /**
     * DApplication initialize the data members
     */
@@ -103,9 +104,10 @@ public class DApplication implements ActionListener {
     JPanel panel = new JPanel(new BorderLayout(0,0));
     jFrame.setContentPane(panel);
     jFrame.setJMenuBar(new DMenuBar( this ));  //constructs the menu bar
-    JToolBar _tbar = new DToolBar(this); //constucts the tool bar
+    _tbar = new DToolBar(this); //constucts the tool bar
     Container contentPane = jFrame.getContentPane();
     contentPane.add(_tbar,BorderLayout.NORTH);
+    //hideToolBar();
     _jDesktopPane = new JDesktopPane();
     _jDesktopPane.setOpaque(false);
     _jDesktopPane.setDesktopManager(new DefaultDesktopManager());
@@ -116,6 +118,8 @@ public class DApplication implements ActionListener {
     panel.setMaximumSize(_screenSize);
     panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH,
                                          _screenSize.height - ADJUST_HEIGHT));
+    panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH,
+                                         100));
     jFrame.pack();
     jFrame.setVisible(true);
     return jFrame;
@@ -161,7 +165,12 @@ public class DApplication implements ActionListener {
        _currentDir = str.substring(0,str.lastIndexOf(File.separator)+1);
     } // end setCurrentDir
 
-
+    public void showToolBar(){
+      _tbar.setVisible(true);
+    }
+    public void hideToolBar(){
+      _tbar.setVisible(false);
+    }
 
     public void setLAF(String str) {
       // Force SwingApp to come up in the System L&F
