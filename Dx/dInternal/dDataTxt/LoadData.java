@@ -125,6 +125,8 @@ return null;
     System.out.println("PATH: "+path);//debug
      LoadData ldata=  new LoadData(path);
      InstructorsList insList = ldata.extractInstructors();
+     insList.sortResourceListByID();
+     insList.sortResourceListByKey();
        FilterFile filter= new FilterFile(insList.toString().getBytes());
        filter.saveFile(pathSave);
   } // end main

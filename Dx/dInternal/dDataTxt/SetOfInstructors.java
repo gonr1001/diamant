@@ -14,7 +14,6 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 public class InstructorsList extends ResourceList{
 
-private Vector instructorsList;// contains list of Instructor
 private byte[] _dataloaded; //_st;// instructors in text format
 private int _numberOfLines;// represent number of days
 private int _numberOfColumns;// represent number of period a day.
