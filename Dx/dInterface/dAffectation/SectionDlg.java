@@ -70,7 +70,7 @@ public class SectionDlg extends JDialog implements ActionListener{
    * @param dApplic
    */
   public SectionDlg(DApplication dApplic){
-    super(dApplic.getJFrame(), DConst.GROUP_DLG_TITLE, true);
+    super(dApplic.getJFrame(), DConst.SECTION_DLG_TITLE, true);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
@@ -214,7 +214,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (int)(insideWidth-20), GroupPanelHeight-infoPanelHeight-20);
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
     numberOfElements = _assignedVectors[groupNumber].size();
-    JLabel lGroup = new JLabel(DConst.GROUP);
+    JLabel lGroup = new JLabel(DConst.SECTION);
     //The infoPanel
     JLabel lGroupID = new JLabel(_type.getSetOfSections().getResourceAt(groupNumber).getID());
     lGroupID.setForeground(DConst.COLOR_QUANTITY_DLGS);

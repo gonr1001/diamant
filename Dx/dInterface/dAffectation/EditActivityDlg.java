@@ -54,7 +54,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * @param currentActivity The ativiti choiced in the activityDialog
    */
   public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, boolean isModified) {
-    super(dialog, "Affectation d'évenement");
+    super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
     _isModified= isModified;

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.76 $  $Date: 2004-02-03 13:52:47 $
+ * Title: DConst $Revision: 1.77 $  $Date: 2004-02-10 21:24:08 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.76 $
+ * @version $Revision: 1.77 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -199,6 +199,7 @@ public class DConst {
   public final static String SHOW  = res.getString("show"); //Aficher
   public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
   public final static String INCLUDED  = res.getString("included");//Inclue(s)
+  public final static String  T_AFFEC_DLG = res.getString("tAffecDlg");//"Affectation d'évenement(s)"
   //InstructorAvailabiliyDlg and roomsAvailabiliyDlg
   public final static String AVAILABILITIES = res.getString("dispo");//Disponibilités
   public final static String ROOMS_DLG_TITLE = res.getString("roomsDlgTitle");
@@ -206,10 +207,10 @@ public class DConst {
   public final static String ACT_STUD_NOT_ASSIGNED = res.getString("ActStudNotAss");//Étudiants non assignés
   public final static String ACT_STUD_ASSIGNED = res.getString("ActStudAss");//Étudiants assignés
   public final static String ACTIVITY = res.getString("Activity");//Activité
-  public final static String GROUP_DLG_TITLE = res.getString("GroupDlgTitle");//Titre du dialog
-  public final static String GROUP = res.getString("Group");//Groupe
+  public final static String SECTION_DLG_TITLE = res.getString("SectionDlgTitle");//Titre du dialog
+  public final static String SECTION = res.getString("Section");//Groupe
   public final static String NUMBER_OF_ELEMENTS = res.getString("NumberOfElements");//Nombre d'éléments
-  public final static String TYPE = res.getString("Type");//Type
+  public final static String TYPE = res.getString("Type");//Nature
   public final static String SORT_BY_MATRICUL = res.getString("SortByMatricul");//par matricule
   public final static String SORT_BY_NAME = res.getString("SortByName");//par nom
   public final static String SORT_BY_PROGRAM = res.getString("SortByProgram");//par programme

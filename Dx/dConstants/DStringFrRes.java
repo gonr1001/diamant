@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.85 $  $Date: 2004-02-09 15:23:52 $
+ * Title: DStringFrRes $Revision: 1.86 $  $Date: 2004-02-10 21:24:08 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.85 $
+ * @version $Revision: 1.86 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -27,7 +27,7 @@ package dResources;
 public class DStringFrRes extends java.util.ListResourceBundle {
   static final Object[][] contents = new String[][]{
 	{ "appName", "Diamant 1.5 " },
-	{ "vDate", "9 fév 2003" },
+	{ "vDate", "9 fév 2004" },
 	{ "bye", "bye" },
 
     /**
@@ -233,10 +233,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"toUp","+"},
     {"toDown","-"},
     //ActivityDlg
-    {"actList","Liste des activités"},
+    {"actList","Listes des activités"},
     {"show","Afficher"},
     {"notIncluded","Non inclue(s)"},
     {"included","Inclue(s)"},
+    {"tAffecDlg","Affectation d'évenement(s)"},
     //InstructorAvailabiliyDlg and roomsAvailability
     {"dispo","Disponibilités"},
     {"roomsDlgTitle", "Disponibilite de locaux"},
@@ -244,10 +245,10 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"ActStudNotAss","Étudiants non assignés"},
     {"ActStudAss","Étudiants assignés"},
     {"Activity","Activité"},
-    {"GroupDlgTitle","Affectation de sections"},
-    {"Group","Groupe"},
+    {"SectionDlgTitle","Affectation de groupes"},
+    {"Section","Groupe"},
     {"NumberOfElements","Nombre d'éléments"},
-    {"Type","Type"},
+    {"Type","Nature"},
     {"SortByMatricul","Par matricule"},
     {"SortByName","Par nom"},
     {"SortByProgram", "Par programme"},

@@ -6,16 +6,19 @@
 
 Voici les noms de fonctionnalités manquantes dans \diamant 1.5.
 \begin{enumerate}
-    \item Examens. Voir manuel utilisateur. \label{examen}
+    \item Examens. Voir manuel utilisateur. \label{examen} Fait 6 fév 2004.
     \item Enseignants. Une activité peut avoir $n$ enseignants. \label{enseig}
     \item Groupe. Un groupe est définit par une chaîne de 2 chars \verb!00! à
-    \verb!99!\label{groupe}
+    \verb!99!\label{groupe}. Fait 6 fév 2004.
     \item Grille partielle.\label{parti}
     \item Importation sélective.\label{select}
     \item Automate menus.\label{menus}
     \item Petits détails.\label{details}
     \item Toolbar et horaire\label{toolbar}
     \item Affectation manuelle plus efficace.\label{affect}
+    \item Corriger dialogue de liste d'événements
+    \item  sans étudiants.
+    \item  affectation des locaux.
 
 \end{enumerate}
 
@@ -23,14 +26,14 @@ Voici les noms de fonctionnalités manquantes dans \diamant 1.5.
 \subsection{Fonctionnalité \ref{examen}~: Examens}
 Cette fontionnalité est en réalité un ensemble de fonctionnalités
 nécessaires à la construction d'un horaire des examens. Elle est
-décrite dans le manuelle utilisateur.
+décrite dans le manuel       utilisateur.
 
 \subsection{Fonctionnalité \ref{enseig}~: Enseignants}
 Cette fontionnalité doit servir à assigner à une activité $n$
 enseignants. Dans les boîtes de dialogue affectation d'une
 activité ou d'un événement il faut offrir la possibilité d'ajouter
 $n$ enseignants. On peut ajouter uniquement des enseignants qui
-sont connus par \diamant. C'est-à-dire ceux qui sont dans les
+sont connus par \diamant{}. C'est-à-dire ceux qui sont dans les
 fichiers d'importation. La disponibilité des enseignants ajoutés
 est à prendre en compte.
 
@@ -41,10 +44,12 @@ Quelles classes sont à modifier?
 
 \subsection{Fonctionnalité \ref{groupe}~: Groupes}
 Cette fontionnalité doit servir à assurer une compatibilité entre
-le nom assigné à un groupe et le nom affiché par \diamant et
+le nom assigné à un groupe et le nom affiché par \diamant{} et
 retourné avec l'horaire. Il y a des modifications à faire au SIG
-et dans \diamant. Au SIG le nom d'un groupe est définit par une
-chaîne de 2 \verb!char!s \verb!00! ou \verb!01! à \verb!99!. Cette
+et dans \diamant{}. Au SIG le nom d'un groupe est définit par une
+chaîne de 2 \verb!char!s \verb!00! ou \verb!01! à \verb!99!. Le
+\verb!00! veut dire que l'étudiant n'est pas dans aucun groupe.
+ Cette
 information arrive dans le fichier cours et arrive dans le fichier
 étudiants dans le cas de la faculté d'administration (afin
 d'inscrire des étudiants dans de groupes de soir). Le SIG doit
@@ -125,13 +130,16 @@ Quoi faire avec les données déjà assignés dans la grille si la
 période est modifiée ou éliminée.
 
  Quelles classes sont à modifier?
-\subsection{Fonctionnalité \ref{affect}~: Affectation manuelle plus efficace}
-
-La fonctionnalité Affectation manuelle plus efficace est à définir
-avec les utilisateurs afin de comprendre comment la faire plus
-efficacement.
-
- Quoi faire dans chaque cas?
 
 
-Quelles classes sont à modifier?
+\subsection{Fonctionnalité \ref{affect}~: Corriger dialogue de liste d'événements}
+
+La fonctionnalité
+
+\subsection{Fonctionnalité \ref{affect}~: sans Étudiants}
+
+La fonctionnalité
+
+\subsection{Fonctionnalité \ref{affect}~: affectation locaux}
+
+La fonctionnalité
