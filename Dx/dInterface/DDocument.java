@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.62 $  $Date: 2003-08-27 08:23:42 $
+ * Title: DDocument $Revision: 1.63 $  $Date: 2003-08-27 09:14:21 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -86,7 +86,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
   public void internalFrameActivated(InternalFrameEvent e) {
     _dApplic.getToolBar().setToolBars(getTTStructure());
-    _dApplic.getToolBar().selectBar(0);
+    //_dApplic.getToolBar().selectBar(0);
   }
 
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.41 $  $Date: 2003-08-21 11:29:33 $
+ * Title: DConst $Revision: 1.42 $  $Date: 2003-08-27 09:14:21 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.41 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.42 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -102,8 +102,8 @@ public class DConst {
   final static String PASTE = "Coller";
   final static String CLEAR = "Effacer";
   //Assign menu
-  public final static String ASSIGN = res.getString( "assign");//Affectation
-  public final static String INST_ASSIGN_M = res.getString( "instAssignM");//Enseignants
+  public final static String ASSIGN = res.getString("assign");//Affectation
+  public final static String INST_ASSIGN_M = res.getString("instAssignM");//Enseignants
   //Preferences menu
   public final static String PREF = res.getString("pref");//Preferences
   public final static String PLAF_M = res.getString("plafM");//ptions L&F
@@ -156,6 +156,10 @@ public class DConst {
   public final static String OPEN_TT_TD  = res.getString("oTTTD");//Horaire, unp
   public final static String IMP_A_D  = res.getString("impAD");//To be defined, unp
 
+
+  //ToolBar
+  public final static String TB_DAYS  = res.getString("tBDay");//Jour
+  public final static String TB_PER  = res.getString("tBPer");//Period
   //**********Internal constants ***************************
   //instructor constants
   public final static String INST_TEXT1= res.getString("instText1");//Wrong number of instructors in the instructor file:

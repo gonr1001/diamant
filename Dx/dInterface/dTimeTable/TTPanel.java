@@ -89,7 +89,7 @@ public class TTPanel extends JScrollPane {
             _lastActivPpanel.setPanelBackGroundColor(0);
           _dm.getDApplication().getToolBar().setcomboBoxStatus(false);
           _dm.getDApplication().getToolBar().setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
-          _dm.getDApplication().getToolBar().selectBar(1);
+          //_dm.getDApplication().getToolBar().selectBar(1);
            perpanel.setPanelBackGroundColor(1);
            _dm.getDApplication().getToolBar().setcomboBoxStatus(true);
           _lastActivPpanel=perpanel;

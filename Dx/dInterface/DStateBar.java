@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DStateBar $Revision: 1.4 $  $Date: 2003-08-27 08:23:42 $
+ * Title: DStateBar $Revision: 1.5 $  $Date: 2003-08-27 09:14:21 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -92,5 +92,4 @@ public class DStateBar extends JPanel {
     } // end for
   } // end showDStateBar
 
-
-}
+} // end class DSTateBar
