@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.4 $  $Date: 2003-06-13 09:56:44 $
+ * Title: SaveAsDlg $Revision: 1.5 $  $Date: 2003-06-13 10:06:10 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -111,17 +111,19 @@ public class SaveAsDlg extends JDialog
       if (file.exists()){
         System.out.println("I exists");
         rwfDlg = new ReWriteFileDlg(_dApplic, currentFile);
-      }
-
-      if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().OK_OPTION){
+        if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().OK_OPTION){
         _dApplic.getDMediator().saveCurrentDoc(currentFile);
         new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
-      }
-      if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().NO_OPTION){
-        saveAs();
-      }
-      if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CANCEL_OPTION || rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CLOSED_OPTION){
+        }
+        if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().NO_OPTION){
+          saveAs();
+        }
+        if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CANCEL_OPTION || rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CLOSED_OPTION){
 
+        }
+      }else{
+        _dApplic.getDMediator().saveCurrentDoc(currentFile);
+        new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
       }
     }// end if(returnVal == JFileChooser.APPROVE_OPTION)
   }//end saveAs() method
