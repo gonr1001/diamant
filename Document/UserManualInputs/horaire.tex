@@ -1,31 +1,26 @@
-\chapter{Préparation d'un horaire avec DIAMANT}
+\chapter{Construction d'un horaire avec DIAMANT}
 
-Nous détaillerons ici les étapes nécessaires à la construction d'un horaire (cycle et examen). Toutefois,
-les options du logiciel ne seront pas toutes présentées. Certaines étapes sont les mêmes tant pour les horaires de cours que ceux d'examen, tandis que d'autres sont différentes.
-On suppose que l'utilisateur a déjà sur son ordinateur les fichiers nécessaires (ceux du STI et
-ceux de la Faculté) : cours.sig, choixet.sig, disprof.sig et locaux.txt. Ces fichiers peuvent porter
-n'importe quel nom, mais pour notre exemple, les noms sont bien explicites. Il est nécessaire de
+Construire un horaire avec DIAMANT laisse supposer que l'utilisateur a déjà sur son ordinateur les fichiers nécessaires (ceux du STI et ceux de la Faculté) : cours.sig, choixet.sig, disprof.sig et locaux.txt. Ces fichiers peuvent porter n'importe quel nom, mais pour notre exemple, les noms sont bien explicites. Il est nécessaire de
 regrouper toutes les informations concernant les horaires d'un trimestre dans un répertoire (par
 exemple hiver04 ou h2004). Ainsi, les fichiers d'importation et les fichiers associés à un horaire
 seront ensemble.
 
-\section{Horaire de cycle}
+La construction d'un nouvel horaire avec DIAMANT débute par une phase de préparation commune à l'horaire de cycle et d'examen, et se termine par la construction à proprement parler. Cette dernière présente des caractéristiques particulières selon le type d'horaire. Nous vous présenterons dans ce chapitre les phases de préparation communes d'un horaire avec DIAMANT, ainsi que les caractéristiques particulières de la construction d'un horaire de cycle et d'un horaire d'examen, toutefois, les options du logiciel ne seront pas toutes présentées.
 
-On suppose aussi qu'il s'agit de la préparation d'un nouvel horaire.
-
+\section{Préparation d'un horaire avec DIAMANT}
 \begin{enumerate}
     \item Lancer DIAMANT.
     \item Aller au menu \textbf{\emph{Fichier}}, puis selectionner le menu \textbf{\emph{Nouvel horaire}} et enfin selectionner le menu \textbf{\emph{Horaire cycle}}. Une boîte de dialogue comme celle
 de la Figure \ref{selectgrillecyc} doit apparaître et elle vous permettra de choisir le fichier (fichier avec extension \emph{xml}) contenant la configuration de votre grille horaire.
 
-\begin{figure}[h]
-  % Requires \usepackage{graphicx}
-  \begin{center}
-    \includegraphics[width=3.5in]{UserManualInputs/images/selectXMLfile.eps}
-    \caption{Selection de la grille horaire cycle}\label{selectgrillecyc}
-  \end{center}
-\end{figure}
-
+    \begin{figure}[h]
+    % Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/selectXMLfile.eps}
+        \caption{Selection de la grille horaire cycle}\label{selectgrillecyc}
+    \end{center}
+    \end{figure}
+    
     \item En cliquant sur le bouton \emph{\textbf{OK}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grillecyc}).
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
@@ -49,8 +44,11 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
   \end{center}
 \end{figure}
 
-
     \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Importer automatiquement}}. Une boite de dialogue apparaîtra et vous permettra de choisir le fichier de «configuration de fichiers» précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}} (dans l'exemple précédent il s'agit du fichier \emph{E02cours.dim}). Cliquer à présent sur le bouton \textbf{\emph{Importation de fichiers}}, toutes vos données (cours, étudiants, enseignants et locaux) seront chargées dans le logiciel et prêtes à être modifiées.
 \end{enumerate}    
+
+À partir de cette étape, la construction de l'horaire à proprement parler peut commencer.
+
+\section{Horaire de cycle}
 
 \section{Horaire d'examen} 
