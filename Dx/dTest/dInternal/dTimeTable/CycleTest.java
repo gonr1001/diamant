@@ -97,8 +97,8 @@ public class CycleTest extends TestCase {
    Cycle cycle= new Cycle();
    Cycle newCycle= new Cycle();
    cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
-   cycle.getDay(0).getSetOfSequences().addResource(new Resource("AM",new Sequence()),0);
-   cycle.getDay(0).getSequence(0).getSetOfPeriods().addResource(new Resource("1",new Period()),0);
+   cycle.getDayByIndex(0).getSetOfSequences().addResource(new Resource("AM",new Sequence()),0);
+   cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(new Resource("1",new Period()),0);
    cycle.addDays(3);
 
    try{

@@ -48,7 +48,7 @@ public class SetOfEvents extends SetOfResources{
             }// end if(assignement!=null)
             unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
             EventAttach event = new EventAttach(unityKey,instructorKey,roomKey);
-            this.addResource(new Resource(activity.getID(), event),0);
+            this.addResource(new Resource(unityKey, event),0);
           }// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
         }// end for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++)
       }//for(int j=0; j< activity.getSetOfTypes().size(); j++)

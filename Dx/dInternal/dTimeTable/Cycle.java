@@ -5,7 +5,8 @@ package dInternal.dTimeTable;
 import dInternal.dData.SetOfResources;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dData.Resource;
-import dInternal.dUtil.DXObject;
+import dInternal.dUtil.*;
+
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
@@ -89,14 +90,14 @@ public class Cycle extends DXObject{
   /**
    * @param int the index of the day
    * */
-  public Day getDay(int dayIndex){
+  public Day getDayByIndex(int dayIndex){
     return (Day)_setOfDays.getResourceAt((dayIndex)).getAttach();
   }
 
   /**
    * */
   public Day getCurrentDay(){
-    return getDay(_currentDayIndex) ;
+    return getDayByIndex(_currentDayIndex) ;
   }
 
   /**
@@ -151,7 +152,7 @@ public class Cycle extends DXObject{
     BuildXMLElement xmlElt;
     try{
       xmlElt = new BuildXMLElement();
-      Element eltDays= xmlElt.createElement(doc,SetOfCycles._TAGITEM3);
+      Element eltDays= xmlElt.createElement(doc,TTStructure._TAGITEM3);
       for (int i=0; i<_setOfDays.size(); i++){
         Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM);
         Element day= ((Day)_setOfDays.getResourceAt(i).getAttach()).writeXMLtag(doc);
@@ -169,8 +170,163 @@ public class Cycle extends DXObject{
     }
    }
 
+   /**
+    *
+    * @return
+    */
    public String getError(){
     return _error;
+  }
+
+  /**
+  * get the first period
+  * @param Cycle the cycle where we want to find the period
+  * @return Period the first period
+  * */
+ public Period getFirstPeriod(){
+   int maxPer=0;
+     Day day =(Day)this.getCurrentDay();//cycle.getSetOfDays().getResource(1).getAttach();
+     if(day!=null){
+       Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(0).getAttach();
+       return (Period)seq.getSetOfPeriods().getResourceAt(0).getAttach();
+     }
+   return null;
+  }
+
+  /**
+   * get a day in a cycle
+   * @param Cycle the cycle where we want to find a day
+   * @param int the day reference number
+   * @return Day the day or null if the day does not found
+   * */
+  public Day getDayByRefNo(int dayRefNo ){
+    return (Day)this.getSetOfDays().getResource(dayRefNo).getAttach();
+  }
+
+  /**
+ * get the last period
+ * @param Cycle the cycle where we want to find the period
+ * @return Period the last period
+ * */
+public Period getLastPeriod(){
+  int maxPer=0;
+  Period lastPer= new Period();
+    for (int i=0; i< this.getNumberOfDays(); i++){
+      Day day =(Day)this.getSetOfDays().getResourceAt(i).getAttach();
+      Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(getMaxNumberOfSeqs()-1).getAttach();
+      Period per = (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
+      if(DXToolsMethods.compareTabsHour(lastPer.getBeginHour(),per.getBeginHour())==-1)
+        lastPer= per;
+      //return (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
+    }// end for (int i=0; i< cycle.getNumberOfDays(); i++)
+  return lastPer;
+ }
+
+ /**
+   * get the max number of sequences in one day in a cycle
+   * @param Cycle the cycle where we want to find the max number of sequences
+   * @return int the max number of sequences in a day
+   * */
+  public int getMaxNumberOfSeqs(){
+    int seq=0;
+    for(int i=0; i< getSetOfDays().size(); i++){
+      Day day =(Day)getSetOfDays().getResourceAt(i).getAttach();
+      if(seq<day.getSetOfSequences().size())
+        seq= day.getSetOfSequences().size();
+     }
+    return seq;
+  }
+
+  /**
+   * get the hour of periods in one day in a cycle
+   * @param Cycle the cycle where we want to find the max number of sequences
+   * @return int the max number of periods in a day
+   * */
+  public String[] getHourOfPeriodsADay(){
+    String[] time= new String[getMaxNumberOfPeriodsADay()+getMaxNumberOfSeqs()-1];
+    int maxPer=0;
+      Day day =(Day)getCurrentDay();
+      int inc=0;
+      for (int i=0; i< day.getSetOfSequences().size(); i++){
+        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(i).getAttach();
+        Period per= new Period();
+        for (int j=0; j< seq.getSetOfPeriods().size(); j++){
+          per = (Period)seq.getSetOfPeriods().getResourceAt(j).getAttach();
+          time[inc]= per.getBeginHour()[0]+":"+per.getBeginHour()[1];
+          inc++;
+        }
+      }
+    return time;
+  }
+
+  /**
+   * get the max number of periods in one day in a cycle
+   * @param Cycle the cycle where we want to find the max number of sequences
+   * @return int the max number of periods in a day
+   * */
+  public int getMaxNumberOfPeriodsADay(){
+    int maxPer=0;
+    for(int i=0; i< getSetOfDays().size(); i++){
+      Day day =(Day)getSetOfDays().getResourceAt(i).getAttach();
+      int inc=0;
+      for (int j=0; j< day.getSetOfSequences().size(); j++){
+        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+        inc+= seq.getSetOfPeriods().size();
+      }
+      if (maxPer< inc)
+        maxPer= inc;
+    }
+    return maxPer;
+  }
+
+  /**
+  * get a period
+  * @param Cycle the cycle where we want to find the period
+  * @param int the day reference number where we want to find the period
+  * @param int the sequence reference number where we want to find the period
+  * @param int the index of the period int the sequence
+  * @return Period the period
+  * */
+ public Period getPeriod( int dayIndex, int seqIndex, int perIndex){
+     Day day =(Day)getSetOfDays().getResourceAt(dayIndex).getAttach();
+     if(day!=null){
+       Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(seqIndex).getAttach();
+       if (seq!=null){
+         return (Period)seq.getSetOfPeriods().getResourceAt(perIndex).getAttach();
+       }
+     }
+   return null;
+  }
+
+  /**
+   * get a period
+   * @param Sequence the sequence where we want to find a period
+   * @param int the period reference number in  the sequence
+   * @return Period the period or null if period does not found
+   * */
+  public Period getPeriod(Sequence seq, int periodRefNo ){
+    return (Period)seq.getSetOfPeriods().getResource(
+        Integer.toString(periodRefNo)).getAttach();
+  }
+
+  /**
+   * get a sequence in a day
+   * @param Day the day where we want to find a sequence
+   * @param String the sequence ID (AM, PM, EM)
+   * @return Sequence the sequence or null if the sequence does not found
+   * */
+  public Sequence getSequence(Day day, String seqID ){
+    return (Sequence)day.getSetOfSequences().getResource(seqID).getAttach();
+  }
+
+  /**
+  * get a sequence in a day
+  * @param Day the day where we want to find a sequence
+  * @param String the sequence ID (AM, PM, EM)
+  * @return Sequence the sequence or null if the sequence does not found
+  * */
+ public Sequence getSequence(Day day, int seqRef ){
+   return (Sequence)day.getSetOfSequences().getResource(seqRef).getAttach();
   }
 
   private SetOfResources _setOfDays;

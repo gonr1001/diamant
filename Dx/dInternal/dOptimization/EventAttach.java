@@ -19,11 +19,14 @@ public class EventAttach extends DXObject {
    * unity keys of an activity wich is represent in the following format a.b.c.d
    */
   private String _principalRescKey;
+  private int _eventDuration=0;
   private long _secondaryRescKey1; // the instructor key
   private long _secondaryRescKey2; // the room key
   // the student reference will be found in the conflicts matrix
   private Vector _tabuList; //
-  private boolean inTTS=false;
+  private boolean inTTS=false;// tell if this event is place in the timetable
+  private String _ttsKey="";// give the key of the period where event is place
+  //is in a.b.c format where a = day, b= sequence, c = period
 
   /**
    * Constructor
@@ -94,7 +97,10 @@ public class EventAttach extends DXObject {
         break;
       case 2: _secondaryRescKey2 = Long.parseLong(value);
         break;
+      case 3: _eventDuration = Integer.parseInt(value);
+        break;
+      case 4: _ttsKey = value;
+        break;
     }
-
   }
 }

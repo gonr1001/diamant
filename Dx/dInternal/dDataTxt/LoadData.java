@@ -202,7 +202,7 @@ public class LoadData {
        extract.add(tts);
        // extract instructor
        SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
-           tts.getNumberOfActiveDays(),tts.getMaxNumberOfPeriodsADay(tts.getCurrentCycle()));
+           tts.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
        if (instructorsList.analyseTokens(0)){
         instructorsList.buildSetOfInstructors(0);
       }

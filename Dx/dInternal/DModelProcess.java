@@ -70,7 +70,7 @@ public class DModelProcess {
  public void buildSetOfEvents(){
    _dm._setOfEvents = new SetOfEvents();
    if (_dm._setOfActivities!=null){
-     String cycle = _dm._ttStruct.getSetOfCycles().getSetOfCycles().getResourceAt(
+     String cycle = _dm._ttStruct.getSetOfCycles().getResourceAt(
          _dm._ttStruct.getCurrentCycleIndex()).getID();
      _dm._setOfEvents.build(cycle, _dm._setOfActivities, _dm._setOfInstructors, _dm._setOfRooms);
    }// end if (_setOfActivities!=null)

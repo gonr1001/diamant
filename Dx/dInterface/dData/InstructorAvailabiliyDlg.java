@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.3 $  $Date: 2003-08-28 16:36:09 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.4 $  $Date: 2003-09-05 17:09:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.4 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -90,13 +90,13 @@ public class InstructorAvailabiliyDlg  extends JDialog
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     _dm = _dApplic.getDMediator().getCurrentDoc().getDM();
-    TIME= _dm.getTTStructure().getHourOfPeriodsADay(_dm.getTTStructure().getCurrentCycle());
+    TIME= _dm.getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
     nbDay= _dm.getTTStructure().getNumberOfActiveDays();
     DAY = new String[nbDay];
     MES00 = DConst.AVAILABILITIES;
     for(int i=0; i< nbDay; i++)
       DAY[i]= _dm.getTTStructure()._weekTable[i];
-    nbPer= _dm.getTTStructure().getMaxNumberOfPeriodsADay(_dm.getTTStructure().getCurrentCycle());
+    nbPer= _dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       jbInit();
       pack();

@@ -21,13 +21,13 @@ public class Period extends DXObject {
   static final String  _TAGITEM="BeginTime";
   static final String _TAGITEM1="EndTime";
   static final String _TAGITEM2="priority";
-  private SetOfResources _setOfPeriodEvents;
+  private SetOfResources _eventsInPeriod;
 
   /**
    * Constructor
    * */
   public Period() {
-
+    _eventsInPeriod = new SetOfResources(6);
   }
 
   /**
@@ -151,7 +151,7 @@ public class Period extends DXObject {
    * return the number of events in this period
    * */
    public int getNumberOfEvents(){
-    return 0;
+    return _eventsInPeriod.size();
   }
 
   /**
@@ -170,8 +170,8 @@ public class Period extends DXObject {
    *
    * @return
    */
-  public SetOfResources getSetOfPeriodEvents(){
-    return _setOfPeriodEvents;
+  public SetOfResources getEventsInPeriod(){
+    return _eventsInPeriod;
   }
 
   /**

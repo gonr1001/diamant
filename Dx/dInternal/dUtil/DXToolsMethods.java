@@ -165,14 +165,14 @@ public class DXToolsMethods {
    public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure tt){
      //check if is upper, lower or nothing operation
      int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
-     if(initialAvail[0].length== tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())) {
+     if(initialAvail[0].length== tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
        UpperLower=0;
        return initialAvail;
      }
-     else if(initialAvail[0].length > tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())) {
+     else if(initialAvail[0].length > tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
        UpperLower=-1;
      }
-     else if(initialAvail[0].length< tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())) {
+     else if(initialAvail[0].length< tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
        UpperLower=1;
      }
 
@@ -180,7 +180,7 @@ public class DXToolsMethods {
      Period per;
      int itr=0;
      int[][] finalAvail= new int [tt.getNumberOfActiveDays()]
-                       [tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())];
+                       [tt.getCurrentCycle().getMaxNumberOfPeriodsADay()];
      for (int i=0; i< day.getSetOfSequences().size(); i++){
        for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
          per = day.getSequence(i).getPeriod(j);
