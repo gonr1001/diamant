@@ -10,6 +10,7 @@ package dInternal.dData;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.awt.Component;
 //import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
 
@@ -20,6 +21,7 @@ public class SetOfInstructors extends SetOfResources{
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
   private String _error="";
+  private Vector _soiListeners= new Vector(1);
 
  /**
   * constructor
@@ -151,6 +153,33 @@ public class SetOfInstructors extends SetOfResources{
   public String getError() {
     return _error;
   }
+
+  /**
+   *
+   * @param component
+   */
+ public void sendEvent(Component component) {
+   SetOfInstructorsEvent event = new SetOfInstructorsEvent(this);
+   for (int i=0; i< _soiListeners.size(); i++) {
+     SetOfInstructorsListener soil = (SetOfInstructorsListener) _soiListeners.elementAt(i);
+     soil.changeInSetOfInstructors(event, component);
+     //System.out.println("SetOfActivities listener started: "+i);//debug
+   }
+  }
+
+  /**
+   *
+   * @param dml
+   */
+  public synchronized void addSetOfInstructorsListener(SetOfInstructorsListener soil) {
+    //System.out.println("SetOfActivities listener addeed: ");//debug
+    if (_soiListeners.contains(soil)){
+      return;
+    }
+    _soiListeners.addElement(soil);
+    System.out.println("addSetOfInstructors Listener ...");//debug
+  }
+
 
   /**
    * created a list of instructor

@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 public class Assignment extends DXObject{
 
-  /**contains the day, the begin hour and the begin minute*/
+  /**contains the key of the day, the begin hour and the begin minute*/
   private int[] _dateAndTime={0,0,0};
   /**instructor name valid only for initialization*/
   private String _instructorName;
@@ -34,7 +34,7 @@ public class Assignment extends DXObject{
 
   /**
    * set date and time of the bloc in this week
-   * @param int the day
+   * @param int the key of the day
    * @param int the begin hour
    * @param int the begin minute
    * */

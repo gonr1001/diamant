@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.1 $  $Date: 2003-09-11 19:25:39 $
+ * Title: PLAFCmd $Revision: 1.2 $  $Date: 2003-09-18 19:58:08 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -24,6 +24,7 @@ import dResources.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 
+
 public class InitialAffectCmd implements Command {
 
   public InitialAffectCmd (DApplication dApplic) {
@@ -31,5 +32,8 @@ public class InitialAffectCmd implements Command {
   //------------------------------
     public void execute(DApplication dApplic) {
         dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(dApplic.getJFrame());
+        System.out.println(dApplic.getDMediator().getCurrentDoc().getDM().getStandardReport());//debug
+
+
     } // end execute
 } /* end class PLAFCmd */

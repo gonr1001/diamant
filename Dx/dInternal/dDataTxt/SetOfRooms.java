@@ -10,6 +10,7 @@ package dInternal.dData;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.awt.Component;
 import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
 
@@ -20,6 +21,7 @@ public class SetOfRooms extends SetOfResources{
   private int _numberOfColumns;// represent number of period a day.
   //private RoomsAttributesInterpretor _attr;
   private String _error="";
+  private Vector _sorListeners= new Vector(1);
 
  /***
   * constructor
@@ -205,5 +207,31 @@ public class SetOfRooms extends SetOfResources{
   public String getError() {
     return _error;
   }
+
+  /**
+   *
+   * @param component
+   */
+ public void sendEvent(Component component) {
+   SetOfRoomsEvent event = new SetOfRoomsEvent(this);
+   for (int i=0; i< _sorListeners.size(); i++) {
+     SetOfRoomsListener sorl = (SetOfRoomsListener) _sorListeners.elementAt(i);
+     sorl.changeInSetOfRooms(event, component);
+   }
+  }
+
+  /**
+   *
+   * @param dml
+   */
+  public synchronized void addSetOfRoomsListener(SetOfRoomsListener sorl) {
+    //System.out.println("SetOfActivities listener addeed: ");//debug
+    if (_sorListeners.contains(sorl)){
+      return;
+    }
+    _sorListeners.addElement(sorl);
+    System.out.println("addSetOfRooms Listener ...");//debug
+  }
+
 
 }

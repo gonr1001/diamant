@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.69 $  $Date: 2003-09-16 10:13:42 $
+ * Title: DModel $Revision: 1.70 $  $Date: 2003-09-18 19:58:08 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.69 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.70 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -25,7 +25,6 @@ import java.io.*;
 import javax.swing.JOptionPane;
 import java.awt.Component;
 import java.awt.Cursor;
-import dInterface.DApplication;
 import dInterface.DDocument;
 import dInternal.dData.*;
 import dInternal.dConditionsTest.*;
@@ -165,8 +164,9 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       if (_ttStruct.getError().length() != 0)
         return _ttStruct.getError();
       _setOfInstructors = (SetOfInstructors)project.get(2);
-      resizeInstructorsAvailability();//
+      resizeResourceAvailability(_setOfInstructors);//
       _setOfRooms= (SetOfRooms)project.get(3);
+      resizeResourceAvailability(_setOfRooms);//
       _setOfActivities=(SetOfActivities)project.get(4);
       _setOfStudents = (SetOfStudents)project.get(5);
       if( _setOfRooms.getError().length()!=0){
@@ -211,6 +211,15 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       _setOfActivities.addSetOfActivitiesListener(_dDocument);
     if(_setOfStudents!=null)
       _setOfStudents.addSetOfStudentsListener(_dDocument);
+    if(_setOfInstructors!=null)
+      _setOfInstructors.addSetOfInstructorsListener(_dDocument);
+    if(_setOfRooms!=null)
+      _setOfRooms.addSetOfRoomsListener(_dDocument);
+    if(_setOfStates!=null)
+      _setOfStates.addSetOfStatesListener(_dDocument);
+    if(_setOfEvents!=null)
+      _setOfEvents.addSetOfEventsListener(_dDocument);
+
   }
 
   /**
@@ -223,13 +232,14 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
     _setOfInstructors = loadData.extractInstructors(null, false);
-    resizeInstructorsAvailability();//
+    resizeResourceAvailability(_setOfInstructors);//
     if( _setOfInstructors.getError().length()!=0){
       return _setOfInstructors.getError();
     }
 
     // import set of rooms
     _setOfRooms = loadData.extractRooms(null, false);
+    resizeResourceAvailability(_setOfRooms);//
     if( _setOfRooms.getError().length()!=0){
       return _setOfRooms.getError();
     }
@@ -358,6 +368,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       return;
     }
     _dmListeners.addElement(dml);
+    System.out.println("addDModelListener Listener ...");//debug
   }
 
   /**
@@ -381,6 +392,12 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   public void changeInTTStructure(TTStructureEvent  e) {
 
   }// end actionPerformed*/
+
+  public String getStandardReport(){
+    ReportData dataR = new ReportData(this);
+    int [] table={0,1,2,6,7,8,10};
+    return dataR.getActivitiesReport(9,table);
+  }
 
 
 

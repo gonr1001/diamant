@@ -360,15 +360,16 @@ public Period getLastPeriod(){
   public String getPeriod(int[] dayTime ){
     int error = 1000;
     String key="";
-    Day day =(Day)_setOfDays.getResourceAt(dayTime[0]).getAttach();
-    if(day!=null){
+    Day day;
+    if(_setOfDays.getResource(dayTime[0])!=null){
+      day =(Day)_setOfDays.getResource(dayTime[0]).getAttach();
       for (int i=0; i< day.getSetOfSequences().size(); i++){
         Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(i).getAttach();
         for(int j=0; j< seq.getSetOfPeriods().size(); j++){
           Period per = (Period)seq.getSetOfPeriods().getResourceAt(j).getAttach();
           int newError = Math.abs((per.getBeginHour()[0]-dayTime[1])*60+ per.getBeginHour()[1] -dayTime[2]);
           if(newError <error){
-            key = _setOfDays.getResource(TTStructure._weekTable[ dayTime[0]]).getKey()+"."+
+            key = _setOfDays.getResource(dayTime[0]).getKey()+"."+
                   day.getSetOfSequences().getResourceAt(i).getKey()+"."+
                   seq.getSetOfPeriods().getResourceAt(j).getKey();
             error = newError;

@@ -206,13 +206,13 @@ public class EventsDlg extends JDialog implements ActionListener{
     //if Button OK is pressed
     if (command.equals(_buttonsNames[0])){
       setUnities();
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
       dispose();
     }
     //if Button APPLY is pressed
     if (command.equals(_buttonsNames[1])){
       setUnities();
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
       _buttonsPanel.getComponent(1).setEnabled(false);
     }// end if Button APPLY
   }//end method

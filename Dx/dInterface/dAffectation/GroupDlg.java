@@ -292,7 +292,6 @@ public class GroupDlg extends JDialog implements ActionListener{
       _buttonsPanel.getComponent(1).setEnabled(false);
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
-      //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
     //if Button OK is pressed
     if (command.equals(_buttonsNames[0])){
@@ -307,14 +306,14 @@ public class GroupDlg extends JDialog implements ActionListener{
         if (_currentAssignedGroup > -1){
           DXTools.listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector);
           _buttonsPanel.getComponent(1).setEnabled(true);
-          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
         }
       }
       else{
         if (_currentAssignedGroup > -1){
           DXTools.listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup]);
           _buttonsPanel.getComponent(1).setEnabled(true);
-          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
         }
       }
       //SetText for the JLabel containing the number of elements in a group

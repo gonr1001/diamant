@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.72 $  $Date: 2003-09-16 10:13:42 $
+ * Title: DDocument $Revision: 1.73 $  $Date: 2003-09-18 19:58:08 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.72 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.73 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInterface;
@@ -113,10 +113,21 @@ public class DDocument  extends InternalFrameAdapter implements
   } // end setDocumentName
     //-------------------------------------------
 
-  public void setCursor(int cursorValue){
+  public void setCursor(int cursorValue, Component component){
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+    component.setCursor(Cursor.getPredefinedCursor(cursorValue));
   }
+
+  /**
+   *
+   * @param cursorValue
+   */
+  public void setCursor(int cursorValue){
+   _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+   _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+ }
+
 
   public String getError(){
     return _dm.getError();
@@ -163,8 +174,8 @@ public class DDocument  extends InternalFrameAdapter implements
      }// end actionPerformed
 //public void changeInDModel(DModelEvent  e
     public void changeInDModel(DModelEvent  e, Component component) {
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      setCursor(Cursor.WAIT_CURSOR);
+      //component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      setCursor(Cursor.WAIT_CURSOR, component);
 
       _dm.setModified();
       _dm.buildSetOfEvents();
@@ -174,8 +185,8 @@ public class DDocument  extends InternalFrameAdapter implements
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _stateBar.upDateDStateBar(_dm.getSetOfStates());
 
-      setCursor(Cursor.DEFAULT_CURSOR);
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+      setCursor(Cursor.DEFAULT_CURSOR, component);
+      //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }// end actionPerformed
 
     /*
@@ -203,15 +214,16 @@ public class DDocument  extends InternalFrameAdapter implements
      * @param component
      */
     public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-      setCursor(Cursor.WAIT_CURSOR);
+      //component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      setCursor(Cursor.WAIT_CURSOR, component);
       _dm.setModified();
       _dm.buildSetOfEvents();
-      _dm.setStateBarComponent();
+      //_dm.setStateBarComponent();
+      _dm.getSetOfStates().sendEvent();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
-      _stateBar.upDateDStateBar(_dm.getSetOfStates());
-      setCursor(Cursor.DEFAULT_CURSOR);
-      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+      //_stateBar.upDateDStateBar(_dm.getSetOfStates());
+      setCursor(Cursor.WAIT_CURSOR, component);
+      //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }// end ac
 
     /**
@@ -220,7 +232,11 @@ public class DDocument  extends InternalFrameAdapter implements
      * @param component
      */
     public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+      _dm.getSetOfStates().sendEvent();
+
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }// end ac
 
     /**
@@ -229,7 +245,17 @@ public class DDocument  extends InternalFrameAdapter implements
      * @param component
      */
     public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
+      setCursor(Cursor.WAIT_CURSOR, component);
 
+      _dm.setModified();
+      _dm.buildSetOfEvents();
+      //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
+      //_dm.getConditionsTest().buildAllConditions();
+      _dm.setStateBarComponent();
+      _ttPanel.updateTTPanel(_dm.getTTStructure());
+      _stateBar.upDateDStateBar(_dm.getSetOfStates());
+
+      setCursor(Cursor.DEFAULT_CURSOR, component);
     }// end ac
 
     /**
@@ -238,7 +264,11 @@ public class DDocument  extends InternalFrameAdapter implements
      * @param component
      */
     public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+      _dm.getSetOfStates().sendEvent();
+
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }// end ac
 
     /**
@@ -247,7 +277,11 @@ public class DDocument  extends InternalFrameAdapter implements
      * @param component
      */
     public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
+      _dm.getSetOfStates().sendEvent();
+
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }// end ac
 
   private void  buidDocument(String title){
@@ -276,7 +310,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
-    _dm.getSetOfStates().addSetOfStatesListener(this);
+    //_dm.getSetOfStates().addSetOfStatesListener(this);
 
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
     _dm.getSetOfStates().sendEvent();

@@ -12,9 +12,13 @@ import dInternal.dData.SetOfInstructors;
 import dInternal.dData.SetOfRooms;
 import dInternal.dTimeTable.Cycle;
 
+import java.util.Vector;
+import java.awt.Component;
+
 
 public class SetOfEvents extends SetOfResources{
 
+  public Vector _soeListeners = new Vector(1);
 
   /**
    * Constructor
@@ -77,5 +81,30 @@ public class SetOfEvents extends SetOfResources{
     }// end for (int i=0; i< this.size(); i++)
     return count;
   }
+
+  /**
+  *
+  * @param component
+  */
+public void sendEvent(Component component) {
+  SetOfEventsEvent event = new SetOfEventsEvent(this);
+  for (int i=0; i< _soeListeners.size(); i++) {
+    SetOfEventsListener soel = (SetOfEventsListener) _soeListeners.elementAt(i);
+    soel.changeInSetOfEvents(event, component);
+  }
+ }
+
+ /**
+  *
+  * @param dml
+  */
+ public synchronized void addSetOfEventsListener(SetOfEventsListener sorl) {
+   if (_soeListeners.contains(sorl)){
+     return;
+   }
+   _soeListeners.addElement(sorl);
+   System.out.println("addSetOfEvents Listener ...");//debug
+  }
+
 
 }// end class

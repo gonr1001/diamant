@@ -65,6 +65,22 @@ public class DXObject extends Object{
     return true;
   }
 
+  /**
+   *
+   * @return
+   */
+  public int[][] getMatrixAvailability(){
+    int [][] mat= new int[2][2];
+    return mat;
+  }
+
+  /**
+   *
+   * @param mat
+   */
+  public void setAvailability(int[][] mat){
+
+  }
 
 
 

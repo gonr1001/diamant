@@ -319,9 +319,9 @@ public class SetOfActivities extends SetOfResources{
              unityResource= section.getUnity(Integer.toString(counter));
              Unity bloc= (Unity)unityResource.getAttach();
              Assignment cycleAss = new Assignment();
-             int dayIndex=Integer.parseInt(stLine.nextToken().trim())-1;
+             int dayKey=Integer.parseInt(stLine.nextToken().trim());
              int [] time= DXToolsMethods.convertSTIPeriods(Integer.parseInt(stLine.nextToken().trim()));
-             cycleAss.setDateAndTime(dayIndex, time[0],time[1]);
+             cycleAss.setDateAndTime(dayKey, time[0],time[1]);
              cycleAss.setInstructor(instructorName);
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                bloc.addAssignment(new Resource(Integer.toString(i),cycleAss));
@@ -491,7 +491,7 @@ public class SetOfActivities extends SetOfResources{
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();
             instName = firstCycAss.getInstructorName();
-            lineTime+=Integer.toString(1+ firstCycAss.getDateAndTime()[0])+" "+
+            lineTime+=Integer.toString(firstCycAss.getDateAndTime()[0])+" "+
                      DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";//
             lineRoomName+= firstCycAss.getRoomName()+" ";//
             if(firstCycAss.getRoomState())
@@ -606,6 +606,7 @@ public class SetOfActivities extends SetOfResources{
       return;
     }
     _SOAListeners.addElement(soal);
+    System.out.println("addSetOfActivities Listener ...");//debug
   }
 
 

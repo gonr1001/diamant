@@ -342,7 +342,6 @@ public class SectionDlg extends JDialog implements ActionListener{
           DXTools.listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup]);
           _buttonsPanel.getComponent(1).setEnabled(true);
           _sortButton.setEnabled(false);
-          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
         }
       }
       //SetText for the JLabel containing the number of elements in a group

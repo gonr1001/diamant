@@ -105,13 +105,13 @@ public class DModelProcess {
   }
 
   /**
-   * resize instructor availability
+   * resize resource availability
    */
-  protected void resizeInstructorsAvailability(){
+  protected void resizeResourceAvailability(SetOfResources soRes){
     int [][] matrix;
-    InstructorAttach attach;
-    for (int i=0; i< _dm._setOfInstructors.size(); i++){
-      attach = (InstructorAttach)_dm._setOfInstructors.getResourceAt(i).getAttach();
+    DXObject attach;
+    for (int i=0; i< soRes.size(); i++){
+      attach = soRes.getResourceAt(i).getAttach();
       //System.out.println(_dm._setOfInstructors.getResourceAt(i).getID());//debug
       matrix=attach.getMatrixAvailability();
       matrix = DXToolsMethods.resizeAvailability(matrix,_dm._ttStruct);
