@@ -112,7 +112,7 @@ public class Sequence extends DXObject{
        Period newPer=((Period)this.getSetOfPeriods().getResourceAt(i).getAttach()).clonePeriod();
        int position=(int)getSetOfPeriods().getResourceAt(i).getKey();
        newSeq.getSetOfPeriods().setCurrentKey(position);
-       newSeq.getSetOfPeriods().addResource(new Resource(Integer.toString(position),newPer),0);
+       newSeq.getSetOfPeriods().addResource(new Resource(getSetOfPeriods().getResourceAt(i).getID(),newPer),0);
      }
      return newSeq;
    }
