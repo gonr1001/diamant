@@ -68,27 +68,27 @@ In general, the software for timetable creation uses as input one
 or more files. Their output is saved on one or more files. The
 work with files is a source of problems. It is necessary to build
 the input files each time that a timetable is produced. There
-exists, two cases~: a manual production of the files or an
-automated production. If the files are produced manually, there
-are the typing errors that can produce unexpected effects in the
-software. The errors are hard to find, because all the data should
-be checked manually. In the case, where the files are produced in
-an automatic way, it is necessary that the software is ensured to
-check the validity and the coherence of all the data. The second
-problem appears when a change is introduced into the system
-(either in the application of construction, or in that who produce
-the files) or if the application of construction is used in
-several different sites, using different data formats.
+exists, two cases~: a manual production or an automated production
+of the files . If the files are produced manually, there are the
+typing errors that can produce unexpected effects in the software.
+This kind of errors are very hard to find, because all the data
+should be checked manually. In the case, where the files are
+produced in an automatic way, it is necessary that the software is
+ensured to check the validity and the coherence of all the data.
+The second problem appears when a change is introduced into the
+system (either in the application of construction, or in that who
+produce the files) or if the application of construction is used
+in several different sites, using different data formats.
 
 Another source of problems even more expensive than the preceding
 one, is that when a change is introduced into the system, it could
 be in the software of construction, or in the software of
 production or in both. The changes come on behalf of persons in
 charge for the institution, for example a new nomenclature for the
-buildings; new teaching approach, which change the way to create
+buildings; a new teaching approach, which change the way to create
 the groups, etc. The problem to modify a software is not only for
-the timetable production. It acts of a general problem in the
-development of software.
+the timetable production software, it acts as a general problem in
+the software development.
 
 The solution to the first problem passes by the automation of the
 checking and validation of data at the time of data acquisition,
@@ -101,23 +101,23 @@ expensive. A way of decreasing the effects of this problem is the
 development of software having the quality of extensibility.
 
 In this article we propose the architecture of a system of
-timetable production of courses and exams having the qualities:
-open and extensible. This architecture must contribute to more
-easily work with the two problems mentioned, by reducing the cost
-of the modifications and by carrying out the checking and the
-validation of the data in precise stages of the process and by
+timetable production for courses and exams, having the following
+qualities: open and extensible. This architecture must contribute
+to more easily work with the two problems mentioned, by reducing
+the cost of the modifications and by carrying out the checking and
+the validation of the data in precise stages of the process and by
 avoiding the redundancy of the code and the data. This
 architecture implements a database, an Internet site and a
 software of timetable construction. The checking and the
 validation of data will be made with the input and with integrity
 constraints in the database. The Internet site is used mainly for
 the data input, at the same time, it can check the validity of the
-data, using the rules of businesses before the data will be
-entered to the database. Another function of the Internet site is
-to offer the timetable in a personalized way, once that it is
-built. The database allows the retrieval of the data, according to
-various formats. Thus, the input of the software of construction
-is simplified. Of course, with the assistance of the software of
+data, using the business rules before the data will be entered to
+the database. Another function of the Internet site is to offer
+the timetable in a personalized way, once that it is built. The
+database allows the retrieval of the data, according to various
+formats. Thus, the input of the software of construction is
+simplified. Of course, with the assistance of the software of
 timetable construction, it is possible to create a timetable with
 a minimum of conflicts.
 
