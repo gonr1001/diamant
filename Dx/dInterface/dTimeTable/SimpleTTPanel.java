@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPanel $Revision: 1.10 $  $Date: 2003-10-06 15:15:07 $
+ * Title: SimpleTTPanel $Revision: 1.11 $  $Date: 2003-10-06 18:37:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -70,6 +70,7 @@ public class SimpleTTPanel extends TTPanel {
     super(tts, toolBar);
     _jSplitPane = new JSplitPane();
     _jScrollPaneOne = new JScrollPane();
+
     if(_tts!=null){
       initTTPaneOne();
     }
