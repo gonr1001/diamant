@@ -104,6 +104,8 @@ Les classes finies (au moins à 90\%) :
     \item \pro{dTest.dInternal.dData.UnityTest}
 \end{itemize}
 
+La librairie \pro{theLibrary} est aussi finie.
+
 Les classes en construction :
 
 \begin{itemize}
@@ -120,8 +122,15 @@ Les classes en construction :
 
 
     \item \pro{dInternal.DModel}
+    \item \pro{dInternal.Preferences}
     \item \pro{dInternal.dData.LoadData}
+
+    \item \pro{dResources.DConst}
+    \item \pro{dResources.DFileFilter}
+    \item \pro{dResources.DStringFrRes}
 \end{itemize}
+
+
 
 
 \section{Livrable 2}
@@ -235,6 +244,126 @@ demandant le nom du fichier est affiché. Si le nom du fichier existe
 un dialogue demandant s'il faut l'écraser est affiché.
 
 
+
+Les classes finies pendant ce livrable (au moins à 90\%) :
+
+\begin{itemize}
+    \item \pro{dInterface.DToolBar}
+
+    \item \pro{dInterface.dTimeTable.CloseCmd}
+    \item \pro{dInterface.dTimeTable.NewTTCyCmd}
+    \item \pro{dInterface.dTimeTable.NewTTDlg}
+    \item \pro{dInterface.dTimeTable.NewTTExCmd}
+    \item \pro{dInterface.dTimeTable.NewTTSCmd}
+    \item \pro{dInterface.dTimeTable.NewTTSDlg}
+    \item \pro{dInterface.dTimeTable.OpenTTCmd}
+    \item \pro{dInterface.dTimeTable.OpenTTDlg}
+    \item \pro{dInterface.dTimeTable.OpenTTSCmd}
+    \item \pro{dInterface.dTimeTable.OpenTTSDlg}
+    \item \pro{dInterface.dTimeTable.ReWriteFilDlg}
+    \item \pro{dInterface.dTimeTable.SaveAsCmd}
+    \item \pro{dInterface.dTimeTable.SaveAsDlg}
+    \item \pro{dInterface.dTimeTable.SaveCmd}
+
+    \item \pro{dInterface.dUtil.ExitCmd}
+
+    \item \pro{dInternal.DModelEvent}
+    \item \pro{dInternal.DModelListener}
+
+    \item \pro{dInternal.dData.LoadData}
+
+    \item \pro{dInternal.dTimeTable.Cycle}
+    \item \pro{dInternal.dTimeTable.Day}
+    \item \pro{dInternal.dTimeTable.Period}
+    \item \pro{dInternal.dTimeTable.Sequence}
+    \item \pro{dInternal.dTimeTable.SetOfCycles}
+    \item \pro{dInternal.dTimeTable.TTStructure}
+    \item \pro{dInternal.dTimeTable.TTStructureEvent}
+    \item \pro{dInternal.dTimeTable.TTStructureListener}
+
+\end{itemize}
+
+Les classes en construction :
+
+\begin{itemize}
+    \item \pro{DRunTest}
+    \item \pro{dInterface.AbstractDocument}
+    \item \pro{dInterface.DApplication}
+    \item \pro{dInterface.DDocument}
+    \item \pro{dInterface.DMediator}
+    \item \pro{dInterface.DMenuBar}
+    \item \pro{dInterface.TTSDocument}
+
+    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
+    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
+
+    \item \pro{dInterface.dTimeTable.PeriodPanel}
+    \item \pro{dInterface.dTimeTable.TTPanel}
+
+    \item \pro{dInterface.dUtil.ExitCmd}
+
+    \item \pro{dInternal.DModel}
+    \item \pro{dInternal.Preferences}
+
+    \item \pro{dResources.DConst}
+    \item \pro{dResources.DFileFilter}
+    \item \pro{dResources.DStringFrRes}
+\end{itemize}
+
+
+
+
+\section{Livrable 3}
+
+Tout ce qui était présent dans les livrables precedents continuera à fonctionner.
+Dans le cas de boîtes de dialogue, où plusieurs réponses sont possibles,
+Tous les cas seront traités.
+Ce livrable est simplement un point de contrôle pour montrer que tout avance bien.
+Il montre que les données de travail concernant des activités, enseignants,
+étudiants et autres sont changées via l'interface (menu affectation).
+
+
+
+\subsection{Caractéristiques externes}
+Dans ce livrable les menus \pro{Fichier}, \pro{Grille Horaire}
+sont complets et fonctionnels.
+
+Dans le menu \pro{Fichier} les sous menus \pro{Nouvel horaire},
+\pro{Ouvrir horaire},
+\pro{Fermer},
+\pro{Enregistrer},
+\pro{Enregistrer sous},
+\pro{Définir fichiers à importer},
+\pro{Importer automatiquement},
+\pro{Exporter} et
+\pro{Quitter}
+sont fonctionnels.
+
+Le sous-menu \pro{Nouvel horaire} contient deux sous-sous-menus
+(Cycle et Examen).
+Dans le deux cas, il s'affiche une boîte de dialogue permettant
+de choisir la grille horaire à utiliser pour la construction de l'horaire.
+
+Le sous-menu \pro{Ouvrir horaire}
+affiche une boîte de dialogue permettant
+de choisir le fichier \pro{.dia} contenant un horaire.
+
+Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
+il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
+les dialogue d'enregistrement de fichier suivent.
+
+
+Le sous-menu \pro{Enregistrer} enregistre sur un fichier l'horaire à l'écran,
+si le nom de l'horaire est \pro{Sans titre} un dialogue de sauvegarde
+demandant le nom du fichier est affiché. Si le nom du fichier existe
+un dialogue demandant s'il faut l'écraser est affiché.
+
+Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier l'horaire à l'écran,
+un dialogue de sauvegarde
+demandant le nom du fichier est affiché. Si le nom du fichier existe
+un dialogue demandant s'il faut l'écraser est affiché.
+
+
 Les sous menus \pro{Définir fichiers à importer}
 et \pro{Importer automatiquement}
 sont fonctionnels. Gardent les mêmes caractéristiques du livrable 1.
@@ -250,89 +379,112 @@ Cliquer sur la X de l'application fait la même chose que \pro{Quitter}.
 
 
 
-Dans le menu \pro{Preferences} le sous menu \pro{Options L \& F}
-est fonctionnel. Une boîte de dialogue est affichée et il est possible de
-changer de Look \& Feel de toute l'application.
+Dans le menu \pro{Grille Horaire} les sous-menus \pro{Nouvelle grille},
+\pro{Ouvrir Grille},
+\pro{Fermer},
+\pro{Enregistrer} et
+\pro{Enregistrer sous}
+sont fonctionnels.
+Lorsqu'un utilisateur travaille sur la grille horaire, c'est sur la structure
+de la grille. Il peut définir la taille de la grille en jours et la priorité
+des périodes.
+Lorsque un sous-menu \pro{Nouvelle grille} ou un sous-menu
+\pro{Ouvrir Grille} sont activés l'utilisateur travaille sur la grille
+horaire et une barre d'outils est affichée à l'écran.
 
-Dans le menu \pro{Aide} le sous menu \pro{À propos de Diamant 1.5}
-est fonctionnel. Une boîte de dialogue est affichée.
-\subsection{Caractéristiques internes}
 
-Les classes finies (au moins à 90\%) :
+Le sous-menu \pro{Nouvelle grille} affiche la barre d'outils et
+ouvre une fenêtre avec une grille horaire par default.
+
+Le sous-menu \pro{Ouvrir grille} ouvre une boîte de dialogue
+pour choisir le fichier contenant la grille horaire (\pro{.dtt},
+une fois le fichier choisi, affiche la barre d'outils et
+ouvre une fenêtre avec une grille horaire correspondant au fichier.
+
+La barre à outils permet de changer les nombre de jours d'une grille
+horaire, de changer le nom associé à une journée
+et de changer la priorité d'une période ou d'un ensemble
+des périodes.
+
+Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
+il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
+les dialogue d'enregistrement de fichier suivent.
+
+Le sous-menu \pro{Enregistrer} enregistre sur un fichier
+la grille horaire à l'écran,
+si le nom de la grille horaire est \pro{Sans titre} un dialogue de sauvegarde
+demandant le nom du fichier est affiché. Si le nom du fichier existe
+un dialogue demandant s'il faut l'écraser est affiché.
+
+Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier
+la grille horaire à l'écran,
+un dialogue de sauvegarde
+demandant le nom du fichier est affiché. Si le nom du fichier existe
+un dialogue demandant s'il faut l'écraser est affiché.
+
+
+
+Les classes finies pendant ce livrable (au moins à 90\%) :
 
 \begin{itemize}
-    \item \pro{DRun}
+    \item \pro{dInterface.DToolBar}
 
-    \item \pro{dInterface.CmdButton}
-    \item \pro{dInterface.CmdMenu}
-    \item \pro{dInterface.Command}
-    \item \pro{dInterface.CommandHolder}
+    \item \pro{dInterface.dTimeTable.CloseCmd}
+    \item \pro{dInterface.dTimeTable.NewTTCyCmd}
+    \item \pro{dInterface.dTimeTable.NewTTDlg}
+    \item \pro{dInterface.dTimeTable.NewTTExCmd}
+    \item \pro{dInterface.dTimeTable.NewTTSCmd}
+    \item \pro{dInterface.dTimeTable.NewTTSDlg}
+    \item \pro{dInterface.dTimeTable.OpenTTCmd}
+    \item \pro{dInterface.dTimeTable.OpenTTDlg}
+    \item \pro{dInterface.dTimeTable.OpenTTSCmd}
+    \item \pro{dInterface.dTimeTable.OpenTTSDlg}
+    \item \pro{dInterface.dTimeTable.ReWriteFilDlg}
+    \item \pro{dInterface.dTimeTable.SaveAsCmd}
+    \item \pro{dInterface.dTimeTable.SaveAsDlg}
+    \item \pro{dInterface.dTimeTable.SaveCmd}
 
-    \item \pro{dInterface.dData.DefFilesToImportCmd}
-    \item \pro{dInterface.dData.DefFilesToImportDlg}
-    \item \pro{dInterface.dData.ImportCmd}
-    \item \pro{dInterface.dData.ImportDlg}
-
-    \item \pro{dInterface.dUtil.AboutCmd}
-    \item \pro{dInterface.dUtil.AboutDlg}
-    \item \pro{dInterface.dUtil.PLAFCmd}
-    \item \pro{dInterface.dUtil.PLAFDlg}
+    \item \pro{dInterface.dUtil.ExitCmd}
 
     \item \pro{dInternal.DModelEvent}
     \item \pro{dInternal.DModelListener}
 
-    \item \pro{dInternal.dData.Activity}
-    \item \pro{dInternal.dData.Assignment}
-    \item \pro{dInternal.dData.InstructorAttach}
     \item \pro{dInternal.dData.LoadData}
-    \item \pro{dInternal.dData.Resource}
-    \item \pro{dInternal.dData.RoomAttach}
-    \item \pro{dInternal.dData.RoomsAttributesInterpretor}
-    \item \pro{dInternal.dData.Section}
-    \item \pro{dInternal.dData.SetOfActivities}
-    \item \pro{dInternal.dData.SetOfInstructors}
-    \item \pro{dInternal.dData.SetOfResources}
-    \item \pro{dInternal.dData.SetOfRooms}
-    \item \pro{dInternal.dData.SetOfStudents}
-    \item \pro{dInternal.dData.StudentAttach}
-    \item \pro{dInternal.dData.Type}
-    \item \pro{dInternal.dData.Unity}
 
-    \item \pro{dInternal.dData.DXObject}
-    \item \pro{dInternal.dData.DXToolsMethods}
-    \item \pro{dInternal.dData.DXValue}
+    \item \pro{dInternal.dTimeTable.Cycle}
+    \item \pro{dInternal.dTimeTable.Day}
+    \item \pro{dInternal.dTimeTable.Period}
+    \item \pro{dInternal.dTimeTable.Sequence}
+    \item \pro{dInternal.dTimeTable.SetOfCycles}
+    \item \pro{dInternal.dTimeTable.TTStructure}
+    \item \pro{dInternal.dTimeTable.TTStructureEvent}
+    \item \pro{dInternal.dTimeTable.TTStructureListener}
 
-    \item \pro{dTest.dInternal.dData.ActivityTest}
-    \item \pro{dTest.dInternal.dData.AssignmentTest}
-    \item \pro{dTest.dInternal.dData.InstructorAttachTest}
-    \item \pro{dTest.dInternal.dData.ResourceTest}
-    \item \pro{dTest.dInternal.dData.RoomAttachTest}
-    \item \pro{dTest.dInternal.dData.RoomsAttributesInterpretorTest}
-    \item \pro{dTest.dInternal.dData.SectionTest}
-    \item \pro{dTest.dInternal.dData.SetOfActivitiesTest}
-    \item \pro{dTest.dInternal.dData.SetOfInstructorsTest}
-    \item \pro{dTest.dInternal.dData.SetOfResourcesTest}
-    \item \pro{dTest.dInternal.dData.SetOfRoomsTest}
-    \item \pro{dTest.dInternal.dData.SetOfStudentsTest}
-    \item \pro{dTest.dInternal.dData.StudentAttachTest}
-    \item \pro{dTest.dInternal.dData.TypeTest}
-    \item \pro{dTest.dInternal.dData.UnityTest}
 \end{itemize}
 
 Les classes en construction :
 
 \begin{itemize}
     \item \pro{DRunTest}
+    \item \pro{dInterface.AbstractDocument}
     \item \pro{dInterface.DApplication}
     \item \pro{dInterface.DDocument}
     \item \pro{dInterface.DMediator}
     \item \pro{dInterface.DMenuBar}
+    \item \pro{dInterface.TTSDocument}
 
     \item \pro{dInterface.dData.InstructorAvailabilityCmd}
     \item \pro{dInterface.dData.InstructorAvailabilityCmd}
+
+    \item \pro{dInterface.dTimeTable.PeriodPanel}
+    \item \pro{dInterface.dTimeTable.TTPanel}
 
     \item \pro{dInterface.dUtil.ExitCmd}
 
-
     \item \pro{dInternal.DModel}
+    \item \pro{dInternal.Preferences}
+
+    \item \pro{dResources.DConst}
+    \item \pro{dResources.DFileFilter}
+    \item \pro{dResources.DStringFrRes}
 \end{itemize}
