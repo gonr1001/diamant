@@ -369,41 +369,40 @@ data, by example, the format of a course, who pass from 3h
 consecutive to 2h consecutive more 1h. Other cases can be
 presented.
 
-According to each instance of the system, it is necessary to
-define the schema of the database, and the roles and privileges of
-the users.
 
-Another dimension of these two activities is the interaction of
-the users with the databases. We consider two types of users~: the
-clerk and the person in charge of construction. The clerk is that
-which will enter the basic date, the person in charge of
-construction which is responsible for the construction of the
-timetable and which interacts with the timetable construction
-program.
-
-The clerk will enter or update the data in the database if the
-data is valid, it is accepted and entered the base. For example if
-the data waited is an integer dans un interval, and the input data
-correspond with the attended set of values, it will be entered to
-the database. If not, the clerk must return with a new value. Of
-course, it is necessary to have various priorities of access.
+The activities of data input and construction can be carried out
+by many users. Each one will have an associated role and
+privileges to be able to change the data permitted by its role.
 
 
-The timetable construction is an activity of an iterative nature.
+In order to simplify, we consider two types of users~: the clerk
+and the person in charge for the timetable construction. The clerk
+is that which will enter the information in the database. The
+person in charge for the timetable construction interacts with the
+timetable construction program.
+
+The clerk will enter or update the data in the database, if the
+data is valid, it will be accepted and committed in the database.
+For example if the data waited is an integer number in a specific
+range, and the input value correspond with the attended value, it
+will be entered in the database. If not, the system must force the
+clerk to return a new value.
+
+
+The construction of schedules is an activity of iterative nature.
 In general, the algorithms of timetable construction propose to
 respect the hard constraints and to try to respect soft
 constraints as much as possible, therefore, the person in charge
-will try to find several solutions to choose one. In certain
-cases, it is possible to leave the program with the same data to
-find a new solution. In other cases it is necessary to change the
-starting data to obtain a new solution. If it is necessary to make
-$n$ tests the solution chosen by the person in charge will be the
-solution $s$ where $1 \leq s \leq n$. It is necessary to envisage
-a way of working with the database in order to save the changes
-carried out for each iteration and to make a ``commit' ' when the
-solution is chosen and that the timetable becomes final for the
-period.
-
+will try to find several solutions to choose one of them. In
+certain cases, it is possible to leave the program with the same
+data to find a new solution, but in other cases it is necessary to
+change the starting data to obtain a new solution. If it is
+necessary to make $n$ tests the solution chosen by the person in
+charge will be the solution $s$ where $1 \leq s \leq n$. It is
+necessary to envisage a way of working with the database in order
+to save the changes carried out for each iteration and to make a
+''commit'' when the solution is chosen and that the timetable
+becomes final for the period.
 
 
 
