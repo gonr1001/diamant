@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.5 $  $Date: 2003-10-17 18:08:48 $
+ * Title: SimplePeriodPanel $Revision: 1.6 $  $Date: 2003-10-20 13:51:30 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -38,6 +38,7 @@ import java.awt.GridBagLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
+import javax.swing.BorderFactory;
 
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
@@ -51,17 +52,21 @@ public class SimplePeriodPanel extends PeriodPanel{
 
   public SimplePeriodPanel(){
     super();
-  }
-  public SimplePeriodPanel(int refNo, int day, int seq, int per) {
-    super( refNo, day,  seq,  per);
-    /*_panelRefNo= refNo;
-    _TTSday= day;
-    _TTSseq= seq;
-    _TTSperiod= per;*/
+    //_jPanel = new JPanel();
+    //_jPanel.setBackground(Color.TRANSLUCENT);
+    //_jPanel.setForeground(Color.TRANSLUCENT);
   }
 
-  public SimplePeriodPanel(String str) {
-    super(str);
+/*  public SimplePeriodPanel(int refNo, int day, int seq, int per) {
+    super(refNo, day,  seq,  per);
+    _panelRefNo= refNo;
+    _TTSday= day;
+    _TTSseq= seq;
+    _TTSperiod= per;
+  }*/
+
+  public SimplePeriodPanel(int refNo, String str) {
+    super(refNo, str);
     /*_panelRefNo= refNo;
     _TTSday= day;
     _TTSseq= seq;
@@ -69,14 +74,18 @@ public class SimplePeriodPanel extends PeriodPanel{
   }
   /**
    *
-   * */
+   *
+ public void setBackground(int i){
+   setBackground(Color.TRANSLUCENT);
+ }
 
+ public void setForeground(int i){
+  setForeground(Color.TRANSLUCENT);
+ }*/
   public void createPanel(Period period){
-  setLayout(new GridLayout(2,1));
-  //setMinimumSize(new Dimension(w, h));
-  //setPreferredSize(new Dimension(w, h));
-  setBorder(new BevelBorder(BevelBorder.RAISED));
-  setValue(period);
+    setLayout(new GridLayout(2,1));
+    setBorder(BorderFactory.createEtchedBorder());
+    setValue(period);
   }
 
   public void createPanel( Period period, int w, int h){
@@ -110,7 +119,7 @@ public class SimplePeriodPanel extends PeriodPanel{
     add(topPanel);
     add(bottomPanel);
     // set period panel color
-    setPanelColor( period.getPriority());
+    setPanelColor(period.getPriority());
   }
 
   /**

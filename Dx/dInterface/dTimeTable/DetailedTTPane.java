@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.1 $  $Date: 2003-10-17 18:11:07 $
+ * Title: DetailedTTPane $Revision: 1.2 $  $Date: 2003-10-20 13:51:30 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -56,16 +56,12 @@ import dInternal.dTimeTable.*;
 
 
 public class DetailedTTPane extends TTPane {
-  int []_lines;
-  private MouseListener _mouseListener;
+  //int []_lines;
+  //private MouseListener _mouseListener;
 
 
-  public DetailedTTPane(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d, boolean standAlone) {
-    super(tts, toolBar,standAlone);
-    initDetailedTTPane(vertical, d);
-  } // end  DetailedTTPane
   public DetailedTTPane(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d) {
-    super(tts, toolBar,false);
+    super(tts, toolBar);
     initDetailedTTPane(vertical, d);
   } // end  DetailedTTPane
 
@@ -77,7 +73,7 @@ public class DetailedTTPane extends TTPane {
   _jScrollPaneOne = new JScrollPane();
    _jScrollPaneTwo = new JScrollPane();
    findRowHeaders();
-   if(_tts!=null || _standAlone){
+   if(_tts!=null){
      initTTPane(_jScrollPaneOne);
      initTTPane(_jScrollPaneTwo);
    }
@@ -233,13 +229,13 @@ public class DetailedTTPane extends TTPane {
 /**
  * @param int the period panel reference
  * */
-  public PeriodPanel getPeriodPanel(int ppRef){
-    JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
+ public PeriodPanel getPeriodPanel(int ppRef){
+    /*JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
     for (int i=0; i< thePanel.getComponentCount(); i++){
-      PeriodPanel ppanel= (PeriodPanel)thePanel.getComponent(i);
+     JPanel ppanel= (JPanel)thePanel.getComponent(i);
       if(ppanel.getPanelRefNo()==ppRef)
-        return ppanel;
-    }
+       return ppanel;
+    }*/
     return null;
   }
 /*//-------------------------------------------

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.10 $  $Date: 2003-10-17 18:08:48 $
+ * Title: PeriodPanel $Revision: 1.11 $  $Date: 2003-10-20 13:51:30 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -39,7 +39,7 @@ import java.awt.GridBagLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
-
+import java.awt.event.*;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
 
@@ -50,23 +50,33 @@ public  abstract class PeriodPanel extends JPanel{
   protected int _TTSperiod;
   protected int _panelRefNo;
 
+/*
   public PeriodPanel(int refNo, int day, int seq, int per) {
     _panelRefNo= refNo;
     _TTSday= day;
     _TTSseq= seq;
     _TTSperiod= per;
+  }*/
+
+  protected PeriodPanel(){
   }
 
-  public PeriodPanel(){
-    super();
-  }
-  public PeriodPanel(String str) {
-    //_panelRefNo= refNo;
+  public PeriodPanel(int refNo, String str) {
+    _panelRefNo= refNo;
     StringTokenizer st = new StringTokenizer(str,".");
     _TTSday= Integer.parseInt(st.nextToken());
     _TTSseq= Integer.parseInt(st.nextToken());
     _TTSperiod= Integer.parseInt(st.nextToken());
+
   }
+
+  /*public void addMouseListener(MouseListener mouseListener) {
+   // _jPanel.addMouseListener(mouseListener);
+  }*/
+
+ /* public JPanel getJPanel() {
+    return _jPanel;
+  }*/
   /**
    *
    * */
@@ -78,6 +88,8 @@ public  abstract class PeriodPanel extends JPanel{
   }*/
  //public abstract void createPanel();
  protected abstract void createPanel(Period period);
+ //protected abstract void setBackground(int i);
+ //protected abstract void setForeground(int i);
   protected  void createPanel(Period period, int w, int h){}
  // public abstract void setValue(Period period);
   /*{
@@ -110,7 +122,6 @@ public  abstract class PeriodPanel extends JPanel{
    * @return int the period reference number
    * */
   public int getPanelRefNo(){
-
     return _panelRefNo;
   }
 

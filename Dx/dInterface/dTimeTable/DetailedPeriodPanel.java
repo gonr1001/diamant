@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.9 $  $Date: 2003-10-17 18:08:48 $
+ * Title: DetailedPeriodPanel $Revision: 1.10 $  $Date: 2003-10-20 13:51:30 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -58,24 +58,33 @@ public class DetailedPeriodPanel extends PeriodPanel{
   public DetailedPeriodPanel(){
     super();
   }
-  public DetailedPeriodPanel(int refNo, int day, int seq, int per) {
+/*  public DetailedPeriodPanel(int refNo, int day, int seq, int per) {
     super( refNo, day,  seq,  per);
-   /* _panelRefNo= refNo;
+    _panelRefNo= refNo;
     _TTSday= day;
     _TTSseq= seq;
-    _TTSperiod= per;*/
+    _TTSperiod= per;
     _vec = new Vector();
     _vec.add(arr[0]);
     _vec.add(arr[1]);
     //_activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-  }
-  public DetailedPeriodPanel(String str) {
-    super(str);
+  }*/
+  public DetailedPeriodPanel(int refNo, String str) {
+    super(refNo, str);
     /*_panelRefNo= refNo;
     _TTSday= day;
     _TTSseq= seq;
     _TTSperiod= per;*/
   }
+
+/*
+  public void setBackground(int i){
+  setBackground(Color.TRANSLUCENT);
+}
+
+public void setForeground(int i){
+ setForeground(Color.TRANSLUCENT);
+ }*/
   /**
    *
    * */
