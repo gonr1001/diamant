@@ -10,9 +10,11 @@
 \usepackage[latin1]{inputenc}
 %\usepackage{udstitle,dfd}
 %\newcommand{\diamant}{Diamant}
+\usepackage{makeidx}
+\makeindex
+
 \setlength{\oddsidemargin}{0.25in}
-\setlength{\evensidemargin}{0.25in}
-\setlength{\textwidth}{6.0in}
+\setlength{\evensidemargin}{0.25in} \setlength{\textwidth}{6.0in}
 %\setlength{\parskip}{0.2in}
 \newcounter{auxcounter}
 \renewcommand{\baselinestretch}{1.5}
@@ -71,7 +73,7 @@ Yannick Syam\\}
 \FichierResume{}
 \FichierRemerciements{}
 \FichierGlossaire{} % \FichierLexique est équivalent
-\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
+\FichiersBibliographie{udsplain}{bibDiamant,bib2}
 
 %-----------------------------------------------------------------------------
 %----- Le document
@@ -91,6 +93,9 @@ Yannick Syam\\}
 \appendix
 \input{Inputs/textDataIn}
 \input{Inputs/textDataInDia}
+
+
+\printindex
 
 %\part{Une partie}
 %\include{revue}
