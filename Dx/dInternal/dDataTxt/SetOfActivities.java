@@ -361,7 +361,7 @@ public class SetOfActivities extends SetOfResources{
            position = 13;
           break;
         case 13://idem
-          activity._idemLine=token;
+          activity.setIdemLine(token.trim());
           position = 14;
           break;
         case 14://activity is fixed or not
@@ -477,7 +477,7 @@ public class SetOfActivities extends SetOfResources{
               lineRoomFixed+= "1 ";
             else
               lineRoomFixed+= "0 ";
-            lineRoomType+= bloc.getPreferFunctionRoom().getResourceAt(0).getID();
+            lineRoomType+= bloc.getPreferFunctionRoom().getResourceAt(0).getID()+" ";
             if (bloc.isAssign())
               LineActFixed+= "1 ";
             else
@@ -486,7 +486,7 @@ public class SetOfActivities extends SetOfResources{
           actlist+=instName+CR_LF+section.getSetOfUnities().size()+CR_LF+
                    lineDuration+CR_LF+lineTime+CR_LF+lineRoomFixed+CR_LF+
                    lineRoomName+CR_LF+lineRoomType+CR_LF;//write the number of blocs
-          actlist+=activity._idemLine+CR_LF+LineActFixed+CR_LF;
+          actlist+=activity.getIdemLine()+CR_LF+LineActFixed+CR_LF;
 
         }// for (int k=0; k< nature.size(); k++)
       }// end for(int j=0; j< activity.size(); j++)

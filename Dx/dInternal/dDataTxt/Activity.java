@@ -29,7 +29,7 @@ public class Activity extends DXObject{
   private boolean _activityVisible= true;//
   /**  is in activities file the line between type of rooms and
    activity is fixed or not */
-  public String _idemLine;
+  private String _idemLine;
   private SetOfResources _setOfTypes; // contents Resources of class Type
   private Vector _studentRegistered; // it contains key of students
 
@@ -269,6 +269,22 @@ public class Activity extends DXObject{
    if(this._activityVisible!= activity._activityVisible)
       return false;
    return true;
+  }
+
+  /**
+   *
+   * @param idL
+   */
+  public void setIdemLine(String idL){
+    _idemLine= idL;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public String getIdemLine(){
+    return _idemLine;
   }
 
 
