@@ -1,8 +1,8 @@
-package dTest.dInternal.dConditionsTest;
+package dTest.dInternal.dOptimizationTest;
 
 import junit.framework.*;
-import dInternal.dConditionsTest.SetOfEvents;
-import dInternal.dConditionsTest.EventAttach;
+import dInternal.dOptimization.SetOfEvents;
+import dInternal.dOptimization.EventAttach;
 
 import dInternal.DModel;
 import dInterface.DDocument;

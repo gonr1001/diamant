@@ -1,12 +1,12 @@
-package dTest.dInternal.dConditionsTest;
+package dTest.dInternal.dOptimizationTest;
 
 import junit.framework.*;
 import java.util.Vector;
 
 import dInternal.DModel;
 import dInternal.dData.Resource;
-import dInternal.dConditionsTest.EventAttach;
-import dInternal.dConditionsTest.TestConditions;
+import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.Period;
 import dInterface.DDocument;
 

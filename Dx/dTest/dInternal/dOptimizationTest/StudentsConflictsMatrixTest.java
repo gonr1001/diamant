@@ -1,4 +1,4 @@
-package dTest.dInternal.dConditionsTest;
+package dTest.dInternal.dOptimizationTest;
 
 /**
  * <p>Title: Diamant</p>
@@ -11,7 +11,7 @@ package dTest.dInternal.dConditionsTest;
 import junit.framework.*;
 
 
-import dInternal.dConditionsTest.StudentsConflictsMatrix;
+import dInternal.dOptimization.StudentsConflictsMatrix;
 
 import dInternal.DModel;
 import dInterface.DDocument;

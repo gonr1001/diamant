@@ -1,9 +1,9 @@
-package dTest.dInternal.dConditionsTest;
+package dTest.dInternal.dOptimizationTest;
 
 import junit.framework.*;
 import java.util.Vector;
 
-import dInternal.dConditionsTest.ConflictsAttach;
+import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXValue;

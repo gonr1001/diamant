@@ -1,15 +1,15 @@
-package dTest.dInternal.dConditionsTest;
+package dTest.dInternal.dOptimizationTest;
 
 import junit.framework.*;
 import java.util.Vector;
 
 import dInternal.DModel;
 import dInternal.dTimeTable.Period;
-import dInternal.dConditionsTest.TestStudentsConditions;
+import dInternal.dOptimization.TestStudentsConditions;
 import dInterface.DDocument;
 
 import java.io.File;
-import java.util.StringTokenizer;
+
 
 
 public class StudentsConditionsTest extends TestCase {

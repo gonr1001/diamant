@@ -1,8 +1,8 @@
-package dTest.dInternal.dConditionsTest;
+package dTest.dInternal.dOptimizationTest;
 
 
 import junit.framework.*;
-import dInternal.dConditionsTest.EventAttach;
+import dInternal.dOptimization.EventAttach;
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 
