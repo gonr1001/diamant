@@ -320,6 +320,27 @@ public Period getLastPeriod(){
   }
 
   /**
+  * check adjacency of periods
+  * @param long the day reference number where we want to find the period
+  * @param long the sequence reference number where we want to find the period
+  * @param long the index of the begining period in the sequence
+  * @param int the duration where we want to check adjacency of periods
+  * @return Period the period
+  * */
+ public boolean isPeriodContiguous( long dayKey, long seqKey, long beginperKey, int duration){
+     Day day =(Day)getSetOfDays().getResource(dayKey).getAttach();
+     if(day!=null){
+       Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqKey).getAttach();
+       if (seq!=null){
+         int index = seq.getSetOfPeriods().getIndexOfResource(beginperKey);
+         if( (index!=-1) && ( (index+duration-1) < seq.getSetOfPeriods().size() ) )
+           return true;
+       }
+     }
+   return false;
+  }
+
+  /**
    * get a period
    * @param Sequence the sequence where we want to find a period
    * @param int the period reference number in  the sequence

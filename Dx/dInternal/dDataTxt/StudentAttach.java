@@ -112,6 +112,24 @@ public class StudentAttach extends DXObject{
 
   /**
    *
+   * @param String course, the course the student must be assign in a group (ADM1111)
+   * @param int the group where the student must be assign
+   * @param boolean fixeInGroup. if true the student is fixed in this group, false
+   * otherwise
+   */
+  public void setInGroup(String course, int group, boolean fixeInGroup){
+    Resource courseValue;
+    if (course.length()>=_COURSELENGTH){
+      courseValue = _courses.getResource(course.substring(0,_COURSELENGTH));
+      if(courseValue!=null){
+        ((DXValue)courseValue.getAttach()).setIntValue(group);
+        ((DXValue)courseValue.getAttach()).setBooleanValue(fixeInGroup);
+      }// end if(courseValue!=null)
+    }// end if (course.length()>=_COURSELENGTH)
+  }
+
+  /**
+   *
    * */
   public SetOfResources getCoursesList(){
     return _courses;

@@ -37,9 +37,14 @@ public class DModelProcess {
      EventAttach event = (EventAttach)_dm._setOfEvents.getResourceAt(i).getAttach();
      StringTokenizer keys = new StringTokenizer(event.getPeriodKey(),".");
      long [] dayTimeKeys = {Long.parseLong(keys.nextToken()),Long.parseLong(keys.nextToken())
-     ,Long.parseLong(keys.nextToken())};
-     Period period =_dm._ttStruct.getCurrentCycle().getPeriodByKey(dayTimeKeys[0],dayTimeKeys[1],dayTimeKeys[2]);
-     period.getEventsInPeriod().addResource(new Resource(event.getPrincipalRescKey(),null),1);
+       ,Long.parseLong(keys.nextToken())};
+     Period period;
+     int duration = event.getDuration()/_dm._ttStruct.getPeriodLenght();
+     if (_dm._ttStruct.getCurrentCycle().isPeriodContiguous(dayTimeKeys[0],dayTimeKeys[1],dayTimeKeys[2],duration))
+     for (int j=0; j< duration-1; j++){
+       period =_dm._ttStruct.getCurrentCycle().getPeriodByKey(dayTimeKeys[0],dayTimeKeys[1],dayTimeKeys[2]+j);
+       period.getEventsInPeriod().addResource(new Resource(event.getPrincipalRescKey(),null),1);
+     }// end if (_dm._ttStruct.getCurrentCycle().isPeriodContiguous(
    }// end for (int i=0; i< _dm._setOfEvents.size(); i++)
  }
 
