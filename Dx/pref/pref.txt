@@ -4,7 +4,7 @@ French
 .\pref\StandardTTE.xml
 .\pref\pref.txt
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
-éÉèÈàÀÇçëËïÏÔôÙù-'()Êê
+éÉèÈáÁàÀÇçëËïÏÔôÙù-'()Êê
 selectedOptionsInFullReport;JNum;Jour;Nomb É;Acti;Nat;Grp;Durée;Blc;Début;Fin;Enseignant;Local;
 selectedOptionsInConflictReport;JNum;Jour;PérJour;Début;Type Conf;Événement 1;Événement 2;Numb C;Conflits;
 conflictLimits;0;3;10;1;15;1;
