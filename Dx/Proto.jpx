@@ -6,7 +6,6 @@
   <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.3" name="SmartStepRedefineClasses" value="0"/>
-  <property category="debug.4" name="SmartStepRedefineClasses" value="0"/>
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="4"/>
@@ -35,9 +34,10 @@
   <property category="runtime.3" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
   <property category="runtime.3" name="application.class" value="dTest.dInterface.TestsSuite"/>
   <property category="runtime.4" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.4" name="ConfigurationName" value="Panes"/>
+  <property category="runtime.4" name="ConfigurationName" value="File"/>
   <property category="runtime.4" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.4" name="application.class" value="dInterface.dTimeTable.TTPane"/>
+  <property category="runtime.4" name="application.class" value="ReadPrintFile"/>
+  <property category="runtime.4" name="application.parameters" value="D:\Developpements\DiamantExtreme\Dx\data\fgen\aut02\disprofShort1.sig"/>
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
   <property category="sys" name="AuthorLabel" value="@author"/>
   <property category="sys" name="BackupPath" value="../../Temp/Dx/Proto/bak"/>
@@ -107,8 +107,5 @@
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
-  <file path="dInterface/DToolBar.java"/>
   <file path="Proto.html"/>
-  <file path="dAux/ShowAllCmd.java"/>
-  <file path="dAux/StateZeroCmd.java"/>
 </project>
