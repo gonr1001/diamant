@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dInternal.dData.SetOfActivities;
+import dInterface.dUtil.ApplyPanel;
 
 
 import dResources.DConst;
@@ -43,10 +44,10 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   private JLabel _lVisible, _lNoVisible;
   private JList _rightList, _leftList;
-  private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
+  private JPanel _centerPanel, _arrowsPanel;
+  private ApplyPanel _applyPanel;
   private Object [] _currentActivities = new Object[0];
   private SetOfActivities _activities;
-  private String [] _buttonsNames = {DConst.BUT_APPLY, DConst.BUT_CLOSE};
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
   /**
    * the vectors containing the activities ID
@@ -105,15 +106,15 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _centerPanel.add(leftPanel, BorderLayout.EAST);
     _centerPanel.add(_arrowsPanel, BorderLayout.CENTER);
     _centerPanel.add(rightPanel, BorderLayout.WEST);
-    //buttonsPanel
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    //_applyPanel
+    _applyPanel = new ApplyPanel(this);
     //Setting the button APPLY disable
-    _buttonsPanel.getComponent(0).setEnabled(false);
+    _applyPanel.setApplyDisable();
     //placing the elements into the JDialog
     setSize(400, 400);
     setResizable(false);
     getContentPane().add(_centerPanel, BorderLayout.CENTER);
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
+    getContentPane().add(_applyPanel, BorderLayout.SOUTH);
   }//end method
 
   /**
@@ -141,32 +142,26 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //If buttons CANCEL
-    if (command.equals(_buttonsNames[1]))
+    //If buttons CLOSE
+    if (command.equals(DConst.BUT_CLOSE))
         dispose();
     //If button APPLY
-    if (command.equals(_buttonsNames[0])){
+    if (command.equals(DConst.BUT_APPLY)){
       setActivitesVisibility();
-      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
-      _buttonsPanel.getComponent(0).setEnabled(false);
+      _applyPanel.setApplyDisable();
     }
-    //if button OK
-   /* if (command.equals(_buttonsNames[0])){
-      setActivitesVisibility();
-      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
-      dispose();
-    }*/
+    //no  button OK
+
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
-      if (command.equals(_arrowsNames[1]))
+      if (command.equals(_arrowsNames[1])) {
         DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
-      else
+      } else {
         DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 1);
+      }
       _lNoVisible.setText(_rightVec.size() + " " + DConst.NOT_INCLUDED);
       _lVisible.setText(_leftVec.size() + " " + DConst.INCLUDED);
-      _buttonsPanel.getComponent(0).setEnabled(true);
-      //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      _applyPanel.setApplyEnable();
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
   }//end method
 

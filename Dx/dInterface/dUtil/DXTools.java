@@ -282,6 +282,8 @@ public static int STIConvertGroupToInt(String STIGroupID){
   * @param buttonsNames An array of names of buttons
   * @return panel
   */
+
+ // to be commented
  public static JPanel buttonsPanel(ActionListener parentDialog, String [] buttonsNames){
    JPanel panel = new JPanel();
    JButton button;

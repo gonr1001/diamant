@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.17 $  $Date: 2004-03-24 14:14:25 $
+ * Title: SectionDlg $Revision: 1.18 $  $Date: 2004-04-05 12:41:19 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -44,6 +44,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import dInterface.DApplication;
+import dInterface.dUtil.ApplyPanel;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dData.Activity;
@@ -65,7 +66,8 @@ public class SectionDlg extends JDialog implements ActionListener{
   private JButton _sortButton;
   private DXJComboBox _actCombo, _typeCombo, _sortCombo;
   private JList _notAssignedList, _assignedLists[];
-  private JPanel _arrowsPanel, _assignedPanel, _buttonsPanel, _insidePanel, _centerPanel, _notAssignedPanel;
+  private JPanel _arrowsPanel, _assignedPanel, _insidePanel, _centerPanel, _notAssignedPanel;
+  private ApplyPanel _applyPanel;
   private JScrollPane _scrollPane;
   private Section _section;
   private SetOfActivities _activities;
@@ -105,8 +107,11 @@ public class SectionDlg extends JDialog implements ActionListener{
     setSize(dialogDim);
     setResizable(false);
     setTopPanel();
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
+    //_applyPanel
+    _applyPanel = new ApplyPanel(this);
+    //Setting the button APPLY disable
+    _applyPanel.setApplyDisable();
+    getContentPane().add(_applyPanel, BorderLayout.SOUTH);
     setLists(_sortIndex, false);
     setCenterPanel(dialogDim);
   }
@@ -294,7 +299,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       setCurrents();
       setLists(_sortIndex, false);
       setScrollPane(_scrollPane.getPreferredSize());
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _applyPanel.setApplyEnable();
     }//end if (e.getSource().equals(_actCombo))
     //if type combo box
     if (e.getSource().equals(_typeCombo)){
@@ -302,7 +307,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       setCurrents();
       setLists(_sortIndex, false);
       setScrollPane(_scrollPane.getPreferredSize());
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _applyPanel.setApplyEnable();
     }//end if (e.getSource().equals(_typeCombo))
     //if sort button
     if (e.getSource().equals(_sortCombo)){
@@ -310,7 +315,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       setCurrents();
       //setLists(_sortIndex, false);
       setScrollPane(_scrollPane.getPreferredSize());
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _applyPanel.setApplyEnable();
       setLists(_sortIndex, true);
     }//end if (e.getSource().equals(_typeCombo))
     //if sort button
@@ -330,27 +335,28 @@ public class SectionDlg extends JDialog implements ActionListener{
       }
       setLists(_sortIndex, true);
     }//end if (e.getSource().equals(_sortButton))*/
-    //if Button CANCEL is pressed
-    if (command.equals(_buttonsNames[2]))
+    //if Button CLOSE is pressed
+    if (command.equals(DConst.BUT_CLOSE))
       dispose();
     //if Button APPLY is pressed
-    if (command.equals(_buttonsNames[1])){
+    if (command.equals(DConst.BUT_APPLY)){
       setStudentsInGroups();
       //_buttonsPanel.getComponent(1).setEnabled(false);
       //_sortButton.setEnabled(true);
       _sortCombo.setEnabled(true);
-      ((JButton)_buttonsPanel.getComponent(1)).setEnabled(false);
+      _applyPanel.setApplyDisable();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
-    //if Button OK is pressed
+   /* //if Button OK is pressed
     if (command.equals(_buttonsNames[0])){
       setStudentsInGroups();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       dispose();
     }// end if (command.equals(OK))
+    */
     if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0])) && _currentAssignedGroup > -1){
     //if "toLeft" button is pressed
       if (command.equals(_arrowsNames[1])){
@@ -358,7 +364,7 @@ public class SectionDlg extends JDialog implements ActionListener{
           listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true, _sortIndex);
           //_buttonsPanel.getComponent(1).setEnabled(true);
           _sortCombo.setEnabled(false);
-          ((JButton)_buttonsPanel.getComponent(1)).setEnabled(true);
+          _applyPanel.setApplyEnable();
           _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
         }
       }
@@ -368,7 +374,7 @@ public class SectionDlg extends JDialog implements ActionListener{
           //_buttonsPanel.getComponent(1).setEnabled(true);
           //_sortButton.setEnabled(false);
           _sortCombo.setEnabled(false);
-          ((JButton)_buttonsPanel.getComponent(1)).setEnabled(true);
+          _applyPanel.setApplyEnable();
         }
       }
       //SetText for the JLabel containing the number of elements in a group
@@ -404,7 +410,7 @@ public class SectionDlg extends JDialog implements ActionListener{
           }
           if(e.getClickCount() == 2){
         changeFixedInGroup(((JList)e.getSource()).getSelectedValues(), _currentAssignedGroup);
-        _buttonsPanel.getComponent(1).setEnabled(true);
+        _applyPanel.setApplyEnable();
       }//end if(e.getClickCount() == 2)
         }//if (e.getSource().equals(_assignedLists[i]))
       }//end for(int i = 0; i<_numberOfSections; i++)
