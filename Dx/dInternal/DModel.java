@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.28 $  $Date: 2003-06-27 15:38:23 $
+ * Title: DModel $Revision: 1.29 $  $Date: 2003-07-02 16:53:30 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.29 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -55,6 +55,26 @@ public class DModel {
 
   //for open
   public DModel(DApplication dApplic, String fileName) {
+    _status = new Status();
+    //_ttParameters = new TTParameters();
+    _dApplic = dApplic;
+    //rreadTT(fileName);
+    //importData("hello");
+    //test1_setAvailability();
+  }
+
+  //for new
+  public DModel(DApplication dApplic, TTStructure ttStruct, boolean partial) {
+    _status = new Status();
+    //_ttParameters = new TTParameters();
+    _dApplic = dApplic;
+    _ttStruct = ttStruct;
+    //importData("hello");
+    //test1_setAvailability();
+  }
+
+  //for open
+  public DModel(DApplication dApplic, String fileName, boolean partial) {
     _status = new Status();
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;

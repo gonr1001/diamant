@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.28 $  $Date: 2003-07-02 16:15:47 $
+ * Title: DStringFrRes $Revision: 1.29 $  $Date: 2003-07-02 16:53:30 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -35,22 +35,23 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     *  the menus and dialogs
     */
     { "file", "Fichier" },
+
     { "newTT", "Nouvel horaire" },
     { "newTTTD", "Indiquez grille horaire"},
     { "newTTM", "Grille horaire"},
-
-    { "nTTEx", "Examen" },
-    { "nTTExTD", "Grille horaire Examens"},
-    { "nTTExM", "Examen"},
 
     { "nTTCy", "Cycle" },
     { "nTTCyTD", "Grille horaire Cycle"},
     { "nTTCyM", "Cycle"},
 
-    { "open", "Ouvrir horaire" },
-    { "oTTTD", " Horaire" },
+    { "nTTEx", "Examen" },
+    { "nTTExTD", "Grille horaire Examens"},
+    { "nTTExM", "Examen"},
 
-    { "close", "Fermer" },
+    { "open", "Ouvrir horaire" },
+    { "oTTTD", "Horaire" },
+
+    { "close", "Fermer horaire" },
     //Separator
     { "save", "Enregistrer" },
     { "saveAs", "Enregistrer sous" },
@@ -84,11 +85,32 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "copy", "Copier"},
 
 
-    //File TTStructure
-    //{ "dTTS", "Fichier_Grille"},
-    { "dTTS", "Fichier_Grille"},
+    //File TTStructur
+    /*
+
+
+
+    */
+
+    { "fileTTS", "Fichier_Grille" },
     { "newTTS", "Nouvelle grille"},
-    { "oTTS", "Ouvrir grille"},
+    /*{ "newTTTD", "Indiquez grille horaire"},
+    { "newTTM", "Grille horaire"},*/
+
+
+    { "nTTSCy", "Cycle" },
+/*    { "nTTCyTD", "Grille horaire Cycle"},
+    { "nTTCyM", "Cycle"},*/
+
+    { "nTTSEx", "Examen" },
+/*    { "nTTExTD", "Grille horaire Examens"},
+    { "nTTExM", "Examen"},*/
+
+    { "openTTS", "Ouvrir grille" },
+    { "oTTSTD", "Grille" },
+
+    { "closeTTS", "Fermer grille" },
+
 
     { "assign", "Affectation" },
     { "instAssignM", "Enseignants" },

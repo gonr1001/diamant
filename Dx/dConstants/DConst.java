@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.25 $  $Date: 2003-07-02 16:15:47 $
+ * Title: DConst $Revision: 1.26 $  $Date: 2003-07-02 16:53:30 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -37,13 +37,15 @@ public class DConst {
   public final static String NEW_TT_TD  = res.getString("newTTTD");
   public final static String NEW_TT_M  = res.getString("newTTM");
 
-  public final static String NTT_EX = res.getString("nTTEx");
-  public final static String NTT_EX_TD  = res.getString("nTTExTD");
-  public final static String NTT_EX_M  = res.getString("nTTExM");
 
   public final static String NTT_CY = res.getString("nTTCy");
   public final static String NTT_CY_TD  = res.getString("nTTCyTD");
   public final static String NTT_CY_M  = res.getString("nTTCyM");
+
+  public final static String NTT_EX = res.getString("nTTEx");
+  public final static String NTT_EX_TD  = res.getString("nTTExTD");
+  public final static String NTT_EX_M  = res.getString("nTTExM");
+
 
   // public final static String N_TT  = res.getString("nTT");
   public final static String OPEN  = res.getString("open");
@@ -84,12 +86,26 @@ public class DConst {
   final static String PASTE = "Coller";
   final static String CLEAR = "Effacer";
 
+  public final static String FILE_TTS  = res.getString("fileTTS");
+  public final static String NEW_TTS = res.getString("newTTS");
+ /* public final static String NEW_TT_TD  = res.getString("newTTTD");
+  public final static String NEW_TT_M  = res.getString("newTTM");*/
 
 
-   public final static String DTTS  = res.getString("dTTS");
-   public final static String NEW_TTS  = res.getString("newTTS");
-   public final static String OTTS  = res.getString("oTTS");
- // public final static String IMP_M  = res.getString("impM");
+  public final static String NTTS_CY = res.getString("nTTSCy");
+/*  public final static String NTTS_CY_TD  = res.getString("nTTCyTD");
+  public final static String NTTS_CY_M  = res.getString("nTTCyM");*/
+
+  public final static String NTTS_EX = res.getString("nTTSEx");
+/*  public final static String NTTS_EX_TD  = res.getString("nTTExTD");
+  public final static String NTTS_EX_M  = res.getString("nTTExM");*/
+
+
+  public final static String OPEN_TTS  = res.getString("openTTS");
+  public final static String O_TTSTD  = res.getString("oTTSTD");
+
+  public final static String CLOSE_TTS  = res.getString("closeTTS");
+
 
   public final static String ASSIGN = res.getString( "assign");
   public final static String INST_ASSIGN_M = res.getString( "instAssignM");
