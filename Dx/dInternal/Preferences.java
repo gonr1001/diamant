@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.18 $  $Date: 2003-12-03 21:27:02 $
+ * Title: Preferences $Revision: 1.19 $  $Date: 2003-12-04 18:08:28 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,6 +28,7 @@ import  com.iLib.gException.IOFileException;
 import com.iLib.gIO.ByteOutputFile;
 import com.iLib.gDialog.FatalProblemDlg;
 import java.util.Vector;
+
 public class Preferences {
   private final String CR_LF = "\r\n";
 
@@ -40,6 +41,7 @@ public class Preferences {
   public String _acceptedChars;
   public String _selectedOptionsInFullReport;
   public String _selectedOptionsInConflictReport;
+  public String _conflictLimits;
   private DApplication _dApplic;
 
   public Preferences(String str) {//throws InputFileException{
@@ -58,6 +60,7 @@ public class Preferences {
       _acceptedChars = st.nextToken();
       _selectedOptionsInFullReport = st.nextToken();
       _selectedOptionsInConflictReport = st.nextToken();
+      _conflictLimits = st.nextToken();
       }
     } catch (Exception e) {
       System.out.println("Preferences:"+e);
@@ -89,6 +92,8 @@ public class Preferences {
            str += _selectedOptionsInFullReport;
            str += CR_LF;
            str += _selectedOptionsInConflictReport;
+           str += CR_LF;
+           str += _conflictLimits;
       return str;
   }
 
@@ -138,6 +143,27 @@ public class Preferences {
     return res;
   } //end getSelectedOptionsInConflictReport()
 
+  public int [] getConflictLimits() {
+  StringTokenizer st = new StringTokenizer(_conflictLimits,";");
+  String s = "conflictLimits";
+  Vector res= new Vector();
+  //st.nextToken();
+  if (st.nextToken().equals(s)) {
+    while (st.countTokens() > 0 ){
+       res.add(st.nextToken());
+    }
+  } else {
+    System.out.println("Preferences.getConflictLimits  Help");
+  }
+  int [] a = new int[res.size()];
+  for(int i = 0 ; i < a.length; i++) {
+    a[i] = Integer.parseInt((String)res.get(i));
+  }
+
+  return a;
+} //end getSelectedOptionsInFullReport()
+
+
   public void setSelectedOptionsInFullReport(Vector v){
     _selectedOptionsInFullReport = "selectedOptionsInFullReport"+";";
     for (int i=0; i < v.size(); i++){
@@ -152,6 +178,12 @@ public class Preferences {
     }
   } //end setSelectedOptionsInConflictReport
 
+  public void setConflicLimits(Vector v){
+    _conflictLimits = "conflictLimits"+";";
+    for (int i=0; i < v.size(); i++){
+      _conflictLimits += (String) v.elementAt(i)+";";
+    }
+  } //end setSelectedOptionsInFullReport
 
 } /* end Preferences */
 
