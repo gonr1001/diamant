@@ -19,7 +19,7 @@ import com.iLib.gIO.FilterFile;
 import dInternal.dTimeTable.TTStructure;
 
 public class LoadData {
-  Vector _v;
+  //Vector _v;
   String _instructorFileName;
   String _roomsFileName;
   String _activitiesFileName;
@@ -40,7 +40,6 @@ public class LoadData {
    *constructor
    */
   public LoadData(String args) {
-    _v = new Vector(); // to eliminate
     String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
     _functionFileName=path+"DXfunctions.sig";
     _caractFileName=path+"DXcaracteristics.sig";
@@ -48,6 +47,11 @@ public class LoadData {
     verifyImportDataFile(args);
   }
 
+  public LoadData() {
+   String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
+   _functionFileName=path+"DXfunctions.sig";
+   _caractFileName=path+"DXcaracteristics.sig";
+  }
   private void verifyImportDataFile(String str){
     FilterFile filter = new FilterFile();
     if (filter.validFile(str)) {
@@ -196,32 +200,50 @@ public class LoadData {
   /**
    *
    * */
-  public void loadProject(String fileName){
-     byte[]  dataloaded = preLoad(fileName);
-     Vector extract= new Vector();
-     StringTokenizer project= new StringTokenizer(dataloaded.toString(),_saveSeparator);
+  public Vector loadProject(String fileName){
+    Vector extract= new Vector();
+    String dataloaded= new String(preLoad(fileName));
+
+     StringTokenizer project= new StringTokenizer(dataloaded,_saveSeparator);
      if(project.countTokens()==6){
        // extract version
-       extract.add(project.nextToken());
+       extract.add(project.nextToken().trim());
        //extract ttstructure
        TTStructure tts= new TTStructure();
-       tts.loadTTStructure(project.nextToken());
+       tts.loadTTStructure(project.nextToken().trim());
        extract.add(tts);
        // extract instructor
-       SetOfInstructors _instructorsList= new SetOfInstructors(project.nextToken().getBytes(),5,14);
-       if (_instructorsList.analyseTokens(0)){
-        _instructorsList.buildSetOfInstructors(0);
+       SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),5,14);
+       if (instructorsList.analyseTokens(0)){
+        instructorsList.buildSetOfInstructors(0);
       }
+      extract.add(instructorsList);
+
       // extract rooms
-      SetOfRooms roomsList = new SetOfRooms(project.nextToken().getBytes(),5,14);
+      SetOfRooms roomsList = new SetOfRooms(project.nextToken().trim().getBytes(),5,14);
       if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfRooms(0, _roomsAttributesInterpretor);
+       roomsList.buildSetOfRooms(0, extractRoomsAttributesInterpretor());
      }
+     extract.add(roomsList);
+
+     // extract activities
+     SetOfActivities activitiesList = new SetOfActivities(project.nextToken().trim().getBytes());
+     if (activitiesList.analyseTokens(1)){
+       activitiesList.buildSetOfActivities(1);
+     }
+     extract.add(activitiesList);
+     //extract students
+     SetOfStudents studentsList = new SetOfStudents(project.nextToken().trim().getBytes());
+     if (studentsList.analyseTokens(0)){
+       studentsList.buildStudentList(0);
+     }
+      extract.add(studentsList);
+
      }else{
        new FatalProblemDlg("I was in"+getClass().toString()+" LoadData class and loadProject. extract failed!!!" );
        System.exit(52);
      }
-
+     return extract;
   }
 
 

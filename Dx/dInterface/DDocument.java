@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.35 $  $Date: 2003-06-27 10:46:31 $
+ * Title: DDocument $Revision: 1.36 $  $Date: 2003-06-27 15:38:23 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -81,7 +81,11 @@ public class DDocument extends AbstractDocument implements ActionListener, DMode
   } // end constructor DDocument()
 
 
-
+  /**
+   * */
+  public void addTTListener(TTStructure ttStruct){
+    ttStruct.addTTStructureListener(this);
+  }
 
     //-------------------------------------------
     public void setModified(){

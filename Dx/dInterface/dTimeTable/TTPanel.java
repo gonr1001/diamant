@@ -48,15 +48,16 @@ public class TTPanel extends JScrollPane {
   public TTPanel(DModel dm) {
     super();
     _dm = dm;
-    _periodLenght= _dm.getTTStructure().getPeriodLenght();
-    UHEIGHT= _dm.getTTStructure().getPeriodLenght();
-    initTTPanel();
+    if(_dm.getTTStructure()!=null){
+     initTTPanel();
+    }
   }
 
   private void initTTPanel() {
+    _periodLenght= _dm.getTTStructure().getPeriodLenght();
+    UHEIGHT= _dm.getTTStructure().getPeriodLenght();
     Point point=new Point(0,0);
     point = getViewport().getViewPosition();//getViewport().getsc
-
     setColumnHeaderView(createColumnHeader());
     setRowHeaderView(createRowHeader());
     setViewportView(createViewPort());

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.27 $  $Date: 2003-06-27 10:46:32 $
+ * Title: DModel $Revision: 1.28 $  $Date: 2003-06-27 15:38:23 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -25,11 +25,13 @@ import java.io.*;
 import javax.swing.JOptionPane;
 import dInterface.DApplication;
 import dInternal.dData.*;
+import dInternal.dData.LoadData;
 
 import dInternal.dTimeTable.TTStructure;
 
 
-public class DModel{
+
+public class DModel {
   private Vector _dmListeners = new Vector();
   //private TTParameters _ttParameters;
   private Status _status;
@@ -56,7 +58,7 @@ public class DModel{
     _status = new Status();
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;
-    rreadTT(fileName);
+    //rreadTT(fileName);
     //importData("hello");
     //test1_setAvailability();
   }
@@ -75,8 +77,33 @@ public class DModel{
   /**
    *
    * */
-  public void loadProject(){
-
+  public String loadProject(String fileName){
+    LoadData loadD = new LoadData();
+    Vector project = loadD.loadProject(fileName);
+    if(project.size()!=0){
+      _dApplic.getDMediator().getCurrentDoc().setVersion((String)project.get(0));
+      _ttStruct= (TTStructure)project.get(1);
+      _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
+     // addTTStructureListener(this);
+      _setOfInstructors = (SetOfInstructors)project.get(2);
+      _setOfRooms= (SetOfRooms)project.get(3);
+      _setOfActivities=(SetOfActivities)project.get(4);
+      _setOfStudents = (SetOfStudents)project.get(5);
+      if( _setOfRooms.getError().length()!=0){
+       return _setOfRooms.getError();
+      }
+      if( _setOfInstructors.getError().length()!=0){
+       return _setOfInstructors.getError();
+      }
+      if( _setOfActivities.getError().length()!=0){
+       return _setOfActivities.getError();
+      }
+      if( _setOfStudents.getError().length()!=0){
+       return _setOfStudents.getError();
+      }
+    }
+    _ttStruct.sendEvent();// a deplacer
+    return"";
   }
 
   public String importData(String str) {
