@@ -16,6 +16,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>DClasses</name>
+			<type>2</type>
+			<location>D:/Developpements/Classes</location>
+		</link>
+		<link>
 			<name>bin</name>
 			<type>2</type>
 			<location>D:/Developpements/DxTemp/classes</location>
