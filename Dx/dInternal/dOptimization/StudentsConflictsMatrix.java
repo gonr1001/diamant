@@ -52,13 +52,15 @@ public class StudentsConflictsMatrix {
                          +"."+student.getCoursesList().getResourceAt(k).getID().substring(soa._COURSENAMELENGTH)+"."+
                            DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
           int[] index= getSectionsKeys(course1, course2);
+          System.out.println("Course = ["+ course1+","+course2+"]");//debug
+          System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
           if((index[0]!=-1) && (index[1]!=-1)){
             _theMatrix[index[0]][index[1]]++;
           }
         }// end for (int k=j; k< student.getCoursesList().size()
       }// end for(int j=0; j< ((Activity)rescActivity.getAttach()).get
     }// end for(int i=0; i< soa.size(); i++)
-
+    //this.toWriteMatrix();
   }
 
 
@@ -81,7 +83,7 @@ public class StudentsConflictsMatrix {
    * @param str2
    * @return
    */
-  private int[] getSectionsKeys(String str1, String str2){
+  public int[] getSectionsKeys(String str1, String str2){
     int[] keys ={-1,-1};
     Resource resc1 = _allSections.getResource(str1);
     Resource resc2 = _allSections.getResource(str2);
@@ -111,6 +113,7 @@ public class StudentsConflictsMatrix {
         for (int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
           String idSection= activity.getID()+"."+type.getID()+"."+
                    ((Type)type.getAttach()).getSetOfSections().getResourceAt(k).getID();
+          //System.out.println("ID Section: "+idSection);//debug
           allSections.addResource(new Resource(idSection,null),0);
         }// end for (int k=0; k< ((Type)type.getAttach()).getSetOfSections().
       }// end for (int j=0; j< activity.getSetOfTypes().size(); j++)
@@ -148,7 +151,7 @@ public class StudentsConflictsMatrix {
     String str="";
     for (int i=1; i< _allSections.size()+1; i++){
       str+= _allSections.getResourceAt(i-1).getID()+" --> ";
-      for (int j=1; j< _allSections.size()+1; j++){
+      for (int j=1; j< i+1; j++){
         if (_theMatrix[i][j]<10)
           str+=_theMatrix[i][j]+"  ";
         else
@@ -157,7 +160,12 @@ public class StudentsConflictsMatrix {
       }// end for (int j=0; j< _theMatrix[i].length; j++)
       str+= SetOfResources.CR_LF;
     }// end for (int i=0; i< _allSections.size(); i++)
+
     return str;
+  }
+
+  public int[][] getTheMatrix(){
+    return _theMatrix;
   }
 
 }// end class
