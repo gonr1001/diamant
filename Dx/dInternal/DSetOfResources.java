@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.3 $  $Date: 2005-02-04 16:20:11 $
+* Title: DSetOfResources $Revision: 1.4 $  $Date: 2005-02-07 20:21:04 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.4 $
+* @author  $Author: garr2701 $
 * @since JDK1.3
 */
 
@@ -286,10 +286,14 @@ public abstract class DSetOfResources extends DObject{
    *
    * @return
    */
-  public abstract String getError(); /*{
-    return "";
-  }*/
-
+  public abstract String getError(); 
+  
+  /**
+  * @return Returns the _currentKey.
+  */
+  public long getCurrentKey() {
+	return _currentKey;
+  }
   /**
    *
    * */
