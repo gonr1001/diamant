@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.72 $  $Date: 2003-09-23 10:06:31 $
+ * Title: DMenuBar $Revision: 1.73 $  $Date: 2003-09-23 15:07:01 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.72 $
+ * @version $Revision: 1.73 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -88,6 +88,9 @@ public class DMenuBar extends JMenuBar{
   // the optimisation menus
   private CmdMenu _mOpti,_mInit;
   private boolean _boolMOpti, _boolMInit;
+
+  //the report menus
+  private CmdMenu _mReport;
 
   // the preferences menus
   private CmdMenu _lookAndFeel;
@@ -323,8 +326,12 @@ public class DMenuBar extends JMenuBar{
   _report = new JMenu(DConst.REPORT);
   _report.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
   this.add( _report );
-
   // Items in menu Report.
+  _mReport = new CmdMenu("Rapports");
+  _mReport.setFont(new java.awt.Font(_mfont, _font, _nPT));
+  _mReport.setCommand(new ReportCmd());
+  _mReport.addActionListener(_dApplic);
+  _report.add(_mReport);
   }//end createReportMenu
 
   private void createPreferencesMenu(){

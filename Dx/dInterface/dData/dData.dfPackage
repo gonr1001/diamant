@@ -36,6 +36,21 @@ class reference339 {
 @__modelType reference 
 */
 class reference340 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ExportCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ReportCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ReportDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference38 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

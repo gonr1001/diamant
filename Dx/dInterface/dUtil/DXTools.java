@@ -246,8 +246,28 @@ public static int STIConvertGroup(String STIGroupID){
   * @return the JPanel to be added to the dialog
   */
  public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames){
+   Dimension panelDim = new Dimension(50, 35*arrowsNames.length+10);
+   JButton [] buttons = new JButton [arrowsNames.length];
+   JPanel panel = new JPanel();
+   panel.setPreferredSize(panelDim);
+   for(int i = 0; i < arrowsNames.length; i++){
+     buttons[i] = new JButton(arrowsNames[i]);
+     buttons[i].setPreferredSize(new Dimension(50,35));
+     buttons[i].addActionListener(parentDialog);
+     panel.add(buttons[i], BorderLayout.NORTH);
+   }
+   return panel;
+ }//end method
+
+ /*
+ public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames){
+   Dimension panelDim = new Dimension(50, 35*arrowsNames.length);
+   JButton [] buttons = new JButton [arrowsNames.length];
    JPanel panel = new JPanel(new BorderLayout());
-   panel.setPreferredSize(new Dimension(50, 70));
+   panel.setPreferredSize(panelDim);
+   for(int i = 0; i < arrowsNames.length; i++){
+     JButton _toRight = new JButton(arrowsNames[0]);
+   }
    JButton _toRight = new JButton(arrowsNames[0]);
    _toRight.setPreferredSize(new Dimension(50,35));
    _toRight.addActionListener(parentDialog);
@@ -258,6 +278,7 @@ public static int STIConvertGroup(String STIGroupID){
    panel.add(_toLeft, BorderLayout.SOUTH);
    return panel;
  }//end method
+ */
 
 
  /**
@@ -278,12 +299,44 @@ public static int STIConvertGroup(String STIGroupID){
  }
 
  /**
+  * Creates a Panel containing a valued title plus a listPanel
+  * @param panelDim The panel dimension
+  * @param list the list
+  * @param vec the vector source for the list
+  * @param labelValue the label containing the value to be showed
+  * @param title the panel title
+  * @param ml the Mouselistener for the list
+  * @return
+  */
+
+ public static JPanel setListPanel(Dimension panelDim, JList list, Vector vec, JLabel labelValue, String title, MouseListener ml){
+    list.setListData(vec);
+    list.addMouseListener(ml);
+    //the infoPanel
+    JLabel labelTitle = new JLabel(title + " ");
+    labelValue = new JLabel(String.valueOf(vec.size()));
+    JPanel infoPanel = new JPanel();
+    infoPanel.setPreferredSize(new Dimension((int)panelDim.getWidth(), 70));
+    infoPanel.add(labelTitle);
+    infoPanel.add(labelValue);
+    //the listPanel
+    JPanel listPanel = listPanel(list, (int)panelDim.getWidth(), (int)panelDim.getHeight()-70);
+    //the panel
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setPreferredSize(panelDim);
+    panel.add(infoPanel, BorderLayout.NORTH);
+    panel.add(listPanel, BorderLayout.SOUTH);
+    return panel;
+  }
+
+ /**
   * Builds a panel containing a Jlist
   * @param list
   * @param panelWidth
   * @param panelHeight
   * @return
   */
+/*
  public static JPanel infoPanel(String[][] list, int panelWidth, int panelHeight){
    JPanel panel = new JPanel();
    JLabel lNumber;
@@ -296,6 +349,7 @@ public static int STIConvertGroup(String STIGroupID){
    }
    return panel;
  }
+ */
 
  /**
   * Sorts the elements of a vector
