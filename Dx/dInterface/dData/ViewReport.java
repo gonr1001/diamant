@@ -43,6 +43,7 @@ import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.StandardReportData;
 import dInternal.dUtil.DXValue;
+import dInternal.dUtil.DXToolsMethods;
 
 import dResources.DConst;
 
@@ -197,17 +198,38 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
       resultLine = "";
       for(int j = 0; j < strFieldsLength; j++){
         currentField = strFields.nextToken();
+
+        if(DXToolsMethods.countTokens(currentField,",") >1)
+          currentField = buildSpecialLine(fieldsLengths, j, currentField);
+        else {
+        currentField =DXToolsMethods.getToken(currentField, ",", 0);
+        }
         currentField = currentField + blanks;
         currentField = currentField.substring(0, fieldsLengths[j]);
         currentField = currentField + "|  ";
-        resultLine = resultLine + currentField;
+        resultLine += currentField;
       }//end internal for
       resultLine += DConst.CR_LF;
       _jTextArea.append(resultLine);
     }//end external for
     _jTextArea.setCaretPosition(0);
   }
+
+  private String buildSpecialLine(int[] fieldsLengths, int i, String currentField) {
+
+
+    return currentField;
+  }
+
+  private String adjustSize(String str, int size) {
+    String blanks = "                                                                          ";
+    str += blanks;
+
+    return str.substring(0,size);
+  }
+
 }
+
 
  /* if(subFields !=null) {
       if(subFields[j] != null){
