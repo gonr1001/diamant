@@ -31,7 +31,7 @@ private String _title;
    * @param dApplic
    */
   public UnityModifDlg(Dialog parent, DApplication dApplic,String title,Resource section) {
-    super(parent,dApplic,title+section.getID()+".","Nombre d'unités",1);
+    super(parent,dApplic,title+section.getID()+".", DConst.NUMBER_OF_UNITIES, 1);//    "Nombre d'blocs",1);
     _title=title+section.getID()+".";
     _section= (Section)section.getAttach();
     init();

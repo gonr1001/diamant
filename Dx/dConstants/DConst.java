@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.77 $  $Date: 2004-02-10 21:24:08 $
+ * Title: DConst $Revision: 1.78 $  $Date: 2004-02-11 14:22:21 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.77 $
+ * @version $Revision: 1.78 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -224,6 +224,13 @@ public class DConst {
 
   //PartialTTStructureDlg
 
+  //Modification
+
+  public final static String NUMBER_OF_TYPES = res.getString("numberOfTypes");//"Nombre de natures"
+  public final static String NUMBER_OF_SECTIONS = res.getString("numberOfSections");//"Nombre de groupes"
+  public final static String NUMBER_OF_UNITIES = res.getString("numberOfUnities");//"Nombre de blocs"
+
+
   // Manual improvementDlg
    public final static String MANUALIMPROVEMENT_DLG_TITLE = res.getString("ManImpDlgTitle");//Évenements
 
@@ -263,9 +270,9 @@ public class DConst {
 
    //the associated string length for each item above
   public final static String R_ACTIVITY_NAME_L = "7";
-  public final static String R_TYPE_NAME_L = "5";
+  public final static String R_TYPE_NAME_L = "8";
   public final static String R_SECTION_NAME_L = "8";
-  public final static String R_UNITY_NAME_L = "6";
+  public final static String R_UNITY_NAME_L = "8";
   public final static String R_DURATION_L = "6";
   public final static String R_DAY_NUMBER_L = "10";
   public final static String R_DAY_NAME_L = "6";

@@ -29,7 +29,7 @@ private String _title;
    * @param dApplic
    */
   public SectionModifDlg(Dialog parent, DApplication dApplic,String title,Resource type) {
-    super(parent,dApplic,title+type.getID()+".","Nombre de sections",1);
+    super(parent,dApplic,title+type.getID()+".",DConst.NUMBER_OF_SECTIONS,1);//  "Nombre de sections",1);
     //Vector [] vect= new Vector[1];
     _type= type;
     _title= title;

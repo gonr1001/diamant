@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.86 $  $Date: 2004-02-10 21:24:08 $
+ * Title: DStringFrRes $Revision: 1.87 $  $Date: 2004-02-11 14:22:21 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.86 $
+ * @version $Revision: 1.87 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -254,12 +254,18 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"SortByProgram", "Par programme"},
 
     //EventsDialog
-    {"EventsDlgTitle","Évenements"},
+    {"EventsDlgTitle","Liste d'évenements"},
     {"EventsFixed","Figés"},
     {"EventsPlaced","Placés"},
     {"EventsNotPlaced","Non placés"},
     //
     {"ManImpDlgTitle","Affectation manuelle"},
+
+
+
+    {"numberOfTypes","Nombre de natures"},
+    {"numberOfSections","Nombre de groupes"},
+    {"numberOfUnities","Nombre de blocs"},
 
     //Optimisation dialogs
     {"InitialAssignMessage", "Affectation initiale effectuée"},
@@ -278,9 +284,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"Report","Rapport"},
     {"ReportProducedAt","Produit en"},
     {"RActivityName","Nom"},
-    {"RTypeName","Type"},
-    {"RSectionName","Section"},
-    {"RUnityName","Unité"},
+    {"RTypeName","Nature"},
+    {"RSectionName","Groupe"},
+    {"RUnityName","Bloc"},
     {"RDuration","Durée"},
     {"RDayNumber","Jour(Nu.)"},
     {"RDayName","Jour"},
@@ -294,8 +300,8 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"RPeriodBeginH", "Périod(H. début)"},
     {"REvent1_ID","Événement 1"},
     {"REvent2_ID","Événement 2"},
-    {"RNumberOfConflicts","Conf.(No.)"},
-    {"RTypeOfConflict","Conflit(Type)"},
+    {"RNumberOfConflicts","Conflit(s)"},
+    {"RTypeOfConflict","Type Conf"},
     {"RStudentConflict","C-Étudiant"},
     {"RRoomConflict","C. C-Local"},
     {"RInstructorConflict","C-Instructor"},

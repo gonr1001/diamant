@@ -32,7 +32,7 @@ private DApplication _dApplic;
    * @param dApplic
    */
   public TypeModifDlg(Dialog parent, DApplication dApplic,Resource activity) {
-    super(parent,dApplic,activity.getID(),"Nombre de types",1);
+    super(parent,dApplic,activity.getID(), DConst.NUMBER_OF_TYPES, 1);//  )"Nombre de types",1);
     _dApplic= dApplic;
     Vector [] vect= new Vector[1];
     _activity= activity;

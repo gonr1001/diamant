@@ -250,15 +250,3 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
 }
 
 
- /* if(subFields !=null) {
-      if(subFields[j] != null){
-//System.out.println("subFields.length " + subFields.length);
-//System.out.println("subFields.length "+subFields[j].length);
-        for(int k = 0; k < subFields[j].length; k++){
-          if (currentField.equals(subFields[j][k][0])){
-            currentField = subFields[j][k][1];
-            break;
-          }//end internal if
-        }//end internal for
-      }//end external if
-      }*/
