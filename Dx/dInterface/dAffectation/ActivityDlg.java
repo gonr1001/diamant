@@ -42,7 +42,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private Object [] _currentActivities = new Object[0];
   private static String _listAct = "Liste des activités";
   private static String _showMes = "Afficher";
-  private static String _cancelMes = "Annuler";
+  private static String _closeMes = "Fermer";
   private static String _notIncluded = "Non inclue(s)";
   private static String _included = "Inclue(s)";
   private static String _toLeftMes = "««";
@@ -86,7 +86,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private void jbInit(){
     _show = new JButton(_showMes);
     _show.setPreferredSize(new Dimension(80,22));
-    _cancel = new JButton(_cancelMes);
+    _cancel = new JButton(_closeMes);
     _cancel.setPreferredSize(new Dimension(80,22));
     _listsPanel = new JPanel();
     //left panel
@@ -182,7 +182,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    if (command.equals(_cancelMes))
+    if (command.equals(_closeMes))
         dispose();
     if (command.equals(_showMes)){
       if (_currentActivities.length != 0)
