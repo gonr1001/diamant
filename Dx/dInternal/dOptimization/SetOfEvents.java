@@ -57,12 +57,13 @@ public class SetOfEvents extends SetOfResources{
                 roomKey = sor.getResourceAt(roomIndex).getKey();
               int[] dayTime = assignment.getDateAndTime();
               unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
+              String unityID = activity.getID()+"."+ type.getID()+"."+section.getID()+"."+unity.getID()+".";
               EventAttach event = new EventAttach(unityKey,instructorKey,roomKey,
                   ((Unity)unity.getAttach()).getDuration(),
                   ((Cycle)cycle.getAttach()).getPeriod(dayTime));
               event.setEventState(((Unity)unity.getAttach()).isAssign());
               //System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
-              this.addResource(new Resource(unityKey, event),0);
+              this.addResource(new Resource(unityID, event),0);
             }// end if(assignement!=null)
           }// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
         }// end for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++)

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.43 $  $Date: 2003-09-29 18:28:58 $
+ * Title: TTPanel $Revision: 1.44 $  $Date: 2003-09-29 20:21:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.44 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -60,8 +60,10 @@ public abstract class TTPanel {
   }
 
 
+
   public JScrollPane getJScrollPane() {
       return new JScrollPane();
+
   }
 
   abstract public Component getPanel();

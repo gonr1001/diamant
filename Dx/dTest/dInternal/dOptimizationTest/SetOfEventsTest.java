@@ -49,7 +49,7 @@ public class SetOfEventsTest extends TestCase {
        String firstEvent = _soa.getUnityCompleteName(Long.parseLong(keys.nextToken())
            ,Long.parseLong(keys.nextToken()),Long.parseLong(keys.nextToken()),
            Long.parseLong(keys.nextToken()));
-       assertEquals("test_build : assertEquals: ", "AMC6401 A1", firstEvent);
+       assertEquals("test_build : assertEquals: ", "AMC640.1.A.1.", firstEvent);
      }
 
      /**

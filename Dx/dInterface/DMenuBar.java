@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.73 $  $Date: 2003-09-23 15:07:01 $
+ * Title: DMenuBar $Revision: 1.74 $  $Date: 2003-09-29 20:21:47 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.73 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.74 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -175,7 +175,7 @@ public class DMenuBar extends JMenuBar{
     _openTTStruc.addActionListener(_dApplic);
     _file.add(_openTTStruc);
 
-    _close = new CmdMenu(DConst.CLOSE);
+    _close = new CmdMenu(DConst.BUT_CLOSE);
     _close.setFont( new java.awt.Font(_mfont, _font, _nPT) );
     _close.setCommand(new CloseCmd());
     _close.addActionListener(_dApplic);
