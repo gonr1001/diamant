@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.33 $  $Date: 2003-07-14 17:23:02 $
+ * Title: DConst $Revision: 1.34 $  $Date: 2003-07-28 09:17:52 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.34 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -25,8 +25,15 @@ import java.util.ResourceBundle;
 
 public class DConst {
 
+  //Shared constants
+
+  //Menu constants
+
+  //Dialog constants
+
+  //
   static ResourceBundle res = ResourceBundle.getBundle("dResources.DStringFrRes");
-  public final static String APP_NAME = res.getString("appName");
+  public final static String APP_NAME = res.getString("appName");//Diamant 1.5
   public final static String V_DATE = res.getString("vDate");
   //public final static String UN_TITLED = res.getString("untitled");
 
@@ -35,29 +42,28 @@ public class DConst {
   public final static String FILE  = res.getString("file");
   public final static String NEW_TT = res.getString("newTT");
   public final static String NEW_TT_TD  = res.getString("newTTTD");
-  public final static String NEW_TT_M  = res.getString("newTTM");
-
+  public final static String NEW_TT_M  = res.getString("newTTM");//Grille horaire
 
   public final static String NTT_CY = res.getString("nTTCy");
-  public final static String NTT_CY_TD  = res.getString("nTTCyTD");
-  public final static String NTT_CY_M  = res.getString("nTTCyM");
+  public final static String NTT_CY_TD  = res.getString("nTTCyTD");//Grille horaire cycle
+  public final static String NTT_CY_M  = res.getString("nTTCyM");//Cycle, utiliseé null part
 
-  public final static String NTT_EX = res.getString("nTTEx");
-  public final static String NTT_EX_TD  = res.getString("nTTExTD");
-  public final static String NTT_EX_M  = res.getString("nTTExM");
+  public final static String NTT_EX = res.getString("nTTEx");//Horaire Examen
+  public final static String NTT_EX_TD  = res.getString("nTTExTD");//Grille horaire examen
+  public final static String NTT_EX_M  = res.getString("nTTExM");//Examen, unp
 
 
   // public final static String N_TT  = res.getString("nTT");
   public final static String OPEN  = res.getString("open");
-  public final static String OPEN_TT_TD  = res.getString("oTTTD");
+  public final static String OPEN_TT_TD  = res.getString("oTTTD");//Horaire, unp
 
   public final static String CLOSE  = res.getString("close");
   //separator
   public final static String SAVE  = res.getString("save");
   public final static String SAVE_AS  = res.getString("saveAs");
 
-  public final static String DEF_F_M  = res.getString("defFM");
-  public final static String DEF_F_TD  = res.getString("defFTD");
+  public final static String DEF_F_M  = res.getString("defFM");//Definir fichiers à importer
+  public final static String DEF_F_TD  = res.getString("defFTD");//Definir fichiers pour l'importation automatique
 
   public final static String DEF_F_D1  = res.getString("defFD1"); // "Les cours"
   public final static String DEF_F_D2  = res.getString("defFD2"); // "Inscription d'étudiants"
@@ -68,10 +74,10 @@ public class DConst {
   public final static String DEF_F_D7  = res.getString("defFD7"); // "Sauvegardés dans : "
   public final static String DEF_F_D8  = res.getString("defFD8"); // "Fichiers d'importation"
 
-  public final static String IMP_A_M  = res.getString("impAM");
-  public final static String IMP_A_TD  = res.getString("impATD");
-  public final static String IMP_A_D  = res.getString("impAD");
-  public final static String IMP_A_SUC  = res.getString("impASuc");
+  public final static String IMP_A_M  = res.getString("impAM");//Importer automatiquement
+  public final static String IMP_A_TD  = res.getString("impATD");//Importation de fichiers
+  public final static String IMP_A_D  = res.getString("impAD");//To be defined, unp
+  public final static String IMP_A_SUC  = res.getString("impASuc");//Fichiers importés avec succes!!!
 
   public final static String EXPO  = res.getString("expo");
 
@@ -79,34 +85,34 @@ public class DConst {
 
 
   public final static String EDIT = "Edition";
-  final static String UNDO = "Annuler";
-  final static String REDO = "Repeter";
-  final static String CUT = "Couper";
+  final static String UNDO = "Annuler";//unp, the text is already in buttonCancel
+  final static String REDO = "Repeter";//unp
+  final static String CUT = "Couper";//unp
   public final static String COPY = res.getString("copy");
   final static String PASTE = "Coller";
   final static String CLEAR = "Effacer";
 
-  public final static String FILE_TTS  = res.getString("fileTTS");
-  public final static String NEW_TTS = res.getString("newTTS");
+  public final static String FILE_TTS  = res.getString("fileTTS");//Fichier_Grille, unp
+  public final static String NEW_TTS = res.getString("newTTS");//Nouvelle grille
  /* public final static String NEW_TT_TD  = res.getString("newTTTD");
   public final static String NEW_TT_M  = res.getString("newTTM");*/
 
 
-  public final static String NTTS_CY = res.getString("nTTSCy");
+  public final static String NTTS_CY = res.getString("nTTSCy");//Grille cycle
 /*  public final static String NTTS_CY_TD  = res.getString("nTTCyTD");
   public final static String NTTS_CY_M  = res.getString("nTTCyM");*/
 
-  public final static String NTTS_EX = res.getString("nTTSEx");
+  public final static String NTTS_EX = res.getString("nTTSEx");//Grille examen
 /*  public final static String NTTS_EX_TD  = res.getString("nTTExTD");
   public final static String NTTS_EX_M  = res.getString("nTTExM");*/
 
 
   public final static String OPEN_TTS  = res.getString("openTTS");
-  public final static String O_TTSTD  = res.getString("oTTSTD");
+  public final static String O_TTSTD  = res.getString("oTTSTD");//Grille, unp
 
-  public final static String CLOSE_TTS  = res.getString("closeTTS");
-  public final static String SAVE_TTS  = res.getString("saveTTS");
-  public final static String SAVE_AS_TTS  = res.getString("saveAsTTS");
+  public final static String CLOSE_TTS  = res.getString("closeTTS");//Fermer grille, unp
+  public final static String SAVE_TTS  = res.getString("saveTTS");//Enregistrer grille, unp
+  public final static String SAVE_AS_TTS  = res.getString("saveAsTTS");//Enregistrer grille sous, unp
 
   public final static String ASSIGN = res.getString( "assign");
   public final static String INST_ASSIGN_M = res.getString( "instAssignM");
