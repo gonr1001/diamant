@@ -14,9 +14,9 @@ package dInternal.dXMLData.rooms;
 
 import java.util.EventObject;
 
-public class SetOfRoomsCategoriesEvent extends EventObject{
+public class SetOfCategoriesEvent extends EventObject{
 
-  public SetOfRoomsCategoriesEvent(SetOfRoomsCategories source) {
+  public SetOfCategoriesEvent(SetOfCategories source) {
     super (source);
   }
 }

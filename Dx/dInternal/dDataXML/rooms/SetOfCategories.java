@@ -25,7 +25,7 @@ import dInternal.dData.RoomsAttributesInterpretor;
 import dInternal.dData.SetOfRoomsListener;
 import dInternal.dUtil.XMLTools;
 
-public class SetOfRoomsCategories extends SetOfResources{
+public class SetOfCategories extends SetOfResources{
 
   //XML tags
   static final String _ROOMTAGITEM="SetofCategories";
@@ -53,7 +53,7 @@ public class SetOfRoomsCategories extends SetOfResources{
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay (number of days), int nbPerDay (number of periods a day)
   * */
-  public SetOfRoomsCategories(String fileName, int nbDay, int nbPerDay) {
+  public SetOfCategories(String fileName, int nbDay, int nbPerDay) {
     super(3);
     _numberOfLines = nbDay;
     _numberOfColumns = nbPerDay;
@@ -104,7 +104,7 @@ public class SetOfRoomsCategories extends SetOfResources{
    * @param component
    */
  public void sendEvent(Component component) {
-   SetOfRoomsCategoriesEvent event = new SetOfRoomsCategoriesEvent(this);
+   SetOfCategoriesEvent event = new SetOfCategoriesEvent(this);
    /*for (int i=0; i< _sorListeners.size(); i++) {
      SetOfRoomsListener sorl = (SetOfRoomsListener) _sorListeners.elementAt(i);
      sorl.changeInSetOfRooms(event, component);
