@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.2 $  $Date: 2003-05-22 14:18:41 $
+ * Title: DefFileToImportDlg $Revision: 1.3 $  $Date: 2003-05-27 10:22:48 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.3 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -239,10 +239,11 @@ public class DefFilesToImportDlg extends JDialog
   private void saveFile(String str) {
   try {
     ByteOutputFile bof = new ByteOutputFile(str);
-    String thefiles = _tfActivities.getText()+ CR_LF;
-    thefiles += _tfStudents.getText()+ CR_LF;
-    thefiles += _tfInstructors.getText()+ CR_LF;
-    thefiles += _tfRooms.getText();
+    String thefiles;
+    thefiles = _tfInstructors.getText()+ CR_LF;
+    thefiles += _tfRooms.getText()+ CR_LF;
+    thefiles += _tfActivities.getText()+ CR_LF;
+    thefiles += _tfStudents.getText();
     bof.writeFile(thefiles.getBytes());
     bof.close();
   } catch(IOFileException iofe) {

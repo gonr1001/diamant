@@ -5,7 +5,7 @@ import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.Const.Tag;
 import org.w3c.dom.*;
-import javax.xml.parsers.FactoryConfigurationError;
+//import javax.xml.parsers.FactoryConfigurationError;
 
 public class TTStructure {
   private SetOfCycles _setOfCycles;
@@ -17,7 +17,7 @@ public class TTStructure {
   public TTStructure() {
     _col=6;
     _row= 15;
-    //saveStandardTT("StandardTTC.txt");
+   // saveStandardTT("StandardTTC.txt");
   }
 
  public SetOfResources getSetOfCycles() {
@@ -82,11 +82,11 @@ public Period getPeriod(){
       doc= wr.buildDOM(doc,eltSeqs);
       writeFile.write(doc,fileName);
     } catch(Exception e){
-      System.out.println(e);//debug
+      System.out.println("TTStructure: "+e);//debug
     }
-    catch(FactoryConfigurationError e){
+    /*catch(FactoryConfigurationError e){
       System.out.println("Factory: "+e);//debug
-    }
+    }*/
 
 
   }

@@ -39,7 +39,7 @@ public class LoadData {
    */
   public LoadData(String args) {
     _v = new Vector(); // to eliminate
-    String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator;
+    String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
     _functionFileName=path+"DXfunctions.sig";
     _caractFileName=path+"DXcaracteristics.sig";
     _roomsAttributesInterpretor= extractRoomsAttributesInterpretor();
