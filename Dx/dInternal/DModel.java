@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.12 $  $Date: 2003-05-05 16:52:58 $
+ * Title: DModel $Revision: 1.13 $  $Date: 2003-05-06 14:59:17 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.13 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -30,9 +30,9 @@ public class DModel{
   private Vector _dmListeners = new Vector();
   private TTParameters _ttParameters;
   private Status _status;
-  private SetOfInstructors _instructorsList;
+  private SetOfInstructors _setOfInstructors;
   private SetOfRooms _roomsList;
-  private SetOfStudents _studentList;
+  private SetOfStudents _setOfStudents;
   private JFrame _jFrame;
 
   public DModel(JFrame jFrame) {
@@ -55,10 +55,17 @@ public class DModel{
     String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
     str = path;
     LoadData loadData = new LoadData(str);
-    //if (loadData.doExtractOk()) {
-      _instructorsList = loadData.extractInstructors(null, false);
-     if( _instructorsList.getError().length()!=0){
-       new FatalProblemDlg(_jFrame,_instructorsList.getError());
+    // import set of instructors
+      _setOfInstructors = loadData.extractInstructors(null, false);
+     if( _setOfInstructors.getError().length()!=0){
+       new FatalProblemDlg(_jFrame,_setOfInstructors.getError());
+      System.exit(1);
+     }
+
+     // import set of students
+     _setOfStudents = loadData.extractStudents(null, false);
+     if(_setOfStudents.getError().length()!=0){
+       new FatalProblemDlg(_jFrame,_setOfStudents.getError());
       System.exit(1);
      }
 
@@ -74,7 +81,7 @@ public class DModel{
 
 
   public SetOfInstructors getSetOfInstructors(){
-    return _instructorsList;
+    return _setOfInstructors;
   }
 
   public TTParameters getTTParameters() {

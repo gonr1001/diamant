@@ -42,7 +42,7 @@ public class SetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
     SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens();
+    instructorsList.analyseTokens(0);
     assertEquals("test_analyseTokens: assertEquals", DConst.INST_TEXT1,
                  instructorsList.getError().substring(0,DConst.INST_TEXT1.length()));
 
@@ -67,7 +67,7 @@ public class SetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
     SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens();
+    instructorsList.analyseTokens(0);
     assertEquals("test1_analyseTokens: assertEquals", DConst.INST_TEXT3,
                  instructorsList.getError().substring(0,DConst.INST_TEXT3.length()));
 
@@ -92,7 +92,7 @@ public class SetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
     SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens();
+    instructorsList.analyseTokens(0);
     assertEquals("test2_analyseTokens: assertEquals", DConst.INST_TEXT1,
                  instructorsList.getError().substring(0,DConst.INST_TEXT1.length()));
   }
@@ -116,7 +116,7 @@ public class SetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
     SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens();
+    instructorsList.analyseTokens(0);
     assertEquals("test3_analyseTokens: assertEquals", DConst.INST_TEXT3,
                  instructorsList.getError().substring(0,DConst.INST_TEXT3.length()));
   }
@@ -140,7 +140,7 @@ public class SetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
     SetOfInstructors instructorsList= new SetOfInstructors(tokens.getBytes(),5,14);
-    instructorsList.analyseTokens();
+    instructorsList.analyseTokens(0);
     assertEquals("test4_analyseTokens: assertEquals", DConst.INST_TEXT4,
                  instructorsList.getError().substring(0,DConst.INST_TEXT4.length()));
   }

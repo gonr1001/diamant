@@ -12,6 +12,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
+import dResources.DConst;
 
 public class SetOfStudents extends SetOfResources{
 
@@ -22,6 +23,7 @@ public class SetOfStudents extends SetOfResources{
   private static final int _ENDSTUDENTNAME=30;
   private static final int _BEGINSTUDENTNUMBEROFCOURSE=30;
   private static final int _ENDSTUDENTNUMBEROFCOURSE=32;
+  private String _error="";
   /** Course length*/
     private int _COURSELENGTH = 7;
 
@@ -55,47 +57,59 @@ public class SetOfStudents extends SetOfResources{
     int state=0;
     int position=beginPosition;
     int line=0;
+    int numberOfStudents=0;
+    int countStudents=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
       line++;
       switch (position){
         case 0:// number of students
+          try{
+            numberOfStudents= (new Integer (token.trim())).intValue();
+          }catch(NumberFormatException exc){
+            _error = DConst.STUD_TEXT6+ line + "\n" + DConst.STUD_TEXT5;
+            return false;
+          }
           position = 1;
           break;
         case 1:// student ID (matricule and name)
           try{
-            (new Integer (token.substring(_BEGINSTUDENTMATRICULE,
+             (new Integer (token.substring(_BEGINSTUDENTMATRICULE,
                 _ENDSTUDENTMATRICULE).trim())).intValue();
           }catch (NumberFormatException exc){
             //System.out.println(exc+" --- "+token+ " *** line: "+line);//debug
-            new FatalProblemDlg(
-            "Wrong student matricule at line: "+ line +  "in the student file:" +
-            "\n" + "I was in StudentList class and in analyseTokens method ");
-            System.exit(1);
+            _error = DConst.STUD_TEXT1+ line +  DConst.STUD_TEXT4  +
+            "\n" + DConst.STUD_TEXT5;
+            return false;
           }
           if (token.substring(_BEGINSTUDENTNAME, _ENDSTUDENTNAME).trim().length()==0){
-            new FatalProblemDlg(
-            "Wrong student name at line: "+line+  "in the student file:" +
-            "\n" + "I was in StudentList class and in analyseTokens method ");
-            System.exit(1);
+            _error =DConst.STUD_TEXT2+line+  DConst.STUD_TEXT4  +
+            "\n" + DConst.STUD_TEXT5;
+            return false;
           }
           position = 2;
+          countStudents++;
           break;
         case 2:// student courses choice
           StringTokenizer courses = new StringTokenizer(new String (token) );
           String courseToken;
           while (courses.hasMoreTokens()){
             if(courses.nextToken().length()<_COURSELENGTH){
-              new FatalProblemDlg(
-                  "Wrong student course choice at line: "+line+  "in the student file:" +
-                  "\n" + "I was in StudentList class and in analyseTokens method ");
-              System.exit(1);
+              _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
+                  "\n" + DConst.STUD_TEXT5;
+              return false;
             }
           }//while (courses.hasMoreTokens())
           position = 1;
           break;
       }// end switch (position)
     }// end while (st.hasMoreElements())
+
+    if (countStudents!=numberOfStudents){
+      _error = DConst.INST_TEXT1 +
+            "\n" + DConst.INST_TEXT6;
+      return false;
+    }
     return true;
   }
 
@@ -175,6 +189,8 @@ public class SetOfStudents extends SetOfResources{
     return false;
   }
 
-
+  public String getError() {
+    return _error;
+  }
 
 }

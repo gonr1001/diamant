@@ -27,7 +27,7 @@ public class DXValue extends DXObject{
    * Contructor
    * */
   public DXValue() {
-    _intValue=0;
+    _intValue=-1;
     _refNo=0;
     _booleanValue=false;
     _stringValue="";
