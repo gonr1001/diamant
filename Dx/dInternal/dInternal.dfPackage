@@ -50,13 +50,13 @@ class reference1 {
 */
 class reference2 {
 }/**
-@__ref <oiref:design#Class#id627kdm6iynt4dm6iz6nh.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id3tjuzdls46i76dls47cd4.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInternal.dAlgorithms:oiref> 
 */
 class reference3 {
 }/**
-@__ref <oiref:design#Class#id4m97bdm6iynt4dm6iz6nx.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id4h1ycdlcg4xmcdlcg5gd9.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInternal.dConditionsTest:oiref> 
 */
@@ -72,7 +72,7 @@ class __tags {
 class __options {
 }/**
 @__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.DModelProcess#_dm:oiref>=216,232,216,292:oigroup>
-<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=327,290,163,302,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=327,290,200,366,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=327,630,93,101,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,10,141,117,1:oigroup>
 <oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=391,10,115,116,1:oigroup>
@@ -80,11 +80,11 @@ class __options {
 <oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=261,292,261,232:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=171,10,200,222,1:oigroup>
-<oigroup:<oiref:design#Class#id627kdm6iynt4dm6iz6nh.diagram:oiref>=678,10,149,116,1:oigroup>
+<oigroup:<oiref:design#Class#id3tjuzdls46i76dls47cd4.diagram:oiref>=386,139,149,116,1:oigroup>
 <oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=847,10,169,548,1:oigroup>
-<oigroup:<oiref:design#Class#id4m97bdm6iynt4dm6iz6nx.diagram:oiref>=475,864,177,244,1:oigroup>
 <oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=327,864,128,164,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModel:oiref>=107,292,200,862,1:oigroup>
+<oigroup:<oiref:design#Class#id4h1ycdlcg4xmcdlcg5gd9.diagram:oiref>=542,435,177,244,1:oigroup>
 */
 class __positions {
 }

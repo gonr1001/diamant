@@ -166,7 +166,7 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.StudentAttach#_courses:oiref>=2313,884,1131,689:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.RoomAttach:oiref>=1112,884,200,299,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfActivitiesListener:oiref>=2014,470,145,114,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivities:oiref>=678,884,194,235,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivities:oiref>=678,884,194,251,1:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfInstructors#dInternal.dData.SetOfResources:oiref>=91,884,958,689:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfResources:oiref>=946,369,200,320,0:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfStates#dInternal.dData.SetOfResources:oiref>=1418,884,1075,689:oigroup>

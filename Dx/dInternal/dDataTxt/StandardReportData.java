@@ -70,9 +70,9 @@ public class StandardReportData {
    */
   public StandardReportData(DModel dm) {
     _dm=dm;
-    _activitiesReport= sortReport(buildActivitiesReport());
+    _activitiesReport= buildActivitiesReport();
     _studentsReport = buildStudentsReport();
-    _conflictsReport= sortReport(buildConflictsReport());
+    _conflictsReport= buildConflictsReport();
 
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
@@ -144,7 +144,7 @@ public class StandardReportData {
    * @return
    */
   public String getActivitiesReport( int principalElt, int[] otherElts){
-    return getReport(_activitiesReport,principalElt,otherElts);
+    return sortReport(getReport(_activitiesReport,principalElt,otherElts));
   }
 
   /**
@@ -154,7 +154,7 @@ public class StandardReportData {
    * @return
    */
   public String getConflictsReport( int principalElt, int[] otherElts){
-    return getReport(_conflictsReport, principalElt, otherElts);
+    return sortReport(getReport(_conflictsReport, principalElt, otherElts));
   }
 
   /**
@@ -164,7 +164,7 @@ public class StandardReportData {
    * @return
    */
   public String getStudentsReport( int principalElt, int[] otherElts){
-    return getReport(_studentsReport,principalElt,otherElts);
+    return sortReport(getReport(_studentsReport,principalElt,otherElts));
   }
 
   /**
@@ -351,8 +351,8 @@ public class StandardReportData {
     for (int i=0; i< res.size(); i++)
       newRep+= res.get(i).toString()+SetOfActivities.CR_LF;
 
-    System.out.println("******************************************");//debug
-    System.out.println(newRep);//debug
+    //System.out.println("******************************************");//debug
+    //System.out.println(newRep);//debug
     return newRep;
   }
 
