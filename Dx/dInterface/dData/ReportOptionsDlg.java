@@ -123,7 +123,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     DXValue dxv;
     switch(reportType){
       case 0://_activitiesReport
-        String [][] elements =
+        String [][] activitiesElements =
         {
           {DConst.R_ACTIVITY_NAME, DConst.R_ACTIVITY_NAME_L},
           {DConst.R_TYPE_NAME, DConst.R_TYPE_NAME_L},
@@ -137,21 +137,21 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
           {DConst.R_INSTRUCTOR_NAME, DConst.R_INSTRUCTOR_NAME_L},
           {DConst.R_ROOM_NAME, DConst.R_ROOM_NAME_L}
         };
-        reportElements = elements;
+        reportElements = activitiesElements;
         break;
-      case 1://_studentsReport
-        _leftVec.add("Un");
-        _leftVec.add("Deux");
-        _leftVec.add("Trois");
-        _leftVec.add("Quatre");
-        _leftVec.add("Cinq");
-        break;
-      case 2://_conflictsReport
-        _leftVec.add("Uno");
-        _leftVec.add("Dos");
-        _leftVec.add("Tres");
-        _leftVec.add("Cuatro");
-        _leftVec.add("Cinco");
+      case 1://_conflictsReport
+        String [][] conflictsElements =
+        {
+          {DConst.R_DAY_NUMBER, DConst.R_DAY_NUMBER_L},
+          {DConst.R_DAY_NAME, DConst.R_DAY_NAME_L},
+          {DConst.R_SEQUENCE_ID, DConst.R_SEQUENCE_ID_L},
+          {DConst.R_UNITY_NAME, DConst.R_UNITY_NAME_L},
+          {DConst.R_EVENT1_ID, DConst.R_EVENT1_ID_L},
+          {DConst.R_EVENT2_ID, DConst.R_EVENT2_ID_L},
+          {DConst.R_CONFLICT_INT, DConst.R_CONFLICT_INT_L},
+          {DConst.R_CONFLICT_STRING, DConst.R_CONFLICT_STRING_L},
+        };
+        reportElements = conflictsElements;
         break;
     }//end switch
     for(int i = 0; i < reportElements.length; i++){

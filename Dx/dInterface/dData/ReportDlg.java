@@ -13,9 +13,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -58,15 +55,15 @@ public class ReportDlg extends JDialog implements ActionListener{
    */
   private void jbInit(){
     Dimension dialogDim = new Dimension(1000,600);
-    Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-60);
-    Dimension tabDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-60);
+    Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-70);
+    Dimension tabDim = tabbedPaneDim;//new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-70);
     getContentPane().setLayout(new BorderLayout());
     setSize(dialogDim);
     setResizable(true);
     //the tabbedPane
     _tabbedPane = new JTabbedPane();
     _tabbedPane.setPreferredSize(tabbedPaneDim);
-    _tabbedPane.addTab(DConst.REPORT_DLG_TAB1, createTabPanel(tabbedPaneDim, ""));
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB1, createTabPanel(tabbedPaneDim, "Clicker sur le button Options pour définir les champs du rapport"));
     _tabbedPane.addTab(DConst.REPORT_DLG_TAB2, createTabPanel(tabbedPaneDim, ""));
     _tabbedPane.addTab(DConst.REPORT_DLG_TAB3, createTabPanel(tabbedPaneDim, ""));
     //adding the elements to the dialog
@@ -78,11 +75,11 @@ public class ReportDlg extends JDialog implements ActionListener{
    * Builds a panel contained into a tab of a tabbedPanel. This panel contains
    * a JTextArea for displaying a String
    * @param dim The panel dimension
-   * @param reportData The String to be displayed in this panel
-   * @return
+   * @param message The first message to be displayed into the text area
+   * @return the tabPanel
    */
-  private JPanel createTabPanel(Dimension dim, String reportData){
-    JTextArea jta = new JTextArea(reportData);
+  private JPanel createTabPanel(Dimension dim, String message){
+    JTextArea jta = new JTextArea(message);
     JPanel panel = new JPanel(new BorderLayout());
     panel.setPreferredSize(dim);
     JScrollPane scrollPane = new JScrollPane();
@@ -179,12 +176,14 @@ public class ReportDlg extends JDialog implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //If buttons OPTIONS
-    if (command.equals("Options"))
-        new ReportOptionsDlg(_dApplic, _jd, _resources, 0);
-    if (command.equals("Fermer"))
+    //If "Option" button
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
+        new ReportOptionsDlg(_dApplic, _jd, _resources, _tabbedPane.getSelectedIndex());
+    //If "Cancel" button
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
       dispose();
-  }
+  }//end method
+
 
   /**
    * Gets the data report with regard to the type of required report
@@ -201,10 +200,10 @@ public class ReportDlg extends JDialog implements ActionListener{
         dataReport = _srd.getActivitiesReport(mainFieldKey, otherFieldsKeys);
         break;
       case 1 :
-        dataReport = _srd.getStudentsReport(mainFieldKey, otherFieldsKeys);
+        dataReport = _srd.getConflictsReport(mainFieldKey, otherFieldsKeys);
         break;
-    }
+    }//end switch
     return dataReport;
-  }
+  }//end method
 
 }//end class

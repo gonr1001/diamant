@@ -125,6 +125,16 @@ public class StandardReportData {
    }
 
    /**
+   * return standard conflicts report
+   * @param principalElt The index of the first report element
+   * @param otherElts The index of the other report elements
+   * @return
+   */
+  public String getConflictsReport( int principalElt, int[] otherElts){
+     return getReport(_conflictsReport, principalElt, otherElts);
+   }
+
+   /**
    * return standard student report
    * @param principalElt
    * @param otherElt

@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.56 $  $Date: 2003-10-03 21:49:11 $
+ * Title: DStringFrRes $Revision: 1.57 $  $Date: 2003-10-07 13:43:24 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -258,12 +258,20 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"RActivityEndHour","Fin"},
     {"RInstructorName","Instructor"},
     {"RRoomName","Salle"},
+    {"RSequenceID","Séquence"},
+    {"REvent1_ID","Activité 1"},
+    {"REvent2_ID","Activité 2"},
+    {"RConflictInt","No. conflit "},
+    {"RConflictString","Nom comflit"},
     {"",""},
     {"",""},
     {"",""},
     {"",""},
     {"",""},
     {"",""},
+    {"",""},
+
+
 
     //ToolBar
     {"tBDay", "Jour"},
