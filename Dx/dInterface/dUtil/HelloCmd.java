@@ -24,6 +24,6 @@ public class HelloCmd implements Command {
   public void execute(DApplication dApplic) {
     TTStructure tts= new TTStructure();
     dApplic.getDMediator().addDoc("Sans titre", tts);
-    dApplic.getToolBar().setToolBar(tts);
+    dApplic.getToolBar().setToolBars(tts);
   } // end execute
 } /* end HelloCmd class */

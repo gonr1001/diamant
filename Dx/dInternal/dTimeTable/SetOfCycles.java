@@ -89,7 +89,7 @@ public class SetOfCycles {
   /**
    * */
   public Cycle getCycle(int cycleIndex){
-    return (Cycle)_setOfCycles.getResource((cycleIndex)).getAttach();
+    return (Cycle)_setOfCycles.getResourceAt((cycleIndex)).getAttach();
   }
 
   /**
@@ -113,7 +113,7 @@ public class SetOfCycles {
 
   private SetOfResources _setOfCycles;
   private int _periodLenght;
-  private int _currentCycleIndex=1;
+  private int _currentCycleIndex=0;
   static final String _TAGITEM="TTcycle";
   static final String _TAGITEM1="cycleID";
   static final String _TAGITEM2="pLength";

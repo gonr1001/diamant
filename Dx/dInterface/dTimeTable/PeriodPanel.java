@@ -71,6 +71,23 @@ public class PeriodPanel extends JPanel{
   }
 
   /**
+   * @return int the period reference number
+   * */
+  public int getPanelRefNo(){
+
+    return _panelRefNo;
+  }
+
+  /**
+   * @return int[] the period reference of the panel. int[0]= the day,
+   * int[1]= the sequence, int[2]= the period reference number
+   * */
+  public int[] getPeriodRef(){
+    int [] per={_TTSday,_TTSseq,_TTSperiod};
+    return per;
+  }
+
+  /**
   *
   * */
  private void setPanelColor( int priority){

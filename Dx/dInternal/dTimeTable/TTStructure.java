@@ -28,6 +28,7 @@ public class TTStructure {
     "sequenceID","priority","BeginTime","EndTime","periodID","dayID"};
 
   public static final String [] _weekTable = {"Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"};
+  public static final String [] _priorityTable = {"Normale", "Basse", "Nulle"};
 
   private String _str;
   private int _col;
@@ -437,6 +438,7 @@ public class TTStructure {
      for (int i=0; i< _ttsListeners.size(); i++) {
        TTStructureListener ttsl = (TTStructureListener) _ttsListeners.elementAt(i);
        ttsl.changeInTTStructure(event);
+       //System.out.println("sendEvent: "+event.toString()+"   --I:"+i);
      }
    }
 

@@ -155,6 +155,19 @@ public class TTPanel extends JScrollPane {
      return panel;
   }
 
+  /**
+   * @param int the period panel reference
+   * */
+  public PeriodPanel getPeriodPanel(int ppRef){
+    JPanel thePanel= (JPanel)getViewport().getComponent(0);
+    for (int i=0; i< thePanel.getComponentCount(); i++){
+      PeriodPanel ppanel= (PeriodPanel)thePanel.getComponent(i);
+      if(ppanel.getPanelRefNo()==ppRef)
+        return ppanel;
+    }
+    return null;
+  }
+
 }
 
 

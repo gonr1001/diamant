@@ -15,7 +15,7 @@ public class Cycle extends DXObject{
 
   //********Alex
   //private Day _currentDay;
-  private int _currentDayIndex=1;
+  private int _currentDayIndex=0;
   //********Alex/
 
 
@@ -28,11 +28,20 @@ public class Cycle extends DXObject{
    * */
   public void addDays(int nbDays){
     int size= _setOfDays.size();
-    Day day= (Day)_setOfDays.getResourceAt(size-1).getAttach();
+    Resource day= _setOfDays.getResourceAt(size-1);
+    String lastDayID= day.getID();
+    int lastIndWeek=0;
+    for(int i=0; i< TTStructure._weekTable.length; i++)
+      if(TTStructure._weekTable[i].equalsIgnoreCase(lastDayID)){
+        lastIndWeek=i;
+        break;
+      }
+
     for (int i=size; i< (size+nbDays); i++){
-      String dayID= TTStructure._weekTable[i%TTStructure.getNumberOfActiveDays()];
+      lastIndWeek++;
+      String dayID= TTStructure._weekTable[lastIndWeek%TTStructure.getNumberOfActiveDays()];
       _setOfDays.setCurrentKey(i+1);
-      _setOfDays.addResource(new Resource(dayID,day),0);
+      _setOfDays.addResource(new Resource(dayID,(Day)day.getAttach()),0);
     }
   }
 
@@ -77,9 +86,10 @@ public class Cycle extends DXObject{
   }
 
   /**
+   * @param int the index of the day
    * */
   public Day getDay(int dayIndex){
-    return (Day)_setOfDays.getResource((dayIndex)).getAttach();
+    return (Day)_setOfDays.getResourceAt((dayIndex)).getAttach();
   }
 
   /**
