@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTExDlg $Revision: 1.1 $  $Date: 2003-06-01 02:39:16 $
+ * Title: NewTTExDlg $Revision: 1.2 $  $Date: 2003-06-02 13:18:17 $
  * Description: NewTTExDlg is created by NewTTExCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -45,7 +45,6 @@ import dInternal.dTimeTable.TTStructure;
  */
 
 public class NewTTExDlg extends JDialog {
-  //DApplication _dApplic;
   /**
     * the constructor will displays the dialog
     *
@@ -80,7 +79,7 @@ public class NewTTExDlg extends JDialog {
        dApplic.setCurrentDir(fil);
        //load grille,
        TTStructure ttStruct = new TTStructure();
-       String error = "";// ttStruct.loadData(fil);
+       String error = ttStruct.loadData(fil);
 
        dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
 
