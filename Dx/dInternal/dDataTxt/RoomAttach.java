@@ -185,8 +185,9 @@ public class RoomAttach extends DXObject{
    * @return bolean true if this resource and the specified resource are equals
    * false if they are not equals
    * */
-  public boolean equals(RoomAttach roomAttach){
-    /*if(_capacity!=roomAttach._capacity)
+  public boolean isEquals(DXObject room){
+    RoomAttach roomAttach = (RoomAttach)room;
+    if(_capacity!=roomAttach._capacity)
       return false;
     else
       if(_function!= roomAttach._function)
@@ -198,8 +199,8 @@ public class RoomAttach extends DXObject{
       if (!_roomDisp.equals(roomAttach._roomDisp))
         return false;
     else
-      if (!_setOfCaracteristics.equals(roomAttach._setOfCaracteristics))
-        return false;*/
+      if (!_setOfCaracteristics.isEquals(roomAttach._setOfCaracteristics))
+        return false;
     return true;
   }
 

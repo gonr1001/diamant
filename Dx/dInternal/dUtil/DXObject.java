@@ -58,6 +58,14 @@ public class DXObject extends Object{
     return id;
   }
 
+  /**
+   *
+   * */
+  public boolean isEquals(DXObject obj){
+    return true;
+  }
+
+
 
 
 }
