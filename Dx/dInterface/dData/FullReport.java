@@ -48,15 +48,33 @@ import dResources.DConst;
 
 
 public class FullReport extends ViewReport implements ActionListener {
-
+//String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   public FullReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
     String [] strArray ={DConst.BUT_OPTIONS};
     //disableButtons(_buttonsPanel, strArray);
+    _vec = fullVector();
     int [] a= {1,2,3,4,5,6,7,8,9};
     _jTextArea.setText((_parentDlg.getStandardReportData()).getActivitiesReport(0,a));
   }
 
+  private Vector fullVector() {
+    Vector v = new Vector();
+      /*  {
+          {DConst.R_ACTIVITY_NAME, DConst.R_ACTIVITY_NAME_L},
+          {DConst.R_TYPE_NAME, DConst.R_TYPE_NAME_L},
+          {DConst.R_SECTION_NAME, DConst.R_SECTION_NAME_L},
+          {DConst.R_UNITY_NAME, DConst.R_UNITY_NAME_L},
+          {DConst.R_DURATION, DConst.R_DURATION_L},
+          {DConst.R_DAY_NUMBER, DConst.R_DAY_NUMBER_L},
+          {DConst.R_DAY_NAME, DConst.R_DAY_NAME_L},
+          {DConst.R_ACTIVITY_BEGIN_HOUR, DConst.R_ACTIVITY_BEGIN_HOUR_L},
+          {DConst.R_ACTIVITY_END_HOUR, DConst.R_ACTIVITY_END_HOUR_L},
+          {DConst.R_INSTRUCTOR_NAME, DConst.R_INSTRUCTOR_NAME_L},
+          {DConst.R_ROOM_NAME, DConst.R_ROOM_NAME_L}
+        };*/
+    return v;
+  }
   public void setImportReport(JTextArea jta){
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport d'importation");
@@ -85,38 +103,39 @@ public class FullReport extends ViewReport implements ActionListener {
     //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
     jta.setCaretPosition(0);
   }
+
   public void actionPerformed(ActionEvent e){
-    String command = e.getActionCommand();
-    //if "Option" button
-    if (e.getActionCommand().equals(_buttonsNames[1]))
-      ; // it is disabled
-    //if "Close" button
-    if (e.getActionCommand().equals(_buttonsNames[2]))
+   String command = e.getActionCommand();
+   //if "Option" button
+   if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
+     new ReportOptionsDlg(_dApplic,
+                            _parentDlg,
+                            new Vector(),
+                            0);
+   //if "Close" button
+   if (e.getActionCommand().equals(DConst.BUT_CLOSE))
       //System.out.println("_buttonsNames[2]");
-      dispose();
-    //if "Save as" button
+     dispose();
+   //if "Save as" button
+   if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
+      //System.out.println("_buttonsNames[0]");
+       Date date = new Date();
+       SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
 
-    if (e.getActionCommand().equals(_buttonsNames[0])){
-      System.out.println("_buttonsNames[0]");
-      //if ( _done ){
-      Date date = new Date();
-      SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
-
-      JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
-      String data = "***** " +
-                    DConst.REPORT +
-                    " " +
-                    DConst.TO_LEFT +
-                  //_tabbedPane.getTitleAt(_tabbedPane.getSelectedIndex()) +
-      DConst.TO_RIGHT + " ";
-      data +=  DConst.REPORT_PRODUCED_AT +
-               " " +
-               sdf.format(date) +
-               " *****" +
-               DConst.CR_LF + DConst.CR_LF;
-      data +=  jta.getText();
-      new SaveAsDlg(_dApplic, data);
-      //}//end internal if
-    }//end if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
+       JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
+       String data = "***** " +
+                     DConst.REPORT +
+                     " " +
+                     DConst.TO_LEFT +
+                     DConst.REPORT_DLG_TAB3 +
+                     DConst.TO_RIGHT + " ";
+       data +=  DConst.REPORT_PRODUCED_AT +
+                " " +
+                sdf.format(date) +
+                " *****" +
+                DConst.CR_LF + DConst.CR_LF;
+       data +=  jta.getText();
+       new SaveAsDlg(_dApplic, data);
+   }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
 }

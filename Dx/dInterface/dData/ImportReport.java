@@ -48,7 +48,7 @@ import dResources.DConst;
 
 
 public class ImportReport extends ViewReport implements ActionListener {
-
+//String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   public ImportReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
     String [] strArray ={DConst.BUT_OPTIONS};
@@ -85,17 +85,18 @@ public class ImportReport extends ViewReport implements ActionListener {
     //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
     jta.setCaretPosition(0);
   }
+
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if "Option" button
-    if (e.getActionCommand().equals(_buttonsNames[1]))
+    if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
        ; // it is disabled
     //if "Close" button
-    if (e.getActionCommand().equals(_buttonsNames[2]))
+    if (e.getActionCommand().equals(DConst.BUT_CLOSE))
        //System.out.println("_buttonsNames[2]");
       dispose();
     //if "Save as" button
-    if (e.getActionCommand().equals(_buttonsNames[0])){
+    if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
        //System.out.println("_buttonsNames[0]");
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");

@@ -48,18 +48,27 @@ import dResources.DConst;
 
 
 public class ViewReport  extends JPanel implements ActionListener {
-  protected String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+
   ReportsDlg _parentDlg;
   JScrollPane _scrollPane;
   DApplication _dApplic;
   JTextArea _jTextArea;
   JPanel _buttonsPanel;
+  Vector _vec;
 
+  protected class FieldRecord {
+   int _n;
+   String _str;
+   FieldRecord(int n, String str){
+     _n = n; _str = str;
+   }
+  }
 
   public ViewReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     //super(new BorderLayout());
     _parentDlg = parentDlg;
     _dApplic = dApplic;
+    _vec = new Vector();
     _jTextArea = new JTextArea();
     this.setLayout(new BorderLayout());
     //setImportReport(jta);
@@ -68,6 +77,7 @@ public class ViewReport  extends JPanel implements ActionListener {
     _scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
     _scrollPane.getViewport().setView(_jTextArea);
     this.add(_scrollPane,BorderLayout.CENTER);
+    String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     this.add(_buttonsPanel, BorderLayout.SOUTH);
   }

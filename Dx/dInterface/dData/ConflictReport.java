@@ -46,7 +46,7 @@ import dInternal.dUtil.DXValue;
 import dResources.DConst;
 
 public class ConflictReport extends ViewReport implements ActionListener {
-
+//String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   public ConflictReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
     String [] strArray ={DConst.BUT_OPTIONS};
@@ -88,20 +88,15 @@ public class ConflictReport extends ViewReport implements ActionListener {
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if "Option" button
-    if (e.getActionCommand().equals(_buttonsNames[1]))
-       /* new ReportOptionsDlg(_dApplic,
-                             _jd,
-                             _resources[_tabbedPane.getSelectedIndex()],
-                             _tabbedPane.getSelectedIndex());*/
-      System.out.println("_buttonsNames[1]");
+    if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
+       ; // it is disabled
     //if "Close" button
-    if (e.getActionCommand().equals(_buttonsNames[2]))
-       System.out.println("_buttonsNames[2]");
-      //dispose();
+    if (e.getActionCommand().equals(DConst.BUT_CLOSE))
+       //System.out.println("_buttonsNames[2]");
+      dispose();
     //if "Save as" button
-    if (e.getActionCommand().equals(_buttonsNames[0])){
-       System.out.println("_buttonsNames[0]");
-      //if ( _done ){
+    if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
+       //System.out.println("_buttonsNames[0]");
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
 
@@ -110,7 +105,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
                       DConst.REPORT +
                       " " +
                       DConst.TO_LEFT +
-                      //_tabbedPane.getTitleAt(_tabbedPane.getSelectedIndex()) +
+                      DConst.REPORT_DLG_TAB3 +
                       DConst.TO_RIGHT + " ";
         data +=  DConst.REPORT_PRODUCED_AT +
                  " " +
@@ -119,7 +114,6 @@ public class ConflictReport extends ViewReport implements ActionListener {
                  DConst.CR_LF + DConst.CR_LF;
         data +=  jta.getText();
         new SaveAsDlg(_dApplic, data);
-      //}//end internal if
-    }//end if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
+    }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
 }
