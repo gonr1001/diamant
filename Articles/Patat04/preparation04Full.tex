@@ -8,11 +8,11 @@
 
 \newcommand{\saphir}{SAPHIR}
 \newcommand{\diamant}{DIAMANT}
-\newcommand{\tictac}{TicTac}
+\newcommand{\tictac}{Tic-Tac}
 \newcommand{\xp}{eXtreme Programming}
 
 % Pour la création du titre
-\title{\bf{{\tictac} La production d'un horaire de cours dans une Université (document preparatoire)}}
+\title{\bf{{\tictac} La production d'un horaire de cours dans une Université (document préparatoire)}}
 \author{Ruben Gonzalez Rubio}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
@@ -25,36 +25,47 @@ Université de Sherbrooke,\\
 
 
 \section{Avant de commencer}
-
-
 \subsection{Quoi, de manière précise, a été votre contribution?}
-
-Nous voulons développer un logiciel pour la création des horaires
+Nous allons développer un logiciel pour la création des horaires
 avec une approche beaucoup plus liée aux règles du génie logiciel.
+avec les idées de base suivantes:
+
+\begin{enumerate}
+\item Open
+\item Modulaire
+\item Codé de manière efficace
+\end{enumerate}
 
 \begin{itemize}
- \item Quelle question avez-vous répondue? Dans une recherche
+ \item {\bf Quelle question avez-vous répondue?} Dans une recherche
 documentaire nous avons trouvé que la plupart des articles dans le
 domaine des horaires sont dans la route de trouver la meilleure
 méthode pour optimiser la construction des horaires, mais il n'y a
-pas une conscience claire de la manière d'intégrer ces logiciels
-aux systèmes de gestion d'information plus larges. Notre idée de
-base est de montrer la différence entre la "production" des
-horaires dans le sens d'intégrer le logiciel à l'ensemble de
-systèmes qu'interagissent pour la gestion académique et la
-"construction" des horaires, avec une signification plus
-restrictive.
+pas une idée claire de la manière d'intégrer ces logiciels aux
+systèmes de gestion d'information plus larges. Notre idée de base
+est de montrer la différence entre la "production" des horaires
+dans le sens d'intégrer le logiciel à l'ensemble de systèmes
+qu'interagissent pour la gestion académique et la "construction"
+des horaires avec une signification plus restrictive.
 
-\item Pourquoi est importante pour le lecteur cette réponse? Les
-systèmes d'information sont plus complexes chaque jour et
-demandent l'intégration de plusieurs éléments. Étant donnée cette
+\item {\bf Pourquoi est importante pour le lecteur cette réponse?}
+Les systèmes d'information sont plus complexes chaque jour et
+demandent sa division en plusieurs modules avec une tache bien
+précise à accomplir, une fois fait cette division, il faut faire
+l'intégration de plusieurs de ces éléments pour avoir une réponse
+adequate aux besoins des utilisateurs. Étant donnée cette
 complexité, nous avons besoin de découper les grands problèmes en
-petits morceaux faciles à gérer. Une fois que nous avons coupé et
-construit le système, nous ne pouvons pas imaginer aujourd'hui un
-système, peu importe lequel, indépendant et isolé. Pour arriver à
-avoir la qualité de l'extensibilité dans un système il faut avoir
-une idée claire du design des le départ. Notre point de vue de la
-production d'horaires vise ces qualités.
+petits morceaux faciles à gérer, et faciles à s'intégrer, disons
+qu'il faut désigner des systèmes qui facilement pourront se
+contracter et s'élargir\cite{}.%% Some Software Engineering Principles. David L. Parnas.
+
+
+Une fois que nous avons coupé et construit le système, nous ne
+pouvons pas imaginer aujourd'hui un système, peu importe lequel,
+indépendant et isolé. Pour arriver à avoir la qualité de
+l'extensibilité dans un système il faut avoir une idée claire du
+design des le départ. Notre point de vue de la production
+d'horaires vise ces qualités.
 
 \item Quelle est l'extension de cette réponse? Une fois que nous
 avons développé deux versions du logiciel {\diamant}, nous avons
