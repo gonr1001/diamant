@@ -174,8 +174,11 @@ public class SetOfActivitiesTest  extends TestCase{
   }
 
   /**
-   * test3_analyseTokens, test that analyse the instructor name
-   * in the activities file
+   * test3_analyseTokens, test that the instructor name is empty
+   * in the activities file,
+   * the result is ACTI_TEXT5, because the next token is used as
+   * instruction name then other error will be dtected.
+   *
    * */
   public void test3_analyseTokens(){
     String tokens= "ADM1111  01"+"\r\n"+
@@ -208,6 +211,7 @@ public class SetOfActivitiesTest  extends TestCase{
     assertEquals("test3_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
   }
+
 
   /**
    * test4_analyseTokens, test that analyse the number of blocs
@@ -750,6 +754,45 @@ public void test7_analyseTokens(){
      Resource assignRes2=  ((Unity)unitResc2.getAttach()).getSetOfAssignments().getResource(1);// Unity)unityResource.getAttach();
      assertEquals("test8_addActivitDiffRooms: assertEquals 8", "xxxxx",(String)((Assignment)assignRes2.getAttach()).getRoomName());
    }
+
+   /**
+    * test instructorEqualsBlocs,
+    *
+    *
+    * */
+   public void test_instructorEqualsBlocs(){
+     String tokens= "ADM1111  01"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "rgr ; ys" + "\r\n"+
+                    "2"+"\r\n"+
+                    "2 1"+"\r\n"+
+                    "1 12 1 1"+"\r\n"+
+                    "1 1"+"\r\n"+
+                    "C1-387 C1-387"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "ADM1112  01"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "LUC LAJOIE"+"\r\n"+
+                    "1"+"\r\n"+
+                    "3"+"\r\n"+
+                    "1 12"+"\r\n"+
+                    "1"+"\r\n"+
+                    "C1-387"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n";
+
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
+     setOfActivities.analyseTokens(1);
+     assertEquals("test_instructorEqualsBlocs: assertEquals","", /* DConst.ACTI_TEXT5,*/
+                  setOfActivities.getError());//.substring(0,DConst.ACTI_TEXT5.length()));
+   }
+
+
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
     filter.appendToCharKnown("ิห้-',; ()๊.เ");

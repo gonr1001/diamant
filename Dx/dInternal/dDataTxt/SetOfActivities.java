@@ -82,7 +82,7 @@ public class SetOfActivities extends SetOfResources{
           break;
         case 4:// teachers' names
           if (token.length() == 0){
-            _error= DConst.ACTI_TEXT4+_line+  "in the activity file:" +
+            _error= DConst.ACTI_TEXT4 + _line +  "in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
           }
