@@ -152,48 +152,67 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
   }
 
   /**
- * Builds a report with the format defined by the parameters
- * @param fieldsNames The first line of the report
- * @param fieldsLengths The spaces allowed for the fields
- * @param reportData The data report
- */
-public void buildReport(Object[] fieldsNames, int[] fieldsLengths, String[][][] subFields, String reportData){
-  StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
-  StringTokenizer strFields;
-  String fields;
-  String currentField;
-  String resultLine = "";
-  String blanks = "                                                                          ";
-  String underLine = "";
-  int strLinesLength, strFieldsLength;
-  //JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
-  //JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
-  _jTextArea.setFont(DConst.JLISTS_FONT);
-  _jTextArea.setText("");
-  for (int k = 0; k < fieldsNames.length; k++){
-    currentField = (String)fieldsNames[k] + blanks;
-    currentField = currentField.substring(0, fieldsLengths[k]);
-    currentField = currentField + "|  ";
-    resultLine = resultLine + currentField;
+   * Builds a report with the format defined by the parameters
+   * @param fieldsNames The first line of the report
+   * @param fieldsLengths The spaces allowed for the fields
+   * @param reportData The data report
+   */
+  public void buildReport(Object[] fieldsNames, int[] fieldsLengths, String reportData){
+    StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
+    StringTokenizer strFields;
+    String fields;
+    String currentField;
+    String resultLine = "";
+    String blanks = "                                                                          ";
+    String underLine = "";
+    int strLinesLength, strFieldsLength;
+
+    _jTextArea.setFont(DConst.JLISTS_FONT);
+    _jTextArea.setText("");
+    //do header
+    for (int k = 0; k < fieldsNames.length; k++){
+      currentField = (String)fieldsNames[k] + blanks;
+      currentField = currentField.substring(0, fieldsLengths[k]);
+      currentField = currentField + "|  ";
+      resultLine += currentField;
+    }
+    //do frame for header
+    for (int k = 0; k < resultLine.length()-2; k++){
+      underLine = underLine + "-";
+    }
+    resultLine += DConst.CR_LF;
+    underLine +=  DConst.CR_LF;
+
+    //start the text with header + frame for header
+    _jTextArea.setText(resultLine);
+    _jTextArea.append(underLine);
+
+    // number of lines
+    strLinesLength = strLines.countTokens();
+
+    for(int i = 0; i < strLinesLength; i++){
+      fields = strLines.nextToken();
+      strFields = new StringTokenizer(fields, ";");
+      strFieldsLength = strFields.countTokens();
+      resultLine = "";
+      for(int j = 0; j < strFieldsLength; j++){
+        currentField = strFields.nextToken();
+        currentField = currentField + blanks;
+        currentField = currentField.substring(0, fieldsLengths[j]);
+        currentField = currentField + "|  ";
+        resultLine = resultLine + currentField;
+      }//end internal for
+      resultLine += DConst.CR_LF;
+      _jTextArea.append(resultLine);
+    }//end external for
+    _jTextArea.setCaretPosition(0);
   }
-  for (int k = 0; k < resultLine.length()-2; k++)
-    underLine = underLine + "-";
-  resultLine = resultLine + DConst.CR_LF;
-  underLine = underLine + DConst.CR_LF;
-  _jTextArea.setText(resultLine);
-  _jTextArea.append(underLine);
-  strLinesLength = strLines.countTokens();
-  for(int i = 0; i < strLinesLength; i++){
-    fields = strLines.nextToken();
-    strFields = new StringTokenizer(fields, ";");
-    strFieldsLength = strFields.countTokens();
-    resultLine = "";
-    for(int j = 0; j < strFieldsLength; j++){
-      currentField = strFields.nextToken();
-      if(subFields !=null) {
+}
+
+ /* if(subFields !=null) {
       if(subFields[j] != null){
-        //System.out.println("subFields.length " + subFields.length);
-        //System.out.println("subFields.length "+subFields[j].length);
+//System.out.println("subFields.length " + subFields.length);
+//System.out.println("subFields.length "+subFields[j].length);
         for(int k = 0; k < subFields[j].length; k++){
           if (currentField.equals(subFields[j][k][0])){
             currentField = subFields[j][k][1];
@@ -201,15 +220,4 @@ public void buildReport(Object[] fieldsNames, int[] fieldsLengths, String[][][] 
           }//end internal if
         }//end internal for
       }//end external if
-      }
-      currentField = currentField + blanks;
-      currentField = currentField.substring(0, fieldsLengths[j]);
-      currentField = currentField + "|  ";
-      resultLine = resultLine + currentField;
-    }//end internal for
-    resultLine = resultLine + DConst.CR_LF;
-    _jTextArea.append(resultLine);
-  }//end external for
-  _jTextArea.setCaretPosition(0);
-  }
-}
+      }*/

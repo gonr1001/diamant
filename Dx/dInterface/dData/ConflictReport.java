@@ -72,7 +72,6 @@ public class ConflictReport extends ViewReport implements ActionListener {
          );
      buildReport(_rightVec.toArray(),
                  fieldsLengths(_rightVec,_allOptionsVec),
-                 null,
                  (_parentDlg.getStandardReportData()).getConflictsReport(firstField, othersFields));
       _jTextArea.setCaretPosition(0);
     }

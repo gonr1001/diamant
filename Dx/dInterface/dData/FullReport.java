@@ -74,7 +74,6 @@ public class FullReport extends ViewReport implements ActionListener {
          );
      buildReport(_rightVec.toArray(),
                  fieldsLengths(_rightVec,_allOptionsVec),
-                 null,
                  (_parentDlg.getStandardReportData()).getActivitiesReport(firstField, othersFields));
       _jTextArea.setCaretPosition(0);
     }
