@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.103 $  $Date: 2004-03-24 14:14:25 $
+ * Title: DMenuBar $Revision: 1.104 $  $Date: 2004-03-24 14:25:40 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.103 $
+ * @version $Revision: 1.104 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -60,7 +60,7 @@ import dAux.StateZeroCmd;
 
 public class DMenuBar extends JMenuBar{
   private DApplication _dApplic;
-  private final boolean _DEVELOPMENT = false;
+  private final boolean _DEVELOPMENT = DConst.DEVELOPMENT;
 
   private final String _mfont = DConst.MFONTDialog;
   private final int _font = Font.PLAIN;
