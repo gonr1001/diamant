@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.46 $  $Date: 2004-06-21 15:38:16 $
+ * Title: EditActivityDlg $Revision: 1.47 $  $Date: 2004-06-23 05:45:50 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.46 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.47 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -374,8 +374,8 @@ public class EditActivityDlg
 	 JPanel catJPanel = (JPanel) myJPanel.getComponent(0);
 	 return ((JComboBox)catJPanel.getComponent(0)).getSelectedItem().toString();
    } // end getSelectedCategory
-   
-   
+
+
   private JPanel buildFixingPanel(int index) {
     EventAttach event = (EventAttach)((Resource)_unities.get(index)).getAttach();
     JPanel myPanel = new JPanel();
@@ -718,15 +718,15 @@ public class EditActivityDlg
   private Vector[] buildCategoryRoomList(){
     Vector list[] = {new Vector(1), new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-    SetOfCategories soc= _dm.getSetOfCategories();
+    //SetOfCategories soc= _dm.getSetOfCategories();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     //Resource room = sor.getResource(event.getRoomKey());
     //if(room!=null)
     //list[0].add(room.getID());
     //else
     list[0].add(DConst.NO_ROOM_INTERNAL);
-    for(int i=0; i< soc.size(); i++)
-      list[1].add(soc.getResourceAt(i).getID());
+    //for(int i=0; i< soc.size(); i++)
+      //list[1].add(soc.getResourceAt(i).getID());
     list[1].add(DConst.NO_ROOM_INTERNAL);
     return list;
   }
