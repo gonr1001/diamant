@@ -17,7 +17,7 @@ import dInterface.DApplication;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class ImportSelectiveFileDlg extends JDialog {
 

@@ -17,7 +17,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.DXTools;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 import com.iLib.gDialog.InformationDlg;
 public class EventsDlg extends EventsDlgInterface{
 
@@ -51,8 +51,8 @@ public class EventsDlg extends EventsDlgInterface{
 	_leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames, enableArrows);
 	_rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames, enableArrows);
   }
-  
-  
+
+
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if the source is one of the the _leftArrowsPanel buttons
@@ -98,7 +98,7 @@ public class EventsDlg extends EventsDlgInterface{
  	if(!_buttonsPanel.isFirstEnable()){
 		new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0], this, false);
 		_buttonsPanel.setFirstDisable();
- 	} else { 
+ 	} else {
  		new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer", "Operation interdite");
  	}
  } // end doubleClicMouseProcess

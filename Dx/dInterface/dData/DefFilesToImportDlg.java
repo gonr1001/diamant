@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.5 $  $Date: 2003-10-28 14:19:06 $
+ * Title: DefFileToImportDlg $Revision: 1.6 $  $Date: 2004-06-09 19:29:17 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -44,7 +44,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;
 import dInterface.DApplication;
 
-import dResources.DConst;
+import dConstants.DConst;
 import dResources.DFileFilter;
 
 

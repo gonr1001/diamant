@@ -29,7 +29,7 @@ import dInternal.DModel;
 import dInternal.dData.Resource;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 
@@ -59,7 +59,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
    * build buttom to use in the dialog
    */
   public void buildArrowButtons(boolean enableArrows) {
-	
+
 	_leftArrowsPanel = new JPanel();
 	_rightArrowsPanel = new JPanel();
   }
@@ -98,7 +98,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     }
   }//end method
 
- 
+
  /**
   *
   */

@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.14 $  $Date: 2004-05-27 13:29:34 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.15 $  $Date: 2004-06-09 19:29:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -35,7 +35,7 @@ import dInterface.dUtil.ButtonsPanel;
 import dInternal.dData.InstructorAttach;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 

@@ -9,7 +9,7 @@ package dInternal;
  * @version 1.0
  */
 
-import dResources.DConst;
+import dConstants.DConst;
 import dInternal.dData.*;
 
 import dInternal.dUtil.*;

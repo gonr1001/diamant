@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFDlg $Revision: 1.3 $  $Date: 2003-10-28 14:24:53 $
+ * Title: PLAFDlg $Revision: 1.4 $  $Date: 2004-06-09 19:29:18 $
  * Description: PLAFDlg is a class used to display preferences
  *              Dialogs.
  *              Look and Feel
@@ -17,14 +17,14 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 //import com.iLib.rIO.DisplayFatalProblem;
 
 import java.awt.BorderLayout;

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.19 $  $Date: 2004-05-18 19:25:16 $
+ * Title: PeriodPanel $Revision: 1.20 $  $Date: 2004-06-09 19:29:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -39,7 +39,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import dInternal.dTimeTable.Period;
-import dResources.DConst;
+import dConstants.DConst;
 
 import com.iLib.gDialog.FatalProblemDlg;
 

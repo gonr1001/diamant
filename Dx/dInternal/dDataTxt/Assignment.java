@@ -9,7 +9,7 @@ package dInternal.dData;
  * @version 1.0
  */
 import dInternal.dUtil.DXObject;
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.Vector;
 import java.util.StringTokenizer;
 

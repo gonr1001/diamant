@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.100 $  $Date: 2004-06-04 14:54:23 $
+ * Title: DModel $Revision: 1.101 $  $Date: 2004-06-09 19:29:18 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.100 $
+ * @version $Revision: 1.101 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -39,7 +39,7 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dConditionsTest.SetOfEvents;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
@@ -205,7 +205,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		 _setOfCategories= xmlloadData.extractRooms(null, true);
 	 }
 	 //	end debug
-    
+
     LoadData loadD = new LoadData(this);
     Vector project = loadD.loadProject(fileName);
 
@@ -313,7 +313,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		_setOfCategories= xmlloadData.extractRooms(null, true);
 	}
 	//	end debug
-	   
+
     LoadData loadData = new LoadData(str, this);
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
@@ -404,7 +404,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public SetOfRooms getSetOfRooms(){
     return _setOfRooms;
   }
-  
+
   /**
 	 *
 	 * @return
@@ -412,8 +412,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	public SetOfCategories getSetOfCategories(){
 	  return _setOfCategories;
 	}
-  
-  
+
+
 
   /**
    *

@@ -44,7 +44,7 @@ import dInternal.dData.StandardReportData;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public abstract class ViewReport  extends JPanel implements ActionListener {

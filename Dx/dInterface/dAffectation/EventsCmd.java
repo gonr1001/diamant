@@ -11,7 +11,7 @@ package dInterface.dAffectation;
 
 import dInterface.Command;
 import dInterface.DApplication;
-import dResources.DConst;
+import dConstants.DConst;
 
 
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.9 $  $Date: 2004-05-13 14:18:00 $
+ * Title: ImportReport $Revision: 1.10 $  $Date: 2004-06-09 19:29:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -52,7 +52,7 @@ import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXValue;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public class ImportReport extends ViewReport implements ActionListener {

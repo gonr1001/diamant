@@ -13,7 +13,7 @@ import java.util.Vector;
 import java.awt.Component;
 
 import dInternal.dUtil.DXToolsMethods;
-import dResources.DConst;
+import dConstants.DConst;
 //import d
 
 public class SetOfActivities extends SetOfResources{

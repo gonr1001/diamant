@@ -18,7 +18,7 @@ import dInternal.dData.Resource;
 import dInternal.dUtil.DXToolsMethods;
 
 import java.util.Vector;
-import dResources.DConst;
+import dConstants.DConst;
 
 public class TestStudentsConditions implements Condition {
   StudentsConflictsMatrix _matrix;

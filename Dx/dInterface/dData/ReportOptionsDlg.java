@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.25 $  $Date: 2004-05-12 19:51:16 $
+ * Title: ReportOptionsDlg $Revision: 1.26 $  $Date: 2004-06-09 19:29:17 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,7 +17,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -41,7 +41,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
 import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;
@@ -51,7 +51,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
   private JList _rightList, _leftList;
   private Vector _rightVec, _leftVec;
   private JPanel _centerPanel, _arrowsPanel;
-  private ButtonsPanel _applyPanel; 
+  private ButtonsPanel _applyPanel;
   private boolean _modified = false;
 
   private String [] _arrowsNames = {DConst.TO_RIGHT,
@@ -204,7 +204,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
       _modified = true;
 	  _applyPanel.setFirstEnable();
       if (command.equals(_arrowsNames[1])) {
-      
+
         listTransfers(_rightList.getSelectedValues(),
                       _rightVec,
                       _rightList,
@@ -213,7 +213,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
                       true);
 
     } else {
-    
+
         //toRight button
         listTransfers(_leftList.getSelectedValues(),
                       _leftVec,
@@ -222,8 +222,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
                       _rightList,
                       false);
     }
-    
-		
+
+
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
     if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3])){
       int i = -1;

@@ -11,7 +11,7 @@ package dInterface.dTimeTable;
 
 
 
-import dResources.DConst;
+import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 

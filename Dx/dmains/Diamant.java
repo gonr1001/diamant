@@ -1,6 +1,6 @@
 /**
  *
- * Title: Diamant $Revision: 1.13 $  $Date: 2004-06-09 18:58:47 $
+ * Title: Diamant $Revision: 1.14 $  $Date: 2004-06-09 19:29:18 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,7 +29,7 @@ import org.apache.log4j.PropertyConfigurator;
 import com.iLib.gDialog.FatalProblemDlg;
 
 import dInterface.DApplication;
-import dResources.DConst;
+import dConstants.DConst;
 import lineInterface.DILigne;
 
 /**

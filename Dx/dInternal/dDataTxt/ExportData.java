@@ -11,7 +11,7 @@ package dInternal.dData;
 
 import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.StringTokenizer;
 import dInterface.dUtil.DXTools;
 import com.iLib.gIO.FilterFile;

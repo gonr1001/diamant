@@ -31,7 +31,7 @@ import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXToolsMethods;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public class DXTools{

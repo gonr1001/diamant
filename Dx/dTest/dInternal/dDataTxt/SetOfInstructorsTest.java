@@ -12,7 +12,7 @@ package dTest.dInternal.dData;
 import junit.framework.*;
 
 import dInternal.dData.SetOfInstructors;
-import dResources.DConst;
+import dConstants.DConst;
 
 
 

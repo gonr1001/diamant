@@ -12,7 +12,7 @@ package dInterface.dAlgorithms;
 import dInterface.Command;
 import dInterface.DApplication;
 import dInternal.dAlgorithms.SelectAlgorithm;
-import dResources.DConst;
+import dConstants.DConst;
 
 import com.iLib.gDialog.InformationDlg;
 

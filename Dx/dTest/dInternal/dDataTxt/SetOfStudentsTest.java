@@ -12,7 +12,7 @@ package dTest.dInternal.dData;
 import junit.framework.*;
 
 import dInternal.dData.SetOfStudents;
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.Vector;
 
 

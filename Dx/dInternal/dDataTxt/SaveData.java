@@ -13,7 +13,7 @@ package dInternal.dData;
 
 import com.iLib.gIO.FilterFile;
 import dInternal.dTimeTable.TTStructure;
-import dResources.DConst;
+import dConstants.DConst;
 
 public class SaveData {
 

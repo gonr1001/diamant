@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.17 $  $Date: 2003-12-15 20:35:59 $
+ * Title: DetailedPeriodPanel $Revision: 1.18 $  $Date: 2004-06-09 19:29:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -41,7 +41,7 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import java.awt.BorderLayout;
 import dInternal.dTimeTable.Period;
-import dResources.DConst;
+import dConstants.DConst;
 
 
 

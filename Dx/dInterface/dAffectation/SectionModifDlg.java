@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.11 $  $Date: 2004-05-18 16:07:31 $
+ * Title: SectionModifDlg $Revision: 1.12 $  $Date: 2004-06-09 19:29:17 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.12 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -24,7 +24,7 @@ package dInterface.dAffectation;
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dResources.DConst;
+import dConstants.DConst;
 import dInternal.dData.Type;
 import dInternal.dData.Resource;
 import java.util.Vector;

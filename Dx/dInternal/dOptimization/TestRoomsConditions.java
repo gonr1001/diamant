@@ -17,7 +17,7 @@ import dInternal.dData.Type;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dData.Resource;
 import dInterface.dUtil.DXTools;
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.StringTokenizer;
 import java.util.Vector;
 

@@ -16,7 +16,7 @@ import dInternal.dData.Resource;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.ArrayValue;
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public class ConflictsAttach extends DXObject{

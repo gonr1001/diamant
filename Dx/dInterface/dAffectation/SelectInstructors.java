@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectInstructors $Revision: 1.5 $  $Date: 2004-05-18 17:28:13 $
+ * Title: SelectInstructors $Revision: 1.6 $  $Date: 2004-06-09 19:29:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -52,10 +52,10 @@ import dInterface.dUtil.DXTools;
 
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
-public class SelectInstructors 
-		extends JDialog 
+public class SelectInstructors
+		extends JDialog
 		implements ActionListener {
 
   /**
@@ -80,9 +80,9 @@ public class SelectInstructors
    * @param dApplic The application object (for extracting the JFrame)
    */
 
-  public SelectInstructors(DApplication dApplic, 
-  							EditActivityDlg ead, 
-  							Vector leftVec, 
+  public SelectInstructors(DApplication dApplic,
+  							EditActivityDlg ead,
+  							Vector leftVec,
   							Vector rightVec) {
     super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
     _dApplic = dApplic;
@@ -102,9 +102,9 @@ public class SelectInstructors
    * Initialize the dialog
    */
   protected void initialize(){
-    
+
     _rightList = new JList(_rightVec);
-    _rightList.addMouseListener(mouseListenerLists);   
+    _rightList.addMouseListener(mouseListenerLists);
     JPanel listPanel = DXTools.listPanel(_rightList, 150, 300);
     _lNoVisible = new JLabel(_rightVec.size() + " " + DConst.NOT_INCLUDED + "rgr1");
     JPanel rightPanel = new JPanel(new BorderLayout());
@@ -120,7 +120,7 @@ public class SelectInstructors
     leftPanel = new JPanel(new BorderLayout());
     leftPanel.add(_lVisible, BorderLayout.NORTH);
     leftPanel.add(listPanel, BorderLayout.SOUTH);
-    //arrows panel  private 
+    //arrows panel  private
     String [] _arrows = {DConst.TO_RIGHT, DConst.TO_LEFT};
     _arrowsPanel = DXTools.arrowsPanel(this, _arrows, true);
     //placing the panels and buttons into the _listsPanel
@@ -148,7 +148,7 @@ public class SelectInstructors
     public void mouseClicked(MouseEvent e) {
       if (((JList)e.getSource()).getModel().getSize() == 0){
 		return;
-      }       
+      }
       if (e.getSource().equals(_leftList)) {
 		_rightList.clearSelection();
       } else {

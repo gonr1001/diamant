@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
-import dResources.DConst;
+import dConstants.DConst;
 import java.io.File;
 
 

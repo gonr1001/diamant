@@ -17,7 +17,7 @@ import dInternal.dUtil.DXToolsMethods;
 import dInternal.dConditionsTest.ConflictsAttach;
 
 import dInterface.dUtil.DXTools;
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.StringTokenizer;
 import java.util.Vector;
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.27 $  $Date: 2004-06-09 18:06:21 $
+ * Title: SectionDlg $Revision: 1.28 $  $Date: 2004-06-09 19:29:17 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.28 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
 
  */
@@ -57,7 +57,7 @@ import dInternal.dData.StudentAttach;
 import dInternal.dData.Section;
 import dInternal.dData.Type;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 import dInterface.dUtil.DXJComboBox;
 import com.iLib.gDialog.InformationDlg;

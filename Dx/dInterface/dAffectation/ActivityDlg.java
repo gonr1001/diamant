@@ -33,7 +33,7 @@ import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class ActivityDlg extends JDialog implements ActionListener {
 

@@ -12,7 +12,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
-import dResources.DConst;
+import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DXValue;

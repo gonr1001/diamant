@@ -1,6 +1,6 @@
 package dInternal.dData;
 
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.Vector;
 
 public class SetOfStates extends SetOfResources{

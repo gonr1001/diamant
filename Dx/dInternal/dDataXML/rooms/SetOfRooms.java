@@ -11,7 +11,7 @@ package dInternal.dXMLData.rooms;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
-import dResources.DConst;
+import dConstants.DConst;
 import dInternal.dData.*;
 import dInternal.dData.RoomsAttributesInterpretor;
 

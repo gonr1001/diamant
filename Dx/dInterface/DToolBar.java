@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: DToolBar $Revision: 1.44 $  $Date: 2004-05-27 13:29:34 $
+ * Title: DToolBar $Revision: 1.45 $  $Date: 2004-06-09 19:29:16 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -33,7 +33,7 @@ import dInterface.dUtil.*;
 import dInternal.dData.*;
 import dInternal.dTimeTable.*;
 import dInternal.dUtil.*;
-import dResources.*;
+import dConstants.*;
 
 //-------------------------------------------
 /**
@@ -354,7 +354,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
 	    }// end for (int i=0; i< ttPanel.getComponentCount(); i++)
 		_periodTypeSelector.disableActionListeners();
 	    _periodTypeSelector.removeAllItems();
-	
+
 	    for (int i=0; i< _tts._priorityTable.length; i++)
 	      _periodTypeSelector.addItem(_tts._priorityTable[i]);
 	    //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug

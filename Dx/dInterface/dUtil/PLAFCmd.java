@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.1 $  $Date: 2003-05-22 14:20:07 $
+ * Title: PLAFCmd $Revision: 1.2 $  $Date: 2004-06-09 19:29:18 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,13 +14,13 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.2 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
 
-import dResources.DConst;
+import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 

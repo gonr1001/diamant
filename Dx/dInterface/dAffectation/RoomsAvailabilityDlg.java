@@ -11,7 +11,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 /**
@@ -38,7 +38,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   //private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private  String[] time;
 
-  private ButtonsPanel _applyPanel; 
+  private ButtonsPanel _applyPanel;
   private JPanel chooserPanel = new JPanel();
   private JPanel centerPanel;
   //JButton butApply;

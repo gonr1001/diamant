@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.41 $  $Date: 2004-06-07 20:36:20 $
+ * Title: EditActivityDlg $Revision: 1.42 $  $Date: 2004-06-09 19:29:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.41 $
+ * @version $Revision: 1.42 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -54,7 +54,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
-import dResources.DConst;
+import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.DModel;
 import dInternal.dConditionsTest.EventAttach;
@@ -192,7 +192,7 @@ public class EditActivityDlg
     if (command.equals("name")) {
       JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
       String roomName = getSelectedRoom(tpane);
-      _capacity[_currentActivityIndex].setText(getCapacity(roomName)); 
+      _capacity[_currentActivityIndex].setText(getCapacity(roomName));
 	  //_capacity.repaint();
       //_capacity.setText("HElep" ) ; //getCapacity(roomName));
      // _capacity.repaint();
@@ -335,7 +335,7 @@ public class EditActivityDlg
     //Vector[] vectCapacity  = buildCapacityList();
     String capacity = getCapacity(vectR[0].get(0).toString());
     _capacity [index] = new JLabel(capacity);
-    
+
     JPanel categoryRoom = new JPanel();
     categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), "Cat"));
     categoryRoom.add(categoryRoomCB);
@@ -344,7 +344,7 @@ public class EditActivityDlg
 
     roomName.add(roomCB);
     roomName.add(_capacity[index]);
-    
+
     roomPanel.add(categoryRoom);
     roomPanel.add(roomName);
 

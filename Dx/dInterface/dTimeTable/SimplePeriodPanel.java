@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.14 $  $Date: 2003-12-15 15:31:22 $
+ * Title: SimplePeriodPanel $Revision: 1.15 $  $Date: 2004-06-09 19:29:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -42,7 +42,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.BorderFactory;
 
 import dInternal.dTimeTable.Period;
-import dResources.DConst;
+import dConstants.DConst;
 
 public class SimplePeriodPanel extends PeriodPanel{
 

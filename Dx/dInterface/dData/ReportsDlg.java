@@ -44,7 +44,7 @@ import dInternal.dData.SetOfResources;
 import dInternal.dData.StandardReportData;
 import dInternal.dUtil.DXValue;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class ReportsDlg extends JDialog implements ActionListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize

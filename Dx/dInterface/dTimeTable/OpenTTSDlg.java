@@ -20,7 +20,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 import java.awt.Dimension;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
   public class OpenTTSDlg extends JDialog{

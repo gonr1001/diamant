@@ -43,7 +43,7 @@ import dInternal.dData.SetOfResources;
 import dInternal.dData.StandardReportData;
 import dInternal.dUtil.DXValue;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class ConflictReport extends ViewReport implements ActionListener {
 

@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.16 $  $Date: 2004-05-18 19:25:16 $
+ * Title: SaveAsDlg $Revision: 1.17 $  $Date: 2004-06-09 19:29:18 $
  * Description: SaveAsDlg(DApplication dApplic) can created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) or can created
  *                        by ConflicReport, FullReport,
@@ -18,7 +18,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -36,7 +36,7 @@ import dInterface.DApplication;
 
 //import dAux.ConfirmDlg;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 /**

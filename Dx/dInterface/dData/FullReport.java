@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.12 $  $Date: 2004-05-12 19:51:16 $
+ * Title: FullReport $Revision: 1.13 $  $Date: 2004-06-09 19:29:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -55,7 +55,7 @@ import dInterface.dTimeTable.SaveAsTxtDlg;
 
 import dInternal.dUtil.DXValue;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public class FullReport extends ViewReport implements ActionListener {

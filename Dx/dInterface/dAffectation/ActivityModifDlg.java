@@ -12,7 +12,7 @@ package dInterface.dAffectation;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
-import dResources.DConst;
+import dConstants.DConst;
 import dInternal.dData.SetOfActivities;
 
 import dInternal.dData.Resource;

@@ -33,7 +33,7 @@ import javax.swing.JPanel;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public abstract class SetOfElementsInterface extends JDialog implements ActionListener{
 

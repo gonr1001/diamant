@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import java.util.Vector;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 
 import dInterface.dUtil.DXTools;
 /**

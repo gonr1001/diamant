@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DStateBar $Revision: 1.6 $  $Date: 2003-10-28 13:26:49 $
+ * Title: DStateBar $Revision: 1.7 $  $Date: 2004-06-09 19:29:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -47,7 +47,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-import dResources.DConst;
+import dConstants.DConst;
 import dInternal.dData.Resource;
 import dInternal.dData.State;
 import dInternal.dData.SetOfStates;

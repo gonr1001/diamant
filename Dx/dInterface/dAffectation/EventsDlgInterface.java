@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.11 $  $Date: 2004-05-14 15:01:19 $
+ * Title: EventsDlgInterface $Revision: 1.12 $  $Date: 2004-06-09 19:29:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -59,7 +59,7 @@ import dInternal.dUtil.DXToolsMethods;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public abstract class EventsDlgInterface extends JDialog implements ActionListener{
 
@@ -99,8 +99,8 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
 
   public abstract void actionPerformed(ActionEvent e);
   public abstract void buildArrowButtons(boolean enableArrows);
-  public abstract ButtonsPanel setButtons();  
-  
+  public abstract ButtonsPanel setButtons();
+
   /**
    * Initialise the dialog
    */
@@ -214,8 +214,8 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
     getContentPane().add(panelContainer, BorderLayout.EAST);
   }//end method
 
-  
-  
+
+
 
   /**
    * Builds the vectors _rightVector, _centerVector, _leftVector for their

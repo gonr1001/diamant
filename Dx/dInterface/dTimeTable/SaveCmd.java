@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveCmd $Revision: 1.5 $  $Date: 2004-03-23 20:46:38 $
+ * Title: SaveCmd $Revision: 1.6 $  $Date: 2004-06-09 19:29:18 $
  * Description: SaveCmd is a class used to save a
  *  			document
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -24,7 +24,7 @@ package dInterface.dTimeTable;
 
 import dInterface.Command;
 import dInterface.DApplication;
-import dResources.DConst;
+import dConstants.DConst;
 
 public class SaveCmd implements Command {
 

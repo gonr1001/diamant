@@ -13,7 +13,7 @@ import junit.framework.*;
 
 
 import dInternal.dData.SetOfRooms;
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public class SetOfRoomsTest  extends TestCase{

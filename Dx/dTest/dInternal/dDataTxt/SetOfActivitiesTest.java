@@ -20,7 +20,7 @@ import dInternal.dData.Resource;
 import dInternal.dData.Section;
 import dInternal.dData.Unity;
 import dInternal.dData.Assignment;
-import dResources.DConst;
+import dConstants.DConst;
 
 
 public class SetOfActivitiesTest  extends TestCase{

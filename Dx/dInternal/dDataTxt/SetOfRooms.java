@@ -11,7 +11,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
-import dResources.DConst;
+import dConstants.DConst;
 
 public class SetOfRooms extends SetOfResources{
 

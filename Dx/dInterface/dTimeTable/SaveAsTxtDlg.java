@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.2 $  $Date: 2004-06-02 20:39:07 $
+ * Title: SaveAsTxtDlg $Revision: 1.3 $  $Date: 2004-06-09 19:29:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -45,7 +45,7 @@ import dInterface.DApplication;
 
 //import dAux.ConfirmDlg;
 
-import dResources.DConst;
+import dConstants.DConst;
 import dResources.DFileFilter;
 
 public class SaveAsTxtDlg extends SaveAsDlg{

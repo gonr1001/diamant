@@ -27,7 +27,7 @@ import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
-import dResources.DConst;
+import dConstants.DConst;
 import org.w3c.dom.*;
 import dInternal.dXMLData.rooms.SetOfCategories;
 

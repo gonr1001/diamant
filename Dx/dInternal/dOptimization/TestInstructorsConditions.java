@@ -18,7 +18,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 import java.util.Vector;
 
-import dResources.DConst;
+import dConstants.DConst;
 
 public class TestInstructorsConditions  implements Condition{
 

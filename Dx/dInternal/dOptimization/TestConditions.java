@@ -12,7 +12,7 @@ package dInternal.dConditionsTest;
 import dInternal.dData.*;
 import dInternal.dTimeTable.*;
 import dInternal.DModel;
-import dResources.DConst;
+import dConstants.DConst;
 import java.util.Vector;
 import java.util.StringTokenizer;
 

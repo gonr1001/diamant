@@ -12,7 +12,7 @@ package dInternal.dXMLData.rooms;
 import java.util.Vector;
 
 import java.awt.Component;
-import dResources.DConst;
+import dConstants.DConst;
 
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
