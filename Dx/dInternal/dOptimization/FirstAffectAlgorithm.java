@@ -13,23 +13,23 @@ import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dConditionsTest.*;
 import dInternal.dData.Resource;
+import dInternal.dData.SetOfResources;
+import dInternal.dUtil.DXValue;
 import java.util.Vector;
 import java.util.StringTokenizer;
 //import java.awt.import java.awt.Component;;
 
 public class FirstAffectAlgorithm implements Algorithm {
 
-  private Vector _noPlaceEvent;
   private Vector _placeEvent;
-  private int _lastNumberOfNoPlaceEvents=-1;
-  private int _currentDuration=0;
   private DModel _dm;
+  int [] _avoidPriority={1,2};
 
   /**
    * constructor
    */
   public FirstAffectAlgorithm() {
-    _noPlaceEvent= new Vector(1);
+    //_noPlaceEvent= new Vector(1);
     _placeEvent= new Vector(1);
   }
 
@@ -42,47 +42,77 @@ public class FirstAffectAlgorithm implements Algorithm {
     _dm= dm;
     Resource currentEvent;
     Period currentPeriod;
-    Vector vectorOfEvents = (Vector)vect.clone();
+    Vector periodList;
+    int currentDuration=0;
 
-    while(start()){
-       currentPeriod= _dm.getTTStructure().getCurrentCycle().getNextPeriod(_currentDuration);
-       _lastNumberOfNoPlaceEvents= _noPlaceEvent.size();
-       _noPlaceEvent.removeAllElements();
-       System.out.println("_lastNumberOfNoPlaceEvents: "+_lastNumberOfNoPlaceEvents);//debug
-      while(!vectorOfEvents.isEmpty()){
-        currentEvent= (Resource)vectorOfEvents.remove(0);
-        int numberOfConflicts=0;
-        while(((EventAttach)currentEvent.getAttach()).getAssignState())
-          currentEvent= (Resource)vectorOfEvents.remove(0);
-        int dayIndex= _dm.getTTStructure().getCurrentCycle().getCurrentDayIndex();
-        int[] dayTime= {(int)_dm.getTTStructure().getCurrentCycle().getSetOfDays().
-          getResourceAt(dayIndex).getKey(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
-        ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
-        //numberOfConflicts= _dm.getTTStructure().getCurrentCycle().isPeriodContiguous()
-        //numberOfConflicts=testConditions(currentPeriod,currentEvent,0);
-        numberOfConflicts= _dm.getConditionsTest().addOrRemEventInPeriod(currentPeriod,currentEvent,0);
-        if(numberOfConflicts==0){
-          _dm.getConditionsTest().addOrRemEventInPeriod(currentPeriod,currentEvent,1);
-          _placeEvent.add(currentEvent);
-          currentPeriod= _dm.getTTStructure().getCurrentCycle().getNextPeriod(_currentDuration);
-        }else{// end if if(numberOfConflicts==0)
-          _noPlaceEvent.add(currentEvent);
-        }// end else if(numberOfConflicts==0)
-      }// end while(!vectorOfEvents.isEmpty())
-      vectorOfEvents= (Vector)_noPlaceEvent.clone();
-    }// end while(start())
+    _dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
+    for(int i=0; i< vect.size(); i++){
+      currentEvent= (Resource)vect.get(i);
+      int numberOfConflicts=0;
+      /*while(((EventAttach)currentEvent.getAttach()).getAssignState())
+        currentEvent= (Resource)vectorOfEvents.remove(0);*/
+      if(!((EventAttach)currentEvent.getAttach()).getAssignState()){
+        currentDuration = ((EventAttach)currentEvent.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
+        periodList=buildSortContiguousPeriodVector(currentDuration,_avoidPriority);
+        while(!periodList.isEmpty()){
+          DXValue value= (DXValue)((Resource)periodList.remove(0)).getAttach();
+          currentPeriod= (Period)value.getObjectValue();
+          int[] dayTime= {value.getIntValue(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
+          ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
+          ((EventAttach)currentEvent.getAttach()).setAssignState(true);
+          numberOfConflicts= _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,0);
+          ((EventAttach)currentEvent.getAttach()).setAssignState(false);
+          if(numberOfConflicts==0){
+            ((EventAttach)currentEvent.getAttach()).setAssignState(true);
+            _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,1);
+            _placeEvent.add(currentEvent);
+            periodList.removeAllElements();
+          }//else{// end if if(numberOfConflicts==0)
+        }// end while(!periodList.isEmpty())
+      }// end if(!((EventAttach)currentEvent.getAttach()).getAssignState())
+    }// end for(int i=0; i< vect.size(); i++)
+    _dm.getConditionsTest().emptyAvoidPriorityTable();
     _dm.getSetOfEvents().updateActivities(_placeEvent);
     _dm.getSetOfActivities().sendEvent(null);
   }
 
   /**
-   * check if algorithm must continue
+   * build Sort of Contiguous Period Vector
    * @return
    */
-  private boolean start(){
-    if(_lastNumberOfNoPlaceEvents== _noPlaceEvent.size())
-      return false;
-    return true;
+  private Vector buildSortContiguousPeriodVector(int duration, int[] avoidPriority){
+    SetOfResources soresc= new SetOfResources(4);
+    int counter=1;
+    for (int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(); i++){
+      Resource day = _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
+      for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+        Resource seq = ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
+          Resource period= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          Period per= (Period)period.getAttach();
+          if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(day.getKey(),seq.getKey(),period.getKey(),duration, avoidPriority)){
+            int number=0;
+            for (int l=0; l< duration; l++){
+              number+= ((Period)((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k+l).getAttach()
+              ).getEventsInPeriod().size();
+            }
+            DXValue value= new DXValue();
+            value.setIntValue((int)day.getKey());
+            value.setObjectValue(per);
+            soresc.setCurrentKey(number);
+            soresc.addResource(new Resource(Integer.toString(counter++), value),1);
+          }// end if (_dm.getTTStructure()
+        }// end for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriod
+      }// end for(int j=0; j< ((Day)day.getAttach()).getSetO
+    }// end for (int i=0; i< _dm.getTTStructure().getCurrentCycle()
+    soresc.sortSetOfResourcesByKey();
+    /*for (int i=0; i< soresc.size(); i++){
+      DXValue value = (DXValue)soresc.getResourceAt(i).getAttach();
+      System.out.println("Day:"+value.getIntValue()+" - Hour: "+((Period)value.getObjectValue()).getBeginHour()[0]
+                         +":"+((Period)value.getObjectValue()).getBeginHour()[1]+ "- Size: "+soresc.getResourceAt(i).getKey());//debug
+    }*/
+    return (Vector)soresc.getSetOfResources().clone();
   }
 
-}
+
+}// end class

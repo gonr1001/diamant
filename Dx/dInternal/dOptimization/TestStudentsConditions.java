@@ -36,7 +36,7 @@ public class TestStudentsConditions implements Condition {
                  DXToolsMethods.getToken(eventKey,DConst.TOKENSEPARATOR,2);
     int number=0;
     //if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1){
-      int nbConf;
+      int nbConf=0;
       ConflictsAttach confVal= new ConflictsAttach();
       for (int i=0; i< period.getEventsInPeriod().size(); i++){
         String event2= period.getEventsInPeriod().getResourceAt(i).getID();

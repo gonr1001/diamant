@@ -22,6 +22,7 @@ public class TestConditions {
  private DModel _dm;
  private Vector _testToRun = new Vector(1);
  private boolean _matrixIsBuilded= false;
+ int[] _avoidPriority={};
  /**
   * Constructor
   * @param soa
@@ -37,6 +38,23 @@ public class TestConditions {
 
   public StudentsConflictsMatrix getConflictsMatrix(){
     return _matrix;
+  }
+
+  /**
+   *
+   * @param avoidPriority
+   */
+  public void setAvoidPriorityTable(int[] avoidPriority){
+    _avoidPriority= avoidPriority;
+  }
+
+  /**
+   *
+   * @param avoidPriority
+   */
+  public void emptyAvoidPriorityTable(){
+    int[] avoidPriority= {};
+    _avoidPriority= avoidPriority;
   }
 
   /**
@@ -117,18 +135,21 @@ public class TestConditions {
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
       long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
-      int[] avoidPriority={};
-      if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration, avoidPriority)){
+      //int[] avoidPriority={};
+      if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
+          duration, _avoidPriority)){
         for (int j=0; j< duration; j++){
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
             numberOfConflicts+=cond.executeTest(per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
-          if (operation!=0)
+          if (operation!=0){
             ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
+            ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
+          }
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
-      }// end if (tts.getCurrentCycle().isPeriod
+      }
     }// end if (_dm.getSetOfActivities().getUnity(
     return numberOfConflicts;
   }
@@ -140,24 +161,26 @@ public class TestConditions {
    * @param operation
    * @return
    */
-  public int addOrRemEventInPeriod(Period per, Resource event,int operation){
+  /*public int addOrRemEventInPeriod(Period per, Resource event,int operation){
     int numberC=0;
     StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),".");
     long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
     int currentDuration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
-    int[] avoidPriority={};
-    if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],currentDuration, avoidPriority)){
+    //int[] avoidPriority={};
+    if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],currentDuration, _avoidPriority)){
       for (int k=0; k< _dm.getConditionsTest().getTestToRun().size(); k++){
         Condition cond = (Condition)_dm.getConditionsTest().getTestToRun().get(k);
         numberC+=cond.executeTest(per,event.getID(),operation);
       }// end  for (int j=0; j< _testToRun.size(); j++)
-      ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
-      ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
+      if (operation!=0){
+        ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
+        ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
+      }
     }else{// end if (_dm.getTTStructure().getCurrentCycle().isP
       numberC=-1;
     }// end else if (_dm.getTTStructure().getCurrentCycle().isP
     return numberC;
-  }
+  }*/
 
 
   /**

@@ -112,8 +112,11 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
     String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
     boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
+    boolean inAPeriod= ((EventAttach)event.getAttach()).isPlaceInAPeriod();
     if(event!=null){
+      ((EventAttach)event.getAttach()).setAssignState(true);
       _dm.getConditionsTest().addOrRemEventInTTs(_newTTS,event,-1);
+      ((EventAttach)event.getAttach()).setAssignState(false);
       for(int i=0; i< _newTTS.getCurrentCycle().getSetOfDays().size(); i++){
         Resource day= _newTTS.getCurrentCycle().getSetOfDays().getResourceAt(i);
         for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
@@ -123,13 +126,16 @@ public class ManualImprovementDlg extends EventsDlgInterface{
             int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
             String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
             ((EventAttach)event.getAttach()).setKey(4,periodKey);
+            ((EventAttach)event.getAttach()).setAssignState(true);
             _dm.getConditionsTest().addOrRemEventInTTs(_newTTS,event,1);
+            ((EventAttach)event.getAttach()).setAssignState(false);
           }// end for(int k=0; k< ((Sequence)seq.getAttach())
         }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
       }// end for(int i=0; i< _newTTS.getCurrentCycle()
     }// end if(event!=null){
     ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
     ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
+    ((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
   }
 
 

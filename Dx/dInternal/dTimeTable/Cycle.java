@@ -389,7 +389,7 @@ public Period getLastPeriod(){
 
   /**
    * get a period
-   * @param int [3] the day time index rank: 0= dayindex, 1= hour , 2= minute
+   * @param int [3] the day time index rank: 0= dayKey, 1= hour , 2= minute
    * @return String the period complete key a.b.c where a= day key, b= sequence key
    * c= period key
    * */
