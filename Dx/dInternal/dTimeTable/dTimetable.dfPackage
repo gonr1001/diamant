@@ -7,7 +7,7 @@ package id1nifldg0t3hxrdg0tcyqu;
 */
 class diagram {
 /**
-@__ref <oiref:java#Class#dInternal.dTimetable.TimeTable:oiref><oihard>
+@__ref <oiref:java#Class#dInternal.dTimetable.TTStructure:oiref><oihard>
 @__modelType reference 
 */
 class reference {
@@ -68,15 +68,15 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dTimetable.Cycle:oiref>=540,30,150,180,0:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfCycles:oiref>=330,40,130,160,0:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfDays#_day:oiref>=190,315,300,315:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimetable.TimeTable:oiref>=30,40,210,170,0:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimetable.Period:oiref>=550,443,120,177,0:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfSequences#_sequence:oiref>=625,380,140,450:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimetable.Sequence:oiref>=70,450,140,170,0:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfDays:oiref>=40,250,150,130,0:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.TimeTable#_setOfCycles:oiref>=240,120,330,120:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimetable.Day:oiref>=300,240,170,160,0:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimetable.SetOfSequences:oiref>=550,240,150,140,0:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimetable.TTStructure:oiref>=30,40,210,170,0:oigroup>
 <oigroup:<oiref:java#Member#dInternal.dTimetable.Day#_setOfSequences:oiref>=320,290,148,16,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.TTStructure#_setOfCycles:oiref>=240,120,330,120:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfPeriods#_period:oiref>=467,515,550,515:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Sequence#_setOfPeriods:oiref>=210,515,330,515:oigroup>
 */
