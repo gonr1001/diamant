@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.2 $  $Date: 2003-05-22 14:18:41 $
+ * Title: ImportDlg $Revision: 1.3 $  $Date: 2003-05-22 17:18:04 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -61,10 +61,10 @@ public class ImportDlg extends JDialog {
    private void loadData(){
      JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
      fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIM},
-         "Diamant file (*.dim)" ) );
+         DConst.DIM_FILE ) );
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
-    fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
+     fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
      int returnVal = fc.showDialog(_dApplic.getJFrame(), DConst.IMP_A_TD);
 
      // If the file chooser exited sucessfully,
@@ -73,7 +73,9 @@ public class ImportDlg extends JDialog {
        // get the file name
        String fil = fc.getSelectedFile().getAbsolutePath();
        _dApplic.setCurrentDir(fil);
-       _dApplic.getDMediator().addDoc(_dApplic.getCurrentDir() + DConst.NO_NAME);
+
+       // a revoir
+       //_dApplic.getDMediator().addDoc(_dApplic.getCurrentDir() + DConst.NO_NAME);
        String error= _dApplic.getDMediator().getCurrentDoc().getDM().importData(fil);
        if(error.length()==0){
          JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,

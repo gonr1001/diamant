@@ -22,13 +22,15 @@ import javax.swing.border.*;
 import java.awt.event.*;
 
 import dInternal.TTParameters;
+import dInternal.dData.TTStructure;
 
 public class TTPanel extends JScrollPane {
   //DDocument _dd;
+  private TTStructure _ttStruct;
   private JLabel _x;
-  public TTPanel() {//DDocument dd) {
+  public TTPanel(TTStructure ttStruct) {//DDocument dd) {
     super();
-    //_dd = dd;
+    _ttStruct = ttStruct;
     initTTPanel();
   }
 
@@ -45,7 +47,7 @@ int nbds=0;
 //for (int j=0;j< _ddv._constraint._jour.length; j++)
  // if (_ddv._constraint._jour[j]==1)
  //   nbds++;
-for (int x = 0; x < 5 ; x++){
+for (int x = 0; x < _ttStruct._col ; x++){
   panel.add(new JLabel("Jour " + (x + 1) + " : "+ "lundi", JLabel.CENTER));
 }
 //panel.setPreferredSize(new Dimension(500, 20));
@@ -69,14 +71,14 @@ panel.setBackground(SystemColor.window);
 panel.setPreferredSize(new Dimension(20, 20));
 setPreferredSize(new Dimension(panel.getPreferredSize().width + 40,
                                panel.getPreferredSize().height + 50));
-int nbCols = 5; //timeTable.nbDays;
+int nbCols = _ttStruct._col; //timeTable.nbDays;
 gridbag.columnWeights = new double [nbCols];
 gridbag.columnWidths = new int [nbCols];
 for (int i = 0; i < nbCols; i++) {
   gridbag.columnWeights[i] = 1;
   gridbag.columnWidths[i] = 30;
 }
-int nbRows = 14;
+int nbRows = _ttStruct._row;
 gridbag.rowWeights = new double [nbRows];
 gridbag.rowHeights = new int [nbRows];
 for (int i = 0; i < nbRows; i++) {

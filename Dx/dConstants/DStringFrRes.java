@@ -1,6 +1,6 @@
 /**
  *
- * Title: DStringFrRes $Revision: 1.21 $  $Date: 2003-05-22 14:18:41 $
+ * Title: DStringFrRes $Revision: 1.22 $  $Date: 2003-05-22 17:18:04 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -33,9 +33,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     /**
     *  the menus and dialogs
     */
-    { "newTT", "Nouvel horaire" },
     { "file", "Fichier" },
-   // { "nTT", "Nouvel horaire" },
+    { "newTT", "Nouvel horaire" },
+    { "newTTTD", "Indiquez grille horaire"},
+    { "newTTM", "Grille horaire"},
+
+
     { "open", "Ouvrir horaire" },
     { "close", "Fermer" },
     //Separator
@@ -99,8 +102,10 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"dotDim", ".dim"},
     {"sig", "sig"},
     {"txt", "txt"},
+    {"dgh", "dgh"},
     {"sigFile", "Fichier données (*.sig)"},
     {"dimFile", "Fichier Diamant (*.dim)"},
+    {"dghFile", "Fichier Grille Horaire (*.dgh)"},
     {"problem", "À corriger"},
 
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.18 $  $Date: 2003-05-22 14:18:41 $
+ * Title: DConst $Revision: 1.19 $  $Date: 2003-05-22 17:18:04 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -34,8 +34,10 @@ public class DConst {
 
   public final static String FILE  = res.getString("file");
   public final static String NEW_TT = res.getString("newTT");
+  public final static String NEW_TT_TD  = res.getString("newTTTD");
+  public final static String NEW_TT_M  = res.getString("newTTM");
 
- // public final static String N_TT  = res.getString("nTT");
+  // public final static String N_TT  = res.getString("nTT");
   public final static String OPEN  = res.getString("open");
   public final static String CLOSE  = res.getString("close");
   //separator
@@ -107,9 +109,11 @@ public class DConst {
    public final static String DIM = res.getString("dim");
    public final static String DOT_DIM = res.getString("dotDim");
    public final static String SIG = res.getString("sig");
+   public final static String DGH = res.getString("dgh");
    public final static String TXT = res.getString("txt");
    public final static String DIM_FILE = res.getString("dimFile");
    public final static String SIG_FILE = res.getString("sigFile");
+   public final static String DGH_FILE = res.getString("dghFile");
    public final static String PROBLEM = res.getString("problem");
 
 

@@ -91,6 +91,11 @@ class reference308 {
 @__modelType reference 
 */
 class reference309 {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.TTStructure:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.15 $  $Date: 2003-05-20 16:23:15 $
+ * Title: DDocument $Revision: 1.16 $  $Date: 2003-05-22 17:18:04 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.16 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -37,15 +37,18 @@ import dInternal.dData.Status;
 import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
+import dInternal.dData.TTStructure;
 import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;
+
+
 //debug
 
 public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;
   private DApplication _dApplic;
-
+  private TTStructure _ttStruct;
   /**
    */
   //private DMediator _mediator;
@@ -58,7 +61,7 @@ public class DDocument implements ActionListener, DModelListener{
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
   //-------------------------------------------
-  public DDocument(DApplication dApplic, String title) {
+  public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
    //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the _jif */
@@ -79,7 +82,8 @@ public class DDocument implements ActionListener, DModelListener{
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
-    _ttPanel = new TTPanel();
+    _ttStruct = ttStruct;
+    _ttPanel = new TTPanel(_ttStruct);
     //_ttParameters = new TTParameters();
     _dm.addDModelListener(this);
     _modified = false;

@@ -14,12 +14,14 @@ import javax.swing.JFrame;
 import dInterface.Command;
 import dInterface.DApplication;
 
+import dInternal.dData.TTStructure;
+
 public class HelloCmd implements Command {
 
   public HelloCmd() {
   } //end NewCmd
 
   public void execute(DApplication dApplic) {
-    dApplic.getDMediator().addDoc("Sans titre");
+    dApplic.getDMediator().addDoc("Sans titre", new TTStructure());
   } // end execute
 } /* end HelloCmd class */
