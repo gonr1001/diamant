@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.121 $  $Date: 2005-02-04 16:14:37 $
+ * Title: DModel $Revision: 1.122 $  $Date: 2005-02-08 03:25:10 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.121 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.122 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -651,10 +651,7 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 		changeInDModel(obj);
 	}// end changeInDModelByBuildMatrixConflicts
 	
-/*	public void changeInDModelByStudentDlg(Object obj) {				
-		getConditionsTest().setMatrixBuilded(false,true);
-		changeInDModel(obj);		
-	}// end changeInDModelByActivitiyDlg*/
+
 	
 	public void changeInDModelByStudentsDlg(Object obj) {
 		this.setChanged();
@@ -869,7 +866,7 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	      attach = soRes.getResourceAt(i).getAttach();
 	      matrix=attach.getMatrixAvailability();
 	      matrix = DXToolsMethods.resizeAvailability(matrix,getTTStructure());
-	      //attach.setAvailability(matrix);
+	      attach.setAvailability(matrix);
 	    }
 	  }
 	  /**

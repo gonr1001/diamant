@@ -1,6 +1,6 @@
 /**
 *
-* Title: Category $Revision: 1.5 $  $Date: 2005-01-27 17:41:01 $
+* Title: Category $Revision: 1.6 $  $Date: 2005-02-08 03:25:10 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: syay1801 $
 * @since JDK1.3
 */
@@ -70,15 +70,19 @@ public class SetOfCategories extends DSetOfResources{
 		if(resourceList.size()>0){
 			SetOfRooms setOfRooms;
 			DResource catRsc;
+			String roomTmp;
 			for (int i=0; i< resourceList.size()-1; i++){
 				catRsc=((DResource)resourceList.get(i));
 				setOfRooms = (SetOfRooms)catRsc.getAttach();
-				reslist+= setOfRooms.toWrite();
+				roomTmp= setOfRooms.toWrite();
+				reslist+= addCategoriesInOldFormat(roomTmp, site, catRsc.getID());
 			}
 			catRsc=((DResource)resourceList.get(resourceList.size()-1));
 			setOfRooms = (SetOfRooms)catRsc.getAttach();
-			String roomsOLDFormat= setOfRooms.toWrite();
-			reslist+= addCategoriesInOldFormat(roomsOLDFormat, site, catRsc.getID());
+			//String roomsOLDFormat= setOfRooms.toWrite();
+			roomTmp= setOfRooms.toWrite();
+			reslist+= addCategoriesInOldFormat(roomTmp, site, catRsc.getID());
+			
 		}// end if(_resourceList.size()>0)
 		return reslist;
 	}
