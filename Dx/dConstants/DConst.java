@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.45 $  $Date: 2003-08-29 14:14:49 $
+ * Title: DConst $Revision: 1.46 $  $Date: 2003-09-05 14:37:56 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.45 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.46 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -157,6 +157,10 @@ public class DConst {
   public final static String GROUP = res.getString("Group");//Groupe
   public final static String NUMBER_OF_ELEMENTS = res.getString("NumberOfElements");//Nombre d'éléments
   public final static String TYPE = res.getString("Type");//Type
+  public final static String EVENTS_DLG_TITLE = res.getString("EventsDlgTitle");//Évenements
+  public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés
+  public final static String EVENTS_PLACED = res.getString("EventsPlaced");//Placés
+  public final static String EVENTS_NOT_PLACED = res.getString("EventsNotPlaced");//Non placés
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F
