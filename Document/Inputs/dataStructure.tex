@@ -1,39 +1,55 @@
 \chapter{Description de la structure de données de \diamant{}}
 
 
-Chaque fichier contient une liste d'éléments qui constitue les
-ressources dont le logiciel a besoin pour fonctionner. Ces
-ressources sont classifiées dans 4 catégories:
+Chaque fichier contient des enregistrements, ces enregistrements
+sont mis en mémoire comme  des listes d'éléments. De manière
+générale nous parlerons de ressources. Ces ressources sont
+classifiées dans quatre types~:
+
 \begin{enumerate}
-    \item Locaux.
-    \item Instructeurs.
     \item Étudiants.
     \item Activités.
+    \item Instructeurs.
+    \item Locaux.
 \end{enumerate}
 
 Pour stocker l'information contenue dans chaque fichier, nous
 avons développé pour la version 1.5 de \diamant{} la structure de
-données \emph{ResourceList} contenant un ensemble de ressources de type \emph{Resource}. Cette structure de données contient les informations
-d'un élément d'une ressource donnée (locaux, instructeurs,
-étudiants ou activités).
+ données
+\pro{ResourceList} contenant un ensemble de ressources de type \pro{Resource} (pour plus de
+détails se reporter à la section \ref{resourcelist}). Cette dernière structure de
+données contient les informations d'un élément d'une ressource
+donnée (locaux, instructeurs, étudiants ou activités).
 
-Le présent document contient les exemples, les interprétations et
-l'énumération des différentes informations requises par \diamant{}
-pour la construction de l'horaire.
 
- Le noeud principal de la
-structure de données de \diamant{} est représenté par la classe
-\emph{LoadData} (voir figure \ref{datastruct}). Cette classe
-contient la liste des différentes ressources, à savoir:
+
+Une structure de données importante de \diamant{}  est représenté
+par la classe \pro{LoadData} (voir figure \ref{datastruct}). Cette
+classe  a comme responsabilité de lire les données des fichiers et
+de retourner les instances de liste des différentes ressources, à
+savoir:
+
+
+
+
+
 
 \begin{itemize}
-    \item \emph{StudentsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des étudiants.\\
-    \item \emph{RoomsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des locaux.\\
-    \item \emph{InstructorsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'instructeurs.\\
-    \item \emph{ActivitiesList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'activités.\\
+    \item \pro{StudentsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des étudiants.\\
+    \item \pro{RoomsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des locaux.\\
+    \item \pro{InstructorsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'instructeurs.\\
+    \item \pro{ActivitiesList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'activités.\\
 \end{itemize}
 
-Chacune des listes de ressources citées ci-dessus hérite de la super classe \emph{ResourceList}. \emph{ResourceList} contient la liste de tous les éléments d'une ressource. Cette liste d'éléments est en réalité une liste d'objects de type \emph{Resource}. L'object \emph{Resource} décrit quand à lui un élément par sa clé (\emph{resourceKey}), son identifiant (\emph{resourceID}) et la nature de cet object (\emph{resourceObject}). Il est à noter que \emph{resourceObject} peut être de type \emph{Instructor} ou \emph{Activity} ou \emph{Room} ou encore \emph{Student}
+Chacune des listes de ressources citées ci-dessus hérite de la
+super classe \pro{ResourceList}. \emph{ResourceList} contient la
+liste de tous les éléments d'une ressource. Cette liste d'éléments
+est en réalité une liste d'objects de type \emph{Resource}.
+L'object \emph{Resource} décrit quand à lui un élément par sa clé
+(\emph{resourceKey}), son identifiant (\emph{resourceID}) et la
+nature de cet object (\emph{resourceObject}). Il est à noter que
+\emph{resourceObject} peut être de type \emph{Instructor} ou
+\emph{Activity} ou \emph{Room} ou encore \emph{Student}
 
 Nous décrirons chacune des structures dans les prochaines sections.
 
@@ -47,8 +63,8 @@ Nous décrirons chacune des structures dans les prochaines sections.
 
 
 \section{\emph{LoadData}}
-Cette classe est chargée de la gestion de deux taches principales
-:
+Cette classe est chargée de la gestion de deux taches
+principales~:
 \begin{enumerate}
     \item \textbf{Le chargement de fichiers} :  Dans cette étape, l'intégrité des fichier des ressources est d'abord vérifiée et ensuite chaque fichier est chargé dans un vecteur de bytes pour leur postérieur
     traitement. Cette tâche est effectué à l'aide de la classe \emph{FilterFile} de la librairie
@@ -58,7 +74,7 @@ Cette classe est chargée de la gestion de deux taches principales
     effectuée en utilisant les classe décrites à continuation.
 \end{enumerate}
 
-\section{\emph{ResourceList}}
+\section{\emph{ResourceList}} \label{resourcelist}
 Cette classe implémente la structure de données
 \emph{ResourceList}.  Elle déclare les méthodes
 \emph{analyseTokens()} et \emph{buildResourceList()} qui

@@ -1,42 +1,41 @@
-\chapter*{Introduction}
-Ce document présente comment dans le logiciel \diamant{} les
+\chapter*{Résumé}
+Ce document présente comment  des
 données résidant dans des fichiers sont mis dans la forme
-d'objets, afin d'être traites à l'intérieur de l'application.
-\diamant{} est un logiciel de construction d'horaires, dans lequel
-le chargement de données se fait à partir de  fichiers de texte.
-Ces fichiers contiennent des enregistrements qui seront
-``transformés'' en objets manipulables par l'application.
-Ces objets seront éventuellement modifiés dans l'application
-(uniquement certains champs changent de valeur). Tous les objets
-seront sauvgardés par l'application dans un seul fichier, ainsi
-l'application peut continuer un travail en prenant la dernière
-sauvgarde faite.
+d'objets, afin d'être traites à l'intérieur de l'application  \diamant{}.
 
-Ici, nous donnons les détails de formats de fichiers, fichiers originaux et
+\diamant{} est un logiciel de construction d'horaires, dans lequel
+les données de référence sont des fichiers de texte.
+Ces fichiers contiennent des enregistrements qui seront
+``transformés'' en objets reconnus par l'application.
+Ces objets seront éventuellement modifiés (uniquement certains champs changent de valeur)
+suite à des actions de l'utilisateur. Tous les objets
+seront sauvegardés par l'application dans un seul fichier texte XML, ainsi
+l'application peut continuer un travail en prenant la dernière
+sauvegarde faite.
+
+Ce papier présente les détails de formats de fichiers, fichiers originaux et
 fichiers produits; avec des indications sur l'utilisation de
 champs et les classes concernant cette partie de l'application ainsi que
 la correspondance entre champs des enregistrements fichiers et données membres.
 
+Cette approche donne les avantages suivants :
+\begin{itemize}
+    \item Le traitement de tous les fichiers est fait en suivant la même structure,
+    ce qui favorise la modularité,
+    la clarté de l'application et le traitement des données de façon uniforme et centralisée;
+    \item Réduit la redondance dans le  code, ce qui diminue les efforts de tests et de débogage.
+\end{itemize}
+
 /*
-Chaque fichier contient une liste d'éléments qui constitue les ressources dont le logiciel a besoin pour fonctionner. Ces ressources sont classifiées dans 4 catégories:
-\begin{enumerate}
-    \item Locaux.
-    \item Instructeurs.
-    \item Étudiants.
-    \item Activités.
-\end{enumerate}
+
 
 Pour stocker l'information contenue dans chaque fichier, nous avons développé pour la version 1.5 de \diamant{} la structure de données \emph{Resource} (pour plus de détails se reporter à la section 1.1). Cette structure de données contient les informations d'un élément d'une ressource donnée (locaux, instructeurs, étudiants ou activités).
 
 L'information contenue dans un fichier est stockée dans la structure de données \emph{ResourceList}  (pour plus de détails se reporter à la section 1.2). ResourceList est un ensemble constitué d'une liste d'éléments de type  Resource et contient par conséquent la liste des éléments d'un fichier.
 
-Cette approche donne les avantages suivants :
-\begin{itemize}
-    \item Le traitement de tous les fichiers est fait avec la même structure, ce qui favorise la modularité, la clarté de l'application et le traitement des données de façon uniforme et centralisée.
-    \item On obtient moins de lignes de code, ce qui diminue les efforts de tests et de debbugage.
-\end{itemize}
+
 
 Une fois les données chargés dans \diamant{}, une série de  classes et de méthodes sont chargés du traitement de l'information (ajout, suppression, tri, recherche et édition d'éléments).
 
-Nous vous présenterons dans ce document, la description du format des fichiers, la structure de données et les classes développées.
+
 */
