@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
+ * Title: DefFileToImportDlg $Revision: 1.2 $  $Date: 2003-05-22 14:18:41 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.2 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -85,14 +85,7 @@ public class DefFilesToImportDlg extends JDialog
      initDlg();
    } // end constructor
 
-/*
-   public int showDlg(){
-     pack();
-     setLocationRelativeTo(_dApplic.getJFrame());
-     setVisible(true);
-     return 1;//new String();
-  }
-*/
+
   private void initDlg() {
     // center Panel
     JPanel centerPanel = new JPanel(new GridLayout(4, 0));
@@ -174,7 +167,7 @@ public class DefFilesToImportDlg extends JDialog
          _tfStudents.getText().length() == 0 ||
          _tfInstructors.getText().length() == 0 ||
          _tfRooms.getText().length() == 0)
-        JOptionPane.showMessageDialog(this,
+         JOptionPane.showMessageDialog(this,
                      DConst.DEF_F_D5 + DConst.DEF_F_D6,
                      DConst.PROBLEM,
                      JOptionPane.WARNING_MESSAGE);
@@ -188,8 +181,8 @@ public class DefFilesToImportDlg extends JDialog
     } else if (command.equals(DConst.BUT_BROWSE )) { // Browse
       JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
       fc.setMultiSelectionEnabled( false );
-      fc.setFileFilter( new DFileFilter( new String[] {"sig", "txt"},
-          "Data Files (*.sig)" ) );
+      fc.setFileFilter( new DFileFilter( new String[] {DConst.SIG, DConst.TXT},
+          DConst.SIG_FILE ) );
       // Display the file chooser in a dialog
 
     String message;
@@ -201,7 +194,8 @@ public class DefFilesToImportDlg extends JDialog
       message = DConst.DEF_F_D3;
     else
       message = DConst.DEF_F_D4;
-
+    Dimension d = fc.getPreferredSize();
+    fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
     int returnVal = fc.showDialog(this, message);
     // If the file chooser exited sucessfully,
     // and a file was selected, continue
@@ -214,16 +208,18 @@ public class DefFilesToImportDlg extends JDialog
         _tfInstructors.setText(fc.getSelectedFile().getAbsolutePath());
       else if (event.getSource() == _butRooms )
         _tfRooms.setText(fc.getSelectedFile().getAbsolutePath());
-      _dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+      _dApplic.setCurrentDir(fc.getSelectedFile().getAbsolutePath());
     }
   }
   }
 
   private void saveInFile(){//DApplication dApplic, String str) {
-    JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());//_projectPath);
-    fc.setFileFilter( new DFileFilter ( new String[] {"dim"},
-                "Diamant file (*.dim)" ) );
+    JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
+    fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIM},
+                DConst.DIM_FILE ) );
     // Display the file chooser in a dialog
+//    Dimension d = fc.getPreferredSize();
+//    fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
     int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
 
     // If the file chooser exited sucessfully,
@@ -231,12 +227,12 @@ public class DefFilesToImportDlg extends JDialog
     if (returnVal == JFileChooser.APPROVE_OPTION) {
     // Save the file name
     String fil = fc.getSelectedFile().getAbsolutePath();
-    if ( !fil.endsWith(".dim") )
-      fil = fil.concat(".dim");
+    if ( !fil.endsWith(DConst.DOT_DIM) )
+      fil = fil.concat(DConst.DOT_DIM);
     saveFile(fil);
-    _dApplic.setCurrentDir(fc.getSelectedFile().getPath());
-    JOptionPane.showMessageDialog(this, "Sauvegardé dans: "+ fil,
-      "Fichier d'importation Auto", JOptionPane.INFORMATION_MESSAGE);
+    _dApplic.setCurrentDir(fc.getSelectedFile().getAbsolutePath());
+    JOptionPane.showMessageDialog(this, DConst.DEF_F_D7 + fil,
+      DConst.DEF_F_D8, JOptionPane.INFORMATION_MESSAGE);
     }
   }
 

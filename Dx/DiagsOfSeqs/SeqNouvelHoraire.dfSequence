@@ -31,26 +31,26 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.node316:oiref>=509,180,14,20,1:oigroup>
-<oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link317:oiref>=350,195,146,16,0:oigroup>
+@__positions <oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.node316:oiref>=497,180,14,20,1:oigroup>
+<oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link317:oiref>=338,195,146,16,0:oigroup>
 <oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link:oiref>=86,111,263,16,0:oigroup>
-<oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312.link:oiref>=642,160,160,16,0:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312:oiref>=760,30,107,341,1:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310:oiref>=450,30,115,341,1:oigroup>
+<oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312.link:oiref>=634,160,160,16,0:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312:oiref>=760,30,90,341,1:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310:oiref>=450,30,90,341,1:oigroup>
 <oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link320:oiref>=86,251,354,16,0:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.node:oiref>=500,131,14,114,1:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link320:oiref>=82,271,500,271:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.node:oiref>=488,131,14,114,1:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link320:oiref>=82,271,488,271:oigroup>
 <oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link314:oiref>=:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.node321:oiref>=500,271,14,20,1:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link317:oiref>=500,215,91,215:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.node321:oiref>=488,271,14,20,1:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link317:oiref>=488,215,91,215:oigroup>
 <oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link315:oiref>=:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312.node:oiref>=806,145,14,65,1:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312.node:oiref>=798,145,14,65,1:oigroup>
 <oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.node318:oiref>=77,215,14,20,1:oigroup>
 <oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node:oiref>=30,30,90,341,1:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312.link:oiref>=806,180,523,180:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link:oiref>=82,131,500,131:oigroup>
-<oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link:oiref>=518,125,252,16,0:oigroup>
-<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link:oiref>=514,145,806,145:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node312.link:oiref>=798,180,511,180:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node.link:oiref>=82,131,488,131:oigroup>
+<oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link:oiref>=506,125,252,16,0:oigroup>
+<oigroup:<oiref:design#Class#id4ux0cdfxus9pndfyame1b.node310.link:oiref>=502,145,798,145:oigroup>
  
 */
 class __positions {
@@ -98,7 +98,7 @@ class link320 {
 }}/**
 @shapeType Object
 @__modelType node
-@name NewScheduleCmd 
+@name NewCmd
 */
 class node310 {
 /**
@@ -153,7 +153,7 @@ class node321 {
 }}/**
 @shapeType Object
 @__modelType node
-@name NewScheduleDlg 
+@name NewDlg
 */
 class node312 {
 /**

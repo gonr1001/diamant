@@ -1,6 +1,6 @@
 /**
  *
- * Title: DApplication $Revision: 1.2 $  $Date: 2003-05-14 10:54:54 $
+ * Title: DApplication $Revision: 1.3 $  $Date: 2003-05-22 14:18:41 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -156,19 +156,14 @@ public class DApplication implements ActionListener {
       return _currentDir;
     } // end getCurrentDir
 
+    /*
+    * the str can contain a file name, it will be left out
+    */
     public void setCurrentDir(String str){
-       _currentDir = str;
+       _currentDir = str.substring(0,str.lastIndexOf(File.separator)+1);
     } // end setCurrentDir
 
-    public void setCurrentDirFromPath(String path){
-          System.out.println("cd" + path);
-/*
-      _currentDir = path.substring(0,path.lastIndexOf(File.separator));
-      if (_currentDir.endsWith(":"));
-          _currentDir += File.separator;*/
-          _currentDir = path;
-       System.out.println("cd: New" + _currentDir);
-    } // end setCurrentDir
+
 
     public void setLAF(String str) {
       // Force SwingApp to come up in the System L&F

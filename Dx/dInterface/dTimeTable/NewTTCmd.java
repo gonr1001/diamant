@@ -1,6 +1,6 @@
 /**
  *
- * Title: NewCmd $Revision: 1.10 $  $Date: 2003-05-15 08:40:34 $
+ * Title: NewCmd $Revision: 1.1 $  $Date: 2003-05-22 14:18:41 $
  * Description: NewCmd is a class used to have a new
  *  			document window
  *
@@ -15,20 +15,23 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.1 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
-package dInterface;
+package dInterface.dTimeTable;
 
 import javax.swing.JFrame;
+import dInterface.Command;
+import dInterface.DApplication;
 
-public class NewCmd implements Command {
 
-  public NewCmd() {
+public class NewTTCmd implements Command {
+
+  public NewTTCmd() {
   } //end NewCmd
 
   public void execute(DApplication dApplic) {
-    dApplic.getDMediator().addDoc("Sans titre");
+    new NewTTDlg(dApplic);
   } // end execute
 } /* end NewCmd class */

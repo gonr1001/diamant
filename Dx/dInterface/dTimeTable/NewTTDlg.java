@@ -1,7 +1,8 @@
-package dInterface.dData;
+package dInterface.dTimeTable;
+
 /**
  *
- * Title: ImportDlg $Revision: 1.2 $  $Date: 2003-05-22 14:18:41 $
+ * Title: ImportDlg $Revision: 1.1 $  $Date: 2003-05-22 14:18:41 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,12 +16,11 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 
-import java.awt.Dimension;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -31,8 +31,6 @@ import dInterface.DApplication;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
 
-import dResources.DConst;
-
 
 /**
  *
@@ -40,44 +38,41 @@ import dResources.DConst;
  *
  */
 
-public class ImportDlg extends JDialog {
+public class NewTTDlg extends JDialog {
 
   DApplication _dApplic;
   /**
     * the constructor will displays the dialog
     *
-    * @param DApplication     to get the parent of the dialog
+    * @param jframe    the parent of the dialog
+    * @param str       the title of the window dialog
     * @since           JDK1.3
     */
 
-   public ImportDlg(DApplication dApplic) {
+   public NewTTDlg(DApplication dApplic) {
      _dApplic= dApplic;
      loadData();
    } // end constructor
 
    /**
-    *
     * */
    private void loadData(){
-     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
-     fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIM},
+     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());//_projectPath);
+     fc.setFileFilter( new DFileFilter ( new String[] {"dim"},
          "Diamant file (*.dim)" ) );
      // Display the file chooser in a dialog
-     Dimension d = fc.getPreferredSize();
-    fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
-     int returnVal = fc.showDialog(_dApplic.getJFrame(), DConst.IMP_A_TD);
+     int returnVal = fc.showDialog(_dApplic.getJFrame(), "Importation de données");//showOpenDialog(_dApplic.getJFrame());
 
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
      if (returnVal == JFileChooser.APPROVE_OPTION) {
        // get the file name
        String fil = fc.getSelectedFile().getAbsolutePath();
-       _dApplic.setCurrentDir(fil);
-       _dApplic.getDMediator().addDoc(_dApplic.getCurrentDir() + DConst.NO_NAME);
+       _dApplic.getDMediator().addDoc("Sans titre");
        String error= _dApplic.getDMediator().getCurrentDoc().getDM().importData(fil);
        if(error.length()==0){
-         JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,
-                                     DConst.IMP_A_TD, JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(this, "Données importées avec succes!!!",
+                                     "Importation de données", JOptionPane.INFORMATION_MESSAGE);
        }else{
          new FatalProblemDlg(_dApplic.getJFrame(),error);
               System.exit(1);
@@ -87,6 +82,4 @@ public class ImportDlg extends JDialog {
      }
    }// end method
 
-} /* end class ImportDlg */
-
-
+} /* end class NewDlg */

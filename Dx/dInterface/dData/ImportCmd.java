@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportCmd $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
+ * Title: ImportCmd $Revision: 1.2 $  $Date: 2003-05-22 14:18:41 $
  * Description: ImportCmd is a class used by menus
  *              to execute import
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.2 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -36,14 +36,11 @@ import dInterface.DApplication;
 
 public class ImportCmd implements Command {
 
-  private final static String TITLEBOX = "Do Nothing Cmd";
-  //private JFrame _jFrame;
 
   public ImportCmd (JFrame jFrame) {
-    //_jFrame = jFrame;
   } // end constructor
 //------------------------------
   public void execute(DApplication dApplic) {
-    new ImportDlg(dApplic, TITLEBOX);
+    new ImportDlg(dApplic);
   }
 } /* end class ImportCmd */

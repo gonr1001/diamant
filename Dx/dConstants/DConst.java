@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.17 $  $Date: 2003-05-20 15:51:52 $
+ * Title: DConst $Revision: 1.18 $  $Date: 2003-05-22 14:18:41 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.18 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -33,16 +33,16 @@ public class DConst {
   public final static String BLOCS = "BLOCS";
 
   public final static String FILE  = res.getString("file");
-  public final static String NEW = res.getString("new");
+  public final static String NEW_TT = res.getString("newTT");
 
-  public final static String N_TT  = res.getString("nTT");
+ // public final static String N_TT  = res.getString("nTT");
   public final static String OPEN  = res.getString("open");
   public final static String CLOSE  = res.getString("close");
   //separator
   public final static String SAVE  = res.getString("save");
   public final static String SAVE_AS  = res.getString("saveAs");
 
-  public final static String IMP_M  = res.getString("impM");
+ // public final static String IMP_M  = res.getString("impM");
 
   public final static String DEF_F_M  = res.getString("defFM");
   public final static String DEF_F_TD  = res.getString("defFTD");
@@ -53,12 +53,13 @@ public class DConst {
   public final static String DEF_F_D4  = res.getString("defFD4"); // "Les locaux"
   public final static String DEF_F_D5  = res.getString("defFD5"); //"Au moins un champ ne contient aucune valeur.\n"
   public final static String DEF_F_D6  = res.getString("defFD6"); // "Veuillez entrer un fichier pour chaque type demandé."
-
+  public final static String DEF_F_D7  = res.getString("defFD7"); // "Sauvegardés dans : "
+  public final static String DEF_F_D8  = res.getString("defFD8"); // "Fichiers d'importation"
 
   public final static String IMP_A_M  = res.getString("impAM");
   public final static String IMP_A_TD  = res.getString("impATD");
   public final static String IMP_A_D  = res.getString("impAD");
-
+  public final static String IMP_A_SUC  = res.getString("impASuc");
 
   public final static String EXPO  = res.getString("expo");
 
@@ -78,18 +79,7 @@ public class DConst {
   public final static String INST_ASSIGN_TD = res.getString("instAssignTD");
   public final static String INST_ASSIGN_D = res.getString("instAssignD");
 
-   final static String CONS = "Consommateur";
-   final static String PROD = "Producteur";
-   final static String IRC = "Inducteur R-C";
-   final static String ICP = "Inducteur C-P";
 
-   final static String DOIT = "Execute";
-   final static String VERIFY = "Verification";
-   final static String JDOIT1 = "Calcul 1";
-   final static String JDOIT2 = "Calcul 2";
-
-   final static String REPORT = "Rapport";
-   final static String REPORTS = "Rapports";
 
    public final static String PREF = res.getString("pref");
    public final static String PLAF_M = res.getString("plafM");
@@ -98,7 +88,6 @@ public class DConst {
 
 
    public final static String HELP = res.getString("help");
-
 
 
 /*   final static String CONTENTS = "Contenu";
@@ -114,7 +103,16 @@ public class DConst {
    public final static String BUT_APPLY = res.getString("butApply");
    public final static String BUT_BROWSE = res.getString("butBrowse");
 
+   public final static String NO_NAME = res.getString("noName");
+   public final static String DIM = res.getString("dim");
+   public final static String DOT_DIM = res.getString("dotDim");
+   public final static String SIG = res.getString("sig");
+   public final static String TXT = res.getString("txt");
+   public final static String DIM_FILE = res.getString("dimFile");
+   public final static String SIG_FILE = res.getString("sigFile");
    public final static String PROBLEM = res.getString("problem");
+
+
 
    //instructor constants
    public final static String INST_TEXT1= res.getString("instText1");

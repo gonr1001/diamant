@@ -1,6 +1,6 @@
 /**
  *
- * Title: DStringFrRes $Revision: 1.20 $  $Date: 2003-05-20 15:51:52 $
+ * Title: DStringFrRes $Revision: 1.21 $  $Date: 2003-05-22 14:18:41 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.21 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -33,16 +33,16 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     /**
     *  the menus and dialogs
     */
-    { "new", "Nouvel horaire" },
+    { "newTT", "Nouvel horaire" },
     { "file", "Fichier" },
-    { "nTT", "Nouvel horaire" },
+   // { "nTT", "Nouvel horaire" },
     { "open", "Ouvrir horaire" },
     { "close", "Fermer" },
     //Separator
     { "save", "Enregistrer" },
     { "saveAs", "Enregistrer sous" },
     //Separator
-    { "impM", "Importer manuellement" },
+
 
     { "defFM", "Definir fichiers à importer" },
     { "defFTD", "Definir fichiers pour l'importation automatique"},
@@ -52,12 +52,15 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "defFD4", "Les locaux" },
     { "defFD5", "Au moins une ligne est vide. \n"},
     { "defFD6", "Veuillez entrer un fichier pour chaque type demandé." },
-
+    { "defFD7", "Sauvegardés dans : " },
+    { "defFD8", "Fichiers d'importation" },
 
 
     { "impAM", "Importer automatiquement" },
     { "impATD", "Importation de fichiers"},
     { "impAD", "To be defined" },
+    { "impASuc","Fichiers importés avec succes!!!"},
+
     { "expo", "Exporter" },
     //Separator
     { "exit", "Quitter" },
@@ -91,6 +94,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"butApply", "Appliquer"},
     {"butBrowse", "Parcourir"},
     // commontitles
+    {"noName", "Sans Titre"},
+    {"dim", "dim"},
+    {"dotDim", ".dim"},
+    {"sig", "sig"},
+    {"txt", "txt"},
+    {"sigFile", "Fichier données (*.sig)"},
+    {"dimFile", "Fichier Diamant (*.dim)"},
     {"problem", "À corriger"},
 
 

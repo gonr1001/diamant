@@ -16,6 +16,21 @@ class reference {
 @__modelType reference 
 */
 class reference335 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.PLAFCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.PLAFDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.HelloCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

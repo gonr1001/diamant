@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.16 $  $Date: 2003-05-20 16:23:15 $
+ * Title: DMenuBar $Revision: 1.17 $  $Date: 2003-05-22 14:18:41 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.17 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -31,11 +31,12 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenu;
 
 import dInterface.dData.*;
+import dInterface.dTimeTable.NewTTCmd;
 import dInterface.dUtil.*;
 
 public class DMenuBar extends JMenuBar{
-  DApplication _dApplic;
-
+  private DApplication _dApplic;
+  private int state;
   public DMenuBar(DApplication dApplic) {
     super();
     _dApplic = dApplic;
@@ -53,19 +54,19 @@ public class DMenuBar extends JMenuBar{
     this.add( menu );
 
     // Items in menu FILE.
+    /* This menu will be deleted in the final version */
+    CmdMenu mHello = new CmdMenu("Hello");
+    menu.add(mHello);
+    mHello.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mHello.setCommand(new HelloCmd());
+    mHello.addActionListener(_dApplic);
 
-    CmdMenu mNew = new CmdMenu(DConst.NEW);
-    menu.add(mNew);
-    mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNew.setCommand(new NewCmd());
-    mNew.addActionListener(_dApplic);
 
-
-    /*CmdMenu mNProj = new CmdMenu("Nouveau Projet");
-    mNProj.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNProj.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    mNProj.addActionListener(_dApplic);
-    menu.add(mNProj);*/
+    CmdMenu mNewTT = new CmdMenu(DConst.NEW_TT);
+    menu.add(mNewTT);
+    mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNewTT.setCommand(new NewTTCmd());
+    mNewTT.addActionListener(_dApplic);
 
     CmdMenu mOpen = new CmdMenu(DConst.OPEN);
     menu.add(mOpen);
@@ -231,6 +232,8 @@ mTime.add(mOTime);
     mAbout.setFont(new java.awt.Font(mfont, font, nPT));
     mAbout.setCommand(new AboutCmd());
     mAbout.addActionListener(_dApplic);
+
+    state = 0;
   } // end createMenus
 
 } /* end class DMenuBar */
