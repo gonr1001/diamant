@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.24 $  $Date: 2003-08-22 14:03:06 $
+ * Title: ToolBar $Revision: 1.25 $  $Date: 2003-08-27 08:23:42 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: ysyam $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -150,6 +150,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         int index= _tts.getCurrentCycle().getCurrentDayIndex();
         Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
         resc.setID((String)dayNameSelector.getSelectedItem());
+        System.out.println("DToolbar.dayNameSelector");//debug
         //_dApplic.getDMediator().getCurrentDoc().setModified();
         //Treat event
           _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
