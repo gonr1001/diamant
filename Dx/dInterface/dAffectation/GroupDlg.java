@@ -356,7 +356,8 @@ public class GroupDlg extends JDialog implements ActionListener{
       for(int i = 0; i < _numberOfSections; i++){
         if (e.getSource().equals( (JPanel)_insidePanel.getComponent(i))){
           _currentAssignedGroup = i;
-        }
+        }else
+          _assignedLists[i].clearSelection();
       }//end for(int i = 0; i<_numberOfSections; i++)
       setGroupBorders(_currentAssignedGroup, Color.blue);
     }// end public void mouseClicked
@@ -365,12 +366,6 @@ public class GroupDlg extends JDialog implements ActionListener{
   /**
   * Set the clor border of the groupPanels. Clor = blue for the panel selected, null for the
   * other panels
-  * @param selectedPanelID
-  * @param colorBorder
-  */
-
-  /**
-  * Set the color of the GroupPanel borders defined by the selectedPanelID
   * @param selectedPanelID
   * @param colorBorder
   */
@@ -384,24 +379,5 @@ public class GroupDlg extends JDialog implements ActionListener{
         panel.setBorder(null);
     }
   }
-
-
-  /**
-  * Returns a List containing the elements of a group
-  * @param groupNumber the number of the group
-  * @return a List containing the elements of a group
-  */
-  /*
-  private JList getGroupList(int groupNumber){
-    JScrollPane jcp;
-    JPanel groupPanel, scrollContainer;
-    JList list;
-    groupPanel = (JPanel)_insidePanel.getComponent(groupNumber);
-    scrollContainer = (JPanel)groupPanel.getComponent(1);
-    jcp = (JScrollPane)scrollContainer.getComponent(0);
-    list = (JList)jcp.getViewport().getComponent(0);
-    return list;
-  }
-  */
 
 }//end class

@@ -65,16 +65,16 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * @param dApplic The application object (for extracting the JFrame)
    */
   public ActivityDlg(DApplication dApplic) {
-     super(dApplic.getJFrame(), ACTLIST, true);
-     _dApplic = dApplic;
-     _jd = this;  //to pass this dialog to the EditActivityDlg
-     if (_dApplic.getDMediator().getCurrentDoc() != null){
-       _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-       jbInit();
-       setLocationRelativeTo(dApplic.getJFrame());
-       setVisible(true);
-       triggerListeners();
-     }
+    super(dApplic.getJFrame(), ACTLIST, true);
+    _dApplic = dApplic;
+    _jd = this;  //to pass this dialog to the EditActivityDlg
+    if (_dApplic.getDMediator().getCurrentDoc() == null)
+      return;
+    _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
+    jbInit();
+    setLocationRelativeTo(dApplic.getJFrame());
+    setVisible(true);
+
   }
 
 
@@ -96,6 +96,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _visibleVec = _activities.getIDsByField(3, "true");
     //set the JLists
     _noVisibleList = new JList(_noVisibleVec);
+    _noVisibleList.addMouseListener(mouseListenerLists);
     _visibleList = new JList(_visibleVec);
     rightSPane.setPreferredSize(new Dimension(150,300));
     rightSPane.getViewport().add(_noVisibleList);
@@ -107,6 +108,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     JPanel leftPanel = new JPanel();
     JScrollPane leftSPane = new JScrollPane();
     _visibleList = new JList(_visibleVec);
+    _visibleList.addMouseListener(mouseListenerLists);
     leftSPane = new JScrollPane();
     leftSPane.setPreferredSize(new Dimension(150,300));
     leftSPane.getViewport().add(_visibleList);
@@ -125,24 +127,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //placing the elements into the JDialog
     setSize(380, 390);
     setResizable(false);
-    triggerListeners();
     getContentPane().add(_listsPanel, BorderLayout.CENTER);
     getContentPane().add(buttonsPanel, BorderLayout.SOUTH);
   }//end method
-
-
-  /**
-   * Launch the listeners
-   */
-  private void triggerListeners(){
-    //_cancel.addActionListener(this);
-    //_show.addActionListener(this);
-    //_toLeft.addActionListener(this);
-    //_toRight.addActionListener(this);
-    _noVisibleList.addMouseListener(mouseListenerLists);
-    _visibleList.addMouseListener(mouseListenerLists);
-  }//end triggerListeners()
-
 
   /**
    * Defins the mouse adapter and actions for the JListis
