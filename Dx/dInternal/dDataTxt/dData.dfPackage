@@ -6,7 +6,7 @@ package id10nk3dfshg4rzdfshpi4i;
 @__modelType diagram 
 */
 class diagram {
-/**
+/***
 @__ref <oiref:java#Class#dInternal.dDataTxt.LoadData:oiref><oihard>
 @__modelType reference 
 */
