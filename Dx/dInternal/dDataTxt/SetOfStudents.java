@@ -328,8 +328,11 @@ public class SetOfStudents extends SetOfResources{
       sortSetOfResourcesByKey();
     if (order == 2)
       sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
+      System.out.println("#############################################################");
     for(int i=0; i < size(); i++){
       studentRes = getResourceAt(i);
+      System.out.println("### Student: "+studentRes.getID()+" -Activity: "+String.valueOf(activityID+typeID)+
+                         " -StudentAttach Group: "+ ((StudentAttach)studentRes.getAttach()).getGroup(activityID+typeID));
       if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID + typeID, group)){
         ID = studentRes.getID();
         diff = Math.abs(IDLength - ID.length());

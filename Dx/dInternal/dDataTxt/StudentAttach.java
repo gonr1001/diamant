@@ -152,7 +152,14 @@ public class StudentAttach extends DXObject{
         ((DXValue)courseValue.getAttach()).setIntValue(group);
         ((DXValue)courseValue.getAttach()).setBooleanValue(fixeInGroup);
       }// end if(courseValue!=null)
-    }// end if (course.length()>=_COURSELENGTH)
+    }else{// end if (course.length()>=_COURSELENGTH)
+      courseValue = _courses.getResource(course);
+      if(courseValue!=null){
+        ((DXValue)courseValue.getAttach()).setIntValue(group);
+        ((DXValue)courseValue.getAttach()).setBooleanValue(fixeInGroup);
+      }// end if(courseValue!=null)
+
+    }
   }
 
   /**

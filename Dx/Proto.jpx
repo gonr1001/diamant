@@ -3,6 +3,8 @@
 <project>
   <property category="debug.0" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
+  <property category="debug.0" name="SmartStepSkipStaticInitializers" value="0"/>
+  <property category="debug.0" name="SmartStepSkipSynthetics" value="0"/>
   <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.3" name="SmartStepRedefineClasses" value="0"/>
@@ -59,7 +61,7 @@
   <property category="sys" name="ExcludeClassEnabled" value="0"/>
   <property category="sys" name="IncludeTestPath" value="1"/>
   <property category="sys" name="InstanceVisibility" value="2"/>
-  <property category="sys" name="JDK" value="java 1.4.1_02-b06"/>
+  <property category="sys" name="JDK" value="java version 1.4.1_02-b06"/>
   <property category="sys" name="JbxEventListener0" value="dInternal.DModelListener"/>
   <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
   <property category="sys" name="JvmVersion" value="1.4"/>
