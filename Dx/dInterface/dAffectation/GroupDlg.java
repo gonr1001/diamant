@@ -399,13 +399,14 @@ public class GroupDlg extends JDialog implements ActionListener{
       _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, i+1);
       _assignedVectors[i] = DXTools.sortVector(_assignedVectors[i]);
       _assignedLists[i] = new JList(_assignedVectors[i]);
-      _assignedLists[i].setFont(new java.awt.Font("Courier", Font.PLAIN, 12));
+      _assignedLists[i].setFont(DConst.JLISTS_FONT);
       _assignedLists[i].addMouseListener(mouseListenerLists);
     }
   }
 
   /**
-   * Sets the students in the groups indicated by the JLists
+   * Sets the students in the groups according to the contents of the vectors
+   * _notAssignedVector and _assignedVectors
    */
   private void setStudentsInGroups(){
     StudentAttach s;
@@ -413,15 +414,14 @@ public class GroupDlg extends JDialog implements ActionListener{
     String studentID;
     for(int i = 0; i < _notAssignedVector.size(); i++){
       studentData = (String)_notAssignedVector.elementAt(i);
-      studentID = studentData.substring(0,9).trim();
+      studentID = studentData.substring(0, DConst.STUDENT_ID_LENGTH).trim();
       s = (StudentAttach)_students.getResource(studentID).getAttach();
       s.setInGroup(_actID+_typeID, -1, false);
     }//end for(int i = 0; i < _notAssignedVector.size(); i++)
     for(int j = 0; j < _assignedVectors.length; j++){
       for(int k = 0; k < _assignedVectors[j].size(); k++){
         studentData = (String)_assignedVectors[j].elementAt(k);
-        System.out.println("studentData "+studentData);
-        studentID = studentData.substring(0,9).trim();
+        studentID = studentData.substring(0, DConst.STUDENT_ID_LENGTH).trim();
         s = (StudentAttach)_students.getResource(studentID).getAttach();
         s.setInGroup(_actID+_typeID, j+1, false);
       }//end for(int k = 0; k < _assignedVectors[j].size(); k++)
