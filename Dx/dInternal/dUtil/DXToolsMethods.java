@@ -88,7 +88,7 @@ public class DXToolsMethods {
    * @param String the string value to check
    * */
   public final static boolean isIntValue(String value){
-    String error="";
+    //String error="";
     try{
       Integer.parseInt(value.trim());
     }catch (NumberFormatException exc){
@@ -105,24 +105,24 @@ public class DXToolsMethods {
    * "-1" if tab1 is smaller than tab2
    * */
   public final static int compareTabsHour(int[] tab1, int[] tab2){
-    if((tab1.length==2) && (tab2.length==2)){
-      if(tab1[0]>=tab2[0]){
-        if(tab1[0]>tab2[0]){
-          return 1;
-        }else{// else if(tab1[0]>tab2[0])
-          if(tab1[1]>tab2[1]){
-            return 1;
-          }// end if(tab1[1]>tab2[1])
-          if(tab1[1]==tab2[1]){
-            return 0;
-          }// end if(tab1[1]==tab2[1])
-          if(tab1[1]<tab2[1]){
-            return -1;
-          }// end if(tab1[1]<tab2[1])
-        }// end else if(tab1[0]>tab2[0])
-      }// end if(tab1[0]>tab2[0])
-    }// end  if((tab1.length==2) && (tab2.length==2))
-    return -1;
+  	if((tab1.length==2) && (tab2.length==2)){
+  		if(tab1[0]>=tab2[0]){
+  			if(tab1[0]>tab2[0]){
+  				return 1;
+  			}//else{// else if(tab1[0]>tab2[0])
+  			if(tab1[1]>tab2[1]){
+  				return 1;
+  			}// end if(tab1[1]>tab2[1])
+  			if(tab1[1]==tab2[1]){
+  				return 0;
+  			}// end if(tab1[1]==tab2[1])
+  			if(tab1[1]<tab2[1]){
+  				return -1;
+  			}// end if(tab1[1]<tab2[1])
+  			//}// end else if(tab1[0]>tab2[0])
+  		}// end if(tab1[0]>tab2[0])
+  	}// end  if((tab1.length==2) && (tab2.length==2))
+  	return -1;
   }
 
   /**
@@ -143,9 +143,9 @@ public class DXToolsMethods {
    *  is minute
    * @return  int the reference period
    * */
-  public final static int convertSTIPeriods(int hour, int minute){
+ /* public final static int convertSTIPeriods(int hour, int minute){
     return hour-7;
-  }
+  }*/
 
   /**
    * check if a file exist
@@ -164,16 +164,16 @@ public class DXToolsMethods {
    */
   public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure tt){
     //check if is upper, lower or nothing operation
-    int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
+   // int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
     if(initialAvail[0].length== tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
-      UpperLower=0;
+     // UpperLower=0;
       return initialAvail;
     }
     else if(initialAvail[0].length > tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
-      UpperLower=-1;
+      //UpperLower=-1;
     }
     else if(initialAvail[0].length< tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
-      UpperLower=1;
+      //UpperLower=1;
     }
 
     Day day;
@@ -186,7 +186,7 @@ public class DXToolsMethods {
       for (int i=0; i< day.getSetOfSequences().size(); i++){
         for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
           per = day.getSequence(i).getPeriod(j);
-          boolean avail = isAvailableInRange(initialAvail,h,per,tt.getPeriodLenght(),UpperLower);
+          boolean avail = isAvailableInRange(initialAvail,h,per,tt.getPeriodLenght());//,UpperLower);
           if (avail)
             finalAvail[h][itr]=1;
           else
@@ -207,7 +207,7 @@ public class DXToolsMethods {
    * @param up_low the type of operation 1= make upper; 0= do nothing; -1= make lower
    * @return boolean
    */
-  private static boolean isAvailableInRange(int[][] initial,int day, Period per, int periodLenght, int up_low){
+  private static boolean isAvailableInRange(int[][] initial,int day, Period per, int periodLenght){//, int up_low){
     int[] beginH = per.getBeginHour();
     int[] endH = per.getEndHour(periodLenght);
     int beginIndex;
@@ -219,7 +219,7 @@ public class DXToolsMethods {
       beginIndex++;
     if (beginIndex<0)
       return false;
-    else{// else  if (beginIndex<0)
+    //else{// else  if (beginIndex<0)
       endIndex = endH[0]- DConst.STIBEGINHOUR;
       if (endH[1] <= DConst.STIBEGINMINUTE)
         endIndex--;
@@ -229,12 +229,12 @@ public class DXToolsMethods {
         return false;
       if(endIndex>= initial[day].length){
         return false;
-      }else{// else if(endIndex> initial[day].length)
+      }//else{// else if(endIndex> initial[day].length)
         for (int i=beginIndex; i<= endIndex; i++)
           if(initial[day][i]==5)
             return false;
-      }// end else if(endIndex> initial[day].length)
-    }//end else  if (beginIndex<0)
+      //}// end else if(endIndex> initial[day].length)
+    //}//end else  if (beginIndex<0)
     return true;
   }
 
@@ -243,18 +243,18 @@ public class DXToolsMethods {
    * @param str
    * @param delimiter
    * @param position
-   * @return
+   * @return theToken or an empty String if position >= nbTokens 
    */
   public final static String getToken(String str, String delimiter, int position){
-    StringTokenizer strToken= new StringTokenizer(str,delimiter);
-    int nbTokens= strToken.countTokens();
-    for (int i=0; i< nbTokens; i++){
-      if(i==position)
-        return strToken.nextToken();
-      else
-        strToken.nextToken();
-    }
-    return "";
+  	StringTokenizer strToken= new StringTokenizer(str,delimiter);
+  	int nbTokens= strToken.countTokens();
+  	for (int i=0; i< nbTokens; i++){
+  		if(i==position)
+  			return strToken.nextToken();
+  		
+  		strToken.nextToken();
+  	}
+  	return "";
   }
 
 

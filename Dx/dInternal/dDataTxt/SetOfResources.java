@@ -38,7 +38,7 @@ public class SetOfResources extends DXObject{
    * 5= states, 6 = events
    * @param int resType The resource type
    * */
-  public SetOfResources( int resType) {
+  public SetOfResources(int resType) {
     _resourceList = new Vector(1,1);
     _resourceType = resType;
   }
@@ -125,8 +125,8 @@ public class SetOfResources extends DXObject{
  * @param value The value to be setted in the field
    */
   public void setSubsetOfResources(String [] IDs, int fieldIndex, String value){
-    for (int i = 0; i < IDs.length; i++)
-      (getResource(IDs[i]).getAttach()).setField(fieldIndex, value);
+    for (int i = 0; i < IDs.length; i++) ;
+      //(getResource(IDs[i]).getAttach()).setField(fieldIndex, value);
   }
 
   /**
@@ -136,8 +136,8 @@ public class SetOfResources extends DXObject{
    * @param value The value to be setted in the field
    */
   public void setSubsetOfResources(Object [] IDs, int fieldIndex, String value){
-    for (int i = 0; i < IDs.length; i++)
-      (getResource((String)IDs[i]).getAttach()).setField(fieldIndex, value);
+    for (int i = 0; i < IDs.length; i++) ;
+      //(getResource((String)IDs[i]).getAttach()).setField(fieldIndex, value);
   }
 
   /**
@@ -416,13 +416,13 @@ public class SetOfResources extends DXObject{
    * @param fieldValue The comparaison value for the field selected
    * @return a vector containing the IDs of the resources selected
    */
-  public Vector getIDsByField(int fieldIndex, String fieldValue){
+  public Vector getIDsByField(){ //int fieldIndex, String fieldValue){
     Vector idVector = new Vector();
     Resource res = null;
     boolean membership = false;
     for (int i = 0; i < size(); i++){
       res = getResourceAt(i);
-      membership = (res.getAttach()).compareByField(fieldIndex, fieldValue);
+      membership = false; //(res.getAttach()).compareByField(fieldIndex, fieldValue);
       if (membership == true)
         idVector.add(res.getID());
     }
@@ -439,8 +439,8 @@ public class SetOfResources extends DXObject{
     //boolean membership = false;
     for (int i = 0; i < setOfElements.size(); i++){
       res = getResource((String)setOfElements.get(i));
-      if (res != null)
-        res.getAttach().setField(fieldIndex, fieldValue);
+      if (res != null) ;
+        //res.getAttach().setField(fieldIndex, fieldValue);
     }
   }
 
@@ -534,7 +534,7 @@ public class SetOfResources extends DXObject{
     Resource temp;
     //System.out.print("+"+begin+"-"+end);//debug
     temp = (Resource)_resourceList.get(begin);
-    _resourceList.setElementAt((Resource)_resourceList.get(end),begin);
+    _resourceList.setElementAt(_resourceList.get(end),begin);
     _resourceList.setElementAt(temp,end);
   }
   //end of private sort methods
@@ -565,12 +565,12 @@ public class SetOfResources extends DXObject{
       //long diff = ((Resource)_resourceList.get(mid)).getKey() - key;
       if (diff == 0)
         return mid;
-      else{
+      //else{
         if (diff < 0)
           low = mid + 1;
         else
           high = mid - 1;
-      }//end else if (diff == 0)
+      //}//end else if (diff == 0)
     }//end while(low <= high)
     return -1;
   }
@@ -590,12 +590,12 @@ public class SetOfResources extends DXObject{
       int diff = ((Resource)_resourceList.get(mid)).getID().compareTo(id);
       if (diff == 0)
         return mid;
-      else{
+      //else{
         if (diff < 0)
           low = mid + 1;
         else
           high = mid - 1;
-      }//end else if (diff == 0)
+      //}//end else if (diff == 0)
     }//end while(low <= high)
     return -1;
   }
@@ -615,12 +615,12 @@ public class SetOfResources extends DXObject{
       int diff = ((Resource)_resourceList.get(mid)).getID().compareTo(id);
       if (diff == 0)
         return mid;
-      else{
+      //else{
         if (diff < 0)
           low = mid + 1;
         else
           high = mid - 1;
-      }//end else if (diff == 0)
+      //}//end else if (diff == 0)
     }//end while(low <= high)
     return low;
   }
@@ -652,12 +652,12 @@ public class SetOfResources extends DXObject{
       //long diff = ((Resource)_resourceList.get(mid)).getKey() - key;
       if (diff == 0)
         return mid;
-      else{
+      //else{
         if (diff < 0)
           low = mid + 1;
         else
           high = mid - 1;
-      }//end else if (diff == 0)
+      //}//end else if (diff == 0)
     }//end while(low <= high)
     return low;
   }

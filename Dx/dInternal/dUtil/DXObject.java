@@ -31,9 +31,9 @@ public class DXObject extends Object{
    * @param value The value tibe compared
    * @return true if the field has the same value of the argument "value"
    */
-  public boolean compareByField(int fieldIndex, String value){
+ /* public boolean compareByField(int fieldIndex, String value){
     return false;
-  }
+  }*/
 
   /**
    * Method to be implemented in each resource object. It sets the field indicated by the
@@ -42,8 +42,9 @@ public class DXObject extends Object{
    * resource
    * @param value The value to be setted
    */
+  /*
   public void setField(int fieldIndex, String value){
-  }
+  }*/
 
   /**
    *
@@ -55,16 +56,16 @@ public class DXObject extends Object{
   /**
    *
    * */
-  public String externalKey(String str, String id){
+  public String externalKey(String id){ //String str, String id){
     return id;
   }
 
   /**
    *
    * */
-  public boolean isEquals(DXObject obj){
+/*  public boolean isEquals(DXObject obj){
     return true;
-  }
+  }*/
 
   /**
    *
@@ -81,9 +82,8 @@ public class DXObject extends Object{
    *
    * @param mat
    */
-  public void setAvailability(int[][] mat){
-
-  }
+/*  public void setAvailability(int[][] mat){
+  }*/
 
 
 

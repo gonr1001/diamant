@@ -76,7 +76,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   protected void jbInit(){
     //right panel
-    _rightVec = _activities.getIDsByField(3, "false");
+    _rightVec = _activities.getIDsByField();//3, "false");
     _rightList = new JList(_rightVec);
     _rightList.addMouseListener(mouseListenerLists);
     //_visibleList = new JList(_visibleVec);
@@ -86,7 +86,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     rightPanel.add(_lNoVisible, BorderLayout.NORTH);
     rightPanel.add(listPanel, BorderLayout.SOUTH);
     //left panel
-    _leftVec = _activities.getIDsByField(3, "true");
+    _leftVec = _activities.getIDsByField();//3, "true");
     _leftList = new JList(_leftVec);
     _leftList.addMouseListener(mouseListenerLists);
     _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.32 $  $Date: 2004-09-10 13:31:00 $
+ * Title: SectionDlg $Revision: 1.33 $  $Date: 2004-10-28 18:00:20 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -128,7 +128,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     JPanel actPanel, typePanel, sortPanel;
     //This vector contains the activities whose their champ visibility = true
     _actVector = new Vector();
-    _actVector = _activities.getIDsByField(3, "true");
+    _actVector = _activities.getIDsByField();//3, "true");
     //panel of activities
     _actCombo = new DXJComboBox(_actVector);
     //_actCombo.setSelectedIndex(0);
@@ -232,14 +232,14 @@ public class SectionDlg extends JDialog implements ActionListener{
     int GroupPanelHeight = (int)((_scrollPane.getPreferredSize().getHeight())/2);
     int infoPanelHeight = 25;
     Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
-    Dimension scrollContDim = new Dimension((int)insideWidth-5, GroupPanelHeight-infoPanelHeight-10);
+    Dimension scrollContDim = new Dimension(insideWidth-5, GroupPanelHeight-infoPanelHeight-10);
     JPanel groupPanel = new JPanel();
     groupPanel.setPreferredSize(groupPanelDim);
     groupPanel.addMouseListener(mouseListenerGroupPanel);
     JPanel infoPanel = new JPanel();
     //The scrollPane
     JPanel scrollContainer = new JPanel();
-    scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (int)(insideWidth-20), GroupPanelHeight-infoPanelHeight-20);
+    scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (insideWidth-20), GroupPanelHeight-infoPanelHeight-20);
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
     numberOfElements = _assignedVectors[groupNumber].size();
     JLabel lGroup = new JLabel(DConst.SECTION);
@@ -309,7 +309,7 @@ public class SectionDlg extends JDialog implements ActionListener{
         //_applyPanel.setFirstEnable();
       } else {
         new InformationDlg(this, "Appliquer ou fermer pour continuer", "Operation interdite");
-        _actCombo.setSelectedItem((String)_actID);
+        _actCombo.setSelectedItem(_actID);
       }
     }//end if (e.getSource().equals(_actCombo))
     //if type combo box
@@ -321,7 +321,7 @@ public class SectionDlg extends JDialog implements ActionListener{
         setScrollPane(_scrollPane.getPreferredSize());
       } else {
         new InformationDlg(this, "Appliquer ou fermer pour continuer", "Operation interdite");
-        _typeCombo.setSelectedItem((String)_typeID);
+        _typeCombo.setSelectedItem(_typeID);
       }
       //_applyPanel.setFirstEnable();
     }//end if (e.getSource().equals(_typeCombo))
@@ -420,7 +420,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   private MouseListener mouseListenerGroupPanel = new MouseAdapter(){
     public void mouseClicked(MouseEvent e) {
       for(int i = 0; i < _numberOfSections; i++){
-        if (e.getSource().equals( (JPanel)_insidePanel.getComponent(i))){
+        if (e.getSource().equals(_insidePanel.getComponent(i))){
           _currentAssignedGroup = i;
         }else{
           _assignedLists[i].clearSelection();

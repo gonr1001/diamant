@@ -857,7 +857,7 @@ public class SetOfActivities extends SetOfResources{
     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
     Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
-    u.getAttach().setField(fieldIndex, fieldValue);
+    //u.getAttach().setField(fieldIndex, fieldValue);
   }
 
 
@@ -876,7 +876,7 @@ public class SetOfActivities extends SetOfResources{
     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
     Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secID);
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitID);
-    u.getAttach().setField(fieldIndex, fieldValue);
+    //u.getAttach().setField(fieldIndex, fieldValue);
   }
 
   /**

@@ -100,12 +100,12 @@ public class DXTools{
   public static void actionButton(SetOfResources resources, int fieldIndex, String valueSource, String valueDestination, JList sourceList, JList destinationList) {
     Object [] elementsToTransfer = sourceList.getSelectedValues();
     if (elementsToTransfer.length != 0){
-      String currentElement;
+      //String currentElement;
       Vector sourceVector = new Vector();
       Vector destinationVector = new Vector();
       resources.setSubsetOfResources(elementsToTransfer, fieldIndex, valueDestination);
-      sourceVector = resources.getIDsByField(fieldIndex, valueSource);
-      destinationVector = resources.getIDsByField(fieldIndex, valueDestination);
+      sourceVector = resources.getIDsByField();//fieldIndex, valueSource);
+      destinationVector = resources.getIDsByField();//fieldIndex, valueDestination);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
       int[] indices = getIndicesOfIntersection(destinationVector, elementsToTransfer);

@@ -11,6 +11,7 @@ package dInternal.dDataTxt;
 
 import java.util.StringTokenizer;
 
+import dConstants.DConst;
 import dInternal.dUtil.DXValue;
 
 public class RoomsAttributesInterpretor {
@@ -88,10 +89,10 @@ public class RoomsAttributesInterpretor {
    * */
   public boolean loadSetOfFunctions(byte[] dataloaded){
     String token;
-    StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
-    int state=0;
+    StringTokenizer st = new StringTokenizer(new String (dataloaded),DConst.CR_LF );
+    //int state=0;
     while (st.hasMoreElements()){
-      state =0;
+      //state =0;
       token = st.nextToken();
       StringTokenizer currentLine = new StringTokenizer(token,";" );
       if (currentLine.countTokens()==2){
@@ -109,10 +110,10 @@ public class RoomsAttributesInterpretor {
    * */
   public boolean loadSetOfCaracteristics(byte[] dataloaded){
     String token;
-    StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
-    int state=0;
+    StringTokenizer st = new StringTokenizer(new String (dataloaded),DConst.CR_LF );
+    //int state=0;
     while (st.hasMoreElements()){
-      state =0;
+     //state =0;
       token = st.nextToken();
       StringTokenizer currentLine = new StringTokenizer(token,";" );
       if (currentLine.countTokens()==2){

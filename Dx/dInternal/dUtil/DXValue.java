@@ -138,10 +138,10 @@ public boolean isEquals(DXObject val){
  *This object (which is already a string!) is itself returned.
  * @return the string itself
  * */
-public String toWrite(String separator){
+/*public String toWrite(){
   
   return ";"+_intValue+";"+_stringValue;
-}
+}*/
 
 
 }

@@ -52,7 +52,7 @@ public class DModelProcess {
    */
   public void setStateBarComponent(){
     if (_dm._constructionState>0){//_visibleVec = _activities.getIDsByField(3, "true");
-      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_ACT).getAttach()).setValue(DModel._setOfActivities.getIDsByField(3, "true").size());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_ACT).getAttach()).setValue(DModel._setOfActivities.getIDsByField().size());//3, "true").size());
       ((State)_dm.getSetOfStates().getResource(DConst.SB_T_INST).getAttach()).setValue(DModel._setOfInstructors.size());
       ((State)_dm.getSetOfStates().getResource(DConst.SB_T_ROOM).getAttach()).setValue(DModel._setOfRooms.size());
       ((State)_dm.getSetOfStates().getResource(DConst.SB_T_STUD).getAttach()).setValue(DModel._setOfStudents.size());
@@ -99,7 +99,7 @@ public class DModelProcess {
       attach = soRes.getResourceAt(i).getAttach();
       matrix=attach.getMatrixAvailability();
       matrix = DXToolsMethods.resizeAvailability(matrix,_dm._ttStruct);
-      attach.setAvailability(matrix);
+      //attach.setAvailability(matrix);
     }
   }
 

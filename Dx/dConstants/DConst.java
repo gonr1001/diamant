@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.123 $  $Date: 2004-10-26 19:28:46 $
+ * Title: DConst $Revision: 1.124 $  $Date: 2004-10-28 18:00:19 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.123 $
+ * @version $Revision: 1.124 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,11 +28,12 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "27 oct 2004";//res.getString("vDate");
+  	public final static String V_DATE = "28 oct 2004";//res.getString("vDate");
 	public final static boolean DEVELOPMENT = false;
     public static boolean USER_TEST_ACTIV = true; // comm
 	public final static String JVM = "1.4.2_03";
-
+	
+	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6;" },
 
   //********** Shared and others constants ***************************
   public final static String APP_NAME = res.getString("appName");//Diamant 1.6
@@ -376,6 +377,7 @@ public class DConst {
   public final static String ROOM_TEXT5= res.getString("roomText5");// in the room file:
   public final static String ROOM_TEXT6= res.getString("roomText6");//I was in roomList class and in analyseTokens method
   public final static String ROOM_TEXT7= res.getString("roomText7");//Wrong line format at line:
+  public final static String ROOM_TEXT8= res.getString("roomText8");//Wrong name of site at line:
   // activity constants
   public final static String ACTI_TEXT1= res.getString("activText1");//Wrong activity name at line:
   public final static String ACTI_TEXT2= res.getString("activText2");//Wrong format of activity visibility at line:

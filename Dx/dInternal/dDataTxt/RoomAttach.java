@@ -1,13 +1,27 @@
-package dInternal.dDataTxt;
 
 /**
- * <p>Title: Diamant 1.5</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
- */
+*
+* Title: RoomAttach $Revision: 1.13 $  $Date: 2004-10-28 18:00:21 $
+* Description: RoomAttach is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.13 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
+package dInternal.dDataTxt;
+
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -16,14 +30,17 @@ import dInternal.dUtil.DXValue;
 
 public class RoomAttach extends DXObject{
 
-  private int _capacity=0;
-  private String _description="";
-  private int _function=-1;
+  private int _capacity;
+  private String _description;
+  private int _function;
   private SetOfResources _setOfCaracteristics;
   private Vector _roomAvailability;//
-  private final String CR_LF = "\r\n";
+ // private final String CR_LF = "\r\n";
 
   public RoomAttach() {
+  	_capacity=0;
+  	_description="";
+  	_function=-1;
     _roomAvailability = new Vector();
     _setOfCaracteristics= new SetOfResources(3);
   }

@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.50 $  $Date: 2004-10-21 19:47:44 $
+ * Title: EditActivityDlg $Revision: 1.51 $  $Date: 2004-10-28 18:00:19 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.51 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -689,17 +689,15 @@ public class EditActivityDlg
     Resource res = 	sor.getResource(str);
     if (res == null) {
       return "000";
-    } else {
-      RoomAttach ra = (RoomAttach) res.getAttach();
-      return String.valueOf(ra.getCapacity());
-    }
-
+    } 
+	RoomAttach ra = (RoomAttach) res.getAttach();
+	return String.valueOf(ra.getCapacity());  
   }
 
   /**
    * @return
    */
-  private Vector[] buildCapacityList() {
+/*  private Vector[] buildCapacityList() {
     Vector list[] = {new Vector(1), new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     SetOfRooms sor= _dm.getSetOfRooms();
@@ -715,7 +713,7 @@ public class EditActivityDlg
     }
     list[1].add(DConst.NO_ROOM_INTERNAL);
     return list;
-  }
+  }*/
   private Vector[] buildCategoryRoomList(){
     Vector list[] = {new Vector(1), new Vector(1)};
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();

@@ -71,7 +71,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
     _vectorOfElements= new Vector[_numberOfPanel];
     _labelOfElements= new JLabel[_numberOfPanel];
     _dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
-    _panelDim = new Dimension((int)(_WIDTH-100),
+    _panelDim = new Dimension((_WIDTH-100),
                                _MINHEIGHT-buttonsPanelHeight-20);
   }//end method
 
@@ -103,7 +103,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
     if (realSize > _MAXHEIGHT)
       realSize = _MAXHEIGHT;
     _dialogDim = new Dimension(_WIDTH, realSize);
-    _panelDim = new Dimension((int)(_WIDTH-100),
+    _panelDim = new Dimension((_WIDTH-100),
                                realSize-buttonsPanelHeight-20);
     if(_listOfElements[_selectedPanel]!=null){
      _listOfElements[_selectedPanel].setListData(_vectorOfElements[_selectedPanel]);
