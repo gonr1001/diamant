@@ -196,7 +196,7 @@ public class LoadData {
 
   public SetOfActivities extractActivities(SetOfActivities currentList, boolean merge){
     byte[]  dataloaded = preLoad(_activitiesFileName);
-    SetOfActivities activitiesList = new SetOfActivities(dataloaded);
+    SetOfActivities activitiesList = new SetOfActivities(dataloaded,false);
    if (dataloaded != null) {
      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
      //return analyseInstructorTokens (st);
@@ -245,7 +245,7 @@ public class LoadData {
      extract.add(roomsList);
 
      // extract activities
-     SetOfActivities activitiesList = new SetOfActivities(project.nextToken().trim().getBytes());
+     SetOfActivities activitiesList = new SetOfActivities(project.nextToken().trim().getBytes(),true);
      if (activitiesList.analyseTokens(1)){
        activitiesList.buildSetOfActivities(1);
      }

@@ -23,12 +23,14 @@ public class SetOfActivities extends SetOfResources{
   private byte[] _dataloaded;
   private String _error="";
   private int _line=1;
+  private boolean _open;
   /**
    * Constructor
    * */
-  public SetOfActivities(byte[] dataloaded) {
+  public SetOfActivities(byte[] dataloaded, boolean open) {
     super(0);
     _dataloaded = dataloaded;
+    _open= open;
   }
 
   /**
@@ -121,7 +123,11 @@ public class SetOfActivities extends SetOfResources{
           position = 9;
           break;
         case 9://days and periods of blocs
-          stLine = new StringTokenizer(token);
+          if(_open)
+            stLine = new StringTokenizer(token,".");
+          else
+            stLine = new StringTokenizer(token);
+
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
               DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)

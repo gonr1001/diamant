@@ -65,7 +65,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test_analyseTokens: assertEquals", DConst.ACTI_TEXT1,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT1.length()));
@@ -80,7 +80,7 @@ public class SetOfActivitiesTest  extends TestCase{
 
    String fileName =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"cours1.sig";
 
-   SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName));
+   SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName),false);
    setOfActivities.analyseTokens(1);
    assertEquals("test0_analyseTokens: assertEquals", 30,setOfActivities.getLine());
 
@@ -93,7 +93,7 @@ public class SetOfActivitiesTest  extends TestCase{
  public void test00_analyseTokens(){
 
    String fileName = System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"cours2.sig";
-   SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName));
+   SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName),false);
    setOfActivities.analyseTokens(1);
    assertEquals("test00_analyseTokens: assertEquals", 25,setOfActivities.getLine());
 
@@ -130,7 +130,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test1_analyseTokens: assertEquals", DConst.ACTI_TEXT2,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT2.length()));
@@ -167,7 +167,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test2_analyseTokens: assertEquals", DConst.ACTI_TEXT3,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT3.length()));
@@ -203,7 +203,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test3_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
@@ -239,7 +239,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test4_analyseTokens: assertEquals 1", DConst.ACTI_TEXT5,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
@@ -277,7 +277,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test5_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
@@ -313,7 +313,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test6_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
@@ -349,7 +349,7 @@ public void test7_analyseTokens(){
                  "0"+"\r\n"+
                  "0"+"\r\n";
 
-  SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+  SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
   setOfActivities.analyseTokens(1);
   assertEquals("test7_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
                setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
@@ -385,7 +385,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test8_analyseTokens: assertEquals", DConst.ACTI_TEXT7,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT7.length()));
@@ -421,7 +421,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test9_analyseTokens: assertEquals", DConst.ACTI_TEXT8,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT8.length()));
@@ -457,7 +457,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
     setOfActivities.analyseTokens(1);
     assertEquals("test10_analyseTokens: assertEquals", DConst.ACTI_TEXT9,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT9.length()));
@@ -493,7 +493,7 @@ public void test7_analyseTokens(){
                   "0"+"\r\n"+
                   "0"+"\r\n";
 
-   SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+   SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
    setOfActivities.analyseTokens(1);
    assertEquals("test11_analyseTokens: assertEquals", DConst.ACTI_TEXT10,
                 setOfActivities.getError().substring(0,DConst.ACTI_TEXT10.length()));
@@ -529,7 +529,7 @@ public void test7_analyseTokens(){
                      "0"+"\r\n"+
                      "0"+"\r\n";
 
-      SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+      SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
       setOfActivities.analyseTokens(1);
       assertEquals("test12_analyseTokens: assertEquals", DConst.ACTI_TEXT11,
                    setOfActivities.getError().substring(0,DConst.ACTI_TEXT11.length()));
@@ -565,7 +565,7 @@ public void test7_analyseTokens(){
                      "0"+"\r\n"+
                      "0"+"\r\n";
 
-      SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+      SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
       setOfActivities.analyseTokens(1);
       assertEquals("test13_analyseTokens: assertEquals", DConst.ACTI_TEXT11,
                    setOfActivities.getError().substring(0,DConst.ACTI_TEXT11.length()));
@@ -601,7 +601,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n";
 
-     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
      setOfActivities.analyseTokens(1);
      assertEquals("test14_analyseTokens: assertEquals", DConst.ACTI_TEXT12,
                   setOfActivities.getError().substring(0,DConst.ACTI_TEXT12.length()));
@@ -661,10 +661,13 @@ public void test7_analyseTokens(){
                     "0 0"+"\r\n"+
                     "0 0"+"\r\n";
 
-     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
      setOfActivities.analyseTokens(1);
-     if(setOfActivities.getError().length()==0)
+     if(setOfActivities.getError().length()==0) {
+
        setOfActivities.buildSetOfActivities(1);
+       System.out.println(setOfActivities.toString());
+     }
      assertEquals("test0_addActivity: assertEquals 0", 2,setOfActivities.size());
      Resource activityResc = setOfActivities.getResource("ADM111");
      assertEquals("test1_addActivity: assertEquals 1", 1,activityResc.getKey());
@@ -677,7 +680,7 @@ public void test7_analyseTokens(){
     * in the activities file
     * */
    public void test_addActivitDiffRooms(){
-     String tokens= "ADM1111  A"+"\r\n"+
+     String tokens= "ADM1111  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "LUC LAJOIE"+"\r\n"+
@@ -689,7 +692,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "ADM1111  B"+"\r\n"+
+                    "ADM1111  02"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "RÉAL CAOUETTE"+"\r\n"+
@@ -701,7 +704,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "ADM1112  A"+"\r\n"+
+                    "ADM1112  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "Yannick"+"\r\n"+
@@ -713,7 +716,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "GEI4411  A"+"\r\n"+
+                    "GEI4411  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "Ruben"+"\r\n"+
@@ -726,7 +729,7 @@ public void test7_analyseTokens(){
                     "0 0"+"\r\n"+
                     "0 0"+"\r\n";
 
-     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
      setOfActivities.analyseTokens(1);
      if(setOfActivities.getError().length()==0)
        setOfActivities.buildSetOfActivities(1);
