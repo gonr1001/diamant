@@ -33,6 +33,7 @@ public class ActivitiesList extends ResourceList{
   public boolean analyseTokens(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     int state=0;
     int position=beginPosition;
     int line=0;
@@ -45,7 +46,7 @@ public class ActivitiesList extends ResourceList{
           position = 1;
           break;
         case 1:// activity name
-          if (token.trim().length()==this._ACTIVITYLENGTH){
+          if (token.trim().length() != _ACTIVITYLENGTH){
             new FatalProblemDlg(
             "Wrong activity name at line: "+line+  "in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ");
@@ -56,6 +57,55 @@ public class ActivitiesList extends ResourceList{
         case 2://activity visibility
           position = 2;
           isIntValue(token.trim(),"activity name at line: "+line);
+          position = 3;
+          break;
+        case 3://number of activities
+          isIntValue(token.trim(),"number of activities at line: "+line);
+          position = 2;
+          break;
+        case 4:// teachers' names
+          if (token.length() == 0){
+            new FatalProblemDlg(
+            "Wrong teachers' names at line: "+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ");
+            System.exit(1);
+          }
+          position = 5;
+          break;
+        case 5:// empty line
+          position = 6;
+          break;
+        case 6:// empty line
+          position = 7;
+          break;
+        case 7:// empty line
+          position = 8;
+          break;
+        case 8://number of blocs
+          isIntValue(token.trim(),"number of blocs at line: "+line);
+          position = 2;
+          break;
+        case 9://duration of blocs
+          stLine = new StringTokenizer(token);
+          while(stLine.hasMoreElements())
+            isIntValue(stLine.nextToken(),"duration of blocs at line: "+line);
+          position = 10;
+          break;
+        case 10://days and times of blocs
+          stLine = new StringTokenizer(token);
+          while(stLine.hasMoreElements())
+            isIntValue(stLine.nextToken(),"days and times of blocs at line: "+line);
+          position = 11;
+          break;
+        case 11://fixed rooms
+          stLine = new StringTokenizer(token);
+          while(stLine.hasMoreElements()){
+            String element = stLine.nextToken();
+            if(element.equals("0") || element.equals("1")){
+              //je suis ici
+            }
+          }
+          position = 11;
           break;
       }// end switch (position)
 
