@@ -231,32 +231,29 @@ public class SetOfStudents extends SetOfResources{
   * @return Vector It contents the Resources's ID
   * */
   public Vector getStudentsByGroup(String activityID, String typeID, int group){
-    int IDLength = 9;
-    int keyLength = 8;
+    int IDLength = 9; //horreur
+    int keyLength = 8; //horreur
     int diff;
     String ID, key;
     Resource studentRes;
     Vector list= new Vector();
-      for(int i=0; i< size(); i++){
-        studentRes = getResourceAt(i);
-        if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
-          ID = studentRes.getID();
-          diff = Math.abs(IDLength - ID.length());
-          for(int j = 0; j < diff; j++){
-            ID = ID+" ";
-          }
-          key = String.valueOf(studentRes.getKey());
-          diff = Math.abs(keyLength - key.length());
-          for(int j = 0; j < diff; j++){
-            key = "0"+ key;
-          }
-          list.add(ID + " " + key);
-          //list.add(studentRes.getID());
+    for(int i=0; i< size(); i++){
+      studentRes = getResourceAt(i);
+      if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
+        ID = studentRes.getID();
+        diff = Math.abs(IDLength - ID.length());
+        for(int j = 0; j < diff; j++){
+          ID = ID+" ";
         }
-
-
-
-      }//end for(int i=0; i< size(); i++)
+        key = String.valueOf(studentRes.getKey());
+        diff = Math.abs(keyLength - key.length());
+        for(int j = 0; j < diff; j++){
+          key = "0"+ key;
+        }
+        list.add(ID + " " + key);
+        //list.add(studentRes.getID());
+      }
+    }//end for(int i=0; i< size(); i++)
     return list;
   }
 
@@ -264,7 +261,7 @@ public class SetOfStudents extends SetOfResources{
   * Build a list of Resources's ID
   * @return Vector It contents the Resources's ID
   * */
-  public Vector[] getStudentsByGroup2(String activityID, String typeID, int group){
+/*  public Vector[] getStudentsByGroup2(String activityID, String typeID, int group){
     String stringKey;
     Resource studentRes;
     Vector[] list= new Vector[2];
@@ -283,7 +280,7 @@ public class SetOfStudents extends SetOfResources{
 
       }//end for(int i=0; i< size(); i++)
       return list;
-  }
+  }*/
 
   /**
    *

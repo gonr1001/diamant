@@ -182,7 +182,7 @@ public class SetOfStudentsTest  extends TestCase{
    * */
   public void test_getStudentsByGroup(){
     String tokens= "    004"+"\r\n"+
-                  "009008132035030720003LUPIEN MY05"+"\r\n"+
+                   "009008132035030720003LUPIEN MY05"+"\r\n"+
                    "GEI442101 GIS251102 GIS3511 GRH111101 GRH332101"+"\r\n"+
                    "009011991290000520021AUDET FRE05"+"\r\n"+
                    "CTB3411 FEC111102 FEC4441 GIS114101 MAR2211"+"\r\n"+
@@ -194,8 +194,8 @@ public class SetOfStudentsTest  extends TestCase{
     setOfStudents.analyseTokens(0);
     setOfStudents.buildStudentList(0);
     Vector list= new Vector();
-    list.add("LUPIEN MY");
-    list.add("ALEX JARA");
+    list.add("LUPIEN MY 00900813");
+    list.add("ALEX JARA 01902704");
     assertEquals("test_getStudentsByGroup: assertEquals", list,
                  setOfStudents.getStudentsByGroup("GEI442","1",1));
   }
