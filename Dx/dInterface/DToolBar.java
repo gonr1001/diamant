@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.30 $  $Date: 2003-09-05 18:58:00 $
+ * Title: ToolBar $Revision: 1.31 $  $Date: 2003-09-08 15:23:19 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: ysyam $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -201,7 +201,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
         resc.setID((String)_dayNameSelector.getSelectedItem());
         System.out.println("DToolbar.dayNameSelector");//debug
-        //_dApplic.getDMediator().getCurrentDoc().setModified();
+
         //Treat event
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
         //setToolBar(_tts);
@@ -229,7 +229,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
         period.setPriority(_periodTypeSelector.getSelectedIndex());
         if(_comboBoxStatus){
-          //_dApplic.getDMediator().getCurrentDoc().setModified();
+
           _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
         }
 
@@ -248,7 +248,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           per = cycle.getPeriodByIndex( i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
           per.setPriority(_periodTypeSelector.getSelectedIndex());
         }
-        //_dApplic.getDMediator().getCurrentDoc().setModified();
+
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
       }//end actionPerformed
     });//end addActionListener
@@ -270,7 +270,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
             per.setPriority(_periodTypeSelector.getSelectedIndex());
           }
         }
-        //_dApplic.getDMediator().getCurrentDoc().setModified();
+
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
 
       }//end actionPerformed
@@ -427,13 +427,13 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     if (signe>0){
       if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous ajouter "+ signe + " jour(s)")== ConfirmDlg.OK_OPTION){
         _tts.getCurrentCycle().addDays(signe);
-        //_dApplic.getDMediator().getCurrentDoc().setModified();
+
       }
     }else{// else  if (signe>0)
       if(signe<0){
         if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous supprimer "+ (-signe) + " jour(s)")== ConfirmDlg.OK_OPTION){
           _tts.getCurrentCycle().removeDays(-signe);
-          //_dApplic.getDMediator().getCurrentDoc().setModified();
+
         }
       }// end if(signe<0)
 

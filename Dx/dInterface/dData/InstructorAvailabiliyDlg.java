@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.4 $  $Date: 2003-09-05 17:09:41 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.5 $  $Date: 2003-09-08 15:23:19 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.5 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -139,16 +139,15 @@ public class InstructorAvailabiliyDlg  extends JDialog
     } else if (command.equals(buttonsNames[0])) {  // OK
    /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n"); */
        _currentInstr.setAvailability(_currentAvailbility);
-        _dm.incrementModification();
       modified = false;
       butApply.setEnabled(false);
       dispose();
     } else if (command.equals(buttonsNames[1])) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentInstr.setAvailability(_currentAvailbility);
-      _dm.incrementModification();
       modified = false;
       butApply.setEnabled( false );
+      _dm.sendEvent();
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());

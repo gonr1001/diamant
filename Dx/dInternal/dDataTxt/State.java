@@ -62,13 +62,13 @@ public class State extends DXObject{
   public int getValue(){
     return _value;
   }
-
+/*
   public String getModif(){
      return "Hello";
   }
 
   public void incrModif(){
 
-  }
+  }*/
 
 }

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.63 $  $Date: 2003-09-05 13:16:05 $
+ * Title: DModel $Revision: 1.64 $  $Date: 2003-09-08 15:23:19 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.63 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.64 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -104,7 +104,13 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   public boolean getModified(){
     return _modified;
   }
-
+  /**
+   *
+   * @return
+   */
+  public void setModified(){
+     _modified = true;
+  }
   /**
    *
    * @return
@@ -133,7 +139,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    *
    */
   public void incrementModification() {
-    _setOfStates.incrementModification();
+    //_setOfStates.incrementModification();
     sendEvent();
   }
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.64 $  $Date: 2003-08-30 10:33:02 $
+ * Title: DDocument $Revision: 1.65 $  $Date: 2003-09-08 15:23:19 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.64 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.65 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -61,11 +61,11 @@ public class DDocument  extends InternalFrameAdapter implements
   private JInternalFrame _jif;
   private String _documentName;
   private TTPanel _ttPanel;
-  private boolean _modified;
+  //private boolean _modified;
   private DModel _dm;
   private DStateBar _stateBar;
   private String _version;
-  JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+  //JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
   //for a new timetable and a open timetable
@@ -113,14 +113,6 @@ public class DDocument  extends InternalFrameAdapter implements
     return _dm.getError();
   }
     //-------------------------------------------
-   /* public void setModified(){
-      _modified = true;
-    } // end setModified*/
-    //-------------------------------------------
-   /* public void noModified(){
-      _modified = false;
-    } // end setModified*/
-    //-------------------------------------------
     public boolean isModified(){
         return _dm.getModified();
     } // end getModified
@@ -144,43 +136,8 @@ public class DDocument  extends InternalFrameAdapter implements
  //   } // end getJIF
     //-------------------------------------------
 
-/*
-    public JPanel initStatusBar(){
-      JPanel panel = new JPanel();
-      _nbModif = new JLabel( "Modifications " + _dm.getState().getModif() );
-      _nbBlocs = new JLabel(DConst.BLOCS + _dm.getState().getModif() +" / " + _dm.getState().getModif() );
-      _nbCInstr = new JLabel("    +CON02+ nbCftIns");
-      _nbCInstr.setForeground(Color.red);
-      _nbCRoom = new JLabel("    +CON03+ nbCftRoom");
-      _nbCRoom.setForeground(Color.blue);
-      _nbCStu = new JLabel("    +CON01+nbCftStud");
-      _nbCStu.setForeground(Color.magenta);
-      panel.add(_nbModif);
-      panel.add(_nbBlocs);
-      panel.add(_nbCInstr);
-      panel.add(_nbCRoom);
-      panel.add(_nbCStu);
-      return panel;
-    } // initBottomPanel */
 
 
-/*
-    public void updateStateBar(State s) {
-      _nbModif.setText( "Modifications " + _dm.getState().getModif() );
-      _nbBlocs.setText(DConst.BLOCS + _dm.getState().getModif() +" / " + _dm.getState().getModif() );
-     _nbCInstr.setText("    +CON02+ nbCftIns");
-     _nbCInstr.setForeground(Color.red);
-     _nbCRoom.setText("    +CON03+ nbCftRoom");
-     _nbCRoom.setForeground(Color.blue);
-     _nbCStu.setText("    +CON01+nbCftStud");
-      _nbCStu.setForeground(Color.magenta);
-     }
-*/
-
-
-/*    public void updateTTPanel(){
-      _ttPanel.setText("Change done");
-    } // initBottomPanel*/
 
      public void actionPerformed(ActionEvent  e) {
        if (e.getSource() instanceof CommandHolder) {
@@ -194,6 +151,7 @@ public class DDocument  extends InternalFrameAdapter implements
     public void changeInDModel(DModelEvent  e) {
       //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
       //_dm.setStateBarComponent();
+      _dm.setModified();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       //this.updateStateBar(_dm.getState());
 
@@ -239,7 +197,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
     _dm.getSetOfStates().addSetOfStatesListener(this);
-    _modified = false;
+
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
     _dm.getSetOfStates().sendEvent();
     _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
@@ -283,7 +241,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm = null;
     _ttPanel = null;
     _stateBar = null;
-    _nbModif = null;//, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+
   }
   private String modifiyDocumentName(String str) {
     if (str.endsWith("pref"+File.separator+"StandardTTC.xml") ||

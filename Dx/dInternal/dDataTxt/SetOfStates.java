@@ -57,7 +57,7 @@ public class SetOfStates extends SetOfResources{
     return _error;
   }
 
-  public void incrementModification() {}
+
 
   public void addState(String id, State state){
     this.addResource(new Resource(id, state),0);
