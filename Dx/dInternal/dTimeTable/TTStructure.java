@@ -30,7 +30,7 @@ public class TTStructure {
     _setOfCycles= new SetOfCycles();
     _col=6;
     _row= 15;
-    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
     loadTTStructure("StandardTTC.xml");
 
   }
