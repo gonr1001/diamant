@@ -119,7 +119,8 @@ public class StandardReportData {
                         minute.substring(minute.length()-2,minute.length())+";";
 
                 long dayKey= Long.parseLong(DXToolsMethods.getToken(currentCycAss.getPeriodKey(),".",0));
-                actlist+=dayKey+";";
+                String dayS= "00"+DXToolsMethods.getToken(currentCycAss.getPeriodKey(),".",0);
+                actlist+=dayS.substring(dayS.length()-2,dayS.length())+";";
                 actlist+= _dm.getTTStructure().getCurrentCycle().getSetOfDays(
                     ).getResource(dayKey).getID()+";";//.getID()
                 //Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
@@ -136,7 +137,8 @@ public class StandardReportData {
                 actlist+= currentCycAss.getInstructorName()+";";
                 actlist+= currentCycAss.getRoomName()+";";
                 Vector v = activity.getStudentRegistered();
-                actlist+= _dm.getSetOfEvents().studentsInSection(v,activityName+activityType, activitySection).size()+";"+SetOfActivities.CR_LF;
+                String nbOfStudents= "000"+_dm.getSetOfEvents().studentsInSection(v,activityName+activityType, activitySection).size();
+                actlist+= nbOfStudents.substring(nbOfStudents.length()-3,nbOfStudents.length())+";"+SetOfActivities.CR_LF;
               }// end if(bloc.isAssign())
             }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
           }// end for (int k=0; k< nature.getSetOfSections().size(); k++)
