@@ -64,7 +64,7 @@ public class SaveData {
     diaData+=students.size()+CR_LF;
     diaData+=students.toWrite()+CR_LF;
     diaData+=LoadData._saveSeparator;
-    filter= new FilterFile(diaData.getBytes());
+    filter= new FilterFile(diaData.getBytes(),"");
     filter.saveFile(fileName+".dia");
     return error;
   }
