@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.2 $  $Date: 2004-12-01 17:16:44 $
+* Title: DSetOfResources $Revision: 1.3 $  $Date: 2005-02-04 16:20:11 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -514,12 +514,12 @@ public abstract class DSetOfResources extends DObject{
     int j= end+1;
     while( i< j){
       i++;
-      while(((DResource)_resourceList.get(i)).getAttach().getSelectedField() <
-            pivot.getAttach().getSelectedField())
+      while(((DResource)_resourceList.get(i)).getAttach().getSelectedField(field) <
+            pivot.getAttach().getSelectedField(field))
         i++;
       j--;
-      while(((DResource)_resourceList.get(j)).getAttach().getSelectedField() >
-            pivot.getAttach().getSelectedField())
+      while(((DResource)_resourceList.get(j)).getAttach().getSelectedField(field) >
+            pivot.getAttach().getSelectedField(field))
         j--;
       if(i < j)
         swap(i,j);

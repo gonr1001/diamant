@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuCourses $Revision: 1.4 $  $Date: 2005-01-28 21:46:54 $
+* Title: SetOfStuCourses $Revision: 1.5 $  $Date: 2005-02-04 16:20:11 $
 * Description: SetOfStuCourses is a class used as a data structure container.
 *              It contains the student courses and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.5 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -31,8 +31,14 @@ import dInternal.DValue;
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
+
+
 public class SetOfStuCourses extends DSetOfResources {
 
+	/**the field to be write before name
+	   * and after matricule in toWrite method*/
+	  private String _auxField="";
+	
 	/**
 	 * 
 	 */
@@ -66,6 +72,23 @@ public class SetOfStuCourses extends DSetOfResources {
 	}
 
 	/**
+	   * return the value of the selected key
+	   * INPUT: choice, an integer. choice = 0 return _area; 1 return _stage
+	   * 2 return _sex; 3 return _session; 4 return number of courses
+	   * OUTPUT: an integer. it return -1 if choice is invalid
+	   * */
+	  public long getSelectedField(int choice){
+	    switch(choice){
+	      //case 0: return _area;
+	      //case 1: return _stage;
+	      //case 2: return _sex;
+	      //case 3: return _session;
+	      //case 4: return ((SetOfStuCourses)getAttach()).size();
+	      case 5: return Long.parseLong(getAuxField());
+	    }
+	    return -1;
+	  }
+	/**
 	 * @param id
 	 * @return
 	 */
@@ -92,6 +115,17 @@ public class SetOfStuCourses extends DSetOfResources {
 	    return save.toString();
 	}
 	
+	 public String getAuxField(){
+	    return _auxField;
+	  }
+
+	  /**
+	   *set the aux field
+	   * @param String the resource temporary message
+	   * */
+	  public void setAuxField(String message){
+	    _auxField = message;
+	  }
 	/**
 	   *
 	   * */

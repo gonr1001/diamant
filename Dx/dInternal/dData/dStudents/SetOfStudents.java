@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudents $Revision: 1.4 $  $Date: 2005-01-28 21:46:54 $
+* Title: SetOfStudents $Revision: 1.5 $  $Date: 2005-02-04 16:20:11 $
 * Description: SetOfStudents is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.5 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -159,7 +159,6 @@ public class SetOfStudents extends DSetOfResources {
 		 * @see dInternal.DObject#getSelectedField()
 		 */
 		public long getSelectedField() {
-
 			return 0;
 		}
 		

@@ -1,6 +1,6 @@
 /**
 *
-* Title: Student $Revision: 1.3 $  $Date: 2004-12-16 19:21:01 $
+* Title: Student $Revision: 1.4 $  $Date: 2005-02-04 16:20:11 $
 * Description: Student is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -49,7 +49,7 @@ public class Student extends DResource {
 	  
 	  /**the field to be write before name
 	   * and after matricule in toWrite method*/
-	  private String _auxField="";
+	  //private String _auxField="";
 	  
 	public Student(String studentName) {
 		super(studentName, new SetOfStuCourses());		
@@ -106,7 +106,8 @@ public class Student extends DResource {
 	  }
 
 	  public String getAuxField(){
-	    return _auxField;
+	    //return _auxField;
+	  	return ((SetOfStuCourses)getAttach()).getAuxField();
 	  }
 
 	  /**
@@ -114,7 +115,8 @@ public class Student extends DResource {
 	   * @param String the resource temporary message
 	   * */
 	  public void setAuxField(String message){
-	    _auxField = message;
+	    //_auxField = message;
+	  	((SetOfStuCourses)getAttach()).setAuxField(message);
 	  }
 
 	  /**
@@ -188,7 +190,7 @@ public class Student extends DResource {
 	      case 2: return _sex;
 	      case 3: return _session;
 	      case 4: return ((SetOfStuCourses)getAttach()).size();
-	      case 5: return Long.parseLong(_auxField);
+	      case 5: return Long.parseLong(getAuxField());
 	    }
 	    return -1;
 	  }
@@ -204,7 +206,7 @@ public class Student extends DResource {
 	    temp= temp.substring(temp.length()-8,temp.length());
 	    String nbCours="000"+ ((SetOfStuCourses)getAttach()).size();
 	    nbCours= nbCours.substring(nbCours.length()-2,nbCours.length());
-	    String idTemp= temp+ _auxField+id;
+	    String idTemp= temp+ getAuxField()+id;
 	    for(int i=idTemp.length(); i<30; i++)
 	      idTemp+=" ";
 	    return idTemp+nbCours;

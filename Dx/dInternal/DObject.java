@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObject $Revision $  $Date: 2005-02-03 16:52:42 $
+* Title: DObject $Revision $  $Date: 2005-02-04 16:20:10 $
 * Description: DObject is a class used to
 *
 *
@@ -15,7 +15,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -100,6 +100,16 @@ public abstract class  DObject extends Object{
   public void setAvailability(int[][] mat){
   	mat[0][0]+=0;
   }
+
+
+/**
+ * @param field
+ * @return
+ */
+public long getSelectedField(int field) {
+	field+=0;
+	return 0;
+}
 
 
 
