@@ -1,6 +1,6 @@
 /**
  *
- * Title: DStringFrRes $Revision: 1.15 $  $Date: 2003-05-12 14:32:51 $
+ * Title: DStringFrRes $Revision: 1.16 $  $Date: 2003-05-12 15:27:06 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.16 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -107,6 +107,20 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"roomText4","Wrong caracteristics at line: "},
     {"roomText5"," in the room file:"},
     {"roomText6","I was in roomList class and in analyseTokens method"},
+
+    // activities constants
+    {"activText1","Wrong activity name at line: "},
+    {"activText2","Wrong format of activity visibility at line: "},
+    {"activText3","Wrong number of activities at line: "},
+    {"activText4","Wrong teacher name at line: "},
+    {"activText5","Wrong number of blocs at line: "},
+    {"activText6","Wrong empty line at line: "},
+    {"activText7","Wrong duration of blocs at line: "},
+    {"activText8","Wrong days and times of blocs at line: "},
+    {"activText9","Wrong format of fixed rooms at line: "},
+    {"activText10","Wrong name of preferred rooms at line: "},
+    {"activText11","Wrong type of rooms: "},
+    {"activText12","Wrong format of pre-affected rooms at line: "},
 
     };
   public Object[][] getContents() {

@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: miniDiaTest $Revision: 1.11 $  $Date: 2003-05-12 08:58:27 $
+ * Title: miniDiaTest $Revision: 1.12 $  $Date: 2003-05-12 15:29:14 $
  * Description: miniDiaTest is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.12 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 //------------------------------
@@ -55,6 +55,7 @@ public class DRunTest {
           suite.addTest(SectionTest.suite());
           suite.addTest(TypeTest.suite());
           suite.addTest(ActivityTest.suite());
+          suite.addTest(SetOfActivitiesTest.suite());
       return suite;
     }
 }

@@ -9,7 +9,6 @@ package dTest.dInternal.dData;
  * @version 1.0
  */
 
-//public class SetOfRoomsTest {
 import junit.framework.*;
 import dInternal.dData.Resource;
 import dInternal.dData.RoomAttach;

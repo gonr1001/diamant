@@ -25,10 +25,11 @@ public class DXToolsMethods {
    * @param String the error message to print
    * @param String the classe name where error has been detect
    * */
- public final static void checkIfBelongsValues(String line, String refValues, String message, String classList){
+ public final static String checkIfBelongsValues(String line, String refValues, String message, String classList){
    StringTokenizer ref = new StringTokenizer(refValues);
    StringTokenizer lineValue = new StringTokenizer(line);
    String lvalue;
+   String error="";
    int count=0, refSize= ref.countTokens();
    while(lineValue.hasMoreElements()){
      lvalue = lineValue.nextToken();
@@ -36,12 +37,12 @@ public class DXToolsMethods {
        if(!lvalue.equals(ref.nextToken()))
          count++;
        if(count==refSize){
-         new FatalProblemDlg("Wrong "+message +" in the activity file:" +
-                             "\n" + "I was in "+classList+" class and in analyseTokens method ");
-         System.exit(1);
+         error= message +" in the activity file:" +
+                             "\n" + "I was in "+classList+" class and in analyseTokens method ";
         }// end if(count==refSize)
      }// end while(ref.hasMoreElements())
    }// end while(lineValue.hasMoreElements())
+   return error;
  }
 
  /**
@@ -50,12 +51,13 @@ public class DXToolsMethods {
    * @param String the error message to print
    * @param String the classe name where error has been detect
    * */
- public final static void checkIfLineIsEmpty(String line, String message, String classList){
+ public final static String checkIfLineIsEmpty(String line, String message, String classList){
+   String error="";
    if(line.length() == 0){
-     new FatalProblemDlg("Wrong "+message +" in the activity file:" +
-     "\n" + "I was in "+classList+" class and in analyseTokens method ");
-     System.exit(1);
+     error = message +" in the activity file:" +
+     "\n" + "I was in "+classList+" class and in analyseTokens method ";
    }
+   return error;
   }
 
   /**
@@ -64,14 +66,15 @@ public class DXToolsMethods {
    * @param String the error message to print
    * @param String the classe name where error has been detect
    * */
-  public final static void isIntValue(String value, String message, String classList){
+  public final static String isIntValue(String value, String message, String classList){
+    String error="";
     try{
       (new Integer (value.trim())).intValue();
     }catch (NumberFormatException exc){
-      new FatalProblemDlg("Wrong "+message +" in the activity file:" +
-      "\n" + "I was in "+classList+" class and in analyseTokens method ");
-      System.exit(1);
+      error= message +" in the activity file:" +
+      "\n" + "I was in "+classList+" class and in analyseTokens method ";
     }
+    return error;
   }
 
   /**

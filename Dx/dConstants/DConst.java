@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.13 $  $Date: 2003-05-12 14:32:51 $
+ * Title: DConst $Revision: 1.14 $  $Date: 2003-05-12 15:27:06 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.14 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -129,6 +129,20 @@ public class DConst {
    public final static String ROOM_TEXT4= res.getString("roomText4");
    public final static String ROOM_TEXT5= res.getString("roomText5");
    public final static String ROOM_TEXT6= res.getString("roomText6");
+
+   // activity constants
+   public final static String ACTI_TEXT1= res.getString("activText1");
+   public final static String ACTI_TEXT2= res.getString("activText2");
+   public final static String ACTI_TEXT3= res.getString("activText3");
+   public final static String ACTI_TEXT4= res.getString("activText4");
+   public final static String ACTI_TEXT5= res.getString("activText5");
+   public final static String ACTI_TEXT6= res.getString("activText6");
+   public final static String ACTI_TEXT7= res.getString("activText7");
+   public final static String ACTI_TEXT8= res.getString("activText8");
+   public final static String ACTI_TEXT9= res.getString("activText9");
+   public final static String ACTI_TEXT10= res.getString("activText10");
+   public final static String ACTI_TEXT11= res.getString("activText11");
+   public final static String ACTI_TEXT12= res.getString("activText12");
 
    public final static String MFONTDialog = "Dialog";
    public final static int NPT11 = 11;

@@ -12,11 +12,13 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
 import dInternal.dUtil.DXToolsMethods;
+import dResources.DConst;
 
 public class SetOfActivities extends SetOfResources{
 
   /**activities in text format*/
   private byte[] _dataloaded;
+  private String _error="";
   /**
    * Constructor
    * */
@@ -49,27 +51,24 @@ public class SetOfActivities extends SetOfResources{
           break;
         case 1:// activity name
           if (token.trim().length() != _ACTIVITYLENGTH){
-            new FatalProblemDlg(
-            "Wrong activity name at line: "+line+  " in the activity file:" +
-            "\n" + "I was in ActiviesList class and in analyseTokens method ");
-            System.exit(1);
+            _error= DConst.ACTI_TEXT1+line+  " in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ";
           }
           position = 2;
           break;
         case 2://activity visibility
-          DXToolsMethods.checkIfBelongsValues(token,"0 1","format of activity visibility at line: "
+          _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",DConst.ACTI_TEXT2
                 +line,"ActivityList");
           position = 3;
           break;
         case 3://number of activities
-          DXToolsMethods.isIntValue(token.trim(),"number of activities at line: "+line,"ActivityList");
+          _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT3+line,"ActivityList");
           position = 4;
           break;
         case 4:// teachers' names
           if (token.length() == 0){
-            new FatalProblemDlg(
-            "Wrong teachers' names at line: "+line+  "in the activity file:" +
-            "\n" + "I was in ActiviesList class and in analyseTokens method ");
+            _error= DConst.ACTI_TEXT4+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ";
             System.exit(1);
           }
           position = 7;
@@ -82,74 +81,81 @@ public class SetOfActivities extends SetOfResources{
           position = 7;
           break;
         case 7://number of blocs
-          DXToolsMethods.isIntValue(token.trim(),"number of blocs at line: "+line,"ActivityList");
+          _error= DXToolsMethods.isIntValue(token.trim(),
+              DConst.ACTI_TEXT5+line,"ActivityList");
           numberOfUnitys = Integer.parseInt(token.trim());
           position = 8;
           break;
         case 8://duration of blocs
           stLine = new StringTokenizer(token);
           if (numberOfUnitys!= stLine.countTokens()){
-            new FatalProblemDlg(
-            "Wrong teachers' names at line: "+line+  "in the activity file:" +
-            "\n" + "I was in ActiviesList class and in analyseTokens method ");
-            System.exit(1);
+            _error= DConst.ACTI_TEXT5+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ";
           }
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements())
-            DXToolsMethods.isIntValue(stLine.nextToken(),"duration of blocs at line: "+line,"ActivityList");
+            _error= DXToolsMethods.isIntValue(stLine.nextToken(),
+                DConst.ACTI_TEXT7+line,"ActivityList");
           position = 9;
           break;
         case 9://days and periods of blocs
           stLine = new StringTokenizer(token);
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements())
-            DXToolsMethods.isIntValue(stLine.nextToken(),"days and times of blocs at line: "+
-                                      line,"ActivityList");
+            _error= DXToolsMethods.isIntValue(stLine.nextToken(),
+                DConst.ACTI_TEXT8+line,"ActivityList");
           position = 10;
           break;
         case 10://fixed rooms
           stLine = new StringTokenizer(token);
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
-            DXToolsMethods.checkIfBelongsValues(token,"0 1","format of fixed rooms at line: "
-                +line,"ActivityList");
+            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+                DConst.ACTI_TEXT9+line,"ActivityList");
           }
           position = 11;
           break;
         case 11://Preferred rooms
           stLine = new StringTokenizer(token);
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements())
           if (stLine.nextToken().length() == 0){
-            new FatalProblemDlg(
-            "Wrong name of preferred rooms at line: "+line+  "in the activity file:" +
-            "\n" + "I was in ActiviesList class and in analyseTokens method ");
-          System.exit(1);
+            _error=DConst.ACTI_TEXT10+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ";
           }
           position = 12;
           break;
         case 12://type of rooms
           stLine = new StringTokenizer(token);
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements())
-            DXToolsMethods.isIntValue(stLine.nextToken(),"type of rooms: "+line,"ActivityList");
+            _error= DXToolsMethods.isIntValue(stLine.nextToken(),
+                DConst.ACTI_TEXT11+line,"ActivityList");
           position = 13;
           break;
         case 13://idem
           stLine = new StringTokenizer(token);
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements())
-            DXToolsMethods.isIntValue(stLine.nextToken(),"type of rooms: "+line,"ActivityList");
+            _error= DXToolsMethods.isIntValue(stLine.nextToken(),
+                DConst.ACTI_TEXT11+line,"ActivityList");
           position = 14;
           break;
         case 14://pre-affected rooms
           stLine = new StringTokenizer(token);
-          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          _error= DXToolsMethods.checkIfLineIsEmpty(token,
+              DConst.ACTI_TEXT6+line,"ActivityList");
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
-            DXToolsMethods.checkIfBelongsValues(token,"0 1","format of pre-affected rooms at line: "+
-                line,"ActivityList");
+            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+                DConst.ACTI_TEXT12+line,"ActivityList");
           }
           position = beginPosition;
           break;
@@ -393,6 +399,10 @@ public class SetOfActivities extends SetOfResources{
        return removeResource(courseName.substring(0,_COURSENAMELENGTH));
     }
    return false;
+  }
+
+  public String getError() {
+   return _error;
   }
 
   /**
