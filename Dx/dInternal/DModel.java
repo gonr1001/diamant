@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.16 $  $Date: 2003-05-14 13:09:09 $
+ * Title: DModel $Revision: 1.17 $  $Date: 2003-05-23 11:46:39 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.17 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -24,22 +24,27 @@ import java.util.Vector;
 import java.io.*;
 import javax.swing.JFrame;
 import dInternal.dData.*;
+
+import dInternal.dTimeTable.TTStructure;
 //import com.iLib.gDialog.FatalProblemDlg;
 
 public class DModel{
   private Vector _dmListeners = new Vector();
-  private TTParameters _ttParameters;
+  //private TTParameters _ttParameters;
   private Status _status;
   private SetOfInstructors _setOfInstructors;
   private SetOfRooms _setOfRooms;
   private SetOfStudents _setOfStudents;
   private SetOfActivities _setOfActivities;
   private JFrame _jFrame;
+  private TTStructure _ttStruct;
 
-  public DModel(JFrame jFrame) {
+
+  public DModel(JFrame jFrame, TTStructure ttStruct) {
     _status = new Status();
-    _ttParameters = new TTParameters();
+    //_ttParameters = new TTParameters();
     _jFrame = jFrame;
+    _ttStruct = ttStruct;
     importData("hello");
     //test1_setAvailability();
   }
@@ -53,8 +58,8 @@ public class DModel{
   }
 
   public String importData(String str) {
-    String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
-    str = path;
+    //String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
+    //str = path;
     LoadData loadData = new LoadData(str);
     // import set of instructors
       _setOfInstructors = loadData.extractInstructors(null, false);
@@ -83,14 +88,22 @@ public class DModel{
      return "";
   }
 
-
+  public String loadTTStruct(String str) {
+    LoadData loadData = new LoadData(str);
+    // import set of instructors
+      _ttStruct = loadData.extractTTStruct();
+     if( _ttStruct.getError().length()!=0){
+       return _ttStruct.getError();
+     }
+     return "";
+  }
 
   public SetOfInstructors getSetOfInstructors(){
     return _setOfInstructors;
   }
 
-  public TTParameters getTTParameters() {
-    return _ttParameters;
+  public TTStructure getTTStructure() {
+    return _ttStruct;
   }
 
   public void sendEvent() {
@@ -112,8 +125,8 @@ public class DModel{
     _dmListeners.removeElement(dml);
   }
 
-  public void setParameters(int [] a) {
-    _ttParameters.setValues(a);
+  public void setTTStructure(int [] a) {
+    //_ttStruct.setValues(a);
     sendEvent();
   }
 

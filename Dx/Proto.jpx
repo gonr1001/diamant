@@ -24,6 +24,8 @@
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
   <property category="sys" name="AuthorLabel" value="@author"/>
   <property category="sys" name="BackupPath" value="../../Temp/Dx/Proto/bak"/>
+  <property category="sys" name="BeansInstantiate" value="false"/>
+  <property category="sys" name="BraceStyle" value="0"/>
   <property category="sys" name="CheckStable" value="1"/>
   <property category="sys" name="Company" value="UdeS"/>
   <property category="sys" name="CompanyLabel" value="Company:"/>
@@ -33,6 +35,9 @@
   <property category="sys" name="Description" value=" timetable construction"/>
   <property category="sys" name="DescriptionLabel" value="Description:"/>
   <property category="sys" name="DocPath" value="../Temp/Dx/Proto/doc"/>
+  <property category="sys" name="EventMatch" value="false"/>
+  <property category="sys" name="EventStyle" value="1"/>
+  <property category="sys" name="ExcludeClass" value="dInternal.dTimeTable.TTStructure"/>
   <property category="sys" name="ExcludeClassEnabled" value="0"/>
   <property category="sys" name="IncludeTestPath" value="1"/>
   <property category="sys" name="InstanceVisibility" value="2"/>

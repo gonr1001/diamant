@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.18 $  $Date: 2003-05-23 09:30:58 $
+ * Title: DDocument $Revision: 1.19 $  $Date: 2003-05-23 11:46:38 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -48,16 +48,10 @@ import dInterface.dTimeTable.TTPanel;
 public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;
   private DApplication _dApplic;
-  private TTStructure _ttStruct;
-  /**
-   */
-  //private DMediator _mediator;
   private JInternalFrame _jif;
   private DModel _dm;
-  //private JLabel _bottomLablel;
   private TTPanel _ttPanel;
   private JPanel _statusPanel;
-  //private TTParameters _ttParameters;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
   //-------------------------------------------
@@ -77,13 +71,13 @@ public class DDocument implements ActionListener, DModelListener{
   final int MAX_WIDTH = 1024;
   _dApplic = dApplic;
     //_mediator = mediator;
-    _dm = new DModel(_dApplic.getJFrame());
+    _dm = new DModel(_dApplic.getJFrame(),ttStruct);
     _jif = new JInternalFrame(title,true,true,true,true);
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
-    _ttStruct = ttStruct;
-    _ttPanel = new TTPanel(_ttStruct);
+   // _ttStruct = ttStruct;
+    _ttPanel = new TTPanel(_dm);
     //_ttParameters = new TTParameters();
     _dm.addDModelListener(this);
     _modified = false;
@@ -115,8 +109,8 @@ public class DDocument implements ActionListener, DModelListener{
         return _dm;
     } //end getDModel
 
-    public TTParameters getTTParameters() {
-      return _dm.getTTParameters();
+    public TTStructure getTTStructure() {
+      return _dm.getTTStructure();
     } // end getJIF
 
     public TTPanel getTTPanel() {
@@ -172,6 +166,6 @@ public class DDocument implements ActionListener, DModelListener{
 
     public void changeInDModel(DModelEvent  e) {
       this.updateStatusPanel();
-      _ttPanel.updateTTPanel(_dm.getTTParameters());
+      _ttPanel.updateTTPanel(_dm.getTTStructure());
     }// end actionPerformed
 } /* end DDocument class */

@@ -3,9 +3,8 @@ package dInternal.dTimeTable;
 import dInternal.dData.SetOfResources;
 
 public class TTStructure {
-
-
   private SetOfCycles _setOfCycles;
+
   private String _str;
   private int _col;
   private int _row;
@@ -35,8 +34,10 @@ public class TTStructure {
  }
 
  public String loadData(String  fils) {
-   return new String("error");
+   return new String("");
   }
-
+  public String getError() {
+    return new String("");
+  }
 
 }

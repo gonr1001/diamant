@@ -16,6 +16,8 @@ import java.io.File;
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gIO.FilterFile;
 
+import dInternal.dTimeTable.TTStructure;
+
 public class LoadData {
   Vector _v;
   String _instructorFileName;
@@ -181,6 +183,10 @@ public class LoadData {
      //System.exit(52);
    }
    return activitiesList;
+  }
+
+  public TTStructure extractTTStruct() {
+    return new TTStructure();
   }
 
 

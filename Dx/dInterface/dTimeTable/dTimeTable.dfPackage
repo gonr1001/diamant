@@ -36,6 +36,26 @@ class reference31 {
 @__modelType reference 
 */
 class reference32 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.OpenTTSDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTSDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.OpenTTSCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference12 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

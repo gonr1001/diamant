@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.17 $  $Date: 2003-05-22 14:18:41 $
+ * Title: DMenuBar $Revision: 1.18 $  $Date: 2003-05-23 11:46:39 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -100,6 +100,7 @@ public class DMenuBar extends JMenuBar{
     menu.addSeparator();
 
     JMenu mTime = new JMenu("Grille horaire");
+    mTime.setFont( new java.awt.Font( mfont, font, nPT ) );
 
 
 CmdMenu mNTime = new CmdMenu( "Nouvelle grille");

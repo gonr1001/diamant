@@ -368,7 +368,7 @@ class TTDefinitionDlg extends JDialog
       _a[0]= 2;
       _a[1]= 2;
       setTitle( "hello" + _a[0] + _a[1]);
-      _dApplic.getDMediator().getCurrentDoc().getDM().setParameters(_a);
+      _dApplic.getDMediator().getCurrentDoc().getDM().setTTStructure(_a);
     }
 
     if (command.equals( BUT00 )) {  // Ok
