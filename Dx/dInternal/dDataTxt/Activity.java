@@ -155,6 +155,34 @@ public class Activity extends DXObject{
   }
 
   /**
+   * According to the value of the argument, it compares a classe attribute with
+   * value of the argument "value"
+   * @param choice the index of the class attribut
+   * @param value the value to be compared
+   * @return true if the attribute value is equal to the argument "value"
+   */
+  public boolean compareByField(int choice, String value){
+   switch(choice){
+      case 0:
+        if (_departement.equals(value))
+          return true;
+      case 1:
+        if (_activityType.equals(value))
+          return true;
+      case 2:
+        int intValue = Integer.parseInt(value);
+        if (_activitySession == intValue)
+          return true;
+      case 3:
+        boolean boolValue = Boolean.getBoolean(value.trim());//Boolean.getBoolean(value);
+        if (_activityVisible == boolValue)
+          return true;
+    }
+    return false;
+ }
+
+
+  /**
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */

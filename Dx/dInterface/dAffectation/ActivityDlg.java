@@ -13,6 +13,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.Dimension;
 
@@ -49,11 +51,10 @@ public class ActivityDlg extends JDialog implements ActionListener {
      jbInit();
      setLocationRelativeTo(dApplic.getJFrame());
      setVisible(true);
-     this.actionManager();
+     triggerListeners();
      //new DoNothingDlg(dApplic,"Nothing");
 
   }
-
 
 
   /**
@@ -111,7 +112,8 @@ public class ActivityDlg extends JDialog implements ActionListener {
       _visibleVec = new Vector();
     }else{
       SetOfActivities activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-      _visibleVec = activities.getIDByVisibility(true);
+      //_visibleVec = activities.getIDByVisibility(true);
+      _visibleVec = activities.getIDsByField(0, 3, "true");
       _noVisibleVec = activities.getIDByVisibility(false);
     } //end if (_dApplic.getDMediator().getCurrentDoc() == null)
 
@@ -119,17 +121,22 @@ public class ActivityDlg extends JDialog implements ActionListener {
 
 
 
-  private void actionManager(){
+  private void triggerListeners(){
     _cancel.addActionListener(this);
     _show.addActionListener(this);
-    /*
-    _cancel.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
+    MouseListener mouseListener = new MouseAdapter(){
+      public void mouseClicked(MouseEvent e) {
+        String currentActivity = "";
+        if (e.getClickCount() == 2) {
+            currentActivity = (String)((JList)e.getSource()).getSelectedValue();
+            currentActivity = currentActivity.trim();
+          }//end if
+        }// public void mouseClicked
+    };
 
+    _noVisibleList.addMouseListener(mouseListener);
+    _visibleList.addMouseListener(mouseListener);
 
-      }//end actionPerformed
-    });//end addActionListener
-    */
   }
 
   public void actionPerformed(ActionEvent e){
@@ -139,6 +146,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     if (command.equals("Afficher"))
         dispose();
   }
+
 
 
 

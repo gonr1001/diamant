@@ -21,6 +21,10 @@ public class DXObject extends Object{
      return -2;
   }
 
+  public boolean compareByField(int choice, String value){
+    return false;
+  }
+
   /**
    *
    * */
