@@ -14,27 +14,24 @@ construction d'un horaire seront ensemble.
 La construction d'un nouvel horaire avec \dx{} comporte cinq phases:
 \begin{itemize}
     \item Phase 1: elle concerne le chargement de données dans le logiciel;
-    \item Phase 2: elle concerne la modification et d'épuration des données;
+    \item Phase 2: elle concerne la modification et l'épuration des données;
     \item Phase 3: elle concerne la construction à proprement parler;
-    \item Phase 4: elle concerne l'utilisation d'outils permettant de raffiner
-    l'horaire (ouverture et sauvegarde d'un horaire, affectation manuelle, rapports, etc.);
+    \item Phase 4: elle concerne l'utilisation d'outils permettant de raffiner l'horaire (construction manuelle de
+    l'horaire);
     \item Phase 5: elle concerne l'exportation de l'horaire.
 \end{itemize}
 
 En principe un horaire peut être fait en suivant les phases 1, 3
 et 5. Mais, il est fort possible qu'il soit nécessaire de modifier
 et d'épurer les données, phase 2. Il est aussi possible qu'il soit
-nécessaire de sauvegarder l'horaire et de continuer plus tard le
-travail, ou faire des affectations manuelles à l'horaire, ou
-encore visualiser les rapports phase 4.
+nécessaire de construire un horaire manuellement. La phase 4 décrit les opérations nécessaires, ainsi que les les opérations d'ouverture et de sauvegarde d'un horaire.
 
 Nous vous présenterons dans ce chapitre toutes ces phases
 appliquées à la construction d'un horaire de cours et d'un horaire d'examen.
-Toutefois, les options du logiciel ne seront pas toutes présentées.
 
-\section{Production d'un horaire de cours}\label{prepacours}
+\section{Construction d'un horaire de cours}\label{prepacours}
 
-\subsection{Phase 1: préparation de l'horaire}\label{finprepa}
+\subsection{Phase 1: chargement et initialisation des données}\label{finprepa}
 
 \begin{enumerate}
     \item Lancer \dx{}.
@@ -63,11 +60,11 @@ contenant la définition de votre grille horaire.
   \end{center}
 \end{figure}
 
-    \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers que vous venez de faire.
+    \item Aller au menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers que vous venez de faire.
 
 Il est recommandé d'enregistrer cette configuration en utilisant un nom de fichier unique et représentatif.
 
-Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horaire de cours} et le fichier créé sera \emph{E02cours.dim}. L'extension \textbf{\emph{.dim}} est rajouté automatiquement.
+Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de cours et le fichier créé sera \verb!E02cours.dim!. L'extension \verb!.dim! est rajouté automatiquement.
 
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
@@ -77,35 +74,40 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
   \end{center}
 \end{figure}
 
-    \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Importer automatiquement}}.
-    Une boite de dialogue apparaîtra et vous permettra de choisir le fichier \textbf{\emph{.dim}} de «configuration de fichiers»
+    \item Aller au menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Importer automatiquement}}.
+    Une boite de dialogue apparaîtra et vous permettra de choisir le fichier \verb!.dim! de «configuration de fichiers»
     précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}}
-    (dans l'exemple précédent il s'agit du fichier \emph{E02cours.dim}).
+    (dans l'exemple précédent il s'agit du fichier \verb!E02cours.dim!).
     Cliquer à présent sur le bouton \textbf{\emph{Importation de fichiers}},
     toutes vos données (cours, étudiants, enseignants et locaux) seront chargées dans le logiciel et
     prêtes à être modifiées.
-\end{enumerate}
 
-À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Lancer l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de passer à la phase 2. Elle exécutera les fonctionnalités suivantes:
+\item Lancer \textbf{\emph{Optimisation}} \Rar \textbf{\emph{affectation initiale}} avant de passer à la phase 2. Elle exécutera les opérations suivantes:
 
 \begin{enumerate}
-    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
-    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
-    \item Calculer les conflits générés.
+    \item Place de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
+    \item Place les événements pré-affectés (placés ou figés) dans la grille horaire.
+    \item Calcule les conflits générés.
 \end{enumerate}
 
 Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
 
+\item Aller au menu \textbf{\emph{Rapports}} \Rar \textbf{\emph{Rapports...}} afin de vérifier le rapport d'importation et pouvoir y déceler les erreurs se trouvant dans les fichiers d'activités, d'étudiants, d'enseignants et de locaux.
+
 La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). 
+
+\end{enumerate}
 
 \subsection{Phase 2: modification et épurations des données}
 
 Le but de cette étape est de permettre de construire l'horaire uniquement à partir de données propres. Cette modification et/ou épuration peut se faire sur les activités, les événements, les groupes d'étudiants, les enseignants ou les locaux.
 
 \begin{itemize}
-    \item Modifier une activité en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Activités}} pour voir apparaître la \emph{liste des activités} (voir figure \ref{listactc}) ou alors cliquer sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Événements}} pour voir apparaître la \emph{liste des événements} (voir figure \ref{listeeventc}).\\
+    \item Modifier une activité en cliquant sur le menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Activités}} pour voir apparaître la \emph{liste des activités} (voir figure \ref{listactc}) ou alors cliquer sur le menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Événements}} pour voir apparaître la \emph{liste des événements} (voir figure \ref{listeeventc}).\\
 
-À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (les événements sont placées et figées dans la grille horaire) à \emph{placés} (les événements sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les événements ne sont pas encore placées dans la grille horaire) et vice-versa.
+À partir de la fenêtre \emph{liste des activités}, vous pouvez sélectionner une ou plusieurs activités et les faire passer de la colonne \emph{inclue(s)} à \emph{non inclue(s)} (non inclue(s) veut dire que les activités ne seront pas utilisées dans la construction de l'horaire). \\
+
+À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (les événements sont placées et figées dans la grille horaire) à \emph{placés} (les événements sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les événements ne sont pas encore placées dans la grille horaire).
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -115,8 +117,6 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
       \end{center}
     \end{figure}
 
-À partir de la fenêtre \emph{liste des activités}, vous pouvez sélectionner une ou plusieurs activités et les faire passer de la colonne \emph{inclue(s)} à \emph{non inclue(s)} (non inclue(s)= les activités ne seront pas utilisées dans la construction de l'horaire) et vice-versa. \\
-
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
@@ -124,7 +124,6 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
         \caption{Liste des événements}\label{listeeventc}
       \end{center}
     \end{figure}
-
 
 À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{eventc}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
 
@@ -136,11 +135,11 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
       \end{center}
     \end{figure}
 
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
+Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
     \item Ajouter ou supprimer un groupe ou un événement en cliquant sur le menu \textbf{\emph{Modification}} \Rar{} \textbf{\emph{Activités}} (voir section \ref{modification} pour plus de details).
 
-\item Modifier les groupes d'étudiants en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Groupes}} pour voir apparaître la fenêtre de la figure \ref{groupec}. Sélectionner dans la colonne de droite (Étudiants assignés) le groupe (Groupe A, Groupe B, ...) que l'on souhaite modifier. Sélectionner ensuite un ou plusieurs étudiants que l'on souhaite déplacer. Utilisez enfin les flèches pour déplacer les étudiants de la gauche vers la droite ou vice-versa.
+\item Modifier les groupes d'étudiants en cliquant sur le menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Groupes}} pour voir apparaître la fenêtre de la figure \ref{groupec}. Sélectionner dans la colonne de droite (Étudiants assignés) le groupe (Groupe 01, Groupe 10, ...) que l'on souhaite modifier. Sélectionner ensuite un ou plusieurs étudiants que l'on souhaite déplacer. Utilisez enfin les flèches pour déplacer les étudiants de la gauche vers la droite ou vice-versa.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -152,9 +151,9 @@ Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer su
 
 Cliquer sur le bouton \textbf{\emph{Par matricule/Par programme/Par nom}} dans le zone \emph{trier}, pour trier les étudiants par matricule, par programme ou par nom.
 
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.\\
+Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
-\item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignantc}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
+\item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affectation}} \Rar  \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignantc}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -164,9 +163,9 @@ Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer su
       \end{center}
     \end{figure}
 
-Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et Cliquer sur \textbf{\emph{Ok}} pour accepter, effectuer les changements et fermer la fenêtre.    \\
+Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
-    \item Modifier la disponibilité d'un local en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Locaux}} pour voir apparaître la fenêtre de la figure  \ref{localc}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaité modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est disponible.
+    \item Modifier la disponibilité d'un local en cliquant sur le menu \textbf{\emph{Affectation}} \Rar  \textbf{\emph{Locaux}} pour voir apparaître la fenêtre de la figure  \ref{localc}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaité modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est disponible.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -176,15 +175,15 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
       \end{center}
     \end{figure}
 
-Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et Cliquer sur \textbf{\emph{Ok}} pour accepter, effectuer les changements et fermer la fenêtre.\\
+Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
  \end{itemize}
 
 \subsection{Phase 3: construction de l'horaire}
 
-Cette étape consiste à lancer le sous menu \textbf{\emph{Construire l'horaire}} à partir du menu \textbf{\emph{Optimisation}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
+Cette étape consiste à lancer le menu \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Construire l'horaire}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
 
-La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant le sous-menu \textbf{\emph{Options Conflits}} à partir du menu \textbf{\emph{Préférences}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{confc}). Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
+La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant \textbf{\emph{Préférences}} \Rar \textbf{\emph{Options Conflits}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{confc}). Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
 
 \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -205,17 +204,17 @@ La modification des contraintes à respecter par \dx{} lors de la construction au
 
 Il est possible de modifier les contraintes et lancer ensuite la construction de l'horaire afin que le logiciel  utilise les nouvelles contraintes pour placer les événements qu'il n'a pas pu précédemment placer; tout ceci de façon itérative jusqu'à obtention d'un résultat paraissant satisfaisant aux yeux de l'utilisateur.
 
-Il est également possible de revenir à l'état initial de l'horaire (l'état de l'horaire juste après l'affectation initiale). Pour cela, il suffit de d'ouvrir la fenêtre \textbf{\emph{Liste des événements}} à partir du sous-menu \textbf{\emph{Événements}} du menu \textbf{\emph{Affectation}}, ensuite de sélectionner tous les événements de la colonnes des \textbf{\emph{Placés}}, puis de les faire passer de la colonne des \textbf{\emph{Placés}} à celle des \textbf{\emph{Non placés}} en cliquant sur la flèche allant de la gauche vers la droite et enfin cliquer sur le bouton Appliquer pour effectuer les changements.
+Il est également possible de revenir à l'état initial de l'horaire (l'état de l'horaire juste après l'affectation initiale). Pour cela, il suffit de d'ouvrir la fenêtre \textbf{\emph{Liste des événements}} à partir du menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Événements}}, ensuite de sélectionner tous les événements de la colonnes des \textbf{\emph{Placés}}, puis de les faire passer de la colonne des \textbf{\emph{Placés}} à celle des \textbf{\emph{Non placés}} en cliquant sur la flèche allant de la gauche vers la droite et enfin cliquer sur le bouton Appliquer pour effectuer les changements.
 
 Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
 
 
 \subsection{Phase 4: raffinement de l'horaire}
-Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, formation de groupes, modification, rapports), les voies et moyens d'amélioration de l'horaire construit.
+Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, formation de groupes, modification, rapports, ouverture et sauvegarde d'un horaire), les voies et moyens d'amélioration de l'horaire construit.
 
-\subsubsection{Affectation manuelle}
+\subsubsection{AFFECTATION MANUELLE}
 
-L'affectation manuelle permet à l'utilisateur de placer individuellement les événements dans la grille horaire. Elle se fait à partir de la fenêtre d'\textbf{\emph{Affection manuelle}} (voir figure \ref{manc}) obtenue à partir du sous-menu \textbf{\emph{Affectation manuelle}} du menu \textbf{\emph{Affectation}}.
+L'affectation manuelle permet à l'utilisateur de placer individuellement les événements dans la grille horaire. Elle se fait à partir de la fenêtre d'\textbf{\emph{Affection manuelle}} (voir figure \ref{manc}) obtenue à partir du menu \textbf{\emph{Affectation}} \Rar \textbf{\emph{Affectation manuelle}} .
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -261,7 +260,7 @@ Elles sont interprétées de la manière suivante:
 
 \end{enumerate}
 
-\subsubsection{Modification des activités}\label{modification}
+\subsubsection{MODIFICATION DES ACTIVITÉS}\label{modification}
 
 La fonctionnalité de modification des activités permet d'ajouter ou supprimer une nature à une activité, d'ajouter ou supprimer un groupe à une nature d'activité, d'ajouter ou supprimer un bloc à un groupe et enfin modifier la durée d'un événement ou affecter un événement comme présenté dans la figure \ref{eventc}. Il faut cependant noter qu'elle ne permet pas d'ajouter une activité.
 
@@ -271,7 +270,7 @@ La modification d'une activité se fait en cascade, c'est à dire que pour faire d
 
     \item \subsubsection{Ajout/suppression d'une nature à une activité}
 
-Ajouter et/ou supprimer une nature à une activité se fait en lançant le sous menu \textbf{\emph{Activité}} à partir du menu \textbf{\emph{Modification}}, pour faire apparaître la fenêtre d'activités de la figure \ref{modifactc}.
+Ajouter et/ou supprimer une nature à une activité se fait en lançant le menu \textbf{\emph{Modification}} \Rar \textbf{\emph{Activité}}, pour faire apparaître la fenêtre d'activités de la figure \ref{modifactc}.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -340,17 +339,17 @@ Double cliquer sur une activité pour faire apparaître la fenêtre de natures de l
 
 \end{enumerate} 
 
-\subsubsection{Formation de groupes}
+\subsubsection{FORMATION DE GROUPES}
 
 La formation de groupe communément appelé «brassage d'étudiants dans les groupes» peut se faire de trois façons distinctes:
 
 \begin{itemize}
-    \item En cliquant sur \textbf{\emph{Balancé}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en ne tolérant qu'un écart d'un étudiant entre les différents groupes d'une même activité.
-    \item En cliquant sur \textbf{\emph{Intermédiaire}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant une fois de plus les conflits, mais en tolérant cette fois ci un écart de 15 (\textcolor[rgb]{1.00,0.00,0.00}{valeur à paramétrer si besoin se fait sentir}) étudiants au plus entre les différents groupes d'une même activité.
-    \item En cliquant sur \textbf{\emph{Optimisé}} dans le sous menu \textbf{\emph{Formation de groupes}} du menu \textbf{\emph{optimisation}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en autorisant tous les écarts entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Balancé}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en ne tolérant qu'un écart d'un étudiant entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Intermédiaire}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant une fois de plus les conflits, mais en tolérant cette fois ci un écart de 15 (\textcolor[rgb]{1.00,0.00,0.00}{valeur à paramétrer si besoin se fait sentir}) étudiants au plus entre les différents groupes d'une même activité.
+    \item En cliquant sur \textbf{\emph{optimisation}} \Rar \textbf{\emph{Formation de groupes}} \Rar \textbf{\emph{Optimisé}}, le logiciel brasse les étudiants des activités déjà placées dans la grille horaire, de sorte à les placer dans les groupes en minimisant les conflits et en autorisant tous les écarts entre les différents groupes d'une même activité.
 \end{itemize}
 
-\subsubsection{Rapports}
+\subsubsection{RAPPORTS}
 
 La fonctionnalité rapport permet de visualiser le rapport complet des événements placés dans la grille horaire, de visualiser le rapport de conflits générés par les événements placés dans la grille horaire et de visualiser les erreurs survenues lors de l'importation de données.
 
@@ -445,15 +444,42 @@ Utiliser les boutons avec les flèches pour déplacer un champ d'une colonne vers 
 
 \end{enumerate}  
 
+\subsubsection{OUVERTURE ET SAUVEGARDE D'UN HORAIRE}
+
+\subsubsection{Ouverture d'un horaire}
+
+Pour ouvrir un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Ouvrir horaire ...}} pour voir apparaître la fenêtre de la figure \ref{openttc}. Parcourir le disque pour trouver l'emplacement du fichier d'horaire (avec l'extension \verb!.dia!) à ouvrir. Sélectionner le fichier et cliquer sur le bouton \textbf{\emph{Ouvrir}} ou double-cliquer simplement sur le fichier pour l'ouvrir.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/opentt.eps}
+        \caption{Ouverture d'un horaire}\label{openttc}
+    \end{center}
+\end{figure}
+
+\subsubsection{Sauvegarde d'un horaire}
+
+Pour sauvegarder un horaire, lancer le menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer ...}} ou \textbf{\emph{Fichier}} \Rar \textbf{\emph{Enregistrer sous ...}} pour voir apparaître la fenêtre de la figure \ref{savettc}. Parcourir le disque pour trouver où enregistrer l'horaire. Entrer le nom a attribuer à l'horaire (avec ou sans extension \verb!.dia!) et cliquer sur le bouton \textbf{\emph{Enregistrer}}.
+
+\begin{figure}[h]
+% Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.0in]{UserManualInputs/images/savett.eps}
+        \caption{Sauvegarde d'un horaire}\label{savettc}
+    \end{center}
+\end{figure}
+
+
 \subsection{Phase 5: Exportation}
 
 Pour exporter les données, aller au menu \textbf{\emph{Fichier}}, puis sélectionner \textbf{\emph{Exporter}}; deux fichiers seront créés dans le repertoire racine de votre document avec les noms suivants:
 \begin{itemize}
-    \item \verb!«nom du document»_Export_1.txt! (il contient l'horaire);
-    \item \verb!«nom du document»_Export_2.txt! (il contient les étudiants, leurs choix d'activité et leurs groupes).
+    \item \verb!S814.HORAIRE! (il contient l'horaire);
+    \item \verb!S813.ASSGRO! (il contient les étudiants, leurs choix d'activité et leurs groupes).
 \end{itemize}
 
-\section{Production d'un horaire d'examen}\label{prepaexam}
+\section{Construction d'un horaire d'examen}\label{prepaexam}
 
 \subsection{Phase 1: préparation de l'horaire}\label{finprepae}
 
