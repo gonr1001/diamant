@@ -5,7 +5,7 @@ informations requises par \diamant{}.
 
 \section{présentation de la grille horaire}
 
-Cette nouvelle grille horaire sera stockée dans un fichier XML comme représenté à la figure \ref{xmltt} et elle permettra de traiter indépendamment chaque cycle.
+Cette nouvelle grille horaire sera stockée dans un fichier XML comme représenté à la figure \ref{xmlcontains} et elle permettra de traiter indépendamment chaque cycle.
 
 \subsection{Exemple des données qu'elle contient}
 
@@ -19,7 +19,7 @@ Cette nouvelle grille horaire sera stockée dans un fichier XML comme représenté 
 
 \subsection{Signification des données}
 
-Le fichier XML contenant les informations sur la grille horaire est organisé de manière hiérarchique (arbre). Chaque information est encapsulée dans un \emph{tag}. Chaque \emph{tag} donne le grade hiérarchique de l'information sur l'arbre. Cette hiérarchie est décrite comme suit:
+Le fichier XML contenant les informations sur la grille horaire est organisé de manière hiérarchique (arbre). Chaque information est encapsulée dans un \emph{tag} (voir figure \ref{xmltt}). Chaque \emph{tag} donne le grade hiérarchique de l'information sur l'arbre. Cette hiérarchie est décrite comme suit:
 
 \begin{itemize}
     \item \emph{DXTimeTable}:
@@ -59,11 +59,11 @@ La nouvelle structure de la grille horaire de \diamant{} se présente sous une fo
 \begin{itemize}
     \item Niveau 1: il correspond à la grille horaire complete et est constitué de plusieurs éléments de niveau 2.\\
 
-    \item Niveau 2: il correspond à l'ensemble des cycles de la grille horaire. Chaque éléments du niveau 2 (un cycle) est constitué de plusieurs éléments de niveau 3.\\
+    \item Niveau 2: il correspond à l'ensemble des cycles de la grille horaire. Chaque élément du niveau 2 (un cycle) est constitué de plusieurs éléments de niveau 3.\\
 
-    \item Niveau 3: il correspond à l'ensemble des jours d'un cycle. Chaque éléments du niveau 3 (une journée) est constitué de plusieurs éléments de niveau 4.\\
+    \item Niveau 3: il correspond à l'ensemble des jours d'un cycle. Chaque élément du niveau 3 (une journée) est constitué de plusieurs éléments de niveau 4.\\
 
-    \item Niveau 4: il correspond à l'ensemble des séquences d'une journée. chaque éléments du niveau 4 (une séquence) est constitué de plusieurs éléments de niveau 5.\\
+    \item Niveau 4: il correspond à l'ensemble des séquences d'une journée. chaque élément du niveau 4 (une séquence) est constitué de plusieurs éléments de niveau 5.\\
 
     \item Niveau 5: il est l'entité élémentaire de la grille horaire et il correspond à une période dans laquelle devra être affectée une activité.
 \end{itemize}
@@ -72,8 +72,8 @@ La nouvelle structure de la grille horaire de \diamant{} se présente sous une fo
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
-    \includegraphics[height=5.0in,angle=-90]{Images/organigramme.eps}
-    \caption{Schema hierarchique de la grille horaire}\label{orgtt}
+    \includegraphics[height=6.0in,angle=-90]{Images/organigramme.eps}
+    \caption{Schema hiérarchique de la grille horaire}\label{orgtt}
   \end{center}
 \end{figure}
 
