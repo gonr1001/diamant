@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.1 $  $Date: 2003-01-24 18:27:59 $
+ * Title: DMediator $Revision: 1.2 $  $Date: 2003-02-20 11:07:28 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -43,10 +43,8 @@ public class DMediator {
 
   //-------------------------------------------
   public DDocument getCurrentDoc() {
-    System.out.println("getCurrentDoc" + _documents.size() +"*****");
     DDocument currentDoc = null;
     for (int i =0; i < _documents.size(); i++) {
-      System.out.println("getCurrentDoc " + i +"++++");
       currentDoc = (DDocument) _documents.elementAt(i);
       JInternalFrame currentFrame = currentDoc.getJIF();
       if (currentFrame.isSelected()) {

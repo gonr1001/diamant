@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.4 $  $Date: 2003-01-31 16:43:14 $
+ * Title: DMenuBar $Revision: 1.5 $  $Date: 2003-02-20 11:07:28 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -32,8 +32,9 @@ public class DMenuBar extends JMenuBar{
   JFrame _jFrame;
   DMediator _mediator;
 
-  public DMenuBar(DView dView, DMediator mediator) {
+  public DMenuBar(JFrame jFrame, DView dView, DMediator mediator) {
     super();
+    _jFrame = jFrame;
     _dView = dView;
     _mediator = mediator;
     createMenuBar();
@@ -67,11 +68,22 @@ public class DMenuBar extends JMenuBar{
     //mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
     mCpy.setCommand(new DoNothingCmd(_jFrame)); //this, med));
     mCpy.addActionListener(_dView);
+    CmdMenu mTTDef = new CmdMenu("TTDialog");//, this);
+    menu.add(mTTDef);
+    mTTDef.setFont(new java.awt.Font(mfont, font, nPT));
+    mTTDef.setCommand(new TTDefinitionCmd(_jFrame, _mediator));
+    mTTDef.addActionListener(_dView);
 
     //Build the menu PREFERENCES.
-    menu = new JMenu(DConst.PREFERENCES);
-    //menu.setFont( new java.awt.Font( mfont, font, nPT ) );
+    menu = new JMenu(DConst.PREF);
+    menu.setFont( new java.awt.Font( mfont, font, nPT ) );
     this.add( menu );
+    // Items in menu PREFERENCES.
+    CmdMenu mPLAF = new CmdMenu(DConst.PLAF_M);//, this);
+    menu.add(mPLAF);
+    mPLAF.setFont(new java.awt.Font(mfont, font, nPT));
+    mPLAF.setCommand(new PLAFCmd(_dView));
+    mPLAF.addActionListener(_dView);
 
     //Build the menu HELP.
     menu = new JMenu(DConst.HELP);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.3 $  $Date: 2003-01-30 18:54:41 $
+ * Title: DConst $Revision: 1.4 $  $Date: 2003-02-20 11:05:31 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -64,17 +64,23 @@ public class DConst {
    final static String REPORT = "Rapport";
    final static String REPORTS = "Rapports";
 
-   public final static String PREFERENCES = "Preferences";
-   final static String OPTIONS = "Options";
+   public final static String PREF = res.getString("pref");
+
+   public final static String PLAF_M = res.getString( "plafM");
+   public final static String PLAF_TD = res.getString("plafTD");
+   public final static String PLAF_D = res.getString("plafD");
+
 
    public final static String HELP = res.getString("help");
-   //public final static String HELP = "Aide";
+
    final static String CONTENTS = "Contenu";
    final static String INDEX = "Index";
    final static String SEARCH = "Rechercher";
-   public final static String ABOUT_M = res.getString( "aboutM");
-   public final static String ABOUT_D = res.getString("aboutD");
+
+   public final static String ABOUT_M = res.getString("aboutM");
    public final static String ABOUT_TD = res.getString("aboutTD");
+   public final static String ABOUT_D = res.getString("aboutD");
+
    public final static String MFONTDialog = "Dialog";
    public final static int NPT11 = 11;
 

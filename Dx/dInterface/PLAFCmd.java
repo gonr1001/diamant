@@ -1,8 +1,8 @@
 /**
  *
- * Title: AboutCmd $Revision: 1.3 $  $Date: 2003-02-20 11:07:28 $
- * Description: AboutCmd is class used as the command
- *              which displays the About dialog
+ * Title: PLAFCmd $Revision: 1.1 $  $Date: 2003-02-20 11:07:28 $
+ * Description: PLAFCmd is a class used to
+ *
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -14,32 +14,24 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
 
-
 import javax.swing.JFrame;
+import dInternal.Preferences;
 import dResources.DConst;
 
-/**
- *
- * AboutCmd is class used to call the command
- * which displays the About dialog
- *
- */
-public class AboutCmd implements Command {
+public class PLAFCmd implements Command {
+  private DView _dView;
 
-    private JFrame _jFrame;
-
-    public AboutCmd (JFrame jFrame) {
-        _jFrame = jFrame;
-    } // end AboutCmd
+  public PLAFCmd (DView dView) {
+       _dView = dView;
+    } // end PLAFCmd
     //------------------------------
     public void execute() {
-        new AboutDlg(_jFrame, DConst.ABOUT_TD + DConst.APP_NAME);
+        new PLAFDlg(_dView, DConst.PLAF_TD);
     } // end execute
-} /* end class AboutCmd */
-
+} /* end class PLAFCmd */
