@@ -35,6 +35,17 @@ public class DXValue extends DXObject{
   }
 
   /**
+   * Contructor
+   * */
+  public DXValue(int i, Object obj) {
+    _intValue= i;
+    _refNo=0;
+    _booleanValue=false;
+    _stringValue="";
+    _objectValue= obj;
+  }
+
+  /**
    *
    * */
   public void setBooleanValue(boolean value){

@@ -128,8 +128,8 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     int index = -1;
 
     for(int i = 0; i < v.size(); i++) {
-      if ( ((FieldRecord)v.get(i))._str.compareTo(str)==0)
-        return i;
+      if ( ((FieldRecord)((DXValue)v.get(i)).getObjectValue())._str.compareTo(str)==0)
+        return ((DXValue)v.get(i)).getIntValue();
     }
     return index;
   }
@@ -145,13 +145,19 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
   public abstract void doSave(Vector rigth);
   public abstract void actionPerformed(ActionEvent e);
 
-  public int [] fieldsLengths(Vector right,  Vector allOpt){
+  protected int [] fieldsLengths(Vector right,  Vector allOpt){
     int [] a = new int [right.size()];
     for(int i= 0; i< right.size(); i++)
-      a [i] = ((FieldRecord)allOpt.get(indexElementIn((String)right.get(i),allOpt)))._n;
+      a [i] = ( ((FieldRecord)((DXValue)allOpt.get(i)).getObjectValue())._n);//.get(indexElementIn((String)right.get(i),allOpt)))._n;
     return a;
   }
-
+  protected Vector getOptions(Vector opt) {
+    Vector v = new Vector();
+    for (int i=0; i< opt.size(); i++)
+      //v.add(((FieldRecord) opt.get(i))._str);
+      v.add((((FieldRecord)((DXValue) opt.get(i)).getObjectValue())._str));
+    return v;
+  }
   /**
    * Builds a report with the format defined by the parameters
    * @param fieldsNames The first line of the report

@@ -1,13 +1,25 @@
-package dInterface.dAffectation;
-
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
+ *
+ * Title: SectionDlg $Revision: 1.14 $  $Date: 2004-02-13 20:15:00 $
+ * Description: SectionDlg is class used
+ *           to display a dialog to modifiy students in groupes
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.14 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+
  */
+package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,12 +29,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import java.awt.GridLayout;
-
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -30,8 +42,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.EtchedBorder;
+
+import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
 
 import dInternal.dData.Activity;
 import dInternal.dData.Resource;
@@ -42,28 +55,26 @@ import dInternal.dData.StudentAttach;
 import dInternal.dData.Section;
 import dInternal.dData.Type;
 
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
-
 import dResources.DConst;
 
-public class SectionDlg extends JDialog implements ActionListener{
 
-  private DApplication _dApplic = null;
-  private int _numberOfTypes, _numberOfSections, _currentAssignedGroup = -1, _sortIndex = 0;
+
+public class SectionDlg extends JDialog implements ActionListener{
+  private DApplication _dApplic;
+  private int _numberOfTypes, _numberOfSections, _currentAssignedGroup, _sortIndex;
   private JButton _sortButton;
-  private JComboBox _actCombo, _typeCombo;
+  private JComboBox _actCombo, _typeCombo, _sortCombo;
   private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _buttonsPanel, _insidePanel, _centerPanel, _notAssignedPanel;
   private JScrollPane _scrollPane;
   private Section _section;
   private SetOfActivities _activities;
   private SetOfStudents _students;
-  private String _actID, _typeID;
+  private String _actID, _typeID, _sortID;
   private String[] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private Type _type;
-  private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[];
+  private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[], _sortVector;
 
   /**
    * Constructor
@@ -72,6 +83,8 @@ public class SectionDlg extends JDialog implements ActionListener{
   public SectionDlg(DApplication dApplic){
     super(dApplic.getJFrame(), DConst.SECTION_DLG_TITLE, true);
     _dApplic = dApplic;
+    _sortIndex = 0;
+    _currentAssignedGroup = -1;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
@@ -126,13 +139,17 @@ public class SectionDlg extends JDialog implements ActionListener{
     _typeID = (String)_typeVector.elementAt(0);
     setCurrents();
     //panel of sort
-    _sortButton = new JButton(DConst.SORT_BY_MATRICUL);
+    _sortVector = buildSortVector();
+    _sortCombo = new JComboBox(_sortVector);
+    /*_sortButton = new JButton(DConst.SORT_BY_MATRICUL);
     _sortButton.setPreferredSize(new Dimension(140, 25));
-    _sortButton.addActionListener(this);
+    _sortButton.addActionListener(this);*/
     sortPanel = new JPanel();
     sortPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.SORT_TITLE));
-    sortPanel.add(_sortButton);
+    sortPanel.add(_sortCombo);
     sortPanel.setPreferredSize(new Dimension(150,52));
+    //_sortID = (String)_sortVector.elementAt(0);
+    _sortCombo.setSelectedIndex(_sortIndex);
     //adding the panels to topPanel
     JPanel topPanel = new JPanel();
     topPanel.setPreferredSize(new Dimension(400,70));
@@ -143,6 +160,8 @@ public class SectionDlg extends JDialog implements ActionListener{
     //adding the actionListeners
     _actCombo.addActionListener(this);
     _typeCombo.addActionListener(this);
+    _sortCombo.addActionListener(this);
+
   }
 
   /**
@@ -284,6 +303,16 @@ public class SectionDlg extends JDialog implements ActionListener{
       _buttonsPanel.getComponent(1).setEnabled(true);
     }//end if (e.getSource().equals(_typeCombo))
     //if sort button
+    if (e.getSource().equals(_sortCombo)){
+      _sortIndex = _sortCombo.getSelectedIndex();
+      setCurrents();
+      //setLists(_sortIndex, false);
+      setScrollPane(_scrollPane.getPreferredSize());
+      _buttonsPanel.getComponent(1).setEnabled(true);
+      setLists(_sortIndex, true);
+    }//end if (e.getSource().equals(_typeCombo))
+    //if sort button
+    /*
     if (e.getSource().equals(_sortButton)){
       if (_sortIndex == 0){
         _sortIndex = 1;
@@ -298,15 +327,16 @@ public class SectionDlg extends JDialog implements ActionListener{
         _sortButton.setText(DConst.SORT_BY_MATRICUL);
       }
       setLists(_sortIndex, true);
-    }//end if (e.getSource().equals(_sortButton))
+    }//end if (e.getSource().equals(_sortButton))*/
     //if Button CANCEL is pressed
     if (command.equals(_buttonsNames[2]))
       dispose();
     //if Button APPLY is pressed
     if (command.equals(_buttonsNames[1])){
       setStudentsInGroups();
-      _buttonsPanel.getComponent(1).setEnabled(false);
-      _sortButton.setEnabled(true);
+      //_buttonsPanel.getComponent(1).setEnabled(false);
+      //_sortButton.setEnabled(true);
+      _sortCombo.setEnabled(true);
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
@@ -323,16 +353,17 @@ public class SectionDlg extends JDialog implements ActionListener{
       if (command.equals(_arrowsNames[1])){
         if (_currentAssignedGroup > -1){
           listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true, _sortIndex);
-          _buttonsPanel.getComponent(1).setEnabled(true);
-          _sortButton.setEnabled(false);
+          //_buttonsPanel.getComponent(1).setEnabled(true);
+          _sortCombo.setEnabled(false);
           _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
         }
       }
       else{
         if (_currentAssignedGroup > -1){
           listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup], DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
-          _buttonsPanel.getComponent(1).setEnabled(true);
-          _sortButton.setEnabled(false);
+          //_buttonsPanel.getComponent(1).setEnabled(true);
+          //_sortButton.setEnabled(false);
+          _sortCombo.setEnabled(false);
         }
       }
       //SetText for the JLabel containing the number of elements in a group
@@ -577,4 +608,12 @@ public class SectionDlg extends JDialog implements ActionListener{
     s = (StudentAttach)_students.getResource(studentKey).getAttach();
     return s;
   }//end method
+
+   private Vector buildSortVector() {
+     Vector v = new Vector();
+     v.add(DConst.SORT_BY_NAME);
+     v.add(DConst.SORT_BY_MATRICUL);
+     v.add(DConst.SORT_BY_PROGRAM);
+     return v;
+   }
 }//end class

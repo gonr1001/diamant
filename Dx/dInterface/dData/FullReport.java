@@ -88,28 +88,40 @@ public class FullReport extends ViewReport implements ActionListener {
   * */
   private Vector buildAllOptionsVector() {
     Vector v = new Vector();
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_TYPE_NAME_L), DConst.R_TYPE_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_SECTION_NAME_L), DConst.R_SECTION_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_DURATION_L), DConst.R_DURATION));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_BEGIN_HOUR_L), DConst.R_ACTIVITY_BEGIN_HOUR));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_END_HOUR_L), DConst.R_ACTIVITY_END_HOUR));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_INSTRUCTOR_NAME_L), DConst.R_INSTRUCTOR_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_STUDENT_SIZE_L), DConst.R_STUDENT_SIZE_NAME));
+    v.add(new DXValue(0,
+    new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME)));
+    v.add(new DXValue(1,
+                      new FieldRecord(Integer.parseInt(DConst.R_TYPE_NAME_L), DConst.R_TYPE_NAME)));
+   v.add(new DXValue(2,
+                     new FieldRecord(Integer.parseInt(DConst.R_SECTION_NAME_L), DConst.R_SECTION_NAME)));
+    v.add(new DXValue(3,
+                      new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
+    v.add(new DXValue(4,
+                      new FieldRecord(Integer.parseInt(DConst.R_DURATION_L), DConst.R_DURATION)));
+    v.add(new DXValue(5,
+                      new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
+    v.add(new DXValue(6,
+                      new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME)));
+    v.add(new DXValue(7,
+                      new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_BEGIN_HOUR_L), DConst.R_ACTIVITY_BEGIN_HOUR)));
+    v.add(new DXValue(8,
+                      new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_END_HOUR_L), DConst.R_ACTIVITY_END_HOUR)));
+    v.add(new DXValue(9,
+                      new FieldRecord(Integer.parseInt(DConst.R_INSTRUCTOR_NAME_L), DConst.R_INSTRUCTOR_NAME)));
+   v.add(new DXValue(10,
+                     new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME)));
+    v.add(new DXValue(11,
+                      new FieldRecord(Integer.parseInt(DConst.R_STUDENT_SIZE_L), DConst.R_STUDENT_SIZE_NAME)));
     return v;
   }
 
-  private Vector getOptions(Vector opt) {
+  /*private Vector getOptions(Vector opt) {
     Vector v = new Vector();
     for (int i=0; i< opt.size(); i++)
       v.add(((FieldRecord) opt.get(i))._str);
 
     return v;
-  }
+  }*/
 /*
   public void setImportReport(JTextArea jta){
     jta.setFont(DConst.JLISTS_FONT);

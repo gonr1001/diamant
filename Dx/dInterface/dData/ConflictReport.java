@@ -77,7 +77,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
     }
   }
 /*
-  *_conflictsReport is a string where each line contains more informations separeted
+  *_conflictsReport is a string where each line contains more informations separated
   * by a ";" separator
   * token number 0= day number, 1= day name, 2= sequence Id, 3= period id, 4= period begin hour
   * 5= first event in conflict, 6= event in conflict with the first,
@@ -86,60 +86,49 @@ public class ConflictReport extends ViewReport implements ActionListener {
   * */
   private Vector buildAllOptionsVector() {
     Vector v = new Vector();
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER));
+    /*v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_SEQUENCE_ID_L), DConst.R_SEQUENCE_ID));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), ""));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN_H));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_EVENT1_ID_L), DConst.R_EVENT1_ID));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_EVENT2_ID_L), DConst.R_EVENT2_ID));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_NUMBER_OF_CONFLICTS_L), DConst.R_NUMBER_OF_CONFLICTS));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_TYPE_OF_CONFLICT_L), DConst.R_TYPE_OF_CONFLICT));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_ELEMENTS_IN_CONFLICT_L), DConst.R_ELEMENTS_IN_CONFLICT));
-      /*     "0", DConst.R_STUDENT_CONFLICT,
-           "1", DConst.R_ROOM_CONFLICT,
-           "2", DConst.R_INSTRUCTOR_CONFLICT
-          */
+*/
+       v.add(new DXValue(0,
+              new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
+        v.add(new DXValue(1,
+              new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME)));
+        v.add(new DXValue(2,
+              new FieldRecord(Integer.parseInt(DConst.R_SEQUENCE_ID_L), DConst.R_SEQUENCE_ID)));
+        //v.add(new DXValue(3,
+         //     new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
+        v.add(new DXValue(4,
+              new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN_H)));
+        v.add(new DXValue(5,
+        new FieldRecord(Integer.parseInt(DConst.R_EVENT1_ID_L), DConst.R_EVENT1_ID)));
+        v.add(new DXValue(6,
+            new FieldRecord(Integer.parseInt(DConst.R_EVENT2_ID_L), DConst.R_EVENT2_ID)));
+        v.add(new DXValue(7,
+         new FieldRecord(Integer.parseInt(DConst.R_NUMBER_OF_CONFLICTS_L), DConst.R_NUMBER_OF_CONFLICTS)));
+        v.add(new DXValue(8,
+        new FieldRecord(Integer.parseInt(DConst.R_TYPE_OF_CONFLICT_L), DConst.R_TYPE_OF_CONFLICT)));
+    v.add(new DXValue(9,
+    new FieldRecord(Integer.parseInt(DConst.R_ELEMENTS_IN_CONFLICT_L), DConst.R_ELEMENTS_IN_CONFLICT)));
+
     return v;
   }
 
-  private Vector getOptions(Vector opt) {
+/*  private Vector getOptions(Vector opt) {
     Vector v = new Vector();
     for (int i=0; i< opt.size(); i++)
-      v.add(((FieldRecord) opt.get(i))._str);
-
+      //v.add(((FieldRecord) opt.get(i))._str);
+      v.add((((FieldRecord)((DXValue) opt.get(i)).getObjectValue())._str));
     return v;
-  }
-/*
-  public void setImportReport(JTextArea jta){
-    jta.setFont(DConst.JLISTS_FONT);
-    jta.setText("Rapport d'importation");
-    jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
+  }*/
 
-    // enseignants
-    jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
-    Vector setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("2");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-
-    //locaux
-    jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("3");
-    for (int i=0; i< setOfErrors.size(); i++) {
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    }
-    //etudiants
-    jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("1");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
-    jta.setCaretPosition(0);
-  }
-*/
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if "Option" button
