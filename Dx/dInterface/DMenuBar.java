@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.78 $  $Date: 2003-10-06 15:15:07 $
+ * Title: DMenuBar $Revision: 1.79 $  $Date: 2003-10-07 23:07:23 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.78 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.79 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -32,6 +32,7 @@ import javax.swing.JMenu;
 
 import dInterface.dAffectation.*;
 import dInterface.dData.*;
+import dInterface.dAlgorithms.*;
 import dInterface.dTimeTable.NewTTExCmd;
 import dInterface.dTimeTable.NewTTCyCmd;
 import dInterface.dTimeTable.OpenTTCmd;
@@ -92,8 +93,8 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolMEventsModif;
 
   // the optimisation menus
-  private CmdMenu _mOpti,_mInit;
-  private boolean _boolMOpti, _boolMInit;
+  private CmdMenu _mOpti,_mInit, _mFirstAlgo;
+  private boolean _boolMOpti, _boolMInit, _boolFirstAlgo;
 
   //the report menus
   private CmdMenu _mReport;
@@ -337,6 +338,13 @@ public class DMenuBar extends JMenuBar{
     _mInit.setCommand(new InitialAffectCmd(_dApplic));
     _mInit.addActionListener(_dApplic);
     _optimisation.add(_mInit);
+
+    // First Algo Item in menu Optimisation.
+    _mFirstAlgo = new CmdMenu(DConst.FIRSTALGORITHM);
+    _mFirstAlgo.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _mFirstAlgo.setCommand(new AlgorithmsCmd());
+    _mFirstAlgo.addActionListener(_dApplic);
+    _optimisation.add(_mFirstAlgo);
 
     /*_mOpti = new CmdMenu(DConst.PLAF_M);
     _mOpti.setFont(new java.awt.Font(_mfont, _font, _nPT));

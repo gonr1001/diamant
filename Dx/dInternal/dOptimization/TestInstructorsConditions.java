@@ -67,7 +67,7 @@ public class TestInstructorsConditions  implements Condition{
     }
     //return 0;
     //}// end if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1)
-    return -1;
+    return number;
   }
 
   /**

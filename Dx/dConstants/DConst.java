@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.59 $  $Date: 2003-10-07 14:24:22 $
+ * Title: DConst $Revision: 1.60 $  $Date: 2003-10-07 23:07:24 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.59 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.60 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -131,6 +131,7 @@ public class DConst {
   //Optimization menu
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
   public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale
+  public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Affectation Initiale
   //Report menu
   public final static String REPORT = res.getString("ReportM");//Rapports
   //Preferences menu

@@ -20,7 +20,7 @@ public class TestConditions {
 
  private StudentsConflictsMatrix _matrix;
  private DModel _dm;
- private Vector _testToRun = new Vector();
+ private Vector _testToRun = new Vector(1);
  private boolean _matrixIsBuilded= false;
  /**
   * Constructor
@@ -87,7 +87,7 @@ public class TestConditions {
     * @param operation
     * @return
     */
-  public boolean addOrRemEventInTTs(TTStructure tts, Resource event, int operation){
+  public int addOrRemEventInTTs(TTStructure tts, Resource event, int operation){
      return StandardAddOrRemEventInTTs(tts,event, operation);
    }
 
@@ -97,7 +97,7 @@ public class TestConditions {
     * @param operation
     * @return
     */
-   public boolean addOrRemEventInTTs( Resource event, int operation){
+   public int addOrRemEventInTTs( Resource event, int operation){
      return StandardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation);
    }
 
@@ -108,11 +108,12 @@ public class TestConditions {
    * @param int operation -1= remove event, 0= do nothing, 1= add event
    * @return
    */
-  private boolean StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation){
-    StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
-    String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
-      eventKey.nextToken(),eventKey.nextToken()};
-    if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
+  private int StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation){
+    int numberOfConflicts=0;
+    //StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
+    /*String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
+      eventKey.nextToken(),eventKey.nextToken()};*/
+    if(((EventAttach)event.getAttach()).getAssignState()){//if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
       long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
@@ -122,14 +123,13 @@ public class TestConditions {
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
-            cond.executeTest(per,event.getID(),operation);
+            numberOfConflicts+=cond.executeTest(per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
           ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
-        return true;
       }// end if (tts.getCurrentCycle().isPeriod
     }// end if (_dm.getSetOfActivities().getUnity(
-    return false;
+    return numberOfConflicts;
   }
 
   /**
@@ -143,6 +143,14 @@ public class TestConditions {
      case -1: return false;
    }
     return true;
+  }
+
+  /**
+   * get all test to run
+   * @return
+   */
+  public Vector getTestToRun(){
+    return _testToRun;
   }
 
 }// end class

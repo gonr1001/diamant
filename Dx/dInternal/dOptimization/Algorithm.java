@@ -9,6 +9,7 @@ package dInternal.dAlgorithms;
  * @version 1.0
  */
 
+import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dConditionsTest.*;
 import java.util.Vector;
@@ -19,6 +20,6 @@ public interface Algorithm {
   /**
    *
    */
-  public void build(TTStructure tts, Vector vectorOfEvents);
+  public void build(DModel dm, Vector vectorOfEvents);
 
 }

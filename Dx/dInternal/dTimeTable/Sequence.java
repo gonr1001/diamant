@@ -9,6 +9,7 @@ import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
 import org.w3c.dom.Document;
+import dInternal.dUtil.DXValue;
 
 public class Sequence extends DXObject{
 
@@ -133,11 +134,14 @@ public class Sequence extends DXObject{
    * return the next period and increment _currentPeriodIndex
    * @return
    */
-  public Period getNextPeriod(){
+  public Period getNextPeriod(DXValue seqVal){
+    Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex++).getAttach();
     if(_currentPeriodIndex>= _setOfPeriods.size()){
       _currentPeriodIndex=0;
+      seqVal.setIntValue(seqVal.getIntValue()+1);
+      //seqIndex++;
     }
-    return (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex++).getAttach();
+    return period;
   }
 
 

@@ -149,6 +149,7 @@ public class EventAttach extends DXObject {
   /**
    * set events keys by the appropriate field
    * @param field 0= set principal key, 1= set secondary key1, 2= set secondary key2
+   * 4= tts Key
    * @param value
    */
   public void setKey(int field, String value){

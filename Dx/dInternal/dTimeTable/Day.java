@@ -9,6 +9,7 @@ import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
 import org.w3c.dom.Document;
+import dInternal.dUtil.DXValue;
 
 public class Day extends DXObject{
 
@@ -137,14 +138,20 @@ public class Day extends DXObject{
   }
 
   /**
-   * return the  period and increment _currentPeriodIndex
+   * return the  period and increment _currentSequenceIndex
    * @return
    */
-  public Period getNextPeriod(){
+  public Period getNextPeriod(DXValue dayValue){
+    DXValue seqValue= new DXValue();
+    seqValue.setIntValue(_currentSequenceIndex);
+    Period period=  ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex)
+             .getAttach()).getNextPeriod(seqValue);
+     _currentSequenceIndex= seqValue.getIntValue();
     if(_currentSequenceIndex>= _setOfSequences.size()){
-     _currentSequenceIndex=0;
-    }
-    return ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex).getAttach()).getNextPeriod();
+      _currentSequenceIndex=0;
+      dayValue.setIntValue(dayValue.getIntValue()+1);
+    }// end if(_currentSequenceIndex>= _setOfSequences.size())
+    return period;
   }
 
 

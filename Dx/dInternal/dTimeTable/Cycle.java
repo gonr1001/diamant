@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
 public class Cycle extends DXObject{
 
   //private Day _currentDay;
-  private int _currentDayIndex=0;
+  //private int _currentDayIndex=0;
 
 
 
@@ -100,6 +100,13 @@ public class Cycle extends DXObject{
   public Day getCurrentDay(){
     return getDayByIndex(_currentDayIndex) ;
   }
+
+  /**
+   * */
+  /*public Day getFistDay(){
+    return getDayByIndex(0) ;
+  }*/
+
 
   /**
   * */
@@ -186,7 +193,7 @@ public class Cycle extends DXObject{
   * */
  public Period getFirstPeriod(){
    int maxPer=0;
-     Day day =(Day)this.getCurrentDay();//cycle.getSetOfDays().getResource(1).getAttach();
+     Day day =(Day)this._setOfDays.getResourceAt(0).getAttach();//cycle.getSetOfDays().getResource(1).getAttach();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(0).getAttach();
        return (Period)seq.getSetOfPeriods().getResourceAt(0).getAttach();
@@ -465,9 +472,29 @@ public Period getLastPeriod(){
     }//end for (int i=0; i< getSetOfDays().size(); i++)
   }
 
+  /**
+   * return the  period and increment _currentDayIndex
+   * @return
+   */
+  public Period getNextPeriod(int steps){
+    DXValue dayValue= new DXValue();
+    Period period= getCurrentDay().getCurrentSequence().getCurrentPeriod();
+    for (int i=0; i< steps; i++){
+      dayValue.setIntValue(_currentDayIndex);
+      //System.out.println("------ Day: "+_currentDayIndex);//debug
+      period= ((Day)_setOfDays.getResourceAt(_currentDayIndex).getAttach()).getNextPeriod(dayValue);
+      _currentDayIndex= dayValue.getIntValue();
+      if(_currentDayIndex>= _setOfDays.size()){
+        _currentDayIndex=0;
+      }
+    }
+    return period;
+  }
+
   private SetOfResources _setOfDays;
   private int _periodLength;
   private String _error = "";
+  private int _currentDayIndex=0;
   private String _errorMessage = "XML file is corrupted";
   static final String _TAGITEM="TTday";
   static final String _TAGITEM1="dayRef";
