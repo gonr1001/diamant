@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.8 $  $Date: 2003-03-10 16:31:55 $
+ * Title: DDocument $Revision: 1.9 $  $Date: 2003-03-10 17:28:41 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -40,7 +40,7 @@ import java.util.StringTokenizer;//debug
 
 public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;
-  private DView _dView;
+  private DApplication _dApplic;
 
   /**
    */
@@ -52,7 +52,7 @@ public class DDocument implements ActionListener, DModelListener{
   //private TTParameters _ttParameters;
 
   //-------------------------------------------
-  public DDocument(DView dView) {
+  public DDocument(DApplication dApplic) {
         System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the _jif */
@@ -66,7 +66,7 @@ public class DDocument implements ActionListener, DModelListener{
   /* MIN_WIDTH is needed to ajdust the minimum
    * width of the _jif */
   final int MAX_WIDTH = 1024;
-  _dView = dView;
+  _dApplic = dApplic;
     //_mediator = mediator;
     _dm = new DModel();
     _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
@@ -81,8 +81,8 @@ public class DDocument implements ActionListener, DModelListener{
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
     _jif.pack();
-    _dView.getDesktop().add(_jif, new Integer(1));
-    _dView.getDesktop().getDesktopManager().maximizeFrame(_jif);
+    _dApplic.getDesktop().add(_jif, new Integer(1));
+    _dApplic.getDesktop().getDesktopManager().maximizeFrame(_jif);
     _jif.setVisible(true);
   } // end constructor DDocument()
 
@@ -131,7 +131,7 @@ public class DDocument implements ActionListener, DModelListener{
 
     public void actionPerformed(ActionEvent  e) {
     if (e.getSource() instanceof CommandHolder) {
-     ((CommandHolder) e.getSource()).getCommand().execute(_dView.getJFrame());
+     ((CommandHolder) e.getSource()).getCommand().execute(_dApplic);
     }
     else {
     System.out.println("I do not know what to do, please help me (Action Performed)");

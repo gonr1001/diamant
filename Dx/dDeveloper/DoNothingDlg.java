@@ -1,6 +1,6 @@
 /**
  *
- * Title: DoNothingDlg $Revision: 1.1.1.1 $  $Date: 2003-01-23 17:51:40 $
+ * Title: DoNothingDlg $Revision: 1.2 $  $Date: 2003-03-10 17:28:41 $
  * Description: DoNothingDlg is created by DoNotingCmd
  *              The dialog is displayed nothing is done.
  *              This class is used until
@@ -16,7 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1.1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -26,6 +26,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.util.ResourceBundle;
+import dInterface.DApplication;
 
 /**
  *
@@ -48,5 +49,12 @@ public class DoNothingDlg extends JDialog {
                                        STR,
                                        str,
                                        JOptionPane.INFORMATION_MESSAGE );
+   } // end constructor
+
+   public DoNothingDlg(DApplication dApplic, String str) {
+   JOptionPane.showMessageDialog( dApplic.getJFrame(),
+                                    STR,
+                                    str,
+                                    JOptionPane.INFORMATION_MESSAGE );
    } // end constructor
 } /* end class DoNothingDlg */

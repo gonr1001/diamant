@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFDlg $Revision: 1.1 $  $Date: 2003-02-20 11:07:28 $
+ * Title: PLAFDlg $Revision: 1.2 $  $Date: 2003-03-10 17:28:42 $
  * Description: PLAFDlg is a class used to display preferences
  *              Dialogs.
  *              Look and Feel
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -44,7 +44,7 @@ import javax.swing.JOptionPane;
  *
  */
 public class PLAFDlg extends JDialog implements ActionListener {
-  private DView _dView;
+  private DApplication _dApplic;
   private JComboBox _lafList;
 
   private final String METAL_LAF = "MetalLookAndFeel";
@@ -57,9 +57,9 @@ public class PLAFDlg extends JDialog implements ActionListener {
   private final String NAME_MOTIF = "CDE/Motif";
   private final String NAME_WINDOWS = "Windows";
 
-  public PLAFDlg(DView dView, String title) {
+  public PLAFDlg(DApplication dApplic, String title) {
     //_jFrame = jFrame;
-    _dView = dView;
+    _dApplic = dApplic;
     _lafList = createsLAFList();
     JPanel jp = new JPanel();
     jp.setLayout( new BorderLayout());
@@ -68,7 +68,7 @@ public class PLAFDlg extends JDialog implements ActionListener {
     jp.add(_lafList, BorderLayout.SOUTH);
     JOptionPane jop = new JOptionPane();
     _lafList.addActionListener(this);
-    jop.showMessageDialog(_dView.getJFrame(), jp, title,  JOptionPane.PLAIN_MESSAGE);
+    jop.showMessageDialog(_dApplic.getJFrame(), jp, title,  JOptionPane.PLAIN_MESSAGE);
   }
 
   public void actionPerformed( ActionEvent ae ) {
@@ -85,9 +85,9 @@ public class PLAFDlg extends JDialog implements ActionListener {
         lnfName = WINDOWS;
       }
     } //end if
-    _dView.setLAF(lnfName);
-    _dView.getPreferences().setLAFName(lnfName);
-    _dView.getPreferences().save();
+    _dApplic.setLAF(lnfName);
+    _dApplic.getPreferences().setLAFName(lnfName);
+    _dApplic.getPreferences().save();
   } // end actionPerformed
 
 

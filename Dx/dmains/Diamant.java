@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.5 $  $Date: 2003-01-31 16:42:17 $
+ * Title: ClassName $Revision: 1.6 $  $Date: 2003-03-10 17:28:41 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,13 +16,13 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 
 
-import dInterface.DView;
+import dInterface.DApplication;
 import lineInterface.DILigne;
 
 /**
@@ -45,9 +45,9 @@ public class DRun {
     public DRun() {}
 
     /**
-      * Just creating an instance of the DView
+      * Just creating an instance of the DApplication
       * or a textual interface
-      * When working with a DView instance
+      * When working with a DApplication instance
       * doIt takes in chage the application
       *
       * When working with the textual interface
@@ -58,7 +58,7 @@ public class DRun {
     public static void main(String[] args) {
         if (GUI) {
           System.out.println("hello_with_a_GUI");
-          DView _dv = new DView();
+          DApplication _dApplic = new DApplication();
         }
         else {
             System.out.println("hello");

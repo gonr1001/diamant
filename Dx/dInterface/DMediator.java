@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.3 $  $Date: 2003-02-20 15:13:33 $
+ * Title: DMediator $Revision: 1.4 $  $Date: 2003-03-10 17:28:41 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -26,17 +26,17 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 public class DMediator {
-  private DView _dView;
+  private DApplication _dApplic;
   private Vector _documents;
 
-  public DMediator(DView dView) {
-    _dView= dView;
+  public DMediator(DApplication dApplic) {
+    _dApplic = dApplic;
     _documents = new Vector();
   } // end Mediator
 
   //-------------------------------------------
   public void addDoc() { //MouseApp map, MouseMoveApp mvap){
-    DDocument currentDoc = new DDocument(_dView);//, map, mvap);
+    DDocument currentDoc = new DDocument(_dApplic);//, map, mvap);
     _documents.addElement(currentDoc);
     currentDoc = null;
   } //end addDoc

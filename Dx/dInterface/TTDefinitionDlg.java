@@ -108,8 +108,10 @@ class TTDefinitionDlg extends JDialog
   private Vector butVect;    // JButton
   private Vector periodVect;    // DPeriod
   //private DDocument _dd;
-  private JFrame _jFrame;
-  private DMediator _mediator;
+
+  private DApplication _dApplic;
+  //private JFrame _jFrame;
+  //private DMediator _mediator;
   private int [] _a = new int [2];
 
   // used at itemStateChanged so that the method is not called from ActionEvent
@@ -126,11 +128,14 @@ class TTDefinitionDlg extends JDialog
    * @param type Specify the type of time table to be created.  Use
    * either CYCLE or EXAM.
    */
-  public TTDefinitionDlg(JFrame jFrame, String str, DMediator mediator) {
-    super(jFrame, true);
+  public TTDefinitionDlg(DApplication dApplic, String str) {
+    super(dApplic.getJFrame(), true);
+    _dApplic = dApplic;
+    //super(jFrame, true);
+
     //_doc = doc;
-    _jFrame = jFrame;
-    _mediator = mediator;
+    //_jFrame = jFrame;
+    //_mediator = mediator;
     this.type = type;
     try {
       if ( type == CYCLE ) {
@@ -143,7 +148,7 @@ class TTDefinitionDlg extends JDialog
       }
       jbInit();
       pack();
-      setLocationRelativeTo(_jFrame);
+      setLocationRelativeTo(_dApplic.getJFrame());
       setVisible(true);
     }
     catch(Exception e) {
@@ -160,10 +165,10 @@ class TTDefinitionDlg extends JDialog
    * @param type Specify the type of time table to be created.  Use
    * either CYCLE or EXAM.
    */
-  public TTDefinitionDlg(JFrame owner,String str, String s) {
-    super(owner, true);
+  public TTDefinitionDlg(DApplication applic, String str, String s) {
+    super(applic.getJFrame(), true);
     //_doc = doc;
-    _jFrame =owner;
+    //_jFrame =owner;
 /*    if (TT.isCycle)
       type = CYCLE;
     else
@@ -186,7 +191,7 @@ class TTDefinitionDlg extends JDialog
     setTitle( MES00 ) ; //_doc._projectName);
     setResizable(false);
 
-     _mediator.getCurrentDoc().getDM().addDModelListener(this);
+    _dApplic.getDMediator().getCurrentDoc().getDM().addDModelListener(this);
     panelC = new JPanel(gridbag);
     //infoPanel
     infoPanel = new JPanel(new GridLayout(0, 1));
@@ -361,7 +366,7 @@ class TTDefinitionDlg extends JDialog
       _a[0]= 2;
       _a[1]= 2;
       setTitle( "hello" + _a[0] + _a[1]);
-      _mediator.getCurrentDoc().getDM().setParameters(_a);
+      _dApplic.getDMediator().getCurrentDoc().getDM().setParameters(_a);
     }
 
     if (command.equals( BUT00 )) {  // Ok

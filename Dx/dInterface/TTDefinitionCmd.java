@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutCmd $Revision: 1.2 $  $Date: 2003-03-10 16:31:56 $
+ * Title: AboutCmd $Revision: 1.3 $  $Date: 2003-03-10 17:28:42 $
  * Description: AboutCmd is class used as the command
  *              which displays the About dialog
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -34,13 +34,14 @@ public class TTDefinitionCmd implements Command {
     private DMediator _mediator;
     private JFrame _jFrame;
 
-    public TTDefinitionCmd (JFrame jFrame, DMediator mediator) {
-        _jFrame = jFrame;
-        _mediator = mediator;
+    public TTDefinitionCmd (DApplication dApplic, DMediator mediator) {
+
+        //_jFrame = jFrame;
+        //_mediator = mediator;
     } // end AboutCmd
     //------------------------------
-    public void execute(JFrame jFrame) {
-        new TTDefinitionDlg(jFrame, DConst.ABOUT_TD + DConst.APP_NAME, _mediator);
+    public void execute(DApplication dApplic) {
+        new TTDefinitionDlg(dApplic, DConst.ABOUT_TD + DConst.APP_NAME);
     } // end execute
 } /* end class AboutCmd */
 
