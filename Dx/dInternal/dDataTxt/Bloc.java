@@ -28,8 +28,8 @@ public class Bloc extends DXObject{
   private ResourceList _activitiesBefore;
   /**activities that must be placed after this bloc*/
   private ResourceList _activitiesAfter;
-  /**all weeks where bloc is assigned*/
-  private ResourceList _weekAssignmentList;
+  /**all cycles where bloc is assigned*/
+  private ResourceList _cycleAssignmentList;
 
   /**
    * Constructor
@@ -38,7 +38,7 @@ public class Bloc extends DXObject{
     _preferFunctionRoomsList = new ResourceList(0);
     _activitiesBefore = new ResourceList(0);
     _activitiesAfter = new ResourceList(0);
-    _weekAssignmentList = new ResourceList(0);
+    _cycleAssignmentList = new ResourceList(0);
   }
 
   /**
@@ -75,22 +75,31 @@ public class Bloc extends DXObject{
   }
 
   /**
-   * add a week for period assignment
-   * @param String the week ID
+   * add a cycle for period assignment
+   * @param String the cycle ID
    * @return boolean the operation result
    * */
-  public boolean addWeekAssignment(String week){
-    Resource weekAss =new Resource(week, new DXObject());
-    return _weekAssignmentList.addResource(weekAss,1);
+  public boolean addCycleAssignment(String cycle){
+    Resource cycleAss =new Resource(cycle, new DXObject());
+    return _cycleAssignmentList.addResource(cycleAss,1);
   }
 
   /**
-   * add a week for period assignment
-   * @param Resource the weekAssignment resource
+   * get a cycle for period assignment
+   * @param String the cycle ID
+   * @return Resource the operation result
+   * */
+  public Resource getCycleAssignment(String cycle){
+    return _cycleAssignmentList.getResource(cycle);
+  }
+
+  /**
+   * add a cycle for period assignment
+   * @param Resource the cycleAssignment resource
    * @return boolean the operation result
    * */
-  public boolean addWeekAssignment(Resource weekAss){
-    return _weekAssignmentList.addResource(weekAss,1);
+  public boolean addCycleAssignment(Resource cycleAss){
+    return _cycleAssignmentList.addResource(cycleAss,1);
   }
   /**
    * add activity in activity before list
@@ -150,12 +159,12 @@ public class Bloc extends DXObject{
   }
 
   /**
-   * remove a week from a bloc
-   * @param String the week ID
+   * remove a cycle from a bloc
+   * @param String the cycle ID
    * @return boolean the operation result
    * */
-  public boolean removeWeekAssignment(String week){
-    return _weekAssignmentList.removeResource(week);
+  public boolean removeCycleAssignment(String cycle){
+    return _cycleAssignmentList.removeResource(cycle);
   }
 
   /**

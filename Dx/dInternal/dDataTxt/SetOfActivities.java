@@ -11,12 +11,12 @@ package dInternal;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
+import dResources.DXToolsMethods;
 
 public class ActivitiesList extends ResourceList{
 
   /**activities in text format*/
   private byte[] _dataloaded;
-
   /**
    * Constructor
    * */
@@ -56,12 +56,12 @@ public class ActivitiesList extends ResourceList{
           position = 2;
           break;
         case 2://activity visibility
-          position = 2;
-          isIntValue(token.trim(),"activity name at line: "+line);
+          DXToolsMethods.checkIfBelongsValues(token,"0 1","format of activity visibility at line: "
+                +line,"ActivityList");
           position = 3;
           break;
         case 3://number of activities
-          isIntValue(token.trim(),"number of activities at line: "+line);
+          DXToolsMethods.isIntValue(token.trim(),"number of activities at line: "+line,"ActivityList");
           position = 2;
           break;
         case 4:// teachers' names
@@ -79,69 +79,70 @@ public class ActivitiesList extends ResourceList{
         case 6:// empty line
           position = 7;
           break;
-        case 7:// empty line
+        case 7://number of blocs
+          DXToolsMethods.isIntValue(token.trim(),"number of blocs at line: "+line,"ActivityList");
           position = 8;
           break;
-        case 8://number of blocs
-          isIntValue(token.trim(),"number of blocs at line: "+line);
-          position = 2;
-          break;
-        case 9://duration of blocs
+        case 8://duration of blocs
           stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
           while(stLine.hasMoreElements())
-            isIntValue(stLine.nextToken(),"duration of blocs at line: "+line);
+            DXToolsMethods.isIntValue(stLine.nextToken(),"duration of blocs at line: "+line,"ActivityList");
+          position = 9;
+          break;
+        case 9://days and periods of blocs
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+            DXToolsMethods.isIntValue(stLine.nextToken(),"days and times of blocs at line: "+
+                                      line,"ActivityList");
           position = 10;
           break;
-        case 10://days and times of blocs
+        case 10://fixed rooms
           stLine = new StringTokenizer(token);
-          while(stLine.hasMoreElements())
-            isIntValue(stLine.nextToken(),"days and times of blocs at line: "+line);
-          position = 11;
-          break;
-        case 11://fixed rooms
-          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
-            if(!sousString.equals("0") || !sousString.equals("1")){
-              new FatalProblemDlg("Wrong format of fixed rooms in the activity file:" +
-                                  "\n" + "I was in activitiesList class and in analyseTokens method ");
-              System.exit(1);
-            }
+            DXToolsMethods.checkIfBelongsValues(token,"0 1","format of fixed rooms at line: "
+                +line,"ActivityList");
           }
-          position = 12;
+          position = 11;
           break;
-        case 12://Preferred rooms
-          if (token.length() == 0){
+        case 11://Preferred rooms
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+          if (stLine.nextToken().length() == 0){
             new FatalProblemDlg(
             "Wrong name of preferred rooms at line: "+line+  "in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ");
           System.exit(1);
           }
+          position = 12;
+          break;
+        case 12://type of rooms
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+            DXToolsMethods.isIntValue(stLine.nextToken(),"type of rooms: "+line,"ActivityList");
           position = 13;
           break;
-        case 13://type of rooms
+        case 13://idem
           stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
           while(stLine.hasMoreElements())
-            isIntValue(stLine.nextToken(),"type of rooms: "+line);
+            DXToolsMethods.isIntValue(stLine.nextToken(),"type of rooms: "+line,"ActivityList");
           position = 14;
           break;
-        case 14://idem
+        case 14://pre-affected rooms
           stLine = new StringTokenizer(token);
-          while(stLine.hasMoreElements())
-            isIntValue(stLine.nextToken(),"type of rooms: "+line);
-          position = 15;
-          break;
-        case 15://pre-affected rooms
-          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
-            if(!sousString.equals("0") || !sousString.equals("1")){
-              new FatalProblemDlg("Wrong format of pre-affected rooms in the activity file:" +
-                                  "\n" + "I was in activitiesList class and in analyseTokens method ");
-              System.exit(1);
-            }
+            DXToolsMethods.checkIfBelongsValues(token,"0 1","format of pre-affected rooms at line: "+
+                line,"ActivityList");
           }
-          position = 0;
+          position = beginPosition;
           break;
 
       }// end switch (position)
@@ -157,6 +158,128 @@ public class ActivitiesList extends ResourceList{
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
   public void buildActivitiesList(int beginPosition){
+    String token;
+    String sousString; //auxiliar String for stocking a substring of a line
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
+    int state=0;
+    int position=beginPosition;
+    int line=0;
+    int numberOfBloc=0;
+    String activityName="";
+    String instructorName="";
+    Activity activity= new Activity();
+    Group group= new Group();
+    while (st.hasMoreElements()){
+      token = st.nextToken();
+      line++;
+      switch (position){
+        case 0:// empty line
+          position = 1;
+          break;
+        case 1:// activity name
+          activityName= token;
+          position = 2;
+          break;
+        case 2://activity visibility
+          activity = new Activity();
+          //Resource nature;
+          if (Integer.parseInt(token.trim())==1)
+            activity.setActivityVisibility(true);
+          activity.addNature(activityName.substring(_COURSENAMELENGTH,_COURSENAMELENGTH+1));
+          //nature = activity.getNature(activityName.substring(_COURSENAMELENGTH,_COURSENAMELENGTH+1));
+          position = 3;
+          break;
+        case 3://number of activities
+          position = 2;
+          break;
+        case 4:// teachers' names
+          instructorName =token;
+          position = 5;
+          break;
+        case 5:// empty line
+          position = 6;
+          break;
+        case 6:// empty line
+          position = 7;
+          break;
+        case 7://number of blocs
+          group= new Group();
+          numberOfBloc = Integer.parseInt(token.trim());
+          for (int i=1; i<= numberOfBloc; i++)
+            group.addBloc(Integer.toString(i));
+          position = 8;
+          break;
+        case 8://duration of blocs
+          stLine = new StringTokenizer(token);
+          int i=1;
+          Resource bloc;
+          if (stLine.countTokens()== numberOfBloc)
+           while(stLine.hasMoreElements()){
+             bloc= group.getBloc(Integer.toString(i));
+             i++;
+           }
+
+          position = 9;
+          break;
+        case 9://days and periods of blocs
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+            DXToolsMethods.isIntValue(stLine.nextToken(),"days and times of blocs at line: "+
+                                      line,"ActivityList");
+          position = 10;
+          break;
+        case 10://fixed rooms
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements()){
+            sousString = stLine.nextToken();
+            DXToolsMethods.checkIfBelongsValues(token,"0 1","format of fixed rooms at line: "
+                +line,"ActivityList");
+          }
+          position = 11;
+          break;
+        case 11://Preferred rooms
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+          if (stLine.nextToken().length() == 0){
+            new FatalProblemDlg(
+            "Wrong name of preferred rooms at line: "+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ");
+          System.exit(1);
+          }
+          position = 12;
+          break;
+        case 12://type of rooms
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+            DXToolsMethods.isIntValue(stLine.nextToken(),"type of rooms: "+line,"ActivityList");
+          position = 13;
+          break;
+        case 13://idem
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements())
+            DXToolsMethods.isIntValue(stLine.nextToken(),"type of rooms: "+line,"ActivityList");
+          position = 14;
+          break;
+        case 14://pre-affected rooms
+          stLine = new StringTokenizer(token);
+          DXToolsMethods.checkIfLineIsEmpty(token, "line is empty at line: "+line,"ActivityList");
+          while(stLine.hasMoreElements()){
+            sousString = stLine.nextToken();
+            DXToolsMethods.checkIfBelongsValues(token,"0 1","format of pre-affected rooms at line: "+
+                line,"ActivityList");
+          }
+          position = beginPosition;
+          break;
+
+      }// end switch (position)
+
+    }// end while (st.hasMoreElements())
 
   }
 
@@ -235,17 +358,6 @@ public class ActivitiesList extends ResourceList{
    return false;
   }
 
-  /**
-   * */
-  private void isIntValue(String value, String message){
-    try{
-      (new Integer (value.trim())).intValue();
-    }catch (NumberFormatException exc){
-      new FatalProblemDlg("Wrong "+message +" in the activity file:" +
-      "\n" + "I was in activitiesList class and in analyseTokens method ");
-      System.exit(1);
-    }
-  }
 
   private int _COURSENAMELENGTH=6;
   private int _ACTIVITYLENGTH=10;

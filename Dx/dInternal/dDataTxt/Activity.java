@@ -16,7 +16,7 @@ public class Activity extends DXObject{
   private String _departement="";//eg. génie electrique
   private String _activityType=""; // eg. informatique
   private int _activitySession=0;//
-  private boolean _activityVisible;//
+  private boolean _activityVisible= false;//
   private ResourceList _natures;
 
 

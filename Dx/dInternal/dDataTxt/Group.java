@@ -68,7 +68,7 @@ public class Group extends DXObject{
    * @param String the ID of the bloc
    * @return Resource the nature object
    * */
-  public Resource getGroup(String id){
+  public Resource getBloc(String id){
     return _blocList.getResource(id);
   }
 

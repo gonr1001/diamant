@@ -10,7 +10,6 @@ package dResources;
  */
 
 public class DXObject extends Object{
-
   public DXObject() {
   }
 
@@ -21,4 +20,5 @@ public class DXObject extends Object{
   public int getSelectedField(int choice){
      return -2;
   }
+
 }
