@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DStateBar $Revision: 1.5 $  $Date: 2003-08-27 09:14:21 $
+ * Title: DStateBar $Revision: 1.6 $  $Date: 2003-10-28 13:26:49 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.6 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -38,15 +38,12 @@ package dInterface;
  */
 
 
-import java.util.Enumeration;
-import java.util.Hashtable;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import javax.swing.BorderFactory;
+
+
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 
 

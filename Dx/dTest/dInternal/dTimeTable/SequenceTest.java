@@ -10,8 +10,7 @@ package dTest.dInternal.dTimeTable;
  */
 
 import junit.framework.*;
-import dInternal.dData.Activity;
-import java.util.Vector;
+
 import java.io.File;
 
 import dInternal.dTimeTable.Period;

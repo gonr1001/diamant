@@ -12,7 +12,7 @@ package dTest.dInternal.dTimeTable;
 import junit.framework.*;
 import java.io.File;
 import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
+
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Sequence;

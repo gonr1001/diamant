@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.33 $  $Date: 2003-10-20 13:51:30 $
+ * Title: ToolBar $Revision: 1.34 $  $Date: 2003-10-28 13:26:49 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -26,7 +26,7 @@ package dInterface;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.lang.Exception;
+
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.36 $  $Date: 2003-09-17 14:03:40 $
+ * Title: DMediator $Revision: 1.37 $  $Date: 2003-10-28 13:26:49 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.37 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -24,7 +24,7 @@ package dInterface;
 import java.util.Vector;
 import java.beans.PropertyVetoException;
 
-import javax.swing.JFrame;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import com.iLib.gDialog.FatalProblemDlg;
@@ -32,8 +32,7 @@ import dInterface.dTimeTable.SaveCmd;
 
 
 
-import dInternal.dTimeTable.TTStructure;
-import dResources.DConst;
+
 
 public class DMediator {
   private DApplication _dApplic;

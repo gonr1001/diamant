@@ -13,7 +13,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DConst;
 import dInternal.dData.SetOfActivities;
-import dInternal.dData.Activity;
+
 import dInternal.dData.Resource;
 import java.util.Vector;
 import java.awt.event.*;
