@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.36 $  $Date: 2003-07-28 13:58:16 $
+ * Title: DConst $Revision: 1.37 $  $Date: 2003-07-28 14:01:01 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -125,13 +125,14 @@ public class DConst {
   //Assign dialogs
   public final static String INST_ASSIGN_TD = res.getString("instAssignTD");//Disponibilité enseignants
   public final static String INST_ASSIGN_D = res.getString("instAssignD");//To be defined, unp
+  public final static String TO_LEFT  = res.getString("toLeft");//««
+  public final static String TO_RIGHT  = res.getString("toRight");//»»
     //ActivityDlg
     public final static String ACT_LIST  = res.getString("actList"); //Liste des activités
     public final static String SHOW  = res.getString("show"); //Aficher
     public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
     public final static String INCLUDED  = res.getString("included");//Inclue(s)
-    public final static String TO_LEFT  = res.getString("toLeft");//««
-    public final static String TO_RIGHT  = res.getString("toRight");//»»
+
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F

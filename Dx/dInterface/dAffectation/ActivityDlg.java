@@ -32,6 +32,8 @@ import dInterface.dUtil.DXTools;
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Activity;
 
+import dResources.DConst;
+
 public class ActivityDlg extends JDialog implements ActionListener {
 
   private DApplication _dApplic;
@@ -40,13 +42,13 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * The JList items choice by the user
    */
   private Object [] _currentActivities = new Object[0];
-  private static String _listAct = "Liste des activités";
-  private static String _showMes = "Afficher";
-  private static String _closeMes = "Fermer";
-  private static String _notIncluded = "Non inclue(s)";
-  private static String _included = "Inclue(s)";
-  private static String _toLeftMes = "««";
-  private static String _toRightMes = "»»";
+  private static String ACTLIST = DConst.ACT_LIST;
+  private static String SHOW = DConst.SHOW;
+  private static String CLOSE = DConst.CLOSE;
+  private static String NOT_INCLUDED = DConst.NOT_INCLUDED;
+  private static String INCLUDED = DConst.INCLUDED;
+  private static String TO_LEFT = DConst.TO_LEFT;
+  private static String TO_RIGHT = DConst.TO_RIGHT;
   /**
    * the vectors containing the activities ID
    */
@@ -67,7 +69,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * @param dApplic The application object (for extracting the JFrame)
    */
   public ActivityDlg(DApplication dApplic) {
-     super(dApplic.getJFrame(), _listAct, true);
+     super(dApplic.getJFrame(), ACTLIST, true);
      _dApplic = dApplic;
      _jd = this;  //to pass this dialog to the EditActivityDlg
      if (_dApplic.getDMediator().getCurrentDoc() != null){
@@ -84,9 +86,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Initialize the dialog
    */
   private void jbInit(){
-    _show = new JButton(_showMes);
+    _show = new JButton(SHOW);
     _show.setPreferredSize(new Dimension(80,22));
-    _cancel = new JButton(_closeMes);
+    _cancel = new JButton(CLOSE);
     _cancel.setPreferredSize(new Dimension(80,22));
     _listsPanel = new JPanel();
     //left panel
@@ -101,7 +103,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     rightSPane.setPreferredSize(new Dimension(150,300));
     rightSPane.getViewport().add(_noVisibleList);
     rightPanel = new JPanel(new BorderLayout());
-    _lNoVisible = new JLabel(_noVisibleVec.size() + " " + _notIncluded);
+    _lNoVisible = new JLabel(_noVisibleVec.size() + " " + NOT_INCLUDED);
     rightPanel.add(_lNoVisible , BorderLayout.NORTH);
     rightPanel.add(rightSPane, BorderLayout.CENTER);
     //right panel
@@ -112,16 +114,16 @@ public class ActivityDlg extends JDialog implements ActionListener {
     leftSPane.setPreferredSize(new Dimension(150,300));
     leftSPane.getViewport().add(_visibleList);
     leftPanel = new JPanel(new BorderLayout());
-    _lVisible = new JLabel(_visibleVec.size() + " " + _included);
+    _lVisible = new JLabel(_visibleVec.size() + " " + INCLUDED);
     leftPanel.add(_lVisible, BorderLayout.NORTH);
     leftPanel.add(leftSPane, BorderLayout.CENTER);
     //buttons «« »» panel
     JPanel _buttonsPanel1 = new JPanel(new BorderLayout());
     _buttonsPanel1.setPreferredSize(new Dimension(50,70));
     //the buttons _toLeft and _toRight
-    _toRight = new JButton(_toRightMes);
+    _toRight = new JButton(TO_RIGHT);
     _toRight.setPreferredSize(new Dimension(50,35));
-    _toLeft = new JButton(_toLeftMes);
+    _toLeft = new JButton(TO_LEFT);
     _toLeft.setPreferredSize(new Dimension(50,35));
     _buttonsPanel1.add(_toRight, BorderLayout.NORTH);
     _buttonsPanel1.add(_toLeft, BorderLayout.SOUTH);
@@ -182,21 +184,21 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    if (command.equals(_closeMes))
+    if (command.equals(CLOSE))
         dispose();
-    if (command.equals(_showMes)){
+    if (command.equals(SHOW)){
       if (_currentActivities.length != 0)
       new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
     }// end if (command.equals("Afficher"))
-    if (command.equals(_toLeftMes) || command.equals(_toRightMes)){
-      if (command.equals(_toLeftMes))
+    if (command.equals(TO_LEFT) || command.equals(TO_RIGHT)){
+      if (command.equals(TO_LEFT))
         DXTools.actionButton(_activities, 3, "false", "true", _noVisibleList, _visibleList);
       else
         DXTools.actionButton(_activities, 3, "true", "false", _visibleList, _noVisibleList);
       _noVisibleVec = _activities.getIDsByField(3, "false");
       _visibleVec = _activities.getIDsByField(3, "true");
-      _lNoVisible.setText(_noVisibleVec.size() + " " + _notIncluded);
-      _lVisible.setText(_visibleVec.size() + " " + _included);
+      _lNoVisible.setText(_noVisibleVec.size() + " " + NOT_INCLUDED);
+      _lVisible.setText(_visibleVec.size() + " " + INCLUDED);
     }
   }//end method
 
