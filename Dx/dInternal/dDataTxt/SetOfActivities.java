@@ -399,7 +399,7 @@ public class SetOfActivities extends SetOfResources{
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */
-  public String toString(){
+  public String toWrite(){
     String actlist="";// write
     for (int i=0; i<size(); i++){
       Activity activity = (Activity)getResourceAt(i).getObject();

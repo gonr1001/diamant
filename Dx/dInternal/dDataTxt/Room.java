@@ -27,7 +27,7 @@ public class Room extends DXObject{
   /**
    * add an availability day in roomDisp
    */
-  public void addDispDay(String disp){
+  public void addAvailability(String disp){
     _roomDisp.add(disp);
   }
 
@@ -159,7 +159,7 @@ public class Room extends DXObject{
    * Print local information
    * OUTPUT: String of roomID and room availability
    * */
-  public String toString(){
+  public String toWrite(){
     String roomInfo=_capacity+";"+_function+";"+_caracteristics+";"
                    +_description+";";
     return roomInfo;

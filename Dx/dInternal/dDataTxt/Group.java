@@ -85,7 +85,7 @@ public class Group extends DXObject{
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */
-  public String toString(){
-   return _blocList.toString();
+  public String toWrite(){
+   return _blocList.toWrite();
   }
 }

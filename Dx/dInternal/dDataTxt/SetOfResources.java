@@ -286,17 +286,17 @@ public class SetOfResources extends DXObject{
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */
-  public String toString(){
+  public String toWrite(){
     String reslist="";
     if(_resourceList.size()>0){
       if (_resourceType==3){
         for (int i=0; i< _resourceList.size()-1; i++)
-          reslist+= ((Resource)_resourceList.get(i)).toString(";")+CR_LF;
-        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(";");
+          reslist+= ((Resource)_resourceList.get(i)).toWrite(";")+CR_LF;
+        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toWrite(";");
       }else{
         for (int i=0; i< _resourceList.size()-1; i++)
-          reslist+= ((Resource)_resourceList.get(i)).toString(CR_LF)+CR_LF;
-        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(CR_LF);
+          reslist+= ((Resource)_resourceList.get(i)).toWrite(CR_LF)+CR_LF;
+        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toWrite(CR_LF);
       }
     }// end if(_resourceList.size()>0)
     return reslist;

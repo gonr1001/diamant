@@ -163,12 +163,13 @@ public class SetOfStudents extends SetOfResources{
   public boolean addStudent(long matricule, String name, String temp, Student studentChoice){
     if (studentChoice.getCourses().size()!=0){
       //Student newStudent = new Student();
-      Resource resource = new Resource(name, studentChoice);
+
       if (temp.length()==0)
-        resource.setMessage("0000000000000");
+        studentChoice.setAuxField("0000000000000");
       else
-        resource.setMessage(temp);
+        studentChoice.setAuxField(temp);
       setCurrentKey(matricule);
+      Resource resource = new Resource(name, studentChoice);
       return addResource(resource,0);
     }// end if(this.getResource(matricule)!=null)
     return false;

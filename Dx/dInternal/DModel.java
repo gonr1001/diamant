@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.10 $  $Date: 2003-04-30 17:04:22 $
+ * Title: DModel $Revision: 1.11 $  $Date: 2003-05-01 16:32:51 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -36,6 +36,7 @@ public class DModel{
     _status = new Status();
     _ttParameters = new TTParameters();
     importData("hello");
+    test1_setAvailability();
   }
 
   public Status getStatus() {
@@ -87,5 +88,14 @@ public class DModel{
   public void setParameters(int [] a) {
     _ttParameters.setValues(a);
     sendEvent();
+  }
+
+
+  public void test1_setAvailability(){
+ Vector v = new Vector();
+ v.add("1 1 1 1 5");
+ v.add("1 1 1 5 5");
+ int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
+
   }
 } /* end class DModel */

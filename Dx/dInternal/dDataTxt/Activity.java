@@ -158,8 +158,8 @@ public class Activity extends DXObject{
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */
-  public String toString(){
-    return _natures.toString();
+  public String toWrite(){
+    return _natures.toWrite();
   }
 
 }

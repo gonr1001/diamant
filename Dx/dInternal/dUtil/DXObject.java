@@ -21,4 +21,19 @@ public class DXObject extends Object{
      return -2;
   }
 
+  /**
+   *
+   * */
+  public String toWrite(){
+
+    return "";
+  }
+  /**
+   *
+   * */
+  public String externalKey(String str){
+
+    return "";
+  }
+
 }

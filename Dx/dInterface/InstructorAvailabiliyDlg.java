@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.7 $  $Date: 2003-04-30 15:18:34 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.8 $  $Date: 2003-05-01 16:32:51 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -148,14 +148,14 @@ public class InstructorAvailabiliyDlg  extends JDialog
       dispose();
     } else if (command.equals( BUT01 )) {  // OK
    /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n"); */
-       _currentInstr.setInstAvailability(_currentAvailbility);
+       _currentInstr.setAvailability(_currentAvailbility);
         _dm.incrementModification();
       modified = false;
       butApply.setEnabled(false);
       dispose();
     } else if (command.equals( BUT00 )) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
-      _currentInstr.setInstAvailability(_currentAvailbility);
+      _currentInstr.setAvailability(_currentAvailbility);
       _dm.incrementModification();
       modified = false;
       butApply.setEnabled( false );
@@ -210,7 +210,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       //first line :  name of days
       gridPanel.add(new JLabel(DAY[i], JLabel.CENTER));
 
-    _currentAvailbility = _currentInstr.getInstAvailability();
+    _currentAvailbility = _currentInstr.getMatrixAvailability();
 
     for (int j = 0; j < nbPer; j++) {
       // first column : the time of the period

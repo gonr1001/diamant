@@ -203,13 +203,13 @@ public class LoadData {
     ldata.extractActivities(activitiesList, true);
 
     //save in files
-    filter= new FilterFile(insList.toString().getBytes());
+    filter= new FilterFile(insList.toWrite().getBytes());
     filter.saveFile(pathSave+"SaveInst.sig");
-    filter= new FilterFile(roomlist.toString().getBytes());
+    filter= new FilterFile(roomlist.toWrite().getBytes());
     filter.saveFile(pathSave+"SaveRoom.sig");
-    filter= new FilterFile(studentList.toString().getBytes());
+    filter= new FilterFile(studentList.toWrite().getBytes());
     filter.saveFile(pathSave+"SaveStudent.sig");
-    filter= new FilterFile(activitiesList.toString().getBytes());
+    filter= new FilterFile(activitiesList.toWrite().getBytes());
     filter.saveFile(pathSave+"SaveActivities.sig");
 
   } // end main

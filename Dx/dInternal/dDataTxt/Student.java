@@ -28,6 +28,9 @@ public class Student extends DXObject{
   private int _area=0;
   /**contains StudentChoice object*/
   private Vector _courses;
+  /**the field to be write before name
+   * and after matricule in toWrite method*/
+  private String _auxField="";
 
   /**
    * constructor
@@ -45,6 +48,14 @@ public class Student extends DXObject{
    * */
   public void setSex(int sex){
     _sex= sex;
+  }
+
+  /**
+   *set the aux field
+   * @param String the resource temporary message
+   * */
+  public void setAuxField(String message){
+    _auxField = message;
   }
 
   /**
@@ -239,10 +250,19 @@ public class Student extends DXObject{
   }
 
   /**
+   *
+   * */
+  public String externalKey(String str){
+    String temp="0000000"+ str;
+    temp= temp.substring(temp.length()-8,temp.length());
+    return temp+ _auxField;
+  }
+
+  /**
    * Print student courses choice information
    * OUTPUT: String of courses choice
    * */
-  public String toString(){
+  public String toWrite(){
     String choice="";
     for (int i=0; i< _courses.size()-1; i++)
       choice+=((StudentChoice)_courses.get(i)).getCourse()+" ";

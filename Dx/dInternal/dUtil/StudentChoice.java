@@ -82,10 +82,10 @@ public class StudentChoice implements Cloneable{
     }
 
     /**
-     * Implements the toString method.
+     * Implements the toWrite method.
      * @return the String representation.
      */
-    public String toString( )    {
+    public String toWrite( )    {
       int avalue= (int)'A'-1;
       avalue+=_group;
         return  _Course+"  "+(char)avalue;

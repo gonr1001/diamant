@@ -12,29 +12,35 @@ import java.util.Vector;
 import java.util.StringTokenizer;
 import dInternal.dUtil.DXObject;
 
+/**
+ * @todo new name InstructorFields
+ * @todo finish comments
+ * @todo
+ */
+
 public class Instructor extends DXObject {
 
-  private Vector _instructorDisp;//
+  private Vector _instructorAvailability;
   private final String CR_LF = "\r\n";
 
   public Instructor() {
-    _instructorDisp = new Vector();
+    _instructorAvailability = new Vector();
   }
   /**
-   * add an availability day in instructorDisp
+   * add availability of instructor in the next day
    */
-  public void addDispDay(String disp){
-    _instructorDisp.add(disp);
+  public void addAvailability(String disp){
+    _instructorAvailability.add(disp);
   }
 
   /**
    * Remove an availibility day
-   * INPUT: day number. day =1 equals instructorDisp position = 0
+   * INPUT: day number. day =1 equals instructor Availability position = 0
    * */
-  public boolean removeDispDay(int day){
+  public boolean removeAvailability(int day){
     if (day>0)
-      if (day <= _instructorDisp.size()){
-        _instructorDisp.remove(day-1);
+      if (day <= _instructorAvailability.size()){
+        _instructorAvailability.remove(day-1);
         return true;
       }
     return false;
@@ -44,25 +50,25 @@ public class Instructor extends DXObject {
    * clear and set instructorDisp
    * INPUT: Vector of new instructor availability (instDisp)
    * */
-  public void setInstructorDisp(Vector instDisp){
-    _instructorDisp= new Vector();
-    _instructorDisp= (Vector)instDisp.clone();
+  public void setAvailability(Vector instDisp){
+    _instructorAvailability= new Vector();
+    _instructorAvailability= (Vector)instDisp.clone();
   }
 
   /**
    *
    * */
-  public Vector getInstDisp(){
-    return _instructorDisp;
+  public Vector getVectorAvailability(){
+    return _instructorAvailability;
   }
 
-  public int[][] getInstAvailability(){
-    String jour = (String) _instructorDisp.get(0);
+  public int[][] getMatrixAvailability(){
+    String jour = (String) _instructorAvailability.get(0);
     StringTokenizer st = new StringTokenizer(jour);
-    int[][] a = new int[_instructorDisp.size()][st.countTokens()];
+    int[][] a = new int[_instructorAvailability.size()][st.countTokens()];
     int nbOfTokens = st.countTokens();
-    for(int i = 0; i < _instructorDisp.size(); i++) {
-      jour = (String) _instructorDisp.get(i);
+    for(int i = 0; i < _instructorAvailability.size(); i++) {
+      jour = (String) _instructorAvailability.get(i);
       st = new StringTokenizer(jour);
       nbOfTokens = st.countTokens();
       for(int j=0; j < nbOfTokens; j++) {
@@ -72,14 +78,15 @@ public class Instructor extends DXObject {
     return a;
   }
 
-  public void  setInstAvailability(int[][] a){
-    _instructorDisp = new Vector();
+  public void  setAvailability(int[][] a){
+    _instructorAvailability = new Vector();
     String str = "";
     for(int i = 0; i < a.length; i++) {
-      for(int j=0; j <a[i].length; j++) {
+      for(int j=0; j <a[i].length-1; j++) {
         str += a[i][j] + " ";
       } // end for j
-      _instructorDisp.add(str);
+      str += a[i][a[i].length-1];
+      _instructorAvailability.add(str);
       str = "";
     } //end for i
   }
@@ -100,11 +107,11 @@ public class Instructor extends DXObject {
    * Print local information
    * OUTPUT: String instructor availability
    * */
-  public String toString(){
+  public String toWrite(){
     String instInfo="";
-    for(int i=0; i< _instructorDisp.size()-1; i++)
-      instInfo += (String)_instructorDisp.get(i)+CR_LF;
-    instInfo += (String)_instructorDisp.get(_instructorDisp.size()-1);
+    for(int i=0; i< _instructorAvailability.size()-1; i++)
+      instInfo += (String)_instructorAvailability.get(i)+CR_LF;
+    instInfo += (String)_instructorAvailability.get(_instructorAvailability.size()-1);
     return instInfo;
   }
 
