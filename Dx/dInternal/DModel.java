@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.15 $  $Date: 2003-05-12 15:27:06 $
+ * Title: DModel $Revision: 1.16 $  $Date: 2003-05-14 13:09:09 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -24,7 +24,7 @@ import java.util.Vector;
 import java.io.*;
 import javax.swing.JFrame;
 import dInternal.dData.*;
-import com.iLib.gDialog.FatalProblemDlg;
+//import com.iLib.gDialog.FatalProblemDlg;
 
 public class DModel{
   private Vector _dmListeners = new Vector();
@@ -52,45 +52,35 @@ public class DModel{
     sendEvent();
   }
 
-  public void importData(String str) {
+  public String importData(String str) {
     String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
     str = path;
     LoadData loadData = new LoadData(str);
     // import set of instructors
       _setOfInstructors = loadData.extractInstructors(null, false);
      if( _setOfInstructors.getError().length()!=0){
-       new FatalProblemDlg(_jFrame,_setOfInstructors.getError());
-      System.exit(1);
-     }
-
-     // import set of students
-     _setOfStudents = loadData.extractStudents(null, false);
-     if(_setOfStudents.getError().length()!=0){
-       new FatalProblemDlg(_jFrame,_setOfStudents.getError());
-      System.exit(1);
+       return _setOfInstructors.getError();
      }
 
      // import set of rooms
       _setOfRooms = loadData.extractRooms(null, false);
      if( _setOfRooms.getError().length()!=0){
-       new FatalProblemDlg(_jFrame,_setOfRooms.getError());
-      System.exit(1);
+       return _setOfRooms.getError();
      }
 
      // import set of activities
      _setOfActivities = loadData.extractActivities(null, false);
      if( _setOfActivities.getError().length()!=0){
-       new FatalProblemDlg(_jFrame,_setOfActivities.getError());
-       System.exit(1);
+       return _setOfActivities.getError();
      }
 
-    // _roomsList =
-     // _studentList = loadData.extractStudents(null, false);
-    //}
-      /*else {
-      new FatalProblemDlg(loadData.getError());
-      System.exit(1);
-    }*/
+     // import set of students
+     _setOfStudents = loadData.extractStudents(null, false);
+     if(_setOfStudents.getError().length()!=0){
+       return _setOfStudents.getError();
+     }
+
+     return "";
   }
 
 
