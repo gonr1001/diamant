@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.33 $  $Date: 2003-07-04 10:10:27 $
+ * Title: DModel $Revision: 1.34 $  $Date: 2003-07-04 10:34:19 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.34 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -36,6 +36,7 @@ public class DModel {
   //private TTParameters _ttParameters;
   private int _type;
   private boolean _modified = false;
+  private String _version;
   private String _error;
   private Status _status;
   private SetOfInstructors _setOfInstructors;
@@ -126,9 +127,9 @@ public class DModel {
     LoadData loadD = new LoadData();
     Vector project = loadD.loadProject(fileName);
     if(project.size()!=0){
-      _dApplic.getDMediator().getCurrentDoc().setVersion((String)project.get(0));
+      setVersion((String)project.get(0));
       _ttStruct= (TTStructure)project.get(1);
-      _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
+     // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
      // addTTStructureListener(this);
       _setOfInstructors = (SetOfInstructors)project.get(2);
       _setOfRooms= (SetOfRooms)project.get(3);
@@ -149,6 +150,18 @@ public class DModel {
     }
     _ttStruct.sendEvent();// a deplacer
     return"";
+  }
+
+
+  /***/
+public String getVersion(){
+  return _version;
+}
+
+/**
+ * */
+public void setVersion(String version){
+  _version=version;
   }
 
   public String importData(String str) {

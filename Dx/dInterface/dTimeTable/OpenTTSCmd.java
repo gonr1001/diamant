@@ -10,30 +10,30 @@ package dInterface.dTimeTable;
  */
 
 
-  import javax.swing.JFrame;
+import javax.swing.JFrame;
 
-  import dResources.DConst;
-  import dInterface.Command;
-  import dInterface.DApplication;
+import dResources.DConst;
+import dInterface.Command;
+import dInterface.DApplication;
 
-  /**
-   *
-   * OpenTTSCmd is class used to call the command
-   * which displays the Open Time Table Structure dialog
-   *
-   */
+/**
+ *
+ * OpenTTSCmd is class used to call the command
+ * which displays the Open Time Table Structure dialog
+ *
+ */
 
-  public class OpenTTSCmd implements Command{
+public class OpenTTSCmd implements Command{
 
-    public OpenTTSCmd() {
-    }
+  public OpenTTSCmd() {
+  }
 
 
   public void execute(DApplication dApplic) {
-          new OpenTTSDlg(dApplic);
-      } // end execute
+    new OpenTTSDlg(dApplic);
+  } // end execute
 
-  }/* end class OpenTTSCmd */
+}/* end class OpenTTSCmd */
 
 
 

@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.16 $  $Date: 2003-06-25 08:36:11 $
+ * Title: ToolBar $Revision: 1.17 $  $Date: 2003-07-04 10:34:19 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -62,12 +62,12 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   private DApplication _dApplic;
   private static final String _toolBarNames [] = {"Jours", "Periods"};
   JComboBox toolBarSelector, daySelector, dayNameSelector, periodSelector, periodTypeSelector;
-  private boolean _comboBoxStatus=true;
+  private boolean _comboBoxStatus = true;
   JButton sameLine, sameColumn;
   JTextField setNumberOfDays;
   JLabel lSetNumberOfDays, lDaySelector, lDayNameSelector, lPeriodIndicator, lPeriodTypeSelector;
   JToolBar.Separator jtbSep [];
-  String _error="";
+  String _error = "";
   TTStructure _tts;
   //String [] _dayNames = {"Lu","Ma","Me","Je","Ve","Sa","Di"};
 
@@ -77,7 +77,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   public DToolBar(DApplication dApp) {
     //The JLabel Objects initialisation
     _dApplic= dApp;
-    jbInit();
+    init();
     actionManager();
 
     setEnabledToolbar(false);
@@ -96,7 +96,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         //JComboBox cb = (JComboBox)e.getSource();
         //int  i = cb.getSelectedIndex();
         int i = toolBarSelector.getSelectedIndex();
-         System.out.println("ToolBar selector: "+i);//debug
+         System.out.println("ToolBar selector: " + i);//debug
          selectBar(i);
         /*switch (i){
           case 0: addBarOne(); break;
@@ -250,7 +250,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     }
   }
 
-  private void jbInit(){
+  private void init(){
     lSetNumberOfDays = new JLabel("Nombre de jours ");
     lDaySelector = new JLabel("Jour courrant ");
     lDayNameSelector = new JLabel("Nom du jour ");
@@ -268,15 +268,15 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
 
     //JComboBox toolBarSelector initialisation
     toolBarSelector = new JComboBox(_toolBarNames);
-    toolBarSelector.setPreferredSize(new Dimension(200,DConst.NPT11* 2));
-    toolBarSelector.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
+    toolBarSelector.setPreferredSize(new Dimension(200, DConst.NPT11* 2));
+    toolBarSelector.setMaximumSize(new Dimension(200, DConst.NPT11 * 3));
     //toolBarSelector.updateUI();
     //toolBarSelector.setEnabled(false);
     add(toolBarSelector);
 
     //JComboBox daySelector initialisation
-    //String [] amountDays = {"1","2","3","4","5","6","7"};//debug
-    daySelector = new JComboBox();
+    String [] amountDays = {"1","2","3","4","5","6","7"};//debug
+    daySelector = new JComboBox(amountDays);
     daySelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
     daySelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
     //daySelector.setEditable(true);
@@ -289,17 +289,17 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     //dayNameSelector.setEditable(true);
 
     //JComboBox periodIndicator initialisation
-    //String [] periodIndexes = {"1","2","3","4","5","6","7"};
-    periodSelector = new JComboBox(new String[1]);
+    String [] periodIndexes = {"1","2","3","4","5","6","7"};
+    periodSelector = new JComboBox(periodIndexes);
     periodSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
     periodSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
     periodSelector.setEditable(true);
 
     //JComboBox periodTypeSelector initialisation
-    //String [] periodTypes = {"Base Priorité","Normal","Null"};
-    periodTypeSelector = new JComboBox(new String[1]);
-    periodTypeSelector.setPreferredSize(new Dimension(100,DConst.NPT11 * 2));
-    periodTypeSelector.setMaximumSize(new Dimension(100,DConst.NPT11 * 2));
+    String [] periodTypes = {"Base Priorité","Normal","Null"};
+    periodTypeSelector = new JComboBox(periodTypes);
+    periodTypeSelector.setPreferredSize(new Dimension(100, DConst.NPT11 * 2));
+    periodTypeSelector.setMaximumSize(new Dimension(100, DConst.NPT11 * 2));
     //periodTypeSelector.setEditable(true);
 
     toolBarSelector.setSelectedIndex(0);
