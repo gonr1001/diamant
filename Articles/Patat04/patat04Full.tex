@@ -287,19 +287,21 @@ conceptuelle il s'agit d'un seul entrepôt des données.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
-%\fbox{%
 \begin{picture}(90,40)
 \deffilebox{20}{10}{0.2}
 \defprocessbox{20}{16}
-%\put(0,0){\fichier[Données]}
-%\put( 10, 2){\corner{20}{4}}
-\put(0, 15){\fichier[$bd_{1}$]} \put(0, 5){\makebox(20,10){Données
-de base}} \put(20, 20){\vector(1,0){10}} \put(30,
-15){\fichier[$bd_{2}$]} \put(30, 5){\makebox(20,10){Données
-période $P$}} \put(50, 20){\vector(1,0){10}} \put(60,
-15){\fichier[$bd_{3}$]} \put(60, 5){\makebox(20,10){Données
-horaire}}
-\end{picture}%}
+\put(0, 15){\fichier[$bd_{1}$]}
+
+\put(0, 5){\makebox(20,10){Données de base}}
+
+\put(20, 20){\vector(1,0){10}} \put(30, 15){\fichier[$bd_{2}$]}
+\put(30, 5){\makebox(20,10){Données période $P$}}
+\put(50,20){\vector(1,0){10}}
+
+\put(60, 15){\fichier[$bd_{3}$]}
+
+\put(60, 5){\makebox(20,10){Données horaire}}
+\end{picture}
 \end{center}
 
 \caption{L'évolution des données pendant la production d'un
@@ -396,16 +398,9 @@ logiciel ou le responsable ne trouvent pas une solution
 satisfaisante il faut faire des changements même dans certains
 données fixés.
 
-%%Beaucoup de données sont figées, comme l'offre de cours,
-%cependant, si pendant la construction on trouve des situations où
-%les conflits obligent à faire des changements sur les données, par
-%exemple, le format d'un cours, qui passe de 3h consécutives à 2h
-%consécutives plus 1h. D'autres cas peuvent se présenter.
-
-
-Les activités de saisie et de construction peuvent être effectuées
-par plusieurs d'utilisateurs. Chacun a un rôle et des privilèges
-associés pour pouvoir changer certaines données.
+The activities data input and construction can be carried out by
+several of users. Each one has an associated role and privileges
+to be able to change certain data.
 
 Afin de simplifier, nous considérons deux types d'utilisateurs~:
 le commis et le responsable de la construction. Le commis saisit
