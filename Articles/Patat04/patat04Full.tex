@@ -504,16 +504,17 @@ nécessaires. Nous trouvons qu'il faut avoir~:
 l'utilisateur ainsi que pour créer des formulaires pour saisir des
 données.
 
-\item Un format qui définit la manière d'établir l'échange des
-données avec les autres systèmes.
+\item Un ensemble de règles qui définissent la manière d'établir
+l'échange des données avec les autres systèmes.
 
 \item Un langage pour coder la logique d'affaires.
 
 \item Un outil pour gérer la persistance des données.
 \end{enumerate}
 
-Nous avons constaté qu'il n'y a pas un seul choix, plutôt il y a
-plusieurs instances possibles pour implémenter cette architecture.
+Après notre analyse, nous avons constaté qu'il n'y a pas un seul
+option, plutôt il y a plusieurs instances possibles pour
+implémenter cette architecture.
 
 Nous montrons ici une liste d'instances possibles, il faut
 remarquer qu'elle n'est pas exhaustive.
@@ -523,7 +524,6 @@ remarquer qu'elle n'est pas exhaustive.
 Technologie & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
 Langage pour affichage & HTML et JSP& Applet Java & Visual Basic\\
 \hline
-
 Format pour échanger données & XML & Text & Text\\ \hline
 
 Langage pour coder la logique d'affaire & Java & Java & Visual Basic\\
@@ -538,14 +538,14 @@ La persistance de données & Base de données & Base de données & Base de données 
 \end{table}
 
 Tel que nous avons remarqué l'ensemble des instances montrées dans
-le tableau \ref{tb:tbOne} n'est pas exhaustive, il y a quelques
-autres.
+le tableau \ref{tb:tbOne} n'est pas exhaustive, il peut y avoir
+quelques autres.
 
 De la même façon, les ensembles que nous proposons sont faits
 d'une manière arbitraire. Pour sa construction nous avons pris en
 considération une certaine logique, nous avons mit ensemble les
 éléments qui ont des caractéristiques communes ou bien qui
-appartiennent à un même fabricant logiciel.
+appartiennent à un même fabricant de logiciel.
 
 Pour le volet Base de données, nous n'avons pas mentionné le nom
 spécifique d'un système administrateur de base de données, le
@@ -560,13 +560,18 @@ L'architecture est aussi extensible, parce que nous pourrions
 changer les modules d'une manière facile, par exemple, nous
 pouvons commencer avec un élément de persistance de données comme
 un fichier en format texte plain, et après, nous pourrions
-effectuer quelques changements dans la couche d'interface
-utilisateur pour pouvoir utiliser des fichiers avec le format XML.
-Après, si nous voulons faire évoluer la partie stockage du système
-à un système de bases de données, il faudrait faire des
-changements dans la couche d'interface d'horaires et la couche de
-persistance des données. Tous ces changements sans jamais toucher
-la couche de la logique d'affaires.
+effectuer quelques changements dans l'élément d'interface
+utilisateur pour pouvoir interagir avec des fichiers en format
+XML. Après, si nous voulons faire évoluer cette partie de
+persistance de données vers un système de bases de données, il
+faudrait faire des changements dans la couche d'interface
+d'utilisateur et programmer l'élément de persistance des données.
+Tous ces changements sans jamais toucher l'élément de la logique
+d'affaires.
+
+Dans le tableau suivante (voir Tableau:\ref{tb:tbOne}) nous
+montrons l'évolution possible d'une instance de notre
+architecture.
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
@@ -591,14 +596,26 @@ l'architecture}\label{tb:tbTwo}
 
 \section{\tictac, notre instance de l'architecture}
 
-Une fois que nous avons établi l'architectura et que nous sachons
+Une fois que nous avons établi l'architecture et que nous sachons
 qu'elle est ouverte et extensible, il faut que l'instance que nous
 allons implémenter soit aussi ouverte et extensible. Nous avons
 montré trois options d'instances de l'architecture (voir Tableau
 \ref{tb:tbOne}), pour l'implémentation de \tictac(), nous avons
 choisi l'option 1.
 
-Nous montrons ici une analyse de ce choix:
+De depart il faut savoir que un élément est ouvert s'il est
+construit avec des standards approuvés, ou bien, s'il est
+construit avec une spécification privée mais rendue publique par
+les désignateurs.
+\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
+
+Il faut aussi tenir en compte que un élément est extensible s'il
+est facile d'adapter le produit aux changements dans la
+spécification.\cite{meyer97}
+
+
+Avec ces considerations en main, nous montrons ici l'analyse qui
+nous a amené à ce choix:
 
 \begin{description}
 
@@ -622,10 +639,10 @@ de données.
 
 \item [Langage pour coder la logique d'affaire:] Nous avons choisi
 Java. Java est un langage interprété (qui utilise la machine
-virtuel JVM). Il y a plusieurs versions de cette machine virtuelle
-pour plusieurs plateformes différentes - ce qui signifie que les
-programmeurs peuvent écrire pour ce langage en utilisant une
-plateforme, et faire tourner leurs programmes sur autres.
+virtuel Java JVM). Il y a plusieurs versions de cette machine
+virtuelle pour plusieurs plateformes différentes - ce qui signifie
+que les programmeurs peuvent écrire pour ce langage en utilisant
+une plateforme, et faire tourner leurs programmes sur autres.
 
 \item [La persistance de données:] Pour l'implémentation de la
 couche persistance de données nous avons choisi une base de
@@ -687,6 +704,11 @@ for each module is allowed to make about the other modules."
 \end{description}
 
 \end{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 {\bf Introduction.} La production d'horaires est une tâche
 périodique pour plusieurs institutions d'enseignement, en
