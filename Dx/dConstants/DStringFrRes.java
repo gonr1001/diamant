@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.87 $  $Date: 2004-02-11 14:22:21 $
+ * Title: DStringFrRes $Revision: 1.88 $  $Date: 2004-02-13 21:49:21 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.87 $
+ * @version $Revision: 1.88 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -39,21 +39,24 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "newTTTD", "Indiquez grille horaire"},
     { "newTTM", "Grille horaire"},
 
-    { "nTTCy", "Horaire cycle" },
+    { "nTTCy", "Horaire cycle ..." },
     { "nTTCyTD", "Grille horaire cycle"},
     { "nTTCyM", "Cycle"},
 
-    { "nTTEx", "Horaire examen" },
+    { "nTTEx", "Horaire examen..." },
     { "nTTExTD", "Grille horaire examen"},
     { "nTTExM", "Examen"},
 
-    { "open", "Ouvrir horaire" },
+    { "open", "Ouvrir horaire..." },
     { "oTTTD", "Horaire" },
+
+    { "openTTS", "Ouvrir grille..." },
+    { "oTTSTD", "Grille" },
 
     { "close", "Fermer" },
     //Separator
-    { "save", "Enregistrer" },
-    { "saveAs", "Enregistrer sous" },
+    { "save", "Enregistrer ..." },
+    { "saveAs", "Enregistrer sous ..." },
 
 
     { "defFM", "Definir fichiers à importer" },
@@ -89,15 +92,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
 
     { "nTTSCy", "Grille cycle" },
-/*    { "nTTCyTD", "Grille horaire Cycle"},
-    { "nTTCyM", "Cycle"},*/
+
 
     { "nTTSEx", "Grille examen" },
-/*    { "nTTExTD", "Grille horaire Examens"},
-    { "nTTExM", "Examen"},*/
 
-    { "openTTS", "Ouvrir grille" },
-    { "oTTSTD", "Grille" },
+
+
 
     { "closeTTS", "Fermer grille" },
     { "saveTTS", "Enregistrer grille" },

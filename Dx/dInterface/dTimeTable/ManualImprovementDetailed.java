@@ -191,37 +191,7 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
    return jif;
   } // end buidDocument*/
 
- /**
-  *
-  * @param str
-  * @return
-  */
- /* protected void createFrame( String eventName, boolean simple) {
-    setTitle(eventName);
-    JPanel panel = new JPanel(new BorderLayout(0,0));
-    setContentPane(panel);
-    //DMenuBar dMenuBar = new DMenuBar(this,1);
-    //setJMenuBar(dMenuBar);
-    JDesktopPane jDesktopPane = new JDesktopPane();
-    jDesktopPane.setOpaque(false);
-    jDesktopPane.setDesktopManager(new DefaultDesktopManager());
-    panel.add(jDesktopPane,BorderLayout.CENTER);
-    //setContentPane(buildInternalFrame(simple));
-    getContentPane().add(buildInternalFrame(simple));
-    //getContentPane().add(jDesktopPane, BorderLayout.CENTER);
-    //getContentPane().add(jDesktopPane, BorderLayout.CENTER);
-    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-    addWindowListener(new WindowAdapter() {
-     public void windowClosing( WindowEvent e ) {
-       dispose();
-     }
-      });
-        pack();
-        show();
-        //doLayout();
-      setLocation(INITIALPOSITION,INITIALPOSITION);
-      setVisible(true);
-    } //end createUI*/
+
 
    /**
     *

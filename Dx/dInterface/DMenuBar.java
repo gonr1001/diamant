@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.96 $  $Date: 2004-02-03 13:52:47 $
+ * Title: DMenuBar $Revision: 1.97 $  $Date: 2004-02-13 21:49:20 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.96 $
+ * @version $Revision: 1.97 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -66,12 +66,23 @@ public class DMenuBar extends JMenuBar{
   private final int _font = Font.PLAIN;
   private final int _nPT = DConst.NPT11;
 
-  //the menus
-  private JMenu _file, _assign, _modification, _optimisation, _preferences, _report, _help,  _dev;
-  private boolean _boolFile, _boolAssign, _boolOptimization, _boolModification, _boolReport, _boolPreferences, _boolHelp, _boolDev;
-  // the file menus containing sub menus
+  //the main menus
+  private JMenu _file,
+  _assign,
+  _modification,
+  _optimisation,
+  _preferences,
+  _report,
+  _help,
+  _dev;
+  // for each main menu there is a assocaited boolean
+  private boolean _boolFile, _boolAssign, _boolOptimization, _boolModification,
+  _boolReport, _boolPreferences, _boolHelp, _boolDev;
+
+  // the file menu: sub-menus
   private JMenu _newTTable, _newTTStruc;
   private boolean _boolNewTTable, _boolNewTTStruc;
+
   // the file menus
   private CmdMenu _newTTableCy, _newNTTableEx, _newTTStrucCy,
   _newTTStrucEx, _openTTable, _openTTStruc,
@@ -84,27 +95,31 @@ public class DMenuBar extends JMenuBar{
 
   // the assign menus
   private CmdMenu _activities, _sections, _instructorAvailability,
-  _roomsAvailability, _events, _mExcl, _mConfl, _defineSet, _partialTTStructure;
+  _roomsAvailability, _events, _exclusion, _conflict, _defineSet, _partialTTStructure;
   private boolean _boolActivities, _boolSections, _boolInstructorAvailability,
-  _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl, _boolDefineSet, _boolPartialTTStructure;
+  _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl, _boolDefineSet,
+  _boolPartialTTStructure;
 
   // the modification menus
-  private CmdMenu _mActivityModif;
+  private CmdMenu _activityModif;
   private boolean _boolMActivityModif;
 
   // the optimisation menus
-  private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,_mStudentsMiddleMixingBalance,_mStudentsMixingOptimize;
-  private boolean _boolMOpti, _boolMInit, _boolFirstAlgo,_boolStudentsMixingBalance,_boolStudentsMixingOptimize;
+  private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,
+  _mStudentsMiddleMixingBalance,_mStudentsMixingOptimize;
+  private boolean _boolMOpti, _boolMInit, _boolFirstAlgo,
+  _boolStudentsMixingBalance,_boolStudentsMixingOptimize;
   private JMenu _studentsMixing;
 
   //the report menus
   private CmdMenu _mReport;
 
   // the preferences menus
-  private CmdMenu _lookAndFeel, _conflicts, _viewSimple, _viewDetailedHorizontal, _viewDetailedVertical;
+  private CmdMenu _lookAndFeel, _conflicts, _viewSimple,
+  _viewDetailedHorizontal, _viewDetailedVertical;
   private boolean _boolLookAndFeel, _boolConflicts, _boolView, _boolViewSimple,
-                  _bool_ViewDetailedHorizontal, _boolViewDetailedVertical;
-   private JMenu _view;
+  _bool_ViewDetailedHorizontal, _boolViewDetailedVertical;
+  private JMenu _view;
   // the help menus
   private CmdMenu _about;
   private boolean _boolAbout;
@@ -125,15 +140,14 @@ public class DMenuBar extends JMenuBar{
 
   /**
    * Constructor
-   * @param dApplic
+   * @param jframe
    * @param operation 1= createPreferencesMenu
    */
-  public DMenuBar(JFrame jframe,int operation) {
+ /* public DMenuBar(JFrame jframe, int operation) {
     super();
-   //_dApplic = dApplic;
-   if(operation==1)
-     createManualPreferencesMenu(jframe);
-  }
+    if(operation == 1)
+      createManualPreferencesMenu(jframe);
+  }*/
 
   /**
    *
@@ -319,13 +333,13 @@ public class DMenuBar extends JMenuBar{
     _modification.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _modification );
 
-  _mActivityModif = new CmdMenu(DConst.ACTIVITY_MODIF_M);
-  _mActivityModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
-  _mActivityModif.setCommand(new ActivityModifCmd());
-  _mActivityModif.addActionListener(_dApplic);
-  //_mActivitiesModif.add(_mTypeModif);
+    _activityModif = new CmdMenu(DConst.ACTIVITY_MODIF_M);
+    _activityModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _activityModif.setCommand(new ActivityModifCmd());
+    _activityModif.addActionListener(_dApplic);
+    //_mActivitiesModif.add(_mTypeModif);
 
-   _modification.add(_mActivityModif);
+    _modification.add(_activityModif);
   }//end createModificationMenu
 
 
@@ -349,25 +363,25 @@ public class DMenuBar extends JMenuBar{
     _optimisation.add(_mFirstAlgo);
 
     // Items in menu StudentMixing.
-   _studentsMixing = new JMenu(DConst.STUDENTMIXING);
-   _studentsMixing.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _studentsMixing = new JMenu(DConst.STUDENTMIXING);
+    _studentsMixing.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
-   _mStudentsMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
-   _mStudentsMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
-   _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd());
-   _mStudentsMixingBalance.addActionListener(_dApplic);
-   _studentsMixing.add(_mStudentsMixingBalance);
+    _mStudentsMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
+    _mStudentsMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd());
+    _mStudentsMixingBalance.addActionListener(_dApplic);
+    _studentsMixing.add(_mStudentsMixingBalance);
 
-   _mStudentsMiddleMixingBalance= new CmdMenu(DConst.STUDENTMIXINGMIDBAL);
-   _mStudentsMiddleMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
-   _mStudentsMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd());
-   _mStudentsMiddleMixingBalance.addActionListener(_dApplic);
-   _studentsMixing.add(_mStudentsMiddleMixingBalance);
+    _mStudentsMiddleMixingBalance= new CmdMenu(DConst.STUDENTMIXINGMIDBAL);
+    _mStudentsMiddleMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _mStudentsMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd());
+    _mStudentsMiddleMixingBalance.addActionListener(_dApplic);
+    _studentsMixing.add(_mStudentsMiddleMixingBalance);
 
-   _mStudentsMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
-   _mStudentsMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   _mStudentsMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd());
-   _mStudentsMixingOptimize.addActionListener(_dApplic);
+    _mStudentsMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
+    _mStudentsMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _mStudentsMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd());
+    _mStudentsMixingOptimize.addActionListener(_dApplic);
     _studentsMixing.add(_mStudentsMixingOptimize);
 
     _optimisation.add(_studentsMixing);
@@ -382,16 +396,16 @@ public class DMenuBar extends JMenuBar{
 
 
   private void createReportMenu() {
-  //Build the menu Report.
-  _report = new JMenu(DConst.REPORT);
-  _report.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-  this.add( _report );
-  // Items in menu Report.
-  _mReport = new CmdMenu("Rapports");
-  _mReport.setFont(new java.awt.Font(_mfont, _font, _nPT));
-  _mReport.setCommand(new ReportCmd());
-  _mReport.addActionListener(_dApplic);
-  _report.add(_mReport);
+    //Build the menu Report.
+    _report = new JMenu(DConst.REPORT);
+    _report.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    this.add( _report );
+    // Items in menu Report.
+    _mReport = new CmdMenu("Rapports");
+    _mReport.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _mReport.setCommand(new ReportCmd());
+    _mReport.addActionListener(_dApplic);
+    _report.add(_mReport);
   }//end createReportMenu
 
   private void createPreferencesMenu(){
@@ -443,30 +457,30 @@ public class DMenuBar extends JMenuBar{
   } // end createPreferencesMenu
 
   private void createManualPreferencesMenu(JFrame jframe){
-   //Build the menu PREFERENCES.
-   _preferences = new JMenu("Affichage");
-   _preferences.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-   this.add(_preferences);
+    //Build the menu PREFERENCES.
+    _preferences = new JMenu("Affichage");
+    _preferences.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    this.add(_preferences);
 
-   // Items in menu PREFERENCES.
-   _viewSimple = new CmdMenu("simple");//, this);
-   _viewSimple.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   _viewSimple.setCommand(new DoNothingCmd(jframe));
-   _viewSimple.addActionListener(_dApplic);
-   _preferences.add(_viewSimple);
+    // Items in menu PREFERENCES.
+    _viewSimple = new CmdMenu("simple");//, this);
+    _viewSimple.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _viewSimple.setCommand(new DoNothingCmd(jframe));
+    _viewSimple.addActionListener(_dApplic);
+    _preferences.add(_viewSimple);
 
-   // Items in menu PREFERENCES.
-   _viewDetailedHorizontal = new CmdMenu("Det + Split H");//, this);
-   _viewDetailedHorizontal.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   _viewDetailedHorizontal.setCommand(new DoNothingCmd(jframe));
-   _viewDetailedHorizontal.addActionListener(_dApplic);
-   _preferences.add(_viewDetailedHorizontal);
+    // Items in menu PREFERENCES.
+    _viewDetailedHorizontal = new CmdMenu("Det + Split H");//, this);
+    _viewDetailedHorizontal.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _viewDetailedHorizontal.setCommand(new DoNothingCmd(jframe));
+    _viewDetailedHorizontal.addActionListener(_dApplic);
+    _preferences.add(_viewDetailedHorizontal);
 
-   _viewDetailedVertical = new CmdMenu("Det + Split V");//, this);
-   _viewDetailedVertical.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   _viewDetailedVertical.setCommand(new DoNothingCmd(jframe));
-   _viewDetailedVertical.addActionListener(_dApplic);
-   _preferences.add(_viewDetailedVertical);
+    _viewDetailedVertical = new CmdMenu("Det + Split V");//, this);
+    _viewDetailedVertical.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _viewDetailedVertical.setCommand(new DoNothingCmd(jframe));
+    _viewDetailedVertical.addActionListener(_dApplic);
+    _preferences.add(_viewDetailedVertical);
 
 
   } // end createPreferencesMenu
@@ -911,7 +925,7 @@ public class DMenuBar extends JMenuBar{
 
   private void setModificationMenu() {
     _modification.setEnabled(_boolModification);
-    _mActivityModif.setEnabled(_boolMActivityModif);
+    _activityModif.setEnabled(_boolMActivityModif);
   }
   private void setOptimisationMenu() {
     _optimisation.setEnabled(_boolOptimization);
@@ -937,20 +951,26 @@ public class DMenuBar extends JMenuBar{
     _stateZero.setEnabled(_boolStateZero);
   }
 
+/* For Menu file
+  /*
+   *  postNewTTCyCmd() used as
+   *  postNewTTExCmd()
+   */
   public void postNewTTCyCmd(){
     setNewTTCy();
   }
-
-  public void postNewTTExCmd(){
-    setNewTTCy(); //setNewTTEx();
-  }
-
+  /*
+   * just calling an existing state
+   */
   public void postNewTTSCyCmd(){
     setNewTTSCy();
   }
 
+  /*
+   * just calling an existing state
+   */
   public void postNewTTSExCmd(){
-    setNewTTSCy(); //setNewTTSEx();
+    setNewTTSCy();
   }
 
   public void postOpenTTCmd(){
