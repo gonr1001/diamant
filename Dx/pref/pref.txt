@@ -1,3 +1,5 @@
 com.sun.java.swing.plaf.windows.WindowsLookAndFeel
 French
+D:\Developpements\DiamantExtreme\Dx\pref\StandardTTC.xml
+D:\Developpements\DiamantExtreme\Dx\pref\StandardTTE.xml
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt

@@ -30,7 +30,7 @@ public class NewTTSCyCmd implements Command{
 
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
-    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, DConst.CYCLE);
+    dApplic.getDMediator().addDoc(dApplic.getPreferences()._standardTTC, DConst.CYCLE, DConst.TT_STRUC);
     //loadTTData(dApplic);
   } // end execute
 

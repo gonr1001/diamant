@@ -23,14 +23,13 @@ import dInterface.DApplication;
  */
 
 public class NewTTSExCmd implements Command{
-  private final boolean PARTIAL = true;
 
   public NewTTSExCmd() {
   }
 
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
-    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, DConst.EXAM);
+    dApplic.getDMediator().addDoc(dApplic.getPreferences()._standardTTE, DConst.EXAM, DConst.TT_STRUC);
     //loadTTData(dApplic);
   } // end execute
 

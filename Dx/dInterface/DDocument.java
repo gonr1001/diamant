@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.40 $  $Date: 2003-07-03 11:52:03 $
+ * Title: DDocument $Revision: 1.41 $  $Date: 2003-07-03 17:01:09 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -63,35 +63,35 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
 
 
   //for new timetable
-  public DDocument(DApplication dApplic, String title, int type, TTStructure ttStruct) {
+  public DDocument(DApplication dApplic, String fullPath, int type, TTStructure ttStruct) {
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, type, ttStruct);
     _dm.getTTStructure().addTTStructureListener(this);
-    buidDocument(title);
-    _modified=true;
+    buidDocument(fullPath);
+    //_modified=true;
   } // end constructor DDocument()
 
   //for open timetable
   //-------------------------------------------
-  public DDocument(DApplication dApplic, String title) {
+  public DDocument(DApplication dApplic, String fullPath) {
     _dApplic = dApplic;
-    _dm = new DModel(_dApplic, title);
+    _dm = new DModel(_dApplic, fullPath);
     _dm.getTTStructure().addTTStructureListener(this);
-    buidDocument(title);
-    _modified=true;
+    buidDocument(fullPath);
+    //_modified=true;
   } // end constructor DDocument()
 
   //for new timetable Structure
-   public DDocument(DApplication dApplic, String title, int type) {
+   public DDocument(DApplication dApplic, String fullPath, int type, boolean onlyStruc) {
      _dApplic = dApplic;
-     TTStructure ttStruct = new TTStructure();
+ //    TTStructure ttStruct = new TTStructure();
      // to  be arranged
-     ttStruct.loadTTStructure(_dApplic.getCurrentDir()+File.separator+"pref"+File.separator+"StandardTTC.xml");
-     _dm = new DModel(_dApplic, 0, ttStruct);
-     ttStruct.addTTStructureListener(this);
-     buidDocument(title);
+ //    ttStruct.loadTTStructure(fullPath);
+     _dm = new DModel(_dApplic, fullPath, type, onlyStruc);
+     _dm.getTTStructure().addTTStructureListener(this);
+     buidDocument(fullPath);
      //dApplic.getToolBar().setToolBars(ttStruct);
-     _modified=true;
+    // _modified=true;
   } // end constructor DDocument()
 
   //for open timetable structure

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.31 $  $Date: 2003-07-03 11:52:03 $
+ * Title: DModel $Revision: 1.32 $  $Date: 2003-07-03 17:01:09 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -47,27 +47,57 @@ public class DModel {
   private int _currentCycle = 1;
 
 //for new
-  public DModel(DApplication dApplic, int type, TTStructure ttStruct) {
+  public DModel(DApplication dApplic,  int type, TTStructure ttStruct) {
     _error = "";
     _type = type;
     _status = new Status();
-    //_ttParameters = new TTParameters();
     _dApplic = dApplic;
-    _ttStruct = ttStruct;
+      _ttStruct = ttStruct;
+    _modified = true;
+  }
+
+  //for open
+  public DModel(DApplication dApplic, String fullPath) {
+    _error = "";
+    _status = new Status();
+    //_ttParameters = new TTParameters();
+    _dApplic = dApplic;//
+    // must initiate type and
+    loadTTStruct(fullPath);
+    //rreadTT(fileName);
     //importData("hello");
     //test1_setAvailability();
     _modified = true;
   }
 
+  //for new TTStructure _dApplic, fullPath, type, onlyStruc
+  public DModel(DApplication dApplic, String fullPath, int type, boolean onlyStruct) {
+    _error = "";
+    _type = type;
+    _status = new Status();
+    _dApplic = dApplic;
+    _ttStruct = new TTStructure();
+    // to  be arranged
+    _ttStruct.loadTTStructure(fullPath);
+    _setOfInstructors = null;
+    _setOfRooms = null;
+    _setOfStudents = null;
+    _setOfActivities = null;
+    _modified = true;
+  }
+
   //for open
-  public DModel(DApplication dApplic, String fileName) {
+  public DModel(DApplication dApplic, String fullPath,  boolean onlyStruct) {
     _error = "";
     _status = new Status();
     //_ttParameters = new TTParameters();
-    _dApplic = dApplic;
+    _dApplic = dApplic;//
+    // must initiate type and
+    loadTTStruct(fullPath);
     //rreadTT(fileName);
     //importData("hello");
     //test1_setAvailability();
+    _modified = true;
   }
 
   public String getError(){
@@ -76,25 +106,7 @@ public class DModel {
   public boolean getModified(){
     return _modified;
   }
-  //for new
-  public DModel(DApplication dApplic, TTStructure ttStruct, boolean partial) {
-    _status = new Status();
-    //_ttParameters = new TTParameters();
-    _dApplic = dApplic;
-    _ttStruct = ttStruct;
-    //importData("hello");
-    //test1_setAvailability();
-  }
 
-  //for open
-  public DModel(DApplication dApplic, String fileName, boolean partial) {
-    _status = new Status();
-    //_ttParameters = new TTParameters();
-    _dApplic = dApplic;
-    //rreadTT(fileName);
-    //importData("hello");
-    //test1_setAvailability();
-  }
   public Status getStatus() {
     return _status;
   }
