@@ -195,7 +195,7 @@ public class SetOfStudentsTest  extends TestCase{
     setOfStudents.buildStudentList(0);
     Vector list= new Vector();
     list.add("LUPIEN MY");
-    list.add("ALEX JARA1");
+    list.add("ALEX JARA");
     assertEquals("test_getStudentsByGroup: assertEquals", list,
                  setOfStudents.getStudentsByGroup("GEI442","1","01"));
   }
