@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.7 $  $Date: 2003-10-07 13:09:54 $
+ * Title: DetailedPeriodPanel $Revision: 1.8 $  $Date: 2003-10-07 19:10:28 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -71,7 +71,7 @@ public class DetailedPeriodPanel extends PeriodPanel{
   /**
    *
    * */
-  public void createPanel(Period period, int w, int h){
+  public void createPanel(Period period){//, int w, int h){
     setLayout(new GridLayout(3,1));
     //setPreferredSize(new Dimension(w, h));
     setBorder(new BevelBorder(BevelBorder.RAISED));
