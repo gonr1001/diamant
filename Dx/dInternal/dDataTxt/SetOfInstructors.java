@@ -15,9 +15,9 @@ import com.iLib.gDialog.FatalProblemDlg;
 public class InstructorsList extends ResourceList{
 
 private Vector instructorsList;// contains list of Instructor
-private StringTokenizer st;// instructors in text format
-private int numberOfLines;// represent number of days
-private int numberOfColumns;// represent number of period a day.
+private byte[] _dataloaded; //_st;// instructors in text format
+private int _numberOfLines;// represent number of days
+private int _numberOfColumns;// represent number of period a day.
 
  /**
   * INPUTS: byte[]  dataloaded (information from file in byte type),
@@ -25,14 +25,18 @@ private int numberOfColumns;// represent number of period a day.
   * */
  public InstructorsList( byte[]  dataloaded, int nbDay, int ndPerDay) {
    super( dataloaded, nbDay, ndPerDay);
+   _dataloaded = dataloaded;
+   _numberOfLines = nbDay;
+   _numberOfColumns = ndPerDay;
   }
   /**
    * methode analyse st, a stringtokenizer variable
    * INPUT:
    * OUTPUT: Vector
    */
-  public Vector analyseTokens(){
+  public boolean analyseTokens(){
     String token;
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state = 0;
     int line=0;
     int stateDispo =1;
@@ -64,7 +68,7 @@ private int numberOfColumns;// represent number of period a day.
         case 2:
           // traitement des colonnes
           StringTokenizer tokenDispo = new StringTokenizer(token);
-          if(tokenDispo.countTokens() != numberOfColumns){
+          if(tokenDispo.countTokens() != _numberOfColumns){
             new FatalProblemDlg(
            "Wrong number of instructor availabilities periods per day at line: "+line
            +" in the instructor file:" +
@@ -74,7 +78,7 @@ private int numberOfColumns;// represent number of period a day.
           // traitement de la description de la disponibilité
           while (tokenDispo.hasMoreElements()){
             String dispo = tokenDispo.nextToken();
-            if ((!dispo.equalsIgnoreCase("1")) || (!dispo.equalsIgnoreCase("5"))){
+            if ((!dispo.equalsIgnoreCase("1")) && (!dispo.equalsIgnoreCase("5"))){
               new FatalProblemDlg(
                   "Wrong descrition of instructor availability at line: "+line
                   +" in the instructor file:" +
@@ -84,12 +88,12 @@ private int numberOfColumns;// represent number of period a day.
           }
 
           stateDispo++;
-          if (stateDispo> numberOfLines)
+          if (stateDispo> _numberOfLines)
             state =1;
           break;
       }
     }
-    return null;
+    return true;
   }
   /**
    *build instructors list.
@@ -97,11 +101,50 @@ private int numberOfColumns;// represent number of period a day.
    *
    */
   public void buildInstructorsList(){
-    Instructor inst= new Instructor();
-    inst.addDispDay("1 1 1 5 5");
-    Resource resc = new Resource (0,"Alex", inst);
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    String token;
+    Vector avail= new Vector();
+    String instID="";
+    int state = 0;
+    int currentKey=0;
+    int stateDispo =1;
+    //Resource resc;
+    //Instructor instruc;
+    while (st.hasMoreElements()){
+
+      token = st.nextToken();
+      switch (state){
+        case 0:
+          //number of instructors in the file
+           state=1;
+          break;
+        case 1:
+          // instructor name
+          instID= token;
+          avail= new Vector();
+          state =2;
+          stateDispo =1;
+          break;
+        case 2:
+          // instructor availabilities
+         avail.add(token);
+         stateDispo++;
+         if (stateDispo> _numberOfLines){
+           Instructor inst = new Instructor();
+           inst.setInstructorDisp(avail);
+           this.addResource(new Resource(currentKey, instID, inst));
+           state =1;
+           currentKey++;
+         }
+         break;
+      }
+    }
   }
 
+  /**
+   * created a list of instructor
+   * OUTPUT: Vector of String
+   */
   public Vector getNamesVector() {
     return new Vector();
   }

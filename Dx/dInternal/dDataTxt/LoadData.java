@@ -11,6 +11,7 @@ package dInternal;
 
 import java.util.Vector;
 import java.util.StringTokenizer;
+import java.io.File;
 
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gIO.FilterFile;
@@ -21,6 +22,10 @@ public class LoadData {
   String _roomsFileName;
   String _activitiesFileName;
   String _studentsFileName;
+  private static String _SEP= File.separator;
+  private InstructorsList _instructorsList;
+  private RoomsList _roomsList;
+  private StudentsList _studentList;
 
   private final int NUMBER_OF_TOKENS = 4;
   private final String CR_LF = "\r\n";
@@ -50,11 +55,11 @@ public class LoadData {
         System.exit(1);
       }
     } else {
-      /*new DisplayFatalProblem(
+      new FatalProblemDlg(
           "Unable to filter a file" +
           str +
           "\n" +
-          "I was in DLoadData constructor ");*/ //ys
+          "I was in DLoadData constructor "); //ys
       System.exit(1);
     }
   }
@@ -67,15 +72,18 @@ public class LoadData {
    // _v.add(extractStudents(args[1]));
   }
 
-  private Vector extractInstructors(){
+  private InstructorsList extractInstructors(){
     byte[]  dataloaded = preLoad(_instructorFileName);
     if (dataloaded != null) {
       //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
       //return analyseInstructorTokens (st);
-      InstructorsList anInst = new InstructorsList(dataloaded,5,14);
-      return anInst.analyseTokens();
+      _instructorsList = new InstructorsList(dataloaded,5,14);
+      if (_instructorsList.analyseTokens()){
+        _instructorsList.buildInstructorsList();
+        return _instructorsList;
+      }
     } else {// (NullPointerException npe) {
-      new FatalProblemDlg("npe.toString()" );
+      new FatalProblemDlg("I was in LoadData class and extractInstructors. preload failed!!!" );
       System.exit(52);
     }
     return null;
@@ -84,6 +92,7 @@ public class LoadData {
 
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
+    filter.appendToCharKnown("тк");
     if (filter.validFile(str)) {
       return filter.getByteArray();
     } else return null;
@@ -110,6 +119,15 @@ return null;
    return new Vector();
   }
 
+  public static void main(String[] args) {
+    String path ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"filedata.sig";
+    String pathSave ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"SAVEInst.sig";
+    System.out.println("PATH: "+path);//debug
+     LoadData ldata=  new LoadData(path);
+     InstructorsList insList = ldata.extractInstructors();
+       FilterFile filter= new FilterFile(insList.toString().getBytes());
+       filter.saveFile(pathSave);
+  } // end main
 
 
 }

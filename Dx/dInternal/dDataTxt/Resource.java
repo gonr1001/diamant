@@ -37,6 +37,15 @@ public class Resource {
     return _resourseObjet;
   }
 
+  public void setObject(Object obj){
+    _resourseObjet = new Object();
+    _resourseObjet = obj;
+  }
+
+  public void setID(String id){
+    _resourceID = id;
+  }
+
   public String toString(){
     String instInfo;
     instInfo= _resourceID + CR_LF;

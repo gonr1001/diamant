@@ -18,6 +18,7 @@ abstract class ResourceList {
   private StringTokenizer _st;// resource in text format
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
+  private static final String CR_LF = "\r\n";
 
   /**
    * Constructor call with byte[]  dataloaded
@@ -43,9 +44,9 @@ abstract class ResourceList {
    * INPUT:
    * OUTPUT: Vector
    */
-  public Vector analyseTokens(){
+  public boolean analyseTokens(){
 
-    return null;
+    return false;
   }
 
   /**
@@ -93,7 +94,14 @@ abstract class ResourceList {
   /**
    *
    * */
-  public void sortResourceList(){
+  public void sortResourceListByID(){
+
+  }
+
+  /**
+   *
+   * */
+  public void sortResourceListByKey(){
 
   }
 
@@ -101,8 +109,11 @@ abstract class ResourceList {
    *
    * */
   public String toString(){
-
-    return "";
+    String reslist="";
+    for (int i=0; i< _resourceList.size()-1; i++)
+      reslist+= ((Resource)_resourceList.get(i)).toString()+CR_LF;
+    reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString();
+    return reslist;
   }
   /**
    * Main

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--JBuilder XML Project-->
 <project>
+  <property category="debug.0" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
+  <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="DefaultConfiguration" value="-1"/>
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.0" name="ConfigurationName" value="DRun"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.0" name="application.class" value="DRun"/>
+  <property category="runtime.0" name="application.class" value="dInternal.LoadData"/>
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
   <property category="sys" name="AuthorLabel" value="@author"/>
   <property category="sys" name="BackupPath" value="../Temp/Dx/Proto/bak"/>
@@ -43,4 +46,8 @@
   <file path="dInterface/InstructorAvailabiliyDlg.java"/>
   <file path="dInternal/InstructorsList.java"/>
   <file path="Proto.html"/>
+  <file path="dInternal/Room.java"/>
+  <file path="dInternal/RoomsList.java"/>
+  <file path="dInternal/Student.java"/>
+  <file path="dInternal/StudentsList.java"/>
 </project>
