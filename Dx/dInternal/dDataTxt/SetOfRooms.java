@@ -119,7 +119,7 @@ public class SetOfRooms extends SetOfResources{
             position = 3;
             break;
           case 3:
-            Room room = new Room();
+            RoomAttach room = new RoomAttach();
             while (currentLine.hasMoreElements()){
               token = currentLine.nextToken();
               switch (state){

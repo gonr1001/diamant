@@ -12,7 +12,7 @@ import java.util.Vector;
 import java.util.StringTokenizer;
 import dInternal.dUtil.DXObject;
 
-public class Room extends DXObject{
+public class RoomAttach extends DXObject{
 
   private int _capacity=0;
   private String _description="";
@@ -21,7 +21,7 @@ public class Room extends DXObject{
   private Vector _roomDisp;//
   private final String CR_LF = "\r\n";
 
-  public Room() {
+  public RoomAttach() {
     _roomDisp = new Vector();
   }
   /**
@@ -88,7 +88,7 @@ public class Room extends DXObject{
   /**
    *
    * */
-  public Vector getRoomDisp(){
+  public Vector getRoomAttachDisp(){
     return _roomDisp;
   }
   /*
