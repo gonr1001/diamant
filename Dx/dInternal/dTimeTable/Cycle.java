@@ -44,7 +44,6 @@ public class Cycle extends DXObject{
       _setOfDays.addResource(new Resource(dayID,((Day)day.getAttach()).cloneDay()),0);
     }
 
-    System.out.println("STOP");//
   }
 
   /**
