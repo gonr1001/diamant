@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.92 $  $Date: 2004-04-05 21:55:52 $
+ * Title: DConst $Revision: 1.93 $  $Date: 2004-04-07 16:35:34 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.92 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.93 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -281,6 +281,7 @@ public class DConst {
   public final static String R_ACTIVITY_BEGIN_HOUR = res.getString("RActivityBeginHour");//Heure de début
   public final static String R_ACTIVITY_END_HOUR = res.getString("RActivityEndHour");//Heure de fin
   public final static String R_INSTRUCTOR_NAME = res.getString("RInstructorName");//Nom instructor
+  public final static String R_INSTRUCTOR_NAME_AVAIL = res.getString("RInstructorNameAvail");//Dispo de l'enseignant
   public final static String R_ROOM_NAME = res.getString("RRoomName");//Nom Salle
   public final static String R_STUDENT_NAME = res.getString("RStudentName");//Nom Salle
   public final static String R_STUDENT_SIZE_NAME = res.getString("RStudentSizeName");//Student size
