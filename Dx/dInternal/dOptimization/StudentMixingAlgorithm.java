@@ -247,9 +247,10 @@ public class StudentMixingAlgorithm implements Algorithm {
     value.setIntValue(0);
     DXValue size;
     Vector sizeOfGroups= new Vector();
+    Type type= _dm.getSetOfActivities().getType(activityID,typeID);
     for(int i=0; i< allConvGroup.size(); i++){
       size= new DXValue();
-      int group= i+1;
+      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
       size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
       //size.setIntValue(0);
       sizeOfGroups.add(size);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.15 $  $Date: 2004-02-23 16:21:06 $
+ * Title: SectionDlg $Revision: 1.16 $  $Date: 2004-03-04 22:02:57 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
 
@@ -337,6 +337,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       //_buttonsPanel.getComponent(1).setEnabled(false);
       //_sortButton.setEnabled(true);
       _sortCombo.setEnabled(true);
+      ((JButton)_buttonsPanel.getComponent(1)).setEnabled(false);
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
@@ -355,6 +356,7 @@ public class SectionDlg extends JDialog implements ActionListener{
           listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true, _sortIndex);
           //_buttonsPanel.getComponent(1).setEnabled(true);
           _sortCombo.setEnabled(false);
+          ((JButton)_buttonsPanel.getComponent(1)).setEnabled(true);
           _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
         }
       }
@@ -364,6 +366,7 @@ public class SectionDlg extends JDialog implements ActionListener{
           //_buttonsPanel.getComponent(1).setEnabled(true);
           //_sortButton.setEnabled(false);
           _sortCombo.setEnabled(false);
+          ((JButton)_buttonsPanel.getComponent(1)).setEnabled(true);
         }
       }
       //SetText for the JLabel containing the number of elements in a group
@@ -499,16 +502,18 @@ public class SectionDlg extends JDialog implements ActionListener{
       //System.out.println("Student: "+studentData+" -Activity: "+String.valueOf(_actID+_typeID)+
                          //" -StudentAttach Group: "+ s.getGroup(_actID+_typeID));
     }//end for(int i = 0; i < _notAssignedVector.size(); i++)
+    Type type=_activities.getType(_actID,_typeID);
     for(int j = 0; j < _assignedVectors.length; j++){
+      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(j).getID());
       for(int k = 0; k < _assignedVectors[j].size(); k++){
         studentData = (String)_assignedVectors[j].elementAt(k);
         s = getStudentAttach(studentData, _sortIndex);
         //System.out.println("Student: "+studentData+" -Activity: "+String.valueOf(_actID+_typeID)+
                         // " -StudentAttach: "+ s);
         if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
-          s.setInGroup(_actID+_typeID, j+1, true);
+          s.setInGroup(_actID+_typeID, group, true);
         else
-          s.setInGroup(_actID+_typeID, j+1, false);
+          s.setInGroup(_actID+_typeID, group, false);
       }//end for(int k = 0; k < _assignedVectors[j].size(); k++)
     }//end for(int j = 0; j < _assignedVectors.length; j++)
   }//end method
