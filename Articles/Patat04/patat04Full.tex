@@ -6,8 +6,6 @@
 \usepackage{verbatim}
 \setlength{\parskip}{1.5ex plus0.5ex minus0ex}
 
-\newcommand{\bi}{\begin{itemize}}
-\newcommand{\ei}{\end{itemize}}
 
 \newcommand{\ang}{\textsf}
 \newcommand{\key}{\textsf}
@@ -22,34 +20,31 @@
 \newcommand{\xp}{eXtreme Programming}
 \def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
 
-
 \title{\bf{L'architecture d'un système de production des horaires
 de cours et des examens}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao Muñoz}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
 \email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
-\email{Domingo.Palao@USherbrooke.ca} }
+\email{Domingo.Palao@USherbrooke.ca}}
 \date{}
+
 %%%%%%%%%%%%%%%%%%
 \pagestyle{plain} %% to be commented when sent
 \newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small\normalsize}
 \newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small\normalsize}
 \newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small\normalsize}
 %%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
-
- \maketitle
+\maketitle
 
 \intd
 
 \begin{abstract} \label{intro}
-
 \input{resume.tex}
-
 \end{abstract}
-
 
 {\bf Mots clés :} Production d'horaires, Ouverture, Extensibilité.
 
@@ -444,29 +439,30 @@ dans la figure \ref{fig:fFour}.
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
-\begin{picture}(4.5,8)
-  \put(1.5,7.7){\makebox(0,0){Interface utilisateur}}
-  \put(0,6.5){\framebox(3.5,1){Saisie de données}}
-  \put(3.5,7.1){\vector(1,-1){1.5}}
-  \put(5,5.6){\vector(-1,1){1.5}}
+\begin{picture}(10.5,5)
+  \put(1.5,4.7){\makebox(0,0){Interface utilisateur}}
+  \put(0,3.5){\framebox(3.5,1){Saisie de données}}
+  \put(1.8,3.68){\makebox(0,0){(Navigateur web)}}
+  \put(3.5,4.1){\vector(1,-1){1.5}}
+  \put(5,2.6){\vector(-1,1){1.5}}
 
-  \put(1.5,4.2){\makebox(0,0){Interface utilisateur}}
-  \put(0,3){\framebox(3.5,1){Autres systèmes}}
-  \put(3.5,3.6){\vector(1,1){1.5}}
-  \put(5,5.1){\vector(-1,-1){1.5}}
+  \put(1.5,1.2){\makebox(0,0){Interface utilisateur}}
+  \put(0,0){\framebox(3.5,1){Autres systèmes}}
+  \put(3.5,.6){\vector(1,1){1.5}}
+  \put(5,2.1){\vector(-1,-1){1.5}}
 
-  \put(1.5,6){\makebox(0,0){Interface utilisateur}}
-  \put(0,4.8){\framebox(3.5,1){Création d'horaires}}
-  \put(3.5,5.2){\vector(1,0){1.5}}
-  \put(5,5.2){\vector(-1,0){1.5}}
+  \put(1.5,3){\makebox(0,0){Interface utilisateur}}
+  \put(0,1.8){\framebox(3.5,1){Création d'horaires}}
+  \put(3.5,2.2){\vector(1,0){1.5}}
+  \put(5,2.2){\vector(-1,0){1.5}}
 
-  \put(6.2,6){\makebox(0,0){Logique d'affaires}}
-  \put(5,4.8){\framebox(2.5,1){Serveur Web}}
-  \put(7.5,5.2){\vector(1,0){1}}
-  \put(8.5,5.2){\vector(-1,0){1}}
+  \put(6.2,3){\makebox(0,0){Logique d'affaires}}
+  \put(5,1.8){\framebox(2.5,1){Serveur Web}}
+  \put(7.5,2.2){\vector(1,0){1}}
+  \put(8.5,2.2){\vector(-1,0){1}}
 
-  \put(10.2,6){\makebox(0,0){Persistance des données}}
-  \put(8.5,4.8){\framebox(3.7,1){Serveur base de données}}
+  \put(10.2,3){\makebox(0,0){Persistance des données}}
+  \put(8.5,1.8){\framebox(3.7,1){Serveur base de données}}
 
 \end{picture}
 \caption{L'implementation de l'architecture trois couches pour le
@@ -677,15 +673,20 @@ existants.
 
 
 
-Présentation de ...
-
-Architecture + justifications
-
 Dans le système que nous proposons, nous essayons de limiter le
 plus possible d'intervention humaine afin de réduire des erreurs
 de manipulation. Nous essayons de réduire aussi le sources
 possible d'erreurs en vérifiant l'entrée de données.
+
 \bibliography{bibDiamant,bibProg}
+
+
+\end{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Glossaire}
 
@@ -729,12 +730,6 @@ for each module is allowed to make about the other modules."
 \cite{meyer97}
 
 \end{description}
-
-\end{document}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 {\bf Introduction.} La production d'horaires est une tâche
