@@ -29,10 +29,10 @@ public class LoadData {
    */
   public LoadData(String args) {
     _v = new Vector(); // to eliminate
-   verifyInportDataFile(args);
+   verifyImportDataFile(args);
   }
 
-  private void verifyInportDataFile(String str){
+  private void verifyImportDataFile(String str){
     Filter filter = new Filter();
     if (filter.doIt(str)) {
       StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), CR_LF );
@@ -70,8 +70,10 @@ public class LoadData {
   private Vector extractInstructors(){
     byte[]  dataloaded = preLoad(_instructorFileName);
     if (dataloaded != null) {
-      StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
-      return analyseInstructorTokens (st);
+      //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
+      //return analyseInstructorTokens (st);
+      InstructorsList anInst = new InstructorsList(dataloaded,5,14);
+      return anInst.analyseTokens();
     } else {// (NullPointerException npe) {
       new FatalProblemDlg("npe.toString()" );
       System.exit(52);

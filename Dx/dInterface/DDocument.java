@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.6 $  $Date: 2003-02-26 17:44:07 $
+ * Title: DDocument $Revision: 1.7 $  $Date: 2003-03-05 18:00:39 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.7 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInterface;
@@ -36,6 +36,7 @@ import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
 import dResources.DConst;
+import java.util.StringTokenizer;//debug
 
 public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;
@@ -52,6 +53,7 @@ public class DDocument implements ActionListener, DModelListener{
 
   //-------------------------------------------
   public DDocument(DView dView) {
+        System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the _jif */
   final int MIN_HEIGHT = 512;

@@ -37,6 +37,9 @@
   <file path="dInternal/DModelEvent.java"/>
   <file path="dInternal/DModelListener.java"/>
   <file path="DRun.java"/>
+  <file path="DRunTest.java"/>
+  <file path="dInternal/Instructor.java"/>
+  <file path="dInternal/InstructorsList.java"/>
   <file path="Proto.html"/>
   <file path="dInternal/TTParameters.java"/>
   <file path="dInternal/TTParametersEvent.java"/>
