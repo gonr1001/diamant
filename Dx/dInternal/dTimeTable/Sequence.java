@@ -102,6 +102,20 @@ public class Sequence extends DXObject{
     }
    }
 
+   /**
+    * */
+   public Sequence cloneSequence(){
+     Sequence newSeq= new Sequence();
+     newSeq._currentPeriodIndex= this._currentPeriodIndex;
+     for (int i=0; i<this.getSetOfPeriods().size(); i++ ){
+       Period newPer=((Period)this.getSetOfPeriods().getResourceAt(i).getAttach()).clonePeriod();
+       int position=(int)getSetOfPeriods().getResourceAt(i).getKey();
+       newSeq.getSetOfPeriods().setCurrentKey(position);
+       newSeq.getSetOfPeriods().addResource(new Resource(Integer.toString(position),newPer),0);
+     }
+     return newSeq;
+   }
+
 
    private SetOfResources _setOfPeriods;
    private int _currentPeriodIndex = 0;

@@ -41,8 +41,10 @@ public class Cycle extends DXObject{
       lastIndWeek++;
       String dayID= TTStructure._weekTable[lastIndWeek%TTStructure.getNumberOfActiveDays()];
       _setOfDays.setCurrentKey(i+1);
-      _setOfDays.addResource(new Resource(dayID,(Day)day.getAttach()),0);
+      _setOfDays.addResource(new Resource(dayID,((Day)day.getAttach()).cloneDay()),0);
     }
+
+    System.out.println("STOP");//
   }
 
   /**

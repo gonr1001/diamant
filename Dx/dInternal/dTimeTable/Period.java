@@ -134,6 +134,18 @@ public class Period extends DXObject {
     return 0;
   }
 
+  /**
+   * */
+  public Period clonePeriod(){
+    Period newPer= new Period();
+    newPer.nbInstConflict= 0;
+    newPer.nbRoomConflict=0;
+    newPer.nbStudConflict=0;
+    newPer._priority= this._priority;
+    newPer._beginHour= this._beginHour;
+    return newPer;
+  }
+
   private int nbStudConflict = 0;
   private int nbInstConflict = 0;
   private int nbRoomConflict= 0;

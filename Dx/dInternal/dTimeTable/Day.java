@@ -108,6 +108,20 @@ public class Day extends DXObject{
     }
    }
 
+   /**
+  * */
+ public Day cloneDay(){
+   Day newDay= new Day();
+   newDay._currentSequenceIndex= this._currentSequenceIndex;
+   for(int i=0; i< this.getSetOfSequences().size(); i++){
+     String id= getSetOfSequences().getResourceAt(i).getID();
+     Sequence seq= ((Sequence)this.getSetOfSequences().getResourceAt(i).getAttach()).cloneSequence();
+     newDay.getSetOfSequences().addResource(new Resource(id,seq),0);
+   }// end for(int i=0; i< day.getSetOfSequences().size(); i++)
+
+   return newDay;
+  }
+
 
   private SetOfResources _setOfSequences;
   private int _currentSequenceIndex = 0;
