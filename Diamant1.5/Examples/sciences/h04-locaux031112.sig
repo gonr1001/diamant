@@ -1,0 +1,46 @@
+Faculté des sciences;
+Liste des locaux pour réservations;
+
+Nom du local;Capacité;Fonction;Liste des caractéristiques;Notes;
+
+D1-3012;32;211;08,11,14,57;laboratoire de chimie;
+D1-3013;80;211;08,11,57;laboratoire de chimie;
+D1-3014;20;211;08,44,57;laboratoire de chimie;
+D1-3016;18;211;08,57;laboratoire de chimie;
+D1-3019;40;210;07,11,22,44;laboratoire informatique;
+D2-0051;30;210;8,11,27,44;laboratoire informatique;
+D2-1060;409;620;11,14,15,20,44;xxx;
+D2-2032;66;110;02,11,14,16;xxx;
+D2-2048;15;211;08,53;laboratoire de physique;
+D2-2050;40;211;08,11,53;laboratoire de physique;
+D3-2024;40;211;08,11,54;laboratoire de biologie;
+D3-2028;48;211;08,11,55;laboratoire de microbiologie;
+D3-2045;56;211;08,11,20,37,38,44,54;laboratoire de biologie;
+D3-2047;48;211;08,11,37,38,44,56;laboratoire de biochimie;
+D4-0014;33;210;07,22,44;laboratoire informatique;
+D4-0015;15;210;07,44,51;laboratoire informatique;
+D4-0023;24;210;07,22,44;laboratoire informatique;
+D4-0132;30;210;07,27;laboratoire informatique;
+D4-1017;33;210;07,44,52;laboratoire informatique;
+D4-10211;20;210;07,44,52;laboratoire informatique;
+D4-2009;20;210;07,27;laboratoire informatique;
+D4-2027;16;211;08,54;laboratoire de biologie;
+D6-0051;35;120;02,11,14;xxx;
+D7-2001;33;110;02,11,14;xxx;
+D7-2002;23;110;02,11,14;xxx;
+D7-2007;61;110;03,11,14;xxx;
+D7-2009;50;110;02,11,14;xxx;
+D7-2011;24;110;02,11,14;xxx;
+D7-2013;48;110;02,11,14;xxx;
+D7-2014;50;110;02,11,14;xxx;
+D7-2015;48;110;02,11,14;xxx;
+D7-2016;51;110;02,11,14;xxx;
+D7-2017;52;110;02,11,14;xxx;
+D7-2019;22;110;02,11,14;xxx;
+D7-2020;20;110;02,11,14;xxx;
+D7-2021;68;110;02,11,14;xxx;
+D7-2022;50;110;02,11,14;xxx;
+D7-2023;92;110;02,11,14;xxx;
+D7-2024;49;110;02,11,14,16;xxx;
+D7-3021;138;110;03,11,14,15;xxx;
+
