@@ -1,4 +1,4 @@
-\chapter{Description de la structure de données de \diamant{}} 
+\chapter{Description de la structure de données de \diamant{}}
 
 Le noeud principal de la structure de données de \diamant{} est représenté par la classe \emph{LoadData} (voir figure \ref{datastruct}). Cette classe contient la liste des différentes ressources, à savoir:
 
@@ -7,7 +7,7 @@ Le noeud principal de la structure de données de \diamant{} est représenté par l
     \item \emph{RoomsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des locaux.\\
     \item \emph{InstructorsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'instructeurs.\\
     \item \emph{ActivitiesList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'activités.\\
-\end{itemize}  
+\end{itemize}
 
 Chacune des listes de ressources citées ci-dessus hérite de la super classe \emph{ResourceList}. \emph{ResourceList} contient la liste de tous les éléments d'une ressource. Cette liste d'éléments est en réalité une liste d'objects de type \emph{Resource}. L'object \emph{Resource} décrit quand à lui un élément par sa clé (\emph{resourceKey}), son identifiant (\emph{resourceID}) et la nature de cet object (\emph{resourceObject}). Il est à noter que \emph{resourceObject} peut être de type \emph{Instructor} ou \emph{Activity} ou \emph{Room} ou encore \emph{Student}
 
@@ -23,23 +23,66 @@ Nous décrirons chacune des structures dans les prochaines sections.
 
 
 \section{\emph{LoadData}}
-
-\section{\emph{StudentsList}}
-
-\section{\emph{RoomsList}}
-
-\section{\emph{InstructorsList}}
-
-\section{\emph{ActivitiesList}}
+Cette classe est chargée de la gestion de deux taches principales
+:
+\begin{enumerate}
+    \item \textbf{Le chargement de fichiers} :  Dans cette étape, l'intégrité des fichier des ressources est d'abord vérifiée et ensuite chaque fichier est chargé dans un vecteur de bytes pour leur postérieur
+    traitement. Cette tâche est effectué à l'aide de la classe \emph{FilterFile} de la librairie
+    \emph{com.iLib.gIO.FilterFile}.
+    \item \textbf{La création des listes de ressources} : Dans cette étape chaque liste de ressources est créée et peuplée
+    (remplie) avec les éléments correspondantes. Cette tâche est
+    effectuée en utilisant les classe décrites à continuation.
+\end{enumerate}
 
 \section{\emph{ResourceList}}
+Cette classe implémente la structure de données
+\emph{ResourceList}.  Elle déclare les méthodes
+\emph{analyseTokens()} et \emph{buildResourceList()} qui
+permettent de peupler la liste du ressource. Cette classe définie
+les méthodes nécessaires pour insérer, éliminer, éditer, chercher
+et trier les ressources.
+
+\section{\emph{***List}}
+Cet ensemble représente les classes \emph{RoomsList},
+\emph{InstructorsList}, \emph{ActivitiesList},
+\emph{StudentsList}.  Ces classes héritent de la super classe
+\emph{ResourceList} et, par conséquent, elles implémentent les
+méthodes \emph{analyseTokens()} et \emph{buildResourceList()}.
+
+Comme un cas spécial, la classe \emph{StudentsList} a son propre
+implémentation des méthodes \emph{removeStudent} et
+\emph{removeStudent} car dans ce cas, il faut valider l'existence
+de courses de choix de l'étudiant avant d'insérer un nouveau
+ressource à la liste et l'existence . \textbf{(Vérifier cette
+phrase avec Yannick, pour quoi removeStudent??)}.
 
 \section{\emph{Resource}}
+Cette classe implémente la structure de données \emph{Resource}.
+Elle définie les méthodes nécessaires pour insérer, éditer et
+obtenir les champs de la ressource.
 
 \section{\emph{Instructor}}
+Cette classe représente la disponibilité d'un instructeur
+appartenant au fichier d'instructeurs (Voir section 1.2). Elle
+implémente les méthodes pour gérer (insérer, éliminer, éditer,
+obtenir) la disponibilité d'un instructeur.
 
 \section{\emph{Room}}
+Cette classe représente l'information d'un local appartenant au
+fichier de locaux (Voir section 1.4).  Elle implémente les
+méthodes pour gérer (insérer, éliminer, éditer, obtenir) les
+différents propriétés d'un local, cela inclut sa disponibilité.
 
 \section{\emph{Student}}
+Cette classe représente l'information d'un étudiant appartenant au
+fichier d'étudiants (Voir section 1.1).  Elle implémente les
+méthodes pour gérer (insérer, éliminer, éditer, obtenir) les
+différents propriétés d'un étudiant, cela inclut se choix de
+cours.
 
 \section{\emph{Activity}}
+Cette classe représente l'information d'une activité appartenant
+au fichier d'activités (Voir section 1.3).  Elle implémente les
+méthodes pour gérer (insérer, éliminer, éditer, obtenir) les
+différents propriétés d'une activité, cela inclut ....\textbf(À
+finir)
