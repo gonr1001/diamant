@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.3 $  $Date: 2003-06-09 10:23:40 $
+ * Title: SaveAsDlg $Revision: 1.4 $  $Date: 2003-06-13 09:56:44 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.4 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -24,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -82,12 +83,15 @@ public class SaveAsDlg extends JDialog
 
 
   public void saveAs() {
+    File file;
+    ReWriteFileDlg rwfDlg = null;
 
     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
     fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
                 DConst.DIA_FILE ) );
 
     fc.setMultiSelectionEnabled( false );
+
     // Display the file chooser in a dialog
     int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
 
@@ -97,13 +101,28 @@ public class SaveAsDlg extends JDialog
 
       // Save the file name
       String currentFile = fc.getSelectedFile().getAbsolutePath();
+      System.out.println("currentFile " + currentFile);
       if ( !currentFile.endsWith(DConst.DOT_DIA) )
         currentFile = currentFile.concat(DConst.DOT_DIA);
-      /** @todo dialog if replace file */
 
-      _dApplic.getDMediator().saveCurrentDoc(currentFile);
-      new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
 
-    }
-  }
-}
+      // If there is a file with this file name in the same path
+      file = new File(currentFile);
+      if (file.exists()){
+        System.out.println("I exists");
+        rwfDlg = new ReWriteFileDlg(_dApplic, currentFile);
+      }
+
+      if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().OK_OPTION){
+        _dApplic.getDMediator().saveCurrentDoc(currentFile);
+        new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+      }
+      if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().NO_OPTION){
+        saveAs();
+      }
+      if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CANCEL_OPTION || rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CLOSED_OPTION){
+
+      }
+    }// end if(returnVal == JFileChooser.APPROVE_OPTION)
+  }//end saveAs() method
+}//end class
