@@ -10,6 +10,7 @@ package dInternal.dUtil;
  */
 import java.util.StringTokenizer;
 import com.iLib.gDialog.FatalProblemDlg;
+import java.io.File;
 
 public class DXToolsMethods {
 
@@ -139,6 +140,15 @@ public class DXToolsMethods {
    * */
    public final static int convertSTIPeriods(int hour, int minute){
      return hour-7;
+   }
+
+   /**
+    * check if a file exist
+    * @param string the file name
+    * @return boolean true if the file exist a nd false otherwise
+    * */
+   public final static boolean isFileExist(String filename){
+     return (new File(filename)).exists();
    }
 
 }

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.7 $  $Date: 2003-07-07 17:35:10 $
+ * Title: OpenTTDlg $Revision: 1.8 $  $Date: 2003-07-11 10:41:30 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -30,6 +30,7 @@ import java.util.ResourceBundle;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
+import dInterface.dUtil.DXTools;
 
 import java.awt.Dimension;
 
@@ -70,8 +71,14 @@ public class OpenTTDlg extends JDialog {
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-     int returnVal = fc.showOpenDialog(dApplic.getJFrame());
-
+     int returnVal =DXTools.showOpenDialog(dApplic.getJFrame(),fc);
+      /*int returnVal=1;
+      String filename="nothing.txt";
+     while((!DXToolsMethods.isFileExist(filename))||
+           (returnVal==JFileChooser.CANCEL_OPTION)){
+       returnVal = fc.showOpenDialog(dApplic.getJFrame());
+       filename= fc.getSelectedFile().getAbsolutePath();
+     }*/
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
      if (returnVal == JFileChooser.APPROVE_OPTION) {
