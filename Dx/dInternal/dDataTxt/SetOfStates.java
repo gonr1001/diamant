@@ -4,14 +4,13 @@ import java.awt.Color;
 
 public class SetOfStates extends SetOfResources{
 
-  String _error;
+  String _error="";
   /***
    * constructor
    */
 
   public SetOfStates() {
     super(5);
-    _error="";
   }
 
   /**

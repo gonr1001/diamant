@@ -107,7 +107,7 @@ class __tags {
 class __options {
 }/**
 @__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfFunctions:oiref>=210,158,1496,158:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.LoadData:oiref>=10,776,200,446,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.LoadData:oiref>=10,776,200,430,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructors:oiref>=864,776,177,206,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.Resource:oiref>=230,776,183,270,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.Assignment:oiref>=2058,10,161,398,1:oigroup>

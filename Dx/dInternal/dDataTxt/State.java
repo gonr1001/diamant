@@ -8,20 +8,58 @@ package dInternal.dData;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
+import java.awt.Color;
+import dInternal.dUtil.DXObject;
 
-public class State {
-  int _modifCount;
-  int _conflitIns;
+public class State extends DXObject{
+  private Color color;
+  private int value;
 
+  /**
+   * constructor
+   */
   public State() {
-    _modifCount = 0;
+    color = Color.BLACK;
   }
 
-  public void incrModif() {
-    _modifCount++;
+  /**
+   * constructor
+   */
+  public State(Color col, int val) {
+    color = col;
+    value= val;
   }
 
-  public int getModif(){
-    return _modifCount;
+  /**
+   *
+   * @param col
+   */
+  public void setColor(Color col){
+    color = col;
   }
+
+  /**
+   *
+   * @param val
+   */
+  public void setValue(int val){
+    value = val;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public Color getColor(){
+    return color;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public int getValue(){
+    return value;
+  }
+
 }
