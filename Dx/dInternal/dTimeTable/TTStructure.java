@@ -12,7 +12,7 @@ import org.w3c.dom.*;
 public class TTStructure {
   private SetOfCycles _setOfCycles;
   private int _periodLenght=60;
-  private int _nbOfStCycles=1;
+  private int _nbOfStCycles=2;
   private int _nbOfStDays=5;
   //DXTimeTable tag
   public static final String ITEM2= "DXTimeTable";
@@ -27,9 +27,11 @@ public class TTStructure {
   private int _row;
 
   public TTStructure() {
+    _setOfCycles= new SetOfCycles();
     _col=6;
     _row= 15;
-    CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    loadTTStructure("StandardTTC.xml");
 
   }
 
@@ -158,21 +160,22 @@ public Period getPeriod(){
 
           //add AM periods
           int [] beginT={8,30};
-          eltSeq= CreateSeqPeriods(doc,"AM",8,30,beginT,0);
+          eltSeq= CreateSeqPeriods(doc,"AM",4,60,beginT,0);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
           //add PM periods
           beginT[0]=13; beginT[1]=00;
-          eltSeq= CreateSeqPeriods(doc,"PM",10,30,beginT,0);
+          eltSeq= CreateSeqPeriods(doc,"PM",5,60,beginT,0);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
           //add Evening periods
           beginT[0]=19; beginT[1]=00;
-          eltSeq= CreateSeqPeriods(doc,"EM",6,30,beginT,1);
+          eltSeq= CreateSeqPeriods(doc,"EM",3,60,beginT,1);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
 
           // add sequences in a day
           eltDay= wr.appendChildInElement(eltDay,eltSeqs);
           Element childDay=wr.createElement(doc,ITEM2_subConst[2],Integer.toString(day+1));
-          eltDays= wr.appendChildInElement(eltDays, childDay);
+          eltDay= wr.appendChildInElement(eltDay,childDay);
+          //eltDays= wr.appendChildInElement(eltDays, childDay);
           eltDays= wr.appendChildInElement(eltDays, eltDay);
         }// end for (day)
         Element childCycle=wr.createElement(doc,ITEM2_subConst[0],Integer.toString(cyc+1));
@@ -203,17 +206,7 @@ public Period getPeriod(){
       Document  doc = xmlFile.getDocumentFile(fileName);
       ReadXMLElement list= new ReadXMLElement();
       root= list.getRootElement(doc);
-      //root = list.getRootElement(file);//("resourceList.xml");
-      item= list.getDOMelement(root,ITEM2);
-      int size= list.getSize(item,Tag.ITEM2_subTag[0]);
-      //item = list.getDOMelement(item, tagConst.ITEM2_subTag[0]);
-      for (int i=0; i< size; i++){
-        Element cycle= list.getElement(item,Tag.ITEM2_subTag[0],i);
-        Element days= list.getElement((Element)cycle,Tag.ITEM2_subTag[1],0);
-        //System.out.println(" days Size: "+list.getSize((Element)days,Tag.ITEM2_subTag[2]));
-        System.out.println("Cycle lenght: "+list.getElementValue(cycle,Tag.ITEM2_subConst[1]));
-
-      }// end for i
+      _setOfCycles.readXMLtag(root);
     }catch(Exception e){
       System.out.println(e);
       return false;
