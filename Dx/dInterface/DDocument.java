@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.128 $  $Date: 2005-01-21 16:05:58 $
+ * Title: DDocument $Revision: 1.129 $  $Date: 2005-01-21 21:56:51 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.128 $
+ * @version $Revision: 1.129 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -97,7 +97,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 * @param dMediator (pattern Mediator)
 	 * @param ttname This string will be displayed as the title of the JIF
 	 * @param fileName is the full path file name containing the TTStructure
-	 * @param type is the type of timetable to be constructed
+	 * @param type is the type of timetable to be constructed see DConst.
 	 * 		 possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
 	 * 
 	 */

@@ -398,7 +398,7 @@ public class SetOfActivitiesSites extends DSetOfResources{
   private boolean analyseSIGTokens(byte[]  dataloaded, int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
-    StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
+    StringTokenizer st = new StringTokenizer(new String (dataloaded),DConst.CR_LF );
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     //int state=0;
     int position=beginPosition;

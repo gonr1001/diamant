@@ -1,6 +1,6 @@
 /**
 *
-* Title: DLoadData $Revision: 1.3 $  $Date: 2004-12-16 19:20:57 $
+* Title: DLoadData $Revision: 1.4 $  $Date: 2005-01-21 21:56:54 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -46,7 +46,6 @@ import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 //import dInternal.dOptimization.SetOfEvents;
-//import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.txt.FilterFile;
 import dConstants.DConst;
@@ -128,7 +127,6 @@ public class DLoadData {
 	public SetOfSites extractRooms(SetOfSites currentList, boolean merge){
 		
 		DataExchange de = buildDataExchange(_roomsFileName);
-
 		SetOfSites roomsList = new SetOfSites(); //,5,14);// 5 jours et 14 periods!
 		if (de != null) {
 			if (merge)
@@ -136,7 +134,7 @@ public class DLoadData {
 					roomsList.setSetOfResources(currentList.getSetOfResources());		
 		     if (roomsList.analyseTokens(de, 0)){
 		     	roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-		     	//roomsList.buildSetOfResources( 0);
+		     	roomsList.buildSetOfResources(de, 0);
 		     }
 		} else {// (NullPointerException npe) {
 			new FatalProblemDlg("I was in LoadData.extractRooms. preload failed!!!" );
@@ -145,7 +143,14 @@ public class DLoadData {
 		return roomsList;
 	}// end extractRooms
 
-
+ /*   // SetOfRooms
+    SetOfSites roomsList = new SetOfSites(); //,5,14);
+    DataExchange de = buildDataExchange(project.nextToken().trim().getBytes());
+    if (roomsList.analyseTokens(de,0)){
+      roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+      roomsList.buildSetOfResources(de, 3);
+    }
+   extract.add(roomsList);*/
 	/**
 	 * 
 	 * @param currentList the current SetOfInstructors
@@ -207,9 +212,8 @@ public class DLoadData {
 	 */  		
 	public SetOfActivitiesSites extractActivities(SetOfActivitiesSites currentList, boolean merge){
 		DataExchange de = buildDataExchange(_activitiesFileName);
-		//byte[]  dataloaded = preLoad(_activitiesFileName);
 		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false);
-		if (de.getContents() != null) {
+		if ( de.getContents() != null) {
 			if (merge)
 				if(currentList!=null)
 					activitiesList.setSetOfResources(currentList.getSetOfResources());
@@ -541,9 +545,9 @@ public class DLoadData {
 		    	return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
 		    }
 		    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-		    	return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, dataloaded.toString());
+		    	return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String (dataloaded));
 		    }
-		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, dataloaded.toString());
+		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
   	}
   
   	public DataExchange buildDataExchange(byte[] dataloaded) {

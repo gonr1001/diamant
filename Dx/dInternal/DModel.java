@@ -1,23 +1,23 @@
 /**
-*
-* Title: DModel $Revision: 1.114 $  $Date: 2005-01-12 15:17:11 $
-* Description: DModel is a class used to
-*
-*
-* Copyright (c) 2001 by rgr.
-* All rights reserved.
-*
-*
-* This software is the confidential and proprietary information
-* of rgr. ("Confidential Information").  You
-* shall not disclose such Confidential Information and shall use
-* it only in accordance with the terms of the license agreement
-* you entered into with rgr.
-*
-* @version $Revision: 1.114 $
-* @author  $Author: gonzrubi $
-* @since JDK1.3
-*/
+ *
+ * Title: DModel $Revision: 1.115 $  $Date: 2005-01-21 21:56:53 $
+ * Description: DModel is a class used to
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.115 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ */
 package dInternal;
 
 import java.awt.Component;
@@ -64,6 +64,13 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXValue;
 
+/**
+ * Description: DDocument is a class used to  
+ *
+ *              <p>
+ *              
+ *
+ */
 
 public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
 	private Vector _dmListeners = new Vector();
@@ -71,7 +78,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	private boolean _importDone; 
 	private boolean _mergeDone; 
 	private boolean _modified = false;
-	protected boolean _isTimeTable=true;
+	private boolean _isATimeTable = true;
 	protected int _constructionState=0;// tell where the time construction is
 	private String _version;
 	private String _error;
@@ -103,8 +110,6 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	 * intvalue is between 0-1000 and give the state of the progress bar
 	 */
 	private DXValue _progressBarState;
-	//private DModelProcess _dmProcess;
-	
 	
 	/**
 	 * for new and open Timetable
@@ -115,10 +120,17 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	 */
 	
 	public DModel() {
-	}
+	}// end DModel
 	
 	
-	//-----------------------------
+	/**
+	 * 
+	 * @param dDocument 
+	 * @param fileName is the full path file name containing the TTStructure
+	 * @param type is the type of timetable to be constructed see DConst.
+	 * 		 possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * 
+	 */
 	public DModel(DDocument dDocument, String fileName, int type) {	
 		setModel(this);
 		_error = "";
@@ -133,18 +145,18 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		_dDocument = dDocument;
 		if(fileName.endsWith(DConst.DOT_DIA)){ 	
 			_error = loadTimeTable(fileName, getCurrentDir(fileName));
-			_isTimeTable=true;
+			_isATimeTable=true;
 		} else if(fileName.endsWith(DConst.DOT_XML)){
 			_ttStruct = new TTStructure();
 			_error=_ttStruct.loadTTStructure(fileName);
-			if(type==0)
-				_isTimeTable=false;
-			if((type==1)||(type==2))
-				_isTimeTable=true;
+			//if(type==DConst.NO_TYPE)
+			//	_isATimeTable=false;
+			//if((type==DConst.CYCLE)||(type==DConst.EXAM))
+				_isATimeTable=false;
 		}else{
-			_error="Wrong type of file";
+			_error= "Wrong type of file" ;
 		}
-		if (_error.length()==0 && _isTimeTable)
+		if (_error.length()==0 && _isATimeTable)
 			_conditionTest = new TestConditions(this);
 		_type = type;
 		_modified = false;
@@ -208,8 +220,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	 *
 	 * @return
 	 */
-	public boolean isTimeTable(){
-		return _isTimeTable;
+	public boolean isATimeTable(){
+		return _isATimeTable;
 	}
 	
 	/**
@@ -306,14 +318,14 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		//	debug for xml file to be remove
 		// ysyam
 		/*if(DConst.DEVELOPMENT){
-			String filename= "XMLData"+ File.separator+"ImportFiles.xml";
-			XMLLoadData xmlloadData = new XMLLoadData(filename, _dm);
-			_setOfCategories= xmlloadData.extractRooms(null, true);
-		}*/
+		 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+		 XMLLoadData xmlloadData = new XMLLoadData(filename, _dm);
+		 _setOfCategories= xmlloadData.extractRooms(null, true);
+		 }*/
 		
 		DLoadData loadD = new DLoadData(this);
 		Vector theTT = loadD.loadTheTT(fileName, currentDir);
-
+		
 		if (theTT.size()!=0) {
 			setVersion((String)theTT.get(0));
 			_ttStruct= (TTStructure)theTT.get(1);
@@ -344,8 +356,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		setImportDone(false);
 		return "";
 	}
-
-
+	
+	
 	/**
 	 *
 	 * @param str
@@ -354,40 +366,39 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	public String importData(String str) {		
 		// debug for xml file to be remove
 		// ysyam
-/*		if(DConst.DEVELOPMENT){
-			String filename= "XMLData"+ File.separator+"ImportFiles.xml";
-			XMLLoadData xmlloadData = new XMLLoadData(filename, _dm);
-			_setOfCategories= xmlloadData.extractRooms(null, true);
-		}
-		//	end debug
-		*/
-		DLoadData loadData = new DLoadData( this, str);
-		//LoadData loadDataOLD = new LoadData( _dm, str);
+		/*		if(DConst.DEVELOPMENT){
+		 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+		 XMLLoadData xmlloadData = new XMLLoadData(filename, _dm);
+		 _setOfCategories= xmlloadData.extractRooms(null, true);
+		 }
+		 //	end debug
+		  */
+		DLoadData loadData = new DLoadData(this, str);
 		_dDocument.setCursor(Cursor.WAIT_CURSOR);
 		// import set of instructors
 		_setOfInstructors = loadData.extractInstructors(null, false);
-		resizeResourceAvailability(_setOfInstructors);//
+		resizeResourceAvailability(_setOfInstructors);
 		if( _setOfInstructors.getError().length()!=0){
 			return _setOfInstructors.getError();
 		}
 		
 		// import set of sites
 		_setOfSites = loadData.extractRooms(null, false);
-		resizeResourceAvailability(_setOfRooms);//
-		if( _setOfRooms.getError().length()!=0){
-			return _setOfRooms.getError();
+		resizeResourceAvailability(_setOfSites);//
+		if( _setOfSites.getError().length()!=0){
+			return _setOfSites.getError();
 		}
 		
 		// import set of activities
 		_setOfActivitiesSite = loadData.extractActivities(null, false);
-		if( _setOfActivities.getError().length()!=0){
-			return _setOfActivities.getError();
+		if( _setOfActivitiesSite.getError().length()!=0){
+			return _setOfActivitiesSite.getError();
 		}
 		
 		// import set of students
 		_setOfStuSites = loadData.extractStudents(null, false);
-		if(_setOfStudents.getError().length()!=0){
-			return _setOfStudents.getError();
+		if(_setOfStuSites.getError().length()!=0){
+			return _setOfStuSites.getError();
 		}
 		_constructionState=1;
 		buildSetOfEvents();
@@ -465,8 +476,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	 * @return
 	 */
 	public SetOfRooms getSetOfRooms(){
-		 SetOfCategories soc = (SetOfCategories)_setOfSites.getResource(DConst.ROOM_STANDARD_SITE).getAttach();
-		 return (SetOfRooms) soc.getResource(DConst.ROOM_STANDARD_CAT).getAttach();
+		SetOfCategories soc = (SetOfCategories)_setOfSites.getResource(DConst.ROOM_STANDARD_SITE).getAttach();
+		return (SetOfRooms) soc.getResource(DConst.ROOM_STANDARD_CAT).getAttach();
 	}
 	
 	/**
@@ -555,7 +566,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		
 		DSaveData saveD= new DSaveData("1.5");
 		String error = "";
-		if(_isTimeTable){
+		if(_isATimeTable){
 			error = saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
 			if (error.length() != 0)
 				return error;
