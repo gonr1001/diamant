@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.12 $  $Date: 2003-05-12 14:32:51 $
+ * Title: DMenuBar $Revision: 1.13 $  $Date: 2003-05-15 08:40:33 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -50,12 +50,13 @@ public class DMenuBar extends JMenuBar{
     this.add( menu );
 
     // Items in menu FILE.
+    /*
     CmdMenu mNew = new CmdMenu(DConst.NEW);
     menu.add(mNew);
     mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
     mNew.setCommand(new NewCmd());
     mNew.addActionListener(_dApplic);
-
+    */
    /*
     CmdMenu mNProj = new CmdMenu("Nouveau Projet");
     mNProj.setFont( new java.awt.Font( mfont, font, nPT ) );
@@ -146,7 +147,7 @@ mTime.add(mOTime);
     CmdMenu mExit = new CmdMenu(DConst.EXIT);
     menu.add(mExit);
     mExit.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mExit.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mExit.setCommand(new ExitCmd());
     mExit.addActionListener(_dApplic);
 
 /*
@@ -172,7 +173,7 @@ mTime.add(mOTime);
     menu = new JMenu(DConst.ASSIGN);
     menu.setFont( new java.awt.Font( mfont, font, nPT ) );
     this.add( menu );
-
+/*
     CmdMenu mActi = new CmdMenu("Activités");
     menu.add(mActi);
     mActi.setFont( new java.awt.Font( mfont, font, nPT ) );
@@ -205,7 +206,7 @@ mTime.add(mOTime);
      mConfl.setFont( new java.awt.Font( mfont, font, nPT ) );
      mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
      mConfl.addActionListener(_dApplic);
-
+*/
     //Build the menu PREFERENCES.
     menu = new JMenu(DConst.PREF);
     menu.setFont( new java.awt.Font( mfont, font, nPT ) );

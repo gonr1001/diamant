@@ -1,6 +1,6 @@
 /**
  *
- * Title: NewCmd $Revision: 1.9 $  $Date: 2003-05-14 16:23:58 $
+ * Title: NewCmd $Revision: 1.10 $  $Date: 2003-05-15 08:40:34 $
  * Description: NewCmd is a class used to have a new
  *  			document window
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -29,6 +29,6 @@ public class NewCmd implements Command {
   } //end NewCmd
 
   public void execute(DApplication dApplic) {
-    dApplic.getDMediator().addDoc("Sans tritre");
+    dApplic.getDMediator().addDoc("Sans titre");
   } // end execute
 } /* end NewCmd class */
