@@ -444,13 +444,14 @@ composition et les contraints de ces patterns. \cite{shaw96}
 
 De façon générale, quand nous avons un problème complexe, la
 meilleure solution est découper le problème en fragments plus
-faciles à gérer avec des solutions simples, Après si nous mettons
+faciles à gérer avec des solutions simples. Après si nous mettons
 ensemble ces petites solutions, nous allons arriver à la solution
 de notre problème complexe\cite{bus96}.
 
 À l'heure actuelle il y a plusieurs architectures disponibles pour
 développer des applications logicielles, mais nous pensons que la
-plus adaptée à notre système est celle de trois tiers.
+plus adaptée pour mieux résoudre notre problème est celle de trois
+couches.
 
 L'architecture montré dans la figure \ref{fig:phThree} propose la
 division du système en trois couches, chacune avec une fonction
@@ -458,15 +459,18 @@ bien définit :
 
 \begin{description}
 \item [L'interface d'utilisateur:] Est responsable de valider la
-saisie des données de l'utilisateur.
+saisie des données de l'utilisateur, ainsi que l'entrée des
+données qui vient d'autres systèmes.
 
 \item [La couche de logique d'affaires :] Est responsable du
-comportement du système - les règles d'affaires.
+comportement du système, c'est à dire, ici sont codées les règles
+d'affaires.
 
 \item [La couche de persistance :] Qui doit gérer le stockage
-physique des données, soit dans fichiers, bases de données ou
-autres modèles de persistance pour gérer bases de données
-complexes.
+physique des données, soit dans fichiers avec un certain format,
+ou dans systèmes de bases de données traditionnelles ou bien dans
+autres modèles de persistance qui sont capables de gérer des bases
+de données complexes.
 \end {description}
 
 \begin{figure}
@@ -480,72 +484,85 @@ complexes.
   \put(5.5,2.5){\vector(0,-1){0.5}}
   \put(3,1){\framebox(4,1){persistance de données}}
 \end{picture}
-\caption{L'architecture trois tiers.}\label{fig:phThree}
+\caption{L'architecture trois couches.}\label{fig:phThree}
 \end{figure}
 
-\subsection {L'architecture trois tiers et le système de production d'horaires}
+\subsection {L'architecture trois couches et le système de production d'horaires}
 
-Pour chaque élément de l'architecture trois tiers que nous avons
-présenté, nous allons proposer un composant pour l'application de
-production d'horaires.
+Pour chaque élément de l'architecture trois couches que nous avons
+présenté, nous allons proposer un composant qui fait parti de
+l'application de production d'horaires.
 
 La conception de haut niveau de notre système de production
-d'horaires est simple (voir figure\ref{fig:phOne})~:
+d'horaires est simple (voir figure \ref{fig:fOne})~:
 
 \begin{enumerate}
-\item Nous avons des données qui rentrent dans le système, elles
-sont gérées par la couche d'interface. Les données peuvent venir
-de la saisie directe des utilisateurs (données trimestre) ou bien
-des données qui sont générées par autres systèmes (données de
-base) (voir figure\ref{fig:phTwo})
+\item Nous avons des données qui rentrent dans le système. Ces
+données sont gérées par la couche d'interface. Les données peuvent
+venir de la saisie directe des utilisateurs (données trimestre) ou
+bien des données qui sont générées par autres systèmes (données de
+base). Nous avons aussi des données qui sortent de notre système
+comme résultat de la création d'horaires (données horaire) (voir
+figure \ref{fig:fTwo})
 
-\item Ces données sont transformées selon certaines règles et
-contraintes (couche logique d'affaires), ces règles sont définies
-par chaque établissement.
+\item Les données sont transformées selon certaines règles et
+contraintes, ces règles sont définies par chaque établissement et
+elles sont codées dans la couche logique d'affaires. C'est ici que
+nous pourrons exprimer des contraints propres à chaque
+établissement, par exemple, la quantité maximale d'étudiants dans
+une classe, la capacité des sales des cours, etc.
 
 \item Les données résultats de ces transformations doivent être
-stockes dans quelque part, c'est la couche de persistance de
-données qui est responsable de cette tache. Dans le système de
-production d'horaires, les données peuvent être stockées dans une
-base de données, dans un fichier XML ou dans un fichier texte, ou
-dans autre moyen de stockage pertinent.
+stockes dans quelque part pour pouvoir être utilisées après sa
+génération. C'est la couche de persistance de données qui est
+responsable de cette tache. Dans un système de production
+d'horaires, les données peuvent être stockées dans une base de
+données (relationnel, objet ou autre technologie), dans un fichier
+XML, dans un fichier texte ou bien dans autre moyen de stockage
+pertinent.
 \end{enumerate}
 
 Ces éléments de composition et ses relations sont mieux illustrés
-dans la figure \ref{fig:phFour}:
+dans la figure \ref{fig:phFour}.
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
-\begin{picture}(5,8)
+\begin{picture}(4.5,8)
   \put(1.5,7.7){\makebox(0,0){Interface utilisateur}}
   \put(0,6.5){\framebox(3.5,1){Saisie de données}}
   \put(3.5,7.1){\vector(1,-1){1.5}}
   \put(5,5.6){\vector(-1,1){1.5}}
 
   \put(1.5,4.2){\makebox(0,0){Interface utilisateur}}
-  \put(0,3){\framebox(3.5,1){Production d'horaires}}
+  \put(0,3){\framebox(3.5,1){Autres systèmes}}
   \put(3.5,3.6){\vector(1,1){1.5}}
   \put(5,5.1){\vector(-1,-1){1.5}}
 
-  \put(6.5,6){\makebox(0,0){Logique d'affaire}}
-  \put(5,4.8){\framebox(3.5,1){Serveur Web}}
-  \put(8.5,5.2){\vector(1,0){1.5}}
-  \put(10,5.2){\vector(-1,0){1.5}}
+  \put(1.5,6){\makebox(0,0){Interface utilisateur}}
+  \put(0,4.8){\framebox(3.5,1){Production d'horaires}}
+  \put(3.5,5.2){\vector(1,0){1.5}}
+  \put(5,5.2){\vector(-1,0){1.5}}
 
-  \put(11.5,6){\makebox(0,0){Logique d'affaire}}
-  \put(10,4.8){\framebox(3.5,1){Serveur Web}}
+  \put(6.2,6){\makebox(0,0){Logique d'affaires}}
+  \put(5,4.8){\framebox(2.5,1){Serveur Web}}
+  \put(7.5,5.2){\vector(1,0){1}}
+  \put(8.5,5.2){\vector(-1,0){1}}
+
+  \put(10.2,6){\makebox(0,0){Persistance des données}}
+  \put(8.5,4.8){\framebox(3.7,1){Serveur base de données}}
 
 
 \end{picture}
-\caption{L'architecture trois tiers.}\label{fig:phFour}
+\caption{// L'implementation de l'architecture trois couches pour
+le système d'horaires.}\label{fig:phFour}
 \end{figure}
 
 
 \section{Technologies possibles}
 
-Pour faire l'implémentation de notre architecture, il faut en
-premier lieu, trouver quels sont les éléments technologiques
-nécessaires. Nous trouvons qu'il faut avoir~:
+Pour l'implémentation de l'architecture, il faut en premier lieu,
+trouver quels sont les éléments technologiques nécessaires. Nous
+trouvons qu'il faut avoir~:
 
 \begin{enumerate}
 \item Un langage pour faciliter l'affichage des données vers
@@ -591,34 +608,28 @@ le tableau \ref{tb:tbOne} n'est pas exhaustive, il peut y avoir
 quelques autres.
 
 De la même façon, les ensembles que nous proposons sont faits
-d'une manière arbitraire. Pour sa construction nous avons pris en
-considération une certaine logique, nous avons mit ensemble les
-éléments qui ont des caractéristiques communes ou bien qui
-appartiennent à un même fabricant de logiciel.
+d'une manière presque arbitraire. Pour sa construction nous avons
+pris en considération une certaine logique, nous avons mit
+ensemble les éléments qui ont des caractéristiques communes ou
+bien qui appartiennent à un même fabricant de logiciel.
 
-Pour le volet Base de données, nous n'avons pas mentionné le nom
+Pour le volet base de données, nous n'avons pas mentionné le nom
 spécifique d'un système administrateur de base de données, le
-choix reste ouvert.
-
+choix reste ouvert à l'implementation.
 
 Nous pouvons dire que notre architecture est ouverte, étant donné
-qu'elle accepte plusieurs instances. (\textbf{? Je ne suis pas sûr
-si cela est suffisante pour montrer l'ouverture.})
-
-L'architecture est aussi extensible, parce que nous pourrions
-changer les modules d'une manière facile, par exemple, nous
-pouvons commencer avec un élément de persistance de données comme
-un fichier en format texte plain, et après, nous pourrions
-effectuer quelques changements dans l'élément d'interface
-utilisateur pour pouvoir interagir avec des fichiers en format
-XML. Après, si nous voulons faire évoluer cette partie de
-persistance de données vers un système de bases de données, il
-faudrait faire des changements dans la couche d'interface
-d'utilisateur et programmer l'élément de persistance des données.
-Tous ces changements sans jamais toucher l'élément de la logique
-d'affaires.
-
-Dans le tableau suivante (voir Tableau:\ref{tb:tbOne}) nous
+qu'elle accepte plusieurs instances. L'architecture est aussi
+extensible, parce que nous pourrions changer les modules d'une
+manière facile, par exemple, nous pouvons commencer avec un
+élément de persistance de données comme un fichier en format texte
+plain, et après, nous pourrions effectuer quelques changements
+dans l'élément d'interface utilisateur pour pouvoir interagir avec
+des fichiers en format XML. Après, si nous voulons faire évoluer
+cette partie de persistance de données vers un système de bases de
+données, il faudrait faire des changements dans la couche
+d'interface d'utilisateur et programmer l'élément de persistance
+des données. Tous ces changements sans jamais toucher l'élément de
+la logique d'affaires. Dans le tableau \ref{tb:tbOne}, nous
 montrons l'évolution possible d'une instance de notre
 architecture.
 
@@ -643,14 +654,19 @@ La persistance de données & Text & XML & Base de données \\
 l'architecture}\label{tb:tbTwo}
 \end{table}
 
+Nous pouvons aussi imaginer un système qui commence avec un
+interface utilisateur basé en affichage en mode textuel, qui va
+évoluer à un affichage basé en HTML et JSP en utilisant un serveur
+web.
+
 \section{Une instance de l'architecture} \label{sec:tictac}
 
 Une fois que nous avons établi l'architecture et que nous sachons
 qu'elle est ouverte et extensible, il faut que l'instance que nous
 allons implémenter soit aussi ouverte et extensible. Nous avons
 montré trois options d'instances de l'architecture (voir Tableau
-\ref{tb:tbOne}), pour l'implémentation de \tictac(), nous avons
-choisi l'option 1.
+\ref{tb:tbOne}), pour notre implémentation, nous avons choisi
+l'option 1 de ce tableau.
 
 De depart il faut savoir que un élément est ouvert s'il est
 construit avec des standards approuvés, ou bien, s'il est
@@ -659,47 +675,60 @@ les désignateurs.
 \footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
 Il faut aussi tenir en compte que un élément est extensible s'il
-est facile d'adapter le produit aux changements dans la
+est facile d'adapter ce produit aux changements dans la
 spécification.\cite{meyer97}
 
 
 Avec ces considerations en main, nous montrons ici l'analyse qui
-nous a amené à ce choix:
+nous a amené à notre choix:
 
 \begin{description}
 
 \item [Langage pour affichage:] Pour langage d'affichage et saisie
-de données nous avons choisi HTML, étant donnée que ce langage est
-le standard pour la création de pages Web, et nous voulons
-profiter de tous le bénéfices qu'offre la Web pour les
+de données nous avons choisi HTML et JSP, étant donnée que ces
+langages sont le standard pour la création de pages Web, et nous
+voulons profiter de tous le bénéfices qu'offre la Web pour les
 applications de type transactionnelle.
 
 \item [Format pour échanger données:] Pour échanger les données
 nous avons choisi XML. XML (eXtensible Markup Language) nous
 permet de stocker, d'échanger et d'afficher des données ou de
-l'information d'une manière structurée, le langage permette aussi
+l'information d'une manière structurée. Le langage permette aussi
 de manipuler, de transformer et de visualiser les données avec de
-nombreux différents outils de formatage. Par exemple, des
-informations ou des données stockées dans un document XML peuvent
-être affichées dans un navigateur Web. De plus, quand des
-documents XML sont stockées dans une base de données, ils peuvent
-être l'objet de requêtes et retrouvés comme avec tout autre format
-de données.
+nombreux outils de formatage, par exemple, des informations ou des
+données stockées dans un document XML peuvent être affichées dans
+un navigateur Web. De plus, quand des documents XML sont stockées
+dans une base de données, ils peuvent être l'objet de requêtes et
+retrouvés comme avec tout autre format de données.
 
 \item [Langage pour coder la logique d'affaire:] Nous avons choisi
-Java. Java est un langage interprété (qui utilise la machine
-virtuel Java JVM). Il y a plusieurs versions de cette machine
-virtuelle pour plusieurs plateformes différentes - ce qui signifie
+Java. Java est un langage interprété qui utilise la machine
+virtuel Java JVM. Il y a plusieurs versions de cette machine
+virtuelle pour plusieurs plateformes différentes, ce qui signifie
 que les programmeurs peuvent écrire pour ce langage en utilisant
 une plateforme, et faire tourner leurs programmes sur autres.
 
 \item [La persistance de données:] Pour l'implémentation de la
-couche persistance de données nous avons choisi une base de
-données. Une base de données est une entité dans laquelle il est
-possible de stocker des données de façon structurée et avec le
+couche persistance de données nous avons choisi d'utiliser une
+base de données. Une base de données est une entité dans laquelle
+il est possible de stocker des données de façon structurée avec le
 moins de redondance possible. Ces données doivent pouvoir être
-utilisées par des programmes, par des utilisateurs différents.
+utilisées par des programmes écrites en différentes langages en
+utilisant la technologie ODBC (Open DataBase Connectivity), si
+nous utilisons Java comme langage pour établir la conexion vers la
+base de données, nous pouvons utiliser JDBD (Java Database
+Connectivity). JDBC est un programme d'application (API) pour
+établir la connexion entre le langage Java et un grande nombre de
+bases de données, en utilisant la philosophie "Write Once, Run
+Anywhere".
 \end{description}
+
+Même si ce n'est pas la seule option pour l'implementation de
+notre système de production d'horaires, nous sommes convaincus que
+notre choix nous permettra de faire évoluer le système par
+versions en ajoutant ou en modifiant caractéristiques demandés par
+les utilisateurs.
+
 
 \section{Conclusions}\label{sec:conc}
 
