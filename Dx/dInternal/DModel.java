@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.72 $  $Date: 2003-09-19 16:10:54 $
+ * Title: DModel $Revision: 1.73 $  $Date: 2003-09-19 17:14:57 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.72 $
+ * @version $Revision: 1.73 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -395,13 +395,27 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
 
   public String[] getStandardReport(){
     StandardReportData dataR = new StandardReportData(this);
-    /* 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
+    /* FOR ACTITITIES
+    *0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
     * 5= day number where activity is assign, 6= day name where activity is assign
     * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
     * 10= room name
     */
-    int [] table={1,2,6,7,8,10};
-    String[] stdR={dataR.getActivitiesReport(0,table),dataR._studentsReport};
+    int [] activityTable={1,2,6,7,8,10};
+     /*FOR STUDENT
+    *_studentsReport is a string where each line contains more informations separeted
+    * by a ";" separator
+    * token number 0= student matricule, 1= student program, 2= student name, 3= student courses choice
+    *--------------------------
+    * the token number 3 contains more same type of informations separated by "," separator.
+    * These subTokens contains more informations separated by a "-" separator
+    * subtoken 0= unity name, 1= day number where this unity is place, 2= day name where this unity is place
+    *3= begining hour of this unity
+  */
+    int [] studentTable={2,3};
+
+    String[] stdR={dataR.getActivitiesReport(0,activityTable),
+      dataR.getStudentsReport(0,studentTable)};
     return stdR;
   }
 

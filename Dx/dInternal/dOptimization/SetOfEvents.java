@@ -19,6 +19,7 @@ import java.awt.Component;
 public class SetOfEvents extends SetOfResources{
 
   public Vector _soeListeners = new Vector(1);
+  protected boolean _isEventPlaced=false;
 
   /**
    * Constructor
@@ -75,6 +76,7 @@ public class SetOfEvents extends SetOfResources{
    */
   public int getNumberOfEventAssign(){
     int count=0;
+    if(_isEventPlaced)
     for (int i=0; i< this.size(); i++){
       if(((EventAttach)getResourceAt(i).getAttach()).getEventState())
         count++;

@@ -23,8 +23,26 @@ public class StandardReportData {
   private DModel _dm;
   private int _AHOUR=60;// a hour= 60 minutes
   private String _HOURSEPARATOR="h";
+  /*
+  *_activitiesReport is a string where each line contains more informations separeted
+  * by a ";" separator
+  * token number 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
+  * 5= day number where activity is assign, 6= day name where activity is assign
+  * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
+  * 10= room name
+  */
   private String _activitiesReport="";
-  public String _studentsReport="";
+   /*
+  *_studentsReport is a string where each line contains more informations separeted
+  * by a ";" separator
+  * token number 0= student matricule, 1= student program, 2= student name, 3= student courses choice
+  *--------------------------
+  * the token number 3 contains more same type of informations separated by "," separator.
+  * These subTokens contains more informations separated by a "-" separator
+  * subtoken 0= unity name, 1= day number where this unity is place, 2= day name where this unity is place
+  *3= begining hour of this unity
+  */
+  private String _studentsReport="";
 
   /**
    * Constructor
@@ -33,7 +51,7 @@ public class StandardReportData {
   public StandardReportData(DModel dm) {
     _dm=dm;
     _activitiesReport= buildActivitiesReport();
-    _studentsReport = this.buildStudentsReport();
+    _studentsReport = buildStudentsReport();
   }
 
   /**
@@ -92,17 +110,32 @@ public class StandardReportData {
     return actlist;
   }
 
-
   /**
-   * 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
-   * 5= day number where activity is assign, 6= day name where activity is assign
-   * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
-   * 10= room name
+   * return standard activity report
+   * @param principalAct
+   * @param otherAct
    * @return
    */
-  public String getActivitiesReport(int principalAct, int[] otherAct){
+  public String getActivitiesReport( int principalElt, int[] otherElts){
+     return getReport(_activitiesReport,principalElt,otherElts);
+   }
+
+   /**
+   * return standard student report
+   * @param principalElt
+   * @param otherElt
+   * @return
+   */
+  public String getStudentsReport( int principalElt, int[] otherElts){
+     return getReport(_studentsReport,principalElt,otherElts);
+   }
+
+  /**
+   * @return
+   */
+  private String getReport(String allLines, int principalAct, int[] otherAct){
     SetOfResources setOf= new SetOfResources(1);
-    StringTokenizer theReport= new StringTokenizer(_activitiesReport,SetOfActivities.CR_LF);
+    StringTokenizer theReport= new StringTokenizer(allLines,SetOfActivities.CR_LF);
     int nbTokens= theReport.countTokens();
     while(theReport.hasMoreTokens()){
       String currentLine= theReport.nextToken();
@@ -125,17 +158,6 @@ public class StandardReportData {
       report+=setOf.CR_LF;
     }// end  for(int i=0; i< nbTokens; i++)
     return report;
-  }
-
-  /**
-   * 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
-   * 5= day number where activity is assign, 6= day name where activity is assign
-   * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
-   * 10= room name
-   * @return
-   */
-  public String getStudentsReport(int principalAct, int[] otherAct){
-    return "";
   }
 
   /**
@@ -165,7 +187,7 @@ public class StandardReportData {
    *
    * @return
    */
-  public String buildStudentsReport(){
+  private String buildStudentsReport(){
     String studlist="";
     for (int i=0; i< _dm.getSetOfStudents().size(); i++){
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
@@ -186,6 +208,7 @@ public class StandardReportData {
         Section section= _dm.getSetOfActivities().getSection(course.substring(0,SetOfStudents._COURSELENGTH-1)
             ,course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH),
             Character.toString(DXTools.STIConvertGroup(group)));
+        if(section!=null)
         for(int j=0; j<section.getSetOfUnities().size(); j++){
           Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(j).getAttach();
           Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(

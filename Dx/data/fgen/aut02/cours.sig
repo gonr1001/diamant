@@ -2229,7 +2229,7 @@ BRÉZINA, MILAN
  3
  4  1
 1
-24 JUI
+24-JUI
 0
 0
 1
@@ -2244,7 +2244,7 @@ BRÉZINA, MILAN
  3
  5  1
 1
-24 JUI
+24-JUI
 0
 0
 1
