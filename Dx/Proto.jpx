@@ -8,7 +8,7 @@
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="2"/>
-  <property category="runtime" name="DefaultConfiguration" value="-1"/>
+  <property category="runtime" name="DefaultConfiguration" value="1"/>
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.0" name="ConfigurationName" value="LoadData"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
@@ -50,6 +50,31 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <node name="Proto" type="Archive">
+    <property category="archiving" name="archiverClass" value="com.borland.jbuilder.wizard.archive.ApplicationArchiver"/>
+    <property category="archiving" name="executableEnabled.1" value="0"/>
+    <property category="archiving" name="executableEnabled.2" value="0"/>
+    <property category="archiving" name="executableEnabled.3" value="0"/>
+    <property category="archiving" name="executableEnabled.4" value="0"/>
+    <property category="archiving" name="executableEnabled.5" value="0"/>
+    <property category="archiving" name="executableFiles.1" value=""/>
+    <property category="archiving" name="executableFiles.2" value=""/>
+    <property category="archiving" name="executableFiles.3" value=""/>
+    <property category="archiving" name="executableFiles.4" value=""/>
+    <property category="archiving" name="executableFiles.5" value=""/>
+    <property category="archiving" name="extraDeployRoots.1" value="C:dAux.*"/>
+    <property category="archiving" name="extraDeployRoots.2" value="C:dInterface.*"/>
+    <property category="archiving" name="extraDeployRoots.3" value="C:dInternal.*"/>
+    <property category="archiving" name="extraDeployRoots.4" value="C:Document.*"/>
+    <property category="archiving" name="extraDeployRoots.5" value="C:dResources.*"/>
+    <property category="archiving" name="extraDeployRoots.6" value="C:pref.*"/>
+    <property category="archiving" name="extraDeployRoots.7" value="C:DRun"/>
+    <property category="archiving" name="libraryStates.1" value="1:JUnit"/>
+    <property category="archiving" name="libraryStates.2" value="1:theLibrary"/>
+    <property category="archiving" name="libraryStates.3" value="1:regexp"/>
+    <property category="archiving" name="outPathState" value="1"/>
+    <property category="archiving" name="targetPath" value="Proto.jar"/>
+  </node>
   <file path="dInterface/DefFilesToImportCmd.java"/>
   <file path="dInterface/DefFilesToImportDlg.java"/>
   <file path="DRun.java"/>
