@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.15 $  $Date: 2003-06-18 11:52:21 $
+ * Title: ToolBar $Revision: 1.16 $  $Date: 2003-06-25 08:36:11 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: ysyam $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -270,6 +270,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     toolBarSelector = new JComboBox(_toolBarNames);
     toolBarSelector.setPreferredSize(new Dimension(200,DConst.NPT11* 2));
     toolBarSelector.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
+    //toolBarSelector.updateUI();
     //toolBarSelector.setEnabled(false);
     add(toolBarSelector);
 

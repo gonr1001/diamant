@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.14 $  $Date: 2003-06-13 15:14:49 $
+ * Title: DApplication $Revision: 1.15 $  $Date: 2003-06-25 08:36:11 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,8 +16,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.15 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -84,7 +84,7 @@ public class DApplication implements ActionListener {
                                    + File.separator +
                                    "pref"
                                    + File.separator +
-                                   "pref.txt");
+                                   "pref.txt", this);
     System.out.println(System.getProperty("user.dir"));
     _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     _mediator = new DMediator(this);
@@ -92,6 +92,8 @@ public class DApplication implements ActionListener {
 
     _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
     setLAF(_preferences._lookAndFeel);
+
+    //updateLAF(_preferences._lookAndFeel);
 
   } // end constructor
 
@@ -108,13 +110,13 @@ public class DApplication implements ActionListener {
     jFrame.setContentPane(panel);
     jFrame.setJMenuBar(new DMenuBar( this ));  //constructs the menu bar
 
-    JPanel jpToolBar = new JPanel();
+    //JPanel jpToolBar = new JPanel();
 
     _tbar = new DToolBar(this); //constucts the tool bar
-    jpToolBar.add(_tbar);
+    //jpToolBar.add(_tbar);
 
-    jFrame.getContentPane().add(jpToolBar, BorderLayout.NORTH);
-    panel.add(_tbar,BorderLayout.NORTH);
+    jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
+   // panel.add(_tbar,BorderLayout.NORTH);
 
     //hideToolBar();
 
@@ -229,6 +231,17 @@ public class DApplication implements ActionListener {
       SwingUtilities.updateComponentTreeUI(_jFrame);
     }
 
+    public void constructToolBar(){
+      _tbar = new DToolBar(this); //constucts the tool bar
+      //jpToolBar.add(_tbar);
+      _tbar.updateUI();
+
+      _jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
+      // panel.add(_tbar,BorderLayout.NORTH);
+      _tbar.updateUI();
+      updateLAF(_preferences._lookAndFeel);
+      //hideToolBar();
+    }
     //-------------------------------------------
     /**
      * Closes the DDocument(s) and the application.

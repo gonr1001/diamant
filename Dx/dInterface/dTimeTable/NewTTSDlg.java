@@ -54,6 +54,7 @@ public class NewTTSDlg extends JDialog{
 
    public NewTTSDlg(DApplication dApplic) {
      //_dApplic= dApplic;
+     //dApplic.constructToolBar();
      dApplic.showToolBar() ;
      loadTTData(dApplic);
 

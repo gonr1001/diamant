@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.5 $  $Date: 2003-06-04 16:12:19 $
+ * Title: Preferences $Revision: 1.6 $  $Date: 2003-06-25 08:36:11 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,18 +15,19 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
 
-
+import dInterface.DApplication;
 import  com.iLib.gIO.FilterFile;
 import java.util.StringTokenizer;
 import  com.iLib.gException.IOFileException;
-/////This must be corrected the preferences are not saved!!!!!!!!!
-//import  com.iLib.rIO.Writer;
+import com.iLib.gIO.ByteOutputFile;
+import com.iLib.gDialog.FatalProblemDlg;
+
 
 public class Preferences {
   private final String CR_LF = "\r\n";
@@ -35,7 +36,9 @@ public class Preferences {
   public String _language;
   public String _defaultDir;
   private String _fullFileName;
-  public Preferences(String str) {//throws InputFileException{
+  private DApplication _dApplic;
+  public Preferences(String str, DApplication dApplic) {//throws InputFileException{
+    _dApplic = dApplic;
     try {
       FilterFile filter = new FilterFile();
       if (filter.validFile(str)) {
@@ -55,7 +58,7 @@ public class Preferences {
     _lookAndFeel = lnfName;
   }
   public void  save() {
-    //new Writer(_fullFileName, toString());
+    writeFile(_fullFileName, toString());
   }
 
   public String toString(){
@@ -66,6 +69,22 @@ public class Preferences {
            str +=_fullFileName;
       return str;
   }
+
+
+  private void writeFile(String name, String data) {
+    try {
+      ByteOutputFile bof = new ByteOutputFile(name);
+      bof.writeFile(data.getBytes());
+      bof.close();
+    } catch(IOFileException iofe) {
+      new FatalProblemDlg(_dApplic.getJFrame(),
+                          iofe + "\n I was in Preferences.writeFile");
+      System.out.println(iofe);
+      iofe.printStackTrace();
+      System.exit(31);
+    } // end catch
+
+  }// end writeFile
 }
 
 

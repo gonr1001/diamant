@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.6 $  $Date: 2003-06-13 17:02:09 $
+ * Title: SaveAsDlg $Revision: 1.7 $  $Date: 2003-06-25 08:36:11 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.7 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -112,7 +112,6 @@ public class SaveAsDlg extends JDialog
       file = new File(currentFile);
       if (file.exists()){
         System.out.println("I exists");
-        //rwfDlg = new ReWriteFileDlg(_dApplic, currentFile);
         int resp= ConfirmDlg.showMessage(_dApplic, currentFile);
         if( resp== ConfirmDlg.OK_OPTION){
         _dApplic.getDMediator().saveCurrentDoc(currentFile);
