@@ -1,0 +1,110 @@
+\chapter*{Liste de choses à faire}
+
+
+
+\section{Janvier 2004}
+
+Voici les noms de fonctionnalités manquantes dans \diamant 1.5.
+\begin{enumerate}
+    \item Examens. Voir manuel utilisateur. \label{examen}
+    \item Enseignants. Une activité peut avoir $n$ enseignants. \label{enseig}
+    \item Groupe. Un groupe est définit par une chaîne de 2 chars \verb!00! à
+    \verb!99!\label{groupe}
+    \item Grille partielle.\label{parti}
+    \item Importation sélective.\label{select}
+    \item Automate menus.\label{menus}
+    \item Petits détails.\label{details}
+    \item Toolbar et horaire\label{toolbar}
+    \item Affectation manuelle plus efficace.\label{affect}
+
+\end{enumerate}
+
+
+\subsection{Fonctionnalité \ref{examen} Examens}
+Cette fontionnalité est en réalité un ensemble de fonctionnalités
+nécessaires à la construction d'un horaire des examens. Elle est
+décrite dans le manuelle utilisateur.
+
+\subsection{Fonctionnalité \ref{enseig} Enseignants}
+Cette fontionnalité doit servir à assigner à une activité $n$
+enseignants. Dans les boîtes de dialogue affectation d'une
+activité ou d'un événement il faut offrir la possibilité d'ajouter
+$n$ enseignants. On peut ajouter uniquement des enseignants qui
+sont connus par \diamant. C'est-à-dire ceux qui sont dans les
+fichiers d'importation. La disponibilité des enseignants ajoutés
+est à prendre en compte.
+
+à discuter ajout avec de \verb!JComboBox! ou comme ceux de
+modifications.
+
+Quelles classes sont à modifier?
+
+\subsection{Fonctionnalité \ref{groupe} Groupes}
+Cette fontionnalité doit servir à assurer une compatibilité entre
+le nom assigné à un groupe et le nom affiché par \diamant et
+retourné avec l'horaire. Il y a des modifications à faire au SIG
+et dans \diamant. Au SIG le nom d'un groupe est définit par une
+chaîne de 2 \verb!char!s \verb!00! ou \verb!01! à \verb!99!. Cette
+information arrive dans le fichier cours et arrive dans le fichier
+étudiants dans le cas de la faculté d'administration (afin
+d'inscrire des étudiants dans de groupes de soir). Le SIG doit
+accepter la même information dans le fichier exportes horaire et
+étudiants. Avant les groupes étaient A, B, C \ldots. un seul
+\verb!char!.
+
+
+Dans \diamant nous avons prévu de traiter les groupes comme une
+chaîne des \verb!char!s, ainsi pour effectuer cette modification,
+on doit simplement vérifier que les données arrivent à la bonne
+place et que les automates de reconnaissance des fichiers lisent
+les données avec le nouveau format et que le nom d'un groupe
+s'affiche correctement par tout. Bien entendu il faut vérifier que
+l'exportation est faite avec les bons données et le bon format.
+
+Quelles classes sont à modifier?
+
+\subsection{Fonctionnalité \ref{parti} Grille partielle}
+La fonctionnalité Grille partielle doit permettre de définir un
+ensemble d'activités, et de donner un nom à cet ensemble. Ensuite
+afficher sur la grille uniquemnt
+
+Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
+classes \verb!XCmd! + certaines classes avec dialogue
+\verb!Annuler!
+
+\subsection{Fonctionnalité \ref{select} Importation sélective}
+Les menus doivent être disponibles (enabled) ou non disponibles
+(disabled) en fonction de la dernière opération effectué.
+
+Revision de toute l'interface avec l'utilisateur.
+
+Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
+classes \verb!XCmd! + certaines classes avec dialogue
+\verb!Annuler!
+
+\subsection{Fonctionnalité \ref{menus} Menus}
+Les menus doivent être disponibles (enabled) ou non disponibles
+(disabled) en fonction de la dernière opération effectué.
+
+Revision de toute l'interface avec l'utilisateur.
+
+Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
+classes \verb!XCmd! + certaines classes avec dialogue
+\verb!Annuler!
+
+\subsection{Fonctionnalité \ref{details} Détails}
+Détails n'est pas une fontionnalité. Il s'agit de effectuer des
+changements mineurs dans le logiciel pour assurer entre autres~:
+
+\begin{enumerate}
+    \item Les termes sont utilisées de manière consistante.
+    \item Les boîtes de dialogue s'ajustent selon les informations
+    à présenter.
+    \item Autres ajustements, les utilisateurs vont les indiquer
+\end{enumerate}
+
+Revision de toute l'interface avec l'utilisateur.
+
+Quelles classes sont à modifier?
+\subsection{Fonctionnalité \ref{toolbar} Toolbar}
+\subsection{Fonctionnalité \ref{affect} Affectation manuelle plus efficace}
