@@ -1,6 +1,6 @@
 /**
  *
- * Title: ViewDetailedCmd $Revision: 1.1 $  $Date: 2003-09-30 14:57:14 $
+ * Title: ViewHorizontalSplitCmd $Revision: 1.1 $  $Date: 2003-10-06 15:22:05 $
  * Description: ViewDetailedCmd
  *
  * Copyright (c) 2001 by rgr.
@@ -31,13 +31,13 @@ import dInterface.DApplication;
  * which displays the About dialog
  *
  */
-public class ViewDetailedCmd implements Command {
+public class ViewHorizontalSplitCmd implements Command {
 
-    public ViewDetailedCmd() {
+    public ViewHorizontalSplitCmd() {
     } // end ViewDetailedCmd
     //------------------------------
     public void execute(DApplication dApplic) {
       if ( dApplic.getDMediator().getCurrentDoc()!= null)
-        dApplic.getDMediator().getCurrentDoc().displayDetailed();
+        dApplic.getDMediator().getCurrentDoc().displayHorizontalSplit();
     } // end execute
 } /* end class ViewDetailedCmd */
