@@ -16,7 +16,12 @@ public class DisplayAttributs {
    * the period key referencing this attribut. it is in a.b.c format where
    * a= day key, b= sequence key, c= period key
    */
-  private String _periodKey;
+  private String _periodKey = "";
+
+  /**
+   * if true= period is active otherwise period is a hole
+   */
+  private boolean _periodType;
 
   /**
    * the hour to display. it is in hh:mm format
@@ -57,6 +62,18 @@ public class DisplayAttributs {
     _periodKey= periodKey;
     _hourToDisplay= hourToDisplay;
     _eventsInPeriods= eventsInPeriods;
+  }
+
+  /**
+   * set the period type
+   * @param periodType if true= period is an active otherwise period is a hole
+   */
+  public void setPeriodType(boolean periodType){
+    _periodType= periodType;
+  }
+
+  public boolean getPeriodType(){
+    return _periodType;
   }
 
   /**

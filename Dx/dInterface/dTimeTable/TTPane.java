@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.1 $  $Date: 2003-10-17 18:11:08 $
+ * Title: TTPane $Revision: 1.2 $  $Date: 2003-10-17 19:04:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -262,7 +262,7 @@ public abstract class TTPane {
             //jLabel = new JLabel( i + " " + j);
           } else {
             //jLabel = new JLabel( i + " " + j);
-            if (_toDisplay[i][j].getPeriodKey()!= null && _toDisplay[i][j].getPeriodKey()!= "" ) {
+            if ( _toDisplay[i][j].getPeriodKey()!= "" &&  _toDisplay[i][j].getPeriodType()) {
               Period period = _tts.getCurrentCycle().getPeriodByPeriodKey(_toDisplay[i][j].getPeriodKey());
 
           /*periodPanel = new DetailedPeriodPanel(count,i,j,k);
