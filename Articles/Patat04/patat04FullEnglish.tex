@@ -65,24 +65,24 @@ certain cases, automation starts with the use of timetable
 construction software. In others, it starts with the automation of
 the treatments associated with the work of the institution, for
 example the follow of students. There are software to carry out
-the timetable construction, we mention DIAMANT
+the timetable construction, as example DIAMANT
 \cite{gonzalezrubio00} and SAPHIR \cite{ferland94}, but, there
 exists many others.
 
-In general, the timetable creation software uses one or more files
-as input, and one or more files as output. Working with files is a
+In general, timetable creation software uses one or more files as
+input, and one or more files as output. Working with files is a
 problems source. It is necessary to build the input files each
-time that a timetable is produced. There exists, two cases~: a
-manual production and an automated production of those files. If
-the files are manually produced, there are the typing errors that
-can produce unexpected effects in the software. These kinds of
-errors are very hard to detect, because all the data should be
-checked manually. In the case where the files are produced in an
-automatic way, it is necessary that the software be ensured to
-check the validity and the coherence of all the data.
+time that a timetable is produced. There exists, two cases to
+produce those files~: manual production and automated production.
+If the files are manually produced, there are the typing errors.
+These kind of errors can produce unexpected effects in the
+software. These errors are very hard to detect, because all the
+data should be manually checked. In the other case, the files are
+produced in an automatic way. It is necessary that the software be
+ensured to check the validity and the coherence of all the data.
 
 Another source of problems even more expensive than the preceding
-is that when a change is introduced into the system, it could be
+is that when a change is introduced into the system. It could be
 in the construction software, or in the production software or in
 both. The changes come on behalf of persons in charge for the
 institution, for example a new nomenclature for the buildings; a
@@ -92,11 +92,11 @@ timetable production software, it is a general problem in software
 development.
 
 The solution to the first problem passes by the automation of the
-data checking and data validation at the time of acquisition. In
-order to ensure that the software of construction works with the
+data checking and data validation at the time of data acquisition.
+In order to ensure that the construction software works with the
 right data.
 
-The second problem is more delicate to treat, if the production
+The second problem is more delicate to treat. If the production
 software was conceived to be modified (extensible), the cost to
 modify is weak, but if the system is monolithic and closed, a
 modification will be very expensive. A way of decreasing the
@@ -114,14 +114,14 @@ This architecture implements a database, a Web site and a software
 for timetable construction. The checking and the validation of
 data will be made with the input and with integrity constraints in
 the database. The Web site is used mainly for the data input, but
-at the same time, it can check the validity of the data, using the
-business rules before the data will be entered to the database.
+at the same time, it can check the data validity, using the
+business rules before the data will be recorded at the database.
 Another function of the Web site is to offer the timetable in a
-personalized way, once it is built. The database allows the
-retrieval of the data, according to various formats. Thus, the
-input of the software of construction is simplified. Of course,
-with the assistance of the software for timetable construction, it
-is possible to create a timetable with a minimum of conflicts.
+personalized way, once it is built. The database allows the data
+retrieval, according to various formats. Thus, the input of the
+software of construction is simplified. Of course, with the
+assistance of the timetable construction software, it is possible
+to create a timetable with a minimum of conflicts.
 
 
 A lot of research was made in the timetable construction~:
@@ -132,41 +132,42 @@ general development of the timetable production. We think that the
 fact of having a total view on the process can help the research
 in timetable construction. White \cite{white00} proposed that the
 Web should be used to the diffusion of timetables. We are trying
-to go far by proposing also to use it like an interface of data
-input; moreover, we propose the architecture necessary to support
-our ideas. De Causmaecker et al. \cite{decausmaecker02} introduced
-the idea that the semantics Web can be used by the researchers in
-the timetable construction. They also introduced the idea to use
-XML as a communication language  in the timetable construction by
-agents. We propose also the use of XML, in order to facilitate the
-exchanges between certain modules of our architecture. In Burke
-and al \cite{burke97} it is proposed to have a standard for the
-data format, it will be used by the timetable software; their goal
-was to compare algorithms (programs) in benchmarks. In a more
-recent work, Kingston \cite{kingston02} proposes the STTL language
-and an interpreter, with the same objective. Özcan \cite{ozcan03}
-suggests also another standard to define instances of timetable
-construction problems, having XML as a base language. It seems
-that it would be desirable to have a standard, but it is a goal
-very hard to reach. Instead, our approach is the use of a database
-like a tool for extraction and data formatting, this way the
-software of timetable construction can receive the necessary data.
-Thus, it would be possible to generate other instances of problems
-for other software of timetable construction.
+to go far by proposing also to use the Web like an interface of
+data input; moreover, we propose the architecture necessary to
+support our ideas. De Causmaecker et al. \cite{decausmaecker02}
+introduced the idea that the semantics Web can be used by the
+researchers in the timetable construction. They also introduced
+the idea to use XML as a communication language  in the timetable
+construction by agents. We propose also the use of XML, in order
+to facilitate the exchanges between certain modules of our
+architecture. In Burke and al \cite{burke97} it is proposed to
+have a standard for the data format, it will be used by the
+timetable software; their goal was to compare algorithms
+(programs) in benchmarks. In a more recent work, Kingston
+\cite{kingston02} proposes the STTL language and an interpreter,
+with the same objective. Özcan \cite{ozcan03} suggests also
+another standard to define instances of timetable construction
+problems, having XML as a base language. It seems that it would be
+desirable to have a standard, but it is a goal very hard to reach.
+Instead, our approach is the use of a database like a tool for
+extraction and data formatting, this way the software of timetable
+construction can receive the necessary data. Thus, it would be
+possible to generate other instances of problems for other
+software of timetable construction.
 
 The development of our architecture, was divided into two parts.
-We analyzed the data flow in a generic system of timetable
-production. Then we define the architecture, the basic blocks and
-the responsibility of each block that takes part in the
-architecture. The objectives to define an open and extensible
-architecture were respect during our work. This is presented in
-the sections \ref{sec:data} and \ref{sec:archi}.
+We analyzed the data flow in a generic timetable production
+system. Then we define the architecture, the basic blocks and the
+responsibility of each block participating in the architecture.
+The objectives to define an open and extensible architecture were
+respect during our work. This is presented in the sections
+\ref{sec:data} and \ref{sec:archi}.
 
-Once the architecture is defined, we created an instance in order
-to establish it in a system of timetable production at the
-University of Sherbrooke. We made an overview of existing
+Once the architecture is defined, we created an instance. In order
+to establish this architecture in a timetable production system at
+the University of Sherbrooke. We made an overview of existing
 technologies in order to make the good choices still respecting
-the objectives of opening and extensibility. This is presented in
+the objectives of openness and extensibility. This is presented in
 the sections \ref{sec:tech} and \ref{sec:tictac}.
 
 
@@ -817,7 +818,6 @@ PostgreSQL\footnote{http:\//\//www.postgresql.org/}, and others.
 For PostgreSQL, using the license is free of charges.\\
 \end{description}
 
-//
 
 As we looked in this section, we benefit from several open
 technological components which enable us to speed the development
