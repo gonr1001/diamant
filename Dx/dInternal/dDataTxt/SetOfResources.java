@@ -360,6 +360,25 @@ public class SetOfResources extends DXObject{
   }
 
   /**
+   * return a vector where each resource has idToSelect as ID
+   * @return
+   */
+  public Vector selectIDValue(String idToSelect){
+    Vector select= new Vector(1);
+    if(_stateSort!=1)
+      sortSetOfResourcesByID();
+    int beginIndex= getIndexOfResource(idToSelect);
+    if (beginIndex!=-1)
+      while( (getResourceAt(beginIndex)!=null) &&
+             (getResourceAt(beginIndex).getID().equalsIgnoreCase(idToSelect))){
+        select.add(getResourceAt(beginIndex));
+        beginIndex++;
+      }
+    return select;
+
+  }
+
+  /**
    * Creates a Vector containig the IDs of the resources whose the value of the
    * field (defined by the argument "fieldIndex") is equals to value defined by
    * the argument "fieldValue".  The fieldIndex is defined in each resource. The value

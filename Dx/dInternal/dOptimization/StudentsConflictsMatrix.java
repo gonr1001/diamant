@@ -11,14 +11,9 @@ package dInternal.dConditionsTest;
 
 import dInterface.dUtil.DXTools;
 
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.Activity;
-import dInternal.dData.Type;
-import dInternal.dData.SetOfStudents;
-import dInternal.dData.StudentAttach;
-import dInternal.dData.SetOfResources;
-import dInternal.dData.Resource;
+import dInternal.dData.*;
 import dInternal.dUtil.DXValue;
+import dInternal.DModel;
 
 
 public class StudentsConflictsMatrix {
@@ -38,10 +33,12 @@ public class StudentsConflictsMatrix {
    * @param soa
    * @param sos
    */
-  public void buildMatrix(SetOfActivities soa, SetOfStudents sos){
+  public void buildMatrix(DModel dm){
+    SetOfActivities soa= dm.getSetOfActivities();
+    SetOfStudents sos= dm.getSetOfStudents();
     _allSections = buildSections(soa);
     if(_doFirstGroupAssignement){
-      firstStudentGroupAssignment(soa,sos);
+      firstStudentGroupAssignment(soa,sos, dm.getSetOfImportErrors());
       _doFirstGroupAssignement=false;
     }
     _theMatrix = new int[_allSections.size()+1][_allSections.size()+1];
@@ -131,7 +128,8 @@ public class StudentsConflictsMatrix {
    * First assignment of students in the groups
    * @param sos
    */
-  private void firstStudentGroupAssignment(SetOfActivities soa, SetOfStudents sos){
+  private void firstStudentGroupAssignment(SetOfActivities soa, SetOfStudents sos,
+      SetOfResources setOfImportErrors){
     for (int i=0; i< soa.size(); i++){
       Resource rescActivity = soa.getResourceAt(i);
       for (int j=0; j< ((Activity)rescActivity.getAttach()).getSetOfTypes().size(); j++){
@@ -158,8 +156,10 @@ public class StudentsConflictsMatrix {
             int studentGroup=((StudentAttach)student.getAttach()).getGroup(rescActivity.getID()+rescType.getID());
             String groupeID=Character.toString(DXTools.STIConvertGroup(studentGroup));
             if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null){
-              System.out.println("Student: "+student.getID()+"- Activity: "+rescActivity.getID()
-                                 +"."+rescType.getID()+" - Group: "+groupeID);//debug
+              DXValue error= new DXValue();
+              error.setStringValue("Erreur --> "+student.getKey()+" - "+student.getID()+"- Activity: "+rescActivity.getID()
+                                 +"."+rescType.getID()+" - Group: "+groupeID);
+              setOfImportErrors.addResource(new Resource("1",error),0);
               ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),-1,false);
             }// end if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null)
           }// end else if(!((StudentAttach)student.getAttach()).isFixedInGroup

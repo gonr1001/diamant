@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.79 $  $Date: 2003-10-28 14:24:53 $
+ * Title: DModel $Revision: 1.80 $  $Date: 2003-11-12 01:24:02 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.79 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.80 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -28,7 +28,7 @@ import dInterface.DDocument;
 import dInternal.dData.*;
 import dInternal.dConditionsTest.*;
 
-import dInternal.dData.LoadData;
+import dInternal.dUtil.DXValue;
 
 import dInternal.dTimeTable.TTStructure;
 import dInternal.DModelEvent;
@@ -58,6 +58,18 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   protected SetOfEvents _setOfEvents;
   private int _currentCycle = 1;
   protected TestConditions _conditionTest;
+  /**
+   * _setOfImportErrors contains a DXValue object where
+   * the intvalue is the type of resource 0= activities, 1= students,
+   * 2= instructors, 3 = rooms, 4= other
+   * and string value is the error message
+   */
+  private SetOfResources _setOfImportErrors=null;//
+
+  /**
+   * intvalue is between 0-1000 and give the state of the progress bar
+   */
+  private DXValue _progressBarState;
   //private DModelProcess _dmProcess;
 
 
@@ -74,6 +86,9 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     _error = "";
     _setOfStates = new SetOfStates();
     _setOfEvents = new SetOfEvents(this);
+    _setOfImportErrors= new SetOfResources(99);
+    _progressBarState= new DXValue();
+    _progressBarState.setIntValue(0);
     _conditionTest = new TestConditions(this);
     _dDocument = dDocument;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
@@ -99,6 +114,15 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public String getError(){
     return _error;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public DXValue getProgressBarState(){
+
+    return _progressBarState;
   }
 
   /**
@@ -308,6 +332,14 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public SetOfStudents getSetOfStudents(){
     return _setOfStudents;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public SetOfResources getSetOfImportErrors(){
+    return   _setOfImportErrors;
   }
 
   /**

@@ -93,7 +93,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    * @param reportType
    */
   private void setSetOfResources(int reportType){
-    String [][] reportElements = null;
+    String [][] reportElements = {{"1","1"}};
     _resources = new SetOfResources(100);
     Resource res;
     DXValue dxv;
@@ -134,6 +134,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         };
         reportElements = conflictsElements;
         break;
+
     }//end switch
     for(int i = 0; i < reportElements.length; i++){
       String[][] subFields = null;

@@ -23,6 +23,9 @@ public class StandardReportData {
 
   private DModel _dm;
   private int _AHOUR=60;// a hour= 60 minutes
+  private int STATE1=300;
+  private int STATE2=600;
+  private int STATE3=100;
   private String _HOURSEPARATOR="h";
   /*
   *_activitiesReport is a string where each line contains more informations separeted
@@ -67,6 +70,8 @@ public class StandardReportData {
     _activitiesReport= buildActivitiesReport();
     _studentsReport = buildStudentsReport();
     _conflictsReport=buildConflictsReport();
+    _dm.getProgressBarState().setIntValue(1000);
+    System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
   }
 
   /**
@@ -75,7 +80,10 @@ public class StandardReportData {
    */
   private String buildActivitiesReport(){
     String actlist="";
-    for (int i=0; i< _dm.getSetOfActivities().size(); i++){
+    int size=_dm.getSetOfActivities().size();
+    for (int i=0; i<size ; i++){
+      _dm.getProgressBarState().setIntValue(STATE1*i/size);
+      System.out.println("Change progess bar: "+ _dm.getProgressBarState().getIntValue());
       Activity activity = (Activity)_dm.getSetOfActivities().getResourceAt(i).getAttach();
       if (activity.getActivityVisibility()){
         for(int j=0; j< activity.getSetOfTypes().size(); j++){
@@ -200,7 +208,9 @@ public class StandardReportData {
    */
   private String buildConflictsReport(){
     String report="";
-    for(int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(); i++){
+    int size= _dm.getTTStructure().getCurrentCycle().getSetOfDays().size();
+    for(int i=0; i< size; i++){
+      _dm.getProgressBarState().setIntValue(STATE1+STATE2+STATE3*i/size);
       Resource day= _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
       for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
         Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
@@ -255,7 +265,9 @@ public class StandardReportData {
    */
   private String buildStudentsReport(){
     String studlist="";
-    for (int i=0; i< _dm.getSetOfStudents().size(); i++){
+    int size= _dm.getSetOfStudents().size();
+    for (int i=0; i< size; i++){
+      _dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
       String line = _dm.getSetOfStudents().getResourceAt(i).toWrite(" ");
       StringTokenizer strTokens= new StringTokenizer(line.substring(SetOfStudents._ENDSTUDENTNUMBEROFCOURSE,line.length()));//+SetOfResources.CR_LF;

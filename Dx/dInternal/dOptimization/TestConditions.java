@@ -71,7 +71,7 @@ public class TestConditions {
   */
   private void buildStudentConflictMatrix(){
     if (!_matrixIsBuilded){
-     _matrix.buildMatrix(_dm.getSetOfActivities(), _dm.getSetOfStudents());
+     _matrix.buildMatrix(_dm);
      _matrixIsBuilded= true;
     }
  }

@@ -1,17 +1,12 @@
 package dInternal.dConditionsTest;
 
-import dInternal.dData.SetOfResources;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.Activity;
-import dInternal.dData.Type;
-import dInternal.dData.Section;
-import dInternal.dData.Unity;
-import dInternal.dData.Assignment;
+import dInternal.dData.*;
+
 
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DXValue;
 import dInternal.DModel;
 import dResources.DConst;
 
@@ -55,15 +50,27 @@ public class SetOfEvents extends SetOfResources{
             Assignment assignment = (Assignment)((Unity)unity.getAttach()).getAssignment(
                 _dm.getTTStructure().getCurrentCycleResource().getID()).getAttach();
             if(assignment!=null){
-              int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(assignment.getInstructorName());
-              if(instructorIndex!=-1)
-                instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
-              int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
-              if(roomIndex!=-1)
-                roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
-              int[] dayTime = assignment.getDateAndTime();
               unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
               String unityID = activity.getID()+"."+ type.getID()+"."+section.getID()+"."+unity.getID()+".";
+              int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(assignment.getInstructorName());
+              if(instructorIndex!=-1){
+                instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
+              }else{
+                DXValue error= new DXValue();
+                error.setStringValue("Erreur --> "+ unityID+": "+assignment.getInstructorName()+" Inexistant ");
+                _dm.getSetOfImportErrors().addResource(new Resource("2",error),0);
+              }
+
+              int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
+              if(roomIndex!=-1){
+                roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
+              }else{
+                DXValue error= new DXValue();
+                error.setStringValue("Erreur --> "+ unityID+": "+assignment.getRoomName()+" Inexistant ");
+                _dm.getSetOfImportErrors().addResource(new Resource("3",error),0);
+              }
+              int[] dayTime = assignment.getDateAndTime();
+
               EventAttach event = new EventAttach(unityKey,instructorKey,roomKey,
                   ((Unity)unity.getAttach()).getDuration(),
                   ((Cycle)_dm.getTTStructure().getCurrentCycleResource().getAttach()).getPeriod(dayTime));
