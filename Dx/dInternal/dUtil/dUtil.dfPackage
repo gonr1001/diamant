@@ -21,6 +21,11 @@ class reference7 {
 @__modelType reference 
 */
 class reference8 {
+}/**
+@__ref <oiref:java#Class#dInternal.dUtil.DisplayAttributs:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

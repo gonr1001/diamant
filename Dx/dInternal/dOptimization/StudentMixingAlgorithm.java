@@ -162,13 +162,13 @@ public class StudentMixingAlgorithm implements Algorithm {
     return count;
   }*/
 
-  /**
-   * build all convex groups of students
-   * @param associatesEvents
-   * @param maxRepeats
-   * @param studentsReg
-   * @return
-   */
+ /**
+  * build all convex groups of students
+  * @param associatesEvents
+  * @param maxRepeats
+  * @param studentsReg
+  * @return
+  */
   private SetOfResources buildConvexGroup(SetOfResources associatesEvents, Vector studentsReg){
     /**
      * contains a ressource where the key is the student key and the ID is the
@@ -193,20 +193,23 @@ public class StudentMixingAlgorithm implements Algorithm {
         String sectionID= Character.toString(DXTools.STIConvertGroup(group));
         String typeID= actID.substring(SetOfActivities._COURSENAMELENGTH,SetOfActivities._COURSENAMELENGTH+1);
         actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
-        Type type= _dm.getSetOfActivities().getType(actID,typeID);
-        Section section= (Section)type.getSection(sectionID).getAttach();
-        for(int k=0; k< section.getSetOfUnities().size(); k++){
-          String eventID= actID+"."+typeID+"."+sectionID+"."+
-                  section.getSetOfUnities().getResourceAt(k).getID()+".";
-          Resource assEvent= associatesEvents.getResource(eventID);
-          if(assEvent!=null){
-            nbOfPotentialConf+= ((DXValue)assEvent.getAttach()).getIntValue();
-          }// end if(assEvent!=null)
-          //System.out.println(eventID);//debug
-        }// end for(int k=0; k< section.getSetOfUnities().size(); k++)
+        //Type type= _dm.getSetOfActivities().getType(actID,typeID);
+        //Section section= (Section)type.getSection(sectionID).getAttach();
+        Section section= _dm.getSetOfActivities().getSection(actID,typeID,sectionID);
+        if(section!=null){
+          for(int k=0; k< section.getSetOfUnities().size(); k++){
+            String eventID= actID+"."+typeID+"."+sectionID+"."+
+                    section.getSetOfUnities().getResourceAt(k).getID()+".";
+            Resource assEvent= associatesEvents.getResource(eventID);
+            if(assEvent!=null){
+              nbOfPotentialConf+= ((DXValue)assEvent.getAttach()).getIntValue();
+            }// end if(assEvent!=null)
+            //System.out.println(eventID);//debug
+          }// end for(int k=0; k< section.getSetOfUnities().size(); k++)
+          convexGroup.setCurrentKey(studentKey);
+          convexGroup.addResource(new Resource(Integer.toString(nbOfPotentialConf),new DXValue()),0);
+        }//end if(section!=null)
       }// end for (int j=0; j< student.getCoursesList().size(); j++)
-      convexGroup.setCurrentKey(studentKey);
-      convexGroup.addResource(new Resource(Integer.toString(nbOfPotentialConf),new DXValue()),0);
       //DXValue value= new DXValue();
       //value.setIntValue(nbOfPotentialConf);
     }//end for (int i=0; i< studentsReg.size(); i++)

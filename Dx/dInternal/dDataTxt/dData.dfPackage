@@ -45,6 +45,7 @@ class reference299 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStudents:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference300 {
 }/**
@@ -120,60 +121,72 @@ class reference3 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference4 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStatesListener:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference5 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfActivitiesEvent:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference16 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfActivitiesListener:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference17 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStudentsEvent:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference18 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStudentsListener:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference19 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfRoomsEvent:oiref><oihard>
-@__modelType reference */
+@__modelType reference 
+@__hidden*/
 class reference20 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfRoomsListener:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference21 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfInstructorsEvent:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference22 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfInstructorsListener:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference23 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.ExportData:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference6 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.StandardReportData:oiref><oihard>
 @__modelType reference 
+@__hidden
 */
 class reference7 {
 }}/**
@@ -195,7 +208,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsListener:oiref>=29,8,154,114,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.StudentAttach:oiref>=1061,776,192,315,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfActivitiesEvent:oiref>=170,200,127,98,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsEvent:oiref>=518,307,138,98,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsEvent:oiref>=400,100,138,98,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfStates:oiref>=181,1,99,123,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.Assignment:oiref>=2058,10,161,299,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfStudentsListener:oiref>=409,8,142,114,1:oigroup>
@@ -219,7 +232,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dData.State:oiref>=153,73,101,187,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Activity#_setOfTypes:oiref>=1640,520,1640,380:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesAfter:oiref>=2454,776,2454,748,1672,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfRoomsListener:oiref>=340,310,132,114,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfRoomsListener:oiref>=340,220,132,114,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref>=393,203,112,98,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesBefore:oiref>=2494,776,2494,738,1686,380:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructors:oiref>=1540,450,163,187,1:oigroup>
