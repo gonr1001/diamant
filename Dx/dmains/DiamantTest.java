@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.38 $  $Date: 2004-06-09 20:31:19 $
+ * Title: DiamantTest 1.5Test $Revision: 1.39 $  $Date: 2004-06-09 20:34:58 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,7 +33,7 @@ package dmains;
 import dTest.dInternal.dUtil.*;
 import dTest.dInternal.dData.*;
 import dTest.dInternal.dTimeTable.*;
-import dTest.dInternal.dOptimization.*;
+import dTest.dInternal.dOptimizationTest.*;
 import junit.framework.*;
 
 
