@@ -14,11 +14,12 @@
 it}
 
 % Pour la création du titre
-\title{\bf{ La production d'un horaire de cours dans une Université (document préparatoire)}}
+\title{\bf{L'architecture d'un système de production des horaires
+de cours et des examens dans une Université (document préparatoire)}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
-\email{Ruben.Gonzalez-Rubio@USherbrooke.ca}
+\email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
 \email{Domingo.Palao@USherbrooke.ca} }
 \date{}
 
@@ -30,56 +31,71 @@ Université de Sherbrooke,\\
 
 \section{Avant de commencer}
 \subsection{Quoi, de manière précise, a été votre contribution?}
-Nous allons développer un logiciel pour la production des horaires
-avec une approche beaucoup plus liée aux principes du génie
-logiciel. Avec les idées de base suivantes:
+Le développement de l'architecture logiciel d'un système de
+production des horaires en utilisant les principes du génie
+logiciel.
+
+En particulier nous avons développé une architecture~:
 
 \begin{enumerate}
-\item Une solution ouverte
+\item Ouverte
 
 \item Modulaire
 
-\item Codé de manière efficace
+\item Flexible
+
+\item Extensible
 \end{enumerate}
 
 \begin{description}
  \item [Quelle question avez-vous répondu?]
- Si nous voulons un système d'information adapté à la production d'horaires
- de cours au niveau Universitaire ouvert et extensible, quelle serait une
- bonne décomposition modulaire (un bon design) pour tel système ?
+ Comment organizer un système d'in\-for\-mation dédié à la production d'horaires
+ de cours et de examens au niveau Universitaire en prenant en compte les
+ caractéristiques~: ouvert, modulaire, flexible, extensible.
 
 \item [Pourquoi est importante pour le lecteur cette réponse?]
-Nous présentons les considérations de conception d'un système
+Nous présen\-tons les considérations de conception d'un système
 intégrant la production d'horaires de cours et la construction
 automatique d'horaires. Il montre des alternatives  d'interfaces
-entre les différents modules du système.
+entre les différents modules du système. Un lecteur peut
+s'inspirer de l'architecture présentée pour créer sa propre
+instance de système de production d'horaires. Un lecteur peut
+s'inspirer pour planifier la mise en oeuvre d'une instance
+similaire.
 
-\item [Quelle est l'extension de cette réponse?] L'identification
-du flot de données tout au long du processus de production
-d'horaires. Le découpage en modules avec un analyse de différents
-solutions.
+\item [Quelle est l'extension de cette réponse?] La définition de
+l'architecture est faite suivant le flot de données tout au long
+du processus de production d'horaires. Après, nous présentons un
+découpage en modules de l'architecture avec un analyse de
+différents solutions.
 
 \end{description}
 
 \subsection{Quel est votre nouveau résultat?}
 
 \begin{description}
-\item [Quelle est votre contribution à la connaissance?] Nous
-voulons offrir aux lecteurs un point de vue intégral de la
-production d'horaires, en ajoutant plusieurs qualités à notre
-logiciel. Entre les qualités plus importantes que nous cherchons
-introduire nous avons la flexibilité et l'extensibilité.
 
-Les systèmes d'information sont plus complexes chaque jour et
-demandent sa division en plusieurs modules avec une tache bien
-précise à accomplir. Une fois que nous avons fait cette division,
-il faut faire l'intégration de plusieurs de ces modules pour avoir
-une réponse adequate aux besoins des utilisateurs. Étant donnée
-cette complexité, nous avons besoin de découper les grands
-problèmes en petits morceaux faciles à gérer, et faciles à
-s'intégrer, disons qu'il faut désigner des systèmes qui facilement
-pourront se contracter et s'élargir \cite{parnas78}. Nous voulons
-faire un développement basé sur les principes du génie logiciel.
+\item [Quelle est votre contribution à la connaissance?] Offrir
+aux lecteurs un  vue globale du processus  de la production
+d'horaires et monter une architecture capable de soutenir ce
+processus. Encore, le système proposé possède les
+caractéristiques~: ouvert, modulaire, flexible, extensible.
+
+Les systèmes d'information sont plus complexes chaque jour car ils
+évoluent. Les besoins changent et le système doit s'adapter aux
+changements. Un système doit être construit de le départ en
+prenant en compte les changements qu'il va suivre.
+
+ et demandent sa division en plusieurs modules avec
+une tache bien précise à accomplir. Une fois que nous avons fait
+cette division, il faut faire l'intégration de plusieurs de ces
+modules pour avoir une réponse adequate aux besoins des
+utilisateurs. Étant donnée cette complexité, nous avons besoin de
+découper les grands problèmes en petits morceaux faciles à gérer,
+et faciles à s'intégrer, disons qu'il faut désigner des systèmes
+qui facilement pourront se contracter et s'élargir
+\cite{parnas78}. Nous voulons faire un développement basé sur les
+principes du génie logiciel.
 
 \item [Quels sont les travaux antérieurs?]Dans une recherche
 documentaire nous avons trouvé que la plupart des articles dans le
@@ -155,7 +171,7 @@ concrets pour montrer la validité de notre manière de concevoir ce
 type de logiciel.
 \end{description}
 
-\section{Application de la méthodologie.}
+\section{Application de la méthodologie}
 \subsection{Les préalables }
 
 \begin{description}
@@ -235,9 +251,11 @@ type de logiciel.
 permettra d'explique vos démarches.
 
 \begin{enumerate}
-\item Résumé. \item Introduction (motivation, définition du
-problème, la question spécifique que vous allez travailler,
-panorama générale, travail connexe).
+\item Résumé.
+
+\item Introduction (motivation, définition du problème, la
+question spécifique que vous allez travailler, panorama générale,
+travail connexe).
 
 \item Les données
 
