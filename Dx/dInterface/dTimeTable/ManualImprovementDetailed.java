@@ -125,6 +125,7 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
     //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
     String eventPeriodKey = ((EventAttach)event.getAttach()).getPeriodKey();
     boolean eventAssignState = ((EventAttach)event.getAttach()).getAssignState();
+    boolean eventPermanentState = ((EventAttach)event.getAttach()).getPermanentState();
     boolean inAPeriod = ((EventAttach)event.getAttach()).isPlaceInAPeriod();
     if (event!=null) {
       ((EventAttach)event.getAttach()).setAssignState(true);
@@ -154,6 +155,8 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
     }// end if(event!=null){
     ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
     ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
+    ((EventAttach)event.getAttach()).setPermanentState(eventPermanentState);
+
     ((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
   }
 
