@@ -1,53 +1,96 @@
 \chapter{Description des champs pour \diamant{} 1.5}
 
 \begin{table}[h]
-    \begin{tabular}{*{7}{|c}|}
-         1 & 1 & 1 & 1& 1 & 1 & 1 \\ \multicolumn{2}{c}{3}
-          & 1 & 1 & 1 & 1 & 1 \\
-         1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-         1 & 1 & 1 & 1 & 1 & 1 &  \\
-         1 & 1 & 1 & 1 & 1 & 1 & \raisebox{1.5ex}[1pt]{Dem} \\
+    \begin{tabular}{*{5}{|c}|} \hline
+           \itshape Champ & \itshape Élément Diamant & \itshape  Description& \itshape Type & \itshape Genre\\ \hline
+          Nom du local & Liste de locaux & - & A & \\ \cline{1-4}
+          & Liste de locaux & - & A & \\ \cline{2-4}
+          & Conflit de capacité de locaux & Recalculer les conflits & C & \\ \cline{2-4}
+          \raisebox{3.0ex}[1pt]{Capacité} & Période & Rafraîchissement de la période & C & \\ \cline{1-4}
+          & Liste de locaux & - & A & \\ \cline{2-4}
+          &  & Vérifier si les caractéristiques & & \\
+          &  & du local sont adaptées & & \\
+          \raisebox{4.5ex}[1pt]{Liste de} & \raisebox{3.0ex}[1pt]{Warning de locaux} & à la nature du cours & \raisebox{3.0ex}[1pt]{C} &  \\ \cline{2-4}
+          \raisebox{4.5ex}[1pt]{caractéristiques} & Période & Rafraîchissement de la période & C & \raisebox{12.0ex}[1pt]{D} \\ \hline
     \end{tabular}
+    \caption{\emph{Fichier de locaux}}
+    \label{tableLocaux}
 \end{table}
 
 
 \begin{table}[h]
-    \begin{tabular}{*{6}{|c}|} \hline
-         \itshape Fichier& \itshape Champ & \itshape Élément Diamant & \itshape Type & \itshape Description & \itshape Genre\\ \hline
-          & Nom du local & Liste de locaux & A & - & D \\ \cline{2-6}
-          & & Liste de locaux & A & - & \\ \cline{3-5}
-          & & Conflit de capacité de locaux & C & Recalculer les conflits & \\ \cline{3-5}
-          & \raisebox{3.0ex}[1pt]{Capacité} & Période & C & Rafraîchissement de la période & \raisebox{3.0ex}[1pt]{D} \\ \cline{2-6}
-          & & Liste de locaux & A & - & \\ \cline{3-5}
-          & &  &  & Vérifier si les caractéristiques & \\
-          & &  &  & du local sont adaptées & \\
-          & \raisebox{5.0ex}[1pt]{Liste de} & \raisebox{3.0ex}[1pt]{Warning de locaux} & \raisebox{3.0ex}[1pt]{C} & à la nature du cours & \\ \cline{3-5}
-          \raisebox{10.5ex}[1pt]{Locaux} & \raisebox{5.0ex}[1pt]{caractéristiques} & Période & C & Rafraîchissement de la période & \raisebox{6.0ex}[1pt]{D} \\ \hline
-
-          & Instructeur ID (nom) & Liste de professeurs & A & - & S \\ \cline{2-6}
-          & & Liste de disp. de profs. & A & - & \\ \cline{3-5}
-          & & Conflit de disp. de profs. & C & Recalculer les conflits & \\ \cline{3-5}
-          \raisebox{3.0ex}[1pt]{Disp. Profs.} & \raisebox{3.0ex}[1pt]{Disponibilité} & Période & C & Rafraîchissement de la période & \raisebox{3.0ex}[1pt]{D} \\ \hline
-
-          & Nom d'activité & Liste d'activités & A & - & S \\ \cline{2-6}
-          & & Liste d'activités & A & - & D\\ \cline{3-6}
-          & & Conflits de locaux & & Recalculer les conflits &\\ \cline{3-3}
-          & & Conflits de disp. de profs. & & si les activités sont déjà & \\ \cline{3-3}
-          & \raisebox{4.5ex}[1pt]{Include} & Conflit d'étudiants & \raisebox{3.0ex}[1pt]{C} & placées dans la grille & \raisebox{3.0ex}[1pt]{D} \\ \hline
-          & Session & Liste d'activités & A & - & D \\ \cline{2-6}
-          & & Liste d'activités & A & - & D\\ \cline{3-6}
-          & & Liste de sous-activités & A & - &\\ \cline{3-5}
-          & & & & S'il y a eu un & \\
-          & & \raisebox{1.5ex}[1pt]{Warning de locaux} & \raisebox{1.5ex}[1pt]{C} & changement de nature & \\ \cline{3-5}
-          & & & & S'il y a eu une & \\
-          & \raisebox{8.0ex}[1pt]{SubActivité.Nature} & \raisebox{1.5ex}[1pt]{Tous les conflits}& \raisebox{1.5ex}[1pt]{C} & insertion/suppression de nature & \raisebox{6.0ex}[1pt]{D} \\ \hline
-
-
-
-
+    \begin{tabular}{*{5}{|c}|} \hline
+          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type & \itshape Genre\\ \hline
+          Instructeur ID(nom) & Liste de professeurs & - & A & S \\ \hline
+          & Liste de disp. de profs. & - & A & \\ \cline{2-4}
+          & Conflit de disp. de profs. & Recalculer les conflits & C & \\ \cline{2-4}
+          \raisebox{3.0ex}[1pt]{Disponibilité} & Période & Rafraîchissement de la période & C & \raisebox{3.0ex}[1pt]{D} \\\hline
     \end{tabular}
+    \caption{\emph{Fichier de Enseignants}}
+    \label{tableEnseignants}
 \end{table}
 
+\begin{table}[h]
+    \begin{tabular}{*{5}{|c}|} \hline
+          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type & \itshape Genre\\ \hline
+          Matricule & & - & & S \\ \cline{1-1} \cline{3-3} \cline{5-5}
+          Nom et prénom & & - & & S \\ \cline{1-1} \cline{3-3} \cline{5-5}
+          Sexe & & - & & D \\ \cline{1-1} \cline{3-3} \cline{5-5}
+          État & \raisebox{4.0ex}[1pt]{Liste d'étudiants} & - & \raisebox{4.0ex}[1pt]{A} & D \\ \hline
+          Étudiant.ActivitéID & & - & & \\ \cline{1-1} \cline{3-3}
+          Étudiant.ActivitéNature & \raisebox{1.0ex}[1pt]{Conflits d'étudiants et} & - & &  \\ \cline{1-1} \cline{3-3}
+          Étudiant.NuméroGroupe & \raisebox{1.0ex}[1pt]{Conflits de capacité de locaux} & - & \raisebox{3.0ex}[1pt]{C} & \raisebox{3.0ex}[1pt]{D} \\ \cline{1-1} \hline
+    \end{tabular}
+    \caption{\emph{Fichier d'Étudiants}}
+    \label{tableEtudiants}
+\end{table}
+
+
+\begin{table}[h]
+    \begin{tabular}{*{5}{|c}|} \hline
+          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type & \itshape Genre\\ \hline \hline
+          Nom d'activité & Liste d'activités & - & A & S \\ \hline
+          & Liste d'activités & - & A & \\ \cline{2-4}
+          & Conflits de locaux & Recalculer les conflits & & \\ \cline{2-2}
+          & Conflits de disp. de profs. & si les activités sont déjà & & \\ \cline{2-2}
+          \raisebox{4.5ex}[1pt]{Include} & Conflit d'étudiants & placées dans la grille & \raisebox{3.0ex}[1pt]{C} & \raisebox{4.5ex}[1pt]{D} \\ \hline
+          Session & Liste d'activités & - & A & D \\ \hline
+          & Liste de sous-activités & - & A & \\ \cline{2-4}
+          & Liste d'activités & - & A & \\ \cline{2-4}
+          & & Dans le cas où il y a eu un & & \\
+          & \raisebox{1.5ex}[1pt]{Warning de locaux} & changement de nature & \raisebox{1.5ex}[1pt]{C} & \\ \cline{2-4}
+          & & Dans le cas où il y a eu une & & \\
+          \raisebox{7.0ex}[1pt]{Sous-Activité.Nature} & \raisebox{1.5ex}[1pt]{Tous les conflits} & insertion/suppression de nature & \raisebox{1.5ex}[1pt]{C} & \raisebox{7.5ex}[1pt]{D} \\ \hline
+          & Liste de groupes & - & & \\ \cline{2-3}
+          & Liste de sous-activités & - & & \\ \cline{2-3}
+          & Liste d'activités & - & \raisebox{3.0ex}[1pt]{A} &  \\ \cline{2-4}
+          & & Dans le cas où il y a eu une & & \\
+          \raisebox{6.0ex}[1pt]{Groupe.Numéro} & \raisebox{1.5ex}[1pt]{Tous les conflits} & suppression de groupe & \raisebox{1.5ex}[1pt]{C} & \raisebox{6.0ex}[1pt]{S} \\ \hline
+          & Liste de bloques & - & & \\ \cline{2-3}
+          & Liste de groupes & - & & \\ \cline{2-3}
+          & Liste de sous-activités & - & & \\ \cline{2-3}
+          & Liste d'activités & - & \raisebox{4.5ex}[1pt]{A} &  \\ \cline{2-4}
+          & & Dans le cas où il y a eu une & & \\
+          \raisebox{6.0ex}[1pt]{Bloque.Numéro} & \raisebox{1.5ex}[1pt]{Tous les conflits} & suppression de bloque & \raisebox{1.5ex}[1pt]{C} & \raisebox{7.5ex}[1pt]{S} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          & Conflit de locaux & - & C & \\ \cline{2-4}
+          \raisebox{3.0ex}[1pt]{Bloque.LocalID} & Warning de locaux & - & C & \raisebox{3.0ex}[1pt]{D} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          \raisebox{1.5ex}[1pt]{Bloque.PériodeID} & Tous les conflits & - & C & \raisebox{1.5ex}[1pt]{D} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          \raisebox{1.5ex}[1pt]{Bloque.Dureé} & Tous les conflits & - & C & \raisebox{1.5ex}[1pt]{D} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          \raisebox{1.5ex}[1pt]{Bloque.ActivitéType} & Warning de locaux & - & C & \raisebox{1.5ex}[1pt]{D} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          \raisebox{1.5ex}[1pt]{Bloque.Placé} & Tous les conflits & - & C & \raisebox{1.5ex}[1pt]{D} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          \raisebox{1.5ex}[1pt]{Bloque.Figé} & Tous les conflits & - & C & \raisebox{1.5ex}[1pt]{D} \\ \hline
+          & Toutes les listes & - & A & \\ \cline{2-4}
+          \raisebox{1.5ex}[1pt]{Bloque.Instructeur} & Conflit d'instructeur & - & C & \raisebox{1.5ex}[1pt]{D} \\ \hline
+    \end{tabular}
+    \caption{\emph{Fichier de Cours}}
+    \label{tableCours}
+\end{table}
 
 
   % after \\: \hline or \cline{col0-col2} \cline{col3-col4} .
