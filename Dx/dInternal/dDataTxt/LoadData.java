@@ -218,7 +218,7 @@ public class LoadData {
       // extract rooms
       SetOfRooms roomsList = new SetOfRooms(project.nextToken().trim().getBytes(),5,14);
       if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfRooms(0, extractRoomsAttributesInterpretor());
+       roomsList.buildSetOfRooms(3, extractRoomsAttributesInterpretor());
      }
      extract.add(roomsList);
 
