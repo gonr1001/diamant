@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.6 $  $Date: 2003-03-10 17:28:41 $
+ * Title: ClassName $Revision: 1.7 $  $Date: 2003-09-29 12:40:23 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,11 +16,11 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.7 $
+ * @author  $Author: beaulieb $
  * @since JDK1.3
  */
-
+// Bernard
 
 import dInterface.DApplication;
 import lineInterface.DILigne;
