@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.77 $  $Date: 2003-09-29 15:14:03 $
+ * Title: DDocument $Revision: 1.78 $  $Date: 2003-09-29 15:28:26 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.77 $
+ * @version $Revision: 1.78 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -45,7 +45,7 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dResources.DConst;
 import java.util.StringTokenizer;
 //import javax.swing.JScrollPane;
-import dInterface.dTimeTable.TTPanel;
+import dInterface.dTimeTable.DetailedTTPanel;
 import dInterface.dTimeTable.SimpleTTPanel;
 
 import dInterface.dTimeTable.CloseCmd;

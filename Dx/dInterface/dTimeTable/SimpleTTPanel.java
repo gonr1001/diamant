@@ -32,8 +32,8 @@ import dInternal.dData.Resource;
 import dInternal.dTimeTable.*;
 
 
-public class SimpleTTPanel { //extends JScrollPane {
-  private DModel _dm;
+public class SimpleTTPanel extends TTPanel {
+
   //private int MINHEIGHT = 60;
   private int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
   private int VWIDTH =  36; // timeTable.nbDays * MINWIDTH;
@@ -68,9 +68,9 @@ public class SimpleTTPanel { //extends JScrollPane {
 
 
     _jSplitPane.setTopComponent(_jScrollPaneOne);
-    _jSplitPane.setBottomComponent(_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
-     _jSplitPane.setOneTouchExpandable(true);
-       _jSplitPane.setDividerLocation(0);
+    //_jSplitPane.setBottomComponent(_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
+   //  _jSplitPane.setOneTouchExpandable(true);
+    //   _jSplitPane.setDividerLocation(0);
     Dimension minSize= new Dimension (100, 100);
     _jScrollPaneOne.setMinimumSize(minSize);
   }
