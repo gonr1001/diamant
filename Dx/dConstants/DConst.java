@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.40 $  $Date: 2003-08-21 11:03:18 $
+ * Title: DConst $Revision: 1.41 $  $Date: 2003-08-21 11:29:33 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.41 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -68,7 +68,7 @@ public class DConst {
 
   // Color constants
   public final static Color COLOR_BLACK = Color.black; // Default color
-  public final static Color COLOR_AUX = Color.darkGray; // Other color
+  public final static Color COLOR_AUX = Color.gray; // Other color
   public final static Color COLOR_ROOM = Color.blue; // Rooms conflicts color
   public final static Color COLOR_INST = Color.red;  // Instructors conflicts color
   public final static Color COLOR_STUD = Color.magenta; // Students conflicts color
