@@ -77,11 +77,11 @@ public class ConflictsAttach extends DXObject{
    * @param typeOfConflict the type of conflicts
    * @return
    */
-  public boolean removeConflict(String eventName, int typeOfConflict){
+  public boolean removeConflict(String eventName, String typeOfConflict){
     for (int i=0; i< _setOfConflicts.size(); i++){
       Resource conf= _setOfConflicts.getResourceAt(i);
       if(conf.getID().equalsIgnoreCase(eventName)){
-        if (Integer.parseInt( ((DXValue)conf.getAttach()).getStringValue())==typeOfConflict){
+        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
           return _setOfConflicts.removeResourceAt(i);
         }
       }// end if(conf.getID().equalsIgnoreCase(eventName))

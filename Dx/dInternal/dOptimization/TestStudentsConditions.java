@@ -65,7 +65,7 @@ public class TestStudentsConditions implements Condition {
               period.removeNbStudConflict(number);
               for(int i=0; i< period.getEventsInPeriod().size(); i++)
                 ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
-                 getAttach()).removeConflict(eventKey,0);
+                 getAttach()).removeConflict(eventKey,DConst.R_STUDENT_NAME);
 
             break;
         }

@@ -123,7 +123,7 @@ public class TestConditions {
       //_dm.getSetOfEvents()._isEventPlaced=true;
       for (int i=0; i< _dm.getSetOfEvents().size(); i++){
         Resource event = _dm.getSetOfEvents().getResourceAt(i);
-        addOrRemEventInTTs(tts, event,1,false);
+        addOrRemEventInTTs(tts, event, 1, false);
       }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
       _dm.getSetOfEvents().updateActivities(_dm.getSetOfEvents().getSetOfResources());
     }
@@ -136,7 +136,7 @@ public class TestConditions {
     * @return
     */
   public int[] addOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
-     return StandardAddOrRemEventInTTs(tts,event, operation, usePriority);
+     return standardAddOrRemEventInTTs(tts,event, operation, usePriority);
    }
 
    /**
@@ -146,7 +146,7 @@ public class TestConditions {
     * @return
     */
    public int[] addOrRemEventInTTs( Resource event, int operation, boolean usePriority){
-     return StandardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation,usePriority);
+     return standardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation,usePriority);
    }
 
 
@@ -158,7 +158,7 @@ public class TestConditions {
    * range 1= nb of instructors conflicts
    * range 2= nb of rooms conflicts
    */
-  private int[] StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
+  private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
     int[] numberOfConflicts={0,0,0};
     int totalNumberOfConflicts=0;
     //StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);

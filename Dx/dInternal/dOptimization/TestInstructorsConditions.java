@@ -64,7 +64,7 @@ public class TestInstructorsConditions  implements Condition{
         period.removeNbInstructorsConflict(number);
         for(int i=0; i< period.getEventsInPeriod().size(); i++)
           ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
-           getAttach()).removeConflict(eventKey,1);
+           getAttach()).removeConflict(eventKey,DConst.R_INSTRUCTOR_NAME);
         break;
     }
     //return 0;
