@@ -154,12 +154,17 @@ public class SetOfActivities extends SetOfResources{
               DConst.ACTI_TEXT6+line,"ActivityList");
           if(_error.length()!=0)
             return false;
-          while(stLine.hasMoreElements())
+          if (numberOfUnitys != stLine.countTokens()) {
+            _error=DConst.ACTI_TEXT10+line+  "in the activity file:" +
+           "\n" + "I was in ActiviesList class and in analyseTokens method ";
+            return false;
+          }
+          /*while(stLine.hasMoreElements())
           if (stLine.nextToken().length() == 0){
             _error=DConst.ACTI_TEXT10+line+  "in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
-          }
+          }*/
           position = 12;
           break;
         case 12://type of rooms
