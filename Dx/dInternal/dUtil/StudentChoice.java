@@ -59,7 +59,7 @@ public class StudentChoice implements Cloneable{
 
     /**
      * return the course name
-     * OUTPUT: _Course, a string
+     * @return string the course name
      * */
     public String getCourse(){
       return _Course;
@@ -67,7 +67,7 @@ public class StudentChoice implements Cloneable{
 
     /**
      * return the group
-     * OUTPUT: _group, a integer
+     * @return integer the group
      * */
     public int getGroup(){
       return _group;
@@ -75,7 +75,7 @@ public class StudentChoice implements Cloneable{
 
     /**
      * return the state
-     * OUTPUT: _state, a boolean
+     * @return boolean the state
      * */
     public boolean getState(){
       return _fixed;

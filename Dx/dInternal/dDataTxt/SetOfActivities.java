@@ -8,6 +8,9 @@ package dInternal;
  * @author  ysyam, alexander
  * @version 1.0
  */
+import java.util.StringTokenizer;
+import java.util.Vector;
+import com.iLib.gDialog.FatalProblemDlg;
 
 public class ActivitiesList extends ResourceList{
 
@@ -24,17 +27,46 @@ public class ActivitiesList extends ResourceList{
 
   /**
    * analyse activities datas by a finished states machine
-   * INPUT: beginPosition, an integer (start position of the finished states machine)
-   * OUTPUT: boolean. "true" the analysis proceeded successfully and false otherwise
+   * @param integer the beginPosition (start position of the finished states machine)
+   * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
   public boolean analyseTokens(int beginPosition){
+    String token;
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    int state=0;
+    int position=beginPosition;
+    int line=0;
+    String activityName="";
+    while (st.hasMoreElements()){
+      token = st.nextToken();
+      line++;
+      switch (position){
+        case 0:// empty line
+          position = 1;
+          break;
+        case 1:// activity name
+          if (token.trim().length()==this._ACTIVITYLENGTH){
+            new FatalProblemDlg(
+            "Wrong student name at line: "+line+  "in the student file:" +
+            "\n" + "I was in StudentList class and in analyseTokens method ");
+            System.exit(1);
+          }
+          position = 2;
+          break;
+        case 2://activity visibility
+          position = 2;
+          break;
+      }// end switch (position)
+
+    }// end while (st.hasMoreElements())
+
     return true;
   }
 
   /**
    * build activitiesList from activities datas by a finished states machine
-   * INPUT: beginPosition, an integer (start position of the finished states machine)
-   * OUTPUT: boolean. "true" the analysis proceeded successfully and false otherwise
+   * @param integer the beginPosition (start position of the finished states machine)
+   * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
   public void buildActivitiesList(int beginPosition){
 
@@ -116,4 +148,5 @@ public class ActivitiesList extends ResourceList{
   }
 
   private int _COURSENAMELENGTH=6;
+  private int _ACTIVITYLENGTH=10;
 }
