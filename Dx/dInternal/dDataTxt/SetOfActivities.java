@@ -32,6 +32,7 @@ public class ActivitiesList extends ResourceList{
    * */
   public boolean analyseTokens(int beginPosition){
     String token;
+    String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     int state=0;
@@ -100,13 +101,49 @@ public class ActivitiesList extends ResourceList{
         case 11://fixed rooms
           stLine = new StringTokenizer(token);
           while(stLine.hasMoreElements()){
-            String element = stLine.nextToken();
-            if(element.equals("0") || element.equals("1")){
-              //je suis ici
+            sousString = stLine.nextToken();
+            if(!sousString.equals("0") || !sousString.equals("1")){
+              new FatalProblemDlg("Wrong format of fixed rooms in the activity file:" +
+                                  "\n" + "I was in activitiesList class and in analyseTokens method ");
+              System.exit(1);
             }
           }
-          position = 11;
+          position = 12;
           break;
+        case 12://Preferred rooms
+          if (token.length() == 0){
+            new FatalProblemDlg(
+            "Wrong name of preferred rooms at line: "+line+  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ");
+          System.exit(1);
+          }
+          position = 13;
+          break;
+        case 13://type of rooms
+          stLine = new StringTokenizer(token);
+          while(stLine.hasMoreElements())
+            isIntValue(stLine.nextToken(),"type of rooms: "+line);
+          position = 14;
+          break;
+        case 14://idem
+          stLine = new StringTokenizer(token);
+          while(stLine.hasMoreElements())
+            isIntValue(stLine.nextToken(),"type of rooms: "+line);
+          position = 15;
+          break;
+        case 15://pre-affected rooms
+          stLine = new StringTokenizer(token);
+          while(stLine.hasMoreElements()){
+            sousString = stLine.nextToken();
+            if(!sousString.equals("0") || !sousString.equals("1")){
+              new FatalProblemDlg("Wrong format of pre-affected rooms in the activity file:" +
+                                  "\n" + "I was in activitiesList class and in analyseTokens method ");
+              System.exit(1);
+            }
+          }
+          position = 0;
+          break;
+
       }// end switch (position)
 
     }// end while (st.hasMoreElements())
