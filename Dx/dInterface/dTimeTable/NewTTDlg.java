@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.18 $  $Date: 2003-07-11 10:07:16 $
+ * Title: NewTTDlg $Revision: 1.19 $  $Date: 2003-07-11 12:23:23 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,8 +19,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.19 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JFileChooser;
 import java.util.ResourceBundle;
 import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
 
@@ -81,7 +82,8 @@ public class NewTTDlg extends JDialog {
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-     int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
+     //int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
+     int returnVal =DXTools.showDialog(dApplic.getJFrame(),fc,str3);
 
      // If the file chooser exited sucessfully,
      // and a file was selected, continue

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.29 $  $Date: 2003-07-11 10:07:16 $
+ * Title: DMediator $Revision: 1.30 $  $Date: 2003-07-11 12:23:23 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.29 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.30 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -59,9 +59,11 @@ public class DMediator {
   public String addDoc(String ttName, String fileName, int type) {
     DDocument currentDoc;
     currentDoc = new DDocument(_dApplic, ttName, fileName, type);
-    _documents.addElement(currentDoc);
-    _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
-    _dApplic.hideToolBar();
+    if(currentDoc.getError().length()==0){
+      _documents.addElement(currentDoc);
+      _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
+      _dApplic.hideToolBar();
+    }
     return currentDoc.getError();
   } //end addDoc
 

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.8 $  $Date: 2003-07-11 10:41:30 $
+ * Title: OpenTTDlg $Revision: 1.9 $  $Date: 2003-07-11 12:23:23 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -72,13 +72,7 @@ public class OpenTTDlg extends JDialog {
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
      int returnVal =DXTools.showOpenDialog(dApplic.getJFrame(),fc);
-      /*int returnVal=1;
-      String filename="nothing.txt";
-     while((!DXToolsMethods.isFileExist(filename))||
-           (returnVal==JFileChooser.CANCEL_OPTION)){
-       returnVal = fc.showOpenDialog(dApplic.getJFrame());
-       filename= fc.getSelectedFile().getAbsolutePath();
-     }*/
+
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
      if (returnVal == JFileChooser.APPROVE_OPTION) {

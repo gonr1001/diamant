@@ -57,14 +57,20 @@ public class SetOfRooms extends SetOfResources{
             position = 3;
             break;
           case 3:
-            while (currentLine.hasMoreElements()){
-              token = currentLine.nextToken();
-              switch (state){
-                case 0: if ((new StringTokenizer(token)).countTokens()==0){
-                  _error= DConst.ROOM_TEXT1+line+DConst.ROOM_TEXT5 +
+            if(currentLine.countTokens()<4){
+                _error= DConst.ROOM_TEXT7+line+DConst.ROOM_TEXT5 +
                       "\n" + DConst.ROOM_TEXT6;
-                  return false;
-                }
+                return false;
+              }
+
+              while (currentLine.hasMoreElements()){
+                token = currentLine.nextToken();
+                switch (state){
+                  case 0: if ((new StringTokenizer(token)).countTokens()==0){
+                    _error= DConst.ROOM_TEXT1+line+DConst.ROOM_TEXT5 +
+                            "\n" + DConst.ROOM_TEXT6;
+                    return false;
+                  }
                 state =1;
                 break;
 

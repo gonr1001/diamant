@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.31 $  $Date: 2003-07-10 12:01:44 $
+ * Title: DConst $Revision: 1.32 $  $Date: 2003-07-11 12:23:23 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -179,6 +179,7 @@ public class DConst {
    public final static String ROOM_TEXT4= res.getString("roomText4");
    public final static String ROOM_TEXT5= res.getString("roomText5");
    public final static String ROOM_TEXT6= res.getString("roomText6");
+   public final static String ROOM_TEXT7= res.getString("roomText7");
 
    // activity constants
    public final static String ACTI_TEXT1= res.getString("activText1");

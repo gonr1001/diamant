@@ -28,12 +28,30 @@ public class DXTools {
       String filename="nothing.txt";
       while((!DXToolsMethods.isFileExist(filename))&&
             (returnVal==JFileChooser.APPROVE_OPTION)){
-        returnVal = fc.showOpenDialog(parent);
+          returnVal = fc.showOpenDialog(parent);
         if(fc.getSelectedFile()!=null)
           filename= fc.getSelectedFile().getAbsolutePath();
 
       }
      return returnVal;
+   }
+
+   /**
+   * check if the selected file exist before closed the dialog
+   * @param string the file name
+   * @return boolean true if the file exist a nd false otherwise
+   * */
+  public final static int showDialog(Component parent, JFileChooser fc, String message){
+    int returnVal=0;
+     String filename="nothing.txt";
+     while((!DXToolsMethods.isFileExist(filename))&&
+           (returnVal==JFileChooser.APPROVE_OPTION)){
+         returnVal = fc.showDialog(parent, message);
+       if(fc.getSelectedFile()!=null)
+         filename= fc.getSelectedFile().getAbsolutePath();
+
+     }
+    return returnVal;
    }
 
 }

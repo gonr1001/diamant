@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.22 $  $Date: 2003-07-10 14:50:35 $
+ * Title: ToolBar $Revision: 1.23 $  $Date: 2003-07-11 12:23:23 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: rgr $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -113,7 +113,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
       public void actionPerformed(ActionEvent e) {
         String nbDays=setNumberOfDays.getText();
         if (!DXToolsMethods.isIntValue(nbDays)){
-          new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
+          new FatalProblemDlg(_dApplic.getJFrame(),"Valeur eronnée");
           setNumberOfDays.setText(Integer.toString(_tts.getCurrentCycle().getNumberOfDays()));
         }else{
           //int add= Integer.parseInt(nbDays);
@@ -121,7 +121,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           if(Integer.parseInt(nbDays)>0)
             selectAddRemoveDays(Integer.parseInt(nbDays));
           else
-            new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
+            new FatalProblemDlg(_dApplic.getJFrame(),"Valeur eronnée");
           //Treat event
           _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();//  _tts.sendEvent();
           setToolBarOne();
@@ -248,7 +248,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         periodSelector.setSelectedIndex(0);
       }// end if(ppanel!=null)
     }else{// end if(DXToolsMethods.isIntValue(item))
-      new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
+      new FatalProblemDlg(_dApplic.getJFrame(),"Valeur eronnée");
       periodSelector.setSelectedIndex(0);
     }
   }

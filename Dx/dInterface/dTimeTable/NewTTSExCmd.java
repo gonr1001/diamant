@@ -29,7 +29,7 @@ public class NewTTSExCmd implements Command{
 
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
-    dApplic.getDMediator().addDoc(dApplic.getPreferences()._standardTTE, DConst.EXAM);
+    dApplic.getDMediator().addDoc(dApplic.getPreferences()._standardTTE, DConst.NO_TYPE);
   } // end execute
 
 }/* end class NewTTSExCmd */
