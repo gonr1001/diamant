@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.37 $  $Date: 2004-06-04 15:45:07 $
+ * Title: EditActivityDlg $Revision: 1.38 $  $Date: 2004-06-04 15:56:09 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  *
@@ -316,7 +316,7 @@ public class EditActivityDlg
 		roomCB.setSelectedItem(vectR[0].get(0).toString());
 		roomCB.addActionListener(this);
 
-
+                // for development mode
 		/*Vector[] vectC =  buildCategoryRoomList();
 		JComboBox categoryRoomCB = new JComboBox(vectC[1]);
 		categoryRoomCB.setSelectedItem(vectC[0].get(0).toString());
