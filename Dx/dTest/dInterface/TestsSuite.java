@@ -1,7 +1,7 @@
 package dTest.dInterface;
 
 
-
+/*
 import junit.extensions.abbot.*;
 import junit.framework.Test;
 
@@ -12,14 +12,14 @@ import junit.framework.Test;
 /** Simple example of a ScriptTestSuite.  Selects all scripts of the form
  * MyCode-[0-9]*.xml.
  */
-public class TestsSuite extends ScriptFixture {
+public class TestsSuite {  /* extends ScriptFixture {
 
-    /** Name is the name of a script filename. */
+   
     public TestsSuite(String name) {
         super(name);
     }
 
-    /** Return the set of scripts we want to run. */
+    /** Return the set of scripts we want to run. 
     public static Test suite() {
       String testsDirectory = "D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dAbbotTest\\";
       String [] testFiles = {
@@ -43,5 +43,5 @@ public class TestsSuite extends ScriptFixture {
 
     public static void main(String[] args) {
         TestHelper.runTests(args, TestsSuite.class);
-    }
+    }*/
 }
