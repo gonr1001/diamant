@@ -10,6 +10,7 @@ package dInterface.dUtil;
  */
 import javax.swing.JFileChooser;
 import java.awt.Component;
+import java.util.Vector;
 
 import dInternal.dUtil.DXToolsMethods;
 
@@ -53,5 +54,21 @@ public class DXTools {
      }
     return returnVal;
    }
+
+   /**
+   * * Search the indices to be showed as selected in a JList. The search is made in the vector that
+   * contains the list items
+   * @param Vector (itemsList) the items list where we are searching indices
+   * @param Object [] (selectedItemsList) the selected items array to be found in the itemsList
+   * @return An array containing the indices of the items to be showed as selected
+   * */
+  public static int[] getIndicesToSelected(Vector itemsList, Object[] selectedItemsList){
+   int [] indices = new int[selectedItemsList.length];//the place fro keeping the indices to set selected
+   for (int i = 0; i < selectedItemsList.length; i++){
+     indices[i] = itemsList.indexOf(selectedItemsList[i]);
+     //System.out.println("Indices2[" + i + "]= " + indices[i]);
+   }
+   return indices;
+  }
 
 }

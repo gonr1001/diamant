@@ -30,6 +30,7 @@ import javax.swing.JScrollPane;
 import dAux.DoNothingCmd;
 import dAux.DoNothingDlg;
 import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Activity;
 
@@ -41,13 +42,13 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * The JList items choice by the user
    */
   private Object [] _currentActivities = new Object[0];
-  private static String listAct = "Liste des activités";
-  private static String show = "Afficher";
-  private static String cancel = "Annuler";
-  private static String notIncluded = "Non inclue(s)";
-  private static String included = "Inclue(s)";
-  private static String toLeft = "««";
-  private static String toRight = "»»";
+  private static String _listAct = "Liste des activités";
+  private static String _showMes = "Afficher";
+  private static String _cancelMes = "Annuler";
+  private static String _notIncluded = "Non inclue(s)";
+  private static String _included = "Inclue(s)";
+  private static String _toLeftMes = "««";
+  private static String _toRightMes = "»»";
   /**
    * the vectors containing the activities ID
    */
@@ -68,7 +69,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * @param dApplic The application object (for extracting the JFrame)
    */
   public ActivityDlg(DApplication dApplic) {
-     super(dApplic.getJFrame(), listAct, true);
+     super(dApplic.getJFrame(), _listAct, true);
      _dApplic = dApplic;
      _jd = this;
      jbInit();
@@ -82,9 +83,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Initialize the dialog
    */
   private void jbInit(){
-    _show = new JButton(show);
+    _show = new JButton(_showMes);
     _show.setPreferredSize(new Dimension(80,22));
-    _cancel = new JButton(cancel);
+    _cancel = new JButton(_cancelMes);
     _cancel.setPreferredSize(new Dimension(80,22));
     _listsPanel = new JPanel();
     //left panel
@@ -95,7 +96,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     rightSPane.setPreferredSize(new Dimension(150,300));
     rightSPane.getViewport().add(_noVisibleList);
     rightPanel = new JPanel(new BorderLayout());
-    _lNoVisible = new JLabel(_noVisibleVec.size() + " " + notIncluded);
+    _lNoVisible = new JLabel(_noVisibleVec.size() + " " + _notIncluded);
     rightPanel.add(_lNoVisible , BorderLayout.NORTH);
     rightPanel.add(rightSPane, BorderLayout.CENTER);
     //right panel
@@ -106,16 +107,16 @@ public class ActivityDlg extends JDialog implements ActionListener {
     leftSPane.setPreferredSize(new Dimension(150,300));
     leftSPane.getViewport().add(_visibleList);
     leftPanel = new JPanel(new BorderLayout());
-    _lVisible = new JLabel(_visibleVec.size() + " " + included);
+    _lVisible = new JLabel(_visibleVec.size() + " " + _included);
     leftPanel.add(_lVisible, BorderLayout.NORTH);
     leftPanel.add(leftSPane, BorderLayout.CENTER);
     //buttons «« »» panel
     JPanel _buttonsPanel1 = new JPanel(new BorderLayout());
     _buttonsPanel1.setPreferredSize(new Dimension(50,70));
     //the buttons _toLeft and _toRight
-    _toRight = new JButton(toRight);
+    _toRight = new JButton(_toRightMes);
     _toRight.setPreferredSize(new Dimension(50,35));
-    _toLeft = new JButton(toLeft);
+    _toLeft = new JButton(_toLeftMes);
     _toLeft.setPreferredSize(new Dimension(50,35));
     _buttonsPanel1.add(_toRight, BorderLayout.NORTH);
     _buttonsPanel1.add(_toLeft, BorderLayout.SOUTH);
@@ -186,16 +187,16 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    if (command.equals(cancel))
+    if (command.equals(_cancelMes))
         dispose();
-    if (command.equals(show)){
+    if (command.equals(_showMes)){
       if (_currentActivities.length != 0)
       new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
     }// end if (command.equals("Afficher"))
-    if (command.equals(toLeft))
-      actionButtonsLR(toLeft);
-    if (command.equals(toRight))
-      actionButtonsLR(toRight);
+    if (command.equals(_toLeftMes))
+      actionButtonsLR(_toLeftMes);
+    if (command.equals(_toRightMes))
+      actionButtonsLR(_toRightMes);
   }//end method
 
   /**
@@ -205,8 +206,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private void actionButtonsLR(String button){
     boolean visible = false;
     int i = 0;
-    int[] it=_visibleList.getSelectedIndices();
-    if (button == toLeft)
+    if (button == _toLeftMes)
       visible = true;
     if (_currentActivities.length != 0){
       for (i = 0; i < _currentActivities.length; i++)
@@ -218,15 +218,19 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //if button pressed is "_toLeft"
     if (visible == true){
       //_visibleList.setSelectedIndices(binaryIndexSearcher(true));
-      _visibleList.setSelectedIndices(getIndices(true));
+      //_visibleList.setSelectedIndices(getIndicesToSelected(true));
+      int[] indices=DXTools.getIndicesToSelected(_visibleVec,_currentActivities);
+      _visibleList.setSelectedIndices(indices);
       _noVisibleList.clearSelection();
     }else{
       //_noVisibleList.setSelectedIndices(binaryIndexSearcher(false));
-      _noVisibleList.setSelectedIndices(getIndices(false));
+      //_noVisibleList.setSelectedIndices(getIndicesToSelected(false));
+      int[] indices=DXTools.getIndicesToSelected(_noVisibleVec,_currentActivities);
+      _noVisibleList.setSelectedIndices(indices);
       _visibleList.clearSelection();
     }
-    _lNoVisible.setText(_noVisibleVec.size() + " " + notIncluded);
-    _lVisible.setText(_visibleVec.size() + " " + included);
+    _lNoVisible.setText(_noVisibleVec.size() + " " + _notIncluded);
+    _lVisible.setText(_visibleVec.size() + " " + _included);
   }//end method
 
   /**
@@ -236,7 +240,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * @return An array containing the indices of the items to be showed as selected
    */
 
-  private int[] binaryIndexSearcher(boolean visible){
+  /*private int[] binaryIndexSearcher(boolean visible){
     Vector analyzedVec = _visibleVec;
     int [] indices = new int[_currentActivities.length];//the place fro keeping the indices to set selected
     if (visible == false)
@@ -259,7 +263,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
       }//end while
     }//end for
     return indices;
-  }
+  }*/
 
   /**
    * Search the indices to be showed as selected in a JList. The search is made in the vector that
@@ -268,16 +272,18 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * @return An array containing the indices of the items to be showed as selected
    */
 
-  private int[] getIndices(boolean visible){
+  /*private int[] getIndicesToSelected( boolean visible){
     Vector analyzedVec = _visibleVec;
     int [] indices = new int[_currentActivities.length];//the place fro keeping the indices to set selected
     if (visible == false)
       analyzedVec = _noVisibleVec;
     for (int i = 0; i < _currentActivities.length; i++){
       indices[i] = analyzedVec.indexOf(_currentActivities[i]);
-      System.out.println("Indices2[" + i + "}= " + indices[i]);
+      System.out.println("Indices2[" + i + "]= " + indices[i]);
     }
     return indices;
-  }
+  }*/
+
+
 
 }// end class
