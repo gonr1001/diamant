@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.21 $  $Date: 2003-05-27 17:47:42 $
+ * Title: DMenuBar $Revision: 1.22 $  $Date: 2003-05-27 17:50:28 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,15 +14,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
 
-
-import dInterface.dUtil.*;
-import dInterface.dData.*;
 import dResources.DConst;
 import dAux.DoNothingCmd;
 import java.awt.Font;
@@ -33,9 +30,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenu;
 
-public class DMenuBar extends JMenuBar{
-  DApplication _dApplic;
+import dInterface.dData.*;
+import dInterface.dTimeTable.NewTTCmd;
+import dInterface.dTimeTable.NewTTSCmd;
+import dInterface.dTimeTable.OpenTTSCmd;
+import dInterface.dUtil.*;
 
+public class DMenuBar extends JMenuBar{
+  private DApplication _dApplic;
+  private int state;
   public DMenuBar(DApplication dApplic) {
     super();
     _dApplic = dApplic;
@@ -53,19 +56,19 @@ public class DMenuBar extends JMenuBar{
     this.add( menu );
 
     // Items in menu FILE.
-    /*
-    CmdMenu mNew = new CmdMenu(DConst.NEW);
-    menu.add(mNew);
-    mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNew.setCommand(new NewCmd());
-    mNew.addActionListener(_dApplic);
-    */
-   /*
-    CmdMenu mNProj = new CmdMenu("Nouveau Projet");
-    mNProj.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNProj.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    mNProj.addActionListener(_dApplic);
-    menu.add(mNProj);
+    /* This menu will be deleted in the final version */
+    CmdMenu mHello = new CmdMenu("Hello");
+    menu.add(mHello);
+    mHello.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mHello.setCommand(new HelloCmd());
+    mHello.addActionListener(_dApplic);
+
+
+    CmdMenu mNewTT = new CmdMenu(DConst.NEW_TT);
+    menu.add(mNewTT);
+    mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNewTT.setCommand(new NewTTCmd());
+    mNewTT.addActionListener(_dApplic);
 
     CmdMenu mOpen = new CmdMenu(DConst.OPEN);
     menu.add(mOpen);
@@ -98,33 +101,32 @@ public class DMenuBar extends JMenuBar{
 
     menu.addSeparator();
 
-    JMenu mTime = new JMenu("Grille horaire");
+    JMenu mDTTS = new JMenu(DConst.DTTS);
+    mDTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
 
 
-CmdMenu mNTime = new CmdMenu( "Nouvelle grille");
-mNTime.setFont( new java.awt.Font( mfont, font, nPT ) );
-mNTime.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-mNTime.addActionListener(_dApplic);
-mTime.add(mNTime);
+    CmdMenu mNTTS = new CmdMenu(DConst.NTTS);
+    mNTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTS.setCommand(new NewTTSCmd());
+    mNTTS.addActionListener(_dApplic);
+    mDTTS.add(mNTTS);
 
-CmdMenu mOTime = new CmdMenu( "Ouvrir grille");
-mOTime.setFont( new java.awt.Font( mfont, font, nPT ) );
-mOTime.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-mOTime.addActionListener(_dApplic);
-mTime.add(mOTime);
+    CmdMenu mOTTS = new CmdMenu(DConst.OTTS);
+    mOTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mOTTS.setCommand(new OpenTTSCmd());
+    mOTTS.addActionListener(_dApplic);
+    mDTTS.add(mOTTS);
 
-
-
-    menu.add(mTime);
+    menu.add(mDTTS);
 
     menu.addSeparator();
 
-    CmdMenu mImpM = new CmdMenu(DConst.IMP_M);
+    /*CmdMenu mImpM = new CmdMenu(DConst.IMP_M);
     menu.add(mImpM);
     mImpM.setFont( new java.awt.Font( mfont, font, nPT ) );
     mImpM.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    mImpM.addActionListener(_dApplic);
-    */
+    mImpM.addActionListener(_dApplic);*/
+
 
     CmdMenu mDefF = new CmdMenu(DConst.DEF_F_M);
     menu.add(mDefF);
@@ -138,13 +140,13 @@ mTime.add(mOTime);
     mImpA.setCommand(new ImportCmd(_dApplic.getJFrame()));
     mImpA.addActionListener(_dApplic);
 
-/*
+
     CmdMenu mExpo = new CmdMenu(DConst.EXPO);
     menu.add(mExpo);
     mExpo.setFont( new java.awt.Font( mfont, font, nPT ) );
     mExpo.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mExpo.addActionListener(_dApplic);
-*/
+
     menu.addSeparator();
 
     CmdMenu mExit = new CmdMenu(DConst.EXIT);
@@ -176,7 +178,7 @@ mTime.add(mOTime);
     menu = new JMenu(DConst.ASSIGN);
     menu.setFont( new java.awt.Font( mfont, font, nPT ) );
     this.add( menu );
-/*
+
     CmdMenu mActi = new CmdMenu("Activités");
     menu.add(mActi);
     mActi.setFont( new java.awt.Font( mfont, font, nPT ) );
@@ -209,7 +211,7 @@ mTime.add(mOTime);
      mConfl.setFont( new java.awt.Font( mfont, font, nPT ) );
      mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
      mConfl.addActionListener(_dApplic);
-*/
+
     //Build the menu PREFERENCES.
     menu = new JMenu(DConst.PREF);
     menu.setFont( new java.awt.Font( mfont, font, nPT ) );
@@ -231,6 +233,8 @@ mTime.add(mOTime);
     mAbout.setFont(new java.awt.Font(mfont, font, nPT));
     mAbout.setCommand(new AboutCmd());
     mAbout.addActionListener(_dApplic);
+
+    state = 0;
   } // end createMenus
 
 } /* end class DMenuBar */
