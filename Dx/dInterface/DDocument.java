@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.50 $  $Date: 2003-07-09 14:32:51 $
+ * Title: DDocument $Revision: 1.51 $  $Date: 2003-07-09 16:26:40 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
+ * @version $Revision: 1.51 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -112,13 +112,13 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
     return _dm.getError();
   }
     //-------------------------------------------
-    public void setModified(){
+   /* public void setModified(){
       _modified = true;
-    } // end setModified
+    } // end setModified*/
     //-------------------------------------------
-    public void noModified(){
+   /* public void noModified(){
       _modified = false;
-    } // end setModified
+    } // end setModified*/
     //-------------------------------------------
     public boolean isModified(){
         return _dm.getModified();
@@ -197,7 +197,7 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
     }// end actionPerformed
 
     public void changeInTTStructure(TTStructureEvent  e) {
-      if (_modified){
+      if (_dm.getModified()){
         System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
         this.updateStatusPanel();
         _ttPanel.updateTTPanel(_dm.getTTStructure());

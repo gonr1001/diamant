@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.38 $  $Date: 2003-07-08 11:32:34 $
+ * Title: DModel $Revision: 1.39 $  $Date: 2003-07-09 16:26:54 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.39 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInternal;
@@ -187,21 +187,23 @@ public void setVersion(String version){
   }
 
 //this method must be renamed to saveTT
-  public String rsaveTT(String filename) {
+ /* public String rsaveTT(String filename) {
     JOptionPane.showMessageDialog(_dApplic.getJFrame(),
                              "rsaveTT was here",
                               "trace",
                                  JOptionPane.OK_OPTION);
     return "";
-  }
+  }*/
 
 
   public void saveTimeTable(String filename) {
     SaveData saveD= new SaveData("1.5");
     saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+    _modified = false;
   }
 
   public void sendEvent() {
+    _modified = true;
     DModelEvent event = new DModelEvent(this);
     for (int i=0; i< _dmListeners.size(); i++) {
       DModelListener dml = (DModelListener) _dmListeners.elementAt(i);
