@@ -96,7 +96,7 @@ public class DModelProcess {
      //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
-     _dm._conditionTest = new ConditionsTest(_dm);
+     _dm._conditionTest = new TestConditions(_dm);
      //_dm._conditionTest.buildStudentsMatrix(_dm._setOfActivities,_dm._setOfStudents);
      //System.out.println(conditionTest.getConflictsMatrix().toWriteMatrix());
     // _dm._setOfStates.sendEvent();
