@@ -356,7 +356,7 @@ public class SetOfActivities extends SetOfResources{
         case 11://Preferred rooms
           stLine = new StringTokenizer(token);
           counter=1;
-          StringTokenizer instLine = new StringTokenizer(instructorName);
+          StringTokenizer instLine = new StringTokenizer(instructorName,";");
            while(stLine.hasMoreElements()){
              unityResource= section.getUnity(Integer.toString(counter));
              Unity bloc= (Unity)unityResource.getAttach();
@@ -507,7 +507,7 @@ public class SetOfActivities extends SetOfResources{
             lineDuration += bloc.getDuration()/60+" ";//
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();
-            instName += firstCycAss.getInstructorName()+" ";
+            instName += firstCycAss.getInstructorName()+" ;";
             /*lineTime+=Integer.toString(firstCycAss.getDateAndTime()[0])+" "+
                      DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";*/
             lineTime+= firstCycAss.getPeriodKey()+" ";

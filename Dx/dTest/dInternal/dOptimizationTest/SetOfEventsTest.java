@@ -45,7 +45,6 @@ public class SetOfEventsTest extends TestCase {
        soe.build();
        String pincKey = ((EventAttach)soe.getResourceAt(0).getAttach()).getPrincipalRescKey();
        StringTokenizer keys = new StringTokenizer(pincKey,".");
-
        String firstEvent =  _dm.getSetOfActivities().getUnityCompleteName(Long.parseLong(keys.nextToken())
            ,Long.parseLong(keys.nextToken()),Long.parseLong(keys.nextToken()),
            Long.parseLong(keys.nextToken()));
@@ -59,6 +58,7 @@ public class SetOfEventsTest extends TestCase {
        SetOfEvents soe = new SetOfEvents(_dm);
        soe.build();
        long insKey = ((EventAttach)soe.getResourceAt(0).getAttach()).getInstructorKey();
+       System.out.println("Event: "+soe.getResourceAt(0).getID()+" Instruc: "+((EventAttach)soe.getResourceAt(0).getAttach()).getInstructorKey());//debug
        assertEquals("test_build : assertEquals: ", "THÉRIEN, NORMAND", _dm.getSetOfInstructors().getResource(insKey).getID());
      }
 
