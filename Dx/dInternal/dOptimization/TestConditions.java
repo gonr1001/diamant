@@ -96,6 +96,7 @@ public class TestConditions {
         Resource event = _dm.getSetOfEvents().getResourceAt(i);
         addOrRemEventInTTs(tts, event,1);
       }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
+      _dm.getSetOfEvents().updateActivities(_dm.getSetOfEvents().getSetOfResources());
     }
   }
 
@@ -149,39 +150,15 @@ public class TestConditions {
             ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
           }
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
-      }
+      }else{// end if (tts.getCurrentCycle().isPeriodContiguous(
+        ((EventAttach)event.getAttach()).setInAPeriod(false);
+        ((EventAttach)event.getAttach()).setAssignState(false);
+        ((EventAttach)event.getAttach()).setPermanentState(false);
+        //System.out.println("not assign "+event.getID());//debug
+      }// end else if (tts.getCurrentCycle().isPeriodContiguous(
     }// end if (_dm.getSetOfActivities().getUnity(
     return numberOfConflicts;
   }
-
-  /**
-   *
-   * @param per
-   * @param event
-   * @param operation
-   * @return
-   */
-  /*public int addOrRemEventInPeriod(Period per, Resource event,int operation){
-    int numberC=0;
-    StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),".");
-    long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
-    int currentDuration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
-    //int[] avoidPriority={};
-    if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],currentDuration, _avoidPriority)){
-      for (int k=0; k< _dm.getConditionsTest().getTestToRun().size(); k++){
-        Condition cond = (Condition)_dm.getConditionsTest().getTestToRun().get(k);
-        numberC+=cond.executeTest(per,event.getID(),operation);
-      }// end  for (int j=0; j< _testToRun.size(); j++)
-      if (operation!=0){
-        ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
-        ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
-      }
-    }else{// end if (_dm.getTTStructure().getCurrentCycle().isP
-      numberC=-1;
-    }// end else if (_dm.getTTStructure().getCurrentCycle().isP
-    return numberC;
-  }*/
-
 
   /**
    *

@@ -18,8 +18,14 @@ public interface Algorithm {
 
 
   /**
-   *
+   *build the algorithm
    */
-  public void build(DModel dm, Vector vectorOfEvents);
+  public void build();
+
+  /**
+   *return events list to use by the algorithm
+   * @return Vector list of events
+   */
+  //public Vector buildEventsVector();
 
 }

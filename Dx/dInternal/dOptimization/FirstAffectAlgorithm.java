@@ -23,14 +23,16 @@ public class FirstAffectAlgorithm implements Algorithm {
 
   private Vector _placeEvent;
   private DModel _dm;
-  int [] _avoidPriority={1,2};
+  int [] _avoidPriority;
 
   /**
    * constructor
    */
-  public FirstAffectAlgorithm() {
+  public FirstAffectAlgorithm(DModel dm,int [] avoidPriority) {
     //_noPlaceEvent= new Vector(1);
     _placeEvent= new Vector(1);
+    _avoidPriority= avoidPriority;
+    _dm= dm;
   }
 
   /**
@@ -38,11 +40,12 @@ public class FirstAffectAlgorithm implements Algorithm {
    * @param tts
    * @param vectorOfEvents
    */
-  public void build(DModel dm, Vector vect){
-    _dm= dm;
+  public void build( ){
+    //_dm= dm;
     Resource currentEvent;
     Period currentPeriod;
     Vector periodList;
+    Vector vect= buildEventsVector();
     int currentDuration=0;
 
     _dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
@@ -74,6 +77,14 @@ public class FirstAffectAlgorithm implements Algorithm {
     _dm.getConditionsTest().emptyAvoidPriorityTable();
     _dm.getSetOfEvents().updateActivities(_placeEvent);
     _dm.getSetOfActivities().sendEvent(null);
+  }
+
+  /**
+   * return events list to use by the algorithm
+   * @return
+   */
+  private Vector buildEventsVector(){
+    return _dm.getSetOfEvents().getSetOfResources();
   }
 
   /**
