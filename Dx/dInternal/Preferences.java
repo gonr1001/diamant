@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.17 $  $Date: 2003-11-25 21:50:12 $
+ * Title: Preferences $Revision: 1.18 $  $Date: 2003-12-03 21:27:02 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -36,7 +36,7 @@ public class Preferences {
   public String _standardTTC;
   public String _standardTTE;
   public String _defaultDir;
-  private String _fullFileName;
+  private String _originalFullFileName;
   public String _acceptedChars;
   public String _selectedOptionsInFullReport;
   public String _selectedOptionsInConflictReport;
@@ -54,7 +54,7 @@ public class Preferences {
       _standardTTC = st.nextToken();
       _standardTTE = st.nextToken();
       _defaultDir = st.nextToken();
-      _fullFileName = st.nextToken();
+      _originalFullFileName = st.nextToken();
       _acceptedChars = st.nextToken();
       _selectedOptionsInFullReport = st.nextToken();
       _selectedOptionsInConflictReport = st.nextToken();
@@ -68,7 +68,7 @@ public class Preferences {
     _lookAndFeel = lnfName;
   }
   public void  save() {
-    writeFile(_fullFileName, toString());
+    writeFile(_defaultDir, toString());
   }
 
    public String toString(){
@@ -82,7 +82,7 @@ public class Preferences {
            str += CR_LF;
            str += _defaultDir ;
            str += CR_LF;
-           str += _fullFileName;
+           str += _originalFullFileName;
            str += CR_LF;
            str += _acceptedChars;
            str += CR_LF;
