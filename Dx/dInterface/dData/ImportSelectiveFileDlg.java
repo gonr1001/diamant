@@ -52,7 +52,7 @@ public class ImportSelectiveFileDlg extends JDialog {
 
        String error = "";
        if (dApplic.getDMediator().getCurrentDoc() != null){
-         error = dApplic.getDMediator().getCurrentDoc().getDM().mergeData(fil, str);
+         error = dApplic.getDModel().mergeData(fil, str);
          if(error.length()==0){
             new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
           }else{

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudents $Revision: 1.6 $  $Date: 2005-02-08 16:24:46 $
+* Title: SetOfStudents $Revision: 1.7 $  $Date: 2005-02-08 21:21:19 $
 * Description: SetOfStudents is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,28 +15,18 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
+* @version $Revision: 1.7 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
 
-//import java.util.Vector;
 
-import java.awt.Component;
 import java.util.Vector;
 
 import dConstants.DConst;
-//import dInterface.dUtil.DXTools;
-//import dInternal.DResource;
-//import dInternal.DResource;
-//import dInternal.DResource;
-//import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
-//import dInternal.dData.ByteArrayMsg;
-//import dInternal.dData.dRooms.SetOfRoomsEvent;
-//mport dInternal.dData.dRooms.SetOfRoomsListener;
 import dInternal.dUtil.DXToolsMethods;
 
 /**
@@ -49,13 +39,13 @@ public class SetOfStudents extends DSetOfResources {
     /**
      * @associates SetOfStudentsListener 
      */
-	private Vector _soStudentsListeners;
+	//private Vector _soStudentsListeners;
 	/**
 	 * 
 	 */
 	public SetOfStudents() {
 		super();
-		_soStudentsListeners =new Vector();
+		//_soStudentsListeners =new Vector();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -95,58 +85,6 @@ public class SetOfStudents extends DSetOfResources {
 		}
 	}
 	
-	/**
-	 * 
-	 * @param stuLine
-	 * @param courses
-	 */
-	private void addCourses1_5(String stuLine, String courses){
-		/*String coursesLine = DXToolsMethods.getToken(de.getContents(), DConst.CR_LF,
-	  			DConst.STUDENT_COURSE_LINE).trim();*/
-		
-	  	String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME, DConst.END_STUDENT_NAME).trim();
-		long studentKey = (new Integer (stuLine.substring(DConst.BEGIN_STUDENT_MATRICULE,
-				DConst.END_STUDENT_MATRICULE).trim())).longValue();
-		String studentTemp=stuLine.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME).trim();
-		Student student= (Student) getResource(studentKey);
-		if (student==null){
-			student = new Student(studentName);
-		  	student.setAuxField(studentTemp);
-		  	setCurrentKey(studentKey);
-		  	addResource(student,0);
-		}
-		student.addCourses(courses);
-	}
-	
-	/**
-	 * 
-	 * @param stuLine
-	 * @param courses
-	 */
-	private void addCourses1_6(String nameLine, String coursesLine){
-		/*String coursesLine = DXToolsMethods.getToken(de.getContents(), DConst.CR_LF,
-	  			DConst.STUDENT_COURSE_LINE).trim();*/
-		
-	  	//String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME, DConst.END_STUDENT_NAME).trim();
-		String stuInfo=buildLines1_6(nameLine,coursesLine);
-		String stuLine= DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
-	  			DConst.STUDENT_NAME_LINE).trim();
-		String studentName= stuLine.substring(DConst.BEGIN_STUDENT_NAME).trim();
-		String courses= DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
-	  			DConst.STUDENT_COURSE_LINE).trim();
-		long studentKey = (new Integer (stuLine.substring(DConst.BEGIN_STUDENT_MATRICULE,
-				DConst.END_STUDENT_MATRICULE).trim())).longValue();
-		String studentTemp=stuLine.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME).trim();
-		Student student= (Student) getResource(studentKey);
-		if (student==null){
-			student = new Student(studentName);
-		  	student.setAuxField(studentTemp);
-		  	setCurrentKey(studentKey);
-		  	addResource(student,0);
-		}
-		student.addCourses(courses);
-	}
-		
 	/**
 	 * 
 	 */	
@@ -277,44 +215,26 @@ public class SetOfStudents extends DSetOfResources {
 		}
 		
 		/**
-		 * 
-		 */
-		private String buildLines1_6(String nameLine, String coursesLine) {
-			String matricule= DXToolsMethods.getToken(nameLine,
-		  			DConst.STUDENT_TOKEN_SEPARATOR, DConst.STUDENT_MAT_TOKEN);
-		  	int countToken = DXToolsMethods.countTokens(nameLine,DConst.STUDENT_TOKEN_SEPARATOR);
-		  	String name="";
-		  	for (int i=DConst.STUDENT_FIRST_NAME_TOKEN; i< countToken; i++){
-		  		name += DXToolsMethods.getToken(nameLine,
-			  			DConst.STUDENT_TOKEN_SEPARATOR, i)+DConst.STUDENT_TOKEN_SEPARATOR;
-		  	}
-		  	coursesLine = DXToolsMethods.getToken(coursesLine, DConst.STUDENT_TOKEN_SEPARATOR,
-		  			DConst.STUDENT_COURSE_TOKEN).trim();
-		  	return matricule+name+DConst.CR_LF+coursesLine;
-		}
-		
-		
-		/**
 		   *
 		   * @param dml
 		   */
-		  public synchronized void addSetOfStudentsListener(SetOfStudentsListener sosl) {
+/*		  public synchronized void addSetOfStudentsListener(SetOfStudentsListener sosl) {
 		    if (_soStudentsListeners.contains(sosl)){
 		      return;
 		    }
 		    _soStudentsListeners.addElement(sosl);
-		  }
+		  }*/
 		  /**
 		   *
 		   * @param component
 		   */
-		 public void sendEvent(Component component) {
+/*		 public void sendEvent(Component component) {
 		 	SetOfStudentsEvent event = new SetOfStudentsEvent(this);
 		   for (int i=0; i< _soStudentsListeners.size(); i++) {
 		     SetOfStudentsListener sosl = (SetOfStudentsListener) _soStudentsListeners.elementAt(i);
 		     sosl.changeInSetOfStudents(event, component);
 		   }
-		  }
+		  }*/
 		
 
 		 
@@ -370,5 +290,74 @@ public class SetOfStudents extends DSetOfResources {
 		      idTemp+=" ";
 		    return idTemp;
 		  }
+
+		/**
+		 * 
+		 */
+		private String buildLines1_6(String nameLine, String coursesLine) {
+			String matricule= DXToolsMethods.getToken(nameLine,
+		  			DConst.STUDENT_TOKEN_SEPARATOR, DConst.STUDENT_MAT_TOKEN);
+		  	int countToken = DXToolsMethods.countTokens(nameLine,DConst.STUDENT_TOKEN_SEPARATOR);
+		  	String name="";
+		  	for (int i=DConst.STUDENT_FIRST_NAME_TOKEN; i< countToken; i++){
+		  		name += DXToolsMethods.getToken(nameLine,
+			  			DConst.STUDENT_TOKEN_SEPARATOR, i)+DConst.STUDENT_TOKEN_SEPARATOR;
+		  	}
+		  	coursesLine = DXToolsMethods.getToken(coursesLine, DConst.STUDENT_TOKEN_SEPARATOR,
+		  			DConst.STUDENT_COURSE_TOKEN).trim();
+		  	return matricule+name+DConst.CR_LF+coursesLine;
+		}
+
+		/**
+		 * 
+		 * @param stuLine
+		 * @param courses
+		 */
+		private void addCourses1_5(String stuLine, String courses){
+			/*String coursesLine = DXToolsMethods.getToken(de.getContents(), DConst.CR_LF,
+		  			DConst.STUDENT_COURSE_LINE).trim();*/
+			
+		  	String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME, DConst.END_STUDENT_NAME).trim();
+			long studentKey = (new Integer (stuLine.substring(DConst.BEGIN_STUDENT_MATRICULE,
+					DConst.END_STUDENT_MATRICULE).trim())).longValue();
+			String studentTemp=stuLine.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME).trim();
+			Student student= (Student) getResource(studentKey);
+			if (student==null){
+				student = new Student(studentName);
+			  	student.setAuxField(studentTemp);
+			  	setCurrentKey(studentKey);
+			  	addResource(student,0);
+			}
+			student.addCourses(courses);
+		}
+
+		/**
+		 * 
+		 * @param stuLine
+		 * @param courses
+		 */
+		private void addCourses1_6(String nameLine, String coursesLine){
+			/*String coursesLine = DXToolsMethods.getToken(de.getContents(), DConst.CR_LF,
+		  			DConst.STUDENT_COURSE_LINE).trim();*/
+			
+		  	//String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME, DConst.END_STUDENT_NAME).trim();
+			String stuInfo=buildLines1_6(nameLine,coursesLine);
+			String stuLine= DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
+		  			DConst.STUDENT_NAME_LINE).trim();
+			String studentName= stuLine.substring(DConst.BEGIN_STUDENT_NAME).trim();
+			String courses= DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
+		  			DConst.STUDENT_COURSE_LINE).trim();
+			long studentKey = (new Integer (stuLine.substring(DConst.BEGIN_STUDENT_MATRICULE,
+					DConst.END_STUDENT_MATRICULE).trim())).longValue();
+			String studentTemp=stuLine.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME).trim();
+			Student student= (Student) getResource(studentKey);
+			if (student==null){
+				student = new Student(studentName);
+			  	student.setAuxField(studentTemp);
+			  	setCurrentKey(studentKey);
+			  	addResource(student,0);
+			}
+			student.addCourses(courses);
+		}
 		 
 }

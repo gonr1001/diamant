@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.3 $  $Date: 2004-12-16 19:21:00 $
+* Title: SetOfSites $Revision: 1.4 $  $Date: 2005-02-08 21:21:19 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,17 +15,17 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
 
-import java.awt.Component;
-import java.util.EventListener;
+//import java.awt.Component;
+//import java.util.EventListener;
 
-public interface SetOfStudentsListener extends EventListener{
-  void changeInSetOfStudents(SetOfStudentsEvent e, Component c);
-}
+public interface SetOfStudentsListener{}// extends EventListener{
+  /*void changeInSetOfStudents(SetOfStudentsEvent e, Component c);
+}*/
 
 

@@ -1,13 +1,26 @@
+/**
+*
+* Title: FirstAffectAlgorithm $Revision: 1.18 $  $Date: 2005-02-08 21:21:19 $
+* Description: FirstAffectAlgorithm is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.18 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
+
 package dInternal.dOptimization;
 
-/**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
 
 import java.util.Vector;
 
@@ -31,17 +44,12 @@ public class FirstAffectAlgorithm implements Algorithm {
    */
   private Vector _placeEvent;
   private DModel _dm;
-  //private int [] _avoidPriority;
- // private int [] _acceptableConflictsTable;
 
   /**
    * constructor
    */
   public FirstAffectAlgorithm(DModel dm) {
-    //_noPlaceEvent= new Vector(1);
     _placeEvent= new Vector(1);
-    //_avoidPriority= avoidPriority;
-    //_acceptableConflictsTable= acceptableConflictsTable;
     _dm= dm;
   }
 
@@ -51,7 +59,6 @@ public class FirstAffectAlgorithm implements Algorithm {
    * @param vectorOfEvents
    */
   public void build( ){
-    //_dm= dm;
     DResource currentEvent;
     Period currentPeriod;
     Vector periodList;
@@ -91,7 +98,7 @@ public class FirstAffectAlgorithm implements Algorithm {
     }// end for(int i=0; i< vect.size(); i++)
    // _dm.getConditionsTest().emptyAvoidPriorityTable();
     _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),_placeEvent);
-    _dm.getSetOfActivities().sendEvent(null);
+    _dm.changeInDModel(null);
   }
 
   /**

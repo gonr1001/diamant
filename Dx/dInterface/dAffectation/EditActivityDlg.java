@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.55 $  $Date: 2005-02-01 21:27:15 $
+ * Title: EditActivityDlg $Revision: 1.56 $  $Date: 2005-02-08 21:21:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.56 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -60,17 +60,17 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
-//import dInternal.DModel;
+
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dDataTxt.Resource;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dInstructors.SetOfInstructors;
-//import dInternal.dDataTxt.SetOfResources;
+
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dActivities.Type;
-//import dInternal.dDataXML.rooms.SetOfCategories;
+
 import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;

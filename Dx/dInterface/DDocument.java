@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.132 $  $Date: 2005-02-03 20:50:41 $
+ * Title: DDocument $Revision: 1.133 $  $Date: 2005-02-08 21:21:17 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.132 $
+ * @version $Revision: 1.133 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -200,7 +200,8 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 	//-------------------------------------------
 	
 	public void update(Observable dm, Object component) {
-		component.toString();
+		if(component != null) 
+			component.toString();
 		setCursor(Cursor.WAIT_CURSOR);
 		_ttPane.updateTTPane(((DModel)dm).getTTStructure());
 		_stateBar.upDateDStateBar(((DModel)dm).getSetOfStates());

@@ -336,7 +336,7 @@ public class DStandardReportData {
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
       //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
       String line = _dm.getSetOfStudents().getResourceAt(i).toWrite(" ");
-      StringTokenizer strTokens= new StringTokenizer(line.substring(DConst.END_STUDENT_NUMBER_OF_COURSE,line.length()));//+SetOfResources.CR_LF;
+      StringTokenizer strTokens= new StringTokenizer(line.substring(DConst.END_STUDENT_NUMBER_OF_COURSE,line.length()));
       String name_mat = line.substring(0,DConst.BEGIN_STUDENT_NUMBER_OF_COURSE);
       String str= " "+name_mat.substring(0,DConst.END_STUDENT_MATRICULE)+";"+
                   name_mat.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME)

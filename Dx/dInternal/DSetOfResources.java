@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.5 $  $Date: 2005-02-08 18:54:03 $
+* Title: DSetOfResources $Revision: 1.6 $  $Date: 2005-02-08 21:21:18 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -263,14 +263,6 @@ public abstract class DSetOfResources extends DObject{
       return (DResource) _resourceList.get(position);
     return null;
   }
-
-  /**
-   *  0= activities, 1= students, 2= instructors, 3 = rooms, 4= other
-   * @return
-   */
-  /*public int getResourceType(){
-      return  _resourceType;
-  }*/
 
 
   /**

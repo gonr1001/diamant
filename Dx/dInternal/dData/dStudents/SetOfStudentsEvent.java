@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudentsEvent $Revision: 1.3 $  $Date: 2004-12-16 19:21:00 $
+* Title: SetOfStudentsEvent $Revision: 1.4 $  $Date: 2005-02-08 21:21:19 $
 * Description: SetOfStudentsEvent is a class used as a .
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -22,11 +22,10 @@
 package dInternal.dData.dStudents;
 
 
-import java.util.EventObject;
 
-public class SetOfStudentsEvent extends EventObject{
+public class SetOfStudentsEvent{}// extends EventObject{
 
-  public SetOfStudentsEvent(SetOfStudents source) {
+/*  public SetOfStudentsEvent(SetOfStudents source) {
     super (source);
   }
-}
+}*/

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.4 $  $Date: 2005-01-28 21:46:54 $
+* Title: SetOfStuSites $Revision: 1.5 $  $Date: 2005-02-08 21:21:19 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,8 +16,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.5 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -34,17 +34,14 @@ import dInternal.dData.ByteArrayMsg;
 import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfStuSites extends DSetOfResources {
-
 	private String _error;
-	//private Vector _soSitesListeners;
-	
+		
 	/**
 	 * 
 	 */
 	public SetOfStuSites() {
 		super();
-		_error ="";
-		//_soSitesListeners= new Vector();
+		_error = "";
 	}
 	
 	/**
@@ -89,32 +86,7 @@ public class SetOfStuSites extends DSetOfResources {
 	      
 	} //end buildSetOfResources
 	
-	/**
-	   *
-	   * @param component
-	   */
-	/*
-	 public void sendEvent(Component component) {
-	   SetOfStudentsEvent event = new SetOfStudentsEvent(this);
-	   for (int i=0; i< _soSitesListeners.size(); i++) {
-	   	SetOfStudentsListener sosl = (SetOfStudentsListener) _soSitesListeners.elementAt(i);
-	     sosl.changeInSetOfStudents(event, component);
-	   }
-	  }
-*/
-	  /**
-	   * 
-	   * @param soStu
-	   */
-	/*
-	  public synchronized void addSetOfSitesListener(SetOfStudentsListener soStu) {
-	    if (_soSitesListeners.contains(soStu)){
-	      return;
-	    }
-	    _soSitesListeners.addElement(soStu);
-	  }
 
-*/
 	/**
 	 * 
 	 */
@@ -133,7 +105,7 @@ public class SetOfStuSites extends DSetOfResources {
 	        for (int i=0; i< getSetOfResources().size()-1; i++){
 	        	siteRsc = ((DResource)getSetOfResources().get(i));
 	        	sos= (SetOfStudents)siteRsc.getAttach();
-	        	save.append(sos.toWrite(siteRsc.getID())+DConst.CR_LF);
+	        	save.append(sos.toWrite(siteRsc.getID()) + DConst.CR_LF);
 	        }
 	        siteRsc = ((DResource)getSetOfResources().get(getSetOfResources().size()-1));
 	        sos= (SetOfStudents)siteRsc.getAttach();

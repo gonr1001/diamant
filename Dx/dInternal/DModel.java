@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.122 $  $Date: 2005-02-08 03:25:10 $
+ * Title: DModel $Revision: 1.123 $  $Date: 2005-02-08 21:21:18 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.122 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.123 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -422,9 +422,7 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	 * @param str
 	 * @return
 	 */
-	public String mergeData(String fileName, String selectionName) {
-		
-		
+	public String mergeData(String fileName, String selectionName) {	
 		_setOfImportSelErrors= new StandardCollection();
 		String error="";
 		DLoadData loadData = new DLoadData(this);
@@ -434,21 +432,21 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 			error = _setOfInstructors.getError();
 			_setOfInstructors.sendEvent(_dDocument.getJIF());
 		}else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)){//Importation selective -- Locaux
-			_setOfSites= (SetOfSites) loadData.selectiveImport(_setOfRooms,fileName);
-			resizeResourceAvailability(_setOfRooms);
-			error = _setOfRooms.getError();
-			_setOfRooms.sendEvent(_dDocument.getJIF());
+			_setOfSites= (SetOfSites) loadData.selectiveImport(_setOfSites, fileName);
+			resizeResourceAvailability(_setOfSites);
+			error = _setOfSites.getError();
+			this.changeInDModel(_dDocument.getJIF());//_setOfRooms.sendEvent(_dDocument.getJIF());
 		}else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)){//Importation selective -- Activité
-			_setOfActivities= (SetOfActivities) loadData.selectiveImport(_setOfActivities,fileName);
-			error = _setOfActivities.getError();
+			_setOfActivitiesSites= (SetOfActivitiesSites) loadData.selectiveImport(_setOfActivitiesSites, fileName);
+			error = _setOfActivitiesSites.getError();
 			
 			_conditionTest.setMatrixBuilded(false,true);
 			changeInDModel(_dDocument.getJIF());
 		}else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)){//Importation selective -- Étudiants
-			_setOfStudents= (SetOfStudents) loadData.selectiveImport(_setOfStudents,fileName);
-			error = _setOfStudents.getError();
+			_setOfStuSites= (SetOfStuSites) loadData.selectiveImport(_setOfStuSites, fileName);
+			error = _setOfStuSites.getError();
 			_conditionTest.setMatrixBuilded(false,true);
-			_setOfStudents.sendEvent(_dDocument.getJIF());
+			changeInDModel(_dDocument.getJIF());
 		}
 		_mergeDone= true;
 		return error;
@@ -529,11 +527,8 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	 *
 	 * @return
 	 */
-	public SetOfStudents getSetOfStudents(){
-		
-		
-		return (SetOfStudents) _setOfStuSites.getResource(DConst.STUDENT_STANDARD_SITE).getAttach();
-		
+	public SetOfStudents getSetOfStudents(){		
+		return (SetOfStudents) _setOfStuSites.getResource(DConst.STUDENT_STANDARD_SITE).getAttach();		
 	}
 	
 	/**
