@@ -37,6 +37,7 @@
   <file path="dInterface/AppInTTCmd.java"/>
   <file path="dInterface/CmdButton.java"/>
   <file path="DRun.java"/>
+  <file path="dInternal/LoadData.java"/>
   <file path="dInterface/PLAFCmd.java"/>
   <file path="dInterface/PLAFDlg.java"/>
   <file path="Proto.html"/>
