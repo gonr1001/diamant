@@ -202,9 +202,10 @@ public class SetOfStudents extends SetOfResources{
 
   /**
    * add a student in the studentlist
-   * INPUT: matricule (an long int); studentName (a string); temp (a string of
-   * 13 chars); studentChoice a student object
-   * OUTPUT: boolean, "true" if student added and if studentChoice contains an element
+   * @param: matricule (an long int)
+   * @param: studentName (a string)
+   * @param: temp (a string of 13 chars); studentChoice a student object
+   * @return: boolean, "true" if student added and if studentChoice contains an element
    *   false otherwise
    * */
   public boolean addStudent(long matricule, String name, String temp, StudentAttach studentChoice){

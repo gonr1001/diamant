@@ -16,11 +16,10 @@ classifiées dans quatre types~:
 Pour stocker l'information contenue dans chaque fichier, nous
 avons développé pour la version 1.5 de \diamant{} la structure de
  données
-\pro{ResourceList} contenant un ensemble de ressources de type \pro{Resource} (pour plus de
-détails se reporter à la section \ref{resourcelist}). Cette dernière structure de
+\pro{SetOfResources} contenant un ensemble de ressources de type \pro{Resource} (pour plus de
+détails se reporter à la section \ref{SetOfResources}). Cette dernière structure de
 données contient les informations d'un élément d'une ressource
 donnée (locaux, instructeurs, étudiants ou activités).
-
 
 
 Une structure de données importante de \diamant{}  est représenté
@@ -29,20 +28,23 @@ classe  a comme responsabilité de lire les données des fichiers et
 de retourner les instances de liste des différentes ressources, à
 savoir:
 
-
-
-
-
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=400pt]{Images/loaddata.eps}
+    \caption{Structure de données}\label{datastruct}
+  \end{center}
+\end{figure*}
 
 \begin{itemize}
-    \item \pro{StudentsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des étudiants.\\
-    \item \pro{RoomsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des locaux.\\
-    \item \pro{InstructorsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'instructeurs.\\
-    \item \pro{ActivitiesList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'activités.\\
+    \item \pro{SetOfStudents} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des étudiants.\\
+    \item \pro{SetOfRooms} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des locaux.\\
+    \item \pro{SetOfInstructors} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'instructeurs.\\
+    \item \pro{SetOfActivities} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste d'activités.\\
 \end{itemize}
 
 Chacune des listes de ressources citées ci-dessus hérite de la
-super classe \pro{ResourceList}. \emph{ResourceList} contient la
+super classe \pro{SetOfResources}. \emph{SetOfResources} contient la
 liste de tous les éléments d'une ressource. Cette liste d'éléments
 est en réalité une liste d'objects de type \emph{Resource}.
 L'object \emph{Resource} décrit quand à lui un élément par sa clé
@@ -53,77 +55,67 @@ nature de cet object (\emph{resourceObject}). Il est à noter que
 
 Nous décrirons chacune des structures dans les prochaines sections.
 
-\begin{figure}[h]
-  % Requires \usepackage{graphicx}
-  \begin{center}
-    \includegraphics[width=430pt]{Images/loaddata.eps}
-    \caption{Structure de données}\label{datastruct}
-  \end{center}
-\end{figure}
-
-
 \section{\emph{LoadData}}
 Cette classe est chargée de la gestion de deux taches
 principales~:
 \begin{enumerate}
-    \item \textbf{Le chargement de fichiers} :  Dans cette étape, l'intégrité des fichier des ressources est d'abord vérifiée et ensuite chaque fichier est chargé dans un vecteur de bytes pour leur postérieur
-    traitement. Cette tâche est effectué à l'aide de la classe \emph{FilterFile} de la librairie
-    \emph{com.iLib.gIO.FilterFile}.
-    \item \textbf{La création des listes de ressources} : Dans cette étape chaque liste de ressources est créée et peuplée
-    (remplie) avec les éléments correspondantes. Cette tâche est
-    effectuée en utilisant les classe décrites à continuation.
+    \item \textbf{Le chargement des données} :  Dans cette étape, l'intégrité des fichiers des ressources est d'abord vérifiée et ensuite chaque fichier est chargé dans un vecteur de bytes pour leur postérieur
+    traitement. Cette tâche est effectué à l'aide de la classe \emph{com.iLib.gIO.FilterFile} de la librairie
+    \emph{theLibrary}.
+    \item \textbf{La création des listes de ressources} : Dans cette étape chaque liste de ressources est créée et peuplée (remplie) avec les éléments correspondants.
 \end{enumerate}
 
-\section{\emph{ResourceList}} \label{resourcelist}
+\section{\emph{SaveData}}
+Cette classe est chargée de la sauvegarde des données. Cette sauvegarde consiste à enregistrer les informations relatives aux resources dans un fichier \emph{dia} et les informations relatives à la grille horaire dans un fichier \emph{xml}.
+
+\section{\emph{SetOfResources}} \label{SetOfResources}
 Cette classe implémente la structure de données
-\emph{ResourceList}.  Elle déclare les méthodes
+\emph{SetOfResources}.  Elle déclare les méthodes
 \emph{analyseTokens()} et \emph{buildResourceList()} qui
-permettent de peupler la liste du ressource. Cette classe définie
-les méthodes nécessaires pour insérer, éliminer, éditer, chercher
+permettent de peupler la liste de ressources. Cette classe définit
+les méthodes nécessaires pour insérer, supprimer, éditer, chercher
 et trier les ressources.
-
-\section{\emph{***List}}
-\textbf{voir annexe \ref{fields}}
-Cet ensemble représente les classes \emph{RoomsList},
-\emph{InstructorsList}, \emph{ActivitiesList},
-\emph{StudentsList}.  Ces classes héritent de la super classe
-\emph{ResourceList} et, par conséquent, elles implémentent les
-méthodes \emph{analyseTokens()} et \emph{buildResourceList()}.
-
-Comme un cas spécial, la classe \emph{StudentsList} a son propre
-implémentation des méthodes \emph{removeStudent} et
-\emph{removeStudent} car dans ce cas, il faut valider l'existence
-de courses de choix de l'étudiant avant d'insérer un nouveau
-ressource à la liste et l'existence . \textbf{(Vérifier cette
-phrase avec Yannick, pour quoi removeStudent??)}.
 
 \section{\emph{Resource}}
 Cette classe implémente la structure de données \emph{Resource}.
-Elle définie les méthodes nécessaires pour insérer, éditer et
-obtenir les champs de la ressource.
+Elle permet de décrire un élément par sa clé (\emph{resourceKey}), son identifiant (\emph{resourceID}) et l'object associé (\emph{resourceObject}). 
+
+\section{\emph{SetOf***}}
+\textbf{voir annexe \ref{fields}}
+Cet ensemble représente les classes \emph{SetOfRooms},
+\emph{SetOfInstructors}, \emph{SetOfActivities},
+\emph{SetOfStudents}.  Ces classes héritent de la super classe
+\emph{SetOfResources} et, par conséquent, elles implémentent les
+méthodes \emph{analyseTokens()} et \emph{buildResourceList()}.
+
+La classe \emph{SetOfStudents} présente un cas particulier, car elle dispose d'une méthode \emph{addStudent()} qui lui est propre. Cette méthode vient en complément de la méthode \emph{addResource()} de la classe \emph{SetOfResources} et elle permet de décomposer l'identifiant de l'étudiant afin d'en extraire les parties devant servir comme clé et identifiant à la resource.
+
 
 \section{\emph{Instructor}}
-Cette classe représente la disponibilité d'un instructeur
-appartenant au fichier d'instructeurs (Voir section 1.2). Elle
-implémente les méthodes pour gérer (insérer, éliminer, éditer,
-obtenir) la disponibilité d'un instructeur.
+Cette classe représente l'ensemble des informations relatives à la \emph{resourceObject} associée à la ressource instructeur.  Cette classe contient particulièrement la disponibilité de l'instructeur, le nom de l'instructeur étant associé à la \emph{resourceID}. Elle implémente les méthodes permettant de gérer (insérer, supprimer, éditer) la disponibilité d'un instructeur.
 
 \section{\emph{Room}}
-Cette classe représente l'information d'un local appartenant au
-fichier de locaux (Voir section 1.4).  Elle implémente les
-méthodes pour gérer (insérer, éliminer, éditer, obtenir) les
-différents propriétés d'un local, cela inclut sa disponibilité.
+Cette classe représente l'ensemble des informations relatives à la \emph{resourceObject} associée à la ressource locaux.  Cette classe contient particulièrement la disponibilité du local, le nom du local étant associé à la \emph{resourceID}. Elle implémente les méthodes permettant de gérer (insérer, supprimer, éditer) les différents propriétés d'un local, cela inclut sa disponibilité.
 
 \section{\emph{Student}}
-Cette classe représente l'information d'un étudiant appartenant au
-fichier d'étudiants (Voir section 1.1).  Elle implémente les
-méthodes pour gérer (insérer, éliminer, éditer, obtenir) les
-différents propriétés d'un étudiant, cela inclut se choix de
-cours.
+Cette classe représente l'ensemble des informations relatives à la \emph{resourceObject} associée à la ressource étudiant. Cette classe contient les propriétés de l'étudiant (sexe, region, session d'études) ainsi que ses choix de cours, le nom du de l'étudiant
+ étant associé à la \emph{resourceID}. Elle implémente les méthodes permettant de gérer les différentes propriétés d'un étudiant, ainsi que ses choix de cours.
 
 \section{\emph{Activity}}
-Cette classe représente l'information d'une activité appartenant
-au fichier d'activités (Voir section 1.3).  Elle implémente les
-méthodes pour gérer (insérer, éliminer, éditer, obtenir) les
-différents propriétés d'une activité, cela inclut ....\textbf(À
-finir)
+Cette classe représente l'ensemble des informations relatives à la \emph{resourceObject} associée à la ressource activité.  La ressource activité a une organisation hiérarchique beaucoup plus complexe que celle des autres ressource (voir la figure \ref{orgact}). 
+
+\begin{enumerate}
+    \item Chaque activité (définie dans la classe \emph{Activity}) est composée d'un ou plusieurs types (leçon magistrale, travaux pratiques, exercices dirigés, etc). 
+    \item Un type (définie dans la classe \emph{Type}) est composé d'une ou de plusieurs sections (section A, B, C, etc). 
+    \item Une section (définie dans la classe \emph{Section}) est composée d'une ou de plusieurs unités (une unité d'une heure, une unité de deux heures, etc). 
+    \item L'unité (définie dans la classe \emph{Unity}) est l'entité élémentaire et indivisible d'une activité. Elle correspond en réalité à un rendez-vous que l'on desire fixer entre des étudiants donnés, à une période donnée, dans un local précis, avec un enseignant donné.
+\end{enumerate}    
+
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=350pt]{Images/organigrammeSetAct.eps}
+    \caption{Schema hiérarchique de la liste d'activités}\label{orgact}
+  \end{center}
+\end{figure}

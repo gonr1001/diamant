@@ -107,7 +107,7 @@ class __tags {
 class __options {
 }/**
 @__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfFunctions:oiref>=210,158,1496,158:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.LoadData:oiref>=10,776,200,462,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.LoadData:oiref>=10,776,200,446,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructors:oiref>=864,776,177,206,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.Resource:oiref>=230,776,183,254,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.Assignment:oiref>=2058,10,161,382,1:oigroup>
@@ -130,7 +130,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dData.Unity:oiref>=2334,776,200,526,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfResources:oiref>=1496,10,200,686,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfRooms:oiref>=1273,776,169,222,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SaveData:oiref>=220,169,147,158,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SaveData:oiref>=220,169,157,174,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.SetOfStudents:oiref>=1894,776,200,318,1:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfRooms#dInternal.dData.SetOfResources:oiref>=1357,776,1571,696:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>=210,84,1496,84:oigroup>
