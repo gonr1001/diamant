@@ -193,10 +193,6 @@ public class LoadData {
    return activitiesList;
   }
 
-  public TTStructure extractTTStruct() {
-    return new TTStructure();
-  }
-
   /**
    *
    * */

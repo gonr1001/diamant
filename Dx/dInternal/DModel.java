@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.40 $  $Date: 2003-07-10 12:01:44 $
+ * Title: DModel $Revision: 1.41 $  $Date: 2003-07-11 10:07:16 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.41 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -33,7 +33,6 @@ import dInternal.dTimeTable.TTStructure;
 
 public class DModel {
   private Vector _dmListeners = new Vector();
-  //private TTParameters _ttParameters;
   private int _type;
   private boolean _modified = false;
   private boolean _isTimeTable=true;
@@ -173,7 +172,7 @@ public void setVersion(String version){
                              JOptionPane.OK_OPTION);
     return "";
   }
-  public String loadTTStruct(String str) {
+/*  public String loadTTStruct(String str) {
     LoadData loadData = new LoadData(str);
     // import set of instructors
       _ttStruct = loadData.extractTTStruct();
@@ -181,7 +180,7 @@ public void setVersion(String version){
        return _ttStruct.getError();
      }
      return "";
-  }
+  }*/
 
   public SetOfInstructors getSetOfInstructors(){
     return _setOfInstructors;

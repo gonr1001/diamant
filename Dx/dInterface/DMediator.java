@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.28 $  $Date: 2003-07-09 16:26:40 $
+ * Title: DMediator $Revision: 1.29 $  $Date: 2003-07-11 10:07:16 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.29 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -49,11 +49,16 @@ public class DMediator {
   public boolean getCancel() {
     return _cancel;
   }
-  //-------------------------------------------
-  //for new TimeTable and open TimeTable
-  public String addDoc(String TTName, String fileName, int type) {
+/**
+ * for new tt and for open tt
+ * @param ttname This string will be displaye as the title of the JIF
+ * @param fileName is the full path file name containing the TTStructure
+ * @param type is the type of timetable to be constructed
+ *
+ */
+  public String addDoc(String ttName, String fileName, int type) {
     DDocument currentDoc;
-    currentDoc = new DDocument(_dApplic,TTName, fileName, type);
+    currentDoc = new DDocument(_dApplic, ttName, fileName, type);
     _documents.addElement(currentDoc);
     _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
     _dApplic.hideToolBar();
@@ -61,9 +66,15 @@ public class DMediator {
   } //end addDoc
 
 
-  //for new ttStructure and for open
-  public String addDoc(String fullPath, int type) {
-    DDocument currentDoc = new DDocument(_dApplic, fullPath, fullPath, type);
+
+/**
+ * for new ttStructure and for open
+ * @param fileName is the full path file name containing the TTStructure
+ * @param type is the type of timetable to be constructed
+ *
+ */
+  public String addDoc(String fileName, int type) {
+    DDocument currentDoc = new DDocument(_dApplic, fileName, fileName, type);
     _documents.addElement(currentDoc);
     _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
     return currentDoc.getError();
@@ -95,7 +106,7 @@ public class DMediator {
   public void closeCurrentDoc(){
     if (getCurrentDoc()!= null) {
       if (getCurrentDoc().isModified()) {
-        _cancel =  promptToSave();
+        _cancel = promptToSave();
       } else {//end if
         DDocument aux = getCurrentDoc();
         _documents.remove(getCurrentDoc());

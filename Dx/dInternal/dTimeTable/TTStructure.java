@@ -38,15 +38,13 @@ public class TTStructure {
 
   public TTStructure() {
     _setOfCycles= new SetOfCycles();
-    _col=6;
-    _row= 15;
+    //_col=6;
+    //_row= 15;
 
     //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
     //loadTTStructure("StandardTTC.xml");
 
     //saveTTStructure("test.xml");
-
-
   }
 
   /***/

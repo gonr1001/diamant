@@ -59,7 +59,6 @@ public class InstructorDlgTest extends JFCTestCase {
     JDialog jDialog =
     new InstructorAvailabiliyDlg(null,
                              DConst.INST_ASSIGN_TD, _dApplic.getDMediator().getCurrentDoc().getDM()
-                             /*new DModel(_dApplic, 0, new TTStructure())*/
                              );
 
    JPanel jPanel = (JPanel) helper.findComponent(JPanel.class , jDialog.getContentPane(), 2); //2 buttons?
@@ -76,8 +75,7 @@ public class InstructorDlgTest extends JFCTestCase {
   JDialog jDialog =
   new InstructorAvailabiliyDlg(null,
                            DConst.INST_ASSIGN_TD,_dApplic.getDMediator().getCurrentDoc().getDM()
-                           /*new DModel(_dApplic, 0, new TTStructure())*/
-                           );
+                          );
 
  JPanel jPanel = (JPanel) helper.findComponent(JPanel.class , jDialog.getContentPane(), 2); //2 buttons?
  JButton jbutton = (JButton) helper.findComponent(JButton.class , jPanel, 2); // 2 cancel;

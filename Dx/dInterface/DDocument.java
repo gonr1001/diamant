@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.52 $  $Date: 2003-07-10 12:01:44 $
+ * Title: DDocument $Revision: 1.53 $  $Date: 2003-07-11 10:07:16 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.52 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.53 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -64,7 +64,7 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
 
   //for a new timetable and a open timetable
   //for new timetable Structure and open timetable Structure from a file
-  public DDocument(DApplication dApplic,String TTName, String fileName, int type) {
+  public DDocument(DApplication dApplic, String TTName, String fileName, int type) {
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, fileName, type);
     if(_dm.getError().length()==0){
