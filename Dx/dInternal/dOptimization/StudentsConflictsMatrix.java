@@ -45,7 +45,7 @@ public class StudentsConflictsMatrix {
     _theMatrix = new int[_allSections.size()+1][_allSections.size()+1];
     for(int i=0; i< sos.size(); i++){
       StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();
-      for(int j=0; j< student.getCoursesList().size()-1; j++){
+      for(int j=0; j< student.getCoursesList().size(); j++){
         String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, soa._COURSENAMELENGTH)
                    +"."+student.getCoursesList().getResourceAt(j).getID().substring(soa._COURSENAMELENGTH)+"."+
                    DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());

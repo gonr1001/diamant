@@ -57,32 +57,40 @@ public class ImportReport extends ViewReport implements ActionListener {
   }
 
 
+  /**
+   *
+   * @param jta
+   */
   public void setImportReport(JTextArea jta){
+    JTextArea jtaInst= new JTextArea("");
+    JTextArea jtaRooms= new JTextArea("");
+    JTextArea jtaStud= new JTextArea("");
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport d'importation");
     jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
 
     // enseignants
-    jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
-    Vector setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("2");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-
+    jtaInst.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
     //locaux
-    jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("3");
-    for (int i=0; i< setOfErrors.size(); i++) {
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    }
+    jtaRooms.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
     //etudiants
-    jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("1");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
+    jtaStud.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
+    SetOfResources setOfImportErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportErrors();
+    for (int i=0; i< setOfImportErrors.size(); i++){
+      // Etudiants
+      if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("1"))
+        jtaStud.append(((DXValue)((Resource)setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+      // Enseignants
+      else if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("2"))
+        jtaInst.append(((DXValue)((Resource)setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+      // Locaux
+      else if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("3"))
+        jtaRooms.append(((DXValue)((Resource)setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+
+    }
+    jta.append(jtaInst.getText());
+    jta.append(jtaRooms.getText());
+    jta.append(jtaStud.getText());
     jta.setCaretPosition(0);
   }
 
