@@ -438,7 +438,7 @@ public Period getLastPeriod(){
    */
   public DisplayAttributs[][] getAttributsToDisplay(int periodLength){
     SetOfResources rowAtt=buildAttributsRowTodisplay(periodLength);
-    DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()];
+    DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()-1];
     for (int i=0; i< matrixToDisplay.length; i++){
       for (int j=0; j< matrixToDisplay[i].length; j++){
         DisplayAttributs attrib= new DisplayAttributs();
@@ -465,7 +465,9 @@ public Period getLastPeriod(){
           int index= rowAtt.getIndexOfResource(beginHour);
           int eindex= rowAtt.getIndexOfResource(endHour);
           for (int l=index; l< eindex;l++){
-            DisplayAttributs attrib= new DisplayAttributs(periodKey,rowAtt.getResourceAt(l).getID(),((Period)per.getAttach()).getEventsInPeriod());
+            DisplayAttributs attrib= new DisplayAttributs(periodKey,
+                                                          rowAtt.getResourceAt(l).getID(),
+                                                          ((Period)per.getAttach()).getEventsInPeriod());
             attrib.setPeriodType(true);
             matrixToDisplay[i][l]=attrib;
           }
@@ -507,6 +509,17 @@ public Period getLastPeriod(){
                           minute.substring(minute.length()-2,minute.length());
           attrib.addResource(new Resource(endHour,value),1);
         }
+        seq = (Sequence)day.getSetOfSequences().getResourceAt(
+            day.getSetOfSequences().size()-1).getAttach();
+        Period per = (Period)seq.getSetOfPeriods().getResourceAt(
+            seq.getSetOfPeriods().size()-1).getAttach();
+        DXValue value= new DXValue();
+          value.setIntValue(1);
+          String hour="00"+per.getEndHour(periodLength)[0];
+          String minute= "00"+per.getEndHour(periodLength)[1];
+          String endHour= hour.substring(hour.length()-2,hour.length())+":"+
+                          minute.substring(minute.length()-2,minute.length());
+          attrib.addResource(new Resource(endHour,value),1);
       }// end for (int j=0; j< day.getSetOfSequences().size(); j++)
     }// end for(int i=0; i< _setOfDays.size(); i++)
     //attrib.sortSetOfResourcesByKey();
