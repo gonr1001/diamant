@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.97 $  $Date: 2003-10-21 19:21:32 $
+ * Title: DDocument $Revision: 1.98 $  $Date: 2003-10-23 20:41:14 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.97 $
+ * @version $Revision: 1.98 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -23,14 +23,12 @@ package dInterface;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.*;
-import java.util.*;
 import java.io.*;
 import java.awt.Dimension;
 
 import javax.swing.event.*;
 import javax.swing.*;
-import javax.swing.JDesktopPane;
+
 
 
 import dInternal.DModel;
@@ -42,7 +40,7 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dResources.DConst;
-import java.util.StringTokenizer;
+
 
 import dInterface.dTimeTable.TTPane;
 import dInterface.dTimeTable.DetailedTTPane;

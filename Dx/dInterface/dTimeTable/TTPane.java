@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.8 $  $Date: 2003-10-23 17:30:27 $
+ * Title: TTPane $Revision: 1.9 $  $Date: 2003-10-23 20:39:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -129,7 +129,7 @@ public abstract class TTPane {
   }
   //-------------------------------------------
   protected void findRowHeaders() {
-    _toDisplay = _tts.getCurrentCycle().getAttributsToDisplay(60);
+    _toDisplay = _tts.getCurrentCycle().getAttributsToDisplay(_tts.getPeriodLenght());
     _rowHeaders = new RowRecord [_toDisplay[0].length];
     for(int i = 0; i < _toDisplay[0].length; i++) {
       if (_toDisplay[0][i].getEventsInPeriods()!=null){
