@@ -40,11 +40,11 @@ public class SetOfActivities extends SetOfResources{
    * */
   public boolean analyseTokens(int beginPosition){
 
-    if(!analyseSIGTokens(beginPosition)){
+    if(!analyseSIGTokens(beginPosition)){// analyse STI data
       return false;
     }else{// else if(!analyseSIGTokens(beginPosition))
       if(_open)
-        return analyseDeltaTokens(beginPosition);
+        return analyseDeltaTokens(beginPosition);// analyse Delta data
     }// end else if(!analyseSIGTokens(beginPosition))
 
     return true;
@@ -64,7 +64,8 @@ public class SetOfActivities extends SetOfResources{
     int position=beginPosition;
     _line=1;
     String activityName="";
-    int numberOfUnitys=0;
+    String instructorName="";
+    int numberOfBlocs=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
       _line++;
@@ -85,7 +86,7 @@ public class SetOfActivities extends SetOfResources{
           position = 4;
           break;
         case 4:// teachers' names
-
+          instructorName= token;
           position = 7;
           _line+=2;
           break;
@@ -96,7 +97,12 @@ public class SetOfActivities extends SetOfResources{
           position = 7;
           break;
         case 7://number of blocs
-
+          numberOfBlocs=Integer.parseInt(token.trim());
+          if(DXToolsMethods.countTokens(instructorName,";")!=numberOfBlocs){
+            _error= DConst.ACTI_TEXT4 + _line +  "in the activity file:" +
+            "\n" + "I was in ActiviesList class and in analyseTokens method ";
+            return false;
+          }
           position = 8;
           break;
         case 8://duration of blocs
@@ -104,7 +110,20 @@ public class SetOfActivities extends SetOfResources{
           position = 9;
           break;
         case 9://days and periods of blocs
-
+          stLine = new StringTokenizer(token);
+          if(numberOfBlocs!=stLine.countTokens()){
+            _error= DConst.ACTI_TEXT5+_line+" ActivityList";
+            return false;
+          }
+          while(stLine.hasMoreElements()){
+            StringTokenizer stLine1;
+            stLine1 = new StringTokenizer(stLine.nextToken(),".");
+            while(stLine1.hasMoreElements())
+              _error= DXToolsMethods.isIntValue(stLine1.nextToken(),
+                  DConst.ACTI_TEXT8+_line,"ActivityList");
+            if(_error.length()!=0)
+              return false;
+          }
           position = 10;
           break;
         case 10://fixed rooms
@@ -124,15 +143,24 @@ public class SetOfActivities extends SetOfResources{
           position = 14;
           break;
         case 14://pre-affected cours
-          StringTokenizer visiToken = new StringTokenizer(new String (token),";" );
-          //System.out.println("Activity affect Tokens: "+activityName+" --> "+token);//debug
-          int nbTokens= visiToken.countTokens();
-          for(int i=0; i<nbTokens; i++){
-
-            position = beginPosition;
-            if(st.hasMoreElements())
-              _line++;
-          }//for(int i=0; i<nbTokens; i++)
+          //check assign token
+         String assignToken= DXToolsMethods.getToken(token,";",1);
+         stLine = new StringTokenizer(assignToken);
+         if(numberOfBlocs!=stLine.countTokens()){
+           _error= DConst.ACTI_TEXT12+_line+" ActivityList";
+           return false;
+         }
+         //check if the permanent value is belong 0 and 1
+         while(stLine.hasMoreElements()){
+           sousString = stLine.nextToken();
+           _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+               DConst.ACTI_TEXT12+_line,"ActivityList");
+           if(_error.length()!=0)
+             return false;
+          }
+          position = beginPosition;
+          if(st.hasMoreElements())
+          _line++;
           break;
 
       }// end switch (position)
@@ -141,6 +169,8 @@ public class SetOfActivities extends SetOfResources{
 
     return true;
   }
+
+
 
   /**
    * analyse SIG activities data by a finished states machine
@@ -237,25 +267,20 @@ public class SetOfActivities extends SetOfResources{
               DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
-          int typeOfData= DXToolsMethods.countTokens(token,".");
-          if((((numberOfUnitys*2)-(stLine.countTokens()))!=0) && (typeOfData==1)){
-            _error= DConst.ACTI_TEXT5+_line+" ActivityList";
-            return false;
-          }
-          while(stLine.hasMoreElements()){// rgr A problem in tests allwhile is a problem in real life
-            StringTokenizer stLine1;
-            if(_open){
-            stLine1 = new StringTokenizer(stLine.nextToken(),".");
-            while(stLine1.hasMoreElements())
-              _error= DXToolsMethods.isIntValue(stLine1.nextToken(),
-                  DConst.ACTI_TEXT8+_line,"ActivityList");
-            }else{
-              _error= DXToolsMethods.isIntValue(stLine.nextToken(),
-                DConst.ACTI_TEXT8+_line,"ActivityList");
+         // int typeOfData= DXToolsMethods.countTokens(token,".");
+          if(!_open){
+            if((numberOfUnitys*2)!=stLine.countTokens()){
+              _error= DConst.ACTI_TEXT5+_line+" ActivityList";
+              return false;
             }
-            if(_error.length()!=0)
-            return false;
-          }
+            while(stLine.hasMoreElements()){// rgr A problem in tests allwhile is a problem in real life
+              StringTokenizer stLine1;
+              _error= DXToolsMethods.isIntValue(stLine.nextToken(),
+                  DConst.ACTI_TEXT8+_line,"ActivityList");
+              if(_error.length()!=0)
+                return false;
+            }// end while(stLine.hasMoreElements())
+          }// end if(!_open)
           position = 10;
           break;
         case 10://fixed rooms
@@ -320,29 +345,27 @@ public class SetOfActivities extends SetOfResources{
           }
           position = 14;
           break;
-        case 14://pre-affected cours
-          StringTokenizer visiToken = new StringTokenizer(new String (token),";" );
-          //System.out.println("Activity affect Tokens: "+activityName+" --> "+token);//debug
-          int nbTokens= visiToken.countTokens();
-          for(int i=0; i<nbTokens; i++){
-            token= visiToken.nextToken();
-            //System.out.println("One token: "+token);//debug
-            stLine = new StringTokenizer(token);
-            _error= DXToolsMethods.checkIfLineIsEmpty(token,
-                DConst.ACTI_TEXT6+_line,"ActivityList");
+        case 14://pre-affected course
+
+          //check permanent token
+          String permanentToken= DXToolsMethods.getToken(token,";",0);
+          stLine = new StringTokenizer(permanentToken);
+          if(numberOfUnitys!=stLine.countTokens()){
+            _error= DConst.ACTI_TEXT12+_line+" ActivityList";
+            return false;
+          }
+          //check if the permanent value is belong 0 and 1
+          while(stLine.hasMoreElements()){
+            sousString = stLine.nextToken();
+            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+                DConst.ACTI_TEXT12+_line,"ActivityList");
             if(_error.length()!=0)
               return false;
-            while(stLine.hasMoreElements()){
-              sousString = stLine.nextToken();
-              _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
-                  DConst.ACTI_TEXT12+_line,"ActivityList");
-              if(_error.length()!=0)
-                return false;
-            }
-            position = beginPosition;
-            if(st.hasMoreElements())
-              _line++;
-          }//for(int i=0; i<nbTokens; i++)
+          }
+
+          position = beginPosition;
+          if(st.hasMoreElements())
+          _line++;
           break;
 
       }// end switch (position)
