@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.120 $  $Date: 2005-02-01 21:27:15 $
+ * Title: DMenuBar $Revision: 1.121 $  $Date: 2005-02-02 14:19:56 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.120 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.121 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -134,16 +134,16 @@ public class DMenuBar extends JMenuBar{
 	private boolean _boolMActivityModif;
 	
 	// the optimisation menus
-	private CmdMenu
-	_initialAssign,
-	_doOptimization, _mStudentsMixingBalance,
-	_mStudentsMiddleMixingBalance, _mStudentsMixingOptimize;
-	private boolean _boolInitialAssign, _boolDoOptimization,
-	_boolStudentsMixingBalance,
-	_boolStudentsMiddleMixingBalance,
-	_boolStudentsMixingOptimize;
-	private JMenu _studentsRepartition;
-	private boolean _boolStudentsRepartition;
+	private CmdMenu _initialAssign,
+	_doOptimization, 
+	_doSectionPartition;
+	private boolean _boolInitialAssign, 
+	_boolDoOptimization,
+	_boolDoSectionPartition;
+	//_boolStudentsMiddleMixingBalance,
+	//_boolStudentsMixingOptimize;
+	//private JMenu _studentsRepartition;
+	//private boolean _boolStudentsRepartition;
 	
 	//the report menus
 	private CmdMenu _mReport;
@@ -163,7 +163,7 @@ public class DMenuBar extends JMenuBar{
 	
 	// the inTest menus
 	private JMenu _mInTest1, _mInTest2;
-	private CmdMenu _userTestMixingPersonal;
+	//private CmdMenu _userTestMixingPersonal;
 	private boolean _boolmInTest1, _boolmInTest2;
 	
 	//Developpement menus
@@ -376,12 +376,54 @@ public class DMenuBar extends JMenuBar{
 		_activityModif.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_activityModif.setCommand(new ActivityModifCmd());
 		_activityModif.addActionListener(_dApplic);
-		//_mActivitiesModif.add(_mTypeModif);
-		
+		//_mActivitiesModif.add(_mTypeModif);	
 		_modification.add(_activityModif);
+		
+		// Items in menu feph.
+		_mInTest2 = new JMenu(DConst.SUBMENU2);
+		_mInTest2.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+		
+		
+		// selective import
+		// instructor selective import
+		_mergeInstructors = new CmdMenu(DConst.IMP_SELECT_INST);
+		_mergeInstructors.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_mergeInstructors.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_INST));
+		_mergeInstructors.addActionListener(_dApplic);
+		_mInTest2.add(_mergeInstructors);
+		
+		// room selective import
+		_mergeRooms = new CmdMenu(DConst.IMP_SELECT_ROOM);
+		_mergeRooms.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_mergeRooms.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ROOM));
+		_mergeRooms.addActionListener(_dApplic);
+		_mInTest2.add(_mergeRooms);
+		
+		// activity selective import
+		_mergeActivities = new CmdMenu(DConst.IMP_SELECT_ACT);
+		_mergeActivities.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_mergeActivities.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ACT));
+		_mergeActivities.addActionListener(_dApplic);
+		_mInTest2.add(_mergeActivities);
+		
+		// students selective import
+		_mergeStudents = new CmdMenu(DConst.IMP_SELECT_STUD);
+		_mergeStudents.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_mergeStudents.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_STUD));
+		_mergeStudents.addActionListener(_dApplic);
+		_mInTest2.add(_mergeStudents);
+		
+		//_mInTest2.add(_mInTest2);
+		
+		
+		_modification.add(_mInTest2);
+		
+	
 	}//end createModificationMenu
 	
+
 	
+
 	private void createOptimisationMenu() {
 		//Build the menu Optimisation.
 		_optimisation = new JMenu(DConst.OPTIMIZATION);
@@ -397,11 +439,17 @@ public class DMenuBar extends JMenuBar{
 		// _doOptimization Item in menu Optimisation.
 		_doOptimization = new CmdMenu(DConst.FIRSTALGORITHM);
 		_doOptimization.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_doOptimization.setCommand(new AlgorithmsCmd());
+		_doOptimization.setCommand(new PersonalizeMixingAlgorithmCmd(true));
 		_doOptimization.addActionListener(_dApplic);
 		_optimisation.add(_doOptimization);
 		
-		// Items in menu StudentMixing.
+		// _doOptimization Item in menu Optimisation.
+		_doSectionPartition = new CmdMenu(DConst.FIRSTALGORITHM);
+		_doSectionPartition.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_doSectionPartition.setCommand(new AlgorithmsCmd());
+		_doSectionPartition.addActionListener(_dApplic);
+		_optimisation.add(_doSectionPartition);
+/*		// Items in menu StudentMixing.
 		_studentsRepartition = new JMenu(DConst.STUDENTS_REPARTITION);
 		_studentsRepartition.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 		
@@ -423,7 +471,7 @@ public class DMenuBar extends JMenuBar{
 		_mStudentsMixingOptimize.addActionListener(_dApplic);
 		_studentsRepartition.add(_mStudentsMixingOptimize);
 		
-		_optimisation.add(_studentsRepartition);
+		_optimisation.add(_studentsRepartition);*/
 		
 	}//end createOptimisationMenu
 	
@@ -505,7 +553,7 @@ public class DMenuBar extends JMenuBar{
 	} // end createHelpMenu
 	
 	
-	private void createInTestMenu(){
+	private void createInTestMenu(){} /*
 		_inTest = new JMenu(DConst.IN_TEST);
 		_inTest.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
 		this.add( _inTest );
@@ -531,28 +579,28 @@ public class DMenuBar extends JMenuBar{
 		// instructor selective import
 		_mergeInstructors = new CmdMenu(DConst.IMP_SELECT_INST);
 		_mergeInstructors.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeInstructors.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_INST));
+		_mergeInstructors.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_INST));
 		_mergeInstructors.addActionListener(_dApplic);
 		_mInTest2.add(_mergeInstructors);
 		
 		// room selective import
 		_mergeRooms = new CmdMenu(DConst.IMP_SELECT_ROOM);
 		_mergeRooms.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeRooms.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ROOM));
+		_mergeRooms.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_ROOM));
 		_mergeRooms.addActionListener(_dApplic);
 		_mInTest2.add(_mergeRooms);
 		
 		// activity selective import
 		_mergeActivities = new CmdMenu(DConst.IMP_SELECT_ACT);
 		_mergeActivities.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeActivities.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ACT));
+		_mergeActivities.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_ACT));
 		_mergeActivities.addActionListener(_dApplic);
 		_mInTest2.add(_mergeActivities);
 		
 		// students selective import
 		_mergeStudents = new CmdMenu(DConst.IMP_SELECT_STUD);
 		_mergeStudents.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeStudents.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_STUD));
+		_mergeStudents.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_STUD));
 		_mergeStudents.addActionListener(_dApplic);
 		_mInTest2.add(_mergeStudents);
 		
@@ -561,7 +609,7 @@ public class DMenuBar extends JMenuBar{
 		_inTest.add(_mInTest1);
 		_inTest.add(_mInTest2);
 		
-	} // end createInTestMenu
+	} // end createInTestMenu*/
 	
 	private void createMultiSiteMenu(){
 		_multi = new JMenu("MultiSite");
@@ -753,8 +801,9 @@ public class DMenuBar extends JMenuBar{
 		
 		_boolMenuOptimization = true;
 		_boolInitialAssign = true;
-		_boolDoOptimization= false;
-		_boolStudentsRepartition = false;
+		_boolDoOptimization = false;
+		_boolDoSectionPartition = false;
+		//_boolStudentsRepartition = false;
 		
 		
 		//the report menu
@@ -813,10 +862,11 @@ public class DMenuBar extends JMenuBar{
 		_boolMenuOptimization = true;
 		_boolInitialAssign = false;
 		_boolDoOptimization= true;
-		_boolStudentsRepartition = true;
-		_boolStudentsMixingBalance = true;
-		_boolStudentsMiddleMixingBalance = true;
-		_boolStudentsMixingOptimize= true;
+		_boolDoSectionPartition= true;
+		//_boolStudentsRepartition = true;
+		//_boolStudentsMixingBalance = true;
+		//_boolStudentsMiddleMixingBalance = true;
+		//_boolStudentsMixingOptimize= true;
 		
 		
 		//the report menu
@@ -1038,11 +1088,12 @@ public class DMenuBar extends JMenuBar{
 		//the menu otimization
 		_boolMenuOptimization = true;
 		_boolInitialAssign = true;
-		_boolDoOptimization= true;
-		_boolStudentsRepartition = true;
-		_boolStudentsMixingBalance = true;
-		_boolStudentsMiddleMixingBalance = true;
-		_boolStudentsMixingOptimize= true;
+		_boolDoOptimization = true;
+		_boolDoSectionPartition = true;
+		//_boolStudentsRepartition = true;
+		//_boolStudentsMixingBalance = true;
+		//_boolStudentsMiddleMixingBalance = true;
+		//_boolStudentsMixingOptimize= true;
 		
 		
 		//the report menu
@@ -1111,10 +1162,10 @@ public class DMenuBar extends JMenuBar{
 			else
 				_dev.setEnabled(_boolMenuDev);
 		}
-		if (_boolInTest)
-			setInTestMenu();
-		else
-			_inTest.setEnabled(_boolInTest);
+		//if (_boolInTest)
+		//	setInTestMenu();
+		//else
+		//	_inTest.setEnabled(_boolInTest);
 		//System.out.println("setMenusEnd");
 	}
 	
@@ -1159,10 +1210,11 @@ public class DMenuBar extends JMenuBar{
 		//if (_boolDoOptimization) {
 		_initialAssign.setEnabled(_boolInitialAssign);
 		_doOptimization.setEnabled(_boolDoOptimization);
-		_studentsRepartition.setEnabled(_boolStudentsRepartition);
-		_mStudentsMixingBalance.setEnabled(_boolStudentsMixingBalance);
-		_mStudentsMiddleMixingBalance.setEnabled(_boolStudentsMiddleMixingBalance); 
-		_mStudentsMixingOptimize.setEnabled(_boolStudentsMixingOptimize);
+		_doSectionPartition.setEnabled(_boolDoSectionPartition);
+		//_studentsRepartition.setEnabled(_boolStudentsRepartition);
+		////_mStudentsMixingBalance.setEnabled(_boolStudentsMixingBalance);
+		//_mStudentsMiddleMixingBalance.setEnabled(_boolStudentsMiddleMixingBalance); 
+		//_mStudentsMixingOptimize.setEnabled(_boolStudentsMixingOptimize);
 	}
 	
 	private void setReportMenu() {

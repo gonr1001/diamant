@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.54 $  $Date: 2005-02-01 21:27:15 $
+ * Title: DToolBar $Revision: 1.55 $  $Date: 2005-02-02 14:19:56 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -18,7 +18,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: syay1801 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -463,13 +463,10 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
     }// end actionPerformed
 */
 
-/* (non-Javadoc)
- * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
- */
-public void update(Observable o, Object arg) {
-	_dApplic.getDMediator().getCurrentDoc().getTTPane().updateTTPane(_tts);//.updateTTPanel(_tts);
-	
-}
+
+  public void update(Observable o, Object arg) {
+  	_dApplic.getDMediator().getCurrentDoc().getTTPane().updateTTPane(_tts); 	
+  }
 
 
 } // end classe
