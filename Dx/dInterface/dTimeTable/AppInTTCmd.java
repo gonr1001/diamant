@@ -1,5 +1,8 @@
-package dInterface;
+package dInterface.dTimeTable;
 
+import dInterface.Command;
+import dInterface.DDocument;
+import dInterface.DApplication;
 
 public class AppInTTCmd implements Command {
   private DDocument _dd;

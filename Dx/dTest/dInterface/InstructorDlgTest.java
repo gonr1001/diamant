@@ -11,7 +11,7 @@ package dTest.dInterface;
 import junit.framework.*;
 import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
-import dInterface.InstructorAvailabiliyDlg;
+import dInterface.dData.InstructorAvailabiliyDlg;
 import dResources.DConst;
 import dInterface.DApplication;
 import javax.swing.*;

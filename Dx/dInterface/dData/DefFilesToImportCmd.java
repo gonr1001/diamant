@@ -1,9 +1,9 @@
-package dInterface;
+package dInterface.dData;
 /**
  *
- * Title: ImportCmd $Revision: 1.1 $  $Date: 2003-05-12 15:33:28 $
- * Description: ImportCmd is a class used by menus
- *              to execute import
+ * Title: DefFileToImportCmd $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
+ * Description: DefFileToImportCmd is a class used by menus
+ *              to define the files to import
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -16,17 +16,23 @@ package dInterface;
  * you entered into with rgr.
  *
  * @version $Revision: 1.1 $
- * @author  $Author: rgr $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
-import dInterface.Command;
+
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
-import java.util.ResourceBundle;
+import javax.swing.JFileChooser;
+
 
 import dAux.DoNothingDlg;
 import dInterface.DApplication;
+
+import dInterface.Command;
+import dResources.DConst;
+import dResources.DFileFilter;
 /**
  *
  * ImportCmd is a class used to call a command
@@ -34,16 +40,16 @@ import dInterface.DApplication;
  *
  */
 
-public class ImportCmd implements Command {
+public class DefFilesToImportCmd implements Command {
 
-  private final static String TITLEBOX = "Do Nothing Cmd";
-  //private JFrame _jFrame;
+//  private final static String TITLEBOX = "Do Nothing Cmd";
 
-  public ImportCmd (JFrame jFrame) {
-    //_jFrame = jFrame;
+  public DefFilesToImportCmd() {
   } // end constructor
 //------------------------------
   public void execute(DApplication dApplic) {
-    new ImportDlg(dApplic, TITLEBOX);
+    DefFilesToImportDlg dfti = new DefFilesToImportDlg(dApplic,DConst.DEF_F_TD);
   }
-} /* end class ImportCmd */
+
+} /* end class DefFileToImportCmd */
+

@@ -1,4 +1,4 @@
-package dInterface;
+package dInterface.dTimeTable;
 
 /**
  * <p>Title: miniDia</p>

@@ -1,0 +1,42 @@
+package id32wd1dfxus9pndfyc2b9f;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.AppInTTCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.TTDefinitionCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference341 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference342 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.TTPanel:oiref><oihard>
+@__modelType reference 
+*/
+class reference343 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

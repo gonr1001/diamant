@@ -1,0 +1,32 @@
+package id4ixp8dfxus9pndfyc2jys;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#dInterface.dUtil.AboutCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.AboutDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference335 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutCmd $Revision: 1.6 $  $Date: 2003-03-13 15:21:01 $
+ * Title: AboutCmd $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
  * Description: AboutCmd is class used as the command
  *              which displays the About dialog
  *
@@ -14,29 +14,31 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.1 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
-package dInterface;
+package dInterface.dTimeTable;
 
-
+//import java.awt.*;
 import javax.swing.JFrame;
 import dResources.DConst;
+import dInterface.Command;
+import dInterface.DApplication;
 
 /**
  *
- * AboutCmd is class used to call the command
- * which displays the About dialog
+ * TTDefinitionCmd is class used to call the command
+ * which displays the TTDefinitionDlg dialog
  *
  */
-public class AboutCmd implements Command {
+public class TTDefinitionCmd implements Command {
 
-    public AboutCmd () {
-    } // end AboutCmd
+    public TTDefinitionCmd () {
+    } // end TTDefinitionCmd
     //------------------------------
     public void execute(DApplication dApplic) {
-        new AboutDlg(dApplic.getJFrame(), DConst.ABOUT_TD + DConst.APP_NAME);
+        new TTDefinitionDlg(dApplic, DConst.ABOUT_TD + DConst.APP_NAME);
     } // end execute
-} /* end class AboutCmd */
+} /* end class TTDefinitionCmd */
 

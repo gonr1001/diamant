@@ -1,0 +1,52 @@
+package id17ivedfxus9pndfyc1s47;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#dInterface.dData.DefFilesToImportCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.DefFilesToImportDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference336 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ImportCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference337 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ImportDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference338 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.InstructorAvailabilityCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference339 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.InstructorAvailabiliyDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference340 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

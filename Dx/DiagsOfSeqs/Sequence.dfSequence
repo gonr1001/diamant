@@ -1,0 +1,81 @@
+package idpt4fdfxus9pndfy1v6ya;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node125:oiref><oihard>
+@__modelType reference 
+*/
+class reference126 {
+}}/**
+
+@__tags
+@shapeType SequenceDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:Composite#$messageInplaceEditing#<oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node.link:oiref>=184,107,165,16,0:oigroup>
+<oigroup:<oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node:oiref>=128,30,90,270,1:oigroup>
+<oigroup:<oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node.link:oiref>=180,127,376,127:oigroup>
+<oigroup:<oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node125.node:oiref>=376,127,14,20,1:oigroup>
+<oigroup:<oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node125:oiref>=338,30,90,270,1:oigroup>
+<oigroup:<oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node.link127:oiref>=:oigroup>
+*/
+class __positions {
+}/**
+@shapeType Object
+@__modelType node
+@name Object1
+@stereotype actor 
+*/
+class node {
+/**
+@shapeType MessageLink
+@__modelType link
+@__ref <oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node125:oiref><oihard>
+@sendingInstant 127
+@processingDuration 20
+@sequenceNumber 1
+@diagram_uniqe_name <oiref:design#Class#idpt4fdfxus9pndfy1v6ya.diagram:oiref>
+@operation <oiref:java#Member#dInterface.dUtil.AboutCmd#execute#(#dInterface.DApplication#)#:oiref>
+@operationNameAsText 'execute(DApplication):void' 
+*/
+class link {
+}/**
+@shapeType CollaborationLink
+@__modelType link
+@__ref <oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node125:oiref><oihard> 
+*/
+class link127 {
+}}/**
+@shapeType Object
+@__modelType node
+@name Object2 
+*/
+class node125 {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:java#Class#dInterface.dUtil.AboutCmd:oiref><oihard> 
+*/
+class link {
+}/**
+@shapeType Activation
+@__modelType node
+@name Activation1
+@activationMessage <oiref:design#Class#idpt4fdfxus9pndfy1v6ya.node.link:oiref> 
+*/
+class node {
+}}

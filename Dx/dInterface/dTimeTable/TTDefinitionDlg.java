@@ -1,4 +1,4 @@
-package dInterface;
+package dInterface.dTimeTable;
 
 /**
  * <p>Title: miniDia</p>
@@ -25,11 +25,14 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import java.util.*;
 
+import dInterface.CmdButton;
+
 
 
 import javax.swing.BorderFactory;
 import dInternal.DModelListener;
 import dInternal.DModelEvent;
+import dInterface.DApplication;
 
 //import diamant002.utilities.NumberTextField;
 //import diamant002.dInternal.DPeriod;

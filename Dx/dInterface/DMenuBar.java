@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.15 $  $Date: 2003-05-20 15:51:52 $
+ * Title: DMenuBar $Revision: 1.16 $  $Date: 2003-05-20 16:23:15 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.16 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -29,6 +29,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenu;
+
+import dInterface.dData.*;
+import dInterface.dUtil.*;
 
 public class DMenuBar extends JMenuBar{
   DApplication _dApplic;

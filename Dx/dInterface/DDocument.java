@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.14 $  $Date: 2003-05-14 16:23:58 $
+ * Title: DDocument $Revision: 1.15 $  $Date: 2003-05-20 16:23:15 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.15 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -38,7 +38,9 @@ import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
 import dResources.DConst;
-import java.util.StringTokenizer;//debug
+import java.util.StringTokenizer;
+import dInterface.dTimeTable.TTPanel;
+//debug
 
 public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;

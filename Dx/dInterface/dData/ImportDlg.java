@@ -1,7 +1,7 @@
-package dInterface;
+package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.4 $  $Date: 2003-05-15 08:40:34 $
+ * Title: ImportDlg $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.1 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 

@@ -1,0 +1,69 @@
+package id4ve4wdfshg4rzdfshpi42;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#dInternal.dUtil:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInternal.DModelListener:oiref><oihard>
+@__modelType reference 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#dInternal.TTParametersEvent:oiref><oihard>
+@__modelType reference 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#dInternal.DModel:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#dInternal.TTParameters:oiref><oihard>
+@__modelType reference 
+*/
+class reference43 {
+}/**
+@__ref <oiref:java#Class#dInternal.Preferences:oiref><oihard>
+@__modelType reference 
+*/
+class reference44 {
+}/**
+@__ref <oiref:java#Class#dInternal.DModelEvent:oiref><oihard>
+@__modelType reference 
+*/
+class reference45 {
+}/**
+@__ref <oiref:java#Class#dInternal.TTParametersListener:oiref><oihard>
+@__modelType reference 
+*/
+class reference46 {
+}/**
+@__ref <oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#dInternal.dData:oiref> 
+*/
+class reference47 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

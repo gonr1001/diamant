@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.2 $  $Date: 2003-03-13 15:21:01 $
+ * Title: ClassName $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.1 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -22,9 +22,11 @@
  * All Exceptions must be handled explicitly.
  */
 
-package dInterface;
+package dInterface.dData;
 
 import dResources.DConst;
+import dInterface.Command;
+import dInterface.DApplication;
 
 /**
  *

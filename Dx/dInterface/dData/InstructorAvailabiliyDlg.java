@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.9 $  $Date: 2003-05-02 13:24:05 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,15 +13,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.1 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
  * all Exceptions that a method can throw.
  * All Exceptions must be handled explicitly.
  */
-package dInterface;
+package dInterface.dData;
 
 import java.util.*;
 import java.awt.*;
@@ -58,9 +58,9 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private final int nbPer = 14;
   private final int nbDay = 5;
 
-  final static String DAY[] = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
+  final static String[] DAY = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
 
-  public String TIME[] = {"8:30 ", "9:30 ", "10:30 ", "11:30 ", "12:30 ",
+  public String[] TIME = {"8:30 ", "9:30 ", "10:30 ", "11:30 ", "12:30 ",
                                 "13:30 ", "14:30 ", "15:30 ", "16:30 ", "17:30 ",
                                 "18:30 ", "19:00 ", "20:00 ", "21:00 "};
 
