@@ -19,6 +19,15 @@ public class StudentAttach extends DXObject{
  * fields description
  * */
 
+/* Each field is linked to an index who serves for filtering and for selecting
+  * an object.
+  * Indexes :
+  * _sex -> 0
+  * _session -> 1
+  * _stage -> 2
+  * _area -> 3
+  */
+
   /** 1= Male; 0=Female*/
   private int _sex=1;
   /** session of study*/
@@ -128,7 +137,7 @@ public class StudentAttach extends DXObject{
     }// end if (course.length()>=_COURSELENGTH)
   }
 
-  public boolean getFixedInGroup(String course, int group){
+  public boolean isFixedInGroup(String course, int group){
     Resource courseValue;
     courseValue = _courses.getResource(course.substring(0,_COURSELENGTH));
     if(courseValue!=null){
@@ -302,5 +311,31 @@ public class StudentAttach extends DXObject{
 
   /** Course length*/
   private int _COURSELENGTH = 7;
+
+
+
+/**
+  * Set a field according to the argument fieldIndex
+  * @param fieldIndex The index of a field
+  * @param value The set value to the field
+  */
+ public void setField(int fieldIndex, String value){
+   int intValue = Integer.parseInt(value);
+   boolean boolValue = Boolean.valueOf(value).booleanValue();
+   switch(fieldIndex){
+      case 0:
+        setSex(intValue);
+        break;
+      case 1:
+        setSession(intValue);
+        break;
+      case 2:
+        setStage(intValue);
+        break;
+      case 3:
+        setArea(intValue);
+        break;
+    }//end switch
+ }//end method
 
 }

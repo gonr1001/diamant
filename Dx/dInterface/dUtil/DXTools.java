@@ -153,6 +153,41 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
 }//end method
 
 
+public static void listTransfersWithFixed(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, boolean toLeft, String chain){
+  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
+    return;
+  SetOfResources destinationRes = new SetOfResources(0);
+  Resource res;
+  Object [] elementsToTransfer = sourceList.getSelectedValues();
+  String strElement;
+  if (elementsToTransfer.length != 0){
+      for (int i = 0; i < elementsToTransfer.length; i++){
+        sourceVector.remove(elementsToTransfer[i]);
+        strElement = (String)elementsToTransfer[i];
+        if (toLeft){
+          if(strElement.endsWith(chain))
+            elementsToTransfer[i] = strElement.substring(0, strElement.length()-chain.length());
+        }else{
+          elementsToTransfer[i] = strElement + chain;
+        }
+        destinationVector.add(elementsToTransfer[i]);
+      }
+      for(int j = 0; j < destinationVector.size(); j++){
+        res = new Resource((String)destinationVector.elementAt(j),null);
+        destinationRes.addResource(res, 1);
+      }
+      destinationRes.sortSetOfResourcesByID();
+      destinationVector = destinationRes.getNamesVector();
+      System.out.println("destinationVector "+destinationVector);
+      sourceList.setListData(sourceVector);
+      destinationList.setListData(destinationVector);
+      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
+      destinationList.setSelectedIndices(indices);
+      sourceList.clearSelection();
+    }//end for
+}//end method
+
+
 
   /**
    * Set the vectors leftVector and rightVector with the values found in the SetOfActivities

@@ -274,28 +274,27 @@ public class SetOfStudents extends SetOfResources{
     String ID, key, str = null;
     Resource studentRes;
     Vector list= new Vector();
-    for(int i=0; i< size(); i++){
+    if (order == 0)
+      sortSetOfResourcesByID();
+    if (order == 1)
+      sortSetOfResourcesByKey();
+    for(int i=0; i < size(); i++){
       studentRes = getResourceAt(i);
       if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
         ID = studentRes.getID();
         diff = Math.abs(IDLength - ID.length());
-        for(int j = 0; j < diff; j++){
+        for(int j = 0; j < diff; j++)
           ID = ID+" ";
-        }
         key = String.valueOf(studentRes.getKey());
         diff = Math.abs(keyLength - key.length());
-        for(int j = 0; j < diff; j++){
+        for(int j = 0; j < diff; j++)
           key = "0"+ key;
-        }
         if (order == 0)
           str = ID + " " + key;
         if (order == 1)
           str = key + " " + ID;
-        if(((StudentAttach)studentRes.getAttach()).getFixedInGroup(activityID+typeID,group)){
-          //str.set
+        if(((StudentAttach)studentRes.getAttach()).isFixedInGroup(activityID+typeID,group))
           str = str + " " + "*";
-        }
-        //if ( ( (StudentAttach)(studentRes.getAttach() ) )
         list.add(str);
         //list.add(studentRes.getID());
       }//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))

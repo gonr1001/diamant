@@ -231,17 +231,21 @@ public class Activity extends DXObject{
   * @param value The set value to the field
   */
  public void setField(int fieldIndex, String value){
+   int intValue = Integer.parseInt(value);
+   boolean boolValue = Boolean.valueOf(value).booleanValue();
    switch(fieldIndex){
       case 0:
         setActivityDepartment(value);
+        break;
       case 1:
         setActivityType(value);
+        break;
       case 2:
-        int intValue = Integer.parseInt(value);
         setActivitySession(intValue);
+        break;
       case 3:
-        boolean boolValue = Boolean.valueOf(value).booleanValue();
         setActivityVisibility(boolValue);
+        break;
     }//end switch
  }//end method
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.50 $  $Date: 2003-09-18 14:18:57 $
+ * Title: DConst $Revision: 1.51 $  $Date: 2003-09-19 15:42:37 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
+ * @version $Revision: 1.51 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -177,6 +177,7 @@ public class DConst {
   public final static String TYPE = res.getString("Type");//Type
   public final static String SORT_BY_MATRICUL = res.getString("SortByMatricul");//par matricule
   public final static String SORT_BY_NAME = res.getString("SortByName");//par nom
+  public final static String CHAR_FIXED_IN_GROUP = " *";
   //EventsDlg
   public final static String EVENTS_DLG_TITLE = res.getString("EventsDlgTitle");//Évenements
   public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés

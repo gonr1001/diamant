@@ -321,6 +321,19 @@ public class SetOfResources extends DXObject{
   }
 
   /**
+   * Build a list of Resources's ID
+   * @return Vector It contents the Resources's ID
+   * */
+  public Vector getNamesVector(Vector namesVector){
+    //Vector namesVector =new Vector();
+    if(_stateSort!=1)
+      sortSetOfResourcesByID();
+    for (int i=0; i< this._resourceList.size(); i++)
+      namesVector.add(((Resource)_resourceList.get(i)).getID());
+   return namesVector;
+  }
+
+  /**
    * Creates a Vector containig the IDs of the resources whose the value of the
    * field (defined by the argument "fieldIndex") is equals to value defined by
    * the argument "fieldValue".  The fieldIndex is defined in each resource. The value
