@@ -47,10 +47,10 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector eventRescList=buildEventsVector();
     compileStudents(eventRescList);
     //compileStudents(eventRescList);
-    Vector secondVec= new Vector();
+    /*Vector secondVec= new Vector();
     for (int i=eventRescList.size()-1; i>=0; i--)
       secondVec.add(eventRescList.get(i));
-    compileStudents(secondVec);
+    compileStudents(secondVec);*/
 
   }
 
@@ -252,6 +252,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector sizeOfGroups= new Vector();
     for(int i=0; i< allConvGroup.size(); i++){
       size= new DXValue();
+      //size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,i+1).size());
       size.setIntValue(0);
       sizeOfGroups.add(size);
     }
@@ -271,7 +272,8 @@ public class StudentMixingAlgorithm implements Algorithm {
     Resource resc=null;
     switch(_mixingType){
       case 0:
-        int group=currentConvGroup.getIntValue();
+        resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,1);
+        /*int group=currentConvGroup.getIntValue();
         SetOfResources biggestConvGroup= (SetOfResources)allConvGroup.get(group);
         if(biggestConvGroup.size()>0){
           resc= (Resource)biggestConvGroup.getResourceAt(0);
@@ -281,43 +283,11 @@ public class StudentMixingAlgorithm implements Algorithm {
         }// end if(biggestConvGroup.size()>0)
         if(++group>=allConvGroup.size())
           group=0;
-        currentConvGroup.setIntValue(group);
+        currentConvGroup.setIntValue(group);*/
         break;
 
       case 1:
-        Vector includeGroupsList=new Vector();
-        int smallGroup= getSmallerGroup(sizeOfGroups);
-        for(int i=0; i< allConvGroup.size(); i++){
-          if ((((DXValue)sizeOfGroups.get(i)).getIntValue()-
-               ((DXValue)sizeOfGroups.get(smallGroup)).getIntValue())< ACCEPTABLEVARIATION)
-          includeGroupsList.add(new Integer(i));
-        }// end for(int i=0; i< allConvGroup.size(); i++){
-
-        int bGroup=((Integer)includeGroupsList.get(0)).intValue();
-        if(((SetOfResources)allConvGroup.get( bGroup)).size()>0){
-          //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
-          int bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
-              bGroup)).getResourceAt(0).getID());
-
-
-          for(int i=1; i< includeGroupsList.size(); i++){
-            if(bConf>Integer.parseInt(((SetOfResources)allConvGroup.get(
-                ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
-            bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
-            ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
-            bGroup=((Integer)includeGroupsList.get(i)).intValue();
-          }// end if(bConf>=Integer.parseInt(((SetOfResources
-          }// end for(int i=0; i< includeGroupsList.size(); i++){
-          //currentConvGroup.setIntValue(bGroup);
-          ((DXValue)sizeOfGroups.get(bGroup)).setIntValue(
-              ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
-
-          resc= (Resource)((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
-          ((DXValue)resc.getAttach()).setIntValue(bGroup+1);
-          for (int i=0; i< allConvGroup.size(); i++)
-            ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
-          currentConvGroup.setIntValue(bGroup+1);
-        }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
+        resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,ACCEPTABLEVARIATION);
         break;
 
       case 2:
@@ -361,6 +331,52 @@ public class StudentMixingAlgorithm implements Algorithm {
       }
     }
     return group;
+  }
+
+
+  /**
+   *
+   * @param resc
+   * @param allConvGroup
+   * @param currentConvGroup
+   * @param sizeOfGroups
+   */
+  private Resource giveBestGroup(Resource resc, Vector allConvGroup,
+                             DXValue currentConvGroup, Vector sizeOfGroups, int acceptableVariation){
+    Vector includeGroupsList=new Vector();
+        int smallGroup= getSmallerGroup(sizeOfGroups);
+        for(int i=0; i< allConvGroup.size(); i++){
+          if ((((DXValue)sizeOfGroups.get(i)).getIntValue()-
+               ((DXValue)sizeOfGroups.get(smallGroup)).getIntValue())< acceptableVariation)
+          includeGroupsList.add(new Integer(i));
+        }// end for(int i=0; i< allConvGroup.size(); i++){
+
+        int bGroup=((Integer)includeGroupsList.get(0)).intValue();
+        if(((SetOfResources)allConvGroup.get( bGroup)).size()>0){
+          //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
+          int bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
+              bGroup)).getResourceAt(0).getID());
+
+
+          for(int i=1; i< includeGroupsList.size(); i++){
+            if(bConf>Integer.parseInt(((SetOfResources)allConvGroup.get(
+                ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
+            bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
+            ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
+            bGroup=((Integer)includeGroupsList.get(i)).intValue();
+          }// end if(bConf>=Integer.parseInt(((SetOfResources
+          }// end for(int i=0; i< includeGroupsList.size(); i++){
+          //currentConvGroup.setIntValue(bGroup);
+          ((DXValue)sizeOfGroups.get(bGroup)).setIntValue(
+              ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
+
+          resc= (Resource)((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
+          ((DXValue)resc.getAttach()).setIntValue(bGroup+1);
+          for (int i=0; i< allConvGroup.size(); i++)
+            ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
+          currentConvGroup.setIntValue(bGroup+1);
+        }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
+        return resc;
   }
 
 }// end class
