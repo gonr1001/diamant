@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.61 $  $Date: 2003-09-09 10:19:28 $
+ * Title: DMenuBar $Revision: 1.62 $  $Date: 2003-09-09 11:37:10 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -109,6 +109,7 @@ public class DMenuBar extends JMenuBar{
     createHelpMenu();
     if (_DEVELOPMENT)
       createDevelopmentMenu();
+    setAlways();
     setZero(); //setAll();
   } // end createMenus
 
@@ -322,7 +323,22 @@ public class DMenuBar extends JMenuBar{
     _dev.add(_stateZero);
   } // end createDevelopmentMenu
 
-  public void setZero() {
+  private void setAlways() {
+    //the menu _file
+    _boolDefineFiles = true;
+
+    _boolExit = true;
+
+    //the menu _preferences
+    _boolPreferences= true;
+    _boolLookAndFeel =true;
+
+    //the menu _help
+    _boolHelp= true;
+    _boolAbout = true;
+  } // end setAlways
+
+  private void setZero() {
     //the menu _file
     _boolFile = true;
     //the submenus
@@ -334,9 +350,9 @@ public class DMenuBar extends JMenuBar{
     _boolOpenTTable  = _boolOpenTTStruc = true;
     _boolClose = false;
     _boolSave = _boolSaveAs = false;
-    _boolDefineFiles = true;
-     _boolImport = _boolExport = false;
-    _boolExit = true;
+    // always_boolDefineFiles = true;
+    _boolImport = _boolExport = false;
+    // always _boolExit = true;
 
 
     //the menu assign
@@ -352,12 +368,12 @@ public class DMenuBar extends JMenuBar{
     _boolMOpti= true;
 
     //the menu preferences
-    _boolPreferences= true;
-    _boolLookAndFeel =true;
+    // always_boolPreferences= true;
+    // always _boolLookAndFeel =true;
 
     //the menu help
-    _boolHelp= true;
-    _boolAbout = true;
+    // always _boolHelp= true;
+    // always _boolAbout = true;
 
     //the menu dev
     if (_DEVELOPMENT) {
@@ -366,7 +382,53 @@ public class DMenuBar extends JMenuBar{
     }
     setMenus();
   }
-  public void setOne() {
+
+  private void setImport() {
+  //the menu _file
+  _boolFile = true;
+  //the submenus
+  _boolNewTTable = false;
+  _boolNewTTableCy = _boolNewTTableEx = true;
+
+  _boolNewTTStruc = false;
+  _boolNewTTStrucCy = _boolNewTTStrucEx = true;
+  _boolOpenTTable  = _boolOpenTTStruc = false;
+  _boolClose = true;
+  _boolSave = _boolSaveAs = true;
+  _boolDefineFiles = true;
+  _boolImport = false;
+  _boolExport = false;
+  _boolExit = true;
+
+
+  //the menu assign
+  _boolAssign= true;
+  _boolActivities = true;
+  _boolSections= true;
+  _boolInstructorAvailability= true;
+  _boolRoomsAvailability= true;
+  _boolEvents= true;
+
+  //the menu otimization
+  _boolOptimization = true;
+  _boolMOpti= true;
+
+  //the menu preferences
+  // always_boolPreferences= true;
+  // always _boolLookAndFeel =true;
+
+  //the menu help
+  // always _boolHelp= true;
+    // always _boolAbout = true;
+
+  //the menu dev
+  if (_DEVELOPMENT) {
+    _boolDev = true;
+    _boolMyFile = _boolShowAll = _boolStateZero = true;
+  }
+  setMenus();
+  } //end setImport
+  private void setNewTTCy() {
     //the menu _file
     _boolFile = true;
     //the submenus
@@ -397,12 +459,12 @@ public class DMenuBar extends JMenuBar{
     _boolMOpti= true;
 
     //the menu preferences
-    _boolPreferences= true;
-    _boolLookAndFeel =true;
+    // always_boolPreferences= true;
+    // always _boolLookAndFeel =true;
 
     //the menu help
-    _boolHelp= true;
-    _boolAbout = true;
+    // always _boolHelp= true;
+    // always _boolAbout = true;
 
     //the menu dev
     if (_DEVELOPMENT) {
@@ -411,6 +473,54 @@ public class DMenuBar extends JMenuBar{
     }
     setMenus();
   }
+
+  private void setNewTTEx() {
+  //the menu _file
+  _boolFile = true;
+  //the submenus
+  _boolNewTTable = false;
+  _boolNewTTableCy = _boolNewTTableEx = true;
+
+  _boolNewTTStruc = false;
+  _boolNewTTStrucCy = _boolNewTTStrucEx = true;
+  _boolOpenTTable  = _boolOpenTTStruc = false;
+  _boolClose = true;
+  _boolSave = _boolSaveAs = true;
+  _boolDefineFiles = true;
+  _boolImport = true;
+  _boolExport = false;
+  _boolExit = true;
+
+
+  //the menu assign
+  _boolAssign= false;
+  _boolActivities = true;
+  _boolSections= true;
+  _boolInstructorAvailability= true;
+  _boolRoomsAvailability= true;
+  _boolEvents= true;
+
+  //the menu otimization
+  _boolOptimization = false;
+  _boolMOpti= true;
+
+  //the menu preferences
+  // always_boolPreferences= true;
+  // always _boolLookAndFeel =true;
+
+  //the menu help
+  // always _boolHelp= true;
+    // always _boolAbout = true;
+
+  //the menu dev
+  if (_DEVELOPMENT) {
+    _boolDev = true;
+    _boolMyFile = _boolShowAll = _boolStateZero = true;
+  }
+  setMenus();
+  }
+
+
   private void setAll() {
     //the menu _file
     _boolFile = true;
@@ -452,7 +562,7 @@ public class DMenuBar extends JMenuBar{
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
-  }
+  } //end setAll()
 
   private void setMenus() {
     //System.out.println("setMenus" + _boolAssign);
@@ -489,10 +599,12 @@ public class DMenuBar extends JMenuBar{
   private void setFileMenu() {
     _file.setEnabled(_boolFile);
     if (_boolNewTTable) {
+      _newTTable.setEnabled(_boolNewTTable);
       _newTTableCy.setEnabled(_boolNewTTableCy);
       _newNTTableEx.setEnabled(_boolNewTTableEx);
       } else _newTTable.setEnabled(_boolNewTTable);
     if (_boolNewTTStruc) {
+      _newTTStruc.setEnabled(_boolNewTTStruc);
       _newTTStrucCy.setEnabled(_boolNewTTStrucCy);
       _newTTStrucEx.setEnabled(_boolNewTTStrucEx);
       } else _newTTStruc.setEnabled(_boolNewTTStruc);
@@ -538,7 +650,15 @@ public class DMenuBar extends JMenuBar{
   }
 
   public void postNewTTCyCmd(){
-    setOne();
+    setNewTTCy();
+  }
+
+  public void postNewTTExCmd(){
+    setNewTTEx();
+  }
+
+  public void postImportCmd(){
+   setImport();
   }
 
   public void postAbout() {

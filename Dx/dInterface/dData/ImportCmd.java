@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportCmd $Revision: 1.4 $  $Date: 2003-09-08 11:05:01 $
+ * Title: ImportCmd $Revision: 1.5 $  $Date: 2003-09-09 11:37:10 $
  * Description: ImportCmd is a class used by menus
  *              to execute import
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -45,6 +45,6 @@ public class ImportCmd implements Command {
 //------------------------------
   public void execute(DApplication dApplic) {
     new ImportDlg(dApplic);
-    //dApplic.getMenuBar().setNewState(_t);
+    dApplic.getMenuBar().postImportCmd();
   }
 } /* end class ImportCmd */
