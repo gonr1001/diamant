@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.38 $  $Date: 2004-02-24 15:19:40 $
+ * Title: DMediator $Revision: 1.39 $  $Date: 2004-02-24 16:31:02 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -61,9 +61,8 @@ public class DMediator {
     if(currentDoc.getError().length()==0){
       _documents.addElement(currentDoc);
       currentDoc.getDM().addAllListeners();
-      // This can fix the exception coming from the toolbox when opening a Document
-      //_dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
-      //_dApplic.hideToolBar();
+      _dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
+      _dApplic.hideToolBar();
     }else{
       new FatalProblemDlg(_dApplic.getJFrame(), currentDoc.getError());
       System.exit(1);
