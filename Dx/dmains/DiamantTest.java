@@ -1,6 +1,6 @@
 /**
  *
- * Title: miniDiaTest $Revision: 1.33 $  $Date: 2004-02-16 21:05:13 $
+ * Title: miniDiaTest $Revision: 1.34 $  $Date: 2004-04-05 21:55:52 $
  * Description: miniDiaTest is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,8 +12,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.34 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 //------------------------------
@@ -43,7 +43,7 @@ public class DRunTest {
   // The tests are very poor at the moment
   public static Test suite ( ) {
       TestSuite suite= new TestSuite("Proto Tests");
-          suite.addTest(InstructorAttachTest.suite());
+          /*suite.addTest(InstructorAttachTest.suite());
           suite.addTest(ResourceTest.suite());
           suite.addTest(SetOfResourcesTest.suite());
           suite.addTest(SetOfInstructorsTest.suite());
@@ -56,9 +56,9 @@ public class DRunTest {
           suite.addTest(UnityTest.suite());
           suite.addTest(SectionTest.suite());
           suite.addTest(TypeTest.suite());
-          suite.addTest(ActivityTest.suite());
+          suite.addTest(ActivityTest.suite());*/
           suite.addTest(SetOfActivitiesTest.suite());
-          suite.addTest(PeriodTest.suite());
+          /*suite.addTest(PeriodTest.suite());
           suite.addTest(SequenceTest.suite());
           suite.addTest(DayTest.suite());
           suite.addTest(CycleTest.suite());
@@ -73,7 +73,7 @@ public class DRunTest {
           suite.addTest(InstructorsConditionsTest.suite());
           suite.addTest(RoomsConditionsTest.suite());
           suite.addTest(StudentsConditionsTest.suite());
-          suite.addTest(ConditionsTest.suite());
+          suite.addTest(ConditionsTest.suite());*/
 
       return suite;
     }

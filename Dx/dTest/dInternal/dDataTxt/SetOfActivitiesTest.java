@@ -670,7 +670,7 @@ public void test7_analyseTokens(){
      if(setOfActivities.getError().length()==0) {
 
        setOfActivities.buildSetOfActivities(1);
-       System.out.println(setOfActivities.toString());
+       //System.out.println(setOfActivities.toString());
      }
      assertEquals("test0_addActivity: assertEquals 0", 2,setOfActivities.size());
      Resource activityResc = setOfActivities.getResource("ADM111");
@@ -764,38 +764,38 @@ public void test7_analyseTokens(){
      String tokens= "ADM1111  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
-                    "rgr ; ys" + "\r\n"+
+                    "rgr, ys " + "\r\n"+
                     "2"+"\r\n"+
                     "2 1"+"\r\n"+
-                    "1 12 1 1"+"\r\n"+
+                    "1.3.1 1.1.1"+"\r\n"+
                     "1 1"+"\r\n"+
                     "C1-387 C1-387"+"\r\n"+
                     "0 0"+"\r\n"+
                     "0 0"+"\r\n"+
-                    "0 0"+"\r\n"+
+                    "0 0; 0 0"+"\r\n"+
                     "ADM1112  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
                     "LUC LAJOIE"+"\r\n"+
                     "1"+"\r\n"+
                     "3"+"\r\n"+
-                    "1 12"+"\r\n"+
+                    "1.3.1"+"\r\n"+
                     "1"+"\r\n"+
                     "C1-387"+"\r\n"+
                     "0"+"\r\n"+
                     "0"+"\r\n"+
-                    "0"+"\r\n";
+                    "0 ; 0" + "\r\n" ;
 
-     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),true);
      setOfActivities.analyseTokens(1);
-     assertEquals("test_instructorEqualsBlocs: assertEquals","", /* DConst.ACTI_TEXT5,*/
-                  setOfActivities.getError());//.substring(0,DConst.ACTI_TEXT5.length()));
+     assertEquals("test_instructorEqualsBlocs: assertEquals", DConst.ACTI_TEXT13,
+                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT13.length()));
    }
 
 
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
-    filter.appendToCharKnown("ิห้-',; ()๊.เ");
+    filter.appendToCharKnown("ิห้-',:; ()๊.เ");
     if (filter.validFile(str)) {
       return filter.getByteArray();
     } else return null;

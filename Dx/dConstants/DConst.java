@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.91 $  $Date: 2004-03-26 21:19:33 $
+ * Title: DConst $Revision: 1.92 $  $Date: 2004-04-05 21:55:52 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.91 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.92 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -368,8 +368,8 @@ public class DConst {
   public final static String ACTI_TEXT9= res.getString("activText9");//Wrong format of fixed rooms at line:
   public final static String ACTI_TEXT10= res.getString("activText10");//Wrong name of preferred rooms at line:
   public final static String ACTI_TEXT11= res.getString("activText11");//Wrong type of rooms:
-  public final static String ACTI_TEXT12= res.getString("activText12");//Wrong format of pre-affected activity at line:
-
+  public final static String ACTI_TEXT12= res.getString("activText12");//Wrong format of pre-assigned activity at line:
+  public final static String ACTI_TEXT13= res.getString("activText13");//Wrong number of instructors at line:
   public final static String FILE_TTS  = res.getString("fileTTS");//Fichier_Grille, unp
   public final static String O_TTSTD  = res.getString("oTTSTD");//Grille, unp
   public final static String CLOSE_TTS  = res.getString("closeTTS");//Fermer grille, unp

@@ -242,7 +242,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     JButton jButtonChange = new JButton( DConst.BUT_CHANGE );
     jButtonChange.setPreferredSize(new Dimension(75, 22));
     jButtonChange.addActionListener(this);
-    //panel.add(jButtonChange); to be used when adding instructors
+    panel.add(jButtonChange); //to be used when adding instructors
     centerPanel.add(panel);
     // bottom
     JPanel buttomPanel = new JPanel();

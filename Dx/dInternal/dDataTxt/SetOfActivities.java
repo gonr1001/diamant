@@ -24,6 +24,11 @@ public class SetOfActivities extends SetOfResources{
   private String _error="";
   private int _line=1;
   private boolean _open;
+
+  private String NULLINFORMATION = "xxxxxx";
+  private int _NUMBEROFCYCLE = 1;
+  final static public int _COURSENAMELENGTH=6;
+  private int _ACTIVITYLENGTH=11;
   /**
    * Constructor
    * */
@@ -32,6 +37,7 @@ public class SetOfActivities extends SetOfResources{
     _dataloaded = dataloaded;
     _open= open;
   }
+
 
   /**
    * analyse activities data by a finished states machine
@@ -74,15 +80,12 @@ public class SetOfActivities extends SetOfResources{
           position = 1;
           break;
         case 1:// activity name
-
           position = 2;
           break;
         case 2://activity visibility
-
           position = 3;
           break;
         case 3://number of activities
-
           position = 4;
           break;
         case 4:// teachers' names
@@ -98,8 +101,8 @@ public class SetOfActivities extends SetOfResources{
         case 7://number of blocs
           numberOfBlocs=Integer.parseInt(token.trim());
           if(DXToolsMethods.countTokens(instructorName,";")!=numberOfBlocs){
-            _error= DConst.ACTI_TEXT4 + _line +  "in the activity file:" +
-            "\n" + "I was in ActiviesList class and in analyseTokens method ";
+            _error= DConst.ACTI_TEXT13  +
+            _line + ", I was in SetOfActivies class and in analyseDeltaTokens method ";
             return false;
           }
           position = 8;
@@ -358,7 +361,7 @@ public class SetOfActivities extends SetOfResources{
           //check if the permanent value is belong 0 and 1
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
-            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+            _error= DXToolsMethods.checkIfBelongsValues(sousString,"0 1",
                 DConst.ACTI_TEXT12+_line,"ActivityList");
             if(_error.length()!=0)
               return false;
@@ -882,9 +885,4 @@ public class SetOfActivities extends SetOfResources{
   }
 
 
-
-  private String NULLINFORMATION = "xxxxxx";
-  private int _NUMBEROFCYCLE = 1;
-  final static public int _COURSENAMELENGTH=6;
-  private int _ACTIVITYLENGTH=11;
 }
