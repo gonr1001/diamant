@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.24 $  $Date: 2004-05-18 19:25:16 $
+ * Title: SectionDlg $Revision: 1.25 $  $Date: 2004-05-18 21:10:39 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.25 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
@@ -75,7 +75,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   private SetOfStudents _students;
   private String _actID, _typeID, _sortID;
   private String[] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
- 
+
   private Type _type;
   private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[], _sortVector;
 
@@ -110,8 +110,8 @@ public class SectionDlg extends JDialog implements ActionListener{
     setResizable(false);
     JPanel top = initTopPanel();
 	getContentPane().add(top, BorderLayout.NORTH);
-	
-	
+
+
     //_applyPanel
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _applyPanel = new TwoButtonsPanel(this, a);
@@ -120,7 +120,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     getContentPane().add(_applyPanel, BorderLayout.SOUTH);
     setListsLoad(_sortIndex, false);  //setLists
 	setCenterPanel(dialogDim);
-    
+
   }
 
 
@@ -168,7 +168,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     topPanel.add(actPanel);
     topPanel.add(typePanel);
     topPanel.add(sortPanel);
-   
+
     //adding the actionListeners
     _actCombo.addActionListener(this);
     _typeCombo.addActionListener(this);
@@ -181,7 +181,7 @@ public class SectionDlg extends JDialog implements ActionListener{
    * Set the left panel who shows the list of the not assigned students
    */
   private void setNotAssignedPanel(Dimension dialogDim){
-    Dimension panelDim = new Dimension((int)((dialogDim.getWidth()-50)*0.40), (int)dialogDim.getHeight()-150);   
+    Dimension panelDim = new Dimension((int)((dialogDim.getWidth()-50)*0.40), (int)dialogDim.getHeight()-150);
     _notAssignedPanel = DXTools.listPanel(_notAssignedList, (int)(panelDim.getWidth()-112), (int)panelDim.getHeight()-35);
     _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACT_STUD_NOT_ASSIGNED));
     _notAssignedPanel.setPreferredSize(panelDim);
@@ -292,7 +292,7 @@ public class SectionDlg extends JDialog implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    
+
     // combo
     //if activity combo box
     if (e.getSource().equals(_actCombo)){
@@ -320,7 +320,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     }//end if (e.getSource().equals(_typeCombo))
     //if sort button
     if (e.getSource().equals(_sortCombo)){
-    	//int oldIndex = _sortIndex;      
+    	//int oldIndex = _sortIndex;
       setCurrents();
       //setLists(_sortIndex, false);
       setScrollPane(_scrollPane.getPreferredSize());
@@ -329,7 +329,7 @@ public class SectionDlg extends JDialog implements ActionListener{
 	  _sortIndex = _sortCombo.getSelectedIndex();
     }//end if (e.getSource().equals(_typeCombo))
     //if sort button
-    
+
     //buttons
     //if Button CLOSE is pressed
     if (command.equals(DConst.BUT_CLOSE))
@@ -345,7 +345,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
-	
+
 	// Arrows
     if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0])) && _currentAssignedGroup > -1){
     //if "toLeft" button is pressed
@@ -438,28 +438,20 @@ public class SectionDlg extends JDialog implements ActionListener{
     }
   }//end method
 
-	private  SetOfStudents getSortStudents(JList list, int newIndex) {
-		//sortIndex= 0; // to comment
-		SetOfStudents students = new SetOfStudents();
-		if (list != null) {		
-			for (int i= 0; i < list.getModel().getSize(); i++ ) {
-				String str = (String) list.getModel().getElementAt(i);
-				Resource resource = getStudent(str, _sortIndex);
-				students.addStudent(resource.getKey(),resource.getID(),((StudentAttach)resource.getAttach()).getAuxField(), new StudentAttach() );
-			}
-		}
-		
-		if (_sortIndex == 0)
-  studentID = studentData.substring(DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH).trim();
-if (_sortIndex == 1)
-  studentID = studentData.substring(0, DConst.STUDENT_KEY_LENGTH).trim();
-if (_sortIndex == 2)
-  studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH+1).trim();
-//System.out.println("studentkey " + studentID);
-		return students;
-	}
+  private  SetOfStudents getSortStudents(JList list, int newIndex) {
+    //sortIndex= 0; // to comment
+    SetOfStudents students = new SetOfStudents();
+    if (list != null) {
+      for (int i= 0; i < list.getModel().getSize(); i++ ) {
+        String str = (String) list.getModel().getElementAt(i);
+        Resource resource = getStudent(str, _sortIndex);
+        students.addStudent(resource.getKey(),resource.getID(),((StudentAttach)resource.getAttach()).getAuxField(), (StudentAttach)resource.getAttach());
+      }
+    }
+    return students;
+  }
 
- 
+
 	private void setListsLoad(int sortIndex, boolean forUpdate){
 		_notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
 		if (_notAssignedList == null){
@@ -489,7 +481,7 @@ if (_sortIndex == 2)
 		}
 	  }//end method
   private void setLists(int newIndex, boolean forUpdate){
-    _notAssignedVector = getSortStudents(_notAssignedList, newIndex).getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
+    _notAssignedVector = getSortStudents(_notAssignedList, newIndex).getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, newIndex);
     if (_notAssignedList == null){
       _notAssignedList = new JList(_notAssignedVector);
       _notAssignedList.setFont(DConst.JLISTS_FONT);
@@ -505,7 +497,7 @@ if (_sortIndex == 2)
     for(int i=0; i< type.getSetOfSections().size(); i++){
       int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());
     //for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = getSortStudents(_assignedLists[i], newIndex).getStudentsByGroup(_actID, _typeID, group, _sortIndex);
+      _assignedVectors[i] = getSortStudents(_assignedLists[i], newIndex).getStudentsByGroup(_actID, _typeID, group, newIndex);
       //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
       if (!forUpdate){
         _assignedLists[i] = new JList(_assignedVectors[i]);
@@ -546,25 +538,6 @@ if (_sortIndex == 2)
       }//end for(int k = 0; k < _assignedVectors[j].size(); k++)
     }//end for(int j = 0; j < _assignedVectors.length; j++)
   }//end method
-
-  /*
-  private void sortElements(int sortIndex){
-    switch (sortIndex){
-      case 0:
-        _students.sortSetOfResourcesByID();
-        break;
-      case 1:
-        _students.sortSetOfResourcesByKey();
-        break;
-    }//end switch
-    _notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(0), -1, _sortIndex);
-    _notAssignedList.setListData(_notAssignedVector);
-    for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, i+1, 1);
-      _assignedLists[i].setListData(_assignedVectors[i]);
-    }//end for
-  }//end method
-  */
 
   private void changeFixedInGroup(Object [] obj, int group){
     boolean fixedInGroup;
@@ -646,7 +619,7 @@ if (_sortIndex == 2)
     return s;
   }//end method
 
-  
+
    private Resource getStudent(String studentData, int sortIndex){
 	 Resource s;
 	 String studentID = null;
