@@ -1,17 +1,23 @@
 \chapter{Description des fichiers d'entrée de \diamant{}}
 
-\diamant{} version 1.0 et 1.5 utilise les fichiers suivantes qui
-viennent du STI (Système informatique central)~:
+Les  versions 1.0 et 1.5 de \diamant{} utilisent les fichiers
+suivantes~:
 
 \begin{enumerate}
     \item Étudiants.
     \item Instructeurs.
     \item Activités.
+    \item Locaux
 \end{enumerate}
 
-Le fichier de locaux est produit localement par l'utilisateur. Tous les fichiers
-ont un format très rigide. Le nombre de caractères et
-leur position est à respecter obligatoirement.
+Les trois premiers sont produits au STI (Système informatique
+central) et transferés via FTP.
+Le fichier de locaux est produit
+localement par l'utilisateur.
+
+Tous les fichiers ont un format très
+rigide. Le nombre de caractères et leur position est à respecter
+obligatoirement.
 
 Les indexes de chaînes de caractères commencent à \verb!0!.
 
@@ -63,21 +69,25 @@ d'identification unique de l'étudiant, son nom et le nombre de cours qu'il suit.
 Les détails de la ligne de type 2.
 
 \begin{itemize}
-      \item Le matricule de l'étudiant qui correspond aux huit premiers chiffres
+      \item Le matricule de l'étudiant qui correspond aux huit premiers caractères
       du numéro d'identification (Indices 0 à 7).
        Dans notre exemple, \verb!00900813! pour l'étudiant
        \verb!LUPIEN! et \verb!00901199! pour l'étudiante \verb!AUDET!.
-      \item Le programme auquel l'étudiant appartient correspond ensuite aux six chiffres suivants.
+      \item Le programme auquel l'étudiant appartient correspond ensuite aux
+      six caractères suivants.
       Soit \verb!203503! dans le cas du premier étudiant (Indices 8 à 13).
-     \item L'instance du programme que l'étudiant suit correspond aux deux chiffres suivants.
+     \item L'instance du programme que l'étudiant suit correspond aux deux
+      caractères suivants.
      Soit \verb!07! dans le cas du premier étudiant (Indices 14 à 15).
-      \item Des informations sur l'admission de l'étudiant sont données par les cinq chiffres suivants.
+      \item Des informations sur l'admission de l'étudiant sont données
+      par les cinq caractères suivants.
        Les quatre premiers correspondent à l'année d'admission tandis
        que le cinquième indique le trimestre d'admission.
         Soit \verb!20003! dans le cas du premier étudiant (Indices 16 à 20).
-    \item Suit ensuite neuf places pour indiquer le nom de famille
+    \item Suit ensuite neuf caractères pour indiquer le nom de famille
     de l'étudiant suivit d'un espace et de son prénom (coupé après neuf espaces) (Indices 21 à 29).
     Soit, dans notre exemple, \verb!LUPIEN MY! dans le cas de la première étudiante.
+    Dans certains cas le nom prend les neuf caractères.
     \item Vient alors un chiffre de deux caractères qui correspond en fait au nombre de cours que suit l'étudiant.
     \verb!05! dans le cas du premier étudiant (Indices 30 à 31).
 \end{itemize}
@@ -95,7 +105,7 @@ du cours (1=Leçon Magistrale et 2=autre). Le 2 derniers caractères
 au groupe d'activité dans lequel l'étudiant est assigné.
 \end{itemize}
 
-Un fichier va avoir le groupe d'activité pour certains étudiants.????
+Un fichier va avoir le groupe d'activité pour certains étudiants.
 
 \subsection{Définition  et utilisation des champs}
 
@@ -154,6 +164,20 @@ Chaque ligne représente une journée, en commençant par lundi, jusqu'à vendredi. 
 dans la journée (8h30, 9h30, 10h30, 11h30, 12h30, 13h30, 14h30, 15h30, 16h30, 17h30,  18h30, 19h00, 20h00 et 21h00).
  Les disponibilités sont ainsi connues entre 8h30 et 21h00.
 
+\subsection{Définition  et utilisation des champs}
+
+\pro{long int eMatricule} correspond aux indices 0 à 7 de la ligne de type deux.
+Il est mis dans \verb!_resourceKey!.
+
+\pro{String eNom} correspond aux indices 21 à 29 de la ligne de type deux.
+Il est mis dans \verb!_resourceID!.
+
+\pro{String eAuxField} correspond aux indices 8 à 20 de la ligne de type deux.
+Il est mis dans \verb!_auxField!.
+
+\pro{String eSelectedCourse} il peut avoir 1 à $n$ \pro{eSelectedCourse}, qui sont considères comme
+une liste de cours, ceci correspond aux cours dans la ligne de type trois.
+Il est mis dans \verb!_DXObject!.
 
 \section{Fichier d'activités}
 
