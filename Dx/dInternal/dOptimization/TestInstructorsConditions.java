@@ -18,6 +18,8 @@ import dInternal.dUtil.DXToolsMethods;
 
 import java.util.Vector;
 
+import dResources.DConst;
+
 public class TestInstructorsConditions  implements Condition{
 
   private DModel _dm;
@@ -45,7 +47,7 @@ public class TestInstructorsConditions  implements Condition{
     nbConf2= InstructorEventsConflicts(period,eventKey, confVal);
     number= nbConf1+nbConf2;
     if (nbConf1!=0)
-      confVal.addConflict("Disponibilite Enseignant",nbConf1,2,new Vector());
+      confVal.addConflict("Disponibilite Enseignant",nbConf1,DConst.R_INSTRUCTOR_NAME,new Vector());
 
     switch(operation){
       case 0:
@@ -110,7 +112,7 @@ public class TestInstructorsConditions  implements Condition{
       event2= (EventAttach)_dm.getSetOfEvents().getResource(event2ID).getAttach();
       if(!event1.getPrincipalRescKey().equalsIgnoreCase(event2.getPrincipalRescKey())){
         if((event1.getInstructorKey()==event2.getInstructorKey()) && (event1.getInstructorKey()!=-1)){
-          confV.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),1,2,new Vector());
+          confV.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),1, DConst.R_INSTRUCTOR_NAME, new Vector());
           nbConf++;
         }
       }

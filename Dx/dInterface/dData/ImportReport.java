@@ -116,5 +116,12 @@ public class ImportReport extends ViewReport implements ActionListener {
         data +=  jta.getText();
         new SaveAsDlg(_dApplic, data);
     }//end if (e.getActionCommand().equals(_buttonsNames[0]))
+
   }//end method
+  public void doSave(Vector rigth) {
+     _dApplic.getPreferences().setSelectedOptionsInFullReport(rigth);
+     _dApplic.getPreferences().save();
+     _rightVec = rigth;
+   }
+
 }

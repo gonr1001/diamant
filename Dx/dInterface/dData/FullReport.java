@@ -51,23 +51,34 @@ public class FullReport extends ViewReport implements ActionListener {
 //String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   public FullReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
-    String [] strArray ={DConst.BUT_OPTIONS};
     _allOptionsVec = buildAllOptionsVector();
-    Vector options = getOptions(_allOptionsVec);
+    _options = getOptions(_allOptionsVec);
     _rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
-    _elements = options.size() - _rightVec.size();
-    options = merge (options, _rightVec);
-    int car = 0;
-    if (_rightVec.size() == 0 )
-      _jTextArea.setText("Choisir options");
-    else {
-      car = indexElementIn ((String)_rightVec.get(0), _allOptionsVec);
-         int [] cdr = buildNext(_rightVec, _allOptionsVec);
-      _jTextArea.setText((_parentDlg.getStandardReportData()).getActivitiesReport(car, cdr));
-    }
+
+    showReport();
+
 
   }
 
+  private void showReport() {
+    _elements = _options.size() - _rightVec.size();
+    _options = buildExternalOptions(_options, _rightVec);
+    int firstField = 0;
+   if (_rightVec.size() == 0 )
+     _jTextArea.setText("Choisir options");
+   else {
+     firstField = indexElementIn ((String)_rightVec.get(0), _allOptionsVec);
+     int [] othersFields = buildOtherFields(_rightVec, _allOptionsVec);
+     _jTextArea.setText(
+         (_parentDlg.getStandardReportData()).getActivitiesReport(firstField, othersFields)
+         );
+     buildReport(_rightVec.toArray(),
+                 fieldsLengths(_rightVec,_allOptionsVec),
+                 null,
+                 (_parentDlg.getStandardReportData()).getActivitiesReport(firstField, othersFields));
+      _jTextArea.setCaretPosition(0);
+    }
+  }
 /*
   * The option must be sorted by alphabetical order in the field String (second param)
 
@@ -89,18 +100,18 @@ public class FullReport extends ViewReport implements ActionListener {
     v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_END_HOUR_L), DConst.R_ACTIVITY_END_HOUR));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_INSTRUCTOR_NAME_L), DConst.R_INSTRUCTOR_NAME));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME));
-
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_STUDENT_SIZE_L), DConst.R_STUDENT_SIZE_NAME));
     return v;
   }
 
   private Vector getOptions(Vector opt) {
-  Vector v = new Vector();
-  for (int i=0; i< opt.size(); i++)
-    v.add(((FieldRecord) opt.get(i))._str);
+    Vector v = new Vector();
+    for (int i=0; i< opt.size(); i++)
+      v.add(((FieldRecord) opt.get(i))._str);
 
-  return v;
+    return v;
   }
-
+/*
   public void setImportReport(JTextArea jta){
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport d'importation");
@@ -129,41 +140,49 @@ public class FullReport extends ViewReport implements ActionListener {
     //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
     jta.setCaretPosition(0);
   }
-
+*/
   public void actionPerformed(ActionEvent e){
-   String command = e.getActionCommand();
-   //if "Option" button
-   if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
-     new ReportOptionsDlg(_dApplic,
-                            _parentDlg,
-                            _rightVec,
-                            _elements);
-   //if "Close" button
-   if (e.getActionCommand().equals(DConst.BUT_CLOSE))
-      //System.out.println("_buttonsNames[2]");
-     dispose();
-   //if "Save as" button
-   if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
+    String command = e.getActionCommand();
+    //if "Option" button
+    if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
+      new ReportOptionsDlg(_dApplic,
+                           this,
+                           _options,
+                           _elements);
+    //_elements = _options.size() - _rightVec.size();
+    //_options = buildExternalOptions(_options, _rightVec);
+    showReport();
+    //if "Close" button
+    if (e.getActionCommand().equals(DConst.BUT_CLOSE))
+      //_dApplic.getPreferences().setSelectedOptionsInConflictReport(_rightVec);
+      // _dApplic.getPreferences().save();
+      dispose();
+    //if "Save as" button
+    if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
       //System.out.println("_buttonsNames[0]");
-       Date date = new Date();
-       SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
+      Date date = new Date();
+      SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
 
-       JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
-       String data = "***** " +
-                     DConst.REPORT +
-                     " " +
-                     DConst.TO_LEFT +
-                     DConst.REPORT_DLG_TAB3 +
-                     DConst.TO_RIGHT + " ";
-       data +=  DConst.REPORT_PRODUCED_AT +
-                " " +
-                sdf.format(date) +
-                " *****" +
-                DConst.CR_LF + DConst.CR_LF;
-       data +=  jta.getText();
-       new SaveAsDlg(_dApplic, data);
-   }//end if (e.getActionCommand().equals(_buttonsNames[0]))
+      JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
+      String data = "***** " +
+                    DConst.REPORT +
+                    " " +
+                    DConst.TO_LEFT +
+                    DConst.REPORT_DLG_TAB3 +
+                    DConst.TO_RIGHT + " ";
+      data +=  DConst.REPORT_PRODUCED_AT +
+               " " +
+               sdf.format(date) +
+               " *****" +
+               DConst.CR_LF + DConst.CR_LF;
+      data +=  jta.getText();
+      new SaveAsDlg(_dApplic, data);
+    }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
 
-
+  public void doSave(Vector rigth) {
+    _dApplic.getPreferences().setSelectedOptionsInFullReport(rigth);
+    _dApplic.getPreferences().save();
+    _rightVec = rigth;
+  }
 }

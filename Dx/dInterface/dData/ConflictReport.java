@@ -49,15 +49,70 @@ public class ConflictReport extends ViewReport implements ActionListener {
 //String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   public ConflictReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
-    String [] strArray ={DConst.BUT_OPTIONS};
-    //disableButtons(_buttonsPanel, strArray);
-    int [] a= {1,2,3,4,5,6,7,8,9};
-    _jTextArea.setText((_parentDlg.getStandardReportData()).getConflictsReport(0,a));
+    _allOptionsVec = buildAllOptionsVector();
+    _options = getOptions(_allOptionsVec);
+    _rightVec = _dApplic.getPreferences().getSelectedOptionsInConflictReport();
+
+    showReport();
+
+
   }
 
+  private void showReport() {
+    _elements = _options.size() - _rightVec.size();
+    _options = buildExternalOptions(_options, _rightVec);
+    int firstField = 0;
+   if (_rightVec.size() == 0 )
+     _jTextArea.setText("Choisir options");
+   else {
+     firstField = indexElementIn ((String)_rightVec.get(0), _allOptionsVec);
+     int [] othersFields = buildOtherFields(_rightVec, _allOptionsVec);
+     _jTextArea.setText(
+         (_parentDlg.getStandardReportData()).getConflictsReport(firstField, othersFields)
+         );
+     buildReport(_rightVec.toArray(),
+                 fieldsLengths(_rightVec,_allOptionsVec),
+                 null,
+                 (_parentDlg.getStandardReportData()).getConflictsReport(firstField, othersFields));
+      _jTextArea.setCaretPosition(0);
+    }
+  }
+/*
+  *_conflictsReport is a string where each line contains more informations separeted
+  * by a ";" separator
+  * token number 0= day number, 1= day name, 2= sequence Id, 3= period id, 4= period begin hour
+  * 5= first event in conflict, 6= event in conflict with the first,
+  * 7= number of conflicts, 8= type of conflicts
+  * 9= conflict description
+  * */
+  private Vector buildAllOptionsVector() {
+    Vector v = new Vector();
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_SEQUENCE_ID_L), DConst.R_SEQUENCE_ID));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN_H));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_EVENT1_ID_L), DConst.R_EVENT1_ID));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_EVENT2_ID_L), DConst.R_EVENT2_ID));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_NUMBER_OF_CONFLICTS_L), DConst.R_NUMBER_OF_CONFLICTS));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_TYPE_OF_CONFLICT_L), DConst.R_TYPE_OF_CONFLICT));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_ELEMENTS_IN_CONFLICT_L), DConst.R_ELEMENTS_IN_CONFLICT));
+      /*     "0", DConst.R_STUDENT_CONFLICT,
+           "1", DConst.R_ROOM_CONFLICT,
+           "2", DConst.R_INSTRUCTOR_CONFLICT
+          */
+    return v;
+  }
 
+  private Vector getOptions(Vector opt) {
+    Vector v = new Vector();
+    for (int i=0; i< opt.size(); i++)
+      v.add(((FieldRecord) opt.get(i))._str);
+
+    return v;
+  }
+/*
   public void setImportReport(JTextArea jta){
-    //_parentDlg.
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport d'importation");
     jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
@@ -85,35 +140,49 @@ public class ConflictReport extends ViewReport implements ActionListener {
     //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
     jta.setCaretPosition(0);
   }
+*/
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if "Option" button
     if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
-       ; // it is disabled
+      new ReportOptionsDlg(_dApplic,
+                           this,
+                           _options,
+                           _elements);
+    //_elements = _options.size() - _rightVec.size();
+    //_options = buildExternalOptions(_options, _rightVec);
+    showReport();
     //if "Close" button
     if (e.getActionCommand().equals(DConst.BUT_CLOSE))
-       //System.out.println("_buttonsNames[2]");
+      //_dApplic.getPreferences().setSelectedOptionsInConflictReport(_rightVec);
+      // _dApplic.getPreferences().save();
       dispose();
     //if "Save as" button
     if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
-       //System.out.println("_buttonsNames[0]");
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
+      //System.out.println("_buttonsNames[0]");
+      Date date = new Date();
+      SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
 
-        JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
-        String data = "***** " +
-                      DConst.REPORT +
-                      " " +
-                      DConst.TO_LEFT +
-                      DConst.REPORT_DLG_TAB3 +
-                      DConst.TO_RIGHT + " ";
-        data +=  DConst.REPORT_PRODUCED_AT +
-                 " " +
-                 sdf.format(date) +
-                 " *****" +
-                 DConst.CR_LF + DConst.CR_LF;
-        data +=  jta.getText();
-        new SaveAsDlg(_dApplic, data);
+      JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
+      String data = "***** " +
+                    DConst.REPORT +
+                    " " +
+                    DConst.TO_LEFT +
+                    DConst.REPORT_DLG_TAB3 +
+                    DConst.TO_RIGHT + " ";
+      data +=  DConst.REPORT_PRODUCED_AT +
+               " " +
+               sdf.format(date) +
+               " *****" +
+               DConst.CR_LF + DConst.CR_LF;
+      data +=  jta.getText();
+      new SaveAsDlg(_dApplic, data);
     }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
+
+  public void doSave(Vector rigth) {
+    _dApplic.getPreferences().setSelectedOptionsInConflictReport(rigth);
+    _dApplic.getPreferences().save();
+    _rightVec = rigth;
+  }
 }

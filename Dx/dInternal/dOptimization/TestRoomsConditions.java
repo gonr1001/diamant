@@ -50,9 +50,9 @@ public class TestRoomsConditions implements Condition{
     nbConf3= roomEventsConflicts(period,eventKey, confVal);
     number= nbConf1+nbConf2+nbConf3;
     if (nbConf1!=0)
-      confVal.addConflict("Disponibilite Local",nbConf1,1,new Vector());
+      confVal.addConflict("Disponibilite Local",nbConf1,DConst.R_ROOM_NAME,new Vector());
     if (nbConf2!=0)
-      confVal.addConflict("Capacité Local",nbConf2,1,new Vector());
+      confVal.addConflict("Capacité Local",nbConf2,DConst.R_ROOM_NAME,new Vector());
 
     switch(operation){
       case 0:
@@ -140,7 +140,7 @@ public class TestRoomsConditions implements Condition{
       event2= (EventAttach)_dm.getSetOfEvents().getResource(event2ID).getAttach();
       if(!event1.getPrincipalRescKey().equalsIgnoreCase(event2.getPrincipalRescKey())){
         if((event1.getRoomKey()==event2.getRoomKey()) && (event1.getRoomKey()!=-1)){
-          confV.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),1,1,new Vector());
+          confV.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),1,DConst.R_ROOM_NAME,new Vector());
           nbConf++;
         }
       }

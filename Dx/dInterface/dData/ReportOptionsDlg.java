@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.23 $  $Date: 2003-11-25 15:53:25 $
+ * Title: ReportOptionsDlg $Revision: 1.24 $  $Date: 2003-12-02 16:41:33 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,7 +17,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -50,9 +50,10 @@ import dResources.DConst;
 
 
 
-public class ReportOptionsDlg  extends JDialog implements ActionListener {
-  private JDialog _parentDlg;
+public class ReportOptionsDlg extends JDialog implements ActionListener {
+  private ViewReport _parentDlg;
   private JList _rightList, _leftList;
+  private Vector _rightVec, _leftVec;
   private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
   private String [] _buttonsNames = {DConst.BUT_OK,
     DConst.BUT_CANCEL};
@@ -60,7 +61,7 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
     DConst.TO_LEFT,
     DConst.TO_UP,
     DConst.TO_DOWN};
-  private Vector _rightVec, _leftVec;
+
   /**
    * Constructor
    * @param dApplic to link with the Parent JFrame
@@ -70,7 +71,7 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
    * @param elements is the number of elements in the first half
    */
   public ReportOptionsDlg(DApplication dApplic,
-                          JDialog parentDlg,
+                          ViewReport parentDlg,
                           Vector options,
                           int elements){
     super(dApplic.getJFrame(), DConst.REPORT_OPTIONS_DLG_TITLE, true);
@@ -192,13 +193,7 @@ public class ReportOptionsDlg  extends JDialog implements ActionListener {
       dispose();
     //if button OK
     if (command.equals(_buttonsNames[0])){
-          /*_parentDlg.setReport(buildChoicedResources(_resources, _rightVec));
-
-          if ( _parentDlg.getTabbedPane().getSelectedIndex() == 0)
-            _dApplic.getPreferences().setSelectedOptionsInFullReport(_rightVec);
-          else
-            _dApplic.getPreferences().setSelectedOptionsInConflictReport(_rightVec);
-          _dApplic.getPreferences().save();*/
+      _parentDlg.doSave(_rightVec);
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){

@@ -187,7 +187,7 @@ public class SetOfEvents extends SetOfResources{
     return res;
   }
 
-private Vector studentsInSection(Vector students, String activityAndType, String section){
+public Vector studentsInSection(Vector students, String activityAndType, String section){
   Vector res = new Vector();
   for(int i = 0; i <students.size(); i++) {
     StudentAttach sa = (StudentAttach)_dm.getSetOfStudents().getResource(Long.parseLong((String)students.get(i))).getAttach();

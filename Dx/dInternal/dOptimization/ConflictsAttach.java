@@ -42,16 +42,16 @@ public class ConflictsAttach extends DXObject{
    *add a conflict in setofconflicts
    * @param eventName name of event in conflict eg' ADM111.1.A.1
    * @param numberOfConflicts the number of conflicts with the event
-   * @param typeOfConflict the type of conflict with the event 0= student conflict,
-   * 1 = room available 2 = blocs room conflict, 3 = capacity  rooms conflicts,
-   * 4 = blocs instructor conflict, 5 = availability instructor conflict
+   * @param typeOfConflict the type of conflict with the event "student" conflict,
+   * "room" conflicts,
+   * "instructor" conflict
    * @param setOfInformations all additionnal information (exp. list of
    * students in conflicts, name of instructor in conflict, etc)
    */
-  public void addConflict(String eventName, int numberOfConflicts,int typeOfConflict, Vector setOfInformations){
+  public void addConflict(String eventName, int numberOfConflicts,String typeOfConflict, Vector setOfInformations){
     DXValue confValue= new DXValue();
     confValue.setIntValue(numberOfConflicts);
-    confValue.setStringValue(Integer.toString(typeOfConflict));
+    confValue.setStringValue(typeOfConflict);
     confValue.setObjectValue(setOfInformations);
     _setOfConflicts.addResource(new Resource(eventName,confValue),0);
   }

@@ -45,7 +45,7 @@ public class TestStudentsConditions implements Condition {
           nbConf= _matrix.getNumberOfCOnflicts(key1, key2);
           number+= nbConf;
           if (nbConf!=0)
-            confVal.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),nbConf,0,new Vector());
+            confVal.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),nbConf,DConst.R_STUDENT_NAME,new Vector());
         }// end if(!key1.equalsIgnoreCase(key2))
       }// end for (int i=0; i< period.getEventsInPeriod().size(); i++)
 

@@ -34,7 +34,7 @@ public class StandardReportData {
   * token number 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
   * 5= day number where activity is assign, 6= day name where activity is assign
   * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
-  * 10= room name
+  * 10= room name, 11=size of Students in an event
   */
   private String _activitiesReport="";
    /*
@@ -97,9 +97,12 @@ public class StandardReportData {
             for(int l=0; l< section.getSetOfUnities().size(); l++){
               Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(l).getAttach();
               if(bloc.isAssign()){
+                String activityName =_dm.getSetOfActivities().getResourceAt(i).getID();
                 actlist+= _dm.getSetOfActivities().getResourceAt(i).getID()+";";// write activity name
+                String activityType = activity.getSetOfTypes().getResourceAt(j).getID();
                 actlist+= activity.getSetOfTypes().getResourceAt(j).getID()+";";// write nature and 2 space
                 actlist+= nature.getSetOfSections().getResourceAt(k).getID()+";";//soa.CR_LF;//
+                String activitySection = nature.getSetOfSections().getResourceAt(k).getID();
                 actlist+= section.getSetOfUnities().getResourceAt(l).getID()+";";
                 Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
                     ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
@@ -127,7 +130,9 @@ public class StandardReportData {
                 actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
                           minute.substring(minute.length()-2,minute.length())+";";
                 actlist+= currentCycAss.getInstructorName()+";";
-                actlist+= currentCycAss.getRoomName()+";"+SetOfActivities.CR_LF;
+                actlist+= currentCycAss.getRoomName()+";";
+                Vector v = activity.getStudentRegistered();
+                actlist+= _dm.getSetOfEvents().studentsInSection(v,activityName+activityType, activitySection).size()+";"+SetOfActivities.CR_LF;
               }// end if(bloc.isAssign())
             }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
           }// end for (int k=0; k< nature.getSetOfSections().size(); k++)
@@ -228,7 +233,7 @@ public class StandardReportData {
               Resource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
               DXValue confValue= (DXValue)confAttach.getAttach();
               String str = "yyyyyyy";
-              if (confValue.getStringValue().equalsIgnoreCase("0")){
+              if (confValue.getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
                 str = _dm.getSetOfEvents().getStudentConflictDescriptions(
                   _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities()),
                   _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));

@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.74 $  $Date: 2003-11-28 22:06:12 $
+ * Title: DStringFrRes $Revision: 1.75 $  $Date: 2003-12-02 16:41:33 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.74 $
+ * @version $Revision: 1.75 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -285,10 +285,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"RDayName","Jour"},
     {"RActivityBeginHour","Début"},
     {"RActivityEndHour","Fin"},
-    {"RInstructorName","Instructor"},
+    {"RInstructorName","Enseignant"},
     {"RRoomName","Local"},
+    {"RStudentName","Étudiant"},
+    {"RStudentSizeName","Nb Etu"},
     {"RSequenceID","Séquence"},
-    {"RUnityBeginH", "Unité(H. début)"},
+    {"RPeriodBeginH", "Périod(H. début)"},
     {"REvent1_ID","Événement 1"},
     {"REvent2_ID","Événement 2"},
     {"RNumberOfConflicts","Conf.(No.)"},
@@ -296,6 +298,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"RStudentConflict","C-Étudiant"},
     {"RRoomConflict","C. C-Local"},
     {"RInstructorConflict","C-Instructor"},
+    {"RElementsInConflict", "Conflits"},
     {"",""},
     {"",""},
     {"",""},

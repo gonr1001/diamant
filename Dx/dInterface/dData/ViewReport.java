@@ -47,7 +47,7 @@ import dInternal.dUtil.DXValue;
 import dResources.DConst;
 
 
-public class ViewReport  extends JPanel implements ActionListener {
+public abstract class ViewReport  extends JPanel implements ActionListener {
 
   ReportsDlg _parentDlg;
   JScrollPane _scrollPane;
@@ -55,19 +55,19 @@ public class ViewReport  extends JPanel implements ActionListener {
   JTextArea _jTextArea;
   JPanel _buttonsPanel;
   Vector _allOptionsVec;
-  Vector _rightVec ;
+  Vector _rightVec;
+  Vector _options;
   int _elements;
 
   protected class FieldRecord {
-   int _n;
-   String _str;
-   FieldRecord(int n, String str){
-     _n = n; _str = str;
-   }
+    int _n;  //size of String used to format
+    String _str; // the name of the column
+    FieldRecord(int n, String str){
+      _n = n; _str = str;
+    }
   }
 
   public ViewReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
-    //super(new BorderLayout());
     _parentDlg = parentDlg;
     _dApplic = dApplic;
     _allOptionsVec = new Vector();
@@ -94,17 +94,18 @@ public class ViewReport  extends JPanel implements ActionListener {
         str = strArray[i];
         for(int j = 0 ; j < buttons.getComponentCount(); j++) {
           if (((JButton)buttons.getComponent(j)).getActionCommand().equals(str))
-             ((JButton)buttons.getComponent(j)).setEnabled(false);
+            ((JButton)buttons.getComponent(j)).setEnabled(false);
         }
       }
-   }
+    }
   }
 
-  public void dispose() {
+  protected void dispose() {
+    //dispose();
     _parentDlg.dispose();
   }
 
-  protected Vector merge(Vector opt, Vector  right) {
+  protected Vector buildExternalOptions(Vector opt, Vector  right) {
     Vector res =  new Vector();
     for (int i = 0; i < right.size(); i++){
       opt.remove(right.get(i));
@@ -114,7 +115,7 @@ public class ViewReport  extends JPanel implements ActionListener {
       res.add(opt.get(i));
     }
 
-    DXTools.sortVector(res);
+    res = DXTools.sortVector(res);
 
     for (int i = 0; i < right.size(); i++){
       res.add(right.get(i));
@@ -127,17 +128,88 @@ public class ViewReport  extends JPanel implements ActionListener {
 
     for(int i = 0; i < v.size(); i++) {
       if ( ((FieldRecord)v.get(i))._str.compareTo(str)==0)
-        return i + 1;
+        return i;
     }
     return index;
   }
-  protected int [] buildNext(Vector v, Vector allOpt) {
-    int [] a =  new int [v.size()];
+
+  protected int [] buildOtherFields(Vector v, Vector allOpt) {
+    int [] a =  new int [v.size()-1];
 
     for (int i = 1; i < v.size(); i++)
-      a [i] = indexElementIn((String)v.get(i),allOpt);
+      a [i-1] = indexElementIn((String)v.get(i),allOpt);
     return a;
   }
-  public void actionPerformed(ActionEvent e){ }
-}
 
+  public abstract void doSave(Vector rigth);
+  public abstract void actionPerformed(ActionEvent e);
+
+  public int [] fieldsLengths(Vector right,  Vector allOpt){
+    int [] a = new int [right.size()];
+    for(int i= 0; i< right.size(); i++)
+      a [i] = ((FieldRecord)allOpt.get(indexElementIn((String)right.get(i),allOpt)))._n;
+    return a;
+  }
+
+  /**
+ * Builds a report with the format defined by the parameters
+ * @param fieldsNames The first line of the report
+ * @param fieldsLengths The spaces allowed for the fields
+ * @param reportData The data report
+ */
+public void buildReport(Object[] fieldsNames, int[] fieldsLengths, String[][][] subFields, String reportData){
+  StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
+  StringTokenizer strFields;
+  String fields;
+  String currentField;
+  String resultLine = "";
+  String blanks = "                                                                          ";
+  String underLine = "";
+  int strLinesLength, strFieldsLength;
+  //JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
+  //JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
+  _jTextArea.setFont(DConst.JLISTS_FONT);
+  _jTextArea.setText("");
+  for (int k = 0; k < fieldsNames.length; k++){
+    currentField = (String)fieldsNames[k] + blanks;
+    currentField = currentField.substring(0, fieldsLengths[k]);
+    currentField = currentField + "|  ";
+    resultLine = resultLine + currentField;
+  }
+  for (int k = 0; k < resultLine.length()-2; k++)
+    underLine = underLine + "-";
+  resultLine = resultLine + DConst.CR_LF;
+  underLine = underLine + DConst.CR_LF;
+  _jTextArea.setText(resultLine);
+  _jTextArea.append(underLine);
+  strLinesLength = strLines.countTokens();
+  for(int i = 0; i < strLinesLength; i++){
+    fields = strLines.nextToken();
+    strFields = new StringTokenizer(fields, ";");
+    strFieldsLength = strFields.countTokens();
+    resultLine = "";
+    for(int j = 0; j < strFieldsLength; j++){
+      currentField = strFields.nextToken();
+      if(subFields !=null) {
+      if(subFields[j] != null){
+        //System.out.println("subFields.length " + subFields.length);
+        //System.out.println("subFields.length "+subFields[j].length);
+        for(int k = 0; k < subFields[j].length; k++){
+          if (currentField.equals(subFields[j][k][0])){
+            currentField = subFields[j][k][1];
+            break;
+          }//end internal if
+        }//end internal for
+      }//end external if
+      }
+      currentField = currentField + blanks;
+      currentField = currentField.substring(0, fieldsLengths[j]);
+      currentField = currentField + "|  ";
+      resultLine = resultLine + currentField;
+    }//end internal for
+    resultLine = resultLine + DConst.CR_LF;
+    _jTextArea.append(resultLine);
+  }//end external for
+  _jTextArea.setCaretPosition(0);
+  }
+}
