@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.14 $  $Date: 2003-06-17 16:11:23 $
+ * Title: ToolBar $Revision: 1.15 $  $Date: 2003-06-18 11:52:21 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -44,6 +44,7 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dData.Resource;
 import dInternal.dUtil.DXToolsMethods;
 
+import dAux.ConfirmDlg;
 import dInterface.DApplication;
 import dInterface.dTimeTable.PeriodPanel;
 
@@ -323,9 +324,11 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   public void selectBar(int choice){
     switch (choice){
          case 0: addBarOne();
+           //setToolBarOne();
            toolBarSelector.setSelectedIndex(0);
            break;
          case 1: addBarTwo();
+           //setToolBarTwo();
            toolBarSelector.setSelectedIndex(1);
            break;
         }// end switch
@@ -360,6 +363,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   *
    */
   public void setToolBarTwo(){
+    _comboBoxStatus=false;
     JPanel ttPanel= (JPanel)_dApplic.getDMediator().getCurrentDoc().getTTPanel(
         ).getViewport().getComponent(0);
     //int nbOfPeriods= ttPanel.getComponentCount();
@@ -373,6 +377,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     for (int i=0; i< _tts._priorityTable.length; i++)
       periodTypeSelector.addItem(_tts._priorityTable[i]);
     //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug
+    _comboBoxStatus=true;
   }
 
   /**
@@ -431,10 +436,12 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   private void selectAddRemoveDays(int nbDays){
     int signe= nbDays-_tts.getCurrentCycle().getNumberOfDays();
     if (signe>0){
-      _tts.getCurrentCycle().addDays(signe);
+      if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous ajouter "+ signe + " jour(s)")== ConfirmDlg.OK_OPTION)
+        _tts.getCurrentCycle().addDays(signe);
     }else{// else  if (signe>0)
       if(signe<0){
-        _tts.getCurrentCycle().removeDays(-signe);
+        if (ConfirmDlg.showMessage(_dApplic,"Voulez-vous supprimer "+ (-signe) + " jour(s)")== ConfirmDlg.OK_OPTION)
+          _tts.getCurrentCycle().removeDays(-signe);
       }// end if(signe<0)
 
     }// end else  if (signe>0)

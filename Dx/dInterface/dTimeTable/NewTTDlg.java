@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.9 $  $Date: 2003-06-17 16:11:23 $
+ * Title: NewTTDlg $Revision: 1.10 $  $Date: 2003-06-18 11:52:21 $
  * Description: NewTTDlg is created by NewTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -94,12 +94,13 @@ public class NewTTDlg extends JDialog {
        //load grille,
        TTStructure ttStruct = new TTStructure();
        String error = ttStruct.loadTTStructure(fil);
-       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
-
        if(error.length()!=0){
          new FatalProblemDlg(dApplic.getJFrame(),error);
               System.exit(1);
        }
+
+       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
+       dApplic.getToolBar().setToolBars(ttStruct);
        dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
 

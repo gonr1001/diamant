@@ -149,9 +149,11 @@ public class Cycle extends DXObject{
       for (int i=0; i<_setOfDays.size(); i++){
         Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM);
         Element day= ((Day)_setOfDays.getResourceAt(i).getAttach()).writeXMLtag(doc);
-        Element dayID= xmlElt.createElement(doc,_TAGITEM1,_setOfDays.getResourceAt(i).getID());
+        Element dayID= xmlElt.createElement(doc,_TAGITEM4,_setOfDays.getResourceAt(i).getID());
+        Element dayKey= xmlElt.createElement(doc,_TAGITEM1,Integer.toString((int)_setOfDays.getResourceAt(i).getKey()));
         eltDay= xmlElt.appendChildInElement(eltDay, day);
         eltDay= xmlElt.appendChildInElement(eltDay, dayID);
+        eltDay= xmlElt.appendChildInElement(eltDay, dayKey);
         eltDays= xmlElt.appendChildInElement(eltDays, eltDay);
       }
       return eltDays;

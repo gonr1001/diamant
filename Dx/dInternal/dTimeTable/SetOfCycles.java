@@ -71,8 +71,10 @@ public class SetOfCycles {
         Element eltCycle= xmlElt.createElement(doc,_TAGITEM);
         Element cycle= ((Cycle)_setOfCycles.getResourceAt(i).getAttach()).writeXMLtag(doc);
         Element cycleID= xmlElt.createElement(doc,_TAGITEM1,_setOfCycles.getResourceAt(i).getID());
+        Element cyclePLength= xmlElt.createElement(doc,_TAGITEM2,Integer.toString(_periodLenght));
         eltCycle= xmlElt.appendChildInElement(eltCycle, cycle);
         eltCycle= xmlElt.appendChildInElement(eltCycle, cycleID);
+        eltCycle= xmlElt.appendChildInElement(eltCycle, cyclePLength);
         eltCycles= xmlElt.appendChildInElement(eltCycles, eltCycle);
       }
       return eltCycles;
