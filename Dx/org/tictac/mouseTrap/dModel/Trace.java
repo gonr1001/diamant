@@ -9,9 +9,7 @@ package org.tictac.mouseTrap.dModel;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.Vector;
 
 /**
  * @author garr2701
@@ -23,66 +21,142 @@ public class Trace {
 	
 	public String write(Object obj, Object info){
 		String method=methodData();
-		String str="";
-		str+="<instruction>\n<Id>"+obj.hashCode()+"</Id>\n";
-		str+="<class>"+obj.getClass().getName()+"</class>\n";
-		str+="<method>"+method+"</method>\n"; 
-		str+="<params>\n"+"<simple>\n<type>"+info.getClass().getName()+"</type>\n";
-		str+="<value>"+info.toString()+"</value>\n</simple>\n";
-		str+="</params>\n</instruction>\n";
+		String str="<i>\n";
+		str+=formatIdClassMethod(obj.hashCode(), obj.getClass().getName(),method);
+		str+="<p>";
+		str+="<o>";
+		str+="<t>"+info.getClass().getName()+"</t>";
+		str+="<v>"+info.toString()+"</v>";
+		str+="</o>";
+		str+="</p></i>\n";
 		return str;
 	}
-//	public String write(Object obj, String method, Object info){
-//		String str="";
-//		str+="<instruction>\n<Id>"+obj.hashCode()+"</Id>\n";
-//		str+="<class>"+obj.getClass().getName()+"</class>\n";
-//		str+="<method>"+method+"</method>\n"; 
-//		str+="<params>\n"+"<simple>\n<type>String</type>\n<value>"+info+"</value>\n</simple>\n";
-//		str+="</params>\n</instruction>\n";
-//		return str;
-//	}
-	public String write(Object obj, int info){
+	
+	public String write(Object obj, Vector info){
 		String method=methodData();
-		String str="";
-		str+="<instruction>\n<Id>"+obj.hashCode()+"</Id>\n";
-		str+="<class>"+obj.getClass().getName()+"</class>\n";
-		str+="<method>"+method+"</method>\n"; 
-		str+="<params>\n"+"<simple>\n<type>String</type>\n<value>"+info+"</value>\n</simple>\n";
-		str+="</params>\n</instruction>\n";
+		String str="<i>\n";
+		str+=formatIdClassMethod(obj.hashCode(), obj.getClass().getName(),method);
+		str+="<p>";
+		for (int i=0; i<info.size();i++){
+			str+="<s>";
+			str+="<t>"+info.get(i).getClass().getName()+"</t>";
+			str+="<v>"+info.get(i).toString()+"</v>";
+			str+="</s>";
+		}
+		str+="</p></i>\n";
 		return str;
 	}
+	
 	public String write(Object obj, boolean info){
-		String method=methodData();
 		String str="";
-		str+="<instruction>\n<Id>"+obj.hashCode()+"</Id>\n";
-		str+="<class>"+obj.getClass().getName()+"</class>\n";
-		str+="<method>"+method+"</method>\n"; 
-		str+="<params>\n"+"<simple>\n";
-		str+="<type>boolean</type>\n<value>"+info+"</value>\n</simple>\n";
-		str+="</params>\n</instruction>\n";
+		str=writePrimitiveData(obj,Boolean.class.getName(), Boolean.toString(info));
 		return str;
 	}
-	/*public String write(Object obj, String method){
+	public String write(Object obj, Boolean info){
 		String str="";
-		str+="<instruction>\n<Id>"+obj.hashCode()+"</Id>\n";
-		str+="<class>"+obj.getClass().getName()+"</class>\n";
-		str+="<method>"+method+"</method>\n"; 
-		str+="<params>\n<simple>\n<type></type>\n<value></value>\n</simple>\n";
-		str+="</params>\n</instruction>\n";
+		str=writePrimitiveData(obj,Boolean.class.getName(), info.toString());
 		return str;
-	}*/
+	}
+	public String write(Object obj, byte info){
+		String str="";
+		str=writePrimitiveData(obj,Byte.class.getName(), Byte.toString(info));
+		return str;
+	}
+	public String write(Object obj, Byte info){
+		String str="";
+		str=writePrimitiveData(obj,Byte.class.getName(), info.toString());
+		return str;
+	}
+	public String write(Object obj, short info){
+		String str="";
+		str=writePrimitiveData(obj,Short.class.getName(), Short.toString(info));
+		return str;
+	}
+	public String write(Object obj, Short info){
+		String str="";
+		str=writePrimitiveData(obj,Short.class.getName(), info.toString());
+		return str;
+	}
+	public String write(Object obj, int info){
+		String str="";
+		str=writePrimitiveData(obj,Integer.class.getName(), Integer.toString(info));
+		return str;
+	}
+	public String write(Object obj, Integer info){
+		String str="";
+		str=writePrimitiveData(obj,Integer.class.getName(), info.toString());
+		return str;
+	}
+	
+	public String write(Object obj, long info){
+		String str="";
+		str=writePrimitiveData(obj,Long.class.getName(), Long.toString(info));
+		return str;
+	}
+	
+	public String write(Object obj, Long info){
+		String str="";
+		str=writePrimitiveData(obj,Long.class.getName(), info.toString());
+		return str;
+	}
+	public String write(Object obj, float info){
+		String str="";
+		str=writePrimitiveData(obj,Float.class.getName(), Float.toString(info));
+		return str;
+	}
+	public String write(Object obj, Float info){
+		String str="";
+		str=writePrimitiveData(obj,Float.class.getName(), info.toString());
+		return str;
+	}
+	public String write(Object obj, double info){
+		String str="";
+		str=writePrimitiveData(obj,Double.class.getName(), Double.toString(info));
+		return str;
+	}
+	public String write(Object obj, Double info){
+		String str="";
+		str=writePrimitiveData(obj,Double.class.getName(), info.toString());
+		return str;
+	}
+	public String write(Object obj, char info){
+		String str="";
+		str=writePrimitiveData(obj,Character.class.getName(), Character.toString(info));
+		return str;
+	}
+	public String writePrimitiveData(Object obj,String type, String info){
+		String method=methodData();
+		String str="<i>\n";
+		str+=formatIdClassMethod(obj.hashCode(), obj.getClass().getName(),method);
+		str+="<p>"+"<s><t>"+type+"</t>";
+		str+="<v>"+info+"</v></s>";
+		str+="</p></i>\n";
+		return str;
+	}
+	public String write(Object obj, String info){
+		String method=methodData();
+		String str="<i>\n";
+		str+=formatIdClassMethod(obj.hashCode(), obj.getClass().getName(),method);
+		str+="<p>"+"<s><t>String</t><v>"+info+"</v></s>";
+		str+="</p></i>\n";
+		return str;
+	}
 	
 	public String write(Object obj){
 		String method=methodData();
-		String str="";
-		str+="<instruction>\n<Id>"+obj.hashCode()+"</Id>\n";
-		str+="<class>"+obj.getClass().getName()+"</class>\n";
-		str+="<method>"+method+"</method>\n"; 
-		str+="<params>\n<simple>\n<type></type>\n<value></value>\n</simple>\n";
-		str+="</params>\n</instruction>\n";
+		String str="<i>\n";
+		str+=formatIdClassMethod(obj.hashCode(), obj.getClass().getName(),method);
+		str+="<p></p></i>";
 		return str;
 	}
 	
+	public String formatIdClassMethod(int id, String sclass, String smethod ){
+		String str="";
+		str+="<I>"+id+"</I>";
+		str+="<c>"+sclass+"</c>";
+		str+="<m>"+smethod+"</m>"; 
+		return str;
+	}
 	
 	public String methodData(){
 		String 	methodName="";
@@ -96,6 +170,9 @@ public class Trace {
 			String classMethodName=getClassAndMethod(callStack);
 			methodName=getMethodName(classMethodName);
 			className=getClassName(classMethodName);
+			if (methodName.compareTo("<init>")==0){
+				methodName=getMethodName(className);
+			}
 			System.out.println("Trace.methodData ---> Class that called :"+
 										  className+" in the Method :"+methodName);								  
 	    }catch (Exception e) {
@@ -104,6 +181,8 @@ public class Trace {
 	    return methodName;
   	}
 
+	
+	
 	public String getClassAndMethod(String callStack){
 		String name="";
 			//Format in callStack
@@ -152,6 +231,4 @@ public class Trace {
 		}
 		return name;
 	}
-			
-		
 }
