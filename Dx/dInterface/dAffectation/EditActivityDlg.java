@@ -128,10 +128,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     //boolean _change = false, _restore = false;
     //System.out.println("Command: "+command);//debug
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
-      boolean apply=false;
+      /*boolean apply=false;
       for(int i=0; i< this._unities.size(); i++){
         _currentActivityIndex=i;
-        apply= applyChanges();
+        apply = applyChanges();
         if(!apply){
           new FatalProblemDlg(this,"Valeur eronnée");
           break;
@@ -143,7 +143,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
         _evDlgInt.initializePanel();
       dispose();
       }
-
+      */
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
       if( applyChanges()){
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
