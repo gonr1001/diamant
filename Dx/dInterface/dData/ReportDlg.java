@@ -341,7 +341,10 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     String command = e.getActionCommand();
     //if "Option" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
-        new ReportOptionsDlg(_dApplic, _jd, _resources[_tabbedPane.getSelectedIndex()], _tabbedPane.getSelectedIndex());
+        new ReportOptionsDlg(_dApplic,
+                             _jd,
+                             _resources[_tabbedPane.getSelectedIndex()],
+                             _tabbedPane.getSelectedIndex());
     //if "Close" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
       dispose();

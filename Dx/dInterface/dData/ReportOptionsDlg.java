@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
+import dInternal.Preferences;
 
 
 import dInterface.DApplication;
@@ -47,11 +48,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
-    _externalResources = res;
     _parentDlg = (ReportDlg) parentDlg;
     setSetOfResources(reportType);
     _leftVec = getChoicedFields(_resources, false);
-    _rightVec = getChoicedFields(_externalResources, true);
+    _rightVec = _dApplic.getPreferences().getSelectedOptions();
+    //_rightVec = getChoicedFields(_externalResources, true);
     reportOptionsDlgInit();
     setLocationRelativeTo(dApplic.getJFrame());
     setResizable(false);
@@ -163,11 +164,16 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     Resource externalR, internalR;
     if (_externalResources == null)
       return;
-    for(int j = 0; j < _externalResources.size(); j++){
-      externalR = _externalResources.getResourceAt(j);
-      internalR = _resources.getResource(externalR.getID());
+    for(int j = 0; j < _rightVec.size(); j++){
+      internalR = _resources.getResource((String)_rightVec.elementAt(j));
       ((DXValue)internalR.getAttach()).setBooleanValue(true);
     }//end for(int j = 0; j < _externalResources.size(); j++)
+/*    for(int j = 0; j < _externalResources.size(); j++){
+
+  externalR = _externalResources.getResourceAt(j);
+  internalR = _resources.getResource(externalR.getID());
+  ((DXValue)internalR.getAttach()).setBooleanValue(true);
+    }//end for(int j = 0; j < _externalResources.size(); j++)*/
   }//end method
 
 
@@ -183,6 +189,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     //if button OK
     if (command.equals(_buttonsNames[0])){
       _parentDlg.setReport(buildChoicedResources(_resources, _rightVec));
+      _dApplic.getPreferences().setSelectedOptions(_rightVec);
+      _dApplic.getPreferences().save();
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
@@ -207,6 +215,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         v = transposeInSet(false, s, selectedValue).getNamesVector(0);
       _rightVec = new Vector(v);
       _rightList.setListData(_rightVec);
+      //rgr _dApplic.getPreferences().setSelectedOptions(_rightVec);
+      //rgr _dApplic.getPreferences().save();
       _rightList.setSelectedValue(selectedValue, true);
       }//end if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3]))
   }//end method

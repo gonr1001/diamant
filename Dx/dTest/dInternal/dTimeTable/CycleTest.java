@@ -47,7 +47,7 @@ public class CycleTest extends TestCase {
      Cycle cycle= new Cycle();
      cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
      cycle.addDays(3);
-     assertEquals("test_addDays : assertEquals 1 (day 1):", cycle.getSetOfDays().getResourceAt(0).getID(), "Ma");
+     assertEquals("test_addDays : assertEquals 1 (day 1):", cycle.getSetOfDays().getResourceAt(0).getID(), "Max");
      assertEquals("test_addDays : assertEquals 2 (day 2):", cycle.getSetOfDays().getResourceAt(1).getID(), "Me");
      assertEquals("test_addDays : assertEquals 3 (size setofdays):", cycle.getSetOfDays().size(), 4);
    }

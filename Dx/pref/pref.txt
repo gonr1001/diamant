@@ -3,5 +3,6 @@ French
 .\pref\StandardTTC.xml
 .\pref\StandardTTE.xml
 .\pref\pref.txt
-й…и»ај«злЋпѕ‘фўщ-'() к
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
+й…и»ај«злЋпѕ‘фўщ-'() к
+selectedOptionsInFullReport;Nom;Section;Type;Durйe;Dйbut;Instructor;Jour(Nu.);
