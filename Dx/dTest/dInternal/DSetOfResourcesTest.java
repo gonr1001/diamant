@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2005-02-04 22:21:57 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2005-02-08 14:46:05 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -58,8 +58,8 @@ public class DSetOfResourcesTest extends TestCase{
 		resource1 = new DResource("1", new DValue(1,"One"));
 		resource2 = new DResource("2", new DValue(2,"two"));
 		resource3 = new DResource("3", new DValue(3,"three"));
-		resource4 = new DResource("4", new DValue(3,"four"));
-		resource10 = new DResource("2", new DValue(2,"ten"));
+		resource4 = new DResource("4", new DValue(4,"four"));
+		resource10 = new DResource("2", new DValue(10,"ten"));
 		resource11 = new DResource("11", new DValue());
 		resource12 = new DResource("12", new DValue());
 		// insertType=0 (insert by using key); insertType=1 (insert by using ID)
@@ -139,7 +139,7 @@ public class DSetOfResourcesTest extends TestCase{
 	public void testAgetIndexOfResource(){
 		assertTrue(_sos.getIndexOfResource("1")==0);
 	}
-	public void testA1setResource(){//lgd:???????
+	public void testA1setResource(){//lgd:quel resource???????
 		assertTrue(_sos.setResource(resource1)); 
 	}
 	public void testA2setResource(){//lgd:???????
@@ -152,18 +152,19 @@ public class DSetOfResourcesTest extends TestCase{
 		_sos.sortSetOfResourcesByID();
 		assertTrue(_sos.getResourceAt(2).getID().compareTo("3")==0);
 	}
-	/*
+	
 	public void testAsortSetOfResourcesByKey(){
 		_sos.addResource(resource4,insertType);
 		_sos.addResource(resource3,insertType);
 		_sos.sortSetOfResourcesByKey();
-		assertTrue(_sos.getResourceAt(2).getID().compareTo("3")==0);
+		assertTrue(_sos.getResourceAt(2).getID().compareTo("4")==0);
 	}
 	public void testAsortSetOfResourcesBySelectedAttachField(){
 		_sos.addResource(resource4,insertType);
 		_sos.addResource(resource3,insertType);
-		_sos.sortSetOfResourcesBySelectedAttachField(1);
-		assertTrue(_sos.getResourceAt(2).getID().compareTo("3")==0);
+		_sos.sortSetOfResourcesBySelectedAttachField(1); // 4,3,1,2 
+		System.out.println(_sos.getResourceAt(2).getID());
+		assertTrue(_sos.getResourceAt(2).getID().compareTo("1")==0);
 	}
 	/*public void testA(){
 		assertTrue(true);
