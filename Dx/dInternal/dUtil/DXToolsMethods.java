@@ -193,7 +193,9 @@ public class DXToolsMethods {
              finalAvail[k][itr]=5;
          }// end for (int k=0; k< tt.getCurrentCycle().getNumberOfDays(); k++)
          itr++;
+
        }//end for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++)
+
      }// end for (int i=0; i< day.getSetOfSequences().size(); i++)
      return finalAvail;
    }
