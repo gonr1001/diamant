@@ -139,7 +139,7 @@ Cet article propose~:
 
 \section{Les flot de l'information dans prod hor}
 
-Le system est en production 
+Le system est en production
 
 Comme indiqué, nous allons décrire la production des horaires
 simplifié à l'Université de Sherbrooke, car nous connaisons bien
@@ -266,9 +266,9 @@ instances de données à différents instants du processus.
     personnalisés.
 \end{description}
 
-Nous considérons que les données du trimestre commencent à exister à
-un instant $t_{0}$ avant que les cours du trimestre commencent et
-ne sont plus pértinentes  à l'instant $t_{f}$ qui est la fin du
+Nous considérons que les données du trimestre commencent à exister
+à un instant $t_{0}$ avant que les cours du trimestre commencent
+et ne sont plus pertinentes  à l'instant $t_{f}$ qui est la fin du
 trimestre.
 
 Étapes de construction~:
@@ -279,10 +279,10 @@ Pré-condition les données de base ont été saisies et validés.
     \item  Choisir les activités pédagogiques du trimestre
 
     \item  Choisir les enseignants disponibles et associer une
-    disponiblilité
+    disponibilité
 
     \item  Choisir les locaux disponibles et et associer une
-    disponiblilité
+    disponibilité
 
     \item  Associer un format aux activités pédagogiques, associer un
     nombre de groupes à chaque type d'activité
@@ -291,35 +291,35 @@ Pré-condition les données de base ont été saisies et validés.
 \end{enumerate}
 
 De plus, lorsque un logiciel de construction est utilisé, il est
-possible de considèrer que toutes les données nécessaires ont été
+possible de considérer que toutes les données nécessaires ont été
 correctement saisies et que il y n'aura aucun changement pendant
 la construction de l'horaire; une deuxième possibilité, qui semble
-plus réaliste est de considèrer que certains données peuvent
+plus réaliste est de considérer que certains données peuvent
 changer, par exemple certains cours sont enseignés par de
 intervenants externes, mais la personne n'est pas encore trouvé,
 sa disponibilité n'est pas connue, donc l'horaire est construit
 sur des hypothèses qui peuvent s'avérer fausses.
 
-Avant de parler de effecuer la construction avec un logiciel, il faut faire
-une verification des données.
+Avant de parler de effectuer la construction avec un logiciel, il
+faut faire une verification des données.
 
 La construction peut se faire de manière automatique, le logiciel va
 produire un horaire au complet. La construction peut se faire de
 manière manuelle, ave
 construit avec des hypothèse
 
-On suppose que lorsque on décide de produire un horaire il existe une
-base de données contenant tous les cours qu'une Faculté peut offire,
-tous les enseignants d'une Faculté, tous les locaux dispponibles pour
-cette Faculté.
+On suppose que lorsque on décide de produire un horaire il existe
+une base de données contenant tous les cours qu'une Faculté peut
+offrir, tous les enseignants d'une Faculté, tous les locaux
+disponibles pour cette Faculté.
 
 
-La première tâche à faire est celle de définir les cours qui seront
-offerts à l'horaire pendant le trimestre. Ensuite on défini les
-enseignants qui seront en charge de chacun des cours plus leur
-disponibilité, et on defini
-le format du cours (2 heures LM + 1 heure LM + 3 Lab), puis le nombre
-de groupes, éventuellement si l'horaire un cours est déjà défini.
+La première tâche à faire est celle de définir les cours qui
+seront offerts à l'horaire pendant le trimestre. Ensuite on défini
+les enseignants qui seront en charge de chacun des cours plus leur
+disponibilité, et on défini le format du cours (2 heures LM + 1
+heure LM + 3 Lab), puis le nombre de groupes, éventuellement si
+l'horaire un cours est déjà défini.
 
 Lorsque tous ces informations sont saisies, le programme \diamant{}
 peut commencé à être utilisé pour la construction de l'horaire.
@@ -333,7 +333,7 @@ de la construction de l'horaire en mode manuel ou en mode automatique
 ou en utilisant le deux.
 
 Lorsque l'horaire est défini et satisfaisant, les données sont
-transféres à la base de données, pour construire les fichiers
+transférés à la base de données, pour construire les fichiers
 nécessaires à la livraison de l'horaire.
 
 Verification de contraintes (bd)
@@ -345,7 +345,7 @@ justifications}
 
 Abstraite trois blocs
 
-Archit trois-tiers
+Architecture trois-tiers
 
 Interface avec systèmes existantes ou admin scolaire.
 
@@ -375,8 +375,13 @@ Architecture + justifications
 \section{Glossaire}
 
 
-architecture logiciel
-\begin{enumerate}
+\begin{description}
+
+\item [Architecture logiciel:] "Abstractly, software architecture
+involves the description of elements from which systems are built,
+interactions among those elements, patterns that guide their
+composition, and constraints on there patterns." \cite{shaw96}
+
 \item architecture Ouverte
 
 \item architecture Modulaire Ouverte Extensible
@@ -384,6 +389,7 @@ architecture logiciel
 \item architecture Flexible
 
 \item architecture Extensible
+\end{description}
 
 \end{document}
 
