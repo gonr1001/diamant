@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.2 $  $Date: 2003-12-15 21:48:16 $
+ * Title: DetailedTTPane $Revision: 1.3 $  $Date: 2003-12-15 21:52:56 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -74,7 +74,7 @@ public class DetailedMITTPane extends TTPane {
   }
   //-------------------------------------------
    public PeriodPanel createPeriodPanel(int refNo, String str) {
-   return new DetailedPeriodPanelMI(refNo, _eventName);
+   return new DetailedPeriodPanelMI(refNo, str, _eventName);
   }
  //-------------------------------------------
   public PeriodPanel createEmptyPeriodPanel() {
