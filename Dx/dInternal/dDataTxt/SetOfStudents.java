@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
 import dResources.DConst;
+import dInternal.dUtil.DXToolsMethods;
 import dInternal.dData.Resource;
 
 public class SetOfStudents extends SetOfResources{
@@ -116,24 +117,33 @@ public class SetOfStudents extends SetOfResources{
               _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
                   "\n" + DConst.STUD_TEXT5;
               return false;
-            }else{
+            }else{// end if(courseToken.length()<_COURSELENGTH)
+              String stateInGroup="0";
+              String courseDesc= courseToken;
+              int theGroupDescNb= DXToolsMethods.countTokens(courseDesc,";");
+              if( theGroupDescNb>1){
+                courseToken= DXToolsMethods.getToken(courseDesc,";",0);
+                stateInGroup=DXToolsMethods.getToken(courseDesc,";",1);
+              }// end if( DXToolsMethods.countTokens(courseToken,";")>1)
               if (courseToken.length()!=_COURSELENGTH){
                 if(courseToken.length()<_COURSEGROUPLENGTH){
                   _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
                            "\n" + DConst.STUD_TEXT5;
                   return false;
-                }else{
+                }else{// end if(courseToken.length()<_COURSEGROUPLENGTH)
                   try{
                     (new Integer (courseToken.substring(_COURSELENGTH,
                         _COURSEGROUPLENGTH).trim())).intValue();
-                  }catch (NumberFormatException exc){
+                    if(theGroupDescNb>1)
+                      (new Integer (stateInGroup)).intValue();
+                  }catch (NumberFormatException exc){// end try
                     _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
                              "\n" + DConst.STUD_TEXT5;
                     return false;
-                  }
-                }
-              }
-            }
+                  }// end catch (NumberFormatException exc)
+                }// end else if(courseToken.length()<_COURSEGROUPLENGTH)
+              }// end if (courseToken.length()!=_COURSELENGTH)
+            }// end else if(courseToken.length()<_COURSELENGTH)
           }//while (courses.hasMoreTokens())
           position = 1;
           break;

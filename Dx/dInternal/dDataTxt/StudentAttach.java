@@ -11,6 +11,7 @@ package dInternal.dData;
 
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import dInternal.dUtil.DXToolsMethods;
 import dInternal.dData.SetOfResources;
 
 public class StudentAttach extends DXObject{
@@ -112,13 +113,24 @@ public class StudentAttach extends DXObject{
    * smaller than 7 )
    * */
   public boolean addCourse(String course){
+    String stateInGroup="0";
+    String courseDesc= course;
+    int theGroupDescNb= DXToolsMethods.countTokens(courseDesc,";");
+    if( theGroupDescNb>1){
+      course= DXToolsMethods.getToken(courseDesc,";",0);
+      stateInGroup=DXToolsMethods.getToken(courseDesc,";",1);
+    }// end if( DXToolsMethods.countTokens(courseToken,";")>1)
     if (course.length()>=_COURSELENGTH){
       DXValue courseValue= new DXValue();
       //courseValue.setStringValue(course.substring(0,_COURSELENGTH));
       if (course.length()>_COURSELENGTH){
         courseValue.setIntValue(Integer.parseInt(course.substring(
             _COURSELENGTH,_COURSELENGTH+2)));
-        courseValue.setBooleanValue(true);
+        courseValue.setBooleanValue(true);//(new Integer (stateInGroup)).intValue();
+        if( theGroupDescNb>1){
+          if((new Integer (stateInGroup)).intValue()==0)
+            courseValue.setBooleanValue(false);
+        }
       }
       return  _courses.addResource(new Resource(course.substring(0,_COURSELENGTH),courseValue),1);
     }
@@ -272,6 +284,11 @@ public class StudentAttach extends DXObject{
       if (choice.getIntValue()>0){
         String group= "00"+Integer.toString(choice.getIntValue());
         str+= group.substring(group.length()-2,group.length());
+        if(choice.getBooleanValue())
+          str+= ";"+1;
+        else
+          str+= ";"+0;
+
       }else
         str+="";
       if (i< _courses.size()-1)
@@ -373,3 +390,4 @@ public class StudentAttach extends DXObject{
  }//end method
 
 }
+
