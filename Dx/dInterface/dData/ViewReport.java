@@ -164,7 +164,7 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     String fields;
     String currentField;
     String resultLine = "";
-    String blanks = "                                                                          ";
+    //String blanks = "                                                                          ";
     String underLine = "";
     int strLinesLength, strFieldsLength;
 
@@ -172,8 +172,8 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     _jTextArea.setText("");
     //do header
     for (int k = 0; k < fieldsNames.length; k++){
-      currentField = (String)fieldsNames[k] + blanks;
-      currentField = currentField.substring(0, fieldsLengths[k]);
+      currentField = adjustSize((String)fieldsNames[k],fieldsLengths[k]);
+      //currentField = currentField.substring(0, fieldsLengths[k]);
       currentField = currentField + "|  ";
       resultLine += currentField;
     }
@@ -200,12 +200,11 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
         currentField = strFields.nextToken();
 
         if(DXToolsMethods.countTokens(currentField,",") >1)
-          currentField = buildSpecialLine(fieldsLengths, j, currentField);
+          currentField = buildSpecialLine(resultLine.length(), currentField);
         else {
         currentField =DXToolsMethods.getToken(currentField, ",", 0);
         }
-        currentField = currentField + blanks;
-        currentField = currentField.substring(0, fieldsLengths[j]);
+        currentField = adjustSize(currentField,fieldsLengths[j]);
         currentField = currentField + "|  ";
         resultLine += currentField;
       }//end internal for
@@ -215,7 +214,7 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     _jTextArea.setCaretPosition(0);
   }
 
-  private String buildSpecialLine(int[] fieldsLengths, int i, String currentField) {
+  private String buildSpecialLine(int i, String currentField) {
 
 
     return currentField;
