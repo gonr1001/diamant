@@ -43,6 +43,15 @@ public Period getPeriod(){
   return _row;
  }
 
+
+ public int[] getBegingTime(){
+   int [] b = {8, 30} ;
+   return b;
+ }
+ public int[] getEndTime(){
+   int [] b = {22, 0} ;
+   return b;
+ }
  public String loadData(String  fils) {
    return new String("");
   }

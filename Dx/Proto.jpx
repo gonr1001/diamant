@@ -3,22 +3,20 @@
 <project>
   <property category="debug.0" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
-  <property category="debug.1" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
-  <property category="optimize.1" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="optimize.1" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
+  <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="2"/>
+  <property category="runtime" name="DefaultConfiguration" value="-1"/>
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.0" name="ConfigurationName" value="Run"/>
+  <property category="runtime.0" name="ConfigurationName" value="LoadData"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.0" name="application.class" value="DRun"/>
-  <property category="runtime.0" name="application.vmparameters" value="-classic"/>
+  <property category="runtime.0" name="application.class" value="dInternal.dData.LoadData"/>
   <property category="runtime.1" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.1" name="ConfigurationName" value="LoadData"/>
+  <property category="runtime.1" name="ConfigurationName" value="Run"/>
   <property category="runtime.1" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.1" name="application.class" value="dInternal.dData.LoadData"/>
-  <property category="runtime.1" name="application.vmparameters" value="-classic"/>
+  <property category="runtime.1" name="application.class" value="DRun"/>
   <property category="runtime.2" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.2" name="ConfigurationName" value="InterfaceTests"/>
   <property category="runtime.2" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
@@ -46,8 +44,9 @@
   <property category="sys" name="JDK" value="java 1.4.1_02-b06"/>
   <property category="sys" name="JbxEventListener0" value="dInternal.DModelListener"/>
   <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
+  <property category="sys" name="JvmVersion" value="1.4"/>
   <property category="sys" name="LastTag" value="0"/>
-  <property category="sys" name="Libraries" value="JUnit;theLibrary;regexp;jfcunit"/>
+  <property category="sys" name="Libraries" value="JUnit;theLibrary;regexp;jfcunit;rt"/>
   <property category="sys" name="MakeStable" value="0"/>
   <property category="sys" name="OutPath" value="../../Temp/Dx/Proto/classes"/>
   <property category="sys" name="SourcePath" value="."/>
@@ -57,30 +56,6 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
-  <node name="Proto" type="Archive">
-    <property category="archiving" name="archiverClass" value="com.borland.jbuilder.wizard.archive.ApplicationArchiver"/>
-    <property category="archiving" name="executableEnabled.1" value="0"/>
-    <property category="archiving" name="executableEnabled.2" value="0"/>
-    <property category="archiving" name="executableEnabled.3" value="0"/>
-    <property category="archiving" name="executableEnabled.4" value="0"/>
-    <property category="archiving" name="executableEnabled.5" value="0"/>
-    <property category="archiving" name="executableFiles.1" value=""/>
-    <property category="archiving" name="executableFiles.2" value=""/>
-    <property category="archiving" name="executableFiles.3" value=""/>
-    <property category="archiving" name="executableFiles.4" value=""/>
-    <property category="archiving" name="executableFiles.5" value=""/>
-    <property category="archiving" name="extraDeployRoots.1" value="C:dAux.*"/>
-    <property category="archiving" name="extraDeployRoots.2" value="C:dInterface.*"/>
-    <property category="archiving" name="extraDeployRoots.3" value="C:dInternal.*"/>
-    <property category="archiving" name="extraDeployRoots.4" value="C:dResources.*"/>
-    <property category="archiving" name="extraDeployRoots.5" value="C:lineInterface.*"/>
-    <property category="archiving" name="extraDeployRoots.6" value="C:pref.*"/>
-    <property category="archiving" name="extraDeployRoots.7" value="C:theLibrary.*"/>
-    <property category="archiving" name="extraDeployRoots.8" value="C:DRun"/>
-    <property category="archiving" name="libraryStates.1" value="1:theLibrary"/>
-    <property category="archiving" name="outPathState" value="1"/>
-    <property category="archiving" name="targetPath" value="Proto.jar"/>
-  </node>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>

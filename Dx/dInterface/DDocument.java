@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.20 $  $Date: 2003-05-26 16:57:38 $
+ * Title: DDocument $Revision: 1.21 $  $Date: 2003-05-27 14:12:37 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,11 +14,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -76,11 +77,9 @@ public class DDocument implements ActionListener, DModelListener{
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
-   // _ttStruct = ttStruct;
     _ttPanel = new TTPanel(_dm);
     //_ttPanel.setPreferredSize( new Dimension(20 , 20) );//_jif.getContentPane().getWidth()+ 500,
          // _jif.getContentPane().getHeight() + 500) );
-    //_ttParameters = new TTParameters();
     _dm.addDModelListener(this);
     _modified = false;
 
@@ -89,7 +88,9 @@ public class DDocument implements ActionListener, DModelListener{
     //_jif.setPreferredSize(new Dimension(200, 200));
     _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
     _jif.pack();
-    _dApplic.getDesktop().add(_jif, new Integer(1));
+    //JLayeredPane.DEFAULT_LAYER
+    //_dApplic.getDesktop().add(_jif, new Integer(1));
+    _dApplic.getDesktop().add(_jif, JLayeredPane.DEFAULT_LAYER);
     _dApplic.getDesktop().getDesktopManager().maximizeFrame(_jif);
     _jif.setVisible(true);
   } // end constructor DDocument()

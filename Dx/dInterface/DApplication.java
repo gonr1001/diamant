@@ -1,6 +1,6 @@
 /**
  *
- * Title: DApplication $Revision: 1.4 $  $Date: 2003-05-26 16:57:38 $
+ * Title: DApplication $Revision: 1.5 $  $Date: 2003-05-27 14:12:37 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -100,8 +100,9 @@ public class DApplication implements ActionListener {
     Container contentPane = jFrame.getContentPane();
     contentPane.add(_tbar,BorderLayout.NORTH);
     _jDesktopPane = new JDesktopPane();
-    _jDesktopPane.setDesktopManager(new DefaultDesktopManager());
     _jDesktopPane.setOpaque(false);
+    _jDesktopPane.setDesktopManager(new DefaultDesktopManager());
+
     contentPane.add(_jDesktopPane,BorderLayout.CENTER);
     jFrame.setLocation(ZERO,ZERO);
     panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
