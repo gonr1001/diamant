@@ -297,20 +297,13 @@ public class SetOfResources extends DXObject{
    return namesVector;
   }
 
-  public Vector getIDsByField(int resType, int fieldIndex, String fieldValue){
+  public Vector getIDsByField(int fieldIndex, String fieldValue){
     Vector idVector = new Vector();
     Resource res = null;
     boolean membership = false;
     for (int i = 0; i < size(); i++){
       res = getResourceAt(i);
-      switch(resType){
-        //0= activities, 1= students, 2= instructors, 3 = rooms, 4= other
-        case 0: membership = ((Activity)res.getAttach()).compareByField(fieldIndex, fieldValue);
-        //case 1: membership = ((StudentAttach)res.getAttach()).compareByField(fieldIndex, fieldValue);
-        //case 2: membership = ((InstructorAttach)res.getAttach()).compareByField(fieldIndex, fieldValue);
-        //case 3: membership = ((RoomAttach)res.getAttach()).compareByField(fieldIndex, fieldValue);
-      }
-
+      membership = (res.getAttach()).compareByField(fieldIndex, fieldValue);
       if (membership == true)
         idVector.add(res.getID());
     }

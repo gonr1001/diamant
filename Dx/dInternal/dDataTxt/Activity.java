@@ -174,7 +174,8 @@ public class Activity extends DXObject{
         if (_activitySession == intValue)
           return true;
       case 3:
-        boolean boolValue = Boolean.getBoolean(value.trim());//Boolean.getBoolean(value);
+        boolean boolValue = Boolean.valueOf(value).booleanValue();
+
         if (_activityVisible == boolValue)
           return true;
     }
