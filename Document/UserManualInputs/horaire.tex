@@ -86,7 +86,7 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
     prêtes à être modifiées.
 \end{enumerate}
 
-À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
+À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Lancer l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de passer à la phase 2. Elle exécutera les fonctionnalités suivantes:
 
 \begin{enumerate}
     \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
@@ -96,7 +96,7 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
 
 Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
 
-La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
+La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). 
 
 \subsection{Phase 2: modification et épurations des données}
 
@@ -182,9 +182,7 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
 \subsection{Phase 3: construction de l'horaire}
 
-Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation initiale est faite à la section \ref{finprepa}.
-
-Une fois l'affectation initiale effectuée, l'étape suivante consiste à lancer le sous menu \textbf{\emph{Construire l'horaire}} à partir du menu \textbf{\emph{Optimisation}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
+Cette étape consiste à lancer le sous menu \textbf{\emph{Construire l'horaire}} à partir du menu \textbf{\emph{Optimisation}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
 
 La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant le sous-menu \textbf{\emph{Options Conflits}} à partir du menu \textbf{\emph{Préférences}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{confc}). Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
 
@@ -373,7 +371,7 @@ Le rapport complet permet de visualiser les événements placés dans la grille hor
 Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
 
 \begin{itemize}
-    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{JNum}: numéro de la journée (jour 1, jour 2, ...),
     \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
     \item \emph{Acti}: nom de l'activité,
     \item \emph{Nat}: nature de l'activité,
@@ -418,7 +416,7 @@ Le rapport de conflits permet de visualiser les conflits générés par les événeme
 Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
 
 \begin{itemize}
-    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{JNum}: numéro de la journée (jour 1, jour 2, ...),
     \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
     \item \emph{PérJour}: période de la journée (AM, PM),
     \item \emph{Événement 1 }: premier événement en conflit,
@@ -509,7 +507,7 @@ Exemple: choisissez le nom de fichier \emph{H04exam} pour \emph{Hiver 2004 horai
     prêtes à être modifiées.
 \end{enumerate}
 
-À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{Affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{Affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
+À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Lancer l'\textbf{\emph{Affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de passer à la phase 2. Elle exécutera les fonctionnalités suivantes:
 
 \begin{enumerate}
     \item Suppression des activités de nature 2, seulement les activités de nature 1 seront conservées pour l'horaire. Tous les événements seront initialisés de sorte à les rendre non placés et non figés.
@@ -777,7 +775,7 @@ Le rapport complet permet de visualiser les événements placés dans la grille hor
 Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
 
 \begin{itemize}
-    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{JNum}: numéro de la journée (jour 1, jour 2, ...),
     \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
     \item \emph{Acti}: nom de l'activité,
     \item \emph{Nat}: nature de l'activité,
@@ -823,7 +821,7 @@ Le rapport de conflits permet de visualiser les conflits générés par les événeme
 Les informations affichées sont trier en partant de la colonne de gauche vers la droite. Les abbreviations utilisées au niveau de l'entête du rapport se définissent comme suit:
 
 \begin{itemize}
-    \item \emph{JNum}: numéro de de la journée (jour 1, jour 2, ...),
+    \item \emph{JNum}: numéro de la journée (jour 1, jour 2, ...),
     \item \emph{Jour}: nom de la journée (lundi, mardi, ...),
     \item \emph{PérJour}: période de la journée (AM, PM),
     \item \emph{Événement 1 }: premier événement en conflit,

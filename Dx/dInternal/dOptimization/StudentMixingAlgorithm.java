@@ -258,7 +258,10 @@ public class StudentMixingAlgorithm implements Algorithm {
     Resource newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
     while(newStudentGroup!=null){
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(newStudentGroup.getKey()).getAttach();
-      student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
+      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
+          ((DXValue)newStudentGroup.getAttach()).getIntValue()-1).getID());//int group= i+1;
+      //student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
+      student.setInGroup(activityID+typeID, group,false);
       newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
     }
   }
