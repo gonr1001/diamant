@@ -605,6 +605,23 @@ public Period getLastPeriod(){
   }
 
   /**
+  *
+  */
+ public void resetAllNumberOfConflicts(){
+   for (int i=0; i< getSetOfDays().size(); i++){
+     Day day = (Day)getSetOfDays().getResourceAt(i).getAttach();
+     for(int j=0; j< day.getSetOfSequences().size(); j++){
+       Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+       for(int k=0; k< seq.getSetOfPeriods().size(); k++){
+         ((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).setNbInstructorsConflict(0);
+         ((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).setNbRoomsConflict(0);
+         ((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).setNbStudConflict(0);
+       }// end for(int k=0; k< seq.getSetOfPeriods().size(); k++)
+     }// end for(int j=0; j< day.getSetOfSequences().size(); j++)
+   }//end for (int i=0; i< getSetOfDays().size(); i++)
+  }
+
+  /**
    * return the  period and increment _currentDayIndex
    * @return
    */

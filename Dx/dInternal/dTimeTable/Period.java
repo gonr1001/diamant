@@ -136,6 +136,30 @@ public class Period extends DXObject {
   }
 
   /**
+   * set number of instructors conflicts
+   * @param int the number of instructors conflicts
+   * */
+  public void setNbInstructorsConflict(int conflict){
+     this._nbInstConflict=conflict;
+  }
+
+  /**
+   * set number of students conflicts
+   * @param int the number of students conflicts
+   * */
+  public void setNbStudConflict(int conflict){
+     _nbStudConflict=conflict;
+  }
+
+  /**
+   * set number of rooms conflicts
+   * @param int the number of rooms conflicts
+   * */
+  public void setNbRoomsConflict(int conflict){
+     _nbRoomConflict=conflict;
+  }
+
+  /**
    * get number of instructors conflicts
    * @param int the number of instructors conflicts
    * */

@@ -101,6 +101,11 @@ class reference15 {
 @__modelType reference 
 */
 class reference1 {
+}/**
+@__ref <oiref:java#Class#dInterface.dAffectation.SelectGroupDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -59,6 +59,7 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
     TTStructure oldTTS= dm.getTTStructure();
     _ttStruct = new TTStructure();
     _ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
+    _ttStruct.getCurrentCycle().resetAllNumberOfConflicts();//patch
     _toolBar= toolbar;
     initDlg(eventName, dm);
   }
