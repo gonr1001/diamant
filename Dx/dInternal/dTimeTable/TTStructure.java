@@ -4,6 +4,7 @@ package dInternal.dTimeTable;
 import java.util.Vector;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
+import dInternal.dUtil.DXToolsMethods;
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;
@@ -214,14 +215,18 @@ public class TTStructure {
   * */
  public Period getLastPeriod(Cycle cycle){
    int maxPer=0;
+   Period lastPer= new Period();
    if(cycle!=null){
-     Day day =(Day)getCurrentCycle().getCurrentDay();
-     if(day!=null){
+     for (int i=0; i< cycle.getNumberOfDays(); i++){
+       Day day =(Day)cycle.getSetOfDays().getResourceAt(i).getAttach();
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(getMaxNumberOfSeqs(cycle)-1).getAttach();
-       return (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
-     }
+       Period per = (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
+       if(DXToolsMethods.compareTabsHour(lastPer.getBeginHour(),per.getBeginHour())==-1)
+         lastPer= per;
+       //return (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
+     }// end for (int i=0; i< cycle.getNumberOfDays(); i++)
    }
-   return null;
+   return lastPer;
   }
 
   /**
