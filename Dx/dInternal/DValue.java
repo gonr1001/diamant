@@ -1,13 +1,25 @@
-package dInternal;
-
 /**
- * <p>Title: Diamant 1.5</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
- */
+*
+* Title: DValue $Revision $  $Date: 2005-02-02 21:37:58 $
+* Description: DValue is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $ $
+* @author  $Author: garr2701 $
+* @since JDK1.3
+*/
+
+package dInternal;
 
 public class DValue extends DObject{
 
@@ -26,11 +38,11 @@ public class DValue extends DObject{
    * Contructor
    * */
   public DValue() {
+  	_refNo=0;
+  	_booleanValue=false;
     _intValue=-1;
-    _refNo=0;
-    _booleanValue=false;
     _stringValue="";
-    //_objectValue= new Object();
+    _objectValue= new Object();
   }
 
   /**
