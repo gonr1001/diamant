@@ -88,7 +88,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   private void jbInit() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all rooms
-    chooser = new JComboBox(_dm.getSetOfRooms().getNamesVector());
+    chooser = new JComboBox(_dm.getSetOfRooms().getNamesVector(1));
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);

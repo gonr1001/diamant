@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.53 $  $Date: 2003-09-29 20:21:47 $
+ * Title: DStringFrRes $Revision: 1.54 $  $Date: 2003-09-29 20:55:54 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.53 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.54 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -127,13 +127,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     //Report
     {"ReportM","Rapports"},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
+
 
     //Preferences
     { "pref", "Preferences"},
@@ -246,6 +240,28 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Optimisation dialogs
     {"InitialAffectMessage", "Affectation initiale effectuée"},
 
+    //Report dialogs
+    {"RActivityName","Nom d'activité"},
+    {"RTypeName","Type"},
+    {"RSectionName","Section"},
+    {"RUnityName","Unité"},
+    {"RDuration","Durée"},
+    {"RDayNumber","Jour numéro"},
+    {"RDayName","Jour nom"},
+    {"RActivityBeginHour","Heure de début"},
+    {"RActivityEndHour","Heure de fin"},
+    {"RInstructorName","Nom instructor"},
+    {"RRoomName","Nom Salle"},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
 
     //ToolBar
     {"tBDay", "Jour"},

@@ -165,9 +165,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       if (command.equals(_arrowsNames[1]))
-        DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec);
+        DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
       else
-        DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec);
+        DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 1);
       _lNoVisible.setText(_rightVec.size() + " " + NOT_INCLUDED);
       _lVisible.setText(_leftVec.size() + " " + INCLUDED);
       _buttonsPanel.getComponent(1).setEnabled(true);

@@ -113,7 +113,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     actPanel.setPreferredSize(new Dimension(100,50));
     _actID = (String)_actVector.elementAt(0);
     //panel of types
-    _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector();
+    _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
     _typeCombo = new JComboBox(_typeVector);
     //_typeCombo.setSelectedIndex(0);
     typePanel = new JPanel();
@@ -262,7 +262,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     //if activity combo box
     if (e.getSource().equals(_actCombo)){
       _actID = (String)_actCombo.getSelectedItem();
-      _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector();
+      _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
       _typeCombo.removeAllItems();
       for(int i = 0; i < _typeVector.size(); i++){
         _typeCombo.addItem(_typeVector.elementAt(i));
@@ -305,14 +305,14 @@ public class GroupDlg extends JDialog implements ActionListener{
       //if "toLeft" button is pressed
       if (command.equals(_arrowsNames[1])){
         if (_currentAssignedGroup > -1){
-          DXTools.listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector);
+          DXTools.listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector, 1);
           _buttonsPanel.getComponent(1).setEnabled(true);
           _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
         }
       }
       else{
         if (_currentAssignedGroup > -1){
-          DXTools.listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup]);
+          DXTools.listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup], 1);
           _buttonsPanel.getComponent(1).setEnabled(true);
           _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
         }

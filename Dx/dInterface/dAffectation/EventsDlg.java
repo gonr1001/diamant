@@ -181,9 +181,9 @@ public class EventsDlg extends JDialog implements ActionListener{
          (e.getSource().equals(_leftArrowsPanel.getComponent(1))) ){
       //if "toRight" button
       if (e.getSource().equals(_leftArrowsPanel.getComponent(0)))
-        DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector);
+        DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1);
       else
-        DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector);
+        DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
       _leftLabel.setText(String.valueOf(_leftVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
       _buttonsPanel.getComponent(1).setEnabled(true);
@@ -193,9 +193,9 @@ public class EventsDlg extends JDialog implements ActionListener{
          (e.getSource().equals(_rightArrowsPanel.getComponent(1))) ){
       //if "toRight" button
       if (e.getSource().equals(_rightArrowsPanel.getComponent(0)))
-        DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector);
+        DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1);
       else
-        DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector);
+        DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);
       _rightLabel.setText(String.valueOf(_rightVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
       _buttonsPanel.getComponent(1).setEnabled(true);

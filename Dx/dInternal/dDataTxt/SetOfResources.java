@@ -311,9 +311,29 @@ public class SetOfResources extends DXObject{
    * Build a list of Resources's ID
    * @return Vector It contents the Resources's ID
    * */
+/*
   public Vector getNamesVector(){
     Vector namesVector =new Vector();
     if(_stateSort!=1)
+      sortSetOfResourcesByID();
+    for (int i=0; i< this._resourceList.size(); i++)
+      namesVector.add(((Resource)_resourceList.get(i)).getID());
+   return namesVector;
+  }
+  */
+
+  /**
+   * Builds a list of Resources's ID
+   * @param orderIndex The order of elements arrangement. If sortIndex == 0 then
+   * the set of resources is sorted by the resource key. If sortIndex == 1 then
+   * the set of resources is sorted by the resource ID.
+   * @return
+   */
+  public Vector getNamesVector(int sortIndex){
+    Vector namesVector =new Vector();
+    if(sortIndex == 0)
+      sortSetOfResourcesByKey();
+    if(sortIndex == 1)
       sortSetOfResourcesByID();
     for (int i=0; i< this._resourceList.size(); i++)
       namesVector.add(((Resource)_resourceList.get(i)).getID());

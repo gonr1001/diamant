@@ -129,7 +129,7 @@ public class DXTools{
    * @param destinationVector the destination vector
    */
 
-
+/*
 public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector){
   if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
     return;
@@ -149,6 +149,35 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
       }
       destinationRes.sortSetOfResourcesByID();
       destinationVector = destinationRes.getNamesVector();
+      sourceList.setListData(sourceVector);
+      destinationList.setListData(destinationVector);
+      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
+      destinationList.setSelectedIndices(indices);
+      sourceList.clearSelection();
+    }//end for
+}//end method
+*/
+
+
+
+public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, int sortIndex){
+  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
+    return;
+  SetOfResources destinationRes = new SetOfResources(0);
+  Resource res;
+  Object [] elementsToTransfer = sourceList.getSelectedValues();
+
+  if (elementsToTransfer.length != 0){
+      String currentElement;
+      for (int i = 0; i < elementsToTransfer.length; i++){
+        sourceVector.remove(elementsToTransfer[i]);
+        destinationVector.add(elementsToTransfer[i]);
+      }
+      for(int j = 0; j < destinationVector.size(); j++){
+        res = new Resource((String)destinationVector.elementAt(j),null);
+        destinationRes.addResource(res, 1);
+      }
+      destinationVector = destinationRes.getNamesVector(sortIndex);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
       int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
@@ -372,7 +401,7 @@ public static int STIConvertGroup(String STIGroupID){
         resources.addResource(res, 1);
       }
       resources.sortSetOfResourcesByID();
-      return resources.getNamesVector();
+      return resources.getNamesVector(1);
  }
 
 

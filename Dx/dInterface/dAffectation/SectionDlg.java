@@ -116,7 +116,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     actPanel.setPreferredSize(new Dimension(100,52));
     _actID = (String)_actVector.elementAt(0);
     //panel of types
-    _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector();
+    _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
     _typeCombo = new JComboBox(_typeVector);
     //_typeCombo.setSelectedIndex(0);
     typePanel = new JPanel();
@@ -264,7 +264,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     //if activity combo box
     if (e.getSource().equals(_actCombo)){
       _actID = (String)_actCombo.getSelectedItem();
-      _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector();
+      _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
       _typeCombo.removeAllItems();
       for(int i = 0; i < _typeVector.size(); i++){
         _typeCombo.addItem(_typeVector.elementAt(i));

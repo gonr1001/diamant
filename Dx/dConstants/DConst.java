@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.53 $  $Date: 2003-09-29 20:21:47 $
+ * Title: DConst $Revision: 1.54 $  $Date: 2003-09-29 20:55:54 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.53 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.54 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -84,6 +84,8 @@ public class DConst {
   //DDocument
   public final static String V_DATE = res.getString("vDate");//13 mai 2003
   public final static String BLOCS = "BLOCS";//pas trouve dans DStringFrRes
+
+
 
   //**********Menus constants ***************************
   //File menu
@@ -197,6 +199,20 @@ public class DConst {
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F
+
+  //Report dialogs
+  public final static String R_ACTIVITY_NAME = res.getString("RActivityName");//Nom d'activité
+  public final static String R_TYPE_NAME = res.getString("RTypeName");//Type
+  public final static String R_SECTION_NAME = res.getString("RSectionName");//Section
+  public final static String R_UNITY_NAME = res.getString("RUnityName");//Unité
+  public final static String R_DURATION = res.getString("RDuration");//Durée
+  public final static String R_DAY_NUMBER = res.getString("RDayNumber");//Jour numéro
+  public final static String R_DAY_NAME = res.getString("RDayName");//Jour nom
+  public final static String R_ACTIVITY_BEGIN_HOUR = res.getString("RActivityBeginHour");//Heure de début
+  public final static String R_ACTI_END_HOUR = res.getString("RActivityEndHour");//Heure de fin
+  public final static String R_INSTRUCTOR_NAME = res.getString("RInstructorName");//Nom instructor
+  public final static String R_ROOM_NAME = res.getString("RRoomName");//Nom Salle
+
   //Help dialogs
   public final static String ABOUT_TD = res.getString("aboutTD");//A propos de, repete
   public final static String ABOUT_D = res.getString("aboutD");// \nCopyRight\n 2000 - 2003
