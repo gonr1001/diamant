@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.38 $  $Date: 2003-07-31 15:44:38 $
+ * Title: DConst $Revision: 1.39 $  $Date: 2003-08-01 15:06:44 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -60,8 +60,8 @@ public class DConst {
   public final static int CYCLE = 1;
   public final static int EXAM = 2;
   public final static int CYCLEANDEXAM = 3;
-  public final static int NBOFDAYS=5;
-  public final static int NBOFPERIODSADAY=14;
+  public final static int STINBOFDAYS=5;
+  public final static int STINBOFPERIODSADAY=14;
   public final static int STIBEGINHOUR=8;
   public final static int STIBEGINMINUTE=30;
   //DDocument
@@ -134,6 +134,9 @@ public class DConst {
     public final static String SHOW  = res.getString("show"); //Aficher
     public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
     public final static String INCLUDED  = res.getString("included");//Inclue(s)
+    //InstructorAvailabiliyDlg
+    public final static String AVAILABILITY = "Disponibilités";
+
 
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete

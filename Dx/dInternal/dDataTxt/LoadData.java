@@ -78,14 +78,6 @@ public class LoadData {
       System.exit(1);
     }
   }
-  //args[0]: instructor
-  //args[1]: student
-  //args[2]:
-  //args[3]:
-  public void extractDatafromImport(String [] args){
-   // _v.add(extractInstructors(args[0]));
-   // _v.add(extractStudents(args[1]));
-  }
 
   public RoomsAttributesInterpretor extractRoomsAttributesInterpretor(){
     RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
@@ -209,7 +201,8 @@ public class LoadData {
        tts.loadTTStructure(project.nextToken().trim());
        extract.add(tts);
        // extract instructor
-       SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),5,14);
+       SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
+           tts.getNumberOfActiveDays(),tts.getMaxNumberOfPeriodsADay(tts.getCurrentCycle()));
        if (instructorsList.analyseTokens(0)){
         instructorsList.buildSetOfInstructors(0);
       }
@@ -244,49 +237,6 @@ public class LoadData {
 
 
   public static void main(String[] args) {
-    String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
-    String pathSave =System.getProperty("user.dir")+ File.separator+"data"+File.separator;
-    System.out.println("PATH: "+ path);//debug
-    FilterFile filter;
-    LoadData ldata=  new LoadData(path);
-
-    /**Irstructor test*/
-    SetOfInstructors insList = ldata.extractInstructors(null,false);
-    insList.sortSetOfResourcesByID();
-
-    /**Room test*/
-    SetOfRooms roomlist = ldata.extractRooms(null, true);
-    roomlist.sortSetOfResourcesByID();
-
-    /** Student test*/
-    SetOfStudents studentList = ldata.extractStudents(null, true);
-    StudentAttach yan = new StudentAttach();
-    yan.addCourse("GEI4421");
-    yan.addCourse("GEI4501");
-    studentList.addStudent(99872506,"YANNICK SYAM","",yan);
-    yan = new StudentAttach();
-    yan.addCourse("GEI4421");
-    yan.addCourse("GEI4501");
-    studentList.addStudent(99872506,"YANNICK SYAM","",yan);
-    studentList.sortSetOfResourcesByID();
-
-    /** Activities test*/
-    SetOfActivities activitiesList = ldata.extractActivities(null, true);
-
-    /**Concat 2 instrutors files and 2 activities files*/
-    ldata=  new LoadData(pathSave+"filedata1.sig");
-    ldata.extractInstructors(insList,true);
-    ldata.extractActivities(activitiesList, true);
-
-    //save in files
-    filter= new FilterFile(insList.toWrite().getBytes());
-    filter.saveFile(pathSave+"SaveInst.sig");
-    filter= new FilterFile(roomlist.toWrite().getBytes());
-    filter.saveFile(pathSave+"SaveRoom.sig");
-    filter= new FilterFile(studentList.toWrite().getBytes());
-    filter.saveFile(pathSave+"SaveStudent.sig");
-    filter= new FilterFile(activitiesList.toWrite().getBytes());
-    filter.saveFile(pathSave+"SaveActivities.sig");
 
   } // end main
 

@@ -163,6 +163,19 @@ public class DXToolsMethods {
     * @return
     */
    public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure tt){
+     //check if is upper, lower or nothing operation
+     int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
+     if(initialAvail[0].length== tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())) {
+       UpperLower=0;
+       return initialAvail;
+     }
+     else if(initialAvail[0].length > tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())) {
+       UpperLower=-1;
+     }
+     else if(initialAvail[0].length< tt.getMaxNumberOfPeriodsADay(tt.getCurrentCycle())) {
+       UpperLower=1;
+     }
+
      Day day = tt.getCurrentCycle().getCurrentDay();
      Period per;
      int itr=0;
@@ -173,8 +186,7 @@ public class DXToolsMethods {
          per = day.getSequence(i).getPeriod(j);
          //boolean avail = isAvailableInRange(initialAvail)
          for (int k=0; k< tt.getNumberOfActiveDays(); k++){
-           boolean avail = isAvailableInRange(initialAvail,k,per.getBeginHour()
-           , per.getEndHour(tt.getPeriodLenght()));
+           boolean avail = isAvailableInRange(initialAvail,k,per,tt.getPeriodLenght(),UpperLower);
            if (avail)
              finalAvail[k][itr]=1;
            else
@@ -190,13 +202,20 @@ public class DXToolsMethods {
     * check the state availability in the range
     * @param initial the availability matrix
     * @param day the day where to search availability
-    * @param beginH the begin hour
-    * @param endH the end our
+    * @param per the period
+    * @param int the period lenght
+    * @param up_low the type of operation 1= make upper; 0= do nothing; -1= make lower
     * @return boolean
     */
-   private static boolean isAvailableInRange(int[][] initial,int day, int[] beginH, int[] endH){
+   private static boolean isAvailableInRange(int[][] initial,int day, Period per, int periodLenght, int up_low){
+     int[] beginH = per.getBeginHour();
+     int[] endH = per.getEndHour(periodLenght);
      int beginIndex;
      int endIndex;
+
+
+     //int indexSize =
+
      beginIndex= beginH[0]- DConst.STIBEGINHOUR;
      if (beginIndex<0)
        return false;

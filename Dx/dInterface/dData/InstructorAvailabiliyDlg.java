@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.1 $  $Date: 2003-05-20 16:23:15 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.2 $  $Date: 2003-08-01 15:06:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.2 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -29,9 +29,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
+import dInternal.dTimeTable.TTStructure;
+import dResources.DConst;
 
-/*import dInternal.DModelListener;
-import dInternal.DModelEvent;*/
 
 
 /**
@@ -55,22 +55,11 @@ import dInternal.DModelEvent;*/
 public class InstructorAvailabiliyDlg  extends JDialog
                                 implements ActionListener,
                                            ItemListener {
-  private final int nbPer = 14;
-  private final int nbDay = 5;
-
-  final static String[] DAY = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
-
-  public String[] TIME = {"8:30 ", "9:30 ", "10:30 ", "11:30 ", "12:30 ",
-                                "13:30 ", "14:30 ", "15:30 ", "16:30 ", "17:30 ",
-                                "18:30 ", "19:00 ", "20:00 ", "21:00 "};
-
-  final static String MES00 = "Disponibilités";
-  final static String BUT00 = "Appliquer";
-  final static String BUT01 = "OK";
-  final static String BUT02 = "Annuler";
-  final static String TTT00 = "Enregistre les modifications";
-  final static String TTT01 = "Quitte en enregistrant les modifications";
-  final static String TTT02 = "Quitte sans enregistrer les modifications";
+  private int nbPer;
+  private int nbDay;
+  private String[] DAY;
+  public String[] TIME;
+  private String MES00 ;
 
   JPanel butPanel = new JPanel();
   JPanel chooserPanel = new JPanel();
@@ -95,8 +84,15 @@ public class InstructorAvailabiliyDlg  extends JDialog
    */
   public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
     super(jFrame, str, false);
+    _dm = dm;
+    TIME= dm.getTTStructure().getHourOfPeriodsADay(dm.getTTStructure().getCurrentCycle());
+    nbDay= dm.getTTStructure().getNumberOfActiveDays();
+    DAY = new String[nbDay];
+    MES00 = DConst.AVAILABILITY;
+    for(int i=0; i< nbDay; i++)
+      DAY[i]= dm.getTTStructure()._weekTable[i];
+    nbPer= dm.getTTStructure().getMaxNumberOfPeriodsADay(dm.getTTStructure().getCurrentCycle());
     try {
-      _dm = dm;
       jbInit();
       pack();
       setLocationRelativeTo(jFrame);
@@ -125,15 +121,12 @@ public class InstructorAvailabiliyDlg  extends JDialog
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //button Panel
-    butOk = new JButton( BUT01 );
-    butOk.setToolTipText(TTT01);
+    butOk = new JButton( DConst.BUT_OK );
     butOk.addActionListener( this );
-    butApply = new JButton(BUT00);
-    butApply.setToolTipText(TTT00);
+    butApply = new JButton(DConst.BUT_APPLY);
     butApply.addActionListener( this );
     butApply.setEnabled(false);
-    butCancel = new JButton( BUT02 );
-    butCancel.setToolTipText(TTT02);
+    butCancel = new JButton( DConst.BUT_CANCEL);
     butCancel.addActionListener( this );
     butPanel.add(butOk, null);
     butPanel.add(butApply, null);
@@ -143,17 +136,17 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
   public void actionPerformed( ActionEvent event) {
     String command = event.getActionCommand();
-    if (command.equals( BUT02 )) {  // cancel
+    if (command.equals( DConst.BUT_CANCEL )) {  // cancel
       //"Enseignants --> Bouton Annuler pressé\n"
       dispose();
-    } else if (command.equals( BUT01 )) {  // OK
+    } else if (command.equals(DConst.BUT_OK )) {  // OK
    /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n"); */
        _currentInstr.setAvailability(_currentAvailbility);
         _dm.incrementModification();
       modified = false;
       butApply.setEnabled(false);
       dispose();
-    } else if (command.equals( BUT00 )) {  // apply
+    } else if (command.equals( DConst.BUT_APPLY )) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentInstr.setAvailability(_currentAvailbility);
       _dm.incrementModification();

@@ -171,6 +171,27 @@ public class TTStructure {
   }
 
   /**
+   * get the hour of periods in one day in a cycle
+   * @param Cycle the cycle where we want to find the max number of sequences
+   * @return int the max number of periods in a day
+   * */
+  public String[] getHourOfPeriodsADay(Cycle cycle){
+    String[] time= new String[getMaxNumberOfPeriodsADay(cycle)];
+    int maxPer=0;
+      Day day =(Day)cycle.getCurrentDay();
+      int inc=0;
+      for (int i=0; i< day.getSetOfSequences().size(); i++){
+        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(i).getAttach();
+        for (int j=0; j< seq.getSetOfPeriods().size(); j++){
+          Period per = (Period)seq.getSetOfPeriods().getResourceAt(j).getAttach();
+          time[inc]= per.getBeginHour()[0]+":"+per.getBeginHour()[1];
+          inc++;
+        }
+      }
+    return time;
+  }
+
+  /**
    * get a period
    * @param Cycle the cycle where we want to find the period
    * @param int the day reference number where we want to find the period
