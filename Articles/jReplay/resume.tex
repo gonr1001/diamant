@@ -2,29 +2,21 @@
 Dans la maintenance de logiciel, un des aspects qui demande plus
 de temps est la recherche des erreurs ou \emph{bugs} qui se
 présentent chez l'utilisateur.  C'est ce fait qui nous a incités à
-développer un outil destiné à enregistrer le comportement d'un
-utilisateur dans une application, le but étant de reproduire
-intégralement et de façon automatique le problème avec l'aide de
-l'enregistrement effectué. Le principal avantage est de pouvoir
-répéter fidèlement le comportement de l'utilisateur afin de
-reproduire la séquence conduisant à un problème logiciel ou
-\emph{bug}. Ainsi, il sera possible de fournir le logiciel à
-l'utilisateur en lui indiquant qu'en cas d'erreur, le programmeur
-dispose d'outils pour trouver le problème plus rapidement.
+développer l'outil jReplay destiné à enregistrer le comportement
+d'un utilisateur dans une application, le but étant de reproduire
+de façon automatique le problème avec l'aide de l'enregistrement
+effectué. Le principal avantage est de pouvoir répéter le
+comportement de l'utilisateur afin de reproduire la séquence
+conduisant à un problème logiciel ou \emph{bug}. Ainsi, il sera
+possible de fournir le logiciel à l'utilisateur en lui indiquant
+qu'en cas d'erreur, le programmeur dispose d'outils pour trouver
+le problème plus rapidement.
 
-
-
-%Dans cet article, nous proposons de voir le problème de
-%construction d'horaires d'une manière plus élargie, c'est-à-dire,
-%de considérer la production d'horaires comme un processus  qui va
-%de la cueillette et saisie de données jusqu'à la livraison d'un
-%horaire, incluant la construction. Ainsi, la production d'un
-%horaire peut être automatisée en utilisant les bases de données,
-%un site Web et un logiciel de construction d'horaires. Nous avons
-%analysé le flot d'information nécessaire à la production d'un
-%horaire, ce qui nous a permis de mieux comprendre les
-%caractéristiques de ces systèmes. Nous proposons l'architecture
-%générique d'un système de production d'horaires de cours et
-%d'examens. Cette architecture a été bâtie autour de deux qualités
-%fondamentales pour le développement d'un logiciel~: l'ouverture et
-%l'extensibilité.
+jReplay a été conçu pour des applications interactives Java
+construits avec la structure MVC (Modèle Vue Contrôleur) qui est
+la plus utilisé actuellement. Il a été construit en utilisant des
+outils comme Log4j et JUnit. Log4j est un outil qui permet faire
+la journalisation d'une application et d'activer ou de désactiver
+certains messages en fonction des besoins. Pour autre parte, JUnit
+permet faire de test unitaires qui attestent la validité de
+jReplay.
