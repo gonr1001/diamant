@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.113 $  $Date: 2004-06-23 05:29:01 $
+ * Title: DMenuBar $Revision: 1.114 $  $Date: 2004-06-23 21:29:36 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.113 $
+ * @version $Revision: 1.114 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -528,10 +528,10 @@ public class DMenuBar extends JMenuBar{
     _user1.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
     // submenu1: menu for user 1
-    _userSubMenu1 = new JMenu(DConst.STUDENTS_REPARTITION);
-    _userSubMenu1.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    //_userSubMenu1 = new JMenu(DConst.STUDENTS_REPARTITION);
+    //_userSubMenu1.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
-    _userTestMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
+    /*_userTestMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
    _userTestMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
    _userTestMixingBalance.setCommand(new BalanceMixingAlgorithmCmd(true));
    _userTestMixingBalance.addActionListener(_dApplic);
@@ -548,14 +548,16 @@ public class DMenuBar extends JMenuBar{
    _userTestMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd(true));
    _userTestMixingOptimize.addActionListener(_dApplic);
    _userSubMenu1.add(_userTestMixingOptimize);
+   */
 
-   _userTestMixingPersonal = new CmdMenu(DConst.STUDENTMIXINGPERSO);//, this);
+   _userTestMixingPersonal = new CmdMenu(DConst.STUDENTS_REPARTITION+" "
+       +DConst.STUDENTMIXINGPERSO);//, this);
    _userTestMixingPersonal.setFont(new java.awt.Font(_mfont, _font, _nPT));
    _userTestMixingPersonal.setCommand(new PersonalizeMixingAlgorithmCmd(true));
    _userTestMixingPersonal.addActionListener(_dApplic);
-   _userSubMenu1.add(_userTestMixingPersonal);
+   //_userSubMenu1.add(_userTestMixingPersonal);
    // add item in submenu 1
-   _user1.add(_userSubMenu1);
+   _user1.add(_userTestMixingPersonal);
 
     _userTest.add(_user1);
 

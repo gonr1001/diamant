@@ -16,7 +16,6 @@
  import dInterface.DApplication;
  import dInternal.dOptimization.SelectAlgorithm;
 
- import javax.swing.JOptionPane;
 
  public class PersonalizeMixingAlgorithmCmd implements Command{
 
@@ -37,61 +36,14 @@
    public void execute(DApplication dApplic) {
      DConst.USER_TEST_ACTIV= _USER_TEST_ACTIV;
      //new PersonalizeMixingAlgorithmDlg();
-     int personalizeAcceptableVariation=this.inPutValue();
-     (new SelectAlgorithm(personalizeAcceptableVariation,dApplic.getDMediator().getCurrentDoc().getDM())).execute();
-     new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
-   }
-
-   /**
-    *
-    * @return
-    */
-   private int inPutValue(){
-     String result="";
-     boolean isNotValid=true;
-     JOptionPane inputPanel= new JOptionPane();
-     while(isNotValid){
-       result= inputPanel.showInputDialog("Variation Acceptable");
-       if(validation(result)!=0)
-         JOptionPane.showMessageDialog(inputPanel,"Valeur éronnée ");
-       else
-         isNotValid= false;
+     PersonalizeMixingAlgorithmDlg perso= new PersonalizeMixingAlgorithmDlg("8");
+     String input= perso.showInputDialog();
+     if(input!=null){
+       int personalizeAcceptableVariation=Integer.parseInt(input);
+       (new SelectAlgorithm(personalizeAcceptableVariation,dApplic.getDMediator().getCurrentDoc().getDM())).execute();
+       new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
      }
-     return Integer.parseInt(result);
    }
 
-   /**
-  *
-  * @return
-  */
- private int validation(String str) {
-   if(!testText(str, 0, 99))
-     return 1;
-   return 0;
- }
 
- /**
-  *
-  * @param str
-  * @param inf
-  * @param sup
-  * @return
-  */
- private boolean testText(String str, int inf , int sup) {
-   boolean res = false;
-   int i;
-   if (str == null)
-     return res;
-   if(str.length()==0)
-     return res;
-   try {
-     i = Integer.parseInt(str);
-   } catch (Exception e) {
-     return res;
-   }
-   if ( i >= inf && i <= sup)
-     res = true;
-
-   return res;
-  }
 }
