@@ -29,9 +29,9 @@ public class Resource {
    * @param String the id of the Resource
    * @param DXObject the object to set in the _resourceObjet field
    * */
-  public Resource( String id, DXObject obj) {
+  public Resource(String id, DXObject obj) {
     _resourceID = id;
-    _resourceObjet = new DXObject();
+    //_resourceObjet = new DXObject();
     _resourceObjet = obj;
   }
 
@@ -72,7 +72,7 @@ public class Resource {
    * @param DXObject the resource Object
    * */
   public void setObject(DXObject obj){
-    _resourceObjet = new DXObject();
+    //_resourceObjet = new DXObject();
     _resourceObjet = obj;
   }
 

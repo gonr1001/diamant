@@ -29,14 +29,25 @@ public class StudentsList extends ResourceList{
    * INPUTS: byte[]  dataloaded (information from the student file in byte type)
    * */
   public StudentsList(byte[] dataloaded) {
-    super(dataloaded,1);
+    super(1);
     _dataloaded = dataloaded;
   }
 
   /**
-   * analyse student datas by a finished states machine
-   * INPUT: beginPosition, an integer (start position of the finished states machine)
-   * OUTPUT: boolean. "true" the analysis proceeded successfully and false otherwise
+   * Analyse student data coming from a file (_dataloaded) by a finite-state machine
+   * @param int  beginPosition, an integer (start state of the finite-state machine)
+   * @return  boolean. "true" if the analysis proceeded successfully and false otherwise
+   *
+   * <p>
+   * Requires: _dataloaded must be initiaklized by the constructor.
+   *
+   * <p>
+   * Modifies: nothing.
+   *
+   * <p>
+   * Effect: the _dataloaded array is scanned looking for bad data,
+   *         if some bad data is found the a FatalProblemDlg is displayed
+   *         then the application exits
    * */
   public boolean analyseTokens(int beginPosition){
     String token;
@@ -58,7 +69,7 @@ public class StudentsList extends ResourceList{
           }catch (NumberFormatException exc){
             //System.out.println(exc+" --- "+token+ " *** line: "+line);//debug
             new FatalProblemDlg(
-            "Wrong student matricule at line: "+line+  "in the student file:" +
+            "Wrong student matricule at line: "+ line +  "in the student file:" +
             "\n" + "I was in StudentList class and in analyseTokens method ");
             System.exit(1);
           }
@@ -89,9 +100,20 @@ public class StudentsList extends ResourceList{
   }
 
   /**
-   * build studentlist from student datas by a finished states machine
-   * INPUT: beginPosition, an integer (start position of the finished states machine)
-   * OUTPUT: boolean. "true" the analysis proceeded successfully and false otherwise
+   * build a ListOfStudent using
+   * student data coming from a file (_dataloaed) by a finite-state machine
+   * @param int  beginPosition, an integer (start state of the finite-state machine)
+   * @return  boolean. "true" if the analysis proceeded successfully and false otherwise
+   *
+   * <p>
+   * Requires: _dataloaded must be scanned by analyseTokens.
+   *
+   * <p>
+   * Modifies: the associated ListOfResources is created and
+   *           built.
+   *
+   * <p>
+   * Effect: nothing.
    * */
   public void buildStudentList(int beginPosition){
     String token;
@@ -124,11 +146,7 @@ public class StudentsList extends ResourceList{
           while (courses.hasMoreTokens()){
             student.addCourse(courses.nextToken());
           }//while (courses.hasMoreTokens())
-          addStudent(studentKey,studentName,studentTemp,student);
-          /*resource = new Resource(studentName,student);
-          setCurrentKey(studentKey);
-          resource.setMessage(studentTemp);
-          addResource(resource);*/
+          addStudent(studentKey, studentName, studentTemp, student);
           position = 1;
           break;
       }// end switch (position)
@@ -145,7 +163,7 @@ public class StudentsList extends ResourceList{
   public boolean addStudent(long matricule, String name, String temp, Student studentChoice){
     if (studentChoice.getCourses().size()!=0){
       //Student newStudent = new Student();
-      Resource resource = new Resource(name,studentChoice);
+      Resource resource = new Resource(name, studentChoice);
       if (temp.length()==0)
         resource.setMessage("0000000000000");
       else
@@ -162,7 +180,7 @@ public class StudentsList extends ResourceList{
    * OUTPUT: boolean, "true" if student removed succesfully and false if student
    * did'nt found
    * */
-  public boolean removeStudent(long matricule){
+  private boolean removeStudent(long matricule){
     int index= getIndexOfResource(matricule);
     if(index!=-1){
       removeResource(matricule);

@@ -18,8 +18,8 @@ public class Student extends DXObject{
  * fields description
  * */
 
-  /** 0= Male; 1=Female*/
-  private int _sex=0;
+  /** 1= Male; 0=Female*/
+  private int _sex=1;
   /** session of study*/
   private int _session=0;
   /**0=null; 1= bas; 2= moyen; 3= bon; 4= tres bon*/

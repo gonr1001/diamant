@@ -41,18 +41,18 @@ public class ResourceList extends DXObject{
   /**
    * Constructor call with byte[]  dataloaded and resource type resType
    * */
-  public ResourceList(byte[]  dataloaded, int resType) {
+/*  public ResourceList(byte[]  dataloaded, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _resourceList = new Vector(1,1);
     _resourceType = resType;
-  }
+  }*/
 
   /**
    * Constructor call with byte[]  dataloaded,  int nbDay (number of days),
    * int ndPerDay (number of period a day) and resource type resType
    * */
-  public ResourceList(byte[]  dataloaded, int nbDay, int ndPerDay, int resType) {
-    _st = new StringTokenizer(new String (dataloaded),"\r\n" );
+  public ResourceList(int nbDay, int ndPerDay, int resType) {
+    //_st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _numberOfLines = nbDay;
     _numberOfColumns = ndPerDay;
     _resourceList = new Vector(1,1);

@@ -21,7 +21,7 @@ public class ActivitiesList extends ResourceList{
    * Constructor
    * */
   public ActivitiesList(byte[] dataloaded) {
-    super(dataloaded,1);
+    super(0);
     _dataloaded = dataloaded;
   }
 

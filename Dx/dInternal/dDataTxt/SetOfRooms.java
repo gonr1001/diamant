@@ -24,7 +24,7 @@ public class RoomsList extends ResourceList{
   * int nbDay (number of days), int nbPerDay (number of periods a day)
   * */
   public RoomsList(byte[] dataloaded, int nbDay, int nbPerDay) {
-    super( dataloaded, nbDay, nbPerDay,3);
+    super(nbDay, nbPerDay,3);
     _dataloaded = dataloaded;
     _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;

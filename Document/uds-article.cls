@@ -183,7 +183,7 @@
 \vspace*{-0.5 in}%
 \begin{center}%
 \mbox{\includegraphics[draft=false,height=25pt]{udslogo.eps}} \\[0.5ex] %
-{\renewcommand{\arraystretch}{1}\begin{tabular}{c}\Large\lafaculte\\\large s\ledepartement\end{tabular}}
+{\renewcommand{\arraystretch}{1}\begin{tabular}{c}\Large\lafaculte\\\large \ledepartement\end{tabular}}
 \vfill{\LARGE\bf\sf\begin{tabular}{c}\letitre\end{tabular}}\par%
 \ifx\empty\lelogo
     \typeout{}\typeout{-----Pas d'image de logo)}\typeout{}%

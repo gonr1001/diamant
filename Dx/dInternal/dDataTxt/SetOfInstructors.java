@@ -25,7 +25,7 @@ private int _numberOfColumns;// represent number of period a day.
   * int nbDay,
   * */
  public InstructorsList( byte[]  dataloaded, int nbDay, int nbPerDay) {
-   super(dataloaded, nbDay, nbPerDay,2);
+   super(nbDay, nbPerDay,2);
    _dataloaded = dataloaded;
    _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;
