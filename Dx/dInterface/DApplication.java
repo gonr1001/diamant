@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.19 $  $Date: 2003-09-09 10:19:28 $
+ * Title: DApplication $Revision: 1.20 $  $Date: 2003-09-12 16:44:07 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -111,8 +111,6 @@ public class DApplication implements ActionListener {
     jFrame.setContentPane(panel);
     _dMenuBar = new DMenuBar( this );
     jFrame.setJMenuBar(_dMenuBar);  //constructs the menu bar
-
-    //JPanel jpToolBar = new JPanel();
 
     _tbar = new DToolBar(this); //constucts the tool bar
     //jpToolBar.add(_tbar);

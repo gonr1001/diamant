@@ -225,7 +225,7 @@ class __options {
 <oigroup:<oiref:java#Class#dInternal.dData.Type:oiref>=2114,776,200,139,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>=210,116,1500,116:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.RoomsAttributesInterpretor:oiref>=10,10,200,155,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudents:oiref>=1800,90,200,267,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudents:oiref>=1800,90,200,283,1:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfStudents#dInternal.dData.SetOfResources:oiref>=1800,223,1700,223:oigroup>
 */
 class __positions {

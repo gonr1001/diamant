@@ -75,11 +75,11 @@ class reference16 {
 */
 class reference {
 }/**
-@__ref <oiref:design#Class#id4r5wfdioz84u1dioz8xkr.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id23apodi7tn7nsdiolxsue.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInterface.dAffectation:oiref> 
 */
-class reference7 {
+class reference10 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -90,11 +90,11 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:design#Class#id4r5wfdioz84u1dioz8xkr.diagram:oiref>=429,5,140,212,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_lookAndFeel:oiref>=114,1652,995,576:oigroup>
+@__positions <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_lookAndFeel:oiref>=114,1652,995,576:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.dTimeTable.TTDefinitionDlg#_dApplic:oiref>=586,1652,449,1572:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.TTDefinitionCmd:oiref>=1570,1126,114,101,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref>=503,1652,167,1134,1:oigroup>
+<oigroup:<oiref:design#Class#id23apodi7tn7nsdiolxsue.diagram:oiref>=429,9,140,212,1:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dUtil.PLAFCmd#dInterface.Command:oiref>=823,1126,1081,705:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.TTDefinitionCmd#dInterface.Command:oiref>=1627,1126,1135,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DToolBar#_dApplic:oiref>=171,657,389,1126:oigroup>
