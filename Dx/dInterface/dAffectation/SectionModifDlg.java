@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.7 $  $Date: 2004-02-17 18:27:07 $
+ * Title: SectionModifDlg $Revision: 1.8 $  $Date: 2004-02-17 22:56:52 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -95,16 +95,12 @@ private DApplication _dApplic;
       //new SelectGroupDlg(this, vect, false);
       Object str= _listOfElements[_selectedPanel].getSelectedValue();
       if (str!=null && (type.getSetOfSections().size()>1)){
+        vect= new Vector();
         vect.add(str.toString());
         new SelectGroupDlg(this, vect, false);
         //init();
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       }
-      /*Resource section= ((Type)_type.getAttach()).getSetOfSections().getResource(_listOfElements[_selectedPanel].
-       getSelectedValue().toString());*/
-      /*if(((Type)_type.getAttach()).getSetOfSections().size()>1){
-      ((Type)_type.getAttach()).getSetOfSections().removeResourceAt(
-          ((Type)_type.getAttach()).getSetOfSections().size()-1);*/
 
     }
 
