@@ -1,25 +1,36 @@
 \chapter{Construction d'un horaire avec \dx{}}
+\section{Introduction}\ \label{horaire}
+Construire un horaire avec \dx{} suppose que l'utilisateur a déjà
+sur son ordinateur les fichiers nécessaires (ceux du STI et ceux
+de la Faculté)~: \verb!cours.sig!, \verb!choixet.sig!,
+\verb!disprof.sig! et \verb!locaux.txt!. Ces fichiers peuvent
+porter n'importe quel nom, mais pour notre exemple, les noms sont
+bien explicites. Il est conseillé de regrouper toutes les
+informations concernant les horaires d'un trimestre dans un
+répertoire (par exemple \verb!hiver04! ou \verb!h2004!). Ainsi,
+les fichiers d'importation et les fichiers produits pendant la
+construction d'un horaire seront ensemble.
 
-Construire un horaire avec \dx{} laisse supposer que l'utilisateur
-a déjà sur son ordinateur les fichiers nécessaires (ceux du STI et
-ceux de la Faculté)~: cours.sig, choixet.sig, disprof.sig et
-locaux.txt. Ces fichiers peuvent porter n'importe quel nom, mais
-pour notre exemple, les noms sont bien explicites. Il est
-conseillé de regrouper toutes les informations concernant les
-horaires d'un trimestre dans un répertoire (par exemple hiver04 ou
-h2004). Ainsi, les fichiers d'importation et les fichiers produits
-pendant la construction d'un horaire seront ensemble.
-
-La construction d'un nouvel horaire avec \dx{} comporte cinq phases: 
+La construction d'un nouvel horaire avec \dx{} comporte cinq phases:
 \begin{itemize}
-    \item Phase 1: elle concerne la préparation de données;
+    \item Phase 1: elle concerne le chargement de données dans le logiciel;
     \item Phase 2: elle concerne la modification et d'épuration des données;
     \item Phase 3: elle concerne la construction à proprement parler;
-    \item Phase 4: elle concerne l'utilisation d'outils permettant de raffiner l'horaire (Affectation manuelle, rapports, etc);
+    \item Phase 4: elle concerne l'utilisation d'outils permettant de raffiner
+    l'horaire (ouverture et sauvegarde d'un horaire, affectation manuelle, rapports, etc.);
     \item Phase 5: elle concerne l'exportation de l'horaire.
-\end{itemize}    
+\end{itemize}
 
-Nous vous présenterons dans ce chapitre toutes ces phases appliquées à la construction d'un horaire de cours et d'un horaire d'examen. Toutefois, les options du logiciel ne seront pas toutes présentées.
+En principe un horaire peut être fait en suivant les phases 1, 3
+et 5. Mais, il est fort possible qu'il soit nécessaire de modifier
+et d'épurer les données, phase 2. Il est aussi possible qu'il soit
+nécessaire de sauvegarder l'horaire et de continuer plus tard le
+travail, ou faire des affectations manuelles à l'horaire, ou
+encore visualiser les rapports phase 4.
+
+Nous vous présenterons dans ce chapitre toutes ces phases
+appliquées à la construction d'un horaire de cours et d'un horaire d'examen.
+Toutefois, les options du logiciel ne seront pas toutes présentées.
 
 \section{Production d'un horaire de cours}\label{prepacours}
 
@@ -28,7 +39,8 @@ Nous vous présenterons dans ce chapitre toutes ces phases appliquées à la constr
 \begin{enumerate}
     \item Lancer \dx{}.
     \item Aller au menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Nouvel horaire}}
-    et enfin sélectionner le sous-menu \textbf{\emph{Horaire cycle}}.
+    \Rar \textbf{\emph{Horaire cycle}}\footnote{Le symbole \Rar est utilisé pour dire
+    qu'il faut chercher un niveau hiérarchique plus bas un sous-menu.}
     Une boîte de dialogue comme celle
 de la Figure \ref{selectgrillecyc} doit apparaître et elle vous
 permettra de choisir le fichier (fichier avec extension \emph{.xml})
@@ -123,7 +135,7 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
         \caption{Affectation d'événement}\label{eventc}
       \end{center}
     \end{figure}
-    
+
 Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
 
     \item Ajouter ou supprimer un groupe ou un événement en cliquant sur le menu \textbf{\emph{Modification}} et le sous menu \textbf{\emph{Activité}} pour voir apparaître la fenêtre d'\textbf{\emph{Activités}} de la figure \ref{modifactc}.
@@ -283,7 +295,7 @@ Elles sont interprétées de la manière suivante:
     \item La ligne \verb!GEI100.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 0} représente les potentiels conflits entre les événements \verb!GEI100.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux.
     \item La ligne \verb!GEI200.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 1} représente les potentiels conflits entre les événements \verb!GEI200.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 1 conflit de locaux.
     \item La ligne \textcolor[rgb]{1.00,0.00,0.00}{13 2 1} représente la somme des potentiels conflits de la période (10 conflicts d'étudiants, 1 conflit d'enseignants, 1 conflit de locaux) aux conflits réels existant dans la période (3 conflits d'étudiants, 1 conflit d'enseignants et 0 conflit de locaux).
-\end{itemize}    
+\end{itemize}
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -478,7 +490,7 @@ Pour exporter les données, aller au menu \textbf{\emph{Fichier}}, puis sélection
 \begin{itemize}
     \item \verb!«nom du document»_Export_1.txt! (il contient l'horaire);
     \item \verb!«nom du document»_Export_2.txt! (il contient les étudiants, leurs choix d'activité et leurs groupes).
-\end{itemize}     
+\end{itemize}
 
 \section{Production d'un horaire d'examen}\label{prepaexam}
 
@@ -587,9 +599,9 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
         \caption{Affectation d'événement}\label{evente}
       \end{center}
     \end{figure}
-    
+
 Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre sans appliquer les changements.\\
-    
+
 \item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignante}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
 
     \begin{figure}[h]
@@ -686,7 +698,7 @@ Elles sont interprétées de la manière suivante:
     \item La ligne \verb!GEI100.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 0} représente les potentiels conflits entre les événements \verb!GEI100.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux.
     \item La ligne \verb!GEI200.1.01.1! \textcolor[rgb]{1.00,0.00,0.00}{5 0 1} représente les potentiels conflits entre les événements \verb!GEI200.1.01.1! et \verb!GEI220.1.01.1!. Elle indique 5 conflits d'étudiants, 0 conflit d'enseignants et 1 conflit de locaux.
     \item La ligne \textcolor[rgb]{1.00,0.00,0.00}{13 0 1} représente la somme des potentiels conflits de la période (10 conflicts d'étudiants, 0 conflit d'enseignants, 1 conflit de locaux) aux conflits réels existant dans la période (3 conflits d'étudiants, 0 conflit d'enseignants et 0 conflit de locaux).
-\end{itemize}    
+\end{itemize}
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -876,4 +888,4 @@ Pour exporter les données, aller au menu \textbf{\emph{Fichier}}, puis sélection
 \begin{itemize}
     \item \verb!«nom du document»_Export_1.txt! (il contient l'horaire);
     \item \verb!«nom du document»_Export_2.txt! (il contient les étudiants, leurs examens).
-\end{itemize}     
+\end{itemize}
