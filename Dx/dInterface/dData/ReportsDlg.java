@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.13 $  $Date: 2004-10-21 13:39:45 $
+ * Title: ReportsDlg $Revision: 1.14 $  $Date: 2005-02-08 18:54:03 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -41,7 +41,7 @@ import javax.swing.JTabbedPane;
 import dConstants.DConst;
 import dInterface.DApplication;
 //import dInterface.ProgressBar;
-import dInternal.dDataTxt.StandardReportData;
+import dInternal.dData.DStandardReportData;
 
 public class ReportsDlg extends JDialog {// implements ActionListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize
@@ -56,7 +56,7 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
                                  DConst.REPORT_DLG_TAB3};
   private DApplication _dApplic;
   private JTabbedPane _tabbedPane;
-  private StandardReportData _srd;
+  private DStandardReportData _srd;
   //private String _reportData;
 
   public ReportsDlg(DApplication dApplic) {
@@ -67,7 +67,7 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
     //_resources = new SetOfResources[1];
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,_dApplic.getJFrame());
     //pBar.execute();
-    _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
+    _srd = new DStandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
     //System.out.println("Génération de rapports terminé");
     //pBar.close();
@@ -105,7 +105,7 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
   }
 
-  public StandardReportData getStandardReportData() {
+  public DStandardReportData getStandardReportData() {
     return _srd;
   }
 

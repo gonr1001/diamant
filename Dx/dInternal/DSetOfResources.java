@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.4 $  $Date: 2005-02-07 20:21:04 $
+* Title: DSetOfResources $Revision: 1.5 $  $Date: 2005-02-08 18:54:03 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,15 +14,13 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: garr2701 $
+* @version $Revision: 1.5 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
 package dInternal;
 import java.util.Vector;
-
-//import dInternal.dUtil.DXObject;
 import dInternal.DResource;
 
 public abstract class DSetOfResources extends DObject{
