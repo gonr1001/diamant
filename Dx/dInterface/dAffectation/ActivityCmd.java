@@ -9,14 +9,18 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
+import javax.swing.JFrame;
+
 import dInterface.Command;
 import dInterface.DApplication;
 
 
 
+
 public class ActivityCmd implements Command{
 
-  public ActivityCmd() {
+  public ActivityCmd(JFrame jFrame) {
+    System.out.print("ActivityCmd");
   }
 
   public void execute(DApplication dApplic) {
