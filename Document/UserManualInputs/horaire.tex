@@ -239,9 +239,17 @@ Une fois l'affectation initiale effectuée, l'étape suivante consiste à lancer le
     puis sélectionner le menu \textbf{\emph{Nouvel horaire}}
     et enfin sélectionner le sous-menu \textbf{\emph{Horaire Examen}}.
     Une boîte de dialogue comme celle
-de la Figure \ref{selectgrillecyc} doit apparaître et elle vous
+de la Figure \ref{selectgrilleexam} doit apparaître et elle vous
 permettra de choisir le fichier (fichier avec extension \emph{.xml})
 contenant la définition de votre grille horaire.
+
+    \begin{figure}[h]
+    % Requires \usepackage{graphicx}
+    \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/selectXMLfileExam.eps}
+        \caption{Selection de la grille horaire d'examen}\label{selectgrilleexam}
+    \end{center}
+    \end{figure}
 
     \item En cliquant sur le bouton \emph{\textbf{OK}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grilleexam}).
 \begin{figure}[h]
@@ -252,7 +260,15 @@ contenant la définition de votre grille horaire.
   \end{center}
 \end{figure}
 
-    \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers que vous venez de faire.
+    \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimportex}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers que vous venez de faire.
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=2.5in]{UserManualInputs/images/autoimport.eps}
+    \caption{Définition des fichiers d'importation}\label{defautoimportex}
+  \end{center}
+\end{figure}
 
 Il est recommandé d'enregistrer cette configuration en utilisant un nom de fichier unique et représentatif.
 
@@ -270,7 +286,7 @@ Exemple: choisissez le nom de fichier \emph{H04exam} pour \emph{Hiver 2004 horai
 À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{Affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{Affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
 
 \begin{enumerate}
-    \item Suppression des activités de nature 2, seulement les activités de nature 1 seront conservées pour l'horaire.
+    \item Suppression des activités de nature 2, seulement les activités de nature 1 seront conservées pour l'horaire. Tous les événements seront initialisés de sorte à les rendre non placés et non figés.
     \item Suppression des groupes aux activités en possédant plusieurs, un seul groupe sera conservé pour l'horaire (le premier groupe ou \emph{groupe A}).
     \item Suppression des événements aux activités en possédant plusieurs, un seul événement sera conservé pour l'horaire.
     \item Modification de la disponibilité des enseignants afin de les rendre tous disponibles.
@@ -351,7 +367,7 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
 \subsection{Construction de l'horaire}
 
-Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepae}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation manuelle est faite à la section \ref{finprepae}.
+Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepae}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation initiale est faite à la section \ref{finprepae}.
 
 Une fois l'affectation initiale effectuée, l'étape suivante consiste à lancer le sous menu \textbf{\emph{Construire l'horaire}} à partir du menu \textbf{\emph{Optimisation}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
 
@@ -366,14 +382,17 @@ La modification des contraintes à respecter par \dx{} lors de la construction au
     \end{figure}
 
 \begin{itemize}
-    \item \emph{Max Conflits Étu entre 2 Eve}: ce paramètre permet de fixer le nombre maximal de conflits d'étudiants admissible entre deux événements.
-    \item \emph{Max Conflits Ens entre 2 Eve}: ce paramètre permet de fixer le nombre maximal de conflits d'enseignants admissible entre deux événements.
-    \item \emph{Max Conflits Loc entre 2 Eve}: ce paramètre permet de fixer le nombre maximal de conflits de locaux admissible entre deux événements.
+    \item \emph{Max Conflits Étu entre 2 Eve}: ce paramètre permet de fixer le nombre maximal admissible de conflits d'étudiants entre deux événements, dans une période.
+    \item \emph{Max Conflits Ens entre 2 Eve}: ce paramètre permet de fixer le nombre maximal admissible de conflits d'enseignants entre deux événements, dans une période.
+    \item \emph{Max Conflits Loc entre 2 Eve}: ce paramètre permet de fixer le nombre maximal admissible de conflits de locaux entre deux événements, dans une période.
     \item \emph{Placer dans périodes (0=normale, 1=normale et basse, 2=normale, basse et nulle)}: ce paramètre permet de spécifier les types de périodes (normale, basse, nulle) de la grille horaire dans lesquels un événement peut être placé.
     \item \emph{Nombre Max de cours dans une période}: ce paramètre permet de spécifier le nombre maximal d'événements pouvant être placés dans une même période de la grille horaire.
+    \item \emph{Période d'écart}: ce paramètre permet de spécifier l'écart (en nombre de périodes) à respecter entre deux événements potentiellement en conflit (conflits d'étudiants).
 \end{itemize}    
 
 Il est possible de modifier les contraintes et lancer ensuite la construction de l'horaire afin que le logiciel  utilise les nouvelles contraintes pour placer les événements qu'il n'a pas pu précédemment placer; tout ceci de façon itérative jusqu'à obtention d'un résultat paraissant satisfaisant aux yeux de l'utilisateur.
+
+Il est également possible de revenir à l'état initial de l'horaire (l'état de l'horaire juste après l'affectation initiale). Pour cela, il suffit de d'ouvrir la fenêtre \textbf{\emph{Liste des événements}} à partir du sous-menu \textbf{\emph{Événements}} du menu \textbf{\emph{Affectation}}, ensuite de sélectionner tous les événements de la colonnes des \textbf{\emph{Placés}}, puis de les faire passer de la colonne des \textbf{\emph{Placés}} à celle des \textbf{\emph{Non placés}} en cliquant sur la flèche allant de la gauche vers la droite et enfin cliquer sur le bouton Appliquer pour effectuer les changements.
 
 Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
 
@@ -388,7 +407,7 @@ L'affectation manuelle permet à l'utilisateur de placer individuellement les évé
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=3.5in]{UserManualInputs/images/manualaffect.eps}
-        \caption{Liste des événements}\label{man}
+        \caption{Affectation manuelle}\label{man}
       \end{center}
     \end{figure}
 

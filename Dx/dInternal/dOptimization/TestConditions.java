@@ -220,7 +220,7 @@ public class TestConditions {
     for (int i=conflictsPreference[3]+1; i< 3; i++)
       _avoidPriority[inc++]=i;
     _periodAcceptableSize= conflictsPreference[4];
-    //_periodVariationEvents = conflictsPreference[5];
+    _periodVariationEvents = conflictsPreference[5];
   }
 
   /**
