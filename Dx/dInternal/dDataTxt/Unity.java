@@ -81,6 +81,7 @@ public class Unity extends DXObject{
     _isCyclic = cyclic;
   }
 
+
   /**
    * get fixed state of the bloc
    * @param boolean the bloc state

@@ -136,7 +136,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         _leftList.clearSelection();
       _currentActivities = ((JList)e.getSource()).getSelectedValues();
       if (e.getClickCount() == 2) {
-        new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
+        new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0],false);
       }//end if
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){

@@ -54,7 +54,7 @@ private String _title;
     Resource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
     //new UnityModifDlg(this,_title+unity.getID()+".", section);
-    new EditActivityDlg(this,this._dApplic, _title+unity.getID()+".");
+    new EditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
   }
 
   /**
@@ -73,6 +73,12 @@ private String _title;
       int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
       _section.addUnity(ID,nbCycle, true);
       init();
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+    }
+    if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
+     _section.getSetOfUnities().removeResourceAt(_section.getSetOfUnities().size()-1);
+      init();
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
     }
 
   }

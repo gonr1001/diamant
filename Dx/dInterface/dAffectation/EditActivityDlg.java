@@ -27,6 +27,8 @@ import dInternal.dTimeTable.*;
 import dInternal.dData.*;
 import dInternal.dUtil.DXToolsMethods;
 
+import com.iLib.gDialog.FatalProblemDlg;
+
 public class EditActivityDlg extends JDialog implements ActionListener, ChangeListener{
 
   private DApplication _dApplic;
@@ -37,6 +39,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private String _INSTRUCTOR= "Enseignant:";
   private String _ROOM= "Local:";
   private String _UNAVAILABLE= "------";
+  private boolean _isModified=false;
   //private String _DIALOGMESSAGE= "Affectation d'évenement";
   Vector _unities = new Vector();// contains event resource
 
@@ -50,10 +53,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * @param dApplic The application
    * @param currentActivity The ativiti choiced in the activityDialog
    */
-  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity) {
+  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, boolean isModified) {
     super(dialog, "Affectation d'évenement");
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
+    _isModified= isModified;
     //_activityName = currentActivity;
     buildUnitiesVector(currentActivity);
     jbInit();
@@ -103,16 +107,25 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     String command = e.getActionCommand();
     //boolean _change = false, _restore = false;
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
+      boolean apply=false;
       for(int i=0; i< this._unities.size(); i++){
         _currentActivityIndex=i;
-        applyChanges();
+        apply= applyChanges();
+        if(!apply){
+          new FatalProblemDlg(this,"Valeur eronnée");
+          break;
+        }
       }
+      if(apply){
       _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
       dispose();
+      }
 
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
-      applyChanges();
-      _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+      if( applyChanges()){
+        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+      }else
+        new FatalProblemDlg(this,"Valeur eronnée");
     }
 
   }
@@ -128,6 +141,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
   }
 
+
   /**
    * Builds a panel to be placed in a tab of the tabbedPane
    * @return a JPanel to be placed in a tab of the tabbedPane
@@ -136,7 +150,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     JPanel centerPanel = new JPanel(new GridLayout(0,1));
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
     JPanel panel = new JPanel();
-    JLabel duration, day, hour, room, instructor, resDuration;
+    JLabel duration, day, hour, room, instructor;
     JComboBox  cbDuration, cbDay, cbHour, cbRoom, cbInstructor;
     JToggleButton place, fix;
     duration = new JLabel(_DURATION);
@@ -144,7 +158,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     hour = new JLabel(_HOUR);
     room = new JLabel(_ROOM);
     instructor = new JLabel(_INSTRUCTOR);
-    resDuration= new JLabel(buildDuration());
+    //resDuration= new JLabel(buildDuration());
+    JTextField resDuration= new JTextField(2);
+    resDuration.setText(buildDuration());
+    resDuration.setEnabled(_isModified);
     Vector[] vect = buildDayList();
     cbDay = new JComboBox(vect[1]);
     cbDay.setSelectedItem(vect[0].get(0).toString());
@@ -354,13 +371,16 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   /**
    * apply change in a event
    */
-  private void applyChanges(){
+  private boolean applyChanges(){
     Cycle cycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle();
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     //remove event
     _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),-1);
 
     JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
+    String duration= ((JTextField)((JPanel)tpane.getComponent(0)).getComponent(1)).getText();
+    if ((!DXToolsMethods.isIntValue(duration)) || (Integer.parseInt(duration)<1))
+      return false;
     String day= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
     String hour= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(3)).getSelectedItem().toString();
     String room= ((JComboBox)((JPanel)tpane.getComponent(2)).getComponent(1)).getSelectedItem().toString();
@@ -370,6 +390,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
       Integer.parseInt(DXToolsMethods.getToken(hour,":",0))};
     String periodKey= cycle.getPeriod(daytime);
+    event.setDuration( Integer.parseInt(duration)*_dApplic.getDMediator()
+                 .getCurrentDoc().getDM().getTTStructure().getPeriodLenght());
     event.setKey(4,periodKey);
     event.setKey(1,Long.toString(getResourceKey(_dApplic.getDMediator().getCurrentDoc().
                                   getDM().getSetOfInstructors(),instructor)));
@@ -382,6 +404,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().updateActivities(vect);
     //add event
     _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1);
+    return true;
   }
 
   /**

@@ -81,6 +81,14 @@ public class EventAttach extends DXObject {
     return _eventDuration;
   }
 
+  /**
+   *
+   * @return
+   */
+  public void setDuration(int duration){
+    _eventDuration= duration;
+  }
+
 
   /**
    * Tests if the specified string is a component in the tabulist vector.
