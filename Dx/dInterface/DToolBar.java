@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.21 $  $Date: 2003-07-10 12:01:44 $
+ * Title: ToolBar $Revision: 1.22 $  $Date: 2003-07-10 14:50:35 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: ysyam $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -166,7 +166,6 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
       public void actionPerformed(ActionEvent e) {
          String item= (String)periodSelector.getSelectedItem();
          setPeriodSelector(item);
-
       }//end actionPerformed
     });//end addActionListener
 
