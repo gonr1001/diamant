@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.96 $  $Date: 2003-10-21 16:23:47 $
+ * Title: DDocument $Revision: 1.97 $  $Date: 2003-10-21 19:21:32 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.96 $
+ * @version $Revision: 1.97 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -348,9 +348,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     if (simple) {
       _ttPane = new SimpleTTPane(_dm.getTTStructure(),
-                                 _dMediator.getDApplication().getToolBar(),
-                                 false,
-                                 _dMediator.getDApplication().getJFrame().getSize() );
+                                 _dMediator.getDApplication().getToolBar());
     } else {
       _ttPane = new DetailedTTPane(_dm.getTTStructure(),
                                      _dMediator.getDApplication().getToolBar(),

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPane $Revision: 1.5 $  $Date: 2003-10-20 21:01:58 $
+ * Title: SimpleTTPane $Revision: 1.6 $  $Date: 2003-10-21 19:21:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -61,9 +61,9 @@ import dInternal.dTimeTable.TTStructure;
 
 public class SimpleTTPane extends TTPane {
 
-  public SimpleTTPane(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d) {
+  public SimpleTTPane(TTStructure tts, DToolBar toolBar) {
     super(tts, toolBar);
-    initSimpleTTPane(vertical, d);
+    initSimpleTTPane();
   } // end  SimpleTTPane
 
   public JComponent getPane(){
@@ -86,7 +86,7 @@ public class SimpleTTPane extends TTPane {
     return new SimplePeriodPanel();
    }
  //-------------------------------------------
-  private void initSimpleTTPane(boolean vertical, Dimension d) {
+  private void initSimpleTTPane() {
     _jScrollPaneOne = new JScrollPane();
     _jScrollPaneTwo = new JScrollPane();
     findRowHeaders();

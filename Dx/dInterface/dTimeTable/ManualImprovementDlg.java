@@ -81,13 +81,13 @@ public class ManualImprovementDlg extends EventsDlgInterface{
   *
   */
   protected void doubleClicMouseProcess(){
-    Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
-    buildNewTTSTestConditions(event);
+   Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+   // buildNewTTSTestConditions(event);
     //setLocationRelativeTo(_frameResult.getJFrame());
-    ManualImprovementResultFrame frameResult= new ManualImprovementResultFrame(this,_newTTS,_toolBar,event.getID(),true);
+    ManualImprovementResultFrame frameResult= new ManualImprovementResultFrame(this,_newTTS,_toolBar,event.getID(), _dm);
     //_frameResult.createFrame( event.getID(),true);
     //setLocationRelativeTo(_frameResult.getJFrame());
-    String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
+ /*   String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
     long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",2))};
@@ -101,7 +101,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     int duration = ((EventAttach)event.getAttach()).getDuration()/_dApplic.getDMediator()
                  .getCurrentDoc().getDM().getTTStructure().getPeriodLenght();
     frameResult.setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
-    //_frameResult.setColorOfPanel(event.getID());
+    //_frameResult.setColorOfPanel(event.getID());*/
   }
 
   /**

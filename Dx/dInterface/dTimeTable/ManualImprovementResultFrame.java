@@ -29,16 +29,40 @@ import dInterface.DToolBar;
 import dInterface.DApplication;
 import dInterface.DMenuBar;
 import dResources.DConst;
-import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.Period;
+//import dInternal.dTimeTable.TTStructure;
+//import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
-public class ManualImprovementResultFrame extends JFrame implements ActionListener{
 
+import java.awt.event.ActionEvent;
+
+import dInterface.DApplication;
+import dInterface.DToolBar;
+
+import dInterface.dAffectation.EventsDlgInterface;
+import dInternal.dConditionsTest.TestConditions;
+import dInternal.dConditionsTest.SetOfEvents;
+import dInternal.dConditionsTest.EventAttach;
+import dInternal.dTimeTable.*;
+import dInternal.DModel;
+import dInternal.dData.Resource;
+import dInternal.dUtil.DXToolsMethods;
+
+import dResources.DConst;
+
+
+public class ManualImprovementResultFrame extends JDialog implements ActionListener{
+  /* ADJUST_HEIGHT is needed to ajdust the screenSize
+   * minus the barSize (the value is a guess) at the bottom */
+  private final static int ADJUST_HEIGHT = 92;
+  /* ADJUST_WIDTH is needed to ajdust the screenSize
+   * minus border pixels (the value is a guess) at each side of the screen */
+  private final static int ADJUST_WIDTH = 6;
   //private JInternalFrame _jif;
   private TTPane _ttPane;
   private TTStructure _ttStruct;
   private DToolBar _toolBar;
+  private DModel _dm;
   //private JFrame _jFrame;
   //private JDialog _jd;
 
@@ -48,12 +72,17 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
   /**
    * constructor
    */
-  public ManualImprovementResultFrame(JDialog jd,TTStructure tts, DToolBar toolbar,
-                                      String eventName, boolean simple) {
-    super();
-    _ttStruct= tts;
+  public ManualImprovementResultFrame(JDialog jd, TTStructure tts, DToolBar toolbar,
+                                      String eventName,  DModel dm) {
+    super(jd, eventName, true);
+    TTStructure oldTTS= dm.getTTStructure();
+    _ttStruct= new TTStructure();
+    _ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
     _toolBar= toolbar;
-    createFrame( eventName, simple);
+    _dm = dm;
+    initDlg(eventName);
+
+        //createFrame(eventName, simple);
     //jd.setLocationRelativeTo(this);
     //setLocationRelativeTo(jd);
   }
@@ -83,6 +112,66 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
   }
 
 
+public void initDlg(String eventName){
+  Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+ //Dimension frameDim = new Dimension(700,650);
+  this.setSize( new Dimension(screenSize.width - ADJUST_WIDTH,
+                                         screenSize.height - ADJUST_HEIGHT));
+  _ttPane = new SimpleTTPane(_ttStruct,_toolBar);
+
+  Resource event = _dm.getSetOfEvents().getResource(eventName);
+  buildNewTTSTestConditions(event);
+  String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
+    long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
+      Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
+      Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",2))};
+    int dayIndex= _ttStruct.getCurrentCycle().getSetOfDays().getIndexOfResource(perKey[0]);
+    int seqIndex= ((Day)_ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
+                   getAttach()).getSetOfSequences().getIndexOfResource(perKey[1]);
+    int perIndex= ((Sequence)((Day)_ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
+                   getAttach()).getSetOfSequences().getResourceAt(seqIndex).getAttach()).
+                  getSetOfPeriods().getIndexOfResource(perKey[2]);
+    //int[] perKeyIndex={};
+    int duration = ((EventAttach)event.getAttach()).getDuration()/ 60 ; //_dApplic.getDMediator()
+                 //.getCurrentDoc().getDM().getTTStructure().getPeriodLenght();
+    setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
+    //_frameResult.setColorOfPanel(event.getID());
+
+  this.getContentPane().add(_ttPane.getPane());
+  this.show();
+}
+
+private void buildNewTTSTestConditions(Resource event){
+  _dm.getConditionsTest().buildAllConditions(_ttStruct);
+  //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+  String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
+  boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
+  boolean inAPeriod= ((EventAttach)event.getAttach()).isPlaceInAPeriod();
+  if(event!=null){
+    ((EventAttach)event.getAttach()).setAssignState(true);
+    _dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1);
+    ((EventAttach)event.getAttach()).setAssignState(false);
+    for(int i=0; i< _ttStruct.getCurrentCycle().getSetOfDays().size(); i++){
+      Resource day= _ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+      for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+        Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
+          Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
+          String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+          ((EventAttach)event.getAttach()).setKey(4,periodKey);
+          ((EventAttach)event.getAttach()).setAssignState(true);
+          _dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1);
+          ((EventAttach)event.getAttach()).setAssignState(false);
+        }// end for(int k=0; k< ((Sequence)seq.getAttach())
+      }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
+    }// end for(int i=0; i< _newTTS.getCurrentCycle()
+  }// end if(event!=null){
+  ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
+  ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
+  ((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
+  }
 
   /**
    *
@@ -103,7 +192,7 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
    jif.setPreferredSize(frameDim);
 
    if (simple)
-     _ttPane = new SimpleTTPane(_ttStruct,_toolBar,false, jif.getSize());
+     _ttPane = new SimpleTTPane(_ttStruct,_toolBar);
    else
      _ttPane = new DetailedTTPane(_ttStruct,_toolBar,false, jif.getSize());
 
@@ -122,8 +211,8 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
     setTitle(eventName);
     JPanel panel = new JPanel(new BorderLayout(0,0));
     setContentPane(panel);
-    DMenuBar dMenuBar = new DMenuBar(this,1);
-    setJMenuBar(dMenuBar);
+    //DMenuBar dMenuBar = new DMenuBar(this,1);
+    //setJMenuBar(dMenuBar);
     JDesktopPane jDesktopPane = new JDesktopPane();
     jDesktopPane.setOpaque(false);
     jDesktopPane.setDesktopManager(new DefaultDesktopManager());

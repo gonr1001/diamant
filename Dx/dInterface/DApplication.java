@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.29 $  $Date: 2003-10-20 21:01:58 $
+ * Title: DApplication $Revision: 1.30 $  $Date: 2003-10-21 19:21:32 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -130,7 +130,7 @@ public class DApplication implements ActionListener {
 
     panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH,
                                          _screenSize.height - ADJUST_HEIGHT));
-    //panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
+    panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
 
     jFrame.pack();
     jFrame.setVisible(true);
