@@ -96,7 +96,7 @@ public class StudentMixingAlgorithm implements Algorithm {
         allConvexGroups.add(convGroup);
         //
       }// end
-      if(DConst.DEVELOPMENT){
+      if(DConst.USER_TEST_ACTIV){
         RefinedStudMixAlgo newAlgo = new RefinedStudMixAlgo(_dm,getAcceptableVariation());
         newAlgo.build (actID,typeID,allConvexGroups);
       }else{

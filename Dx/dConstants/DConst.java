@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.111 $  $Date: 2004-06-11 14:04:55 $
+ * Title: DConst $Revision: 1.112 $  $Date: 2004-06-17 20:00:09 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.111 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.112 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -28,8 +28,9 @@ import java.awt.Font;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "4 Juin 2004";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;
+  	public final static String V_DATE = "17 Juin 2004";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = false;
+        public static boolean USER_TEST_ACTIV = true;
 	public final static String JVM = "1.4.2_03";
 
 
@@ -188,6 +189,11 @@ public class DConst {
   public final static String NEW_TT_TD  = res.getString("newTTTD");//Indiquez grille horaire, unp
   public final static String NTT_CY_M  = res.getString("nTTCyM");//Cycle, unp
   public final static String NTT_EX_M  = res.getString("nTTExM");//Examen, unp
+
+  //User menu
+  public final static String USERTEST = res.getString("userTest");//Test utilisateur version beta
+  public final static String SUBMENU1 = res.getString("user1");//Sous menu utilisateur 1
+  public final static String SUBMENU2 = res.getString("user2");//Sous menu utilisateur 2
 
   //**********Dialogs constants ***************************
   public final static Font JLISTS_FONT = new java.awt.Font("Courier", Font.PLAIN, 12);
@@ -416,11 +422,11 @@ public class DConst {
 
   public final static String NAME_AC = res.getString("nameAC"); // "nameAC";
   public final static String CATEGORY_AC = res.getString("categoryAC"); // "categoryAC";
-  
+
   public final static String NAME_LABEL = res.getString("nameLabel"); // "Nom";
   public final static String CATEGORY_LABEL = res.getString("categoryLabel"); // "Category";
-  
-  
+
+
   public DConst() {
   }
 }

@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.118 $  $Date: 2004-06-11 14:04:55 $
+ * Title: DStringFrRes $Revision: 1.119 $  $Date: 2004-06-17 20:00:09 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.118 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.119 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -161,6 +161,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "aboutM", "A propos de ..."},
     { "aboutTD", "A propos de "},
     { "aboutD",  " \nCopyRight\n 2000 - 2004"},
+
+    //User
+    { "userTest", "Alpha Test"},
+    { "user1", "Claude"},
+    { "user2", "..."},
 
     // common buttons
     {"butOK", "Ok"},
@@ -362,13 +367,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"ttFile","S814.HORAIRE"},
     {"ttStudFIle", "S813.ASSGRO"},
     {"errorXMLFile", "XML file is corrupted"},
-    
+
 	{"nameAC", "nameAC"},
 	{"categoryAC", "categoryAC"},
-  
+
 	{"nameLabel", "Nom"},
 	{"categoryLabel", "Catégorie"},
-  
+
 
 	{"separator",     "------------------------------------------------------------------" },
 	{"instructorSep", "------------------------  Enseignants  ---------------------------" },

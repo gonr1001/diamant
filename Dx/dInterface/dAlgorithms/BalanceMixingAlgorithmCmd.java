@@ -19,15 +19,17 @@ import com.iLib.gDialog.InformationDlg;
 public class BalanceMixingAlgorithmCmd implements Command{
 
   int _selectedContext=1;// context for balance mixing algorithm
+  boolean _USER_TEST_ACTIV = false;
 
   /**
    *
    */
-  public BalanceMixingAlgorithmCmd() {
-
+  public BalanceMixingAlgorithmCmd(boolean USER_TEST_ACTIV) {
+    _USER_TEST_ACTIV = USER_TEST_ACTIV;
   }
 
   public void execute(DApplication dApplic) {
+    DConst.USER_TEST_ACTIV= _USER_TEST_ACTIV;
     (new SelectAlgorithm(dApplic.getDMediator().getCurrentDoc().getDM(),_selectedContext)).execute();
     new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
   }

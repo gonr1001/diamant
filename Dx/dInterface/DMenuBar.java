@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.110 $  $Date: 2004-06-09 19:45:52 $
+ * Title: DMenuBar $Revision: 1.111 $  $Date: 2004-06-17 20:00:09 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.110 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.111 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -74,14 +74,15 @@ public class DMenuBar extends JMenuBar{
   _preferences,
   _report,
   _help,
-  _dev;
+  _dev,
+  _userTest;
   // for each main menu there is a assocaited boolean
   private boolean _boolMenuFile, _boolMenuAssign, _boolMenuOptimization,
   _boolMenuModification, _boolMenuReport, _boolMenuPreferences,
-  _boolMenuHelp, _boolMenuDev;
+  _boolMenuHelp, _boolMenuDev, _boolMenuUser;
 
   // the file menu: sub-menus
-  private JMenu _newTTable, _newTTStruc, _importSelect;
+  private JMenu _newTTable, _newTTStruc, _importSelect,_userSubMenu1;
   private boolean _boolNewTTable, _boolNewTTStruc;
 
   // the file menus
@@ -138,10 +139,18 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolLookAndFeel, _boolConflicts, _boolView, _boolViewSimple,
   _bool_ViewDetailedHorizontal, _boolViewDetailedVertical;
   private JMenu _view;
+
   // the help menus
   private CmdMenu _about;
   private boolean _boolAbout;
 
+  // the user menus
+  private JMenu _user1;
+  private CmdMenu _userTestMixingBalance,
+  _userTestMiddleMixingBalance, _userTestMixingOptimize;
+  private boolean _boolMenu1;
+
+  //Developpement menus
   private CmdMenu _myFile, _showAll, _stateZero;
   private boolean _boolMyFile, _boolShowAll, _boolStateZero;
 
@@ -168,6 +177,7 @@ public class DMenuBar extends JMenuBar{
     createReportMenu();
     createPreferencesMenu();
     createHelpMenu();
+    createUserMenu();
     if (DConst.DEVELOPMENT)
       createDevelopmentMenu();
     setAlways();
@@ -376,19 +386,19 @@ public class DMenuBar extends JMenuBar{
 
     _mStudentsMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
     _mStudentsMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
-    _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd());
+    _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd(false));
     _mStudentsMixingBalance.addActionListener(_dApplic);
     _studentsRepartition.add(_mStudentsMixingBalance);
 
     _mStudentsMiddleMixingBalance= new CmdMenu(DConst.STUDENTMIXINGMIDBAL);
     _mStudentsMiddleMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
-    _mStudentsMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd());
+    _mStudentsMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd(false));
     _mStudentsMiddleMixingBalance.addActionListener(_dApplic);
     _studentsRepartition.add(_mStudentsMiddleMixingBalance);
 
     _mStudentsMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
     _mStudentsMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mStudentsMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd());
+    _mStudentsMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd(false));
     _mStudentsMixingOptimize.addActionListener(_dApplic);
     _studentsRepartition.add(_mStudentsMixingOptimize);
 
@@ -500,6 +510,45 @@ public class DMenuBar extends JMenuBar{
     _about.addActionListener(_dApplic);
     _help.add(_about);
   } // end createHelpMenu
+
+
+  private void createUserMenu(){
+    _userTest = new JMenu(DConst.USERTEST);
+    _userTest.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    this.add( _userTest );
+    // Items in menu Alpha test.
+    _user1 = new JMenu(DConst.SUBMENU1);
+    _user1.setFont( new java.awt.Font(_mfont, _font, _nPT));
+
+    // submenu1: menu for user 1
+    _userSubMenu1 = new JMenu(DConst.STUDENTS_REPARTITION);
+    _userSubMenu1.setFont( new java.awt.Font(_mfont, _font, _nPT));
+
+    _userTestMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
+   _userTestMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
+   _userTestMixingBalance.setCommand(new BalanceMixingAlgorithmCmd(true));
+   _userTestMixingBalance.addActionListener(_dApplic);
+   _userSubMenu1.add(_userTestMixingBalance);
+
+   _userTestMiddleMixingBalance= new CmdMenu(DConst.STUDENTMIXINGMIDBAL);
+   _userTestMiddleMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
+   _userTestMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd(true));
+   _userTestMiddleMixingBalance.addActionListener(_dApplic);
+   _userSubMenu1.add(_userTestMiddleMixingBalance);
+
+   _userTestMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
+   _userTestMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _userTestMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd(true));
+   _userTestMixingOptimize.addActionListener(_dApplic);
+   _userSubMenu1.add(_userTestMixingOptimize);
+   // add item in submenu 1
+   _user1.add(_userSubMenu1);
+
+    _userTest.add(_user1);
+
+
+
+  } // end createDevelopmentMenu
 
   private void createDevelopmentMenu(){
     _dev = new JMenu("Development");
