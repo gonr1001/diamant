@@ -10,16 +10,13 @@ horaires d'un trimestre dans un répertoire (par exemple hiver04 ou
 h2004). Ainsi, les fichiers d'importation et les fichiers produits
 pendant la construction d'un horaire seront ensemble.
 
-La construction d'un nouvel horaire avec \dx{} comporte trois étapes. Elle débute par une
-phase de préparation commune à l'horaire de cycle et d'examen (phase 1), se poursuit par une phase de modification et d'épuration des données (phase 2) et se termine par la construction à proprement parler (phase 3). Cette dernière
-présente des caractéristiques particulières selon le type
-d'horaire et comporte deux sous étapes: la première concernant l'affectation des événements sur la grille horaire et la seconde concernant le raffinement de l'horaire. 
+La construction d'un nouvel horaire avec \dx{} comporte trois principales étapes. Elle débute par une
+phase de préparation (phase 1), se poursuit par une phase de modification et d'épuration des données (phase 2) et se termine par la construction à proprement parler (phase 3). La construction de l'horaire peut se poursuivre au delà de la phase 3, par l'utilisation d'outils permettant de raffiner l'horaire (Affectation manuelle, rapports, etc).
 
 Nous vous présenterons dans ce chapitre les phases de
-préparation communes d'un horaire avec \dx{}, de modification et d'épuration des données, ainsi que les
+préparation d'un horaire avec \dx{}, de modification et d'épuration des données, les
 caractéristiques particulières de la construction d'un horaire de
-cycle et d'un horaire d'examen, toutefois, les options du logiciel
-ne seront pas toutes présentées.
+cours et d'un horaire d'examen, et nous terminerons les outils de raffinement de l'horaire. Toutefois, les options du logiciel ne seront pas toutes présentées.
 
 \section{Production d'un horaire de cours}
 
@@ -234,7 +231,7 @@ Une fois l'affectation initiale effectuée, l'étape suivante consiste à lancer le
 
 \section{Production d'un horaire d'examen}
 
-\subsection{Préparation de l'horaire}\label{finprepa}
+\subsection{Préparation de l'horaire}\label{finprepae}
 
 \begin{enumerate}
     \item Lancer \dx{}.
@@ -259,26 +256,30 @@ contenant la définition de votre grille horaire.
 
 Il est recommandé d'enregistrer cette configuration en utilisant un nom de fichier unique et représentatif.
 
-Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horaire de cours} et le fichier créé sera \emph{E02cours.dim}. L'extension \textbf{\emph{.dim}} est rajouté automatiquement.
+Exemple: choisissez le nom de fichier \emph{H04exam} pour \emph{Hiver 2004 horaire d'examen} et le fichier créé sera \emph{H04exam.dim}. L'extension \textbf{\emph{.dim}} est rajouté automatiquement.
 
     \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Importer automatiquement}}.
     Une boite de dialogue apparaîtra et vous permettra de choisir le fichier \textbf{\emph{.dim}} de «configuration de fichiers»
     précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}}
-    (dans l'exemple précédent il s'agit du fichier \emph{E02cours.dim}).
+    (dans l'exemple précédent il s'agit du fichier \emph{H04exam.dim}).
     Cliquer à présent sur le bouton \textbf{\emph{Importation de fichiers}},
     toutes vos données (cours, étudiants, enseignants et locaux) seront chargées dans le logiciel et
     prêtes à être modifiées.
 \end{enumerate}
 
-À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
+À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{Affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{Affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
 
 \begin{enumerate}
-    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
-    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
-    \item Calculer les conflits générés.
+    \item Suppression des activités de nature 2, seulement les activités de nature 1 seront conservées pour l'horaire.
+    \item Suppression des groupes aux activités en possédant plusieurs, un seul groupe sera conservé pour l'horaire (le premier groupe ou \emph{groupe A}).
+    \item Suppression des événements aux activités en possédant plusieurs, un seul événement sera conservé pour l'horaire.
+    \item Modification de la disponibilité des enseignants afin de les rendre tous disponibles.
+    \item Modification de la disponibilité des locaux afin de les rendre tous disponibles.
 \end{enumerate}
 
-Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
+Exemple: Pour construire l'horaire d'examen d'une activité (GEI200) possédant 2 natures (GEI200.1 et GEI200.2), chaque nature possédant 2 groupes (GEI200.1.A, GEI200.1.B et GEI200.2.A, GEI200.2.B), chaque groupe possédant 2 événements (GEI200.1.A.1, GEI200.1.A.2, GEI200.1.B.1, GEI200.1.B.2 et GEI200.2.A.1, GEI200.2.A.2, GEI200.2.B.1, GEI200.2.B.2). La suppression de nature 2, de groupes et d'événements par l'affectation initiale permettrait d'obtenir, pour l'activité GEI200, un seul événement devant servir à l'horaire d'examen, en l'occurrence GEI200.1.A.1.
+
+Cette affectation initiale permettrait donc d'épurer les données et d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
 
 La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
 
@@ -310,7 +311,7 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
     \end{figure}
    
 
-À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
+À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
@@ -350,19 +351,63 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
 \subsection{Construction de l'horaire}
 
-\subsubsection{Affectation des événements}
-
-Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire.
-
-L'\emph{affectation initiale} a pour but d'exécuter les commandes suivantes :
-
-\begin{enumerate}
-    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
-    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
-    \item Calculer les conflits générés.
-\end{enumerate}    
-
+Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepae}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation manuelle est faite à la section \ref{finprepae}.
 
 Une fois l'affectation initiale effectuée, l'étape suivante consiste à lancer le sous menu \textbf{\emph{Construire l'horaire}} à partir du menu \textbf{\emph{Optimisation}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
 
-\subsubsection{Raffinement de l'horaire}
+La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant le sous-menu \textbf{\emph{Options Conflits}} à partir du menu \textbf{\emph{Préférences}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{conf}). Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
+
+\begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=3.5in]{UserManualInputs/images/optionconflict.eps}
+        \caption{Contraintes à respecter}\label{conf}
+      \end{center}
+    \end{figure}
+
+\begin{itemize}
+    \item \emph{Max Conflits Étu entre 2 Eve}: ce paramètre permet de fixer le nombre maximal de conflits d'étudiants admissible entre deux événements.
+    \item \emph{Max Conflits Ens entre 2 Eve}: ce paramètre permet de fixer le nombre maximal de conflits d'enseignants admissible entre deux événements.
+    \item \emph{Max Conflits Loc entre 2 Eve}: ce paramètre permet de fixer le nombre maximal de conflits de locaux admissible entre deux événements.
+    \item \emph{Placer dans périodes (0=normale, 1=normale et basse, 2=normale, basse et nulle)}: ce paramètre permet de spécifier les types de périodes (normale, basse, nulle) de la grille horaire dans lesquels un événement peut être placé.
+    \item \emph{Nombre Max de cours dans une période}: ce paramètre permet de spécifier le nombre maximal d'événements pouvant être placés dans une même période de la grille horaire.
+\end{itemize}    
+
+Il est possible de modifier les contraintes et lancer ensuite la construction de l'horaire afin que le logiciel  utilise les nouvelles contraintes pour placer les événements qu'il n'a pas pu précédemment placer; tout ceci de façon itérative jusqu'à obtention d'un résultat paraissant satisfaisant aux yeux de l'utilisateur.
+
+Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
+
+\section{Raffinement de l'horaire}
+Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, rapport), les voies et moyens d'amélioration de l'horaire construit.
+
+\subsection{Affectation manuelle}
+
+L'affectation manuelle permet à l'utilisateur de placer individuellement les événements dans la grille horaire. Elle se fait à partir de la fenêtre d'\textbf{\emph{Affection manuelle}} (voir figure \ref{man}) obtenue à partir du sous-menu \textbf{\emph{Affectation manuelle}} du menu \textbf{\emph{Affectation}}.
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=3.5in]{UserManualInputs/images/manualaffect.eps}
+        \caption{Liste des événements}\label{man}
+      \end{center}
+    \end{figure}
+
+La fenêtre d'affectation manuelle offre deux possibilités d'utilisation:
+
+\begin{enumerate}
+    \item \textbf{Modification d'un événement:} sélectionner un événement et cliquer sur le bouton \textbf{\emph{Modifier}} pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
+    \item \textbf{Recherche de potentiels conflits:} pour rechercher les potentiels conflits générés par un événement, double-cliquer sur l'événement en question pour voir apparaître une nouvelle grille horaire (voir figure \ref{man1}) vous informant sur les conflits que peut généré l'événement dans chaque période de la grille horaire. \\
+
+Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte).
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=4.0in]{UserManualInputs/images/manualaffectres.eps}
+        \caption{Grille horaire d'affectation manuelle}\label{man1}
+      \end{center}
+    \end{figure}
+
+\end{enumerate}    
+
+\subsection{Rapports}
