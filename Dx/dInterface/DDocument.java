@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.114 $  $Date: 2004-09-10 13:30:59 $
+ * Title: DDocument $Revision: 1.115 $  $Date: 2004-09-29 19:00:39 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.114 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.115 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInterface;
@@ -28,6 +28,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Vector;
 
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
@@ -58,6 +59,10 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
 import eLib.exit.dialog.FatalProblemDlg;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.tictac.mouseTrap.dModel.Trace;
+
 //import dInterface.dUtil.DXTools;
 //debug
 
@@ -74,9 +79,27 @@ public class DDocument  extends InternalFrameAdapter implements
   private DStateBar _stateBar;
   private String _version;
 
+//+++++++++++++++++++++++++++++
+  Logger logger = Logger.getLogger(this.getClass().getName());
+  Trace trace=new Trace();
+  public DDocument() {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
+  }
+  public DDocument(boolean flag) {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
+  }
+  //-----------------------------
+  
   //for a new timetable and a open timetable
   //for new timetable Structure and open timetable Structure from a file
   public DDocument(DMediator dMediator, String ttName, String fileName, int type) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(dMediator);
+  	traceParams.add(ttName);
+  	traceParams.add(fileName);
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
     _dMediator = dMediator;
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm = new DModel(this, fileName, type);
@@ -91,10 +114,13 @@ public class DDocument  extends InternalFrameAdapter implements
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   } // end constructor DDocument()
   //-------------------------------------------
-  public DDocument(){
-  }
+  //public DDocument(){ //rgd:it was commented for the logger(trap)
+  //}
   //-------------------------------------------
   public void internalFrameActivated(InternalFrameEvent e) {
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,e));	
+    //-----------------------------
     _dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
   }
   //-------------------------------------------
@@ -107,11 +133,20 @@ public class DDocument  extends InternalFrameAdapter implements
   } // end getDocumentName
   //-------------------------------------------
   public final void setDocumentName(String name) {
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,name));	
+    //-----------------------------
     _documentName = name;
     _jif.setTitle(name);
   } // end setDocumentName
   //-------------------------------------------
   public void setCursor(int cursorValue, Component component){
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(new Integer (cursorValue));
+  	traceParams.add(component);
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     if(component!=null)
@@ -122,6 +157,10 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param cursorValue
    */
   public void setCursor(int cursorValue){
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,cursorValue));	
+    //-----------------------------
+
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
   }
@@ -157,12 +196,19 @@ public class DDocument  extends InternalFrameAdapter implements
   /**
    * */
   public void setVersion(String version){
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,version));	
+    //-----------------------------
     _version=version;
   }
 /*
   * a revoir
 */
   public void close(){
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
+
     _jif.dispose();
     _jif = null;
     _ttPane = null;
@@ -170,6 +216,10 @@ public class DDocument  extends InternalFrameAdapter implements
   }
   //-------------------------------------------
   private String modifiyDocumentName(String str) {
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this, str));	
+    //-----------------------------
+
     if (str.endsWith("pref"+File.separator+"StandardTTC.xml") ||
         str.endsWith("pref"+File.separator+"StandardTTE.xml") ){
       str = str.substring(0,str.lastIndexOf("pref"));
@@ -179,6 +229,10 @@ public class DDocument  extends InternalFrameAdapter implements
   }
   //-------------------------------------------
   public void actionPerformed(ActionEvent  e) {
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this, e));	
+    //-----------------------------
+
     if (e.getSource() instanceof CommandHolder) {
       ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
     }
@@ -188,6 +242,13 @@ public class DDocument  extends InternalFrameAdapter implements
   }// end actionPerformed
   //-------------------------------------------
   public void changeInDModel(DModelEvent  e, Component component) {
+  	//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(e);
+  	traceParams.add(component);
+  	logger.info(trace.write(this, traceParams));	
+    //-----------------------------
+
     setCursor(Cursor.WAIT_CURSOR, component);
     _dm.setModified();
 
@@ -209,6 +270,10 @@ public class DDocument  extends InternalFrameAdapter implements
     /*
     */
   public void changeInStateBar (SetOfStatesEvent e){
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,e));	
+    //-----------------------------
+
     _dm.setStateBarComponent();
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
   }
@@ -218,6 +283,9 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param e
    */
   public void changeInTTStructure(TTStructureEvent  e) {
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this, e));	
+    //-----------------------------
     System.out.println("I was in ttstructure listener");
     setCursor(Cursor.WAIT_CURSOR);
     _dm.setModified();
@@ -233,6 +301,12 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param component
    */
   public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(e);
+  	traceParams.add(component);
+  	logger.info(trace.write(this, traceParams));	
+    //-----------------------------
     setCursor(Cursor.WAIT_CURSOR, component);
 
     _dm.setModified();
@@ -252,6 +326,12 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param component
    */
   public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(e);
+  	traceParams.add(component);
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
     component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm.setModified();
     _dm.getSetOfActivities().buildStudentRegisteredList(_dm.getSetOfStudents());
@@ -270,6 +350,12 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param component
    */
   public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(e);
+  	traceParams.add(component);
+  	logger.info(trace.write(this, traceParams));	
+    //-----------------------------
     setCursor(Cursor.WAIT_CURSOR, component);
 
     _dm.setModified();
@@ -290,6 +376,12 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param component
    */
   public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(e);
+  	traceParams.add(component);
+  	logger.info(trace.write(this, traceParams));	
+    //-----------------------------
     component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm.setModified();
     _dm.getSetOfStates().sendEvent();
@@ -303,6 +395,12 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param component
    */
   public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(e);
+  	traceParams.add(component);
+  	logger.info(trace.write(this, traceParams));	
+    //-----------------------------
     component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm.setModified();
     _dm.getSetOfStates().sendEvent();
@@ -310,12 +408,19 @@ public class DDocument  extends InternalFrameAdapter implements
   }// end changeInSetOfRooms
   //-------------------------------------------
   public void displaySimple(){
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
     close();
     buidDocument(true, true);
     _ttPane.updateTTPane(_dm.getTTStructure());
   }
   //-------------------------------------------
   public void displayHorizontalSplit(){
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
+
     close();
     buidDocument(false, false);
     _ttPane.updateTTPane(_dm.getTTStructure());
@@ -328,6 +433,12 @@ public class DDocument  extends InternalFrameAdapter implements
   }
   //-------------------------------------------
   private void  buidDocument(boolean simple, boolean vertical){
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(new Boolean (simple));
+  	traceParams.add(new Boolean (vertical));
+  	logger.info(trace.write(this, traceParams));	
+    //-----------------------------
     /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
     final int MIN_HEIGHT = 512;

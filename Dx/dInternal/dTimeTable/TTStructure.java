@@ -60,14 +60,12 @@ public class TTStructure {
   static final String _TAGITEM3="TTdays";
   
   //+++++++++++++++++++++++++++++
+  Logger logger = Logger.getLogger(this.getClass().getName());
   Trace trace=new Trace();
   public TTStructure() {
     _setOfCycles= new SetOfResources(4);
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
-
-  //public class Data {
-  static Logger logger = Logger.getLogger(TTStructure.class.getName());
   public TTStructure(boolean flag) {
   	_setOfCycles= new SetOfResources(4);
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
@@ -252,7 +250,7 @@ public class TTStructure {
   
   public String loadTTStructure(String fileName){
 //  +++++++++++++++++++++++++++++
-  	logger.info(trace.write(this,"loadTTStructure",fileName));	
+  	logger.info(trace.write(this,fileName));	
     //-----------------------------
 	
     ReadXMLFile xmlFile;
@@ -310,7 +308,7 @@ public class TTStructure {
    * @return String the error message, empty if it does not found error
    * */
    public String saveTTStructure(String fileName){
-   	logger.info(trace.write(this,"saveTTStructure","D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"traceOut.xml"));
+   	logger.info(trace.write(this,"D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"traceOut.xml"));
     WriteXMLElement wr;
     try{
       wr= new WriteXMLElement();

@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.21 $  $Date: 2004-09-10 13:31:02 $
+ * Title: Preferences $Revision: 1.22 $  $Date: 2004-09-29 19:00:39 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,22 +15,28 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.22 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInternal;
 
+import java.io.File;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 
 
 import dInterface.DApplication;
+import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 import eLib.exit.txt.FilterFile;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.tictac.mouseTrap.dModel.Trace;
 
 public class Preferences {
   private final String CR_LF = "\r\n";
@@ -47,7 +53,23 @@ public class Preferences {
   public String _conflictLimits;
   private DApplication _dApplic;
 
+  //+++++++++++++++++++++++++++++
+  Logger logger = Logger.getLogger(this.getClass().getName());
+  Trace trace=new Trace();
+  public Preferences() {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
+  }
+  public Preferences(boolean flag) {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
+  }
+  //-----------------------------
+  
+  
   public Preferences(String str) {//throws InputFileException{
+  	//+++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,str));	
+    //-----------------------------
+
     //_dApplic = dApplic;
     try {
       FilterFile filter = new FilterFile();
@@ -71,9 +93,15 @@ public class Preferences {
   }
 
   public void setLAFName(String lnfName) {
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,lnfName));	
+    //-----------------------------
     _lookAndFeel = lnfName;
   }
   public void  save() {
+	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
     writeFile(_defaultDir, toString());
   }
 
@@ -102,6 +130,12 @@ public class Preferences {
 
 
   private void writeFile(String name, String data) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(name);
+  	traceParams.add(data);
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
     try {
       ByteOutputFile bof = new ByteOutputFile(name);
       bof.writeFileFromBytes(data.getBytes());
@@ -168,6 +202,9 @@ public class Preferences {
 
 
   public void setSelectedOptionsInFullReport(Vector v){
+  	//+++++++++++++++++++++++++++++
+  	logger.info(trace.write(this, v));	
+    //-----------------------------
     _selectedOptionsInFullReport = "selectedOptionsInFullReport"+";";
     for (int i=0; i < v.size(); i++){
       _selectedOptionsInFullReport += (String) v.elementAt(i)+";";
@@ -175,6 +212,10 @@ public class Preferences {
   } //end setSelectedOptionsInFullReport
 
   public void setSelectedOptionsInConflictReport(Vector v){
+  	//+++++++++++++++++++++++++++++
+  	logger.info(trace.write(this, v));	
+    //-----------------------------
+
     _selectedOptionsInConflictReport = "selectedOptionsInConflictReport"+";";
     for (int i=0; i < v.size(); i++){
       _selectedOptionsInConflictReport += (String) v.elementAt(i)+";";
@@ -182,6 +223,9 @@ public class Preferences {
   } //end setSelectedOptionsInConflictReport
 
   public void setConflicLimits(Vector v){
+  	//+++++++++++++++++++++++++++++
+  	logger.info(trace.write(this, v));	
+    //-----------------------------
     _conflictLimits = "conflictLimits"+";";
     for (int i=0; i < v.size(); i++){
       _conflictLimits += (String) v.elementAt(i)+";";

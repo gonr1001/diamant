@@ -15,6 +15,9 @@ public class MyObject {
 		//		boolean, byte, char?, short, int, long, float, and double
 		//Byte, Double, Float, Integer, Long, and Short
 	
+		if (type=="" && value==""){
+			return null;
+		}
 		
 		try {		
 			Class myclass = (new MyClass()).getClass(type);		

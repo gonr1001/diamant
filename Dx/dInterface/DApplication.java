@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.54 $  $Date: 2004-09-23 13:35:11 $
+ * Title: DApplication $Revision: 1.55 $  $Date: 2004-09-29 19:00:39 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.54 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.55 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 
@@ -45,7 +45,12 @@ import org.apache.log4j.Logger;
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
 import dInternal.Preferences;
+import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.tictac.mouseTrap.dModel.Trace;
 
 public class DApplication implements ActionListener {
   private static Logger _logger = Logger.getLogger(DApplication.class.getName());
@@ -78,8 +83,12 @@ public class DApplication implements ActionListener {
   /**
     * DApplication initialize the data members
     */
+//+++++++++++++++++++++++++++++
+  Logger logger = Logger.getLogger(this.getClass().getName());
+  Trace trace=new Trace();
   public DApplication() {
-    _logger.warn("hello_from DApplication");
+  	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
+    //_logger.warn("hello_from DApplication");
     _preferences = new Preferences(System.getProperty("user.dir")
                                    + File.separator +
                                    "pref"
@@ -95,7 +104,30 @@ public class DApplication implements ActionListener {
     setLAF(_preferences._lookAndFeel);
 
     //updateLAF(_preferences._lookAndFeel);
-    _logger.warn("bye_from DApplication");
+    //_logger.warn("bye_from DApplication");
+    
+  } // end constructor
+
+  public DApplication(boolean flag) {
+  	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
+    //_logger.warn("hello_from DApplication");
+    _preferences = new Preferences(System.getProperty("user.dir")
+                                   + File.separator +
+                                   "pref"
+                                   + File.separator +
+                                   "pref.txt");
+
+    _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    _mediator = new DMediator(this);
+    _currentDir = System.getProperty("user.dir");
+
+    _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
+
+    setLAF(_preferences._lookAndFeel);
+
+    //updateLAF(_preferences._lookAndFeel);
+    //_logger.warn("bye_from DApplication");
+    
   } // end constructor
 
   //-------------------------------------------
@@ -189,13 +221,24 @@ public class DApplication implements ActionListener {
 
     public void showToolBar(){
       _tbar.setVisible(true);
+      // +++++++++++++++++++++++++++++
+    	logger.info(trace.write(this));	
+      //-----------------------------
+  	
     }
     public void hideToolBar(){
       _tbar.setVisible(false);
+      // +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
+
     }
 
     //-------------------------------------------
     public void setLAF(String str) {
+    	 // +++++++++++++++++++++++++++++
+      	logger.info(trace.write(this, str));	
+        //-----------------------------
       // Force SwingApp to come up in the System L&F
       try {
         UIManager.setLookAndFeel(str);
@@ -235,11 +278,17 @@ public class DApplication implements ActionListener {
     * @param String A look and feel style
     **/
     public void updateLAF(String str){
+    	 // +++++++++++++++++++++++++++++
+      	logger.info(trace.write(this, str));	
+        //-----------------------------
       setLAF(str);
       SwingUtilities.updateComponentTreeUI(_jFrame);
     }
 
     public void constructToolBar(){
+    	 // +++++++++++++++++++++++++++++
+      	logger.info(trace.write(this));	
+        //-----------------------------
       _tbar = new DToolBar(this); //constucts the tool bar
       //jpToolBar.add(_tbar);
       _tbar.updateUI();
@@ -261,6 +310,9 @@ public class DApplication implements ActionListener {
      */
     private void closeApplic(WindowEvent e) {
       closeApplic();
+      // +++++++++++++++++++++++++++++
+    	logger.info(trace.write(this, e));	
+      //-----------------------------
     }
 
     //-------------------------------------------
@@ -285,5 +337,8 @@ public class DApplication implements ActionListener {
          _jFrame.dispose();
          System.exit(0);
       }
+//     +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this));	
+     //-----------------------------
   }
 } /* end class DApplication */

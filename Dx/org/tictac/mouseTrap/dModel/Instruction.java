@@ -22,7 +22,7 @@ public class Instruction {
 			_method = (new MyMethod()).getTheMethod(_class, smethod, sparams);//method and type
 			_typeParams = _method.getParameterTypes();
 			_typeRet = _method.getReturnType();
-			if (sparams.size()>0){
+			if (sparams.size()>0 && _typeParams.length>0){
 			   _valueParams = (new MyParams()).getTheParams(sparams);
 			}
 		}catch (Exception e) {
@@ -59,7 +59,7 @@ public class Instruction {
 			
 			Object retobj = _method.invoke(methobj, _valueParams);  //That's the execution
 			
-			if (retobj!=null || retobj!=""){
+			if (retobj!=null && retobj!=""){
 				//Only if we have a return value
 				Object retval = (new MyReturn()).getTheReturn(_typeRet,retobj.toString());
 				System.out.println("Return:" + retval.toString());

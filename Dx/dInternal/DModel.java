@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.108 $  $Date: 2004-09-24 14:37:06 $
+ * Title: DModel $Revision: 1.109 $  $Date: 2004-09-29 19:00:39 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.108 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.109 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInternal;
@@ -50,6 +50,10 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXValue;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.tictac.mouseTrap.dModel.Trace;
 
 public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
@@ -94,7 +98,25 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @param fileName
    * @param type
    */
+//+++++++++++++++++++++++++++++
+  Logger logger = Logger.getLogger(this.getClass().getName());
+  Trace trace=new Trace();
+  public DModel() {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
+  }
+  public DModel(boolean flag) {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
+  }
+  //-----------------------------
   public DModel(DDocument dDocument, String fileName, int type) {
+	//+++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(dDocument);
+  	traceParams.add(fileName);
+  	traceParams.add(new Integer(type));
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
+	
     //System.out.println("type: "+type);
     setModel(this);
     _error = "";
@@ -154,6 +176,10 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    */
   public void setModified(){
      _modified = true;
+   	//+++++++++++++++++++++++++++++
+   	logger.info(trace.write(this));	
+     //-----------------------------
+
   }
 
   /**
@@ -168,6 +194,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public void setImportDone(boolean v){
+    //+++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, v));	
+    //-----------------------------
     _importDone = v;
   }
   /**
@@ -208,6 +237,14 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public String loadTimeTable(String fileName, String currentDir){
+  	
+    //+++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(fileName);
+  	traceParams.add(currentDir);
+   	logger.info(trace.write(this, traceParams));
+    //-----------------------------
+
 	//	debug for xml file to be remove
 	 // ysyam
 	 if(DConst.DEVELOPMENT){
@@ -254,6 +291,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   }
 
   public void prepareExamsData(){
+  	 //+++++++++++++++++++++++++++++
+   	logger.info(trace.write(this));	
+    //-----------------------------
     // supprime natures2
     // supprime groups
     // supprime events
@@ -291,10 +331,17 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @param version
    */
   public void setVersion(String version){
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, version));	
+    //----------------------------- 
     _version=version;
   }
 
   public void addAllListeners(){
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this));	
+    //----------------------------- 
+
     if (_setOfActivities!=null)
       _setOfActivities.addSetOfActivitiesListener(_dDocument);
     if(_setOfStudents!=null)
@@ -316,6 +363,10 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public String importData(String str) {
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, str));	
+    //----------------------------- 
+
     // debug for xml file to be remove
 	// ysyam
 	if(DConst.DEVELOPMENT){
@@ -371,6 +422,13 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
       * @return
       */
   public String SelectiveImportData(String fileName, String selectionName) {
+ 	//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(fileName);
+  	traceParams.add(selectionName);
+   	logger.info(trace.write(this, traceParams));	
+    //----------------------------- 
+
     String error="";
     LoadData loadData = new LoadData();
     if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_INST)){//Importation selective -- Enseignants
@@ -488,6 +546,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public String saveTimeTable(String filename) {
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, filename));	
+    //-----------------------------
     SaveData saveD= new SaveData("1.5");
     String error = "";
     if(_isTimeTable){
@@ -505,6 +566,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    *
    */
   public void sendEvent(Component component) {
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, component));	
+    //-----------------------------
     _modified = true;
     DModelEvent event = new DModelEvent(this);
     for (int i=0; i< _dmListeners.size(); i++) {
@@ -519,6 +583,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @param dml
    */
   public synchronized void addDModelListener(DModelListener dml) {
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, dml));	
+    //-----------------------------
     if (_dmListeners.contains(dml)){
       return;
     }
@@ -531,6 +598,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @param dml
    */
   public synchronized void removeTTParametersListener(DModelListener dml) {
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this, dml));	
+    //-----------------------------
     _dmListeners.removeElement(dml);
   }
 

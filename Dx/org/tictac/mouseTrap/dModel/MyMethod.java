@@ -6,6 +6,7 @@ import java.util.Vector;
 public class MyMethod {
 
 	public Method getTheMethod(Class cls, String methodName, Vector params){
+		// rgd: I have to check when the params[0]==null
 		Method oneMethod = null;
 		String type="";
 		//Precondition in public method
@@ -19,18 +20,24 @@ public class MyMethod {
 				String c1 = methList[i].getName();
 				int c2 = methList[i].getParameterTypes().length;
 				int c3 = params.size();
-				if (methList[i].getName().compareTo(methodName) == 0 &&
-					methList[i].getParameterTypes().length == params.size() ){
-					boolean equal = true; 
-					for (int j = 0; j<params.size(); j++){
-						String nameParam=methList[i].getParameterTypes()[j].getName();
-						nameParam = translate(nameParam);
-						nameParam = cut(nameParam);
-						type=params.get(j).getClass().getName();
-						type = cut(type);
-						if (nameParam.compareTo(type) != 0)
-							equal = false;
-					}					
+				if (methList[i].getName().compareTo(methodName) == 0){
+					boolean equal = true;
+					if (params.size()==1 && methList[i].getParameterTypes().length==0){
+						equal=true;
+					}else{
+						if (methList[i].getParameterTypes().length == params.size()) {
+							for (int j = 0; j<params.size(); j++){
+								String nameParam=methList[i].getParameterTypes()[j].getName();
+								nameParam = translate(nameParam);
+								nameParam = cut(nameParam);
+								type=params.get(j).getClass().getName();
+								type = cut(type);
+								if (nameParam.compareTo(type) != 0){
+									equal = false;
+								}
+							}
+						}
+					}
 					if (equal){
 						oneMethod = methList[i];
 						break;

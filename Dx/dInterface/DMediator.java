@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.45 $  $Date: 2004-09-10 13:30:59 $
+ * Title: DMediator $Revision: 1.46 $  $Date: 2004-09-29 19:00:39 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,18 +14,23 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.45 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.46 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 
 package dInterface;
 
 import java.beans.PropertyVetoException;
+import java.io.File;
 import java.util.Vector;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.tictac.mouseTrap.dModel.Trace;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.SaveCmd;
@@ -36,7 +41,21 @@ public class DMediator {
   private Vector _documents;
   private boolean _cancel;
 
+//+++++++++++++++++++++++++++++
+  Logger logger = Logger.getLogger(this.getClass().getName());
+  Trace trace=new Trace();
+  public DMediator() {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
+  }
+  public DMediator(boolean flag) {
+    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
+  }
+  //-----------------------------
+
   public DMediator(DApplication dApplic) {
+  	//  +++++++++++++++++++++++++++++
+   	logger.info(trace.write(this,dApplic));	
+     //-----------------------------
     _dApplic = dApplic;
     _documents = new Vector();
     _cancel = false;
@@ -53,6 +72,13 @@ public class DMediator {
  *
  */
   public String addDoc(String ttName, String fileName, int type) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(ttName);
+  	traceParams.add(fileName);
+  	traceParams.add(new Integer(type));
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
     DDocument currentDoc;
     currentDoc = new DDocument(this, ttName, fileName, type);
     if(currentDoc.getError().length()==0){
@@ -76,6 +102,12 @@ public class DMediator {
  *
  */
   public String addDoc(String fileName, int type) {
+//  +++++++++++++++++++++++++++++
+  	Vector traceParams=new Vector();
+  	traceParams.add(fileName);
+  	traceParams.add(new Integer(type));
+  	logger.info(trace.write(this,traceParams));	
+    //-----------------------------
     DDocument currentDoc = new DDocument(this, fileName, fileName, type);
     _documents.addElement(currentDoc);
     if (currentDoc.getError().length() == 0){
@@ -89,6 +121,9 @@ public class DMediator {
   } //end addDoc
 
   public void removeCurrentDoc(){
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
       _documents.remove(getCurrentDoc());
       if (_documents.size()!=0) {
         try{
@@ -104,6 +139,9 @@ public class DMediator {
   //-------------------------------------------
 
   public String saveCurrentDoc(String str){
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this,str));	
+    //-----------------------------
     getCurrentDoc().setDocumentName(str);
     String error = "";
     error = getCurrentDoc().getDM().saveTimeTable(str);
@@ -111,6 +149,10 @@ public class DMediator {
   }
 
   public void closeCurrentDoc(){
+  	//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
+
     if (getCurrentDoc()!= null) {
       if (getCurrentDoc().isModified()) {
         _cancel = promptToSave();
@@ -168,6 +210,9 @@ public class DMediator {
 * or the dialog's close button).  Otherwise, it return true.
 */
   private boolean promptToSave() {
+//  +++++++++++++++++++++++++++++
+  	logger.info(trace.write(this));	
+    //-----------------------------
    int retval = JOptionPane.showConfirmDialog(_dApplic.getJFrame(), DConst.SAVE_PROMPT );
    DDocument aux = getCurrentDoc();
    switch ( retval ) {
