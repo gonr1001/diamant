@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.14 $  $Date: 2003-10-20 21:01:58 $
+ * Title: PeriodPanel $Revision: 1.15 $  $Date: 2003-10-21 16:23:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -42,6 +42,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.*;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
+import com.iLib.gDialog.FatalProblemDlg;
 
 public  abstract class PeriodPanel extends JPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;
@@ -88,19 +89,28 @@ public  abstract class PeriodPanel extends JPanel{
   /**
   *
   * */
- public void setPanelColor( int priority){
-   Color color= Color.GRAY;
-   switch(priority){
-     case 0: color= new Color(236,233,216);//getBackground()
-       break;
-     case 1: color= Color.LIGHT_GRAY;
-       break;
-     case 2: color= Color.DARK_GRAY;
-       break;
-   }
-   for (int i=0; i< getComponentCount(); i++){
-     getComponent(i).setBackground(color);
-   }
+
+
+
+  public void setPanelColor( int priority){
+  Color color= Color.GRAY;
+  switch(priority){
+    case 0: color= new Color(236,233,216);//getBackground()
+      break;
+    case 1: color= Color.LIGHT_GRAY;
+      break;
+    case 2: color= Color.DARK_GRAY;
+      break;
+    case 3: color= Color.PINK;// to show a period where a conflict arises.
+      break;
+    case 4: color= Color.GREEN;// to show where an event is affected.
+      break;
+    default:
+      new FatalProblemDlg("I was in PeriodPanel class and the switch failed!!!" );
+  }
+  for (int i=0; i< getComponentCount(); i++){
+    getComponent(i).setBackground(color);
+  }
 
   }
   /**

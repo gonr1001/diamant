@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.5 $  $Date: 2003-10-20 21:01:58 $
+ * Title: DetailedTTPane $Revision: 1.6 $  $Date: 2003-10-21 16:23:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -72,7 +72,7 @@ public class DetailedTTPane extends TTPane {
   public int getIpady(int i) {
     if (_rowHeaders[i]._n == -1 || _rowHeaders[i]._n == 0)
       return LINE_HEIGHT * 2;
-    return (LINE_HEIGHT+1) * (_rowHeaders[i]._n + 2);
+    return (LINE_HEIGHT + 1) * (_rowHeaders[i]._n + 2);
   }
   //-------------------------------------------
    public PeriodPanel createPeriodPanel(int refNo, String str) {
@@ -91,8 +91,6 @@ public class DetailedTTPane extends TTPane {
      initTTPane(_jScrollPaneOne);
      initTTPane(_jScrollPaneTwo);
    }
-   System.out.println("H " + d.height + "  W " + d.width);
-
    if (vertical) {
      _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,_jScrollPaneOne,_jScrollPaneTwo);
      _jSplitPane.setDividerLocation(d.height/2);
@@ -101,6 +99,7 @@ public class DetailedTTPane extends TTPane {
       _jSplitPane.setDividerLocation(d.width /2);
    }
     _jSplitPane.setOneTouchExpandable(true);
+
   }  // end initDetailedTTPane
 } // end DetailedTTPane
 

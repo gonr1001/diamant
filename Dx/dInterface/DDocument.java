@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.95 $  $Date: 2003-10-17 19:29:30 $
+ * Title: DDocument $Revision: 1.96 $  $Date: 2003-10-21 16:23:47 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.95 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.96 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -298,16 +298,19 @@ public class DDocument  extends InternalFrameAdapter implements
   public void displaySimple(){
     close();
     buidDocument(true, true);
+    _ttPane.updateTTPane(_dm.getTTStructure());
   }
   //-------------------------------------------
   public void displayHorizontalSplit(){
     close();
     buidDocument(false, false);
+    _ttPane.updateTTPane(_dm.getTTStructure());
   }
 
   public void displayVericalSplit(){
     close();
     buidDocument(false, true);
+    _ttPane.updateTTPane(_dm.getTTStructure());
   }
   //-------------------------------------------
   private void  buidDocument(boolean simple, boolean vertical){
@@ -343,7 +346,7 @@ public class DDocument  extends InternalFrameAdapter implements
     System.out.println("H " +_jif.getSize().height + "  W " + _jif.getSize().width);
     //_jif.getSize();
 
-    if (simple) { //if (!simple) {
+    if (simple) {
       _ttPane = new SimpleTTPane(_dm.getTTStructure(),
                                  _dMediator.getDApplication().getToolBar(),
                                  false,

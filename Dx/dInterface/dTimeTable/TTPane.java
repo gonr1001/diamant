@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.6 $  $Date: 2003-10-20 21:01:58 $
+ * Title: TTPane $Revision: 1.7 $  $Date: 2003-10-21 16:23:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -247,13 +247,12 @@ public abstract class TTPane {
     return panel;
   }
   public void manageActions(){
-    JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
+    //JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
     /*
      * Mouse listener for this Panel
      */
      _mouseListener = new MouseAdapter() {
-
-      public void mouseClicked(MouseEvent e) {
+       public void mouseClicked(MouseEvent e) {
         System.out.println("Un clic sur la periode: ");
         if ((e.getClickCount() == 1) && (_toolBar!=null)) {
           PeriodPanel perpanel= (PeriodPanel)e.getSource();
@@ -264,7 +263,7 @@ public abstract class TTPane {
            perpanel.setPanelBackGroundColor(1);
            _toolBar.setComboBoxStatus(true);
           _lastActivePanel=perpanel;
-         System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Ref: " +
+         /*System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Ref: " +
                                                     perpanel.getPeriodRef()[0] +"." +
                                                     perpanel.getPeriodRef()[1]+"." +
                                                     perpanel.getPeriodRef()[2]);//debug
@@ -273,7 +272,7 @@ public abstract class TTPane {
                             +_tts.getCurrentCycle().getPeriodByIndex(
                                                     perpanel.getPeriodRef()[0],
                                                     perpanel.getPeriodRef()[1],
-                                                    perpanel.getPeriodRef()[2]).toString());//debug
+                                                    perpanel.getPeriodRef()[2]).toString());//debug*/
         }
       }
     };

@@ -148,13 +148,17 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
     /**
      *
      */
-    protected void setColorOfPanel(int dayIndex, int seqIndex, int perIndex, int duration,boolean isAssign){
+    protected void setColorOfPanel(int dayIndex, int seqIndex, int perIndex, int duration, boolean isAssign){
       for (int i=0; i< ((JPanel)_ttPane.getViewport().getComponent(0)).getComponentCount(); i++){
         PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPane.getViewport().getComponent(0)).getComponent(i);
         Period period= _ttStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
             perPanel.getPeriodRef()[1],perPanel.getPeriodRef()[2]);
         int[] ppKey={};
-        if((dayIndex==perPanel.getPeriodRef()[0]) && (seqIndex==perPanel.getPeriodRef()[1]) && (perIndex<=perPanel.getPeriodRef()[2])&& (perPanel.getPeriodRef()[2]<= (perIndex+duration-1)) &&(isAssign)){
+        if((dayIndex==perPanel.getPeriodRef()[0]) &&
+           (seqIndex==perPanel.getPeriodRef()[1]) &&
+           (perIndex<=perPanel.getPeriodRef()[2])&&
+           (perPanel.getPeriodRef()[2]<= (perIndex+duration-1)) &&
+           (isAssign)) {
           perPanel.setPanelColor(4);
         } else{
           if((period.getNbInstConflict()+period.getNbRoomConflict()+period.getNbStudConflict())!=0){
