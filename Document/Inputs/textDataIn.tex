@@ -259,12 +259,23 @@ Il existe treize types de lignes :
     \item le jour et l'heure de debut de chacune des unités décrites à la ligne précédente;
     \item l'état du local affecté à chaque unité (fixé ou non fixé);
     \item le nom du local assigné à chaque unité;
-    \item ;
-    \item .
+    \item le type de locaux requis à chaque unité;
+    \item le type de locaux requis à chaque unité;
+    \item état d'affectation de chaque unité dans la grille horaire.
 \end{enumerate}
 
 La structure du fichier :
 
+
+\begin{enumerate}
+\item Le fichier commence par une ligne vide, il s'agit d'une ligne du premier type.
+\item Ensuite il y a $n$ couples de lignes allant du type 2 au type 13.
+    \begin{enumerate}
+    \item La ligne de type 2 est une chaîne de caractères correspondant au sigle du cours (\verb!ADM1111 A!. Ceci décrit la leçon magistrale du cours \verb!ADM111! avec le groupe \verb!A!).
+    \item La ligne de type 3 décrit l'état du cours, c'est une valeur entière (0 si le cours est inactif et 1 dans l'autre cas). 
+    \item La ligne de type 4
+    \end{enumerate}
+\end{enumerate}
 
 \begin{description}
 \item [Ligne blanche] la première ligne du fichier est une ligne blanche.
