@@ -95,9 +95,15 @@ public class TestRoomsConditions implements Condition{
       long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",2));
       int dayIndexAvail= _dm.getTTStructure().findIndexInWeekTable(dayKey);
       int perPosition= _dm.getTTStructure().getCurrentCycle().getPeriodPositionInDay(dayKey,seqKey,perKey);
-      if(perPosition>0)
+      if(perPosition>0){
+        int [][] matrix= room.getMatrixAvailability();
+        if ((dayIndexAvail < matrix.length)){
         if(room.getMatrixAvailability()[dayIndexAvail][perPosition-1]==_NOTAVAIL)
           return 1;
+        }else{// else if ((dayIndexAvail < matrix.length))
+            return 1;
+          }// end else if ((dayIndexAvail < matrix.length))
+      }// end if(perPosition>0)
     }
     return 0;
   }

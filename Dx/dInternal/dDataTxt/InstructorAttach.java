@@ -80,6 +80,14 @@ public class InstructorAttach extends DXObject {
     return a;
   }
 
+  /**
+   *
+   * @return
+   */
+  /*public int getMatrixAvailabilityValue(int day, int period){
+    if(day < )
+  }*/
+
   public void  setAvailability(int[][] a){
     _instructorAvailability = new Vector();
     String str = "";
