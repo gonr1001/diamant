@@ -1,0 +1,51 @@
+% -*- TeX -*- -*- FR -*-
+\documentclass[francais]{uds-article}
+
+%-----------------------------------------------------------------------------
+%----- Identification des packages nécessaires
+%-----------------------------------------------------------------------------
+
+\usepackage{babel}
+\usepackage[latin1]{inputenc}
+
+%-----------------------------------------------------------------------------
+%----- Page Titre
+%-----------------------------------------------------------------------------
+
+\Titre{DX}
+\Auteurs{Ruben Gonzalez-Rubio, Yannick Syam, Alexander Jaramillo}
+\Date{\today}
+
+%-----------------------------------------------------------------------------
+%----- Identification des fichiers des pages préliminaires et bibliographique
+%-----------------------------------------------------------------------------
+
+\FichierResume{Inputs/resume}
+\FichierRemerciements{}
+\FichierGlossaire{} % \FichierLexique est équivalent
+\FichiersBibliographie{udsplain}{Inputs/bib1,Inputs/bib2}
+
+%-----------------------------------------------------------------------------
+%----- Le document
+%-----------------------------------------------------------------------------
+
+\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index}
+
+\begin{document}
+\begin{articleDX}
+
+\include{Inputs/intro}
+
+%\part{Une partie}
+%\include{revue}
+%\include{theorie}
+
+%\part{Dernière partie}
+%\include{conclu}
+
+\appendix
+\include{Inputs/glossaire}
+\include{Inputs/index}
+%\include{formules}
+\end{articleDX}
+\end{document}
