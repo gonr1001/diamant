@@ -34,7 +34,8 @@ public class PeriodTest extends TestCase {
 String path;
   public PeriodTest(String name) {
     super(name);
-    path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+    path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
+  System.out.println("rgr"+path);
   }
 
   public static Test suite() {
@@ -50,7 +51,7 @@ String path;
    * */
   public void test_readXMLtag(){
     ReadXMLFile xmlFile;
-    Element  item, ID;
+    Element  item;
     Period period= new Period();
     try{
       xmlFile = new ReadXMLFile();
@@ -73,7 +74,7 @@ String path;
    */
   public void test_eventsInPeriod(){
     ReadXMLFile xmlFile;
-    Element  item, ID;
+    Element  item;
     Period period= new Period();
     try{
       xmlFile = new ReadXMLFile();
@@ -106,7 +107,7 @@ String path;
    * */
   public void test_getEndHour(){
     ReadXMLFile xmlFile;
-    Element  item, ID;
+    Element  item;
     Period period= new Period();
     try{
       xmlFile = new ReadXMLFile();
@@ -129,7 +130,7 @@ String path;
    * */
   public void test_writeXMLtag(){
     ReadXMLFile xmlFile;
-    Element  item, ID;
+    Element  item;
     Period period= new Period();
     Period periodS= new Period();
     try{
@@ -144,14 +145,16 @@ String path;
       period.setPriority(2);
       WriteXMLElement wr= new WriteXMLElement();
       doc=wr.getNewDocument();
-       Element ttPeriod= period.writeXMLtag(doc);
+      Element ttPeriod= period.writeXMLtag(doc);
       doc= wr.buildDOM(doc,ttPeriod);
-      WriteXMLFile.write(doc,path+"SavePeriod.xml");
+      WriteXMLFile.write(doc,"SavePeriod.xml");
 
       // read xml file
-      doc = xmlFile.getDocumentFile(path+"SavePeriod.xml");
+      doc = xmlFile.getDocumentFile("SavePeriod.xml");
+     
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
+      System.out.println ("item " +item.toString());
       periodS= new Period();
       periodS.readXMLtag(item);
       //Element ttStruc= _setOfCycles.writeXMLtag(doc);

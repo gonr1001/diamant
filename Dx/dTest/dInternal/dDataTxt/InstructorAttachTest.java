@@ -29,10 +29,6 @@ public class InstructorAttachTest extends TestCase {
    return new TestSuite(InstructorAttachTest.class);
   } // end suite
 
- /*public void testInstructorID(){
-    assertEquals("Instructor ID equals :", _inst.toWrite(), "Alexander");
-  }*/
-
   public void test_addAvailability(){
     Vector v = new Vector();
     v.add("1 1 1 1 5");
@@ -67,7 +63,7 @@ public class InstructorAttachTest extends TestCase {
     v.add("1 1 1 5 5");
     int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
     _inst.setAvailability(availMatrix);
-    assertEquals("test1_getAvailability: assertEquals", v , _inst.getVectorAvailability());
+    assertEquals("test1_setAvailability: assertEquals", v, _inst.getVectorAvailability());
   }
 
   public void test_getAvailability(){
