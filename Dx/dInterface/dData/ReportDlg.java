@@ -180,7 +180,7 @@ public class ReportDlg extends JDialog implements ActionListener{
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //If buttons OPTIONS
-    if (command.equals("OPTIONS"))
+    if (command.equals("Options"))
         new ReportOptionsDlg(_dApplic, _jd, _resources, 0);
     if (command.equals("Fermer"))
       dispose();
