@@ -28,6 +28,7 @@ public class EventAttach extends DXObject {
    private boolean isPermanent=false;// tell if this event is permanent in the timetable
   private String _ttsKey="";// give the key of the period where event is place
   //is in a.b.c format where a = day, b= sequence, c = period
+  private boolean _isPlaceInAPeriod=false;
 
   /**
    * Constructor
@@ -118,6 +119,22 @@ public class EventAttach extends DXObject {
 
   public boolean getAssignState(){
    return isAssign;
+ }
+
+ /**
+  * check if event is already place in a period
+  * @return
+  */
+ public boolean isPlaceInAPeriod(){
+   return _isPlaceInAPeriod;
+ }
+
+ /**
+  * tell to event that event is already place in a period
+  * @param isInPeriod
+  */
+ public void setInAPeriod(boolean isInPeriod){
+   _isPlaceInAPeriod= isInPeriod;
  }
 
  public void setPermanentState(boolean state){

@@ -51,11 +51,18 @@ public class TestConditions {
  /**
   *
   */
-  public void initAllConditions(){
+  private void buildStudentConflictMatrix(){
     if (!_matrixIsBuilded){
-    _matrix.buildMatrix(_dm.getSetOfActivities(), _dm.getSetOfStudents());
-    _matrixIsBuilded= true;
+     _matrix.buildMatrix(_dm.getSetOfActivities(), _dm.getSetOfStudents());
+     _matrixIsBuilded= true;
     }
+ }
+
+ /**
+  *
+  */
+  public void initAllConditions(){
+    buildStudentConflictMatrix();
     buildAllConditions();
   }
 
@@ -65,10 +72,10 @@ public class TestConditions {
    */
   private void buildAllConditions(){
     _dm.getTTStructure().getCurrentCycle().emptyAllEventsInPeriod();
-    _dm.getSetOfEvents()._isEventPlaced=true;
+    //_dm.getSetOfEvents()._isEventPlaced=true;
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){
       Resource event = _dm.getSetOfEvents().getResourceAt(i);
-      this.addOrRemEventInTTs(event,1);
+      addOrRemEventInTTs(event,1);
     }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
   }
 
@@ -94,11 +101,25 @@ public class TestConditions {
             Condition cond = (Condition)_testToRun.get(k);
             cond.executeTest(per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
+          ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
         return true;
       }// end if (_dm.getTTStructure().getCurrentCycle().isPeriod
     }// end if (_dm.getSetOfActivities().getUnity(
     return false;
+  }
+
+  /**
+   *
+   * @param oper
+   * @return
+   */
+  private boolean getBooleanValue(int oper){
+   switch(oper){
+     case 1: return true;
+     case -1: return false;
+   }
+    return true;
   }
 
 }// end class

@@ -16,6 +16,7 @@ import dInternal.dData.Type;
 //import dInternal.dUtil.DXValue;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
+import dInternal.dUtil.DXToolsMethods;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import dResources.DConst;
@@ -30,29 +31,24 @@ public class TestStudentsConditions implements Condition {
   }
 
   public int executeTest(Period period, String eventKey, int operation){
-    StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
-    Resource activity = _soa.getResource(event1.nextToken());
-    Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
-    Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
-    String key1= activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
-                 DConst.TOKENSEPARATOR+section.getID();
+    String key1= DXToolsMethods.getToken(eventKey,DConst.TOKENSEPARATOR,0)+DConst.TOKENSEPARATOR+
+                 DXToolsMethods.getToken(eventKey,DConst.TOKENSEPARATOR,1)+DConst.TOKENSEPARATOR+
+                 DXToolsMethods.getToken(eventKey,DConst.TOKENSEPARATOR,2);
     int number=0;
-    if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1){
+    //if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1){
       int nbConf;
       ConflictsAttach confVal= new ConflictsAttach();
       for (int i=0; i< period.getEventsInPeriod().size(); i++){
-        StringTokenizer event2 = new StringTokenizer(period.getEventsInPeriod()
-        .getResourceAt(i).getID(),DConst.TOKENSEPARATOR);
-        activity = _soa.getResource(event2.nextToken());
-        type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event2.nextToken());
-        section = ((Type)type.getAttach()).getSetOfSections().getResource(event2.nextToken());
-        String key2=  activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
-                 DConst.TOKENSEPARATOR+section.getID();
-        //String key2 = period.getEventsInPeriod().getResourceAt(i).getID();
-        nbConf= _matrix.getNumberOfCOnflicts(key1, key2);
-        number+= nbConf;
-        if (nbConf!=0)
-          confVal.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),nbConf,0,new Vector());
+        String event2= period.getEventsInPeriod().getResourceAt(i).getID();
+        String key2= DXToolsMethods.getToken(event2,DConst.TOKENSEPARATOR,0)+DConst.TOKENSEPARATOR+
+                     DXToolsMethods.getToken(event2,DConst.TOKENSEPARATOR,1)+DConst.TOKENSEPARATOR+
+                     DXToolsMethods.getToken(event2,DConst.TOKENSEPARATOR,2);
+        if(!key1.equalsIgnoreCase(key2)){
+          nbConf= _matrix.getNumberOfCOnflicts(key1, key2);
+          number+= nbConf;
+          if (nbConf!=0)
+            confVal.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),nbConf,0,new Vector());
+        }// end if(!key1.equalsIgnoreCase(key2))
       }// end for (int i=0; i< period.getEventsInPeriod().size(); i++)
 
       switch(operation){
@@ -62,15 +58,16 @@ public class TestStudentsConditions implements Condition {
             period.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
             period.addNbStudConflict(number);
             break;
-          case -1:period.getEventsInPeriod().removeResource(eventKey);
+          case -1:
+            period.getEventsInPeriod().removeResource(eventKey);
             period.removeNbStudConflict(number);
             for(int i=0; i< period.getEventsInPeriod().size(); i++)
               ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
                getAttach()).removeConflict(eventKey,0);
             break;
         }
-        return 0;
-    }// end if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1)
+        //return 0;
+    //}// end if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1)
     return -1;
   }
 }

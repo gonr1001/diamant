@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.87 $  $Date: 2003-10-01 13:13:50 $
+ * Title: DDocument $Revision: 1.88 $  $Date: 2003-10-02 20:01:27 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.87 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.88 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -207,9 +207,13 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param e
    */
   public void changeInTTStructure(TTStructureEvent  e) {
-    System.out.println("I was here");
+    System.out.println("I was in ttstructure listener");
+    setCursor(Cursor.WAIT_CURSOR);
     _dm.setModified();
     _ttPanel.updateTTPanel(_dm.getTTStructure());
+     _dm.setStateBarComponent();
+    _stateBar.upDateDStateBar(_dm.getSetOfStates());
+    setCursor(Cursor.DEFAULT_CURSOR);
   }
   //-------------------------------------------
   /**
@@ -218,16 +222,16 @@ public class DDocument  extends InternalFrameAdapter implements
    * @param component
    */
   public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
-    //component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     setCursor(Cursor.WAIT_CURSOR, component);
+
     _dm.setModified();
     _dm.buildSetOfEvents();
-    //_dm.setStateBarComponent();
-    _dm.getSetOfStates().sendEvent();
+    _dm.getConditionsTest().initAllConditions();
+    _dm.setStateBarComponent();
     _ttPanel.updateTTPanel(_dm.getTTStructure());
-    //_stateBar.upDateDStateBar(_dm.getSetOfStates());
+    _stateBar.upDateDStateBar(_dm.getSetOfStates());
+
     setCursor(Cursor.DEFAULT_CURSOR, component);
-    //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   }// end ac
 
   /**

@@ -244,6 +244,31 @@ public class TTStructure {
   }
 
   /**
+   * it set the time table structure
+   * @param Document  doc the document containing the timetable structure
+   * @return String the error message, empty if it does not found error
+   * */
+  public String setTTStructureDocument(Document  doc){
+    readFile xmlFile;
+    Element root, item, ID;
+    try{
+      ReadXMLElement list= new ReadXMLElement();
+      root= list.getRootElement(doc);
+      if (readXMLtag(root).length() != 0){
+        _error = _errorXMLFileMessage;
+        return _error;
+      }
+    }catch(Exception e){
+      System.out.println(e);
+      _error= e.toString();
+      return e.toString();
+    }
+    return _error;
+  }
+
+
+
+  /**
    * it save the time table structure
    * @param String the xml file where the timetable structure must be saved
    * @return String the error message, empty if it does not found error
@@ -260,6 +285,25 @@ public class TTStructure {
       return "";
     } catch(Exception e){
       return e.toString();//debug
+    }
+
+   }
+
+   /**
+   * it get the time table structure
+   * @return Document doc the document containing the timetable structure
+   * */
+   public Document getTTStructureDocument(){
+    BuildXMLElement wr;
+    try{
+      wr= new BuildXMLElement();
+      Document doc= wr.getNewDocument();
+      Element ttStruc= writeXMLtag(doc);
+      // create document and write in the file
+      doc= wr.buildDOM(doc,ttStruc);
+      return doc;
+    } catch(Exception e){
+      return null;//debug
     }
 
    }

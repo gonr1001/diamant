@@ -24,7 +24,7 @@ import java.awt.Component;
 public class SetOfEvents extends SetOfResources{
 
   public Vector _soeListeners = new Vector(1);
-  protected boolean _isEventPlaced=false;
+  //protected boolean _isEventPlaced=false;
   private DModel _dm;
   private String _UNAVAILABLE= "------";
 
@@ -107,9 +107,8 @@ public class SetOfEvents extends SetOfResources{
    */
   public int getNumberOfEventAssign(){
     int count=0;
-    if(_isEventPlaced)
     for (int i=0; i< this.size(); i++){
-      if(((EventAttach)getResourceAt(i).getAttach()).getAssignState())
+      if(((EventAttach)getResourceAt(i).getAttach()).isPlaceInAPeriod())
         count++;
     }// end for (int i=0; i< this.size(); i++)
     return count;

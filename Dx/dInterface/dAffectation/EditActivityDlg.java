@@ -107,11 +107,12 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
         _currentActivityIndex=i;
         applyChanges();
       }
+      _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
       dispose();
 
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
       applyChanges();
-      //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
     }
 
   }
@@ -358,6 +359,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     //remove event
     _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),-1);
+
     JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
     String day= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
     String hour= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(3)).getSelectedItem().toString();
@@ -380,7 +382,6 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().updateActivities(vect);
     //add event
     _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1);
-    //_dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
   }
 
   /**

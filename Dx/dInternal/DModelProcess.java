@@ -82,6 +82,7 @@ public class DModelProcess {
       ((State)_dm._setOfStates.getResource(DConst.SB_C_INST).getAttach()).setValue(nbConf[0]);
       ((State)_dm._setOfStates.getResource(DConst.SB_C_ROOM).getAttach()).setValue(nbConf[1]);
       ((State)_dm._setOfStates.getResource(DConst.SB_C_STUD).getAttach()).setValue(nbConf[2]);
+      _dm._setOfStates.sortSetOfResourcesByKey();
     }
   }
 
@@ -90,16 +91,13 @@ public class DModelProcess {
   * setofrooms
   */
  public void buildSetOfEvents(){
-   _dm._setOfEvents = new SetOfEvents(_dm);
+   _dm._setOfEvents.getSetOfResources().removeAllElements();
    if (_dm._setOfActivities!=null){
      _dm._setOfEvents.build();
      //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
      _dm._conditionTest = new TestConditions(_dm);
-     //_dm._conditionTest.buildStudentsMatrix(_dm._setOfActivities,_dm._setOfStudents);
-     //System.out.println(conditionTest.getConflictsMatrix().toWriteMatrix());
-    // _dm._setOfStates.sendEvent();
    }// end if (_setOfActivities!=null)
 
   }

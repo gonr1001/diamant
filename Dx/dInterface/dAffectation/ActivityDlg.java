@@ -154,13 +154,15 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //If button APPLY
     if (command.equals(_buttonsNames[1])){
       setActivitesVisibility();
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       _buttonsPanel.getComponent(1).setEnabled(false);
     }
     //if button OK
     if (command.equals(_buttonsNames[0])){
       setActivitesVisibility();
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
@@ -171,7 +173,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
       _lNoVisible.setText(_rightVec.size() + " " + NOT_INCLUDED);
       _lVisible.setText(_leftVec.size() + " " + INCLUDED);
       _buttonsPanel.getComponent(1).setEnabled(true);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
   }//end method
 
