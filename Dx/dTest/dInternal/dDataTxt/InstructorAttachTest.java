@@ -9,21 +9,21 @@ package dTest.dInternal.dData;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.dData.Instructor;
+import dInternal.dData.InstructorAttach;
 import java.util.Vector;
 
-public class InstructorTest extends TestCase {
-  private Instructor _inst;
+public class InstructorAttachTest extends TestCase {
+  private InstructorAttach _inst;
 
-  public InstructorTest(String name) {
+  public InstructorAttachTest(String name) {
     super(name);
-    _inst = new Instructor();
+    _inst = new InstructorAttach();
   }
 
   public static Test suite() {
    // the type safe way is in SimpleTest
    // the dynamic way :
-   return new TestSuite(InstructorTest.class);
+   return new TestSuite(InstructorAttachTest.class);
   } // end suite
 
  /*public void testInstructorID(){

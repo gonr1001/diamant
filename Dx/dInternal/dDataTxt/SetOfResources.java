@@ -85,7 +85,7 @@ public class SetOfResources extends DXObject{
       }// end else if (insertType==0)
 
       if (add==-1){
-        if (index >= (_resourceList.size()-1))
+        if (index > (_resourceList.size()-1))
           _resourceList.add(resource);
         else
           _resourceList.insertElementAt(resource, index);
@@ -457,8 +457,8 @@ public class SetOfResources extends DXObject{
    * @return int index of the Resource in SetOfResources
    * */
   private int searchWhereToInsert(String id){
-    if (_stateSort!=1)
-      this.sortSetOfResourcesByID();
+    if ((_stateSort!=1)) //|| (_resourceList.size()<=3))
+      sortSetOfResourcesByID();
     int low = 0;
     int high = _resourceList.size()-1;
     while(low <= high){

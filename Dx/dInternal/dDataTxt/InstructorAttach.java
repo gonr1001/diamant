@@ -18,12 +18,12 @@ import dInternal.dUtil.DXObject;
  * @todo
  */
 
-public class Instructor extends DXObject {
+public class InstructorAttach extends DXObject {
 
   private Vector _instructorAvailability;
   private final String CR_LF = "\r\n";
 
-  public Instructor() {
+  public InstructorAttach() {
     _instructorAvailability = new Vector();
   }
   /**
