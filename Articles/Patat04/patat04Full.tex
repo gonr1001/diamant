@@ -430,7 +430,6 @@ Verification de contraintes (bd)
 \section{La decomposition modulaire, top-down, alternatives et
 justifications} \label{sec:archi}
 
-
 \subsection {Architecture trois-tiers et la production d'horaires}
 
 De manière abstraite une architecture logicielle décrit les
@@ -468,17 +467,15 @@ complexes.
 \begin{figure}
 \setlength{\unitlength}{1cm}
 \begin{picture}(3,5)
-  \put(3,1){\framebox(4,1){interface utilisateur}}
-  \put(4.5,2){\vector(0,1){0.5}}
-  \put(5.5,2.5){\vector(0,-1){0.5}}
-  \put(3,2.5){\framebox(4,1){logique d'affaires}}
+  \put(3,4){\framebox(4,1){interface utilisateur}}
   \put(4.5,3.5){\vector(0,1){0.5}}
   \put(5.5,4){\vector(0,-1){0.5}}
-  \put(3,4){\framebox(4,1){persistance de données}}
+  \put(3,2.5){\framebox(4,1){logique d'affaires}}
+  \put(4.5,2){\vector(0,1){0.5}}
+  \put(5.5,2.5){\vector(0,-1){0.5}}
+  \put(3,1){\framebox(4,1){persistance de données}}
 \end{picture}
-
 \caption{L'architecture trois tiers.}\label{fig:phThree}
-
 \end{figure}
 
 \subsection {L'architecture trois tiers et le système de production d'horaires}
@@ -508,6 +505,35 @@ production d'horaires, les données peuvent être stockées dans une
 base de données, dans un fichier XML ou dans un fichier texte, ou
 dans autre moyen de stockage pertinent.
 \end{enumerate}
+
+Ces éléments de composition et ses relations sont mieux illustrés
+dans la figure \ref{fig:phFour}:
+
+\begin{figure}
+\setlength{\unitlength}{1cm}
+\begin{picture}(5,8)
+  \put(1.5,7.7){\makebox(0,0){Interface utilisateur}}
+  \put(0,6.5){\framebox(3.5,1){Saisie de données}}
+  \put(3.5,7.1){\vector(1,-1){1.5}}
+  \put(5,5.6){\vector(-1,1){1.5}}
+
+  \put(1.5,4.2){\makebox(0,0){Interface utilisateur}}
+  \put(0,3){\framebox(3.5,1){Production d'horaires}}
+  \put(3.5,3.6){\vector(1,1){1.5}}
+  \put(5,5.1){\vector(-1,-1){1.5}}
+
+  \put(6.5,6){\makebox(0,0){Logique d'affaire}}
+  \put(5,4.8){\framebox(3.5,1){Serveur Web}}
+  \put(8.5,5.2){\vector(1,0){1.5}}
+  \put(10,5.2){\vector(-1,0){1.5}}
+
+  \put(11.5,6){\makebox(0,0){Logique d'affaire}}
+  \put(10,4.8){\framebox(3.5,1){Serveur Web}}
+
+
+\end{picture}
+\caption{L'architecture trois tiers.}\label{fig:phFour}
+\end{figure}
 
 
 \section{Technologies possibles}
@@ -551,7 +577,8 @@ La persistance de données & Base de données & Base de données & Base de données 
 
 \end{tabular}
 
-\caption{ Des instances de l'architecture}\label{tb:tbOne}
+\caption{ Quelques instances possibles de
+l'architecture}\label{tb:tbOne}
 \end{table}
 
 Tel que nous avons remarqué l'ensemble des instances montrées dans
