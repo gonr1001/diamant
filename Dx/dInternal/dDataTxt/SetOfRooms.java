@@ -57,7 +57,8 @@ public class SetOfRooms extends SetOfResources{
             position = 3;
             break;
           case 3:
-            if(currentLine.countTokens()<4){
+            int nbTokens= currentLine.countTokens();
+            if(nbTokens<4){
                 _error= DConst.ROOM_TEXT7+line+DConst.ROOM_TEXT5 +
                       "\n" + DConst.ROOM_TEXT6;
                 return false;
@@ -94,6 +95,13 @@ public class SetOfRooms extends SetOfResources{
                 state = 4;
                 break;
               case 4:
+                if(nbTokens==6)
+                  state =5;
+                else
+                  state =0;
+                break;
+              case 5:
+                System.out.println("Dispo: "+token);
                 state =0;
                 break;
               }// end switch (state)
@@ -131,6 +139,7 @@ public class SetOfRooms extends SetOfResources{
             break;
           case 3:
             RoomAttach room = new RoomAttach();
+            int nbTokens= currentLine.countTokens();
             while (currentLine.hasMoreElements()){
               token = currentLine.nextToken();
               switch (state){
@@ -158,6 +167,19 @@ public class SetOfRooms extends SetOfResources{
                   break;
                 case 4:
                   room.setDescription(token.trim());
+
+                  if(nbTokens==6)
+                    state =5;
+                  else{
+                    room.setStandardAvailability();
+                    state =0;
+                  }
+                  break;
+                case 5:
+                  StringTokenizer availToken = new StringTokenizer(token,",");
+                  int nbAvailT= availToken.countTokens();
+                  for(int i=0; i< nbAvailT; i++)
+                    room.addAvailability(availToken.nextToken());
                   state =0;
                   break;
               }// end switch (state)
