@@ -230,6 +230,7 @@ public class SetOfStudents extends SetOfResources{
   * @return Vector It contents the Resources's ID plus the Resources's keys,
   * separate by a blank space
   * */
+ /*
   public Vector getStudentsByGroup(String activityID, String typeID, int group){
     int IDLength = DConst.STUDENT_ID_LENGTH;
     int keyLength = DConst.STUDENT_KEY_LENGTH;
@@ -256,6 +257,47 @@ public class SetOfStudents extends SetOfResources{
     }//end for(int i=0; i< size(); i++)
     return list;
   }
+  */
+
+ /**
+  * @todo Cette methode n'est pas valide  22/10/03
+  * AlexJ
+  * @param activityID
+  * @param typeID
+  * @param group
+  * @return
+  */
+  public Vector getStudentsByGroup(String activityID, String typeID, int group){
+    int IDLength = DConst.STUDENT_ID_LENGTH;
+    int keyLength = DConst.STUDENT_KEY_LENGTH;
+    int studentProgramLength = DConst.STUDENT_PROGRAM_LENGTH;
+    int diff;
+    String ID, key, studentProgram;
+    Resource studentRes;
+    Vector list= new Vector();
+    for(int i=0; i< size(); i++){
+      studentRes = getResourceAt(i);
+      if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
+        ID = studentRes.getID();
+        diff = Math.abs(IDLength - ID.length());
+        for(int j = 0; j < diff; j++){
+          ID = ID+" ";
+        }
+        key = String.valueOf(studentRes.getKey());
+        diff = Math.abs(keyLength - key.length());
+        for(int j = 0; j < diff; j++){
+          key = "0"+ key;
+        }
+        //studentProgram = this.getResource(ID).getAttach().externalKey(key, ID);
+        //System.out.println("studentProgram " + studentProgram);
+        list.add(ID + " " + key);
+        //list.add(studentRes.getID());
+      }//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
+    }//end for(int i=0; i< size(); i++)
+    return list;
+  }
+
+
 
   /**
    *

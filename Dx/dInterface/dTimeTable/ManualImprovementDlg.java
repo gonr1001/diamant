@@ -16,7 +16,10 @@ import dInterface.DApplication;
 import dInterface.DToolBar;
 import dInterface.dUtil.DXTools;
 import javax.swing.JFrame;
+
 import dInterface.dAffectation.EventsDlgInterface;
+import dInterface.dAffectation.EditActivityDlg;
+
 import dInternal.dConditionsTest.TestConditions;
 import dInternal.dConditionsTest.SetOfEvents;
 import dInternal.dConditionsTest.EventAttach;
@@ -29,7 +32,7 @@ import dResources.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 
-   private String[] _buttonsNames = {DConst.BUT_CLOSE};
+   private String[] _buttonsNames = {"Modifier", DConst.BUT_CLOSE};
    private DModel _dm;
 //   private TTStructure _newTTS;
    private DToolBar _toolBar;
@@ -56,9 +59,11 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     String command = e.getActionCommand();
     //if the source is one of the the _leftArrowsPanel buttons
     //if Button CLOSE is pressed
-    if (command.equals(_buttonsNames[0]))
+    if (command.equals(_buttonsNames[1]))
       dispose();
-
+    if (command.equals(_buttonsNames[0]))
+      //new EditActivityDlg(this, _dApplic,
+      ;
   }//end method
 
   /**

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.67 $  $Date: 2003-10-22 19:11:38 $
+ * Title: DConst $Revision: 1.68 $  $Date: 2003-10-23 13:05:22 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.67 $
+ * @version $Revision: 1.68 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -80,6 +80,7 @@ public class DConst {
 
   public final static int STUDENT_ID_LENGTH=9;
   public final static int STUDENT_KEY_LENGTH=8;
+  public final static int STUDENT_PROGRAM_LENGTH=8;
 
   // Color constants
   public final static Color COLOR_BLACK = Color.black; // Default color
