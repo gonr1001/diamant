@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.2 $  $Date: 2003-02-26 17:44:07 $
+ * Title: DModel $Revision: 1.3 $  $Date: 2003-02-27 10:46:42 $
  * Description: DModel is a class used to
  *
  *
@@ -14,15 +14,16 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
 
 import java.util.Vector;
+import java.io.*;
 
-public class DModel {
+public class DModel{
   private Vector _dmListeners = new Vector();
   private TTParameters _ttParameters;
 
