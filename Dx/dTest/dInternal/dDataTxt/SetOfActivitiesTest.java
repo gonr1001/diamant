@@ -432,7 +432,7 @@ public void test7_analyseTokens(){
   }
 
   /**
-  * test11_analyseTokens, test that analyse the empty room name
+  * test11_analyseTokens, test that analyse the wrong room name
   * in the activities file
   * */
  public void test11_analyseTokens(){
@@ -444,7 +444,7 @@ public void test7_analyseTokens(){
                   "3"+"\r\n"+
                   "1 12"+"\r\n"+
                   "1"+"\r\n"+
-                  ""+"\r\n"+
+                  "C1 387"+"\r\n"+
                   "0"+"\r\n"+
                   "0"+"\r\n"+
                   "0"+"\r\n"+
@@ -463,8 +463,8 @@ public void test7_analyseTokens(){
 
    SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
    setOfActivities.analyseTokens(1);
-   assertEquals("test11_analyseTokens: assertEquals", DConst.ACTI_TEXT12,
-                setOfActivities.getError().substring(0,DConst.ACTI_TEXT12.length()));
+   assertEquals("test11_analyseTokens: assertEquals", DConst.ACTI_TEXT10,
+                setOfActivities.getError().substring(0,DConst.ACTI_TEXT10.length()));
   }
 
   /**
