@@ -35,6 +35,7 @@ public class StudentsConflictsMatrix {
    */
   public void buildMatrix(SetOfActivities soa, SetOfStudents sos){
     _allSections = buildSections(soa);
+    firstStudentGroupAssignment(soa,sos);
     _theMatrix = new int[_allSections.size()+1][_allSections.size()+1];
     for(int i=0; i< sos.size(); i++){
       StudentAttach student = (StudentAttach)sos.getResourceAt(0).getAttach();
@@ -65,7 +66,26 @@ public class StudentsConflictsMatrix {
     return allSections;
   }
 
-  private void firtStudentAssign(SetOfStudents sos){
+  /**
+   * First assignment of students in the groups
+   * @param sos
+   */
+  private void firstStudentGroupAssignment(SetOfActivities soa, SetOfStudents sos){
+    for (int i=0; i< soa.size(); i++){
+      Resource rescActivity = soa.getResourceAt(i);
+      for (int j=0; j< ((Activity)rescActivity.getAttach()).getSetOfTypes().size(); j++){
+        Resource rescType = ((Activity)rescActivity.getAttach()).getSetOfTypes().getResourceAt(j);
+        int groupInc = 0;
+        for (int k=0; k< ((Activity)rescActivity.getAttach()).getStudentRegistered().size(); k++){
+          groupInc= groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
+          String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
+          Resource student = sos.getResource(Long.parseLong(studentKey));
+          int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInc).getKey();
+          ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),groupValue,false);
+          groupInc++;
+        }// end for (int k=0; k< ((Activity)rescActivity.getAttach()).getSetOfTypes()
+      }// end for (int j=0; j< ((Activity)rescActivity.getAttach()).
+    }// end for (int i=0; i< soa.size(); i++)
 
   }
 

@@ -470,7 +470,7 @@ public class SetOfActivities extends SetOfResources{
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();
             instName = firstCycAss.getInstructorName();
-            lineTime+=firstCycAss.getDateAndTime()[0]+" "+
+            lineTime+=Integer.toString(1+ firstCycAss.getDateAndTime()[0])+" "+
                      DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";//
             lineRoomName+= firstCycAss.getRoomName()+" ";//
             if(firstCycAss.getRoomState())
