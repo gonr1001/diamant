@@ -237,7 +237,7 @@ public class GroupDlg extends JDialog implements ActionListener{
    */
   private void setCenterPanel(Dimension dialogDim){
     setNotAssignedPanel(dialogDim);
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames);
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames,true);
     setAssignedPanel(dialogDim);
     _centerPanel = new JPanel();
     _centerPanel.add(_notAssignedPanel);

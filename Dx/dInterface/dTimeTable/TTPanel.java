@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.49 $  $Date: 2003-10-01 13:13:50 $
+ * Title: TTPanel $Revision: 1.50 $  $Date: 2003-10-02 23:34:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.49 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.50 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -45,6 +45,8 @@ import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
 
+import dInterface.DToolBar;
+
 
 
 public abstract class TTPanel {
@@ -55,14 +57,28 @@ public abstract class TTPanel {
   protected final int HEADER_HEIGHT = PERIOD_HEIGHT / 3 ;
   protected final int ROW_WIDTH =  35;    // timeTable.nbDays * MINWIDTH;
   protected int _lastHour;
-  protected DModel _dm;
+  //protected DModel _dm;
+  protected TTStructure _tts;
+  protected DToolBar _toolBar;
   protected JScrollPane _jScrollPaneOne;
   protected JSplitPane _jSplitPane;
   protected PeriodPanel _lastActivPanel = null;
   protected int _periodLenght;
 
-  public TTPanel(DModel dm) {
+  /*public TTPanel(DModel dm) {
     _dm = dm;
+    _jScrollPaneOne = new JScrollPane();
+    _jSplitPane = new JSplitPane();
+  }*/
+
+  /**
+   * constructor
+   * @param tts
+   * @param toolBar
+   */
+  public TTPanel(TTStructure tts, DToolBar toolBar) {
+    _tts= tts;
+    _toolBar=toolBar;
     _jScrollPaneOne = new JScrollPane();
     _jSplitPane = new JSplitPane();
   }

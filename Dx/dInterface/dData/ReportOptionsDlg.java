@@ -80,7 +80,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     JPanel centerPanel = new JPanel();
     centerPanel.setPreferredSize(centerPanelDim);
     centerPanel.add(DXTools.setListPanel(listPanelDim, _leftList, _leftVec, leftLabelsInfo, mouseListenerLists));
-    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames));
+    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames,true));
     centerPanel.add(DXTools.setListPanel(listPanelDim, _rightList, _rightVec, rightLabelsInfo, mouseListenerLists));
     //centerPanel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
     //buttonsPanel

@@ -106,7 +106,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     leftPanel.add(_lVisible, BorderLayout.NORTH);
     leftPanel.add(listPanel, BorderLayout.CENTER);
     //arrows panel
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames);
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames,true);
     //placing the panels and buttons into the _listsPanel
     _centerPanel = new JPanel();
     _centerPanel.add(leftPanel, BorderLayout.EAST);

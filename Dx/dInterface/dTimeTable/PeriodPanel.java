@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.6 $  $Date: 2003-09-29 20:36:32 $
+ * Title: PeriodPanel $Revision: 1.7 $  $Date: 2003-10-02 23:34:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -112,7 +112,7 @@ public abstract class PeriodPanel extends JPanel{
   /**
   *
   * */
- private void setPanelColor( int priority){
+ public void setPanelColor( int priority){
    Color color= Color.GRAY;
    switch(priority){
      case 0: color= new Color(236,233,216);//getBackground()

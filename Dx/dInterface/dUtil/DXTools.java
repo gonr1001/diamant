@@ -294,7 +294,7 @@ public static int STIConvertGroup(String STIGroupID){
   * @param arrowsNames It contains the symbols of the arrows
   * @return the JPanel to be added to the dialog
   */
- public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames){
+ public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames, boolean enableBut){
    Dimension panelDim = new Dimension(50, 41*arrowsNames.length);
    JButton [] buttons = new JButton [arrowsNames.length];
    JPanel panel = new JPanel();
@@ -303,6 +303,7 @@ public static int STIConvertGroup(String STIGroupID){
      buttons[i] = new JButton(arrowsNames[i]);
      buttons[i].setPreferredSize(new Dimension(50,35));
      buttons[i].addActionListener(parentDialog);
+     buttons[i].setEnabled(enableBut);
      panel.add(buttons[i]);//, BorderLayout.NORTH);
    }
    //panel.setBorder(BorderFactory.createLineBorder(Color.CYAN));

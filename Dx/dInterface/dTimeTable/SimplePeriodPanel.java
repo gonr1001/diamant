@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.1 $  $Date: 2003-09-29 20:43:09 $
+ * Title: SimplePeriodPanel $Revision: 1.2 $  $Date: 2003-10-02 23:34:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.2 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -113,7 +113,7 @@ public class SimplePeriodPanel extends PeriodPanel{
   /**
   *
   * */
- private void setPanelColor( int priority){
+ public void setPanelColor( int priority){
    Color color= Color.GRAY;
    switch(priority){
      case 0: color= new Color(236,233,216);//getBackground()
@@ -121,6 +121,8 @@ public class SimplePeriodPanel extends PeriodPanel{
      case 1: color= Color.LIGHT_GRAY;
        break;
      case 2: color= Color.DARK_GRAY;
+       break;
+     case 3: color= Color.GREEN;// to show a selected panel
        break;
    }
    for (int i=0; i< getComponentCount(); i++){

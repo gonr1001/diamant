@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.88 $  $Date: 2003-10-02 20:01:27 $
+ * Title: DDocument $Revision: 1.89 $  $Date: 2003-10-02 23:34:25 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.88 $
+ * @version $Revision: 1.89 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -334,9 +334,9 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
     if (simple)
-      _ttPanel = new SimpleTTPanel(_dm);
+      _ttPanel = new SimpleTTPanel(_dm.getTTStructure(), _dMediator.getDApplication().getToolBar());
     else
-      _ttPanel = new DetailedTTPanel(_dm);
+      _ttPanel = new DetailedTTPanel(_dm.getTTStructure(), _dMediator.getDApplication().getToolBar());
     _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));

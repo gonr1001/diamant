@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.2 $  $Date: 2003-09-29 22:32:00 $
+ * Title: DetailedPeriodPanel $Revision: 1.3 $  $Date: 2003-10-02 23:34:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  *
@@ -139,7 +139,7 @@ public class DetailedPeriodPanel extends PeriodPanel{
   /**
   *
   * */
- private void setPanelColor( int priority){
+ public void setPanelColor( int priority){
    Color color= Color.GRAY;
    switch(priority){
      case 0: color= new Color(236,233,216);//getBackground()
@@ -147,6 +147,8 @@ public class DetailedPeriodPanel extends PeriodPanel{
      case 1: color= Color.LIGHT_GRAY;
        break;
      case 2: color= Color.DARK_GRAY;
+       break;
+     case 3: color= Color.GREEN;// to show a selected panel
        break;
    }
    for (int i=0; i< getComponentCount(); i++){

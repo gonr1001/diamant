@@ -20,6 +20,6 @@ public class ManualImprovementCmd implements Command {
   } //end OpenTTCmd
 
   public void execute(DApplication dApplic) {
-    new ManualImprovementDlg(true);
+    new ManualImprovementDlg(dApplic);
   } // end execute
 } /* end ManualImprovementCmd class */
