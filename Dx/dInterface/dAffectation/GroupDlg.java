@@ -304,14 +304,14 @@ public class GroupDlg extends JDialog implements ActionListener{
     if (command.equals(_buttonsNames[1])){
       setStudentsInGroups();
       _buttonsPanel.getComponent(1).setEnabled(false);
-      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
     //if Button OK is pressed
     if (command.equals(_buttonsNames[0])){
       setStudentsInGroups();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
+      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       dispose();
     }// end if (command.equals(SHOW))
     if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0])) && _currentAssignedGroup > -1){

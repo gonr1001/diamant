@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.66 $  $Date: 2003-09-09 17:13:32 $
+ * Title: DMenuBar $Revision: 1.67 $  $Date: 2003-09-11 19:25:39 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.66 $
+ * @version $Revision: 1.67 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -83,8 +83,8 @@ public class DMenuBar extends JMenuBar{
   _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl;
 
   // the optimisation menus
-  private CmdMenu _mOpti;
-  private boolean _boolMOpti;
+  private CmdMenu _mOpti,_mInit;
+  private boolean _boolMOpti, _boolMInit;
   // the preferences menus
   private CmdMenu _lookAndFeel;
   private boolean _boolLookAndFeel;
@@ -266,6 +266,13 @@ public class DMenuBar extends JMenuBar{
     _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _optimisation );
     // Items in menu Optimisation.
+    //Initialization
+    _mInit = new CmdMenu(DConst.INITAFFECT);//, this);
+    _mInit.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _mInit.setCommand(new InitialAffectCmd(_dApplic));//
+    _mInit.addActionListener(_dApplic);
+    _optimisation.add(_mInit);
+    //
     _mOpti = new CmdMenu(DConst.PLAF_M);//, this);
     _mOpti.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mOpti.setCommand(new PLAFCmd(_dApplic));

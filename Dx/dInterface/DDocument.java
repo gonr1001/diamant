@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.69 $  $Date: 2003-09-11 11:51:42 $
+ * Title: DDocument $Revision: 1.70 $  $Date: 2003-09-11 19:25:39 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.69 $
+ * @version $Revision: 1.70 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -34,15 +34,14 @@ import javax.swing.JDesktopPane;
 
 
 import dInternal.DModel;
-import dInternal.dData.State;
+import dInternal.dData.*;
+import dInternal.dConditionsTest.*;
 //import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
-import dInternal.dData.SetOfStatesEvent;
-import dInternal.dData.SetOfStatesListener;
 import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;
@@ -55,10 +54,9 @@ import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
 public class DDocument  extends InternalFrameAdapter implements
-    ActionListener,
-    DModelListener,
-    TTStructureListener,
-    SetOfStatesListener{
+    ActionListener, DModelListener, TTStructureListener, SetOfStatesListener,
+    SetOfActivitiesListener, SetOfStudentsListener, SetOfInstructorsListener,
+    SetOfRoomsListener, SetOfEventsListener{
   private DApplication _dApplic;
   private JInternalFrame _jif;
   private String _documentName;
@@ -157,21 +155,18 @@ public class DDocument  extends InternalFrameAdapter implements
      }// end actionPerformed
 //public void changeInDModel(DModelEvent  e
     public void changeInDModel(DModelEvent  e, Component component) {
-      System.out.println("Update TTPanel in DDocument changeInDModel: ");//debug
-
       component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
       setCursor(Cursor.WAIT_CURSOR);
 
       _dm.setModified();
-      _ttPanel.updateTTPanel(_dm.getTTStructure());
       _dm.buildSetOfEvents();
+      _dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
       _dm.setStateBarComponent();
+      _ttPanel.updateTTPanel(_dm.getTTStructure());
       _stateBar.upDateDStateBar(_dm.getSetOfStates());
 
       setCursor(Cursor.DEFAULT_CURSOR);
       component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-
-
     }// end actionPerformed
 
     /*
@@ -182,11 +177,69 @@ public class DDocument  extends InternalFrameAdapter implements
       _stateBar.upDateDStateBar(_dm.getSetOfStates());
     }
 
+
+    /**
+     *
+     * @param e
+     */
     public void changeInTTStructure(TTStructureEvent  e) {
       System.out.println("I was here");
       _dm.setModified();
         _ttPanel.updateTTPanel(_dm.getTTStructure());
-    }// end actionPerformed*/
+    }
+
+    /**
+     *
+     * @param e
+     * @param component
+     */
+    public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+      setCursor(Cursor.WAIT_CURSOR);
+      _dm.setModified();
+      _dm.buildSetOfEvents();
+      _dm.setStateBarComponent();
+      _ttPanel.updateTTPanel(_dm.getTTStructure());
+      _stateBar.upDateDStateBar(_dm.getSetOfStates());
+      setCursor(Cursor.DEFAULT_CURSOR);
+      component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }// end ac
+
+    /**
+     *
+     * @param e
+     * @param component
+     */
+    public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
+
+    }// end ac
+
+    /**
+     *
+     * @param e
+     * @param component
+     */
+    public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
+
+    }// end ac
+
+    /**
+     *
+     * @param e
+     * @param component
+     */
+    public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
+
+    }// end ac
+
+    /**
+     *
+     * @param e
+     * @param component
+     */
+    public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
+
+    }// end ac
 
   private void  buidDocument(String title){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug

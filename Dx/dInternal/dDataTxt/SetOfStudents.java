@@ -11,6 +11,7 @@ package dInternal.dData;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.awt.Component;
 import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
 import dInternal.dUtil.DXToolsMethods;
@@ -25,6 +26,7 @@ public class SetOfStudents extends SetOfResources{
   private static final int _BEGINSTUDENTNUMBEROFCOURSE=30;
   private static final int _ENDSTUDENTNUMBEROFCOURSE=32;
   private String _error="";
+  private Vector _SOSListeners = new Vector();
   /** Course length*/
   private int _COURSELENGTH = 7;
   private int _COURSEGROUPLENGTH = 9;
@@ -246,6 +248,31 @@ public class SetOfStudents extends SetOfResources{
    */
   public String getError() {
     return _error;
+  }
+
+  /**
+  *
+  * @param component
+  */
+public void sendEvent(Component component) {
+  SetOfStudentsEvent event = new SetOfStudentsEvent(this);
+  for (int i=0; i< _SOSListeners.size(); i++) {
+    SetOfStudentsListener sosl = (SetOfStudentsListener) _SOSListeners.elementAt(i);
+    sosl.changeInSetOfStudents(event, component);
+    System.out.println("SetOfStudents listener started: "+i);//debug
+  }
+ }
+
+ /**
+  *
+  * @param dml
+  */
+ public synchronized void addSetOfStudentsListener(SetOfStudentsListener sosl) {
+   System.out.println("SetOfStudents listener added: ");//debug
+   if (_SOSListeners.contains(sosl)){
+     return;
+   }
+   _SOSListeners.addElement(sosl);
   }
 
 }

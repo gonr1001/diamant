@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.66 $  $Date: 2003-09-11 11:51:42 $
+ * Title: DModel $Revision: 1.67 $  $Date: 2003-09-11 19:25:39 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.66 $
+ * @version $Revision: 1.67 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -27,6 +27,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import dInterface.DApplication;
 import dInternal.dData.*;
+import dInternal.dConditionsTest.*;
 import dResources.DConst;
 import dInternal.dData.LoadData;
 import dInternal.dUtil.DXToolsMethods;
@@ -56,6 +57,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   protected TTStructure _ttStruct;
   protected SetOfEvents _setOfEvents;
   private int _currentCycle = 1;
+  protected ConditionsTest _conditionTest;
   //private DModelProcess _dmProcess;
 
 
@@ -176,7 +178,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       if( _setOfStudents.getError().length()!=0){
         return _setOfStudents.getError();
       }
-      this.buildSetOfEvents();// yannick
+      addAllListeners();
     }
     _constructionState=1;
     //_setOfStates.sendEvent();
@@ -198,6 +200,13 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public void setVersion(String version){
     _version=version;
+  }
+
+  public void addAllListeners(){
+    if (_setOfActivities!=null)
+      _setOfActivities.addSetOfActivitiesListener(_dApplic.getDMediator().getCurrentDoc());
+    if(_setOfStudents!=null)
+      _setOfStudents.addSetOfStudentsListener(_dApplic.getDMediator().getCurrentDoc());
   }
 
   /**
@@ -233,7 +242,8 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       return _setOfStudents.getError();
     }
     _constructionState=1;
-    this.buildSetOfEvents();// yannick
+    _setOfStates.sendEvent();
+    addAllListeners();
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR);
     return "";
   }
@@ -268,6 +278,14 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public SetOfEvents getSetOfEvents(){
     return _setOfEvents;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public ConditionsTest getConditionsTest(){
+    return _conditionTest;
   }
 
   /**

@@ -10,12 +10,14 @@ package dInternal.dData;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.awt.Component;
 import com.iLib.gDialog.FatalProblemDlg;
 import dInternal.dUtil.DXToolsMethods;
 import dResources.DConst;
 
 public class SetOfActivities extends SetOfResources{
 
+  private Vector _SOAListeners = new Vector();
   /**activities in text format*/
   private byte[] _dataloaded;
   private String _error="";
@@ -553,6 +555,32 @@ public class SetOfActivities extends SetOfResources{
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitID);
     u.getAttach().setField(fieldIndex, fieldValue);
   }
+
+  /**
+   *
+   * @param component
+   */
+ public void sendEvent(Component component) {
+   SetOfActivitiesEvent event = new SetOfActivitiesEvent(this);
+   for (int i=0; i< _SOAListeners.size(); i++) {
+     SetOfActivitiesListener soal = (SetOfActivitiesListener) _SOAListeners.elementAt(i);
+     soal.changeInSetOfActivities(event, component);
+     System.out.println("SetOfActivities listener started: "+i);//debug
+   }
+  }
+
+  /**
+   *
+   * @param dml
+   */
+  public synchronized void addSetOfActivitiesListener(SetOfActivitiesListener soal) {
+    System.out.println("SetOfActivities listener addeed: ");//debug
+    if (_SOAListeners.contains(soal)){
+      return;
+    }
+    _SOAListeners.addElement(soal);
+  }
+
 
   private int _NUMBEROFCYCLE = 1;
   final static public int _COURSENAMELENGTH=6;
