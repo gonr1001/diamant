@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.5 $  $Date: 2003-06-10 16:00:16 $
+ * Title: ToolBar $Revision: 1.6 $  $Date: 2003-06-11 08:07:07 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -42,10 +42,10 @@ import dResources.DConst;
  * ToolBar is a class used to display a toolbar with buttons
  *
  */
-public class DToolBar extends JToolBar {
+public class DToolBar extends JToolBar {// implements ActionListener{
   private DApplication _dApplic;
   private static final String _strArray [] = {"Jours", "Periods"};
-  JPanel jp = new JPanel();
+  JPanel _jp = new JPanel();
   JComboBox setToolBar, daysList;
   JButton addDay, removeDay, loPriority, noPriority, hiPriority, sameLine, sameColumn, doIt;
   JTextField setDays, dayName, periodIndicator;
@@ -54,7 +54,8 @@ public class DToolBar extends JToolBar {
 
   //-------------------------------------------
   public DToolBar(DApplication dApplic) {
-    _dApplic =dApplic ;
+    _dApplic = dApplic ;
+
 
     //The JLabel Objects initialisation
     lSetDays = new JLabel("Nomber of Days ");
@@ -100,9 +101,19 @@ public class DToolBar extends JToolBar {
     setToolBar.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
     setToolBar.setSelectedIndex(0);
 
-   add(setToolBar);
+    add(setToolBar);
 
+    setToolBar.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      JComboBox cb = (JComboBox)e.getSource();
+      int  i = cb.getSelectedIndex();
+      switch (i){
+        case 0: addBarOne(); break;
+        case 1: addBarTwo(); break;
+      }// end switch
 
+    }
+   });
     //System.out.println("Tool Bar Constructor");  // debug
 /*
     // Create the first button.
@@ -115,19 +126,45 @@ public class DToolBar extends JToolBar {
     }*/
 
 
+/*  setToolBar.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                  showText("Button 1 has been clicked");
+              }
+        });
+*/
 
 
 
-   setToolBar.addActionListener(new ActionListener() {
-     public void actionPerformed(ActionEvent e) {
-       JComboBox cb = (JComboBox)e.getSource();
-       int  i = cb.getSelectedIndex();
-       switch (i){
-         case 0: addBarOne(); break;
-         case 1: addBarTwo(); break;
-       }
-     }
-    });
+   addDay.addActionListener(new ActionListener() {
+              public void actionPerformed(ActionEvent e) {
+                TTStructure tts = _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure();
+                tts.setNumberOfDays(1);
+                tts.modification();
+              }
+        });
+
+  //     String command = e.getActionCommand();
+  /*  if (command.equals( BUT02 )) {  // cancel
+      //"Enseignants --> Bouton Annuler pressé\n"
+      dispose();
+    } else if (command.equals( BUT01 )) {  // OK
+   //   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n");
+       _currentInstr.setAvailability(_currentAvailbility);
+        _dm.incrementModification();
+      modified = false;
+      butApply.setEnabled(false);
+      dispose();
+    } else*/// if (command.equals("Apply" )) {  // apply
+    /*  "Enseignants --> Bouton Appliquer pressé\n");*/
+      //tts.s
+     // tts.modification();
+      //modified = false;
+      //butApply.setEnabled( false );
+    // if a button of the grid has been pressed
+    //}
+    // }
+    //
+
 /*
    // fir BarOne
    setToolBar.addActionListener(new ActionListener() {
@@ -146,7 +183,7 @@ public class DToolBar extends JToolBar {
       dispose();
     } else*//* if (command.equals("Apply" )) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
-      //tts.set
+      //tts.s
      // tts.modification();
       //modified = false;
       //butApply.setEnabled( false );

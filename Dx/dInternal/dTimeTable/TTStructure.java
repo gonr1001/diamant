@@ -163,9 +163,12 @@ public class TTStructure {
   public int getNumberOfDays(Cycle cycle){
     return cycle.getSetOfDays().size();
   }
-  public void setNumberOfDays(int nOfD, long currCycle){
+  public void setNumberOfDays(long currCycle){
     Cycle cycle = (Cycle) _setOfCycles.getSetOfCycles().getResource(currCycle).getAttach();
+    System.out.println("setNumberOfDays  " + cycle.getSetOfDays().size() );
+
     cycle.getSetOfDays().addResource(new Resource("6", new Day()),4);
+    System.out.println("setNumberOfDays  " + cycle.getSetOfDays().size() );
     //cycle..getSetOfDays().size();
   }
   /**
@@ -421,25 +424,27 @@ public class TTStructure {
 
    public void modification() {
      sendEvent();
+     System.out.println("Sending events");
    }
 
    public void sendEvent() {
      TTStructureEvent event = new TTStructureEvent(this);
      for (int i=0; i< _ttsListeners.size(); i++) {
-       TTStructureListener dml = (TTStructureListener) _ttsListeners.elementAt(i);
-      // dml.chageInTTStructure(event);
+       TTStructureListener ttsl = (TTStructureListener) _ttsListeners.elementAt(i);
+       ttsl.changeInTTStructure(event);
      }
    }
 
-   public synchronized void addTTStructureListener(TTStructureListener dml) {
-     if (_ttsListeners.contains(dml)){
+   public synchronized void addTTStructureListener(TTStructureListener ttsl) {
+     if (_ttsListeners.contains(ttsl)){
        return;
      }
-     _ttsListeners.addElement(dml);
+     _ttsListeners.addElement(ttsl);
+     System.out.println("addTTStructureListener");
    }
 
-   public synchronized void removeTTStructureListener(TTStructureListener dml) {
-     _ttsListeners.removeElement(dml);
+   public synchronized void removeTTStructureListener(TTStructureListener ttsl) {
+     _ttsListeners.removeElement(ttsl);
    }
 
 }

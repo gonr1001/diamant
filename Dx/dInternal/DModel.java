@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.23 $  $Date: 2003-06-09 13:53:27 $
+ * Title: DModel $Revision: 1.24 $  $Date: 2003-06-11 08:07:08 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -46,7 +46,7 @@ public class DModel{
     _status = new Status();
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;
-    _ttStruct = new TTStructure();//ttStruct;
+    _ttStruct = ttStruct;
     //importData("hello");
     //test1_setAvailability();
   }
