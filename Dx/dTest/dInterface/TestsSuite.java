@@ -38,15 +38,7 @@ public class TestsSuite extends ScriptFixture {
       return new ScriptTestSuite(TestsSuite.class, testFiles) {
 
       };
-      // a second way for definig the tests files :
-      /* return new ScriptTestSuite(TestsSuite.class, "D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dAbbotTest") {
-        // Determine whether the given script should be included.
-        public boolean accept(File file) {
-          String name = file.getName();
-          return name.startsWith("test") && name.endsWith(".xml");
-        }
-      };
-      */
+
     } // end method suite()
 
     public static void main(String[] args) {

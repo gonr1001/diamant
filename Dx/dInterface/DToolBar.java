@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.40 $  $Date: 2004-03-24 14:14:25 $
+ * Title: ToolBar $Revision: 1.41 $  $Date: 2004-03-26 20:45:21 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -225,10 +225,10 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
         PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
             ).getPeriodPanel(Integer.parseInt(item) );
         Cycle cycle = _tts.getCurrentCycle();
-        Period per;
+        Period period;
         for(int i = 0; i < cycle.getSetOfDays().size(); i++){
-          per = cycle.getPeriodByIndex( i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
-          per.setPriority(_periodTypeSelector.getSelectedIndex());
+          period = cycle.getPeriodByIndex( i, ppanel.getPeriodRef()[1], ppanel.getPeriodRef()[2]);
+          period.setPriority(_periodTypeSelector.getSelectedIndex());
         }
 
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
@@ -244,12 +244,12 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
         int dayIndex = ppanel.getPeriodRef()[0];
         Day day = _tts.getCurrentCycle().getDayByIndex(dayIndex);
         Sequence seq;
-        Period per;
+        Period period;
         for (int i = 0; i < day.getSetOfSequences().size(); i++){
           seq = day.getSequence(i);
           for (int j = 0; j < seq.getSetOfPeriods().size(); j++ ){
-            per = seq.getPeriod(j);
-            per.setPriority(_periodTypeSelector.getSelectedIndex());
+            period = seq.getPeriod(j);
+            period.setPriority(_periodTypeSelector.getSelectedIndex());
           }
         }
 
@@ -352,11 +352,13 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
         _periodSelector.addItem(Integer.toString(ppanel.getPanelRefNo()));
       }
     }// end for (int i=0; i< ttPanel.getComponentCount(); i++)
-
+_periodTypeSelector.disableActionListeners();
     _periodTypeSelector.removeAllItems();
+
     for (int i=0; i< _tts._priorityTable.length; i++)
       _periodTypeSelector.addItem(_tts._priorityTable[i]);
     //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug
+    _periodTypeSelector.enableActionListeners();
     _comboBoxStatus=true;
     _periodSelector.enableActionListeners();
   }
@@ -433,7 +435,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
  // }
 
   public void changeInTTStructure(TTStructureEvent  e) {
-     //System.out.println("Toolbar change In TTSturtutre and Update TTpanel");
+     System.out.println("Toolbar change In TTSturtutre and Update TTpanel");
      //_dApplic.getDMediator().getCurrentDoc().getTTPanel().updateTTPanel(_tts);
     }// end actionPerformed
 

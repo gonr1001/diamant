@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.89 $  $Date: 2004-03-26 15:55:52 $
+ * Title: DConst $Revision: 1.90 $  $Date: 2004-03-26 20:45:21 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.89 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.90 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -388,6 +388,8 @@ public class DConst {
   public final static String SB_C_INST = res.getString("sbCInst"); // Ens
   public final static String SB_C_ROOM = res.getString("sbCRoom"); // Loc
   public final static String SB_C_STUD = res.getString("sbCStu"); // Stu
+
+  public final static String ERROR_XML_FILE = res.getString("errorXMLFile"); // "XML file is corrupted";
 
   public DConst() {
   }

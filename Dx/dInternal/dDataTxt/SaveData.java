@@ -13,7 +13,7 @@ package dInternal.dData;
 
 import com.iLib.gIO.FilterFile;
 import dInternal.dTimeTable.TTStructure;
-
+import dResources.DConst;
 
 public class SaveData {
 
@@ -45,10 +45,10 @@ public class SaveData {
     FilterFile filter;
      if(fileName.endsWith(".dia"))
       fileName=fileName.substring(0,fileName.length()-4);
-    tts.saveTTStructure(fileName+".xml");
+    tts.saveTTStructure(fileName+DConst.DOT_XML);
     String diaData=_version+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
-    diaData+=fileName+".xml"+CR_LF;
+    diaData+=fileName+DConst.DOT_XML+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
     diaData+=inst.size()+CR_LF;
     diaData+=inst.toWrite()+CR_LF;
@@ -69,8 +69,8 @@ public class SaveData {
    *
    * */
   public void saveTTStructure(TTStructure tts, String fileName){
-     if(!fileName.endsWith(".xml"))
-      fileName=fileName+".xml";
+     if(!fileName.endsWith(DConst.DOT_XML))
+      fileName=fileName+DConst.DOT_XML;
     tts.saveTTStructure(fileName);
   }
 

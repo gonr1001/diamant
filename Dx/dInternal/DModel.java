@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.88 $  $Date: 2004-03-19 21:47:12 $
+ * Title: DModel $Revision: 1.89 $  $Date: 2004-03-26 20:45:21 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.88 $
+ * @version $Revision: 1.89 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -37,9 +37,9 @@ import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dConditionsTest.SetOfEvents;
 
+import dResources.DConst;
 
-
-public class DModel extends DModelProcess implements  DModelListener, TTStructureListener {
+public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
   private int _type;
   private boolean _importDone = false;
@@ -94,7 +94,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
       _isTimeTable=true;
-    }else if(fileName.endsWith(".xml")){
+    }else if(fileName.endsWith(DConst.DOT_XML)){
       _ttStruct = new TTStructure();
       _error=_ttStruct.loadTTStructure(fileName);
       if(type==0)

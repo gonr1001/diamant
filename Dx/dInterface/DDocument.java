@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.104 $  $Date: 2004-02-16 19:29:09 $
+ * Title: DDocument $Revision: 1.105 $  $Date: 2004-03-26 20:45:20 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.104 $
+ * @version $Revision: 1.105 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -182,12 +182,8 @@ public class DDocument  extends InternalFrameAdapter implements
   //-------------------------------------------
   public void changeInDModel(DModelEvent  e, Component component) {
     setCursor(Cursor.WAIT_CURSOR, component);
-
     _dm.setModified();
-    //int[] a={2,1,1};
-    //Vector period= _dm.getConditionsTest().periodVariationEvents(a);
-    //_dm.getTTStructure().getCurrentCycle().getPeriodByKey(2,1,1)
-    //System.out.println(_dm.getTTStructure().getCurrentCycle().toString());
+
     if (_dm.getTypeOfSchedule() == 2) {
       _dm.prepareExamsData();
     }

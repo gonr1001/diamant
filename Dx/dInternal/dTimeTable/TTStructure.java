@@ -8,6 +8,7 @@ import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
+import dResources.DConst;
 import org.w3c.dom.*;
 //import javax.xml.parsers.FactoryConfigurationError;
 
@@ -31,7 +32,7 @@ public class TTStructure {
 
   private String _str;
   private String _error = "";
-  private String _errorXMLFileMessage = "XML file is corrupted";
+  //private String _errorXMLFileMessage = "XML file is corrupted";
   private int _col;
   private int _row;
   private static int _numberOfActivesDays=5;// monday to friday
@@ -46,16 +47,8 @@ public class TTStructure {
 
   public TTStructure() {
     _setOfCycles= new SetOfResources(4);
-    //_col=6;
-    //_row= 15;
-
-    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
-    //loadTTStructure("StandardTTC.xml");
-
-    //saveTTStructure("test.xml");
   }
 
-  /***/
   public static int getNumberOfActiveDays(){
     return _numberOfActivesDays;
   }
@@ -230,7 +223,7 @@ public class TTStructure {
       ReadXMLElement list= new ReadXMLElement();
       root= list.getRootElement(doc);
       if (readXMLtag(root).length() != 0){
-        _error = _errorXMLFileMessage;
+        _error = DConst.ERROR_XML_FILE;
         return _error;
       }
     }catch(Exception e){
@@ -253,7 +246,7 @@ public class TTStructure {
       ReadXMLElement list= new ReadXMLElement();
       root= list.getRootElement(doc);
       if (readXMLtag(root).length() != 0){
-        _error = _errorXMLFileMessage;
+        _error = DConst.ERROR_XML_FILE;
         return _error;
       }
     }catch(Exception e){
@@ -342,7 +335,7 @@ public class TTStructure {
    String ID="";
    int size= list.getSize(setofCycles,_TAGITEM);
    if (size == 0){
-     _error = _errorXMLFileMessage;
+     _error = DConst.ERROR_XML_FILE;
      return _error;
    }
    //System.out.println(" Cycles Size: "+size);//debug
@@ -354,7 +347,7 @@ public class TTStructure {
      //System.out.println(" Cycle ID: "+ID+" PeriodLenght: "+_periodLenght);//debug
      Element days= list.getElement(cycle,_TAGITEM3,0);
      if (!setOfdays.readXMLtag(days).equals("")){
-       _error = _errorXMLFileMessage;
+       _error = DConst.ERROR_XML_FILE;
        return _error;
      }
      _setOfCycles.addResource(new Resource(ID,setOfdays),0);
