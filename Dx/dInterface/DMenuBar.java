@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.101 $  $Date: 2004-03-19 19:37:37 $
+ * Title: DMenuBar $Revision: 1.102 $  $Date: 2004-03-19 20:54:59 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.101 $
+ * @version $Revision: 1.102 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -603,7 +603,7 @@ public class DMenuBar extends JMenuBar{
     _boolSave = _boolSaveAs = true;
     _boolDefineFiles = true;
     _boolImport = false;
-    _boolExport = true;
+    _boolExport = false;
     _boolExit = true;
 
 

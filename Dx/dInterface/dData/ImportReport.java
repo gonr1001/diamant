@@ -48,7 +48,7 @@ import dResources.DConst;
 
 
 public class ImportReport extends ViewReport implements ActionListener {
-//String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
+
   public ImportReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
     String [] strArray ={DConst.BUT_OPTIONS};

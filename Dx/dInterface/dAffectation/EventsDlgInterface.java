@@ -50,7 +50,6 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected SetOfActivities _activities;
   protected SetOfEvents _events;
   protected String _eventFullKey;
-  //private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   protected Unity _currUnity;
   protected Vector _leftVector, _centerVector, _rightVector;
   protected JDialog _jdialog;
