@@ -41,6 +41,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private Vector _noVisibleVec, _visibleVec;
   private JButton _show, _cancel, _toRight, _toLeft;
   private JPanel _listsPanel, _buttonsPanel1, _buttonsPanel2;
+  private JDialog _jd;
   /**
    * the lists containing the activities ID
    */
@@ -51,12 +52,15 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * @param dApplic The application object (for extracting the JFrame)
    */
   public ActivityDlg(DApplication dApplic) {
-     super(dApplic.getJFrame(), "Liste des activités");
+     super(dApplic.getJFrame(), "Liste des activités", true);
+     //dApplic.getJFrame().setEnabled(false);
      _dApplic = dApplic;
+     _jd = this;
      jbInit();
      setLocationRelativeTo(dApplic.getJFrame());
      setVisible(true);
      triggerListeners();
+
      //new DoNothingDlg(dApplic,"Nothing");
 
   }
@@ -71,6 +75,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _show.setPreferredSize(new Dimension(75,22));
     _cancel = new JButton("Annuler");
     _cancel.setPreferredSize(new Dimension(75,22));
+    //_cancel.addActionListener(this);
     _listsPanel = new JPanel();
     //left panel
     JPanel rightPanel = new JPanel();
@@ -114,6 +119,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //placing the elements into the JDialog
     setSize(380, 340);
     setResizable(false);
+    triggerListeners();
     getContentPane().add(_listsPanel, BorderLayout.CENTER);
     getContentPane().add(_buttonsPanel2, BorderLayout.SOUTH);
   }//end method
@@ -145,7 +151,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         if (e.getClickCount() == 2) {
             currentActivity = (String)((JList)e.getSource()).getSelectedValue();
             currentActivity = currentActivity.trim();
-            //new EditActivityDlg(this);
+            new EditActivityDlg(_jd,_dApplic, currentActivity);
             //new DoNothingDlg(_dApplic,"Nothing");
           }//end if
         }// end public void mouseClicked
@@ -170,7 +176,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     if (command.equals("Annuler"))
         dispose();
     if (command.equals("Afficher"))
-        new EditActivityDlg(this);
+        new EditActivityDlg(this, _dApplic, "A");
     if (command.equals("««"))
         new DoNothingDlg(_dApplic,"Nothing");
     if (command.equals("»»"))

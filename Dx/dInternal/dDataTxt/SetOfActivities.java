@@ -260,6 +260,8 @@ public class SetOfActivities extends SetOfResources{
           //Resource nature;
           if (Integer.parseInt(token.trim())==1)
             activity.setActivityVisibility(true);
+          else
+            activity.setActivityVisibility(false);
           activity.addType(activityName.substring(_COURSENAMELENGTH,_COURSENAMELENGTH+1));
           //nature = activity.getNature(activityName.substring(_COURSENAMELENGTH,_COURSENAMELENGTH+1));
           position = 3;

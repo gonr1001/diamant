@@ -297,6 +297,13 @@ public class SetOfResources extends DXObject{
    return namesVector;
   }
 
+  /**
+   * Buids a vector containing the resource ID
+   * @param fieldIndex
+   * @param fieldValue
+   * @return
+   */
+
   public Vector getIDsByField(int fieldIndex, String fieldValue){
     Vector idVector = new Vector();
     Resource res = null;
