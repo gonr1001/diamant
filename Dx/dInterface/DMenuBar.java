@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.1.1.1 $  $Date: 2003-01-23 17:51:40 $
+ * Title: DMenuBar $Revision: 1.2 $  $Date: 2003-01-24 18:31:38 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1.1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -30,11 +30,12 @@ import javax.swing.JMenu;
 public class DMenuBar extends JMenuBar{
   DView _dView;
   JFrame _jFrame;
+  DMediator _mediator;
 
-  public DMenuBar(DView dView, JFrame jFrame) {
+  public DMenuBar(DView dView, DMediator mediator) {
     super();
     _dView = dView;
-    _jFrame = jFrame;
+    _mediator = mediator;
     createMenuBar();
   }
 
@@ -51,8 +52,8 @@ public class DMenuBar extends JMenuBar{
     // Items in menu FILE.
     CmdMenu mNew = new CmdMenu(DConst.NEW, _jFrame);
     menu.add(mNew);
-    //mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNew.setCommand(new NewCmd()); //this, med));
+    mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNew.setCommand(new NewCmd( _mediator));
     mNew.addActionListener(_dView);
 
     //Build the menu EDIT.
