@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.127 $  $Date: 2005-01-21 15:54:42 $
+ * Title: DDocument $Revision: 1.128 $  $Date: 2005-01-21 16:05:58 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.127 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.128 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -63,6 +63,13 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dInternal.dTimeTable.TTStructureListener;
 import eLib.exit.dialog.FatalProblemDlg;
 
+/**
+ * Description: DDocument is a class used to  
+ *
+ *              <p>
+ *              
+ *
+ */
 
 public class DDocument  extends InternalFrameAdapter implements
 ActionListener, DModelListener, TTStructureListener, DSetOfStatesListener,
@@ -78,11 +85,22 @@ SetOfRoomsListener, SetOfEventsListener{
 	private String _version;
 	
 	public DDocument() {
-	}
+	} //end DDocument
 	//-----------------------------
 	
+
 	//for a new timetable and a open timetable
 	//for new timetable Structure and open timetable Structure from a file
+
+	/**
+	 * 
+	 * @param dMediator (pattern Mediator)
+	 * @param ttname This string will be displayed as the title of the JIF
+	 * @param fileName is the full path file name containing the TTStructure
+	 * @param type is the type of timetable to be constructed
+	 * 		 possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * 
+	 */
 	public DDocument(DMediator dMediator, String ttName, String fileName, int type) {
 		_dMediator = dMediator;
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -96,6 +114,8 @@ SetOfRoomsListener, SetOfEventsListener{
 		}
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	} // end constructor DDocument()
+	
+	
 	public void internalFrameActivated(InternalFrameEvent e) {
 		e.toString();
 		_dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());

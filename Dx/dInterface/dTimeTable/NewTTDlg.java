@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.24 $  $Date: 2004-09-10 13:31:01 $
+ * Title: NewTTDlg $Revision: 1.25 $  $Date: 2005-01-21 16:05:59 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -47,11 +47,10 @@ public class NewTTDlg extends JDialog {
   /**
     * the constructor will displays the dialog
     *
-    * @param jframe    the parent of the dialog
-    * @param str       the title of the window dialog
-    * @since           JDK1.3
+    * @param dApplic    the parent of the dialog
+    * @param type       indicating CYCLE or EXAM
+    * 
     */
-
    public NewTTDlg(DApplication dApplic, int type) {
      buildDocument(dApplic, type);
    } // end constructor
@@ -78,7 +77,6 @@ public class NewTTDlg extends JDialog {
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-     //int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
      int returnVal =DXTools.showDialog(dApplic.getJFrame(),fc,str3);
 
      // If the file chooser exited sucessfully,
@@ -88,10 +86,8 @@ public class NewTTDlg extends JDialog {
        String fil = fc.getSelectedFile().getAbsolutePath();
        dApplic.setCurrentDir(fil);
 
-       String error=dApplic.getDMediator().addDoc(dApplic.getCurrentDir()+DConst.NO_NAME, fil, type);
+       String error = dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, fil, type);
 
-       //    dApplic.getToolBar().setToolBars(ttStruct);
-       //dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        if(error.length()!=0){
          new FatalProblemDlg(dApplic.getJFrame(),error);
          System.exit(1);
