@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.64 $  $Date: 2003-09-09 13:44:42 $
+ * Title: DMenuBar $Revision: 1.65 $  $Date: 2003-09-09 15:49:10 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -717,6 +717,10 @@ public class DMenuBar extends JMenuBar{
 
   public void postOpenTTSCmd(){
     setNewTTSCy(); //setOpenTTS();
+  }
+
+  public void postCloseCmd(){
+    setZero(); //setCloseS();
   }
   public void postImportCmd(){
     setReadyToBuildTT();
