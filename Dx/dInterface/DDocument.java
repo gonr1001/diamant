@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.86 $  $Date: 2003-10-01 00:55:25 $
+ * Title: DDocument $Revision: 1.87 $  $Date: 2003-10-01 13:13:50 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.86 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.87 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -308,10 +308,10 @@ public class DDocument  extends InternalFrameAdapter implements
     final int MIN_WIDTH = 512;
     /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
-    final int MAX_HEIGHT = 1024;
+    final int MAX_HEIGHT = 2048;
     /* MIN_WIDTH is needed to ajdust the minimum
     * width of the _jif */
-    final int MAX_WIDTH = 1024;
+    final int MAX_WIDTH = 2048;
     //_documentName = title;
     _jif = new JInternalFrame(_documentName, true, true, true, true);
     _jif.setDefaultCloseOperation(_jif.DO_NOTHING_ON_CLOSE);
@@ -322,7 +322,7 @@ public class DDocument  extends InternalFrameAdapter implements
     } );
 
     _dm.addDModelListener(this);
-    _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
+    _stateBar = new DStateBar(_dm.getSetOfStates());
     _dm.getSetOfStates().sendEvent();
     _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.25 $  $Date: 2003-09-19 15:42:37 $
+ * Title: DApplication $Revision: 1.26 $  $Date: 2003-10-01 13:13:50 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,8 +16,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.26 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -61,10 +61,10 @@ public class DApplication implements ActionListener {
   private final static int ADJUST_WIDTH = 6;
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the screenSize */
-  private final static int MIN_HEIGHT = 400;
+  private final static int MIN_HEIGHT = 512;
   /* MIN_WIDTH is needed to ajdust the minimum
    * width screenSize */
-  private final static int MIN_WIDTH = 400;
+  private final static int MIN_WIDTH = 512;
 
   /* _screenSize contains the Dimension of the screen in pixels */
   private Dimension _screenSize;
