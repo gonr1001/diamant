@@ -51,12 +51,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
   /* ADJUST_WIDTH is needed to ajdust the screenSize
   * minus border pixels (the value is a guess) at each side of the screen */
   private final static int ADJUST_WIDTH = 24;
-  //private String[] _threeButtonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
-  //private String[] _TwoButtonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_CLOSE};
   private String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
-
-  //private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private DApplication _dApplic = null;
   private JDialog _jd = this;
   private JTabbedPane _tabbedPane;
@@ -73,7 +69,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,_dApplic.getJFrame());
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
-    System.out.println("Génération de rapports terminé");
+    //System.out.println("Génération de rapports terminé");
+
     initReportDlg();
     _resources = new SetOfResources[_tabbedPane.getComponentCount()];
     setLocationRelativeTo(dApplic.getJFrame());
@@ -103,7 +100,6 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
 
     _tabbedPane.addChangeListener(this);
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-    //getContentPane().add(buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
     getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
   }
 
@@ -125,28 +121,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     panel.add(scrollPane);
     return panel;
   }
-/*
-  private JPanel createTabPanelTwo(Dimension dim, String message){
-    JTextArea jta = new JTextArea(message);
-    JPanel panel = new JPanel();
-    panel.setPreferredSize(dim);
-    JScrollPane scrollPane = new JScrollPane();
-    scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
-    scrollPane.getViewport().setView(jta);
-    panel.add(scrollPane);
-    return panel;
-  }*/
-/*  private JPanel createTabPanelThree(Dimension dim, String message){
-  JTextArea jta = new JTextArea(message);
-  JPanel panel = new JPanel();
-  panel.setPreferredSize(dim);
-  JScrollPane scrollPane = new JScrollPane();
-  scrollPane.setPreferredSize(new Dimension((int)dim.getWidth(), (int)dim.getHeight()-20));
-  scrollPane.getViewport().setView(jta);
-  panel.add(scrollPane);
-  return panel;
-  }
-*/
+
   /**
    * build import report
    */
@@ -181,7 +156,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
   }
 
   /**
-   * build import report
+   * build conflict report
    */
   public void setConflictReport(){
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
@@ -189,6 +164,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport de conflits");
     jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
+    jta.append("Nombre blocs/nombre " + "12/13" + DConst.CR_LF );
 
     // enseignants
     jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
@@ -350,16 +326,25 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
       dispose();
     //if "Save as" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0))){
-      if (_reportData != null){
+      //if ( _done ){
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
         JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
         JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
-        String data = "***** " + DConst.REPORT + " " + DConst.TO_LEFT + _tabbedPane.getTitleAt(_tabbedPane.getSelectedIndex()) + DConst.TO_RIGHT + " ";
-        data = data + DConst.REPORT_PRODUCED_AT + " " + sdf.format(date) + " *****" + DConst.CR_LF + DConst.CR_LF;
-        data = data + jta.getText();
+        String data = "***** " +
+                      DConst.REPORT +
+                      " " +
+                      DConst.TO_LEFT +
+                      _tabbedPane.getTitleAt(_tabbedPane.getSelectedIndex()) +
+                      DConst.TO_RIGHT + " ";
+        data +=  DConst.REPORT_PRODUCED_AT +
+                 " " +
+                 sdf.format(date) +
+                 " *****" +
+                 DConst.CR_LF + DConst.CR_LF;
+        data +=  jta.getText();
         new SaveAsDlg(_dApplic, data);
-      }//end internal if
+      //}//end internal if
     }//end if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
   }//end method
 
@@ -391,6 +376,7 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
    * @param buttonsNames An array of names of buttons
    * @return panel
    */
+  /*
   private JPanel buttonsPanel(ActionListener parentDialog, String [] buttonsNames){
     JPanel panel = new JPanel();
     JButton button;
@@ -401,8 +387,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
       panel.add(button) ;
     }
     return panel;
- }//end method
-
+ }//end method*/
+/*
  private void buttonDisable(JPanel panel, String [] strArray){
    String str= "";
    for (int i = 0; i < panel.getComponentCount(); i++) {
@@ -417,5 +403,5 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
        }
      }
    }
- }//end method
+ }//end method*/
 }//end class

@@ -168,12 +168,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
       internalR = _resources.getResource((String)_rightVec.elementAt(j));
       ((DXValue)internalR.getAttach()).setBooleanValue(true);
     }//end for(int j = 0; j < _externalResources.size(); j++)
-/*    for(int j = 0; j < _externalResources.size(); j++){
 
-  externalR = _externalResources.getResourceAt(j);
-  internalR = _resources.getResource(externalR.getID());
-  ((DXValue)internalR.getAttach()).setBooleanValue(true);
-    }//end for(int j = 0; j < _externalResources.size(); j++)*/
   }//end method
 
 

@@ -41,12 +41,13 @@ public class SetOfStates extends SetOfResources{
     state= new State(DConst.COLOR_BLACK,0);
     addResource(new Resource(DConst.SB_CONF,state),0);
 
+    state= new State(DConst.COLOR_STUD,0);
+    addResource(new Resource(DConst.SB_C_STUD,state),0);
     state= new State(DConst.COLOR_INST, 0);
     addResource(new Resource(DConst.SB_C_INST,state),0);
     state= new State(DConst.COLOR_ROOM,0);
     addResource(new Resource(DConst.SB_C_ROOM,state),0);
-    state= new State(DConst.COLOR_STUD,0);
-    addResource(new Resource(DConst.SB_C_STUD,state),0);
+
   }
 
   /**

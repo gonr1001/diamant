@@ -5,4 +5,4 @@ French
 .\pref\pref.txt
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
 éÉèÈàÀÇçëËïÏÔôÙù-'()Êê
-selectedOptionsInFullReport;Nom;Section;Type;Durée;Début;Instructor;Jour(Nu.);
+selectedOptionsInFullReport;Jour(Nu.);Nom;Section;Type;Durée;Début;Instructor;

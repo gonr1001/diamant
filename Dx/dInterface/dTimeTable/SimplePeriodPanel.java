@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.11 $  $Date: 2003-10-28 14:24:53 $
+ * Title: SimplePeriodPanel $Revision: 1.12 $  $Date: 2003-11-21 15:50:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -36,6 +36,8 @@ import java.awt.GridLayout;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 import javax.swing.BorderFactory;
 
@@ -55,34 +57,59 @@ public class SimplePeriodPanel extends PeriodPanel{
   }
 
   public void createPanel(Period period){
-    setLayout(new GridLayout(2,1));
+    setLayout(new GridBagLayout());
+    GridBagConstraints constraints = new GridBagConstraints();
+    constraints.weightx = 1.0;
+    constraints.weighty = 1.0;
+    constraints.fill = GridBagConstraints.BOTH;
     setBorder(BorderFactory.createEtchedBorder());
-    setValue(period);
+    setValue(period, constraints);
   }
 
-  public void setValue(Period period){
-    JPanel topPanel = new JPanel();
-    JPanel bottomPanel = new JPanel();
-    JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
-    JLabel nbAct = new JLabel( "("+Integer.toString(period.getNumberOfEvents())+")");
+  public void setValue(Period period, GridBagConstraints constraints){
+    //JPanel perPanel = new JPanel();
+    JLabel per = new JLabel (" P "+ _panelRefNo + " ");
+    constraints.weightx = .150;
+    constraints.weighty = 1.0;
+    constraints.gridheight = 2;
+    constraints.gridx = 0;
+    constraints.gridy = 0;
+    add(per, constraints);
+
+
+    JPanel conflictPanel = new JPanel();
+    _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
     _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
     _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
-    _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
+    conflictPanel.add(_cStu);
+    conflictPanel.add(_cTeach);
+    conflictPanel.add(_cRoom);
+    conflictPanel.setBorder(BorderFactory.createEtchedBorder());
+
     if(period.getPriority()!=2){
       _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
       _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
       _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
     }
     //
-    topPanel.add(per);
-    topPanel.add(nbAct);
-    bottomPanel.add(_cTeach);
-    bottomPanel.add(_cRoom);
-    bottomPanel.add(_cStu);
-    //
-    add(topPanel);
-    add(bottomPanel);
+    constraints.weightx = .850;
+    constraints.weighty = 1.0;
+    constraints.gridheight = 1;
+    constraints.gridwidth = 1;
+    constraints.gridx = 1;
+    constraints.gridy = 0;
+    add(conflictPanel, constraints);
+
+    JLabel nbAct = new JLabel(DConst.SB_T_EVENT +" "+Integer.toString(period.getNumberOfEvents())+"");
+    constraints.gridheight = 1;
+    constraints.gridwidth = 2;
+    constraints.gridx = 1;
+    constraints.gridy = 1;
+    add(nbAct, constraints);
+
     // set period panel color
     setPanelColor(period.getPriority());
   }
+
+
 }
