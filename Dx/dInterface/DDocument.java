@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.92 $  $Date: 2003-10-09 00:51:41 $
+ * Title: DDocument $Revision: 1.93 $  $Date: 2003-10-17 18:08:48 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.92 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.93 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -44,9 +44,9 @@ import dInternal.dTimeTable.TTStructureEvent;
 import dResources.DConst;
 import java.util.StringTokenizer;
 
-import dInterface.dTimeTable.TTPanel;
-import dInterface.dTimeTable.DetailedTTPanel;
-import dInterface.dTimeTable.SimpleTTPanel;
+import dInterface.dTimeTable.TTPane;
+import dInterface.dTimeTable.DetailedTTPane;
+import dInterface.dTimeTable.SimpleTTPane;
 
 import dInterface.dTimeTable.CloseCmd;
 
@@ -63,7 +63,7 @@ public class DDocument  extends InternalFrameAdapter implements
   private DMediator _dMediator;
   private JInternalFrame _jif;
   private String _documentName;
-  private TTPanel _ttPanel;
+  private TTPane _ttPane;
   private DModel _dm;
   private DStateBar _stateBar;
   private String _version;
@@ -79,7 +79,7 @@ public class DDocument  extends InternalFrameAdapter implements
       //ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
       _documentName = modifiyDocumentName(ttName);
       buidDocument(true, true);
-      _ttPanel.updateTTPanel(_dm.getTTStructure());
+      _ttPane.updateTTPane(_dm.getTTStructure());
       _jif.addInternalFrameListener(this);
     }
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -136,8 +136,8 @@ public class DDocument  extends InternalFrameAdapter implements
     return _dMediator;
   } //end getDModel
   //-------------------------------------------
-  public TTPanel getTTPanel(){
-    return _ttPanel;
+  public TTPane getTTPane(){
+    return _ttPane;
   }
   //-------------------------------------------
   public TTStructure getTTStructure() {
@@ -159,7 +159,7 @@ public class DDocument  extends InternalFrameAdapter implements
   public void close(){
     _jif.dispose();
     _jif = null;
-    _ttPanel = null;
+    _ttPane = null;
     _stateBar = null;
   }
   //-------------------------------------------
@@ -189,7 +189,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
 
-    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    _ttPane.updateTTPane(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
 
     setCursor(Cursor.DEFAULT_CURSOR, component);
@@ -210,7 +210,7 @@ public class DDocument  extends InternalFrameAdapter implements
     System.out.println("I was in ttstructure listener");
     setCursor(Cursor.WAIT_CURSOR);
     _dm.setModified();
-    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    _ttPane.updateTTPane(_dm.getTTStructure());
      _dm.setStateBarComponent();
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
     setCursor(Cursor.DEFAULT_CURSOR);
@@ -228,7 +228,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.buildSetOfEvents();
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
-    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    _ttPane.updateTTPane(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
 
     setCursor(Cursor.DEFAULT_CURSOR, component);
@@ -261,7 +261,7 @@ public class DDocument  extends InternalFrameAdapter implements
     System.out.println("SetOfEvents Event started");//debug
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
-    _ttPanel.updateTTPanel(_dm.getTTStructure());
+    _ttPane.updateTTPane(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
 
     setCursor(Cursor.DEFAULT_CURSOR, component);
@@ -341,14 +341,17 @@ public class DDocument  extends InternalFrameAdapter implements
     //_jif.getSize();
 
     if (simple) { //if (!simple) {
-      _ttPanel = new SimpleTTPanel(_dm.getTTStructure(), _dMediator.getDApplication().getToolBar());
+      _ttPane = new SimpleTTPane(_dm.getTTStructure(),
+                                 _dMediator.getDApplication().getToolBar(),
+                                 false,
+                                 _dMediator.getDApplication().getJFrame().getSize() );
     } else {
-      _ttPanel = new DetailedTTPanel(_dm.getTTStructure(),
+      _ttPane = new DetailedTTPane(_dm.getTTStructure(),
                                      _dMediator.getDApplication().getToolBar(),
                                      vertical,
                                      _dMediator.getDApplication().getJFrame().getSize());
     }
-    _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
+    _jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);

@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.31 $  $Date: 2003-09-08 15:23:19 $
+ * Title: ToolBar $Revision: 1.32 $  $Date: 2003-10-17 18:08:48 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: rgr $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -222,8 +222,8 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     _periodTypeSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String item= (String)_periodSelector.getSelectedItem();
-        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
-            ).getPeriodPanel(Integer.parseInt(item) );
+        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
+                                ).getPeriodPanel(Integer.parseInt(item) );
         Period period;
         period= _tts.getCurrentCycle().getPeriodByIndex( ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
@@ -240,7 +240,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     _sameLine.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String item= (String)_periodSelector.getSelectedItem();
-        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
             ).getPeriodPanel(Integer.parseInt(item) );
         Cycle cycle = _tts.getCurrentCycle();
         Period per;
@@ -257,7 +257,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     _sameColumn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         String item= (String)_periodSelector.getSelectedItem();
-        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+        PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
             ).getPeriodPanel(Integer.parseInt(item) );
         int dayIndex = ppanel.getPeriodRef()[0];
         Day day = _tts.getCurrentCycle().getDayByIndex(dayIndex);
@@ -282,7 +282,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
    * */
   public void setPeriodSelector(String item){
     if(DXToolsMethods.isIntValue(item)){
-      PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
+      PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
           ).getPeriodPanel(Integer.parseInt(item) );
       Period period;
       if(ppanel!=null){
@@ -357,12 +357,12 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
    */
   public void setToolBarTwo(){
     _comboBoxStatus=false;
-    JPanel ttPanel= (JPanel)_dApplic.getDMediator().getCurrentDoc().getTTPanel(
+    JPanel thePane= (JPanel)_dApplic.getDMediator().getCurrentDoc().getTTPane(
         ).getViewport().getComponent(0);
     //int nbOfPeriods= ttPanel.getComponentCount();
     _periodSelector.removeAllItems();
-    for (int i=0; i< ttPanel.getComponentCount(); i++){
-      PeriodPanel ppanel= (PeriodPanel)ttPanel.getComponent(i);
+    for (int i=0; i< thePane.getComponentCount(); i++){
+      PeriodPanel ppanel= (PeriodPanel)thePane.getComponent(i);
       _periodSelector.addItem(Integer.toString(ppanel.getPanelRefNo()));
     }// end for (int i=0; i< ttPanel.getComponentCount(); i++)
 

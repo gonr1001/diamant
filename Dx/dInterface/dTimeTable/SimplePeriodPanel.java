@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.4 $  $Date: 2003-10-08 18:15:22 $
+ * Title: SimplePeriodPanel $Revision: 1.5 $  $Date: 2003-10-17 18:08:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -49,6 +49,9 @@ public class SimplePeriodPanel extends PeriodPanel{
   private int _TTSperiod;
   private int _panelRefNo;*/
 
+  public SimplePeriodPanel(){
+    super();
+  }
   public SimplePeriodPanel(int refNo, int day, int seq, int per) {
     super( refNo, day,  seq,  per);
     /*_panelRefNo= refNo;
@@ -57,9 +60,25 @@ public class SimplePeriodPanel extends PeriodPanel{
     _TTSperiod= per;*/
   }
 
+  public SimplePeriodPanel(String str) {
+    super(str);
+    /*_panelRefNo= refNo;
+    _TTSday= day;
+    _TTSseq= seq;
+    _TTSperiod= per;*/
+  }
   /**
    *
    * */
+
+  public void createPanel(Period period){
+  setLayout(new GridLayout(2,1));
+  //setMinimumSize(new Dimension(w, h));
+  //setPreferredSize(new Dimension(w, h));
+  setBorder(new BevelBorder(BevelBorder.RAISED));
+  setValue(period);
+  }
+
   public void createPanel( Period period, int w, int h){
     setLayout(new GridLayout(2,1));
     setMinimumSize(new Dimension(w, h));

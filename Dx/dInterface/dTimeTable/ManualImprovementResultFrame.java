@@ -36,7 +36,7 @@ import dInternal.dUtil.DXToolsMethods;
 public class ManualImprovementResultFrame extends JFrame implements ActionListener{
 
   //private JInternalFrame _jif;
-  private TTPanel _ttPanel;
+  private TTPane _ttPane;
   private TTStructure _ttStruct;
   private DToolBar _toolBar;
   //private JFrame _jFrame;
@@ -103,11 +103,11 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
    jif.setPreferredSize(frameDim);
 
    if (simple)
-     _ttPanel = new SimpleTTPanel(_ttStruct,_toolBar);
+     _ttPane = new SimpleTTPane(_ttStruct,_toolBar,false, jif.getSize());
    else
-     _ttPanel = new DetailedTTPanel(_ttStruct,_toolBar,false, jif.getSize());
+     _ttPane = new DetailedTTPane(_ttStruct,_toolBar,false, jif.getSize());
 
-   jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
+   jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
    jif.pack();
    jif.setVisible(true);
    return jif;
@@ -149,8 +149,8 @@ public class ManualImprovementResultFrame extends JFrame implements ActionListen
      *
      */
     protected void setColorOfPanel(int dayIndex, int seqIndex, int perIndex, int duration,boolean isAssign){
-      for (int i=0; i< ((JPanel)_ttPanel.getViewport().getComponent(0)).getComponentCount(); i++){
-        PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPanel.getViewport().getComponent(0)).getComponent(i);
+      for (int i=0; i< ((JPanel)_ttPane.getViewport().getComponent(0)).getComponentCount(); i++){
+        PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPane.getViewport().getComponent(0)).getComponent(i);
         Period period= _ttStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
             perPanel.getPeriodRef()[1],perPanel.getPeriodRef()[2]);
         int[] ppKey={};

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.9 $  $Date: 2003-10-07 19:10:28 $
+ * Title: PeriodPanel $Revision: 1.10 $  $Date: 2003-10-17 18:08:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -33,6 +33,7 @@ package dInterface.dTimeTable;
 import java.awt.Dimension;
 //import javax.swing.JScrollPane;
 import javax.swing.JPanel;
+import java.util.StringTokenizer;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.Color;
@@ -42,7 +43,7 @@ import javax.swing.border.BevelBorder;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
 
-public  class PeriodPanel extends JPanel{
+public  abstract class PeriodPanel extends JPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;
   protected int _TTSday;
   protected int _TTSseq;
@@ -56,6 +57,16 @@ public  class PeriodPanel extends JPanel{
     _TTSperiod= per;
   }
 
+  public PeriodPanel(){
+    super();
+  }
+  public PeriodPanel(String str) {
+    //_panelRefNo= refNo;
+    StringTokenizer st = new StringTokenizer(str,".");
+    _TTSday= Integer.parseInt(st.nextToken());
+    _TTSseq= Integer.parseInt(st.nextToken());
+    _TTSperiod= Integer.parseInt(st.nextToken());
+  }
   /**
    *
    * */
@@ -65,9 +76,9 @@ public  class PeriodPanel extends JPanel{
     setBorder(new BevelBorder(BevelBorder.RAISED));
     setValue(period);
   }*/
- public  void createPanel() {}
- public  void createPanel( Period period) {}
-  public  void createPanel(Period period, int w, int h){}
+ //public abstract void createPanel();
+ protected abstract void createPanel(Period period);
+  protected  void createPanel(Period period, int w, int h){}
  // public abstract void setValue(Period period);
   /*{
     JPanel topPanel = new JPanel();

@@ -2,6 +2,8 @@
 
 package dInternal.dTimeTable;
 
+import java.util.StringTokenizer;
+
 import dInternal.dData.SetOfResources;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dData.Resource;
@@ -287,6 +289,8 @@ public Period getLastPeriod(){
     return maxPer;
   }
 
+
+
   /**
   * get a period
   * @param Cycle the cycle where we want to find the period
@@ -295,16 +299,28 @@ public Period getLastPeriod(){
   * @param int the index of the period int the sequence
   * @return Period the period
   * */
- public Period getPeriodByIndex( int dayIndex, int seqIndex, int perIndex){
-     Day day =(Day)getSetOfDays().getResourceAt(dayIndex).getAttach();
-     if(day!=null){
-       Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(seqIndex).getAttach();
-       if (seq!=null){
-         return (Period)seq.getSetOfPeriods().getResourceAt(perIndex).getAttach();
-       }
-     }
-   return null;
+ public Period getPeriodByPeriodKey(String str){
+    int dayIndex; int seqIndex; int perIndex;
+    StringTokenizer st = new StringTokenizer(str,".");
+ dayIndex = Integer.parseInt(st.nextToken());
+ seqIndex= Integer.parseInt(st.nextToken());
+    perIndex= Integer.parseInt(st.nextToken());
+
+
+   return getPeriodByIndex(dayIndex-1, seqIndex-1, perIndex-1);
   }
+
+
+  public Period getPeriodByIndex( int dayIndex, int seqIndex, int perIndex){
+      Day day =(Day)getSetOfDays().getResourceAt(dayIndex).getAttach();
+      if(day!=null){
+        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(seqIndex).getAttach();
+        if (seq!=null){
+          return (Period)seq.getSetOfPeriods().getResourceAt(perIndex).getAttach();
+        }
+      }
+    return null;
+   }
 
   /**
   * get a period
@@ -382,10 +398,10 @@ public Period getLastPeriod(){
    * @param int the period reference number in  the sequence
    * @return Period the period or null if period does not found
    * */
-  public Period getPeriod(Sequence seq, int periodRefNo ){
+/*  public Period getPeriod(Sequence seq, int periodRefNo ){
     return (Period)seq.getSetOfPeriods().getResource(
         Integer.toString(periodRefNo)).getAttach();
-  }
+  }*/
 
   /**
    * get a period
@@ -423,6 +439,13 @@ public Period getLastPeriod(){
   public DisplayAttributs[][] getAttributsToDisplay(int periodLength){
     SetOfResources rowAtt=buildAttributsRowTodisplay(periodLength);
     DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()];
+    for (int i=0; i< matrixToDisplay.length; i++){
+      for (int j=0; j< matrixToDisplay[i].length; j++){
+        DisplayAttributs attrib= new DisplayAttributs();
+        attrib.setHourToDisplay(rowAtt.getResourceAt(j).getID());
+        matrixToDisplay[i][j]=attrib;
+      }
+    }
     for(int i=0; i< _setOfDays.size(); i++){
       Resource day =_setOfDays.getResourceAt(i);
       for (int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
@@ -462,6 +485,7 @@ public Period getLastPeriod(){
         }
       }// end for (int j=0; j< matrixToDisplay[i].length; j++)
     }// end for (int i=0; i< matrixToDisplay.length; i++)
+
     return matrixToDisplay;
   }
 

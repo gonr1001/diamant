@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.8 $  $Date: 2003-10-07 19:10:28 $
+ * Title: DetailedPeriodPanel $Revision: 1.9 $  $Date: 2003-10-17 18:08:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -55,7 +55,9 @@ public class DetailedPeriodPanel extends PeriodPanel{
   private String [] arr = {"ADM111", "GEI442"};
   //private SetOfActivities _activities;
 
-
+  public DetailedPeriodPanel(){
+    super();
+  }
   public DetailedPeriodPanel(int refNo, int day, int seq, int per) {
     super( refNo, day,  seq,  per);
    /* _panelRefNo= refNo;
@@ -67,7 +69,13 @@ public class DetailedPeriodPanel extends PeriodPanel{
     _vec.add(arr[1]);
     //_activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
   }
-
+  public DetailedPeriodPanel(String str) {
+    super(str);
+    /*_panelRefNo= refNo;
+    _TTSday= day;
+    _TTSseq= seq;
+    _TTSperiod= per;*/
+  }
   /**
    *
    * */
