@@ -244,15 +244,17 @@ public class StandardReportData {
               DXValue confValue= (DXValue)confAttach.getAttach();
               String str = "yyyyyyy";
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
-                str = _dm.getSetOfEvents().getStudentConflictDescriptions(
+               /* str = _dm.getSetOfEvents().getStudentConflictDescriptions(
                   _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities()),
-                  _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));
+                  _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));*/
+                str = _dm.getSetOfEvents().getStudentConflictDescriptions(confEvents.getID(),confAttach.getID());
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
                //todo rgr long instKey [] =
                //long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
                //String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
                //str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
+               str = _dm.getSetOfEvents().getInstructorConflictDescriptions(confEvents.getID(),confAttach.getID());
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();
