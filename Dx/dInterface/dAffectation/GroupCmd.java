@@ -15,7 +15,7 @@ import dInterface.DApplication;
 
 public class GroupCmd implements Command{
 
-  public GroupCmd(DApplication dApplic) {
+  public GroupCmd() {
   }
 
   public void execute(DApplication dApplic) {

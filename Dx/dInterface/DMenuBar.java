@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.49 $  $Date: 2003-08-18 15:26:33 $
+ * Title: DMenuBar $Revision: 1.50 $  $Date: 2003-08-28 16:35:47 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.49 $
+ * @version $Revision: 1.50 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -171,24 +171,30 @@ public class DMenuBar extends JMenuBar{
     menu.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( menu );
 
-    CmdMenu mActi = new CmdMenu("Activités");
+    CmdMenu mActi = new CmdMenu(DConst.ACTI_ASSIGN_M);
     menu.add(mActi);
     mActi.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mActi.setCommand(new ActivityCmd(_dApplic));
+    mActi.setCommand(new ActivityCmd());
     mActi.addActionListener(_dApplic);
 
-    CmdMenu mSect = new CmdMenu("Groupes");
+    CmdMenu mSect = new CmdMenu(DConst.GROUP_ASSIGN_M);
     menu.add(mSect);
     mSect.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mSect.setCommand(new GroupCmd(_dApplic));
+    mSect.setCommand(new GroupCmd());
     mSect.addActionListener(_dApplic);
 
-    // Items in menu ASSIGN
     CmdMenu mInstructorAvailability = new CmdMenu(DConst.INST_ASSIGN_M);
     menu.add(mInstructorAvailability);
     mInstructorAvailability.setFont(new java.awt.Font(_mfont, _font, _nPT));
     mInstructorAvailability.setCommand(new InstructorAvailabilityCmd());
     mInstructorAvailability.addActionListener(_dApplic);
+
+    //CmdMenu mroomsAvailability = new CmdMenu(DConst.INST_ASSIGN_M);
+    CmdMenu mroomsAvailability = new CmdMenu(DConst.LOCAUX_ASSIGN_M);
+    menu.add(mroomsAvailability);
+    mroomsAvailability.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    mroomsAvailability.setCommand(new roomsAvailabilityCmd(_dApplic));
+    mroomsAvailability.addActionListener(_dApplic);
 
     CmdMenu mExcl = new CmdMenu("Exclure");
     menu.add(mExcl);

@@ -41,25 +41,23 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * The JList items choice by the user
    */
   private Object [] _currentActivities = new Object[0];
+  private String [] _buttonsNames = {DConst.BUT_OK, DConst.BUT_CANCEL};
+  private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
   private static String ACTLIST = DConst.ACT_LIST;
-  private static String SHOW = DConst.SHOW;
-  private static String CLOSE = DConst.CLOSE;
   private static String NOT_INCLUDED = DConst.NOT_INCLUDED;
   private static String INCLUDED = DConst.INCLUDED;
-  private static String TO_LEFT = DConst.TO_LEFT;
-  private static String TO_RIGHT = DConst.TO_RIGHT;
   /**
    * the vectors containing the activities ID
    */
   private Vector _noVisibleVec, _visibleVec;
-  private JButton _show, _cancel, _toRight, _toLeft;
+  private JButton _toRight, _toLeft;
   private JDialog _jd;
   /**
    * the lists containing the activities ID
    */
   private JLabel _lVisible, _lNoVisible;
   private JList _noVisibleList, _visibleList;
-  private JPanel _listsPanel, _buttonsPanel1, _buttonsPanel2;
+  private JPanel _listsPanel, _arrowsPanel;
 
 
   /**
@@ -84,10 +82,11 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Initialize the dialog
    */
   private void jbInit(){
-    _show = new JButton(SHOW);
+    /*_show = new JButton(SHOW);
     _show.setPreferredSize(new Dimension(80,22));
     _cancel = new JButton(CLOSE);
     _cancel.setPreferredSize(new Dimension(80,22));
+    */
     _listsPanel = new JPanel();
     //left panel
     JPanel rightPanel = new JPanel();
@@ -115,30 +114,20 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _lVisible = new JLabel(_visibleVec.size() + " " + INCLUDED);
     leftPanel.add(_lVisible, BorderLayout.NORTH);
     leftPanel.add(leftSPane, BorderLayout.CENTER);
-    //buttons «« »» panel
-    JPanel _buttonsPanel1 = new JPanel(new BorderLayout());
-    _buttonsPanel1.setPreferredSize(new Dimension(50,70));
-    //the buttons _toLeft and _toRight
-    _toRight = new JButton(TO_RIGHT);
-    _toRight.setPreferredSize(new Dimension(50,35));
-    _toLeft = new JButton(TO_LEFT);
-    _toLeft.setPreferredSize(new Dimension(50,35));
-    _buttonsPanel1.add(_toRight, BorderLayout.NORTH);
-    _buttonsPanel1.add(_toLeft, BorderLayout.SOUTH);
+    //arrows panel
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, 50, 70);
     //placing the panels and buttons into the _listsPanel
     _listsPanel.add(leftPanel, BorderLayout.EAST);
-    _listsPanel.add(_buttonsPanel1, BorderLayout.CENTER);
+    _listsPanel.add(_arrowsPanel, BorderLayout.CENTER);
     _listsPanel.add(rightPanel, BorderLayout.WEST);
-    //panel of buttons _show _cancel
-    _buttonsPanel2 = new JPanel();
-    _buttonsPanel2.add(_show);
-    _buttonsPanel2.add(_cancel);
+    //buttonsPanel
+    JPanel buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //placing the elements into the JDialog
     setSize(380, 390);
     setResizable(false);
     triggerListeners();
     getContentPane().add(_listsPanel, BorderLayout.CENTER);
-    getContentPane().add(_buttonsPanel2, BorderLayout.SOUTH);
+    getContentPane().add(buttonsPanel, BorderLayout.SOUTH);
   }//end method
 
 
@@ -146,10 +135,10 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Launch the listeners
    */
   private void triggerListeners(){
-    _cancel.addActionListener(this);
-    _show.addActionListener(this);
-    _toLeft.addActionListener(this);
-    _toRight.addActionListener(this);
+    //_cancel.addActionListener(this);
+    //_show.addActionListener(this);
+    //_toLeft.addActionListener(this);
+    //_toRight.addActionListener(this);
     _noVisibleList.addMouseListener(mouseListenerLists);
     _visibleList.addMouseListener(mouseListenerLists);
   }//end triggerListeners()
@@ -182,14 +171,16 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    if (command.equals(CLOSE))
+    if (command.equals(_buttonsNames[1]))
         dispose();
-    if (command.equals(SHOW)){
+    if (command.equals(_buttonsNames[0])){
       if (_currentActivities.length != 0)
       new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
     }// end if (command.equals(SHOW))
-    if (command.equals(TO_LEFT) || command.equals(TO_RIGHT)){
-      if (command.equals(TO_LEFT))
+    if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
+      System.out.println("((JButton)_arrowsPanel.getComponent(0)).getText() "+((JButton)_arrowsPanel.getComponent(0)).getText());
+
+      if (command.equals(_arrowsNames[1]))
         DXTools.actionButton(_activities, 3, "false", "true", _noVisibleList, _visibleList);
       else
         DXTools.actionButton(_activities, 3, "true", "false", _visibleList, _noVisibleList);

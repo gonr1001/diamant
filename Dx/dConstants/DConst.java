@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.43 $  $Date: 2003-08-27 13:43:39 $
+ * Title: DConst $Revision: 1.44 $  $Date: 2003-08-28 16:36:59 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -104,6 +104,9 @@ public class DConst {
   //Assign menu
   public final static String ASSIGN = res.getString("assign");//Affectation
   public final static String INST_ASSIGN_M = res.getString("instAssignM");//Enseignants
+  public final static String ACTI_ASSIGN_M = res.getString("ActiAssignM");//Activités
+  public final static String GROUP_ASSIGN_M = res.getString("GroupAssignM");//Activités
+  public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Activités
   //Preferences menu
   public final static String PREF = res.getString("pref");//Preferences
   public final static String PLAF_M = res.getString("plafM");//ptions L&F
@@ -142,8 +145,9 @@ public class DConst {
   public final static String SHOW  = res.getString("show"); //Aficher
   public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
   public final static String INCLUDED  = res.getString("included");//Inclue(s)
-  //InstructorAvailabiliyDlg
-  public final static String AVAILABILITY = "dispo";
+  //InstructorAvailabiliyDlg and roomsAvailabiliyDlg
+  public final static String AVAILABILITIES = res.getString("dispo");//Disponibilités
+  public final static String ROOMS_DLG_TITLE = res.getString("roomsDlgTitle");
   //GroupDlg
   public final static String ACT_STUD_NOT_ASSIGNED = res.getString("ActStudNotAss");//Étudiants non assignés
   public final static String ACT_STUD_ASSIGNED = res.getString("ActStudAss");//Étudiants assignés

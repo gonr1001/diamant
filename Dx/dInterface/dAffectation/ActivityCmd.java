@@ -17,7 +17,7 @@ import dInterface.DApplication;
 
 public class ActivityCmd implements Command{
 
-  public ActivityCmd(DApplication dApplic) {
+  public ActivityCmd() {
 
   }
 

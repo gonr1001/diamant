@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.44 $  $Date: 2003-08-27 13:43:39 $
+ * Title: DStringFrRes $Revision: 1.45 $  $Date: 2003-08-28 16:36:59 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -116,6 +116,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "assign", "Affectation" },
     { "instAssignM", "Enseignants" },
     { "instAssignTD", "Disponibilité enseignants"},
+    {"ActiAssignM", "Activités"},
+    {"GroupAssignM", "Groupes"},
+    {"LocauxAssignM", "Locaux"},
     { "instAssignD", "To be defined" },
 
 
@@ -204,13 +207,14 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"show","Afficher"},
     {"notIncluded","Non inclue(s)"},
     {"included","Inclue(s)"},
-    //InstructorAvailabiliyDlg
+    //InstructorAvailabiliyDlg and roomsAvailability
     {"dispo","Disponibilités"},
+    {"roomsDlgTitle", "Disponibilite de locaux"},
     //GroupDlg
     {"ActStudNotAss","Étudiants non assignés"},
     {"ActStudAss","Étudiants assignés"},
     {"Activity","Activité"},
-    {"GroupDlgTitle","Group Dlg"},
+    {"GroupDlgTitle","Affectation de groupes"},
     {"Group","Groupe"},
     {"NumberOfElements","Nombre d'éléments"},
     {"Type","Type"},

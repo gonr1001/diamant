@@ -49,7 +49,7 @@ public class GroupDlg extends JDialog implements ActionListener{
 
   private Activity _act;
   private DApplication _dApplic = null;
-  private Dimension dialogSize = new Dimension(500,500);
+  private Dimension dialogSize = new Dimension(550,500);
   private int _numberOfSections, _currentAssignedGroup = -1;
   private JButton _apply, _cancel, _ok;
   private JComboBox _actCombo, _typeCombo;
@@ -62,6 +62,8 @@ public class GroupDlg extends JDialog implements ActionListener{
   private SetOfActivities _activities;
   private SetOfStudents _students;
   private String _actID, _typeID;
+  private String[] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
+  private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private Type _type;
   private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[];
 
@@ -71,13 +73,8 @@ public class GroupDlg extends JDialog implements ActionListener{
   private static String ACT_STUD_ASSIGNED = DConst.ACT_STUD_ASSIGNED;
   private static String ACTIVITY = DConst.ACTIVITY;
   private static String GROUP_DLG_TITLE = DConst.GROUP_DLG_TITLE;
-  private static String APPLY = DConst.BUT_APPLY;
-  private static String CANCEL = DConst.BUT_CANCEL;
   private static String GROUP = DConst.GROUP;
   private static String NUMBER_OF_ELEMENTS = DConst.NUMBER_OF_ELEMENTS;
-  private static String OK = DConst.BUT_OK;
-  private static String TO_LEFT = DConst.TO_LEFT;
-  private static String TO_RIGHT = DConst.TO_RIGHT;
   private static String TYPE = DConst.TYPE;
 
 
@@ -107,7 +104,8 @@ public class GroupDlg extends JDialog implements ActionListener{
     setSize(dialogSize);
     setResizable(false);
     setTopPanel();
-    setButtonsPanel();
+    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     setCenterPanel();
   }
 
@@ -150,7 +148,7 @@ public class GroupDlg extends JDialog implements ActionListener{
    * Set the left panel who shows the list of the not assigned students
    */
   private void setNotAssignedPanel(){
-    Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.35), (int)dialogSize.getHeight()-130);
+    Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.40), (int)dialogSize.getHeight()-130);
     Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10, (int)panelDim.getHeight()-33);
     Dimension listDim = new Dimension((int)scrollDim.getWidth()-10,(int)scrollDim.getHeight()-20);
     _notAssignedPanel = new JPanel();
@@ -166,24 +164,6 @@ public class GroupDlg extends JDialog implements ActionListener{
     _notAssignedPanel.add(scrollPane);
   }
 
-
-  /**
-   * Set the panel conatining the arrows "toLeft" and "toRight"
-   */
-  private void setArrowsPanel(){
-    //the buttons _toLeft and _toRight
-    JButton _toRight = new JButton(TO_RIGHT);
-    _toRight.setSize(new Dimension(30,35));
-    _toRight.addActionListener(this);
-    JButton _toLeft = new JButton(TO_LEFT);
-    _toLeft.setSize(new Dimension(30,35));
-    _toLeft.addActionListener(this);
-    _arrowsPanel = new JPanel(new BorderLayout());
-    _arrowsPanel.setSize(new Dimension(50,200));
-    _arrowsPanel.add(_toRight, BorderLayout.NORTH);
-    _arrowsPanel.add(_toLeft, BorderLayout.SOUTH);
-  }
-
   /**
    * Set _assignedPanel, the panel containing the lists of assigned students
    */
@@ -191,7 +171,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     _assignedVectors = new Vector[_numberOfSections];
     _assignedLists = new JList[_numberOfSections];
     _lNumberOfElements = new JLabel[_numberOfSections];
-    Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.6), (int)dialogSize.getHeight()-130);
+    Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.55), (int)dialogSize.getHeight()-130);
     Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10,(int)panelDim.getHeight()-5);
     _assignedPanel = new JPanel(new BorderLayout());
     _assignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_ASSIGNED));
@@ -274,30 +254,12 @@ public class GroupDlg extends JDialog implements ActionListener{
 
 
   /**
-   * Set the panel containing the buttons
-   */
-  private void setButtonsPanel(){
-    _apply = new JButton(APPLY);
-    _apply.addActionListener(this);
-    _cancel = new JButton(CANCEL);
-    _cancel.addActionListener(this);
-    _ok = new JButton(OK);
-    _ok.addActionListener(this);
-    _buttonsPanel = new JPanel();
-    _buttonsPanel.add(_ok);
-    _buttonsPanel.add(_apply);
-    _buttonsPanel.add(_cancel);
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
-  }
-
-
-  /**
    * Set _centerPanel, the panel containing _assignedPanel, _arrowsPanel and
    * _notAssignedPanel
    */
   private void setCenterPanel(){
     setNotAssignedPanel();
-    setArrowsPanel();
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, 50, 70);
     setAssignedPanel();
     _centerPanel = new JPanel();
     _centerPanel.add(_notAssignedPanel);
@@ -339,14 +301,16 @@ public class GroupDlg extends JDialog implements ActionListener{
       _assignedVectors = new Vector[_numberOfSections];
       setInsidePanel();
     }//end if (e.getSource().equals(_typeCombo))
-    if (command.equals(CANCEL))
+    //if Button CANCEL is pressed
+    if (command.equals(_buttonsNames[2]))
       dispose();
-    if (command.equals(OK)){
+    //if Button OK is pressed
+    if (command.equals(_buttonsNames[0])){
       //if (_currentActivities.length != 0)
       //new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
     }// end if (command.equals(SHOW))
-    if ((command.equals(TO_LEFT) || command.equals(TO_RIGHT)) && _currentAssignedGroup > -1){
-      if (command.equals(TO_LEFT))
+    if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0])) && _currentAssignedGroup > -1){
+      if (command.equals(_arrowsNames[1]))
           DXTools.listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector);
       else
           DXTools.listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup]);

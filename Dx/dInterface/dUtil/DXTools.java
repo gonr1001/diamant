@@ -8,15 +8,24 @@ package dInterface.dUtil;
  * @author ys
  * @version 1.0
  */
-import javax.swing.JFileChooser;
-import javax.swing.JList;
+
+import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import java.util.Vector;
 
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXToolsMethods;
 
-public class DXTools {
+
+public class DXTools{
 
   public DXTools() {
   }
@@ -132,6 +141,41 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
  public static int STIConvertGroup(String STIGroupID){
    return  (int)STIGroupID.charAt(0) -(int)'A'+1;
  }
+
+ /**
+  * Creates a panel of buttons to be placed at the bottom of a Dialog.
+  * This method adds the ActionListener for each button
+  * @param parentDialog The dialog where this panel is placed
+  * @param buttonsNames An array of names of buttons
+  * @return
+  */
+ public static JPanel buttonsPanel(ActionListener parentDialog, String [] buttonsNames){
+   JPanel panel = new JPanel();
+   JButton button;
+   for(int i = 0; i<buttonsNames.length; i++){
+     button = new JButton(buttonsNames[i]);
+     button.addActionListener(parentDialog);
+     panel.add(button) ;
+   }
+   return panel;
+ }//end method
+
+
+ public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames, int panelWidth, int panelHeight){
+   JPanel panel = new JPanel(new BorderLayout());
+   panel.setPreferredSize(new Dimension(panelWidth,panelHeight));
+   JButton _toRight = new JButton(arrowsNames[0]);
+   _toRight.setPreferredSize(new Dimension(50,35));
+   _toRight.addActionListener(parentDialog);
+   JButton _toLeft = new JButton(arrowsNames[1]);
+   _toLeft.setPreferredSize(new Dimension(50,35));
+   _toLeft.addActionListener(parentDialog);
+   panel.add(_toRight, BorderLayout.NORTH);
+   panel.add(_toLeft, BorderLayout.SOUTH);
+   return panel;
+ }//end method
+
+
 
 
 }

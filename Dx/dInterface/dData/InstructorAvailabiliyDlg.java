@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.2 $  $Date: 2003-08-01 15:06:43 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.3 $  $Date: 2003-08-28 16:36:09 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.3 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -27,6 +27,8 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
 import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
@@ -55,17 +57,16 @@ import dResources.DConst;
 public class InstructorAvailabiliyDlg  extends JDialog
                                 implements ActionListener,
                                            ItemListener {
+  private DApplication _dApplic;
   private int nbPer;
   private int nbDay;
   private String[] DAY;
   public String[] TIME;
+  public String[] buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private String MES00 ;
-
   JPanel butPanel = new JPanel();
   JPanel chooserPanel = new JPanel();
   JPanel centerPanel;
-  JButton butCancel;
-  JButton butOk;
   JButton butApply;
   JComboBox chooser;
   Vector _posVect;
@@ -82,20 +83,24 @@ public class InstructorAvailabiliyDlg  extends JDialog
    * @param owner The component on which the dialog will be displayed.
    * @param doc The active document.  Used to access the dictionnaries.
    */
-  public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
-    super(jFrame, str, false);
-    _dm = dm;
-    TIME= dm.getTTStructure().getHourOfPeriodsADay(dm.getTTStructure().getCurrentCycle());
-    nbDay= dm.getTTStructure().getNumberOfActiveDays();
+  //public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
+    public InstructorAvailabiliyDlg(DApplication dApplic) {
+    super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
+    _dApplic = dApplic;
+    if (_dApplic.getDMediator().getCurrentDoc() == null)
+      return;
+    _dm = _dApplic.getDMediator().getCurrentDoc().getDM();
+    TIME= _dm.getTTStructure().getHourOfPeriodsADay(_dm.getTTStructure().getCurrentCycle());
+    nbDay= _dm.getTTStructure().getNumberOfActiveDays();
     DAY = new String[nbDay];
-    MES00 = DConst.AVAILABILITY;
+    MES00 = DConst.AVAILABILITIES;
     for(int i=0; i< nbDay; i++)
-      DAY[i]= dm.getTTStructure()._weekTable[i];
-    nbPer= dm.getTTStructure().getMaxNumberOfPeriodsADay(dm.getTTStructure().getCurrentCycle());
+      DAY[i]= _dm.getTTStructure()._weekTable[i];
+    nbPer= _dm.getTTStructure().getMaxNumberOfPeriodsADay(_dm.getTTStructure().getCurrentCycle());
     try {
       jbInit();
       pack();
-      setLocationRelativeTo(jFrame);
+      setLocationRelativeTo(_dApplic.getJFrame());
       setVisible(true);
     }
     catch(Exception e) {
@@ -121,32 +126,24 @@ public class InstructorAvailabiliyDlg  extends JDialog
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //button Panel
-    butOk = new JButton( DConst.BUT_OK );
-    butOk.addActionListener( this );
-    butApply = new JButton(DConst.BUT_APPLY);
-    butApply.addActionListener( this );
-    butApply.setEnabled(false);
-    butCancel = new JButton( DConst.BUT_CANCEL);
-    butCancel.addActionListener( this );
-    butPanel.add(butOk, null);
-    butPanel.add(butApply, null);
-    butPanel.add(butCancel, null);
+    butPanel = DXTools.buttonsPanel(this, buttonsNames);
+    butApply = (JButton)butPanel.getComponent(1);
     this.getContentPane().add(butPanel, BorderLayout.SOUTH);
   } // end  jbInit()
 
   public void actionPerformed( ActionEvent event) {
     String command = event.getActionCommand();
-    if (command.equals( DConst.BUT_CANCEL )) {  // cancel
+    if (command.equals( buttonsNames[2])) {  // cancel
       //"Enseignants --> Bouton Annuler pressé\n"
       dispose();
-    } else if (command.equals(DConst.BUT_OK )) {  // OK
+    } else if (command.equals(buttonsNames[0])) {  // OK
    /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n"); */
        _currentInstr.setAvailability(_currentAvailbility);
         _dm.incrementModification();
       modified = false;
       butApply.setEnabled(false);
       dispose();
-    } else if (command.equals( DConst.BUT_APPLY )) {  // apply
+    } else if (command.equals(buttonsNames[1])) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentInstr.setAvailability(_currentAvailbility);
       _dm.incrementModification();

@@ -56,10 +56,11 @@ public class InstructorDlgTest extends JFCTestCase {
   public void testNumberOne() throws Exception{
     //JFrame jFrame = new jFrame("Hello");
 
-    JDialog jDialog =
-    new InstructorAvailabiliyDlg(null,
-                             DConst.INST_ASSIGN_TD, _dApplic.getDMediator().getCurrentDoc().getDM()
-                             );
+    //ATTENTON :  Alex a change ça parce que le constructeur a chengé aussi, il faut vérifier les test
+    JDialog jDialog = new InstructorAvailabiliyDlg(_dApplic);
+    //new InstructorAvailabiliyDlg(null,
+    //                         DConst.INST_ASSIGN_TD, _dApplic.getDMediator().getCurrentDoc().getDM()
+     //                        );
 
    JPanel jPanel = (JPanel) helper.findComponent(JPanel.class , jDialog.getContentPane(), 2); //2 buttons?
    JButton jbutton = (JButton) helper.findComponent(JButton.class , jPanel, 0); // 2 cancel;
@@ -72,10 +73,11 @@ public class InstructorDlgTest extends JFCTestCase {
   public void testNumberTwo() throws Exception{
   //JFrame jFrame = new jFrame("Hello");
 
-  JDialog jDialog =
-  new InstructorAvailabiliyDlg(null,
-                           DConst.INST_ASSIGN_TD,_dApplic.getDMediator().getCurrentDoc().getDM()
-                          );
+  //ATTENTON :  Alex a change ça parce que le constructeur a chengé aussi, il faut vérifier les test
+  JDialog jDialog = new InstructorAvailabiliyDlg(_dApplic);
+  //new InstructorAvailabiliyDlg(null,
+    //                       DConst.INST_ASSIGN_TD,_dApplic.getDMediator().getCurrentDoc().getDM()
+      //                    );
 
  JPanel jPanel = (JPanel) helper.findComponent(JPanel.class , jDialog.getContentPane(), 2); //2 buttons?
  JButton jbutton = (JButton) helper.findComponent(JButton.class , jPanel, 2); // 2 cancel;
