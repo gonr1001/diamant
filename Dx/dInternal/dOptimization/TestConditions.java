@@ -31,6 +31,7 @@ public class TestConditions {
     _matrix = new StudentsConflictsMatrix();
     _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities()));
     _testToRun.add( new TestRoomsConditions(_dm));
+    _testToRun.add( new TestInstructorsConditions(_dm));
   }
 
   public StudentsConflictsMatrix getConflictsMatrix(){
