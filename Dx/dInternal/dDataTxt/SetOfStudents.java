@@ -228,16 +228,14 @@ public class SetOfStudents extends SetOfResources{
   * Build a list of Resources's ID
   * @return Vector It contents the Resources's ID
   * */
-  public Vector getStudentsByGroup(String activityID, String typeID, String groupID){
+  public Vector getStudentsByGroup(String activityID, String typeID, int group){
     Resource studentRes;
     Vector list= new Vector();
-    if (DXToolsMethods.isIntValue(groupID)){
       for(int i=0; i< size(); i++){
         studentRes = getResourceAt(i);
-        if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,Integer.parseInt(groupID)))
+        if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
           list.add(studentRes.getID());
       }//end for(int i=0; i< size(); i++)
-    }// end if (DXToolsMethods.isIntValue(groupID))
 
     return list;
   }

@@ -197,7 +197,7 @@ public class SetOfStudentsTest  extends TestCase{
     list.add("LUPIEN MY");
     list.add("ALEX JARA");
     assertEquals("test_getStudentsByGroup: assertEquals", list,
-                 setOfStudents.getStudentsByGroup("GEI442","1","01"));
+                 setOfStudents.getStudentsByGroup("GEI442","1",1));
   }
 
 }

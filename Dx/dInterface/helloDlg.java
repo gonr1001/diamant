@@ -12,7 +12,7 @@ package dInterface;
 public class helloDlg {
 
   public helloDlg(DApplication dApplic) {
-    dApplic.getDMediator().addDoc("D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\fichier1.dia",0);
+    dApplic.getDMediator().addDoc("D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\fichier2.dia",0);
   }
 
 

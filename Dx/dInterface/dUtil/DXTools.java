@@ -110,4 +110,9 @@ public class DXTools {
   }
   */
 
+ public static int STIConvertGroup(String STIGroupID){
+   return  (int)STIGroupID.charAt(0) -(int)'A'+1;
+ }
+
+
 }
