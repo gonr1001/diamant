@@ -54,9 +54,9 @@ Open architecture, Extensible Architecture, Databases, Web.
 
 The timetable production is a periodic task carried out in many
 institutions of teaching. These institutions produce one or more
-timetable per year for the courses and the exams. The automation
+timetable for the courses and the exams per year. The automation
 of this production can reduce its cost in an important way. In
-certain cases, automation starts with the use of a software of
+certain cases, automation starts with the use of software for
 timetable construction; in others, it starts with the automation
 of the treatments associated with the work of the institution, as
 for example the follow of students. There are software to carry
@@ -65,15 +65,15 @@ out the timetable construction, by example DIAMANT
 exists many others.
 
 In general, the software for timetable creation uses as input one
-or more files. Their output is saved on one or more files. The
-work with files is a source of problems. It is necessary to build
+or more files, and their output is saved on one or more files too.
+Working with files is a problems source. It is necessary to build
 the input files each time that a timetable is produced. There
 exists, two cases~: a manual production or an automated production
-of the files . If the files are produced manually, there are the
+of the files. If the files are produced manually, there are the
 typing errors that can produce unexpected effects in the software.
-This kind of errors are very hard to find, because all the data
+These kinds of errors are very hard to find, because all the data
 should be checked manually. In the case, where the files are
-produced in an automatic way, it is necessary that the software is
+produced in an automatic way, it is necessary that the software be
 ensured to check the validity and the coherence of all the data.
 The second problem appears when a change is introduced into the
 system (either in the application of construction, or in that who
@@ -81,34 +81,34 @@ produce the files) or if the application of construction is used
 in several different sites, using different data formats.
 
 Another source of problems even more expensive than the preceding
-one, is that when a change is introduced into the system, it could
-be in the software of construction, or in the software of
-production or in both. The changes come on behalf of persons in
-charge for the institution, for example a new nomenclature for the
-buildings; a new teaching approach, which change the way to create
-the groups, etc. The problem to modify a software is not only for
-the timetable production software, it acts as a general problem in
-the software development.
+is that when a change is introduced into the system, it could be
+in the software of construction, or in the software of production
+or in both. The changes come on behalf of persons in charge for
+the institution, for example a new nomenclature for the buildings;
+a new teaching approach, which change the way to create the
+groups, etc. The problem to modify software is not only for the
+timetable production software, it acts as a general problem in the
+software development.
 
 The solution to the first problem passes by the automation of the
 checking and validation of data at the time of data acquisition,
 in order to ensure that the software of construction works with
-the right data. The second problem, is more delicate to treat, if
-the software of production were conceived to be modified
+the right data. The second problem is more delicate to treat, if
+the software of production was conceived to be modified
 (extensible), the cost to make a modification is weak, but if the
 system is monolithic and closed, a modification will be very
 expensive. A way of decreasing the effects of this problem is the
 development of software having the quality of extensibility.
 
-In this article we propose the architecture of a system of
+In this article, we propose the architecture of a system of
 timetable production for courses and exams, having the following
 qualities: open and extensible. This architecture must contribute
-to more easily work with the two problems mentioned, by reducing
-the cost of the modifications and by carrying out the checking and
-the validation of the data in precise stages of the process and by
-avoiding the redundancy of the code and the data. This
-architecture implements a database, an Web site and a software of
-timetable construction. The checking and the validation of data
+to work in an easy way with the two problems mentioned, by
+reducing the cost of the modifications and by carrying out the
+checking and the validation of the data in precise stages of the
+process and by avoiding the redundancy of the code and the data.
+This architecture implements a database, a Web site and software
+of timetable construction. The checking and the validation of data
 will be made with the input and with integrity constraints in the
 database. The Web site is used mainly for the data input, but at
 the same time, it can check the validity of the data, using the
@@ -117,20 +117,20 @@ Another function of the Web site is to offer the timetable in a
 personalized way, once that it is built. The database allows the
 retrieval of the data, according to various formats. Thus, the
 input of the software of construction is simplified. Of course,
-with the assistance of the software of timetable construction, it
+with the assistance of the software for timetable construction, it
 is possible to create a timetable with a minimum of conflicts.
 
 
 Many research was made in the timetable construction~: algorithms,
 mathematical formulations and several software were proposed in
-the PATAT conferences \cite{patat97, patat00, patat02}. On the
-other hand, few efforts were devoted, until now, to the general
+the PATAT conferences \cite{patat97,patat00,patat02}. On the other
+hand, few efforts were devoted, until now, to the general
 development of the timetable production. We think that the fact of
 having a total view on the process can help the research in
-timetable construction. White \cite{white00} highlighted that the
-Web must be used to the diffusion of timetables. We are trying to
-go far proposing also to use it like an interface of data input,
-moreover we propose the architecture necessary to support our
+timetable construction. White \cite{white00} proposed that the Web
+must be used to the diffusion of timetables. We are trying to go
+far proposing also to use it like an interface of data input;
+moreover, we propose the architecture necessary to support our
 ideas. De Causmaecker et al. \cite{decausmaecker02} introduced the
 idea that the semantics Web can be used by the researchers in the
 timetable construction. They also introduced the idea to use XML
@@ -138,7 +138,7 @@ like a language of communication in the timetable construction by
 agents. We propose also the use of XML, in order to facilitate the
 exchanges between certain modules of our architecture. In Burke
 and al \cite{burke97} it is proposed to have a standard for the
-data format, it will be used by the timetable software, their goal
+data format, it will be used by the timetable software; their goal
 was to compare algorithms (programs) in benchmarks. In a more
 recent work, Kingston \cite{kingston02} proposes the STTL language
 and an interpreter, with the same objective. Özcan \cite{ozcan03}
@@ -154,15 +154,15 @@ construction.
 
 The development of our architecture, was divided into two parts,
 we analyzed the data flow in a generic system of timetable
-production. Then we define an architecture, the basic blocks and
-the responsibility of each block which takes part in the
+production. Then we define the architecture, the basic blocks and
+the responsibility of each block that takes part in the
 architecture. The objectives to define an open and extensible
 architecture were respect during our work. This is presented in
 the sections \ref{sec:data} and \ref{sec:archi}.
 
 Once defined the architecture, we created an instance in order to
 establish it in a system of timetable production at the University
-of Sherbrooke. We made an overflight of existing technologies in
+of Sherbrooke. We made an over flight of existing technologies in
 order to make the good choices still respecting the objectives of
 opening and extensibility. This is presented in the sections
 \ref{sec:tech} and \ref{sec:tictac}.
@@ -172,25 +172,26 @@ We finish by an assessment and the conclusions in the section
 \ref{sec:conc}.
 
 
+
 \section{The information flow in the timetable production}
 \label{sec:data}
 
-First of all, we define the process of timetable production as a
-process which starts at the time to enter the data for the period
-of validity of the timetable $P$. This period $P$ is one six-month
-period, one quarter, or a year period\footnote{In the University
+First, we define the process of timetable production as a process
+which starts at the time to enter the data for the period of
+validity of the timetable $P$. This period $P$ is one six-month
+period, one quarter, or a year period\footnote{At the University
 of Sherbrooke we talk about quarter, but it really comprises
 sixteen weeks (almost four months), therefore the system must be
 adapted to any period $P$.}. The process ends when all the
 concerned people receive the schedule on a paper or via the Web
 (see figure \ref{fig:fOne}) and the period of validity of the
-schedule touches at its end. The are multiple data to feed to the
+schedule touches at its end. Multiple data are entered to the
 system, for example the courses which will take place during the
 period $P$; the format of the courses (3h, or 2h+1h); possible or
 assigned teachers for certain courses; possible or assigned
 classrooms; the availability of the teachers and the classrooms,
 etc. We know that there are institutions where the students make a
-pre-choice and others where the timetable are made without
+pre-choice and others where the timetable is made without
 pre-choice. The pre-choice of the students is part of the data to
 be supplied, if there is no pre-choice, it is necessary to
 indicate the number of students to be admitted for each course.
@@ -218,30 +219,30 @@ indicate the number of students to be admitted for each course.
 \end{figure}
 
 The figure \ref{fig:fOne} is an abstract view of the timetable
-production, the system of timetable production includes a software
+production, the system of timetable production includes software
 of timetable construction.
 
 \begin{description}
 \item[System of timetable production.] It is composed of several
 software, or modules, which works in an autonomous way, but
-coordinated. Its clear that the system must have two principal
+coordinated. It is clear that the system must have two principal
 components~: the system to save data and the software of timetable
 construction.
 
 \item[Data.] Represent the necessary data to the timetable
 production. We will save all the necessary data in a system of
-data back-up. In the figure, it is not indicated that these data
+data back up. In the figure, it is not indicated that these data
 can be handled by modules of the system of timetable production.
-For example, the module of acquisition of pre-choice, will save
-the courses followed by a student. The module of data construction
+For example, the module of acquisition of pre-choice will save the
+courses followed by a student. The module of data construction
 will take its entry in the database and when the construction is
 made the new data obtained will be saved in a data warehouse.
 
 
 \item[Paper or Web page.] It is the output of the system once that
-the timetable is built. These output can to be files, which will
-be printed on paper or data that will be presented on a Web page,
-in both cases the data sources are the database.
+the timetable is built. This output can to be files, which will be
+printed on paper or data that will be presented on a Web page. In
+both cases, the data sources are the database.
 
 \end{description}
 
@@ -286,22 +287,22 @@ timetable}\label{fig:fTwo}
 
 \begin{description}
 
-\item[Basic data.] These data is defined as the long term data in
+\item[Basic data.] These data is defined as the long-term data in
 the data warehouse. The information for the academic activities of
 a program, the programs offered, the teachers, the characteristics
 of the classrooms, the students, all of them are examples of this
-type of information. In general this information is shared by
-other applications. For example a student is described by his
+type of information. In general, this information is shared by
+other applications. For example, a student is described by his
 first name, last name, number identification, program, etc. An
-application which uses the data students is for example that which
-print the notes of a student on his scorecard. Here, we are
+application that uses the data of the students is for example that
+which print the notes of a student on his scorecard. Here, we are
 interested in the data associated with the timetable production,
 which can be a view (partially) of the complete institutional
 database.
 
 \item[Period $P$ data.] These data are necessary to the timetable
-construction for the concerned period, they contain the courses
-which will be offered in this period, the availability of teachers
+construction for the concerned period; they contain the courses
+that will be offered in this period, the availability of teachers
 for this period, etc. These data are a precondition to the
 timetable construction and will be entered before each
 construction. However, these data will change (update) during the
@@ -365,7 +366,7 @@ the data input (especially the update) is done at the same time as
 the construction. This is the general case. Much of the data are
 fixed, as the offer of course, however, during the construction we
 find situations where the conflicts oblige to make changes on the
-data, by example, the format of a course, who pass from 3h
+data, by example, the format of a course, which pass from 3h
 consecutive to 2h consecutive more 1h. Other cases can be
 presented.
 
@@ -384,7 +385,7 @@ timetable construction program.
 The clerk will enter or update the data in the database, if the
 data is valid, it will be accepted and committed in the database.
 For example if the data waited is an integer number in a specific
-range, and the input value correspond with the attended value, it
+range, and the input value corresponds with the attended value, it
 will be entered in the database. If not, the system must force the
 clerk to return a new value.
 
@@ -392,15 +393,15 @@ clerk to return a new value.
 The construction of schedules is an activity of iterative nature.
 In general, the algorithms of timetable construction propose to
 respect the hard constraints and to try to respect soft
-constraints as much as possible, therefore, the person in charge
+constraints as much as possible; therefore, the person in charge
 will try to find several solutions to choose one of them. In
 certain cases, it is possible to leave the program with the same
-data to find a new solution, but in other cases it is necessary to
-change the starting data to obtain a new solution. If it is
+data to find a new solution, but in other cases, it is necessary
+to change the starting data to obtain a new solution. If it is
 necessary to make $n$ tests the solution chosen by the person in
 charge will be the solution $s$ where $1 \leq s \leq n$. It is
 necessary to envisage a way of working with the database in order
-to save the changes carried out for each iteration and to make a
+to save the changes carried out for iterations and to make a
 ''commit'' when the solution is chosen and that the timetable
 becomes final for the period.
 
@@ -410,28 +411,28 @@ becomes final for the period.
 
 
 Follows to the study of the data flow in the timetable production,
-we are able to propose an architecture to implement the system.
+we are able to propose the architecture to implement the system.
 
 \subsection{An architecture for the timetable production}
 
-In an abstracted way, a software architecture describes the
-component elements of a system, it shows also the interactions
-between these elements, the models which guide its composition and
+In an abstracted way, software architecture describes the
+component elements of a system; it shows also the interactions
+between these elements, the models that guide its composition and
 the constraints of these models. \cite{shaw96}
 
 In a general way, when we have a complex problem, the best
-approach is to cut out the problem in fragments which are easier
-to solve with a simple solution. Then, if we put all these small
+approach is to cut out the problem in fragments that are easier to
+solve with a simple solution. Then, if we put all these small
 solutions together, we will arrive at the solution of our complex
 problem \cite{buschmann96}.
 
-At the present time there are several architectures available to
-develop software applications, the most adapted for the timetable
-production system is that in layers.
+Now there are several architectures available to develop software
+applications, the most adapted for the timetable production system
+is that in layers.
 
 The architecture shown in the figure \ref{fig:fThree} proposes the
-division of the system in three layers, each one with a well
-defined function~:
+division of the system in three layers, each one with a
+well-defined function~:
 
 \begin{description}
 \item [The interface.] It is responsible to present the data to
@@ -439,15 +440,15 @@ the user, to allow the data input, and ensuring the exchanges with
 other systems.
 
 \item [Business logic layer.] It is responsible to ensure the
-exchanges with the interface and validate and check the data input
-and sending the data to be presented in an adequate format. It
-ensures also the exchanges with the data persistence  layer. The
+exchanges with the interface layer. Validate and check the data
+input and sending the data to be presented in an adequate format.
+It ensures also the exchanges with the data persistence layer. The
 business rules are used to ensure the coherence of the system.
 
 \item [The data persistence layer.] It manages the physical
-storage of the data, that is in files with a certain format, or in
+storage of the data that is in files with a certain format, or in
 a system of traditional database or in other models of persistence
-which are able to manage complex databases.
+that are able to manage complex databases.
 \end {description}
 
 \begin{figure}
@@ -469,14 +470,15 @@ which are able to manage complex databases.
 \subsection {The three layers architecture and the system of timetable production.}
 
 For each element of the architecture that we presented in the
-earlier subsection, we propose a component which is part of the
-application of timetable production. In this subsection we will
+earlier subsection, we propose a component that is part of the
+application of timetable production. In this subsection, we will
 show the integration between the data flow for a system of
 timetable production and suggested architecture.
 
 
-The high level design of our system of timetable production is
+The high-level design of our system of timetable production is
 simple (see figure \ref{fig:fOne})~:
+
 
 \begin{enumerate}
 \item We defined three categories of the data in a timetable
@@ -488,7 +490,7 @@ categories. The interface layer treats these data as follows:
 \item Basic data. These data are in a database belonging to the
 institution. This database can have its own interfaces to get and
 show the data. The system of production needs a part of these
-data. It is necessary to have an interface with other systems, its
+data. It is necessary to have an interface with other systems; its
 responsibility is to seek the necessary data and to place it in
 the production system. An important remark is that the users of
 the system should not have the right to modify the data of the
@@ -497,16 +499,15 @@ institution for security reasons.
 
 \item Direct data entry of the one period $P$. This activity is
 made by a clerk. Normally, these data change with each creation of
-a timetable. To enter the data, the user clerk has a Web page
-which is displayed by a navigator, and it will have fields to
-fill. At this moment, the interface layer can make some minimal
-validations of the coherence of data, for example, check that the
-data type is correct, to check that the fields which are
-obligatory are filled, etc. Depending on the size of the
-institution, it can have several clerks who work at the same time
-in the application, it is necessary consequently, to take the
-necessary measures to allow the concurrent work in the data
-persistence layer.
+a timetable. To enter the data, the user clerk has a Web page that
+is displayed by a navigator, and it will have fields to fill. At
+this moment, the interface layer can make some minimal validations
+of the coherence of data, for example, check that the data type is
+correct, to check that the obligatory fields are filled, etc.
+Depending on the size of the institution, it can have several
+clerks who work at the same time in the application, it is
+necessary consequently, to take the necessary measures to allow
+the concurrent work in the data persistence layer.
 
 \item The timetable data are created by the timetable creation
 application. This application is managed by the user responsible
@@ -516,13 +517,12 @@ the user responsible for the timetable creation must analyze to
 find that which is appropriate to him. Once that he found this
 version, he must apply the operation ''commit'' to make available
 the information to the rest of the users. Those are the output
-data from our system, and they are sent to other systems or other
+data from our system. They are sent to other systems or other
 users, for example, the students who will receive a paper with
 their personalized timetable or he can consult this information by
 using a Web site creates for these ends, or, the central
-administration of the institution which must be informed of the
+administration of the institution that must be informed of the
 timetable assignment.
-
 \end{enumerate}
 
 It is necessary to keep in consideration that the interface layer
@@ -534,14 +534,14 @@ characteristic enables us to ensure the coherence of the data.
 \item The data are treated according to certain rules and
 constraints, these rules are defined by each institution and they
 are coded in the business logic layer. It is here that we will be
-able to express the constrains for each institution, for example,
-the maximum quantity of students in a group, all the courses of
-mathematics are held the morning, etc.
+able to express constrains, for example, the maximum quantity of
+students in a group, all the courses of mathematics are held the
+morning, etc.
 
 \item The data results of these treatments must be store in a
-place to be able to use them after its generation. It is the data
-persistence layer which is responsible for this task. In a system
-of timetable production, the data can be stored in a database
+place to be able to use them after its generation. The data
+persistence layer is responsible for this task. In a system of
+timetable production, the data can be stored in a database
 (relational, object or another technology), in a XML file, a text
 file or in another storage media.
 \end{enumerate}
@@ -596,9 +596,9 @@ the system of timetable production.}\label{fig:fFour}
 
 \section{Possible technologies}\label{sec:tech}
 
-For the implementation of architecture, first of all it is
-necessary, to find which of the technological elements we need.
-The needs are:
+
+For the implementation of architecture, first it is necessary, to
+find which of the technological elements we need. The needs are:
 
 \begin{enumerate}
 \item A language to facilitate the display of the data to the user
@@ -612,7 +612,7 @@ exchange of data with the other systems.
 \item A tool to manage the data persistence.
 \end{enumerate}
 
-After our analysis, we found that there is not only one option,
+After our analysis, we found that there is not only one option;
 rather, there are several possibilities to implement this
 architecture.
 
@@ -643,7 +643,7 @@ which are open, it is a criterion of construction which was
 selected in an arbitrary way.
 
 For the database section, we did not mention a specific name of a
-database management system, the choice remains open to the
+database management system; the choice remains open to the
 implementation.
 
 We have an open architecture, since it accepts several instances.
@@ -654,8 +654,8 @@ carry out some changes in the element of interface to be able to
 interact with files in XML format. After, if we want to make
 evolve this part of data persistence to a database system, it
 would be necessary to make changes in the interface layer and to
-program the element of data persistence. All these changes without
-never touching the element of the business logic. In the Table
+program the element of data persistence. We can make all these
+changes without touching the business logic layer. In the Table
 \ref{tb:tbTwo}, we show the possible evolution of an instance of
 our architecture.
 
@@ -681,10 +681,9 @@ The data persistence & Text & XML & SQL, Database SQL \\
 architecture}\label{tb:tbTwo}
 \end{table}
 
-We can also imagine a system which starts with an interface based
+We can also imagine a system that starts with an interface based
 in textual mode to show the information, which will evolve with a
 display based in HTML and JSP by using a JSP server.
-
 \section{An instance of the architecture} \label{sec:tictac}
 
 Once that we established the architecture and that we know that it
@@ -704,8 +703,9 @@ easy to adapt this product to the changes in the
 specification\cite{meyer97}.
 
 
-With these considerations in hand, we show here the analysis which
+With these considerations in hand, we show here the analysis that
 brought us to our choice:
+
 
 \begin{description}
 
@@ -726,14 +726,15 @@ they can be the object of requests and treated like any other data
 format.
 
 \item [Language to code the business logic.] We chose Java. Java
-is an interpreted language which uses the Java Virtual Machine
+is an interpreted language that uses the Java Virtual Machine
 (JVM). There are several versions of this virtual machine for
 several different platforms, which means that the programmers can
 write for this language by using a platform, and then execute
 their programs in others.
 
+
 \item [The data persistence.] For the implementation of the data
-persistence layer we chose to use a database. A database is an
+persistence layer, we chose to use a database. A database is an
 entity in which it is possible to store data in a structured way
 with the minimum of redundancy. These data must be used by
 programs written in different languages by using standard
@@ -755,9 +756,8 @@ modifying the new characteristics required by the institutions.
 
 We presented the architecture of a system of production of
 schedules in an academic institution. An objective guided our
-approach~: to have an open and extensible architecture. In order
-to ensure a longer life the system.
-
+approach~: to have an open and extensible architecture, in order
+to ensure a long life system.
 
 We started by showing the needs of information exchanges in the
 timetable systems in order to present how the architecture is able
@@ -775,26 +775,21 @@ extensibility in all the software.
 It is now possible to give an answer to the question~: Can the
 timetable construction profit from developments associated with
 the timetable production? Our experience in software development
-for the timetable construction softwre showed us than~: the most
+for the timetable construction software showed us than~: the most
 of the problems came from the fact that the input data has errors.
 The construction software must dedicate a large part of its code
-to detect its errors. Moreover users take an important time to
+to detect its errors. Moreover, users take an important time to
 check the coherence of data before beginning the building work.
-Then, the answer is yes, it exists a real benefit. By developing a
-system of production it is easier to ensure than the software of
+Then, the answer is yes, it exist a real benefit. By developing a
+system of production, it is easier to ensure than the software of
 construction has the responsibility for timetable construction and
 not the responsibility of checking the data.
 
+
 Other benefit are also to consider, such as for example consulting
 its timetable by the Web (updated) since its residence, especially
-in countries where sometimes it makes $-30^\circ$.
-
-D'autres bénéfices sont aussi à envisager, comme par exemple
-consulter son horaire par le Web (à jour) depuis sa residence,
-surtout dans des pays ou parfois il fait $-30^\circ$, that is well
+in countries where sometimes it makes $-30^\circ$, that is well
 appreciated.
-
-
 
 \bibliography{bibDiamant,bibProg}
 
