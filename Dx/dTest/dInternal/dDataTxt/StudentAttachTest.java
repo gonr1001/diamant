@@ -94,8 +94,9 @@ public class StudentAttachTest extends TestCase {
     for (int i=0; i< courses.length; i++)
       studentAttach.addCourse(courses[i]);
     studentAttach.setAuxField(auxField);
-    String key = "-DX-EXIT"+auxField;
-    assertEquals("test_externalKey: assertEquals", key, studentAttach.externalKey("-DX-EXIT"));
+    String id= "dia";
+    String key = "-DX-EXIT"+auxField+id+"04";
+    assertEquals("test_externalKey: assertEquals", key, studentAttach.externalKey("-DX-EXIT",id));
 
   }
 

@@ -12,7 +12,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>9:00</BeginTime>
+								<BeginTime>8:30</BeginTime>
 								<EndTime>12:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -23,7 +23,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>14:00</BeginTime>
+								<BeginTime>13:30</BeginTime>
 								<EndTime>15:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -34,7 +34,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>19:0</BeginTime>
+								<BeginTime>19:15</BeginTime>
 								<EndTime>22:0</EndTime>
 								<priority>1</priority>
 							</TTperiod>
