@@ -331,11 +331,17 @@ public Period getLastPeriod(){
   * @return Period the period
   * */
  public Period getPeriodByKey( long dayKey, long seqKey, long perKey){
+	System.out.println(dayKey+" " +seqKey+" " + perKey);
      Day day =(Day)getSetOfDays().getResource(dayKey).getAttach();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqKey).getAttach();
        if (seq!=null){
-         return (Period)seq.getSetOfPeriods().getResource(perKey).getAttach();
+       	
+       	Resource rperiod= seq.getSetOfPeriods().getResource(perKey);
+       	if(rperiod!=null)
+         return (Period)rperiod.getAttach();
+         else
+         ;//System.out.println(dayKey+" " +seqKey+" " + perKey);
        }
      }
    return null;

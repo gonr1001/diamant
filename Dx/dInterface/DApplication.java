@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.34 $  $Date: 2003-10-28 13:26:49 $
+ * Title: DApplication $Revision: 1.35 $  $Date: 2003-10-29 17:49:01 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -99,7 +99,7 @@ public class DApplication implements ActionListener {
   //-------------------------------------------
   private JFrame createFrame(String str) {
     JFrame jFrame= new JFrame(str + "   " + System.getProperty("user.dir"));
-    jFrame.setDefaultCloseOperation(_jFrame.DO_NOTHING_ON_CLOSE);
+    jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     jFrame.addWindowListener(new WindowAdapter() {
       public void windowClosing( WindowEvent e ) {
         closeApplic(e);

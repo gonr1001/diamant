@@ -29,7 +29,7 @@ public class ConfirmDlg extends JDialog{
    *
    * */
   public static int showMessage(DApplication dApplic, String message){
-    return (new JOptionPane()).showConfirmDialog(dApplic.getJFrame(), message);
+    return JOptionPane.showConfirmDialog(dApplic.getJFrame(), message);
   }
 
 

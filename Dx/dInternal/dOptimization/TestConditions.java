@@ -141,14 +141,16 @@ public class TestConditions {
       eventKey.nextToken(),eventKey.nextToken()};*/
     if(((EventAttach)event.getAttach()).getAssignState()){//if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
-      long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
+      int[] perKey={Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
       //int[] avoidPriority={};
       if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
           duration, _avoidPriority)){
         for (int j=0; j< duration; j++){
-        	System.out.println(perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j);
+        	System.out.println("**first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
+          if (per == null)
+          	System.out.println(event.getID());
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
             numberOfConflicts+=cond.executeTest(per,event.getID(),operation);

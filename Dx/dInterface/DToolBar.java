@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.34 $  $Date: 2003-10-28 13:26:49 $
+ * Title: ToolBar $Revision: 1.35 $  $Date: 2003-10-29 17:49:01 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -292,7 +292,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         period= _tts.getCurrentCycle().getPeriodByIndex( ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
         _periodTypeSelector.disableActionListener();
-        _periodTypeSelector.setSelectedItem(_tts._priorityTable[period.getPriority()]);
+        _periodTypeSelector.setSelectedItem(TTStructure._priorityTable[period.getPriority()]);
         _periodTypeSelector.enableActionListener();
       }else{
         new FatalProblemDlg(_dApplic.getJFrame(),"Période non trouvée");

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.98 $  $Date: 2003-10-23 20:41:14 $
+ * Title: DDocument $Revision: 1.99 $  $Date: 2003-10-29 17:49:01 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.98 $
+ * @version $Revision: 1.99 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -327,7 +327,7 @@ public class DDocument  extends InternalFrameAdapter implements
     final int MAX_WIDTH = 2048;
     //_documentName = title;
     _jif = new JInternalFrame(_documentName, true, true, true, true);
-    _jif.setDefaultCloseOperation(_jif.DO_NOTHING_ON_CLOSE);
+    _jif.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
     _jif.addInternalFrameListener( new InternalFrameAdapter() {
       public void internalFrameClosing( InternalFrameEvent e ) {
         new CloseCmd().execute(_dMediator.getDApplication());
