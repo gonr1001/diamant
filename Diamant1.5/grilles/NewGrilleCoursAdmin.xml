@@ -30,6 +30,17 @@
 						</TTperiods>
 					</TTsequence>
 					<TTsequence>
+						<sequenceID>PPM</sequenceID>
+						<TTperiods>
+							<TTperiod>
+								<periodID>1</periodID>
+								<BeginTime>16:00</BeginTime>
+								<EndTime>19:00</EndTime>
+								<priority>1</priority>
+							</TTperiod>
+						</TTperiods>
+					</TTsequence>
+					<TTsequence>
 						<sequenceID>EV</sequenceID>
 						<TTperiods>
 							<TTperiod>
@@ -68,8 +79,19 @@
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
+                                         <TTsequence>
+						<sequenceID>PPM</sequenceID>
+						<TTperiods>
+							<TTperiod>
+								<periodID>1</periodID>
+								<BeginTime>16:00</BeginTime>
+								<EndTime>19:00</EndTime>
+								<priority>1</priority>
+							</TTperiod>
+						</TTperiods>
+					</TTsequence>
 					<TTsequence>
-						<sequenceID>EM</sequenceID>
+						<sequenceID>EV</sequenceID>
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
@@ -107,8 +129,19 @@
 							</TTperiod>
 						</TTperiods>
 					</TTsequence>
+                                        <TTsequence>
+						<sequenceID>PPM</sequenceID>
+						<TTperiods>
+							<TTperiod>
+								<periodID>1</periodID>
+								<BeginTime>16:00</BeginTime>
+								<EndTime>19:00</EndTime>
+								<priority>1</priority>
+							</TTperiod>
+						</TTperiods>
+					</TTsequence>
 					<TTsequence>
-						<sequenceID>EM</sequenceID>
+						<sequenceID>EV</sequenceID>
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
@@ -147,7 +180,7 @@
 						</TTperiods>
 					</TTsequence>
 					<TTsequence>
-						<sequenceID>EM</sequenceID>
+						<sequenceID>EV</sequenceID>
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
@@ -186,7 +219,7 @@
 						</TTperiods>
 					</TTsequence>
 					<TTsequence>
-						<sequenceID>EM</sequenceID>
+						<sequenceID>EV</sequenceID>
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
