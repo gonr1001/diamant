@@ -34,6 +34,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 
 import dInternal.dData.Activity;
+import dInternal.dData.Resource;
+import dInternal.dData.SetOfResources;
 import dInternal.dConditionsTest.EventAttach;
 import dInternal.dConditionsTest.SetOfEvents;
 import dInternal.dData.SetOfActivities;
@@ -56,9 +58,11 @@ public class EventsDlg extends JDialog implements ActionListener{
   private JList _leftList, _centerList, _rightList;
   private JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel, _leftArrowsPanel;
   private Object[] selectedValues;
+  private Resource res;
   private Section _currSection;
   private SetOfActivities _activities;
   private SetOfEvents _events;
+  private SetOfResources _leftRes, _centerRes, _rightRes;
   private String _eventFullKey;
   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private Type _currType;
@@ -91,6 +95,7 @@ public class EventsDlg extends JDialog implements ActionListener{
     getContentPane().setLayout(new BorderLayout());
     setSize(_dialogDim);
     setResizable(true);
+    buildVectors();
     setLeftPanel();
     setCenterPanel();
     setRightPanel();
@@ -119,7 +124,6 @@ public class EventsDlg extends JDialog implements ActionListener{
 
   private void setCenterPanel(){
     Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.5), (int)_dialogDim.getHeight()-buttonsPanelHeight);
-      _centerVector = _activities.getIDsByField(3, "true");
       _centerList = new JList(_centerVector);
       JLabel titleLabel = new JLabel(EVENTS_PLACED + " ");
       _centerLabel = new JLabel(String.valueOf(_centerVector.size()));
@@ -148,8 +152,8 @@ public class EventsDlg extends JDialog implements ActionListener{
     Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.24), (int)_dialogDim.getHeight()-buttonsPanelHeight);
     //_leftVector = _activities.getIDsByField(3, "true");
     //set the _leftVector
-    _leftVector = new Vector();
-    buildVector(_leftVector, 3, "true");
+    //_leftVector = new Vector();
+    //buildVector(_leftVector, 3, "true");
     _leftList = new JList(_leftVector);
     JLabel titleLabel = new JLabel(EVENTS_FIXED + " ");
     _leftLabel = new JLabel(String.valueOf(_leftVector.size()));
@@ -171,8 +175,8 @@ public class EventsDlg extends JDialog implements ActionListener{
 
   private void setRightPanel(){
     Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.24), (int)_dialogDim.getHeight()-buttonsPanelHeight);
-    _rightVector = new Vector();
-    buildVector(_rightVector, 3, "false");
+    //_rightVector = new Vector();
+    //buildVector(_rightVector, 3, "true");
     _rightList = new JList(_rightVector);
     JLabel titleLabel = new JLabel(EVENTS_NOT_PLACED + " ");
     _rightLabel = new JLabel(String.valueOf(_rightVector.size()));
@@ -230,29 +234,46 @@ public class EventsDlg extends JDialog implements ActionListener{
 
   }//end method
 
+  /**
+   * Builds the vectors _rightVector, _centerVector, _leftVector for their
+   * first display
+   */
 
-
-  private void buildVector(Vector vector, int champIndex, String champValue ){
+  private void buildVectors(){
+    _leftVector = new Vector();
+    _centerVector = new Vector();
+    _rightVector = new Vector();
+    _leftRes = new SetOfResources(0);
+    _centerRes = new SetOfResources(0);
+    _rightRes = new SetOfResources(0);
     String _eventFullID;
     StringTokenizer stk;
-    System.out.println("_events.size() "+_events.size());
     for(int i = 0; i < _events.size(); i++){
       _eventFullKey = ((EventAttach)_events.getResourceAt(i).getAttach()).
               getPrincipalRescKey();
-
       stk = new StringTokenizer(_eventFullKey, ".");
       _currUnity = _activities.getUnity(Long.parseLong(stk.nextToken()),
                                         Long.parseLong(stk.nextToken()),
                                         Long.parseLong(stk.nextToken()),
                                         Long.parseLong(stk.nextToken()));
-      if (_currUnity.compareByField(champIndex, champValue)){
-        stk = new StringTokenizer(_eventFullKey, ".");
+      stk = new StringTokenizer(_eventFullKey, ".");
         _eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk.nextToken()),
                                         Long.parseLong(stk.nextToken()),
                                         Long.parseLong(stk.nextToken()),
                                         Long.parseLong(stk.nextToken()));
-        vector.add(_eventFullID);
-      }//end if (_currUnity.compareByField(champIndex, champValue))
+        res = new Resource(_eventFullID, null);
+      if (_currUnity.compareByField(2, "false")){
+        _rightVector.add(_eventFullID);
+        _rightRes.addResource(res,1);
+      }else{
+       if (_currUnity.compareByField(3, "true")){
+        _leftVector.add(_eventFullID);
+       _leftRes.addResource(res,1);
+       }else{
+          _centerVector.add(_eventFullID);
+          _centerRes.addResource(res,1);
+       }
+       }//end else if (_currUnity.compareByField(2, "false"))
     }//end for
   }//end method
 
