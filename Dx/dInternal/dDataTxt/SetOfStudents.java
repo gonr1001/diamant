@@ -236,6 +236,23 @@ public class SetOfStudents extends SetOfResources{
   }
 
   /**
+   *
+   * @param listOfStudents a vector containing the list of students key
+   * @param course,  a string of 7 chars eg. GEI4421 or 9 chars
+   * (with group added) eg. GEI442101
+   * @return
+   */
+  public boolean addActivityToStudents(Vector listOfStudents, String course){
+    for (int i=0; i< listOfStudents.size(); i++){
+      StudentAttach student= (StudentAttach)getResource(Long.parseLong(listOfStudents.get(i).toString())).getAttach();
+      if(student==null)
+        return false;
+      student.addCourse(course);
+    }// end for (int i=0; i< listOfStudents.size(); i++)
+    return true;
+  }
+
+  /**
   * Build a list of Resources's ID
   * @return Vector It contents the Resources's ID plus the Resources's keys,
   * separate by a blank space

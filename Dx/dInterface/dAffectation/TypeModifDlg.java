@@ -26,12 +26,14 @@ public class TypeModifDlg extends SetOfElementsInterface{
 
 private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
 private Resource _activity;
+private DApplication _dApplic;
   /**
    * Constructor
    * @param dApplic
    */
   public TypeModifDlg(Dialog parent, DApplication dApplic,Resource activity) {
     super(parent,dApplic,activity.getID(),"Nombre de types",1);
+    _dApplic= dApplic;
     Vector [] vect= new Vector[1];
     _activity= activity;
     vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
@@ -71,6 +73,8 @@ private Resource _activity;
         int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
         type.addSection("01",nbCycle,true);
         init();
+         Vector students= activity.getStudentRegistered();
+         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       }
     }
