@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.64 $  $Date: 2003-10-21 20:48:18 $
+ * Title: DConst $Revision: 1.65 $  $Date: 2003-10-22 15:01:15 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -244,8 +244,8 @@ public class DConst {
   public final static String R_SECTION_NAME_L = "8";
   public final static String R_UNITY_NAME_L = "6";
   public final static String R_DURATION_L = "6";
-  public final static String R_DAY_NUMBER_L = "9";
-  public final static String R_DAY_NAME_L = "5";
+  public final static String R_DAY_NUMBER_L = "10";
+  public final static String R_DAY_NAME_L = "6";
   public final static String R_ACTIVITY_BEGIN_HOUR_L = "6";
   public final static String R_ACTIVITY_END_HOUR_L = "6";
   public final static String R_INSTRUCTOR_NAME_L = "25";
@@ -263,11 +263,11 @@ public class DConst {
 
    //the associated string length for each item above
   public final static String R_SEQUENCE_ID_L = "9";
-  public final static String R_UNITY_BEGIN_H_L = "12";
+  public final static String R_UNITY_BEGIN_H_L = "16";
   public final static String R_EVENT1_ID_L = "13";
   public final static String R_EVENT2_ID_L = "13";
-  public final static String R_NUMBER_OF_CONFLICTS_L = "12";
-  public final static String R_TYPE_OF_CONFLICT_L = "20";
+  public final static String R_NUMBER_OF_CONFLICTS_L = "9";
+  public final static String R_TYPE_OF_CONFLICT_L = "15";
   public final static String R_STUDENT_CONFLICT_L = "12";
   public final static String R_ROOM_CONFLICT_L = "10";
   public final static String R_INSTRUCTOR_CONFLICT_L = "15";
