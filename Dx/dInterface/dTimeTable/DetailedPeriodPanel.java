@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.10 $  $Date: 2003-10-20 13:51:30 $
+ * Title: DetailedPeriodPanel $Revision: 1.11 $  $Date: 2003-10-20 21:01:58 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -40,7 +40,8 @@ import java.awt.GridBagLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
-
+import javax.swing.BorderFactory;
+import java.awt.BorderLayout;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
 import dInternal.dData.SetOfActivities;
@@ -48,50 +49,24 @@ import dInternal.dData.Activity;
 
 
 public class DetailedPeriodPanel extends PeriodPanel{
-  JLabel _nbAct, _cTeach, _cRoom, _cStu;
-
   private JList _jList;
   private Vector _vec;
-  private String [] arr = {"ADM111", "GEI442"};
-  //private SetOfActivities _activities;
 
   public DetailedPeriodPanel(){
     super();
+    this.setForeground(Color.WHITE);
+    this.setBackground(Color.WHITE);
   }
-/*  public DetailedPeriodPanel(int refNo, int day, int seq, int per) {
-    super( refNo, day,  seq,  per);
-    _panelRefNo= refNo;
-    _TTSday= day;
-    _TTSseq= seq;
-    _TTSperiod= per;
-    _vec = new Vector();
-    _vec.add(arr[0]);
-    _vec.add(arr[1]);
-    //_activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-  }*/
+
   public DetailedPeriodPanel(int refNo, String str) {
     super(refNo, str);
-    /*_panelRefNo= refNo;
-    _TTSday= day;
-    _TTSseq= seq;
-    _TTSperiod= per;*/
   }
-
-/*
-  public void setBackground(int i){
-  setBackground(Color.TRANSLUCENT);
-}
-
-public void setForeground(int i){
- setForeground(Color.TRANSLUCENT);
- }*/
   /**
    *
    * */
-  public void createPanel(Period period){//, int w, int h){
-    setLayout(new GridLayout(3,1));
-    //setPreferredSize(new Dimension(w, h));
-    setBorder(new BevelBorder(BevelBorder.RAISED));
+  public void createPanel(Period period){
+    setLayout(new BorderLayout());//new GridLayout(3,1));
+    setBorder(BorderFactory.createEtchedBorder());
     setValue(period);
   }
 
@@ -102,9 +77,6 @@ public void setForeground(int i){
     JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
 
     _vec = period.getEventsInPeriod().getNamesVector(1);
-    //_vec = period.getEventsInPeriod().getNamesVector().size;
-  //_vec = getUnitiesNames(_vec);
-
     _jList  = new JList(_vec);
     //JLabel vec = new JLabel("moi");
     //_rightList.addMouseListener(mouseListenerLists);
@@ -126,66 +98,11 @@ public void setForeground(int i){
     bottomPanel.add(_cRoom);
     bottomPanel.add(_cStu);
     //
-    add(topPanel);
-    add(miPanel);
-    add(bottomPanel);
+    add(topPanel, BorderLayout.NORTH); //add(topPanel);
+    add(miPanel, BorderLayout.CENTER);
+    add(bottomPanel, BorderLayout.SOUTH);
     // set period panel color
     setPanelColor( period.getPriority());
   }
 
-  /**
-   * @return int the period reference number
-   * */
-  public int getPanelRefNo(){
-
-    return _panelRefNo;
-  }
-
-  /**
-   * @return int[] the period reference of the panel. int[0]= the day,
-   * int[1]= the sequence, int[2]= the period reference number
-   * */
-  public int[] getPeriodRef(){
-    int [] per={_TTSday,_TTSseq,_TTSperiod};
-    return per;
-  }
-
-  /**
-  *
-  * */
- public void setPanelColor( int priority){
-   Color color= Color.GRAY;
-   switch(priority){
-     case 0: color= new Color(236,233,216);//getBackground()
-       break;
-     case 1: color= Color.LIGHT_GRAY;
-       break;
-     case 2: color= Color.DARK_GRAY;
-       break;
-     case 3: color= Color.PINK;// to show a conflict panel
-       break;
-     case 4: color= Color.GREEN;// to show a selected panel
-       break;
-   }
-   for (int i=0; i< getComponentCount(); i++){
-     getComponent(i).setBackground(color);
-   }
-
-  }
-  /**
-   *
-   * */
-  public void setPanelBackGroundColor(int init ){
-    Color color= Color.BLUE;
-  switch(init){
-    case 0: color= new Color(236,233,216);//getBackground()
-      break;
-    case 1: color= Color.BLUE;
-      break;
-    case 2: ;
-      break;
-   }
-    setBackground(color);
-  }
-
-}
+} /* end DetailedPeriodPanel */

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.5 $  $Date: 2003-10-20 15:01:10 $
+ * Title: TTPane $Revision: 1.6 $  $Date: 2003-10-20 21:01:58 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -33,6 +33,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 
 import javax.swing.JFrame;
@@ -55,7 +57,7 @@ public abstract class TTPane {
 
   protected MouseListener _mouseListener;
   protected final int PERIOD_WIDTH =  94;  // for the screen
-  protected final int LINE_HEIGHT = 10;
+  protected final int LINE_HEIGHT = 12;
   protected final int HEADER_HEIGHT = 20 ;
   protected final int ROW_HEADER_WIDTH =  35;
 
@@ -90,16 +92,15 @@ public abstract class TTPane {
     _jSplitPane = null;
   }
   //-------------------------------------------
-  public abstract JComponent getPane();
+  public abstract JComponent getPane(); //?
   //-------------------------------------------
   public abstract void updateTTPane(TTStructure ttp);
   //-------------------------------------------
-  public abstract int getIpady(int i);
+  protected abstract int getIpady(int i);
   //-------------------------------------------
   protected abstract PeriodPanel createPeriodPanel(int refNo, String str);
-  protected abstract PeriodPanel createEmptyPeriodPanel();
   //-------------------------------------------
-  public abstract void manageActions();
+  protected abstract PeriodPanel createEmptyPeriodPanel();
   //-------------------------------------------
   public JViewport getViewport() {
     return _jScrollPaneOne.getViewport();
@@ -119,7 +120,7 @@ public abstract class TTPane {
     jScrollPane.setColumnHeaderView(createColumnHeader());
     jScrollPane.setRowHeaderView(createRowHeader());
     jScrollPane.setViewportView(createViewPort());
-    //  Point point = _jScrollPaneOne.getViewport().getViewPosition();
+    // Point point = jScrollPaneOne.getViewport().getViewPosition();
     jScrollPane.getViewport().setViewPosition(jScrollPane.getViewport().getViewPosition());
     manageActions();
   }
@@ -130,7 +131,7 @@ public abstract class TTPane {
     for(int i = 0; i < _toDisplay[0].length; i++) {
       if (_toDisplay[0][i].getEventsInPeriods()!=null){
         _rowHeaders[i] = new RowRecord(_toDisplay[0][i].getEventsInPeriods().size(),
-        _toDisplay[0][i].getHourToDisplay());
+                                        _toDisplay[0][i].getHourToDisplay());
 
       } else {
         _rowHeaders[i] = new RowRecord(-1,
@@ -185,12 +186,12 @@ public abstract class TTPane {
     for (int i = 0; i < _rowHeaders.length; i++) {
       gridBC.gridx = 0;
       gridBC.gridy = i;
-        if (_rowHeaders[i]._n != -1) {
-          gridBC.ipady = getIpady(i);
-        } else {
-          gridBC.ipady = getIpady(i);
-        }
-        jLabel = new JLabel(_rowHeaders[i]._str);
+        //if (_rowHeaders[i]._n != -1) {
+      gridBC.ipady = getIpady(i);
+        //} else {
+         // gridBC.ipady = getIpady(i);
+        //}
+      jLabel = new JLabel(_rowHeaders[i]._str);
 
       jLabel.setVerticalAlignment(JLabel.TOP);
       jLabel.setMinimumSize(new Dimension(ROW_HEADER_WIDTH, getIpady(i)));
@@ -213,23 +214,27 @@ public abstract class TTPane {
 
     PeriodPanel  periodPanel = null;
     JLabel jLabel;
-    int offset =0;
+    int count = 1;
     for (int i = 0; i < _toDisplay.length; i++ ) {
       for (int j= 0; j < _toDisplay[0].length ; j++) {
         gridBC.gridx = i;
         gridBC.gridy = j;
         gridBC.ipadx = PERIOD_WIDTH ;
-        gridBC.ipady =  getIpady(j) + offset;
+        //gridBC.ipady =  getIpady(i,j);
         if ( _toDisplay[i][j].getPeriodKey()!= "" &&  _toDisplay[i][j].getPeriodType()) {
           Period period = _tts.getCurrentCycle().getPeriodByPeriodKey(_toDisplay[i][j].getPeriodKey());
-          periodPanel = createPeriodPanel((i*_toDisplay[0].length) +j+1,_toDisplay[i][j].getPeriodKey());
+          periodPanel = createPeriodPanel(count, _toDisplay[i][j].getPeriodKey());
           periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period);
-          offset = 0;
+          count++;
+          gridBC.ipady =  getIpady(j);
         }
         else {
-          periodPanel = createEmptyPeriodPanel();//new SimplePeriodPanel();
+          periodPanel = createEmptyPeriodPanel();
+          gridBC.ipady =  getIpady(j);
         }
+        //gridBC.ipadx = PERIOD_WIDTH ;
+
         periodPanel.setMinimumSize(new Dimension(PERIOD_WIDTH, getIpady(j)));
         periodPanel.setPreferredSize(new Dimension(PERIOD_WIDTH,  getIpady(j)));
         periodPanel.setBorder(BorderFactory.createEtchedBorder());
@@ -241,5 +246,36 @@ public abstract class TTPane {
     }//end for i
     return panel;
   }
+  public void manageActions(){
+    JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
+    /*
+     * Mouse listener for this Panel
+     */
+     _mouseListener = new MouseAdapter() {
 
+      public void mouseClicked(MouseEvent e) {
+        System.out.println("Un clic sur la periode: ");
+        if ((e.getClickCount() == 1) && (_toolBar!=null)) {
+          PeriodPanel perpanel= (PeriodPanel)e.getSource();
+          if(_lastActivePanel != null)
+            _lastActivePanel.setPanelBackGroundColor(0);
+          _toolBar.setComboBoxStatus(false);
+          _toolBar.setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
+           perpanel.setPanelBackGroundColor(1);
+           _toolBar.setComboBoxStatus(true);
+          _lastActivePanel=perpanel;
+         System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Ref: " +
+                                                    perpanel.getPeriodRef()[0] +"." +
+                                                    perpanel.getPeriodRef()[1]+"." +
+                                                    perpanel.getPeriodRef()[2]);//debug
+
+         System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
+                            +_tts.getCurrentCycle().getPeriodByIndex(
+                                                    perpanel.getPeriodRef()[0],
+                                                    perpanel.getPeriodRef()[1],
+                                                    perpanel.getPeriodRef()[2]).toString());//debug
+        }
+      }
+    };
+  }
 } /*  end TTPane */

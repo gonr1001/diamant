@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.13 $  $Date: 2003-10-20 15:01:10 $
+ * Title: PeriodPanel $Revision: 1.14 $  $Date: 2003-10-20 21:01:58 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -50,14 +50,6 @@ public  abstract class PeriodPanel extends JPanel{
   protected int _TTSperiod;
   protected int _panelRefNo;
 
-/*
-  public PeriodPanel(int refNo, int day, int seq, int per) {
-    _panelRefNo= refNo;
-    _TTSday= day;
-    _TTSseq= seq;
-    _TTSperiod= per;
-  }*/
-
   protected PeriodPanel(){
   }
 
@@ -65,65 +57,17 @@ public  abstract class PeriodPanel extends JPanel{
     _panelRefNo= refNo;
     StringTokenizer st = new StringTokenizer(str,".");
     _TTSday= Integer.parseInt(st.nextToken()) -1;
-    _TTSseq= Integer.parseInt(st.nextToken())-1;
+    _TTSseq= Integer.parseInt(st.nextToken()) -1;
     _TTSperiod= Integer.parseInt(st.nextToken())-1;
 
   }
- /* protected abstract PeriodPanel createEmptyPeriodPanel(); {
-   new PeriodPanel();
-   jPanel.setForeground(Color.WHITE);
-   jPanel.setBackground(Color.WHITE);
-   return jPanel;
-  }*/
 
+  protected abstract void createPanel(Period period);
 
   /*public void addMouseListener(MouseListener mouseListener) {
    // _jPanel.addMouseListener(mouseListener);
   }*/
 
- /* public JPanel getJPanel() {
-    return _jPanel;
-  }*/
-  /**
-   *
-   * */
-  /*public void createPanel( Period period){ //, int w, int h){
-    setLayout(new GridLayout(3,1));
-    //setPreferredSize(new Dimension(w, h));
-    setBorder(new BevelBorder(BevelBorder.RAISED));
-    setValue(period);
-  }*/
- //public abstract void createPanel();
- protected abstract void createPanel(Period period);
- //protected abstract void setBackground(int i);
- //protected abstract void setForeground(int i);
-  protected  void createPanel(Period period, int w, int h){}
- // public abstract void setValue(Period period);
-  /*{
-    JPanel topPanel = new JPanel();
-    JPanel bottomPanel = new JPanel();
-    JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
-    JLabel nbAct = new JLabel( "("+Integer.toString(period.getNumberOfEvents())+")");
-    _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
-    _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
-    _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
-    if(period.getPriority()!=2){
-      _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
-      _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
-      _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
-    }
-    //
-    topPanel.add(per);
-    topPanel.add(nbAct);
-    bottomPanel.add(_cTeach);
-    bottomPanel.add(_cRoom);
-    bottomPanel.add(_cStu);
-    //
-    add(topPanel);
-    add(bottomPanel);
-    // set period panel color
-    setPanelColor( period.getPriority());
-  } */
 
   /**
    * @return int the period reference number
