@@ -2,8 +2,8 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTExDlg $Revision: 1.2 $  $Date: 2003-06-02 13:18:17 $
- * Description: NewTTExDlg is created by NewTTExCmd
+ * Title: OpenTTDlg $Revision: 1.1 $  $Date: 2003-06-02 15:50:44 $
+ * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -44,7 +44,7 @@ import dInternal.dTimeTable.TTStructure;
  *
  */
 
-public class NewTTExDlg extends JDialog {
+public class OpenTTDlg extends JDialog {
   /**
     * the constructor will displays the dialog
     *
@@ -53,7 +53,7 @@ public class NewTTExDlg extends JDialog {
     * @since           JDK1.3
     */
 
-   public NewTTExDlg(DApplication dApplic) {
+   public OpenTTDlg(DApplication dApplic) {
      loadTTData(dApplic);
    } // end constructor
 
@@ -62,14 +62,15 @@ public class NewTTExDlg extends JDialog {
    /**
     *
     * */
-   private void loadTTData(DApplication dApplic){
+   private void loadTTData(DApplication dApplic) {
      JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
-     fc.setFileFilter( new DFileFilter (new String[] {DConst.DGH},
-         DConst.DGH_FILE) );
+
+     fc.setFileFilter( new DFileFilter (new String[] {DConst.DIA},
+         DConst.DIA_FILE) );
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-     int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.NTT_EX_TD);
+     int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.OPEN_TT_TD);
 
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
@@ -78,10 +79,10 @@ public class NewTTExDlg extends JDialog {
        String fil = fc.getSelectedFile().getAbsolutePath();
        dApplic.setCurrentDir(fil);
        //load grille,
-       TTStructure ttStruct = new TTStructure();
-       String error = ttStruct.loadData(fil);
+       //TTStructure ttStruct = new TTStructure();
+       //String error = ttStruct.rloadData(fil);
 
-       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
+       String error = dApplic.getDMediator().addDoc(fil);
 
        if(error.length()!=0){
          new FatalProblemDlg(dApplic.getJFrame(),error);
@@ -91,7 +92,6 @@ public class NewTTExDlg extends JDialog {
        dispose();
 
      }
-   }// end method
+   }// end loadTTData
 
-
-} /* end class NewTTExDlg */
+} /* end class NewTTDlg */
