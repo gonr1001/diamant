@@ -53,6 +53,8 @@ public class CycleTest extends TestCase {
    /**
     * test the removed days in a cycle
     * */
+
+
    public void test_removeDays(){
      Cycle cycle= new Cycle();
      cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
