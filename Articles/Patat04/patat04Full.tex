@@ -73,7 +73,7 @@ DIAMANT \cite{gonzalezrubio00} et SAPHIR \cite{ferland94}.
 En général, les logiciels pour la création d'horaires utilisent
 comme  entrée un ou plusieurs fichiers. Leur sortie est effectuée
 également sur un ou plusieurs fichiers. Travailler avec des
-fichiers est une sources de problèmes. Il faut cons\-trui\-re les
+fichiers est une sources de problèmes. Il faut construire les
 fichiers d'entrée à chaque fois qu'un horaire est produit. Il
 existe deux cas~: une production manuelle des fichiers ou une
 production automatisée. Si les fichiers sont produits
@@ -82,12 +82,7 @@ produire des effets inattendus dans le logiciel. Les erreurs sont
 difficiles à détecter, car il faut vérifier toutes les données
 manuellement. Dans le cas où les fichiers sont produits de manière
 automatique, il faut que le logiciel vérifié la validité et la
-cohérence de toutes les données. Le deuxième problème se manifeste
-lorsqu'un changement est introduit dans le système (soit dans
-l'application de construction, soit dans celui de la production de
-fichiers) ou si l'application de construction est utilisée sur
-plusieurs sites différents, utilisant des formats des données
-différents.
+cohérence de toutes les données.
 
 Une autre source de problèmes, encore plus coûteuse que la
 précédente, est celle de l'introduction d'un changement dans le
@@ -121,8 +116,8 @@ mentionnés précédemment  en réduisant le coût des modifications,
 en effectuant la vérification et la validation des données dans
 des étapes précises du processus et en évitant la redondance du
 code et des données. Cette architecture met en \oe{}uvre une base
-de données, un site Web et un logiciel de construction. La
-vérification et la validation de données  se font à l'entrée de
+de données, un site Web et un logiciel de construction d'horaires.
+La vérification et la validation de données  se font à l'entrée de
 données et en appliquant des contraintes d'intégrité dans la base
 de données.  Le site Web est utilisé principalement pour la saisie
 de données, ce qui permet de vérifier aussi la validité des
@@ -171,13 +166,12 @@ problèmes pour d'autres logiciels de construction d'horaires.
 
 
 Le développement de notre architecture a été divisé en deux
-étapes.Nous avons analysé le flot des données dans un système
+étapes. Nous avons analysé le flot des données dans un système
 générique de production d'horaires. Ensuite nous avons défini
 l'architecture, les blocs de base et la responsabilité de chaque
 bloc qui participe à l'architecture. Les objectifs de définir une
-architecture ouverte et extensible ont été respectés pendant nos
-travaux. Ceci est présenté dans les sections \ref{sec:data} et
-\ref{sec:archi}.
+architecture ouverte et extensible ont guidé nos travaux. Ceci est
+présenté dans les sections \ref{sec:data} et \ref{sec:archi}.
 
 Une fois l'architecture définie, nous avons créé une instance afin
 de l'implanter dans un système de production d'horaires à
@@ -396,13 +390,12 @@ logiciel ou le responsable ne trouve pas une solution
 satisfaisante il faut faire des changements même dans certains
 données fixées.
 
-The activities data input and construction can be carried out by
-several of users. Each one has an associated role and privileges
-to be able to change certain data.
-
-Afin de simplifier, nous considérons deux types d'utilisateurs~:
-le commis et le responsable de la construction. Le commis saisit
-les informations dans la base de données, le responsable de la
+Ces activités de saisie et construction d'horaires sont effectues
+par plusieurs utilisateurs. Chacun a un rôle et des privilèges
+associés à ce rôle pour changer certaines données. Afin de
+simplifier, nous considérons deux types d'utilisateurs~: le commis
+et le responsable de la construction. Le commis saisit les
+informations dans la base de données, le responsable de la
 construction de l'horaire  interagit avec le programme de
 construction d'horaires.
 
@@ -464,7 +457,7 @@ bien définie~:
 \begin{description}
 \item [L'interface.] Elle est responsable de présenter les données
 à l'utilisateur, de permettre la saisie de données, ainsi que
-d'assurer les échanges  avec d'autres systèmes.
+d'assurer les échanges  avec d'autres couches.
 
 \item [La couche de logique d'affaires.] Elle est responsable
 d'assurer les échanges avec l'interface en validant et en
@@ -550,7 +543,7 @@ activité est de nature itérative, il peut y avoir un certain
 nombre de versions de travail que l'utilisateur responsable de la
 création d'horaires doit analyser pour trouver celle qui lui
 convient le mieux. Une fois qu'il a trouvé cette version, il doit
-appliquer l'opération "commit" pour rendre disponible
+appliquer l'opération ``commit'' pour rendre disponible
 l'information au reste des utilisateurs. Ce sont les données qui
 sortent du système. Ces données sont envoyées vers d'autres
 systèmes ou bien vers d'autres utilisateurs. Par exemple, les
@@ -572,7 +565,7 @@ contraintes, ces règles sont définies par chaque institution et
 elles sont appliquées par la couche logique d'affaires. C'est ici
 que nous pourrons exprimer des contraintes propres à chaque
 institution, par exemple, la quantité maximale d'étudiants dans un
-groupe, tous les cours de mathématique se déroulent le matin, etc.
+groupe, nombre maximal de cours enseignés par un professeur, etc.
 
 \item Les données résultats de ces traitements doivent être
 stockées quelque part pour pouvoir être utilisées après leur
@@ -701,7 +694,7 @@ architecture.
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
 Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
-Langage pour affichage & HTML et JSP & HTML et JSP & HTML et JSP\\
+Langage pour affichage & HTML et PHP & HTML et JavaScript¸ & HTML et JSP\\
 \hline
 
 Format pour échanger les données & Text & XML & SQL, Base de données\\
@@ -737,14 +730,13 @@ l'option 1 de ce tableau.
 Dès le départ, il faut savoir qu'un élément est ouvert s'il est
 construit avec des standards approuvés, ou bien, s'il est
 construit avec une spécification privée mais rendue publique par
-les développeurs.
-\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
+les
+développeurs\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}.
 
 
 Il faut aussi tenir  compte qu'un élément est extensible s'il est
 facile d'adapter ce produit aux changements dans la spécification
 \cite{meyer97}.
-
 
 
 Avec ces considérations en main, nous montrons ici l'analyse qui
@@ -754,9 +746,9 @@ nous a mené à notre choix:
 
 \item [Langage pour affichage.] Pour langage d'affichage et saisie
 de données nous avons choisi HTML et JSP, étant donné que ces
-langages sont le standard pour la création de pages Web, et nous
-voulons profiter de tous les bénéfices qu'offre un site Web pour
-les applications de type transactionnelle.
+langages sont fortement utilisés pour la création de pages Web, et
+nous voulons profiter de tous les bénéfices qu'offre un site Web
+pour une application de type transactionnelle.
 
 \item [Format pour l'échange de données.] Pour échanger les
 données nous avons choisi XML. Le langage XML (eXtensible Markup
@@ -798,12 +790,11 @@ notre choix nous permettra de faire évoluer le système par
 versions en ajoutant ou en modifiant les caractéristiques
 demandées par les institutions.
 
-L'implémentation technologique semble complexe. Il y a plusieurs
-composants technologiques à utiliser. Mais, il faut savoir que
-nous sommes en train de reprendre plusieurs modules existants.
-C'est cela un des avantages d'avoir une architecture et une
-instance ouvertes et extensibles. Nous pouvons analyser par couche
-les composantes à réutiliser et ceux à implémenter :
+La réalisation du système semble complexe. Mais, nous pouvons
+reprendre plusieurs modules existants. C'est cela un des avantages
+de l'ouverture et l'extensibilité de l'architecture et de
+l'instance. Nous pouvons analyser par couche les composantes à
+réutiliser et ceux à implémenter :
 
 \begin{description}
 
@@ -811,22 +802,15 @@ les composantes à réutiliser et ceux à implémenter :
 technologique qui facilite le travail énormément, le navigateur
 Web. Cet outil est disponible dans la plupart des ordinateurs qui
 ont accès à l'Internet. Il faut alors, centraliser les efforts en
-développer des pages Web avec la qualité de compatibilité. Le
-problème n'est pas facile, parce que à l'heure actuel nous avons
-plusieurs navigateurs Web, entre autres Internet
-Explorer\footnote{ http:\//\//www.microsoft.com},
-Netscape\footnote{ http:\//\//www.netscape.com}, Mozilla\footnote{
-http:\//\//www.mozilla.org}, etc.
+développer des pages Web avec la qualité de compatibilité entre
+deux navigateurs Web, Internet Explorer\footnote{
+http:\//\//www.microsoft.com} et Netscape\footnote{
+http:\//\//www.netscape.com}.
 
-La question maintenant est savoir comment assurer cette
-compatibilité. Il y a des efforts pour promouvoir l'utilisation
-des standards de programmation HTML. Par exemple, la campagne "
-Visible avec n'importe quel navigateur "\footnote{
-http:\//\//www.anybrowser.org \//campaign/} préconise cette
-philosophie. Le site Internet http://validator.w3.org/, offre un
-outil d'analyse de compatibilité avec le standard HTML pour les
-sites Web, cet outil est fourni par le " World Wide Web Consortium
-"\footnote{ http:\//\//www.w3.org/}.
+Le site Internet http://validator.w3.org/, offre un outil
+d'analyse de compatibilité avec le standard HTML pour les sites
+Web, cet outil est fourni par le ``World Wide Web
+Consortium''\footnote{ http:\//\//www.w3.org/}.
 
 \item [Couche Logique d'affaires.] Il y a deux éléments
 technologiques fondamentaux dans cette couche: un serveur Web et
@@ -845,16 +829,16 @@ capable d'offrir des services HTTP selon les normes HTTP
 courantes.
 
 Nous allons programmer les règles d'affaires dans quelques petits
-programmes JAVA appelés servlets. Un servlet est un programme JAVA
+programmes Java appelés servlets. Un servlet est un programme Java
 utilisé pour étendre les fonctionnalités d'un serveur Web. Un
 servlet est un programme utilisé pour générer du contenu dynamique
 des applications. C'est une application exécutée dans le serveur
 qui est téléchargé dynamiquement quand elle est demandée.
-Jakarta-Tomcat est un conteneur de servlet.
+Jakarta-Tomcat est un conteneur de servlets.
 
 Nous pouvons dire que le couple Apache et Jakarta-Tomcat nous
-permettent de faire le déploiement d'un Web application complet,
-en plus ces outils sont gratuites.
+permettent de faire le déploiement d'une application Web complet,
+de plus ces outils sont gratuites.
 
 
 \item [Couche Persistance de données.] Pour la couche de
@@ -875,12 +859,11 @@ http:\//\//www-306.ibm.com/software/data/informix/},
 IBM-DB2\footnote{
 http:\//\//www-306.ibm.com/software/data/db2/udb/},
 PostgreSQL\footnote{ http:\//\//www.postgresql.org/}, et autres.
-Une certaine avantage pour PostgreSQL, il n'y a pas coût
-d'utilisation.
+Pour PostgreSQL, il n'y a pas coût d'utilisation.
 
 Tel que nous avons regardé dans cette section, nous profitons de
-plusieurs éléments technologiques ouverts qui nous permettent de
-rester ouverts et extensibles.
+plusieurs composants ouverts qui nous permettent d'accélérer la
+réalisation des systèmes tout en gardant un coût bas.
 
 \end{description}
 
@@ -919,12 +902,13 @@ le travail de construction. Alors, la réponse est oui, il existe
 des bénéfices. En développant un système de production il est plus
 facile d'assurer que le logiciel de construction a comme
 responsabilité la construction de l'horaire et non celle de la
-vérification de données.
+vérification de données. Il est aussi plus facile de s'adapter au
+changements.
 
 D'autres bénéfices sont aussi à envisager, comme par exemple
 consulter son horaire par le Web (à jour) depuis sa residence,
-surtout dans des pays où parfois il fait $-30^\circ$ et moins,
-cela est bien apprécié.
+surtout dans des pays où parfois il fait $-30^\circ$ et moins, est
+bien apprécié.
 
 
 
