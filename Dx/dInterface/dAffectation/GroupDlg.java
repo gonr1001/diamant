@@ -14,7 +14,11 @@ import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import java.awt.Font;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -46,7 +50,7 @@ public class GroupDlg extends JDialog implements ActionListener{
 
   private Activity _act;
   private DApplication _dApplic = null;
-  private Dimension size;
+  private Dimension dialogSize = new Dimension(500,500);
   private int _numberOfSections;
   private JButton _ok, _close;
   private JComboBox _actCombo, _typeCombo;
@@ -68,6 +72,7 @@ public class GroupDlg extends JDialog implements ActionListener{
   private static String GROUP_DLG_TITLE = "Group Dlg";
   private static String OK = "OK";
   private static String CLOSE = DConst.CLOSE;
+  private static String GROUP = "Group ";
   private static String NUMBER_OF_ELEMENTS = "Nombre d'éléments";
   private static String TO_LEFT = DConst.TO_LEFT;
   private static String TO_RIGHT = DConst.TO_RIGHT;
@@ -89,7 +94,7 @@ public class GroupDlg extends JDialog implements ActionListener{
 
   private void jbInit(){
     getContentPane().setLayout(new BorderLayout());
-    setSize(600,400);
+    setSize(dialogSize);
     setResizable(true);
     setTopPanel();
     setButtonsPanel();
@@ -132,20 +137,22 @@ public class GroupDlg extends JDialog implements ActionListener{
   }
 
   private void setNotAssignedPanel(){
-    Dimension panelDim = new Dimension(150,240);
-    Dimension scrollDim = new Dimension(panelDim.width-10,panelDim.height-5);
-    Dimension listDim = new Dimension(scrollDim.width-20,scrollDim.height-5);
+    Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.35), (int)dialogSize.getHeight()-130);
+    Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10, (int)panelDim.getHeight()-33);
+    Dimension listDim = new Dimension((int)scrollDim.getWidth()-10,(int)scrollDim.getHeight()-20);
     _notAssignedPanel = new JPanel();
-    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_ASSIGNED));
+    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_NOT_ASSIGNED));
     _notAssignedPanel.setPreferredSize(panelDim);
+    //System.out.println("_notAssignedPanel.getPreferredSize() "+_notAssignedPanel.getPreferredSize());
     JScrollPane scrollPane = new JScrollPane();
     scrollPane.setPreferredSize(scrollDim);
     _notAssignedVector = _students.getStudentsByGroup(_actID, "1", -1);
     _notAssignedList = new JList(_notAssignedVector);
     _notAssignedList.setPreferredSize(listDim);
+    _notAssignedList.addMouseListener(mouseListenerLists);
+    //System.out.println("_notAssignedList.getPreferredSize() "+_notAssignedList.getPreferredSize());
     scrollPane.getViewport().add(_notAssignedList);
     _notAssignedPanel.add(scrollPane);
-    //getContentPane().add(_notAssignedPanel, BorderLayout.WEST);
   }
 
 
@@ -166,14 +173,14 @@ public class GroupDlg extends JDialog implements ActionListener{
    * Set _assignedPanel
    */
   private void setAssignedPanel(){
-    Dimension panelDim = new Dimension(300,240);
+    Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.6), (int)dialogSize.getHeight()-130);
     Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10,(int)panelDim.getHeight()-5);
     _assignedPanel = new JPanel(new BorderLayout());
     _assignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_ASSIGNED));
     _assignedPanel.setPreferredSize(panelDim);
     _scrollPane = new JScrollPane();  //It is contained into _assignedPanel
     _scrollPane.setPreferredSize(scrollDim);
-    System.out.println("_scrollPane.getPreferredSize().getHeight() "+_scrollPane.getPreferredSize().getHeight());
+    //System.out.println("_scrollPane.getPreferredSize() "+_scrollPane.getPreferredSize());
     _insidePanel = new JPanel(new GridLayout(_numberOfSections, 1)); //It is contained into _scrollPane
     setInsidePanel();
     _assignedPanel.add(_scrollPane);
@@ -187,21 +194,13 @@ public class GroupDlg extends JDialog implements ActionListener{
     int insideWidth = (int)_scrollPane.getPreferredSize().getWidth()-20;
     int scrollHeight = (int)((_scrollPane.getPreferredSize().getHeight()-10)/2);
     Dimension insideDim = new Dimension(insideWidth, (int)scrollHeight*_numberOfSections+10);
-    //Dimension insideDim = new Dimension(70,320);
-    Dimension scrollDim = new Dimension((int)insideDim.getWidth()-10, scrollHeight);
-    //Dimension scrollDim = new Dimension(60,90);
-    Dimension listDim = new Dimension((int)scrollDim.getWidth()-20, (int)scrollDim.getHeight()-10);
-    //Dimension listDim = new Dimension(50,80);
+    //Dimension scrollDim = new Dimension((int)insideDim.getWidth()-10, scrollHeight);
+    //Dimension listDim = new Dimension((int)scrollDim.getWidth()-20, (int)scrollDim.getHeight()-10);
     if (_insidePanel == null){
       _insidePanel = new JPanel();
     }
     _insidePanel.setPreferredSize(insideDim);
-    System.out.println("_insidePanel.getPreferredSize().getHeight() "+_insidePanel.getPreferredSize().getHeight());
-    /*
-    JScrollPane scroll;
-    JList assignedList;
-    Vector asignedVector;
-    */
+    //System.out.println("_insidePanel.getPreferredSize() "+_insidePanel.getPreferredSize());
     _insidePanel.removeAll();
     _insidePanel.setLayout(new GridLayout(_numberOfSections, 1));
     for (int i = 0; i < _numberOfSections; i++){
@@ -216,34 +215,46 @@ public class GroupDlg extends JDialog implements ActionListener{
    * @return a panel to be inserted into _insidePanel
    */
   private JPanel setGroupPanel(int groupNumber){
-    int insideWidth = (int)_insidePanel.getPreferredSize().getWidth()-10;
-    int panelHeight = (int)((_scrollPane.getPreferredSize().getHeight()-10)/2);
-    Dimension panelDim = new Dimension(insideWidth, panelHeight);
-    Dimension scrollDim = new Dimension((int)insideWidth-10, panelHeight-15);
-    Dimension listDim = new Dimension((int)scrollDim.getWidth()-20, (int)scrollDim.getHeight()-10);
-    JPanel panel = new JPanel(new GridLayout(2,1));
-    panel.setPreferredSize(panelDim);
-    JPanel infoPanel = new JPanel(new GridLayout(1,2));
+    int insideWidth = (int)_insidePanel.getPreferredSize().getWidth();
+    int GroupPanelHeight = (int)((_scrollPane.getPreferredSize().getHeight())/2);
+    int infoPanelHeight = 25;
+    Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
+    Dimension scrollContDim = new Dimension((int)insideWidth, GroupPanelHeight-infoPanelHeight);
+    Dimension listDim = new Dimension((int)scrollContDim.getWidth(), (int)scrollContDim.getHeight());
+
+    JPanel groupPanel = new JPanel();
+    groupPanel.setPreferredSize(groupPanelDim);
+    System.out.println("groupPanel.getPreferredSize() "+groupPanel.getPreferredSize());
+    JPanel infoPanel = new JPanel();
     //The infoPanel
-    infoPanel.setPreferredSize(new Dimension(insideWidth, 15));
+    infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
+    System.out.println("infoPanel.getPreferredSize() "+ infoPanel.getPreferredSize());
+    JLabel lGroup = new JLabel(GROUP);
+    JLabel lGroupNumber = new JLabel(String.valueOf(groupNumber));
     JLabel lNumberOfElements = new JLabel(NUMBER_OF_ELEMENTS);
     _numberbOfElements = new JTextField("num");
+    infoPanel.add(lGroup);
+    infoPanel.add(lGroupNumber);
+    infoPanel.add(new JLabel(" - "));
     infoPanel.add(lNumberOfElements);
     infoPanel.add(_numberbOfElements);
     //The scrollPane
+    JPanel scrollContainer = new JPanel();
+    scrollContainer.setPreferredSize(scrollContDim);
     JScrollPane scroll = new JScrollPane();
+    scroll.setPreferredSize(scrollContDim);
     JList assignedList;
     Vector asignedVector;
     asignedVector = _students.getStudentsByGroup(_actID, "1", groupNumber);
     assignedList = new JList(asignedVector);
-    assignedList.setPreferredSize(listDim);
+    assignedList.addMouseListener(mouseListenerLists);
     scroll.getViewport().add(assignedList);
-    scroll.setPreferredSize(scrollDim);
-    System.out.println("scroll.getPreferredSize().getHeight() "+scroll.getPreferredSize().getHeight());
+    System.out.println("scrollIntoGroup.getPreferredSize() "+scroll.getPreferredSize());
     //adding the subpanel into panel
-    panel.add(infoPanel);
-    panel.add(scroll);
-  return panel;
+    scrollContainer.add(scroll);
+    groupPanel.add(infoPanel);
+    groupPanel.add(scrollContainer);
+  return groupPanel;
 }
 
 
@@ -269,7 +280,6 @@ public class GroupDlg extends JDialog implements ActionListener{
     setArrowsPanel();
     setAssignedPanel();
     _centerPanel = new JPanel();
-    //_centralPanel.setPreferredSize(new Dimension(500,400));
     _centerPanel.add(_notAssignedPanel);
     _centerPanel.add(_arrowsPanel);
     _centerPanel.add(_assignedPanel);
@@ -303,5 +313,42 @@ public class GroupDlg extends JDialog implements ActionListener{
       setInsidePanel();
     }
   }//end method
+
+  private MouseListener mouseListenerLists = new MouseAdapter(){
+    public void mouseClicked(MouseEvent e) {
+      if (((JList)e.getSource()).getModel().getSize() == 0)
+        return;
+      if (e.getSource().equals(_notAssignedList)){
+        for(int i = 0; i < _numberOfSections; i++){
+          getGroupList(i).clearSelection();
+        }
+        //_noVisibleList.clearSelection();
+      }
+
+
+      else
+        //_visibleList.clearSelection();
+      //_currentActivities = ((JList)e.getSource()).getSelectedValues();
+      if (e.getClickCount() == 2) {
+        //new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
+      }//end if
+    }// end public void mouseClicked
+  };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+  /**
+  * Returns a List containing the elements of a group
+  * @param groupNumber the number of the group
+  * @return a List containing the elements of a group
+  */
+  private JList getGroupList(int groupNumber){
+    JScrollPane jcp;
+    JPanel groupPanel, scrollContainer;
+    JList list;
+    groupPanel = (JPanel)_insidePanel.getComponent(groupNumber);
+    scrollContainer = (JPanel)groupPanel.getComponent(1);
+    jcp = (JScrollPane)scrollContainer.getComponent(0);
+    list = (JList)jcp.getViewport().getComponent(0);
+    return list;
+  }
 
 }//end class
