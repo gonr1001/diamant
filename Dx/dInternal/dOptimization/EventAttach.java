@@ -20,11 +20,12 @@ public class EventAttach extends DXObject {
    */
   private String _principalRescKey;
   private int _eventDuration=0;
-  private long _secondaryRescKey1; // the instructor key
-  private long _secondaryRescKey2; // the room key
+  private long _instructorRescKey; // the instructor key
+  private long _roomRescKey; // the room key
   // the student reference will be found in the conflicts matrix
   private Vector _tabuList; //
-  private boolean inTTS=false;// tell if this event is place in the timetable
+  private boolean isAssign=false;// tell if this event is place in the timetable
+   private boolean isPermanent=false;// tell if this event is permanent in the timetable
   private String _ttsKey="";// give the key of the period where event is place
   //is in a.b.c format where a = day, b= sequence, c = period
 
@@ -36,8 +37,8 @@ public class EventAttach extends DXObject {
    */
   public EventAttach(String princKey, long key1, long key2, int eventDuration, String eventPeriod) {
     _principalRescKey = princKey;
-    _secondaryRescKey1 = key1;
-    _secondaryRescKey2 = key2;
+    _instructorRescKey = key1;
+    _roomRescKey = key2;
     _eventDuration = eventDuration;
     _ttsKey = eventPeriod;
     _tabuList = new Vector();
@@ -48,12 +49,20 @@ public class EventAttach extends DXObject {
   }
 
   public long getInstructorKey(){
-    return _secondaryRescKey1;
+    return _instructorRescKey;
   }
 
+ /* public void setInstructorKey(long key){
+    _instructorRescKey= key;
+  }*/
+
   public long getRoomKey(){
-   return _secondaryRescKey2;
+   return _roomRescKey;
   }
+
+ /* public void setRoomKey(long key){
+   _roomRescKey= key;
+  }*/
 
   /**
    *
@@ -103,12 +112,20 @@ public class EventAttach extends DXObject {
     return false;
   }
 
-  public void setEventState(boolean state){
-    inTTS= state;
+  public void setAssignState(boolean state){
+    isAssign= state;
   }
 
-  public boolean getEventState(){
-   return inTTS;
+  public boolean getAssignState(){
+   return isAssign;
+ }
+
+ public void setPermanentState(boolean state){
+    isPermanent= state;
+  }
+
+  public boolean getPermanentState(){
+   return isPermanent;
  }
 
 
@@ -121,9 +138,9 @@ public class EventAttach extends DXObject {
     switch(field){
       case 0: _principalRescKey = value;
         break;
-      case 1: _secondaryRescKey1 = Long.parseLong(value);
+      case 1: _instructorRescKey = Long.parseLong(value);
         break;
-      case 2: _secondaryRescKey2 = Long.parseLong(value);
+      case 2: _roomRescKey = Long.parseLong(value);
         break;
       case 3: _eventDuration = Integer.parseInt(value);
         break;

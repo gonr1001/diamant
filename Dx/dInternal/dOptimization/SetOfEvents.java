@@ -61,7 +61,8 @@ public class SetOfEvents extends SetOfResources{
               EventAttach event = new EventAttach(unityKey,instructorKey,roomKey,
                   ((Unity)unity.getAttach()).getDuration(),
                   ((Cycle)cycle.getAttach()).getPeriod(dayTime));
-              event.setEventState(((Unity)unity.getAttach()).isAssign());
+              event.setAssignState(((Unity)unity.getAttach()).isAssign());
+              event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
               //System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
               this.addResource(new Resource(unityID, event),0);
             }// end if(assignement!=null)
@@ -101,7 +102,7 @@ public class SetOfEvents extends SetOfResources{
     int count=0;
     if(_isEventPlaced)
     for (int i=0; i< this.size(); i++){
-      if(((EventAttach)getResourceAt(i).getAttach()).getEventState())
+      if(((EventAttach)getResourceAt(i).getAttach()).getAssignState())
         count++;
     }// end for (int i=0; i< this.size(); i++)
     return count;

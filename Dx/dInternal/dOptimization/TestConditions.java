@@ -21,6 +21,7 @@ public class TestConditions {
  private StudentsConflictsMatrix _matrix;
  private DModel _dm;
  private Vector _testToRun = new Vector();
+ private boolean _matrixIsBuilded= false;
  /**
   * Constructor
   * @param soa
@@ -43,15 +44,26 @@ public class TestConditions {
    * @param soa
    * @param sos
    */
-  private void buildStudentsMatrix(SetOfActivities soa, SetOfStudents sos) {
+  /*private void buildStudentsMatrix(SetOfActivities soa, SetOfStudents sos) {
     _matrix.buildMatrix(soa, sos);
+  }*/
+
+ /**
+  *
+  */
+  public void initAllConditions(){
+    if (!_matrixIsBuilded){
+    _matrix.buildMatrix(_dm.getSetOfActivities(), _dm.getSetOfStudents());
+    _matrixIsBuilded= true;
+    }
+    buildAllConditions();
   }
+
 
   /**
    *
    */
-  public void buildAllConditions(){
-    _matrix.buildMatrix(_dm.getSetOfActivities(), _dm.getSetOfStudents());
+  private void buildAllConditions(){
     _dm.getTTStructure().getCurrentCycle().emptyAllEventsInPeriod();
     _dm.getSetOfEvents()._isEventPlaced=true;
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){

@@ -605,6 +605,23 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
+  *
+  * @param actID
+  * @param typeID
+  * @return
+  */
+ public Type getType(String actID, String typeID){
+   Resource a = getResource(actID);
+   if(a!=null){
+     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
+     if(t!=null){
+       return (Type)t.getAttach();
+     }
+   }
+   return null;
+  }
+
+  /**
    * Return the name of the unity specified by the parameters
    * @param actKey the activity key
    * @param typeKey the type key

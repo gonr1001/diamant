@@ -216,11 +216,16 @@ public class SetOfResources extends DXObject{
    * @return Resource null if Resource didn't found
    * */
   public Resource getResource(String ID){
-    for (int i = 0; i < _resourceList.size(); i++){
+    int index = getIndexOfResource(ID);
+   if (index!=-1)
+     return (Resource) _resourceList.get(index);
+    return null;
+
+    /*for (int i = 0; i < _resourceList.size(); i++){
       if (((Resource)_resourceList.get(i)).getID().equalsIgnoreCase( ID))
         return (Resource)_resourceList.get(i);
     }
-    return null;
+    return null;*/
   }
 
   /**

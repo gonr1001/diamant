@@ -30,6 +30,7 @@ import dInternal.dConditionsTest.EventAttach;
 import dInternal.dConditionsTest.SetOfEvents;
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Unity;
+import dInternal.dUtil.DXToolsMethods;
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
@@ -293,37 +294,37 @@ public class EventsDlg extends JDialog implements ActionListener{
     String str = null;
       for(int i = 0; i < _leftVector.size(); i++){
         str = (String)_leftVector.elementAt(i);
-        _activities.setUnityField(str.substring(0,6),
-                                  str.substring(6,7),
-                                  str.substring(8,9),
-                                  str.substring(9,10), 3, "true");
-        _activities.setUnityField(str.substring(0,6),
-                                  str.substring(6,7),
-                                  str.substring(8,9),
-                                  str.substring(9,10), 2, "true");
+        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
+                                  DXToolsMethods.getToken(str,".",1),
+                                  DXToolsMethods.getToken(str,".",2),
+                                  DXToolsMethods.getToken(str,".",3), 3, "true");
+        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
+                                  DXToolsMethods.getToken(str,".",1),
+                                  DXToolsMethods.getToken(str,".",2),
+                                  DXToolsMethods.getToken(str,".",3), 2, "true");
       }//end for
       for(int i = 0; i < _centerVector.size(); i++){
         str = (String)_centerVector.elementAt(i);
-        _activities.setUnityField(str.substring(0,6),
-                                  str.substring(6,7),
-                                  str.substring(8,9),
-                                  str.substring(9,10), 3, "false");
-        _activities.setUnityField(str.substring(0,6),
-                                  str.substring(6,7),
-                                  str.substring(8,9),
-                                  str.substring(9,10), 2, "true");
+        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
+                                  DXToolsMethods.getToken(str,".",1),
+                                  DXToolsMethods.getToken(str,".",2),
+                                  DXToolsMethods.getToken(str,".",3), 3, "false");
+        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
+                                  DXToolsMethods.getToken(str,".",1),
+                                  DXToolsMethods.getToken(str,".",2),
+                                  DXToolsMethods.getToken(str,".",3), 2, "true");
       }//end for
       for(int i = 0; i < _rightVector.size(); i++){
 
         str = (String)_rightVector.elementAt(i);
-        _activities.setUnityField(str.substring(0,6),
-                                  str.substring(6,7),
-                                  str.substring(8,9),
-                                  str.substring(9,10), 3, "false");
-        _activities.setUnityField(str.substring(0,6),
-                                  str.substring(6,7),
-                                  str.substring(8,9),
-                                  str.substring(9,10), 2, "false");
+        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
+                                  DXToolsMethods.getToken(str,".",1),
+                                  DXToolsMethods.getToken(str,".",2),
+                                  DXToolsMethods.getToken(str,".",3), 3, "false");
+        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
+                                  DXToolsMethods.getToken(str,".",1),
+                                  DXToolsMethods.getToken(str,".",2),
+                                  DXToolsMethods.getToken(str,".",3), 2, "false");
       }//end for
   }
 

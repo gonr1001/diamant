@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.85 $  $Date: 2003-09-30 17:35:36 $
+ * Title: DDocument $Revision: 1.86 $  $Date: 2003-10-01 00:55:25 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.85 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.86 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -186,7 +186,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _dm.setModified();
     _dm.buildSetOfEvents();
-    _dm.getConditionsTest().buildAllConditions();
+    _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
 
     _ttPanel.updateTTPanel(_dm.getTTStructure());
@@ -254,7 +254,8 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.setModified();
     _dm.buildSetOfEvents();
     //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-    //_dm.getConditionsTest().buildAllConditions();
+    System.out.println("SetOfEvents Event started");//debug
+    _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
     _ttPanel.updateTTPanel(_dm.getTTStructure());
     _stateBar.upDateDStateBar(_dm.getSetOfStates());

@@ -35,7 +35,7 @@ public StudentsConflictsMatrixTest(String name) {
                     File.separator+"loadData.dia",0);
   _dm.buildSetOfEvents();
   //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-  _dm.getConditionsTest().buildAllConditions();
+  _dm.getConditionsTest().initAllConditions();
   _dm.setStateBarComponent();
   _matrix = _dm.getConditionsTest().getConflictsMatrix();
 }
