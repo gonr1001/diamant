@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.60 $  $Date: 2004-12-16 19:20:43 $
+ * Title: DApplication $Revision: 1.61 $  $Date: 2004-12-21 15:13:35 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.60 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.61 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 
@@ -41,8 +41,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
-import org.apache.log4j.Logger;
-
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
 import dInternal.DModel;
@@ -50,8 +48,8 @@ import dInternal.DModel;
 import dInternal.Preferences;
 import eLib.exit.dialog.FatalProblemDlg;
 
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.tictac.mouseTrap.dModel.Trace;
 
 public class DApplication implements ActionListener {
   private static Logger _logger = Logger.getLogger(DApplication.class.getName());
@@ -84,9 +82,6 @@ public class DApplication implements ActionListener {
   /**
     * DApplication initialize the data members
     */
-//+++++++++++++++++++++++++++++
-  Logger logger = Logger.getLogger(this.getClass().getName());
-  Trace trace=new Trace();
   
   public DApplication() {
   	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
@@ -201,24 +196,13 @@ public class DApplication implements ActionListener {
 
     public void showToolBar(){
       _tbar.setVisible(true);
-      // +++++++++++++++++++++++++++++
-    	logger.info(trace.write(this));	
-      //-----------------------------
-  	
     }
     public void hideToolBar(){
       _tbar.setVisible(false);
-      // +++++++++++++++++++++++++++++
-  	logger.info(trace.write(this));	
-    //-----------------------------
-
     }
 
     //-------------------------------------------
     public void setLAF(String str) {
-    	 // +++++++++++++++++++++++++++++
-      	logger.info(trace.write(this, str));	
-        //-----------------------------
       // Force SwingApp to come up in the System L&F
       try {
         UIManager.setLookAndFeel(str);
@@ -258,17 +242,11 @@ public class DApplication implements ActionListener {
     * @param String A look and feel style
     **/
     public void updateLAF(String str){
-    	 // +++++++++++++++++++++++++++++
-      	logger.info(trace.write(this, str));	
-        //-----------------------------
       setLAF(str);
       SwingUtilities.updateComponentTreeUI(_jFrame);
     }
 
     public void constructToolBar(){
-    	 // +++++++++++++++++++++++++++++
-      	logger.info(trace.write(this));	
-        //-----------------------------
       _tbar = new DToolBar(this); //constucts the tool bar
       //jpToolBar.add(_tbar);
       _tbar.updateUI();
@@ -290,9 +268,6 @@ public class DApplication implements ActionListener {
      */
     private void closeApplic(WindowEvent e) {
       closeApplic();
-      // +++++++++++++++++++++++++++++
-    	logger.info(trace.write(this, e));	
-      //-----------------------------
     }
 
     //-------------------------------------------
@@ -317,9 +292,6 @@ public class DApplication implements ActionListener {
          _jFrame.dispose();
          System.exit(0);
       }
-//     +++++++++++++++++++++++++++++
-   	logger.info(trace.write(this));	
-     //-----------------------------
   }
     
     public DModel getDModel(){  

@@ -2,14 +2,10 @@
 
 package dInternal.dTimeTable;
 
-import java.io.File;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
 
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
@@ -19,38 +15,20 @@ import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DisplayAttributs;
 import eLib.exit.xml.input.ReadXMLElement;
 import eLib.exit.xml.output.WriteXMLElement;
-import org.tictac.mouseTrap.dModel.Trace;
 
 public class Cycle extends DXObject{
 	
 	//private Day _currentDay;
 	//private int _currentDayIndex=0;
 	
-	//+++++++++++++++++++++++++++++
-	Trace trace=new Trace();
 	public Cycle() {
 		_setOfDays = new SetOfResources(4);
-		PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
 	}
-	
-	//public class Data {
-	static Logger logger = Logger.getLogger(TTStructure.class.getName());
-	/*public Cycle(boolean flag) {
-	 _setOfDays = new SetOfResources(4);
-	 PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-	 }*/
-	//-----------------------------
-	
+		
 	/**
 	 *
 	 * */
-	public void addDays(int nbDays){
-		//+++++++++++++++++++++++++++++
-		//logger.info(trace.write(this,"addDays",nbDays));
-		//logger.info(trace.write(this,"toString"));
-		//-----------------------------
-		
-		
+	public void addDays(int nbDays){		
 		int size= _setOfDays.size();
 		Resource day= _setOfDays.getResourceAt(size-1);
 		String lastDayID= day.getID();

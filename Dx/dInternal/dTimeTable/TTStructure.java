@@ -1,9 +1,6 @@
 package dInternal.dTimeTable;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import java.io.File;
-import org.tictac.mouseTrap.dModel.Trace;
 
 import java.util.Vector;
 
@@ -17,7 +14,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import dConstants.DConst;
-
 
 import eLib.exit.xml.input.ReadXMLElement;
 import eLib.exit.xml.input.ReadXMLFile;
@@ -59,18 +55,9 @@ public class TTStructure {
   static final String _TAGITEM2="pLength";
   static final String _TAGITEM3="TTdays";
   
-  //+++++++++++++++++++++++++++++
-  Logger logger = Logger.getLogger(this.getClass().getName());
-  Trace trace=new Trace();
   public TTStructure() {
     _setOfCycles= new SetOfResources(4);
-    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
-/*  public TTStructure(){//boolean flag) {
-  	_setOfCycles= new SetOfResources(4);
-    PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-  }*/
-  //-----------------------------
   
   public int getNumberOfActiveDays(){
     return NUMBEROFACTIVESDAYS;
@@ -195,21 +182,8 @@ public class TTStructure {
    * @param String the xml file containing the timetable structure
    * @return String the error message, empty if it does not found error
    * */
-  
-//  public String toStringTrap(){
-//	String str="";
-//	str+="<complex>\n<class>dModel.Employee</class>\n<params>\n";
-//	str+="<simple>\n<type>int</type>\n<value>"+_number+"</value>\n</simple>\n";
-//	str+="<simple><type>String</type>\n<value>"+_name+"</value>\n</simple>\n";
-//	str+="<simple><type>float</type>\n<value>"+_salary+"</value>\n</simple>\n";
-//	str+="</params>\n</complex>\n";
-//	return str;
-//}
-  
+    
   public String loadTTStructure(String fileName){
-//  +++++++++++++++++++++++++++++
-  	logger.info(trace.write(this,fileName));	
-    //-----------------------------
 	
     ReadXMLFile xmlFile;
     Element root; //, item, ID;
@@ -266,7 +240,6 @@ public class TTStructure {
    * @return String the error message, empty if it does not found error
    * */
    public String saveTTStructure(String fileName){
-   	logger.info(trace.write(this, "." +File.separator+"trace"+File.separator+"traceOut.xml"));
     WriteXMLElement wr;
     try{
       wr= new WriteXMLElement();
