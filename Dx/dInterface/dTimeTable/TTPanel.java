@@ -146,6 +146,7 @@ public class TTPanel { //extends JScrollPane {
 
   public void updateTTPanel(TTStructure ttp){
     initTTPaneOne();
+    initTTPaneTwo();
   }
 
   private JPanel createColumnHeader() {
