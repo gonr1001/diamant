@@ -123,11 +123,7 @@ public class SetOfActivities extends SetOfResources{
           position = 9;
           break;
         case 9://days and periods of blocs
-          if(_open)
-            stLine = new StringTokenizer(token,".");
-          else
             stLine = new StringTokenizer(token);
-
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
               DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
@@ -138,8 +134,16 @@ public class SetOfActivities extends SetOfResources{
             return false;
           }
           while(stLine.hasMoreElements()){// rgr A problem in tests allwhile is a problem in real life
-            _error= DXToolsMethods.isIntValue(stLine.nextToken(),
+            StringTokenizer stLine1;
+            if(_open){
+            stLine1 = new StringTokenizer(stLine.nextToken(),".");
+            while(stLine1.hasMoreElements())
+              _error= DXToolsMethods.isIntValue(stLine1.nextToken(),
+                  DConst.ACTI_TEXT8+_line,"ActivityList");
+            }else{
+              _error= DXToolsMethods.isIntValue(stLine.nextToken(),
                 DConst.ACTI_TEXT8+_line,"ActivityList");
+            }
             if(_error.length()!=0)
             return false;
           }

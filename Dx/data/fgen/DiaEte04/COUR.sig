@@ -50,11 +50,11 @@ AMC6402  01
 LEDUC, ROLAND
 
 
- 1
- 3
- 2  6
-0
-xxxxxx
-1
-1
-0
+ 2
+ 3 2
+ 2  6 1  6
+0 0
+xxxxxx xxxxxx
+1 0
+1 0
+0 0
