@@ -239,20 +239,15 @@ public class Period extends DXObject {
    */
   public SetOfResources getConflictsEventsInPeriod(String event){
     Vector inPeriod= new Vector();
-    //event="EPS122.1.A.1.";//debug
+//    event="EPS122.1.A.1.";//debug
     SetOfResources setOfConf = new SetOfResources(99);
     for (int i=0; i< _eventsInPeriod.size(); i++){
       Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
       String ID= eventInPeriod.getID();
       if (event.equalsIgnoreCase(eventInPeriod.getID())){
-        //inPeriod.add(_eventsInPeriod.getResourceAt(i).getID());
-         ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
-       // ID= ID+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2];
+         setOfConf=((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
       }else {// else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
-        //int [] nbconf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(ID,1);
-        //ID= ID+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2];
-        //inPeriod.add(nbconf);
-        ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf, event);
+       setOfConf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf, event);
       }// end  else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
     }// end for (int i=0; i< _eventsInPeriod.size(); i++){
     SetOfResources setOfRes = new SetOfResources(99);

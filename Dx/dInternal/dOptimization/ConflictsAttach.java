@@ -99,7 +99,7 @@ public class ConflictsAttach extends DXObject{
             arrV.setIntArrayValue(arrV.getIntArrayValue(1)+nbconf[1],1);
             arrV.setIntArrayValue(arrV.getIntArrayValue(2)+nbconf[2],2);
           }else{// else if(resc!=null)
-            ArrayValue arrV= new ArrayValue(0);
+            ArrayValue arrV= new ArrayValue(3);
             arrV.setIntArrayValue(nbconf[0],0);
             arrV.setIntArrayValue(nbconf[1],1);
             arrV.setIntArrayValue(nbconf[2],2);
@@ -123,7 +123,6 @@ public class ConflictsAttach extends DXObject{
         Resource conf= _setOfConflicts.getResourceAt(i);
         String str= conf.getID();
         if(str.equalsIgnoreCase(eventName)){
-
           if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
             nbconf[0]= ((DXValue)conf.getAttach()).getIntValue();
           }
@@ -140,7 +139,7 @@ public class ConflictsAttach extends DXObject{
             arrV.setIntArrayValue(arrV.getIntArrayValue(1)+nbconf[1],1);
             arrV.setIntArrayValue(arrV.getIntArrayValue(2)+nbconf[2],2);
           }else{// else if(resc!=null)
-            ArrayValue arrV= new ArrayValue(0);
+            ArrayValue arrV= new ArrayValue(3);
             arrV.setIntArrayValue(nbconf[0],0);
             arrV.setIntArrayValue(nbconf[1],1);
             arrV.setIntArrayValue(nbconf[2],2);
