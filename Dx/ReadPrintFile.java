@@ -45,8 +45,28 @@ public class ReadPrintFile {
 			 i += 16 ;
       }     
 	  else {
-	  	;
+		for(; i < b.length ; i ++) {
+		if (b[i] > 16) {
+			str1 += Integer.toHexString(b[i]).toUpperCase() + " ";
+		} else {
+			str1 += "0";
+			str1 += Integer.toHexString(b[i]).toUpperCase() + " ";
+		}
+			   
+	   if ( (byte)b[i ] < 126  && (byte)b[ i] > 31 )
+		   str2 += (char) b[ i ];
+	   else {
+		if ( (byte)b[i ] == 13  ||(byte)b[ i] == 10 )
+			str2 += ".";
+		else 
+			str2 += (byte) b[i] + " ";
+	   }
+	 }
+	 
+	 System.out.println(str1 + "   " + str2);
+	 
 	  }
     } // end while
+    System.exit(1);
   } // End of main
 }
