@@ -147,6 +147,7 @@ public class TestConditions {
       if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
           duration, _avoidPriority)){
         for (int j=0; j< duration; j++){
+        	System.out.println(perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j);
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);

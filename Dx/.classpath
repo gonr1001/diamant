@@ -4,12 +4,6 @@
     <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
     <classpathentry kind="lib" path="theLibrary/theLibrary.jar"/>
     <classpathentry kind="lib" path="theLibrary/xmlLibrary.jar"/>
-    <classpathentry kind="lib" path="D:/Program Files/JBuilder7/extras/junit/junit.jar"/>
-    <classpathentry kind="lib" path="D:/Program Files/JBuilder7/extras/jfcunit/jfcunit.jar"/>
-    <classpathentry kind="lib" path="D:/Developpements/abbot-0.9.0/src.jar"/>
-    <classpathentry kind="lib" path="D:/Developpements/abbot-0.9.0/lib/abbot.jar"/>
-    <classpathentry kind="lib" path="D:/Developpements/abbot-0.9.0/lib/jdom-1.0b8.jar"/>
-    <classpathentry kind="lib" path="D:/Developpements/abbot-0.9.0/lib/gnu-regexp-110.jar"/>
-    <classpathentry kind="lib" path="D:/Developpements/abbot-0.9.0/lib/jakarta-oro-2.0.7.jar"/>
+    <classpathentry kind="lib" path="/Developer/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
     <classpathentry kind="output" path=""/>
 </classpath>
