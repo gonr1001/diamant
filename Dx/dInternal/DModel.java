@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.117 $  $Date: 2005-01-24 21:27:55 $
+ * Title: DModel $Revision: 1.118 $  $Date: 2005-01-28 21:46:54 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.117 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.118 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -343,7 +343,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 				return _setOfInstructors.getError();
 			}
 			if( _setOfActivitiesSites.getError().length()!=0){
-				return _setOfActivities.getError();
+				return _setOfActivitiesSites.getError();
 			}
 			if( _setOfStuSites.getError().length()!=0){
 				return _setOfStuSites.getError();

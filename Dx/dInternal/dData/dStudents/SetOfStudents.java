@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudents $Revision: 1.3 $  $Date: 2004-12-16 19:21:00 $
+* Title: SetOfStudents $Revision: 1.4 $  $Date: 2005-01-28 21:46:54 $
 * Description: SetOfStudents is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.4 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -28,6 +28,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 //import dInterface.dUtil.DXTools;
+//import dInternal.DResource;
 //import dInternal.DResource;
 //import dInternal.DResource;
 //import dInternal.DResource;
@@ -322,5 +323,50 @@ public class SetOfStudents extends DSetOfResources {
 		 public Student getStudent(long mat){		 	
 		 	return (Student) this.getResource(mat);
 		 }
+
+		/**
+		 * @param id
+		 * @return
+		 */
+		public String toWrite(String site) {
+			//String reslist="";
+			StringBuffer save= new StringBuffer();
+			if(getSetOfResources().size()>0){
+		    	//DResource siteRsc;
+		    	Student stu;
+		    	SetOfStuCourses stuCourses;
+		        for (int i=0; i< getSetOfResources().size()-1; i++){
+		        	stu = ((Student)getSetOfResources().get(i));
+		        	stuCourses= (SetOfStuCourses)stu.getAttach();
+		        	//reslist+= externalKey(stu)+DConst.CR_LF;
+		        	save.append(externalKey(stu)+DConst.CR_LF);
+		        	//reslist+= stuCourses.toWrite(site)+DConst.CR_LF;
+		        	save.append(stuCourses.toWrite(site)+DConst.CR_LF);
+		        }
+		        stu = ((Student)getSetOfResources().get(getSetOfResources().size()-1));
+		        stuCourses= (SetOfStuCourses)stu.getAttach();
+	        	//reslist+= externalKey(stu)+DConst.CR_LF;
+		        save.append(externalKey(stu)+DConst.CR_LF);
+		        //reslist+= stuCourses.toWrite(site);
+		        save.append(stuCourses.toWrite(site));
+		      }	   
+			return save.toString();
+		}
+		
+		/**
+		   * Builds the student external key
+		   * @param str the key of the resource
+		   * @param id the id of the resource
+		   * @return
+		   */
+		  private String externalKey(Student stu){
+		  	String temp="0000000"+ Long.toString(stu.getKey());
+		    temp= temp.substring(temp.length()-8,temp.length());
+		    String idTemp= DConst.LINE_DESCRIPTOR_S+ " "+temp
+							+ stu.getAuxField()+ " "+stu.getID();
+		    for(int i=idTemp.length(); i<30; i++)
+		      idTemp+=" ";
+		    return idTemp;
+		  }
 		 
 }

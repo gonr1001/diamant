@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.6 $  $Date: 2005-01-27 17:41:01 $
+* Title: SetOfSites $Revision: 1.7 $  $Date: 2005-01-28 21:46:54 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
+* @version $Revision: 1.7 $
 * @author  $Author: syay1801 $
 * @since JDK1.3
 */
@@ -184,7 +184,7 @@ public class SetOfSites extends DSetOfResources{
 	            break;
 	      	case 4:
 	      		int nbTokens= currentLine.countTokens();
-	            analyseTokenCase4(currentLine, line);
+	            analyseTokenCase4(currentLine, line, DConst.ROOM_NUM_TOKENS);
 	            while (currentLine.hasMoreElements()){
 	                token = currentLine.nextToken().trim();
 	                analyseTokenState0(token, line);
@@ -243,8 +243,8 @@ public class SetOfSites extends DSetOfResources{
 	            line++;
 	            break;
 	      	case 4:
-	      		int nbTokens= currentLine.countTokens();
-	            analyseTokenCase4(currentLine, line);
+	      		//int nbTokens= currentLine.countTokens();
+	            analyseTokenCase4(currentLine, line, DConst.ROOM_DESCRIPTION_TOKEN);
 	            while (currentLine.hasMoreElements()){
 	                token = currentLine.nextToken().trim();
 	                analyseTokenState0(token, line);
@@ -261,13 +261,13 @@ public class SetOfSites extends DSetOfResources{
 	                  case 4: analyseTokenState4(token, line);
 	                  	break;
 	                  case 5:
-	                  	if(nbTokens==6)
+	                  	/*if(nbTokens==6)
 	                  		state = 6;
 	                  	else
-	                  		state =1;
+	                  		state =1;*/
 	                  	break;
 	                  case 6:
-	                  	state =0;
+	                  	//state =0;
 	                  	break;	                
 	              }// end switch (state)
 	            }// end while(currentline)
@@ -277,9 +277,9 @@ public class SetOfSites extends DSetOfResources{
 	    return true;
 	} //end analyseTokens1_6
 	
-	private void analyseTokenCase4(StringTokenizer st, int line){
+	private void analyseTokenCase4(StringTokenizer st, int line, int numberOfToken){
 	int nbTokens= st.countTokens();
-    if(nbTokens< DConst.ROOM_NUM_TOKENS){
+    if(nbTokens< numberOfToken){
         _error= DConst.ROOM_TEXT7+line+DConst.ROOM_TEXT5 +
               DConst.CR_LF + DConst.ROOM_TEXT6;
         

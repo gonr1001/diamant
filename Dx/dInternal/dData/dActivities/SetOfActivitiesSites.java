@@ -225,6 +225,7 @@ public class SetOfActivitiesSites extends DSetOfResources{
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     //int state=0;
     int position=beginPosition;
+    token = st.nextToken();
     _line=0;
     //String activityName="";
     String instructorName="";
@@ -367,7 +368,7 @@ public class SetOfActivitiesSites extends DSetOfResources{
 			_error= DConst.ACTI_TEXT14+ line;
 	}
 	if (isErrorEmpty()){
-		if (DXToolsMethods.isIntValue(st))
+		if (!DXToolsMethods.isIntValue(st))
 			_error= DConst.ACTI_TEXT14+ line;
 	}
 	//3rd token
@@ -383,7 +384,7 @@ public class SetOfActivitiesSites extends DSetOfResources{
 			_error= DConst.ACTI_TEXT16+ line;
 	}
 	if (isErrorEmpty()){
-		if (DXToolsMethods.isIntValue(st))
+		if (!DXToolsMethods.isIntValue(st))
 			_error= DConst.ACTI_TEXT16+ line;
 	}
 

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DLoadData $Revision: 1.5 $  $Date: 2005-01-22 01:46:11 $
+* Title: DLoadData $Revision: 1.6 $  $Date: 2005-01-28 21:46:54 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: syay1801 $
 * @since JDK1.3
 */
@@ -331,7 +331,7 @@ public class DLoadData {
       // SetOfRooms
       SetOfSites roomsList = new SetOfSites(); //,5,14);
       DataExchange de = buildDataExchange(project.nextToken().trim().getBytes());
-      if (roomsList.analyseTokens(de,0)){
+      if (roomsList.analyseTokens(de,3)){
         roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
         roomsList.buildSetOfResources(de, 3);
       }

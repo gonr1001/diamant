@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.3 $  $Date: 2005-01-24 21:27:55 $
+* Title: SaveData $Revision: 1.4 $  $Date: 2005-01-28 21:46:54 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.4 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -73,11 +73,13 @@ public class DSaveData {
     diaData+=inst.size()+DConst.CR_LF;
     diaData+=inst.toWrite()+ DConst.CR_LF;
     diaData+=DConst.SAVE_SEPARATOR + DConst.CR_LF;
+    diaData+=DConst.FILE_VER_NAME1_6+DConst.CR_LF;
     diaData+=rooms.toWrite()+ DConst.CR_LF;
     diaData+=DConst.SAVE_SEPARATOR + DConst.CR_LF;
+    diaData+=DConst.FILE_VER_NAME1_6+DConst.CR_LF;
     diaData+=act.toWrite()+ DConst.CR_LF;
     diaData+=DConst.SAVE_SEPARATOR + DConst.CR_LF;
-    diaData+=students.size()+DConst.CR_LF;
+    diaData+=DConst.FILE_VER_NAME1_6+DConst.CR_LF;
     diaData+=students.toWrite()+DConst.CR_LF;
     diaData+=DConst.SAVE_SEPARATOR;
     filter= new FilterFile(diaData.getBytes(),"");

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.3 $  $Date: 2004-12-16 19:21:00 $
+* Title: SetOfStuSites $Revision: 1.4 $  $Date: 2005-01-28 21:46:54 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,8 +16,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.4 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -126,8 +126,20 @@ public class SetOfStuSites extends DSetOfResources {
 	 * 
 	 */
 	public String toWrite() {
-		
-		return "";
+		StringBuffer save= new StringBuffer();
+	    if(getSetOfResources().size()>0){
+	    	DResource siteRsc;
+	    	SetOfStudents sos;
+	        for (int i=0; i< getSetOfResources().size()-1; i++){
+	        	siteRsc = ((DResource)getSetOfResources().get(i));
+	        	sos= (SetOfStudents)siteRsc.getAttach();
+	        	save.append(sos.toWrite(siteRsc.getID())+DConst.CR_LF);
+	        }
+	        siteRsc = ((DResource)getSetOfResources().get(getSetOfResources().size()-1));
+	        sos= (SetOfStudents)siteRsc.getAttach();
+	        save.append(sos.toWrite(siteRsc.getID()));
+	      }	   
+	    return save.toString();	  
 	}
 
 	/**
@@ -443,14 +455,14 @@ public class SetOfStuSites extends DSetOfResources {
 	 * @param line
 	 */
 	private void analyseStudentLine(String token, int line){
-		if (DXToolsMethods.countTokens(token," ") <= DConst.T_IN_STUDENT_LINE){ 
+		if (DXToolsMethods.countTokens(token," ") < DConst.T_IN_STUDENT_LINE){ 
 			_error =  DConst.STUD_TEXT8+ line +  DConst.STUD_TEXT4  +
 			DConst.CR_LF + DConst.STUD_TEXT5;
 		}
-		if (DXToolsMethods.countTokens(token,",") != DConst.T_IN_STUDENT_NAME){ 
+		/*if (DXToolsMethods.countTokens(token,",") != DConst.T_IN_STUDENT_NAME){ 
 			_error =  DConst.STUD_TEXT8+ line +  DConst.STUD_TEXT4  +
 			DConst.CR_LF + DConst.STUD_TEXT5;
-		}
+		}*/
 		String str = DXToolsMethods.getToken(token, " " , 1);
 		
 		try{
