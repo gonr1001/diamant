@@ -14,8 +14,6 @@ La liste de caractéristiques à ajouter au 1 septembre 04~:
     \item Définition des ensembles et grille partielle (bug. 8, 12) \ref{partielle}
     \item Assignation  automatique des locaux. \ref{rooms}
     \item Capacité totale de locaux (bug. 3). \ref{capacity}
-    \item Importation sélective (bug. 11, 20).
-    \ref{importationSel}
     \item Algorithme d'optimisation plus efficace (bug. 38). \ref{optim}
     \item Affectation manuelle plus efficace.\ref{affect}
     \item Toolbar et horaire \ref{toolbar}
@@ -34,17 +32,55 @@ Fait.
 
 \subsection{Test de classes} \label{tests}
 
-Il faut ajouter ici la liste de classes à tester.
+\begin{itemize}
+    \item \pro{dInternal/DataExange}
+    \item \pro{dInternal/DModelProcess}
+    \item \pro{dInternal/DObject}
+    \item \pro{dInternal/DResource}
+    \item \pro{dInternal/DSetOfResources}
+    \item \pro{dInternal/DSetOfStates}
+    \item \pro{dInternal/DState}
+    \item \pro{dInternal/DValue}
+    \item \pro{dInternal/dData/ByteArrayMessage}
+    \item \pro{dInternal/dData/DSaveData}
+    \item \pro{dInternal/dData/DStandardReportData}
+    \item \pro{dInternal/dData/StandardCollection}
+    \item \pro{dInternal/dData/dRooms/SetOfCategories}
+    \item \pro{dInternal/dData/dStudents/SetOfStuSites}
+    \item \pro{dInternal/dData/dStudents/SetOfStuCourses}
+    \item \pro{dInternal/dData/dStudents/Student}
+    \item \pro{dInternal/dData/dStudents/StuCourses}
+    \item \pro{dInternal/dOptimization/Algorithm}
+    \item \pro{dInternal/dOptimization/Condition}
+    \item \pro{dInternal/dOptimization/FirstAffectAlgorithm}
+    \item \pro{dInternal/dOptimization/RefinedStudMixAlgo}
+    \item \pro{dInternal/dOptimization/StudentMixingAlgo}
+    \item \pro{dInternal/dOptimization/StudentsGroupsAssignment}
+\end{itemize}
 
 \subsection{Horaire multi-site} \label{multiSite}
 Cette fonctionnalité est pour construire des horaires pour des
 facultés ayant des cours sur plusieurs campus.
 
-\subsection{Horaire sans étudiants} \label{nostudents}
+Il faut avoir un menu pour indiquer dans quel site on travail, ou
+dans tous. La grille horaire affichée, doit contenir le conflits
+totaux et le conflits du site.
 
-La fonctionnalité permet de faire un horaire sans étudiants.
-Nouveau type de fichier avec le nombre maximum d'étudiants par
-activité, doit être lu.
+Dialogues~:
+
+\begin{itemize}
+    \item Activités (aucun)
+    \item Groupes (indiquer le site)
+    \item Enseignant (aucune)
+    \item Locaux (indiquer le site)
+    \item Événements (indiquer le site)
+    \item Affectation événements (indiquer le site)
+\end{itemize}
+
+Affectation initial.
+
+Construire horaire.
+
 
 \subsection{Horaire sans étudiants} \label{nostudents}
 
@@ -72,11 +108,12 @@ activités appartenant dans l'ensemble.
 Quelles classes sont à modifier?
 
 
-
 \subsection{Assignation  automatique des locaux} \label{rooms}
 
 La fonctionnalité permet de assigner les locaux aux événements
 avec une utilisation optimal des locaux.
+
+Quelles classes sont à modifier?
 
 
 \subsection{Capacité totale de locaux (bug. 3)} \label{capacity}
@@ -85,6 +122,14 @@ avec une utilisation optimal des locaux.
 
 
 Quelles classes sont à modifier?
+
+
+
+\subsection{Disponibilité des activités} \label{dispo}
+
+La fonctionnalité permet de assigner les locaux aux événements
+avec une utilisation optimal des locaux.
+
 \subsection{Algorithme d'optimisation plus efficace (bug. 38)}\label{optim}
 
 \subsection{Affectation manuelle plus efficace} \label{affect}

@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.129 $  $Date: 2004-12-01 17:16:37 $
+ * Title: DStringFrRes $Revision: 1.130 $  $Date: 2005-01-25 15:51:19 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.129 $
+ * @version $Revision: 1.130 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -122,7 +122,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"GroupAssignM", "Groupes ..."},
     {"LocauxAssignM", "Locaux ..."},
     { "instAssignD", "To be defined"},
-    {"EventsAssignM", "Évenements ..."},
+    {"EventsAssignM", "Événements ..."},
     {"ManualAssignM","Affectation manuelle ..."},
     {"DefineSetM","Définir ensemble"},
     {"PartialTTStructureM","Grille Partielle"},
@@ -273,7 +273,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"show","Afficher"},
     {"notIncluded","Non inclue(s)"},
     {"included","Inclue(s)"},
-    {"tAffecDlg","Affectation d'évenement(s)"},
+    {"tAffecDlg","Affectation d'événement(s)"},
     //InstructorAvailabiliyDlg and roomsAvailability
     {"dispo","Disponibilités"},
     {"roomsDlgTitle", "Disponibilite de locaux"},
@@ -290,7 +290,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"SortByProgram", "Par programme"},
 
     //EventsDialog
-    {"EventsDlgTitle","Évenement"},
+    {"EventsDlgTitle","Événement"},
     {"EventsFixed","Figés"},
     {"EventsPlaced","Placés"},
     {"EventsNotPlaced","Non placés"},
