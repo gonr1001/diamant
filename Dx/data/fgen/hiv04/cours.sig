@@ -262,21 +262,6 @@ GRAVELLE, DENIS
 
  1
  4
- 2  1
-1
-C1-1007
-0
-0
-1
-
-GCH3302  B
-1
-1
-GRAVELLE, DENIS
-
-
- 1
- 4
  3  1
 1
 C1-1007
@@ -1313,10 +1298,10 @@ YANG, JIE
  1
  4
  4  1
+1
+C1-3016
 0
-xxxxxx
-1
-1
+0
 0
 
 GEI4521  A
@@ -1415,14 +1400,14 @@ GEI5001  A
 ROCHEFORT, DOMINIQUE
 
 
- 1
- 3
- 1  1
-0
-xxxxxx
-1
-1
-0
+ 2
+ 2  1
+ 1  1  3  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
 
 GEI5002  A
 1
@@ -1822,7 +1807,7 @@ MORISSETTE, NATHALIE
 
  1
  3
- 1  1
+ 2 12
 0
 xxxxxx
 1
