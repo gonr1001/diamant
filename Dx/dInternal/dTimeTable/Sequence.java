@@ -9,7 +9,7 @@ public class Sequence extends DXObject {
     }
 
     public SetOfResources getSetOfPeriods() {
-        return new SetOfResources();
+        return new SetOfResources(4);
     }
 
     public void setSetOfPeriods(SetOfResources setOfPeriods) {

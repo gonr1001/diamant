@@ -10,7 +10,7 @@ public class Day extends DXObject {
     }
 
     public SetOfResources getSetOfSequences() {
-        return new SetOfResources();
+        return new SetOfResources(4);
     }
 
     public void setSetOfSequences(SetOfResources setOfSequences) {

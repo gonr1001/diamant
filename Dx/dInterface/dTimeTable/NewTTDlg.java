@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.2 $  $Date: 2003-05-22 17:18:04 $
+ * Title: ImportDlg $Revision: 1.3 $  $Date: 2003-05-22 17:36:08 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -35,7 +35,7 @@ import java.awt.Dimension;
 
 import dResources.DConst;
 
-import dInternal.dData.TTStructure;
+import dInternal.dTimetable.TTStructure;
 
 
 /**

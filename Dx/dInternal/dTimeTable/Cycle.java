@@ -13,7 +13,7 @@ public class Cycle extends DXObject {
     }
 
     public SetOfResources getSetOfDays() {
-        return new SetOfResources();
+        return new SetOfResources(4);
     }
 
     public void setSetOfDays(SetOfResources setofdays) {

@@ -25,7 +25,7 @@ public class SetOfResources extends DXObject{
   //private int _numberOfLines;
   //private int _numberOfColumns;// represent number of period a day.
   private long _currentKey=1;
-  /**0= activities, 1= students, 2= instructors, 3 = rooms*/
+  /**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
   private int _resourceType;
   public static final String CR_LF = "\r\n";
   private Resource _resource;

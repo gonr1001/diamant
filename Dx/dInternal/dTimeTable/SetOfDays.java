@@ -5,7 +5,9 @@ package dInternal.dTimetable;
 import dInternal.dData.SetOfResources;
 public class SetOfDays extends SetOfResources {
     public SetOfDays() {
+      super(4);
     }
+
 
     private Day _day;
 }

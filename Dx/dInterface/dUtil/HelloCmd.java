@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import dInterface.Command;
 import dInterface.DApplication;
 
-import dInternal.dData.TTStructure;
+import dInternal.dTimetable.TTStructure;
 
 public class HelloCmd implements Command {
 

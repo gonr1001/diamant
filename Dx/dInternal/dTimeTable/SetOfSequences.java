@@ -6,6 +6,7 @@ import dInternal.dData.SetOfResources;
 
 public class SetOfSequences extends SetOfResources {
     public SetOfSequences() {
+      super(4);
     }
 
     private Sequence _sequence;

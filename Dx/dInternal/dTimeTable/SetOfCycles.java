@@ -6,6 +6,7 @@ import dInternal.dData.SetOfResources;
 public class SetOfCycles extends SetOfResources {
 
     public SetOfCycles() {
+      super(4);
     }
 
     private Cycle _cycle;

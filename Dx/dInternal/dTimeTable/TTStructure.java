@@ -8,11 +8,20 @@ import dInternal.dData.SetOfResources;
  * @author ysyam
  * @deprecated the root of the time table*/
 public class TTStructure {
-    public TTStructure() {
-    }
+
+
+  private SetOfCycles _setOfCycles;
+  private String _str;
+  private int _col;
+  private int _row;
+
+  public TTStructure() {
+    _col=4;
+    _row=10;
+  }
 
  public SetOfResources getSetOfCycles() {
-    return new SetOfResources();
+    return new SetOfResources(4);
  }
 
  public void setSetOfResources(SetOfResources setOfCycles) {
@@ -22,9 +31,17 @@ public class TTStructure {
     return "";
  }
 
- /**
-  * @deprecated it contains a set of resources where _resourceObject is a Cycle object
-  * @description it contains a set of resources where _resourceObject is a Cycle object*/
- private SetOfCycles _setOfCycles;
+ public int getColumn(){
+   return _col;
+ }
+
+ public int getRow(){
+  return _row;
+ }
+
+ public String loadData(String  fils) {
+   return new String("error");
+  }
+
 
 }
