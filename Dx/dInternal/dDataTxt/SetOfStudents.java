@@ -13,7 +13,9 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
 import dResources.DConst;
+import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DXValue;
 import dInternal.dData.Resource;
 
 public class SetOfStudents extends SetOfResources{
@@ -318,14 +320,32 @@ public class SetOfStudents extends SetOfResources{
   public boolean addStudent(long matricule, String name, String temp, StudentAttach studentChoice){
     if (studentChoice.getCoursesList().size()!=0){
       //StudentAttach newStudent = new StudentAttach();
+      Resource studResc= this.getResource(matricule);
+      if(studResc==null){
+        if (temp.length()==0)
+          studentChoice.setAuxField("0000000000000");
+        else
+          studentChoice.setAuxField(temp);
+        setCurrentKey(matricule);
+        Resource resource = new Resource(name, studentChoice);
+        return addResource(resource,0);
+      } else{// else if(studResc==null)
+        SetOfResources currentCourseList = ((StudentAttach)studResc.getAttach()).getCoursesList();
+        SetOfResources newCourseList = studentChoice.getCoursesList();
+        // remove exlude courses
+        for (int i=0; i< currentCourseList.size(); i++){
+          if(newCourseList.getIndexOfResource(currentCourseList.getResourceAt(i).getID())==-1)
+            currentCourseList.removeResource(currentCourseList.getResourceAt(i).getID());
+        }// end for (int i=0; i< currentCourseList.size(); i++)
 
-      if (temp.length()==0)
-        studentChoice.setAuxField("0000000000000");
-      else
-        studentChoice.setAuxField(temp);
-      setCurrentKey(matricule);
-      Resource resource = new Resource(name, studentChoice);
-      return addResource(resource,0);
+        // add new courses
+        for (int i=0; i< newCourseList.size(); i++){
+          String group = DXTools.STIConvertGroup(((DXValue)newCourseList.getResourceAt(i).getAttach()).getIntValue());
+          String course= newCourseList.getResourceAt(i).getID()+ group;
+          ((StudentAttach)studResc.getAttach()).addCourse(course);
+        }// end for (int i=0; i< newCourseList.size(); i++)
+
+      }// end else if(studResc==null)
     }// end if(this.getResource(matricule)!=null)
     return false;
   }

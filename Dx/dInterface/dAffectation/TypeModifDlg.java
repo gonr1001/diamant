@@ -75,7 +75,7 @@ private DApplication _dApplic;
         init();
          Vector students= activity.getStudentRegistered();
          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
-         _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false);
+         _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       }
     }
@@ -84,7 +84,7 @@ private DApplication _dApplic;
       if(activity.getSetOfTypes().size()>1){
         activity.getSetOfTypes().removeResource("2");
         init();
-        _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false);
+        _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       }
     }

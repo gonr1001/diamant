@@ -78,7 +78,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       }// end
       setStudentsInGroup(actID,typeID,allConvexGroups);
     }//end for(int i=0; i< _eventsRescList.size(); i++)
-    _dm.getConditionsTest().setMatrixBuilded(false);
+    _dm.getConditionsTest().setMatrixBuilded(false,false);
     _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
     _dm.sendEvent(null);
     //System.out.println("Mixing type: "+_mixingType);// debug

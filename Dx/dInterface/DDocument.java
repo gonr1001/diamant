@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.107 $  $Date: 2004-05-17 18:12:14 $
+ * Title: DDocument $Revision: 1.108 $  $Date: 2004-05-18 16:07:31 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.107 $
+ * @version $Revision: 1.108 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -229,6 +229,7 @@ public class DDocument  extends InternalFrameAdapter implements
     setCursor(Cursor.WAIT_CURSOR, component);
 
     _dm.setModified();
+    _dm.getConditionsTest().setMatrixBuilded(false,true);
     _dm.buildSetOfEvents();
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
@@ -246,7 +247,8 @@ public class DDocument  extends InternalFrameAdapter implements
   public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
     component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm.setModified();
-    _dm.getConditionsTest().setMatrixBuilded(false);
+    _dm.getSetOfActivities().buildStudentRegisteredList(_dm.getSetOfStudents());
+    _dm.getConditionsTest().setMatrixBuilded(false,true);
     _dm.getConditionsTest().initAllConditions();
     _dm.setStateBarComponent();
     _ttPane.updateTTPane(_dm.getTTStructure());

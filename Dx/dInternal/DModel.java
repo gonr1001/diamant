@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.92 $  $Date: 2004-04-16 17:31:45 $
+ * Title: DModel $Revision: 1.93 $  $Date: 2004-05-18 16:07:31 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.92 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.93 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -349,11 +349,11 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
       _setOfRooms.sendEvent(_dDocument.getJIF());
     }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)){//Importation selective -- Activité
       _setOfActivities= (SetOfActivities) loadData.selectiveImport(_setOfActivities,fileName,true);
-      _conditionTest.setMatrixBuilded(false);
+      _conditionTest.setMatrixBuilded(false,true);
       _setOfActivities.sendEvent(_dDocument.getJIF());
     }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)){//Importation selective -- Étudiants
       _setOfStudents= (SetOfStudents) loadData.selectiveImport(_setOfStudents,fileName,true);
-      _conditionTest.setMatrixBuilded(false);
+      _conditionTest.setMatrixBuilded(false,true);
       _setOfStudents.sendEvent(_dDocument.getJIF());
     }
 

@@ -31,6 +31,13 @@ public class StudentsConflictsMatrix {
 
   /**
    *
+   */
+  public void doFirstGroupAssignement(){
+    _doFirstGroupAssignement=true;
+  }
+
+  /**
+   *
    * @param soa
    * @param sos
    */

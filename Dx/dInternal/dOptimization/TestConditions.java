@@ -100,8 +100,10 @@ public class TestConditions {
  /**
   * set the _matrixIsBuilded value to true
   */
- public void setMatrixBuilded(boolean value){
+ public void setMatrixBuilded(boolean value, boolean doFirstGroupAssignement){
    _matrixIsBuilded=value;
+   if(doFirstGroupAssignement)
+     _matrix.doFirstGroupAssignement();
  }
 
  /**
