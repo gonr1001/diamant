@@ -248,8 +248,8 @@ public static void listTransfersWithFixed(JList sourceList, JList destinationLis
   * @param STIGroupID
   * @return
   */
-public static int STIConvertGroup(String STIGroupID){
-   return  (int)STIGroupID.charAt(0) -(int)'A'+1;
+public static int STIConvertGroupToInt(String STIGroupID){
+   return  Integer.parseInt(STIGroupID);
  }
 
  /**
@@ -257,10 +257,18 @@ public static int STIConvertGroup(String STIGroupID){
   * @param STIGroupNumber
   * @return
   */
- public static char STIConvertGroup(int STIGroupNumber){
-   return  (char)((int)'A' +STIGroupNumber-1);
+ public static String STIConvertGroup(String STIGroupNumber){
+   return  STIGroupNumber;
  }
 
+ /**
+  *
+  * @param STIGroupNumber
+  * @return
+  */
+ public static String STIConvertGroup(int STIGroupNumber){
+   return  Integer.toString(STIGroupNumber);
+ }
 
 
 

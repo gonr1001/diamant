@@ -139,7 +139,7 @@ public class StudentsConflictsMatrix {
         for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++){
           Resource rescSection= ((Type)rescType.getAttach()).getSetOfSections().getResourceAt(z);
           tab[z]= sos.getStudentsByGroup(rescActivity.getID(),rescType.getID(),
-              DXTools.STIConvertGroup(rescSection.getID())).size();
+              DXTools.STIConvertGroupToInt(rescSection.getID())).size();
         }//end for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++)
 
         for (int k=0; k< ((Activity)rescActivity.getAttach()).getStudentRegistered().size(); k++){
@@ -155,7 +155,7 @@ public class StudentsConflictsMatrix {
             //groupInc++;
           }else{// else if(!((StudentAttach)student.getAttach()).isFixedInGroup
             int studentGroup=((StudentAttach)student.getAttach()).getGroup(rescActivity.getID()+rescType.getID());
-            String groupeID=Character.toString(DXTools.STIConvertGroup(studentGroup));
+            String groupeID=DXTools.STIConvertGroup(studentGroup);
             if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null){
               DXValue error= new DXValue();
               error.setStringValue("Erreur --> "+student.getKey()+" - "+student.getID()+"- Activity: "+rescActivity.getID()

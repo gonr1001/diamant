@@ -115,7 +115,7 @@ public class TestRoomsConditions implements Condition{
     Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
     Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
     int nbOfStudents= _dm.getSetOfStudents().getStudentsByGroup(activity.getID(),
-        type.getID(), DXTools.STIConvertGroup(section.getID())).size();
+        type.getID(), DXTools.STIConvertGroupToInt(section.getID())).size();
     long roomKey = event.getRoomKey();
    if(roomKey!=-1){
       RoomAttach room = (RoomAttach)_dm.getSetOfRooms().getResource(roomKey).getAttach();

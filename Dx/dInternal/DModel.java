@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.83 $  $Date: 2004-02-05 04:19:25 $
+ * Title: DModel $Revision: 1.84 $  $Date: 2004-02-05 17:31:49 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.83 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.84 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -221,8 +221,8 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       activity.getSetOfTypes().getSetOfResources().removeAllElements();
       activity.addType("1");
       Type type = (Type) activity.getSetOfTypes().getResource("1").getAttach();
-      type.addSection("A");
-      Section section = (Section) type.getSetOfSections().getResource("A").getAttach();
+      type.addSection("01");
+      Section section = (Section) type.getSetOfSections().getResource("01").getAttach();
       section.addUnity("1",1,true);
       ((Unity) section.getSetOfUnities().getResource("1").getAttach()).setDuration(180);
       //unity.addAssignment("1");

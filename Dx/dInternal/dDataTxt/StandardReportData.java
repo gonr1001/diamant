@@ -320,10 +320,10 @@ public class StandardReportData {
           int group= Integer.parseInt(course.substring(SetOfStudents._COURSELENGTH, SetOfStudents._COURSEGROUPLENGTH));
           sect=course.substring(0,SetOfStudents._COURSELENGTH-1)+"."+
                course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH)+
-               "."+Character.toString(DXTools.STIConvertGroup(group))+".";
+               "."+DXTools.STIConvertGroup(group)+".";
           Section section= _dm.getSetOfActivities().getSection(course.substring(0,SetOfStudents._COURSELENGTH-1)
               ,course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH),
-              Character.toString(DXTools.STIConvertGroup(group)));
+              DXTools.STIConvertGroup(group));
           if(section!=null){
             for(int j=0; j<section.getSetOfUnities().size(); j++){
               Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(j).getAttach();

@@ -131,12 +131,12 @@ public class SetOfActivities extends SetOfResources{
             _error= DConst.ACTI_TEXT5+_line+" ActivityList";
             return false;
           }
-          /*while(stLine.hasMoreElements()){
+          while(stLine.hasMoreElements()){
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
                 DConst.ACTI_TEXT8+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
-          }*/
+          }
           position = 10;
           break;
         case 10://fixed rooms
@@ -298,7 +298,7 @@ public class SetOfActivities extends SetOfResources{
           numberOfUnity = Integer.parseInt(token.trim());
           for (int i=1; i<= numberOfUnity; i++)
             section.addUnity(Integer.toString(i));
-          ((Type)typeResource.getAttach()).addSection(activityName.substring(_ACTIVITYLENGTH-1),section);
+          ((Type)typeResource.getAttach()).addSection(DXToolsMethods.getToken(activityName," ",1),section);
           position = 8;
           break;
         case 8://duration of blocs
@@ -743,5 +743,5 @@ public class SetOfActivities extends SetOfResources{
   private String NULLINFORMATION = "xxxxxx";
   private int _NUMBEROFCYCLE = 1;
   final static public int _COURSENAMELENGTH=6;
-  private int _ACTIVITYLENGTH=10;
+  private int _ACTIVITYLENGTH=11;
 }

@@ -209,14 +209,9 @@ public class StudentMixingAlgorithm implements Algorithm {
         int group= student.getGroup(actID+typeID);
         Vector groupList= new Vector(1);
         if((group<=0) ){
-          /*Type type= _dm.getSetOfActivities().getType(actID,typeID);
-          if(type!=null)
-          for (int k=0; k< type.getSetOfSections().size(); k++){
-            groupList.add(Character.toString(DXTools.STIConvertGroup(k+1)));
-          }// end for (int k=0; k< type.getSetOfSections().size(); k++)
-          */
+         ;
         }else{
-          groupList.add(Character.toString(DXTools.STIConvertGroup(group)));
+          groupList.add(DXTools.STIConvertGroup(group));
         }
 
         for(int k=0; k< groupList.size(); k++){

@@ -70,8 +70,7 @@ private String _title;
     if (command.equals(DConst.BUT_ADD)) {  // Ajouter
       Resource section= type.getSetOfSections().getResourceAt(
           ((Type)_type.getAttach()).getSetOfSections().size()-1);
-      String ID= Character.toString(DXTools.STIConvertGroup(
-          DXTools.STIConvertGroup(section.getID())+1));
+      String ID= DXTools.STIConvertGroup(section.getID())+1; // boite de dialog selec groupe
       int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
       type.addSection(ID,nbCycle,true);
       init();

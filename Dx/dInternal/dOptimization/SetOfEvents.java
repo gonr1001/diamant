@@ -61,6 +61,7 @@ public class SetOfEvents extends SetOfResources{
                 else
                   assignment.setPeriodKey("1.1.1");
               }// end if(assignment.getPeriodKey()[0]==0)
+              //System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
               int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(assignment.getInstructorName());
               if(instructorIndex!=-1){
                 instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
@@ -90,6 +91,7 @@ public class SetOfEvents extends SetOfResources{
               event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
               //System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
               this.addResource(new Resource(unityID, event),0);
+              //System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
             }// end if(assignement!=null)
           }// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
         }// end for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++)
@@ -202,7 +204,7 @@ public Vector studentsInSection(Vector students, String activityAndType, String 
   Vector res = new Vector();
   for(int i = 0; i <students.size(); i++) {
     StudentAttach sa = (StudentAttach)_dm.getSetOfStudents().getResource(Long.parseLong((String)students.get(i))).getAttach();
-    if( sa.isInGroup(activityAndType,DXTools.STIConvertGroup(section)))
+    if( sa.isInGroup(activityAndType,DXTools.STIConvertGroupToInt(section)))
       res.add(students.get(i));
   }
   return res;
