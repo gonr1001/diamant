@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRooms $Revision: 1.27 $  $Date: 2004-10-28 18:00:22 $
+* Title: SetOfRooms $Revision: 1.28 $  $Date: 2004-11-09 15:41:43 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.27 $
+* @version $Revision: 1.28 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -177,6 +177,7 @@ public class SetOfRooms extends SetOfResources{
 		StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
 		int state;
 		int position = beginPosition;
+		position++;
 		int line=0;
 		_error="";
 	    while (st.hasMoreElements()){
@@ -184,17 +185,20 @@ public class SetOfRooms extends SetOfResources{
 	      token = st.nextToken();
 	      line++;
 	      StringTokenizer currentLine = new StringTokenizer(token,";" );
-	      position++;
+	      //position++;
 	      if (!isErrorEmpty())
         	return false;
 	      switch (position){
 	      	case 1:// faculty
+	      		position++;
 	            break;
 	      	case 2:// description
 	            line++;
+	            position++;
 	            break;
 	      	case 3:// description
 	            line++;
+	            position++;
 	            break;
 	      	case 4:
 	      		int nbTokens= currentLine.countTokens();
@@ -290,6 +294,7 @@ public class SetOfRooms extends SetOfResources{
 	    }// end while (st.hasMoreElements())
 	    return true;
 	} //end analyseTokens1_6
+	
 	private void analyseTokenCase4(StringTokenizer st, int line){
 	int nbTokens= st.countTokens();
     if(nbTokens< DConst.ROOM_NUM_TOKENS){

@@ -54,22 +54,70 @@ public class SetOfActivities extends SetOfResources{
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
   public boolean analyseTokens(int beginPosition){
-  	_error="";
+  	/*_error="";
     if(!analyseSIGTokens(beginPosition)){// analyse STI data
       return false;
     }else if(_open){// else if(!analyseSIGTokens(beginPosition))
         return analyseDeltaTokens(beginPosition);// analyse Delta data
     }// end else if(!analyseSIGTokens(beginPosition))
 
-    return true;
+    return true;*/
+  	String token=DXToolsMethods.getToken(new String (_dataloaded), DConst.CR_LF ,0);
+	//StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
+    //token = st.nextToken();//.toString().trim();
+    //token = token.trim();
+    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+    	return analyseTokens1_6(beginPosition);
+    } 
+    return analyseTokens1_5(beginPosition);
   }
+  
+  /**
+	 * analyseTokens1_5 will analyse the tokens of files
+	 *        without any header like Diamant1.6
+	 * @param beginPosition indicates from where start to read in the
+	 *        array
+	 * 
+	 * @return true <p>if no errors in _dataloaded </p>
+	 *         false otherwise
+	 */
+	private boolean analyseTokens1_5(int beginPosition) {
+		_error="";
+	    if(!analyseSIGTokens(beginPosition)){// analyse STI data
+	      return false;
+	    }else if(_open){// else if(!analyseSIGTokens(beginPosition))
+	        return analyseDeltaTokens1_5(beginPosition);// analyse Delta data
+	    }// end else if(!analyseSIGTokens(beginPosition))
 
+	    return true;
+	}
+
+	/**
+	 * analyseTokens1_5 will analyse the tokens of files
+	 *        without any header like Diamant1.6
+	 * @param beginPosition indicates from where start to read in the
+	 *        array
+	 * 
+	 * @return true <p>if no errors in _dataloaded </p>
+	 *         false otherwise
+	 */
+	private boolean analyseTokens1_6(int beginPosition) {
+		_error="";
+	    if(!analyseSIGTokens(beginPosition)){// analyse STI data
+	      return false;
+	    }else if(_open){// else if(!analyseSIGTokens(beginPosition))
+	        return analyseDeltaTokens1_6(beginPosition);// analyse Delta data
+	    }// end else if(!analyseSIGTokens(beginPosition))
+	    
+	    return true;
+	}
+	
   /**
    * analyse Delta activities data by a finished states machine
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
-  private boolean analyseDeltaTokens(int beginPosition){
+  private boolean analyseDeltaTokens1_5(int beginPosition){
     String token;
     //String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
@@ -83,6 +131,8 @@ public class SetOfActivities extends SetOfResources{
     while (st.hasMoreElements()){
       token = st.nextToken();
       _line++;
+      if(_error.length()!=0)
+        return false;
       switch (position){
         case 0:// empty line
           position = 1;
@@ -153,22 +203,109 @@ public class SetOfActivities extends SetOfResources{
           position = 14;
           break;
         case 14://pre-affected cours
-          //check assign token
-         String assignToken= DXToolsMethods.getToken(token,";",1);
-         stLine = new StringTokenizer(assignToken);
-         if(numberOfBlocs!=stLine.countTokens()){
-           _error= DConst.ACTI_TEXT12+_line+" ActivityList";
-           return false;
-         }
-         //check if the permanent value is belong 0 and 1
-         String sousString;
-         while(stLine.hasMoreElements()){
-           sousString = stLine.nextToken();
-           _error= DXToolsMethods.checkIfBelongsValues(sousString,"0 1",
-               DConst.ACTI_TEXT12+_line,"ActivityList");
-           if(_error.length()!=0)
-             return false;
+        	_error = analyseTokenPreaffectedRoom(token,numberOfBlocs,1,_line);
+          position = beginPosition;
+          break;
+
+      }// end switch (position)
+
+    }// end while (st.hasMoreElements())
+
+    return true;
+  }
+  /**
+   * analyse Delta activities data by a finished states machine
+   * @param integer the beginPosition (start position of the finished states machine)
+   * @return boolean "true" if the analysis proceeded successfully and false otherwise
+   * */
+  private boolean analyseDeltaTokens1_6(int beginPosition){
+    String token;
+    //String sousString; //auxiliar String for stocking a substring of a line
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
+    StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
+    //int state=0;
+    int position=beginPosition;
+    _line=0;
+    //String activityName="";
+    String instructorName="";
+    int numberOfBlocs=0;
+    while (st.hasMoreElements()){
+      token = st.nextToken();
+      _line++;
+      if(_error.length()!=0)
+        return false;
+      switch (position){
+        case 0:// empty line
+          position = 1;
+          break;
+        case 1:// activity name
+        	analyseDelTaTokenName1_6(token, _line);
+          position = 2;
+          break;
+        case 2://activity visibility
+          position = 3;
+          break;
+        case 3://number of activities
+          position = 4;
+          break;
+        case 4:// teachers' names
+          instructorName= token;
+          position = 7;
+          break;
+        case 5:// empty line
+          position = 6;
+          break;
+        case 6:// empty line
+          position = 7;
+          break;
+        case 7://number of blocs
+          numberOfBlocs=Integer.parseInt(token.trim());
+          if(DXToolsMethods.countTokens(instructorName,";")!=numberOfBlocs){
+            _error= DConst.ACTI_TEXT13  +
+            _line + ", I was in SetOfActivies class and in analyseDeltaTokens method ";
+            return false;
           }
+          position = 8;
+          break;
+        case 8://duration of blocs
+
+          position = 9;
+          break;
+        case 9://days and periods of blocs
+          stLine = new StringTokenizer(token);
+          if(numberOfBlocs!=stLine.countTokens()){
+            _error= DConst.ACTI_TEXT5+_line+" ActivityList";
+            return false;
+          }
+          while(stLine.hasMoreElements()){
+            StringTokenizer stLine1;
+            stLine1 = new StringTokenizer(stLine.nextToken(),".");
+            while(stLine1.hasMoreElements())
+              _error= DXToolsMethods.isIntValue(stLine1.nextToken(),
+                  DConst.ACTI_TEXT8+_line,"ActivityList");
+            if(_error.length()!=0)
+              return false;
+          }
+          position = 10;
+          break;
+        case 10://fixed rooms
+
+          position = 11;
+          break;
+        case 11://Preferred rooms
+
+          position = 12;
+          break;
+        case 12://type of rooms
+
+          position = 13;
+          break;
+        case 13://idem
+
+          position = 14;
+          break;
+        case 14://pre-affected cours
+        	_error = analyseTokenPreaffectedRoom(token,numberOfBlocs,1,_line);
           position = beginPosition;
           break;
 
@@ -179,8 +316,80 @@ public class SetOfActivities extends SetOfResources{
     return true;
   }
 
+  /**
+   * 
+   * @param str
+   * @param numberOfUnitys
+   * @param position
+   * @param line
+   * @return
+   */
+  private String analyseTokenPreaffectedRoom(String str,int numberOfUnitys, int position, int line) {
+//  check permanent token
+    String permanentToken= DXToolsMethods.getToken(str,";",position);
+    StringTokenizer stLine = new StringTokenizer(permanentToken);
+    if(numberOfUnitys!=stLine.countTokens()){
+    	return DConst.ACTI_TEXT12+line+" ActivityList";
+    }
+    //check if the permanent value is belong 0 and 1
+    while(stLine.hasMoreElements()){
+      String sousString = stLine.nextToken();
+      String error= DXToolsMethods.checkIfBelongsValues(sousString,"0 1",
+          DConst.ACTI_TEXT12+line,"ActivityList");
+      if(error.length()!=0)
+        return error;
+    }
+    return "";
+	}
+  
+  
+  /**
+   * 
+   * @param str
+   * @param line
+   * @return
+   */
+  private String analyseDelTaTokenName1_6 (String str, int line) {
+  	// activity name number of token
+  	if (DXToolsMethods.countTokens(str," ") != DConst.NUMBER_OF_TOKEN_COURSE_LINE){ 
+		_error = DConst.ACTI_TEXT3+ line;
+	}
+	// first token
+  	String st = DXToolsMethods.getToken(str," ",0);
+	if (isErrorEmpty()){
+		if (st.length()!=DConst.SIZE_OF_COURSE_TOKEN)
+			_error= DConst.ACTI_TEXT1+ line;
+	}
+	// 2nd token
+	st = DXToolsMethods.getToken(str," ",1);
+	if (isErrorEmpty()){
+		if (st.length()!=DConst.SIZE_OF_GROUP_TOKEN)
+			_error= DConst.ACTI_TEXT14+ line;
+	}
+	if (isErrorEmpty()){
+		if (DXToolsMethods.isIntValue(st))
+			_error= DConst.ACTI_TEXT14+ line;
+	}
+	//3rd token
+	st = DXToolsMethods.getToken(str," ",2);
+	if (isErrorEmpty()){
+		if (st.length()!=DConst.ACT_SITE_LENGTH)
+			_error= DConst.ACTI_TEXT15+ line;
+	}
+	// 4th token
+	st = DXToolsMethods.getToken(str," ",3);
+	if (isErrorEmpty()){
+		if (st.length()!=DConst.ACT_CAPACITY_LENGTH)
+			_error= DConst.ACTI_TEXT16+ line;
+	}
+	if (isErrorEmpty()){
+		if (DXToolsMethods.isIntValue(st))
+			_error= DConst.ACTI_TEXT16+ line;
+	}
 
-
+  	return "";
+  }
+  
   /**
    * analyse SIG activities data by a finished states machine
    * @param integer the beginPosition (start position of the finished states machine)
@@ -198,10 +407,12 @@ public class SetOfActivities extends SetOfResources{
     else
       _line=0;
     //String activityName="";
-    int numberOfUnitys=0;
+    int numberOfUnities=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
       _line++;
+      if(_error.length()!=0)
+        return false;
       switch (position){
         case 0:// empty line
           position = 1;
@@ -252,12 +463,12 @@ public class SetOfActivities extends SetOfResources{
               DConst.ACTI_TEXT5+_line," ActivityList");
           if(_error.length()!=0)
             return false;
-          numberOfUnitys = Integer.parseInt(token.trim());
+          numberOfUnities = Integer.parseInt(token.trim());
           position = 8;
           break;
         case 8://duration of blocs
           stLine = new StringTokenizer(token);
-          if (numberOfUnitys!= stLine.countTokens()){
+          if (numberOfUnities!= stLine.countTokens()){
             _error= DConst.ACTI_TEXT5+_line+  " in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
@@ -282,7 +493,7 @@ public class SetOfActivities extends SetOfResources{
             return false;
          // int typeOfData= DXToolsMethods.countTokens(token,".");
           if(!_open){
-            if((numberOfUnitys*2)!=stLine.countTokens()){
+            if((numberOfUnities*2)!=stLine.countTokens()){
               _error= DConst.ACTI_TEXT5+_line+" ActivityList";
               return false;
             }
@@ -304,7 +515,7 @@ public class SetOfActivities extends SetOfResources{
             return false;
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
-            _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+            _error= DXToolsMethods.checkIfBelongsValues(sousString,"0 1",
                 DConst.ACTI_TEXT9+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
@@ -317,17 +528,11 @@ public class SetOfActivities extends SetOfResources{
               DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
-          if (numberOfUnitys != stLine.countTokens()) {
+          if (numberOfUnities != stLine.countTokens()) {
             _error=DConst.ACTI_TEXT10+_line+  "in the activity file:" +
            "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
           }
-          /*while(stLine.hasMoreElements())
-          if (stLine.nextToken().length() == 0){
-            _error=DConst.ACTI_TEXT10+line+  "in the activity file:" +
-            "\n" + "I was in ActiviesList class and in analyseTokens method ";
-            return false;
-          }*/
           position = 12;
           break;
         case 12://type of rooms
@@ -360,22 +565,7 @@ public class SetOfActivities extends SetOfResources{
           break;
         case 14://pre-affected course
 
-          //check permanent token
-          String permanentToken= DXToolsMethods.getToken(token,";",0);
-          stLine = new StringTokenizer(permanentToken);
-          if(numberOfUnitys!=stLine.countTokens()){
-            _error= DConst.ACTI_TEXT12+_line+" ActivityList";
-            return false;
-          }
-          //check if the permanent value is belong 0 and 1
-          while(stLine.hasMoreElements()){
-            sousString = stLine.nextToken();
-            _error= DXToolsMethods.checkIfBelongsValues(sousString,"0 1",
-                DConst.ACTI_TEXT12+_line,"ActivityList");
-            if(_error.length()!=0)
-              return false;
-          }
-
+          _error = analyseTokenPreaffectedRoom(token,numberOfUnities,0,_line);
           position = beginPosition;
           if(st.hasMoreElements())
           _line++;
@@ -904,6 +1094,14 @@ public class SetOfActivities extends SetOfResources{
     _SOAListeners.addElement(soal);
     //System.out.println("addSetOfActivities Listener ...");//debug
   }
+  
+  /**
+	 * check if there is an error detected
+	 * @return
+	 */
+	private boolean isErrorEmpty() {
+		return _error.length()==0;
+	}
 
 
 }

@@ -23,7 +23,7 @@ import dInternal.dUtil.DXValue;
 public class RefinedStudMixAlgo{
 
   private DModel _dm;
-  private Vector _eventsRescList;
+  //private Vector _eventsRescList;
   //private int _mixingType;// 0= balance student mixing,  1= balance student
   // mixing with acceptable variation, 2= optimize student mixing
   private int ACCEPTABLEVARIATION=10;
@@ -174,13 +174,13 @@ public class RefinedStudMixAlgo{
   * @param sor
   * @return
   */
- private SetOfResources removeKeys(SetOfResources sor, Vector vOfKeys){
+/* private SetOfResources removeKeys(SetOfResources sor, Vector vOfKeys){
    for (int i=0; i< vOfKeys.size(); i++){
      String key = (String)vOfKeys.get(i);
      sor.removeResource(Long.parseLong(key));
    }
    return sor;
- }
+ }*/
 
  /**
   *

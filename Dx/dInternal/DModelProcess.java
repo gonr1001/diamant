@@ -19,7 +19,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 public class DModelProcess {
   private DModel _dm;
-  private boolean modelSet=false;
+  //private boolean modelSet=false;
 
   public DModelProcess() {
 
@@ -43,9 +43,9 @@ public class DModelProcess {
   * @param seqIndex
   * @param periodIndex
   */
- public void updateEventsInPeriod(int dayIndex, int seqIndex, int periodIndex){
+/* public void updateEventsInPeriod(int dayIndex, int seqIndex, int periodIndex){
 
-  }
+  }*/
 
   /**
    *

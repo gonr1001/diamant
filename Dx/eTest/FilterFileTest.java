@@ -1,7 +1,7 @@
 package eTest;
 /**
  *
- * Title: ClassName $Revision: 1.2 $  $Date: 2004-09-10 13:31:21 $
+ * Title: ClassName $Revision: 1.3 $  $Date: 2004-11-09 15:41:46 $
  * Description: ClassName is a class used to
  *
  *
@@ -15,7 +15,7 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -47,8 +47,7 @@ public class FilterFileTest extends TestCase {
   public void testSimple() throws Exception {
     FilterFile filter = new FilterFile();
     filter.setCharKnown("");
-    String str = System.getProperty("user.dir")
-                                   + File.separator +
+    String str = "."  + File.separator +
                                    "eDataTest"
                                    + File.separator +
                                    "Simple.txt";
@@ -58,8 +57,7 @@ public class FilterFileTest extends TestCase {
   public void testSimple1() throws Exception {
   FilterFile filter = new FilterFile();
   filter.setCharKnown("");
-  String str = System.getProperty("user.dir")
-                                 + File.separator +
+  String str = "." + File.separator +
                                  "eDataTest"
                                  + File.separator +
                                  "SimpleCharNotV.txt";
@@ -69,8 +67,7 @@ public class FilterFileTest extends TestCase {
   public void testReadFile() throws Exception {
     FilterFile filter = new FilterFile();
     filter.setCharKnown("");
-    String str = System.getProperty("user.dir")
-                                 + File.separator +
+    String str = "." + File.separator +
                                  "eDataTest"
                                  + File.separator +
                                    "TwoLines.txt";
@@ -79,6 +76,7 @@ public class FilterFileTest extends TestCase {
     assertEquals("testReadFile assertEquals :", a.length, filter.getByteArray().length);
     assertEquals("testReadFile assertEquals :", true, compareArrays(a, filter.getByteArray()));
   }
+
   public void testAdjustingLinesLF() throws Exception {
     byte [] a = {(byte)65, (byte)10, (byte)66, (byte)10};
     FilterFile filter = new FilterFile(a,"");

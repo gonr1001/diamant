@@ -46,7 +46,7 @@ public class TestRoomsConditions implements Condition{
     int nbConf1, nbConf2,nbConf3=0;
     ConflictsAttach confVal= new ConflictsAttach();
     nbConf1= roomAvailibilityConflicts(period,eventKey);
-    nbConf2= roomCapacityConflicts(period,eventKey);
+    nbConf2= roomCapacityConflicts(/*period,*/eventKey);
     nbConf3= roomEventsConflicts(period,eventKey, confVal);
     number= nbConf1+nbConf2+nbConf3;
     if (nbConf1!=0)
@@ -114,8 +114,8 @@ public class TestRoomsConditions implements Condition{
    * @param eventKey
    * @return
    */
-  private int roomCapacityConflicts(Period period, String eventKey){
-    EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
+   private int roomCapacityConflicts(/*Period period,*/ String eventKey){
+   EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
     Resource activity = _dm.getSetOfActivities().getResource(event1.nextToken());
     Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());

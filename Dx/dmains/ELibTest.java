@@ -1,6 +1,6 @@
 /**
  *
- * Title: ELibTest $Revision: 1.5 $  $Date: 2004-10-14 18:59:34 $
+ * Title: ELibTest $Revision: 1.6 $  $Date: 2004-11-09 15:41:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -56,7 +56,7 @@ public class ELibTest {
 		TestSuite suite= new TestSuite("Library eLib tests");
 			suite.addTest(SimpleTest.suite());
 			suite.addTest(ByteInputFileTest.suite());
-            suite.addTest(FilterFileTest.suite());;
+            suite.addTest(FilterFileTest.suite());
 	    return suite;
 	} //end suite
 } /* end ILibTest */

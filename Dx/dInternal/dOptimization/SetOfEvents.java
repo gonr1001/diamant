@@ -225,7 +225,7 @@ public class SetOfEvents extends SetOfResources{
      * @param eventIDTwo
      * @return
      */
-  public String getInstructorConflictDescriptions( DXValue confAt, String eventIDOne) {
+  public String getInstructorConflictDescriptions( DXValue confAt){//, String eventIDOne) {
     String res="";
       Vector insKeys= (Vector)(confAt).getObjectValue();
       for (int j=0; j< insKeys.size(); j++){

@@ -273,7 +273,7 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @param convGroup
    * @return
    */
-  private String writeConvexGroups(Vector convGroups){
+/*  private String writeConvexGroups(Vector convGroups){
     String str=DConst.SEPARATOR;
     str+=DConst.CR_LF;
     for(int i=0; i< convGroups.size(); i++){
@@ -288,7 +288,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     }// end for(int i=0; i< convGroup.size(); i++)
 
     return str;
-  }
+  }*/ 
 
 
   /**

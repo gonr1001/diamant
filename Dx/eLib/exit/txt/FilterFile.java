@@ -1,7 +1,7 @@
 package eLib.exit.txt;
 /**
  *
- * Title: FilterFile $Revision: 1.2 $  $Date: 2004-09-10 13:31:14 $
+ * Title: FilterFile $Revision: 1.3 $  $Date: 2004-11-09 15:41:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package eLib.exit.txt;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -174,7 +174,7 @@ public class FilterFile {
   		if (!isIn(_charKnown, b))
   			_charKnown +=  new String (b);
   	}
-  	//_charKnown += str;
+  	
   }
   
 	private boolean isIn(String str, byte[] b) {
@@ -197,14 +197,13 @@ public class FilterFile {
     } // end validFile
 
   public boolean adjustingFile(String str) {
-      readFile(str);
-     // if(testValidityOfBytes()) {
-        adjustingLines();
-        adjustingEndFile();
-        return true;
-       //} else
-       // return false;
-    } // end validFile*/
+  	readFile(str);
+  	
+  	adjustingLines();
+  	adjustingEndFile();
+  	return true;
+  	
+  } // end validFile*/
 
 
   public byte[] getByteArray(){
@@ -229,25 +228,20 @@ public class FilterFile {
 
     //-----------------------------------------------------------------------
   private boolean testValidityOfBytes(){
-
       String nonImpStr = "\r\n\t";
       byte[] validCharTable = null;
       
       validCharTable = (nonImpStr + _charKnown).getBytes();
 
       for (int i = 0; i < _b.length; i++){
-        if (asciiChar(_b[i]))
-            ;
-        else {
-          if (byteIn(_b[i],validCharTable)) 
-            ;
-          else {
-                new FatalProblemDlg("I was in FilterFile.testValidityOfBytes,  i = " + i + "; _b[i] = " +
+        if (!asciiChar(_b[i]))
+          if (!byteIn(_b[i],validCharTable)) {
+               new FatalProblemDlg("I was in FilterFile.testValidityOfBytes,  i = " + i + "; _b[i] = " +
                            Byte.toString(_b[i]) + "; nonImpStr.charAt(j) = " + writeTo(validCharTable));
-                //System.out.println("I was in FilterFile.testValidityOfBytes,  i = " + i + "; _b[i] = " +
+               //System.out.println("I was in FilterFile.testValidityOfBytes,  i = " + i + "; _b[i] = " +
                 //           Byte.toString(_b[i]) + "; nonImpStr.charAt(j) = " + writeTo(validCharTable));
                 return false;
-          } //if (charIn(_b[i],nonImpStr)); else
+          // //if (charIn(_b[i],nonImpStr)); else
         } // if (asciiChar(_b[i])   ; else
       }
       return true;

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.126 $  $Date: 2004-11-05 14:00:43 $
+ * Title: DConst $Revision: 1.127 $  $Date: 2004-11-09 15:41:42 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.126 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.127 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -181,6 +181,7 @@ public class DConst {
 
   //Preferences menu
   public final static String PREF = res.getString("pref");//Preferences
+
   public final static String PLAF_M = res.getString("plafM");//options L&F
   public final static String CONFLICTS = res.getString("conflicts");//options L&F
 
@@ -401,7 +402,9 @@ public class DConst {
   public final static String ACTI_TEXT11= res.getString("activText11");//Wrong type of rooms:
   public final static String ACTI_TEXT12= res.getString("activText12");//Wrong format of pre-assigned activity at line:
   public final static String ACTI_TEXT13= res.getString("activText13");//Wrong number of instructors at line:
-
+  public final static String ACTI_TEXT14= res.getString("activText14");//Wrong group name at line:
+  public final static String ACTI_TEXT15= res.getString("activText15");//Wrong site name at line:
+  public final static String ACTI_TEXT16= res.getString("activText16");//Wrong capacity format at line: 
 
   public final static String FILE_TTS  = res.getString("fileTTS");//Fichier_Grille, unp
   public final static String O_TTSTD  = res.getString("oTTSTD");//Grille, unp
@@ -465,6 +468,13 @@ public class DConst {
   public static final int STUD_COURSE_LENGTH = 7;
   public static final int STUD_COURSE_GROUP_LENGTH = 9;
   public static final int STUD_SITE_LENGTH = 3;
+  
+  // activity
+  public static final int NUMBER_OF_TOKEN_COURSE_LINE = 4;
+  public static final int SIZE_OF_COURSE_TOKEN = 7;
+  public static final int SIZE_OF_GROUP_TOKEN = 2;
+  public static final int ACT_SITE_LENGTH = 3;
+  public static final int ACT_CAPACITY_LENGTH = 5;
   
   /*public DConst() {
   }*/

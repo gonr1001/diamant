@@ -1,7 +1,7 @@
 package eLib.exit.dialog;
 /**
  *
- * Title: FatalProblemDlg $Revision: 1.2 $  $Date: 2004-09-10 13:31:09 $
+ * Title: FatalProblemDlg $Revision: 1.3 $  $Date: 2004-11-09 15:41:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package eLib.exit.dialog;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -84,21 +84,22 @@ public class FatalProblemDlg {
   }
   
   
-/**
-  * @param comp a Component the parent of the JOptionPane
-  * @param message a String  which will be the message that
-  * the user see in  in the dialog display.
-  * @param title a String which will be displayed as the
-  * title message.
-  *
-  * <p>Clicking in the button will dispose the dialog.
-  */
+  /**
+   * @param comp a Component the parent of the JOptionPane
+   * @param message a String  which will be the message that
+   * the user see in  in the dialog display.
+   * @param title a String which will be displayed as the
+   * title message.
+   *
+   * <p>Clicking in the button will dispose the dialog.
+   */
   public FatalProblemDlg(Component comp, String message, String title) {
-  JOptionPane.showMessageDialog(comp,
-                               message,
-                               title,
-                               JOptionPane.ERROR_MESSAGE);
+  	JOptionPane.showMessageDialog(comp,
+  			message,
+			title,
+			JOptionPane.ERROR_MESSAGE);
   }
+  
 } /* FatalProblemDlg */
 
 
