@@ -12,22 +12,23 @@ import java.awt.Color;
 import dInternal.dUtil.DXObject;
 
 public class State extends DXObject{
-  private Color color;
-  private int value;
+  private Color _color;
+  private int _value;
 
   /**
    * constructor
    */
   public State() {
-    color = Color.BLACK;
+    _color = Color.BLACK;
+    _value = 0;
   }
 
   /**
    * constructor
    */
   public State(Color col, int val) {
-    color = col;
-    value= val;
+    _color = col;
+    _value= val;
   }
 
   /**
@@ -35,7 +36,7 @@ public class State extends DXObject{
    * @param col
    */
   public void setColor(Color col){
-    color = col;
+    _color = col;
   }
 
   /**
@@ -43,7 +44,7 @@ public class State extends DXObject{
    * @param val
    */
   public void setValue(int val){
-    value = val;
+    _value = val;
   }
 
   /**
@@ -51,7 +52,7 @@ public class State extends DXObject{
    * @return
    */
   public Color getColor(){
-    return color;
+    return _color;
   }
 
   /**
@@ -59,7 +60,7 @@ public class State extends DXObject{
    * @return
    */
   public int getValue(){
-    return value;
+    return _value;
   }
 
   public String getModif(){

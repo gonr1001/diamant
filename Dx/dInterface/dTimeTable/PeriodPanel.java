@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
 
 import dInternal.dTimeTable.Period;
+import dResources.DConst;
 
 public class PeriodPanel extends JPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;
@@ -53,9 +54,9 @@ public class PeriodPanel extends JPanel{
     _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
     _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
     if(period.getPriority()!=2){
-      _cRoom.setForeground(Color.blue);// rooms conflicts color
-      _cTeach.setForeground(Color.red);// instructors conflicts color
-      _cStu.setForeground(Color.magenta);// students conflicts color
+      _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
+      _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
+      _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
     }
     //
     topPanel.add(per);

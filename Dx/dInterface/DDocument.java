@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.56 $  $Date: 2003-08-19 16:11:50 $
+ * Title: DDocument $Revision: 1.57 $  $Date: 2003-08-21 11:03:18 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -146,6 +146,7 @@ public class DDocument  extends InternalFrameAdapter implements
  //   } // end getJIF
     //-------------------------------------------
 
+/*
     public JPanel initStatusBar(){
       JPanel panel = new JPanel();
       _nbModif = new JLabel( "Modifications " + _dm.getState().getModif() );
@@ -162,10 +163,10 @@ public class DDocument  extends InternalFrameAdapter implements
       panel.add(_nbCRoom);
       panel.add(_nbCStu);
       return panel;
-    } // initBottomPanel
+    } // initBottomPanel */
 
 
-
+/*
     public void updateStateBar(State s) {
       _nbModif.setText( "Modifications " + _dm.getState().getModif() );
       _nbBlocs.setText(DConst.BLOCS + _dm.getState().getModif() +" / " + _dm.getState().getModif() );
@@ -176,7 +177,7 @@ public class DDocument  extends InternalFrameAdapter implements
      _nbCStu.setText("    +CON01+nbCftStud");
       _nbCStu.setForeground(Color.magenta);
      }
-
+*/
 
 
 /*    public void updateTTPanel(){
@@ -195,14 +196,14 @@ public class DDocument  extends InternalFrameAdapter implements
     public void changeInDModel(DModelEvent  e) {
       //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
       _ttPanel.updateTTPanel(_dm.getTTStructure());
-      this.updateStateBar(_dm.getState());
+      //this.updateStateBar(_dm.getState());
 
     }// end actionPerformed
 
     public void changeInTTStructure(TTStructureEvent  e) {
       if (_dm.getModified()){
         //System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
-        this.updateStateBar(_dm.getState());
+       // this.updateStateBar(_dm.getState());
         _ttPanel.updateTTPanel(_dm.getTTStructure());
       }
     }// end actionPerformed*/
@@ -234,7 +235,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
     _modified = false;
-    _stateBar = new DStateBar(_dm.getState());//initStatusPanel();
+    _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
     _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));

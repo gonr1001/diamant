@@ -12,7 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
+import dResources.DConst;
+import dInternal.dData.Resource;
 import dInternal.dData.State;
+import dInternal.dData.SetOfStates;
 /**
  * <p>Title: </p>
  * <p>Description: </p>
@@ -23,60 +27,50 @@ import dInternal.dData.State;
  */
 
 public class DStateBar extends JPanel {
+  private JLabel _theLabels[];
+
    public final static int ERROR_SIZE_TO_SMALL =-1;
    public final static int ERROR_SIZE_OVER     = 1;
    public final static int VALIDATE_OK         = 0;
    private Hashtable _constantTable = new Hashtable();
    private Hashtable _labelTable = new Hashtable();
+
    private int _maxItems =0;
    boolean _trace = false;
 
-   /**
-    * Constructeur de la classe
-    *
-    * @param constantLabel : Contients les chaines de charactère qui ne changeront pas dans les Labels
-    * @param label : Contients les chaines de charactères qui changeront
-    * @param labelColor : Couleurs des labels
-    * @param maxItems : Maximums items pouvant être entrer dans la JStatusBar
-    */
-   public DStateBar(String [] constantLabel, String [] label, Color [] labelColor, int maxItems)
-   {
-      this.setLayout(new FlowLayout());
-      this.setBorder(BorderFactory.createEtchedBorder());
-      try
-      {
-         jbInit(constantLabel, label, labelColor, maxItems);
-      }
-      catch(Exception ex)
-      {
-         ex.printStackTrace();
-      }
+
+   public DStateBar(SetOfStates s) {
+     boolean first = true;
+     _theLabels = new JLabel [s.size()];
+     for (int i = 0; i < s.size(); i++) {
+       _theLabels[i] = new JLabel();
+     }
+     showDStateBar(s, first);
    }
 
-   /**
-    * Constructeur de la classe
-    *
-    * @param constantLabel : Contients les chaines de charactère qui ne changeront pas dans les Label
-    * @param label : Contients les chaines de charactères qui changeront
-    * @param labelColor : Couleurs des labels
-    */
-   public DStateBar(String [] constantLabel, String [] label, Color [] labelColor)
-   {
-      this(constantLabel,  label,  labelColor, constantLabel.length);
+   public void upDateDStateBar(SetOfStates s) {
+     boolean first = false;
+     showDStateBar(s, first);
    }
 
-   public DStateBar(State s)
-   {
-   //this(s.constantLabel,  s.label,  s.labelColor, s.constantLabel.length);
+   private void showDStateBar(SetOfStates s, boolean first) {
+     for(int i = 0; i < s.size(); i++) {
+       Resource r =  (Resource) s.getResourceAt(i);
+       if ( ((State)r.getAttach()).getColor() != null) {
+         _theLabels[i].setForeground(((State)r.getAttach()).getColor());
+       } else {
+         _theLabels[i].setForeground(DConst.COLOR_BLACK);
+     }
+     if ( ((State)r.getAttach()).getValue() >= 0 ) {
+       _theLabels[i].setText(r.getID() + " : " + " " + ((State)r.getAttach()).getValue() + " ");
+     } else {
+       _theLabels[i].setText(r.getID() + " : " +  "  ");
+     }
+   if (first) {
+     this.add(_theLabels[i]);
    }
-
-   /**
-    * Mets des valeurs par défauts dans la bar.
-    */
-   public DStateBar()
-   {
-      this(new String[]{"CONST0 :", "CONST1 :"},new String[]{"0", "1"},new Color []{Color.yellow, Color.orange});
-   }
+} // end for
+} // end showDStateBar
 
    /**
     * Initialise les composante graphique de la status bar

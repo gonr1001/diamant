@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.39 $  $Date: 2003-08-01 15:06:44 $
+ * Title: DConst $Revision: 1.40 $  $Date: 2003-08-21 11:03:18 $
  * Description: DConst is a class used to
  *
  *
@@ -14,14 +14,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.39 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.40 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
 package dResources;
 
 import java.util.ResourceBundle;
+import java.awt.Color;
 
 public class DConst {
 
@@ -64,6 +65,13 @@ public class DConst {
   public final static int STINBOFPERIODSADAY=14;
   public final static int STIBEGINHOUR=8;
   public final static int STIBEGINMINUTE=30;
+
+  // Color constants
+  public final static Color COLOR_BLACK = Color.black; // Default color
+  public final static Color COLOR_AUX = Color.darkGray; // Other color
+  public final static Color COLOR_ROOM = Color.blue; // Rooms conflicts color
+  public final static Color COLOR_INST = Color.red;  // Instructors conflicts color
+  public final static Color COLOR_STUD = Color.magenta; // Students conflicts color
   //DDocument
   public final static String V_DATE = res.getString("vDate");//13 mai 2003
   public final static String BLOCS = "BLOCS";//pas trouve dans DStringFrRes
@@ -72,11 +80,11 @@ public class DConst {
   //File menu
   public final static String FILE  = res.getString("file");//Fichier
   public final static String NEW_TT = res.getString("newTT");//Nouvel horaire
-    public final static String NTT_CY = res.getString("nTTCy");//Horaire cycle
-    public final static String NTT_EX = res.getString("nTTEx");//Horaire Examen
+  public final static String NTT_CY = res.getString("nTTCy");//Horaire cycle
+  public final static String NTT_EX = res.getString("nTTEx");//Horaire Examen
   public final static String NEW_TTS = res.getString("newTTS");//Nouvelle grille
-    public final static String NTTS_CY = res.getString("nTTSCy");//Grille cycle
-    public final static String NTTS_EX = res.getString("nTTSEx");//Grille examen
+  public final static String NTTS_CY = res.getString("nTTSCy");//Grille cycle
+  public final static String NTTS_EX = res.getString("nTTSEx");//Grille examen
   public final static String OPEN  = res.getString("open");//Ouvrir horaire
   public final static String OPEN_TTS  = res.getString("openTTS");//Ouvrir grille
   public final static String SAVE  = res.getString("save");//Enregistrer
@@ -115,27 +123,27 @@ public class DConst {
   public final static String DEF_F_TD  = res.getString("defFTD");//Definir fichiers pour l'importation automatique
   public final static String IMP_A_TD  = res.getString("impATD");//Importation de fichiers
   public final static String IMP_A_SUC  = res.getString("impASuc");//Fichiers importés avec succes!!!
-    //DefFilesToImportDlg
-    public final static String DEF_F_D1  = res.getString("defFD1"); // "Les cours"
-    public final static String DEF_F_D2  = res.getString("defFD2"); // "Inscription d'étudiants"
-    public final static String DEF_F_D3  = res.getString("defFD3"); // "Disponibilités d'enseignants"
-    public final static String DEF_F_D4  = res.getString("defFD4"); // "Les locaux"
-    public final static String DEF_F_D5  = res.getString("defFD5"); //"Au moins un champ ne contient aucune valeur.\n"
-    public final static String DEF_F_D6  = res.getString("defFD6"); // "Veuillez entrer un fichier pour chaque type demandé."
-    public final static String DEF_F_D7  = res.getString("defFD7"); // "Sauvegardés dans : "
-    public final static String DEF_F_D8  = res.getString("defFD8"); // "Fichiers d'importation"
+  //DefFilesToImportDlg
+  public final static String DEF_F_D1  = res.getString("defFD1"); // "Les cours"
+  public final static String DEF_F_D2  = res.getString("defFD2"); // "Inscription d'étudiants"
+  public final static String DEF_F_D3  = res.getString("defFD3"); // "Disponibilités d'enseignants"
+  public final static String DEF_F_D4  = res.getString("defFD4"); // "Les locaux"
+  public final static String DEF_F_D5  = res.getString("defFD5"); //"Au moins un champ ne contient aucune valeur.\n"
+  public final static String DEF_F_D6  = res.getString("defFD6"); // "Veuillez entrer un fichier pour chaque type demandé."
+  public final static String DEF_F_D7  = res.getString("defFD7"); // "Sauvegardés dans : "
+  public final static String DEF_F_D8  = res.getString("defFD8"); // "Fichiers d'importation"
   //Assign dialogs
   public final static String INST_ASSIGN_TD = res.getString("instAssignTD");//Disponibilité enseignants
   public final static String INST_ASSIGN_D = res.getString("instAssignD");//To be defined, unp
   public final static String TO_LEFT  = res.getString("toLeft");//««
   public final static String TO_RIGHT  = res.getString("toRight");//»»
-    //ActivityDlg
-    public final static String ACT_LIST  = res.getString("actList"); //Liste des activités
-    public final static String SHOW  = res.getString("show"); //Aficher
-    public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
-    public final static String INCLUDED  = res.getString("included");//Inclue(s)
-    //InstructorAvailabiliyDlg
-    public final static String AVAILABILITY = "Disponibilités";
+  //ActivityDlg
+  public final static String ACT_LIST  = res.getString("actList"); //Liste des activités
+  public final static String SHOW  = res.getString("show"); //Aficher
+  public final static String NOT_INCLUDED  = res.getString("notIncluded");//Non inclue(s)
+  public final static String INCLUDED  = res.getString("included");//Inclue(s)
+  //InstructorAvailabiliyDlg
+  public final static String AVAILABILITY = "Disponibilités";
 
 
   //Preferences dialogs
@@ -191,6 +199,19 @@ public class DConst {
   public final static String CLOSE_TTS  = res.getString("closeTTS");//Fermer grille, unp
   public final static String SAVE_TTS  = res.getString("saveTTS");//Enregistrer grille, unp
   public final static String SAVE_AS_TTS  = res.getString("saveAsTTS");//Enregistrer grille sous, unp
+
+  public final static String SB_TOTAL = res.getString("sbTotal"); // Total
+  public final static String SB_T_ACT = res.getString("sbTAct"); // Act
+  public final static String SB_T_INST = res.getString("sbTInst"); // Ens
+  public final static String SB_T_ROOM = res.getString("sbTRoom"); // Loc
+  public final static String SB_T_STUD = res.getString("sbTStu"); // Stu
+  public final static String SB_T_EVENT = res.getString("sbTEvent"); // Blo
+  public final static String SB_T_ASSIG = res.getString("sbTAssig"); // Pla
+
+  public final static String SB_CONF = res.getString("sbConf"); // Conflicts
+  public final static String SB_C_INST = res.getString("sbCInst"); // Ens
+  public final static String SB_C_ROOM = res.getString("sbCRoom"); // Loc
+  public final static String SB_C_STUD = res.getString("sbCStu"); // Stu
 
   public DConst() {
   }
