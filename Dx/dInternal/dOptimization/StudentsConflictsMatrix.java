@@ -54,8 +54,8 @@ public class StudentsConflictsMatrix {
           if(dm.getSetOfActivities().getType(token,tokenType)==null){
             DXValue error= new DXValue();
             String matricule= "00000000"+sos.getResourceAt(i).getKey();
-            error.setStringValue("Erreur --> "+matricule.substring(matricule.length()-8,matricule.length())+" - "
-                                 +sos.getResourceAt(i).getID()+"- Activity: "+token+tokenType+" *** INEXISTANTE");
+            error.setStringValue("Erreur --> "+ matricule.substring(matricule.length()-8,matricule.length())+" - "
+                                 +sos.getResourceAt(i).getID()+"- Activité: "+token+tokenType+" *** Inexistante");
             dm.getSetOfImportErrors().addResource(new Resource("1",error),0);
           }// end if(dm.getSetOfActivities().getResource(token)==null)
 
@@ -170,8 +170,8 @@ public class StudentsConflictsMatrix {
             String groupeID=DXTools.STIConvertGroup(studentGroup);
             if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null){
               DXValue error= new DXValue();
-              error.setStringValue("Erreur --> "+student.getKey()+" - "+student.getID()+"- Activity: "+rescActivity.getID()
-                                 +"."+rescType.getID()+" - Group: "+groupeID);
+              error.setStringValue("Erreur --> "+student.getKey()+" - "+student.getID()+"- Activité: "+rescActivity.getID()
+                                 +"."+rescType.getID()+" - Groupe: "+groupeID);
               setOfImportErrors.addResource(new Resource("1",error),0);
               ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),-1,false);
             }// end if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null)
