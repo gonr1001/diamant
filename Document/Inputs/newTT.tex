@@ -1,1 +1,43 @@
 \chapter{Nouvelle architecture de la grille horaire de \diamant{}} 
+
+Ce chapitre présente la nouvelle grille horaire, décrit les interprétations et l'énumération des différentes
+informations requises par \diamant{}.
+
+\section{présentation de la grille horaire}
+
+Cette nouvelle grille horaire sera stockée dans un fichier XML comme représenté à la figure \ref{xmltt} et elle permettra de traiter indépendamment chaque cycle.
+
+\subsection{Exemple des données qu'elle contient}
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=250pt]{Images/TTxmlContains.eps}
+    \caption{Fichier XML de la grille horaire}\label{xmlcontains}
+  \end{center}
+\end{figure}
+
+\subsection{Signification des données}
+
+Le fichier XML contenant les informations sur la grille horaire est organisé de manière hiérarchique (arbre). Chaque information est encapsulée dans un \emph{tag}. Chaque \emph{tag} donne le grade hiérarchique de l'information sur l'arbre. Cette hiérarchie est décrite comme suit:
+\begin{itemize}
+    \item le tag \emph{DXTimeTable}:
+    \item le tag \emph{TTweek}:
+    \item le tag \emph{TTdays}:
+    \item le tag \emph{TTday}:
+    \item le tag \emph{TTsequences}:
+    \item le tag \emph{TTsequence}:
+    \item le tag \emph{TTperiods}:
+    \item le tag \emph{TTperiod}:
+\end{itemize}    
+
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=200pt]{Images/TTxmlModel.eps}
+    \caption{Schema de la grille horaire}\label{xmltt}
+  \end{center}
+\end{figure}
+
+\section{Avantages et limites de cette architecture}
