@@ -50,11 +50,11 @@ class reference1 {
 */
 class reference2 {
 }/**
-@__ref <oiref:design#Class#id2z0kldks91va6dks92e2e.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id2ni3ddky34z86dky35ine.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInternal.dConditionsTest:oiref> 
 */
-class reference8 {
+class reference10 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -68,10 +68,10 @@ class __options {
 @__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.DModelProcess#_dm:oiref>=329,463,210,463:oigroup>
 <oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=453,10,153,286,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=453,270,93,101,1:oigroup>
+<oigroup:<oiref:design#Class#id2ni3ddky34z86dky35ine.diagram:oiref>=221,7,177,228,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,430,141,117,1:oigroup>
 <oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=199,570,115,100,1:oigroup>
 <oigroup:<oiref:java#Implements#dInternal.DModel#dInternal.DModelListener:oiref>=10,488,10,488:oigroup>
-<oigroup:<oiref:design#Class#id2z0kldks91va6dks92e2e.diagram:oiref>=221,6,177,196,1:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=210,537,329,537:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
 <oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=329,389,200,222,1:oigroup>

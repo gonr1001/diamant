@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.74 $  $Date: 2003-09-19 16:10:54 $
+ * Title: DDocument $Revision: 1.75 $  $Date: 2003-09-23 15:33:39 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.74 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.75 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -222,7 +222,7 @@ public class DDocument  extends InternalFrameAdapter implements
       _dm.getSetOfStates().sendEvent();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       //_stateBar.upDateDStateBar(_dm.getSetOfStates());
-      setCursor(Cursor.WAIT_CURSOR, component);
+      setCursor(Cursor.DEFAULT_CURSOR, component);
       //component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }// end ac
 
