@@ -63,7 +63,7 @@ public class TTPanel extends JScrollPane {
 
   private JPanel createColumnHeader() {
     JPanel panel = new JPanel(new GridLayout(1, 0));
-    Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
+    Cycle cycle =_dm.getTTStructure().getCurrentCycle();//getCycle(_dm.getCurrentCycle());
     for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
       Resource day = cycle.getSetOfDays().getResourceAt(i);
       panel.add(new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
@@ -76,7 +76,7 @@ public class TTPanel extends JScrollPane {
 
   private JPanel createRowHeader() {
     JPanel panel = new JPanel(new GridLayout(0,1));
-    Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
+    Cycle cycle =_dm.getTTStructure().getCurrentCycle();//.getCycle(_dm.getCurrentCycle());
     Day day = _dm.getTTStructure().getDay(cycle,1);
     int numbOfSequences = day.getSetOfSequences().size();
     JLabel label, label1;
@@ -104,7 +104,7 @@ public class TTPanel extends JScrollPane {
     GridBagLayout gridbag =new GridBagLayout();
     JPanel panel =  new JPanel( gridbag );
     panel.setBackground(SystemColor.window);
-    Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
+    Cycle cycle =_dm.getTTStructure().getCurrentCycle();//.getCycle(_dm.getCurrentCycle());
     int nbDays,nbSeq,nbPerADay;
     nbDays = cycle.getSetOfDays().size(); //timeTable.nbDays;
     gridbag.columnWeights = new double [nbDays];

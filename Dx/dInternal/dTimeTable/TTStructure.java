@@ -17,8 +17,8 @@ public class TTStructure {
   private SetOfCycles _setOfCycles;
   //private int _periodLenght=60;
   private int _nbOfStCycles=2;
-  private int _nbOfStDays=5;
-  private int _currentCycle=1;
+  private int _nbOfStDays=7;
+  //private int _currentCycleIndex = 1;
   //DXTimeTable tag
   static final String ITEM2= "DXTimeTable";
   //subtag
@@ -32,25 +32,24 @@ public class TTStructure {
   private String _str;
   private int _col;
   private int _row;
-  private int _numberOfActivesDays=5;// monday to friday
+  private static int _numberOfActivesDays=5;// monday to friday
 
   public TTStructure() {
     _setOfCycles= new SetOfCycles();
     _col=6;
     _row= 15;
 
-    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    ///CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
     loadTTStructure("StandardTTC.xml");
-
-    /*Resource cycle=_setOfCycles.getSetOfCycles().getResource("1");
-    Resource day= ((Cycle)cycle.getAttach()).getSetOfDays().getResource("2");
-    Resource sequence= ((Day)day.getAttach()).getSetOfSequences().getResource("PM");
-    Period period= (Period)((Sequence)sequence.getAttach()).getSetOfPeriods().getResource("2").getAttach();
-    period.setBeginHour(23,0);*/
 
     saveTTStructure("test.xml");
 
 
+  }
+
+  /***/
+  public static int getNumberOfActiveDays(){
+    return _numberOfActivesDays;
   }
 
   public int getPeriodLenght(){
@@ -61,8 +60,8 @@ public class TTStructure {
   //   _periodLenght= periodL;
   //}
 
- public SetOfResources getSetOfCycles() {
-    return new SetOfResources(4);
+ public SetOfCycles getSetOfCycles() {
+    return _setOfCycles;
  }
 
  public void setSetOfResources(SetOfResources setOfCycles) {
@@ -105,33 +104,20 @@ public class TTStructure {
 
   /**
    * */
-  public int getCurrentIndexCycle(){
-    return _currentCycle;
+  public int getCurrentCycleIndex(){
+    return _setOfCycles.getCurrentCycleIndex();
   }
 
-  /**
-   * */
+
   public Cycle getCurrentCycle(){
-    return getCycle(_currentCycle) ;
-  }
-
-  /**
-   * */
-  public void setCurrentCycle(int curCyc){
-    _currentCycle= curCyc;
+    return _setOfCycles.getCurrentCycle() ;
   }
 
 
+  public void setCurrentCycleIndex(int curCyc){
+    _setOfCycles.setCurrentCycleIndex(curCyc);//_currentCycleIndex = curCyc;
+  }
 
-  /**
-  * get a cycle
-  * @param int the cycle reference number
-  * @return Cycle the cycle or null if the cycle does not found
-  * */
- public Cycle getCycle(int cycleRefNo ){
-   return (Cycle)_setOfCycles.getSetOfCycles().getResource(
-       Integer.toString(cycleRefNo)).getAttach();
- }
 
  /**
    * get a day in a cycle
@@ -179,9 +165,9 @@ public class TTStructure {
    * @param Cycle the cycle where we want to find the number of days
    * @return int the number of days
    * */
-  public int getNumberOfDays(Cycle cycle){
+ /* public int getNumberOfDays(Cycle cycle){
     return cycle.getSetOfDays().size();
-  }
+  }*/
   public void setNumberOfDays(long currCycle){
     Cycle cycle = (Cycle) _setOfCycles.getSetOfCycles().getResource(currCycle).getAttach();
     System.out.println("setNumberOfDays  " + cycle.getSetOfDays().size() );

@@ -86,8 +86,34 @@ public class SetOfCycles {
     return  _periodLenght;
   }
 
+  /**
+   * */
+  public Cycle getCycle(int cycleIndex){
+    return (Cycle)_setOfCycles.getResourceAt((cycleIndex)).getAttach();
+  }
+
+  /**
+   * */
+  public Cycle getCurrentCycle(){
+    return getCycle(_currentCycleIndex) ;
+  }
+
+  /**
+  * */
+ public int getCurrentCycleIndex(){
+   return _currentCycleIndex ;
+  }
+
+  /**
+   * */
+  public void setCurrentCycleIndex(int curCycleIndex){
+    _currentCycleIndex = curCycleIndex;
+  }
+
+
   private SetOfResources _setOfCycles;
   private int _periodLenght;
+  private int _currentCycleIndex=1;
   static final String _TAGITEM="TTcycle";
   static final String _TAGITEM1="cycleID";
   static final String _TAGITEM2="pLength";

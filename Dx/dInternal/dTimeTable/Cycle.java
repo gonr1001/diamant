@@ -3,6 +3,7 @@
 package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
+import dInternal.dTimeTable.TTStructure;
 import dInternal.dData.Resource;
 import dInternal.dUtil.DXObject;
 import xml.InPut.ReadXMLElement;
@@ -11,11 +12,46 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 
 public class Cycle extends DXObject{
-    public Cycle() {
-      _setOfDays = new SetOfResources(4);
-    }
 
-    /**
+  //********Alex
+  //private Day _currentDay;
+  private int _currentDayIndex;
+  //********Alex/
+
+
+  public Cycle() {
+    _setOfDays = new SetOfResources(4);
+  }
+
+  /**
+   *
+   * */
+  public void addDays(int nbDays){
+    int size= _setOfDays.size();
+    Day day= (Day)_setOfDays.getResourceAt(size-1).getAttach();
+    for (int i=size; i< (size+nbDays); i++){
+      String dayID= TTStructure._weekTable[i%TTStructure.getNumberOfActiveDays()];
+      _setOfDays.setCurrentKey(i+1);
+      _setOfDays.addResource(new Resource(dayID,day),0);
+    }
+  }
+
+  /**
+   *
+   * */
+  public void removeDays(int nbDays){
+    int size= _setOfDays.size();
+    Day day= (Day)_setOfDays.getResourceAt(size-1).getAttach();
+    for (int i=size; i> (size-nbDays); i--){
+      //String dayID= TTStructure._weekTable[i%TTStructure.getNumberOfActiveDays()];
+      //_setOfDays.setCurrentKey(i+1);
+      //_setOfDays.addResource(new Resource(dayID,day),0);
+      _setOfDays.removeResourceAt(i-1);
+    }
+  }
+
+
+  /**
      * get the set of days
      * @return SetOfResources the set of days
      * */
@@ -30,6 +66,41 @@ public class Cycle extends DXObject{
     public void setSetOfDays(SetOfResources setOfDays){
       _setOfDays= setOfDays;
     }
+
+    /**
+   * get the number of days in a cycle
+   * @param Cycle the cycle where we want to find the number of days
+   * @return int the number of days
+   * */
+  public int getNumberOfDays(){
+    return _setOfDays.size();
+  }
+
+  /**
+   * */
+  public Day getDay(int dayIndex){
+    return (Day)_setOfDays.getResourceAt((dayIndex)).getAttach();
+  }
+
+  /**
+   * */
+  public Day getCurrentDay(){
+    return getDay(_currentDayIndex) ;
+  }
+
+  /**
+  * */
+ public int getCurrentDayIndex(){
+   return _currentDayIndex ;
+  }
+
+  /**
+   * */
+  public void setCurrentDayIndex(int curDayIndex){
+    _currentDayIndex = curDayIndex;
+  }
+
+
 
     /**
     *read a xml tag containing a set of days and build the resource

@@ -78,6 +78,20 @@ public class DXToolsMethods {
   }
 
   /**
+   *check if a String is an int value and exit software otherwise
+   * @param String the string value to check
+   * */
+  public final static boolean isIntValue(String value){
+    String error="";
+    try{
+       Integer.parseInt(value.trim());
+    }catch (NumberFormatException exc){
+      return false;
+    }
+    return true;
+  }
+
+  /**
    * Convert STI Time and periods
    * @param int the reference period
    * @return int[2] the first element of the table is hour and the second element
