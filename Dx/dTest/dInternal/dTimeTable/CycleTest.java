@@ -23,7 +23,7 @@ import xml.OutPut.*;
 import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 
- public class CycleTest extends TestCase {
+public class CycleTest extends TestCase {
    String path;
    public CycleTest(String name) {
      super(name);
