@@ -183,7 +183,10 @@ public class StudentAttach extends DXObject{
     temp= temp.substring(temp.length()-8,temp.length());
     String nbCours="000"+_courses.size();
     nbCours= nbCours.substring(nbCours.length()-2,nbCours.length());
-    return temp+ _auxField+id+nbCours;
+    String idTemp= temp+ _auxField+id;
+    for(int i=idTemp.length(); i<30; i++)
+      idTemp+=" ";
+    return idTemp+nbCours;
   }
 
   /**

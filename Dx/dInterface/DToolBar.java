@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.17 $  $Date: 2003-07-04 10:34:19 $
+ * Title: ToolBar $Revision: 1.18 $  $Date: 2003-07-08 12:13:18 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: rgr $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -314,7 +314,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
     /***
     * test ttstruc even
     * */
-    _tts.addTTStructureListener(this);
+    //_tts.addTTStructureListener(this);
     setToolBarOne();
     setToolBarTwo();
   }
