@@ -58,12 +58,11 @@ public class SetOfRooms extends SetOfResources{
             break;
           case 3:
             int nbTokens= currentLine.countTokens();
-            if(nbTokens<4){
+            if(nbTokens<5){
                 _error= DConst.ROOM_TEXT7+line+DConst.ROOM_TEXT5 +
                       "\n" + DConst.ROOM_TEXT6;
                 return false;
               }
-
               while (currentLine.hasMoreElements()){
                 token = currentLine.nextToken();
                 switch (state){
