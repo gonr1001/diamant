@@ -23,7 +23,7 @@ public class ConditionsTest extends TestCase {
 
   public ConditionsTest(String name) {
     super(name);
-    _dm= new DModel(new DDocument(),System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia",1);
+    _dm= new DModel(new DDocument(),"."  + File.separator+"dataTest"+File.separator+"loadData.dia",1);
     _dm.buildSetOfEvents();
     //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
     _dm.getConditionsTest().buildStudentConflictMatrix();

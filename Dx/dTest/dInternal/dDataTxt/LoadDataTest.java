@@ -36,11 +36,6 @@ public class LoadDataTest extends TestCase {
     path ="." + File.separator+"dataTest"+File.separator+"loadData.dia";
     LoadData loadData= new LoadData();
     _timeTable = loadData.loadProject(path, "." + File.separator+"dataTest"+File.separator);
-    /*_preferences = new Preferences(System.getProperty("user.dir")
-                               + File.separator +
-                               "pref"
-                               + File.separator +
-                                   "pref.txt");*/
   }
 
   public static Test suite() {

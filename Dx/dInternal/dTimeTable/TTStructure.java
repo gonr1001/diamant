@@ -308,7 +308,7 @@ public class TTStructure {
    * @return String the error message, empty if it does not found error
    * */
    public String saveTTStructure(String fileName){
-   	logger.info(trace.write(this,"D:"+File.separator+"Developpements"+File.separator+"DiamantExtreme"+File.separator+"Dx"+File.separator+"trace"+File.separator+"traceOut.xml"));
+   	logger.info(trace.write(this, "." +File.separator+"trace"+File.separator+"traceOut.xml"));
     WriteXMLElement wr;
     try{
       wr= new WriteXMLElement();

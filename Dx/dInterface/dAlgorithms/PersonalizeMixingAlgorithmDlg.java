@@ -13,8 +13,7 @@ package dInterface.dAlgorithms;
 
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JButton;
+
 
 /**
  *

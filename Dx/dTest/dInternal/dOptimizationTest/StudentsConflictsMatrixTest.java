@@ -27,7 +27,7 @@ DModel _dm;
 
 public StudentsConflictsMatrixTest(String name) {
   super(name);
-  _dm= new DModel(new DDocument(),System.getProperty("user.dir")+ File.separator+"dataTest"+
+  _dm= new DModel(new DDocument(),"." + File.separator+"dataTest"+
                     File.separator+"loadData.dia",0);
   _dm.buildSetOfEvents();
   //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());

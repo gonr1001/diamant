@@ -35,7 +35,6 @@ String path;
   public PeriodTest(String name) {
     super(name);
     path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
-  //System.out.println("rgr"+path);
   }
 
   public static Test suite() {
@@ -55,7 +54,6 @@ String path;
     Period period= new Period();
     try{
       xmlFile = new ReadXMLFile();
-      //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"period.xml");
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
@@ -78,7 +76,6 @@ String path;
     Period period= new Period();
     try{
       xmlFile = new ReadXMLFile();
-      //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"period.xml");
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
@@ -111,7 +108,6 @@ String path;
     Period period= new Period();
     try{
       xmlFile = new ReadXMLFile();
-      //System.out.println(path+"period.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"period.xml");
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
@@ -135,7 +131,6 @@ String path;
     Period periodS= new Period();
     try{
       xmlFile = new ReadXMLFile();
-      //System.out.println(path+"period.xml");//debug
       Document  doc;// = xmlFile.getDocumentFile(path+"period.xml");
       /*ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
@@ -154,7 +149,7 @@ String path;
      
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
-      System.out.println ("item " +item.toString());
+      //System.out.println ("item " +item.toString());
       periodS= new Period();
       periodS.readXMLtag(item);
       //Element ttStruc= _setOfCycles.writeXMLtag(doc);

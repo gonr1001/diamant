@@ -18,6 +18,7 @@ import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import eLib.exit.dialog.InformationDlg;
+
 public class EventsDlg extends EventsDlgInterface{
 
 

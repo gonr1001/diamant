@@ -1,7 +1,7 @@
 package eTest;
 /**
  *
- * Title: ClassName $Revision: 1.2 $  $Date: 2004-09-10 13:31:20 $
+ * Title: ClassName $Revision: 1.3 $  $Date: 2004-10-14 18:59:35 $
  * Description: ClassName is a class used to
  *
  *
@@ -15,7 +15,7 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -73,6 +73,8 @@ public class ByteInputFileTest extends TestCase {
     try {
       _bif = new ByteInputFile(str);
     } catch (Exception e) {
+    	 System.out.println(e);
+         e.printStackTrace();
     }
     assertEquals("testNameFileEmpty :", null, str);
   }

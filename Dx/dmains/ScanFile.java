@@ -1,74 +1,173 @@
-
+/**
+*
+* Title: ScanFile $Revision: 1.3 $  $Date: 2004-10-14 18:59:35 $
+* Description: ScanFile is a class used to read a file then
+*              write a "hex dump" in a file to be explored
+*              by a text editor.
+*              This is done in the case that the Diamant
+*              application detects a bad char in one of the 
+*              files.
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.3 $
+* @author  $Author: gonzrubi $
+* @since JDK1.4
+*/
 
 package dmains;
+import java.awt.Dimension;
+
+import javax.swing.JFileChooser;
+
+import dConstants.DConst;
 import eLib.exit.txt.ByteInputFile;
+import java.io.FileOutputStream;
 
+
+
+// System.out.println("char: "+(char)b[i] +
+// " int: "+ b[i] +
+ //" byte: " + (byte)b[i] +
+ //" short: "+(short)b[i] +
+ //" HEX:" + Integer.toHexString(b[i]).toUpperCase());
 public class ScanFile {
-
-  public static void main(String[] args) throws Exception{
-
-    //FileInputStream _fis = new FileInputStream(args[0]);dev
-    byte [] b;
-    ByteInputFile inputFile= new ByteInputFile (args[0]);
-
-
-    //InputStreamReader isr = new InputStreamReader(_fis);rgr21333ffss
-    // System.out.println(isr.getEncoding());ddnew sur branch
-    b = inputFile.readFileAsBytes();
-    inputFile.close();
-	int i = 0;
-    while ( i < b.length) {
-     // System.out.println("char: "+(char)b[i] +
-     // " int: "+ b[i] +
-      //" byte: " + (byte)b[i] +
-      //" short: "+(short)b[i] +
-      //" HEX:" + Integer.toHexString(b[i]).toUpperCase());dev
-      String str1 = "";
-      String str2 = "";
-      if (i+16 < b.length) {
-		for(int j = 0 ; j < 16 ; j ++) {
-				if (b[i+j] > 16) {
-					str1 += Integer.toHexString(b[i+ j]).toUpperCase() + " ";
-				} else {
-					str1 += "0";
-					str1 += Integer.toHexString(b[i+ j]).toUpperCase() + " ";
-				}
-
-			   if ( b[i + j ] < 126  && b[i + j] > 31 )
-				   str2 += (char) b[i + j ];
-			   else {
-			   	if ( b[i + j ] == 13  ||b[i + j] == 10 )
-			   		str2 += ".";
-			   	else
-					str2 +=  b[i + j] + " ";
-			   }
-			 }
-			 System.out.println(str1 + "   " + str2);
-			 i += 16 ;
-      }
-	  else {
-		for(; i < b.length ; i ++) {
-		if (b[i] > 16) {
-			str1 += Integer.toHexString(b[i]).toUpperCase() + " ";
-		} else {
-			str1 += "0";
-			str1 += Integer.toHexString(b[i]).toUpperCase() + " ";
+	String _error;  
+	String _fileName;
+	
+	public ScanFile() {
+		_error = "";
+	}
+	
+	public boolean fileNameExists(String [] args){
+		if (args.length == 0)
+			return obtainFileNamefromUser();
+		_fileName = args[0];
+		return true; // D:\Developpements\DiamantExtreme\Dx\data\fgen\75\choixet.sig.CHOIXET
+	}
+		
+	public void doIt(String iFileName, String oFileName) {
+		byte [] b;
+		StringBuffer out = new StringBuffer();
+		StringBuffer str1 = new StringBuffer();
+    	StringBuffer str2 = new StringBuffer();
+		String str3 = "";
+		try {
+			ByteInputFile inputFile = new ByteInputFile(iFileName);	
+			FileOutputStream outputFile = new FileOutputStream(oFileName);
+		    b = inputFile.readFileAsBytes();
+		    inputFile.close();
+		    int blankPad = (16 - b.length % 16) * 3;
+		    
+		    for(int m = 0; m < blankPad; m++){
+		    	str3 += " ";
+		    }
+			int i = 0;
+		    while ( i < b.length ) {
+		    	
+		    	if (i+16 < b.length) {
+		    		for(int j = 0 ; j < 16 ; j ++) {	
+		    			str1.append( appendToHex( b[i + j] ));
+		    			str2.append( appendToChar( b[i +j] ));	
+		    		}
+		    		out.append(str1 + "   " + str2 + DConst.CR_LF);  
+		    		i += 16 ;
+		    		outputFile.write(out.toString().getBytes());
+		    		out = new StringBuffer();
+		    		str1 = new StringBuffer();
+		        	str2 = new StringBuffer();
+		    		//System.out.println(i);
+		    	} else {
+		    		for(; i < b.length ; i++) {
+		    			str1.append( appendToHex( b[ i ] ));
+		    			str2.append( appendToChar( b[ i ] ));
+		    		}		    	
+		    		out.append(str1 + str3 + "   " + str2 + DConst.CR_LF);  
+	    
+		    		outputFile.write(out.toString().getBytes());
+		    		out = new StringBuffer();
+		    		str1 = new StringBuffer();
+		        	str2 = new StringBuffer();
+		    	} 
+		    }//end while
+			 
+			
+			 
+			 
+			 outputFile.close();
+		    } catch (Exception e) {
+			_error = e.toString();
 		}
+	}
+	
+	public String getError(){
+		return _error;
+	} 
+	
+	public String getFileName(){
+		return _fileName;
+	} 
+	
+	public StringBuffer appendToHex(byte b){
+		if	(b > 16) {
+			return new StringBuffer(Integer.toHexString( b ).toUpperCase() + " ");
+		}
+		return new StringBuffer("0" + Integer.toHexString( b ).toUpperCase() + " ");		
+	} // appendToHex
+	
+	public StringBuffer appendToChar(byte b){
+		if ( b < 126  && b > 31 ) 
+			return new StringBuffer("" +(char) b);
+		
+		if ( b == 13  || b == 10 )
+			return  new StringBuffer(".");
+		
+		return new StringBuffer("" + b + " ");
+				
+	} // appendToHex	
 
-	   if ( b[i ] < 126  && b[ i] > 31 )
-		   str2 += (char) b[ i ];
-	   else {
-		if ( b[i ] == 13  ||b[ i] == 10 )
-			str2 += ".";
-		else
-			str2 +=  b[i] + " ";
-	   }
-	 }
+	private boolean obtainFileNamefromUser() {
+		JFileChooser fc = new JFileChooser(".");
 
-	 System.out.println(str1 + "   " + str2);
+		// Display the file chooser in a dialog
+		Dimension d = fc.getPreferredSize();
+		fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
+		int returnVal = fc.showOpenDialog(null);
 
-	  }
-    } // end while
-    System.exit(1);
-  } // End of main
+		// If the file chooser exited sucessfully,
+		// and a file was selected, continue
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			// get the file name
+			_fileName = fc.getSelectedFile().getAbsolutePath();
+			return true; 		
+		}
+		//else annulate or close gave 
+		//Error in main : eLib.exit.exception.IOFileException: The file:  was not found
+		return false;
+
+	  }// end getFileNamefromUser
+	
+	public static void main(String[] args) {
+		System.out.println("hi!");
+		
+		ScanFile scan = new ScanFile();
+		if ( scan.fileNameExists(args) ) {
+			String inputFileName = scan.getFileName();
+			String outFileName = inputFileName + "out" + ".txt";
+			scan.doIt(inputFileName, outFileName);
+			if (scan.getError()!= "")
+				System.out.println("Error in main : " + scan.getError());
+		}
+		System.out.println("bye");
+		System.exit(1);
+	} //end main
+ 
 }

@@ -21,12 +21,6 @@ public class SetOfEventsTest extends TestCase {
 
   public SetOfEventsTest(String name) {
     super(name);
-    /*LoadData _lData= new LoadData();
-    Vector timeTable = _lData.loadProject(System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia");
-    _soa = (SetOfActivities)timeTable.get(4);
-    _soi = (SetOfInstructors)timeTable.get(2);
-    _sor = (SetOfRooms)timeTable.get(3);
-    _tts = (TTStructure)timeTable.get(1);*/
     _dm = new DModel(new DDocument(),"." + File.separator+"dataTest"+File.separator+"loadData.dia", 1);
   }
 

@@ -23,7 +23,7 @@ import dInterface.DApplication;
  */
 
 public class NewTTSCyCmd implements Command{
-  private final boolean PARTIAL = true;
+  //private final boolean PARTIAL = true;
 
   public NewTTSCyCmd() {
   }

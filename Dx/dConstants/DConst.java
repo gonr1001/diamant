@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.119 $  $Date: 2004-10-01 14:16:31 $
+ * Title: DConst $Revision: 1.120 $  $Date: 2004-10-14 18:59:29 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.119 $
+ * @version $Revision: 1.120 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,7 +29,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
   	public final static String V_DATE = "30 Sep 2004";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = false;
+	public final static boolean DEVELOPMENT = true;
     public static boolean USER_TEST_ACTIV = true; // comm
 	public final static String JVM = "1.4.2_03";
 
@@ -192,7 +192,7 @@ public class DConst {
   public final static String NTT_EX_M  = res.getString("nTTExM");//Examen, unp
 
   //User menu
-  public final static String USERTEST = res.getString("userTest");//Test utilisateur version beta
+  public final static String IN_TEST = res.getString("userTest");//Test utilisateur version beta
   public final static String SUBMENU1 = res.getString("user1");//Sous menu utilisateur 1
   public final static String SUBMENU2 = res.getString("user2");//Sous menu utilisateur 2
 

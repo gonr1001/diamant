@@ -1,6 +1,6 @@
 /**
  *
- * Title: Diamant $Revision: 1.18 $  $Date: 2004-10-06 18:43:22 $
+ * Title: Diamant $Revision: 1.19 $  $Date: 2004-10-14 18:59:34 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,8 +16,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.19 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dmains;
@@ -68,7 +68,6 @@ public class Diamant {
 
     public static void main(String[] args) {
       PropertyConfigurator.configure("trace" + File.separator + "log4j.conf");
-      
         if (GUI) {
           _logger.warn("hello_with_a_GUI");
           _logger.warn("Java version: "+ System.getProperty("java.version"));

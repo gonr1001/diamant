@@ -4,8 +4,820 @@
 \subsection{Le système}
 \diamant{} est un système interactive déterministe avec des états
 (\ang{interactive deterministic system with states}). Il faut
-decomposer le système afin de faire explicite le comportement du
-système. La documentation tabular doit servir à décrire une
-décomposition structurée.
+decomposer le système afin de faire \bld{explicite le
+comportement} du système. La documentation tabular doit servir à
+décrire une décomposition structurée. Le comportement est défini
+par des états et des commandes
 
 \subsection{Le modèle de décomposition}
+On considère le système comme un environnement où son état change
+selon l'arrivé de commandes externes.
+
+La fonction de transition de \diamant{}
+
+\[ {d}: S \times C \rightarrow S
+\]
+
+
+\[ \begin{array}{ll}{d}(s,c)=  & \mbox{état de \diamant{} après avoir re\c{c}u } \\
+           ~ &  \mbox{l'évenement commande}~ c \in C ~\mbox{dans l'état}~ s \in S.
+             \end{array}
+\]
+
+
+\paragraph{États}
+
+\begin{enumerate}
+    \item l'ensemble ${Mode} = \{ n, e\}$\\
+    contenant tous les horaires possibles.
+
+    \item l'ensemble .dia \\
+    contenant tous les horaires possibles.
+
+\end{enumerate}
+
+
+\paragraph{Commandes}
+
+\begin{enumerate}
+    \item l'ensemble de toutes les action dans les menus.
+    \item l'ensemble de toutes les actions dans les boîtes de
+    dialogue.
+\end{enumerate}
+
+
+\paragraph{La spécification système}
+
+La fonction de transition
+
+\[ {d}: S \times C \rightarrow S
+\]
+
+devient la table suivante~:
+
+Exemples de pages~:
+
+\begin{minipage}[t]{7.5in} %%%[t]{4in}
+My mini page
+
+\parbox[t]{3in}{hello hello hello hello hello hello \\
+hello hello hello hello hello hello} \hfill
+\parbox[t]{3in}{\fbox{bye \\ bye \\ bye \\ bye bye bye bye bye bye\\}}
+\end{minipage}
+
+
+\begin{minipage}[t]{7.5in} %%%[t]{4in}
+My mini page
+
+\parbox[t]{3in}{hello hello hello hello hello hello \\
+hello hello hello hello hello hello} \hfill
+\parbox[t]{3in}{\fbox{bye \\ bye \\ bye \\ bye bye bye bye bye bye\\}}
+\end{minipage}
+
+
+\begin{tabular}{ccccc}
+~ & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $Q_1$ & \ldots & $Q_m$ \\
+        \hline
+        \end{tabular}& ~ & $H_2:{Cond}$ \\
+$H_1:{Cond}$ &~&~&~&~\\
+\begin{tabular}{|c|}
+   \hline
+   $P_1$ \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+Dans \diamant{} on peut dire que le logiciel a plusieurs modes et
+que ces modes donnent un accès à des commandes~:
+
+Par exemple au début de l'exécution des menus sont enables
+(normal) ou disable (en gris). Les commandes d'un mode sont les
+commandes qui sont dans les menus enables.
+
+Il faut spécifier le \pro{state0}, quels sont les variables
+actives et quel est leur état.
+
+
+\section{Les états et les menus}
+
+\begin{itemize}
+    \item \pro{state0}
+    \item \pro{inTTCyConstrucS0}
+    \item \pro{inTTExConstrucS0}
+    \item \pro{inTTCyDefinition}
+    \item \pro{inTTExDefinition}
+    \item \pro{inTTCyConstruc}
+    \item \pro{inTTExConstruc}
+    \item
+
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{\pro{state0}}
+
+Mode début d'exécution \pro{state0}
+
+Pour le menu \pro{file}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   Commande \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|}
+        \hline
+        État \pro{state0}\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableExam} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTStrucCycle} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \pro{inTTCyDefinition} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTStrucExam} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \pro{inTTExDefinition}& ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{openTTable} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \pro{inTTCyConstruc}
+ & \pro{inTTExConstruc} & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{openTTStruc} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \pro{inTTCyDefinition} & \pro{inTTExDefinition} & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{defineFiles} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+
+\end{tabular}
+
+
+
+
+
+
+Pour le menu \pro{preferences}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{lookAndFeel} \\
+   \pro{conflicts} \\
+   \pro{viewSimple} \\
+   \pro{viewDetailedHorizontal} \\
+   \pro{viewDetailedVertical} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \pro{lookAndFeel} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \pro{PLAFDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+   \begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\begin{tabular}{|c|}
+   \hline
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{NewTTDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+\end{tabular}
+
+
+
+
+
+Pour le menu \pro{help}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{about} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        Display \pro{AboutDlg} & ~ & ~ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+   \hline
+
+\end{tabular}
+
+Pour le menu \pro{inTest}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+Pour le menu \pro{dev}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Mode début d'exécution \pro{state1}
+
+Pour le menu \pro{file}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{defineFiles} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+
+Pour le menu \pro{assign}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+
+Pour le menu \pro{modification}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+
+
+Pour le menu \pro{optimisation}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+
+Pour le menu \pro{preferences}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+Pour le menu \pro{report}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+Pour le menu \pro{help}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+
+Pour le menu \pro{dev}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+Pour le menu \pro{inTest}
+
+\begin{tabular}{ccccc}
+\begin{tabular}{|c|}
+   \hline
+   \pro{newTTableCycle} \\
+   \pro{newTTableExam} \\
+   \pro{newTTStrucCycle} \\
+   \pro{newTTStrucExam} \\
+   \pro{openTTable} \\
+   \pro{openTTStruc} \\
+   \pro{close} \\
+   \pro{save} \\
+   \pro{saveAs} \\
+   \pro{defineFiles} \\
+   \pro{import} \\
+   \pro{mergeRooms} \\
+   \pro{mergeInstuctors} \\
+   \pro{mergeActivities} \\
+   \pro{mergeStudents} \\
+   \pro{export} \\
+   \pro{exit} \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        $F_{11}$ & \ldots & $F_{1m}$ \\
+        \hline
+        \end{tabular}& ~ & ~ \\
+\begin{tabular}{|c|}
+   \hline
+   \vdots \\
+   \hline
+\end{tabular} & ~ & \begin{tabular}{|c|c|c|}
+        \hline
+        \vdots & \ldots & \vdots\\
+        \hline
+        \end{tabular}& ~ & ~ \\
+
+\end{tabular}
+
+
+\section{Les dialogues}

@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.17 $  $Date: 2004-06-21 15:38:17 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.18 $  $Date: 2004-10-14 18:59:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -140,7 +140,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     //Setting the button APPLY disable
     _applyPanel.setFirstDisable();
     this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
-  } // end  jbInit()
+  } // end  initialize()
 
   public void actionPerformed( ActionEvent event) {
     String command = event.getActionCommand();

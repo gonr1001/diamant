@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.55 $  $Date: 2004-09-29 19:00:39 $
+ * Title: DApplication $Revision: 1.56 $  $Date: 2004-10-14 18:59:30 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.56 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -45,7 +45,7 @@ import org.apache.log4j.Logger;
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
 import dInternal.Preferences;
-import dInternal.dTimeTable.TTStructure;
+//import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 
 import org.apache.log4j.Logger;
@@ -88,7 +88,7 @@ public class DApplication implements ActionListener {
   Trace trace=new Trace();
   public DApplication() {
   	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
-    //_logger.warn("hello_from DApplication");
+    _logger.warn("DApplication");
     _preferences = new Preferences(System.getProperty("user.dir")
                                    + File.separator +
                                    "pref"

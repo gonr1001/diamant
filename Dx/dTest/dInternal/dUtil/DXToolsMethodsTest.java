@@ -14,6 +14,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
+import java.io.File;
 
 public class DXToolsMethodsTest extends TestCase{
 
@@ -35,7 +36,7 @@ public class DXToolsMethodsTest extends TestCase{
       initialAvail[i] = line;
     }
     TTStructure tts = new TTStructure();
-    tts.loadTTStructure("D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\DXToolsMethodsTest_resizeAvailability.xml");
+    tts.loadTTStructure("."+ File.separator + "dataTest"+ File.separator +"DXToolsMethodsTest_resizeAvailability.xml");
     finalAvail = DXToolsMethods.resizeAvailability(initialAvail, tts);
     /*for (int i = 0; i < finalAvail.length; i++){
       for (int j = 0; j < finalAvail[i].length; j++){
