@@ -21,16 +21,15 @@ import javax.swing.event.*;
 import javax.swing.*;
 import javax.swing.JList;
 
-import dInterface.dUtil.DXJComboBox;
 import dResources.DConst;
 import dInterface.DApplication;
 import dInternal.dConditionsTest.EventAttach;
 import dInternal.dTimeTable.*;
 import dInternal.dData.*;
 import dInternal.dUtil.DXToolsMethods;
-import dResources.DConst;
+
 import com.iLib.gDialog.FatalProblemDlg;
-import dInterface.dUtil.ButtonsPanel;
+
 import dInterface.dUtil.TwoButtonsPanel;
 
 public class EditActivityDlg extends JDialog implements ActionListener, ChangeListener{

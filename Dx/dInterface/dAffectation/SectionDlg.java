@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.20 $  $Date: 2004-04-07 15:41:01 $
+ * Title: SectionDlg $Revision: 1.21 $  $Date: 2004-05-12 12:38:59 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -36,7 +36,7 @@ import javax.swing.BorderFactory;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
+
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;

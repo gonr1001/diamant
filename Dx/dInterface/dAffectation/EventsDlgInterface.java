@@ -20,7 +20,7 @@ import java.awt.event.MouseListener;
 
 import java.util.StringTokenizer;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.TwoButtonsPanel;
+
 import java.util.Vector;
 
 import javax.swing.JDialog;

@@ -16,7 +16,6 @@ import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.DXTools;
 
-import dInternal.dConditionsTest.EventAttach;
 
 import dResources.DConst;
 

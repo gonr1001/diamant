@@ -30,6 +30,8 @@ creation d'un horaire) \label{rapports} Fait le 18 mars.
     \item Entête de rapports \label{headers}
 
 \end{enumerate}
+Toutes les modifications de la version 20 avril ont été utilisées
+par C. Villeneuve avant le 10 mai 04.
 
 
 \subsection{Fonctionnalité \ref{examen}~: Examens}
@@ -149,12 +151,30 @@ modifications l'événement reste  où il est.
 \subsection{Fonctionnalité \ref{nostudents}~: sans Étudiants}
 
 La fonctionnalité permet de faire un horaire sans étudiants.
-Nouveau fichier avec le nombre d'étudiants par activité.
+
+Il faut un  nouveau fichier avec le nombre d'étudiants par
+activité (événement). Ensuite un fichier de faux étudiants sera
+crée pour rester avec le même traitement. Ainsi, tout doit marcher
+sans changements.
+
 
 \subsection{Fonctionnalité \ref{rooms}~: affectation locaux}
 
 La fonctionnalité permet de assigner les locaux aux événements
-avec une utilisation optimal des locaux.
+avec une utilisation optimal des locaux. Il est convenu que les
+locaux seront classées en une partition avec des ensembles
+disjoints.
+
+\[ p = \{ e_0 \cup \ldots \cup e_i \cup \ldots \cup e_n \}
+\]
+
+où  $e_0  \ldots \cup e_i  \ldots e_n$ sont disjoints.
+
+Étapes :
+
+\begin {enumerate}
+\item
+\end {enumerate}
 
 \subsection{Fonctionnalité \ref{affecIni}~: Automate pour menu Affectation initiale}
 

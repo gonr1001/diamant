@@ -4,19 +4,18 @@ package dInterface.dAffectation;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+
+
 import java.awt.Dialog;
-import java.awt.GridBagConstraints;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.util.Vector;
 
-//import dInterface.DApplication;
-import com.iLib.gDialog.InformationDlg;
+
 import dResources.DConst;
-import dInternal.dData.Type;
+
 import dInterface.dUtil.DXTools;
 /**
  *

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import dInternal.DModel;
+
 import dInternal.dData.RoomAttach;
 import dInterface.DApplication;
 import dInterface.dUtil.TwoButtonsPanel;
