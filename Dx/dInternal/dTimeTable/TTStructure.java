@@ -65,40 +65,12 @@ public class TTStructure {
     return _setOfCycles;
  }
 
- public void setSetOfResources(SetOfResources setOfCycles) {
- }
-
 
  public String toWrite() {
     return "";
  }
 
- public int rgetColumn(){
-   return _col;
- }
 
- public int rgetRow(){
-  return _row;
- }
-
-
- public int rgetBegingTime(){
-   int [] b = {8, 00} ;
-   return b[0];
- }
- public int rgetEndTime(){
-   int [] b = {22, 0} ;
-   return b[0];
- }
-
- public String rgetDayName(int i) {
-   String [] a = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
-   return a[i];
- }
- public String rloadData(String  fils) {
-   System.out.println("TTStructure.loadData must load the data file  into TTStructure");
-   return new String("");
- }
   public String getError() {
     return new String("");
   }
@@ -161,22 +133,7 @@ public class TTStructure {
         Integer.toString(periodRefNo)).getAttach();
   }
 
-  /**
-   * get the number of days in a cycle
-   * @param Cycle the cycle where we want to find the number of days
-   * @return int the number of days
-   * */
- /* public int getNumberOfDays(Cycle cycle){
-    return cycle.getSetOfDays().size();
-  }*/
-  public void setNumberOfDays(long currCycle){
-    Cycle cycle = (Cycle) _setOfCycles.getSetOfCycles().getResource(currCycle).getAttach();
-    System.out.println("setNumberOfDays  " + cycle.getSetOfDays().size() );
 
-    cycle.getSetOfDays().addResource(new Resource("6", new Day()),4);
-    System.out.println("setNumberOfDays  " + cycle.getSetOfDays().size() );
-    //cycle..getSetOfDays().size();
-  }
   /**
    * get the max number of sequences in one day in a cycle
    * @param Cycle the cycle where we want to find the max number of sequences
@@ -265,10 +222,6 @@ public class TTStructure {
      }
    }
    return null;
-  }
-
-  public Period rgetPeriod( ){
-    return new Period();
   }
 
   /**

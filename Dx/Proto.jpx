@@ -53,7 +53,7 @@
   <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
   <property category="sys" name="JvmVersion" value="1.4"/>
   <property category="sys" name="LastTag" value="0"/>
-  <property category="sys" name="Libraries" value="JUnit;theLibrary;regexp;jfcunit;rt;XMLLib"/>
+  <property category="sys" name="Libraries" value="JUnit;theLibrary;jfcunit"/>
   <property category="sys" name="MakeStable" value="0"/>
   <property category="sys" name="OutPath" value="../../Temp/Dx/Proto/classes"/>
   <property category="sys" name="SourcePath" value="."/>
@@ -63,6 +63,21 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <node name="Proto" type="Archive">
+    <property category="archiving" name="archiverClass" value="com.borland.jbuilder.wizard.archive.ApplicationArchiver"/>
+    <property category="archiving" name="executableEnabled.1" value="0"/>
+    <property category="archiving" name="executableEnabled.2" value="0"/>
+    <property category="archiving" name="executableEnabled.3" value="0"/>
+    <property category="archiving" name="executableEnabled.4" value="0"/>
+    <property category="archiving" name="executableEnabled.5" value="0"/>
+    <property category="archiving" name="executableFiles.1" value=""/>
+    <property category="archiving" name="executableFiles.2" value=""/>
+    <property category="archiving" name="executableFiles.3" value=""/>
+    <property category="archiving" name="executableFiles.4" value=""/>
+    <property category="archiving" name="executableFiles.5" value=""/>
+    <property category="archiving" name="libraryStates.1" value="1:theLibrary"/>
+    <property category="archiving" name="targetPath" value="Proto.jar"/>
+  </node>
   <file path="dInterface/AbstractDocument.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
