@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.81 $  $Date: 2003-10-17 21:25:00 $
+ * Title: DMenuBar $Revision: 1.82 $  $Date: 2003-10-20 03:54:39 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.81 $
+ * @version $Revision: 1.82 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -333,7 +333,7 @@ public class DMenuBar extends JMenuBar{
 
   _mTypeModif = new CmdMenu("Type");
   _mTypeModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
-  _mTypeModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+  _mTypeModif.setCommand(new ActivityModifCmd());
   _mTypeModif.addActionListener(_dApplic);
   _mActivitiesModif.add(_mTypeModif);
 
