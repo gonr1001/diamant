@@ -23,17 +23,17 @@ public class FirstAffectAlgorithm implements Algorithm {
 
   private Vector _placeEvent;
   private DModel _dm;
-  private int [] _avoidPriority;
-  private int [] _acceptableConflictsTable;
+  //private int [] _avoidPriority;
+ // private int [] _acceptableConflictsTable;
 
   /**
    * constructor
    */
-  public FirstAffectAlgorithm(DModel dm,int [] avoidPriority,int[] acceptableConflictsTable) {
+  public FirstAffectAlgorithm(DModel dm) {
     //_noPlaceEvent= new Vector(1);
     _placeEvent= new Vector(1);
-    _avoidPriority= avoidPriority;
-    _acceptableConflictsTable= acceptableConflictsTable;
+    //_avoidPriority= avoidPriority;
+    //_acceptableConflictsTable= acceptableConflictsTable;
     _dm= dm;
   }
 
@@ -50,8 +50,10 @@ public class FirstAffectAlgorithm implements Algorithm {
     Vector vect= buildEventsVector();
     int currentDuration=0;
 
-    _dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
-    _dm.getConditionsTest().setacceptableConflictsTable(_acceptableConflictsTable);
+    //_dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
+    //_dm.getConditionsTest().setacceptableConflictsTable(_acceptableConflictsTable);
+    _dm.getConditionsTest().extractPreference();
+
     for(int i=0; i< vect.size(); i++){
       currentEvent= (Resource)vect.get(i);
       boolean isNumberOfConflictsAccept=false;
@@ -60,7 +62,7 @@ public class FirstAffectAlgorithm implements Algorithm {
         currentEvent= (Resource)vectorOfEvents.remove(0);*/
       if(!((EventAttach)currentEvent.getAttach()).getAssignState()){
         currentDuration = ((EventAttach)currentEvent.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
-        periodList=buildSortContiguousPeriodVector(currentDuration,_avoidPriority);
+        periodList=buildSortContiguousPeriodVector(currentDuration,_dm.getConditionsTest().getAvoidPriorityTable());
         while(!periodList.isEmpty()){
           DXValue value= (DXValue)((Resource)periodList.remove(0)).getAttach();
           currentPeriod= (Period)value.getObjectValue();
@@ -79,7 +81,7 @@ public class FirstAffectAlgorithm implements Algorithm {
         }// end while(!periodList.isEmpty())
       }// end if(!((EventAttach)currentEvent.getAttach()).getAssignState())
     }// end for(int i=0; i< vect.size(); i++)
-    _dm.getConditionsTest().emptyAvoidPriorityTable();
+   // _dm.getConditionsTest().emptyAvoidPriorityTable();
     _dm.getSetOfEvents().updateActivities(_placeEvent);
     _dm.getSetOfActivities().sendEvent(null);
   }
@@ -99,7 +101,7 @@ public class FirstAffectAlgorithm implements Algorithm {
    */
   private boolean isConflictsAcceptable(int [] conflicts){
     for (int i=0; i< conflicts.length; i++){
-      if(_acceptableConflictsTable[i] < conflicts[i])
+      if( _dm.getConditionsTest().getAcceptableConflictsTable()[i] < conflicts[i])
         return false;
     }
     return true;
@@ -119,18 +121,20 @@ public class FirstAffectAlgorithm implements Algorithm {
         for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
           Resource period= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
           Period per= (Period)period.getAttach();
-          if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(day.getKey(),seq.getKey(),period.getKey(),duration, avoidPriority)){
-            int number=0;
-            for (int l=0; l< duration; l++){
-              number+= ((Period)((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k+l).getAttach()
-              ).getEventsInPeriod().size();
-            }
-            DXValue value= new DXValue();
-            value.setIntValue((int)day.getKey());
-            value.setObjectValue(per);
-            soresc.setCurrentKey(number);
-            soresc.addResource(new Resource(Integer.toString(counter++), value),1);
-          }// end if (_dm.getTTStructure()
+          if(per.getEventsInPeriod().size()< _dm.getConditionsTest().getPeriodAcceptableSize()){
+            if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(day.getKey(),seq.getKey(),period.getKey(),duration, avoidPriority)){
+              int number=0;
+              for (int l=0; l< duration; l++){
+                number+= ((Period)((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k+l).getAttach()
+                ).getEventsInPeriod().size();
+              }
+              DXValue value= new DXValue();
+              value.setIntValue((int)day.getKey());
+              value.setObjectValue(per);
+              soresc.setCurrentKey(number);
+              soresc.addResource(new Resource(Integer.toString(counter++), value),1);
+            }// end if (_dm.getTTStructure()
+          }// end if(per.getEventsInPeriod().size()< _dm.getConditionsTest().
         }// end for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriod
       }// end for(int j=0; j< ((Day)day.getAttach()).getSetO
     }// end for (int i=0; i< _dm.getTTStructure().getCurrentCycle()

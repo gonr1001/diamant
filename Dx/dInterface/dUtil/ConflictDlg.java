@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.1 $  $Date: 2003-12-04 18:09:57 $
+ * Title: AboutDlg $Revision: 1.2 $  $Date: 2003-12-04 19:56:11 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.2 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface.dUtil;
@@ -77,19 +77,19 @@ public class ConflictDlg extends JDialog implements ActionListener {
       _textField3 = new JTextField(""+a[3]);
       _textField4 = new JTextField(""+a[4]);
       jPanel.setLayout(new GridLayout(5,2));
-      jPanel.add(new JLabel("Max Conflits Étu (2 act) ="));
+      jPanel.add(new JLabel("Max Conflits Étu entre 2 Eve ="));
       jPanel.add(_textField0);
 
-      jPanel.add(new JLabel("Max Conflits Ens (2 act)="));
+      jPanel.add(new JLabel("Max Conflits Ens entre 2 Eve ="));
       jPanel.add(_textField1);
 
-      jPanel.add(new JLabel("Max Conflits Loc (2 act)="));
+      jPanel.add(new JLabel("Max Conflits Loc entre 2 Eve ="));
       jPanel.add(_textField2);
 
-      jPanel.add(new JLabel("Placer dans périodes (0 basse, 1 moyenne=)"));
+      jPanel.add(new JLabel("Placer dans périodes (0=Normale, 1= Norm et Bas)"));
       jPanel.add(_textField3);
 
-      jPanel.add(new JLabel("Cours dans une période ="));
+      jPanel.add(new JLabel("Nombre Max de cours dans une période ="));
       jPanel.add(_textField4);
 
 
@@ -138,7 +138,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
       return 2;
     if(!testText(_textField2.getText(), 0, 9999))
       return 3;
-    if(!testText(_textField3.getText(), 0, 9999))
+    if(!testText(_textField3.getText(), 0, 2))
       return 4;
     if(!testText(_textField4.getText(), 0, 9999))
       return 5;

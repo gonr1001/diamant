@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.89 $  $Date: 2003-12-04 00:19:01 $
+ * Title: DMenuBar $Revision: 1.90 $  $Date: 2003-12-04 19:56:11 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.89 $
+ * @version $Revision: 1.90 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -44,7 +44,7 @@ import dInterface.dTimeTable.CloseCmd;
 import dInterface.dTimeTable.ManualImprovementCmd;
 
 import dInterface.dUtil.AboutCmd;
-//import dInterface.dUtil.ConflictCmd;
+import dInterface.dUtil.ConflictCmd;
 import dInterface.dUtil.ExitCmd;
 import dInterface.dUtil.PLAFCmd;
 import dInterface.dUtil.ViewHorizontalSplitCmd;
@@ -411,7 +411,7 @@ public class DMenuBar extends JMenuBar{
     // Items in menu PREFERENCES.
     _conflicts = new CmdMenu(DConst.CONFLICTS);//, this);
     _conflicts.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   // _conflicts.setCommand(new ConflictCmd());
+    _conflicts.setCommand(new ConflictCmd());
     _conflicts.addActionListener(_dApplic);
     _preferences.add(_conflicts);
 

@@ -22,8 +22,10 @@ public class TestConditions {
  private DModel _dm;
  private Vector _testToRun = new Vector(1);
  private boolean _matrixIsBuilded= false;
- int[] _avoidPriority={};
-  int [] _acceptableConflictsTable={};
+ private int[] _avoidPriority={1,2};
+ private int [] _acceptableConflictsTable={0,0,0};
+ private int _periodAcceptableSize=20;
+
  /**
   * Constructor
   * @param soa
@@ -35,6 +37,7 @@ public class TestConditions {
     _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities()));
     _testToRun.add( new TestInstructorsConditions(_dm));
     _testToRun.add( new TestRoomsConditions(_dm));
+    //dm.getDDocument().getDMediator().getDApplication().getPreferences();
   }
 
   public StudentsConflictsMatrix getConflictsMatrix(){
@@ -45,27 +48,35 @@ public class TestConditions {
    *
    * @param avoidPriority
    */
-  public void setAvoidPriorityTable(int[] avoidPriority){
-    _avoidPriority= avoidPriority;
+  public int[] getAvoidPriorityTable(){
+    return _avoidPriority;
   }
 
   /**
    *
-   * @param int[] acceptableConflictsTable range 0= student, range 1= instructor
+   * @return
+   */
+  public int getPeriodAcceptableSize(){
+    return _periodAcceptableSize;
+  }
+
+  /**
+   *
+   * @return int[] acceptableConflictsTable range 0= student, range 1= instructor
    * range 2= room
    */
-  public void setacceptableConflictsTable(int[] acceptableConflictsTable){
-    _acceptableConflictsTable= acceptableConflictsTable;
+  public int[] getAcceptableConflictsTable(){
+    return _acceptableConflictsTable;
   }
 
   /**
    *
    * @param avoidPriority
    */
-  public void emptyAvoidPriorityTable(){
+  /*public void emptyAvoidPriorityTable(){
     int[] avoidPriority= {};
     _avoidPriority= avoidPriority;
-  }
+  }*/
 
   /**
    * build student conflict matrix
@@ -98,6 +109,7 @@ public class TestConditions {
   */
   public void initAllConditions(){
     buildStudentConflictMatrix();
+    extractPreference();
     buildAllConditions(_dm.getTTStructure());
   }
 
@@ -194,6 +206,20 @@ public class TestConditions {
      case -1: return false;
    }
     return false;
+  }
+
+  /**
+   * extract preference tables
+   */
+  public void extractPreference(){
+    int [] conflictsPreference= _dm.getDDocument().getDMediator().getDApplication().getPreferences().getConflictLimits();
+    for (int i=0; i< _acceptableConflictsTable.length; i++)
+      _acceptableConflictsTable[i]= conflictsPreference[i];
+    _avoidPriority= new int [2-conflictsPreference[3]];
+    int inc=0;
+    for (int i=conflictsPreference[3]+1; i< 3; i++)
+      _avoidPriority[inc++]=i;
+    _periodAcceptableSize= conflictsPreference[4];
   }
 
   /**
