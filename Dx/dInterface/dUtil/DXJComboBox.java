@@ -5,7 +5,6 @@ import java.util.Vector;
 import java.awt.event.ActionListener;
 
 public class DXJComboBox extends JComboBox{
-
   ActionListener [] _actionList;
   boolean _stateDisList=false;
   /**
@@ -14,14 +13,12 @@ public class DXJComboBox extends JComboBox{
   public DXJComboBox(){
     super();
   }
-
   /**
    * Constructor
    */
   public DXJComboBox(Vector items){
     super(items);
   }
-
   /**
    * Constructor
    */
@@ -32,7 +29,7 @@ public class DXJComboBox extends JComboBox{
   /**
    *
    */
-  public void disableActionListener(){
+  public void disableActionListeners(){
     _stateDisList= true;
     _actionList = this.getActionListeners();
     for (int i = 0; i <_actionList.length; i++) {
@@ -43,7 +40,7 @@ public class DXJComboBox extends JComboBox{
   /**
    *
    */
-  public void enableActionListener(){
+  public void enableActionListeners(){
     if(_stateDisList){
       _stateDisList= false;
       for (int i = 0; i <_actionList.length; i++) {

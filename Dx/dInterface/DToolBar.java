@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.39 $  $Date: 2004-03-23 20:46:38 $
+ * Title: ToolBar $Revision: 1.40 $  $Date: 2004-03-24 14:14:25 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -166,9 +166,9 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
           Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(item);
           _tts.getCurrentCycle().setCurrentDayIndex(item);
 
-          _dayNameSelector.disableActionListener();
+          _dayNameSelector.disableActionListeners();
           _dayNameSelector.setSelectedItem(resc.getID());
-          _dayNameSelector.enableActionListener();
+          _dayNameSelector.enableActionListeners();
         //}
       }//end actionPerformed
     });//end addActionListener
@@ -272,9 +272,9 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
         _periodSelector.setSelectedItem(Integer.toString(ppanel.getPanelRefNo()));
         period= _tts.getCurrentCycle().getPeriodByIndex( ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
-        _periodTypeSelector.disableActionListener();
+        _periodTypeSelector.disableActionListeners();
         _periodTypeSelector.setSelectedItem(TTStructure._priorityTable[period.getPriority()]);
-        _periodTypeSelector.enableActionListener();
+        _periodTypeSelector.enableActionListeners();
       }else{
         new InformationDlg(_dApplic.getJFrame(),"Période non trouvée");
         _periodSelector.setSelectedIndex(0);
@@ -313,7 +313,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   *
    */
   public void setToolBarOne(){
-    _daySelector.disableActionListener();
+    _daySelector.disableActionListeners();
     int nbDays = _tts.getCurrentCycle().getNumberOfDays();
     _setNumberOfDays.setText(Integer.toString(nbDays));
 
@@ -332,7 +332,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
     //rgr resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(0);
     //_dayNameSelector.setSelectedItem(resc.getID()); //rgr
     //System.out.println("Day selected index: "+daySelector.getSelectedIndex());//debug
-    _daySelector.enableActionListener();
+    _daySelector.enableActionListeners();
     setEnabledToolbar(true);
   }
 
@@ -340,7 +340,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   *
    */
   public void setToolBarTwo(){
-    _periodSelector.disableActionListener();
+    _periodSelector.disableActionListeners();
     _comboBoxStatus=false;
     JPanel thePane= (JPanel)_dApplic.getDMediator().getCurrentDoc().getTTPane(
         ).getViewport().getComponent(0);
@@ -358,7 +358,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
       _periodTypeSelector.addItem(_tts._priorityTable[i]);
     //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug
     _comboBoxStatus=true;
-    _periodSelector.enableActionListener();
+    _periodSelector.enableActionListeners();
   }
 
   /**

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.16 $  $Date: 2004-03-04 22:02:57 $
+ * Title: SectionDlg $Revision: 1.17 $  $Date: 2004-03-24 14:14:25 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.17 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
 
  */
@@ -57,13 +57,13 @@ import dInternal.dData.Type;
 
 import dResources.DConst;
 
-
+import dInterface.dUtil.DXJComboBox;
 
 public class SectionDlg extends JDialog implements ActionListener{
   private DApplication _dApplic;
   private int _numberOfTypes, _numberOfSections, _currentAssignedGroup, _sortIndex;
   private JButton _sortButton;
-  private JComboBox _actCombo, _typeCombo, _sortCombo;
+  private DXJComboBox _actCombo, _typeCombo, _sortCombo;
   private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _buttonsPanel, _insidePanel, _centerPanel, _notAssignedPanel;
   private JScrollPane _scrollPane;
@@ -121,7 +121,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     _actVector = new Vector();
     _actVector = _activities.getIDsByField(3, "true");
     //panel of activities
-    _actCombo = new JComboBox(_actVector);
+    _actCombo = new DXJComboBox(_actVector);
     //_actCombo.setSelectedIndex(0);
     actPanel = new JPanel();
     actPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACTIVITY));
@@ -130,7 +130,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     _actID = (String)_actVector.elementAt(0);
     //panel of types
     _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
-    _typeCombo = new JComboBox(_typeVector);
+    _typeCombo = new DXJComboBox(_typeVector);
     //_typeCombo.setSelectedIndex(0);
     typePanel = new JPanel();
     typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
@@ -140,7 +140,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     setCurrents();
     //panel of sort
     _sortVector = buildSortVector();
-    _sortCombo = new JComboBox(_sortVector);
+    _sortCombo = new DXJComboBox(_sortVector);
     /*_sortButton = new JButton(DConst.SORT_BY_MATRICUL);
     _sortButton.setPreferredSize(new Dimension(140, 25));
     _sortButton.addActionListener(this);*/
@@ -284,7 +284,9 @@ public class SectionDlg extends JDialog implements ActionListener{
     if (e.getSource().equals(_actCombo)){
       _actID = (String)_actCombo.getSelectedItem();
       _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
+      _typeCombo.disableActionListeners();
       _typeCombo.removeAllItems();
+      _typeCombo.enableActionListeners();
       for(int i = 0; i < _typeVector.size(); i++){
         _typeCombo.addItem(_typeVector.elementAt(i));
       }//end for
