@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.82 $  $Date: 2003-10-20 03:54:39 $
+ * Title: DMenuBar $Revision: 1.83 $  $Date: 2003-10-20 23:34:51 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.82 $
+ * @version $Revision: 1.83 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -89,9 +89,8 @@ public class DMenuBar extends JMenuBar{
   _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl, _boolDefineSet, _boolPartialTTStructure;
 
   // the modification menus
-  private CmdMenu _mTypeModif,_mSectionModif,_mEventsModif;
-  private boolean _boolMEventsModif;
-  private JMenu _mActivitiesModif;
+  private CmdMenu _mActivityModif;
+  private boolean _boolMActivityModif;
 
   // the optimisation menus
   private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,_mStudentsMixingOptimize;
@@ -320,36 +319,13 @@ public class DMenuBar extends JMenuBar{
     _modification.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _modification );
 
-    // Items in menu Modification.
-    /*_mEventsModif = new CmdMenu(DConst.EVENTS_MODIF_M);
-    _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    _mEventsModif.addActionListener(_dApplic);
-    _modification.add(_mEventsModif);*/
+  _mActivityModif = new CmdMenu(DConst.ACTIVITY_MODIF_M);
+  _mActivityModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
+  _mActivityModif.setCommand(new ActivityModifCmd());
+  _mActivityModif.addActionListener(_dApplic);
+  //_mActivitiesModif.add(_mTypeModif);
 
-    // Items in menu StudentMixing.
-  _mActivitiesModif = new JMenu("Activité");
-  _mActivitiesModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
-
-  _mTypeModif = new CmdMenu("Type");
-  _mTypeModif.setFont( new java.awt.Font(_mfont, _font, _nPT));
-  _mTypeModif.setCommand(new ActivityModifCmd());
-  _mTypeModif.addActionListener(_dApplic);
-  _mActivitiesModif.add(_mTypeModif);
-
-  _mSectionModif = new CmdMenu("Section");//, this);
-  _mSectionModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
-  _mSectionModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-  _mSectionModif.addActionListener(_dApplic);
-   _mActivitiesModif.add(_mSectionModif);
-
-   _mEventsModif = new CmdMenu("Evenement");//, this);
-   _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
-   _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-   _mEventsModif.addActionListener(_dApplic);
-   _mActivitiesModif.add(_mEventsModif);
-
-    _modification.add(_mActivitiesModif);
+   _modification.add(_mActivityModif);
   }//end createModificationMenu
 
 
@@ -559,7 +535,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu modification
     _boolModification = false;
-    _boolMEventsModif = true;
+    _boolMActivityModif = true;
 
     //the menu optimization
     _boolOptimization = false;
@@ -611,7 +587,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu modification
     _boolModification = true;
-    _boolMEventsModif = true;
+    _boolMActivityModif = true;
 
     //the menu otimization
     _boolOptimization = true;
@@ -664,7 +640,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu modification
     _boolModification = false;
-    _boolMEventsModif = true;
+    _boolMActivityModif = true;
 
     //the menu otimization
     _boolOptimization = false;
@@ -717,7 +693,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu modification
     _boolModification = false;
-    _boolMEventsModif = true;
+    _boolMActivityModif = true;
 
     //the menu otimization
     _boolOptimization = false;
@@ -771,7 +747,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu modification
     _boolModification = false;
-    _boolMEventsModif = true;
+    _boolMActivityModif = true;
 
     //the menu otimization
     _boolOptimization = false;
@@ -821,7 +797,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu modification
     _boolModification = true;
-    _boolMEventsModif = true;
+    _boolMActivityModif = true;
 
     //the menu otimization
     _boolOptimization = true;
@@ -920,7 +896,7 @@ public class DMenuBar extends JMenuBar{
 
   private void setModificationMenu() {
     _modification.setEnabled(_boolModification);
-    _mEventsModif.setEnabled(_boolMEventsModif);
+    _mActivityModif.setEnabled(_boolMActivityModif);
   }
   private void setOptimisationMenu() {
     _optimisation.setEnabled(_boolOptimization);

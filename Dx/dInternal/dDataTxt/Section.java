@@ -35,6 +35,24 @@ public class Section extends DXObject{
   }
 
   /**
+  * add a bloc object in the list
+  * @param String the ID of the bloc
+  * @param int the number of cycle in de TTStructure
+  * @return boolean result of the operation
+   * */
+  public boolean addUnity(String id, int NumberOfCycle, boolean isManualCreated){
+    _blocList.sortSetOfResourcesByID();
+      Assignment cycleAss = new Assignment();
+      cycleAss.setDateAndTime(1, 9,0);
+      Unity newUnity= new Unity();
+      for (int i=1; i<= NumberOfCycle; i++)
+        newUnity.addAssignment(new Resource(Integer.toString(i),cycleAss));
+      Resource newUnitResc= new Resource(id, newUnity);
+      newUnitResc.setManuallyCreated(isManualCreated);
+      return _blocList.addResource(newUnitResc,1) ;
+  }
+
+  /**
    * add a bloc object in the list
    * @param String the ID of the bloc
    * @param Bloc the bloc to be added

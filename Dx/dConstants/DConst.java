@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.61 $  $Date: 2003-10-10 14:17:48 $
+ * Title: DConst $Revision: 1.62 $  $Date: 2003-10-20 23:34:51 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -40,6 +40,8 @@ public class DConst {
   public final static String BUT_BROWSE = res.getString("butBrowse");//Parcourir
   public final static String BUT_PLACE = res.getString("butPlace");//Placer
   public final static String BUT_FIGE = res.getString("butFige");//Figer
+  public final static String BUT_ADD = res.getString("butAdd");//Ajouter
+  public final static String BUT_REMOVE = res.getString("butRemove");//Remove
   public final static String SORT_TITLE = res.getString("sortTitle");//Trier
   public final static String TOKENSEPARATOR = ".";//Sans titre
   public final static String NO_NAME = res.getString("noName");//Sans titre
@@ -128,6 +130,7 @@ public class DConst {
   //Modification menu
   public final static String MODIFICATION = res.getString("ModificationM");//Modification
   public final static String EVENTS_MODIF_M = res.getString("EventsModifM");//Modification évenements
+  public final static String ACTIVITY_MODIF_M = res.getString("ActModifM");//Modification évenements
   //Optimization menu
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
   public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale

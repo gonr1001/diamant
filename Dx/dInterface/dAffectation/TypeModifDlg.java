@@ -12,30 +12,30 @@ package dInterface.dAffectation;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DConst;
-import dInternal.dData.SetOfActivities;
 import dInternal.dData.Activity;
+import dInternal.dData.Type;
 import dInternal.dData.Resource;
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;
+import javax.swing.JFrame;
 
-public class ActivityModifDlg extends SetOfElementsInterface{
+public class TypeModifDlg extends SetOfElementsInterface{
 
-  private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
-  private SetOfActivities _soa;
-
+private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
+private Resource _activity;
   /**
    * Constructor
    * @param dApplic
    */
-  public ActivityModifDlg(DApplication dApplic) {
-    super(new Dialog(dApplic.getJFrame()),dApplic,"Activités","Nombre d'activités",1);
-    _soa= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
+  public TypeModifDlg(Dialog parent, DApplication dApplic,Resource activity) {
+    super(parent,dApplic,activity.getID(),"Nombre de types",1);
     Vector [] vect= new Vector[1];
-    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getNamesVector(1);
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    _buttonsPanel.getComponent(0).setEnabled(false);
-    _buttonsPanel.getComponent(1).setEnabled(false);
+    _activity= activity;
+    vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
+     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+     //_buttonsPanel.getComponent(0).setEnabled(false);
+     //_buttonsPanel.getComponent(1).setEnabled(false);
     setVectorsOfElements(vect);
     initDialog();
   }
@@ -45,9 +45,10 @@ public class ActivityModifDlg extends SetOfElementsInterface{
    */
   protected void doubleClicMouseProcess(){
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
-    Resource activity= _soa.getResource(_listOfElements[_selectedPanel].
-        getSelectedValue().toString());
-    new TypeModifDlg(this,this._dApplic, activity);
+    //SectionModifDlg
+    Resource type= ((Activity)_activity.getAttach()).getSetOfTypes().getResource(_listOfElements[_selectedPanel].
+       getSelectedValue().toString());
+    new SectionModifDlg(this,this._dApplic,_activity.getID()+".", type);
   }
 
   /**

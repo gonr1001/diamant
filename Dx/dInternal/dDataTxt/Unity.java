@@ -23,7 +23,7 @@ public class Unity extends DXObject{
   */
 
   /** duration of the bloc (in minutes)*/
-  private int _duration;
+  private int _duration=1;
   /** prefere sequence in a day
    *-1= no prefer sequence; 0= AM; 1=PM; 2= evening
    */

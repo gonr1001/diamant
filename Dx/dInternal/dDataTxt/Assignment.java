@@ -16,11 +16,11 @@ public class Assignment extends DXObject{
   /**contains the key of the day, the begin hour and the begin minute*/
   private int[] _dateAndTime={0,0,0};
   /**instructor name valid only for initialization*/
-  private String _instructorName;
+  private String _instructorName="";
   /** instructor key */
   long  _instructorKey = -1;
   /** room valid only for initialization*/
-  private String _roomName;
+  private String _roomName="";
   /** room key */
   long  _roomKey = -1;
   /** room is fixed*/
