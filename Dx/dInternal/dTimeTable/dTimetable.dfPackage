@@ -27,11 +27,6 @@ class reference3 {
 */
 class reference4 {
 }/**
-@__ref <oiref:java#Class#dInternal.dTimeTable.SetOfCycles:oiref><oihard>
-@__modelType reference 
-*/
-class reference5 {
-}/**
 @__ref <oiref:java#Class#dInternal.dTimeTable.Period:oiref><oihard>
 @__modelType reference 
 */
@@ -72,7 +67,6 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Sequence#_period:oiref>=142,182,127,181:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfSequences#_sequence:oiref>=625,380,140,450:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Sequence#_setOfPeriods:oiref>=172,314,172,282:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfCycles:oiref>=400,420,200,222,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.Day:oiref>=444,4,200,190,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.Cycle:oiref>=382,192,200,206,1:oigroup>
 <oigroup:<oiref:java#Member#dInternal.dTimetable.Day#_setOfSequences:oiref>=320,290,148,16,1:oigroup>

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.18 $  $Date: 2003-09-05 13:46:20 $
+ * Title: DApplication $Revision: 1.19 $  $Date: 2003-09-09 10:19:28 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -86,7 +86,7 @@ public class DApplication implements ActionListener {
                                    "pref"
                                    + File.separator +
                                    "pref.txt", this);
-    System.out.println(System.getProperty("user.dir"));
+    //System.out.println(System.getProperty("user.dir"));
     _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     _mediator = new DMediator(this);
     _currentDir = System.getProperty("user.dir");
@@ -196,7 +196,7 @@ public class DApplication implements ActionListener {
       // Force SwingApp to come up in the System L&F
       try {
         UIManager.setLookAndFeel(str);
-        System.out.println("pref" + str );
+        //System.out.println("pref" + str );
       }
       catch (UnsupportedLookAndFeelException ulafe)  {
         new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
