@@ -34,11 +34,120 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
-   * analyse activities datas by a finished states machine
+   * analyse activities data by a finished states machine
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
   public boolean analyseTokens(int beginPosition){
+
+    if(!analyseSIGTokens(beginPosition)){
+      return false;
+    }else{// else if(!analyseSIGTokens(beginPosition))
+      if(_open)
+        return analyseDeltaTokens(beginPosition);
+    }// end else if(!analyseSIGTokens(beginPosition))
+
+    return true;
+  }
+
+  /**
+   * analyse SIG activities data by a finished states machine
+   * @param integer the beginPosition (start position of the finished states machine)
+   * @return boolean "true" if the analysis proceeded successfully and false otherwise
+   * */
+  private boolean analyseSIGTokens(int beginPosition){
+    String token;
+    String sousString; //auxiliar String for stocking a substring of a line
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
+    int state=0;
+    int position=beginPosition;
+    _line=1;
+    String activityName="";
+    int numberOfUnitys=0;
+    while (st.hasMoreElements()){
+      token = st.nextToken();
+      _line++;
+      switch (position){
+        case 0:// empty line
+          position = 1;
+          break;
+        case 1:// activity name
+
+          position = 2;
+          break;
+        case 2://activity visibility
+
+          position = 3;
+          break;
+        case 3://number of activities
+
+          position = 4;
+          break;
+        case 4:// teachers' names
+
+          position = 7;
+          _line+=2;
+          break;
+        case 5:// empty line
+          position = 6;
+          break;
+        case 6:// empty line
+          position = 7;
+          break;
+        case 7://number of blocs
+
+          position = 8;
+          break;
+        case 8://duration of blocs
+
+          position = 9;
+          break;
+        case 9://days and periods of blocs
+
+          position = 10;
+          break;
+        case 10://fixed rooms
+
+          position = 11;
+          break;
+        case 11://Preferred rooms
+
+          position = 12;
+          break;
+        case 12://type of rooms
+
+          position = 13;
+          break;
+        case 13://idem
+
+          position = 14;
+          break;
+        case 14://pre-affected cours
+          StringTokenizer visiToken = new StringTokenizer(new String (token),";" );
+          //System.out.println("Activity affect Tokens: "+activityName+" --> "+token);//debug
+          int nbTokens= visiToken.countTokens();
+          for(int i=0; i<nbTokens; i++){
+
+            position = beginPosition;
+            if(st.hasMoreElements())
+              _line++;
+          }//for(int i=0; i<nbTokens; i++)
+          break;
+
+      }// end switch (position)
+
+    }// end while (st.hasMoreElements())
+
+    return true;
+  }
+
+  /**
+   * analyse delta activities data by a finished states machine
+   * @param integer the beginPosition (start position of the finished states machine)
+   * @return boolean "true" if the analysis proceeded successfully and false otherwise
+   * */
+  private boolean analyseDeltaTokens(int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
