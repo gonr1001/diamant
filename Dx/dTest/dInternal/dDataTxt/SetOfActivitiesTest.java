@@ -10,8 +10,10 @@ package dTest.dInternal.dData;
  */
 
 import junit.framework.*;
+import java.io.File;
 import dInternal.dData.Activity;
 import dInternal.dData.Type;
+import com.iLib.gIO.FilterFile;
 import dInternal.dData.Section;
 import dInternal.dData.Unity;
 import dInternal.dData.Assignment;
@@ -69,6 +71,34 @@ public class SetOfActivitiesTest  extends TestCase{
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT1.length()));
 
   }
+
+  /**
+  * test_analyseTokens, test that analyse the line where error is detected
+  * in the activities file
+  * */
+ public void test0_analyseTokens(){
+
+   String fileName =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"cours1.sig";
+
+   SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName));
+   setOfActivities.analyseTokens(1);
+   assertEquals("test0_analyseTokens: assertEquals", 30,setOfActivities.getLine());
+
+  }
+
+  /**
+  * test_analyseTokens, test that analyse the number of line
+  * in the activities file
+  * */
+ public void test00_analyseTokens(){
+
+   String fileName =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"cours2.sig";
+   SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName));
+   setOfActivities.analyseTokens(1);
+   assertEquals("test00_analyseTokens: assertEquals", 25,setOfActivities.getLine());
+
+  }
+
 
   /**
    * test1_analyseTokens, test that analyse the activity visibility
@@ -641,6 +671,15 @@ public void test7_analyseTokens(){
      assertEquals("test2_addActivity: assertEquals 2", 2,((Activity)activityResc.getAttach()).getSetOfTypes().size());
      Resource typeResc = ((Activity)activityResc.getAttach()).getSetOfTypes().getResource("1");
      assertEquals("test3_addActivity: assertEquals 3", 2,((Type)typeResc.getAttach()).getSetOfSections().size());
+  }
+
+  private byte[] preLoad(String str) {
+    FilterFile filter = new FilterFile();
+    filter.appendToCharKnown("ิห้-',; ()๊.เ");
+    if (filter.validFile(str)) {
+      return filter.getByteArray();
+    } else return null;
+
   }
 
 

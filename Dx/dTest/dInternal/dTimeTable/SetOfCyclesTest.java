@@ -15,6 +15,9 @@ package dTest.dInternal.dTimeTable;
   import dInternal.dData.SetOfResources;
   import dInternal.dTimeTable.SetOfCycles;
   import dInternal.dTimeTable.Cycle;
+  import dInternal.dTimeTable.Day;
+  import dInternal.dTimeTable.Sequence;
+  import dInternal.dTimeTable.Period;
 
   import xml.InPut.readFile;
   import xml.InPut.ReadXMLElement;
@@ -70,8 +73,15 @@ package dTest.dInternal.dTimeTable;
      //Cycle newCycle= new Cycle();
      //cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
      //cycle.addDays(3);
-     setOfcycle.getSetOfCycles().addResource(new Resource("1",new Cycle()),0);
-     setOfcycle.getSetOfCycles().addResource(new Resource("2",new Cycle()),0);
+
+     Cycle cycle= new Cycle();
+     cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
+     cycle.getDay(0).getSetOfSequences().addResource(new Resource("AM",new Sequence()),0);
+     cycle.getDay(0).getSequence(0).getSetOfPeriods().addResource(new Resource("1",new Period()),0);
+     cycle.addDays(3);
+
+     setOfcycle.getSetOfCycles().addResource(new Resource("1",cycle),0);
+     setOfcycle.getSetOfCycles().addResource(new Resource("2",cycle),0);
      try{
        xmlFile = new readFile();
        //System.out.println(path+"cycle.xml");//debug

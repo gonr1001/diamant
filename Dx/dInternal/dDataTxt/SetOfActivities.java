@@ -211,7 +211,8 @@ public class SetOfActivities extends SetOfResources{
             return false;
           }
           position = beginPosition;
-          _line++;
+          if(st.hasMoreElements())
+            _line++;
           break;
 
       }// end switch (position)

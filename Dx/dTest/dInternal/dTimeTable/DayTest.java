@@ -19,6 +19,7 @@ import dInternal.dData.SetOfResources;
 
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Sequence;
+import dInternal.dTimeTable.Period;
 
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
@@ -99,8 +100,12 @@ String path;
     try{
       xmlFile = new readFile();
       Document  doc;
+      Sequence seq;
       for (int i = 1; i < 4; i++){
-        setOfSequences.addResource(new Resource(Integer.toString(i), new Sequence()),1);
+        seq= new Sequence();
+        seq.getSetOfPeriods().addResource(new Resource("AM",new Period()),0);
+        setOfSequences.addResource(new Resource(Integer.toString(i), seq),1);
+
       }
       firstDay.setSetOfSequences(setOfSequences);
       BuildXMLElement wr = new BuildXMLElement();
