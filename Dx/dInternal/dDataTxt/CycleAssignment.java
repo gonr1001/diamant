@@ -14,12 +14,13 @@ import java.util.Calendar;
 public class CycleAssignment extends DXObject{
 
   /**contains the day, the begin hour and the begin minute*/
-  private Calendar _dateAndTime;
+  private int[] _dateAndTime={0,0,0};
   /**instructor name*/
   private String _instructor;
   /** room name*/
   private String _room;
-
+  /** room is fixed*/
+  private boolean _roomFixed= false;
   /**
    *Constructor
    */
@@ -34,7 +35,9 @@ public class CycleAssignment extends DXObject{
    * @param int the begin minute
    * */
   public void setDateAndTime(int day, int hour, int minute){
-    _dateAndTime.set(0,0,day,hour,minute);
+    _dateAndTime[0]=day;
+    _dateAndTime[1]=hour;
+    _dateAndTime[2]=minute;
   }
 
   /**
@@ -54,10 +57,18 @@ public class CycleAssignment extends DXObject{
   }
 
   /**
+   * set the room state
+   * @param boolean the room state (true if room is fixed and false otherwise)
+   * */
+  public void setRoomState(boolean fixed){
+    this._roomFixed = fixed;
+  }
+
+  /**
    * get date and time of the bloc in this week
    * @return Calendar the day, begin hour and begin minute
    * */
-  public Calendar getDateAndTime(){
+  public int[] getDateAndTime(){
     return _dateAndTime;
   }
 
@@ -75,6 +86,14 @@ public class CycleAssignment extends DXObject{
    * */
   public String getRoom(){
     return _room;
+  }
+
+  /**
+   * get room state of the bloc in this week
+   * @return boolean the room state (true if room is fixed and false otherwise)
+   * */
+  public boolean getRoomState(){
+    return _roomFixed;
   }
 
 }

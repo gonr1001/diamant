@@ -73,6 +73,15 @@ public class Group extends DXObject{
   }
 
   /**
+   * return a bloc object from de the list
+   * @param String the ID of the bloc
+   * @return Resource the nature object
+   * */
+  public ResourceList getBlocList(){
+    return _blocList;
+  }
+
+  /**
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */

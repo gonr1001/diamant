@@ -27,7 +27,7 @@ public class ResourceList extends DXObject{
   private long _currentKey=0;
   /**0= activities, 1= students, 2= instructors, 3 = rooms*/
   private int _resourceType;
-  private static final String CR_LF = "\r\n";
+  public static final String CR_LF = "\r\n";
   private Resource _resource;
 
 
@@ -35,7 +35,7 @@ public class ResourceList extends DXObject{
    * Constructor call with byte[]  dataloaded
    * */
   public ResourceList( int resType) {
-    _resourceList = new Vector();
+    _resourceList = new Vector(1,1);
     _resourceType = resType;
   }
   /**
@@ -43,7 +43,7 @@ public class ResourceList extends DXObject{
    * */
   public ResourceList(byte[]  dataloaded, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
-    _resourceList = new Vector();
+    _resourceList = new Vector(1,1);
     _resourceType = resType;
   }
 
@@ -55,7 +55,7 @@ public class ResourceList extends DXObject{
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _numberOfLines = nbDay;
     _numberOfColumns = ndPerDay;
-    _resourceList = new Vector();
+    _resourceList = new Vector(1,1);
     _resourceType = resType;
   }
 
@@ -137,6 +137,13 @@ public class ResourceList extends DXObject{
   }
 
   /**
+   * return the size of nature list
+   * */
+  public int size(){
+    return _resourceList.size();
+  }
+
+  /**
    * Set the current key of the ResourceList
    * @param currentkey, a long integer
    * */
@@ -179,6 +186,17 @@ public class ResourceList extends DXObject{
     int index = getIndexOfResource(key);
     if (index!=-1)
       return (Resource) _resourceList.get(index);
+    return null;
+  }
+
+  /**
+   * Get a Resource from the ResourceList
+   * @param integer, the position of the Resource
+   * @return Resource null if Resource didn't found
+   * */
+  public Resource getResourceAt(int position){
+    if (position< _resourceList.size())
+      return (Resource) _resourceList.get(position);
     return null;
   }
 

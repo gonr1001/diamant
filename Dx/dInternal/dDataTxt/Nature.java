@@ -72,6 +72,14 @@ public class Nature extends DXObject{
   }
 
   /**
+   * return the group list
+   * @return ResourceList the list of nature object
+   * */
+  public ResourceList getGroupList(){
+    return _groupList;
+  }
+
+  /**
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */

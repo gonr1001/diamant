@@ -16,7 +16,10 @@ public class Activity extends DXObject{
   private String _departement="";//eg. génie electrique
   private String _activityType=""; // eg. informatique
   private int _activitySession=0;//
-  private boolean _activityVisible= false;//
+  private boolean _activityVisible= true;//
+  /**  is in activities file the line between type of rooms and
+   activity is fixed or not */
+  public String _idemLine;
   private ResourceList _natures;
 
 
@@ -77,6 +80,14 @@ public class Activity extends DXObject{
    * */
   public Resource getNature(String id){
     return _natures.getResource(id);
+  }
+
+  /**
+   * return the nature list
+   * @return ResourceList the list of nature object
+   * */
+  public ResourceList getNaturesList(){
+    return _natures;
   }
 
   /**

@@ -50,11 +50,27 @@ public class Bloc extends DXObject{
   }
 
   /**
+   * get duration
+   * @return int the duration in hour
+   * */
+  public int getDuration(){
+    return _duration;
+  }
+
+  /**
    * set if bloc is fixed
    * @param boolean the bloc state
    * */
   public void setFixed(boolean fixed){
     _fixed = fixed;
+  }
+
+  /**
+   * get fixed state of the bloc
+   * @param boolean the bloc state
+   * */
+  public boolean getFixed(){
+    return _fixed;
   }
 
   /**
@@ -94,6 +110,14 @@ public class Bloc extends DXObject{
   }
 
   /**
+   * get the cycle assignment list
+   * @return ResourceList the cycle assignment list
+   * */
+  public ResourceList getCycleAssignmentList(){
+    return _cycleAssignmentList;
+  }
+
+  /**
    * add a cycle for period assignment
    * @param Resource the cycleAssignment resource
    * @return boolean the operation result
@@ -129,6 +153,24 @@ public class Bloc extends DXObject{
   public boolean addPreferFunctionRoom(String function){
     Resource functionRoom= new Resource(function, new DXObject());
     return _preferFunctionRoomsList.addResource(functionRoom,1);
+  }
+
+  /**
+   * get activity prefer function room
+   * @param String the room function
+   * @return boolean the operation result
+   * */
+  public ResourceList getPreferFunctionRoom(){
+    return _preferFunctionRoomsList;
+  }
+
+  /**
+   * set activity prefer function room
+   * @param String the room function
+   * @return boolean the operation result
+   * */
+  public void setPreferFunctionRoom(ResourceList preferFuncList){
+    _preferFunctionRoomsList=preferFuncList;
   }
 
   /**

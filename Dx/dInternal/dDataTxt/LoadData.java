@@ -114,11 +114,6 @@ public class LoadData {
    return null;
   }
 
-  public ActivitiesList extractActivities(InstructorsList currentList, boolean merge){
-   byte[]  dataloaded = preLoad(_activitiesFileName);
-
-   return null;
-  }
 
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
@@ -150,6 +145,26 @@ public class LoadData {
    return null;
   }
 
+  public ActivitiesList extractActivities(ActivitiesList currentList, boolean merge){
+    byte[]  dataloaded = preLoad(_activitiesFileName);
+   if (dataloaded != null) {
+     //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
+     //return analyseInstructorTokens (st);
+    ActivitiesList activitiesList = new ActivitiesList(dataloaded);
+    if (merge)
+       if(currentList!=null)
+         activitiesList.setResourceList(currentList.getResourceList());
+
+     if (activitiesList.analyseTokens(1)){
+       activitiesList.buildActivitiesList(1);
+       return activitiesList;
+     }
+   } else {// (NullPointerException npe) {
+     new FatalProblemDlg("I was in LoadData class and extractActivities. preload failed!!!" );
+     System.exit(52);
+   }
+   return null;
+  }
 
 
   public static void main(String[] args) {
@@ -162,13 +177,9 @@ public class LoadData {
     /**Irstructor test*/
     InstructorsList insList = ldata.extractInstructors(null,false);
     insList.sortResourceListByID();
-    ldata=  new LoadData(pathSave+"filedata1.sig");
-    ldata.extractInstructors(insList,true);
-    //insList.sortResourceListByKey();
 
     /**Room test*/
     RoomsList roomlist = ldata.extractRooms(null, true);
-    //roomlist.sortResourceListBySelectedObjectField(0);
     roomlist.sortResourceListByID();
 
     /** Student test*/
@@ -177,51 +188,29 @@ public class LoadData {
     yan.addCourse("GEI4421");
     yan.addCourse("GEI4501");
     studentList.addStudent(99872506,"YANNICK SYAM","",yan);
-    //filter= new FilterFile(studentList.toString().getBytes());
-    //filter.saveFile(pathSave+"SaveStudent.sig");
-
     yan = new Student();
     yan.addCourse("GEI4421");
     yan.addCourse("GEI4501");
     studentList.addStudent(99872506,"YANNICK SYAM","",yan);
-
-    // add a student
-    /*Student yan = new Student();
-    yan.addCourse("GEI4421");
-    yan.addCourse("GEI4501");
-    Resource resource = new Resource("Yannick Sy",yan);
-    resource.setMessage("2035030720003");
-    studentList.setCurrentKey(99872506);
-    studentList.addResource(resource);*/
     studentList.sortResourceListByID();
-    //studentList.sortResourceListByKey();
 
-    // debug activity
-    //Resource activ
-    /*Activity activity = new Activity();
-    System.out.println(activity.addNature("1"));
-    System.out.println(activity.addNature("2"));
-    System.out.println(activity.addNature("2"));
-    Resource activ= new Resource("GEI452", activity);*/
-    ActivitiesList actList = new ActivitiesList(insList.toString().getBytes());
-    System.out.println("activity added1?: "+actList.addActivity("GEI450"));
-    System.out.println("activity added2?: "+actList.addActivity("GEI455"));
-    Activity activ= (Activity)actList.getActivity("GEI4501").getObject();
-    System.out.println(activ.addNature("1"));
-    System.out.println(activ.addNature("2"));
-    System.out.println(activ.addNature("2"));
-    actList.removeActivity("GEI4551");
-    System.out.println("activity added3?: "+actList.addActivity("GEI470"));
-    //actList.addResource(activ,0);
+    /** Activities test*/
+    ActivitiesList activitiesList = ldata.extractActivities(null, true);
 
-    System.out.println(actList.toString());
-    //
+    /**Concat 2 instrutors files and 2 activities files*/
+    ldata=  new LoadData(pathSave+"filedata1.sig");
+    ldata.extractInstructors(insList,true);
+    ldata.extractActivities(activitiesList, true);
+
+    //save in files
     filter= new FilterFile(insList.toString().getBytes());
     filter.saveFile(pathSave+"SaveInst.sig");
     filter= new FilterFile(roomlist.toString().getBytes());
     filter.saveFile(pathSave+"SaveRoom.sig");
     filter= new FilterFile(studentList.toString().getBytes());
     filter.saveFile(pathSave+"SaveStudent.sig");
+    filter= new FilterFile(activitiesList.toString().getBytes());
+    filter.saveFile(pathSave+"SaveActivities.sig");
 
   } // end main
 
