@@ -1,7 +1,7 @@
 package dInternal;
 
 /**
- * <p>Title: miniDia</p>
+ * <p>Title: Proto</p>
  * <p>Description: exam timetable construction with Condition Pattern</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Company: UdeS</p>
@@ -12,17 +12,19 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
 
-public class InstructorsList {
+public class InstructorsList extends ResourceList{
 
 private Vector instructorsList;// contains list of Instructor
 private StringTokenizer st;// instructors in text format
 private int numberOfLines;// represent number of days
 private int numberOfColumns;// represent number of period a day.
 
-  public InstructorsList( byte[]  dataloaded, int nbDay, int ndPerDay) {
-    st = new StringTokenizer(new String (dataloaded),"\r\n" );
-    numberOfLines = nbDay;
-    numberOfColumns = ndPerDay;
+ /**
+  * INPUTS: byte[]  dataloaded (information from file in byte type),
+  * int nbDay,
+  * */
+ public InstructorsList( byte[]  dataloaded, int nbDay, int ndPerDay) {
+   super( dataloaded, nbDay, ndPerDay);
   }
   /**
    * methode analyse st, a stringtokenizer variable
@@ -95,53 +97,9 @@ private int numberOfColumns;// represent number of period a day.
    *
    */
   public void buildInstructorsList(){
-
+    Instructor inst= new Instructor();
+    inst.addDispDay("1 1 1 5 5");
+    Resource resc = new Resource (0,"Alex", inst);
   }
-
-  /**
-   *
-   * */
-  public void addInstructor(){
-
-  }
-
-  /**
-   *
-   * */
-  public void removeInstructor(String instID){
-
-  }
-
-  /**
-   *
-   * */
-  public Instructor getInstructor(int key){
-
-    return new Instructor(0,"");
-  }
-
-  /**
-   *
-   * */
-  public Instructor getInstructor(String instID){
-
-    return new Instructor(0,"");
-  }
-
-  /**
-   *
-   * */
-  public void sortInstructorList(){
-
-  }
-
-  /**
-   *
-   * */
-  public String toString(){
-
-    return "";
-  }
-
 
 }

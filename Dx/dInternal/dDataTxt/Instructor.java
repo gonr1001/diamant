@@ -10,16 +10,12 @@ package dInternal;
  */
 import java.util.Vector;
 
-public class Instructor {
+public class Instructor extends Object {
 
-  private int _key;
-  private String _instructorID;// can be a name, an ID, a CIP code
   private Vector _instructorDisp;//
   private final String CR_LF = "\r\n";
 
-  public Instructor(int key, String instID) {
-    _key = key;
-    _instructorID = instID;
+  public Instructor() {
     _instructorDisp = new Vector();
   }
   /**
@@ -54,17 +50,14 @@ public class Instructor {
   /**
    *
    * */
-  public String getInstID(){return _instructorID;}
   public Vector getInstDisp(){return _instructorDisp;}
-  public int getkey(){return _key;}
 
   /**
    * Print local information
    * OUTPUT: String of instructorID and instructor availability
    * */
   public String toString(){
-    String instInfo;
-    instInfo= _instructorID+CR_LF;
+    String instInfo="";
     for(int i=0; i< _instructorDisp.size()-1; i++)
       instInfo += (String)_instructorDisp.get(i)+CR_LF;
     instInfo += (String)_instructorDisp.get(_instructorDisp.size()-1);
