@@ -1,0 +1,67 @@
+\section{Importation sélective}
+
+La fonctionnalité d'importation sélective doit permettre d'importer dans Diamant (au cours de la construction d'un horaire), les nouvelles données mise à jour, sans avoir à recommencer l'horaire depuis le début.
+
+\subsection{Fichier à importer}
+
+Les fichiers ci-dessous peuvent-ils être importés de manière selective (oui/non):
+
+\begin{itemize}
+    \item Fichier d'enseignants? ...........
+    \item Fichier d'étudiants? ...........
+    \item Fichier de cours? ...........
+    \item Fichier de locaux? ...........
+\end{itemize}   
+
+\subsection{Modification des données}
+
+La modification d'un élément peut se produire dans les cas suivants: nouvel élément, élément modifié, élément disparu.
+
+\subsubsection{Nouvel élément} 
+Quoi faire lorsque les données (liste des enseignants, des étudiants, des cours ou des locaux) sont chargées dans Diamant:
+        \begin{itemize}
+            \item Toute nouvelle donnée (nouvel enseignant, cours, étudiant ou local) doit-elle être ajoutée à la liste existante?  ...........\\
+            \item Les nouvelles données doivent-elles être rajoutées à la fin de la liste existante?  ...........\\
+            \item Les nouvelles données doivent-elles être mélangées et triées avec celles de liste existante?  ...........
+        \end{itemize}    
+
+\subsubsection{Élément modifié} 
+     Quoi faire lorsque les nouvelles données contiennent des éléments existant déjà dans Diamant, mais dont les propriétés\footnote{disponibilité d'un enseignant par example} sont différentes:
+        \begin{itemize}
+            \item Les nouvelles données doivent elles avoir priorité\footnote{Cette notion de priorité aura pour effet de remplacer les propriétés de l'élément existant dans Diamant, par celles du même élément contenu dans les nouvelles données} sur les données existantes?  ........... 
+        \end{itemize}    
+\subsubsection{Élément disparu}
+Quoi faire lorsqu'un élément existe dans Diamant, mais n'apparaît plus dans les nouvelles données:
+       \begin{itemize}
+            \item L'élément dans Diamant doit-il être supprimé pour conserver la cohérence avec les nouvelles données? ...........
+        \end{itemize} 
+
+\subsection{Priorité des transferts}
+
+L'importation de données fait référence aux nouvelles données versus données existantes.
+
+\begin{itemize}
+    \item Est il nécessaire de donner la possibilité de spécifier, entre les nouvelles données et les données existante, lequel a priorité sur l'autre? ............
+\end{itemize}    
+
+\section{Définition des ensembles}
+
+Cette fonctionnalité doit permettre de définir un ou plusieurs ensembles contenant chacun une liste de cours, de donner un nom à cet ensemble, d'ouvrir et enregistrer ces ensembles.
+
+\subsection{Stockage}
+
+Le stockage des ensembles doit permettre son utilisation ultérieure. Les principales interrogation sur le stockage sont les suivantes:
+
+\begin{itemize}
+    \item Les ensembles, préalablement définis, doivent-ils être enregistrés pour un horaire spécifique\footnote{Ensembles Enregistrés dans le fichier \verb!.dia! du projet en cours et ne pourront être visibles que dans le projet}? ............\\
+    \item Les ensembles, préalablement définis, doivent-ils être enregistrés dans des fichiers indépendants\footnote{Comme pour la définition de la grille horaire} afin qu'ils puissent être utilisés dans n'importe quel projet? ............
+\end{itemize}    
+
+\subsection{Structure des ensembles}
+
+Un ensemble se définit par son nom et contient une liste de cours. Les interrogations sur sa structure sont les suivantes:
+
+\begin{itemize}
+    \item Des ensembles différents peuvent-ils contenir un même cours? ............
+    \item Un ensemble peut-il être composé de plusieurs autres ensembles? ............
+\end{itemize}    
