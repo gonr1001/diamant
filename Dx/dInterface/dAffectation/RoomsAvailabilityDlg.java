@@ -38,7 +38,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   //private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private  String[] time;
 
-  private ButtonsPanel _applyPanel ; //= new JPanel();
+  private ButtonsPanel _applyPanel; 
   private JPanel chooserPanel = new JPanel();
   private JPanel centerPanel;
   //JButton butApply;
@@ -135,7 +135,7 @@ public class RoomsAvailabilityDlg  extends JDialog
         _currentAvailbility [day][per] = 5;
       }
       _modified = true;
-      _applyPanel.setFirstEnable();;
+      _applyPanel.setFirstEnable();
     }
   }
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: TwoButtonsPanel $Revision: 1.2 $  $Date: 2004-04-07 18:08:28 $
+ * Title: TwoButtonsPanel $Revision: 1.3 $  $Date: 2004-05-12 19:51:16 $
  * Description: TwoButtonsPanel is a class used to have two buttons in a panel:
  *              Apply and Close
  *
@@ -15,19 +15,16 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
 
-import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
 import javax.swing.JButton;
-
-import dResources.DConst;
 
 public class TwoButtonsPanel extends ButtonsPanel {
 

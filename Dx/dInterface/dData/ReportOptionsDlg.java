@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.24 $  $Date: 2003-12-02 16:41:33 $
+ * Title: ReportOptionsDlg $Revision: 1.25 $  $Date: 2004-05-12 19:51:16 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,7 +17,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -36,27 +36,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import dInternal.Preferences;
-
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dData.Resource;
-import dInternal.dData.SetOfResources;
 
-import dInternal.dUtil.DXValue;
 
 import dResources.DConst;
 
-
+import dInterface.dUtil.TwoButtonsPanel;
+import dInterface.dUtil.ButtonsPanel;
 
 public class ReportOptionsDlg extends JDialog implements ActionListener {
   private ViewReport _parentDlg;
   private JList _rightList, _leftList;
   private Vector _rightVec, _leftVec;
-  private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
-  private String [] _buttonsNames = {DConst.BUT_OK,
-    DConst.BUT_CANCEL};
+  private JPanel _centerPanel, _arrowsPanel;
+  private ButtonsPanel _applyPanel; 
+  private boolean _modified = false;
+
   private String [] _arrowsNames = {DConst.TO_RIGHT,
     DConst.TO_LEFT,
     DConst.TO_UP,
@@ -115,12 +112,16 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
                                  DConst.REPORT_OP_FIELDS__CHOICED));
 
     //buttonsPanel
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+	//_applyPanel
+	String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+	_applyPanel = new TwoButtonsPanel(this, a);
+	//Setting the button APPLY disable
+	_applyPanel.setFirstDisable();
     //placing the elements into the JDialog
     setSize(dlgDim);
     setResizable(false);
     getContentPane().add(centerPanel, BorderLayout.CENTER);
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
+    getContentPane().add(_applyPanel, BorderLayout.SOUTH);
   }//end method
 
   private Vector rigth(Vector v , int e) {
@@ -188,17 +189,22 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-    //If buttons CANCEL
-    if (command.equals(_buttonsNames[1]))
+    //If buttons CLOSE
+    if (command.equals(DConst.BUT_CLOSE))
       dispose();
     //if button OK
-    if (command.equals(_buttonsNames[0])){
+    if (command.equals(DConst.BUT_APPLY)){
       _parentDlg.doSave(_rightVec);
-      dispose();
+	  _modified = false;
+	   _applyPanel.setFirstDisable();
+      //dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       //toLeft button
-      if (command.equals(_arrowsNames[1]))
+      _modified = true;
+	  _applyPanel.setFirstEnable();
+      if (command.equals(_arrowsNames[1])) {
+      
         listTransfers(_rightList.getSelectedValues(),
                       _rightVec,
                       _rightList,
@@ -206,7 +212,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
                       _leftList,
                       true);
 
-      else
+    } else {
+    
         //toRight button
         listTransfers(_leftList.getSelectedValues(),
                       _leftVec,
@@ -214,10 +221,14 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
                       _rightVec,
                       _rightList,
                       false);
-
+    }
+    
+		
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
     if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3])){
       int i = -1;
+	  _modified = true;
+	  _applyPanel.setFirstEnable();
       if (_rightList.getSelectedIndices().length == 1) {
         String selectedValue = (String)_rightList.getSelectedValue();
         i = _rightList.getSelectedIndex();

@@ -1,47 +1,55 @@
-package dInterface.dData;
+/**
+ *
+ * Title: ImportReport $Revision: 1.7 $  $Date: 2004-05-12 19:51:16 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.7 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
+ */
+
 
 /**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
+ * Description: ImportReport is a class used to
+ *
  */
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+package dInterface.dData;
+
+
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.Cursor;
+import java.awt.Dimension;
 
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
-import java.util.StringTokenizer;
 import java.util.Vector;
-import java.awt.Toolkit;
 
 
-import javax.swing.JDialog;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTabbedPane;
+
 
 import dInterface.DApplication;
-import dInternal.DModel;
-import dInternal.dData.SetOfStates;
-import dInternal.dData.State;
-import dInterface.ProgressBar;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-import dInterface.dUtil.DXTools;
+
 
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
-import dInternal.dData.StandardReportData;
 import dInternal.dUtil.DXValue;
 
 import dResources.DConst;
