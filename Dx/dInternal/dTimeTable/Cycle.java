@@ -16,10 +16,9 @@ import org.w3c.dom.Document;
 
 public class Cycle extends DXObject{
 
-  //********Alex
   //private Day _currentDay;
   private int _currentDayIndex=0;
-  //********Alex/
+
 
 
   public Cycle() {

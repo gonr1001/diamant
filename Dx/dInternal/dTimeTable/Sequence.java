@@ -129,6 +129,17 @@ public class Sequence extends DXObject{
     return _error;
   }
 
+  /**
+   * return the next period and increment _currentPeriodIndex
+   * @return
+   */
+  public Period getNextPeriod(){
+    if(_currentPeriodIndex>= _setOfPeriods.size()){
+      _currentPeriodIndex=0;
+    }
+    return (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex++).getAttach();
+  }
+
 
    private SetOfResources _setOfPeriods;
    private int _currentPeriodIndex = 0;

@@ -12,6 +12,7 @@ import org.w3c.dom.Document;
 
 public class Day extends DXObject{
 
+
   /**
    * Constructor
    * */
@@ -133,6 +134,17 @@ public class Day extends DXObject{
 
   public String getError(){
     return _error;
+  }
+
+  /**
+   * return the  period and increment _currentPeriodIndex
+   * @return
+   */
+  public Period getNextPeriod(){
+    if(_currentSequenceIndex>= _setOfSequences.size()){
+     _currentSequenceIndex=0;
+    }
+    return ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex).getAttach()).getNextPeriod();
   }
 
 
