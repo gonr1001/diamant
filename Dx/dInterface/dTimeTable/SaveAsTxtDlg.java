@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.3 $  $Date: 2004-06-09 19:29:18 $
+ * Title: SaveAsTxtDlg $Revision: 1.4 $  $Date: 2004-06-09 19:45:52 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -43,7 +43,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 import dInterface.DApplication;
 
-//import dAux.ConfirmDlg;
+//import dDeveloper.ConfirmDlg;
 
 import dConstants.DConst;
 import dResources.DFileFilter;

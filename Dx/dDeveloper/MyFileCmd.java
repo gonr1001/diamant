@@ -1,4 +1,4 @@
-package dAux;
+package dDeveloper;
 
 import dInterface.Command;
 import dInterface.DApplication;

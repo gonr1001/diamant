@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.3 $  $Date: 2003-02-25 15:52:44 $
+ * Title: ClassName $Revision: 1.4 $  $Date: 2004-06-09 19:45:52 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.4 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -28,7 +28,7 @@
  *
  */
 
-package dAux;
+package dDeveloper;
 
 /**
  * Description: This class is used as a template to have the header

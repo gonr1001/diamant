@@ -1,4 +1,4 @@
-package dAux;
+package dDeveloper;
 
 /**
  * <p>Title: Diamant</p>

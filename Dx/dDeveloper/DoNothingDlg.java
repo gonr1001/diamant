@@ -1,6 +1,6 @@
 /**
  *
- * Title: DoNothingDlg $Revision: 1.4 $  $Date: 2003-10-28 13:20:23 $
+ * Title: DoNothingDlg $Revision: 1.5 $  $Date: 2004-06-09 19:45:52 $
  * Description: DoNothingDlg is created by DoNotingCmd
  *              The dialog is displayed nothing is done.
  *              This class is used until
@@ -16,11 +16,11 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
-package dAux;
+package dDeveloper;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;

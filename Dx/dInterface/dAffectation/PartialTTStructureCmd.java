@@ -9,7 +9,7 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
-import dAux.DoNothingDlg;
+import dDeveloper.DoNothingDlg;
 import dInterface.Command;
 import dInterface.DApplication;
 
