@@ -12,7 +12,8 @@ package dInterface.dAffectation;
 
 import java.awt.event.ActionEvent;
 import dInterface.DApplication;
-import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dConditionsTest.EventAttach;
@@ -21,7 +22,6 @@ import dResources.DConst;
 
 public class EventsDlg extends EventsDlgInterface{
 
-   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CLOSE};
 
   /**
    * Constructor
@@ -33,7 +33,15 @@ public class EventsDlg extends EventsDlgInterface{
     jbInit();
   }//end method
 
+  public ButtonsPanel setButtons() {
+    //_applyPanel
+    String [] a = {DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _applyPanel = new TwoButtonsPanel(this, a);
+    //Setting the button APPLY disable
+    _applyPanel.setFirstDisable();
+    return _applyPanel;
 
+  }
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
@@ -47,7 +55,7 @@ public class EventsDlg extends EventsDlgInterface{
         DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
       _leftLabel.setText(String.valueOf(_leftVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _applyPanel.setFirstEnable();
     }//end if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) || (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
     //if the source is one of the the _rightArrowsPanel buttons
     if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
@@ -59,22 +67,22 @@ public class EventsDlg extends EventsDlgInterface{
         DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);
       _rightLabel.setText(String.valueOf(_rightVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _applyPanel.setFirstEnable();
     }//end if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) || (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
-    //if Button CANCEL is pressed
-    if (command.equals(_buttonsNames[2]))
+    //if Button CLOSE is pressed
+    if (command.equals(DConst.BUT_CLOSE))
       dispose();
     //if Button OK is pressed
-    if (command.equals(_buttonsNames[0])){
+/*    if (command.equals(_buttonsNames[0])){
       setUnities();
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
       dispose();
-    }
+    }*/
     //if Button APPLY is pressed
-    if (command.equals(_buttonsNames[1])){
+    if (command.equals(DConst.BUT_APPLY)){
       setUnities();
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
-      _buttonsPanel.getComponent(1).setEnabled(false);
+      _applyPanel.setFirstDisable();
     }// end if Button APPLY
   }//end method
 
@@ -82,7 +90,7 @@ public class EventsDlg extends EventsDlgInterface{
   * build buttom to use in the dialog
   */
  protected void buildButtons(){
-   _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+   //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);

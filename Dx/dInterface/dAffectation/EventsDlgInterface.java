@@ -19,7 +19,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import java.util.StringTokenizer;
-import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -47,7 +48,7 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected JLabel _leftLabel, _centerLabel, _rightLabel;
   protected JList _leftList, _centerList, _rightList;
   protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel, _leftArrowsPanel, _buttonsPanel;
-  protected ApplyPanel _applyPanel;
+  protected ButtonsPanel _applyPanel;
   protected Object[] selectedItems;
   protected SetOfActivities _activities;
   protected SetOfEvents _events;
@@ -85,15 +86,16 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
     setLeftPanel();
     setCenterPanel();
     setRightPanel();
+    _buttonsPanel = setButtons();
     //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //setting disable the APPLY button
-    if (_buttonsPanel.getComponentCount()>1)
-      _buttonsPanel.getComponent(1).setEnabled(false);
+   // if (_buttonsPanel.getComponentCount()>1)
+     // _buttonsPanel.getComponent(1).setEnabled(false);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     setLocationRelativeTo(_dApplic.getJFrame());
     setVisible(true);
   }
-
+  public abstract ButtonsPanel setButtons() ;
   /**
    * initialize label in each panel
    */

@@ -8,7 +8,7 @@ import javax.swing.*;
 import dInternal.DModel;
 import dInternal.dData.RoomAttach;
 import dInterface.DApplication;
-import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;
 
 import dResources.DConst;
@@ -99,9 +99,9 @@ public class RoomsAvailabilityDlg  extends JDialog
 
     //_applyPanel
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
-    _applyPanel = new ApplyPanel(this, a);
+    _applyPanel = new TwoButtonsPanel(this, a);
     //Setting the button APPLY disable
-    _applyPanel.setApplyDisable();
+    _applyPanel.setFirstDisable();
     this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
   } // end  jbInit()
 
@@ -122,7 +122,7 @@ public class RoomsAvailabilityDlg  extends JDialog
       _currentRoom.setAvailability(_currentAvailbility);
       //_dm.incrementModification();
       _modified = false;
-      _applyPanel.setApplyDisable();
+      _applyPanel.setFirstDisable();
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());
@@ -135,7 +135,7 @@ public class RoomsAvailabilityDlg  extends JDialog
         _currentAvailbility [day][per] = 5;
       }
       _modified = true;
-      _applyPanel.setApplyEnable();;
+      _applyPanel.setFirstEnable();;
     }
   }
 

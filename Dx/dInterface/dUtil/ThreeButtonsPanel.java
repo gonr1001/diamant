@@ -1,8 +1,8 @@
 /**
  *
- * Title: ApplyPanel $Revision: 1.2 $  $Date: 2004-04-07 14:35:30 $
- * Description: ApplyPanel is a class used to have two buttons in a panel:
- *              Apply and Close
+ * Title: ThreeButtonsPanel $Revision: 1.1 $  $Date: 2004-04-07 15:41:01 $
+ * Description: ThreeButtonsPanel is a class used to have three buttons in a panel:
+ *               X, Apply and Close
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,9 +29,9 @@ import javax.swing.JButton;
 
 import dResources.DConst;
 
-public class ApplyPanel extends ButtonsPanel {
+public class ThreeButtonsPanel extends ButtonsPanel {
 
-  public ApplyPanel(ActionListener parentDialog, String [] buttonsNames) {
+  public ThreeButtonsPanel(ActionListener parentDialog, String [] buttonsNames) {
     super();
     JButton button = new JButton(buttonsNames[0]);
     button.setActionCommand(buttonsNames[0]);
@@ -41,13 +41,25 @@ public class ApplyPanel extends ButtonsPanel {
     button.setActionCommand(buttonsNames[1]);
     button.addActionListener(parentDialog);
     this.add(button) ;
+    button = new JButton(buttonsNames[2]);
+    button.setActionCommand(buttonsNames[2]);
+    button.addActionListener(parentDialog);
+    this.add(button) ;
   }
 
-  public void setApplyEnable() {
+  public void setFirstEnable() {
     getComponent(0).setEnabled(true);
   }
 
-  public void setApplyDisable() {
+  public void setFirstDisable() {
     getComponent(0).setEnabled(false);
+  }
+
+  public void setMiddleEnable() {
+    getComponent(1).setEnabled(true);
+  }
+
+  public void setMiddleDisable() {
+    getComponent(1).setEnabled(false);
   }
 }

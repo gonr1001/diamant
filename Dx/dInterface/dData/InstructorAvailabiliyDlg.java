@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.10 $  $Date: 2004-04-07 14:35:30 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.11 $  $Date: 2004-04-07 15:41:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -28,7 +28,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import dInterface.DApplication;
-import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 import dInterface.dUtil.ButtonsPanel;
 //import dInterface.dUtil.DXTools;
 import dInternal.dData.InstructorAttach;
@@ -127,9 +127,9 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
     //_applyPanel
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
-    _applyPanel = new ApplyPanel(this, a);
+    _applyPanel = new TwoButtonsPanel(this, a);
     //Setting the button APPLY disable
-    _applyPanel.setApplyDisable();
+    _applyPanel.setFirstDisable();
     this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
   } // end  jbInit()
 
@@ -148,7 +148,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentInstr.setAvailability(_currentAvailbility);
       modified = false;
-      _applyPanel.setApplyDisable();
+      _applyPanel.setFirstDisable();
       _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
@@ -162,7 +162,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
         _currentAvailbility [day][per] = 5;
       }
       modified = true;
-      _applyPanel.setApplyEnable();
+      _applyPanel.setFirstEnable();
     }
   }
 
