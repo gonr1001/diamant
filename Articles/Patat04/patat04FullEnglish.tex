@@ -409,7 +409,7 @@ becomes final for the period.
 \section{The architecture} \label{sec:archi}
 
 
-Following the study of the data flow in the timetable production ,
+Follows to the study of the data flow in the timetable production,
 we are able to propose an architecture to implement the system.
 
 \subsection{An architecture for the timetable production}
@@ -422,122 +422,128 @@ the constraints of these models. \cite{shaw96}
 In a general way, when we have a complex problem, the best
 approach is to cut out the problem in fragments which are easier
 to solve with a simple solution. Then, if we put all these small
-solutions together, we will arrive at the solution of our
-complexes problem \cite{buschmann96}.
+solutions together, we will arrive at the solution of our complex
+problem \cite{buschmann96}.
 
 At the present time there are several architectures available to
-develop software applications, the most adapted for this type of
-problem is that in layers.
+develop software applications, the most adapted for the timetable
+production system is that in layers.
 
 The architecture shown in the figure \ref{fig:fThree} proposes the
 division of the system in three layers, each one with a well
 defined function~:
 
 \begin{description}
-\item [The interface~:] Is responsible to validate the data
-acquisition of the user, as well as the entry of the data which
-comes from other systems.
+\item [The interface.] It is responsible to present the data to
+the user, to allow the data input, and ensuring the exchanges with
+other systems.
 
-\item [Business logic layer~:] Is responsible for the behavior of
-the system, i.e., the rules of businesses are coded here.
+\item [Business logic layer.] It is responsible to ensure the
+exchanges with the interface and validate and check the data input
+and sending the data to be presented in an adequate format. It
+ensures also the exchanges with the data persistence  layer. The
+business rules are used to ensure the coherence of the system.
 
-\item [The data persistence layer~:] Manages the physical storage
-of the data, that is in files with a certain format, or in a
-system of traditional databases or in other models of persistence
+\item [The data persistence layer.] It manages the physical
+storage of the data, that is in files with a certain format, or in
+a system of traditional database or in other models of persistence
 which are able to manage complex databases.
 \end {description}
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
 \begin{picture}(3,4.5)
-  \put(3,4){\framebox(4,1){interface}}
+  \put(3,4){\framebox(4,1){Interface}}
   \put(4.5,3.5){\vector(0,1){0.5}}
   \put(5.5,4){\vector(0,-1){0.5}}
-  \put(3,2.5){\framebox(4,1){business logic}}
+  \put(3,2.5){\framebox(4,1){Business logic}}
   \put(4.5,2){\vector(0,1){0.5}}
   \put(5.5,2.5){\vector(0,-1){0.5}}
-  \put(3,1){\framebox(4,1){data persistance}}
+  \put(3,1){\framebox(4,1){Data persistance}}
 \end{picture}
 \caption{The three layers architecture .}\label{fig:fThree}
 \end{figure}
 
+
+
 \subsection {The three layers architecture and the system of timetable production.}
 
-
 For each element of the architecture that we presented in the
-earlier section, we propose a component which is part of the
-application of timetable production. In this section we will show
-the integration between the data flow for a system of timetable
-production and suggested architecture.
-
+earlier subsection, we propose a component which is part of the
+application of timetable production. In this subsection we will
+show the integration between the data flow for a system of
+timetable production and suggested architecture.
 
 
 The high level design of our system of timetable production is
 simple (see figure \ref{fig:fOne})~:
 
 \begin{enumerate}
-\item We have data which enter the system. These data are managed
-by the interface layer. There are three possible sources of data
-(see figure \ref{fig:fTwo}):
+\item We defined three categories of the data in a timetable
+production system. The figure \ref{fig:fTwo} shows these
+categories. The interface layer treats these data as follows:
 
 \begin{enumerate}
-\item Direct data entry for one period data. This activity is made
-by the made user clerk. Normally, these data change with each
-creation of timetable. To enter the data, the user clerk has a Web
-page which is showed by a navigator where it will have all the
-fields to fill. At this moment, the interface layer can make some
-minimal validations of the coherence of data, for example, check
-that the type of data is correct, to check that the fields which
-are obligatory are filled, etc. Depending on the size of the
-institution, it can have several users clerk who work at the same
-time in the application, in that case it is necessary, to take
-right measures to allow the concurrent work in the data
+
+\item Basic data. These data are in a database belonging to the
+institution. This database can have its own interfaces to get and
+show the data. The system of production needs a part of these
+data. It is necessary to have an interface with other systems, its
+responsibility is to seek the necessary data and to place it in
+the production system. An important remark is that the users of
+the system should not have the right to modify the data of the
+institution for security reasons.
+
+
+\item Direct data entry of the one period $P$. This activity is
+made by a clerk. Normally, these data change with each creation of
+a timetable. To enter the data, the user clerk has a Web page
+which is displayed by a navigator, and it will have fields to
+fill. At this moment, the interface layer can make some minimal
+validations of the coherence of data, for example, check that the
+data type is correct, to check that the fields which are
+obligatory are filled, etc. Depending on the size of the
+institution, it can have several clerks who work at the same time
+in the application, it is necessary consequently, to take the
+necessary measures to allow the concurrent work in the data
 persistence layer.
 
-\item Data generated by other systems (basic data). It is proven
-long time ago that the best way of exchanging information between
-two systems is the file transfer. For this reason our system must
-be able to receive and send files in a compatible format between
-several systems.
-
-\item The timetable data are created by the application of
-timetable creation. This application is managed by the user
-responsible for the timetable creation. Since this activity is of
-iterative nature, it can have a certain number of versions of work
-that the user responsible for the timetable creation must analyze
-to find that which is appropriate to him. Once that he found this
-version, he must apply the "commit"operation to make available the
-information to the rest of the users.
-
-Those are the data that leave our system, and they are sent
-towards to other systems or to other users, for example, the
-students who will receive a paper with their timetable
-personalized or, he can consult this information by using a Web
-site creates for these ends, or, the central administration of the
-institution which must be informed of the assignment of the
-schedules.
+\item The timetable data are created by the timetable creation
+application. This application is managed by the user responsible
+for the timetable creation. Since this activity is of iterative
+nature, it can have a certain number of versions of the work that
+the user responsible for the timetable creation must analyze to
+find that which is appropriate to him. Once that he found this
+version, he must apply the operation ''commit'' to make available
+the information to the rest of the users. Those are the output
+data from our system, and they are sent to other systems or other
+users, for example, the students who will receive a paper with
+their personalized timetable or he can consult this information by
+using a Web site creates for these ends, or, the central
+administration of the institution which must be informed of the
+timetable assignment.
 
 \end{enumerate}
 
 It is necessary to keep in consideration that the interface layer
 communicates only with the business logic layer. An application is
-not able to add, modify or to erase data directly in the data
-base, it must pass irremediably by the business logic layer. This
+not able to add, modify or to erase data directly in the database,
+it must pass irremediably by the business logic layer. This
 characteristic enables us to ensure the coherence of the data.
 
 \item The data are treated according to certain rules and
 constraints, these rules are defined by each institution and they
 are coded in the business logic layer. It is here that we will be
 able to express the constrains for each institution, for example,
-the maximum quantity of students in a group, that all the courses
-of mathematics are held the morning, etc.
+the maximum quantity of students in a group, all the courses of
+mathematics are held the morning, etc.
 
 \item The data results of these treatments must be store in a
-place to be able to use them after its generation. It is the layer
-of data persistence which is responsible for this task. In a
-system of timetable production, the data can be stored in a data
-base (relational, object or another technology), in a XML file, a
-text file or in another storage media.
+place to be able to use them after its generation. It is the data
+persistence layer which is responsible for this task. In a system
+of timetable production, the data can be stored in a database
+(relational, object or another technology), in a XML file, a text
+file or in another storage media.
 \end{enumerate}
 
 These elements of composition and its relations are illustrated in
@@ -590,12 +596,12 @@ the system of timetable production.}\label{fig:fFour}
 
 \section{Possible technologies}\label{sec:tech}
 
-For the implementation of the architecture, first of all it is
-necessary, to find which are the technological elements that we
-need. We find that it is necessary to have~:
+For the implementation of architecture, first of all it is
+necessary, to find which of the technological elements we need.
+The needs are:
 
 \begin{enumerate}
-\item A language to facilitate the show of the data to the user
+\item A language to facilitate the display of the data to the user
 and the creation of forms to enter data.
 
 \item A set of rules which define the way of establishing the
@@ -607,7 +613,7 @@ exchange of data with the other systems.
 \end{enumerate}
 
 After our analysis, we found that there is not only one option,
-rather there are several possibilities to implement this
+rather, there are several possibilities to implement this
 architecture.
 
 In the Table \ref{tb:tbOne}, we show a list of possible instances,
@@ -617,7 +623,7 @@ it is not exhaustive.
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
 Technology & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
-Language to show & HTML et JSP& Applet Java & Visual Basic\\
+Language for display & HTML et JSP& Applet Java & Visual Basic\\
 \hline Format to data exchange & XML & Text & Text\\ \hline
 
 Language to code the business logic & Java & Java & Visual Basic\\
@@ -646,17 +652,17 @@ modules in an easy way, for example, we can start with an element
 of data persistence like a file in text format, and then, we could
 carry out some changes in the element of interface to be able to
 interact with files in XML format. After, if we want to make
-evolve this part of data persistence to a system of databases, it
+evolve this part of data persistence to a database system, it
 would be necessary to make changes in the interface layer and to
 program the element of data persistence. All these changes without
-never touching the element of the business logic. In Table
+never touching the element of the business logic. In the Table
 \ref{tb:tbTwo}, we show the possible evolution of an instance of
 our architecture.
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
 Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
-Language to show & HTML et JSP & HTML et JSP & HTML et JSP\\
+Language for display & HTML et JSP & HTML et JSP & HTML et JSP\\
 \hline
 
 Format to data exchange & Text & XML & Database SQL\\
@@ -677,7 +683,7 @@ architecture}\label{tb:tbTwo}
 
 We can also imagine a system which starts with an interface based
 in textual mode to show the information, which will evolve with a
-display based in HTML and JSP by using a Web server.
+display based in HTML and JSP by using a JSP server.
 
 \section{An instance of the architecture} \label{sec:tictac}
 
@@ -688,15 +694,14 @@ options of instance of the architecture (see Table
 \ref{tb:tbOne}), for our implementation, we chose the option 1 of
 this table.
 
-
-Before begins, it should be known that an element is open if it is
-built with approved standards, or, if he is built with a
-specification private but made public by the developers.
+At the first, it should be known that an element is open if it is
+built with approved standards, or, if it is built with a private
+specification but made public by the developers.
 \footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
-It also should be held in consideration that an element is
-extensible if it is easy to adapt this product to the changes in
-the specification.\cite{meyer97}
+It is important to remember that an element is extensible if it is
+easy to adapt this product to the changes in the
+specification\cite{meyer97}.
 
 
 With these considerations in hand, we show here the analysis which
@@ -704,39 +709,39 @@ brought us to our choice:
 
 \begin{description}
 
-\item [Language to show:] For the language to show and to enter
-data we chose HTML and JSP, given that those languages are the
-standard for the creation of Web pages, and we want to benefit
-from all the characteristics that the Web offer for the
+\item [Language for display.] For the language for display and to
+enter data we chose HTML and JSP, given that those languages are
+the standard for the creation of Web pages, and we want to benefit
+from all the characteristics that the site Web offer for the
 transactional applications.
 
-\item [Format to data exchange:] To exchange the data we chose
+\item [Format to data exchange.] To exchange the data we chose
 XML. The language XML (extensible Markup Language) let us to
 store, exchange and show data or information in a structured way.
 The language also makes possible to handle, to transform and to
 visualize the data with many tools of formatting, for example, the
-information or data stored in a document XML can be displayed in a
-Web navigator. Moreover, when XML documents are stored in a
-database, they can be the object of requests and found like any
-other data format.
+information stored in a XML document can be displayed in a Web
+navigator. Moreover, when XML documents are stored in a database,
+they can be the object of requests and treated like any other data
+format.
 
-\item [Language to code the business logic:] We chose Java. Java
+\item [Language to code the business logic.] We chose Java. Java
 is an interpreted language which uses the Java Virtual Machine
 (JVM). There are several versions of this virtual machine for
 several different platforms, which means that the programmers can
-write for this language by using a platform, and make turn their
-programs on others.
+write for this language by using a platform, and then execute
+their programs in others.
 
-\item [The data persistence:] For the implementation of the data
+\item [The data persistence.] For the implementation of the data
 persistence layer we chose to use a database. A database is an
 entity in which it is possible to store data in a structured way
-with the minimum of redundancy. These data must be able to be used
-by programs written in various languages by using standard
+with the minimum of redundancy. These data must be used by
+programs written in different languages by using standard
 technology ODBC (Open DataBase Connectivity), if we use Java as
-language to establish the connection towards the database, we can
-use JDBC (Java Database Connectivity). The standard JDBC is an
+language to establish the connection to the database, we can use
+JDBC (Java Database Connectivity). The standard JDBC is an
 application program (API) to establish the connection between the
-Java language and a large numbers databases, by using philosophy
+Java language and a large numbers databases by using philosophy
 "Write Once, Run Anywhere".
 \end{description}
 
@@ -748,37 +753,48 @@ modifying the new characteristics required by the institutions.
 
 \section{Conclusions}\label{sec:conc}
 
-We presented an architecture for the timetable production in an
-academic institution. An objective guided our approach~: to have
-an open and extensible architecture. In the presentation of the
-architecture we showed that it has the two qualities. Our
-architecture is open, since it accepts several instances. The
+We presented the architecture of a system of production of
+schedules in an academic institution. An objective guided our
+approach~: to have an open and extensible architecture. In order
+to ensure a longer life the system.
+
+
+We started by showing the needs of information exchanges in the
+timetable systems in order to present how the architecture is able
+to satisfy these needs. Moreover, in the presentation of the
+architecture we showed that it has two qualities. Our architecture
+is open~: it is possible to build several instances. The
 architecture is also extensible, because we could change the
-modules in an easy way.
+modules in an easy way. The responsibilities for each module are
+defined, it makes possible to identify the part of the system that
+has been modified. It is necessary to continue the developments
+having as objective the opening (compatibility) and the
+extensibility in all the software.
 
 
-We arrived to the objective to model the timetable production
-process to make decisions allowing its automation. This can
-facilitate the development and the establishment of a system on
-two points of view~:
+It is now possible to give an answer to the question~: Can the
+timetable construction profit from developments associated with
+the timetable production? Our experience in software development
+for the timetable construction softwre showed us than~: the most
+of the problems came from the fact that the input data has errors.
+The construction software must dedicate a large part of its code
+to detect its errors. Moreover users take an important time to
+check the coherence of data before beginning the building work.
+Then, the answer is yes, it exists a real benefit. By developing a
+system of production it is easier to ensure than the software of
+construction has the responsibility for timetable construction and
+not the responsibility of checking the data.
 
-\begin{itemize}
+Other benefit are also to consider, such as for example consulting
+its timetable by the Web (updated) since its residence, especially
+in countries where sometimes it makes $-30^\circ$.
 
-\item The development of software interfaces between various
-components of the system, this can result in developing modules or
-with the modification of existing modules.
+D'autres bénéfices sont aussi à envisager, comme par exemple
+consulter son horaire par le Web (à jour) depuis sa residence,
+surtout dans des pays ou parfois il fait $-30^\circ$, that is well
+appreciated.
 
-\item The gradual integration of new modules in the time, in order
-to disturb the least possible the users of the system.
-\end{itemize}
 
-In the system that we propose, we try as much as possible to limit
-of human intervention in order to reduce errors of handling. We
-try to also to reduce the possible sources of errors by checking
-the input.
-
-Future work is to continue to conceive the complete system by
-keeping the hot lines of extensibility and opening.
 
 \bibliography{bibDiamant,bibProg}
 
