@@ -11,16 +11,17 @@ h2004). Ainsi, les fichiers d'importation et les fichiers produits
 pendant la construction d'un horaire seront ensemble.
 
 La construction d'un nouvel horaire avec \dx{} comporte trois étapes. Elle débute par une
-phase de préparation commune à l'horaire de cycle et d'examen, et
-se termine par la construction à proprement parler. Cette dernière
+phase de préparation commune à l'horaire de cycle et d'examen (phase 1), se poursuit par une phase de modification et d'épuration des données (phase 2) et se termine par la construction à proprement parler (phase 3). Cette dernière
 présente des caractéristiques particulières selon le type
-d'horaire. Nous vous présenterons dans ce chapitre les phases de
-préparation communes d'un horaire avec \dx{}, ainsi que les
+d'horaire et comporte deux sous étapes: la première concernant l'affectation des événements sur la grille horaire et la seconde concernant le raffinement de l'horaire. 
+
+Nous vous présenterons dans ce chapitre les phases de
+préparation communes d'un horaire avec \dx{}, de modification et d'épuration des données, ainsi que les
 caractéristiques particulières de la construction d'un horaire de
 cycle et d'un horaire d'examen, toutefois, les options du logiciel
 ne seront pas toutes présentées.
 
-\section{Production d'un horaire de cycle}
+\section{Production d'un horaire de cours}
 
 \subsection{Préparation de l'horaire}\label{finprepa}
 
@@ -31,14 +32,14 @@ ne seront pas toutes présentées.
     et enfin sélectionner le sous-menu \textbf{\emph{Horaire cycle}}.
     Une boîte de dialogue comme celle
 de la Figure \ref{selectgrillecyc} doit apparaître et elle vous
-permettra de choisir le fichier (fichier avec extension \emph{xml})
-contenant la configuration de votre grille horaire.
+permettra de choisir le fichier (fichier avec extension \emph{.xml})
+contenant la définition de votre grille horaire.
 
     \begin{figure}[h]
     % Requires \usepackage{graphicx}
     \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/selectXMLfile.eps}
-        \caption{Selection de la grille horaire cycle}\label{selectgrillecyc}
+        \caption{Selection de la grille horaire de cours}\label{selectgrillecyc}
     \end{center}
     \end{figure}
 
@@ -47,15 +48,15 @@ contenant la configuration de votre grille horaire.
   % Requires \usepackage{graphicx}
   \begin{center}
     \includegraphics[width=4.5in]{UserManualInputs/images/grille.eps}
-    \caption{Grille horaire cycle}\label{grillecyc}
+    \caption{Grille horaire de cours}\label{grillecyc}
   \end{center}
 \end{figure}
 
-    \item Aller au menu Fichier et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers (liste des fichiers à utiliser) que vous venez de faire.
+    \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers que vous venez de faire.
 
 Il est recommandé d'enregistrer cette configuration en utilisant un nom de fichier unique et représentatif.
 
-Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horaire de cours} et le fichier créé sera \emph{E02cours.dim}.
+Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horaire de cours} et le fichier créé sera \emph{E02cours.dim}. L'extension \textbf{\emph{.dim}} est rajouté automatiquement.
 
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
@@ -66,7 +67,7 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
 \end{figure}
 
     \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Importer automatiquement}}.
-    Une boite de dialogue apparaîtra et vous permettra de choisir le fichier de «configuration de fichiers»
+    Une boite de dialogue apparaîtra et vous permettra de choisir le fichier \textbf{\emph{.dim}} de «configuration de fichiers»
     précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}}
     (dans l'exemple précédent il s'agit du fichier \emph{E02cours.dim}).
     Cliquer à présent sur le bouton \textbf{\emph{Importation de fichiers}},
@@ -74,59 +75,32 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
     prêtes à être modifiées.
 \end{enumerate}
 
-À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{affection initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. 
+À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
 
-La construction de l'horaire peut être découpée en deux étapes, la première permettant de modifier et épurer les données et la seconde permettant de faire une affectation initiale et d'optimiser les placements. 
+\begin{enumerate}
+    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
+    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
+    \item Calculer les conflits générés.
+\end{enumerate}
 
-\subsection{Modification des données}
+Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
 
-Modifier les données consiste à:
+La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
+
+\subsection{Modification et épurations des données}
+
+Le but de cette étape est de permettre de construire l'horaire uniquement à partir de données propres. Cette modification et/ou épuration peut se faire sur les activités, les événements, les groupes d'étudiants, les enseignants ou les locaux. 
+
 \begin{itemize}
-    \item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignant}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
- 
-    \begin{figure}[h]
-      % Requires \usepackage{graphicx}
-      \begin{center}
-        \includegraphics[width=2.5in]{UserManualInputs/images/enseignant.eps}
-        \caption{Disponibilité des enseignants}\label{enseignant}
-      \end{center}
-    \end{figure}
+    \item Modifier une activité en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Activités}} pour voir apparaître la \emph{liste des activités} (voir figure \ref{listactc}) ou alors cliquer sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Événements}} pour voir apparaître la \emph{liste des événements} (voir figure \ref{listeeventc}).\\
 
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.    \\
-
-    \item Modifier la disponibilité d'un local en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Locaux}} pour voir apparaître la fenêtre de la figure  \ref{local}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaité modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est disponible. 
-
-    \begin{figure}[h]
-      % Requires \usepackage{graphicx}
-      \begin{center}
-        \includegraphics[width=2.5in]{UserManualInputs/images/local.eps}
-        \caption{Disponibilité des locaux}\label{local}
-      \end{center}
-    \end{figure}
-
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.\\
-
-    \item Modifier les groupes d'étudiants en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Groupes}} pour voir apparaître la fenêtre de la figure \ref{groupe}. Sélectionner dans la colonne de droite (Étudiants assignés) le groupe (Groupe A, Groupe B, ...) que l'on souhaite modifier. Sélectionner ensuite un ou plusieurs étudiants que l'on souhaite déplacer. Utilisez enfin les flèches pour déplacer les étudiants de la gauche vers la droite ou vice-versa.
-
-    \begin{figure}[h]
-      % Requires \usepackage{graphicx}
-      \begin{center}
-        \includegraphics[width=2.5in]{UserManualInputs/images/groupe.eps}
-        \caption{Affectation des groupes}\label{groupe}
-      \end{center}
-    \end{figure}
-
-Cliquer sur le bouton \textbf{\emph{Par matricule/Par programme/Par nom}} dans le zone \emph{trier}, pour trier les étudiants par matricule, par programme ou par nom.
-
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.\\
-
-    \item Modifier une activité en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Activités}} pour voir apparaître la \emph{liste des activités} (voir figure \ref{listact}) ou alors cliquer sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Événements}} pour voir apparaître la \emph{liste des événements (*** ou blocs?)} (voir figure \ref{listeevent}).\\
+À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (les événements sont placées et figées dans la grille horaire) à \emph{placés} (les événements sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les événements ne sont pas encore placées dans la grille horaire) et vice-versa. 
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/listeact.eps}
-        \caption{Liste des activités}\label{listact}
+        \caption{Liste des activités}\label{listactc}
       \end{center}
     \end{figure}
 
@@ -136,76 +110,114 @@ Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer su
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/listeevent.eps}
-        \caption{Liste des événements (*** ou blocs? )}\label{listeevent}
+        \caption{Liste des événements}\label{listeeventc}
       \end{center}
     \end{figure}
    
-À partir de la fenêtre \emph{liste des événements (*** ou blocs?)}, vous pouvez sélectionner une ou plusieurs activités et les faire passer de la colonne \emph{figés} (les activités sont placées et figées dans la grille horaire) à \emph{placés} (les activités sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les activités ne sont pas encore placées dans la grille horaire) et vice-versa. 
 
-À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement (*** ou blocs? ) à modifier pour faire apparaître la fenêtre d'\emph{affectation d'événements (*** ou blocs? )} (voir figure \ref{event}). Il vous possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements(*** ou blocs? )}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
+À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{eventc}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/event.eps}
-        \caption{Affectation d'événement (*** ou bloc? )}\label{event}
+        \caption{Affectation d'événement}\label{eventc}
       \end{center}
     \end{figure}
     
 Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre.\\
     
-    \item Ajouter ou supprimer un groupe en cliquant sur le menu \textbf{\emph{Modification}} et le sous menu \textbf{\emph{Activité}} pour voir apparaître la fenêtre \textbf{\emph{Modification d'activités}} de la figure \ref{modifact}.
+    \item Ajouter ou supprimer un groupe ou un événement en cliquant sur le menu \textbf{\emph{Modification}} et le sous menu \textbf{\emph{Activité}} pour voir apparaître la fenêtre d'\textbf{\emph{Activités}} de la figure \ref{modifactc}.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/modifact.eps}
-        \caption{Modification d'activités}\label{modifact}
+        \caption{Modification d'activités}\label{modifactc}
       \end{center}
     \end{figure}
 
-Double-cliquer sur l'activité que vous souhaitez modifier pour voir apparaître la fenêtre \textbf{\emph{Modification de types (*** ou nature)}} de la figure \ref{modiftype}.
+Double-cliquer sur l'activité que vous souhaitez modifier pour voir apparaître la fenêtre de \textbf{\emph{Natures}} de la figure \ref{modiftypec}.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/modiftype.eps}
-        \caption{Modification de types (*** ou nature)}\label{modiftype}
+        \caption{Modification de natures}\label{modiftypec}
       \end{center}
     \end{figure}
 
-Double-cliquer sur le type (*** ou nature) que vous souhaitez modifier pour voir apparaître la fenêtre \textbf{\emph{Modification de sections (*** ou groupe)}} de la figure \ref{modifgroupe}.
+Double-cliquer sur la nature que vous souhaitez modifier pour voir apparaître la fenêtre de \textbf{\emph{Groupes)}} de la figure \ref{modifgroupec}.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/modifgroupe.eps}
-        \caption{Modification de sections (*** ou groupe)}\label{modifgroupe}
+        \caption{Modification de groupe}\label{modifgroupec}
       \end{center}
     \end{figure}
 À partir de cette fenêtre, vous avez trois possibilités:
         \begin{enumerate}
             \item Cliquer sur le bouton \textbf{\emph{Ajouter}}, pour ajouter un groupe. Le groupe sera ajouté à la suite du dernier groupe de la liste.
             \item Cliquer sur le bouton \textbf{\emph{Supprimer}}, pour supprimer un groupe. Le dernier groupe de la liste sera supprimé.
-            \item Double-cliquer sur la section (*** ou groupe?) que vous souhaitez modifier pour voir apparaître la fenêtre \textbf{\emph{Modification d'unités (*** ou bloc?)}} de la figure \ref{modifunit}.
+            \item Double-cliquer sur le groupe que vous souhaitez modifier pour voir apparaître la fenêtre d'\textbf{\emph{Événements}} de la figure \ref{modifunitc}. À partir de cette fenêtre, pour pouvez ajouter, supprimer ou modifier un événement.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/modifunit.eps}
-        \caption{Modification d'unités (*** ou bloc)}\label{modifunit}
+        \caption{Modification d'événements}\label{modifunitc}
       \end{center}
     \end{figure}
             
-            Double-cliquer sur l'unité (*** ou bloc?) que vous souhaitez modifier pour voir apparaître la fenêtre d'\emph{affectation d'événements(*** ou blocs? )} (voir figure \ref{event}). Il sera possible de faire, dans cette fenêtre, toutes les modifications décrites précédemment; il également possible de modifier la durée d'un événement (*** ou bloc?).
+            Double-cliquer sur l'événement que vous souhaitez modifier pour voir apparaître la fenêtre d'\emph{affectation d'événements} (voir figure \ref{eventc}). Il sera possible de faire, dans cette fenêtre, toutes les modifications décrites précédemment; il également possible de modifier la durée d'un événement.
         \end{enumerate}    
+
+\item Modifier les groupes d'étudiants en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Groupes}} pour voir apparaître la fenêtre de la figure \ref{groupec}. Sélectionner dans la colonne de droite (Étudiants assignés) le groupe (Groupe A, Groupe B, ...) que l'on souhaite modifier. Sélectionner ensuite un ou plusieurs étudiants que l'on souhaite déplacer. Utilisez enfin les flèches pour déplacer les étudiants de la gauche vers la droite ou vice-versa.
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/groupe.eps}
+        \caption{Affectation des groupes}\label{groupec}
+      \end{center}
+    \end{figure}
+
+Cliquer sur le bouton \textbf{\emph{Par matricule/Par programme/Par nom}} dans le zone \emph{trier}, pour trier les étudiants par matricule, par programme ou par nom.
+
+Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.\\
+
+\item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignantc}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
+ 
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/enseignant.eps}
+        \caption{Disponibilité des enseignants}\label{enseignantc}
+      \end{center}
+    \end{figure}
+
+Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et Cliquer sur \textbf{\emph{Ok}} pour accepter, effectuer les changements et fermer la fenêtre.    \\
+
+    \item Modifier la disponibilité d'un local en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Locaux}} pour voir apparaître la fenêtre de la figure  \ref{localc}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaité modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est disponible. 
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/local.eps}
+        \caption{Disponibilité des locaux}\label{localc}
+      \end{center}
+    \end{figure}
+
+Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et Cliquer sur \textbf{\emph{Ok}} pour accepter, effectuer les changements et fermer la fenêtre.\\
+        
  \end{itemize}    
 
-\subsection{Optimisation des placements}
+\subsection{Construction de l'horaire}
 
-Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affection initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire.
+\subsubsection{Affectation des événements}
 
-\subsubsection{Description du fonctionnement de l'\emph{affectation initiale}}
+Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire.
 
 L'\emph{affectation initiale} a pour but d'exécuter les commandes suivantes :
 
@@ -215,56 +227,40 @@ L'\emph{affectation initiale} a pour but d'exécuter les commandes suivantes :
     \item Calculer les conflits générés.
 \end{enumerate}    
 
-
+\subsubsection{Raffinement de l'horaire}
 
 
 \section{Production d'un horaire d'examen}
 
-\subsection{Préparation de l'horaire}
+\subsection{Préparation de l'horaire}\label{finprepa}
 
 \begin{enumerate}
     \item Lancer \dx{}.
     \item Aller au menu \textbf{\emph{Fichier}},
     puis sélectionner le menu \textbf{\emph{Nouvel horaire}}
-    et enfin sélectionner le sous-menu \textbf{\emph{Horaire examen}}.
+    et enfin sélectionner le sous-menu \textbf{\emph{Horaire Examen}}.
     Une boîte de dialogue comme celle
 de la Figure \ref{selectgrillecyc} doit apparaître et elle vous
-permettra de choisir le fichier (fichier avec extension \emph{xml})
-contenant la configuration de votre grille horaire.
+permettra de choisir le fichier (fichier avec extension \emph{.xml})
+contenant la définition de votre grille horaire.
 
-    \begin{figure}[h]
-    % Requires \usepackage{graphicx}
-    \begin{center}
-        \includegraphics[width=2.5in]{UserManualInputs/images/selectXMLfile.eps}
-        \caption{Selection de la grille horaire cycle}\label{selectgrillecyc}
-    \end{center}
-    \end{figure}
-
-    \item En cliquant sur le bouton \emph{\textbf{OK}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grillecyc}).
+    \item En cliquant sur le bouton \emph{\textbf{OK}}, la grille horaire sélectionnée est chargée et présentée à l'écran (voir figure \ref{grilleexam}).
 \begin{figure}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
-    \includegraphics[width=4.5in]{UserManualInputs/images/grille.eps}
-    \caption{Grille horaire cycle}\label{grillecyc}
+    \includegraphics[width=4.5in]{UserManualInputs/images/grilleexam.eps}
+    \caption{Grille horaire d'examen}\label{grilleexam}
   \end{center}
 \end{figure}
 
-    \item Aller au menu Fichier et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers (liste des fichiers à utiliser) que vous venez de faire.
+    \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Définir fichiers à importer}}. Une boîte de dialogue comme celle de la Figure \ref{defautoimport}  doit apparaître. Repérer l'endroit où chacun des fichiers est localisé, puis cliquer sur le bouton \textbf{\emph{OK}}. Une nouvelle fenêtre se présentera afin de vous permettre d'enregistrer la configuration des fichiers que vous venez de faire.
 
 Il est recommandé d'enregistrer cette configuration en utilisant un nom de fichier unique et représentatif.
 
-Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horaire de cours} et le fichier créé sera \emph{E02cours.dim}.
-
-\begin{figure}[h]
-  % Requires \usepackage{graphicx}
-  \begin{center}
-    \includegraphics[width=2.5in]{UserManualInputs/images/autoimport.eps}
-    \caption{Définition des fichiers d'importation}\label{defautoimport}
-  \end{center}
-\end{figure}
+Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horaire de cours} et le fichier créé sera \emph{E02cours.dim}. L'extension \textbf{\emph{.dim}} est rajouté automatiquement.
 
     \item Aller au menu \textbf{\emph{Fichier}} et sélectionner le menu \textbf{\emph{Importer automatiquement}}.
-    Une boite de dialogue apparaîtra et vous permettra de choisir le fichier de «configuration de fichiers»
+    Une boite de dialogue apparaîtra et vous permettra de choisir le fichier \textbf{\emph{.dim}} de «configuration de fichiers»
     précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}}
     (dans l'exemple précédent il s'agit du fichier \emph{E02cours.dim}).
     Cliquer à présent sur le bouton \textbf{\emph{Importation de fichiers}},
@@ -272,43 +268,32 @@ Exemple: choisissez le nom de fichier \emph{E02cours} pour \emph{Été 2002 horair
     prêtes à être modifiées.
 \end{enumerate}
 
-À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. On pourra la découper en deux étapes, la première permettant de modifier et épurer les données et seconde permettant de faire une affectation initiale et d'optimiser les placements.
+À partir de cette étape, la construction de l'horaire à proprement parler peut commencer. Il est vivement recommandé de lancer l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} avant de poursuivre la production de l'horaire. Lancer l'\textbf{\emph{affectation initiale}} à cette étape exécuterait les fonctionnalités suivantes:
 
-\subsection{Modification des données}
+\begin{enumerate}
+    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
+    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
+    \item Calculer les conflits générés.
+\end{enumerate}
 
-Modifier les données consiste à:
+Cette affectation initiale permettrait donc d'initialiser le logiciel de sorte à pouvoir faire des modifications sur les données et observer immédiatement les repercussions sur l'horaire.
+
+La préparation de l'horaire étant achevée, nous pouvons à présent passer à la phase de modification et d'épuration de données (phase 2). Il est cependant nécessaire de noter que cette phase peut avoir lieu avant ou après la phase de construction à proprement parler (phase 3), mais nous recommandons de la faire avant la phase 3 afin de travailler une bonne fois pour toute sur des données propres (épurées).
+
+\subsection{Modification et épurations des données}
+
+Le but de cette étape est de permettre de construire l'horaire uniquement à partir de données propres. Cette modification et/ou épuration peut se faire sur les activités, les événements, les groupes d'étudiants, les enseignants ou les locaux. 
+
 \begin{itemize}
-    \item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignant}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
- 
-    \begin{figure}[h]
-      % Requires \usepackage{graphicx}
-      \begin{center}
-        \includegraphics[width=2.5in]{UserManualInputs/images/enseignant.eps}
-        \caption{Disponibilité des enseignants}\label{enseignant}
-      \end{center}
-    \end{figure}
+    \item Modifier une activité en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Activités}} pour voir apparaître la \emph{liste des activités} (voir figure \ref{listacte}) ou alors cliquer sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Événements}} pour voir apparaître la \emph{liste des événements} (voir figure \ref{listeevente}).\\
 
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.    \\
-
-    \item Modifier la disponibilité d'un local en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Locaux}} pour voir apparaître la fenêtre de la figure  \ref{local}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaité modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est disponible. 
-
-    \begin{figure}[h]
-      % Requires \usepackage{graphicx}
-      \begin{center}
-        \includegraphics[width=2.5in]{UserManualInputs/images/local.eps}
-        \caption{Disponibilité des locaux}\label{local}
-      \end{center}
-    \end{figure}
-
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Ok}} pour valider les changements et fermer la fenêtre.\\
-
-    \item Modifier une activité en cliquant sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Activités}} pour voir apparaître la \emph{liste des activités} (voir figure \ref{listact}) ou alors cliquer sur le menu \textbf{\emph{Affection}} et le sous menu \textbf{\emph{Événements}} pour voir apparaître la \emph{liste des événements (*** ou blocs?)} (voir figure \ref{listeevent}).\\
+À partir de la fenêtre \emph{liste des événements}, vous pouvez sélectionner un ou plusieurs événements et les faire passer de la colonne \emph{figés} (les événements sont placées et figées dans la grille horaire) à \emph{placés} (les événements sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les événements ne sont pas encore placées dans la grille horaire) et vice-versa. 
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/listeact.eps}
-        \caption{Liste des activités}\label{listact}
+        \caption{Liste des activités}\label{listacte}
       \end{center}
     \end{figure}
 
@@ -318,23 +303,61 @@ Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer su
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/listeevent.eps}
-        \caption{Liste des événements (*** ou blocs? )}\label{listeevent}
+        \caption{Liste des événements}\label{listeevente}
       \end{center}
     \end{figure}
    
-À partir de la fenêtre \emph{liste des événements (*** ou blocs?)}, vous pouvez sélectionner une ou plusieurs activités et les faire passer de la colonne \emph{figés} (les activités sont placées et figées dans la grille horaire) à \emph{placés} (les activités sont placées dans la grille horaire) ou de la colonne \emph{placés} à \emph{non placés} (les activités ne sont pas encore placées dans la grille horaire) et vice-versa. 
 
-À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement (*** ou blocs? ) à modifier pour faire apparaître la fenêtre d'\emph{affectation d'événements (*** ou blocs? )} (voir figure \ref{event}). Il vous possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements(*** ou blocs? )}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
+À partir de l'une ou l'autre des fenêtres, double-cliquer sur l'activité ou l'événement à modifier pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'activité.
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/event.eps}
-        \caption{Affectation d'événement (*** ou bloc? )}\label{event}
+        \caption{Affectation d'événement}\label{evente}
       \end{center}
     \end{figure}
     
-Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre.
+Cliquer sur \textbf{\emph{Appliquer}} pour valider les changements et Cliquer sur \textbf{\emph{Fermer}} pour fermer la fenêtre.\\
+    
+\item Modifier la disponibilité d'un enseignant en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Enseignants}} pour voir apparaître la fenêtre de la figure \ref{enseignante}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que l'enseignant y est disponible.
+ 
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/enseignant.eps}
+        \caption{Disponibilité des enseignants}\label{enseignante}
+      \end{center}
+    \end{figure}
+
+Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et Cliquer sur \textbf{\emph{Ok}} pour accepter, effectuer les changements et fermer la fenêtre.    \\
+
+    \item Modifier la disponibilité d'un local en cliquant sur le menu \textbf{\emph{Affectation}} et le sous menu \textbf{\emph{Locaux}} pour voir apparaître la fenêtre de la figure  \ref{locale}. En sélectionnant une zone correspondant au jour et à l'heure que vous souhaité modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est disponible. 
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=2.5in]{UserManualInputs/images/local.eps}
+        \caption{Disponibilité des locaux}\label{locale}
+      \end{center}
+    \end{figure}
+
+Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements et Cliquer sur \textbf{\emph{Ok}} pour accepter, effectuer les changements et fermer la fenêtre.\\
+        
  \end{itemize}    
 
-\subsection{Optimisation des placements} 
+\subsection{Construction de l'horaire}
+
+\subsubsection{Affectation des événements}
+
+Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire.
+
+L'\emph{affectation initiale} a pour but d'exécuter les commandes suivantes :
+
+\begin{enumerate}
+    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
+    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
+    \item Calculer les conflits générés.
+\end{enumerate}    
+
+\subsubsection{Raffinement de l'horaire}
