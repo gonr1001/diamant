@@ -30,6 +30,7 @@ public class SetOfEvents extends SetOfResources{
     String unityKey;
     for (int i=0; i< soa.size(); i++){
       Resource activity= soa.getResourceAt(i);
+      if(((Activity)activity.getAttach()).getActivityVisibility()){
       for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
         Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
         for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
@@ -51,6 +52,7 @@ public class SetOfEvents extends SetOfResources{
           }// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
         }// end for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++)
       }//for(int j=0; j< activity.getSetOfTypes().size(); j++)
+      }//end if(((Activity)activity.getAttach()).getActivityVisibility())
     }// end for (int i=0; i< soa.size(); i++)
 
   }
