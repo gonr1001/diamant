@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.49 $  $Date: 2003-07-08 16:38:12 $
+ * Title: DDocument $Revision: 1.50 $  $Date: 2003-07-09 14:32:51 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.49 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.50 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -50,7 +50,7 @@ import dInterface.dTimeTable.CloseCmd;
 import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
-public class DDocument  implements ActionListener, DModelListener, TTStructureListener{
+public class DDocument  extends InternalFrameAdapter implements ActionListener, DModelListener, TTStructureListener{
   private DApplication _dApplic;
   private JInternalFrame _jif;
   private String _documentName;
@@ -73,7 +73,16 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
       buidDocument(TTName);
       _ttPanel.updateTTPanel(_dm.getTTStructure());
     }
+
+    _jif.addInternalFrameListener(this);
+
   } // end constructor DDocument()
+
+  public void internalFrameActivated(InternalFrameEvent e) {
+    _dApplic.getToolBar().setToolBars(getTTStructure());
+    _dApplic.getToolBar().selectBar(0);
+  }
+
 
   public final JInternalFrame getJIF() {
     return _jif;
