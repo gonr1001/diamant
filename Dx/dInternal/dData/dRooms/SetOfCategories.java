@@ -1,6 +1,6 @@
 /**
 *
-* Title: Category $Revision: 1.4 $  $Date: 2005-01-25 05:30:01 $
+* Title: Category $Revision: 1.5 $  $Date: 2005-01-27 17:41:01 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,13 +15,14 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
+* @version $Revision: 1.5 $
 * @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
 package dInternal.dData.dRooms;
 
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
@@ -63,28 +64,63 @@ public class SetOfCategories extends DSetOfResources{
     return "";
   }
 	
-	public String toWrite(){
+	public String toWrite(String site){
 		String reslist="";
 		Vector resourceList = getSetOfResources();
 		if(resourceList.size()>0){
 			SetOfRooms setOfRooms;
+			DResource catRsc;
 			for (int i=0; i< resourceList.size()-1; i++){
-				setOfRooms = (SetOfRooms)((DResource)resourceList.get(i)).getAttach();
-				//reslist+= ((DResource)resourceList.get(i)).toWrite(";")+DConst.CR_LF;
+				catRsc=((DResource)resourceList.get(i));
+				setOfRooms = (SetOfRooms)catRsc.getAttach();
 				reslist+= setOfRooms.toWrite();
 			}
-			setOfRooms = (SetOfRooms)((DResource)resourceList.get(resourceList.size()-1)).getAttach();
-			reslist+= setOfRooms.toWrite();
-			//reslist+= ((DResource)resourceList.get(resourceList.size()-1)).toWrite(";");
+			catRsc=((DResource)resourceList.get(resourceList.size()-1));
+			setOfRooms = (SetOfRooms)catRsc.getAttach();
+			String roomsOLDFormat= setOfRooms.toWrite();
+			reslist+= addCategoriesInOldFormat(roomsOLDFormat, site, catRsc.getID());
 		}// end if(_resourceList.size()>0)
 		return reslist;
 	}
 
+	/**
+	 * 
+	 * @param str
+	 * @param site
+	 * @param cat
+	 * @return
+	 */
+	private String addCategoriesInOldFormat(String str, String site, String cat){
+		StringTokenizer roomsLines= new StringTokenizer(str, DConst.CR_LF);
+		StringBuffer newRoomsLines= new StringBuffer();
+		while (roomsLines.hasMoreTokens()){
+			//String line = roomsLines.nextToken();
+			StringTokenizer lineTokens= new StringTokenizer(roomsLines.nextToken(), ";");
+			int tokenPosition=0;
+			while(lineTokens.hasMoreTokens()){
+				newRoomsLines.append(lineTokens.nextToken()+";");
+				tokenPosition++;
+				if(tokenPosition==DConst.ROOM_SITE_TOKEN)
+					newRoomsLines.append(site+";"+cat+";");
+			}
+			newRoomsLines.append(DConst.CR_LF);
+		}
+		return newRoomsLines.toString();
+	}
+	
 	/* (non-Javadoc)
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {
 
 		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see dInternal.DSetOfResources#toWrite()
+	 */
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

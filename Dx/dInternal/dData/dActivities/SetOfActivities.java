@@ -331,7 +331,7 @@ public class SetOfActivities extends DSetOfResources{
    *This object (which is already a string!) is itself returned.
    * @return the string itself
    * */
-  public String toWrite(){
+  public String toWrite(String site){
     String actlist="";// write
     for (int i=0; i<size(); i++){
       Activity activity = (Activity)getResourceAt(i).getAttach();
@@ -340,7 +340,8 @@ public class SetOfActivities extends DSetOfResources{
         for (int k=0; k< nature.getSetOfSections().size(); k++){
           actlist+= getResourceAt(i).getID();// write activity name
           actlist+= activity.getSetOfTypes().getResourceAt(j).getID()+"  ";// write nature and 2 space
-          actlist+= nature.getSetOfSections().getResourceAt(k).getID()+DConst.CR_LF;// write group and go to line
+          actlist+= nature.getSetOfSections().getResourceAt(k).getID();// write group and go to line
+          actlist+= " "+site+" "+DConst.ACT_DEFAULT_CAPACITY+DConst.CR_LF;// write site and capacity of course
           if(activity.getActivityVisibility())
             actlist+=1+DConst.CR_LF;
           else
@@ -604,5 +605,13 @@ public long getSelectedField() {
     _SOAListeners.addElement(soal);
     //System.out.println("addSetOfActivities Listener ...");//debug
   }
+
+/* (non-Javadoc)
+ * @see dInternal.DSetOfResources#toWrite()
+ */
+public String toWrite() {
+	// TODO Auto-generated method stub
+	return null;
+}
   
 }

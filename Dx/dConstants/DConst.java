@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.132 $  $Date: 2005-01-25 05:30:01 $
+ * Title: DConst $Revision: 1.133 $  $Date: 2005-01-27 17:41:00 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.132 $
+ * @version $Revision: 1.133 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -478,6 +478,7 @@ public class DConst {
   public static final int SIZE_OF_GROUP_TOKEN = 2;
   public static final int ACT_SITE_LENGTH = 3;
   public static final int ACT_CAPACITY_LENGTH = 5;
+  public static final String ACT_DEFAULT_CAPACITY ="99999";
   
   // rooms and sites
   public static final int ROOM_NAME_TOKEN = 0;

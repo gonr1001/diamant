@@ -791,9 +791,21 @@ public class SetOfActivitiesSites extends DSetOfResources{
    * @return the string itself
    * */
   public String toWrite(){
-    String actlist="";// write
-    
-    return actlist;
+  	String reslist="";
+    if(getSetOfResources().size()>0){
+    	DResource siteRsc;
+    	SetOfActivities soa;
+        for (int i=0; i< getSetOfResources().size()-1; i++){
+        	siteRsc = ((DResource)getSetOfResources().get(i));
+        	soa= (SetOfActivities)siteRsc.getAttach();
+        	reslist+= soa.toWrite(siteRsc.getID())+DConst.CR_LF;
+        	//reslist+= siteRsc.toWrite(DConst.CR_LF)+DConst.CR_LF;
+        }
+        siteRsc = ((DResource)getSetOfResources().get(getSetOfResources().size()-1));
+        soa= (SetOfActivities)siteRsc.getAttach();
+        reslist+= soa.toWrite(siteRsc.getID());
+      }	   
+    return reslist;	  
   }
 
   /**
