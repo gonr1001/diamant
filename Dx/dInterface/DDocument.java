@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.13 $  $Date: 2003-05-12 14:32:51 $
+ * Title: DDocument $Revision: 1.14 $  $Date: 2003-05-14 16:23:58 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -56,7 +56,7 @@ public class DDocument implements ActionListener, DModelListener{
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
   //-------------------------------------------
-  public DDocument(DApplication dApplic) {
+  public DDocument(DApplication dApplic, String title) {
    //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the _jif */
@@ -73,7 +73,7 @@ public class DDocument implements ActionListener, DModelListener{
   _dApplic = dApplic;
     //_mediator = mediator;
     _dm = new DModel(_dApplic.getJFrame());
-    _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
+    _jif = new JInternalFrame(title,true,true,true,true);
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);

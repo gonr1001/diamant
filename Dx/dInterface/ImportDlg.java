@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: ImportDlg $Revision: 1.2 $  $Date: 2003-05-14 13:09:09 $
+ * Title: ImportDlg $Revision: 1.3 $  $Date: 2003-05-14 16:23:58 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.3 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -39,7 +39,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 public class ImportDlg extends JDialog {
 
-  final static String STR = "rgr, \n ImportDlg \n Not Implemented yet, \nWorking on that!!";
+  //final static String STR = "rgr, \n ImportDlg \n Not Implemented yet, \nWorking on that!!";
   DApplication _dApplic;
   /**
     * the constructor will displays the dialog
@@ -56,10 +56,6 @@ public class ImportDlg extends JDialog {
    } */// end constructor
 
    public ImportDlg(DApplication dApplic, String str) {
-   /*JOptionPane.showMessageDialog( dApplic.getJFrame(),
-                                    STR,
-                                    str,
-                                    JOptionPane.INFORMATION_MESSAGE );*/
      _dApplic= dApplic;
      loadData();
    } // end constructor
@@ -78,6 +74,7 @@ public class ImportDlg extends JDialog {
      if (returnVal == JFileChooser.APPROVE_OPTION) {
        // get the file name
        String fil = fc.getSelectedFile().getAbsolutePath();
+       _dApplic.getDMediator().addDoc(fil);
        String error= _dApplic.getDMediator().getCurrentDoc().getDM().importData(fil);
        if(error.length()==0){
          JOptionPane.showMessageDialog(this, "Données importées avec succes!!!",
