@@ -1,7 +1,8 @@
 /**
 *
-* Title: DValueTest $Revision $  $Date: 2005-02-03 14:11:35 $
-* Description: DValueTest is a class used to test the class DValue
+* Title: DValueTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Description: 	DValueTest is a class used to test the class 
+* 				DValue
 *
 *
 * Copyright (c) 2001 by rgr.

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.50 $  $Date: 2005-02-02 21:37:58 $
+ * Title: DiamantTest 1.5Test $Revision: 1.51 $  $Date: 2005-02-03 16:52:43 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
+ * @version $Revision: 1.51 $
  * @author  $Author: garr2701 $
  * @since JDK1.3
  */
@@ -33,13 +33,16 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dTest.dInternal.DObjectTest;
+import dTest.dInternal.DStateTest;
 import dTest.dInternal.DValueTest;
+import dTest.dInternal.DataExchangeTest;
+import dTest.dInternal.dData.ByteArrayMessageTest;
 import dTest.dInternal.dData.DLoadDataTest;
+import dTest.dInternal.dData.StandardCollectionTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
-//import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dDataTxt.ActivityTest;
@@ -118,13 +121,17 @@ public class DiamantTest {
           suite.addTest(ScanFileTest.suite());
           suite.addTest(DRoomTest.suite());
           suite.addTest(SetOfSitesTest.suite());
-          suite.addTest(SetOfStuSitesTest.suite());//DSetOfActivitiesSitesTest
+          suite.addTest(SetOfStuSitesTest.suite());
           suite.addTest(DSetOfActivitiesTest.suite());
           suite.addTest(DSetOfActivitiesSitesTest.suite());
           suite.addTest(DSetOfInstructorsTest.suite());
           suite.addTest(DLoadDataTest.suite());
           suite.addTest(DValueTest.suite());
           suite.addTest(DObjectTest.suite());
+          suite.addTest(DStateTest.suite());
+          suite.addTest(DataExchangeTest.suite());
+          suite.addTest(ByteArrayMessageTest.suite());
+          suite.addTest(StandardCollectionTest.suite());
       return suite;
     }
 }

@@ -1,13 +1,26 @@
 package dInternal;
 
 /**
- * <p>Title: Diamant 1.5</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
- */
+*
+* Title: DState $Revision $  $ Date:  $
+* Description: DState is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $ $
+* @author  $Author: garr2701 $
+* @since JDK1.3
+*/
+
 import java.awt.Color;
 
 import dInternal.DObject;
@@ -63,14 +76,6 @@ public class DState extends DObject{
   public int getValue(){
     return _value;
   }
-/*
-  public String getModif(){
-     return "Hello";
-  }
-
-  public void incrModif(){
-
-  }*/
 
 /* (non-Javadoc)
  * @see dInternal.DObject#getSelectedField()

@@ -1,7 +1,8 @@
 /**
 *
-* Title: DObjectTest $Revision $  $Date: 2005-02-03 14:11:35 $
-* Description: DObjectTest is a class used to test the class DValue
+* Title: DObjectTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Description: 	DObjectTest is a class used to test the class 
+* 				DObject using the class DValue
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -28,6 +29,7 @@ import junit.framework.TestSuite;
 
 public class DObjectTest extends TestCase{
   DValue a;
+  DValue b;
 	
   public DObjectTest(String name) {
      super(name);
@@ -42,24 +44,38 @@ public class DObjectTest extends TestCase{
   
   public void setUp(){
   	a = new DValue();
+  	b = new DValue();
   }
-  
-  /*refNo=0;
-	_booleanValue=false;
-  _intValue=-1;
-  _stringValue="";
-  _objectValue= new Object();*/
-  
-  public void testDValueA(){
-  	
-  	//assertTrue(a.getSelectedField()==0);
-  	//assertTrue(a.compareByField(2,"2"));
-  	//a.setField(1,"2");
-  	/*assertTrue(a.);
-  	assertTrue(a.toString().compareTo(""));
-  	assertTrue(a.externalKey("2","2"));
-  	assertTrue(a.isEquals("2","2"));
-  	assertTrue(a.getMatrixAvailability("2","2"));
-  	assertTrue(a.setAvailability("2","2"));*/
+
+  public void testAetSelectedField(){
+  	assertTrue(a.getSelectedField()==0);
+  }
+  public void testAcompareByField(){
+  	assertTrue(a.compareByField(2,"2")== false);
+  }  
+  public void testAsetField(){
+  	a.setField(1,"2");
+  	assertTrue(a.getIntValue()==-1);
+  	assertTrue(a.getStringValue().compareTo("")==0);
+  }
+  public void testAtoWrite(){
+  	//System.out.println("\""+a.toWrite()+"\"");
+  	assertTrue(a.toWrite().compareTo(";-1;")==0);
+  }
+  public void testAexternalKey(){
+  	assertTrue(a.externalKey("3","4").compareTo("4")==0);
+  }
+  public void testAisEquals(){
+  	a.setField(1,"2");
+  	b.setField(1,"2");
+  	assertTrue(a.isEquals(b)==true);
+  }
+  public void testAgetMatrixAvailability(){
+  	assertTrue(a.getMatrixAvailability().length==2 );
+  }
+  public void testAsetAvailability(){
+  	int [][] mat= new int[2][2];
+  	a.setAvailability(mat);
+  	assertTrue(mat[0][0]==0);
   }
 }

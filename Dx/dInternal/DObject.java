@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObject $Revision $  $Date: 2005-02-02 21:37:58 $
+* Title: DObject $Revision $  $Date: 2005-02-03 16:52:42 $
 * Description: DObject is a class used to
 *
 *
@@ -31,10 +31,7 @@ public abstract class  DObject extends Object{
    * and Activity)
    * */
   
-  public abstract long getSelectedField();/*{
-     return -2;
-  }
-*/
+  public abstract long getSelectedField();
 
   /**
    * Method to be implemented in each resource object. It compares if the argument
