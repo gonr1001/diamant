@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.13 $  $Date: 2003-12-12 16:11:04 $
+ * Title: SimplePeriodPanel $Revision: 1.14 $  $Date: 2003-12-15 15:31:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -99,7 +99,7 @@ public class SimplePeriodPanel extends PeriodPanel{
     constraints.gridx = 1;
     constraints.gridy = 0;
     JPanel conflict= buildConflictPanel(period);
-    conflict.setBorder(BorderFactory.createEtchedBorder());
+    conflict.setBorder(BorderFactory.createEtchedBorder()) ;
     add(conflict,constraints);    //conflictPanel, constraints);
 
     JLabel nbAct = new JLabel(DConst.SB_T_EVENT +" "+Integer.toString(period.getNumberOfEvents())+"");
