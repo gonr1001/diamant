@@ -62,8 +62,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     if (command.equals(_buttonsNames[1]))
       dispose();
     if (command.equals(_buttonsNames[0]))
-      //new EditActivityDlg(this, _dApplic,
-      ;
+      new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0],false);
   }//end method
 
   /**

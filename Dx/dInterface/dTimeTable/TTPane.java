@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.7 $  $Date: 2003-10-21 16:23:47 $
+ * Title: TTPane $Revision: 1.8 $  $Date: 2003-10-23 17:30:27 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -49,9 +49,12 @@ import javax.swing.BorderFactory;
 import dInterface.DToolBar;
 import dInternal.dData.Resource;
 import dInternal.dTimeTable.Cycle;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DisplayAttributs;
+import dInternal.dUtil.DXToolsMethods;
 
 public abstract class TTPane {
 
@@ -214,7 +217,7 @@ public abstract class TTPane {
 
     PeriodPanel  periodPanel = null;
     JLabel jLabel;
-    int count = 1;
+    //int count = 1;
     for (int i = 0; i < _toDisplay.length; i++ ) {
       for (int j= 0; j < _toDisplay[0].length ; j++) {
         gridBC.gridx = i;
@@ -223,10 +226,10 @@ public abstract class TTPane {
         //gridBC.ipady =  getIpady(i,j);
         if ( _toDisplay[i][j].getPeriodKey()!= "" &&  _toDisplay[i][j].getPeriodType()) {
           Period period = _tts.getCurrentCycle().getPeriodByPeriodKey(_toDisplay[i][j].getPeriodKey());
-          periodPanel = createPeriodPanel(count, _toDisplay[i][j].getPeriodKey());
+          periodPanel = createPeriodPanel(getPeriodNumber(_toDisplay[i][j].getPeriodKey()), _toDisplay[i][j].getPeriodKey());
           periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period);
-          count++;
+          //count++;
           gridBC.ipady =  getIpady(j);
         }
         else {
@@ -276,5 +279,18 @@ public abstract class TTPane {
         }
       }
     };
+  }
+
+  private int getPeriodNumber(String str){
+    long dKey = Long.parseLong(DXToolsMethods.getToken(str,".",0));
+    long sKey = Long.parseLong(DXToolsMethods.getToken(str,".",1));
+    long pKey = Long.parseLong(DXToolsMethods.getToken(str,".",2));
+    int count = 0;
+    Day day = _tts.getCurrentCycle().getDayByRefNo((int)dKey);
+    for(int i = 0; i < sKey-1; i++) {
+      count += day.getSequence(i).getSetOfPeriods().size();
+    }
+    return _tts.getCurrentCycle().getMaxNumberOfPeriodsADay() * ((int)dKey- 1)+ count + (int)pKey;
+
   }
 } /*  end TTPane */
