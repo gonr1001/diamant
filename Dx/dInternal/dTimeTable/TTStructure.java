@@ -220,13 +220,12 @@ public class TTStructure {
   /**
   * get the first period
   * @param Cycle the cycle where we want to find the period
-  * @param int the day reference number where we want to find the period
   * @return Period the first period
   * */
- public Period getFirstPeriod(Cycle cycle, int dayRefNo){
+ public Period getFirstPeriod(Cycle cycle){
    int maxPer=0;
    if(cycle!=null){
-     Day day =(Day)cycle.getSetOfDays().getResource(dayRefNo).getAttach();
+     Day day =(Day)cycle.getSetOfDays().getResource(1).getAttach();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(0).getAttach();
        return (Period)seq.getSetOfPeriods().getResourceAt(0).getAttach();
@@ -238,13 +237,12 @@ public class TTStructure {
   /**
   * get the last period
   * @param Cycle the cycle where we want to find the period
-  * @param int the day reference number where we want to find the period
   * @return Period the last period
   * */
- public Period getLastPeriod(Cycle cycle, int dayRefNo){
+ public Period getLastPeriod(Cycle cycle){
    int maxPer=0;
    if(cycle!=null){
-     Day day =(Day)cycle.getSetOfDays().getResource(dayRefNo).getAttach();
+     Day day =(Day)cycle.getSetOfDays().getResource(1).getAttach();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(getMaxNumberOfSeqs(cycle)-1).getAttach();
        return (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
