@@ -8,7 +8,7 @@ import javax.swing.*;
 import dInternal.DModel;
 import dInternal.dData.RoomAttach;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.ApplyPanel;
 
 import dResources.DConst;
 
@@ -33,24 +33,21 @@ public class RoomsAvailabilityDlg  extends JDialog
   private DApplication _dApplic;
   private int nbPer;
   private int nbDay;
-  private String[] DAY;
-  private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
-  public String[] TIME;
+  private String[] day;
+  //private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
+  private  String[] time;
 
-  JPanel butPanel = new JPanel();
-  JPanel chooserPanel = new JPanel();
-  JPanel centerPanel;
-  JButton butApply;
-  JComboBox chooser;
-  Vector _posVect;
-  int nbPerParJour;
+  private ApplyPanel _applyPanel ; //= new JPanel();
+  private JPanel chooserPanel = new JPanel();
+  private JPanel centerPanel;
+  //JButton butApply;
+  private JComboBox chooser;
+  private Vector _posVect;
+  private int nbPerParJour;
   private boolean _modified = false;
-  private DModel _dm;
+  //private DModel _dm;
   private RoomAttach  _currentRoom;
   private int [][] _currentAvailbility;
-
-  private static String ROOMS_DLG_TITLE = DConst.ROOMS_DLG_TITLE;
-  private static String AVAILABILITIES = DConst.AVAILABILITIES;
 
 
   /**
@@ -60,17 +57,17 @@ public class RoomsAvailabilityDlg  extends JDialog
    * @param doc The active document.  Used to access the dictionnaries.
    */
   public RoomsAvailabilityDlg(DApplication dApplic){
-    super(dApplic.getJFrame(), ROOMS_DLG_TITLE, false);
+    super(dApplic.getJFrame(), DConst.ROOMS_DLG_TITLE, false);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
-    _dm = _dApplic.getDMediator().getCurrentDoc().getDM();
-    TIME= _dm.getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
-    nbDay= _dm.getTTStructure().getNumberOfActiveDays();
-    DAY = new String[nbDay];
+    //_dm = _dApplic.getDMediator().getCurrentDoc().getDM();
+    time= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
+    nbDay= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getNumberOfActiveDays();
+    day = new String[nbDay];
     for(int i=0; i< nbDay; i++)
-      DAY[i]= _dm.getTTStructure()._weekTable[i];
-    nbPer= _dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
+      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure()._weekTable[i];
+    nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       jbInit();
       pack();
@@ -88,41 +85,42 @@ public class RoomsAvailabilityDlg  extends JDialog
   private void jbInit() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all rooms
-    chooser = new JComboBox(_dm.getSetOfRooms().getNamesVector(1));
+    chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getNamesVector(1));
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _currentRoom = (RoomAttach)_dm.getSetOfRooms().getResource(sel).getAttach();
+    _currentRoom = (RoomAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getResource(sel).getAttach();
     centerPanel = makeGridPanel(_currentRoom);
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
-    //button Panel
-    butPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    butApply = (JButton)butPanel.getComponent(1);
-    this.getContentPane().add(butPanel, BorderLayout.SOUTH);
+    //_applyPanel
+    _applyPanel = new ApplyPanel(this);
+    //Setting the button APPLY disable
+    _applyPanel.setApplyDisable();
+    this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
   } // end  jbInit()
 
   public void actionPerformed( ActionEvent event) {
     String command = event.getActionCommand();
-    if (command.equals(_buttonsNames[2])) {  // cancel
+    if (command.equals(DConst.BUT_CLOSE)) {  // close
       //"Enseignants --> Bouton Annuler pressé\n"
       dispose();
-    } else if (command.equals(_buttonsNames[0])) {  // OK
-   /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n"); */
+ /*   } else if (command.equals(_buttonsNames[0])) {  // OK
+   /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n");
        _currentRoom.setAvailability(_currentAvailbility);
         //_dm.incrementModification();
       _modified = false;
       butApply.setEnabled(false);
-      dispose();
-    } else if (command.equals(_buttonsNames[1])) {  // apply
+      dispose();*/
+    } else if (command.equals(DConst.BUT_APPLY)) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
       _currentRoom.setAvailability(_currentAvailbility);
       //_dm.incrementModification();
       _modified = false;
-      butApply.setEnabled( false );
+      _applyPanel.setApplyDisable();
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());
@@ -135,7 +133,7 @@ public class RoomsAvailabilityDlg  extends JDialog
         _currentAvailbility [day][per] = 5;
       }
       _modified = true;
-      butApply.setEnabled( true );
+      _applyPanel.setApplyEnable();;
     }
   }
 
@@ -148,7 +146,7 @@ public class RoomsAvailabilityDlg  extends JDialog
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        _currentRoom = (RoomAttach)_dm.getSetOfRooms().getResource(sel).getAttach();
+        _currentRoom = (RoomAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getResource(sel).getAttach();
         centerPanel = makeGridPanel(_currentRoom);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();
@@ -166,13 +164,13 @@ public class RoomsAvailabilityDlg  extends JDialog
   private JPanel makeGridPanel(RoomAttach room) {
     JPanel gridPanel = new JPanel();
     gridPanel.setLayout(new GridLayout(nbPer + 1, nbDay + 1));
-    gridPanel.setBorder(BorderFactory.createTitledBorder(AVAILABILITIES));
+    gridPanel.setBorder(BorderFactory.createTitledBorder(DConst.AVAILABILITIES));
     _posVect = new Vector();
     _posVect.setSize((nbPer +1 )*(nbDay+1));
     gridPanel.add(new JLabel("")); // top left corner
-    for (int i = 0; i < DAY.length; i++)
+    for (int i = 0; i < day.length; i++)
       //first line :  name of days
-      gridPanel.add(new JLabel(DAY[i], JLabel.CENTER));
+      gridPanel.add(new JLabel(day[i], JLabel.CENTER));
 
     /*
     *Attention : J'ai caché ça en attandant l'implémentation de la disponibilité
@@ -197,7 +195,7 @@ public class RoomsAvailabilityDlg  extends JDialog
     for (int j = 0; j < nbPer; j++) {
       // first column : the time of the period
 
-      gridPanel.add(new JLabel(TIME[j], JLabel.RIGHT));
+      gridPanel.add(new JLabel(time[j], JLabel.RIGHT));
       // create a button for each day for the period
       //System.out.println(" RoomDialog NbDays: "+nbDay+"   NbPerDays: "+nbPer); //DEBUG
       for (int i = 0; i < nbDay; i++) {
