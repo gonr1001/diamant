@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.119 $  $Date: 2004-06-17 20:00:09 $
+ * Title: DStringFrRes $Revision: 1.120 $  $Date: 2004-06-23 05:29:01 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.119 $
+ * @version $Revision: 1.120 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -132,6 +132,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "studentMixingBal", "Balancé"},
     { "studentMixingMidBal", "Intermédiaire"},
     { "studentMixingOpti", "Optimisé"},
+    { "studentMixingPerso", "Personalisé"},
 
 
     //Modification

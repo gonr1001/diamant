@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.114 $  $Date: 2004-06-21 19:03:41 $
+ * Title: DConst $Revision: 1.115 $  $Date: 2004-06-23 05:29:01 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.114 $
+ * @version $Revision: 1.115 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -29,7 +29,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
   	public final static String V_DATE = "17 Juin 2004";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;
+	public final static boolean DEVELOPMENT = false;
         public static boolean USER_TEST_ACTIV = true;
 	public final static String JVM = "1.4.2_03";
 
@@ -168,6 +168,7 @@ public class DConst {
   public final static String STUDENTMIXINGBAL = res.getString("studentMixingBal");//Brassage d'étudiants balancé
   public final static String STUDENTMIXINGMIDBAL = res.getString("studentMixingMidBal");//Brassage d'étudiants balancé
   public final static String STUDENTMIXINGOPTI = res.getString("studentMixingOpti");//Brassage d'étudiants optimal
+  public final static String STUDENTMIXINGPERSO = res.getString("studentMixingPerso");//Brassage d'étudiants personalisé
   //Report menu
   public final static String REPORT_M = res.getString("ReportM");//Rapports
   public final static String REPORTS = res.getString("Reports");//Rapports...

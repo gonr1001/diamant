@@ -30,8 +30,10 @@ public class StudentMixingAlgorithm implements Algorithm {
   private DModel _dm;
   private Vector _eventsRescList;
   private int _mixingType;// 0= balance student mixing,  1= balance student
-  // mixing with acceptable variation, 2= optimize student mixing
-  private int ACCEPTABLEVARIATION=10;
+  // mixing with acceptable variation, 2= optimize student mixing,
+  // 3= student mixing with personalize acceptable variation
+  private int MEDIANACCEPTABLEVARIATION=10;
+  private int PERSONALACCEPTABLEVARIATION=10;
 
   /**
    *
@@ -45,6 +47,18 @@ public class StudentMixingAlgorithm implements Algorithm {
   }
 
   /**
+   *@param int the mixingType 0= balance student mixing,  1= balance student
+  * mixing with acceptable variation, 2= optimize student mixing,
+  * 3= student mixing with personalize acceptable variation
+   * @param DModel dm
+   */
+  public StudentMixingAlgorithm(int AcceptVariation, DModel dm) {
+    _dm= dm;
+    _mixingType=3;
+    PERSONALACCEPTABLEVARIATION= AcceptVariation;
+  }
+
+  /**
    *
    * @param context
    * @return
@@ -54,9 +68,11 @@ public class StudentMixingAlgorithm implements Algorithm {
     switch(_mixingType){
       case 0: value= 1;
         break;
-      case 1: value= ACCEPTABLEVARIATION;//intermediaire
+      case 1: value= MEDIANACCEPTABLEVARIATION;//intermediaire
         break;
       case 2: value= 50;
+        break;
+      case 3: value= PERSONALACCEPTABLEVARIATION;
         break;
     }// end  switch(choice)
     return value;

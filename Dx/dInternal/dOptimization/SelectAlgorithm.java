@@ -19,6 +19,7 @@ public class SelectAlgorithm {
  private DModel _dm;
  private Vector _algorithmToRun;
  private int _currentAlgoToExecute=0;
+  private int _acceptableVariation=0;
  //private int [] _avoidPriority={1,2};
  //private int [] _acceptableConflictsTable={0,0,0};
   /**
@@ -29,6 +30,15 @@ public class SelectAlgorithm {
     _algorithmToRun= new Vector(1);
     _currentAlgoToExecute= contexte;
     System.out.println("Selected Context:"+contexte);
+    buildAlgorithmToRun();
+  }
+
+  public SelectAlgorithm( int variation, DModel dm) {
+    _dm= dm;
+    _algorithmToRun= new Vector(1);
+    _acceptableVariation= variation;
+    _currentAlgoToExecute=4;
+    System.out.println("Selected variation:"+variation);
     buildAlgorithmToRun();
   }
 
@@ -46,6 +56,8 @@ public class SelectAlgorithm {
       case 2: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,1));//intermediaire
         break;
       case 3: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,2));
+        break;
+      case 4: _algorithmToRun.add(new StudentMixingAlgorithm(_acceptableVariation,_dm));
         break;
     }// end  switch(choice)
   }

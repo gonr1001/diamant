@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.112 $  $Date: 2004-06-21 15:38:16 $
+ * Title: DMenuBar $Revision: 1.113 $  $Date: 2004-06-23 05:29:01 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.112 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.113 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -39,10 +39,7 @@ import dInterface.dAffectation.InitialAssignCmd;
 import dInterface.dAffectation.PartialTTStructureCmd;
 import dInterface.dAffectation.RoomsAvailabilityCmd;
 import dInterface.dAffectation.SectionCmd;
-import dInterface.dAlgorithms.AlgorithmsCmd;
-import dInterface.dAlgorithms.BalanceMixingAlgorithmCmd;
-import dInterface.dAlgorithms.MiddleBalMixingAlgoritmCmd;
-import dInterface.dAlgorithms.OptimizeMixingAlgorithmCmd;
+import dInterface.dAlgorithms.*;
 import dInterface.dData.DefFilesToImportCmd;
 import dInterface.dData.ExportCmd;
 import dInterface.dData.ImportCmd;
@@ -157,7 +154,7 @@ public class DMenuBar extends JMenuBar{
   // the user menus
   private JMenu _user1;
   private CmdMenu _userTestMixingBalance,
-  _userTestMiddleMixingBalance, _userTestMixingOptimize;
+  _userTestMiddleMixingBalance, _userTestMixingOptimize,_userTestMixingPersonal;
   private boolean _boolMenu1;
 
   //Developpement menus
@@ -551,6 +548,12 @@ public class DMenuBar extends JMenuBar{
    _userTestMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd(true));
    _userTestMixingOptimize.addActionListener(_dApplic);
    _userSubMenu1.add(_userTestMixingOptimize);
+
+   _userTestMixingPersonal = new CmdMenu(DConst.STUDENTMIXINGPERSO);//, this);
+   _userTestMixingPersonal.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _userTestMixingPersonal.setCommand(new PersonalizeMixingAlgorithmCmd(true));
+   _userTestMixingPersonal.addActionListener(_dApplic);
+   _userSubMenu1.add(_userTestMixingPersonal);
    // add item in submenu 1
    _user1.add(_userSubMenu1);
 
