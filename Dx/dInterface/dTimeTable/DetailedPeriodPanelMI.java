@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.2 $  $Date: 2003-12-15 21:39:43 $
+ * Title: DetailedPeriodPanel $Revision: 1.3 $  $Date: 2003-12-15 21:48:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.3 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -48,15 +48,16 @@ import dResources.DConst;
 public class DetailedPeriodPanelMI extends PeriodPanel{
   private JList _jList;
   private Vector _vec;
-
+  private String _eventName;
   public DetailedPeriodPanelMI(){
     super();
     this.setForeground(Color.WHITE);
     this.setBackground(Color.WHITE);
   }
 
-  public DetailedPeriodPanelMI(int refNo, String str) {
-    super(refNo, str);
+  public DetailedPeriodPanelMI(int refNo, String eventName) {
+    super(refNo, eventName);
+    _eventName = eventName;
   }
   /**
    *
