@@ -17,6 +17,9 @@ import com.iLib.gIO.FilterFile;
 
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Resource;
+import dInternal.dData.Section;
+import dInternal.dData.Unity;
+import dInternal.dData.Assignment;
 import dResources.DConst;
 
 
@@ -669,7 +672,81 @@ public void test7_analyseTokens(){
      Resource typeResc = ((Activity)activityResc.getAttach()).getSetOfTypes().getResource("1");
      assertEquals("test3_addActivity: assertEquals 3", 2,((Type)typeResc.getAttach()).getSetOfSections().size());
   }
+  /**
+    * test_addActivity, test that all elements of the activity are added
+    * in the activities file
+    * */
+   public void test_addActivitDiffRooms(){
+     String tokens= "ADM1111  A"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "LUC LAJOIE"+"\r\n"+
+                    "1"+"\r\n"+
+                    "3"+"\r\n"+
+                    "1 12"+"\r\n"+
+                    "1"+"\r\n"+
+                    "C1-387"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "ADM1111  B"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "R…AL CAOUETTE"+"\r\n"+
+                    "1"+"\r\n"+
+                    "3"+"\r\n"+
+                    "1 12"+"\r\n"+
+                    "1"+"\r\n"+
+                    "C1-387"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "ADM1112  A"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "Yannick"+"\r\n"+
+                    "1"+"\r\n"+
+                    "3"+"\r\n"+
+                    "1 12"+"\r\n"+
+                    "1"+"\r\n"+
+                    "C1-387"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "GEI4411  A"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "Ruben"+"\r\n"+
+                    "2"+"\r\n"+
+                    "3 2"+"\r\n"+
+                    "1 12 2 2"+"\r\n"+
+                    "1 1"+"\r\n"+
+                    "C1-387 xxxxx"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0"+"\r\n";
 
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
+     setOfActivities.analyseTokens(1);
+     if(setOfActivities.getError().length()==0)
+       setOfActivities.buildSetOfActivities(1);
+     assertEquals("test0_addActivitDiffRooms: assertEquals 0", 2,setOfActivities.size());
+     Resource activityResc = setOfActivities.getResource("GEI441");
+     assertEquals("test1_addActivitDiffRooms: assertEquals 1", 2,activityResc.getKey());
+     assertEquals("test2_addActivitDiffRooms: assertEquals 2", 1,((Activity)activityResc.getAttach()).getSetOfTypes().size());
+     Resource typeResc = ((Activity)activityResc.getAttach()).getSetOfTypes().getResource("1");
+     assertEquals("test3_addActivitDiffRooms: assertEquals 3", 1,((Type)typeResc.getAttach()).getSetOfSections().size());
+     Resource sectionResc= ((Type)typeResc.getAttach()).getSetOfSections().getResource(1);
+     assertEquals("test4_addActivitDiffRooms: assertEquals 4", 2,((Section)sectionResc.getAttach()).getSetOfUnities().size());
+     Resource unitResc1= ((Section)sectionResc.getAttach()).getSetOfUnities().getResource(1);
+     assertEquals("test5_addActivitDiffRooms: assertEquals 5", 1,((Unity)unitResc1.getAttach()).getSetOfAssignments().size());
+     Resource unitResc2= ((Section)sectionResc.getAttach()).getSetOfUnities().getResource(2);
+     assertEquals("test6_addActivitDiffRooms: assertEquals 6", 1,((Unity)unitResc2.getAttach()).getSetOfAssignments().size());
+     Resource assignRes1=  ((Unity)unitResc1.getAttach()).getSetOfAssignments().getResource(1);// Unity)unityResource.getAttach();
+     assertEquals("test7_addActivitDiffRooms: assertEquals 7", "C1-387",(String)((Assignment)assignRes1.getAttach()).getRoomName());
+     Resource assignRes2=  ((Unity)unitResc2.getAttach()).getSetOfAssignments().getResource(1);// Unity)unityResource.getAttach();
+     assertEquals("test8_addActivitDiffRooms: assertEquals 8", "xxxxx",(String)((Assignment)assignRes2.getAttach()).getRoomName());
+   }
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
     filter.appendToCharKnown("‘ÀÈ-',; ()Í.‡");

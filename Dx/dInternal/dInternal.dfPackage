@@ -71,20 +71,20 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.DModelProcess#_dm:oiref>=329,463,210,463:oigroup>
-<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=453,10,163,302,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=453,270,93,101,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,430,141,117,1:oigroup>
-<oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=199,570,115,116,1:oigroup>
-<oigroup:<oiref:java#Implements#dInternal.DModel#dInternal.DModelListener:oiref>=10,488,10,488:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=210,537,329,537:oigroup>
+@__positions <oigroup:MemberLink#<oiref:java#Member#dInternal.DModelProcess#_dm:oiref>=216,232,216,292:oigroup>
+<oigroup:<oiref:java#Class#dInternal.Preferences:oiref>=327,290,163,302,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModelEvent:oiref>=327,630,93,101,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModelListener:oiref>=10,10,141,117,1:oigroup>
+<oigroup:<oiref:design#Class#id4h5m4dfshg4rzdfshpi4x.diagram:oiref>=391,10,115,116,1:oigroup>
+<oigroup:<oiref:java#Implements#dInternal.DModel#dInternal.DModelListener:oiref>=129,292,129,127:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.DModel#dInternal.DModelProcess:oiref>=261,292,261,232:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.DModel#_ttParameters:oiref>=210,137,290,137:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=329,389,200,222,1:oigroup>
-<oigroup:<oiref:design#Class#id627kdm6iynt4dm6iz6nh.diagram:oiref>=225,175,149,116,1:oigroup>
-<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,112,132,1:oigroup>
-<oigroup:<oiref:design#Class#id4m97bdm6iynt4dm6iz6nx.diagram:oiref>=541,521,177,244,1:oigroup>
-<oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=596,346,128,164,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,798,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModelProcess:oiref>=171,10,200,222,1:oigroup>
+<oigroup:<oiref:design#Class#id627kdm6iynt4dm6iz6nh.diagram:oiref>=678,10,149,116,1:oigroup>
+<oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=847,10,169,548,1:oigroup>
+<oigroup:<oiref:design#Class#id4m97bdm6iynt4dm6iz6nx.diagram:oiref>=475,864,177,244,1:oigroup>
+<oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=327,864,128,164,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=107,292,200,862,1:oigroup>
 */
 class __positions {
 }

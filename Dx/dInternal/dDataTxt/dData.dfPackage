@@ -4,17 +4,11 @@ package id10nk3dfshg4rzdfshpi4i;
 @version 2.0
 @physicalPackage
 @__modelType diagram 
-@__hiddenLink MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesBefore:oiref>
-@__hiddenLink MemberLink#<oiref:java#Member#dInternal.dData.Type#_setOfSections:oiref>
-@__hiddenLink MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>
-@__hiddenLink MemberLink#<oiref:java#Member#dInternal.dData.LoadData#_roomsAttributesInterpretor:oiref>
 */
 class diagram {
 /**
 @__ref <oiref:java#Class#dInternal.dData.Type:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfInstructors:oiref><oihard>
@@ -23,9 +17,7 @@ class reference {
 class reference294 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.StudentAttach:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference295 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.Resource:oiref><oihard>
@@ -38,15 +30,11 @@ class reference296 {
 class reference297 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.Section:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference299 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStudents:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference300 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfRooms:oiref><oihard>
@@ -55,27 +43,19 @@ class reference300 {
 class reference301 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.LoadData:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference302 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.Unity:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference303 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.RoomAttach:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference304 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.Activity:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference305 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfActivities:oiref><oihard>
@@ -84,110 +64,75 @@ class reference305 {
 class reference306 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.InstructorAttach:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference307 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.RoomsAttributesInterpretor:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference308 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.Assignment:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference309 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SaveData:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference1 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStates:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference2 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.State:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference3 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference4 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStatesListener:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference5 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfActivitiesEvent:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference16 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfActivitiesListener:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference17 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStudentsEvent:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference18 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfStudentsListener:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference19 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfRoomsEvent:oiref><oihard>
-@__modelType reference 
-@__hidden*/
+@__modelType reference */
 class reference20 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfRoomsListener:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference21 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfInstructorsEvent:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference22 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.SetOfInstructorsListener:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference23 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.ExportData:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference6 {
 }/**
 @__ref <oiref:java#Class#dInternal.dData.StandardReportData:oiref><oihard>
-@__modelType reference 
-@__hidden
-*/
+@__modelType reference */
 class reference7 {
 }}/**
 @__tags
@@ -202,58 +147,58 @@ filter.d.state = off
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesListener:oiref>=265,75,128,114,1:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.dData.SetOfRooms#dInternal.dData.SetOfResources:oiref>=1891,440,1623,380:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_setOfAssignments:oiref>=2414,776,2414,757,1658,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsListener:oiref>=29,8,154,114,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.StudentAttach:oiref>=1061,776,192,315,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivitiesEvent:oiref>=170,200,127,98,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsEvent:oiref>=400,100,138,98,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfStates:oiref>=181,1,99,123,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.Assignment:oiref>=2058,10,161,299,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudentsListener:oiref>=409,8,142,114,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.StandardReportData:oiref>=615,0,168,171,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SaveData:oiref>=220,169,116,139,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfRooms:oiref>=1810,440,163,187,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_preferFunctionSetOfRooms:oiref>=2374,776,1644,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.Unity:oiref>=2334,776,200,347,1:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.dData.SetOfActivities#dInternal.dData.SetOfResources:oiref>=1325,410,1540,380:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.StudentAttach#_courses:oiref>=1157,776,1562,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.RoomAttach:oiref>=433,776,200,299,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivitiesListener:oiref>=149,8,145,114,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivities:oiref>=1250,410,194,235,1:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.dData.SetOfInstructors#dInternal.dData.SetOfResources:oiref>=1581,450,1581,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfResources:oiref>=1500,60,200,320,0:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.dData.SetOfStates#dInternal.dData.SetOfResources:oiref>=280,92,1500,92:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudentsEvent:oiref>=20,300,126,98,1:oigroup>
+@__positions <oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesListener:oiref>=2238,10,128,114,1:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.dData.SetOfRooms#dInternal.dData.SetOfResources:oiref>=1591,884,1089,689:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_setOfAssignments:oiref>=573,884,1021,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsListener:oiref>=2149,170,154,114,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.StudentAttach:oiref>=2217,884,192,315,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivitiesEvent:oiref>=2146,330,127,98,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructorsEvent:oiref>=1745,330,138,98,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStates:oiref>=1346,884,144,171,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.Assignment:oiref>=10,1284,161,299,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudentsListener:oiref>=2014,690,142,114,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.StandardReportData:oiref>=1761,10,168,219,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SaveData:oiref>=2176,690,116,139,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfRooms:oiref>=1510,884,163,187,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_preferFunctionSetOfRooms:oiref>=533,884,1008,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.Unity:oiref>=413,884,200,363,1:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.dData.SetOfActivities#dInternal.dData.SetOfResources:oiref>=775,884,1034,689:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.StudentAttach#_courses:oiref>=2313,884,1131,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.RoomAttach:oiref>=1112,884,200,299,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivitiesListener:oiref>=2014,470,145,114,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfActivities:oiref>=678,884,194,235,1:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.dData.SetOfInstructors#dInternal.dData.SetOfResources:oiref>=91,884,958,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfResources:oiref>=946,369,200,320,0:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.dData.SetOfStates#dInternal.dData.SetOfResources:oiref>=1418,884,1075,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudentsEvent:oiref>=2179,550,126,98,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dData.ReportCmd:oiref>=8,374,83,98,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dData.ReportDlg:oiref>=355,311,148,155,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.InstructorAttach:oiref>=1853,10,185,171,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.State:oiref>=153,73,101,187,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Activity#_setOfTypes:oiref>=1640,520,1640,380:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesAfter:oiref>=2454,776,2454,748,1672,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfRoomsListener:oiref>=340,220,132,114,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref>=393,203,112,98,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesBefore:oiref>=2494,776,2494,738,1686,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructors:oiref>=1540,450,163,187,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.Activity:oiref>=1580,520,197,283,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.Resource:oiref>=1230,60,183,235,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfRoomsEvent:oiref>=0,140,115,98,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.SetOfResources#_resource:oiref>=1500,177,1413,177:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.LoadData#_roomsAttributesInterpretor:oiref>=110,776,110,165:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomAttach#_setOfCaracteristics:oiref>=533,776,1524,380:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.ExportData#_dataR:oiref>=653,240,653,171:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfFunctions:oiref>=210,140,1500,140:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Section#_blocList:oiref>=1776,776,1602,380:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Type#_setOfSections:oiref>=2214,776,1630,380:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.Section:oiref>=1679,776,195,139,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.LoadData:oiref>=10,776,200,267,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.Type:oiref>=2114,776,200,139,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>=210,116,1500,116:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.ExportData:oiref>=518,133,174,107,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.RoomsAttributesInterpretor:oiref>=10,10,200,155,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudents:oiref>=1800,90,200,283,1:oigroup>
-<oigroup:<oiref:java#Extends#dInternal.dData.SetOfStudents#dInternal.dData.SetOfResources:oiref>=1800,223,1700,223:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.InstructorAttach:oiref>=1745,470,185,171,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.State:oiref>=2293,330,101,171,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Activity#_setOfTypes:oiref>=1376,529,1146,529:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesAfter:oiref>=453,884,982,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfRoomsListener:oiref>=1593,330,132,114,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStatesEvent:oiref>=2014,330,112,98,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesBefore:oiref>=493,884,995,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfInstructors:oiref>=10,884,163,187,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.Activity:oiref>=1376,369,197,331,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.Resource:oiref>=2014,884,183,235,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfRoomsEvent:oiref>=2014,170,115,98,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.SetOfResources#_resource:oiref>=1117,689,2105,884:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.LoadData#_roomsAttributesInterpretor:oiref>=878,87,958,87:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomAttach#_setOfCaracteristics:oiref>=1212,884,1061,689:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.ExportData#_dataR:oiref>=2044,63,1929,63:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfFunctions:oiref>=1083,165,1083,369:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Section#_blocList:oiref>=1790,884,1103,689:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Type#_setOfSections:oiref>=293,884,970,689:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.Section:oiref>=1693,884,195,139,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.LoadData:oiref>=678,10,200,299,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.Type:oiref>=193,884,200,139,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>=1020,165,1020,369:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.ExportData:oiref>=2044,10,174,107,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.RoomsAttributesInterpretor:oiref>=958,10,200,155,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.SetOfStudents:oiref>=892,884,200,283,1:oigroup>
+<oigroup:<oiref:java#Extends#dInternal.dData.SetOfStudents#dInternal.dData.SetOfResources:oiref>=1047,884,1047,689:oigroup>
 */
 class __positions {
 }

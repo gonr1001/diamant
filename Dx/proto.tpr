@@ -43,6 +43,13 @@ Root.7=D:/Program Files/JBuilder7/extras/jfcunit/jfcunit.jar
 Root.7.access=import
 Root.7.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
 Root.7.package_prefix=
+Root.8=D:/Program Files/Java
+Root.8.access=import
+Root.8.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
+Root.9=D:/Program Files/JBuilder7/jdk1.4.1/j2sdk1.4.1_02/jre/lib/rt.jar
+Root.9.access=import
+Root.9.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
+Root.9.package_prefix=
 [testingframework]
 none.created=true
 server.config.0.isLocal=true
@@ -92,14 +99,17 @@ jsp_vmoptions1=-classic
 jsp_vmoptions2=-classic
 jsp_vmoptions3=-classic
 jsp_vmoptions4=-classic
+askbeforedebug=true
+askbeforerun=true
 [workspace]
 Developer.CodingWorkspace={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,66,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,66,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,5,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,0,66,50,25,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DebugWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,19,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,19,145,321,763,313}${0,3,-1,0,0,0,0,1,0,1,0,50,50,19,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,19,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,19,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,1,18,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.proto={{0,2,-1,0,0,0,0,1,0,1,1,23,75,17,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,23,75,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,17,14,81,1003,615}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
-names.Developer={proto,DesignWorkspace,CodingWorkspace,DebugWorkspace}
+names.Developer={<default>}
+Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,1,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 [lastOpenProjectName]
-Developer=DebugWorkspace
+Developer=<default>
 [compiler]
 cross-bootclasspath=D:/TogetherSoft/Together6.0/jdk/jre/lib/rt.jar
 [newDiagramExpert]
@@ -117,3 +127,5 @@ launchBrowser=true
 navigationTree=true
 [messagePane]
 Messages.maximumMessageCount=1000
+[print]
+diagram=current

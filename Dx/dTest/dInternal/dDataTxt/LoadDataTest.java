@@ -11,6 +11,7 @@ package dTest.dInternal.dData;
 
 import junit.framework.*;
 import java.io.File;
+import dInternal.Preferences;
 import java.util.Vector;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.Cycle;
@@ -26,11 +27,18 @@ import dInternal.dData.LoadData;
 public class LoadDataTest extends TestCase {
   String path;
   Vector _timeTable;
+  Preferences _preferences;
+
   public LoadDataTest(String name) {
     super(name);
     path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia";
-    LoadData _lData= new LoadData();
-    _timeTable = _lData.loadProject(path);
+    LoadData loadData= new LoadData();
+    _timeTable = loadData.loadProject(path);
+    /*_preferences = new Preferences(System.getProperty("user.dir")
+                               + File.separator +
+                               "pref"
+                               + File.separator +
+                                   "pref.txt");*/
   }
 
   public static Test suite() {

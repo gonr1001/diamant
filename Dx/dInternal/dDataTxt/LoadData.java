@@ -19,6 +19,7 @@ import com.iLib.gIO.FilterFile;
 
 import dInternal.dTimeTable.TTStructure;
 import dInternal.DModel;
+import dInternal.Preferences;
 
 public class LoadData {
   //Vector _v;
@@ -39,30 +40,46 @@ public class LoadData {
   private final int NUMBER_OF_TOKENS = 4;
   private final String CR_LF = "\r\n";
   private boolean _load=true;
+  private String _chars;
   /***
    *constructor
    */
   public LoadData() {
-    _dm = null;
-   String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
-   _functionFileName=path+"DXfunctions.sig";
-   _caractFileName=path+"DXcaracteristics.sig";
+    initLoadData();
+
   }
   public LoadData(String args, DModel dm) {
-  	_dm = dm;
-    String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
-    _functionFileName=path+"DXfunctions.sig";
-    _caractFileName=path+"DXcaracteristics.sig";
+  	initLoadData();
     _roomsAttributesInterpretor= extractRoomsAttributesInterpretor();
     verifyImportDataFile(args);
+    _dm = dm;
+    if (_dm != null)
+      _chars =_dm.getDDocument().getDMediator(
+      ).getDApplication(
+      ).getPreferences()._acceptedChars;
   }
 
   public LoadData(DModel dm) {
-	_dm = dm;
-   String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
-   _functionFileName=path+"DXfunctions.sig";
-   _caractFileName=path+"DXcaracteristics.sig";
+	initLoadData();
+   _dm = dm;
+/*   if (_dm != null)
+      _chars =_dm.getDDocument().getDMediator(
+      ).getDApplication(
+      ).getPreferences()._acceptedChars;*/
   }
+  private void initLoadData() {
+    _dm = null;
+    String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
+    _functionFileName=path+"DXfunctions.sig";
+    _caractFileName=path+"DXcaracteristics.sig";
+    Preferences preferences = new Preferences(System.getProperty("user.dir")
+          + File.separator +
+          "pref"
+          + File.separator +
+          "pref.txt");
+      _chars = preferences._acceptedChars;
+  }
+
   private void verifyImportDataFile(String str){
     FilterFile filter = new FilterFile();
     if (filter.validFile(str)) {
@@ -146,10 +163,7 @@ public class LoadData {
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
     filter.setCharKnown("");
-    filter.appendToCharKnown(_dm.getDDocument(
-    						).getDMediator(
-    						).getDApplication(
-    						).getPreferences()._acceptedChars);
+    filter.appendToCharKnown(_chars);
     if (filter.validFile(str)) {
       return filter.getByteArray();
     } else return null;
