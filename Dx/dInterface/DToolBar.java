@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.13 $  $Date: 2003-06-17 12:09:42 $
+ * Title: ToolBar $Revision: 1.14 $  $Date: 2003-06-17 16:11:23 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -61,6 +61,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   private DApplication _dApplic;
   private static final String _toolBarNames [] = {"Jours", "Periods"};
   JComboBox toolBarSelector, daySelector, dayNameSelector, periodSelector, periodTypeSelector;
+  private boolean _comboBoxStatus=true;
   JButton sameLine, sameColumn;
   JTextField setNumberOfDays;
   JLabel lSetNumberOfDays, lDaySelector, lDayNameSelector, lPeriodIndicator, lPeriodTypeSelector;
@@ -80,6 +81,10 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
 
     setEnabledToolbar(false);
   }//end constructor
+
+  public void setcomboBoxStatus(boolean status){
+    _comboBoxStatus=status;
+  }
 
   /**
    *
@@ -165,14 +170,18 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
 
     periodTypeSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        //System.out.println("Action event: "+e.META_MASK);//
+
         String item= (String)periodSelector.getSelectedItem();
         PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPanel(
-              ).getPeriodPanel(Integer.parseInt(item) );
-          Period period;
-          period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
-                                   ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
-          period.setPriority(periodTypeSelector.getSelectedIndex());
+            ).getPeriodPanel(Integer.parseInt(item) );
+        Period period;
+        period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
+                               ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
+        period.setPriority(periodTypeSelector.getSelectedIndex());
+        if(_comboBoxStatus){
           _tts.sendEvent();
+        }
 
       }//end actionPerformed
     });//end addActionListener
@@ -225,6 +234,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           ).getPeriodPanel(Integer.parseInt(item) );
       Period period;
       if(ppanel!=null){
+
         periodSelector.setSelectedItem(Integer.toString(ppanel.getPanelRefNo()));
         period= _tts.getPeriod(_tts.getCurrentCycle(), ppanel.getPeriodRef()[0],
                                ppanel.getPeriodRef()[1],ppanel.getPeriodRef()[2]);
@@ -431,8 +441,8 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
   }
 
   public void changeInTTStructure(TTStructureEvent  e) {
-     //System.out.println("Toolbar change In TTSturtutr");
-     _dApplic.getDMediator().getCurrentDoc().getTTPanel().updateTTPanel(_tts);
+     //System.out.println("Toolbar change In TTSturtutre and Update TTpanel");
+     //_dApplic.getDMediator().getCurrentDoc().getTTPanel().updateTTPanel(_tts);
     }// end actionPerformed
 
 

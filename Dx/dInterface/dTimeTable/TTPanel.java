@@ -22,11 +22,12 @@ import javax.swing.BorderFactory;
 import javax.swing.border.*;
 import java.awt.event.*;
 
+import dInterface.DToolBar;
+
 import dInternal.DModel;
 import dInternal.dData.Resource;
 import dInternal.dTimeTable.*;
 
-import dInternal.dTimeTable.Period;
 
 public class TTPanel extends JScrollPane {
   private DModel _dm;
@@ -53,10 +54,13 @@ public class TTPanel extends JScrollPane {
   }
 
   private void initTTPanel() {
+    Point point=new Point(0,0);
+    point = getViewport().getViewPosition();//getViewport().getsc
 
     setColumnHeaderView(createColumnHeader());
     setRowHeaderView(createRowHeader());
     setViewportView(createViewPort());
+    getViewport().setViewPosition(point);
     manageActions();
     //System.out.println(((JPanel)getViewport().getComponent(0)).getComponentCount()); //
   }
@@ -73,13 +77,14 @@ public class TTPanel extends JScrollPane {
 
       public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 1) {
+          PeriodPanel perpanel= (PeriodPanel)e.getSource();
           if(_lastActivPpanel!=null)
             _lastActivPpanel.setPanelBackGroundColor(0);
-          PeriodPanel perpanel= (PeriodPanel)e.getSource();
+          _dm.getDApplication().getToolBar().setcomboBoxStatus(false);
           _dm.getDApplication().getToolBar().setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
           _dm.getDApplication().getToolBar().selectBar(1);
            perpanel.setPanelBackGroundColor(1);
-
+           _dm.getDApplication().getToolBar().setcomboBoxStatus(true);
           _lastActivPpanel=perpanel;
          System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo());//debug
         }
@@ -88,6 +93,7 @@ public class TTPanel extends JScrollPane {
   }
 
   public void updateTTPanel(TTStructure ttp){
+    //System.out.println("Update TTPanel");//debug
     initTTPanel();
   }
 

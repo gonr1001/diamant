@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.33 $  $Date: 2003-06-16 15:10:40 $
+ * Title: DDocument $Revision: 1.34 $  $Date: 2003-06-17 16:11:23 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -63,6 +63,7 @@ public class DDocument extends AbstractDocument implements ActionListener, DMode
      _dm = new DModel(_dApplic, ttStruct);
      ttStruct.addTTStructureListener(this);
      buidDocument();
+     //dApplic.getToolBar().setToolBars(ttStruct);
      _modified=true;
   } // end constructor DDocument()
 
@@ -161,13 +162,17 @@ public class DDocument extends AbstractDocument implements ActionListener, DMode
 
     public void changeInDModel(DModelEvent  e) {
       this.updateStatusPanel();
+      System.out.println("Update TTPanel in DDocument changeInDModel");//debug
       _ttPanel.updateTTPanel(_dm.getTTStructure());
+
     }// end actionPerformed
 
     public void changeInTTStructure(TTStructureEvent  e) {
-      System.out.println("Document change In TTSturtutr");
-      this.updateStatusPanel();
-      _ttPanel.updateTTPanel(_dm.getTTStructure());
+      if (_modified){
+        System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
+        this.updateStatusPanel();
+        _ttPanel.updateTTPanel(_dm.getTTStructure());
+      }
     }// end actionPerformed
 
   private void  buidDocument(){
