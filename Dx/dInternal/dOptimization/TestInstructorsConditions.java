@@ -24,7 +24,7 @@ public class TestInstructorsConditions  implements Condition{
   private int _NOTAVAIL=5;
   /**
    * Constructor
-   * @param sor
+   * @param dmodel
    */
   public TestInstructorsConditions(DModel dm) {
     _dm= dm;
