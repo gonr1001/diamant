@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.3 $  $Date: 2003-06-10 13:48:49 $
+ * Title: ToolBar $Revision: 1.4 $  $Date: 2003-06-10 13:54:49 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -53,11 +53,14 @@ public class DToolBar extends JToolBar {
   //-------------------------------------------
   public DToolBar(DApplication dApplic) {
     _dApplic =dApplic ;
-    doIt = new JButton("Do It");
+
+    //The JLabel Objects initialisation
     lSetDays = new JLabel("Nomber of Days ");
     lDaysList = new JLabel("Choise day ");
     lDayName = new JLabel("Name of day ");
 
+    //The JButton Objects initialisation
+    doIt = new JButton("Apply");
     addDay = new JButton("Add day");
     removeDay = new JButton("Remove day");
     loPriority = new JButton("Low priority");
@@ -71,21 +74,25 @@ public class DToolBar extends JToolBar {
     sameLine = new JButton("Apply to all line");
     sameColumn = new JButton("Apply to all column");
 
+
+    //The textField objects initialisation
     dayName = new JTextField();
     dayName.setMaximumSize(new Dimension(50, DConst.NPT11 * 2));
 
     periodIndicator = new JTextField("Actual Period");
-    setDays = new JTextField();
-    //JComboBox setDays
+    periodIndicator.setMaximumSize(new Dimension(100, DConst.NPT11 * 2));
 
+    setDays = new JTextField();
     setDays.setMaximumSize(new Dimension(30, DConst.NPT11 * 2));
+
+    //JComboBox setDays initialisation
     String [] amountDays = {"1","2","3","4","5","6","7","8","9","10"};
     daysList = new JComboBox(amountDays);
     daysList.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
     daysList.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
     daysList.setEditable(true);
 
-    //JComboBox setToolBar
+    //JComboBox setToolBar initialisation
     setToolBar = new JComboBox(_strArray);
     setToolBar.setPreferredSize(new Dimension(200,DConst.NPT11* 2));
     setToolBar.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
