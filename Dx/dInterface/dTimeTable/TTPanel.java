@@ -42,8 +42,8 @@ public class TTPanel extends JScrollPane {
   private PeriodPanel _lastActivPpanel=null;
 
 
-//  private int MINWIDTH =  500; // timeTable.nbDays * MINWIDTH;
-//  private int MINHEIGHT =  600;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
+  //private int MINWIDTH =  500; // timeTable.nbDays * MINWIDTH;
+  //private int MINHEIGHT =  600;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
   public TTPanel(DModel dm) {
     super();
@@ -55,7 +55,7 @@ public class TTPanel extends JScrollPane {
 
   private void initTTPanel() {
     _periodLenght= _dm.getTTStructure().getPeriodLenght();
-    UHEIGHT= _dm.getTTStructure().getPeriodLenght();
+    //UHEIGHT= _dm.getTTStructure().getPeriodLenght();
     Point point=new Point(0,0);
     point = getViewport().getViewPosition();//getViewport().getsc
     setColumnHeaderView(createColumnHeader());
@@ -123,6 +123,7 @@ public class TTPanel extends JScrollPane {
     Period lastPer= _dm.getTTStructure().getLastPeriod(cycle);
     for (int i = firstPer.getBeginHour()[0]; i < lastPer.getEndHour(_periodLenght)[0]; i++) {
       label = new JLabel(Integer.toString(i) + ":00");
+      System.out.println("TTPanel Row header viewlabel.getText()" + label.getText());//Debug
       label.setVerticalAlignment(JLabel.TOP);
       panel.setBorder(BorderFactory.createEtchedBorder());
       panel.add(label);
@@ -133,7 +134,7 @@ public class TTPanel extends JScrollPane {
       panel.add(label);//*/
 
     }
-    int minHeight = (_dm.getTTStructure().getLastPeriod(cycle).getEndHour(_periodLenght)[0]
+    int minHeight = (_dm.getTTStructure().getLastPeriod(cycle).getEndHour(60)[0]
                      - _dm.getTTStructure().getFirstPeriod(cycle).getBeginHour()[0])* UHEIGHT;
     panel.setPreferredSize(new Dimension(35, minHeight));
     return panel;
@@ -147,18 +148,19 @@ public class TTPanel extends JScrollPane {
     Cycle cycle =_dm.getTTStructure().getCurrentCycle();//.getCycle(_dm.getCurrentCycle());
     int nbDays,nbSeq,nbPerADay;
     nbDays = cycle.getSetOfDays().size(); //timeTable.nbDays;
-    gridbag.columnWeights = new double [nbDays];
-    gridbag.columnWidths = new int [nbDays];
+      gridbag.columnWeights = new double [nbDays];
+      gridbag.columnWidths = new int [nbDays];
     for (int i = 0; i < nbDays; i++) {
       gridbag.columnWeights[i] = 1;
-      gridbag.columnWidths[i] =  UWIDTH;
+      gridbag.columnWidths[i] = UWIDTH;
     }
     nbPerADay = _dm.getTTStructure().getMaxNumberOfPeriodsADay(cycle);
+    System.out.println("nbPerADay " + nbPerADay);//Debug
     gridbag.rowWeights = new double [nbPerADay];
     gridbag.rowHeights = new int [nbPerADay];
     for (int i = 0; i < nbPerADay; i++) {
       gridbag.rowWeights[i] = 1;
-      gridbag.rowHeights[i] = UHEIGHT;
+      gridbag.rowHeights[i] = _dm.getTTStructure().getPeriodLenght(); //UHEIGHT;
     }
     PeriodPanel periodPanel = null;
     GridBagConstraints c = null;
@@ -172,12 +174,13 @@ public class TTPanel extends JScrollPane {
           Period period= _dm.getTTStructure().getPeriod(sequence,k+1);
           periodPanel = new PeriodPanel(count,i,j,k);//(period, count, UWIDTH, UHEIGHT);
           periodPanel.addMouseListener(_mouseListener);
-          periodPanel.createPanel(period,UWIDTH, UHEIGHT);
+          periodPanel.createPanel(period,UWIDTH, _dm.getTTStructure().getPeriodLenght());
           count++;
           c = new GridBagConstraints();
           c.fill = GridBagConstraints.BOTH;
           c.gridx = i;
           c.gridy = period.getBeginHour()[0] - _dm.getTTStructure().getFirstPeriod(cycle).getBeginHour()[0];//period.getEndHour(_periodLenght)[0];
+          System.out.println("c.gridy : " + c.gridy);
           if ( period.getEndHour(_periodLenght)[1] == 0 ){
             c.gridheight = period.getEndHour(_periodLenght)[0] - period.getBeginHour()[0];
             c.insets = new Insets( period.getBeginHour()[1]*UHEIGHT/_periodLenght, 0, 0, 0 );
