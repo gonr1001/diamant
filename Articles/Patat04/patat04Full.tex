@@ -414,9 +414,6 @@ Verification de contraintes (bd)
 \section{La decomposition modulaire, top-down, alternatives et
 justifications}
 
-
-Abstraite trois blocs
-
 \subsection {Architecture trois-tiers et la production d'horaires}
 
 De manière abstraite une architecture logicielle décrit les
@@ -465,11 +462,53 @@ complexes.
 
 \end{figure}
 
-\subsection {Interfaces.}
+\subsection {L'architecture trois tiers et le système de production d'horaires}
+
+Pour chaque élément de l'architecture trois tiers que nous avons
+présenté, nous allons proposer un composant pour l'application de
+production d'horaires.
+
+La conception de haut niveau de notre système de production
+d'horaires est simple (voir figure\ref{fig:phOne}):
+
+\begin{enumerate}
+\item Nous avons des données qui rentrent dans le système, elles
+sont gérées par la couche d'interface. Les données peuvent venir
+de la saisie directe des utilisateurs (données trimestre) ou bien
+des données qui sont générées par autres systèmes (données de
+base) (voir figure\ref{fig:phTwo})
+
+\item Ces données sont transformées selon certaines règles et
+contraintes (couche logique d'affaires), ces règles sont définies
+par chaque établissement.
+
+\item Les données résultats de ces transformations doivent être
+stockes dans quelque part, c'est la couche de persistance de
+données qui est responsable de cette tache. Dans le système de
+production d'horaires, les données peuvent être stockées dans une
+base de données, dans un fichier XML ou dans un fichier texte, ou
+dans autre moyen de stockage pertinent.
+\end{enumerate}
 
 
+\section{Technologies possibles}
 
-\section{Technologies possibles et justifications}
+Pour faire l'implémentation de notre architecture, il faut en
+premier lieu, trouver quels sont les éléments technologiques
+nécessaires. Nous trouvons qu'il faut avoir :
+
+Un langage pour faciliter l'affichage des données vers
+l'utilisateur ainsi que pour créer des formulaires pour saisir des
+données. Un format qui définit la manière d'établir l'échange des
+données avec les autres systèmes. Un langage pour coder la logique
+d'affaires. Un outil pour gérer la persistance des données.
+
+Nous avons constaté qu'il n'y a pas un seul choix, plutôt il y a
+plusieurs instances possibles pour implémenter cette architecture.
+
+Nous montrons ici
+
+
 
 Java, jsp, jdbc, xml.
 
