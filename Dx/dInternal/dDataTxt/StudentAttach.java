@@ -233,6 +233,27 @@ public class StudentAttach extends DXObject{
  }
 
  /**
+   * return true if the student is registered in the activity and the associate type
+   * @return boolean
+   */
+  public boolean isInActivity(String activity, int type){
+    if (_courses.getResource(activity+Integer.toString(type))!=null)
+      return true;
+    return false;
+  }
+
+  /**
+   * return true if the student is registered in the activity
+   * @return boolean
+   */
+  public boolean isInActivity(String activity){
+    if (_courses.getResource(activity)!=null)
+      return true;
+    return false;
+  }
+
+
+ /**
   *
   * @param actyvityType
   * @param group

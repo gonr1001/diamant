@@ -9,6 +9,8 @@ package dInternal.dData;
  * @version 1.0
  */
 import dInternal.dUtil.DXObject;
+import java.util.Vector;
+import dResources.DConst;
 
 
 public class Activity extends DXObject{
@@ -29,6 +31,7 @@ public class Activity extends DXObject{
    activity is fixed or not */
   public String _idemLine;
   private SetOfResources _setOfTypes; // contents Resources of class Type
+  private Vector _studentRegistered; // it contains key of students
 
 
   /**
@@ -38,6 +41,7 @@ public class Activity extends DXObject{
     //naturesList= new SetOfResources(0);
     //Resource groups = new Resource();
     _setOfTypes= new SetOfResources(0);
+    _studentRegistered= new Vector(1);
   }
 
   /**
@@ -122,6 +126,7 @@ public class Activity extends DXObject{
     _activityVisible= visibility;
   }
 
+
   /**
    * get the activity visibility
    * @return boolean the activity visibility
@@ -160,6 +165,38 @@ public class Activity extends DXObject{
    * */
   public String getActivityType(){
     return _activityType;
+  }
+
+  /**
+   * return the _studentRegistered vector
+   * @return
+   */
+  public Vector getStudentRegistered(){
+    return _studentRegistered;
+  }
+
+
+
+  /**
+   * add a studentKey in the _studentRegistered vector if it doesn't already exist
+   * and return true. It return false otherwise
+   * @return
+   */
+  public boolean addStudentRegistered(long studentKey){
+    if(!_studentRegistered.contains(Long.toString(studentKey))){
+      _studentRegistered.add(Long.toString(studentKey));
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * test if _studentRegistered contains a specified element
+   * @param studentKey
+   * @return
+   */
+  public boolean isStudentRegisteredContains(long studentKey){
+    return _studentRegistered.contains(Long.toString(studentKey));
   }
 
   /**

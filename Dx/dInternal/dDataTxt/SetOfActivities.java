@@ -384,6 +384,23 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
+   * build the students list registered in each activity
+   * @param sos
+   */
+  public void buildStudentRegisteredList(SetOfStudents sos){
+    for (int i=0; i< sos.size(); i++){
+      SetOfResources courses= ((StudentAttach)sos.getResourceAt(i).getAttach()).getCoursesList();
+      for (int j=0; j< courses.size(); j++){
+        Resource activity= this.getResource(courses.getResourceAt(j).getID().
+        substring(0,_COURSENAMELENGTH));
+        //Activity activity= (Activity) this.getResource(courses.getResourceAt(i).getID()).getAttach();
+        if (activity!=null)
+          ((Activity)activity.getAttach()).addStudentRegistered(sos.getResourceAt(i).getKey());
+      }// end for (int j=0; j< courses.size(); j++)
+    }// end for (int i=0; i< sos.size(); i++)
+  }
+
+  /**
    * add an activity object in the list
    * @param String the courseName of the activity
    * @return boolean result of the operation

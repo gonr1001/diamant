@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.44 $  $Date: 2003-08-28 16:36:59 $
+ * Title: DConst $Revision: 1.45 $  $Date: 2003-08-29 14:14:49 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.45 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -65,6 +65,7 @@ public class DConst {
   public final static int STINBOFPERIODSADAY=14;
   public final static int STIBEGINHOUR=8;
   public final static int STIBEGINMINUTE=30;
+  public final static int COURSENAMELENGTH=6;
 
   // Color constants
   public final static Color COLOR_BLACK = Color.black; // Default color
