@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.15 $  $Date: 2003-06-25 08:36:11 $
+ * Title: DApplication $Revision: 1.16 $  $Date: 2003-07-02 16:15:47 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -118,7 +118,7 @@ public class DApplication implements ActionListener {
     jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
    // panel.add(_tbar,BorderLayout.NORTH);
 
-    //hideToolBar();
+    hideToolBar();
 
     _jDesktopPane = new JDesktopPane();
     _jDesktopPane.setOpaque(false);

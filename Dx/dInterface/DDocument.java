@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.37 $  $Date: 2003-07-02 11:36:06 $
+ * Title: DDocument $Revision: 1.38 $  $Date: 2003-07-02 16:15:47 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -62,31 +62,53 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
-  //for new
+  //for new timetable
    public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
      _dApplic = dApplic;
-    _documentName = title;
      _dm = new DModel(_dApplic, ttStruct);
      ttStruct.addTTStructureListener(this);
-     buidDocument();
+     buidDocument(title);
+     _modified=true;
+  } // end constructor DDocument()
+
+  //for open timetable
+  //-------------------------------------------
+  public DDocument(DApplication dApplic, String title) {
+    _dApplic = dApplic;
+    _dm = new DModel(_dApplic, title);
+    // read TTstructure
+    // TTStructure ttStruct = new TTStructure();
+    // read TTstructure
+    buidDocument(title);
+    _modified=true;
+  } // end constructor DDocument()
+
+  //for new timetable Structure
+   public DDocument(DApplication dApplic, String title, boolean partial) {
+     _dApplic = dApplic;
+     TTStructure ttStruct = new TTStructure();
+     // to  be arranged
+     ttStruct.loadTTStructure(_dApplic.getCurrentDir()+File.separator+"pref"+File.separator+"StandardTTC.xml");
+     _dm = new DModel(_dApplic, ttStruct);
+     ttStruct.addTTStructureListener(this);
+     buidDocument(title);
      //dApplic.getToolBar().setToolBars(ttStruct);
      _modified=true;
   } // end constructor DDocument()
 
-  //for open
+  //for open timetable structure
   //-------------------------------------------
-  public DDocument(DApplication dApplic, String title) {
+  public DDocument(DApplication dApplic, String title, String fileName, boolean partial) {
     _dApplic = dApplic;
-    _documentName = title;
+    TTStructure ttStruct = new TTStructure();
+    ttStruct.loadTTStructure(fileName);
     _dm = new DModel(_dApplic,_documentName);
     // read TTstructure
     // TTStructure ttStruct = new TTStructure();
     // read TTstructure
-    buidDocument();
+    buidDocument(title);
     _modified=true;
   } // end constructor DDocument()
-
-
 
   public final JInternalFrame getJIF() {
     return _jif;
@@ -205,7 +227,7 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
       }
     }// end actionPerformed
 
-  private void  buidDocument(){
+  private void  buidDocument(String title){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
     /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
@@ -219,7 +241,7 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
     /* MIN_WIDTH is needed to ajdust the minimum
     * width of the _jif */
     final int MAX_WIDTH = 1024;
-
+    _documentName = title;
     _jif = new JInternalFrame(_documentName, true, true, true, true);
     _jif.setDefaultCloseOperation(_jif.DO_NOTHING_ON_CLOSE);
     _jif.addInternalFrameListener( new InternalFrameAdapter() {

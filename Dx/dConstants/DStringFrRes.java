@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.27 $  $Date: 2003-06-02 16:42:42 $
+ * Title: DStringFrRes $Revision: 1.28 $  $Date: 2003-07-02 16:15:47 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -54,10 +54,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Separator
     { "save", "Enregistrer" },
     { "saveAs", "Enregistrer sous" },
-    //Separator
-    { "dTTS", "Grille horaire"},
-    { "nTTS", "Nouvelle grille"},
-    { "oTTS", "Modifier grille"},
+
 
     { "defFM", "Definir fichiers à importer" },
     { "defFTD", "Definir fichiers pour l'importation automatique"},
@@ -85,6 +82,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
 
     { "copy", "Copier"},
+
+
+    //File TTStructure
+    //{ "dTTS", "Fichier_Grille"},
+    { "dTTS", "Fichier_Grille"},
+    { "newTTS", "Nouvelle grille"},
+    { "oTTS", "Ouvrir grille"},
 
     { "assign", "Affectation" },
     { "instAssignM", "Enseignants" },

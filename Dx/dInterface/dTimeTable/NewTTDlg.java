@@ -2,8 +2,11 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.10 $  $Date: 2003-06-18 11:52:21 $
- * Description: NewTTDlg is created by NewTTDCmd
+ * Title: NewTTDlg $Revision: 1.11 $  $Date: 2003-07-02 16:15:47 $
+ * Description: NewTTDlg is created by NewTTDCmd it is used when
+ *              a new document (timetable) will be created,
+ *              it is necessary to ask for
+ *              a TTStructure in ordrer to start a the timetable.
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -16,8 +19,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.11 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -91,7 +94,7 @@ public class NewTTDlg extends JDialog {
        // get the file name
        String fil = fc.getSelectedFile().getAbsolutePath();
        dApplic.setCurrentDir(fil);
-       //load grille,
+       //load ttStructure,
        TTStructure ttStruct = new TTStructure();
        String error = ttStruct.loadTTStructure(fil);
        if(error.length()!=0){
@@ -100,8 +103,8 @@ public class NewTTDlg extends JDialog {
        }
 
        dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
-       dApplic.getToolBar().setToolBars(ttStruct);
-       dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+   //    dApplic.getToolBar().setToolBars(ttStruct);
+       //dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
 
      }

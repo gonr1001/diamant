@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.24 $  $Date: 2003-06-27 10:46:32 $
+ * Title: DConst $Revision: 1.25 $  $Date: 2003-07-02 16:15:47 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.25 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -54,11 +54,6 @@ public class DConst {
   public final static String SAVE  = res.getString("save");
   public final static String SAVE_AS  = res.getString("saveAs");
 
-  public final static String DTTS  = res.getString("dTTS");
-  public final static String NTTS  = res.getString("nTTS");
-  public final static String OTTS  = res.getString("oTTS");
- // public final static String IMP_M  = res.getString("impM");
-
   public final static String DEF_F_M  = res.getString("defFM");
   public final static String DEF_F_TD  = res.getString("defFTD");
 
@@ -82,12 +77,19 @@ public class DConst {
 
 
   public final static String EDIT = "Edition";
-   final static String UNDO = "Annuler";
-   final static String REDO = "Repeter";
-   final static String CUT = "Couper";
+  final static String UNDO = "Annuler";
+  final static String REDO = "Repeter";
+  final static String CUT = "Couper";
   public final static String COPY = res.getString("copy");
-   final static String PASTE = "Coller";
-   final static String CLEAR = "Effacer";
+  final static String PASTE = "Coller";
+  final static String CLEAR = "Effacer";
+
+
+
+   public final static String DTTS  = res.getString("dTTS");
+   public final static String NEW_TTS  = res.getString("newTTS");
+   public final static String OTTS  = res.getString("oTTS");
+ // public final static String IMP_M  = res.getString("impM");
 
   public final static String ASSIGN = res.getString( "assign");
   public final static String INST_ASSIGN_M = res.getString( "instAssignM");

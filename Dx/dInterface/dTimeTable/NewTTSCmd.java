@@ -23,14 +23,15 @@ import dInterface.DApplication;
  */
 
 public class NewTTSCmd implements Command{
-
+  private final boolean PARTIAL = true;
   public NewTTSCmd() {
   }
 
-
-public void execute(DApplication dApplic) {
-        new NewTTSDlg(dApplic);
-    } // end execute
+  public void execute(DApplication dApplic) {
+    dApplic.showToolBar();
+    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, PARTIAL);
+    //loadTTData(dApplic);
+  } // end execute
 
 }/* end class NewTTSCmd */
 

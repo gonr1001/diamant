@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.29 $  $Date: 2003-07-02 11:36:06 $
+ * Title: DMenuBar $Revision: 1.30 $  $Date: 2003-07-02 16:15:47 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -180,24 +180,60 @@ public class DMenuBar extends JMenuBar{
 
 */
 
+    /*
+    JMenu mNewTT = new JMenu(DConst.NEW_TT);
+    mNewTT.setFont( new java.awt.Font( mfont, font, nPT ) );
+
+    CmdMenu mNTTEx = new CmdMenu(DConst.NTT_EX);
+    mNTTEx.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTEx.setCommand(new NewTTExCmd());
+    mNTTEx.addActionListener(_dApplic);
+    mNewTT.add(mNTTEx);
+
+    CmdMenu mNTTCy = new CmdMenu(DConst.NTT_CY);
+    mNTTCy.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTCy.setCommand(new NewTTCyCmd());
+    mNTTCy.addActionListener(_dApplic);
+    mNewTT.add(mNTTCy);
+    menu.add(mNewTT);
+
+
+*/
     //Build the menu Def TTStructure.
     menu = new JMenu(DConst.DTTS);
-    menu.setFont( new java.awt.Font( mfont, font, nPT ) );
+    menu.setFont( new java.awt.Font(mfont, font, nPT) );
     this.add( menu );
 
-    CmdMenu mNTTS = new CmdMenu(DConst.NTTS);
+    JMenu mNewTTS = new JMenu(DConst.NEW_TTS);
+    mNewTTS.setFont(new java.awt.Font(mfont, font, nPT ));
+
+    CmdMenu mNTTSEx = new CmdMenu(DConst.NTT_EX);
+    mNTTSEx.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTSEx.setCommand(new NewTTExCmd());
+    mNTTSEx.addActionListener(_dApplic);
+    mNewTTS.add(mNTTSEx);
+
+    CmdMenu mNTTSCy = new CmdMenu(DConst.NTT_CY);
+    mNTTSCy.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTSCy.setCommand(new NewTTCyCmd());
+    mNTTSCy.addActionListener(_dApplic);
+    mNewTTS.add(mNTTSCy);
+    menu.add(mNewTTS);
+    /*
+
+    CmdMenu mNTTS = new CmdMenu(DConst.NEW_TTS);
     mNTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
     mNTTS.setCommand(new NewTTSCmd());
     mNTTS.addActionListener(_dApplic);
-    menu.add(mNTTS);
-
+    menu.add(mNTTS);*/
+/*
     CmdMenu mOTTS = new CmdMenu(DConst.OTTS);
     mOTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
     mOTTS.setCommand(new OpenTTSCmd());
     mOTTS.addActionListener(_dApplic);
     menu.add(mOTTS);
 
-    menu.addSeparator();
+    menu.addSeparator();*/
 
 
     CmdMenu xmOpenTT = new CmdMenu(DConst.OPEN);
@@ -206,29 +242,26 @@ public class DMenuBar extends JMenuBar{
     xmOpenTT.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     xmOpenTT.addActionListener(_dApplic);
 
-    CmdMenu xmClose = new CmdMenu(DConst.CLOSE);
-    menu.add(xmClose);
-    xmClose.setFont( new java.awt.Font( mfont, font, nPT ) );
-    xmClose.setCommand(new CloseCmd());
-    xmClose.addActionListener(_dApplic);
+    CmdMenu mCTTS = new CmdMenu(DConst.CLOSE);
+    menu.add(mCTTS);
+    mCTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mCTTS.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mCTTS.addActionListener(_dApplic);
 
     menu.addSeparator();
 
+    CmdMenu mSTTS = new CmdMenu(DConst.SAVE);
+    menu.add(mSTTS);
+    mSTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mSTTS.setCommand(new SaveCmd());
+    mSTTS.addActionListener(_dApplic);
 
+    CmdMenu mSAsTTS = new CmdMenu(DConst.SAVE_AS);
+    menu.add(mSAsTTS);
+    mSAsTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mSAsTTS.setCommand(new SaveAsCmd());
+    mSAsTTS.addActionListener(_dApplic);
 /*
-
-    CmdMenu mSave = new CmdMenu(DConst.SAVE);
-    menu.add(mSave);
-    mSave.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mSave.setCommand(new SaveCmd());
-    mSave.addActionListener(_dApplic);
-
-    CmdMenu mSaveAs = new CmdMenu(DConst.SAVE_AS);
-    menu.add(mSaveAs);
-    mSaveAs.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mSaveAs.setCommand(new SaveAsCmd());
-    mSaveAs.addActionListener(_dApplic);
-
     menu.addSeparator();
 
     JMenu mDTTS = new JMenu(DConst.DTTS);
