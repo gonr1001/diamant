@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPane $Revision: 1.9 $  $Date: 2004-06-21 15:38:17 $
+ * Title: SimpleTTPane $Revision: 1.10 $  $Date: 2004-12-16 19:20:53 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -58,7 +58,9 @@ public class SimpleTTPane extends TTPane {
    }
  //-------------------------------------------
    public int getIpady(int i) {
-     return LINE_HEIGHT * 2;
+   	if (i != 0)
+     return LINE_HEIGHT * 2 *(i/i);
+   	return LINE_HEIGHT * 2;
    }
    //-------------------------------------------
    public PeriodPanel createPeriodPanel(int refNo, String str) {

@@ -1,6 +1,6 @@
 /**
 *
-* Title: LoadData $Revision: 1.57 $  $Date: 2004-12-01 17:16:45 $
+* Title: LoadData $Revision: 1.58 $  $Date: 2004-12-16 19:20:56 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.57 $
+* @version $Revision: 1.58 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -30,9 +30,9 @@ import java.util.Vector;
 
 import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
+//import dInternal.dUtil.DXValue;
 import dInternal.Preferences;
-import dInternal.dOptimization.SetOfEvents;
+//import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.txt.FilterFile;
@@ -212,11 +212,14 @@ public class LoadData {
    * @param file the file to import
    * @return SetOfResources which is merge of the new SetOfResources to the current SetOfResources 
    */
-	public SetOfResources selectiveImport(SetOfResources currentSetOfResc, String file){//, boolean merge){
-		String str= currentSetOfResc.getClass().getName();
-		int beginPosition=0;
-		byte[]  dataloaded = preLoad(file);
-		SetOfResources newSetOfResc=null;
+	/*public SetOfResources selectiveImport(SetOfResources currentSetOfResc, String file){//, boolean merge){
+		//TODO delete
+		
+		//String str= currentSetOfResc.getClass().getName();
+		//int beginPosition=0;
+		//byte[]  dataloaded = preLoad(file);
+		//SetOfResources newSetOfResc=null;
+		/*
 		//if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfInstructors")){
 		if (currentSetOfResc instanceof dInternal.dDataTxt.SetOfInstructors ){
 			// implement selective import for instructors
@@ -236,6 +239,7 @@ public class LoadData {
       _activitiesFileName= file;
       newSetOfResc= extractActivities(null,false);
       SetOfEvents soe = new SetOfEvents(_dm);
+      /*TODO delete the whole class
       soe.build((SetOfActivities)newSetOfResc, new SetOfResources(99));
       soe.updateActivities((SetOfActivities)newSetOfResc,soe.getSetOfResources());
       ((SetOfActivities)currentSetOfResc).setDataToLoad(dataloaded,false);
@@ -269,7 +273,7 @@ public class LoadData {
     
     //setOfResc.sortSetOfResourcesByID();
     return currentSetOfResc;
-  }
+  }*/
 
   /**
    * loadTheTT  this loads a full timetable as it was saved
@@ -395,8 +399,10 @@ public class LoadData {
   * @param newRsc
   * @return
   */
-	  private SetOfResources makeDiff(SetOfResources currentRsc, SetOfResources newRsc){
+/*	  private SetOfResources makeDiff(SetOfResources currentRsc, SetOfResources newRsc){
 	 	//find deleted element
+	  	//TODO delete
+	  	/*
 	  	for (int i=0; i< currentRsc.size(); i++){
 	  		//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
 	  		if(getResource(newRsc,currentRsc.getResourceAt(i))==null){
@@ -445,7 +451,7 @@ public class LoadData {
 	  	
 	 	return null;
 	 	
-	 }
+	 }*/
 	  
 	  /**
 	   * 
@@ -453,7 +459,7 @@ public class LoadData {
 	   * @param newRsc
 	   * @return
 	   */
-	 	  private SetOfResources updateSetOfStudents (SetOfResources currentRsc, SetOfResources newRsc){
+	/* 	  private SetOfResources updateSetOfStudents (SetOfResources currentRsc, SetOfResources newRsc){
 	 	 	//find deleted element
 	 	  	for (int i=0; i< currentRsc.size(); i++){
 	 	  		//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
@@ -496,7 +502,7 @@ public class LoadData {
 	 	  	 	  	
 	 	 	return null;
 	 	 	
-	 	 }
+	 	 }*/
 
 	 	 /**
 	 	  * 
@@ -504,13 +510,13 @@ public class LoadData {
 	 	  * @param target
 	 	  * @return
 	 	  */
-	 	  private Resource getResource(SetOfResources source,Resource target){
+/*	 	  private Resource getResource(SetOfResources source,Resource target){
 	 	  	String str= source.getClass().getName();
 	 	  	if(str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
 	 	  		return source.getResource(target.getKey());
 	 	  	}
 	 	  	
 	 	 	return source.getResource(target.getID());
-	 	 }
+	 	 }*/
 
 }

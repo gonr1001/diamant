@@ -12,12 +12,16 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dInternal.DModel;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
+//import dInternal.dDataTxt.SetOfResources;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
-import dInternal.dUtil.DXValue;
+import dInternal.DValue;
 
 
 
@@ -46,7 +50,7 @@ public class FirstAffectAlgorithm implements Algorithm {
    */
   public void build( ){
     //_dm= dm;
-    Resource currentEvent;
+    DResource currentEvent;
     Period currentPeriod;
     Vector periodList;
     Vector vect= buildEventsVector();
@@ -57,7 +61,7 @@ public class FirstAffectAlgorithm implements Algorithm {
     _dm.getConditionsTest().extractPreference();
 
     for(int i=0; i< vect.size(); i++){
-      currentEvent= (Resource)vect.get(i);
+      currentEvent= (DResource)vect.get(i);
       boolean isNumberOfConflictsAccept=false;
       int[] nbConf;
       /*while(((EventAttach)currentEvent.getAttach()).getAssignState())
@@ -66,7 +70,7 @@ public class FirstAffectAlgorithm implements Algorithm {
         currentDuration = ((EventAttach)currentEvent.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
         periodList=buildSortContiguousPeriodVector(currentDuration,_dm.getConditionsTest().getAvoidPriorityTable());
         while(!periodList.isEmpty()){
-          DXValue value= (DXValue)((Resource)periodList.remove(0)).getAttach();
+          DValue value= (DValue)((DResource)periodList.remove(0)).getAttach();
           currentPeriod= (Period)value.getObjectValue();
           int[] dayTime= {value.getIntValue(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
           ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
@@ -114,7 +118,7 @@ public class FirstAffectAlgorithm implements Algorithm {
    * @return
    */
   private Vector buildSortContiguousPeriodVector(int duration, int[] avoidPriority){
-    SetOfResources soresc= new SetOfResources(4);
+    DSetOfResources soresc= new StandardCollection();
     int counter=1;
     for (int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(); i++){
       Resource day = _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
@@ -130,11 +134,11 @@ public class FirstAffectAlgorithm implements Algorithm {
                 number+= ((Period)((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k+l).getAttach()
                 ).getEventsInPeriod().size();
               }
-              DXValue value= new DXValue();
+              DValue value= new DValue();
               value.setIntValue((int)day.getKey());
               value.setObjectValue(per);
               soresc.setCurrentKey(number);
-              soresc.addResource(new Resource(Integer.toString(counter++), value),1);
+              soresc.addResource(new DResource(Integer.toString(counter++), value),1);
             }// end if (_dm.getTTStructure()
           }// end if(per.getEventsInPeriod().size()< _dm.getConditionsTest().
         }// end for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriod

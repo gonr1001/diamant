@@ -14,10 +14,12 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.DModel;
-import dInternal.dDataTxt.Activity;
+import dInternal.DResource;
+import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dRooms.RoomAttach;
+//import dInternal.dDataTxt.RoomAttach;
+import dInternal.dData.dActivities.Type;
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.RoomAttach;
-import dInternal.dDataTxt.Type;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -44,6 +46,7 @@ public class TestRoomsConditions implements Condition{
   public int executeTest(int[] perKey, Period period, String eventKey, int operation){
     int number=0;
     int nbConf1, nbConf2,nbConf3=0;
+    perKey[0]=perKey[0];
     ConflictsAttach confVal= new ConflictsAttach();
     nbConf1= roomAvailibilityConflicts(period,eventKey);
     nbConf2= roomCapacityConflicts(/*period,*/eventKey);
@@ -58,7 +61,7 @@ public class TestRoomsConditions implements Condition{
       case 0:
         break;
       case 1:
-        Resource resc=period.getEventsInPeriod().getResource(eventKey);
+        Resource resc = period.getEventsInPeriod().getResource(eventKey);
         if(resc!=null)
           ((ConflictsAttach)resc.getAttach()).mergeConflictsAttach(confVal);
         else
@@ -117,9 +120,9 @@ public class TestRoomsConditions implements Condition{
    private int roomCapacityConflicts(/*Period period,*/ String eventKey){
    EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     StringTokenizer event1 = new StringTokenizer(eventKey,DConst.TOKENSEPARATOR);
-    Resource activity = _dm.getSetOfActivities().getResource(event1.nextToken());
-    Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
-    Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
+    DResource activity = _dm.getSetOfActivities().getResource(event1.nextToken());
+    DResource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
+    DResource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
     int nbOfStudents= _dm.getSetOfStudents().getStudentsByGroup(activity.getID(),
         type.getID(), DXTools.STIConvertGroupToInt(section.getID())).size();
     long roomKey = event.getRoomKey();
@@ -153,6 +156,8 @@ public class TestRoomsConditions implements Condition{
     }
     return nbConf;
   }
+
+
 
 
 }

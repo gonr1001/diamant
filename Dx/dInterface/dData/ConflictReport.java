@@ -109,7 +109,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
   }*/
 
   public void actionPerformed(ActionEvent e){
-    String command = e.getActionCommand();
+    //String command = e.getActionCommand();
     //if "Option" button
     if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
       new ReportOptionsDlg(_dApplic,

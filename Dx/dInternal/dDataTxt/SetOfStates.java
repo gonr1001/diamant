@@ -1,8 +1,11 @@
 package dInternal.dDataTxt;
 
 import java.util.Vector;
-
 import dConstants.DConst;
+//import dInternal.DSetOfResources;
+//import dInternal.DResource;
+
+
 
 public class SetOfStates extends SetOfResources{
 
@@ -13,12 +16,12 @@ public class SetOfStates extends SetOfResources{
    */
 
   public SetOfStates() {
-    super(5);
+  	super(5);//super(5);
     initSetOfStates();
   }
 
   /**
-   * The states must be in the order that they are sisplaye
+   * The states must be in the order that they are displayed
    * on the StateBar
    */
   private void initSetOfStates(){
@@ -90,5 +93,21 @@ public class SetOfStates extends SetOfResources{
    public synchronized void removeSetOfStatesListener(SetOfStatesListener sosl) {
      _sosListener.removeElement(sosl);
    }
+
+/* (non-Javadoc)
+ * @see dInternal.DSetOfResources#toWrite()
+ */
+public String toWrite() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+/* (non-Javadoc)
+ * @see dInternal.DObject#getSelectedField()
+ */
+public long getSelectedField() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
 }

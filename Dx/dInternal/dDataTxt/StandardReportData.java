@@ -26,7 +26,7 @@ import dInternal.dUtil.DXValue;
 public class StandardReportData {
 
   private DModel _dm;
-  private int _AHOUR=60;// a hour= 60 minutes
+  //private int _AHOUR=60;// a hour= 60 minutes
   private int STATE1=300;
   private int STATE2=600;
   private int STATE3=100;
@@ -89,12 +89,15 @@ public class StandardReportData {
    * @return
    */
   private String buildActivitiesReport(){
-    StringBuffer actlist= new StringBuffer("");
-    int size=_dm.getSetOfActivities().size();
+    //StringBuffer actlist= new StringBuffer("");
+    //int size=_dm.getSetOfActivities().size();
+    /*
+     * TODO delete class
     for (int i=0; i<size ; i++){
       _dm.getProgressBarState().setIntValue(STATE1*i/size);
       //System.out.println("Change progess bar: "+ _dm.getProgressBarState().getIntValue());
-      Activity activity = (Activity)_dm.getSetOfActivities().getResourceAt(i).getAttach();
+     
+     Activity activity = (Activity)_dm.getSetOfActivities().getResourceAt(i).getAttach();
       if (activity.getActivityVisibility()){
         for(int j=0; j< activity.getSetOfTypes().size(); j++){
           Type nature = (Type)(activity.getSetOfTypes().getResourceAt(j)).getAttach();
@@ -108,11 +111,7 @@ public class StandardReportData {
 			               hour.append(Integer.toString(bloc.getDuration()/_AHOUR));
               StringBuffer minute= new StringBuffer("00");
 			               minute.append(Integer.toString(bloc.getDuration()%_AHOUR));
-              /*StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
-                  ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
-              long dayKey= Long.parseLong(dtime.nextToken());
-              long seqKey= Long.parseLong(dtime.nextToken());
-              long perKey= Long.parseLong(dtime.nextToken());*/
+             
               Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByPeriodKey(currentCycAss.getPeriodKey());
               if((bloc.isAssign()) && period.getPriority()!=2){
                 StringBuffer activityName = new StringBuffer(_dm.getSetOfActivities().getResourceAt(i).getID());
@@ -160,8 +159,8 @@ public class StandardReportData {
           }// end for (int k=0; k< nature.getSetOfSections().size(); k++)
         }// end for(int j=0; j< activity.getSetOfTypes().size(); j++)
       }// end for (int i=0; i< soa.size(); i++){
-    }// end if (activity.getActivityVisibility())
-    return actlist.toString();
+    }*/// end if (activity.getActivityVisibility())
+    return new String(""); //actlist.toString();
   }
 
   /**
@@ -265,11 +264,8 @@ public class StandardReportData {
               	strBuf = new StringBuffer(_dm.getSetOfEvents().getInstructorConflictDescriptions(confEvents.getID(),confAttach.getID()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
-               //todo rgr long instKey [] =
-               //long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
-               //String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
-               //str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
-              	strBuf = new StringBuffer( _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue));//;,confEvents.getID()));
+               
+  //            	strBuf = new StringBuffer( _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue));//;,confEvents.getID()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();
@@ -345,9 +341,9 @@ public class StandardReportData {
           sect=course.substring(0,DConst.STUD_COURSE_LENGTH-1)+"."+
                course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH)+
                "."+DXTools.STIConvertGroup(group)+".";
-          Section section= _dm.getSetOfActivities().getSection(course.substring(0,DConst.STUD_COURSE_LENGTH-1)
-              ,course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH),
-              DXTools.STIConvertGroup(group));
+          Section section= new Section();//_dm.getSetOfActivities().getSection(course.substring(0,DConst.STUD_COURSE_LENGTH-1)
+              //,course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH),
+              //DXTools.STIConvertGroup(group));
           if(section!=null){
             for(int j=0; j<section.getSetOfUnities().size(); j++){
               Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(j).getAttach();

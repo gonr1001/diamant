@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.8 $  $Date: 2004-12-01 17:16:42 $
+ * Title: SaveAsTTDlg $Revision: 1.9 $  $Date: 2004-12-16 19:20:53 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -51,12 +51,14 @@ public class SaveAsTTDlg extends SaveAsDlg {
     saveAs(null,false); //no data, no report
   } // end constructor*/
 
-  public SaveAsTTDlg(DApplication dApplic, String str) {
+  public SaveAsTTDlg(DApplication dApplic, String str) { 	
     super(dApplic);
+    str +="";
     saveAs(null,false); //no data, no report
   } // end constructor
 
   public String inNewFile(String currentFile, String data) {
+  	data += "";
     return _dApplic.getDMediator().saveCurrentDoc(currentFile);
   }
 

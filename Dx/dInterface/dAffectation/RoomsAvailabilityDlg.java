@@ -22,7 +22,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 //import dInternal.DModel;
-import dInternal.dDataTxt.RoomAttach;
+import dInternal.dData.dRooms.RoomAttach;
 
 
 /**
@@ -45,19 +45,13 @@ public class RoomsAvailabilityDlg  extends JDialog
   private DApplication _dApplic;
   private int nbPer;
   private int nbDay;
-  private String[] day;
-  //private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
+  private String[] day; 
   private  String[] time;
-
   private ButtonsPanel _applyPanel;
   private JPanel chooserPanel = new JPanel();
   private JPanel centerPanel;
-  //JButton butApply;
   private JComboBox chooser;
   private Vector _posVect;
-  //private int nbPerParJour;
-  //private boolean _modified = false;
-  //private DModel _dm;
   private RoomAttach  _currentRoom;
   private int [][] _currentAvailbility;
 
@@ -74,7 +68,7 @@ public class RoomsAvailabilityDlg  extends JDialog
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     //_dm = _dApplic.getDMediator().getCurrentDoc().getDM();
-    time= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
+    time= _dApplic.getDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
     nbDay= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getNumberOfActiveDays();
     day = new String[nbDay];
     for(int i=0; i< nbDay; i++)
@@ -116,13 +110,12 @@ public class RoomsAvailabilityDlg  extends JDialog
     this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
   } // end  jbInit()
 
-  public void actionPerformed( ActionEvent event) {
+  public void actionPerformed(ActionEvent event) {
     String command = event.getActionCommand();
     if (command.equals(DConst.BUT_CLOSE)) {  // close
       dispose();
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
-      _currentRoom.setAvailability(_currentAvailbility);
-      //_modified = false;     
+      _currentRoom.setAvailability(_currentAvailbility); 
       _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _applyPanel.setFirstDisable();
       //DModel dm =_dApplic.getDMediator().getCurrentDoc().getDM();

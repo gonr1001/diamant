@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.14 $  $Date: 2004-11-05 13:53:48 $
+ * Title: TTPane $Revision: 1.15 $  $Date: 2004-12-16 19:20:53 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.15 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -44,9 +44,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JViewport;
+import javax.swing.SwingConstants;
 
 import dInterface.DToolBar;
 import dInternal.dDataTxt.Resource;
+//import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -165,7 +167,7 @@ public abstract class TTPane {
 
       cycle = _tts.getCurrentCycle();
       Resource day = cycle.getSetOfDays().getResourceAt(i);
-      jLabel = new JLabel("J " + (i + 1) + " : " + day.getID(), JLabel.CENTER);
+      jLabel = new JLabel("J " + (i + 1) + " : " + day.getID(), SwingConstants.CENTER);
       jLabel.setMinimumSize(new Dimension(PERIOD_WIDTH, HEADER_HEIGHT));
       jLabel.setPreferredSize(new Dimension(PERIOD_WIDTH, HEADER_HEIGHT));
       jLabel.setBorder(BorderFactory.createEtchedBorder());
@@ -187,14 +189,12 @@ public abstract class TTPane {
     for (int i = 0; i < _rowHeaders.length; i++) {
       gridBC.gridx = 0;
       gridBC.gridy = i;
-        //if (_rowHeaders[i]._n != -1) {
+        
       gridBC.ipady = getIpady(i);
-        //} else {
-         // gridBC.ipady = getIpady(i);
-        //}
+
       jLabel = new JLabel(_rowHeaders[i]._str);
 
-      jLabel.setVerticalAlignment(JLabel.TOP);
+      jLabel.setVerticalAlignment(SwingConstants.TOP);
       jLabel.setMinimumSize(new Dimension(ROW_HEADER_WIDTH, getIpady(i)));
       jLabel.setPreferredSize(new Dimension(ROW_HEADER_WIDTH, getIpady(i)));
       jLabel.setBorder(BorderFactory.createEtchedBorder());

@@ -12,8 +12,7 @@ public class Instruction {
 	private Class  	_typeParams[];	
 	private Object  _valueParams[];	
 	private Class  	_typeRet ;
-	private Object  _valueRet;
-
+	
 	public Instruction(ListObj listObj, String sid, String sclass, String smethod, Vector sparams){
 		try{
 			_listObj=listObj;

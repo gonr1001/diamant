@@ -11,12 +11,12 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXObject;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.DObject;
 import dInternal.dUtil.DXToolsMethods;
 
-public class EventAttach extends DXObject {
+public class EventAttach extends DObject {
 
   /** _principalRescKey is the composition of activity, type, section and
    * unity keys of an activity wich is represent in the following format a.b.c.d
@@ -25,7 +25,7 @@ public class EventAttach extends DXObject {
   private int _eventDuration=0;
   //private long _instructorRescKey; // the instructor key
   /** instructor key */
-  private SetOfResources _setInstructorKeys;
+  private DSetOfResources _setInstructorKeys;
   private long _roomRescKey; // the room key
   // the student reference will be found in the conflicts matrix
   private Vector _tabuList; //
@@ -41,7 +41,7 @@ public class EventAttach extends DXObject {
    * @param key1
    * @param key2
    */
-  public EventAttach(String princKey, SetOfResources inst, long key2, int eventDuration, String eventPeriod) {
+  public EventAttach(String princKey, DSetOfResources inst, long key2, int eventDuration, String eventPeriod) {
     _principalRescKey = princKey;
     _setInstructorKeys = inst;
     _roomRescKey = key2;
@@ -177,7 +177,7 @@ public class EventAttach extends DXObject {
              int n = DXToolsMethods.countTokens(value,":");
             for (int i = 0; i < n; i++ ){
               _setInstructorKeys.setCurrentKey(Long.parseLong( DXToolsMethods.getToken(value,":",i)));
-              _setInstructorKeys.addResource(new Resource("",null),0);
+              _setInstructorKeys.addResource(new DResource("",null),0);
             }
               ///_instructorRescKey = Long.parseLong(value);
         break;
@@ -198,4 +198,12 @@ public class EventAttach extends DXObject {
 									_ttsKey );
   	return eA;
   }
+
+/* (non-Javadoc)
+ * @see dInternal.DObject#getSelectedField()
+ */
+public long getSelectedField() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 }

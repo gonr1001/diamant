@@ -26,8 +26,8 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
   private String [] _buttonsNames = {DConst.BUT_OK,DConst.BUT_CANCEL};
   private JPanel  _buttonsPanel;
   private JTextField _textField0;
-  private Dialog _parent;
-  private boolean _addGroup;
+  //private Dialog _parent;
+  //private boolean _addGroup;
   private Vector _list;
   private SectionModifDlg _sectionMod;
 
@@ -42,9 +42,9 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
   public SelectGroupDlg(Dialog parent,  Vector list, boolean add) {
     super(parent,"Choix du groupe à "+DConst.BUT_ADD);
     _list= list;
-    _parent = parent;
+    //_parent = parent;
     _sectionMod= (SectionModifDlg)parent;
-    _addGroup = add;
+    //_addGroup = add;
     if(add)
       jbInitAddGroup();
     else

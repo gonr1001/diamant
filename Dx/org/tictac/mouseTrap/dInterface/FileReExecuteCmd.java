@@ -3,21 +3,21 @@ package org.tictac.mouseTrap.dInterface;
 import org.tictac.mouseTrap.dModel.*;
 
 public class FileReExecuteCmd implements Command{
-	private MyApplication frame;
+	//private MyApplication frame;
 	private String fileName="";
 	
-	public FileReExecuteCmd (MyApplication  frm){
-		frame=frm;		
-	}	
+	public FileReExecuteCmd (){
+		//frame=frm;		
+	}
 	
-	public FileReExecuteCmd (MyApplication  frm, String file){
-		frame=frm;		
+	public FileReExecuteCmd ( String file){
+		//frame=frm;		
 		fileName=file;	
 	}
 		
 	public void execute(){
 		if (fileName.compareTo("")==0){
-			FileOpenDlg fo=new FileOpenDlg(frame);
+			//FileOpenDlg fo=new FileOpenDlg(frame);
 			//String fileName=fo.getFile();
 		}
 		// rgd: verificar que seleccione un archivo de trace

@@ -12,8 +12,8 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfActivities;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;

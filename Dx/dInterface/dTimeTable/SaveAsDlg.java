@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.21 $  $Date: 2004-12-01 17:16:42 $
+ * Title: SaveAsDlg $Revision: 1.22 $  $Date: 2004-12-16 19:20:53 $
  * Description: SaveAsDlg(DApplication dApplic) can be created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) can be created
  *                        by ConflicReport, FullReport,
@@ -18,7 +18,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -59,6 +59,7 @@ public abstract class SaveAsDlg  {
     *           as in reports
     */
    public SaveAsDlg(DApplication dApplic, String data) {
+   	data +="";
      _dApplic = dApplic;
    } // end constructor
 

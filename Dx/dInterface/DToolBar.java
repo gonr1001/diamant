@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.52 $  $Date: 2004-12-01 19:58:05 $
+ * Title: DToolBar $Revision: 1.53 $  $Date: 2004-12-16 19:20:45 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -66,7 +66,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   private JTextField _setNumberOfDays;
   private JLabel _lSetNumberOfDays, _lDaySelector, _lDayNameSelector,
                  _lPeriodIndicator, _lPeriodTypeSelector;
-  private JToolBar.Separator _jtbSep [];
+  //private JToolBar.Separator _jtbSep [];
 //  private String _error = "";
   private TTStructure _tts;
 
@@ -144,6 +144,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   private void actionManager(){
     _toolBarSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         int i = _toolBarSelector.getSelectedIndex();
         selectBar(i);
       }//end actionPerformed
@@ -153,6 +154,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
     // * _setNumberOfDays
     _setNumberOfDays.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         String nbDays=_setNumberOfDays.getText();
         if (!DXToolsMethods.isIntValue(nbDays)){
           new InformationDlg(_dApplic.getJFrame(),"Valeur eronnée");
@@ -175,6 +177,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
     // * _daySelector
     _daySelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         int item = _daySelector.getSelectedIndex();
         //if( item != -1 ){
           Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(item);
@@ -190,6 +193,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
     // * _dayNameSelector
     _dayNameSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         int index= _tts.getCurrentCycle().getCurrentDayIndex();
         Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
         resc.setID((String)_dayNameSelector.getSelectedItem());
@@ -208,6 +212,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
       public void actionPerformed(ActionEvent e) {
        // int item = _periodSelector.getSelectedIndex();
        // if(item!=-1){
+      	e.toString();
         String str= (String)_periodSelector.getSelectedItem();
         setPeriodSelector(str);
        // }
@@ -216,6 +221,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
 
     _periodTypeSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         String item= (String)_periodSelector.getSelectedItem();
         PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
                                 ).getPeriodPanel(Integer.parseInt(item) );
@@ -235,6 +241,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
 
     _sameLine.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         String item= (String)_periodSelector.getSelectedItem();
         PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
             ).getPeriodPanel(Integer.parseInt(item) );
@@ -252,6 +259,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
 
     _sameColumn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+      	e.toString();
         String item= (String)_periodSelector.getSelectedItem();
         PeriodPanel ppanel= _dApplic.getDMediator().getCurrentDoc().getTTPane(
             ).getPeriodPanel(Integer.parseInt(item) );
@@ -306,7 +314,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
   public void setToolBars(TTStructure ttStruct){
     _tts= ttStruct;
     setToolBarOne();
-    setToolBarTwo();
+    //TODO setToolBarTwo();
   }
 
   /**
@@ -449,7 +457,8 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
  // }
 
   public void changeInTTStructure(TTStructureEvent  e) {
-     System.out.println("Toolbar change In TTSturtutre and Update TTpanel");
+  	e.toString();
+     //System.out.println("Toolbar change In TTSturtutre and Update TTpanel");
      //_dApplic.getDMediator().getCurrentDoc().getTTPanel().updateTTPanel(_tts);
     }// end actionPerformed
 

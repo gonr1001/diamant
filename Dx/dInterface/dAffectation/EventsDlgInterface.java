@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.15 $  $Date: 2004-06-21 15:38:16 $
+ * Title: EventsDlgInterface $Revision: 1.16 $  $Date: 2004-12-16 19:20:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -50,8 +50,8 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.Unity;
+import dInternal.dData.dActivities.SetOfActivities;
+import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dUtil.DXToolsMethods;

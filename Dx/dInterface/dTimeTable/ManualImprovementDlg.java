@@ -1,6 +1,6 @@
 /**
 *
-* Title: DConst $Revision: 1.25 $  $Date: 2004-11-05 13:53:48 $
+* Title: ManualImprovementDlg $Revision: 1.26 $  $Date: 2004-12-16 19:20:52 $
 * Description: DConst is a class used to
 *
 *
@@ -14,15 +14,14 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.25 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.26 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInterface.dTimeTable;
 
 import java.awt.event.ActionEvent;
 
-//import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
@@ -32,11 +31,12 @@ import dInterface.dAffectation.EditActivityDlg;
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
+
 import dInternal.DModel;
-import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
+
 
 public class ManualImprovementDlg extends EventsDlgInterface {
-
    private DModel _dm;
    private DToolBar _toolBar;
    
@@ -47,7 +47,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
   public ManualImprovementDlg(DApplication dApplic, String title) {
     super(dApplic,title);
     _toolBar= dApplic.getToolBar();
-    _dm= dApplic.getDMediator().getCurrentDoc().getDM();
+    _dm = dApplic.getDModel();
     buildArrowButtons(false);
 	initialize();
   }//end method
@@ -58,6 +58,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
     _buttonsPanel = new TwoButtonsPanel(this, a);
     return _buttonsPanel;
   }
+  
   /**
    * build buttom to use in the dialog
    */
@@ -75,15 +76,13 @@ public class ManualImprovementDlg extends EventsDlgInterface {
     if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
       new EditActivityDlg(_jDialog, _dApplic, (String)selectedItems[0], this, false);
     }
-  }//end method
+  }//end actionPerformed
 
-
- /**
-  *
-  */
+  /**
+   * When double click in an event display ManualImprovmentDetailed
+   */
   protected void doubleClicMouseProcess(){
-   Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
-    //ManualImprovementDetailed frameResult =
-        new ManualImprovementDetailed(this,_toolBar, event.getID(), _dm);
+  	DResource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]); 	
+  	new ManualImprovementDetailed(this,_toolBar, event.getID(), _dm);
   }
-}//end class
+}//end class ManualImprovementDlg

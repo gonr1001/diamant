@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.14 $  $Date: 2004-11-05 13:53:48 $
+ * Title: DetailedPeriodPanel $Revision: 1.15 $  $Date: 2004-12-16 19:20:50 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.15 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -36,7 +36,6 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-//import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dInternal.dTimeTable.Period;
@@ -45,7 +44,7 @@ import dInternal.dTimeTable.Period;
 
 
 public class DetailedPeriodPanelMI extends PeriodPanel{
-  //private JList _jList;
+  
   private Vector _vec;
   private String _eventName;
   
@@ -63,7 +62,7 @@ public class DetailedPeriodPanelMI extends PeriodPanel{
    *
    * */
   public void createPanel(Period period){
-    setLayout(new BorderLayout());//new GridLayout(3,1));
+    setLayout(new BorderLayout());
     setBorder(BorderFactory.createEtchedBorder());
     setValue(period);
   }
@@ -85,7 +84,7 @@ public class DetailedPeriodPanelMI extends PeriodPanel{
     add(miPanel, BorderLayout.CENTER);
     add(buildConflictPanel(period), BorderLayout.SOUTH);
     // set period panel color
-    setPanelColor( period.getPriority());
+    setPanelColor(period.getPriority());
   }
 
 } /* end DetailedPeriodPanel *

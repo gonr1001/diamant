@@ -20,8 +20,7 @@ public class MyFileCmd implements Command{
   public void execute(DApplication dApplic) {
     dApplic.setCurrentDir("D:\\Developpements\\DiamantExtreme\\Dx\\devData\\");
     dApplic.getDMediator().addDoc("D:\\Developpements\\DiamantExtreme\\Dx\\devData\\fichier1.dia",0);
-    dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(dApplic.getJFrame());
+    dApplic.getDModel().sendEvent(dApplic.getJFrame());
     dApplic.getMenuBar().postInitialAssign();
-    //dApplic.getMenuBar().postMyFile();
   }
 } // end MyFileCmd

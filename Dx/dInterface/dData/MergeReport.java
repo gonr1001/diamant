@@ -1,6 +1,6 @@
 /**
 *
-* Title: ImportReport $Revision: 1.3 $  $Date: 2004-12-01 17:16:42 $
+* Title: ImportReport $Revision: 1.4 $  $Date: 2004-12-16 19:20:49 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -44,8 +44,8 @@ import javax.swing.JTextArea;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXValue;
+import dInternal.DSetOfResources;
+import dInternal.DValue;
 
 
 public class MergeReport extends ViewReport implements ActionListener {
@@ -78,18 +78,18 @@ public class MergeReport extends ViewReport implements ActionListener {
    jtaUnchanged.append(DConst.CR_LF + DConst.UNCHANGED_ELEMENT + DConst.CR_LF);
    
    
-   SetOfResources setOfImportSelErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportSelErrors();
+   DSetOfResources setOfImportSelErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportSelErrors();
    for (int i=0; i< setOfImportSelErrors.size(); i++){
 
      if(setOfImportSelErrors.getResourceAt(i).getID().equalsIgnoreCase("1"))
-     	jtaDeleted.append(((DXValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+     	jtaDeleted.append(((DValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
 
      else if(setOfImportSelErrors.getResourceAt(i).getID().equalsIgnoreCase("2"))
-     	jtaAdded.append(((DXValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+     	jtaAdded.append(((DValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
      else if(setOfImportSelErrors.getResourceAt(i).getID().equalsIgnoreCase("3"))
-     	jtaChanged.append(((DXValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+     	jtaChanged.append(((DValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
      else if(setOfImportSelErrors.getResourceAt(i).getID().equalsIgnoreCase("4"))
-     	jtaUnchanged.append(((DXValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+     	jtaUnchanged.append(((DValue)(setOfImportSelErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
 
    }
    jta.append(jtaDeleted.getText());
@@ -102,8 +102,8 @@ public class MergeReport extends ViewReport implements ActionListener {
  public void actionPerformed(ActionEvent e){
    //String command = e.getActionCommand();
    //if "Option" button
-   if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
-      ; // it is disabled
+   if (e.getActionCommand().equals(DConst.BUT_OPTIONS)){}
+     // it is disabled
    //if "Close" button
    if (e.getActionCommand().equals(DConst.BUT_CLOSE))
       //System.out.println("_buttonsNames[2]");

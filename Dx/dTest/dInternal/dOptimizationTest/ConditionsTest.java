@@ -7,7 +7,8 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DDocument;
 import dInternal.DModel;
-import dInternal.dDataTxt.Resource;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
@@ -51,7 +52,7 @@ public class ConditionsTest extends TestCase {
 	 * check  conflicts
 	 */
 	public void test_getConflictsEventInTTs(){
-		Resource event= _dm.getSetOfEvents().getResourceAt(0);
+		DResource event= _dm.getSetOfEvents().getResourceAt(0);
 		int[] dayTime= {5, 8,15};
 		String periodKey= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
 		((EventAttach)event.getAttach()).setKey(4,periodKey);
@@ -68,7 +69,7 @@ public class ConditionsTest extends TestCase {
 	 * check conflicts and add in period
 	 */
 	public void test_addEventInTTs_1(){
-		Resource event= _dm.getSetOfEvents().getResourceAt(0);
+		DResource event= _dm.getSetOfEvents().getResourceAt(0);
 		int[] dayTime= {5, 8,15};
 		String periodKey= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
 		((EventAttach)event.getAttach()).setKey(4,periodKey);
@@ -85,7 +86,7 @@ public class ConditionsTest extends TestCase {
 	 * check conflicts and add in period
 	 */
 	public void test_addEventInTTs_2(){
-		Resource event= _dm.getSetOfEvents().getResource("AMC645.1.01.1.");
+		DResource event= _dm.getSetOfEvents().getResource("AMC645.1.01.1.");
 		int[] dayTime= {5, 8,15};
 		String periodKey= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
 		((EventAttach)event.getAttach()).setKey(4,periodKey);
@@ -107,7 +108,7 @@ public class ConditionsTest extends TestCase {
 	 * remove event in a period
 	 */
 	public void test_removeEventInTTs_3(){
-		Resource event= _dm.getSetOfEvents().getResource("AMC645.1.01.1.");
+		DResource event= _dm.getSetOfEvents().getResource("AMC645.1.01.1.");
 		int[] dayTime= {5, 8,15};
 		String periodKey= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
 		((EventAttach)event.getAttach()).setKey(4,periodKey);
@@ -180,13 +181,13 @@ public class ConditionsTest extends TestCase {
 		boolean isEquals = dm.getTTStructure().isEquals(cloneTTS);
 		assertEquals("test_buildAllConditions : assertEquals 7",true,isEquals);
 		
-		Resource event = dm.getSetOfEvents().getResource("PED200.1.21.1.");
+		DResource event = dm.getSetOfEvents().getResource("PED200.1.21.1.");
 		EventAttach eventClone = ((EventAttach)event.getAttach()).cloneEvent();
 		eventClone.setAssignState(true);
 		//String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
 		// set event key monday at 8h30
 		eventClone.setKey(4,"1.1.2");
-		dm.getConditionsTest().addEventInTTs(cloneTTS,new Resource("PED200.1.21.1.",eventClone),false);
+		dm.getConditionsTest().addEventInTTs(cloneTTS,new DResource("PED200.1.21.1.",eventClone),false);
 		per= cloneTTS.getCurrentCycle().getPeriodByKey(1,1,2);  
 		assertEquals("test_buildAllConditions : assertEquals 8",14,per.getNbStudConflict());
 		assertEquals("test_buildAllConditions : assertEquals 9",1,per.getNbInstConflict());
@@ -196,7 +197,7 @@ public class ConditionsTest extends TestCase {
 		eventClone = ((EventAttach)event.getAttach()).cloneEvent();
 		eventClone.setAssignState(true);
 		eventClone.setKey(4,"2.1.2");
-		dm.getConditionsTest().addEventInTTs(cloneTTS,new Resource("PED200.1.21.1.",eventClone),false);
+		dm.getConditionsTest().addEventInTTs(cloneTTS,new DResource("PED200.1.21.1.",eventClone),false);
 		per= cloneTTS.getCurrentCycle().getPeriodByKey(2,1,2);  
 		assertEquals("test_buildAllConditions : assertEquals 11",40,per.getNbStudConflict());
 		assertEquals("test_buildAllConditions : assertEquals 12",0,per.getNbInstConflict());
@@ -205,7 +206,7 @@ public class ConditionsTest extends TestCase {
 		assertEquals("test_buildAllConditions : assertEquals 12-1",1,per.getNbInstConflict());
 		//set event key wedneday at 15h00
 		eventClone.setKey(4,"3.3.5");
-		dm.getConditionsTest().addEventInTTs(cloneTTS,new Resource("PED200.1.21.1.",eventClone),false);
+		dm.getConditionsTest().addEventInTTs(cloneTTS,new DResource("PED200.1.21.1.",eventClone),false);
 		per= cloneTTS.getCurrentCycle().getPeriodByKey(3,3,5);  
 		assertEquals("test_buildAllConditions : assertEquals 14",84,per.getNbStudConflict());
 		assertEquals("test_buildAllConditions : assertEquals 15",0,per.getNbInstConflict());

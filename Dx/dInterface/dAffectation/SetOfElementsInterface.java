@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfElementsInterface $Revision: 1.8 $  $Date: 2004-12-01 17:16:40 $
+* Title: SetOfElementsInterface $Revision: 1.9 $  $Date: 2004-12-16 19:20:47 $
 * Description: SetOfElementsInterface is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
+* @version $Revision: 1.9 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -181,7 +181,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
 
 
   public void actionPerformed(ActionEvent e){
-
+  	e.toString();
   }//end method
 
 

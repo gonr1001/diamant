@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.118 $  $Date: 2004-11-05 13:53:48 $
+ * Title: DMenuBar $Revision: 1.119 $  $Date: 2004-12-16 19:20:44 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.118 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.119 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -522,28 +522,28 @@ public class DMenuBar extends JMenuBar{
    // instructor selective import
    _mergeInstructors = new CmdMenu(DConst.IMP_SELECT_INST);
    _mergeInstructors.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-   _mergeInstructors.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_INST));
+   _mergeInstructors.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_INST));
    _mergeInstructors.addActionListener(_dApplic);
    _mInTest2.add(_mergeInstructors);
 
    // room selective import
    _mergeRooms = new CmdMenu(DConst.IMP_SELECT_ROOM);
    _mergeRooms.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-   _mergeRooms.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ROOM));
+   _mergeRooms.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ROOM));
    _mergeRooms.addActionListener(_dApplic);
    _mInTest2.add(_mergeRooms);
 
    // activity selective import
    _mergeActivities = new CmdMenu(DConst.IMP_SELECT_ACT);
    _mergeActivities.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-   _mergeActivities.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ACT));
+   _mergeActivities.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ACT));
    _mergeActivities.addActionListener(_dApplic);
    _mInTest2.add(_mergeActivities);
 
    // students selective import
    _mergeStudents = new CmdMenu(DConst.IMP_SELECT_STUD);
    _mergeStudents.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-   _mergeStudents.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_STUD));
+   _mergeStudents.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_STUD));
    _mergeStudents.addActionListener(_dApplic);
    _mInTest2.add(_mergeStudents);
    
@@ -587,28 +587,28 @@ public class DMenuBar extends JMenuBar{
     // instructor selective import
     _mergeInstructors = new CmdMenu(DConst.IMP_SELECT_INST);
     _mergeInstructors.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-    _mergeInstructors.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_INST));
+    _mergeInstructors.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_INST));
     _mergeInstructors.addActionListener(_dApplic);
     _importSelect.add(_mergeInstructors);
 
     // room selective import
     _mergeRooms = new CmdMenu(DConst.IMP_SELECT_ROOM);
     _mergeRooms.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-    _mergeRooms.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ROOM));
+    _mergeRooms.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/ DConst.IMP_SELECT_ROOM));
     _mergeRooms.addActionListener(_dApplic);
     _importSelect.add(_mergeRooms);
 
     // activity selective import
     _mergeActivities = new CmdMenu(DConst.IMP_SELECT_ACT);
     _mergeActivities.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-    _mergeActivities.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ACT));
+    _mergeActivities.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ACT));
     _mergeActivities.addActionListener(_dApplic);
     _importSelect.add(_mergeActivities);
 
     // students selective import
     _mergeStudents = new CmdMenu(DConst.IMP_SELECT_STUD);
     _mergeStudents.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-    _mergeStudents.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_STUD));
+    _mergeStudents.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_STUD));
     _mergeStudents.addActionListener(_dApplic);
     _importSelect.add(_mergeStudents);
 

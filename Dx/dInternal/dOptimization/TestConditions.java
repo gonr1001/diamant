@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.36 $  $Date: 2004-11-05 13:53:53 $
+* Title: TestConditions $Revision: 1.37 $  $Date: 2004-12-16 19:21:02 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.36 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.37 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -26,6 +26,8 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DModel;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -150,7 +152,7 @@ public class TestConditions {
       tts.getCurrentCycle().emptyAllEventsInPeriod();
      
       for (int i=0; i< _dm.getSetOfEvents().size(); i++){
-        Resource event = _dm.getSetOfEvents().getResourceAt(i);
+        DResource event = _dm.getSetOfEvents().getResourceAt(i);
         addEventInTTs(tts, event, false);
       }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)    
       _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
@@ -160,15 +162,15 @@ public class TestConditions {
 	
 
 
-  public int[] addEventInTTs(TTStructure tts, Resource event,  boolean usePriority) {
+  public int[] addEventInTTs(TTStructure tts, DResource event,  boolean usePriority) {
   	return addOrRemoveOrGetConflictsEventInTTs(tts,event, 1, usePriority);
   }
   
-  public int[] removeEventInTTs(TTStructure tts, Resource event,  boolean usePriority) {
+  public int[] removeEventInTTs(TTStructure tts, DResource event,  boolean usePriority) {
   	return addOrRemoveOrGetConflictsEventInTTs(tts,event, -1, usePriority);
   }
   
-  public int[] getEventConflictsInTTs(TTStructure tts, Resource event,  boolean usePriority) {
+  public int[] getEventConflictsInTTs(TTStructure tts, DResource event,  boolean usePriority) {
   	return addOrRemoveOrGetConflictsEventInTTs(tts,event, 0, usePriority);
   }
   
@@ -188,7 +190,7 @@ public class TestConditions {
    * <p>range 1= nb of instructors conflicts  </p>
    * <p> range 2= nb of rooms conflicts  </p>
    */
-  private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority ){
+  private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts, DResource event, int operation, boolean usePriority ){
     int[] numberOfConflicts={0,0,0};
 
     if(((EventAttach)event.getAttach()).getAssignState()){
@@ -277,10 +279,10 @@ public class TestConditions {
    * @param improveTTStruct
    * @param event
    */
-  public void addEventInAllPeriods(TTStructure improveTTStruct, Resource event) {
+  public void addEventInAllPeriods(TTStructure improveTTStruct, DResource event) {
   	EventAttach eventAttach = ((EventAttach) event.getAttach()).cloneEvent();
   	eventAttach.setAssignState(true);
-  	Resource res = new Resource(event.getID(),eventAttach);
+  	DResource res = new DResource(event.getID(),eventAttach);
   	eventAttach.setDuration(improveTTStruct.getPeriodLenght());
   	for(int i=0; i< improveTTStruct.getCurrentCycle().getSetOfDays().size(); i++){
   		Resource day= improveTTStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DStateBar $Revision: 1.10 $  $Date: 2004-10-21 13:39:43 $
+ * Title: DStateBar $Revision: 1.11 $  $Date: 2004-12-16 19:20:45 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -46,15 +46,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfStates;
-import dInternal.dDataTxt.State;
+import dInternal.DResource;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DSetOfStates;
+import dInternal.DState;
 
 
 public class DStateBar extends JPanel {
   private JLabel _theLabels[];
 
-  public DStateBar(SetOfStates s) {
+  public DStateBar(DSetOfStates s) {
     boolean first = true;
     _theLabels = new JLabel [s.size()];
     for (int i = 0; i < s.size(); i++) {
@@ -63,21 +64,21 @@ public class DStateBar extends JPanel {
     showDStateBar(s, first);
   }
 
-  public void upDateDStateBar(SetOfStates s) {
+  public void upDateDStateBar(DSetOfStates s) {
     boolean first = false;
     showDStateBar(s, first);
   }
 
-  private void showDStateBar(SetOfStates s, boolean first) {
+  private void showDStateBar(DSetOfStates s, boolean first) {
     for(int i = 0; i < s.size(); i++) {
-      Resource r =  s.getResourceAt(i);
-      if ( ((State)r.getAttach()).getColor() != null) {
-        _theLabels[i].setForeground(((State)r.getAttach()).getColor());
+      DResource r =  s.getResourceAt(i);
+      if ( ((DState)r.getAttach()).getColor() != null) {
+        _theLabels[i].setForeground(((DState)r.getAttach()).getColor());
       } else {
         _theLabels[i].setForeground(DConst.COLOR_BLACK);
       }
-      if ( ((State)r.getAttach()).getValue() >= 0 ) {
-        _theLabels[i].setText(r.getID() + " : " + " " + ((State)r.getAttach()).getValue() + " ");
+      if ( ((DState)r.getAttach()).getValue() >= 0 ) {
+        _theLabels[i].setText(r.getID() + " : " + " " + ((DState)r.getAttach()).getValue() + " ");
       } else {
         _theLabels[i].setText(r.getID() + " : " +  "  ");
       }

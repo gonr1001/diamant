@@ -28,7 +28,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXTools;
 import dInterface.dUtil.TwoButtonsPanel;
-import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dData.dActivities.SetOfActivities;
 
 public class ActivityDlg extends JDialog implements ActionListener {
 	

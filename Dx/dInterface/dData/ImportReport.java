@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.14 $  $Date: 2004-12-01 17:16:41 $
+ * Title: ImportReport $Revision: 1.15 $  $Date: 2004-12-16 19:20:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -44,8 +44,8 @@ import javax.swing.JTextArea;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXValue;
+import dInternal.DSetOfResources;
+import dInternal.DValue;
 
 
 public class ImportReport extends ViewReport implements ActionListener {
@@ -76,17 +76,17 @@ public class ImportReport extends ViewReport implements ActionListener {
     jtaRooms.append(DConst.CR_LF + DConst.ROOM_SEP + DConst.CR_LF);
     //etudiants
     jtaStud.append(DConst.CR_LF + DConst.STUDENT_SEP + DConst.CR_LF);
-    SetOfResources setOfImportErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportErrors();
+    DSetOfResources setOfImportErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportErrors();
     for (int i=0; i< setOfImportErrors.size(); i++){
       // Etudiants
       if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("1"))
-        jtaStud.append(((DXValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+        jtaStud.append(((DValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
       // Enseignants
       else if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("2"))
-        jtaInst.append(((DXValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+        jtaInst.append(((DValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
       // Locaux
       else if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("3"))
-        jtaRooms.append(((DXValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+        jtaRooms.append(((DValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
 
     }
     jta.append(jtaInst.getText());

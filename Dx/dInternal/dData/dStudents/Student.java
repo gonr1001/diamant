@@ -1,6 +1,6 @@
 /**
 *
-* Title: Student $Revision: 1.2 $  $Date: 2004-12-01 17:17:10 $
+* Title: Student $Revision: 1.3 $  $Date: 2004-12-16 19:21:01 $
 * Description: Student is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -52,9 +52,7 @@ public class Student extends DResource {
 	  private String _auxField="";
 	  
 	public Student(String studentName) {
-		super(studentName, new SetOfStuCourses());
-		
-		
+		super(studentName, new SetOfStuCourses());		
 	}
 	
 	/**
@@ -273,5 +271,52 @@ public class Student extends DResource {
 	    }
 	      return false;
 	  }
+	  
+	  /**
+	   *
+	   * @param String course, the course the student must be assign in a group (ADM1111)
+	   * @param int the group where the student must be assign
+	   * @param boolean fixeInGroup. if true the student is fixed in this group, false
+	   * otherwise
+	   */
+	  public void setInGroup(String course, int group, boolean fixeInGroup){
+	  	SetOfStuCourses courses = (SetOfStuCourses)getAttach();
+	  	DResource courseValue;
+	    if (course.length()>=DConst.STUDENT_COURSE_LENGTH){
+	      courseValue = courses.getResource(course.substring(0,DConst.STUDENT_COURSE_LENGTH));
+	      if(courseValue!=null){
+	        ((DValue)courseValue.getAttach()).setIntValue(group);
+	        ((DValue)courseValue.getAttach()).setBooleanValue(fixeInGroup);
+	      }// end if(courseValue!=null)
+	    }else{// end if (course.length()>=_COURSELENGTH)
+	      courseValue = courses.getResource(course);
+	      if(courseValue!=null){
+	        ((DValue)courseValue.getAttach()).setIntValue(group);
+	        ((DValue)courseValue.getAttach()).setBooleanValue(fixeInGroup);
+	      }// end if(courseValue!=null)
+
+	    }
+	  }
+	  
+	  /**
+	  *
+	  * @param actyvityType
+	  * @return
+	  */
+	 public int getGroup(String actyvityType){
+	 	SetOfStuCourses courses = (SetOfStuCourses)getAttach();
+	   if (actyvityType.length()!= DConst.STUDENT_COURSE_LENGTH)
+	     return -1;
+	   //else{
+	     DResource resource = courses.getResource(actyvityType);
+	     if(resource!=null)
+	       return((DValue)resource.getAttach()).getIntValue();
+	   //}
+	   return -1;
+	 }
+	 
+	 public SetOfStuCourses getCoursesList(){
+	 	return (SetOfStuCourses)this.getAttach();
+	 }
 
 }

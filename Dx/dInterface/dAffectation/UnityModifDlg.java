@@ -16,8 +16,9 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.Section;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
+import dInternal.dData.dActivities.Section;
 
 
 public class UnityModifDlg extends SetOfElementsInterface{
@@ -30,7 +31,7 @@ private String _title;
    * Constructor
    * @param dApplic
    */
-  public UnityModifDlg(Dialog parent, DApplication dApplic,String title,Resource section) {
+  public UnityModifDlg(Dialog parent, DApplication dApplic,String title,DResource section) {
     super(parent,dApplic,title+section.getID()+".", DConst.NUMBER_OF_UNITIES, 1);//    "Nombre d'blocs",1);
     _title=title+section.getID()+".";
     _section= (Section)section.getAttach();
@@ -53,7 +54,7 @@ private String _title;
    */
   protected void doubleClicMouseProcess(){
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
-    Resource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
+    DResource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
     //new UnityModifDlg(this,_title+unity.getID()+".", section);
     new EditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
@@ -70,7 +71,7 @@ private String _title;
       dispose();
     }
     if (command.equals(DConst.BUT_ADD)) {  // Ajouter
-      Resource unity= _section.getSetOfUnities().getResourceAt(_section.getSetOfUnities().size()-1);
+      DResource unity= _section.getSetOfUnities().getResourceAt(_section.getSetOfUnities().size()-1);
       String ID= Integer.toString(Integer.parseInt(unity.getID())+1);
       int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
       _section.addUnity(ID,nbCycle, true);

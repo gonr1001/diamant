@@ -4,8 +4,9 @@ package dTest.dInternal.dOptimizationTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.EventAttach;
 
  public class EventAttachTest extends TestCase {
@@ -13,8 +14,8 @@ import dInternal.dOptimization.EventAttach;
    EventAttach _eventAttach;
    public EventAttachTest(String name) {
      super(name);
-     SetOfResources sor = new SetOfResources(22);
-     sor.addResource(new Resource("", null), 1);
+     DSetOfResources sor = new StandardCollection();
+     sor.addResource(new DResource("", null), 1);
      _eventAttach= new EventAttach("1.1.2.1",sor,52,60,"1.1.1");
      //String princKey, long key1, long key2, int eventDuration, String eventPeriod
    }

@@ -1,0 +1,603 @@
+\documentclass{llncs}
+\bibliographystyle{alpha}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{dfd,hhline}
+\usepackage{verbatim}
+
+\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
+
+\newcommand{\ang}{\textsf}
+\newcommand{\key}{\textsf}
+\newcommand{\ita}{\textit}
+\newcommand{\bld}{\textbf}
+\newcommand{\dos}{\textsc}
+\newcommand{\pro}{\texttt}
+
+\newcommand{\Rar}{~$\Rightarrow$~}
+
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\tictac}{Tic-Tac}
+\newcommand{\xp}{eXtreme Programming}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+\title{\bf{Le pattern MVC et \diamant{}}}
+\author{Ruben Gonzalez Rubio }
+\institute{Département de génie électrique et de génie informatique \\
+Université de Sherbrooke,\\
+Sherbrooke, Québec, J1K 2R1 \\
+Canada\\
+\email{Ruben.Gonzalez-Rubio@USherbrooke.ca} }
+%%\email{Domingo.Palao@USherbrooke.ca}}
+\date{}
+
+%%%%%%%%%%%%%%%%%%
+\pagestyle{plain} %% to be commented when sent
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small\normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small\normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small\normalsize}
+%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\intd
+
+\begin{abstract} \label{intro}
+%\input{resume.tex}
+Bla bla
+\end{abstract}
+
+{\bf Mots clés :} Pattern MVC,
+ Production d'horaires, C.
+
+\section{Introduction}
+Ce document présente comment   pattern MVC (\ang{Model, View,
+Controller}) est implémenté dans \diamant{}.
+
+
+
+
+\section{Le pattern MVC}
+\label{sec:mvc}
+
+
+
+
+
+\subsection{Le pattern MVC dans Swing} \label{ref:mvcSwing}
+La figure \ref{fig:fTwo} montre
+
+
+
+
+
+\section{MVC dans \diamant{}} \label{sec:mvcDia}
+
+
+
+
+\subsection{Les classes}
+Les classes appartenant à la \ita{View} sont des classes dans les
+\pro{package} de \pro{dInterface}: comme par exemple
+\pro{DMenuBar} ou \pro{InstructorAvailabiliyDlg}.
+
+Les classes appartenant au \ita{Model} sont des classes dans les
+\pro{package} de \pro{dInternal}: comme par exemple \pro{DModel}
+ou \pro{InstructorAvailabiliyDlg}.
+
+Il n'existe pas de classe spécifiques pour le  \ita{Control}.
+
+
+\subsection{Les détails}
+Le pattern \ita{Command} est utilisé pour associer une classe à
+chaque menu. La classe \pro{DMenuBar} va pour chaque menu avoir un
+code comme ceci~:
+
+\ints
+\begin{verbatim}
+    _iA = new CmdMenu(DConst.INST_ASSIGN_M);
+    _iA.setCommand(new InstructorAvailabilityCmd());
+    _iA.addActionListener(_dApplic);
+    _assign.add(_iA);
+\end{verbatim}
+\intm
+
+\noindent où \verb!_iA! est de type \pro{CmdMenu}, qui implémente
+l'interface \pro{CommandHolder}. \verb!_dApplic! est une instance
+de la classe qui supporte l'application et qui va exécuter la
+méthode \pro{actionPerformed(ActionEvent  e)}
+
+
+Toutes les classes  portant le suffix \pro{Cmd()} vont implémenter
+l'interface \pro{Command}. Ainsi comme dans \pro{DApplic} existe
+la méthode \pro{actionPerformed(ActionEvent e)}, celle-ci va
+exécuter la méthode \pro{execute}  correspondante  à l'instance de
+la classe \pro{Cmd}.
+
+\ints
+\begin{verbatim}
+    public void actionPerformed(ActionEvent  e) {
+      if (e.getSource() instanceof CommandHolder) {
+        ((CommandHolder) e.getSource()).getCommand().execute(this);
+      }
+      else {
+        System.out.println("never happens");
+      }// end if ... else
+    }// end actionPerformed
+\end{verbatim}
+\intm
+
+Les classes  portant le suffix \pro{Cmd()} sont divisées en deux
+categories celles où un appel direct à \pro{DModel} et celles où
+une boîte de dialogue est déployée.
+
+Appel direct~:
+
+\begin{itemize}
+    \item \pro{InitialAssignCmd()} \Rar \\
+    \pro{dApplic.getDModel().sendEvent(dApplic.getJFrame());}
+
+    \item \pro{CloseCmd()} \Rar \\
+    \pro{dApplic.getDMediator().closeCurrentDoc();}
+
+    \item \pro{AlgorithmsCmd()} \Rar \\
+    \verb!(new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();!
+
+    \item \pro{BalanceMixingAlgorithmCmd()} \Rar \\
+    \verb!(new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();!
+
+    \item \pro{MiddleBalMixingAlgoritmCmd()} \Rar \\
+    \verb!(new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();!
+
+    \item \pro{OptimizeMixingAlgorithmCmd()} \Rar \\
+    \verb!(new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();!
+
+    \item \pro{PersonalizeMixingAlgorithmCmd()} \Rar \\
+    \verb!(new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();!
+
+\end{itemize}
+
+Déploiement de boîte de dialogue~:
+
+\begin{itemize}
+\item \pro{ActivityCmd()} \Rar
+    \pro{new ActivityDlg(dApplic);} \Rar \\
+    \verb!_dApplic.getDModel().getSetOfActivities().sendEvent(this);!
+
+    \item \pro{ActivityCmd()} \Rar
+    \pro{new ActivityDlg(dApplic);} \Rar \\
+    \verb!_dApplic.getDModel().getSetOfActivities().sendEvent(this);!
+    
+\item ActivityModifCmd.java ActivityModifDlg.java
+DefineSetCmd.java EditActivityDlg.java EventsCmd.java
+EventsDlg.java EventsDlgInterface.java PartialTTStructureCmd.java
+RoomsAvailabilityCmd.java RoomsAvailabilityDlg.java
+SectionCmd.java SectionDlg.java SectionModifDlg.java
+SelectGroupDlg.java SelectInstructors.java
+SetOfElementsInterface.java TypeModifDlg.java UnityModifDlg.java
+
+
+
+
+\item ConflictReport.java DefFilesToImportCmd.java
+DefFilesToImportDlg.java ExportCmd.java FullReport.java
+ImportCmd.java ImportDlg.java ImportReport.java
+ImportSelectiveFileCmd.java ImportSelectiveFileDlg.java
+InstructorAvailabilityCmd.java InstructorAvailabiliyDlg.java
+MergeReport.java ReportCmd.java ReportOptionsDlg.java
+ReportsDlg.java ViewReport.java
+
+
+\item  DetailedMITTPane.java DetailedPeriodPanel.java
+DetailedPeriodPanelMI.java DetailedTTPane.java
+ManualImprovementCmd.java ManualImprovementDetailed.java
+ManualImprovementDlg.java NewTTCyCmd.java NewTTDlg.java
+NewTTExCmd.java NewTTSCyCmd.java NewTTSExCmd.java OpenTTCmd.java
+OpenTTDlg.java OpenTTSCmd.java OpenTTSDlg.java PeriodPanel.java
+SaveAsCmd.java SaveAsDlg.java SaveAsTTDlg.java SaveAsTxtDlg.java
+SaveCmd.java SimplePeriodPanel.java SimpleTTPane.java TTPane.java
+\end{itemize}
+
+
+Déploiement de boîte de dialogue~:
+
+\begin{itemize}
+\item ActivityCmd.java ActivityDlg.java ActivityModifCmd.java
+ActivityModifDlg.java DefineSetCmd.java EditActivityDlg.java
+EventsCmd.java EventsDlg.java EventsDlgInterface.java
+InitialAssignCmd.java PartialTTStructureCmd.java
+RoomsAvailabilityCmd.java RoomsAvailabilityDlg.java
+SectionCmd.java SectionDlg.java SectionModifDlg.java
+SelectGroupDlg.java SelectInstructors.java
+SetOfElementsInterface.java TypeModifDlg.java UnityModifDlg.java
+
+\item AlgorithmsCmd.java BalanceMixingAlgorithmCmd.java
+MiddleBalMixingAlgoritmCmd.java OptimizeMixingAlgorithmCmd.java
+PersonalizeMixingAlgorithmCmd.java
+PersonalizeMixingAlgorithmDlg.java
+
+
+\item ConflictReport.java DefFilesToImportCmd.java
+DefFilesToImportDlg.java ExportCmd.java FullReport.java
+ImportCmd.java ImportDlg.java ImportReport.java
+ImportSelectiveFileCmd.java ImportSelectiveFileDlg.java
+InstructorAvailabilityCmd.java InstructorAvailabiliyDlg.java
+MergeReport.java ReportCmd.java ReportOptionsDlg.java
+ReportsDlg.java ViewReport.java
+
+
+\item CloseCmd.java DetailedMITTPane.java DetailedPeriodPanel.java
+DetailedPeriodPanelMI.java DetailedTTPane.java
+ManualImprovementCmd.java ManualImprovementDetailed.java
+ManualImprovementDlg.java NewTTCyCmd.java NewTTDlg.java
+NewTTExCmd.java NewTTSCyCmd.java NewTTSExCmd.java OpenTTCmd.java
+OpenTTDlg.java OpenTTSCmd.java OpenTTSDlg.java PeriodPanel.java
+SaveAsCmd.java SaveAsDlg.java SaveAsTTDlg.java SaveAsTxtDlg.java
+SaveCmd.java SimplePeriodPanel.java SimpleTTPane.java TTPane.java
+\end{itemize}
+
+\begin{verbatim}
+  public void actionPerformed(ActionEvent event) {
+    String command = event.getActionCommand();
+    if (command.equals(DConst.BUT_CLOSE)) {  // close
+      dispose();
+    } else if (command.equals(DConst.BUT_APPLY)) {  // apply
+      _currentInstr.setAvailability(_currentAvailbility);
+      //modified = false;
+      _applyPanel.setFirstDisable();
+      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+    // if a button of the grid has been pressed
+    } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
+      int index = _posVect.indexOf(event.getSource());
+      int day = index / nbPer;
+      int per = index % nbPer;
+      if ( ((JToggleButton)_posVect.get(index)).isSelected() ){
+        _currentAvailbility [day][per] = 1;
+      }
+      else{
+        _currentAvailbility [day][per] = 5;
+      }
+      //modified = true;
+      _applyPanel.setFirstEnable();
+    }
+  }
+\end{verbatim}
+De façon générale, quand nous avons un problème complexe, la
+meilleure approche est de découper le problème en fragments qui
+sont plus faciles à gérer avec des solutions simples. Par la
+suite, si nous mettons ensemble ces petites solutions, nous allons
+arriver à la solution de notre problème complexe
+\cite{buschmann96}.
+
+À l'heure actuelle il y a plusieurs architectures disponibles pour
+développer des applications logicielles,  la plus adaptée pour le
+système de production d'horaire est celle en couches.
+
+L'architecture montrée dans la figure \ref{fig:fThree} propose la
+division du système en trois couches, chacune avec une fonction
+bien définie~:
+
+\begin{description}
+\item [L'interface.] Elle est responsable de présenter les données
+à l'utilisateur, de permettre la saisie de données, ainsi que
+d'assurer les échanges  avec d'autres couches.
+
+\item [La couche de logique d'affaires.] Elle est responsable
+d'assurer les échanges avec l'interface en validant et en
+vérifiant les données saisies et en envoyant les données à
+présenter dans un format adéquat. Elle assure aussi les échanges
+avec la couche de persistance. Les règles d'affaires servent à
+assurer la cohérence du système.
+
+\item [La couche de persistance des données.] Elle gère le
+stockage physique des données, soit dans des fichiers avec un
+certain format, ou dans un système de gestion de bases de données
+traditionnel ou bien dans d'autres modèles de persistance qui sont
+capables de gérer des bases de données complexes.
+\end {description}
+
+\begin{figure}
+\setlength{\unitlength}{1cm}
+\begin{picture}(3,4.5)
+  \put(3,4){\framebox(4,1){Interface}}
+  \put(4.5,3.5){\vector(0,1){0.5}}
+  \put(5.5,4){\vector(0,-1){0.5}}
+  \put(3,2.5){\framebox(4,1){Logique d'affaires}}
+  \put(4.5,2){\vector(0,1){0.5}}
+  \put(5.5,2.5){\vector(0,-1){0.5}}
+  \put(3,1){\framebox(4,1){Persistance de données}}
+\end{picture}
+\caption{L'architecture trois couches.}\label{fig:fThree}
+\end{figure}
+
+
+\subsection {L'architecture trois couches et le système de production d'horaires}
+
+
+Pour chaque élément de l'architecture que nous avons présenté dans
+la sous-section antérieure, nous proposons un composant qui fait
+partie de l'application de production d'horaires. Dans cette
+sous-section nous allons montrer l'intégration entre le flot des
+données propre à un système de production d'horaires et
+l'architecture proposée.
+
+La conception de haut niveau de notre système de production
+d'horaires est simple (voir figure \ref{fig:fOne})~:
+
+\begin{enumerate}
+\item Nous avons défini trois catégories de  données  dans un
+système de production. La figure \ref{fig:fTwo} montre ces
+catégories. La couche d'interface  traite ces données de la
+manière suivante~:
+
+\begin{enumerate}
+
+\item Les données  de base. Ces données se trouvent dans une base
+de données appartenant à l'institution. Cette base peut avoir ses
+propres interfaces pour la saisie et l'affichage de données. Le
+système de production a besoin d'une partie de ces données. Il est
+nécessaire d'avoir une interface avec d'autres systèmes, sa
+responsabilité est de chercher les données nécessaires et de
+sauvegarder ces données dans le système de production. À noter que
+pour des raisons de sécurité, les utilisateurs du système  ne
+doivent pas avoir le droit de modifier les données de
+l'institution.
+
+\item La saisie directe des données d'une période $P$. Cette
+activité est faite par un commis. Normalement, ces données
+changent à chaque création d'un horaire. Pour saisir les données,
+l'utilisateur commis a une page Web qui est affichée par un
+navigateur où il aura des champs à remplir. À cette étape, la
+couche d'interface peut faire quelques validations minimales de la
+cohérence de données, par exemple, vérifier que le type de données
+est correct, vérifier que les champs qui sont obligatoires sont
+remplis, etc. Dépendant de la taille de l'institution, il peut y
+avoir plusieurs commis qui travaillent en même temps dans
+l'application, il faut en conséquence, prendre les mesures
+nécessaires pour permettre le travail concurrent dans la couche de
+persistance de données.
+
+
+
+\item Les données de l'horaire sont créées par l'application de
+création d'horaires. Cette application est gérée par l'utilisateur
+responsable de la création d'horaires. Étant donné que cette
+activité est de nature itérative, il peut y avoir un certain
+nombre de versions de travail que l'utilisateur responsable de la
+création d'horaires doit analyser pour trouver celle qui lui
+convient le mieux. Une fois qu'il a trouvé cette version, il doit
+appliquer l'opération ``commit'' pour rendre disponible
+l'information au reste des utilisateurs. Ce sont les données qui
+sortent du système. Ces données sont envoyées vers d'autres
+systèmes ou bien vers d'autres utilisateurs. Par exemple, les
+étudiants vont recevoir un papier avec leur horaire personnalisé
+ou bien, ils peuvent consulter cette information en utilisant un
+site Web crée pour ces fins.
+
+\end{enumerate}
+
+Il faut prendre en considération que la couche d'interface
+communique uniquement avec la couche de logique d'affaires. Une
+application n'est pas capable d'ajouter, modifier ou effacer des
+données directement dans la base de données, elle doit passer
+obligatoirement par la couche de logique d'affaires. Cette
+caractéristique nous permet d'assurer la cohérence des données.
+
+\item Les données sont traitées selon certaines règles et
+contraintes, ces règles sont définies par chaque institution et
+elles sont appliquées par la couche logique d'affaires. C'est ici
+que nous pourrons exprimer des contraintes propres à chaque
+institution, par exemple, la quantité maximale d'étudiants dans un
+groupe, nombre maximal de cours enseignés par un professeur, etc.
+
+\item Les données résultats de ces traitements doivent être
+stockées quelque part pour pouvoir être utilisées après leur
+génération. C'est la couche de persistance de données qui est
+responsable de cette tâche. Dans un système de production
+d'horaires, les données peuvent être stockées dans une base de
+données (relationnel, objet ou autre technologie), dans un fichier
+XML, dans un fichier texte ou bien dans autre moyen de stockage
+pertinent.
+\end{enumerate}
+
+Ces éléments de composition et leur relations sont illustrés dans
+la figure \ref{fig:fFour}.
+
+\begin{figure}
+\setlength{\unitlength}{0.5cm}
+\begin{picture}(19,7)
+
+  \put (0,6){\line(1,0){22}}
+  \put (19,6.5){\makebox(0,0){\scriptsize Couche d'interface}}
+  \put(0,6.5){\framebox(4,1){\tiny Saisie de données}}
+  \put(2,6.65){\makebox(0,0){\tiny (Client Web)}}
+  \put(5,6.5){\framebox(4,1){\tiny Création d'horaires}}
+  \put(7,6.65){\makebox(0,0){\tiny (Interface)}}
+  \put(10,6.5){\framebox(4,1){\tiny Autres systèmes}}
+  \put(12,6.65){\makebox(0,0){\tiny (Interface)}}
+  \put (2,6.5){\vector(1,-1){2}} %SD -> SW
+  \put (4,4.5){\vector(-1,1){2}} %SW -> SD
+  \put (7,6.5){\vector(-1,-1){2}} %CH -> SW
+  \put (5,4.5){\vector(1,1){2}} %SW -> CH
+  \put (7,6.5){\vector(1,-1){2}} %CH -> RA
+  \put (9,4.5){\vector(-1,1){2}} %RA -> CH
+  \put (12,6.5){\vector(-1,-1){2}} %AS -> RA
+  \put (10,4.5){\vector(1,1){2}} %RA -> AS
+
+
+  \put (0,3){\line(1,0){22}}
+  \put (19,3.5){\makebox(0,0){\scriptsize Couche de logique d'affaires}}
+  \put (2,3.5){\framebox(4,1){\tiny Serveur Web}}
+  \put (8,3.5){\framebox(4,1){\tiny Règles d'affaires}}
+  \put (6,4){\vector(1,0){2}} %RA -> SW
+  \put (8,4){\vector(-1,0){2}} %SW -> RA
+  \put (10,3.5){\vector(-1,-1){2}} %RA -> BD
+  \put (8,1.5){\vector(1,1){2}} %BD -> RA
+
+
+  \put (0,0){\line(1,0){22}}
+  \put (19,0.5){\makebox(0,0){\scriptsize Couche de persistance des données}}
+  \put (5,0.5){\framebox(6,1){\tiny Serveur Base Données}}
+
+\end{picture}
+\caption{L'implémentation de l'architecture trois couches pour le
+système de production d'horaires.}\label{fig:fFour}
+\end{figure}
+
+
+
+
+\begin{table}
+\begin{tabular}{|c||c|c|c|}\hline
+Technologie & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
+Langage pour affichage & HTML et JSP& Applet Java & Visual Basic\\
+\hline Format pour échanger les données & XML & Text & Text\\
+\hline
+
+Langage pour coder la logique d'affaires & Java & Java & Visual Basic\\
+\hline
+
+La persistance de données & Base de données & Base de données & Base de données \\
+\hline
+\end{tabular}
+~ \\
+ \caption{ Quelques instances possibles de
+l'architecture}\label{tb:tbOne}
+\end{table}
+
+
+
+\begin{table}
+\begin{tabular}{|c||c|c|c|}\hline
+Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
+Langage pour affichage & HTML et PHP & HTML et JavaScript¸ & HTML et JSP\\
+\hline
+
+Format pour échanger les données & Text & XML & SQL, Base de données\\
+\hline
+
+Langage pour coder la logique d'affaires & Java & Java & Java\\
+\hline
+
+La persistance de données & Text & XML & SQL, Base de données \\
+\hline
+
+\end{tabular}
+~ \\
+
+\caption{ L'évolution d'une instance de
+l'architecture}\label{tb:tbTwo}
+\end{table}
+
+
+
+\section{Une instance de l'architecture} \label{sec:tictac}
+
+
+
+
+\section{Conclusion}\label{sec:conc}
+
+
+\bibliography{bibDiamant,bibProg}
+
+
+\end{document}
+
+
+ (voir figure
+\ref{fig:fOne})
+
+\begin{figure}[htb] \begin{center}
+\setlength{\unitlength}{0.1cm}
+\begin{picture}(90,35)
+\deffilebox{20}{10}{0.2}
+\defprocessbox{20}{16}
+\put(0, 15){\fichier[\pro{Données}]}
+
+\put( 20,20){\vector(1,0){15}}
+
+\put(35, 12){\process[Système de\\production \\ d'horaires]}
+
+\put(55, 20){\vector(1,0){7}} \put(62, 20){\corner[y]{-10}{8}}
+\put(62, 20){\corner[y]{10}{8}}
+
+\put(70, 25){\fichier[\pro{Papier}]}
+
+\put(70, 5){\fichier[\pro{Page Web}]}
+\end{picture}
+\end{center}
+\caption{La production d'horaires}\label{fig:fOne}
+\end{figure}
+
+
+\begin{figure}[htb] \begin{center}
+\setlength{\unitlength}{0.1cm}
+\begin{picture}(90,40)
+\deffilebox{20}{10}{0.2}
+\defprocessbox{20}{16}
+\put(0, 15){\fichier[$bd_{1}$]}
+
+\put(0, 5){\makebox(20,10){Données de base}}
+
+\put(20, 20){\vector(1,0){10}} \put(30, 15){\fichier[$bd_{2}$]}
+\put(30, 5){\makebox(20,10){Données période $P$}}
+\put(50,20){\vector(1,0){10}}
+
+\put(60, 15){\fichier[$bd_{3}$]}
+
+\put(60, 5){\makebox(20,10){Données horaire}}
+\end{picture}
+\end{center}
+
+\caption{L'évolution des données pendant la production d'un
+horaire}\label{fig:fTwo}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[htb] \begin{center}
+\setlength{\unitlength}{0.1cm}
+
+\begin{picture}(90,40)
+ \put(-6,7){ \shortstack{$b)$}}
+ \put(0, 10){\vector(1,0){90}}
+ \put(5,9){\line(0,1){2}}
+ \put(4,7){\shortstack{$t_0$}}
+ \put(85, 9){\line(0,1){2}}
+ \put(84,7){\shortstack{$t_f$}}
+ \put(5, 12){\vector(1,0){75}}
+ \put(45, 14){\vector(1,0){40}}
+ \put(9,13){ \shortstack{Saisie}}
+ \put(54,16){ \shortstack{Construction}}
+ \put(-6,22){ \shortstack{$a)$}}
+ \put(0, 25){\vector(1,0){90}}
+ \put(5, 24){\line(0,1){2}}
+ \put(4,22){ \shortstack{$t_0$}}
+ \put(5, 27){\vector(1,0){40}}
+ \put(45, 27){\vector(1,0){40}}
+ \put(85, 24){\line(0,1){2}}
+ \put(84,22){\shortstack{$t_f$}}
+ \put(9,28){ \shortstack{Saisie}}
+ \put(54,28){ \shortstack{Construction}}
+\end{picture}%}
+\end{center}
+
+\caption{Les activités de saisie et de construction pour une
+période $P$}\label{fig:fTime}
+\end{figure}
+
+La figure \ref{fig:fTime}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Glossaire}

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DLoadData $Revision: 1.2 $  $Date: 2004-12-01 17:16:55 $
+* Title: DLoadData $Revision: 1.3 $  $Date: 2004-12-16 19:20:57 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -27,9 +27,11 @@ package dInternal.dData;
 import java.io.File;
 import java.util.StringTokenizer;
 import java.util.Vector;
-//import java.util.Vector;
+
+
 
 import dInternal.DModel;
+import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 //import dInternal.dUtil.DXToolsMethods;
 //import dInternal.dUtil.DXValue;
@@ -37,8 +39,10 @@ import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
+
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
+
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 //import dInternal.dOptimization.SetOfEvents;
@@ -71,10 +75,10 @@ public class DLoadData {
 	}
     /**
      * LoadData initiate the private fields
-     * @param dm the current DModel is taken in account
+     * @param model the current DModel is taken in account
      */
 	public DLoadData(DModel dm) {
-		_dm = dm;
+		_dm = dm;	
 		initLoadData();
 	    completeLoadData();
 	}
@@ -554,4 +558,71 @@ public class DLoadData {
 		    }
 		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
   	}
+  	
+  	
+    /**
+     * 
+     * @param currentSetOfResc the current SetOfResources
+     * @param file the file to import
+     * @return SetOfResources which is merge of the new SetOfResources to the current SetOfResources 
+     */
+  	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc, String file){//, boolean merge){
+  		String str= currentSetOfResc.getClass().getName();
+  		//int beginPosition=0;
+  		byte[]  dataloaded = preLoad(file);
+  		DSetOfResources newSetOfResc=null;
+  		//if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfInstructors")){
+  		if (currentSetOfResc instanceof dInternal.dData.dInstructors.SetOfInstructors ){
+  			// implement selective import for instructors
+  			_instructorFileName= file;
+  			newSetOfResc= extractInstructors(null,false);
+  			_dm.resizeResourceAvailability(newSetOfResc);
+  			((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
+  		} else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfRooms")){
+        // implement selective import for rooms
+      	_roomsFileName= file;
+          newSetOfResc= extractRooms(null,false);
+          _dm.resizeResourceAvailability(newSetOfResc);
+        //((SetOfRooms)currentSetOfResc).setDataToLoad(dataloaded); //,5,14);
+      } /*else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfActivities")){
+       // implement selective import for activities
+        beginPosition=1;
+        _activitiesFileName= file;
+        newSetOfResc= extractActivities(null,false);
+        SetOfEvents soe = new SetOfEvents(_dm);
+        soe.build((SetOfActivities)newSetOfResc, new DSetOfResources(99));
+        soe.updateActivities((SetOfActivities)newSetOfResc,soe.getSetOfResources());
+        ((SetOfActivities)currentSetOfResc).setDataToLoad(dataloaded,false);
+      } else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
+          _studentsFileName= file;
+          newSetOfResc= extractStudents(null,false);
+          
+        ((SetOfStudents)currentSetOfResc).setDataToLoad(dataloaded);
+      }*/ else {// (NullPointerException npe) {
+      	new FatalProblemDlg("I was in LoadData.selectiveImport, No resource class available!!!" );
+      }
+
+    /*  if (dataloaded != null) {
+        if (currentSetOfResc.analyseTokens(beginPosition)){
+        	makeDiff(currentSetOfResc, newSetOfResc);
+        	currentSetOfResc.buildSetOfResources(beginPosition);
+          currentSetOfResc.sortSetOfResourcesByID();
+          //DXValue = (DXValue)_dm.getSetOfImportSelErrors().getResourceAt(0).getAttach();
+          //System.out.println("Make diff: "+value.getStringValue());//debug
+          //System.out.println(_dm.getSetOfImportSelErrors().toWrite());//debug
+          //return currentsetOfResc;
+        }
+        
+      } else {// (NullPointerException npe) {
+        new FatalProblemDlg("I was in LoadData.selectiveImport. preload failed!!!" );     
+      }
+      if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
+      	updateSetOfStudents(currentSetOfResc, newSetOfResc);
+      	System.out.println("updateSetOfStudents: ");//debug
+      } */
+      
+      //setOfResc.sortSetOfResourcesByID();
+      return currentSetOfResc;
+    }
+	
 }

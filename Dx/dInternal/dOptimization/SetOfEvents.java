@@ -7,22 +7,25 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.DModel;
-import dInternal.dDataTxt.Activity;
-import dInternal.dDataTxt.Assignment;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.Section;
-import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.SetOfResources;
-//import dInternal.dDataTxt.SetOfStudents;
-import dInternal.dDataTxt.StudentAttach;
-import dInternal.dDataTxt.Type;
-import dInternal.dDataTxt.Unity;
+import dInternal.DResource;
+import dInternal.DValue;
+import dInternal.dData.dInstructors.SetOfInstructors;
+import dInternal.dData.dRooms.SetOfRooms;
+import dInternal.dData.dStudents.Student;
+import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dActivities.Assignment;
+
+import dInternal.dData.dActivities.Section;
+import dInternal.dData.dActivities.SetOfActivities;
+import dInternal.DSetOfResources;
+import dInternal.dData.dActivities.Type;
+import dInternal.dData.dActivities.Unity;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
 
 
-public class SetOfEvents extends SetOfResources{
+
+public class SetOfEvents extends DSetOfResources{
 
   public Vector _soeListeners = new Vector(1);
   //protected boolean _isEventPlaced=false;
@@ -33,7 +36,7 @@ public class SetOfEvents extends SetOfResources{
    * Constructor
    */
   public SetOfEvents(DModel dm) {
-    super(6);
+    super();
     _dm= dm;
   }
 
@@ -42,18 +45,18 @@ public class SetOfEvents extends SetOfResources{
    * Build setOfEvents from activities
    * @param cycle
    */
-  public void build(SetOfActivities soa, SetOfResources soie){
+  public void build(SetOfActivities soa, DSetOfResources soie){
   	String unityKey;
   	for (int i=0; i< soa.size(); i++){
-  		Resource activity= soa.getResourceAt(i);
+  		DResource activity= soa.getResourceAt(i);
   		long instructorKey=-1, roomKey; //=-1;
   		if(((Activity)activity.getAttach()).getActivityVisibility()){
   			for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
-  				Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
+  				DResource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
   				for(int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
-  					Resource section = ((Type)type.getAttach()).getSetOfSections().getResourceAt(k);
+  					DResource section = ((Type)type.getAttach()).getSetOfSections().getResourceAt(k);
   					for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++){
-  						Resource unity= ((Section)section.getAttach()).getSetOfUnities().getResourceAt(l);
+  						DResource unity= ((Section)section.getAttach()).getSetOfUnities().getResourceAt(l);
   						Assignment assignment = (Assignment)((Unity)unity.getAttach()).getAssignment(
   								_dm.getTTStructure().getCurrentCycleResource().getID()).getAttach();
   						if(assignment!=null){
@@ -75,9 +78,9 @@ public class SetOfEvents extends SetOfResources{
   									instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
   									assignment.addInstructorKeys(instructorKey);
   								}else{
-  									DXValue error= new DXValue();
+  									DValue error= new DValue();
   									error.setStringValue("Erreur --> "+ unityID+": "+ instructorNames[m] +" Inexistant ");
-  									soie.addResource(new Resource("2",error),0);
+  									soie.addResource(new DResource("2",error),0);
   								}
   							}
   							
@@ -87,12 +90,12 @@ public class SetOfEvents extends SetOfResources{
   								//assignment.setRoomKey(roomKey);
   							}else{
   								roomKey = -1;
-  								DXValue error= new DXValue();
+  								DValue error= new DValue();
   								String str = assignment.getRoomName();
   								if (str.equals(DConst.NO_ROOM_INTERNAL))
   									str = DConst.NO_ROOM_EXTERNAL;
   								error.setStringValue("Erreur --> " + unityID + ": "+ str + " Inexistant ");
-  								soie.addResource(new Resource("3", error), 0);
+  								soie.addResource(new DResource("3", error), 0);
   							}
   							//int[] dayTime = assignment.getDateAndTime();
   							
@@ -101,7 +104,7 @@ public class SetOfEvents extends SetOfResources{
   							event.setAssignState(((Unity)unity.getAttach()).isAssign());
   							event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
   							//System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
-  							this.addResource(new Resource(unityID, event),0);
+  							this.addResource(new DResource(unityID, event),0);
   							//System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
   						}// end if(assignement!=null)
   					}// end for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++)
@@ -121,10 +124,10 @@ public class SetOfEvents extends SetOfResources{
     String id= eventID;
     StringTokenizer event1 = new StringTokenizer(eventID,DConst.TOKENSEPARATOR);
     if(event1.countTokens()>=4){
-      Resource activity = soa.getResource(event1.nextToken());
-      Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
-      Resource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
-      Resource unity = ((Section)section.getAttach()).getSetOfUnities().getResource(event1.nextToken());
+      DResource activity = soa.getResource(event1.nextToken());
+      DResource type = ((Activity)activity.getAttach()).getSetOfTypes().getResource(event1.nextToken());
+      DResource section = ((Type)type.getAttach()).getSetOfSections().getResource(event1.nextToken());
+      DResource unity = ((Section)section.getAttach()).getSetOfUnities().getResource(event1.nextToken());
       id= activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
           DConst.TOKENSEPARATOR+section.getID()+DConst.TOKENSEPARATOR+unity.getID();
     }
@@ -155,7 +158,7 @@ public class SetOfEvents extends SetOfResources{
     EventAttach event;
 
     for (int i=0; i< eventsToUpdate.size(); i++){
-      event=(EventAttach)((Resource)eventsToUpdate.get(i)).getAttach();
+      event=(EventAttach)((DResource)eventsToUpdate.get(i)).getAttach();
       
       long actKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",0));
       long typeKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",1));
@@ -169,10 +172,10 @@ public class SetOfEvents extends SetOfResources{
       
       assignment.emptyInstructorNames();
       for (int j = 0 ; j < keys.length ; j++) {
-        assignment.addInstructorName(getRescName(_dm.getSetOfInstructors(),keys[j]));
+        assignment.addInstructorName(getInstName(_dm.getSetOfInstructors(),keys[j]));
       }// end for 
 
-      assignment.setRoom(getRescName(_dm.getSetOfRooms(),event.getRoomKey()));    
+      assignment.setRoom(getRoomName(_dm.getSetOfRooms(),event.getRoomKey()));    
       assignment.setPeriodKey(event.getPeriodKey());
       
       unity.setAssign(event.getAssignState());
@@ -188,14 +191,38 @@ public class SetOfEvents extends SetOfResources{
    * @param elt
    * @return the resource key or -1 if key does not found
    */
-  private String getRescName(SetOfResources soresc, long eltkey){
+ /* private String getRescName(DSetOfResources sor, long eltkey){
     if (eltkey!=-1){
-      return soresc.getResource(eltkey).getID();
+      return sor.getResource(eltkey).getID();
+    }
+    return DConst.NO_ROOM_INTERNAL;
+  }*/
+  
+  /**
+   * get a resource key
+   * @param soresc
+   * @param elt
+   * @return the resource key or -1 if key does not found
+   */
+  private String getInstName(SetOfInstructors sor, long eltkey){
+    if (eltkey!=-1){
+      return sor.getResource(eltkey).getID();
     }
     return DConst.NO_ROOM_INTERNAL;
   }
 
-
+  /**
+   * get a resource key
+   * @param soresc
+   * @param elt
+   * @return the resource key or -1 if key does not found
+   */
+  private String getRoomName(SetOfRooms sor, long eltkey){
+    if (eltkey!=-1){
+      return sor.getResource(eltkey).getID();
+    }
+    return DConst.NO_ROOM_INTERNAL;
+  }
     /**
      * for two event in conflict
      * @param eventIDOne
@@ -223,7 +250,7 @@ public class SetOfEvents extends SetOfResources{
      * @param eventIDTwo
      * @return
      */
-  public String getInstructorConflictDescriptions( DXValue confAt){//, String eventIDOne) {
+  public String getInstructorConflictDescriptions( DValue confAt){//, String eventIDOne) {
     String res="";
       Vector insKeys= (Vector)(confAt).getObjectValue();
       for (int j=0; j< insKeys.size(); j++){
@@ -272,8 +299,9 @@ public class SetOfEvents extends SetOfResources{
     public Vector studentsInSection(Vector students, String activityAndType, String section){
       Vector res = new Vector();
       for(int i = 0; i <students.size(); i++) {
-        StudentAttach sa = (StudentAttach)_dm.getSetOfStudents().getResource(Long.parseLong((String)students.get(i))).getAttach();
-        if( sa.isInGroup(activityAndType,DXTools.STIConvertGroupToInt(section)))
+        //StudentAttach sa = (StudentAttach)_dm.getSetOfStudents().getResource(Long.parseLong((String)students.get(i))).getAttach();
+        Student student= _dm.getSetOfStudents().getStudent(Long.parseLong((String)students.get(i)));
+        if( student.isInGroup(activityAndType,DXTools.STIConvertGroupToInt(section)))
           res.add(students.get(i));
       }
       return res;
@@ -302,6 +330,33 @@ public class SetOfEvents extends SetOfResources{
       _soeListeners.addElement(sorl);
       //System.out.println("addSetOfEvents Listener ...");//debug
     }
+
+
+	/* (non-Javadoc)
+	 * @see dInternal.DSetOfResources#getError()
+	 */
+	public String getError() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see dInternal.DSetOfResources#toWrite()
+	 */
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see dInternal.DObject#getSelectedField()
+	 */
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
   }// end class

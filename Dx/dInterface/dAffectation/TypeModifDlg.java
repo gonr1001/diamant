@@ -16,21 +16,22 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.Activity;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.Type;
+import dInternal.dData.dActivities.Activity;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
+import dInternal.dData.dActivities.Type;
 
 
 public class TypeModifDlg extends SetOfElementsInterface{
 
 private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
-private Resource _activity;
+private DResource _activity;
 private DApplication _dApplic;
   /**
    * Constructor
    * @param dApplic
    */
-  public TypeModifDlg(Dialog parent, DApplication dApplic,Resource activity) {
+  public TypeModifDlg(Dialog parent, DApplication dApplic,DResource activity) {
     super(parent,dApplic,activity.getID(), DConst.NUMBER_OF_TYPES, 1);//  )"Nombre de types",1);
     _dApplic= dApplic;
     Vector [] vect= new Vector[1];
@@ -49,7 +50,7 @@ private DApplication _dApplic;
   protected void doubleClicMouseProcess(){
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
     //SectionModifDlg
-    Resource type= ((Activity)_activity.getAttach()).getSetOfTypes().getResource(_listOfElements[_selectedPanel].
+    DResource type= ((Activity)_activity.getAttach()).getSetOfTypes().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
     new SectionModifDlg(this,this._dApplic,_activity.getID()+".", type);
   }

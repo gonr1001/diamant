@@ -12,7 +12,8 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DModel;
-import dInternal.dDataTxt.InstructorAttach;
+//import dInternal.dDataTxt.InstructorAttach;
+import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Period;
 //import dInternal.dUtil.DXToolsMethods;

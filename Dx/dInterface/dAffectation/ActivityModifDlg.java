@@ -19,8 +19,9 @@ import javax.swing.JLabel;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfActivities;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
+import dInternal.dData.dActivities.SetOfActivities;
 
 public class ActivityModifDlg extends SetOfElementsInterface{
 
@@ -53,7 +54,7 @@ public class ActivityModifDlg extends SetOfElementsInterface{
    */
   protected void doubleClicMouseProcess(){
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
-    Resource activity= _soa.getResource(_listOfElements[_selectedPanel].
+    DResource activity= _soa.getResource(_listOfElements[_selectedPanel].
         getSelectedValue().toString());
     new TypeModifDlg(this,this._dApplic, activity);
   }

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectInstructors $Revision: 1.7 $  $Date: 2004-06-21 15:38:16 $
+ * Title: SelectInstructors $Revision: 1.8 $  $Date: 2004-12-16 19:20:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -37,7 +37,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import javax.swing.JButton;
+//import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -60,12 +60,12 @@ public class SelectInstructors
 	* the vectors containing the instructors ID
 	*/
 
-  private JButton _toRight, _toLeft;
+  //private JButton _toRight, _toLeft;
   private JLabel _lVisible, _lNoVisible;
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel;
   private ButtonsPanel _validatePanel;
-  private DApplication _dApplic;
+  //private DApplication _dApplic;
   private EditActivityDlg _ead;
   private Vector _rightVec, _leftVec;
   //private JList _leftVec;
@@ -80,7 +80,7 @@ public class SelectInstructors
   							Vector leftVec,
   							Vector rightVec) {
     super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
-    _dApplic = dApplic;
+    //_dApplic = dApplic;
     _ead = ead;
     _leftVec = leftVec;
     //_leftVec.

@@ -64,10 +64,11 @@ public class ProgressBar extends JPanel
 
     //Create a timer.
     timer = new Timer(ONE_SECOND, new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
+      public void actionPerformed(ActionEvent e) {
+      	e.toString();
         //System.out.println("Timer event: "+evt);
         _jProgressBar.setValue(task.getCurrent());
-        String s = task.getMessage();
+        //String s = task.getMessage();
         if (task.isDone()) {
           Toolkit.getDefaultToolkit().beep();
           timer.stop();
@@ -87,9 +88,10 @@ public class ProgressBar extends JPanel
   /**
    * Called when the user presses the start button.
    */
-  public void actionPerformed(ActionEvent evt) {
+  public void actionPerformed(ActionEvent e) {
     //System.out.println("Action performed event: "+evt);
     //_startButton.setEnabled(false);
+  	e.toString();
     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     task.go();
     timer.start();

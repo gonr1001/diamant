@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.59 $  $Date: 2004-12-01 17:16:38 $
+ * Title: DApplication $Revision: 1.60 $  $Date: 2004-12-16 19:20:43 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,7 +17,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -46,6 +46,7 @@ import org.apache.log4j.Logger;
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
 import dInternal.DModel;
+
 import dInternal.Preferences;
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -90,64 +91,22 @@ public class DApplication implements ActionListener {
   public DApplication() {
   	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
     _logger.warn("Hi from DApplication");
-    /*_preferences = new Preferences(System.getProperty("user.dir")
-                                   + File.separator +
-                                   "pref"
-                                   + File.separator +
-                                   "pref.txt");
-
-    _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    _mediator = new DMediator(this);
-    _currentDir = System.getProperty("user.dir");
-
-    _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-
-    setLAF(_preferences._lookAndFeel);
-
-    //updateLAF(_preferences._lookAndFeel);
-    //_logger.warn("bye_from DApplication");*/
-    
-  } // end constructor
-
- /* public DApplication() {
-  	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-    //_logger.warn("hello_from DApplication");
-    _preferences = new Preferences(System.getProperty("user.dir")
-                                   + File.separator +
-                                   "pref"
-                                   + File.separator +
-                                   "pref.txt");
-
-    _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    _mediator = new DMediator(this);
-    _currentDir = System.getProperty("user.dir");
-
-    _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-
-    setLAF(_preferences._lookAndFeel);
-
-    //updateLAF(_preferences._lookAndFeel);
-    //_logger.warn("bye_from DApplication");
-    
-  } // end constructor*/
+  }
 
   public void doIt() {
-  	 _preferences = new Preferences(System.getProperty("user.dir")
-            + File.separator +
-            "pref"
-            + File.separator +
-            "pref.txt");
-
-  	 _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-  	 _mediator = new DMediator(this);
-  	 
-  	 _currentDir = System.getProperty("user.dir");
-  	 _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-	
-  	 setLAF(_preferences._lookAndFeel);
-
-  	 //updateLAF(_preferences._lookAndFeel);
-  	 _logger.warn("bye_from DApplication");
+  	_preferences = new Preferences(System.getProperty("user.dir")
+  			+ File.separator +
+			"pref"
+			+ File.separator +
+  	"pref.txt");
+  	
+  	_screenSize = Toolkit.getDefaultToolkit().getScreenSize();  	
+  	_mediator = new DMediator(this); 	
+  	_currentDir = System.getProperty("user.dir");
+  	_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
+  	
+  	setLAF(_preferences._lookAndFeel);
+  	_logger.warn("bye_from DApplication");
   }
   //-------------------------------------------
   
@@ -211,9 +170,10 @@ public class DApplication implements ActionListener {
       return _jFrame;
     } // end getJFrame
 
+ 
     public DMediator getDMediator(){
-      return _mediator;
-    } // end getJFrame
+		return _mediator;   	
+} // end getJFrame
 
     public DMenuBar getMenuBar(){
       return _dMenuBar;
@@ -362,8 +322,13 @@ public class DApplication implements ActionListener {
      //-----------------------------
   }
     
-    public DModel getDModel(){
+    public DModel getDModel(){  
     	return getDMediator().getCurrentDoc().getDM();
     }
+
+	/**
+	 * @return
+	 */
+
   
 } /* end class DApplication */

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudents $Revision: 1.2 $  $Date: 2004-12-01 17:17:08 $
+* Title: SetOfStudents $Revision: 1.3 $  $Date: 2004-12-16 19:21:00 $
 * Description: SetOfStudents is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -23,6 +23,7 @@ package dInternal.dData.dStudents;
 
 //import java.util.Vector;
 
+import java.awt.Component;
 import java.util.Vector;
 
 import dConstants.DConst;
@@ -33,6 +34,8 @@ import dConstants.DConst;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 //import dInternal.dData.ByteArrayMsg;
+//import dInternal.dData.dRooms.SetOfRoomsEvent;
+//mport dInternal.dData.dRooms.SetOfRoomsListener;
 import dInternal.dUtil.DXToolsMethods;
 
 /**
@@ -42,12 +45,13 @@ import dInternal.dUtil.DXToolsMethods;
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class SetOfStudents extends DSetOfResources {
-
+	private Vector _soStudentsListeners;
 	/**
 	 * 
 	 */
 	public SetOfStudents() {
 		super();
+		_soStudentsListeners =new Vector();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -286,5 +290,37 @@ public class SetOfStudents extends DSetOfResources {
 		  	return matricule+name+DConst.CR_LF+coursesLine;
 		}
 		
+		
+		/**
+		   *
+		   * @param dml
+		   */
+		  public synchronized void addSetOfStudentsListener(SetOfStudentsListener sosl) {
+		    if (_soStudentsListeners.contains(sosl)){
+		      return;
+		    }
+		    _soStudentsListeners.addElement(sosl);
+		  }
+		  /**
+		   *
+		   * @param component
+		   */
+		 public void sendEvent(Component component) {
+		 	SetOfStudentsEvent event = new SetOfStudentsEvent(this);
+		   for (int i=0; i< _soStudentsListeners.size(); i++) {
+		     SetOfStudentsListener sosl = (SetOfStudentsListener) _soStudentsListeners.elementAt(i);
+		     sosl.changeInSetOfStudents(event, component);
+		   }
+		  }
+		
 
+		 
+		 public Student getStudent(String str){		 	
+		 	return (Student) this.getResource(str);
+		 }
+		 
+		 public Student getStudent(long mat){		 	
+		 	return (Student) this.getResource(mat);
+		 }
+		 
 }

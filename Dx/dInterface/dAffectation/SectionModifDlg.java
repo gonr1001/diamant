@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.14 $  $Date: 2004-06-21 15:38:16 $
+ * Title: SectionModifDlg $Revision: 1.15 $  $Date: 2004-12-16 19:20:47 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,26 +29,27 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.Type;
+//import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
+import dInternal.dData.dActivities.Type;
 
 
 
 public class SectionModifDlg extends SetOfElementsInterface{
 
 private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
-private Resource _type;
+private DResource _type;
 private String _title;
-private Dialog _parent;
+//private Dialog _parent;
 private DApplication _dApplic;
   /**
    * Constructor
    * @param dApplic
    */
-  public SectionModifDlg(Dialog parent, DApplication dApplic,String title,Resource type) {
+  public SectionModifDlg(Dialog parent, DApplication dApplic,String title,DResource type) {
     super(parent,dApplic,title+type.getID()+".",DConst.NUMBER_OF_SECTIONS,1);//  "Nombre de sections",1);
     //Vector [] vect= new Vector[1];
-    _parent = parent;
+    //_parent = parent;
     _type= type;
     _title= title;
     _dApplic= dApplic;
@@ -72,7 +73,7 @@ private DApplication _dApplic;
    *
    */
   protected void doubleClicMouseProcess(){
-    Resource section= ((Type)_type.getAttach()).getSetOfSections().getResource(_listOfElements[_selectedPanel].
+    DResource section= ((Type)_type.getAttach()).getSetOfSections().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
     new UnityModifDlg(this,this._dApplic,_title+_type.getID()+".", section);
   }

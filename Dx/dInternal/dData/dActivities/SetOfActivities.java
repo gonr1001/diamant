@@ -277,7 +277,7 @@ public class SetOfActivities extends DSetOfResources{
     for(int i=0; i< size(); i++)
       ((Activity)getResourceAt(i).getAttach()).getStudentRegistered().removeAllElements();
     for (int i=0; i< sos.size(); i++){
-      DSetOfResources courses= ((SetOfStuCourses)sos.getResourceAt(i).getAttach()).getCoursesList();
+      SetOfStuCourses courses= ((SetOfStuCourses)sos.getResourceAt(i).getAttach());
       for (int j=0; j< courses.size(); j++){
         DResource activity= this.getResource(courses.getResourceAt(j).getID().
         substring(0,_COURSENAMELENGTH));

@@ -1,81 +1,20 @@
 
-\section{Reorganization de packages et classes} \label{act4}
+\section{Reorganization de packages et classes} \label{reorg}
 \subsection*{But de l'activit\'{e}}
 Faire du refactoring afin d'avoir des noms plus clairs et de
 modules packages plus indépendants.
+
+Il est nécessaire de bien utiliser CVS pour changer les noms, la
+procédure se résume à utiliser le remove dans CVS tortoise.
 
 \subsection*{Description}
 
 Une nouvelle organization de packages était nécessaire. De plus
 certaines règles pour les noms et les packages ont été ajoutées.
 
-Voilà le résultat et comment choisir un package pour une nouvelle
-classe.
 
-\begin{description}
-  \item[\verb!dConstant!] Contient \verb!DConst! et
-  \verb!DStringFrRes!, cette dernière contient les chaînes en
-  Fran\c{c}ais.
-  \item[\verb!dDeveloper!] Contient les classes qui ne sont pas
-  inclues avec la version livrable.
-  \item[\verb!dInterface!] Contient les classes  qui affichent
-  quelque
-  chose à l'écran.
-    \begin{description}
-    \item[\verb!x!] à définir.
-    \item[\verb!y!] à définir.
-    \item[\verb!z!] à définir.
-    \end{description}
-  \item[\verb!dInternal!]
+\input{activities/packages/intLib.tex}
 
-    \begin{description}
-    \item Contient classe \verb!DModel! contenant les données de
-    l'application
-    \item[\verb!dDataTxt!] Contient les classes où on traite les
-    données textuelles de l'extérieur.
-    \item[\verb!dDataXML!] Contient les classes où on traite les
-    données XML de l'extérieur.
-    \item[\verb!dOptimization!] Contient les classes où on traite
-    l'optimisation : algorithmes ou conditions ou structures
-    auxiliaires.
-    \item[\verb!dTimeTable!] Contient les classes nécessaires à la
-    grille horaire.
-    \item[\verb!dUtil!] Contient les classes génériques, mais nécessaires uniquement à
-    \diamant{}, utilisées
-    dans \verb!dInternal!
-    \end{description}
-  \item[\verb!dmains!] Contient les \verb!main!s pour lancer les
-  différentes applications.
-  \item[\verb!dTest!]
-    \begin{description}
-    \item[\verb!dInterface!]
-    \item[\verb!dInternal!]
-        \begin{description}
-        \item[\verb!dDataTxt!]Contient les classes pour tester les
-    données textuelles de l'extérieur.
-        \item[\verb!dDataXML!]Contient les classes pour tester les
-    données XML de l'extérieur.
-        \item[\verb!dOptimization!] Contient les classes pour
-        tester les classes de
-    l'optimisation : algorithmes ou conditions ou structures
-    auxiliaires.
-        \item[\verb!dTimeTable!]Contient les classes nécessaires
-        au test de classes de la
-    grille horaire.
-        \item[\verb!dUtil!]Contient les classes nécessaires
-        au test de classes de la
-    \verb!dUtil!.
-    \end{description}
-    \item[\verb!dOptimization!]
-    \item[\verb!dTimeTable!]
-    \item[\verb!dUtil!]
-    \end{description}
-\end{description}
+\input{activities/packages/reorg.tex}
 
-
-Une librairie unique des classes génériques regroupant entre
-autres les libraries \verb!theLibrary! et \verb!xmlLibrary! plus
-d'autres classes non dépendantes de \diamant{}. Tout sur un
-package qui fera un \pro{.jar} indépendant.
-
-\input{activities/packages/act4.1.tex}
+\input{activities/packages/reorgStruc.tex}

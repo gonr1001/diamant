@@ -16,8 +16,8 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
-import dInternal.dData.dStudents.SetOfStuCourses;
-import dInternal.dData.dStudents.SetOfStudents;
+//import dInternal.dData.dStudents.SetOfStuCourses;
+//import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
 //import d
 
@@ -31,7 +31,7 @@ public class SetOfActivitiesSites extends DSetOfResources{
   private boolean _open;
 
   //private String NULLINFORMATION = "xxxxxx";
-  private int _NUMBEROFCYCLE = 1;
+  //private int _NUMBEROFCYCLE = 1;
   final static public int _COURSENAMELENGTH=6;
   private int _ACTIVITYLENGTH=11;
   /**

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.2 $  $Date: 2004-12-01 17:17:08 $
+* Title: SetOfStuSites $Revision: 1.3 $  $Date: 2004-12-16 19:21:00 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,15 +16,15 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
 
-import java.awt.Component;
+
 import java.util.StringTokenizer;
-import java.util.Vector;
+//import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DResource;
@@ -36,7 +36,7 @@ import dInternal.dUtil.DXToolsMethods;
 public class SetOfStuSites extends DSetOfResources {
 
 	private String _error;
-	private Vector _soSitesListeners;
+	//private Vector _soSitesListeners;
 	
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class SetOfStuSites extends DSetOfResources {
 	public SetOfStuSites() {
 		super();
 		_error ="";
-		_soSitesListeners= new Vector();
+		//_soSitesListeners= new Vector();
 	}
 	
 	/**
@@ -93,6 +93,7 @@ public class SetOfStuSites extends DSetOfResources {
 	   *
 	   * @param component
 	   */
+	/*
 	 public void sendEvent(Component component) {
 	   SetOfStudentsEvent event = new SetOfStudentsEvent(this);
 	   for (int i=0; i< _soSitesListeners.size(); i++) {
@@ -100,11 +101,12 @@ public class SetOfStuSites extends DSetOfResources {
 	     sosl.changeInSetOfStudents(event, component);
 	   }
 	  }
-
+*/
 	  /**
 	   * 
 	   * @param soStu
 	   */
+	/*
 	  public synchronized void addSetOfSitesListener(SetOfStudentsListener soStu) {
 	    if (_soSitesListeners.contains(soStu)){
 	      return;
@@ -112,7 +114,7 @@ public class SetOfStuSites extends DSetOfResources {
 	    _soSitesListeners.addElement(soStu);
 	  }
 
-
+*/
 	/**
 	 * 
 	 */

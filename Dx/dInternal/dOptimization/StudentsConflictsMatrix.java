@@ -12,21 +12,22 @@ package dInternal.dOptimization;
 import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.DModel;
-import dInternal.dDataTxt.Activity;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.SetOfStudents;
-import dInternal.dDataTxt.StudentAttach;
-import dInternal.dDataTxt.Type;
+import dInternal.DResource;
+import dInternal.DValue;
+import dInternal.dData.StandardCollection;
+import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dActivities.SetOfActivities;
+import dInternal.DSetOfResources;
+import dInternal.dData.dStudents.SetOfStudents;
+import dInternal.dData.dStudents.Student;
+import dInternal.dData.dActivities.Type;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
 
 
 public class StudentsConflictsMatrix {
 
   private int [][] _theMatrix;
-  private SetOfResources _allSections;
+  private DSetOfResources _allSections;
   private boolean _doFirstGroupAssignement=true;
 
   /**
@@ -57,25 +58,26 @@ public class StudentsConflictsMatrix {
     }
     _theMatrix = new int[_allSections.size()+1][_allSections.size()+1];
     for(int i=0; i< sos.size(); i++){
-      StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();
-      for(int j=0; j< student.getCoursesList().size(); j++){
+      //StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();
+    	Student student= (Student)sos.getResourceAt(i);
+    	for(int j=0; j< student.getCoursesList().size(); j++){
         String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
                    +"."+student.getCoursesList().getResourceAt(j).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
-                   DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
+                   DXTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
         String token= DXToolsMethods.getToken(course1,".",0);
         String tokenType= DXToolsMethods.getToken(course1,".",1);
           if(dm.getSetOfActivities().getType(token,tokenType)==null){
-            DXValue error= new DXValue();
+            DValue error= new DValue();
             String matricule= "00000000"+sos.getResourceAt(i).getKey();
             error.setStringValue("Erreur --> "+ matricule.substring(matricule.length()-8,matricule.length())+" - "
                                  +sos.getResourceAt(i).getID()+"- Activité: "+token+tokenType+" *** Inexistante");
-            dm.getSetOfImportErrors().addResource(new Resource("1",error),0);
+            dm.getSetOfImportErrors().addResource(new DResource("1",error),0);
           }// end if(dm.getSetOfActivities().getResource(token)==null)
 
         for (int k=j; k< student.getCoursesList().size(); k++){
           String course2 = student.getCoursesList().getResourceAt(k).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
                          +"."+student.getCoursesList().getResourceAt(k).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
-                           DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
+                           DXTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
           int[] index= getSectionsKeys(course1, course2);
           //System.out.println("Course = ["+ course1+","+course2+"]");//debug
           //System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
@@ -111,8 +113,8 @@ public class StudentsConflictsMatrix {
   public int[] getSectionsKeys(String str1, String str2){
     int[] keys ={-1,-1};
     if(_allSections!=null){
-      Resource resc1 = _allSections.getResource(str1);
-      Resource resc2 = _allSections.getResource(str2);
+      DResource resc1 = _allSections.getResource(str1);
+      DResource resc2 = _allSections.getResource(str2);
       if((resc1!= null) && (resc2!= null)){
         if(resc1.getKey()<resc2.getKey()){
           keys[0]= (int)resc1.getKey();
@@ -131,17 +133,17 @@ public class StudentsConflictsMatrix {
    * @param soa
    * @return
    */
-  private SetOfResources buildSections(SetOfActivities soa){
-    SetOfResources allSections = new SetOfResources(0);
+  private DSetOfResources buildSections(SetOfActivities soa){
+    DSetOfResources allSections = new StandardCollection();
     for(int i=0; i< soa.size(); i++){
-      Resource activity = soa.getResourceAt(i);
+      DResource activity = soa.getResourceAt(i);
       for (int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
-        Resource type= ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
+        DResource type= ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);
         for (int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
           String idSection= activity.getID()+"."+type.getID()+"."+
                    ((Type)type.getAttach()).getSetOfSections().getResourceAt(k).getID();
           //System.out.println("ID Section: "+idSection);//debug
-          allSections.addResource(new Resource(idSection,null),0);
+          allSections.addResource(new DResource(idSection,null),0);
         }// end for (int k=0; k< ((Type)type.getAttach()).getSetOfSections().
       }// end for (int j=0; j< activity.getSetOfTypes().size(); j++)
     }// end for(int i=0; i< soa.size(); i++)
@@ -153,15 +155,15 @@ public class StudentsConflictsMatrix {
    * @param sos
    */
   private void firstStudentGroupAssignment(SetOfActivities soa, SetOfStudents sos,
-      SetOfResources setOfImportErrors){
+      DSetOfResources setOfImportErrors){
     for (int i=0; i< soa.size(); i++){
-      Resource rescActivity = soa.getResourceAt(i);
+      DResource rescActivity = soa.getResourceAt(i);
       for (int j=0; j< ((Activity)rescActivity.getAttach()).getSetOfTypes().size(); j++){
-        Resource rescType = ((Activity)rescActivity.getAttach()).getSetOfTypes().getResourceAt(j);
+        DResource rescType = ((Activity)rescActivity.getAttach()).getSetOfTypes().getResourceAt(j);
         int groupInd = 0;
         int[] tab= new int[((Type)rescType.getAttach()).getSetOfSections().size()];
         for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++){
-          Resource rescSection= ((Type)rescType.getAttach()).getSetOfSections().getResourceAt(z);
+          DResource rescSection= ((Type)rescType.getAttach()).getSetOfSections().getResourceAt(z);
           tab[z]= sos.getStudentsByGroup(rescActivity.getID(),rescType.getID(),
               DXTools.STIConvertGroupToInt(rescSection.getID())).size();
         }//end for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++)
@@ -169,24 +171,24 @@ public class StudentsConflictsMatrix {
         for (int k=0; k< ((Activity)rescActivity.getAttach()).getStudentRegistered().size(); k++){
           groupInd= this.getIndexOfSmallerValue(tab);//groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
           String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
-          Resource student = sos.getResource(Long.parseLong(studentKey));
+          Student student = (Student)sos.getResource(Long.parseLong(studentKey));
           int groupValue = DXTools.STIConvertGroupToInt(((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getID());
           //int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();
 
-          if((!((StudentAttach)student.getAttach()).isFixedInGroup(rescActivity.getID()+rescType.getID(),groupValue))
-             && (((StudentAttach)student.getAttach()).getGroup(rescActivity.getID()+rescType.getID())==-1)){
-            ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),groupValue,false);
+          if((!student.isFixedInGroup(rescActivity.getID()+rescType.getID(),groupValue))
+             && (student.getGroup(rescActivity.getID()+rescType.getID())==-1)){
+            (student).setInGroup(rescActivity.getID()+rescType.getID(),groupValue,false);
             tab[groupInd]++;
             //groupInc++;
           }else{// else if(!((StudentAttach)student.getAttach()).isFixedInGroup
-            int studentGroup=((StudentAttach)student.getAttach()).getGroup(rescActivity.getID()+rescType.getID());
+            int studentGroup=student.getGroup(rescActivity.getID()+rescType.getID());
             String groupeID=DXTools.STIConvertGroup(studentGroup);
             if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null){
-              DXValue error= new DXValue();
+              DValue error= new DValue();
               error.setStringValue("Erreur --> "+student.getKey()+" - "+student.getID()+"- Activité: "+rescActivity.getID()
                                  +"."+rescType.getID()+" - Groupe: "+groupeID);
-              setOfImportErrors.addResource(new Resource("1",error),0);
-              ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),-1,false);
+              setOfImportErrors.addResource(new DResource("1",error),0);
+              student.setInGroup(rescActivity.getID()+rescType.getID(),-1,false);
             }// end if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null)
           }// end else if(!((StudentAttach)student.getAttach()).isFixedInGroup
         }// end for (int k=0; k< ((Activity)rescActivity.getAttach()).getSetOfTypes()

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.2 $  $Date: 2004-12-01 17:17:05 $
+* Title: SetOfSites $Revision: 1.3 $  $Date: 2004-12-16 19:20:58 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,11 +15,14 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dRooms;
+
+import java.awt.Component;
+import java.util.Vector;
 
 import dConstants.DConst;
 //import dInternal.DResource;
@@ -30,7 +33,8 @@ import dInternal.dUtil.DXToolsMethods;
 
 
 public class SetOfRooms extends DSetOfResources {
-
+	private Vector _soSitesListeners;
+	
 	/**
 	 * 
 	 */
@@ -85,5 +89,27 @@ public class SetOfRooms extends DSetOfResources {
 
 		return 0;
 	}
+	  /**
+	   *
+	   * @param dml
+	   */
+	  public synchronized void addSetOfRoomsListener(SetOfRoomsListener soRoomsl) {
+	    if (_soSitesListeners.contains(soRoomsl)){
+	      return;
+	    }
+	    _soSitesListeners.addElement(soRoomsl);
+	  }
+	  /**
+	   *
+	   * @param component
+	   */
+	 public void sendEvent(Component component) {
+	 	SetOfRoomsEvent event = new SetOfRoomsEvent(this);
+	   for (int i=0; i< _soSitesListeners.size(); i++) {
+	     SetOfRoomsListener sorl = (SetOfRoomsListener) _soSitesListeners.elementAt(i);
+	     sorl.changeInSetOfRooms(event, component);
+	   }
+	  }
 
+	  
 }

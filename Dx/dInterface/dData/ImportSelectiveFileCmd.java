@@ -10,7 +10,7 @@ package dInterface.dData;
  */
 
 
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 
 import dInterface.Command;
 import dInterface.DApplication;
@@ -23,7 +23,7 @@ public class ImportSelectiveFileCmd implements Command {
    *
    * @param jFrame
    */
-  public ImportSelectiveFileCmd (JFrame jFrame, String str) {
+  public ImportSelectiveFileCmd (/*JFrame jFrame,*/ String str) {
     _selectionName =str;
   } // end constructor
 

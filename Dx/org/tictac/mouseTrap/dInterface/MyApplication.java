@@ -45,7 +45,7 @@ public class MyApplication extends JFrame implements ActionListener{
 		JMenu menu = new JMenu("Fichier");  
 		//	Reexecuter
 		newcommand = new CmdMenuItem("Réexecuter",this);
-		newcommand.setCommand(new FileReExecuteCmd(this));
+		newcommand.setCommand(new FileReExecuteCmd());
 		newcommand.addActionListener(this);
 		menu.add(newcommand); 
 		//	Sortir 
@@ -74,7 +74,7 @@ public class MyApplication extends JFrame implements ActionListener{
 		JMenu menu = new JMenu("Test");  
 		//	Reexecuter
 		newcommand = new CmdMenuItem("Réexecuter",this);
-		newcommand.setCommand(new FileReExecuteCmd(this, "."+File.separator+"trace"+File.separator+"trace.log" ));
+		newcommand.setCommand(new FileReExecuteCmd( "."+File.separator+"trace"+File.separator+"trace.log" ));
 		newcommand.addActionListener(this);
 		menu.add(newcommand); 
 		return menu; 
