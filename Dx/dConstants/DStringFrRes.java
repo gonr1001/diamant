@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.50 $  $Date: 2003-09-12 16:44:07 $
+ * Title: DStringFrRes $Revision: 1.51 $  $Date: 2003-09-18 14:18:57 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.51 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -155,7 +155,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"butCancel", "Annuler"},
     {"butApply", "Appliquer"},
     {"butBrowse", "Parcourir"},
-    // commontitles
+    // common titles
     {"noName", "Sans titre"},
     {"dia", "dia"},
     {"dim", "dim"},
@@ -172,6 +172,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"dghFile", "Fichier Grille Horaire (*.dgh)"},
     {"xmlFile", "Fichier Grille Horaire (*.xml)"},
     {"problem", "À corriger"},
+    {"sortTitle", "Trier"},
 
 
 
@@ -231,10 +232,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"ActStudNotAss","Étudiants non assignés"},
     {"ActStudAss","Étudiants assignés"},
     {"Activity","Activité"},
-    {"GroupDlgTitle","Affectation de groupes"},
+    {"GroupDlgTitle","Affectation de sections"},
     {"Group","Groupe"},
     {"NumberOfElements","Nombre d'éléments"},
     {"Type","Type"},
+    {"SortByMatricul","Par matricule"},
+    {"SortByName","Par nom"},
     //EventsDialog
     {"EventsDlgTitle","Évenements"},
     {"EventsFixed","Figés"},

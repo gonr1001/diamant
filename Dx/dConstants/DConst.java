@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.49 $  $Date: 2003-09-12 10:32:10 $
+ * Title: DConst $Revision: 1.50 $  $Date: 2003-09-18 14:18:57 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.49 $
+ * @version $Revision: 1.50 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -23,6 +23,7 @@ package dResources;
 
 import java.util.ResourceBundle;
 import java.awt.Color;
+import java.awt.Font;
 
 public class DConst {
 
@@ -36,6 +37,7 @@ public class DConst {
   public final static String BUT_CANCEL = res.getString("butCancel");//Annuler
   public final static String BUT_APPLY = res.getString("butApply");//Appliquer
   public final static String BUT_BROWSE = res.getString("butBrowse");//Parcourir
+  public final static String SORT_TITLE = res.getString("sortTitle");//Trier
 
   public final static String TOKENSEPARATOR = ".";//Sans titre
   public final static String NO_NAME = res.getString("noName");//Sans titre
@@ -67,6 +69,8 @@ public class DConst {
   public final static int STIBEGINHOUR=8;
   public final static int STIBEGINMINUTE=30;
   public final static int COURSENAMELENGTH=6;
+  public final static int STUDENT_ID_LENGTH=9;
+  public final static int STUDENT_KEY_LENGTH=8;
 
   // Color constants
   public final static Color COLOR_BLACK = Color.black; // Default color
@@ -132,6 +136,8 @@ public class DConst {
   public final static String NTT_EX_M  = res.getString("nTTExM");//Examen, unp
 
   //**********Dialogs constants ***************************
+  public final static Font JLISTS_FONT = new java.awt.Font("Courier", Font.PLAIN, 12);
+
   //File dialogs
   public final static String NEW_TT_M  = res.getString("newTTM");//Grille horaire
   public final static String NTT_CY_TD  = res.getString("nTTCyTD");//Grille horaire cycle
@@ -169,6 +175,8 @@ public class DConst {
   public final static String GROUP = res.getString("Group");//Groupe
   public final static String NUMBER_OF_ELEMENTS = res.getString("NumberOfElements");//Nombre d'éléments
   public final static String TYPE = res.getString("Type");//Type
+  public final static String SORT_BY_MATRICUL = res.getString("SortByMatricul");//par matricule
+  public final static String SORT_BY_NAME = res.getString("SortByName");//par nom
   //EventsDlg
   public final static String EVENTS_DLG_TITLE = res.getString("EventsDlgTitle");//Évenements
   public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés

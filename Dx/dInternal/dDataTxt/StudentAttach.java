@@ -128,6 +128,17 @@ public class StudentAttach extends DXObject{
     }// end if (course.length()>=_COURSELENGTH)
   }
 
+  public boolean getFixedInGroup(String course, int group){
+    Resource courseValue;
+    courseValue = _courses.getResource(course.substring(0,_COURSELENGTH));
+    if(courseValue!=null){
+      boolean b = ((DXValue)courseValue.getAttach()).getBooleanValue();
+      return b;
+    }
+    else
+      return false;
+  }
+
   /**
    *
    * */

@@ -14,6 +14,7 @@ import java.util.Vector;
 import java.awt.Component;
 import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
+import dInternal.dData.Resource;
 import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfStudents extends SetOfResources{
@@ -228,11 +229,12 @@ public class SetOfStudents extends SetOfResources{
 
   /**
   * Build a list of Resources's ID
-  * @return Vector It contents the Resources's ID
+  * @return Vector It contents the Resources's ID plus the Resources's keys,
+  * separate by a blank space
   * */
   public Vector getStudentsByGroup(String activityID, String typeID, int group){
-    int IDLength = 9; //horreur
-    int keyLength = 8; //horreur
+    int IDLength = DConst.STUDENT_ID_LENGTH;
+    int keyLength = DConst.STUDENT_KEY_LENGTH;
     int diff;
     String ID, key;
     Resource studentRes;
@@ -252,35 +254,55 @@ public class SetOfStudents extends SetOfResources{
         }
         list.add(ID + " " + key);
         //list.add(studentRes.getID());
-      }
+      }//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
     }//end for(int i=0; i< size(); i++)
     return list;
   }
 
   /**
-  * Build a list of Resources's ID
-  * @return Vector It contents the Resources's ID
-  * */
-/*  public Vector[] getStudentsByGroup2(String activityID, String typeID, int group){
-    String stringKey;
+   *
+   * @param activityID
+   * @param typeID
+   * @param group
+   * @param order
+   * @return
+   */
+  public Vector getStudentsByGroup(String activityID, String typeID, int group, int order){
+    int IDLength = DConst.STUDENT_ID_LENGTH;
+    int keyLength = DConst.STUDENT_KEY_LENGTH;
+    int diff;
+    String ID, key, str = null;
     Resource studentRes;
-    Vector[] list= new Vector[2];
-    list[0] = new Vector();
-    list[1] = new Vector();
-      for(int i=0; i< size(); i++){
-        studentRes = getResourceAt(i);
-        if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
-          list[0].add(studentRes.getID());
-          stringKey = String.valueOf(studentRes.getKey());
-          if (stringKey.length()<0)
-            stringKey = "00"+stringKey;
-          list[1].add(stringKey);
+    Vector list= new Vector();
+    for(int i=0; i< size(); i++){
+      studentRes = getResourceAt(i);
+      if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
+        ID = studentRes.getID();
+        diff = Math.abs(IDLength - ID.length());
+        for(int j = 0; j < diff; j++){
+          ID = ID+" ";
         }
-          //list[0].add(studentRes.getID() + " " + studentRes.getKey());
+        key = String.valueOf(studentRes.getKey());
+        diff = Math.abs(keyLength - key.length());
+        for(int j = 0; j < diff; j++){
+          key = "0"+ key;
+        }
+        if (order == 0)
+          str = ID + " " + key;
+        if (order == 1)
+          str = key + " " + ID;
+        if(((StudentAttach)studentRes.getAttach()).getFixedInGroup(activityID+typeID,group)){
+          //str.set
+          str = str + " " + "*";
+        }
+        //if ( ( (StudentAttach)(studentRes.getAttach() ) )
+        list.add(str);
+        //list.add(studentRes.getID());
+      }//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
+    }//end for(int i=0; i< size(); i++)
+    return list;
+  }
 
-      }//end for(int i=0; i< size(); i++)
-      return list;
-  }*/
 
   /**
    *
