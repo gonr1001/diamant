@@ -28,6 +28,7 @@ public class LoadData {
   String _caractFileName;
   RoomsAttributesInterpretor _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
   private static String _SEP= File.separator;
+  public final static String _saveSeparator="=================================";
  // private SetOfInstructors _instructorsList;
   //private SetOfRooms _roomsList;
   //private SetOfStudents _studentList;

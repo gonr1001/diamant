@@ -81,14 +81,55 @@ import org.w3c.dom.Document;
        assertEquals("test_getLastPeriod : assertEquals 3 (priority):",1,per.getPriority());
      }
 
+     /**
+      * test that gives the maximal number of periods by day in a cycle
+      * */
 
+     public void test_getMaxNumberOfPeriodsADay(){
+       TTStructure tts= new TTStructure();
+       tts.loadTTStructure(path+"nonUniformTT.xml");
+       int maxPer= tts.getMaxNumberOfPeriodsADay(tts.getCurrentCycle());
+       assertEquals("test_getMaxNumberOfPeriodsADay : assertEquals 1 :",12,maxPer);
+     }
 
      /**
-     * test that write the cycle xml tag
-     * */
-    public void test_writeXMLtag(){
+      * test that gives the maximal number sequences in a cycle
+      * */
 
-      //assertEquals("test_writeXMLtag : assertEquals 2 (period length):", setOfcycle.getPeriodLenght(), newSetOfcycle.getPeriodLenght());
+     public void test_getMaxNumberOfSeqs(){
+       TTStructure tts= new TTStructure();
+       tts.loadTTStructure(path+"nonUniformTT.xml");
+       int maxSeq= tts.getMaxNumberOfSeqs(tts.getCurrentCycle());
+       assertEquals("test_getMaxNumberOfSequences : assertEquals 1 :",3,maxSeq);
+     }
+
+     /**
+     * test that give a period of the time table
+     * */
+    public void test_getPeriod(){
+      TTStructure tts= new TTStructure();
+      tts.loadTTStructure(path+"StandardTTC.xml");
+      Period per= tts.getPeriod(tts.getCurrentCycle(),4,2,1);
+      assertEquals("test_getPeriod : assertEquals 1 (begin hour):",20,per.getBeginHour()[0]);
+      assertEquals("test_getPeriod : assertEquals 2 (begin minute):",0,per.getBeginHour()[1]);
+      assertEquals("test_getPeriod : assertEquals 3 (priority):",1,per.getPriority());
+     }
+
+     /**
+     * test that save the ttstructure in a xml file
+     * */
+    public void test_saveTTStructure(){
+      TTStructure tts= new TTStructure();
+      tts.loadTTStructure(path+"StandardTTC.xml");
+      tts.saveTTStructure(path+"SaveStandardTTC.xml");
+      TTStructure newtts= new TTStructure();
+      newtts.loadTTStructure(path+"SaveStandardTTC.xml");
+      Period lastPer= newtts.getLastPeriod(tts.getCurrentCycle());
+      assertEquals("test_saveTTStructure : assertEquals 1 (number of cycles):",3,newtts.getSetOfCycles().getSetOfCycles().size());
+      assertEquals("test_saveTTStructure : assertEquals 2 (PeriodLenght):",60,newtts.getSetOfCycles().getPeriodLenght());
+      assertEquals("test_saveTTStructure : assertEquals 3 (begin hour):",21,lastPer.getBeginHour()[0]);
+      assertEquals("test_saveTTStructure : assertEquals 4 (begin minute):",0,lastPer.getBeginHour()[1]);
+      assertEquals("test_saveTTStructure : assertEquals 5 (priority):",1,lastPer.getPriority());
     }
 
 

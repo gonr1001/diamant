@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.25 $  $Date: 2003-06-17 12:09:42 $
+ * Title: DModel $Revision: 1.26 $  $Date: 2003-06-26 14:00:22 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -137,6 +137,12 @@ public class DModel{
                               "trace",
                                  JOptionPane.OK_OPTION);
     return "";
+  }
+
+  //this method must be renamed to saveTT
+  public void saveProject(String filename) {
+    SaveData saveD= new SaveData("1.5");
+    saveD.saveProject(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
   }
 
   public void sendEvent() {
