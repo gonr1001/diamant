@@ -1,6 +1,6 @@
 /**
 *
-* Title: Period $Revision: 1.32 $  $Date: 2004-10-26 17:27:10 $
+* Title: Period $Revision: 1.33 $  $Date: 2004-10-27 14:36:58 $
 * Description: Period is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.32 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.33 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dTimeTable;
@@ -285,7 +285,7 @@ public class Period extends DXObject {
    * @return SetOfRessources containing the conflicts as an attachment
    */
 	public SetOfResources getConflictsEventsInPeriod(String event){
-		System.out.println("getConflictsEventsInPeriod");
+		//System.out.println("getConflictsEventsInPeriod");
 		SetOfResources setOfConf = new SetOfResources(99);
 		int sizeIn = 0;
 		for (int i=0; i< _eventsInPeriod.size(); i++){
