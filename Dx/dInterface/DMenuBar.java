@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.35 $  $Date: 2003-07-08 10:38:57 $
+ * Title: DMenuBar $Revision: 1.36 $  $Date: 2003-07-08 10:44:17 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
+ * @version $Revision: 1.36 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -87,12 +87,10 @@ public class DMenuBar extends JMenuBar{
 
 
     } else {*/
-    CmdMenu mNewTT = new CmdMenu(DConst.NEW_TT);
+    JMenu mNewTT = new JMenu(DConst.NEW_TT);
     mNewTT.setFont( new java.awt.Font(_mfont, _font, _nPT));
-    mNewTT.setCommand(new NewTTCyCmd());
-    mNewTT.addActionListener(_dApplic);
 
-    /*CmdMenu mNTTCy = new CmdMenu(DConst.NTT_CY);
+    CmdMenu mNTTCy = new CmdMenu(DConst.NTT_CY);
     mNTTCy.setFont( new java.awt.Font(_mfont, _font, _nPT));
     mNTTCy.setCommand(new NewTTCyCmd());
     mNTTCy.addActionListener(_dApplic);
@@ -102,7 +100,7 @@ public class DMenuBar extends JMenuBar{
     mNTTEx.setFont( new java.awt.Font(_mfont, _font, _nPT));
     mNTTEx.setCommand(new NewTTExCmd());
     mNTTEx.addActionListener(_dApplic);
-    mNewTT.add(mNTTEx);*/
+    mNewTT.add(mNTTEx);
 
     menu.add(mNewTT);
     //}
