@@ -20,7 +20,7 @@ import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;
 import java.awt.BorderLayout;
-import javax.swing.JButton;
+
 import javax.swing.JLabel;
 
 public class ActivityModifDlg extends SetOfElementsInterface{

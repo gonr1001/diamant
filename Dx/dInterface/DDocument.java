@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.105 $  $Date: 2004-03-26 20:45:20 $
+ * Title: DDocument $Revision: 1.106 $  $Date: 2004-04-27 18:13:10 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.105 $
+ * @version $Revision: 1.106 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -23,8 +23,8 @@ package dInterface;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.Vector;
+import java.io.File;
+
 import java.awt.Dimension;
 
 import javax.swing.event.*;

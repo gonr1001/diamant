@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.44 $  $Date: 2004-04-05 18:58:14 $
+ * Title: DApplication $Revision: 1.45 $  $Date: 2004-04-27 18:13:10 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
+ * @version $Revision: 1.45 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -26,7 +26,7 @@ import dInternal.Preferences;
 import dResources.DConst;
 import com.iLib.gDialog.FatalProblemDlg;
 
-import java.io.InputStreamReader;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;

@@ -91,7 +91,7 @@ public class ReportsDlg extends JDialog implements ActionListener{
     getContentPane().setLayout(new BorderLayout());
     setSize(dialogDim);
     setResizable(false);
-    //the tabbedPane
+
     _tabbedPane = new JTabbedPane();
     _tabbedPane.setPreferredSize(tabbedPaneDim);
 

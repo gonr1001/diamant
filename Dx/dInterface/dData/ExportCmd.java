@@ -1,6 +1,6 @@
 /**
  *
- * Title: ExportCmd $Revision: 1.6 $  $Date: 2004-04-16 20:18:54 $
+ * Title: ExportCmd $Revision: 1.7 $  $Date: 2004-04-27 18:13:10 $
  * Description: ExportCmd is class used as the command
  *              which executes the exportation
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -48,8 +48,8 @@ import dInternal.dUtil.DXToolsMethods;
 
       String dir = getTokenDir(dApplic.getDMediator().getCurrentDoc().getDocumentName(),File.separator);
 
-      File fileStu = new File(dir +DConst.TT_STUD_FILE);
-      File fileTT = new File(dir +DConst.TT_FILE);
+      File fileStu = new File(dir + DConst.TT_STUD_FILE);
+      File fileTT = new File(dir + DConst.TT_FILE);
       String mess = "";
        if (fileStu.exists() || fileTT.exists()) {
          mess += "Un ou les deux fichiers existent dans le répertoire" + CR_LF;
@@ -71,7 +71,7 @@ import dInternal.dUtil.DXToolsMethods;
    * @param position
    * @return
    */
-  private  String getTokenDir(String str, String delimiter){
+  private String getTokenDir(String str, String delimiter){
     StringTokenizer strToken= new StringTokenizer(str,delimiter);
     String string = "";
     int nbTokens= strToken.countTokens();
