@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.23 $  $Date: 2003-07-11 12:23:23 $
+ * Title: ToolBar $Revision: 1.24 $  $Date: 2003-08-22 14:03:06 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -123,7 +123,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           else
             new FatalProblemDlg(_dApplic.getJFrame(),"Valeur eronnée");
           //Treat event
-          _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();//  _tts.sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();//  _tts.sendEvent();
           setToolBarOne();
 
         }
@@ -152,7 +152,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         resc.setID((String)dayNameSelector.getSelectedItem());
         //_dApplic.getDMediator().getCurrentDoc().setModified();
         //Treat event
-          _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
         //setToolBar(_tts);
       }//end actionPerformed
     });//end addActionListener
@@ -182,7 +182,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         period.setPriority(periodTypeSelector.getSelectedIndex());
         if(_comboBoxStatus){
           //_dApplic.getDMediator().getCurrentDoc().setModified();
-          _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
         }
 
       }//end actionPerformed
@@ -201,7 +201,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           per.setPriority(periodTypeSelector.getSelectedIndex());
         }
         //_dApplic.getDMediator().getCurrentDoc().setModified();
-        _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
+        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
       }//end actionPerformed
     });//end addActionListener
 
@@ -223,7 +223,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           }
         }
         //_dApplic.getDMediator().getCurrentDoc().setModified();
-        _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
+        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
 
       }//end actionPerformed
     });//end addActionListener
@@ -314,10 +314,6 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
    */
   public void setToolBars(TTStructure ttStruct){
     _tts= ttStruct;
-    /***
-    * test ttstruc even
-    * */
-    //_tts.addTTStructureListener(this);
     setToolBarOne();
     setToolBarTwo();
   }

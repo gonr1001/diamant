@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.55 $  $Date: 2003-08-22 11:39:12 $
+ * Title: DModel $Revision: 1.56 $  $Date: 2003-08-22 14:03:06 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -75,9 +75,7 @@ public class DModel implements  DModelListener, TTStructureListener {
     }
     _type = type;
     _modified = false;
-    if (_error.length()==0){
-      _ttStruct.addTTStructureListener(this);
-    }
+
   }
 
   public String getError(){
@@ -114,7 +112,6 @@ public class DModel implements  DModelListener, TTStructureListener {
       setVersion((String)project.get(0));
       _ttStruct= (TTStructure)project.get(1);
       // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
-      // addTTStructureListener(this);
       if (_ttStruct.getError().length() != 0)
         return _ttStruct.getError();
       _setOfInstructors = (SetOfInstructors)project.get(2);
@@ -136,6 +133,7 @@ public class DModel implements  DModelListener, TTStructureListener {
       }
     }
     _constructionState=1;
+    //_setOfStates.sendEvent();
     return"";
   }
 
@@ -178,6 +176,7 @@ public void setVersion(String version){
        return _setOfStudents.getError();
      }
      _constructionState=1;
+     //_setOfStates.sendEvent();
      return "";
   }
 
@@ -273,8 +272,8 @@ public void setVersion(String version){
    *
    */
   public void setStateBarComponent(){
-    if (_constructionState>0){
-      ((State)_setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(_setOfActivities.size());
+    if (_constructionState>0){//_visibleVec = _activities.getIDsByField(3, "true");
+      ((State)_setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(_setOfActivities.getIDsByField(3, "true").size());
       ((State)_setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(_setOfInstructors.size());
       ((State)_setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(_setOfRooms.size());
       ((State)_setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(_setOfStudents.size());

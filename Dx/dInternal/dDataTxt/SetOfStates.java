@@ -1,10 +1,12 @@
 package dInternal.dData;
 
 import dResources.DConst;
+import java.util.Vector;
 
 public class SetOfStates extends SetOfResources{
 
   String _error="";
+  private Vector _sosListener = new Vector();
   /***
    * constructor
    */
@@ -56,4 +58,31 @@ public class SetOfStates extends SetOfResources{
   }
 
   public void incrementModification() {}
+
+  /**
+   *
+   * @param sosl
+   */
+  public synchronized void addSetOfStatesListener(SetOfStatesListener sosl) {
+    if (_sosListener.contains(sosl)){
+      return;
+    }
+    _sosListener.addElement(sosl);
+    System.out.println("addSetOfStates Listener");
+   }
+
+   public void sendEvent() {
+    SetOfStatesEvent event = new SetOfStatesEvent(this);
+    for (int i=0; i< _sosListener.size(); i++) {
+      SetOfStatesListener sosl = (SetOfStatesListener) _sosListener.elementAt(i);
+      sosl.changeInStateBar(event);
+      //System.out.println("sendEvent: "+event.toString()+"   --I:"+i);
+       System.out.println("SetOfStates listener started: "+i);//debug
+    }
+   }
+
+   public synchronized void removeSetOfStatesListener(SetOfStatesListener sosl) {
+     _sosListener.removeElement(sosl);
+   }
+
 }

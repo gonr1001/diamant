@@ -422,7 +422,7 @@ public class TTStructure {
        TTStructureListener ttsl = (TTStructureListener) _ttsListeners.elementAt(i);
        ttsl.changeInTTStructure(event);
        //System.out.println("sendEvent: "+event.toString()+"   --I:"+i);
-        System.out.println("TTstructure listener started: "+event.toString());//debug
+        System.out.println("TTstructure listener started: "+i);//debug
      }
    }
 

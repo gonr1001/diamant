@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.59 $  $Date: 2003-08-22 11:39:12 $
+ * Title: DDocument $Revision: 1.60 $  $Date: 2003-08-22 14:03:06 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -41,6 +41,8 @@ import dInternal.DModelListener;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dTimeTable.TTStructureEvent;
+import dInternal.dData.SetOfStatesEvent;
+import dInternal.dData.SetOfStatesListener;
 import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;
@@ -51,9 +53,10 @@ import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
 public class DDocument  extends InternalFrameAdapter implements
-                                                     ActionListener,
-                                                     DModelListener,
-                                                     TTStructureListener{
+    ActionListener,
+    DModelListener,
+    TTStructureListener,
+    SetOfStatesListener{
   private DApplication _dApplic;
   private JInternalFrame _jif;
   private String _documentName;
@@ -71,7 +74,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, fileName, type);
     if(_dm.getError().length()==0){
-      addTTListener(_dm.getTTStructure());
+      //addTTListener(_dm.getTTStructure());
       _dm.getTTStructure().addTTStructureListener(this);
       ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
       buidDocument(ttName);
@@ -105,11 +108,6 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setTitle(name);
   } // end setDocumentName
     //-------------------------------------------
-  /**
-   * */
-  public void addTTListener(TTStructure ttStruct){
-    ttStruct.addTTStructureListener(this);
-  }
 
   public String getError(){
     return _dm.getError();
@@ -195,18 +193,20 @@ public class DDocument  extends InternalFrameAdapter implements
 
     public void changeInDModel(DModelEvent  e) {
       //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
-      _dm.setStateBarComponent();
+      //_dm.setStateBarComponent();
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       //this.updateStateBar(_dm.getState());
 
     }// end actionPerformed
 
+    /*
+    */
+    public void changeInStateBar (SetOfStatesEvent e){
+      _dm.setStateBarComponent();
+    }
+
     public void changeInTTStructure(TTStructureEvent  e) {
-      if (_dm.getModified()){
-        //System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
-        // this.updateStateBar(_dm.getState());
         _ttPanel.updateTTPanel(_dm.getTTStructure());
-      }
     }// end actionPerformed*/
 
   private void  buidDocument(String title){
@@ -235,6 +235,8 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
+    _dm.getSetOfStates().addSetOfStatesListener(this);
+    _dm.getSetOfStates().sendEvent();
     _modified = false;
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
     _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
