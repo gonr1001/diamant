@@ -49,33 +49,6 @@ public class RefinedStudMixAlgo{
     mixStudentsInGroup(actID,typeID,allConvexGroups,sumOfConvex);
   }
 
-  /**
-   *
-   * @param studentRegistered
-   * @param allConvexGroups each convexgroup is sort by key (matricule)
-   * @return
-   */
-  private SetOfResources buildSumOfConvexGroups( Vector allConvexGroups){
-    // sort the the convexgroup by key (matricule)
-    for(int j=0; j< allConvexGroups.size(); j++)
-      ((SetOfResources)allConvexGroups.get(j)).sortSetOfResourcesByKey();
-
-    SetOfResources convexSum= new SetOfResources(66);
-    SetOfResources studentRegistered = (SetOfResources)allConvexGroups.get(0);
-    for(int i=0; i< studentRegistered.size(); i++){
-      int sum=0;
-      for(int j=0; j< allConvexGroups.size(); j++){
-        String conf=((SetOfResources)allConvexGroups.get(j)).getResourceAt(i).getID();
-        sum+= Integer.parseInt(conf);
-      }// end for(int j=0; j< studentRegistered.size(); j++)
-       String confSum ="0000"+Integer.toString(sum);
-       confSum= confSum.substring(confSum.length()-4,confSum.length());
-      convexSum.setCurrentKey(studentRegistered.getResourceAt(i).getKey());
-      convexSum.addResource(new Resource(confSum,new DXValue()),0);
-    }// end for(int i=0; i< allConvexGroups.size(); i++)
-    convexSum.sortSetOfResourcesByID();
-    return convexSum;
-  }
 
   /**
   *
@@ -150,6 +123,35 @@ public class RefinedStudMixAlgo{
    student.setInGroup(activityID+typeID, group,false);
    return sizeOfGroups;
  }
+
+ /**
+  *
+  * @param studentRegistered
+  * @param allConvexGroups each convexgroup is sort by key (matricule)
+  * @return
+  */
+ private SetOfResources buildSumOfConvexGroups( Vector allConvexGroups){
+   // sort the the convexgroup by key (matricule)
+   for(int j=0; j< allConvexGroups.size(); j++)
+     ((SetOfResources)allConvexGroups.get(j)).sortSetOfResourcesByKey();
+
+   SetOfResources convexSum= new SetOfResources(66);
+   SetOfResources studentRegistered = (SetOfResources)allConvexGroups.get(0);
+   for(int i=0; i< studentRegistered.size(); i++){
+     int sum=0;
+     for(int j=0; j< allConvexGroups.size(); j++){
+       String conf=((SetOfResources)allConvexGroups.get(j)).getResourceAt(i).getID();
+       sum+= Integer.parseInt(conf);
+     }// end for(int j=0; j< studentRegistered.size(); j++)
+      String confSum ="0000"+Integer.toString(sum);
+      confSum= confSum.substring(confSum.length()-4,confSum.length());
+     convexSum.setCurrentKey(studentRegistered.getResourceAt(i).getKey());
+     convexSum.addResource(new Resource(confSum,new DXValue()),0);
+   }// end for(int i=0; i< allConvexGroups.size(); i++)
+   convexSum.sortSetOfResourcesByID();
+   return convexSum;
+ }
+
 
  /**
   * build a vector containing keys of resources
