@@ -49,14 +49,14 @@ public class LoadData {
 
   }
   public LoadData(String args, DModel dm) {
-  	initLoadData();
-    _roomsAttributesInterpretor= extractRoomsAttributesInterpretor();
-    verifyImportDataFile(args);
     _dm = dm;
     if (_dm != null)
       _chars =_dm.getDDocument().getDMediator(
-      ).getDApplication(
-      ).getPreferences()._acceptedChars;
+          ).getDApplication(
+          ).getPreferences()._acceptedChars;
+    initLoadData();
+    _roomsAttributesInterpretor= extractRoomsAttributesInterpretor();
+    verifyImportDataFile(args);
   }
 
   public LoadData(DModel dm) {
@@ -70,8 +70,8 @@ public class LoadData {
   private void initLoadData() {
     _dm = null;
     String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
-    _functionFileName=path+"DXfunctions.sig";
-    _caractFileName=path+"DXcaracteristics.sig";
+    _functionFileName= path + "DXfunctions.sig";
+    _caractFileName= path + "DXcaracteristics.sig";
     Preferences preferences = new Preferences(System.getProperty("user.dir")
           + File.separator +
           "pref"
@@ -81,7 +81,7 @@ public class LoadData {
   }
 
   private void verifyImportDataFile(String str){
-    FilterFile filter = new FilterFile();
+    FilterFile filter = new FilterFile(_chars);
     if (filter.validFile(str)) {
       StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), CR_LF );
       if (st.countTokens() == NUMBER_OF_TOKENS){
