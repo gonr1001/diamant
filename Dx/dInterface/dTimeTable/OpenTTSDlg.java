@@ -58,6 +58,10 @@ import dResources.DConst;
       int returnVal = DXTools.showDialog(dApplic.getJFrame(), fc, str3);
       // If the file chooser exited sucessfully,
       // and a file was selected, continue
+       if (returnVal == JFileChooser.CANCEL_OPTION) {
+         dApplic.getDMediator().closeCurrentDoc();
+         dApplic.hideToolBar();
+       }
       if (returnVal == JFileChooser.APPROVE_OPTION) {
         // get the file name
         String fil = fc.getSelectedFile().getAbsolutePath();
@@ -68,6 +72,7 @@ import dResources.DConst;
           System.exit(1);
         }
         dispose();
+        dApplic.getMenuBar().postOpenTTSCmd();
       }
    }// end loadTTData
 

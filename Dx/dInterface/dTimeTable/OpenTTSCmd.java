@@ -32,7 +32,6 @@ public class OpenTTSCmd implements Command{
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
     new OpenTTSDlg(dApplic);
-    dApplic.getMenuBar().postOpenTTSCmd();
   } // end execute
 
 }/* end class OpenTTSCmd */

@@ -129,19 +129,21 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
                   getSetOfPeriods().getIndexOfResource(perKey[2]);
     //int[] perKeyIndex={};
     int duration = ((EventAttach)event.getAttach()).getDuration()/ dm.getTTStructure().getPeriodLenght();
+    _ttPane.updateTTPane(_ttStruct);
     setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
     //_frameResult.setColorOfPanel(event.getID());
 
     this.getContentPane().add(_ttPane.getPane());
+
     this.show();
   }
 
   private void buildNewTTSTestConditions(Resource event, DModel dm){
     dm.getConditionsTest().buildAllConditions(_ttStruct);
     //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
-    String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
-    boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
-    boolean inAPeriod= ((EventAttach)event.getAttach()).isPlaceInAPeriod();
+    String eventPeriodKey = ((EventAttach)event.getAttach()).getPeriodKey();
+    boolean eventAssignState = ((EventAttach)event.getAttach()).getAssignState();
+    boolean inAPeriod = ((EventAttach)event.getAttach()).isPlaceInAPeriod();
     if (event!=null) {
       ((EventAttach)event.getAttach()).setAssignState(true);
       dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1);

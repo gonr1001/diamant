@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
 <DXTimeTable>
 	<TTcycle>
 		<TTdays>
@@ -495,22 +495,22 @@
 						<sequenceID>AM</sequenceID>
 						<TTperiods>
 							<TTperiod>
-								<BeginTime>8:30</BeginTime>
+								<BeginTime>8:15</BeginTime>
 								<priority>0</priority>
 								<periodID>1</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>9:30</BeginTime>
+								<BeginTime>9:15</BeginTime>
 								<priority>0</priority>
 								<periodID>2</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>10:30</BeginTime>
+								<BeginTime>10:15</BeginTime>
 								<priority>0</priority>
 								<periodID>3</periodID>
 							</TTperiod>
 							<TTperiod>
-								<BeginTime>11:30</BeginTime>
+								<BeginTime>11:15</BeginTime>
 								<priority>0</priority>
 								<periodID>4</periodID>
 							</TTperiod>

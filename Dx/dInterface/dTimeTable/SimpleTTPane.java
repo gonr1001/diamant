@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPane $Revision: 1.6 $  $Date: 2003-10-21 19:21:32 $
+ * Title: SimpleTTPane $Revision: 1.7 $  $Date: 2003-10-22 19:28:36 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -71,6 +71,8 @@ public class SimpleTTPane extends TTPane {
   }
   //-------------------------------------------
    public void updateTTPane(TTStructure ttp){
+     _tts = ttp;
+     findRowHeaders();
      initTTPane(_jScrollPaneOne);
    }
  //-------------------------------------------
