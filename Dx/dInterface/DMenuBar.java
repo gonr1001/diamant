@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.13 $  $Date: 2003-05-15 08:40:33 $
+ * Title: DMenuBar $Revision: 1.14 $  $Date: 2003-05-20 15:12:26 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.14 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInterface;
@@ -50,14 +50,14 @@ public class DMenuBar extends JMenuBar{
     this.add( menu );
 
     // Items in menu FILE.
-    /*
+
     CmdMenu mNew = new CmdMenu(DConst.NEW);
     menu.add(mNew);
     mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
     mNew.setCommand(new NewCmd());
     mNew.addActionListener(_dApplic);
-    */
-   /*
+
+
     CmdMenu mNProj = new CmdMenu("Nouveau Projet");
     mNProj.setFont( new java.awt.Font( mfont, font, nPT ) );
     mNProj.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
@@ -121,7 +121,7 @@ mTime.add(mOTime);
     mImpM.setFont( new java.awt.Font( mfont, font, nPT ) );
     mImpM.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mImpM.addActionListener(_dApplic);
-    */
+
 
     CmdMenu mDefF = new CmdMenu(DConst.DEF_F_M);
     menu.add(mDefF);
@@ -135,13 +135,13 @@ mTime.add(mOTime);
     mImpA.setCommand(new ImportCmd(_dApplic.getJFrame()));
     mImpA.addActionListener(_dApplic);
 
-/*
+
     CmdMenu mExpo = new CmdMenu(DConst.EXPO);
     menu.add(mExpo);
     mExpo.setFont( new java.awt.Font( mfont, font, nPT ) );
     mExpo.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mExpo.addActionListener(_dApplic);
-*/
+
     menu.addSeparator();
 
     CmdMenu mExit = new CmdMenu(DConst.EXIT);
@@ -173,7 +173,7 @@ mTime.add(mOTime);
     menu = new JMenu(DConst.ASSIGN);
     menu.setFont( new java.awt.Font( mfont, font, nPT ) );
     this.add( menu );
-/*
+
     CmdMenu mActi = new CmdMenu("Activités");
     menu.add(mActi);
     mActi.setFont( new java.awt.Font( mfont, font, nPT ) );
@@ -206,7 +206,7 @@ mTime.add(mOTime);
      mConfl.setFont( new java.awt.Font( mfont, font, nPT ) );
      mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
      mConfl.addActionListener(_dApplic);
-*/
+
     //Build the menu PREFERENCES.
     menu = new JMenu(DConst.PREF);
     menu.setFont( new java.awt.Font( mfont, font, nPT ) );
