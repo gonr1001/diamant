@@ -1,0 +1,74 @@
+/**
+ *
+ * Title: DDocument $Revision: 1.1 $  $Date: 2003-01-24 18:41:16 $
+ * Description: DDocument is a class used to
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.1 $
+ * @author  $Author: rgr $
+ * @since JDK1.3
+ */
+package dInterface;
+
+import java.awt.*;
+import java.awt.geom.*;
+import java.util.*;
+import java.io.*;
+
+import javax.swing.event.*;
+import javax.swing.*;
+import javax.swing.JDesktopPane;
+
+import dInternal.DModel;
+import dResources.DConst;
+
+public class DDocument {
+  private boolean _modified;
+  private DView _dView;
+  private DMediator _mediator;
+  private JInternalFrame _jif;
+  private DModel _dm;
+
+  //-------------------------------------------
+  public DDocument(DView dView,
+                            DMediator mediator) {
+    _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
+    _dView = dView;
+    _mediator = mediator;
+    _dm = new DModel();
+    _modified = false;
+    _jif.setBounds(10, 10, 600, 550);
+    _dView.getDesktop().add(_jif, new Integer(1));
+    _jif.setVisible(true);
+  } // end constructor DDocument()
+
+
+
+    //-------------------------------------------
+    public void setModified(){
+        _modified = true;
+    } // end setModified
+    //-------------------------------------------
+    public boolean getModified(){
+        return _modified;
+    } // end getModified
+    //-------------------------------------------
+    public JInternalFrame getJIF() {
+        return _jif;
+    } // end getJIF
+    //-------------------------------------------
+    public DModel getDM(){
+        return _dm;
+    } //end getDModel
+
+} /* end DDocument class */
