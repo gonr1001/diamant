@@ -12,7 +12,7 @@ import org.w3c.dom.*;
 
 public class TTStructure {
   private SetOfCycles _setOfCycles;
-  private int _periodLenght=60;
+  //private int _periodLenght=60;
   private int _nbOfStCycles=2;
   private int _nbOfStDays=5;
   //DXTimeTable tag
@@ -50,12 +50,12 @@ public class TTStructure {
   }
 
   public int getPeriodLenght(){
-    return _periodLenght;
+    return _setOfCycles.getPeriodLenght();
   }
 
-  public void setPeriodLenght(int periodL){
-     _periodLenght= periodL;
-  }
+ // public void setPeriodLenght(int periodL){
+  //   _periodLenght= periodL;
+  //}
 
  public SetOfResources getSetOfCycles() {
     return new SetOfResources(4);
@@ -118,8 +118,7 @@ public class TTStructure {
    * @return Day the day or null if the day does not found
    * */
   public Day getDay(Cycle cycle, int dayRefNo ){
-    return (Day)cycle.getSetOfDays().getResource(
-        Integer.toString(dayRefNo)).getAttach();
+    return (Day)cycle.getSetOfDays().getResource(dayRefNo).getAttach();
   }
 
   /**

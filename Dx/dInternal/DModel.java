@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.22 $  $Date: 2003-06-09 10:23:40 $
+ * Title: DModel $Revision: 1.23 $  $Date: 2003-06-09 13:53:27 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -39,6 +39,7 @@ public class DModel{
   private SetOfActivities _setOfActivities;
   private DApplication _dApplic;
   private TTStructure _ttStruct;
+  private int _currentCycle = 1;
 
 //for new
   public DModel(DApplication dApplic, TTStructure ttStruct) {
@@ -120,6 +121,11 @@ public class DModel{
   public TTStructure getTTStructure() {
     return _ttStruct;
   }
+
+  public int getCurrentCycle() {
+  return _currentCycle;
+  }
+
 //this method must be renamed to saveTT
   public String rsaveTT(String filename) {
     JOptionPane.showMessageDialog(_dApplic.getJFrame(),

@@ -78,7 +78,7 @@ class __options {
 <oigroup:<oiref:design#Class#id10nk3dfshg4rzdfshpi4i.diagram:oiref>=10,590,169,324,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.TTParameters:oiref>=290,10,143,254,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.TTParametersListener:oiref>=410,410,170,117,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,414,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.DModel:oiref>=10,10,200,446,1:oigroup>
 <oigroup:<oiref:design#Class#id1nifldg0t3hxrdg0tcyqu.diagram:oiref>=596,346,88,148,1:oigroup>
 */
 class __positions {

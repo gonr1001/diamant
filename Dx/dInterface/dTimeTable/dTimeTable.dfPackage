@@ -106,6 +106,11 @@ class reference15 {
 @__modelType reference 
 */
 class reference16 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.CloseCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

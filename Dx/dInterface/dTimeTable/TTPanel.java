@@ -22,7 +22,9 @@ import javax.swing.border.*;
 import java.awt.event.*;
 
 import dInternal.DModel;
-import dInternal.dTimeTable.TTStructure;
+import dInternal.dData.Resource;
+import dInternal.dTimeTable.*;
+
 import dInternal.dTimeTable.Period;
 
 public class TTPanel extends JScrollPane {
@@ -57,8 +59,10 @@ public class TTPanel extends JScrollPane {
 
   private JPanel createColumnHeader() {
     JPanel panel = new JPanel(new GridLayout(1, 0));
-    for (int i = 0; i < _dm.getTTStructure().rgetColumn() ; i++){
-      panel.add(new JLabel("J " + (i + 1) + " : "+ _dm.getTTStructure().rgetDayName(i), JLabel.CENTER));
+    Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
+    for (int i = 0; i < cycle.getSetOfDays().size() ; i++){
+      Resource day = cycle.getSetOfDays().getResourceAt(i);
+      panel.add(new JLabel("J " + (i + 1) + " : "+ day.getID(), JLabel.CENTER));
       //panel.add(new JLabel("Jour " + (i + 1) + " : "+ "lun", JLabel.CENTER));
     }
     panel.setPreferredSize(new Dimension(UWIDTH *_dm.getTTStructure().rgetColumn(), HHEIGHT));
@@ -69,7 +73,8 @@ public class TTPanel extends JScrollPane {
 
   private JPanel createRowHeader() {
     JPanel panel = new JPanel(new GridLayout(0,1));
-
+    Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
+    Day day = _dm.getTTStructure().getDay(cycle,1);
     JLabel label;
     for (int i = _dm.getTTStructure().rgetBegingTime(); i < _dm.getTTStructure().rgetEndTime(); i++) {
       label = new JLabel(Integer.toString(i) + ":00");

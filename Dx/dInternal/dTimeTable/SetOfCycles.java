@@ -82,6 +82,10 @@ public class SetOfCycles {
     }
   }
 
+  public int getPeriodLenght() {
+    return  _periodLenght;
+  }
+
   private SetOfResources _setOfCycles;
   private int _periodLenght;
   static final String _TAGITEM="TTcycle";

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.26 $  $Date: 2003-06-09 10:23:40 $
+ * Title: DDocument $Revision: 1.27 $  $Date: 2003-06-09 13:53:26 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -57,6 +57,8 @@ public class DDocument implements ActionListener, DModelListener{
   private TTPanel _ttPanel;
   private JPanel _statusPanel;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+
+
   //for new
    public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
      _dApplic = dApplic;
@@ -200,8 +202,6 @@ public class DDocument implements ActionListener, DModelListener{
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
     _ttPanel = new TTPanel(_dm);
-    //_ttPanel.setPreferredSize( new Dimension(20 , 20) );//_jif.getContentPane().getWidth()+ 500,
-    // _jif.getContentPane().getHeight() + 500) );
     _dm.addDModelListener(this);
     _modified = false;
 

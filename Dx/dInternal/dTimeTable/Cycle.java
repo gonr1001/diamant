@@ -38,15 +38,18 @@ public class Cycle extends DXObject{
     public void readXMLtag(Element setofDays){
       ReadXMLElement list= new ReadXMLElement();
       String ID="";
+      String key="";
       int size= list.getSize(setofDays,_TAGITEM);
       //System.out.println(" Days Size: "+size);//debug
       for (int i=0; i< size; i++){
         Day setOfSequences = new Day();
         Element day= list.getElement(setofDays,_TAGITEM,i);
-        ID= list.getElementValue(day,_TAGITEM1);
+        ID= list.getElementValue(day,_TAGITEM4);
+        key= list.getElementValue(day,_TAGITEM1);
         //System.out.println(" Day ID: "+ID);//debug
         Element sequences= list.getElement(day,_TAGITEM2,0);
         setOfSequences.readXMLtag(sequences);
+        _setOfDays.setCurrentKey(Integer.parseInt(key));
         _setOfDays.addResource(new Resource(ID,setOfSequences),0);
       }// end for (int i=0; i< size; i++)
 
