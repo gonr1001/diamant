@@ -301,6 +301,25 @@ public Period getLastPeriod(){
     return maxPer;
   }
 
+  /**
+  * get the max number of periods in a sequence in a cycle
+  * @param Cycle the cycle where we want to find the max number of sequences
+  * @return int the max number of periods in a day
+  * */
+ public int getMaxNumberOfPeriodsInASequence(){
+   int maxPer=0;
+   for(int i=0; i< getSetOfDays().size(); i++){
+     Day day =(Day)getSetOfDays().getResourceAt(i).getAttach();
+     int inc=0;
+     for (int j=0; j< day.getSetOfSequences().size(); j++){
+       Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+       inc= seq.getSetOfPeriods().size();
+       if (maxPer< inc)
+         maxPer= inc;
+     }// end for (int j=0; j< day.getSetOfSequences().size(); j++)
+   }// end for(int i=0; i< getSetOfDays().size(); i++)
+   return maxPer;
+  }
 
 
   /**
