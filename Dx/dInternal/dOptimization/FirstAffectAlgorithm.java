@@ -106,11 +106,6 @@ public class FirstAffectAlgorithm implements Algorithm {
       }// end for(int j=0; j< ((Day)day.getAttach()).getSetO
     }// end for (int i=0; i< _dm.getTTStructure().getCurrentCycle()
     soresc.sortSetOfResourcesByKey();
-    /*for (int i=0; i< soresc.size(); i++){
-      DXValue value = (DXValue)soresc.getResourceAt(i).getAttach();
-      System.out.println("Day:"+value.getIntValue()+" - Hour: "+((Period)value.getObjectValue()).getBeginHour()[0]
-                         +":"+((Period)value.getObjectValue()).getBeginHour()[1]+ "- Size: "+soresc.getResourceAt(i).getKey());//debug
-    }*/
     return (Vector)soresc.getSetOfResources().clone();
   }
 

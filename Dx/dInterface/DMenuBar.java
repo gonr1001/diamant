@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.79 $  $Date: 2003-10-07 23:07:23 $
+ * Title: DMenuBar $Revision: 1.80 $  $Date: 2003-10-10 14:17:48 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.79 $
+ * @version $Revision: 1.80 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -93,8 +93,9 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolMEventsModif;
 
   // the optimisation menus
-  private CmdMenu _mOpti,_mInit, _mFirstAlgo;
-  private boolean _boolMOpti, _boolMInit, _boolFirstAlgo;
+  private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,_mStudentsMixingOptimize;
+  private boolean _boolMOpti, _boolMInit, _boolFirstAlgo,_boolStudentsMixingBalance,_boolStudentsMixingOptimize;
+  private JMenu _studentsMixing;
 
   //the report menus
   private CmdMenu _mReport;
@@ -346,6 +347,23 @@ public class DMenuBar extends JMenuBar{
     _mFirstAlgo.addActionListener(_dApplic);
     _optimisation.add(_mFirstAlgo);
 
+    // Items in menu PREFERENCES.
+   _studentsMixing = new JMenu(DConst.STUDENTMIXING);
+   _studentsMixing.setFont( new java.awt.Font(_mfont, _font, _nPT));
+
+   _mStudentsMixingBalance = new CmdMenu(DConst.STUDENTMIXINGBAL);
+   _mStudentsMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
+   _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd());
+   _mStudentsMixingBalance.addActionListener(_dApplic);
+   _studentsMixing.add(_mStudentsMixingBalance);
+
+   _mStudentsMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
+   _mStudentsMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
+   _mStudentsMixingOptimize.setCommand(new OptimizeMixingAlgorithmCmd());
+   _mStudentsMixingOptimize.addActionListener(_dApplic);
+    _studentsMixing.add(_mStudentsMixingOptimize);
+
+    _optimisation.add(_studentsMixing);
     /*_mOpti = new CmdMenu(DConst.PLAF_M);
     _mOpti.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mOpti.setCommand(new PLAFCmd(_dApplic));

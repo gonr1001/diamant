@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.60 $  $Date: 2003-10-07 23:07:24 $
+ * Title: DConst $Revision: 1.61 $  $Date: 2003-10-10 14:17:48 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.60 $
+ * @version $Revision: 1.61 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -132,6 +132,9 @@ public class DConst {
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
   public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale
   public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Affectation Initiale
+  public final static String STUDENTMIXING = res.getString("studentMixing");//Brassage d'étudiants
+  public final static String STUDENTMIXINGBAL = res.getString("studentMixingBal");//Brassage d'étudiants balancé
+  public final static String STUDENTMIXINGOPTI = res.getString("studentMixingOpti");//Brassage d'étudiants optimal
   //Report menu
   public final static String REPORT = res.getString("ReportM");//Rapports
   //Preferences menu
@@ -204,6 +207,8 @@ public class DConst {
 
   //Optimisation dialogs
   public final static String INITIAL_AFFECT_MESSAGE = res.getString("InitialAffectMessage");//Affectation initiale effectuée
+  public final static String TT_BUILD_MESSAGE = res.getString("TTBuildMessage");//Construction d'horaire terminée
+  public final static String STUDENTS_MIXING_MESSAGE = res.getString("StudentsMixingMessage");//brassage d'étudiants terminé
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F

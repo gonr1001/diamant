@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.59 $  $Date: 2003-10-07 23:07:24 $
+ * Title: DStringFrRes $Revision: 1.60 $  $Date: 2003-10-10 14:17:48 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -120,6 +120,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "OptimizationM", "Optimisation"},
     {"initialAffectM", "Affectation Initiale"},
     {"firstAlgo", "Construire l'horaire"},
+    {"studentMixing", "Brassage d'étudiants"},
+    {"studentMixingBal", "Balancé"},
+    {"studentMixingOpti", "Optimisé"},
 
 
     //Modification
@@ -242,8 +245,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"EventsNotPlaced","Non placés"},
     //
     {"ManImpDlgTitle","Affectation manuelle"},
+
     //Optimisation dialogs
     {"InitialAffectMessage", "Affectation initiale effectuée"},
+    {"TTBuildMessage", "Construction d'horaires terminée"},
+    {"StudentsMixingMessage", "Brassage d'étudiants terminé"},
 
     //Report dialogs
     {"ReportDlgTitle","Rapports"},
