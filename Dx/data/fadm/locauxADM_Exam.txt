@@ -1,0 +1,17 @@
+Faculté d'administration (1er cycle);
+Liste des locaux pour horaire de cours et d'examens (DIAMANT);
+
+Nom du local ; Capacité(exam); Fonction ; Liste des caractéristiques ; Notes ;
+
+K1-2004      ; 38           ;0110      ;7,11,14,16,24,43	      ;tables et chaises                                       ;
+K1-2006      ; 40	    ;0110      ;7,11,14,16,24,43	      ;tables et chaises                                       ;
+K1-2007      ; 44	    ;0110	 ;3,11,14,15,24,43	      ;gradins en U                                            ;               
+K1-2008      ; 40  	    ;0110      ;7,11,14,16,24,43	      ;tables et chaises                                       ;
+K1-2009      ; 43           ;0110      ;3,11,14,15,24,43            ;gradins en U                                            ;  
+K1-2010      ; 40           ;0110      ;7,11,14,16,24,43            ;tables et chaises                                       ;
+K1-2024      ; 39	    ;0110	 ;7,11,14,16,24,43	      ;gradins en L                                            ;
+K1-2028      ; 37	    ;0110	 ;7,11,14,16,24,43	      ;gradins en L                                            ;
+K1-2043      ; 30	    ;0110      ;3,11,14,15,24,43            ;gradins en U                                            ;
+K1-2044      ; 30	    ;0110      ;3,11,14,15,24,43            ;gradins en U                                            ;
+K1-2045      ; 34	    ;0110	 ;3,11,14,15,24,43            ;gradins tables parallèles et porte mitoyenne coulissante;
+K1-2046      ; 34	    ;0110      ;3,11,14,15,24,43            ;gradins tables parallèles et porte mitoyenne coulissante;
