@@ -146,8 +146,6 @@ public class TTPanel extends JScrollPane {
                                    (_periodLenght- period.getBeginHour()[1]*UHEIGHT/_periodLenght), 0 );
 
           }
-          //c.insets = new Insets(10, 0, 0, 0 );
-          //setPerPanelColor(periodPanel, period.getPriority());
           gridbag.setConstraints(periodPanel, c);
           panel.add(periodPanel, c);
         }//end for k
