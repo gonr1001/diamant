@@ -1,0 +1,66 @@
+\chapter{Description de la décomposition}
+Le logiciel \dx{} pour fonctionner à besoin de la machine virtuelle Java. Pour construire un horaire \dx{} a besoin d'un ensemble de fichiers. Le déploiement de \dx{} devrait donc se faire en considérant les deux autres entités dont il a besoin (voir figure \ref{datastruct}).
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=350pt]{SDD/images/Deploiement-global.eps}
+    \caption{Système \dx{}}\label{datastruct}
+  \end{center}
+\end{figure*} 
+\section{Description des fichiers d'entrée de  \diamant{}}
+\dx{} utilisent les fichiers suivantes~:
+
+\begin{enumerate}
+    \item Étudiants.
+    \item Instructeurs.
+    \item Activités.
+    \item Locaux
+\end{enumerate}
+
+Les trois premiers sont produits au STI (Système informatique
+central) et transférés via FTP.
+Le fichier de locaux est produit
+localement par l'utilisateur.
+
+Tous les fichiers ont un format très
+rigide. Le nombre de caractères et leur position est à respecter
+obligatoirement.
+
+Les indexes de chaînes de caractères commencent à \verb!0!.
+\input{SDD/inputData}
+
+\section{Décomposition modulaire (Modèle Objet)} \label{module}
+\dx{} est une application GUI\footnote{Graphical User Interface} consistant en trois composants: le modèle, la vue et le contrôleur. Ces composants sont utilisés dans le but d'imposer une structure à \dx{} qui est par ailleurs une application interactive.
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=350pt]{SDD/images/Deploiement-diamant.eps}
+    \caption{Architecture MVC de \dx{}}\label{datastruct}
+  \end{center}
+\end{figure*} 
+
+\begin{description}
+    \item[Le modèle:] il gère les données spécifiques de \dx{} (les enseignants, les locaux, les cours, les étudiants, la grille horaire, etc).
+    \item[La vue:] elle offre un ensemble fenêtre, dialogue, menu, etc permettant une mise en page de l'affichage du modèle. Il permet à l'utilisateur de faire des requêtes sur le modèle et de visualiser les résultats.
+    \item[Le contrôleur:] il gère les événements d'entrée de l'utilisateur à partir de la souris ou du clavier. Chaque vue à un contrôleur associé qui la connecte avec avec les périphérique d'entrée.
+\end{description}    
+
+\subsection{Description du modèle}
+
+\subsection{Description de la vue}
+
+\subsection{Description du contrôleur}
+
+\section{Décomposition des processus concurrents} \label{process}
+\subsection{Description du processus 1}
+\subsection{Description du processus 2}
+
+\section{Décomposition des données} \label{data}
+\subsection{Description des entrée de données 1}
+\subsection{Description des entrée de données 2}
+
+\section{Modélisation des états}
+
+\section{Modélisation des cas d'utilisation}
