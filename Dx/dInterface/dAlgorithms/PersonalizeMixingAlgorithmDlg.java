@@ -41,7 +41,7 @@ public class PersonalizeMixingAlgorithmDlg  {
      boolean isNotValid=true;
      JOptionPane inputPanel= new JOptionPane();
      while(isNotValid){
-       result= inputPanel.showInputDialog("Variation Acceptable",_initialValue);
+       result= JOptionPane.showInputDialog("Variation Acceptable",_initialValue);
        if(result!=null){
          if(validation(result)!=0)
            JOptionPane.showMessageDialog(inputPanel,"Valeur éronnée ");

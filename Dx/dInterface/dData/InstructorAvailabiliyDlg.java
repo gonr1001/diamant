@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.19 $  $Date: 2004-10-21 13:39:45 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.20 $  $Date: 2004-10-21 19:47:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.20 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -61,7 +61,7 @@ import dInternal.dDataTxt.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: gonzrubi $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
@@ -104,7 +104,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     day = new String[nbDay];
     //MES00 = DConst.AVAILABILITIES;
     for(int i=0; i< nbDay; i++)
-      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure()._weekTable[i];
+      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getWeekTable()[i];
     nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       initialize();

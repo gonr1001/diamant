@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.49 $  $Date: 2004-10-21 13:39:44 $
+ * Title: EditActivityDlg $Revision: 1.50 $  $Date: 2004-10-21 19:47:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.49 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.50 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -69,7 +69,7 @@ import dInternal.dDataTxt.SetOfInstructors;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfRooms;
 import dInternal.dDataTxt.Type;
-import dInternal.dDataXML.rooms.SetOfCategories;
+//import dInternal.dDataXML.rooms.SetOfCategories;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;

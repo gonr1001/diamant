@@ -58,7 +58,7 @@ public class LoadDataTest extends TestCase {
     Cycle cycle= ((TTStructure)_timeTable.get(1)).getCurrentCycle();
     assertEquals("test1_loadTimeTable : assertEquals1: ", 12, cycle.getMaxNumberOfPeriodsADay());
     assertEquals("test1_loadTimeTable : assertEquals2: ", 3, cycle.getMaxNumberOfSeqs());
-    assertEquals("test1_loadTimeTable : assertEquals3: ", 5, TTStructure.getNumberOfActiveDays());
+    assertEquals("test1_loadTimeTable : assertEquals3: ", 5, TTStructure.NUMBEROFACTIVESDAYS);
   }
 
   /**

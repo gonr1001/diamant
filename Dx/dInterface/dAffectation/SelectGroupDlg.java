@@ -114,7 +114,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
   private void jbInitRemGroup(){
     JOptionPane pane = new JOptionPane();
     Object[] options = { DConst.BUT_OK, DConst.BUT_CANCEL };
-    int rest= pane.showOptionDialog(this,"Etes-vous sur de vouloir supprimer le groupe "+ _list.get(0).toString()+" ?", "Confirmation",
+    int rest= JOptionPane.showOptionDialog(this,"Etes-vous sur de vouloir supprimer le groupe "+ _list.get(0).toString()+" ?", "Confirmation",
                           JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                           null, options, options[0]);
     if(rest==0){//BUT_OK

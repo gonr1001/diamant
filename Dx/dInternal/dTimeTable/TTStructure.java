@@ -49,7 +49,7 @@ public class TTStructure {
   //private String _errorXMLFileMessage = "XML file is corrupted";
   private int _col;
   private int _row;
-  private static int _numberOfActivesDays=5;// monday to friday
+  public static int NUMBEROFACTIVESDAYS=5;// monday to friday
 
   private int _periodLenght;
   private int _currentCycleIndex=0;
@@ -72,8 +72,12 @@ public class TTStructure {
   }
   //-----------------------------
   
-  public static int getNumberOfActiveDays(){
-    return _numberOfActivesDays;
+  public int getNumberOfActiveDays(){
+    return NUMBEROFACTIVESDAYS;
+  }
+  
+  public String[] getWeekTable(){
+    return _weekTable;
   }
 
   public int getPeriodLenght(){
@@ -117,53 +121,7 @@ public class TTStructure {
   }
 
 
-  /**
-   * Create a sequence of periods
-   * @param Document the xml document where we are working
-   * @param String String the sequence ID (AM, PM or EM= evening)
-   * @param int the number of periods in the sequence
-   * @param int the lenght of each period in the sequence
-   * @param int[2] the begin time of the period. the first element of the table
-   * is the our, and the second is the minutes
-   * @param int the prioryti of each period
-   * @return Element the sequence element
-   * */
-  private Element CreateSeqPeriods(Document doc, String seqID, int nbOfPeriods, int periodLenght, int[] beginTime, int priority){
-    //add PM periods
-    WriteXMLElement xmlElt;
-    try{
-      xmlElt = new WriteXMLElement();
-      Element eltSeq= xmlElt.createElement(doc,ITEM2_subTag[4]);
-      Element eltPers= xmlElt.createElement(doc,ITEM2_subTag[5]);
-      int hour=beginTime[0];
-      for (int i=0; i<nbOfPeriods; i++){
-        int mn= (beginTime[1]+periodLenght*i)%60;//
-        hour=beginTime[0]+(beginTime[1]+periodLenght*i)/60;
-        String time= hour+":"+mn;
-        Element child0=xmlElt.createElement(doc,ITEM2_subConst[5],time);
-        int mn1= (mn+periodLenght)%60;//
-        int hour1=hour+(mn+periodLenght)/60;
-        time= hour1+":"+mn1;
-        Element child01=xmlElt.createElement(doc,ITEM2_subConst[6],time);
-        Element child1=xmlElt.createElement(doc,ITEM2_subConst[4],Integer.toString(priority));
-        Element child2=xmlElt.createElement(doc,ITEM2_subConst[7],Integer.toString(i+1));//
-        Element eltPer= xmlElt.createElement(doc,ITEM2_subTag[6]);
-        eltPer= xmlElt.appendChildInElement(eltPer, child2);
-        eltPer= xmlElt.appendChildInElement(eltPer, child0);
-        eltPer= xmlElt.appendChildInElement(eltPer, child01);
-        eltPer= xmlElt.appendChildInElement(eltPer, child1);
-        eltPers=xmlElt.appendChildInElement(eltPers, eltPer);
-      }
-      Element childSeq=xmlElt.createElement(doc,ITEM2_subConst[3],seqID);
-      eltSeq= xmlElt.appendChildInElement(eltSeq, childSeq);
-      eltSeq= xmlElt.appendChildInElement(eltSeq, eltPers);
-
-      return eltSeq;
-    } catch(Exception e){
-      System.out.println("TTStructure: "+e);//debug
-      return null;
-    }
-  }
+ 
 
   /**
    * Create and save a standard TimeTable
@@ -206,7 +164,7 @@ public class TTStructure {
           // add sequences in a day
           eltDay= wr.appendChildInElement(eltDay,eltSeqs);
           Element childDay=wr.createElement(doc,ITEM2_subConst[2],Integer.toString(day+1));
-          String dayID= _weekTable[day%_numberOfActivesDays];
+          String dayID= _weekTable[day%NUMBEROFACTIVESDAYS];
           Element childDayID=wr.createElement(doc,ITEM2_subConst[8],dayID);
           eltDay= wr.appendChildInElement(eltDay,childDay);
           eltDay= wr.appendChildInElement(eltDay,childDayID);
@@ -451,6 +409,54 @@ public class TTStructure {
    fil.exists();
    return fil.exists();
  }
+  
+  /**
+   * Create a sequence of periods
+   * @param Document the xml document where we are working
+   * @param String String the sequence ID (AM, PM or EM= evening)
+   * @param int the number of periods in the sequence
+   * @param int the lenght of each period in the sequence
+   * @param int[2] the begin time of the period. the first element of the table
+   * is the our, and the second is the minutes
+   * @param int the prioryti of each period
+   * @return Element the sequence element
+   * */
+  private Element CreateSeqPeriods(Document doc, String seqID, int nbOfPeriods, int periodLenght, int[] beginTime, int priority){
+    //add PM periods
+    WriteXMLElement xmlElt;
+    try{
+      xmlElt = new WriteXMLElement();
+      Element eltSeq= xmlElt.createElement(doc,ITEM2_subTag[4]);
+      Element eltPers= xmlElt.createElement(doc,ITEM2_subTag[5]);
+      int hour=beginTime[0];
+      for (int i=0; i<nbOfPeriods; i++){
+        int mn= (beginTime[1]+periodLenght*i)%60;//
+        hour=beginTime[0]+(beginTime[1]+periodLenght*i)/60;
+        String time= hour+":"+mn;
+        Element child0=xmlElt.createElement(doc,ITEM2_subConst[5],time);
+        int mn1= (mn+periodLenght)%60;//
+        int hour1=hour+(mn+periodLenght)/60;
+        time= hour1+":"+mn1;
+        Element child01=xmlElt.createElement(doc,ITEM2_subConst[6],time);
+        Element child1=xmlElt.createElement(doc,ITEM2_subConst[4],Integer.toString(priority));
+        Element child2=xmlElt.createElement(doc,ITEM2_subConst[7],Integer.toString(i+1));//
+        Element eltPer= xmlElt.createElement(doc,ITEM2_subTag[6]);
+        eltPer= xmlElt.appendChildInElement(eltPer, child2);
+        eltPer= xmlElt.appendChildInElement(eltPer, child0);
+        eltPer= xmlElt.appendChildInElement(eltPer, child01);
+        eltPer= xmlElt.appendChildInElement(eltPer, child1);
+        eltPers=xmlElt.appendChildInElement(eltPers, eltPer);
+      }
+      Element childSeq=xmlElt.createElement(doc,ITEM2_subConst[3],seqID);
+      eltSeq= xmlElt.appendChildInElement(eltSeq, childSeq);
+      eltSeq= xmlElt.appendChildInElement(eltSeq, eltPers);
+
+      return eltSeq;
+    } catch(Exception e){
+      System.out.println("TTStructure: "+e);//debug
+      return null;
+    }
+  }
 
 
 }

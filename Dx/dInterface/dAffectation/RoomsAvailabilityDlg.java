@@ -76,7 +76,7 @@ public class RoomsAvailabilityDlg  extends JDialog
     nbDay= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getNumberOfActiveDays();
     day = new String[nbDay];
     for(int i=0; i< nbDay; i++)
-      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure()._weekTable[i];
+      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getWeekTable()[i];
     nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       initialize();
@@ -143,7 +143,7 @@ public class RoomsAvailabilityDlg  extends JDialog
    */
   public void itemStateChanged( ItemEvent event ) {
 	_applyPanel.setFirstDisable();
-    if ( event.getStateChange() == event.SELECTED ) {
+    if ( event.getStateChange() == ItemEvent.SELECTED ) {
       Object source = event.getSource();
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);

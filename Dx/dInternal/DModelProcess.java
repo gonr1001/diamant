@@ -52,23 +52,23 @@ public class DModelProcess {
    */
   public void setStateBarComponent(){
     if (_dm._constructionState>0){//_visibleVec = _activities.getIDsByField(3, "true");
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(DModel._setOfActivities.getIDsByField(3, "true").size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(DModel._setOfInstructors.size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(DModel._setOfRooms.size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(DModel._setOfStudents.size());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_ACT).getAttach()).setValue(DModel._setOfActivities.getIDsByField(3, "true").size());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_INST).getAttach()).setValue(DModel._setOfInstructors.size());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_ROOM).getAttach()).setValue(DModel._setOfRooms.size());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_STUD).getAttach()).setValue(DModel._setOfStudents.size());
 
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_EVENT).getAttach()).setValue(_dm._setOfEvents.size());
-      ((State)_dm._setOfStates.getResource(DConst.SB_T_ASSIG).getAttach()).setValue(_dm._setOfEvents.getNumberOfEventAssign());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_EVENT).getAttach()).setValue(_dm._setOfEvents.size());
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_T_ASSIG).getAttach()).setValue(_dm._setOfEvents.getNumberOfEventAssign());
 
       int [] nbConf = _dm.getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
 
-      ((State)_dm._setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(nbConf[0]+
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_CONF).getAttach()).setValue(nbConf[0]+
           nbConf[1]+nbConf[2]);
 
-      ((State)_dm._setOfStates.getResource(DConst.SB_C_INST).getAttach()).setValue(nbConf[0]);
-      ((State)_dm._setOfStates.getResource(DConst.SB_C_ROOM).getAttach()).setValue(nbConf[1]);
-      ((State)_dm._setOfStates.getResource(DConst.SB_C_STUD).getAttach()).setValue(nbConf[2]);
-      _dm._setOfStates.sortSetOfResourcesByKey();
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_C_INST).getAttach()).setValue(nbConf[0]);
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_C_ROOM).getAttach()).setValue(nbConf[1]);
+      ((State)_dm.getSetOfStates().getResource(DConst.SB_C_STUD).getAttach()).setValue(nbConf[2]);
+      _dm.getSetOfStates().sortSetOfResourcesByKey();
     }
   }
 
@@ -79,11 +79,11 @@ public class DModelProcess {
  public void buildSetOfEvents(){
    _dm._setOfEvents.getSetOfResources().removeAllElements();
    _dm._setOfEvents.setCurrentKey(1);
-   if (_dm._setOfActivities != null){
-     _dm._setOfEvents.build(_dm._setOfActivities, _dm.getSetOfImportErrors() );
+   if (_dm.getSetOfActivities() != null){
+     _dm._setOfEvents.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors() );
      //updateEventsInTTS();
-     if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
-       _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
+     if((_dm.getSetOfActivities()!=null) && (_dm.getSetOfStudents()!=null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
+       _dm.getSetOfActivities().buildStudentRegisteredList(_dm.getSetOfStudents());
      //_dm._conditionTest = new TestConditions(_dm);
    }// end if (_setOfActivities!=null)
 

@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.49 $  $Date: 2004-09-10 13:30:59 $
+ * Title: DToolBar $Revision: 1.50 $  $Date: 2004-10-21 19:47:44 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -18,7 +18,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: gonzrubi $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -369,8 +369,8 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
 		_periodTypeSelector.disableActionListeners();
 	    _periodTypeSelector.removeAllItems();
 
-	    for (int i=0; i< _tts._priorityTable.length; i++)
-	      _periodTypeSelector.addItem(_tts._priorityTable[i]);
+	    for (int i=0; i< TTStructure._priorityTable.length; i++)
+	      _periodTypeSelector.addItem(TTStructure._priorityTable[i]);
 	    //System.out.println("Nb of viewPorts: "+ttPanel.getComponentCount());//debug
 	    _periodTypeSelector.enableActionListeners();
 	    _comboBoxStatus=true;

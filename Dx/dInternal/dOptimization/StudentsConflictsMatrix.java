@@ -59,8 +59,8 @@ public class StudentsConflictsMatrix {
     for(int i=0; i< sos.size(); i++){
       StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();
       for(int j=0; j< student.getCoursesList().size(); j++){
-        String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, soa._COURSENAMELENGTH)
-                   +"."+student.getCoursesList().getResourceAt(j).getID().substring(soa._COURSENAMELENGTH)+"."+
+        String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
+                   +"."+student.getCoursesList().getResourceAt(j).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
                    DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
         String token= DXToolsMethods.getToken(course1,".",0);
         String tokenType= DXToolsMethods.getToken(course1,".",1);
@@ -73,8 +73,8 @@ public class StudentsConflictsMatrix {
           }// end if(dm.getSetOfActivities().getResource(token)==null)
 
         for (int k=j; k< student.getCoursesList().size(); k++){
-          String course2 = student.getCoursesList().getResourceAt(k).getID().substring(0, soa._COURSENAMELENGTH)
-                         +"."+student.getCoursesList().getResourceAt(k).getID().substring(soa._COURSENAMELENGTH)+"."+
+          String course2 = student.getCoursesList().getResourceAt(k).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
+                         +"."+student.getCoursesList().getResourceAt(k).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
                            DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
           int[] index= getSectionsKeys(course1, course2);
           //System.out.println("Course = ["+ course1+","+course2+"]");//debug

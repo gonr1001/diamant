@@ -1,6 +1,6 @@
 /**
 *
-* Title: LoadData $Revision: 1.53 $  $Date: 2004-10-21 13:39:47 $
+* Title: LoadData $Revision: 1.54 $  $Date: 2004-10-21 19:47:44 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.53 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.54 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -299,7 +299,7 @@ public class LoadData {
        // extract SetOfInstructor
        if(tts.getError().length()==0){
          SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
-             TTStructure.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
+             tts.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
          if (instructorsList.analyseTokens(0)){
            instructorsList.buildSetOfResources(0);
          }
