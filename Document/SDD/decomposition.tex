@@ -49,19 +49,27 @@ Les indexes de chaînes de caractères commencent à \verb!0!.
 
 \subsection{Description du modèle}
 
-Le modèle de \dx{} est bâti autour de quatre principaux sous-composants: le sous-composant \verb!model!, le sous-composant \verb!data!, le sous-composant \verb!ttstructure! et le sous-composant \verb!optimization!.
+Le modèle de \dx{} est bâti autour de quatre principaux sous-composants: le sous-composant \verb!model!, le sous-composant \verb!data!, le sous-composant \verb!ttstructure! et le sous-composant \verb!optimization! (voir figure \ref{model}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
     \includegraphics[width=350pt]{SDD/images/Component-Global.eps}
-    \caption{Architecture du modèle de \dx{}}\label{model}
+    \caption{Architecture du composant modèle de \dx{}}\label{model}
   \end{center}
 \end{figure*} 
 
-\subsubsection{Description du sous-composant \verb!model!}
+\subsubsection{Description du sous-composant model}
 
-Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur.
+Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur. Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur. La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et l'entité comportement ou processus (voir figure \ref{submodel}).
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=350pt]{SDD/images/sub_component_model.eps}
+    \caption{Description du sous-composant model}\label{submodel}
+  \end{center}
+\end{figure*} 
 
 \subsection{Description de la vue}
 
