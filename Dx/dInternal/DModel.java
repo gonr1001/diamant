@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.90 $  $Date: 2004-04-15 21:40:33 $
+ * Title: DModel $Revision: 1.91 $  $Date: 2004-04-16 16:54:13 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.90 $
+ * @version $Revision: 1.91 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -340,13 +340,20 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public String SelectiveImportData(String fileName, String selectionName) {
     String error="";
     LoadData loadData = new LoadData();
-    if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_INST)){
+    if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_INST)){//Importation selective -- Enseignants
       _setOfInstructors= (SetOfInstructors) loadData.selectiveImport(_setOfInstructors,fileName,true);
-      _setOfStates.sendEvent();
-      //System.out.println("Importation selective -- instructeur");//debug
-    }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)){
+      _setOfInstructors.sendEvent(_dDocument.getJIF());
+    }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)){//Importation selective -- Locaux
       _setOfRooms= (SetOfRooms) loadData.selectiveImport(_setOfRooms,fileName,true);
-      _setOfStates.sendEvent();
+      _setOfRooms.sendEvent(_dDocument.getJIF());
+    }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)){//Importation selective -- Activité
+      _setOfActivities= (SetOfActivities) loadData.selectiveImport(_setOfActivities,fileName,true);
+      _conditionTest.setMatrixBuilded(false);
+      _setOfActivities.sendEvent(_dDocument.getJIF());
+    }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)){//Importation selective -- Étudiants
+      _setOfStudents= (SetOfStudents) loadData.selectiveImport(_setOfStudents,fileName,true);
+      _conditionTest.setMatrixBuilded(false);
+      _setOfStudents.sendEvent(_dDocument.getJIF());
     }
 
     return error;

@@ -222,16 +222,17 @@ public class LoadData {
     String str= setOfResc.getClass().getName();
     int beginPosition=0;
      byte[]  dataloaded = preLoad(file);
-    SetOfResources currentsetOfResc= new SetOfResources(setOfResc.getResourceType());
+    //SetOfResources currentsetOfResc= new SetOfResources(setOfResc.getResourceType());
     if (str.equalsIgnoreCase("dInternal.dData.SetOfInstructors")){
-      currentsetOfResc = new SetOfInstructors(dataloaded,5,14);
       // implement selective import for instructors
+      ((SetOfInstructors)setOfResc).setDataToLoad(dataloaded,5,14);
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfRooms")){
-      currentsetOfResc = new SetOfRooms(dataloaded,5,14);
       // implement selective import for rooms
+      ((SetOfRooms)setOfResc).setDataToLoad(dataloaded,5,14);
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfActivities")){
-      beginPosition=1;
       // implement selective import for activities
+      beginPosition=1;
+      ((SetOfActivities)setOfResc).setDataToLoad(dataloaded,false);
     } else if (str.equalsIgnoreCase("dInternal.dData.SetOfStudents")){
       // implement selective import for students
     } else {// (NullPointerException npe) {
@@ -239,16 +240,11 @@ public class LoadData {
     }
 
     if (dataloaded != null) {
-      if (merge && (setOfResc!=null)){
-          currentsetOfResc.setSetOfResources(setOfResc.getSetOfResources());
-          currentsetOfResc.setCurrentKey((long)setOfResc.size()+1);
-      }
-
-      if (currentsetOfResc.analyseTokens(beginPosition)){
-        currentsetOfResc.buildSetOfResources(beginPosition);
-        return currentsetOfResc;
+      if (setOfResc.analyseTokens(beginPosition)){
+        setOfResc.buildSetOfResources(beginPosition);
+        //return currentsetOfResc;
       }else{
-        new FatalProblemDlg(currentsetOfResc.getError());
+        new FatalProblemDlg(setOfResc.getError());
       }
     } else {// (NullPointerException npe) {
       new FatalProblemDlg("I was in LoadData class and extractInstructors. preload failed!!!" );

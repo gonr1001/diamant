@@ -55,7 +55,7 @@ public class ImportSelectiveFileDlg extends JDialog {
          dApplic.getDMediator().getCurrentDoc().getDM().SelectiveImportData(fil, str);
        }
        else
-         new FatalProblemDlg(dApplic.getJFrame(), "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données");
+         new FatalProblemDlg(dApplic.getJFrame(), "ImportSelectiveFileDlg : Il n'existe pas de document pour effectuer l'importation des données");
 
      }
    }// end method

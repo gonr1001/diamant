@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.8 $  $Date: 2004-02-17 22:56:52 $
+ * Title: SectionModifDlg $Revision: 1.9 $  $Date: 2004-04-16 16:54:13 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -63,6 +63,7 @@ private DApplication _dApplic;
     Vector [] vect= new Vector[1];
     vect[0]= ((Type)_type.getAttach()).getSetOfSections().getNamesVector(1);
     setVectorsOfElements(vect);
+    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false);
     _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
   }
 

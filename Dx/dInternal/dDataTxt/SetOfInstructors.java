@@ -35,6 +35,17 @@ public class SetOfInstructors extends SetOfResources{
    _numberOfColumns = nbPerDay;
 
   }
+
+  /**
+   *
+   * @param dataloaded
+   */
+  public void setDataToLoad(byte[]  dataloaded, int nbDay, int nbPerDay){
+    _dataloaded = dataloaded;
+    _numberOfLines = nbDay;
+   _numberOfColumns = nbPerDay;
+  }
+
   /**
    * methode analyse st, a stringtokenizer variable
    * INPUT:

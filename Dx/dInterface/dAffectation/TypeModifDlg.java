@@ -84,6 +84,7 @@ private DApplication _dApplic;
       if(activity.getSetOfTypes().size()>1){
         activity.getSetOfTypes().removeResource("2");
         init();
+        _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false);
         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       }
     }

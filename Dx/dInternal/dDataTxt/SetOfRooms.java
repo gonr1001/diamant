@@ -35,6 +35,16 @@ public class SetOfRooms extends SetOfResources{
    _numberOfColumns = nbPerDay;
   }
 
+  /**
+   *
+   * @param dataloaded
+   */
+  public void setDataToLoad(byte[]  dataloaded, int nbDay, int nbPerDay){
+    _dataloaded = dataloaded;
+    _numberOfLines = nbDay;
+    _numberOfColumns = nbPerDay;
+  }
+
   /***
    * */
   public boolean analyseTokens(int beginPosition){

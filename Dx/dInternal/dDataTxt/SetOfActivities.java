@@ -38,6 +38,15 @@ public class SetOfActivities extends SetOfResources{
     _open= open;
   }
 
+  /**
+   *
+   * @param dataloaded
+   */
+  public void setDataToLoad(byte[]  dataloaded, boolean open){
+    _dataloaded = dataloaded;
+    _open= open;
+  }
+
 
   /**
    * analyse activities data by a finished states machine
@@ -573,6 +582,8 @@ public class SetOfActivities extends SetOfResources{
    * @param sos
    */
   public void buildStudentRegisteredList(SetOfStudents sos){
+    for(int i=0; i< size(); i++)
+      ((Activity)getResourceAt(i).getAttach()).getStudentRegistered().removeAllElements();
     for (int i=0; i< sos.size(); i++){
       SetOfResources courses= ((StudentAttach)sos.getResourceAt(i).getAttach()).getCoursesList();
       for (int j=0; j< courses.size(); j++){

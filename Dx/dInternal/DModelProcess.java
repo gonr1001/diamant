@@ -77,11 +77,12 @@ public class DModelProcess {
   */
  public void buildSetOfEvents(){
    _dm._setOfEvents.getSetOfResources().removeAllElements();
-   if (DModel._setOfActivities != null){
+   _dm._setOfEvents.setCurrentKey(1);
+   if (_dm._setOfActivities != null){
      _dm._setOfEvents.build();
      //updateEventsInTTS();
-     if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
-       DModel._setOfActivities.buildStudentRegisteredList(DModel._setOfStudents);
+     if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
+       _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
      //_dm._conditionTest = new TestConditions(_dm);
    }// end if (_setOfActivities!=null)
 

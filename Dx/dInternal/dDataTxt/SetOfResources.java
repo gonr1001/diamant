@@ -43,6 +43,14 @@ public class SetOfResources extends DXObject{
   }
 
   /**
+   *
+   * @param dataloaded
+   */
+  public void setDataToLoad(byte[]  dataloaded){
+    //_dataloaded = dataloaded;
+  }
+
+  /**
    * methode analyse st, a stringtokenizer variable
    * @param
    * @return <{Vector}>

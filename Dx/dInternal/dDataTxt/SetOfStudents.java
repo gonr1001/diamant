@@ -44,6 +44,14 @@ public class SetOfStudents extends SetOfResources{
   }
 
   /**
+   *
+   * @param dataloaded
+   */
+  public void setDataToLoad(byte[]  dataloaded){
+    _dataloaded = dataloaded;
+  }
+
+  /**
    * Analyse student data coming from a file (_dataloaded) by a finite-state machine.
    * For a timetable with students
    * @param beginPosition
