@@ -36,21 +36,26 @@ public class Sequence extends DXObject{
   }
 
   /**
-    *
-    * */
+    *read a xml tag containing a set of periods and build the resource
+    * @param Element the root xml tag of the set of periods
+   * */
    public void readXMLtag(Element setofPers){
      ReadXMLElement list= new ReadXMLElement();
-      Period period = new Period();
       int size= list.getSize(setofPers,_TAGITEM);
-      System.out.println(" Periods Size: "+size);//debug
+      //System.out.println(" Periods Size: "+size);//debug
       for (int i=0; i< size; i++){
+        Period period = new Period();
         Element per= list.getElement(setofPers,_TAGITEM,i);
+        String periodID= list.getElementValue(per,_TAGITEM1);
         period.readXMLtag(per);
-        _setOfPeriods.addResource(new Resource(Integer.toString(i),period),0);
+        _setOfPeriods.addResource(new Resource(periodID,period),0);
       }// end for (int i=0; i< size; i++)
    }
 
-    /**
+   /**
+     * Contruct a xml element from the set of periods
+     * @param Document the root xml document
+     * @Element the xml tag of the set of periods
    * */
    public Element writeXMLtag(Document doc){
     BuildXMLElement xmlElt;
@@ -59,6 +64,8 @@ public class Sequence extends DXObject{
       Element eltPers= xmlElt.createElement(doc,Day._TAGITEM2);
       for (int i=0; i<_setOfPeriods.size(); i++){
         Element period= ((Period)_setOfPeriods.getResourceAt(i).getAttach()).writeXMLtag(doc);
+        Element periodID=  xmlElt.createElement(doc, _TAGITEM1, _setOfPeriods.getResourceAt(i).getID());
+        period= xmlElt.appendChildInElement(period, periodID);
         eltPers= xmlElt.appendChildInElement(eltPers, period);
       }
       return eltPers;
@@ -71,5 +78,6 @@ public class Sequence extends DXObject{
 
    private SetOfResources _setOfPeriods;
    static final String _TAGITEM="TTperiod";
+   static final String _TAGITEM1="periodID";
 
 }

@@ -88,8 +88,9 @@ public class Period extends DXObject {
   }
 
   /**
-    *
-    * */
+    *read a xml tag containing a period and build the resource
+    * @param Element the root xml tag of a period
+   * */
      public void readXMLtag(Element setPeriod){
         ReadXMLElement list= new ReadXMLElement();
         Period period = new Period();
@@ -101,10 +102,13 @@ public class Period extends DXObject {
          _beginHour[0]= Integer.parseInt(time.nextToken());
          _beginHour[1]= Integer.parseInt(time.nextToken());
          _priority= Integer.parseInt(prior);
-         System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
+         //System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
      }
 
-  /**
+     /**
+       * Contruct a xml element from this period
+       * @param Document the root xml document
+       * @Element the xml tag of this period
    * */
    public Element writeXMLtag(Document doc){
     BuildXMLElement xmlElt;
@@ -128,8 +132,8 @@ public class Period extends DXObject {
   private int nbRoomConflict= 0;
   private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
   private int _priority;// 0= normal; 1= low; 2= null
-  private static final String  _TAGITEM="BeginTime";
-  private static final String _TAGITEM1="EndTime";
-  private static final String _TAGITEM2="priority";
+  static final String  _TAGITEM="BeginTime";
+  static final String _TAGITEM1="EndTime";
+  static final String _TAGITEM2="priority";
 
 }

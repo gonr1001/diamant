@@ -36,25 +36,29 @@ public class Day extends DXObject{
   }
 
   /**
-    *
-    * */
+    *read a xml tag containing a set of sequences and build the resource
+    * @param Element the root xml tag of the set of sequences
+   * */
    public void readXMLtag(Element setofSeqs){
      ReadXMLElement list= new ReadXMLElement();
-      Sequence setOfPeriods = new Sequence();
       String ID="";
       int size= list.getSize(setofSeqs,_TAGITEM);
-      System.out.println(" Sequnces Size: "+size);//debug
+      //System.out.println(" Sequnces Size: "+size);//debug
       for (int i=0; i< size; i++){
+        Sequence setOfPeriods = new Sequence();
         Element sequence= list.getElement(setofSeqs,_TAGITEM,i);
         ID= list.getElementValue(sequence,_TAGITEM1);
-        System.out.println(" Sequences ID: "+ID);//debug
+        //System.out.println(" Sequences ID: "+ID);//debug
         Element periods= list.getElement(sequence,_TAGITEM2,0);
         setOfPeriods.readXMLtag(periods);
         _setOfSequences.addResource(new Resource(ID,setOfPeriods),0);
       }// end for (int i=0; i< size; i++)
    }
 
-      /**
+   /**
+     * Contruct a xml element from the set of sequences
+     * @param Document the root xml document
+     * @Element the xml tag of the set of sequences
    * */
    public Element writeXMLtag(Document doc){
     BuildXMLElement xmlElt;

@@ -1,6 +1,7 @@
 package dInternal.dTimeTable;
 
 import dInternal.dData.SetOfResources;
+import dInternal.dData.Resource;
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;
@@ -17,21 +18,31 @@ public class TTStructure {
   //DXTimeTable tag
   static final String ITEM2= "DXTimeTable";
   //subtag
-  public static final String [] ITEM2_subTag={"TTcycle","TTdays","TTday",
+  private final String [] ITEM2_subTag={"TTcycle","TTdays","TTday",
     "TTsequences","TTsequence","TTperiods","TTperiod"};
-  public static final String [] ITEM2_subConst={"cycleID","pLength","dayID",
-    "sequenceID","priority","BeginTime","EndTime"};
+  private final String [] ITEM2_subConst={"cycleID","pLength","dayRef",
+    "sequenceID","priority","BeginTime","EndTime","periodID","dayID"};
+
+  private final String [] _weekTable = {"Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"};
 
   private String _str;
   private int _col;
   private int _row;
+  private int _numberOfActivesDays=5;// monday to friday
 
   public TTStructure() {
     _setOfCycles= new SetOfCycles();
     _col=6;
     _row= 15;
-    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
     loadTTStructure("StandardTTC.xml");
+
+    /*Resource cycle=_setOfCycles.getSetOfCycles().getResource("1");
+    Resource day= ((Cycle)cycle.getAttach()).getSetOfDays().getResource("2");
+    Resource sequence= ((Day)day.getAttach()).getSetOfSequences().getResource("PM");
+    Period period= (Period)((Sequence)sequence.getAttach()).getSetOfPeriods().getResource("2").getAttach();
+    period.setBeginHour(23,0);*/
+
     saveTTStructure("test.xml");
 
   }
@@ -51,9 +62,6 @@ public class TTStructure {
  public void setSetOfResources(SetOfResources setOfCycles) {
  }
 
-public Period getPeriod(){
-  return new Period();
-}
 
  public String toWrite() {
     return "";
@@ -89,6 +97,53 @@ public Period getPeriod(){
     return new String("");
   }
 
+
+
+  /**
+  * get a cycle
+  * @param int the cycle reference number
+  * @return Cycle the cycle or null if the cycle does not found
+  * */
+ public Cycle getCycle(int cycleRefNo ){
+   return (Cycle)_setOfCycles.getSetOfCycles().getResource(
+       Integer.toString(cycleRefNo)).getAttach();
+ }
+
+ /**
+   * get a day in a cycle
+   * @param Cycle the cycle where we want to find a day
+   * @param int the day reference number
+   * @return Day the day or null if the day does not found
+   * */
+  public Day getDay(Cycle cycle, int dayRefNo ){
+    return (Day)cycle.getSetOfDays().getResource(
+        Integer.toString(dayRefNo)).getAttach();
+  }
+
+  /**
+   * get a sequence in a day
+   * @param Day the day where we want to find a sequence
+   * @param String the sequence ID (AM, PM, EM)
+   * @return Sequence the sequence or null if the sequence does not found
+   * */
+  public Sequence getSequence(Day day, String seqID ){
+    return (Sequence)day.getSetOfSequences().getResource(seqID).getAttach();
+  }
+
+  /**
+   * get a period
+   * @param Sequence the sequence where we want to find a period
+   * @param int the period reference number in  the sequence
+   * @return Period the period or null if period does not found
+   * */
+  public Period getPeriod(Sequence seq, int periodRefNo ){
+    return (Period)seq.getSetOfPeriods().getResource(
+        Integer.toString(periodRefNo)).getAttach();
+  }
+
+
+
+
   /**
    * Create a sequence of periods
    * @param Document the xml document where we are working
@@ -118,7 +173,9 @@ public Period getPeriod(){
         time= hour1+":"+mn1;
         Element child01=xmlElt.createElement(doc,ITEM2_subConst[6],time);
         Element child1=xmlElt.createElement(doc,ITEM2_subConst[4],Integer.toString(priority));
+        Element child2=xmlElt.createElement(doc,ITEM2_subConst[7],Integer.toString(i+1));//
         Element eltPer= xmlElt.createElement(doc,ITEM2_subTag[6]);
+        eltPer= xmlElt.appendChildInElement(eltPer, child2);
         eltPer= xmlElt.appendChildInElement(eltPer, child0);
         eltPer= xmlElt.appendChildInElement(eltPer, child01);
         eltPer= xmlElt.appendChildInElement(eltPer, child1);
@@ -176,7 +233,10 @@ public Period getPeriod(){
           // add sequences in a day
           eltDay= wr.appendChildInElement(eltDay,eltSeqs);
           Element childDay=wr.createElement(doc,ITEM2_subConst[2],Integer.toString(day+1));
+          String dayID= _weekTable[day%_numberOfActivesDays];
+          Element childDayID=wr.createElement(doc,ITEM2_subConst[8],dayID);
           eltDay= wr.appendChildInElement(eltDay,childDay);
+          eltDay= wr.appendChildInElement(eltDay,childDayID);
           //eltDays= wr.appendChildInElement(eltDays, childDay);
           eltDays= wr.appendChildInElement(eltDays, eltDay);
         }// end for (day)
@@ -199,6 +259,9 @@ public Period getPeriod(){
   }// end of CreateStandardTT method
 
   /**
+   * it load the time table structure
+   * @param String the xml file containing the timetable structure
+   * @return String the error message, empty if it does not found error
    * */
   public String loadTTStructure(String fileName){
     readFile xmlFile;
@@ -218,9 +281,11 @@ public Period getPeriod(){
   }
 
   /**
-   *
+   * it save the time table structure
+   * @param String the xml file where the timetable structure must be saved
+   * @return String the error message, empty if it does not found error
    * */
-   public boolean saveTTStructure(String fileName){
+   public String saveTTStructure(String fileName){
     BuildXMLElement wr;
     try{
       wr= new BuildXMLElement();
@@ -229,10 +294,9 @@ public Period getPeriod(){
       // create document and write in the file
       doc= wr.buildDOM(doc,ttStruc);
       writeFile.write(doc,fileName);
-      return true;
+      return "";
     } catch(Exception e){
-      System.out.println("TTStructure: "+e);//debug
-      return false;
+      return e.toString();//debug
     }
 
    }

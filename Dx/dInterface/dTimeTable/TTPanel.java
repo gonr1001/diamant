@@ -110,7 +110,7 @@ public class TTPanel extends JScrollPane {
     int count = 0;
     for (int i = 0; i < _dm.getTTStructure().rgetColumn() ; i++ ) {
       for(int j = 0; j < _dm.getTTStructure().rgetRow(); j ++) {
-        Period period = _dm.getTTStructure().getPeriod();
+        Period period = new Period();//= _dm.getTTStructure().getPeriod();
        //  Period per = _dm.getTTStructure().getPeriod(i,j);
         //if (per != null)//debug
         //  System.out.println("DTTPanel period :"+ i);//debug

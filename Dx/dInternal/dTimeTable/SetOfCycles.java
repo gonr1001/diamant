@@ -11,6 +11,9 @@ import org.w3c.dom.Document;
 
 public class SetOfCycles {
 
+  /**
+   * Constructor
+   * */
   public SetOfCycles() {
     _setOfCycles = new SetOfResources(4);
   }
@@ -32,19 +35,21 @@ public class SetOfCycles {
   }
 
   /**
-   *
+   *read a xml tag containing a set of cycle and build the resource
+   * @param Element the root xml tag of the set of cycle
    * */
   public void readXMLtag(Element setofCycles){
     ReadXMLElement list= new ReadXMLElement();
-    Cycle setOfdays = new Cycle();
+
     String ID="";
     int size= list.getSize(setofCycles,_TAGITEM);
-    System.out.println(" Cycles Size: "+size);//debug
+    //System.out.println(" Cycles Size: "+size);//debug
     for (int i=0; i< size; i++){
+      Cycle setOfdays = new Cycle();
       Element cycle= list.getElement(setofCycles,_TAGITEM,i);
       ID= list.getElementValue(cycle,_TAGITEM1);
       _periodLenght= Integer.parseInt(list.getElementValue(cycle,_TAGITEM2));
-      System.out.println(" Cycle ID: "+ID+" PeriodLenght: "+_periodLenght);//debug
+      //System.out.println(" Cycle ID: "+ID+" PeriodLenght: "+_periodLenght);//debug
       Element days= list.getElement(cycle,_TAGITEM3,0);
       setOfdays.readXMLtag(days);
       _setOfCycles.addResource(new Resource(ID,setOfdays),0);
@@ -53,6 +58,9 @@ public class SetOfCycles {
   }
 
   /**
+   * Contruct a xml element from the set of cycles
+   * @param Document the root xml document
+   * @Element the xml tag of the set of cycles
    * */
    public Element writeXMLtag(Document doc){
     BuildXMLElement xmlElt;

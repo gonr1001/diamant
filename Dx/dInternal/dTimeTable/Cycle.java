@@ -19,7 +19,7 @@ public class Cycle extends DXObject{
      * get the set of days
      * @return SetOfResources the set of days
      * */
-    public SetOfResources getSetOfSequences(){
+    public SetOfResources getSetOfDays(){
       return _setOfDays;
     }
 
@@ -27,23 +27,24 @@ public class Cycle extends DXObject{
      * set the set of days
      * @param SetOfResources the set of days
      * */
-    public void setSetOfSequences(SetOfResources setOfDays){
+    public void setSetOfDays(SetOfResources setOfDays){
       _setOfDays= setOfDays;
     }
 
     /**
-     *
-     * */
+    *read a xml tag containing a set of days and build the resource
+    * @param Element the root xml tag of the set of days
+   * */
     public void readXMLtag(Element setofDays){
       ReadXMLElement list= new ReadXMLElement();
-      Day setOfSequences = new Day();
       String ID="";
       int size= list.getSize(setofDays,_TAGITEM);
-      System.out.println(" Days Size: "+size);//debug
+      //System.out.println(" Days Size: "+size);//debug
       for (int i=0; i< size; i++){
+        Day setOfSequences = new Day();
         Element day= list.getElement(setofDays,_TAGITEM,i);
         ID= list.getElementValue(day,_TAGITEM1);
-        System.out.println(" Day ID: "+ID);//debug
+        //System.out.println(" Day ID: "+ID);//debug
         Element sequences= list.getElement(day,_TAGITEM2,0);
         setOfSequences.readXMLtag(sequences);
         _setOfDays.addResource(new Resource(ID,setOfSequences),0);
@@ -51,7 +52,10 @@ public class Cycle extends DXObject{
 
     }
 
-   /**
+    /**
+    * Contruct a xml element from the set of days
+    * @param Document the root xml document
+    * @Element the xml tag of the set of days
    * */
    public Element writeXMLtag(Document doc){
     BuildXMLElement xmlElt;
@@ -76,6 +80,7 @@ public class Cycle extends DXObject{
   private SetOfResources _setOfDays;
   private int _periodLength;
   static final String _TAGITEM="TTday";
-  static final String _TAGITEM1="dayID";
+  static final String _TAGITEM1="dayRef";
   static final String _TAGITEM2="TTsequences";
+  static final String _TAGITEM4="dayID";
 }
