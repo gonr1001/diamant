@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: miniDiaTest $Revision: 1.10 $  $Date: 2003-05-09 14:28:46 $
+ * Title: miniDiaTest $Revision: 1.11 $  $Date: 2003-05-12 08:58:27 $
  * Description: miniDiaTest is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -13,11 +13,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.11 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 //------------------------------
+
 /* Attention this file must be used with the terminal application
  * to execute you must type
  * java junit.swingui.TestRunner miniDiaTest

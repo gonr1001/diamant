@@ -50,8 +50,12 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <file path="dInterface/DefFilesToImportCmd.java"/>
+  <file path="dInterface/DefFilesToImportDlg.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
+  <file path="dInterface/ImportCmd.java"/>
+  <file path="dInterface/ImportDlg.java"/>
   <file path="Proto.html"/>
 </project>
