@@ -7,4 +7,4 @@ D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
 éÉèÈàÀÇçëËïÏÔôÙù-'()Êê
 selectedOptionsInFullReport;JNum;Jour;Nomb É;Acti;Nat;Blc;Grp;Durée;Début;Enseignant;Local;Fin;
 selectedOptionsInConflictReport;Conflits;JNum;Jour;PérJour;Début;Type Conf;Événement 1;Événement 2;Numb C;
-conflictLimits;0;2;0;0;15;2;
+conflictLimits;0;2;0;1;15;2;
