@@ -1,6 +1,31 @@
 \chapter{Description de la structure de données de \diamant{}}
 
-Le noeud principal de la structure de données de \diamant{} est représenté par la classe \emph{LoadData} (voir figure \ref{datastruct}). Cette classe contient la liste des différentes ressources, à savoir:
+
+Chaque fichier contient une liste d'éléments qui constitue les
+ressources dont le logiciel a besoin pour fonctionner. Ces
+ressources sont classifiées dans 4 catégories:
+\begin{enumerate}
+    \item Locaux.
+    \item Instructeurs.
+    \item Étudiants.
+    \item Activités.
+\end{enumerate}
+
+Pour stocker l'information contenue dans chaque fichier, nous
+avons développé pour la version 1.5 de \diamant{} la structure de
+données \emph{Resource} (pour plus de détails se reporter à la
+section 1.1). Cette structure de données contient les informations
+d'un élément d'une ressource donnée (locaux, instructeurs,
+étudiants ou activités).
+
+Le présent document contient les exemples, les interprétations et
+l'énumération des différentes informations requises par \diamant{}
+pour la construction de l'horaire.
+
+ Le noeud principal de la
+structure de données de \diamant{} est représenté par la classe
+\emph{LoadData} (voir figure \ref{datastruct}). Cette classe
+contient la liste des différentes ressources, à savoir:
 
 \begin{itemize}
     \item \emph{StudentsList} (voir figure \ref{datastruct}): elle représente la structure de données contenant la liste des étudiants.\\
