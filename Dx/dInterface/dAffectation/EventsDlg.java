@@ -93,7 +93,7 @@ public class EventsDlg extends EventsDlgInterface{
  *
  */
  protected void doubleClicMouseProcess(){
-   new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], false);
+   new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this, false);
  } // end doubleClicMouseProcess
 
 

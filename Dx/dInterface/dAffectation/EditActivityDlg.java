@@ -60,6 +60,22 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   } // end EditActivityDlg
 
   /**
+   * Constructor
+   * @param activityDialog The parent dialog of this dialog
+   * @param dApplic The application
+   * @param currentActivity The ativiti choiced in the activityDialog
+   */
+  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg, boolean isModified) {
+    super(dialog, "Affectation xxx");
+    setLocationRelativeTo(dialog);
+    _dApplic = dApplic;
+    _evDlgInt= evDlg;
+    _isModified= isModified;
+    _unities = buildUnitiesVector(currentActivity);
+    init();
+
+  }
+  /**
    * Initialize the dialog
    */
   private void init(){
@@ -97,7 +113,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     String command = e.getActionCommand();
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
-    } else if (command.equals( DConst.BUT_APPLY )) {  // apply
+    } else if (command.equals(DConst.BUT_APPLY )) {  // apply
       boolean apply=false;
       for(int i=0; i< this._unities.size(); i++){
         _currentActivityIndex=i;
@@ -107,7 +123,14 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
           break;
         } else
           _buttonsPanel.setFirstDisable();
+      } // end for
+      if(apply){
+        _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        if(_evDlgInt!=null)
+          _evDlgInt.initializePanel();
+        //dispose();
       }
+
     } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
               || command.equals(DConst.BUT_FIGE)){// comboBox has changed
       //System.out.println("Enable appliquer ... ");
