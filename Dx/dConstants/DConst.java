@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.68 $  $Date: 2003-10-23 13:05:22 $
+ * Title: DConst $Revision: 1.69 $  $Date: 2003-10-23 18:45:39 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.68 $
+ * @version $Revision: 1.69 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -80,7 +80,7 @@ public class DConst {
 
   public final static int STUDENT_ID_LENGTH=9;
   public final static int STUDENT_KEY_LENGTH=8;
-  public final static int STUDENT_PROGRAM_LENGTH=8;
+  public final static int STUDENT_PROGRAM_LENGTH=6;
 
   // Color constants
   public final static Color COLOR_BLACK = Color.black; // Default color
@@ -201,6 +201,7 @@ public class DConst {
   public final static String TYPE = res.getString("Type");//Type
   public final static String SORT_BY_MATRICUL = res.getString("SortByMatricul");//par matricule
   public final static String SORT_BY_NAME = res.getString("SortByName");//par nom
+  public final static String SORT_BY_PROGRAM = res.getString("SortByProgram");//par programme
   public final static String CHAR_FIXED_IN_GROUP = " *";
   //EventsDlg
   public final static String EVENTS_DLG_TITLE = res.getString("EventsDlgTitle");//Évenements

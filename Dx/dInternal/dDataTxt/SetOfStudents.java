@@ -270,9 +270,8 @@ public class SetOfStudents extends SetOfResources{
   public Vector getStudentsByGroup(String activityID, String typeID, int group){
     int IDLength = DConst.STUDENT_ID_LENGTH;
     int keyLength = DConst.STUDENT_KEY_LENGTH;
-    int studentProgramLength = DConst.STUDENT_PROGRAM_LENGTH;
     int diff;
-    String ID, key, studentProgram;
+    String ID, key;
     Resource studentRes;
     Vector list= new Vector();
     for(int i=0; i< size(); i++){
@@ -288,8 +287,6 @@ public class SetOfStudents extends SetOfResources{
         for(int j = 0; j < diff; j++){
           key = "0"+ key;
         }
-        //studentProgram = this.getResource(ID).getAttach().externalKey(key, ID);
-        //System.out.println("studentProgram " + studentProgram);
         list.add(ID + " " + key);
         //list.add(studentRes.getID());
       }//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
@@ -310,17 +307,20 @@ public class SetOfStudents extends SetOfResources{
   public Vector getStudentsByGroup(String activityID, String typeID, int group, int order){
     int IDLength = DConst.STUDENT_ID_LENGTH;
     int keyLength = DConst.STUDENT_KEY_LENGTH;
+    int studentProgramLength = DConst.STUDENT_PROGRAM_LENGTH;
     int diff;
-    String ID, key, str = null;
+    String ID, key, studentProgram, str = null;
     Resource studentRes;
     Vector list= new Vector();
     if (order == 0)
       sortSetOfResourcesByID();
     if (order == 1)
       sortSetOfResourcesByKey();
+    if (order == 2)
+      sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
     for(int i=0; i < size(); i++){
       studentRes = getResourceAt(i);
-      if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
+      if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID + typeID, group)){
         ID = studentRes.getID();
         diff = Math.abs(IDLength - ID.length());
         for(int j = 0; j < diff; j++)
@@ -329,10 +329,15 @@ public class SetOfStudents extends SetOfResources{
         diff = Math.abs(keyLength - key.length());
         for(int j = 0; j < diff; j++)
           key = "0"+ key;
+        studentProgram = ((StudentAttach)studentRes.getAttach()).getAuxField();
+        studentProgram = studentProgram.substring(0, 6);
+        //System.out.println("studentProgram " + studentProgram);
         if (order == 0)
-          str = ID + " " + key;
+          str = ID + " " + key + " " + studentProgram;
         if (order == 1)
-          str = key + " " + ID;
+          str = key + " " + ID + " " + studentProgram;
+        if (order == 2)
+          str = studentProgram + " " + ID + " " + key;
         if(((StudentAttach)studentRes.getAttach()).isFixedInGroup(activityID+typeID,group))
           str = str + DConst.CHAR_FIXED_IN_GROUP;
         list.add(str);

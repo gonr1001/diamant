@@ -156,7 +156,7 @@ public class RoomAttach extends DXObject{
    * INPUT: choice, an integer. choice = 0 return _capacity
    * OUTPUT: an integer. it return -1 if choice is invalid
    * */
-  public int getSelectedField(int choice){
+  public long getSelectedField(int choice){
     switch(choice){
       case 0: return _capacity;
     }

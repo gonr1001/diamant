@@ -96,7 +96,7 @@ public class InstructorAttach extends DXObject {
    * INPUT: choice, an integer. choice =
    * OUTPUT: an integer. it return -1 if choice is invalid
    * */
-  public int getSelectedField(int choice){
+  public long getSelectedField(int choice){
     switch(choice){
       case 0: break;
     }

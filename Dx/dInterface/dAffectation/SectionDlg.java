@@ -127,12 +127,12 @@ public class SectionDlg extends JDialog implements ActionListener{
     setCurrents();
     //panel of sort
     _sortButton = new JButton(DConst.SORT_BY_MATRICUL);
-    _sortButton.setPreferredSize(new Dimension(120, 25));
+    _sortButton.setPreferredSize(new Dimension(140, 25));
     _sortButton.addActionListener(this);
     sortPanel = new JPanel();
     sortPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.SORT_TITLE));
     sortPanel.add(_sortButton);
-    sortPanel.setPreferredSize(new Dimension(135,52));
+    sortPanel.setPreferredSize(new Dimension(150,52));
     //adding the panels to topPanel
     JPanel topPanel = new JPanel();
     topPanel.setPreferredSize(new Dimension(400,70));
@@ -287,9 +287,13 @@ public class SectionDlg extends JDialog implements ActionListener{
     if (e.getSource().equals(_sortButton)){
       if (_sortIndex == 0){
         _sortIndex = 1;
+        _sortButton.setText(DConst.SORT_BY_PROGRAM);
+      }
+      else if (_sortIndex == 1){
+        _sortIndex = 2;
         _sortButton.setText(DConst.SORT_BY_NAME);
       }
-      else{
+      else if (_sortIndex == 2){
         _sortIndex = 0;
         _sortButton.setText(DConst.SORT_BY_MATRICUL);
       }
@@ -436,6 +440,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     }
     for(int i = 0; i < _numberOfSections; i++){
       _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, i+1, _sortIndex);
+      System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
       if (!forUpdate){
         _assignedLists[i] = new JList(_assignedVectors[i]);
         _assignedLists[i].setFont(DConst.JLISTS_FONT);
@@ -453,24 +458,33 @@ public class SectionDlg extends JDialog implements ActionListener{
   private void setStudentsInGroups(){
     StudentAttach s;
     String studentData;
-    String studentID = "";
     for(int i = 0; i < _notAssignedVector.size(); i++){
       studentData = (String)_notAssignedVector.elementAt(i);
+      /*
       if (_sortIndex == 0)
         studentID = studentData.substring(0,DConst.STUDENT_ID_LENGTH).trim();
       if (_sortIndex == 1)
         studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
+      if (_sortIndex == 2)
+        studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
       s = (StudentAttach)_students.getResource(studentID).getAttach();
+      */
+      s = getStudentAttach(studentData, _sortIndex);
       s.setInGroup(_actID+_typeID, -1, false);
     }//end for(int i = 0; i < _notAssignedVector.size(); i++)
     for(int j = 0; j < _assignedVectors.length; j++){
       for(int k = 0; k < _assignedVectors[j].size(); k++){
         studentData = (String)_assignedVectors[j].elementAt(k);
+        /*
         if (_sortIndex == 0)
           studentID = studentData.substring(0,DConst.STUDENT_ID_LENGTH).trim();
         if (_sortIndex == 1)
-        studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
+          studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
+        if (_sortIndex == 2)
+          studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
         s = (StudentAttach)_students.getResource(studentID).getAttach();
+        */
+        s = getStudentAttach(studentData, _sortIndex);
         if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
           s.setInGroup(_actID+_typeID, j+1, true);
         else
@@ -553,5 +567,25 @@ public class SectionDlg extends JDialog implements ActionListener{
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
     }//end for
+  }//end method
+
+
+  /**
+   * Build StudentAttach of a String containing some information whom the student ID
+   * @param studentData the information containig the studentID and other informations
+   * @param sortIndex An index indicating the place of the StudentId
+   * @return the StudentAttach according ti the ID found
+   */
+  private StudentAttach getStudentAttach(String studentData, int sortIndex){
+    StudentAttach s;
+    String studentID = null;
+    if (_sortIndex == 0)
+      studentID = studentData.substring(0,DConst.STUDENT_ID_LENGTH).trim();
+    if (_sortIndex == 1)
+      studentID = studentData.substring(DConst.STUDENT_KEY_LENGTH+1, DConst.STUDENT_KEY_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
+    if (_sortIndex == 2)
+      studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+1+DConst.STUDENT_ID_LENGTH).trim();
+    s = (StudentAttach)_students.getResource(studentID).getAttach();
+    return s;
   }//end method
 }//end class

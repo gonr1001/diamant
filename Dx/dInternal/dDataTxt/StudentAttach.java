@@ -26,6 +26,8 @@ public class StudentAttach extends DXObject{
   * _session -> 1
   * _stage -> 2
   * _area -> 3
+  * _courses.size() -> 4
+  * _auxField -> 5
   */
 
   /** 1= Male; 0=Female*/
@@ -61,6 +63,10 @@ public class StudentAttach extends DXObject{
    * */
   public void setSex(int sex){
     _sex= sex;
+  }
+
+  public String getAuxField(){
+    return _auxField;
   }
 
   /**
@@ -218,20 +224,24 @@ public class StudentAttach extends DXObject{
    * 2 return _sex; 3 return _session; 4 return number of courses
    * OUTPUT: an integer. it return -1 if choice is invalid
    * */
-  public int getSelectedField(int choice){
+  public long getSelectedField(int choice){
     switch(choice){
       case 0: return _area;
       case 1: return _stage;
       case 2: return _sex;
       case 3: return _session;
       case 4: return _courses.size();
+      case 5: return Long.parseLong(_auxField);
     }
     return -1;
   }
 
   /**
-   *
-   * */
+   * Builds the student external key
+   * @param str the key of the resource
+   * @param id the id of the resource
+   * @return
+   */
   public String externalKey(String str, String id){
     String temp="0000000"+ str;
     temp= temp.substring(temp.length()-8,temp.length());
