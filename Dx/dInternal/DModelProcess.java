@@ -33,7 +33,7 @@ public class DModelProcess {
   *
   */
  public void updateEventsInTTS(){
-   _dm._conditionTest = new ConditionsTest(_dm);
+   //_dm._conditionTest = new ConditionsTest(_dm);
    _dm.getConditionsTest().buildAllConditions();
    /*for (int i=0; i< _dm._setOfEvents.size(); i++){
      EventAttach event = (EventAttach)_dm._setOfEvents.getResourceAt(i).getAttach();
