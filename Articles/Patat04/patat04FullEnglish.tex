@@ -107,19 +107,18 @@ to more easily work with the two problems mentioned, by reducing
 the cost of the modifications and by carrying out the checking and
 the validation of the data in precise stages of the process and by
 avoiding the redundancy of the code and the data. This
-architecture implements a database, an Internet site and a
-software of timetable construction. The checking and the
-validation of data will be made with the input and with integrity
-constraints in the database. The Internet site is used mainly for
-the data input, at the same time, it can check the validity of the
-data, using the business rules before the data will be entered to
-the database. Another function of the Internet site is to offer
-the timetable in a personalized way, once that it is built. The
-database allows the retrieval of the data, according to various
-formats. Thus, the input of the software of construction is
-simplified. Of course, with the assistance of the software of
-timetable construction, it is possible to create a timetable with
-a minimum of conflicts.
+architecture implements a database, an Web site and a software of
+timetable construction. The checking and the validation of data
+will be made with the input and with integrity constraints in the
+database. The Web site is used mainly for the data input, but at
+the same time, it can check the validity of the data, using the
+business rules before the data will be entered to the database.
+Another function of the Web site is to offer the timetable in a
+personalized way, once that it is built. The database allows the
+retrieval of the data, according to various formats. Thus, the
+input of the software of construction is simplified. Of course,
+with the assistance of the software of timetable construction, it
+is possible to create a timetable with a minimum of conflicts.
 
 
 Many research was made in the timetable construction~: algorithms,
@@ -127,7 +126,7 @@ mathematical formulations and several software were proposed in
 the PATAT conferences \cite{patat97, patat00, patat02}. On the
 other hand, few efforts were devoted, until now, to the general
 development of the timetable production. We think that the fact of
-having a total sight on the process can help the research in
+having a total view on the process can help the research in
 timetable construction. White \cite{white00} highlighted that the
 Web must be used to the diffusion of timetables. We are trying to
 go far proposing also to use it like an interface of data input,
@@ -139,22 +138,22 @@ like a language of communication in the timetable construction by
 agents. We propose also the use of XML, in order to facilitate the
 exchanges between certain modules of our architecture. In Burke
 and al \cite{burke97} it is proposed to have a standard for the
-data format, in the many instances of software for timetable,
-their goal was to compare algorithms (programs) in benchmarks. In
-a more recent work, Kingston \cite{kingston02} proposes a language
-STTL and an interpreter, with the same objective. Özcan
-\cite{ozcan03} suggests also another standard to define instances
-of problems of timetable construction, having XML as a base
-language. It seems that it would be desirable to have a standard,
-but it is a goal very hard to reach. At the place, our approach
-makes it possible to use a database like a tool of extraction and
-formatting, in this way the software of timetable construction can
-receive the necessary data. Thus, it would be possible to generate
-other instances of problems for other software of timetable
+data format, it will be used by the timetable software, their goal
+was to compare algorithms (programs) in benchmarks. In a more
+recent work, Kingston \cite{kingston02} proposes the STTL language
+and an interpreter, with the same objective. Özcan \cite{ozcan03}
+suggests also another standard to define instances of problems of
+timetable construction, having XML as a base language. It seems
+that it would be desirable to have a standard, but it is a goal
+very hard to reach. At the place, our approach is the use of a
+database like a tool of extraction and data formatting, in this
+way the software of timetable construction can receive the
+necessary data. Thus, it would be possible to generate other
+instances of problems for other software of timetable
 construction.
 
 The development of our architecture, was divided into two parts,
-we analyzed the flow of the data in a generic system of timetable
+we analyzed the data flow in a generic system of timetable
 production. Then we define an architecture, the basic blocks and
 the responsibility of each block which takes part in the
 architecture. The objectives to define an open and extensible
@@ -173,23 +172,23 @@ We finish by an assessment and the conclusions in the section
 \ref{sec:conc}.
 
 
-\section{The flow of information in the timetable production}
+\section{The information flow in the timetable production}
 \label{sec:data}
 
-First of all, we define, the process of timetable production as a
-process which starts with the data capture for the period of
-validity of the schedule $P$. This period $P$ is one six-month
-period, one quarter, or a year\footnote{In the University of
-Sherbrooke we speaks about quarter, but it really comprises
-sixteen weeks (almost four months), therefore the system must
-adapt to any period $P$.}. The process ends when all the concerned
-people receive the schedule on a paper or the Web (see figure
-\ref{fig:fOne}) and that the period of validity of the schedule
-touches at its end. The are multiple data to feed to the system,
-for example the courses which will take place during the period
-$P$; the format of the courses (3h, or 2h+1h); possible or
+First of all, we define the process of timetable production as a
+process which starts at the time to enter the data for the period
+of validity of the timetable $P$. This period $P$ is one six-month
+period, one quarter, or a year period\footnote{In the University
+of Sherbrooke we talk about quarter, but it really comprises
+sixteen weeks (almost four months), therefore the system must be
+adapted to any period $P$.}. The process ends when all the
+concerned people receive the schedule on a paper or via the Web
+(see figure \ref{fig:fOne}) and the period of validity of the
+schedule touches at its end. The are multiple data to feed to the
+system, for example the courses which will take place during the
+period $P$; the format of the courses (3h, or 2h+1h); possible or
 assigned teachers for certain courses; possible or assigned
-buildings; the availability of the teachers and the buildings,
+classrooms; the availability of the teachers and the classrooms,
 etc. We know that there are institutions where the students make a
 pre-choice and others where the timetable are made without
 pre-choice. The pre-choice of the students is part of the data to
@@ -212,7 +211,7 @@ indicate the number of students to be admitted for each course.
 
 \put(70, 25){\fichier[\pro{Paper}]}
 
-\put(70, 5){\fichier[\pro{Web}]}
+\put(70, 5){\fichier[\pro{Web page}]}
 \end{picture}
 \end{center}
 \caption{Timetable production}\label{fig:fOne}
@@ -223,53 +222,60 @@ production, the system of timetable production includes a software
 of timetable construction.
 
 \begin{description}
-\item[System of timetable production] It is composed of several
+\item[System of timetable production.] It is composed of several
 software, or modules, which works in an autonomous way, but
-coordinated. It appears clear to us that the system must have two
-principal components~: the system of data back-up and the software
-of timetable construction.
+coordinated. Its clear that the system must have two principal
+components~: the system to save data and the software of timetable
+construction.
 
-\item[Data] represent the data necessary to the timetable
+\item[Data.] Represent the necessary data to the timetable
 production. We will save all the necessary data in a system of
 data back-up. In the figure, it is not indicated that these data
 can be handled by modules of the system of timetable production.
-For example, the means of acquisition of pre-choice, will save the
-courses followed by a student. The module of construction of data
+For example, the module of acquisition of pre-choice, will save
+the courses followed by a student. The module of data construction
 will take its entry in the database and when the construction is
-made the new data obtained will be given in the data warehouse .
+made the new data obtained will be saved in a data warehouse.
 
 
-\item[Paper or Web] It is the output of the system once that the
-timetable is built. These output can to be files, which will be
-printed on paper or data that will be presented on a Web page, in
-both cases the data sources are in the database.
+\item[Paper or Web page.] It is the output of the system once that
+the timetable is built. These output can to be files, which will
+be printed on paper or data that will be presented on a Web page,
+in both cases the data sources are the database.
 
 \end{description}
 
 
-\subsection{Preparation of the data}
+\subsection{Data preparation}
 The figure \ref{fig:fTwo} shows the evolution of the data during
 the timetable production. The evolution presents the instance of
-the data at differents moments of the process.
+the data at different moments of the process.
 
-The distribution of data in only one database or several data
-bases (distributed database) is a problem of implementation. In a
-conceptual way it is only one database.
+The data warehouse can represent only one database or several
+databases (distributed databases) it is a decision of the
+implementation. In a conceptual way it can be a data warehouse or
+only one database.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
-%\fbox{%
 \begin{picture}(90,40)
 \deffilebox{20}{10}{0.2}
 \defprocessbox{20}{16}
-%\put(0,0){\fichier[Données]}
-%\put( 10, 2){\corner{20}{4}}
-\put(0, 15){\fichier[$bd_{1}$]} \put(0, 5){\makebox(20,10){Basic
-data}} \put(20, 20){\vector(1,0){10}} \put(30,
-15){\fichier[$bd_{2}$]} \put(30, 5){\makebox(20,10){Period $P$
-data}} \put(50, 20){\vector(1,0){10}} \put(60,
-15){\fichier[$bd_{3}$]} \put(60, 5){\makebox(20,10){Timetable
-data}}
+\put(0, 15){\fichier[$bd_{1}$]}
+
+\put(0, 5){\makebox(20,10){Basic data}}
+
+\put(20, 20){\vector(1,0){10}}
+
+\put(30, 15){\fichier[$bd_{2}$]}
+
+\put(30, 5){\makebox(20,10){Period $P$ data}}
+
+\put(50, 20){\vector(1,0){10}}
+
+\put(60, 15){\fichier[$bd_{3}$]}
+
+\put(60, 5){\makebox(20,10){Timetable data}}
 \end{picture}%}
 \end{center}
 
@@ -280,73 +286,69 @@ timetable}\label{fig:fTwo}
 
 \begin{description}
 
-\item[Basic data] These data is defined as the long term data in
-the warehouse. The information of the academic activities of a
-program, the programs offered, the teachers, the characteristics
-of classrooms, the students, all of them are examples of this type
-of information. In general this information is shared by other
-applications. For example a student is described by his first
-name, last name, number identification, program, etc. An
+\item[Basic data.] These data is defined as the long term data in
+the data warehouse. The information for the academic activities of
+a program, the programs offered, the teachers, the characteristics
+of the classrooms, the students, all of them are examples of this
+type of information. In general this information is shared by
+other applications. For example a student is described by his
+first name, last name, number identification, program, etc. An
 application which uses the data students is for example that which
 print the notes of a student on his scorecard. Here, we are
 interested in the data associated with the timetable production,
-which can be a sight (partially) of the complete institutional
+which can be a view (partially) of the complete institutional
 database.
 
-\item[Period $P$ data ] These data are necessary to the timetable
+\item[Period $P$ data.] These data are necessary to the timetable
 construction for the concerned period, they contain the courses
 which will be offered in this period, the availability of teachers
 for this period, etc. These data are a precondition to the
-timetable construction and are captured before each construction.
-However, these data will change (update) during the timetable
-construction. For example when a teacher external is assigned for
-a given course, we will enter his information name and
-availability in the database.
+timetable construction and will be entered before each
+construction. However, these data will change (update) during the
+timetable construction. For example when a external teacher is
+assigned for a given course, we will enter his information name
+and availability in the database.
 
-\item[Timetable data] These data are the result of the timetable
+\item[Timetable data.] These data are the result of the timetable
 construction. They will contain all the necessary information to
-print or show general and personalized timetable.
+print or to show general and personalized timetable.
 
 \end{description}
 
-It should be noted that there are two great activities in the
-production~: the data acquisition (updating) and timetable
-construction. In general these two activities are carried out by a
-group of people. It is also necessary to see how these activities
-are carried out in time.
+Additionally of the timetable construction for courses, the system
+must be used to build the timetable for exams. The evolution of
+data, in the case of exams, follows the same path as courses. With
+the exception that the data extracted from the database can be
+different, for example, for a exam timetable the availability of
+the teachers can not be necessary.
 
+There are two great activities in the timetable production: enter
+the data (including the update) and the timetable construction.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
-%\fbox{%
+
 \begin{picture}(90,40)
-\put(-6,7){ \shortstack{b)}} \put(0, 10){\vector(1,0){90}}
-
-\put(5, 9){\line(0,1){2}} \put(4,7){\shortstack{$t_0$}}
-
-\put(85, 9){\line(0,1){2}} \put(84,7){\shortstack{$t_f$}}
-
-\put(5, 12){\vector(1,0){75}}
-
-\put(45, 14){\vector(1,0){40}}
-
- \put(9,13){ \shortstack{Input}}
-
+ \put(-6,7){ \shortstack{b)}}
+ \put(0, 10){\vector(1,0){90}}
+ \put(5, 9){\line(0,1){2}}
+ \put(4,7){\shortstack{$t_0$}}
+ \put(85, 9){\line(0,1){2}}
+ \put(84,7){\shortstack{$t_f$}}
+ \put(5, 12){\vector(1,0){75}}
+ \put(45, 14){\vector(1,0){40}}
+ \put(9,13){ \shortstack{Data input}}
  \put(54,16){ \shortstack{Construction}}
-
-\put(-6,22){ \shortstack{a)}}\put(0, 25){\vector(1,0){90}}
-
-\put(5, 24){\line(0,1){2}}
+ \put(-6,22){ \shortstack{a)}}
+ \put(0, 25){\vector(1,0){90}}
+ \put(5, 24){\line(0,1){2}}
  \put(4,22){ \shortstack{$t_0$}}
-\put(5, 27){\vector(1,0){40}}
-
-\put(45, 27){\vector(1,0){40}}
-
-\put(85, 24){\line(0,1){2}} \put(84,22){\shortstack{$t_f$}}
-
-\put(9,28){ \shortstack{Input}}
-
-\put(54,28){ \shortstack{Construction}}
+ \put(5, 27){\vector(1,0){40}}
+ \put(45, 27){\vector(1,0){40}}
+ \put(85, 24){\line(0,1){2}}
+ \put(84,22){\shortstack{$t_f$}}
+ \put(9,28){ \shortstack{Data input}}
+ \put(54,28){ \shortstack{Construction}}
 
 \end{picture}%}
 \end{center}
@@ -356,15 +358,16 @@ $P$}\label{fig:fTime}
 \end{figure}
 
 The figure \ref{fig:fTime} shows two cases of the evolution of
-these activities. In the case A. the data input and the
+these activities. In the case A the data input and the
 construction are two activities carried out in sequence. This
-arrives in very rare cases. In the case B the data input
-(especially the update) is done at the same time as the
-construction. This is the general case, much of data are fixed, as
-the offer of course, however, during the construction we find
-situations where the conflicts oblige to make changes on the data,
-the format of a course, who pass from 3h consecutive to 2h
-consecutive more 1h. Other cases can be presented.
+arrives in very rare cases. In the case B, who shows the reality,
+the data input (especially the update) is done at the same time as
+the construction. This is the general case. Much of the data are
+fixed, as the offer of course, however, during the construction we
+find situations where the conflicts oblige to make changes on the
+data, by example, the format of a course, who pass from 3h
+consecutive to 2h consecutive more 1h. Other cases can be
+presented.
 
 According to each instance of the system, it is necessary to
 define the schema of the database, and the roles and privileges of
