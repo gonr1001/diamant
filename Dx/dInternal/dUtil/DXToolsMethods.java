@@ -258,6 +258,28 @@ public class DXToolsMethods {
    }
 
    /**
+   * remove a token in a stringtokenizer
+   * @param str
+   * @param delimiter
+   * @param position
+   * @return
+   */
+  public final static String removeToken(String str, String delimiter, int position){
+    StringTokenizer strToken= new StringTokenizer(str,delimiter);
+    //int nbTokens= strToken.countTokens();
+    String res="";
+    int inc=0;
+    while(strToken.hasMoreElements()){
+      if(inc!=position)
+        res+= strToken.nextToken()+delimiter;
+      else
+        strToken.nextToken();
+      inc++;
+    }
+    return res;
+   }
+
+   /**
     * count the number of tokens
     * @return
     */

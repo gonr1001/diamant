@@ -12,6 +12,7 @@ package dInternal.dData;
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dUtil.DXValue;
+import dInternal.dUtil.DXToolsMethods;
 import dInternal.dConditionsTest.ConflictsAttach;
 
 import dInterface.dUtil.DXTools;
@@ -69,9 +70,10 @@ public class StandardReportData {
    */
   public StandardReportData(DModel dm) {
     _dm=dm;
-    _activitiesReport= buildActivitiesReport();
+    _activitiesReport= sortReport(buildActivitiesReport());
     _studentsReport = buildStudentsReport();
-    _conflictsReport=buildConflictsReport();
+    _conflictsReport= sortReport(buildConflictsReport());
+
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
   }
@@ -327,4 +329,73 @@ public class StandardReportData {
     }// end for (int i=0; i< _dm.getSetOfStudents().size(); i++)
     return studlist;
   }
+
+  /**
+   * sort a standard report
+   * @param rep
+   * @return
+   */
+  public String sortReport(String rep){
+    String newRep="";
+    SetOfResources setOfRep= new SetOfResources(1);
+    StringTokenizer theReport= new StringTokenizer(rep,SetOfActivities.CR_LF);
+    //int nbTokens= theReport.countTokens();
+    //for (int i=0; i< theReport.countTokens(); i++)
+    while (theReport.hasMoreElements())
+      setOfRep=createSortReport(setOfRep,theReport.nextToken());
+      /*setOfRep.addResource(new Resource(theReport.nextToken(),null),1);
+    for (int i=0; i< setOfRep.size(); i++)
+      newRep+= setOfRep.getResourceAt(i).getID()+SetOfActivities.CR_LF;*/
+    Vector res= new Vector();
+    writeSortReport(setOfRep, newRep, res);
+    for (int i=0; i< res.size(); i++)
+      newRep+= res.get(i).toString()+SetOfActivities.CR_LF;
+
+    System.out.println("******************************************");//debug
+    System.out.println(newRep);//debug
+    return newRep;
+  }
+
+  /**
+   * create a sort report using setof resource
+   * @param setOr
+   * @param line
+   * @return
+   */
+  private SetOfResources createSortReport(SetOfResources setOr, String line){
+    if(line.length()!=0){
+     // return setOr;
+    String firstToken= DXToolsMethods.getToken(line,";",0);
+    int index= setOr.getIndexOfResource(firstToken);
+    if(index==-1){
+      setOr.addResource(new Resource(firstToken,new SetOfResources(100)),1);
+      createSortReport(setOr,line);
+    }else{// end if(index==-1)
+      String newLine= DXToolsMethods.removeToken(line,";",0);
+      SetOfResources sor= (SetOfResources)setOr.getResourceAt(index).getAttach();
+      createSortReport(sor,newLine);
+    }// end else if(index==-1)
+    }// end if(line.length()!=0)
+    return setOr;
+  }
+
+  /**
+   * write e report using setofresources
+   * @param setOr
+   * @param line
+   * @return
+   */
+  private void writeSortReport(SetOfResources setOr,String line, Vector result){
+    //="";
+    if(setOr.size()!=0){
+      for(int i=0; i< setOr.size(); i++){
+        //line+= setOr.getResourceAt(i).getID()+";";
+        SetOfResources sOr = (SetOfResources)setOr.getResourceAt(i).getAttach();
+         writeSortReport(sOr, line+ setOr.getResourceAt(i).getID()+";", result);//+SetOfActivities.CR_LF;
+      }// end for(int i=0; i< setOr.size(); i++)
+    }else{// end if(setOr!=null)
+      result.add(line);
+    }
+  }
+
 }
