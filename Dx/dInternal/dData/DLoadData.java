@@ -1,6 +1,6 @@
 /**
 *
-* Title: DLoadData $Revision: 1.6 $  $Date: 2005-01-28 21:46:54 $
+* Title: DLoadData $Revision: 1.7 $  $Date: 2005-02-08 21:45:40 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.7 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -137,20 +137,13 @@ public class DLoadData {
 		     	roomsList.buildSetOfResources(de, 0);
 		     }
 		} else {// (NullPointerException npe) {
-			new FatalProblemDlg("I was in LoadData.extractRooms. preload failed!!!" );
+			new FatalProblemDlg("I was in DLoadData.extractRooms. Preload failed!!!" );
 			System.exit(52);
 		}
 		return roomsList;
 	}// end extractRooms
 
- /*   // SetOfRooms
-    SetOfSites roomsList = new SetOfSites(); //,5,14);
-    DataExchange de = buildDataExchange(project.nextToken().trim().getBytes());
-    if (roomsList.analyseTokens(de,0)){
-      roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-      roomsList.buildSetOfResources(de, 3);
-    }
-   extract.add(roomsList);*/
+ 
 	/**
 	 * 
 	 * @param currentList the current SetOfInstructors
@@ -167,10 +160,9 @@ public class DLoadData {
 					instructorsList.setSetOfResources(currentList.getSetOfResources());
 			if (instructorsList.analyseTokens(0)){
 				instructorsList.buildSetOfResources(0);
-				//return instructorsList;
 			}
 		} else {// (NullPointerException npe) {
-			new FatalProblemDlg("I was in LoadData.extractInstructors. preload failed!!!" );
+			new FatalProblemDlg("I was in DLoadData.extractInstructors. Preload failed!!!" );
 			System.exit(52);
 		}
 		return instructorsList;
@@ -197,7 +189,7 @@ public class DLoadData {
          //return studentsList;
        }
      } else {// (NullPointerException npe) {
-     	new FatalProblemDlg("I was in LoadData.extractStudents. preload failed!!!" );
+     	new FatalProblemDlg("I was in DLoadData.extractStudents. Preload failed!!!" );
      	System.exit(52);
      }
      return studentsList;
@@ -221,7 +213,7 @@ public class DLoadData {
 					activitiesList.buildSetOfResources(de, 1);
 			}
 		} else {// (NullPointerException npe) {
-			new FatalProblemDlg("I was in LoadData.extractActivities. preload failed!!!" );
+			new FatalProblemDlg("I was in DLoadData.extractActivities. Preload failed!!!" );
 			System.exit(52);
 		}
 		return activitiesList;
@@ -360,204 +352,7 @@ public class DLoadData {
   }
 
   
-	private void initLoadData() {
-		_roomsAttributesInterpretor = new RoomsAttributesInterpretor();
-		Preferences preferences = new Preferences(System.getProperty("user.dir")
-		          + File.separator +
-		          "pref"
-		          + File.separator +
-		          "pref.txt");
-		    _chars = preferences._acceptedChars;   
-	}  
-	private void completeLoadData() {
-		String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
-		_functionFileName= path + "DXfunctions.sig";
-		_caractFileName= path + "DXcaracteristics.sig";
-	}
-  
-	private byte[] preLoad(String str) {
-		FilterFile filter = new FilterFile();
-		filter.setCharKnown("");
-		filter.appendToCharKnown(_chars);
-		if (filter.validFile(str)) {
-			return filter.getByteArray();
-		} 
-		return null;
-	} // preLoad(String str)
-	
-	
-  private void verifyImportDataFile(String str){
-    FilterFile filter = new FilterFile(_chars);
-    if (filter.validFile(str)) {
-      StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), DConst.CR_LF );
-      if (st.countTokens() == DConst.NUMBER_OF_FILES){
-        _instructorFileName = st.nextToken();
-        _roomsFileName = st.nextToken();
-        _activitiesFileName = st.nextToken();
-        _studentsFileName = st.nextToken();
-      } else {
-        new FatalProblemDlg(
-            "Wrong number of lines in the file:" +
-            str +
-            "\n" +
-            "I was in DLoadData constructor ");
-        System.exit(1);
-      }
-    } else {
-      new FatalProblemDlg(
-          "Unable to filter a file" +
-          str +
-          "\n" +
-          "I was in DLoadData constructor "); //ys
-      System.exit(1);
-    }
-  }
-  
- /**
-  * 
-  * @param currentRsc
-  * @param newRsc
-  * @return
-  */
-/*	  private SetOfResources makeDiff(SetOfResources currentRsc, SetOfResources newRsc){
-	 	//find deleted element
-	  	for (int i=0; i< currentRsc.size(); i++){
-	  		//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
-	  		if(getResource(newRsc,currentRsc.getResourceAt(i))==null){
-	  		DXValue error= new DXValue();
-	  		error.setStringValue(DConst.DELETED_ELEMENT + currentRsc.getResourceAt(i).getID());
-	  		_dm.getSetOfImportSelErrors().addResource(new Resource("1",error),0);
-	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-	  	}// end for (int i=0; i< currentRsc.size(); i++)
-	  	
-	  	//	  find added element
-	  	for (int i=0; i< newRsc.size(); i++){
-	  		//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
-	  		if(getResource(currentRsc,newRsc.getResourceAt(i))==null){
-	  		DXValue error= new DXValue();
-	  		error.setStringValue(DConst.ADDED_ELEMENT + newRsc.getResourceAt(i).getID());
-	  		_dm.getSetOfImportSelErrors().addResource(new Resource("2",error),0);
-	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-	  	}// end for (int i=0; i< newRsc.size(); i++)
-	  	
-	  	//	find changed element
-	  	for (int i=0; i< currentRsc.size(); i++){
-	  		//Resource r = 	newRsc.getResource(currentRsc.getResourceAt(i).getKey());
-	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
-	  		if(r!=null){
-	  			if(!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
-	  		DXValue error= new DXValue();
-	  		error.setStringValue(DConst.CHANGED_ELEMENT + currentRsc.getResourceAt(i).getID());
-	        _dm.getSetOfImportSelErrors().addResource(new Resource("3",error),0);
-	  		}
-	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-	  	}// end for (int i=0; i< currentRsc.size(); i++)
-	  	
-	  	//	find unchanged element
-	  	for (int i=0; i< currentRsc.size(); i++){
-	  		//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
-	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
-	  		if(r!=null){
-	  			if(r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
-	  		DXValue error= new DXValue();
-	  		//System.out.println(_dm.getSetOfImportSelErrors().toWrite());//debug
-	  		error.setStringValue(DConst.UNCHANGED_ELEMENT + currentRsc.getResourceAt(i).getID());
-	  		_dm.getSetOfImportSelErrors().addResource(new Resource("4",error),0);
-	  		}
-	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-	  	}// end for (int i=0; i< currentRsc.size(); i++)
-	  	
-	 	return null;
-	 	
-	 }
-	  */
-	  /**
-	   * 
-	   * @param currentRsc
-	   * @param newRsc
-	   * @return
-	   */
-/*	 	  private SetOfResources updateSetOfStudents (SetOfResources currentRsc, SetOfResources newRsc){
-	 	 	//find deleted element
-	 	  	for (int i=0; i< currentRsc.size(); i++){
-	 	  		//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
-	 	  		if(getResource(newRsc,currentRsc.getResourceAt(i))==null){
-	 	  			currentRsc.removeResourceAt(i);
-	 	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-	 	  	}// end for (int i=0; i< currentRsc.size(); i++)
-	 	  	
-
-	 	  	//	find changed element
-	 	  	for (int i=0; i< currentRsc.size(); i++){
-	 	  		//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
-	 	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
-	 	  		if(r!=null){
-	 	  			if(!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
-	 	  				StudentAttach currentStudent = (StudentAttach) currentRsc.getResourceAt(i).getAttach();
-	 	  				SetOfResources currentCourses =currentStudent.getCoursesList();
-	 	  				StudentAttach newStudent = (StudentAttach) r.getAttach();
-	 	  				SetOfResources newCourses =newStudent.getCoursesList();
-	 	  				// course deleted
-	 	  				for (int j=0; j< currentCourses.size(); j++){
-	 	  			  		//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
-	 	  			  		if(getResource(newCourses,currentCourses.getResourceAt(j))==null){
-	 	  			  			currentCourses.removeResourceAt(j);
-	 	  			  		}
-	 	  				}	 	  				
-	 	  			   //course added
-	 	  				for (int j=0; j< newCourses.size(); j++){
-	 	  			  		//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
-	 	  			  		if(getResource(currentCourses,newCourses.getResourceAt(j))==null){
-	 	  			  			currentCourses.addResource(newCourses.getResourceAt(j),1);
-	 	  			  		}
-	 	  				}	
-	 	  				
-
-	 	  		}
-	 	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-	 	  	}// end for (int i=0; i< currentRsc.size(); i++)
-	 	  	
-	 	  	 	  	
-	 	 	return null;
-	 	 	
-	 	 }
-*/
-/**
- * 
- */
-	private DataExchange buildDataExchange(String fileName) {
-		byte[] dataloaded = preLoad(fileName);
-		StringTokenizer st = new StringTokenizer(new String (dataloaded), DConst.CR_LF);
-		String token = st.nextToken().toString().trim();
-		    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME_XML1_7)) {
-		    	return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
-		    }
-		    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-		    	return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String (dataloaded));
-		    }
-		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
-  	}
-  
-  	/**
-  	 * 
-  	 * @param dataloaded
-  	 * @return
-  	 */
-	public DataExchange buildDataExchange(byte[] dataloaded) {
-		//byte[] dataloaded = preLoad(fileName);
-		StringTokenizer st = new StringTokenizer(new String (dataloaded), DConst.CR_LF);
-		String token = st.nextToken().toString().trim();
-		    //if (token.equalsIgnoreCase(DConst.FILE_VER_NAME_XML1_7)) {
-		    //	return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
-		    //}
-		    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-		    	return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String (dataloaded));
-		    }
-		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
-  	}
-  	
-  	
-    /**
+	/**
      * 
      * @param currentSetOfResc the current SetOfResources
      * @param file the file to import
@@ -578,9 +373,199 @@ public class DLoadData {
           newSetOfResc= extractRooms(null,false);
           _dm.resizeResourceAvailability(newSetOfResc);
       } else {// (NullPointerException npe) {
-      	new FatalProblemDlg("I was in LoadData.selectiveImport, No resource class available!!!" );
+      	new FatalProblemDlg("I was in DLoadData.selectiveImport, No resource class available!!!" );
       }
       return currentSetOfResc;
     }
+	/**
+	 * 
+	 * @param dataloaded
+	 * @return
+	 */
+	public DataExchange buildDataExchange(byte[] dataloaded) {
+		//byte[] dataloaded = preLoad(fileName);
+		StringTokenizer st = new StringTokenizer(new String (dataloaded), DConst.CR_LF);
+		String token = st.nextToken().toString().trim();
+		    //if (token.equalsIgnoreCase(DConst.FILE_VER_NAME_XML1_7)) {
+		    //	return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
+		    //}
+		    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+		    	return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String (dataloaded));
+		    }
+		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
+	}
+	private void initLoadData() {
+		_roomsAttributesInterpretor = new RoomsAttributesInterpretor();
+		Preferences preferences = new Preferences(System.getProperty("user.dir")
+		          + File.separator +
+		          "pref"
+		          + File.separator +
+		          "pref.txt");
+		    _chars = preferences._acceptedChars;   
+	}
+	private void completeLoadData() {
+		String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
+		_functionFileName= path + "DXfunctions.sig";
+		_caractFileName= path + "DXcaracteristics.sig";
+	}
+	private byte[] preLoad(String str) {
+		FilterFile filter = new FilterFile();
+		filter.setCharKnown("");
+		filter.appendToCharKnown(_chars);
+		if (filter.validFile(str)) {
+			return filter.getByteArray();
+		} 
+		return null;
+	} // preLoad(String str)
+	private void verifyImportDataFile(String str){
+	    FilterFile filter = new FilterFile(_chars);
+	    if (filter.validFile(str)) {
+	      StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), DConst.CR_LF );
+	      if (st.countTokens() == DConst.NUMBER_OF_FILES){
+	        _instructorFileName = st.nextToken();
+	        _roomsFileName = st.nextToken();
+	        _activitiesFileName = st.nextToken();
+	        _studentsFileName = st.nextToken();
+	      } else {
+	        new FatalProblemDlg(
+	            "Wrong number of lines in the file:" +
+	            str +
+	            "\n" +
+	            "I was in DLoadData constructor ");
+	        System.exit(1);
+	      }
+	    } else {
+	      new FatalProblemDlg(
+	          "Unable to filter a file" +
+	          str +
+	          "\n" +
+	          "I was in DLoadData constructor "); //ys
+	      System.exit(1);
+	    }
+	  }
+	/**
+	  * 
+	  * @param currentRsc
+	  * @param newRsc
+	  * @return
+	  */
+	/*	  private SetOfResources makeDiff(SetOfResources currentRsc, SetOfResources newRsc){
+		 	//find deleted element
+		  	for (int i=0; i< currentRsc.size(); i++){
+		  		//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
+		  		if(getResource(newRsc,currentRsc.getResourceAt(i))==null){
+		  		DXValue error= new DXValue();
+		  		error.setStringValue(DConst.DELETED_ELEMENT + currentRsc.getResourceAt(i).getID());
+		  		_dm.getSetOfImportSelErrors().addResource(new Resource("1",error),0);
+		  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		  	}// end for (int i=0; i< currentRsc.size(); i++)
+		  	
+		  	//	  find added element
+		  	for (int i=0; i< newRsc.size(); i++){
+		  		//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+		  		if(getResource(currentRsc,newRsc.getResourceAt(i))==null){
+		  		DXValue error= new DXValue();
+		  		error.setStringValue(DConst.ADDED_ELEMENT + newRsc.getResourceAt(i).getID());
+		  		_dm.getSetOfImportSelErrors().addResource(new Resource("2",error),0);
+		  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		  	}// end for (int i=0; i< newRsc.size(); i++)
+		  	
+		  	//	find changed element
+		  	for (int i=0; i< currentRsc.size(); i++){
+		  		//Resource r = 	newRsc.getResource(currentRsc.getResourceAt(i).getKey());
+		  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
+		  		if(r!=null){
+		  			if(!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
+		  		DXValue error= new DXValue();
+		  		error.setStringValue(DConst.CHANGED_ELEMENT + currentRsc.getResourceAt(i).getID());
+		        _dm.getSetOfImportSelErrors().addResource(new Resource("3",error),0);
+		  		}
+		  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		  	}// end for (int i=0; i< currentRsc.size(); i++)
+		  	
+		  	//	find unchanged element
+		  	for (int i=0; i< currentRsc.size(); i++){
+		  		//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
+		  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
+		  		if(r!=null){
+		  			if(r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
+		  		DXValue error= new DXValue();
+		  		//System.out.println(_dm.getSetOfImportSelErrors().toWrite());//debug
+		  		error.setStringValue(DConst.UNCHANGED_ELEMENT + currentRsc.getResourceAt(i).getID());
+		  		_dm.getSetOfImportSelErrors().addResource(new Resource("4",error),0);
+		  		}
+		  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		  	}// end for (int i=0; i< currentRsc.size(); i++)
+		  	
+		 	return null;
+		 	
+		 }
+		  */
+		  /**
+		   * 
+		   * @param currentRsc
+		   * @param newRsc
+		   * @return
+		   */
+	/*	 	  private SetOfResources updateSetOfStudents (SetOfResources currentRsc, SetOfResources newRsc){
+		 	 	//find deleted element
+		 	  	for (int i=0; i< currentRsc.size(); i++){
+		 	  		//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
+		 	  		if(getResource(newRsc,currentRsc.getResourceAt(i))==null){
+		 	  			currentRsc.removeResourceAt(i);
+		 	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		 	  	}// end for (int i=0; i< currentRsc.size(); i++)
+		 	  	
+	
+		 	  	//	find changed element
+		 	  	for (int i=0; i< currentRsc.size(); i++){
+		 	  		//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
+		 	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
+		 	  		if(r!=null){
+		 	  			if(!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
+		 	  				StudentAttach currentStudent = (StudentAttach) currentRsc.getResourceAt(i).getAttach();
+		 	  				SetOfResources currentCourses =currentStudent.getCoursesList();
+		 	  				StudentAttach newStudent = (StudentAttach) r.getAttach();
+		 	  				SetOfResources newCourses =newStudent.getCoursesList();
+		 	  				// course deleted
+		 	  				for (int j=0; j< currentCourses.size(); j++){
+		 	  			  		//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+		 	  			  		if(getResource(newCourses,currentCourses.getResourceAt(j))==null){
+		 	  			  			currentCourses.removeResourceAt(j);
+		 	  			  		}
+		 	  				}	 	  				
+		 	  			   //course added
+		 	  				for (int j=0; j< newCourses.size(); j++){
+		 	  			  		//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+		 	  			  		if(getResource(currentCourses,newCourses.getResourceAt(j))==null){
+		 	  			  			currentCourses.addResource(newCourses.getResourceAt(j),1);
+		 	  			  		}
+		 	  				}	
+		 	  				
+	
+		 	  		}
+		 	  		}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		 	  	}// end for (int i=0; i< currentRsc.size(); i++)
+		 	  	
+		 	  	 	  	
+		 	 	return null;
+		 	 	
+		 	 }
+	*/
+	/**
+	 * 
+	 */
+		private DataExchange buildDataExchange(String fileName) {
+			byte[] dataloaded = preLoad(fileName);
+			StringTokenizer st = new StringTokenizer(new String (dataloaded), DConst.CR_LF);
+			String token = st.nextToken().toString().trim();
+			    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME_XML1_7)) {
+			    	return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
+			    }
+			    if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+			    	return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String (dataloaded));
+			    }
+			    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
+	  	}
 	
 }
