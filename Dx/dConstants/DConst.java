@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.118 $  $Date: 2004-09-30 16:02:24 $
+ * Title: DConst $Revision: 1.119 $  $Date: 2004-10-01 14:16:31 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.118 $
+ * @version $Revision: 1.119 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -35,7 +35,7 @@ public class DConst {
 
 
   //********** Shared and others constants ***************************
-  public final static String APP_NAME = res.getString("appName");//Diamant 1.5
+  public final static String APP_NAME = res.getString("appName");//Diamant 1.6
   public final static String BUT_CLOSE  = res.getString("close");//Fermer
   public final static String BUT_OK = res.getString("butOK");//Ok
   public final static String BUT_CANCEL = res.getString("butCancel");//Annuler
