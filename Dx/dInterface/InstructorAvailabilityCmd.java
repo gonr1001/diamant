@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.1 $  $Date: 2003-03-11 17:44:03 $
+ * Title: ClassName $Revision: 1.2 $  $Date: 2003-03-13 15:21:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -24,24 +24,20 @@
 
 package dInterface;
 
-import javax.swing.JFrame;
 import dResources.DConst;
 
 /**
  *
- * AboutCmd is class used to call the command
- * which displays the About dialog
+ * InstructorAvailabilityCmd is class used to call the command
+ * which displays the InstructorAvailabilityDlg dialog
  *
  */
 public class InstructorAvailabilityCmd implements Command {
 
-    private JFrame _jFrame;
-
-    public InstructorAvailabilityCmd (JFrame jFrame) {
-        _jFrame = jFrame;
-    } // end AboutCmd
+    public InstructorAvailabilityCmd () {
+    } // endInstructorAvailabilityCmd
     //------------------------------
     public void execute(DApplication dApplic) {
-        new InstructorAvailabiliyDlg(dApplic.getJFrame(), "to See");
+        new InstructorAvailabiliyDlg(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, dApplic.getDMediator().getCurrentDoc().getDM());
     } // end execute
-} /* end class AboutCmd */
+} /* end class InstructorAvailabilityCmd */

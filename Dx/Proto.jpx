@@ -3,6 +3,7 @@
 <project>
   <property category="debug.0" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
+  <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="1"/>
@@ -44,15 +45,8 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <file path="dInterface/AppInTTCmd.java"/>
   <file path="DRun.java"/>
   <file path="DRunTest.java"/>
-  <file path="dInternal/Instructor.java"/>
-  <file path="dInterface/InstructorAvailabilityCmd.java"/>
-  <file path="dInterface/InstructorAvailabiliyDlg.java"/>
-  <file path="dInternal/InstructorsList.java"/>
   <file path="Proto.html"/>
-  <file path="dInternal/Room.java"/>
-  <file path="dInternal/RoomsList.java"/>
-  <file path="dInternal/Student.java"/>
-  <file path="dInternal/StudentsList.java"/>
 </project>

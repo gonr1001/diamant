@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutCmd $Revision: 1.5 $  $Date: 2003-03-10 17:28:41 $
+ * Title: AboutCmd $Revision: 1.6 $  $Date: 2003-03-13 15:21:01 $
  * Description: AboutCmd is class used as the command
  *              which displays the About dialog
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -32,10 +32,7 @@ import dResources.DConst;
  */
 public class AboutCmd implements Command {
 
-    private JFrame _jFrame;
-
-    public AboutCmd (JFrame jFrame) {
-        _jFrame = jFrame;
+    public AboutCmd () {
     } // end AboutCmd
     //------------------------------
     public void execute(DApplication dApplic) {

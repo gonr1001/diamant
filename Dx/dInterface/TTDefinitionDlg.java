@@ -129,13 +129,12 @@ class TTDefinitionDlg extends JDialog
    * either CYCLE or EXAM.
    */
   public TTDefinitionDlg(DApplication dApplic, String str) {
-    super(dApplic.getJFrame(), true);
+    super(dApplic.getJFrame(), str, true);
     _dApplic = dApplic;
-    //super(jFrame, true);
 
     //_doc = doc;
-    //_jFrame = jFrame;
-    //_mediator = mediator;
+
+
     this.type = type;
     try {
       if ( type == CYCLE ) {
@@ -166,7 +165,7 @@ class TTDefinitionDlg extends JDialog
    * either CYCLE or EXAM.
    */
   public TTDefinitionDlg(DApplication applic, String str, String s) {
-    super(applic.getJFrame(), true);
+    super(applic.getJFrame(), str, true);
     //_doc = doc;
     //_jFrame =owner;
 /*    if (TT.isCycle)
@@ -188,7 +187,7 @@ class TTDefinitionDlg extends JDialog
   }
 
   private void jbInit() throws Exception {
-    setTitle( MES00 ) ; //_doc._projectName);
+    //setTitle( MES00 ) ; //_doc._projectName);
     setResizable(false);
 
     _dApplic.getDMediator().getCurrentDoc().getDM().addDModelListener(this);
@@ -305,8 +304,8 @@ class TTDefinitionDlg extends JDialog
     butCancel.addActionListener( this );
     butAppliquer = new JButton( BUT03 );
     CmdButton butAppliquer = new CmdButton(BUT03);
-    //butAppliquer.setCommand(new AppInTTCmd(_mediator.getCurrentDoc()));
-    //butAppliquer.addActionListener(_mediator.getCurrentDoc());
+    butAppliquer.setCommand(new AppInTTCmd( _dApplic.getDMediator().getCurrentDoc()));
+    butAppliquer.addActionListener( _dApplic.getDMediator().getCurrentDoc());
     butAppliquer.addActionListener(this);
 
     butPanel.add(butOk, null);

@@ -23,9 +23,9 @@ public class LoadData {
   String _activitiesFileName;
   String _studentsFileName;
   private static String _SEP= File.separator;
-  private InstructorsList _instructorsList;
-  private RoomsList _roomsList;
-  private StudentsList _studentList;
+ // private InstructorsList _instructorsList;
+  //private RoomsList _roomsList;
+  //private StudentsList _studentList;
 
   private final int NUMBER_OF_TOKENS = 4;
   private final String CR_LF = "\r\n";
@@ -34,7 +34,7 @@ public class LoadData {
    */
   public LoadData(String args) {
     _v = new Vector(); // to eliminate
-   verifyImportDataFile(args);
+    verifyImportDataFile(args);
   }
 
   private void verifyImportDataFile(String str){
@@ -72,12 +72,12 @@ public class LoadData {
    // _v.add(extractStudents(args[1]));
   }
 
-  private InstructorsList extractInstructors(){
+  public InstructorsList extractInstructors(){
     byte[]  dataloaded = preLoad(_instructorFileName);
     if (dataloaded != null) {
       //StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );
       //return analyseInstructorTokens (st);
-      _instructorsList = new InstructorsList(dataloaded,5,14);
+     InstructorsList _instructorsList = new InstructorsList(dataloaded,5,14);
       if (_instructorsList.analyseTokens()){
         _instructorsList.buildInstructorsList();
         return _instructorsList;
@@ -99,11 +99,11 @@ public class LoadData {
 
   }
 
-  private Vector extractStudents(){
+  public StudentsList extractStudents(){
     byte[]  dataloaded = preLoad(_studentsFileName);
     if ( dataloaded!= null) {
   StringTokenizer st = new StringTokenizer(new String(dataloaded),"\r\n" );
-  return analyseStudentTokens (st);
+  return null;//analyseStudentTokens (st);
 } else {// (NullPointerException npe) {
   new FatalProblemDlg("npe.toString()" );
   System.exit(52);

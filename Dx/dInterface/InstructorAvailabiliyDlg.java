@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.1 $  $Date: 2003-03-11 17:44:03 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.2 $  $Date: 2003-03-13 15:21:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -23,24 +23,6 @@
  */
 package dInterface;
 
-/**
- * <p>Title: miniDia</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
- */
-/*
- * Title:        Diamant
- * Version:      0.0
- * Copyright:    Copyright (c) 1999, 2000
- * All Rights Reserved
- * Author:       David Vallée
- * This file is part of the Diamant Project
- */
-
-
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -49,7 +31,7 @@ import dInternal.*;
 
 /**
  * Dialog used to set disponibilities for an instructor.  The user must select
- * the corresponding teacher in the drop-down list and click on a period to
+ * the corresponding teacher in the combo list and click on a period to
  * select/deselect it.  A selected period (pressed) means that the teacher
  * is available at that period.
  *
@@ -96,7 +78,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
   int nbPerParJour;
   private boolean modified = false;
   private DModel _dm;
-  private InstructorsList _insList; // clone of the dictionnary
+  //private InstructorsList _insList; // clone of the dictionnary
   private Instructor _inst, instr;
   private String _sel;
 
@@ -107,14 +89,14 @@ public class InstructorAvailabiliyDlg  extends JDialog
    * @param owner The component on which the dialog will be displayed.
    * @param doc The active document.  Used to access the dictionnaries.
    */
-  public InstructorAvailabiliyDlg(JFrame jf, String str) {
-    super(jf, str, true);
+  public InstructorAvailabiliyDlg(JFrame jFrame, String str) {
+    super(jFrame, str, true);
     pack();
-    setLocationRelativeTo(jf);
+    setLocationRelativeTo(jFrame);
     setVisible(true);
   }
-  public InstructorAvailabiliyDlg(JFrame owner, DModel dm) {
-    super(owner, TITLE, true);
+  public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
+    super(jFrame, str, true);
     try {
       _dm = dm;
       //nbPer = _ddv._timeTable.nbPeriodPerDay+2;
@@ -123,7 +105,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       setTIME();
       jbInit();
       pack();
-      setLocationRelativeTo(owner);
+      setLocationRelativeTo(jFrame);
       setVisible(true);
     }
     catch(Exception e) {
@@ -139,7 +121,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private void jbInit() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all instructors
-    chooser = new JComboBox(_insList.getNamesVector());
+    chooser = new JComboBox(_dm.getInstructorsList().getNamesVector());
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);

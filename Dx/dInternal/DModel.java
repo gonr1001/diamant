@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.3 $  $Date: 2003-02-27 10:46:42 $
+ * Title: DModel $Revision: 1.4 $  $Date: 2003-03-13 15:21:01 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -26,9 +26,24 @@ import java.io.*;
 public class DModel{
   private Vector _dmListeners = new Vector();
   private TTParameters _ttParameters;
+  //private LoadData _loadData;
+  private InstructorsList _instructorsList;
+  private RoomsList _roomsList;
+  private StudentsList _studentList;
 
   public DModel() {
     _ttParameters = new TTParameters();
+  }
+
+  public void importData(String str) {
+    LoadData loadData = new LoadData(str);
+    _instructorsList = loadData.extractInstructors();
+    // _roomsList =
+    _studentList = loadData.extractStudents();
+  }
+
+  public InstructorsList getInstructorsList(){
+    return _instructorsList;
   }
 
   public TTParameters getTTParameters() {
