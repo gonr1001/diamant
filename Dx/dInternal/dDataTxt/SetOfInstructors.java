@@ -10,7 +10,7 @@ package dInternal.dData;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
-import com.iLib.gDialog.FatalProblemDlg;
+//import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
 
 public class SetOfInstructors extends SetOfResources{

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DApplication $Revision: 1.5 $  $Date: 2003-05-27 14:12:37 $
+ * Title: DApplication $Revision: 1.6 $  $Date: 2003-06-04 16:20:12 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -29,6 +29,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Container;
@@ -82,17 +83,19 @@ public class DApplication implements ActionListener {
     _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     _mediator = new DMediator(this);
     _currentDir = System.getProperty("user.dir");
-    _jFrame = createUI(DConst.APP_NAME + "   " + DConst.V_DATE);
+
+    _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
     setLAF(_preferences._lookAndFeel);
-
-    _jFrame.pack();
-    _jFrame.setVisible(true);
-
   } // end constructor
 
-  private JFrame createUI(String str) {
-    // the jFrame will have a WindowListener after createFrame
-    JFrame jFrame = createFrame(str + "   " + System.getProperty("user.dir"));
+  private JFrame createFrame(String str) {
+    JFrame jFrame= new JFrame(str + "   " + System.getProperty("user.dir"));
+    jFrame.setDefaultCloseOperation(_jFrame.DO_NOTHING_ON_CLOSE);
+    jFrame.addWindowListener(new WindowAdapter() {
+      public void windowClosing( WindowEvent e ) {
+        closeApplic(e);
+      }
+      });
     JPanel panel = new JPanel(new BorderLayout(0,0));
     jFrame.setContentPane(panel);
     jFrame.setJMenuBar(new DMenuBar( this ));  //constructs the menu bar
@@ -109,23 +112,13 @@ public class DApplication implements ActionListener {
     panel.setMaximumSize(_screenSize);
     panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH,
                                          _screenSize.height - ADJUST_HEIGHT));
+    jFrame.pack();
+    jFrame.setVisible(true);
     return jFrame;
     } //end createUI
 
 
-    /**
-     * createFrame will create the JFrame with a
-     * WindowListener associated
-     * Effect: the JFrame has a WindowListener
-     *
-     */
-    private JFrame createFrame(String title) {
-      JFrame jframe= new JFrame(title);
-      jframe.addWindowListener(new WindowAdapter() {
-        public void windowClosing(WindowEvent e) {System.exit(0);}
-      } );
-      return jframe;
-    } // end createFrame
+
 
     public void actionPerformed(ActionEvent  e) {
       if (e.getSource() instanceof CommandHolder) {
@@ -200,4 +193,59 @@ public class DApplication implements ActionListener {
       SwingUtilities.updateComponentTreeUI(_jFrame);
     } //end setLF
 
+
+    /**
+     * Closes the DDocument(s) and the application.
+     * Use this method for processing close via the
+     * WindowClosing Event.
+     *
+     * @return void
+     * @since JDK 1.2
+     */
+    private void closeApplic (WindowEvent e) {
+      closeApplic();
+    }
+
+    /**
+     * Closes the document(s) and the application.
+     * Use this method for processing close via the
+     * quit menuItem.
+     *
+     * @return void
+     * @since JDK 1.2
+     */
+    public void closeApplic() {
+      // if no Document exit ok
+      while (_mediator.getCurrentDoc() != null) {
+      // if Document no changed exit ok
+         //_mediator.getCurrentDoc().getDM().rsaveTT();
+        if (_mediator.getCurrentDoc().getModified()) {
+          // Display dialog
+          System.out.println("save?");
+        } else _mediator.getCurrentDoc().getJIF().dispose();
+      }
+      // if Document changed as for save or not
+       if (_mediator.getCurrentDoc() == null) {
+         _jFrame.setVisible(false);
+         _jFrame.dispose();
+         System.exit(0);
+      }
+  /*
+      //if( aDoc == null || aDoc.promptToSaveIfChanged() ) { //diaman002
+         int _request = 3;
+            //_request = _ddv.promptToSaveIfChanged();
+           if( _ddv != null )
+              _request = _ddv.promptToSaveIfChanged();
+             if (_request!=2){
+                if( _ddv != null )
+                  _ddv.close();
+                _ddv = null;
+                close();
+                System.exit(0);
+             }
+
+        //System.exit(0);
+
+      //}//diaman002*/
+  }
 } /* end class DApplication */

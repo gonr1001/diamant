@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.23 $  $Date: 2003-06-02 15:05:36 $
+ * Title: DDocument $Revision: 1.24 $  $Date: 2003-06-04 16:21:14 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -67,6 +67,7 @@ public class DDocument implements ActionListener, DModelListener{
   public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
     _dApplic = dApplic;
     buidDocument(title, ttStruct);
+    _modified=true;
   } // end constructor DDocument()
 
 

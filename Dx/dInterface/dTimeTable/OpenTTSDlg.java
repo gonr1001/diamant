@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
+import com.iLib.gDialog.InformationDlg;
 
 import java.awt.Dimension;
 
@@ -67,8 +68,10 @@ import dResources.DConst;
  //    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
 
      if(error.length()==0){
-       JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,
-                                   DConst.IMP_A_TD, JOptionPane.INFORMATION_MESSAGE);
+
+       new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
+      // JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,
+      //                             DConst.IMP_A_TD, JOptionPane.INFORMATION_MESSAGE);
      }else{
        new FatalProblemDlg(dApplic.getJFrame(),error);
             System.exit(1);

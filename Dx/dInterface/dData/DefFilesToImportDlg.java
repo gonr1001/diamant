@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.3 $  $Date: 2003-05-27 10:22:48 $
+ * Title: DefFileToImportDlg $Revision: 1.4 $  $Date: 2003-06-04 16:25:17 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.4 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -43,6 +43,7 @@ import javax.swing.JOptionPane;
 import com.iLib.gIO.ByteOutputFile;
 import com.iLib.gException.IOFileException;
 import com.iLib.gDialog.FatalProblemDlg;
+import com.iLib.gDialog.InformationDlg;
 import dInterface.DApplication;
 
 import dResources.DConst;
@@ -79,8 +80,8 @@ public class DefFilesToImportDlg extends JDialog
     */
    DApplication _dApplic;
 
-   public DefFilesToImportDlg(DApplication dApplic, String str) {
-     super(dApplic.getJFrame(),str);
+   public DefFilesToImportDlg(DApplication dApplic) {
+     super(dApplic.getJFrame(),DConst.DEF_F_TD);
      _dApplic = dApplic;
      initDlg();
    } // end constructor
@@ -167,11 +168,9 @@ public class DefFilesToImportDlg extends JDialog
          _tfStudents.getText().length() == 0 ||
          _tfInstructors.getText().length() == 0 ||
          _tfRooms.getText().length() == 0)
-         JOptionPane.showMessageDialog(this,
-                     DConst.DEF_F_D5 + DConst.DEF_F_D6,
-                     DConst.PROBLEM,
-                     JOptionPane.WARNING_MESSAGE);
-      else {
+        new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D5 + DConst.DEF_F_D6);
+
+     else {
         saveInFile();
         dispose();
       } //end (_tfActivities.getText().length() == 0 || ...
@@ -218,8 +217,6 @@ public class DefFilesToImportDlg extends JDialog
     fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIM},
                 DConst.DIM_FILE ) );
     // Display the file chooser in a dialog
-//    Dimension d = fc.getPreferredSize();
-//    fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
     int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
 
     // If the file chooser exited sucessfully,
@@ -231,8 +228,8 @@ public class DefFilesToImportDlg extends JDialog
       fil = fil.concat(DConst.DOT_DIM);
     saveFile(fil);
     _dApplic.setCurrentDir(fc.getSelectedFile().getAbsolutePath());
-    JOptionPane.showMessageDialog(this, DConst.DEF_F_D7 + fil,
-      DConst.DEF_F_D8, JOptionPane.INFORMATION_MESSAGE);
+
+    new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + fil);
     }
   }
 

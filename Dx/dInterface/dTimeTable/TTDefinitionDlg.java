@@ -34,6 +34,9 @@ import dInternal.DModelListener;
 import dInternal.DModelEvent;
 import dInterface.DApplication;
 
+import com.iLib.gDialog.InformationDlg;
+import dResources.DConst;
+
 //import diamant002.utilities.NumberTextField;
 //import diamant002.dInternal.DPeriod;
 
@@ -553,6 +556,7 @@ class TTDefinitionDlg extends JDialog
       minute = Integer.parseInt(st.nextToken());
         }
     catch (Exception nfe) {
+       //new InformationDlg(_dApplic.getJFrame(), DConst.IMP_A_SUC);
       JOptionPane.showMessageDialog( this, MES07, MES08,
                                      JOptionPane.WARNING_MESSAGE);
       ((JTextField)e.getSource()).setText("");
