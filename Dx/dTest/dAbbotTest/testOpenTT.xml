@@ -2,6 +2,7 @@
 <AWTTestScript desc="Script (D:\Developpements\DiamantExtreme\Dx\dTest\dAbbotTest\testNewTT.xml) ">
   <component id="OK 1" class="javax.swing.JButton" index="0" title="Fatal Problem" tag="OK" />
   <component id="Cycle" class="dInterface.CmdMenu" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Cycle" />
+  <component id="Fermer horaire 1" class="dInterface.CmdMenu" index="3" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Fermer horaire" />
   <component id="JScrollPane Instance 2" class="javax.swing.JScrollPane" parent="JPanel Instance 7" index="0" title="Ouvrir" />
   <component id="Grille horaire Cycle" class="javax.swing.JDialog" title="Grille horaire Cycle" tag="Grille horaire Cycle" />
   <component id="PeriodPanel Instance" class="dInterface.dTimeTable.PeriodPanel" parent="JPanel Instance 4" index="1" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" />
@@ -15,8 +16,9 @@
   <component id="JPanel Instance 5" class="javax.swing.JPanel" parent="PeriodPanel Instance" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" />
   <component id="Ouvrir" class="javax.swing.JButton" index="1" title="Importation de fichiers" tag="Ouvrir" />
   <component id="JViewport Instance 1" class="javax.swing.JViewport" parent="JScrollPane Instance 1" index="0" title="Importation de fichiers" />
-  <component id="JPanel Instance 3" class="javax.swing.JPanel" parent="JPanel Instance 2" index="0" title="Importation de fichiers" />
   <component id="JViewport Instance" class="javax.swing.JViewport" parent="JScrollPane Instance" index="0" title="Grille horaire Cycle" />
+  <component id="JPanel Instance 3" class="javax.swing.JPanel" parent="JPanel Instance 2" index="0" title="Importation de fichiers" />
+  <component id="Ouvrir horaire 1" class="dInterface.CmdMenu" index="2" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Ouvrir horaire" />
   <component id="JFileChooser Instance 2" class="javax.swing.JFileChooser" parent="null.contentPane 3" index="0" title="Ouvrir" />
   <component id="Importation de fichiers" class="javax.swing.JDialog" title="Importation de fichiers" tag="Importation de fichiers" />
   <component id="JList Instance 1" class="javax.swing.JList" parent="JViewport Instance 1" index="0" title="Importation de fichiers" />
@@ -28,6 +30,7 @@
   <component id="null.layeredPane 2" class="javax.swing.JLayeredPane" name="null.layeredPane" parent="Importation de fichiers Root Pane" index="1" title="Importation de fichiers" />
   <component id="null.contentPane 2" class="javax.swing.JPanel" name="null.contentPane" parent="null.layeredPane 2" index="0" title="Importation de fichiers" />
   <component id="Annuler 1" class="javax.swing.JButton" index="3" title="Importation de fichiers" tag="Annuler" />
+  <component id="D:\Developpements\DiamantExtreme\Dx\data\test.dia" class="javax.swing.JInternalFrame" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="D:\Developpements\DiamantExtreme\Dx\data\test.dia" />
   <component id="WindowsInternalFrameTitlePane under D:\Developpements\DiamantExtreme\Dx\Sans titre" class="com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane" index="1" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="WindowsInternalFrameTitlePane under D:\Developpements\DiamantExtreme\Dx\Sans titre" />
   <component id="A propos de Diamant 1.5 " class="dInterface.CmdMenu" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="A propos de Diamant 1.5 " />
   <component id="Quitter" class="dInterface.CmdMenu" index="11" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Quitter" />
@@ -45,10 +48,10 @@
   <component id="OK" class="javax.swing.JButton" index="0" title="Information" tag="OK" />
   <component id="Ouvrir 1" class="javax.swing.JButton" index="1" title="Ouvrir" tag="Ouvrir" />
   <component id="null.layeredPane 1" class="javax.swing.JLayeredPane" name="null.layeredPane" parent="D:\Developpements\DiamantExtreme\Dx\Sans titre Root Pane" index="1" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" />
-  <component id="null.contentPane 1" class="javax.swing.JPanel" name="null.contentPane" parent="null.layeredPane 1" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" />
   <component id="Nom de fichier : 1" class="javax.swing.JTextField" index="1" title="Importation de fichiers" tag="Nom de fichier :" />
-  <component id="JScrollPane Instance 1" class="javax.swing.JScrollPane" parent="JPanel Instance 3" index="0" title="Importation de fichiers" />
+  <component id="null.contentPane 1" class="javax.swing.JPanel" name="null.contentPane" parent="null.layeredPane 1" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" />
   <component id="Fermer horaire" class="dInterface.CmdMenu" index="2" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Fermer horaire" />
+  <component id="JScrollPane Instance 1" class="javax.swing.JScrollPane" parent="JPanel Instance 3" index="0" title="Importation de fichiers" />
   <component id="Nouvel horaire" class="javax.swing.JMenu" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Nouvel horaire" />
   <component id="JPanel Instance 4" class="javax.swing.JPanel" parent="JViewport Instance 2" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" />
   <component id="Importer automatiquement" class="dInterface.CmdMenu" index="8" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Importer automatiquement" />
@@ -65,5 +68,21 @@
   <component id="OK 2" class="javax.swing.JButton" index="0" title="A propos de Diamant 1.5 " tag="OK" />
   <component id="Fichier" class="javax.swing.JMenu" index="0" title="Diamant 1.5    13 mai 2003   D:\Developpements\DiamantExtreme\Dx" tag="Fichier" />
   <launch classpath="D:/Developpements/Temp/Dx/Proto/classes;D:/Developpements/DiamantExtreme/Dx/theLibrary/theLibrary.jar;D:/Developpements/DiamantExtreme/Dx/theLibrary/xmlLibrary.jar" delegate="false" args="[]" class="DRun" method="main" />
+  <sequence>
+    <action args="Ouvrir horaire 1" method="actionSelectMenuItem" />
+    <wait args="Ouvrir" class="abbot.tester.ComponentTester" method="assertFrameShowing" />
+    <action args="JList Instance 1, data, BUTTON1_MASK" method="actionClick" />
+    <action class="javax.swing.JList" args="JList Instance 2,test.dia" method="actionSelectValue" />
+    <action class="javax.swing.AbstractButton" args="Ouvrir 1" method="actionClick" />
+    <wait invert="true" args="Ouvrir" class="abbot.tester.ComponentTester" method="assertFrameShowing" />
+    <wait invert="true" args="D:\Developpements\DiamantExtreme\Dx\data\test.dia" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <wait args="D:\Developpements\DiamantExtreme\Dx\data\test.dia" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <wait invert="true" args="0x0" class="abbot.tester.ComponentTester" method="assertFrameShowing" />
+    <action args="Fermer horaire 1" method="actionSelectMenuItem" />
+    <wait args="Sélectionnez une option" class="abbot.tester.ComponentTester" method="assertFrameShowing" />
+    <action class="javax.swing.AbstractButton" args="Non" method="actionClick" />
+    <wait invert="true" args="Sélectionnez une option" class="abbot.tester.ComponentTester" method="assertFrameShowing" />
+  </sequence>
+  <terminate />
 </AWTTestScript>
 

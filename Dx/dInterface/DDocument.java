@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.42 $  $Date: 2003-07-04 10:34:19 $
+ * Title: DDocument $Revision: 1.43 $  $Date: 2003-07-07 09:44:24 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -62,25 +62,26 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
-  //for new timetable
-  public DDocument(DApplication dApplic, String fullPath, int type, TTStructure ttStruct) {
+  //for a new timetable
+  public DDocument(DApplication dApplic, String fullPath, int type, String ttStructPath) {
     _dApplic = dApplic;
-    _dm = new DModel(_dApplic, type, ttStruct);
-    _dm.getTTStructure().addTTStructureListener(this);
+    if (ttStructPath != null) {  // for a new timetable
+    _dm = new DModel(_dApplic, type, ttStructPath);
+    } else {  //for an open timetable
+      _dm = new DModel(_dApplic, fullPath);
+    } _dm.getTTStructure().addTTStructureListener(this);
     buidDocument(fullPath);
-    //_modified=true;
   } // end constructor DDocument()
 
-  //for open timetable
+  //for an open timetable
   //-------------------------------------------
-  public DDocument(DApplication dApplic, String fullPath) {
+/*  public DDocument(DApplication dApplic, String fullPath) {
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, fullPath);
     addTTListener(_dm.getTTStructure());
     _dm.getTTStructure().addTTStructureListener(this);
     buidDocument(fullPath);
-    //_modified=true;
-  } // end constructor DDocument()
+  } // end constructor DDocument()*/
 
   //for new timetable Structure
    public DDocument(DApplication dApplic, String fullPath, int type, boolean onlyStruc) {
@@ -205,14 +206,14 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
       _ttPanel.setText("Change done");
     } // initBottomPanel*/
 
-    public void actionPerformed(ActionEvent  e) {
-    if (e.getSource() instanceof CommandHolder) {
-     ((CommandHolder) e.getSource()).getCommand().execute(_dApplic);
-    }
-    else {
-    System.out.println("I do not know what to do, please help me (Action Performed)");
-    }// end if ... else
-    }// end actionPerformed
+     public void actionPerformed(ActionEvent  e) {
+       if (e.getSource() instanceof CommandHolder) {
+         ((CommandHolder) e.getSource()).getCommand().execute(_dApplic);
+       }
+       else {
+         System.out.println("I do not know what to do, please help me (Action Performed)");
+       }// end if ... else
+     }// end actionPerformed
 
     public void changeInDModel(DModelEvent  e) {
       this.updateStatusPanel();

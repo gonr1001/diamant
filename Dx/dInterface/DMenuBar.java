@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.32 $  $Date: 2003-07-03 09:45:31 $
+ * Title: DMenuBar $Revision: 1.33 $  $Date: 2003-07-07 09:44:24 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -71,7 +71,22 @@ public class DMenuBar extends JMenuBar{
     mHello.setCommand(new HelloCmd());
     mHello.addActionListener(_dApplic);
     menu.addSeparator();*/
+    boolean ABBOT_TEST = true;
+    if (ABBOT_TEST) {
+      CmdMenu mNTTCy = new CmdMenu(DConst.NTT_CY);
+      mNTTCy.setFont( new java.awt.Font(_mfont, _font, _nPT));
+      mNTTCy.setCommand(new NewTTCyCmd());
+      mNTTCy.addActionListener(_dApplic);
+      menu.add(mNTTCy);
 
+      CmdMenu mNTTEx = new CmdMenu(DConst.NTT_EX);
+      mNTTEx.setFont( new java.awt.Font(_mfont, _font, _nPT));
+      mNTTEx.setCommand(new NewTTExCmd());
+      mNTTEx.addActionListener(_dApplic);
+      menu.add(mNTTEx);
+
+
+    } else {
     JMenu mNewTT = new JMenu(DConst.NEW_TT);
     mNewTT.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
@@ -88,7 +103,7 @@ public class DMenuBar extends JMenuBar{
     mNewTT.add(mNTTEx);
 
     menu.add(mNewTT);
-
+    }
     CmdMenu mOpenTT = new CmdMenu(DConst.OPEN);
     menu.add(mOpenTT);
     mOpenTT.setFont(new java.awt.Font(_mfont, _font, _nPT));

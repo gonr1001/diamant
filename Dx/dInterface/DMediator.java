@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.19 $  $Date: 2003-07-03 17:01:09 $
+ * Title: DMediator $Revision: 1.20 $  $Date: 2003-07-07 09:44:24 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -49,19 +49,19 @@ public class DMediator {
     return _cancel;
   }
   //-------------------------------------------
-  //for new TimeTable
-  public String addDoc(String fullPath, int type, TTStructure ttStruct) {
-    //String error = "";
+  //for new TimeTable and open TimeTable
+  public String addDoc(String fullPath, int type, String ttStructPath) {
     DDocument currentDoc;
-    if (ttStruct != null) {  //for new TimeTable
-      currentDoc = new DDocument(_dApplic, fullPath, type, ttStruct);
+    if (ttStructPath != null) {  //for new TimeTable
+      currentDoc = new DDocument(_dApplic, fullPath, type, ttStructPath);
     } else {                 //for open TimeTable
-      currentDoc = new DDocument(_dApplic, fullPath);
+      currentDoc = new DDocument(_dApplic, fullPath, 0, null);
     }
     _documents.addElement(currentDoc);
     //_dApplic.getToolBar().setToolBars(ttStruct);
     return currentDoc.getError();
   } //end addDoc
+
 
   //for new ttStructure and for open
   public String addDoc(String fullPath, int type, boolean onlyStruc) {

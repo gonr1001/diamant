@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.13 $  $Date: 2003-07-03 11:52:03 $
+ * Title: NewTTDlg $Revision: 1.14 $  $Date: 2003-07-07 09:44:24 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -37,7 +37,6 @@ import com.iLib.gDialog.FatalProblemDlg;
 import java.awt.Dimension;
 
 import dResources.DConst;
-
 import dInternal.dTimeTable.TTStructure;
 
 
@@ -91,15 +90,19 @@ public class NewTTDlg extends JDialog {
        String fil = fc.getSelectedFile().getAbsolutePath();
        dApplic.setCurrentDir(fil);
        //load ttStructure,
-       TTStructure ttStruct = new TTStructure();
+ /*      TTStructure ttStruct = new TTStructure();
        String error = ttStruct.loadTTStructure(fil);
        if(error.length()!=0){
          new FatalProblemDlg(dApplic.getJFrame(),error);
               System.exit(1);
-       }
-       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, type, ttStruct);
-   //    dApplic.getToolBar().setToolBars(ttStruct);
+       }*/
+       String error =dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, type, fil);
+       //    dApplic.getToolBar().setToolBars(ttStruct);
        //dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+       if(error.length()!=0){
+         new FatalProblemDlg(dApplic.getJFrame(),error);
+         System.exit(1);
+       }
        dispose();
      }
    }// end loadTTData

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.34 $  $Date: 2003-07-04 10:34:19 $
+ * Title: DModel $Revision: 1.35 $  $Date: 2003-07-07 09:44:24 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -48,13 +48,18 @@ public class DModel {
   private int _currentCycle = 1;
 
 //for new
-  public DModel(DApplication dApplic,  int type, TTStructure ttStruct) {
+  public DModel(DApplication dApplic,  int type, String ttStructPath) {
     _error = "";
-    _type = type;
+
     _status = new Status();
     _dApplic = dApplic;
-      _ttStruct = ttStruct;
-    _modified = true;
+    _ttStruct = new TTStructure();
+    _error = _ttStruct.loadTTStructure(ttStructPath);
+
+      _modified = true;
+
+       _type = type;
+
   }
 
   //for open
@@ -100,7 +105,7 @@ public class DModel {
     //test1_setAvailability();
     _modified = true;
   }
-
+public DModel(DApplication dApplic, int i, TTStructure t){}
   public String getError(){
     return _error;
   }
