@@ -103,7 +103,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
 
     _tabbedPane.addChangeListener(this);
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
-    getContentPane().add(buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+    //getContentPane().add(buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
+    getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
   }
 
   /**
@@ -314,11 +315,12 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
    * @param ce
    */
   public void stateChanged( ChangeEvent ce) {
-     System.out.println(((JTabbedPane)ce.getSource()).getSelectedIndex());//debug
+    System.out.println(((JTabbedPane)ce.getSource()).getSelectedIndex());//debug
      if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2 ||
          ((JTabbedPane)ce.getSource()).getSelectedIndex()==1){
        String [] strArray = {DConst.BUT_OPTIONS};
-       buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), strArray);
+       //buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), strArray);
+       ((JPanel)getContentPane().getComponent(1)).getComponent(1).setEnabled(false);
        if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
          setImportReport();
        else
@@ -326,7 +328,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
      }else{// else if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
         //System.out.println("gcCount" +((JPanel)this.getContentPane()).getComponentCount());//debug
         if (((JPanel)this.getContentPane()).getComponentCount() > 0)
-           buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), null);
+           //buttonDisable((JPanel)  ((JPanel)this.getContentPane().getComponent(1)), null);
+        ((JPanel)getContentPane().getComponent(1)).getComponent(1).setEnabled(true);
      }// end if(((JTabbedPane)ce.getSource()).getSelectedIndex()==2)
    }
 
@@ -353,10 +356,8 @@ public class ReportDlg extends JDialog implements ActionListener, ChangeListener
         data = data + DConst.REPORT_PRODUCED_AT + " " + sdf.format(date) + " *****" + DConst.CR_LF + DConst.CR_LF;
         data = data + jta.getText();
         new SaveAsDlg(_dApplic, data);
-      }
-    }
-
-
+      }//end internal if
+    }//end if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
   }//end method
 
 

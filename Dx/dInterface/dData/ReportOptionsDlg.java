@@ -288,7 +288,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    * Builds a vector with the resource fields IDs weather selected or not, depending
    * on the parameter isChoiced
    * @param res
-   * @param isSelected
+   * @param isChoiced
    * @return
    */
   private Vector getChoicedFields(SetOfResources res, boolean isChoiced){
