@@ -10,6 +10,7 @@ import java.awt.Dimension;
 
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -64,9 +65,9 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    */
   private void jbInit(){
     System.out.println("jbInit ");
-    Dimension dlgDim = new Dimension(200, 400);
-    Dimension centerPanelDim = new Dimension((int)dlgDim.getWidth()-10, (int)dlgDim.getHeight()-90);
-    Dimension listPanelDim = new Dimension((int)centerPanelDim.getWidth()-100, (int)dlgDim.getHeight()-10);
+    Dimension dlgDim = new Dimension(400, 400);
+    Dimension centerPanelDim = new Dimension((int)dlgDim.getWidth()-20, (int)dlgDim.getHeight()-90);
+    Dimension listPanelDim = new Dimension((int)centerPanelDim.getWidth()/2-25, (int)dlgDim.getHeight()-10);
     _leftVec = new Vector();
     _leftList = new JList();
     _leftValueLabel = new JLabel();
@@ -74,17 +75,20 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     _rightList = new JList();
     _rightValueLabel = new JLabel();
     JPanel centerPanel = new JPanel();
+    //the BorderLayout Manager assure the good resizing for all the panels belonging dialog
+    centerPanel.setLayout(new BorderLayout());
     centerPanel.setPreferredSize(centerPanelDim);
-    centerPanel.add(DXTools.setListPanel(listPanelDim, _leftList, _leftVec, _leftValueLabel, "Title", mouseListenerLists));
-    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames));
-    centerPanel.add(DXTools.setListPanel(listPanelDim, _rightList, _rightVec, _rightValueLabel, "Title2", mouseListenerLists));
+    centerPanel.add(DXTools.setListPanel(listPanelDim, _leftList, _leftVec, _leftValueLabel, "Title", mouseListenerLists), BorderLayout.WEST);
+    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames), BorderLayout.CENTER);
+    centerPanel.add(DXTools.setListPanel(listPanelDim, _rightList, _rightVec, _rightValueLabel, "Title2", mouseListenerLists), BorderLayout.EAST);
+    centerPanel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
     //buttonsPanel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //Setting the button APPLY disable
     _buttonsPanel.getComponent(1).setEnabled(false);
     //placing the elements into the JDialog
-    setSize(400, 390);
-    setResizable(false);
+    setSize(dlgDim);
+    setResizable(true);
     getContentPane().add(centerPanel, BorderLayout.CENTER);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
   }//end method
