@@ -122,7 +122,7 @@ Il est mis dans \verb!_auxField!.
 
 \pro{String eSelectedCourse} il peut avoir 1 à $n$ \pro{eSelectedCourse}, qui sont considères comme
 une liste de cours, ceci correspond aux cours dans la ligne de type trois.
-Il est mis dans \verb!_DXObject!.
+Il est mis dans \verb!_resourceAttach!.
 
 \section{Fichier d'instructeurs}
 
@@ -167,61 +167,24 @@ le nombre d'enseignants contenus dans ce fichier. Il s'agit d'une ligne du premi
     \begin{enumerate}
     \item La ligne de type 2 est une chaîne de caractères correspondant nom et prénom
     de l'enseignant. La chaîne ne doit pas excéder trente caractères.
-    \item La ligne de disponibilité d'une journée comporte quatorze entiers séparés par
+    \item La ligne de type 3 décrit la disponibilité de l'enseignant sur une journée et comporte quatorze entiers séparés par
     un espace.
     \end{enumerate}
 \end{enumerate}
 
-Les détails de la ligne de type 2.
-
-\begin{itemize}
-      \item Le matricule de l'étudiant qui correspond aux huit premiers caractères
-      du numéro d'identification (Indices 0 à 7).
-       Dans notre exemple, \verb!00900813! pour l'étudiant
-       \verb!LUPIEN! et \verb!00901199! pour l'étudiante \verb!AUDET!.
-      \item Le programme auquel l'étudiant appartient correspond ensuite aux
-      six caractères suivants.
-      Soit \verb!203503! dans le cas du premier étudiant (Indices 8 à 13).
-     \item L'instance du programme que l'étudiant suit correspond aux deux
-      caractères suivants.
-     Soit \verb!07! dans le cas du premier étudiant (Indices 14 à 15).
-      \item Des informations sur l'admission de l'étudiant sont données
-      par les cinq caractères suivants.
-       Les quatre premiers correspondent à l'année d'admission tandis
-       que le cinquième indique le trimestre d'admission.
-        Soit \verb!20003! dans le cas du premier étudiant (Indices 16 à 20).
-    \item Suit ensuite neuf caractères pour indiquer le nom de famille
-    de l'étudiant suivit d'un espace et de son prénom (coupé après neuf espaces) (Indices 21 à 29).
-    Soit, dans notre exemple, \verb!LUPIEN MY! dans le cas de la première étudiante.
-    Dans certains cas le nom prend les neuf caractères.
-    \item Vient alors un chiffre de deux caractères qui correspond en fait au nombre de cours que suit l'étudiant.
-    \verb!05! dans le cas du premier étudiant (Indices 30 à 31).
-\end{itemize}
-
 Les détails de la ligne de type 3.
-Le fichier commence avec un chiffre représentant le nombre d'enseignants qu'il contient.
-Vient ensuite une suite de blocs contenant le nom d'un professeur suivi de sa disponibilité.
- Les \texttt{1} signifient que l'enseignant est disponible à la période correspondante et les 5 qu'il
-ne l'est pas du tout.
 
-Chaque ligne représente une journée, en commençant par lundi, jusqu'à vendredi. Chaque colonne correspond à une heure
-dans la journée (8h30, 9h30, 10h30, 11h30, 12h30, 13h30, 14h30, 15h30, 16h30, 17h30,  18h30, 19h00, 20h00 et 21h00).
- Les disponibilités sont ainsi connues entre 8h30 et 21h00.
+Elle contient la liste des disponibilités d'un enseignant sur une journée et comporte quatorze entiers (0 ou 1) séparés par un espace.
+
+Chacune des cinq lignes de type 3 représente une journée, en commençant par lundi, jusqu'à vendredi. Chaque colonne correspondant à un entier (0 ou 1) représente une heure dans la journée (8h30, 9h30, 10h30, 11h30, 12h30, 13h30, 14h30, 15h30, 16h30, 17h30,  18h30, 19h00, 20h00 et 21h00). Les disponibilités sont ainsi connues entre 8h30 et 21h00.
 
 \subsection{Définition  et utilisation des champs}
 
-\pro{long int eMatricule} correspond aux indices 0 à 7 de la ligne de type deux.
-Il est mis dans \verb!_resourceKey!.
-
-\pro{String eNom} correspond aux indices 21 à 29 de la ligne de type deux.
+\pro{String eNom} correspond aux nom et prénom de la ligne de type deux.
 Il est mis dans \verb!_resourceID!.
 
-\pro{String eAuxField} correspond aux indices 8 à 20 de la ligne de type deux.
-Il est mis dans \verb!_auxField!.
-
-\pro{String eSelectedCourse} il peut avoir 1 à $n$ \pro{eSelectedCourse}, qui sont considères comme
-une liste de cours, ceci correspond aux cours dans la ligne de type trois.
-Il est mis dans \verb!_DXObject!.
+\pro{String eVailability} correspond à la liste des disponibilités des lignes de type trois.
+elle est mise dans \verb!_resourceAttach!.
 
 \section{Fichier d'activités}
 
@@ -282,6 +245,27 @@ D73020
 
 
 \subsection{Signification des données}
+
+Il existe treize types de lignes :
+
+\begin{enumerate}
+    \item la ligne vide;
+    \item l'identification du cours;
+    \item l'état du cours (actif ou inactif);
+    \item le nombre d'activités associées au cours;
+    \item le nom de l'enseignant du cours;
+    \item le nombre d'unités de périodes séparées (exp: une unité de 2h et une autre de 1h);
+    \item la durée de chacune des unités prévues à la ligne précédente;
+    \item le jour et l'heure de debut de chacune des unités décrites à la ligne précédente;
+    \item l'état du local affecté à chaque unité (fixé ou non fixé);
+    \item le nom du local assigné à chaque unité;
+    \item ;
+    \item .
+\end{enumerate}
+
+La structure du fichier :
+
+
 \begin{description}
 \item [Ligne blanche] la première ligne du fichier est une ligne blanche.
 \item [ADM1111   A]   C'est le sigle du cours (\texttt{ADM1111 A} pour la leçon magistrale du cours

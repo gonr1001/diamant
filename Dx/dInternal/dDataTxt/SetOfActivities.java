@@ -386,54 +386,7 @@ public class SetOfActivities extends SetOfResources{
     return false;
   }
 
-  /**
-   * add an activity object in the list
-   * @param Resource the the activity resource
-   * @return boolean result of the operation
-   * */
-  public boolean addActivity(Resource activity){
-      return addResource(activity,1);
-  }
 
-  /**
-   * get an activity object from de the list
-   * @param String the courseName of the activity
-   * @return Resource the activity Resource
-   * */
-  public Resource getActivity(String courseName){
-    if(courseName.length()>=6){
-       return getResource(courseName.substring(0,_COURSENAMELENGTH));
-    }
-    return null;
-  }
-
-  /**
-   * get an activity object from de the list
-   * @param long the key of the activity
-   * @return Resource the activity Resource
-   * */
-  public Resource getActivity(long courseKey){
-      return getResource(courseKey);
-  }
-
-  /**
-   * set an activity Resource object in the list
-   * @param Resource the activity resource
-   * @return boolean result of the operation
-   * */
-  public boolean setActivity(Resource activity){
-    return setResource(activity);
-  }
-
-  /**
-   * remove an activity Resource from de list
-   * @param long the key of the activity
-   * @return boolean result of the operation
-   * */
-  public boolean removeActivity(long activityKey){
-
-    return removeResource(activityKey);
-  }
 
   /**
    * remove an activity Resource from de list
