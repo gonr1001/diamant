@@ -8,21 +8,21 @@ Son objectif est de donner plus d'information sur chaque livrable.
 
 Ce livrable sert à vérifier que les fichiers .sig sont corrects.
 \dia{} peut bénéficier de ce livrable car si l'on utilise \dx{} pour
-vérifier les fichiers à importer, on est sur qu'il n'y a pas d'erreurs ou
+vérifier les fichiers à importer, on est sûr qu'il n'y a pas d'erreurs ou
 des problèmes sur ces fichiers. \dia{} ne fait pas de vérification et
-une erreur sur le fichier peut faire planter le logiciel ou pire
+une erreur sur un fichier peut faire planter le logiciel ou pire
 construire un horaire avec des erreurs.
 
 \subsection{Caractéristiques externes}
 Dans ce livrable les menus \pro{Fichier}, \pro{Preferences} et \pro{Aide} sont fonctionnels.
 
-Dans le menu \pro{Fichier} les sous menus \pro{Définir fichiers à importer}
+Dans le menu \pro{Fichier} les sous-menus \pro{Définir fichiers à importer}
 et \pro{Importer automatiquement}
-sont fonctionnels. Le sous menu \pro{Définir fichiers à importer} permet d'afficher une boîte de dialogue afin
+sont fonctionnels. Le sous-menu \pro{Définir fichiers à importer} permet d'afficher une boîte de dialogue afin
 de choisir les fichiers à importer\footnote{Il s'agit de fichier à la \saphir{}}; ensuite une autre boîte de dialogue permet
 d'indiquer le nom du fichier \pro{.dim} nécessaire à sauvegarder les nom des fichiers.
-Le sous menu \pro{Importer automatiquement} permet d'afficher une boîte de dialogue afin
-de choisir le nom du fichier \pro{.dim}nécessaire pour faire l'importation.
+Le sous-menu \pro{Importer automatiquement} permet d'afficher une boîte de dialogue afin
+de choisir le nom du fichier \pro{.dim} nécessaire pour faire l'importation.
 
 Dans le cas de boîtes de dialogue, où plusieurs réponses sont possibles,
 Il faut traiter tous les cas. Par exemple, buttons \pro{Ok} et
@@ -35,11 +35,11 @@ rencontré.
 Si l'importation se passe sans erreur une boîte de dialogue indique le succès de
 l'importation.
 
-Dans le menu \pro{Preferences} le sous menu \pro{Options L \& F}
+Dans le menu \pro{Preferences} le sous-menu \pro{Options L \& F}
 est fonctionnel. Une boîte de dialogue est affichée et il est possible de
 changer de Look \& Feel de toute l'application.
 
-Dans le menu \pro{Aide} le sous menu \pro{À propos de Diamant 1.5}
+Dans le menu \pro{Aide} le sous-menu \pro{À propos de Diamant 1.5}
 est fonctionnel. Une boîte de dialogue est affichée.
 
 \subsection{Caractéristiques internes}
@@ -64,8 +64,7 @@ Les classes finies (au moins à 90\%) :
     \item \pro{dInterface.dUtil.PLAFCmd}
     \item \pro{dInterface.dUtil.PLAFDlg}
 
-    \item \pro{dInternal.DModelEvent}
-    \item \pro{dInternal.DModelListener}
+
 
     \item \pro{dInternal.dData.Activity}
     \item \pro{dInternal.dData.Assignment}
@@ -146,10 +145,10 @@ via une barre d'outils.
 
 
 \subsection{Caractéristiques externes}
-Dans ce livrable les menus \pro{Fichier}, \pro{Fichier Grille Horaire}
+Dans ce livrable les menus \pro{Fichier}, \verb!Fichier_Grille!
 donnent accès à toutes les fonctions.
 
-Dans le menu \pro{Fichier} les sous menus \pro{Nouvel horaire},
+Dans le menu \pro{Fichier} les sous-menus \pro{Nouvel horaire},
 \pro{Ouvrir horaire},
 \pro{Fermer},
 \pro{Enregistrer},
@@ -161,7 +160,7 @@ Dans le menu \pro{Fichier} les sous menus \pro{Nouvel horaire},
 sont fonctionnels.
 
 Le sous-menu \pro{Nouvel horaire} contient deux sous-sous-menus
-(\pro{Cycle et Examen}).
+(\pro{Horaire Cycle} et  \pro{Horaire Examen}).
 Dans le deux cas, il s'affiche une boîte de dialogue permettant
 de choisir la grille horaire à utiliser pour la construction de l'horaire.
 
@@ -185,7 +184,7 @@ demandant le nom du fichier est affiché. Si le nom du fichier existe
 un dialogue demandant s'il faut l'écraser est affiché.
 
 
-Les sous menus \pro{Définir fichiers à importer}
+Les sous-menus \pro{Définir fichiers à importer}
 et \pro{Importer automatiquement}
 sont fonctionnels. Gardent les mêmes caractéristiques du livrable 1.
 
@@ -201,7 +200,7 @@ Cliquer sur la X de l'application fait la même chose que \pro{Quitter}.
 
 
 
-Dans le menu \pro{Fichier Grille Horaire} les sous-menus \pro{Nouvelle grille},
+Dans le menu \verb+Fichier_Grille+ les sous-menus \pro{Nouvelle grille},
 \pro{Ouvrir Grille},
 \pro{Fermer},
 \pro{Enregistrer} et
@@ -216,31 +215,39 @@ Lorsque un sous-menu \pro{Nouvelle grille} ou un sous-menu
 horaire et une barre d'outils est affichée à l'écran et elle est prête
 à accepter le commandes.
 
+Le sous-menu \pro{Nouvel grille} contient deux sous-sous-menus
+(\pro{Grille Cycle} et  \pro{grille Examen}).
+Dans le deux cas,
+il affiche une grille horaire pour définir une nouvelle.
+La grille portera le nom \pro{Sans titre}.
 
-Le sous-menu \pro{Nouvelle grille} affiche la barre d'outils et
-ouvre une fenêtre avec une grille horaire par default.
 
 Le sous-menu \pro{Ouvrir grille} ouvre une boîte de dialogue
 pour choisir le fichier contenant la grille horaire (\pro{.dtt},
 une fois le fichier choisi, affiche la barre d'outils et
 ouvre une fenêtre avec une grille horaire correspondant au fichier.
+Cette barre disparaît lorsque la grille est fermée.
+
+Les deux sous-sous-menus de \pro{Nouvelle grille} et le sous-menu \pro{Ouvrir grille}
+ affichent la barre d'outils et
+ouvre une fenêtre avec une grille horaire.
 
 La barre à outils permet de changer les nombre de jours d'une grille
 horaire, de changer le nom associé à une journée
 et de changer la priorité d'une période ou d'un ensemble
 des périodes.
 
-Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
+Le sous-menu \pro{Fermer grille} ferme la grille horaire à l'écran, si nécessaire
 il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
 les dialogue d'enregistrement de fichier suivent.
 
-Le sous-menu \pro{Enregistrer} enregistre sur un fichier
+Le sous-menu \pro{Enregistrer grille} enregistre sur un fichier
 la grille horaire à l'écran,
 si le nom de la grille horaire est \pro{Sans titre} un dialogue de sauvegarde
 demandant le nom du fichier est affiché. Si le nom du fichier existe
 un dialogue demandant s'il faut l'écraser est affiché.
 
-Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier
+Le sous-menu \pro{Enregistrer sous grille} enregistre sur un fichier
 la grille horaire à l'écran,
 un dialogue de sauvegarde
 demandant le nom du fichier est affiché. Si le nom du fichier existe
@@ -252,14 +259,12 @@ Les classes finies pendant ce livrable (au moins à 90\%) :
 
 \begin{itemize}
     \item \pro{dInterface.DToolBar}
-    \item \pro{dInterface.TTSDocument}
 
     \item \pro{dInterface.dTimeTable.CloseCmd}
     \item \pro{dInterface.dTimeTable.NewTTCyCmd}
     \item \pro{dInterface.dTimeTable.NewTTDlg}
     \item \pro{dInterface.dTimeTable.NewTTExCmd}
     \item \pro{dInterface.dTimeTable.NewTTSCyCmd}
-    \item \pro{dInterface.dTimeTable.NewTTSDlg}
     \item \pro{dInterface.dTimeTable.NewTTSExCmd}
     \item \pro{dInterface.dTimeTable.OpenTTCmd}
     \item \pro{dInterface.dTimeTable.OpenTTDlg}
@@ -294,13 +299,15 @@ Les classes finies pendant ce livrable (au moins à 90\%) :
     \item \pro{dTest.dInternal.dTimeTable.TTStructureListener}
 
 
+    \item \pro{dResources.DFileFilter}
+
 \end{itemize}
 
 Les classes en construction :
 
 \begin{itemize}
     \item \pro{DRunTest}
-    \item \pro{dInterface.AbstractDocument}
+
     \item \pro{dInterface.DApplication}
     \item \pro{dInterface.DDocument}
     \item \pro{dInterface.DMediator}
@@ -311,104 +318,132 @@ Les classes en construction :
 
     \item \pro{dInterface.dTimeTable.PeriodPanel}
     \item \pro{dInterface.dTimeTable.TTPanel}
-
+    \item \pro{dInterface.dTimeTable.StatusBar}
     \item \pro{dInternal.DModel}
     \item \pro{dInternal.Preferences}
 
     \item \pro{dInternal.dTimeTable.Period}
 
     \item \pro{dResources.DConst}
-    \item \pro{dResources.DFileFilter}
+
     \item \pro{dResources.DStringFrRes}
 \end{itemize}
-
-
-
-
 \section{Livrable 3}
 
-Tout ce qui était présent dans les livrables precedents continuera à fonctionner.
-Dans le cas de boîtes de dialogue, où plusieurs réponses sont possibles,
-tous les cas seront traités.
-Ce livrable est simplement un point de contrôle pour montrer que tout avance bien.
-Il montre que les données de travail concernant des activités, enseignants,
-étudiants et autres sont changées via l'interface (menu affectation).
-Il fait appel à une bonne partie de l'optimisation, en particulier à l'initialisation
-de données et calcul de conflits.
-
+Tout ce qui était présent dans les livrables precedents continuera
+à fonctionner. Dans le cas de boîtes de dialogue, où plusieurs
+réponses sont possibles, tous les cas seront traités. Ce livrable
+est plus qu'un point de contrôle pour montrer que tout avance
+bien. Il sera possible la construction d'un horaire manuellement
+et son exportation au SIG. Il fait appel à une bonne partie de
+l'optimisation, en particulier à l'initialisation de données et
+calcul de conflits. En un mot presque tout sera fonctionnel mais
+les détails de confort d'utilisation vont venir plus tard. L'idée
+de ce livrable est de le donner aux utilisateurs afin qu'ils
+puissent l'utiliser et avec leurs commentaires fixer des priorités
+pour la suite du développement.
 
 
 \subsection{Caractéristiques externes}
-Dans ce livrable les menus \pro{Affectation}
-est complet et fonctionnel.
 
-Dans le menu \pro{Affectation} les sous menus \pro{Activités},
-\pro{Blocs},
-\pro{Enseignant},
-\pro{Groupes},
-\pro{Locaux} et
-\pro{Définir ensembles}
-sont tous fonctionnels sauf \pro{Définir ensembles}.
+Dans \dx{} nous avons introduit la notion d'événement, qui
+représente une entité à placer dans une période. C'est comme un
+rendez-vous pris par plusieurs personnes pour assister à une
+réunion. Un événement est défini par une activité, un  type, une
+section (groupe) et une unité. Cette dernière  contient l'heure du
+début, la durée, l'enseignant et le local.
 
-Le sous-menu \pro{Activités} affiche une boîte de dialogue avec deux
-listes d'activités : celles inclues et celle exclues.
-Une activité est soit inclue avec
-tous ses groupes et blocs soit elle est exclue.
-Exclue veut dire que cette activité (groupes et blocs) ne sera pas à
-l'horaire.
-Une activité qui est inclue, veut dire que tous les groupes et
-tous les blocs de l'activité seront à l'horaire.
+Il ressemble au bloc de \dia{}, mais il est défini de manière plus
+générale, donnant plus de flexibilité. Un événement n'est pas
+spécifié directement par des données dans un fichier, il  est
+déduit à partir des données contenues dans les fichiers.
 
-Le sous-menu \pro{Blocs} (Events) affiche une boîte de dialogue avec trois
-listes de blocs  figés, placés et non placées.
-Les blocs figés ont été figés au SIG ou par l'utilisateur.
-Les blocs placés sont mis à l'horaire par l'optimisation de
-\dx{}.
-Les blocs non placés n'ont pas été placés par l'optimisation.
-Ces blocs ne vont pas apparaître dans l'horaire.
+Dans ce livrable les menus \pro{Fichier} et \pro{Affectation} sont
+complets et fonctionnels, le menu \pro{Optimisation} est
+partiellement fonctionnel.
 
-Le sous-menu \pro{Groupe}
-affiche une boîte de dialogue permettant
-de choisir les étudiants qui seront figés dans un groupe.
+Dans le menu \pro{Fichier} le sous-menu \pro{Exporter} est
+fonctionnel, il sera donc possible de exporter un horaire et le
+valider au SIG.
 
-Le sous-menu \pro{Locaux} permet de voir la disponibilité d'un local.
-Similaire à la disponibilité des enseignants. Par default un local est
-disponible tout le temps.
+Dans le menu \pro{Affectation} les sous-menus \pro{Activités},
+\pro{Événement}, \pro{Enseignant}, \pro{Groupes}, \pro{Locaux}
+\pro{Définir ensembles} et \pro{Commencer horaire} sont tous
+fonctionnels sauf \pro{Définir ensembles}.
 
-Le sous-menu \pro{Définir ensembles} permet de créer des ensembles afin
-de montrer dans la grille horaire les éléments appartenant à un ensemble.
+Le sous-menu \pro{Activités} affiche une boîte de dialogue avec
+deux listes d'activités : celles inclues et celle exclues. Une
+activité est soit inclue avec tous ses événements associés soit
+elle est exclue. Une activité qui est inclue, veut dire que tous
+les événements associées à l'activité seront à l'horaire. Une
+activité qui est exclue veut dire que pour cette activité aucun de
+ces événements associes ne sera pas à l'horaire.
 
-Dans \dx{} nous avons introduit la notion d'événement, qui est l'entité
-à placer dans une période. Un événement est défini par l'activité, le type,
-la section et l'unité qui contient l'heure du début, la durée,
-l'enseignant et le local. Il ressemble au bloc de \dia{}, mais il est
-défini d'après les données, c'est-à-dire qu'il est déduit à partir des
-données contenues dans les fichiers.
+%%%%%%%%%%%
+
+Le sous-menu \pro{Événements} affiche une boîte de dialogue avec
+trois listes d'événements  figés, placés et non placées. Au départ
+un événement figé est un bloc figé  au SIG. L'utilisateur peut
+aussi le figer, une fois que la construction de l'horaire est
+démarrée. Un événement est placé par l'optimisation de \dx{} ou
+par l'utilisateur. Un événement non placé, veut dire que il le
+sera lorsque l'optimisation sera exécuté. Un événement non placé
+n'apparaît pas  à l'horaire.
+
+Le sous-menu \pro{Groupe} affiche une boîte de dialogue permettant
+de choisir les étudiants qui seront figés dans un groupe (En
+interne le groupe est une section).
+
+Le sous-menu \pro{Enseignant} permet de voir la disponibilité d'un
+enseignant.
+
+Le sous-menu \pro{Locaux} permet de voir la disponibilité d'un
+local. Similaire à la disponibilité des enseignants. Par default
+un local est disponible tout le temps.
+
+La disponibilité des enseignants et des locaux doit être fonction
+de la grille,
+
+Le sous-menu \pro{Définir ensembles} permet de créer des ensembles
+afin de montrer dans la grille horaire les éléments appartenant à
+un ensemble.
+
+Dans le menu \pro{Optimisation} les sous-menus \pro{Groupes de
+même taille}, \pro{Groupes min conflits} seront fonctionnels.
 
 Les actions nécessaires à l'optimisation :
 
+
 \begin{itemize}
-    \item Construction de la liste d'événements à partir de
+    \item Affectation initiale.
+    Elle consiste à placer dans la grille horaire tous
+    les événements figés au SIG. Elle doit faire dans l'ordre :
+    \begin{enumerate}
+         \item Construction de la liste d'événements à partir de
     la liste d'activités.
-    \item Construction de la matrice de conflits d'étudiants.
-    \item Recherche de conflits d'étudiants.
+         \item Construction de la matrice de conflits d'étudiants.
+         \item Construction de la matrice de groupes d'étudiants.
+         \item Affectation de chaque événement dans la grille horaire.
+            \item Recherche de conflits d'étudiants.
     \item Recherche de conflits de locaux.
     L'on doit rechercher les conflits de locaux entre 2 événements
     et les conflits de capacité de local d'un  événement.
      \item Recherche de conflits d'enseignants.
      L'on doit rechercher les conflits d'enseignants entre
      2 événements et les conflits de disponibilité d'un enseignant.
-    \item Affectation d'un événement dans la grille horaire.
-    \item Construction de la matrice de groupe d'étudiants.
+
+    \end{enumerate}
+
+
+
+
     \item Implementation de l'algorithme de balancement des groupes d'étudiants.
     \item Amélioration manuelle.
     Elle consiste à sélectionner un événement
     et à rechercher les potentiels conflits
     (enseignants, locaux, étudiants)
     générés par cet événements dans la grille horaire.
-    \item Affectation initiale.
-    Elle consiste à placer dans la grille horaire tous
-    les événements figés au SIG.
+
 \end{itemize}
 
 
@@ -435,13 +470,18 @@ Les classes finies pendant ce livrable (au moins à 90\%) :
     \item \pro{dInterface.dData.GroupingCmd}
     \item \pro{dInterface.dData.GroupingDlg}
     \item \pro{dInterface.dData.RoomAvailabilityCmd}
-    \item \pro{dInterface.dData.RoomAvailabilityDlg}s
+    \item \pro{dInterface.dData.RoomAvailabilityDlg}
+
+    \item \pro{dInternal.dTimeTable.Period}
+
 
     \item \pro{dInternal.dOptimization.DEvent}
     \item \pro{dInternal.dOptimization.SetOfDEvents}
     \item \pro{dInternal.dOptimization.DMatrix}
     \item \pro{dInternal.dOptimization.DMatrixSection}
     \item \pro{dInternal.dOptimization.DConflicts}
+
+     \item \pro{dTest.dInternal.dTimeTable.Period}
 
     \item \pro{dTest.dInternal.dOptimization.DEvent}
     \item \pro{dTest.dInternal.dOptimization.SetOfDEvents}
@@ -471,64 +511,59 @@ Les classes en construction :
 
 \section{Livrable 4}
 
-Tout ce qui était présent dans les livrables precedents continuera à fonctionner.
-Dans le cas de boîtes de dialogue, où plusieurs réponses sont possibles,
-tous les cas seront traités.
-Ce livrable est plus qu'un point de contrôle,
-Il sera possible de construire un horaire au complet, mais les utilisateurs
-ne pourront pas encore l'utiliser. L'horaire sera construit manuellement à
-partir des données réelles, les fichiers d'exportations seront produits.
-En en mot presque tout sera fonctionnel mais les détails de confort d'utilisation
-vont venir plus tard.
+Tout ce qui était présent dans les livrables precedents continuera
+à fonctionner. Dans le cas de boîtes de dialogue, où plusieurs
+réponses sont possibles, tous les cas seront traités. Ce livrable
+est plus qu'un point de contrôle, Il sera possible de construire
+un horaire au complet, mais les utilisateurs ne pourront pas
+encore l'utiliser. L'horaire sera construit manuellement à partir
+des données réelles, les fichiers d'exportations seront produits.
+En en mot presque tout sera fonctionnel mais les détails de
+confort d'utilisation vont venir plus tard.
 
 
 
 \subsection{Caractéristiques externes}
-Dans ce livrable les menus \pro{Affectation}
-est complet et fonctionnel.
+Dans ce livrable les menus \pro{Affectation} est complet et
+fonctionnel.
 
-Dans le menu \pro{Affectation} les sous menus \pro{Activités},
-\pro{Blocs},
-\pro{Enseignant},
-\pro{Groupes},
-\pro{Locaux} et
-\pro{Définir ensembles}
-sont tous fonctionnels sauf \pro{Définir ensembles}.
+Dans le menu \pro{Affectation} les sous-menus \pro{Activités},
+\pro{Blocs}, \pro{Enseignant}, \pro{Groupes}, \pro{Locaux} et
+\pro{Définir ensembles} sont tous fonctionnels sauf \pro{Définir
+ensembles}.
 
-Le sous-menu \pro{Activités} affiche une boîte de dialogue avec deux
-listes d'activités : celles inclues et celle exclues.
-Une activité est soit inclue avec
-tous ses groupes et blocs soit elle est exclue.
-Exclue veut dire que cette activité (groupes et blocs) ne sera pas à
+Le sous-menu \pro{Activités} affiche une boîte de dialogue avec
+deux listes d'activités : celles inclues et celle exclues. Une
+activité est soit inclue avec tous ses groupes et blocs soit elle
+est exclue. Exclue veut dire que cette activité (groupes et blocs)
+ne sera pas à l'horaire. Une activité qui est inclue, veut dire
+que tous les groupes et tous les blocs de l'activité seront à
 l'horaire.
-Une activité qui est inclue, veut dire que tous les groupes et
-tous les blocs de l'activité seront à l'horaire.
 
-Le sous-menu \pro{Blocs} (Events) affiche une boîte de dialogue avec trois
-listes de blocs  figés, placés et non placées.
-Les blocs figés ont été figés au SIG ou par l'utilisateur.
-Les blocs placés sont mis à l'horaire par l'optimisation de
-\dx{}.
-Les blocs non placés n'ont pas été placés par l'optimisation.
-Ces blocs ne vont pas apparaître dans l'horaire.
+Le sous-menu \pro{Blocs} (Events) affiche une boîte de dialogue
+avec trois listes de blocs  figés, placés et non placées. Les
+blocs figés ont été figés au SIG ou par l'utilisateur. Les blocs
+placés sont mis à l'horaire par l'optimisation de \dx{}. Les blocs
+non placés n'ont pas été placés par l'optimisation. Ces blocs ne
+vont pas apparaître dans l'horaire.
 
-Le sous-menu \pro{Groupe}
-affiche une boîte de dialogue permettant
+Le sous-menu \pro{Groupe} affiche une boîte de dialogue permettant
 de choisir les étudiants qui seront figés dans un groupe.
 
-Le sous-menu \pro{Locaux} permet de voir la disponibilité d'un local.
-Similaire à la disponibilité des enseignants. Par default un local est
-disponible tout le temps.
+Le sous-menu \pro{Locaux} permet de voir la disponibilité d'un
+local. Similaire à la disponibilité des enseignants. Par default
+un local est disponible tout le temps.
 
-Le sous-menu \pro{Définir ensembles} permet de créer des ensembles afin
-de montrer dans la grille horaire les éléments appartenant à un ensemble.
+Le sous-menu \pro{Définir ensembles} permet de créer des ensembles
+afin de montrer dans la grille horaire les éléments appartenant à
+un ensemble.
 
-Dans \dx{} nous avons introduit la notion d'événement, qui est l'entité
-à placer dans une période. Un événement est défini par l'activité, le type,
-la section et l'unité qui contient l'heure du début, la durée,
-l'enseignant et le local. Il ressemble au bloc de \dia{}, mais il est
-défini d'après les données, c'est-à-dire qu'il est déduit à partir des
-données contenues dans les fichiers.
+Dans \dx{} nous avons introduit la notion d'événement, qui est
+l'entité à placer dans une période. Un événement est défini par
+l'activité, le type, la section et l'unité qui contient l'heure du
+début, la durée, l'enseignant et le local. Il ressemble au bloc de
+\dia{}, mais il est défini d'après les données, c'est-à-dire qu'il
+est déduit à partir des données contenues dans les fichiers.
 
 Les actions nécessaires à l'optimisation :
 

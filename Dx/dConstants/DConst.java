@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.32 $  $Date: 2003-07-11 12:23:23 $
+ * Title: DConst $Revision: 1.33 $  $Date: 2003-07-14 17:23:02 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.33 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -105,7 +105,8 @@ public class DConst {
   public final static String O_TTSTD  = res.getString("oTTSTD");
 
   public final static String CLOSE_TTS  = res.getString("closeTTS");
-
+  public final static String SAVE_TTS  = res.getString("saveTTS");
+  public final static String SAVE_AS_TTS  = res.getString("saveAsTTS");
 
   public final static String ASSIGN = res.getString( "assign");
   public final static String INST_ASSIGN_M = res.getString( "instAssignM");
