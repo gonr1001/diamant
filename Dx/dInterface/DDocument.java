@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.71 $  $Date: 2003-09-11 23:40:44 $
+ * Title: DDocument $Revision: 1.72 $  $Date: 2003-09-16 10:13:42 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.71 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.72 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -57,7 +57,8 @@ public class DDocument  extends InternalFrameAdapter implements
     ActionListener, DModelListener, TTStructureListener, SetOfStatesListener,
     SetOfActivitiesListener, SetOfStudentsListener, SetOfInstructorsListener,
     SetOfRoomsListener, SetOfEventsListener{
-  private DApplication _dApplic;
+  //private DApplication _dApplic;
+  private DMediator _dMediator;
   private JInternalFrame _jif;
   private String _documentName;
   private TTPanel _ttPanel;
@@ -70,10 +71,10 @@ public class DDocument  extends InternalFrameAdapter implements
 
   //for a new timetable and a open timetable
   //for new timetable Structure and open timetable Structure from a file
-  public DDocument(DApplication dApplic, String ttName, String fileName, int type) {
-    _dApplic = dApplic;
-    _dApplic.getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    _dm = new DModel(_dApplic, fileName, type);
+  public DDocument(DMediator dMediator, String ttName, String fileName, int type) {
+    _dMediator = dMediator;
+    _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    _dm = new DModel(this, fileName, type);
     if(_dm.getError().length()==0){
       //addTTListener(_dm.getTTStructure());
       _dm.getTTStructure().addTTStructureListener(this);
@@ -82,11 +83,13 @@ public class DDocument  extends InternalFrameAdapter implements
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _jif.addInternalFrameListener(this);
     }
-    _dApplic.getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   } // end constructor DDocument()
+ public DDocument(){
 
+ }
   public void internalFrameActivated(InternalFrameEvent e) {
-    _dApplic.getToolBar().setToolBars(getTTStructure());
+    _dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
     //_dApplic.getToolBar().selectBar(0);
   }
 
@@ -111,8 +114,8 @@ public class DDocument  extends InternalFrameAdapter implements
     //-------------------------------------------
 
   public void setCursor(int cursorValue){
-    _dApplic.getDMediator().getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-      _dApplic.getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+    _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
+    _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
   }
 
   public String getError(){
@@ -128,6 +131,11 @@ public class DDocument  extends InternalFrameAdapter implements
     public DModel getDM(){
         return _dm;
     } //end getDModel
+
+    public DMediator getDMediator(){
+      return _dMediator;
+    } //end getDModel
+
 
     public TTPanel getTTPanel(){
       return _ttPanel;
@@ -147,7 +155,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
      public void actionPerformed(ActionEvent  e) {
        if (e.getSource() instanceof CommandHolder) {
-         ((CommandHolder) e.getSource()).getCommand().execute(_dApplic);
+         ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
        }
        else {
          System.out.println("I do not know what to do, please help me (Action Performed)");
@@ -261,7 +269,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setDefaultCloseOperation(_jif.DO_NOTHING_ON_CLOSE);
     _jif.addInternalFrameListener( new InternalFrameAdapter() {
       public void internalFrameClosing( InternalFrameEvent e ) {
-        new CloseCmd().execute(_dApplic);
+        new CloseCmd().execute(_dMediator.getDApplication());
       }
     } );
     //_bottomLablel = new JLabel("hello");
@@ -278,7 +286,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
     _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
     _jif.pack();
-    _dApplic.getDesktop().add(_jif, new Integer(1));
+    _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);
     //to comment if work with jifs
     try {

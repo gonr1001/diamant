@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.68 $  $Date: 2003-09-11 23:40:44 $
+ * Title: DModel $Revision: 1.69 $  $Date: 2003-09-16 10:13:42 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.68 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.69 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import java.awt.Component;
 import java.awt.Cursor;
 import dInterface.DApplication;
+import dInterface.DDocument;
 import dInternal.dData.*;
 import dInternal.dConditionsTest.*;
 import dResources.DConst;
@@ -53,7 +54,8 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   protected SetOfRooms _setOfRooms=null;
   protected SetOfStudents _setOfStudents=null;
   protected SetOfActivities _setOfActivities=null;
-  private DApplication _dApplic;
+ // private DApplication _dApplic;
+  private DDocument _dDocument;
   protected TTStructure _ttStruct;
   protected SetOfEvents _setOfEvents;
   private int _currentCycle = 1;
@@ -68,14 +70,14 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    * @param fileName
    * @param type
    */
-  public DModel(DApplication dApplic, String fileName, int type) {
+  public DModel(DDocument dDocument, String fileName, int type) {
     //System.out.println("type: "+type);
     setModel(this);
     _error = "";
     _setOfStates = new SetOfStates();
     _setOfEvents = new SetOfEvents();
 
-    _dApplic = dApplic;
+    _dDocument = dDocument;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
       _isTimeTable=true;
@@ -135,8 +137,8 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    *
    * @return
    */
-  public DApplication getDApplication(){
-    return _dApplic;
+  public DDocument getDDocument(){
+    return _dDocument;
   }
 
   /**
@@ -206,9 +208,9 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
 
   public void addAllListeners(){
     if (_setOfActivities!=null)
-      _setOfActivities.addSetOfActivitiesListener(_dApplic.getDMediator().getCurrentDoc());
+      _setOfActivities.addSetOfActivitiesListener(_dDocument);
     if(_setOfStudents!=null)
-      _setOfStudents.addSetOfStudentsListener(_dApplic.getDMediator().getCurrentDoc());
+      _setOfStudents.addSetOfStudentsListener(_dDocument);
   }
 
   /**
@@ -218,7 +220,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public String importData(String str) {
     LoadData loadData = new LoadData(str);
-    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR);
+    _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
     _setOfInstructors = loadData.extractInstructors(null, false);
     resizeInstructorsAvailability();//
@@ -247,7 +249,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     buildSetOfEvents();
     _setOfStates.sendEvent();
     addAllListeners();
-    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR);
+    _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
     return "";
   }
 

@@ -62,7 +62,7 @@ import dResources.DConst;
         // get the file name
         String fil = fc.getSelectedFile().getAbsolutePath();
         dApplic.setCurrentDir(fil);
-        String error =dApplic.getDMediator().addDoc(fil, 0);
+        String error = dApplic.getDMediator().addDoc(fil, 0);
         if(error.length()!=0){
           new FatalProblemDlg(dApplic.getJFrame(),error);
           System.exit(1);
