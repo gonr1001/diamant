@@ -1,4 +1,4 @@
-\documentclass{llncs}
+\documentclass{article}
 \bibliographystyle{alpha}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -6,7 +6,41 @@
 
 \usepackage{dfd,hhline}
 \usepackage{verbatim}
+%-----------------------------------------------------------------------------
+%----- Identification des packages nécessaires
+%-----------------------------------------------------------------------------
+
+\usepackage{babel}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+%\usepackage{udstitle,dfd}
+%\newcommand{\diamant}{Diamant}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in} \setlength{\textwidth}{6.0in}
+%\setlength{\parskip}{0.2in}
+\newcounter{auxcounter}
+\renewcommand{\baselinestretch}{1.5}
 \setlength{\parskip}{1.5ex plus0.5ex minus0ex}
+
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small \normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small \normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small \normalsize}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+
+
+\newcommand{\bv}{\verb}
+
+\newcommand{\bve}{\verb*}
+
+\newcommand{\brun}{\noindent $\triangleright$}
+\newcommand{\erun}{$\triangleleft$}
 
 \newcommand{\ang}{\textsf}
 \newcommand{\key}{\textsf}
@@ -15,8 +49,16 @@
 \newcommand{\dos}{\textsc}
 \newcommand{\pro}{\texttt}
 
-\newcommand{\saphir}{SAPHIR}
+\newcommand{\Rar}{~$\Rightarrow$~}
+
 \newcommand{\diamant}{DIAMANT}
+\newcommand{\dia}{DIAMANT 1.0}
+\newcommand{\dx}{DIAMANT 1.5}
+\newcommand{\sig}{SIG}
+
+
+
+\newcommand{\saphir}{SAPHIR}
 \newcommand{\tictac}{Tic-Tac}
 \newcommand{\xp}{eXtreme Programming}
 \def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
@@ -32,10 +74,8 @@
 %\date{}
 
 %%%%%%%%%%%%%%%%%%
-\pagestyle{plain} %% to be commented when sent
-\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small\normalsize}
-\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small\normalsize}
-\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small\normalsize}
+\pagestyle{empty} %% to be commented when sent
+
 %%%%%%%%%%%%%%%%%%
 
 \begin{document}
