@@ -129,12 +129,27 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
           {DConst.R_EVENT1_ID, DConst.R_EVENT1_ID_L},
           {DConst.R_EVENT2_ID, DConst.R_EVENT2_ID_L},
           {DConst.R_NUMBER_OF_CONFLICTS, DConst.R_NUMBER_OF_CONFLICTS_L},
-          {DConst.R_TYPE_OF_CONFLICT, DConst.R_TYPE_OF_CONFLICT_L},
+          {DConst.R_TYPE_OF_CONFLICT, DConst.R_TYPE_OF_CONFLICT_L,
+           "0", DConst.R_STUDENT_CONFLICT,
+           "1", DConst.R_ROOM_CONFLICT,
+           "2", DConst.R_INSTRUCTOR_CONFLICT
+          },
         };
         reportElements = conflictsElements;
         break;
     }//end switch
     for(int i = 0; i < reportElements.length; i++){
+      String[][] subFields = null;
+      //if the field has several sub-fields
+      if (reportElements[i].length > 2){
+        int k = 0;
+        subFields = new String[(reportElements[i].length-2)/2][2];
+        for(int j = 2; j < reportElements[i].length; j = j+2){
+          subFields[k][0] = reportElements[i][j];
+          subFields[k][1] = reportElements[i][j+1];
+          k++;
+        }//end internal for
+      }//end if
       dxv = new DXValue();
       //the field name
       dxv.setStringValue(reportElements[i][1]);
@@ -142,6 +157,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
       dxv.setIntValue(i);
       //if field is selected
       dxv.setBooleanValue(false);
+      //the sub fields in a field
+      dxv.setObjectValue(subFields);
       res = new Resource(reportElements[i][0], dxv);
       _resources.addResource(res, 1);
     }//end for(int i = 0; i < reportElements.length; i++)
