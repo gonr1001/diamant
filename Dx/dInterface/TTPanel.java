@@ -61,7 +61,7 @@ for (int y = 0;/*timeTable.getEarliest()*/ y < 10 /*timeTable.getLatest()*/; y++
     panel.add(label);
 }
 panel.setPreferredSize(new Dimension(35, minHeight));
-setRowHeaderView(panel);
+
 
 GridBagLayout gridbag =new GridBagLayout();
 panel = new JPanel( gridbag );

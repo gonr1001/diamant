@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.1 $  $Date: 2003-02-20 11:07:28 $
+ * Title: PLAFCmd $Revision: 1.2 $  $Date: 2003-03-10 16:31:56 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -31,7 +31,7 @@ public class PLAFCmd implements Command {
        _dView = dView;
     } // end PLAFCmd
     //------------------------------
-    public void execute() {
+    public void execute(JFrame jFrame) {
         new PLAFDlg(_dView, DConst.PLAF_TD);
     } // end execute
 } /* end class PLAFCmd */

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.5 $  $Date: 2003-02-20 11:07:28 $
+ * Title: DMenuBar $Revision: 1.6 $  $Date: 2003-03-10 16:31:55 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -29,14 +29,14 @@ import javax.swing.JMenu;
 
 public class DMenuBar extends JMenuBar{
   DView _dView;
-  JFrame _jFrame;
-  DMediator _mediator;
+  //JFrame _jFrame;
+  //DMediator _mediator;
 
-  public DMenuBar(JFrame jFrame, DView dView, DMediator mediator) {
+  public DMenuBar(DView dView) {
     super();
-    _jFrame = jFrame;
+    //_jFrame = jFrame;
     _dView = dView;
-    _mediator = mediator;
+   // _mediator = mediator;
     createMenuBar();
   }
 
@@ -51,10 +51,10 @@ public class DMenuBar extends JMenuBar{
     this.add( menu );
 
     // Items in menu FILE.
-    CmdMenu mNew = new CmdMenu(DConst.NEW, _jFrame);
+    CmdMenu mNew = new CmdMenu(DConst.NEW);
     menu.add(mNew);
     mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mNew.setCommand(new NewCmd( _mediator));
+    mNew.setCommand(new NewCmd(_dView.getDMediator()));
     mNew.addActionListener(_dView);
 
     //Build the menu EDIT.
@@ -66,13 +66,25 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mCpy = new CmdMenu(DConst.COPY);
     menu.add(mCpy);
     //mNew.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mCpy.setCommand(new DoNothingCmd(_jFrame)); //this, med));
+    mCpy.setCommand(new DoNothingCmd(_dView.getJFrame())); //this, med));
     mCpy.addActionListener(_dView);
     CmdMenu mTTDef = new CmdMenu("TTDialog");//, this);
     menu.add(mTTDef);
     mTTDef.setFont(new java.awt.Font(mfont, font, nPT));
-    mTTDef.setCommand(new TTDefinitionCmd(_jFrame, _mediator));
+    mTTDef.setCommand(new TTDefinitionCmd(_dView.getJFrame(), _dView.getDMediator()));
     mTTDef.addActionListener(_dView);
+
+    //Build the menu ASSIGN.
+    menu = new JMenu(DConst.ASSIGN);
+    menu.setFont( new java.awt.Font( mfont, font, nPT ) );
+    this.add( menu );
+
+    // Items in menu ASSIGN
+    CmdMenu mInstructorAvailability = new CmdMenu(DConst.INST_ASSIGN_M);//, this);
+    menu.add(mInstructorAvailability);
+    mInstructorAvailability.setFont(new java.awt.Font(mfont, font, nPT));
+    mInstructorAvailability.setCommand(new InstructorAvailabilityCmd(_dView.getJFrame()));
+    mInstructorAvailability.addActionListener(_dView);
 
     //Build the menu PREFERENCES.
     menu = new JMenu(DConst.PREF);
@@ -93,7 +105,7 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mAbout = new CmdMenu(DConst.ABOUT_M + DConst.APP_NAME);//, this);
     menu.add(mAbout);
     mAbout.setFont(new java.awt.Font(mfont, font, nPT));
-    mAbout.setCommand(new AboutCmd(_jFrame));
+    mAbout.setCommand(new AboutCmd(_dView.getJFrame()));
     mAbout.addActionListener(_dView);
   } // end createMenus
 

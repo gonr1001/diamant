@@ -1,3 +1,3 @@
-com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+javax.swing.plaf.metal.MetalLookAndFeel
 French
 D:\Developpements\Dx\pref\pref.txt

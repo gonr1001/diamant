@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.7 $  $Date: 2003-03-05 18:00:39 $
+ * Title: DDocument $Revision: 1.8 $  $Date: 2003-03-10 16:31:55 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.8 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -131,7 +131,7 @@ public class DDocument implements ActionListener, DModelListener{
 
     public void actionPerformed(ActionEvent  e) {
     if (e.getSource() instanceof CommandHolder) {
-     ((CommandHolder) e.getSource()).getCommand().execute();
+     ((CommandHolder) e.getSource()).getCommand().execute(_dView.getJFrame());
     }
     else {
     System.out.println("I do not know what to do, please help me (Action Performed)");

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.4 $  $Date: 2003-02-20 11:05:31 $
+ * Title: DConst $Revision: 1.5 $  $Date: 2003-03-10 16:31:56 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -49,8 +49,11 @@ public class DConst {
    final static String PASTE = "Coller";
    final static String CLEAR = "Effacer";
 
-   final static String GRAPHE = "Graphe";
-   final static String RESO = "Ressource";
+  public final static String ASSIGN = res.getString( "assign");
+  public final static String INST_ASSIGN_M = res.getString( "instAssignM");
+  public final static String INST_ASSIGN_TD = res.getString("instAssignTD");
+  public final static String INST_ASSIGN_D = res.getString("instAssignD");
+
    final static String CONS = "Consommateur";
    final static String PROD = "Producteur";
    final static String IRC = "Inducteur R-C";

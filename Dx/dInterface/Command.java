@@ -1,6 +1,6 @@
 /**
  *
- * Title: Command $Revision: 1.1.1.1 $  $Date: 2003-01-23 17:51:40 $
+ * Title: Command $Revision: 1.2 $  $Date: 2003-03-10 16:31:55 $
  * Description: Command is an interface suggested by the
  *              command pattern. All real commands must implement
  *              the method execute which contains the code which
@@ -17,17 +17,19 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1.1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
 
+import javax.swing.JFrame;
 /**
  *
  * Command is an interface suggested by the command pattern.
  *
  */
 public interface Command {
-    public void execute();
+    // public void execute();
+    public void execute(JFrame jframe);
 } /* end interface Command */

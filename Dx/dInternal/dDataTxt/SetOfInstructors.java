@@ -102,4 +102,8 @@ private int numberOfColumns;// represent number of period a day.
     Resource resc = new Resource (0,"Alex", inst);
   }
 
+  public Vector getNamesVector() {
+    return new Vector();
+  }
+
 }
