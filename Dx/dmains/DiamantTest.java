@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.55 $  $Date: 2005-02-08 14:46:05 $
+ * Title: DiamantTest 1.5Test $Revision: 1.56 $  $Date: 2005-02-08 21:07:13 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  * @author  $Author: garr2701 $
  * @since JDK1.3
  */
@@ -46,6 +46,7 @@ import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
+//import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dDataTxt.ActivityTest;
@@ -90,8 +91,7 @@ public class DiamantTest {
   public static Test suite ( ) {
   	  System.out.println("Hello I am in tests");
       TestSuite suite= new TestSuite("Dimanant Tests");
-         
-      /*suite.addTest(InstructorAttachTest.suite());
+     suite.addTest(InstructorAttachTest.suite());
           suite.addTest(ResourceTest.suite());
           suite.addTest(SetOfResourcesTest.suite());
           suite.addTest(SetOfInstructorsTest.suite());
@@ -137,8 +137,9 @@ public class DiamantTest {
           suite.addTest(ByteArrayMessageTest.suite());
           suite.addTest(StandardCollectionTest.suite());
           suite.addTest(DResourceTest.suite());
-          suite.addTest(DSaveDataTest.suite());*/
+          suite.addTest(DSaveDataTest.suite());
           suite.addTest(DSetOfResourcesTest.suite());
+  //        suite.addTest(RoomsAttributesInterpretorTest.suite());
       return suite;
     }
 }

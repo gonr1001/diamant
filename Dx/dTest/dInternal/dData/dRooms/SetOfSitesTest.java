@@ -1,14 +1,26 @@
 package dTest.dInternal.dData.dRooms;
 
 /**
- * <p>Title: Diamant 1.5</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
- */
-
+*
+* Title: SetOfSitesTest $Revision $  $Date: 2005-02-08 21:07:13 $
+* Description: 	SetOfSitesTest is a class used to test the class 
+* 				SetOfSitesTest 
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $ $
+* @author  $Author: garr2701 $
+* @since JDK1.3
+*/
 import java.io.File;
 
 import junit.framework.Test;

@@ -2,15 +2,27 @@
 package dTest.dInternal.dData.dRooms;
 
 /**
- * <p>Title: Diamant 1.5</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, alexander
- * @version 1.0
- */
+*
+* Title: DRoomTest $Revision $  $Date: 2005-02-08 21:07:13 $
+* Description: 	DRoomTest is a class used to test the class 
+* 				DRoomTest 
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $ $
+* @author  $Author: garr2701 $
+* @since JDK1.3
+*/
 
-//public class RoomAttachTest {
 import java.util.Vector;
 
 import junit.framework.Test;
@@ -22,18 +34,15 @@ import dInternal.dData.dRooms.Room;
 import dInternal.dData.dRooms.RoomAttach;
 
 public class DRoomTest extends TestCase {
-	//private StudentAttach _student;
-	
+
 	public DRoomTest(String name) {
 		super(name);
-	}
-	
+	}	
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
 		return new TestSuite(DRoomTest.class);
 	} // end suite
-	
 	
 	public void test_addAvailability(){
 		String str="Z7-2001;80;211;08,11,14,57;SHE;CAT1;Multimedia;1 1 1 1 5," +
@@ -128,8 +137,6 @@ public class DRoomTest extends TestCase {
 		assertEquals("test1_getAvailability: assertEquals", false, compare(availMatrix, roomAttach.getMatrixAvailability()));
 	}
 	
-	
-	
 	/**
 	 * compare matrix1 and matrix2
 	 * @param int[][] the matrix1
@@ -151,5 +158,4 @@ public class DRoomTest extends TestCase {
 			return false;
 		return true;
 	}
-	
 }

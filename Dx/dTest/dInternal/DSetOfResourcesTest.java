@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2005-02-08 14:46:05 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2005-02-08 21:07:13 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -41,6 +41,7 @@ public class DSetOfResourcesTest extends TestCase{
 	DResource resource10;
 	DResource resource11;
 	DResource resource12;
+	DResource resource21;
 	int insertType;
 	
 	public DSetOfResourcesTest(String name) {
@@ -62,6 +63,7 @@ public class DSetOfResourcesTest extends TestCase{
 		resource10 = new DResource("2", new DValue(10,"ten"));
 		resource11 = new DResource("11", new DValue());
 		resource12 = new DResource("12", new DValue());
+		resource21 = new DResource("1", new DValue(1,"One"));
 		// insertType=0 (insert by using key); insertType=1 (insert by using ID)
 		insertType = 0;
 		_sos.addResource(resource1,insertType);
@@ -163,11 +165,30 @@ public class DSetOfResourcesTest extends TestCase{
 		_sos.addResource(resource4,insertType);
 		_sos.addResource(resource3,insertType);
 		_sos.sortSetOfResourcesBySelectedAttachField(1); // 4,3,1,2 
-		System.out.println(_sos.getResourceAt(2).getID());
 		assertTrue(_sos.getResourceAt(2).getID().compareTo("1")==0);
 	}
-	/*public void testA(){
-		assertTrue(true);
-	}*/
+	public void testAgetNamesVector0(){
+		Vector vector=_sos.getNamesVector(0); // sortSetOfResourcesByKey();
+		assertTrue(vector.get(0).toString().compareTo("1")==0);
+	}
+	public void testAgetNamesVector1(){
+		Vector vector=_sos.getNamesVector(1); // sortSetOfResourcesByID();
+		assertTrue(vector.get(1).toString().compareTo("2")==0);	
+	}
 	
+	public void testAgetNamesVector(){
+		Vector vector= new Vector();
+		//	lgd:it's the same function of getNamesVector(0) or getNamesVector(1)
+		_sos.getNamesVector(vector); 
+		assertTrue(vector.get(1).toString().compareTo("2")==0);
+	}
+	
+	public void testAselectIDValue(){
+		Vector vector = _sos.selectIDValue("2");
+		assertTrue(((DResource)vector.get(0)).getKey()==2);
+	}
+	public void testAgetIDsByField(){ 
+		// Not here
+		assertTrue(true);
+	}
 }
