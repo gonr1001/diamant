@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.11 $  $Date: 2003-06-09 10:23:40 $
+ * Title: DMediator $Revision: 1.12 $  $Date: 2003-06-13 17:11:50 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.12 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -82,6 +82,7 @@ public class DMediator {
     getCurrentDoc().setDocumentName(str);
     getCurrentDoc().noModified();
     getCurrentDoc().getDM().rsaveTT(str);
+    getCurrentDoc().getDM().getTTStructure().saveTTStructure(str+".xml");
   }
 
   public void closeCurrentDoc(){
