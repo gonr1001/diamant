@@ -116,7 +116,7 @@ Les classes en construction :
     \item \pro{dInterface.DMenuBar}
 
     \item \pro{dInterface.dData.InstructorAvailabilityCmd}
-    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
+    \item \pro{dInterface.dData.InstructorAvailabilityDlg}
 
     \item \pro{dInterface.dUtil.ExitCmd}
 
@@ -282,6 +282,16 @@ Les classes finies pendant ce livrable (au moins à 90\%) :
     \item \pro{dInternal.dTimeTable.TTStructureEvent}
     \item \pro{dInternal.dTimeTable.TTStructureListener}
 
+    \item \pro{dTest.dInternal.dTimeTable.Cycle}
+    \item \pro{dTest.dInternal.dTimeTable.Day}
+    \item \pro{dTest.dInternal.dTimeTable.Period}
+    \item \pro{dTest.dInternal.dTimeTable.Sequence}
+    \item \pro{dTest.dInternal.dTimeTable.SetOfCycles}
+    \item \pro{dTest.dInternal.dTimeTable.TTStructure}
+    \item \pro{dTest.dInternal.dTimeTable.TTStructureEvent}
+    \item \pro{dTest.dInternal.dTimeTable.TTStructureListener}
+
+
 \end{itemize}
 
 Les classes en construction :
@@ -296,7 +306,7 @@ Les classes en construction :
     \item \pro{dInterface.TTSDocument}
 
     \item \pro{dInterface.dData.InstructorAvailabilityCmd}
-    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
+    \item \pro{dInterface.dData.InstructorAvailabilityDlg}
 
     \item \pro{dInterface.dTimeTable.PeriodPanel}
     \item \pro{dInterface.dTimeTable.TTPanel}
@@ -322,6 +332,8 @@ Tous les cas seront traités.
 Ce livrable est simplement un point de contrôle pour montrer que tout avance bien.
 Il montre que les données de travail concernant des activités, enseignants,
 étudiants et autres sont changées via l'interface (menu affectation).
+Il fait appel à une bonne partie de l'optimisation, en particulier à l'initialisation
+de données et calcul de conflits.
 
 
 
@@ -333,8 +345,8 @@ Dans le menu \pro{Affectation} les sous menus \pro{Activités},
 \pro{Blocs},
 \pro{Enseignant},
 \pro{Groupes},
-\pro{Locaux} et
-\pro{Définir ensembles}
+\pro{Locaux} et ???
+\pro{Définir ensembles} ???
 sont tous fonctionnels sauf \pro{Définir ensembles}.
 
 Le sous-menu \pro{Activités} affiche une boîte de dialogue avec deux
@@ -345,134 +357,57 @@ l'horaire.
 Inclue veut dire que tous les groupes et blocs seront à l'horaire.
 
 Le sous-menu \pro{Blocs} affiche une boîte de dialogue avec trois
-listes de blocs  figés, placés et non placées. Une activité est soit inclue avec
-tous ses groupes et blocs soit elle est exclue.
-Exclue veut dire que cette activité (groupes et blocs) ne sera pas à
-l'horaire.
-Inclue veut dire que tous les groupes et blocs seront à l'horaire.
+listes de blocs  figés, placés et non placées.
+Les blocs figés ont été figés au SIG ou par l'utilisateur.
+Les blocs placés sont mis à l'horaire par l'optimisation de
+\Dx{}.
+Les blocs non placés n'ont pas été placés par l'optimisation.
+Ces blocs ne vont pas apparaître dans l'horaire.
 
-Le sous-menu \pro{Ouvrir horaire}
+Le sous-menu \pro{Groupe}
 affiche une boîte de dialogue permettant
-de choisir le fichier \pro{.dia} contenant un horaire.
+de choisir les étudiants qui seront figés dans un groupe.
 
-Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
-il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
-les dialogue d'enregistrement de fichier suivent.
+Le sous-menu \pro{Locaux} permet de voir l'occupation d'un local.???
 
+Le sous-menu \pro{Définir ensembles} permet de créer des ensembles afin
+de montrer dans la grille horaire les éléments appartenant à l'ensemble.???
 
-Le sous-menu \pro{Enregistrer} enregistre sur un fichier l'horaire à l'écran,
-si le nom de l'horaire est \pro{Sans titre} un dialogue de sauvegarde
-demandant le nom du fichier est affiché. Si le nom du fichier existe
-un dialogue demandant s'il faut l'écraser est affiché.
+Dans \Dx{} nous avons introduit la notion d'événement, qui est l'entité
+à placer dans une période. Un événement est défini par l'activité, le type,
+le groupe, la durée, l'enseignant et le local. Il ressemble au bloc, mais il est
+défini d'après les données, c'est-à-dire qu'il est déduit.
 
-Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier l'horaire à l'écran,
-un dialogue de sauvegarde
-demandant le nom du fichier est affiché. Si le nom du fichier existe
-un dialogue demandant s'il faut l'écraser est affiché.
+Les actions nécessaires à l'optimisation :
 
-
-Les sous menus \pro{Définir fichiers à importer}
-et \pro{Importer automatiquement}
-sont fonctionnels. Gardent les mêmes caractéristiques du livrable 1.
-
-
-Le sous-menu \pro{Exporter} affiche un dialogue pour exporter les données,
-mais le fichier n'est pas produit. Un dialogue indique la méthode à appeler.
-
-Le sous-menu \pro{Quitter} quitte l'application en fermant
-les fenêtres ouvertes et en demandant s'il faut faire les sauvegardes
-des fichiers.
-Cliquer sur la X de l'application fait la même chose que \pro{Quitter}.
-
-
-
-Dans le menu \pro{Grille Horaire} les sous-menus \pro{Nouvelle grille},
-\pro{Ouvrir Grille},
-\pro{Fermer},
-\pro{Enregistrer} et
-\pro{Enregistrer sous}
-sont fonctionnels.
-Lorsqu'un utilisateur travaille sur la grille horaire, c'est sur la structure
-de la grille. Il peut définir la taille de la grille en jours et la priorité
-des périodes.
-Lorsque un sous-menu \pro{Nouvelle grille} ou un sous-menu
-\pro{Ouvrir Grille} sont activés l'utilisateur travaille sur la grille
-horaire et une barre d'outils est affichée à l'écran.
-
-
-Le sous-menu \pro{Nouvelle grille} affiche la barre d'outils et
-ouvre une fenêtre avec une grille horaire par default.
-
-Le sous-menu \pro{Ouvrir grille} ouvre une boîte de dialogue
-pour choisir le fichier contenant la grille horaire (\pro{.dtt},
-une fois le fichier choisi, affiche la barre d'outils et
-ouvre une fenêtre avec une grille horaire correspondant au fichier.
-
-La barre à outils permet de changer les nombre de jours d'une grille
-horaire, de changer le nom associé à une journée
-et de changer la priorité d'une période ou d'un ensemble
-des périodes.
-
-Le sous-menu \pro{Fermer} ferme la grille horaire à l'écran, si nécessaire
-il affiche un dialogue demandant s'il faut enregistrer, si c'est le cas,
-les dialogue d'enregistrement de fichier suivent.
-
-Le sous-menu \pro{Enregistrer} enregistre sur un fichier
-la grille horaire à l'écran,
-si le nom de la grille horaire est \pro{Sans titre} un dialogue de sauvegarde
-demandant le nom du fichier est affiché. Si le nom du fichier existe
-un dialogue demandant s'il faut l'écraser est affiché.
-
-Le sous-menu \pro{Enregistrer sous} enregistre sur un fichier
-la grille horaire à l'écran,
-un dialogue de sauvegarde
-demandant le nom du fichier est affiché. Si le nom du fichier existe
-un dialogue demandant s'il faut l'écraser est affiché.
-
+\begin{itemize}
+    \item Construction de la liste d'événements à partir de
+    la liste d'activités.
+    \item Construction de la matrice de conflits d'étudiants.
+    \item Recherche de conflits d'étudiants.
+    \item Recherche de conflits de locaux.
+    L'on doit rechercher les conflits de locaux entre 2 événements
+    et les conflits de capacité de local d'un  événement.
+     \item Recherche de conflits d'enseignants.
+     L'on doit rechercher les conflits d'enseignants entre
+     2 événements et les conflits de disponibilité d'un enseignant.
+    \item Affectation d'un événement dans la grille horaire.
+    \item Construction de la matrice de groupe d'étudiants.
+    \item Implementation de l'algorithme de balancement des groupes d'étudiants.
+    \item Amélioration manuelle.
+    Elle consiste à sélectionner un événement
+    et à rechercher les potentiels conflits
+    (enseignants, locaux, étudiants)
+    générés par cet événements dans la grille horaire.
+    \item Affectation initiale.
+    Elle consiste à placer dans la grille horaire tous
+    les événements figés au SIG.
+\end{itemize}
 
 
 Les classes finies pendant ce livrable (au moins à 90\%) :
 
 \begin{itemize}
-    \item \pro{dInterface.DToolBar}
-
-    \item \pro{dInterface.dTimeTable.CloseCmd}
-    \item \pro{dInterface.dTimeTable.NewTTCyCmd}
-    \item \pro{dInterface.dTimeTable.NewTTDlg}
-    \item \pro{dInterface.dTimeTable.NewTTExCmd}
-    \item \pro{dInterface.dTimeTable.NewTTSCmd}
-    \item \pro{dInterface.dTimeTable.NewTTSDlg}
-    \item \pro{dInterface.dTimeTable.OpenTTCmd}
-    \item \pro{dInterface.dTimeTable.OpenTTDlg}
-    \item \pro{dInterface.dTimeTable.OpenTTSCmd}
-    \item \pro{dInterface.dTimeTable.OpenTTSDlg}
-    \item \pro{dInterface.dTimeTable.ReWriteFilDlg}
-    \item \pro{dInterface.dTimeTable.SaveAsCmd}
-    \item \pro{dInterface.dTimeTable.SaveAsDlg}
-    \item \pro{dInterface.dTimeTable.SaveCmd}
-
-    \item \pro{dInterface.dUtil.ExitCmd}
-
-    \item \pro{dInternal.DModelEvent}
-    \item \pro{dInternal.DModelListener}
-
-    \item \pro{dInternal.dData.LoadData}
-
-    \item \pro{dInternal.dTimeTable.Cycle}
-    \item \pro{dInternal.dTimeTable.Day}
-    \item \pro{dInternal.dTimeTable.Period}
-    \item \pro{dInternal.dTimeTable.Sequence}
-    \item \pro{dInternal.dTimeTable.SetOfCycles}
-    \item \pro{dInternal.dTimeTable.TTStructure}
-    \item \pro{dInternal.dTimeTable.TTStructureEvent}
-    \item \pro{dInternal.dTimeTable.TTStructureListener}
-
-\end{itemize}
-
-Les classes en construction :
-
-\begin{itemize}
-    \item \pro{DRunTest}
     \item \pro{dInterface.AbstractDocument}
     \item \pro{dInterface.DApplication}
     \item \pro{dInterface.DDocument}
@@ -480,26 +415,57 @@ Les classes en construction :
     \item \pro{dInterface.DMenuBar}
     \item \pro{dInterface.TTSDocument}
 
-    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
-    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
-
     \item \pro{dInterface.dTimeTable.PeriodPanel}
     \item \pro{dInterface.dTimeTable.TTPanel}
 
-    \item \pro{dInterface.dUtil.ExitCmd}
+    \item \pro{dInterface.dData.InstructorAvailabilityCmd}
+    \item \pro{dInterface.dData.InstructorAvailabilityDlg}
+    \item \pro{dInterface.dData.SectionCmd}
+    \item \pro{dInterface.dData.SectionDlg}
+    \item \pro{dInterface.dData.ActivityCmd}
+    \item \pro{dInterface.dData.ActivityDlg}
+    \item \pro{dInterface.dData.DEventCmd}
+    \item \pro{dInterface.dData.DEventDlg}
+    \item \pro{dInterface.dData.GroupingCmd}
+    \item \pro{dInterface.dData.GroupingDlg}
+    \item \pro{dInterface.dData.RoomCmd}
+    \item \pro{dInterface.dData.RoomDlg}
+
+    \item \pro{dInternal.dOptimization.DEvent}
+    \item \pro{dInternal.dOptimization.SetOfDEvent}
+    \item \pro{dInternal.dOptimization.DMatrixEvent}
+    \item \pro{dInternal.dOptimization.DMatrixSection}
+    \item \pro{dInternal.dOptimization.DMatrixRooms}
+    \item \pro{dInternal.dOptimization.DMatrixInstructors}
+
+    \item \pro{dTest.dInternal.dOptimization.DEvent}
+    \item \pro{dTest.dInternal.dOptimization.SetOfDEvent}
+    \item \pro{dTest.dInternal.dOptimization.DMatrixEvent}
+    \item \pro{dTest.dInternal.dOptimization.DMatrixSection}
+    \item \pro{dTest.dInternal.dOptimization.DMatrixRooms}
+    \item \pro{dTest.dInternal.dOptimization.DMatrixInstructors}
+\end{itemize}
+
+Les classes en construction :
+
+\begin{itemize}
+    \item \pro{DRunTest}
 
     \item \pro{dInternal.DModel}
     \item \pro{dInternal.Preferences}
+
+    \item \pro{dInternal.dOptimization.OptimizationEngin}
+    \item \pro{dInternal.dOptimization.OptimizationAlgorithm}
 
     \item \pro{dResources.DConst}
     \item \pro{dResources.DFileFilter}
     \item \pro{dResources.DStringFrRes}
 \end{itemize}
 
-Les actions nécessaires à l'optimisation:
 
 \begin{itemize}
-    \item Construction de la liste d'événements à partir de la liste d'activités (2 jours pour la construction et 1 jour pour les tests).
+    \item Construction de la liste d'événements à partir de
+    la liste d'activités (2 jours pour la construction et 1 jour pour les tests).
     \item Construction de la matrice de conflits d'étudiants (1 jour et demi pour la construction et 1 jour pour les tests).
     \item Recherche de conflits d'étudiants(1 jour pour l'implémentation et 1/2 pour les tests).
     \item Recherche de conflits de locaux. L'on doit rechercher les conflits de locaux entre 2 événements et les conflits de capacité de local d'un  événement (1 jour pour l'implémentation et 1/2 pour les tests).
@@ -509,5 +475,4 @@ Les actions nécessaires à l'optimisation:
     \item Implémentation de l'algorithme de balancement des groupes d'étudiants (2 jours pour l'implémentation et 1 jour pour les tests).
     \item Amélioration manuelle. Elle consiste à sélectionner un événement et à rechercher les potentiels conflits (enseignants, locaux, étudiants) générés par cet événements dans la grille horaire (1 jours pour l'implémentation et 1/2 jour pour les tests).
     \item Affectation initiale. Elle consiste à placer dans la grille horaire tous les événements figés au SIG (1 jours pour l'implémentation et 1/2 jour pour les tests).
-\end{itemize}    
-
+\end{itemize}
