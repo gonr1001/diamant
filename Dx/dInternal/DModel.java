@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.120 $  $Date: 2005-02-03 20:50:43 $
+ * Title: DModel $Revision: 1.121 $  $Date: 2005-02-04 16:14:37 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.120 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.121 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInternal;
@@ -498,6 +498,18 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	
 	
 	/**
+	 * @return Returns the _setOfActivitiesSites.
+	 */
+	public SetOfActivitiesSites get_setOfActivitiesSites() {
+		return _setOfActivitiesSites;
+	}
+	/**
+	 * @return Returns the _setOfStuSites.
+	 */
+	public SetOfStuSites get_setOfStuSites() {
+		return _setOfStuSites;
+	}
+	/**
 	 *
 	 * @return
 	 */
@@ -562,6 +574,13 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	 */
 	public int getCurrentCycle() {
 		return _currentCycle;
+	}
+	
+	/**
+	 * @return Returns the _setOfSites.
+	 */
+	public SetOfSites get_setOfSites() {
+		return _setOfSites;
 	}
 	
 	/**
@@ -889,4 +908,5 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	/*public void registerInterest(Observer obs) {
 		_observers.addElement(obs);
 	}*/
+	
 } /* end class DModel */
