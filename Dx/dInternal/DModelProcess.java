@@ -74,11 +74,14 @@ public class DModelProcess {
       ((State)_dm._setOfStates.getResource(DConst.SB_T_EVENT).getAttach()).setValue(_dm._setOfEvents.size());
       ((State)_dm._setOfStates.getResource(DConst.SB_T_ASSIG).getAttach()).setValue(_dm._setOfEvents.getNumberOfEventAssign());
 
-      ((State)_dm._setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(10);
+      int [] nbConf = _dm.getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
 
-      ((State)_dm._setOfStates.getResource(DConst.SB_C_INST).getAttach()).setValue(1);
-      ((State)_dm._setOfStates.getResource(DConst.SB_C_ROOM).getAttach()).setValue(7);
-      ((State)_dm._setOfStates.getResource(DConst.SB_C_STUD).getAttach()).setValue(2);
+      ((State)_dm._setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(nbConf[0]+
+          nbConf[1]+nbConf[2]);
+
+      ((State)_dm._setOfStates.getResource(DConst.SB_C_INST).getAttach()).setValue(nbConf[0]);
+      ((State)_dm._setOfStates.getResource(DConst.SB_C_ROOM).getAttach()).setValue(nbConf[1]);
+      ((State)_dm._setOfStates.getResource(DConst.SB_C_STUD).getAttach()).setValue(nbConf[2]);
     }
   }
 

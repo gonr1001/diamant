@@ -399,6 +399,27 @@ public Period getLastPeriod(){
    return (Sequence)day.getSetOfSequences().getResource(seqRef).getAttach();
   }
 
+  /**
+   *
+   * @return int[0]= number of instructors conflicts, int[1]= rooms, int[2]= students
+   */
+  public int[] getTotalNumberOfConflicts(){
+    int [] conf={0,0,0};
+    for (int i=0; i< getSetOfDays().size(); i++){
+      Day day = (Day)getSetOfDays().getResourceAt(i).getAttach();
+      for(int j=0; j< day.getSetOfSequences().size(); j++){
+        Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+        for(int k=0; k< seq.getSetOfPeriods().size(); k++){
+          conf[0]+=((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).getNbInstConflict();
+          conf[1]+=((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).getNbRoomConflict();
+          conf[2]+=((Period)seq.getSetOfPeriods().getResourceAt(k).getAttach()).getNbStudConflict();
+        }// end for(int k=0; k< seq.getSetOfPeriods().size(); k++)
+      }// end for(int j=0; j< day.getSetOfSequences().size(); j++)
+
+    }//end for (int i=0; i< getSetOfDays().size(); i++)
+    return conf;
+  }
+
   private SetOfResources _setOfDays;
   private int _periodLength;
   private String _error = "";
