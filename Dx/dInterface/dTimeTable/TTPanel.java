@@ -78,7 +78,7 @@ public class TTPanel extends JScrollPane {
     Cycle cycle =_dm.getTTStructure().getCycle(_dm.getCurrentCycle());
     Day day = _dm.getTTStructure().getDay(cycle,1);
     int numbOfSequences = day.getSetOfSequences().size();
-    JLabel label;
+    JLabel label, label1;
     Period firstPer= _dm.getTTStructure().getFirstPeriod(cycle);
     Period lastPer= _dm.getTTStructure().getLastPeriod(cycle);
     for (int i = firstPer.getBeginHour()[0]; i < lastPer.getEndHour(_periodLenght)[0]; i++) {
