@@ -124,9 +124,12 @@ public class StudentAttach extends DXObject{
       DXValue courseValue= new DXValue();
       //courseValue.setStringValue(course.substring(0,_COURSELENGTH));
       if (course.length()>_COURSELENGTH){
-        courseValue.setIntValue(Integer.parseInt(course.substring(
-            _COURSELENGTH,_COURSELENGTH+2)));
-        courseValue.setBooleanValue(true);//(new Integer (stateInGroup)).intValue();
+        int group= Integer.parseInt(course.substring(
+            _COURSELENGTH,_COURSELENGTH+2));
+        if(group>0){
+          courseValue.setIntValue(group);
+          courseValue.setBooleanValue(true);//(new Integer (stateInGroup)).intValue();
+        }
         if( theGroupDescNb>1){
           if((new Integer (stateInGroup)).intValue()==0)
             courseValue.setBooleanValue(false);

@@ -146,7 +146,8 @@ public class StudentsConflictsMatrix {
           groupInd= this.getIndexOfSmallerValue(tab);//groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
           String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
           Resource student = sos.getResource(Long.parseLong(studentKey));
-          int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();
+          int groupValue = DXTools.STIConvertGroupToInt(((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getID());
+          //int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();
 
           if((!((StudentAttach)student.getAttach()).isFixedInGroup(rescActivity.getID()+rescType.getID(),groupValue))
              && (((StudentAttach)student.getAttach()).getGroup(rescActivity.getID()+rescType.getID())==-1)){

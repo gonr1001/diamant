@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.14 $  $Date: 2004-02-13 20:15:00 $
+ * Title: SectionDlg $Revision: 1.15 $  $Date: 2004-02-23 16:21:06 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.15 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
@@ -469,8 +469,11 @@ public class SectionDlg extends JDialog implements ActionListener{
       _assignedVectors = new Vector[_numberOfSections];
       _assignedLists = new JList[_numberOfSections];
     }
-    for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, i+1, _sortIndex);
+    Type type=_activities.getType(_actID,_typeID);
+    for(int i=0; i< type.getSetOfSections().size(); i++){
+      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());
+    //for(int i = 0; i < _numberOfSections; i++){
+      _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, group, _sortIndex);
       //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
       if (!forUpdate){
         _assignedLists[i] = new JList(_assignedVectors[i]);
