@@ -168,8 +168,8 @@ public class LoadData {
 
 
   public static void main(String[] args) {
-    String path ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"data"+File.separator+"filedata.sig";
-    String pathSave ="D:"+File.separator+"Developpements"+File.separator+"Dx"+File.separator+"data"+File.separator;
+    String path =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"filedata.sig";
+    String pathSave =System.getProperty("user.dir")+ File.separator+"data"+File.separator;
     System.out.println("PATH: "+ path);//debug
     FilterFile filter;
     LoadData ldata=  new LoadData(path);

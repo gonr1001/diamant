@@ -12,7 +12,7 @@
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.0" name="ConfigurationName" value="LoadData"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.0" name="application.class" value="dInternal.LoadData"/>
+  <property category="runtime.0" name="application.class" value="dInternal.dData.LoadData"/>
   <property category="runtime.1" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.1" name="ConfigurationName" value="Run"/>
   <property category="runtime.1" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
@@ -23,7 +23,7 @@
   <property category="runtime.2" name="application.class" value="DRunInterTest"/>
   <property category="serverservices" name="single.server.name" value="Tomcat 4.0"/>
   <property category="sys" name="AuthorLabel" value="@author"/>
-  <property category="sys" name="BackupPath" value="../Temp/Dx/Proto/bak"/>
+  <property category="sys" name="BackupPath" value="../../Temp/Dx/Proto/bak"/>
   <property category="sys" name="CheckStable" value="1"/>
   <property category="sys" name="Company" value="UdeS"/>
   <property category="sys" name="CompanyLabel" value="Company:"/>
@@ -42,7 +42,7 @@
   <property category="sys" name="LastTag" value="0"/>
   <property category="sys" name="Libraries" value="JUnit;theLibrary;regexp;jfcunit"/>
   <property category="sys" name="MakeStable" value="0"/>
-  <property category="sys" name="OutPath" value="../Temp/Dx/Proto/classes"/>
+  <property category="sys" name="OutPath" value="../../Temp/Dx/Proto/classes"/>
   <property category="sys" name="SourcePath" value="."/>
   <property category="sys" name="TestPath" value="."/>
   <property category="sys" name="Title" value="miniDia"/>

@@ -14,8 +14,8 @@ public class DXObject extends Object{
   }
 
   /**
-   * this method is implements in each resource object (Room, Instructor, Student
-   * and activity)
+   * this method is implemented in each resource object (Room, Instructor, Student
+   * and Activity)
    * */
   public int getSelectedField(int choice){
      return -2;

@@ -96,7 +96,7 @@ public class Bloc extends DXObject{
    * @return boolean the operation result
    * */
   public boolean addCycleAssignment(String cycle){
-    Resource cycleAss =new Resource(cycle, new DXObject());
+    Resource cycleAss = new Resource(cycle, new DXObject());
     return _cycleAssignmentList.addResource(cycleAss,1);
   }
 
