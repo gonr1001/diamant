@@ -72,7 +72,7 @@ import org.w3c.dom.Document;
     Cycle cycle= new Cycle();
     try{
       xmlFile = new readFile();
-      System.out.println(path+"cycle.xml");//debug
+      //System.out.println(path+"cycle.xml");//debug
       Document  doc = xmlFile.getDocumentFile(path+"cycle.xml");
       ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
