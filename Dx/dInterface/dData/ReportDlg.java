@@ -21,17 +21,23 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.text.JTextComponent;
+
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
+
+import dInternal.dData.StandardReportData;
 
 import dResources.DConst;
 
 public class ReportDlg extends JDialog implements ActionListener{
 
   private DApplication _dApplic = null;
+  private int[] _reportList;
   private JDialog _jd = this;
   private JPanel _buttonsPanel;
+  private StandardReportData srd;
   private String[] _buttonsNames = {DConst.BUT_OK, "OPTIONS", DConst.BUT_CANCEL};
 
   public ReportDlg(DApplication dApplic) {
@@ -69,6 +75,14 @@ public class ReportDlg extends JDialog implements ActionListener{
     //If buttons OPTIONS
     //if (command.equals("OPTIONS"))
         new ReportOptionsDlg(_dApplic, _jd, 0);
+  }
+
+  public void setFieldReportList(int[] newReportList){
+    _reportList = newReportList;
+  }
+
+  public StandardReportData getReportData(){
+    return srd;
   }
 
 

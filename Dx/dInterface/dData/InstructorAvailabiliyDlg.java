@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.6 $  $Date: 2003-09-11 11:51:42 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.7 $  $Date: 2003-09-29 20:49:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.7 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -114,7 +114,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private void jbInit() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all instructors
-    chooser = new JComboBox(_dm.getSetOfInstructors().getNamesVector());
+    chooser = new JComboBox(_dm.getSetOfInstructors().getNamesVector(1));
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
