@@ -16,6 +16,8 @@ import java.awt.Dimension;
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
@@ -29,6 +31,8 @@ import java.util.Vector;
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXToolsMethods;
+
+import dResources.DConst;
 
 
 public class DXTools{
@@ -125,6 +129,7 @@ public class DXTools{
    * @param destinationVector the destination vector
    */
 
+
 public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector){
   if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
     return;
@@ -153,6 +158,7 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
 }//end method
 
 
+/*
 public static void listTransfersWithFixed(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, boolean toLeft, String chain){
   if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
     return;
@@ -178,7 +184,6 @@ public static void listTransfersWithFixed(JList sourceList, JList destinationLis
       }
       destinationRes.sortSetOfResourcesByID();
       destinationVector = destinationRes.getNamesVector();
-      System.out.println("destinationVector "+destinationVector);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
       int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
@@ -186,6 +191,7 @@ public static void listTransfersWithFixed(JList sourceList, JList destinationLis
       sourceList.clearSelection();
     }//end for
 }//end method
+*/
 
 
 
@@ -239,14 +245,14 @@ public static int STIConvertGroup(String STIGroupID){
 
 
  /**
-  * Build a panel containing the arrows «« and »». This panel implements the
+  * Build a panel containing the arrows for information transfert. This panel implements the
   * action listeners for each arrow
   * @param parentDialog The dialog who calls this panel
   * @param arrowsNames It contains the symbols of the arrows
   * @return the JPanel to be added to the dialog
   */
  public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames){
-   Dimension panelDim = new Dimension(50, 35*arrowsNames.length+10);
+   Dimension panelDim = new Dimension(50, 41*arrowsNames.length);
    JButton [] buttons = new JButton [arrowsNames.length];
    JPanel panel = new JPanel();
    panel.setPreferredSize(panelDim);
@@ -254,31 +260,12 @@ public static int STIConvertGroup(String STIGroupID){
      buttons[i] = new JButton(arrowsNames[i]);
      buttons[i].setPreferredSize(new Dimension(50,35));
      buttons[i].addActionListener(parentDialog);
-     panel.add(buttons[i], BorderLayout.NORTH);
+     panel.add(buttons[i]);//, BorderLayout.NORTH);
    }
+   //panel.setBorder(BorderFactory.createLineBorder(Color.CYAN));
    return panel;
  }//end method
 
- /*
- public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames){
-   Dimension panelDim = new Dimension(50, 35*arrowsNames.length);
-   JButton [] buttons = new JButton [arrowsNames.length];
-   JPanel panel = new JPanel(new BorderLayout());
-   panel.setPreferredSize(panelDim);
-   for(int i = 0; i < arrowsNames.length; i++){
-     JButton _toRight = new JButton(arrowsNames[0]);
-   }
-   JButton _toRight = new JButton(arrowsNames[0]);
-   _toRight.setPreferredSize(new Dimension(50,35));
-   _toRight.addActionListener(parentDialog);
-   JButton _toLeft = new JButton(arrowsNames[1]);
-   _toLeft.setPreferredSize(new Dimension(50,35));
-   _toLeft.addActionListener(parentDialog);
-   panel.add(_toRight, BorderLayout.NORTH);
-   panel.add(_toLeft, BorderLayout.SOUTH);
-   return panel;
- }//end method
- */
 
 
  /**
@@ -298,36 +285,57 @@ public static int STIConvertGroup(String STIGroupID){
    return panel;
  }
 
+
  /**
   * Creates a Panel containing a valued title plus a listPanel
   * @param panelDim The panel dimension
   * @param list the list
   * @param vec the vector source for the list
-  * @param labelValue the label containing the value to be showed
-  * @param title the panel title
+  * @param labelsInfo The array containing the Strings to be displayed
   * @param ml the Mouselistener for the list
   * @return
   */
 
- public static JPanel setListPanel(Dimension panelDim, JList list, Vector vec, JLabel labelValue, String title, MouseListener ml){
-    list.setListData(vec);
-    list.addMouseListener(ml);
-    //the infoPanel
-    JLabel labelTitle = new JLabel(title + " ");
-    labelValue = new JLabel(String.valueOf(vec.size()));
+ public static JPanel setListPanel(Dimension panelDim, JList list, Vector vec, String [] labelsInfo, MouseListener ml){
+   Dimension infoPanelDim = new Dimension((int)panelDim.getWidth(), 20);
+   Dimension listPanelDim = new Dimension((int)panelDim.getWidth(), (int)(panelDim.getHeight() - infoPanelDim.getHeight()));
+   list.setListData(vec);
+   list.addMouseListener(ml);
+   JPanel listPanel = listPanel(list, (int)listPanelDim.getWidth(), (int)listPanelDim.getHeight());
+   //the panel
+   JPanel panel = new JPanel();
+   panel.setPreferredSize(panelDim);
+   panel.add(setInfoPanel(infoPanelDim, labelsInfo));
+   panel.add(listPanel);
+   //panel.setBorder(BorderFactory.createLineBorder(Color.black));
+   return panel;
+ }
+
+
+  /**
+   * Builds a JPanel containig several labels arranged by couples.
+   * The first label of the couple represents the name of a quantity, the second
+   * label of the couple represents the value of that quantity. If there is
+   * only the names, the labels represents the titles
+   * @param parentDim The dimension of the panel containing this infoPanel
+   * @param items the items to be displayed
+   * @return the infoPanel
+   */
+  public static JPanel setInfoPanel(Dimension panelDim, String [] items){
     JPanel infoPanel = new JPanel();
-    infoPanel.setPreferredSize(new Dimension((int)panelDim.getWidth(), 70));
-    infoPanel.add(labelTitle);
-    infoPanel.add(labelValue);
-    //the listPanel
-    JPanel listPanel = listPanel(list, (int)panelDim.getWidth(), (int)panelDim.getHeight()-70);
-    //the panel
-    JPanel panel = new JPanel(new BorderLayout());
-    panel.setPreferredSize(panelDim);
-    panel.add(infoPanel, BorderLayout.NORTH);
-    panel.add(listPanel, BorderLayout.SOUTH);
-    return panel;
+    JLabel [] labels = new JLabel[items.length];
+    infoPanel.setPreferredSize(panelDim);
+    for (int i = 0; i < items.length; i++){
+      labels[i] = new JLabel(items[i]+ " ");
+      if (i%2 != 0){
+        labels[i].setForeground(DConst.COLOR_QUANTITY_DLGS);
+      }
+      infoPanel.add(labels[i]);
+    }
+    return infoPanel;
   }
+
+
 
  /**
   * Builds a panel containing a Jlist

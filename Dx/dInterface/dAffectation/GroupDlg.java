@@ -208,6 +208,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     //The scrollPane
     JPanel scrollContainer = new JPanel();
     scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (int)(insideWidth-20), GroupPanelHeight-infoPanelHeight-20);
+    //The infoPanel
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
     numberOfElements = _assignedVectors[groupNumber].size();
     JLabel lGroup = new JLabel(DConst.GROUP);

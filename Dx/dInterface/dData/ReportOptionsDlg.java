@@ -33,7 +33,6 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
   /**
    * the lists containing the activities ID
    */
-  private JLabel _leftValueLabel, _rightValueLabel;
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
   private Object [] _currentActivities = new Object[0];
@@ -45,11 +44,35 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    */
   private Vector _rightVec, _leftVec;
 
-  public ReportOptionsDlg(DApplication dApplic, JDialog parentDlg){
+  public ReportOptionsDlg(DApplication dApplic, JDialog parentDlg, int reportType){
     super(dApplic.getJFrame(), "OPTIONS DLG", true);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
+    _leftVec = new Vector();
+    switch(reportType){
+      case 0://_activitiesReport
+         _leftVec.add("One");
+         _leftVec.add("Two");
+         _leftVec.add("Three");
+         _leftVec.add("Four");
+         _leftVec.add("Five");
+        break;
+      case 1://_studentsReport
+        _leftVec.add("Un");
+         _leftVec.add("Deux");
+         _leftVec.add("Trois");
+         _leftVec.add("Quatre");
+         _leftVec.add("Cinq");
+        break;
+      case 2://_conflictsReport
+        _leftVec.add("Uno");
+         _leftVec.add("Dos");
+         _leftVec.add("Tres");
+         _leftVec.add("Cuatro");
+         _leftVec.add("Cinco");
+        break;
+   }
     jbInit();
     setLocationRelativeTo(dApplic.getJFrame());
     this.setResizable(true);
@@ -64,31 +87,31 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    * Initialize the dialog
    */
   private void jbInit(){
-    System.out.println("jbInit ");
     Dimension dlgDim = new Dimension(400, 400);
-    Dimension centerPanelDim = new Dimension((int)dlgDim.getWidth()-20, (int)dlgDim.getHeight()-90);
-    Dimension listPanelDim = new Dimension((int)centerPanelDim.getWidth()/2-25, (int)dlgDim.getHeight()-10);
-    _leftVec = new Vector();
+    Dimension centerPanelDim = new Dimension((int)dlgDim.getWidth()-20, (int)dlgDim.getHeight()-75);
+    Dimension listPanelDim = new Dimension((int)centerPanelDim.getWidth()/2-30, (int)centerPanelDim.getHeight());
+
+    //_leftVec = new Vector();
     _leftList = new JList();
-    _leftValueLabel = new JLabel();
+    String[] leftLabelsInfo = {"Title 1", String.valueOf(_leftVec.size())};
     _rightVec = new Vector();
     _rightList = new JList();
-    _rightValueLabel = new JLabel();
+    String[] rightLabelsInfo = {"Title 2 ", String.valueOf(_rightVec.size())};
+    //the centerPanel
     JPanel centerPanel = new JPanel();
-    //the BorderLayout Manager assure the good resizing for all the panels belonging dialog
-    centerPanel.setLayout(new BorderLayout());
     centerPanel.setPreferredSize(centerPanelDim);
-    centerPanel.add(DXTools.setListPanel(listPanelDim, _leftList, _leftVec, _leftValueLabel, "Title", mouseListenerLists), BorderLayout.WEST);
-    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames), BorderLayout.CENTER);
-    centerPanel.add(DXTools.setListPanel(listPanelDim, _rightList, _rightVec, _rightValueLabel, "Title2", mouseListenerLists), BorderLayout.EAST);
-    centerPanel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
+    centerPanel.add(DXTools.setListPanel(listPanelDim, _leftList, _leftVec, leftLabelsInfo, mouseListenerLists));
+    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames));
+    centerPanel.add(DXTools.setListPanel(listPanelDim, _rightList, _rightVec, rightLabelsInfo, mouseListenerLists));
+    //centerPanel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
     //buttonsPanel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //Setting the button APPLY disable
     _buttonsPanel.getComponent(1).setEnabled(false);
+
     //placing the elements into the JDialog
     setSize(dlgDim);
-    setResizable(true);
+    setResizable(false);
     getContentPane().add(centerPanel, BorderLayout.CENTER);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
   }//end method

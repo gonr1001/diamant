@@ -68,7 +68,7 @@ public class ReportDlg extends JDialog implements ActionListener{
     System.out.println("command "+command);
     //If buttons OPTIONS
     //if (command.equals("OPTIONS"))
-        new ReportOptionsDlg(_dApplic, _jd);
+        new ReportOptionsDlg(_dApplic, _jd, 0);
   }
 
 
