@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.112 $  $Date: 2004-06-17 20:00:09 $
+ * Title: DConst $Revision: 1.113 $  $Date: 2004-06-21 15:38:15 $
  * Description: DConst is a class used to
  *
  *
@@ -14,16 +14,16 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.112 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.113 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 package dConstants;
 
-import java.util.ResourceBundle;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ResourceBundle;
 
 public class DConst {
 

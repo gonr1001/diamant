@@ -8,11 +8,13 @@ package dInternal.dDataXML.rooms;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import java.util.Vector;
 import java.util.StringTokenizer;
+import java.util.Vector;
+
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
-import dInternal.dDataTxt.*;
 
 public class RoomAttach extends DXObject{
 

@@ -9,17 +9,16 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
+import java.awt.Dialog;
+import java.awt.event.ActionEvent;
+import java.util.Vector;
+
+import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-import dConstants.DConst;
 import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.Type;
-import dInternal.dDataTxt.Resource;
-
-import dInternal.dDataTxt.Resource;
-import java.util.Vector;
-import java.awt.event.*;
-import java.awt.Dialog;
 
 
 public class TypeModifDlg extends SetOfElementsInterface{

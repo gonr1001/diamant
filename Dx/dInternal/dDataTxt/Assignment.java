@@ -8,10 +8,10 @@ package dInternal.dDataTxt;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dInternal.dUtil.DXObject;
-import dConstants.DConst;
-import java.util.Vector;
 import java.util.StringTokenizer;
+
+import dConstants.DConst;
+import dInternal.dUtil.DXObject;
 
 public class Assignment extends DXObject{
 

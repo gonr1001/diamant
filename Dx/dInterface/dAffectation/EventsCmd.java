@@ -9,9 +9,9 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
+import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
-import dConstants.DConst;
 
 
 

@@ -11,8 +11,8 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 
-import java.util.*;
 import java.awt.Component;
+import java.util.EventListener;
 
 public interface SetOfRoomsListener extends EventListener{
   void changeInSetOfRooms(SetOfRoomsEvent e, Component c);

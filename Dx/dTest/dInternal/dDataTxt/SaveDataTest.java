@@ -9,18 +9,19 @@ package dTest.dInternal.dDataTxt;
  * @version 1.0
  */
 
-import junit.framework.*;
 import java.io.File;
 import java.util.Vector;
-import dInternal.dTimeTable.TTStructure;
 
-import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.SetOfStudents;
-import dInternal.dDataTxt.SetOfInstructors;
-import dInternal.dDataTxt.SetOfRooms;
-
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dInternal.dDataTxt.LoadData;
 import dInternal.dDataTxt.SaveData;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfInstructors;
+import dInternal.dDataTxt.SetOfRooms;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dTimeTable.TTStructure;
 
 
 

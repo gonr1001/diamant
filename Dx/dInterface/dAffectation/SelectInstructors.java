@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectInstructors $Revision: 1.6 $  $Date: 2004-06-09 19:29:17 $
+ * Title: SelectInstructors $Revision: 1.7 $  $Date: 2004-06-21 15:38:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -35,8 +35,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -44,15 +42,12 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.TwoButtonsPanel;
-
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
-
-
 
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXTools;
+import dInterface.dUtil.TwoButtonsPanel;
 
 public class SelectInstructors
 		extends JDialog

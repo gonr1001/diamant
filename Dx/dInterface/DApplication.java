@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.50 $  $Date: 2004-06-09 19:29:16 $
+ * Title: DApplication $Revision: 1.51 $  $Date: 2004-06-21 15:38:16 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,39 +16,36 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
+ * @version $Revision: 1.51 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 
-import dInternal.Preferences;
-import dConstants.DConst;
-import com.iLib.gDialog.FatalProblemDlg;
-
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.Toolkit;
-import javax.swing.DefaultDesktopManager;
 import java.io.File;
-import javax.swing.JFrame;
 
+import javax.swing.DefaultDesktopManager;
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.log4j.Logger;
 
-import javax.swing.JPanel;
+import com.iLib.gDialog.FatalProblemDlg;
 
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.SwingUtilities;
-
+import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
+import dInternal.Preferences;
 
 public class DApplication implements ActionListener {
   private static Logger _logger = Logger.getLogger(DApplication.class.getName());

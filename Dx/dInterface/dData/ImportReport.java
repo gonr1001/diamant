@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.11 $  $Date: 2004-06-10 15:11:31 $
+ * Title: ImportReport $Revision: 1.12 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -32,27 +32,21 @@ package dInterface.dData;
 
 
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Dimension;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
-
 import javax.swing.JTextArea;
 
-
+import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-
-
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXValue;
-
-import dConstants.DConst;
 
 
 public class ImportReport extends ViewReport implements ActionListener {
@@ -123,7 +117,7 @@ public class ImportReport extends ViewReport implements ActionListener {
                       " " +
                       DConst.TO_LEFT +
                       DConst.REPORT_DLG_TAB3 +
-                      DConst.TO_RIGHT + " ";
+                      DConst.TO_RIGHT + "          ";
         data +=  DConst.REPORT_PRODUCED_AT +
                  " " +
                  sdf.format(date) +

@@ -8,7 +8,6 @@ package dInternal.dUtil;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import dInternal.dUtil.DXObject;
 
 public class ArrayValue extends DXObject{
 

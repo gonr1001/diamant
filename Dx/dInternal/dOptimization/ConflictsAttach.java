@@ -11,12 +11,13 @@ package dInternal.dOptimization;
 
 
 import java.util.Vector;
-import dInternal.dDataTxt.SetOfResources;
+
+import dConstants.DConst;
 import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dUtil.ArrayValue;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
-import dInternal.dUtil.ArrayValue;
-import dConstants.DConst;
 
 
 public class ConflictsAttach extends DXObject{

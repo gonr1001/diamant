@@ -1,17 +1,19 @@
 package dInternal.dTimeTable;
 
-import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
-import dInternal.dUtil.ArrayValue;
-import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.Resource;
-import xml.InPut.ReadXMLElement;
-import xml.OutPut.BuildXMLElement;
-import org.w3c.dom.Element;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import xml.InPut.ReadXMLElement;
+import xml.OutPut.BuildXMLElement;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dOptimization.ConflictsAttach;
+import dInternal.dUtil.ArrayValue;
+import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXValue;
 
 public class Period extends DXObject {
 

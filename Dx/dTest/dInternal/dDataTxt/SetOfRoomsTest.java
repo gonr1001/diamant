@@ -9,11 +9,11 @@ package dTest.dInternal.dDataTxt;
  * @version 1.0
  */
 
-import junit.framework.*;
-
-
-import dInternal.dDataTxt.SetOfRooms;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dConstants.DConst;
+import dInternal.dDataTxt.SetOfRooms;
 
 
 public class SetOfRoomsTest  extends TestCase{

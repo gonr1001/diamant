@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.16 $  $Date: 2004-06-10 15:11:31 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.17 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -23,19 +23,27 @@
  */
 package dInterface.dData;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Vector;
 
-import javax.swing.*;
-import dInterface.DApplication;
-import dInterface.dUtil.TwoButtonsPanel;
-import dInterface.dUtil.ButtonsPanel;
-//import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.InstructorAttach;
-
+import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.dDataTxt.InstructorAttach;
 
 
 

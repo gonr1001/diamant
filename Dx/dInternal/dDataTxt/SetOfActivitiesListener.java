@@ -11,8 +11,8 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 
-import java.util.*;
 import java.awt.Component;
+import java.util.EventListener;
 
 public interface SetOfActivitiesListener extends EventListener{
   void changeInSetOfActivities(SetOfActivitiesEvent e, Component c);

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.20 $  $Date: 2004-06-09 19:29:18 $
+ * Title: PeriodPanel $Revision: 1.21 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -32,16 +32,16 @@ package dInterface.dTimeTable;
 
 
 //import javax.swing.JScrollPane;
-import javax.swing.JPanel;
+import java.awt.Color;
 import java.util.StringTokenizer;
 
-import java.awt.Color;
 import javax.swing.JLabel;
-
-import dInternal.dTimeTable.Period;
-import dConstants.DConst;
+import javax.swing.JPanel;
 
 import com.iLib.gDialog.FatalProblemDlg;
+
+import dConstants.DConst;
+import dInternal.dTimeTable.Period;
 
 public  abstract class PeriodPanel extends JPanel{
   JLabel _nbAct, _cTeach, _cRoom, _cStu;

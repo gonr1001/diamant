@@ -9,9 +9,9 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXValue;
 import java.util.StringTokenizer;
+
+import dInternal.dUtil.DXValue;
 
 public class RoomsAttributesInterpretor {
 

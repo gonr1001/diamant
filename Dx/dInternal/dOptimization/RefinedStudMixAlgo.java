@@ -10,15 +10,15 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
-import dInternal.DModel;
-import dInternal.dTimeTable.*;
-import dInternal.dOptimization.*;
-import dInternal.dDataTxt.*;
-import dConstants.DConst;
-import dInternal.dUtil.DXValue;
-import dInternal.dUtil.DXToolsMethods;
-import dInterface.dUtil.DXTools;
 import java.util.Vector;
+
+import dInterface.dUtil.DXTools;
+import dInternal.DModel;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.StudentAttach;
+import dInternal.dDataTxt.Type;
+import dInternal.dUtil.DXValue;
 
 public class RefinedStudMixAlgo{
 

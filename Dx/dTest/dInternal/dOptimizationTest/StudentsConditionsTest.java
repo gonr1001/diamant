@@ -1,14 +1,15 @@
 package dTest.dInternal.dOptimizationTest;
 
-import junit.framework.*;
+import java.io.File;
 import java.util.Vector;
 
-import dInternal.DModel;
-import dInternal.dTimeTable.Period;
-import dInternal.dOptimization.TestStudentsConditions;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dInterface.DDocument;
-
-import java.io.File;
+import dInternal.DModel;
+import dInternal.dOptimization.TestStudentsConditions;
+import dInternal.dTimeTable.Period;
 
 
 

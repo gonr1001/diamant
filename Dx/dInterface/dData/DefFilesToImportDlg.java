@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.6 $  $Date: 2004-06-09 19:29:17 $
+ * Title: DefFileToImportDlg $Revision: 1.7 $  $Date: 2004-06-21 15:38:17 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,36 +15,31 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-
-
-import javax.swing.JDialog;
-
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.BorderFactory;
-import javax.swing.JFileChooser;
 
-
-import com.iLib.gIO.ByteOutputFile;
-import com.iLib.gException.IOFileException;
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;
-import dInterface.DApplication;
+import com.iLib.gException.IOFileException;
+import com.iLib.gIO.ByteOutputFile;
 
 import dConstants.DConst;
+import dInterface.DApplication;
 import dResources.DFileFilter;
 
 

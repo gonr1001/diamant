@@ -10,14 +10,15 @@ package dInterface.dData;
  */
 
 import java.awt.Dimension;
+
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
-import dInterface.DApplication;
-import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
 
 import dConstants.DConst;
+import dInterface.DApplication;
+import dResources.DFileFilter;
 
 public class ImportSelectiveFileDlg extends JDialog {
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.40 $  $Date: 2004-06-10 15:11:33 $
+ * Title: DiamantTest 1.5Test $Revision: 1.41 $  $Date: 2004-06-21 15:38:22 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -30,11 +30,39 @@
  */
 package dmains;
 
-import dTest.dInternal.dUtil.*;
-import dTest.dInternal.dDataTxt.*;
-import dTest.dInternal.dTimeTable.*;
-import dTest.dInternal.dOptimizationTest.*;
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import dTest.dInternal.dDataTxt.ActivityTest;
+import dTest.dInternal.dDataTxt.AssignmentTest;
+import dTest.dInternal.dDataTxt.InstructorAttachTest;
+import dTest.dInternal.dDataTxt.LoadDataTest;
+import dTest.dInternal.dDataTxt.ResourceTest;
+import dTest.dInternal.dDataTxt.RoomAttachTest;
+import dTest.dInternal.dDataTxt.RoomsAttributesInterpretorTest;
+import dTest.dInternal.dDataTxt.SaveDataTest;
+import dTest.dInternal.dDataTxt.SectionTest;
+import dTest.dInternal.dDataTxt.SetOfActivitiesTest;
+import dTest.dInternal.dDataTxt.SetOfInstructorsTest;
+import dTest.dInternal.dDataTxt.SetOfResourcesTest;
+import dTest.dInternal.dDataTxt.SetOfRoomsTest;
+import dTest.dInternal.dDataTxt.SetOfStudentsTest;
+import dTest.dInternal.dDataTxt.StudentAttachTest;
+import dTest.dInternal.dDataTxt.TypeTest;
+import dTest.dInternal.dDataTxt.UnityTest;
+import dTest.dInternal.dOptimizationTest.ConditionsTest;
+import dTest.dInternal.dOptimizationTest.ConflictsAttachTest;
+import dTest.dInternal.dOptimizationTest.EventAttachTest;
+import dTest.dInternal.dOptimizationTest.InstructorsConditionsTest;
+import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
+import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
+import dTest.dInternal.dOptimizationTest.StudentsConditionsTest;
+import dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest;
+import dTest.dInternal.dTimeTable.CycleTest;
+import dTest.dInternal.dTimeTable.DayTest;
+import dTest.dInternal.dTimeTable.PeriodTest;
+import dTest.dInternal.dTimeTable.SequenceTest;
+import dTest.dInternal.dTimeTable.TTStructureTest;
+import dTest.dInternal.dUtil.DXToolsMethodsTest;
 
 
 public class DiamantTest {

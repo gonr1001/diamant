@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.5 $  $Date: 2004-06-09 19:29:18 $
+ * Title: AboutDlg $Revision: 1.6 $  $Date: 2004-06-21 15:38:17 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,25 +14,28 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
 
 
-import javax.swing.*;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import dInterface.DApplication;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import dConstants.DConst;
+import dInterface.DApplication;
 /**
  *
  * AboutDlg is a class used to display the about dialog.

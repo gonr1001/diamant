@@ -12,24 +12,18 @@ package dInterface.dTimeTable;
 
 import java.awt.event.ActionEvent;
 
-import dInterface.DApplication;
-import dInterface.DToolBar;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.DToolBar;
+import dInterface.dAffectation.EditActivityDlg;
+import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
-
-import dInterface.dAffectation.EventsDlgInterface;
-import dInterface.dAffectation.EditActivityDlg;
-
-
 import dInternal.DModel;
 import dInternal.dDataTxt.Resource;
-
-
-import dConstants.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 

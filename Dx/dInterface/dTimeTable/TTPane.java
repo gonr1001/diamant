@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.11 $  $Date: 2004-06-10 15:11:32 $
+ * Title: TTPane $Revision: 1.12 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -32,29 +32,27 @@ package dInterface.dTimeTable;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseListener;
+import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.SystemColor;
+import java.awt.event.MouseListener;
 
-
-import javax.swing.JComponent;
-import javax.swing.JViewport;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JViewport;
 
 import dInterface.DToolBar;
 import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
-
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DisplayAttributs;
 import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DisplayAttributs;
 
 public abstract class TTPane {
 

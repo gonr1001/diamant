@@ -8,12 +8,12 @@ package dInternal.dDataTxt;
  * @author  ysyam, alexander
  * @version 1.0
  */
+import java.awt.Component;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.awt.Component;
 
-import dInternal.dUtil.DXToolsMethods;
 import dConstants.DConst;
+import dInternal.dUtil.DXToolsMethods;
 //import d
 
 public class SetOfActivities extends SetOfResources{

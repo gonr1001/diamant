@@ -9,9 +9,20 @@ package dInterface;
  * @version 1.0
  */
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.Timer;
+
 import dInterface.dUtil.LongTask;
 
 public class ProgressBar extends JPanel

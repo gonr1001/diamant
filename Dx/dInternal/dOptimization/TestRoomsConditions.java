@@ -8,18 +8,18 @@ package dInternal.dOptimization;
  * @author ysyam
  * @version 1.0
  */
-import dInternal.DModel;
-import dInternal.dTimeTable.Period;
-
-import dInternal.dDataTxt.RoomAttach;
-import dInternal.dDataTxt.Activity;
-import dInternal.dDataTxt.Type;
-import dInternal.dUtil.DXToolsMethods;
-import dInternal.dDataTxt.Resource;
-import dInterface.dUtil.DXTools;
-import dConstants.DConst;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
+import dConstants.DConst;
+import dInterface.dUtil.DXTools;
+import dInternal.DModel;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.RoomAttach;
+import dInternal.dDataTxt.Type;
+import dInternal.dTimeTable.Period;
+import dInternal.dUtil.DXToolsMethods;
 
 
 public class TestRoomsConditions implements Condition{

@@ -10,28 +10,24 @@ package dInterface.dUtil;
  */
 
 import java.awt.BorderLayout;
-
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.util.Vector;
 
-
-import javax.swing.JFileChooser;
 import javax.swing.JButton;
-
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.util.Vector;
 
+import dConstants.DConst;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXToolsMethods;
-
-import dConstants.DConst;
 
 
 public class DXTools{

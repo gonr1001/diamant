@@ -10,6 +10,7 @@ package dInternal.dDataTxt;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
+
 import dInternal.dUtil.DXObject;
 
 public class SetOfResources extends DXObject{

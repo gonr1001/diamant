@@ -1,7 +1,8 @@
 package dInternal.dDataTxt;
 
-import dConstants.DConst;
 import java.util.Vector;
+
+import dConstants.DConst;
 
 public class SetOfStates extends SetOfResources{
 

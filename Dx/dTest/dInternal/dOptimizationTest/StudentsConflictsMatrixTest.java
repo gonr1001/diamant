@@ -8,15 +8,14 @@ package dTest.dInternal.dOptimizationTest;
  * @author ysyam
  * @version 1.0
  */
-import junit.framework.*;
-
-
-import dInternal.dOptimization.StudentsConflictsMatrix;
-
-import dInternal.DModel;
-import dInterface.DDocument;
-
 import java.io.File;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import dInterface.DDocument;
+import dInternal.DModel;
+import dInternal.dOptimization.StudentsConflictsMatrix;
 
 public class StudentsConflictsMatrixTest extends TestCase{
 

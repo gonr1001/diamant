@@ -8,17 +8,14 @@ package dInternal.dOptimization;
  * @author unascribed
  * @version 1.0
  */
-import dInternal.DModel;
-
-import dInternal.dDataTxt.InstructorAttach;
-
-import dInternal.dDataTxt.Resource;
-import dInternal.dTimeTable.Period;
-import dInternal.dUtil.DXToolsMethods;
-
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.DModel;
+import dInternal.dDataTxt.InstructorAttach;
+import dInternal.dDataTxt.Resource;
+import dInternal.dTimeTable.Period;
+import dInternal.dUtil.DXToolsMethods;
 
 public class TestInstructorsConditions  implements Condition{
 

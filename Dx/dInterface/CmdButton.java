@@ -1,5 +1,5 @@
 /**
- * Title: CmdButton $Revision: 1.2 $  $Date: 2003-05-26 16:57:38 $
+ * Title: CmdButton $Revision: 1.3 $  $Date: 2004-06-21 15:38:16 $
  * Description: CmdMenu is a class suggested by the
  *              command pattern. All menu items will be associated
  *              with a command.
@@ -14,15 +14,17 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.3 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Insets;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *

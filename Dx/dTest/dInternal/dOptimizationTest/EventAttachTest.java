@@ -1,10 +1,12 @@
 package dTest.dInternal.dOptimizationTest;
 
 
-import junit.framework.*;
-import dInternal.dOptimization.EventAttach;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
+import dInternal.dOptimization.EventAttach;
 
  public class EventAttachTest extends TestCase {
 

@@ -12,28 +12,23 @@ package dInterface.dTimeTable;
  * @version 1.0
  */
 
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
-
+import javax.swing.JDialog;
+import javax.swing.JPanel;
 
 import dInterface.DToolBar;
-
-
-import dInternal.dUtil.DXToolsMethods;
-
-
-
-import dInternal.dOptimization.EventAttach;
-import dInternal.dTimeTable.*;
 import dInternal.DModel;
 import dInternal.dDataTxt.Resource;
+import dInternal.dOptimization.EventAttach;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
+import dInternal.dTimeTable.TTStructure;
+import dInternal.dUtil.DXToolsMethods;
 
 
 

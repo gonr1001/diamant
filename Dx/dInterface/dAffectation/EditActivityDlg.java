@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.45 $  $Date: 2004-06-11 14:04:55 $
+ * Title: EditActivityDlg $Revision: 1.46 $  $Date: 2004-06-21 15:38:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.45 $
+ * @version $Revision: 1.46 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -32,32 +32,36 @@ package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JToggleButton;
+import javax.swing.ListModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.ListModel;
-import javax.swing.JDialog;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
+import com.iLib.gDialog.FatalProblemDlg;
+import com.iLib.gDialog.InformationDlg;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXJComboBox;
+import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
-import dInternal.dOptimization.EventAttach;
 import dInternal.dDataTxt.Activity;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.RoomAttach;
@@ -66,19 +70,13 @@ import dInternal.dDataTxt.SetOfInstructors;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfRooms;
 import dInternal.dDataTxt.Type;
+import dInternal.dDataXML.rooms.SetOfCategories;
+import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dDataXML.rooms.SetOfCategories;
-
-import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gDialog.InformationDlg;
-
-import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXJComboBox;
-import dInterface.dUtil.TwoButtonsPanel;
 
 
 

@@ -9,18 +9,22 @@ package dTest.dInternal.dDataTxt;
  * @version 1.0
  */
 
-import junit.framework.*;
 import java.io.File;
-import dInternal.dDataTxt.Activity;
-import dInternal.dDataTxt.Type;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import com.iLib.gIO.FilterFile;
 
-import dInternal.dDataTxt.SetOfActivities;
+import dConstants.DConst;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Assignment;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.Type;
 import dInternal.dDataTxt.Unity;
-import dInternal.dDataTxt.Assignment;
-import dConstants.DConst;
 
 
 public class SetOfActivitiesTest  extends TestCase{

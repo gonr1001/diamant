@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.4 $  $Date: 2004-02-16 19:29:09 $
+ * Title: DetailedTTPane $Revision: 1.5 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -31,16 +31,13 @@ package dInterface.dTimeTable;
  */
 
 import java.awt.Dimension;
+
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-
 import javax.swing.JSplitPane;
 
-
 import dInterface.DToolBar;
-
-
-import dInternal.dTimeTable.*;
+import dInternal.dTimeTable.TTStructure;
 
 
 public class DetailedMITTPane extends TTPane {

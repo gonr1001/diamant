@@ -8,8 +8,9 @@ package dInternal.dDataTxt;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import java.util.Vector;
 import java.util.StringTokenizer;
+import java.util.Vector;
+
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 

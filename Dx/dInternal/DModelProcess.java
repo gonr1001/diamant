@@ -10,9 +10,10 @@ package dInternal;
  */
 
 import dConstants.DConst;
-import dInternal.dDataTxt.*;
-
-import dInternal.dUtil.*;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.State;
+import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXToolsMethods;
 
 
 

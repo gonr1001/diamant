@@ -10,11 +10,16 @@ package dInternal.dOptimization;
  */
 
 import dInterface.dUtil.DXTools;
-
-import dInternal.dDataTxt.*;
-import dInternal.dUtil.DXValue;
-import dInternal.dUtil.DXToolsMethods;
 import dInternal.DModel;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dDataTxt.StudentAttach;
+import dInternal.dDataTxt.Type;
+import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DXValue;
 
 
 public class StudentsConflictsMatrix {

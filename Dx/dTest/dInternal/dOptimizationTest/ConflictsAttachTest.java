@@ -1,11 +1,13 @@
 package dTest.dInternal.dOptimizationTest;
 
-import junit.framework.*;
 import java.util.Vector;
 
-import dInternal.dOptimization.ConflictsAttach;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
+import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dUtil.DXValue;
 
  public class ConflictsAttachTest extends TestCase {

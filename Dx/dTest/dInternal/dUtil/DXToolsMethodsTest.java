@@ -9,10 +9,9 @@ package dTest.dInternal.dUtil;
  * @version 1.0
  */
 
-import junit.framework.*;
-
-
-
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 

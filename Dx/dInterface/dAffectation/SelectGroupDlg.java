@@ -1,21 +1,20 @@
 package dInterface.dAffectation;
 
 
-import javax.swing.*;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-
-
 import java.awt.Dialog;
-
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import dConstants.DConst;
-
 import dInterface.dUtil.DXTools;
 /**
  *

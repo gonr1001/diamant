@@ -2,13 +2,14 @@
 
 package dInternal.dTimeTable;
 
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.Resource;
-import dInternal.dUtil.DXObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 
 public class Day extends DXObject{

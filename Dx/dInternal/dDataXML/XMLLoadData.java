@@ -9,27 +9,24 @@ package dInternal.dDataXML;
  * @version 1.0
  */
 
-import java.util.Vector;
-import java.util.StringTokenizer;
 import java.io.File;
+import java.util.Vector;
 
-import com.iLib.gDialog.FatalProblemDlg;
+import org.w3c.dom.Element;
+
+import xml.InPut.ReadXMLElement;
+import xml.InPut.readFile;
+
 import com.iLib.gIO.FilterFile;
 
-
-import dInternal.dTimeTable.TTStructure;
-import dInternal.DModel;
-import dInternal.dDataTxt.*;
-import dInternal.dUtil.XMLTools;
-import dInternal.Preferences;
-
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
-import xml.InPut.readFile;
-import xml.InPut.ReadXMLElement;
 import dConstants.DConst;
-import org.w3c.dom.*;
+import dInternal.DModel;
+import dInternal.Preferences;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfInstructors;
+import dInternal.dDataTxt.SetOfStudents;
 import dInternal.dDataXML.rooms.SetOfCategories;
+import dInternal.dUtil.XMLTools;
 
 public class XMLLoadData {
   //XML tags

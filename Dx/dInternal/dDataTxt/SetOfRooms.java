@@ -8,9 +8,10 @@ package dInternal.dDataTxt;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
+import java.awt.Component;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.awt.Component;
+
 import dConstants.DConst;
 
 public class SetOfRooms extends SetOfResources{

@@ -11,12 +11,12 @@ package dInterface.dAlgorithms;
 
 
 
+import com.iLib.gDialog.InformationDlg;
+
+import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 import dInternal.dOptimization.SelectAlgorithm;
-import dConstants.DConst;
-
-import com.iLib.gDialog.InformationDlg;
 
 public class MiddleBalMixingAlgoritmCmd implements Command{
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: NewTTExCmd $Revision: 1.8 $  $Date: 2004-06-09 19:29:17 $
+ * Title: NewTTExCmd $Revision: 1.9 $  $Date: 2004-06-21 15:38:17 $
  * Description: NewTTExCmd is a class used to have a new
  *  			document window
  *
@@ -15,16 +15,16 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dTimeTable;
 
 
+import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
-import dConstants.DConst;
 
 
 public class NewTTExCmd implements Command {

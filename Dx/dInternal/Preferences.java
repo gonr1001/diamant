@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.19 $  $Date: 2003-12-04 18:08:28 $
+ * Title: Preferences $Revision: 1.20 $  $Date: 2004-06-21 15:38:18 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,19 +15,21 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
 
-import dInterface.DApplication;
-import  com.iLib.gIO.FilterFile;
 import java.util.StringTokenizer;
-import  com.iLib.gException.IOFileException;
-import com.iLib.gIO.ByteOutputFile;
-import com.iLib.gDialog.FatalProblemDlg;
 import java.util.Vector;
+
+import com.iLib.gDialog.FatalProblemDlg;
+import com.iLib.gException.IOFileException;
+import com.iLib.gIO.ByteOutputFile;
+import com.iLib.gIO.FilterFile;
+
+import dInterface.DApplication;
 
 public class Preferences {
   private final String CR_LF = "\r\n";

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPane $Revision: 1.8 $  $Date: 2003-10-28 14:24:53 $
+ * Title: SimpleTTPane $Revision: 1.9 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -31,16 +31,11 @@ package dInterface.dTimeTable;
  */
 
 
-import javax.swing.JScrollPane;
 import javax.swing.JComponent;
-
-
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
-
 import dInterface.DToolBar;
-
-
 import dInternal.dTimeTable.TTStructure;
 
 

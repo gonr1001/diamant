@@ -9,17 +9,19 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 
-import dInternal.DModel;
-import dInternal.dTimeTable.*;
-import dInternal.dOptimization.*;
-import dInternal.dUtil.DXValue;
-import dInternal.dUtil.DXToolsMethods;
-import dInternal.dOptimization.ConflictsAttach;
-
-import dInterface.dUtil.DXTools;
-import dConstants.DConst;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
+import dConstants.DConst;
+import dInterface.dUtil.DXTools;
+import dInternal.DModel;
+import dInternal.dOptimization.ConflictsAttach;
+import dInternal.dOptimization.EventAttach;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
+import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DXValue;
 
 public class StandardReportData {
 

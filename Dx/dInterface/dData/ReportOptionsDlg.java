@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.26 $  $Date: 2004-06-09 19:29:17 $
+ * Title: ReportOptionsDlg $Revision: 1.27 $  $Date: 2004-06-21 15:38:17 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,34 +17,27 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.util.Vector;
 
-
 import javax.swing.JDialog;
-import javax.swing.JList;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
-
-
 import dConstants.DConst;
-
-import dInterface.dUtil.TwoButtonsPanel;
+import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXTools;
+import dInterface.dUtil.TwoButtonsPanel;
 
 public class ReportOptionsDlg extends JDialog implements ActionListener {
   private ViewReport _parentDlg;

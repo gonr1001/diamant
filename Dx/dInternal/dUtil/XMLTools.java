@@ -10,10 +10,12 @@ package dInternal.dUtil;
  */
 
 
-import xml.InPut.readFile;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import xml.InPut.ReadXMLElement;
+import xml.InPut.readFile;
 import dConstants.DConst;
-import org.w3c.dom.*;
 
 
 

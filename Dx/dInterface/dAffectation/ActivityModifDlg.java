@@ -9,19 +9,18 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
-
-import dConstants.DConst;
-import dInternal.dDataTxt.SetOfActivities;
-
-import dInternal.dDataTxt.Resource;
-import java.util.Vector;
-import java.awt.event.*;
-import java.awt.Dialog;
 import java.awt.BorderLayout;
+import java.awt.Dialog;
+import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.JLabel;
+
+import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfActivities;
 
 public class ActivityModifDlg extends SetOfElementsInterface{
 

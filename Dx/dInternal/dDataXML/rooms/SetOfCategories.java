@@ -9,20 +9,15 @@ package dInternal.dDataXML.rooms;
  * @version 1.0
  */
 
+import java.awt.Component;
 import java.util.Vector;
 
-import java.awt.Component;
-import dConstants.DConst;
+import org.w3c.dom.Element;
 
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
-import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
-
-import org.w3c.dom.*;
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.RoomsAttributesInterpretor;
+import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfRoomsListener;
 import dInternal.dUtil.XMLTools;
 

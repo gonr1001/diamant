@@ -9,16 +9,14 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
-import dInternal.dTimeTable.Period;
-import dInternal.dTimeTable.Cycle;
-import dInternal.dDataTxt.SetOfActivities;
-
-
-import dInternal.dDataTxt.Resource;
-import dInternal.dUtil.DXToolsMethods;
-
 import java.util.Vector;
+
 import dConstants.DConst;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dTimeTable.Cycle;
+import dInternal.dTimeTable.Period;
+import dInternal.dUtil.DXToolsMethods;
 
 public class TestStudentsConditions implements Condition {
   StudentsConflictsMatrix _matrix;

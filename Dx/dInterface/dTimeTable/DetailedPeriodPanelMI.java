@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.9 $  $Date: 2004-06-09 20:06:49 $
+ * Title: DetailedPeriodPanel $Revision: 1.10 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -29,17 +29,16 @@ package dInterface.dTimeTable;
  * Description: DetailedPeriodPanel is a class used to
  *
  */
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.util.Vector;
 
-//import javax.swing.JScrollPane;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.GridLayout;
-import javax.swing.BorderFactory;
-import java.awt.BorderLayout;
 import dInternal.dTimeTable.Period;
 
 

@@ -10,10 +10,9 @@ package dInterface.dData;
  */
 
 
-import dInterface.Command;
-
 import javax.swing.JFrame;
 
+import dInterface.Command;
 import dInterface.DApplication;
 
 

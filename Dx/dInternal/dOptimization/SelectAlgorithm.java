@@ -9,9 +9,10 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
-import dInternal.DModel;
-import java.util.Vector;
 import java.awt.Cursor;
+import java.util.Vector;
+
+import dInternal.DModel;
 
 public class SelectAlgorithm {
 

@@ -8,8 +8,9 @@ package dInternal.dDataTxt;
  * @author ysyam, alexander
  * @version 1.0
  */
-import dInternal.dUtil.DXObject;
 import java.util.Vector;
+
+import dInternal.dUtil.DXObject;
 
 
 public class Activity extends DXObject{

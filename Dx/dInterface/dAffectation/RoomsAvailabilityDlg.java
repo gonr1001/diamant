@@ -1,17 +1,26 @@
 package dInterface.dAffectation;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Vector;
 
-
-import dInternal.dDataTxt.RoomAttach;
-import dInterface.DApplication;
-import dInterface.dUtil.TwoButtonsPanel;
-import dInterface.dUtil.ButtonsPanel;
+import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.dDataTxt.RoomAttach;
 
 
 /**

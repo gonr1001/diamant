@@ -12,39 +12,19 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.Cursor;
-
-import java.text.SimpleDateFormat;
-
-import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.awt.Toolkit;
 
-
-import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTabbedPane;
-
-import dInterface.DApplication;
-import dInternal.DModel;
-import dInternal.dDataTxt.SetOfStates;
-import dInternal.dDataTxt.State;
-import dInterface.ProgressBar;
-import dInterface.dUtil.DXTools;
-
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.StandardReportData;
-import dInternal.dUtil.DXValue;
-import dInternal.dUtil.DXToolsMethods;
 
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
+import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DXValue;
 
 
 public abstract class ViewReport  extends JPanel implements ActionListener {

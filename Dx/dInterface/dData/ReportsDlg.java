@@ -1,50 +1,48 @@
-package dInterface.dData;
-
 /**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
+ *
+ * Title: ReportsDlg $Revision: 1.12 $  $Date: 2004-06-21 15:38:17 $
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.12 $
+ * @author  $Author: gonzrubi $
+ * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
  */
 
+
+/**
+ * Description: ReportsDlg is a class used to
+ *
+ */
+
+package dInterface.dData;
+
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.Cursor;
-
-import java.text.SimpleDateFormat;
-
-import java.util.Date;
-import java.util.StringTokenizer;
-import java.util.Vector;
-import java.awt.Toolkit;
-
 
 import javax.swing.JDialog;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTabbedPane;
 
-import dInterface.DApplication;
-import dInternal.DModel;
-import dInternal.dDataTxt.SetOfStates;
-import dInternal.dDataTxt.State;
-import dInterface.ProgressBar;
-import dInterface.dUtil.DXTools;
-
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.StandardReportData;
-import dInternal.dUtil.DXValue;
-
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInternal.dDataTxt.StandardReportData;
 
 public class ReportsDlg extends JDialog implements ActionListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize

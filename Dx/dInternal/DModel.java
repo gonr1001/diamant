@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.103 $  $Date: 2004-06-10 15:11:32 $
+ * Title: DModel $Revision: 1.104 $  $Date: 2004-06-21 15:38:18 $
  * Description: DModel is a class used to
  *
  *
@@ -14,32 +14,42 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.103 $
+ * @version $Revision: 1.104 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
 
-import java.util.Vector;
-
 import java.awt.Component;
 import java.awt.Cursor;
 import java.io.File;
-import dInterface.DDocument;
-import dInternal.dDataTxt.*;
-import dInternal.dDataXML.*;
-import dInternal.dDataXML.rooms.SetOfCategories;
-import dInternal.dOptimization.*;
-
-import dInternal.dUtil.DXValue;
-
-import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.TTStructureListener;
-import dInternal.dTimeTable.TTStructureEvent;
-import dInternal.dOptimization.SetOfEvents;
-
+import java.util.Vector;
 
 import dConstants.DConst;
+import dInterface.DDocument;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.ExportData;
+import dInternal.dDataTxt.InstructorAttach;
+import dInternal.dDataTxt.LoadData;
+import dInternal.dDataTxt.RoomAttach;
+import dInternal.dDataTxt.SaveData;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfInstructors;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.SetOfRooms;
+import dInternal.dDataTxt.SetOfStates;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dDataTxt.Type;
+import dInternal.dDataTxt.Unity;
+import dInternal.dDataXML.XMLLoadData;
+import dInternal.dDataXML.rooms.SetOfCategories;
+import dInternal.dOptimization.SetOfEvents;
+import dInternal.dOptimization.TestConditions;
+import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.TTStructureEvent;
+import dInternal.dTimeTable.TTStructureListener;
+import dInternal.dUtil.DXValue;
 
 public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();

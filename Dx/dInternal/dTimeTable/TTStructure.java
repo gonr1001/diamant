@@ -2,14 +2,17 @@ package dInternal.dTimeTable;
 
 
 import java.util.Vector;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.Resource;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import xml.InPut.ReadXMLElement;
+import xml.InPut.readFile;
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
-import xml.InPut.readFile;
-import xml.InPut.ReadXMLElement;
 import dConstants.DConst;
-import org.w3c.dom.*;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 //import javax.xml.parsers.FactoryConfigurationError;
 
 public class TTStructure {

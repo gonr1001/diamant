@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.14 $  $Date: 2004-06-10 15:11:31 $
+ * Title: EventsDlgInterface $Revision: 1.15 $  $Date: 2004-06-21 15:38:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -32,17 +32,13 @@ package dInterface.dAffectation;
 
 
 import java.awt.BorderLayout;
-
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import java.util.StringTokenizer;
-import dInterface.dUtil.ButtonsPanel;
-
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -50,16 +46,15 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import dInternal.dOptimization.EventAttach;
-import dInternal.dOptimization.SetOfEvents;
+import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXTools;
 import dInternal.dDataTxt.SetOfActivities;
 import dInternal.dDataTxt.Unity;
+import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.SetOfEvents;
 import dInternal.dUtil.DXToolsMethods;
-
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
-
-import dConstants.DConst;
 
 public abstract class EventsDlgInterface extends JDialog implements ActionListener{
 

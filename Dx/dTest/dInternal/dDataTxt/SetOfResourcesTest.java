@@ -8,9 +8,11 @@ package dTest.dInternal.dDataTxt;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import junit.framework.*;
-import dInternal.dDataTxt.Resource;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import dInternal.dDataTxt.InstructorAttach;
+import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfInstructors;
 
 

@@ -10,16 +10,13 @@ package dInterface.dAffectation;
  */
 
 import java.awt.BorderLayout;
-
-import java.awt.Dimension;
 import java.awt.Dialog;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -27,13 +24,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-
-
-
+import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
-
-import dConstants.DConst;
 
 public abstract class SetOfElementsInterface extends JDialog implements ActionListener{
 

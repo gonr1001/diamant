@@ -9,12 +9,14 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
-import dInternal.dDataTxt.*;
-import dInternal.dTimeTable.*;
-import dInternal.DModel;
-import dConstants.DConst;
-import java.util.Vector;
 import java.util.StringTokenizer;
+import java.util.Vector;
+
+import dConstants.DConst;
+import dInternal.DModel;
+import dInternal.dDataTxt.Resource;
+import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.TTStructure;
 
 public class TestConditions {
 

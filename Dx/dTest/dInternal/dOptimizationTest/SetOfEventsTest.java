@@ -1,14 +1,15 @@
 package dTest.dInternal.dOptimizationTest;
 
-import junit.framework.*;
-import dInternal.dOptimization.SetOfEvents;
-import dInternal.dOptimization.EventAttach;
-
-import dInternal.DModel;
-import dInterface.DDocument;
-
 import java.io.File;
 import java.util.StringTokenizer;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import dInterface.DDocument;
+import dInternal.DModel;
+import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.SetOfEvents;
 
 public class SetOfEventsTest extends TestCase {
 

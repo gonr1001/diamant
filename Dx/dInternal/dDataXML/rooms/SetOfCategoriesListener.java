@@ -11,8 +11,9 @@ package dInternal.dDataXML.rooms;
  * @version 1.0
  */
 
-import java.util.*;
 import java.awt.Component;
+import java.util.EventListener;
+
 import dInternal.dDataTxt.SetOfRoomsEvent;
 
 public interface SetOfCategoriesListener extends EventListener{

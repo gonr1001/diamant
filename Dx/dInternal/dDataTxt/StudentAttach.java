@@ -10,9 +10,8 @@ package dInternal.dDataTxt;
  */
 
 import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.dUtil.DXValue;
 
 public class StudentAttach extends DXObject{
 

@@ -10,10 +10,12 @@ package dTest.dInternal.dDataTxt;
  */
 
 //public class RoomAttachTest {
-import junit.framework.*;
-import dInternal.dDataTxt.RoomAttach;
-
 import java.util.Vector;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import dInternal.dDataTxt.RoomAttach;
 
 public class RoomAttachTest extends TestCase {
   //private StudentAttach _student;

@@ -9,6 +9,7 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 import java.awt.Color;
+
 import dInternal.dUtil.DXObject;
 
 public class State extends DXObject{

@@ -8,12 +8,11 @@ package dInternal.dDataXML.rooms;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import java.util.StringTokenizer;
 import java.util.Vector;
-import java.awt.Component;
+
 import dConstants.DConst;
-import dInternal.dDataTxt.*;
 import dInternal.dDataTxt.RoomsAttributesInterpretor;
+import dInternal.dDataTxt.SetOfResources;
 
 public class SetOfRooms extends SetOfResources{
 

@@ -9,14 +9,14 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 
+import java.awt.Component;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.awt.Component;
+
 import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DXValue;
-import dInternal.dDataTxt.Resource;
 
 public class SetOfStudents extends SetOfResources{
 

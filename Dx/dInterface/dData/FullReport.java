@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.13 $  $Date: 2004-06-09 19:29:17 $
+ * Title: FullReport $Revision: 1.14 $  $Date: 2004-06-21 15:38:17 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -33,29 +33,16 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
-
 import java.util.Vector;
-
-
-
 
 import javax.swing.JTextArea;
 
-
-import dInterface.DApplication;
-
-import dInterface.dTimeTable.SaveAsTxtDlg;
-
-
-
-import dInternal.dUtil.DXValue;
-
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dTimeTable.SaveAsTxtDlg;
+import dInternal.dUtil.DXValue;
 
 
 public class FullReport extends ViewReport implements ActionListener {
@@ -187,8 +174,8 @@ public class FullReport extends ViewReport implements ActionListener {
                     DConst.REPORT +
                     " " +
                     DConst.TO_LEFT +
-                    DConst.REPORT_DLG_TAB3 +
-                    DConst.TO_RIGHT + " ";
+                    DConst.REPORT_DLG_TAB1 +
+                    DConst.TO_RIGHT + "          ";
       data +=  DConst.REPORT_PRODUCED_AT +
                " " +
                sdf.format(date) +

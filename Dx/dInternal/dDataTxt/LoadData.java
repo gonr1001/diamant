@@ -9,17 +9,16 @@ package dInternal.dDataTxt;
  * @version 1.0
  */
 
-import java.util.Vector;
-import java.util.StringTokenizer;
 import java.io.File;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gIO.FilterFile;
 
-
-import dInternal.dTimeTable.TTStructure;
 import dInternal.DModel;
 import dInternal.Preferences;
+import dInternal.dTimeTable.TTStructure;
 
 public class LoadData {
   //Vector _v;

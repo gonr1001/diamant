@@ -1,8 +1,9 @@
 package dInterface.dUtil;
 
-import javax.swing.JComboBox;
-import java.util.Vector;
 import java.awt.event.ActionListener;
+import java.util.Vector;
+
+import javax.swing.JComboBox;
 
 public class DXJComboBox extends JComboBox{
   ActionListener [] _actionList;

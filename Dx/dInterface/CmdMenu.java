@@ -1,5 +1,5 @@
 /**
- * Title: CmdMenu $Revision: 1.5 $  $Date: 2003-10-28 13:20:23 $
+ * Title: CmdMenu $Revision: 1.6 $  $Date: 2004-06-21 15:38:16 $
  * Description: CmdMenu is a class suggested by the
  *              command pattern. All menu items will be associated
  *              with a command.
@@ -14,14 +14,14 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
 
 
-import javax.swing.*;
+import javax.swing.JMenuItem;
 
 /**
  *

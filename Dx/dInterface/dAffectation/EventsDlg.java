@@ -11,14 +11,14 @@ package dInterface.dAffectation;
 
 
 import java.awt.event.ActionEvent;
-import dInterface.DApplication;
-import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.TwoButtonsPanel;
-import dInterface.dUtil.DXTools;
 
+import com.iLib.gDialog.InformationDlg;
 
 import dConstants.DConst;
-import com.iLib.gDialog.InformationDlg;
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXTools;
+import dInterface.dUtil.TwoButtonsPanel;
 public class EventsDlg extends EventsDlgInterface{
 
 

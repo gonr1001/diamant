@@ -8,13 +8,13 @@ package dInternal.dUtil;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
+import java.io.File;
 import java.util.StringTokenizer;
 
-import dInternal.dTimeTable.TTStructure;
+import dConstants.DConst;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
-import dConstants.DConst;
-import java.io.File;
+import dInternal.dTimeTable.TTStructure;
 
 
 public class DXToolsMethods {

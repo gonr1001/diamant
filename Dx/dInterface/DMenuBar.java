@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.111 $  $Date: 2004-06-17 20:00:09 $
+ * Title: DMenuBar $Revision: 1.112 $  $Date: 2004-06-21 15:38:16 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,48 +14,58 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.111 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.112 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
 
-import dConstants.DConst;
-import dDeveloper.DoNothingCmd;
 import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
-import javax.swing.JMenu;
-
-import dInterface.dAffectation.*;
-import dInterface.dData.*;
-import dInterface.dAlgorithms.*;
-import dInterface.dTimeTable.NewTTExCmd;
+import dConstants.DConst;
+import dDeveloper.DoNothingCmd;
+import dDeveloper.MyFileCmd;
+import dDeveloper.ShowAllCmd;
+import dDeveloper.StateZeroCmd;
+import dInterface.dAffectation.ActivityCmd;
+import dInterface.dAffectation.ActivityModifCmd;
+import dInterface.dAffectation.DefineSetCmd;
+import dInterface.dAffectation.EventsCmd;
+import dInterface.dAffectation.InitialAssignCmd;
+import dInterface.dAffectation.PartialTTStructureCmd;
+import dInterface.dAffectation.RoomsAvailabilityCmd;
+import dInterface.dAffectation.SectionCmd;
+import dInterface.dAlgorithms.AlgorithmsCmd;
+import dInterface.dAlgorithms.BalanceMixingAlgorithmCmd;
+import dInterface.dAlgorithms.MiddleBalMixingAlgoritmCmd;
+import dInterface.dAlgorithms.OptimizeMixingAlgorithmCmd;
+import dInterface.dData.DefFilesToImportCmd;
+import dInterface.dData.ExportCmd;
+import dInterface.dData.ImportCmd;
+import dInterface.dData.ImportSelectiveFileCmd;
+import dInterface.dData.InstructorAvailabilityCmd;
+import dInterface.dData.ReportCmd;
+import dInterface.dTimeTable.CloseCmd;
+import dInterface.dTimeTable.ManualImprovementCmd;
 import dInterface.dTimeTable.NewTTCyCmd;
-import dInterface.dTimeTable.OpenTTCmd;
+import dInterface.dTimeTable.NewTTExCmd;
 import dInterface.dTimeTable.NewTTSCyCmd;
 import dInterface.dTimeTable.NewTTSExCmd;
+import dInterface.dTimeTable.OpenTTCmd;
 import dInterface.dTimeTable.OpenTTSCmd;
 import dInterface.dTimeTable.SaveAsCmd;
 import dInterface.dTimeTable.SaveCmd;
-import dInterface.dTimeTable.CloseCmd;
-import dInterface.dTimeTable.ManualImprovementCmd;
-
 import dInterface.dUtil.AboutCmd;
 import dInterface.dUtil.ConflictCmd;
 import dInterface.dUtil.ExitCmd;
 import dInterface.dUtil.PLAFCmd;
 import dInterface.dUtil.ViewHorizontalSplitCmd;
-import dInterface.dUtil.ViewVerticalSplitCmd;
 import dInterface.dUtil.ViewSimpleCmd;
-
-
-
-import dDeveloper.MyFileCmd;
-import dDeveloper.ShowAllCmd;
-import dDeveloper.StateZeroCmd;
+import dInterface.dUtil.ViewVerticalSplitCmd;
 
 
 public class DMenuBar extends JMenuBar{

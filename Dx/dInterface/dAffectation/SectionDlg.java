@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.29 $  $Date: 2004-06-10 15:11:31 $
+ * Title: SectionDlg $Revision: 1.30 $  $Date: 2004-06-21 15:38:16 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -24,43 +24,40 @@ package dInterface.dAffectation;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.GridLayout;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
-
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
-import dInterface.DApplication;
-import dInterface.dUtil.TwoButtonsPanel;
-import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXTools;
-
-import dInternal.dDataTxt.Activity;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.SetOfStudents;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.StudentAttach;
-import dInternal.dDataTxt.Section;
-import dInternal.dDataTxt.Type;
+import com.iLib.gDialog.InformationDlg;
 
 import dConstants.DConst;
-
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXJComboBox;
-import com.iLib.gDialog.InformationDlg;
+import dInterface.dUtil.DXTools;
+import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dDataTxt.StudentAttach;
+import dInternal.dDataTxt.Type;
 
 public class SectionDlg extends JDialog implements ActionListener{
   private DApplication _dApplic;

@@ -8,19 +8,17 @@ package dInterface.dTimeTable;
  * @author rgr, ysyam, ajz
  * @version 1.0
  */
-import javax.swing.JDialog;
+import java.awt.Dimension;
 
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
+import com.iLib.gDialog.FatalProblemDlg;
+
+import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DFileFilter;
-import com.iLib.gDialog.FatalProblemDlg;
-
-
-import java.awt.Dimension;
-
-import dConstants.DConst;
 
 
   public class OpenTTSDlg extends JDialog{

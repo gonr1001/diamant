@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.18 $  $Date: 2004-06-09 19:45:52 $
+ * Title: SaveAsDlg $Revision: 1.19 $  $Date: 2004-06-21 15:38:17 $
  * Description: SaveAsDlg(DApplication dApplic) can created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) or can created
  *                        by ConflicReport, FullReport,
@@ -18,7 +18,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,14 +29,10 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-
 import com.iLib.gDialog.InformationDlg;
 
-import dInterface.DApplication;
-
-//import dDeveloper.ConfirmDlg;
-
 import dConstants.DConst;
+import dInterface.DApplication;
 
 
 /**

@@ -15,8 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -25,15 +23,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-
-import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
-import dInternal.dDataTxt.SetOfActivities;
-import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.TwoButtonsPanel;
-
-
 import dConstants.DConst;
+import dInterface.DApplication;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXTools;
+import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.dDataTxt.SetOfActivities;
 
 public class ActivityDlg extends JDialog implements ActionListener {
 

@@ -9,13 +9,15 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
+import java.util.Vector;
+
 import dInternal.DModel;
-import dInternal.dTimeTable.*;
-import dInternal.dOptimization.*;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXValue;
-import java.util.Vector;
 
 
 

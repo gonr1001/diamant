@@ -9,21 +9,23 @@ package dTest.dInternal.dTimeTable;
  * @version 1.0
  */
 
-import junit.framework.*;
-
 import java.io.File;
 
-import dInternal.dTimeTable.Period;
-import dInternal.dTimeTable.Sequence;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import xml.InPut.ReadXMLElement;
+import xml.InPut.readFile;
+import xml.OutPut.BuildXMLElement;
+import xml.OutPut.writeFile;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
-
-import xml.InPut.readFile;
-import xml.InPut.ReadXMLElement;
-import xml.OutPut.*;
-
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
+import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
 
 
 public class SequenceTest extends TestCase {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.112 $  $Date: 2004-06-10 15:11:31 $
+ * Title: DDocument $Revision: 1.113 $  $Date: 2004-06-21 15:38:16 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,42 +14,50 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.112 $
+ * @version $Revision: 1.113 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
 
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
-import java.awt.Dimension;
-
-import javax.swing.event.*;
-import javax.swing.*;
-
-
-
-import dInternal.DModel;
-import dInternal.dDataTxt.*;
-import dInternal.dOptimization.*;
-import dInternal.DModelEvent;
-import dInternal.DModelListener;
-import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.TTStructureListener;
-import dInternal.dTimeTable.TTStructureEvent;
-import dConstants.DConst;
-
-
-import dInterface.dTimeTable.TTPane;
-import dInterface.dTimeTable.DetailedTTPane;
-import dInterface.dTimeTable.SimpleTTPane;
-
-import dInterface.dTimeTable.CloseCmd;
+import javax.swing.JInternalFrame;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 
 import com.iLib.gDialog.FatalProblemDlg;
+
+import dConstants.DConst;
+import dInterface.dTimeTable.CloseCmd;
+import dInterface.dTimeTable.DetailedTTPane;
+import dInterface.dTimeTable.SimpleTTPane;
+import dInterface.dTimeTable.TTPane;
+import dInternal.DModel;
+import dInternal.DModelEvent;
+import dInternal.DModelListener;
+import dInternal.dDataTxt.SetOfActivitiesEvent;
+import dInternal.dDataTxt.SetOfActivitiesListener;
+import dInternal.dDataTxt.SetOfInstructorsEvent;
+import dInternal.dDataTxt.SetOfInstructorsListener;
+import dInternal.dDataTxt.SetOfRoomsEvent;
+import dInternal.dDataTxt.SetOfRoomsListener;
+import dInternal.dDataTxt.SetOfStatesEvent;
+import dInternal.dDataTxt.SetOfStatesListener;
+import dInternal.dDataTxt.SetOfStudentsEvent;
+import dInternal.dDataTxt.SetOfStudentsListener;
+import dInternal.dOptimization.SetOfEventsEvent;
+import dInternal.dOptimization.SetOfEventsListener;
+import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.TTStructureEvent;
+import dInternal.dTimeTable.TTStructureListener;
 
 //import dInterface.dUtil.DXTools;
 //debug

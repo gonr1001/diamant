@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: DToolBar $Revision: 1.46 $  $Date: 2004-06-10 15:11:31 $
+ * Title: DToolBar $Revision: 1.47 $  $Date: 2004-06-21 15:38:16 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -21,19 +21,32 @@ package dInterface;
  * @since JDK1.3
  */
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
 
-import com.iLib.gDialog.*;
+import com.iLib.gDialog.InformationDlg;
 
-import dInterface.dTimeTable.*;
-import dInterface.dUtil.*;
-import dInternal.dDataTxt.*;
-import dInternal.dTimeTable.*;
-import dInternal.dUtil.*;
-import dConstants.*;
+import dConstants.DConst;
+import dInterface.dTimeTable.PeriodPanel;
+import dInterface.dUtil.DXJComboBox;
+import dInternal.dDataTxt.Resource;
+import dInternal.dTimeTable.Cycle;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
+import dInternal.dTimeTable.TTStructure;
+import dInternal.dTimeTable.TTStructureEvent;
+import dInternal.dTimeTable.TTStructureListener;
+import dInternal.dUtil.DXToolsMethods;
 
 //-------------------------------------------
 /**

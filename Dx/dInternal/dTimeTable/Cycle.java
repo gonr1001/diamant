@@ -4,17 +4,17 @@ package dInternal.dTimeTable;
 
 import java.util.StringTokenizer;
 
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dTimeTable.TTStructure;
-import dInternal.dDataTxt.Resource;
-import dInternal.dUtil.*;
-
-import java.lang.Math;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXToolsMethods;
+import dInternal.dUtil.DXValue;
+import dInternal.dUtil.DisplayAttributs;
 
 public class Cycle extends DXObject{
 

@@ -1,19 +1,25 @@
 package dInternal.dOptimization;
 
-import dInternal.dDataTxt.*;
+import java.awt.Component;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
-
-import dInternal.dTimeTable.Cycle;
+import dConstants.DConst;
+import dInterface.dUtil.DXTools;
+import dInternal.DModel;
+import dInternal.dDataTxt.Activity;
+import dInternal.dDataTxt.Assignment;
+import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.Section;
+import dInternal.dDataTxt.SetOfActivities;
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.SetOfStudents;
+import dInternal.dDataTxt.StudentAttach;
+import dInternal.dDataTxt.Type;
+import dInternal.dDataTxt.Unity;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
-import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXValue;
-import dInternal.DModel;
-import dConstants.DConst;
-
-import java.util.Vector;
-import java.util.StringTokenizer;
-import java.awt.Component;
 
 
 public class SetOfEvents extends SetOfResources{

@@ -9,11 +9,13 @@ package dTest.dInternal.dDataTxt;
  * @version 1.0
  */
 
-import junit.framework.*;
-
-import dInternal.dDataTxt.SetOfStudents;
-import dConstants.DConst;
 import java.util.Vector;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import dConstants.DConst;
+import dInternal.dDataTxt.SetOfStudents;
 
 
 public class SetOfStudentsTest  extends TestCase{
