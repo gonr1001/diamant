@@ -20,7 +20,7 @@
 \newcommand{\xp}{eXtreme Programming}
 \def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
 
-\title{\bf{The architecture of a system of production of the schedules of course and exams}}
+\title{\bf{The architecture of a system of timetable production of courses and exams}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao Muñoz}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
@@ -45,40 +45,38 @@ Université de Sherbrooke,\\
 \input{resumeEnglish.tex}
 \end{abstract}
 
-{\bf Keywords :} Production of schedules, Construction of
-schedules, Open architecture, Extensible Architecture, Data bases,
-Web.
+{\bf Keywords :} Timetable production, Timetable construction,
+Open architecture, Extensible Architecture, Databases, Web.
 
 \section{Introduction}
 
-The production of schedules is a periodic task carried out in many
+The timetable production is a periodic task carried out in many
 institutions of teaching. These institutions produce one or more
-schedules per year for the courses and the exams. The automation
+timetable per year for the courses and the exams. The automation
 of this production can reduce its cost in an important way. In
 certain cases, automation starts with the use of a software of
-construction of schedules; in others, it starts with the
-automation of the treatments associated with the work of the
-institution, as for example the follow of students. There are
-software to carry out the construction of schedules, by example
-DIAMANT \cite{gonzalezrubio00} and SAPHIR \cite{ferland94}, but,
-there exists many others.
+timetable construction; in others, it starts with the automation
+of the treatments associated with the work of the institution, as
+for example the follow of students. There are software to carry
+out the timetable construction, by example DIAMANT
+\cite{gonzalezrubio00} and SAPHIR \cite{ferland94}, but, there
+exists many others.
 
-In general, the software for the creation of schedules uses as
-input one or more files. Their output is saved on one or more
-files. The work with files is a source of problems. It is
-necessary to build the input files each time that a schedule is
-produced. There exists, two cases~: a manual production of the
-files or an automated production. If the files are produced
-manually, there are the typing errors that can produce unexpected
-effects in the software. The errors are difficult to find, because
-all the data should be checked manually. In the case, where the
-files are produced in an automatic way, it is necessary that the
-software is ensured to check the validity and the coherence of all
-the data. The second problem appears when a change is introduced
-into the system (either in the application of construction, or in
-that of the production of files) or if the application of
-construction is used in several different sites, using different
-data formats.
+In general, the software for timetable creation uses as input one
+or more files. Their output is saved on one or more files. The
+work with files is a source of problems. It is necessary to build
+the input files each time that a timetable is produced. There
+exists, two cases~: a manual production of the files or an
+automated production. If the files are produced manually, there
+are the typing errors that can produce unexpected effects in the
+software. The errors are hard to find, because all the data should
+be checked manually. In the case, where the files are produced in
+an automatic way, it is necessary that the software is ensured to
+check the validity and the coherence of all the data. The second
+problem appears when a change is introduced into the system
+(either in the application of construction, or in that who produce
+the files) or if the application of construction is used in
+several different sites, using different data formats.
 
 Another source of problems even more expensive than the preceding
 one, is that when a change is introduced into the system, it could
@@ -87,7 +85,7 @@ production or in both. The changes come on behalf of persons in
 charge for the institution, for example a new nomenclature for the
 buildings; new teaching approach, which change the way to create
 the groups, etc. The problem to modify a software is not only for
-the production of schedules. It acts of a general problem in the
+the timetable production. It acts of a general problem in the
 development of software.
 
 The solution to the first problem passes by the automation of the
@@ -101,84 +99,83 @@ expensive. A way of decreasing the effects of this problem is the
 development of software having the quality of extensibility.
 
 In this article we propose the architecture of a system of
-production of schedules of courses and exams having the qualities:
+timetable production of courses and exams having the qualities:
 open and extensible. This architecture must contribute to more
 easily work with the two problems mentioned, by reducing the cost
 of the modifications and by carrying out the checking and the
 validation of the data in precise stages of the process and by
 avoiding the redundancy of the code and the data. This
 architecture implements a database, an Internet site and a
-software of construction of schedules. The checking and the
+software of timetable construction. The checking and the
 validation of data will be made with the input and with integrity
 constraints in the database. The Internet site is used mainly for
 the data input, at the same time, it can check the validity of the
 data, using the rules of businesses before the data will be
 entered to the database. Another function of the Internet site is
-to offer the schedules in a personalized way, once that the
-schedule is built. The database allows the retrieval of the data,
-according to various formats. Thus, the input of the software of
-construction is simplified. Of course, with the assistance of the
-software of construction of schedules, it is possible to create a
-schedule with a minimum of conflicts.
+to offer the timetable in a personalized way, once that it is
+built. The database allows the retrieval of the data, according to
+various formats. Thus, the input of the software of construction
+is simplified. Of course, with the assistance of the software of
+timetable construction, it is possible to create a timetable with
+a minimum of conflicts.
 
 
-Many research was made in the construction of schedules:
-algorithms, mathematical formulations and several software were
-proposed in the PATAT conferences \cite{patat97, patat00,
-patat02}. On the other hand, few efforts were devoted, until now,
-to the general development of the production of schedules. We
-think that the fact of having a total sight on the process can
-help the research in construction of schedules. White
-\cite{white00} highlighted that the Web must be used to the
-diffusion of schedules. We are trying to go far proposing also to
-use it like interfaces of data input, moreover we propose the
-architecture necessary to support our ideas. De Causmaecker et al.
-\cite{decausmaecker02} introduced the idea that the semantics Web
-can be used by the researchers in the construction of schedules.
-They also introduced the idea to use XML like a language of
-communication in the construction of schedules by agents. We
-propose also the use of XML, in order to facilitate the exchanges
-between certain modules of our architecture. In Burke and Al
-\cite{burke97} it is proposed to have a standard for the data
-format, in the many software for schedule instances, their goal
-was to compare algorithms (programs) in benchmarks. In a more
-recent work, Kingston \cite{kingston02} proposes a language STTL
-and an interpreter, with the same objective. Özcan \cite{ozcan03}
-suggests also another standard to define instances of problems of
-construction of schedules, having XML as a base language. It seems
-that it would be desirable to have a standard, but it is a goal
-very hard to reach. At the place, our approach makes it possible
-to use a database like a tool of extraction and formatting, in
-this way the software of construction of schedules can receive the
-necessary data. Thus, it would be possible to generate other
-instances of problems for other software of construction of
-schedules.
+Many research was made in the timetable construction~: algorithms,
+mathematical formulations and several software were proposed in
+the PATAT conferences \cite{patat97, patat00, patat02}. On the
+other hand, few efforts were devoted, until now, to the general
+development of the timetable production. We think that the fact of
+having a total sight on the process can help the research in
+timetable construction. White \cite{white00} highlighted that the
+Web must be used to the diffusion of timetables. We are trying to
+go far proposing also to use it like an interface of data input,
+moreover we propose the architecture necessary to support our
+ideas. De Causmaecker et al. \cite{decausmaecker02} introduced the
+idea that the semantics Web can be used by the researchers in the
+timetable construction. They also introduced the idea to use XML
+like a language of communication in the timetable construction by
+agents. We propose also the use of XML, in order to facilitate the
+exchanges between certain modules of our architecture. In Burke
+and al \cite{burke97} it is proposed to have a standard for the
+data format, in the many instances of software for timetable,
+their goal was to compare algorithms (programs) in benchmarks. In
+a more recent work, Kingston \cite{kingston02} proposes a language
+STTL and an interpreter, with the same objective. Özcan
+\cite{ozcan03} suggests also another standard to define instances
+of problems of timetable construction, having XML as a base
+language. It seems that it would be desirable to have a standard,
+but it is a goal very hard to reach. At the place, our approach
+makes it possible to use a database like a tool of extraction and
+formatting, in this way the software of timetable construction can
+receive the necessary data. Thus, it would be possible to generate
+other instances of problems for other software of timetable
+construction.
 
 The development of our architecture, was divided into two parts,
-we analyzed the flow of the data in a generic system of production
-of schedules. Then we define an architecture, the basic blocks and
+we analyzed the flow of the data in a generic system of timetable
+production. Then we define an architecture, the basic blocks and
 the responsibility of each block which takes part in the
 architecture. The objectives to define an open and extensible
 architecture were respect during our work. This is presented in
 the sections \ref{sec:data} and \ref{sec:archi}.
 
 Once defined the architecture, we created an instance in order to
-establish it in a system of production of schedules at the
-University of Sherbrooke. We made an overflight of existing
-technologies in order to make the good choices still respecting
-the objectives of opening and extensibility. This is presented in
-the sections \ref{sec:tech} and \ref{sec:tictac}.
+establish it in a system of timetable production at the University
+of Sherbrooke. We made an overflight of existing technologies in
+order to make the good choices still respecting the objectives of
+opening and extensibility. This is presented in the sections
+\ref{sec:tech} and \ref{sec:tictac}.
 
 
 We finish by an assessment and the conclusions in the section
 \ref{sec:conc}.
 
 
-\section{The flow of information in the production of schedules}
+\section{The flow of information in the timetable production}
 \label{sec:data}
 
-First of all, we define, the process of production of schedules as
-a process which starts with the data capture for the period of
+First of all, we define, the process of timetable production as a
+process which starts with the data capture for the period of
 validity of the schedule $P$. This period $P$ is one six-month
 period, one quarter, or a year\footnote{In the University of
 Sherbrooke we speaks about quarter, but it really comprises
@@ -187,26 +184,26 @@ adapt to any period $P$.}. The process ends when all the concerned
 people receive the schedule on a paper or the Web (see figure
 \ref{fig:fOne}) and that the period of validity of the schedule
 touches at its end. The are multiple data to feed to the system,
-for example the courses which will take place during the time $P$;
-the format of the courses (3h, or 2h+1h); possible or assigned
-teachers for certain courses; possible or assigned buildings; the
-availability of the teachers and the buildings, etc. We know that
-there are institutions where the students make a pre-choice and
-others where the schedules are made without pre-choice. The
-pre-choice of the students is part of the data to be supplied, if
-there is no pre-choice, it is necessary to indicate the number of
-students to be admitted for each course.
+for example the courses which will take place during the period
+$P$; the format of the courses (3h, or 2h+1h); possible or
+assigned teachers for certain courses; possible or assigned
+buildings; the availability of the teachers and the buildings,
+etc. We know that there are institutions where the students make a
+pre-choice and others where the timetable are made without
+pre-choice. The pre-choice of the students is part of the data to
+be supplied, if there is no pre-choice, it is necessary to
+indicate the number of students to be admitted for each course.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
 \begin{picture}(90,35)
 \deffilebox{20}{10}{0.2}
 \defprocessbox{20}{16}
-\put(0, 15){\fichier[\pro{Données}]}
+\put(0, 15){\fichier[\pro{Data}]}
 
 \put( 20,20){\vector(1,0){15}}
 
-\put(35, 12){\process[Schedule\\production\\software]}
+\put(35, 12){\process[Timetable\\production\\software]}
 
 \put(55, 20){\vector(1,0){7}} \put(62, 20){\corner[y]{-10}{8}}
 \put(62, 20){\corner[y]{10}{8}}
@@ -216,54 +213,46 @@ students to be admitted for each course.
 \put(70, 5){\fichier[\pro{Web}]}
 \end{picture}
 \end{center}
-\caption{Production of schedules}\label{fig:fOne}
+\caption{Timetable production}\label{fig:fOne}
 \end{figure}
 
-The figure \ref{fig:fOne} is an abstract view of the production of
-schedules, the system of production includes a software of
-construction of schedules.
-
-
-
-%*********************************************************
+The figure \ref{fig:fOne} is an abstract view of the timetable
+production, the system of timetable production includes a software
+of timetable construction.
 
 \begin{description}
-\item[Système de production d'horaires] Il est composé de
-plusieurs logiciels, ou modules, qui fonctionnent de manière
-autonome, mais coordonnée. Il nous apparaît clair que  le système
-doit avoir deux composantes principales~: le système de sauvegarde
-de données et le logiciel de construction d'horaires.
+\item[System of timetable production] It is composed of several
+software, or modules, which works in an autonomous way, but
+coordinated. It appears clear to us that the system must have two
+principal components~: the system of data back-up and the software
+of timetable construction.
 
-\item[Données] représentent des données nécessaires à la
-production d'horaires. Nous allons sauvegarder toutes les données
-nécessaires dans un système de sauvegarde de données. Dans la
-figure, il n'est pas indiqué que ces données peuvent être
-manipulés par des modules du système de production d'horaires. Par
-exemple, le module de saisie de pre-choix, va sauvegarder les
-cours suivis par un étudiant. Le module de construction de données
-va prendre son entrée dans la base et lorsque la construction sera
-faite les nouvelles données obtenues seront remises dans
-l'entrepôt des données.
+\item[Data] represent the data necessary to the timetable
+production. We will save all the necessary data in a system of
+data back-up. In the figure, it is not indicated that these data
+can be handled by modules of the system of timetable production.
+For example, the means of acquisition of pre-choice, will save the
+courses followed by a student. The module of construction of data
+will take its entry in the database and when the construction is
+made the new data obtained will be given in the data warehouse .
 
 
-\item[Papier ou Web] Il s'agit de la sortie du système une fois
-que l'horaire est construit. Ces sorties peuvent être des
-fichiers, qui seront imprimés sur papier ou des données qui seront
-affichés sur une page Web, dans le deux cas les données sources se
-trouvent dans  la base de données.
+\item[Paper or Web] It is the output of the system once that the
+timetable is built. These output can to be files, which will be
+printed on paper or data that will be presented on a Web page, in
+both cases the data sources are in the database.
 
 \end{description}
 
 
-\subsection{La préparation des données}
-La figure \ref{fig:fTwo} montre l'évolution des données pendant la
-production de l'horaire. L'évolution présente les instances des
-données à différents instants du processus.
+\subsection{Preparation of the data}
+The figure \ref{fig:fTwo} shows the evolution of the data during
+the timetable production. The evolution presents the instance of
+the data at differents moments of the process.
 
-La répartition de données sur une seule base de données ou sur
-plusieurs bases (base de données repartie) est un problème
-d'implémentation. De manière conceptuelle il s'agit d'une seule
-base de données.
+The distribution of data in only one database or several data
+bases (distributed database) is a problem of implementation. In a
+conceptual way it is only one database.
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
@@ -273,57 +262,56 @@ base de données.
 \defprocessbox{20}{16}
 %\put(0,0){\fichier[Données]}
 %\put( 10, 2){\corner{20}{4}}
-\put(0, 15){\fichier[$bd_{1}$]} \put(0, 5){\makebox(20,10){Données
-de base}} \put(20, 20){\vector(1,0){10}} \put(30,
-15){\fichier[$bd_{2}$]} \put(30, 5){\makebox(20,10){Données
-période $P$}} \put(50, 20){\vector(1,0){10}} \put(60,
-15){\fichier[$bd_{3}$]} \put(60, 5){\makebox(20,10){Données
-horaire}}
+\put(0, 15){\fichier[$bd_{1}$]} \put(0, 5){\makebox(20,10){Basic
+data}} \put(20, 20){\vector(1,0){10}} \put(30,
+15){\fichier[$bd_{2}$]} \put(30, 5){\makebox(20,10){Period $P$
+data}} \put(50, 20){\vector(1,0){10}} \put(60,
+15){\fichier[$bd_{3}$]} \put(60, 5){\makebox(20,10){Timetable
+data}}
 \end{picture}%}
 \end{center}
 
-\caption{L'évolution des données pendant la production d'un
-horaire}\label{fig:fTwo}
+\caption{Evolution of the data during the production of a
+timetable}\label{fig:fTwo}
 \end{figure}
 
 
 \begin{description}
-    \item[Données de base] Ces données sont les données définies à long
-    terme dans l'entrepôt.  L'information des activités pédagogiques d'un
-    programme, les programmes offerts, les enseignants, les
-    caractéristiques de salles de cours, les étudiants sont des exemples de
-    ce type d'information. Il s'agit en général des informations qui sont partagées par
-    d'autres applications. Par exemple un étudiant est décrit par son
-    nom, prénom, matricule, programme suivi, etc. Une application qui
-    utilise les données étudiants est par exemple celle qui permet
-    d'imprimer les notes d'un étudiant sur son bulletin.
-    Ici, nous nous intéressons aux données associées à la production d'horaires,
-qui peut être une vue (une partie) de la base de données complète
-de l'institution.
 
+\item[Basic data] These data is defined as the long term data in
+the warehouse. The information of the academic activities of a
+program, the programs offered, the teachers, the characteristics
+of classrooms, the students, all of them are examples of this type
+of information. In general this information is shared by other
+applications. For example a student is described by his first
+name, last name, number identification, program, etc. An
+application which uses the data students is for example that which
+print the notes of a student on his scorecard. Here, we are
+interested in the data associated with the timetable production,
+which can be a sight (partially) of the complete institutional
+database.
 
-    \item[Données période $P$] Ces données sont nécessaires à la
-    construction d'un horaire pour la période concernée,
-elles contiennent les cours qui seront
-    offerts à cette période, la disponibilité de enseignants pour cette période, etc.
-    Ces données sont
-    un préalable à la construction d'un horaire et sont saisies avant
-    chaque construction. Cependant, ces données vont changer (mises-à-jour) pendant
-la construction de l'horaire. Par exemple lorsque on trouve un
-enseignant externe pour un cours donné, on saisira ses
-informations nom et disponibilité dans la base.
+\item[Period $P$ data ] These data are necessary to the timetable
+construction for the concerned period, they contain the courses
+which will be offered in this period, the availability of teachers
+for this period, etc. These data are a precondition to the
+timetable construction and are captured before each construction.
+However, these data will change (update) during the timetable
+construction. For example when a teacher external is assigned for
+a given course, we will enter his information name and
+availability in the database.
 
-    \item[Données horaire] Ces donnés sont le résultat de  la
-    construction de l'horaire. Elles vont contenir toutes les
-    informations nécessaires pour imprimer ou afficher des horaires généraux et
-    personnalisés.
+\item[Timetable data] These data are the result of the timetable
+construction. They will contain all the necessary information to
+print or show general and personalized timetable.
+
 \end{description}
 
-Il est à noter qu'il existe deux grandes activités  dans la
-production~: la saisie (mise-à-jour) de données et  la
-construction de l'horaire. En général ces deux activités sont
-effectuées par un ensemble de personnes. Il est aussi nécessaire
-de voir comment ces activités s'effectuent dans le temps.
+It should be noted that there are two great activities in the
+production~: the data acquisition (updating) and timetable
+construction. In general these two activities are carried out by a
+group of people. It is also necessary to see how these activities
+are carried out in time.
 
 
 \begin{figure}[htb] \begin{center}
@@ -340,7 +328,7 @@ de voir comment ces activités s'effectuent dans le temps.
 
 \put(45, 14){\vector(1,0){40}}
 
- \put(9,13){ \shortstack{Saisie}}
+ \put(9,13){ \shortstack{Input}}
 
  \put(54,16){ \shortstack{Construction}}
 
@@ -354,109 +342,105 @@ de voir comment ces activités s'effectuent dans le temps.
 
 \put(85, 24){\line(0,1){2}} \put(84,22){\shortstack{$t_f$}}
 
-\put(9,28){ \shortstack{Saisie}}
+\put(9,28){ \shortstack{Input}}
 
 \put(54,28){ \shortstack{Construction}}
 
 \end{picture}%}
 \end{center}
 
-\caption{Les activités de saisie et construction pour une période
+\caption{Activities of data input and construction for one period
 $P$}\label{fig:fTime}
 \end{figure}
 
-La figure \ref{fig:fTime} nous montre deux cas de l'évolution de
-ces activités. Dans le cas a. la saisie et la construction sont
-deux activités réalisées en séquence. Ceci arrive dans des cas
-très rares. Dans le cas b. la saisie (surtout mis-à-jour) se fait
-au même temps que la construction. Ceci est le cas général,
-beaucoup de données sont figées, comme l'offre de cours, cependant
-si pendant la construction on trouve des situations où les
-conflits obligent à faire des changements sur les données, format
-d'un cours, passer de 3h consécutives à 2h consécutives plus 1h.
-D'autres cas peuvent se présenter.
+The figure \ref{fig:fTime} shows two cases of the evolution of
+these activities. In the case A. the data input and the
+construction are two activities carried out in sequence. This
+arrives in very rare cases. In the case B the data input
+(especially the update) is done at the same time as the
+construction. This is the general case, much of data are fixed, as
+the offer of course, however, during the construction we find
+situations where the conflicts oblige to make changes on the data,
+the format of a course, who pass from 3h consecutive to 2h
+consecutive more 1h. Other cases can be presented.
 
-En fonction de chaque instance du système, il faut définir le
-schéma de la base de données, et les rôles et privileges des
-utilisateurs.
+According to each instance of the system, it is necessary to
+define the schema of the database, and the roles and privileges of
+the users.
 
-Une autre dimension de ces deux activités est l'interaction des
-utilisateurs avec la bases de données. Nous considérons deux types
-d'utilisateurs~: le commis et le responsable de la construction.
-Le commis est celui qui va saisir les infrastructures comme dans
-la base, le responsable et celui qui est responsable de la
-construction de l'horaire et qui interagit avec  le programme de
-construction d'horaires.
+Another dimension of these two activities is the interaction of
+the users with the databases. We consider two types of users~: the
+clerk and the person in charge of construction. The clerk is that
+which will enter the basic date, the person in charge of
+construction which is responsible for the construction of the
+timetable and which interacts with the timetable construction
+program.
 
-Le commis va saisir ou mettre-à-jour  une donnée dans la base si
-la données est valide,  elle est accepté et entrée dans la base.
-Par exemple si la donne attendue est un entier dans un intervalle,
-et que la donnée entrée correspond à l'ensemble de valeurs
-attendues; elle sera entrée dans la base. Sinon, le commis doit
-rentrer une nouvelle valeur. Bien entendu, il faut avoir
-différentes priorités d'accès.
+The clerk will enter or update the data in the database if the
+data is valid, it is accepted and entered the base. For example if
+the data waited is an integer dans un interval, and the input data
+correspond with the attended set of values, it will be entered to
+the database. If not, the clerk must return with a new value. Of
+course, it is necessary to have various priorities of access.
 
-La construction d'horaires est une activité de nature itérative.
-En général, les algorithmes de construction d'horaires proposent
-de respecter les contraintes fortes et d'essayer de respecter le
-plus possible de contraintes faibles, donc, le responsable va
-essayer de trouver plusieurs solutions pour en choisir une. Dans
-certains cas, il est possible de faire partir le programme avec
-les mêmes données pour trouver une nouvelle solution. Dans
-d'autres cas il est  nécessaire de changer les données de départ
-pour obtenir une nouvelle solution. S'il faut faire $n$ essais la
-solution choisie par le responsable sera la solution $s$ où $1
-\leq s \leq n$. Il est nécessaire de prévoir une manière de
-travailler avec la base de données afin de sauvegarder les
-changements effectuées pour chaque itération et faire un
-``commit'' lorsque la solution est choisie et que l'horaire
-devient définitif pour la période
 
+The timetable construction is an activity of an iterative nature.
+In general, the algorithms of timetable construction propose to
+respect the hard constraints and to try to respect soft
+constraints as much as possible, therefore, the person in charge
+will try to find several solutions to choose one. In certain
+cases, it is possible to leave the program with the same data to
+find a new solution. In other cases it is necessary to change the
+starting data to obtain a new solution. If it is necessary to make
+$n$ tests the solution chosen by the person in charge will be the
+solution $s$ where $1 \leq s \leq n$. It is necessary to envisage
+a way of working with the database in order to save the changes
+carried out for each iteration and to make a ``commit' ' when the
+solution is chosen and that the timetable becomes final for the
+period.
 
 
 
-\section{L'architecture} \label{sec:archi}
+
+\section{The architecture} \label{sec:archi}
 
 
-Suite à l'étude du flot de données dans la production d'horaires,
-nous sommes en mesure de proposer une architecture pour
-implémenter le système
+Following the study of the data flow in the timetable production ,
+we are able to propose an architecture to implement the system.
 
-\subsection{Une architecture pour la production d'horaires}
+\subsection{An architecture for the timetable production}
 
-De manière abstraite, une architecture logicielle décrit les
-éléments composants d'un système, elle montre aussi les
-interactions entre ces éléments, les modèles qui guident sa
-composition et les contraintes de ces modèles. \cite{shaw96}
+In an abstracted way, a software architecture describes the
+component elements of a system, it shows also the interactions
+between these elements, the models which guide its composition and
+the constraints of these models. \cite{shaw96}
 
-De façon générale, quand nous avons un problème complexe, la
-meilleure approche est de découper le problème en fragments qui
-sont plus faciles à gérer avec des solutions simples. Après, si
-nous mettons ensemble ces petites solutions, nous allons arriver à
-la solution de notre problème complexe \cite{buschmann96}.
+In a general way, when we have a complex problem, the best
+approach is to cut out the problem in fragments which are easier
+to solve with a simple solution. Then, if we put all these small
+solutions together, we will arrive at the solution of our
+complexes problem \cite{buschmann96}.
 
-À l'heure actuelle il y a plusieurs architectures disponibles pour
-développer des applications logicielles,  la plus adaptée pour ce
-type de problème est celle en couches.
+At the present time there are several architectures available to
+develop software applications, the most adapted for this type of
+problem is that in layers.
 
-L'architecture montré dans la figure \ref{fig:fThree} propose la
-division du système en trois couches, chacune avec une fonction
-bien définie~:
+The architecture shown in the figure \ref{fig:fThree} proposes the
+division of the system in three layers, each one with a well
+defined function~:
 
 \begin{description}
-\item [L'interface~:] Est responsable de valider la saisie des
-données de l'utilisateur, ainsi que l'entrée des données qui vient
-d'autres systèmes.
+\item [The interface~:] Is responsible to validate the data
+acquisition of the user, as well as the entry of the data which
+comes from other systems.
 
-\item [La couche de logique d'affaires~:] Est responsable du
-comportement du système, c'est à dire, les règles d'affaires sont
-codées ici.
+\item [Business logic layer~:] Is responsible for the behavior of
+the system, i.e., the rules of businesses are coded here.
 
-\item [La couche de persistance~:] Gère le stockage physique des
-données, soit dans des fichiers avec un certain format, ou dans un
-système de bases de données traditionnelle ou bien dans d'autres
-modèles de persistance qui sont capables de gérer des bases de
-données complexes.
+\item [The data persistence layer~:] Manages the physical storage
+of the data, that is in files with a certain format, or in a
+system of traditional databases or in other models of persistence
+which are able to manage complex databases.
 \end {description}
 
 \begin{figure}
@@ -465,110 +449,107 @@ données complexes.
   \put(3,4){\framebox(4,1){interface}}
   \put(4.5,3.5){\vector(0,1){0.5}}
   \put(5.5,4){\vector(0,-1){0.5}}
-  \put(3,2.5){\framebox(4,1){logique d'affaires}}
+  \put(3,2.5){\framebox(4,1){business logic}}
   \put(4.5,2){\vector(0,1){0.5}}
   \put(5.5,2.5){\vector(0,-1){0.5}}
-  \put(3,1){\framebox(4,1){persistance de données}}
+  \put(3,1){\framebox(4,1){data persistance}}
 \end{picture}
-\caption{L'architecture trois couches.}\label{fig:fThree}
+\caption{The three layers architecture .}\label{fig:fThree}
 \end{figure}
 
-\subsection {L'architecture trois couches et le système de production d'horaires}
+\subsection {The three layers architecture and the system of timetable production.}
 
 
-Pour chaque élément de l'architecture que nous avons présenté dans
-la section antérieure, nous proposons un composant qui fait partie
-de l'application de production d'horaires. Dans cette section nous
-allons montrer l'intégration entre le flot des données propre à un
-système de production d'horaires et l'architecture proposée.
+For each element of the architecture that we presented in the
+earlier section, we propose a component which is part of the
+application of timetable production. In this section we will show
+the integration between the data flow for a system of timetable
+production and suggested architecture.
 
-La conception de haut niveau de notre système de production
-d'horaires est simple (voir figure \ref{fig:fOne})~:
 
-\begin{enumerate}
-\item Nous avons des données qui entrent dans le système. Ces
-données sont gérées par la couche d'interface. Il y a trois
-sources possibles des données (voir figure \ref{fig:fTwo}):
+
+The high level design of our system of timetable production is
+simple (see figure \ref{fig:fOne})~:
 
 \begin{enumerate}
-\item La saisie directe des données d'une période. Cette activité
-est faite par l'utilisateur commis. Normalement, ces données
-changent à chaque création d'un horaire. Pour saisir les données,
-l'utilisateur commis a une page Web qui est affichée par un
-navigateur où il aura tous les champs à remplir. À cette étape, la
-couche d'interface peut faire quelques validations minimales de la
-cohérence de données, par exemple, vérifier que le type de données
-est correct, vérifier que les champs qui sont obligatoires sont
-remplis, etc. Dépendant de la taille de l'institution, il peut
-avoir plusieurs utilisateurs commis qui travaillent au même temps
-dans l'application, il faut en conséquence, prendre les mesures
-nécessaires pour permettre le travail concurrent dans la couche de
-persistance de données.
+\item We have data which enter the system. These data are managed
+by the interface layer. There are three possible sources of data
+(see figure \ref{fig:fTwo}):
 
-\item Les données générées par d'autres systèmes (données de
-base). Depuis long temps il est prouvé que la meilleure manière
-d'échanger de l'information entre deux systèmes est le transfert
-de fichiers. C'est pour cette raison que notre système doit être
-capable de recevoir et envoyer des fichiers dans un format
-compatible entre plusieurs systèmes.
+\begin{enumerate}
+\item Direct data entry for one period data. This activity is made
+by the made user clerk. Normally, these data change with each
+creation of timetable. To enter the data, the user clerk has a Web
+page which is showed by a navigator where it will have all the
+fields to fill. At this moment, the interface layer can make some
+minimal validations of the coherence of data, for example, check
+that the type of data is correct, to check that the fields which
+are obligatory are filled, etc. Depending on the size of the
+institution, it can have several users clerk who work at the same
+time in the application, in that case it is necessary, to take
+right measures to allow the concurrent work in the data
+persistence layer.
 
-\item Les données horaire sont créées par l'application de
-création d'horaires. Cette application est gérée par l'utilisateur
-responsable de la création d'horaires. Étant donné que cette
-activité est de nature itérative, il peut avoir un certain nombre
-de versions de travail que l'utilisateur responsable de la
-création d'horaires doit analyser pour trouver celle qui lui
-convient le mieux. Une fois qu'il a trouvé cette version, il doit
-appliquer l'opération "commit" pour rendre disponible
-l'information au reste des utilisateurs. Ce sont les données qui
-sortent de notre système, et ils sont envoyés vers d'autres
-systèmes ou bien vers d'autres utilisateurs, par exemple, les
-étudiants qui vont recevoir un papier avec leur horaire
-personnalisé ou bien, il peut consulter cette information en
-utilisant un site Web crée pour ces fins, ou bien, l'organisme
-d'administration central de l'institution qui doit être informé de
-l'affectation des horaires.
+\item Data generated by other systems (basic data). It is proven
+long time ago that the best way of exchanging information between
+two systems is the file transfer. For this reason our system must
+be able to receive and send files in a compatible format between
+several systems.
+
+\item The timetable data are created by the application of
+timetable creation. This application is managed by the user
+responsible for the timetable creation. Since this activity is of
+iterative nature, it can have a certain number of versions of work
+that the user responsible for the timetable creation must analyze
+to find that which is appropriate to him. Once that he found this
+version, he must apply the "commit"operation to make available the
+information to the rest of the users.
+
+Those are the data that leave our system, and they are sent
+towards to other systems or to other users, for example, the
+students who will receive a paper with their timetable
+personalized or, he can consult this information by using a Web
+site creates for these ends, or, the central administration of the
+institution which must be informed of the assignment of the
+schedules.
 
 \end{enumerate}
 
-Il faut tenir en considération que la couche d'interface
-communique uniquement avec la couche de logique d'affaires. Une
-application n'est pas capable d'ajouter, modifier ou effacer des
-données directement dans la base de données, elle doit passer
-irrémédiablement par la couche de logique d'affaires. Cette
-caractéristique nous permet d'assurer la cohérence des données.
+It is necessary to keep in consideration that the interface layer
+communicates only with the business logic layer. An application is
+not able to add, modify or to erase data directly in the data
+base, it must pass irremediably by the business logic layer. This
+characteristic enables us to ensure the coherence of the data.
 
-\item Les données sont traitées selon certaines règles et
-contraintes, ces règles sont définies par chaque institution et
-elles sont codées dans la couche logique d'affaires. C'est ici que
-nous pourrons exprimer des contraints propres à chaque
-institution, par exemple, la quantité maximale d'étudiants dans un
-groupe, tous les cours de mathématique se déroulent le matin, etc.
+\item The data are treated according to certain rules and
+constraints, these rules are defined by each institution and they
+are coded in the business logic layer. It is here that we will be
+able to express the constrains for each institution, for example,
+the maximum quantity of students in a group, that all the courses
+of mathematics are held the morning, etc.
 
-\item Les données résultats de ces traitements doivent être
-stockes dans quelque part pour pouvoir être utilisées après sa
-génération. C'est la couche de persistance de données qui est
-responsable de cette tâche. Dans un système de production
-d'horaires, les données peuvent être stockées dans une base de
-données (relationnel, objet ou autre technologie), dans un fichier
-XML, dans un fichier texte ou bien dans autre moyen de stockage
-pertinent.
+\item The data results of these treatments must be store in a
+place to be able to use them after its generation. It is the layer
+of data persistence which is responsible for this task. In a
+system of timetable production, the data can be stored in a data
+base (relational, object or another technology), in a XML file, a
+text file or in another storage media.
 \end{enumerate}
 
-Ces éléments de composition et ses relations sont illustrés dans
-la figure \ref{fig:fFour}.
+These elements of composition and its relations are illustrated in
+the figure \ref{fig:fFour}.
 
 \begin{figure}
 \setlength{\unitlength}{0.5cm}
 \begin{picture}(19,7)
 
   \put (0,6){\line(1,0){22}}
-  \put (19,6.5){\makebox(0,0){\scriptsize Interface}}
-  \put(0,6.5){\framebox(4,1){\tiny Saisie de données}}
-  \put(2,6.65){\makebox(0,0){\tiny (Client web)}}
-  \put(5,6.5){\framebox(4,1){\tiny Création d'horaires}}
+  \put (19,6.5){\makebox(0,0){\scriptsize Interface layer}}
+  \put(0,6.5){\framebox(4,1){\tiny Data input}}
+  \put(2,6.65){\makebox(0,0){\tiny (Web client)}}
+  \put(5,6.5){\framebox(4,1){\tiny Timetable création}}
   \put(7,6.65){\makebox(0,0){\tiny (Interface)}}
-  \put(10,6.5){\framebox(4,1){\tiny Autres systèmes}}
+  \put(10,6.5){\framebox(4,1){\tiny Other systèmes}}
   \put(12,6.65){\makebox(0,0){\tiny (Interface)}}
   \put (2,6.5){\vector(1,-1){2}} %SD -> SW
   \put (4,4.5){\vector(-1,1){2}} %SW -> SD
@@ -581,9 +562,9 @@ la figure \ref{fig:fFour}.
 
 
   \put (0,3){\line(1,0){22}}
-  \put (19,3.5){\makebox(0,0){\scriptsize Logique d'affaires}}
-  \put (2,3.5){\framebox(4,1){\tiny Serveur Web}}
-  \put (8,3.5){\framebox(4,1){\tiny Règles d'affaires}}
+  \put (19,3.5){\makebox(0,0){\scriptsize Business logic layer}}
+  \put (2,3.5){\framebox(4,1){\tiny Web server}}
+  \put (8,3.5){\framebox(4,1){\tiny Business rules}}
   \put (6,4){\vector(1,0){2}} %RA -> SW
   \put (8,4){\vector(-1,0){2}} %SW -> RA
   \put (10,3.5){\vector(-1,-1){2}} %RA -> BD
@@ -591,222 +572,209 @@ la figure \ref{fig:fFour}.
 
 
   \put (0,0){\line(1,0){22}}
-  \put (19,0.5){\makebox(0,0){\scriptsize Persistance des données}}
-  \put (5,0.5){\framebox(6,1){\tiny Serveur Base Données}}
+  \put (19,0.5){\makebox(0,0){\scriptsize Data persistance layer}}
+  \put (5,0.5){\framebox(6,1){\tiny Database server}}
 
 
 
 
 \end{picture}
-\caption{L'implementation de l'architecture trois couches pour le
-système de production d'horaires.}\label{fig:fFour}
+\caption{The implementation of the three layers architecture for
+the system of timetable production.}\label{fig:fFour}
 \end{figure}
 
 
-\section{Technologies possibles}\label{sec:tech}
+\section{Possible technologies}\label{sec:tech}
 
-Pour l'implémentation de l'architecture, il faut en premier lieu,
-trouver quels sont les éléments technologiques nécessaires. Nous
-trouvons qu'il faut avoir~:
+For the implementation of the architecture, first of all it is
+necessary, to find which are the technological elements that we
+need. We find that it is necessary to have~:
 
 \begin{enumerate}
-\item Un langage pour faciliter l'affichage des données vers
-l'utilisateur ainsi que pour créer des formulaires pour saisir des
-données.
+\item A language to facilitate the show of the data to the user
+and the creation of forms to enter data.
 
-\item Un ensemble de règles qui définissent la manière d'établir
-l'échange des données avec les autres systèmes.
+\item A set of rules which define the way of establishing the
+exchange of data with the other systems.
 
-\item Un langage pour coder la logique d'affaires.
+\item A language to code the business logic.
 
-\item Un outil pour gérer la persistance des données.
+\item A tool to manage the data persistence.
 \end{enumerate}
 
-Après notre analyse, nous avons constaté qu'il n'y a pas une seule
-option, plutôt il y a plusieurs possibilités pour implémenter
-cette architecture.
+After our analysis, we found that there is not only one option,
+rather there are several possibilities to implement this
+architecture.
 
-Dans le Tableau \ref{tb:tbOne}, nous montrons une liste
-d'instances possibles, il faut remarquer qu'elle n'est pas
-exhaustive.
+In the Table \ref{tb:tbOne}, we show a list of possible instances,
+it is not exhaustive.
+
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
-Technologie & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
-Langage pour affichage & HTML et JSP& Applet Java & Visual Basic\\
-\hline
-Format pour échanger données & XML & Text & Text\\ \hline
+Technology & Instance 1 & Instance 2 & Instance 3\\ \hline\hline
+Language to show & HTML et JSP& Applet Java & Visual Basic\\
+\hline Format to data exchange & XML & Text & Text\\ \hline
 
-Langage pour coder la logique d'affaire & Java & Java & Visual Basic\\
+Language to code the business logic & Java & Java & Visual Basic\\
 \hline
 
-La persistance de données & Base de données & Base de données & Base de données \\
+The data persistence & Database & Database & Database \\
 \hline
 \end{tabular}
 ~ \\
- \caption{ Quelques instances possibles de
-l'architecture}\label{tb:tbOne}
+ \caption{ Some possible instances of the architecture}\label{tb:tbOne}
 \end{table}
 
-Pour la construction de chaque instance nous avons pris en
-considération une certaine logique, nous avons mit ensemble les
-éléments qui ont des caractéristiques communes ou bien qui
-appartiennent à un même famille de logiciels et qui sont ouverts,
-c'est un critère de construction qui a été choisi de manière
-arbitraire.
+For the construction of each instance we considered a certain
+logic, we have put together the elements which have common
+characteristics or which belong to the same software family and
+which are open, it is a criterion of construction which was
+selected in an arbitrary way.
 
-Pour le volet base de données, nous n'avons pas mentionné le nom
-spécifique d'un système de gestion de base de données, le choix
-reste ouvert à l'implementation.
+For the database section, we did not mention a specific name of a
+database management system, the choice remains open to the
+implementation.
 
-Notre architecture est ouverte, étant donné qu'elle accepte
-plusieurs instances. L'architecture est aussi extensible, parce
-que nous pourrions changer les modules d'une manière facile, par
-exemple, nous pouvons commencer avec un élément de persistance de
-données comme un fichier en format texte plain, et après, nous
-pourrions effectuer quelques changements dans l'élément
-d'interface pour pouvoir interagir avec des fichiers en format
-XML. Après, si nous voulons faire évoluer cette partie de
-persistance de données vers un système de bases de données, il
-faudrait faire des changements dans la couche d'interface et
-programmer l'élément de persistance des données. Tous ces
-changements sans jamais toucher l'élément de la logique
-d'affaires. Dans le Tableau \ref{tb:tbTwo}, nous montrons
-l'évolution possible d'une instance de notre architecture.
+We have an open architecture, since it accepts several instances.
+The architecture is also extensible, because we could change the
+modules in an easy way, for example, we can start with an element
+of data persistence like a file in text format, and then, we could
+carry out some changes in the element of interface to be able to
+interact with files in XML format. After, if we want to make
+evolve this part of data persistence to a system of databases, it
+would be necessary to make changes in the interface layer and to
+program the element of data persistence. All these changes without
+never touching the element of the business logic. In Table
+\ref{tb:tbTwo}, we show the possible evolution of an instance of
+our architecture.
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
 Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
-Langage pour affichage & HTML et JSP & HTML et JSP & HTML et JSP\\
+Language to show & HTML et JSP & HTML et JSP & HTML et JSP\\
 \hline
 
-Format pour échanger données & Text & XML & SQL, Base de données\\
+Format to data exchange & Text & XML & Database SQL\\
 \hline
 
-Langage pour coder la logique d'affaire & Java & Java & Java\\
+Language to code the business logic & Java & Java & Java\\
 \hline
 
-La persistance de données & Text & XML & SQL, Base de données \\
+The data persistence & Text & XML & SQL, Database SQL \\
 \hline
 
 \end{tabular}
 ~ \\
 
-\caption{ L'evolution d'une instance de
-l'architecture}\label{tb:tbTwo}
+\caption{ The evolution of an instance of the
+architecture}\label{tb:tbTwo}
 \end{table}
 
-Nous pouvons aussi imaginer un système qui commence avec un
-interface basé en affichage en mode textuel, qui va évoluer à un
-affichage basé en HTML et JSP en utilisant un serveur Web.
+We can also imagine a system which starts with an interface based
+in textual mode to show the information, which will evolve with a
+display based in HTML and JSP by using a Web server.
 
-\section{Une instance de l'architecture} \label{sec:tictac}
+\section{An instance of the architecture} \label{sec:tictac}
 
-Une fois que nous avons établi l'architecture et que nous savons
-qu'elle est ouverte et extensible, il faut que l'instance que nous
-allons implémenter soit aussi ouverte et extensible. Nous avons
-montré trois options d'instances de l'architecture (voir Tableau
-\ref{tb:tbOne}), pour notre implémentation, nous avons choisi
-l'option 1 de ce tableau.
+Once that we established the architecture and that we know that it
+is open and extensible, it is necessary that the instance that we
+will implement will be open and extensible too. We showed three
+options of instance of the architecture (see Table
+\ref{tb:tbOne}), for our implementation, we chose the option 1 of
+this table.
 
-De le départ, il faut savoir que un élément est ouvert s'il est
-construit avec des standards approuvés, ou bien, s'il est
-construit avec une spécification privée mais rendue publique par
-les développeurs.
+
+Before begins, it should be known that an element is open if it is
+built with approved standards, or, if he is built with a
+specification private but made public by the developers.
 \footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
-Il faut aussi tenir en compte que un élément est extensible s'il
-est facile d'adapter ce produit aux changements dans la
-spécification.\cite{meyer97}
+It also should be held in consideration that an element is
+extensible if it is easy to adapt this product to the changes in
+the specification.\cite{meyer97}
 
 
-Avec ces considerations en main, nous montrons ici l'analyse qui
-nous a amené à notre choix:
+With these considerations in hand, we show here the analysis which
+brought us to our choice:
 
 \begin{description}
 
-\item [Langage pour affichage:] Pour langage d'affichage et saisie
-de données nous avons choisi HTML et JSP, étant donnée que ces
-langages sont le standard pour la création de pages Web, et nous
-voulons profiter de tous le bénéfices qu'offre la Web pour les
-applications de type transactionnelle.
+\item [Language to show:] For the language to show and to enter
+data we chose HTML and JSP, given that those languages are the
+standard for the creation of Web pages, and we want to benefit
+from all the characteristics that the Web offer for the
+transactional applications.
 
-\item [Format pour échanger données:] Pour échanger les données
-nous avons choisi XML. XML (eXtensible Markup Language) nous
-permet de stocker, d'échanger et d'afficher des données ou de
-l'information d'une manière structurée. Le langage permet aussi de
-manipuler, de transformer et de visualiser les données avec de
-nombreux outils de formatage, par exemple, des informations ou des
-données stockées dans un document XML peuvent être affichées dans
-un navigateur Web. De plus, quand des documents XML sont stockées
-dans une base de données, ils peuvent être l'objet de requêtes et
-retrouvés comme avec tout autre format de données.
+\item [Format to data exchange:] To exchange the data we chose
+XML. The language XML (extensible Markup Language) let us to
+store, exchange and show data or information in a structured way.
+The language also makes possible to handle, to transform and to
+visualize the data with many tools of formatting, for example, the
+information or data stored in a document XML can be displayed in a
+Web navigator. Moreover, when XML documents are stored in a
+database, they can be the object of requests and found like any
+other data format.
 
-\item [Langage pour coder la logique d'affaire:] Nous avons choisi
-Java. Java est un langage interprété qui utilise la machine
-virtuel Java JVM. Il y a plusieurs versions de cette machine
-virtuelle pour plusieurs plate-formes différentes, ce qui signifie
-que les programmeurs peuvent écrire pour ce langage en utilisant
-une plate-forme, et faire tourner leurs programmes sur autres.
+\item [Language to code the business logic:] We chose Java. Java
+is an interpreted language which uses the Java Virtual Machine
+(JVM). There are several versions of this virtual machine for
+several different platforms, which means that the programmers can
+write for this language by using a platform, and make turn their
+programs on others.
 
-\item [La persistance de données:] Pour l'implémentation de la
-couche persistance de données nous avons choisi d'utiliser une
-base de données. Une base de données est une entité dans laquelle
-il est possible de stocker des données de façon structurée avec le
-moins de redondance possible. Ces données doivent pouvoir être
-utilisées par des programmes écrits en différents langages en
-utilisant la technologie standard ODBC (Open DataBase
-Connectivity), si nous utilisons Java comme langage pour établir
-la connexion vers la base de données, nous pouvons utiliser JDBC
-(Java Database Connectivity). Le standard JDBC est un programme
-d'application (API) pour établir la connexion entre le langage
-Java et un grande nombre de bases de données, en utilisant la
-philosophie "Write Once, Run Anywhere".
+\item [The data persistence:] For the implementation of the data
+persistence layer we chose to use a database. A database is an
+entity in which it is possible to store data in a structured way
+with the minimum of redundancy. These data must be able to be used
+by programs written in various languages by using standard
+technology ODBC (Open DataBase Connectivity), if we use Java as
+language to establish the connection towards the database, we can
+use JDBC (Java Database Connectivity). The standard JDBC is an
+application program (API) to establish the connection between the
+Java language and a large numbers databases, by using philosophy
+"Write Once, Run Anywhere".
 \end{description}
 
-Même si ce n'est pas la seule option pour l'implementation de
-notre système de production d'horaires, nous sommes convaincus que
-notre choix nous permettra de faire évoluer le système par
-versions en ajoutant ou en modifiant caractéristiques demandés par
-les institutions.
+Even if it is not the only option for the implementation of our
+system of timetable production, we are convinced that our choice
+will enable us to make evolve the system by versions adding or
+modifying the new characteristics required by the institutions.
 
 
 \section{Conclusions}\label{sec:conc}
 
-Nous avons présenté une architecture pour la production d'horaires
-dans une institution d'enseignement. Un objectif a guidé notre
-démarche~: avoir une architecture ouverte et extensible. Dans la
-présentation de l'architecture nous avons montré qu'elle possède
-les deux qualités. Notre architecture est ouverte, étant donné
-qu'elle accepte plusieurs instances. L'architecture est aussi
-extensible, parce que nous pourrions changer les modules d'une
-manière facile.
+We presented an architecture for the timetable production in an
+academic institution. An objective guided our approach~: to have
+an open and extensible architecture. In the presentation of the
+architecture we showed that it has the two qualities. Our
+architecture is open, since it accepts several instances. The
+architecture is also extensible, because we could change the
+modules in an easy way.
 
 
-L'objectif de modéliser le processus de production d'horaires pour
-prendre des décisions permettant son automatisation. Ceci peut
-faciliter les développement et l'implantation d'un système sur
-deux points de vue~:
-
+We arrived to the objective to model the timetable production
+process to make decisions allowing its automation. This can
+facilitate the development and the establishment of a system on
+two points of view~:
 
 \begin{itemize}
 
-\item Le développement d'interfaces logiciels entre les différents
-constituants du système, ceci peut conduire à développer de
-nouveau modules ou à la modification de modules existants.
+\item The development of software interfaces between various
+components of the system, this can result in developing modules or
+with the modification of existing modules.
 
-\item L'intégration graduelle de nouveaux modules dans le temps,
-afin de perturber le moins possible les utilisateurs du système.
+\item The gradual integration of new modules in the time, in order
+to disturb the least possible the users of the system.
 \end{itemize}
 
-Dans le système que nous proposons, nous essayons de limiter le
-plus possible d'intervention humaine afin de réduire des erreurs
-de manipulation. Nous essayons de réduire aussi le sources
-possible d'erreurs en vérifiant l'entrée de données.
+In the system that we propose, we try as much as possible to limit
+of human intervention in order to reduce errors of handling. We
+try to also to reduce the possible sources of errors by checking
+the input.
 
-Le travail futur est de continuer à concevoir le système au
-complet en gardant les lignes directrices de extensibilité et de
-compatibilité.
+Future work is to continue to conceive the complete system by
+keeping the hot lines of extensibility and opening.
 
 \bibliography{bibDiamant,bibProg}
 

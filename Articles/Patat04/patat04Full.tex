@@ -119,20 +119,19 @@ mentionnés, en réduisant le coût des modifications et en
 effectuant la vérification et la validation des données dans des
 étapes précises du processus et en évitant la redondance du code
 et des données. Cette architecture met en \oe{}uvre une base de
-données, un site Internet et un logiciel de construction <<<<<<<
-patat04Full.tex d'horaires. La vérification et la validation de
-données  se font à l'entrée de données et en appliquant des
-contraintes d'intégrité dans la base de données.  Le site Web est
-utilisé principalement pour la saisie de données, ceci permet de
-vérifier aussi la validité des données, grâce aux règles
-d'affaires avant que la donnée soit entrée dans la base. Une autre
-fonction du site Web est d'offrir les horaires de manière
-personnalisé, une fois que l'horaire est construit. La base de
-données permet l'extraction des données, selon différents formats.
-Ainsi, l'entrée de données du logiciel de construction est
-facilitée. Bien entendu, avec l'aide du logiciel de construction
-d'horaires, il est possible de fabriquer un horaire avec un
-minimum de conflits.
+données, un site Internet et un logiciel de construction
+d'horaires. La vérification et la validation de données  se font à
+l'entrée de données et en appliquant des contraintes d'intégrité
+dans la base de données.  Le site Web est utilisé principalement
+pour la saisie de données, ceci permet de vérifier aussi la
+validité des données, grâce aux règles d'affaires avant que la
+donnée soit entrée dans la base. Une autre fonction du site Web
+est d'offrir les horaires de manière personnalisé, une fois que
+l'horaire est construit. La base de données permet l'extraction
+des données, selon différents formats. Ainsi, l'entrée de données
+du logiciel de construction est facilitée. Bien entendu, avec
+l'aide du logiciel de construction d'horaires, il est possible de
+fabriquer un horaire avec un minimum de conflits.
 
 
 
@@ -306,35 +305,36 @@ horaire}\label{fig:fTwo}
 
 
 \begin{description}
-    \item[Données de base] Ces données sont les données définies à long
-    terme dans l'entrepôt.  L'information des activités pédagogiques d'un
-    programme, les programmes offerts, les enseignants, les
-    caractéristiques de salles de cours, les étudiants sont des exemples de
-    ce type d'information. Il s'agit en général des informations qui sont partagées par
-    d'autres applications. Par exemple un étudiant est décrit par son
-    nom, prénom, matricule, programme suivi, etc. Une application qui
-    utilise les données étudiants est par exemple celle qui permet
-    d'imprimer les notes d'un étudiant sur son bulletin.
-    Ici, nous nous intéressons aux données associées à la production d'horaires,
+\item[Données de base] Ces données sont les données définies à
+long terme dans l'entrepôt.  L'information des activités
+pédagogiques d'un programme, les programmes offerts, les
+enseignants, les caractéristiques de salles de cours, les
+étudiants sont des exemples de ce type d'information. Il s'agit en
+général des informations qui sont partagées par d'autres
+applications. Par exemple un étudiant est décrit par son nom,
+prénom, matricule, programme suivi, etc. Une application qui
+utilise les données étudiants est par exemple celle qui permet
+d'imprimer les notes d'un étudiant sur son bulletin. Ici, nous
+nous intéressons aux données associées à la production d'horaires,
 qui peut être une vue (une partie) de la base de données complète
 de l'institution.
 
 
-    \item[Données période $P$] Ces données sont nécessaires à la
-    construction d'un horaire pour la période concernée,
-elles contiennent les cours qui seront
-    offerts à cette période, la disponibilité de enseignants pour cette période, etc.
-    Ces données sont
-    un préalable à la construction d'un horaire et sont saisies avant
-    chaque construction. Cependant, ces données vont changer (mises-à-jour) pendant
-la construction de l'horaire. Par exemple lorsque on trouve un
-enseignant externe pour un cours donné, on saisira ses
-informations nom et disponibilité dans la base.
+\item[Données période $P$] Ces données sont nécessaires à la
+construction d'un horaire pour la période concernée, elles
+contiennent les cours qui seront offerts à cette période, la
+disponibilité de enseignants pour cette période, etc. Ces données
+sont un préalable à la construction d'un horaire et sont saisies
+avant chaque construction. Cependant, ces données vont changer
+(mises-à-jour) pendant la construction de l'horaire. Par exemple
+lorsque on trouve un enseignant externe pour un cours donné, on
+saisira ses informations nom et disponibilité dans la base.
 
-    \item[Données horaire] Ces donnés sont le résultat de  la
-    construction de l'horaire. Elles vont contenir toutes les
-    informations nécessaires pour imprimer ou afficher des horaires généraux et
-    personnalisés.
+\item[Données horaire] Ces donnés sont le résultat de  la
+construction de l'horaire. Elles vont contenir toutes les
+informations nécessaires pour imprimer ou afficher des horaires
+généraux et personnalisés.
+
 \end{description}
 
 Il est à noter qu'il existe deux grandes activités  dans la
@@ -401,10 +401,10 @@ utilisateurs.
 Une autre dimension de ces deux activités est l'interaction des
 utilisateurs avec la bases de données. Nous considérons deux types
 d'utilisateurs~: le commis et le responsable de la construction.
-Le commis est celui qui va saisir les infrastructures comme dans
-la base, le responsable et celui qui est responsable de la
-construction de l'horaire et qui interagit avec  le programme de
-construction d'horaires.
+Le commis est celui qui va saisir les données de base, le
+responsable et celui qui est responsable de la construction de
+l'horaire et qui interagit avec  le programme de construction
+d'horaires.
 
 Le commis va saisir ou mettre-à-jour  une donnée dans la base si
 la données est valide,  elle est accepté et entrée dans la base.
@@ -428,7 +428,7 @@ solution choisie par le responsable sera la solution $s$ où $1
 travailler avec la base de données afin de sauvegarder les
 changements effectuées pour chaque itération et faire un
 ``commit'' lorsque la solution est choisie et que l'horaire
-devient définitif pour la période
+devient définitif pour la période.
 
 
 
@@ -438,7 +438,7 @@ devient définitif pour la période
 
 Suite à l'étude du flot de données dans la production d'horaires,
 nous sommes en mesure de proposer une architecture pour
-implémenter le système
+implémenter le système.
 
 \subsection{Une architecture pour la production d'horaires}
 
@@ -470,11 +470,11 @@ d'autres systèmes.
 comportement du système, c'est à dire, les règles d'affaires sont
 codées ici.
 
-\item [La couche de persistance~:] Gère le stockage physique des
-données, soit dans des fichiers avec un certain format, ou dans un
-système de bases de données traditionnelle ou bien dans d'autres
-modèles de persistance qui sont capables de gérer des bases de
-données complexes.
+\item [La couche de persistance des données~:] Gère le stockage
+physique des données, soit dans des fichiers avec un certain
+format, ou dans un système de bases de données traditionnelle ou
+bien dans d'autres modèles de persistance qui sont capables de
+gérer des bases de données complexes.
 \end {description}
 
 \begin{figure}
@@ -581,7 +581,7 @@ la figure \ref{fig:fFour}.
 \begin{picture}(19,7)
 
   \put (0,6){\line(1,0){22}}
-  \put (19,6.5){\makebox(0,0){\scriptsize Interface}}
+  \put (19,6.5){\makebox(0,0){\scriptsize Couche d'interface}}
   \put(0,6.5){\framebox(4,1){\tiny Saisie de données}}
   \put(2,6.65){\makebox(0,0){\tiny (Client web)}}
   \put(5,6.5){\framebox(4,1){\tiny Création d'horaires}}
@@ -599,7 +599,7 @@ la figure \ref{fig:fFour}.
 
 
   \put (0,3){\line(1,0){22}}
-  \put (19,3.5){\makebox(0,0){\scriptsize Logique d'affaires}}
+  \put (19,3.5){\makebox(0,0){\scriptsize couche de logique d'affaires}}
   \put (2,3.5){\framebox(4,1){\tiny Serveur Web}}
   \put (8,3.5){\framebox(4,1){\tiny Règles d'affaires}}
   \put (6,4){\vector(1,0){2}} %RA -> SW
@@ -609,7 +609,7 @@ la figure \ref{fig:fFour}.
 
 
   \put (0,0){\line(1,0){22}}
-  \put (19,0.5){\makebox(0,0){\scriptsize Persistance des données}}
+  \put (19,0.5){\makebox(0,0){\scriptsize Couche de persistance des données}}
   \put (5,0.5){\framebox(6,1){\tiny Serveur Base Données}}
 
 
@@ -750,19 +750,19 @@ voulons profiter de tous le bénéfices qu'offre la Web pour les
 applications de type transactionnelle.
 
 \item [Format pour échanger données:] Pour échanger les données
-nous avons choisi XML. XML (eXtensible Markup Language) nous
-permet de stocker, d'échanger et d'afficher des données ou de
+nous avons choisi XML. Le langage XML (eXtensible Markup Language)
+nous permet de stocker, d'échanger et d'afficher des données ou de
 l'information d'une manière structurée. Le langage permet aussi de
 manipuler, de transformer et de visualiser les données avec de
 nombreux outils de formatage, par exemple, des informations ou des
 données stockées dans un document XML peuvent être affichées dans
 un navigateur Web. De plus, quand des documents XML sont stockées
 dans une base de données, ils peuvent être l'objet de requêtes et
-retrouvés comme avec tout autre format de données.
+retrouvés comme tout autre format de données.
 
 \item [Langage pour coder la logique d'affaire:] Nous avons choisi
 Java. Java est un langage interprété qui utilise la machine
-virtuel Java JVM. Il y a plusieurs versions de cette machine
+virtuel Java (JVM). Il y a plusieurs versions de cette machine
 virtuelle pour plusieurs plate-formes différentes, ce qui signifie
 que les programmeurs peuvent écrire pour ce langage en utilisant
 une plate-forme, et faire tourner leurs programmes sur autres.
@@ -801,10 +801,10 @@ extensible, parce que nous pourrions changer les modules d'une
 manière facile.
 
 
-L'objectif de modéliser le processus de production d'horaires pour
-prendre des décisions permettant son automatisation. Ceci peut
-faciliter les développement et l'implantation d'un système sur
-deux points de vue~:
+Nous arrivons à l'objectif de modéliser le processus de production
+d'horaires pour prendre des décisions permettant son
+automatisation. Ceci peut faciliter les développement et
+l'implantation d'un système sur deux points de vue~:
 
 
 \begin{itemize}
@@ -823,8 +823,8 @@ de manipulation. Nous essayons de réduire aussi le sources
 possible d'erreurs en vérifiant l'entrée de données.
 
 Le travail futur est de continuer à concevoir le système au
-complet en gardant les lignes directrices de extensibilité et de
-compatibilité.
+complet en gardant les lignes directrices de extensibilité et
+d'ouverture.
 
 \bibliography{bibDiamant,bibProg}
 
