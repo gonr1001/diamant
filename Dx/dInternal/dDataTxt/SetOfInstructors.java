@@ -46,7 +46,7 @@ private int _numberOfColumns;// represent number of period a day.
       switch (state){
         case 0:
           try{
-            (new Integer (token)).intValue();
+            (new Integer (token.trim())).intValue();
           }catch (NumberFormatException exc){
             new FatalProblemDlg(
             "Wrong number of instructors in the instructor file:" +
