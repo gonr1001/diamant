@@ -53,11 +53,11 @@ public class TTPanel extends JScrollPane {
 
   private JPanel createColumnHeader() {
     JPanel panel = new JPanel(new GridLayout(1, 0));
-    for (int i = 0; i < _dm.getTTStructure().getColumn() ; i++){
-      panel.add(new JLabel("J " + (i + 1) + " : "+ _dm.getTTStructure().getDayName(i), JLabel.CENTER));
+    for (int i = 0; i < _dm.getTTStructure().rgetColumn() ; i++){
+      panel.add(new JLabel("J " + (i + 1) + " : "+ _dm.getTTStructure().rgetDayName(i), JLabel.CENTER));
       //panel.add(new JLabel("Jour " + (i + 1) + " : "+ "lun", JLabel.CENTER));
     }
-    panel.setPreferredSize(new Dimension(UWIDTH *_dm.getTTStructure().getColumn(), HHEIGHT));
+    panel.setPreferredSize(new Dimension(UWIDTH *_dm.getTTStructure().rgetColumn(), HHEIGHT));
 
     panel.setBorder(BorderFactory.createEtchedBorder());
     return panel;
@@ -67,7 +67,7 @@ public class TTPanel extends JScrollPane {
     JPanel panel = new JPanel(new GridLayout(0,1));
 
     JLabel label;
-    for (int i = _dm.getTTStructure().getBegingTime(); i < _dm.getTTStructure().getEndTime(); i++) {
+    for (int i = _dm.getTTStructure().rgetBegingTime(); i < _dm.getTTStructure().rgetEndTime(); i++) {
       label = new JLabel(Integer.toString(i) + ":00");
       label.setVerticalAlignment(JLabel.TOP);
       panel.setBorder(BorderFactory.createEtchedBorder());
@@ -75,7 +75,7 @@ public class TTPanel extends JScrollPane {
     }
     //panel.setPreferredSize(new Dimension(VWIDTH, UHEIGHT *_dm.getTTStructure().getRow() ));  //size for the vertical panel
     panel.setPreferredSize(new Dimension(VWIDTH, UHEIGHT *
-               (_dm.getTTStructure().getEndTime() - _dm.getTTStructure().getBegingTime())));  //size for the vertical panelreturn panel;
+               (_dm.getTTStructure().rgetEndTime() - _dm.getTTStructure().rgetBegingTime())));  //size for the vertical panelreturn panel;
     return panel;
   }
 
@@ -86,7 +86,7 @@ public class TTPanel extends JScrollPane {
     //panel.setPreferredSize(new Dimension(200, 200));
    // setPreferredSize(new Dimension(panel.getPreferredSize().width + 40,
     //                               panel.getPreferredSize().height + 50));
-    int nbCols = _dm.getTTStructure().getColumn(); //timeTable.nbDays;
+    int nbCols = _dm.getTTStructure().rgetColumn(); //timeTable.nbDays;
     gridbag.columnWeights = new double [nbCols];
     gridbag.columnWidths = new int [nbCols];
     for (int i = 0; i < nbCols; i++) {
@@ -94,7 +94,7 @@ public class TTPanel extends JScrollPane {
       gridbag.columnWidths[i] =  UWIDTH;
 
     }
-    int nbRows = _dm.getTTStructure().getRow();
+    int nbRows = _dm.getTTStructure().rgetRow();
     gridbag.rowWeights = new double [nbRows];
     gridbag.rowHeights = new int [nbRows];
     for (int i = 0; i < nbRows; i++) {
@@ -104,8 +104,8 @@ public class TTPanel extends JScrollPane {
     PeriodPanel periodPanel = null;
     GridBagConstraints c = null;
     int count = 0;
-    for (int i = 0; i < _dm.getTTStructure().getColumn() ; i++ ) {
-      for(int j = 0; j < _dm.getTTStructure().getRow(); j ++) {
+    for (int i = 0; i < _dm.getTTStructure().rgetColumn() ; i++ ) {
+      for(int j = 0; j < _dm.getTTStructure().rgetRow(); j ++) {
         Period period = _dm.getTTStructure().getPeriod();
        //  Period per = _dm.getTTStructure().getPeriod(i,j);
         //if (per != null)//debug
@@ -118,11 +118,11 @@ public class TTPanel extends JScrollPane {
         c.gridy = period._beginHour[0] - period._endHour[0];
         if ( period._endHour[1] == 0 ){
           c.gridheight = period._endHour[0] - period._beginHour[0];
-          c.insets = new Insets( 0/*period._beginHour[0]*UHEIGHT/60*/, 0, 0, 0 );
+          c.insets = new Insets( period._beginHour[1]*UHEIGHT/60, 0, 0, 0 );
         } else {
           c.gridheight = period._endHour[0] + 1 - period._beginHour[0];
           c.insets = new Insets( period._beginHour[0]*UHEIGHT/60, 0,
-                                 (60- period._beginHour[0]*UHEIGHT/60), 0 );
+                                 (60 - period._beginHour[0]*UHEIGHT/60), 0 );
 
         }
         //c.insets = new Insets(10, 0, 0, 0 );
@@ -204,8 +204,7 @@ public class DTTPanel extends JScrollPane{
       }
     };
 
-    int minWidth = timeTable.nbDays * MINWIDTH;
-    int minHeight = (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
+
     // create column header
 
     // create row header
@@ -338,8 +337,6 @@ public class DTTPanel extends JScrollPane{
 }
 */
 class PeriodPanel extends JPanel{
-//  private int UWIDTH =  75; // timeTable.nbDays * MINWIDTH;
-//  private int UHEIGHT =  50;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
 
   public PeriodPanel(int c, int w, int h) {
     setLayout(new GridLayout(2,1));

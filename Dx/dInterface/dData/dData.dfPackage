@@ -46,7 +46,12 @@ class __tags {
 */
 class __options {
 }/**
-@__positions 
+@__positions <oigroup:<oiref:java#Class#dInterface.dData.DefFilesToImportCmd:oiref>=10,10,143,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dData.InstructorAvailabiliyDlg:oiref>=434,10,174,574,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dData.InstructorAvailabilityCmd:oiref>=177,170,155,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dData.ImportDlg:oiref>=281,10,133,126,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dData.ImportCmd:oiref>=173,10,88,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dData.DefFilesToImportDlg:oiref>=10,170,147,334,1:oigroup> 
 */
 class __positions {
 }

@@ -43,25 +43,25 @@ public Period getPeriod(){
     return "";
  }
 
- public int getColumn(){
+ public int rgetColumn(){
    return _col;
  }
 
- public int getRow(){
+ public int rgetRow(){
   return _row;
  }
 
 
- public int getBegingTime(){
+ public int rgetBegingTime(){
    int [] b = {8, 00} ;
    return b[0];
  }
- public int getEndTime(){
+ public int rgetEndTime(){
    int [] b = {22, 0} ;
    return b[0];
  }
 
- public String getDayName(int i) {
+ public String rgetDayName(int i) {
    String [] a = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
    return a[i];
  }

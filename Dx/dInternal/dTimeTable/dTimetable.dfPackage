@@ -65,14 +65,14 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Day#_setOfSequences:oiref>=413,59,444,59:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfCycles#_cycle:oiref>=460,120,540,120:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfCycles#_cycle:oiref>=365,262,521,320:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimeTable.Period:oiref>=1,1,105,142,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.Period:oiref>=1,1,126,190,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.Cycle#_setOfDays:oiref>=521,286,485,286:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Day#_setOfSequences:oiref>=470,310,550,310:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dTimeTable.TTStructure:oiref>=213,313,200,270,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dTimeTable.TTStructure:oiref>=213,313,200,350,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.Sequence:oiref>=4,314,199,142,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.TTStructure#_setOfCycles:oiref>=313,313,313,282:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.Cycle#_setOfDays:oiref>=615,210,115,250:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfPeriods#_period:oiref>=142,192,106,122:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dTimeTable.SetOfPeriods#_period:oiref>=142,182,127,181:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfPeriods:oiref>=142,172,103,110,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dTimetable.SetOfDays#_day:oiref>=190,315,300,315:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dTimeTable.SetOfDays:oiref>=382,192,103,110,1:oigroup>
