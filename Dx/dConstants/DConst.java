@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.71 $  $Date: 2003-11-20 18:28:11 $
+ * Title: DConst $Revision: 1.72 $  $Date: 2003-11-24 21:56:22 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.71 $
+ * @version $Revision: 1.72 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -84,6 +84,14 @@ public class DConst {
   public final static int STUDENT_ID_LENGTH=9;
   public final static int STUDENT_KEY_LENGTH=8;
   public final static int STUDENT_PROGRAM_LENGTH=6;
+
+
+  public final static int ADJUST_HEIGHT = 92;
+  public final static int ADJUST_WIDTH = 6;
+  public final static int DIALOG_DIM = 400;   //Dimension for reportOptionsDlg
+  public final static int CENTER_WIDTH = 20;  // Width for the centerPanel
+  public final static int CENTER_HEIGHT = 75; // Height for the centerPanel
+  public final static int LIST_LENGHT = 30;
 
   // Color constants
   public final static Color COLOR_BLACK = Color.black; // Default color

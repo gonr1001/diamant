@@ -5,5 +5,5 @@ French
 .\pref\pref.txt
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
 éÉèÈàÀÇçëËïÏÔôÙù-'()Êê
-selectedOptionsInFullReport;Section;Début;Local;Durée;Instructor;Jour ;Nom;Type;Unité;
-selectedOptionsInConflictReport;Conf.(No.);Unité;
+selectedOptionsInFullReport;Unité;Fin;Jour(Nu.);
+selectedOptionsInConflictReport;Jour(Nu.);Séquence;Unité(H. début);Événement 1;Événement 2;

@@ -18,7 +18,7 @@ public class ReportCmd implements Command{
   }
 
   public void execute(DApplication dApplic) {
-    new ReportDlg(dApplic);
+    new ReportsDlg(dApplic);
   }
 
 }
