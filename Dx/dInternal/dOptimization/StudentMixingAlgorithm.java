@@ -24,7 +24,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   private Vector _eventsRescList;
   private int _mixingType;// 0= balance student mixing,  1= balance student
   // mixing with acceptable variation, 2= optimize student mixing
-  private int ACCEPTABLEVARIATION=5;
+  private int ACCEPTABLEVARIATION=25;
 
   /**
    *
@@ -198,7 +198,6 @@ public class StudentMixingAlgorithm implements Algorithm {
      * number of potential conflicts of the student
      */
     SetOfResources convexGroup= new SetOfResources(1);//
-    //  int[][] convexMatrix= new int[associatesEvents.size()][studentsReg.size()];
     for (int i=0; i< studentsReg.size(); i++){
       long studentKey= Long.parseLong(studentsReg.get(i).toString());
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
@@ -209,9 +208,6 @@ public class StudentMixingAlgorithm implements Algorithm {
         actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
         int group= student.getGroup(actID+typeID);
         Vector groupList= new Vector(1);
-        /*Section sect=_dm.getSetOfActivities().getSection(actID.substring(0,
-            SetOfActivities._COURSENAMELENGTH),actID.substring(
-            SetOfActivities._COURSENAMELENGTH),Character.toString(DXTools.STIConvertGroup(group)));*/
         if((group<=0) ){
           /*Type type= _dm.getSetOfActivities().getType(actID,typeID);
           if(type!=null)
@@ -225,11 +221,6 @@ public class StudentMixingAlgorithm implements Algorithm {
 
         for(int k=0; k< groupList.size(); k++){
           String sectionID= groupList.get(k).toString().trim();
-          //String typeID= actID.substring(SetOfActivities._COURSENAMELENGTH,SetOfActivities._COURSENAMELENGTH+1);
-          //actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
-          //Type type= _dm.getSetOfActivities().getType(actID,typeID);
-          //for(int k=0; k< type.getSetOfSections().size(); k++){
-          //Resource section= type.getSetOfSections().getResourceAt (k);
           Section section= _dm.getSetOfActivities().getSection(actID,typeID,sectionID);
           if(section!=null){
             for(int l=0; l< section.getSetOfUnities().size(); l++){
@@ -239,13 +230,9 @@ public class StudentMixingAlgorithm implements Algorithm {
               if(assEvent!=null){
                 nbOfPotentialConf+= ((DXValue)assEvent.getAttach()).getIntValue();
               }// end if(assEvent!=null)
-              //System.out.println(eventID);//debug
             }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
           }//end if(section!=null)
-          //}// end for(int k=0; k< type.getSetOfSections().size(); k++)
         }// end for (int j=0; j< student.getCoursesList().size(); j++)
-        //DXValue value= new DXValue();
-        //value.setIntValue(nbOfPotentialConf);
       }// end for(int k=0; k< groupList.size(); k++){
       convexGroup.setCurrentKey(studentKey);
       convexGroup.addResource(new Resource(Integer.toString(nbOfPotentialConf),new DXValue()),0);
