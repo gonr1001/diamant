@@ -1,0 +1,99 @@
+\chapter{Nouvelle architecture de la grille horaire}
+
+Ce chapitre présente la nouvelle grille horaire, décrit les interprétations et l'énumération des différentes
+informations requises par \diamant{}.
+
+\section{présentation de la grille horaire}
+
+Cette nouvelle grille horaire sera stockée dans un fichier XML comme représenté à la figure \ref{xmlcontains} et elle permettra de traiter indépendamment chaque cycle.
+
+\subsection{Exemple des données qu'elle contient}
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=250pt]{Images/TTxmlContains.eps}
+    \caption{Fichier XML de la grille horaire}\label{xmlcontains}
+  \end{center}
+\end{figure}
+
+\subsection{Signification des données}
+
+Le fichier XML contenant les informations sur la grille horaire est organisé de manière hiérarchique (arbre). Chaque information est encapsulée dans un \emph{tag} (voir figure \ref{xmltt}). Chaque \emph{tag} donne le grade hiérarchique de l'information sur l'arbre. Cette hiérarchie est décrite comme suit:
+
+\begin{itemize}
+    \item \emph{DXTimeTable}:
+    il représente la grille horaire complète et est composé d'un ensemble de tag du type \emph{TTcycle}.
+
+    \item \emph{TTcycle}: il représente la grille d'un cycle. Un cycle peut être considéré comme une semaine, 8, 10 ou $n$ jours correspondant à la période pendant laquelle toutes les activités devraient être planifiées. Il est composé d'un tag de type \emph{cycleID} correspondant à l'identifiant du cycle, d'un tag de type \emph{pLength} correspondant à la longueur (en minutes et en multiple de 5) d'une période dans ce cycle et d'un tag de type \emph{TTdays}.\\
+
+    \item \emph{TTdays}: il est l'ensemble contenant la liste des journées d'un cycle. Il est composé d'un ensemble de tag de type \emph{TTday}.\\
+
+    \item \emph{TTday}: il représente une journée d'un cycle et est composé d'un tag \emph{dayID} correspondant à l'identifiant de la journée et d'un tag de type \emph{TTsequences}.\\
+
+    \item \emph{TTsequences}: il représente l'ensemble des séquences de la journée. Il est composé d'un ensemble de tag de type \emph{TTsequence}.\\
+
+    \item \emph{TTsequence}: il représente une sequence de la journée et est composé d'un tag \emph{sequenceID} correspondant à l'identifiant de la séquence et d'un tag de type \emph{TTperiods}.\\
+
+    \item \emph{TTperiods}: il représente l'ensemble des périodes d'une séquence. Il est composé d'un ensemble de tag de type \emph{TTperiod}.\\
+
+    \item \emph{TTperiod}: il est la plus petite unité de la grille horaire et représente une période de cette grille. Il est composé du tag \emph{time} correspondant à l'heure de debut de la période et du tag \emph{priority} correspondant à la priorité accordée à cette période.\\
+\end{itemize}
+
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=400pt]{Images/TTxmlModel.eps}
+    \caption{Schema du fichier XML de la grille horaire}\label{xmltt}
+  \end{center}
+\end{figure}
+
+
+\section{Modélisation de la grille horaire}
+
+\subsection{Organisation hiérarchique}\label{hierar}
+
+La nouvelle structure de la grille horaire de \diamant{} se présente sous une forme hiérarchique avec à son sommet la grille horaire complète et à la base les périodes (voir figure \ref{orgtt}), elle est décrite comme suit:
+
+\begin{itemize}
+    \item Niveau 1: il correspond à la grille horaire complete et est constitué de plusieurs éléments de niveau 2.\\
+
+    \item Niveau 2: il correspond à l'ensemble des cycles de la grille horaire. Chaque élément du niveau 2 (un cycle) est constitué de plusieurs éléments de niveau 3.\\
+
+    \item Niveau 3: il correspond à l'ensemble des jours d'un cycle. Chaque élément du niveau 3 (une journée) est constitué de plusieurs éléments de niveau 4.\\
+
+    \item Niveau 4: il correspond à l'ensemble des séquences d'une journée. chaque élément du niveau 4 (une séquence) est constitué de plusieurs éléments de niveau 5.\\
+
+    \item Niveau 5: il est l'entité élémentaire de la grille horaire et il correspond à une période dans laquelle devra être affectée une activité.
+\end{itemize}
+
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[height=6.0in,angle=-90]{Images/organigramme.eps}
+    \caption{Schema hiérarchique de la grille horaire}\label{orgtt}
+  \end{center}
+\end{figure}
+
+\subsection{Modélisation objet}
+
+Cette modélisation consiste à présenter le diagramme de classes de la grille horaire. Ce diagramme respecte la hiérarchie décrite à la section \ref{hierar} et est composé de 3 types de classes (voir figure \ref{diagclass}):
+
+\begin{itemize}
+    \item Type 1: ce type ne concerne que la classe \emph{TTStructure} correspondant au sommet (niveau 1) de la grille horaire.\\
+
+    \item Type 2: ce type concerne les classes fonctionnant comme des ensembles d'éléments (\emph{SetOfCycles, SetOfDays, SetOfSequences et SetOfPeriods}). Ces classes héritent de la classe \emph{SetOfResources} pour construire et manipuler leurs ensembles respectifs (voir l'article \emph{Chargement et traitement de données à partir des fichiers textes }).\\
+    \item Type 3: ce type concerne les classes fonctionnant comme des éléments d'ensembles (\emph{Cycle, Day, Sequence et Period}). Ces classes héritent de la classe \emph{DXObject} afin de pouvoir être intégrées à leurs ensembles respectifs.
+\end{itemize}
+
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=450pt]{Images/dTimetable.eps}
+    \caption{Diagramme de classes de la grille horaire}\label{diagclass}
+  \end{center}
+\end{figure}
+
+\section{Avantages et limites de cette architecture}

@@ -1,32 +1,29 @@
 \chapter*{Résumé}
+Ce document présente comment  des données \diamant{} résidant dans
+des fichiers sont mises dans la forme d'objets, afin d'être
+traites à l'intérieur de l'application  \diamant{}.
 
-C'est vrai que une partie importante dans le temps de
-développement d'un logiciel est consacré à la validation et
-nettoyage des données, ce processus peut devenir très complexe et
-très coûteux.
+\diamant{} est un logiciel de construction d'horaires, dans lequel
+les données de référence sont des fichiers de texte. Ces fichiers
+contiennent des enregistrements qui seront ``transformés'' en
+objets reconnus par l'application. Ces objets seront
+éventuel\-le\-ment modifiés (uniquement certains champs changent
+de valeur) suite à des actions de l'utilisateur. Tous les objets
+seront sauvegardés par l'application dans un seul fichier texte
+XML, ceci ne sera pas complètement vrai dans \dx{}, ainsi
+l'application peut continuer un travail en prenant la dernière
+sauvegarde faite.
 
-Le logiciel \diamant{} utilise certains fichiers qui à l'heure
-actuel sont en enregistrés en format texte, la gestion et
-validation de ce type de fichiers est complexe.
+Ce papier présente les détails de formats de fichiers, fichiers originaux et
+fichiers produits; avec des indications sur l'utilisation de
+champs et les classes concernant cette partie de l'application ainsi que
+la correspondance entre champs des enregistrements fichiers et données membres.
 
-Ce document présente comment des données utilisées par le logiciel
-\diamant{} qui résident dans des fichiers text sont chargées dans
-une base de données relationnelle, dans cette base de données nous
-réalisons certains validations d'intégrité des données. Une fois
-que les données sont valides, nous pouvons générer des fichiers en
-format XML, qui est devenu un standard pour échanger des données.
-
-Avec ce processus, nous pouvons garantir que \diamant{} peut se
-concentrer dans les tâches de créer des horaires, sans distraire
-son attention dans les activités de validation des données.
-
-Ce papier présente les détails de formats de fichiers, fichiers
-originaux et fichiers produits; avec des indications sur
-l'utilisation de champs et les classes concernant cette partie de
-l'application ainsi que la correspondance entre champs des
-enregistrements fichiers et données membres, tout cela pour le cas
-précise de \diamant{}.
-
-Mais aussi nous avons comme objectif montrer un modèle de données
-et un processus de validation de données assez ouvert et
-extensible pour l'utiliser dans autres cas.
+Le fait d'uniformiser le traitement de fichiers donne les
+avantages suivants :
+\begin{itemize}
+    \item Le traitement de tous les fichiers est fait en suivant le même \ang{pattern},
+    ce qui favorise la modularité,
+    la clarté de l'application et le traitement des données de façon uniforme et centralisée;
+    \item Réduit la redondance dans le  code, ce qui diminue les efforts de tests et de débogage.
+\end{itemize}

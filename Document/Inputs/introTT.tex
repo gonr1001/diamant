@@ -1,0 +1,35 @@
+\chapter{Introduction}
+
+\diamant{} est un logiciel de construction d'horaires dans lequel
+il est nécessaire de définir une grille horaire avant d'assigner
+des événements et ressources aux plages horaires.
+La grille horaire peut être considérée comme le coeur de la
+construction d'horaires, selon la flexibilité permise à sa definition,
+il sera possible de permettre le traitement de  plus ou moins de cas.
+Regardons une représentation simple~: cinq jours; trois périodes par jour. Il
+serait possible de garder les deux dimensions comme deux constantes du programme.
+Il serait nécessaire de changer le programme si la grille change. On peux garder
+les dimensions dans un fichier et le changer lorsque nécessaire.
+Ici nous présentons comment  définir la grille horaire d'une manière souple et adapté à des grilles
+d'une année, un semestre ou trimestre, des cycles d'une semaine, ou de plusieurs jours, et plusieurs
+découpages pour une journée.
+
+Dans un premier temps nous présentons la grille de la version 1.0 de \diamant{} en donnant ses
+désavantages.
+
+
+Elle est composée de journées, Chaque journée étant elle même composée de périodes \cite{ruben94}.
+
+
+la définition de la grille horaire peut se faire à partir d'un fichier standard ou alors se faire à partir de l'interface graphique.
+
+
+La période est l'entité élémentaire de la grille horaire et elle est caractérisée par une heure de debut, une heure de fin et sa priorité.
+
+Cette organisation de la grille horaire nous parait un peu limitée, car elle ne permet d'affecter les resources que de façon cyclique. En effet, pour construire les horaires de cours d'une université fonctionnant avec 13 semaines de cours, nous ne construisons que l'horaire sur une semaine et cet horaire devra être utilisé pour toutes les semaines.
+
+Cette approche aurait été sans reproches si les contraintes appliquées à certaines resources étaient elles aussi cycliques, c'est à dire, si par exemple la disponibilité d'un enseignant restait inchangée tout au long des 13 semaines ou encore si un cours devait être donnée par le même enseignant et dans le même local tout au long des 13 semaines.
+
+Afin d'outre passer ce problème d'horaire par cycle, nous avons développé une nouvelle architecture de la grille horaire. Cette architecture prend en compte les contraintes appliquées à chaque resource durant chaque cycle (un cycle peut être considéré comme une semaine dans le d'horaires de cours) et permet de construire un horaire particulier pour chaque cycle.
+
+Nous vous présenterons dans ce document la description de la grille horaire actuelle, ses limites, l'architecture de la nouvelle grille horaire, ses avantages et ses limites.
