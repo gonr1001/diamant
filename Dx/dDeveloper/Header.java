@@ -1,7 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.2 $  $Date: 2003-01-24 17:57:43 $
- * Description: ClassName is a class used to
+ * Title: ClassName $Revision: 1.3 $  $Date: 2003-02-25 15:52:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,15 +13,28 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
  */
+
+
+/**
+ * Description: ClassName is a class used to
+ *
+ */
+
 package dAux;
 
-
-/* This class is used as a template to have the header of classes
-some where */
+/**
+ * Description: This class is used as a template to have the header
+ * of classes any where.  This file is not a CVS file
+ *
+ */
 
 public class Header {
 

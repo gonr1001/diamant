@@ -28,7 +28,8 @@ import java.util.*;
 
 
 import javax.swing.BorderFactory;
-
+import dInternal.TTParametersListener;
+import dInternal.TTParametersEvent;
 
 //import diamant002.utilities.NumberTextField;
 //import diamant002.dInternal.DPeriod;
@@ -49,7 +50,8 @@ import javax.swing.BorderFactory;
 class TTDefinitionDlg extends JDialog
                    implements ActionListener,
                               ItemListener,
-                              FocusListener{
+                              FocusListener,
+                              TTParametersListener{
 
   final static int CYCLE = 0;
   final static int EXAM = 1;
@@ -105,9 +107,10 @@ class TTDefinitionDlg extends JDialog
   private int periods;
   private Vector butVect;    // JButton
   private Vector periodVect;    // DPeriod
-  //private DDocumentView _doc;
+  //private DDocument _dd;
   private JFrame _jFrame;
   private DMediator _mediator;
+  private int [] _a = new int [2];
 
   // used at itemStateChanged so that the method is not called from ActionEvent
   // but only when the user selects it.
@@ -182,6 +185,8 @@ class TTDefinitionDlg extends JDialog
   private void jbInit() throws Exception {
     setTitle( MES00 ) ; //_doc._projectName);
     setResizable(false);
+
+     _mediator.getCurrentDoc().getTTParameters().addTTParametersListener(this);
 
     panelC = new JPanel(gridbag);
     //infoPanel
@@ -296,8 +301,9 @@ class TTDefinitionDlg extends JDialog
     butCancel.addActionListener( this );
     butAppliquer = new JButton( BUT03 );
     CmdButton butAppliquer = new CmdButton(BUT03);
-    butAppliquer.setCommand(new AppInTTCmd(_mediator.getCurrentDoc()));
+    //butAppliquer.setCommand(new AppInTTCmd(_mediator.getCurrentDoc()));
     butAppliquer.addActionListener(_mediator.getCurrentDoc());
+    butAppliquer.addActionListener(this);
 
     butPanel.add(butOk, null);
     butPanel.add(butAppliquer, null);
@@ -349,7 +355,15 @@ class TTDefinitionDlg extends JDialog
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
+
     inActionPerformed = true;
+
+    if (command.equals( BUT03 )) {
+      _a[0]= 2;
+      _a[1]= 2;
+      setTitle( "hello" + _a[0] + _a[1]);
+      _mediator.getCurrentDoc().getTTParameters().setValues(_a);
+    }
 
     if (command.equals( BUT00 )) {  // Ok
       int i = 0;
@@ -655,4 +669,11 @@ class TTDefinitionDlg extends JDialog
   // have to write this fonction so that the class can
   // implement the listener
   public void focusGained(FocusEvent e) {}
+
+  public void chageInTTParameters(TTParametersEvent e) {
+    setTitle( "Myhello" + _a[0] + _a[1]);
+    //repaintDlg(_mediator.getCurrentDoc().getTTParameters());
+
+  }
+
 }

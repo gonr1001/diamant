@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.4 $  $Date: 2003-02-20 15:13:33 $
+ * Title: DDocument $Revision: 1.5 $  $Date: 2003-02-25 15:52:44 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -32,9 +32,12 @@ import javax.swing.*;
 import javax.swing.JDesktopPane;
 
 import dInternal.DModel;
+import dInternal.TTParameters;
+import dInternal.TTParametersEvent;
+import dInternal.TTParametersListener;
 import dResources.DConst;
 
-public class DDocument implements ActionListener{
+public class DDocument implements ActionListener, TTParametersListener{
   private boolean _modified;
   private DView _dView;
 
@@ -45,6 +48,9 @@ public class DDocument implements ActionListener{
   private JInternalFrame _jif;
   private DModel _dm;
   private JLabel _bottomLablel;
+  private TTPanel _ttPanel;
+  private TTParameters _ttParameters;
+
   //-------------------------------------------
   public DDocument(DView dView) {
   /* MIN_HEIGHT is needed to ajdust the minimum
@@ -66,9 +72,11 @@ public class DDocument implements ActionListener{
     _bottomLablel = new JLabel("hello");
     JPanel _bottomPanel = initBottomPanel(_bottomLablel);
     _jif.getContentPane().add(_bottomPanel, BorderLayout.SOUTH);
-    TTPanel ttPanel = new TTPanel();
+    _ttPanel = new TTPanel();
+    _ttParameters = new TTParameters();
+    _ttParameters.addTTParametersListener(this);
     _modified = false;
-    _jif.getContentPane().add(ttPanel, BorderLayout.CENTER);
+    _jif.getContentPane().add(_ttPanel, BorderLayout.CENTER);
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
     _jif.pack();
@@ -96,6 +104,15 @@ public class DDocument implements ActionListener{
         return _dm;
     } //end getDModel
 
+    public TTParameters getTTParameters() {
+      return _ttParameters;
+    } // end getJIF
+
+    public TTPanel getTTPanel() {
+      return _ttPanel;
+    } // end getJIF
+    //-------------------------------------------
+
     private JPanel initBottomPanel(JLabel label){
       JPanel panel = new JPanel();
       label.setForeground(Color.red);
@@ -104,16 +121,25 @@ public class DDocument implements ActionListener{
     } // initBottomPanel
 
     public void updateBottomPanel(){
-      _bottomLablel.setText("done");
-    } // initBottomPanel
+      _bottomLablel.setText("Change done");
+    } // updateBottomPanel
+
+/*    public void updateTTPanel(){
+      _ttPanel.setText("Change done");
+    } // initBottomPanel*/
 
     public void actionPerformed(ActionEvent  e) {
     if (e.getSource() instanceof CommandHolder) {
      ((CommandHolder) e.getSource()).getCommand().execute();
-    // repaint();
     }
     else {
     System.out.println("I do not know what to do, please help me (Action Performed)");
     }// end if ... else
+    }// end actionPerformed
+
+    public void chageInTTParameters(TTParametersEvent  e) {
+       _bottomLablel.setText("Change done");
+      _ttPanel.updateTTPanel(_ttParameters);
+      // repaint();
     }// end actionPerformed
 } /* end DDocument class */

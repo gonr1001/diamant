@@ -21,8 +21,11 @@ import javax.swing.BorderFactory;
 import javax.swing.border.*;
 import java.awt.event.*;
 
+import dInternal.TTParameters;
+
 public class TTPanel extends JScrollPane {
-  DDocument _dd;
+  //DDocument _dd;
+  private JLabel _x;
   public TTPanel() {//DDocument dd) {
     super();
     //_dd = dd;
@@ -80,8 +83,14 @@ for (int i = 0; i < nbRows; i++) {
   gridbag.rowWeights[i] = 1;
   gridbag.rowHeights[i] = 20;
     }
-JLabel x = new JLabel ("hello");
-panel.add(x);
+_x = new JLabel ("hello");
+panel.add(_x);
 this.setViewportView(panel);
   }
+
+  public void updateTTPanel(TTParameters ttp){
+    _x.setText("Change done");
+  }
+
+
 }
