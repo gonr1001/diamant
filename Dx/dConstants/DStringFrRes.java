@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.101 $  $Date: 2004-03-08 17:51:06 $
+ * Title: DStringFrRes $Revision: 1.102 $  $Date: 2004-03-19 19:37:37 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.101 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.102 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -100,7 +100,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     { "closeTTS", "Fermer grille" },
     { "saveTTS", "Enregistrer grille" },
-     { "saveAsTTS", "Enregistrer grille sous" },
+    { "saveAsTTS", "Enregistrer grille sous" },
 
     //Assign
     { "assign", "Affectation" },
@@ -141,10 +141,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "plafM", "Options L&F"},
     { "plafTD", "Options L&F"},
     { "plafD", "Choisisez un L&F"},
-    { "conflicts","Options Conflits ..."},
-    { "displayTT","Affichage grille"},
-
-
+    { "conflicts", "Options Conflits ..."},
+    { "displayTT", "Affichage grille"},
+    { "simple", "Simple"},
+    { "splitVertical", "Detaillé  + Split V"},
+    { "splitHorizontal", "Detaillé + Split H"},
 
     //Help
     { "help", "Aide"},

@@ -20,7 +20,7 @@ import dResources.DConst;
 
 public class EventsDlg extends EventsDlgInterface{
 
-   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
+   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CLOSE};
 
   /**
    * Constructor

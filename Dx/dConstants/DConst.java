@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.84 $  $Date: 2004-03-04 16:36:31 $
+ * Title: DConst $Revision: 1.85 $  $Date: 2004-03-19 19:37:37 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.84 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.85 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -109,9 +109,9 @@ public class DConst {
   //return constant
   public final static String CR_LF = "\r\n";//
 
-  //**********Menus constants ***************************
+  //**********Menu names constants ***************************
   //File menu
-  public final static String FILE  = res.getString("file");//Fichier
+  public final static String M_FILE  = res.getString("file");//Fichier
   public final static String NEW_TT = res.getString("newTT");//Nouvel horaire
   public final static String NTT_CY = res.getString("nTTCy");//Horaire cycle
   public final static String NTT_EX = res.getString("nTTEx");//Horaire Examen
@@ -150,7 +150,7 @@ public class DConst {
   public final static String ACTIVITY_MODIF_M = res.getString("ActModifM");//Modification évenements
   //Optimization menu
   public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
-  public final static String INITIAL_ASSIGN_M = res.getString("initialAssignM");//Affectation Initiale
+  public final static String M_INITIAL_ASSIGN = res.getString("initialAssignM");//Affectation Initiale
   public final static String FIRSTALGORITHM = res.getString("firstAlgo");//Affectation Initiale
   public final static String STUDENTS_REPARTITION = res.getString("studentRepartition");//Brassage d'étudiants
   public final static String STUDENTMIXINGBAL = res.getString("studentMixingBal");//Brassage d'étudiants balancé
@@ -166,6 +166,9 @@ public class DConst {
   public final static String CONFLICTS = res.getString("conflicts");//options L&F
 
   public final static String DISPLAY_TT = res.getString("displayTT");//"affichage grille"
+  public final static String SIMPLE = res.getString("simple");//"Simple"
+  public final static String SPLIT_VERTICAL = res.getString("splitVertical");//"Detaillé  + Split V"
+  public final static String SPLIT_HORIZONTAL = res.getString("splitHorizontal");//"Detaillé + Split H"
 
   //Help menu
   public final static String HELP = res.getString("help");//Aide

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.100 $  $Date: 2004-02-16 20:08:40 $
+ * Title: DMenuBar $Revision: 1.101 $  $Date: 2004-03-19 19:37:37 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.100 $
+ * @version $Revision: 1.101 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -60,7 +60,7 @@ import dAux.StateZeroCmd;
 
 public class DMenuBar extends JMenuBar{
   private DApplication _dApplic;
-  private final boolean _DEVELOPMENT = false;
+  private final boolean _DEVELOPMENT = true;
 
   private final String _mfont = DConst.MFONTDialog;
   private final int _font = Font.PLAIN;
@@ -76,8 +76,9 @@ public class DMenuBar extends JMenuBar{
   _help,
   _dev;
   // for each main menu there is a assocaited boolean
-  private boolean _boolFile, _boolAssign, _boolOptimization, _boolModification,
-  _boolReport, _boolPreferences, _boolHelp, _boolDev;
+  private boolean _boolMenuFile, _boolMenuAssign, _boolMenuOptimization,
+  _boolMenuModification, _boolMenuReport, _boolMenuPreferences,
+  _boolMenuHelp, _boolMenuDev;
 
   // the file menu: sub-menus
   private JMenu _newTTable, _newTTStruc;
@@ -171,7 +172,7 @@ public class DMenuBar extends JMenuBar{
 
   private void createFileMenu() {
     //Build the menu FILE.
-    _file = new JMenu(DConst.FILE);
+    _file = new JMenu(DConst.M_FILE);
     _file.setFont(new java.awt.Font( _mfont, _font, _nPT ));
     this.add(_file);
 
@@ -352,7 +353,7 @@ public class DMenuBar extends JMenuBar{
     _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _optimisation );
     // Items in menu Optimisation.
-    _initialAssign = new CmdMenu(DConst.INITIAL_ASSIGN_M);
+    _initialAssign = new CmdMenu(DConst.M_INITIAL_ASSIGN);
     _initialAssign.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _initialAssign.setCommand(new InitialAssignCmd(_dApplic));
     _initialAssign.addActionListener(_dApplic);
@@ -432,19 +433,19 @@ public class DMenuBar extends JMenuBar{
     _view = new JMenu(DConst.DISPLAY_TT);
     _view.setFont( new java.awt.Font(_mfont, _font, _nPT));
 
-    _viewSimple = new CmdMenu("simple");
+    _viewSimple = new CmdMenu(DConst.SIMPLE);
     _viewSimple.setFont( new java.awt.Font(_mfont, _font, _nPT));
     _viewSimple.setCommand(new ViewSimpleCmd());
     _viewSimple.addActionListener(_dApplic);
     _view.add(_viewSimple);
 
-    _viewDetailedHorizontal = new CmdMenu("Detaillé + Split H");//, this);
+    _viewDetailedHorizontal = new CmdMenu(DConst.SPLIT_HORIZONTAL);//, this);
     _viewDetailedHorizontal.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _viewDetailedHorizontal.setCommand(new ViewHorizontalSplitCmd());
     _viewDetailedHorizontal.addActionListener(_dApplic);
     _view.add(_viewDetailedHorizontal);
 
-    _viewDetailedVertical = new CmdMenu("Detaillé  + Split V");//, this);
+    _viewDetailedVertical = new CmdMenu(DConst.SPLIT_VERTICAL);//, this);
     _viewDetailedVertical.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _viewDetailedVertical.setCommand(new ViewVerticalSplitCmd());
     _viewDetailedVertical.addActionListener(_dApplic);
@@ -507,6 +508,8 @@ public class DMenuBar extends JMenuBar{
     _myFile.addActionListener(_dApplic);
     _dev.add(_myFile);
 
+
+
     _showAll = new CmdMenu("showAllMenus");
     _showAll.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _showAll.setCommand(new ShowAllCmd());
@@ -527,17 +530,17 @@ public class DMenuBar extends JMenuBar{
     _boolExit = true;
 
     //the menu _preferences
-    _boolPreferences= true;
+    _boolMenuPreferences= true;
     _boolLookAndFeel =true;
 
     //the menu _help
-    _boolHelp= true;
+    _boolMenuHelp= true;
     _boolAbout = true;
   } // end setAlways
 
   private void setZero() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = true;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -553,7 +556,7 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= false;
+    _boolMenuAssign= false;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
@@ -561,15 +564,15 @@ public class DMenuBar extends JMenuBar{
     _boolEvents= true;
 
     //the menu modification
-    _boolModification = false;
+    _boolMenuModification = false;
     _boolMActivityModif = true;
 
     //the menu optimization
-    _boolOptimization = false;
+    _boolMenuOptimization = false;
     //_boolMOpti= true;
 
     //the menu report
-    _boolReport = false;
+    _boolMenuReport = false;
     //the menu preferences
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
@@ -580,15 +583,15 @@ public class DMenuBar extends JMenuBar{
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
   }
 
-  private void setReadyToBuildTT() {
+  private void setReadyToInitialAssign() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = false;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -605,26 +608,28 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= true;
-    _boolActivities = true;
+    _boolMenuAssign= false;
+    /*_boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
     _boolRoomsAvailability= true;
-    _boolEvents= true;
+    _boolEvents= true;*/
 
     //the menu modification
-    _boolModification = true;
-    _boolMActivityModif = true;
+    _boolMenuModification = false;
+    /*_boolMActivityModif = true;*/
 
     //the menu otimization
-    _boolOptimization = true;
+
+
+    _boolMenuOptimization = true;
     _boolInitialAssign = true;
     _boolDoOptimization= false;
     _boolStudentsRepartition = false;
 
 
     //the report menu
-    _boolReport = true;
+    _boolMenuReport = true;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -636,15 +641,15 @@ public class DMenuBar extends JMenuBar{
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
-  } //end setImport
+  } //end setReadyToBuildTT()
 
   private void setAfterInitialAssign() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = false;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -661,7 +666,7 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= true;
+    _boolMenuAssign= true;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
@@ -669,18 +674,19 @@ public class DMenuBar extends JMenuBar{
     _boolEvents= true;
 
     //the menu modification
-    _boolModification = true;
+    _boolMenuModification = true;
     _boolMActivityModif = true;
 
     //the menu otimization
-    _boolOptimization = true;
-    _boolInitialAssign = true;
+
+    _boolMenuOptimization = true;
+    _boolInitialAssign = false;
     _boolDoOptimization= true;
     _boolStudentsRepartition = true;
 
 
     //the report menu
-    _boolReport = true;
+    _boolMenuReport = true;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -692,14 +698,15 @@ public class DMenuBar extends JMenuBar{
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
-  } //end setImport
+  } //end setAfterInitialAssign
+
   private void setNewTTCy() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = false;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -716,7 +723,7 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= false;
+    _boolMenuAssign= false;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
@@ -724,15 +731,15 @@ public class DMenuBar extends JMenuBar{
     _boolEvents= true;
 
     //the menu modification
-    _boolModification = false;
+    _boolMenuModification = false;
     _boolMActivityModif = true;
 
     //the menu otimization
-    _boolOptimization = false;
+    _boolMenuOptimization = false;
     //_boolMOpti= true;
 
     //the report menu
-    _boolReport = false;
+    _boolMenuReport = false;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -744,7 +751,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
@@ -752,7 +759,7 @@ public class DMenuBar extends JMenuBar{
 
   private void setNewTTEx() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = false;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -769,7 +776,7 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= false;
+    _boolMenuAssign= false;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
@@ -777,16 +784,16 @@ public class DMenuBar extends JMenuBar{
     _boolEvents= true;
 
     //the menu modification
-    _boolModification = false;
+    _boolMenuModification = false;
     _boolMActivityModif = true;
 
     //the menu otimization
-    _boolOptimization = false;
+    _boolMenuOptimization = false;
     //_boolMOpti= true;
 
 
     //the report menu
-    _boolReport = false;
+    _boolMenuReport = false;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -798,7 +805,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
@@ -806,7 +813,7 @@ public class DMenuBar extends JMenuBar{
 
   private void setNewTTSCy() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = false;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -823,7 +830,7 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= false;
+    _boolMenuAssign= false;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
@@ -831,15 +838,15 @@ public class DMenuBar extends JMenuBar{
     _boolEvents= true;
 
     //the menu modification
-    _boolModification = false;
+    _boolMenuModification = false;
     _boolMActivityModif = true;
 
     //the menu otimization
-    _boolOptimization = false;
+    _boolMenuOptimization = false;
     //_boolMOpti= true;
 
     //the report menu
-    _boolReport = false;
+    _boolMenuReport = false;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -851,7 +858,7 @@ public class DMenuBar extends JMenuBar{
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
@@ -859,7 +866,7 @@ public class DMenuBar extends JMenuBar{
 
   private void setAll() {
     //the menu _file
-    _boolFile = true;
+    _boolMenuFile = true;
     //the submenus
     _boolNewTTable = true;
     _boolNewTTableCy = _boolNewTTableEx = true;
@@ -873,7 +880,7 @@ public class DMenuBar extends JMenuBar{
 
 
     //the menu assign
-    _boolAssign= true;
+    _boolMenuAssign= true;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
@@ -881,27 +888,27 @@ public class DMenuBar extends JMenuBar{
     _boolEvents= true;
 
     //the menu modification
-    _boolModification = true;
+    _boolMenuModification = true;
     _boolMActivityModif = true;
 
     //the menu otimization
-    _boolOptimization = true;
+    _boolMenuOptimization = true;
     //_boolMOpti= true;
 
     //the report menu
-    _boolReport = true;
+    _boolMenuReport = true;
 
     //the menu preferences
-    _boolPreferences= true;
+    _boolMenuPreferences= true;
     _boolLookAndFeel =true;
 
     //the menu help
-    _boolHelp= true;
+    _boolMenuHelp= true;
     _boolAbout = true;
 
     //the menu dev
     if (_DEVELOPMENT) {
-      _boolDev = true;
+      _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
     setMenus();
@@ -909,46 +916,46 @@ public class DMenuBar extends JMenuBar{
 
   private void setMenus() {
     //System.out.println("setMenus" + _boolAssign);
-    if (_boolFile)
+    if (_boolMenuFile)
       setFileMenu();
     else
-      _file.setEnabled(_boolFile);
+      _file.setEnabled(_boolMenuFile);
     // System.out.println("setMenus" + _boolAssign);
-    if (_boolAssign)
+    if (_boolMenuAssign)
       setAssignMenu();
     else
-      _assign.setEnabled(_boolAssign);
-    if (_boolModification)
+      _assign.setEnabled(_boolMenuAssign);
+    if (_boolMenuModification)
       setModificationMenu();
     else
-      _modification.setEnabled(_boolModification);
-    if (_boolOptimization)
+      _modification.setEnabled(_boolMenuModification);
+    if (_boolMenuOptimization)
       setOptimisationMenu();
     else
-      _optimisation.setEnabled(_boolOptimization);
-    if (_boolReport)
+      _optimisation.setEnabled(_boolMenuOptimization);
+    if (_boolMenuReport)
       setReportMenu();
     else
-      _report.setEnabled(_boolReport);
-    if (_boolPreferences)
+      _report.setEnabled(_boolMenuReport);
+    if (_boolMenuPreferences)
       setPreferencesMenu();
     else
-      _preferences.setEnabled(_boolPreferences);
-    if (_boolHelp)
+      _preferences.setEnabled(_boolMenuPreferences);
+    if (_boolMenuHelp)
       setHelpMenu();
     else
-      _help.setEnabled(_boolHelp);
+      _help.setEnabled(_boolMenuHelp);
     if (_DEVELOPMENT) {
-      if (_boolDev)
+      if (_boolMenuDev)
         setDevMenu();
       else
-        _dev.setEnabled(_boolDev);
+        _dev.setEnabled(_boolMenuDev);
     }
     //System.out.println("setMenusEnd");
   }
 
   private void setFileMenu() {
-    _file.setEnabled(_boolFile);
+    _file.setEnabled(_boolMenuFile);
     if (_boolNewTTable) {
       _newTTable.setEnabled(_boolNewTTable);
       _newTTableCy.setEnabled(_boolNewTTableCy);
@@ -971,7 +978,7 @@ public class DMenuBar extends JMenuBar{
   } //end  setFileMenu
 
   private void setAssignMenu() {
-    _assign.setEnabled(_boolAssign);
+    _assign.setEnabled(_boolMenuAssign);
     _activities.setEnabled(_boolActivities);
     _sections.setEnabled(_boolSections);
     _instructorAvailability.setEnabled(_boolInstructorAvailability);
@@ -980,11 +987,11 @@ public class DMenuBar extends JMenuBar{
   } //end setAssignMenu
 
   private void setModificationMenu() {
-    _modification.setEnabled(_boolModification);
+    _modification.setEnabled(_boolMenuModification);
     _activityModif.setEnabled(_boolMActivityModif);
   }
   private void setOptimisationMenu() {
-    _optimisation.setEnabled(_boolOptimization);
+    _optimisation.setEnabled(_boolMenuOptimization);
     //if (_boolDoOptimization) {
       _initialAssign.setEnabled(_boolInitialAssign);
       _doOptimization.setEnabled(_boolDoOptimization);
@@ -992,20 +999,20 @@ public class DMenuBar extends JMenuBar{
 
   }
   private void setReportMenu() {
-    _report.setEnabled(_boolReport);
+    _report.setEnabled(_boolMenuReport);
   }
   private void setPreferencesMenu() {
-    _preferences.setEnabled(_boolPreferences);
+    _preferences.setEnabled(_boolMenuPreferences);
     _lookAndFeel.setEnabled(_boolLookAndFeel);
   }
 
   private void setHelpMenu() {
-    _help.setEnabled(_boolHelp);
+    _help.setEnabled(_boolMenuHelp);
     _about.setEnabled(_boolAbout);
   }
 
   private void setDevMenu() {
-    _dev.setEnabled(_boolDev);
+    _dev.setEnabled(_boolMenuDev);
     _myFile.setEnabled(_boolMyFile);
     _showAll.setEnabled(_boolShowAll);
     _stateZero.setEnabled(_boolStateZero);
@@ -1036,7 +1043,7 @@ public class DMenuBar extends JMenuBar{
    * ready to build a tt
    */
   public void postOpenTTCmd(){
-    setReadyToBuildTT();
+    setReadyToInitialAssign();
   }
   /*
    * just calling an existing state
@@ -1050,7 +1057,7 @@ public class DMenuBar extends JMenuBar{
   }
 
   public void postImportCmd(){
-    setReadyToBuildTT();
+    setReadyToInitialAssign();
   }
 
   public void postAbout() {
@@ -1061,7 +1068,7 @@ public class DMenuBar extends JMenuBar{
     setAll();
   }
   public void postMyFile() {
-    setReadyToBuildTT();
+    setReadyToInitialAssign();
   }
 
   public void postStateZero() {
