@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.4 $  $Date: 2003-05-23 09:30:58 $
+ * Title: ImportDlg $Revision: 1.5 $  $Date: 2003-05-23 15:34:10 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -45,8 +45,7 @@ import dInternal.dTimeTable.TTStructure;
  */
 
 public class NewTTDlg extends JDialog {
-
-  DApplication _dApplic;
+  //DApplication _dApplic;
   /**
     * the constructor will displays the dialog
     *
@@ -56,8 +55,7 @@ public class NewTTDlg extends JDialog {
     */
 
    public NewTTDlg(DApplication dApplic) {
-     _dApplic= dApplic;
-     loadTTData();
+     loadTTData(dApplic);
    } // end constructor
 
    /**
@@ -65,35 +63,32 @@ public class NewTTDlg extends JDialog {
    /**
     *
     * */
-   private void loadTTData(){
-     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
+   private void loadTTData(DApplication dApplic){
+     JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
      fc.setFileFilter( new DFileFilter (new String[] {DConst.DGH},
          DConst.DGH_FILE) );
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-     int returnVal = fc.showDialog(_dApplic.getJFrame(), DConst.NEW_TT_M);
+     int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.NEW_TT_M);
 
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
      if (returnVal == JFileChooser.APPROVE_OPTION) {
        // get the file name
        String fil = fc.getSelectedFile().getAbsolutePath();
-       _dApplic.setCurrentDir(fil);
+       dApplic.setCurrentDir(fil);
        //load grille,
        TTStructure ttStruct = new TTStructure();
-       String error = ttStruct.loadData(fil);
+       String error = "";// ttStruct.loadData(fil);
 
-       _dApplic.getDMediator().addDoc(_dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
+       dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
 
-       if(error.length()==0){
-         JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,
-                                     DConst.IMP_A_TD, JOptionPane.INFORMATION_MESSAGE);
-       }else{
-         new FatalProblemDlg(_dApplic.getJFrame(),error);
+       if(error.length()!=0){
+         new FatalProblemDlg(dApplic.getJFrame(),error);
               System.exit(1);
        }
-       _dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+       dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
 
      }

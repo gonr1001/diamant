@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.18 $  $Date: 2003-05-23 11:46:39 $
+ * Title: DMenuBar $Revision: 1.19 $  $Date: 2003-05-23 15:34:10 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -32,6 +32,8 @@ import javax.swing.JMenu;
 
 import dInterface.dData.*;
 import dInterface.dTimeTable.NewTTCmd;
+import dInterface.dTimeTable.NewTTSCmd;
+import dInterface.dTimeTable.OpenTTSCmd;
 import dInterface.dUtil.*;
 
 public class DMenuBar extends JMenuBar{
@@ -99,25 +101,23 @@ public class DMenuBar extends JMenuBar{
 
     menu.addSeparator();
 
-    JMenu mTime = new JMenu("Grille horaire");
-    mTime.setFont( new java.awt.Font( mfont, font, nPT ) );
+    JMenu mDTTS = new JMenu(DConst.DTTS);
+    mDTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
 
 
-CmdMenu mNTime = new CmdMenu( "Nouvelle grille");
-mNTime.setFont( new java.awt.Font( mfont, font, nPT ) );
-mNTime.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-mNTime.addActionListener(_dApplic);
-mTime.add(mNTime);
+    CmdMenu mNTTS = new CmdMenu(DConst.NTTS);
+    mNTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mNTTS.setCommand(new NewTTSCmd());
+    mNTTS.addActionListener(_dApplic);
+    mDTTS.add(mNTTS);
 
-CmdMenu mOTime = new CmdMenu( "Ouvrir grille");
-mOTime.setFont( new java.awt.Font( mfont, font, nPT ) );
-mOTime.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-mOTime.addActionListener(_dApplic);
-mTime.add(mOTime);
+    CmdMenu mOTTS = new CmdMenu(DConst.OTTS);
+    mOTTS.setFont( new java.awt.Font( mfont, font, nPT ) );
+    mOTTS.setCommand(new OpenTTSCmd());
+    mOTTS.addActionListener(_dApplic);
+    mDTTS.add(mOTTS);
 
-
-
-    menu.add(mTime);
+    menu.add(mDTTS);
 
     menu.addSeparator();
 

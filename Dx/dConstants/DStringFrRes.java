@@ -1,6 +1,6 @@
 /**
  *
- * Title: DStringFrRes $Revision: 1.22 $  $Date: 2003-05-22 17:18:04 $
+ * Title: DStringFrRes $Revision: 1.23 $  $Date: 2003-05-23 15:34:10 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -45,7 +45,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "save", "Enregistrer" },
     { "saveAs", "Enregistrer sous" },
     //Separator
-
+    { "dTTS", "Grille horaire"},
+    { "nTTS", "Nouvelle grille"},
+    { "oTTS", "Modifier grille"},
 
     { "defFM", "Definir fichiers à importer" },
     { "defFTD", "Definir fichiers pour l'importation automatique"},

@@ -131,8 +131,8 @@ class TTDefinitionDlg extends JDialog
    * @param type Specify the type of time table to be created.  Use
    * either CYCLE or EXAM.
    */
-  public TTDefinitionDlg(DApplication dApplic, String str) {
-    super(dApplic.getJFrame(), str, true);
+  public TTDefinitionDlg(DApplication dApplic) {
+    super(dApplic.getJFrame(), "hello1", true);
     _dApplic = dApplic;
 
     //_doc = doc;
@@ -193,7 +193,7 @@ class TTDefinitionDlg extends JDialog
     //setTitle( MES00 ) ; //_doc._projectName);
     setResizable(false);
 
-    _dApplic.getDMediator().getCurrentDoc().getDM().addDModelListener(this);
+    //_dApplic.getDMediator().getCurrentDoc().getDM().addDModelListener(this);
     panelC = new JPanel(gridbag);
     //infoPanel
     infoPanel = new JPanel(new GridLayout(0, 1));
