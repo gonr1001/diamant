@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.51 $  $Date: 2005-02-03 16:52:43 $
+ * Title: DiamantTest 1.5Test $Revision: 1.52 $  $Date: 2005-02-03 20:02:02 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  * @author  $Author: garr2701 $
  * @since JDK1.3
  */
@@ -33,11 +33,14 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dTest.dInternal.DObjectTest;
+import dTest.dInternal.DResourceTest;
 import dTest.dInternal.DStateTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
 import dTest.dInternal.dData.DLoadDataTest;
+import dTest.dInternal.dData.DSaveDataTest;
+import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.StandardCollectionTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
@@ -87,7 +90,8 @@ public class DiamantTest {
   public static Test suite ( ) {
   	  System.out.println("Hello I am in tests");
       TestSuite suite= new TestSuite("Dimanant Tests");
-          suite.addTest(InstructorAttachTest.suite());
+         
+      suite.addTest(InstructorAttachTest.suite());
           suite.addTest(ResourceTest.suite());
           suite.addTest(SetOfResourcesTest.suite());
           suite.addTest(SetOfInstructorsTest.suite());
@@ -132,6 +136,9 @@ public class DiamantTest {
           suite.addTest(DataExchangeTest.suite());
           suite.addTest(ByteArrayMessageTest.suite());
           suite.addTest(StandardCollectionTest.suite());
+          suite.addTest(DResourceTest.suite());
+          suite.addTest(DSaveDataTest.suite());
+          suite.addTest(DStandardReportDataTest.suite());
       return suite;
     }
 }
