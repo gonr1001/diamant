@@ -389,7 +389,7 @@ public class SetOfActivities extends SetOfResources{
   }
 
   /**
-   * build activitiesList from activities datas by a finished states machine
+   * build activitiesList from activities data by a finite state machine
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
@@ -511,12 +511,17 @@ public class SetOfActivities extends SetOfResources{
         case 11://Preferred rooms
           stLine = new StringTokenizer(token);
           counter=1;
+          String inst=instructorName;
+          if(!_open){
+          	for(int i=1; i< stLine.countTokens(); i++)
+          		instructorName+=";" +inst;
+          }
           StringTokenizer instLine = new StringTokenizer(instructorName,";");
            while(stLine.hasMoreElements()){
              unityResource= section.getUnity(Integer.toString(counter));
              Unity bloc= (Unity)unityResource.getAttach();
              String room= stLine.nextToken().trim();
-             String inst="";
+            
              if(instLine.hasMoreElements())
                inst= instLine.nextToken().trim();
              for (int i=1; i<= _NUMBEROFCYCLE; i++){
