@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.51 $  $Date: 2003-08-29 11:54:48 $
+ * Title: DMenuBar $Revision: 1.52 $  $Date: 2003-08-29 12:01:45 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -56,20 +56,20 @@ public class DMenuBar extends JMenuBar{
   private JMenu _mNewTT, _mNewTTS;
   // the file menus
   private CmdMenu _mNTTCy, _mNTTEx, _mNTTSCy, _mNTTSEx, _mOpenTT, _mOpenTTS,
-                  _mClose, _mSave, _mSaveAs, _mDefF, _mImpA, _mExpo, _mExit;
+  _mClose, _mSave, _mSaveAs, _mDefF, _mImpA, _mExpo, _mExit;
   // the edit menus
-  
+
   // the assign menus
   private CmdMenu _mActi, _mSect, _mInstructorAvailability, _mroomsAvailability,
-                   _mExcl, _mConfl;
+  _mExcl, _mConfl;
   // the optimisation menus
   private CmdMenu _mOpti;
   // the preferences menus
-  private CmdMenu _mPLAF; 
+  private CmdMenu _mPLAF;
   // the help menus
   private CmdMenu _mAbout;
 
- 
+
 
   public DMenuBar(DApplication dApplic) {
     super();
@@ -78,7 +78,17 @@ public class DMenuBar extends JMenuBar{
   }
 
   private void createMenuBar() {
+    createFileMenu();
+    createAssignMenu();
+    createOptimisationMenu();
+    createPreferencesMenu();
+    createHelpMenu();
 
+    _state = 0;
+    stateZero();
+  } // end createMenus
+
+  public void createFileMenu() {
     //Build the menu FILE.
     _file = new JMenu(DConst.FILE);
     _file.setFont(new java.awt.Font( _mfont, _font, _nPT ));
@@ -185,6 +195,9 @@ public class DMenuBar extends JMenuBar{
     mExit.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     mExit.setCommand(new ExitCmd());
     mExit.addActionListener(_dApplic);
+  }
+
+  private void createAssignMenu() {
 
     //Build the menu ASSIGN.
     _assign = new JMenu(DConst.ASSIGN);
@@ -222,25 +235,31 @@ public class DMenuBar extends JMenuBar{
     mExcl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mExcl.addActionListener(_dApplic);
 
-     _assign.addSeparator();
+    _assign.addSeparator();
 
-     CmdMenu mConfl = new CmdMenu("Liste de Conflits");
-     _assign.add(mConfl);
-     mConfl.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-     mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-     mConfl.addActionListener(_dApplic);
+    CmdMenu mConfl = new CmdMenu("Liste de Conflits");
+    _assign.add(mConfl);
+    mConfl.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mConfl.addActionListener(_dApplic);
 
+  }
 
-     //Build the menu Optimisation.
-_optimisation = new JMenu("Opti");//DConst.PREF);
-_optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-this.add( _optimisation );
+  private void createOptimisationMenu() {
+    //Build the menu Optimisation.
+    _optimisation = new JMenu("Opti");//DConst.PREF);
+    _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    this.add( _optimisation );
 // Items in menu PREFERENCES.
-CmdMenu mXPLAF = new CmdMenu(DConst.PLAF_M);//, this);
-_optimisation.add(mXPLAF);
-mXPLAF.setFont(new java.awt.Font(_mfont, _font, _nPT));
-mXPLAF.setCommand(new PLAFCmd(_dApplic));
+    CmdMenu mXPLAF = new CmdMenu(DConst.PLAF_M);//, this);
+    _optimisation.add(mXPLAF);
+    mXPLAF.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    mXPLAF.setCommand(new PLAFCmd(_dApplic));
     mXPLAF.addActionListener(_dApplic);
+
+  }
+
+  private void createPreferencesMenu(){
 
     //Build the menu PREFERENCES.
     _preferences = new JMenu(DConst.PREF);
@@ -253,7 +272,9 @@ mXPLAF.setCommand(new PLAFCmd(_dApplic));
     mPLAF.setCommand(new PLAFCmd(_dApplic));
     mPLAF.addActionListener(_dApplic);
 
-    //Build the menu HELP.
+  }
+  private void createHelpMenu(){
+
     _help = new JMenu(DConst.HELP);
     _help.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _help );
@@ -264,17 +285,13 @@ mXPLAF.setCommand(new PLAFCmd(_dApplic));
     mAbout.setCommand(new AboutCmd());
     mAbout.addActionListener(_dApplic);
 
-    _state = 0;
-    stateZero();
-  } // end createMenus
-
-
+  }
 
   public void stateZero() {
     //_file.setEnabled(false);
     //_mNewTT.setEnabled(false);
-     _mNTTCy.setEnabled(true);
-     _mNTTEx.setEnabled(false);
+    _mNTTCy.setEnabled(true);
+    _mNTTEx.setEnabled(false);
 
   }
 
