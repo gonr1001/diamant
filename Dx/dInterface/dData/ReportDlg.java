@@ -14,6 +14,9 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -41,7 +44,7 @@ public class ReportDlg extends JDialog implements ActionListener{
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
   private String _reportData;
-  private String[] _buttonsNames = {DConst.BUT_OPTIONS, DConst.BUT_CLOSE, DConst.BUT_SAVE, DConst.BUT_SAVE_AS};
+  private String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
   private String[] _tabsNames = {DConst.REPORT_DLG_TAB1, DConst.REPORT_DLG_TAB2, DConst.REPORT_DLG_TAB3};
   private SetOfResources[] _resources;
 
@@ -194,20 +197,22 @@ public class ReportDlg extends JDialog implements ActionListener{
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if "Option" button
-    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
         new ReportOptionsDlg(_dApplic, _jd, _resources[_tabbedPane.getSelectedIndex()], _tabbedPane.getSelectedIndex());
     //if "Close" button
-    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(1)))
-      dispose();
-    //if "Save" button
     if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(2)))
-      System.out.println("");
+      dispose();
     //if "Save as" button
-    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(3))){
+    if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0))){
       if (_reportData != null){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
         JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
         JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
-        new SaveAsDlg(_dApplic, jta.getText());
+        String data = "***** " + DConst.REPORT + " " + DConst.TO_LEFT + _tabbedPane.getTitleAt(_tabbedPane.getSelectedIndex()) + DConst.TO_RIGHT + " ";
+        data = data + DConst.REPORT_PRODUCED_AT + " " + sdf.format(date) + " *****" + DConst.CR_LF + DConst.CR_LF;
+        data = data + jta.getText();
+        new SaveAsDlg(_dApplic, data);
       }
     }
 

@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.12 $  $Date: 2003-10-22 17:40:46 $
+ * Title: SaveAsDlg $Revision: 1.13 $  $Date: 2003-10-22 19:11:38 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -33,6 +33,7 @@ import java.io.PrintStream;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
+
 import java.util.ResourceBundle;
 
 import javax.swing.JButton;
@@ -189,11 +190,8 @@ public class SaveAsDlg extends JDialog
 
     // Save the file name
     String currentFile = fc.getSelectedFile().getAbsolutePath();
-    System.out.println("currentFile " + currentFile);
     if ( !currentFile.endsWith(DOTEXT) )
       currentFile = currentFile.concat(DOTEXT);
-
-
     // If there is a file with this file name in the same path
     file = new File(currentFile);
     if (file.exists()){
@@ -232,6 +230,12 @@ public class SaveAsDlg extends JDialog
   }// end if(returnVal == JFileChooser.APPROVE_OPTION)
    }//end saveAs() method
 
+   /**
+    * Saves data in a file by using a FileWriter
+    * @param currentFile the file pathname
+    * @param data the data to be stored
+    * @return
+    */
    private String saveWithData(String currentFile, String data){
      String error = "";
      try{
