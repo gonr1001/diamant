@@ -30,6 +30,7 @@ public class TestConditions {
    _dm= dm;
     _matrix = new StudentsConflictsMatrix();
     _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities()));
+    _testToRun.add( new TestRoomsConditions(_dm));
   }
 
   public StudentsConflictsMatrix getConflictsMatrix(){
@@ -60,7 +61,8 @@ public class TestConditions {
         StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
         long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
         int duration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
-        if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration))
+        int[] avoidPriority={};
+        if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration, avoidPriority))
         for (int j=0; j< duration; j++){
           Period per = _dm.getTTStructure().getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           for (int k=0; k< _testToRun.size(); k++){

@@ -13,9 +13,11 @@ import dInternal.dTimeTable.Period;
 import dInternal.dData.SetOfActivities;
 import dInternal.dData.Activity;
 import dInternal.dData.Type;
+//import dInternal.dUtil.DXValue;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import dResources.DConst;
 
 public class TestStudentsConditions implements Condition {
@@ -36,6 +38,8 @@ public class TestStudentsConditions implements Condition {
                  DConst.TOKENSEPARATOR+section.getID();
     int number=0;
     if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1){
+      int nbConf;
+      ConflictsAttach confVal= new ConflictsAttach();
       for (int i=0; i< period.getEventsInPeriod().size(); i++){
         StringTokenizer event2 = new StringTokenizer(period.getEventsInPeriod()
         .getResourceAt(i).getID(),DConst.TOKENSEPARATOR);
@@ -44,20 +48,28 @@ public class TestStudentsConditions implements Condition {
         section = ((Type)type.getAttach()).getSetOfSections().getResource(Long.parseLong(event2.nextToken()));
         String key2=  activity.getID()+DConst.TOKENSEPARATOR+type.getID()+
                  DConst.TOKENSEPARATOR+section.getID();
-        number+= _matrix.getNumberOfCOnflicts(key1, key2);
-
+        //String key2 = period.getEventsInPeriod().getResourceAt(i).getID();
+        nbConf= _matrix.getNumberOfCOnflicts(key1, key2);
+        number+= nbConf;
+        if (nbConf!=0)
+          confVal.addConflict(key2,nbConf,0,new Vector());
       }// end for (int i=0; i< period.getEventsInPeriod().size(); i++)
+
       switch(operation){
           case 0:
             break;
-          case 1:period.getEventsInPeriod().addResource(new Resource(eventKey,null),1);
+          case 1:
+            period.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
             period.addNbStudConflict(number);
             break;
           case -1:period.getEventsInPeriod().removeResource(eventKey);
             period.removeNbStudConflict(number);
+            for(int i=0; i< period.getEventsInPeriod().size(); i++)
+              ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
+               getAttach()).removeConflict(eventKey,0);
             break;
         }
-
+        return 0;
     }// end if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1)
     return -1;
   }

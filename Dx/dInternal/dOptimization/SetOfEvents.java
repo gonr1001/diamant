@@ -34,10 +34,10 @@ public class SetOfEvents extends SetOfResources{
    */
   public void build(Resource cycle, SetOfActivities soa, SetOfInstructors soi,
                     SetOfRooms sor){
-    long instructorKey=-1, roomKey=-1;
     String unityKey;
     for (int i=0; i< soa.size(); i++){
       Resource activity= soa.getResourceAt(i);
+      long instructorKey=-1, roomKey=-1;
       if(((Activity)activity.getAttach()).getActivityVisibility()){
       for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
         Resource type = ((Activity)activity.getAttach()).getSetOfTypes().getResourceAt(j);

@@ -349,6 +349,19 @@ public class TTStructure {
    }
   }
 
-
+  /**
+   *
+   * @param ID
+   * @return
+   */
+  public int findIndexInWeekTable(long key){
+    Resource day = this.getCurrentCycle().getSetOfDays().getResource(key);
+    if(day!=null){
+      for (int i=0; i< _weekTable.length; i++)
+        if(day.getID().equalsIgnoreCase(_weekTable[i]))
+          return i;
+    }
+    return -1;
+  }
 
 }

@@ -23,6 +23,7 @@ public class Period extends DXObject {
   static final String _TAGITEM2="priority";
   private SetOfResources _eventsInPeriod;
 
+
   /**
    * Constructor
    * */
@@ -86,11 +87,27 @@ public class Period extends DXObject {
   }
 
   /**
+   * add number of rooms conflicts
+   * @param int the number of rooms conflicts
+   * */
+  public void addNbRoomsConflict(int conflict){
+     nbRoomConflict+=conflict;
+  }
+
+  /**
    * remove number of students conflicts
    * @param int the number of students conflicts
    * */
   public void removeNbStudConflict(int conflict){
      nbStudConflict-=conflict;
+  }
+
+  /**
+   * remove number of rooms conflicts
+   * @param int the number of rooms conflicts
+   * */
+  public void removeNbRoomsConflict(int conflict){
+     nbRoomConflict-=conflict;
   }
 
   /**
@@ -189,6 +206,7 @@ public class Period extends DXObject {
   public SetOfResources getEventsInPeriod(){
     return _eventsInPeriod;
   }
+
 
   /**
    *
