@@ -147,10 +147,10 @@ public class TestConditions {
       if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
           duration, _avoidPriority)){
         for (int j=0; j< duration; j++){
-        	System.out.println("**first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
+        	//System.out.println("**first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
-          if (per == null)
-          	System.out.println(event.getID());
+          //if (per == null)
+          	//System.out.println(event.getID());
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
             numberOfConflicts+=cond.executeTest(per,event.getID(),operation);

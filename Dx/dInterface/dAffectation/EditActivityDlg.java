@@ -136,7 +136,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    */
    public void stateChanged( ChangeEvent ce) {
     _currentActivityIndex = ((JTabbedPane)ce.getSource()).getSelectedIndex();
-    System.out.println("_currentActivityIndex: "+_currentActivityIndex);//debug
+    //System.out.println("_currentActivityIndex: "+_currentActivityIndex);//debug
     //_tabbedPane.setComponentAt( _currentActivityIndex, ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex)));//createUnityPanel(_currentActivityIndex) );
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
   }

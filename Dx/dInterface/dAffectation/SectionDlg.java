@@ -440,7 +440,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     }
     for(int i = 0; i < _numberOfSections; i++){
       _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, i+1, _sortIndex);
-      System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
+      //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
       if (!forUpdate){
         _assignedLists[i] = new JList(_assignedVectors[i]);
         _assignedLists[i].setFont(DConst.JLISTS_FONT);
