@@ -53,11 +53,11 @@ public class EventsDlg extends JDialog implements ActionListener{
   private Unity _currUnity;
   private Vector _leftVector, _centerVector, _rightVector;
 
-  private static Color LABEL_COLOR = DConst.COLOR_STUD;
-  private static String EVENTS_DLG_TITLE = DConst.EVENTS_DLG_TITLE;
-  private static String EVENTS_FIXED = DConst.EVENTS_FIXED;
-  private static String EVENTS_PLACED = DConst.EVENTS_PLACED;
-  private static String EVENTS_NOT_PLACED = DConst.EVENTS_NOT_PLACED;
+  //private static Color LABEL_COLOR = DConst.COLOR_STUD;
+  //private static String EVENTS_DLG_TITLE = DConst.EVENTS_DLG_TITLE;
+  //private static String EVENTS_FIXED = DConst.EVENTS_FIXED;
+  //private static String EVENTS_PLACED = DConst.EVENTS_PLACED;
+  //private static String EVENTS_NOT_PLACED = DConst.EVENTS_NOT_PLACED;
 
 
   /**
@@ -65,7 +65,7 @@ public class EventsDlg extends JDialog implements ActionListener{
    * @param dApplic The application
    */
   public EventsDlg(DApplication dApplic) {
-    super(dApplic.getJFrame(), EVENTS_DLG_TITLE, true);
+    super(dApplic.getJFrame(), DConst.EVENTS_DLG_TITLE, true);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
@@ -103,9 +103,9 @@ public class EventsDlg extends JDialog implements ActionListener{
     Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.5), (int)_dialogDim.getHeight()-buttonsPanelHeight);
       _centerList = new JList(_centerVector);
       _centerList.addMouseListener(mouseListenerLists);
-      JLabel titleLabel = new JLabel(EVENTS_PLACED + " ");
+      JLabel titleLabel = new JLabel(DConst.EVENTS_PLACED + " ");
       _centerLabel = new JLabel(String.valueOf(_centerVector.size()));
-      _centerLabel.setForeground(LABEL_COLOR);
+      _centerLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
       //The listContainerPanel
       JPanel listPanel = DXTools.listPanel(_centerList, (int)panelDim.getWidth()-140, (int)panelDim.getHeight()-25);
       JPanel listContainerPanel = new JPanel();
@@ -133,9 +133,9 @@ public class EventsDlg extends JDialog implements ActionListener{
     Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.24), (int)_dialogDim.getHeight()-buttonsPanelHeight);
     _leftList = new JList(_leftVector);
     _leftList.addMouseListener(mouseListenerLists);
-    JLabel titleLabel = new JLabel(EVENTS_FIXED + " ");
+    JLabel titleLabel = new JLabel(DConst.EVENTS_FIXED + " ");
     _leftLabel = new JLabel(String.valueOf(_leftVector.size()));
-    _leftLabel.setForeground(LABEL_COLOR);
+    _leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
     JPanel listPanel = DXTools.listPanel(_leftList, (int)panelDim.getWidth(), (int)panelDim.getHeight()-25);
     //the _leftPanel
     _leftPanel = new JPanel();
@@ -157,9 +157,9 @@ public class EventsDlg extends JDialog implements ActionListener{
     Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.24), (int)_dialogDim.getHeight()-buttonsPanelHeight);
     _rightList = new JList(_rightVector);
     _rightList.addMouseListener(mouseListenerLists);
-    JLabel titleLabel = new JLabel(EVENTS_NOT_PLACED + " ");
+    JLabel titleLabel = new JLabel(DConst.EVENTS_NOT_PLACED + " ");
     _rightLabel = new JLabel(String.valueOf(_rightVector.size()));
-    _rightLabel.setForeground(LABEL_COLOR);
+    _rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
     JPanel listPanel = DXTools.listPanel(_rightList, (int)panelDim.getWidth(), (int)panelDim.getHeight()-25);
     //the _rightPanel
     _rightPanel = new JPanel();

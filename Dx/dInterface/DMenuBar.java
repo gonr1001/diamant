@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.67 $  $Date: 2003-09-11 19:25:39 $
+ * Title: DMenuBar $Revision: 1.68 $  $Date: 2003-09-12 10:32:10 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.67 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.68 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -60,8 +60,8 @@ public class DMenuBar extends JMenuBar{
   private final int _nPT = DConst.NPT11;
 
   //the menus
-  private JMenu _file, _assign, _optimisation, _preferences, _help,  _dev;
-  private boolean _boolFile, _boolAssign, _boolOptimization, _boolPreferences, _boolHelp, _boolDev;
+  private JMenu _file, _assign, _optimisation, _modification, _preferences, _report, _help,  _dev;
+  private boolean _boolFile, _boolAssign, _boolOptimization, _boolModification, _boolReport, _boolPreferences, _boolHelp, _boolDev;
   // the file menus containing sub menus
   private JMenu _newTTable, _newTTStruc;
   private boolean _boolNewTTable, _boolNewTTStruc;
@@ -85,6 +85,9 @@ public class DMenuBar extends JMenuBar{
   // the optimisation menus
   private CmdMenu _mOpti,_mInit;
   private boolean _boolMOpti, _boolMInit;
+  // the optimisation menus
+  private CmdMenu _mEventsModif;
+  private boolean _boolMEventsModif;
   // the preferences menus
   private CmdMenu _lookAndFeel;
   private boolean _boolLookAndFeel;
@@ -106,6 +109,8 @@ public class DMenuBar extends JMenuBar{
     createFileMenu();
     createAssignMenu();
     createOptimisationMenu();
+    createModificationMenu();
+    createReportMenu();
     createPreferencesMenu();
     createHelpMenu();
     if (_DEVELOPMENT)
@@ -244,7 +249,7 @@ public class DMenuBar extends JMenuBar{
     _roomsAvailability.addActionListener(_dApplic);
     _assign.add(_roomsAvailability);
 
-    _events = new CmdMenu("Evenements");
+    _events = new CmdMenu(DConst.EVENTS_ASSIGN_M);
     _events.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _events.setCommand(new EventsCmd());
     _events.addActionListener(_dApplic);
@@ -252,7 +257,7 @@ public class DMenuBar extends JMenuBar{
 
     _assign.addSeparator();
 
-    CmdMenu mConfl = new CmdMenu("Liste de Conflits");
+    CmdMenu mConfl = new CmdMenu(DConst.MANUAL_ASSIGN_M);
     mConfl.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mConfl.addActionListener(_dApplic);
@@ -262,23 +267,47 @@ public class DMenuBar extends JMenuBar{
 
   private void createOptimisationMenu() {
     //Build the menu Optimisation.
-    _optimisation = new JMenu("Optimisation");//DConst.PREF);
+    _optimisation = new JMenu(DConst.OPTIMIZATION);
     _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _optimisation );
     // Items in menu Optimisation.
-    //Initialization
-    _mInit = new CmdMenu(DConst.INITAFFECT);//, this);
+    _mInit = new CmdMenu(DConst.INITIAL_AFFECT_M);
     _mInit.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mInit.setCommand(new InitialAffectCmd(_dApplic));//
+    _mInit.setCommand(new InitialAffectCmd(_dApplic));
     _mInit.addActionListener(_dApplic);
     _optimisation.add(_mInit);
-    //
-    _mOpti = new CmdMenu(DConst.PLAF_M);//, this);
+
+    /*_mOpti = new CmdMenu(DConst.PLAF_M);
     _mOpti.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mOpti.setCommand(new PLAFCmd(_dApplic));
     _mOpti.addActionListener(_dApplic);
     _optimisation.add(_mOpti);
+    */
   }//end createOptimisationMenu
+
+
+  private void createModificationMenu() {
+    //Build the menu Modification.
+    _modification = new JMenu(DConst.MODIFICATION);
+    _modification.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    this.add( _modification );
+
+    // Items in menu Modification.
+    _mEventsModif = new CmdMenu(DConst.EVENTS_MODIF_M);
+    _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    _mEventsModif.addActionListener(_dApplic);
+    _modification.add(_mEventsModif);
+  }//end createModificationMenu
+
+  private void createReportMenu() {
+  //Build the menu Report.
+  _report = new JMenu(DConst.REPORT);
+  _report.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+  this.add( _report );
+
+  // Items in menu Report.
+  }//end createReportMenu
 
   private void createPreferencesMenu(){
     //Build the menu PREFERENCES.
@@ -371,10 +400,16 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    //the menu otimization
+    //the menu optimization
     _boolOptimization = false;
     _boolMOpti= true;
 
+    //the menu modification
+    _boolModification = false;
+    _boolMEventsModif = true;
+
+    //the menu report
+    _boolReport = false;
     //the menu preferences
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
@@ -420,6 +455,13 @@ public class DMenuBar extends JMenuBar{
     //the menu otimization
     _boolOptimization = true;
     _boolMOpti= true;
+
+    //the menu modification
+    _boolModification = true;
+    _boolMEventsModif = true;
+
+    //the report menu
+    _boolReport = true;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -467,6 +509,13 @@ public class DMenuBar extends JMenuBar{
     _boolOptimization = false;
     _boolMOpti= true;
 
+    //the menu modification
+    _boolModification = false;
+    _boolMEventsModif = true;
+
+    //the report menu
+    _boolReport = false;
+
     //the menu preferences
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
@@ -512,6 +561,13 @@ public class DMenuBar extends JMenuBar{
     //the menu otimization
     _boolOptimization = false;
     _boolMOpti= true;
+
+    //the menu modification
+    _boolModification = false;
+    _boolMEventsModif = true;
+
+    //the report menu
+    _boolReport = false;
 
     //the menu preferences
     // always_boolPreferences= true;
@@ -559,6 +615,13 @@ public class DMenuBar extends JMenuBar{
     _boolOptimization = false;
     _boolMOpti= true;
 
+    //the menu modification
+    _boolModification = false;
+    _boolMEventsModif = true;
+
+    //the report menu
+    _boolReport = false;
+
     //the menu preferences
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
@@ -602,6 +665,13 @@ public class DMenuBar extends JMenuBar{
     _boolOptimization = true;
     _boolMOpti= true;
 
+    //the menu modification
+    _boolModification = true;
+    _boolMEventsModif = true;
+
+    //the report menu
+    _boolReport = true;
+
     //the menu preferences
     _boolPreferences= true;
     _boolLookAndFeel =true;
@@ -633,6 +703,14 @@ public class DMenuBar extends JMenuBar{
       setOptimisationMenu();
     else
       _optimisation.setEnabled(_boolOptimization);
+    if (_boolModification)
+      setModificationMenu();
+    else
+      _modification.setEnabled(_boolModification);
+    if (_boolReport)
+      setReportMenu();
+    else
+      _report.setEnabled(_boolReport);
     if (_boolPreferences)
       setPreferencesMenu();
     else
@@ -684,7 +762,14 @@ public class DMenuBar extends JMenuBar{
 
   private void setOptimisationMenu() {
     _optimisation.setEnabled(_boolOptimization);
-    _mOpti.setEnabled(_boolMOpti);
+    //_mOpti.setEnabled(_boolMOpti);
+  }
+  private void setModificationMenu() {
+    _modification.setEnabled(_boolModification);
+    _mEventsModif.setEnabled(_boolMEventsModif);
+  }
+  private void setReportMenu() {
+    _report.setEnabled(_boolReport);
   }
   private void setPreferencesMenu() {
     _preferences.setEnabled(_boolPreferences);

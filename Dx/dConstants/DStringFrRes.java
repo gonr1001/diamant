@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.48 $  $Date: 2003-09-11 19:25:39 $
+ * Title: DStringFrRes $Revision: 1.49 $  $Date: 2003-09-12 10:32:10 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.48 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.49 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -109,23 +109,42 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "saveTTS", "Enregistrer grille" },
      { "saveAsTTS", "Enregistrer grille sous" },
 
-
+    //Assign
     { "assign", "Affectation" },
     { "instAssignM", "Enseignants" },
     { "instAssignTD", "Disponibilité enseignants"},
     {"ActiAssignM", "Activités"},
     {"GroupAssignM", "Groupes"},
     {"LocauxAssignM", "Locaux"},
-    { "instAssignD", "To be defined" },
+    { "instAssignD", "To be defined"},
+    {"EventsAssignM", "Évenements"},
+    {"ManualAssignM","Affectation manuelle"},
 
-    //Optimisation
-    { "init", "Affectation Initiale"},
+    //Optimization
+    { "OptimizationM", "Optimisation"},
+    {"initialAffectM", "Affectation Initiale"},
+
+    //Modification
+    {"ModificationM","Modification"},
+    {"EventsModifM","Modification évenements"},
+
+    //Report
+    {"ReportM","Rapports"},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+    {"",""},
+
+    //Preferences
     { "pref", "Preferences"},
     { "plafM", "Options L&F"},
     { "plafTD", "Options L&F"},
     { "plafD", "Choisisez un L&F"},
 
-
+    //Help
     { "help", "Aide"},
     { "aboutM", "A propos de "},
     { "aboutTD", "A propos de "},
@@ -221,11 +240,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"EventsFixed","Figés"},
     {"EventsPlaced","Placés"},
     {"EventsNotPlaced","Non placés"},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
+
 
     //ToolBar
     {"tBDay", "Jour"},

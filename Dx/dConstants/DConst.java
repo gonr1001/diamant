@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.48 $  $Date: 2003-09-11 23:40:44 $
+ * Title: DConst $Revision: 1.49 $  $Date: 2003-09-12 10:32:10 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.48 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.49 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -74,6 +74,7 @@ public class DConst {
   public final static Color COLOR_ROOM = Color.blue; // Rooms conflicts color
   public final static Color COLOR_INST = Color.red;  // Instructors conflicts color
   public final static Color COLOR_STUD = Color.magenta; // Students conflicts color
+  public final static Color COLOR_QUANTITY_DLGS = Color.blue; // Students conflicts color
   //DDocument
   public final static String V_DATE = res.getString("vDate");//13 mai 2003
   public final static String BLOCS = "BLOCS";//pas trouve dans DStringFrRes
@@ -107,10 +108,18 @@ public class DConst {
   public final static String ASSIGN = res.getString("assign");//Affectation
   public final static String INST_ASSIGN_M = res.getString("instAssignM");//Enseignants
   public final static String ACTI_ASSIGN_M = res.getString("ActiAssignM");//Activités
-  public final static String GROUP_ASSIGN_M = res.getString("GroupAssignM");//Activités
-  public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Activités
+  public final static String GROUP_ASSIGN_M = res.getString("GroupAssignM");//Groupes
+  public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Locaux
+  public final static String EVENTS_ASSIGN_M= res.getString("EventsAssignM");//Évenements
+  public final static String MANUAL_ASSIGN_M= res.getString("ManualAssignM");//Évenements
   //Optimization menu
-  public final static String INITAFFECT = res.getString("init");//Affectation
+  public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
+  public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale
+  //Modification menu
+  public final static String MODIFICATION = res.getString("ModificationM");//Modification
+  public final static String EVENTS_MODIF_M = res.getString("EventsModifM");//Modification évenements
+  //Report menu
+  public final static String REPORT = res.getString("ReportM");//Rapports
   //Preferences menu
   public final static String PREF = res.getString("pref");//Preferences
   public final static String PLAF_M = res.getString("plafM");//ptions L&F
@@ -160,10 +169,13 @@ public class DConst {
   public final static String GROUP = res.getString("Group");//Groupe
   public final static String NUMBER_OF_ELEMENTS = res.getString("NumberOfElements");//Nombre d'éléments
   public final static String TYPE = res.getString("Type");//Type
+  //EventsDlg
   public final static String EVENTS_DLG_TITLE = res.getString("EventsDlgTitle");//Évenements
   public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés
   public final static String EVENTS_PLACED = res.getString("EventsPlaced");//Placés
   public final static String EVENTS_NOT_PLACED = res.getString("EventsNotPlaced");//Non placés
+
+
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F
