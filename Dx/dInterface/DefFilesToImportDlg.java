@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.3 $  $Date: 2003-05-13 10:48:15 $
+ * Title: DefFileToImportDlg $Revision: 1.4 $  $Date: 2003-05-14 10:54:54 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -24,6 +24,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -37,6 +40,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import com.iLib.gIO.ByteOutputFile;
+import com.iLib.gException.IOFileException;
+import com.iLib.gDialog.FatalProblemDlg;
 import dInterface.DApplication;
 
 import dResources.DConst;
@@ -52,10 +58,7 @@ import dResources.DFileFilter;
 public class DefFilesToImportDlg extends JDialog
                                  implements ActionListener{
 
-  final static int CANCEL = 0;
-  final static int OK = 1;
-
-
+  private final String CR_LF = "\r\n";
 
   private JTextField _tfActivities;
   private JButton _butActivities;
@@ -66,8 +69,6 @@ public class DefFilesToImportDlg extends JDialog
   private JTextField _tfRooms;
   private JButton _butRooms;
 
-  private String path ="." ;
-  private int state;
 
   /**
     * the constructor will displays the dialog
@@ -77,20 +78,21 @@ public class DefFilesToImportDlg extends JDialog
     * @since           JDK1.3
     */
    DApplication _dApplic;
+
    public DefFilesToImportDlg(DApplication dApplic, String str) {
      super(dApplic.getJFrame(),str);
      _dApplic = dApplic;
      initDlg();
    } // end constructor
 
-
-   public String showDlg(){
+/*
+   public int showDlg(){
      pack();
      setLocationRelativeTo(_dApplic.getJFrame());
      setVisible(true);
-     return new String();
+     return 1;//new String();
   }
-
+*/
   private void initDlg() {
     // center Panel
     JPanel centerPanel = new JPanel(new GridLayout(4, 0));
@@ -155,6 +157,10 @@ public class DefFilesToImportDlg extends JDialog
     butCancel.addActionListener( this );
     butPanel.add(butCancel, null);
     getContentPane().add(butPanel, BorderLayout.SOUTH);
+
+    pack();
+    setLocationRelativeTo(_dApplic.getJFrame());
+    setVisible(true);
   } // end initDlg
 
 
@@ -163,7 +169,7 @@ public class DefFilesToImportDlg extends JDialog
    */
   public void actionPerformed(ActionEvent event) {
     String command = event.getActionCommand();
-    if (command.equals(DConst.BUT_OK )) {
+    if (command.equals(DConst.BUT_OK)) {
       if (_tfActivities.getText().length() == 0 ||
          _tfStudents.getText().length() == 0 ||
          _tfInstructors.getText().length() == 0 ||
@@ -173,15 +179,14 @@ public class DefFilesToImportDlg extends JDialog
                      DConst.PROBLEM,
                      JOptionPane.WARNING_MESSAGE);
       else {
-        state = OK;
+        saveInFile();
         dispose();
       } //end (_tfActivities.getText().length() == 0 || ...
 
     } else if (command.equals(DConst.BUT_CANCEL )) {
-      state = CANCEL;
       dispose();
     } else if (command.equals(DConst.BUT_BROWSE )) { // Browse
-      JFileChooser fc = new JFileChooser(path);
+      JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
       fc.setMultiSelectionEnabled( false );
       fc.setFileFilter( new DFileFilter( new String[] {"sig", "txt"},
           "Data Files (*.sig)" ) );
@@ -198,23 +203,61 @@ public class DefFilesToImportDlg extends JDialog
       message = DConst.DEF_F_D4;
 
     int returnVal = fc.showDialog(this, message);
-
     // If the file chooser exited sucessfully,
     // and a file was selected, continue
     if (returnVal == JFileChooser.APPROVE_OPTION) {
-      if ( event.getSource() == _butActivities )
+      if (event.getSource() == _butActivities)
         _tfActivities.setText(fc.getSelectedFile().getAbsolutePath());
-      else if (event.getSource() == _butStudents )
+        else if (event.getSource() == _butStudents )
         _tfStudents.setText(fc.getSelectedFile().getAbsolutePath());
       else if (event.getSource() == _butInstructors )
         _tfInstructors.setText(fc.getSelectedFile().getAbsolutePath());
       else if (event.getSource() == _butRooms )
         _tfRooms.setText(fc.getSelectedFile().getAbsolutePath());
-
-      path = fc.getSelectedFile().getAbsolutePath();
+      _dApplic.setCurrentDir(fc.getSelectedFile().getPath());
     }
   }
   }
+
+  private void saveInFile(){//DApplication dApplic, String str) {
+    JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());//_projectPath);
+    fc.setFileFilter( new DFileFilter ( new String[] {"dim"},
+                "Diamant file (*.dim)" ) );
+    // Display the file chooser in a dialog
+    int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
+
+    // If the file chooser exited sucessfully,
+    // and a file was selected, continue
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+    // Save the file name
+    String fil = fc.getSelectedFile().getAbsolutePath();
+    if ( !fil.endsWith(".dim") )
+      fil = fil.concat(".dim");
+    saveFile(fil);
+    _dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+    JOptionPane.showMessageDialog(this, "Sauvegardé dans: "+ fil,
+      "Fichier d'importation Auto", JOptionPane.INFORMATION_MESSAGE);
+    }
+  }
+
+  private void saveFile(String str) {
+  try {
+    ByteOutputFile bof = new ByteOutputFile(str);
+    String thefiles = _tfActivities.getText()+ CR_LF;
+    thefiles += _tfStudents.getText()+ CR_LF;
+    thefiles += _tfInstructors.getText()+ CR_LF;
+    thefiles += _tfRooms.getText();
+    bof.writeFile(thefiles.getBytes());
+    bof.close();
+  } catch(IOFileException iofe) {
+     new FatalProblemDlg(_dApplic.getJFrame(),
+              iofe + "\n I was in DefFilesToImportDlg.saveFile");
+              System.out.println(iofe);
+              iofe.printStackTrace();
+              System.exit(31);
+      } // end catch
+
+    }
 } /* end class DefFileToImportDlg */
 
 

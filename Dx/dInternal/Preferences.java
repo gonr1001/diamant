@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.3 $  $Date: 2003-03-06 15:56:55 $
+ * Title: Preferences $Revision: 1.4 $  $Date: 2003-05-14 10:54:54 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -32,6 +32,7 @@ public class Preferences {
 
   public String _lookAndFeel;
   public String _language;
+  public String _defaultDir;
   private String _fullFileName;
   public Preferences(String str) {//throws InputFileException{
     try {
@@ -41,6 +42,7 @@ public class Preferences {
       System.out.println(st.toString());
       _lookAndFeel = st.nextToken();
       _language = st.nextToken();
+      _defaultDir = st.nextToken();
       _fullFileName = str;
       }
     } catch (Exception e) {

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DefFileToImportCmd $Revision: 1.1 $  $Date: 2003-05-12 15:33:28 $
+ * Title: DefFileToImportCmd $Revision: 1.2 $  $Date: 2003-05-14 10:54:54 $
  * Description: DefFileToImportCmd is a class used by menus
  *              to define the files to import
  *
@@ -15,20 +15,24 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 
-import dInterface.Command;
+
+import java.util.ResourceBundle;
 
 import javax.swing.JFrame;
-import java.util.ResourceBundle;
+import javax.swing.JFileChooser;
+
 
 import dAux.DoNothingDlg;
 import dInterface.DApplication;
 
+import dInterface.Command;
 import dResources.DConst;
+import dResources.DFileFilter;
 /**
  *
  * ImportCmd is a class used to call a command
@@ -45,11 +49,7 @@ public class DefFilesToImportCmd implements Command {
 //------------------------------
   public void execute(DApplication dApplic) {
     DefFilesToImportDlg dfti = new DefFilesToImportDlg(dApplic,DConst.DEF_F_TD);
-    String str = dfti.showDlg();
-    saveInFile(str);
   }
-  private void saveInFile(String str) {
 
-  }
 } /* end class DefFileToImportCmd */
 

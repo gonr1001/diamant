@@ -1,6 +1,6 @@
 /**
  *
- * Title: DApplication $Revision: 1.1 $  $Date: 2003-03-11 17:43:21 $
+ * Title: DApplication $Revision: 1.2 $  $Date: 2003-05-14 10:54:54 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -68,6 +68,7 @@ public class DApplication implements ActionListener {
   private JDesktopPane _jDesktopPane;
   private Preferences _preferences;
   private DMediator _mediator;
+  private String _currentDir;
   /**
     * DApplication initialize the data members
     */
@@ -77,9 +78,10 @@ public class DApplication implements ActionListener {
                                    "pref"
                                    + File.separator +
                                    "pref.txt");
+    System.out.println(System.getProperty("user.dir"));
     _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     _mediator = new DMediator(this);
-
+    _currentDir = System.getProperty("user.dir");
     _jFrame = createUI(DConst.APP_NAME + "   " + DConst.V_DATE);
     setLAF(_preferences._lookAndFeel);
 
@@ -149,6 +151,24 @@ public class DApplication implements ActionListener {
     public Preferences getPreferences(){
       return _preferences;
     } // end getPreferences
+
+    public String getCurrentDir(){
+      return _currentDir;
+    } // end getCurrentDir
+
+    public void setCurrentDir(String str){
+       _currentDir = str;
+    } // end setCurrentDir
+
+    public void setCurrentDirFromPath(String path){
+          System.out.println("cd" + path);
+/*
+      _currentDir = path.substring(0,path.lastIndexOf(File.separator));
+      if (_currentDir.endsWith(":"));
+          _currentDir += File.separator;*/
+          _currentDir = path;
+       System.out.println("cd: New" + _currentDir);
+    } // end setCurrentDir
 
     public void setLAF(String str) {
       // Force SwingApp to come up in the System L&F
