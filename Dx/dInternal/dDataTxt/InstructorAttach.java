@@ -115,6 +115,20 @@ public class InstructorAttach extends DXObject {
     return instInfo;
   }
 
+  /**
+  * compare this resource with the specified resource
+  * @param resource the specified resource
+  * @return bolean true if this resource and the specified resource are equals
+  * false if they are not equals
+  * */
+ public boolean isEquals(DXObject inst){
+   InstructorAttach instAttach = (InstructorAttach)inst;
+   if(!_instructorAvailability.equals(instAttach._instructorAvailability))
+     return false;
+   return true;
+ }
+
+
 
 
 }

@@ -26,12 +26,14 @@ import dInternal.dData.SaveData;
 
 public class SaveDataTest extends TestCase {
   String path;
-  Vector _timeTable;
+  Vector _timeTable,_timeTable1;
   public SaveDataTest(String name) {
     super(name);
     path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator;
     LoadData _lData= new LoadData();
     _timeTable = _lData.loadProject(path+"fichier1.dia");
+    LoadData _lData1= new LoadData();
+    _timeTable1 = _lData1.loadProject(path+"fichierTest.dia");
   }
 
   public static Test suite() {
@@ -50,16 +52,31 @@ public class SaveDataTest extends TestCase {
                                  , (SetOfStudents)_timeTable.get(5),path+"fichier1Test.dia");
     LoadData _lData= new LoadData();
     Vector _timeTable1 = _lData.loadProject(path+"fichier1Test.dia");
+
     assertEquals("test_saveTimeTable : assertEquals: ", true, ((SetOfRooms)_timeTable1.get(3)).isEquals((SetOfRooms)_timeTable.get(3)));
   }
 
   /**
    * test that check that the saved file is the same as the loaded file
    * */
-  public void test1_loadTimeTable(){
-    LoadData _lData= new LoadData();
-    Vector _timeTable1 = _lData.loadProject(path+"fichierTest.dia");
-     assertEquals("test_loadTimeTable : assertEquals: ",true, ((SetOfRooms)_timeTable1.get(3)).isEquals((SetOfRooms)_timeTable.get(3)));
+  public void test_loadInstructor(){
+
+    assertEquals("test_loadInstructor : assertEquals: ",true, ((SetOfInstructors)_timeTable1.get(2)).isEquals((SetOfInstructors)_timeTable.get(2)));
+  }
+
+  /**
+  * test that check that the saved file is the same as the loaded file
+  * */
+ public void test_loadRooms(){
+    assertEquals("test_loadRooms : assertEquals : ",true, ((SetOfRooms)_timeTable1.get(3)).isEquals((SetOfRooms)_timeTable.get(3)));
+  }
+
+  /**
+  * test that check that the saved file is the same as the loaded file
+  * */
+ public void test_loadStudent(){
+
+    assertEquals("test_loadStudent : assertEquals: ",true, ((SetOfStudents)_timeTable1.get(5)).isEquals((SetOfStudents)_timeTable.get(5)));
   }
 
 

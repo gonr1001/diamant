@@ -209,6 +209,29 @@ public class StudentAttach extends DXObject{
     return str;
   }
 
+  /**
+  * compare this resource with the specified resource
+  * @param resource the specified resource
+  * @return bolean true if this resource and the specified resource are equals
+  * false if they are not equals
+  * */
+ public boolean isEquals(DXObject stud){
+   StudentAttach studAttach = (StudentAttach)stud;
+   if(_area!=studAttach._area)
+     return false;
+   if(!_auxField.equals(studAttach._auxField))
+     return false;
+   if(_session!=studAttach._session)
+     return false;
+   if(_sex!=studAttach._sex)
+     return false;
+   if(_stage!=studAttach._stage)
+     return false;
+   if(!_courses.isEquals(studAttach._courses))
+     return false;
+   return true;
+ }
+
   /** Course length*/
   private int _COURSELENGTH = 7;
 

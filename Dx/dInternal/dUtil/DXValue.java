@@ -31,6 +31,7 @@ public class DXValue extends DXObject{
     _refNo=0;
     _booleanValue=false;
     _stringValue="";
+    //_objectValue= new Object();
   }
 
   /**
@@ -102,4 +103,25 @@ public class DXValue extends DXObject{
   public Object getObjectValue(){
     return _objectValue;
   }
+  /**
+ * compare this resource with the specified resource
+ * @param resource the specified resource
+ * @return bolean true if this resource and the specified resource are equals
+ * false if they are not equals
+ * */
+public boolean isEquals(DXObject val){
+  DXValue value = (DXValue)val;
+  if(_booleanValue!= value._booleanValue)
+    return false;
+  if(_intValue!= value._intValue)
+    return false;
+  if(_refNo!= value._refNo)
+    return false;
+  if(!_stringValue.equals(value._stringValue))
+    return false;
+  /*if(!this._objectValue.equals(value._objectValue))
+    return false;*/
+  return true;
+ }
+
 }

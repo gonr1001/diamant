@@ -132,4 +132,18 @@ public class Assignment extends DXObject{
     return _roomFixed;
   }
 
+  /**
+* compare this resource with the specified resource
+* @param resource the specified resource
+* @return bolean true if this resource and the specified resource are equals
+* false if they are not equals
+* */
+  public boolean isEquals(DXObject ass){
+    Assignment assmt = (Assignment)ass;
+    if(this._instructorKey!= assmt._instructorKey)
+      return false;
+
+    return true;
+  }
+
 }
