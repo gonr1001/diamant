@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.3 $  $Date: 2003-09-30 17:35:36 $
+ * Title: DetailedTTPanel $Revision: 1.4 $  $Date: 2003-09-30 20:22:55 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -105,7 +105,7 @@ public class DetailedTTPanel extends TTPanel {
     if(lastPeriod.getEndHour(_periodLenght)[1]!=0)
       LASTHOUR++;
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-    MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * UHEIGHT;
+    MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * PERIOD_HEIGHT;
 
     Point point= new Point(0,0);
     point = _jScrollPaneOne.getViewport().getViewPosition();
@@ -125,7 +125,7 @@ public class DetailedTTPanel extends TTPanel {
     if(lastPeriod.getEndHour(_periodLenght)[1]!=0)
       LASTHOUR++;
     //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-    MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * UHEIGHT;
+    MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * PERIOD_HEIGHT;
 
     Point point= new Point(0,0);
     point = _jScrollPaneTwo.getViewport().getViewPosition();
@@ -222,7 +222,7 @@ public class DetailedTTPanel extends TTPanel {
     gridbag.rowHeights = new int [nbPerADay];
     for (int i = 0; i < nbPerADay; i++) {
       gridbag.rowWeights[i] = 1;
-      gridbag.rowHeights[i] = UHEIGHT;
+      gridbag.rowHeights[i] = PERIOD_HEIGHT;
     }
     DetailedPeriodPanel periodPanel = null;
     GridBagConstraints c = null;
@@ -236,7 +236,7 @@ public class DetailedTTPanel extends TTPanel {
           Period period= _dm.getTTStructure().getCurrentCycle().getPeriod(sequence,k+1);
           periodPanel = new DetailedPeriodPanel(count,i,j,k);
           periodPanel.addMouseListener(_mouseListener);
-          periodPanel.createPanel(period,UWIDTH, UHEIGHT);
+          periodPanel.createPanel(period,UWIDTH, PERIOD_HEIGHT);
           count++;
           c = new GridBagConstraints();
           c.fill = GridBagConstraints.BOTH;
@@ -248,7 +248,7 @@ public class DetailedTTPanel extends TTPanel {
             c.insets = new Insets( period.getBeginHour()[1], 0, 0, 0 );
           } else {
             c.gridheight = period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
-            c.insets = new Insets( period.getBeginHour()[1], 0,(UHEIGHT- period.getEndHour(_periodLenght)[1]), 0 );
+            c.insets = new Insets( period.getBeginHour()[1], 0,(PERIOD_HEIGHT- period.getEndHour(_periodLenght)[1]), 0 );
           }
           gridbag.setConstraints(periodPanel, c);
           panel.add(periodPanel, c);

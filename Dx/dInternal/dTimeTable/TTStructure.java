@@ -16,7 +16,7 @@ import org.w3c.dom.*;
 public class TTStructure {
   private Vector _ttsListeners = new Vector();
   private SetOfResources _setOfCycles;
-  //private int _periodLenght=60;
+
   private int _nbOfStCycles=2;
   private int _nbOfStDays=7;
   //private int _currentCycleIndex = 1;
@@ -66,9 +66,7 @@ public class TTStructure {
     return _periodLenght;
   }
 
- // public void setPeriodLenght(int periodL){
-  //   _periodLenght= periodL;
-  //}
+
 
  public SetOfResources getSetOfCycles() {
     return _setOfCycles;

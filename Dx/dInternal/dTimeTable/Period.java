@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 
 public class Period extends DXObject {
 
+  private final int MINUTES = 60;
   private int _nbStudConflict = 0;
   private int _nbInstConflict = 0;
   private int _nbRoomConflict= 0;
@@ -69,8 +70,8 @@ public class Period extends DXObject {
    * */
   public int[] getEndHour(int periodLenght){
     int[] endHour={0,0};
-    endHour[1]= (_beginHour[1]+periodLenght)%60;//
-    endHour[0]=_beginHour[0]+(_beginHour[1]+periodLenght)/60;
+    endHour[1] = (_beginHour[1] + periodLenght) % MINUTES;//
+    endHour[0] = _beginHour[0] + (_beginHour[1] + periodLenght)/MINUTES;
     return endHour;
   }
 
