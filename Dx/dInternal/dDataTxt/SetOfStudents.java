@@ -25,7 +25,8 @@ public class SetOfStudents extends SetOfResources{
   private static final int _ENDSTUDENTNUMBEROFCOURSE=32;
   private String _error="";
   /** Course length*/
-    private int _COURSELENGTH = 7;
+  private int _COURSELENGTH = 7;
+  private int _COURSEGROUPLENGTH = 9;
 
   /**
    * INPUTS: byte[]  dataloaded (information from the student file in byte type)
@@ -59,6 +60,7 @@ public class SetOfStudents extends SetOfResources{
     int line=0;
     int numberOfStudents=0;
     int countStudents=0;
+    int numberOfCources=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
       line++;
@@ -82,8 +84,16 @@ public class SetOfStudents extends SetOfResources{
             "\n" + DConst.STUD_TEXT5;
             return false;
           }
-          if (token.substring(_BEGINSTUDENTNAME, _ENDSTUDENTNAME).trim().length()==0){
+          if (token.trim().length()!=_ENDSTUDENTNUMBEROFCOURSE){
             _error =DConst.STUD_TEXT2+line+  DConst.STUD_TEXT4  +
+            "\n" + DConst.STUD_TEXT5;
+            return false;
+          }
+          try{
+             numberOfCources= (new Integer (token.substring(_ENDSTUDENTNAME,
+                token.length()).trim())).intValue();
+          }catch (NumberFormatException exc){
+            _error = "Wrong number of student courses choices at line: "+ line +  DConst.STUD_TEXT4  +
             "\n" + DConst.STUD_TEXT5;
             return false;
           }
@@ -93,11 +103,34 @@ public class SetOfStudents extends SetOfResources{
         case 2:// student courses choice
           StringTokenizer courses = new StringTokenizer(new String (token) );
           String courseToken;
+          if(courses.countTokens()!= numberOfCources){
+            _error = "Wrong number of student courses choices at line: "+ line +  DConst.STUD_TEXT4  +
+           "\n" + DConst.STUD_TEXT5;
+            return false;
+          }
           while (courses.hasMoreTokens()){
-            if(courses.nextToken().length()<_COURSELENGTH){
+            courseToken=courses.nextToken();
+            if(courseToken.length()<_COURSELENGTH){
               _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
                   "\n" + DConst.STUD_TEXT5;
               return false;
+            }else{
+              if (courseToken.length()!=_COURSELENGTH){
+                if(courseToken.length()<_COURSEGROUPLENGTH){
+                  _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
+                           "\n" + DConst.STUD_TEXT5;
+                  return false;
+                }else{
+                  try{
+                    (new Integer (courseToken.substring(_COURSELENGTH,
+                        _COURSEGROUPLENGTH).trim())).intValue();
+                  }catch (NumberFormatException exc){
+                    _error = DConst.STUD_TEXT3+line+  DConst.STUD_TEXT4 +
+                             "\n" + DConst.STUD_TEXT5;
+                    return false;
+                  }
+                }
+              }
             }
           }//while (courses.hasMoreTokens())
           position = 1;
@@ -106,8 +139,8 @@ public class SetOfStudents extends SetOfResources{
     }// end while (st.hasMoreElements())
 
     if (countStudents!=numberOfStudents){
-      _error = DConst.INST_TEXT1 +
-            "\n" + DConst.INST_TEXT6;
+      _error = DConst.STUD_TEXT6 +
+            "\n" + DConst.STUD_TEXT4;
       return false;
     }
     return true;

@@ -194,7 +194,7 @@ public class StudentAttach extends DXObject{
     for (int i=0; i< _courses.size(); i++){
       str+= _courses.getResourceAt(i).getID();
       choice = (DXValue)_courses.getResourceAt(i).getAttach();
-      if (choice.getIntValue()!=0){
+      if (choice.getIntValue()>0){
         String group= "00"+Integer.toString(choice.getIntValue());
         str+= group.substring(group.length()-2,group.length());
       }
