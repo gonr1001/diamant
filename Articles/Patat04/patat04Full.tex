@@ -177,10 +177,10 @@ nos travaux. Ceci est présenté dans les sections \ref{sec:data} et
 
 Une fois l'architecture définie, nous avons crée une instance afin
 de l'implanter dans un système de production d'horaires à
-l'Université de Sherbrooke, en utilisant des technologies
-existantes. Ainsi nous pouvons mettre en évidence que les
+l'Université de Sherbrooke. Nous avons fait un survol de
+technologies afin de faire les bons choix respectant encore les
 objectifs de ouverture et extensibilité ont été atteints. Ceci est
-présenté dans la section \ref{sec:tictac}.
+présenté dans les sections \ref{sec:tech} et \ref{sec:tictac}.
 
 Nous finissons par un bilan et des conclusions à la section
 \ref{sec:conc}.
@@ -192,23 +192,23 @@ Nous finissons par un bilan et des conclusions à la section
 
 Tout d'abord, nous définissons, le processus de production
 d'horaires comme un processus qui démarre lorsqu'on commence à la
-saisie de données pour la période de validité de l'horaire $p$.
-Cette période $p$ est un semestre, un  trimestre, ou une
+saisie de données pour la période de validité de l'horaire $P$.
+Cette période $P$ est un semestre, un  trimestre, ou une
 année\footnote{Dans l'Université de Sherbrooke on parle de
 trimestre, mais en réalité il comporte seize semaines (presque
-quatre mois).}. Le processus fini lorsque toutes le personnes
-concernés reçoivent l'horaire sur un support papier ou sur le Web,
-voir figure \ref{fig:fOne} et que la période de validité de
-l'horaire touche à sa fin. Les données à saisir sont multiples,
-par exemple les cours qui vont avoir lieu dans la période $p$; le
-format du cours (3h, ou 2+1h); les enseignants possibles ou
-assignées à certains cours; les locaux possibles ou assignées; la
-disponibilité des enseignants et des locaux et autres. Signalons
-qu'il existe des institutions où les étudiants font un pré-choix
-et d'autres où les horaires sont fait sans pré-choix. Le pre-choix
-des étudiants fait partie des données à saisir, s'il n'y a pas de
-pré-choix, il faut indiquer le nombre d'étudiants à admettre pour
-chaque cours.
+quatre mois), donc le système doit s'adapter à tout periode $P$.}.
+Le processus fini lorsque toutes le personnes concernés reçoivent
+l'horaire sur un support papier ou sur le Web, voir figure
+\ref{fig:fOne} et que la période de validité de l'horaire touche à
+sa fin. Les données à saisir sont multiples, par exemple les cours
+qui vont avoir lieu dans la période $P$; le format du cours (3h,
+ou 2h+1h); les enseignants possibles ou assignées à certains
+cours; les locaux possibles ou assignées; la disponibilité des
+enseignants et des locaux, etc.. Signalons qu'il existe des
+institutions où les étudiants font un pré-choix et d'autres où les
+horaires sont fait sans pré-choix. Le pre-choix des étudiants fait
+partie des données à saisir, s'il n'y a pas de pré-choix, il faut
+indiquer le nombre d'étudiants à admettre pour chaque cours.
 
 
 \begin{figure}[htb] \begin{center}
@@ -234,17 +234,21 @@ chaque cours.
 \end{figure}
 
 La figure \ref{fig:fOne} est une vue abstraite de la production
-d'horaires, le système de production inclue le logiciel de
+d'horaires, le système de production inclue un logiciel de
 construction d'horaires.
+
+
 
 \begin{description}
 \item[Système de production d'horaires] Il est composé de
 plusieurs logiciels, ou modules, qui fonctionnent de manière
-autonome, mais coordonnée.
+autonome, mais coordonnée. Il nous apparaît clair que  le système
+doit avoir deux composantes principales~: une base de données et
+le logiciel de construction d'horaires.
 
 \item[Données] représentent des données nécessaires à la
-production d'horaires. Nous allons sauvegarder tous les données
-nécessaires dans une base de données. Dans le schéma il n'est pas
+production d'horaires. Nous allons sauvegarder toutes les données
+nécessaires dans une base de données. Dans la figure, il n'est pas
 indiqué que ces données peuvent être manipulés par des modules du
 système de production d'horaires. Par exemple, le module de saisie
 de pre-choix, va sauvegarder les cours suivis par un étudiant. Le
@@ -253,17 +257,16 @@ base et lorsque la construction sera faite les nouvelles données
 obtenues seront remises dans la base.
 
 
-\item[Papier ou Web] Il s'agit de la sortie du système. Ces
-sorties peuvent être des fichiers produits sur papier ou des
-données affichés sur une page Web, dans le deux cas les données
-sources viendront de la base de données.
+\item[Papier ou Web] Il s'agit de la sortie du système une fois
+que l'horaire est construit. Ces sorties peuvent être des
+fichiers, qui seront imprimés sur papier ou des données qui seront
+affichés sur une page Web, dans le deux cas les données sources se
+trouvent dans  la base de données.
 
 \end{description}
 
 
-Il nous apparaît clair que  le système doit avoir deux composantes
-principales, une base de données et le système de construction
-d'horaires.
+
 
 \subsection{La préparation des données}
 La figure \ref{fig:fTwo} montre l'évolution des données dans la
@@ -530,7 +533,7 @@ système de production d'horaires.}\label{fig:fFour}
 \end{figure}
 
 
-\section{Technologies possibles}
+\section{Technologies possibles}\label{sec:tech}
 
 Pour l'implémentation de l'architecture, il faut en premier lieu,
 trouver quels sont les éléments technologiques nécessaires. Nous
