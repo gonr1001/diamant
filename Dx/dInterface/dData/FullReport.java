@@ -52,29 +52,46 @@ public class FullReport extends ViewReport implements ActionListener {
   public FullReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
     String [] strArray ={DConst.BUT_OPTIONS};
-    //disableButtons(_buttonsPanel, strArray);
-    _vec = fullVector();
-    int [] a= {1,2,3,4,5,6,7,8,9};
+    _allOptionsVec = buildAllOptionsVector();
+    Vector options = getOptions(_allOptionsVec);
+    Vector rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
+
+    /*
+    */
+
+
+    int [] a= {1,2,3,4,5,6,7,8,9,10};
     _jTextArea.setText((_parentDlg.getStandardReportData()).getActivitiesReport(0,a));
   }
 
-  private Vector fullVector() {
+/*
+  * The option must be sorted by alphabetical order in the field String (second param)
+  * */
+  private Vector buildAllOptionsVector() {
     Vector v = new Vector();
-      /*  {
-          {DConst.R_ACTIVITY_NAME, DConst.R_ACTIVITY_NAME_L},
-          {DConst.R_TYPE_NAME, DConst.R_TYPE_NAME_L},
-          {DConst.R_SECTION_NAME, DConst.R_SECTION_NAME_L},
-          {DConst.R_UNITY_NAME, DConst.R_UNITY_NAME_L},
-          {DConst.R_DURATION, DConst.R_DURATION_L},
-          {DConst.R_DAY_NUMBER, DConst.R_DAY_NUMBER_L},
-          {DConst.R_DAY_NAME, DConst.R_DAY_NAME_L},
-          {DConst.R_ACTIVITY_BEGIN_HOUR, DConst.R_ACTIVITY_BEGIN_HOUR_L},
-          {DConst.R_ACTIVITY_END_HOUR, DConst.R_ACTIVITY_END_HOUR_L},
-          {DConst.R_INSTRUCTOR_NAME, DConst.R_INSTRUCTOR_NAME_L},
-          {DConst.R_ROOM_NAME, DConst.R_ROOM_NAME_L}
-        };*/
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_TYPE_NAME_L), DConst.R_TYPE_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_SECTION_NAME_L), DConst.R_SECTION_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_DURATION_L), DConst.R_DURATION));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_BEGIN_HOUR_L), DConst.R_ACTIVITY_BEGIN_HOUR));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_END_HOUR_L), DConst.R_ACTIVITY_END_HOUR));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_INSTRUCTOR_NAME_L), DConst.R_INSTRUCTOR_NAME));
+    v.add(new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME));
+
     return v;
   }
+
+  private Vector getOptions(Vector opt) {
+  Vector v = new Vector();
+  for (int i=0; i< opt.size(); i++)
+    v.add(((FieldRecord) opt.get(i))._str);
+
+  return v;
+  }
+
   public void setImportReport(JTextArea jta){
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport d'importation");

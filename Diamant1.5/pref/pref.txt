@@ -3,5 +3,7 @@ French
 .\pref\StandardTTC.xml
 .\pref\StandardTTE.xml
 .\pref\pref.txt
-й…и»ај«злЋпѕ‘фўщ-',;() к	.
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
+й…и»ај«злЋпѕ‘фўщ-'() к
+selectedOptionsInFullReport;Jour(Nu.);Jour ;Nom;Type;Section;Unitй;Dйbut;Durйe;Local;Instructor;
+selectedOptionsInConflictReport;

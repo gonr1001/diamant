@@ -54,7 +54,7 @@ public class ViewReport  extends JPanel implements ActionListener {
   DApplication _dApplic;
   JTextArea _jTextArea;
   JPanel _buttonsPanel;
-  Vector _vec;
+  Vector _allOptionsVec;
 
   protected class FieldRecord {
    int _n;
@@ -68,7 +68,7 @@ public class ViewReport  extends JPanel implements ActionListener {
     //super(new BorderLayout());
     _parentDlg = parentDlg;
     _dApplic = dApplic;
-    _vec = new Vector();
+    _allOptionsVec = new Vector();
     _jTextArea = new JTextArea();
     this.setLayout(new BorderLayout());
     //setImportReport(jta);
