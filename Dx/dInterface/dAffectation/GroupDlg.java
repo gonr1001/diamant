@@ -10,6 +10,7 @@ package dInterface.dAffectation;
  */
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ import java.awt.event.MouseListener;
 import java.awt.Font;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -51,29 +53,31 @@ public class GroupDlg extends JDialog implements ActionListener{
   private Activity _act;
   private DApplication _dApplic = null;
   private Dimension dialogSize = new Dimension(500,500);
-  private int _numberOfSections;
-  private JButton _ok, _close;
+  private int _numberOfSections, _currentAssignedGroup = -1;
+  private JButton _apply, _cancel, _ok;//, _close;
   private JComboBox _actCombo, _typeCombo;
-  private JList _notAssignedList;
+  private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _buttonsPanel, _insidePanel, _centerPanel, _notAssignedPanel, _topPanel;
   private JScrollPane _scrollPane;
   private JTextField _numberbOfElements;
+  private Object [] _currentStudents = new Object[0];
   private Section _section;
   private SetOfActivities _activities;
   private SetOfStudents _students;
   private String _actID, _typeID;
   private Type _type;
-  private Vector _actVector, _notAssignedVector, _typeVector;
+  private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[];
 
 
   private static String ACT_STUD_NOT_ASSIGNED = "Étudiants non assignés";
   private static String ACT_STUD_ASSIGNED = "Étudiants assignés";
   private static String ACTIVITY = "Activité";
   private static String GROUP_DLG_TITLE = "Group Dlg";
-  private static String OK = "OK";
-  private static String CLOSE = DConst.CLOSE;
+  private static String APPLY = "Appliquer";
+  private static String CANCEL = "Cancel";
   private static String GROUP = "Group ";
   private static String NUMBER_OF_ELEMENTS = "Nombre d'éléments";
+  private static String OK = "OK";
   private static String TO_LEFT = DConst.TO_LEFT;
   private static String TO_RIGHT = DConst.TO_RIGHT;
   private static String TYPE = "Type";
@@ -160,8 +164,10 @@ public class GroupDlg extends JDialog implements ActionListener{
     //the buttons _toLeft and _toRight
     JButton _toRight = new JButton(TO_RIGHT);
     _toRight.setSize(new Dimension(30,35));
+    _toRight.addActionListener(this);
     JButton _toLeft = new JButton(TO_LEFT);
     _toLeft.setSize(new Dimension(30,35));
+    _toLeft.addActionListener(this);
     _arrowsPanel = new JPanel(new BorderLayout());
     _arrowsPanel.setSize(new Dimension(50,200));
     _arrowsPanel.add(_toRight, BorderLayout.NORTH);
@@ -173,6 +179,8 @@ public class GroupDlg extends JDialog implements ActionListener{
    * Set _assignedPanel
    */
   private void setAssignedPanel(){
+    _assignedVectors = new Vector[_numberOfSections];
+    _assignedLists = new JList[_numberOfSections];
     Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.6), (int)dialogSize.getHeight()-130);
     Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10,(int)panelDim.getHeight()-5);
     _assignedPanel = new JPanel(new BorderLayout());
@@ -219,16 +227,17 @@ public class GroupDlg extends JDialog implements ActionListener{
     int GroupPanelHeight = (int)((_scrollPane.getPreferredSize().getHeight())/2);
     int infoPanelHeight = 25;
     Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
-    Dimension scrollContDim = new Dimension((int)insideWidth, GroupPanelHeight-infoPanelHeight);
-    Dimension listDim = new Dimension((int)scrollContDim.getWidth(), (int)scrollContDim.getHeight());
-
+    Dimension scrollContDim = new Dimension((int)insideWidth-5, GroupPanelHeight-infoPanelHeight-20);
+    Dimension scrollDim = new Dimension((int)scrollContDim.getWidth(), (int)scrollContDim.getHeight()-3);
     JPanel groupPanel = new JPanel();
     groupPanel.setPreferredSize(groupPanelDim);
-    System.out.println("groupPanel.getPreferredSize() "+groupPanel.getPreferredSize());
+    groupPanel.addMouseListener(mouseListenerGroupPanel);
+    //System.out.println("groupPanel.getPreferredSize() "+groupPanel.getPreferredSize());
     JPanel infoPanel = new JPanel();
     //The infoPanel
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
-    System.out.println("infoPanel.getPreferredSize() "+ infoPanel.getPreferredSize());
+    //infoPanel.addMouseListener(mouseListenerInfoPanel);
+    //System.out.println("infoPanel.getPreferredSize() "+ infoPanel.getPreferredSize());
     JLabel lGroup = new JLabel(GROUP);
     JLabel lGroupNumber = new JLabel(String.valueOf(groupNumber));
     JLabel lNumberOfElements = new JLabel(NUMBER_OF_ELEMENTS);
@@ -242,14 +251,13 @@ public class GroupDlg extends JDialog implements ActionListener{
     JPanel scrollContainer = new JPanel();
     scrollContainer.setPreferredSize(scrollContDim);
     JScrollPane scroll = new JScrollPane();
-    scroll.setPreferredSize(scrollContDim);
-    JList assignedList;
-    Vector asignedVector;
-    asignedVector = _students.getStudentsByGroup(_actID, "1", groupNumber);
-    assignedList = new JList(asignedVector);
-    assignedList.addMouseListener(mouseListenerLists);
-    scroll.getViewport().add(assignedList);
-    System.out.println("scrollIntoGroup.getPreferredSize() "+scroll.getPreferredSize());
+    scroll.setPreferredSize(scrollDim);
+    //System.out.println("_students.getStudentsByGroup(_actID, \"1\", groupNumber "+_students.getStudentsByGroup(_actID, "1", groupNumber));
+    _assignedVectors[groupNumber] = _students.getStudentsByGroup(_actID, "1", groupNumber);
+    _assignedLists[groupNumber] = new JList(_assignedVectors[groupNumber]);
+    _assignedLists[groupNumber].addMouseListener(mouseListenerLists);
+    scroll.getViewport().add(_assignedLists[groupNumber]);
+    //System.out.println("scrollIntoGroup.getPreferredSize() "+scroll.getPreferredSize());
     //adding the subpanel into panel
     scrollContainer.add(scroll);
     groupPanel.add(infoPanel);
@@ -262,11 +270,16 @@ public class GroupDlg extends JDialog implements ActionListener{
    *
    */
   private void setButtonsPanel(){
+    _apply = new JButton(APPLY);
+    _apply.addActionListener(this);
+    _cancel = new JButton(CANCEL);
+    _cancel.addActionListener(this);
     _ok = new JButton(OK);
-    _close = new JButton(CLOSE);
+    _ok.addActionListener(this);
     _buttonsPanel = new JPanel();
     _buttonsPanel.add(_ok);
-    _buttonsPanel.add(_close);
+    _buttonsPanel.add(_apply);
+    _buttonsPanel.add(_cancel);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
 
   }
@@ -306,34 +319,108 @@ public class GroupDlg extends JDialog implements ActionListener{
       setCurrents();
       _notAssignedVector = _students.getStudentsByGroup(_actID, "1", -1);
       _notAssignedList.setListData(_notAssignedVector);
+      /*
+      System.out.println("_numberOfSections "+_numberOfSections);
+      _assignedLists = new JList[_numberOfSections];
+      _assignedVectors = new Vector[_numberOfSections];
+      */
+      setInsidePanel();
     }//end if (e.getSource().equals(_actCombo))
-    else if (e.getSource().equals(_typeCombo)){
+    if (e.getSource().equals(_typeCombo)){
       _typeID = (String)_typeCombo.getSelectedItem();
       setCurrents();
+      _assignedLists = new JList[_numberOfSections];
+      _assignedVectors = new Vector[_numberOfSections];
       setInsidePanel();
-    }
+    }//end if (e.getSource().equals(_typeCombo))
+    if (command.equals(CANCEL))
+      dispose();
+    if (command.equals(OK)){
+      //if (_currentActivities.length != 0)
+      //new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
+    }// end if (command.equals(SHOW))
+    if (command.equals(TO_LEFT) || command.equals(TO_RIGHT)){
+      if (command.equals(TO_LEFT)){
+        if (_currentAssignedGroup > -1)
+          DXTools.listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector);
+      }//end if (command.equals(TO_LEFT))
+      else{
+        if (_currentAssignedGroup > -1)
+          DXTools.listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup]);
+      }//end else
+    }//end if (command.equals(TO_LEFT) || command.equals(TO_RIGHT))
   }//end method
 
+
+  /**
+   * The mouseListener for the JLists
+   */
   private MouseListener mouseListenerLists = new MouseAdapter(){
     public void mouseClicked(MouseEvent e) {
-      if (((JList)e.getSource()).getModel().getSize() == 0)
-        return;
+
+      //if (((JList)e.getSource()).getModel().getSize() == 0)
+        //return;
       if (e.getSource().equals(_notAssignedList)){
+        System.out.println("_assignedLists "+_assignedLists);
+        System.out.println("_numberOfSections "+_numberOfSections);
         for(int i = 0; i < _numberOfSections; i++){
-          getGroupList(i).clearSelection();
+          System.out.println("_assignedLists["+i+"]= "+_assignedLists[i]);
+          _assignedLists[i].clearSelection();
         }
-        //_noVisibleList.clearSelection();
-      }
+      }//end if (e.getSource().equals(_notAssignedList))
+      //else{
+        for(int i = 0; i<_numberOfSections; i++){
+          if (e.getSource().equals(_assignedLists[i])){
+            _currentAssignedGroup = i;
+            setGroupBorders(_currentAssignedGroup, Color.blue);
+            //System.out.println("_currentAssignedGroup " + _currentAssignedGroup);
+            _notAssignedList.clearSelection();
+            for (int j = 0; j<_numberOfSections; j++)
+              if (j != i)
+                _assignedLists[j].clearSelection();
+          }//if (e.getSource().equals(_assignedLists[i]))
+          // if the panel selected is the infoPanel contained in the group panel i
 
-
-      else
-        //_visibleList.clearSelection();
-      //_currentActivities = ((JList)e.getSource()).getSelectedValues();
-      if (e.getClickCount() == 2) {
-        //new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
-      }//end if
+        }//end for(int i = 0; i<_numberOfSections; i++)
+      //}//end else if (e.getSource().equals(_notAssignedList))
+      _currentStudents = ((JList)e.getSource()).getSelectedValues();
+        //_currentActivities = ((JList)e.getSource()).getSelectedValues();
+        //if (e.getClickCount() == 2) {
+      //new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
+        //}//end if
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+  private MouseListener mouseListenerGroupPanel = new MouseAdapter(){
+    public void mouseClicked(MouseEvent e) {
+      for(int i = 0; i < _numberOfSections; i++){
+        if (e.getSource().equals( (JPanel)_insidePanel.getComponent(i))){
+          _currentAssignedGroup = i;
+          //System.out.println("_currentAssignedGroup "+_currentAssignedGroup);
+        }
+      }//end for(int i = 0; i<_numberOfSections; i++)
+      setGroupBorders(_currentAssignedGroup, Color.blue);
+    }// end public void mouseClicked
+  };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+  /**
+  * Set the clor border of the groupPanels. Clor = blue for the panel selected, null for the
+  * other panels
+  * @param selectedPanelID
+  * @param colorBorder
+  */
+
+  private void setGroupBorders(int selectedPanelID, Color colorBorder){
+    JPanel panel;
+    for (int i = 0; i < _numberOfSections; i++){
+      panel = (JPanel)_insidePanel.getComponent(i);
+      if(i == selectedPanelID)
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+      else
+        panel.setBorder(null);
+    }
+  }
+
 
   /**
   * Returns a List containing the elements of a group

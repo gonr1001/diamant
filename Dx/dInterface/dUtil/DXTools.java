@@ -73,10 +73,10 @@ public class DXTools {
   }
 
   /**
-   * Defines the actions when transfering data between 2 JLists by using a button. The 2 JList
+   * Defines the actions when transfering data between 2 JLists by using a JButton. The 2 JList
    * contain the IDs of a setOfResources.
    * @param resources The setOfResources to be manipulated by using the JLists
-   * @param fieldIndex The index of the field who is the criteria to get/set the resources of the set
+   * @param fieldIndex The index of the criteria field (this field is the criteria to get/set the resources of the set
    * @param valueSource The value to be getted/setted in the resources belonging the JList source
    * @param valueDestination The value to be getted/setted in the resources belonging the JList destination
    * @param sourceList The JList source. It contains the data to be transferred to the JList destination
@@ -98,6 +98,25 @@ public class DXTools {
       sourceList.clearSelection();
     }
   }//end method
+
+public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector){
+  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
+    return;
+  Object [] elementsToTransfer = sourceList.getSelectedValues();
+  if (elementsToTransfer.length != 0){
+      String currentElement;
+      for (int i = 0; i < elementsToTransfer.length; i++){
+        sourceVector.remove(elementsToTransfer[i]);
+        destinationVector.add(elementsToTransfer[i]);
+      }
+
+      sourceList.setListData(sourceVector);
+      destinationList.setListData(destinationVector);
+      int[] indices = getIndicesToSelected(destinationVector, elementsToTransfer);
+      destinationList.setSelectedIndices(indices);
+      sourceList.clearSelection();
+    }
+}
 
 
   /**
