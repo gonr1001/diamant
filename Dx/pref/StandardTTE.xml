@@ -23,8 +23,8 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
-								<EndTime>16:30</EndTime>
+								<BeginTime>14:00</BeginTime>
+								<EndTime>15:00</EndTime>
 								<priority>0</priority>
 							</TTperiod>
 						</TTperiods>
@@ -62,7 +62,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -101,7 +101,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -140,7 +140,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -179,7 +179,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -218,7 +218,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -257,7 +257,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
@@ -296,7 +296,7 @@
 						<TTperiods>
 							<TTperiod>
 								<periodID>1</periodID>
-								<BeginTime>13:30</BeginTime>
+								<BeginTime>14:00</BeginTime>
 								<EndTime>16:30</EndTime>
 								<priority>0</priority>
 							</TTperiod>
