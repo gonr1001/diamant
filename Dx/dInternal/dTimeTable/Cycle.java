@@ -417,10 +417,10 @@ public Period getLastPeriod(){
   }
 
   /**
-   *
+   *return the AttributsToDisplay matrix
    * @return
    */
-  public void getAttributsToDisplay(int periodLength){
+  public DisplayAttributs[][] getAttributsToDisplay(int periodLength){
     SetOfResources rowAtt=buildAttributsRowTodisplay(periodLength);
     DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()];
     for(int i=0; i< _setOfDays.size(); i++){
@@ -462,7 +462,7 @@ public Period getLastPeriod(){
         }
       }// end for (int j=0; j< matrixToDisplay[i].length; j++)
     }// end for (int i=0; i< matrixToDisplay.length; i++)
-    System.out.println();
+    return matrixToDisplay;
   }
 
   /**
