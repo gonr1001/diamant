@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.58 $  $Date: 2003-09-08 11:05:01 $
+ * Title: DMenuBar $Revision: 1.59 $  $Date: 2003-09-08 14:56:54 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -41,20 +41,23 @@ import dInterface.dTimeTable.OpenTTSCmd;
 import dInterface.dTimeTable.SaveAsCmd;
 import dInterface.dTimeTable.SaveCmd;
 import dInterface.dTimeTable.CloseCmd;
-import dInterface.dUtil.*;
+
+import dInterface.dUtil.AboutCmd;
+import dInterface.dUtil.ExitCmd;
+import dInterface.dUtil.PLAFCmd;
+
+import dAux.MyFileCmd;
 import dAux.ShowAllCmd;
 import dAux.StateZeroCmd;
 
 
 public class DMenuBar extends JMenuBar{
   private DApplication _dApplic;
-  private int _currentState;
   private final boolean _DEVELOPMENT = true;
-
-
   private final String _mfont = DConst.MFONTDialog;
   private final int _font = Font.PLAIN;
   private final int _nPT = DConst.NPT11;
+
   //the menus
   private JMenu _file, _assign, _optimisation, _preferences, _help,  _dev;
   private boolean _boolFile, _boolAssign, _boolOptimisation, _boolPreferences, _boolHelp, _boolDev;
@@ -91,7 +94,7 @@ public class DMenuBar extends JMenuBar{
   private CmdMenu _myFile, _showAll, _stateZero;
   private boolean _boolMyFile, _boolShowAll, _boolStateZero;
 
-  private int [] [] automaton = {{1,1},{0,0},{2,2}};
+
   public DMenuBar(DApplication dApplic) {
     super();
     _dApplic = dApplic;
@@ -106,9 +109,9 @@ public class DMenuBar extends JMenuBar{
     createHelpMenu();
     if (_DEVELOPMENT)
       createDevelopmentMenu();
-    stateZero();
-    //stateAll();
-    setMenus();
+    setAll();
+    //setZero();
+    //
   } // end createMenus
 
   private void createFileMenu() {
@@ -164,52 +167,50 @@ public class DMenuBar extends JMenuBar{
     _file.add(_openTTStruc);
 
     _close = new CmdMenu(DConst.CLOSE);
-    _file.add(_close);
     _close.setFont( new java.awt.Font(_mfont, _font, _nPT) );
     _close.setCommand(new CloseCmd());
     _close.addActionListener(_dApplic);
-
+    _file.add(_close);
     _file.addSeparator();
 
     _save = new CmdMenu(DConst.SAVE);
-    _file.add(_save);
     _save.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _save.setCommand(new SaveCmd());
     _save.addActionListener(_dApplic);
+    _file.add(_save);
 
     _saveAs = new CmdMenu(DConst.SAVE_AS);
-    _file.add(_saveAs);
     _saveAs.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _saveAs.setCommand(new SaveAsCmd());
     _saveAs.addActionListener(_dApplic);
+    _file.add(_saveAs);
 
     _file.addSeparator();
 
     _defineFiles = new CmdMenu(DConst.DEF_F_M);
-    _file.add(_defineFiles);
     _defineFiles.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _defineFiles.setCommand(new DefFilesToImportCmd());
     _defineFiles.addActionListener(_dApplic);
+    _file.add(_defineFiles);
 
     _import = new CmdMenu(DConst.IMP_A_M);
-    _file.add(_import);
     _import.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _import.setCommand(new ImportCmd(_dApplic.getJFrame()));
     _import.addActionListener(_dApplic);
+    _file.add(_import);
 
     _export = new CmdMenu(DConst.EXPO);
-    _file.add(_export);
     _export.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _export.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     _export.addActionListener(_dApplic);
-
+    _file.add(_export);
     _file.addSeparator();
 
     _exit = new CmdMenu(DConst.EXIT);
-    _file.add(_exit);
     _exit.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _exit.setCommand(new ExitCmd());
     _exit.addActionListener(_dApplic);
+    _file.add(_exit);
   }
 
   private void createAssignMenu() {
@@ -220,58 +221,58 @@ public class DMenuBar extends JMenuBar{
     this.add(_assign);
 
     _activities = new CmdMenu(DConst.ACTI_ASSIGN_M);
-    _assign.add(_activities);
     _activities.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _activities.setCommand(new ActivityCmd());
     _activities.addActionListener(_dApplic);
+    _assign.add(_activities);
 
     _sections = new CmdMenu(DConst.GROUP_ASSIGN_M);
-    _assign.add(_sections);
     _sections.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _sections.setCommand(new GroupCmd());
     _sections.addActionListener(_dApplic);
+    _assign.add(_sections);
 
     _instructorAvailability = new CmdMenu(DConst.INST_ASSIGN_M);
-    _assign.add(_instructorAvailability);
     _instructorAvailability.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _instructorAvailability.setCommand(new InstructorAvailabilityCmd());
     _instructorAvailability.addActionListener(_dApplic);
+    _assign.add(_instructorAvailability);
 
     //CmdMenu mroomsAvailability = new CmdMenu(DConst.INST_ASSIGN_M);
     _roomsAvailability = new CmdMenu(DConst.LOCAUX_ASSIGN_M);
-    _assign.add(_roomsAvailability);
     _roomsAvailability.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _roomsAvailability.setCommand(new roomsAvailabilityCmd(_dApplic));
     _roomsAvailability.addActionListener(_dApplic);
+    _assign.add(_roomsAvailability);
 
     _events = new CmdMenu("Evenements");
-    _assign.add(_events);
     _events.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     _events.setCommand(new EventsCmd());
     _events.addActionListener(_dApplic);
+    _assign.add(_events);
 
     _assign.addSeparator();
 
     CmdMenu mConfl = new CmdMenu("Liste de Conflits");
-    _assign.add(mConfl);
     mConfl.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
     mConfl.addActionListener(_dApplic);
+    _assign.add(mConfl);
 
   }
 
   private void createOptimisationMenu() {
     //Build the menu Optimisation.
-    _optimisation = new JMenu("Optimi");//DConst.PREF);
+    _optimisation = new JMenu("Optimisation");//DConst.PREF);
     _optimisation.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _optimisation );
-// Items in menu PREFERENCES.
+
+// Items in menu Optimisation.
     _mOpti = new CmdMenu(DConst.PLAF_M);//, this);
-    _optimisation.add(_mOpti);
     _mOpti.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mOpti.setCommand(new PLAFCmd(_dApplic));
     _mOpti.addActionListener(_dApplic);
-
+    _optimisation.add(_mOpti);
   }
 
   private void createPreferencesMenu(){
@@ -279,13 +280,14 @@ public class DMenuBar extends JMenuBar{
     //Build the menu PREFERENCES.
     _preferences = new JMenu(DConst.PREF);
     _preferences.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    this.add( _preferences );
+    this.add(_preferences);
+
     // Items in menu PREFERENCES.
     _lookAndFeel = new CmdMenu(DConst.PLAF_M);//, this);
-    _preferences.add(_lookAndFeel);
     _lookAndFeel.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _lookAndFeel.setCommand(new PLAFCmd(_dApplic));
     _lookAndFeel.addActionListener(_dApplic);
+    _preferences.add(_lookAndFeel);
 
   }
   private void createHelpMenu(){
@@ -295,11 +297,11 @@ public class DMenuBar extends JMenuBar{
     this.add( _help );
     // Items in menu HELP.
     _about = new CmdMenu(DConst.ABOUT_M + DConst.APP_NAME);//, this);
-    _help.add(_about);
+
     _about.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _about.setCommand(new AboutCmd());
     _about.addActionListener(_dApplic);
-
+    _help.add(_about);
   }
 
   private void createDevelopmentMenu(){
@@ -314,23 +316,31 @@ public class DMenuBar extends JMenuBar{
     _myFile.addActionListener(_dApplic);
     _dev.add(_myFile);
 
-    _showAll = new CmdMenu("ShowAllMenus");
+    _showAll = new CmdMenu("showAllMenus");
     _showAll.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _showAll.setCommand(new ShowAllCmd());
     _showAll.addActionListener(_dApplic);
     _dev.add(_showAll);
 
-    _stateZero = new CmdMenu("ShowAllMenus");
-_stateZero.setFont(new java.awt.Font(_mfont, _font, _nPT));
-_stateZero.setCommand(new StateZeroCmd());
-_stateZero.addActionListener(_dApplic);
+    _stateZero = new CmdMenu("stateZero");
+    _stateZero.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _stateZero.setCommand(new StateZeroCmd());
+    _stateZero.addActionListener(_dApplic);
     _dev.add(_stateZero);
 
 
   }
 
-  public void stateZero() {
-    _boolFile= true;
+  public void setZero() {
+    //the menus
+    _boolFile = true;
+    _boolAssign = false;
+    _boolOptimisation =  true;
+    _boolPreferences = true;
+    _boolHelp = true;
+    _boolDev = true;
+
+    //the submenus
     _boolNewTTable = true;
     _boolNewTTableCy = _boolNewTTableEx = true;
 
@@ -346,31 +356,45 @@ _stateZero.addActionListener(_dApplic);
     _boolExport = false;
     _boolExit = true;
 
-    _boolAssign= false;
 
-    _boolOptimisation=  false;
+    _boolActivities = true;
+    _boolSections= true;
+    _boolInstructorAvailability= true;
+    _boolRoomsAvailability= true;
+    _boolEvents= true;
+
     _boolPreferences= true;
     _boolLookAndFeel= true;
     _boolHelp= true;
     _boolAbout = true;
     _boolDev = true;
     _boolMyFile = _boolShowAll = _boolStateZero = true;
-
+    //System.out.println("setZero");
+     System.out.println("setZero" + _boolAssign);
     setMenus();
   }
-  public void stateOne() {
+/*
+  public void setOne() {
     _boolFile= true;
-    _boolAssign= false;
-    _boolOptimisation=  false;
+    _boolAssign= true;
+    _boolOptimisation=  true;
     _boolPreferences= true;
     _boolHelp= true;
     _boolAbout = false;
     setMenus();
 
   }
+*/
+  private void setAll() {
+    //the menus
+    _boolFile = true;
+    _boolAssign= true;
+    _boolOptimisation = true;
+    _boolPreferences= true;
+    _boolHelp= true;
+    _boolDev = true;
 
-  private void stateAll() {
-    _boolFile= true;
+    //the submenus
     _boolNewTTable = true;
     _boolNewTTableCy = _boolNewTTableEx = true;
 
@@ -381,45 +405,71 @@ _stateZero.addActionListener(_dApplic);
     _boolDefineFiles = _boolImport = _boolExport = true;
     _boolExit = true;
 
-    _boolAssign= true;
     _boolActivities = true;
     _boolSections= true;
     _boolInstructorAvailability= true;
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    _boolOptimisation=  true;
-    _boolPreferences= true;
-    _boolHelp= true;
+
+    _boolMOpti= true;
+
+    _boolLookAndFeel =true;
+
     _boolAbout = true;
-    _boolDev = true;
+
+    _boolMyFile = _boolShowAll = _boolStateZero = true;
 
     setMenus();
+  }
+  private void setMenusX() {
+    //System.out.println("setMenusBegin");
+
+    setFileMenu();
+    setAssignMenu();
+    setOptimisationMenu();
+    setPreferencesMenu();
+    setHelpMenu();
+    if (_DEVELOPMENT)
+      setDevMenu();
+
+    //System.out.println("setMenusEnd");
   }
 
 
   private void setMenus() {
+        System.out.println("setMenus" + _boolAssign);
     if (_boolFile)
       setFileMenu();
-    else _file.setEnabled(_boolFile);
+    else
+      _file.setEnabled(_boolFile);
+System.out.println("setMenus" + _boolAssign);
     if (_boolAssign)
       setAssignMenu();
-    else _assign.setEnabled(_boolAssign);
+    else
+      _assign.setEnabled(_boolAssign);
     if (_boolOptimisation)
       setOptimisationMenu();
-    else _optimisation.setEnabled(_boolOptimisation);
+    else
+      _optimisation.setEnabled(_boolOptimisation);
     if (_boolPreferences)
       setPreferencesMenu();
-    else _preferences.setEnabled(_boolPreferences);
+    else
+      _preferences.setEnabled(_boolPreferences);
     if (_boolHelp)
       setHelpMenu();
-    else _help.setEnabled(_boolHelp);
+    else
+      _help.setEnabled(_boolHelp);
     if (_boolDev)
       setDevMenu();
-    else _dev.setEnabled(_boolDev);
+    else
+      _dev.setEnabled(_boolDev);
+    this.repaint();
+    System.out.println("setMenusEnd");
   }
 
   private void setFileMenu() {
+    _file.setEnabled(_boolFile);
     if (_boolNewTTable) {
       _newTTableCy.setEnabled(_boolNewTTableCy);
       _newNTTableEx.setEnabled(_boolNewTTableEx);
@@ -440,6 +490,7 @@ _stateZero.addActionListener(_dApplic);
   } //end  setFileMenu
 
   private void setAssignMenu() {
+    _assign.setEnabled(_boolAssign);
     _activities.setEnabled(_boolActivities);
     _sections.setEnabled(_boolSections);
     _instructorAvailability.setEnabled(_boolInstructorAvailability);
@@ -451,7 +502,7 @@ _stateZero.addActionListener(_dApplic);
     _mOpti.setEnabled(_boolMOpti);
   }
   private void setPreferencesMenu() {
-_lookAndFeel.setEnabled(_boolLookAndFeel);
+    _lookAndFeel.setEnabled(_boolLookAndFeel);
   }
 
   private void setHelpMenu() {
@@ -459,22 +510,22 @@ _lookAndFeel.setEnabled(_boolLookAndFeel);
   }
 
   private void setDevMenu() {
-    _dev.setEnabled(_boolMyFile);
-    _dev.setEnabled(_boolShowAll);
-    _dev.setEnabled(_boolStateZero);
+    _myFile.setEnabled(_boolMyFile);
+    _showAll.setEnabled(_boolShowAll);
+    _stateZero.setEnabled(_boolStateZero);
   }
 
- public void postAbout() {
-   // no changes
- }
- public void postShowAll() {
-   stateAll();
- }
- public void postMyFile() {
-   stateAll();
- }
+  public void postAbout() {
+    // no changes
+  }
+  public void postShowAll() {
+    setAll();
+  }
+  public void postMyFile() {
+    setAll();
+  }
 
- public void postStateZero() {
-  stateZero();
- }
+  public void postStateZero() {
+    setZero();
+  }
 } /* end class DMenuBar */

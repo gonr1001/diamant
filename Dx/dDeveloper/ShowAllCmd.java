@@ -15,8 +15,8 @@ import dInterface.DApplication;
 public class ShowAllCmd implements Command{
 
   public ShowAllCmd() {
-
   }
+
   public void execute(DApplication dApplic) {
     dApplic.getMenuBar().postShowAll();
   } // end execute
