@@ -73,13 +73,12 @@ public class StandardReportData {
    */
   public StandardReportData(DModel dm) {
     _dm = dm;
-    _activitiesReport= buildActivitiesReport();
+    _activitiesReport = buildActivitiesReport();
     
     _studentsReport = buildStudentsReport();
     
     _conflictsReport= buildConflictsReport();
     
-
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
   }

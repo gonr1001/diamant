@@ -133,7 +133,7 @@ public class DSetOfInstructorsTest  extends TestCase{
   public void test4_analyseTokens(){
     String tokens= "    2"+"\r\n"+
                    "JAC"+"\r\n"+
-                   "1 2 5 1 5 1 5 1 5 1 5 1 5 1"+"\r\n"+
+                   "1 3 5 1 5 1 5 1 5 1 5 1 5 1"+"\r\n"+
                    "1 5 1 5 1 5 1 5 1 5 1 5 1 5"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 1 1 1"+"\r\n"+
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n"+

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.16 $  $Date: 2004-10-21 14:27:41 $
+* Title: SaveData $Revision: 1.17 $  $Date: 2005-03-08 16:00:44 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.16 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.17 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -23,6 +23,7 @@ package dInternal.dDataTxt;
 
 
 import dConstants.DConst;
+import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.txt.FilterFile;

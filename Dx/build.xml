@@ -86,7 +86,7 @@
 		description="compile the java sources." > 
 		<javac srcdir="${srcDir}"
 			destdir="${build}"
-			source="1.4"> 
+			source="1.5"> 
 			<classpath refid="c.classpath"/>
 	    </javac>       	
 	</target>

@@ -11,12 +11,14 @@ package dInterface.dUtil;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -273,21 +275,36 @@ public static int STIConvertGroupToInt(String STIGroupID){
   * @return the JPanel to be added to the dialog
   */
  public static JPanel arrowsPanel(ActionListener parentDialog, String[] arrowsNames, boolean enableBut){
-   Dimension panelDim = new Dimension(50, 41*arrowsNames.length);
+     return arrowsPanel(parentDialog, "", arrowsNames, enableBut);
+ }//end arrowsPanel
+
+ /**
+  * Build a panel containing the arrows for information transfert. This panel implements the
+  * action listeners for each arrow
+  * @param parentDialog The dialog who calls this panel
+  * @param arrowsNames It contains the symbols of the arrows
+  * @return the JPanel to be added to the dialog
+  */
+ public static JPanel arrowsPanel(ActionListener parentDialog, String id, String[] arrowsNames, boolean enableBut){
+  
    JButton [] buttons = new JButton [arrowsNames.length];
    JPanel panel = new JPanel();
-   panel.setPreferredSize(panelDim);
+   Container verticalBox = Box.createVerticalBox(); 
+   
    for(int i = 0; i < arrowsNames.length; i++){
      buttons[i] = new JButton(arrowsNames[i]);
-     buttons[i].setPreferredSize(new Dimension(50,35));
+     buttons[i].setActionCommand(id + arrowsNames[i]);
      buttons[i].addActionListener(parentDialog);
      buttons[i].setEnabled(enableBut);
-     panel.add(buttons[i]);//, BorderLayout.NORTH);
+     verticalBox.add(Box.createVerticalGlue());
+     verticalBox.add(buttons[i]);
+     verticalBox.add(Box.createVerticalStrut(10));
+     
    }
-   //panel.setBorder(BorderFactory.createLineBorder(Color.CYAN));
+   verticalBox.add(Box.createVerticalGlue());
+   panel.add(verticalBox);
    return panel;
- }//end method
-
+ }//end arrowsPanel
 
 
  /**
@@ -306,7 +323,80 @@ public static int STIConvertGroupToInt(String STIGroupID){
    panel.add(scrollPane);
    return panel;
  }
-
+/*
+ public static JPanel listPanel(JList theList, JList aList, int panelWidth, int panelHeight){
+     JPanel panel = new JPanel(new BorderLayout());
+     panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+     Container hBox = Box.createHorizontalBox(); 
+     hBox.add(theList);
+     hBox.add(Box.createHorizontalStrut(2));
+     hBox.add(aList);
+     JScrollPane scrollPane = new JScrollPane();
+     scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
+     scrollPane.getViewport().add(hBox);
+     //scrollPane.getViewport().add(aList);
+     panel.add(scrollPane);
+     return panel;
+   }
+ */
+ /*
+ public static JPanel listPanel(JList firstList, JList secondList,JList thirdList, int panelWidth, int panelHeight){
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+    Container hBox = Box.createHorizontalBox(); 
+    hBox.add(firstList);
+    hBox.add(Box.createHorizontalStrut(1));
+    hBox.add(secondList);
+    hBox.add(Box.createHorizontalStrut(1));
+    hBox.add(thirdList);
+    JScrollPane scrollPane = new JScrollPane();
+    scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
+    scrollPane.getViewport().add(hBox);
+    //scrollPane.getViewport().add(aList);
+    panel.add(scrollPane);
+    return panel;
+  }
+ */
+ 
+ public static JPanel listPanel(JPanel panel, JList[] lists,  int panelWidth, int panelHeight){
+ 	panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+ 	Container hBox = Box.createHorizontalBox(); 
+ 	int nameListPosition = 1;
+ 	if(lists.length>0){
+ 		hBox.add(lists[0]);
+ 		for(int i=1; i< lists.length; i++){
+ 			hBox.add(Box.createHorizontalStrut(2));
+ 			hBox.add(lists[i]);
+ 			if(i == nameListPosition){
+ 				Dimension dim=new Dimension(45,80);
+ 				lists[i].setPreferredSize(dim);
+ 			}
+ 				
+ 		}// end for(int i=1; i< lists.length; i++)
+ 	}// end if(lists.length>0)
+ 	JScrollPane scrollPane = new JScrollPane();
+ 	scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
+ 	scrollPane.getViewport().add(hBox);
+ 	//scrollPane.getViewport().add(aList);
+ 	panel.add(scrollPane);
+ 	return panel;
+  }
+ /**
+  * Builds a JPanel containing just a JList
+  * @param theList
+  * @param panelWidth
+  * @param panelHeight
+  * @return
+  */
+ public static JPanel listPanel(JList theList){
+   JPanel panel = new JPanel(new BorderLayout());
+   //panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+   JScrollPane scrollPane = new JScrollPane();
+   //scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
+   scrollPane.getViewport().add(theList);
+   panel.add(scrollPane);
+   return panel;
+ }
 
  /**
   * Creates a Panel containing a valued title plus a listPanel

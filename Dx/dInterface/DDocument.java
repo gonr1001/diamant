@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.133 $  $Date: 2005-02-08 21:21:17 $
+ * Title: DDocument $Revision: 1.134 $  $Date: 2005-03-08 16:00:43 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.133 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.134 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -318,8 +318,7 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 		_dm.addObserver(this);
 		_stateBar = new DStateBar(_dm.getSetOfStates());
 		_dm.setStateBarComponent();
-		//_stateBar.upDateDStateBar(_dm.getSetOfStates());
-		
+			
 		_jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 		
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));

@@ -1,9 +1,6 @@
-
-package dTest.dInternal.dData.dRooms;
-
 /**
 *
-* Title: DRoomTest $Revision $  $Date: 2005-02-08 21:07:13 $
+* Title: DRoomTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DRoomTest is a class used to test the class 
 * 				DRoomTest 
 *
@@ -19,9 +16,11 @@ package dTest.dInternal.dData.dRooms;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
+
+package dTest.dInternal.dData.dRooms;
 
 import java.util.Vector;
 

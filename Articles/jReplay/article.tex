@@ -1,0 +1,199 @@
+\documentclass{llncs}
+\bibliographystyle{acm}
+\usepackage[T1]{fontenc}
+\usepackage{dfd,hhline}
+\usepackage{verbatim}
+
+\setlength{\parskip}{1.5explus0.5ex minus0ex}
+
+\newcommand{\jreplay}{jReplay}
+\newcommand{\bug}{\emph{bug}}
+\newcommand{\bugs}{\emph{bugs}}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+%%%%%%%%%%%%%%%%%%
+\pagestyle{plain} %% to be commented when sent
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small\normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small\normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small\normalsize}
+%%%%%%%%%%%%%%%%%%
+
+\title{\bf{jReplay: a high level debug tool}}
+\author{Ruben Gonzalez-Rubio \\Rosa Lourdes Garcia-Diaz}
+\institute{\eXit \\Département de génie électrique et de génie informatique \\
+Université de Sherbrooke,\\
+Sherbrooke, Québec, J1K 2R1 \\
+Canada\\
+\email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
+\email{Rosa.Garcia@USherbrooke.ca}}
+\date{}
+
+
+\begin{document}
+
+
+\maketitle
+\section{Résumé}
+\input{resume.tex}
+
+\section{Introduction}
+
+Les utilisateurs d'un logiciel espèrent que le logiciel fasse
+correctement ce pour lequel il a été élaboré. Comme dans autres
+produits le logiciels sont vérifiés et testés, et en général, ils
+ont une certaine qualité. Ainsi, il n'y aura des erreurs ou \bugs,
+et s'il existent, elles seront corrigées le plus rapidement possible
+pour que l'utilisateur puisse utiliser le logiciel de façon normal.
+
+Toutefois, l'utilisateur va rencontrer des \bugs au moment de
+l'exécution \cite{McConnell2004} qui vont être corrigés dans l'étape
+de maintenance du logiciel. En réalité, il reste une probabilité que
+le \bug se manifeste pendant l'utilisation du logiciel, même dans
+les logiciels avec un haut contrôle de qualité.
+
+La recherche de \bugs à la maintenance est une des tâches critiques
+à cause le temps de réponse qu'il faut donner aux utilisateurs, car
+si un \bug apparaît à la compilation ou au moment du développement,
+il sera corrigé avant que le logiciel soit vu par l'utilisateur. Les
+techniques utilisés dans la recherche de \bugs sont les reports par
+écrit, l'enregistrement de certains donnés dans un fichier de trace
+et le suivi pas à pas du logiciel ou débogage.
+
+Pour le débogage, McConnell \cite{McConnell2004} signale que 90 \%
+du temps de débogage est pris pour trouver le \bug et 10 \% du temps
+est pris pour le corriger. \jreplay cherche réduire le 90 \% en se
+centrant sur la première tâche à faire dans le débogage, la
+recherche des conditions qui produisent un \emph{bug}. C'est-à-dire
+comment reproduire les conditions pour que le \bug se manifeste.
+
+Finalement, l'avantage principal offert par \jreplay est de pouvoir
+répéter le comportement de l'utilisateur afin de reproduire la
+séquence conduisant à un problème logiciel, défaut ou \bug. Ainsi si
+un \emph{bug} se présente chez l'utilisateur, le programmeur n'a pas
+besoin de poser beaucoup de questions sur le comportement de
+l'utilisateur, avant son apparition, pour essayer de trouver dans
+quels circonstances le \emph{bug} se produit. Et en conséquence, il
+est possible de réduire le temps de débogage dans l'étape de
+maintenance du logiciel.
+
+\section{Motivation}
+
+C'est vrai que la qualité des logiciels à améliore mais ils restent
+de \bugs à éliminer. Jones \cite{Jones2003}, qui a fait entre 1984
+et 2000 un révision de 12 000 projets, dit que le plus haut niveau
+d'élimination de \bugs que se trouve dans les logiciels est de 95
+\%. Dans autre étude, Binder \cite{Binder2000} avait déjà montré que
+pour arriver à 100 \% il faut tester tous les chemins possibles, et
+ça implique beaucoup du temps. Pour le démontrer Binder prend
+l'exemple de Myers \cite{Myers1979} adapté aux objets pour montrer
+la complexité de parcourir tous les chemins à tester. Dans cet
+exemple, un logiciel prend les trois côtés d'un triangle et donne
+comme résultat le type du triangle (isocèle, équilatéral ou
+scalene). Il montre que même avec ce logiciel, qu'il paraît simple,
+le nombre de chemins à parcourir est de $10^{12}$ combinaisons
+d'entrées à tester et avec les ressources disponibles, à l'année
+2000, il faut attendre 318 années pour tester les $10^{12}$
+combinaisons afin d'être certains d'avoir tout testé.
+
+Dans ces circonstances, les logiciels plus complexes auront
+beaucoup plus de tests à faire et ils prendront plus de temps
+avant d'avoir exploré tous les chemins possibles. En réponse à ce
+problème, de nombreuses stratégies de tests ont été développées
+pour trouver les chemins qui sont les plus susceptibles aux
+erreurs, et ce, avec l'idée de réduire le nombre de tests à faire.
+
+Par exemple Whittaker \cite{Whittaker2003} dit qu'il faut tester les
+chemins plus critiques, par exemple les valeurs extrêmes, les
+données incorrects etc. Dans l'orientes objets McGregor
+\cite{McGregor2001} et Binder \cite{Binder2000}, utilisent des
+stratégies ou de \emph{patterns} pour tester les chemins plus
+critiques. Une autre stratégie est l'utilisation de tests unitaires
+comme dans l'extrême programming \cite{Hightower2002}.
+%rgd: verificar otras
+
+Finalement, même si le logiciel est testé avant la livraison il y a
+des \bugs qui restent et qui ne se trouvent facilement. Perry
+\cite{Perry2000} mentionne qu'il y a 2 raisons pour lesquelles les
+\bugs ne sont pas détectés:
+    \begin{enumerate}
+    \item Les tests correspondants ne sont pas effectués car la condition qui cause le \bug n'est pas connue.
+
+    \item Quelques fois les développeurs sont très familiarisés avec l'application qu'ils ne prennent pas soins des \bugs possibles.
+    \end{enumerate}
+
+Alors si nous trouvons un \bug il est nécessaire de l'incorporer
+dans les tests. Mais le problème avec ces \bugs est que
+l'utilisateur qui trouve le \bug n'est pas toujours en mesure
+d'indiquer à detail les conditions que conduisent à un \bug.
+
+
+\section{Définition du problème}
+
+Un premier pas vers la solution est de tracer les actions de
+l'utilisateur dans le logiciel. La trace d'un module est une
+description d'une séquence de fonctions qui commence avec l'état
+initial de ce module \cite{Parnas2001}.
+
+À l'heure actuelle, il y a des logiciels qui font leur trace de
+manière très simple et très suivant non structurée, mais il commence
+à y avoir des outils plus développés qui sont ajoutes aux logiciels
+pour faciliter la trace. Par contre, il reste à assurer que
+l'information soit significative et assez complète pour trouver le
+\bug.
+
+Un deuxième pas est l'utilisation de la trace dans la recherche du
+\bug. L'information qui est dans la trace est utilisée en simulant
+l'exécution faite par l'utilisateur. La plupart du temps, cette
+suivi est faite manuellement par le programmeur en considérant les
+données d'entrée et le code de l'application.
+
+\section{ Travaux connexes}
+\begin{enumerate}
+\item Jacareto
+
+\item Abbot
+
+\item Marathon
+
+\item Pounder
+
+\item Jemmy module
+
+\item JFCUnit
+\end{enumerate}
+
+\section{Déscription de jReplay}
+
+\subsection{Enregistrement et reéxecution}
+
+
+\subsection{Enregistrement}
+Quels sont les instructions à ajouter, où il faut les ajouter et le
+format de la trace. Pattern MVC facilite la insertion des
+instructions.
+
+En regardant la structure MVC et ses variantes il est possible de
+faire des hypothèses sur les points ou le data à tracer. En partant
+de l'idée de garder l'information suffisant elle peut être
+re-exécuté pour limiter la zone où se trouve le \bug dans le
+logiciel.
+
+Les conditions idéales d'une trace sont: tracer les actions
+<<signifitcatives>>, faciliter l'insertion de la trace, ne faire
+pas un fichier de trace énorme, ne pas tracer toutes les
+instructions, et finalement  tracer les instructions suffisants
+pour faire la ré-exécution
+
+\subsection{Ré-exécution}
+Organisation des packages, petit framework, breakpoints, exécution
+pas-à-pas, debugger Java.
+
+\subsection{Outil de test}
+
+High level JUnit.
+
+\section{Conclusions}
+\ints
+\bibliography{bib1,bibDiamant,bibProg}
+
+\end{document}

@@ -23,7 +23,6 @@ import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.Preferences;
 import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.SetOfInstructors;
 import dInternal.dDataTxt.SetOfStudents;
 import dInternal.dDataXML.rooms.SetOfCategories;
 import dInternal.dUtil.XMLTools;
@@ -102,12 +101,12 @@ public class XMLLoadData {
    * @param merge
    * @return
    */
-  public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
+ /* public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
   	currentList.hashCode();
   	merge= merge && true;
     SetOfInstructors instructorsList= new SetOfInstructors((new String("1")).getBytes(),5,14);
     return instructorsList;
-  }
+  }*/
 
   /**
    *

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DValue $Revision $  $Date: 2005-02-09 14:09:33 $
+ * Title: DValue $Revision $  $Date: 2005-03-08 16:00:44 $
  * Description: DValue is a class used to
  *
  *
@@ -15,11 +15,12 @@
  * you entered into with rgr.
  *
  * @version $ $
- * @author  $Author: gonzrubi $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
 package dInternal;
+
 
 public class DValue extends DObject{
 	
@@ -154,10 +155,20 @@ public class DValue extends DObject{
 		return ";"+_intValue+";"+_stringValue;
 	}
 	
+	/**
+	 * 
+	 */
+	public long getSelectedField(int choice) {		
+		switch(choice){
+	      case 0: return _refNo;
+	      case 1: return _intValue;
+	    }
+	    return -1;
+	}
 	/* (non-Javadoc)
 	 * @see dInternal.DObject#getSelectedField()
 	 */
-	public long getSelectedField() {		
+	public long getSelectedField() {
 		return 0;
 	}
 	

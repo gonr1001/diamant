@@ -7,11 +7,6 @@ package id1i7dee1dvw65xe1dvwx7w;
 */
 class diagram {
 /**
-@__ref <oiref:java#Class#dInternal.dData.dRooms.Category:oiref><oihard>
-@__modelType reference 
-*/
-class reference {
-}/**
 @__ref <oiref:java#Class#dInternal.dData.dRooms.SetOfSitesEvent:oiref><oihard>
 @__modelType reference 
 */
@@ -46,6 +41,26 @@ class reference {
 @__modelType reference 
 */
 class reference71 {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.dRooms.SetOfRoomsListener:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.dRooms.SetOfCategories:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.dRooms.SetOfRoomsEvent:oiref><oihard>
+@__modelType reference 
+*/
+class reference12 {
+}/**
+@__ref <oiref:java#Class#dInternal.dData.dRooms.SetOfRooms:oiref><oihard>
+@__modelType reference 
+*/
+class reference13 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -56,14 +71,13 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfSitesListener:oiref>=613,10,169,117,1:oigroup>
+@__positions <oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfSitesEvent:oiref>=10,570,109,101,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfSites:oiref>=290,10,200,494,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfCaracteristics:oiref>=726,142,180,181,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.dRooms.Category:oiref>=510,10,180,181,1:oigroup>
-<oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfSitesEvent:oiref>=10,570,109,101,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.dRooms.SetOfSites#_roomsAttributesInterpretor:oiref>=290,121,210,121:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.dRooms.RoomAttach:oiref>=510,170,200,446,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfCaracteristics:oiref>=726,142,180,181,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.dRooms.SetOfSites#_roomsAttributesInterpretor:oiref>=290,121,210,121:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.dRooms.Room:oiref>=795,1,83,101,1:oigroup>
+<oigroup:<oiref:java#Class#dInternal.dData.dRooms.SetOfSitesListener:oiref>=613,10,169,117,1:oigroup>
 <oigroup:<oiref:java#Class#dInternal.dData.dRooms.RoomsAttributesInterpretor:oiref>=10,10,200,222,1:oigroup>
 */
 class __positions {

@@ -1,15 +1,30 @@
 package dInternal;
+/**
+*
+* Title: DSetOfStates $Revision: 1.4 $  $Date: 2005-03-08 16:00:44 $
+* Description: DSetOfStates is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.4 $
+* @author  $Author: syay1801 $
+* @since JDK1.3
+*/
 
 import java.util.Vector;
 import dConstants.DConst;
-//import dInternal.DSetOfResources;
-//import dInternal.DResource;
-
-
 
 public class DSetOfStates extends DSetOfResources{
-
-  String _error="";
+  String _error = "";
 
   /**
    * @associates DSetOfStatesListener 
@@ -45,7 +60,6 @@ public class DSetOfStates extends DSetOfResources{
     state= new DState(DConst.COLOR_AUX,0);
     addResource(new DResource(DConst.SB_T_ASSIG,state),0);
 
-
     state= new DState(DConst.COLOR_BLACK,0);
     addResource(new DResource(DConst.SB_CONF,state),0);
 
@@ -55,7 +69,6 @@ public class DSetOfStates extends DSetOfResources{
     addResource(new DResource(DConst.SB_C_INST,state),0);
     state= new DState(DConst.COLOR_ROOM,0);
     addResource(new DResource(DConst.SB_C_ROOM,state),0);
-
   }
 
   /**
@@ -65,8 +78,6 @@ public class DSetOfStates extends DSetOfResources{
   public String getError() {
     return _error;
   }
-
-
 
   public void addState(String id, DState state){
     this.addResource(new DResource(id, state),0);
@@ -84,7 +95,7 @@ public class DSetOfStates extends DSetOfResources{
     //System.out.println("addSetOfStates Listener ...");
    }
 
-   public void sendEvent() {
+  public void sendEvent() {
     DSetOfStatesEvent event = new DSetOfStatesEvent(this);
     for (int i=0; i< _sosListener.size(); i++) {
       DSetOfStatesListener sosl = (DSetOfStatesListener) _sosListener.elementAt(i);
@@ -98,20 +109,19 @@ public class DSetOfStates extends DSetOfResources{
      _sosListener.removeElement(sosl);
    }
 
-/* (non-Javadoc)
- * @see dInternal.DSetOfResources#toWrite()
- */
-public String toWrite() {
-	// TODO Auto-generated method stub
-	return null;
-}
+   /* (non-Javadoc)
+    * @see dInternal.DSetOfResources#toWrite()
+    */
+   public String toWrite() {
+	 // TODO Auto-generated method stub
+	 return null;
+   }
 
-/* (non-Javadoc)
- * @see dInternal.DObject#getSelectedField()
- */
-public long getSelectedField() {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
+   /* (non-Javadoc)
+    * @see dInternal.DObject#getSelectedField()
+   */
+   public long getSelectedField() {
+	  // TODO Auto-generated method stub
+     return 0;
+   }
 }

@@ -111,6 +111,11 @@ class reference2 {
 @__modelType reference 
 */
 class reference3 {
+}/**
+@__ref <oiref:java#Class#dInterface.dAffectation.SectionStudentsDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -121,7 +126,35 @@ class __tags {
 */
 class __options {
 }/**
-@__positions 
+@__positions <oigroup:MemberLink#<oiref:java#Member#dInterface.dAffectation.SelectInstructors#_ead:oiref>=290,169,210,169:oigroup>
+<oigroup:<oiref:java#Extends#dInterface.dAffectation.EventsDlg#dInterface.dAffectation.EventsDlgInterface:oiref>=110,1704,110,1644:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.SetOfElementsInterface:oiref>=632,10,200,494,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.PartialTTStructureCmd:oiref>=1489,10,146,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.InitialAssignCmd:oiref>=1489,330,115,117,1:oigroup>
+<oigroup:<oiref:java#Extends#dInterface.dAffectation.UnityModifDlg#dInterface.dAffectation.SetOfElementsInterface:oiref>=354,564,672,504:oigroup>
+<oigroup:<oiref:java#Extends#dInterface.dAffectation.SectionModifDlg#dInterface.dAffectation.SetOfElementsInterface:oiref>=1244,564,792,504:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.RoomsAvailabilityCmd:oiref>=1072,170,145,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.SelectGroupDlg:oiref>=884,564,180,270,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.ActivityModifDlg:oiref>=468,564,188,142,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.EventsDlgInterface:oiref>=10,958,200,686,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.ActivityModifCmd:oiref>=1489,170,112,117,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInterface.dAffectation.EditActivityDlg#_evDlgInt:oiref>=110,888,110,958:oigroup>
+<oigroup:<oiref:java#Extends#dInterface.dAffectation.ActivityModifDlg#dInterface.dAffectation.SetOfElementsInterface:oiref>=562,564,712,504:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.EventsCmd:oiref>=1364,430,88,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.SectionDlg:oiref>=1114,850,200,958,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.RoomsAvailabilityDlg:oiref>=1302,10,167,382,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.SectionCmd:oiref>=1364,590,89,117,1:oigroup>
+<oigroup:<oiref:java#Extends#dInterface.dAffectation.TypeModifDlg#dInterface.dAffectation.SetOfElementsInterface:oiref>=752,564,752,504:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.DefineSetCmd:oiref>=1180,10,102,117,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.TypeModifDlg:oiref>=676,564,188,174,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.SelectInstructors:oiref>=290,10,200,318,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.UnityModifDlg:oiref>=260,564,188,174,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.SectionModifDlg:oiref>=1144,564,200,238,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.ActivityDlg:oiref>=852,10,200,366,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInterface.dAffectation.SelectGroupDlg#_sectionMod:oiref>=1064,683,1144,683:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.EditActivityDlg:oiref>=10,10,200,878,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.EventsDlg:oiref>=16,1704,188,158,1:oigroup>
+<oigroup:<oiref:java#Class#dInterface.dAffectation.ActivityCmd:oiref>=1072,10,88,117,1:oigroup> 
 */
 class __positions {
 }

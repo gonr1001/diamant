@@ -1,8 +1,6 @@
-package dTest.dInternal.dData.dRooms;
-
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2005-02-08 21:07:13 $
+* Title: SetOfSitesTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	SetOfSitesTest is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -18,9 +16,12 @@ package dTest.dInternal.dData.dRooms;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
+
+package dTest.dInternal.dData.dRooms;
+
 import java.io.File;
 
 import junit.framework.Test;

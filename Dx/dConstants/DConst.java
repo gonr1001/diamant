@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.136 $  $Date: 2005-02-10 16:45:54 $
+ * Title: DConst $Revision: 1.137 $  $Date: 2005-03-08 16:00:43 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.136 $
+ * @version $Revision: 1.137 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -28,10 +28,10 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "10 fev 2005";//res.getString("vDate");
+  	public final static String V_DATE = "4 mars 2005";//res.getString("vDate");
 	public final static boolean DEVELOPMENT = false;
     public static boolean USER_TEST_ACTIV = false; // comm
-	public final static String JVM = "1.4.2_03"; //will be 1.5.0_01
+	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	
 	public final static String FILE_VER_NAME1_5 = res.getString("fileVerName1_5"); // "Diamant1.5" 
 	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6" 
@@ -162,6 +162,8 @@ public class DConst {
   public final static String GROUP_ASSIGN_M = res.getString("GroupAssignM");//Groupes
   public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Locaux
   public final static String EVENTS_ASSIGN_M= res.getString("EventsAssignM");//Évenements
+  public final static String CONFLICTS_OF_AN_EVENT= res.getString("conflictsOfAnEvent");//Conflits d'un événement
+  
   public final static String MANUAL_ASSIGN_M= res.getString("ManualAssignM");//Évenements
   public final static String DEFINE_SET_M = res.getString("DefineSetM");//Définir ensemble
   public final static String PARTIAL_TTSTRUCTURE_M = res.getString("PartialTTStructureM");//Grille Partielle
@@ -198,7 +200,10 @@ public class DConst {
   //Help menu
   public final static String HELP = res.getString("help");//Aide
   public final static String ABOUT_M = res.getString("aboutM");//A propos de
-
+  
+  //Multi site menu
+  public final static String MULTI_SITE = res.getString("multiSite");//multi Site
+  
   public final static String NEW_TT_TD  = res.getString("newTTTD");//Indiquez grille horaire, unp
   public final static String NTT_CY_M  = res.getString("nTTCyM");//Cycle, unp
   public final static String NTT_EX_M  = res.getString("nTTExM");//Examen, unp
@@ -258,6 +263,9 @@ public class DConst {
   public final static String SORT_BY_NAME = res.getString("SortByName");//par nom
   public final static String SORT_BY_PROGRAM = res.getString("SortByProgram");//par programme
   public final static String CHAR_FIXED_IN_GROUP = " *";
+  public final static String INFORMATION_DLG_NAME = res.getString("InfoDlgName");//Info Dialog name
+  public final static String INFORMATION_DLG_MES = res.getString("InfoDlgMes");//Info Dialog message
+  public final static int NUM_OF_LISTS_IN_ASSIGNED_PANEL=4;
   //EventsDlg
   public final static String EVENTS_DLG_TITLE = res.getString("EventsDlgTitle");//Évenements
   public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés
@@ -277,7 +285,7 @@ public class DConst {
 
   // Manual improvementDlg
    public final static String MANUALIMPROVEMENT_DLG_TITLE = res.getString("ManImpDlgTitle");//Évenements
-
+   public final static String CONFLICTS_OF_AN_EVENT_DLG_TITLE = res.getString("ConflictsOfAnEventDlgTitle");//Évenements
 
   //Export Dialog
    public final static String EXPORT_MESSAGE = res.getString("ExportMessage");//Message d'exportation
@@ -482,7 +490,7 @@ public class DConst {
   public static final int ACT_CAPACITY_LENGTH = 5;
   public static final String ACT_DEFAULT_CAPACITY ="99999";
   
-  // rooms and sites
+  // rooms and sites v 1.7
   public static final int ROOM_NAME_TOKEN = 0;
   public static final int ROOM_CAPACITY_TOKEN = 1;
   public static final int ROOM_FUNCTION_TOKEN = 2;
@@ -493,7 +501,7 @@ public class DConst {
   public static final String ROOM_STANDARD_SITE= "SHE";
   public static final String ROOM_STANDARD_CAT= "CAT 1";
   
-  // students
+  // students v 1.7
   public static final int STUDENT_COURSE_LENGTH = 7;
   public static final String STUDENT_STANDARD_SITE= "SHE";
   public static final int STUDENT_NAME_LINE = 0;
@@ -506,15 +514,30 @@ public class DConst {
   public static final int STUDENT_FIRST_NAME_TOKEN=2;
   public static final int STUDENT_LAST_NAME_TOKEN=3;
   
-  // activities
+  // activities v 1.7
   public static final String ACTIVITY_STANDARD_SITE= "SHE";
   public static final String ACTIVITY_STANDARD_CAPACITY= "99999";
   public static final String ACTIVITY_NAME_TOKEN_SEPARATOR= " ";
   public static final int ACTIVITY_SITE_TOKEN=2;
+  
+  public static final String ALL_SITES = res.getString("allSites");//Tous
+  public static final int X_OFFSET = 100;
+  public static final int Y_OFFSET = 100;
   //public static final char STUDENT_NAME_DESC_TOKEN='E';
   //public static final char STUDENT_COURSES_DESC_TOKEN='C';
   /*public DConst() {
   }*/
   
+  // availability constants
+  public static final int AVAILABILITY_YES = 1;
+  public static final int AVAILABILITY_NO = 5;
+  public static final int AVAILABILITY_USED = 2;
+  public static final int AVAILABILITY_ASSIGN_DEFAULT = 0;
+  public static final String AVAILABILITY_ASSIGN_SEPARATOR = "+";
+  public static final String AVAILABILITY_SEPARATOR = "/";
+  
+  public static final String USEDSHE="SHE";
+  public static final String USEDLON="LON";
+  public static final String USEDCOW="COW";
   public static final String DEFAULT_MIX_ALGO = "8";
 }

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DLoadData $Revision: 1.10 $  $Date: 2005-02-09 20:19:30 $
+ * Title: DLoadData $Revision: 1.11 $  $Date: 2005-03-08 16:00:44 $
  * Description: LoadData is a class used to read all files then 
  *              the corresponding Resources are created.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -35,8 +35,7 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.DataExchange;
-//import dInternal.dUtil.DXToolsMethods;
-//import dInternal.dUtil.DXValue;
+
 import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.SetOfInstructors;
@@ -51,7 +50,6 @@ import dInternal.dData.dStudents.Student;
 
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-//import dInternal.dOptimization.SetOfEvents;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.txt.FilterFile;
 import dConstants.DConst;

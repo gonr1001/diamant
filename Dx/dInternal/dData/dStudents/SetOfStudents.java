@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudents $Revision: 1.7 $  $Date: 2005-02-08 21:21:19 $
+* Title: SetOfStudents $Revision: 1.8 $  $Date: 2005-03-08 16:00:44 $
 * Description: SetOfStudents is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.8 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -25,8 +25,11 @@ package dInternal.dData.dStudents;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.DResource;
 import dInternal.DSetOfResources;
+import dInternal.DValue;
 import dInternal.DataExchange;
+import dInternal.dData.StandardCollection;
 import dInternal.dUtil.DXToolsMethods;
 
 /**
@@ -213,6 +216,143 @@ public class SetOfStudents extends DSetOfResources {
 			}//end for(int i=0; i< size(); i++)
 			return list;
 		}
+		
+		/**
+		 *
+		 * @param activityID
+		 * @param typeID
+		 * @param group
+		 * @param order  
+		 * @return if order = 0, return ID, key, studentProgram;
+		 * if order = 1, return key, ID,  studentProgram;
+		 * if order = 2, return studentProgram, key, ID;
+		 */
+		
+		public Vector getStudentsByGroupTable(String activityID, String typeID, int group, int order){
+			Vector v = new Vector(3);
+			Vector vID =  new Vector(1);
+			Vector vKey =  new Vector(1);
+			Vector vSelField =  new Vector(1);
+			Vector vFixState =  new Vector(1);
+			//int IDLength = DConst.STUDENT_ID_LENGTH;
+			int keyLength = DConst.STUDENT_KEY_LENGTH;
+			//int studentProgramLength = DConst.STUDENT_PROGRAM_LENGTH;
+			int diff;
+			String ID, key, studentProgram;
+			Student studentRes;
+			//Vector list= new Vector();
+			if (order == 0)
+				sortSetOfResourcesByID();
+			if (order == 1)
+				sortSetOfResourcesByKey();
+			if (order == 2)
+				sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
+			//System.out.println("#############################################################");
+			for(int i=0; i < size(); i++){
+				studentRes = (Student)getResourceAt(i);
+				if(studentRes.isInGroup(activityID + typeID, group)){
+					ID = studentRes.getID();
+					/*diff = Math.abs(IDLength - ID.length());
+					for(int j = 0; j < diff; j++)
+						ID = ID+" ";
+						*/ // to remove
+					key = String.valueOf(studentRes.getKey());
+					diff = Math.abs(keyLength - key.length());
+					for(int j = 0; j < diff; j++)
+						key = "0"+ key;
+					studentProgram = studentRes.getAuxField();
+					studentProgram = studentProgram.substring(0, 6);
+					vID.add(ID);
+					vKey.add(key);
+					vSelField.add(studentProgram);
+					if(studentRes.isFixedInGroup(activityID+typeID,group))
+						vFixState.add(""+DConst.CHAR_FIXED_IN_GROUP);
+					else 
+						vFixState.add(" ");
+				}//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
+			}//end for(int i=0; i< size(); i++)
+			if (order == 0){
+				v.add(vID);//str = ID + " " + key + " " + studentProgram;
+				v.add(vKey);
+				v.add(vSelField);
+			}
+		if (order == 1){
+			v.add(vKey);//str = key + " " + ID + " " + studentProgram;
+			v.add(vID);
+			v.add(vSelField);
+		}
+		if (order == 2){
+			v.add(vSelField);//str = studentProgram + " " + ID + " " + key;
+			v.add(vID);
+			v.add(vKey);
+		}
+		v.add(vFixState);
+			return v;
+		}
+		
+		/**
+		 * Create an instance of set of students from a given vector
+		 * <p> this set of student is sort by key
+		 * @param vec
+		 * @return
+		 */
+		public static DSetOfResources createAStudentInstance(Vector vec){
+			DSetOfResources sor = new StandardCollection();
+			if(vec.size()>=3){
+				Vector v1 = (Vector)vec.get(0);
+				Vector v2 = (Vector)vec.get(1);
+				Vector v3 = (Vector)vec.get(2);
+				Vector v4 = new Vector(v1.size());
+				if(vec.size() == 4)
+					v4 = (Vector)vec.get(3);
+				for(int i=0; i< v1.size(); i++){
+					long matricule = Long.parseLong(v1.get(i).toString());
+					String name = v2.get(i).toString();
+					int program = Integer.parseInt(v3.get(i).toString());
+					String status = "";
+					if(i < v4.size())
+						status = (String)v4.get(i);
+					DValue value= new DValue();
+					value.setStringValue(status);
+					value.setIntValue(program);
+					DResource rsc = new DResource(name, value);
+					sor.setCurrentKey(matricule);
+					sor.addResource(rsc,0);
+				}
+				
+			}
+			return sor;
+		}
+		
+		/**
+		 * 
+		 * @param sos
+		 * @return
+		 */
+		public static Vector createAVectorInstance(DSetOfResources sos){
+			Vector v = new Vector(1);
+				Vector [] vec = {new Vector(1),new Vector(1),new Vector(1),new Vector(1)};
+				int keyLength = DConst.STUDENT_KEY_LENGTH;
+				int diff;
+				String key;
+				for(int i=0; i< sos.size(); i++){
+					DResource rsc = sos.getResourceAt(i);
+					key = String.valueOf(rsc.getKey());
+					diff = Math.abs(keyLength - key.length());
+					for(int j = 0; j < diff; j++)
+						key = "0"+ key;
+					vec[0].add(key);
+					vec[1].add(rsc.getID());
+					DValue value = (DValue)rsc.getAttach();
+					vec[2].add(String.valueOf(value.getIntValue()));
+					vec[3].add(value.getStringValue());
+					
+				}
+				for(int i=0; i< vec.length; i++)
+					v.add(vec[i]);
+			return v;
+		}
+		
 		
 		/**
 		   *

@@ -8,7 +8,8 @@ package dInternal.dData.dInstructors;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import java.awt.Component;
+
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -16,19 +17,13 @@ import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
+import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfInstructors extends DSetOfResources{
 
-//private Vector instructorsList;// contains list of InstructorAttach
-  //private byte[] _dataloaded; //_st;// instructors in text format
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
   private String _error="";
-
-  /**
-   * @associates SetOfInstructorsListener 
-   */
-  private Vector _soiListeners= new Vector(1);
 
  /**
   * constructor
@@ -42,15 +37,7 @@ public class SetOfInstructors extends DSetOfResources{
 
   }
 
-  /**
-   *
-   * @param dataloaded
-   */
-  /*public void setDataToLoad(byte[]  dataloaded, int nbDay, int nbPerDay){
-    _dataloaded = dataloaded;
-    _numberOfLines = nbDay;
-   _numberOfColumns = nbPerDay;
-  }*/
+
 
   /**
    * methode analyse st, a stringtokenizer variable
@@ -93,7 +80,10 @@ public class SetOfInstructors extends DSetOfResources{
           break;
         case 2:
           // traitement des colonnes
-          StringTokenizer tokenDispo = new StringTokenizer(token);
+        //extract first part of the line that gives availability
+        	String firstPart = DXToolsMethods.getToken(token,
+        			DConst.AVAILABILITY_SEPARATOR,0);
+          StringTokenizer tokenDispo = new StringTokenizer(firstPart);
           if(tokenDispo.countTokens() != _numberOfColumns){
              _error = DConst.INST_TEXT3+line
            +DConst.INST_TEXT5 +
@@ -103,7 +93,8 @@ public class SetOfInstructors extends DSetOfResources{
           // traitement de la description de la disponibilité
           while (tokenDispo.hasMoreElements()){
             String dispo = tokenDispo.nextToken();
-            if ((!dispo.equalsIgnoreCase("1")) && (!dispo.equalsIgnoreCase("5"))){
+            if ((!dispo.equalsIgnoreCase("1")) && (!dispo.equalsIgnoreCase("5"))
+            		&& (!dispo.equalsIgnoreCase("2"))){
                _error = DConst.INST_TEXT4+line
                   +DConst.INST_TEXT5 +
                   "\n" + DConst.INST_TEXT6;
@@ -130,10 +121,10 @@ public class SetOfInstructors extends DSetOfResources{
    *
    */
   public void buildSetOfResources(DataExchange de, int beginPosition){
-    //StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
-  	StringTokenizer st = new StringTokenizer(de.getContents(), DConst.CR_LF );
+   	StringTokenizer st = new StringTokenizer(de.getContents(), DConst.CR_LF );
   	String token;
-    Vector avail= new Vector();
+    Vector avail= new Vector(1);
+    Vector siteAvail = new Vector(1);
     String instID="";
     int state = beginPosition;
     int stateDispo =1;
@@ -150,17 +141,28 @@ public class SetOfInstructors extends DSetOfResources{
         case 1:
           // instructor name
           instID= token;
-          avail= new Vector();
+          avail= new Vector(1);
+          siteAvail = new Vector(1);
           state =2;
           stateDispo =1;
           break;
         case 2:
           // instructor availabilities
-         avail.add(token);
+        	 //extract first part of the line that gives availability
+        	String firstPart = DXToolsMethods.getToken(token,
+        			DConst.AVAILABILITY_SEPARATOR,0);
+        	 //extract second part of the line that gives the used state
+        	//in a site
+        	String secondPart = DXToolsMethods.getToken(token,
+        			DConst.AVAILABILITY_SEPARATOR,1);
+         avail.add(firstPart);
+         if(secondPart.length()!=0)
+         	siteAvail.add(secondPart);
          stateDispo++;
          if (stateDispo> _numberOfLines){
            InstructorAttach inst = new InstructorAttach();
            inst.setAvailability(avail);
+           inst.setAssignAvailability(siteAvail);
            this.addResource(new DResource( instID, inst),1);
            state =1;
          }
@@ -173,31 +175,6 @@ public class SetOfInstructors extends DSetOfResources{
     return _error;
   }
 
-  /**
-   *
-   * @param component
-   */
- public void sendEvent(Component component) {
-   SetOfInstructorsEvent event = new SetOfInstructorsEvent(this);
-   for (int i=0; i< _soiListeners.size(); i++) {
-     SetOfInstructorsListener soil = (SetOfInstructorsListener) _soiListeners.elementAt(i);
-     soil.changeInSetOfInstructors(event, component);
-     //System.out.println("SetOfActivities listener started: "+i);//debug
-   }
-  }
-
-  /**
-   *
-   * @param dml
-   */
-  public synchronized void addSetOfInstructorsListener(SetOfInstructorsListener soil) {
-    //System.out.println("SetOfActivities listener addeed: ");//debug
-    if (_soiListeners.contains(soil)){
-      return;
-    }
-    _soiListeners.addElement(soil);
-   // System.out.println("addSetOfInstructors Listener ...");//debug
-  }
 
 /* (non-Javadoc)
  * @see dInternal.DSetOfResources#toWrite()
@@ -220,13 +197,11 @@ public long getSelectedField() {
 	return 0;
 }
 
-
-  /**
-   * created a list of instructor
-   * OUTPUT: Vector of String
-   */
- // public Vector getNamesVector() {
- //   return new Vector();
- // }
+public void remAllAssignedToASite(String site){
+	for (int i = 0; i < this.size(); i++) {
+		((InstructorAttach)this.getResourceAt(i).getAttach())
+		.remAllAssignedToASite(site);
+	}// for (int i = 0; i < _instructorSiteAvailability.size(); i++)
+}
 
 }

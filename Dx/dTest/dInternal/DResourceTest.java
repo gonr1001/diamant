@@ -1,6 +1,6 @@
 /**
 *
-* Title: DResourceTest $Revision $  $Date: 2005-02-09 20:19:30 $
+* Title: DResourceTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DResourceTest is a class used to test the class 
 * 				DResource
 *
@@ -50,34 +50,34 @@ public class DResourceTest extends TestCase{
   	b = new DResource("20", dObj);
   	c = new DResource("20", dObj);
   }
-  public void testAgetKey(){
-  	assertTrue(a.getKey()==0);
+  public void testA_getKey(){
+  	assertEquals("testA_getKey: assertEquals", 0, a.getKey());
   }
-  public void testAgetID(){
-  	assertTrue(a.getID().compareTo("10")==0);
+  public void testA_getID(){
+  	assertEquals("testA_getID: assertEquals", "10", a.getID());
   }
-  public void testAgetAttach(){
+  public void testA_getAttach(){
   	DValue tmp = new DValue();
-  	assertTrue(a.getAttach().isEquals(tmp));
+  	assertEquals("testA_getAttach: assertEquals", true, a.getAttach().isEquals(tmp));
   }
-  public void testAsetAttach(){
+  public void testA_setAttach(){
   	tmp.setIntValue(20);
   	a.setAttach(tmp);
-  	assertTrue(((DValue)a.getAttach()).getIntValue()==20);
+  	assertEquals("testA_setAttach: assertEquals", 20,((DValue)a.getAttach()).getIntValue());
   }
-  public void testAsetIntValue(){
+  public void test_AsetIntValue(){
   	a.setID("11");
-  	assertTrue(a.getID().compareTo("11")==0);
+  	assertEquals("test_AsetIntValue: assertEquals", "11",a.getID());
   }
-  public void testAsetManuallyCreated(){
+  public void testA_setManuallyCreated(){
   	a.setManuallyCreated(true);
-  	assertTrue(a.isManuallyCreated());
+  	assertEquals("testA_setManuallyCreated: assertEquals", true, a.isManuallyCreated());
   }
-  public void testBtoWrite(){
-  	assertEquals("testBtoWrite: assertEquals", "20;;-1;", b.toWrite(";"));
+  public void testB_toWrite(){
+  	assertEquals("testB_toWrite: assertEquals", "20;;-1;", b.toWrite(";"));
   	//assertEquals(.compareTo()==0);
   }
-  public void testBisEquals(){
-  	assertTrue(b.isEquals(c));
+  public void testB_isEquals(){
+  	assertEquals("testB_isEquals: assertEquals", true, b.isEquals(c));
   }
 }

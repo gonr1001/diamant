@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.131 $  $Date: 2005-02-02 16:27:52 $
+ * Title: DStringFrRes $Revision: 1.132 $  $Date: 2005-03-08 16:00:43 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.131 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.132 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -123,6 +123,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"LocauxAssignM", "Locaux ..."},
     { "instAssignD", "To be defined"},
     {"EventsAssignM", "Événements ..."},
+	{ "conflictsOfAnEvent", "Conflits d'un événement ..."},
     {"ManualAssignM","Affectation manuelle ..."},
     {"DefineSetM","Définir ensemble"},
     {"PartialTTStructureM","Grille Partielle"},
@@ -172,7 +173,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     			"All rigths reserved \n" +
     			"Tous droits réservés \n" +
     			"rgr \n 2000 - 2004"},
-
+				
+				{ "multiSite", "Multi-Site"},			
+				
     //User
     { "userTest", "Beta Test"},
     { "user1", "Admin Formation Groupes"},
@@ -265,6 +268,8 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"activText14","Wrong group name at line: "},
     {"activText15","Wrong site name at line: "},
     {"activText16","Wrong capacity format at line: "},
+    {"allSites","Tous"},
+    
 
 
     //Assign Dialogs
@@ -292,13 +297,16 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"SortByMatricul","Par matricule"},
     {"SortByName","Par nom"},
     {"SortByProgram", "Par programme"},
+    {"InfoDlgName", "Operation interdite"},
+    {"InfoDlgMes", "Appliquer ou fermer pour continuer"},
 
     //EventsDialog
     {"EventsDlgTitle","Événement"},
     {"EventsFixed","Figés"},
     {"EventsPlaced","Placés"},
     {"EventsNotPlaced","Non placés"},
-    //
+    
+    {"ConflictsOfAnEventDlgTitle","Conflits d'un événement"},
     {"ManImpDlgTitle","Affectation manuelle"},
 
 
@@ -315,7 +323,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Optimisation dialogs
     {"InitialAssignMessage", "Affectation initiale effectuée"},
     {"TTBuildMessage", "Construction d'horaires terminée"},
-    {"StudentsMixingMessage", "Brassage d'étudiants terminé"},
+    {"StudentsMixingMessage", "Formation de groupes terminé"},
 
     //Report dialogs
     {"ReportDlgTitle","Rapports"},

@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 	/**
 	*
-	* Title: DataExchangeTest $Revision $  $Date: 2005-02-03 16:52:43 $
+	* Title: DataExchangeTest $Revision $  $Date: 2005-03-08 16:00:45 $
 	* Description: DataExchangeTest is a class used to test the class DValue
 	*
 	*
@@ -16,7 +16,7 @@ package dTest.dInternal.dData;
 	* you entered into with rgr.
 	*
 	* @version $ $
-	* @author  $Author: garr2701 $
+	* @author  $Author: syay1801 $
 	* @since JDK1.3
 	*/
 
@@ -44,15 +44,15 @@ package dTest.dInternal.dData;
 	  	a = new ByteArrayMsg("new header","new contents");
 	  }
 	  
-	  public void testAgetContents(){
-	  	assertTrue(a.getContents().compareTo("new contents")==0);
+	  public void test_getContents(){
+	  	assertEquals("test_getContents: assertEquals", "new contents", a.getContents());
 	  }
-	  public void testAgetHeader(){
-	  	assertTrue(a.getHeader().compareTo("new header")==0);
+	  public void test_getHeader(){
+	  	assertEquals("test_getHeader: assertEquals", "new header", a.getHeader());
 	  }
-	  public void testAsetContents(){
+	  public void test_setContents(){
 	  	a.setContents("renew contenants");
-	  	assertTrue(a.getContents().compareTo("renew contenants")==0);
+	  	assertEquals("test_setContents: assertEquals", "renew contenants", a.getContents());
 	  }
 
 }

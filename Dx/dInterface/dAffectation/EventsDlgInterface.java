@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.17 $  $Date: 2005-02-08 16:24:40 $
+ * Title: EventsDlgInterface $Revision: 1.18 $  $Date: 2005-03-08 16:00:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.18 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -22,14 +22,11 @@
  * All Exceptions must be handled explicitly.
  */
 
-
 /**
  * Description: EventsDlgInterface is a class used to
- *
+ *  
  */
 package dInterface.dAffectation;
-
-
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -56,277 +53,325 @@ import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dUtil.DXToolsMethods;
 
-public abstract class EventsDlgInterface extends JDialog implements ActionListener{
+public abstract class EventsDlgInterface extends JDialog implements
+        ActionListener {
 
-  protected DApplication _dApplic;
-  protected Dimension _dialogDim = new Dimension(600, 400);
-  protected EventAttach _currEvent;
-  protected int buttonsPanelHeight = 80;
-  protected JLabel _leftLabel, _centerLabel, _rightLabel;
-  protected JList _leftList, _centerList, _rightList;
-  protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel, _leftArrowsPanel;
-  protected ButtonsPanel _buttonsPanel;
-  protected Object[] selectedItems;
-  protected SetOfActivities _activities;
-  protected SetOfEvents _events;
-  protected String _eventFullKey;
-  protected Unity _currUnity;
+    protected DApplication _dApplic;
 
-  /**
-   * @associates String 
-   */
-  protected Vector _leftVector, _centerVector, _rightVector;
-  protected JDialog _jDialog;
+    //protected Dimension _dialogDim = new Dimension(600, 400);
+    protected EventAttach _currEvent;
 
+    protected int buttonsPanelHeight = 80;
 
+    protected JLabel _leftLabel, _centerLabel, _rightLabel;
 
+    protected JList _leftList;
 
-  /**
-   * Constructor
-   * @param dApplic The application
-   * @param title the title of the dialog
-   */
-  public EventsDlgInterface(DApplication dApplic, String title) {
-    super(dApplic.getJFrame(), title, true);
-    _dApplic = dApplic;
-    _jDialog= this;
-    if (_dApplic.getDMediator().getCurrentDoc() == null)
-      return;
-    _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-    _events = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents();
-  }//end method
+    protected JList _centerList;
 
-  public abstract void actionPerformed(ActionEvent e);
-  public abstract void buildArrowButtons(boolean enableArrows);
-  public abstract ButtonsPanel setButtons();
+    protected JList _rightList;
 
-  /**
-   * Initialise the dialog
-   */
-  protected void initialize(){
-    getContentPane().setLayout(new BorderLayout());
-    setSize(_dialogDim);
-    setResizable(false);
-    buildVectors();
-    setLeftPanel();
-    setCenterPanel();
-    setRightPanel();
-    _buttonsPanel = setButtons();
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
-    setLocationRelativeTo(_dApplic.getJFrame());
-    setVisible(true);
-  }
+    protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel,
+            _leftArrowsPanel;
 
-  /**
-   * initialize label in each panel
-   */
-  public void initializePanel(){
-    buildVectors();
-    _leftLabel.setText(String.valueOf(_leftVector.size()));
-    _leftList.setListData(_leftVector);
-    _centerLabel.setText(String.valueOf(_centerVector.size()));
-    _centerList.setListData(_centerVector);
-    _rightLabel.setText(String.valueOf(_rightVector.size()));
-    _rightList.setListData(_rightVector);
-  }
-  /**
-   * build buttom to use in the dialog
-   */
+    protected ButtonsPanel _buttonsPanel;
 
+    protected Object[] selectedItems;
 
-  /**
-   * Sets the _centerPanel, the panel containing the _centerList and the
-   * arrows panels
-   */
-  private void setCenterPanel(){
-    Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.5), (int)_dialogDim.getHeight()-buttonsPanelHeight);
-      _centerList = new JList(_centerVector);
-      _centerList.addMouseListener(mouseListenerLists);
-      JLabel titleLabel = new JLabel(DConst.EVENTS_PLACED + " ");
-      _centerLabel = new JLabel(String.valueOf(_centerVector.size()));
-      _centerLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
-      //The listContainerPanel
-      JPanel listPanel = DXTools.listPanel(_centerList, (int)panelDim.getWidth()-140, (int)panelDim.getHeight()-25);
-      JPanel listContainerPanel = new JPanel();
-      listContainerPanel.setPreferredSize(new Dimension((int)panelDim.getWidth()-140, (int)panelDim.getHeight()));
-      listContainerPanel.add(titleLabel);
-      listContainerPanel.add(_centerLabel);
-      listContainerPanel.add(listPanel);
-      //the arrows panels
-      /*String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
-      _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames);
-      _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames);*/
-      //the _centerPanel
-      _centerPanel = new JPanel();
-      _centerPanel.setPreferredSize(panelDim);
-      _centerPanel.add(_leftArrowsPanel);
-      _centerPanel.add(listContainerPanel);
-      _centerPanel.add(_rightArrowsPanel);
-    getContentPane().add(_centerPanel, BorderLayout.CENTER);
-  }//end method
+    protected SetOfActivities _activities;
 
-  /**
-   * Sets the _leftPanel
-   */
-  private void setLeftPanel(){
-    Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.24), (int)_dialogDim.getHeight()-buttonsPanelHeight);
-    _leftList = new JList(_leftVector);
-    _leftList.addMouseListener(mouseListenerLists);
-    JLabel titleLabel = new JLabel(DConst.EVENTS_FIXED + " ");
-    _leftLabel = new JLabel(String.valueOf(_leftVector.size()));
-    _leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
-    JPanel listPanel = DXTools.listPanel(_leftList, (int)panelDim.getWidth(), (int)panelDim.getHeight()-25);
-    //the _leftPanel
-    _leftPanel = new JPanel();
-    _leftPanel.setPreferredSize(panelDim);
-    _leftPanel.add(titleLabel);
-    _leftPanel.add(_leftLabel);
-    _leftPanel.add(listPanel);
-    //this panel is just for harmonise the size of all panels in the dialog
-    JPanel panelContainer = new JPanel();
-    panelContainer.add(_leftPanel);
-    getContentPane().add(panelContainer, BorderLayout.WEST);
-  }//end method
+    protected SetOfEvents _events;
 
+    protected String _eventFullKey;
 
-  /**
-   * Sets the _rightPanel
-   */
-  private void setRightPanel(){
-    Dimension panelDim = new Dimension((int)(_dialogDim.getWidth()*0.24), (int)_dialogDim.getHeight()-buttonsPanelHeight);
-    _rightList = new JList(_rightVector);
-    _rightList.addMouseListener(mouseListenerLists);
-    JLabel titleLabel = new JLabel(DConst.EVENTS_NOT_PLACED + " ");
-    _rightLabel = new JLabel(String.valueOf(_rightVector.size()));
-    _rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
-    JPanel listPanel = DXTools.listPanel(_rightList, (int)panelDim.getWidth(), (int)panelDim.getHeight()-25);
-    //the _rightPanel
-    _rightPanel = new JPanel();
-    _rightPanel.setPreferredSize(panelDim);
-    //_rightPanel.setPreferredSize(new Dimension((int)panelDim.getWidth(), (int)panelDim.getHeight()-10));
-    _rightPanel.add(titleLabel);
-    _rightPanel.add(_rightLabel);
-    _rightPanel.add(listPanel);
-    //this panel is just for harmonise the size of all panels in the dialog
-    JPanel panelContainer = new JPanel();
-    panelContainer.add(_rightPanel);
-    getContentPane().add(panelContainer, BorderLayout.EAST);
-  }//end method
+    protected Unity _currUnity;
 
+    /**
+     * @associates String
+     */
+    protected Vector _leftVector;
+    
+    protected Vector _centerVector;
+    
+    protected Vector _rightVector;
 
+    protected JDialog _jDialog;
 
+    /**
+     * Constructor
+     * 
+     * @param dApplic
+     *            The application
+     * @param title
+     *            the title of the dialog
+     */
+    public EventsDlgInterface(DApplication dApplic, String title) {
+        super(dApplic.getJFrame(), title, true);
+        _dApplic = dApplic;
+        _jDialog = this;
+        if (_dApplic.getDMediator().getCurrentDoc() == null)
+            return;
+        _activities = _dApplic.getDModel().getSetOfActivities();
+        _events = _dApplic.getDModel().getSetOfEvents();
+    }//end method
 
-  /**
-   * Builds the vectors _rightVector, _centerVector, _leftVector for their
-   * first display
-   */
+    public abstract void actionPerformed(ActionEvent e);
 
-  private void buildVectors(){
-    _leftVector = new Vector();
-    _centerVector = new Vector();
-    _rightVector = new Vector();
-    String _eventFullID;
-    StringTokenizer stk;
-    for(int i = 0; i < _events.size(); i++){
-      _eventFullKey = ((EventAttach)_events.getResourceAt(i).getAttach()).
-                getPrincipalRescKey();
-      stk = new StringTokenizer(_eventFullKey, ".");
-      _currUnity = _activities.getUnity(Long.parseLong(stk.nextToken()),
-                                        Long.parseLong(stk.nextToken()),
-                                        Long.parseLong(stk.nextToken()),
-                                        Long.parseLong(stk.nextToken()));
-      stk = new StringTokenizer(_eventFullKey, ".");
-      _eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk.nextToken()),
-          Long.parseLong(stk.nextToken()),
-          Long.parseLong(stk.nextToken()),
-          Long.parseLong(stk.nextToken()));
-      if (_currUnity.compareByField(2, "false")){
-        _rightVector.add(_eventFullID);
-      }else{
-        if (_currUnity.compareByField(3, "true")){
-          _leftVector.add(_eventFullID);
-        }else{
-          _centerVector.add(_eventFullID);
-        }
-      }//end else if (_currUnity.compareByField(2, "false"))
-    }//end for
-  }//end method
+    public abstract void buildArrowButtons(boolean enableArrows);
 
-  /**
-   * The MouseListener for the JLists
-   */
-  private MouseListener mouseListenerLists = new MouseAdapter(){
-    public void mouseClicked(MouseEvent e) {
-      if (((JList)e.getSource()).getModel().getSize() == 0)
-        return;
-      if (e.getSource().equals(_leftList)){
-          _centerList.clearSelection();
-          _rightList.clearSelection();
-          selectedItems = _leftList.getSelectedValues();
-      }//end if (e.getSource().equals(_leftList))
-      if (e.getSource().equals(_centerList)){
-          _leftList.clearSelection();
-          _rightList.clearSelection();
-          selectedItems = _centerList.getSelectedValues();
-      }//end if (e.getSource().equals(_centerList))
-      if (e.getSource().equals(_rightList)){
-          _centerList.clearSelection();
-          _leftList.clearSelection();
-          selectedItems = _rightList.getSelectedValues();
-      }//end if (e.getSource().equals(_rightList))
-      if (e.getClickCount() == 2) {
-        doubleClicMouseProcess();
-      }//end if
-    }// end public void mouseClicked
-  };//end definition of MouseListener mouseListener = new MouseAdapter(){
+    public abstract ButtonsPanel setButtons();
 
-  /**
-  *
-  */
-  protected void doubleClicMouseProcess(){
-  }
+    /**
+     * Initialise the dialog
+     */
+    protected void initialize() {
+        this.setLayout(new BorderLayout());
+        //setSize(_dialogDim);
+        setResizable(false);
+        buildVectors();
 
+        JPanel leftPanel = initLeftPanel();
+        JPanel centerPanel = initCenterPanel();
+        JPanel rightPanel = initRightPanel();
 
+        _buttonsPanel = setButtons();
 
-  /**
-  * Set the unities with the values in each JList
-  */
-  protected void setUnities(){
-    String str = null;
-      for(int i = 0; i < _leftVector.size(); i++){
-        str = (String)_leftVector.elementAt(i);
-        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
-                                  DXToolsMethods.getToken(str,".",1),
-                                  DXToolsMethods.getToken(str,".",2),
-                                  DXToolsMethods.getToken(str,".",3), 3, "true");
-        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
-                                  DXToolsMethods.getToken(str,".",1),
-                                  DXToolsMethods.getToken(str,".",2),
-                                  DXToolsMethods.getToken(str,".",3), 2, "true");
-      }//end for
-      for(int i = 0; i < _centerVector.size(); i++){
-        str = (String)_centerVector.elementAt(i);
-        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
-                                  DXToolsMethods.getToken(str,".",1),
-                                  DXToolsMethods.getToken(str,".",2),
-                                  DXToolsMethods.getToken(str,".",3), 3, "false");
-        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
-                                  DXToolsMethods.getToken(str,".",1),
-                                  DXToolsMethods.getToken(str,".",2),
-                                  DXToolsMethods.getToken(str,".",3), 2, "true");
-      }//end for
-      for(int i = 0; i < _rightVector.size(); i++){
+        this.add(leftPanel, BorderLayout.WEST);
+        this.add(rightPanel, BorderLayout.EAST);
+        this.add(centerPanel, BorderLayout.CENTER);
+        this.add(_buttonsPanel, BorderLayout.SOUTH);
 
-        str = (String)_rightVector.elementAt(i);
-        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
-                                  DXToolsMethods.getToken(str,".",1),
-                                  DXToolsMethods.getToken(str,".",2),
-                                  DXToolsMethods.getToken(str,".",3), 3, "false");
-        _activities.setUnityField(DXToolsMethods.getToken(str,".",0),
-                                  DXToolsMethods.getToken(str,".",1),
-                                  DXToolsMethods.getToken(str,".",2),
-                                  DXToolsMethods.getToken(str,".",3), 2, "false");
-      }//end for
-  }
+        int x = _dApplic.getJFrame().getX();
+        int y = _dApplic.getJFrame().getY();
+        this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
+        //this.setLocationRelativeTo(_dApplic.getJFrame());
+        this.setMinimumSize(new Dimension(500, 300));
+        this.setPreferredSize(new Dimension(700, 400)); // the real
+        this.setMaximumSize(new Dimension(800, 400));
+        this.pack();
+        this.setResizable(false);
+        this.setVisible(true);
+    }
+
+    /**
+     * initialize label in each panel
+     */
+    public void initializePanel() {
+        buildVectors();
+        _leftLabel.setText(String.valueOf(_leftVector.size()));
+        _leftList.setListData(_leftVector);
+        _centerLabel.setText(String.valueOf(_centerVector.size()));
+        _centerList.setListData(_centerVector);
+        _rightLabel.setText(String.valueOf(_rightVector.size()));
+        _rightList.setListData(_rightVector);
+    }
+
+    /**
+     * build buttom to use in the dialog
+     */
+
+    /**
+     * Sets the _centerPanel, the panel containing the _centerList and the
+     * arrows panels
+     */
+    private JPanel initCenterPanel() {
+        _centerList = new JList(_centerVector);
+        _centerList.addMouseListener(mouseListenerLists);
+        JLabel titleLabel = new JLabel(DConst.EVENTS_PLACED + " ");
+        _centerLabel = new JLabel(String.valueOf(_centerVector.size()));
+        _centerLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
+        //The listContainerPanel
+        JPanel listPanel = DXTools.listPanel(_centerList);
+        listPanel.setMinimumSize(new Dimension(150, 100));
+        listPanel.setPreferredSize(new Dimension(150, 300));
+        listPanel.setMaximumSize(new Dimension(150, 400));
+        JPanel listContainerPanel = new JPanel();
+
+        listContainerPanel.add(titleLabel);
+        listContainerPanel.add(_centerLabel);
+        listContainerPanel.add(listPanel);
+
+        //the _centerPanel
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        //_centerPanel.setPreferredSize(panelDim);
+        JPanel miPanel = new JPanel();
+        //miPanel.setLayout(new BorderLayout());
+        miPanel.add(_leftArrowsPanel);//, BorderLayout.EAST);
+        miPanel.add(listContainerPanel);//, BorderLayout.CENTER);
+        miPanel.add(_rightArrowsPanel);//, BorderLayout.WEST);
+        JPanel centerPanelTop = new JPanel();
+
+        centerPanelTop.add(titleLabel);
+        centerPanelTop.add(_centerLabel);
+        panel.add(centerPanelTop, BorderLayout.NORTH);
+        panel.add(miPanel, BorderLayout.CENTER);
+        return panel;
+        //getContentPane().add(_centerPanel, BorderLayout.CENTER);
+    }//end method
+
+    /**
+     * initRightPanel
+     */
+    private JPanel initLeftPanel() {
+        _leftList = new JList(_leftVector);
+        _leftList.addMouseListener(mouseListenerLists);
+        JLabel titleLabel = new JLabel(DConst.EVENTS_FIXED + " ");
+        _leftLabel = new JLabel(String.valueOf(_leftVector.size()));
+        _leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
+
+        JPanel listPanel = DXTools.listPanel(_leftList);
+        listPanel.setMinimumSize(new Dimension(150, 100));
+        listPanel.setPreferredSize(new Dimension(150, 300));
+        listPanel.setMaximumSize(new Dimension(150, 400));
+        //the _leftPanel
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        JPanel panelTop = new JPanel();
+        panelTop.add(titleLabel);
+        panelTop.add(_leftLabel);
+
+        panel.add(panelTop, BorderLayout.NORTH);
+        panel.add(listPanel, BorderLayout.CENTER);
+
+        return panel;
+    }//end initLeftPanel
+
+    /**
+     * Sets the _initLeftPanel
+     */
+    private JPanel initRightPanel() {
+        _rightList = new JList(_rightVector);
+        _rightList.addMouseListener(mouseListenerLists);
+        JLabel titleLabel = new JLabel(DConst.EVENTS_NOT_PLACED + " ");
+        _rightLabel = new JLabel(String.valueOf(_rightVector.size()));
+        _rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
+
+        JPanel listPanel = DXTools.listPanel(_rightList);
+        listPanel.setMinimumSize(new Dimension(150, 100));
+        listPanel.setPreferredSize(new Dimension(150, 300));
+        listPanel.setMaximumSize(new Dimension(150, 400));
+        //the _rightPanel
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        JPanel panelTop = new JPanel();
+        panelTop.add(titleLabel);
+        panelTop.add(_rightLabel);
+
+        panel.add(panelTop, BorderLayout.NORTH);
+        panel.add(listPanel, BorderLayout.CENTER);
+
+        return panel;
+    }//end initRightPanel
+
+    /**
+     * Builds the vectors _rightVector, _centerVector, _leftVector for their
+     * first display
+     */
+
+    private void buildVectors() {
+        _leftVector = new Vector();
+        _centerVector = new Vector();
+        _rightVector = new Vector();
+        String _eventFullID;
+        StringTokenizer stk;
+        for (int i = 0; i < _events.size(); i++) {
+            _eventFullKey = ((EventAttach) _events.getResourceAt(i).getAttach())
+                    .getPrincipalRescKey();
+            stk = new StringTokenizer(_eventFullKey, ".");
+            _currUnity = _activities.getUnity(Long.parseLong(stk.nextToken()),
+                    Long.parseLong(stk.nextToken()), Long.parseLong(stk
+                            .nextToken()), Long.parseLong(stk.nextToken()));
+            stk = new StringTokenizer(_eventFullKey, ".");
+            _eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk
+                    .nextToken()), Long.parseLong(stk.nextToken()), Long
+                    .parseLong(stk.nextToken()), Long
+                    .parseLong(stk.nextToken()));
+            if (_currUnity.compareByField(2, "false")) {
+                _rightVector.add(_eventFullID);
+            } else {
+                if (_currUnity.compareByField(3, "true")) {
+                    _leftVector.add(_eventFullID);
+                } else {
+                    _centerVector.add(_eventFullID);
+                }
+            }//end else if (_currUnity.compareByField(2, "false"))
+        }//end for
+    }//end method
+
+    /**
+     * The MouseListener for the JLists
+     */
+    private MouseListener mouseListenerLists = new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            if (((JList) e.getSource()).getModel().getSize() == 0)
+                return;
+            if (e.getSource().equals(_leftList)) {
+                _centerList.clearSelection();
+                _rightList.clearSelection();
+                selectedItems = _leftList.getSelectedValues();
+            }//end if (e.getSource().equals(_leftList))
+            if (e.getSource().equals(_centerList)) {
+                _leftList.clearSelection();
+                _rightList.clearSelection();
+                selectedItems = _centerList.getSelectedValues();
+            }//end if (e.getSource().equals(_centerList))
+            if (e.getSource().equals(_rightList)) {
+                _centerList.clearSelection();
+                _leftList.clearSelection();
+                selectedItems = _rightList.getSelectedValues();
+            }//end if (e.getSource().equals(_rightList))
+            if (e.getClickCount() == 2) {
+                doubleClicMouseProcess();
+            }//end if
+        }// end public void mouseClicked
+    };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+    /**
+     *  
+     */
+    protected void doubleClicMouseProcess() {
+    }
+
+    /**
+     * Set the unities with the values in each JList
+     */
+    protected void setUnities() {
+        String str = null;
+        for (int i = 0; i < _leftVector.size(); i++) {
+            str = (String) _leftVector.elementAt(i);
+            _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+                    DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
+                            .getToken(str, ".", 2), DXToolsMethods.getToken(
+                            str, ".", 3), 3, "true");
+            _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+                    DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
+                            .getToken(str, ".", 2), DXToolsMethods.getToken(
+                            str, ".", 3), 2, "true");
+        }//end for
+        for (int i = 0; i < _centerVector.size(); i++) {
+            str = (String) _centerVector.elementAt(i);
+            _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+                    DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
+                            .getToken(str, ".", 2), DXToolsMethods.getToken(
+                            str, ".", 3), 3, "false");
+            _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+                    DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
+                            .getToken(str, ".", 2), DXToolsMethods.getToken(
+                            str, ".", 3), 2, "true");
+        }//end for
+        for (int i = 0; i < _rightVector.size(); i++) {
+
+            str = (String) _rightVector.elementAt(i);
+            _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+                    DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
+                            .getToken(str, ".", 2), DXToolsMethods.getToken(
+                            str, ".", 3), 3, "false");
+            _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+                    DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
+                            .getToken(str, ".", 2), DXToolsMethods.getToken(
+                            str, ".", 3), 2, "false");
+        }//end for
+    }
 
 }//end class

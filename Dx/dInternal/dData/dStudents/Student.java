@@ -1,6 +1,6 @@
 /**
 *
-* Title: Student $Revision: 1.4 $  $Date: 2005-02-04 16:20:11 $
+* Title: Student $Revision: 1.5 $  $Date: 2005-03-08 16:00:44 $
 * Description: Student is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.5 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -320,5 +320,61 @@ public class Student extends DResource {
 	 public SetOfStuCourses getCoursesList(){
 	 	return (SetOfStuCourses)this.getAttach();
 	 }
+	 
+	 /**
+	   * Print student courses choice information
+	   * OUTPUT: String of courses choice
+	   * */
+	  public String toWrite(){
+	    String instInfo;
+	    String id= this.getID();
+	    id=exportExternalKey( Long.toString(this.getKey()), id);//+id;
+	    instInfo= id + " ";
+	    instInfo += exportToWrite();
+	    return instInfo;
+	  }
+	  
+	  /**
+	   * Builds the student external key
+	   * @param str the key of the resource
+	   * @param id the id of the resource
+	   * @return
+	   */
+	  private String exportExternalKey(String str, String id){
+	    String temp="0000000"+ str;
+	    temp= temp.substring(temp.length()-8,temp.length());
+	    String nbCours="000"+getCoursesList().size();
+	    nbCours= nbCours.substring(nbCours.length()-2,nbCours.length());
+	    String idTemp= temp+ getAuxField()+id;
+	    for(int i=idTemp.length(); i<30; i++)
+	      idTemp+=" ";
+	    return idTemp+nbCours;
+	  }
+	  
+	  /**
+	   * Print student courses choice information
+	   * OUTPUT: String of courses choice
+	   * */
+	  private String exportToWrite(){
+	    String str="";
+	    StuCourse courseValue;
+	    for (int i=0; i< getCoursesList().size(); i++){
+	      str+= getCoursesList().getResourceAt(i).getID();
+	      courseValue = (StuCourse)getCoursesList().getResourceAt(i).getAttach();
+	      if (courseValue.getIntValue()>0){
+	        String group= "00"+Integer.toString(courseValue.getIntValue());
+	        str+= group.substring(group.length()-2,group.length());
+	        if(courseValue.getBooleanValue())
+	          str+= ";"+1;
+	        else
+	          str+= ";"+0;
+
+	      }else
+	        str+="";
+	      if (i< getCoursesList().size()-1)
+	        str+=" ";
+	    }
+	    return str;
+	  }
 
 }

@@ -1,30 +1,29 @@
-package dInternal.dOptimization;
-
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
+ * 
+ * Title: Algorithm $Revision: 1.6 $ $Date: 2005-03-08 16:00:44 $ Description: Algorithm is a interface
+ * used as
+ * 
+ * 
+ * Copyright (c) 2001 by rgr. All rights reserved.
+ * 
+ * 
+ * This software is the confidential and proprietary information of rgr.
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the license
+ * agreement you entered into with rgr.
+ * 
+ * @version $Revision: 1.6 $
+ * @author $Author: syay1801 $
+ * @since JDK1.3
  */
 
-
-
-
+package dInternal.dOptimization;
 
 public interface Algorithm {
 
-
-  /**
-   *build the algorithm
-   */
-  public void build();
-
-  /**
-   *return events list to use by the algorithm
-   * @return Vector list of events
-   */
-  //public Vector buildEventsVector();
+    /**
+     * build the algorithm
+     */
+    public void build();
 
 }

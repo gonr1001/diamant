@@ -57,11 +57,6 @@ class reference39 {
 */
 class reference40 {
 }/**
-@__ref <oiref:java#Class#dInternal.dDataTxt.SetOfInstructorsListener:oiref><oihard>
-@__modelType reference 
-*/
-class reference41 {
-}/**
 @__ref <oiref:java#Class#dInternal.dDataTxt.Section:oiref><oihard>
 @__modelType reference 
 */
@@ -111,16 +106,6 @@ class reference50 {
 @__modelType reference 
 */
 class reference51 {
-}/**
-@__ref <oiref:java#Class#dInternal.dDataTxt.SetOfInstructorsEvent:oiref><oihard>
-@__modelType reference 
-*/
-class reference52 {
-}/**
-@__ref <oiref:java#Class#dInternal.dDataTxt.SetOfInstructors:oiref><oihard>
-@__modelType reference 
-*/
-class reference54 {
 }/**
 @__ref <oiref:java#Class#dInternal.dDataTxt.SetOfStudentsListener:oiref><oihard>
 @__modelType reference 
@@ -193,8 +178,8 @@ class __options {
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfInstructors#dInternal.dData.SetOfResources:oiref>=91,884,958,689:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_activitiesBefore:oiref>=493,884,995,689:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.LoadData#_roomsAttributesInterpretor:oiref>=878,87,958,87:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>=1020,165,1020,369:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomAttach#_setOfCaracteristics:oiref>=1212,884,1061,689:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInternal.dData.RoomsAttributesInterpretor#_setOfCaracteristics:oiref>=1020,165,1020,369:oigroup>
 <oigroup:<oiref:java#Extends#dInternal.dData.SetOfRooms#dInternal.dData.SetOfResources:oiref>=1591,884,1089,689:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_setOfAssignments:oiref>=573,884,1021,689:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInternal.dData.Unity#_preferFunctionSetOfRooms:oiref>=533,884,1008,689:oigroup>

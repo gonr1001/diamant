@@ -40,12 +40,6 @@ class reference37 {
 */
 class reference38 {
 }/**
-@__ref <oiref:design#Class#id1pl5ge4fy2zqxe4fy4bmw.diagram:oiref><oihard>
-@__modelType reference
-@__fqn <oiref:#Package#dInternal.dData.dActivities:oiref> 
-*/
-class reference39 {
-}/**
 @__ref <oiref:java#Class#dInternal.dData.ByteArrayMsg:oiref><oihard>
 @__modelType reference 
 */
@@ -55,6 +49,12 @@ class reference40 {
 @__modelType reference 
 */
 class reference41 {
+}/**
+@__ref <oiref:design#Class#id2u48oe52huq3de52hvwvb.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#dInternal.dData.dActivities:oiref> 
+*/
+class reference1 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DStateTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: DStateTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DStateTest is a class used to test the class 
 * 				DState
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -49,27 +49,27 @@ public class DStateTest extends TestCase{
   	b = new DState(Color.BLACK, 1);
   }
    
-  public void testAsetColor(){
+  public void testA_setColor(){
   	a.setColor(Color.RED);
-  	assertTrue(a.getColor()==Color.RED);
+  	assertEquals("testA_setColor: assertEquals", Color.RED, a.getColor());
   }
-  public void testAsetValue(){
+  public void testA_setValue(){
   	a.setValue(2);
-  	assertTrue(a.getValue()==2);
+  	assertEquals("testA_setValue: assertEquals", 2, a.getValue());
   }
-  public void testAgetSelectedField(){
-  	assertTrue(a.getSelectedField()==0);
+  public void testA_getSelectedField(){
+  	assertEquals("testA_getSelectedField: assertEquals", 0, a.getSelectedField());
   }
  
-  public void testBsetColor(){
+  public void testB_setColor(){
   	b.setColor(Color.BLUE);
-  	assertTrue(b.getColor()==Color.BLUE);
+  	assertEquals("testB_setColor: assertEquals", Color.BLUE, b.getColor());
   }
-  public void testBsetValue(){
+  public void testB_setValue(){
   	b.setValue(4);
-  	assertTrue(b.getValue()==4);
+  	assertEquals("testB_setValue: assertEquals", 4, b.getValue());
   }
-  public void testBgetSelectedField(){
-  	assertTrue(b.getSelectedField()==0);
+  public void testB_getSelectedField(){
+  	assertEquals("testB_getSelectedField: assertEquals", 0, b.getSelectedField());
   }
 }

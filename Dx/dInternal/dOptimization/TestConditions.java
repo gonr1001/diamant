@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.37 $  $Date: 2004-12-16 19:21:02 $
+* Title: TestConditions $Revision: 1.38 $  $Date: 2005-03-08 16:00:45 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,19 +14,16 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.37 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.38 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
 package dInternal.dOptimization;
 
-import java.util.StringTokenizer;
 import java.util.Vector;
 
-import dConstants.DConst;
 import dInternal.DModel;
-//import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
 import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Day;
@@ -194,8 +191,9 @@ public class TestConditions {
     int[] numberOfConflicts={0,0,0};
 
     if(((EventAttach)event.getAttach()).getAssignState()){
-      StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
-      int[] perKey={Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
+      //StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
+      //int[] perKey=	{Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
+      int[] perKey= ((EventAttach)event.getAttach()).getPeriodKeyTable();
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
      
       if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],

@@ -32,8 +32,9 @@ Canada\\
 \section{Avant de commencer}
 \subsection{Quoi, de manière précise, a été votre contribution?}
 Un outil permettant de enregistrer le comportement d'un
-utilisateur, lorsqu'il sert d'une application, et permettant aussi
-de reproduire ce comportement.
+utilisateur. Lorsque l'utilisateur se sert d'une application il
+est possible d'avoir une trace (log), cette trace va  permettre de
+reproduire son comportement.
 
 Quelques particularités de son utilisation :
 \begin{enumerate}
@@ -144,11 +145,11 @@ faible par rapport aux gains que l'on peut obtenir.
 
 \begin{description}
 \item [Quel standard a été utilisé pour évaluer votre solution?]
+Le code de jReplay est diponible et utilisable.
 
 
 \item [Quelle évidence concrète montre que votre résultat est
-correct?]
-
+correct?] Les reéxecutions.
 
 \end{description}
 
@@ -201,7 +202,8 @@ Vision globale de l'article
 On se questionne sur le fait de pouvoir faire un outil dans un
 langage d'haut niveau qui puisse re-exécuter l'information qui se
 trouve dans le fichier \emph{log}. L'outil devrai s'intégrer
-facilement à une logiciel avec une structure \emph{MVC}.
+facilement à une logiciel ayant de préférence une structure
+\emph{pattern MVC}.
 
 
 \item [L'identification du résultat obtenu.]
@@ -230,15 +232,7 @@ d'explique vos démarches.
 
 \item Définition du problème
 
-\item La question spécifique que vous allez travailler
-
-\item Panorama générale
-
-\item Travail connexe.
-\end{enumerate}
-
-\item Autres outils
-
+\item Travaux connexes.
 \begin{enumerate}
 \item Jacareto
 
@@ -252,6 +246,30 @@ d'explique vos démarches.
 
 \item JFCUnit
 \end{enumerate}
+
+\item Déscription de jReplay
+
+\begin{enumerate}
+\item Enregistrement et reéxecution.
+
+\item Enregistrement : quels sont les instructions à ajouter, où
+il faut les ajouter et le format de la trace. Pattern MVC facilite
+la insértion des instructions.
+
+\item Reéxecution, organisation des packages, petit framework,
+breakpoints, éxecution pas-à-pas, debuggeur Java.
+
+\item Outil de test. high level JUnit.
+
+
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+
 
 \item Conclusions
 \end{enumerate}

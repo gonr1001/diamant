@@ -1,6 +1,6 @@
 /**
 *
-* Title: StuCourse $Revision: 1.2 $  $Date: 2004-12-01 17:17:10 $
+* Title: StuCourse $Revision: 1.3 $  $Date: 2005-03-08 16:00:44 $
 * Description: StuCourse is a class used as a data structure container.
 *              It contains the student course and their attributes.
 *
@@ -15,10 +15,11 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.3 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
+
 package dInternal.dData.dStudents;
 
 import dInternal.DValue;

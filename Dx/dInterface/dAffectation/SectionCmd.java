@@ -19,6 +19,7 @@ public class SectionCmd implements Command{
   }
 
   public void execute(DApplication dApplic) {
-      new SectionDlg(dApplic);
+      new SectionStudentsDlg(dApplic);
+      //new SectionDlg(dApplic);
   }
 }

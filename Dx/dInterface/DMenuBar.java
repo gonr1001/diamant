@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.124 $  $Date: 2005-02-03 20:50:42 $
+ * Title: DMenuBar $Revision: 1.125 $  $Date: 2005-03-08 16:00:43 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,19 +14,22 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.124 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.125 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
 
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Vector;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JRadioButtonMenuItem;
+
 
 import dConstants.DConst;
 import dDeveloper.MyFileCmd;
@@ -40,8 +43,8 @@ import dInterface.dAffectation.InitialAssignCmd;
 import dInterface.dAffectation.PartialTTStructureCmd;
 import dInterface.dAffectation.RoomsAvailabilityCmd;
 import dInterface.dAffectation.SectionCmd;
+import dInterface.dAlgorithms.AlgorithmsCmd;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmCmd;
-import dInterface.dAlgorithms.*;
 import dInterface.dData.DefFilesToImportCmd;
 import dInterface.dData.ExportCmd;
 import dInterface.dData.ImportCmd;
@@ -49,6 +52,7 @@ import dInterface.dData.ImportSelectiveFileCmd;
 import dInterface.dData.InstructorAvailabilityCmd;
 import dInterface.dData.ReportCmd;
 import dInterface.dTimeTable.CloseCmd;
+import dInterface.dTimeTable.ConflictsOfAnEventCmd;
 import dInterface.dTimeTable.ManualImprovementCmd;
 import dInterface.dTimeTable.NewTTCyCmd;
 import dInterface.dTimeTable.NewTTExCmd;
@@ -67,7 +71,7 @@ import dInterface.dUtil.ViewSimpleCmd;
 import dInterface.dUtil.ViewVerticalSplitCmd;
 
 
-public class DMenuBar extends JMenuBar{
+public class DMenuBar extends JMenuBar implements ItemListener{
 	private DApplication _dApplic;
 	
 	private final String cMFONT = DConst.MFONTDialog;
@@ -82,14 +86,14 @@ public class DMenuBar extends JMenuBar{
 	_report,
 	_preferences,
 	_help,
-	/*_inTest,*/
+	_inTest,
 	_multi,
 	_dev;
 	
 	// for each main menu there is a assocaited boolean
 	private boolean _boolMenuFile, _boolMenuAssign, _boolMenuOptimization,
 	_boolMenuModification, _boolMenuReport, _boolMenuPreferences,
-	_boolMenuHelp, _boolMenuDev /*, _boolInTest*/;
+	_boolMenuHelp, _boolMenuDev,  _boolInTest;
 	
 	// the file menu: sub-menus
 	private JMenu _newTTable, _newTTStruc, _importSelect;
@@ -118,7 +122,7 @@ public class DMenuBar extends JMenuBar{
 	private boolean _boolNewTTableCy, _boolNewTTableEx, _boolNewTTStrucCy,
 	_boolNewTTStrucEx, _boolOpenTTable, _boolOpenTTStruc,
 	_boolClose, _boolSave, _boolSaveAs,_boolDefineFiles,
-	_boolImport, /*_boolImportSelect,*/ _boolExport, _boolExit;
+	_boolImport, _boolExport, _boolExit;
 	
 	// the edit menus
 	
@@ -161,8 +165,8 @@ public class DMenuBar extends JMenuBar{
 	
 	// the inTest menus this are used for the Beta menu
 	//private JMenu _mInTest1, _mInTest2;
-	//private CmdMenu _userTestMixingPersonal;
-	//private boolean _boolmInTest1, _boolmInTest2;
+	private CmdMenu _cmdMenuTest1;
+	private boolean _boolcmdMenuTest1;//, _boolmInTest2;
 	
 	//Developpement menus
 	private CmdMenu _myFile, _showAll, _stateZero;
@@ -526,25 +530,24 @@ public class DMenuBar extends JMenuBar{
 	} // end createHelpMenu
 	
 	
-	private void createInTestMenu(){} /*
+	private void createInTestMenu(){ 
 		_inTest = new JMenu(DConst.IN_TEST);
 		_inTest.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
 		this.add( _inTest );
 		// Items in menu admin.
-		_mInTest1 = new JMenu(DConst.SUBMENU1);
-		_mInTest1.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+		//_cmdMenuTest1 = new JMenu(DConst.SUBMENU1);
+		//_mInTest1.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 		
-		_userTestMixingPersonal = new CmdMenu(DConst.STUDENTS_REPARTITION+" "
-				+DConst.STUDENTMIXINGPERSO);//, this);
-		_userTestMixingPersonal.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_userTestMixingPersonal.setCommand(new PersonalizeMixingAlgorithmCmd(true));
-		_userTestMixingPersonal.addActionListener(_dApplic);
+		_cmdMenuTest1 = new CmdMenu(DConst.CONFLICTS_OF_AN_EVENT);//, this);
+		_cmdMenuTest1.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_cmdMenuTest1.setCommand(new ConflictsOfAnEventCmd());
+		_cmdMenuTest1.addActionListener(_dApplic);
 		//_userSubMenu1.add(_userTestMixingPersonal);
 		// add item in submenu 1
-		_mInTest1.add(_userTestMixingPersonal);
+		//_mInTest1.add(_cmdMenuTest1);
 		
 		// Items in menu feph.
-		_mInTest2 = new JMenu(DConst.SUBMENU2);
+		/*_mInTest2 = new JMenu(DConst.SUBMENU2);
 		_mInTest2.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 		
 		
@@ -578,26 +581,57 @@ public class DMenuBar extends JMenuBar{
 		_mInTest2.add(_mergeStudents);
 		
 		//_mInTest2.add(_mInTest2);
+		*/
+		_inTest.add(_cmdMenuTest1);
+		//_inTest.add(_mInTest2);
 		
-		_inTest.add(_mInTest1);
-		_inTest.add(_mInTest2);
-		
-	} // end createInTestMenu*/
+	} // end createInTestMenu
 	
 	private void createMultiSiteMenu(){
-		_multi = new JMenu("MultiSite");
-		_multi.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
-		this.add( _multi );
-		Vector v =_dApplic.getDModel().getSites();
-		for (int i = 0; i < v.size(); i++) {
-			ButtonGroup group = new ButtonGroup();
-			JRadioButtonMenuItem rbMenuItem = new JRadioButtonMenuItem((String) v.get(i));
-			rbMenuItem.setSelected(false);
+		if ( _multi == null) 
+			_multi = new JMenu(DConst.MULTI_SITE);
+		else 
+			_multi.removeAll();
 		
+		_multi.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
+		
+		Vector v =_dApplic.getDModel().getSites();
+		ButtonGroup group = new ButtonGroup();
+		for (int i = 0; i < v.size(); i++) {
+			JCheckBoxMenuItem rbMenuItem = new JCheckBoxMenuItem((String) v.get(i));
+			if (_dApplic.getDModel().getCurrentSite().equalsIgnoreCase((String)v.get(i)))
+				rbMenuItem.setSelected(true);
+			else
+				rbMenuItem.setSelected(false);
+			rbMenuItem.addItemListener(this);
 			group.add(rbMenuItem);
 			_multi.add(rbMenuItem);
 		}
+		this.add( _multi );
 	} // end createMultiSiteMen
+	
+    public void itemStateChanged(ItemEvent e) {
+    	JCheckBoxMenuItem source = (JCheckBoxMenuItem)(e.getSource());
+        /*String s = "Item event detected."
+          //         + newline
+                   + "    Event source: " + source.getText()
+            //       + " (an instance of " + getClassName(source) + ")"
+              //     + newline
+                   + "    New state: "
+                   + ((e.getStateChange() == ItemEvent.SELECTED) ?
+                     "selected":"unselected");
+        System.out.println(s);*/
+    	if (e.getStateChange() == ItemEvent.SELECTED){
+    		_dApplic.getDModel().setCurrentSite(source.getText());
+    		if(source.getText().equalsIgnoreCase(DConst.ALL_SITES))	
+    			_dApplic.getDModel().changeInDModelByAllSites(_dApplic.getJFrame());	
+    		 else 
+    			_dApplic.getDModel().changeInDModel(_dApplic.getJFrame());
+    	}
+        //output.append(s + newline);
+        //output.setCaretPosition(output.getDocument().getLength());
+    }
+
 	
 	private void createDevelopmentMenu(){
 		_dev = new JMenu("Development");
@@ -675,6 +709,16 @@ public class DMenuBar extends JMenuBar{
 	} // end alwaysSet
 	
 	private void setZero() {
+		
+		if(_multi != null){
+			for (int i = 0; i < this.getComponentCount(); i++) {
+				JMenu comp = (JMenu)this.getComponent(i);
+				if (comp.getText().equalsIgnoreCase(DConst.MULTI_SITE))
+					this.remove(i);					
+			}
+		}
+			
+		
 		//the menu _file
 		_boolMenuFile = true;
 		//the submenus
@@ -725,8 +769,8 @@ public class DMenuBar extends JMenuBar{
 		// always _boolAbout = true;
 		
 		//the testmenu
-		//_boolInTest = false;
-		//_boolmInTest1= true;
+		_boolInTest = false;
+		_boolcmdMenuTest1= true;
 		//_boolmInTest2 = true;
 		
 		//the menu dev
@@ -734,9 +778,10 @@ public class DMenuBar extends JMenuBar{
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
-		//_boolInTest = false;
+		_boolInTest = false;
 		setMenus();
-	}
+		this.updateUI();
+	} // end setZero
 	
 	private void setReadyToInitialAssign() {
 		//the menu _file
@@ -784,7 +829,7 @@ public class DMenuBar extends JMenuBar{
 		//the menu preferences
 		// always_boolPreferences= true;
 		// always _boolLookAndFeel =true;
-		//_boolInTest = false;
+		_boolInTest = false;
 		//the menu help
 		// always _boolHelp= true;
 		// always _boolAbout = true;
@@ -799,7 +844,7 @@ public class DMenuBar extends JMenuBar{
 	
 	private void setAfterInitialAssign() {
 		//the menu _file
-		//updateMenuBar();
+		
 		_boolMenuFile = true;
 		//the submenus
 		_boolNewTTable = false;
@@ -835,11 +880,6 @@ public class DMenuBar extends JMenuBar{
 		_boolInitialAssign = false;
 		_boolDoOptimization= true;
 		_boolDoSectionPartition= true;
-		//_boolStudentsRepartition = true;
-		//_boolStudentsMixingBalance = true;
-		//_boolStudentsMiddleMixingBalance = true;
-		//_boolStudentsMixingOptimize= true;
-		
 		
 		//the report menu
 		_boolMenuReport = true;
@@ -857,8 +897,8 @@ public class DMenuBar extends JMenuBar{
 		// always 
 		
 		//the testmenu
-		//boolInTest = true;
-		//_boolmInTest1= true;
+		_boolInTest = true;
+		_boolcmdMenuTest1= true;
 		//_boolmInTest2 = true;
 		
 		//the menu dev
@@ -866,7 +906,10 @@ public class DMenuBar extends JMenuBar{
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
+		
+		updateMenuBar();
 		setMenus();
+		this.updateUI();
 	} //end setAfterInitialAssign
 	
 	private void setNewTTCy() {
@@ -1087,8 +1130,8 @@ public class DMenuBar extends JMenuBar{
 		_boolAbout = true;
 		
 		//the testmenu
-		//_boolInTest = true;
-		//_boolmInTest1= true;
+		_boolInTest = true;
+		_boolcmdMenuTest1= true;
 		//_boolmInTest2 = true;
 		
 		//the menu dev
@@ -1136,12 +1179,12 @@ public class DMenuBar extends JMenuBar{
 			else
 				_dev.setEnabled(_boolMenuDev);
 		}
-		//if (_boolInTest)
-		//	setInTestMenu();
-		//else
-		//	_inTest.setEnabled(_boolInTest);
-		//System.out.println("setMenusEnd");
-	}
+		if (_boolInTest)
+			setInTestMenu();
+		else
+			_inTest.setEnabled(_boolInTest);
+		
+	} // end setMenus
 	
 	private void setFileMenu() {
 		_file.setEnabled(_boolMenuFile);
@@ -1209,11 +1252,10 @@ public class DMenuBar extends JMenuBar{
 		_about.setEnabled(_boolAbout);
 	}
 	
-/*	private void setInTestMenu() {
+	private void setInTestMenu() {
 		_inTest.setEnabled(_boolInTest);
-		_mInTest1.setEnabled(_boolmInTest1);
-		_mInTest2.setEnabled(_boolmInTest2);
-		
+		_cmdMenuTest1.setEnabled(_boolcmdMenuTest1);
+		//_mInTest2.setEnabled(_boolmInTest2);	
 	} //end setAssignMenu*/
 	
 	
@@ -1292,5 +1334,6 @@ public class DMenuBar extends JMenuBar{
 	public void updateMenuBar(){ //must be private
 		if(_dApplic.getDModel().isMultiSite())
 			createMultiSiteMenu();
-	}
+	} // updateMenuBar
+	
 } /* end class DMenuBar */

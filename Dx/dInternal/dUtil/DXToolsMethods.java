@@ -240,7 +240,7 @@ public class DXToolsMethods {
   }
 
   /**
-   * return a token in from a stringtokenizer
+   * return a token from a stringtokenizer
    * @param str
    * @param delimiter
    * @param position

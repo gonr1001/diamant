@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.15 $  $Date: 2004-12-16 19:20:50 $
+ * Title: DetailedPeriodPanel $Revision: 1.16 $  $Date: 2005-03-08 16:00:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.16 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -87,10 +87,5 @@ public class DetailedPeriodPanelMI extends PeriodPanel{
     setPanelColor(period.getPriority());
   }
 
-} /* end DetailedPeriodPanel *
+} /* end DetailedPeriodPanel **/
 
-public class DetailedPeriodPanelMI {
-
-  public DetailedPeriodPanelMI() {
-  }
-}*/

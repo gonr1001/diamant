@@ -1,6 +1,6 @@
 /**
 *
-* Title: DValueTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: DValueTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DValueTest is a class used to test the class 
 * 				DValue
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -48,36 +48,36 @@ public class DValueTest extends TestCase{
   }
   
  
-  public void testAsetRefNo(){
+  public void testA_setRefNo(){
   	a.setRefNo(1);
-  	assertTrue(a.getRefNo()==1);
+  	assertEquals("testA_setRefNo: assertEquals",1, a.getRefNo());
   }
-  public void testAsetBooleanValue(){
+  public void testA_setBooleanValue(){
   	a.setBooleanValue(true);
-  	assertTrue(a.getBooleanValue()==true);
+  	assertEquals("testA_setBooleanValue: assertEquals", true, a.getBooleanValue());
   }
-  public void testAsetIntValue(){
+  public void testA_setIntValue(){
   	a.setIntValue(2);
-  	assertTrue(a.getIntValue()==2);
+  	assertEquals("testA_setIntValue: assertEquals", 2, a.getIntValue());
   }
-  public void testAsetObjectValue(){
+  public void testA_setObjectValue(){
   	a.setObjectValue(new String("3"));
-  	assertTrue(((String)a.getObjectValue()).compareTo("3")==0);
+  	assertEquals("testA_setObjectValue: assertEquals", "3", a.getObjectValue());
   }
-  public void testBsetRefNo(){
+  public void testB_setRefNo(){
   	b.setRefNo(1);
-  	assertTrue(b.getRefNo()==1);
+  	assertEquals("testB_setRefNo: assertEquals", 1, b.getRefNo());
   }
-  public void testBsetBooleanValue(){
+  public void testB_setBooleanValue(){
   	b.setBooleanValue(true);
-  	assertTrue(b.getBooleanValue()==true);
+  	assertEquals("testB_setBooleanValue: assertEquals", true, b.getBooleanValue());
   }
-  public void testBsetIntValue(){
+  public void testB_setIntValue(){
   	b.setIntValue(2);
-  	assertTrue(b.getIntValue()==2);
+  	assertEquals("testB_setIntValue: assertEquals", 2, b.getIntValue());
   }
-  public void testBsetObjectValue(){
+  public void testB_setObjectValue(){
   	b.setObjectValue(new String("3"));
-  	assertTrue(((String)b.getObjectValue()).compareTo("3")==0);
+  	assertEquals("testB_setObjectValue: assertEquals", "3", b.getObjectValue());
   }
 }

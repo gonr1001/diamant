@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 	/**
 	*
-	* Title: StandardCollectionTest $Revision $  $Date: 2005-02-03 16:52:43 $
+	* Title: StandardCollectionTest $Revision $  $Date: 2005-03-08 16:00:45 $
 	* Description: StandardCollectionTest is a class used to test the class 
 	*              StandardCollection
 	*
@@ -17,7 +17,7 @@ package dTest.dInternal.dData;
 	* you entered into with rgr.
 	*
 	* @version $ $
-	* @author  $Author: garr2701 $
+	* @author  $Author: syay1801 $
 	* @since JDK1.3
 	*/
 
@@ -45,14 +45,14 @@ package dTest.dInternal.dData;
 	  	a = new StandardCollection();
 	  }
 	  
-	  public void testAgetError(){
-	  	assertTrue(a.getError()==null);
+	  public void test_getError(){
+	  	assertEquals("test_getError: assertEquals", null, a.getError());
 	  }
-	  public void testAtoWrite(){
-	  	assertTrue(a.toWrite()==null);
+	  public void test_toWrite(){
+	  	assertEquals("test_toWrite: assertEquals", null, a.toWrite());
 	  }
-	  public void testAgetSelectedField(){
-	  	assertTrue(a.getSelectedField()==0);
+	  public void test_getSelectedField(){
+	  	assertEquals("test_getSelectedField: assertEquals", 0, a.getSelectedField());
 	  }
 
 }

@@ -1,14 +1,23 @@
-package dInternal.dOptimization;
-
 /**
- * Algorithme raffiné de formation de groupe
- * <p>Title: Diamant 1.5</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
+ * 
+ * Title: RefinedStudMixAlgo $Revision: 1.12 $ $Date: 2005-03-08 16:00:44 $
+ * Description: RefinedStudMixAlgo  - Algorithme raffiné de formation de groupe
+ * 
+ * 
+ * Copyright (c) 2001 by rgr. All rights reserved.
+ * 
+ * 
+ * This software is the confidential and proprietary information of rgr-fdl.
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the license
+ * agreement you entered into with rgr-fdl.
+ * 
+ * @version $Version$
+ * @author $Author: syay1801 $
+ * @since JDK1.3
  */
+
+package dInternal.dOptimization;
 
 import java.util.Vector;
 
@@ -26,9 +35,6 @@ import dInternal.dData.dActivities.Type;
 public class RefinedStudMixAlgo{
 
   private DModel _dm;
-  //private Vector _eventsRescList;
-  //private int _mixingType;// 0= balance student mixing,  1= balance student
-  // mixing with acceptable variation, 2= optimize student mixing
   private int ACCEPTABLEVARIATION=10;
 
   /**
@@ -173,20 +179,6 @@ public class RefinedStudMixAlgo{
  }
 
  /**
-  * remove in a setofresources, keys containing in a vector
-  * @param vOfKeys
-  * @param sor
-  * @return
-  */
-/* private SetOfResources removeKeys(SetOfResources sor, Vector vOfKeys){
-   for (int i=0; i< vOfKeys.size(); i++){
-     String key = (String)vOfKeys.get(i);
-     sor.removeResource(Long.parseLong(key));
-   }
-   return sor;
- }*/
-
- /**
   *
   * @param studentKey
   * @param allConvexGrourps
@@ -195,7 +187,6 @@ public class RefinedStudMixAlgo{
   */
  private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector sizeOfGroups, int level){
    DSetOfResources setOfConflicts= new StandardCollection();
-   //Vector eligibleGroups= new Vector();
    for(int i=0; i< allConvexGroups.size(); i++){
      DSetOfResources group = (DSetOfResources)allConvexGroups.get(i);
      String conf="0000"+group.getResource(studentKey).getID();
@@ -205,7 +196,6 @@ public class RefinedStudMixAlgo{
    setOfConflicts.sortSetOfResourcesByID();
    Vector bestGroupsIndex= getBestGroupsIndex(setOfConflicts,level);
    DSetOfResources eligibleGroups= new StandardCollection();
-   //int size=9999;
    for (int i=0; i< setOfConflicts.size(); i++){
      int groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
      if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION)){

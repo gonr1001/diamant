@@ -85,7 +85,7 @@ private DApplication _dApplic;
       if(activity.getSetOfTypes().size()>1){
         activity.getSetOfTypes().removeResource("2");
         init();
-        _dApplic.getDModel().ChangeInDModelByModifyRemove(this);
+        _dApplic.getDModel().changeInDModelByModifyRemove(this);
         /*_dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
         _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/
       }

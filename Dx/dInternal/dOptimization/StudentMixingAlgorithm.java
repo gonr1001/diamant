@@ -1,13 +1,23 @@
-package dInternal.dOptimization;
-
 /**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
+ * 
+ * Title: StudentMixingAlgorithm $Revision: 1.37 $ $Date: 2005-03-08 16:00:45 $
+ * Description: StudentMixingAlgorithm  
+ * 
+ * 
+ * Copyright (c) 2001 by rgr. All rights reserved.
+ * 
+ * 
+ * This software is the confidential and proprietary information of rgr-fdl.
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the license
+ * agreement you entered into with rgr-fdl.
+ * 
+ * @version $Version$
+ * @author $Author: syay1801 $
+ * @since JDK1.3
  */
+
+package dInternal.dOptimization;
 
 import java.util.Vector;
 
@@ -92,13 +102,6 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector eventRescList=buildEventsVector();
     for(int i=0; i< 2; i++)
       compileStudents(eventRescList);
-    //compileStudents(eventRescList);
-    /*Vector secondVec= new Vector();
-    for (int j=eventRescList.size()-1; j>=0; j--)
-      secondVec.add(eventRescList.get(j));
-    compileStudents(secondVec);*/
-    //}
-
   }
 
   /**
@@ -211,7 +214,6 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector studentList= activity.getStudentRegistered();
     for (int i=0; i< studentList.size(); i++){
       long studentKey= Long.parseLong(studentList.get(i).toString());
-      //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
       Student student= _dm.getSetOfStudents().getStudent(studentKey);
       int group= student.getGroup(activityID+typeID);
       if(!student.isFixedInGroup(activityID+typeID,group)){
@@ -274,29 +276,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     return convexGroup;
   }
 
-  /**
-   *
-   * @param convGroup
-   * @return
-   */
-/*  private String writeConvexGroups(Vector convGroups){
-    String str=DConst.SEPARATOR;
-    str+=DConst.CR_LF;
-    for(int i=0; i< convGroups.size(); i++){
-      SetOfResources group = (SetOfResources)convGroups.get(i);
-      group.sortSetOfResourcesByKey();
-      for (int j=0; j< group.size(); j++){
-        String mat= "0000"+group.getResourceAt(j).getKey();
-        str+= group.getResourceAt(j).getID()+ " --> "+ mat.substring(mat.length()-8,mat.length()) +DConst.CR_LF;
-      }// end for (int j=0; j< group.size(); j++)
-      str+=DConst.SEPARATOR;
-      str+=DConst.CR_LF;
-    }// end for(int i=0; i< convGroup.size(); i++)
-
-    return str;
-  }*/ 
-
-
+  
   /**
    *
    * @param activityID
@@ -384,7 +364,6 @@ public class StudentMixingAlgorithm implements Algorithm {
       //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
       int bConf=Integer.parseInt(((DSetOfResources)allConvGroup.get(
           bGroup)).getResourceAt(0).getID());
-
 
       for(int i=1; i< includeGroupsList.size(); i++){
         if(bConf>Integer.parseInt(((DSetOfResources)allConvGroup.get(

@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.24 $  $Date: 2005-02-08 16:24:41 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.25 $  $Date: 2005-03-08 16:00:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.25 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -24,6 +24,7 @@
 package dInterface.dData;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -62,7 +63,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: gonzrubi $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
@@ -215,7 +216,16 @@ public class InstructorAvailabiliyDlg  extends JDialog
       //System.out.println(" DAInstructorDialog NbDays: "+nbDay+"   NbPerDays: "+nbPer); //DEBUG
       for (int i = 0; i < nbDay; i++) {
         JToggleButton tBut = new JToggleButton();
-        tBut.setSelected(_currentAvailbility[i][j] == 1 );
+        if(_currentAvailbility[i][j] == 1 ){
+        	Vector assignedSites= _currentInstr.isAssignedInPeriod(i,j,
+        			_dApplic.getDModel().getOtherSites());
+	        if(assignedSites.size()!=0){
+	        	Color col = this.getGridColor((String)assignedSites.get(0));
+	        	tBut.setBackground(col);
+	        	tBut.setEnabled(false);
+	        }else
+	        	tBut.setSelected(_currentAvailbility[i][j] == 1 );
+        }
         tBut.addActionListener( this );
         tBut.setPreferredSize(new Dimension(50,12));
         gridPanel.add(tBut);//, null);
@@ -223,6 +233,17 @@ public class InstructorAvailabiliyDlg  extends JDialog
       }
     }
     return gridPanel;
+  }
+  
+  private Color getGridColor(String site){
+  	if(site.equalsIgnoreCase(DConst.USEDSHE)){
+  		return Color.RED;
+  	}else if (site.equalsIgnoreCase(DConst.USEDLON)){
+  		return Color.BLUE;
+  	}else if (site.equalsIgnoreCase(DConst.USEDCOW)){
+  		return Color.GREEN;
+  	}
+  	return Color.GRAY;
   }
 
 } /* end InstructorAvailabilityDlg */

@@ -1,8 +1,9 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.39 $  $Date: 2005-02-08 16:24:41 $
+ * Title: SectionDlg $Revision: 1.40 $  $Date: 2005-03-08 16:00:43 $
  * Description: SectionDlg is class used
- *           to display a dialog to modifiy students in groupes
+ *           to display a dialog to modifiy students assignation 
+ *           in sections
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -14,15 +15,14 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.39 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.40 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
 package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
-//import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -33,7 +33,6 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
-//import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -51,8 +50,6 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DResource;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
-//import dInternal.dDataTxt.Resource;
-//import dInternal.dDataTxt.Section;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.DSetOfResources;
 import dInternal.dData.dStudents.SetOfStudents;
@@ -60,601 +57,742 @@ import dInternal.dData.dStudents.Student;
 import dInternal.dData.dActivities.Type;
 import eLib.exit.dialog.InformationDlg;
 
-public class SectionDlg extends JDialog implements ActionListener{
-  private DApplication _dApplic;
-  private int _numberOfSections, _currentAssignedGroup, _sortIndex;
-  private DXJComboBox _actCombo, _typeCombo, _sortCombo;
-  private JList _notAssignedList, _assignedLists[];
-  private JPanel _arrowsPanel, _assignedPanel, _insidePanel, _centerPanel, _notAssignedPanel;
-  private ButtonsPanel _applyPanel;
-  private JScrollPane _scrollPane;
-  private SetOfActivities _activities;
-  private SetOfStudents _students;
-  private String _actID, _typeID ;//_sortID;
-  private String[] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
+/**
+ * 
+ * @author gonr1001
+ * 
+ * SectionDlg
+ */
+public class SectionDlg extends JDialog implements ActionListener {
 
-  private Type _type;
-  private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[], _sortVector;
+    private DApplication _dApplic;
 
-  /**
-   * Constructor
-   * @param dApplic
-   */
-  public SectionDlg(DApplication dApplic){
-    super(dApplic.getJFrame(), DConst.SECTION_DLG_TITLE, true);
-    _dApplic = dApplic;
-    _sortIndex = 0;
-    _currentAssignedGroup = -1;
-    if (_dApplic.getDMediator().getCurrentDoc() == null)
-      return;
-    _activities = _dApplic.getDModel().getSetOfActivities();
-    _students = _dApplic.getDModel().getSetOfStudents();
-    _students.sortSetOfResourcesByID();
-    if (_activities != null && _students != null){
-      initialize();
-      setLocationRelativeTo(dApplic.getJFrame());
-      setVisible(true);
-    }
-  }//end method
+    private int _numberOfSections;
 
-  /**
-   * Initilize the Dialog
-   */
-  private void initialize(){
-    Dimension dialogDim = new Dimension(550,550);
-    getContentPane().setLayout(new BorderLayout());
-    setSize(dialogDim);
-    setResizable(false);
-    JPanel top = initTopPanel();
-    getContentPane().add(top, BorderLayout.NORTH);
-    //_applyPanel
-    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
-    _applyPanel = new TwoButtonsPanel(this, a);
-    //Setting the button APPLY disable
-    _applyPanel.setFirstDisable();
-    getContentPane().add(_applyPanel, BorderLayout.SOUTH);
-    setListsLoad(/*_sortIndex,*/ false);  //setLists
-    setCenterPanel(dialogDim);
+    private int _currentAssignedGroup;
 
-  }
+    private int _sortIndex;
 
+    private DXJComboBox _activitiesCombo;
 
-  /**
-   * Set the panel containing the activity end type JComboBoxes
-   */
-  private JPanel initTopPanel(){
-    JPanel actPanel, typePanel, sortPanel;
-    //This vector contains the activities whose their champ visibility = true
-    _actVector = new Vector();
-    _actVector = _activities.getIDsByField(3, "true");
-    //panel of activities
-    _actCombo = new DXJComboBox(_actVector);
-    //_actCombo.setSelectedIndex(0);
-    actPanel = new JPanel();
-    actPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACTIVITY));
-    actPanel.add(_actCombo);
-    actPanel.setPreferredSize(new Dimension(100,52));
-    _actID = (String)_actVector.elementAt(0);
-    //panel of types
-    _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
-    _typeCombo = new DXJComboBox(_typeVector);
-    //_typeCombo.setSelectedIndex(0);
-    typePanel = new JPanel();
-    typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
-    typePanel.add(_typeCombo);
-    typePanel.setPreferredSize(new Dimension(100,52));
-    _typeID = (String)_typeVector.elementAt(0);
-    setCurrents();
-    //panel of sort
-    _sortVector = buildSortVector();
-    _sortCombo = new DXJComboBox(_sortVector);
-    
-    sortPanel = new JPanel();
-    sortPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.SORT_TITLE));
-    sortPanel.add(_sortCombo);
-    sortPanel.setPreferredSize(new Dimension(150,52));
-    //_sortID = (String)_sortVector.elementAt(0);
-    _sortCombo.setSelectedIndex(_sortIndex);
-    //adding the panels to topPanel
-    JPanel topPanel = new JPanel();
-    topPanel.setPreferredSize(new Dimension(400,70));
-    topPanel.add(actPanel);
-    topPanel.add(typePanel);
-    topPanel.add(sortPanel);
+    private DXJComboBox _typeCombo;
 
-    //adding the actionListeners
-    _actCombo.addActionListener(this);
-    _typeCombo.addActionListener(this);
-    _sortCombo.addActionListener(this);
-    return topPanel;
+    private DXJComboBox _sortCombo;
 
-  }
+    private JList _notAssignedList;
 
-  /**
-   * Set the left panel who shows the list of the not assigned students
-   */
-  private void setNotAssignedPanel(Dimension dialogDim){
-    Dimension panelDim = new Dimension((int)((dialogDim.getWidth()-50)*0.40), (int)dialogDim.getHeight()-150);
-    _notAssignedPanel = DXTools.listPanel(_notAssignedList, (int)(panelDim.getWidth()-112), (int)panelDim.getHeight()-35);
-    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACT_STUD_NOT_ASSIGNED));
-    _notAssignedPanel.setPreferredSize(panelDim);
-  }
+    private JList _assignedLists[];
 
-  /**
-   * Set _assignedPanel, the panel containing the lists of assigned students
-   */
-  private void setAssignedPanel(Dimension dialogDim){
-    Dimension panelDim = new Dimension((int)((dialogDim.getWidth()-50)*0.55), (int)dialogDim.getHeight()-150);
-    Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10,(int)panelDim.getHeight()-5);
-    _assignedPanel = new JPanel(new BorderLayout());
-    _assignedPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACT_STUD_ASSIGNED));
-    _assignedPanel.setPreferredSize(panelDim);
-    _scrollPane = new JScrollPane();
-    _scrollPane.setPreferredSize(scrollDim);
-    _insidePanel = new JPanel(new GridLayout(_numberOfSections, 1)); //It is contained into _scrollPane
-    setScrollPane(scrollDim);
-    _assignedPanel.add(_scrollPane);
-  }
+    private JPanel _arrowsPanel;
 
-  /**
-   * Set the panel contained in _scrollPane. This panel contains the sub-JScrollPanes
-   * corresponding to the groups in a type of activity
-   */
-  private void setScrollPane(Dimension ScrollPaneDim){
-    int insideWidth = (int)ScrollPaneDim.getWidth()-20;
-    int scrollHeight = (int)((ScrollPaneDim.getHeight()-20)/2); // rgr 20 was 10
-    Dimension insideDim = new Dimension(insideWidth, scrollHeight*_numberOfSections+10);
-    JLabel[] lNumberOfElements = new JLabel[_numberOfSections];
-    if (_insidePanel == null)
-      _insidePanel = new JPanel();
-    _insidePanel.setPreferredSize(insideDim);
-    _insidePanel.removeAll();
-    _insidePanel.setLayout(new GridLayout(_numberOfSections, 1));
-    for (int i = 0; i < _numberOfSections; i++){
-      _insidePanel.add(setGroupPanel(i, lNumberOfElements[i]));
-    }
-    _scrollPane.setViewportView(_insidePanel);
-    _currentAssignedGroup = -1;
-  }//end method
+    private JPanel _assignedPanel;
 
-  /**
-   * Sets the panel containing the list of students belonging a section (a group)
-   * @param groupNumber The SectionID
-   * @return a panel to be inserted into _insidePanel
-   */
-  private JPanel setGroupPanel(int groupNumber, JLabel lNumberOfElements){
-    int numberOfElements = 0;
-    int insideWidth = (int)_insidePanel.getPreferredSize().getWidth();
-    int GroupPanelHeight = (int)((_scrollPane.getPreferredSize().getHeight())/2);
-    int infoPanelHeight = 25;
-    Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
-    //Dimension scrollContDim = new Dimension(insideWidth-5, GroupPanelHeight-infoPanelHeight-10);
-    JPanel groupPanel = new JPanel();
-    groupPanel.setPreferredSize(groupPanelDim);
-    groupPanel.addMouseListener(mouseListenerGroupPanel);
-    JPanel infoPanel = new JPanel();
-    //The scrollPane
-    JPanel scrollContainer = new JPanel();
-    scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (insideWidth-20), GroupPanelHeight-infoPanelHeight-20);
-    infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
-    numberOfElements = _assignedVectors[groupNumber].size();
-    JLabel lGroup = new JLabel(DConst.SECTION);
-    //The infoPanel
-    JLabel lGroupID = new JLabel(_type.getSetOfSections().getResourceAt(groupNumber).getID());
-    lGroupID.setForeground(DConst.COLOR_QUANTITY_DLGS);
-    JLabel lNumber = new JLabel(DConst.NUMBER_OF_ELEMENTS + " ");
-    lNumberOfElements = new JLabel(String.valueOf(numberOfElements));
-    lNumberOfElements.setForeground(DConst.COLOR_QUANTITY_DLGS);
-    infoPanel.add(lGroup);
-    infoPanel.add(lGroupID);
-    infoPanel.add(new JLabel(" - "));
-    infoPanel.add(lNumber);
-    infoPanel.add(lNumberOfElements);
-    //adding the sub-panels to the panel
-    groupPanel.add(infoPanel);
-    groupPanel.add(scrollContainer);
-    return groupPanel;
-  }
+    private JPanel _insidePanel;
 
+    private JPanel _notAssignedPanel;
 
-  /**
-   * Set _centerPanel, the panel containing _assignedPanel, _arrowsPanel and
-   * _notAssignedPanel
-   */
-  private void setCenterPanel(Dimension dialogDim){
-    setNotAssignedPanel(dialogDim);
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames,true);
-    setAssignedPanel(dialogDim);
-    _centerPanel = new JPanel();
-    _centerPanel.add(_notAssignedPanel);
-    _centerPanel.add(_arrowsPanel);
-    _centerPanel.add(_assignedPanel);
-    getContentPane().add(_centerPanel, BorderLayout.CENTER);
-  }
+    private ButtonsPanel _applyPanel;
 
-  /**
-   * Set the current values of the resources Activity end Type and the nomber
-   * of sections
-   */
-  private void setCurrents(){
-    Activity act = (Activity)(_activities.getResource(_actID).getAttach());
-    //_numberOfTypes = act.getSetOfTypes().size();
-    _type = (Type)act.getSetOfTypes().getResource(_typeID).getAttach();
-    _numberOfSections = _type.getSetOfSections().size();
-  }
+    private JScrollPane _scrollPane;
 
-  public void actionPerformed(ActionEvent e){
-    String command = e.getActionCommand();
+    private SetOfActivities _activities;
 
-    // combo
-    //if activity combo box
-    if (e.getSource().equals(_actCombo)){
-      if(!_applyPanel.isFirstEnable()){
-        _actID = (String)_actCombo.getSelectedItem();
-        _typeVector = ((Activity)(_activities.getResource(_actID).getAttach())).getSetOfTypes().getNamesVector(1);
-        _typeCombo.disableActionListeners();
-        _typeCombo.removeAllItems();
-        _typeCombo.enableActionListeners();
-        for(int i = 0; i < _typeVector.size(); i++){
-          _typeCombo.addItem(_typeVector.elementAt(i));
-        }//end for
-        _typeID = (String)_typeVector.get(0);
-        setCurrents();
-        setListsLoad(/*_sortIndex,*/ false);
-        setScrollPane(_scrollPane.getPreferredSize());
-        //_applyPanel.setFirstEnable();
-      } else {
-        new InformationDlg(this, "Appliquer ou fermer pour continuer", "Operation interdite");
-        _actCombo.setSelectedItem(_actID);
-      }
-    }//end if (e.getSource().equals(_actCombo))
-    //if type combo box
-    if (e.getSource().equals(_typeCombo)){
-      if(!_applyPanel.isFirstEnable()){
-        _typeID = (String)_typeCombo.getSelectedItem();
-        setCurrents();
-        setListsLoad(/*_sortIndex,*/ false);
-        setScrollPane(_scrollPane.getPreferredSize());
-      } else {
-        new InformationDlg(this, "Appliquer ou fermer pour continuer", "Operation interdite");
-        _typeCombo.setSelectedItem(_typeID);
-      }
-      //_applyPanel.setFirstEnable();
-    }//end if (e.getSource().equals(_typeCombo))
-    //if sort button
-    if (e.getSource().equals(_sortCombo)){
-      //int oldIndex = _sortIndex;
-      setCurrents();
-      //setLists(_sortIndex, false);
-      setScrollPane(_scrollPane.getPreferredSize());
-      //_applyPanel.setFirstEnable();
-      setLists(_sortCombo.getSelectedIndex(), true);
-      _sortIndex = _sortCombo.getSelectedIndex();
-    }//end if (e.getSource().equals(_typeCombo))
-    //if sort button
+    private SetOfStudents _students;
 
-    //buttons
-    //if Button CLOSE is pressed
-    if (command.equals(DConst.BUT_CLOSE))
-      dispose();
-    //if Button APPLY is pressed
-    if (command.equals(DConst.BUT_APPLY)){
-      setStudentsInGroups();
-      //_buttonsPanel.getComponent(1).setEnabled(false);
-      //_sortButton.setEnabled(true);
-      _sortCombo.setEnabled(true);
-      _applyPanel.setFirstDisable();
-      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
-      //_conditionTest.setMatrixBuilded(false,true);
-      _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
-      _dApplic.getDModel().changeInDModelByStudentsDlg(this);
-      //_dApplic.getDModel().getSetOfStudents().sendEvent(this);
-    }
+    private String _selectedActivity;
 
-    // Arrows
-    if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0])) && _currentAssignedGroup > -1){
-      //if "toLeft" button is pressed
-      if (command.equals(_arrowsNames[1])){
-        if (_currentAssignedGroup > -1){
-          listTransfers(_assignedLists[_currentAssignedGroup], _notAssignedList, _assignedVectors[_currentAssignedGroup], _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true, _sortIndex);
-          //_buttonsPanel.getComponent(1).setEnabled(true);
-          //_sortCombo.setEnabled(false);
-          _applyPanel.setFirstEnable();
-          _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
-        }
-      }
-      else{
-        if (_currentAssignedGroup > -1){
-          listTransfers(_notAssignedList, _assignedLists[_currentAssignedGroup], _notAssignedVector, _assignedVectors[_currentAssignedGroup], DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
-          //_buttonsPanel.getComponent(1).setEnabled(true);
-          //_sortButton.setEnabled(false);
-          //_sortCombo.setEnabled(false);
-          _applyPanel.setFirstEnable();
-        }
-      }
-      //SetText for the JLabel containing the number of elements in a group
-      ((JLabel)((JPanel)((JPanel)_insidePanel.getComponent(
-          _currentAssignedGroup)).getComponent(0)).getComponent(4)).setText(
-          String.valueOf(_assignedVectors[_currentAssignedGroup].size()));
-    }//end if (command.equals(TO_LEFT) || command.equals(TO_RIGHT))
-  }//end method
+    private String _selectedType;
 
+    private String[] _arrowsNames = { DConst.TO_RIGHT, DConst.TO_LEFT };
 
-  /**
-   * The mouseListener for the JLists
-   */
-  private MouseListener mouseListenerLists = new MouseAdapter(){
-    public void mouseClicked(MouseEvent e) {
-      if (e.getSource().equals(_notAssignedList)){
-        if(_notAssignedVector.size() != 0){
-          for(int i = 0; i < _numberOfSections; i++)
-            _assignedLists[i].clearSelection();
-        }//end if(_notAssignedVector.size() != 0)
-      }//end if (e.getSource().equals(_notAssignedList))
-      for(int i = 0; i<_numberOfSections; i++){
-        if (e.getSource().equals(_assignedLists[i])){
-          _currentAssignedGroup = i;
-          setGroupBorders(_currentAssignedGroup);//, Color.blue);
-          if ((_assignedVectors[i]).size() != 0){
-            _notAssignedList.clearSelection();
-          }
-          for (int j = 0; j<_numberOfSections; j++){
-            if (j != i){
-              _assignedLists[j].clearSelection();
+    private Type _type;
+
+    private Vector _activitiesVector;
+
+    private Vector _notAssignedVector;
+
+    private Vector _typeVector;
+
+    private Vector _assignedVectors[];
+
+    private Vector _sortVector;
+
+    /**
+     * Constructor
+     * 
+     * @param dApplic
+     */
+    public SectionDlg(DApplication dApplic) {
+        super(dApplic.getJFrame(), DConst.SECTION_DLG_TITLE, true);
+        _dApplic = dApplic;
+        //_sortIndex = 0; // why 0?
+        _currentAssignedGroup = -1; // why -1
+        if (_dApplic.getDMediator().getCurrentDoc() == null)
+            return;
+        _activities = _dApplic.getDModel().getSetOfActivities();
+        _students = _dApplic.getDModel().getSetOfStudents();// is correct
+        _students.sortSetOfResourcesByID();// is correct
+        if (_activities != null && _students != null) {
+            initializeDlg();
+            int x = _dApplic.getJFrame().getX();
+            int y = _dApplic.getJFrame().getY();
+            this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
+            this.setMinimumSize(new Dimension(200, 200));
+            this.setPreferredSize(new Dimension(600, 600)); //the real
+            this.setMaximumSize(new Dimension(1000, 1500));
+            this.pack();
+            this.setResizable(true);
+            this.setVisible(true);
+        } //end if
+    }//end SectionDlg
+
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        // combo
+        //if activity combo box
+        if (e.getSource().equals(_activitiesCombo)) {
+            if (!_applyPanel.isFirstEnable()) {
+                _selectedActivity = (String) _activitiesCombo.getSelectedItem();
+                _typeVector = ((Activity) (_activities
+                        .getResource(_selectedActivity).getAttach()))
+                        .getSetOfTypes().getNamesVector(1);
+                _typeCombo.disableActionListeners();
+                _typeCombo.removeAllItems();
+                _typeCombo.enableActionListeners();
+                for (int i = 0; i < _typeVector.size(); i++) {
+                    _typeCombo.addItem(_typeVector.elementAt(i));
+                }//end for
+                _selectedType = (String) _typeVector.get(0);
+                _type = getType(_selectedActivity, _selectedType);
+                _numberOfSections = getNumberOfSections(_type);
+                setListsLoad(false);
+                setScrollPane(_scrollPane.getPreferredSize());
+
+            } else {
+                new InformationDlg(this, "Appliquer ou fermer pour continuer",
+                        "Operation interdite");
+                _activitiesCombo.setSelectedItem(_selectedActivity);
             }
-          }
-          if(e.getClickCount() == 2){
-            changeFixedInGroup(((JList)e.getSource()).getSelectedValues(), _currentAssignedGroup);
-            _applyPanel.setFirstEnable();
-          }//end if(e.getClickCount() == 2)
-        }//if (e.getSource().equals(_assignedLists[i]))
-      }//end for(int i = 0; i<_numberOfSections; i++)
+        }//end if (e.getSource().equals(_actCombo))
+        //if type combo box
+        if (e.getSource().equals(_typeCombo)) {
+            if (!_applyPanel.isFirstEnable()) {
+                _selectedType = (String) _typeCombo.getSelectedItem();
+                _type = getType(_selectedActivity, _selectedType);
+                _numberOfSections = getNumberOfSections(_type);
+                setListsLoad(false);
+                setScrollPane(_scrollPane.getPreferredSize());
+            } else {
+                new InformationDlg(this, "Appliquer ou fermer pour continuer",
+                        "Operation interdite");
+                _typeCombo.setSelectedItem(_selectedType);
+            }
+            //_applyPanel.setFirstEnable();
+        }//end if (e.getSource().equals(_typeCombo))
+        //if sort button
+        if (e.getSource().equals(_sortCombo)) {
+            //int oldIndex = _sortIndex;
+            _type = getType(_selectedActivity, _selectedType);
+            _numberOfSections = getNumberOfSections(_type);
+            //setLists(_sortIndex, false);
+            setScrollPane(_scrollPane.getPreferredSize());
+            //_applyPanel.setFirstEnable();
+            setLists(_sortCombo.getSelectedIndex(), true);
+            _sortIndex = _sortCombo.getSelectedIndex();
+        }//end if (e.getSource().equals(_typeCombo))
+        //if sort button
 
-    }// end public void mouseClicked
-  };//end definition of MouseListener mouseListener = new MouseAdapter(){
+        //buttons
+        //if Button CLOSE is pressed
+        if (command.equals(DConst.BUT_CLOSE))
+            dispose();
+        //if Button APPLY is pressed
+        if (command.equals(DConst.BUT_APPLY)) {
+            setStudentsInGroups();
 
-  private MouseListener mouseListenerGroupPanel = new MouseAdapter(){
-    public void mouseClicked(MouseEvent e) {
-      for(int i = 0; i < _numberOfSections; i++){
-        if (e.getSource().equals(_insidePanel.getComponent(i))){
-          _currentAssignedGroup = i;
-        }else{
-          _assignedLists[i].clearSelection();
+            _sortCombo.setEnabled(true);
+            _applyPanel.setFirstDisable();
+
+            _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,
+                    false);
+            _dApplic.getDModel().changeInDModelByStudentsDlg(this);
+
         }
-      }//end for(int i = 0; i<_numberOfSections; i++)
-      setGroupBorders(_currentAssignedGroup);//, Color.blue);
-    }// end public void mouseClicked
-  };//end definition of MouseListener mouseListener = new MouseAdapter(){
 
-  /**
-  * Set the clor border of the groupPanels. Clor = blue for the panel selected, null for the
-  * other panels
-  * @param selectedPanelID
-  * @param colorBorder
-  */
-  private void setGroupBorders(int selectedPanelID) { 
-    JPanel panel;
-    for (int i = 0; i < _numberOfSections; i++){
-      panel = (JPanel)_insidePanel.getComponent(i);
-      if(i == selectedPanelID)
-        panel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
-      else
-        panel.setBorder(null);
+        // Arrows
+        if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0]))
+                && _currentAssignedGroup > -1) {
+            //if "toLeft" button is pressed
+            if (command.equals(_arrowsNames[1])) {
+                if (_currentAssignedGroup > -1) {
+                    listTransfers(_assignedLists[_currentAssignedGroup],
+                            _notAssignedList,
+                            _assignedVectors[_currentAssignedGroup],
+                            _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP,
+                            true, _sortIndex);
+                    //_buttonsPanel.getComponent(1).setEnabled(true);
+                    //_sortCombo.setEnabled(false);
+                    _applyPanel.setFirstEnable();
+                    _dApplic.getDMediator().getCurrentDoc().getDM()
+                            .getSetOfStates().sendEvent();
+                }
+            } else {
+                if (_currentAssignedGroup > -1) {
+                    listTransfers(_notAssignedList,
+                            _assignedLists[_currentAssignedGroup],
+                            _notAssignedVector,
+                            _assignedVectors[_currentAssignedGroup],
+                            DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
+                    _applyPanel.setFirstEnable();
+                }
+            }
+            //SetText for the JLabel containing the number of elements in a
+            // group
+            ((JLabel) ((JPanel) ((JPanel) _insidePanel
+                    .getComponent(_currentAssignedGroup)).getComponent(0))
+                    .getComponent(4)).setText(String
+                    .valueOf(_assignedVectors[_currentAssignedGroup].size()));
+        }//end if (command.equals(TO_LEFT) || command.equals(TO_RIGHT))
+    }//end method
+
+    /**
+     * initializeDlg
+     *  
+     */
+    private void initializeDlg() {
+        Dimension dialogDim = new Dimension(550, 550);
+        this.getContentPane().setLayout(new BorderLayout());
+        setSize(dialogDim);
+        setResizable(false);
+        JPanel top = initTopPanel();
+        getContentPane().add(top, BorderLayout.NORTH);
+
+        //_applyPanel
+        String[] a = { DConst.BUT_APPLY, DConst.BUT_CLOSE };
+        _applyPanel = new TwoButtonsPanel(this, a);
+        _applyPanel.setFirstDisable();
+
+        getContentPane().add(_applyPanel, BorderLayout.SOUTH);
+        setListsLoad(false); 
+
+        JPanel _centerPanel = initCenterPanel();
+        getContentPane().add(_centerPanel, BorderLayout.CENTER);
+    } // initializeDlg
+
+    /**
+     * 
+     * @return JPanel containing three panels to select an activity, a type and
+     *         an indicator for kind of sort
+     */
+    private JPanel initTopPanel() {
+        JPanel activityPanel = initActivityPanel();
+        JPanel typePanel = initTypePanel();
+        JPanel sortPanel = initSortPanel();
+
+        _type = getType(_selectedActivity, _selectedType);
+        _numberOfSections = getNumberOfSections(_type);
+        JPanel topPanel = new JPanel();
+        topPanel.add(activityPanel);
+        topPanel.add(typePanel);
+        topPanel.add(sortPanel);
+
+        return topPanel;
+    } //end initTopPanel
+
+    /**
+     * 
+     * initialize _activitiesVector _activitiesCombo _selectedActivity
+     * 
+     * 
+     * @return JPanel the Activity Panel
+     */
+    private JPanel initActivityPanel() {
+        _activitiesVector = new Vector();
+        // This vector contains the activities whose their visibility member =
+        // true
+        _activitiesVector = _activities.getIDsByField(3, "true");
+        //panel of activities
+        _activitiesCombo = new DXJComboBox(_activitiesVector);
+        _activitiesCombo.addActionListener(this);
+        JPanel activityPanel = new JPanel();
+        activityPanel.setBorder(new TitledBorder(new EtchedBorder(),
+                DConst.ACTIVITY));
+        activityPanel.add(_activitiesCombo);
+        _selectedActivity = (String) _activitiesVector.elementAt(0);
+        return activityPanel;
+    } //end initActivityPanel
+
+    /**
+     * 
+     * initialize _typeVector _typeCombo _selectedType
+     * 
+     * 
+     * @return JPanel the Type Panel
+     *  
+     */
+    private JPanel initTypePanel() {
+        _typeVector = ((Activity) (_activities.getResource(_selectedActivity)
+                .getAttach())).getSetOfTypes().getNamesVector(1);
+        _typeCombo = new DXJComboBox(_typeVector);
+        _typeCombo.addActionListener(this);
+
+        JPanel typePanel = new JPanel();
+        typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
+        typePanel.add(_typeCombo);
+        _selectedType = (String) _typeVector.elementAt(0);
+        return typePanel;
+    } //end initTypePanel
+
+    /**
+     * 
+     * initialize _sortVector _sortCombo _sortIndex
+     * 
+     * 
+     * @return JPanel the Type Panel
+     *  
+     */
+    private JPanel initSortPanel() {
+        _sortVector = buildSortVector();
+        _sortCombo = new DXJComboBox(_sortVector);
+        JPanel sortPanel = new JPanel();
+        sortPanel.setBorder(new TitledBorder(new EtchedBorder(),
+                DConst.SORT_TITLE));
+        sortPanel.add(_sortCombo);
+        _sortIndex = 0;
+        _sortCombo.setSelectedIndex(_sortIndex);
+        _sortCombo.addActionListener(this); // must be added here!
+        return sortPanel;
+    } //end initSortPanel
+
+    /**
+     * Set the left panel who shows the list of the not assigned students
+     */
+    private JPanel initNotAssignedPanel() {
+        Dimension dialogDim = new Dimension(550, 550);
+        Dimension panelDim = new Dimension(
+                (int) ((dialogDim.getWidth() - 50) * 0.40), (int) dialogDim
+                        .getHeight() - 150);
+        JPanel notAssignedPanel = new JPanel();
+        //notAssignedPanel = DXTools.listPanel(_notAssignedList, (int) (panelDim
+       //         .getWidth() - 112), (int) panelDim.getHeight() - 35);
+   //JList jlistname = new JList(studentName());     
+   //JList jlistMat = new JList(studentMatricule()); 
+   //notAssignedPanel = DXTools.listPanel(jlistname,jlistMat, ((int)((550-50) *0.4) - 112),  550- 150 - 35);
+        notAssignedPanel = DXTools.listPanel(_notAssignedList,  ((int)((550-50) *0.4) - 112),  550- 150 - 35);
+        notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(),
+                DConst.ACT_STUD_NOT_ASSIGNED));
+        //+++extract viewPort+++ ((JScrollPane)notAssignedPanel.getComponents()[0]).getViewport()
+        //notAssignedPanel.setPreferredSize(panelDim);
+        notAssignedPanel.setPreferredSize(panelDim);
+        return notAssignedPanel;
     }
-  }//end method
-
-  private  SetOfStudents getSortStudents(JList list, int group) {
     
-    SetOfStudents students = new SetOfStudents();
-    if (list != null) {
-      for (int i= 0; i < list.getModel().getSize(); i++ ) {
-        String str = (String) list.getModel().getElementAt(i);
-        Student studentRequest = (Student)getStudent(str);
-        Student studAtt= new Student(studentRequest.getID());
-        studAtt.addCourses(_actID+_typeID);
-        if (str.endsWith(DConst.CHAR_FIXED_IN_GROUP))
-          studAtt.setInGroup(_actID+_typeID, group, true);
-        else
-          studAtt.setInGroup(_actID+_typeID, group, false);
-        
-        studAtt.setAuxField(studentRequest.getAuxField()); 
-        students.setCurrentKey(studentRequest.getKey());
-        students.addResource(studAtt,0);
-      }
+    
+    /**
+     * Set _assignedPanel, the panel containing the lists of assigned students
+     */
+    private JPanel initAssignedPanel() {
+        Dimension dialogDim = new Dimension(550, 550);
+        Dimension panelDim = new Dimension(
+                (int) ((dialogDim.getWidth() - 50) * 0.55), (int) dialogDim
+                        .getHeight() - 150);
+        Dimension scrollDim = new Dimension((int) panelDim.getWidth() - 10,
+                (int) panelDim.getHeight() - 5);
+
+        JPanel assignedPanel = new JPanel();
+        assignedPanel = new JPanel(new BorderLayout());
+        assignedPanel.setBorder(new TitledBorder(new EtchedBorder(),
+                DConst.ACT_STUD_ASSIGNED));
+        assignedPanel.setPreferredSize(panelDim);
+        _scrollPane = new JScrollPane();
+        _scrollPane.setPreferredSize(scrollDim);
+        _insidePanel = new JPanel(new GridLayout(_numberOfSections, 1)); //It
+        // is
+        // contained
+        // into
+        // _scrollPane
+        setScrollPane(scrollDim);
+        assignedPanel.add(_scrollPane);
+        return assignedPanel;
     }
-    return students;
-  }
 
-
-  private void setListsLoad(boolean forUpdate){
-    _notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
-    if (_notAssignedList == null){
-      _notAssignedList = new JList(_notAssignedVector);
-      _notAssignedList.setFont(DConst.JLISTS_FONT);
-      _notAssignedList.addMouseListener(mouseListenerLists);
-    }
-    else
-      _notAssignedList.setListData(_notAssignedVector);
-    if (!forUpdate){
-      _assignedVectors = new Vector[_numberOfSections];
-      _assignedLists = new JList[_numberOfSections];
-    }
-    Type type=_activities.getType(_actID,_typeID);
-    for(int i=0; i< type.getSetOfSections().size(); i++){
-      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());
-      //for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = _students.getStudentsByGroup(_actID, _typeID, group, _sortIndex);
-      //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
-      if (!forUpdate){
-        _assignedLists[i] = new JList(_assignedVectors[i]);
-        _assignedLists[i].setFont(DConst.JLISTS_FONT);
-        _assignedLists[i].addMouseListener(mouseListenerLists);
-      }
-      else
-        _assignedLists[i].setListData(_assignedVectors[i]);
-    }
-  }//end method
-  private void setLists(int newIndex, boolean forUpdate){
-    _notAssignedVector = getSortStudents(_notAssignedList, -1).getStudentsByGroup(_actID, _typeID, -1, newIndex);
-    if (_notAssignedList == null){
-      _notAssignedList = new JList(_notAssignedVector);
-      _notAssignedList.setFont(DConst.JLISTS_FONT);
-      _notAssignedList.addMouseListener(mouseListenerLists);
-    }
-    else
-      _notAssignedList.setListData(_notAssignedVector);
-    if (!forUpdate){
-      _assignedVectors = new Vector[_numberOfSections];
-      _assignedLists = new JList[_numberOfSections];
-    }
-    Type type=_activities.getType(_actID,_typeID);
-    for(int i=0; i< type.getSetOfSections().size(); i++){
-      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());
-      //for(int i = 0; i < _numberOfSections; i++){
-      _assignedVectors[i] = getSortStudents(_assignedLists[i],/* newIndex,*/ group).getStudentsByGroup(_actID, _typeID, group, newIndex);
-      //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
-      if (!forUpdate){
-        _assignedLists[i] = new JList(_assignedVectors[i]);
-        _assignedLists[i].setFont(DConst.JLISTS_FONT);
-        _assignedLists[i].addMouseListener(mouseListenerLists);
-      }
-      else
-        _assignedLists[i].setListData(_assignedVectors[i]);
-    }
-  }//end method
-
-
-  /**
-   * Sets the students in the groups indicated by the JLists
-   */
-  private void setStudentsInGroups(){
-    Student s;
-    String studentData;
-    for(int i = 0; i < _notAssignedVector.size(); i++){
-      studentData = (String)_notAssignedVector.elementAt(i);
-      s = (Student)getStudent(studentData);
-      s.setInGroup(_actID+_typeID, -1, false);
-      //System.out.println("Student: "+studentData+" -Activity: "+String.valueOf(_actID+_typeID)+
-      //" -StudentAttach Group: "+ s.getGroup(_actID+_typeID));
-    }//end for(int i = 0; i < _notAssignedVector.size(); i++)
-    Type type=_activities.getType(_actID,_typeID);
-    for(int j = 0; j < _assignedVectors.length; j++){
-      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(j).getID());
-      for(int k = 0; k < _assignedVectors[j].size(); k++){
-        studentData = (String)_assignedVectors[j].elementAt(k);
-        s = (Student)getStudent(studentData);
-        //System.out.println("Student: "+studentData+" -Activity: "+String.valueOf(_actID+_typeID)+
-        // " -StudentAttach: "+ s);
-        if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
-          s.setInGroup(_actID+_typeID, group, true);
-        else
-          s.setInGroup(_actID+_typeID, group, false);
-      }//end for(int k = 0; k < _assignedVectors[j].size(); k++)
-    }//end for(int j = 0; j < _assignedVectors.length; j++)
-  }//end method
-
-  private void changeFixedInGroup(Object [] obj, int group){
-    //boolean fixedInGroup;
-    int index = 0;
-    String studentData = "";
-    for(int i = 0; i < obj.length; i++){
-      studentData = (String)obj[i];
-      index = _assignedVectors[group].indexOf(studentData);
-      if(studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP)) {
-        studentData = studentData.substring(0, studentData.length()-DConst.CHAR_FIXED_IN_GROUP.length());
-      }else{
-        studentData = studentData + DConst.CHAR_FIXED_IN_GROUP;
-      }
-
-      _assignedVectors[group].setElementAt(studentData, index);
-    }//end for
-    _notAssignedList.setListData(_notAssignedVector);
-    //setLists(_sortIndex, true);
-  }
-
-
-  private void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, String chain, boolean toLeft, int sortIndex){
-    if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
-      return;
-    DSetOfResources destinationRes = new StandardCollection();
-    DResource res;
-    Object [] elementsToTransfer = sourceList.getSelectedValues();
-    String strElement;//, ID, key;
-    if (elementsToTransfer.length != 0){
-      for (int i = 0; i < elementsToTransfer.length; i++){
-        sourceVector.remove(elementsToTransfer[i]);
-        strElement = (String)elementsToTransfer[i];
-        if (toLeft){
-          if(strElement.endsWith(chain))
-            elementsToTransfer[i] = strElement.substring(0, strElement.length()-chain.length());
-        }else{
-          elementsToTransfer[i] = strElement + chain;
+    /**
+     * Set the panel contained in _scrollPane. This panel contains the
+     * sub-JScrollPanes corresponding to the groups in a type of activity
+     */
+    private void setScrollPane(Dimension ScrollPaneDim) {
+        int insideWidth = (int) ScrollPaneDim.getWidth() - 20;
+        int scrollHeight = (int) ((ScrollPaneDim.getHeight() - 20) / 2); // rgr
+        // 20
+        // was
+        // 10
+        Dimension insideDim = new Dimension(insideWidth, scrollHeight
+                * _numberOfSections + 10);
+        JLabel[] lNumberOfElements = new JLabel[_numberOfSections];
+        if (_insidePanel == null)
+            _insidePanel = new JPanel();
+        _insidePanel.setPreferredSize(insideDim);
+        _insidePanel.removeAll();
+        _insidePanel.setLayout(new GridLayout(_numberOfSections, 1));
+        for (int i = 0; i < _numberOfSections; i++) {
+            _insidePanel.add(setGroupPanel(i, lNumberOfElements[i]));
         }
-        destinationVector.add(elementsToTransfer[i]);
-      }
-      for(int j = 0; j < destinationVector.size(); j++){
-        res = new DResource((String)destinationVector.elementAt(j),null);
-        destinationRes.addResource(res, 1);
-      }
-      if (sortIndex == 0)
-        destinationRes.sortSetOfResourcesByID();
-      if (sortIndex == 1)
-        destinationRes.sortSetOfResourcesByKey();
-      destinationVector.removeAllElements();
-      destinationRes.getNamesVector(destinationVector);
-      sourceList.setListData(sourceVector);
-      destinationList.setListData(destinationVector);
-      int[] indices = DXTools.getIndicesOfIntersection(destinationVector, elementsToTransfer);
-      destinationList.setSelectedIndices(indices);
-      sourceList.clearSelection();
-    }//end for
-  }//end method
+        _scrollPane.setViewportView(_insidePanel);
+        _currentAssignedGroup = -1;
+    }//end method
+
+    /**
+     * Sets the panel containing the list of students belonging a section (a
+     * group)
+     * 
+     * @param groupNumber
+     *            The SectionID
+     * @return a panel to be inserted into _insidePanel
+     */
+    private JPanel setGroupPanel(int groupNumber, JLabel lNumberOfElements) {
+        int numberOfElements = 0;
+        int insideWidth = (int) _insidePanel.getPreferredSize().getWidth();
+        int GroupPanelHeight = (int) ((_scrollPane.getPreferredSize()
+                .getHeight()) / 2);
+        int infoPanelHeight = 25;
+        Dimension groupPanelDim = new Dimension(insideWidth, GroupPanelHeight);
+        JPanel groupPanel = new JPanel();
+        groupPanel.setPreferredSize(groupPanelDim);
+        groupPanel.addMouseListener(mouseListenerGroupPanel);
+        JPanel infoPanel = new JPanel();
+        //The scrollPane
+        JPanel scrollContainer = new JPanel();
+        scrollContainer = DXTools.listPanel(_assignedLists[groupNumber],
+                (insideWidth - 20), GroupPanelHeight - infoPanelHeight - 20);
+        infoPanel.setPreferredSize(new Dimension(insideWidth - 10,
+                infoPanelHeight));
+        numberOfElements = _assignedVectors[groupNumber].size();
+        JLabel lGroup = new JLabel(DConst.SECTION);
+        //The infoPanel
+        JLabel lGroupID = new JLabel(_type.getSetOfSections().getResourceAt(
+                groupNumber).getID());
+        lGroupID.setForeground(DConst.COLOR_QUANTITY_DLGS);
+        JLabel lNumber = new JLabel(DConst.NUMBER_OF_ELEMENTS + " ");
+        lNumberOfElements = new JLabel(String.valueOf(numberOfElements));
+        lNumberOfElements.setForeground(DConst.COLOR_QUANTITY_DLGS);
+        infoPanel.add(lGroup);
+        infoPanel.add(lGroupID);
+        infoPanel.add(new JLabel(" - "));
+        infoPanel.add(lNumber);
+        infoPanel.add(lNumberOfElements);
+        //adding the sub-panels to the panel
+        groupPanel.add(infoPanel);
+        groupPanel.add(scrollContainer);
+        return groupPanel;
+    }
+
+    /**
+     * Set _centerPanel, the panel containing _assignedPanel, _arrowsPanel and
+     * _notAssignedPanel
+     */
+    private JPanel initCenterPanel() {
+        _notAssignedPanel = initNotAssignedPanel();//dialogDim);
+        _arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, true);
+        _assignedPanel = initAssignedPanel();
+        JPanel centerPanel = new JPanel();
+        centerPanel.add(_notAssignedPanel);
+        centerPanel.add(_arrowsPanel);
+        centerPanel.add(_assignedPanel);
+        return centerPanel;
+    }// end initCenterPanel
+
+    /**
+     * Set Type of _type and _numberOfSections according with the selected
+     * activity and the selected type
+     */
+    private Type getType(String selectedActivity, String selectedType) {
+        Activity act = (Activity) (_activities.getResource(selectedActivity)
+                .getAttach());
+        return (Type) act.getSetOfTypes().getResource(selectedType).getAttach();
+    }
+
+    private int getNumberOfSections(Type type) {
+        return type.getSetOfSections().size();
+    }
+
+    /**
+     * The mouseListener for the JLists
+     */
+    private MouseListener mouseListenerLists = new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            if (e.getSource().equals(_notAssignedList)) {
+                if (_notAssignedVector.size() != 0) {
+                    for (int i = 0; i < _numberOfSections; i++)
+                        _assignedLists[i].clearSelection();
+                }//end if(_notAssignedVector.size() != 0)
+            }//end if (e.getSource().equals(_notAssignedList))
+            for (int i = 0; i < _numberOfSections; i++) {
+                if (e.getSource().equals(_assignedLists[i])) {
+                    _currentAssignedGroup = i;
+                    setGroupBorders(_currentAssignedGroup);//, Color.blue);
+                    if ((_assignedVectors[i]).size() != 0) {
+                        _notAssignedList.clearSelection();
+                    }
+                    for (int j = 0; j < _numberOfSections; j++) {
+                        if (j != i) {
+                            _assignedLists[j].clearSelection();
+                        }
+                    }
+                    if (e.getClickCount() == 2) {
+                        changeFixedInGroup(((JList) e.getSource())
+                                .getSelectedValues(), _currentAssignedGroup);
+                        _applyPanel.setFirstEnable();
+                    }//end if(e.getClickCount() == 2)
+                }//if (e.getSource().equals(_assignedLists[i]))
+            }//end for(int i = 0; i<_numberOfSections; i++)
+
+        }// end public void mouseClicked
+    };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+    private MouseListener mouseListenerGroupPanel = new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            for (int i = 0; i < _numberOfSections; i++) {
+                if (e.getSource().equals(_insidePanel.getComponent(i))) {
+                    _currentAssignedGroup = i;
+                } else {
+                    _assignedLists[i].clearSelection();
+                }
+            }//end for(int i = 0; i<_numberOfSections; i++)
+            setGroupBorders(_currentAssignedGroup);//, Color.blue);
+        }// end public void mouseClicked
+    };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+    /**
+     * Set the clor border of the groupPanels. Clor = blue for the panel
+     * selected, null for the other panels
+     * 
+     * @param selectedPanelID
+     * @param colorBorder
+     */
+    private void setGroupBorders(int selectedPanelID) {
+        JPanel panel;
+        for (int i = 0; i < _numberOfSections; i++) {
+            panel = (JPanel) _insidePanel.getComponent(i);
+            if (i == selectedPanelID)
+                panel.setBorder(BorderFactory
+                        .createLineBorder(DConst.COLOR_QUANTITY_DLGS));
+            else
+                panel.setBorder(null);
+        }
+    }//end method
+
+    private SetOfStudents getSortStudents(JList list, int group) {
+
+        SetOfStudents students = new SetOfStudents();
+        if (list != null) {
+            for (int i = 0; i < list.getModel().getSize(); i++) {
+                String str = (String) list.getModel().getElementAt(i);
+                Student studentRequest = (Student) getStudent(str);
+                Student studAtt = new Student(studentRequest.getID());
+                studAtt.addCourses(_selectedActivity + _selectedType);
+                if (str.endsWith(DConst.CHAR_FIXED_IN_GROUP))
+                    studAtt.setInGroup(_selectedActivity + _selectedType,
+                            group, true);
+                else
+                    studAtt.setInGroup(_selectedActivity + _selectedType,
+                            group, false);
+
+                studAtt.setAuxField(studentRequest.getAuxField());
+                students.setCurrentKey(studentRequest.getKey());
+                students.addResource(studAtt, 0);
+            }
+        }
+        return students;
+    }
+
+    private void setListsLoad(boolean forUpdate) {
+        _notAssignedVector = _students.getStudentsByGroup(_selectedActivity,
+                (String) _typeVector.elementAt(_typeCombo.getSelectedIndex()),
+                -1, _sortIndex);// to change
+        if (_notAssignedList == null) {
+            _notAssignedList = new JList(_notAssignedVector);
+            _notAssignedList.setFont(DConst.JLISTS_FONT);
+            _notAssignedList.addMouseListener(mouseListenerLists);
+        } else
+            _notAssignedList.setListData(_notAssignedVector);
+        if (!forUpdate) {
+            _assignedVectors = new Vector[_numberOfSections];
+            _assignedLists = new JList[_numberOfSections];
+        }
+        Type type = _activities.getType(_selectedActivity, _selectedType);
+        for (int i = 0; i < type.getSetOfSections().size(); i++) {
+            int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+                    .getResourceAt(i).getID());
+            //for(int i = 0; i < _numberOfSections; i++){
+            _assignedVectors[i] = _students.getStudentsByGroup(
+                    _selectedActivity, _selectedType, group, _sortIndex);// to change
+            //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
+            if (!forUpdate) {
+                _assignedLists[i] = new JList(_assignedVectors[i]);
+                _assignedLists[i].setFont(DConst.JLISTS_FONT);
+                _assignedLists[i].addMouseListener(mouseListenerLists);
+            } else
+                _assignedLists[i].setListData(_assignedVectors[i]);
+        }
+    }//end method
+    
+    
+
+    private void setLists(int newIndex, boolean forUpdate) {
+        _notAssignedVector = getSortStudents(_notAssignedList, -1)
+                .getStudentsByGroup(_selectedActivity, _selectedType, -1,
+                        newIndex);
+        if (_notAssignedList == null) {
+            _notAssignedList = new JList(_notAssignedVector);
+            _notAssignedList.setFont(DConst.JLISTS_FONT);
+            _notAssignedList.addMouseListener(mouseListenerLists);
+        } else
+            _notAssignedList.setListData(_notAssignedVector);
+        if (!forUpdate) {
+            _assignedVectors = new Vector[_numberOfSections];
+            _assignedLists = new JList[_numberOfSections];
+        }
+        Type type = _activities.getType(_selectedActivity, _selectedType);
+        for (int i = 0; i < type.getSetOfSections().size(); i++) {
+            int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+                    .getResourceAt(i).getID());
+            //for(int i = 0; i < _numberOfSections; i++){
+            _assignedVectors[i] = getSortStudents(_assignedLists[i],/* newIndex, */
+            group).getStudentsByGroup(_selectedActivity, _selectedType, group,
+                    newIndex);
+            //System.out.println("_assignedVectors[i] "+_assignedVectors[i]);
+            if (!forUpdate) {
+                _assignedLists[i] = new JList(_assignedVectors[i]);
+                _assignedLists[i].setFont(DConst.JLISTS_FONT);
+                _assignedLists[i].addMouseListener(mouseListenerLists);
+            } else
+                _assignedLists[i].setListData(_assignedVectors[i]);
+        }
+    }//end method
+
+    /**
+     * Sets the students in the groups indicated by the JLists
+     */
+    private void setStudentsInGroups() {
+        Student s;
+        String studentData;
+        for (int i = 0; i < _notAssignedVector.size(); i++) {
+            studentData = (String) _notAssignedVector.elementAt(i);
+            s = (Student) getStudent(studentData);
+            s.setInGroup(_selectedActivity + _selectedType, -1, false);
+        }//end for(int i = 0; i < _notAssignedVector.size(); i++)
+        Type type = _activities.getType(_selectedActivity, _selectedType);
+        for (int j = 0; j < _assignedVectors.length; j++) {
+            int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+                    .getResourceAt(j).getID());
+            for (int k = 0; k < _assignedVectors[j].size(); k++) {
+                studentData = (String) _assignedVectors[j].elementAt(k);
+                s = (Student) getStudent(studentData);
+
+                if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
+                    s
+                            .setInGroup(_selectedActivity + _selectedType,
+                                    group, true);
+                else
+                    s.setInGroup(_selectedActivity + _selectedType, group,
+                            false);
+            }//end for(int k = 0; k < _assignedVectors[j].size(); k++)
+        }//end for(int j = 0; j < _assignedVectors.length; j++)
+    }//end method
+
+    private void changeFixedInGroup(Object[] obj, int group) {
+        //boolean fixedInGroup;
+        int index = 0;
+        String studentData = "";
+        for (int i = 0; i < obj.length; i++) {
+            studentData = (String) obj[i];
+            index = _assignedVectors[group].indexOf(studentData);
+            if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP)) {
+                studentData = studentData.substring(0, studentData.length()
+                        - DConst.CHAR_FIXED_IN_GROUP.length());
+            } else {
+                studentData = studentData + DConst.CHAR_FIXED_IN_GROUP;
+            }
+
+            _assignedVectors[group].setElementAt(studentData, index);
+        }//end for
+        _notAssignedList.setListData(_notAssignedVector);
+    }
+
+    private void listTransfers(JList sourceList, JList destinationList,
+            Vector sourceVector, Vector destinationVector, String chain,
+            boolean toLeft, int sortIndex) {
+        if (sourceList == null || destinationList == null
+                || sourceVector == null || destinationVector == null)
+            return;
+        DSetOfResources destinationRes = new StandardCollection();
+        DResource res;
+        Object[] elementsToTransfer = sourceList.getSelectedValues();
+        String strElement;//, ID, key;
+        if (elementsToTransfer.length != 0) {
+            for (int i = 0; i < elementsToTransfer.length; i++) {
+                sourceVector.remove(elementsToTransfer[i]);
+                strElement = (String) elementsToTransfer[i];
+                if (toLeft) {
+                    if (strElement.endsWith(chain))
+                        elementsToTransfer[i] = strElement.substring(0,
+                                strElement.length() - chain.length());
+                } else {
+                    elementsToTransfer[i] = strElement + chain;
+                }
+                destinationVector.add(elementsToTransfer[i]);
+            }
+            for (int j = 0; j < destinationVector.size(); j++) {
+                res = new DResource((String) destinationVector.elementAt(j),
+                        null);
+                destinationRes.addResource(res, 1);
+            }
+            if (sortIndex == 0)
+                destinationRes.sortSetOfResourcesByID();
+            if (sortIndex == 1)
+                destinationRes.sortSetOfResourcesByKey();
+            destinationVector.removeAllElements();
+            destinationRes.getNamesVector(destinationVector);
+            sourceList.setListData(sourceVector);
+            destinationList.setListData(destinationVector);
+            int[] indices = DXTools.getIndicesOfIntersection(destinationVector,
+                    elementsToTransfer);
+            destinationList.setSelectedIndices(indices);
+            sourceList.clearSelection();
+        }//end for
+    }//end method
 
 
-  /**
-   * Build StudentAttach of a String containing some information whom the student ID
-   * @param studentData the information containig the studentID and other informations
-   * @param sortIndex An index indicating the place of the StudentId
-   * @return the StudentAttach according ti the ID found
-   */
- /* private StudentAttach getStudentAttach(String studentData){
-    StudentAttach s;
-    String studentID = null;
-    long studentKey;
-    if (_sortIndex == 0)
-      studentID = studentData.substring(DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH).trim();
-    if (_sortIndex == 1)
-      studentID = studentData.substring(0, DConst.STUDENT_KEY_LENGTH).trim();
-    if (_sortIndex == 2)
-      studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH+1).trim();
-    //System.out.println("studentkey " + studentID);
-    studentKey = Long.parseLong(studentID);
-    s = (StudentAttach)_students.getResource(studentKey).getAttach();
-    return s;
-  }//end method
-*/
 
-  private DResource getStudent(String studentData){
-    DResource s;
-    String studentID = null;
-    long studentKey;
-    if (_sortIndex == 0)
-      studentID = studentData.substring(DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH).trim();
-    if (_sortIndex == 1)
-      studentID = studentData.substring(0, DConst.STUDENT_KEY_LENGTH).trim();
-    if (_sortIndex == 2)
-      studentID = studentData.substring(DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1, DConst.STUDENT_PROGRAM_LENGTH+DConst.STUDENT_ID_LENGTH+1+DConst.STUDENT_KEY_LENGTH+1).trim();
-    //System.out.println("studentkey " + studentID);
-    studentKey = Long.parseLong(studentID);
-    s = _students.getResource(studentKey);
-    return s;
-  }//end method
-  
-  private Vector buildSortVector() {
-    Vector v = new Vector();
-    v.add(DConst.SORT_BY_NAME);
-    v.add(DConst.SORT_BY_MATRICUL);
-    v.add(DConst.SORT_BY_PROGRAM);
-    return v;
-  }
+    private DResource getStudent(String studentData) {
+        DResource s;
+        String studentID = null;
+        long studentKey;
+        if (_sortIndex == 0)
+            studentID = studentData.substring(DConst.STUDENT_ID_LENGTH + 1,
+                    DConst.STUDENT_ID_LENGTH + 1 + DConst.STUDENT_KEY_LENGTH)
+                    .trim();
+        if (_sortIndex == 1)
+            studentID = studentData.substring(0, DConst.STUDENT_KEY_LENGTH)
+                    .trim();
+        if (_sortIndex == 2)
+            studentID = studentData.substring(
+                    DConst.STUDENT_PROGRAM_LENGTH + DConst.STUDENT_ID_LENGTH
+                            + 1,
+                    DConst.STUDENT_PROGRAM_LENGTH + DConst.STUDENT_ID_LENGTH
+                            + 1 + DConst.STUDENT_KEY_LENGTH + 1).trim();
+
+        studentKey = Long.parseLong(studentID);
+        s = _students.getResource(studentKey);// to check
+        return s;
+    }//end method
+
+    private Vector buildSortVector() {
+        Vector v = new Vector();
+        v.add(DConst.SORT_BY_NAME);
+        v.add(DConst.SORT_BY_MATRICUL);
+        v.add(DConst.SORT_BY_PROGRAM);
+        return v;
+    }
+
 }//end class

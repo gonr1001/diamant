@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObjectTest $Revision $  $Date: 2005-02-09 14:41:11 $
+* Title: DObjectTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DObjectTest is a class used to test the class 
 * 				DObject using the class DValue
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -47,35 +47,34 @@ public class DObjectTest extends TestCase{
   	b = new DValue();
   }
 
-  public void testAetSelectedField(){
-  	 assertEquals("testAetSelectedField: assertEquals", true, (a.getSelectedField()==0));
+  public void testA_etSelectedField(){
+  	 assertEquals("testA_etSelectedField: assertEquals", true, (a.getSelectedField()==0));
   }
-  public void testAcompareByField(){
-  	assertEquals("testAcompareByField: assertEquals", false, (a.compareByField(2,"2")));
+  public void testA_compareByField(){
+  	assertEquals("testA_compareByField: assertEquals", false, (a.compareByField(2,"2")));
   }  
-  public void testAsetField(){
+  public void testA_setField(){
   	a.setField(1,"2");
-  	assertEquals("testAsetField1: assertEquals", true, (a.getIntValue()==-1));
-  	assertEquals("testAsetField2: assertEquals", true, (a.getStringValue().compareTo("")==0));
+  	assertEquals("testA_setField1: assertEquals", true, (a.getIntValue()==-1));
+  	assertEquals("testA_setField2: assertEquals", true, (a.getStringValue().compareTo("")==0));
   }
-  public void testAtoWrite(){
+  public void testA_toWrite(){
   	//System.out.println("\""+a.toWrite()+"\"");
-  	assertTrue(a.toWrite().compareTo(";-1;")==0);
+  	assertEquals("testA_toWrite: assertEquals", ";-1;",a.toWrite());
   }
-  public void testAexternalKey(){
-  	assertTrue(a.externalKey("3","4").compareTo("34")==0);
-  }
-  public void testAisEquals(){
+  public void testA_externalKey(){
+  	assertEquals("testA_externalKey: assertEquals","34",a.externalKey("3","4"));  }
+  public void testA_isEquals(){
   	a.setField(1,"2");
   	b.setField(1,"2");
-  	assertTrue(a.isEquals(b)==true);
+  	assertEquals("testA_isEquals: assertEquals", true,a.isEquals(b));
   }
-  public void testAgetMatrixAvailability(){
-  	assertTrue(a.getMatrixAvailability().length==2 );
+  public void testA_getMatrixAvailability(){
+  	assertEquals("testA_getMatrixAvailability: assertEquals", 2, a.getMatrixAvailability().length );
   }
-  public void testAsetAvailability(){
+  public void testA_setAvailability(){
   	int [][] mat= new int[2][2];
   	a.setAvailability(mat);
-  	assertTrue(mat[0][0]==0);
+  	assertEquals("testA_setAvailability: assertEquals", 0, mat[0][0]);
   }
 }

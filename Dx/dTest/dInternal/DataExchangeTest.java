@@ -1,6 +1,6 @@
 /**
 *
-* Title: DataExchangeTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: DataExchangeTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DataExchangeTest is a class used to test the class 
 * 				DataExchange using the class ByteArrayMsg
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -46,14 +46,14 @@ public class DataExchangeTest extends TestCase{
   	a = new ByteArrayMsg("header","contents");
   }
   
-  public void testAgetContents(){
-  	assertTrue(a.getContents().compareTo("contents")==0);
+  public void testA_getContents(){
+  	assertEquals("testA_getContents: assertEquals", "contents", a.getContents());
   }
-  public void testAgetHeader(){
-  	assertTrue(a.getHeader().compareTo("header")==0);
+  public void testA_getHeader(){
+  	assertEquals("testA_getHeader: assertEquals", "header",a.getHeader());
   }
-  public void testAsetContents(){
+  public void testA_setContents(){
   	a.setContents("contenants two");
-  	assertTrue(a.getContents().compareTo("contenants two")==0);
+  	assertEquals("testA_setContents: assertEquals", "contenants two", a.getContents());
   }
 }

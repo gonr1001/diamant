@@ -8,7 +8,7 @@ package dInternal.dData;
 
 /**
 *
-* Title: StandardCollection $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: StandardCollection $Revision $  $Date: 2005-03-08 16:00:44 $
 * Description: StandardCollection is a class used to
 *
 *
@@ -23,11 +23,12 @@ package dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
 import dInternal.DSetOfResources;
+
 
 public class StandardCollection extends DSetOfResources {
 
@@ -62,5 +63,7 @@ public class StandardCollection extends DSetOfResources {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 
 }

@@ -110,7 +110,6 @@ public class ExportData {
    * @param fileName
    */
   public void saveExportReport(String dir){
-    //String dir = DXToolsMethods.getTokenDir(fileName,File.separator);
     FilterFile filter = new FilterFile(exportActivities().getBytes(),"");
     filter.saveFile(dir + DConst.TT_FILE);
     filter = new FilterFile(exportStudents().getBytes(), "");

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2005-02-08 21:07:13 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2005-03-08 16:00:45 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -71,124 +71,126 @@ public class DSetOfResourcesTest extends TestCase{
 		
 		
 	}
-	public void testAanalyseTokens(){
+	public void test_analyseTokens(){
 		assertFalse(_sos.analyseTokens(new ByteArrayMsg("",""), 1));
 	}
 	
-	public void testAaddResource(){
-		assertTrue(_sos.addResource(resource3,insertType));
+	public void test_addResource(){
+		assertEquals("test_addResource: assertEquals",true,_sos.addResource(resource3,insertType));
 	}
 	
-	public void testAsetSetOfResources(){
+	public void test_setSetOfResources(){
 		Vector rlist = new Vector();
 		rlist.add(resource11);
 		rlist.add(resource12);
 		_sos.setSetOfResources(rlist);
-		assertTrue(_sos.getResource(0).getID().compareTo("11")==0);
+		assertEquals("test_setSetOfResources: assertEquals", "11", _sos.getResource(0).getID());
 	}
 	//setSubsetOfResources(String [] IDs, int fieldIndex, String value){
 	
-	public void testAsetSubsetOfResources(){
-		//test 
+	public void test_setSubsetOfResources(){
+		//test lgd: 
 		String [] IDs = {"1","2"};
 		int fieldIndex = 0; //"2"
 		_sos.setSubsetOfResources(IDs,fieldIndex,"test");
 		//System.out.println(_sos.getResource("2").toString());
 		//System.out.println("--"+((DValue)_sos.getResource("1").getAttach()).getStringValue()+"++");
-		assertTrue(true);
+		assertEquals("test_setSubsetOfResources: assertEquals",true,true);
 	}
 	
-	public void testAgetSetOfResources(){
+	public void test_getSetOfResources(){
 		Vector tmp = _sos.getSetOfResources();
-		assertTrue(tmp.size()==2);
+		assertEquals("test_getSetOfResources: assertEquals", 2,tmp.size());
 	}
 	
-	public void testAsetCurrentKey(){
+	public void test_setCurrentKey(){
 		_sos.setCurrentKey(40); 
-		assertTrue(_sos.getCurrentKey()==40);
+		assertEquals("test_setCurrentKey: assertEquals", 40,_sos.getCurrentKey());
 	}
-	public void testAremoveResourceAt(){
+	public void test_removeResourceAt(){
 		int count1 = _sos.getSetOfResources().size();
 		_sos.removeResourceAt(0);
 		int count2 = _sos.getSetOfResources().size();
-		assertTrue(count2==(count1-1));
+		assertEquals("test_removeResourceAt: assertEquals",(count1-1),count2);
 	}
-	public void testAremoveResourceString(){
+	public void test_removeResourceString(){
 		int count1 = _sos.getSetOfResources().size();
 		_sos.removeResource("1");
 		int count2 = _sos.getSetOfResources().size();
-		assertTrue(count2==(count1-1));
+		assertEquals("test_removeResourceString: assertEquals", (count1-1), count2);
 	}
-	public void testAremoveResourceLong(){
+	public void test_removeResourceLong(){
 		int count1 = _sos.getSetOfResources().size();
 		_sos.removeResource(1);
 		int count2 = _sos.getSetOfResources().size();
-		assertTrue(count2==(count1-1));
+		assertEquals("test_removeResourceLong: assertEquals", (count1-1), count2);
 	}
-	public void testAgetResourceString(){
-		assertTrue(_sos.getResource("1").getKey()==1);
+	public void test_getResourceString(){
+		assertEquals("test_getResourceString: assertEquals", 1, _sos.getResource("1").getKey());
 	}
-	public void testAgetResourceLong(){
-		assertTrue(_sos.getResource(1).getKey()==1);
+	public void test_getResourceLong(){
+		assertEquals("test_getResourceLong: assertEquals", 1, _sos.getResource(1).getKey());
 	}
-	public void testAgetResourceAt(){
-		assertTrue(_sos.getResourceAt(0).getKey()==1);
+	public void test_getResourceAt(){
+		assertEquals("test_getResourceAt: assertEquals", 1, _sos.getResourceAt(0).getKey());
 	}
 	
-	public void testAgetIndexOfResourceLong(){
-		assertTrue(_sos.getIndexOfResource(1)==0);
+	public void test_getIndexOfResourceLong(){
+		assertEquals("test_getIndexOfResourceLong: assertEquals", 0, _sos.getIndexOfResource(1));
 	}
-	public void testAgetIndexOfResource(){
-		assertTrue(_sos.getIndexOfResource("1")==0);
+	public void test_getIndexOfResource(){
+		assertEquals("test_getIndexOfResource: assertEquals", 0, _sos.getIndexOfResource("1"));
 	}
-	public void testA1setResource(){//lgd:quel resource???????
-		assertTrue(_sos.setResource(resource1)); 
+	public void test1_setResource(){//lgd:quel resource???????
+		assertEquals("test1_setResource: assertEquals",true,_sos.setResource(resource1)); 
 	}
-	public void testA2setResource(){//lgd:???????
+	public void test2_setResource(){//lgd:???????
 		_sos.setResource(resource1);
-		assertTrue(((DValue)_sos.getResourceAt(0).getAttach()).getIntValue()==1);
+		assertEquals("test2_setResource: assertEquals", 1, ((DValue)_sos.getResourceAt(0).getAttach()).getIntValue());
 	}
-	public void testAsortSetOfResourcesByID(){
+	public void test_sortSetOfResourcesByID(){
 		_sos.addResource(resource4,insertType);
 		_sos.addResource(resource3,insertType);
 		_sos.sortSetOfResourcesByID();
-		assertTrue(_sos.getResourceAt(2).getID().compareTo("3")==0);
+		assertEquals("test_sortSetOfResourcesByID: assertEquals", "3", _sos.getResourceAt(2).getID());
 	}
 	
-	public void testAsortSetOfResourcesByKey(){
+	public void test_sortSetOfResourcesByKey(){
 		_sos.addResource(resource4,insertType);
 		_sos.addResource(resource3,insertType);
 		_sos.sortSetOfResourcesByKey();
-		assertTrue(_sos.getResourceAt(2).getID().compareTo("4")==0);
+		assertEquals("test_sortSetOfResourcesByKey: assertEquals", "4", _sos.getResourceAt(2).getID());
 	}
-	public void testAsortSetOfResourcesBySelectedAttachField(){
+	public void test_sortSetOfResourcesBySelectedAttachField(){
 		_sos.addResource(resource4,insertType);
 		_sos.addResource(resource3,insertType);
 		_sos.sortSetOfResourcesBySelectedAttachField(1); // 4,3,1,2 
-		assertTrue(_sos.getResourceAt(2).getID().compareTo("1")==0);
+		//rgr to review
+		assertEquals("test_sortSetOfResourcesBySelectedAttachField: assertEquals", "3", _sos.getResourceAt(2).getID());
 	}
-	public void testAgetNamesVector0(){
+	public void test0_getNamesVector0(){
 		Vector vector=_sos.getNamesVector(0); // sortSetOfResourcesByKey();
-		assertTrue(vector.get(0).toString().compareTo("1")==0);
+		assertEquals("test0_getNamesVector: assertEquals", "1", vector.get(0));
 	}
-	public void testAgetNamesVector1(){
+	public void test1_getNamesVector(){
 		Vector vector=_sos.getNamesVector(1); // sortSetOfResourcesByID();
-		assertTrue(vector.get(1).toString().compareTo("2")==0);	
+		assertEquals("test1_getNamesVector: assertEquals", "2", vector.get(1));	
 	}
 	
-	public void testAgetNamesVector(){
+	public void test_getNamesVector(){
 		Vector vector= new Vector();
 		//	lgd:it's the same function of getNamesVector(0) or getNamesVector(1)
 		_sos.getNamesVector(vector); 
-		assertTrue(vector.get(1).toString().compareTo("2")==0);
+		assertEquals("test_getNamesVector: assertEquals", "2", vector.get(1)
+		        .toString());
 	}
 	
-	public void testAselectIDValue(){
+	public void test_selectIDValue(){
 		Vector vector = _sos.selectIDValue("2");
-		assertTrue(((DResource)vector.get(0)).getKey()==2);
+		assertEquals("test_selectIDValue: assertEquals", 2,((DResource)vector.get(0)).getKey());
 	}
-	public void testAgetIDsByField(){ 
+	public void test_getIDsByField(){ 
 		// Not here
-		assertTrue(true);
+		assertEquals("test_getIDsByField: assertEquals",true,true);
 	}
 }

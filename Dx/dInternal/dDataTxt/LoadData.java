@@ -1,6 +1,6 @@
 /**
 *
-* Title: LoadData $Revision: 1.58 $  $Date: 2004-12-16 19:20:56 $
+* Title: LoadData $Revision: 1.59 $  $Date: 2005-03-08 16:00:44 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.58 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.59 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -32,7 +32,7 @@ import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
 //import dInternal.dUtil.DXValue;
 import dInternal.Preferences;
-//import dInternal.dOptimization.SetOfEvents;
+
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.txt.FilterFile;
@@ -40,7 +40,7 @@ import dConstants.DConst;
 
 public class LoadData {
 	
-	private String _instructorFileName;
+	//private String _instructorFileName;
 	private String _roomsFileName;
 	private String _activitiesFileName;
 	private String _studentsFileName;
@@ -138,7 +138,7 @@ public class LoadData {
   	 *                        (if merge = false --> replace the current SetOfInstructors by the new SetOfInstructors)
 	 * @return SetOfInstructors
 	 */
-	public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
+/*	public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
 		byte[]  dataloaded = preLoad(_instructorFileName);
 		SetOfInstructors instructorsList= new SetOfInstructors(dataloaded,5,14);// 5 jours et 14 periods!
 		if (dataloaded != null) {
@@ -154,7 +154,7 @@ public class LoadData {
 			System.exit(52);
 		}
 		return instructorsList;
-	}
+	}*/
 
 	/**
 	 * 
@@ -303,12 +303,12 @@ public class LoadData {
        extract.add(tts);
        // extract SetOfInstructor
        if(tts.getError().length()==0){
-         SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
+        /* SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
              tts.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
          if (instructorsList.analyseTokens(0)){
            instructorsList.buildSetOfResources(0);
-         }
-         extract.add(instructorsList);
+         }*/
+         //extract.add(instructorsList);
        }// end if(tts.getError().length()==0)
 
       // SetOfRooms
@@ -371,7 +371,7 @@ public class LoadData {
     if (filter.validFile(str)) {
       StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), DConst.CR_LF );
       if (st.countTokens() == DConst.NUMBER_OF_FILES){
-        _instructorFileName = st.nextToken();
+        //_instructorFileName = st.nextToken();
         _roomsFileName = st.nextToken();
         _activitiesFileName = st.nextToken();
         _studentsFileName = st.nextToken();

@@ -1,26 +1,42 @@
 \chapter{\eXit{} Conventions de codage}
-Ce document est un complément de Java Code conventions. Il
-est fortement conseillé de suivre ce conventions.
-\section*{Checkout List pour une classe}
+Ce document indique quels sont les conventions de codage utilisés dans les projets \eXit{}.
+Il est obligatoire de suivre ces conventions.
+
+
+\section*{Une classe doit suivre les conventions suivantes}
 
 \begin{enumerate}
     \item Le code doit suivre les  conventions Java \verb!http://java.sun.com/docs/codeconv!.
-    \item Le code doit être lisible, donc, les méthodes ne doivent pas dépasser 20 lignes, une instruction doit
-    tenir sur une ligne de 100 caractères. Sans sacrifier la taille de noms de variables ou méthodes.
-    \item Un enchaînement d'appel de méthodes \verb!m1().m2().m3().m4! ne doit pas dépasser 4 méthodes. 
-    \item Utiliser un bon nom pour indiquer \verb!package!. Il faut le mettre dans la première
-    ligne du fichier.
 
-    \item commentaire général bien fait et à la bonne place.
-    \item commentaire général avec le nom de la classe.
+    \item Aucun warning Eclipse sera permis. (voir configuration d'Eclipse).
+
+    \item Le code doit être lisible, pour ce faire, les méthodes ne doivent pas dépasser 20 lignes,
+    une ligne ne doit pas dépasser 80 caractères , afin de produire une impression lisible.
+    Sans sacrifier la taille de noms de variables ou méthodes.
+
+    \item Un enchaînement d'appel de méthodes \verb!m1().m2().m3().m4! ne doit pas dépasser 4 méthodes.
+
+    \item Utiliser un bon nom pour indiquer \verb!package!. Il faut le mettre après le commentaire
+    général de la classe.
+
+    \item commentaire général de la classe, bien fait et à la bonne place.
+
+    \item commentaire général doit contenir le nom de la classe.
+
     \item \verb!import!s, toujours avec le nom de la classe à importer (pas de \verb!*!).
     Ordonnées lignes comportant \verb!java!, ligne vide,
     lignes comportant \verb!javax.swing!, ligne vide,
     lignes comportant \verb!lib!, ligne vide lignes comportant les classes de l'application.
+
     \item commentaire de description de la responsabilité de la classe.
-    \item données membres, toujours \verb!private!, sinon justifier. Un
-    commentaire sur leur fonction.
+
+    \item données membres, toujours \verb!private!, sinon justifier par un commentaire. Un
+    commentaire sur leur fonction est apprécié.
+
     \item les données membres commencent toujours par un \verb!_!
+
+    \item Les noms de variables et méthodes ....
+
     \item méthode avec commentaires sur paramètres et return, indiquer toutes les exceptions que la méthode
     peut jeter.
     \item une méthode doit aussi contenir des commentaires requires, modifies, effets. requires indique les

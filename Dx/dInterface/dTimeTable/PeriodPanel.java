@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.25 $  $Date: 2005-02-03 20:50:43 $
+ * Title: PeriodPanel $Revision: 1.26 $  $Date: 2005-03-08 16:00:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.26 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -64,10 +64,6 @@ public  abstract class PeriodPanel extends JPanel{
   }
 
   protected abstract void createPanel(Period period);
-
-  /*public void addMouseListener(MouseListener mouseListener) {
-   // _jPanel.addMouseListener(mouseListener);
-  }*/
 
 
   /**
@@ -129,21 +125,48 @@ public  abstract class PeriodPanel extends JPanel{
     setBackground(color);
   }
 
-  public JPanel buildConflictPanel(Period period){
-  JPanel conflictPanel = new JPanel();
-  _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
-  _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
-  _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
-  conflictPanel.add(_cStu);
-  conflictPanel.add(_cTeach);
-  conflictPanel.add(_cRoom);
-  //conflictPanel.setBorder(BorderFactory.createEtchedBorder());
+  public JPanel buildConflictPanel(Period period, String str, Color color){
+      JPanel conflictPanel = new JPanel();
+      JLabel title = new JLabel(str);
+      _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
+      _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
+      _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
+      conflictPanel.add(title);
+      conflictPanel.add(_cStu);
+      conflictPanel.add(_cTeach);
+      conflictPanel.add(_cRoom);
+      
+      if (color != null) {
+          conflictPanel.setBackground(color);
+      }
+        if(period.getPriority()!=2){
+          _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
+          _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
+          _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
+        }
+        return conflictPanel;
+  }
+  public JPanel buildConflictPanel(Period period,String str){
+      JPanel conflictPanel = new JPanel();
+      JLabel title = new JLabel(str);
+      _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
+      _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
+      _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
+      conflictPanel.add(title);
+      conflictPanel.add(_cStu);
+      conflictPanel.add(_cTeach);
+      conflictPanel.add(_cRoom);
+      //conflictPanel.setBorder(BorderFactory.createEtchedBorder());
 
-    if(period.getPriority()!=2){
-      _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
-      _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
-      _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
-    }
-    return conflictPanel;
+        if(period.getPriority()!=2){
+          _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
+          _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
+          _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
+        }
+        return conflictPanel;
+  }
+	
+  public JPanel buildConflictPanel(Period period){
+      return buildConflictPanel(period,"");
   }
 }

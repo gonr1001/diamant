@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfActivities $Revision: 1.6 $  $Date: 2005-02-08 16:24:44 $
+ * Title: SetOfActivities $Revision: 1.7 $  $Date: 2005-03-08 16:00:44 $
  * Description: SetOfActivities is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -514,6 +514,20 @@ public class SetOfActivities extends DSetOfResources{
    }
    return null;
   }
+ 
+ /**
+ *
+ * @param actID
+ * @param typeID
+ * @return
+ */
+public DSetOfResources  getSetOfType(String actID){
+	DResource a = getResource(actID);
+	   if(a!=null){
+	     return ((Activity)a.getAttach()).getSetOfTypes();
+	   }
+	   return null;
+}
 
   /**
    * Return the name of the unity specified by the parameters

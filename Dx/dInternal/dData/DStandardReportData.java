@@ -1,18 +1,30 @@
 package dInternal.dData;
 
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
+*
+* Title: DStandardReportData $Revision: 1.7 $  $Date: 2005-03-08 16:00:44 $
+* Description: DStandardReportData is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.7 $
+* @author  $Author: syay1801 $
+* @since JDK1.3
+*/
 
 import java.util.StringTokenizer;
 import java.util.Vector;
-//import dInternal.dData.dRooms.SetOfRooms;
-//import dInterface.dUtil.DXTools;
+
+import dInterface.dUtil.DXTools;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.DResource;
@@ -21,10 +33,9 @@ import dInternal.dData.dActivities.Section;
 import dInternal.DSetOfResources;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
+import dInternal.dData.dStudents.Student;
 import dInternal.dDataTxt.Resource;
-
 import dConstants.DConst;
-//import dInterface.dUtil.DXTools;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.EventAttach;
@@ -334,12 +345,13 @@ public class DStandardReportData {
   	StringBuffer studlist= new StringBuffer("");
     //TODO when dInternal.dTimeTable and dInternal.dOptimization 
   	// will use DResource and DSetOfResource
-  	/*
+  	
   	int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
       //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
-      String line = _dm.getSetOfStudents().getResourceAt(i).toWrite(" ");
+        //String line =
+      String line = ((Student)_dm.getSetOfStudents().getResourceAt(i)).toWrite();
       StringTokenizer strTokens= new StringTokenizer(line.substring(DConst.END_STUDENT_NUMBER_OF_COURSE,line.length()));
       String name_mat = line.substring(0,DConst.BEGIN_STUDENT_NUMBER_OF_COURSE);
       String str= " "+name_mat.substring(0,DConst.END_STUDENT_MATRICULE)+";"+
@@ -383,7 +395,7 @@ public class DStandardReportData {
       }// end while(strTokens.hasMoreTokens())
       studlist.append( str+strcrs+";"+DConst.CR_LF);
     }// end for (int i=0; i< _dm.getSetOfStudents().size(); i++)
-    */
+    
     return studlist.toString();
   }
 

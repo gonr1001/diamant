@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.16 $  $Date: 2005-02-03 20:50:43 $
+ * Title: TTPane $Revision: 1.17 $  $Date: 2005-03-08 16:00:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.17 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -123,7 +123,6 @@ public abstract class TTPane {
     jScrollPane.setColumnHeaderView(createColumnHeader());
     jScrollPane.setRowHeaderView(createRowHeader());
     jScrollPane.setViewportView(createViewPort());
-    // Point point = jScrollPaneOne.getViewport().getViewPosition();
     jScrollPane.getViewport().setViewPosition(jScrollPane.getViewport().getViewPosition());
     manageActions();
   }

@@ -1,6 +1,6 @@
 /**
 *
-* Title: ManualImprovementDlg $Revision: 1.26 $  $Date: 2004-12-16 19:20:52 $
+* Title: ManualImprovementDlg $Revision: 1.27 $  $Date: 2005-03-08 16:00:43 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.26 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.27 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInterface.dTimeTable;
@@ -82,7 +82,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
    * When double click in an event display ManualImprovmentDetailed
    */
   protected void doubleClicMouseProcess(){
-  	DResource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]); 	
-  	new ManualImprovementDetailed(this,_toolBar, event.getID(), _dm);
+  	DResource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+  		new ManualImprovementDetailed(this,_toolBar, event.getID(), _dm);
   }
 }//end class ManualImprovementDlg

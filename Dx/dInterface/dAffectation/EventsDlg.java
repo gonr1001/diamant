@@ -20,7 +20,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 import eLib.exit.dialog.InformationDlg;
 
 public class EventsDlg extends EventsDlgInterface{
-
+    private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT,};
 
   /**
    * Constructor
@@ -46,44 +46,42 @@ public class EventsDlg extends EventsDlgInterface{
   /**
    * build buttom to use in the dialog
    */
-  public void buildArrowButtons(boolean enableArrows){
-	String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
-	_leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames, enableArrows);
-	_rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames, enableArrows);
+  public void buildArrowButtons(boolean enableArrows){	
+	_leftArrowsPanel = DXTools.arrowsPanel(this, "left", _arrowsNames, enableArrows);
+	_rightArrowsPanel = DXTools.arrowsPanel(this, "right", _arrowsNames, enableArrows);
   }
 
 
-  public void actionPerformed(ActionEvent e){
-    String command = e.getActionCommand();
-    //if the source is one of the the _leftArrowsPanel buttons
-    if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0))) ||
-         (e.getSource().equals(_leftArrowsPanel.getComponent(1))) ){
+  public void actionPerformed(ActionEvent e){      
+    if ( (e.getActionCommand().equalsIgnoreCase("left" +_arrowsNames[0])) ||
+         (e.getActionCommand().equalsIgnoreCase("left" +_arrowsNames[1])) ){
       //if "toRight" button
-      if (e.getSource().equals(_leftArrowsPanel.getComponent(0)))
-        DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1);
+      if (e.getActionCommand().equalsIgnoreCase("left" +_arrowsNames[0]))
+          DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1); 
       else
-        DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
+          DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
+                 
       _leftLabel.setText(String.valueOf(_leftVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
       _buttonsPanel.setFirstEnable();
     }//end if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) || (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
     //if the source is one of the the _rightArrowsPanel buttons
-    if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
-         (e.getSource().equals(_rightArrowsPanel.getComponent(1))) ){
+    if ( (e.getActionCommand().equalsIgnoreCase("right"+_arrowsNames[0])) ||
+         (e.getActionCommand().equalsIgnoreCase("right"+_arrowsNames[1])) ){
       //if "toRight" button
-      if (e.getSource().equals(_rightArrowsPanel.getComponent(0)))
-        DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1);
+      if (e.getActionCommand().equalsIgnoreCase("right"+_arrowsNames[0]))
+          DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1); 
       else
-        DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);
+          DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);      
       _rightLabel.setText(String.valueOf(_rightVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
       _buttonsPanel.setFirstEnable();
     }//end if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) || (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
     //if Button CLOSE is pressed
-    if (command.equals(DConst.BUT_CLOSE))
+    if (e.getActionCommand().equals(DConst.BUT_CLOSE))
       dispose();
     //if Button APPLY is pressed
-    if (command.equals(DConst.BUT_APPLY)){
+    if (e.getActionCommand().equals(DConst.BUT_APPLY)){
       setUnities();
       _dApplic.getDModel().changeInDModelByEventsDlg(this);
       _buttonsPanel.setFirstDisable();
