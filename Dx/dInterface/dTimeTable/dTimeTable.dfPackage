@@ -7,11 +7,6 @@ package id32wd1dfxus9pndfyc2b9f;
 */
 class diagram {
 /**
-@__ref <oiref:java#Class#dInterface.dTimeTable.TTPanel:oiref><oihard>
-@__modelType reference 
-*/
-class reference343 {
-}/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.OpenTTSDlg:oiref><oihard>
 @__modelType reference 
 */
@@ -82,11 +77,6 @@ class reference {
 */
 class reference31 {
 }/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.DetailedTTPanel:oiref><oihard>
-@__modelType reference 
-*/
-class reference18 {
-}/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.DetailedPeriodPanel:oiref><oihard>
 @__modelType reference 
 */
@@ -96,11 +86,6 @@ class reference19 {
 @__modelType reference 
 */
 class reference20 {
-}/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.SimpleTTPanel:oiref><oihard>
-@__modelType reference 
-*/
-class reference21 {
 }/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.ManualImprovementCmd:oiref><oihard>
 @__modelType reference 
@@ -116,6 +101,21 @@ class reference23 {
 @__modelType reference 
 */
 class reference24 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.DetailedTTPane:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.SimpleTTPane:oiref><oihard>
+@__modelType reference 
+*/
+class reference8 {
+}/**
+@__ref <oiref:java#Class#dInterface.dTimeTable.TTPane:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

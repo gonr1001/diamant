@@ -81,7 +81,7 @@ class reference {
 */
 class reference22 {
 }/**
-@__ref <oiref:design#Class#id2qbxsdls46i76dls47c8r.diagram:oiref><oihard>
+@__ref <oiref:design#Class#id3xtldm6iynt4dm6iz6m7.diagram:oiref><oihard>
 @__modelType reference
 @__fqn <oiref:#Package#dInterface.dAlgorithms:oiref> 
 */
@@ -102,7 +102,6 @@ class __options {
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref>=503,1652,167,1134,1:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dUtil.PLAFCmd#dInterface.Command:oiref>=823,1126,1081,705:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.TTDefinitionCmd#dInterface.Command:oiref>=1627,1126,1135,705:oigroup>
-<oigroup:<oiref:design#Class#id2qbxsdls46i76dls47c8r.diagram:oiref>=548,307,182,100,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DToolBar#_dApplic:oiref>=171,657,389,1126:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dData.DefFilesToImportCmd#dInterface.Command:oiref>=958,1126,1090,705:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.AppInTTCmd:oiref>=543,1126,108,110,1:oigroup>
@@ -130,13 +129,14 @@ class __options {
 <oigroup:<oiref:java#Implements#dInterface.CmdMenu#dInterface.CommandHolder:oiref>=1056,402,1056,342:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.AppInTTCmd#dInterface.Command:oiref>=613,1126,1063,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mOpti:oiref>=155,1652,1021,544:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mActivityModif:oiref>=148,1652,1016,544:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DApplication#_dMenuBar:oiref>=323,1668,230,1668:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.CmdButton#_cmd:oiref>=1126,560,1126,604:oigroup>
 <oigroup:<oiref:design#Class#id17ivedfxus9pndfyc1s47.diagram:oiref>=256,48,155,212,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_dApplic:oiref>=613,1208,523,1208:oigroup>
 <oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,200,404,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.PLAFCmd:oiref>=779,1126,88,101,1:oigroup>
-<oigroup:<oiref:design#Class#id1qvh0dky34z86dky35imi.diagram:oiref>=426,2,146,292,1:oigroup>
+<oigroup:<oiref:design#Class#id1qvh0dky34z86dky35imi.diagram:oiref>=426,2,151,388,1:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dUtil.PLAFDlg:oiref>=690,1652,170,318,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.dTimeTable.AppInTTCmd#_dd:oiref>=575,1126,575,1066:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_ttPanel:oiref>=510,604,510,152:oigroup>
@@ -145,6 +145,7 @@ class __options {
 <oigroup:MemberLink#<oiref:java#Member#dInterface.dData.DefFilesToImportDlg#_dApplic:oiref>=412,1652,412,1572:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dData.ImportCmd#dInterface.Command:oiref>=1212,1126,1108,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mEventsModif:oiref>=130,1652,1004,544:oigroup>
+<oigroup:<oiref:design#Class#id3xtldm6iynt4dm6iz6m7.diagram:oiref>=548,407,182,100,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DApplication#_mediator:oiref>=323,1242,203,1242:oigroup>
 <oigroup:<oiref:java#Implements#dInterface.dUtil.AboutCmd#dInterface.Command:oiref>=1099,1126,1099,705:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_stateBar:oiref>=472,604,472,531:oigroup>
