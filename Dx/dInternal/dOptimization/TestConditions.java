@@ -129,7 +129,7 @@ public class TestConditions {
         Resource event = _dm.getSetOfEvents().getResourceAt(i);
         addOrRemEventInTTs(tts, event, 1, false);
       }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
-      _dm.getSetOfEvents().updateActivities(_dm.getSetOfEvents().getSetOfResources());
+      _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(), _dm.getSetOfEvents().getSetOfResources());
     }
   }
 

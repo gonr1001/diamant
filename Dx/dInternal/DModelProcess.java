@@ -80,7 +80,7 @@ public class DModelProcess {
    _dm._setOfEvents.getSetOfResources().removeAllElements();
    _dm._setOfEvents.setCurrentKey(1);
    if (_dm._setOfActivities != null){
-     _dm._setOfEvents.build();
+     _dm._setOfEvents.build(_dm._setOfActivities, _dm.getSetOfImportErrors() );
      //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
@@ -92,7 +92,7 @@ public class DModelProcess {
   /**
    * resize resource availability
    */
-  protected void resizeResourceAvailability(SetOfResources soRes){
+  public void resizeResourceAvailability(SetOfResources soRes){
     int [][] matrix;
     DXObject attach;
     for (int i=0; i< soRes.size(); i++){

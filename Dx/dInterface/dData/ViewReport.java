@@ -154,7 +154,7 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
    * @param reportData The data report
    */
   public void buildReport(Object[] fieldsNames, int[] fieldsLengths, String reportData){
-    StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
+    StringTokenizer strLines = new StringTokenizer(reportData.toString(), DConst.CR_LF);
     StringTokenizer strFields;
     String fields;
     String currentField;

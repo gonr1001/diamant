@@ -754,9 +754,9 @@ public void test7_analyseTokens(){
      Resource unitResc2= ((Section)sectionResc.getAttach()).getSetOfUnities().getResource(2);
      assertEquals("test6_addActivitDiffRooms: assertEquals 6", 1,((Unity)unitResc2.getAttach()).getSetOfAssignments().size());
      Resource assignRes1=  ((Unity)unitResc1.getAttach()).getSetOfAssignments().getResource(1);// Unity)unityResource.getAttach();
-     assertEquals("test7_addActivitDiffRooms: assertEquals 7", "C1-387",(String)((Assignment)assignRes1.getAttach()).getRoomName());
+     assertEquals("test7_addActivitDiffRooms: assertEquals 7", "C1-387",((Assignment)assignRes1.getAttach()).getRoomName());
      Resource assignRes2=  ((Unity)unitResc2.getAttach()).getSetOfAssignments().getResource(1);// Unity)unityResource.getAttach();
-     assertEquals("test8_addActivitDiffRooms: assertEquals 8", "xxxxx",(String)((Assignment)assignRes2.getAttach()).getRoomName());
+     assertEquals("test8_addActivitDiffRooms: assertEquals 8", "xxxxx",((Assignment)assignRes2.getAttach()).getRoomName());
    }
 
    /**
@@ -868,7 +868,8 @@ public void test7_analyseTokens(){
     filter.appendToCharKnown("ิห้-',:; ()๊.เ");
     if (filter.validFile(str)) {
       return filter.getByteArray();
-    } else return null;
+    }
+    return null;
 
   }
 

@@ -59,6 +59,7 @@ public class SetOfInstructors extends SetOfResources{
     int stateDispo =1;
     int numberOfInstructors=0;
     int countInstructor=0;
+    _error="";
     while (st.hasMoreElements()){
       token = st.nextToken();
       line++;
@@ -123,7 +124,7 @@ public class SetOfInstructors extends SetOfResources{
    *
    */
   public void buildSetOfResources(int beginPosition){
-    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
     String token;
     Vector avail= new Vector();
     String instID="";

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.115 $  $Date: 2004-10-14 18:59:30 $
+ * Title: DMenuBar $Revision: 1.116 $  $Date: 2004-10-21 13:39:43 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.115 $
+ * @version $Revision: 1.116 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -134,8 +134,10 @@ public class DMenuBar extends JMenuBar{
 	_initialAssign,
   	_doOptimization, _mStudentsMixingBalance,
 	_mStudentsMiddleMixingBalance, _mStudentsMixingOptimize;
-	private boolean _boolInitialAssign, _boolDoOptimization;//,
-	//_boolStudentsMixingBalance,_boolStudentsMixingOptimize;
+	private boolean _boolInitialAssign, _boolDoOptimization,
+	_boolStudentsMixingBalance,
+	_boolStudentsMiddleMixingBalance,
+	_boolStudentsMixingOptimize;
 	private JMenu _studentsRepartition;
 	private boolean _boolStudentsRepartition;
 	
@@ -145,19 +147,20 @@ public class DMenuBar extends JMenuBar{
 	// the preferences menus
 	private CmdMenu _lookAndFeel, _conflicts, _viewSimple,
 		_viewDetailedHorizontal, _viewDetailedVertical;
-	private boolean _boolLookAndFeel /*_boolConflicts, _boolView, _boolViewSimple,
-	_bool_ViewDetailedHorizontal, _boolViewDetailedVertical*/;
 	private JMenu _view;
+	private boolean _boolLookAndFeel, _boolConflicts, _boolView,
+	_boolViewSimple,
+	_bool_ViewDetailedHorizontal, _boolViewDetailedVertical;
+	
 
 	// the help menus
 	private CmdMenu _about;
 	private boolean _boolAbout;
 
 	// the inTest menus
-  private JMenu _mInTest;
-  private CmdMenu /*_userTestMixingBalance,
-  _userTestMiddleMixingBalance, _userTestMixingOptimize,*/_userTestMixingPersonal;
-  //private boolean _boolMenu1;
+  private JMenu _mInTest1, _mInTest2;
+  private CmdMenu _userTestMixingPersonal;
+  private boolean _boolmInTest1, _boolmInTest2;
 
   //Developpement menus
   private CmdMenu _myFile, _showAll, _stateZero;
@@ -378,7 +381,7 @@ public class DMenuBar extends JMenuBar{
     // Items in menu Optimisation.
     _initialAssign = new CmdMenu(DConst.M_INITIAL_ASSIGN);
     _initialAssign.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-    _initialAssign.setCommand(new InitialAssignCmd(_dApplic));
+    _initialAssign.setCommand(new InitialAssignCmd());
     _initialAssign.addActionListener(_dApplic);
     _optimisation.add(_initialAssign);
 
@@ -497,11 +500,9 @@ public class DMenuBar extends JMenuBar{
     _inTest = new JMenu(DConst.IN_TEST);
     _inTest.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
     this.add( _inTest );
-    // Items in menu Alpha test.
-    _mInTest = new JMenu(DConst.SUBMENU1);
-    _mInTest.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-
-
+    // Items in menu admin.
+    _mInTest1 = new JMenu(DConst.SUBMENU1);
+    _mInTest1.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 
    _userTestMixingPersonal = new CmdMenu(DConst.STUDENTS_REPARTITION+" "
        +DConst.STUDENTMIXINGPERSO);//, this);
@@ -510,10 +511,46 @@ public class DMenuBar extends JMenuBar{
    _userTestMixingPersonal.addActionListener(_dApplic);
    //_userSubMenu1.add(_userTestMixingPersonal);
    // add item in submenu 1
-   _mInTest.add(_userTestMixingPersonal);
+   _mInTest1.add(_userTestMixingPersonal);
+   
+// Items in menu feph.
+   _mInTest2 = new JMenu(DConst.SUBMENU2);
+   _mInTest2.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
 
-    _inTest.add(_mInTest);
 
+   // selective import
+   // instructor selective import
+   _mergeInstructors = new CmdMenu(DConst.IMP_SELECT_INST);
+   _mergeInstructors.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+   _mergeInstructors.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_INST));
+   _mergeInstructors.addActionListener(_dApplic);
+   _mInTest2.add(_mergeInstructors);
+
+   // room selective import
+   _mergeRooms = new CmdMenu(DConst.IMP_SELECT_ROOM);
+   _mergeRooms.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+   _mergeRooms.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ROOM));
+   _mergeRooms.addActionListener(_dApplic);
+   _mInTest2.add(_mergeRooms);
+
+   // activity selective import
+   _mergeActivities = new CmdMenu(DConst.IMP_SELECT_ACT);
+   _mergeActivities.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+   _mergeActivities.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ACT));
+   _mergeActivities.addActionListener(_dApplic);
+   _mInTest2.add(_mergeActivities);
+
+   // students selective import
+   _mergeStudents = new CmdMenu(DConst.IMP_SELECT_STUD);
+   _mergeStudents.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+   _mergeStudents.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_STUD));
+   _mergeStudents.addActionListener(_dApplic);
+   _mInTest2.add(_mergeStudents);
+   
+  //_mInTest2.add(_mInTest2);
+
+    _inTest.add(_mInTest1);
+    _inTest.add(_mInTest2);
 
 
   } // end createDevelopmentMenu
@@ -632,9 +669,22 @@ public class DMenuBar extends JMenuBar{
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
 
+    _boolConflicts = false;
+    _boolView = false;
+	//_boolViewSimple= false;
+    //_bool_ViewDetailedHorizontal = false;
+    //_boolViewDetailedVertical= false;
+    
+
+
     //the menu help
     // always _boolHelp= true;
     // always _boolAbout = true;
+    
+    //the testmenu
+    _boolInTest = false;
+	//_boolmInTest1= true;
+	//_boolmInTest2 = true;
 
     //the menu dev
     if (DConst.DEVELOPMENT) {
@@ -690,7 +740,7 @@ public class DMenuBar extends JMenuBar{
     //the menu preferences
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
-
+    _boolInTest = false;
     //the menu help
     // always _boolHelp= true;
     // always _boolAbout = true;
@@ -700,8 +750,6 @@ public class DMenuBar extends JMenuBar{
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
-    
-    _boolInTest = true;
     setMenus();
   } //end setReadyToBuildTT()
 
@@ -737,22 +785,36 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
 
+    //the menu otimization
     _boolMenuOptimization = true;
     _boolInitialAssign = false;
     _boolDoOptimization= true;
     _boolStudentsRepartition = true;
+	_boolStudentsMixingBalance = true;
+	_boolStudentsMiddleMixingBalance = true;
+	_boolStudentsMixingOptimize= true;
 
-
+   
     //the report menu
     _boolMenuReport = true;
 
-    //the menu preferences
+
     // always_boolPreferences= true;
     // always _boolLookAndFeel =true;
+    _boolConflicts = true;
+    _boolView = true;
+	_boolViewSimple= true;
+    _bool_ViewDetailedHorizontal = true;
+    _boolViewDetailedVertical= true;
 
     //the menu help
     // always _boolHelp= true;
     // always _boolAbout = true;
+    
+    //the testmenu
+    _boolInTest = true;
+	_boolmInTest1= true;
+	_boolmInTest2 = true;
 
     //the menu dev
     if (DConst.DEVELOPMENT) {
@@ -951,18 +1013,34 @@ public class DMenuBar extends JMenuBar{
 
     //the menu otimization
     _boolMenuOptimization = true;
-    //_boolMOpti= true;
+    _boolInitialAssign = true;
+    _boolDoOptimization= true;
+    _boolStudentsRepartition = true;
+	_boolStudentsMixingBalance = true;
+	_boolStudentsMiddleMixingBalance = true;
+	_boolStudentsMixingOptimize= true;
 
-    //the report menu
+   
+	//the report menu
     _boolMenuReport = true;
 
     //the menu preferences
     _boolMenuPreferences= true;
     _boolLookAndFeel =true;
+    _boolConflicts = true;
+    _boolView = true;
+	_boolViewSimple= true;
+    _bool_ViewDetailedHorizontal = true;
+    _boolViewDetailedVertical= true;
 
     //the menu help
     _boolMenuHelp= true;
     _boolAbout = true;
+    
+    //the testmenu
+    _boolInTest = true;
+	_boolmInTest1= true;
+	_boolmInTest2 = true;
 
     //the menu dev
     if (DConst.DEVELOPMENT) {
@@ -1009,6 +1087,10 @@ public class DMenuBar extends JMenuBar{
       else
         _dev.setEnabled(_boolMenuDev);
     }
+    if (_boolInTest)
+        setInTestMenu();
+      else
+      	_inTest.setEnabled(_boolInTest);
     //System.out.println("setMenusEnd");
   }
 
@@ -1048,20 +1130,30 @@ public class DMenuBar extends JMenuBar{
     _modification.setEnabled(_boolMenuModification);
     _activityModif.setEnabled(_boolMActivityModif);
   }
-  private void setOptimisationMenu() {
-    _optimisation.setEnabled(_boolMenuOptimization);
-    //if (_boolDoOptimization) {
-      _initialAssign.setEnabled(_boolInitialAssign);
-      _doOptimization.setEnabled(_boolDoOptimization);
-      _studentsRepartition.setEnabled(_boolStudentsRepartition);
-
-  }
+	private void setOptimisationMenu() {
+		_optimisation.setEnabled(_boolMenuOptimization);
+		//if (_boolDoOptimization) {
+		_initialAssign.setEnabled(_boolInitialAssign);
+		_doOptimization.setEnabled(_boolDoOptimization);
+		_studentsRepartition.setEnabled(_boolStudentsRepartition);
+		_mStudentsMixingBalance.setEnabled(_boolStudentsMixingBalance);
+		_mStudentsMiddleMixingBalance.setEnabled(_boolStudentsMiddleMixingBalance); 
+		_mStudentsMixingOptimize.setEnabled(_boolStudentsMixingOptimize);
+	}
+	
   private void setReportMenu() {
     _report.setEnabled(_boolMenuReport);
   }
+  
   private void setPreferencesMenu() {
-    _preferences.setEnabled(_boolMenuPreferences);
+    //_preferences.setEnabled(_boolMenuPreferences);
     _lookAndFeel.setEnabled(_boolLookAndFeel);
+    _conflicts.setEnabled(_boolConflicts);
+    _view.setEnabled(_boolView);
+	_viewSimple.setEnabled(_boolViewSimple);
+    _viewDetailedHorizontal.setEnabled(_bool_ViewDetailedHorizontal);
+    _viewDetailedVertical.setEnabled(_boolViewDetailedVertical);
+
   }
 
   private void setHelpMenu() {
@@ -1069,6 +1161,14 @@ public class DMenuBar extends JMenuBar{
     _about.setEnabled(_boolAbout);
   }
 
+  private void setInTestMenu() {
+  	_inTest.setEnabled(_boolInTest);
+    _mInTest1.setEnabled(_boolmInTest1);
+    _mInTest2.setEnabled(_boolmInTest2);
+    
+  } //end setAssignMenu
+
+  
   private void setDevMenu() {
     _dev.setEnabled(_boolMenuDev);
     _myFile.setEnabled(_boolMyFile);

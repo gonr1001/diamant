@@ -1,6 +1,6 @@
 /**
 *
-* Title: ScanFile $Revision: 1.3 $  $Date: 2004-10-14 18:59:35 $
+* Title: ScanFile $Revision: 1.4 $  $Date: 2004-10-21 13:39:55 $
 * Description: ScanFile is a class used to read a file then
 *              write a "hex dump" in a file to be explored
 *              by a text editor.
@@ -18,7 +18,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.4
 */
@@ -59,7 +59,7 @@ public class ScanFile {
 		StringBuffer out = new StringBuffer();
 		StringBuffer str1 = new StringBuffer();
     	StringBuffer str2 = new StringBuffer();
-		String str3 = "";
+		StringBuffer str3 = new StringBuffer("");
 		try {
 			ByteInputFile inputFile = new ByteInputFile(iFileName);	
 			FileOutputStream outputFile = new FileOutputStream(oFileName);
@@ -68,7 +68,7 @@ public class ScanFile {
 		    int blankPad = (16 - b.length % 16) * 3;
 		    
 		    for(int m = 0; m < blankPad; m++){
-		    	str3 += " ";
+		    	str3.append (" ");
 		    }
 			int i = 0;
 		    while ( i < b.length ) {
@@ -80,8 +80,8 @@ public class ScanFile {
 		    		}
 		    		out.append(str1 + "   " + str2 + DConst.CR_LF);  
 		    		i += 16 ;
-		    		outputFile.write(out.toString().getBytes());
-		    		out = new StringBuffer();
+		    		//outputFile.write(out.toString().getBytes());
+		    		//out = new StringBuffer();
 		    		str1 = new StringBuffer();
 		        	str2 = new StringBuffer();
 		    		//System.out.println(i);
@@ -90,15 +90,15 @@ public class ScanFile {
 		    			str1.append( appendToHex( b[ i ] ));
 		    			str2.append( appendToChar( b[ i ] ));
 		    		}		    	
-		    		out.append(str1 + str3 + "   " + str2 + DConst.CR_LF);  
+		    		out.append(str1.append(str3) + "   " + str2 + DConst.CR_LF);  
 	    
-		    		outputFile.write(out.toString().getBytes());
-		    		out = new StringBuffer();
+		    		//outputFile.write(out.toString().getBytes());
+		    		//out = new StringBuffer();
 		    		str1 = new StringBuffer();
 		        	str2 = new StringBuffer();
 		    	} 
 		    }//end while
-			 
+		    outputFile.write(out.toString().getBytes()); 
 			
 			 
 			 

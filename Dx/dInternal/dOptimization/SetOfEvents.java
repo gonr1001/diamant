@@ -42,10 +42,10 @@ public class SetOfEvents extends SetOfResources{
    * Build setOfEvents from activities
    * @param cycle
    */
-  public void build(){
+  public void build(SetOfActivities soa, SetOfResources soie){
     String unityKey;
-    for (int i=0; i< _dm.getSetOfActivities().size(); i++){
-      Resource activity= _dm.getSetOfActivities().getResourceAt(i);
+    for (int i=0; i< soa.size(); i++){
+      Resource activity= soa.getResourceAt(i);
       long instructorKey=-1, roomKey; //=-1;
       if(((Activity)activity.getAttach()).getActivityVisibility()){
         for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
@@ -77,7 +77,7 @@ public class SetOfEvents extends SetOfResources{
                   }else{
                     DXValue error= new DXValue();
                     error.setStringValue("Erreur --> "+ unityID+": "+ instructorNames[m] +" Inexistant ");
-                    _dm.getSetOfImportErrors().addResource(new Resource("2",error),0);
+                    soie.addResource(new Resource("2",error),0);
                   }
                 }
 
@@ -85,6 +85,7 @@ public class SetOfEvents extends SetOfResources{
                 int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
                 if(roomIndex != -1){
                   roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
+                  //assignment.setRoomKey(roomKey);
                 }else{
                   roomKey = -1;
                   DXValue error= new DXValue();
@@ -92,7 +93,7 @@ public class SetOfEvents extends SetOfResources{
                   if (str.equals(DConst.NO_ROOM_INTERNAL))
                     str = DConst.NO_ROOM_EXTERNAL;
                   error.setStringValue("Erreur --> " + unityID + ": "+ str + " Inexistant ");
-                  _dm.getSetOfImportErrors().addResource(new Resource("3", error), 0);
+                  soie.addResource(new Resource("3", error), 0);
                 }
                 //int[] dayTime = assignment.getDateAndTime();
 
@@ -148,7 +149,7 @@ public class SetOfEvents extends SetOfResources{
   /**
    * update activities from events
    */
-  public void updateActivities(Vector eventsToUpdate){
+  public void updateActivities(SetOfActivities soa, Vector eventsToUpdate){
     EventAttach event;//= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     for (int i=0; i< eventsToUpdate.size(); i++){
       event=(EventAttach)((Resource)eventsToUpdate.get(i)).getAttach();
@@ -156,7 +157,7 @@ public class SetOfEvents extends SetOfResources{
       long typeKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",1));
       long sectKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",2));
       long unitKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",3));
-      Unity unity= _dm.getSetOfActivities().getUnity(actKey,typeKey,sectKey,unitKey);
+      Unity unity= soa.getUnity(actKey,typeKey,sectKey,unitKey);
       Assignment assignment= (Assignment)unity.getSetOfAssignments().getResourceAt(
           _dm.getTTStructure().getCurrentCycleIndex()).getAttach();
       long keys [] = event.getInstructorKey();

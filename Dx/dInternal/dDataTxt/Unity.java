@@ -245,14 +245,14 @@ public class Unity extends DXObject{
 * */
   public boolean isEquals(DXObject unit){
     Unity unity = (Unity)unit;
-    if(this._assign!= unity._assign)
-      return false;
+    /*if(this._assign!= unity._assign)
+      return false;*/
     if(this._duration!= unity._duration)
       return false;
     if(this._isCyclic!= unity._isCyclic)
       return false;
-    if(this._permanent!= unity._permanent)
-      return false;
+    /*if(this._permanent!= unity._permanent)
+      return false;*/
     if(this._preferSequence!= unity._preferSequence)
       return false;
     if(!this._setOfAssignments.isEquals( unity._setOfAssignments))

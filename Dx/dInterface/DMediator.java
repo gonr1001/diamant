@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.46 $  $Date: 2004-09-29 19:00:39 $
+ * Title: DMediator $Revision: 1.47 $  $Date: 2004-10-21 13:39:43 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.46 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.47 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -47,9 +47,9 @@ public class DMediator {
   public DMediator() {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
-  public DMediator(boolean flag) {
+/*  public DMediator(boolean flag) {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-  }
+  }*/
   //-----------------------------
 
   public DMediator(DApplication dApplic) {
@@ -96,7 +96,7 @@ public class DMediator {
 
 
 /**
- * for new ttStructure and for open
+ * for new ttStructure and for open ttStructure
  * @param fileName is the full path file name containing the TTStructure
  * @param type is the type of timetable to be constructed
  *

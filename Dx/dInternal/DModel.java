@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.109 $  $Date: 2004-09-29 19:00:39 $
+ * Title: DModel $Revision: 1.110 $  $Date: 2004-10-21 13:39:46 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.109 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.110 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -58,7 +58,8 @@ import org.tictac.mouseTrap.dModel.Trace;
 public class DModel extends DModelProcess implements DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
   private int _type;
-  private boolean _importDone = false;
+  private boolean _importDone; 
+  private boolean _mergeDone; 
   private boolean _modified = false;
   protected boolean _isTimeTable=true;
   protected int _constructionState=0;// tell where the time construction is
@@ -82,7 +83,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * 2= instructors, 3 = rooms, 4= other
    * and string value is the error message
    */
-  private SetOfResources _setOfImportErrors=null;//
+  private SetOfResources _setOfImportErrors=null; //
+  private SetOfResources _setOfImportSelErrors=null; //
 
   /**
    * intvalue is between 0-1000 and give the state of the progress bar
@@ -104,6 +106,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public DModel() {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
+  
   public DModel(boolean flag) {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
   }
@@ -117,17 +120,19 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   	logger.info(trace.write(this,traceParams));	
     //-----------------------------
 	
-    //System.out.println("type: "+type);
     setModel(this);
     _error = "";
+    _importDone = false;
+    _mergeDone = false;
     _setOfStates = new SetOfStates();
     _setOfEvents = new SetOfEvents(this);
     _setOfImportErrors= new SetOfResources(99);
+    _setOfImportSelErrors= new SetOfResources(99);
     _progressBarState= new DXValue();
     _progressBarState.setIntValue(0);
     _dDocument = dDocument;
-    if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){ 	
-      _error=loadTimeTable(fileName, getCurrentDir(fileName));
+    if(fileName.endsWith(DConst.DOT_DIA)){ 	
+      _error = loadTimeTable(fileName, getCurrentDir(fileName));
       _isTimeTable=true;
     }else if(fileName.endsWith(DConst.DOT_XML)){
       _ttStruct = new TTStructure();
@@ -189,6 +194,14 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public boolean getImportDone(){
     return _importDone;
   }
+  
+  /**
+  *
+  * @return
+  */
+ public boolean getMergeDone(){
+   return _mergeDone;
+ }
   /**
    *
    * @return
@@ -231,64 +244,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     //sendEvent();
   }
 
-  /**
-   *
-   * @param fileName
-   * @return
-   */
-  public String loadTimeTable(String fileName, String currentDir){
-  	
-    //+++++++++++++++++++++++++++++
-  	Vector traceParams=new Vector();
-  	traceParams.add(fileName);
-  	traceParams.add(currentDir);
-   	logger.info(trace.write(this, traceParams));
-    //-----------------------------
 
-	//	debug for xml file to be remove
-	 // ysyam
-	 if(DConst.DEVELOPMENT){
-		 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
-		 XMLLoadData xmlloadData = new XMLLoadData(filename, this);
-		 _setOfCategories= xmlloadData.extractRooms(null, true);
-	 }
-	 //	end debug
-//System.out.println("rgr fn"+ fileName);
-    LoadData loadD = new LoadData(this);
-    Vector project = loadD.loadProject(fileName, currentDir);
-
-    if (project.size()!=0) {
-      setVersion((String)project.get(0));
-      _ttStruct= (TTStructure)project.get(1);
-      // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
-      if (_ttStruct.getError().length() != 0)
-        return _ttStruct.getError();
-      _setOfInstructors = (SetOfInstructors)project.get(2);
-      resizeResourceAvailability(_setOfInstructors);//
-      _setOfRooms= (SetOfRooms)project.get(3);
-      resizeResourceAvailability(_setOfRooms);//
-      _setOfActivities=(SetOfActivities)project.get(4);
-      _setOfStudents = (SetOfStudents)project.get(5);
-      if( _setOfRooms.getError().length()!=0){
-        return _setOfRooms.getError();
-      }
-      if( _setOfInstructors.getError().length()!=0){
-        return _setOfInstructors.getError();
-      }
-      if( _setOfActivities.getError().length()!=0){
-        return _setOfActivities.getError();
-      }
-      if( _setOfStudents.getError().length()!=0){
-        return _setOfStudents.getError();
-      }
-      buildSetOfEvents();
-      addAllListeners();
-    }
-    _constructionState=1;
-    //_setOfStates.sendEvent();
-    setImportDone(false);
-    return"";
-  }
 
   public void prepareExamsData(){
   	 //+++++++++++++++++++++++++++++
@@ -357,6 +313,65 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 
   }
 
+  
+  /**
+  *
+  * @param fileName
+  * @return
+  */
+ public String loadTimeTable(String fileName, String currentDir){
+ 	
+   //+++++++++++++++++++++++++++++
+ 	Vector traceParams=new Vector();
+ 	traceParams.add(fileName);
+ 	traceParams.add(currentDir);
+  	logger.info(trace.write(this, traceParams));
+   //-----------------------------
+
+	//	debug for xml file to be remove
+	 // ysyam
+	 if(DConst.DEVELOPMENT){
+		 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+		 XMLLoadData xmlloadData = new XMLLoadData(filename, this);
+		 _setOfCategories= xmlloadData.extractRooms(null, true);
+	 }
+	 //	end debug
+
+   LoadData loadD = new LoadData(this);
+   Vector theTT = loadD.loadTheTT(fileName, currentDir);
+
+   if (theTT.size()!=0) {
+     setVersion((String)theTT.get(0));
+     _ttStruct= (TTStructure)theTT.get(1);
+     // _dApplic.getDMediator().getCurrentDoc().addTTListener(_ttStruct);
+     if (_ttStruct.getError().length() != 0)
+       return _ttStruct.getError();
+     _setOfInstructors = (SetOfInstructors)theTT.get(2);
+     resizeResourceAvailability(_setOfInstructors);//
+     _setOfRooms= (SetOfRooms)theTT.get(3);
+     resizeResourceAvailability(_setOfRooms);//
+     _setOfActivities=(SetOfActivities)theTT.get(4);
+     _setOfStudents = (SetOfStudents)theTT.get(5);
+     if( _setOfRooms.getError().length()!=0){
+       return _setOfRooms.getError();
+     }
+     if( _setOfInstructors.getError().length()!=0){
+       return _setOfInstructors.getError();
+     }
+     if( _setOfActivities.getError().length()!=0){
+       return _setOfActivities.getError();
+     }
+     if( _setOfStudents.getError().length()!=0){
+       return _setOfStudents.getError();
+     }
+     buildSetOfEvents();
+     addAllListeners();
+   }
+   _constructionState=1;
+   //_setOfStates.sendEvent();
+   setImportDone(false);
+   return "";
+ }
   /**
    *
    * @param str
@@ -376,7 +391,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	}
 	//	end debug
 
-    LoadData loadData = new LoadData(str, this);
+    LoadData loadData = new LoadData( this, str);
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
     _setOfInstructors = loadData.extractInstructors(null, false);
@@ -412,41 +427,46 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     return "";
   }
 
-  //debug merge instructor file: S801.DISPROF
-      //instructorsList= (SetOfInstructors) selectiveImport(instructorsList,"S801.DISPROF",true);
-      // end debug
 
       /**
       *
       * @param str
       * @return
       */
-  public String SelectiveImportData(String fileName, String selectionName) {
+  public String mergeData(String fileName, String selectionName) {
  	//  +++++++++++++++++++++++++++++
   	Vector traceParams=new Vector();
   	traceParams.add(fileName);
   	traceParams.add(selectionName);
    	logger.info(trace.write(this, traceParams));	
     //----------------------------- 
-
+   	
+   	_setOfImportSelErrors= new SetOfResources(99);
     String error="";
-    LoadData loadData = new LoadData();
+    LoadData loadData = new LoadData(this);
     if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_INST)){//Importation selective -- Enseignants
-      _setOfInstructors= (SetOfInstructors) loadData.selectiveImport(_setOfInstructors,fileName,true);
+      _setOfInstructors= (SetOfInstructors) loadData.selectiveImport(_setOfInstructors,fileName);
+      resizeResourceAvailability(_setOfInstructors);
+      error = _setOfInstructors.getError();
       _setOfInstructors.sendEvent(_dDocument.getJIF());
     }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)){//Importation selective -- Locaux
-      _setOfRooms= (SetOfRooms) loadData.selectiveImport(_setOfRooms,fileName,true);
+      _setOfRooms= (SetOfRooms) loadData.selectiveImport(_setOfRooms,fileName);
+      resizeResourceAvailability(_setOfRooms);
+      error = _setOfRooms.getError();
       _setOfRooms.sendEvent(_dDocument.getJIF());
     }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)){//Importation selective -- Activité
-      _setOfActivities= (SetOfActivities) loadData.selectiveImport(_setOfActivities,fileName,true);
+      _setOfActivities= (SetOfActivities) loadData.selectiveImport(_setOfActivities,fileName);
+      error = _setOfActivities.getError();
+      
       _conditionTest.setMatrixBuilded(false,true);
       _setOfActivities.sendEvent(_dDocument.getJIF());
     }else if(selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)){//Importation selective -- Étudiants
-      _setOfStudents= (SetOfStudents) loadData.selectiveImport(_setOfStudents,fileName,true);
+      _setOfStudents= (SetOfStudents) loadData.selectiveImport(_setOfStudents,fileName);
+      error = _setOfStudents.getError();
       _conditionTest.setMatrixBuilded(false,true);
       _setOfStudents.sendEvent(_dDocument.getJIF());
     }
-
+    _mergeDone= true;
     return error;
   }
 
@@ -515,6 +535,14 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
   public SetOfResources getSetOfImportErrors(){
     return   _setOfImportErrors;
   }
+  
+  /**
+  *
+  * @return
+  */
+ public SetOfResources getSetOfImportSelErrors(){
+   return   _setOfImportSelErrors;
+ }
 
   /**
    *
@@ -558,6 +586,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     }else{
       saveD.saveTTStructure(_ttStruct,filename);
     }
+    _mergeDone= false;
+    
     _modified = false;
     return error;
   }
@@ -614,7 +644,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 
   }// end actionPerformed
 
-public void changeInTTStructure(TTStructureEvent  e) {
+  public void changeInTTStructure(TTStructureEvent  e) {
 
   }// end actionPerformed
 

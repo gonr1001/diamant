@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.116 $  $Date: 2004-10-06 15:37:55 $
+ * Title: DDocument $Revision: 1.117 $  $Date: 2004-10-21 13:39:43 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.116 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.117 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -71,13 +71,13 @@ public class DDocument  extends InternalFrameAdapter implements
     SetOfActivitiesListener, SetOfStudentsListener, SetOfInstructorsListener,
     SetOfRoomsListener, SetOfEventsListener{
 
-  private DMediator _dMediator;
-  private JInternalFrame _jif;
-  private String _documentName;
-  private TTPane _ttPane;
-  private DModel _dm;
-  private DStateBar _stateBar;
-  private String _version;
+	private DMediator _dMediator;
+	private JInternalFrame _jif;
+	private String _documentName;
+	private TTPane _ttPane;
+	private DModel _dm;
+	private DStateBar _stateBar;
+	private String _version;
 
 //+++++++++++++++++++++++++++++
   Logger logger = Logger.getLogger(this.getClass().getName());
@@ -85,9 +85,9 @@ public class DDocument  extends InternalFrameAdapter implements
   public DDocument() {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
-  public DDocument(boolean flag) {
+/*  public DDocument(boolean flag) {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-  }
+  }*/
   //-----------------------------
   
   //for a new timetable and a open timetable
@@ -456,7 +456,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif = new JInternalFrame(_documentName, true, true, true, true);
     _jif.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
     _jif.addInternalFrameListener( new InternalFrameAdapter() {
-      public void internalFrameClosing( InternalFrameEvent e ) {
+      public void internalFrameClosing() {
         new CloseCmd().execute(_dMediator.getDApplication());
       }
     } );

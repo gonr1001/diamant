@@ -18,6 +18,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.dialog.InformationDlg;
 
 public class ImportSelectiveFileDlg extends JDialog {
 
@@ -51,7 +52,13 @@ public class ImportSelectiveFileDlg extends JDialog {
 
        String error = "";
        if (dApplic.getDMediator().getCurrentDoc() != null){
-         dApplic.getDMediator().getCurrentDoc().getDM().SelectiveImportData(fil, str);
+         error = dApplic.getDMediator().getCurrentDoc().getDM().mergeData(fil, str);
+         if(error.length()==0){
+            new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
+          }else{
+            new FatalProblemDlg(dApplic.getJFrame(),error);
+                // System.exit(1);
+          }
        }
        else
          new FatalProblemDlg(dApplic.getJFrame(), "ImportSelectiveFileDlg : Il n'existe pas de document pour effectuer l'importation des données");

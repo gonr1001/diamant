@@ -15,30 +15,14 @@ public class DILigne {
   }
 
   public void doIt(String[] args) {
-  	
+  	if (args.length == 0){
+  		
+  	}
   }
 }
 
 /*
- /**
-  *
-  * Title: RunAkko $Revision: 1.4 $  $Date: 2004-10-14 18:59:35 $
-  * Description: RunAkko is a class used to call the whole application.
-  *             the main method of the whole program is here.
-  * Copyright (c) 2001 by rgr-fdl.
-  * All rights reserved.
-  *
-  *
-  * This software is the confidential and proprietary information
-  * of rgr-fdl. ("Confidential Information").  You
-  * shall not disclose such Confidential Information and shall use
-  * it only in accordance with the terms of the license agreement
-  * you entered into with rgr-fdl.
-  *
-  * @version $Revision: 1.4 $
-  * @author  $Author: gonzrubi $
-  * @since JDK1.3
-  */
+ 
  /*
  package lineInterface;
 

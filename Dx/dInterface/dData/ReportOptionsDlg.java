@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.27 $  $Date: 2004-06-21 15:38:17 $
+ * Title: ReportOptionsDlg $Revision: 1.28 $  $Date: 2004-10-21 13:39:45 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,7 +17,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -43,9 +43,9 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
   private ViewReport _parentDlg;
   private JList _rightList, _leftList;
   private Vector _rightVec, _leftVec;
-  private JPanel _centerPanel, _arrowsPanel;
+//  private JPanel _centerPanel, _arrowsPanel;
   private ButtonsPanel _applyPanel;
-  private boolean _modified = false;
+//  private boolean _modified = false;
 
   private String [] _arrowsNames = {DConst.TO_RIGHT,
     DConst.TO_LEFT,
@@ -89,9 +89,9 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         new Dimension((int)centerPanelDim.getWidth()/2-DConst.LIST_LENGHT,
                       (int)centerPanelDim.getHeight());
 
-    String[] leftLabelsInfo = {DConst.REPORT_OP_FIELDS_NOT_CHOICED};
+    //String[] leftLabelsInfo = {DConst.REPORT_OP_FIELDS_NOT_CHOICED};
 
-    String[] rightLabelsInfo = {DConst.REPORT_OP_FIELDS__CHOICED};
+    //String[] rightLabelsInfo = {DConst.REPORT_OP_FIELDS__CHOICED};
     //the centerPanel
     JPanel centerPanel = new JPanel();
     centerPanel.setPreferredSize(centerPanelDim);
@@ -188,13 +188,13 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     //if button OK
     if (command.equals(DConst.BUT_APPLY)){
       _parentDlg.doSave(_rightVec);
-	  _modified = false;
+	  //_modified = false;
 	   _applyPanel.setFirstDisable();
       //dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       //toLeft button
-      _modified = true;
+      //_modified = true;
 	  _applyPanel.setFirstEnable();
       if (command.equals(_arrowsNames[1])) {
 
@@ -220,7 +220,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
     if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3])){
       int i = -1;
-	  _modified = true;
+	  //_modified = true;
 	  _applyPanel.setFirstEnable();
       if (_rightList.getSelectedIndices().length == 1) {
         String selectedValue = (String)_rightList.getSelectedValue();

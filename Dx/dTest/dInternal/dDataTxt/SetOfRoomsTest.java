@@ -40,7 +40,7 @@ public class SetOfRoomsTest  extends TestCase{
                    "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
                    "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
 
-    SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes(),5,14);
+    SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes()); //,5,14);
     setOfRooms.analyseTokens(3);
     assertEquals("test_analyseTokens: assertEquals", DConst.ROOM_TEXT3,
                  setOfRooms.getError().substring(0,DConst.ROOM_TEXT3.length()));
@@ -59,7 +59,7 @@ public class SetOfRoomsTest  extends TestCase{
                    "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
                    "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
 
-    SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes(),5,14);
+    SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes());//,5,14);
     setOfRooms.analyseTokens(3);
     assertEquals("test1_analyseTokens: assertEquals", DConst.ROOM_TEXT2,
                  setOfRooms.getError().substring(0,DConst.ROOM_TEXT2.length()));
@@ -78,7 +78,7 @@ public class SetOfRoomsTest  extends TestCase{
                   "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
                   "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
 
-   SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes(),5,14);
+   SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes()); //,5,14);
    setOfRooms.analyseTokens(3);
    assertEquals("test2_analyseTokens: assertEquals", DConst.ROOM_TEXT3,
                 setOfRooms.getError().substring(0,DConst.ROOM_TEXT3.length()));
@@ -97,7 +97,7 @@ public class SetOfRoomsTest  extends TestCase{
                   "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
                   "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
 
-   SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes(),5,14);
+   SetOfRooms setOfRooms= new SetOfRooms(tokens.getBytes()); //,5,14);
    setOfRooms.analyseTokens(3);
    assertEquals("test3_analyseTokens: assertEquals", DConst.ROOM_TEXT4,
                 setOfRooms.getError().substring(0,DConst.ROOM_TEXT4.length()));

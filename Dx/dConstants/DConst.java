@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.120 $  $Date: 2004-10-14 18:59:29 $
+ * Title: DConst $Revision: 1.121 $  $Date: 2004-10-21 13:39:42 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.120 $
+ * @version $Revision: 1.121 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,8 +28,8 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "30 Sep 2004";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;
+  	public final static String V_DATE = "21 oct 2004";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = false;
     public static boolean USER_TEST_ACTIV = true; // comm
 	public final static String JVM = "1.4.2_03";
 
@@ -427,7 +427,17 @@ public class DConst {
   public final static String NAME_LABEL = res.getString("nameLabel"); // "Nom";
   public final static String CATEGORY_LABEL = res.getString("categoryLabel"); // "Category";
 
+  public final static String DELETED_ELEMENT = res.getString("deletedElement"); // "élément supprimé";
+  public final static String ADDED_ELEMENT = res.getString("addedElement"); // "élément ajouté";
+  public final static String CHANGED_ELEMENT = res.getString("changedElement"); // "élément modifié";
+  public final static String UNCHANGED_ELEMENT = res.getString("unchangedElement"); // "élément no modifié";
 
+  public final static String HOUR_SEPARATOR = res.getString("hourSeparator"); //"h";
+  public final static String SAVE_SEPARATOR = res.getString("saveSeparator"); //"=================================";
+  public final static int NUMBER_OF_FILES = 4;
+  
+  public final static int ROOM_NUM_TOKENS = 5;
+  
   public DConst() {
   }
 }

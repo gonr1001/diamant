@@ -13,7 +13,7 @@ public class ArrayValue extends DXObject{
 
   /**the reference value of this object*/
   private int [] _intArray;
-  private String [] _stringArray;
+  //private String [] _stringArray;
 
   /**
    * Contructor

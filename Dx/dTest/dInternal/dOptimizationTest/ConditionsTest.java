@@ -9,7 +9,6 @@ import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dDataTxt.Resource;
 import dInternal.dOptimization.EventAttach;
-import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.Period;
 
 
@@ -17,9 +16,9 @@ import dInternal.dTimeTable.Period;
 public class ConditionsTest extends TestCase {
 
   private DModel _dm;
-  private TestConditions _testCond;
+  //private TestConditions _testCond;
   private Period _period;
-  private int[] _perKey={1,1,2};
+  //private int[] _perKey={1,1,2};
 
   public ConditionsTest(String name) {
     super(name);
@@ -30,7 +29,7 @@ public class ConditionsTest extends TestCase {
     _dm.getConditionsTest().buildAllConditions(_dm.getTTStructure());
     _dm.getTTStructure().getCurrentCycle().getNextPeriod(1);
      _period= _dm.getTTStructure().getCurrentCycle().getNextPeriod(1);
-     _testCond= new TestConditions(_dm);
+     //_testCond= new TestConditions(_dm);
   }
 
   public static Test suite() {

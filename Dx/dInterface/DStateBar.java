@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DStateBar $Revision: 1.9 $  $Date: 2004-06-21 15:38:16 $
+ * Title: DStateBar $Revision: 1.10 $  $Date: 2004-10-21 13:39:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -70,7 +70,7 @@ public class DStateBar extends JPanel {
 
   private void showDStateBar(SetOfStates s, boolean first) {
     for(int i = 0; i < s.size(); i++) {
-      Resource r =  (Resource) s.getResourceAt(i);
+      Resource r =  s.getResourceAt(i);
       if ( ((State)r.getAttach()).getColor() != null) {
         _theLabels[i].setForeground(((State)r.getAttach()).getColor());
       } else {

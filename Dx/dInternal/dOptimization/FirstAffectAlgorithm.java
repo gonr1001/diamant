@@ -84,7 +84,7 @@ public class FirstAffectAlgorithm implements Algorithm {
       }// end if(!((EventAttach)currentEvent.getAttach()).getAssignState())
     }// end for(int i=0; i< vect.size(); i++)
    // _dm.getConditionsTest().emptyAvoidPriorityTable();
-    _dm.getSetOfEvents().updateActivities(_placeEvent);
+    _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),_placeEvent);
     _dm.getSetOfActivities().sendEvent(null);
   }
 

@@ -177,7 +177,6 @@ public class StudentAttach extends DXObject{
       boolean b = ((DXValue)courseValue.getAttach()).getBooleanValue();
       return b;
     }
-    else
       return false;
   }
 

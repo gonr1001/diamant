@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.56 $  $Date: 2004-10-14 18:59:30 $
+ * Title: DApplication $Revision: 1.57 $  $Date: 2004-10-21 13:39:43 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,7 +17,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -45,10 +45,8 @@ import org.apache.log4j.Logger;
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
 import dInternal.Preferences;
-//import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 
-import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.tictac.mouseTrap.dModel.Trace;
 
@@ -86,10 +84,11 @@ public class DApplication implements ActionListener {
 //+++++++++++++++++++++++++++++
   Logger logger = Logger.getLogger(this.getClass().getName());
   Trace trace=new Trace();
+  
   public DApplication() {
   	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
-    _logger.warn("DApplication");
-    _preferences = new Preferences(System.getProperty("user.dir")
+    _logger.warn("Hi from DApplication");
+    /*_preferences = new Preferences(System.getProperty("user.dir")
                                    + File.separator +
                                    "pref"
                                    + File.separator +
@@ -104,11 +103,11 @@ public class DApplication implements ActionListener {
     setLAF(_preferences._lookAndFeel);
 
     //updateLAF(_preferences._lookAndFeel);
-    //_logger.warn("bye_from DApplication");
+    //_logger.warn("bye_from DApplication");*/
     
   } // end constructor
 
-  public DApplication(boolean flag) {
+ /* public DApplication() {
   	PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
     //_logger.warn("hello_from DApplication");
     _preferences = new Preferences(System.getProperty("user.dir")
@@ -128,9 +127,28 @@ public class DApplication implements ActionListener {
     //updateLAF(_preferences._lookAndFeel);
     //_logger.warn("bye_from DApplication");
     
-  } // end constructor
+  } // end constructor*/
 
+  public void doIt() {
+  	 _preferences = new Preferences(System.getProperty("user.dir")
+            + File.separator +
+            "pref"
+            + File.separator +
+            "pref.txt");
+
+  	 _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+  	 _mediator = new DMediator(this);
+  	 
+  	 _currentDir = System.getProperty("user.dir");
+  	 _jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
+	
+  	 setLAF(_preferences._lookAndFeel);
+
+  	 //updateLAF(_preferences._lookAndFeel);
+  	 _logger.warn("bye_from DApplication");
+  }
   //-------------------------------------------
+  
   private JFrame createFrame(String str) {
     JFrame jFrame= new JFrame(str + "   " + System.getProperty("user.dir"));
     jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

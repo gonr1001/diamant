@@ -37,7 +37,7 @@ public class ProgressBar extends JPanel
   private LongTask task;
   //private JTextArea taskOutput;
   private static String _title="";
-  private String newline = "\n";
+  //private String newline = "\n";
   private static DApplication _dApplic;
   private JDialog _jDialog= new JDialog();
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.12 $  $Date: 2004-06-21 15:38:17 $
+ * Title: ImportReport $Revision: 1.13 $  $Date: 2004-10-21 13:39:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -44,7 +44,6 @@ import javax.swing.JTextArea;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXValue;
 
@@ -81,13 +80,13 @@ public class ImportReport extends ViewReport implements ActionListener {
     for (int i=0; i< setOfImportErrors.size(); i++){
       // Etudiants
       if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("1"))
-        jtaStud.append(((DXValue)((Resource)setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+        jtaStud.append(((DXValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
       // Enseignants
       else if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("2"))
-        jtaInst.append(((DXValue)((Resource)setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+        jtaInst.append(((DXValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
       // Locaux
       else if(setOfImportErrors.getResourceAt(i).getID().equalsIgnoreCase("3"))
-        jtaRooms.append(((DXValue)((Resource)setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
+        jtaRooms.append(((DXValue)(setOfImportErrors.getResourceAt(i)).getAttach()).getStringValue()+DConst.CR_LF);
 
     }
     jta.append(jtaInst.getText());
@@ -97,7 +96,7 @@ public class ImportReport extends ViewReport implements ActionListener {
   }
 
   public void actionPerformed(ActionEvent e){
-    String command = e.getActionCommand();
+    //String command = e.getActionCommand();
     //if "Option" button
     if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
        ; // it is disabled

@@ -11,7 +11,7 @@ package dInternal.dDataTxt;
 import dInternal.dUtil.DXObject;
 
 public class Resource {
-  private static final String CR_LF = "\r\n";
+  //private static final String CR_LF = "\r\n";
   /**show if the resource has been manually added, or automatic (during extract data)*/
   private boolean _manuallyCreated;
   /**Resource key*/

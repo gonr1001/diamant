@@ -35,7 +35,7 @@ public class LoadDataTest extends TestCase {
     super(name);
     path ="." + File.separator+"dataTest"+File.separator+"loadData.dia";
     LoadData loadData= new LoadData();
-    _timeTable = loadData.loadProject(path, "." + File.separator+"dataTest"+File.separator);
+    _timeTable = loadData.loadTheTT(path, "." + File.separator+"dataTest"+File.separator);
   }
 
   public static Test suite() {
@@ -58,7 +58,7 @@ public class LoadDataTest extends TestCase {
     Cycle cycle= ((TTStructure)_timeTable.get(1)).getCurrentCycle();
     assertEquals("test1_loadTimeTable : assertEquals1: ", 12, cycle.getMaxNumberOfPeriodsADay());
     assertEquals("test1_loadTimeTable : assertEquals2: ", 3, cycle.getMaxNumberOfSeqs());
-    assertEquals("test1_loadTimeTable : assertEquals3: ", 5, ((TTStructure)_timeTable.get(1)).getNumberOfActiveDays());
+    assertEquals("test1_loadTimeTable : assertEquals3: ", 5, TTStructure.getNumberOfActiveDays());
   }
 
   /**

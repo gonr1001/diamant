@@ -97,7 +97,7 @@ public class Assignment extends DXObject{
    * set the room key
    * @param long the room key
    * */
-  public void setRoom(long room){
+  public void setRoomKey(long room){
     _roomKey = room;
     _roomName = null;
   }
@@ -198,20 +198,13 @@ public class Assignment extends DXObject{
       if(this._setInstructorKeys.getResourceAt(i).getKey()!= assmt.getInstructorKeys()[i])
       return false;
     }
-
     if(this._roomKey!= assmt._roomKey)
       return false;
+    if(!this._roomName.trim().equalsIgnoreCase( assmt._roomName.trim()))
+        return false;
     if(this._roomFixed!= assmt._roomFixed)
       return false;
-    for(int i = 0 ; i < _setInstructorNames.size(); i ++) {
-      if(this._setInstructorNames.getResourceAt(i).getID().equalsIgnoreCase(assmt.getInstructorNames()[i].toString()))
-      return false;
-    }
-    if(!this._roomName.equals(assmt._roomName))
-      return false;
-    if((this._dateAndTime[0]!= assmt._dateAndTime[0])
-       || (this._dateAndTime[1]!= assmt._dateAndTime[1])
-       || (this._dateAndTime[2]!= assmt._dateAndTime[2]))
+    if(!this._periodKey.equalsIgnoreCase(assmt._periodKey))
       return false;
     return true;
   }

@@ -25,7 +25,7 @@ public class SetOfActivities extends SetOfResources{
   private int _line=1;
   private boolean _open;
 
-  private String NULLINFORMATION = "xxxxxx";
+  //private String NULLINFORMATION = "xxxxxx";
   private int _NUMBEROFCYCLE = 1;
   final static public int _COURSENAMELENGTH=6;
   private int _ACTIVITYLENGTH=11;
@@ -54,7 +54,7 @@ public class SetOfActivities extends SetOfResources{
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
   public boolean analyseTokens(int beginPosition){
-
+  	_error="";
     if(!analyseSIGTokens(beginPosition)){// analyse STI data
       return false;
     }else{// else if(!analyseSIGTokens(beginPosition))
@@ -653,12 +653,12 @@ public class SetOfActivities extends SetOfResources{
         for (int k=0; k< nature.getSetOfSections().size(); k++){
           actlist+= getResourceAt(i).getID();// write activity name
           actlist+= activity.getSetOfTypes().getResourceAt(j).getID()+"  ";// write nature and 2 space
-          actlist+= nature.getSetOfSections().getResourceAt(k).getID()+CR_LF;// write group and go to line
+          actlist+= nature.getSetOfSections().getResourceAt(k).getID()+DConst.CR_LF;// write group and go to line
           if(activity.getActivityVisibility())
-            actlist+=1+CR_LF;
+            actlist+=1+DConst.CR_LF;
           else
-            actlist+=0+CR_LF;// write visibility of activity and go to line
-          actlist+=1+CR_LF;// write number of activities and go to line
+            actlist+=0+DConst.CR_LF;// write visibility of activity and go to line
+          actlist+=1+DConst.CR_LF;// write number of activities and go to line
           Section section= (Section)nature.getSetOfSections().getResourceAt(k).getAttach();
           Unity bloc;
           String instName="",lineDuration="", lineTime="", lineRoomFixed="",
@@ -702,10 +702,10 @@ public class SetOfActivities extends SetOfResources{
             }
 
           }// end for(int l=0; l< group.getUnityList().size(); l++)
-          actlist+=instName+CR_LF+section.getSetOfUnities().size()+CR_LF+
-                   lineDuration+CR_LF+lineTime+CR_LF+lineRoomFixed+CR_LF+
-                   lineRoomName+CR_LF+lineRoomType+CR_LF;//write the number of blocs
-          actlist+=activity.getIdemLine()+CR_LF+LineActFixed+";"+LineActAssign+CR_LF;
+          actlist+=instName+DConst.CR_LF+section.getSetOfUnities().size()+DConst.CR_LF+
+                   lineDuration+DConst.CR_LF+lineTime+DConst.CR_LF+lineRoomFixed+DConst.CR_LF+
+                   lineRoomName+DConst.CR_LF+lineRoomType+DConst.CR_LF;//write the number of blocs
+          actlist+=activity.getIdemLine()+DConst.CR_LF+LineActFixed+";"+LineActAssign+DConst.CR_LF;
 
         }// for (int k=0; k< nature.size(); k++)
       }// end for(int j=0; j< activity.size(); j++)

@@ -39,32 +39,32 @@ public class ExportData {
     * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
     * 10= room name
     */
-    String report="";
+    StringBuffer report=new StringBuffer("");
     int [] table={1,2,6,7,8,10};
-    String str= _dataR.getActivitiesReport(0,table);
+    StringBuffer strBuf= new StringBuffer(_dataR.getActivitiesReport(0,table));
     //System.out.println(str);
     //System.out.println("**********************************");
-    StringTokenizer strTokens = new StringTokenizer(str,SetOfResources.CR_LF);
+    StringTokenizer strTokens = new StringTokenizer(strBuf.toString(),DConst.CR_LF);
     while(strTokens.hasMoreTokens()){
       String line= strTokens.nextToken();
       StringTokenizer rTokens = new StringTokenizer(line,";");
       //while(rTokens.hasMoreTokens()){
-        report+=rTokens.nextToken()+rTokens.nextToken();
+        report.append(rTokens.nextToken()+rTokens.nextToken());
         String section= rTokens.nextToken();
-        report+= section.toLowerCase()+rTokens.nextToken();
+        report.append(section.toLowerCase()+rTokens.nextToken());
         StringTokenizer hourB = new StringTokenizer(rTokens.nextToken(),"h");
-        report+=hourB.nextToken()+hourB.nextToken();
+        report.append(hourB.nextToken()+hourB.nextToken());
         StringTokenizer hourEnd = new StringTokenizer(rTokens.nextToken(),"h");
-        report+=hourEnd.nextToken()+hourEnd.nextToken();
+        report.append(hourEnd.nextToken()+hourEnd.nextToken());
         String roomTemp=rTokens.nextToken();
         if(roomTemp.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
           roomTemp= DConst.NO_ROOM_EXPORT;
         String room= roomTemp+"          ";
-        report+= room.substring(0,_ROOMSIZE)+DXTools.STIConvertGroup(section);
+        report.append(room.substring(0,_ROOMSIZE)+DXTools.STIConvertGroup(section));
       //}// end while(tokens.hasMoreTokens())
-      report+=SetOfResources.CR_LF;
+        report.append(DConst.CR_LF);
     }// end while(strTokens.hasMoreTokens())
-    return report;
+    return report.toString();
   }
 
   public String exportStudents(){
@@ -81,7 +81,7 @@ public class ExportData {
     String report="";
     int [] table={1,2,3};
     String str= _dataR.getStudentsReport(0,table);
-    StringTokenizer strTokens = new StringTokenizer(str,SetOfResources.CR_LF);
+    StringTokenizer strTokens = new StringTokenizer(str,DConst.CR_LF);
     while(strTokens.hasMoreTokens()){
       String line= strTokens.nextToken();
       StringTokenizer rTokens = new StringTokenizer(line,";");
@@ -99,7 +99,7 @@ public class ExportData {
           groupCourseBef= groupCourse;
         }
       }// end while(strTokens.hasMoreTokens())
-      report+=SetOfResources.CR_LF;
+      report+=DConst.CR_LF;
     }// end if(rTokens.hasMoreTokens())
 
     return report;

@@ -119,6 +119,7 @@ public class SetOfStudents extends SetOfResources{
     int numberOfStudents=0;
     int countStudents=0;
     int numberOfCources=0;
+    _error="";
     while (st.hasMoreElements()){
       token = st.nextToken();
       line++;
@@ -230,7 +231,7 @@ public class SetOfStudents extends SetOfResources{
    *         then the application exits
    * */
   private boolean analyseTokensWithoutStudents(int beginPosition){
-
+  	_error="";
     return true;
   }
 

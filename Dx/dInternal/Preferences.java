@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.22 $  $Date: 2004-09-29 19:00:39 $
+ * Title: Preferences $Revision: 1.23 $  $Date: 2004-10-21 13:39:46 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.23 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -27,8 +27,8 @@ import java.util.Vector;
 
 
 
+import dConstants.DConst;
 import dInterface.DApplication;
-import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
@@ -39,7 +39,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.tictac.mouseTrap.dModel.Trace;
 
 public class Preferences {
-  private final String CR_LF = "\r\n";
+  //private final String CR_LF = "\r\n";
 
   public String _lookAndFeel;
   public String _language;
@@ -59,9 +59,9 @@ public class Preferences {
   public Preferences() {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
-  public Preferences(boolean flag) {
+ /* public Preferences(boolean flag) {
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-  }
+  }*/
   //-----------------------------
   
   
@@ -74,7 +74,7 @@ public class Preferences {
     try {
       FilterFile filter = new FilterFile();
       if (filter.adjustingFile(str)) {
-      StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), CR_LF );
+      StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), DConst.CR_LF );
       //System.out.println(st.toString());
       _lookAndFeel = st.nextToken();
       _language = st.nextToken();
@@ -107,23 +107,23 @@ public class Preferences {
 
    public String toString(){
     String str = _lookAndFeel;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str +=  _language;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _standardTTC;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _standardTTE ;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _defaultDir ;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _originalFullFileName;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _acceptedChars;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _selectedOptionsInFullReport;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _selectedOptionsInConflictReport;
-           str += CR_LF;
+           str += DConst.CR_LF;
            str += _conflictLimits;
       return str;
   }

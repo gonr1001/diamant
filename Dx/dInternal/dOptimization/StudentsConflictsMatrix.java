@@ -9,6 +9,7 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
+import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.DModel;
 import dInternal.dDataTxt.Activity;
@@ -224,7 +225,7 @@ public class StudentsConflictsMatrix {
           if (_theMatrix[i][j]<100)
             str+=_theMatrix[i][j]+" ";
       }// end for (int j=0; j< _theMatrix[i].length; j++)
-      str+= SetOfResources.CR_LF;
+      str+= DConst.CR_LF;
     }// end for (int i=0; i< _allSections.size(); i++)
 
     return str;

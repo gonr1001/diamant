@@ -8,8 +8,9 @@ package dInternal.dDataTxt;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-import java.util.StringTokenizer;
+//import java.util.StringTokenizer;
 import java.util.Vector;
+import dConstants.DConst;
 
 import dInternal.dUtil.DXObject;
 
@@ -22,14 +23,13 @@ public class SetOfResources extends DXObject{
    */
   int _stateSort=0;
   /**resource in text format*/
-  private StringTokenizer _st;//
+  //private StringTokenizer _st;//
   //private int _numberOfLines;
   //private int _numberOfColumns;// represent number of period a day.
   private long _currentKey=1;
   /**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
   private int _resourceType;
-  public static final String CR_LF = "\r\n";
-  private Resource _resource;
+  //private Resource _resource;
 
 
   /**
@@ -330,12 +330,12 @@ public class SetOfResources extends DXObject{
     if(_resourceList.size()>0){
       if (_resourceType==3){
         for (int i=0; i< _resourceList.size()-1; i++)
-          reslist+= ((Resource)_resourceList.get(i)).toWrite(";")+CR_LF;
+          reslist+= ((Resource)_resourceList.get(i)).toWrite(";")+DConst.CR_LF;
         reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toWrite(";");
       }else{
         for (int i=0; i< _resourceList.size()-1; i++)
-          reslist+= ((Resource)_resourceList.get(i)).toWrite(CR_LF)+CR_LF;
-        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toWrite(CR_LF);
+          reslist+= ((Resource)_resourceList.get(i)).toWrite(DConst.CR_LF)+DConst.CR_LF;
+        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toWrite(DConst.CR_LF);
       }
     }// end if(_resourceList.size()>0)
     return reslist;
@@ -436,7 +436,7 @@ public class SetOfResources extends DXObject{
    */
   public void setByField(Vector setOfElements, int fieldIndex, String fieldValue){
     Resource res = null;
-    boolean membership = false;
+    //boolean membership = false;
     for (int i = 0; i < setOfElements.size(); i++){
       res = getResource((String)setOfElements.get(i));
       if (res != null)
@@ -498,12 +498,12 @@ public class SetOfResources extends DXObject{
     int j= end+1;
     while( i< j){
       i++;
-      while(((Resource)_resourceList.get(i)).getAttach().getSelectedField(field) <
-            pivot.getAttach().getSelectedField(field))
+      while(((Resource)_resourceList.get(i)).getAttach().getSelectedField() <
+            pivot.getAttach().getSelectedField())
         i++;
       j--;
-      while(((Resource)_resourceList.get(j)).getAttach().getSelectedField(field) >
-            pivot.getAttach().getSelectedField(field))
+      while(((Resource)_resourceList.get(j)).getAttach().getSelectedField() >
+            pivot.getAttach().getSelectedField())
         j--;
       if(i < j)
         swap(i,j);

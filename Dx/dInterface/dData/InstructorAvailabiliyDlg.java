@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.18 $  $Date: 2004-10-14 18:59:31 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.19 $  $Date: 2004-10-21 13:39:45 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -79,8 +79,8 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
   private JComboBox chooser;
   private Vector _posVect;
-  private int nbPerParJour;
-  private boolean modified = false;
+  //private int nbPerParJour;
+//  private boolean modified = false;
 
   private InstructorAttach  _currentInstr;
   private int [][] _currentAvailbility;
@@ -131,7 +131,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
     _currentInstr = (InstructorAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getResource(sel).getAttach();
-    centerPanel = makeGridPanel(_currentInstr);
+    centerPanel = makeGridPanel();//_currentInstr);
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //_applyPanel
@@ -148,7 +148,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       dispose();
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
       _currentInstr.setAvailability(_currentAvailbility);
-      modified = false;
+      //modified = false;
       _applyPanel.setFirstDisable();
       _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
     // if a button of the grid has been pressed
@@ -162,7 +162,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       else{
         _currentAvailbility [day][per] = 5;
       }
-      modified = true;
+      //modified = true;
       _applyPanel.setFirstEnable();
     }
   }
@@ -178,7 +178,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
         _currentInstr = (InstructorAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getResource(sel).getAttach();
-        centerPanel = makeGridPanel(_currentInstr);
+        centerPanel = makeGridPanel();//_currentInstr);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();
       }
@@ -192,7 +192,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    *
    * @param instr the instructor for which the grid is constructed.
    */
-  private JPanel makeGridPanel(InstructorAttach instr) {
+  private JPanel makeGridPanel(/*InstructorAttach instr*/) {
     JPanel gridPanel = new JPanel();
     gridPanel.setLayout(new GridLayout(nbPer + 1, nbDay + 1));
     gridPanel.setBorder(BorderFactory.createTitledBorder(DConst.AVAILABILITIES));

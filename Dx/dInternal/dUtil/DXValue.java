@@ -134,4 +134,14 @@ public boolean isEquals(DXObject val){
   return true;
  }
 
+/**
+ *This object (which is already a string!) is itself returned.
+ * @return the string itself
+ * */
+public String toWrite(String separator){
+  
+  return ";"+_intValue+";"+_stringValue;
+}
+
+
 }

@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.14 $  $Date: 2004-06-21 15:38:17 $
+ * Title: FullReport $Revision: 1.15 $  $Date: 2004-10-21 13:39:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -56,6 +56,7 @@ public class FullReport extends ViewReport implements ActionListener {
   } //FullReport
 
   private void showReport() {
+  	
     _elements = _options.size() - _rightVec.size();
     _options = buildExternalOptions(_options, _rightVec);
     int firstField = 0;
@@ -67,11 +68,13 @@ public class FullReport extends ViewReport implements ActionListener {
      _jTextArea.setText(
          (_parentDlg.getStandardReportData()).getActivitiesReport(firstField, othersFields)
          );
+     
      buildReport(_rightVec.toArray(),
                  fieldsLengths(_rightVec,_allOptionsVec),
                  (_parentDlg.getStandardReportData()).getActivitiesReport(firstField, othersFields));
       _jTextArea.setCaretPosition(0);
     }
+   
   }
 /*
   * The option must be sorted by alphabetical order in the field String (second param)
@@ -110,45 +113,10 @@ public class FullReport extends ViewReport implements ActionListener {
     return v;
   }
 
-  /*private Vector getOptions(Vector opt) {
-    Vector v = new Vector();
-    for (int i=0; i< opt.size(); i++)
-      v.add(((FieldRecord) opt.get(i))._str);
+  
 
-    return v;
-  }*/
-/*
-  public void setImportReport(JTextArea jta){
-    jta.setFont(DConst.JLISTS_FONT);
-    jta.setText("Rapport d'importation");
-    jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
-
-    // enseignants
-    jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
-    Vector setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("2");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-
-    //locaux
-    jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("3");
-    for (int i=0; i< setOfErrors.size(); i++) {
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    }
-    //etudiants
-    jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("1");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
-    jta.setCaretPosition(0);
-  }
-*/
   public void actionPerformed(ActionEvent e){
-    String command = e.getActionCommand();
+    //String command = e.getActionCommand();
     //if "Option" button
     if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
       new ReportOptionsDlg(_dApplic,

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.12 $  $Date: 2004-06-21 15:38:17 $
+ * Title: ReportsDlg $Revision: 1.13 $  $Date: 2004-10-21 13:39:45 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -34,17 +34,16 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JTabbedPane;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+//import dInterface.ProgressBar;
 import dInternal.dDataTxt.StandardReportData;
 
-public class ReportsDlg extends JDialog implements ActionListener{
+public class ReportsDlg extends JDialog {// implements ActionListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize
   * minus the barSize (the value is a guess) at the bottom */
   private final static int ADJUST_HEIGHT = 100;
@@ -58,18 +57,20 @@ public class ReportsDlg extends JDialog implements ActionListener{
   private DApplication _dApplic;
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
-  private String _reportData;
+  //private String _reportData;
 
   public ReportsDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
     _dApplic = dApplic;
     //ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
-    //pBar.execute();
+    
     //_resources = new SetOfResources[1];
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,_dApplic.getJFrame());
+    //pBar.execute();
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
     //System.out.println("Génération de rapports terminé");
+    //pBar.close();
     initReportDlg();
     setLocationRelativeTo(dApplic.getJFrame());
     setVisible(true);
@@ -84,8 +85,8 @@ public class ReportsDlg extends JDialog implements ActionListener{
         screenSize.height - ADJUST_HEIGHT));
     Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-10,
         (int)dialogDim.getHeight()-60);
-    Dimension tabDim = new Dimension((int)tabbedPaneDim.getWidth()-10,
-                                     (int)tabbedPaneDim.getHeight()-10);
+    //Dimension tabDim = new Dimension((int)tabbedPaneDim.getWidth()-10,
+    //                                 (int)tabbedPaneDim.getHeight()-10);
     getContentPane().setLayout(new BorderLayout());
     setSize(dialogDim);
     setResizable(false);
@@ -98,7 +99,9 @@ public class ReportsDlg extends JDialog implements ActionListener{
     if (_dApplic.getDMediator().getCurrentDoc().getDM().getImportDone()) {
       _tabbedPane.addTab(_tabsNames[2], new ImportReport(this, _dApplic, tabbedPaneDim)) ;
     }
-
+    if (_dApplic.getDMediator().getCurrentDoc().getDM().getMergeDone()) {
+        _tabbedPane.addTab(_tabsNames[2], new MergeReport(this, _dApplic, tabbedPaneDim)) ;
+      }
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);
   }
 
@@ -106,7 +109,7 @@ public class ReportsDlg extends JDialog implements ActionListener{
     return _srd;
   }
 
-  public void actionPerformed(ActionEvent e){
-  }
+  //public void actionPerformed(ActionEvent e){
+  //}
 
 } /* end ReportsDlg */

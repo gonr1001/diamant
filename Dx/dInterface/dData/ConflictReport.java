@@ -35,6 +35,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
   }
 
   private void showReport() {
+  	
     _elements = _options.size() - _rightVec.size();
     _options = buildExternalOptions(_options, _rightVec);
     int firstField = 0;
@@ -46,11 +47,13 @@ public class ConflictReport extends ViewReport implements ActionListener {
      _jTextArea.setText(
          (_parentDlg.getStandardReportData()).getConflictsReport(firstField, othersFields)
          );
+     
      buildReport(_rightVec.toArray(),
                  fieldsLengths(_rightVec,_allOptionsVec),
                  (_parentDlg.getStandardReportData()).getConflictsReport(firstField, othersFields));
       _jTextArea.setCaretPosition(0);
     }
+   
   }
 /*
   *_conflictsReport is a string where each line contains more informations separated

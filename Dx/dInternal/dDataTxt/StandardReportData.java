@@ -30,7 +30,7 @@ public class StandardReportData {
   private int STATE1=300;
   private int STATE2=600;
   private int STATE3=100;
-  private String _HOURSEPARATOR="h";
+  //private StringBuffer _HOURSEPARATOR= new StringBuffer("h");
   /*
   *_activitiesReport is a string where each line contains more informations separeted
   * by a ";" separator
@@ -50,7 +50,7 @@ public class StandardReportData {
   * subtoken 0= unity name, 1= day number where this unity is place, 2= day name where this unity is place
   *3= begining hour of this unity
   */
-  private String _studentsReport="";
+  private String _studentsReport= "";
 
   /**
    *_conflictsReport is a string where each line contains more informations separeted
@@ -65,17 +65,20 @@ public class StandardReportData {
    * type= 1: room conflict
    * type= 2: instructor conflict
    */
-  private String _conflictsReport="";
+  private String _conflictsReport= "";
 
   /**
    * Constructor
    * @param dm
    */
   public StandardReportData(DModel dm) {
-    _dm=dm;
+    _dm = dm;
     _activitiesReport= buildActivitiesReport();
+    
     _studentsReport = buildStudentsReport();
+    
     _conflictsReport= buildConflictsReport();
+    
 
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
@@ -86,7 +89,7 @@ public class StandardReportData {
    * @return
    */
   private String buildActivitiesReport(){
-    String actlist="";
+    StringBuffer actlist= new StringBuffer("");
     int size=_dm.getSetOfActivities().size();
     for (int i=0; i<size ; i++){
       _dm.getProgressBarState().setIntValue(STATE1*i/size);
@@ -101,8 +104,10 @@ public class StandardReportData {
               Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(l).getAttach();
               Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
                   ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
-              String hour= "00"+Integer.toString(bloc.getDuration()/_AHOUR);
-              String minute= "00"+Integer.toString(bloc.getDuration()%_AHOUR);
+              StringBuffer hour= new StringBuffer("00");
+			               hour.append(Integer.toString(bloc.getDuration()/_AHOUR));
+              StringBuffer minute= new StringBuffer("00");
+			               minute.append(Integer.toString(bloc.getDuration()%_AHOUR));
               /*StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
                   ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
               long dayKey= Long.parseLong(dtime.nextToken());
@@ -110,49 +115,53 @@ public class StandardReportData {
               long perKey= Long.parseLong(dtime.nextToken());*/
               Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByPeriodKey(currentCycAss.getPeriodKey());
               if((bloc.isAssign()) && period.getPriority()!=2){
-                String activityName =_dm.getSetOfActivities().getResourceAt(i).getID();
-                actlist+= _dm.getSetOfActivities().getResourceAt(i).getID()+";";// write activity name
-                String activityType = activity.getSetOfTypes().getResourceAt(j).getID();
-                actlist+= activity.getSetOfTypes().getResourceAt(j).getID()+";";// write nature and 2 space
-                actlist+= nature.getSetOfSections().getResourceAt(k).getID()+";";//soa.CR_LF;//
-                String activitySection = nature.getSetOfSections().getResourceAt(k).getID();
-                actlist+= section.getSetOfUnities().getResourceAt(l).getID()+";";
-                actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
-                        minute.substring(minute.length()-2,minute.length())+";";
+                StringBuffer activityName = new StringBuffer(_dm.getSetOfActivities().getResourceAt(i).getID());
+                actlist.append(_dm.getSetOfActivities().getResourceAt(i).getID()+";");// write activity name
+                StringBuffer activityType = new StringBuffer(activity.getSetOfTypes().getResourceAt(j).getID());
+                actlist.append(activity.getSetOfTypes().getResourceAt(j).getID()+";") ;// write nature and 2 space
+                actlist.append(nature.getSetOfSections().getResourceAt(k).getID()+";");//soa.CR_LF;//
+                StringBuffer activitySection = new StringBuffer(nature.getSetOfSections().getResourceAt(k).getID());
+                actlist.append(section.getSetOfUnities().getResourceAt(l).getID()+";");
+                actlist.append(hour.substring(hour.length()-2,hour.length())+DConst.HOUR_SEPARATOR+
+                        minute.substring(minute.length()-2,minute.length())+";");
 
                 long dayKey= Long.parseLong(DXToolsMethods.getToken(currentCycAss.getPeriodKey(),".",0));
                 String dayS= "00"+DXToolsMethods.getToken(currentCycAss.getPeriodKey(),".",0);
-                actlist+=dayS.substring(dayS.length()-2,dayS.length())+";";
-                actlist+= _dm.getTTStructure().getCurrentCycle().getSetOfDays(
-                    ).getResource(dayKey).getID()+";";//.getID()
+                actlist.append(dayS.substring(dayS.length()-2,dayS.length())+";");
+                actlist.append( _dm.getTTStructure().getCurrentCycle().getSetOfDays(
+                    ).getResource(dayKey).getID()+";");//.getID()
                 //Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
-                hour= "00"+period.getBeginHour()[0];
-                minute= "00"+period.getBeginHour()[1];
-                actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
-                          minute.substring(minute.length()-2,minute.length())+";";
+                hour.delete(0,hour.length());
+                hour.append("00"+period.getBeginHour()[0]);
+                minute.delete(0,minute.length());
+                minute.append("00"+period.getBeginHour()[1]);
+                actlist.append( hour.substring(hour.length()-2,hour.length())+DConst.HOUR_SEPARATOR+
+                          minute.substring(minute.length()-2,minute.length())+";");
                 int mnEnd= period.getBeginHour()[1]+bloc.getDuration()%_AHOUR;
                 int hrEnd= period.getBeginHour()[0]+bloc.getDuration()/_AHOUR+mnEnd/_AHOUR;
-                hour= "00"+Integer.toString(hrEnd);
-                minute= "00"+Integer.toString(mnEnd%_AHOUR);
-                actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
-                          minute.substring(minute.length()-2,minute.length())+";";
+                hour.delete(0,hour.length());
+                hour.append("00"+Integer.toString(hrEnd));
+                minute.delete(0,minute.length());
+                minute.append("00"+Integer.toString(mnEnd%_AHOUR));
+                actlist.append( hour.substring(hour.length()-2,hour.length())+DConst.HOUR_SEPARATOR+
+                          minute.substring(minute.length()-2,minute.length())+";");
                 String str [] = currentCycAss.getInstructorNames();
                 for(int m = 0 ; m < str.length; m++ ) {
-                  actlist+= DXToolsMethods.getToken(str[m],",",0)+" "+DXToolsMethods.getToken(str[m],",",1)+",";
+                  actlist.append( DXToolsMethods.getToken(str[m],",",0)+" "+DXToolsMethods.getToken(str[m],",",1)+",");
                   //actlist+= str[m] +":";
                 }
-                actlist+= ";";
-                actlist+= currentCycAss.getRoomName()+";";
+                actlist.append(";");
+                actlist.append( currentCycAss.getRoomName()+";");
                 Vector v = activity.getStudentRegistered();
-                String nbOfStudents= "000"+_dm.getSetOfEvents().studentsInSection(v,activityName+activityType, activitySection).size();
-                actlist+= nbOfStudents.substring(nbOfStudents.length()-3,nbOfStudents.length())+";"+SetOfActivities.CR_LF;
+                String nbOfStudents= "000"+_dm.getSetOfEvents().studentsInSection(v,activityName.toString()+activityType.toString(), activitySection.toString()).size();
+                actlist.append( nbOfStudents.substring(nbOfStudents.length()-3,nbOfStudents.length())+";"+DConst.CR_LF);
               }// end if(bloc.isAssign())
             }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
           }// end for (int k=0; k< nature.getSetOfSections().size(); k++)
         }// end for(int j=0; j< activity.getSetOfTypes().size(); j++)
       }// end for (int i=0; i< soa.size(); i++){
     }// end if (activity.getActivityVisibility())
-    return actlist;
+    return actlist.toString();
   }
 
   /**
@@ -162,7 +171,7 @@ public class StandardReportData {
    * @return
    */
   public String getActivitiesReport( int principalElt, int[] otherElts){
-    return sortReport(getReport(_activitiesReport,principalElt,otherElts));
+    return sortReport(getReport(_activitiesReport,principalElt,otherElts)).toString();
   }
 
   /**
@@ -172,7 +181,7 @@ public class StandardReportData {
    * @return
    */
   public String getConflictsReport( int principalElt, int[] otherElts){
-    return sortReport(getReport(_conflictsReport, principalElt, otherElts));
+    return sortReport(getReport(_conflictsReport, principalElt, otherElts)).toString();
   }
 
   /**
@@ -182,7 +191,7 @@ public class StandardReportData {
    * @return
    */
   public String getStudentsReport( int principalElt, int[] otherElts){
-    return getReport(_studentsReport,principalElt,otherElts);
+    return getReport(_studentsReport,principalElt,otherElts).toString();
   }
 
   /**
@@ -190,8 +199,8 @@ public class StandardReportData {
    */
   private String getReport(String allLines, int principalAct, int[] otherAct){
     SetOfResources setOf= new SetOfResources(1);
-    StringTokenizer theReport= new StringTokenizer(allLines,SetOfActivities.CR_LF);
-    int nbTokens= theReport.countTokens();
+    StringTokenizer theReport= new StringTokenizer(allLines.toString(), DConst.CR_LF);
+    //int nbTokens= theReport.countTokens();
     while(theReport.hasMoreTokens()){
       String currentLine= theReport.nextToken();
       String ID= extractToken(currentLine,principalAct);
@@ -204,16 +213,16 @@ public class StandardReportData {
       setOf.addResource(new Resource(ID, dxValue),0);
     }// end while(theReport.hasMoreTokens())
     setOf.sortSetOfResourcesByID();
-    String report="";
+    StringBuffer report= new StringBuffer("");
     for (int i=0;i< setOf.size(); i++){
-      report+=setOf.getResourceAt(i).getID()+";";//+setOf.CR_LF;
+      report.append(setOf.getResourceAt(i).getID()+";");//+setOf.CR_LF;
       Vector vec= (Vector)((DXValue)setOf.getResourceAt(i).getAttach()).getObjectValue();
       for (int j=0; j< vec.size(); j++){
-        report+=vec.get(j).toString()+";";
+        report.append(vec.get(j).toString()+";");
       }// end for (int j=0; j< vec.size(); j++)
-      report+=setOf.CR_LF;
+      report.append(DConst.CR_LF);
     }// end  for(int i=0; i< nbTokens; i++)
-    return report;
+    return report.toString();
   }
 
   /**
@@ -229,7 +238,7 @@ public class StandardReportData {
    * @return
    */
   private String buildConflictsReport(){
-    String report="";
+    StringBuffer report= new StringBuffer("");
     int size= _dm.getTTStructure().getCurrentCycle().getSetOfDays().size();
     for(int i=0; i< size; i++){
       _dm.getProgressBarState().setIntValue(STATE1+STATE2+STATE3*i/size);
@@ -245,31 +254,31 @@ public class StandardReportData {
             for(int y=0; y< ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().size(); y++){
               Resource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
               DXValue confValue= (DXValue)confAttach.getAttach();
-              String str = "yyyyyyy";
+              StringBuffer strBuf = new StringBuffer("yyyyyyy");
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
                /* str = _dm.getSetOfEvents().getStudentConflictDescriptions(
                   _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities()),
                   _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));*/
-                str = _dm.getSetOfEvents().getStudentConflictDescriptions(confEvents.getID(),confAttach.getID());
+                strBuf = new StringBuffer(_dm.getSetOfEvents().getStudentConflictDescriptions(confEvents.getID(),confAttach.getID()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
-               str = _dm.getSetOfEvents().getInstructorConflictDescriptions(confEvents.getID(),confAttach.getID());
+              	strBuf = new StringBuffer(_dm.getSetOfEvents().getInstructorConflictDescriptions(confEvents.getID(),confAttach.getID()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
                //todo rgr long instKey [] =
                //long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
                //String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
                //str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
-               str = _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue,confEvents.getID());
+              	strBuf = new StringBuffer( _dm.getSetOfEvents().getInstructorConflictDescriptions(confValue,confEvents.getID()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();
-               str= _dm.getSetOfRooms().getResource(roomKey).getID();
+               strBuf = new StringBuffer( _dm.getSetOfRooms().getResource(roomKey).getID());
               }
 
               String hour= "00"+((Period)per.getAttach()).getBeginHour()[0];
               String minute= "00"+((Period)per.getAttach()).getBeginHour()[1];
-              report+=day.getKey()+";"+
+              report.append(day.getKey()+";"+
                       day.getID()+";"+
                       seq.getID()+";"+
                       per.getID()+";"+
@@ -277,14 +286,14 @@ public class StandardReportData {
                      +_dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities())+";"
                      +_dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities())+";"
                      +confValue.getIntValue()+";"+confValue.getStringValue()+";"
-                     +str+";"+SetOfResources.CR_LF;
+                     +strBuf.toString()+";"+DConst.CR_LF);
             }// end for(int y=0; y< ((ConflictsAttach)confEvents.ge
           }// end for(int x=0; x< ((Period)per.getAttach()).getEventsInPeriod()
         }//end for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods()
       }//end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size()
     }//end for(int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(
     //System.out.println(report);//debug
-    return report;
+    return report.toString();
   }
 
   /**
@@ -315,7 +324,7 @@ public class StandardReportData {
    * @return
    */
   private String buildStudentsReport(){
-    String studlist="";
+  	StringBuffer studlist= new StringBuffer("");
     int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
@@ -352,7 +361,7 @@ public class StandardReportData {
               Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
               String hour= "00"+period.getBeginHour()[0];
               String minute= "00"+period.getBeginHour()[1];
-              String time= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
+              String time= hour.substring(hour.length()-2,hour.length())+DConst.HOUR_SEPARATOR+
                            minute.substring(minute.length()-2,minute.length());
               strcrs+=sect+Integer.toString(j+1)+"-"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
                   ).getResource(dayKey).getKey()+"-"+ _dm.getTTStructure().getCurrentCycle().getSetOfDays(
@@ -362,9 +371,9 @@ public class StandardReportData {
           }// end  if(section!=null)
         }// end if(course.length()==SetOfStudents._COURSEGROUPLENGTH)
       }// end while(strTokens.hasMoreTokens())
-      studlist+= str+strcrs+";"+SetOfResources.CR_LF;
+      studlist.append( str+strcrs+";"+DConst.CR_LF);
     }// end for (int i=0; i< _dm.getSetOfStudents().size(); i++)
-    return studlist;
+    return studlist.toString();
   }
 
   /**
@@ -373,9 +382,9 @@ public class StandardReportData {
    * @return
    */
   public String sortReport(String rep){
-    String newRep="";
+    StringBuffer newRep=new StringBuffer("");
     SetOfResources setOfRep= new SetOfResources(1);
-    StringTokenizer theReport= new StringTokenizer(rep,SetOfActivities.CR_LF);
+    StringTokenizer theReport= new StringTokenizer(rep,DConst.CR_LF);
     //int nbTokens= theReport.countTokens();
     //for (int i=0; i< theReport.countTokens(); i++)
     while (theReport.hasMoreElements())
@@ -384,13 +393,13 @@ public class StandardReportData {
     for (int i=0; i< setOfRep.size(); i++)
       newRep+= setOfRep.getResourceAt(i).getID()+SetOfActivities.CR_LF;*/
     Vector res= new Vector();
-    writeSortReport(setOfRep, newRep, res);
+    writeSortReport(setOfRep, newRep.toString(), res);
     for (int i=0; i< res.size(); i++)
-      newRep+= res.get(i).toString()+SetOfActivities.CR_LF;
+      newRep.append( res.get(i).toString()+DConst.CR_LF);
 
     //System.out.println("******************************************");//debug
     //System.out.println(newRep);//debug
-    return newRep;
+    return newRep.toString();
   }
 
   /**
@@ -422,13 +431,13 @@ public class StandardReportData {
    * @param line
    * @return
    */
-  private void writeSortReport(SetOfResources setOr,String line, Vector result){
+  private void writeSortReport(SetOfResources setOr, String line, Vector result){
     //="";
     if(setOr.size()!=0){
       for(int i=0; i< setOr.size(); i++){
         //line+= setOr.getResourceAt(i).getID()+";";
         SetOfResources sOr = (SetOfResources)setOr.getResourceAt(i).getAttach();
-         writeSortReport(sOr, line+ setOr.getResourceAt(i).getID()+";", result);//+SetOfActivities.CR_LF;
+         writeSortReport(sOr, line.toString() + setOr.getResourceAt(i).getID()+";", result);//+SetOfActivities.CR_LF;
       }// end for(int i=0; i< setOr.size(); i++)
     }else{// end if(setOr!=null)
       result.add(line);

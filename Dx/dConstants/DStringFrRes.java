@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.123 $  $Date: 2004-10-14 18:59:30 $
+ * Title: DStringFrRes $Revision: 1.124 $  $Date: 2004-10-21 13:39:42 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.123 $
+ * @version $Revision: 1.124 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -168,8 +168,8 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     //User
     { "userTest", "Beta Test"},
-    { "user1", "Claude"},
-    { "user2", "..."},
+    { "user1", "Admin Formation Groupes"},
+    { "user2", "Feph Importation Selective"},
 
     // common buttons
     {"butOK", "Ok"},
@@ -382,9 +382,15 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 	{"separator",     "------------------------------------------------------------------" },
 	{"instructorSep", "------------------------  Enseignants  ---------------------------" },
 	{"roomSep",       "------------------------  Locaux       ---------------------------" },
-	{"studentSep",    "------------------------  Etudiants    ---------------------------" }
+	{"studentSep",    "------------------------  Etudiants    ---------------------------" },
 
-
+	
+	{"deletedElement", "élément supprimé : " },
+	{"addedElement", "élément ajouté : "},
+	{"changedElement", "élément modifié : "},
+	{"unchangedElement", "élément non modifié : "},
+	{"hourSeparator", "h"},
+	{"saveSeparator", "================================="}
   };
 
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.48 $  $Date: 2004-09-10 13:30:59 $
+ * Title: EditActivityDlg $Revision: 1.49 $  $Date: 2004-10-21 13:39:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.48 $
+ * @version $Revision: 1.49 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -748,7 +748,7 @@ public class EditActivityDlg
     String day = getSelectedDay(tpane);
     String hour = getSelectedHour(tpane);
     JList instructor = getInstructorsList(tpane);
-    ListModel lm = (ListModel) instructor.getModel();
+    ListModel lm = instructor.getModel();
     String  intructorKeys = getInstructorKeys(lm);
 
     String room = getSelectedRoom(tpane);
@@ -767,7 +767,7 @@ public class EditActivityDlg
     event.setPermanentState(fixedBut);
     Vector vect= new Vector();
     vect.add(_unities.get(_currentActivityIndex));
-    _dm.getSetOfEvents().updateActivities(vect);
+    _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),vect);
     //add event
     _dm.getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1,false);
     return true;
