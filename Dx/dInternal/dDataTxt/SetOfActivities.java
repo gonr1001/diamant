@@ -411,25 +411,6 @@ public class SetOfActivities extends SetOfResources{
    return false;
   }
 
-  /**
-   * Creates a Vector with the ID of the ressources weather visibles or not according
-   * to the argument
-   * @param isVisible true for the activities that are visibles
-   * @return the vector with de names of the resources
-   */
-  public Vector getIDByVisibility(boolean isVisible){
-    Vector activities = new Vector();
-    Resource res = null;
-    Activity act = null;
-    for(int i = 0; i < size(); i++){
-      res = getResourceAt(i);
-      act = (Activity)(res.getAttach());
-      if (act.getActivityVisibility() == isVisible){
-        activities.add(res.getID());
-      }
-    }
-    return activities;
-  }
 
   public String getError() {
    return _error;

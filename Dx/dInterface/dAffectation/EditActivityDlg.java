@@ -38,32 +38,40 @@ public class EditActivityDlg extends JDialog implements ActionListener{
   DApplication _dApplic = null;
   String _currentActivity;
 
+  /**
+   * Constructor
+   * @param activityDialog The parent dialog of this dialog
+   * @param dApplic The application
+   * @param currentActivity The ativiti choiced in the activityDialog
+   */
   public EditActivityDlg(JDialog activityDialog, DApplication dApplic, String currentActivity) {
     super(activityDialog, "Éditer activité");
     setLocationRelativeTo(activityDialog);
     _dApplic = dApplic;
     _currentActivity = currentActivity;
-    //Resource res = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getResource(_currentActivity);
-    //Activity act = (Activity)(res.getAttach());
-
     jbInit();
-
   }
 
+  /**
+   * Initialize the dialog
+   */
   private void jbInit(){
-
     JPanel jp = new JPanel();
     jp.setPreferredSize(new Dimension(100,100));
     JTabbedPane tabbedPane = new JTabbedPane();
-    /*for(int i = 0; i < activityEvents.size(); i++){
+
+    /**
+    * @todo I'm waiting for the design of the dialog
+    */
+    /*
+    for(int i = 0; i < activityEvents.size(); i++){
       tabbedPane.addTab((String)activityEvents.get(i), panel());
     }
-*/
-    //System.out.println(tabbedPane.getComponentAt(0).toString());
+    */
 
+    //System.out.println(tabbedPane.getComponentAt(0).toString());
     getContentPane().add(tabbedPane);//add(new JLabel("JLabel"));
-    //setSize(300,300);
-    pack();
+    this.setSize(300,300);
     setResizable(false);
     setVisible(true);
   }
@@ -72,15 +80,16 @@ public class EditActivityDlg extends JDialog implements ActionListener{
 
   }
 
+  /**
+   * It builds a panel to be placed in a tab of the tabbedPane
+   * @return a JPanel to be placed in a tab of the tabbedPane
+   */
   public JPanel panel(){
     String [] comboIni = {"1", "2", "3"};
     JPanel panel = new JPanel(new GridLayout(9,2));
-    //panel.setPreferredSize(new Dimension(200,200));
-
     JLabel duration, day, hour, room, instructor1, instructor2, instructor3;
     JComboBox  cbDuration, cbDay, cbHour, cbRoom, cbInstructor1, cbInstructor2, cbInstructor3;
     JButton place, fix, apply, close;
-
     duration = new JLabel("Durée");
     day = new JLabel("Jour");
     hour = new JLabel("Heure");

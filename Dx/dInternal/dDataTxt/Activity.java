@@ -13,6 +13,14 @@ import dInternal.dUtil.DXObject;
 
 public class Activity extends DXObject{
 
+  /* Each field is linked to an index who serves for filtring and for selecting
+  * an object.
+  * Indexes :
+  * _departement -> 0
+  * _activityType -> 1
+  * _activitySession -> 2
+  * _activityVisible -> 3
+  */
   private String _departement="";//eg. génie electrique
   private String _activityType=""; // eg. informatique
   private int _activitySession=0;//
@@ -155,9 +163,8 @@ public class Activity extends DXObject{
   }
 
   /**
-   * According to the value of the argument, it compares a classe attribute with
-   * value of the argument "value"
-   * @param choice the index of the class attribut
+   * It compares a field with the value defined by the argument "value"
+   * @param choice the index of the field
    * @param value the value to be compared
    * @return true if the attribute value is equal to the argument "value"
    */

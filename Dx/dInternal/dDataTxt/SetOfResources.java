@@ -298,11 +298,15 @@ public class SetOfResources extends DXObject{
   }
 
   /**
-   * Buids a vector containing the resource ID
-   * @param fieldIndex
-   * @param fieldValue
-   * @return
+   * Creates a Vector containig the IDs of the resources whose the value of the
+   * field (defined by the argument "fieldIndex") is equals to value defined by
+   * the argument "fieldValue".  The fieldIndex is defined in each resource. The value
+   * may be a String, or the string representation of an int or a boolean.
+   * @param fieldIndex The identification index of a field belonging the resource
+   * @param fieldValue The comparaison value for the field selected
+   * @return a vector containing the IDs of the resources selected
    */
+
 
   public Vector getIDsByField(int fieldIndex, String fieldValue){
     Vector idVector = new Vector();

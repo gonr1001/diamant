@@ -133,7 +133,6 @@ public class ActivityDlg extends JDialog implements ActionListener {
       _visibleVec = new Vector();
     }else{
       SetOfActivities activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-      //_visibleVec = activities.getIDByVisibility(true);
       _visibleVec = activities.getIDsByField(3, "true");
       _noVisibleVec = activities.getIDsByField(3, "false");
     } //end if (_dApplic.getDMediator().getCurrentDoc() == null)
@@ -164,7 +163,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _noVisibleList.addMouseListener(mouseListener);
     _visibleList.addMouseListener(mouseListener);
 
-  }//end method
+  }//end triggerListeners()
 
 
   /**
