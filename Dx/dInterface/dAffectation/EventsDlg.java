@@ -53,7 +53,7 @@ public class EventsDlg extends JDialog implements ActionListener{
   private Unity _currUnity;
   private Vector _leftVector, _centerVector, _rightVector;
 
-  private static Color LABEL_COLOR = Color.green;// DConst.COLOR_STUD;
+  private static Color LABEL_COLOR = DConst.COLOR_STUD;
   private static String EVENTS_DLG_TITLE = DConst.EVENTS_DLG_TITLE;
   private static String EVENTS_FIXED = DConst.EVENTS_FIXED;
   private static String EVENTS_PLACED = DConst.EVENTS_PLACED;
