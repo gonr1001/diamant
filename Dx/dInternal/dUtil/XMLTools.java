@@ -9,8 +9,7 @@ package dInternal.dUtil;
  * @version 1.0
  */
 
-import xml.OutPut.BuildXMLElement;
-import xml.OutPut.writeFile;
+
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
 import dResources.DConst;

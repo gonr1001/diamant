@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.40 $  $Date: 2004-06-04 21:16:59 $
+ * Title: EditActivityDlg $Revision: 1.41 $  $Date: 2004-06-07 20:36:20 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.41 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -93,7 +93,7 @@ public class EditActivityDlg
   private JTabbedPane _tabbedPane;
   private JScrollPane _jScrollPane;
   private ButtonsPanel _applyPanel;
-  private JLabel _capacity;
+  private JLabel [] _capacity;
   private boolean _canBeModified = false;
   private Vector _unities = new Vector();           // contains event resource
   private JList [] _instructorsLists;
@@ -143,11 +143,10 @@ public class EditActivityDlg
     _dApplic = dApplic;
     _dm = dApplic.getDMediator().getCurrentDoc().getDM();
     _canBeModified = canBeModified;
-    //to verify
-
     _unities = buildUnitiesVector(currentActivity);
     _instructorsLists = new JList[_unities.size()];
-    //to verify
+    _capacity = new JLabel[_unities.size()];
+
     initialize();
   }
 
@@ -178,7 +177,7 @@ public class EditActivityDlg
                    screenSize.height/ 4,
                    screenSize.width/ 3,
                    screenSize.height/ 2 + FACTOR );
-
+	this.pack();
     this.setResizable(true);
     this.setVisible(true);
   } // end init
@@ -193,7 +192,10 @@ public class EditActivityDlg
     if (command.equals("name")) {
       JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
       String roomName = getSelectedRoom(tpane);
-      _capacity.setText(getCapacity(roomName));
+      _capacity[_currentActivityIndex].setText(getCapacity(roomName)); 
+	  //_capacity.repaint();
+      //_capacity.setText("HElep" ) ; //getCapacity(roomName));
+     // _capacity.repaint();
       System.out.println("Get Capacity: " + getCapacity(roomName));
     }
     if (command.equals("cat")) {
@@ -215,7 +217,7 @@ public class EditActivityDlg
       if(apply){
         _dm.getTTStructure().sendEvent();
         if(_evDlgInt!=null)
-          _evDlgInt.initializePanel();
+         _evDlgInt.initializePanel();
         //dispose();
       }
 
@@ -256,7 +258,7 @@ public class EditActivityDlg
     myPanel.setLayout(new GridLayout(4,1));
     JPanel timePanel = buildTimePanel();
     JPanel instructorPanel = buildInstructorPanel(index);
-    JPanel roomPanel = buildRoomPanel();
+    JPanel roomPanel = buildRoomPanel(index);
     JPanel fixingPanel = buildFixingPanel(index);
 
     myPanel.add(timePanel);
@@ -312,7 +314,7 @@ public class EditActivityDlg
     return (JList)(jsp.getViewport()).getComponent(0);
   } // getInstructorsList
 
-  private JPanel buildRoomPanel() {
+  private JPanel buildRoomPanel(int index) {
     JPanel myPanel = new JPanel();
     JPanel roomPanel = new JPanel();
     roomPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ROOM_NAME));
@@ -331,9 +333,9 @@ public class EditActivityDlg
     roomCB.addActionListener(this);
 
     //Vector[] vectCapacity  = buildCapacityList();
-    String capacity = getCapacity(vectC[0].get(0).toString());
-    _capacity = new JLabel(capacity);
-
+    String capacity = getCapacity(vectR[0].get(0).toString());
+    _capacity [index] = new JLabel(capacity);
+    
     JPanel categoryRoom = new JPanel();
     categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), "Cat"));
     categoryRoom.add(categoryRoomCB);
@@ -341,7 +343,8 @@ public class EditActivityDlg
     roomName.setBorder(new TitledBorder(new EtchedBorder(), "Name"));
 
     roomName.add(roomCB);
-    roomName.add(_capacity);
+    roomName.add(_capacity[index]);
+    
     roomPanel.add(categoryRoom);
     roomPanel.add(roomName);
 
