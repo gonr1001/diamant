@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.15 $  $Date: 2003-05-12 15:31:44 $
+ * Title: DConst $Revision: 1.16 $  $Date: 2003-05-13 10:48:15 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -99,18 +99,22 @@ public class DConst {
 
    public final static String HELP = res.getString("help");
 
+
+
+/*   final static String CONTENTS = "Contenu";
+   final static String INDEX = "Index";
+   final static String SEARCH = "Rechercher";*/
+
+   public final static String ABOUT_M = res.getString("aboutM");
+   public final static String ABOUT_TD = res.getString("aboutTD");
+   public final static String ABOUT_D = res.getString("aboutD");
+
    public final static String BUT_OK = res.getString("butOK");
    public final static String BUT_CANCEL = res.getString("butCancel");
    public final static String BUT_APPLY = res.getString("butApply");
    public final static String BUT_BROWSE = res.getString("butBrowse");
 
-   final static String CONTENTS = "Contenu";
-   final static String INDEX = "Index";
-   final static String SEARCH = "Rechercher";
-
-   public final static String ABOUT_M = res.getString("aboutM");
-   public final static String ABOUT_TD = res.getString("aboutTD");
-   public final static String ABOUT_D = res.getString("aboutD");
+   public final static String PROBLEM = res.getString("problem");
 
    //instructor constants
    public final static String INST_TEXT1= res.getString("instText1");

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.2 $  $Date: 2003-05-13 09:01:22 $
+ * Title: DefFileToImportDlg $Revision: 1.3 $  $Date: 2003-05-13 10:48:15 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -66,7 +66,7 @@ public class DefFilesToImportDlg extends JDialog
   private JTextField _tfRooms;
   private JButton _butRooms;
 
-  private String path;
+  private String path ="." ;
   private int state;
 
   /**
@@ -168,8 +168,10 @@ public class DefFilesToImportDlg extends JDialog
          _tfStudents.getText().length() == 0 ||
          _tfInstructors.getText().length() == 0 ||
          _tfRooms.getText().length() == 0)
-        JOptionPane.showMessageDialog(this, DConst.DEF_F_D5 + DConst.DEF_F_D6, "titre",
-              JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+                     DConst.DEF_F_D5 + DConst.DEF_F_D6,
+                     DConst.PROBLEM,
+                     JOptionPane.WARNING_MESSAGE);
       else {
         state = OK;
         dispose();
@@ -179,13 +181,11 @@ public class DefFilesToImportDlg extends JDialog
       state = CANCEL;
       dispose();
     } else if (command.equals(DConst.BUT_BROWSE )) { // Browse
-
-    JFileChooser fc = new JFileChooser(path);
-
-    fc.setMultiSelectionEnabled( false );
-    fc.setFileFilter( new DFileFilter( new String[] {"sig", "txt"},
-                    "Data Files (*.sig)" ) );
-    // Display the file chooser in a dialog
+      JFileChooser fc = new JFileChooser(path);
+      fc.setMultiSelectionEnabled( false );
+      fc.setFileFilter( new DFileFilter( new String[] {"sig", "txt"},
+          "Data Files (*.sig)" ) );
+      // Display the file chooser in a dialog
 
     String message;
     if (event.getSource() == _butActivities )
