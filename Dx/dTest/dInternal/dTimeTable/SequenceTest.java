@@ -100,7 +100,7 @@ String path;
     SetOfResources setOfPeriods = new SetOfResources(4);
     try{
       xmlFile = new readFile();
-      for (int i = 0; i < 4; i++){
+      for (int i = 1; i < 5; i++){
         setOfPeriods.addResource(new Resource(Integer.toString(i), new Period()),1);
       }
       firstSequence.setSetOfPeriods(setOfPeriods);
@@ -122,8 +122,8 @@ String path;
       System.out.println(e);
     }
     assertEquals("test_writeXMLtag : assertEquals 1 (Size of setOfPeriods):", firstSequence.getSetOfPeriods().size(), savedSequence.getSetOfPeriods().size());
-    assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):", "0", savedSequence.getSetOfPeriods().getResourceAt(0).getID());
-    assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):", "0", savedSequence.getSetOfPeriods().getResourceAt(2).getID());
+    assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):", "1", savedSequence.getSetOfPeriods().getResourceAt(0).getID());
+    assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):", "2", savedSequence.getSetOfPeriods().getResourceAt(1).getID());
 
   }
 

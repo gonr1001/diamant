@@ -55,7 +55,7 @@ String path;
     }catch(Exception e){
       System.out.println(e);
     }
-    assertEquals("test_readXMLtag : assertEquals 1(Size of the SetOfSequences ):", day.getSetOfSequences().size(), 2);
+    assertEquals("test_readXMLtag : assertEquals 1(Size of the SetOfSequences ):", 2, day.getSetOfSequences().size());
     //assertEquals("test_readXMLtag : assertEquals 2(Minute):", period.getBeginHour()[1], 15);
     //assertEquals("test_readXMLtag : assertEquals 3(priotity):", period.getPriority(), 0);
   }
