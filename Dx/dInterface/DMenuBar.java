@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.74 $  $Date: 2003-09-29 20:21:47 $
+ * Title: DMenuBar $Revision: 1.75 $  $Date: 2003-09-30 14:57:14 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.74 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.75 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -45,6 +45,10 @@ import dInterface.dTimeTable.CloseCmd;
 import dInterface.dUtil.AboutCmd;
 import dInterface.dUtil.ExitCmd;
 import dInterface.dUtil.PLAFCmd;
+import dInterface.dUtil.ViewDetailedCmd;
+import dInterface.dUtil.ViewSimpleCmd;
+
+
 
 import dAux.MyFileCmd;
 import dAux.ShowAllCmd;
@@ -93,8 +97,9 @@ public class DMenuBar extends JMenuBar{
   private CmdMenu _mReport;
 
   // the preferences menus
-  private CmdMenu _lookAndFeel;
-  private boolean _boolLookAndFeel;
+  private CmdMenu _lookAndFeel, _viewSimple, _viewDetailed;
+  private boolean _boolLookAndFeel, _boolView, _boolViewSimple, _boolViewDetailed;
+   private JMenu _view;
   // the help menus
   private CmdMenu _about;
   private boolean _boolAbout;
@@ -346,6 +351,25 @@ public class DMenuBar extends JMenuBar{
     _lookAndFeel.setCommand(new PLAFCmd(_dApplic));
     _lookAndFeel.addActionListener(_dApplic);
     _preferences.add(_lookAndFeel);
+
+    // Items in menu PREFERENCES.
+    _view = new JMenu("affichage");
+    _view.setFont( new java.awt.Font(_mfont, _font, _nPT));
+
+    _viewSimple = new CmdMenu("simple");
+    _viewSimple.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _viewSimple.setCommand(new ViewSimpleCmd());
+    _viewSimple.addActionListener(_dApplic);
+    _view.add(_viewSimple);
+
+    _viewDetailed = new CmdMenu("complexe");
+    _viewDetailed.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _viewDetailed.setCommand(new ViewDetailedCmd());
+    _viewDetailed.addActionListener(_dApplic);
+    _view.add(_viewDetailed);
+
+    _preferences.add(_view);
+
   } // end createPreferencesMenu
 
   private void createHelpMenu(){

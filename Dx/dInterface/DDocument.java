@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.82 $  $Date: 2003-09-30 12:37:30 $
+ * Title: DDocument $Revision: 1.83 $  $Date: 2003-09-30 14:57:14 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.82 $
+ * @version $Revision: 1.83 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -296,9 +296,27 @@ public class DDocument  extends InternalFrameAdapter implements
     component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     _dm.setModified();
     _dm.getSetOfStates().sendEvent();
-
     component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-  }// end ac
+  }// end changeInSetOfRooms
+
+  public void displaySimple(){
+    //_ttPanel = null;
+    _jif.getContentPane().remove((Component)_ttPanel.getPanel());
+    _ttPanel = new SimpleTTPanel(_dm);
+    _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
+    _jif.pack();
+    _jif.setVisible(true);
+    _jif.repaint();
+  }
+
+  public void displayDetailed(){
+     _jif.getContentPane().remove((Component)_ttPanel.getPanel());
+    _ttPanel = new DetailedTTPanel(_dm);
+    _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
+    _jif.pack();
+    _jif.setVisible(true);
+    _jif.repaint();
+  }
 
   private void  buidDocument(String title){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
@@ -322,10 +340,8 @@ public class DDocument  extends InternalFrameAdapter implements
         new CloseCmd().execute(_dMediator.getDApplication());
       }
     } );
-    //_bottomLablel = new JLabel("hello");
 
-    _ttPanel = new SimpleTTPanel(_dm);
-    //_ttPanel = new DetailedTTPanel(_dm);
+
 
     _dm.addDModelListener(this);
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
@@ -334,6 +350,9 @@ public class DDocument  extends InternalFrameAdapter implements
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
+
+    _ttPanel = new SimpleTTPanel(_dm);
+    //_ttPanel = new DetailedTTPanel(_dm);
     _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
@@ -348,7 +367,7 @@ public class DDocument  extends InternalFrameAdapter implements
       System.exit(52);
       pve.printStackTrace();
     }
-  }
+  } // end buidDocument
 
 
 } /* end DDocument class */
