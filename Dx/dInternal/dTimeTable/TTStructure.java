@@ -18,6 +18,7 @@ public class TTStructure {
   //private int _periodLenght=60;
   private int _nbOfStCycles=2;
   private int _nbOfStDays=5;
+  private int _currentCycle=1;
   //DXTimeTable tag
   static final String ITEM2= "DXTimeTable";
   //subtag
@@ -26,7 +27,7 @@ public class TTStructure {
   private final String [] ITEM2_subConst={"cycleID","pLength","dayRef",
     "sequenceID","priority","BeginTime","EndTime","periodID","dayID"};
 
-  private final String [] _weekTable = {"Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"};
+  public static final String [] _weekTable = {"Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"};
 
   private String _str;
   private int _col;
@@ -100,6 +101,24 @@ public class TTStructure {
  }
   public String getError() {
     return new String("");
+  }
+
+  /**
+   * */
+  public int getCurrentIndexCycle(){
+    return _currentCycle;
+  }
+
+  /**
+   * */
+  public Cycle getCurrentCycle(){
+    return getCycle(_currentCycle) ;
+  }
+
+  /**
+   * */
+  public void setCurrentCycle(int curCyc){
+    _currentCycle= curCyc;
   }
 
 

@@ -47,7 +47,7 @@ public class PeriodPanel extends JPanel{
   public void setValue(Period period){
     JPanel topPanel = new JPanel();
     JPanel bottomPanel = new JPanel();
-    JLabel per = new JLabel (" Période "+ _panelRefNo + "         ");
+    JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
     JLabel nbAct = new JLabel( "("+Integer.toString(period.getNumberOfEvents())+")");
     _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
     _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));

@@ -54,6 +54,7 @@ public class TTPanel extends JScrollPane {
     setColumnHeaderView(createColumnHeader());
     setRowHeaderView(createRowHeader());
     setViewportView(createViewPort());
+    //System.out.println(((JPanel)getViewport().getComponent(0)).getComponentCount()); //
   }
 
   public void updateTTPanel(TTStructure ttp){
@@ -129,7 +130,7 @@ public class TTPanel extends JScrollPane {
         Sequence sequence= _dm.getTTStructure().getSequence(day,j+1);
         for(int k = 0; k < sequence.getSetOfPeriods().size(); k ++) {
           Period period= _dm.getTTStructure().getPeriod(sequence,k+1);
-          periodPanel = new PeriodPanel(count,i,j,k);//(period, count, UWIDTH, UHEIGHT);
+          periodPanel = new PeriodPanel(count,i+1,j+1,k+1);//(period, count, UWIDTH, UHEIGHT);
           periodPanel.createPanel(period,UWIDTH, UHEIGHT);
           count++;
           c = new GridBagConstraints();

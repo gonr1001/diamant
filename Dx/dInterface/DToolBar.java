@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.8 $  $Date: 2003-06-12 10:30:01 $
+ * Title: ToolBar $Revision: 1.9 $  $Date: 2003-06-12 18:59:26 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: alexj $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -36,6 +36,7 @@ import javax.swing.JToolBar.Separator;
 
 
 import dInternal.dTimeTable.TTStructure;
+import dInternal.dData.Resource;
 
 import dResources.DConst;
 //-------------------------------------------
@@ -45,84 +46,36 @@ import dResources.DConst;
  *
  */
 public class DToolBar extends JToolBar {// implements ActionListener{
-  private DApplication _dApplic;
+  //private DApplication _dApplic;
   private static final String _toolBarNames [] = {"Jours", "Periods"};
   JComboBox toolBarSelector, daySelector, dayNameSelector, periodSelector, periodTypeSelector;
   JButton stdDays, addDay, removeDay, sameLine, sameColumn;
   JTextField setNumberOfDays;
   JLabel lSetNumberOfDays, lDaySelector, lDayNameSelector, lPeriodIndicator, lPeriodTypeSelector;
   JToolBar.Separator jtbSep [];
+  TTStructure _tts;
+  //String [] _dayNames = {"Lu","Ma","Me","Je","Ve","Sa","Di"};
 
 
 
   //-------------------------------------------
-  public DToolBar(DApplication dApplic) {
-    _dApplic = dApplic ;
+  public DToolBar() {
     //The JLabel Objects initialisation
-    lSetNumberOfDays = new JLabel("Nombre de jours ");
-    lDaySelector = new JLabel("Jour courrant ");
-    lDayNameSelector = new JLabel("Nom du jour ");
-    lPeriodIndicator = new JLabel("Index Période ");
-    lPeriodTypeSelector = new JLabel("Type Période ");
+    jbInit();
+    actionManager();
+    setEnabledToolbar(false);
+  }//end constructor
 
-    //The JButton Objects initialisation
-    stdDays = new JButton("Standard");
-    addDay = new JButton("Ajouter");
-    removeDay = new JButton("Supprimer");
-
-    sameLine = new JButton("Toute la journée");
-    sameColumn = new JButton("Toute la ligne");
-
-
-    //textField objects initialisation
-    setNumberOfDays = new JTextField();
-    setNumberOfDays.setMaximumSize(new Dimension(30, DConst.NPT11 * 2));
-
-    //JComboBox toolBarSelector initialisation
-    toolBarSelector = new JComboBox(_toolBarNames);
-    toolBarSelector.setPreferredSize(new Dimension(200,DConst.NPT11* 2));
-    toolBarSelector.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
-
-
-
-    add(toolBarSelector);
-
-    //JComboBox daySelector initialisation
-    String [] amountDays = {"1","2","3","4","5","6","7"};
-    daySelector = new JComboBox(amountDays);
-    daySelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
-    daySelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
-    daySelector.setEditable(true);
-
-    //JComboBox dayNameSelector initialisation
-    String [] dayNames = {"--","LU","MA","ME","JE","VE","SA","DI"};
-    dayNameSelector = new JComboBox(dayNames);
-    dayNameSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
-    dayNameSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
-    dayNameSelector.setEditable(true);
-
-    //JComboBox periodIndicator initialisation
-    String [] periodIndexes = {"1","2","3","4","5","6","7"};
-    periodSelector = new JComboBox(periodIndexes);
-    periodSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
-    periodSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
-    periodSelector.setEditable(true);
-
-    //JComboBox periodTypeSelector initialisation
-    String [] periodTypes = {"Base Priorité","Normal","Null"};
-    periodTypeSelector = new JComboBox(periodTypes);
-    periodTypeSelector.setPreferredSize(new Dimension(100,DConst.NPT11 * 2));
-    periodTypeSelector.setMaximumSize(new Dimension(100,DConst.NPT11 * 2));
-    periodTypeSelector.setEditable(true);
-
-    toolBarSelector.setSelectedIndex(0);
-    addBarOne();// index 0
-
+  /**
+   *
+   * */
+  private void actionManager(){
     toolBarSelector.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         //JComboBox cb = (JComboBox)e.getSource();
         //int  i = cb.getSelectedIndex();
         int i = toolBarSelector.getSelectedIndex();
+         System.out.println("ToolBar selector: "+i);//debug
         switch (i){
           case 0: addBarOne(); break;
           case 1: addBarTwo(); break;
@@ -135,19 +88,16 @@ public class DToolBar extends JToolBar {// implements ActionListener{
 
     setNumberOfDays.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        //add or remove a day in a cycle
 
       }//end actionPerformed
     });//end addActionListener
 
-    setNumberOfDays.addActionListener(new ActionListener() {
+      daySelector.addActionListener(new ActionListener() {
+      int item = daySelector.getSelectedIndex();
       public void actionPerformed(ActionEvent e) {
-
-      }//end actionPerformed
-    });//end addActionListener
-
-
-    daySelector.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
+        //if(item!=null)
+        System.out.println("Day selector: "+item);//debug
 
       }//end actionPerformed
     });//end addActionListener
@@ -204,9 +154,96 @@ public class DToolBar extends JToolBar {// implements ActionListener{
 
       }//end actionPerformed
     });//end addActionListener
+  }
+
+  private void jbInit(){
+    lSetNumberOfDays = new JLabel("Nombre de jours ");
+    lDaySelector = new JLabel("Jour courrant ");
+    lDayNameSelector = new JLabel("Nom du jour ");
+    lPeriodIndicator = new JLabel("Index Période ");
+    lPeriodTypeSelector = new JLabel("Type Période ");
+
+    //The JButton Objects initialisation
+    stdDays = new JButton("Standard");
+    addDay = new JButton("Ajouter");
+    removeDay = new JButton("Supprimer");
+
+    sameLine = new JButton("Toute la journée");
+    sameColumn = new JButton("Toute la ligne");
 
 
-  }//end constructor
+    //textField objects initialisation
+    setNumberOfDays = new JTextField();
+    setNumberOfDays.setMaximumSize(new Dimension(30, DConst.NPT11 * 2));
+
+    //JComboBox toolBarSelector initialisation
+    toolBarSelector = new JComboBox(_toolBarNames);
+    toolBarSelector.setPreferredSize(new Dimension(200,DConst.NPT11* 2));
+    toolBarSelector.setMaximumSize(new Dimension(200,DConst.NPT11 * 3));
+    //toolBarSelector.setEnabled(false);
+    add(toolBarSelector);
+
+    //JComboBox daySelector initialisation
+    //String [] amountDays = {"1","2","3","4","5","6","7"};//debug
+    daySelector = new JComboBox();
+    daySelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
+    daySelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    //daySelector.setEditable(true);
+    //System.out.println("Day selector size: "+daySelector.getComponentCount());//debug
+
+    //JComboBox dayNameSelector initialisation
+    dayNameSelector = new JComboBox(TTStructure._weekTable);
+    dayNameSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
+    dayNameSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    dayNameSelector.setEditable(true);
+
+    //JComboBox periodIndicator initialisation
+    //String [] periodIndexes = {"1","2","3","4","5","6","7"};
+    periodSelector = new JComboBox(new String[1]);
+    periodSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * 2));
+    periodSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * 2));
+    periodSelector.setEditable(true);
+
+    //JComboBox periodTypeSelector initialisation
+    //String [] periodTypes = {"Base Priorité","Normal","Null"};
+    periodTypeSelector = new JComboBox(new String[1]);
+    periodTypeSelector.setPreferredSize(new Dimension(100,DConst.NPT11 * 2));
+    periodTypeSelector.setMaximumSize(new Dimension(100,DConst.NPT11 * 2));
+    periodTypeSelector.setEditable(true);
+
+    toolBarSelector.setSelectedIndex(0);
+    addBarOne();// index 0
+  }
+
+  /**
+  *
+   */
+  public void setToolBar(TTStructure ttStruct){
+    _tts= ttStruct;
+    int nbDays = ttStruct.getNumberOfDays(ttStruct.getCurrentCycle());
+    setNumberOfDays.setText(Integer.toString(nbDays));
+    String [] amountDays= new String[nbDays];
+    String [] nameDays= new String[nbDays];
+    daySelector.removeAllItems();
+    for (int i=0; i< nbDays; i++){
+      Resource resc= ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+      amountDays[i]=Integer.toString((int)resc.getKey());
+      daySelector.insertItemAt(amountDays[i],i);
+    }
+    System.out.println("Day selector size: "+daySelector.getItemCount());//debug
+    daySelector.setSelectedIndex(0);
+
+    //
+    setEnabledToolbar(true);
+  }
+
+  /**
+   *
+   * */
+  public void setEnabledToolbar(boolean state){
+    for (int i=0; i< getComponentCount(); i++)
+      getComponentAtIndex(i).setEnabled(state);
+  }
 
   //-------------------------------------------
   private void addBarOne() {
