@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSitesTest $Revision: 1.2 $  $Date: 2004-12-01 17:17:14 $
+* Title: SetOfStuSitesTest $Revision: 1.3 $  $Date: 2005-02-03 17:58:36 $
 * Description: SetOfStuSitesTest is a class used as a test container.
 *              It test students and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.3 $
+* @author  $Author: garr2701 $
 * @since JDK1.3
 */
 package dTest.dInternal.dData.dStudents;
@@ -95,7 +95,7 @@ public class SetOfStuSitesTest  extends TestCase{
    * */
   public void test1_analyseTokens1_6(){
   String tokens= "Diamant1.6"+"\r\n"+
-  "E 009391402270000320033 Pinard,"+"\r\n"+
+  "E 009391402270000320033 Pinard, P"+"\r\n"+
   "C FII221100 LON"+"\r\n"+
   "C SOI146100 LON"+"\r\n"+
   "C SOI247100 LON"+"\r\n"+
@@ -111,12 +111,12 @@ public class SetOfStuSitesTest  extends TestCase{
   "C FII211100 SHE"+"\r\n"+
   "C FII221100 SHE"+"\r\n"+
   "C MQB144100 SHE"+"\r\n"+
-  "T 00293";
+  "T 003";
   SetOfStuSites  setOfStuSites = new SetOfStuSites (); //,5,14);
   DLoadData ld = new DLoadData();
   setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
-  assertEquals("test1_analyseTokens1_6: assertEquals", DConst.STUD_TEXT8,
-  		setOfStuSites.getError().substring(0,DConst.STUD_TEXT8.length()));
+  assertEquals("test1_analyseTokens1_6: assertEquals", "",
+  		setOfStuSites.getError());
   }
 
   /**
@@ -126,7 +126,7 @@ public class SetOfStuSitesTest  extends TestCase{
    * */
   public void test2_analyseTokens1_6(){
   String tokens= "Diamant1.6"+"\r\n"+
-  "E 009391402270000320033 Pinard  Yannick"+"\r\n"+
+  "E 009391402270000320033 Pinard, Yannick"+"\r\n"+
   "C FII221100 LON"+"\r\n"+
   "C SOI146100 LON"+"\r\n"+
   "C SOI247100 LON"+"\r\n"+
@@ -142,12 +142,12 @@ public class SetOfStuSitesTest  extends TestCase{
   "C FII211100 SHE"+"\r\n"+
   "C FII221100 SHE"+"\r\n"+
   "C MQB144100 SHE"+"\r\n"+
-  "T 00293";
+  "T 003";
   SetOfStuSites  setOfStuSites = new SetOfStuSites (); //,5,14);
   DLoadData ld = new DLoadData();
   setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
-  assertEquals("test2_analyseTokens1_6: assertEquals", DConst.STUD_TEXT8,
-        setOfStuSites.getError().substring(0,DConst.STUD_TEXT8.length()));
+  assertEquals("test2_analyseTokens1_6: assertEquals", "",
+        setOfStuSites.getError());//.substring(0,DConst.STUD_TEXT8.length()));
   }
   /**
    * test2_analyseTokens, test that analyse the empty student name or empty matricule
@@ -172,12 +172,12 @@ public class SetOfStuSitesTest  extends TestCase{
   "C FII211100 SHE"+"\r\n"+
   "C FII221100 SHE"+"\r\n"+
   "C MQB144100 SHE"+"\r\n"+
-  "T 00293";
+  "T 003";
   SetOfStuSites  setOfStuSites = new SetOfStuSites (); //,5,14);
   DLoadData ld = new DLoadData();
   setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
-  assertEquals("test3_analyseTokens1_6: assertEquals", DConst.STUD_TEXT8,
-        setOfStuSites.getError().substring(0,DConst.STUD_TEXT8.length()));
+  assertEquals("test3_analyseTokens1_6: assertEquals", "",
+        setOfStuSites.getError());
   }
   
   /**

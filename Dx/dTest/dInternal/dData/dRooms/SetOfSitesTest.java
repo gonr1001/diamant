@@ -64,12 +64,12 @@ public class SetOfSitesTest  extends TestCase{
     				"Faculte des sciences infirmieres;"+"\r\n"+
 					"Liste des locaux pour reservations;"+"\r\n"+
 					"Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; 	Notes;"+"\r\n"+
-    				";32;211;08,11,14,57;laboratoire de chimie;xx;"+"\r\n"+
-                   "D13013;40;211;08,11,57;laboratoire de chimie;"+"\r\n"+
-                   "D13014;20;211;08,44,57;laboratoire de chimie;"+"\r\n"+
-                   "D20051;30;210;8,11,27,44;laboratoire informatique;"+"\r\n"+
-                   "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
-                   "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
+    				";32;211;08,11,14,57;SHE;CAT 1;laboratoire de chimie;xx;"+"\r\n"+
+                   "D13013;40;211;08,11,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                   "D13014;20;211;08,44,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                   "D20051;30;210;8,11,27,44;SHE;CAT 1;laboratoire informatique;"+"\r\n"+
+                   "D22048;15;211;08,53;SHE;CAT 1;laboratoire de physique;"+"\r\n"+
+                   "D32028;48;211;08,11,55;SHE;CAT 1;laboratoire de microbiologie;"+"\r\n";
 
     SetOfSites setOfSites = new SetOfSites(); //,5,14);
     DLoadData ld = new DLoadData();
@@ -153,12 +153,12 @@ public class SetOfSitesTest  extends TestCase{
 					"Faculte des sciences infirmieres;"+"\r\n"+
 					"Liste des locaux pour reservations;"+"\r\n"+
 					"Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; 	Notes;"+"\r\n"+
-					"D13012;32;211x;08,11,14,57;laboratoire de chimie;"+"\r\n"+
-                  "D13013;40;211;08,11,57;laboratoire de chimie;"+"\r\n"+
-                  "D13014;20;211;08,44,57;laboratoire de chimie;"+"\r\n"+
-                  "D20051;30;210;8,11,27,44;laboratoire informatique;"+"\r\n"+
-                  "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
-                  "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
+					"D13012;32;211x;08,11,14,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                  "D13013;40;211;08,11,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                  "D13014;20;211;08,44,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                  "D20051;30;210;8,11,27,44;SHE;CAT 1;laboratoire informatique;"+"\r\n"+
+                  "D22048;15;211;08,53;SHE;CAT 1;laboratoire de physique;"+"\r\n"+
+                  "D32028;48;211;08,11,55;SHE;CAT 1;laboratoire de microbiologie;"+"\r\n";
 
    SetOfSites setOfSites= new SetOfSites();
    DLoadData ld = new DLoadData();
@@ -197,12 +197,12 @@ public class SetOfSitesTest  extends TestCase{
 					"Faculte des sciences infirmieres;"+"\r\n"+
 					"Liste des locaux pour reservations;"+"\r\n"+
 					"Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; 	Notes;"+"\r\n"+
-					"D13012;32;211;08,11x,14,57;laboratoire de chimie;"+"\r\n"+
-                  "D13013;40;211;08,11,57;laboratoire de chimie;"+"\r\n"+
-                  "D13014;20;211;08,44,57;laboratoire de chimie;"+"\r\n"+
-                  "D20051;30;210;8,11,27,44;laboratoire informatique;"+"\r\n"+
-                  "D22048;15;211;08,53;laboratoire de physique;"+"\r\n"+
-                  "D32028;48;211;08,11,55;laboratoire de microbiologie;"+"\r\n";
+					"D13012;32;211;08,11x,14,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                  "D13013;40;211;08,11,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                  "D13014;20;211;08,44,57;SHE;CAT 1;laboratoire de chimie;"+"\r\n"+
+                  "D20051;30;210;8,11,27,44;SHE;CAT 1;laboratoire informatique;"+"\r\n"+
+                  "D22048;15;211;08,53;SHE;CAT 1;laboratoire de physique;"+"\r\n"+
+                  "D32028;48;211;08,11,55;SHE;CAT 1;laboratoire de microbiologie;"+"\r\n";
 
    SetOfSites setOfSites= new SetOfSites();
    DLoadData ld = new DLoadData();
