@@ -37,37 +37,63 @@ Université de Sherbrooke,\\
 
 \begin{abstract} \label{intro}
 
+\input{resume.tex}
 
 \end{abstract}
+
+
 
 {\bf Mots clé :} Production d'horaires, Génie logiciel, Qualité.
 
 \section{Introduction}
 
 \begin{enumerate}
-\item Motivation
+\item Motivation le pourquoi du travail. Pourquoi la prod
+d'horaires doit avoir une architecture:
+\begin{enumerate}
+\item Ouvert
+
+\item Modulaire
+
+\item Flexible
+
+\item Extensible
+\end{enumerate}
 
 \item Définition du problème
 
+Trouver l'architecture avec les qualités
+
+Requirements sur le flot d'information.
+
 \item La question spécifique que vous allez travailler
+
+Comment montrer que l'archi réponds à qualités
 
 \item Panorama générale
 
+Contexte
+
 \item Travail connexe.
+
+Références ...
+
+Plan de la suite
+
 \end{enumerate}
 
 La production d'horaires est une tâche périodique pour beaucoup
-d'institutions d'enseigement, en particulier pour les Universités
+d'institutions d'enseignement, en particulier pour les Universités
 (Facultés) qui produisent un ou plusieurs horaires par année pour
 les cours et les examens. Afin de simplifier le texte dans
 l'article nous allons traiter uniquement le cas d'horaires de
 cours. Dans cet article nous nous intéressons au processus global
 de la production des horaires depuis la saisie de données jusqu'à
 la livraison des horaires généraux et personnalisés. La production
-d'horaires est automatisé à differents dégrés, par exemple~: elle
+d'horaires est automatisé à différents degrés, par exemple~: elle
 peut comporter un logiciel de construction d'horaires qui peut
 produire un fichier contenant l'horaire qui sera affiché dans une
-place connue ou mise en formet HTML afin de l'affcher sur le Web.
+place connue ou mise en format HTML afin de l'afficher sur le Web.
 Dans certains cas, la production se fait manuellement. Comme la
 production d'horaires ne doit pas être interrompue. L'institution
 doit faire le choix entre implanter un nouveau système et oublier
@@ -75,15 +101,14 @@ le système actuel ou faire des changements graduels au système
 existant. Le risque de la première option est trop élevé, car si
 un problème arrive, le nouveau système peut se trouver dans un
 impasse représentant un coût important. La deuxième solution
-présente un risque moderé, car pour chaque nouveau composant
+présente un risque modéré, car pour chaque nouveau composant
 ajouté au système il est possible de revenir à l'ancien composant,
-aussurant ainsi la production d'horaires.
+assurant ainsi la production d'horaires.
 
-L'objectif de cet article est de modéliser ce processus de production
-d'horaires pour
-prendre des décisions permettant son automatitation.
-Ceci peut faciliter les développement et l'implantation d'un système
-sur deux points de vue~:
+L'objectif de cet article est de modéliser ce processus de
+production d'horaires pour prendre des décisions permettant son
+automatisation. Ceci peut faciliter les développement et
+l'implantation d'un système sur deux points de vue~:
 
 \begin{itemize}
     \item Le développement d'interfaces logiciels entre
@@ -112,7 +137,9 @@ Cet article propose~:
 
 
 
-\section{Les données}
+\section{Les flot de l'information dans prod hor}
+
+Le system est en production 
 
 Comme indiqué, nous allons décrire la production des horaires
 simplifié à l'Université de Sherbrooke, car nous connaisons bien
@@ -183,7 +210,7 @@ personnalisation. Une personne va produire le lettres personnalisées
 en lisant les données nécessaires sur un fichier.
 \end{description}
 
-\subsection{L'évolution des données}
+\subsection{La préparation des données}
 La figure \ref{fig:phTwo} montre l'évolution des données dans la base
 de données pendant la production de l'horaire.  La base de données est
 la même, l'évolution présente les
@@ -217,9 +244,9 @@ instances de données à différents instants du processus.
     \item[Données de base] Ces données sont les données définis à long
     terme dans la base.  L'information des activités pédagogiques d'un
     programme, les programmes offerts, les enseignants, les
-    caracteristiques de salles de
+    caractéristiques de salles de
     cours, les étudiants.
-    Il s'agit en général des informations qui sont pertagées par
+    Il s'agit en général des informations qui sont partagées par
     d'autres applications. Par exemple un étudiant est décrit par son
     nom, prénom, matricule, programme suivi. Une application qui
     utilisé les données étudiants est par exemple celle qui permet
@@ -227,10 +254,10 @@ instances de données à différents instants du processus.
 
 
     \item[Données trimestre] Ces données sont nécessaires à la
-    construction de l'horaire, elles concenent les cours qui seront
+    construction de l'horaire, elles concernent les cours qui seront
     offerts, la disponibilité de enseignants, etc. Ces données sont
     un préalable à la construction d'un horaire et sont saisies avant
-    et oendant
+    et pendant
     chaque construction.
 
     \item[Données horaire] Ces donnés sont le résultat de la tâche de la
@@ -263,15 +290,15 @@ Pré-condition les données de base ont été saisies et validés.
     \item  Définir la grille horaire.
 \end{enumerate}
 
- De plus, lorsque un logiciel de construction est utilisé,
-il est possible de considèrer que toutes les données nécessaires ont
-été correctement saisies et que il y n'aura aucun changement pendant
+De plus, lorsque un logiciel de construction est utilisé, il est
+possible de considèrer que toutes les données nécessaires ont été
+correctement saisies et que il y n'aura aucun changement pendant
 la construction de l'horaire; une deuxième possibilité, qui semble
-plus réaliste est de considèrer que certains données peuvent changer,
-par exemple certains cours sont enseignés par de intervenants
-externes, mais la personne n'est pas encore trouvé, sa disponibilité
-n'est pas connue, donc l'horaire est construit sur des hypothèses qui
-peuvent s'avérer fausses.
+plus réaliste est de considèrer que certains données peuvent
+changer, par exemple certains cours sont enseignés par de
+intervenants externes, mais la personne n'est pas encore trouvé,
+sa disponibilité n'est pas connue, donc l'horaire est construit
+sur des hypothèses qui peuvent s'avérer fausses.
 
 Avant de parler de effecuer la construction avec un logiciel, il faut faire
 une verification des données.
@@ -306,20 +333,57 @@ de la construction de l'horaire en mode manuel ou en mode automatique
 ou en utilisant le deux.
 
 Lorsque l'horaire est défini et satisfaisant, les données sont
-transféres à la base de données, pour construir les fichier
+transféres à la base de données, pour construire les fichiers
 nécessaires à la livraison de l'horaire.
+
+Verification de contraintes (bd)
 
 
 \section{La decomposition modulaire, top-down, alternatives et
 justifications}
 
-\section{Technologies possibles et justifications.}
+
+Abstraite trois blocs
+
+Archit trois-tiers
+
+Interface avec systèmes existantes ou admin scolaire.
+
+Interface bd et dia  tic-tac  par fichier txt xml, par jdbc ...
+
+Interface avec objets (loadData)
+
+Interface entre dia et bd affichage horaires.
+
+
+\section{Technologies possibles et justifications}
+
+Java, jsp, jdbc, xml.
 
 \section{\tictac}
+Instance de l'architecture
+
 
 \section{Conclusions}
 
+Présentation de ...
+
+Architecture + justifications
+
 \bibliography{bibDiamant,bibProg}
+
+\section{Glossaire}
+
+
+architecture logiciel
+\begin{enumerate}
+\item architecture Ouverte
+
+\item architecture Modulaire Ouverte Extensible
+
+\item architecture Flexible
+
+\item architecture Extensible
 
 \end{document}
 
@@ -576,155 +640,3 @@ automatique ou en utilisant le deux.
 Lorsque l'horaire est défini et satisfaisant, les données sont
 transférées à la base de données, pour construire les fichiers
 nécessaires à la livraison de l'horaire.
-
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Section en anglais......
-
-\subsection{L'analyse}
-We propose the construction of a timetable for exams as an example
-to show how the pattern can be used.
-
-The problem inputs are:
-
-\begin{itemize}
-\item A set of exams. \item A set of students who are taking
-exams; each student is associated with the exams he/she must take.
-\item To simplify the problem, we suppose that there is only one
-room with a given capacity. \item An empty timetable. The
-timetable is a data structure containing a number of timeslots
-which are empty. The algorithm takes one exam at the time, then it
-assigns it to a timeslot. Here assign means that the exam will
-take place at the assigned timeslot.
-\end{itemize}
-
-
-The timetable covers $n$ days spread in $m$ weeks, the duration
-for each exam is t hours ($t=3$), and there are two timeslots each
-day: morning and afternoon (9:00 to 12:00 and 14:00 to 17:00).
-
-From a programming point of view, each  \pro{timeslot} is an
-instance of class  \pro{Timeslot}. A  \pro{timetable}  is an
-instance of \pro{Timetable} class. The  \pro{Timetable} class has
-an array of \pro{Timeslot} as a data member. The class
-\pro{Timeslot} has a list of exams as a data member. So if an exam
-is assigned to a timeslot, the instance of this \pro{timeslot}
-will put the exam in its list of exams.
-
-
-The hard  constraints (conditions) to satisfy are:
-\begin{itemize}
-\item  No student must have two exams at the same time. \item The
-number of students in a period is less that the total capacity.
-\end{itemize}
-
-Any produced timetable must respect these constraints. Each
-constraint could be seen as a condition to be respected.
-
-The output of the problem is:
-
-\begin{itemize}
-\item The timetable where each timeslot is associated to the exams
-taking place at this timeslot without conflicts. \item A set of
-\ita{exams that are impossible to assign to a timeslot}. If all
-exams were assigned this set is empty.
-\end{itemize}
-
-The algorithm is:
-
-\begin{enumerate}
-\item While the set of exams is not empty do :
-\begin{enumerate}
-\item Take out the exam with the greatest potential number of
-conflicts from the set of exams. \item Assign the exam to the
-first timeslot where the conditions are respected (\ita{no
-conflict with exams in this period} $ \wedge$ \ita{number of
-students in this timeslot less than capacity}). If this is
-impossible the exam then it will be placed in the set of
-\ita{exams that are impossible to assign to a timeslot}.
-\end{enumerate}
-\item If the set of \ita{exams impossible to assign to a timeslot}
-is empty then print Timetable is ok else print Timetable is not ok
-\end{enumerate}
-
-The algorithm is very simple. It tries to assign all the exams in
-only one pass. There are two conditions that must be respected:
-\ita{no conflict with exams in a period}  $ \wedge$  \ita{number
-of students in this period less than capacity}.
-
-Now, consider that a new constraint must be respected, for
-example:
-
-{\it All Mathematics exams must be held during the morning}.
-
-In order to handle this new condition it must be possible to
-recognize whether an exam is a mathematics exam and whether a
-period is a morning period.
-
-The algorithm remains basically the same, but a new (composed)
-condition  must be added:  \ita{is this a mathematics exam?} $
-\wedge$  \ita{is this a morning period?}. This new condition must
-be respected only if the exam is a mathematics one; otherwise, the
-algorithm uses the original conditions.
-
-We can explore now the required work to do when other conditions
-are added. First, it is necessary to create the methods
-(functions) to test the conditions (in the example  \ita{is this a
-mathematics exam?} or  \ita{is this a morning period?}. The answer
-to these questions are true or false. Second, we need to modify
-the algorithm in order to take into account the new conditions.
-
-Before trying to modify the algorithm, let's see what a user can
-do if he can make a choice among many conditions. A user will want
-to activate or deactivate some conditions when he/she is preparing
-a timetable and/or to change priority, i.e., changing the order in
-which the conditions are tested. As the proposed algorithm gives a
-message at last step indicating if the construction failed, it is
-possible to deactivate some conditions and try again. In other
-words the constraints are relaxed. Examining the set of \ita{exams
-that are impossible to assign}, the user can decide to change the
-priorities and try again to obtain a more acceptable solution.
-
-So, we can see that it is worth to have many conditions and offer
-a choice to the user. So, how that can this be done? It is easy to
-program a dialog box where the user can activate or deactivate the
-conditions and at the same time fix an order or priority for
-verifying conditions. The conditions are methods that must be
-available in the corresponding classes. The difficult part is to
-activate or deactivate conditions and change the order. Why? If we
-can have a method  \ita{test all conditions} where the all the
-tests are done it is necessary to have $n!$ methods to test all
-possible permutations of $n$ conditions. It is clear that as the
-number of conditions increases the number of methods needed
-becomes too big.
-
-In Lisp or Prolog programs, it is easy to construct a permutation
-of conditions at execution time, then to insert the resulting
-permutation into the program. It is not the case in Java or C++.
-For this reason we propose the following pattern which is an
-elegant solution to the problem.
-
-
-\subsection{The solution: the pattern} %% 1 page
-A Design pattern is independent of the language, but to facilitate
-the presentation we use the Java language because there is a
-standard class library. During the presentation we give some
-details about useful classes and concepts.
-
-A source of inspiration for the pattern was the Command pattern,
-which encloses the request for a specific action inside an object
-and gives a know public  \pro{interface}.
-
-In Java an  \pro{interface} is like a class, in the sense that it
-can be used as a type. It is used to specify that a class must
-implement the methods specified by the interface. It is the way
-that Java off some kind of multiple inheritance.
-
-
-
-\subsection{Discussion}
-
-
-
-\section{Conclusion} \label{sec:conc}
