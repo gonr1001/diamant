@@ -221,7 +221,7 @@ public class StandardReportData {
         }//end for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods()
       }//end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size()
     }//end for(int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(
-    System.out.println(report);//debug
+    //System.out.println(report);//debug
     return report;
   }
 

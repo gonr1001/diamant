@@ -32,7 +32,7 @@ public class ActivityModifDlg extends SetOfElementsInterface{
     super(new Dialog(dApplic.getJFrame()),dApplic,"Activités","Nombre d'activités",1);
     _soa= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
     Vector [] vect= new Vector[1];
-    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getNamesVector(1);
+    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");;
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     _buttonsPanel.getComponent(0).setEnabled(false);
     _buttonsPanel.getComponent(1).setEnabled(false);

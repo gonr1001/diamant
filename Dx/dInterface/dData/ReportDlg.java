@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Cursor;
 
 import java.text.SimpleDateFormat;
 
@@ -51,6 +52,9 @@ public class ReportDlg extends JDialog implements ActionListener{
   public ReportDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
     _dApplic = dApplic;
+    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,this);
+    _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
+    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,this);
     jbInit();
     _resources = new SetOfResources[_tabbedPane.getComponentCount()];
     setLocationRelativeTo(dApplic.getJFrame());
@@ -227,7 +231,7 @@ public class ReportDlg extends JDialog implements ActionListener{
    * @return data report
    */
   private String getReportData(int reportIndex, int mainFieldKey, int[] otherFieldsKeys){
-    _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
+    //_srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     String dataReport = "";
     switch (reportIndex){
       case 0 :

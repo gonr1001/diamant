@@ -79,15 +79,17 @@ public class ExportData {
       String line= strTokens.nextToken();
       StringTokenizer rTokens = new StringTokenizer(line,";");
       report+=rTokens.nextToken()+rTokens.nextToken()+rTokens.nextToken()+"    ";
-      StringTokenizer courses = new StringTokenizer(rTokens.nextToken(),",");
-      while(courses.hasMoreTokens()){
-        String course= courses.nextToken();
-        String viewElt= DXToolsMethods.getToken(course,"-",0);
-        report+= DXToolsMethods.getToken(viewElt,".",0)+DXToolsMethods.getToken(viewElt,".",1)+
-               "  "+DXToolsMethods.getToken(viewElt,".",2).toLowerCase()+" ";
-      }
-      report+=SetOfResources.CR_LF;
-    }// end while(strTokens.hasMoreTokens())
+      if(rTokens.hasMoreTokens()){
+        StringTokenizer courses = new StringTokenizer(rTokens.nextToken(),",");
+        while(courses.hasMoreTokens()){
+          String course= courses.nextToken();
+          String viewElt= DXToolsMethods.getToken(course,"-",0);
+          report+= DXToolsMethods.getToken(viewElt,".",0)+DXToolsMethods.getToken(viewElt,".",1)+
+                   "  "+DXToolsMethods.getToken(viewElt,".",2).toLowerCase()+" ";
+        }
+        report+=SetOfResources.CR_LF;
+      }// end while(strTokens.hasMoreTokens())
+    }// end if(rTokens.hasMoreTokens())
 
     return report;
   }

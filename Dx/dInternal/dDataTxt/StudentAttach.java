@@ -143,6 +143,12 @@ public class StudentAttach extends DXObject{
     }// end if (course.length()>=_COURSELENGTH)
   }
 
+  /**
+   *
+   * @param course
+   * @param group
+   * @return
+   */
   public boolean isFixedInGroup(String course, int group){
     Resource courseValue;
     courseValue = _courses.getResource(course.substring(0,_COURSELENGTH));

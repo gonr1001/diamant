@@ -149,11 +149,20 @@ public class StudentsConflictsMatrix {
           String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
           Resource student = sos.getResource(Long.parseLong(studentKey));
           int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();
+
           if(!((StudentAttach)student.getAttach()).isFixedInGroup(rescActivity.getID()+rescType.getID(),groupValue)){
             ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),groupValue,false);
             tab[groupInd]++;
             //groupInc++;
-          }
+          }else{// else if(!((StudentAttach)student.getAttach()).isFixedInGroup
+            int studentGroup=((StudentAttach)student.getAttach()).getGroup(rescActivity.getID()+rescType.getID());
+            String groupeID=Character.toString(DXTools.STIConvertGroup(studentGroup));
+            if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null){
+              System.out.println("Student: "+student.getID()+"- Activity: "+rescActivity.getID()
+                                 +"."+rescType.getID()+" - Group: "+groupeID);//debug
+              ((StudentAttach)student.getAttach()).setInGroup(rescActivity.getID()+rescType.getID(),-1,false);
+            }// end if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null)
+          }// end else if(!((StudentAttach)student.getAttach()).isFixedInGroup
         }// end for (int k=0; k< ((Activity)rescActivity.getAttach()).getSetOfTypes()
       }// end for (int j=0; j< ((Activity)rescActivity.getAttach()).
     }// end for (int i=0; i< soa.size(); i++)
