@@ -164,7 +164,7 @@ public class TestConditions {
    */
   private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
     int[] numberOfConflicts={0,0,0};
-    int totalNumberOfConflicts=0;
+    //int totalNumberOfConflicts=0;
     //extractPreference();
 
     if(((EventAttach)event.getAttach()).getAssignState()){//if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
