@@ -178,7 +178,7 @@ public class RoomAttach extends DXObject{
     String avail="";
     for(int i=0; i< _roomAvail.size()-1; i++)
       avail += (String)_roomAvail.get(i)+",";
-    System.out.println("Room: "+_capacity+" -- "+_caracteristics+_roomAvail.size());//debug
+    //System.out.println("Room: "+_capacity+" -- "+_caracteristics+_roomAvail.size());//debug
     avail += (String)_roomAvail.get(_roomAvail.size()-1);
     String roomInfo=_capacity+";"+_function+";"+_caracteristics+";"
                    +_description+";"+avail+";";
