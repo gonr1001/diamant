@@ -349,7 +349,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   private Resource giveBestGroup(Resource resc, Vector allConvGroup,
                                  DXValue currentConvGroup, Vector sizeOfGroups, int acceptableVariation){
     Vector includeGroupsList=new Vector();
-    int smallGroup= RefinedStudMixAlgo.getSmallerGroup(sizeOfGroups);
+    int smallGroup= RefinedStudMixAlgo.getSmallerGroupIndex(sizeOfGroups);
     for(int i=0; i< allConvGroup.size(); i++){
       if ((((DXValue)sizeOfGroups.get(i)).getIntValue()-
            ((DXValue)sizeOfGroups.get(smallGroup)).getIntValue())< acceptableVariation)

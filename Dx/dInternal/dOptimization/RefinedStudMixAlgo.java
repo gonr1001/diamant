@@ -97,8 +97,13 @@ public class RefinedStudMixAlgo{
     SetOfResources removeStudents= new SetOfResources(65);
     while(sumList.size()>0){
       //Vector eligibleGroups = getEligibleGroups(sizeOfGroups);
+      //boolean studentAffected=false;
+      //boolean reInitialize=false;
+
       for (int i=0; i< sumList.size(); i++){
+        //System.out.println("Student: "+ );
         long studentKey= sumList.getResourceAt(sumList.size()-1).getKey();
+        System.out.println("Student: "+ studentKey);
         int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups);
         if(groupIndex!=-1){
           StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
@@ -109,6 +114,7 @@ public class RefinedStudMixAlgo{
           //student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
           student.setInGroup(activityID+typeID, group,false);
           sumList.removeResource(studentKey);
+          //studentAffected=true;
           break;
           //newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
         } else{// end if(groupIndex!=-1)
@@ -117,6 +123,8 @@ public class RefinedStudMixAlgo{
 
       }// end for (int i=0; i< studentRegistered.size(); i++)
       if(sumList.size()==0){
+       /* if(removeStudents.size()>0)
+          reInitialize=false;*/
         for(int i=0; i< removeStudents.size(); i++){
           sumList.addResource(removeStudents.getResourceAt(i),0);
         }// end for(int i=0; i< removeStudents.size(); i++)
@@ -137,6 +145,7 @@ public class RefinedStudMixAlgo{
   */
  private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector sizeOfGroups){
    SetOfResources setOfConflicts= new SetOfResources(99);
+   Vector eligibleGroups= new Vector();
    for(int i=0; i< allConvexGroups.size(); i++){
      SetOfResources group = (SetOfResources)allConvexGroups.get(i);
      String conf="0000"+group.getResource(studentKey).getID();
@@ -144,11 +153,20 @@ public class RefinedStudMixAlgo{
      setOfConflicts.addResource(new Resource(conf,new DXValue()),0);
    }// end for(int i=0; i< allConvexGroups.size(); i++)
    setOfConflicts.sortSetOfResourcesByID();
+   Vector bestGroupsIndex= getBestGroupsIndex(setOfConflicts);
    for (int i=0; i< setOfConflicts.size(); i++){
      int groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
-     if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION))
+     if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION)){
+       eligibleGroups.add((DXValue)sizeOfGroups.get(i));
+     }// end if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION))
+   }// end for (int i=0; i< setOfConflicts.size(); i++)
+
+   for (int i=0; i< bestGroupsIndex.size(); i++){
+     int groupIndex = ((DXValue)bestGroupsIndex.get(i)).getIntValue();
+     if(groupIndex == getSmallerGroupIndex(eligibleGroups))
        return groupIndex;
-   }
+   }// end for (int i=0; i< bestGroupsIndex.size(); i++)
+
    return -1;
  }
 
@@ -159,10 +177,7 @@ public class RefinedStudMixAlgo{
    * @return
    */
  public final static boolean isEligibleGroups(Vector sizeOfGroups, int groupIndex, int acceptableVariation){
-   //int group=0;
-   //int min= ((DXValue)sizeOfGroups.get(0)).getIntValue();
-   Vector eligibleGroups= new Vector();
-    int smalGroupIndex = getSmallerGroup(sizeOfGroups);
+    int smalGroupIndex = getSmallerGroupIndex(sizeOfGroups);
     DXValue smallerGroup= (DXValue)sizeOfGroups.get(smalGroupIndex);
    if(groupIndex< sizeOfGroups.size()){
      DXValue currentGroup = ((DXValue)sizeOfGroups.get(groupIndex));
@@ -170,7 +185,31 @@ public class RefinedStudMixAlgo{
        return true;
      }// end if((currentGroup.getIntValue()- smallerGroup.getIntValue()
    }// end if(groupIndex< sizeOfGroups.size())
+
    return false;
+  }
+
+  /**
+   *
+   * @param setOfConflicts
+   * @return
+   */
+  public Vector getBestGroupsIndex(SetOfResources setOfConflicts){
+    Vector bestGroupsIndex= new Vector();
+    setOfConflicts.sortSetOfResourcesByID();
+    String bestNumOfConf= setOfConflicts.getResourceAt(0).getID();
+    int bestNumberOfConflicts=Integer.parseInt(bestNumOfConf);
+    int groupIndex= (int)setOfConflicts.getResourceAt(0).getKey()-1;
+    bestGroupsIndex.add(new DXValue(groupIndex, null));
+    for (int i=1; i< setOfConflicts.size(); i++){
+      String NumOfConf = setOfConflicts.getResourceAt(i).getID();
+      int NumberOfConflicts = Integer.parseInt(NumOfConf);
+      groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
+      if(NumberOfConflicts==bestNumberOfConflicts){
+        bestGroupsIndex.add(new DXValue(groupIndex, null));
+      }// end if(NumberOfConflicts==bestNumberOfConflicts)
+    }// end for (int i=0; i< setOfConflicts.size(); i++)
+    return bestGroupsIndex;
   }
 
   /**
@@ -178,7 +217,7 @@ public class RefinedStudMixAlgo{
    * @param sizeOfGroups
    * @return
    */
-  public final static int getSmallerGroup(Vector sizeOfGroups){
+  public final static int getSmallerGroupIndex(Vector sizeOfGroups){
     int group=0;
     int min= ((DXValue)sizeOfGroups.get(0)).getIntValue();
     for (int i=1; i< sizeOfGroups.size(); i++){
