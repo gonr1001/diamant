@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.3 $  $Date: 2003-05-22 17:18:04 $
+ * Title: ImportDlg $Revision: 1.4 $  $Date: 2003-05-27 17:47:42 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -32,6 +32,7 @@ import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
 
 import dResources.DConst;
+import dInternal.dTimeTable.TTStructure;
 
 
 /**
@@ -75,10 +76,10 @@ public class ImportDlg extends JDialog {
        _dApplic.setCurrentDir(fil);
 
        // a revoir
-       //_dApplic.getDMediator().addDoc(_dApplic.getCurrentDir() + DConst.NO_NAME);
+       _dApplic.getDMediator().addDoc(_dApplic.getCurrentDir() + DConst.NO_NAME, new TTStructure());
        String error= _dApplic.getDMediator().getCurrentDoc().getDM().importData(fil);
        if(error.length()==0){
-         JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,
+         JOptionPane.showMessageDialog(_dApplic.getJFrame(),DConst.IMP_A_SUC,
                                      DConst.IMP_A_TD, JOptionPane.INFORMATION_MESSAGE);
        }else{
          new FatalProblemDlg(_dApplic.getJFrame(),error);
