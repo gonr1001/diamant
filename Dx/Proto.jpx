@@ -86,6 +86,7 @@
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
+  <file path="dInterface/DStatusBar.java"/>
   <file path="dInterface/DToolBar.java"/>
   <file path="dInterface/helloCmd.java"/>
   <file path="dInterface/helloDlg.java"/>

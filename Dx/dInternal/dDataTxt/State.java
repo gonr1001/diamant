@@ -9,11 +9,11 @@ package dInternal.dData;
  * @version 1.0
  */
 
-public class Status {
+public class State {
   int _modifCount;
   int _conflitIns;
 
-  public Status() {
+  public State() {
     _modifCount = 0;
   }
 

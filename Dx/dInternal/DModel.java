@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.51 $  $Date: 2003-08-01 10:28:03 $
+ * Title: DModel $Revision: 1.52 $  $Date: 2003-08-19 16:11:50 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.52 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -38,7 +38,7 @@ public class DModel {
   private boolean _isTimeTable=true;
   private String _version;
   private String _error;
-  private Status _status;
+  private State _state;
   private SetOfInstructors _setOfInstructors=null;
   private SetOfRooms _setOfRooms=null;
   private SetOfStudents _setOfStudents=null;
@@ -52,7 +52,7 @@ public class DModel {
   public DModel(DApplication dApplic, String fileName, int type) {
     System.out.println("type: "+type);
     _error = "";
-    _status = new Status();
+    _state = new State();
     _dApplic = dApplic;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
@@ -82,15 +82,15 @@ public class DModel {
     return _isTimeTable;
   }
 
-  public Status getStatus() {
-    return _status;
+  public State getState() {
+    return _state;
   }
 
   public DApplication getDApplication(){
     return _dApplic;
   }
   public void incrementModification() {
-    _status.incrModif();
+    _state.incrModif();
     sendEvent();
   }
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.55 $  $Date: 2003-08-19 15:52:52 $
+ * Title: DDocument $Revision: 1.56 $  $Date: 2003-08-19 16:11:50 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
+ * @version $Revision: 1.56 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -34,7 +34,7 @@ import javax.swing.JDesktopPane;
 
 
 import dInternal.DModel;
-import dInternal.dData.Status;
+import dInternal.dData.State;
 //import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
@@ -60,7 +60,7 @@ public class DDocument  extends InternalFrameAdapter implements
   private TTPanel _ttPanel;
   private boolean _modified;
   private DModel _dm;
-  private DStatusBar _statusBar;
+  private DStateBar _stateBar;
   private String _version;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
@@ -148,8 +148,8 @@ public class DDocument  extends InternalFrameAdapter implements
 
     public JPanel initStatusBar(){
       JPanel panel = new JPanel();
-      _nbModif = new JLabel( "Modifications " + _dm.getStatus().getModif() );
-      _nbBlocs = new JLabel(DConst.BLOCS + _dm.getStatus().getModif() +" / " + _dm.getStatus().getModif() );
+      _nbModif = new JLabel( "Modifications " + _dm.getState().getModif() );
+      _nbBlocs = new JLabel(DConst.BLOCS + _dm.getState().getModif() +" / " + _dm.getState().getModif() );
       _nbCInstr = new JLabel("    +CON02+ nbCftIns");
       _nbCInstr.setForeground(Color.red);
       _nbCRoom = new JLabel("    +CON03+ nbCftRoom");
@@ -166,9 +166,9 @@ public class DDocument  extends InternalFrameAdapter implements
 
 
 
-    public void updateStatusBar(Status s) {
-      _nbModif.setText( "Modifications " + _dm.getStatus().getModif() );
-      _nbBlocs.setText(DConst.BLOCS + _dm.getStatus().getModif() +" / " + _dm.getStatus().getModif() );
+    public void updateStateBar(State s) {
+      _nbModif.setText( "Modifications " + _dm.getState().getModif() );
+      _nbBlocs.setText(DConst.BLOCS + _dm.getState().getModif() +" / " + _dm.getState().getModif() );
      _nbCInstr.setText("    +CON02+ nbCftIns");
      _nbCInstr.setForeground(Color.red);
      _nbCRoom.setText("    +CON03+ nbCftRoom");
@@ -195,14 +195,14 @@ public class DDocument  extends InternalFrameAdapter implements
     public void changeInDModel(DModelEvent  e) {
       //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
       _ttPanel.updateTTPanel(_dm.getTTStructure());
-      this.updateStatusBar(_dm.getStatus());
+      this.updateStateBar(_dm.getState());
 
     }// end actionPerformed
 
     public void changeInTTStructure(TTStructureEvent  e) {
       if (_dm.getModified()){
         //System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
-        this.updateStatusBar(_dm.getStatus());
+        this.updateStateBar(_dm.getState());
         _ttPanel.updateTTPanel(_dm.getTTStructure());
       }
     }// end actionPerformed*/
@@ -234,8 +234,8 @@ public class DDocument  extends InternalFrameAdapter implements
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
     _modified = false;
-    _statusBar = new DStatusBar(_dm.getStatus());//initStatusPanel();
-    _jif.getContentPane().add(_statusBar, BorderLayout.SOUTH);
+    _stateBar = new DStateBar(_dm.getState());//initStatusPanel();
+    _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
@@ -275,7 +275,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _documentName = "";
     _dm = null;
     _ttPanel = null;
-    _statusBar = null;
+    _stateBar = null;
     _nbModif = null;//, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
   }
   private String modifiyDocumentName(String str) {
