@@ -28,7 +28,7 @@ public class LoadDataTest extends TestCase {
   Vector _timeTable;
   public LoadDataTest(String name) {
     super(name);
-    path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"testLoadData.dia";
+    path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia";
     LoadData _lData= new LoadData();
     _timeTable = _lData.loadProject(path);
   }

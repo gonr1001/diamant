@@ -31,9 +31,9 @@ public class SaveDataTest extends TestCase {
     super(name);
     path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator;
     LoadData _lData= new LoadData();
-    _timeTable = _lData.loadProject(path+"fichier1.dia");
+    _timeTable = _lData.loadProject(path+"saveData.dia");
     LoadData _lData1= new LoadData();
-    _timeTable1 = _lData1.loadProject(path+"fichierTest.dia");
+    _timeTable1 = _lData1.loadProject(path+"saveData.dia");
   }
 
   public static Test suite() {
