@@ -34,7 +34,7 @@ public class TestConditions {
  public TestConditions(DModel dm) {
    _dm= dm;
     _matrix = new StudentsConflictsMatrix();
-    _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities()));
+    _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle()));
     _testToRun.add( new TestInstructorsConditions(_dm));
     _testToRun.add( new TestRoomsConditions(_dm));
     //dm.getDDocument().getDMediator().getDApplication().getPreferences();
@@ -161,9 +161,8 @@ public class TestConditions {
   private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
     int[] numberOfConflicts={0,0,0};
     int totalNumberOfConflicts=0;
-    //StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
-    /*String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
-      eventKey.nextToken(),eventKey.nextToken()};*/
+    extractPreference();
+
     if(((EventAttach)event.getAttach()).getAssignState()){//if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
       int[] perKey={Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
@@ -174,11 +173,10 @@ public class TestConditions {
         for (int j=0; j< duration; j++){
         	//System.out.println("**Event :"+ event.getID()+"  first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
-          //if (per == null)
-          	//System.out.println(event.getID());
+          int [] newPerKey={perKey[0],perKey[1],perKey[2]+j};
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
-            numberOfConflicts[k]+=cond.executeTest(per,event.getID(),operation);
+            numberOfConflicts[k]+=cond.executeTest(newPerKey,per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
           if (operation!=0){
             ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
@@ -221,6 +219,7 @@ public class TestConditions {
       _avoidPriority[inc++]=i;
     _periodAcceptableSize= conflictsPreference[4];
     _periodVariationEvents = conflictsPreference[5];
+    ((TestStudentsConditions)_testToRun.get(0)).setPeriodVariationEvents(_periodVariationEvents);
   }
 
   /**

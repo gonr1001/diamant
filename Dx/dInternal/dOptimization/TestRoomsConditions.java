@@ -41,7 +41,7 @@ public class TestRoomsConditions implements Condition{
    * @param operation
    * @return
    */
-  public int executeTest(Period period, String eventKey, int operation){
+  public int executeTest(int[] perKey, Period period, String eventKey, int operation){
     int number=0;
     int nbConf1, nbConf2,nbConf3=0;
     ConflictsAttach confVal= new ConflictsAttach();

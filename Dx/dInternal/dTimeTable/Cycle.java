@@ -623,6 +623,30 @@ public Period getLastPeriod(){
     return period;
   }
 
+  /**
+   * return the  period and decrement _currentDayIndex
+   * @return
+   */
+  public Period getPreviousPeriod(int steps){
+    DXValue dayValue= new DXValue();
+    Period period= getCurrentDay().getCurrentSequence().getCurrentPeriod();
+    for (int i=steps; i> 0; i--){
+      dayValue.setIntValue(_currentDayIndex);
+      //System.out.println("------ Day: "+_currentDayIndex);//debug
+      period= ((Day)_setOfDays.getResourceAt(_currentDayIndex).getAttach()).getPreviousPeriod(dayValue);
+
+      if(dayValue.getIntValue()<= -1){
+        dayValue.setIntValue(_setOfDays.size()-1);
+      }
+      if (_currentDayIndex != dayValue.getIntValue()){
+        _currentDayIndex= dayValue.getIntValue();
+        getCurrentDay().setCurrentSequenceIndex(getCurrentDay().getSetOfSequences().size()-1);
+        getCurrentDay().getCurrentSequence().setCurrentPeriodIndex(getCurrentDay().getCurrentSequence().getSetOfPeriods().size()-1);
+      }
+    }
+    return period;
+  }
+
   private SetOfResources _setOfDays;
   private int _periodLength;
   private String _error = "";

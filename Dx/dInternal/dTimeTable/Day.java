@@ -154,6 +154,28 @@ public class Day extends DXObject{
     return period;
   }
 
+  /**
+   * return the  previous period and decrement _currentSequenceIndex
+   * @return
+   */
+  public Period getPreviousPeriod(DXValue dayValue){
+    DXValue seqValue= new DXValue();
+    seqValue.setIntValue(_currentSequenceIndex);
+    Period period=  ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex)
+                     .getAttach()).getPreviousPeriod(seqValue);
+
+    if(seqValue.getIntValue() <= -1){
+      _currentSequenceIndex=_setOfSequences.size()-1;
+      dayValue.setIntValue(dayValue.getIntValue()-1);
+      //getCurrentSequence().setCurrentPeriodIndex(getCurrentSequence().getSetOfPeriods().size()-1);
+    }// end if(_currentSequenceIndex>= _setOfSequences.size())
+    /*if(_currentSequenceIndex!= seqValue.getIntValue()){
+      _currentSequenceIndex= seqValue.getIntValue();
+      getCurrentSequence().setCurrentPeriodIndex(getCurrentSequence().getSetOfPeriods().size()-1);
+    }*/
+    return period;
+  }
+
 
   private SetOfResources _setOfSequences;
   private int _currentSequenceIndex = 0;

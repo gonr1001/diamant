@@ -144,6 +144,20 @@ public class Sequence extends DXObject{
     return period;
   }
 
+  /**
+   * return the previous period and decrement _currentPeriodIndex
+   * @return
+   */
+  public Period getPreviousPeriod(DXValue seqVal){
+    Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex--).getAttach();
+    if(_currentPeriodIndex<=-1){
+      _currentPeriodIndex=_setOfPeriods.size()-1;
+      seqVal.setIntValue(seqVal.getIntValue()-1);
+      //seqIndex++;
+    }
+    return period;
+  }
+
 
    private SetOfResources _setOfPeriods;
    private int _currentPeriodIndex = 0;

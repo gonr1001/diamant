@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.82 $  $Date: 2004-02-03 13:52:47 $
+ * Title: DModel $Revision: 1.83 $  $Date: 2004-02-05 04:19:25 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.82 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.83 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -89,7 +89,6 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     _setOfImportErrors= new SetOfResources(99);
     _progressBarState= new DXValue();
     _progressBarState.setIntValue(0);
-    _conditionTest = new TestConditions(this);
     _dDocument = dDocument;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
@@ -104,6 +103,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     }else{
       _error="Wrong type of file";
     }
+    _conditionTest = new TestConditions(this);
     _type = type;
     _modified = false;
   }
