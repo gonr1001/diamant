@@ -4,9 +4,6 @@ package dInternal.dTimetable;
 
 import dInternal.dData.SetOfResources;
 
-/**
- * @author ysyam
- * @deprecated the root of the time table*/
 public class TTStructure {
 
 
