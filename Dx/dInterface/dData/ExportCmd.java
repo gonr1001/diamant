@@ -10,12 +10,14 @@ package dInterface.dData;
  */
 
 //public class ExportCmd {
-  import dInterface.Command;
+import dInterface.Command;
 
-  import javax.swing.JFrame;
+import javax.swing.JFrame;
+import com.iLib.gDialog.InformationDlg;
 
-  import dInterface.DApplication;
-  /**
+import dResources.DConst;
+import dInterface.DApplication;
+/**
    *
    * ImportCmd is a class used to call a command
    *              import.
@@ -29,5 +31,6 @@ package dInterface.dData;
 //------------------------------
     public void execute(DApplication dApplic) {
       dApplic.getDMediator().getCurrentDoc().getDM().exportData();
+      new InformationDlg(dApplic.getJFrame(), DConst.EXPORT_MESSAGE);
     }
 } /* end class ImportCmd */

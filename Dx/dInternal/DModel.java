@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.85 $  $Date: 2004-02-10 19:50:58 $
+ * Title: DModel $Revision: 1.86 $  $Date: 2004-02-16 21:48:36 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.85 $
+ * @version $Revision: 1.86 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -53,7 +53,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
   protected static SetOfStudents _setOfStudents=null;
   protected static SetOfActivities _setOfActivities=null;
  // private DApplication _dApplic;
-  private DDocument _dDocument;
+  private DDocument _dDocument=null;
   protected TTStructure _ttStruct;
   protected SetOfEvents _setOfEvents;
   private int _currentCycle = 1;
