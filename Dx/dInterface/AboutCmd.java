@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutCmd $Revision: 1.1.1.1 $  $Date: 2003-01-23 17:51:40 $
+ * Title: AboutCmd $Revision: 1.2 $  $Date: 2003-01-30 18:55:27 $
  * Description: AboutCmd is class used as the command
  *              which displays the About dialog
  *
@@ -14,14 +14,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1.1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
 
-import java.awt.*;
-import javax.swing.*;
+//import java.awt.*;
+import javax.swing.JFrame;
+import dResources.DConst;
 
 /**
  *
@@ -31,7 +32,6 @@ import javax.swing.*;
  */
 public class AboutCmd implements Command {
 
-    final static String BOXMESS = "Boite a propos de";
     private JFrame _jFrame;
 
     public AboutCmd (JFrame jFrame) {
@@ -39,7 +39,7 @@ public class AboutCmd implements Command {
     } // end AboutCmd
     //------------------------------
     public void execute() {
-        new AboutDlg(_jFrame, BOXMESS);
+        new AboutDlg(_jFrame, DConst.ABOUT_TD + DConst.APP_NAME);
     } // end execute
 } /* end class AboutCmd */
 
