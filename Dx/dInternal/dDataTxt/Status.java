@@ -11,6 +11,7 @@ package dInternal.dData;
 
 public class Status {
   int _modifCount;
+  int _conflitIns;
 
   public Status() {
     _modifCount = 0;

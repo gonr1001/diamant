@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.54 $  $Date: 2003-07-11 10:47:49 $
+ * Title: DDocument $Revision: 1.55 $  $Date: 2003-08-19 15:52:52 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.54 $
+ * @version $Revision: 1.55 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -50,14 +50,17 @@ import dInterface.dTimeTable.CloseCmd;
 import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
-public class DDocument  extends InternalFrameAdapter implements ActionListener, DModelListener, TTStructureListener{
+public class DDocument  extends InternalFrameAdapter implements
+                                                     ActionListener,
+                                                     DModelListener,
+                                                     TTStructureListener{
   private DApplication _dApplic;
   private JInternalFrame _jif;
   private String _documentName;
   private TTPanel _ttPanel;
   private boolean _modified;
   private DModel _dm;
-  private JPanel _statusPanel;
+  private DStatusBar _statusBar;
   private String _version;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
@@ -143,7 +146,7 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
  //   } // end getJIF
     //-------------------------------------------
 
-    public JPanel initStatusPanel(){
+    public JPanel initStatusBar(){
       JPanel panel = new JPanel();
       _nbModif = new JLabel( "Modifications " + _dm.getStatus().getModif() );
       _nbBlocs = new JLabel(DConst.BLOCS + _dm.getStatus().getModif() +" / " + _dm.getStatus().getModif() );
@@ -163,7 +166,7 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
 
 
 
-    public void updateStatusPanel() {
+    public void updateStatusBar(Status s) {
       _nbModif.setText( "Modifications " + _dm.getStatus().getModif() );
       _nbBlocs.setText(DConst.BLOCS + _dm.getStatus().getModif() +" / " + _dm.getStatus().getModif() );
      _nbCInstr.setText("    +CON02+ nbCftIns");
@@ -190,19 +193,19 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
      }// end actionPerformed
 
     public void changeInDModel(DModelEvent  e) {
-      this.updateStatusPanel();
       //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
       _ttPanel.updateTTPanel(_dm.getTTStructure());
+      this.updateStatusBar(_dm.getStatus());
 
     }// end actionPerformed
 
     public void changeInTTStructure(TTStructureEvent  e) {
       if (_dm.getModified()){
         //System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
-        this.updateStatusPanel();
+        this.updateStatusBar(_dm.getStatus());
         _ttPanel.updateTTPanel(_dm.getTTStructure());
       }
-    }// end actionPerformed
+    }// end actionPerformed*/
 
   private void  buidDocument(String title){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
@@ -227,11 +230,12 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
       }
     } );
     //_bottomLablel = new JLabel("hello");
-    _statusPanel = initStatusPanel();
-    _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
+
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
     _modified = false;
+    _statusBar = new DStatusBar(_dm.getStatus());//initStatusPanel();
+    _jif.getContentPane().add(_statusBar, BorderLayout.SOUTH);
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
@@ -271,7 +275,7 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
     _documentName = "";
     _dm = null;
     _ttPanel = null;
-    _statusPanel = null;
+    _statusBar = null;
     _nbModif = null;//, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
   }
   private String modifiyDocumentName(String str) {
