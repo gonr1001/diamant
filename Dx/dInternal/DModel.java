@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.59 $  $Date: 2003-08-28 12:43:53 $
+ * Title: DModel $Revision: 1.60 $  $Date: 2003-08-28 14:42:56 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.59 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.60 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
@@ -288,6 +288,8 @@ public class DModel implements  DModelListener, TTStructureListener {
       ((State)_setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(_setOfInstructors.size());
       ((State)_setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(_setOfRooms.size());
       ((State)_setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(_setOfStudents.size());
+
+      ((State)_setOfStates.getResource(DConst.SB_T_EVENT).getAttach()).setValue(_setOfEvents.size());
 
       ((State)_setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(10);
 
