@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.1.1.1 $  $Date: 2003-01-23 17:51:40 $
+ * Title: ClassName $Revision: 1.2 $  $Date: 2003-01-24 17:57:43 $
  * Description: ClassName is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1.1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
