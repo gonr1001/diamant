@@ -176,7 +176,6 @@ public class Activity extends DXObject{
   }
 
 
-
   /**
    * add a studentKey in the _studentRegistered vector if it doesn't already exist
    * and return true. It return false otherwise
@@ -271,5 +270,7 @@ public class Activity extends DXObject{
       return false;
    return true;
   }
+
+
 
 }

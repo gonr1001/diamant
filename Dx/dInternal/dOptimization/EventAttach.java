@@ -28,6 +28,10 @@ public class EventAttach extends DXObject {
     _tabuList = new Vector();
   }
 
+  public String getPrincipalRescKey(){
+    return _principalRescKey;
+  }
+
   /**
    * Tests if the specified string is a component in the tabulist vector.
    * @param princKey

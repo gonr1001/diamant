@@ -264,27 +264,34 @@ public class Unity extends DXObject{
    */
 
   public boolean compareByField(int fieldIndex, String value){
-   switch(fieldIndex){
+   boolean boolValue;
+   int intValue;
+    switch(fieldIndex){
       case 0:
-        int intValue = Integer.parseInt(value);
+        intValue = Integer.parseInt(value);
         if (_duration == intValue)
           return true;
+        break;
       case 1:
         intValue = Integer.parseInt(value);
         if (_preferSequence == intValue)
           return true;
+        break;
       case 2:
-        boolean boolValue = Boolean.valueOf(value).booleanValue();
+        boolValue = Boolean.valueOf(value).booleanValue();
         if (_assign == boolValue)
           return true;
+        break;
         case 3:
           boolValue = Boolean.valueOf(value).booleanValue();
           if (_permanent == boolValue)
             return true;
+          break;
         case 4:
           boolValue = Boolean.valueOf(value).booleanValue();
           if (_isCyclic == boolValue)
             return true;
+          break;
    }
     return false;
  }

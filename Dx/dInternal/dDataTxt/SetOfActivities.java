@@ -370,6 +370,7 @@ public class SetOfActivities extends SetOfResources{
            while(stLine.hasMoreElements()){
              int fix= Integer.parseInt(stLine.nextToken().trim());
              unityResource= section.getUnity(Integer.toString(counter));
+             ((Unity)unityResource.getAttach()).setPermanent(fix==1);
              ((Unity)unityResource.getAttach()).setAssign(fix==1);
              counter++;
            }// end while(stLine.hasMoreElements())
@@ -492,6 +493,23 @@ public class SetOfActivities extends SetOfResources{
 
     }// end for (int i=0; i<getSetOfResources().size(); i++)
     return actlist;
+  }
+
+  public Unity getUnity(long actKey, long typeKey, long secKey, long unitKey){
+    Activity a = (Activity)getResource(actKey).getAttach();
+    Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
+    Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
+    Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();
+    return u;
+  }
+
+  public String getUnityCompleteName(long actKey, long typeKey, long secKey, long unitKey){
+    Resource a = getResource(actKey);
+    Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
+    Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
+    Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
+    return a.getID()+t.getID()+" "+s.getID()+u.getID();
+
   }
 
   private int _NUMBEROFCYCLE = 1;
