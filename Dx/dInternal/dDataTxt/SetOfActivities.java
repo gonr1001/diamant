@@ -19,6 +19,7 @@ public class SetOfActivities extends SetOfResources{
   /**activities in text format*/
   private byte[] _dataloaded;
   private String _error="";
+  private int _line=1;
   /**
    * Constructor
    * */
@@ -39,12 +40,12 @@ public class SetOfActivities extends SetOfResources{
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     int state=0;
     int position=beginPosition;
-    int line=1;
+    _line=1;
     String activityName="";
     int numberOfUnitys=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
-      line++;
+      _line++;
       switch (position){
         case 0:// empty line
           position = 1;
@@ -52,7 +53,7 @@ public class SetOfActivities extends SetOfResources{
         case 1:// activity name
           activityName=token.trim();
           if (token.trim().length() != _ACTIVITYLENGTH){
-            _error= DConst.ACTI_TEXT1+line+  " in the activity file:" +
+            _error= DConst.ACTI_TEXT1+_line+  " in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
           }
@@ -60,28 +61,28 @@ public class SetOfActivities extends SetOfResources{
           break;
         case 2://activity visibility
           _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",DConst.ACTI_TEXT2
-                +line,"ActivityList");
+                +_line,"ActivityList");
           if(_error.length()!=0)
             return false;
-          _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT2+line,"ActivityList");
+          _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT2+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           position = 3;
           break;
         case 3://number of activities
-          _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT3+line,"ActivityList");
+          _error= DXToolsMethods.isIntValue(token.trim(),DConst.ACTI_TEXT3+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           position = 4;
           break;
         case 4:// teachers' names
           if (token.length() == 0){
-            _error= DConst.ACTI_TEXT4+line+  "in the activity file:" +
+            _error= DConst.ACTI_TEXT4+_line+  "in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
           }
           position = 7;
-          line+=2;
+          _line+=2;
           break;
         case 5:// empty line
           position = 6;
@@ -91,7 +92,7 @@ public class SetOfActivities extends SetOfResources{
           break;
         case 7://number of blocs
           _error= DXToolsMethods.isIntValue(token.trim(),
-              DConst.ACTI_TEXT5+line,"ActivityList");
+              DConst.ACTI_TEXT5+_line," ActivityList");
           if(_error.length()!=0)
             return false;
           numberOfUnitys = Integer.parseInt(token.trim());
@@ -100,17 +101,17 @@ public class SetOfActivities extends SetOfResources{
         case 8://duration of blocs
           stLine = new StringTokenizer(token);
           if (numberOfUnitys!= stLine.countTokens()){
-            _error= DConst.ACTI_TEXT5+line+  "in the activity file:" +
+            _error= DConst.ACTI_TEXT5+_line+  " in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
           }
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           while(stLine.hasMoreElements()){
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
-                DConst.ACTI_TEXT7+line,"ActivityList");
+                DConst.ACTI_TEXT7+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
           }
@@ -119,16 +120,16 @@ public class SetOfActivities extends SetOfResources{
         case 9://days and periods of blocs
           stLine = new StringTokenizer(token);
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           if(((numberOfUnitys*2)-(stLine.countTokens()))!=0){
-            _error= DConst.ACTI_TEXT5+line+"ActivityList";
+            _error= DConst.ACTI_TEXT5+_line+"ActivityList";
             return false;
           }
           while(stLine.hasMoreElements()){
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
-                DConst.ACTI_TEXT8+line,"ActivityList");
+                DConst.ACTI_TEXT8+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
           }
@@ -137,13 +138,13 @@ public class SetOfActivities extends SetOfResources{
         case 10://fixed rooms
           stLine = new StringTokenizer(token);
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
             _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
-                DConst.ACTI_TEXT9+line,"ActivityList");
+                DConst.ACTI_TEXT9+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
           }
@@ -152,11 +153,11 @@ public class SetOfActivities extends SetOfResources{
         case 11://Preferred rooms
           stLine = new StringTokenizer(token);
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           if (numberOfUnitys != stLine.countTokens()) {
-            _error=DConst.ACTI_TEXT10+line+  "in the activity file:" +
+            _error=DConst.ACTI_TEXT10+_line+  "in the activity file:" +
            "\n" + "I was in ActiviesList class and in analyseTokens method ";
             return false;
           }
@@ -171,12 +172,12 @@ public class SetOfActivities extends SetOfResources{
         case 12://type of rooms
           stLine = new StringTokenizer(token);
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           while(stLine.hasMoreElements()){
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
-                DConst.ACTI_TEXT11+line,"ActivityList");
+                DConst.ACTI_TEXT11+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
           }
@@ -185,12 +186,12 @@ public class SetOfActivities extends SetOfResources{
         case 13://idem
           stLine = new StringTokenizer(token);
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           while(stLine.hasMoreElements()){
             _error= DXToolsMethods.isIntValue(stLine.nextToken(),
-                DConst.ACTI_TEXT11+line,"ActivityList");
+                DConst.ACTI_TEXT11+_line,"ActivityList");
             if(_error.length()!=0)
               return false;
           }
@@ -199,17 +200,18 @@ public class SetOfActivities extends SetOfResources{
         case 14://pre-affected rooms
           stLine = new StringTokenizer(token);
           _error= DXToolsMethods.checkIfLineIsEmpty(token,
-              DConst.ACTI_TEXT6+line,"ActivityList");
+              DConst.ACTI_TEXT6+_line,"ActivityList");
           if(_error.length()!=0)
             return false;
           while(stLine.hasMoreElements()){
             sousString = stLine.nextToken();
             _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
-                DConst.ACTI_TEXT12+line,"ActivityList");
+                DConst.ACTI_TEXT12+_line,"ActivityList");
             if(_error.length()!=0)
             return false;
           }
           position = beginPosition;
+          _line++;
           break;
 
       }// end switch (position)
@@ -428,6 +430,12 @@ public class SetOfActivities extends SetOfResources{
 
   public String getError() {
    return _error;
+  }
+
+  /***
+   * */
+  public int getLine(){
+    return _line;
   }
 
   /**

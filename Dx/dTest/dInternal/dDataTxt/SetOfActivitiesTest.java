@@ -188,7 +188,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
-                   "1v"+"\r\n"+
+                   "1"+"\r\n"+
                    "3"+"\r\n"+
                    "1 12"+"\r\n"+
                    "1"+"\r\n"+
@@ -200,7 +200,7 @@ public class SetOfActivitiesTest  extends TestCase{
                    "1"+"\r\n"+
                    "1"+"\r\n"+
                    "LUC LAJOIE"+"\r\n"+
-                   "1"+"\r\n"+
+                   "1v"+"\r\n"+
                    "3"+"\r\n"+
                    "1 12"+"\r\n"+
                    "1"+"\r\n"+
@@ -211,8 +211,10 @@ public class SetOfActivitiesTest  extends TestCase{
 
     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes());
     setOfActivities.analyseTokens(1);
-    assertEquals("test4_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
+    assertEquals("test4_analyseTokens: assertEquals 1", DConst.ACTI_TEXT5,
                  setOfActivities.getError().substring(0,DConst.ACTI_TEXT5.length()));
+    assertEquals("test4_analyseTokens: assertEquals 2", 23,setOfActivities.getLine());
+
   }
 
   /**
