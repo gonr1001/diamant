@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
+import dInternal.dConditionsTest.EventAttach;
+
 import dResources.DConst;
 
 public class EventsDlg extends EventsDlgInterface{
@@ -90,6 +92,10 @@ public class EventsDlg extends EventsDlgInterface{
  */
  protected void doubleClicMouseProcess(){
    new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0],false);
+   EventAttach event=(EventAttach)_dApplic.getDMediator().getCurrentDoc().getDM().
+    getSetOfEvents().getResource((String)selectedItems[0]).getAttach();
+   if(event.getAssignState() || event.getPermanentState())
+     jbInit();
   }
 
 
