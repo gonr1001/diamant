@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.30 $  $Date: 2004-06-21 15:38:16 $
+ * Title: SectionDlg $Revision: 1.31 $  $Date: 2004-06-21 18:02:47 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -207,7 +207,7 @@ public class SectionDlg extends JDialog implements ActionListener{
    */
   private void setScrollPane(Dimension ScrollPaneDim){
     int insideWidth = (int)ScrollPaneDim.getWidth()-20;
-    int scrollHeight = (int)((ScrollPaneDim.getHeight()-10)/2);
+    int scrollHeight = (int)((ScrollPaneDim.getHeight()-20)/2); // rgr 20 was 10
     Dimension insideDim = new Dimension(insideWidth, (int)scrollHeight*_numberOfSections+10);
     JLabel[] lNumberOfElements = new JLabel[_numberOfSections];
     if (_insidePanel == null)

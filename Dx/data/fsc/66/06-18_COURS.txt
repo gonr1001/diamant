@@ -1,0 +1,960 @@
+
+ADM1111  51
+1
+1
+ADM111-51
+
+
+ 1
+ 3
+ 3  6
+0
+xxxxxx
+1
+1
+1
+
+GRH1111  51
+1
+1
+GRH111-51
+
+
+ 1
+ 3
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+IFT1031  01
+1
+1
+IFT103
+
+
+ 1
+ 2
+ 3  6
+0
+xxxxxx
+1
+1
+1
+
+IFT1561  01
+1
+1
+IFT156
+
+
+ 2
+ 2  2
+ 3  6  5  2
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT1591  01
+1
+1
+GIRARD, GABRIEL
+
+
+ 2
+ 2  2
+ 2  1  3  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT1871  01
+1
+1
+IFT187
+
+
+ 2
+ 2  2
+ 2  8  5  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT3111  01
+1
+1
+HAGUEL, JACQUES
+
+
+ 2
+ 2  2
+ 1  8  3  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT3191  01
+1
+1
+IFT319
+
+
+ 2
+ 2  2
+ 2  3  5  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT3241  01
+1
+1
+ZEROUAL, KACEM
+
+
+ 2
+ 2  2
+ 1  8  3  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT3391  01
+1
+1
+GOULET, JEAN
+
+
+ 2
+ 2  2
+ 2  8  5  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+IFT3591  01
+1
+1
+MAYERS, ANDRE
+
+
+ 2
+ 2  2
+ 2  1  4  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT3791  01
+1
+1
+HOUDEVILLE, GERARD
+
+
+ 2
+ 2  2
+ 4  6  5  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT4101  01
+1
+1
+IFT410
+
+
+ 2
+ 1  2
+ 2  8  4  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT4481  01
+1
+1
+IFT448
+
+
+ 3
+ 1  2  2
+ 3  1  4  6  5  6
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+IFT4511  01
+1
+1
+ST-DENIS, RICHARD
+
+
+ 2
+ 2  2
+ 3  7  5  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT4871  01
+1
+1
+ZEROUAL, KACEM
+
+
+ 2
+ 2  1
+ 2  1  3  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT5151  01
+1
+1
+IFT515
+
+
+ 2
+ 2  1
+ 2  3  5  4
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT5281  01
+1
+1
+EGLI, RICHARD
+
+
+ 2
+ 2  1
+ 4  6  5  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT5481  01
+1
+1
+DESCHENES, FRANCOIS
+
+
+ 2
+ 1  2
+ 1  6  5  8
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT5851  01
+1
+1
+IFT585
+
+
+ 2
+ 1  2
+ 1  7  2  8
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT5921  01
+1
+1
+IFT592
+
+
+ 1
+ 1
+ 5  9
+0
+xxxxxx
+1
+1
+1
+
+IFT6141  01
+1
+1
+IFT614
+
+
+ 2
+ 2  1
+ 4  3  4  8
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT6151  01
+1
+1
+MAYERS, ANDRE
+
+
+ 2
+ 2  1
+ 1  1  3  9
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT6191  01
+1
+1
+IFT619
+
+
+ 2
+ 2  1
+ 1  3  4  9
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT6281  01
+1
+1
+GIRARD, GABRIEL
+
+
+ 2
+ 2  1
+ 2  6  4  8
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT6311  01
+1
+1
+BEAUDRY, MARTIN
+
+
+ 2
+ 1  2
+ 1  6  5  8
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT6581  01
+1
+1
+BEAUDRY, MARTIN
+
+
+ 2
+ 2  1
+ 2  1  3  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IFT6891  01
+1
+1
+GIROUX, SYLVAIN
+
+
+ 2
+ 2  1
+ 3  3  3  7
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IMN1171  01
+1
+1
+ZIOU, DJEMEL
+
+
+ 2
+ 1  2
+ 2  3  4  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+INS1441  51
+1
+1
+INS144-51
+
+
+ 1
+ 3
+ 3  7
+0
+xxxxxx
+1
+1
+1
+
+MAT0991  01
+1
+1
+MAT099
+
+
+ 1
+ 2
+ 1  8
+0
+xxxxxx
+1
+1
+1
+
+MAT1021  01
+1
+1
+MAT102
+
+
+ 2
+ 3  2
+ 1  6  3  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+MAT1041  01
+1
+1
+LACELLE, SERGE
+
+
+ 3
+ 2  2  2
+ 2  1  2  8  4  3
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1131  01
+1
+1
+MAT113
+
+
+ 3
+ 2  1  2
+ 2  3  4  1  4  6
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1131  02
+1
+1
+MAT113
+
+
+ 3
+ 2  1  2
+ 3  3  4  2  4  6
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1141  01
+1
+1
+DUBEAU, FRANCOIS
+
+
+ 3
+ 2  1  2
+ 4  3  5  1  5  6
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1251  01
+1
+1
+MAT125
+
+
+ 3
+ 2  1  2
+ 1  6  2  7  4  3
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1281  01
+1
+1
+KACZYNSKI, TOMASZ
+
+
+ 3
+ 2  1  2
+ 2  1  3  2  4  8
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1331  01
+1
+1
+MORALES, PEDRO
+
+
+ 3
+ 2  2  1
+ 1  6  3  6  5  3
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1411  01
+1
+1
+ASSEM, IBRAHIM
+
+
+ 3
+ 2  2  1
+ 1  1  2  8  4  6
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+0  1  1
+
+MAT1531  01
+1
+1
+LIU, SHIPING
+
+
+ 3
+ 2  2  1
+ 1  3  2  6  4  7
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+0  1  1
+
+MAT1821  01
+1
+1
+MAT182
+
+
+ 3
+ 2  1  2
+ 1  1  3  8  5  6
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT1931  01
+1
+1
+MAT193
+
+
+ 2
+ 2  2
+ 1  1  3  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+MAT1941  01
+1
+1
+BELLEY, JEAN-MARC
+
+
+ 2
+ 2  2
+ 1  6  5  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+MAT2351  01
+1
+1
+MAT235
+
+
+ 3
+ 2  1  2
+ 3  6  4  1  5  2
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT3041  01
+1
+1
+BOULANGER, ALAIN
+
+
+ 3
+ 2  2  2
+ 2  1  4  2  5  1
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+MAT3241  01
+1
+1
+BOULANGER, ALAIN
+
+
+ 2
+ 2  2
+ 4  3  5  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+MAT3411  01
+1
+1
+ASSEM, IBRAHIM
+
+
+ 2
+ 2  2
+ 2  6  4  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+MAT3451  01
+1
+1
+KACZYNSKI, TOMASZ
+
+
+ 2
+ 2  2
+ 2  2  3  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+MAT4021  01
+1
+1
+MAT402
+
+
+ 2
+ 2  2
+ 2  6  4  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+MAT5171  01
+1
+1
+DUBEAU, FRANCOIS
+
+
+ 2
+ 1  2
+ 1  8  3  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+MAT5251  01
+1
+1
+MAT525
+
+
+ 2
+ 2  1
+ 1  6  3  7
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+MAT6411  01
+1
+1
+LIU, SHIPING
+
+
+ 2
+ 2  1
+ 1  1  2  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+MAT6441  01
+1
+1
+BELLEY, JEAN-MARC
+
+
+ 2
+ 2  1
+ 2  3  4  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+MQG3421  51
+1
+1
+VEILLEUX, LINE
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+ROP6301  01
+1
+1
+DUSSAULT, JEAN-PIERRE
+
+
+ 2
+ 2  1
+ 2  6  4  4
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+ROP6411  01
+1
+1
+ROP641
+
+
+ 3
+ 2  1  2
+ 1  1  3  2  4  1
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+STT1891  01
+1
+1
+STT189
+
+
+ 3
+ 2  1  2
+ 2  3  4  1  5  2
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+STT2891  01
+1
+1
+BOULANGER, ALAIN
+
+
+ 3
+ 1  2  2
+ 1  7  3  6  5  1
+0  0  0
+xxxxxx     xxxxxx     xxxxxx
+1  1  1
+1  1  1
+1  1  1
+
+STT3891  01
+1
+1
+MONGA, ERNEST
+
+
+ 2
+ 2  2
+ 3  3  4  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+STT5201  01
+1
+1
+STT520
+
+
+ 2
+ 1  2
+ 3  3  4  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+STT5211  01
+1
+1
+MONGA, ERNEST
+
+
+ 2
+ 2  1
+ 2  1  5  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+STT6191  01
+1
+1
+COLIN, BERNARD
+
+
+ 2
+ 1  2
+ 3  3  4  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+STT6391  01
+1
+1
+COLIN, BERNARD
+
+
+ 2
+ 1  2
+ 3  6  5  2
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
