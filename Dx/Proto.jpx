@@ -34,6 +34,13 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <file path="dInterface/AppInTTCmd.java"/>
+  <file path="dInterface/CmdButton.java"/>
   <file path="DRun.java"/>
+  <file path="dInterface/PLAFCmd.java"/>
+  <file path="dInterface/PLAFDlg.java"/>
   <file path="Proto.html"/>
+  <file path="dInterface/TTDefinitionCmd.java"/>
+  <file path="dInterface/TTDefinitionDlg.java"/>
+  <file path="dInterface/TTPanel.java"/>
 </project>

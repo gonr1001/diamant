@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.3 $  $Date: 2003-02-20 11:07:28 $
+ * Title: DDocument $Revision: 1.4 $  $Date: 2003-02-20 15:13:33 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -46,8 +46,7 @@ public class DDocument implements ActionListener{
   private DModel _dm;
   private JLabel _bottomLablel;
   //-------------------------------------------
-  public DDocument(DView dView,
-                            DMediator mediator) {
+  public DDocument(DView dView) {
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the _jif */
   final int MIN_HEIGHT = 512;

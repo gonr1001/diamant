@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.2 $  $Date: 2003-02-20 11:07:28 $
+ * Title: DMediator $Revision: 1.3 $  $Date: 2003-02-20 15:13:33 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -36,7 +36,7 @@ public class DMediator {
 
   //-------------------------------------------
   public void addDoc() { //MouseApp map, MouseMoveApp mvap){
-    DDocument currentDoc = new DDocument(_dView, this);//, map, mvap);
+    DDocument currentDoc = new DDocument(_dView);//, map, mvap);
     _documents.addElement(currentDoc);
     currentDoc = null;
   } //end addDoc
