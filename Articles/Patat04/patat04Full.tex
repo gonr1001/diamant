@@ -70,7 +70,7 @@ effets difficiles à trouver. Dans le cas où les fichiers sont
 produits de manière automatique, il faut vérifier la validité et
 la cohérence des données. Le deuxième problème ne se manifeste que
 s'un changement doit être introduit dans le système (logiciel et
-production de fichiers)ou si le logiciel est utilisé à plusieurs
+production de fichiers) ou si le logiciel est utilisé à plusieurs
 sites différents. Les changements viennent de la part des
 utilisateurs, par exemple une nouvelle nomenclature pour les
 locaux; prise en compte de nouvelles données pour former des
@@ -114,14 +114,14 @@ en évidence que les objectifs de ouverture et extensibilité ont
 Burke et al. \cite{burke97} il est proposé d'avoir un Standard
 pour le format de données pour des instances de horaires, leur but
 était de comparer des algorithmes (programmes) dans de benchmarks.
-web paper suggère aussi un autre standard cette fois avec le
+\cite{ozcan03} suggère aussi un autre standard cette fois avec le
 langage XML. Il nous semble que bien que souhaitable un standard
 est un but très difficile à atteindre. Notre approche permet soit
 au niveau de la base de données de générer un fichier ou données
 respectant un format défini, soit de générer différents fichiers
 pour différents programmes.
 
-White \cite{white00} met en évidence que Web doit être utilisé
+White \cite{white00} met en évidence que le Web doit être utilisé
 come un moyen de diffusion de horaires. Nous allons un peu plus
 loin en proposant l'architecture nécessaire à cette idée.
 
@@ -130,25 +130,27 @@ loin en proposant l'architecture nécessaire à cette idée.
 \cite{decausmaecker02}
 
 
-Nous faisons l'analyse de  Afin de simplifier le texte dans
-l'article nous allons traiter uniquement le cas d'horaires de
-cours. Dans cet article nous nous intéressons au processus global
-de la production des horaires depuis la saisie de données jusqu'à
-la livraison des horaires généraux et personnalisés. La production
-d'horaires est automatisé à différents degrés, par exemple~: elle
-peut comporter un logiciel de construction d'horaires qui peut
-produire un fichier contenant l'horaire qui sera affiché dans une
-place connue ou mise en format HTML afin de l'afficher sur le Web.
-Dans certains cas, la production se fait manuellement. Comme la
-production d'horaires ne doit pas être interrompue. L'institution
-doit faire le choix entre implanter un nouveau système et oublier
-le système actuel ou faire des changements graduels au système
-existant. Le risque de la première option est trop élevé, car si
-un problème arrive, le nouveau système peut se trouver dans un
-impasse représentant un coût important. La deuxième solution
-présente un risque modéré, car pour chaque nouveau composant
-ajouté au système il est possible de revenir à l'ancien composant,
-assurant ainsi la production d'horaires.
+Nous faisons l'analyse de
+
+Afin de simplifier le texte dans l'article nous allons traiter
+uniquement le cas d'horaires de cours. Dans cet article nous nous
+intéressons au processus global de la production des horaires
+depuis la saisie de données jusqu'à la livraison des horaires
+généraux et personnalisés. La production d'horaires est automatisé
+à différents degrés, par exemple~: elle peut comporter un logiciel
+de construction d'horaires qui peut produire un fichier contenant
+l'horaire qui sera affiché dans une place connue ou mise en format
+HTML afin de l'afficher sur le Web. Dans certains cas, la
+production se fait manuellement. Comme la production d'horaires ne
+doit pas être interrompue. L'institution doit faire le choix entre
+implanter un nouveau système et oublier le système actuel ou faire
+des changements graduels au système existant. Le risque de la
+première option est trop élevé, car si un problème arrive, le
+nouveau système peut se trouver dans un impasse représentant un
+coût important. La deuxième solution présente un risque modéré,
+car pour chaque nouveau composant ajouté au système il est
+possible de revenir à l'ancien composant, assurant ainsi la
+production d'horaires.
 
 L'objectif de cet article est de modéliser ce processus de
 production d'horaires pour prendre des décisions permettant son
@@ -208,9 +210,6 @@ Ensuite nous établirons un modèle plus génèral.
 
 
 Cet article propose~:
-
-
-
 
 
 \section{Les flot de l'information dans production d'horaires}
@@ -276,8 +275,7 @@ Dans ce qui suit on parlera de base de données pour se référer  aux
 données.
 
  \item[\pro{Papier} ou \pro{Web}] Il s'agit des sorties du système
-   il' peuvent être des fichiers
-produits à partir des données de manière automatique, semi-automatique
+   il' peuvent être des fichiers produits à partir des données de manière automatique, semi-automatique
 ou manuellement. Par exemple à partir de données un programme peut
 fabriquer toutes les lettres à envoyer aux étudiants (de manière
 personnalisé). Une personne peut produire les lettres personnalisées avec un
@@ -287,10 +285,10 @@ en lisant les données nécessaires sur un fichier.
 \end{description}
 
 \subsection{La préparation des données}
-La figure \ref{fig:phTwo} montre l'évolution des données dans la base
-de données pendant la production de l'horaire.  La base de données est
-la même, l'évolution présente les
-instances de données à différents instants du processus.
+La figure \ref{fig:phTwo} montre l'évolution des données dans la
+base de données pendant la production de l'horaire.  La base de
+données est la même, l'évolution présente les instances de données
+à différents instants du processus.
 
 
 \begin{figure}[htb] \begin{center}
@@ -320,8 +318,7 @@ instances de données à différents instants du processus.
     \item[Données de base] Ces données sont les données définis à long
     terme dans la base.  L'information des activités pédagogiques d'un
     programme, les programmes offerts, les enseignants, les
-    caractéristiques de salles de
-    cours, les étudiants.
+    caractéristiques de salles de cours, les étudiants.
     Il s'agit en général des informations qui sont partagées par
     d'autres applications. Par exemple un étudiant est décrit par son
     nom, prénom, matricule, programme suivi. Une application qui
@@ -333,8 +330,7 @@ instances de données à différents instants du processus.
     construction de l'horaire, elles concernent les cours qui seront
     offerts, la disponibilité de enseignants, etc. Ces données sont
     un préalable à la construction d'un horaire et sont saisies avant
-    et pendant
-    chaque construction.
+    et pendant chaque construction.
 
     \item[Données horaire] Ces donnés sont le résultat de la tâche de la
     construction de l'horaire. Elles vont contenir toutes les
@@ -421,7 +417,7 @@ justifications}
 
 Abstraite trois blocs
 
-\subsection {Architecture trois-tiers}
+\subsection {Architecture trois-tiers et la production d'horaires}
 
 De manière abstraite une architecture logicielle décrit les
 éléments composants d'un système, elle montre aussi les
@@ -438,8 +434,9 @@ de notre problème complexe\cite{bus96}.
 développer des applications logicielles, mais nous pensons que la
 plus adaptée à notre système est celle de trois tiers.
 
-Cette architecture propose la division du système en trois
-couches, chacune avec une fonction bien définit :
+L'architecture montré dans la figure \ref{fig:phThree} propose la
+division du système en trois couches, chacune avec une fonction
+bien définit :
 
 \begin{description}
 \item [L'interface d'utilisateur:] Est responsable de valider la
@@ -454,6 +451,19 @@ autres modèles de persistance pour gérer bases de données
 complexes.
 \end {description}
 
+\begin{figure}
+\setlength{\unitlength}{1cm}
+\begin{picture}(12,3)
+  \put(0,1){\framebox(3.5,1){interface utilisateur}}
+  \put(3.5,1.5){\vector(1,0){0.5}}
+  \put(4,1){\framebox(3.5,1){logique d'affaires}}
+  \put(7.5,1.5){\vector(1,0){0.5}}
+  \put(8,1){\framebox(4,1){persistance de données}}
+\end{picture}
+
+\caption{L'architecture trois tiers.}\label{fig:phThree}
+
+\end{figure}
 
 \subsection {Interfaces.}
 
