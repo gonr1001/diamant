@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.89 $  $Date: 2004-02-16 19:29:09 $
+ * Title: DStringFrRes $Revision: 1.90 $  $Date: 2004-02-16 20:08:40 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.89 $
+ * @version $Revision: 1.90 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -105,14 +105,14 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     //Assign
     { "assign", "Affectation" },
-    { "instAssignM", "Enseignants" },
+    { "instAssignM", "Enseignants ..." },
     { "instAssignTD", "Disponibilité enseignants"},
-    {"ActiAssignM", "Activités"},
-    {"GroupAssignM", "Groupes"},
-    {"LocauxAssignM", "Locaux"},
+    {"ActiAssignM", "Activités ..."},
+    {"GroupAssignM", "Groupes ..."},
+    {"LocauxAssignM", "Locaux ..."},
     { "instAssignD", "To be defined"},
-    {"EventsAssignM", "Évenements"},
-    {"ManualAssignM","Affectation manuelle"},
+    {"EventsAssignM", "Évenements ..."},
+    {"ManualAssignM","Affectation manuelle ..."},
     {"DefineSetM","Définir ensemble"},
     {"PartialTTStructureM","Grille Partielle"},
 
@@ -129,10 +129,12 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Modification
     {"ModificationM","Modification"},
     {"EventsModifM","Modification évenements"},
-    {"ActModifM","Activité"},
+    {"ActModifM","Activité ..."},
 
     //Report
     {"ReportM","Rapports"},
+    {"Reports","Rapports ..."},
+
 
 
     //Preferences

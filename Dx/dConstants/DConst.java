@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.79 $  $Date: 2004-02-16 19:29:09 $
+ * Title: DConst $Revision: 1.80 $  $Date: 2004-02-16 20:08:40 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.79 $
+ * @version $Revision: 1.80 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -155,7 +155,9 @@ public class DConst {
   public final static String STUDENTMIXINGMIDBAL = res.getString("studentMixingMidBal");//Brassage d'étudiants balancé
   public final static String STUDENTMIXINGOPTI = res.getString("studentMixingOpti");//Brassage d'étudiants optimal
   //Report menu
-  public final static String REPORTS = res.getString("ReportM");//Rapports
+  public final static String REPORT_M = res.getString("ReportM");//Rapports
+  public final static String REPORTS = res.getString("Reports");//Rapports...
+
   //Preferences menu
   public final static String PREF = res.getString("pref");//Preferences
   public final static String PLAF_M = res.getString("plafM");//options L&F

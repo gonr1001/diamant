@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.99 $  $Date: 2004-02-16 19:29:09 $
+ * Title: DMenuBar $Revision: 1.100 $  $Date: 2004-02-16 20:08:40 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.99 $
+ * @version $Revision: 1.100 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -395,11 +395,11 @@ public class DMenuBar extends JMenuBar{
 
   private void createReportMenu() {
     //Build the menu Report.
-    _report = new JMenu(DConst.REPORT);
+    _report = new JMenu(DConst.REPORT_M);
     _report.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _report );
     // Items in menu Report.
-    _mReport = new CmdMenu("Rapports");
+    _mReport = new CmdMenu(DConst.REPORTS); // "Rapports ...");
     _mReport.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _mReport.setCommand(new ReportCmd());
     _mReport.addActionListener(_dApplic);
@@ -488,7 +488,7 @@ public class DMenuBar extends JMenuBar{
     _help.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     this.add( _help );
     // Items in menu HELP.
-    _about = new CmdMenu(DConst.ABOUT_M + DConst.APP_NAME);//, this);
+    _about = new CmdMenu(DConst.APP_NAME + ": " + DConst.ABOUT_M);//, this);
 
     _about.setFont(new java.awt.Font(_mfont, _font, _nPT));
     _about.setCommand(new AboutCmd());

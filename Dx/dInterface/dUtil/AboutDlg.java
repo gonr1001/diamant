@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.2 $  $Date: 2003-06-04 16:22:48 $
+ * Title: AboutDlg $Revision: 1.3 $  $Date: 2004-02-16 20:08:40 $
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.3 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
@@ -42,7 +42,7 @@ public class AboutDlg extends JDialog {
      */
 
     public AboutDlg(DApplication dApplic) {
-      new InformationDlg(dApplic.getJFrame(), DConst.APP_NAME + DConst.ABOUT_D,
-                                       DConst.ABOUT_TD + DConst.APP_NAME);
+      new InformationDlg(dApplic.getJFrame(), DConst.APP_NAME +  DConst.ABOUT_D,
+                                         DConst.ABOUT_TD + DConst.APP_NAME);
     } // end constructor AboutDlg
 } /* end class AboutDlg */
