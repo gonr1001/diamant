@@ -4,12 +4,10 @@ package dInternal.dTimeTable;
 import java.util.Vector;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
-import dInternal.dUtil.DXToolsMethods;
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import xml.InPut.readFile;
 import xml.InPut.ReadXMLElement;
-import xml.Const.Tag;
 import org.w3c.dom.*;
 //import javax.xml.parsers.FactoryConfigurationError;
 
@@ -90,11 +88,11 @@ public class TTStructure {
 
 
   public Cycle getCurrentCycle(){
-    return (Cycle)_setOfCycles.getResourceAt(_currentCycleIndex).getAttach(); ;
+    return (Cycle)_setOfCycles.getResourceAt(_currentCycleIndex).getAttach();
   }
 
   public Resource getCurrentCycleResource(){
-   return _setOfCycles.getResourceAt(_currentCycleIndex); ;
+   return _setOfCycles.getResourceAt(_currentCycleIndex);
   }
 
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.77 $  $Date: 2003-10-15 23:28:49 $
+ * Title: DModel $Revision: 1.78 $  $Date: 2003-10-24 19:43:30 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.77 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.78 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -154,7 +154,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    * @return
    */
   public String loadTimeTable(String fileName){
-    LoadData loadD = new LoadData();
+    LoadData loadD = new LoadData(this);
     Vector project = loadD.loadProject(fileName);
 
     if (project.size()!=0) {
@@ -228,7 +228,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    * @return
    */
   public String importData(String str) {
-    LoadData loadData = new LoadData(str);
+    LoadData loadData = new LoadData(str, this);
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
     _setOfInstructors = loadData.extractInstructors(null, false);

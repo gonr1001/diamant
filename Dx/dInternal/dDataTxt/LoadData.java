@@ -16,7 +16,9 @@ import java.io.File;
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gIO.FilterFile;
 
+import dInternal.Preferences;
 import dInternal.dTimeTable.TTStructure;
+import dInternal.DModel;
 
 public class LoadData {
   //Vector _v;
@@ -26,6 +28,7 @@ public class LoadData {
   String _studentsFileName;
   String _functionFileName;
   String _caractFileName;
+  DModel _dm;
   RoomsAttributesInterpretor _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
   private static String _SEP= File.separator;
   public final static String _saveSeparator="=================================";
@@ -39,7 +42,8 @@ public class LoadData {
   /***
    *constructor
    */
-  public LoadData(String args) {
+  public LoadData(String args, DModel dm) {
+  	_dm = dm;
     String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
     _functionFileName=path+"DXfunctions.sig";
     _caractFileName=path+"DXcaracteristics.sig";
@@ -47,7 +51,8 @@ public class LoadData {
     verifyImportDataFile(args);
   }
 
-  public LoadData() {
+  public LoadData(DModel dm) {
+	_dm = dm;
    String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
    _functionFileName=path+"DXfunctions.sig";
    _caractFileName=path+"DXcaracteristics.sig";
@@ -135,7 +140,10 @@ public class LoadData {
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();
     filter.setCharKnown("");
-    filter.appendToCharKnown("È…Ë»‡¿«ÁÎÀÔœ‘ÀÈ-',; ()Í.‡");
+    filter.appendToCharKnown(_dm.getDDocument(
+    						).getDMediator(
+    						).getDApplication(
+    						).getPreferences()._acceptedChars);
     if (filter.validFile(str)) {
       return filter.getByteArray();
     } else return null;
