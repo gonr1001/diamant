@@ -39,7 +39,9 @@ public class SelectAlgorithm {
         break;
       case 1: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,0));
         break;
-      case 2: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,1));
+      case 2: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,1));//intermediaire
+        break;
+      case 3: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,2));
         break;
     }// end  switch(choice)
   }

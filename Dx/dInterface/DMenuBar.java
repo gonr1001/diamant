@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.85 $  $Date: 2003-11-03 15:10:47 $
+ * Title: DMenuBar $Revision: 1.86 $  $Date: 2003-11-14 02:41:47 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.85 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.86 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -92,7 +92,7 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolMActivityModif;
 
   // the optimisation menus
-  private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,_mStudentsMixingOptimize;
+  private CmdMenu _mOpti,_mInit, _mFirstAlgo,_mStudentsMixingBalance,_mStudentsMiddleMixingBalance,_mStudentsMixingOptimize;
   private boolean _boolMOpti, _boolMInit, _boolFirstAlgo,_boolStudentsMixingBalance,_boolStudentsMixingOptimize;
   private JMenu _studentsMixing;
 
@@ -356,6 +356,12 @@ public class DMenuBar extends JMenuBar{
    _mStudentsMixingBalance.setCommand(new BalanceMixingAlgorithmCmd());
    _mStudentsMixingBalance.addActionListener(_dApplic);
    _studentsMixing.add(_mStudentsMixingBalance);
+
+   _mStudentsMiddleMixingBalance= new CmdMenu(DConst.STUDENTMIXINGMIDBAL);
+   _mStudentsMiddleMixingBalance.setFont( new java.awt.Font(_mfont, _font, _nPT));
+   _mStudentsMiddleMixingBalance.setCommand(new MiddleBalMixingAlgoritmCmd());
+   _mStudentsMiddleMixingBalance.addActionListener(_dApplic);
+   _studentsMixing.add(_mStudentsMiddleMixingBalance);
 
    _mStudentsMixingOptimize = new CmdMenu(DConst.STUDENTMIXINGOPTI);//, this);
    _mStudentsMixingOptimize.setFont(new java.awt.Font(_mfont, _font, _nPT));
