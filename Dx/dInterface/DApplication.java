@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.32 $  $Date: 2003-10-24 20:21:37 $
+ * Title: DApplication $Revision: 1.33 $  $Date: 2003-10-28 13:20:23 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -30,17 +30,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.Container;
 import java.awt.Toolkit;
 import javax.swing.DefaultDesktopManager;
 import java.io.File;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
+
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;

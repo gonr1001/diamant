@@ -12,7 +12,7 @@ package dAux;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import dResources.DConst;
+
 import dInterface.DApplication;
 
 public class ConfirmDlg extends JDialog{
