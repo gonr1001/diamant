@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.48 $  $Date: 2003-07-29 10:38:24 $
+ * Title: DModel $Revision: 1.49 $  $Date: 2003-07-31 11:17:16 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.48 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.49 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInternal;
@@ -199,6 +199,10 @@ public void setVersion(String version){
 
   public SetOfActivities getSetOfActivities(){
     return _setOfActivities;
+  }
+
+  public SetOfStudents getSetOfStudents(){
+    return _setOfStudents;
   }
 
   public TTStructure getTTStructure() {

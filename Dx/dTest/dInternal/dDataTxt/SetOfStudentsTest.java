@@ -176,4 +176,28 @@ public class SetOfStudentsTest  extends TestCase{
                  setOfStudents.getError().substring(0,DConst.STUD_TEXT6.length()));
   }
 
+  /**
+   * test_getStudentsByGroup, test that analyse the list if students who have
+   * inscription in a group of activity
+   * */
+  public void test_getStudentsByGroup(){
+    String tokens= "    004"+"\r\n"+
+                  "009008132035030720003LUPIEN MY05"+"\r\n"+
+                   "GEI442101 GIS251102 GIS3511 GRH111101 GRH332101"+"\r\n"+
+                   "009011991290000520021AUDET FRE05"+"\r\n"+
+                   "CTB3411 FEC111102 FEC4441 GIS114101 MAR2211"+"\r\n"+
+                   "009027042035010720003VEILLEUX 04"+"\r\n"+
+                   "CTB443101 CTB451102 CTB513102 CTB563101"+"\r\n"+
+                   "019027042035010720003ALEX JARA04"+"\r\n"+
+                   "GEI700101 GEI450202 CTB513102 GEI442101"+"\r\n";
+    SetOfStudents setOfStudents= new SetOfStudents(tokens.getBytes());
+    setOfStudents.analyseTokens(0);
+    setOfStudents.buildStudentList(0);
+    Vector list= new Vector();
+    list.add("LUPIEN MY");
+    list.add("ALEX JARA1");
+    assertEquals("test_getStudentsByGroup: assertEquals", list,
+                 setOfStudents.getStudentsByGroup("GEI442","1","01"));
+  }
+
 }

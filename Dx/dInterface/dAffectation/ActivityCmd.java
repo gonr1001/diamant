@@ -9,8 +9,6 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
-import javax.swing.JFrame;
-
 import dInterface.Command;
 import dInterface.DApplication;
 

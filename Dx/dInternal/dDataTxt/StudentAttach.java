@@ -232,6 +232,24 @@ public class StudentAttach extends DXObject{
    return true;
  }
 
+ /**
+  *
+  * @param actyvityType
+  * @param group
+  * @return
+  */
+ public boolean isInGroup(String actyvityType, int group){
+   if (actyvityType.length()!= this._COURSELENGTH)
+     return false;
+   else{
+     Resource resource = this._courses.getResource(actyvityType);
+     if(resource!=null)
+       if (((DXValue)resource.getAttach()).getIntValue()== group)
+         return true;
+   }
+   return false;
+ }
+
   /** Course length*/
   private int _COURSELENGTH = 7;
 

@@ -10,7 +10,6 @@ package dInterface.dAffectation;
  */
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -131,7 +130,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _listsPanel.add(leftPanel, BorderLayout.EAST);
     _listsPanel.add(_buttonsPanel1, BorderLayout.CENTER);
     _listsPanel.add(rightPanel, BorderLayout.WEST);
-    //buttons _show _cancel panel
+    //panel of buttons _show _cancel
     _buttonsPanel2 = new JPanel();
     _buttonsPanel2.add(_show);
     _buttonsPanel2.add(_cancel);
@@ -189,7 +188,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     if (command.equals(SHOW)){
       if (_currentActivities.length != 0)
       new EditActivityDlg(this, _dApplic, (String)_currentActivities[0]);
-    }// end if (command.equals("Afficher"))
+    }// end if (command.equals(SHOW))
     if (command.equals(TO_LEFT) || command.equals(TO_RIGHT)){
       if (command.equals(TO_LEFT))
         DXTools.actionButton(_activities, 3, "false", "true", _noVisibleList, _visibleList);
