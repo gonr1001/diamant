@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.4 $  $Date: 2005-01-25 05:30:01 $
+* Title: SetOfSites $Revision: 1.5 $  $Date: 2005-01-25 16:35:42 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
+* @version $Revision: 1.5 $
 * @author  $Author: syay1801 $
 * @since JDK1.3
 */
@@ -134,12 +134,10 @@ public class SetOfSites extends DSetOfResources{
 				SetOfCategories setOfCat;
 				for (int i=0; i< resourceList.size()-1; i++){
 					setOfCat = (SetOfCategories)((DResource)resourceList.get(i)).getAttach();
-					//reslist+= ((DResource)resourceList.get(i)).toWrite(";")+DConst.CR_LF;
 					reslist+= setOfCat.toWrite();
 				}
 				setOfCat = (SetOfCategories)((DResource)resourceList.get(resourceList.size()-1)).getAttach();
 				reslist+= setOfCat.toWrite();
-				//reslist+= ((DResource)resourceList.get(resourceList.size()-1)).toWrite(";");
 			}// end if(_resourceList.size()>0)
 			return reslist;
 			
@@ -335,25 +333,7 @@ public class SetOfSites extends DSetOfResources{
 		      		position++;
 		            break;
 		      	case 4:			
-				/*RoomAttach room = new RoomAttach();
-				roomID = DXToolsMethods.getToken(currentLine, ";",0).trim();
-				str = DXToolsMethods.getToken(currentLine, ";",1).trim();
-				room.setCapacity(new Integer(str).intValue());
-				str = DXToolsMethods.getToken(currentLine, ";",2).trim();
-				room.setFunction(new Integer(str).intValue());
-				str = DXToolsMethods.getToken(currentLine, ";",3).trim();
-				buildSetOfCaracteristics(room, str);
-				str = DXToolsMethods.getToken(currentLine, ";",4).trim();
-				room.setDescription(str);
-				int nbTokens = DXToolsMethods.countTokens(currentLine, ";");
-				if(nbTokens == 5)
-					room.setStandardAvailability();
-				else {
-					str = DXToolsMethods.getToken(currentLine, ";",5).trim();
-					buildAvailability(room, str);
-				}
-				addResource(new DResource( roomID, room),1);
-				*/
+				
 		      		//String line1_5= DXToolsMethods.getToken(currentLine, ";",DConst.ROOM_SITE_TOKEN).trim();
 		      		int nbToken=  DXToolsMethods.countTokens(currentLine, ";");
 		      		String line1_6="";
