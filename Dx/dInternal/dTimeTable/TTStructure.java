@@ -17,7 +17,7 @@ public class TTStructure {
   public TTStructure() {
     _col=6;
     _row= 15;
-   // saveStandardTT("StandardTTC.txt");
+    saveStandardTT("StandardTTC.txt");
   }
 
  public SetOfResources getSetOfCycles() {

@@ -3,20 +3,22 @@
 <project>
   <property category="debug.0" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.0" name="SmartStepRedefineClasses" value="0"/>
+  <property category="debug.1" name="BuildTargetOnDebug" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="debug.1" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
-  <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
+  <property category="optimize.1" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="optimize.1" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="2"/>
-  <property category="runtime" name="DefaultConfiguration" value="1"/>
   <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.0" name="ConfigurationName" value="LoadData"/>
+  <property category="runtime.0" name="ConfigurationName" value="Run"/>
   <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.0" name="application.class" value="dInternal.dData.LoadData"/>
+  <property category="runtime.0" name="application.class" value="DRun"/>
+  <property category="runtime.0" name="application.vmparameters" value="-classic"/>
   <property category="runtime.1" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
-  <property category="runtime.1" name="ConfigurationName" value="Run"/>
+  <property category="runtime.1" name="ConfigurationName" value="LoadData"/>
   <property category="runtime.1" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
-  <property category="runtime.1" name="application.class" value="DRun"/>
+  <property category="runtime.1" name="application.class" value="dInternal.dData.LoadData"/>
+  <property category="runtime.1" name="application.vmparameters" value="-classic"/>
   <property category="runtime.2" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="runtime.2" name="ConfigurationName" value="InterfaceTests"/>
   <property category="runtime.2" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
@@ -41,7 +43,7 @@
   <property category="sys" name="ExcludeClassEnabled" value="0"/>
   <property category="sys" name="IncludeTestPath" value="1"/>
   <property category="sys" name="InstanceVisibility" value="2"/>
-  <property category="sys" name="JDK" value="java 1.3.1-b24"/>
+  <property category="sys" name="JDK" value="java 1.4.1_02-b06"/>
   <property category="sys" name="JbxEventListener0" value="dInternal.DModelListener"/>
   <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
   <property category="sys" name="LastTag" value="0"/>
