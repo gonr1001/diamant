@@ -199,6 +199,9 @@ public class ActivityDlg extends JDialog implements ActionListener {
       _lNoVisible.setText(_noVisibleVec.size() + " " + NOT_INCLUDED);
       _lVisible.setText(_visibleVec.size() + " " + INCLUDED);
     }
+    _activities.setByField(_visibleVec, 3, "true");
+    _activities.setByField(_noVisibleVec, 3, "false");
+    _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
   }//end method
 
 }// end class

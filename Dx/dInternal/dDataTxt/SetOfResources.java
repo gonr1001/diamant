@@ -342,6 +342,20 @@ public class SetOfResources extends DXObject{
     return idVector;
   }
 
+  /**
+   * @param setOflements the elements in wich we want to change value
+   * @param fieldIndex The identification index of a field belonging the resource
+   * @param fieldValue The comparaison value for the field selected
+   */
+  public void setByField(Vector setOfElements, int fieldIndex, String fieldValue){
+    Resource res = null;
+    boolean membership = false;
+    for (int i = 0; i < setOfElements.size(); i++){
+      res = getResource((String)setOfElements.get(i));
+      if (res != null)
+        res.getAttach().setField(fieldIndex, fieldValue);
+    }
+  }
 
 
   /**

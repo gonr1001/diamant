@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.60 $  $Date: 2003-08-22 14:03:06 $
+ * Title: DDocument $Revision: 1.61 $  $Date: 2003-08-22 14:33:35 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.60 $
+ * @version $Revision: 1.61 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -203,6 +203,7 @@ public class DDocument  extends InternalFrameAdapter implements
     */
     public void changeInStateBar (SetOfStatesEvent e){
       _dm.setStateBarComponent();
+      _stateBar.upDateDStateBar(_dm.getSetOfStates());
     }
 
     public void changeInTTStructure(TTStructureEvent  e) {
@@ -236,9 +237,9 @@ public class DDocument  extends InternalFrameAdapter implements
     _ttPanel = new TTPanel(_dm);
     _dm.addDModelListener(this);
     _dm.getSetOfStates().addSetOfStatesListener(this);
-    _dm.getSetOfStates().sendEvent();
     _modified = false;
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
+    _dm.getSetOfStates().sendEvent();
     _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
