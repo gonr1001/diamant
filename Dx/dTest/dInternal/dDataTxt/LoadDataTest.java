@@ -28,7 +28,7 @@ public class LoadDataTest extends TestCase {
   Vector _timeTable;
   public LoadDataTest(String name) {
     super(name);
-    path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"fichier1.dia";
+    path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"testLoadData.dia";
     LoadData _lData= new LoadData();
     _timeTable = _lData.loadProject(path);
   }
@@ -69,7 +69,7 @@ public class LoadDataTest extends TestCase {
    * */
   public void test3_loadTimeTable(){
     SetOfStudents setStud= ((SetOfStudents)_timeTable.get(5));
-    assertEquals("test3_loadTimeTable : assertEquals: ", "AUDET FRE", setStud.getResourceAt(1).getID());
+    assertEquals("test3_loadTimeTable : assertEquals: ", "BERNARD D", setStud.getResourceAt(1).getID());
   }
 
   /**

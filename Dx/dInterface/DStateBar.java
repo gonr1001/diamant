@@ -79,7 +79,7 @@ public class DStateBar extends JPanel {
     * @param label : Contients les chaines de charactère qui changeront
     * @param labelColor : Couleurs des labels
     */
-
+/*
    private void jbInit(String [] constantLabel, String [] label, Color [] labelColor, int maxItems)
    {
      String error = "";
@@ -122,7 +122,7 @@ public class DStateBar extends JPanel {
     * Retourne ERROR_SIZE_OVER si la position demander est plus élever que les positions posibles
     * Retourne VALIDATE_OK si la position est valide
     */
-
+/*
    private int validatePosition(int position)
    {
       int returnValue = ERROR_SIZE_TO_SMALL;
@@ -159,6 +159,7 @@ public class DStateBar extends JPanel {
     * @param label : Contients les chaines de charactère qui changeront
     * @param labelColor : Couleurs des labels
     */
+   /*
    public void setStatusBar(String [] constantLabel, String [] label, Color [] labelColor)
    {
       JLabel newLabels[] = new JLabel [constantLabel.length];
@@ -195,6 +196,7 @@ public class DStateBar extends JPanel {
     * Mets à jour tout les labels, ne change que la partie non constante
     * @param label : Nouvelles chaines de charactères
     */
+   /*
    public boolean updateBar ( String [] label )
    {
       JLabel currentLabel = new JLabel();
@@ -230,6 +232,8 @@ public class DStateBar extends JPanel {
     * @param labelNumber : le numéro du Label à changer
     * @param message : le message qui remplacera l'ancien
     */
+
+   /*
    public int updateLabel (int labelNumber, String message)
    {
       int returnValue = validatePosition(labelNumber);
@@ -248,6 +252,7 @@ public class DStateBar extends JPanel {
     * @param label : Contients les chaines de charactères qui changeront
     * @param labelColor : Couleurs des labels
     */
+   /*
    public boolean newLabel (int labelNumber, String constantLabel, String label, Color labelColor)
    {
       boolean returnValues =false;
@@ -300,6 +305,7 @@ public class DStateBar extends JPanel {
     * @param label : Contients les chaines de charactères qui changeront
     * @param labelColor : Couleurs des labels
     */
+   /*
    public void appendLabel (String constantLabel, String label, Color labelColor)
    {
       newLabel ( _constantTable.size(), constantLabel, label, labelColor);
@@ -310,6 +316,7 @@ public class DStateBar extends JPanel {
     * @param labelNumber : Position du label a modifier
     * @param newColor : nouvelles couleurs du label
     */
+   /*
    public int changeColor (int labelNumber, Color newColor)
    {
       int returnValue = validatePosition(labelNumber);
@@ -325,6 +332,7 @@ public class DStateBar extends JPanel {
     * Uniformise toute les labels de la barre de status à une couleur
     * @param uniformColor : nouvelles couleurs du label
     */
+   /*
    public void uniformizedColor (Color uniformColor)
    {
       Enumeration enum =  _labelTable.elements();
@@ -341,6 +349,7 @@ public class DStateBar extends JPanel {
     * @param labelNumber : Position du label a modifier
     * @param newFont : nouvelle police de caractère du label
     */
+   /*
    public int changeFont (int labelNumber, Font newFont)
    {
       int returnValue = validatePosition(labelNumber);
@@ -356,6 +365,7 @@ public class DStateBar extends JPanel {
     * Uniformise toute les labels de la barre de status à un font
     * @param uniformFont : nouvelle police de caractère des labels
     */
+   /*
    public void uniformizedFont (Font uniformFont)
    {
       Enumeration enum =  _labelTable.elements();
@@ -372,6 +382,7 @@ public class DStateBar extends JPanel {
     * @param labelNumber : le label à aller chercher
     * @return le label au numéro (défini par labelNumber) correspondant
     */
+   /*
    public JLabel getLabel (int labelNumber)
    {
       int returnValue = validatePosition(labelNumber);
@@ -381,12 +392,13 @@ public class DStateBar extends JPanel {
       }
       return null;
    }
-
+*/
    /**
     * Modifie un label en particulier
     * @param labelNumber : Le label à modifier
     * @param label : le label qui replacera le label à la position labelNumber
     */
+   /*
    public int setLabel (int labelNumber, JLabel label)
    {
       int returnValue = validatePosition(labelNumber);
@@ -397,41 +409,7 @@ public class DStateBar extends JPanel {
       return returnValue;
    }
 
-   /**
-    * Augmente le nombre d'items maximums par increaseSize.
-    * Le nombre items après la fonction devrait être le nombre maximum précédent + increaseSize.
-    * @param increaseSize : Taille à ajouter à maxItems
-    */
-   public void increaseMaxItems(int increaseSize)
-   {
-      _maxItems = _maxItems + increaseSize;
-   }
-
-   /**
-    *
-    * @return le nombre maximum items
-    */
-   public int getMaxItems()
-   {
-      return _maxItems;
-   }
-
-
-   /**
-    * Change le nombre maximum items.
-    * @param maxItems : le nouveau nombre maximum items
-    * @return Vrai si  le nouveau nombre maximum items est supérieure au nombre total d'items dans la JStatusBar, Faux sinon
-    */
-   public boolean setMaxItems(int maxItems)
-   {
-      boolean returnValue = false;
-      if (maxItems > _labelTable.size())
-      {
-         this._maxItems = maxItems;
-         returnValue =true;
-      }
-      return returnValue;
-   }
+*/
 
    public void showErrorDialog(String error, String title)
    {
