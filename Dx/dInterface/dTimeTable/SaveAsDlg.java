@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.8 $  $Date: 2003-07-07 14:21:58 $
+ * Title: SaveAsDlg $Revision: 1.9 $  $Date: 2003-07-10 12:01:44 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.9 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -86,11 +86,20 @@ public class SaveAsDlg extends JDialog
 
   public void saveAs() {
     File file;
+    String DOTEXT="";
     //C rwfDlg = null;
 
     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
-    fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
+    if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
+      fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
                 DConst.DIA_FILE ) );
+      DOTEXT= DConst.DOT_DIA;
+    }
+    else{
+      fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
+                DConst.XML_FILE ) );
+      DOTEXT= DConst.DOT_XML;
+    }
 
     fc.setMultiSelectionEnabled( false );
 
@@ -104,8 +113,8 @@ public class SaveAsDlg extends JDialog
       // Save the file name
       String currentFile = fc.getSelectedFile().getAbsolutePath();
       System.out.println("currentFile " + currentFile);
-      if ( !currentFile.endsWith(DConst.DOT_DIA) )
-        currentFile = currentFile.concat(DConst.DOT_DIA);
+      if ( !currentFile.endsWith(DOTEXT) )
+        currentFile = currentFile.concat(DOTEXT);
 
 
       // If there is a file with this file name in the same path

@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.20 $  $Date: 2003-07-09 16:26:40 $
+ * Title: ToolBar $Revision: 1.21 $  $Date: 2003-07-10 12:01:44 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -17,7 +17,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: alexj $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -96,7 +96,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         //JComboBox cb = (JComboBox)e.getSource();
         //int  i = cb.getSelectedIndex();
         int i = toolBarSelector.getSelectedIndex();
-         System.out.println("ToolBar selector: " + i);//debug
+         //System.out.println("ToolBar selector: " + i);//debug
          selectBar(i);
         /*switch (i){
           case 0: addBarOne(); break;
@@ -123,7 +123,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           else
             new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
           //Treat event
-          _tts.sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();//  _tts.sendEvent();
           setToolBarOne();
 
         }
@@ -152,7 +152,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         resc.setID((String)dayNameSelector.getSelectedItem());
         //_dApplic.getDMediator().getCurrentDoc().setModified();
         //Treat event
-          _tts.sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
         //setToolBar(_tts);
       }//end actionPerformed
     });//end addActionListener
@@ -183,7 +183,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
         period.setPriority(periodTypeSelector.getSelectedIndex());
         if(_comboBoxStatus){
           //_dApplic.getDMediator().getCurrentDoc().setModified();
-          _tts.sendEvent();
+          _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
         }
 
       }//end actionPerformed
@@ -202,7 +202,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           per.setPriority(periodTypeSelector.getSelectedIndex());
         }
         //_dApplic.getDMediator().getCurrentDoc().setModified();
-        _tts.sendEvent();
+        _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
       }//end actionPerformed
     });//end addActionListener
 
@@ -224,7 +224,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
           }
         }
         //_dApplic.getDMediator().getCurrentDoc().setModified();
-        _tts.sendEvent();
+        _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
 
       }//end actionPerformed
     });//end addActionListener
@@ -354,7 +354,7 @@ public class DToolBar extends JToolBar implements TTStructureListener{// impleme
       amountDays[i]=Integer.toString((int)resc.getKey());
       daySelector.addItem(amountDays[i]);
     }
-    System.out.println("Day selector size: "+daySelector.getItemCount());//debug
+    //System.out.println("Day selector size: "+daySelector.getItemCount());//debug
     daySelector.setSelectedIndex(0);
     resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(0);
     dayNameSelector.setSelectedItem(resc.getID());

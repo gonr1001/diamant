@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.39 $  $Date: 2003-07-09 16:26:54 $
+ * Title: DModel $Revision: 1.40 $  $Date: 2003-07-10 12:01:44 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.39 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.40 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -36,6 +36,7 @@ public class DModel {
   //private TTParameters _ttParameters;
   private int _type;
   private boolean _modified = false;
+  private boolean _isTimeTable=true;
   private String _version;
   private String _error;
   private Status _status;
@@ -50,14 +51,18 @@ public class DModel {
   //for new and open Timetable
   //for new TTStructure and open a TTStructure from a file
   public DModel(DApplication dApplic, String fileName, int type) {
+    System.out.println("type: "+type);
     _error = "";
     _status = new Status();
     _dApplic = dApplic;
     if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
+      _isTimeTable=true;
     }else if(fileName.endsWith(".xml")){
       _ttStruct = new TTStructure();
       _error=_ttStruct.loadTTStructure(fileName);
+      if(type==0)
+        _isTimeTable=false;
     }else{
       _error="Wrong type of file";
     }
@@ -70,6 +75,10 @@ public class DModel {
   }
   public boolean getModified(){
     return _modified;
+  }
+
+  public boolean isTimeTable(){
+    return _isTimeTable;
   }
 
   public Status getStatus() {
@@ -198,7 +207,11 @@ public void setVersion(String version){
 
   public void saveTimeTable(String filename) {
     SaveData saveD= new SaveData("1.5");
-    saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+    if(_isTimeTable){
+      saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+    }else{
+      saveD.saveTTStructure(_ttStruct,filename);
+    }
     _modified = false;
   }
 

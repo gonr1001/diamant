@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.37 $  $Date: 2003-07-08 16:38:12 $
+ * Title: DMenuBar $Revision: 1.38 $  $Date: 2003-07-10 12:01:44 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.37 $
+ * @version $Revision: 1.38 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -251,7 +251,7 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mCTTS = new CmdMenu(DConst.CLOSE_TTS);
     menu.add(mCTTS);
     mCTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mCTTS.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mCTTS.setCommand(new CloseCmd());
     mCTTS.addActionListener(_dApplic);
 
     menu.addSeparator();
@@ -259,13 +259,13 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mSTTS = new CmdMenu(DConst.SAVE);
     menu.add(mSTTS);
     mSTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mSTTS.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mSTTS.setCommand(new SaveCmd());
     mSTTS.addActionListener(_dApplic);
 
     CmdMenu mSAsTTS = new CmdMenu(DConst.SAVE_AS);
     menu.add(mSAsTTS);
     mSAsTTS.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    mSAsTTS.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mSAsTTS.setCommand(new SaveAsCmd());
     mSAsTTS.addActionListener(_dApplic);
 /*
     menu.addSeparator();

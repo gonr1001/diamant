@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.30 $  $Date: 2003-07-08 16:38:12 $
+ * Title: DConst $Revision: 1.31 $  $Date: 2003-07-10 12:01:44 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -199,7 +199,7 @@ public class DConst {
 
    public final static boolean TT_STRUC = true;
 
-   public final static int NO_TYPE = 1;
+   public final static int NO_TYPE = 0;
    public final static int CYCLE = 1;
    public final static int EXAM = 2;
    public final static int CYCLEANDEXAM = 3;

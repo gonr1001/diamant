@@ -60,7 +60,7 @@ public class TTPanel extends JScrollPane {
     LASTHOUR=lastPeriod.getEndHour(_periodLenght)[0];
     if(lastPeriod.getEndHour(_periodLenght)[1]!=0)
       LASTHOUR++;
-    System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
+    //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
     MinHeight = (LASTHOUR-_dm.getTTStructure().getFirstPeriod(cycle).getBeginHour()[0]) * UHEIGHT;
 
     Point point=new Point(0,0);
@@ -145,7 +145,7 @@ public class TTPanel extends JScrollPane {
                                    panel.getPreferredSize().height + 50));
     int nbDays,nbSeq,nbPerADay;
     nbDays = cycle.getSetOfDays().size();
-    System.out.println("nb of Days: " + nbDays);//Debug
+    //System.out.println("nb of Days: " + nbDays);//Debug
     gridbag.columnWeights = new double [nbDays];
     gridbag.columnWidths = new int [nbDays];
     for (int i = 0; i < nbDays; i++) {

@@ -63,4 +63,13 @@ public class SaveData {
 
   }
 
+  /**
+   *
+   * */
+  public void saveTTStructure(TTStructure tts, String fileName){
+     if(!fileName.endsWith(".xml"))
+      fileName=fileName+".xml";
+    tts.saveTTStructure(fileName);
+  }
+
 }

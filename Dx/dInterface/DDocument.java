@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.51 $  $Date: 2003-07-09 16:26:40 $
+ * Title: DDocument $Revision: 1.52 $  $Date: 2003-07-10 12:01:44 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.52 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInterface;
@@ -72,9 +72,8 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
       _dm.getTTStructure().addTTStructureListener(this);
       buidDocument(TTName);
       _ttPanel.updateTTPanel(_dm.getTTStructure());
+      _jif.addInternalFrameListener(this);
     }
-
-    _jif.addInternalFrameListener(this);
 
   } // end constructor DDocument()
 
@@ -191,14 +190,14 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
 
     public void changeInDModel(DModelEvent  e) {
       this.updateStatusPanel();
-      System.out.println("Update TTPanel in DDocument changeInDModel");//debug
+      //System.out.println("Update TTPanel in DDocument changeInDModel");//debug
       _ttPanel.updateTTPanel(_dm.getTTStructure());
 
     }// end actionPerformed
 
     public void changeInTTStructure(TTStructureEvent  e) {
       if (_dm.getModified()){
-        System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
+        //System.out.println("Update TTPanel in DDocument changeInTTStructure");//debug
         this.updateStatusPanel();
         _ttPanel.updateTTPanel(_dm.getTTStructure());
       }
