@@ -7,21 +7,6 @@ package id32wd1dfxus9pndfyc2b9f;
 */
 class diagram {
 /**
-@__ref <oiref:java#Class#dInterface.dTimeTable.AppInTTCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference {
-}/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.TTDefinitionCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference341 {
-}/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref><oihard>
-@__modelType reference 
-*/
-class reference342 {
-}/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.TTPanel:oiref><oihard>
 @__modelType reference 
 */
@@ -66,11 +51,6 @@ class reference5 {
 @__modelType reference 
 */
 class reference1 {
-}/**
-@__ref <oiref:java#Class#dInterface.dTimeTable.NewTTCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference2 {
 }/**
 @__ref <oiref:java#Class#dInterface.dTimeTable.OpenTTCmd:oiref><oihard>
 @__modelType reference 

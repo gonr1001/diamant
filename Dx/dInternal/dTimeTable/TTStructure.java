@@ -39,7 +39,7 @@ public class TTStructure {
     _col=6;
     _row= 15;
 
-    ///CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
+    //CreateStandardTT("StandardTTC.xml",_nbOfStCycles,_nbOfStDays);
     loadTTStructure("StandardTTC.xml");
 
     saveTTStructure("test.xml");
@@ -240,7 +240,7 @@ public class TTStructure {
  public Period getFirstPeriod(Cycle cycle){
    int maxPer=0;
    if(cycle!=null){
-     Day day =(Day)cycle.getSetOfDays().getResource(1).getAttach();
+     Day day =(Day)getCurrentCycle().getCurrentDay();//cycle.getSetOfDays().getResource(1).getAttach();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(0).getAttach();
        return (Period)seq.getSetOfPeriods().getResourceAt(0).getAttach();
@@ -257,7 +257,7 @@ public class TTStructure {
  public Period getLastPeriod(Cycle cycle){
    int maxPer=0;
    if(cycle!=null){
-     Day day =(Day)cycle.getSetOfDays().getResource(1).getAttach();
+     Day day =(Day)getCurrentCycle().getCurrentDay();
      if(day!=null){
        Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(getMaxNumberOfSeqs(cycle)-1).getAttach();
        return (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();

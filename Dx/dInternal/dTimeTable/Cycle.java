@@ -15,7 +15,7 @@ public class Cycle extends DXObject{
 
   //********Alex
   //private Day _currentDay;
-  private int _currentDayIndex;
+  private int _currentDayIndex=1;
   //********Alex/
 
 
@@ -79,7 +79,7 @@ public class Cycle extends DXObject{
   /**
    * */
   public Day getDay(int dayIndex){
-    return (Day)_setOfDays.getResourceAt((dayIndex)).getAttach();
+    return (Day)_setOfDays.getResource((dayIndex)).getAttach();
   }
 
   /**

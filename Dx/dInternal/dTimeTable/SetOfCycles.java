@@ -89,7 +89,7 @@ public class SetOfCycles {
   /**
    * */
   public Cycle getCycle(int cycleIndex){
-    return (Cycle)_setOfCycles.getResourceAt((cycleIndex)).getAttach();
+    return (Cycle)_setOfCycles.getResource((cycleIndex)).getAttach();
   }
 
   /**

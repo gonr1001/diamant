@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.10 $  $Date: 2003-06-13 15:14:49 $
+ * Title: ToolBar $Revision: 1.11 $  $Date: 2003-06-13 17:02:09 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -102,7 +102,10 @@ public class DToolBar extends JToolBar {// implements ActionListener{
         }else{
           //int add= Integer.parseInt(nbDays);
           //_tts.getCurrentCycle().addDays(add);
-          selectAddRemoveDays(Integer.parseInt(nbDays));
+          if(Integer.parseInt(nbDays)>0)
+            selectAddRemoveDays(Integer.parseInt(nbDays));
+          else
+            new FatalProblemDlg(_dApplic.getJFrame(),"Bad value");
 
           //test
           _dApplic.getDMediator().getCurrentDoc().getTTPanel().updateTTPanel(_tts);
@@ -248,15 +251,18 @@ public class DToolBar extends JToolBar {// implements ActionListener{
     setNumberOfDays.setText(Integer.toString(nbDays));
     String [] amountDays= new String[nbDays];
     String [] nameDays= new String[nbDays];
+    Resource resc;
     daySelector.removeAllItems();
     for (int i=0; i< nbDays; i++){
-      Resource resc= ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+      resc= ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
       amountDays[i]=Integer.toString((int)resc.getKey());
-      daySelector.insertItemAt(amountDays[i],i);
+      daySelector.addItem(amountDays[i]);
     }
     System.out.println("Day selector size: "+daySelector.getItemCount());//debug
     daySelector.setSelectedIndex(0);
-    System.out.println("Day selected index: "+daySelector.getSelectedIndex());//debug
+    resc= ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(0);
+    dayNameSelector.setSelectedItem(resc.getID());
+    //System.out.println("Day selected index: "+daySelector.getSelectedIndex());//debug
 
     //
     setEnabledToolbar(true);
@@ -272,7 +278,6 @@ public class DToolBar extends JToolBar {// implements ActionListener{
 
   //-------------------------------------------
   private void addBarOne() {
-    //removeBarTwo();
     removeBar();
     addSeparator();
     add(lSetNumberOfDays);
@@ -288,21 +293,6 @@ public class DToolBar extends JToolBar {// implements ActionListener{
     add(addDay);
     addSeparator();
     add(removeDay);
-
-    repaint();
-  }//end methode
-
-  //-------------------------------------------
-  private void removeBarOne() {
-    remove(lSetNumberOfDays);
-    remove(setNumberOfDays);
-    remove(lDaySelector);
-    remove(daySelector);
-    remove(lDayNameSelector);
-    remove(dayNameSelector);
-    remove(stdDays);
-    remove(addDay);
-    remove(removeDay);
 
     repaint();
   }//end methode
@@ -326,16 +316,6 @@ public class DToolBar extends JToolBar {// implements ActionListener{
   }//end addBarTwo()
 
   //-------------------------------------------
-  private void removeBarTwo() {
-    remove(lPeriodIndicator);
-    remove(periodSelector);
-    remove(lPeriodTypeSelector);
-    remove(periodTypeSelector);
-    remove(sameLine);
-    remove(sameColumn);
-
-    repaint();
-  }//end removeBarTwo()
 
   private void removeBar() {
     removeAll();

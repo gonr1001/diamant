@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.5 $  $Date: 2003-06-13 10:06:10 $
+ * Title: SaveAsDlg $Revision: 1.6 $  $Date: 2003-06-13 17:02:09 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.6 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 
@@ -46,6 +46,8 @@ import com.iLib.gException.IOFileException;
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;
 import dInterface.DApplication;
+
+import dAux.ConfirmDlg;
 
 import dResources.DConst;
 import dResources.DFileFilter;
@@ -84,7 +86,7 @@ public class SaveAsDlg extends JDialog
 
   public void saveAs() {
     File file;
-    ReWriteFileDlg rwfDlg = null;
+    //C rwfDlg = null;
 
     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
     fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
@@ -110,15 +112,16 @@ public class SaveAsDlg extends JDialog
       file = new File(currentFile);
       if (file.exists()){
         System.out.println("I exists");
-        rwfDlg = new ReWriteFileDlg(_dApplic, currentFile);
-        if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().OK_OPTION){
+        //rwfDlg = new ReWriteFileDlg(_dApplic, currentFile);
+        int resp= ConfirmDlg.showMessage(_dApplic, currentFile);
+        if( resp== ConfirmDlg.OK_OPTION){
         _dApplic.getDMediator().saveCurrentDoc(currentFile);
         new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
         }
-        if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().NO_OPTION){
+        if(resp == ConfirmDlg.NO_OPTION){
           saveAs();
         }
-        if(rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CANCEL_OPTION || rwfDlg.getReturnedVal() == rwfDlg.getJOptionPane().CLOSED_OPTION){
+        if(resp == ConfirmDlg.CANCEL_OPTION){
 
         }
       }else{

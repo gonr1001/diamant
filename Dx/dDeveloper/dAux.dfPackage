@@ -21,6 +21,11 @@ class reference36 {
 @__modelType reference 
 */
 class reference37 {
+}/**
+@__ref <oiref:java#Class#dAux.ConfirmDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
@@ -33,7 +38,8 @@ class __options {
 }/**
 @__positions <oigroup:<oiref:java#Class#dAux.DoNothingDlg:oiref>=10,170,99,126,1:oigroup>
 <oigroup:<oiref:java#Class#dAux.DoNothingCmd:oiref>=10,10,109,126,1:oigroup>
-<oigroup:<oiref:java#Class#dAux.Header:oiref>=139,10,83,85,1:oigroup> 
+<oigroup:<oiref:java#Class#dAux.Header:oiref>=139,10,83,85,1:oigroup>
+<oigroup:<oiref:java#Class#dAux.ConfirmDlg:oiref>=266,179,178,174,1:oigroup>
 */
 class __positions {
 }
