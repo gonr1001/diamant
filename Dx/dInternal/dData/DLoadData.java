@@ -1,6 +1,6 @@
 /**
 *
-* Title: DLoadData $Revision: 1.8 $  $Date: 2005-02-09 01:38:13 $
+* Title: DLoadData $Revision: 1.9 $  $Date: 2005-02-09 13:31:03 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.9 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -300,6 +300,7 @@ public class DLoadData {
   }
 
   
+
 	private void initLoadData() {
 		_roomsAttributesInterpretor = new RoomsAttributesInterpretor();
 		Preferences preferences = new Preferences(System.getProperty("user.dir")
