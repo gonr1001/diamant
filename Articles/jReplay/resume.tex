@@ -13,10 +13,16 @@ qu'en cas d'erreur, le programmeur dispose d'outils pour trouver
 le problème plus rapidement.
 
 jReplay a été conçu pour des applications interactives Java
-construits avec la structure MVC (Modèle Vue Contrôleur) qui est
-la plus utilisé actuellement. Il a été construit en utilisant des
-outils comme Log4j et JUnit. Log4j est un outil qui permet faire
-la journalisation d'une application et d'activer ou de désactiver
-certains messages en fonction des besoins. Pour autre parte, JUnit
-permet faire de test unitaires qui attestent la validité de
-jReplay.
+construites avec le \emph{pattern} MVC (Modèle Vue Contrôleur). Il
+a été construit en utilisant l'outil Log4j qui permet de faire la
+journalisation d'une application et d'activer ou de désactiver
+certains messages en fonction des besoins. jReplay demande
+l'insertion de certaines instructions dans des endroits très
+précises du code pour générer le Journal de trace. Avec ce dernier
+il est possible de re-exécuter l'application.
+
+
+%La plus grande difficulté réside dans l'insertion des instructions
+%de journalisation. Vous devrez les placer avec soin pour que les
+%renseignements soient suffisamment précis sans verser dans le
+%redondant ou l'inutile.
