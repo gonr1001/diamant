@@ -1,0 +1,89 @@
+<project basedir="." name="Dx" default="all" >
+    <target name="setProps" unless="setProps" 
+ 		description="setup the properites.">
+        <property name="outdir" value="D:/Developpements/DiamantExtreme/Diamant1.6" /> 
+		<property name="setProps" value="true" />
+    </target>
+   
+    <target name="init" depends="setProps"  
+		description="initialize the properties.">
+        <tstamp/>
+    	<property name="local_outdir" value="D:/Developpements/DiamantExtreme/Dx" />
+		<property name="lib" value="${outdir}/lib" />
+		<property name="build" value="${local_outdir}/classes" />
+		<property name="model_jar" value="${outdir}/tictac.jar" />	
+    </target>
+
+    <target name="clean" depends="init" 
+         description="clean up the output directories.">
+         <delete dir="${outdir}"/> 
+   </target>
+   
+    <target name="prepare" depends="init" 
+                          description="prepare the output directory.">		
+		<mkdir dir="${build}" />
+        <mkdir dir="${lib}" />
+    </target>
+
+    <target name="compile" depends="prepare" 
+            description="compile the java sources">   	
+        <javac srcdir="${local_outdir}" destdir="${build}"           	
+        	classpath="D:\Developpements\DiamantExtreme\Dx\theLibrary\log4j-1.2.8.jar;D:\Developpements\DiamantExtreme\Dx\theLibrary\theLibrary.jar;D:\Developpements\DiamantExtreme\Dx\theLibrary\xmlLibrary.jar;D:\Program Files\eclipse\plugins\org.junit_3.8.1\junit.jar;"
+/>       
+    </target>
+
+
+    <target name="unjar1" depends="compile">
+        <unjar src="${local_outdir}\theLibrary\log4j-1.2.8.jar"
+        	dest="${build}"            	
+	      />
+
+    </target>
+
+    <target name="unjar2" depends="unjar1">
+        <unjar src="${local_outdir}\theLibrary\xmlLibrary.jar"
+        	dest="${build}"            	
+	      />
+
+    </target>
+	
+    <target name="unjar3" depends="unjar2">
+        <unjar src="${local_outdir}\theLibrary\theLibrary.jar"
+        	dest="${build}"            	
+	      />
+
+    </target>
+	
+    <target name="unjar4" depends="unjar3">
+        <unjar src="${local_outdir}\theLibrary\junit.jar"
+        	dest="${build}"            	
+	      />
+
+    </target>
+	
+    <target name="package" depends="unjar4">
+        <jar jarfile="${outdir}/tictac.jar"
+        	basedir="${build}"
+        	manifest="./MANIFEST.MF"           	
+	      />
+
+    </target>
+
+    <target name="all" depends="clean, package"
+        description="performs all targets">
+    </target>
+
+    
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
