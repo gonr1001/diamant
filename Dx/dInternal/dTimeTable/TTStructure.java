@@ -144,7 +144,9 @@ public class TTStructure {
   }
 
 
-
+  public Period rgetPeriod( ){
+    return new Period();
+  }
 
   /**
    * Create a sequence of periods
