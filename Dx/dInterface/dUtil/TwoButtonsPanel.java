@@ -1,6 +1,6 @@
 /**
  *
- * Title: TwoButtonsPanel $Revision: 1.1 $  $Date: 2004-04-07 15:41:01 $
+ * Title: TwoButtonsPanel $Revision: 1.2 $  $Date: 2004-04-07 18:08:28 $
  * Description: TwoButtonsPanel is a class used to have two buttons in a panel:
  *              Apply and Close
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,14 +33,12 @@ public class TwoButtonsPanel extends ButtonsPanel {
 
   public TwoButtonsPanel(ActionListener parentDialog, String [] buttonsNames) {
     super();
-    JButton button = new JButton(buttonsNames[0]);
-    button.setActionCommand(buttonsNames[0]);
-    button.addActionListener(parentDialog);
-    this.add(button);
-    button = new JButton(buttonsNames[1]);
-    button.setActionCommand(buttonsNames[1]);
-    button.addActionListener(parentDialog);
-    this.add(button) ;
+    for(int i = 0; i < buttonsNames.length; i++) {
+      JButton button = new JButton(buttonsNames[i]);
+      button.setActionCommand(buttonsNames[i]);
+      button.addActionListener(parentDialog);
+      this.add(button);
+    }
   }
 
   public void setFirstEnable() {
@@ -49,5 +47,13 @@ public class TwoButtonsPanel extends ButtonsPanel {
 
   public void setFirstDisable() {
     getComponent(0).setEnabled(false);
+  }
+
+  public void setMiddleEnable() {
+    ;
+  }
+
+  public void setMiddleDisable() {
+    ;
   }
 }

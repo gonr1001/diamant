@@ -36,10 +36,10 @@ public class EventsDlg extends EventsDlgInterface{
   public ButtonsPanel setButtons() {
     //_applyPanel
     String [] a = {DConst.BUT_APPLY, DConst.BUT_CLOSE};
-    _applyPanel = new TwoButtonsPanel(this, a);
+    _buttonsPanel = new TwoButtonsPanel(this, a);
     //Setting the button APPLY disable
-    _applyPanel.setFirstDisable();
-    return _applyPanel;
+    _buttonsPanel.setFirstDisable();
+    return _buttonsPanel;
 
   }
 
@@ -55,7 +55,7 @@ public class EventsDlg extends EventsDlgInterface{
         DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
       _leftLabel.setText(String.valueOf(_leftVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
-      _applyPanel.setFirstEnable();
+      _buttonsPanel.setFirstEnable();
     }//end if ( (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) || (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
     //if the source is one of the the _rightArrowsPanel buttons
     if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
@@ -67,7 +67,7 @@ public class EventsDlg extends EventsDlgInterface{
         DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);
       _rightLabel.setText(String.valueOf(_rightVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
-      _applyPanel.setFirstEnable();
+      _buttonsPanel.setFirstEnable();
     }//end if ( (e.getSource().equals(_rightArrowsPanel.getComponent(0))) || (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
     //if Button CLOSE is pressed
     if (command.equals(DConst.BUT_CLOSE))
@@ -82,7 +82,7 @@ public class EventsDlg extends EventsDlgInterface{
     if (command.equals(DConst.BUT_APPLY)){
       setUnities();
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
-      _applyPanel.setFirstDisable();
+      _buttonsPanel.setFirstDisable();
     }// end if Button APPLY
   }//end method
 

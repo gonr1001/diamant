@@ -16,6 +16,8 @@ import dInterface.DApplication;
 import dInterface.DToolBar;
 import dInterface.dUtil.DXTools;
 import javax.swing.JFrame;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dAffectation.EditActivityDlg;
@@ -29,7 +31,7 @@ import dResources.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 
-   private String[] _buttonsNames = {DConst.BUT_CHANGE,DConst.BUT_APPLY, DConst.BUT_CLOSE};
+  // private String[] _buttonsNames = {DConst.BUT_CHANGE,DConst.BUT_APPLY, DConst.BUT_CLOSE};
    private DModel _dm;
 //   private TTStructure _newTTS;
    private DToolBar _toolBar;
@@ -50,15 +52,22 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     jbInit();
   }//end method
 
+  public ButtonsPanel setButtons() {
+    //_applyPanel
+    String [] a = {DConst.BUT_CHANGE, DConst.BUT_CLOSE};;
+    _buttonsPanel = new TwoButtonsPanel(this, a);
 
+    return _buttonsPanel;
+
+  }
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //if the source is one of the the _leftArrowsPanel buttons
     //if Button CLOSE is pressed
-    if (command.equals(_buttonsNames[2]))
+    if (command.equals(DConst.BUT_CLOSE))
       dispose();
-    if ((command.equals(_buttonsNames[0])) && (selectedItems!=null)){
+    if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
       new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
     }
   }//end method
@@ -67,7 +76,7 @@ public class ManualImprovementDlg extends EventsDlgInterface{
   * build buttom to use in the dialog
   */
  protected void buildButtons(){
-   _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+   //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);

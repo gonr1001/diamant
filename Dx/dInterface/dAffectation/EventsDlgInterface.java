@@ -47,8 +47,8 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected int buttonsPanelHeight = 80;
   protected JLabel _leftLabel, _centerLabel, _rightLabel;
   protected JList _leftList, _centerList, _rightList;
-  protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel, _leftArrowsPanel, _buttonsPanel;
-  protected ButtonsPanel _applyPanel;
+  protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel, _leftArrowsPanel;
+  protected ButtonsPanel _buttonsPanel;
   protected Object[] selectedItems;
   protected SetOfActivities _activities;
   protected SetOfEvents _events;

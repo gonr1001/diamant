@@ -28,6 +28,8 @@ import dInternal.dData.*;
 import dInternal.dUtil.DXToolsMethods;
 import dResources.DConst;
 import com.iLib.gDialog.FatalProblemDlg;
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 
 public class EditActivityDlg extends JDialog implements ActionListener, ChangeListener{
 
@@ -35,7 +37,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private EventsDlgInterface _evDlgInt=null;
   private int _currentActivityIndex=0;
   private String _DURATION= "Durée:";
-  private String _DAY= "Jour:";
+
   private String _HOUR="Heure de début:";
   private String _INSTRUCTOR= "Enseignant:";// to remove
   private Vector _setOfInstructors= new Vector(1);// contains strings
@@ -46,8 +48,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   Vector _unities = new Vector();// contains event resource
 
   JTabbedPane _tabbedPane;
-  JPanel _bottomPanel;
-  JButton _jButtonApply, _jButtonClose;
+  TwoButtonsPanel _buttonsPanel;
+  //JButton _jButtonApply, _jButtonClose;
 
   /**
    * Constructor
@@ -88,8 +90,9 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * Initialize the dialog
    */
   private void jbInit(){
-    _bottomPanel = new JPanel();
-    _jButtonApply = new JButton( DConst.BUT_APPLY );
+    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _buttonsPanel = new TwoButtonsPanel(this, a);
+    /*_jButtonApply = new JButton( DConst.BUT_APPLY );
     _jButtonApply.setPreferredSize(new Dimension(80, 22));
     _jButtonApply.addActionListener(this);
     //_jButtonApply.setEnabled(false);
@@ -97,8 +100,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     _jButtonClose.setPreferredSize(new Dimension(75, 22));
     _jButtonClose.addActionListener(this);
     _bottomPanel.add(_jButtonApply);
-    _bottomPanel.add(_jButtonClose);
-    getContentPane().add(_bottomPanel, BorderLayout.SOUTH);
+    _bottomPanel.add(_jButtonClose);*/
+    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     _tabbedPane = new JTabbedPane();
     //_tabbedPane.
     for (int i=0; i< _unities.size(); i++){
@@ -149,7 +152,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
       if( applyChanges()){
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
-        _jButtonApply.setEnabled(false);
+        _buttonsPanel.setFirstDisable();
         if(_evDlgInt!=null)
           _evDlgInt.initializePanel();
       }else
@@ -157,7 +160,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
               || command.equals(DConst.BUT_FIGE)){// comboBox has changed
       //System.out.println("Enable appliquer ... ");
-      _jButtonApply.setEnabled(true);
+      _buttonsPanel.setFirstEnable();
     }else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
       new SelectInstructors(_dApplic,buildInstructorList());
     }
@@ -188,8 +191,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     JComboBox  cbDuration, cbDay, cbHour, cbRoom, cbInstructor;
     JToggleButton place, fix;
     duration = new JLabel(_DURATION);
-    day = new JLabel(_DAY);
-    hour = new JLabel(_HOUR);
+    day = new JLabel(DConst.R_DAY_NAME);
+    hour = new JLabel(DConst.R_ACTIVITY_BEGIN_HOUR);
     room = new JLabel(_ROOM);
     instructor = new JLabel(_INSTRUCTOR);
     //resDuration= new JLabel(buildDuration());
@@ -209,10 +212,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     cbRoom.addActionListener(this);
     cbRoom.setSelectedItem(vect[0].get(0).toString());
     vect = buildInstructorList();
-    cbInstructor = new JComboBox(vect[1]);
+    /*cbInstructor = new JComboBox(vect[1]);
     cbInstructor.addActionListener(this);
     cbInstructor.setPreferredSize(new Dimension(163,25));
-    cbInstructor.setSelectedItem(vect[0].get(0).toString());
+    cbInstructor.setSelectedItem(vect[0].get(0).toString());*/
     place = new JToggleButton(DConst.BUT_PLACE);
     place.setSelected(event.getAssignState());
     place.addActionListener(this);
@@ -238,7 +241,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     // instructor
     panel = new JPanel();
     panel.add(instructor);
-    panel.add(cbInstructor);
+   // panel.add(cbInstructor);
     JButton jButtonChange = new JButton( DConst.BUT_CHANGE );
     jButtonChange.setPreferredSize(new Dimension(75, 22));
     jButtonChange.addActionListener(this);
@@ -250,7 +253,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     buttomPanel.add(fix);
     centerPanel.add(panel);
     centerPanel.add(buttomPanel);
-    _jButtonApply.setEnabled(false);
+    _buttonsPanel.setFirstDisable();
     return centerPanel;
   }
 
