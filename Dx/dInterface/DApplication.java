@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.40 $  $Date: 2004-02-13 21:49:20 $
+ * Title: DApplication $Revision: 1.41 $  $Date: 2004-02-24 15:19:40 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -16,7 +16,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.40 $
+ * @version $Revision: 1.41 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -57,7 +57,7 @@ public class DApplication implements ActionListener {
   //private final static int ADJUST_HEIGHT = 92;
   /* ADJUST_WIDTH is needed to ajdust the screenSize
    * minus border pixels (the value is a guess) at each side of the screen */
-  //private final static int ADJUST_WIDTH = 6;
+  private final static int ADJUST_WIDTH = 6;
   /* MIN_HEIGHT is needed to ajdust the minimum
    * height of the screenSize */
   private final static int MIN_HEIGHT = 512;
@@ -129,9 +129,9 @@ public class DApplication implements ActionListener {
     panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     panel.setMaximumSize(_screenSize);
 
-    panel.setPreferredSize(new Dimension(_screenSize.width - DConst.ADJUST_WIDTH,
-                                         _screenSize.height - DConst.ADJUST_HEIGHT));
-    //panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
+    //panel.setPreferredSize(new Dimension(_screenSize.width - DConst.ADJUST_WIDTH,
+    //                                     _screenSize.height - DConst.ADJUST_HEIGHT));
+    panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
 
     jFrame.pack();
     jFrame.setVisible(true);

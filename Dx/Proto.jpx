@@ -9,6 +9,7 @@
   <property category="debug.2" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.3" name="SmartStepRedefineClasses" value="0"/>
   <property category="debug.4" name="SmartStepRedefineClasses" value="0"/>
+  <property category="debug.5" name="SmartStepRedefineClasses" value="0"/>
   <property category="optimize.0" name="BuildTargetOnOptimize" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
   <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
   <property category="runtime" name="ConfigurationCount" value="5"/>
@@ -66,7 +67,7 @@
   <property category="sys" name="ExcludeClassEnabled" value="0"/>
   <property category="sys" name="IncludeTestPath" value="1"/>
   <property category="sys" name="InstanceVisibility" value="2"/>
-  <property category="sys" name="JDK" value="java 1.4.1_02-b06"/>
+  <property category="sys" name="JDK" value="java 1.4.2_03-b02"/>
   <property category="sys" name="JbxEventListener0" value="dInternal.DModelListener"/>
   <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
   <property category="sys" name="JvmVersion" value="1.4"/>
