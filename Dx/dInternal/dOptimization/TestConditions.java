@@ -123,7 +123,7 @@ public class TestConditions {
       //_dm.getSetOfEvents()._isEventPlaced=true;
       for (int i=0; i< _dm.getSetOfEvents().size(); i++){
         Resource event = _dm.getSetOfEvents().getResourceAt(i);
-        addOrRemEventInTTs(tts, event,1);
+        addOrRemEventInTTs(tts, event,1,false);
       }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
       _dm.getSetOfEvents().updateActivities(_dm.getSetOfEvents().getSetOfResources());
     }
@@ -135,8 +135,8 @@ public class TestConditions {
     * @param int operation -1= remove event, 0= do nothing, 1= add event
     * @return
     */
-  public int[] addOrRemEventInTTs(TTStructure tts, Resource event, int operation){
-     return StandardAddOrRemEventInTTs(tts,event, operation);
+  public int[] addOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
+     return StandardAddOrRemEventInTTs(tts,event, operation, usePriority);
    }
 
    /**
@@ -145,8 +145,8 @@ public class TestConditions {
     * @param int operation -1= remove event, 0= do nothing, 1= add event
     * @return
     */
-   public int[] addOrRemEventInTTs( Resource event, int operation){
-     return StandardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation);
+   public int[] addOrRemEventInTTs( Resource event, int operation, boolean usePriority){
+     return StandardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation,usePriority);
    }
 
 
@@ -158,7 +158,7 @@ public class TestConditions {
    * range 1= nb of instructors conflicts
    * range 2= nb of rooms conflicts
    */
-  private int[] StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation){
+  private int[] StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
     int[] numberOfConflicts={0,0,0};
     int totalNumberOfConflicts=0;
     //StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
@@ -169,10 +169,10 @@ public class TestConditions {
       int[] perKey={Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
       //int[] avoidPriority={};
-      if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
-          duration, _avoidPriority)){
+      if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
+          duration, _avoidPriority,usePriority)) && (duration>0) ){
         for (int j=0; j< duration; j++){
-        	//System.out.println("**first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
+        	//System.out.println("**Event :"+ event.getID()+"  first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           //if (per == null)
           	//System.out.println(event.getID());

@@ -69,12 +69,12 @@ public class FirstAffectAlgorithm implements Algorithm {
           int[] dayTime= {value.getIntValue(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
           ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
           ((EventAttach)currentEvent.getAttach()).setAssignState(true);
-          nbConf= _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,0);
+          nbConf= _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,0,true);
           isNumberOfConflictsAccept= isConflictsAcceptable(nbConf);
           ((EventAttach)currentEvent.getAttach()).setAssignState(false);
-          if(isNumberOfConflictsAccept){
+          if((isNumberOfConflictsAccept) && ((EventAttach)currentEvent.getAttach()).getDuration()!=0){
             ((EventAttach)currentEvent.getAttach()).setAssignState(true);
-            _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,1);
+            _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,1,true);
             _placeEvent.add(currentEvent);
             periodList.removeAllElements();
           }//else{// end if if(numberOfConflicts==0)
@@ -122,7 +122,7 @@ public class FirstAffectAlgorithm implements Algorithm {
           Resource period= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
           Period per= (Period)period.getAttach();
           if(per.getEventsInPeriod().size()< _dm.getConditionsTest().getPeriodAcceptableSize()){
-            if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(day.getKey(),seq.getKey(),period.getKey(),duration, avoidPriority)){
+            if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(day.getKey(),seq.getKey(),period.getKey(),duration, avoidPriority,true)){
               int number=0;
               for (int l=0; l< duration; l++){
                 number+= ((Period)((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k+l).getAttach()

@@ -304,7 +304,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
       for (int j=0; j< seq.getSetOfPeriods().size(); j++){
         period = (Period)seq.getSetOfPeriods().getResourceAt(j).getAttach();
         if (cycle.isPeriodContiguous(dayKey,day.getSetOfSequences().getResourceAt(i).getKey()
-                                     ,seq.getSetOfPeriods().getResourceAt(j).getKey(),duration, avoidPriority)){
+                                     ,seq.getSetOfPeriods().getResourceAt(j).getKey(),duration, avoidPriority,true)){
           list[1].add(period.getBeginHour()[0]+":"+period.getBeginHour()[1]);
         }// end if (cycle.isPeriodContiguous(p
       }// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
@@ -375,11 +375,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     Cycle cycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle();
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     //remove event
-    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),-1);
+    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),-1,false);
 
     JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
     String duration= ((JTextField)((JPanel)tpane.getComponent(0)).getComponent(1)).getText();
-    if ((!DXToolsMethods.isIntValue(duration)) || (Integer.parseInt(duration)<1))
+    if ((!DXToolsMethods.isIntValue(duration)) || (Integer.parseInt(duration)<0))
       return false;
     String day= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(1)).getSelectedItem().toString();
     String hour= ((JComboBox)((JPanel)tpane.getComponent(1)).getComponent(3)).getSelectedItem().toString();
@@ -403,7 +403,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     vect.add(_unities.get(_currentActivityIndex));
     _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().updateActivities(vect);
     //add event
-    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1);
+    _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1,false);
     return true;
   }
 

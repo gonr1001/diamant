@@ -97,7 +97,17 @@ public class StandardReportData {
             Section section= (Section)nature.getSetOfSections().getResourceAt(k).getAttach();
             for(int l=0; l< section.getSetOfUnities().size(); l++){
               Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(l).getAttach();
-              if(bloc.isAssign()){
+              Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
+                  ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
+              String hour= "00"+Integer.toString(bloc.getDuration()/_AHOUR);
+              String minute= "00"+Integer.toString(bloc.getDuration()%_AHOUR);
+              StringTokenizer dtime= new StringTokenizer(_dm.getTTStructure(
+                  ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
+              long dayKey= Long.parseLong(dtime.nextToken());
+              long seqKey= Long.parseLong(dtime.nextToken());
+              long perKey= Long.parseLong(dtime.nextToken());
+              Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
+              if((bloc.isAssign()) && period.getPriority()!=2){
                 String activityName =_dm.getSetOfActivities().getResourceAt(i).getID();
                 actlist+= _dm.getSetOfActivities().getResourceAt(i).getID()+";";// write activity name
                 String activityType = activity.getSetOfTypes().getResourceAt(j).getID();
@@ -105,7 +115,9 @@ public class StandardReportData {
                 actlist+= nature.getSetOfSections().getResourceAt(k).getID()+";";//soa.CR_LF;//
                 String activitySection = nature.getSetOfSections().getResourceAt(k).getID();
                 actlist+= section.getSetOfUnities().getResourceAt(l).getID()+";";
-                Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
+                actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
+                        minute.substring(minute.length()-2,minute.length())+";";
+                /*Assignment currentCycAss = (Assignment)bloc.getSetOfAssignments(
                     ).getResourceAt(_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
                 String hour= "00"+Integer.toString(bloc.getDuration()/_AHOUR);
                 String minute= "00"+Integer.toString(bloc.getDuration()%_AHOUR);
@@ -115,11 +127,11 @@ public class StandardReportData {
                     ).getCurrentCycle().getPeriod(currentCycAss.getDateAndTime()),DConst.TOKENSEPARATOR);
                 long dayKey= Long.parseLong(dtime.nextToken());
                 long seqKey= Long.parseLong(dtime.nextToken());
-                long perKey= Long.parseLong(dtime.nextToken());
+                long perKey= Long.parseLong(dtime.nextToken());*/
                 actlist+=dayKey+";";
                 actlist+= _dm.getTTStructure().getCurrentCycle().getSetOfDays(
                     ).getResource(dayKey).getID()+";";//.getID()
-                Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
+                //Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
                 hour= "00"+period.getBeginHour()[0];
                 minute= "00"+period.getBeginHour()[1];
                 actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+

@@ -11,6 +11,7 @@ package dInternal.dAlgorithms;
 
 import dInternal.DModel;
 import java.util.Vector;
+import java.awt.Cursor;
 
 public class SelectAlgorithm {
 
@@ -52,7 +53,9 @@ public class SelectAlgorithm {
    */
   public void execute(){
     if(_algorithmToRun.size()!=0){
+      _dm.getDDocument().setCursor(Cursor.WAIT_CURSOR);
       ((Algorithm)_algorithmToRun.firstElement()).build( );
+      _dm.getDDocument().setCursor(Cursor.DEFAULT_CURSOR);
     }
   }
 

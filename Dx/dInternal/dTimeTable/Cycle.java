@@ -378,7 +378,7 @@ public Period getLastPeriod(){
   * @param int the duration where we want to check adjacency of periods
   * @return Period the period
   * */
- public boolean isPeriodContiguous( long dayKey, long seqKey, long beginperKey, int duration, int[] avoidPriority){
+ public boolean isPeriodContiguous( long dayKey, long seqKey, long beginperKey, int duration, int[] avoidPriority,boolean usePriority){
    Day day =(Day)getSetOfDays().getResource(dayKey).getAttach();
    if(day!=null){
      Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqKey).getAttach();
@@ -386,10 +386,13 @@ public Period getLastPeriod(){
        int index = seq.getSetOfPeriods().getIndexOfResource(beginperKey);
        if( (index!=-1) && ( (index+duration-1) < seq.getSetOfPeriods().size() ) ){
          for(int i=0; i< seq.getSetOfPeriods().size(); i++){
-           for (int j=0; j< avoidPriority.length; j++){
-             if (((Period)seq.getSetOfPeriods().getResourceAt(i).getAttach()).getPriority()==avoidPriority[j])
-               return false;
-           }
+           if(usePriority){
+             for (int j=0; j< avoidPriority.length; j++){
+               if (((Period)seq.getSetOfPeriods().getResourceAt(i).getAttach()).getPriority()==avoidPriority[j])
+                 return false;
+             }// end for (int j=0; j< avoidPriority.length; j++)
+
+           }// end if(usePriority)
          }
          return true;
        }
