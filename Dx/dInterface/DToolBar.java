@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.7 $  $Date: 2003-06-12 10:22:08 $
+ * Title: ToolBar $Revision: 1.8 $  $Date: 2003-06-12 10:30:01 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -123,7 +123,6 @@ public class DToolBar extends JToolBar {// implements ActionListener{
         //JComboBox cb = (JComboBox)e.getSource();
         //int  i = cb.getSelectedIndex();
         int i = toolBarSelector.getSelectedIndex();
-        System.out.println("index i " + i);
         switch (i){
           case 0: addBarOne(); break;
           case 1: addBarTwo(); break;
