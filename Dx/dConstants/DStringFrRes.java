@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.30 $  $Date: 2003-07-03 11:52:03 $
+ * Title: DStringFrRes $Revision: 1.31 $  $Date: 2003-07-07 16:53:38 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.31 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -39,11 +39,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "newTTTD", "Indiquez grille horaire"},
     { "newTTM", "Grille horaire"},
 
-    { "nTTCy", "Cycle" },
+    { "nTTCy", "Horaire cycle" },
     { "nTTCyTD", "Grille horaire Cycle"},
     { "nTTCyM", "Cycle"},
 
-    { "nTTEx", "Examen" },
+    { "nTTEx", "Horaire examen" },
     { "nTTExTD", "Grille horaire Examens"},
     { "nTTExM", "Examen"},
 
@@ -97,11 +97,11 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "newTTM", "Grille horaire"},*/
 
 
-    { "nTTSCy", "Cycle" },
+    { "nTTSCy", "Grille cycle" },
 /*    { "nTTCyTD", "Grille horaire Cycle"},
     { "nTTCyM", "Cycle"},*/
 
-    { "nTTSEx", "Examen" },
+    { "nTTSEx", "Grille examen" },
 /*    { "nTTExTD", "Grille horaire Examens"},
     { "nTTExM", "Examen"},*/
 
