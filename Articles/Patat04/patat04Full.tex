@@ -61,15 +61,16 @@ produisent un ou plusieurs horaires par année pour les cours et
 les examens. L'automatisation de cette production peut réduire son
 coût de manière importante. Dans certains cas, l'automatisation
 commence par l'utilisation d'un logiciel de construction
-d'horaires; dans d'autres commence par l'automatisation des
+d'horaires; dans d'autres, elle commence par l'automatisation des
 traitements associés au fonctionnement de l'institution, comme par
 exemple le suivit des étudiants. Il existe de logiciels pour
 effectuer la construction d'horaires, on peut citer comme exemples
-\cite{gonzalezrubio00,ferland94}, mais, il existe d'autres.
+DIAMANT \cite{gonzalezrubio00} et SAPHIR \cite{ferland94}, mais,
+il existe d'autres.
 
-En général, les logiciels pour la création des horaires utilisent
+En général, les logiciels pour la création d'horaires utilisent
 comme  entrée un ou plusieurs fichiers. Leur sortie est effectuée,
-également, sur'un ou plusieurs fichiers. Travailler avec des
+également, sur un ou plusieurs fichiers. Travailler avec des
 fichiers est une sources de problèmes. Il faut construire les
 fichiers d'entrée à chaque fois qu'un horaire est produit. Il
 existe, deux cas~: une production manuelle des fichiers ou une
@@ -88,14 +89,14 @@ données différents.
 
 Une autre source de problèmes encore plus coûteuse que la
 précédente, est celle de l'introduction d'un changement dans le
-système, qui entraîne une modification du logiciel de construction
-ou du logiciel de la production ou dans les deux. Les changements
-viennent de la part de responsables de l'institution, par exemple
-une nouvelle nomenclature pour les locaux; nouvelle approche
+système, soit dans le logiciel de construction, ou dans logiciel
+de la production ou bien dans les deux. Les changements viennent
+de la part de responsables de l'institution, par exemple une
+nouvelle nomenclature pour les locaux; nouvelle approche
 pédagogique, qui change la constitution de groupes, etc. Ce
 problème de modifier un logiciel n'est pas propre à la production
 d'horaire. Il s'agit d'un problème général dans le développement
-de logiciels.
+des logiciels.
 
 
 La solution pour le premier problème passe par l'automatisation de
@@ -105,43 +106,43 @@ bonnes données. Le deuxième problème, est plus délicat à traiter,
 si l'ensemble de logiciels de production ont été conçus pour être
 modifiables (extensibles) le coût de faire une modification sera
 faible, mais si le système est monolithique et fermé une
-modification sera très coûteuse. Sa solution est le développement
-de logiciel ayant, entre autres, la qualité d'extensibilité.
-
+modification sera très coûteuse. Une manière de diminuer les
+effets de ce problème est le développement de logiciel ayant,
+entre autres, la qualité d'extensibilité.
 
 
 Dans cet article nous proposons l'architecture  d'un système de
 production des horaires de cours et des examens ayant les qualités
 suivantes~: ouverte et extensible. Une telle architecture doit
-aider à faire face plus facilement aux deux problèmes mentionnées
-en réduisant le coût de modifications et en effectuant la
-vérification et la validation des données à l'endroit nécessaire
-dans le processus et en évitant la redondance du code et des
-données. Cette architecture met en \oe{}uvre une bases de données,
-un site Web et un logiciel de construction d'horaires.  La
-vérification et la validation de données  se fera à l'entrée de
-données et avec de contraintes d'intégrité dans la base de
-données.  Le site Web est utilisé principalement pour la saisie de
-données, ceci permet de vérifier aussi la validité des données,
-grace au règles d'affaires avant que la donnée soit entrée dans la
-base. Autre fonction du site Web est d'offrir les horaires de
-manière personnalisé, une fois que l'horaire est construit. La
-base de données permet l'extraction des données, selon différents
-formats. Ainsi, l'entrée de données du logiciel de construction
-est facilité.  Bien entendu, avec l'aide du logiciel de
-construction d'horaires, il est possible de fabriquer un horaire
-avec un minimum de conflits.
+contribuer à faire face plus facilement aux deux problèmes
+mentionnées, en réduisant le coût des modifications et en
+effectuant la vérification et la validation des données dans des
+étapes précises du processus et en évitant la redondance du code
+et des données. Cette architecture met en \oe{}uvre une base de
+données, un site Internet et un logiciel de construction
+d'horaires. La vérification et la validation de données  se fera à
+l'entrée de données et avec de contraintes d'intégrité dans la
+base de données.  Le site Web est utilisé principalement pour la
+saisie de données, ceci permet de vérifier aussi la validité des
+données, grace au règles d'affaires avant que la donnée soit
+entrée dans la base. Autre fonction du site Web est d'offrir les
+horaires de manière personnalisé, une fois que l'horaire est
+construit. La base de données permet l'extraction des données,
+selon différents formats. Ainsi, l'entrée de données du logiciel
+de construction est facilité. Bien entendu, avec l'aide du
+logiciel de construction d'horaires, il est possible de fabriquer
+un horaire avec un minimum de conflits.
 
-Beaucoup de recherche a été faite dans la construction
+Des nombreuses recherches ont été faites dans la construction
 d'horaires~: algorithmes et formulations mathématiques et
 plusieurs logiciels ont été proposés dans les conférences PATAT
-\cite{patat97,patat00,patat02}, peu d'efforts ont été consacrés,
-jusqu'à présent, au développement général de la production
-d'horaires. Nous pensons que le fait d'avoir une vue globale sur
-le processus peut aider la recherche en construction d'horaires.
-White \cite{white00} a mis en évidence que le Web doit être
-utilisé comme un moyen de diffusion de horaires. Nous allons un
-peu plus loin en proposant  de l'utiliser également comme
+\cite{patat97,patat00,patat02}. Par contre, peu d'efforts ont été
+consacrés, jusqu'à présent, au développement général de la
+production d'horaires. Nous pensons que le fait d'avoir une vue
+globale sur le processus peut aider la recherche en construction
+d'horaires. White \cite{white00} a mis en évidence que le Web doit
+être utilisé comme un moyen de diffusion d'horaires. Nous allons
+un peu plus loin en proposant  de l'utiliser également comme
 interface d'entrée, de plus nous proposons l'architecture
 nécessaire à supporter nos idées. De Causmaecker et al
 \cite{decausmaecker02} ont introduit l'idée que la sémantique du
@@ -160,7 +161,7 @@ aussi un autre standard pour définir des instances de problèmes de
 construction d'horaires, ayant comme base le langage XML. Il nous
 semble qu'il serait souhaitable d'avoir un standard, mais c'est un
 but très difficile à atteindre. À la place, notre approche permet
-d'utiliser  la base de données comme un outil d'extraction et de
+d'utiliser une base de données comme un outil d'extraction et de
 formattage, de cette manière le logiciel de construction
 d'horaires peut recevoir les données nécessaires. Ainsi, il serait
 possible de générer des instances de problèmes pour d'autres
@@ -178,17 +179,18 @@ nos travaux. Ceci est présenté dans les sections \ref{sec:data} et
 
 Une fois l'architecture définie, nous avons crée une instance afin
 de l'implanter dans un système de production d'horaires à
-l'Université de Sherbrooke. Nous avons fait un survol de
-technologies afin de faire les bons choix respectant encore les
-objectifs de ouverture et extensibilité ont été atteints. Ceci est
-présenté dans les sections \ref{sec:tech} et \ref{sec:tictac}.
+l'Université de Sherbrooke. Nous avons fait un survol des
+technologies existantes afin de faire les bons choix respectant
+encore les objectifs d'ouverture et extensibilité ont été
+atteints. Ceci est présenté dans les sections \ref{sec:tech} et
+\ref{sec:tictac}.
 
 Nous finissons par un bilan et des conclusions à la section
 \ref{sec:conc}.
 
 
 
-\section{Les flot de l'information dans production d'horaires}
+\section{Les flot de l'information dans la production d'horaires}
 \label{sec:data}
 
 Tout d'abord, nous définissons, le processus de production
@@ -198,18 +200,19 @@ Cette période $P$ est un semestre, un  trimestre, ou une
 année\footnote{Dans l'Université de Sherbrooke on parle de
 trimestre, mais en réalité il comporte seize semaines (presque
 quatre mois), donc le système doit s'adapter à tout periode $P$.}.
-Le processus fini lorsque toutes le personnes concernés reçoivent
-l'horaire sur un support papier ou sur le Web (voir figure
-\ref{fig:fOne}) et que la période de validité de l'horaire touche
-à sa fin. Les données à saisir sont multiples, par exemple les
-cours qui vont avoir lieu dans la période $P$; le format du cours
-(3h, ou 2h+1h); les enseignants possibles ou assignées à certains
-cours; les locaux possibles ou assignées; la disponibilité des
-enseignants et des locaux, etc.. Signalons qu'il existe des
-institutions où les étudiants font un pré-choix et d'autres où les
-horaires sont fait sans pré-choix. Le pre-choix des étudiants fait
-partie des données à saisir, s'il n'y a pas de pré-choix, il faut
-indiquer le nombre d'étudiants à admettre pour chaque cours.
+Le processus fini lorsque toutes les personnes concernées
+reçoivent l'horaire sur un support papier ou sur le Web (voir
+figure \ref{fig:fOne}) et que la période de validité de l'horaire
+touche à sa fin. Les données à saisir sont multiples, par exemple
+les cours qui vont avoir lieu dans la période $P$; le format du
+cours (3h, ou 2h+1h); les enseignants possibles ou assignées à
+certains cours; les locaux possibles ou assignées; la
+disponibilité des enseignants et des locaux, etc.. Signalons qu'il
+existe des institutions où les étudiants font un pré-choix et
+d'autres où les horaires sont fait sans pré-choix. Le pre-choix
+des étudiants fait partie des données à saisir, s'il n'y a pas de
+pré-choix, il faut indiquer le nombre d'étudiants à admettre pour
+chaque cours.
 
 
 \begin{figure}[htb] \begin{center}
@@ -244,8 +247,8 @@ construction d'horaires.
 \item[Système de production d'horaires] Il est composé de
 plusieurs logiciels, ou modules, qui fonctionnent de manière
 autonome, mais coordonnée. Il nous apparaît clair que  le système
-doit avoir deux composantes principales~: système de sauvegarde de
-données et le logiciel de construction d'horaires.
+doit avoir deux composantes principales~: le système de sauvegarde
+de données et le logiciel de construction d'horaires.
 
 \item[Données] représentent des données nécessaires à la
 production d'horaires. Nous allons sauvegarder toutes les données
@@ -272,7 +275,7 @@ trouvent dans  la base de données.
 
 \subsection{La préparation des données}
 La figure \ref{fig:fTwo} montre l'évolution des données pendant la
-production de l'horaire. L'évolution présente les instances de
+production de l'horaire. L'évolution présente les instances des
 données à différents instants du processus.
 
 La répartition de données sur une seule base de données ou sur
@@ -307,11 +310,10 @@ horaire}\label{fig:fTwo}
     terme dans l'entrepôt.  L'information des activités pédagogiques d'un
     programme, les programmes offerts, les enseignants, les
     caractéristiques de salles de cours, les étudiants sont des exemples de
-    ce type d'information.
-    Il s'agit en général des informations qui sont partagées par
+    ce type d'information. Il s'agit en général des informations qui sont partagées par
     d'autres applications. Par exemple un étudiant est décrit par son
     nom, prénom, matricule, programme suivi, etc. Une application qui
-    utilisé les données étudiants est par exemple celle qui permet
+    utilise les données étudiants est par exemple celle qui permet
     d'imprimer les notes d'un étudiant sur son bulletin.
     Ici, nous nous intéressons aux données associées à la production d'horaires,
 qui peut être une vue (une partie) de la base de données complète
@@ -388,11 +390,11 @@ très rares. Dans le cas b. la saisie (surtout mis-à-jour) se fait
 au même temps que la construction. Ceci est le cas général,
 beaucoup de données sont figées, comme l'offre de cours, cependant
 si pendant la construction on trouve des situations où les
-conflits font qu'il faut faire des changements sur les données,
-format d'un cours, passer de 3h consécutives à 2h consécutives
-plus 1h. D'autres cas peuvent se présenter.
+conflits obligent à faire des changements sur les données, format
+d'un cours, passer de 3h consécutives à 2h consécutives plus 1h.
+D'autres cas peuvent se présenter.
 
-En fonction de chaque instance de système, il faut définir le
+En fonction de chaque instance du système, il faut définir le
 schéma de la base de données, et les rôles et privileges des
 utilisateurs.
 
@@ -401,21 +403,21 @@ utilisateurs avec la bases de données. Nous considérons deux types
 d'utilisateurs~: le commis et le responsable de la construction.
 Le commis est celui qui va saisir les infrastructures comme dans
 la base, le responsable et celui qui est responsable de la
-construction l'horaire et qui interagit avec  le programme de
+construction de l'horaire et qui interagit avec  le programme de
 construction d'horaires.
 
 Le commis va saisir ou mettre-à-jour  une donnée dans la base si
 la données est valide,  elle est accepté et entrée dans la base.
-Par exemple si la donne attendue est un entier dans une
-intervalle, et que la donnée entrée correspond à l'ensemble de
-valeurs attendues; elle sera entrée dans la base. Sinon. le commis
-doit rentrer une nouvelle valeur. Bien entendu, il faut avoir
+Par exemple si la donne attendue est un entier dans un intervalle,
+et que la donnée entrée correspond à l'ensemble de valeurs
+attendues; elle sera entrée dans la base. Sinon, le commis doit
+rentrer une nouvelle valeur. Bien entendu, il faut avoir
 différentes priorités d'accès.
 
 La construction d'horaires est une activité de nature itérative.
 En général, les algorithmes de construction d'horaires proposent
-de respecter les contraintes fortes et de essayer de respecter le
-plus possible de contraintes faibles, donc, le responsable, va
+de respecter les contraintes fortes et d'essayer de respecter le
+plus possible de contraintes faibles, donc, le responsable va
 essayer de trouver plusieurs solutions pour en choisir une. Dans
 certains cas, il est possible de faire partir le programme avec
 les mêmes données pour trouver une nouvelle solution. Dans
@@ -443,17 +445,17 @@ implémenter le système
 De manière abstraite, une architecture logicielle décrit les
 éléments composants d'un système, elle montre aussi les
 interactions entre ces éléments, les modèles qui guident sa
-composition et les contraints de ces modèles. \cite{shaw96}
+composition et les contraintes de ces modèles. \cite{shaw96}
 
 De façon générale, quand nous avons un problème complexe, la
-meilleure solution est découper le problème en fragments plus
-faciles à gérer avec des solutions simples. Après si nous mettons
-ensemble ces petites solutions, nous allons arriver à la solution
-de notre problème complexe \cite{buschmann96}.
+meilleure approche est de découper le problème en fragments qui
+sont plus faciles à gérer avec des solutions simples. Après, si
+nous mettons ensemble ces petites solutions, nous allons arriver à
+la solution de notre problème complexe \cite{buschmann96}.
 
 À l'heure actuelle il y a plusieurs architectures disponibles pour
-développer des applications logicielles,  la plus adaptée pour
-mieux résoudre notre problème est celle en couches.
+développer des applications logicielles,  la plus adaptée pour ce
+type de problème est celle en couches.
 
 L'architecture montré dans la figure \ref{fig:fThree} propose la
 division du système en trois couches, chacune avec une fonction
@@ -465,12 +467,12 @@ saisie des données de l'utilisateur, ainsi que l'entrée des
 données qui vient d'autres systèmes.
 
 \item [La couche de logique d'affaires~:] Est responsable du
-comportement du système, c'est à dire, ici sont codées les règles
-d'affaires.
+comportement du système, c'est à dire, les règles d'affaires sont
+codées ici.
 
-\item [La couche de persistance~:] Gére le stockage physique des
-données, soit dans fichiers avec un certain format, ou dans un
-système de bases de données traditionnelle ou bien dans autres
+\item [La couche de persistance~:] Gère le stockage physique des
+données, soit dans des fichiers avec un certain format, ou dans un
+système de bases de données traditionnelle ou bien dans d'autres
 modèles de persistance qui sont capables de gérer des bases de
 données complexes.
 \end {description}
@@ -493,11 +495,10 @@ données complexes.
 
 
 Pour chaque élément de l'architecture que nous avons présenté dans
-la section antérieure, nous allons proposer un composant qui fait
-partie de l'application de production d'horaires. Dans cette
-section nous allons montrer l'intégration entre le flot des
-données propre à un système de production d'horaires et
-l'architecture proposée.
+la section antérieure, nous proposons un composant qui fait partie
+de l'application de production d'horaires. Dans cette section nous
+allons montrer l'intégration entre le flot des données propre à un
+système de production d'horaires et l'architecture proposée.
 
 La conception de haut niveau de notre système de production
 d'horaires est simple (voir figure \ref{fig:fOne})~:
@@ -522,8 +523,8 @@ dans l'application, il faut en conséquence, prendre les mesures
 nécessaires pour permettre le travail concurrent dans la couche de
 persistance de données.
 
-\item Les données générées par autres systèmes (données de base).
-Depuis long temps il est prouvé que la meilleure manière
+\item Les données générées par d'autres systèmes (données de
+base). Depuis long temps il est prouvé que la meilleure manière
 d'échanger de l'information entre deux systèmes est le transfert
 de fichiers. C'est pour cette raison que notre système doit être
 capable de recevoir et envoyer des fichiers dans un format
@@ -536,14 +537,15 @@ activité est de nature itérative, il peut avoir un certain nombre
 de versions de travail que l'utilisateur responsable de la
 création d'horaires doit analyser pour trouver celle qui lui
 convient le mieux. Une fois qu'il a trouvé cette version, il doit
-appliquer l'opération " commit " pour rendre disponible
+appliquer l'opération "commit" pour rendre disponible
 l'information au reste des utilisateurs. Ce sont les données qui
-sortent de notre système, et ils sont envoyés vers autres systèmes
-ou bien vers autres utilisateurs, par exemple, les étudiants qui
-vont recevoir un papier avec son horaire personnalisé ou bien, il
-peut consulter cette information en utilisant un site Web crée
-pour ces fins, ou bien, l'organisme d'administration central de
-l'institution qui doit être informé de l'affectation des horaires.
+sortent de notre système, et ils sont envoyés vers d'autres
+systèmes ou bien vers d'autres utilisateurs, par exemple, les
+étudiants qui vont recevoir un papier avec leur horaire
+personnalisé ou bien, il peut consulter cette information en
+utilisant un site Web crée pour ces fins, ou bien, l'organisme
+d'administration central de l'institution qui doit être informé de
+l'affectation des horaires.
 
 \end{enumerate}
 
@@ -631,8 +633,9 @@ Après notre analyse, nous avons constaté qu'il n'y a pas une seule
 option, plutôt il y a plusieurs possibilités pour implémenter
 cette architecture.
 
-Nous montrons ici une liste d'instances possibles, il faut
-remarquer qu'elle n'est pas exhaustive.
+Dans le Tableau \ref{tb:tbOne}, nous montrons une liste
+d'instances possibles, il faut remarquer qu'elle n'est pas
+exhaustive.
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
@@ -651,9 +654,6 @@ La persistance de données & Base de données & Base de données & Base de données 
  \caption{ Quelques instances possibles de
 l'architecture}\label{tb:tbOne}
 \end{table}
-
-Tel que nous avons remarqué l'ensemble des instances montrées dans
-le Tableau \ref{tb:tbOne} n'est pas exhaustive.
 
 Pour la construction de chaque instance nous avons pris en
 considération une certaine logique, nous avons mit ensemble les
@@ -710,7 +710,7 @@ Web.
 
 \section{Une instance de l'architecture} \label{sec:tictac}
 
-Une fois que nous avons établi l'architecture et que nous sachons
+Une fois que nous avons établi l'architecture et que nous savons
 qu'elle est ouverte et extensible, il faut que l'instance que nous
 allons implémenter soit aussi ouverte et extensible. Nous avons
 montré trois options d'instances de l'architecture (voir Tableau
@@ -742,8 +742,8 @@ applications de type transactionnelle.
 \item [Format pour échanger données:] Pour échanger les données
 nous avons choisi XML. XML (eXtensible Markup Language) nous
 permet de stocker, d'échanger et d'afficher des données ou de
-l'information d'une manière structurée. Le langage permette aussi
-de manipuler, de transformer et de visualiser les données avec de
+l'information d'une manière structurée. Le langage permet aussi de
+manipuler, de transformer et de visualiser les données avec de
 nombreux outils de formatage, par exemple, des informations ou des
 données stockées dans un document XML peuvent être affichées dans
 un navigateur Web. De plus, quand des documents XML sont stockées
@@ -762,14 +762,14 @@ couche persistance de données nous avons choisi d'utiliser une
 base de données. Une base de données est une entité dans laquelle
 il est possible de stocker des données de façon structurée avec le
 moins de redondance possible. Ces données doivent pouvoir être
-utilisées par des programmes écrites en différentes langages en
-utilisant la technologie ODBC (Open DataBase Connectivity), si
-nous utilisons Java comme langage pour établir la connexion vers
-la base de données, nous pouvons utiliser JDBD (Java Database
-Connectivity). JDBC est un programme d'application (API) pour
-établir la connexion entre le langage Java et un grande nombre de
-bases de données, en utilisant la philosophie "Write Once, Run
-Anywhere".
+utilisées par des programmes écrits en différents langages en
+utilisant la technologie standard ODBC (Open DataBase
+Connectivity), si nous utilisons Java comme langage pour établir
+la connexion vers la base de données, nous pouvons utiliser JDBC
+(Java Database Connectivity). Le standard JDBC est un programme
+d'application (API) pour établir la connexion entre le langage
+Java et un grande nombre de bases de données, en utilisant la
+philosophie "Write Once, Run Anywhere".
 \end{description}
 
 Même si ce n'est pas la seule option pour l'implementation de
@@ -785,7 +785,10 @@ Nous avons présenté une architecture pour la production d'horaires
 dans une institution d'enseignement. Un objectif a guidé notre
 démarche~: avoir une architecture ouverte et extensible. Dans la
 présentation de l'architecture nous avons montré qu'elle possède
-les deux qualités.
+les deux qualités. Notre architecture est ouverte, étant donné
+qu'elle accepte plusieurs instances. L'architecture est aussi
+extensible, parce que nous pourrions changer les modules d'une
+manière facile.
 
 
 L'objectif de modéliser le processus de production d'horaires pour
