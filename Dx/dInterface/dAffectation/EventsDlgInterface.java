@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.16 $  $Date: 2004-12-16 19:20:46 $
+ * Title: EventsDlgInterface $Revision: 1.17 $  $Date: 2005-02-08 16:24:40 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -71,6 +71,10 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected SetOfEvents _events;
   protected String _eventFullKey;
   protected Unity _currUnity;
+
+  /**
+   * @associates String 
+   */
   protected Vector _leftVector, _centerVector, _rightVector;
   protected JDialog _jDialog;
 

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStudents $Revision: 1.5 $  $Date: 2005-02-04 16:20:11 $
+* Title: SetOfStudents $Revision: 1.6 $  $Date: 2005-02-08 16:24:46 $
 * Description: SetOfStudents is a class used as a data structure container.
 *              It contains the student and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -46,6 +46,9 @@ import dInternal.dUtil.DXToolsMethods;
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class SetOfStudents extends DSetOfResources {
+    /**
+     * @associates SetOfStudentsListener 
+     */
 	private Vector _soStudentsListeners;
 	/**
 	 * 

@@ -31,6 +31,11 @@ public class Activity extends DXObject{
    activity is fixed or not */
   private String _idemLine;
   private SetOfResources _setOfTypes; // contents Resources of class Type
+
+
+  /**
+   * @associates String 
+   */
   private Vector _studentRegistered; // it contains key of students
 
 

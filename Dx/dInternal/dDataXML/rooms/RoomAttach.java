@@ -22,6 +22,10 @@ public class RoomAttach extends DXObject{
   private String _description="";
   private int _function=-1;
   private SetOfResources _setOfCaracteristics;
+
+  /**
+   * @associates String 
+   */
   private Vector _roomAvailability;//
   //private final String CR_LF = "\r\n";
 

@@ -10,6 +10,10 @@ import dConstants.DConst;
 public class DSetOfStates extends DSetOfResources{
 
   String _error="";
+
+  /**
+   * @associates DSetOfStatesListener 
+   */
   private Vector _sosListener = new Vector(1);
   /***
    * constructor

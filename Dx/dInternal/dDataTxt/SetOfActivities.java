@@ -17,7 +17,9 @@ import dInternal.dUtil.DXToolsMethods;
 //import d
 
 public class SetOfActivities extends SetOfResources{
-
+  /**
+   * @associates SetOfActivitiesListener 
+   */
   private Vector _SOAListeners = new Vector(1);
   /**activities in text format*/
   private byte[] _dataloaded;

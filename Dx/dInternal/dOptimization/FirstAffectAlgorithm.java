@@ -26,7 +26,9 @@ import dInternal.DValue;
 
 
 public class FirstAffectAlgorithm implements Algorithm {
-
+  /**
+   * @associates DResource 
+   */
   private Vector _placeEvent;
   private DModel _dm;
   //private int [] _avoidPriority;

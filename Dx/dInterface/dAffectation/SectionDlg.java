@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.38 $  $Date: 2005-02-04 16:20:10 $
+ * Title: SectionDlg $Revision: 1.39 $  $Date: 2005-02-08 16:24:41 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -432,7 +432,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   * @param selectedPanelID
   * @param colorBorder
   */
-  private void setGroupBorders(int selectedPanelID) { //, Color colorBorder){
+  private void setGroupBorders(int selectedPanelID) { 
     JPanel panel;
     for (int i = 0; i < _numberOfSections; i++){
       panel = (JPanel)_insidePanel.getComponent(i);
@@ -443,7 +443,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     }
   }//end method
 
-  private  SetOfStudents getSortStudents(JList list, /*int newIndex,*/ int group) {
+  private  SetOfStudents getSortStudents(JList list, int group) {
     
     SetOfStudents students = new SetOfStudents();
     if (list != null) {
@@ -466,7 +466,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   }
 
 
-  private void setListsLoad(/*int sortIndex,*/ boolean forUpdate){
+  private void setListsLoad(boolean forUpdate){
     _notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
     if (_notAssignedList == null){
       _notAssignedList = new JList(_notAssignedVector);

@@ -1,7 +1,7 @@
 
 /**
 *
-* Title: RoomAttach $Revision: 1.15 $  $Date: 2004-12-01 17:16:46 $
+* Title: RoomAttach $Revision: 1.16 $  $Date: 2005-02-08 16:24:42 $
 * Description: RoomAttach is a class used to
 *
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.15 $
+* @version $Revision: 1.16 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -34,6 +34,10 @@ public class RoomAttach extends DXObject{
   private String _description;
   private int _function;
   private SetOfResources _setOfCaracteristics;
+
+  /**
+   * @associates String 
+   */
   private Vector _roomAvailability;//
  // private final String CR_LF = "\r\n";
 

@@ -23,6 +23,10 @@ public class SetOfInstructors extends DSetOfResources{
   private int _numberOfLines;// represent number of days
   private int _numberOfColumns;// represent number of period a day.
   private String _error="";
+
+  /**
+   * @associates SetOfInstructorsListener 
+   */
   private Vector _soiListeners= new Vector(1);
 
  /**

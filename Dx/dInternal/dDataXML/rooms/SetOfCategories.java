@@ -42,6 +42,10 @@ public class SetOfCategories extends SetOfResources{
   //private int _numberOfLines;// represent number of days
   //private int _numberOfColumns;// represent number of period a day.
   private String _error="";
+
+  /**
+   * @associates SetOfRoomsListener 
+   */
   private Vector _sorListeners= new Vector(1);
   //private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 

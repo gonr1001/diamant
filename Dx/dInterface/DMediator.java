@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.52 $  $Date: 2005-02-01 21:27:15 $
+ * Title: DMediator $Revision: 1.53 $  $Date: 2005-02-08 16:24:40 $
  * Description: DMediatorNew is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.52 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.53 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -42,6 +42,10 @@ import eLib.exit.dialog.FatalProblemDlg;
 
 public class DMediator extends Object{
 	private DApplication _dApplic;
+
+    /**
+     * @associates DDocument 
+     */
 	private Vector _documents;
 	private boolean _cancel;
 	

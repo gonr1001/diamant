@@ -19,7 +19,9 @@ import dInternal.DObject;
  */
 
 public class InstructorAttach extends DObject {
-
+  /**
+   * @associates String 
+   */
   private Vector _instructorAvailability;
   private final String CR_LF = "\r\n";
 

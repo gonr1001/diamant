@@ -26,7 +26,9 @@ import dInternal.dUtil.DXToolsMethods;
 
 
 public class SetOfEvents extends DSetOfResources{
-
+  /**
+   * @associates SetOfEventsListener 
+   */
   public Vector _soeListeners = new Vector(1);
   //protected boolean _isEventPlaced=false;
   private DModel _dm;
@@ -71,7 +73,7 @@ public class SetOfEvents extends DSetOfResources{
   									assignment.setPeriodKey("1.1.1");
   							}// end if(assignment.getPeriodKey()[0]==0)
   							//System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
-  							String instructorNames [] = assignment.getInstructorNames();
+  							String[] instructorNames  = assignment.getInstructorNames();
   							for (int m = 0 ; m < instructorNames.length; m++) {
   								int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(instructorNames[m]);
   								if(instructorIndex!=-1){
@@ -168,7 +170,7 @@ public class SetOfEvents extends DSetOfResources{
       Unity unity= soa.getUnity(actKey,typeKey,sectKey,unitKey);
       Assignment assignment= (Assignment)unity.getSetOfAssignments().getResourceAt(
       				_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
-      long keys [] = event.getInstructorKey();
+      long[] keys  = event.getInstructorKey();
       
       assignment.emptyInstructorNames();
       for (int j = 0 ; j < keys.length ; j++) {
@@ -231,8 +233,8 @@ public class SetOfEvents extends DSetOfResources{
      */
   public String getInstructorConflictDescriptions(String eventIDOne, String eventIDTwo) {
     String res = "";
-    long instKeyOne[] =((EventAttach)getResource(eventIDOne).getAttach()).getInstructorKey();
-    long instKeyTwo[] =((EventAttach)getResource(eventIDTwo).getAttach()).getInstructorKey();
+    long[] instKeyOne =((EventAttach)getResource(eventIDOne).getAttach()).getInstructorKey();
+    long[] instKeyTwo =((EventAttach)getResource(eventIDTwo).getAttach()).getInstructorKey();
     for (int i=0; i< instKeyOne.length; i++){
       for (int j=0; j< instKeyTwo.length; j++){
         if(instKeyOne[i] == instKeyTwo[j]){

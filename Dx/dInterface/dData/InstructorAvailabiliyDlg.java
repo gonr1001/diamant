@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.23 $  $Date: 2005-02-01 21:27:15 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.24 $  $Date: 2005-02-08 16:24:41 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.24 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -62,7 +62,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: syay1801 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
@@ -79,6 +79,10 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private JPanel centerPanel;
 
   private JComboBox chooser;
+
+  /**
+   * @associates JToggleButton 
+   */
   private Vector _posVect;
 
   private InstructorAttach  _currentInstr;

@@ -19,7 +19,9 @@ import dInternal.dUtil.DXObject;
  */
 
 public class InstructorAttach extends DXObject {
-
+  /**
+   * @associates String 
+   */
   private Vector _instructorAvailability;
   private final String CR_LF = "\r\n";
 

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRooms $Revision: 1.29 $  $Date: 2004-12-01 17:16:46 $
+* Title: SetOfRooms $Revision: 1.30 $  $Date: 2005-02-08 16:24:43 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.29 $
+* @version $Revision: 1.30 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -33,6 +33,10 @@ public class SetOfRooms extends SetOfResources{
 	
 	private byte[] _dataloaded; 
 	private String _error;
+
+    /**
+     * @associates SetOfRoomsListener 
+     */
 	private Vector _sorListeners;
 	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 

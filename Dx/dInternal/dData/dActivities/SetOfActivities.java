@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfActivities $Revision: 1.5 $  $Date: 2005-02-01 21:27:16 $
+ * Title: SetOfActivities $Revision: 1.6 $  $Date: 2005-02-08 16:24:44 $
  * Description: SetOfActivities is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.6 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -35,8 +35,10 @@ import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
 //import d
 
-public class SetOfActivities extends DSetOfResources{
-	
+public class SetOfActivities extends DSetOfResources{	
+    /**
+     * @associates SetOfActivitiesListener 
+     */
 	private Vector _SOAListeners = new Vector(1);
 	/**activities in text format*/
 	

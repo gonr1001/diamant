@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.46 $  $Date: 2004-12-01 17:16:46 $
+ * Title: SetOfStudents $Revision: 1.47 $  $Date: 2005-02-08 16:24:43 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the students and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.46 $
+ * @version $Revision: 1.47 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -40,6 +40,10 @@ public class SetOfStudents extends SetOfResources{
 	 */
 	
 	private String _error;
+
+    /**
+     * @associates SetOfStudentsListener 
+     */
 	private Vector _SOSListeners;
 	/** Course length*/
 	//public static int DConst.STUD_COURSE_LENGTH = 7;

@@ -28,6 +28,11 @@ public class EventAttach extends DObject {
   private DSetOfResources _setInstructorKeys;
   private long _roomRescKey; // the room key
   // the student reference will be found in the conflicts matrix
+
+
+  /**
+   * @associates String 
+   */
   private Vector _tabuList; //
   private boolean isAssign=false;// tell if this event is place in the timetable
    private boolean isPermanent=false;// tell if this event is permanent in the timetable
@@ -55,7 +60,7 @@ public class EventAttach extends DObject {
   }
 
   public long [] getInstructorKey(){
-    long keys [] = new long [_setInstructorKeys.size()];
+    long[] keys  = new long [_setInstructorKeys.size()];
     for (int i = 0; i < _setInstructorKeys.size() ; i++){
       keys [i] = _setInstructorKeys.getResourceAt(i).getKey();
     }
