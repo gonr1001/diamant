@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.78 $  $Date: 2003-10-24 19:43:30 $
+ * Title: DModel $Revision: 1.79 $  $Date: 2003-10-28 14:24:53 $
  * Description: DModel is a class used to
  *
  *
@@ -14,23 +14,22 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.78 $
+ * @version $Revision: 1.79 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
 
 import java.util.Vector;
-import java.io.*;
-import javax.swing.JOptionPane;
+
 import java.awt.Component;
 import java.awt.Cursor;
 import dInterface.DDocument;
 import dInternal.dData.*;
 import dInternal.dConditionsTest.*;
-import dResources.DConst;
+
 import dInternal.dData.LoadData;
-import dInternal.dUtil.DXToolsMethods;
+
 import dInternal.dTimeTable.TTStructure;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;

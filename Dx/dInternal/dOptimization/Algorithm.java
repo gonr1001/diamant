@@ -9,10 +9,9 @@ package dInternal.dAlgorithms;
  * @version 1.0
  */
 
-import dInternal.DModel;
-import dInternal.dTimeTable.*;
-import dInternal.dConditionsTest.*;
-import java.util.Vector;
+
+
+
 
 public interface Algorithm {
 

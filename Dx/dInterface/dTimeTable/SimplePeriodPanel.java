@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.10 $  $Date: 2003-10-21 16:23:47 $
+ * Title: SimplePeriodPanel $Revision: 1.11 $  $Date: 2003-10-28 14:24:53 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -30,13 +30,13 @@ package dInterface.dTimeTable;
  *
  */
 
-import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import java.awt.GridBagLayout;
+
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.border.BevelBorder;
+
 import javax.swing.BorderFactory;
 
 import dInternal.dTimeTable.Period;

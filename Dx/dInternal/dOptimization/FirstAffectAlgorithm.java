@@ -16,8 +16,8 @@ import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dUtil.DXValue;
 import java.util.Vector;
-import java.util.StringTokenizer;
-//import java.awt.import java.awt.Component;;
+
+
 
 public class FirstAffectAlgorithm implements Algorithm {
 

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.9 $  $Date: 2003-10-23 20:39:01 $
+ * Title: TTPane $Revision: 1.10 $  $Date: 2003-10-28 14:24:53 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -37,7 +37,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 
-import javax.swing.JFrame;
+
 import javax.swing.JComponent;
 import javax.swing.JViewport;
 import javax.swing.JPanel;
@@ -50,7 +50,7 @@ import dInterface.DToolBar;
 import dInternal.dData.Resource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
-import dInternal.dTimeTable.Sequence;
+
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DisplayAttributs;

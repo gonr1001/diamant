@@ -10,7 +10,7 @@ package dInternal.dConditionsTest;
  */
 
 import dInternal.dUtil.DXObject;
-import dInternal.dData.SetOfResources;
+
 import java.util.Vector;
 
 public class EventAttach extends DXObject {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFDlg $Revision: 1.2 $  $Date: 2003-06-10 16:00:16 $
+ * Title: PLAFDlg $Revision: 1.3 $  $Date: 2003-10-28 14:24:53 $
  * Description: PLAFDlg is a class used to display preferences
  *              Dialogs.
  *              Look and Feel
@@ -17,8 +17,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.3 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
@@ -32,7 +32,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
+
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
