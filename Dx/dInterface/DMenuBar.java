@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.36 $  $Date: 2003-07-08 10:44:17 $
+ * Title: DMenuBar $Revision: 1.37 $  $Date: 2003-07-08 16:38:12 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -37,6 +37,7 @@ import dInterface.dTimeTable.OpenTTCmd;
 import dInterface.dTimeTable.NewTTSCyCmd;
 import dInterface.dTimeTable.NewTTSExCmd;
 import dInterface.dTimeTable.OpenTTSCmd;
+//import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsCmd;
 import dInterface.dTimeTable.SaveCmd;
 import dInterface.dTimeTable.CloseCmd;
@@ -244,7 +245,7 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mOpenTTS = new CmdMenu(DConst.OPEN_TTS);
     menu.add(mOpenTTS);
     mOpenTTS.setFont(new java.awt.Font( _mfont, _font, _nPT));
-    mOpenTTS.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    mOpenTTS.setCommand(new OpenTTSCmd());
     mOpenTTS.addActionListener(_dApplic);
 
     CmdMenu mCTTS = new CmdMenu(DConst.CLOSE_TTS);

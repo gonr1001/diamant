@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.48 $  $Date: 2003-07-08 15:53:41 $
+ * Title: DDocument $Revision: 1.49 $  $Date: 2003-07-08 16:38:12 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.48 $
+ * @version $Revision: 1.49 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -264,8 +264,6 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
     _ttPanel = null;
     _statusPanel = null;
     _nbModif = null;//, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
-    _dApplic.hideToolBar();
-
   }
 
 } /* end DDocument class */

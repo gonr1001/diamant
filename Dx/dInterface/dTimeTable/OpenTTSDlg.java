@@ -37,54 +37,38 @@ import dResources.DConst;
 
     public OpenTTSDlg(DApplication dApplic) {
    //dApplic= dApplic;
-   loadTTData(dApplic);
+   buildDocument(dApplic);
  } // end constructor
 
  /**
-  * */
- /**
-  *
-  * */
- private void loadTTData(DApplication dApplic){
-   JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
-   fc.setFileFilter( new DFileFilter (new String[] {DConst.DGH},
-       DConst.DGH_FILE) );
-   // Display the file chooser in a dialog
-   Dimension d = fc.getPreferredSize();
-   fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
-   int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.NEW_TT_M);
+     *
+     * */
+    private void buildDocument(DApplication dApplic) {
+      JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
+      String str1 = DConst.XML;
+      String str2 = DConst.XML_FILE;
+      String  str3 = DConst.NEW_TT_M ;
 
-   // If the file chooser exited sucessfully,
-   // and a file was selected, continue
-   if (returnVal == JFileChooser.APPROVE_OPTION) {
-     // get the file name
-     String fil = fc.getSelectedFile().getAbsolutePath();
-     dApplic.setCurrentDir(fil);
-     //load grille,
-     TTStructure ttStruct = new TTStructure();
-     String error = ttStruct.loadTTStructure(fil);
+      fc.setFileFilter(new DFileFilter(new String[] {str1}, str2));
+      // Display the file chooser in a dialog
+      Dimension d = fc.getPreferredSize();
+      fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
+      int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
 
-     //new TTDefinitionDlg(dApplic);
- //    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, ttStruct);
-
-     if(error.length()==0){
-
-       new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
-      // JOptionPane.showMessageDialog(this,DConst.IMP_A_SUC,
-      //                             DConst.IMP_A_TD, JOptionPane.INFORMATION_MESSAGE);
-     }else{
-       new FatalProblemDlg(dApplic.getJFrame(),error);
-            System.exit(1);
-     }
-     dApplic.setCurrentDir(fc.getSelectedFile().getPath());
-     dispose();
-
-   }
- }// end method
-
-
-
-
+      // If the file chooser exited sucessfully,
+      // and a file was selected, continue
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        // get the file name
+        String fil = fc.getSelectedFile().getAbsolutePath();
+        dApplic.setCurrentDir(fil);
+        String error =dApplic.getDMediator().addDoc(fil, 0);
+        if(error.length()!=0){
+          new FatalProblemDlg(dApplic.getJFrame(),error);
+          System.exit(1);
+        }
+        dispose();
+      }
+   }// end loadTTData
 
   } /* end class OpenTTSDlg */
 

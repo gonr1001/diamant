@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.15 $  $Date: 2003-07-07 17:35:10 $
+ * Title: NewTTDlg $Revision: 1.16 $  $Date: 2003-07-08 16:38:12 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -63,18 +63,17 @@ public class NewTTDlg extends JDialog {
     * */
    private void buildDocument(DApplication dApplic, int type) {
      JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
-     String str1= "";
-     String  str2 = "";
+     String str1 = DConst.XML;
+     String str2 = DConst.XML_FILE;
      String  str3 = "" ;
      if (type == DConst.CYCLE) {
-       str1 = DConst.XML;
-       str2 = DConst.XML_FILE;
        str3 = DConst.NTT_CY_TD;
      }
      if (type == DConst.EXAM) {
-       str1 = DConst.XML;
-       str2 = DConst.XML_FILE;
        str3 = DConst.NTT_EX_TD;
+     }
+     if (type == DConst.CYCLEANDEXAM) {
+       str3 = DConst.NEW_TT_M;
      }
 
      fc.setFileFilter(new DFileFilter(new String[] {str1}, str2));

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.25 $  $Date: 2003-07-08 12:13:18 $
+ * Title: DMediator $Revision: 1.26 $  $Date: 2003-07-08 16:38:12 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -100,6 +100,11 @@ public class DMediator {
         _documents.remove(getCurrentDoc());
         aux.close();
       } //end else
+      if(_documents.size()==0){
+        _dApplic.hideToolBar();
+      }else{
+        _dApplic.getToolBar().setToolBars(getCurrentDoc().getDM().getTTStructure());
+      }
     }//end if
 
   }
