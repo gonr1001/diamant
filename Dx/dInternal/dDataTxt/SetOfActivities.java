@@ -565,7 +565,7 @@ public class SetOfActivities extends SetOfResources{
    for (int i=0; i< _SOAListeners.size(); i++) {
      SetOfActivitiesListener soal = (SetOfActivitiesListener) _SOAListeners.elementAt(i);
      soal.changeInSetOfActivities(event, component);
-     System.out.println("SetOfActivities listener started: "+i);//debug
+     //System.out.println("SetOfActivities listener started: "+i);//debug
    }
   }
 
@@ -574,7 +574,7 @@ public class SetOfActivities extends SetOfResources{
    * @param dml
    */
   public synchronized void addSetOfActivitiesListener(SetOfActivitiesListener soal) {
-    System.out.println("SetOfActivities listener addeed: ");//debug
+    //System.out.println("SetOfActivities listener addeed: ");//debug
     if (_SOAListeners.contains(soal)){
       return;
     }

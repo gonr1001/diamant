@@ -78,7 +78,7 @@ public class SetOfActivitiesTest  extends TestCase{
   * */
  public void test0_analyseTokens(){
 
-   String fileName =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"cours1.sig";
+   String fileName =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"cours1.sig";
 
    SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName));
    setOfActivities.analyseTokens(1);
@@ -92,7 +92,7 @@ public class SetOfActivitiesTest  extends TestCase{
   * */
  public void test00_analyseTokens(){
 
-   String fileName =System.getProperty("user.dir")+ File.separator+"data"+File.separator+"cours2.sig";
+   String fileName = System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"cours2.sig";
    SetOfActivities setOfActivities= new SetOfActivities(preLoad(fileName));
    setOfActivities.analyseTokens(1);
    assertEquals("test00_analyseTokens: assertEquals", 25,setOfActivities.getLine());

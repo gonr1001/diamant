@@ -299,7 +299,7 @@ public void sendEvent(Component component) {
   for (int i=0; i< _SOSListeners.size(); i++) {
     SetOfStudentsListener sosl = (SetOfStudentsListener) _SOSListeners.elementAt(i);
     sosl.changeInSetOfStudents(event, component);
-    System.out.println("SetOfStudents listener started: "+i);//debug
+    //System.out.println("SetOfStudents listener started: "+i);//debug
   }
  }
 
@@ -308,7 +308,7 @@ public void sendEvent(Component component) {
   * @param dml
   */
  public synchronized void addSetOfStudentsListener(SetOfStudentsListener sosl) {
-   System.out.println("SetOfStudents listener added: ");//debug
+   //System.out.println("SetOfStudents listener added: ");//debug
    if ((sosl==null) || (_SOSListeners.contains(sosl))){
      return;
    }

@@ -52,8 +52,8 @@ public class StudentsConflictsMatrix {
                          +"."+student.getCoursesList().getResourceAt(k).getID().substring(soa._COURSENAMELENGTH)+"."+
                            DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
           int[] index= getSectionsKeys(course1, course2);
-          System.out.println("Course = ["+ course1+","+course2+"]");//debug
-          System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
+          //System.out.println("Course = ["+ course1+","+course2+"]");//debug
+          //System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
           if((index[0]!=-1) && (index[1]!=-1)){
             _theMatrix[index[0]][index[1]]++;
           }

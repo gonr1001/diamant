@@ -81,7 +81,7 @@ public class SetOfStates extends SetOfResources{
       SetOfStatesListener sosl = (SetOfStatesListener) _sosListener.elementAt(i);
       sosl.changeInStateBar(event);
       //System.out.println("sendEvent: "+event.toString()+"   --I:"+i);
-       System.out.println("SetOfStates listener started: "+i);//debug
+      // System.out.println("SetOfStates listener started: "+i);//debug
     }
    }
 
