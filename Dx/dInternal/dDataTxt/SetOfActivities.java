@@ -62,7 +62,7 @@ public class SetOfActivities extends SetOfResources{
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     int state=0;
     int position=beginPosition;
-    _line=1;
+    _line=0;
     String activityName="";
     String instructorName="";
     int numberOfBlocs=0;
@@ -88,7 +88,6 @@ public class SetOfActivities extends SetOfResources{
         case 4:// teachers' names
           instructorName= token;
           position = 7;
-          _line+=2;
           break;
         case 5:// empty line
           position = 6;
@@ -159,8 +158,6 @@ public class SetOfActivities extends SetOfResources{
              return false;
           }
           position = beginPosition;
-          if(st.hasMoreElements())
-          _line++;
           break;
 
       }// end switch (position)
@@ -184,7 +181,10 @@ public class SetOfActivities extends SetOfResources{
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     int state=0;
     int position=beginPosition;
-    _line=1;
+    if(!_open)
+      _line=1;
+    else
+      _line=0;
     String activityName="";
     int numberOfUnitys=0;
     while (st.hasMoreElements()){
@@ -226,7 +226,8 @@ public class SetOfActivities extends SetOfResources{
             return false;
           }
           position = 7;
-          _line+=2;
+          if(!_open)
+            _line+=2;
           break;
         case 5:// empty line
           position = 6;
