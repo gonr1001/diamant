@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.116 $  $Date: 2005-01-22 01:46:11 $
+ * Title: DModel $Revision: 1.117 $  $Date: 2005-01-24 21:27:55 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.116 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.117 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -89,7 +89,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	protected static SetOfRooms _setOfRooms = null;	
 	protected static SetOfStuSites _setOfStuSites = null;
 	protected static SetOfStudents _setOfStudents = null;
-	private static SetOfActivitiesSites _setOfActivitiesSite = null;
+	private static SetOfActivitiesSites _setOfActivitiesSites = null;
 	protected static SetOfActivities _setOfActivities = null;
 	private DDocument _dDocument = null;
 	private TTStructure _ttStruct;
@@ -148,16 +148,15 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 			_isATimeTable=true;
 		} else if(fileName.endsWith(DConst.DOT_XML)){
 			_ttStruct = new TTStructure();
-			_error=_ttStruct.loadTTStructure(fileName);
-			//if(type==DConst.NO_TYPE)
-			//	_isATimeTable=false;
-			//if((type==DConst.CYCLE)||(type==DConst.EXAM))
-				_isATimeTable=false;
+			_error=_ttStruct.loadTTStructure(fileName);			
+			_isATimeTable=false;
 		}else{
 			_error= "Wrong type of file" ;
 		}
 		if (_error.length()==0 && _isATimeTable)
 			_conditionTest = new TestConditions(this);
+		if((type==DConst.CYCLE)||(type==DConst.EXAM))
+			_isATimeTable=true;
 		_type = type;
 		_modified = false;
 		
@@ -335,7 +334,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 			resizeResourceAvailability(_setOfInstructors);
 			_setOfSites= (SetOfSites)theTT.get(3);
 			resizeSiteAvailability(_setOfSites);
-			_setOfActivitiesSite=(SetOfActivitiesSites)theTT.get(4);
+			_setOfActivitiesSites=(SetOfActivitiesSites)theTT.get(4);
 			_setOfStuSites = (SetOfStuSites)theTT.get(5);
 			if( _setOfSites.getError().length()!=0){
 				return _setOfSites.getError();
@@ -343,7 +342,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 			if( _setOfInstructors.getError().length()!=0){
 				return _setOfInstructors.getError();
 			}
-			if( _setOfActivitiesSite.getError().length()!=0){
+			if( _setOfActivitiesSites.getError().length()!=0){
 				return _setOfActivities.getError();
 			}
 			if( _setOfStuSites.getError().length()!=0){
@@ -390,9 +389,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		}
 		
 		// import set of activities
-		_setOfActivitiesSite = loadData.extractActivities(null, false);
-		if( _setOfActivitiesSite.getError().length()!=0){
-			return _setOfActivitiesSite.getError();
+		_setOfActivitiesSites = loadData.extractActivities(null, false);
+		if( _setOfActivitiesSites.getError().length()!=0){
+			return _setOfActivitiesSites.getError();
 		}
 		
 		// import set of students
@@ -460,7 +459,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	 * @return
 	 */
 	public SetOfActivities getSetOfActivities(){
-		return (SetOfActivities)_setOfActivitiesSite.getResource(DConst.ACTIVITY_STANDARD_SITE).getAttach();
+		return (SetOfActivities)_setOfActivitiesSites.getResource(DConst.ACTIVITY_STANDARD_SITE).getAttach();
 	}
 	
 	/**
@@ -562,12 +561,11 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	 * @param filename
 	 * @return
 	 */
-	public String saveTimeTable(String filename) {
-		
+	public String saveTimeTable(String filename) {		
 		DSaveData saveD= new DSaveData("1.5");
 		String error = "";
 		if(_isATimeTable){
-			error = saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+			error = saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfSites,_setOfActivitiesSites,_setOfStuSites,filename);
 			if (error.length() != 0)
 				return error;
 		}else{

@@ -198,8 +198,13 @@ public class SetOfInstructors extends DSetOfResources{
  * @see dInternal.DSetOfResources#toWrite()
  */
 public String toWrite() {
-	// TODO Auto-generated method stub
-	return null;
+	    String reslist="";
+	    if(getSetOfResources().size()>0){	      
+	        for (int i=0; i< getSetOfResources().size()-1; i++)
+	          reslist+= ((DResource)getSetOfResources().get(i)).toWrite(DConst.CR_LF)+DConst.CR_LF;
+	        reslist+= ((DResource)getSetOfResources().get(getSetOfResources().size()-1)).toWrite(DConst.CR_LF);
+	      }	   
+	    return reslist;	  
 }
 
 /* (non-Javadoc)

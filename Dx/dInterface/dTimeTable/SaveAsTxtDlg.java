@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.7 $  $Date: 2004-12-01 17:16:42 $
+ * Title: SaveAsTxtDlg $Revision: 1.8 $  $Date: 2005-01-24 21:27:55 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -41,61 +41,61 @@ import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
 
 public class SaveAsTxtDlg extends SaveAsDlg{
-
-  public SaveAsTxtDlg(DApplication dApplic) {
-    super(dApplic);
-    saveAs(null,false); //no data, no report
-  } // end constructor*/
-  /**
-  * Constructor
-  * @param dApplic The application
-  * @param data contains a String the string will be saved
-  *           as in reports
-  */
- public SaveAsTxtDlg(DApplication dApplic, String data) {
-    super(dApplic);
-   saveAs(data, true); //data, report
-   } // end constructor
-
-
-   public String inNewFile(String currentFile, String data) {
-     String error = "";
-     try{
-       FileWriter fw = new FileWriter(currentFile);
-       fw.write(data);
-       fw.close();
-       return error;
-     } catch(Exception e){
-       error = "Problem with the file";
-       new FatalProblemDlg(error);
-       return error;
-     }
-   }
-
-   /**
-    * Saves data in a file by using a FileWriter
-    * @param currentFile the file pathname
-    * @param data the data to be stored
-    * @return
-    */
-  /* private String saveReport(String currentFile, String data){
-     String error = "";
-     try{
-       FileWriter fw = new FileWriter(currentFile);
-       fw.write(data);
-       fw.close();
-       return error;
-     } catch(Exception e){
-       error = "Problem with the file";
-       new FatalProblemDlg(error);
-       return error;
-     }
-   }// saveReport*/
-
-   public String setExtension(JFileChooser fc){
-     fc.setFileFilter( new DFileFilter ( new String[] {DConst.TXT},
-         DConst.TXT_FILE ) );
-     return DConst.DOT_TXT;
-
-  } // setFilters
+	
+	public SaveAsTxtDlg(DApplication dApplic) {
+		super(dApplic);
+		saveAs(null,false); //no data, no report
+	} // end constructor*/
+	/**
+	 * Constructor
+	 * @param dApplic The application
+	 * @param data contains a String the string will be saved
+	 *           as in reports
+	 */
+	public SaveAsTxtDlg(DApplication dApplic, String data) {
+		super(dApplic);
+		saveAs(data, true); //data, report
+	} // end constructor
+	
+	
+	public String inNewFile(String currentFile, String data) {
+		String error = "";
+		try{
+			FileWriter fw = new FileWriter(currentFile);
+			fw.write(data);
+			fw.close();
+			return error;
+		} catch(Exception e){
+			error = "Problem with the file";
+			new FatalProblemDlg(error);
+			return error;
+		}
+	}
+	
+	/**
+	 * Saves data in a file by using a FileWriter
+	 * @param currentFile the file pathname
+	 * @param data the data to be stored
+	 * @return
+	 */
+	/* private String saveReport(String currentFile, String data){
+	 String error = "";
+	 try{
+	 FileWriter fw = new FileWriter(currentFile);
+	 fw.write(data);
+	 fw.close();
+	 return error;
+	 } catch(Exception e){
+	 error = "Problem with the file";
+	 new FatalProblemDlg(error);
+	 return error;
+	 }
+	 }// saveReport*/
+	
+	public String setExtension(JFileChooser fc){
+		fc.setFileFilter( new DFileFilter ( new String[] {DConst.TXT},
+				DConst.TXT_FILE ) );
+		return DConst.DOT_TXT;
+		
+	} // setFilters
 }

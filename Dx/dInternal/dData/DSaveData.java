@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.2 $  $Date: 2004-12-16 19:20:57 $
+* Title: SaveData $Revision: 1.3 $  $Date: 2005-01-24 21:27:55 $
 * Description: DConst is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -24,10 +24,10 @@ package dInternal.dData;
 
 import dConstants.DConst;
 
-import dInternal.dData.dRooms.SetOfRooms;
-import dInternal.dData.dActivities.SetOfActivities;
+import dInternal.dData.dRooms.SetOfSites;
+import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.SetOfInstructors;
-import dInternal.dData.dStudents.SetOfStudents;
+import dInternal.dData.dStudents.SetOfStuSites;
 
 
 import dInternal.dTimeTable.TTStructure;
@@ -54,8 +54,8 @@ public class DSaveData {
   /**
    *
    * */
-  public String saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
-                          SetOfActivities act,SetOfStudents students, String fileName){
+  public String saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfSites rooms,
+                          SetOfActivitiesSites act,SetOfStuSites students, String fileName){
     String error = "";
     if (inst == null || rooms  == null ||  act == null || students == null){
       error = "SaveData : Some data have a null reference";

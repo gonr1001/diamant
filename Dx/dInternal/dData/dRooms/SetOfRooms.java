@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.3 $  $Date: 2004-12-16 19:20:58 $
+* Title: SetOfSites $Revision: 1.4 $  $Date: 2005-01-24 21:27:56 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -26,6 +26,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 //import dInternal.DResource;
+import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
@@ -79,7 +80,13 @@ public class SetOfRooms extends DSetOfResources {
 	 * @see dInternal.dUtil.DXObject#toWrite()
 	 */
 	public String toWrite() {
-		return "";
+		String reslist="";
+	    if(getSetOfResources().size()>0){	      
+	        for (int i=0; i< getSetOfResources().size()-1; i++)
+	          reslist+= ((DResource)getSetOfResources().get(i)).toWrite(DConst.CR_LF)+DConst.CR_LF;
+	        reslist+= ((DResource)getSetOfResources().get(getSetOfResources().size()-1)).toWrite(DConst.CR_LF);
+	      }	   
+	    return reslist;	
 	}
 
 	/* (non-Javadoc)

@@ -1,6 +1,6 @@
 /**
 *
-* Title: Category $Revision: 1.2 $  $Date: 2004-12-01 17:17:05 $
+* Title: Category $Revision: 1.3 $  $Date: 2005-01-24 21:27:56 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -62,7 +62,13 @@ public class SetOfCategories extends DSetOfResources{
   }
 	
 	public String toWrite(){
-		return "";
+		String reslist="";
+	    if(getSetOfResources().size()>0){	      
+	        for (int i=0; i< getSetOfResources().size()-1; i++)
+	          reslist+= ((DResource)getSetOfResources().get(i)).toWrite(DConst.CR_LF)+DConst.CR_LF;
+	        reslist+= ((DResource)getSetOfResources().get(getSetOfResources().size()-1)).toWrite(DConst.CR_LF);
+	      }	   
+	    return reslist;	
 	}
 
 	/* (non-Javadoc)

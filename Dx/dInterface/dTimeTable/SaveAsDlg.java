@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.22 $  $Date: 2004-12-16 19:20:53 $
+ * Title: SaveAsDlg $Revision: 1.23 $  $Date: 2005-01-24 21:27:55 $
  * Description: SaveAsDlg(DApplication dApplic) can be created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) can be created
  *                        by ConflicReport, FullReport,
@@ -18,7 +18,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -41,7 +41,7 @@ import eLib.exit.dialog.InformationDlg;
  */
 
 public abstract class SaveAsDlg  {
-  //private final String CR_LF = "\r\n";
+  
   protected DApplication _dApplic;
   /**
     *
@@ -88,9 +88,6 @@ public abstract class SaveAsDlg  {
          inNewFile(currentFile, data);
          new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
        }
-
-
-
      }// end if(returnVal == JFileChooser.APPROVE_OPTION)
    }//end saveAs() method
 
