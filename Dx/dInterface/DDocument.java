@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.76 $  $Date: 2003-09-29 14:12:09 $
+ * Title: DDocument $Revision: 1.77 $  $Date: 2003-09-29 15:14:03 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.76 $
+ * @version $Revision: 1.77 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -46,7 +46,7 @@ import dResources.DConst;
 import java.util.StringTokenizer;
 //import javax.swing.JScrollPane;
 import dInterface.dTimeTable.TTPanel;
-//import dInterface.dTimeTable.SimpleTTPanel;
+import dInterface.dTimeTable.SimpleTTPanel;
 
 import dInterface.dTimeTable.CloseCmd;
 
@@ -63,7 +63,7 @@ public class DDocument  extends InternalFrameAdapter implements
   private DMediator _dMediator;
   private JInternalFrame _jif;
   private String _documentName;
-  private TTPanel _ttPanel;
+  private SimpleTTPanel _ttPanel;
   private DModel _dm;
   private DStateBar _stateBar;
   private String _version;
@@ -99,9 +99,6 @@ public class DDocument  extends InternalFrameAdapter implements
     return _jif;
   } // end getJIF
 
-  //   public TTPanel getTTPanel() {
- //    return _ttPanel;
- //   } // end getJIF
   //-------------------------------------------
   public final String getDocumentName() {
     return _documentName;
@@ -149,21 +146,14 @@ public class DDocument  extends InternalFrameAdapter implements
     } //end getDModel
 
 
-    public TTPanel getTTPanel(){
+    public SimpleTTPanel getTTPanel(){
       return _ttPanel;
     }
 
     public TTStructure getTTStructure() {
       return _dm.getTTStructure();
     } // end getJIF
-
- //   public TTPanel getTTPanel() {
-  //    return _ttPanel;
- //   } // end getJIF
     //-------------------------------------------
-
-
-
 
      public void actionPerformed(ActionEvent  e) {
        if (e.getSource() instanceof CommandHolder) {
@@ -309,7 +299,7 @@ public class DDocument  extends InternalFrameAdapter implements
     } );
     //_bottomLablel = new JLabel("hello");
 
-    _ttPanel = new TTPanel(_dm);
+    _ttPanel = new SimpleTTPanel(_dm);
 
     _dm.addDModelListener(this);
     //_dm.getSetOfStates().addSetOfStatesListener(this);
