@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.97 $  $Date: 2004-02-13 21:49:20 $
+ * Title: DMenuBar $Revision: 1.98 $  $Date: 2004-02-16 17:31:56 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.97 $
+ * @version $Revision: 1.98 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -84,9 +84,20 @@ public class DMenuBar extends JMenuBar{
   private boolean _boolNewTTable, _boolNewTTStruc;
 
   // the file menus
-  private CmdMenu _newTTableCy, _newNTTableEx, _newTTStrucCy,
-  _newTTStrucEx, _openTTable, _openTTStruc,
-  _close, _save, _saveAs, _defineFiles, _import, _export, _exit;
+  private CmdMenu
+  _newTTableCy,   //calls postNewTTCyCmd calls setNewTTCy
+  _newNTTableEx,  //calls postNewTTCyCmd calls setNewTTCy
+  _newTTStrucCy,  //calls postNewTTSCyCmd calls setNewSCy
+  _newTTStrucEx,  //calls postNewTTSExCmd calls setNewSCy
+  _openTTable,    //calls postOpenTTCmd calls setReadyToBuildTT
+  _openTTStruc,   //calls postOpenTTSCmd calls setNewTTCy
+  _close,         //calls postCloseCmd calls setZero
+  _save,          //calls nothing
+  _saveAs,        //calls nothing
+  _defineFiles,   //calls nothing
+  _import,        //calls postImportCmd calls setReadToBuildTT
+  _export,        //
+  _exit;
   private boolean _boolNewTTableCy, _boolNewTTableEx, _boolNewTTStrucCy,
   _boolNewTTStrucEx, _boolOpenTTable, _boolOpenTTStruc,
   _boolClose, _boolSave, _boolSaveAs,_boolDefineFiles,
@@ -972,18 +983,23 @@ public class DMenuBar extends JMenuBar{
   public void postNewTTSExCmd(){
     setNewTTSCy();
   }
-
+  /*
+   * ready to build a tt
+   */
   public void postOpenTTCmd(){
     setReadyToBuildTT();
   }
-
+  /*
+   * just calling an existing state
+   */
   public void postOpenTTSCmd(){
     setNewTTSCy(); //setOpenTTS();
   }
 
   public void postCloseCmd(){
-    setZero(); //setCloseS();
+    setZero();
   }
+
   public void postImportCmd(){
     setReadyToBuildTT();
   }
