@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.4 $  $Date: 2003-10-20 14:09:48 $
+ * Title: TTPane $Revision: 1.5 $  $Date: 2003-10-20 15:01:10 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -64,6 +64,7 @@ public abstract class TTPane {
   protected JScrollPane _jScrollPaneOne;
   protected JScrollPane _jScrollPaneTwo;
   protected JSplitPane _jSplitPane;
+  PeriodPanel _lastActivePanel = null;
 
   protected class RowRecord {
      int _n;
@@ -96,6 +97,7 @@ public abstract class TTPane {
   public abstract int getIpady(int i);
   //-------------------------------------------
   protected abstract PeriodPanel createPeriodPanel(int refNo, String str);
+  protected abstract PeriodPanel createEmptyPeriodPanel();
   //-------------------------------------------
   public abstract void manageActions();
   //-------------------------------------------
@@ -119,7 +121,7 @@ public abstract class TTPane {
     jScrollPane.setViewportView(createViewPort());
     //  Point point = _jScrollPaneOne.getViewport().getViewPosition();
     jScrollPane.getViewport().setViewPosition(jScrollPane.getViewport().getViewPosition());
-    //manageActions();
+    manageActions();
   }
   //-------------------------------------------
   protected void findRowHeaders() {
@@ -226,13 +228,7 @@ public abstract class TTPane {
           offset = 0;
         }
         else {
-          //offset += getIpady(j);
-          periodPanel = new SimplePeriodPanel();
-          //periodPanel.setVisible(false);
-          //periodPanel.setForeground(Color.TRANSLUCENT);
-         //  periodPanel.setBackground(Color.TRANSLUCENT);
-        //gridBC.ipady =  LINE_HEIGHT;
-        //periodPanel.addMouseListener(_mouseListener);
+          periodPanel = createEmptyPeriodPanel();//new SimplePeriodPanel();
         }
         periodPanel.setMinimumSize(new Dimension(PERIOD_WIDTH, getIpady(j)));
         periodPanel.setPreferredSize(new Dimension(PERIOD_WIDTH,  getIpady(j)));

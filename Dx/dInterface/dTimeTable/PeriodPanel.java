@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.12 $  $Date: 2003-10-20 14:09:47 $
+ * Title: PeriodPanel $Revision: 1.13 $  $Date: 2003-10-20 15:01:10 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -61,15 +61,20 @@ public  abstract class PeriodPanel extends JPanel{
   protected PeriodPanel(){
   }
 
-  public PeriodPanel(int refNo, String str) {
+  protected PeriodPanel(int refNo, String str) {
     _panelRefNo= refNo;
     StringTokenizer st = new StringTokenizer(str,".");
-    _TTSday= Integer.parseInt(st.nextToken());
-    _TTSseq= Integer.parseInt(st.nextToken());
-    _TTSperiod= Integer.parseInt(st.nextToken());
+    _TTSday= Integer.parseInt(st.nextToken()) -1;
+    _TTSseq= Integer.parseInt(st.nextToken())-1;
+    _TTSperiod= Integer.parseInt(st.nextToken())-1;
 
   }
-
+ /* protected abstract PeriodPanel createEmptyPeriodPanel(); {
+   new PeriodPanel();
+   jPanel.setForeground(Color.WHITE);
+   jPanel.setBackground(Color.WHITE);
+   return jPanel;
+  }*/
 
 
   /*public void addMouseListener(MouseListener mouseListener) {

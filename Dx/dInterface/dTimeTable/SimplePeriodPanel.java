@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.7 $  $Date: 2003-10-20 14:09:47 $
+ * Title: SimplePeriodPanel $Revision: 1.8 $  $Date: 2003-10-20 15:01:10 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -50,12 +50,7 @@ public class SimplePeriodPanel extends PeriodPanel{
   private int _TTSperiod;
   private int _panelRefNo;*/
 
-  public SimplePeriodPanel(){
-    super();
-    //_jPanel = new JPanel();
-    //_jPanel.setBackground(Color.TRANSLUCENT);
-    //_jPanel.setForeground(Color.TRANSLUCENT);
-  }
+
 
 /*  public SimplePeriodPanel(int refNo, int day, int seq, int per) {
     super(refNo, day,  seq,  per);
@@ -72,8 +67,15 @@ public class SimplePeriodPanel extends PeriodPanel{
     _TTSseq= seq;
     _TTSperiod= per;*/
   }
+  public SimplePeriodPanel() {
+    super();
+    this.setForeground(Color.WHITE);
+    this.setBackground(Color.WHITE);
+  }
+ // public PeriodPanel createEmptyPeriodPanel(){
+  // new SimplePeriodPanel();
 
-
+  //}
   /**
    *
    *
@@ -90,14 +92,14 @@ public class SimplePeriodPanel extends PeriodPanel{
     setValue(period);
   }
 
-  public void createPanel( Period period, int w, int h){
+/*  public void createPanel( Period period, int w, int h){
     setLayout(new GridLayout(2,1));
     setMinimumSize(new Dimension(w, h));
     setPreferredSize(new Dimension(w, h));
     setBorder(new BevelBorder(BevelBorder.RAISED));
     setValue(period);
   }
-
+*/
   public void setValue(Period period){
     JPanel topPanel = new JPanel();
     JPanel bottomPanel = new JPanel();
@@ -128,7 +130,6 @@ public class SimplePeriodPanel extends PeriodPanel{
    * @return int the period reference number
    * */
   public int getPanelRefNo(){
-
     return _panelRefNo;
   }
 
@@ -144,7 +145,7 @@ public class SimplePeriodPanel extends PeriodPanel{
   /**
   *
   * */
- public void setPanelColor( int priority){
+ public void setPanelColor(int priority){
    Color color= Color.GRAY;
    switch(priority){
      case 0: color= new Color(236,233,216);//getBackground()

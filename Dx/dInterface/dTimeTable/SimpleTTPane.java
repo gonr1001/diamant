@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPane $Revision: 1.3 $  $Date: 2003-10-20 14:09:47 $
+ * Title: SimpleTTPane $Revision: 1.4 $  $Date: 2003-10-20 15:01:10 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -85,30 +85,36 @@ public class SimpleTTPane extends TTPane {
    *
    * */
   public void manageActions(){
-    //JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
+    JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
     /*
      * Mouse listener for this Panel
-     */ /*
+     */
      _mouseListener = new MouseAdapter() {
 
       public void mouseClicked(MouseEvent e) {
         System.out.println("Un clic sur la periode: ");
         if ((e.getClickCount() == 1) && (_toolBar!=null)) {
           PeriodPanel perpanel= (PeriodPanel)e.getSource();
-          if(_lastActivPanel != null)
-            _lastActivPanel.setPanelBackGroundColor(0);
+          if(_lastActivePanel != null)
+            _lastActivePanel.setPanelBackGroundColor(0);
           _toolBar.setComboBoxStatus(false);
           _toolBar.setPeriodSelector(Integer.toString(perpanel.getPanelRefNo()));
-          //_dm.getDApplication().getToolBar().selectBar(1);
            perpanel.setPanelBackGroundColor(1);
            _toolBar.setComboBoxStatus(true);
-          _lastActivPanel=perpanel;
+          _lastActivePanel=perpanel;
+         System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Ref: " +
+                                                    perpanel.getPeriodRef()[0] +"." +
+                                                    perpanel.getPeriodRef()[1]+"." +
+                                                    perpanel.getPeriodRef()[2]);//debug
+
          System.out.println("Un clic sur la periode: "+ perpanel.getPanelRefNo()+" Contains: "
                             +_tts.getCurrentCycle().getPeriodByIndex(
-                            perpanel.getPeriodRef()[0],perpanel.getPeriodRef()[1],perpanel.getPeriodRef()[2]).toString());//debug
+                                                    perpanel.getPeriodRef()[0],
+                                                    perpanel.getPeriodRef()[1],
+                                                    perpanel.getPeriodRef()[2]).toString());//debug
         }
       }
-    };*/
+    };
   }
   //-------------------------------------------
   public void updateTTPane(TTStructure ttp){
@@ -122,78 +128,12 @@ public class SimpleTTPane extends TTPane {
   public PeriodPanel createPeriodPanel(int refNo, String str) {
    return new SimplePeriodPanel(refNo, str);
   }
-  //-------------------------------------------
-/*  public JPanel createViewPort() { //int width, int height) {
-    Cycle cycle =_tts.getCurrentCycle();
-    GridBagLayout gridbag =new GridBagLayout();
-    JPanel panel =  new JPanel( gridbag );
-    panel.setBackground(SystemColor.window);
-    //panel.setMinimumSize(new Dimension(width/10, height/10));
 
-    _jScrollPaneOne.setPreferredSize(new Dimension(panel.getPreferredSize().width +50,
-                                   panel.getPreferredSize().height + 50) );
-    int nbDays,nbSeq,nbPerADay;
-    nbDays = cycle.getSetOfDays().size();
-    //System.out.println("nb of Days: " + nbDays);//Debug
-    gridbag.columnWeights = new double [nbDays];
-    gridbag.columnWidths = new int [nbDays];
-    for (int i = 0; i < nbDays; i++) {
-      gridbag.columnWeights[i] = 1;
-      gridbag.columnWidths[i] = PERIOD_WIDTH;
-    }
-    nbPerADay = _lastHour-_tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0];
-    gridbag.rowWeights = new double [nbPerADay];
-    gridbag.rowHeights = new int [nbPerADay];
-    for (int i = 0; i < nbPerADay; i++) {
-      gridbag.rowWeights[i] = 1;
-      gridbag.rowHeights[i] = SMALL_PERIOD_HEIGHT;
-    }
-    PeriodPanel periodPanel = null;
-    GridBagConstraints c = null;
-    nbSeq = _tts.getCurrentCycle().getMaxNumberOfSeqs();
-    int count = 1;
-    for (int i = 0; i < nbDays ; i++ ) {
-      Day day= _tts.getCurrentCycle().getDayByRefNo(i+1);
-      for(int j = 0; j < nbSeq; j ++) {
-        Sequence sequence= _tts.getCurrentCycle().getSequence(day,j+1);
-        for(int k = 0; k < sequence.getSetOfPeriods().size(); k ++) {
-          Period period= _tts.getCurrentCycle().getPeriod(sequence,k+1);
-          periodPanel = new SimplePeriodPanel(count,i,j,k);
-          periodPanel.addMouseListener(_mouseListener);
-          periodPanel.createPanel(period, PERIOD_WIDTH, LINE_HEIGHT );
-          count++;
-          c = new GridBagConstraints();
-          c.fill = GridBagConstraints.BOTH;
-          c.gridx = i;
-          c.gridy = (period.getBeginHour()[0] - _tts.getCurrentCycle().getFirstPeriod().getBeginHour()[0]);//period.getEndHour(_periodLenght)[0];
-
-          if ( period.getEndHour(_periodLenght)[1] == 0 ){
-            c.gridheight = period.getEndHour(_periodLenght)[0]- period.getBeginHour()[0];
-            c.insets = new Insets( period.getBeginHour()[1], 0, 0, 0 );
-          } else {
-            c.gridheight = period.getEndHour(_periodLenght)[0] + 1 - period.getBeginHour()[0];
-            c.insets = new Insets( period.getBeginHour()[1], 0,(SMALL_PERIOD_HEIGHT- period.getEndHour(_periodLenght)[1]), 0 );
-          }
-          gridbag.setConstraints(periodPanel, c);
-          panel.add(periodPanel, c);
-        }//end for k
-      } // end for j
-    }//end for i
-     return panel;
-  }*/
+  public PeriodPanel createEmptyPeriodPanel() {
+   return new SimplePeriodPanel();
+  }
   //-------------------------------------------
-  /**
-   * @param int the period panel reference
-   * */
-/*  public PeriodPanel getPeriodPanel(int ppRef){
-    JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
-    for (int i=0; i< thePanel.getComponentCount(); i++){
-      PeriodPanel ppanel= (PeriodPanel)thePanel.getComponent(i);
-      if(ppanel.getPanelRefNo()==ppRef)
-        return ppanel;
-    }
-    return null;
-  }*/
+
 
 } /* end SimplePeriodPane */
 
