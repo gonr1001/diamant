@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.2 $  $Date: 2003-10-20 13:51:30 $
+ * Title: DetailedTTPane $Revision: 1.3 $  $Date: 2003-10-20 14:09:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -132,7 +132,9 @@ public class DetailedTTPane extends TTPane {
     initTTPane(_jScrollPaneTwo);
   }
 
-
+  public PeriodPanel createPeriodPanel(int refNo, String str) {
+   return new DetailedPeriodPanel(refNo, str);
+  }
 /*
 //-------------------------------------------
   public JPanel createViewPort(){//int x, int y){ //int width, int height) {

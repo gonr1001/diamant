@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.11 $  $Date: 2003-10-20 13:51:30 $
+ * Title: PeriodPanel $Revision: 1.12 $  $Date: 2003-10-20 14:09:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -69,6 +69,8 @@ public  abstract class PeriodPanel extends JPanel{
     _TTSperiod= Integer.parseInt(st.nextToken());
 
   }
+
+
 
   /*public void addMouseListener(MouseListener mouseListener) {
    // _jPanel.addMouseListener(mouseListener);

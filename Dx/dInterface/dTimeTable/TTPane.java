@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.3 $  $Date: 2003-10-20 13:51:30 $
+ * Title: TTPane $Revision: 1.4 $  $Date: 2003-10-20 14:09:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -93,15 +93,24 @@ public abstract class TTPane {
   //-------------------------------------------
   public abstract void updateTTPane(TTStructure ttp);
   //-------------------------------------------
-  public abstract  PeriodPanel getPeriodPanel(int i);
-
   public abstract int getIpady(int i);
-
+  //-------------------------------------------
+  protected abstract PeriodPanel createPeriodPanel(int refNo, String str);
   //-------------------------------------------
   public abstract void manageActions();
   //-------------------------------------------
   public JViewport getViewport() {
     return _jScrollPaneOne.getViewport();
+  }
+  //-------------------------------------------
+  public PeriodPanel getPeriodPanel(int ppRef){
+   JPanel thePanel= (JPanel)_jScrollPaneOne.getViewport().getComponent(0);
+   for (int i=0; i< thePanel.getComponentCount(); i++){
+     PeriodPanel ppanel= (PeriodPanel)thePanel.getComponent(i);
+     if(ppanel.getPanelRefNo()==ppRef)
+       return ppanel;
+   }
+   return null;
   }
   //-------------------------------------------
   protected void initTTPane(JScrollPane jScrollPane) {
@@ -174,8 +183,6 @@ public abstract class TTPane {
     for (int i = 0; i < _rowHeaders.length; i++) {
       gridBC.gridx = 0;
       gridBC.gridy = i;
-
-
         if (_rowHeaders[i]._n != -1) {
           gridBC.ipady = getIpady(i);
         } else {
@@ -213,7 +220,7 @@ public abstract class TTPane {
         gridBC.ipady =  getIpady(j) + offset;
         if ( _toDisplay[i][j].getPeriodKey()!= "" &&  _toDisplay[i][j].getPeriodType()) {
           Period period = _tts.getCurrentCycle().getPeriodByPeriodKey(_toDisplay[i][j].getPeriodKey());
-          periodPanel = new SimplePeriodPanel((i*_toDisplay[0].length) +j+1,_toDisplay[i][j].getPeriodKey());
+          periodPanel = createPeriodPanel((i*_toDisplay[0].length) +j+1,_toDisplay[i][j].getPeriodKey());
           periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period);
           offset = 0;
