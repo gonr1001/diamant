@@ -73,15 +73,13 @@
     <property category="archiving" name="extraDeployRoots.2" value="C:dInternal.*"/>
     <property category="archiving" name="extraDeployRoots.3" value="C:dmains.*"/>
     <property category="archiving" name="extraDeployRoots.4" value="C:dResources.*"/>
-    <property category="archiving" name="extraDeployRoots.5" value="C:theLibrary.*"/>
-    <property category="archiving" name="extraDeployRoots.6" value="C:XMLData.*"/>
-    <property category="archiving" name="extraDeployRoots.7" value="C:dConstants.*"/>
-    <property category="archiving" name="extraDeployRoots.8" value="C:dAux.*"/>
-    <property category="archiving" name="extraDeployRoots.9" value="C:dDeveloper.*"/>
+    <property category="archiving" name="extraDeployRoots.5" value="C:dConstants.*"/>
+    <property category="archiving" name="extraDeployRoots.6" value="C:dAux.*"/>
+    <property category="archiving" name="extraDeployRoots.7" value="C:dDeveloper.*"/>
     <property category="archiving" name="libraryStates.1" value="1:theLibrary"/>
-    <property category="archiving" name="libraryStates.2" value="3:Log4j"/>
+    <property category="archiving" name="libraryStates.2" value="1:Log4j"/>
     <property category="archiving" name="manifestMainClass" value="dmains.Diamant"/>
-    <property category="archiving" name="outPathState" value="2"/>
+    <property category="archiving" name="outPathState" value="1"/>
     <property category="archiving" name="targetPath" value="D%|/Developpements/DiamantExtreme/Diamant1.5/tictac.jar"/>
   </node>
   <file path="Proto.html"/>
