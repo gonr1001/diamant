@@ -137,6 +137,7 @@ public class SetOfEvents extends SetOfResources{
       assignment.setDateAndTime((int)dayKey,period.getBeginHour()[0],period.getBeginHour()[1]);
       unity.setAssign(event.getAssignState());
       unity.setPermanent(event.getPermanentState());
+      unity.setDuration(event.getDuration());
     }// end for (int i=0; i< eventsToUpdate.size(); i++)
 
   }
