@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.124 $  $Date: 2005-02-08 21:30:29 $
+ * Title: DModel $Revision: 1.125 $  $Date: 2005-02-09 20:19:30 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.124 $
+ * @version $Revision: 1.125 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  */
@@ -481,8 +481,17 @@ public class DModel extends Observable /*implements /*DModelListener, TTStructur
 	 * @return
 	 */
 	public SetOfRooms getSetOfRooms(){
-		SetOfCategories soc = (SetOfCategories)_setOfSites.getResource(DConst.ROOM_STANDARD_SITE).getAttach();
-		return (SetOfRooms) soc.getResource(DConst.ROOM_STANDARD_CAT).getAttach();
+		SetOfRooms sor = new SetOfRooms();
+		SetOfCategories site = (SetOfCategories)_setOfSites.getResource(
+				DConst.ROOM_STANDARD_SITE).getAttach();
+		for (int i=0; i< site.size(); i++){
+			SetOfRooms catSOR= (SetOfRooms)site.getResourceAt(i).getAttach();
+			for (int j=0; j< catSOR.size(); j++)
+				sor.addResource(catSOR.getResourceAt(j),1);
+		}
+		//SetOfCategories soc = (SetOfCategories)_setOfSites.getResource(DConst.ROOM_STANDARD_SITE).getAttach();
+		//return (SetOfRooms) soc.getResource(DConst.ROOM_STANDARD_CAT).getAttach();
+		return sor;
 	}
 	
 	/**

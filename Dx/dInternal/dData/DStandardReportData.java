@@ -332,7 +332,9 @@ public class DStandardReportData {
    */
   private String buildStudentsReport(){
   	StringBuffer studlist= new StringBuffer("");
-    /*
+    //TODO when dInternal.dTimeTable and dInternal.dOptimization 
+  	// will use DResource and DSetOfResource
+  	/*
   	int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
