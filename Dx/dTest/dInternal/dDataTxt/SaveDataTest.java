@@ -48,7 +48,9 @@ public class SaveDataTest extends TestCase {
     save.saveTimeTable((TTStructure)_timeTable.get(1), (SetOfInstructors)_timeTable.get(2)
                                  , (SetOfRooms)_timeTable.get(3), (SetOfActivities)_timeTable.get(4)
                                  , (SetOfStudents)_timeTable.get(5),path+"fichier1Test.dia");
-    assertEquals("test_saveTimeTable : assertEquals: ", "1.5", (String)_timeTable.get(0));
+    LoadData _lData= new LoadData();
+    Vector _timeTable1 = _lData.loadProject(path+"fichier1Test.dia");
+    assertEquals("test_saveTimeTable : assertEquals: ", true, ((SetOfRooms)_timeTable1.get(3)).isEquals((SetOfRooms)_timeTable.get(3)));
   }
 
   /**
