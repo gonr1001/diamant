@@ -1,4 +1,4 @@
-package dInternal.dAlgorithms;
+package dInternal.dOptimization;
 
 /**
  * <p>Title: Proto</p>
@@ -11,7 +11,7 @@ package dInternal.dAlgorithms;
 
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
-import dInternal.dConditionsTest.*;
+import dInternal.dOptimization.*;
 import dInternal.dData.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;

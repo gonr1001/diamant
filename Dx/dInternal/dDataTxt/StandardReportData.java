@@ -11,10 +11,10 @@ package dInternal.dData;
 
 import dInternal.DModel;
 import dInternal.dTimeTable.*;
-import dInternal.dConditionsTest.*;
+import dInternal.dOptimization.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dConditionsTest.ConflictsAttach;
+import dInternal.dOptimization.ConflictsAttach;
 
 import dInterface.dUtil.DXTools;
 import dConstants.DConst;

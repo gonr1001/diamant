@@ -30,7 +30,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 
 
-import dInternal.dConditionsTest.EventAttach;
+import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.*;
 import dInternal.DModel;
 import dInternal.dData.Resource;

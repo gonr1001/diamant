@@ -1,4 +1,4 @@
-package dInternal.dAlgorithms;
+package dInternal.dOptimization;
 
 /**
  * <p>Title: Proto</p>

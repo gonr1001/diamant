@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.42 $  $Date: 2004-06-09 19:29:16 $
+ * Title: EditActivityDlg $Revision: 1.43 $  $Date: 2004-06-09 20:31:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -57,7 +57,7 @@ import javax.swing.JTabbedPane;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.DModel;
-import dInternal.dConditionsTest.EventAttach;
+import dInternal.dOptimization.EventAttach;
 import dInternal.dData.Activity;
 import dInternal.dData.Resource;
 import dInternal.dData.RoomAttach;

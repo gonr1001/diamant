@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.Vector;
 
 import dInternal.dTimeTable.Period;
-import dInternal.dConditionsTest.ConflictsAttach;
+import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 

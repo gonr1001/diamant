@@ -3,7 +3,7 @@ package dInternal.dTimeTable;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.ArrayValue;
-import dInternal.dConditionsTest.ConflictsAttach;
+import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import xml.InPut.ReadXMLElement;

@@ -10,7 +10,7 @@ package dInterface.dAlgorithms;
  */
 import dInterface.Command;
 import dInterface.DApplication;
-import dInternal.dAlgorithms.SelectAlgorithm;
+import dInternal.dOptimization.SelectAlgorithm;
 import dConstants.DConst;
 
 import com.iLib.gDialog.InformationDlg;
