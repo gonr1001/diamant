@@ -80,10 +80,7 @@ software. These kinds of errors are very hard to detect, because
 all the data should be checked manually. In the case, where the
 files are produced in an automatic way, it is necessary that the
 software be ensured to check the validity and the coherence of all
-the data. The second problem appears when a change is introduced
-into the system (either in the construction software, or in the
-one who produce the files) or if the construction software is used
-in several different sites, using different data formats.
+the data.
 
 Another source of problems even more expensive than the preceding
 is that when a change is introduced into the system, it could be
@@ -438,7 +435,7 @@ well-defined function~:
 
 \begin{description}
 \item [The interface.] Presents the data to the user, to allow the
-data input, and ensure the exchanges with other systems.\\
+data input, and ensure the exchanges with other layers.\\
 
 \item [Business logic layer.] Ensures the data exchanges with the
 interface layer. Validates and checks the data input and sending
@@ -518,7 +515,7 @@ timetable creation. Since this activity is of iterative nature,
 there can be a certain number of versions of the work that the
 user responsible for the timetable creation must analyze to find
 that which is appropriate to him. Once that he found this version,
-he must apply the operation ''commit'' to make the information
+he must apply the operation ``commit'' to make the information
 available to the rest of the users. Those are the output data from
 our system. They are sent to other systems or other users, for
 example, the student will receive a paper with their personalized
@@ -536,8 +533,8 @@ characteristic enables us to ensure the coherence of the data.
 constraints, these rules are defined by each institution and they
 are coded in the business logic layer. It is here that we will be
 able to express constrains, for example, the maximum of students
-in a group, all the courses of mathematics should be in the
-morning, etc.
+in a group, the maximum number of courses that a professor can
+teach, etc.
 
 \item The data results of these treatments must be store in a
 place to be able to use them after its generation. The data
@@ -661,7 +658,7 @@ our architecture.
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
 Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
-Language for display & HTML et JSP & HTML et JSP & HTML et JSP\\
+Language for display & HTML et JSP & HTML et PHP & HTML et JSP\\
 \hline
 
 Format to data exchange & Text & XML & Database SQL\\
@@ -696,7 +693,7 @@ options of instance of the architecture (see Table
 First, it should be known that an element is open if it is built
 with approved standards; or, if it is built with a private
 specification but made public by the
-developers.\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
+developers\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}.
 
 It is important to remember that an element is extensible if it is
 easy to adapt this product to the changes in the
@@ -710,9 +707,9 @@ brought us to our choice:
 \begin{description}
 
 \item [Language for display.] For the language for display and to
-enter data we chose HTML and JSP, because those languages are the
-standard for the creation of Web pages, and we want to benefit
-from all the characteristics that the site Web offer for the
+enter data we chose HTML and JSP, because those languages are one
+of the most used to create Web pages, and we want to benefit from
+all the characteristics that the site Web offer for the
 transactional applications.\\
 
 \item [Format to data exchange.] To exchange the data we chose
@@ -752,12 +749,11 @@ will enable us to make the system evolve by versions, adding or
 modifying the new characteristics required by the institutions.
 
 
-The technological implementation seems complex. There are several
-technological components to use. But, we are reusing several
-existing modules. This is one of the advantages of having an
-architecture and an instance open and extensible. We can analyze
-the components by layers to know which ones can be re-used and
-which ones will be implemented:
+The system implementation seems complex. But, we can reuse several
+existing modules. This is one of the advantages of the opening and
+and the extensibility of the architecture and the instance. We can
+analyze the components by layers to know which ones can be re-used
+and which ones will be implemented:
 
 
 \begin{description}
@@ -766,20 +762,13 @@ which ones will be implemented:
 element which facilitates the work enormously, the Web browser.
 This tool is available in most of the computers with Internet
 access. It is necessary to centralize the efforts to develop Web
-pages with the quality of compatibility. The problem is not easy,
-because we have now several Web browsers, by example: Internet
-Explorer\footnote{http:\//\//www.microsoft.com},
-Netscape\footnote{http:\//\//www.netscape.com},
-Mozilla\footnote{http:\//\//www.mozilla.org}, etc.
+pages with the quality of compatibility between two Web browsers:
+Internet Explorer\footnote{http:\//\//www.microsoft.com},
+Netscape\footnote{http:\//\//www.netscape.com}, etc.
 
-
-The question is how ensure this compatibility. There are efforts
-to promote the use of the standard HTML. The "Campaign for a
-Non-Browser Specific WWW"\footnote{http:\//\//www.anybrowser.org
-\//campaign/} recommends this philosophy. The Internet site
-http://validator.w3.org/, offers a tool that test the
-compatibility of a site with the standard HTML, this tool is
-provided by the "World
+The Internet site http://validator.w3.org/, offers a tool that
+test the compatibility of a site with the standard HTML, this tool
+is provided by the "World
 Wide Web Consortium"\footnote{http:\//\//www.w3.org/}.\\
 
 \item [Businesses logic layer.] There are two fundamental elements
@@ -796,8 +785,8 @@ like UNIX and Windows. The goal of this project is to provide a
 secure, effective and extensible server able to offer HTTP
 services according to current HTTP standards.
 
-We will program the business rules in some small JAVA programs
-called servlets. A servlet is a JAVA program used to extend the
+We will program the business rules in some small Java programs
+called servlets. A servlet is a Java program used to extend the
 functionalities of a Web server. A servlet is a program used to
 generate dynamic contents of the applications. It is an
 application carried out in the server which is downloaded
@@ -824,13 +813,14 @@ Oracle\footnote{http:\//\//www.oracle.com},
 Informix\footnote{http:\//\//www-306.ibm.com/software/data/informix/},
 IBM-DB2\footnote{http:\//\//www-306.ibm.com/software/data/db2/udb/},
 PostgreSQL\footnote{http:\//\//www.postgresql.org/}, and others.
-An advantage for PostgreSQL, it does not have cost for use the
-license.\\
+For PostgreSQL, using the license is free of charges.\\
 \end{description}
 
+//
+
 As we looked in this section, we benefit from several open
-technological elements which enable us to remain open and
-extensible.
+technological components which enable us to speed the development
+keeping the low cost.
 
 
 
@@ -866,7 +856,8 @@ check the coherence of the data before beginning the building
 work. Then, the answer is yes, there is a real benefit. By
 developing a system of production, it is easier to ensure that the
 software of construction has the responsibility for timetable
-construction and not the responsibility of checking the data.
+construction and not the responsibility of checking the data. And
+it's more easy to adapt the software to the changes.
 
 
 Other benefit are also to consider, such as for example consulting
