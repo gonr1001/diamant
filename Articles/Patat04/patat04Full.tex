@@ -578,31 +578,42 @@ Ces éléments de composition et ses relations sont illustrés dans
 la figure \ref{fig:fFour}.
 
 \begin{figure}
-\setlength{\unitlength}{1cm}
-\begin{picture}(10.5,5)
-  \put(1.5,4.7){\makebox(0,0){Interface utilisateur}}
-  \put(0,3.5){\framebox(3.5,1){Saisie de données}}
-  \put(1.8,3.68){\makebox(0,0){(Navigateur web)}}
-  \put(3.5,4.1){\vector(1,-1){1.5}}
-  \put(5,2.6){\vector(-1,1){1.5}}
+\setlength{\unitlength}{0.5cm}
+\begin{picture}(19,6)
 
-  \put(1.5,1.2){\makebox(0,0){Interface utilisateur}}
-  \put(0,0){\framebox(3.5,1){Autres systèmes}}
-  \put(3.5,.6){\vector(1,1){1.5}}
-  \put(5,2.1){\vector(-1,-1){1.5}}
+  \put (0,4){\line(1,0){22}}
+  \put (19,4.5){\makebox(0,0){\tiny Interface utilisateur}}
+  \put(0,4.5){\framebox(4,1){\tiny Saisie de données}}
+  \put(2,4.65){\makebox(0,0){\tiny (Client web)}}
+  \put(5,4.5){\framebox(4,1){\tiny Création d'horaires}}
+  \put(10,4.5){\framebox(4,1){\tiny Autres systèmes}}
 
-  \put(1.5,3){\makebox(0,0){Interface utilisateur}}
-  \put(0,1.8){\framebox(3.5,1){Création d'horaires}}
-  \put(3.5,2.2){\vector(1,0){1.5}}
-  \put(5,2.2){\vector(-1,0){1.5}}
 
-  \put(6.2,3){\makebox(0,0){Logique d'affaires}}
-  \put(5,1.8){\framebox(2.5,1){Serveur Web}}
-  \put(7.5,2.2){\vector(1,0){1}}
-  \put(8.5,2.2){\vector(-1,0){1}}
+  \put (0,2){\line(1,0){22}}
+  \put (19,2.5){\makebox(0,0){\tiny Logique d'affaires}}
+  \put (2,2.5){\framebox(4,1){\tiny Serveur Web}}
+  \put (8,2.5){\framebox(4,1){\tiny Règles d'affaires}}
 
-  \put(10.2,3){\makebox(0,0){Persistance des données}}
-  \put(8.5,1.8){\framebox(3.7,1){Serveur base de données}}
+  \put (0,0){\line(1,0){22}}
+  \put (19,0.5){\makebox(0,0){\tiny Persistance des données}}
+  \put (5,0.5){\framebox(6,1){\tiny Serveur Base Données}}
+
+
+% \put(3.5,4.1){\vector(1,-1){1.5}}
+%\put(5,2.6){\vector(-1,1){1.5}}
+
+% \put(1.5,1.2){\makebox(0,0){Interface utilisateur}}
+% \put(3.5,.6){\vector(1,1){1.5}}
+% \put(5,2.1){\vector(-1,-1){1.5}}
+
+% \put(1.5,3){\makebox(0,0){Interface utilisateur}}
+% \put(3.5,2.2){\vector(1,0){1.5}}
+% \put(5,2.2){\vector(-1,0){1.5}}
+
+
+% \put(7.5,2.2){\vector(1,0){1}}
+% \put(8.5,2.2){\vector(-1,0){1}}
+
 
 \end{picture}
 \caption{L'implementation de l'architecture trois couches pour le
