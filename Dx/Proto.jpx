@@ -23,6 +23,8 @@
   <property category="sys" name="IncludeTestPath" value="1"/>
   <property category="sys" name="InstanceVisibility" value="2"/>
   <property category="sys" name="JDK" value="java 1.3.1-b24"/>
+  <property category="sys" name="JbxEventListener0" value="dInternal.DModelListener"/>
+  <property category="sys" name="JbxEventListener1" value="dInternal.DModelListener"/>
   <property category="sys" name="LastTag" value="0"/>
   <property category="sys" name="Libraries" value="JUnit;theLibrary"/>
   <property category="sys" name="MakeStable" value="0"/>
@@ -34,14 +36,9 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
-  <file path="dInternal/DModelEvent.java"/>
-  <file path="dInternal/DModelListener.java"/>
   <file path="DRun.java"/>
   <file path="DRunTest.java"/>
   <file path="dInternal/Instructor.java"/>
   <file path="dInternal/InstructorsList.java"/>
   <file path="Proto.html"/>
-  <file path="dInternal/TTParameters.java"/>
-  <file path="dInternal/TTParametersEvent.java"/>
-  <file path="dInternal/TTParametersListener.java"/>
 </project>

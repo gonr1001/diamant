@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.2 $  $Date: 2003-02-20 15:13:33 $
+ * Title: Preferences $Revision: 1.3 $  $Date: 2003-03-06 15:56:55 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,28 +15,34 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInternal;
 
 
-import  com.iLib.rIO.InputFile;
-import  com.iLib.rIO.InputFileException;
+import  com.iLib.gIO.FilterFile;
+import java.util.StringTokenizer;
+import  com.iLib.gException.IOFileException;
 import  com.iLib.rIO.Writer;
 
 public class Preferences {
+  private final String CR_LF = "\r\n";
+
   public String _lookAndFeel;
   public String _language;
   private String _fullFileName;
   public Preferences(String str) {//throws InputFileException{
     try {
-      InputFile inf = new InputFile(str);
-      _lookAndFeel = inf.readLine();
-      _language = inf.readLine();
+      FilterFile filter = new FilterFile();
+      if (filter.validFile(str)) {
+      StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), CR_LF );
+      System.out.println(st.toString());
+      _lookAndFeel = st.nextToken();
+      _language = st.nextToken();
       _fullFileName = str;
-
+      }
     } catch (Exception e) {
       System.out.println(e);
     }

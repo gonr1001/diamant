@@ -1,5 +1,4 @@
 com.iLib.gDialog
 com.iLib.gException
 com.iLib.gIO
-com.iLib.rIO
-com.iLib.rIO.test
+com.iTest

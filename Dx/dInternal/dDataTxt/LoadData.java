@@ -13,7 +13,7 @@ import java.util.Vector;
 import java.util.StringTokenizer;
 
 import com.iLib.gDialog.FatalProblemDlg;
-import com.iLib.gIO.Filter;
+import com.iLib.gIO.FilterFile;
 
 public class LoadData {
   Vector _v;
@@ -33,8 +33,8 @@ public class LoadData {
   }
 
   private void verifyImportDataFile(String str){
-    Filter filter = new Filter();
-    if (filter.doIt(str)) {
+    FilterFile filter = new FilterFile();
+    if (filter.validFile(str)) {
       StringTokenizer st = new StringTokenizer(new String (filter.getByteArray()), CR_LF );
       if (st.countTokens() == NUMBER_OF_TOKENS){
         _instructorFileName = st.nextToken();
@@ -83,11 +83,8 @@ public class LoadData {
 
 
   private byte[] preLoad(String str) {
-    Filter filter = new Filter();
-    filter.readFile(str);
-    if (filter.testValidityOfBytes()) {
-      filter.adjustingLines();
-      filter.adjustingEndFile();
+    FilterFile filter = new FilterFile();
+    if (filter.validFile(str)) {
       return filter.getByteArray();
     } else return null;
 
