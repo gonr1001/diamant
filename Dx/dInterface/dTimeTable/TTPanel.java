@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.50 $  $Date: 2003-10-02 23:34:25 $
+ * Title: TTPanel $Revision: 1.51 $  $Date: 2003-10-06 12:32:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.50 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.51 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -61,7 +61,7 @@ public abstract class TTPanel {
   protected TTStructure _tts;
   protected DToolBar _toolBar;
   protected JScrollPane _jScrollPaneOne;
-  protected JSplitPane _jSplitPane;
+
   protected PeriodPanel _lastActivPanel = null;
   protected int _periodLenght;
 
@@ -77,23 +77,23 @@ public abstract class TTPanel {
    * @param toolBar
    */
   public TTPanel(TTStructure tts, DToolBar toolBar) {
-    _tts= tts;
-    _toolBar=toolBar;
+    _tts = tts;
+    _toolBar = toolBar;
     _jScrollPaneOne = new JScrollPane();
-    _jSplitPane = new JSplitPane();
+
   }
   //-------------------------------------------
   abstract public void updateTTPanel(TTStructure ttp);
 
-  public JViewport getViewport() {
+  abstract public JViewport getViewport() ; /*{
     return new JViewport();
-  }
+  }*/
 
 
 
-  public JScrollPane getJScrollPane() {
+  abstract public JScrollPane getJScrollPane();/* {
       return  _jScrollPaneOne;
-  }
+  }*/
 
   abstract public Component getPanel();
 

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPanel $Revision: 1.8 $  $Date: 2003-10-02 23:34:25 $
+ * Title: SimpleTTPanel $Revision: 1.9 $  $Date: 2003-10-06 12:32:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.9 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -61,12 +61,14 @@ import dInternal.dTimeTable.TTStructure;
 public class SimpleTTPanel extends TTPanel {
 
   private MouseListener _mouseListener;
+  private JSplitPane _jSplitPane;
   //private PeriodPanel _lastActivPpanel = null;
 
 
 
   public SimpleTTPanel(TTStructure tts, DToolBar toolBar) {
     super(tts, toolBar);
+    _jSplitPane = new JSplitPane();
     if(_tts!=null){
       initTTPaneOne();
     }

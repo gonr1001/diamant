@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.6 $  $Date: 2003-10-02 23:34:25 $
+ * Title: DetailedTTPanel $Revision: 1.7 $  $Date: 2003-10-06 12:32:01 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.7 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -58,6 +58,7 @@ public class DetailedTTPanel extends TTPanel {
 
 
   private MouseListener _mouseListener;
+  private JSplitPane _jSplitPane;
   //private PeriodPanel _lastActivPpanel = null;
   //private DetailedPeriodPanel _lastActivPanel = null;
   //private JSplitPane _jSplitPane;
@@ -68,22 +69,19 @@ public class DetailedTTPanel extends TTPanel {
   public DetailedTTPanel(TTStructure tts, DToolBar toolBar) {
     super(tts, toolBar);
     _jScrollPaneTwo = new JScrollPane();
-    if(_tts!=null){
+    _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,new JLabel("A"),new JLabel("B"));
+    /*if(_tts!=null){
       initTTPaneOne();
       initTTPaneTwo();
     }
-    //_jSplitPane.add(_jScrollPaneOne);
-
-    _jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
-
-
-
- _jSplitPane.setTopComponent(_jScrollPaneOne);
- _jSplitPane.setBottomComponent(_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
-  _jSplitPane.setOneTouchExpandable(true);
-    _jSplitPane.setDividerLocation(0);
- Dimension minSize= new Dimension (100, 100);
-    _jScrollPaneOne.setMinimumSize(minSize);
+    //_jSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
+*/
+    /*_jSplitPane.setTopComponent(new JLabel("A")); //_jScrollPaneOne);
+    _jSplitPane.setBottomComponent(new JLabel("B")); //(_jScrollPane);
+    _jSplitPane.setOneTouchExpandable(true);
+    _jSplitPane.setDividerLocation(100);*/
+    //Dimension minSize= new Dimension (100, 100);
+    //_jScrollPaneOne.setMinimumSize(minSize);
   } // end  SimpleTTPanel
 
   //-------------------------------------------
