@@ -45,6 +45,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   public void build(){
 
     Vector eventRescList=buildEventsVector();
+    //for(int i=0; i< 5; i++)
     compileStudents(eventRescList);
     //compileStudents(eventRescList);
     /*Vector secondVec= new Vector();
@@ -66,7 +67,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       String actID= DXToolsMethods.getToken(_eventsRescList.get(i).toString(),".",0);
       String typeID= DXToolsMethods.getToken(_eventsRescList.get(i).toString(),".",1);
       Type type= _dm.getSetOfActivities().getType(actID,typeID);
-       Vector studentRegistered= buildStudentsRegistered(actID,typeID);
+      Vector studentRegistered= buildStudentsRegistered(actID,typeID);
       for (int j=0; j< type.getSetOfSections().size(); j++){
         Resource section= type.getSetOfSections().getResourceAt(j);
         //make it for each section of an activity type
@@ -163,7 +164,9 @@ public class StudentMixingAlgorithm implements Algorithm {
       int group= student.getGroup(activityID+typeID);
       if(!student.isFixedInGroup(activityID+typeID,group)){
         studentR.add(Long.toString(studentKey));
+        student.setInGroup(activityID+typeID,-1,false);
       }// end if(student.isFixedInGroup(activityID+typeID,group))
+
     }// end for (int i=0; i< student.size(); i++)
     return studentR;
   }
@@ -195,45 +198,57 @@ public class StudentMixingAlgorithm implements Algorithm {
      * number of potential conflicts of the student
      */
     SetOfResources convexGroup= new SetOfResources(1);//
-  //  int[][] convexMatrix= new int[associatesEvents.size()][studentsReg.size()];
+    //  int[][] convexMatrix= new int[associatesEvents.size()][studentsReg.size()];
     for (int i=0; i< studentsReg.size(); i++){
       long studentKey= Long.parseLong(studentsReg.get(i).toString());
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
       int nbOfPotentialConf=0;
       for (int j=0; j< student.getCoursesList().size(); j++){
         String actID= student.getCoursesList().getResourceAt(j).getID();
-        int group= student.getGroup(actID);
-        Section sect=_dm.getSetOfActivities().getSection(actID.substring(0,
-            SetOfActivities._COURSENAMELENGTH),actID.substring(
-            SetOfActivities._COURSENAMELENGTH),Character.toString(DXTools.STIConvertGroup(group)));
-        if((group<=0) || sect==null){
-          group=1;
-          student.setInGroup(actID,group,false);
-        }
-        String sectionID= Character.toString(DXTools.STIConvertGroup(group));
         String typeID= actID.substring(SetOfActivities._COURSENAMELENGTH,SetOfActivities._COURSENAMELENGTH+1);
         actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
-        //Type type= _dm.getSetOfActivities().getType(actID,typeID);
-        //for(int k=0; k< type.getSetOfSections().size(); k++){
-        //Resource section= type.getSetOfSections().getResourceAt (k);
-        Section section= _dm.getSetOfActivities().getSection(actID,typeID,sectionID);
-        if(section!=null){
-          for(int l=0; l< section.getSetOfUnities().size(); l++){
-            String eventID= actID+"."+typeID+"."+sectionID+"."+
-                    section.getSetOfUnities().getResourceAt(l).getID()+".";
-            Resource assEvent= associatesEvents.getResource(eventID);
-            if(assEvent!=null){
-              nbOfPotentialConf+= ((DXValue)assEvent.getAttach()).getIntValue();
-            }// end if(assEvent!=null)
-            //System.out.println(eventID);//debug
-          }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
-        }//end if(section!=null)
-        //}// end for(int k=0; k< type.getSetOfSections().size(); k++)
-      }// end for (int j=0; j< student.getCoursesList().size(); j++)
+        int group= student.getGroup(actID+typeID);
+        Vector groupList= new Vector(1);
+        /*Section sect=_dm.getSetOfActivities().getSection(actID.substring(0,
+            SetOfActivities._COURSENAMELENGTH),actID.substring(
+            SetOfActivities._COURSENAMELENGTH),Character.toString(DXTools.STIConvertGroup(group)));*/
+        if((group<=0) ){
+          /*Type type= _dm.getSetOfActivities().getType(actID,typeID);
+          if(type!=null)
+          for (int k=0; k< type.getSetOfSections().size(); k++){
+            groupList.add(Character.toString(DXTools.STIConvertGroup(k+1)));
+          }// end for (int k=0; k< type.getSetOfSections().size(); k++)
+          */
+        }else{
+          groupList.add(Character.toString(DXTools.STIConvertGroup(group)));
+        }
+
+        for(int k=0; k< groupList.size(); k++){
+          String sectionID= groupList.get(k).toString().trim();
+          //String typeID= actID.substring(SetOfActivities._COURSENAMELENGTH,SetOfActivities._COURSENAMELENGTH+1);
+          //actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
+          //Type type= _dm.getSetOfActivities().getType(actID,typeID);
+          //for(int k=0; k< type.getSetOfSections().size(); k++){
+          //Resource section= type.getSetOfSections().getResourceAt (k);
+          Section section= _dm.getSetOfActivities().getSection(actID,typeID,sectionID);
+          if(section!=null){
+            for(int l=0; l< section.getSetOfUnities().size(); l++){
+              String eventID= actID+"."+typeID+"."+sectionID+"."+
+                      section.getSetOfUnities().getResourceAt(l).getID()+".";
+              Resource assEvent= associatesEvents.getResource(eventID);
+              if(assEvent!=null){
+                nbOfPotentialConf+= ((DXValue)assEvent.getAttach()).getIntValue();
+              }// end if(assEvent!=null)
+              //System.out.println(eventID);//debug
+            }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
+          }//end if(section!=null)
+          //}// end for(int k=0; k< type.getSetOfSections().size(); k++)
+        }// end for (int j=0; j< student.getCoursesList().size(); j++)
+        //DXValue value= new DXValue();
+        //value.setIntValue(nbOfPotentialConf);
+      }// end for(int k=0; k< groupList.size(); k++){
       convexGroup.setCurrentKey(studentKey);
       convexGroup.addResource(new Resource(Integer.toString(nbOfPotentialConf),new DXValue()),0);
-      //DXValue value= new DXValue();
-      //value.setIntValue(nbOfPotentialConf);
     }//end for (int i=0; i< studentsReg.size(); i++)
     convexGroup.sortSetOfResourcesByID();
     return convexGroup;
@@ -252,8 +267,9 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector sizeOfGroups= new Vector();
     for(int i=0; i< allConvGroup.size(); i++){
       size= new DXValue();
-      //size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,i+1).size());
-      size.setIntValue(0);
+      int group= i+1;
+      size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
+      //size.setIntValue(0);
       sizeOfGroups.add(size);
     }
     Resource newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
@@ -273,44 +289,20 @@ public class StudentMixingAlgorithm implements Algorithm {
     switch(_mixingType){
       case 0:
         resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,1);
-        /*int group=currentConvGroup.getIntValue();
-        SetOfResources biggestConvGroup= (SetOfResources)allConvGroup.get(group);
-        if(biggestConvGroup.size()>0){
-          resc= (Resource)biggestConvGroup.getResourceAt(0);
-          ((DXValue)resc.getAttach()).setIntValue(group+1);
-          for (int i=0; i< allConvGroup.size(); i++)
-            ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
-        }// end if(biggestConvGroup.size()>0)
-        if(++group>=allConvGroup.size())
-          group=0;
-        currentConvGroup.setIntValue(group);*/
         break;
 
       case 1:
-        resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,ACCEPTABLEVARIATION);
+        if(quickSolution(allConvGroup))
+          resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,1);
+        else
+          resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,ACCEPTABLEVARIATION);
         break;
 
       case 2:
-        if(allConvGroup.size()>0 && ((SetOfResources)allConvGroup.get(0)).size()>0){
-          int bestConf=Integer.parseInt(((SetOfResources)allConvGroup.get(0)
-              ).getResourceAt(0).getID());
-          int bestGroup=0;
-          int count;
-          //for (int i=currentConvGroup.getIntValue(); i< allConvGroup.size()+currentConvGroup.getIntValue(); i++){
-          for (int i=1; i< allConvGroup.size(); i++){
-            if(bestConf>=Integer.parseInt(((SetOfResources)allConvGroup.get(i)
-                ).getResourceAt(0).getID())){
-            bestConf=Integer.parseInt(((SetOfResources)allConvGroup.get(i)
-            ).getResourceAt(0).getID());
-            bestGroup=i;
-          }
-          }
-          resc= (Resource)((SetOfResources)allConvGroup.get(bestGroup)).getResourceAt(0);
-          ((DXValue)resc.getAttach()).setIntValue(bestGroup+1);
-          for (int i=0; i< allConvGroup.size(); i++)
-            ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
-          currentConvGroup.setIntValue(bestGroup+1);
-        }
+        if(quickSolution(allConvGroup))
+          resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,1);
+        else
+          resc=giveBestGroup(resc, allConvGroup,  currentConvGroup,  sizeOfGroups,150);
         break;
     }
     return resc;
@@ -333,6 +325,21 @@ public class StudentMixingAlgorithm implements Algorithm {
     return group;
   }
 
+  /**
+   * return true if no student is in conflict
+   * @return
+   */
+  private boolean quickSolution(Vector allConvGroup){
+    for (int i=0; i< allConvGroup.size(); i++){
+      SetOfResources group= (SetOfResources)allConvGroup.get(i);
+      for (int j=0; j< group.size(); j++){
+        if(Integer.parseInt(group.getResourceAt(j).getID())!=0)
+          return false;
+      }// end for (int j=0; j< group.size(); j++)
+    }// end for (int i=0; i< allConvGroup.size(); i++)
+    return true;
+  }
+
 
   /**
    *
@@ -342,41 +349,41 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @param sizeOfGroups
    */
   private Resource giveBestGroup(Resource resc, Vector allConvGroup,
-                             DXValue currentConvGroup, Vector sizeOfGroups, int acceptableVariation){
+                                 DXValue currentConvGroup, Vector sizeOfGroups, int acceptableVariation){
     Vector includeGroupsList=new Vector();
-        int smallGroup= getSmallerGroup(sizeOfGroups);
-        for(int i=0; i< allConvGroup.size(); i++){
-          if ((((DXValue)sizeOfGroups.get(i)).getIntValue()-
-               ((DXValue)sizeOfGroups.get(smallGroup)).getIntValue())< acceptableVariation)
-          includeGroupsList.add(new Integer(i));
-        }// end for(int i=0; i< allConvGroup.size(); i++){
+    int smallGroup= getSmallerGroup(sizeOfGroups);
+    for(int i=0; i< allConvGroup.size(); i++){
+      if ((((DXValue)sizeOfGroups.get(i)).getIntValue()-
+           ((DXValue)sizeOfGroups.get(smallGroup)).getIntValue())< acceptableVariation)
+      includeGroupsList.add(new Integer(i));
+    }// end for(int i=0; i< allConvGroup.size(); i++){
 
-        int bGroup=((Integer)includeGroupsList.get(0)).intValue();
-        if(((SetOfResources)allConvGroup.get( bGroup)).size()>0){
-          //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
-          int bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
-              bGroup)).getResourceAt(0).getID());
+    int bGroup=((Integer)includeGroupsList.get(0)).intValue();
+    if(((SetOfResources)allConvGroup.get( bGroup)).size()>0){
+      //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
+      int bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
+          bGroup)).getResourceAt(0).getID());
 
 
-          for(int i=1; i< includeGroupsList.size(); i++){
-            if(bConf>Integer.parseInt(((SetOfResources)allConvGroup.get(
-                ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
-            bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
-            ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
-            bGroup=((Integer)includeGroupsList.get(i)).intValue();
-          }// end if(bConf>=Integer.parseInt(((SetOfResources
-          }// end for(int i=0; i< includeGroupsList.size(); i++){
-          //currentConvGroup.setIntValue(bGroup);
-          ((DXValue)sizeOfGroups.get(bGroup)).setIntValue(
-              ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
+      for(int i=1; i< includeGroupsList.size(); i++){
+        if(bConf>Integer.parseInt(((SetOfResources)allConvGroup.get(
+            ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
+        bConf=Integer.parseInt(((SetOfResources)allConvGroup.get(
+        ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
+        bGroup=((Integer)includeGroupsList.get(i)).intValue();
+      }// end if(bConf>=Integer.parseInt(((SetOfResources
+      }// end for(int i=0; i< includeGroupsList.size(); i++){
+      //currentConvGroup.setIntValue(bGroup);
+      ((DXValue)sizeOfGroups.get(bGroup)).setIntValue(
+          ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
 
-          resc= (Resource)((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
-          ((DXValue)resc.getAttach()).setIntValue(bGroup+1);
-          for (int i=0; i< allConvGroup.size(); i++)
-            ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
-          currentConvGroup.setIntValue(bGroup+1);
-        }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
-        return resc;
+      resc= (Resource)((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
+      ((DXValue)resc.getAttach()).setIntValue(bGroup+1);
+      for (int i=0; i< allConvGroup.size(); i++)
+        ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
+      currentConvGroup.setIntValue(bGroup+1);
+    }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
+    return resc;
   }
 
 }// end class
