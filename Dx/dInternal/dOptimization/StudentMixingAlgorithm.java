@@ -79,8 +79,9 @@ public class StudentMixingAlgorithm implements Algorithm {
         //
       }// end
       //System.out.println(writeConvexGroups(allConvexGroups));
-      buildSumOfConvexGroups(allConvexGroups);
-      setStudentsInGroup(actID,typeID,allConvexGroups);
+      SetOfResources sumOfConvex= buildSumOfConvexGroups(allConvexGroups);
+      setStudInGroup(actID,typeID,allConvexGroups,sumOfConvex);
+      //setStudentsInGroup(actID,typeID,allConvexGroups); ysyam
     }//end for(int i=0; i< _eventsRescList.size(); i++)
     _dm.getConditionsTest().setMatrixBuilded(false,false);
     _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
@@ -342,19 +343,19 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @param smallerGroup
    * @return
    */
- private Vector getEligibleGroups(Vector sizeOfGroups){
+ private boolean isEligibleGroups(Vector sizeOfGroups, int groupIndex, int acceptableVariation){
    //int group=0;
    //int min= ((DXValue)sizeOfGroups.get(0)).getIntValue();
    Vector eligibleGroups= new Vector();
     int smalGroupIndex = getSmallerGroup(sizeOfGroups);
     DXValue smallerGroup= (DXValue)sizeOfGroups.get(smalGroupIndex);
-   for (int i=1; i< sizeOfGroups.size(); i++){
-     DXValue currentGroup = ((DXValue)sizeOfGroups.get(i));
-     if((currentGroup.getIntValue()- smallerGroup.getIntValue())<=ACCEPTABLEVARIATION){
-       eligibleGroups.add(currentGroup);
-     }
-   }
-   return eligibleGroups;
+   if(groupIndex< sizeOfGroups.size()){
+     DXValue currentGroup = ((DXValue)sizeOfGroups.get(groupIndex));
+     if((currentGroup.getIntValue()- smallerGroup.getIntValue())<=acceptableVariation){
+       return true;
+     }// end if((currentGroup.getIntValue()- smallerGroup.getIntValue()
+   }// end if(groupIndex< sizeOfGroups.size())
+   return false;
   }
 
   /**
@@ -439,8 +440,10 @@ public class StudentMixingAlgorithm implements Algorithm {
         String conf=((SetOfResources)allConvexGroups.get(j)).getResourceAt(i).getID();
         sum+= Integer.parseInt(conf);
       }// end for(int j=0; j< studentRegistered.size(); j++)
+       String confSum ="0000"+Integer.toString(sum);
+       confSum= confSum.substring(confSum.length()-4,confSum.length());
       convexSum.setCurrentKey(studentRegistered.getResourceAt(i).getKey());
-      convexSum.addResource(new Resource(Integer.toString(sum),new DXValue()),0);
+      convexSum.addResource(new Resource(confSum,new DXValue()),0);
     }// end for(int i=0; i< allConvexGroups.size(); i++)
     convexSum.sortSetOfResourcesByID();
     return convexSum;
@@ -453,7 +456,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   * @param allConvGroup
   */
  private void setStudInGroup(String activityID, String typeID, Vector allConvGroups, SetOfResources sumList){
-   SetOfResources studentRegistered = (SetOfResources)allConvGroups.get(0);
+   //SetOfResources studentRegistered = (SetOfResources)allConvGroups.get(0);
    Vector sizeOfGroups= new Vector();
    Type type= _dm.getSetOfActivities().getType(activityID,typeID);
    for(int i=0; i< type.getSetOfSections().size(); i++){
@@ -463,8 +466,38 @@ public class StudentMixingAlgorithm implements Algorithm {
      //size.setIntValue(0);
      sizeOfGroups.add(size);
     }// end for(int i=0; i< type.getSetOfSections().size(); i++)
+    SetOfResources removeStudents= new SetOfResources(65);
+    while(sumList.size()>0){
+      //Vector eligibleGroups = getEligibleGroups(sizeOfGroups);
+      for (int i=0; i< sumList.size(); i++){
+        long studentKey= sumList.getResourceAt(sumList.size()-1).getKey();
+        int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups);
+        if(groupIndex!=-1){
+          StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
+          int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
+              groupIndex).getID());//int group= i+1;
+          DXValue value= (DXValue)sizeOfGroups.get(groupIndex);
+          value.setIntValue(value.getIntValue()+1);
+          //student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
+          student.setInGroup(activityID+typeID, group,false);
+          sumList.removeResource(studentKey);
+          break;
+          //newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
+        } else{// end if(groupIndex!=-1)
+          removeStudents.addResource(sumList.getResourceAt(sumList.size()-1),0);
+        }// end else if(groupIndex!=-1)
 
-    Vector eligibleGroups = getEligibleGroups(sizeOfGroups);
+      }// end for (int i=0; i< studentRegistered.size(); i++)
+      if(sumList.size()==0){
+        for(int i=0; i< removeStudents.size(); i++){
+          sumList.addResource(removeStudents.getResourceAt(i),0);
+        }// end for(int i=0; i< removeStudents.size(); i++)
+        sumList.sortSetOfResourcesByID();
+      }// end if(sumList==0)
+
+    }// end while(studentRegistered.size()>0)
+
+
  }
 
  /**
@@ -474,11 +507,19 @@ public class StudentMixingAlgorithm implements Algorithm {
   * @param eligibleGroups
   * @return
   */
- private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector eligibleGroups){
-   if(eligibleGroups.size()==allConvexGroups.size()){
-     // return the index of group  where the student has the smaller number of conflicts
-   } else if(eligibleGroups.size()< allConvexGroups.size()){
-     //return the index group where the student has 0 conflict
+ private int getGroupIndex (long studentKey, Vector allConvexGroups, Vector sizeOfGroups){
+   SetOfResources setOfConflicts= new SetOfResources(99);
+   for(int i=0; i< allConvexGroups.size(); i++){
+     SetOfResources group = (SetOfResources)allConvexGroups.get(i);
+     String conf="0000"+group.getResource(studentKey).getID();
+     conf= conf.substring(conf.length()-4,conf.length());
+     setOfConflicts.addResource(new Resource(conf,new DXValue()),0);
+   }// end for(int i=0; i< allConvexGroups.size(); i++)
+   setOfConflicts.sortSetOfResourcesByID();
+   for (int i=0; i< setOfConflicts.size(); i++){
+     int groupIndex= (int)setOfConflicts.getResourceAt(i).getKey()-1;
+     if(isEligibleGroups(sizeOfGroups, groupIndex,ACCEPTABLEVARIATION))
+       return groupIndex;
    }
    return -1;
  }
