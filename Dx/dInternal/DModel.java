@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.32 $  $Date: 2003-07-03 17:01:09 $
+ * Title: DModel $Revision: 1.33 $  $Date: 2003-07-04 10:10:27 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.33 $
+ * @author  $Author: ysyam $
  * @since JDK1.3
  */
 package dInternal;
@@ -63,7 +63,7 @@ public class DModel {
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;//
     // must initiate type and
-    loadTTStruct(fullPath);
+    loadTimeTable(fullPath);
     //rreadTT(fileName);
     //importData("hello");
     //test1_setAvailability();
@@ -122,7 +122,7 @@ public class DModel {
   /**
    *
    * */
-  public String loadProject(String fileName){
+  public String loadTimeTable(String fileName){
     LoadData loadD = new LoadData();
     Vector project = loadD.loadProject(fileName);
     if(project.size()!=0){

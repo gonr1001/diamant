@@ -178,7 +178,7 @@ public class TTPanel extends JScrollPane {
           Period period= _dm.getTTStructure().getPeriod(sequence,k+1);
           periodPanel = new PeriodPanel(count,i,j,k);//(period, count, UWIDTH, UHEIGHT);
           periodPanel.addMouseListener(_mouseListener);
-          periodPanel.createPanel(period,UWIDTH, _periodLenght);
+          periodPanel.createPanel(period,UWIDTH, 60);//_periodLenght);
           count++;
           c = new GridBagConstraints();
           c.fill = GridBagConstraints.BOTH;
