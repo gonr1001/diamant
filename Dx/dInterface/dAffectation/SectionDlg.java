@@ -408,6 +408,7 @@ public class SectionDlg extends JDialog implements ActionListener{
    * Sets the vectors containig the students assigned to the groups and the
    * list whose DataModel are that vectors
    */
+  /*
   private void setAssignedLists(){
     _assignedVectors = new Vector[_numberOfSections];
     _assignedLists = new JList[_numberOfSections];
@@ -418,7 +419,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       _assignedLists[i].addMouseListener(mouseListenerLists);
     }
   }
-
+*/
 
   private void setLists(int sortIndex, boolean forUpdate){
     _notAssignedVector = _students.getStudentsByGroup(_actID, (String)_typeVector.elementAt(_typeCombo.getSelectedIndex()), -1, _sortIndex);
@@ -478,6 +479,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     }//end for(int j = 0; j < _assignedVectors.length; j++)
   }//end method
 
+  /*
   private void sortElements(int sortIndex){
     switch (sortIndex){
       case 0:
@@ -494,6 +496,7 @@ public class SectionDlg extends JDialog implements ActionListener{
       _assignedLists[i].setListData(_assignedVectors[i]);
     }//end for
   }//end method
+  */
 
   private void changeFixedInGroup(Object [] obj, int group){
     boolean fixedInGroup;

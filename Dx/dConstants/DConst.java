@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.51 $  $Date: 2003-09-19 15:42:37 $
+ * Title: DConst $Revision: 1.52 $  $Date: 2003-09-23 10:06:31 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -116,12 +116,14 @@ public class DConst {
   public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Locaux
   public final static String EVENTS_ASSIGN_M= res.getString("EventsAssignM");//Évenements
   public final static String MANUAL_ASSIGN_M= res.getString("ManualAssignM");//Évenements
-  //Optimization menu
-  public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
-  public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale
+  public final static String DEFINE_SET_M = res.getString("DefineSetM");//Définir ensemble
+  public final static String PARTIAL_TTSTRUCTURE_M = res.getString("PartialTTStructureM");//Grille Partielle
   //Modification menu
   public final static String MODIFICATION = res.getString("ModificationM");//Modification
   public final static String EVENTS_MODIF_M = res.getString("EventsModifM");//Modification évenements
+  //Optimization menu
+  public final static String OPTIMIZATION = res.getString("OptimizationM");//Optimisation
+  public final static String INITIAL_AFFECT_M = res.getString("initialAffectM");//Affectation Initiale
   //Report menu
   public final static String REPORT = res.getString("ReportM");//Rapports
   //Preferences menu
@@ -183,8 +185,13 @@ public class DConst {
   public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés
   public final static String EVENTS_PLACED = res.getString("EventsPlaced");//Placés
   public final static String EVENTS_NOT_PLACED = res.getString("EventsNotPlaced");//Non placés
+  //DefineSetDlg
+
+  //PartialTTStructureDlg
 
 
+  //Optimisation dialogs
+  public final static String INITIAL_AFFECT_MESSAGE = res.getString("InitialAffectMessage");//Affectation initiale effectuée
   //Preferences dialogs
   public final static String PLAF_TD = res.getString("plafTD");//Options L&F unp repete
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.71 $  $Date: 2003-09-22 12:12:17 $
+ * Title: DMenuBar $Revision: 1.72 $  $Date: 2003-09-23 10:06:31 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.71 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.72 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInterface;
@@ -60,7 +60,7 @@ public class DMenuBar extends JMenuBar{
   private final int _nPT = DConst.NPT11;
 
   //the menus
-  private JMenu _file, _assign, _optimisation, _modification, _preferences, _report, _help,  _dev;
+  private JMenu _file, _assign, _modification, _optimisation, _preferences, _report, _help,  _dev;
   private boolean _boolFile, _boolAssign, _boolOptimization, _boolModification, _boolReport, _boolPreferences, _boolHelp, _boolDev;
   // the file menus containing sub menus
   private JMenu _newTTable, _newTTStruc;
@@ -77,17 +77,18 @@ public class DMenuBar extends JMenuBar{
 
   // the assign menus
   private CmdMenu _activities, _sections, _instructorAvailability,
-  _roomsAvailability, _events,
-  _mExcl, _mConfl;
+  _roomsAvailability, _events, _mExcl, _mConfl, _defineSet, _partialTTStructure;
   private boolean _boolActivities, _boolSections, _boolInstructorAvailability,
-  _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl;
+  _boolRoomsAvailability, _boolEvents, _boolExcl, _boolConfl, _boolDefineSet, _boolPartialTTStructure;
+
+  // the modification menus
+  private CmdMenu _mEventsModif;
+  private boolean _boolMEventsModif;
 
   // the optimisation menus
   private CmdMenu _mOpti,_mInit;
   private boolean _boolMOpti, _boolMInit;
-  // the optimisation menus
-  private CmdMenu _mEventsModif;
-  private boolean _boolMEventsModif;
+
   // the preferences menus
   private CmdMenu _lookAndFeel;
   private boolean _boolLookAndFeel;
@@ -108,8 +109,8 @@ public class DMenuBar extends JMenuBar{
   private void createMenuBar() {
     createFileMenu();
     createAssignMenu();
-    createOptimisationMenu();
     createModificationMenu();
+    createOptimisationMenu();
     createReportMenu();
     createPreferencesMenu();
     createHelpMenu();
@@ -257,6 +258,20 @@ public class DMenuBar extends JMenuBar{
 
     _assign.addSeparator();
 
+    _defineSet = new CmdMenu(DConst.DEFINE_SET_M);
+    _defineSet.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    _defineSet.setCommand(new DefineSetCmd());
+    _defineSet.addActionListener(_dApplic);
+    _assign.add(_defineSet);
+
+    _partialTTStructure = new CmdMenu(DConst.PARTIAL_TTSTRUCTURE_M);
+    _partialTTStructure.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    _partialTTStructure.setCommand(new PartialTTStructureCmd());
+    _partialTTStructure.addActionListener(_dApplic);
+    _assign.add(_partialTTStructure);
+
+    _assign.addSeparator();
+
     CmdMenu mConfl = new CmdMenu(DConst.MANUAL_ASSIGN_M);
     mConfl.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
     mConfl.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
@@ -264,6 +279,22 @@ public class DMenuBar extends JMenuBar{
     _assign.add(mConfl);
 
   }
+
+
+  private void createModificationMenu() {
+    //Build the menu Modification.
+    _modification = new JMenu(DConst.MODIFICATION);
+    _modification.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
+    this.add( _modification );
+
+    // Items in menu Modification.
+    _mEventsModif = new CmdMenu(DConst.EVENTS_MODIF_M);
+    _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
+    _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
+    _mEventsModif.addActionListener(_dApplic);
+    _modification.add(_mEventsModif);
+  }//end createModificationMenu
+
 
   private void createOptimisationMenu() {
     //Build the menu Optimisation.
@@ -286,19 +317,6 @@ public class DMenuBar extends JMenuBar{
   }//end createOptimisationMenu
 
 
-  private void createModificationMenu() {
-    //Build the menu Modification.
-    _modification = new JMenu(DConst.MODIFICATION);
-    _modification.setFont( new java.awt.Font( _mfont, _font, _nPT ) );
-    this.add( _modification );
-
-    // Items in menu Modification.
-    _mEventsModif = new CmdMenu(DConst.EVENTS_MODIF_M);
-    _mEventsModif.setFont(new java.awt.Font(_mfont, _font, _nPT));
-    _mEventsModif.setCommand(new DoNothingCmd(_dApplic.getJFrame()));
-    _mEventsModif.addActionListener(_dApplic);
-    _modification.add(_mEventsModif);
-  }//end createModificationMenu
 
   private void createReportMenu() {
   //Build the menu Report.
@@ -400,13 +418,13 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    //the menu optimization
-    _boolOptimization = false;
-    _boolMOpti= true;
-
     //the menu modification
     _boolModification = false;
     _boolMEventsModif = true;
+
+    //the menu optimization
+    _boolOptimization = false;
+    _boolMOpti= true;
 
     //the menu report
     _boolReport = false;
@@ -452,13 +470,13 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    //the menu otimization
-    _boolOptimization = true;
-    _boolMOpti= true;
-
     //the menu modification
     _boolModification = true;
     _boolMEventsModif = true;
+
+    //the menu otimization
+    _boolOptimization = true;
+    _boolMOpti= true;
 
     //the report menu
     _boolReport = true;
@@ -505,13 +523,13 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    //the menu otimization
-    _boolOptimization = false;
-    _boolMOpti= true;
-
     //the menu modification
     _boolModification = false;
     _boolMEventsModif = true;
+
+    //the menu otimization
+    _boolOptimization = false;
+    _boolMOpti= true;
 
     //the report menu
     _boolReport = false;
@@ -558,13 +576,14 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
+    //the menu modification
+    _boolModification = false;
+    _boolMEventsModif = true;
+
     //the menu otimization
     _boolOptimization = false;
     _boolMOpti= true;
 
-    //the menu modification
-    _boolModification = false;
-    _boolMEventsModif = true;
 
     //the report menu
     _boolReport = false;
@@ -611,13 +630,13 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    //the menu otimization
-    _boolOptimization = false;
-    _boolMOpti= true;
-
     //the menu modification
     _boolModification = false;
     _boolMEventsModif = true;
+
+    //the menu otimization
+    _boolOptimization = false;
+    _boolMOpti= true;
 
     //the report menu
     _boolReport = false;
@@ -661,13 +680,13 @@ public class DMenuBar extends JMenuBar{
     _boolRoomsAvailability= true;
     _boolEvents= true;
 
-    //the menu otimization
-    _boolOptimization = true;
-    _boolMOpti= true;
-
     //the menu modification
     _boolModification = true;
     _boolMEventsModif = true;
+
+    //the menu otimization
+    _boolOptimization = true;
+    _boolMOpti= true;
 
     //the report menu
     _boolReport = true;
@@ -699,14 +718,14 @@ public class DMenuBar extends JMenuBar{
       setAssignMenu();
     else
       _assign.setEnabled(_boolAssign);
-    if (_boolOptimization)
-      setOptimisationMenu();
-    else
-      _optimisation.setEnabled(_boolOptimization);
     if (_boolModification)
       setModificationMenu();
     else
       _modification.setEnabled(_boolModification);
+    if (_boolOptimization)
+      setOptimisationMenu();
+    else
+      _optimisation.setEnabled(_boolOptimization);
     if (_boolReport)
       setReportMenu();
     else
@@ -760,13 +779,13 @@ public class DMenuBar extends JMenuBar{
     _events.setEnabled(_boolEvents);
   } //end setAssignMenu
 
-  private void setOptimisationMenu() {
-    _optimisation.setEnabled(_boolOptimization);
-    //_mOpti.setEnabled(_boolMOpti);
-  }
   private void setModificationMenu() {
     _modification.setEnabled(_boolModification);
     _mEventsModif.setEnabled(_boolMEventsModif);
+  }
+  private void setOptimisationMenu() {
+    _optimisation.setEnabled(_boolOptimization);
+    //_mOpti.setEnabled(_boolMOpti);
   }
   private void setReportMenu() {
     _report.setEnabled(_boolReport);

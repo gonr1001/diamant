@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.51 $  $Date: 2003-09-18 14:18:57 $
+ * Title: DStringFrRes $Revision: 1.52 $  $Date: 2003-09-23 10:06:31 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
+ * @version $Revision: 1.52 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -81,12 +81,6 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "copy", "Copier"},
 
 
-    //File TTStructur
-    /*
-
-
-
-    */
 
     { "fileTTS", "Fichier_Grille" },
     { "newTTS", "Nouvelle grille"},
@@ -119,10 +113,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "instAssignD", "To be defined"},
     {"EventsAssignM", "Évenements"},
     {"ManualAssignM","Affectation manuelle"},
+    {"DefineSetM","Définir ensemble"},
+    {"PartialTTStructureM","Grille Partielle"},
 
     //Optimization
     { "OptimizationM", "Optimisation"},
     {"initialAffectM", "Affectation Initiale"},
+
 
     //Modification
     {"ModificationM","Modification"},
@@ -243,6 +240,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"EventsFixed","Figés"},
     {"EventsPlaced","Placés"},
     {"EventsNotPlaced","Non placés"},
+
+    //Optimisation dialogs
+    {"InitialAffectMessage", "Affectation initiale effectuée"},
 
 
     //ToolBar

@@ -12,10 +12,8 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
-import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
 import dInternal.dData.Resource;
-import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfStudents extends SetOfResources{
 
@@ -29,8 +27,8 @@ public class SetOfStudents extends SetOfResources{
   private String _error="";
   private Vector _SOSListeners = new Vector(1);
   /** Course length*/
-  public static final int _COURSELENGTH = 7;
-  public static final int _COURSEGROUPLENGTH = 9;
+  public static int _COURSELENGTH = 7;
+  public static int _COURSEGROUPLENGTH = 9;
 
   /**
    * INPUTS: byte[]  dataloaded (information from the student file in byte type)
@@ -294,7 +292,7 @@ public class SetOfStudents extends SetOfResources{
         if (order == 1)
           str = key + " " + ID;
         if(((StudentAttach)studentRes.getAttach()).isFixedInGroup(activityID+typeID,group))
-          str = str + " " + "*";
+          str = str + DConst.CHAR_FIXED_IN_GROUP;
         list.add(str);
         //list.add(studentRes.getID());
       }//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
