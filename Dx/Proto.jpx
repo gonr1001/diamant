@@ -50,18 +50,8 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
-  <file path="dInternal/Activity.java"/>
-  <file path="dInterface/AppInTTCmd.java"/>
-  <file path="dInternal/Bloc.java"/>
-  <file path="dInternal/CycleAssignment.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
-  <file path="dResources/DXObject.java"/>
-  <file path="dResources/DXToolsMethods.java"/>
-  <file path="dInternal/Group.java"/>
-  <file path="dInternal/Nature.java"/>
   <file path="Proto.html"/>
-  <file path="dInternal/Status.java"/>
-  <file path="dResources/StudentChoice.java"/>
 </project>
