@@ -30,8 +30,8 @@ public class TTStructure {
   private Vector _ttsListeners = new Vector();
   private SetOfResources _setOfCycles;
 
-  private int _nbOfStCycles=2;
-  private int _nbOfStDays=7;
+  //private int _nbOfStCycles=2;
+  //private int _nbOfStDays=7;
   //private int _currentCycleIndex = 1;
   //DXTimeTable tag
   static final String ITEM2= "DXTimeTable";
@@ -44,11 +44,11 @@ public class TTStructure {
   public static final String [] _weekTable = {"Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"};
   public static final String [] _priorityTable = {"Normale", "Basse", "Nulle"};
 
-  private String _str;
+ // private String _str;
   private String _error = "";
   //private String _errorXMLFileMessage = "XML file is corrupted";
-  private int _col;
-  private int _row;
+  //private int _col;
+  //private int _row;
   public static int NUMBEROFACTIVESDAYS=5;// monday to friday
 
   private int _periodLenght;
@@ -66,10 +66,10 @@ public class TTStructure {
     _setOfCycles= new SetOfResources(4);
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
   }
-  public TTStructure(boolean flag) {
+/*  public TTStructure(){//boolean flag) {
   	_setOfCycles= new SetOfResources(4);
     PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4jreex.conf");
-  }
+  }*/
   //-----------------------------
   
   public int getNumberOfActiveDays(){
@@ -212,7 +212,7 @@ public class TTStructure {
     //-----------------------------
 	
     ReadXMLFile xmlFile;
-    Element root, item, ID;
+    Element root; //, item, ID;
     //boolean preload = preLoad(fileName);
     if(preLoad(fileName)){
     try{
@@ -241,8 +241,8 @@ public class TTStructure {
    * @return String the error message, empty if it does not found error
    * */
   public String setTTStructureDocument(Document  doc){
-    ReadXMLFile xmlFile;
-    Element root, item, ID;
+    //ReadXMLFile xmlFile;
+    Element root; //, item, ID;
     try{
       ReadXMLElement list= new ReadXMLElement();
       root= list.getRootElement(doc);

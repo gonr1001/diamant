@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.5 $  $Date: 2004-06-21 15:38:17 $
+ * Title: DetailedTTPane $Revision: 1.6 $  $Date: 2004-10-26 17:27:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -30,7 +30,7 @@ package dInterface.dTimeTable;
  *
  */
 
-import java.awt.Dimension;
+//import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -42,16 +42,16 @@ import dInternal.dTimeTable.TTStructure;
 
 public class DetailedMITTPane extends TTPane {
   String _eventName;
-  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d) {
+  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical/*Dimension d,*/) {
     super(tts, toolBar);
-    initDetailedTTPane(vertical, d);
+    initDetailedTTPane(vertical); //, d);
   } // end  DetailedTTPane
 
   public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical,
-                          Dimension d, String eventName) {
+                          /*Dimension d,*/ String eventName) {
     super(tts, toolBar);
     _eventName = eventName;
-    initDetailedTTPane(vertical, d);
+    initDetailedTTPane(vertical); //, d);
   } // end  DetailedTTPane
  //-------------------------------------------
   public JComponent getPane(){
@@ -78,10 +78,10 @@ public class DetailedMITTPane extends TTPane {
   }
  //-------------------------------------------
   public PeriodPanel createEmptyPeriodPanel() {
-    return new DetailedPeriodPanel();
+    return new DetailedPeriodPanelMI(); 
   }
    //-------------------------------------------
-  private void initDetailedTTPane(boolean vertical, Dimension d) {
+  private void initDetailedTTPane(boolean vertical) { //, Dimension d) {
     _jScrollPaneOne = new JScrollPane();
     _jScrollPaneTwo = new JScrollPane();
    findRowHeaders();

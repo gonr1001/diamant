@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.116 $  $Date: 2004-10-21 13:39:43 $
+ * Title: DMenuBar $Revision: 1.117 $  $Date: 2004-10-26 17:27:07 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.116 $
+ * @version $Revision: 1.117 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -283,7 +283,7 @@ public class DMenuBar extends JMenuBar{
 
     _export = new CmdMenu(DConst.EXPO);
     _export.setFont( new java.awt.Font( cMFONT, cFONT, cNPT11 ) );
-    _export.setCommand(new ExportCmd(_dApplic.getJFrame()));
+    _export.setCommand(new ExportCmd());
     _export.addActionListener(_dApplic);
     _file.add(_export);
     _file.addSeparator();

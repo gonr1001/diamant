@@ -138,7 +138,7 @@ public class SetOfEvents extends SetOfResources{
    * @return
    */
   public int getNumberOfEventAssign(){
-    int count=0, b=0;
+    int count=0 ;
     for (int i=0; i< this.size(); i++){
       if(((EventAttach)getResourceAt(i).getAttach()).isPlaceInAPeriod())
         count++;

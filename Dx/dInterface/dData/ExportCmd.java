@@ -1,6 +1,6 @@
 /**
  *
- * Title: ExportCmd $Revision: 1.10 $  $Date: 2004-09-10 13:31:01 $
+ * Title: ExportCmd $Revision: 1.11 $  $Date: 2004-10-26 17:27:07 $
  * Description: ExportCmd is class used as the command
  *              which executes the exportation
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -25,7 +25,7 @@ package dInterface.dData;
 import java.io.File;
 import java.util.StringTokenizer;
 
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 
 import dConstants.DConst;
 import dInterface.Command;
@@ -39,8 +39,8 @@ import eLib.exit.dialog.InformationDlg;
    */
 
   public class ExportCmd implements Command {
-    private final String CR_LF = "\r\n";
-    public ExportCmd (JFrame jFrame) {
+    //private final String CR_LF = "\r\n";
+    public ExportCmd () {
     } // end constructor
 //------------------------------
     public void execute(DApplication dApplic) {
@@ -51,12 +51,12 @@ import eLib.exit.dialog.InformationDlg;
       File fileTT = new File(dir + DConst.TT_FILE);
       String mess = "";
        if (fileStu.exists() || fileTT.exists()) {
-         mess += "Un ou les deux fichiers existent dans le répertoire" + CR_LF;
+         mess += "Un ou les deux fichiers existent dans le répertoire" + DConst.CR_LF;
                 mess += "PAS d'exportation";
          new InformationDlg(dApplic.getJFrame(),mess , DConst.EXPORT_MESSAGE);
        } else{ //if (fileStu.exists() || fileTT.exists())
          dApplic.getDMediator().getCurrentDoc().getDM().exportData(dir);
-         mess += dir + DConst.TT_STUD_FILE  + CR_LF + dir + DConst.TT_FILE + CR_LF + DConst.EXPORTED;
+         mess += dir + DConst.TT_STUD_FILE  + DConst.CR_LF + dir + DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
          new InformationDlg(dApplic.getJFrame(), mess, DConst.EXPORT_MESSAGE);
        }
 

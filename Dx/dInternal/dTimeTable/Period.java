@@ -1,7 +1,26 @@
+/**
+*
+* Title: Period $Revision: 1.32 $  $Date: 2004-10-26 17:27:10 $
+* Description: Period is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.32 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
 package dInternal.dTimeTable;
 
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -15,6 +34,7 @@ import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
 import eLib.exit.xml.input.ReadXMLElement;
 import eLib.exit.xml.output.WriteXMLElement;
+import dConstants.DConst;
 
 public class Period extends DXObject {
 
@@ -25,10 +45,10 @@ public class Period extends DXObject {
   private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
   private int _priority;// 0= normal; 1= low; 2= null
   private String _error = "";
-  private String _errorMessage = "XML file is corrupted";
+  
   static final String  _TAGITEM="BeginTime";
   static final String _TAGITEM1="EndTime";
-  static final String _TAGITEM2="priority";
+  static final String _TAGITEM2="Priority";
   /**
    * contains a resource where ID is the event which is place in the period,
    * and resource attach is a conflictsattach type
@@ -192,7 +212,7 @@ public class Period extends DXObject {
    * */
   public String readXMLtag(Element setPeriod){
     ReadXMLElement list= new ReadXMLElement();
-    Period period = new Period();
+    //Period period = new Period();
     String begin, end, prior;
     begin= list.getElementValue(setPeriod,_TAGITEM);
     StringTokenizer time= new StringTokenizer(begin,":");
@@ -202,7 +222,7 @@ public class Period extends DXObject {
     _beginHour[1]= Integer.parseInt(time.nextToken());
     _priority= Integer.parseInt(prior);
     if (begin == null || end == null || prior == null){
-      _error = _errorMessage;
+      _error = DConst.ERROR_XML;
       return _error;
     }
     return _error;
@@ -260,37 +280,42 @@ public class Period extends DXObject {
   }
 
   /**
-   *Get events in period with his conflicts generated number
-   * @param String the event from wich we need conflicts in period
-   * @return
+   * Get conflicts between an event and the event placed in the period
+   * @param String the event from which we need conflicts in period
+   * @return SetOfRessources containing the conflicts as an attachment
    */
-  public SetOfResources getConflictsEventsInPeriod(String event){
-    Vector inPeriod= new Vector();
-//    event="EPS122.1.A.1.";//debug
-    SetOfResources setOfConf = new SetOfResources(99);
-    for (int i=0; i< _eventsInPeriod.size(); i++){
-      Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
-      String ID= eventInPeriod.getID();
-      if (event.equalsIgnoreCase(eventInPeriod.getID())){
-         setOfConf=((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
-      }else {// else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
-        int sizeIn= setOfConf.size();
-       setOfConf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf,ID, event);
-       if( setOfConf.size()== sizeIn)
-        setOfConf.addResource(new Resource(ID,new ArrayValue(3)),1);
-      }// end  else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
-    }// end for (int i=0; i< _eventsInPeriod.size(); i++){
-    SetOfResources setOfRes = new SetOfResources(99);
-    for(int i=0; i< setOfConf.size(); i++){
-      ArrayValue array = (ArrayValue)setOfConf.getResourceAt(i).getAttach();
-      String ID=setOfConf.getResourceAt(i).getID()+"  "+ array.getIntArrayValue(0)
-      +"  "+ array.getIntArrayValue(1)+"  "+ array.getIntArrayValue(2);
-      setOfRes.addResource(new Resource(ID,new DXValue()),1);
-    }
-    return setOfRes;
-  }
+	public SetOfResources getConflictsEventsInPeriod(String event){
+		System.out.println("getConflictsEventsInPeriod");
+		SetOfResources setOfConf = new SetOfResources(99);
+		int sizeIn = 0;
+		for (int i=0; i< _eventsInPeriod.size(); i++){
+			Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
+			String id= eventInPeriod.getID();
+			if (event.equalsIgnoreCase(eventInPeriod.getID())){
+				setOfConf=((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
+			} else {// else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
+				sizeIn = setOfConf.size();
+				setOfConf = ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf, event);
+				if( setOfConf.size() == sizeIn)
+					setOfConf.addResource(new Resource(id, new ArrayValue(3)),1);
+			}// end  else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
+		}// end for (int i=0; i< _eventsInPeriod.size(); i++){
+	
+		return builtSetOfRessources(setOfConf);
+	}
 
-
+	public SetOfResources builtSetOfRessources(SetOfResources setOfConf){
+	SetOfResources setOfRes = new SetOfResources(99);
+	for(int i=0; i< setOfConf.size(); i++){
+		ArrayValue array = (ArrayValue)setOfConf.getResourceAt(i).getAttach();
+		String id = setOfConf.getResourceAt(i).getID()+"  "+ 
+		            array.getIntArrayValue(0) +"  "+ 
+					array.getIntArrayValue(1) +"  "+ 
+					array.getIntArrayValue(2);
+		setOfRes.addResource(new Resource(id, new DXValue()),1);
+	}
+	return setOfRes;
+	}
   /**
    *
    * */

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.12 $  $Date: 2004-06-21 15:38:17 $
+ * Title: TTPane $Revision: 1.13 $  $Date: 2004-10-26 17:27:08 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -214,7 +214,7 @@ public abstract class TTPane {
     gridBC.fill = GridBagConstraints.BOTH;
 
     PeriodPanel  periodPanel = null;
-    JLabel jLabel;
+    //JLabel jLabel;
     //int count = 1;
     for (int i = 0; i < _toDisplay.length; i++ ) {
       for (int j= 0; j < _toDisplay[0].length ; j++) {

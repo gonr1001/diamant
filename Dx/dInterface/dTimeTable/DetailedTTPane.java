@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.10 $  $Date: 2004-06-21 15:38:17 $
+ * Title: DetailedTTPane $Revision: 1.11 $  $Date: 2004-10-26 17:27:08 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -30,7 +30,7 @@ package dInterface.dTimeTable;
  *
  */
 
-import java.awt.Dimension;
+//import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -42,9 +42,9 @@ import dInternal.dTimeTable.TTStructure;
 
 public class DetailedTTPane extends TTPane {
 
-  public DetailedTTPane(TTStructure tts, DToolBar toolBar, boolean vertical, Dimension d) {
+  public DetailedTTPane(TTStructure tts, DToolBar toolBar, boolean vertical){ //, Dimension d) {
     super(tts, toolBar);
-    initDetailedTTPane(vertical, d);
+    initDetailedTTPane(vertical);//, d);
   } // end  DetailedTTPane
  //-------------------------------------------
   public JComponent getPane(){
@@ -72,7 +72,7 @@ public class DetailedTTPane extends TTPane {
     return new DetailedPeriodPanel();
   }
    //-------------------------------------------
-  private void initDetailedTTPane(boolean vertical, Dimension d) {
+  private void initDetailedTTPane(boolean vertical) { //, Dimension d) {
     _jScrollPaneOne = new JScrollPane();
     _jScrollPaneTwo = new JScrollPane();
    findRowHeaders();

@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.124 $  $Date: 2004-10-21 13:39:42 $
+ * Title: DStringFrRes $Revision: 1.125 $  $Date: 2004-10-26 17:27:06 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.124 $
+ * @version $Revision: 1.125 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -390,7 +390,8 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 	{"changedElement", "élément modifié : "},
 	{"unchangedElement", "élément non modifié : "},
 	{"hourSeparator", "h"},
-	{"saveSeparator", "================================="}
+	{"saveSeparator", "================================="},
+	{"errorXML", "XML file is corrupted"}
   };
 
 

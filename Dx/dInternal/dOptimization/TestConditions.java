@@ -1,13 +1,25 @@
-package dInternal.dOptimization;
-
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
- */
+*
+* Title: TestConditions $Revision: 1.35 $  $Date: 2004-10-26 17:27:09 $
+* Description: TestConditions is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.35 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
+
+package dInternal.dOptimization;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -28,6 +40,8 @@ public class TestConditions {
  private int [] _acceptableConflictsTable={0,0,0};
  private int _periodAcceptableSize=20;
  private int _periodVariationEvents=0;
+ 
+ 
  /**
   * Constructor
   * @param soa
@@ -119,20 +133,32 @@ public class TestConditions {
 
 
   /**
-   *
+   * buildAllConditions
+   * @param tts The TTStructure
    */
-  public void buildAllConditions(TTStructure tts){
+	public void buildAllConditions(TTStructure tts){
     if(_matrixIsBuilded){
       tts.getCurrentCycle().emptyAllEventsInPeriod();
-      //_dm.getSetOfEvents()._isEventPlaced=true;
+     
       for (int i=0; i< _dm.getSetOfEvents().size(); i++){
         Resource event = _dm.getSetOfEvents().getResourceAt(i);
-        addOrRemEventInTTs(tts, event, 1, false);
+        //addOrRemEventInTTs(tts, event, 1, false);
+        addEventInTTS(tts, event, false);
       }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
-      _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(), _dm.getSetOfEvents().getSetOfResources());
+      
+      _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
+      										_dm.getSetOfEvents().getSetOfResources());
     }
   }
 
+  public int[] addEventInTTS(TTStructure tts, Resource event,  boolean usePriority) {
+  	return standardAddOrRemEventInTTs(tts,event, 1, usePriority);
+  }
+  
+  public int[] removeEventInTTs(TTStructure tts, Resource event,  boolean usePriority) {
+  	return standardAddOrRemEventInTTs(tts,event, -1, usePriority);
+  }
+  
   /**
     * add or remove an event in a given tts
     * @param event
@@ -162,7 +188,7 @@ public class TestConditions {
    * range 1= nb of instructors conflicts
    * range 2= nb of rooms conflicts
    */
-  private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
+  private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority ){
     int[] numberOfConflicts={0,0,0};
     //int totalNumberOfConflicts=0;
     //extractPreference();
@@ -173,15 +199,15 @@ public class TestConditions {
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
       //int[] avoidPriority={};
       if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
-          duration, _avoidPriority,usePriority)) && (duration>0) ){
+          duration, _avoidPriority, usePriority)) && (duration>0) ){
         for (int j=0; j< duration; j++){
         	//System.out.println("**Event :"+ event.getID()+"  first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           int [] newPerKey={perKey[0],perKey[1],perKey[2]+j};
           //periodVariationEvents(newPerKey);//debug
-          for (int k=0; k< _testToRun.size(); k++){
+          for (int k=0; k < _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
-            numberOfConflicts[k]+=cond.executeTest(newPerKey,per,event.getID(),operation);
+            numberOfConflicts[k] += cond.executeTest(newPerKey,per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
           if (operation!=0){
             ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));

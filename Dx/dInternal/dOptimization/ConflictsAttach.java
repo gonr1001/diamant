@@ -78,7 +78,7 @@ public class ConflictsAttach extends DXObject{
    * @return
    */
   public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc){
-      Vector vec= new Vector();
+      //Vector vec= new Vector();
       //ArrayValue arrV= new ArrayValue(0);
        for (int i=0; i< _setOfConflicts.size(); i++){
          int [] nbconf={0,0,0};
@@ -119,8 +119,8 @@ public class ConflictsAttach extends DXObject{
    * @param event
    * @return
    */
-  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc, String eventSource, String eventName){
-      Vector vec= new Vector();
+  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc, /*String eventSource,*/ String eventName){
+      //Vector vec= new Vector();
       //ArrayValue arrV= new ArrayValue(0);
        for (int i=0; i< _setOfConflicts.size(); i++){
          int [] nbconf={0,0,0};
@@ -189,7 +189,7 @@ public class ConflictsAttach extends DXObject{
       Resource conf= _setOfConflicts.getResourceAt(i);
       if(conf.getID().equalsIgnoreCase(eventName)){
         if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
-          conflict.add(((DXValue)conf.getAttach()));
+          conflict.add(conf.getAttach());
         }
       }// end if(conf.getID().equalsIgnoreCase(eventName))
     }// end for (int i=0; i< _setOfConflicts.size(); i++)

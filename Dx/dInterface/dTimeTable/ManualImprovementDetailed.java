@@ -1,21 +1,35 @@
+/**
+*
+* Title: ManualImprovementDetailed $Revision: 1.14 $  $Date: 2004-10-26 17:27:08 $
+* Description: ManualImprovementDetailed is a class used to
+*              display the so called ManualImprovement which
+*              gives the conflicts between an event and the others events
+*              that are in the TTStructure
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.14 $
+* @author  $Author: gonzrubi $
+* @since JDK1.3
+*/
+
 package dInterface.dTimeTable;
 
 
 
-
-/**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -33,7 +47,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 
 
-public class ManualImprovementDetailed extends JDialog implements ActionListener{
+public class ManualImprovementDetailed extends JDialog {//{ implements ActionListener{
   /* ADJUST_HEIGHT is needed to ajdust the screenSize
   * minus the barSize (the value is a guess) at the bottom */
   private final static int ADJUST_HEIGHT = 88;
@@ -51,11 +65,8 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
   public ManualImprovementDetailed(JDialog jDialog, DToolBar toolbar,
                                       String eventName,  DModel dm) {
     super(jDialog, eventName, true);
-    TTStructure oldTTS= dm.getTTStructure();
-    _ttStruct = new TTStructure();
-    _ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
-    //_ttStruct.getCurrentCycle().resetAllNumberOfConflicts();//patch
-    _toolBar= toolbar;
+    _toolBar = toolbar;
+    _ttStruct = cloneCurrentTTSruct(dm);
     initDlg(eventName, dm);
   }
 
@@ -79,20 +90,19 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
   *
   * @param e
   */
+  /*
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
-  }
+  }*/
 
 
   public void initDlg(String eventName, DModel dm){
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-    //Dimension frameDim = new Dimension(700,650);
     this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
                                 screenSize.height - ADJUST_HEIGHT));
-    _ttPane = new DetailedMITTPane(_ttStruct,_toolBar, true, screenSize, eventName);
-
+    _ttPane = new DetailedMITTPane(_ttStruct,_toolBar, true, /*screenSize,*/ eventName);
     Resource event = dm.getSetOfEvents().getResource(eventName);
+    
     buildNewTTSTestConditions(event, dm);
     String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
     long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
@@ -115,44 +125,48 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
     this.show();
   }
 
-  private void buildNewTTSTestConditions(Resource event, DModel dm){
-    dm.getConditionsTest().buildAllConditions(_ttStruct);
-    //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
-    String eventPeriodKey = ((EventAttach)event.getAttach()).getPeriodKey();
-    boolean eventAssignState = ((EventAttach)event.getAttach()).getAssignState();
-    boolean eventPermanentState = ((EventAttach)event.getAttach()).getPermanentState();
-    boolean inAPeriod = ((EventAttach)event.getAttach()).isPlaceInAPeriod();
-    if (event!=null) {
-      ((EventAttach)event.getAttach()).setAssignState(true);
-      dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,-1,false);
-      ((EventAttach)event.getAttach()).setAssignState(false);
-      for(int i=0; i< _ttStruct.getCurrentCycle().getSetOfDays().size(); i++){
-        Resource day= _ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
-        for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-          Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
-          for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
-            Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
-            int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
-            int origDuration= ((EventAttach)event.getAttach()).getDuration();
-            ((EventAttach)event.getAttach()).setDuration(_ttStruct.getPeriodLenght());
-             int duration = 1;//((EventAttach)event.getAttach()).getDuration()/_ttStruct.getPeriodLenght();
-            if(_ttStruct.getCurrentCycle().isPeriodContiguous(daytime[0],daytime[1],daytime[2],duration,new int[0],false)){
-            String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
-            ((EventAttach)event.getAttach()).setKey(4,periodKey);
-            ((EventAttach)event.getAttach()).setAssignState(true);
-            dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1,true);
-            ((EventAttach)event.getAttach()).setAssignState(false);
-            }// end  if(_ttStruct.getCurrentCycle().isPeriodContiguous(day
-             ((EventAttach)event.getAttach()).setDuration(origDuration);
-          }// end for(int k=0; k< ((Sequence)seq.getAttach())
-        }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
-      }// end for(int i=0; i< _newTTS.getCurrentCycle()
-    }// end if(event!=null){
-    ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
-    ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
-    ((EventAttach)event.getAttach()).setPermanentState(eventPermanentState);
-
-    ((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
+  	private void buildNewTTSTestConditions(Resource event, DModel dm){
+  		dm.getConditionsTest().buildAllConditions(_ttStruct);
+  		//Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+		String eventPeriodKey = ((EventAttach)event.getAttach()).getPeriodKey();
+		boolean eventAssignState = ((EventAttach)event.getAttach()).getAssignState();
+		boolean eventPermanentState = ((EventAttach)event.getAttach()).getPermanentState();
+		boolean inAPeriod = ((EventAttach)event.getAttach()).isPlaceInAPeriod();
+		if (event!=null) {
+			((EventAttach)event.getAttach()).setAssignState(true); //put in
+			dm.getConditionsTest().removeEventInTTs(_ttStruct,event,false);
+			//((EventAttach)event.getAttach()).setAssignState(false); //take aout inutile car remove put false in setAssign
+			for(int i=0; i< _ttStruct.getCurrentCycle().getSetOfDays().size(); i++){
+				Resource day= _ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+				for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+					Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+					for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
+						Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+						int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
+						//int origDuration= ((EventAttach)event.getAttach()).getDuration();
+						//((EventAttach)event.getAttach()).setDuration(_ttStruct.getPeriodLenght());
+						int duration = ((EventAttach)event.getAttach()).getDuration()/_ttStruct.getPeriodLenght();
+						if(_ttStruct.getCurrentCycle().isPeriodContiguous(
+											daytime[0],daytime[1],daytime[2],
+											duration,
+											new int[0],
+											false)){
+							String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+							((EventAttach)event.getAttach()).setKey(4,periodKey);
+							((EventAttach)event.getAttach()).setAssignState(true);
+							dm.getConditionsTest().addEventInTTS(_ttStruct,event,false);//rgr was true
+							((EventAttach)event.getAttach()).setAssignState(false);
+							k=k-1 + duration;
+						}// end  if(_ttStruct.getCurrentCycle().isPeriodContiguous(day
+						//((EventAttach)event.getAttach()).setDuration(origDuration);
+					}// end for(int k=0; k< ((Sequence)seq.getAttach())
+				}// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
+			}// end for(int i=0; i< _newTTS.getCurrentCycle()
+		}// end if(event!=null){
+		((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
+		((EventAttach)event.getAttach()).setAssignState(eventAssignState);
+    	((EventAttach)event.getAttach()).setPermanentState(eventPermanentState);
+    	((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
   }
 
   /**
@@ -194,7 +208,7 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
       PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPane.getViewport().getComponent(0)).getComponent(i);
       Period period= _ttStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
           perPanel.getPeriodRef()[1],perPanel.getPeriodRef()[2]);
-      int[] ppKey={};
+      //int[] ppKey={};
       if((dayIndex==perPanel.getPeriodRef()[0]) &&
          (seqIndex==perPanel.getPeriodRef()[1]) &&
          (perIndex<=perPanel.getPeriodRef()[2])&&
@@ -209,8 +223,15 @@ public class ManualImprovementDetailed extends JDialog implements ActionListener
 
     }// end for (int i=0; i< ((JPanel)_ttPanel.getViewport().
   }
-
-
-
-
+  	/**
+  	 * cloneCurrentTTSruct 
+  	 * @param dm
+  	 * @return TTStructure containing the values of the TTStructure in dm
+  	 */
+	private TTStructure cloneCurrentTTSruct(DModel dm) {
+		TTStructure oldTTS= dm.getTTStructure();
+		TTStructure ttStruct = new TTStructure();
+		ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
+		return ttStruct;
+  }
 }
