@@ -1,7 +1,7 @@
-Faculte des sciences;
-Liste des locaux pour reservations;
+Faculté de génie 
+Liste des locaux pour réservation
 
-Nom du local;Capacite;Fonction;Liste des caracteristiques;Notes;
+Nom du local ; Capacité ; Fonction ; Liste des caractéristiques ; Notes ;
 
 D13012;32;211;08,11,14,57;laboratoire de chimie;
 D13013;40;211;08,11,57;laboratoire de chimie;
