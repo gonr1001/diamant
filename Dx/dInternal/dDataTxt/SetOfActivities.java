@@ -50,6 +50,7 @@ public class SetOfActivities extends SetOfResources{
           position = 1;
           break;
         case 1:// activity name
+          activityName=token.trim();
           if (token.trim().length() != _ACTIVITYLENGTH){
             _error= DConst.ACTI_TEXT1+line+  " in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
