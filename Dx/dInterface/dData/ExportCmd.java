@@ -1,6 +1,6 @@
 /**
  *
- * Title: ExportCmd $Revision: 1.5 $  $Date: 2004-04-16 17:31:45 $
+ * Title: ExportCmd $Revision: 1.6 $  $Date: 2004-04-16 20:18:54 $
  * Description: ExportCmd is class used as the command
  *              which executes the exportation
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -47,19 +47,21 @@ import dInternal.dUtil.DXToolsMethods;
     public void execute(DApplication dApplic) {
 
       String dir = getTokenDir(dApplic.getDMediator().getCurrentDoc().getDocumentName(),File.separator);
-      dApplic.getDMediator().getCurrentDoc().getDM().exportData(dir);
+
       File fileStu = new File(dir +DConst.TT_STUD_FILE);
       File fileTT = new File(dir +DConst.TT_FILE);
-      /*
-       if (file.exists()){
-         doFileExist(currentFile, data, report);
-       } else{ //if (file.exists())
-         inNewFile(currentFile, data);
-         new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+      String mess = "";
+       if (fileStu.exists() || fileTT.exists()) {
+         mess += "Un ou les deux fichiers existent dans le répertoire" + CR_LF;
+                mess += "PAS d'exportation";
+         new InformationDlg(dApplic.getJFrame(),mess , DConst.EXPORT_MESSAGE);
+       } else{ //if (fileStu.exists() || fileTT.exists())
+         dApplic.getDMediator().getCurrentDoc().getDM().exportData(dir);
+         mess += dir + DConst.TT_STUD_FILE  + CR_LF + dir + DConst.TT_FILE + CR_LF + DConst.EXPORTED;
+         new InformationDlg(dApplic.getJFrame(), mess, DConst.EXPORT_MESSAGE);
        }
-      */
-      String mess = dir + DConst.TT_STUD_FILE  + CR_LF + dir + DConst.TT_FILE + CR_LF + DConst.EXPORTED;
-      new InformationDlg(dApplic.getJFrame(), mess, DConst.EXPORT_MESSAGE);
+
+
     }
 
     /**
