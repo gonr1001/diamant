@@ -1,7 +1,9 @@
 
 \documentclass{llncs}
 \bibliographystyle{alpha}
+\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
 \usepackage{dfd,hhline}
 \usepackage{verbatim}
 \setlength{\parskip}{1.5ex plus0.5ex minus0ex}
@@ -690,13 +692,12 @@ Once we established the architecture and that we know that it is
 open and extensible, it is necessary that the instance that we
 will implement will be open and extensible too. We showed three
 options of instance of the architecture (see Table
-\ref{tb:tbOne}), for our implementation, we chose option 1 of this
-table.
+\ref{tb:tbOne}), for our implementation, we chose option 1.
 
 First, it should be known that an element is open if it is built
 with approved standards; or, if it is built with a private
-specification but made public by the developers.
-\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
+specification but made public by the
+developers.\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
 It is important to remember that an element is extensible if it is
 easy to adapt this product to the changes in the
@@ -713,7 +714,7 @@ brought us to our choice:
 enter data we chose HTML and JSP, because those languages are the
 standard for the creation of Web pages, and we want to benefit
 from all the characteristics that the site Web offer for the
-transactional applications.
+transactional applications.\\
 
 \item [Format to data exchange.] To exchange the data we chose
 XML. The language XML (eXtensible Markup Language) lets us to
@@ -750,6 +751,88 @@ Even if it is not the only option for the implementation of our
 system of timetable production, we are convinced that our choice
 will enable us to make the system evolve by versions, adding or
 modifying the new characteristics required by the institutions.
+
+
+The technological implementation seems complex. There are several
+technological components to use. But, we are reusing several
+existing modules. This is one of the advantages of having an
+architecture and an instance open and extensible. We can analyze
+the components by layers to know which ones can be re-used and
+which ones will be implemented:
+
+
+\begin{description}
+
+\item [Interface layer.] For this layer, there is a technological
+element which facilitates the work enormously, the Web browser.
+This tool is available in most of the computers with Internet
+access. It is necessary to centralize the efforts to develop Web
+pages with the quality of compatibility. The problem is not easy,
+because we have now several Web browsers, by example: Internet
+Explorer\footnote{http:\//\//www.microsoft.com},
+Netscape\footnote{http:\//\//www.netscape.com},
+Mozilla\footnote{http:\//\//www.mozilla.org}, etc.
+
+
+The question is how ensure this compatibility. There are efforts
+to promote the use of the standard HTML. The "Campaign for a
+Non-Browser Specific WWW"\footnote{http:\//\//www.anybrowser.org
+\//campaign/} recommends this philosophy. The Internet site
+http://validator.w3.org/, offers a tool that test the
+compatibility of a site with the standard HTML, this tool is
+provided by the "World
+Wide Web Consortium"\footnote{http:\//\//www.w3.org/}.\\
+
+\item [Businesses logic layer.] There are two fundamental elements
+in this layer: a Web server and a server deploy the business
+logic. Since we chose Java to code the business logic, we can use
+Apache HTTP\footnote{http:\//\//www.apache.org} as Web server and
+Jakarta-Tomcat\footnote{http:\//\//jakarta.apache.org} as a server
+to provide the business logic.
+
+
+The project ''Apache HTTP'' is an effort to develop and maintain
+an HTTP server ''Open source'' for the operating systems more used
+like UNIX and Windows. The goal of this project is to provide a
+secure, effective and extensible server able to offer HTTP
+services according to current HTTP standards.
+
+We will program the business rules in some small JAVA programs
+called servlets. A servlet is a JAVA program used to extend the
+functionalities of a Web server. A servlet is a program used to
+generate dynamic contents of the applications. It is an
+application carried out in the server which is downloaded
+dynamically when it is required. Jakarta-Tomcat is a servlet
+container.
+
+We can say that the couple Apache and Jakarta-Tomcat enable us to
+make the deployment of a complete Web application, in more these
+tools are free.\\
+
+
+\item [Data Persistence layer.] For the data persistence layer we
+said that we will benefit from the use of JDBC (Java Database
+Connectivity). The JDBC is based on the use of a pilot to give the
+access to several databases, the advantage is that we can change
+the pilot according the database supplier selected. For the choice
+of the database we said that it was opened to the implementation,
+but the standards always should be considered. The more recently
+standard published by the ANSI (American National Standards
+Institute) for the language which processes the data of a database
+is SQL-99\footnote{http:\//\//web.ansi.org}. This standard is used
+by the most important databases developers like
+Oracle\footnote{http:\//\//www.oracle.com},
+Informix\footnote{http:\//\//www-306.ibm.com/software/data/informix/},
+IBM-DB2\footnote{http:\//\//www-306.ibm.com/software/data/db2/udb/},
+PostgreSQL\footnote{http:\//\//www.postgresql.org/}, and others.
+An advantage for PostgreSQL, it does not have cost for use the
+license.\\
+\end{description}
+
+As we looked in this section, we benefit from several open
+technological elements which enable us to remain open and
+extensible.
+
 
 
 \section{Conclusions}\label{sec:conc}
@@ -816,8 +899,8 @@ composition, and constraints on there patterns." \cite{shaw96}
 specifications are public. This includes officially approved
 standards as well as privately designed architectures whose
 specifications are made public by the designers. The opposite of
-open is closed or proprietary."
-\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
+open is closed or
+proprietary."\footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
 \item [Portability] "Portability is the easy of transferring
 software products to various hardware and software
