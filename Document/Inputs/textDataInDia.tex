@@ -55,4 +55,92 @@ Chaque ligne est composée de six types d'informations:
 
 \section{Données relatives aux activités} 
 
+Le cinquième type du fichier $.dia$  contient des informations concernant les cours offerts à une session. Nous y retrouvons la liste des activités associées, l'agencement du cours, le nom de l'enseignant qui le donnera, etc.
+
+\subsection{Exemple des données qu'il contient}
+
+
+\begin{verbatim}
+AMC6552  01
+1
+1
+NEAIME, SAMIR F. ;
+1
+3 
+3.3.1 
+0 
+------ 
+1 
+1
+1 ;1 
+AMC9001  01
+1
+1
+ST-AMANT, RENÉ ; ST-AMANT, RENÉ ;
+2
+3 3 
+3.1.1 3.2.1 
+1 1 
+C1-5012 C1-5012 
+0 0 
+0  0
+1 1 ;1 1 
+\end{verbatim}
+
+
+\subsection{Signification des données}
+
+Il existe douze types de lignes :
+
+\begin{enumerate}
+    \item L'identification du cours;
+    \item L'état du cours (actif ou inactif);
+    \item Le nombre d'activités associées au cours;
+    \item Le nom de l'enseignant du cours. Si l'activité a plus d'un bloc, il y'aura autant d'enseignants qu'il y'aura de blocs et les noms des enseignants seront séparés par des «~;~»;
+    \item Le nombre de blocs d'activité;
+    \item La durée de chacun des blocs identifiés à la ligne précédente;
+    \item La période à laquelle le ou les blocs sont placés. La période est sous la forme $a.b.c$ où $a$ représente le jour, $b$ représente la séquence et $c$ représente la période;
+    \item l'état du local affecté à chaque unité (fixé ou non fixé);
+    \item le nom du local assigné à chaque unité;
+    \item le type de locaux requis à chaque unité;
+    \item le type de locaux requis à chaque unité;
+    \item Cette ligne possède deux types d'informations séparées par le «~;~». Le premier type d'information indique l'état figé (1) ou non (0) du bloc, tandis que le second type indique l'état placé (1) ou non (0) du bloc.
+\end{enumerate}
+
 \section{Données relatives aux étudiants} 
+
+Le sixième type du fichier $.dia$ représente les choix de cours des étudiants.
+
+\subsection{Exemple des données qu'il contient}
+
+\begin{verbatim}
+004
+022515472365000420031MERCIER B06
+GEL410101;0 GEN400101;0 GIF400101;0 GIF420101;0 GIF430101;0 GIF440101;0
+022519582145000520031BERGERON 06
+GEL400101;0 GEL410101;0 GEL420101;0 GEL430101;0 GEL440101;0 GEN400101;0
+915965442120000520023MARTINEAU05
+GCH106101;0 GCH106201;0 GCH205101;0 GCH205201;0 GCH210101;0
+965509672135000620012NGUYEN TH07
+GCI200101;0 GCI200201;0 GCI220101;1 GCI220201;0 GCI600101;0 
+GCI600201;0 GIN600101;0
+\end{verbatim}
+
+\subsection{Signification des données}
+
+Il existe trois types de lignes :
+
+\begin{enumerate}
+    \item Nombre d'étudiants dans le fichier;
+    \item Identification de l'étudiant et nombre de cours qu'il prend;
+    \item L'identification de cours que l'étudiant suit. Cette identification possède deux types d'informations séparées par le «~;~».
+    \begin{itemize}
+    \item Le premier type, soit \verb!GEL410101! dans le cas du premier étudiant.
+    Les 6 premiers caractères (\verb!GEL410!) correspondent au numéro
+    du cours. Le septième caractère (\verb!1!) correspond à la nature ou type d'activité
+    du cours (1=Leçon Magistrale et 2=autre). Le 2 derniers caractères
+    (\verb!01!) correspondent au groupe d'activité dans lequel l'étudiant est assigné.
+    \item Le second type indique si l'étudiant est figé (1) ou non (0) dans le groupe auquel il est assigné.
+    \end{itemize} 
+\end{enumerate}
+
