@@ -1,5 +1,14 @@
 package dInternal.dConditionsTest;
 
+/**
+ * <p>Title: Diamant</p>
+ * <p>Description:  timetable construction</p>
+ * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Company: UdeS</p>
+ * @author ysyam
+ * @version 1.0
+ */
+
 import dInternal.dUtil.DXObject;
 import dInternal.dData.SetOfResources;
 import java.util.Vector;
@@ -14,6 +23,7 @@ public class EventAttach extends DXObject {
   private long _secondaryRescKey2; // the room key
   // the student reference will be found in the conflicts matrix
   private Vector _tabuList; //
+  private boolean inTTS=false;
 
   /**
    * Constructor

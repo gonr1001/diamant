@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.62 $  $Date: 2003-08-29 14:22:19 $
+ * Title: DModel $Revision: 1.63 $  $Date: 2003-09-05 13:16:05 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -37,30 +37,39 @@ import dInternal.dConditionsTest.SetOfEvents;
 
 
 
-public class DModel implements  DModelListener, TTStructureListener {
+public class DModel extends DModelProcess implements  DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
   private int _type;
   private boolean _modified = false;
-  private boolean _isTimeTable=true;
-  private int _constructionState=0;// tell where the time construction is
+  protected boolean _isTimeTable=true;
+  protected int _constructionState=0;// tell where the time construction is
   private String _version;
   private String _error;
-  private SetOfStates _setOfStates;
-  private SetOfInstructors _setOfInstructors=null;
-  private SetOfRooms _setOfRooms=null;
-  private SetOfStudents _setOfStudents=null;
-  private SetOfActivities _setOfActivities=null;
+  protected SetOfStates _setOfStates;
+  protected SetOfInstructors _setOfInstructors=null;
+  protected SetOfRooms _setOfRooms=null;
+  protected SetOfStudents _setOfStudents=null;
+  protected SetOfActivities _setOfActivities=null;
   private DApplication _dApplic;
-  private TTStructure _ttStruct;
-  private SetOfEvents _setOfEvents;
+  protected TTStructure _ttStruct;
+  protected SetOfEvents _setOfEvents;
   private int _currentCycle = 1;
+  //private DModelProcess _dmProcess;
 
-  //for new and open Timetable
-  //for new TTStructure and open a TTStructure from a file
+
+  /**
+   * for new and open Timetable
+   * for new TTStructure and open a TTStructure from a file
+   * @param dApplic
+   * @param fileName
+   * @param type
+   */
   public DModel(DApplication dApplic, String fileName, int type) {
     //System.out.println("type: "+type);
+    setModel(this);
     _error = "";
     _setOfStates = new SetOfStates();
+    _setOfEvents = new SetOfEvents();
     _dApplic = dApplic;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
@@ -76,28 +85,53 @@ public class DModel implements  DModelListener, TTStructureListener {
       _error="Wrong type of file";
     }
     _type = type;
+    //_dmProcess = new DModelProcess(this);
     _modified = false;
-
   }
 
+  /**
+   *
+   * @return
+   */
   public String getError(){
     return _error;
   }
+
+  /**
+   *
+   * @return
+   */
   public boolean getModified(){
     return _modified;
   }
 
+  /**
+   *
+   * @return
+   */
   public boolean isTimeTable(){
     return _isTimeTable;
   }
 
+  /**
+   *
+   * @return
+   */
   public SetOfStates getSetOfStates() {
     return _setOfStates;
   }
 
+  /**
+   *
+   * @return
+   */
   public DApplication getDApplication(){
     return _dApplic;
   }
+
+  /**
+   *
+   */
   public void incrementModification() {
     _setOfStates.incrementModification();
     sendEvent();
@@ -105,7 +139,9 @@ public class DModel implements  DModelListener, TTStructureListener {
 
   /**
    *
-   * */
+   * @param fileName
+   * @return
+   */
   public String loadTimeTable(String fileName){
     LoadData loadD = new LoadData();
     Vector project = loadD.loadProject(fileName);
@@ -143,17 +179,27 @@ public class DModel implements  DModelListener, TTStructureListener {
   }
 
 
-  /***/
+  /**
+   *
+   * @return
+   */
   public String getVersion(){
     return _version;
   }
 
   /**
-   * */
+   *
+   * @param version
+   */
   public void setVersion(String version){
     _version=version;
   }
 
+  /**
+   *
+   * @param str
+   * @return
+   */
   public String importData(String str) {
     LoadData loadData = new LoadData(str);
     // import set of instructors
@@ -188,64 +234,69 @@ public class DModel implements  DModelListener, TTStructureListener {
     return "";
   }
 
-  private String rreadTT(String fileName){
-    JOptionPane.showMessageDialog(_dApplic.getJFrame(),
-                                  "rreadTT was here",
-                                  "trace",
-                                  JOptionPane.OK_OPTION);
-    return "";
-  }
-/*  public String loadTTStruct(String str) {
-    LoadData loadData = new LoadData(str);
-  // import set of instructors
-      _ttStruct = loadData.extractTTStruct();
-     if( _ttStruct.getError().length()!=0){
-       return _ttStruct.getError();
-     }
-     return "";
-  }*/
-
+  /**
+   *
+   * @return
+   */
   public SetOfInstructors getSetOfInstructors(){
     return _setOfInstructors;
   }
 
+  /**
+   *
+   * @return
+   */
   public SetOfActivities getSetOfActivities(){
     return _setOfActivities;
   }
 
+  /**
+   *
+   * @return
+   */
   public SetOfRooms getSetOfRooms(){
     return _setOfRooms;
   }
 
+  /**
+   *
+   * @return
+   */
   public SetOfEvents getSetOfEvents(){
     return _setOfEvents;
   }
 
+  /**
+   *
+   * @return
+   */
   public SetOfStudents getSetOfStudents(){
     return _setOfStudents;
   }
 
+  /**
+   *
+   * @return
+   */
   public TTStructure getTTStructure() {
     return _ttStruct;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getCurrentCycle() {
     return _currentCycle;
   }
 
-//this method must be renamed to saveTT
- /* public String rsaveTT(String filename) {
-    JOptionPane.showMessageDialog(_dApplic.getJFrame(),
-                             "rsaveTT was here",
-                              "trace",
-                                 JOptionPane.OK_OPTION);
-    return "";
-  }*/
-
-
+  /**
+   *
+   * @param filename
+   * @return
+   */
   public String saveTimeTable(String filename) {
     SaveData saveD= new SaveData("1.5");
-    //resizeInstructorsAvailability();//
     String error = "";
     if(_isTimeTable){
       error = saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
@@ -258,6 +309,9 @@ public class DModel implements  DModelListener, TTStructureListener {
     return error;
   }
 
+  /**
+   *
+   */
   public void sendEvent() {
     _modified = true;
     DModelEvent event = new DModelEvent(this);
@@ -268,6 +322,10 @@ public class DModel implements  DModelListener, TTStructureListener {
     }
   }
 
+  /**
+   *
+   * @param dml
+   */
   public synchronized void addDModelListener(DModelListener dml) {
     if (_dmListeners.contains(dml)){
       return;
@@ -275,63 +333,19 @@ public class DModel implements  DModelListener, TTStructureListener {
     _dmListeners.addElement(dml);
   }
 
+  /**
+   *
+   * @param dml
+   */
   public synchronized void removeTTParametersListener(DModelListener dml) {
     _dmListeners.removeElement(dml);
   }
 
-  public void setTTStructure(int [] a) {
-    //_ttStruct.setValues(a);
-    sendEvent();
-  }
-
-  /**
-   *
-   */
-  public void setStateBarComponent(){
-    if (_constructionState>0){//_visibleVec = _activities.getIDsByField(3, "true");
-      ((State)_setOfStates.getResource(DConst.SB_T_ACT).getAttach()).setValue(_setOfActivities.getIDsByField(3, "true").size());
-      ((State)_setOfStates.getResource(DConst.SB_T_INST).getAttach()).setValue(_setOfInstructors.size());
-      ((State)_setOfStates.getResource(DConst.SB_T_ROOM).getAttach()).setValue(_setOfRooms.size());
-      ((State)_setOfStates.getResource(DConst.SB_T_STUD).getAttach()).setValue(_setOfStudents.size());
-
-      ((State)_setOfStates.getResource(DConst.SB_T_EVENT).getAttach()).setValue(_setOfEvents.size());
-
-      ((State)_setOfStates.getResource(DConst.SB_CONF).getAttach()).setValue(10);
-
-      ((State)_setOfStates.getResource(DConst.SB_C_INST).getAttach()).setValue(1);
-      ((State)_setOfStates.getResource(DConst.SB_C_ROOM).getAttach()).setValue(7);
-      ((State)_setOfStates.getResource(DConst.SB_C_STUD).getAttach()).setValue(2);
-    }
-  }
 
 
-  /**
-   * resize instructor availability
-   */
-  private void resizeInstructorsAvailability(){
-    int [][] matrix;
-    InstructorAttach attach;
-    for (int i=0; i< _setOfInstructors.size(); i++){
-      attach = (InstructorAttach)_setOfInstructors.getResourceAt(i).getAttach();
-      matrix=attach.getMatrixAvailability();
-      matrix = DXToolsMethods.resizeAvailability(matrix,_ttStruct);
-      attach.setAvailability(matrix);
-    }
-  }
 
 
-  /**
-   * build set of events using currentcycle, setofactivities, setofinstructors and
-   * setofrooms
-   */
-  public void buildSetOfEvents(){
-    _setOfEvents = new SetOfEvents();
-    if (_setOfActivities!=null){
-      String cycle = _ttStruct.getSetOfCycles().getSetOfCycles().getResourceAt(
-          _ttStruct.getCurrentCycleIndex()).getID();
-      _setOfEvents.build(cycle, _setOfActivities, _setOfInstructors, _setOfRooms);
-    }// end if (_setOfActivities!=null)
-  }
+
 
   public void changeInDModel(DModelEvent  e) {
 
@@ -340,5 +354,7 @@ public class DModel implements  DModelListener, TTStructureListener {
   public void changeInTTStructure(TTStructureEvent  e) {
 
   }// end actionPerformed*/
+
+
 
 } /* end class DModel */

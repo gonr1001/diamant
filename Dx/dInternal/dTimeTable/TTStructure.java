@@ -365,6 +365,7 @@ public class TTStructure {
     }
   }// end of CreateStandardTT method
 
+
   /**
    * it load the time table structure
    * @param String the xml file containing the timetable structure

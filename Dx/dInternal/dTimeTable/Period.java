@@ -1,6 +1,8 @@
 package dInternal.dTimeTable;
 
 import dInternal.dUtil.DXObject;
+import dInternal.dData.SetOfResources;
+import dInternal.dData.Resource;
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
@@ -8,6 +10,18 @@ import java.util.StringTokenizer;
 import org.w3c.dom.Document;
 
 public class Period extends DXObject {
+
+  private int nbStudConflict = 0;
+  private int nbInstConflict = 0;
+  private int nbRoomConflict= 0;
+  private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
+  private int _priority;// 0= normal; 1= low; 2= null
+  private String _error = "";
+  private String _errorMessage = "XML file is corrupted";
+  static final String  _TAGITEM="BeginTime";
+  static final String _TAGITEM1="EndTime";
+  static final String _TAGITEM2="priority";
+  private SetOfResources _setOfPeriodEvents;
 
   /**
    * Constructor
@@ -154,6 +168,14 @@ public class Period extends DXObject {
 
   /**
    *
+   * @return
+   */
+  public SetOfResources getSetOfPeriodEvents(){
+    return _setOfPeriodEvents;
+  }
+
+  /**
+   *
    * */
   public String toString(){
 
@@ -161,15 +183,6 @@ public class Period extends DXObject {
     return str;
   }
 
-  private int nbStudConflict = 0;
-  private int nbInstConflict = 0;
-  private int nbRoomConflict= 0;
-  private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
-  private int _priority;// 0= normal; 1= low; 2= null
-  private String _error = "";
-  private String _errorMessage = "XML file is corrupted";
-  static final String  _TAGITEM="BeginTime";
-  static final String _TAGITEM1="EndTime";
-  static final String _TAGITEM2="priority";
+
 
 }
