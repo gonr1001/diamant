@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.42 $  $Date: 2004-09-17 19:20:08 $
+ * Title: DiamantTest 1.5Test $Revision: 1.43 $  $Date: 2004-09-23 13:35:11 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.42 $
+ * @version $Revision: 1.43 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */

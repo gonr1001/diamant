@@ -1,8 +1,8 @@
 
 
-import com.iLib.gIO.ByteInputFile;
+import eLib.exit.txt.ByteInputFile;
 
-public class ReadPrintFile {
+public class XReadPrintFile {
 
   public static void main(String[] args) throws Exception{
 

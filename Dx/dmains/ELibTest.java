@@ -1,6 +1,6 @@
 /**
  *
- * Title: ILibTest $Revision: 1.3 $  $Date: 2004-09-17 19:20:08 $
+ * Title: ILibTest $Revision: 1.4 $  $Date: 2004-09-23 13:35:11 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
