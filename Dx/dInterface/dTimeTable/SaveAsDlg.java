@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.2 $  $Date: 2003-06-05 16:01:07 $
+ * Title: SaveAsDlg $Revision: 1.3 $  $Date: 2003-06-09 10:23:40 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -88,7 +88,6 @@ public class SaveAsDlg extends JDialog
                 DConst.DIA_FILE ) );
 
     fc.setMultiSelectionEnabled( false );
-
     // Display the file chooser in a dialog
     int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
 
@@ -100,10 +99,9 @@ public class SaveAsDlg extends JDialog
       String currentFile = fc.getSelectedFile().getAbsolutePath();
       if ( !currentFile.endsWith(DConst.DOT_DIA) )
         currentFile = currentFile.concat(DConst.DOT_DIA);
+      /** @todo dialog if replace file */
 
-      _dApplic.getDMediator().getCurrentDoc().setDocumentName(currentFile);
-      _dApplic.getDMediator().getCurrentDoc().noModified();
-      _dApplic.getDMediator().getCurrentDoc().getDM().rsaveTT(currentFile);
+      _dApplic.getDMediator().saveCurrentDoc(currentFile);
       new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
 
     }

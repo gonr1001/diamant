@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.10 $  $Date: 2003-06-05 16:01:07 $
+ * Title: DMediator $Revision: 1.11 $  $Date: 2003-06-09 10:23:40 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -22,8 +22,14 @@
 package dInterface;
 
 import java.util.Vector;
+import java.beans.PropertyVetoException;
+
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import com.iLib.gDialog.FatalProblemDlg;
+import dInterface.dTimeTable.SaveCmd;
+
 
 
 import dInternal.dTimeTable.TTStructure;
@@ -31,32 +37,64 @@ import dInternal.dTimeTable.TTStructure;
 public class DMediator {
   private DApplication _dApplic;
   private Vector _documents;
+  private boolean _cancel;
 
   public DMediator(DApplication dApplic) {
     _dApplic = dApplic;
     _documents = new Vector();
+    _cancel = false;
   } // end Mediator
 
+  public boolean getCancel() {
+    return _cancel;
+  }
   //-------------------------------------------
-  public void addDoc(String title, TTStructure ttStruct) { //MouseApp map, MouseMoveApp mvap){
-    DDocument currentDoc = new DDocument(_dApplic, title, ttStruct);//, map, mvap);
-    _documents.addElement(currentDoc);
-    currentDoc = null;
-  } //end addDoc
-
-  public void removeDoc(){
-      DDocument currentDoc = getCurrentDoc();
-      _documents.remove(currentDoc);
-	} //end addDoc
-  //-------------------------------------------
-  public String addDoc(String title) { //MouseApp map, MouseMoveApp mvap){
+  //for new
+  public String addDoc(String title, TTStructure ttStruct) {
     String error = "";
-    DDocument currentDoc = new DDocument(_dApplic, title);//, map, mvap);
+    DDocument currentDoc = new DDocument(_dApplic, title, ttStruct);
     _documents.addElement(currentDoc);
-    currentDoc = null;
     return error;
   } //end addDoc
 
+//for open
+  public String addDoc(String title) {
+    String error = "";
+    DDocument currentDoc = new DDocument(_dApplic, title);
+    _documents.addElement(currentDoc);
+    return error;
+  } //end addDoc
+
+  public void removeCurrentDoc(){
+      _documents.remove(getCurrentDoc());
+      if (_documents.size()!=0) {
+        try{
+          ((DDocument)_documents.get(0)).getJIF().setSelected(true);
+        } catch (PropertyVetoException e){
+          new FatalProblemDlg(_dApplic.getJFrame(), e.toString());
+          System.exit(1);
+        }
+      }//end if (_documents.size()!=0)
+    } //end addDoc
+  //-------------------------------------------
+
+  public void saveCurrentDoc(String str){
+    getCurrentDoc().setDocumentName(str);
+    getCurrentDoc().noModified();
+    getCurrentDoc().getDM().rsaveTT(str);
+  }
+
+  public void closeCurrentDoc(){
+    if (getCurrentDoc()!= null) {
+      if (getCurrentDoc().isModified()) {
+        _cancel =  promptToSave();
+      } else {//end if
+        DDocument aux = getCurrentDoc();
+        _documents.remove(getCurrentDoc());
+        aux.close();
+      } //end else
+    } //end if
+  }
   //-------------------------------------------
   public DDocument getCurrentDoc() {
     DDocument currentDoc = null;
@@ -67,6 +105,16 @@ public class DMediator {
         return currentDoc;
       } // end if
     } // end for
+    if (_documents.size()!=0){
+      currentDoc = (DDocument) _documents.elementAt(0);
+      try{
+         currentDoc.getJIF().setIcon(false);
+       } catch (PropertyVetoException e){
+         new FatalProblemDlg(_dApplic.getJFrame(), e.toString());
+         System.exit(1);
+        }
+        return currentDoc;
+    }
         return null;
   } //end getCurrentDoc
 
@@ -80,5 +128,34 @@ public class DMediator {
       return null;
     } // end else
   } //end getCurrentFrame
+  /**
+* Prompts to save if document has changed.
+* This checks the document to see if it has changed since it was
+* loaded or last saved. If so, it prompts the user to save, not
+* save or cancel.
+*
+* @return false if the user cancels (presses the cancel button
+* or the dialog's close button).  Otherwise, it return true.
+*/
+  private boolean promptToSave() {
+   int retval = JOptionPane.showConfirmDialog(_dApplic.getJFrame(), "Want to save?" );
+   DDocument aux = getCurrentDoc();
+   switch ( retval ) {
+     case JOptionPane.YES_OPTION:
+       new SaveCmd().execute(_dApplic);
+       removeCurrentDoc();
+       aux.close();
+       return false;
 
+     case JOptionPane.NO_OPTION:
+       removeCurrentDoc();
+       aux.close();
+       return false;
+
+     case JOptionPane.CANCEL_OPTION:
+     case JOptionPane.CLOSED_OPTION:
+       return true;
+   }//end switch
+   return true;// it does not matter
+  }//end promptToSave
 } /* end class DMediator */

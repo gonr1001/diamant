@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.21 $  $Date: 2003-06-05 16:01:07 $
+ * Title: DModel $Revision: 1.22 $  $Date: 2003-06-09 10:23:40 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -40,16 +40,25 @@ public class DModel{
   private DApplication _dApplic;
   private TTStructure _ttStruct;
 
-
+//for new
   public DModel(DApplication dApplic, TTStructure ttStruct) {
     _status = new Status();
     //_ttParameters = new TTParameters();
     _dApplic = dApplic;
-    _ttStruct = ttStruct;
+    _ttStruct = new TTStructure();//ttStruct;
     //importData("hello");
     //test1_setAvailability();
   }
 
+  //for open
+  public DModel(DApplication dApplic, String fileName) {
+    _status = new Status();
+    //_ttParameters = new TTParameters();
+    _dApplic = dApplic;
+    rreadTT(fileName);
+    //importData("hello");
+    //test1_setAvailability();
+  }
   public Status getStatus() {
     return _status;
   }
@@ -87,6 +96,13 @@ public class DModel{
      return "";
   }
 
+  private String rreadTT(String fileName){
+    JOptionPane.showMessageDialog(_dApplic.getJFrame(),
+                         "rreadTT was here",
+                          "trace",
+                             JOptionPane.OK_OPTION);
+    return "";
+  }
   public String loadTTStruct(String str) {
     LoadData loadData = new LoadData(str);
     // import set of instructors

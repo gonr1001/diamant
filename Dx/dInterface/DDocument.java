@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.25 $  $Date: 2003-06-05 16:01:07 $
+ * Title: DDocument $Revision: 1.26 $  $Date: 2003-06-09 10:23:40 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -43,6 +43,8 @@ import dResources.DConst;
 import java.util.StringTokenizer;
 import dInterface.dTimeTable.TTPanel;
 
+import dInterface.dTimeTable.CloseCmd;
+
 import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
@@ -55,24 +57,28 @@ public class DDocument implements ActionListener, DModelListener{
   private TTPanel _ttPanel;
   private JPanel _statusPanel;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+  //for new
+   public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
+     _dApplic = dApplic;
+     _documentName = title;
+     _dm = new DModel(_dApplic, ttStruct);
+     buidDocument();
+     _modified=true;
+  } // end constructor DDocument()
 
+  //for open
   //-------------------------------------------
   public DDocument(DApplication dApplic, String title) {
     _dApplic = dApplic;
     _documentName = title;
+    _dm = new DModel(_dApplic,_documentName);
     // read TTstructure
-    TTStructure ttStruct = new TTStructure();
-     // read TTstructure
-    buidDocument(ttStruct);
+    // TTStructure ttStruct = new TTStructure();
+    // read TTstructure
+    buidDocument();
     _modified=true;
   } // end constructor DDocument()
 
-  public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
-    _dApplic = dApplic;
-    _documentName = title;
-    buidDocument(ttStruct);
-    _modified=true;
-  } // end constructor DDocument()
 
 
 
@@ -168,24 +174,28 @@ public class DDocument implements ActionListener, DModelListener{
       _ttPanel.updateTTPanel(_dm.getTTStructure());
     }// end actionPerformed
 
-  private void  buidDocument(TTStructure ttStruct){
+  private void  buidDocument(){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
-/* MIN_HEIGHT is needed to ajdust the minimum
+    /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
     final int MIN_HEIGHT = 512;
-/* MIN_WIDTH is needed to ajdust the minimum
+    /* MIN_WIDTH is needed to ajdust the minimum
     * width of the _jif */
     final int MIN_WIDTH = 512;
-/* MIN_HEIGHT is needed to ajdust the minimum
+    /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
     final int MAX_HEIGHT = 1024;
-/* MIN_WIDTH is needed to ajdust the minimum
+    /* MIN_WIDTH is needed to ajdust the minimum
     * width of the _jif */
     final int MAX_WIDTH = 1024;
 
-    //_mediator = mediator;
-    _dm = new DModel(_dApplic, ttStruct);
     _jif = new JInternalFrame(_documentName, true, true, true, true);
+    _jif.setDefaultCloseOperation(_jif.DO_NOTHING_ON_CLOSE);
+    _jif.addInternalFrameListener( new InternalFrameAdapter() {
+      public void internalFrameClosing( InternalFrameEvent e ) {
+        new CloseCmd().execute(_dApplic);
+      }
+    } );
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
@@ -201,22 +211,30 @@ public class DDocument implements ActionListener, DModelListener{
     _jif.pack();
     _dApplic.getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);
-   /* try {
-      _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel to be present when the _jif is resized
+    //to comment if work with jifs
+    try {
+      _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel
+                              // to be present when the _jif is resized
     }
     catch (java.beans.PropertyVetoException pve) {
       new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
       System.exit(52);
       pve.printStackTrace();
-    }*/
+    }
+    //comment until here
   }
+
+  /*
+  * a revoir
+  */
   public void close(){
     _jif.dispose();
+    _jif = null;
     _documentName = "";
     _dm = null;
     _ttPanel = null;
     _statusPanel = null;
-    //_nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+    _nbModif = null;//, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
   }

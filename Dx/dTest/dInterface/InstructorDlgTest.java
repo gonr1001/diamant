@@ -30,7 +30,7 @@ public class InstructorDlgTest extends JFCTestCase {
     super(name);
 //    _dApplic = new DApplication();
 //    JFrame jFrame = _dApplic.getJFrame();
-//    _dApplic.getDMediator().addDoc();
+
   }
 
   public static Test suite() {

@@ -1,6 +1,7 @@
+package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.7 $  $Date: 2003-06-05 16:01:07 $
+ * Title: DApplication $Revision: 1.8 $  $Date: 2003-06-09 10:23:40 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -15,11 +16,11 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
-package dInterface;
+
 
 import dInternal.Preferences;
 import dResources.DConst;
@@ -48,6 +49,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 //import java.lang.IllegalAccessException;
 import javax.swing.SwingUtilities;
 import dInterface.dTimeTable.SaveCmd;
+import dInterface.dTimeTable.CloseCmd;
 
 public class DApplication implements ActionListener {
   /* ZERO is needed to fix Frame Location (origin)  */
@@ -219,14 +221,9 @@ public class DApplication implements ActionListener {
     public void closeApplic() {
       // if no Document exit ok
       while (_mediator.getCurrentDoc() != null) { //is a while
-      // if Document no changed exit ok
-         //_mediator.getCurrentDoc().getDM().rsaveTT();
-        if (_mediator.getCurrentDoc().isModified()) {
-          // Display dialog
-          promptToSave();
-          //System.out.println("save?");
-        }
-        else _mediator.getCurrentDoc().close();
+        new CloseCmd().execute(this);
+        if (_mediator.getCancel())
+          break;
       }
       // if Document changed as for save or not
        if (_mediator.getCurrentDoc() == null) {
@@ -234,32 +231,5 @@ public class DApplication implements ActionListener {
          _jFrame.dispose();
          System.exit(0);
       }
-  }
-  /**
-* Prompts to save if document has changed.
-* This checks the document to see if it has changed since it was
-* loaded or last saved. If so, it prompts the user to save, not
-* save or cancel.
-*
-* @return false if the user cancels (presses the cancel button
-* or the dialog's close button).  Otherwise, it return true.
-*/
-  public boolean promptToSave() {
-   int retval = JOptionPane.showConfirmDialog(_jFrame, "MES00" );
-   switch ( retval ) {
-     case JOptionPane.YES_OPTION:
-       new SaveCmd().execute(this);
-       _mediator.getCurrentDoc().close();
-       return true;
-
-     case JOptionPane.NO_OPTION:
-       _mediator.getCurrentDoc().close();
-       return true;
-
-     case JOptionPane.CANCEL_OPTION:
-     case JOptionPane.CLOSED_OPTION:
-       return false;
-   }
- return true;
   }
 } /* end class DApplication */
