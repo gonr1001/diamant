@@ -30,11 +30,11 @@ public class SaveDataTest extends TestCase {
   Vector _timeTable,_timeTable1;
   public SaveDataTest(String name) {
     super(name);
-    path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator;
+    path ="." + File.separator+"dataTest"+File.separator;
     LoadData _lData= new LoadData();
-    _timeTable = _lData.loadProject(path+"saveData.dia", null);
+    _timeTable = _lData.loadProject(path+"saveData.dia", "." + File.separator+"dataTest"+File.separator);
     LoadData _lData1= new LoadData();
-    _timeTable1 = _lData1.loadProject(path+"saveData.dia", null);
+    _timeTable1 = _lData1.loadProject(path+"saveData.dia", "." + File.separator+"dataTest"+File.separator);
   }
 
   public static Test suite() {
@@ -52,7 +52,7 @@ public class SaveDataTest extends TestCase {
                                  , (SetOfRooms)_timeTable.get(3), (SetOfActivities)_timeTable.get(4)
                                  , (SetOfStudents)_timeTable.get(5),path+"fichier1Test.dia");
     LoadData _lData= new LoadData();
-    Vector _timeTable1 = _lData.loadProject(path+"fichier1Test.dia", null);
+    Vector _timeTable1 = _lData.loadProject(path+"fichier1Test.dia", "." + File.separator+"dataTest"+File.separator);
 
     assertEquals("test_saveTimeTable : assertEquals: ", true, ((SetOfRooms)_timeTable1.get(3)).isEquals((SetOfRooms)_timeTable.get(3)));
   }

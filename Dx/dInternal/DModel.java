@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.107 $  $Date: 2004-09-23 19:02:08 $
+ * Title: DModel $Revision: 1.108 $  $Date: 2004-09-24 14:37:06 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.107 $
+ * @version $Revision: 1.108 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -104,8 +104,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     _progressBarState= new DXValue();
     _progressBarState.setIntValue(0);
     _dDocument = dDocument;
-    if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
-    	
+    if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){ 	
       _error=loadTimeTable(fileName, getCurrentDir(fileName));
       _isTimeTable=true;
     }else if(fileName.endsWith(DConst.DOT_XML)){
@@ -217,7 +216,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		 _setOfCategories= xmlloadData.extractRooms(null, true);
 	 }
 	 //	end debug
-System.out.println("rgr fn"+ fileName);
+//System.out.println("rgr fn"+ fileName);
     LoadData loadD = new LoadData(this);
     Vector project = loadD.loadProject(fileName, currentDir);
 
@@ -563,7 +562,7 @@ public void changeInTTStructure(TTStructureEvent  e) {
   	if(fileName.lastIndexOf(File.separator)>0) {
   		return fileName.substring(0,fileName.lastIndexOf(File.separator));
   	}
-	return new String("a");
+	return "";
   }
 
 } /* end class DModel */
