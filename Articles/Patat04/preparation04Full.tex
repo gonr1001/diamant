@@ -36,19 +36,40 @@ avec les idées de base suivantes:
 \item Codé de manière efficace
 \end{enumerate}
 
-\begin{itemize}
- \item {\bf Quelle question avez-vous répondue?} Dans une recherche
-documentaire nous avons trouvé que la plupart des articles dans le
-domaine des horaires sont dans la route de trouver la meilleure
-méthode pour optimiser la construction des horaires, mais il n'y a
-pas une idée claire de la manière d'intégrer ces logiciels aux
-systèmes de gestion d'information plus larges. Notre idée de base
-est de montrer la différence entre la "production" des horaires
-dans le sens d'intégrer le logiciel à l'ensemble de systèmes
-qu'interagissent pour la gestion académique et la "construction"
-des horaires avec une signification plus restrictive.
+\begin{description}
+ \item [Quelle question avez-vous répondu?]Quelle serait une
+ bonne décomposition modulaire (un bon design) pour
+ un système d'information adapté à la production d'horaires de cours au
+ niveau Universitaire? de plus le système doit être ouvert et
+ extensible.
 
-\item {\bf Pourquoi est importante pour le lecteur cette réponse?}
+
+\item [Pourquoi est importante pour le lecteur cette réponse?]
+L'article présente les considérations de conception d'un système
+intégrant la production d'horaires de cours et la construction
+automatique d'horaires. Il montre des alternatives  d'interfaces
+entre les différents modules du système.
+
+
+
+\item [Quelle est l'extension de cette réponse?] Identification du
+flot de données tout au long du processus de production
+d'horaires. Les découpage en modules avec un analyse de différents
+solutions.
+
+
+\end{description}
+
+\subsection{Quel est votre nouveau résultat?}
+
+\begin{itemize}
+\item {\bf Quelle est votre contribution à la connaissance?} Nous
+voulons offrir aux lecteurs un point de vue intégral de la
+production d'horaires, en ajoutant plusieurs qualités à notre
+système logiciel. Entre les qualités plus importantes que nous
+cherchons introduire il y a la flexibilité et l'extensibilité.
+
+
 Les systèmes d'information sont plus complexes chaque jour et
 demandent sa division en plusieurs modules avec une tache bien
 précise à accomplir, une fois fait cette division, il faut faire
@@ -57,62 +78,52 @@ adequate aux besoins des utilisateurs. Étant donnée cette
 complexité, nous avons besoin de découper les grands problèmes en
 petits morceaux faciles à gérer, et faciles à s'intégrer, disons
 qu'il faut désigner des systèmes qui facilement pourront se
-contracter et s'élargir\cite{}.%% Some Software Engineering Principles. David L. Parnas.
+contracter et s'élargir \cite{parnas78}.%% Some Software Engineering Principles. David L. Parnas.
+Nous voulons faire un développement basé sur les principes du
+génie logiciel.
 
+\item  {\bf Quels sont les travaux antérieurs?}
 
-Une fois que nous avons coupé et construit le système, nous ne
-pouvons pas imaginer aujourd'hui un système, peu importe lequel,
-indépendant et isolé. Pour arriver à avoir la qualité de
-l'extensibilité dans un système il faut avoir une idée claire du
-design des le départ. Notre point de vue de la production
-d'horaires vise ces qualités.
+Dans une recherche documentaire nous avons trouvé que la plupart
+des articles dans le domaine de construction de horaires sont
+orientés à trouver la meilleure méthode pour optimiser la
+construction des horaires, mais il n'y a pas une idée claire de la
+manière d'intégrer ces logiciels aux systèmes de gestion
+d'information plus larges. Notre idée de base est de montrer la
+différence entre la ``production'' des horaires dans le sens
+d'intégrer le logiciel à l'ensemble de systèmes qu'interagissent
+pour la gestion académique et la ``construction'' des horaires
+avec une signification plus restrictive.
 
-\item Quelle est l'extension de cette réponse? Une fois que nous
-avons développé deux versions du logiciel {\diamant}, nous avons
-l'expérience suffisante pour savoir qu'il faut concevoir un
-logiciel de production d'horaires qui soit une partie intégrale
-d'un système de gestion des données académiques de l'Université.
-Même si le logiciel n'a pas un lien direct avec les autres
-logiciels, il y a toujours un échange d'information qu'il faut
-préserver pour assurer la correcte utilisation de l'information
-ainsi que sa validité et cohérence.
-\end{itemize}
+La plupart des travaux sur le développement des horaires visent à
+trouver le meilleur algorithme pour optimiser la construction des
+horaires, il y a les auteurs qu'utilisent les algorithmes
+génétiques \cite{ozcan02}, la recherche opérationnelle
+\cite{paquete02} ou les algorithmes purement statistiques.
 
-\subsection{Quel est votre nouveau résultat?}
-
-\begin{itemize}
-\item Quelle est votre contribution à la connaissance? Nous
-voulons offrir aux lecteurs un point de vue intégral de la
-production d'horaires, en ajoutant plusieurs qualités à notre type
-de logiciel. Entre les qualités plus importantes que nous
-cherchons introduire il y a la flexibilité et l'extensibilité, et
-nous voulons faire un développement basé dans les règles du génie
-logiciel.
-
-\item  Quels sont les travaux antérieurs? La plupart des travaux
-sur le développement des horaires visent à trouver le meilleur
-algorithme pour optimiser la construction des horaires, il y a les
-auteurs qu'utilisent les algorithmes génétiques \cite{ozcan02}, la
-recherche opérationnelle \cite{paquete02} ou les algorithmes
-purement statistiques. Mais tous ces travaux cherchent à isoler la
-procédure de construction des horaires. Nous sommes convaincus que
-cette approche fonctionne, mais il y a plusieurs problèmes au
-moment de vouloir intégrer les logiciels avec autres composants.
-Il est aussi compliqué si nous voulons comparer des algorithmes en
+Mais tous ces travaux cherchent à isoler la procédure de
+construction des horaires. Nous sommes convaincus que cette
+approche fonctionne, mais il y a plusieurs problèmes au moment de
+vouloir intégrer les logiciels avec autres composants. Il est
+aussi compliqué si nous voulons comparer des algorithmes en
 mesurant sa performance, Il y a quand même quelques efforts pour
 trouver une architecture standardisée pour faire des benchmarks
 entre les logiciels de construction d'horaires \cite{kingston02}.
 
-\item Pourquoi votre solution est-elle meilleure? Notre idée est
-de construire un logiciel capable d'interagir avec autres
-logiciels existants dans la gestion scolaire. Nous considérons
-qu'il y a deux qualités du logiciel importantes pour réussir à cet
-objectif~: la flexibilité et l'extensibilité. Dans notre approche
-nous essayons de mettre en application les techniques du génie
-logiciel plus récemment utilisés comme la eXtreme Programming, la
-conception orientée objets ou les design patterns, qui dans la
-pratique offrent plus de chances de réussir dans l'implémentation
-d'un système d'information complexe.
+\item Pourquoi votre solution est-elle meilleure? Notre solution
+est basée sur un analyse d'alternatives sur les points clés d'un
+tel système.
+
+ Notre idée est de construire un logiciel capable
+d'interagir avec autres logiciels existants dans la gestion
+scolaire. Nous considérons qu'il y a deux qualités du logiciel
+importantes pour réussir à cet objectif~: la flexibilité et
+l'extensibilité. Dans notre approche nous essayons de mettre en
+application les techniques du génie logiciel plus récemment
+utilisés comme la eXtreme Programming, la conception orientée
+objets ou les design patterns, qui dans la pratique offrent plus
+de chances de réussir dans l'implémentation d'un système
+d'information complexe.
 
 \item Quoi, de manière précise et détaillée est votre nouveau
 travail? La présentation de {\tictac}, un système qui cherche la
@@ -299,7 +310,7 @@ supérieure. Notre but est la création d'un système de production
 d'horaires avec une approche que nous appellerons plus génie
 logiciel, nous cherchons l'interaction avec plusieurs systèmes de
 gestion d'information de l'université, ainsi que la création d'un
-logiciel avec hauts niveaux de qualité[MEY88].
+logiciel avec hauts niveaux de qualité \cite{meyer97}.
 
 La production d'horaires est automatisé à différents degrés, par
 exemple: elle peut comporter un logiciel de construction
@@ -358,10 +369,10 @@ Nous connaissons bien le processus de création d'horaires pour une
 université pour avoir développé deux versions du logiciel Diamant.
 Diamant est un logiciel qui permet la génération d'horaires de
 manière interactive et automatisé qui est utilisé pour créer des
-horaires dans plusieurs facultés de l'Université de
-Sherbrooke[GON00]. Pendante ces travaux, nous avons constaté que
-l'intégration du système de création d'horaires avec le reste des
-systèmes dans l'Université est devenue complexe, à cause de
+horaires dans plusieurs facultés de l'Université de Sherbrooke
+\cite{gonzalezrubio00}. Pendante ces travaux, nous avons constaté
+que l'intégration du système de création d'horaires avec le reste
+des systèmes dans l'Université est devenue complexe, à cause de
 plusieurs facteurs, entre autres : ·   L'existence de plusieurs
 systèmes, matérielle, systèmes d'exploitation, logiciel, etc. ·
 Incompatibilités entre les formats d'échange des fichiers. ·   Des
@@ -374,9 +385,9 @@ meilleur algorithme d'optimisation pour la affectation des
 ressources, mais il y a très peu de recherche sur les structures
 de données pour modéliser les horaires, ou la façon d'intégrer un
 système d'horaires dans l'ensemble des systèmes de gestion
-scolaire, Bourke, Kingston et Pepper [BOUR97]on fait un travail
-dans lequel ils proposent des structures de données pour modéliser
-les horaires.
+scolaire, Bourke, Kingston et Pepper \cite{burke97} on fait un
+travail dans lequel ils proposent des structures de données pour
+modéliser les horaires.
 
 Tout d'abord le processus de production d'horaires sera défini
 comme le processus commençant lorsque on commence à la saisie de
@@ -528,3 +539,24 @@ nécessaires à la livraison de l'horaire.
 \bibliography{bibDiamant,bibProg}
 
 \end{document}
+
+
+
+
+
+
+Une fois que nous avons coupé et construit le système, nous ne
+pouvons pas imaginer aujourd'hui un système, peu importe lequel,
+indépendant et isolé. Pour arriver à avoir la qualité de
+l'extensibilité dans un système il faut avoir une idée claire du
+design des le départ. Notre point de vue de la production
+d'horaires vise ces qualités.
+
+ Une fois que nous avons développé deux versions du
+logiciel {\diamant}, nous avons l'expérience suffisante pour
+savoir qu'il faut concevoir un logiciel de production d'horaires
+qui soit une partie intégrale d'un système de gestion des données
+académiques de l'Université. Même si le logiciel n'a pas un lien
+direct avec les autres logiciels, il y a toujours un échange
+d'information qu'il faut préserver pour assurer la correcte
+utilisation de l'information ainsi que sa validité et cohérence.
