@@ -198,7 +198,7 @@ les fenêtres ouvertes et en demandant s'il faut faire les sauvegardes
 des fichiers.
 Cliquer sur la X de l'application fait la même chose que \pro{Quitter}.
 
-
+Note : Le menu \verb+Fichier_Grille+ a été intégré au menu verb+Fichier+
 
 Dans le menu \verb+Fichier_Grille+ les sous-menus \pro{Nouvelle grille},
 \pro{Ouvrir Grille},
@@ -216,7 +216,7 @@ horaire et une barre d'outils est affichée à l'écran et elle est prête
 à accepter le commandes.
 
 Le sous-menu \pro{Nouvel grille} contient deux sous-sous-menus
-(\pro{Grille Cycle} et  \pro{grille Examen}).
+(\pro{Grille cycle} et  \pro{Grille examen}).
 Dans le deux cas,
 il affiche une grille horaire pour définir une nouvelle.
 La grille portera le nom \pro{Sans titre}.
@@ -372,7 +372,8 @@ valider au \sig{}.
 Dans le menu \pro{Affectation} les sous-menus
 \pro{Activités},
 \pro{Événement}, \pro{Enseignant}, \pro{Groupes}, \pro{Locaux}
-\pro{Définir ensembles} et \pro{Commencer horaire} sont tous
+\pro{Définir ensembles}
+\pro{Affectation manuelle} et \pro{Initialisation} sont tous
 fonctionnels sauf \pro{Définir ensembles}.
 
 Le sous-menu \pro{Activités} affiche une boîte de dialogue avec
@@ -417,11 +418,11 @@ afin de montrer dans la grille horaire les éléments appartenant à
 un ensemble.
 
 
-Le sous-menu \pro{Placement manuel} permet de choisir un cours
+Le sous-menu \pro{Affectation manuelle} permet de choisir un cours
 à placer et de voir les conflits possibles de ce cours et des
 cours figurant déjà dans la grille.
 
-Le sous-menu \pro{Commencer horaire} permet de voir la disponibilité d'un
+Le sous-menu \pro{Initialisation} permet de voir la disponibilité d'un
 local. Similaire à la disponibilité des enseignants. Par default
 un local est disponible tout le temps.
 
@@ -432,6 +433,7 @@ Les actions nécessaires à l'optimisation :
 
 
 \begin{itemize}
+    \item Ajustement de disponibilités, extérieur et de la grille
     \item Commencer horaire ou Affectation initiale.
     Elle consiste à placer dans la grille horaire tous
     les événements figés au \sig{}. Elle doit faire dans l'ordre :
