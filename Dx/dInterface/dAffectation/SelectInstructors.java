@@ -23,7 +23,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-
+import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.TwoButtonsPanel;
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
@@ -41,7 +42,8 @@ public class SelectInstructors extends JDialog implements ActionListener {
    */
   private JLabel _lVisible, _lNoVisible;
   private JList _rightList, _leftList;
-  private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
+  private JPanel _centerPanel, _arrowsPanel;
+  private ButtonsPanel _buttonsPanel;
 
   private String [] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
@@ -104,10 +106,11 @@ public class SelectInstructors extends JDialog implements ActionListener {
     _centerPanel.add(leftPanel, BorderLayout.EAST);
     _centerPanel.add(_arrowsPanel, BorderLayout.CENTER);
     _centerPanel.add(rightPanel, BorderLayout.WEST);
-    //buttonsPanel
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    //_applyPanel
+    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _buttonsPanel = new TwoButtonsPanel(this, a);
     //Setting the button APPLY disable
-    _buttonsPanel.getComponent(1).setEnabled(false);
+    _buttonsPanel.setFirstDisable();
     //placing the elements into the JDialog
     setSize(400, 390);
     setResizable(false);
@@ -127,36 +130,33 @@ public class SelectInstructors extends JDialog implements ActionListener {
       else
         _leftList.clearSelection();
       //_currentActivities = ((JList)e.getSource()).getSelectedValues();
-      /*if (e.getClickCount() == 2) {
-        //new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0],false);
-      }*/ //end if
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){
 
 
-  /**
+  /**tictactictic
    *
    * @param e an event
    */
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //If buttons CANCEL
-    if (command.equals(_buttonsNames[2]))
+    if (command.equals(DConst.BUT_CLOSE))
         dispose();
     //If button APPLY
-    if (command.equals(_buttonsNames[1])){
+    if (command.equals(DConst.BUT_APPLY)){
       //setActivitesVisibility();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
-      _buttonsPanel.getComponent(1).setEnabled(false);
+      _buttonsPanel.setFirstDisable();
     }
     //if button OK
-    if (command.equals(_buttonsNames[0])){
+   /* if (command.equals(_buttonsNames[0])){
       //setActivitesVisibility();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
       dispose();
-    }
+    } */
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       if (command.equals(_arrowsNames[1]))
         DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
@@ -164,7 +164,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
         DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 1);
       _lNoVisible.setText(_rightVec.size() + " " + NOT_INCLUDED);
       _lVisible.setText(_leftVec.size() + " " + INCLUDED);
-      _buttonsPanel.getComponent(1).setEnabled(true);
+      _buttonsPanel.setFirstEnable();
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
   }//end method

@@ -68,7 +68,8 @@ public class ManualImprovementDlg extends EventsDlgInterface{
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
     if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
-      new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
+      //new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0], this,false);
+      new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0],false);
     }
   }//end method
 

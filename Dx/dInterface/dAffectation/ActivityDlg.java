@@ -46,7 +46,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private JLabel _lVisible, _lNoVisible;
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel;
-  private ButtonsPanel _applyPanel;
+  private ButtonsPanel _buttonsPanel;
   private Object [] _currentActivities = new Object[0];
   private SetOfActivities _activities;
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
@@ -109,14 +109,14 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _centerPanel.add(rightPanel, BorderLayout.WEST);
     //_applyPanel
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
-    _applyPanel = new TwoButtonsPanel(this, a);
+    _buttonsPanel = new TwoButtonsPanel(this, a);
     //Setting the button APPLY disable
-    _applyPanel.setFirstDisable();
+    _buttonsPanel.setFirstDisable();
     //placing the elements into the JDialog
     setSize(400, 400);
     setResizable(false);
     getContentPane().add(_centerPanel, BorderLayout.CENTER);
-    getContentPane().add(_applyPanel, BorderLayout.SOUTH);
+    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
   }//end method
 
   /**
@@ -151,7 +151,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     if (command.equals(DConst.BUT_APPLY)){
       setActivitesVisibility();
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
-      _applyPanel.setFirstDisable();
+      _buttonsPanel.setFirstDisable();
     }
     //no  button OK
 
@@ -163,7 +163,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
       }
       _lNoVisible.setText(_rightVec.size() + " " + DConst.NOT_INCLUDED);
       _lVisible.setText(_leftVec.size() + " " + DConst.INCLUDED);
-      _applyPanel.setFirstEnable();
+      _buttonsPanel.setFirstEnable();
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
   }//end method
 

@@ -19,7 +19,9 @@ import java.util.Vector;
 
 import javax.swing.event.*;
 import javax.swing.*;
+import javax.swing.JList;
 
+import dInterface.dUtil.DXJComboBox;
 import dResources.DConst;
 import dInterface.DApplication;
 import dInternal.dConditionsTest.EventAttach;
@@ -42,10 +44,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   //private String NO_ROOM_INTERNAL= "------";
   private boolean _isModified=false;
 
-  Vector _unities = new Vector();// contains event resource
+  private Vector _unities = new Vector();// contains event resource
 
-  JTabbedPane _tabbedPane;
-  TwoButtonsPanel _buttonsPanel;
+  private JTabbedPane _tabbedPane;
+  private TwoButtonsPanel _buttonsPanel;
 
   /**
    * Constructor
@@ -58,8 +60,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
     _isModified= isModified;
-    //_activityName = currentActivity;
-    buildUnitiesVector(currentActivity);
+    _unities = buildUnitiesVector(currentActivity);
     jbInit();
 
   }
@@ -70,17 +71,16 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
    * @param dApplic The application
    * @param currentActivity The ativiti choiced in the activityDialog
    */
-  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg,boolean isModified) {
-    super(dialog, "Affectation d'évenement");
+/*  public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity, EventsDlgInterface evDlg, boolean isModified) {
+    super(dialog, "Affectation xxx");
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
     _evDlgInt= evDlg;
     _isModified= isModified;
-    //_activityName = currentActivity;
-    buildUnitiesVector(currentActivity);
+    _unities = buildUnitiesVector(currentActivity);
     jbInit();
 
-  }
+  }*/
 
   /**
    * Initialize the dialog
@@ -89,7 +89,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
     _buttonsPanel = new TwoButtonsPanel(this, a);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
-    _tabbedPane = new JTabbedPane();
+       _tabbedPane = new JTabbedPane();
     //_tabbedPane.
     for (int i=0; i< _unities.size(); i++){
       if(_unities.get(i)!=null){
@@ -105,6 +105,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     Dimension unitySize = new Dimension(350, 270 );
     setBounds((screenSize.width - unitySize.width) / 2, (screenSize.height -
         unitySize.height) / 2, unitySize.width, unitySize.height);
+
+
     setResizable(true);
     setVisible(true);
   }
@@ -175,7 +177,9 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
     JPanel panel = new JPanel();
     JLabel duration, day, hour, room, instructor;
-    JComboBox  cbDuration, cbDay, cbHour, cbRoom, cbInstructor;
+    JComboBox  cbDuration, cbDay, cbHour, cbRoom;
+    JList instructorsList;
+    JScrollPane cbInstructor;
     JToggleButton place, fix;
     duration = new JLabel(DConst.R_TIME_LENGTH);
     day = new JLabel(DConst.R_DAY_NAME);
@@ -199,10 +203,12 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     cbRoom.addActionListener(this);
     cbRoom.setSelectedItem(vect[0].get(0).toString());
     vect = buildInstructorList();
-    /*cbInstructor = new JComboBox(vect[1]);
-    cbInstructor.addActionListener(this);
+    //String [] a = {"rgr", "ys"};
+    instructorsList = new JList(vect[0].toArray());
+    cbInstructor = new JScrollPane(instructorsList);
+    //cbInstructor.addActionListener(this);
     cbInstructor.setPreferredSize(new Dimension(163,25));
-    cbInstructor.setSelectedItem(vect[0].get(0).toString());*/
+    //cbInstructor.setSelectedItem(vect[0].get(0).toString());
     place = new JToggleButton(DConst.BUT_PLACE);
     place.setSelected(event.getAssignState());
     place.addActionListener(this);
@@ -228,7 +234,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     // instructor
     panel = new JPanel();
     panel.add(instructor);
-   // panel.add(cbInstructor);
+    panel.add(cbInstructor);
     JButton jButtonChange = new JButton( DConst.BUT_CHANGE );
     jButtonChange.setPreferredSize(new Dimension(75, 22));
     jButtonChange.addActionListener(this);
@@ -245,11 +251,11 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   }
 
   /**
-   *Return vector of resource. each resource represent an event
+   * Return vector of resources. each resource represent an event
    */
-  private void buildUnitiesVector(String activityName){
+  private Vector buildUnitiesVector(String activityName){
     int nbTokens= DXToolsMethods.countTokens(activityName, ".");
-    //Vector unities= new Vector(1);
+    Vector unities= new Vector(1);
     //System.out.println("CounTokens: "+nbTokens);// debug
     String actID= DXToolsMethods.getToken(activityName,".",0);
     String typID= DXToolsMethods.getToken(activityName,".",1);
@@ -260,14 +266,14 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
       if(secID.length()!=0){
         String unitID= DXToolsMethods.getToken(activityName,".",3);
         if(unitID.length()!=0){
-          _unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
+          unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
                        getResource(activityName));
 
         }else{// else unitID.length()!=0
           Section sect= _dApplic.getDMediator().getCurrentDoc().getDM().
                         getSetOfActivities().getSection(actID,typID,secID);
           for (int i=0; i<sect.getSetOfUnities().size(); i++){
-            _unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
+            unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
             getResource(actID+"."+typID+"."+secID+"."+sect.getSetOfUnities()
             .getResourceAt(i).getID()+"."));
           }// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
@@ -279,7 +285,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
           Section sect= _dApplic.getDMediator().getCurrentDoc().getDM().
                   getSetOfActivities().getSection(actID,typID,type.getSetOfSections().getResourceAt(i).getID());
           for (int j=0; j<sect.getSetOfUnities().size(); j++){
-            _unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
+            unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
             getResource(actID+"."+typID+"."+type.getSetOfSections().getResourceAt(i).getID()
             +"."+sect.getSetOfUnities().getResourceAt(j).getID()+"."));
           }// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
@@ -296,13 +302,14 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
           Section sect= _dApplic.getDMediator().getCurrentDoc().getDM().
                   getSetOfActivities().getSection(actID,typID,type.getSetOfSections().getResourceAt(i).getID());
           for (int j=0; j<sect.getSetOfUnities().size(); j++){
-            _unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
+            unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
             getResource(actID+"."+typID+"."+type.getSetOfSections().getResourceAt(i).getID()
             +"."+sect.getSetOfUnities().getResourceAt(j).getID()+"."));
           }// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
         }// end for(int i=0; i< type.getSetOfSections().size(); i++)
       }
     }// end else if(typID.length()!=0)
+    return unities;
   }
 
 
