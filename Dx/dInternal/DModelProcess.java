@@ -97,7 +97,7 @@ public class DModelProcess {
      //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
-     _dm._conditionTest = new TestConditions(_dm);
+     //_dm._conditionTest = new TestConditions(_dm);
    }// end if (_setOfActivities!=null)
 
   }

@@ -155,6 +155,22 @@ public class StudentAttach extends DXObject{
     return _courses;
   }
 
+  /**
+  *
+  * @param actyvityType
+  * @return
+  */
+ public int getGroup(String actyvityType){
+   if (actyvityType.length()!= _COURSELENGTH)
+     return -1;
+   else{
+     Resource resource = _courses.getResource(actyvityType);
+     if(resource!=null)
+       return((DXValue)resource.getAttach()).getIntValue();
+   }
+   return -1;
+ }
+
  /**
    * set the student courses choice
    * INPUT: courses, a vector of studentchoice
@@ -290,6 +306,7 @@ public class StudentAttach extends DXObject{
       return true;
     return false;
   }
+
 
 
  /**

@@ -25,6 +25,7 @@ public class StudentsConflictsMatrix {
 
   private int [][] _theMatrix ;
   private SetOfResources _allSections;
+  private boolean _doFirstGroupAssignement=true;
 
   /**
    * Constructor
@@ -39,7 +40,10 @@ public class StudentsConflictsMatrix {
    */
   public void buildMatrix(SetOfActivities soa, SetOfStudents sos){
     _allSections = buildSections(soa);
-    firstStudentGroupAssignment(soa,sos);
+    if(_doFirstGroupAssignement){
+      firstStudentGroupAssignment(soa,sos);
+      _doFirstGroupAssignement=false;
+    }
     _theMatrix = new int[_allSections.size()+1][_allSections.size()+1];
     for(int i=0; i< sos.size(); i++){
       StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();

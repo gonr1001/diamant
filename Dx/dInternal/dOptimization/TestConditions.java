@@ -77,6 +77,13 @@ public class TestConditions {
  }
 
  /**
+  * set the _matrixIsBuilded value to true
+  */
+ public void setMatrixBuilded(boolean value){
+   _matrixIsBuilded=value;
+ }
+
+ /**
   *
   */
   public void initAllConditions(){
