@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.99 $  $Date: 2004-06-04 14:41:48 $
+ * Title: DModel $Revision: 1.100 $  $Date: 2004-06-04 14:54:23 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.99 $
+ * @version $Revision: 1.100 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -197,12 +197,14 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @return
    */
   public String loadTimeTable(String fileName){
-//	debug for xml file to be remove
+	//	debug for xml file to be remove
 	 // ysyam
-	 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
-	 XMLLoadData xmlloadData = new XMLLoadData(filename, this);
-	 _setOfCategories= xmlloadData.extractRooms(null, true);
-	 // end debug
+	 if(DConst.DEVELOPMENT){
+		 String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+		 XMLLoadData xmlloadData = new XMLLoadData(filename, this);
+		 _setOfCategories= xmlloadData.extractRooms(null, true);
+	 }
+	 //	end debug
     
     LoadData loadD = new LoadData(this);
     Vector project = loadD.loadProject(fileName);
@@ -304,12 +306,14 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    */
   public String importData(String str) {
     // debug for xml file to be remove
-    // ysyam
-    String filename= "XMLData"+ File.separator+"ImportFiles.xml";
-    XMLLoadData xmlloadData = new XMLLoadData(filename, this);
-    _setOfCategories= xmlloadData.extractRooms(null, true);
-    // end debug
-
+	// ysyam
+	if(DConst.DEVELOPMENT){
+		String filename= "XMLData"+ File.separator+"ImportFiles.xml";
+		XMLLoadData xmlloadData = new XMLLoadData(filename, this);
+		_setOfCategories= xmlloadData.extractRooms(null, true);
+	}
+	//	end debug
+	   
     LoadData loadData = new LoadData(str, this);
     _dDocument.setCursor(Cursor.WAIT_CURSOR);
     // import set of instructors
