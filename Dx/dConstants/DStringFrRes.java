@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.112 $  $Date: 2004-05-12 16:02:10 $
+ * Title: DStringFrRes $Revision: 1.113 $  $Date: 2004-05-13 14:18:01 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,7 +15,7 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.112 $
+ * @version $Revision: 1.113 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -56,6 +56,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //Separator
     { "save", "Enregistrer ..." },
     { "saveAs", "Enregistrer sous ..." },
+    { "savePrompt", "Voulez vous enregistrer?" },
 
 
     { "defFM", "Definir fichiers à importer ..." },
@@ -357,9 +358,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     {"ttFile","S814.HORAIRE"},
     {"ttStudFIle", "S813.ASSGRO"},
-    {"errorXMLFile", "XML file is corrupted"}
+    {"errorXMLFile", "XML file is corrupted"},
 
-
+	{"separator",     "------------------------------------------------------------------" },
+	{"instructorSep", "------------------------  Enseignants  ---------------------------" },
+	{"roomSep",       "------------------------  Locaux       ---------------------------" },
+	{"studentSep",    "------------------------  Etudiants    ---------------------------" }
+  
 
   };
 

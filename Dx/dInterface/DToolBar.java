@@ -1,7 +1,7 @@
 package dInterface;
 
 /**
- * Title: ToolBar $Revision: 1.42 $  $Date: 2004-04-27 18:13:10 $
+ * Title: DToolBar $Revision: 1.43 $  $Date: 2004-05-13 14:18:00 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -38,7 +38,7 @@ import dResources.*;
 //-------------------------------------------
 /**
  *
- * ToolBar is a class used to display aad handle two toolbars with buttons
+ * DToolBar is a class used to display aad handle two toolbars with buttons
  *  and JComboBoxes.
  *  One Toolbar is used to make changes in day and the other on periods
  *

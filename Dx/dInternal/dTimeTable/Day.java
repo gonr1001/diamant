@@ -11,8 +11,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 import dInternal.dUtil.DXValue;
 
-import dResources.DConst;
-
 public class Day extends DXObject{
 
 

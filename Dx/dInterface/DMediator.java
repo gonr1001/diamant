@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.41 $  $Date: 2004-04-16 16:54:13 $
+ * Title: DMediator $Revision: 1.42 $  $Date: 2004-05-13 14:18:00 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.41 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.42 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -29,10 +29,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import com.iLib.gDialog.FatalProblemDlg;
 import dInterface.dTimeTable.SaveCmd;
-
-
-
-
+import dResources.DConst;
 
 public class DMediator {
   private DApplication _dApplic;
@@ -173,7 +170,7 @@ public class DMediator {
 * or the dialog's close button).  Otherwise, it return true.
 */
   private boolean promptToSave() {
-   int retval = JOptionPane.showConfirmDialog(_dApplic.getJFrame(), "Want to save?" );
+   int retval = JOptionPane.showConfirmDialog(_dApplic.getJFrame(), DConst.SAVE_PROMPT );
    DDocument aux = getCurrentDoc();
    switch ( retval ) {
      case JOptionPane.YES_OPTION:

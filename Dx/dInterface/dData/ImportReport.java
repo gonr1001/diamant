@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.8 $  $Date: 2004-05-12 20:32:34 $
+ * Title: ImportReport $Revision: 1.9 $  $Date: 2004-05-13 14:18:00 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -75,14 +75,14 @@ public class ImportReport extends ViewReport implements ActionListener {
     JTextArea jtaStud= new JTextArea("");
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText("Rapport d'importation");
-    jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
+    jta.append(DConst.CR_LF + DConst.SEPARATOR + DConst.CR_LF);
 
     // enseignants
-    jtaInst.append(DConst.CR_LF+"------------------Enseignants----------------------"+DConst.CR_LF);
+    jtaInst.append(DConst.CR_LF + DConst.INSTRUCTOR_SEP + DConst.CR_LF);
     //locaux
-    jtaRooms.append(DConst.CR_LF+"------------------Locaux----------------------"+DConst.CR_LF);
+    jtaRooms.append(DConst.CR_LF + DConst.ROOM_SEP + DConst.CR_LF);
     //etudiants
-    jtaStud.append(DConst.CR_LF+"------------------Etudiants----------------------"+DConst.CR_LF);
+    jtaStud.append(DConst.CR_LF + DConst.STUDENT_SEP + DConst.CR_LF);
     SetOfResources setOfImportErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportErrors();
     for (int i=0; i< setOfImportErrors.size(); i++){
       // Etudiants

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.100 $  $Date: 2004-05-12 16:03:34 $
+ * Title: DConst $Revision: 1.101 $  $Date: 2004-05-13 14:18:00 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.100 $
+ * @version $Revision: 1.101 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -123,6 +123,7 @@ public class DConst {
   public final static String OPEN  = res.getString("open");//Ouvrir horaire
   public final static String OPEN_TTS  = res.getString("openTTS");//Ouvrir grille
   public final static String SAVE  = res.getString("save");//Enregistrer
+  public final static String SAVE_PROMPT = res.getString("savePrompt");//Voulez vous enregistrer?
   public final static String SAVE_AS  = res.getString("saveAs");//Enregistrer zouz
   public final static String DEF_F_M  = res.getString("defFM");//Definir fichiers à importer
   public final static String IMP_A_M  = res.getString("impAM");//Importer automatiquement
@@ -404,6 +405,12 @@ public class DConst {
 
   public final static String ERROR_XML_FILE = res.getString("errorXMLFile"); // "XML file is corrupted";
 
+  public final static String SEPARATOR = res.getString("separator"); // "--";
+  public final static String INSTRUCTOR_SEP = res.getString("instructorSep"); // "-Enseignants-";
+  public final static String ROOM_SEP = res.getString("roomSep"); // "-Locaux-";
+  public final static String STUDENT_SEP = res.getString("studentSep"); // "-Etudiants-";
+  
+  
   public DConst() {
   }
 }
