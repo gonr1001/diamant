@@ -20,12 +20,12 @@ Voici les noms de fonctionnalités manquantes dans \diamant 1.5.
 \end{enumerate}
 
 
-\subsection{Fonctionnalité \ref{examen} Examens}
+\subsection{Fonctionnalité \ref{examen}~: Examens}
 Cette fontionnalité est en réalité un ensemble de fonctionnalités
 nécessaires à la construction d'un horaire des examens. Elle est
 décrite dans le manuelle utilisateur.
 
-\subsection{Fonctionnalité \ref{enseig} Enseignants}
+\subsection{Fonctionnalité \ref{enseig}~: Enseignants}
 Cette fontionnalité doit servir à assigner à une activité $n$
 enseignants. Dans les boîtes de dialogue affectation d'une
 activité ou d'un événement il faut offrir la possibilité d'ajouter
@@ -39,7 +39,7 @@ modifications.
 
 Quelles classes sont à modifier?
 
-\subsection{Fonctionnalité \ref{groupe} Groupes}
+\subsection{Fonctionnalité \ref{groupe}~: Groupes}
 Cette fontionnalité doit servir à assurer une compatibilité entre
 le nom assigné à un groupe et le nom affiché par \diamant et
 retourné avec l'horaire. Il y a des modifications à faire au SIG
@@ -63,16 +63,32 @@ l'exportation est faite avec les bons données et le bon format.
 
 Quelles classes sont à modifier?
 
-\subsection{Fonctionnalité \ref{parti} Grille partielle}
+\subsection{Fonctionnalité \ref{parti}~: Grille partielle}
 La fonctionnalité Grille partielle doit permettre de définir un
 ensemble d'activités, et de donner un nom à cet ensemble. Ensuite
-afficher sur la grille uniquemnt
+afficher sur la grille uniquement les cours de l'ensemble choisi.
 
-Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
-classes \verb!XCmd! + certaines classes avec dialogue
-\verb!Annuler!
+Quelles classes sont à modifier?
 
-\subsection{Fonctionnalité \ref{select} Importation sélective}
+Il faut aussi sauvegarder les données nom de l'ensemble et les
+activités appartenant dans l'ensemble.
+
+\subsection{Fonctionnalité \ref{select}~: Importation sélective}
+La fonctionnalité importation sélective est de pouvoir importer un
+fichier sans changer les données dans les autres fichiers.
+
+Quels fichiers peuvent être importés de manière selective?
+
+Quelle sont les cas possibles~: donnée nouvelle, donnée modifie,
+donnée disparue, autres?
+
+Quoi faire dans chaque cas?
+
+
+Quelles classes sont à modifier?
+
+
+\subsection{Fonctionnalité \ref{menus}~: Menus}
 Les menus doivent être disponibles (enabled) ou non disponibles
 (disabled) en fonction de la dernière opération effectué.
 
@@ -82,17 +98,7 @@ Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
 classes \verb!XCmd! + certaines classes avec dialogue
 \verb!Annuler!
 
-\subsection{Fonctionnalité \ref{menus} Menus}
-Les menus doivent être disponibles (enabled) ou non disponibles
-(disabled) en fonction de la dernière opération effectué.
-
-Revision de toute l'interface avec l'utilisateur.
-
-Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
-classes \verb!XCmd! + certaines classes avec dialogue
-\verb!Annuler!
-
-\subsection{Fonctionnalité \ref{details} Détails}
+\subsection{Fonctionnalité \ref{details}~: Détails}
 Détails n'est pas une fontionnalité. Il s'agit de effectuer des
 changements mineurs dans le logiciel pour assurer entre autres~:
 
@@ -106,5 +112,26 @@ changements mineurs dans le logiciel pour assurer entre autres~:
 Revision de toute l'interface avec l'utilisateur.
 
 Quelles classes sont à modifier?
-\subsection{Fonctionnalité \ref{toolbar} Toolbar}
-\subsection{Fonctionnalité \ref{affect} Affectation manuelle plus efficace}
+\subsection{Fonctionnalité \ref{toolbar}~: Toolbar}
+La fonctionnalité Toolbar est de pouvoir effectuer des
+modifications à une grille horaire qui est déjà associée à un
+ensemble de données. Ceci c'est le cas lorsque on travaille avec
+une grille faite par  Nouvel horaire (cours ou examens).
+
+Il s'agit de modifier la priorité de périodes, de ajouter ou
+enlever des journées. Modifier les noms de journées.
+
+Quoi faire avec les données déjà assignés dans la grille si la
+période est modifiée ou éliminée.
+
+ Quelles classes sont à modifier?
+\subsection{Fonctionnalité \ref{affect}~: Affectation manuelle plus efficace}
+
+La fonctionnalité Affectation manuelle plus efficace est à définir
+avec les utilisateurs afin de comprendre comment la faire plus
+efficacement.
+
+ Quoi faire dans chaque cas?
+
+
+Quelles classes sont à modifier?

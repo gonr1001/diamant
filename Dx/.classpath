@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-    <classpathentry kind="src" path=""/>
+    <classpathentry excluding="binaries/" kind="src" path=""/>
+    <classpathentry kind="src" path="binaries"/>
     <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
     <classpathentry kind="lib" path="theLibrary/theLibrary.jar"/>
     <classpathentry kind="lib" path="theLibrary/xmlLibrary.jar"/>
-    <classpathentry kind="lib" path="/Developer/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
-    <classpathentry kind="output" path=""/>
+    <classpathentry kind="lib" path="D:/Program Files/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
+    <classpathentry kind="output" path="binaries"/>
 </classpath>

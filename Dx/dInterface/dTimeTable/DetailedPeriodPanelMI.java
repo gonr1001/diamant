@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.6 $  $Date: 2003-12-15 23:21:55 $
+ * Title: DetailedPeriodPanel $Revision: 1.7 $  $Date: 2004-01-27 21:49:08 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.7 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -76,8 +76,11 @@ public class DetailedPeriodPanelMI extends PeriodPanel{
     JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
 
     //_vec = period.getEventsInPeriod().getNamesVector(1);
+
+
     _vec = period.getConflictsEventsInPeriod(_eventName).getNamesVector(1);
     _jList  = new JList(_vec);
+
     //JLabel vec = new JLabel("moi");
     //_rightList.addMouseListener(mouseListenerLists);
 
