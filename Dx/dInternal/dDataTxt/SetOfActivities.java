@@ -73,9 +73,9 @@ public class SetOfActivities extends SetOfResources{
   private boolean analyseDeltaTokens(int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
-    StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
+    StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-    int state=0;
+    //int state=0;
     int position=beginPosition;
     _line=0;
     String activityName="";
