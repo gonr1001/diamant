@@ -388,7 +388,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     boolean assignBut= ((JToggleButton)((JPanel)tpane.getComponent(4)).getComponent(0)).isSelected();
     boolean permanentBut= ((JToggleButton)((JPanel)tpane.getComponent(4)).getComponent(1)).isSelected();
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
-      Integer.parseInt(DXToolsMethods.getToken(hour,":",0))};
+      Integer.parseInt(DXToolsMethods.getToken(hour,":",1))};
     String periodKey= cycle.getPeriod(daytime);
     event.setDuration( Integer.parseInt(duration)*_dApplic.getDMediator()
                  .getCurrentDoc().getDM().getTTStructure().getPeriodLenght());
