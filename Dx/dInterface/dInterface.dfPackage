@@ -160,7 +160,7 @@ class __options {
 <oigroup:<oiref:java#Implements#dInterface.dTimeTable.TTDefinitionCmd#dInterface.Command:oiref>=1627,1126,1135,705:oigroup>
 <oigroup:<oiref:java#Class#dInterface.dTimeTable.TTDefinitionDlg:oiref>=503,1652,167,1134,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_dApplic:oiref>=230,1660,323,1658:oigroup>
-<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,200,404,1:oigroup>
+<oigroup:<oiref:design#Class#id32wd1dfxus9pndfyc2b9f.diagram:oiref>=266,208,200,452,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DMenuBar#_mEventsModif:oiref>=130,1652,1004,544:oigroup>
 <oigroup:<oiref:design#Class#id4ixp8dfxus9pndfyc2jys.diagram:oiref>=174,206,153,276,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#dInterface.DDocument#_dApplic:oiref>=613,1208,523,1208:oigroup>
