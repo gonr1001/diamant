@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.19 $  $Date: 2003-05-23 15:34:10 $
+ * Title: DMenuBar $Revision: 1.20 $  $Date: 2003-05-27 17:27:55 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -152,7 +152,7 @@ public class DMenuBar extends JMenuBar{
     CmdMenu mExit = new CmdMenu(DConst.EXIT);
     menu.add(mExit);
     mExit.setFont( new java.awt.Font( mfont, font, nPT ) );
-    mExit.setCommand(new ExitCmd());
+    //mExit.setCommand(new ExitCmd());
     mExit.addActionListener(_dApplic);
 
 /*
