@@ -13,14 +13,14 @@ import java.util.Vector;
 import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DXToolsMethods;
 
-public class ActivitiesList extends ResourceList{
+public class SetOfActivities extends ResourceList{
 
   /**activities in text format*/
   private byte[] _dataloaded;
   /**
    * Constructor
    * */
-  public ActivitiesList(byte[] dataloaded) {
+  public SetOfActivities(byte[] dataloaded) {
     super(0);
     _dataloaded = dataloaded;
   }
@@ -166,7 +166,7 @@ public class ActivitiesList extends ResourceList{
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
-  public void buildActivitiesList(int beginPosition){
+  public void buildSetOfActivities(int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
