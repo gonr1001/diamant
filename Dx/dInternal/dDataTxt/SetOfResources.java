@@ -49,6 +49,7 @@ public class SetOfResources extends DXObject{
    */
   public void setDataToLoad(byte[]  dataloaded){
     //_dataloaded = dataloaded;
+  	dataloaded[0]+=0;
   }
 
   /**
@@ -57,6 +58,7 @@ public class SetOfResources extends DXObject{
    * @return <{Vector}>
    */
   public boolean analyseTokens(int beginPosition){
+  	beginPosition+=0;
     return false;
   }
 
@@ -66,6 +68,7 @@ public class SetOfResources extends DXObject{
    *
    */
   public void buildSetOfResources(int beginPosition){
+  	beginPosition+=0;
   }
 
   /**
@@ -125,8 +128,8 @@ public class SetOfResources extends DXObject{
  * @param value The value to be setted in the field
    */
   public void setSubsetOfResources(String [] IDs, int fieldIndex, String value){
-    for (int i = 0; i < IDs.length; i++) ;
-      //(getResource(IDs[i]).getAttach()).setField(fieldIndex, value);
+    for (int i = 0; i < IDs.length; i++) 
+      (getResource(IDs[i]).getAttach()).setField(fieldIndex, value);
   }
 
   /**
@@ -136,8 +139,8 @@ public class SetOfResources extends DXObject{
    * @param value The value to be setted in the field
    */
   public void setSubsetOfResources(Object [] IDs, int fieldIndex, String value){
-    for (int i = 0; i < IDs.length; i++) ;
-      //(getResource((String)IDs[i]).getAttach()).setField(fieldIndex, value);
+    for (int i = 0; i < IDs.length; i++) 
+      (getResource((String)IDs[i]).getAttach()).setField(fieldIndex, value);
   }
 
   /**
@@ -416,13 +419,13 @@ public class SetOfResources extends DXObject{
    * @param fieldValue The comparaison value for the field selected
    * @return a vector containing the IDs of the resources selected
    */
-  public Vector getIDsByField(){ //int fieldIndex, String fieldValue){
+  public Vector getIDsByField(int fieldIndex, String fieldValue){
     Vector idVector = new Vector();
     Resource res = null;
     boolean membership = false;
     for (int i = 0; i < size(); i++){
       res = getResourceAt(i);
-      membership = false; //(res.getAttach()).compareByField(fieldIndex, fieldValue);
+      membership = (res.getAttach()).compareByField(fieldIndex, fieldValue);
       if (membership == true)
         idVector.add(res.getID());
     }
@@ -439,8 +442,8 @@ public class SetOfResources extends DXObject{
     //boolean membership = false;
     for (int i = 0; i < setOfElements.size(); i++){
       res = getResource((String)setOfElements.get(i));
-      if (res != null) ;
-        //res.getAttach().setField(fieldIndex, fieldValue);
+      if (res != null) 
+        res.getAttach().setField(fieldIndex, fieldValue);
     }
   }
 
@@ -493,6 +496,7 @@ public class SetOfResources extends DXObject{
 
   // manage partition by selected field of object
   private int partitionSelectedField(int begin, int end, int field){
+  	field= field+0;
     Resource pivot= (Resource)_resourceList.get(begin);
     int i= begin -1;
     int j= end+1;

@@ -1,6 +1,6 @@
 /**
 *
-* Title: LoadData $Revision: 1.55 $  $Date: 2004-10-28 18:00:20 $
+* Title: LoadData $Revision: 1.56 $  $Date: 2004-11-05 13:53:49 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.55 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.56 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -421,7 +421,7 @@ public class LoadData {
 	  		//Resource r = 	newRsc.getResource(currentRsc.getResourceAt(i).getKey());
 	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
 	  		if(r!=null){
-	  			if(false){//!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
+	  			if(!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
 	  		DXValue error= new DXValue();
 	  		error.setStringValue(DConst.CHANGED_ELEMENT + currentRsc.getResourceAt(i).getID());
 	        _dm.getSetOfImportSelErrors().addResource(new Resource("3",error),0);
@@ -434,7 +434,7 @@ public class LoadData {
 	  		//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
 	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
 	  		if(r!=null){
-	  			if(false) { //r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
+	  			if(r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
 	  		DXValue error= new DXValue();
 	  		//System.out.println(_dm.getSetOfImportSelErrors().toWrite());//debug
 	  		error.setStringValue(DConst.UNCHANGED_ELEMENT + currentRsc.getResourceAt(i).getID());
@@ -468,7 +468,7 @@ public class LoadData {
 	 	  		//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
 	 	  		Resource r = getResource(newRsc,currentRsc.getResourceAt(i));
 	 	  		if(r!=null){
-	 	  			if(false) { //!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
+	 	  			if(!r.getAttach().isEquals(currentRsc.getResourceAt(i).getAttach())) {
 	 	  				StudentAttach currentStudent = (StudentAttach) currentRsc.getResourceAt(i).getAttach();
 	 	  				SetOfResources currentCourses =currentStudent.getCoursesList();
 	 	  				StudentAttach newStudent = (StudentAttach) r.getAttach();

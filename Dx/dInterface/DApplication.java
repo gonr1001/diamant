@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.57 $  $Date: 2004-10-21 13:39:43 $
+ * Title: DApplication $Revision: 1.58 $  $Date: 2004-11-05 13:53:48 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.57 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.58 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -39,6 +39,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 
@@ -151,7 +152,7 @@ public class DApplication implements ActionListener {
   
   private JFrame createFrame(String str) {
     JFrame jFrame= new JFrame(str + "   " + System.getProperty("user.dir"));
-    jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     jFrame.addWindowListener(new WindowAdapter() {
       public void windowClosing( WindowEvent e ) {
         closeApplic(e);

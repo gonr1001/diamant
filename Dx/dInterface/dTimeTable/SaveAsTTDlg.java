@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.6 $  $Date: 2004-10-21 14:27:41 $
+ * Title: SaveAsTTDlg $Revision: 1.7 $  $Date: 2004-11-05 13:53:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -69,14 +69,14 @@ public class SaveAsTTDlg extends SaveAsDlg {
    } // doSave
 
    public String setExtension(JFileChooser fc){
-     if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
-       fc.setFileFilter(new DFileFilter (new String[] {DConst.DOT_DIA},
-           DConst.DIA_FILE) );
-       return DConst.DOT_DIA;
-     } else {
-       fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
-           DConst.XML_FILE ) );
-       return DConst.DOT_XML;
-     }
-  } // setFilters
+   	if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
+   		fc.setFileFilter(new DFileFilter (new String[] {DConst.DOT_DIA},
+   				DConst.DIA_FILE) );
+   		return DConst.DOT_DIA;
+   	} 
+   	fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
+   			DConst.XML_FILE ) );
+   	return DConst.DOT_XML;
+   	
+   } // setFilters
 }

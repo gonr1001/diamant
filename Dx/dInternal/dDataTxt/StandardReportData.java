@@ -328,25 +328,25 @@ public class StandardReportData {
     int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
       //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
-      StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
+      //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
       String line = _dm.getSetOfStudents().getResourceAt(i).toWrite(" ");
-      StringTokenizer strTokens= new StringTokenizer(line.substring(SetOfStudents._ENDSTUDENTNUMBEROFCOURSE,line.length()));//+SetOfResources.CR_LF;
-      String name_mat = line.substring(0,SetOfStudents._BEGINSTUDENTNUMBEROFCOURSE);
-      String str= " "+name_mat.substring(0,SetOfStudents._ENDSTUDENTMATRICULE)+";"+
-                  name_mat.substring(SetOfStudents._ENDSTUDENTMATRICULE,SetOfStudents._BEGINSTUDENTNAME)
-                +";"+name_mat.substring(SetOfStudents._BEGINSTUDENTNAME,SetOfStudents._ENDSTUDENTNAME)+";";
+      StringTokenizer strTokens= new StringTokenizer(line.substring(DConst.END_STUDENT_NUMBER_OF_COURSE,line.length()));//+SetOfResources.CR_LF;
+      String name_mat = line.substring(0,DConst.BEGIN_STUDENT_NUMBER_OF_COURSE);
+      String str= " "+name_mat.substring(0,DConst.END_STUDENT_MATRICULE)+";"+
+                  name_mat.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME)
+                +";"+name_mat.substring(DConst.BEGIN_STUDENT_NAME,DConst.END_STUDENT_NAME)+";";
       String strcrs="";
       while(strTokens.hasMoreTokens()){
         String course= strTokens.nextToken();
         course = DXToolsMethods.getToken(course,";",0);
         String sect="";
-        if(course.length()==SetOfStudents._COURSEGROUPLENGTH){
-          int group= Integer.parseInt(course.substring(SetOfStudents._COURSELENGTH, SetOfStudents._COURSEGROUPLENGTH));
-          sect=course.substring(0,SetOfStudents._COURSELENGTH-1)+"."+
-               course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH)+
+        if(course.length()==DConst.STUD_COURSE_GROUP_LENGTH){
+          int group= Integer.parseInt(course.substring(DConst.STUD_COURSE_LENGTH, DConst.STUD_COURSE_GROUP_LENGTH));
+          sect=course.substring(0,DConst.STUD_COURSE_LENGTH-1)+"."+
+               course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH)+
                "."+DXTools.STIConvertGroup(group)+".";
-          Section section= _dm.getSetOfActivities().getSection(course.substring(0,SetOfStudents._COURSELENGTH-1)
-              ,course.substring(SetOfStudents._COURSELENGTH-1, SetOfStudents._COURSELENGTH),
+          Section section= _dm.getSetOfActivities().getSection(course.substring(0,DConst.STUD_COURSE_LENGTH-1)
+              ,course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH),
               DXTools.STIConvertGroup(group));
           if(section!=null){
             for(int j=0; j<section.getSetOfUnities().size(); j++){

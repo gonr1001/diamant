@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import javax.swing.JButton;
+//import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -33,7 +33,7 @@ import dInternal.dDataTxt.SetOfActivities;
 public class ActivityDlg extends JDialog implements ActionListener {
 
   private DApplication _dApplic;
-  private JButton _toRight, _toLeft;
+  //private JButton _toRight, _toLeft;
   private JDialog _jd;
   /**
    * the lists containing the activities ID
@@ -76,7 +76,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
    */
   protected void jbInit(){
     //right panel
-    _rightVec = _activities.getIDsByField();//3, "false");
+    _rightVec = _activities.getIDsByField(3, "false");
     _rightList = new JList(_rightVec);
     _rightList.addMouseListener(mouseListenerLists);
     //_visibleList = new JList(_visibleVec);
@@ -86,7 +86,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
     rightPanel.add(_lNoVisible, BorderLayout.NORTH);
     rightPanel.add(listPanel, BorderLayout.SOUTH);
     //left panel
-    _leftVec = _activities.getIDsByField();//3, "true");
+    _leftVec = _activities.getIDsByField(3, "true");
     _leftList = new JList(_leftVec);
     _leftList.addMouseListener(mouseListenerLists);
     _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);

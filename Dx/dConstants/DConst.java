@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.124 $  $Date: 2004-10-28 18:00:19 $
+ * Title: DConst $Revision: 1.125 $  $Date: 2004-11-05 13:53:48 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.124 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.125 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -29,7 +29,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
   	public final static String V_DATE = "28 oct 2004";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = false;
+	public final static boolean DEVELOPMENT = true;
     public static boolean USER_TEST_ACTIV = true; // comm
 	public final static String JVM = "1.4.2_03";
 	
@@ -114,6 +114,11 @@ public class DConst {
 
   //return constant
   public final static String CR_LF = "\r\n";//
+  
+  //Student file constants
+  public final static String LINE_DESCRIPTOR_S = "E";
+  public final static String LINE_DESCRIPTOR_C = "C";
+  public final static String LINE_DESCRIPTOR_T = "T";
 
   //**********Menu names constants ***************************
   //File menu
@@ -254,6 +259,7 @@ public class DConst {
   public final static String EVENTS_NOT_PLACED = res.getString("EventsNotPlaced");//Non placés
   //DefineSetDlg
 
+
   //PartialTTStructureDlg
 
   //Modification
@@ -265,6 +271,7 @@ public class DConst {
 
   // Manual improvementDlg
    public final static String MANUALIMPROVEMENT_DLG_TITLE = res.getString("ManImpDlgTitle");//Évenements
+
 
   //Export Dialog
    public final static String EXPORT_MESSAGE = res.getString("ExportMessage");//Message d'exportation
@@ -369,6 +376,8 @@ public class DConst {
   public final static String STUD_TEXT5= res.getString("studText5");//I was in StudentList class and in analyseTokens method
   public final static String STUD_TEXT6= res.getString("studText6");//Wrong number of students in the students file:
   public final static String STUD_TEXT7= res.getString("studText7");//Wrong number of student courses choices at line:
+  public final static String STUD_TEXT8= res.getString("studText8");//Wrong number of elements at line:
+  public final static String STUD_TEXT9= res.getString("studText9");//Wrong site:
   // room constants
   public final static String ROOM_TEXT1= res.getString("roomText1");//Wrong name of room at line:
   public final static String ROOM_TEXT2= res.getString("roomText2");//Wrong capacity at line:
@@ -392,11 +401,14 @@ public class DConst {
   public final static String ACTI_TEXT11= res.getString("activText11");//Wrong type of rooms:
   public final static String ACTI_TEXT12= res.getString("activText12");//Wrong format of pre-assigned activity at line:
   public final static String ACTI_TEXT13= res.getString("activText13");//Wrong number of instructors at line:
+
+
   public final static String FILE_TTS  = res.getString("fileTTS");//Fichier_Grille, unp
   public final static String O_TTSTD  = res.getString("oTTSTD");//Grille, unp
   public final static String CLOSE_TTS  = res.getString("closeTTS");//Fermer grille, unp
   public final static String SAVE_TTS  = res.getString("saveTTS");//Enregistrer grille, unp
   public final static String SAVE_AS_TTS  = res.getString("saveAsTTS");//Enregistrer grille sous, unp
+
 
   public final static String SB_TOTAL = res.getString("sbTotal"); // Total
   public final static String SB_T_ACT = res.getString("sbTAct"); // Act
@@ -404,6 +416,7 @@ public class DConst {
   public final static String SB_T_ROOM = res.getString("sbTRoom"); // Loc
   public final static String SB_T_STUD = res.getString("sbTStu"); // Stu
   public final static String SB_T_EVENT = res.getString("sbTEvent"); // Blo
+
   public final static String SB_T_ASSIG = res.getString("sbTAssig"); // Pla
 
   public final static String SB_CONF = res.getString("sbConf");    // Conflicts
@@ -438,10 +451,21 @@ public class DConst {
   public final static String SAVE_SEPARATOR = res.getString("saveSeparator"); //"=================================";
   public final static String ERROR_XML =res.getString("errorXML"); // "XML file is corrupted";
   
-  public final static int NUMBER_OF_FILES = 4;
-  
+  public static final int BEGIN_STUDENT_MATRICULE=0;
+  public static final int END_STUDENT_MATRICULE=8;
+  public static final int BEGIN_STUDENT_NAME=21;
+  public static final int END_STUDENT_NAME=30;
+  public static final int BEGIN_STUDENT_NUMBER_OF_COURSE=30;
+  public static final int END_STUDENT_NUMBER_OF_COURSE=32; 
+  public final static int NUMBER_OF_FILES = 4; 
   public final static int ROOM_NUM_TOKENS = 5;
+  public static final int T_IN_STUDENT_LINE = 3;
+  public static final int T_IN_STUDENT_NAME = 2;
+  public static final int T_IN_STUDENT_COURSE_LINE = 3;
+  public static final int STUD_COURSE_LENGTH = 7;
+  public static final int STUD_COURSE_GROUP_LENGTH = 9;
+  public static final int STUD_SITE_LENGTH = 3;
   
-  public DConst() {
-  }
+  /*public DConst() {
+  }*/
 }

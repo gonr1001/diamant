@@ -1,4 +1,4 @@
-Diamant1.6;
+Diamant1.6
 Faculte des sciences infirmieres;
 Liste des locaux pour reservations;
 

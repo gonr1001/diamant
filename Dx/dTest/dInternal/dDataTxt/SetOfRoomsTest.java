@@ -56,7 +56,7 @@ public class SetOfRoomsTest  extends TestCase{
    * in the rooms file
    * */
   public void test_analyseTokens1_6(){
-    String tokens= "Diamant1.6;"+"\r\n"+
+    String tokens= "Diamant1.6"+"\r\n"+
     				"Faculte des sciences infirmieres;"+"\r\n"+
 					"Liste des locaux pour reservations;"+"\r\n"+
 					"Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; 	Notes;"+"\r\n"+
@@ -140,7 +140,7 @@ public class SetOfRoomsTest  extends TestCase{
   * in the rooms file
   * */
  public void test2_analyseTokens1_6(){
-   String tokens= "Diamant1.6;"+"\r\n"+
+   String tokens= "Diamant1.6"+"\r\n"+
 					"Faculte des sciences infirmieres;"+"\r\n"+
 					"Liste des locaux pour reservations;"+"\r\n"+
 					"Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; 	Notes;"+"\r\n"+
@@ -182,7 +182,7 @@ public class SetOfRoomsTest  extends TestCase{
   * in the rooms file
   * */
  public void test3_analyseTokens1_6(){
-   String tokens= "Diamant1.6;"+"\r\n"+
+   String tokens= "Diamant1.6"+"\r\n"+
 					"Faculte des sciences infirmieres;"+"\r\n"+
 					"Liste des locaux pour reservations;"+"\r\n"+
 					"Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; 	Notes;"+"\r\n"+

@@ -67,16 +67,16 @@ server.config.1.url=http://localhost:9080/tf
 server.config.2.url=http://localhost:9080/tf
 server.config.3.url=http://localhost:9080/tf
 [editor]
-recent.file.0=D:\\Developpements\\DiamantExtreme\\Dx\\data\\finfir\\80\\erreur.xml
+recent.file.0=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dDataTxt\\SetOfInstructors.java
 recent.file.1=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dData\\DefFilesToImportDlg.java
 recent.file.2=D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dInterface\\TestsSuite.java
 recent.file.3=D:\\Program Files\\JBuilder7\\extras\\xerces\\build.xml
 recent.file.4=D:\\Developpements\\DiamantExtreme\\Diamant1.5\\Horaire\\horaire0.xml
-recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\reports\\TESTS-TestSuites.xml
-recent.file.6=C:\\Downloads\\Java_Tools_for_XP\\pet store application--baseline\\hsql_baseline\\Test\\build.xml
-recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\InstructorAttach.java
-recent.file.8=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfResources.java
-recent.file.9=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\SetOfActivities.java
+recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\data\\finfir\\80\\erreur.xml
+recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\TTxmlFiles\\StandardTTC.xml
+recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\reports\\TESTS-TestSuites.xml
+recent.file.8=C:\\Downloads\\Java_Tools_for_XP\\pet store application--baseline\\hsql_baseline\\Test\\build.xml
+recent.file.9=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\InstructorAttach.java
 [runtimeargs]
 applet_vmoptions0=-classic
 applet_vmoptions1=-classic
@@ -132,6 +132,8 @@ navigationTree=true
 Messages.maximumMessageCount=1000
 [print]
 diagram=current
+preview.autoupdate=true
+preview.scale=1
 [diagramconverter]
 nativemode=false
 [builder]

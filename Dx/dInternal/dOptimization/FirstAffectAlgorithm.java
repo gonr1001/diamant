@@ -71,12 +71,12 @@ public class FirstAffectAlgorithm implements Algorithm {
           int[] dayTime= {value.getIntValue(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
           ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
           ((EventAttach)currentEvent.getAttach()).setAssignState(true);
-          nbConf= _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,0,true);
+          nbConf= _dm.getConditionsTest().getEventConflictsInTTs(_dm.getTTStructure(),currentEvent,true);
           isNumberOfConflictsAccept= isConflictsAcceptable(nbConf);
           ((EventAttach)currentEvent.getAttach()).setAssignState(false);
           if((isNumberOfConflictsAccept) && ((EventAttach)currentEvent.getAttach()).getDuration()!=0){
             ((EventAttach)currentEvent.getAttach()).setAssignState(true);
-            _dm.getConditionsTest().addOrRemEventInTTs(currentEvent,1,true);
+            _dm.getConditionsTest().addEventInTTs(_dm.getTTStructure(),currentEvent,true);
             _placeEvent.add(currentEvent);
             periodList.removeAllElements();
           }//else{// end if if(numberOfConflicts==0)

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.33 $  $Date: 2004-10-28 18:00:20 $
+ * Title: SectionDlg $Revision: 1.34 $  $Date: 2004-11-05 13:53:48 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.34 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
@@ -33,7 +33,7 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
+//import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -61,13 +61,13 @@ import eLib.exit.dialog.InformationDlg;
 public class SectionDlg extends JDialog implements ActionListener{
   private DApplication _dApplic;
   private int _numberOfTypes, _numberOfSections, _currentAssignedGroup, _sortIndex;
-  private JButton _sortButton;
+  //private JButton _sortButton;
   private DXJComboBox _actCombo, _typeCombo, _sortCombo;
   private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _insidePanel, _centerPanel, _notAssignedPanel;
   private ButtonsPanel _applyPanel;
   private JScrollPane _scrollPane;
-  private Section _section;
+  //private Section _section;
   private SetOfActivities _activities;
   private SetOfStudents _students;
   private String _actID, _typeID, _sortID;
@@ -128,7 +128,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     JPanel actPanel, typePanel, sortPanel;
     //This vector contains the activities whose their champ visibility = true
     _actVector = new Vector();
-    _actVector = _activities.getIDsByField();//3, "true");
+    _actVector = _activities.getIDsByField(3, "true");
     //panel of activities
     _actCombo = new DXJComboBox(_actVector);
     //_actCombo.setSelectedIndex(0);
@@ -207,7 +207,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   private void setScrollPane(Dimension ScrollPaneDim){
     int insideWidth = (int)ScrollPaneDim.getWidth()-20;
     int scrollHeight = (int)((ScrollPaneDim.getHeight()-20)/2); // rgr 20 was 10
-    Dimension insideDim = new Dimension(insideWidth, (int)scrollHeight*_numberOfSections+10);
+    Dimension insideDim = new Dimension(insideWidth, scrollHeight*_numberOfSections+10);
     JLabel[] lNumberOfElements = new JLabel[_numberOfSections];
     if (_insidePanel == null)
       _insidePanel = new JPanel();
@@ -556,7 +556,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   }//end method
 
   private void changeFixedInGroup(Object [] obj, int group){
-    boolean fixedInGroup;
+    //boolean fixedInGroup;
     int index = 0;
     String studentData = "";
     for(int i = 0; i < obj.length; i++){
@@ -581,7 +581,7 @@ public class SectionDlg extends JDialog implements ActionListener{
     SetOfResources destinationRes = new SetOfResources(0);
     Resource res;
     Object [] elementsToTransfer = sourceList.getSelectedValues();
-    String strElement, ID, key;
+    String strElement;//, ID, key;
     if (elementsToTransfer.length != 0){
       for (int i = 0; i < elementsToTransfer.length; i++){
         sourceVector.remove(elementsToTransfer[i]);

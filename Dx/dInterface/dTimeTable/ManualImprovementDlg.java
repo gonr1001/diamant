@@ -1,6 +1,6 @@
 /**
 *
-* Title: DConst $Revision: 1.24 $  $Date: 2004-10-21 19:54:10 $
+* Title: DConst $Revision: 1.25 $  $Date: 2004-11-05 13:53:48 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.24 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.25 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInterface.dTimeTable;
@@ -54,7 +54,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
 
   public ButtonsPanel setButtons() {
     //_applyPanel
-    String [] a = {DConst.BUT_CHANGE, DConst.BUT_CLOSE};;
+    String [] a = {DConst.BUT_CHANGE, DConst.BUT_CLOSE};
     _buttonsPanel = new TwoButtonsPanel(this, a);
     return _buttonsPanel;
   }
@@ -62,6 +62,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
    * build buttom to use in the dialog
    */
   public void buildArrowButtons(boolean enableArrows) {
+  	enableArrows = enableArrows && true;
 	_leftArrowsPanel = new JPanel();
 	_rightArrowsPanel = new JPanel();
   }

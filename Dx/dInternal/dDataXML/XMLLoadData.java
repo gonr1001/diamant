@@ -29,7 +29,7 @@ import dInternal.dDataXML.rooms.SetOfCategories;
 import dInternal.dUtil.XMLTools;
 import eLib.exit.txt.FilterFile;
 import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
+//import eLib.exit.xml.input.ReadXMLFile;
 
 public class XMLLoadData {
   //XML tags
@@ -44,11 +44,11 @@ public class XMLLoadData {
   private String _roomsFileName;
   private String _activitiesFileName;
   private String _studentsFileName;
-  private DModel _dm;
-  private String _error="";
-  private final int NUMBER_OF_TOKENS = 4;
-  private final String CR_LF = "\r\n";
-  private boolean _load = true;
+  //private DModel _dm;
+  //private String _error="";
+  //private final int NUMBER_OF_TOKENS = 4;
+  //private final String CR_LF = "\r\n";
+  //private boolean _load;
   private String _chars;
 
   /***
@@ -65,7 +65,14 @@ public class XMLLoadData {
    * @param dm
    */
   public XMLLoadData(String importfile, DModel dm) {
-    _dm = dm;
+    //_dm = dm;
+  	dm.getVersion();
+    _chars+="";
+    _instructorFileName+="";
+    _roomsFileName="";
+    _activitiesFileName+="";
+    _studentsFileName+="";
+    //_load = true;
     FilterFile filter = new FilterFile();
     if (filter.validFile(importfile)) {
       loadImportFile(importfile);
@@ -77,8 +84,8 @@ public class XMLLoadData {
    *
    */
   private void initLoadData() {
-    _dm = null;
-    String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
+    //_dm = null;
+    //String path =System.getProperty("user.dir")+ File.separator+"pref"+File.separator;
     Preferences preferences = new Preferences(System.getProperty("user.dir")
         + File.separator +
         "pref"
@@ -96,6 +103,8 @@ public class XMLLoadData {
    * @return
    */
   public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
+  	currentList.hashCode();
+  	merge= merge && true;
     SetOfInstructors instructorsList= new SetOfInstructors((new String("1")).getBytes(),5,14);
     return instructorsList;
   }
@@ -107,6 +116,9 @@ public class XMLLoadData {
    * @return
    */
   public SetOfCategories extractRooms(SetOfCategories currentList, boolean merge){
+  	currentList= new SetOfCategories(_roomsFileName,5,14);// todo
+  	currentList.getError();
+  	merge= merge && true;
     SetOfCategories roomsList = new SetOfCategories(_roomsFileName,5,14);
     roomsList.analyseTokens(0);
      return roomsList;
@@ -119,6 +131,8 @@ public class XMLLoadData {
    * @return
    */
   public SetOfStudents extractStudents(SetOfStudents currentList, boolean merge){
+  	currentList.hashCode();
+  	merge= merge && true;
     SetOfStudents studentsList = new SetOfStudents((new String("1")).getBytes());
     return studentsList;
   }
@@ -130,7 +144,9 @@ public class XMLLoadData {
    * @return
    */
   public SetOfActivities extractActivities(SetOfActivities currentList, boolean merge){
-    SetOfActivities activitiesList = new SetOfActivities((new String("1")).getBytes(),false);
+  	currentList.hashCode();
+  	merge= merge && true;
+  	SetOfActivities activitiesList = new SetOfActivities((new String("1")).getBytes(),false);
     return activitiesList;
   }
 
@@ -141,6 +157,7 @@ public class XMLLoadData {
    * @return
    */
   public Vector loadProject(String fileName){
+  	fileName+="";
     Vector extract= new Vector();
     return extract;
   }
@@ -151,7 +168,7 @@ public class XMLLoadData {
    * @return String the error message, empty if it does not found error
    * */
   private String loadImportFile(String fileName){
-    ReadXMLFile xmlFile;
+    //ReadXMLFile xmlFile;
     //Element  item, ID;
     int numberfoElements=0;
     String error="";//DConst.ERROR_XML_FILE;

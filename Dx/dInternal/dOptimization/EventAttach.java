@@ -187,6 +187,15 @@ public class EventAttach extends DXObject {
         break;
       case 4: _ttsKey = value;
         break;
-    }
+    }   
+  }
+  
+  public EventAttach cloneEvent() {
+  	EventAttach eA= new EventAttach(_principalRescKey,
+  									_setInstructorKeys,
+									_roomRescKey ,
+									_eventDuration,
+									_ttsKey );
+  	return eA;
   }
 }

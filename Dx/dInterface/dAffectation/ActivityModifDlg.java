@@ -36,7 +36,7 @@ public class ActivityModifDlg extends SetOfElementsInterface{
     getContentPane().add(new JLabel("hello"), BorderLayout.NORTH);
     _soa= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
     Vector [] vect= new Vector[1];
-    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(); //3, "true");
+    vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");
   /*  JButton button = new JButton( DConst.BUT_CLOSE);
        button.setActionCommand( DConst.BUT_CLOSE);
       button.addActionListener(this);

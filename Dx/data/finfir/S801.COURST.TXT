@@ -1,3 +1,4 @@
+Diamant1.6
 
 FII1321  01 SHE 99999
 1
@@ -404,36 +405,6 @@ xxxxxx
 1
 1
 
-MQB1441  01 SHE 99999
-1
-1
-LUCIE CÔTÉ
-
-
- 0
-
-
-
-
-
-
-
-
-MQB1441  20 LON 99999
-1
-1
-CÉCILE ANGERS
-
-
- 0
-
-
-
-
-
-
-
-
 MQB1461  01 SHE 99999
 1
 1
@@ -823,3 +794,4 @@ xxxxxx
 1
 1
 1
+

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.6 $  $Date: 2004-10-26 17:27:07 $
+ * Title: DetailedTTPane $Revision: 1.7 $  $Date: 2004-11-05 13:53:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -42,13 +42,15 @@ import dInternal.dTimeTable.TTStructure;
 
 public class DetailedMITTPane extends TTPane {
   String _eventName;
-  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical/*Dimension d,*/) {
+  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical) {
     super(tts, toolBar);
     initDetailedTTPane(vertical); //, d);
   } // end  DetailedTTPane
 
-  public DetailedMITTPane(TTStructure tts, DToolBar toolBar, boolean vertical,
-                          /*Dimension d,*/ String eventName) {
+  public DetailedMITTPane(TTStructure tts, 
+  							DToolBar toolBar, 
+							boolean vertical,
+							String eventName) {
     super(tts, toolBar);
     _eventName = eventName;
     initDetailedTTPane(vertical); //, d);

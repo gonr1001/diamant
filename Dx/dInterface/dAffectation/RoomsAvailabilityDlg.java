@@ -20,6 +20,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.DModel;
 import dInternal.dDataTxt.RoomAttach;
 
 
@@ -53,7 +54,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   //JButton butApply;
   private JComboBox chooser;
   private Vector _posVect;
-  private int nbPerParJour;
+  //private int nbPerParJour;
   private boolean _modified = false;
   //private DModel _dm;
   private RoomAttach  _currentRoom;
@@ -120,8 +121,10 @@ public class RoomsAvailabilityDlg  extends JDialog
       dispose();
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
       _currentRoom.setAvailability(_currentAvailbility);
-      _modified = false;
+      _modified = false;     
+      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _applyPanel.setFirstDisable();
+      //DModel dm =_dApplic.getDMediator().getCurrentDoc().getDM();
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());

@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.35 $  $Date: 2004-10-26 17:27:09 $
+* Title: TestConditions $Revision: 1.36 $  $Date: 2004-11-05 13:53:53 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.35 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.36 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -27,7 +27,9 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.dDataTxt.Resource;
+import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
 
 public class TestConditions {
@@ -44,8 +46,8 @@ public class TestConditions {
  
  /**
   * Constructor
-  * @param soa
-  * @param sos
+  * @param dm
+  * 
   */
  public TestConditions(DModel dm) {
    _dm= dm;
@@ -61,8 +63,8 @@ public class TestConditions {
   }
 
   /**
-   *
-   * @param avoidPriority
+   * 
+   * @return
    */
   public int[] getAvoidPriorityTable(){
     return _avoidPriority;
@@ -133,8 +135,15 @@ public class TestConditions {
 
 
   /**
-   * buildAllConditions
-   * @param tts The TTStructure
+   * buildAllConditions all assigned events in SetOfEvents are placed
+   *                    in the corresponding period in the ttStructure
+   * 					further more, if an event has an invalid property
+   * 					according with the ttStructure, the SetOfActivities
+   * 					will be updated.
+   * @param tts <p>a TTStructure where periods are updated. </p>
+   *            <p> TTStructure could be modified </p>
+   * 			<p> an Event in the SetOfEvents could be modified  (_dm.getSetOfEvents) </p>
+   * 			<p> an Activity in the SetOfActivities could be modified  (_dm.getSetOfActivities) </p>
    */
 	public void buildAllConditions(TTStructure tts){
     if(_matrixIsBuilded){
@@ -142,73 +151,63 @@ public class TestConditions {
      
       for (int i=0; i< _dm.getSetOfEvents().size(); i++){
         Resource event = _dm.getSetOfEvents().getResourceAt(i);
-        //addOrRemEventInTTs(tts, event, 1, false);
-        addEventInTTS(tts, event, false);
-      }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
-      
+        addEventInTTs(tts, event, false);
+      }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)    
       _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
       										_dm.getSetOfEvents().getSetOfResources());
     }
   }
+	
 
-  public int[] addEventInTTS(TTStructure tts, Resource event,  boolean usePriority) {
-  	return standardAddOrRemEventInTTs(tts,event, 1, usePriority);
+
+  public int[] addEventInTTs(TTStructure tts, Resource event,  boolean usePriority) {
+  	return addOrRemoveOrGetConflictsEventInTTs(tts,event, 1, usePriority);
   }
   
   public int[] removeEventInTTs(TTStructure tts, Resource event,  boolean usePriority) {
-  	return standardAddOrRemEventInTTs(tts,event, -1, usePriority);
+  	return addOrRemoveOrGetConflictsEventInTTs(tts,event, -1, usePriority);
   }
   
-  /**
-    * add or remove an event in a given tts
-    * @param event
-    * @param int operation -1= remove event, 0= do nothing, 1= add event
-    * @return
-    */
-  public int[] addOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority){
-     return standardAddOrRemEventInTTs(tts,event, operation, usePriority);
-   }
-
-   /**
-    * add or remove an event in DModel tts
-    * @param event
-    * @param int operation -1= remove event, 0= do nothing, 1= add event
-    * @return
-    */
-   public int[] addOrRemEventInTTs( Resource event, int operation, boolean usePriority){
-     return standardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation,usePriority);
-   }
-
+  public int[] getEventConflictsInTTs(TTStructure tts, Resource event,  boolean usePriority) {
+  	return addOrRemoveOrGetConflictsEventInTTs(tts,event, 0, usePriority);
+  }
+  
 
   /**
-   * standard add or remove an event in tts
-   * @param event
-   * @param int operation -1= remove event, 0= do nothing, 1= add event
-   * @return int [] conflicts range 0= nb of students conflicts,
-   * range 1= nb of instructors conflicts
-   * range 2= nb of rooms conflicts
+   * addOrRemoveOrGetConflictsEventInTTs
+   * <p> if add an event in tts the event is placed in the corresponding Periods </p>
+   * <p> if remove an event in tts the event is removed from the corresponding Periods </p>
+   * <p> if getConflicts of an event in tts the Conflicts are calculated for the corresponding periods 
+   *     (where the event is plan to be placed ) </p>
+   * 
+   * @param tts the TTStructure to be used (it can be modified)
+   * @param event the Event to work with
+   * @param int operation -1= remove event, 0= getConflicts, 1= add event
+   * @return int [] conflicts after the operation
+   * <p>range 0= nb of students conflicts </p>
+   * <p>range 1= nb of instructors conflicts  </p>
+   * <p> range 2= nb of rooms conflicts  </p>
    */
-  private int[] standardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority ){
+  private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts, Resource event, int operation, boolean usePriority ){
     int[] numberOfConflicts={0,0,0};
-    //int totalNumberOfConflicts=0;
-    //extractPreference();
 
-    if(((EventAttach)event.getAttach()).getAssignState()){//if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
+    if(((EventAttach)event.getAttach()).getAssignState()){
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
       int[] perKey={Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
       int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
-      //int[] avoidPriority={};
+     
       if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],
           duration, _avoidPriority, usePriority)) && (duration>0) ){
+      	
         for (int j=0; j< duration; j++){
-        	//System.out.println("**Event :"+ event.getID()+"  first: "+perKey[0]+ " " + perKey[1]+  " " +perKey[2]+j+" Event Per Key: "+((EventAttach)event.getAttach()).getPeriodKey());
           Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           int [] newPerKey={perKey[0],perKey[1],perKey[2]+j};
-          //periodVariationEvents(newPerKey);//debug
+          
           for (int k=0; k < _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
             numberOfConflicts[k] += cond.executeTest(newPerKey,per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
+          
           if (operation!=0){
             ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
             ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
@@ -218,7 +217,6 @@ public class TestConditions {
         ((EventAttach)event.getAttach()).setInAPeriod(false);
         ((EventAttach)event.getAttach()).setAssignState(false);
         ((EventAttach)event.getAttach()).setPermanentState(false);
-        //System.out.println("not assign "+event.getID());//debug
       }// end else if (tts.getCurrentCycle().isPeriodContiguous(
     }// end if (_dm.getSetOfActivities().getUnity(
     return numberOfConflicts;
@@ -275,4 +273,32 @@ public class TestConditions {
    return studTest.periodVariationEventsPeriods(perKey);
   }
 
+  /**
+   * @param improveTTStruct
+   * @param event
+   */
+  public void addEventInAllPeriods(TTStructure improveTTStruct, Resource event) {
+  	EventAttach eventAttach = ((EventAttach) event.getAttach()).cloneEvent();
+  	eventAttach.setAssignState(true);
+  	Resource res = new Resource(event.getID(),eventAttach);
+  	eventAttach.setDuration(improveTTStruct.getPeriodLenght());
+  	for(int i=0; i< improveTTStruct.getCurrentCycle().getSetOfDays().size(); i++){
+  		Resource day= improveTTStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+  		for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+  			Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+  			for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
+  				Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+  				int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
+  				
+  				String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+  				eventAttach.setKey(4,periodKey);
+  				//((EventAttach)event.getAttach()).setAssignState(true);
+  				System.out.println(i+ " "+ j + " " + k);
+  				addEventInTTs(improveTTStruct,res,false);
+  				
+  			}// end for(int k=0; k< ((Sequence)seq.getAttach())
+  		}// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
+  	}// end for(int i=0; i< _newTTS.getCurrentCycle()
+  }
+  
 }// end class

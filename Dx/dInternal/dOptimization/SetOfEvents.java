@@ -13,7 +13,7 @@ import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.Section;
 import dInternal.dDataTxt.SetOfActivities;
 import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.SetOfStudents;
+//import dInternal.dDataTxt.SetOfStudents;
 import dInternal.dDataTxt.StudentAttach;
 import dInternal.dDataTxt.Type;
 import dInternal.dDataTxt.Unity;
@@ -147,32 +147,36 @@ public class SetOfEvents extends SetOfResources{
   }
 
   /**
-   * update activities from events
+   * updateActivities when an event or more than an event is changed, this change must be
+   *                  reflected in the SetOfActivities, which is the persistance structure.
+   * 				  
+   * @param soa the SetOfActivities
+   * @param eventsToUpdate <p> A vector containing all changed events
    */
   public void updateActivities(SetOfActivities soa, Vector eventsToUpdate){
-    EventAttach event;//= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+    EventAttach event;
+
     for (int i=0; i< eventsToUpdate.size(); i++){
       event=(EventAttach)((Resource)eventsToUpdate.get(i)).getAttach();
+      
       long actKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",0));
       long typeKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",1));
       long sectKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",2));
       long unitKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",3));
+      
       Unity unity= soa.getUnity(actKey,typeKey,sectKey,unitKey);
       Assignment assignment= (Assignment)unity.getSetOfAssignments().getResourceAt(
-          _dm.getTTStructure().getCurrentCycleIndex()).getAttach();
+      				_dm.getTTStructure().getCurrentCycleIndex()).getAttach();
       long keys [] = event.getInstructorKey();
+      
       assignment.emptyInstructorNames();
       for (int j = 0 ; j < keys.length ; j++) {
         assignment.addInstructorName(getRescName(_dm.getSetOfInstructors(),keys[j]));
-      }
+      }// end for 
 
-      assignment.setRoom(getRescName(_dm.getSetOfRooms(),event.getRoomKey()));
-     /* long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-      long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));
-      long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));*/
-      //Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
-      //assignment.setDateAndTime((int)dayKey,period.getBeginHour()[0],period.getBeginHour()[1]);
+      assignment.setRoom(getRescName(_dm.getSetOfRooms(),event.getRoomKey()));    
       assignment.setPeriodKey(event.getPeriodKey());
+      
       unity.setAssign(event.getAssignState());
       unity.setPermanent(event.getPermanentState());
       unity.setDuration(event.getDuration());
@@ -254,7 +258,7 @@ public class SetOfEvents extends SetOfResources{
         if (studentTwoInSection.contains(studentOneInSection.get(i))){
           String id= _dm.getSetOfStudents().getResource(Long.parseLong(studentOneInSection.get(i).toString())).getID();
           String matricule= "00"+studentOneInSection.get(i).toString();
-          res += matricule.substring(matricule.length()-SetOfStudents._ENDSTUDENTMATRICULE)+"-"+ id + ",";
+          res += matricule.substring(matricule.length()-DConst.END_STUDENT_MATRICULE)+"-"+ id + ",";
         }
       }
       return res;

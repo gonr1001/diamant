@@ -17,9 +17,9 @@ public class MyMethod {
 		try{
 			Method methList[] = cls.getDeclaredMethods();
 			for (int i = 0; i < methList.length; i++) {
-				String c1 = methList[i].getName();
-				int c2 = methList[i].getParameterTypes().length;
-				int c3 = params.size();
+				//String c1 = methList[i].getName();
+				//int c2 = methList[i].getParameterTypes().length;
+				//int c3 = params.size();
 				if (methList[i].getName().compareTo(methodName) == 0){
 					boolean equal = true;
 					if (params.size()==1 && methList[i].getParameterTypes().length==0){
@@ -41,9 +41,9 @@ public class MyMethod {
 					if (equal){
 						oneMethod = methList[i];
 						break;
-					}else{
-						System.out.println("Method not found. "+ methodName + " "+type);
-					}										
+					}//else{
+						//System.out.println("Method not found. "+ methodName + " "+type);
+					//}										
 				}
 			}
 			assert oneMethod!=null:"Method name not found.";

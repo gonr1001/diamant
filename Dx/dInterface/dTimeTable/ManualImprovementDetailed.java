@@ -1,6 +1,6 @@
 /**
 *
-* Title: ManualImprovementDetailed $Revision: 1.14 $  $Date: 2004-10-26 17:27:08 $
+* Title: ManualImprovementDetailed $Revision: 1.15 $  $Date: 2004-11-05 13:53:48 $
 * Description: ManualImprovementDetailed is a class used to
 *              display the so called ManualImprovement which
 *              gives the conflicts between an event and the others events
@@ -17,8 +17,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.14 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.15 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -37,12 +37,9 @@ import javax.swing.JPanel;
 import dInterface.DToolBar;
 import dInternal.DModel;
 import dInternal.dDataTxt.Resource;
-import dInternal.dOptimization.EventAttach;
-import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
-import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
+
 
 
 
@@ -56,17 +53,18 @@ public class ManualImprovementDetailed extends JDialog {//{ implements ActionLis
   private final static int ADJUST_WIDTH = 6;
   //private JInternalFrame _jif;
   private TTPane _ttPane;
-  private TTStructure _ttStruct;
+  private TTStructure _manualImproveTTStruct;
   private DToolBar _toolBar;
 
   /**
    * constructor
    */
-  public ManualImprovementDetailed(JDialog jDialog, DToolBar toolbar,
-                                      String eventName,  DModel dm) {
+  public ManualImprovementDetailed(JDialog jDialog, 
+  									DToolBar toolbar,
+									String eventName,
+									DModel dm) {
     super(jDialog, eventName, true);
-    _toolBar = toolbar;
-    _ttStruct = cloneCurrentTTSruct(dm);
+    _toolBar = toolbar;   
     initDlg(eventName, dm);
   }
 
@@ -97,37 +95,48 @@ public class ManualImprovementDetailed extends JDialog {//{ implements ActionLis
 
 
   public void initDlg(String eventName, DModel dm){
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+  	_manualImproveTTStruct = dm.getTTStructure().cloneCurrentTTS();//cloneCurrentTTSruct(dm);
+  	//dm.getConditionsTest().buildAllConditions(_manualImproveTTStruct);
+  	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
                                 screenSize.height - ADJUST_HEIGHT));
-    _ttPane = new DetailedMITTPane(_ttStruct,_toolBar, true, /*screenSize,*/ eventName);
-    Resource event = dm.getSetOfEvents().getResource(eventName);
     
-    buildNewTTSTestConditions(event, dm);
-    String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
+    _ttPane = new DetailedMITTPane(_manualImproveTTStruct,_toolBar, true, eventName);
+    
+    Resource event = dm.getSetOfEvents().getResource(eventName);   
+    dm.getConditionsTest().addEventInAllPeriods(_manualImproveTTStruct, event);
+   
+    // to set colors
+ /*   String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
     long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
       Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",2))};
-    int dayIndex= _ttStruct.getCurrentCycle().getSetOfDays().getIndexOfResource(perKey[0]);
-    int seqIndex= ((Day)_ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
+    int dayIndex= _manualImproveTTStruct.getCurrentCycle().getSetOfDays().getIndexOfResource(perKey[0]);
+    int seqIndex= ((Day)_manualImproveTTStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
                    getAttach()).getSetOfSequences().getIndexOfResource(perKey[1]);
-    int perIndex= ((Sequence)((Day)_ttStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
+    int perIndex= ((Sequence)((Day)_manualImproveTTStruct.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
                               getAttach()).getSetOfSequences().getResourceAt(seqIndex).getAttach()).
                   getSetOfPeriods().getIndexOfResource(perKey[2]);
-    //int[] perKeyIndex={};
+    
     int duration = ((EventAttach)event.getAttach()).getDuration()/ dm.getTTStructure().getPeriodLenght();
-    _ttPane.updateTTPane(_ttStruct);
+    
     setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
-    //_frameResult.setColorOfPanel(event.getID());
-
+    //end set colors;
+     */
+    _ttPane.updateTTPane(_manualImproveTTStruct);
     this.getContentPane().add(_ttPane.getPane());
 
     this.show();
   }
 
-  	private void buildNewTTSTestConditions(Resource event, DModel dm){
-  		dm.getConditionsTest().buildAllConditions(_ttStruct);
-  		//Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+  /**
+   * 
+   * @param event
+   * @param dm
+   */	
+ /* private void buildNewTTSTestConditions(Resource event, DModel dm){
+  		/*dm.getConditionsTest().buildAllConditions(_ttStruct);
+  		
 		String eventPeriodKey = ((EventAttach)event.getAttach()).getPeriodKey();
 		boolean eventAssignState = ((EventAttach)event.getAttach()).getAssignState();
 		boolean eventPermanentState = ((EventAttach)event.getAttach()).getPermanentState();
@@ -156,7 +165,7 @@ public class ManualImprovementDetailed extends JDialog {//{ implements ActionLis
 							((EventAttach)event.getAttach()).setAssignState(true);
 							dm.getConditionsTest().addEventInTTS(_ttStruct,event,false);//rgr was true
 							((EventAttach)event.getAttach()).setAssignState(false);
-							k=k-1 + duration;
+							k = k - 1 + duration;
 						}// end  if(_ttStruct.getCurrentCycle().isPeriodContiguous(day
 						//((EventAttach)event.getAttach()).setDuration(origDuration);
 					}// end for(int k=0; k< ((Sequence)seq.getAttach())
@@ -166,8 +175,8 @@ public class ManualImprovementDetailed extends JDialog {//{ implements ActionLis
 		((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
 		((EventAttach)event.getAttach()).setAssignState(eventAssignState);
     	((EventAttach)event.getAttach()).setPermanentState(eventPermanentState);
-    	((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);
-  }
+    	((EventAttach)event.getAttach()).setInAPeriod(inAPeriod);*./
+  }*/
 
   /**
    *
@@ -206,7 +215,7 @@ public class ManualImprovementDetailed extends JDialog {//{ implements ActionLis
   protected void setColorOfPanel(int dayIndex, int seqIndex, int perIndex, int duration, boolean isAssign){
     for (int i=0; i< ((JPanel)_ttPane.getViewport().getComponent(0)).getComponentCount(); i++){
       PeriodPanel perPanel= (PeriodPanel)((JPanel)_ttPane.getViewport().getComponent(0)).getComponent(i);
-      Period period= _ttStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
+      Period period= _manualImproveTTStruct.getCurrentCycle().getPeriodByIndex( perPanel.getPeriodRef()[0],
           perPanel.getPeriodRef()[1],perPanel.getPeriodRef()[2]);
       //int[] ppKey={};
       if((dayIndex==perPanel.getPeriodRef()[0]) &&
@@ -228,10 +237,10 @@ public class ManualImprovementDetailed extends JDialog {//{ implements ActionLis
   	 * @param dm
   	 * @return TTStructure containing the values of the TTStructure in dm
   	 */
-	private TTStructure cloneCurrentTTSruct(DModel dm) {
+	/*private TTStructure cloneCurrentTTSruct(DModel dm) {
 		TTStructure oldTTS= dm.getTTStructure();
 		TTStructure ttStruct = new TTStructure();
 		ttStruct.setTTStructureDocument(oldTTS.getTTStructureDocument());
 		return ttStruct;
-  }
+  }*/
 }

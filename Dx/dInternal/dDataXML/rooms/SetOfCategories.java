@@ -16,7 +16,7 @@ import org.w3c.dom.Element;
 
 
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.RoomsAttributesInterpretor;
+//import dInternal.dDataTxt.RoomsAttributesInterpretor;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfRoomsListener;
 import dInternal.dUtil.XMLTools;
@@ -39,11 +39,11 @@ public class SetOfCategories extends SetOfResources{
 
   //private byte[] _dataloaded; //_st;// rooms in text format to remove
   private Element _setofcat;// XML set of category element
-  private int _numberOfLines;// represent number of days
-  private int _numberOfColumns;// represent number of period a day.
+  //private int _numberOfLines;// represent number of days
+  //private int _numberOfColumns;// represent number of period a day.
   private String _error="";
   private Vector _sorListeners= new Vector(1);
-  private RoomsAttributesInterpretor _roomsAttributesInterpretor;
+  //private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
  /***
   * constructor
@@ -52,8 +52,10 @@ public class SetOfCategories extends SetOfResources{
   * */
   public SetOfCategories(String fileName, int nbDay, int nbPerDay) {
     super(3);
-    _numberOfLines = nbDay;
-    _numberOfColumns = nbPerDay;
+    //_numberOfLines = nbDay;
+    nbDay+=0;
+    //_numberOfColumns = nbPerDay;
+    nbPerDay+=0;
     _error=readCategoryTag(fileName);
   }
 
@@ -63,8 +65,8 @@ public class SetOfCategories extends SetOfResources{
    */
   public void setDataToLoad(String fileName, int nbDay, int nbPerDay){
     _error=readCategoryTag(fileName);
-    _numberOfLines = nbDay;
-    _numberOfColumns = nbPerDay;
+    nbDay+=0;
+    nbPerDay+=0;
   }
 
   /***
@@ -74,9 +76,9 @@ public class SetOfCategories extends SetOfResources{
     return true;
   }
 
-  public void setAttributesInterpretor(RoomsAttributesInterpretor attr){
-    _roomsAttributesInterpretor= attr;
-  }
+  /*public void setAttributesInterpretor(RoomsAttributesInterpretor attr){
+    //_roomsAttributesInterpretor= attr;
+  }*/
 
   /**
    *build rooms list.
@@ -101,7 +103,8 @@ public class SetOfCategories extends SetOfResources{
    * @param component
    */
  public void sendEvent(Component component) {
-   SetOfCategoriesEvent event = new SetOfCategoriesEvent(this);
+   //SetOfCategoriesEvent event = new SetOfCategoriesEvent(this);
+   component.getSize();
    /*for (int i=0; i< _sorListeners.size(); i++) {
      SetOfRoomsListener sorl = (SetOfRoomsListener) _sorListeners.elementAt(i);
      sorl.changeInSetOfRooms(event, component);
@@ -155,16 +158,17 @@ public class SetOfCategories extends SetOfResources{
    * @return
    */
   private String readRoomsTag(Element setofrooms){
-    ReadXMLElement list= new ReadXMLElement();
-   String name="", capacity="";
+    //ReadXMLElement list= new ReadXMLElement();
+   //String name="", capacity="";
    String error= XMLTools.tagError(setofrooms,_ROOMTAGITEM2);
    if(error.length()==0){
      for (int i=0; i< XMLTools.tagSize(setofrooms,_ROOMTAGITEM2); i++){
-       Element room= list.getElement(setofrooms,_ROOMTAGITEM2,i);
-       name= list.getElementValue(room,_ROOMTAGITEM2_1);
-       capacity= list.getElementValue(room,_ROOMTAGITEM2_2);
-       Element caracteristics= list.getElement(room,_ROOMTAGITEM2_3,i);
-       Element availabilities= list.getElement(room,_ROOMTAGITEM2_4,i);
+       //Element room= list.getElement(setofrooms,_ROOMTAGITEM2,i);
+       //name= list.getElementValue(room,_ROOMTAGITEM2_1);
+       //capacity= list.getElementValue(room,_ROOMTAGITEM2_2);
+       //Element caracteristics= list.getElement(room,_ROOMTAGITEM2_3,i);
+       //Element availabilities= list.getElement(room,_ROOMTAGITEM2_4,i);
+       
        //System.out.println(" Room name: "+name+ " Capacity: "+ capacity);//debug
        //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
      }// end for (int i=0; i< size; i++)

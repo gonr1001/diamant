@@ -1,7 +1,7 @@
 
 /**
 *
-* Title: RoomAttach $Revision: 1.13 $  $Date: 2004-10-28 18:00:21 $
+* Title: RoomAttach $Revision: 1.14 $  $Date: 2004-11-05 13:53:49 $
 * Description: RoomAttach is a class used to
 *
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.13 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.14 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 package dInternal.dDataTxt;
@@ -159,9 +159,9 @@ public class RoomAttach extends DXObject{
     _roomAvailability = new Vector();
     String str = "";
     for(int i = 0; i < a.length; i++) {
-      for(int j=0; j <a[i].length; j++) {
+      for(int j = 0; j < a[i].length; j++) {
         str += a[i][j];
-        if (j< a[i].length-1)
+        if (j < a[i].length-1)
           str += " ";
       } // end for j
       _roomAvailability.add(str);

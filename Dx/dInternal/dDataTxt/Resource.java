@@ -103,7 +103,7 @@ public class Resource {
   public String toWrite(String separator){
     String instInfo;
     String id= _resourceID;
-    //id=_resourceAttach.externalKey( Long.toString(_resourceKey), id);//+id;
+    id=_resourceAttach.externalKey( Long.toString(_resourceKey), id);//+id;
     instInfo= id + separator;
     instInfo += _resourceAttach.toWrite();
     return instInfo;
@@ -122,7 +122,7 @@ public class Resource {
       if(!_resourceID.equals(resource._resourceID) )
         return false;
     else
-      if (false) //!_resourceAttach.isEquals(resource._resourceAttach))
+      if (!_resourceAttach.isEquals(resource._resourceAttach))
         return false;
     return true;
   }

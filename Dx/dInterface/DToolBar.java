@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.50 $  $Date: 2004-10-21 19:47:44 $
+ * Title: DToolBar $Revision: 1.51 $  $Date: 2004-11-05 13:53:48 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -332,7 +332,7 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
     _setNumberOfDays.setText(Integer.toString(nbDays));
 
     String [] days = new String[nbDays];
-    String [] nameDays= new String[nbDays];
+    //String [] nameDays= new String[nbDays];
     _daySelector.removeAllItems();
 
     Resource resc;

@@ -56,7 +56,7 @@ import eLib.exit.xml.output.WriteXMLFile;
       * */
      public void test_CreateStandardTT(){
        TTStructure tts= new TTStructure();
-       tts.CreateStandardTT(path+"newStandardTT.xml",5,5);
+       tts.createStandardTT(path+"newStandardTT.xml",5,5);
        tts.loadTTStructure(path+"newStandardTT.xml");
        assertEquals("test_CreateStandardTT : assertEquals 1 (number of cycles):",5,tts.getSetOfCycles().size());
        assertEquals("test_CreateStandardTT : assertEquals 2 (PeriodLenght):",60,tts.getPeriodLenght());
@@ -206,5 +206,46 @@ import eLib.exit.xml.output.WriteXMLFile;
      assertEquals("test_writeXMLtag : assertEquals 2 (period length):", tts.getPeriodLenght(), newtts.getPeriodLenght());
    }
 
-
+   /**
+    * test that creates the standard xml timetable file
+    * */
+   public void test_cloneCurrentTTS(){
+     TTStructure tts= new TTStructure();
+     //tts.CreateStandardTT(path+"newStandardTT.xml",5,5);
+     tts.loadTTStructure(path+"5j27p.xml");
+     TTStructure cloneTTS = tts.cloneCurrentTTS();
+     assertEquals("test_cloneCurrentTTS : assertEquals 1 (number of cycles):",1,cloneTTS.getSetOfCycles().size());
+     assertEquals("test_cloneCurrentTTS : assertEquals 2 (number of days):",5,cloneTTS.getCurrentCycle().getSetOfDays().size());
+     assertEquals("test_cloneCurrentTTS : assertEquals 3 (PeriodLenght):",30,cloneTTS.getPeriodLenght());
+     Period p = cloneTTS.getCurrentCycle().getFirstPeriod();
+     int [] hour =p.getBeginHour();
+     Resource r= cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(0);
+     assertEquals("test_cloneCurrentTTS : assertEquals 4 (hour):",8,hour[0]);
+     assertEquals("test_cloneCurrentTTS : assertEquals 5 (min):",0,hour[1]);
+     assertEquals("test_cloneCurrentTTS : assertEquals 6 (day):","Lu",r.getID());
+     p = cloneTTS.getCurrentCycle().getLastPeriod();
+     hour =p.getBeginHour();
+     r= cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(4);
+     assertEquals("test_cloneCurrentTTS : assertEquals 4 (hour):",21,hour[0]);
+     assertEquals("test_cloneCurrentTTS : assertEquals 5 (min):",30,hour[1]);
+     assertEquals("test_cloneCurrentTTS : assertEquals 6 (day):","Ve",r.getID());
+     
+   }
+   
+   /**
+    * test that clone the standard xml timetable file and test if it is equals to the
+    * original tt file
+    * */
+   public void test1_cloneCurrentTTS(){
+     TTStructure tts= new TTStructure();
+     //tts.CreateStandardTT(path+"newStandardTT.xml",5,5);
+     tts.loadTTStructure(path+"5j27p.xml");
+     TTStructure cloneTTS = tts.cloneCurrentTTS();
+     boolean isEquals = tts.getCurrentCycle().isEquals(cloneTTS.getCurrentCycle());
+     assertEquals("test_cloneCurrentTTS : assertEquals 1 :clone:",true,isEquals);
+     Resource dayR = cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(0);
+     dayR.setID("Lun");
+     isEquals = tts.getCurrentCycle().isEquals(cloneTTS.getCurrentCycle());
+     assertEquals("test_cloneCurrentTTS : assertEquals 2 :clone:",false,isEquals);
+   }
 }

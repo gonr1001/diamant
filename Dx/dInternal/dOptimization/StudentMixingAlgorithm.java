@@ -391,7 +391,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       ((DXValue)sizeOfGroups.get(bGroup)).setIntValue(
           ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
 
-      resc= (Resource)((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
+      resc= ((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
       ((DXValue)resc.getAttach()).setIntValue(bGroup);
       for (int i=0; i< allConvGroup.size(); i++)
         ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());

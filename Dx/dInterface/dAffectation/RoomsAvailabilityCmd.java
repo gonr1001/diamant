@@ -17,7 +17,7 @@ import dInterface.DApplication;
 
 public class RoomsAvailabilityCmd implements Command{
 
-  public RoomsAvailabilityCmd(DApplication dApplic) {
+  public RoomsAvailabilityCmd() {
 
   }
 

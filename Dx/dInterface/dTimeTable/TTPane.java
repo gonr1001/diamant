@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.13 $  $Date: 2004-10-26 17:27:08 $
+ * Title: TTPane $Revision: 1.14 $  $Date: 2004-11-05 13:53:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.14 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -221,9 +221,10 @@ public abstract class TTPane {
         gridBC.gridx = i;
         gridBC.gridy = j;
         gridBC.ipadx = PERIOD_WIDTH ;
-        //gridBC.ipady =  getIpady(i,j);
+        
         if ( _toDisplay[i][j].getPeriodKey()!= "" &&  _toDisplay[i][j].getPeriodType()) {
           Period period = _tts.getCurrentCycle().getPeriodByPeriodKey(_toDisplay[i][j].getPeriodKey());
+          //System.out.println("ij pk: " + i + " " + j + " "+ period.getClass());
           periodPanel = createPeriodPanel(getPeriodNumber(_toDisplay[i][j].getPeriodKey()), _toDisplay[i][j].getPeriodKey());
           periodPanel.addMouseListener(_mouseListener);
           periodPanel.createPanel(period);

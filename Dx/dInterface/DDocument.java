@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.119 $  $Date: 2004-10-26 17:27:06 $
+ * Title: DDocument $Revision: 1.120 $  $Date: 2004-11-05 13:53:48 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.119 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.120 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -190,7 +190,7 @@ public class DDocument  extends InternalFrameAdapter implements
   } // end getJIF
   //-------------------------------------------
   public String getVersion(){
-    return _version;
+    return this._version;
   }
   //-------------------------------------------
   /**

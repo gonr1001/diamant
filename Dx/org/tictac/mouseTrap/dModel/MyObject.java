@@ -20,7 +20,7 @@ public class MyObject {
 		}
 		
 		try {		
-			Class myclass = (new MyClass()).getClass(type);		
+			//Class myclass = (new MyClass()).getClass(type);		
 			Constructor myconstructor=(new MyConstructor()).getTheConstructor(type, value.getClass().getName());
 			Object listparam[]={value}; 
 			newobj = myconstructor.newInstance(listparam);
@@ -42,7 +42,7 @@ public class MyObject {
 	
 		
 		try {		
-			Class myclass = (new MyClass()).getClass(type);		
+			//Class myclass = (new MyClass()).getClass(type);		
 			Constructor myconstructor=(new MyConstructor()).getTheConstructor(type, vvalue);
 			Object listparam[]= new Object[vvalue.size()];
 			for (int i=0;i<vvalue.size();i++){

@@ -32,7 +32,7 @@ public class XMLTools {
    */
   public final static Element getRootDocument(String fileName){
     Element element;
-   int numberfoElements=0;
+   //int numberfoElements=0;
    String error="";//DConst.ERROR_XML_FILE;
    try{
      ReadXMLFile xmlFile = new ReadXMLFile();
@@ -41,7 +41,7 @@ public class XMLTools {
      element= list.getRootElement(doc);
    }catch(Exception e){
      System.out.println("Import file name :"+ e);
-     error= e.toString();
+     error+= e.toString();
      return null;
     }
     return element;
@@ -56,14 +56,14 @@ public class XMLTools {
   public final static String tagError(Element element, String tag){
     ReadXMLElement list= new ReadXMLElement();
     String error="";
-    if(element==null){
+    if(element==null)//{
       return DConst.ERROR_XML_FILE;
-    }else{
+    //}else{
       int size= list.getSize(element,tag);
       if (size == 0){
         error = DConst.ERROR_XML_FILE;
       }
-    }// end else if(element==null)
+   // }// end else if(element==null)
 
     return error;
 

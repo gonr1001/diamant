@@ -143,9 +143,10 @@ public class DXToolsMethods {
    *  is minute
    * @return  int the reference period
    * */
- /* public final static int convertSTIPeriods(int hour, int minute){
+  public final static int convertSTIPeriods(int hour, int minute){
+  	minute+=0;
     return hour-7;
-  }*/
+  }
 
   /**
    * check if a file exist

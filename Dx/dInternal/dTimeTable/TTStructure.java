@@ -7,9 +7,10 @@ import org.tictac.mouseTrap.dModel.Trace;
 
 import java.util.Vector;
 
+//import dInternal.DModel;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.Resource;
-//import com.iLib.gIO.FilterFile;
+//import dInternal.dUtil.DXObject;
 
 
 import org.w3c.dom.Document;
@@ -24,7 +25,6 @@ import eLib.exit.xml.output.WriteXMLElement;
 import eLib.exit.xml.output.WriteXMLFile;
 
 
-//import javax.xml.parsers.FactoryConfigurationError;
 
 public class TTStructure {
   private Vector _ttsListeners = new Vector();
@@ -130,7 +130,7 @@ public class TTStructure {
    * @param int the number of days in each cycle
    * @return boolean the result of the operation
    * */
-  public boolean CreateStandardTT(String fileName, int nbOfCycles, int nbOfDays){
+  public boolean createStandardTT(String fileName, int nbOfCycles, int nbOfDays){
     WriteXMLElement wr;
     try{
       wr= new WriteXMLElement();
@@ -457,6 +457,37 @@ public class TTStructure {
       return null;
     }
   }
+  
 
+	/**
+	 isEquals checks if this TTStructure is equals to the TTStructure gives in arg
+	 * @param tts the TTStructure arg
+	 * @return <p> true if this TTStructure is equals to the TTStructure gives in arg </p>
+	 * false otherwise
+	 */
+  public boolean isEquals(TTStructure tts){
+		for (int i=0; i< _setOfCycles.size(); i++){
+			Resource cycleR= _setOfCycles.getResourceAt(i);
+			Resource cycleCloneR= tts.getSetOfCycles().getResourceAt(i);
+			if (!cycleR.getID().equalsIgnoreCase(cycleCloneR.getID()))
+				return false;
+			if(!cycleR.getAttach().isEquals(cycleCloneR.getAttach()))
+				return false;
+		}
+		return true;
+	}
+  
+  /**
+   * cloneCurrentTTSruct 
+   * @param dm
+   * @return TTStructure containing the values of the TTStructure in dm
+   */
+  public TTStructure cloneCurrentTTS() {
+  	//TTStructure oldTTS= dm.getTTStructure();
+  	TTStructure ttStruct = new TTStructure();
+  	ttStruct.setTTStructureDocument(getTTStructureDocument());
+  	return ttStruct;
+  }
 
+  
 }

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRoomsZone $Revision: 1.2 $  $Date: 2004-10-28 18:00:22 $
+* Title: SetOfRoomsZone $Revision: 1.3 $  $Date: 2004-11-05 13:53:52 $
 * Description: SetOfRoomsZone is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.3 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -32,7 +32,7 @@ public class SetOfRoomsZone extends SetOfResources{
 
 	private byte[] _dataloaded; //_st;// rooms in text format
 	private String _error;
-	private SetOfRooms _setOfRooms;
+	//private SetOfRooms _setOfRooms;
 //	private Vector _sorListeners;
 //	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
@@ -44,7 +44,7 @@ public class SetOfRoomsZone extends SetOfResources{
 	 */
 	public SetOfRoomsZone(byte[] dataloaded){ //, int nbDay, int nbPerDay) {
 		super(3);
-		_setOfRooms = null;
+		//_setOfRooms = null;
  //   _error ="";
  //   _sorListeners= new Vector(1);
 		_dataloaded = dataloaded;

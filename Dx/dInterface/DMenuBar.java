@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.117 $  $Date: 2004-10-26 17:27:07 $
+ * Title: DMenuBar $Revision: 1.118 $  $Date: 2004-11-05 13:53:48 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.117 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.118 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -322,7 +322,7 @@ public class DMenuBar extends JMenuBar{
 
     _roomsAvailability = new CmdMenu(DConst.LOCAUX_ASSIGN_M);
     _roomsAvailability.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-    _roomsAvailability.setCommand(new RoomsAvailabilityCmd(_dApplic));
+    _roomsAvailability.setCommand(new RoomsAvailabilityCmd());
     _roomsAvailability.addActionListener(_dApplic);
     _assign.add(_roomsAvailability);
 

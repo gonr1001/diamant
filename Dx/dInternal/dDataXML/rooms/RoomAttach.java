@@ -23,7 +23,7 @@ public class RoomAttach extends DXObject{
   private int _function=-1;
   private SetOfResources _setOfCaracteristics;
   private Vector _roomAvailability;//
-  private final String CR_LF = "\r\n";
+  //private final String CR_LF = "\r\n";
 
   public RoomAttach() {
     _roomAvailability = new Vector();

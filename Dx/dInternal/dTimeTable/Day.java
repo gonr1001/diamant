@@ -191,6 +191,24 @@ public class Day extends DXObject{
     }
     return str;
   }
+  
+  /**
+  * isEquals checks if this Day is equals to the Day gives in arg
+	 * @param day the Day arg
+	 * @return <p> true if this Day is equals to the Day gives in arg </p>
+	 * false otherwise
+  * */
+ public boolean isEquals(Day day){
+ 	for (int i=0; i< _setOfSequences.size(); i++){
+		Resource seqR= _setOfSequences.getResourceAt(i);
+		Resource seqCloneR= day.getSetOfSequences().getResourceAt(i);
+		if (!seqR.getID().equalsIgnoreCase(seqCloneR.getID()))
+			return false;
+		if(!seqR.getAttach().isEquals(seqCloneR.getAttach()))
+			return false;
+	}
+	return true;
+ }
 
 
   private SetOfResources _setOfSequences;

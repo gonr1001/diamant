@@ -104,8 +104,8 @@ public class DXTools{
       Vector sourceVector = new Vector();
       Vector destinationVector = new Vector();
       resources.setSubsetOfResources(elementsToTransfer, fieldIndex, valueDestination);
-      sourceVector = resources.getIDsByField();//fieldIndex, valueSource);
-      destinationVector = resources.getIDsByField();//fieldIndex, valueDestination);
+      sourceVector = resources.getIDsByField(fieldIndex, valueSource);
+      destinationVector = resources.getIDsByField(fieldIndex, valueDestination);
       sourceList.setListData(sourceVector);
       destinationList.setListData(destinationVector);
       int[] indices = getIndicesOfIntersection(destinationVector, elementsToTransfer);
@@ -132,7 +132,7 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
   Object [] elementsToTransfer = sourceList.getSelectedValues();
 
   if (elementsToTransfer.length != 0){
-      String currentElement;
+      //String currentElement;
       for (int i = 0; i < elementsToTransfer.length; i++){
         sourceVector.remove(elementsToTransfer[i]);
         destinationVector.add(elementsToTransfer[i]);

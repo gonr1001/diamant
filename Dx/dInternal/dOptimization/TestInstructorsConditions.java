@@ -15,7 +15,7 @@ import dInternal.DModel;
 import dInternal.dDataTxt.InstructorAttach;
 import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Period;
-import dInternal.dUtil.DXToolsMethods;
+//import dInternal.dUtil.DXToolsMethods;
 
 public class TestInstructorsConditions  implements Condition{
 
@@ -41,7 +41,7 @@ public class TestInstructorsConditions  implements Condition{
     int nbConf1, nbConf2;
     ConflictsAttach confVal= new ConflictsAttach();
     ConflictsAttach confVal2= new ConflictsAttach();
-    nbConf1= InstructorAvailibilityConflicts(period,eventKey, confVal2);
+    nbConf1= InstructorAvailibilityConflicts(period, perKey,eventKey, confVal2);
     nbConf2= InstructorEventsConflicts(period,eventKey, confVal);
     number= nbConf1+nbConf2;
     if (nbConf1!=0)
@@ -79,22 +79,23 @@ public class TestInstructorsConditions  implements Condition{
    * @param eventKey
    * @return
    */
-  private int InstructorAvailibilityConflicts(Period period, String eventKey, ConflictsAttach confV){
+  private int InstructorAvailibilityConflicts(Period period, int[] perK,String eventKey, ConflictsAttach confV){
     EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     long instKey[] = event.getInstructorKey();
      int nbConf=0;
+     period.getBeginHour();// only to disable warning
      Vector description= new Vector();// is a vector of Long containing instructor keys
     //long instKey = event.getInstructorKey();
     for (int i=0; i< instKey.length; i++){
       if(event.getPeriodKey().length()!=0){
         InstructorAttach inst = (InstructorAttach)_dm.getSetOfInstructors().getResource(instKey[i]).getAttach();
-        long dayKey = Integer.parseInt(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-        int[] dayTime={(int)dayKey, period.getBeginHour()[0],period.getBeginHour()[1]};
-        String thePeriod= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
-        long seqKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",1));
-        long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",2));
-        int dayIndexAvail= _dm.getTTStructure().findIndexInWeekTable(dayKey);
-        int perPosition= _dm.getTTStructure().getCurrentCycle().getPeriodPositionInDay(dayKey,seqKey,perKey);
+        //long dayKey = Integer.parseInt(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+        //int[] dayTime={(int)dayKey, period.getBeginHour()[0],period.getBeginHour()[1]};
+        //String thePeriod= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
+        //long seqKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",1));
+        //long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",2));
+        int dayIndexAvail= _dm.getTTStructure().findIndexInWeekTable(perK[0]);
+        int perPosition= _dm.getTTStructure().getCurrentCycle().getPeriodPositionInDay(perK[0],perK[1],perK[2]);
         if(perPosition>0){
           int [][] matrix= inst.getMatrixAvailability();
           if ((dayIndexAvail < matrix.length)){

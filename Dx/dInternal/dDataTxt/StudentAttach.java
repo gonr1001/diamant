@@ -172,6 +172,7 @@ public class StudentAttach extends DXObject{
    */
   public boolean isFixedInGroup(String course, int group){
     Resource courseValue;
+    group+=0;
     courseValue = _courses.getResource(course.substring(0,_COURSELENGTH));
     if(courseValue!=null){
       boolean b = ((DXValue)courseValue.getAttach()).getBooleanValue();
@@ -195,11 +196,11 @@ public class StudentAttach extends DXObject{
  public int getGroup(String actyvityType){
    if (actyvityType.length()!= _COURSELENGTH)
      return -1;
-   else{
+   //else{
      Resource resource = _courses.getResource(actyvityType);
      if(resource!=null)
        return((DXValue)resource.getAttach()).getIntValue();
-   }
+   //}
    return -1;
  }
 
@@ -359,12 +360,12 @@ public class StudentAttach extends DXObject{
  public boolean isInGroup(String actyvityType, int group){
    if (actyvityType.length()!= this._COURSELENGTH)
      return false;
-   else{
+   //else{
      Resource resource = this._courses.getResource(actyvityType);
      if(resource!=null)
        if (((DXValue)resource.getAttach()).getIntValue()== group)
          return true;
-   }
+  // }
    return false;
  }
 
@@ -380,7 +381,7 @@ public class StudentAttach extends DXObject{
   */
  public void setField(int fieldIndex, String value){
    int intValue = Integer.parseInt(value);
-   boolean boolValue = Boolean.valueOf(value).booleanValue();
+   //boolean boolValue = Boolean.valueOf(value).booleanValue();
    switch(fieldIndex){
       case 0:
         setSex(intValue);

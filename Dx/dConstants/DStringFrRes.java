@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.126 $  $Date: 2004-10-28 18:00:19 $
+ * Title: DStringFrRes $Revision: 1.127 $  $Date: 2004-11-05 13:53:48 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.126 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.127 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -27,7 +27,7 @@ package dConstants;
 public class DStringFrRes extends java.util.ListResourceBundle {
   static final Object[][] contents = new String[][]{
 	{ "appName", "Diamant 1.6 " },
-	{ "fileVerName1_6", "Diamant1.6;" },
+	{ "fileVerName1_6", "Diamant1.6" },
 	{ "vDate", "30 sep 2004" },
 	{ "bye", "bye" },
     /**
@@ -230,6 +230,8 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"studText5","I was in StudentList class and in analyseTokens method"},
     {"studText6","Wrong number of students in the students file:"},
     {"studText7","Wrong number of student courses choices at line: "},
+    {"studText8","Wrong number of elements at line: "},
+    {"studText9","Wrong site: "},
 
     // Rooms constants
     {"roomText1","Wrong name of room at line: "},

@@ -17,16 +17,16 @@ public class MyConstructor {
 			for (int i = 0; i < constList.length; i++) {
 				int numParams = constList[i].getParameterTypes().length;
 				if (numParams == 1 ){
-					boolean equal = true; 
+					//boolean equal = true; 
 					String nameParam=constList[i].getParameterTypes()[0].getName();
 					nameParam=cut(nameParam);
 					nameclass=cut(param);
 					if (nameParam.compareTo(nameclass) == 0){
 						theConstructor = constList[i];
 						return theConstructor;
-					}else{
-						equal = false;
-					}													
+					}//else{
+						//equal = false;
+					//}													
 				}
 			}
 			System.out.println("Constructor not found. "+ cls.getName() + " "+nameclass);

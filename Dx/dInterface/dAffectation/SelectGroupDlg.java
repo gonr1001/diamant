@@ -54,7 +54,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
 
   public void actionPerformed( ActionEvent ae ) {
     String command = ae.getActionCommand();
-    Vector v = new Vector();
+    //Vector v = new Vector();
     //If buttons CANCEL
     if (command.equals(DConst.BUT_OK)) {
       int ligne = validation();
@@ -112,7 +112,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
    *
    */
   private void jbInitRemGroup(){
-    JOptionPane pane = new JOptionPane();
+    //JOptionPane pane = new JOptionPane();
     Object[] options = { DConst.BUT_OK, DConst.BUT_CANCEL };
     int rest= JOptionPane.showOptionDialog(this,"Etes-vous sur de vouloir supprimer le groupe "+ _list.get(0).toString()+" ?", "Confirmation",
                           JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,

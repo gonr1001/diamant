@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.51 $  $Date: 2004-10-28 18:00:19 $
+ * Title: EditActivityDlg $Revision: 1.52 $  $Date: 2004-11-05 13:53:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.51 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.52 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -521,7 +521,7 @@ public class EditActivityDlg
    * Return vector of resources. each resource represent an event
    */
   private Vector buildUnitiesVector(String activityName){
-    int nbTokens= DXToolsMethods.countTokens(activityName, ".");
+    //int nbTokens= DXToolsMethods.countTokens(activityName, ".");
     Vector unities= new Vector(1);
     //System.out.println("CounTokens: "+nbTokens);// debug
     String actID= DXToolsMethods.getToken(activityName,".",0);
@@ -654,7 +654,7 @@ public class EditActivityDlg
     EventAttach event= (EventAttach)((Resource)_unities.get(index)).getAttach();
     SetOfInstructors soi= _dm.getSetOfInstructors();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-    long keys [] = event.getInstructorKey();
+    //long keys [] = event.getInstructorKey();
     for(int i=0; i< soi.size(); i++)
       v.add(soi.getResourceAt(i).getID());
     v.add(DConst.NO_ROOM_INTERNAL);
@@ -737,7 +737,7 @@ public class EditActivityDlg
     Cycle cycle= _dm.getTTStructure().getCurrentCycle();
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     //remove event
-    _dm.getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),-1,false);
+    _dm.getConditionsTest().removeEventInTTs(_dm.getTTStructure(),(Resource)_unities.get(_currentActivityIndex),false);
 
     JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
     String duration = getSelectedDuration(tpane);
@@ -767,7 +767,7 @@ public class EditActivityDlg
     vect.add(_unities.get(_currentActivityIndex));
     _dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),vect);
     //add event
-    _dm.getConditionsTest().addOrRemEventInTTs((Resource)_unities.get(_currentActivityIndex),1,false);
+    _dm.getConditionsTest().addEventInTTs(_dm.getTTStructure(),(Resource)_unities.get(_currentActivityIndex),false);
     return true;
   }
 

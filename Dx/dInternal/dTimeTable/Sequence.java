@@ -15,170 +15,187 @@ import eLib.exit.xml.input.ReadXMLElement;
 import eLib.exit.xml.output.WriteXMLElement;
 
 public class Sequence extends DXObject{
-
-  /**
-   * Constructor
-   * */
-  public Sequence() {
-     _setOfPeriods= new SetOfResources(4);
-  }
-
-  /**
-   * get the set of periods
-   * @return SetOfResources the set of periods
-   * */
-  public SetOfResources getSetOfPeriods(){
-    return _setOfPeriods;
-  }
-
-
-  /**
-   * */
-  public Period getPeriod(int periodIndex){
-    return (Period)_setOfPeriods.getResourceAt((periodIndex)).getAttach();
-  }
-
-  /**
-   * */
-  public Period getCurrentPeriod(){
-    return getPeriod(_currentPeriodIndex) ;
-  }
-
-  /**
-  * */
- public int getCurrentPeriodIndex(){
-   return _currentPeriodIndex ;
-  }
-
-  /**
-   * */
-  public void setCurrentPeriodIndex(int curPeriodIndex){
-    _currentPeriodIndex = curPeriodIndex;
-  }
-
-
-
-
-  /**
-   * set the set of periods
-   * @param SetOfResources the set of periods
-   * */
-  public void setSetOfPeriods(SetOfResources setOfPeriods){
-    _setOfPeriods= setOfPeriods;
-  }
-
-  /**
-    *read a xml tag containing a set of periods and build the resource
-    * @param Element the root xml tag of the set of periods
-   * */
-  public String readXMLtag(Element setofPers){
-    ReadXMLElement list= new ReadXMLElement();
-    int size= list.getSize(setofPers,_TAGITEM);
-    if (size == 0){
-      _error = _errorMessage;
-      return _error;
-    }
-    for (int i=0; i< size; i++){
-      Period period = new Period();
-      Element per= list.getElement(setofPers,_TAGITEM,i);
-      String periodID= list.getElementValue(per,_TAGITEM1);
-      //System.out.println("period.readXMLtag(per) "+ period.readXMLtag(per));//debug
-      if (!period.readXMLtag(per).equals("")){
-        _error = _errorMessage;
-        return _error;
-      }
-      _setOfPeriods.addResource(new Resource(periodID,period),0);
-    }// end for (int i=0; i< size; i++)
-    return _error;
-  }
-
-   /**
-     * Contruct a xml element from the set of periods
-     * @param Document the root xml document
-     * @Element the xml tag of the set of periods
-   * */
-   public Element writeXMLtag(Document doc){
-    WriteXMLElement xmlElt;
-    try{
-      xmlElt = new WriteXMLElement();
-      Element eltPers= xmlElt.createElement(doc,Day._TAGITEM2);
-      for (int i=0; i<_setOfPeriods.size(); i++){
-        Element period= ((Period)_setOfPeriods.getResourceAt(i).getAttach()).writeXMLtag(doc);
-        Element periodID=  xmlElt.createElement(doc, _TAGITEM1, _setOfPeriods.getResourceAt(i).getID());
-        period= xmlElt.appendChildInElement(period, periodID);
-        eltPers= xmlElt.appendChildInElement(eltPers, period);
-      }
-      return eltPers;
-    } catch(Exception e){
-      System.out.println("Sequence: "+e);//debug
-      return null;
-    }
-   }
-
-   /**
-    * */
-   public Sequence cloneSequence(){
-     Sequence newSeq= new Sequence();
-     newSeq._currentPeriodIndex= this._currentPeriodIndex;
-     for (int i=0; i<this.getSetOfPeriods().size(); i++ ){
-       Period newPer=((Period)this.getSetOfPeriods().getResourceAt(i).getAttach()).clonePeriod();
-       int position=(int)getSetOfPeriods().getResourceAt(i).getKey();
-       newSeq.getSetOfPeriods().setCurrentKey(position);
-       newSeq.getSetOfPeriods().addResource(new Resource(getSetOfPeriods().getResourceAt(i).getID(),newPer),0);
-     }
-     return newSeq;
-   }
-
-   public String getError(){
-    return _error;
-  }
-
-  /**
-   * return the next period and increment _currentPeriodIndex
-   * @return
-   */
-  public Period getNextPeriod(DXValue seqVal){
-    Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex++).getAttach();
-    if(_currentPeriodIndex>= _setOfPeriods.size()){
-      _currentPeriodIndex=0;
-      seqVal.setIntValue(seqVal.getIntValue()+1);
-      //seqIndex++;
-    }
-    return period;
-  }
-
-  /**
-   * return the previous period and decrement _currentPeriodIndex
-   * @return
-   */
-  public Period getPreviousPeriod(DXValue seqVal){
-    //System.out.println("Period: "+_currentPeriodIndex);//debug
-    Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex--).getAttach();
-    if(_currentPeriodIndex<=-1){
-      _currentPeriodIndex=_setOfPeriods.size()-1;
-      seqVal.setIntValue(seqVal.getIntValue()-1);
-      //seqIndex++;
-    }
-
-    return period;
-  }
-
-  /**
-   *
-   * */
-  public String toString(String ID){
-    String str="";
-    for(int i=0; i< _setOfPeriods.size(); i++)
-      str+=ID+"--"+getPeriod(i).toString()+DConst.CR_LF;
-    return str;
-  }
-
-
-   private SetOfResources _setOfPeriods;
-   private int _currentPeriodIndex = 0;
-   private String _error = "";
-   private String _errorMessage = "XML file is corrupted";
-   static final String _TAGITEM="TTperiod";
-   static final String _TAGITEM1="periodID";
-
+	
+	/**
+	 * Constructor
+	 * */
+	public Sequence() {
+		_setOfPeriods= new SetOfResources(4);
+	}
+	
+	/**
+	 * get the set of periods
+	 * @return SetOfResources the set of periods
+	 * */
+	public SetOfResources getSetOfPeriods(){
+		return _setOfPeriods;
+	}
+	
+	
+	/**
+	 * */
+	public Period getPeriod(int periodIndex){
+		return (Period)_setOfPeriods.getResourceAt((periodIndex)).getAttach();
+	}
+	
+	/**
+	 * */
+	public Period getCurrentPeriod(){
+		return getPeriod(_currentPeriodIndex) ;
+	}
+	
+	/**
+	 * */
+	public int getCurrentPeriodIndex(){
+		return _currentPeriodIndex ;
+	}
+	
+	/**
+	 * */
+	public void setCurrentPeriodIndex(int curPeriodIndex){
+		_currentPeriodIndex = curPeriodIndex;
+	}
+	
+	
+	
+	
+	/**
+	 * set the set of periods
+	 * @param SetOfResources the set of periods
+	 * */
+	public void setSetOfPeriods(SetOfResources setOfPeriods){
+		_setOfPeriods= setOfPeriods;
+	}
+	
+	/**
+	 *read a xml tag containing a set of periods and build the resource
+	 * @param Element the root xml tag of the set of periods
+	 * */
+	public String readXMLtag(Element setofPers){
+		ReadXMLElement list= new ReadXMLElement();
+		int size= list.getSize(setofPers,_TAGITEM);
+		if (size == 0){
+			_error = _errorMessage;
+			return _error;
+		}
+		for (int i=0; i< size; i++){
+			Period period = new Period();
+			Element per= list.getElement(setofPers,_TAGITEM,i);
+			String periodID= list.getElementValue(per,_TAGITEM1);
+			//System.out.println("period.readXMLtag(per) "+ period.readXMLtag(per));//debug
+			if (!period.readXMLtag(per).equals("")){
+				_error = _errorMessage;
+				return _error;
+			}
+			_setOfPeriods.addResource(new Resource(periodID,period),0);
+		}// end for (int i=0; i< size; i++)
+		return _error;
+	}
+	
+	/**
+	 * Contruct a xml element from the set of periods
+	 * @param Document the root xml document
+	 * @Element the xml tag of the set of periods
+	 * */
+	public Element writeXMLtag(Document doc){
+		WriteXMLElement xmlElt;
+		try{
+			xmlElt = new WriteXMLElement();
+			Element eltPers= xmlElt.createElement(doc,Day._TAGITEM2);
+			for (int i=0; i<_setOfPeriods.size(); i++){
+				Element period= ((Period)_setOfPeriods.getResourceAt(i).getAttach()).writeXMLtag(doc);
+				Element periodID=  xmlElt.createElement(doc, _TAGITEM1, _setOfPeriods.getResourceAt(i).getID());
+				period= xmlElt.appendChildInElement(period, periodID);
+				eltPers= xmlElt.appendChildInElement(eltPers, period);
+			}
+			return eltPers;
+		} catch(Exception e){
+			System.out.println("Sequence: "+e);//debug
+			return null;
+		}
+	}
+	
+	/**
+	 * */
+	public Sequence cloneSequence(){
+		Sequence newSeq= new Sequence();
+		newSeq._currentPeriodIndex= this._currentPeriodIndex;
+		for (int i=0; i<this.getSetOfPeriods().size(); i++ ){
+			Period newPer=((Period)this.getSetOfPeriods().getResourceAt(i).getAttach()).clonePeriod();
+			int position=(int)getSetOfPeriods().getResourceAt(i).getKey();
+			newSeq.getSetOfPeriods().setCurrentKey(position);
+			newSeq.getSetOfPeriods().addResource(new Resource(getSetOfPeriods().getResourceAt(i).getID(),newPer),0);
+		}
+		return newSeq;
+	}
+	
+	public String getError(){
+		return _error;
+	}
+	
+	/**
+	 * return the next period and increment _currentPeriodIndex
+	 * @return
+	 */
+	public Period getNextPeriod(DXValue seqVal){
+		Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex++).getAttach();
+		if(_currentPeriodIndex>= _setOfPeriods.size()){
+			_currentPeriodIndex=0;
+			seqVal.setIntValue(seqVal.getIntValue()+1);
+			//seqIndex++;
+		}
+		return period;
+	}
+	
+	/**
+	 * return the previous period and decrement _currentPeriodIndex
+	 * @return
+	 */
+	public Period getPreviousPeriod(DXValue seqVal){
+		//System.out.println("Period: "+_currentPeriodIndex);//debug
+		Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex--).getAttach();
+		if(_currentPeriodIndex<=-1){
+			_currentPeriodIndex=_setOfPeriods.size()-1;
+			seqVal.setIntValue(seqVal.getIntValue()-1);
+			//seqIndex++;
+		}
+		
+		return period;
+	}
+	
+	/**
+	 *
+	 * */
+	public String toString(String ID){
+		String str="";
+		for(int i=0; i< _setOfPeriods.size(); i++)
+			str+=ID+"--"+getPeriod(i).toString()+DConst.CR_LF;
+		return str;
+	}
+	
+	/**
+	 * isEquals checks if this sequence is equals to the sequence gives in arg
+	 * @param seq the Sequence arg
+	 * @return <p> true if this sequence is equals to the sequence gives in arg </p>
+	 * false otherwise
+	 */
+	public boolean isEquals(Sequence seq){
+		for (int i=0; i< _setOfPeriods.size(); i++){
+			Resource perR= _setOfPeriods.getResourceAt(i);
+			Resource perCloneR= seq.getSetOfPeriods().getResourceAt(i);
+			if (!perR.getID().equalsIgnoreCase(perCloneR.getID()))
+				return false;
+			if(!perR.getAttach().isEquals(perCloneR.getAttach()))
+				return false;
+		}
+		return true;
+	}
+	
+	private SetOfResources _setOfPeriods;
+	private int _currentPeriodIndex = 0;
+	private String _error = "";
+	private String _errorMessage = "XML file is corrupted";
+	static final String _TAGITEM="TTperiod";
+	static final String _TAGITEM1="periodID";
+	
 }

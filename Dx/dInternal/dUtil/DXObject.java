@@ -9,7 +9,7 @@ package dInternal.dUtil;
  * @version 1.0
  */
 
-public class DXObject extends Object{
+public class  DXObject extends Object{
   public DXObject() {
   }
 
@@ -31,9 +31,11 @@ public class DXObject extends Object{
    * @param value The value tibe compared
    * @return true if the field has the same value of the argument "value"
    */
- /* public boolean compareByField(int fieldIndex, String value){
+  public boolean compareByField(int fieldIndex, String value) {
+  	fieldIndex = fieldIndex+ 0;
+  	value = ""+value;
     return false;
-  }*/
+  }
 
   /**
    * Method to be implemented in each resource object. It sets the field indicated by the
@@ -42,9 +44,11 @@ public class DXObject extends Object{
    * resource
    * @param value The value to be setted
    */
-  /*
+  
   public void setField(int fieldIndex, String value){
-  }*/
+  	fieldIndex = fieldIndex+ 0;
+  	value = ""+value;
+  }
 
   /**
    *
@@ -56,16 +60,18 @@ public class DXObject extends Object{
   /**
    *
    * */
-  public String externalKey(String id){ //String str, String id){
+  public String externalKey(String str, String id){
+  	str+="";
     return id;
   }
 
   /**
    *
    * */
-/*  public boolean isEquals(DXObject obj){
+  public boolean isEquals(DXObject obj){
+  	obj.toString();
     return true;
-  }*/
+  }
 
   /**
    *
@@ -82,8 +88,9 @@ public class DXObject extends Object{
    *
    * @param mat
    */
-/*  public void setAvailability(int[][] mat){
-  }*/
+  public void setAvailability(int[][] mat){
+  	mat[0][0]+=0;
+  }
 
 
 

@@ -57,8 +57,7 @@ public class SetOfActivities extends SetOfResources{
   	_error="";
     if(!analyseSIGTokens(beginPosition)){// analyse STI data
       return false;
-    }else{// else if(!analyseSIGTokens(beginPosition))
-      if(_open)
+    }else if(_open){// else if(!analyseSIGTokens(beginPosition))
         return analyseDeltaTokens(beginPosition);// analyse Delta data
     }// end else if(!analyseSIGTokens(beginPosition))
 
@@ -72,13 +71,13 @@ public class SetOfActivities extends SetOfResources{
    * */
   private boolean analyseDeltaTokens(int beginPosition){
     String token;
-    String sousString; //auxiliar String for stocking a substring of a line
+    //String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded), DConst.CR_LF );
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
     //int state=0;
     int position=beginPosition;
     _line=0;
-    String activityName="";
+    //String activityName="";
     String instructorName="";
     int numberOfBlocs=0;
     while (st.hasMoreElements()){
@@ -162,9 +161,10 @@ public class SetOfActivities extends SetOfResources{
            return false;
          }
          //check if the permanent value is belong 0 and 1
+         String sousString;
          while(stLine.hasMoreElements()){
            sousString = stLine.nextToken();
-           _error= DXToolsMethods.checkIfBelongsValues(token,"0 1",
+           _error= DXToolsMethods.checkIfBelongsValues(sousString,"0 1",
                DConst.ACTI_TEXT12+_line,"ActivityList");
            if(_error.length()!=0)
              return false;
@@ -191,13 +191,13 @@ public class SetOfActivities extends SetOfResources{
     String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-    int state=0;
+    //int state=0;
     int position=beginPosition;
     if(!_open)
       _line=1;
     else
       _line=0;
-    String activityName="";
+    //String activityName="";
     int numberOfUnitys=0;
     while (st.hasMoreElements()){
       token = st.nextToken();
@@ -207,7 +207,7 @@ public class SetOfActivities extends SetOfResources{
           position = 1;
           break;
         case 1:// activity name
-          activityName=token.trim();
+          //activityName=token.trim();
           if (token.trim().length() != _ACTIVITYLENGTH){
             _error= DConst.ACTI_TEXT1+_line+  " in the activity file:" +
             "\n" + "I was in ActiviesList class and in analyseTokens method ";
@@ -287,7 +287,7 @@ public class SetOfActivities extends SetOfResources{
               return false;
             }
             while(stLine.hasMoreElements()){// rgr A problem in tests allwhile is a problem in real life
-              StringTokenizer stLine1;
+              //StringTokenizer stLine1;
               _error= DXToolsMethods.isIntValue(stLine.nextToken(),
                   DConst.ACTI_TEXT8+_line,"ActivityList");
               if(_error.length()!=0)
@@ -395,10 +395,10 @@ public class SetOfActivities extends SetOfResources{
    * */
   public void buildSetOfResources(int beginPosition){
     String token;
-    String sousString; //auxiliar String for stocking a substring of a line
+    //String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-    int state=0;
+    //int state=0;
     int position=beginPosition;
     int line=1;
     int numberOfUnity=0;
@@ -857,7 +857,7 @@ public class SetOfActivities extends SetOfResources{
     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
     Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
-    //u.getAttach().setField(fieldIndex, fieldValue);
+    u.getAttach().setField(fieldIndex, fieldValue);
   }
 
 
@@ -876,7 +876,7 @@ public class SetOfActivities extends SetOfResources{
     Resource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
     Resource s = ((Type)t.getAttach()).getSetOfSections().getResource(secID);
     Resource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitID);
-    //u.getAttach().setField(fieldIndex, fieldValue);
+    u.getAttach().setField(fieldIndex, fieldValue);
   }
 
   /**

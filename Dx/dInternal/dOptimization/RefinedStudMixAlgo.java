@@ -82,10 +82,10 @@ public class RefinedStudMixAlgo{
           studentAffected=true;
           //System.out.println("+++ Student: "+studentKey+" added +++");//debug
           break;
-        } else{// end if(groupIndex!=-1)
+        } //else{// end if(groupIndex!=-1)
           students.remove(String.valueOf(studentKey));
           removedStudents.add(String.valueOf(studentKey));
-        }// end else if(groupIndex!=-1)
+        //}// end else if(groupIndex!=-1)
       }// end for (int i=0; i< studentRegistered.size(); i++)
       if((students.size()==0) || studentAffected){
         if(!studentAffected){

@@ -18,7 +18,7 @@ public class FileReExecuteCmd implements Command{
 	public void execute(){
 		if (fileName.compareTo("")==0){
 			FileOpenDlg fo=new FileOpenDlg(frame);
-			String fileName=fo.getFile();
+			//String fileName=fo.getFile();
 		}
 		// rgd: verificar que seleccione un archivo de trace
 		if (fileName.compareTo("")!=0){ 
