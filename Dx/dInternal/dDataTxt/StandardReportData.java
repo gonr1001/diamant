@@ -303,17 +303,18 @@ public class StandardReportData {
     String studlist="";
     int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
-      _dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
+      //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
       String line = _dm.getSetOfStudents().getResourceAt(i).toWrite(" ");
       StringTokenizer strTokens= new StringTokenizer(line.substring(SetOfStudents._ENDSTUDENTNUMBEROFCOURSE,line.length()));//+SetOfResources.CR_LF;
       String name_mat = line.substring(0,SetOfStudents._BEGINSTUDENTNUMBEROFCOURSE);
-      String str= name_mat.substring(0,SetOfStudents._ENDSTUDENTMATRICULE)+";"+
+      String str= " "+name_mat.substring(0,SetOfStudents._ENDSTUDENTMATRICULE)+";"+
                   name_mat.substring(SetOfStudents._ENDSTUDENTMATRICULE,SetOfStudents._BEGINSTUDENTNAME)
                 +";"+name_mat.substring(SetOfStudents._BEGINSTUDENTNAME,SetOfStudents._ENDSTUDENTNAME)+";";
       String strcrs="";
       while(strTokens.hasMoreTokens()){
         String course= strTokens.nextToken();
+        course = DXToolsMethods.getToken(course,";",0);
         String sect="";
         if(course.length()==SetOfStudents._COURSEGROUPLENGTH){
           int group= Integer.parseInt(course.substring(SetOfStudents._COURSELENGTH, SetOfStudents._COURSEGROUPLENGTH));

@@ -78,7 +78,7 @@ public class ExportData {
     while(strTokens.hasMoreTokens()){
       String line= strTokens.nextToken();
       StringTokenizer rTokens = new StringTokenizer(line,";");
-      report+=rTokens.nextToken()+rTokens.nextToken()+rTokens.nextToken()+"    ";
+      report+=rTokens.nextToken()+rTokens.nextToken()+rTokens.nextToken()+"   ";
       if(rTokens.hasMoreTokens()){
         StringTokenizer courses = new StringTokenizer(rTokens.nextToken(),",");
         while(courses.hasMoreTokens()){
