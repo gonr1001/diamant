@@ -21,7 +21,7 @@
 \def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
 
 \title{\bf{L'architecture d'un système de production des horaires
-de cours et des examens}}
+de cours et d'examens}}
 \author{Ruben Gonzalez Rubio \\Domingo Palao Muñoz}
 \institute{Département de génie électrique et de génie informatique \\
 Université de Sherbrooke,\\
@@ -55,7 +55,7 @@ Bases de données,
 Web.
 
 \section{Introduction}
-La production d'horaires est une tâche périodique effectué dans
+La production d'horaires est une tâche périodique effectuée dans
 beaucoup d'insti\-tutions d'enseignement.  Ces institutions
 produisent un ou plusieurs horaires par année pour les cours et
 les examens. L'automatisation de cette production peut réduire son
@@ -63,51 +63,51 @@ coût de manière importante. Dans certains cas, l'automatisation
 commence par l'utilisation d'un logiciel de construction
 d'horaires; dans d'autres, elle commence par l'automatisation des
 traitements associés au fonctionnement de l'institution, comme par
-exemple le suivit des étudiants. Il existe de logiciels pour
+exemple le suivi des étudiants. Il existe des logiciels pour
 effectuer la construction d'horaires, on peut citer comme exemples
 DIAMANT \cite{gonzalezrubio00} et SAPHIR \cite{ferland94}, mais,
-il existe d'autres.
+il en existe d'autres.
 
 En général, les logiciels pour la création d'horaires utilisent
-comme  entrée un ou plusieurs fichiers. Leur sortie est effectuée,
-également, sur un ou plusieurs fichiers. Travailler avec des
-fichiers est une sources de problèmes. Il faut construire les
+comme  entrée un ou plusieurs fichiers. Leur sortie est effectuée
+également sur un ou plusieurs fichiers. Travailler avec des
+fichiers est une sources de problèmes. Il faut cons\-trui\-re les
 fichiers d'entrée à chaque fois qu'un horaire est produit. Il
-existe, deux cas~: une production manuelle des fichiers ou une
+existe deux cas~: une production manuelle des fichiers ou une
 production automatisée. Si les fichiers sont produits
 manuellement, les erreurs de frappe ou d'inattention peuvent
 produire des effets inattendus dans le logiciel. Les erreurs sont
 difficiles à trouver, car il faut vérifier toutes les données
-manuellement. Dans le cas, où les fichiers sont produits de
-manière automatique, il faut que le logiciel s'assure de vérifier
-la validité et la cohérence des toutes les données. Le deuxième
-problème se manifeste lorsqu'un changement est introduit dans le
+manuellement. Dans le cas où les fichiers sont produits de manière
+automatique, il faut que le logiciel s'assure de vérifier la
+validité et la cohérence de toutes les données. Le deuxième
+pro\-blème se manifeste lorsqu'un changement est introduit dans le
 système (soit dans l'application de construction, soit dans celui
 de la production de fichiers) ou si l'application de construction
-est utilisé à plusieurs sites différents, utilisant de formats de
-données différents.
+est utilisé sur plusieurs sites différents, utilisant de formats
+des données différents.
 
-Une autre source de problèmes encore plus coûteuse que la
+Une autre source de problèmes, encore plus coûteuse que la
 précédente, est celle de l'introduction d'un changement dans le
-système, soit dans le logiciel de construction, ou dans logiciel
-de la production ou bien dans les deux. Les changements viennent
-de la part de responsables de l'institution, par exemple une
-nouvelle nomenclature pour les locaux; nouvelle approche
+système, soit dans le logiciel de construction, ou dans le
+logiciel de la production ou bien dans les deux. Les changements
+viennent de la part de responsables de l'institution, par exemple
+une nouvelle nomenclature pour les locaux; nouvelle approche
 pédagogique, qui change la constitution de groupes, etc. Ce
 problème de modifier un logiciel n'est pas propre à la production
-d'horaire. Il s'agit d'un problème général dans le développement
+d'horaires. Il s'agit d'un problème général dans le développement
 des logiciels.
 
 
 La solution pour le premier problème passe par l'automatisation de
-la vérification et validation de données à la saisie des données,
-afin d'assurer que le logiciel de construction travaille sur les
-bonnes données. Le deuxième problème, est plus délicat à traiter,
-si l'ensemble de logiciels de production ont été conçus pour être
-modifiables (extensibles) le coût de faire une modification sera
-faible, mais si le système est monolithique et fermé une
-modification sera très coûteuse. Une manière de diminuer les
-effets de ce problème est le développement de logiciel ayant,
+la vérification et de la, validation de données à la saisie des
+données, afin d'assurer que le logiciel de construction travaille
+sur les bonnes données. Le deuxième problème, est plus délicat à
+traiter, si l'ensemble de logiciels de production ont été conçus
+pour être modifiables (extensibles) le coût de faire une
+modification sera faible, mais si le système est monolithique et
+fermé une modification sera très coûteuse. Une manière de diminuer
+les effets de ce problème est le développement de logiciel ayant,
 entre autres, la qualité d'extensibilité.
 
 
@@ -115,104 +115,104 @@ Dans cet article nous proposons l'architecture  d'un système de
 production des horaires de cours et des examens ayant les qualités
 suivantes~: ouverte et extensible. Une telle architecture doit
 contribuer à faire face plus facilement aux deux problèmes
-mentionnées, en réduisant le coût des modifications et en
+mentionnés, en réduisant le coût des modifications et en
 effectuant la vérification et la validation des données dans des
 étapes précises du processus et en évitant la redondance du code
 et des données. Cette architecture met en \oe{}uvre une base de
-données, un site Internet et un logiciel de construction
-d'horaires. La vérification et la validation de données  se fera à
-l'entrée de données et avec de contraintes d'intégrité dans la
-base de données.  Le site Internet est utilisé principalement pour
-la saisie de données, ceci permet de vérifier aussi la validité
-des données, grace au règles d'affaires avant que la donnée soit
-entrée dans la base. Autre fonction du site Internet est d'offrir
-les horaires de manière personnalisé, une fois que l'horaire est
-construit. La base de données permet l'extraction des données,
-selon différents formats. Ainsi, l'entrée de données du logiciel
-de construction est facilité. Bien entendu, avec l'aide du
-logiciel de construction d'horaires, il est possible de fabriquer
-un horaire avec un minimum de conflits.
+données, un site Internet et un logiciel de construction <<<<<<<
+patat04Full.tex d'horaires. La vérification et la validation de
+données  se font à l'entrée de données et en appliquant des
+contraintes d'intégrité dans la base de données.  Le site Web est
+utilisé principalement pour la saisie de données, ceci permet de
+vérifier aussi la validité des données, grâce aux règles
+d'affaires avant que la donnée soit entrée dans la base. Une autre
+fonction du site Web est d'offrir les horaires de manière
+personnalisé, une fois que l'horaire est construit. La base de
+données permet l'extraction des données, selon différents formats.
+Ainsi, l'entrée de données du logiciel de construction est
+facilitée. Bien entendu, avec l'aide du logiciel de construction
+d'horaires, il est possible de fabriquer un horaire avec un
+minimum de conflits.
+
+
 
 Des nombreuses recherches ont été faites dans la construction
 d'horaires~: algorithmes et formulations mathématiques et
 plusieurs logiciels ont été proposés dans les conférences PATAT
 \cite{patat97,patat00,patat02}. Par contre, peu d'efforts ont été
-consacrés, jusqu'à présent, au développement général de la
-production d'horaires. Nous pensons que le fait d'avoir une vue
-globale sur le processus peut aider la recherche en construction
-d'horaires. White \cite{white00} a mis en évidence que le Web doit
-être utilisé comme un moyen de diffusion d'horaires. Nous allons
-un peu plus loin en proposant  de l'utiliser également comme
-interface d'entrée, de plus nous proposons l'architecture
-nécessaire à supporter nos idées. De Causmaecker et al
-\cite{decausmaecker02} ont introduit l'idée que la sémantique du
-Web peut être utilisé par le chercheurs en construction
-d'horaires. Ils ont aussi introduit l'idée d'utiliser XML comme
-langage de communication dans le construction d'horaires par
-agents. Nous proposons aussi l'utilisation de XML, afin de
-faciliter les échanges entre certains modules de notre
-architecture. Dans Burke et al. \cite{burke97} il est proposé
-d'avoir un standard pour le format de données pour des instances
-de horaires, leur but était de comparer des algorithmes
-(programmes) dans de benchmarks. Dans un travail plus récent,
-Kingston \cite{kingston02} propose un language STTL et un
-interpréteur, avec le même objectif. Özcan \cite{ozcan03} suggère
-aussi un autre standard pour définir des instances de problèmes de
-construction d'horaires, ayant comme base le langage XML. Il nous
-semble qu'il serait souhaitable d'avoir un standard, mais c'est un
-but très difficile à atteindre. À la place, notre approche permet
-d'utiliser une base de données comme un outil d'extraction et de
-formattage, de cette manière le logiciel de construction
-d'horaires peut recevoir les données nécessaires. Ainsi, il serait
-possible de générer des instances de problèmes pour d'autres
-logiciels de construction d'horaires.
+consacrés jusqu'à présent au développement global de la production
+d'horaires. Nous pensons que le fait d'avoir une vue globale sur
+le processus peut aider la recherche en construction d'horaires.
+White \cite{white00} a mis en évidence que le Web doit être
+utilisé comme un moyen de diffusion d'horaires. Nous allons un peu
+plus loin en proposant  de l'utiliser également comme interface
+d'entrée, de plus nous proposons l'architecture nécessaire à
+supporter nos idées. De Causmaecker et al \cite{decausmaecker02}
+ont introduit l'idée que la sémantique du Web peut être utilisée
+par les chercheurs en construction d'horaires. Ils ont aussi
+introduit l'idée d'utiliser XML comme langage de communication
+dans la construction d'horaires par agents. Nous proposons aussi
+l'utilisation de XML, afin de faciliter les échanges entre
+certains modules de notre architecture. Dans Burke et al.
+\cite{burke97} il est proposé d'avoir un standard pour le format
+de données pour des instances d'horaires, leur but était de
+comparer des algorithmes (programmes) dans des ``benchmarks''.
+Dans un travail plus récent, Kingston \cite{kingston02} propose un
+language STTL et un interpréteur, avec le même objectif. Özcan
+\cite{ozcan03} suggère aussi un autre standard pour définir des
+instances de problèmes de construction d'horaires, ayant comme
+base le langage XML. Il nous semble qu'il serait souhaitable
+d'avoir un standard, mais c'est un but très difficile à atteindre.
+À la place, notre approche permet d'utiliser une base de données
+comme un outil d'extraction et de formattage, de cette manière le
+logiciel de construction d'horaires peut recevoir les données
+nécessaires. Ainsi, il serait possible de générer des instances de
+problèmes pour d'autres logiciels de construction d'horaires.
 
 
-Le développement de notre architecture, a été divisé en deux
-étapes, nous avons analysé le flot des données dans un système
+Le développement de notre architecture a été divisé en deux
+étapes.Nous avons analysé le flot des données dans un système
 générique de production d'horaires. Ensuite nous avons défini
 l'architecture, les blocs de base et la responsabilité de chaque
 bloc qui participe dans l'architecture. Les objectifs de définir
-une architecture ouverte et extensible ont été respectes pendant
+une architecture ouverte et extensible ont été respectés pendant
 nos travaux. Ceci est présenté dans les sections \ref{sec:data} et
 \ref{sec:archi}.
 
-Une fois l'architecture définie, nous avons crée une instance afin
+Une fois l'architecture définie, nous avons créé une instance afin
 de l'implanter dans un système de production d'horaires à
 l'Université de Sherbrooke. Nous avons fait un survol des
 technologies existantes afin de faire les bons choix respectant
-encore les objectifs d'ouverture et extensibilité ont été
-atteints. Ceci est présenté dans les sections \ref{sec:tech} et
-\ref{sec:tictac}.
+encore les objectifs d'ouverture et d'extensibilité. Ceci est
+présenté dans les sections \ref{sec:tech} et \ref{sec:tictac}.
 
 Nous finissons par un bilan et des conclusions à la section
 \ref{sec:conc}.
 
 
 
-\section{Les flot de l'information dans la production d'horaires}
+\section{Le flot de l'information dans la production d'horaires}
 \label{sec:data}
 
-Tout d'abord, nous définissons, le processus de production
-d'horaires comme un processus qui démarre lorsqu'on commence à la
+Tout d'abord, nous définissons le processus de production
+d'horaires comme un processus qui démarre lorsqu'on commence  la
 saisie de données pour la période de validité de l'horaire $P$.
 Cette période $P$ est un semestre, un  trimestre, ou une
-année\footnote{Dans l'Université de Sherbrooke on parle de
-trimestre, mais en réalité il comporte seize semaines (presque
-quatre mois), donc le système doit s'adapter à tout periode $P$.}.
-Le processus fini lorsque toutes les personnes concernées
-reçoivent l'horaire sur un support papier ou sur le Web (voir
-figure \ref{fig:fOne}) et que la période de validité de l'horaire
-touche à sa fin. Les données à saisir sont multiples, par exemple
-les cours qui vont avoir lieu dans la période $P$; le format du
-cours (3h, ou 2h+1h); les enseignants possibles ou assignées à
-certains cours; les locaux possibles ou assignées; la
-disponibilité des enseignants et des locaux, etc.. Signalons qu'il
-existe des institutions où les étudiants font un pré-choix et
-d'autres où les horaires sont fait sans pré-choix. Le pre-choix
-des étudiants fait partie des données à saisir, s'il n'y a pas de
-pré-choix, il faut indiquer le nombre d'étudiants à admettre pour
-chaque cours.
+année\footnote{À l'Université de Sherbrooke on parle de trimestre,
+mais en réalité il comporte seize semaines (presque quatre mois),
+donc le système doit s'adapter à toute période $P$.}. Le processus
+est fini lorsque toutes les personnes concernées reçoivent
+l'horaire sur un support papier ou sur le Web (voir figure
+\ref{fig:fOne}) et que la période de validité de l'horaire touche
+à sa fin. Les données à saisir sont multiples, par exemple, les
+cours qui vont avoir lieu dans la période $P$; le format du cours
+(3h, ou 2h+1h); les enseignants possibles ou assignés à certains
+cours; les locaux possibles ou assignées; la disponibilité des
+enseignants et des locaux, etc.. Si\-gnalons qu'il existe des
+institutions où les étudiants font un pré-choix et d'autres où les
+horaires sont faits sans pré-choix. Le pré-choix des étudiants
+fait partie des données à saisir, s'il n'y a pas de pré-choix, il
+faut indiquer le nombre d'étudiants à admettre pour chaque cours.
 
 
 \begin{figure}[htb] \begin{center}
@@ -238,7 +238,7 @@ chaque cours.
 \end{figure}
 
 La figure \ref{fig:fOne} est une vue abstraite de la production
-d'horaires, le système de production inclue un logiciel de
+d'horaires, le système de production inclut un logiciel de
 construction d'horaires.
 
 
@@ -247,15 +247,15 @@ construction d'horaires.
 \item[Système de production d'horaires] Il est composé de
 plusieurs logiciels, ou modules, qui fonctionnent de manière
 autonome, mais coordonnée. Il nous apparaît clair que  le système
-doit avoir deux composantes principales~: le système de sauvegarde
-de données et le logiciel de construction d'horaires.
+doit avoir deux composantes principales~: le système de
+sauve\-garde de données et le logiciel de construction d'horaires.
 
 \item[Données] représentent des données nécessaires à la
 production d'horaires. Nous allons sauvegarder toutes les données
 nécessaires dans un système de sauvegarde de données. Dans la
 figure, il n'est pas indiqué que ces données peuvent être
-manipulés par des modules du système de production d'horaires. Par
-exemple, le module de saisie de pre-choix, va sauvegarder les
+manipulées par des modules du système de production d'horaires.
+Par exemple, le module de saisie de pré-choix, va sauvegarder les
 cours suivis par un étudiant. Le module de construction de données
 va prendre son entrée dans la base et lorsque la construction sera
 faite les nouvelles données obtenues seront remises dans
