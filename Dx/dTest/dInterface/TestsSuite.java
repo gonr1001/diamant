@@ -24,6 +24,12 @@ public class TestsSuite extends ScriptFixture {
       String testsDirectory = "D:\\Developpements\\DiamantExtreme\\Dx\\dTest\\dAbbotTest\\";
       String [] testFiles = {
         "testNewTTCycle.xml",
+        "testNewTTExam.xml",
+        "testOpenTT.xml",
+        "testDefFileImport.xml",
+        "testAutomImport.xml",
+        "testClose.xml",
+        "testQuit.xml",
         "testAboutBox.xml"
       };
       for(int i = 0; i < testFiles.length; i++){
