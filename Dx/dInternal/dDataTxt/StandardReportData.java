@@ -244,18 +244,21 @@ public class StandardReportData {
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
                long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
-               str= _dm.getSetOfInstructors().getResource(instKey).getID();
+               String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
+               str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();
                str= _dm.getSetOfRooms().getResource(roomKey).getID();
               }
 
+              String hour= "00"+((Period)per.getAttach()).getBeginHour()[0];
+              String minute= "00"+((Period)per.getAttach()).getBeginHour()[1];
               report+=day.getKey()+";"+
                       day.getID()+";"+
                       seq.getID()+";"+
                       per.getID()+";"+
-                      ((Period)per.getAttach()).getBeginHour()[0]+":"+((Period)per.getAttach()).getBeginHour()[1]+";"
+                      hour.substring(hour.length()-2,hour.length())+":"+minute.substring(minute.length()-2,minute.length())+";"
                      +_dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities())+";"
                      +_dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities())+";"
                      +confValue.getIntValue()+";"+confValue.getStringValue()+";"
