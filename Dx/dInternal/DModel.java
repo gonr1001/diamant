@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.30 $  $Date: 2003-07-03 09:45:31 $
+ * Title: DModel $Revision: 1.31 $  $Date: 2003-07-03 11:52:03 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -35,6 +35,7 @@ public class DModel {
   private Vector _dmListeners = new Vector();
   //private TTParameters _ttParameters;
   private int _type;
+  private boolean _modified = false;
   private String _error;
   private Status _status;
   private SetOfInstructors _setOfInstructors;
@@ -55,6 +56,7 @@ public class DModel {
     _ttStruct = ttStruct;
     //importData("hello");
     //test1_setAvailability();
+    _modified = true;
   }
 
   //for open
@@ -70,6 +72,9 @@ public class DModel {
 
   public String getError(){
     return _error;
+  }
+  public boolean getModified(){
+    return _modified;
   }
   //for new
   public DModel(DApplication dApplic, TTStructure ttStruct, boolean partial) {
@@ -201,10 +206,10 @@ public class DModel {
     return "";
   }
 
-  //this method must be renamed to saveTT
-  public void saveProject(String filename) {
+
+  public void saveTimeTable(String filename) {
     SaveData saveD= new SaveData("1.5");
-    saveD.saveProject(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+    saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
   }
 
   public void sendEvent() {

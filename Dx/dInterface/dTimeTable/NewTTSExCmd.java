@@ -17,26 +17,22 @@ import dInterface.DApplication;
 
 /**
  *
- * NewTTSCmd is class used to call the command
+ * NewTTSExCmd is class used to call the command
  * which displays the New Time Table Structure dialog
  *
  */
 
-public class NewTTSCmd implements Command{
+public class NewTTSExCmd implements Command{
   private final boolean PARTIAL = true;
-  public NewTTSCmd() {
+
+  public NewTTSExCmd() {
   }
 
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
-    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, PARTIAL);
+    dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, DConst.EXAM);
     //loadTTData(dApplic);
   } // end execute
 
-}/* end class NewTTSCmd */
-
-
-
-
-
+}/* end class NewTTSExCmd */
 

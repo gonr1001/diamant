@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.17 $  $Date: 2003-07-03 09:45:31 $
+ * Title: DMediator $Revision: 1.18 $  $Date: 2003-07-03 11:52:03 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -50,13 +50,13 @@ public class DMediator {
   }
   //-------------------------------------------
   //for new TimeTable
-  public String addDoc(String title, int type, TTStructure ttStruct) {
+  public String addDoc(String fullPath, int type, TTStructure ttStruct) {
     //String error = "";
     DDocument currentDoc;
     if (ttStruct != null) {  //for new TimeTable
-      currentDoc = new DDocument(_dApplic, title, type, ttStruct);
+      currentDoc = new DDocument(_dApplic, fullPath, type, ttStruct);
     } else {                 //for open TimeTable
-      currentDoc = new DDocument(_dApplic, title);
+      currentDoc = new DDocument(_dApplic, fullPath);
     }
     _documents.addElement(currentDoc);
     //_dApplic.getToolBar().setToolBars(ttStruct);
@@ -105,7 +105,7 @@ public class DMediator {
   public void saveCurrentDoc(String str){
     getCurrentDoc().setDocumentName(str);
     getCurrentDoc().noModified();
-    getCurrentDoc().getDM().saveProject(str);
+    getCurrentDoc().getDM().saveTimeTable(str);
     //getCurrentDoc().getDM().rsaveTT(str);
     //getCurrentDoc().getDM().getTTStructure().saveTTStructure(str+".xml");
   }

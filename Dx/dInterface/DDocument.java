@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.39 $  $Date: 2003-07-03 09:45:31 $
+ * Title: DDocument $Revision: 1.40 $  $Date: 2003-07-03 11:52:03 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.39 $
+ * @version $Revision: 1.40 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -63,12 +63,12 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
 
 
   //for new timetable
-   public DDocument(DApplication dApplic, String title, int type, TTStructure ttStruct) {
-     _dApplic = dApplic;
-     _dm = new DModel(_dApplic, type, ttStruct);
-     _dm.getTTStructure().addTTStructureListener(this);
-     buidDocument(title);
-     _modified=true;
+  public DDocument(DApplication dApplic, String title, int type, TTStructure ttStruct) {
+    _dApplic = dApplic;
+    _dm = new DModel(_dApplic, type, ttStruct);
+    _dm.getTTStructure().addTTStructureListener(this);
+    buidDocument(title);
+    _modified=true;
   } // end constructor DDocument()
 
   //for open timetable
@@ -145,7 +145,7 @@ public class DDocument  implements ActionListener, DModelListener, TTStructureLi
     } // end setModified
     //-------------------------------------------
     public boolean isModified(){
-        return _modified;
+        return _dm.getModified();
     } // end getModified
     //-------------------------------------------
 

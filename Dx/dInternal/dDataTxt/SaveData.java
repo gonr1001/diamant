@@ -38,7 +38,7 @@ public class SaveData {
   /**
    *
    * */
-  public void saveProject(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
+  public void saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
                           SetOfActivities act,SetOfStudents students, String fileName){
     FilterFile filter;
      if(fileName.endsWith(".dia"))
