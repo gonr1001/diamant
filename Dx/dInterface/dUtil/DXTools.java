@@ -58,22 +58,30 @@ public class DXTools {
    }
 
    /**
-   * * Search the indices to be showed as selected in a JList. The search is made in the vector that
+   * Search the indices to be showed as selected in a JList. The search is made in the vector that
    * contains the list items
    * @param Vector (itemsList) the items list where we are searching indices
    * @param Object [] (selectedItemsList) the selected items array to be found in the itemsList
    * @return An array containing the indices of the items to be showed as selected
    * */
   public static int[] getIndicesToSelected(Vector itemsList, Object[] selectedItemsList){
-   int [] indices = new int[selectedItemsList.length];//the place fro keeping the indices to set selected
+   int [] indices = new int[selectedItemsList.length];//the place for keeping the indices to set selected
    for (int i = 0; i < selectedItemsList.length; i++){
      indices[i] = itemsList.indexOf(selectedItemsList[i]);
-     //System.out.println("Indices2[" + i + "]= " + indices[i]);
    }
    return indices;
   }
 
-
+  /**
+   * Defines the actions when transfering data between 2 JLists by using a button. The 2 JList
+   * contain the IDs of a setOfResources.
+   * @param resources The setOfResources to be manipulated by using the JLists
+   * @param fieldIndex The index of the field who is the criteria to get/set the resources of the set
+   * @param valueSource The value to be getted/setted in the resources belonging the JList source
+   * @param valueDestination The value to be getted/setted in the resources belonging the JList destination
+   * @param sourceList The JList source. It contains the data to be transferred to the JList destination
+   * @param destinationList The JList destination
+   */
   public static void actionButton(SetOfResources resources, int fieldIndex, String valueSource, String valueDestination, JList sourceList, JList destinationList) {
     Object [] elementsToTransfer = sourceList.getSelectedValues();
     if (elementsToTransfer.length != 0){
@@ -89,40 +97,17 @@ public class DXTools {
       destinationList.setSelectedIndices(indices);
       sourceList.clearSelection();
     }
-
   }//end method
 
-/*
-  public void actionButtonsLR(DApplication dApplic, int resourceType, int fieldIndex, String buttonPressed, Object [] elementsToTransfer, Vector leftVector, Vector rightVector, JList leftList, JList rightList){
-    boolean leftButtonPressed = false;
-    if (buttonPressed == _toLeftMes)
-      leftButtonPressed = true;
-    if (elementsToTransfer.length != 0){
-      for (int i = 0; i < elementsToTransfer.length; i++)
-        //((Activity)(_activities.getResource((String)_currentActivities[i]).getAttach())).setActivityVisibility(leftButtonPressed);
-      setVectors(dApplic, leftVector, rightVector);
-      rightList.setListData(rightVector);
-      leftList.setListData(leftVector);
-    }//end if (elementsToTransfer.length != 0)
-    //if button pressed is "_toLeft"
-    if (leftButtonPressed == true){
-      int[] indices = DXTools.getIndicesToSelected(leftVector, elementsToTransfer);
-      leftList.setSelectedIndices(indices);
-      rightList.clearSelection();
-    }else{
-      int[] indices=DXTools.getIndicesToSelected(rightVector, elementsToTransfer);
-      rightList.setSelectedIndices(indices);
-      leftList.clearSelection();
-    }
-  }//end method
-*/
 
   /**
    * Set the vectors leftVector and rightVector with the values found in the SetOfActivities
    */
+/*
   private static void setVectors(SetOfResources resources, int fieldIndex, String valueSource, String valueDestination, Vector sourceVector, Vector destinationVector){
     sourceVector = resources.getIDsByField(fieldIndex, valueSource);
     destinationVector = resources.getIDsByField(fieldIndex, valueDestination);
   }
+  */
 
 }

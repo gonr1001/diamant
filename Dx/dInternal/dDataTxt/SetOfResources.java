@@ -108,11 +108,23 @@ public class SetOfResources extends DXObject{
     _resourceList = rlist;
   }
 
+  /**
+ * For a subset of a setOfResources, this method change a field value
+ * @param IDs Array containing the IDs of the resources to be setted
+ * @param fieldIndex The index of the value to be setted
+ * @param value The value to be setted in the field
+   */
   public void setSubsetOfResources(String [] IDs, int fieldIndex, String value){
     for (int i = 0; i < IDs.length; i++)
       (getResource(IDs[i]).getAttach()).setField(fieldIndex, value);
   }
 
+  /**
+   * For a subset of a setOfResources, this method change a field value
+   * @param IDs Array containing the IDs of the resources to be setted
+   * @param fieldIndex The index of the value to be setted
+   * @param value The value to be setted in the field
+   */
   public void setSubsetOfResources(Object [] IDs, int fieldIndex, String value){
     for (int i = 0; i < IDs.length; i++)
       (getResource((String)IDs[i]).getAttach()).setField(fieldIndex, value);
@@ -316,8 +328,6 @@ public class SetOfResources extends DXObject{
    * @param fieldValue The comparaison value for the field selected
    * @return a vector containing the IDs of the resources selected
    */
-
-
   public Vector getIDsByField(int fieldIndex, String fieldValue){
     Vector idVector = new Vector();
     Resource res = null;

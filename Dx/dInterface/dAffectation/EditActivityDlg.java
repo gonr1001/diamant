@@ -83,7 +83,7 @@ public class EditActivityDlg extends JDialog implements ActionListener{
   }
 
   /**
-   * It builds a panel to be placed in a tab of the tabbedPane
+   * Builds a panel to be placed in a tab of the tabbedPane
    * @return a JPanel to be placed in a tab of the tabbedPane
    */
   public JPanel blocPanel(){

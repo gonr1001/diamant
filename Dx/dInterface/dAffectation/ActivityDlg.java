@@ -133,7 +133,6 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _buttonsPanel2 = new JPanel();
     _buttonsPanel2.add(_show);
     _buttonsPanel2.add(_cancel);
-
     //placing the elements into the JDialog
     setSize(380, 390);
     setResizable(false);
@@ -147,29 +146,34 @@ public class ActivityDlg extends JDialog implements ActionListener {
    * Launch the listeners
    */
   private void triggerListeners(){
-    MouseListener mouseListenerLists = new MouseAdapter(){
-      public void mouseClicked(MouseEvent e) {
-        if (((JList)e.getSource()).getModel().getSize() == 0)
-          return;
-        if (e.getSource().equals(_visibleList))
-          _noVisibleList.clearSelection();
-        else
-          _visibleList.clearSelection();
-        _currentActivities = ((JList)e.getSource()).getSelectedValues();
-        if (e.getClickCount() == 2) {
-            new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
-          }//end if
-        }// end public void mouseClicked
-    };//end definition of MouseListener mouseListener = new MouseAdapter(){
-
     _cancel.addActionListener(this);
     _show.addActionListener(this);
     _toLeft.addActionListener(this);
     _toRight.addActionListener(this);
     _noVisibleList.addMouseListener(mouseListenerLists);
     _visibleList.addMouseListener(mouseListenerLists);
-
   }//end triggerListeners()
+
+
+  /**
+   * Defins the mouse adapter and actions for the JListis
+   */
+  private MouseListener mouseListenerLists = new MouseAdapter(){
+    public void mouseClicked(MouseEvent e) {
+      if (((JList)e.getSource()).getModel().getSize() == 0)
+        return;
+      if (e.getSource().equals(_visibleList))
+        _noVisibleList.clearSelection();
+      else
+        _visibleList.clearSelection();
+      _currentActivities = ((JList)e.getSource()).getSelectedValues();
+      if (e.getClickCount() == 2) {
+        new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
+      }//end if
+    }// end public void mouseClicked
+  };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+
 
 
   /**
