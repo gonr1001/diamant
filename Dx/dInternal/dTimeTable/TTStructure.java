@@ -32,6 +32,8 @@ public class TTStructure {
   public static final String [] _priorityTable = {"Normale", "Basse", "Nulle"};
 
   private String _str;
+  private String _error = "";
+  private String _errorXMLFileMessage = "XML file is corrupted";
   private int _col;
   private int _row;
   private static int _numberOfActivesDays=5;// monday to friday
@@ -71,7 +73,7 @@ public class TTStructure {
 
 
   public String getError() {
-    return new String("");
+    return _error;
   }
 
   /**
@@ -354,13 +356,15 @@ public class TTStructure {
       Document  doc = xmlFile.getDocumentFile(fileName);
       ReadXMLElement list= new ReadXMLElement();
       root= list.getRootElement(doc);
-      _setOfCycles.readXMLtag(root);
+      if (_setOfCycles.readXMLtag(root).length() != 0){
+        _error = _errorXMLFileMessage;
+        return _error;
+      }
     }catch(Exception e){
       System.out.println(e);
       return e.toString();
     }
-    return "";
-
+    return _error;
   }
 
   /**

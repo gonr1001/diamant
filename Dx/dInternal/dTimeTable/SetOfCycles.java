@@ -8,6 +8,7 @@ import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
 import org.w3c.dom.Document;
+import com.iLib.gDialog.FatalProblemDlg;
 
 public class SetOfCycles {
 
@@ -38,11 +39,14 @@ public class SetOfCycles {
    *read a xml tag containing a set of cycle and build the resource
    * @param Element the root xml tag of the set of cycle
    * */
-  public void readXMLtag(Element setofCycles){
+  public String readXMLtag(Element setofCycles){
     ReadXMLElement list= new ReadXMLElement();
-
     String ID="";
     int size= list.getSize(setofCycles,_TAGITEM);
+    if (size == 0){
+      _error = _errorMessage;
+      return _error;
+    }
     //System.out.println(" Cycles Size: "+size);//debug
     for (int i=0; i< size; i++){
       Cycle setOfdays = new Cycle();
@@ -51,10 +55,13 @@ public class SetOfCycles {
       _periodLenght= Integer.parseInt(list.getElementValue(cycle,_TAGITEM2));
       //System.out.println(" Cycle ID: "+ID+" PeriodLenght: "+_periodLenght);//debug
       Element days= list.getElement(cycle,_TAGITEM3,0);
-      setOfdays.readXMLtag(days);
+      if (!setOfdays.readXMLtag(days).equals("")){
+        _error = _errorMessage;
+        return _error;
+      }
       _setOfCycles.addResource(new Resource(ID,setOfdays),0);
     }// end for (int i=0; i< size; i++)
-
+    return _error;
   }
 
   /**
@@ -112,10 +119,16 @@ public class SetOfCycles {
     _currentCycleIndex = curCycleIndex;
   }
 
+  public String getError(){
+    return _error;
+  }
+
 
   private SetOfResources _setOfCycles;
   private int _periodLenght;
   private int _currentCycleIndex=0;
+  private String _error = "";
+  private String _errorMessage = "XML file is corrupted";
   static final String _TAGITEM="TTcycle";
   static final String _TAGITEM1="cycleID";
   static final String _TAGITEM2="pLength";

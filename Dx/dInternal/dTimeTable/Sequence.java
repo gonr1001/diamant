@@ -67,18 +67,26 @@ public class Sequence extends DXObject{
     *read a xml tag containing a set of periods and build the resource
     * @param Element the root xml tag of the set of periods
    * */
-   public void readXMLtag(Element setofPers){
-     ReadXMLElement list= new ReadXMLElement();
-      int size= list.getSize(setofPers,_TAGITEM);
-      //System.out.println(" Periods Size: "+size);//debug
-      for (int i=0; i< size; i++){
-        Period period = new Period();
-        Element per= list.getElement(setofPers,_TAGITEM,i);
-        String periodID= list.getElementValue(per,_TAGITEM1);
-        period.readXMLtag(per);
-        _setOfPeriods.addResource(new Resource(periodID,period),0);
-      }// end for (int i=0; i< size; i++)
-   }
+  public String readXMLtag(Element setofPers){
+    ReadXMLElement list= new ReadXMLElement();
+    int size= list.getSize(setofPers,_TAGITEM);
+    if (size == 0){
+      _error = _errorMessage;
+      return _error;
+    }
+    for (int i=0; i< size; i++){
+      Period period = new Period();
+      Element per= list.getElement(setofPers,_TAGITEM,i);
+      String periodID= list.getElementValue(per,_TAGITEM1);
+      System.out.println("period.readXMLtag(per) "+ period.readXMLtag(per));
+      if (!period.readXMLtag(per).equals("")){
+        _error = _errorMessage;
+        return _error;
+      }
+      _setOfPeriods.addResource(new Resource(periodID,period),0);
+    }// end for (int i=0; i< size; i++)
+    return _error;
+  }
 
    /**
      * Contruct a xml element from the set of periods
@@ -117,9 +125,15 @@ public class Sequence extends DXObject{
      return newSeq;
    }
 
+   public String getError(){
+    return _error;
+  }
+
 
    private SetOfResources _setOfPeriods;
    private int _currentPeriodIndex = 0;
+   private String _error = "";
+   private String _errorMessage = "XML file is corrupted";
    static final String _TAGITEM="TTperiod";
    static final String _TAGITEM1="periodID";
 

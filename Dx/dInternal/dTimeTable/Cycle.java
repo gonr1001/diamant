@@ -117,25 +117,30 @@ public class Cycle extends DXObject{
     *read a xml tag containing a set of days and build the resource
     * @param Element the root xml tag of the set of days
    * */
-    public void readXMLtag(Element setofDays){
-      ReadXMLElement list= new ReadXMLElement();
-      String ID="";
-      String key="";
-      int size= list.getSize(setofDays,_TAGITEM);
-      //System.out.println(" Days Size: "+size);//debug
-      for (int i=0; i< size; i++){
-        Day setOfSequences = new Day();
-        Element day= list.getElement(setofDays,_TAGITEM,i);
-        ID= list.getElementValue(day,_TAGITEM4);
-        key= list.getElementValue(day,_TAGITEM1);
-        //System.out.println(" Day ID: "+ID);//debug
-        Element sequences= list.getElement(day,_TAGITEM2,0);
-        setOfSequences.readXMLtag(sequences);
-        _setOfDays.setCurrentKey(Integer.parseInt(key));
-        _setOfDays.addResource(new Resource(ID,setOfSequences),0);
-      }// end for (int i=0; i< size; i++)
-
+  public String readXMLtag(Element setofDays){
+    ReadXMLElement list= new ReadXMLElement();
+    String ID="";
+    String key="";
+    int size= list.getSize(setofDays,_TAGITEM);
+    if (size == 0){
+      _error = _errorMessage;
+      return _error;
     }
+    for (int i=0; i< size; i++){
+      Day setOfSequences = new Day();
+      Element day= list.getElement(setofDays,_TAGITEM,i);
+      ID= list.getElementValue(day,_TAGITEM4);
+      key= list.getElementValue(day,_TAGITEM1);
+      Element sequences= list.getElement(day,_TAGITEM2,0);
+      if (!setOfSequences.readXMLtag(sequences).equals("")){;
+      _error = _errorMessage;
+      return _error;
+      }
+      _setOfDays.setCurrentKey(Integer.parseInt(key));
+      _setOfDays.addResource(new Resource(ID,setOfSequences),0);
+    }// end for (int i=0; i< size; i++)
+    return _error;
+  }
 
     /**
     * Contruct a xml element from the set of days
@@ -164,8 +169,14 @@ public class Cycle extends DXObject{
     }
    }
 
+   public String getError(){
+    return _error;
+  }
+
   private SetOfResources _setOfDays;
   private int _periodLength;
+  private String _error = "";
+  private String _errorMessage = "XML file is corrupted";
   static final String _TAGITEM="TTday";
   static final String _TAGITEM1="dayRef";
   static final String _TAGITEM2="TTsequences";

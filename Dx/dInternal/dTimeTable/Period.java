@@ -91,19 +91,25 @@ public class Period extends DXObject {
     *read a xml tag containing a period and build the resource
     * @param Element the root xml tag of a period
    * */
-     public void readXMLtag(Element setPeriod){
-        ReadXMLElement list= new ReadXMLElement();
-        Period period = new Period();
-        String begin, end, prior;
-         begin= list.getElementValue(setPeriod,_TAGITEM);
-         StringTokenizer time= new StringTokenizer(begin,":");
-         end= list.getElementValue(setPeriod,_TAGITEM1);
-         prior= list.getElementValue(setPeriod,_TAGITEM2);
-         _beginHour[0]= Integer.parseInt(time.nextToken());
-         _beginHour[1]= Integer.parseInt(time.nextToken());
-         _priority= Integer.parseInt(prior);
-         //System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
-     }
+  public String readXMLtag(Element setPeriod){
+    ReadXMLElement list= new ReadXMLElement();
+    Period period = new Period();
+    String begin, end, prior;
+    begin= list.getElementValue(setPeriod,_TAGITEM);
+    StringTokenizer time= new StringTokenizer(begin,":");
+    end= list.getElementValue(setPeriod,_TAGITEM1);
+    prior= list.getElementValue(setPeriod,_TAGITEM2);
+    _beginHour[0]= Integer.parseInt(time.nextToken());
+    _beginHour[1]= Integer.parseInt(time.nextToken());
+    _priority= Integer.parseInt(prior);
+    if (begin == null || end == null || prior == null){
+      _error = _errorMessage;
+      return _error;
+    }
+    return _error;
+
+    //System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
+  }
 
      /**
        * Contruct a xml element from this period
@@ -160,6 +166,8 @@ public class Period extends DXObject {
   private int nbRoomConflict= 0;
   private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
   private int _priority;// 0= normal; 1= low; 2= null
+  private String _error = "";
+  private String _errorMessage = "XML file is corrupted";
   static final String  _TAGITEM="BeginTime";
   static final String _TAGITEM1="EndTime";
   static final String _TAGITEM2="priority";
