@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.2 $  $Date: 2003-06-13 17:02:09 $
+ * Title: DDocument $Revision: 1.3 $  $Date: 2003-07-02 11:36:06 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.3 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -57,28 +57,8 @@ public abstract class AbstractDocument {
   protected JInternalFrame _jif;
   protected String _documentName;
   protected TTPanel _ttPanel;
-
   public AbstractDocument(DApplication dApplic, String title) {
-    _dApplic = dApplic;
-    _documentName = title;
+
   }
 
-  public final JInternalFrame getJIF() {
-    return _jif;
-  } // end getJIF
-
-  //   public TTPanel getTTPanel() {
- //    return _ttPanel;
- //   } // end getJIF
-  //-------------------------------------------
-  public final String getDocumentName() {
-    return _documentName;
-  } // end getDocumentName
-
-  //-------------------------------------------
-  public final void setDocumentName(String name) {
-    _documentName = name;
-    _jif.setTitle(name);
-  } // end setDocumentName
-    //-------------------------------------------
 }
