@@ -51,7 +51,7 @@ Université de Sherbrooke,\\
 
 
 {\bf Mots clés :} Production d'horaires, Génie logiciel, Qualité.
-%\intd
+\intd
 \section{Introduction}
 La production d'horaires est une tâche périodique effectué dans
 beaucoup d'insti\-tutions d'enseignement.  Ces institutions
@@ -415,7 +415,7 @@ développer des applications logicielles, mais nous pensons que la
 plus adaptée pour mieux résoudre notre problème est celle de trois
 couches.
 
-L'architecture montré dans la figure \ref{fig:phThree} propose la
+L'architecture montré dans la figure \ref{fig:fThree} propose la
 division du système en trois couches, chacune avec une fonction
 bien définit :
 
@@ -446,7 +446,7 @@ de données complexes.
   \put(5.5,2.5){\vector(0,-1){0.5}}
   \put(3,1){\framebox(4,1){persistance de données}}
 \end{picture}
-\caption{L'architecture trois couches.}\label{fig:phThree}
+\caption{L'architecture trois couches.}\label{fig:fThree}
 \end{figure}
 
 \subsection {L'architecture trois couches et le système de production d'horaires}
@@ -485,7 +485,7 @@ pertinent.
 \end{enumerate}
 
 Ces éléments de composition et ses relations sont mieux illustrés
-dans la figure \ref{fig:phFour}.
+dans la figure \ref{fig:fFour}.
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
@@ -515,8 +515,8 @@ dans la figure \ref{fig:phFour}.
 
 
 \end{picture}
-\caption{// L'implementation de l'architecture trois couches pour
-le système d'horaires.}\label{fig:phFour}
+\caption{L'implementation de l'architecture trois couches pour le
+système d'horaires.}\label{fig:fFour}
 \end{figure}
 
 
@@ -558,10 +558,10 @@ Langage pour coder la logique d'affaire & Java & Java & Visual Basic\\
 
 La persistance de données & Base de données & Base de données & Base de données \\
 \hline
-
+%~&~&~\\
 \end{tabular}
-
-\caption{ Quelques instances possibles de
+~ \\
+ \caption{ Quelques instances possibles de
 l'architecture}\label{tb:tbOne}
 \end{table}
 
@@ -611,6 +611,7 @@ La persistance de données & Text & XML & Base de données \\
 \hline
 
 \end{tabular}
+~ \\
 
 \caption{ L'evolution d'une instance de
 l'architecture}\label{tb:tbTwo}
