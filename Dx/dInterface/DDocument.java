@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.66 $  $Date: 2003-09-09 17:13:32 $
+ * Title: DDocument $Revision: 1.67 $  $Date: 2003-09-10 13:54:08 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.66 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.67 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 package dInterface;
@@ -167,6 +167,7 @@ public class DDocument  extends InternalFrameAdapter implements
 
     public void changeInTTStructure(TTStructureEvent  e) {
       System.out.println("I was here");
+      _dm.setModified();
         _ttPanel.updateTTPanel(_dm.getTTStructure());
     }// end actionPerformed*/
 
