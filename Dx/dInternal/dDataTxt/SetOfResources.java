@@ -172,6 +172,7 @@ public class SetOfResources extends DXObject{
   public boolean removeResourceAt(int position){
     if (position< _resourceList.size()){
       _resourceList.removeElementAt(position);
+      _resourceList.trimToSize();
       return true;
     }
     return false;
@@ -187,6 +188,7 @@ public class SetOfResources extends DXObject{
     int index = getIndexOfResource(ResourceID);
     if (index != -1){
       _resourceList.removeElementAt(index);
+      _resourceList.trimToSize();
       return true;
     }
     return false;
@@ -202,6 +204,7 @@ public class SetOfResources extends DXObject{
     int index = getIndexOfResource(key);
     if (index!=-1){
       _resourceList.removeElementAt(index);
+      _resourceList.trimToSize();
       return true;
     }
     return false;

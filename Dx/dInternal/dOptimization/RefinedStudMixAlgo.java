@@ -95,15 +95,12 @@ public class RefinedStudMixAlgo{
      sizeOfGroups.add(size);
     }// end for(int i=0; i< type.getSetOfSections().size(); i++)
     SetOfResources removeStudents= new SetOfResources(65);
-    while(sumList.size()>0){
-      //Vector eligibleGroups = getEligibleGroups(sizeOfGroups);
-      //boolean studentAffected=false;
-      //boolean reInitialize=false;
 
+    while(sumList.size()>0){
+      boolean studentAffected= false;
       for (int i=0; i< sumList.size(); i++){
         //System.out.println("Student: "+ );
         long studentKey= sumList.getResourceAt(sumList.size()-1).getKey();
-        System.out.println("Student: "+ studentKey);
         int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups);
         if(groupIndex!=-1){
           StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();
@@ -111,23 +108,27 @@ public class RefinedStudMixAlgo{
               groupIndex).getID());//int group= i+1;
           DXValue value= (DXValue)sizeOfGroups.get(groupIndex);
           value.setIntValue(value.getIntValue()+1);
-          //student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
           student.setInGroup(activityID+typeID, group,false);
           sumList.removeResource(studentKey);
-          //studentAffected=true;
+          studentAffected=true;
           break;
-          //newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
         } else{// end if(groupIndex!=-1)
-          removeStudents.addResource(sumList.getResourceAt(sumList.size()-1),0);
+          Resource resc = sumList.getResourceAt(sumList.size()-1);
+          sumList.removeResource(resc.getKey());
+          removeStudents.setCurrentKey(resc.getKey());
+          removeStudents.addResource(resc,0);
+          sumList.sortSetOfResourcesByID();
         }// end else if(groupIndex!=-1)
 
+
       }// end for (int i=0; i< studentRegistered.size(); i++)
-      if(sumList.size()==0){
-       /* if(removeStudents.size()>0)
-          reInitialize=false;*/
+      if((sumList.size()==0) || studentAffected){
         for(int i=0; i< removeStudents.size(); i++){
-          sumList.addResource(removeStudents.getResourceAt(i),0);
+          Resource resc= removeStudents.getResourceAt(i);
+          sumList.setCurrentKey(resc.getKey());
+          sumList.addResource(resc,0);
         }// end for(int i=0; i< removeStudents.size(); i++)
+        removeStudents.getSetOfResources().removeAllElements();
         sumList.sortSetOfResourcesByID();
       }// end if(sumList==0)
 
