@@ -153,7 +153,23 @@ public class ResourceList extends DXObject{
 
   /**
    * Remove a Resource from ResourceList
+   * @param int the position of the resource in the resourcelist
+   * @return boolean result of the operation. true if resource removed
+   * succesfully and false otherwise
+   * */
+  public boolean removeResourceAt(int position){
+    if (position< _resourceList.size()){
+      _resourceList.removeElementAt(position);
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Remove a Resource from ResourceList
    * @param ResourceID, a String
+   * @return boolean result of the operation. true if resource removed
+   * succesfully and false otherwise
    * */
   public boolean removeResource(String ResourceID){
     int index = getIndexOfResource(ResourceID);
@@ -167,6 +183,8 @@ public class ResourceList extends DXObject{
   /**
    * Remove a Resource from ResourceList
    * @param key, a long integer
+   * @return boolean result of the operation. true if resource removed
+   * succesfully and false otherwise
    * */
   public boolean removeResource(long key){
     int index = getIndexOfResource(key);
