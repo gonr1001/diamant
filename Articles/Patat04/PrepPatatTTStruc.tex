@@ -1,0 +1,233 @@
+\documentclass{llncs}
+\bibliographystyle{alpha}
+\usepackage[T1]{fontenc}
+\usepackage{dfd,hhline}
+\usepackage{verbatim}
+
+\setlength{\parskip}{1.5explus0.5ex minus0ex}
+
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\tictac}{Tic-Tac}
+\newcommand{\xp}{eXtreme Programming}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+
+\title{\bf{Étude comparatif entre structures de grille horaire à 1, 2 et $n$ dimensions \\(document préparatoire)}}
+\author{Bernard Beaulieu \\ Ruben Gonzalez Rubio}
+\institute{Département de génie électrique et de génie informatique \\
+Université de Sherbrooke,\\
+Sherbrooke, Québec, J1K 2R1 \\
+Canada\\
+\email{Ruben.Gonzalez-Rubio@USherbrooke.ca} \\
+\email{Bernard.Beaulieu@USherbrooke.ca}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Avant de commencer}
+\subsection{Quoi, de manière précise, a été votre contribution?}
+Dans un logiciel de construction d'horaires il est nécessaire de
+avoir une structure de données (classe) modélisant la grille
+horaire.
+
+Nous proposons trois types de structures de données pour
+représenter la grille horaire~:
+
+
+\begin{enumerate}
+\item 1 dimension
+ \item 2 dimensions
+ \item 3 dimensions
+\end{enumerate}
+
+Nous donnons les avantages et les inconvénients de ces trois
+structures utilisées dans le cadre d'un logiciel de construction
+d'horaires.
+
+\begin{description}
+ \item [Quelle question avez-vous répondu?]
+ Les avantages et les inconvénients de  trois
+structures de données dans le cadre d'un logiciel de construction
+d'horaires.
+
+\item [Pourquoi est importante pour le lecteur cette réponse?]
+Faire un choix éclaire de la structure.
+
+\item [Quelle est l'extension de cette réponse?] La définition de
+de chaque structure, les avantages et les inconvénients de  trois
+structures de données dans le cadre d'un logiciel de construction
+d'horaires.
+
+\end{description}
+
+\subsection{Quel est votre nouveau résultat?}
+
+\begin{description}
+
+\item [Quelle est votre contribution à la connaissance?]
+
+La structure à $n$ dimensions. l'évaluation de structures
+
+
+
+\item [Quels sont les travaux antérieurs?] \diamant{} 1 et 1.5?
+
+Autres ?
+
+
+
+\item [Pourquoi votre solution est-elle meilleure?] L'article
+présente les conditions où chaque structure offre le plus
+d'avantages
+
+\item [Quoi, de manière précise et détaillée est  nouveau dans
+votre travail?] L'évaluation de trois structures pour représenter
+la grille horaire
+
+\end{description}
+
+
+\subsection{Pourquoi votre lecteur doit croire à votre résultat?}
+
+\begin{description}
+\item [Quel standard a été utilisé pour évaluer votre solution?]
+Étude analytique de solutions proposées. + expériences
+
+
+\item [Quelle évidence concrète montre que votre résultat est
+correct?] Étude analytique de solutions proposées. + expériences.
+\end{description}
+
+\section{Application de la méthodologie}
+\subsection{Les préalables}
+
+\begin{description}
+\item [Qu'est-ce que vous voulez dire?] Description précise du
+résultat que vous voulez transmettre.
+
+Au moins quatre éléments de comparaison.
+
+\begin{itemize}
+\item facilité d'expression de contraintes (périodicité)
+
+\item efficacité ¨(indexage)
+
+\item possibilité de paramètre (XML)
+
+\item réutilisation dans d'autres contextes.
+\end{itemize}
+ \item [Qui va lire
+l'article?]Une description précise de l'auditoire, le niveau
+technique, la taille, etc. Nous avons ciblé trois types de
+lecteurs :
+\begin{enumerate}
+\item Faire la publication de l'article dans PATAT 2004. Un
+auditoire ouvert mais surtout des chercheurs en informatique ou en
+recherche opérationnelle qui travaillent dans le domaine de la
+conception d'horaires, peut-être avec une bonne connaissance de
+mathématiques ou de l'informatique ou de la recherche
+opérationnelle, ou les trois ensemble.
+
+\item Les nouveaux développeurs qui se intégreront à l'équipe de
+travail \eXit{}. Quelques étudiantes en génie qui pourraient
+s'ajouter au groupe \eXit{}, avec un baccalauréat ou une maîtrise
+en génie ou en informatique.
+
+
+
+
+\end {enumerate}
+Même si les deux groupes de lecteurs semblent différents, le but
+de l'article est de montrer les avantages et l'utilisation de la
+structure de grille horaire à $n$ dimensions
+\end{description}
+
+
+\section {L'architecture}
+
+Vision globale de l'article
+
+\begin{description}
+\item [Identification de la question que vous avez posée.] On doit
+définir comment la structure sera utilisé dans un logiciel de
+conception d'horaires.
+
+On doit définir les trois structures de données et montrer comment
+chacune va s'intégrer dans le logiciel
+
+\item [L'identification du résultat obtenu.]
+
+Définition de quatre critères d'évaluation. Analyse de chaque
+structure pour chaque critère.
+
+\item [Le type de validation que vous allez offrir.] Étude
+analytique de solutions proposées. + expériences.
+
+\item [Structure du document] Il faudra choisir une structure de
+document qui vous permettra d'explique vos démarches.
+
+\begin{enumerate}
+\item Résumé.
+
+\item Introduction
+
+\begin{enumerate}
+\item Motivation
+
+\item Définition du problème
+
+\item La question spécifique que vous allez travailler
+
+\item Panorama générale
+
+\item Travail connexe.
+\end{enumerate}
+
+\item Description détaille du problème (cadre d'expériences)
+
+description de chaque évaluations à faire
+
+description de chaque structure
+
+Étude comparatif
+
+\item Conclusions
+\end{enumerate}
+\end{description}
+
+\section{Première brouillon du résumé}
+
+\paragraph{Titre~:}Étude comparatif entre structures de grille horaire à 1, 2 et $n$ dimensions
+
+\input{Compare.tex}
+
+
+{\bf Mots clés :} Production d'horaires, Génie logiciel, Qualité.
+
+\section{Plan de travail}
+\begin{itemize}
+\item 15 février 2004 Design détaille.
+
+\item 15 mars 2004 Implementation.
+
+\item 30 mars 2004 Version en anglais.
+
+\item ? ? 2004 Version finale en anglais à envoyer par le site web
+http://mat.gsia.cmu.edu/PATAT04
+\end{itemize}
+
+\section{Contraintes du Call for Papers}
+\begin{itemize}
+\item 26 janvier 2004. Version en anglais.
+
+\item En anglais 10 à 20 pages.
+
+\item Voir comment soumettre //mat.gsia.cmu.edu/PATAT04
+\end{itemize}
+\bibliography{bibDiamant,bibProg}
+
+\end{document}
