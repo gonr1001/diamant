@@ -73,10 +73,10 @@ public class SetOfStudents extends SetOfResources{
   * <p>
   * Effect: nothing.
   * */
-  public void buildStudentList(int beginPosition){
+  public void buildSetOfResources(int beginPosition){
     switch(_ttWithStudents){
-     case 0: buildStudentListWithStudents(beginPosition);
-     case 1: buildStudentListWithoutStudents(beginPosition);
+     case 0: buildSetOfResourcesWithStudents(beginPosition);
+     case 1: buildSetOfResourcesWithoutStudents(beginPosition);
     }
   }
 
@@ -236,7 +236,7 @@ public class SetOfStudents extends SetOfResources{
    * <p>
    * Effect: nothing.
    * */
-  private void buildStudentListWithStudents(int beginPosition){
+  private void buildSetOfResourcesWithStudents(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state=0;
@@ -291,7 +291,7 @@ public class SetOfStudents extends SetOfResources{
  * <p>
  * Effect: nothing.
  * */
- private void buildStudentListWithoutStudents(int beginPosition){
+ private void buildSetOfResourcesWithoutStudents(int beginPosition){
 
   }
 

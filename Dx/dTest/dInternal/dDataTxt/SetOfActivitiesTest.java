@@ -669,7 +669,7 @@ public void test7_analyseTokens(){
      setOfActivities.analyseTokens(1);
      if(setOfActivities.getError().length()==0) {
 
-       setOfActivities.buildSetOfActivities(1);
+       setOfActivities.buildSetOfResources(1);
        //System.out.println(setOfActivities.toString());
      }
      assertEquals("test0_addActivity: assertEquals 0", 2,setOfActivities.size());
@@ -736,7 +736,7 @@ public void test7_analyseTokens(){
      SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),false);
      setOfActivities.analyseTokens(1);
      if(setOfActivities.getError().length()==0)
-       setOfActivities.buildSetOfActivities(1);
+       setOfActivities.buildSetOfResources(1);
      assertEquals("test0_addActivitDiffRooms: assertEquals 0", 2, setOfActivities.size());
      Resource activityResc = setOfActivities.getResource("GEI441");
      assertEquals("test1_addActivitDiffRooms: assertEquals 1", 2, activityResc.getKey());

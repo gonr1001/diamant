@@ -384,7 +384,7 @@ public class SetOfActivities extends SetOfResources{
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
-  public void buildSetOfActivities(int beginPosition){
+  public void buildSetOfResources(int beginPosition){
     String token;
     String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );

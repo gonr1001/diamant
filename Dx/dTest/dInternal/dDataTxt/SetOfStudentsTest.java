@@ -191,7 +191,7 @@ public class SetOfStudentsTest  extends TestCase{
                    "GEI700101 GEI450202 CTB513102 GEI442101"+"\r\n";
     SetOfStudents setOfStudents= new SetOfStudents(tokens.getBytes());
     setOfStudents.analyseTokens(0);
-    setOfStudents.buildStudentList(0);
+    setOfStudents.buildSetOfResources(0);
     Vector list= new Vector();
     list.add("LUPIEN MY 00900813");
     list.add("ALEX JARA 01902704");

@@ -47,7 +47,7 @@ public class SetOfResources extends DXObject{
    * @param
    * @return <{Vector}>
    */
-  public boolean analyseTokens(){
+  public boolean analyseTokens(int beginPosition){
     return false;
   }
 
@@ -56,7 +56,7 @@ public class SetOfResources extends DXObject{
    *use StringTokenizer st: instructors in text format
    *
    */
-  public void buildSetOfResources(){
+  public void buildSetOfResources(int beginPosition){
   }
 
   /**
@@ -238,6 +238,15 @@ public class SetOfResources extends DXObject{
       return (Resource) _resourceList.get(position);
     return null;
   }
+
+  /**
+   *  0= activities, 1= students, 2= instructors, 3 = rooms, 4= other
+   * @return
+   */
+  public int getResourceType(){
+      return  _resourceType;
+  }
+
 
   /**
    *

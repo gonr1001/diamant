@@ -9,6 +9,7 @@ package dInternal.dData;
  * @version 1.0
  */
 import dInternal.dUtil.DXObject;
+import dResources.DConst;
 import java.util.Vector;
 import java.util.StringTokenizer;
 
@@ -131,10 +132,13 @@ public class Assignment extends DXObject{
    * @return String the instructor name
    * */
   public String [] getInstructorNames(){
+    String noNames[]= {DConst.NO_ROOM_INTERNAL};
     String names [] = new String [_setInstructorNames.size()];
     for (int i = 0; i < _setInstructorNames.size() ; i++){
       names [i] = _setInstructorNames.getResourceAt(i).getID();
     }
+    if (_setInstructorNames.size()==0)
+      return noNames;
     return names;
   }
   /**

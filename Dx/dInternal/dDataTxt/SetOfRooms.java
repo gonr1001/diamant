@@ -117,7 +117,7 @@ public class SetOfRooms extends SetOfResources{
    *use StringTokenizer st: rooms in text format
    *
    */
-  public void buildSetOfRooms(int beginPosition, RoomsAttributesInterpretor attr){
+  public void buildSetOfResources(int beginPosition, RoomsAttributesInterpretor attr){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state = 0;

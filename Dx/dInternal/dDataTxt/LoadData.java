@@ -126,7 +126,7 @@ public class LoadData {
          instructorsList.setSetOfResources(currentList.getSetOfResources());
 
       if (instructorsList.analyseTokens(0)){
-        instructorsList.buildSetOfInstructors(0);
+        instructorsList.buildSetOfResources(0);
         return instructorsList;
       }
     } else {// (NullPointerException npe) {
@@ -147,7 +147,7 @@ public class LoadData {
          roomsList.setSetOfResources(currentList.getSetOfResources());
 
      if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfRooms(0, _roomsAttributesInterpretor);
+       roomsList.buildSetOfResources(0, _roomsAttributesInterpretor);
      }
    } else {// (NullPointerException npe) {
      new FatalProblemDlg("I was in LoadData class and extractRooms. preload failed!!!" );
@@ -181,7 +181,7 @@ public class LoadData {
            studentsList.setSetOfResources(currentList.getSetOfResources());
 
        if (studentsList.analyseTokens(0)){
-         studentsList.buildStudentList(0);
+         studentsList.buildSetOfResources(0);
          //return studentsList;
        }
      } else {// (NullPointerException npe) {
@@ -202,13 +202,53 @@ public class LoadData {
          activitiesList.setSetOfResources(currentList.getSetOfResources());
 
      if (activitiesList.analyseTokens(1)){
-       activitiesList.buildSetOfActivities(1);
+       activitiesList.buildSetOfResources(1);
      }
    } else {// (NullPointerException npe) {
      new FatalProblemDlg("I was in LoadData class and extractActivities. preload failed!!!" );
      //System.exit(52);
    }
    return activitiesList;
+  }
+
+  /**
+   *
+   * @param setOfResc
+   * @param merge
+   * @return
+   */
+  public SetOfResources selectiveImport(SetOfResources setOfResc, String file, boolean merge){
+    String str= setOfResc.getClass().getName();
+     byte[]  dataloaded = preLoad(file);
+    SetOfResources currentsetOfResc= new SetOfResources(setOfResc.getResourceType());
+    if (str.equalsIgnoreCase("dInternal.dData.SetOfInstructors")){
+      currentsetOfResc = new SetOfInstructors(dataloaded,5,14);
+      // implement selective import for instructors
+    } else if (str.equalsIgnoreCase("dInternal.dData.SetOfRooms")){
+      // implement selective import for rooms
+    } else if (str.equalsIgnoreCase("dInternal.dData.SetOfActivities")){
+      // implement selective import for activities
+    } else if (str.equalsIgnoreCase("dInternal.dData.SetOfStudents")){
+      // implement selective import for students
+    } else {// (NullPointerException npe) {
+      new FatalProblemDlg("I was in LoadData class, No resource class available!!!" );
+    }
+
+    if (dataloaded != null) {
+      if (merge && (setOfResc!=null)){
+          currentsetOfResc.setSetOfResources(setOfResc.getSetOfResources());
+          currentsetOfResc.setCurrentKey((long)setOfResc.size());
+      }
+
+      if (currentsetOfResc.analyseTokens(0)){
+        currentsetOfResc.buildSetOfResources(0);
+        return currentsetOfResc;
+      }
+    } else {// (NullPointerException npe) {
+      new FatalProblemDlg("I was in LoadData class and extractInstructors. preload failed!!!" );
+      //System.exit(52);
+    }
+    return setOfResc;
   }
 
   /**
@@ -230,27 +270,30 @@ public class LoadData {
        SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
            tts.getNumberOfActiveDays(),tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
        if (instructorsList.analyseTokens(0)){
-        instructorsList.buildSetOfInstructors(0);
+        instructorsList.buildSetOfResources(0);
       }
+      //debug merge instructor file: S801.DISPROF
+      //instructorsList= (SetOfInstructors) selectiveImport(instructorsList,"S801.DISPROF",true);
+      // end debug
       extract.add(instructorsList);
 
       // extract rooms
       SetOfRooms roomsList = new SetOfRooms(project.nextToken().trim().getBytes(),5,14);
       if (roomsList.analyseTokens(0)){
-       roomsList.buildSetOfRooms(3, extractRoomsAttributesInterpretor());
+       roomsList.buildSetOfResources(3, extractRoomsAttributesInterpretor());
      }
      extract.add(roomsList);
 
      // extract activities
      SetOfActivities activitiesList = new SetOfActivities(project.nextToken().trim().getBytes(),true);
      if (activitiesList.analyseTokens(1)){
-       activitiesList.buildSetOfActivities(1);
+       activitiesList.buildSetOfResources(1);
      }
      extract.add(activitiesList);
      //extract students
      SetOfStudents studentsList = new SetOfStudents(project.nextToken().trim().getBytes());
      if (studentsList.analyseTokens(0)){
-       studentsList.buildStudentList(0);
+       studentsList.buildSetOfResources(0);
      }
       extract.add(studentsList);
 

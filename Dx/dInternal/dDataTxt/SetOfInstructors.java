@@ -111,7 +111,7 @@ public class SetOfInstructors extends SetOfResources{
    *use StringTokenizer st: instructors in text format
    *
    */
-  public void buildSetOfInstructors(int beginPosition){
+  public void buildSetOfResources(int beginPosition){
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     String token;
     Vector avail= new Vector();
