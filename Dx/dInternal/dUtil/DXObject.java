@@ -13,6 +13,16 @@ public class DXObject extends Object{
   public DXObject() {
   }
 
+  private String associateLength;
+
+  public void setAssociateLength(String length){
+    associateLength = length;
+  }
+
+  public String getAssociateLength(){
+    return associateLength;
+  }
+
   /**
    * this method is implemented in each resource object (Room, Instructor, Student
    * and Activity)
@@ -73,6 +83,8 @@ public class DXObject extends Object{
     int [][] mat= new int[2][2];
     return mat;
   }
+
+
 
   /**
    *

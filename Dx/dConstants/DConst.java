@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.54 $  $Date: 2003-09-29 20:55:54 $
+ * Title: DConst $Revision: 1.55 $  $Date: 2003-10-01 20:53:58 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.54 $
+ * @version $Revision: 1.55 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -84,6 +84,9 @@ public class DConst {
   //DDocument
   public final static String V_DATE = res.getString("vDate");//13 mai 2003
   public final static String BLOCS = "BLOCS";//pas trouve dans DStringFrRes
+
+  //return constant
+  public final static String CR_LF = "\r\n";//
 
 
 
@@ -209,10 +212,21 @@ public class DConst {
   public final static String R_DAY_NUMBER = res.getString("RDayNumber");//Jour numéro
   public final static String R_DAY_NAME = res.getString("RDayName");//Jour nom
   public final static String R_ACTIVITY_BEGIN_HOUR = res.getString("RActivityBeginHour");//Heure de début
-  public final static String R_ACTI_END_HOUR = res.getString("RActivityEndHour");//Heure de fin
+  public final static String R_ACTIVITY_END_HOUR = res.getString("RActivityEndHour");//Heure de fin
   public final static String R_INSTRUCTOR_NAME = res.getString("RInstructorName");//Nom instructor
   public final static String R_ROOM_NAME = res.getString("RRoomName");//Nom Salle
-
+    //the associated string length for each item above
+  public final static String R_ACTIVITY_NAME_L = "30";
+  public final static String R_TYPE_NAME_L = "10";
+  public final static String R_SECTION_NAME_L = "10";
+  public final static String R_UNITY_NAME_L = "10";
+  public final static String R_DURATION_L = "10";
+  public final static String R_DAY_NUMBER_L = "10";
+  public final static String R_DAY_NAME_L = "20";
+  public final static String R_ACTIVITY_BEGIN_HOUR_L = "10";
+  public final static String R_ACTIVITY_END_HOUR_L = "10";
+  public final static String R_INSTRUCTOR_NAME_L = "40";
+  public final static String R_ROOM_NAME_L = "20";
   //Help dialogs
   public final static String ABOUT_TD = res.getString("aboutTD");//A propos de, repete
   public final static String ABOUT_D = res.getString("aboutD");// \nCopyRight\n 2000 - 2003

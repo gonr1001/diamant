@@ -17,6 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -94,35 +95,78 @@ public class ReportDlg extends JDialog implements ActionListener{
    * @param mainFieldKey
    * @param otherFieldsKeys
    */
+/*
   public void setReport(int mainFieldKey, int[] otherFieldsKeys){
     if (_tabbedPane.getSelectedIndex() == -1)
       return;
     String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
     JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
-    jta.removeAll();
-    jta.append(reportData);
+    jta.setFont(DConst.JLISTS_FONT);
+    jta.setText(reportData);
   }
+  */
 
   public void setReport(SetOfResources selectedResources){
     if (_tabbedPane.getSelectedIndex() == -1)
       return;
     if (selectedResources.size() <= 0)
       return;
-    int mainKey = 0;
-    int[] otherKeys = new int[selectedResources.size()-1];
+    int mainFieldKey = 0;
+    int[] otherFieldsKeys = new int[selectedResources.size()-1];
+    String[] fieldsNames = new String[selectedResources.size()];
+    int[] fieldLengths = new int[selectedResources.size()];
     for (int i = 0; i < selectedResources.size(); i++){
       if (i == 0)
-        mainKey = (int) selectedResources.getResourceAt(i).getKey()-1;
-      else{
-        otherKeys[i-1] = (int) selectedResources.getResourceAt(i).getKey()-1;
-      }//end if~else (i==0)
+        mainFieldKey = (int) selectedResources.getResourceAt(i).getKey()-1;
+      else
+        otherFieldsKeys[i-1] = (int) selectedResources.getResourceAt(i).getKey()-1;
+      fieldsNames[i] = selectedResources.getResourceAt(i).getID();
+      fieldLengths[i] = Integer.parseInt(selectedResources.getResourceAt(i).getAttach().getAssociateLength());
     }//end for
-    String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainKey, otherKeys);
+    String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
     JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
-    jta.removeAll();
-    jta.append(reportData);
+    jta.setFont(DConst.JLISTS_FONT);
+    jta.setText(reportData);
+    buildReport(fieldsNames, fieldLengths, reportData);
+  }
+
+  private void buildReport(String[] fieldsNames, int[] fieldsLengths, String reportData){
+    StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
+    StringTokenizer strFields;
+    String fields;
+    String currentField;
+    String resultLine = "";
+    String blanks = "                               ";
+    int strLinesLength, strFieldsLength;
+    JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
+    JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
+    jta.setFont(DConst.JLISTS_FONT);
+    jta.setText("");
+    for (int k = 0; k < fieldsNames.length; k++){
+      currentField = fieldsNames[k] + blanks;
+      currentField = currentField.substring(0, fieldsLengths[k]);
+      resultLine = resultLine + currentField;
+    }
+    resultLine = resultLine + DConst.CR_LF;
+    jta.setText(resultLine);
+    strLinesLength = strLines.countTokens();
+    for(int i = 0; i < strLinesLength; i++){
+      fields = strLines.nextToken();
+      strFields = new StringTokenizer(fields, ";");
+      strFieldsLength = strFields.countTokens();
+      resultLine = "";
+      for(int j = 0; j < strFieldsLength; j++){
+        currentField = strFields.nextToken();
+        currentField = currentField + blanks;
+        currentField = currentField.substring(0, fieldsLengths[j]);
+        resultLine = resultLine + currentField;
+      }//end internal for
+      resultLine = resultLine + DConst.CR_LF;
+      jta.append(resultLine);
+    }//end external for
+    //System.out.println("str.nextToken() "+str.nextToken());
   }
 
   public void actionPerformed(ActionEvent e){

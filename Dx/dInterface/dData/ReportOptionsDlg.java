@@ -23,8 +23,7 @@ import dInterface.dUtil.DXTools;
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 
-//import dInternal.dData.SetOfActivities;
-//import dInternal.dData.Activity;
+import dInternal.dUtil.DXObject;
 
 import dResources.DConst;
 
@@ -123,24 +122,25 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
   private void setListVectors(int reportType){
     _leftVec = new Vector();
     _rightVec = new Vector();
-    String [] reportElements = null;
+    String [][] reportElements = null;
     _resources = new SetOfResources(0);
     Resource res;
+    DXObject dxo;
     switch(reportType){
       case 0://_activitiesReport
-        String [] elements =
+        String [][] elements =
         {
-          DConst.R_ACTIVITY_NAME,
-          DConst.R_TYPE_NAME,
-          DConst.R_SECTION_NAME,
-          DConst.R_UNITY_NAME,
-          DConst.R_DURATION,
-          DConst.R_DAY_NUMBER,
-          DConst.R_DAY_NAME,
-          DConst.R_ACTIVITY_BEGIN_HOUR,
-          DConst.R_ACTI_END_HOUR,
-          DConst.R_INSTRUCTOR_NAME,
-          DConst.R_ROOM_NAME,
+          {DConst.R_ACTIVITY_NAME, DConst.R_ACTIVITY_NAME_L},
+          {DConst.R_TYPE_NAME, DConst.R_TYPE_NAME_L},
+          {DConst.R_SECTION_NAME, DConst.R_SECTION_NAME_L},
+          {DConst.R_UNITY_NAME, DConst.R_UNITY_NAME_L},
+          {DConst.R_DURATION, DConst.R_DURATION_L},
+          {DConst.R_DAY_NUMBER, DConst.R_DAY_NUMBER_L},
+          {DConst.R_DAY_NAME, DConst.R_DAY_NAME_L},
+          {DConst.R_ACTIVITY_BEGIN_HOUR, DConst.R_ACTIVITY_BEGIN_HOUR_L},
+          {DConst.R_ACTIVITY_END_HOUR, DConst.R_ACTIVITY_END_HOUR_L},
+          {DConst.R_INSTRUCTOR_NAME, DConst.R_INSTRUCTOR_NAME_L},
+          {DConst.R_ROOM_NAME, DConst.R_ROOM_NAME_L}
         };
         reportElements = elements;
         break;
@@ -160,9 +160,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         break;
     }//end switch
     for(int i = 0; i < reportElements.length; i++){
-      res = new Resource(reportElements[i], null);
+      dxo = new DXObject();
+      dxo.setAssociateLength(reportElements[i][1]);
+      res = new Resource(reportElements[i][0], dxo);
       _resources.addResource(res, 1);
-    }
+    }//rnd for
     _leftVec = _resources.getNamesVector(1);
   }//end method
 
@@ -178,7 +180,6 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         dispose();
     //if button OK
     if (command.equals(_buttonsNames[0])){
-      System.out.println("ok ");
       SetOfResources selectedResources = new SetOfResources(0);
       Resource r = null;
       for (int i = 0; i < _rightVec.size(); i++){
@@ -187,7 +188,6 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         selectedResources.addResource(r, 0);
       }
       _parentDlg.setReport(selectedResources);
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
