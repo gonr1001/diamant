@@ -342,45 +342,80 @@ En fonction de chaque instance de système, il faut définir le
 schéma de la base de données, et les rôles et privileges des
 utilisateurs.
 
+Une autre dimension de ces deux activités est l'interaction des
+utilisateurs avec la bases de données. Nous considérons deux types
+d'utilisateurs~: le commis et le responsable de la construction.
+Le commis est celui qui va saisir les infrastructures comme dans
+la base, le responsable et celui qui est responsable de la
+construction l'horaire et qui interagit avec  le programme de
+construction d'horaires.
+
+Le commis va saisir ou mettre-à-jour  une donnée dans la base si
+la données est valide,  elle est accepté et entrée dans la base.
+Par exemple si la donne attendue est un entier dans une
+intervalle, et que la donnée entrée correspond à l'ensemble de
+valeurs attendues; elle sera entrée dans la base. Sinon. le commis
+doit rentrer une nouvelle valeur. Bien entendu, il faut avoir
+différentes priorités d'accès.
+
+La construction d'horaires est une activité de nature itérative.
+En général, les algorithmes de construction d'horaires proposent
+de respecter les contraintes fortes et de essayer de respecter le
+plus possible de contraintes faibles, donc, le responsable, va
+essayer de trouver plusieurs solutions pour en choisir une. Dans
+certains cas, il est possible de faire partir le programme avec
+les mêmes données pour trouver une nouvelle solution. Dans
+d'autres cas il est  nécessaire de changer les données de départ
+pour obtenir une nouvelle solution. S'il faut faire $n$ essais la
+solution choisie par le responsable sera la solution $s$ où $1
+\leq s \leq n$. Il est nécessaire de prévoir une manière de
+travailler avec la base de données afin de sauvegarder les
+changements effectuées pour chaque itération et faire un
+``commit'' lorsque la solution est choisie et que l'horaire
+devient définitif pour la période
+
 
 
 \section{La decomposition modulaire, top-down, alternatives et
 justifications} \label{sec:archi}
 
+Suite à l'étude du flot de données dans la production d'horaires,
+nous sommes en mesure de proposer une architecture pour implénter
+le système
+
 \subsection {Architecture trois-tiers et la production d'horaires}
 
-De manière abstraite une architecture logicielle décrit les
+De manière abstraite, une architecture logicielle décrit les
 éléments composants d'un système, elle montre aussi les
-interactions entre ces éléments, les patterns qui guident sa
-composition et les contraints de ces patterns. \cite{shaw96}
+interactions entre ces éléments, les modèles qui guident sa
+composition et les contraints de ces modèles. \cite{shaw96}
 
 De façon générale, quand nous avons un problème complexe, la
 meilleure solution est découper le problème en fragments plus
 faciles à gérer avec des solutions simples. Après si nous mettons
 ensemble ces petites solutions, nous allons arriver à la solution
-de notre problème complexe\cite{bus96}.
+de notre problème complexe \cite{buschmann96}.
 
 À l'heure actuelle il y a plusieurs architectures disponibles pour
-développer des applications logicielles, mais nous pensons que la
-plus adaptée pour mieux résoudre notre problème est celle de trois
-couches.
+développer des applications logicielles,  la plus adaptée pour
+mieux résoudre notre problème est celle de trois couches.
 
 L'architecture montré dans la figure \ref{fig:fThree} propose la
 division du système en trois couches, chacune avec une fonction
-bien définit :
+bien définie~:
 
 \begin{description}
-\item [L'interface d'utilisateur:] Est responsable de valider la
+\item [L'interface d'utilisateur~:] Est responsable de valider la
 saisie des données de l'utilisateur, ainsi que l'entrée des
 données qui vient d'autres systèmes.
 
-\item [La couche de logique d'affaires :] Est responsable du
+\item [La couche de logique d'affaires~:] Est responsable du
 comportement du système, c'est à dire, ici sont codées les règles
 d'affaires.
 
-\item [La couche de persistance :] Qui doit gérer le stockage
+\item [La couche de persistance~:] Qui doit gérer le stockage
 physique des données, soit dans fichiers avec un certain format,
-ou dans systèmes de bases de données traditionnelles ou bien dans
+ou dans un système de bases de données traditionnelle ou bien dans
 autres modèles de persistance qui sont capables de gérer des bases
 de données complexes.
 \end {description}
@@ -402,40 +437,40 @@ de données complexes.
 \subsection {L'architecture trois couches et le système de production d'horaires}
 
 Pour chaque élément de l'architecture trois couches que nous avons
-présenté, nous allons proposer un composant qui fait parti de
+présenté, nous allons proposer un composant qui fait partie de
 l'application de production d'horaires.
 
 La conception de haut niveau de notre système de production
 d'horaires est simple (voir figure \ref{fig:fOne})~:
 
 \begin{enumerate}
-\item Nous avons des données qui rentrent dans le système. Ces
+\item Nous avons des données qui entrent dans le système. Ces
 données sont gérées par la couche d'interface. Les données peuvent
-venir de la saisie directe des utilisateurs (données trimestre) ou
-bien des données qui sont générées par autres systèmes (données de
-base). Nous avons aussi des données qui sortent de notre système
-comme résultat de la création d'horaires (données horaire) (voir
-figure \ref{fig:fTwo})
+venir de la saisie directe des utilisateurs (données d'une
+période) ou bien des données qui sont générées par autres systèmes
+(données de base). Nous avons aussi des données qui sortent de
+notre système comme résultat de la création d'horaires (données
+horaire) (voir figure \ref{fig:fTwo})
 
-\item Les données sont transformées selon certaines règles et
-contraintes, ces règles sont définies par chaque établissement et
+\item Les données sont traitées selon certaines règles et
+contraintes, ces règles sont définies par chaque institution et
 elles sont codées dans la couche logique d'affaires. C'est ici que
 nous pourrons exprimer des contraints propres à chaque
-établissement, par exemple, la quantité maximale d'étudiants dans
+institution, par exemple, la quantité maximale d'étudiants dans
 une classe, la capacité des sales des cours, etc.
 
-\item Les données résultats de ces transformations doivent être
+\item Les données résultats de ces traitements doivent être
 stockes dans quelque part pour pouvoir être utilisées après sa
 génération. C'est la couche de persistance de données qui est
-responsable de cette tache. Dans un système de production
+responsable de cette tâche. Dans un système de production
 d'horaires, les données peuvent être stockées dans une base de
 données (relationnel, objet ou autre technologie), dans un fichier
 XML, dans un fichier texte ou bien dans autre moyen de stockage
 pertinent.
 \end{enumerate}
 
-Ces éléments de composition et ses relations sont mieux illustrés
-dans la figure \ref{fig:fFour}.
+Ces éléments de composition et ses relations sont illustrés dans
+la figure \ref{fig:fFour}.
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
@@ -1024,6 +1059,15 @@ Plan de la suite
 
 \bibliography{bibDiamant,bibProg}
 
+
+
+\end{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Glossaire}
 
 
@@ -1066,13 +1110,6 @@ for each module is allowed to make about the other modules."
 \cite{meyer97}
 
 \end{description}
-
-\end{document}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 {\bf Introduction.} La production d'horaires est une tâche
 périodique pour plusieurs institutions d'enseignement, en
