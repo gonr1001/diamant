@@ -25,14 +25,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTabbedPane;
-import javax.swing.text.JTextComponent;
-
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
+import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 import dInternal.dData.StandardReportData;
+import dInternal.dUtil.DXValue;
 
 import dResources.DConst;
 
@@ -40,21 +40,24 @@ public class ReportDlg extends JDialog implements ActionListener{
 
   private DApplication _dApplic = null;
   private JDialog _jd = this;
-  private JPanel _buttonsPanel;
   private JTabbedPane _tabbedPane;
   private StandardReportData _srd;
-  private String[] _buttonsNames = {DConst.BUT_OK, "OPTIONS", DConst.BUT_CANCEL};
+  private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_OPTIONS, DConst.BUT_CANCEL};
+  private SetOfResources _resources;
 
   public ReportDlg(DApplication dApplic) {
-    super(dApplic.getJFrame(), "Rapports", true);
+    super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
     _dApplic = dApplic;
     jbInit();
     setLocationRelativeTo(dApplic.getJFrame());
     setVisible(true);
   }//end constructor
 
+  /**
+   * Doalog initialization
+   */
   private void jbInit(){
-    Dimension dialogDim = new Dimension(600,600);
+    Dimension dialogDim = new Dimension(1000,600);
     Dimension tabbedPaneDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-60);
     Dimension tabDim = new Dimension((int)dialogDim.getWidth()-50, (int)dialogDim.getHeight()-60);
     getContentPane().setLayout(new BorderLayout());
@@ -63,13 +66,12 @@ public class ReportDlg extends JDialog implements ActionListener{
     //the tabbedPane
     _tabbedPane = new JTabbedPane();
     _tabbedPane.setPreferredSize(tabbedPaneDim);
-    _tabbedPane.addTab("Activities Report", createTabPanel(tabbedPaneDim, ""));
-    _tabbedPane.addTab("Students Report", createTabPanel(tabbedPaneDim, ""));
-    //the buttons panel
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    //_buttonsPanel = DXTools.buttonsPanel2(this, _buttonsNames, tabbedPaneDim);
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB1, createTabPanel(tabbedPaneDim, ""));
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB2, createTabPanel(tabbedPaneDim, ""));
+    _tabbedPane.addTab(DConst.REPORT_DLG_TAB3, createTabPanel(tabbedPaneDim, ""));
+    //adding the elements to the dialog
     getContentPane().add(_tabbedPane, BorderLayout.NORTH);
-    getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
+    getContentPane().add(DXTools.buttonsPanel(this, _buttonsNames), BorderLayout.SOUTH);
   }
 
   /**
@@ -90,23 +92,13 @@ public class ReportDlg extends JDialog implements ActionListener{
     return panel;
   }
 
-  /**
-   *
-   * @param mainFieldKey
-   * @param otherFieldsKeys
-   */
-/*
-  public void setReport(int mainFieldKey, int[] otherFieldsKeys){
-    if (_tabbedPane.getSelectedIndex() == -1)
-      return;
-    String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
-    JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
-    JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
-    jta.setFont(DConst.JLISTS_FONT);
-    jta.setText(reportData);
-  }
-  */
 
+
+  /**
+   * Gets the data report format from the setOfResourcesSet, gets the data report
+   * from the methos getReportData and Builds the report into the tabbedPnel
+   * @param selectedResources
+   */
   public void setReport(SetOfResources selectedResources){
     if (_tabbedPane.getSelectedIndex() == -1)
       return;
@@ -114,15 +106,19 @@ public class ReportDlg extends JDialog implements ActionListener{
       return;
     int mainFieldKey = 0;
     int[] otherFieldsKeys = new int[selectedResources.size()-1];
-    String[] fieldsNames = new String[selectedResources.size()];
     int[] fieldLengths = new int[selectedResources.size()];
+    String[] fieldsNames = new String[selectedResources.size()];
+    Resource res;
     for (int i = 0; i < selectedResources.size(); i++){
+      res = selectedResources.getResourceAt(i);
       if (i == 0)
-        mainFieldKey = (int) selectedResources.getResourceAt(i).getKey()-1;
+        mainFieldKey = (int)((DXValue)res.getAttach()).getIntValue();
       else
-        otherFieldsKeys[i-1] = (int) selectedResources.getResourceAt(i).getKey()-1;
+        otherFieldsKeys[i-1] = (int)((DXValue)res.getAttach()).getIntValue();;
       fieldsNames[i] = selectedResources.getResourceAt(i).getID();
-      fieldLengths[i] = Integer.parseInt(selectedResources.getResourceAt(i).getAttach().getAssociateLength());
+      fieldLengths[i] = Integer.parseInt(((DXValue)selectedResources.getResourceAt(i).getAttach()).getStringValue());
+      ((DXValue)res.getAttach()).setBooleanValue(true);
+      _resources = selectedResources;
     }//end for
     String reportData = getReportData(_tabbedPane.getSelectedIndex(), mainFieldKey, otherFieldsKeys);
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
@@ -130,8 +126,14 @@ public class ReportDlg extends JDialog implements ActionListener{
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText(reportData);
     buildReport(fieldsNames, fieldLengths, reportData);
-  }
+  }//end method
 
+  /**
+   * Builds a report with the format defined by the parameters
+   * @param fieldsNames The first line of the report
+   * @param fieldsLengths The spaces allowed for the fields
+   * @param reportData The data report
+   */
   private void buildReport(String[] fieldsNames, int[] fieldsLengths, String reportData){
     StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
     StringTokenizer strFields;
@@ -139,6 +141,7 @@ public class ReportDlg extends JDialog implements ActionListener{
     String currentField;
     String resultLine = "";
     String blanks = "                               ";
+    String underLine = "";
     int strLinesLength, strFieldsLength;
     JScrollPane scrollPanel = (JScrollPane)((JPanel)_tabbedPane.getSelectedComponent()).getComponent(0);
     JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
@@ -147,10 +150,15 @@ public class ReportDlg extends JDialog implements ActionListener{
     for (int k = 0; k < fieldsNames.length; k++){
       currentField = fieldsNames[k] + blanks;
       currentField = currentField.substring(0, fieldsLengths[k]);
+      currentField = currentField + "|  ";
       resultLine = resultLine + currentField;
     }
+    for (int k = 0; k < resultLine.length()-2; k++)
+      underLine = underLine + "-";
     resultLine = resultLine + DConst.CR_LF;
+    underLine = underLine + DConst.CR_LF;
     jta.setText(resultLine);
+    jta.append(underLine);
     strLinesLength = strLines.countTokens();
     for(int i = 0; i < strLinesLength; i++){
       fields = strLines.nextToken();
@@ -161,21 +169,30 @@ public class ReportDlg extends JDialog implements ActionListener{
         currentField = strFields.nextToken();
         currentField = currentField + blanks;
         currentField = currentField.substring(0, fieldsLengths[j]);
+        currentField = currentField + "|  ";
         resultLine = resultLine + currentField;
       }//end internal for
       resultLine = resultLine + DConst.CR_LF;
       jta.append(resultLine);
     }//end external for
-    //System.out.println("str.nextToken() "+str.nextToken());
   }
 
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //If buttons OPTIONS
     if (command.equals("OPTIONS"))
-        new ReportOptionsDlg(_dApplic, _jd, 0);
+        new ReportOptionsDlg(_dApplic, _jd, _resources, 0);
+    if (command.equals("Fermer"))
+      dispose();
   }
 
+  /**
+   * Gets the data report with regard to the type of required report
+   * @param reportIndex The index of the required report
+   * @param mainFieldKey the firs index to build the report
+   * @param otherFieldsKeys the other index to build the report
+   * @return data report
+   */
   private String getReportData(int reportIndex, int mainFieldKey, int[] otherFieldsKeys){
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     String dataReport = "";
@@ -189,6 +206,5 @@ public class ReportDlg extends JDialog implements ActionListener{
     }
     return dataReport;
   }
-
 
 }//end class

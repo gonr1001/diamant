@@ -1,7 +1,7 @@
 package dResources;
 /**
  *
- * Title: DStringFrRes $Revision: 1.55 $  $Date: 2003-10-03 02:52:05 $
+ * Title: DStringFrRes $Revision: 1.56 $  $Date: 2003-10-03 21:49:11 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@ package dResources;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.56 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -145,6 +145,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"butOK", "Ok"},
     {"butCancel", "Annuler"},
     {"butApply", "Appliquer"},
+    {"butOptions", "Options"},
     {"butBrowse", "Parcourir"},
     {"butPlace", "Placer"},
     {"butFige", "Figer"},
@@ -242,21 +243,21 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"InitialAffectMessage", "Affectation initiale effectuée"},
 
     //Report dialogs
-    {"RActivityName","Nom d'activité"},
+    {"ReportDlgTitle","Rapports"},
+    {"ReportDlgTab1","Complet"},
+    {"ReportDlgTab2","Conflits"},
+    {"ReportDlgTab3","Importation"},
+    {"RActivityName","Nom"},
     {"RTypeName","Type"},
     {"RSectionName","Section"},
     {"RUnityName","Unité"},
     {"RDuration","Durée"},
-    {"RDayNumber","Jour numéro"},
-    {"RDayName","Jour nom"},
-    {"RActivityBeginHour","Heure de début"},
-    {"RActivityEndHour","Heure de fin"},
-    {"RInstructorName","Nom instructor"},
-    {"RRoomName","Nom Salle"},
-    {"",""},
-    {"",""},
-    {"",""},
-    {"",""},
+    {"RDayNumber","No. Jour"},
+    {"RDayName","Nom Jour"},
+    {"RActivityBeginHour","Début"},
+    {"RActivityEndHour","Fin"},
+    {"RInstructorName","Instructor"},
+    {"RRoomName","Salle"},
     {"",""},
     {"",""},
     {"",""},

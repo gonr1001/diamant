@@ -338,8 +338,9 @@ public class SetOfResources extends DXObject{
     Vector namesVector =new Vector();
     if(sortIndex == 0)
       sortSetOfResourcesByKey();
-    if(sortIndex == 1)
+    if(sortIndex == 1){
       sortSetOfResourcesByID();
+    }
     for (int i=0; i< this._resourceList.size(); i++)
       namesVector.add(((Resource)_resourceList.get(i)).getID());
    return namesVector;

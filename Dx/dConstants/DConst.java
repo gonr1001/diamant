@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.56 $  $Date: 2003-10-03 02:52:05 $
+ * Title: DConst $Revision: 1.57 $  $Date: 2003-10-03 21:49:11 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.56 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.57 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -36,11 +36,11 @@ public class DConst {
   public final static String BUT_OK = res.getString("butOK");//Ok
   public final static String BUT_CANCEL = res.getString("butCancel");//Annuler
   public final static String BUT_APPLY = res.getString("butApply");//Appliquer
+  public final static String BUT_OPTIONS = res.getString("butOptions");//Options
   public final static String BUT_BROWSE = res.getString("butBrowse");//Parcourir
   public final static String BUT_PLACE = res.getString("butPlace");//Placer
   public final static String BUT_FIGE = res.getString("butFige");//Figer
   public final static String SORT_TITLE = res.getString("sortTitle");//Trier
-
   public final static String TOKENSEPARATOR = ".";//Sans titre
   public final static String NO_NAME = res.getString("noName");//Sans titre
   public final static String DIA = res.getString("dia");//dia
@@ -206,6 +206,10 @@ public class DConst {
   public final static String PLAF_D = res.getString("plafD");//Choisisez un L&F
 
   //Report dialogs
+  public final static String REPORT_DLG_TITLE = res.getString("ReportDlgTitle");//Rapports
+  public final static String REPORT_DLG_TAB1 = res.getString("ReportDlgTab1");//Complet
+  public final static String REPORT_DLG_TAB2 = res.getString("ReportDlgTab2");//Conflits
+  public final static String REPORT_DLG_TAB3 = res.getString("ReportDlgTab3");//Importation
   public final static String R_ACTIVITY_NAME = res.getString("RActivityName");//Nom d'activité
   public final static String R_TYPE_NAME = res.getString("RTypeName");//Type
   public final static String R_SECTION_NAME = res.getString("RSectionName");//Section
@@ -218,17 +222,17 @@ public class DConst {
   public final static String R_INSTRUCTOR_NAME = res.getString("RInstructorName");//Nom instructor
   public final static String R_ROOM_NAME = res.getString("RRoomName");//Nom Salle
     //the associated string length for each item above
-  public final static String R_ACTIVITY_NAME_L = "30";
-  public final static String R_TYPE_NAME_L = "10";
-  public final static String R_SECTION_NAME_L = "10";
-  public final static String R_UNITY_NAME_L = "10";
-  public final static String R_DURATION_L = "10";
-  public final static String R_DAY_NUMBER_L = "10";
-  public final static String R_DAY_NAME_L = "20";
-  public final static String R_ACTIVITY_BEGIN_HOUR_L = "10";
-  public final static String R_ACTIVITY_END_HOUR_L = "10";
-  public final static String R_INSTRUCTOR_NAME_L = "40";
-  public final static String R_ROOM_NAME_L = "20";
+  public final static String R_ACTIVITY_NAME_L = "7";
+  public final static String R_TYPE_NAME_L = "5";
+  public final static String R_SECTION_NAME_L = "8";
+  public final static String R_UNITY_NAME_L = "6";
+  public final static String R_DURATION_L = "6";
+  public final static String R_DAY_NUMBER_L = "9";
+  public final static String R_DAY_NAME_L = "9";
+  public final static String R_ACTIVITY_BEGIN_HOUR_L = "6";
+  public final static String R_ACTIVITY_END_HOUR_L = "6";
+  public final static String R_INSTRUCTOR_NAME_L = "25";
+  public final static String R_ROOM_NAME_L = "8";
   //Help dialogs
   public final static String ABOUT_TD = res.getString("aboutTD");//A propos de, repete
   public final static String ABOUT_D = res.getString("aboutD");// \nCopyRight\n 2000 - 2003

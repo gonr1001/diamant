@@ -160,6 +160,15 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
 
 
 
+/**
+ *
+ * @param sourceList
+ * @param destinationList
+ * @param sourceVector
+ * @param destinationVector
+ * @param sortIndex Zero if we want to sort by key
+ */
+
 public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, int sortIndex){
   if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
     return;

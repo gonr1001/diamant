@@ -23,7 +23,7 @@ import dInterface.dUtil.DXTools;
 import dInternal.dData.Resource;
 import dInternal.dData.SetOfResources;
 
-import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXValue;
 
 import dResources.DConst;
 
@@ -37,9 +37,9 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    */
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel, _buttonsPanel;
-  private Object [] _currentActivities = new Object[0];
+  //private Object [] _currentActivities = new Object[0];
   //private ReportDlg _rdlg;
-  private SetOfResources _resources;
+  private SetOfResources _resources, _selectedResources, _externalResources;
   private String [] _buttonsNames = {DConst.BUT_OK, DConst.BUT_CANCEL};
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT, "+", "-"};
   /**
@@ -47,14 +47,16 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
    */
   private Vector _rightVec, _leftVec;
 
-  public ReportOptionsDlg(DApplication dApplic, JDialog parentDlg, int reportType){
+  public ReportOptionsDlg(DApplication dApplic, JDialog parentDlg, SetOfResources res, int reportType){
     super(dApplic.getJFrame(), "OPTIONS DLG", true);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
-    _leftVec = new Vector();
+    _externalResources = res;
     _parentDlg = (ReportDlg)parentDlg;
-    setListVectors(reportType);
+    setSetOfResources(reportType);
+    _leftVec = getSelectedFields(_resources, false);
+    _rightVec = getSelectedFields(_externalResources, true);
     jbInit();
     setLocationRelativeTo(dApplic.getJFrame());
     this.setResizable(true);
@@ -82,11 +84,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     centerPanel.add(DXTools.setListPanel(listPanelDim, _leftList, _leftVec, leftLabelsInfo, mouseListenerLists));
     centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames,true));
     centerPanel.add(DXTools.setListPanel(listPanelDim, _rightList, _rightVec, rightLabelsInfo, mouseListenerLists));
-    //centerPanel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
     //buttonsPanel
     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-    //The parent dialog listen the button "OK" of this panel
-    //((JButton)_buttonsPanel.getComponent(0)).addActionListener(_parentDlg);
     //placing the elements into the JDialog
     setSize(dlgDim);
     setResizable(false);
@@ -105,9 +104,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         _rightList.clearSelection();
       else
         _leftList.clearSelection();
-      _currentActivities = ((JList)e.getSource()).getSelectedValues();
       if (e.getClickCount() == 2) {
-        //new EditActivityDlg(_jd,_dApplic, (String)_currentActivities[0]);
       }//end if
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){
@@ -119,13 +116,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
   * 10= room name
   */
 
-  private void setListVectors(int reportType){
-    _leftVec = new Vector();
-    _rightVec = new Vector();
+  private void setSetOfResources(int reportType){
     String [][] reportElements = null;
-    _resources = new SetOfResources(0);
+    _resources = new SetOfResources(100);
     Resource res;
-    DXObject dxo;
+    DXValue dxv;
     switch(reportType){
       case 0://_activitiesReport
         String [][] elements =
@@ -160,12 +155,24 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         break;
     }//end switch
     for(int i = 0; i < reportElements.length; i++){
-      dxo = new DXObject();
-      dxo.setAssociateLength(reportElements[i][1]);
-      res = new Resource(reportElements[i][0], dxo);
+      dxv = new DXValue();
+      //the field name
+      dxv.setStringValue(reportElements[i][1]);
+      //the field report index
+      dxv.setIntValue(i);
+      //if field is selected
+      dxv.setBooleanValue(false);
+      res = new Resource(reportElements[i][0], dxv);
       _resources.addResource(res, 1);
-    }//rnd for
-    _leftVec = _resources.getNamesVector(1);
+    }//end for
+    Resource externalR, internalR;
+    if (_externalResources == null)
+      return;
+    for(int j = 0; j < _externalResources.size(); j++){
+      externalR = _externalResources.getResourceAt(j);
+      internalR = _resources.getResource(externalR.getID());
+      ((DXValue)internalR.getAttach()).setBooleanValue(true);
+    }
   }//end method
 
 
@@ -180,46 +187,46 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         dispose();
     //if button OK
     if (command.equals(_buttonsNames[0])){
-      SetOfResources selectedResources = new SetOfResources(0);
-      Resource r = null;
-      for (int i = 0; i < _rightVec.size(); i++){
-        r = _resources.getResource((String)_rightVec.elementAt(i));
-        selectedResources.setCurrentKey(r.getKey());
-        selectedResources.addResource(r, 0);
-      }
-      _parentDlg.setReport(selectedResources);
+      _parentDlg.setReport(buildSelectedResources(_resources, _rightVec));
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){
       //toLeft button
       if (command.equals(_arrowsNames[1]))
-        DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 0);
+        DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
       else
         //toRight button
         DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 0);
-      //_buttonsPanel.getComponent(1).setEnabled(true);
-      //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
     }//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
 
     if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3])){
       int index = -1;
+      Object selectedValue = _rightList.getSelectedValue();
+      SetOfResources s = buildSelectedResources(_resources, _rightVec);
+      Vector v;
       //toUp button
       if (command.equals(_arrowsNames[2]))
-        index = transposeInVector(true, _rightVec, _rightList.getSelectedValue());
+        v = transposeInSet(true, s, selectedValue).getNamesVector(0);
+
       //toDown button
       else
-        index = transposeInVector(false, _rightVec, _rightList.getSelectedValue());
+        v = transposeInSet(false, s, selectedValue).getNamesVector(0);
+
+      _rightVec = new Vector(v);
       _rightList.setListData(_rightVec);
-      _rightList.setSelectedIndex(index);
-      }
+      _rightList.setSelectedValue(selectedValue, true);
+      }//end if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3]))
   }//end method
+
 
   /**
    * Change the order of two adjacent elements belonging a vector
    * @param toUp true if the element "item" is raised
    * @param vec, the vector containing the elements
    * @param item the element of the vector to be changed
+   * @return The index of the adjacent element
    */
+
   private int transposeInVector(boolean toUp, Vector vec, Object item){
     if (item == null)
       return -1;
@@ -233,7 +240,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         return thisIndex;
       sideIndex = thisIndex - 1;
     }else{
-      if (thisIndex >= vec.size()-1)
+      if (thisIndex >= vec.size())
         return thisIndex;
       sideIndex = thisIndex + 1;
     }
@@ -243,5 +250,68 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
     return sideIndex;
   }
 
+  private SetOfResources transposeInSet(boolean toUp, SetOfResources res, Object item){
+    if (item == null)
+      return res;
+    Resource aux;
+    DXValue dxv;
+    int resourceIndex;
+    int adjacentIndex;
+    aux = new Resource(res.getResource((String)item).getID(), res.getResource((String)item).getAttach());
+    resourceIndex = (int) res.getResource((String)item).getKey();
+    if (resourceIndex == -1)
+      return res;
+    if(toUp){
+      if (resourceIndex <= 1)
+        return res;
+      adjacentIndex = resourceIndex - 1;
+    }else{
+      if(resourceIndex >= res.size())
+        return res;
+      adjacentIndex = resourceIndex + 1;
+    }//end else...if(toUp)
+    //setting the actual resource
+    Resource adj = res.getResource(adjacentIndex);
+    dxv = (DXValue)res.getResource(adjacentIndex).getAttach();
+    res.getResource((String)item).setAttach(dxv);
+    res.getResource((String)item).setID(adj.getID());
+    //setting the adjacent ressource
+    dxv = (DXValue)aux.getAttach();
+    res.getResource(adjacentIndex).setAttach(dxv);
+    res.getResource(adjacentIndex).setID(aux.getID());
+    return res;
+  }//end method
+
+  /**
+   * Build a setOfResources from a bigger setOfResources and a vector
+   * @param vec the vector containing the Resources ID to place in the new
+   * setOfResources
+   * @return the setOfResources built
+   */
+  private SetOfResources buildSelectedResources(SetOfResources fullResources, Vector vec){
+    Resource r = null;
+    fullResources.sortSetOfResourcesByID();
+    SetOfResources selectedResources = new SetOfResources(100);
+    for (int i = 0; i < vec.size(); i++){
+      r = fullResources.getResource((String)vec.elementAt(i));
+      selectedResources.addResource(r, 0);
+    }//end for
+    return selectedResources;
+  }//end method
+
+  private Vector getSelectedFields(SetOfResources res, boolean isSelected){
+    if (res == null)
+      return new Vector();
+    Vector vec = new Vector();
+    DXValue dxv;
+    for (int i = 0; i < res.size(); i++){
+      dxv = (DXValue)res.getResourceAt(i).getAttach();
+      if (dxv.getBooleanValue() == isSelected)
+        vec.add(res.getResourceAt(i).getID());
+    }//end for
+    if (vec == null)
+      return new Vector();
+    return vec;
+  }
 
 }//end class
