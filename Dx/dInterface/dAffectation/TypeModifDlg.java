@@ -13,6 +13,8 @@ import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DConst;
 import dInternal.dData.Activity;
+import dInternal.dData.Type;
+import dInternal.dData.Resource;
 
 import dInternal.dData.Resource;
 import java.util.Vector;
@@ -34,8 +36,8 @@ private Resource _activity;
     _activity= activity;
     vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
      _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
-     _buttonsPanel.getComponent(0).setEnabled(false);
-     _buttonsPanel.getComponent(1).setEnabled(false);
+     _buttonsPanel.getComponent(0).setEnabled(true);
+     _buttonsPanel.getComponent(1).setEnabled(true);
     setVectorsOfElements(vect);
     initDialog();
   }
@@ -61,7 +63,36 @@ private Resource _activity;
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
     }
+    if (command.equals(DConst.BUT_ADD)) { // Ajouter
+      Activity activity= ((Activity)_activity.getAttach());
+      if(activity.getSetOfTypes().size()<2){
+        activity.addType("2");
+        Type type = (Type) activity.getSetOfTypes().getResource("2").getAttach();
+        int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
+        type.addSection("01",nbCycle,true);
+        init();
+        _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      }
+    }
+    if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
+      Activity activity= ((Activity)_activity.getAttach());
+      if(activity.getSetOfTypes().size()>1){
+        activity.getSetOfTypes().removeResource("2");
+        init();
+        _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+      }
+    }
 
   }
+
+  /**
+   *
+   */
+  private void init(){
+    Vector [] vect= new Vector[1];
+    vect[0]= ((Activity) _activity.getAttach()).getSetOfTypes().getNamesVector(1);
+    setVectorsOfElements(vect);
+  }
+
 
 }
