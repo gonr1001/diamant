@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import java.util.StringTokenizer;
+import dInterface.dUtil.ApplyPanel;
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -46,6 +47,7 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected JLabel _leftLabel, _centerLabel, _rightLabel;
   protected JList _leftList, _centerList, _rightList;
   protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel, _leftArrowsPanel, _buttonsPanel;
+  protected ApplyPanel _applyPanel;
   protected Object[] selectedItems;
   protected SetOfActivities _activities;
   protected SetOfEvents _events;
@@ -54,11 +56,7 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   protected Vector _leftVector, _centerVector, _rightVector;
   protected JDialog _jdialog;
 
-  //private static Color LABEL_COLOR = DConst.COLOR_STUD;
-  //private static String EVENTS_DLG_TITLE = DConst.EVENTS_DLG_TITLE;
-  //private static String EVENTS_FIXED = DConst.EVENTS_FIXED;
-  //private static String EVENTS_PLACED = DConst.EVENTS_PLACED;
-  //private static String EVENTS_NOT_PLACED = DConst.EVENTS_NOT_PLACED;
+
 
 
   /**

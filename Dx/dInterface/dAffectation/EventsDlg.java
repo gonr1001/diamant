@@ -12,6 +12,7 @@ package dInterface.dAffectation;
 
 import java.awt.event.ActionEvent;
 import dInterface.DApplication;
+import dInterface.dUtil.ApplyPanel;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dConditionsTest.EventAttach;
