@@ -17,6 +17,7 @@ import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gIO.FilterFile;
 
 import dInternal.DModel;
+import dInternal.dUtil.DXToolsMethods;
 import dInternal.Preferences;
 import dInternal.dTimeTable.TTStructure;
 
@@ -263,7 +264,10 @@ public class LoadData {
        extract.add(project.nextToken().trim());
        //extract ttstructure
        TTStructure tts= new TTStructure();
-       tts.loadTTStructure(project.nextToken().trim());
+       String currentDir= _dm.getDDocument().getDMediator().getDApplication().getCurrentDir();
+       String ttsFileName= DXToolsMethods.getAbsoluteFileName(currentDir, project.nextToken().trim());
+       tts.loadTTStructure(ttsFileName);
+       //tts.loadTTStructure(project.nextToken().trim());
        extract.add(tts);
        // extract instructor
        SetOfInstructors instructorsList= new SetOfInstructors(project.nextToken().trim().getBytes(),
@@ -303,6 +307,7 @@ public class LoadData {
      }
      return extract;
   }
+
 
 
 }

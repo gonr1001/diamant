@@ -15,6 +15,10 @@ import com.iLib.gIO.FilterFile;
 
 import dConstants.DConst;
 import dInternal.dTimeTable.TTStructure;
+import dConstants.DConst;
+import java.io.File;
+import dInternal.dUtil.DXToolsMethods;
+
 
 public class SaveData {
 
@@ -49,7 +53,8 @@ public class SaveData {
     tts.saveTTStructure(fileName+DConst.DOT_XML);
     String diaData=_version+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
-    diaData+=fileName+DConst.DOT_XML+CR_LF;
+    //diaData+=fileName+DConst.DOT_XML+CR_LF;
+    diaData+= DXToolsMethods.getRelativeFileName(fileName+DConst.DOT_XML).trim()+CR_LF;
     diaData+=LoadData._saveSeparator+CR_LF;
     diaData+=inst.size()+CR_LF;
     diaData+=inst.toWrite()+CR_LF;
@@ -74,5 +79,8 @@ public class SaveData {
       fileName=fileName+DConst.DOT_XML;
     tts.saveTTStructure(fileName);
   }
+
+
+
 
 }

@@ -114,47 +114,6 @@ public class DXTools{
     }
   }//end method
 
-  /**
-   * Transferts the elements selected in the source JList to the destination
-   * JList. It sets the source and the detination vectors with the new values.
-   * The elements in the destination list are ordered after the transfert.
-   * Those elements remain selected after the transfert.
-   * @param sourceList The source list
-   * @param destinationList The destination list
-   * @param sourceVector the source vector
-   * @param destinationVector the destination vector
-   */
-
-/*
-public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector){
-  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
-    return;
-  SetOfResources destinationRes = new SetOfResources(0);
-  Resource res;
-  Object [] elementsToTransfer = sourceList.getSelectedValues();
-
-  if (elementsToTransfer.length != 0){
-      String currentElement;
-      for (int i = 0; i < elementsToTransfer.length; i++){
-        sourceVector.remove(elementsToTransfer[i]);
-        destinationVector.add(elementsToTransfer[i]);
-      }
-      for(int j = 0; j < destinationVector.size(); j++){
-        res = new Resource((String)destinationVector.elementAt(j),null);
-        destinationRes.addResource(res, 1);
-      }
-      destinationRes.sortSetOfResourcesByID();
-      destinationVector = destinationRes.getNamesVector();
-      sourceList.setListData(sourceVector);
-      destinationList.setListData(destinationVector);
-      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
-      destinationList.setSelectedIndices(indices);
-      sourceList.clearSelection();
-    }//end for
-}//end method
-*/
-
-
 
 /**
  *
@@ -455,8 +414,6 @@ public static int STIConvertGroupToInt(String STIGroupID){
        break;
    }
  }
-
-
 
 
 

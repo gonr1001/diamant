@@ -3,11 +3,17 @@ package dInternal.dTimeTable;
 
 import java.util.Vector;
 
+import dInternal.dDataTxt.SetOfResources;
+import dInternal.dDataTxt.Resource;
+import com.iLib.gIO.FilterFile;
+
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import xml.InPut.ReadXMLElement;
 import xml.InPut.readFile;
+
 import xml.OutPut.BuildXMLElement;
 import xml.OutPut.writeFile;
 import dConstants.DConst;
@@ -220,6 +226,7 @@ public class TTStructure {
   public String loadTTStructure(String fileName){
     readFile xmlFile;
     Element root, item, ID;
+    boolean preload = preLoad(fileName);
     try{
       xmlFile = new readFile();
       Document  doc = xmlFile.getDocumentFile(fileName);
@@ -399,5 +406,17 @@ public class TTStructure {
     }
     return -1;
   }
+
+  /**
+   *
+   * @param str
+   * @return
+   */
+  private boolean preLoad(String str) {
+   FilterFile filter = new FilterFile();
+   filter.setCharKnown("");
+   return filter.validFile(str);
+ }
+
 
 }
