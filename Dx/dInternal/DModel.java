@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.20 $  $Date: 2003-06-04 16:09:50 $
+ * Title: DModel $Revision: 1.21 $  $Date: 2003-06-05 16:01:07 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -105,7 +105,7 @@ public class DModel{
     return _ttStruct;
   }
 //this method must be renamed to saveTT
-  public String rsaveTT() {
+  public String rsaveTT(String filename) {
     JOptionPane.showMessageDialog(_dApplic.getJFrame(),
                              "rsaveTT was here",
                               "trace",

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.24 $  $Date: 2003-06-04 16:21:14 $
+ * Title: DDocument $Revision: 1.25 $  $Date: 2003-06-05 16:01:07 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -50,6 +50,7 @@ public class DDocument implements ActionListener, DModelListener{
   private boolean _modified;
   private DApplication _dApplic;
   private JInternalFrame _jif;
+  private String _documentName;
   private DModel _dm;
   private TTPanel _ttPanel;
   private JPanel _statusPanel;
@@ -58,15 +59,18 @@ public class DDocument implements ActionListener, DModelListener{
   //-------------------------------------------
   public DDocument(DApplication dApplic, String title) {
     _dApplic = dApplic;
+    _documentName = title;
     // read TTstructure
     TTStructure ttStruct = new TTStructure();
      // read TTstructure
-    buidDocument(title, ttStruct);
+    buidDocument(ttStruct);
+    _modified=true;
   } // end constructor DDocument()
 
   public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
     _dApplic = dApplic;
-    buidDocument(title, ttStruct);
+    _documentName = title;
+    buidDocument(ttStruct);
     _modified=true;
   } // end constructor DDocument()
 
@@ -74,16 +78,31 @@ public class DDocument implements ActionListener, DModelListener{
 
     //-------------------------------------------
     public void setModified(){
-        _modified = true;
+      _modified = true;
     } // end setModified
     //-------------------------------------------
-    public boolean getModified(){
+    public void noModified(){
+      _modified = false;
+    } // end setModified
+    //-------------------------------------------
+    public boolean isModified(){
         return _modified;
     } // end getModified
     //-------------------------------------------
     public JInternalFrame getJIF() {
         return _jif;
     } // end getJIF
+
+    //-------------------------------------------
+    public String getDocumentName() {
+      return _documentName;
+    } // end getDocumentName
+
+    //-------------------------------------------
+    public void setDocumentName(String name) {
+      _documentName = name;
+      _jif.setTitle(name);
+    } // end setDocumentName
     //-------------------------------------------
     public DModel getDM(){
         return _dm;
@@ -149,7 +168,7 @@ public class DDocument implements ActionListener, DModelListener{
       _ttPanel.updateTTPanel(_dm.getTTStructure());
     }// end actionPerformed
 
-  private void  buidDocument(String title, TTStructure ttStruct){
+  private void  buidDocument(TTStructure ttStruct){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
 /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
@@ -165,8 +184,8 @@ public class DDocument implements ActionListener, DModelListener{
     final int MAX_WIDTH = 1024;
 
     //_mediator = mediator;
-    _dm = new DModel(_dApplic,ttStruct);
-    _jif = new JInternalFrame(title,true,true,true,true);
+    _dm = new DModel(_dApplic, ttStruct);
+    _jif = new JInternalFrame(_documentName, true, true, true, true);
     //_bottomLablel = new JLabel("hello");
     _statusPanel = initStatusPanel();
     _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
@@ -182,13 +201,24 @@ public class DDocument implements ActionListener, DModelListener{
     _jif.pack();
     _dApplic.getDesktop().add(_jif, new Integer(1));
     _jif.setVisible(true);
-    try {
+   /* try {
       _jif.setMaximum(true);  //This line allows the scrollbars of the TTPanel to be present when the _jif is resized
     }
     catch (java.beans.PropertyVetoException pve) {
       new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
       System.exit(52);
       pve.printStackTrace();
-    }
+    }*/
   }
+  public void close(){
+    _jif.dispose();
+    _documentName = "";
+    _dm = null;
+    _ttPanel = null;
+    _statusPanel = null;
+    //_nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
+
+
+  }
+
 } /* end DDocument class */

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DApplication $Revision: 1.6 $  $Date: 2003-06-04 16:20:12 $
+ * Title: DApplication $Revision: 1.7 $  $Date: 2003-06-05 16:01:07 $
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -39,6 +39,7 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
@@ -46,6 +47,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 //import java.lang.IllegalAccessException;
 import javax.swing.SwingUtilities;
+import dInterface.dTimeTable.SaveCmd;
 
 public class DApplication implements ActionListener {
   /* ZERO is needed to fix Frame Location (origin)  */
@@ -216,13 +218,15 @@ public class DApplication implements ActionListener {
      */
     public void closeApplic() {
       // if no Document exit ok
-      while (_mediator.getCurrentDoc() != null) {
+      while (_mediator.getCurrentDoc() != null) { //is a while
       // if Document no changed exit ok
          //_mediator.getCurrentDoc().getDM().rsaveTT();
-        if (_mediator.getCurrentDoc().getModified()) {
+        if (_mediator.getCurrentDoc().isModified()) {
           // Display dialog
-          System.out.println("save?");
-        } else _mediator.getCurrentDoc().getJIF().dispose();
+          promptToSave();
+          //System.out.println("save?");
+        }
+        else _mediator.getCurrentDoc().close();
       }
       // if Document changed as for save or not
        if (_mediator.getCurrentDoc() == null) {
@@ -230,22 +234,32 @@ public class DApplication implements ActionListener {
          _jFrame.dispose();
          System.exit(0);
       }
-  /*
-      //if( aDoc == null || aDoc.promptToSaveIfChanged() ) { //diaman002
-         int _request = 3;
-            //_request = _ddv.promptToSaveIfChanged();
-           if( _ddv != null )
-              _request = _ddv.promptToSaveIfChanged();
-             if (_request!=2){
-                if( _ddv != null )
-                  _ddv.close();
-                _ddv = null;
-                close();
-                System.exit(0);
-             }
+  }
+  /**
+* Prompts to save if document has changed.
+* This checks the document to see if it has changed since it was
+* loaded or last saved. If so, it prompts the user to save, not
+* save or cancel.
+*
+* @return false if the user cancels (presses the cancel button
+* or the dialog's close button).  Otherwise, it return true.
+*/
+  public boolean promptToSave() {
+   int retval = JOptionPane.showConfirmDialog(_jFrame, "MES00" );
+   switch ( retval ) {
+     case JOptionPane.YES_OPTION:
+       new SaveCmd().execute(this);
+       _mediator.getCurrentDoc().close();
+       return true;
 
-        //System.exit(0);
+     case JOptionPane.NO_OPTION:
+       _mediator.getCurrentDoc().close();
+       return true;
 
-      //}//diaman002*/
+     case JOptionPane.CANCEL_OPTION:
+     case JOptionPane.CLOSED_OPTION:
+       return false;
+   }
+ return true;
   }
 } /* end class DApplication */

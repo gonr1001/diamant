@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.1 $  $Date: 2003-06-04 16:26:13 $
+ * Title: SaveAsDlg $Revision: 1.2 $  $Date: 2003-06-05 16:01:07 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -97,14 +97,14 @@ public class SaveAsDlg extends JDialog
     if (returnVal == JFileChooser.APPROVE_OPTION) {
 
       // Save the file name
-      String mCurrentFile = fc.getSelectedFile().getAbsolutePath();
-      if ( !mCurrentFile.endsWith(DConst.DOT_DIA) )
-        mCurrentFile = mCurrentFile.concat(DConst.DOT_DIA);
-      _dApplic.getDMediator().getCurrentDoc().getDM().rsaveTT();
+      String currentFile = fc.getSelectedFile().getAbsolutePath();
+      if ( !currentFile.endsWith(DConst.DOT_DIA) )
+        currentFile = currentFile.concat(DConst.DOT_DIA);
 
-
-      //_dApplic.getDMediator().getCurrentDoc().setModified(false);
-      new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + mCurrentFile);
+      _dApplic.getDMediator().getCurrentDoc().setDocumentName(currentFile);
+      _dApplic.getDMediator().getCurrentDoc().noModified();
+      _dApplic.getDMediator().getCurrentDoc().getDM().rsaveTT(currentFile);
+      new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
 
     }
   }

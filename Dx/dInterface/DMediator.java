@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.9 $  $Date: 2003-06-02 15:05:36 $
+ * Title: DMediator $Revision: 1.10 $  $Date: 2003-06-05 16:01:07 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -44,6 +44,10 @@ public class DMediator {
     currentDoc = null;
   } //end addDoc
 
+  public void removeDoc(){
+      DDocument currentDoc = getCurrentDoc();
+      _documents.remove(currentDoc);
+	} //end addDoc
   //-------------------------------------------
   public String addDoc(String title) { //MouseApp map, MouseMoveApp mvap){
     String error = "";
