@@ -151,17 +151,17 @@ public class GroupDlg extends JDialog implements ActionListener{
     Dimension panelDim = new Dimension((int)((dialogSize.getWidth()-50)*0.40), (int)dialogSize.getHeight()-130);
     Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10, (int)panelDim.getHeight()-33);
     Dimension listDim = new Dimension((int)scrollDim.getWidth()-10,(int)scrollDim.getHeight()-20);
-    _notAssignedPanel = new JPanel();
-    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_NOT_ASSIGNED));
-    _notAssignedPanel.setPreferredSize(panelDim);
-    JScrollPane scrollPane = new JScrollPane();
-    scrollPane.setPreferredSize(scrollDim);
+    //JScrollPane scrollPane = new JScrollPane();
+    //scrollPane.setPreferredSize(scrollDim);
     _notAssignedVector = _students.getStudentsByGroup(_actID, "1", -1);
     _notAssignedList = new JList(_notAssignedVector);
-    _notAssignedList.setPreferredSize(listDim);
+    //_notAssignedList.setPreferredSize(listDim);
     _notAssignedList.addMouseListener(mouseListenerLists);
-    scrollPane.getViewport().add(_notAssignedList);
-    _notAssignedPanel.add(scrollPane);
+    //scrollPane.getViewport().add(_notAssignedList);
+    //_notAssignedPanel.add(scrollPane);
+    _notAssignedPanel = DXTools.listPanel(_notAssignedList, (int)((dialogSize.getWidth()-50)*0.40), (int)dialogSize.getHeight()-130);
+    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_NOT_ASSIGNED));
+    _notAssignedPanel.setPreferredSize(panelDim);
   }
 
   /**
