@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.43 $  $Date: 2004-09-23 13:35:11 $
+ * Title: DiamantTest 1.5Test $Revision: 1.44 $  $Date: 2004-09-23 19:02:09 $
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,7 +12,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -87,16 +87,16 @@ public class DiamantTest {
           suite.addTest(TypeTest.suite());
           suite.addTest(ActivityTest.suite());
           suite.addTest(SetOfActivitiesTest.suite());
-          //suite.addTest(PeriodTest.suite());
-          //suite.addTest(SequenceTest.suite());
-          //suite.addTest(DayTest.suite());
-          //suite.addTest(CycleTest.suite());
-          //suite.addTest(TTStructureTest.suite());
-          //suite.addTest(LoadDataTest.suite());
-          //suite.addTest(SaveDataTest.suite());
+          suite.addTest(PeriodTest.suite());
+          suite.addTest(SequenceTest.suite());
+          suite.addTest(DayTest.suite());
+          suite.addTest(CycleTest.suite());
+          suite.addTest(TTStructureTest.suite());
+          suite.addTest(LoadDataTest.suite());
+          suite.addTest(SaveDataTest.suite());
           suite.addTest(DXToolsMethodsTest.suite());
           suite.addTest(EventAttachTest.suite());
-          //suite.addTest(SetOfEventsTest.suite());
+          suite.addTest(SetOfEventsTest.suite());
           //suite.addTest(ConflictsAttachTest.suite());
           //suite.addTest(StudentsConflictsMatrixTest.suite());
           //suite.addTest(InstructorsConditionsTest.suite());

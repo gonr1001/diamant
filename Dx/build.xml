@@ -104,7 +104,7 @@
 	<target name="unitTest" depends="compile, testpath" 
 		description="test the java sources">
 	 	
-		<junit printsummary="false" haltonfailure="false" >			
+		<junit printsummary="false" haltonfailure="true" >			
 			<classpath refid="t.classpath"/>
 	 		<formatter type="brief" usefile="false"/>
 	 			 		<formatter type="xml"/>

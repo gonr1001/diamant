@@ -34,13 +34,13 @@ public class ScanFile {
 					str1 += Integer.toHexString(b[i+ j]).toUpperCase() + " ";
 				}
 
-			   if ( (byte)b[i + j ] < 126  && (byte)b[i + j] > 31 )
+			   if ( b[i + j ] < 126  && b[i + j] > 31 )
 				   str2 += (char) b[i + j ];
 			   else {
-			   	if ( (byte)b[i + j ] == 13  ||(byte)b[i + j] == 10 )
+			   	if ( b[i + j ] == 13  ||b[i + j] == 10 )
 			   		str2 += ".";
 			   	else
-					str2 += (byte) b[i + j] + " ";
+					str2 +=  b[i + j] + " ";
 			   }
 			 }
 			 System.out.println(str1 + "   " + str2);
@@ -55,13 +55,13 @@ public class ScanFile {
 			str1 += Integer.toHexString(b[i]).toUpperCase() + " ";
 		}
 
-	   if ( (byte)b[i ] < 126  && (byte)b[ i] > 31 )
+	   if ( b[i ] < 126  && b[ i] > 31 )
 		   str2 += (char) b[ i ];
 	   else {
-		if ( (byte)b[i ] == 13  ||(byte)b[ i] == 10 )
+		if ( b[i ] == 13  ||b[ i] == 10 )
 			str2 += ".";
 		else
-			str2 += (byte) b[i] + " ";
+			str2 +=  b[i] + " ";
 	   }
 	 }
 

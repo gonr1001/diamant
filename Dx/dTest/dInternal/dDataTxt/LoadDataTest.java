@@ -35,7 +35,7 @@ public class LoadDataTest extends TestCase {
     super(name);
     path =System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia";
     LoadData loadData= new LoadData();
-    _timeTable = loadData.loadProject(path);
+    _timeTable = loadData.loadProject(path, null);
     /*_preferences = new Preferences(System.getProperty("user.dir")
                                + File.separator +
                                "pref"

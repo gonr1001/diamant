@@ -35,7 +35,7 @@ String path;
   public PeriodTest(String name) {
     super(name);
     path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
-  System.out.println("rgr"+path);
+  //System.out.println("rgr"+path);
   }
 
   public static Test suite() {

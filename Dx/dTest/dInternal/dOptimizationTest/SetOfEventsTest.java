@@ -27,7 +27,7 @@ public class SetOfEventsTest extends TestCase {
     _soi = (SetOfInstructors)timeTable.get(2);
     _sor = (SetOfRooms)timeTable.get(3);
     _tts = (TTStructure)timeTable.get(1);*/
-    _dm= new DModel(new DDocument(),System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia",1);
+    _dm = new DModel(new DDocument(),"." + File.separator+"dataTest"+File.separator+"loadData.dia", 1);
   }
 
      public static Test suite() {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.106 $  $Date: 2004-09-08 19:05:04 $
+ * Title: DModel $Revision: 1.107 $  $Date: 2004-09-23 19:02:08 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.106 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.107 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -105,7 +105,8 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     _progressBarState.setIntValue(0);
     _dDocument = dDocument;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
-      _error=loadTimeTable(fileName);
+    	
+      _error=loadTimeTable(fileName, getCurrentDir(fileName));
       _isTimeTable=true;
     }else if(fileName.endsWith(DConst.DOT_XML)){
       _ttStruct = new TTStructure();
@@ -207,7 +208,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
    * @param fileName
    * @return
    */
-  public String loadTimeTable(String fileName){
+  public String loadTimeTable(String fileName, String currentDir){
 	//	debug for xml file to be remove
 	 // ysyam
 	 if(DConst.DEVELOPMENT){
@@ -216,9 +217,9 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 		 _setOfCategories= xmlloadData.extractRooms(null, true);
 	 }
 	 //	end debug
-
+System.out.println("rgr fn"+ fileName);
     LoadData loadD = new LoadData(this);
-    Vector project = loadD.loadProject(fileName);
+    Vector project = loadD.loadProject(fileName, currentDir);
 
     if (project.size()!=0) {
       setVersion((String)project.get(0));
@@ -540,13 +541,13 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 
 
 
-  public void changeInDModel(DModelEvent  e, Component c) {
+ public void changeInDModel(DModelEvent  e, Component c) {
 
   }// end actionPerformed
 
-  public void changeInTTStructure(TTStructureEvent  e) {
+public void changeInTTStructure(TTStructureEvent  e) {
 
-  }// end actionPerformed*/
+  }// end actionPerformed
 
   /**
    * Export data from soft to SIG
@@ -558,6 +559,11 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
     _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
   }
 
-
+  private String getCurrentDir(String fileName){
+  	if(fileName.lastIndexOf(File.separator)>0) {
+  		return fileName.substring(0,fileName.lastIndexOf(File.separator));
+  	}
+	return new String("a");
+  }
 
 } /* end class DModel */

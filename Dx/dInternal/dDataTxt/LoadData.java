@@ -252,9 +252,10 @@ public class LoadData {
   }
 
   /**
+ * @param currentDir TODO
    *
    * */
-  public Vector loadProject(String fileName){
+  public Vector loadProject(String fileName, String currentDir){
     Vector extract= new Vector();
     String dataloaded= new String(preLoad(fileName));
 
@@ -264,7 +265,7 @@ public class LoadData {
        extract.add(project.nextToken().trim());
        //extract ttstructure
        TTStructure tts= new TTStructure();
-       String currentDir= _dm.getDDocument().getDMediator().getDApplication().getCurrentDir();
+       //currentDir= _dm.getDDocument().getDMediator().getDApplication().getCurrentDir();
        String ttsFileName= DXToolsMethods.getAbsoluteFileName(currentDir, project.nextToken().trim());
        tts.loadTTStructure(ttsFileName);
        //tts.loadTTStructure(project.nextToken().trim());
