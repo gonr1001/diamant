@@ -222,5 +222,27 @@ public class Unity extends DXObject{
   public String toWrite(){
    return "";
   }
+  /**
+* compare this resource with the specified resource
+* @param resource the specified resource
+* @return bolean true if this resource and the specified resource are equals
+* false if they are not equals
+* */
+  public boolean isEquals(DXObject unit){
+    Unity unity = (Unity)unit;
+    if(this._assign!= unity._assign)
+      return false;
+    if(this._duration!= unity._duration)
+      return false;
+    if(this._isCyclic!= unity._isCyclic)
+      return false;
+    if(this._permanent!= unity._permanent)
+      return false;
+    if(this._preferSequence!= unity._preferSequence)
+      return false;
+    if(!this._setOfAssignments.isEquals( unity._setOfAssignments))
+      return false;
+    return true;
+  }
 
 }

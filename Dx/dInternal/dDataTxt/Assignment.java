@@ -142,7 +142,18 @@ public class Assignment extends DXObject{
     Assignment assmt = (Assignment)ass;
     if(this._instructorKey!= assmt._instructorKey)
       return false;
-
+    if(this._roomKey!= assmt._roomKey)
+      return false;
+    if(this._roomFixed!= assmt._roomFixed)
+      return false;
+    if(!this._instructorName.equals(assmt._instructorName))
+      return false;
+    if(!this._roomName.equals(assmt._roomName))
+      return false;
+    if((this._dateAndTime[0]!= assmt._dateAndTime[0])
+       || (this._dateAndTime[1]!= assmt._dateAndTime[1])
+       || (this._dateAndTime[2]!= assmt._dateAndTime[2]))
+      return false;
     return true;
   }
 

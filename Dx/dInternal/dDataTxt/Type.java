@@ -84,4 +84,17 @@ public class Type extends DXObject{
   public String toWrite(){
    return _setOfSections.toWrite();
   }
+  /**
+   * compare this resource with the specified resource
+   * @param resource the specified resource
+   * @return bolean true if this resource and the specified resource are equals
+   * false if they are not equals
+   * */
+  public boolean isEquals(DXObject type){
+    Type types = (Type)type;
+    if(!this._setOfSections.isEquals( types._setOfSections))
+      return false;
+    return true;
+  }
+
 }

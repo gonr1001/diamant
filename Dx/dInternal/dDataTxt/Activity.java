@@ -218,4 +218,21 @@ public class Activity extends DXObject{
     return _setOfTypes.toWrite();
   }
 
+  /**
+  * compare this resource with the specified resource
+  * @param resource the specified resource
+  * @return bolean true if this resource and the specified resource are equals
+  * false if they are not equals
+  * */
+ public boolean isEquals(DXObject act){
+   Activity activity = (Activity)act;
+   if(!this._setOfTypes.isEquals( activity._setOfTypes))
+     return false;
+   if(this._activitySession!= activity._activitySession)
+      return false;
+   if(this._activityVisible!= activity._activityVisible)
+      return false;
+   return true;
+  }
+
 }

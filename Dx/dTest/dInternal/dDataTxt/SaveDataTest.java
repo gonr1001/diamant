@@ -59,7 +59,7 @@ public class SaveDataTest extends TestCase {
   /**
    * test that check that the saved file is the same as the loaded file
    * */
-  public void test_loadInstructor(){
+  public void test_loadInstructors(){
 
     assertEquals("test_loadInstructor : assertEquals: ",true, ((SetOfInstructors)_timeTable1.get(2)).isEquals((SetOfInstructors)_timeTable.get(2)));
   }
@@ -74,9 +74,17 @@ public class SaveDataTest extends TestCase {
   /**
   * test that check that the saved file is the same as the loaded file
   * */
- public void test_loadStudent(){
+ public void test_loadStudents(){
 
     assertEquals("test_loadStudent : assertEquals: ",true, ((SetOfStudents)_timeTable1.get(5)).isEquals((SetOfStudents)_timeTable.get(5)));
+  }
+
+  /**
+  * test that check that the saved file is the same as the loaded file
+  * */
+ public void test_loadActivities(){
+
+    assertEquals("test_loadActivities : assertEquals: ",true, ((SetOfActivities)_timeTable1.get(4)).isEquals((SetOfActivities)_timeTable.get(4)));
   }
 
 
