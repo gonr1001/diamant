@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.5 $  $Date: 2003-03-14 16:02:08 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.6 $  $Date: 2003-03-17 16:58:57 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -94,7 +94,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
    * @param doc The active document.  Used to access the dictionnaries.
    */
   public InstructorAvailabiliyDlg(JFrame jFrame, String str, DModel dm) {
-    super(jFrame, str, true);
+    super(jFrame, str, false);
     try {
       _dm = dm;
       jbInit();
@@ -122,7 +122,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     String sel = (String)chooser.getSelectedItem();
     _currentInstr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
     centerPanel = makeGridPanel(_currentInstr);
-    getContentPane().add(centerPanel, BorderLayout.CENTER );
+    this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //button Panel
     butOk = new JButton( BUT01 );
@@ -138,7 +138,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
     butPanel.add(butOk, null);
     butPanel.add(butApply, null);
     butPanel.add(butCancel, null);
-    getContentPane().add(butPanel, BorderLayout.SOUTH);
+    this.getContentPane().add(butPanel, BorderLayout.SOUTH);
   } // end  jbInit()
 
   public void actionPerformed( ActionEvent event) {
@@ -152,7 +152,6 @@ public class InstructorAvailabiliyDlg  extends JDialog
         _dm.incrementModification();
       modified = false;
       butApply.setEnabled(false);
-
       dispose();
     } else if (command.equals( BUT00 )) {  // apply
     /*  "Enseignants --> Bouton Appliquer pressé\n");*/
