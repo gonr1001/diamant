@@ -77,7 +77,7 @@
   <property category="sys" name="OutPath" value="../../Temp/Dx/Proto/classes"/>
   <property category="sys" name="SourcePath" value="."/>
   <property category="sys" name="TestPath" value="."/>
-  <property category="sys" name="Title" value="Proto"/>
+  <property category="sys" name="Title" value="Diamant 1.5"/>
   <property category="sys" name="TitleLabel" value="Title:"/>
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>

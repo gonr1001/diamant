@@ -29,7 +29,7 @@ import dResources.DConst;
 
 public class ManualImprovementDlg extends EventsDlgInterface{
 
-   private String[] _buttonsNames = {"Modifier",DConst.BUT_APPLY, DConst.BUT_CLOSE};
+   private String[] _buttonsNames = {DConst.BUT_CHANGE,DConst.BUT_APPLY, DConst.BUT_CLOSE};
    private DModel _dm;
 //   private TTStructure _newTTS;
    private DToolBar _toolBar;

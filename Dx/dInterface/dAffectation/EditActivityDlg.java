@@ -37,7 +37,8 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private String _DURATION= "Durée:";
   private String _DAY= "Jour:";
   private String _HOUR="Heure de début:";
-  private String _INSTRUCTOR= "Enseignant:";
+  private String _INSTRUCTOR= "Enseignant:";// to remove
+  private Vector _setOfInstructors= new Vector(1);// contains strings
   private String _ROOM= "Local:";
   //private String NO_ROOM_INTERNAL= "------";
   private boolean _isModified=false;
@@ -111,10 +112,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     _tabbedPane.addChangeListener(this);
     _tabbedPane.setSelectedIndex(_currentActivityIndex);
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    Dimension unitySize = new Dimension(300, 270 );
+    Dimension unitySize = new Dimension(350, 270 );
     setBounds((screenSize.width - unitySize.width) / 2, (screenSize.height -
         unitySize.height) / 2, unitySize.width, unitySize.height);
-    setResizable(false);
+    setResizable(true);
     setVisible(true);
   }
 
@@ -125,6 +126,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
     //boolean _change = false, _restore = false;
+    //System.out.println("Command: "+command);//debug
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       boolean apply=false;
       for(int i=0; i< this._unities.size(); i++){
@@ -145,10 +147,17 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     } else if (command.equals( DConst.BUT_APPLY )) {  // apply
       if( applyChanges()){
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+        _jButtonApply.setEnabled(false);
         if(_evDlgInt!=null)
           _evDlgInt.initializePanel();
       }else
         new FatalProblemDlg(this,"Valeur eronnée");
+    } else if(command.equals("comboBoxChanged") || command.equals(DConst.BUT_PLACE)
+              || command.equals(DConst.BUT_FIGE)){// comboBox has changed
+      //System.out.println("Enable appliquer ... ");
+      _jButtonApply.setEnabled(true);
+    }else if(command.equals(DConst.BUT_CHANGE)){// change instrcutors
+      new SelectInstructors(_dApplic,buildInstructorList());
     }
 
   }
@@ -187,20 +196,26 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     resDuration.setEnabled(_isModified);
     Vector[] vect = buildDayList();
     cbDay = new JComboBox(vect[1]);
+    cbDay.addActionListener(this);
     cbDay.setSelectedItem(vect[0].get(0).toString());
     vect = buildHourList();
     cbHour = new JComboBox(vect[1]);
+    cbHour.addActionListener(this);
     cbHour.setSelectedItem(vect[0].get(0).toString());
     vect= buildRoomList();
     cbRoom = new JComboBox(vect[1]);
+    cbRoom.addActionListener(this);
     cbRoom.setSelectedItem(vect[0].get(0).toString());
     vect = buildInstructorList();
     cbInstructor = new JComboBox(vect[1]);
+    cbInstructor.addActionListener(this);
     cbInstructor.setPreferredSize(new Dimension(163,25));
     cbInstructor.setSelectedItem(vect[0].get(0).toString());
     place = new JToggleButton(DConst.BUT_PLACE);
     place.setSelected(event.getAssignState());
+    place.addActionListener(this);
     fix = new JToggleButton(DConst.BUT_FIGE);
+    fix.addActionListener(this);
     fix.setSelected(event.getPermanentState());
     // duration
     panel.add(duration);
@@ -222,6 +237,10 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     panel = new JPanel();
     panel.add(instructor);
     panel.add(cbInstructor);
+    JButton jButtonChange = new JButton( DConst.BUT_CHANGE );
+    jButtonChange.setPreferredSize(new Dimension(75, 22));
+    jButtonChange.addActionListener(this);
+    panel.add(jButtonChange);
     centerPanel.add(panel);
     // bottom
     JPanel buttomPanel = new JPanel();
@@ -229,6 +248,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     buttomPanel.add(fix);
     centerPanel.add(panel);
     centerPanel.add(buttomPanel);
+    _jButtonApply.setEnabled(false);
     return centerPanel;
   }
 
