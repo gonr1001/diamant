@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.117 $  $Date: 2004-10-21 13:39:43 $
+ * Title: DDocument $Revision: 1.118 $  $Date: 2004-10-21 13:52:01 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.117 $
+ * @version $Revision: 1.118 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -456,7 +456,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif = new JInternalFrame(_documentName, true, true, true, true);
     _jif.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
     _jif.addInternalFrameListener( new InternalFrameAdapter() {
-      public void internalFrameClosing() {
+      public void internalFrameClosing(InternalFrameEvent e) {
         new CloseCmd().execute(_dMediator.getDApplication());
       }
     } );
