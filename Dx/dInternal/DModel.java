@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.42 $  $Date: 2003-07-11 12:23:23 $
+ * Title: DModel $Revision: 1.43 $  $Date: 2003-07-14 09:31:02 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.42 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.43 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 package dInternal;
@@ -206,14 +206,18 @@ public void setVersion(String version){
   }*/
 
 
-  public void saveTimeTable(String filename) {
+  public String saveTimeTable(String filename) {
     SaveData saveD= new SaveData("1.5");
+    String error = "";
     if(_isTimeTable){
-      saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+      error = saveD.saveTimeTable(_ttStruct,_setOfInstructors,_setOfRooms,_setOfActivities,_setOfStudents,filename);
+      if (error.length() != 0)
+        return error;
     }else{
       saveD.saveTTStructure(_ttStruct,filename);
     }
     _modified = false;
+    return error;
   }
 
   public void sendEvent() {

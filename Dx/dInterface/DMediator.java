@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.31 $  $Date: 2003-07-11 16:40:24 $
+ * Title: DMediator $Revision: 1.32 $  $Date: 2003-07-14 09:31:28 $
  * Description: DMediator is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  * @author  $Author: alexj $
  * @since JDK1.3
  */
@@ -98,10 +98,12 @@ public class DMediator {
     } //end addDoc
   //-------------------------------------------
 
-  public void saveCurrentDoc(String str){
+  public String saveCurrentDoc(String str){
     getCurrentDoc().setDocumentName(str);
     //getCurrentDoc().noModified();
-    getCurrentDoc().getDM().saveTimeTable(str);
+    String error = "";
+    error = getCurrentDoc().getDM().saveTimeTable(str);
+    return error;
     //getCurrentDoc().getDM().rsaveTT(str);
     //getCurrentDoc().getDM().getTTStructure().saveTTStructure(str+".xml");
   }

@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.10 $  $Date: 2003-07-11 10:47:49 $
+ * Title: SaveAsDlg $Revision: 1.11 $  $Date: 2003-07-14 09:30:40 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.11 $
+ * @author  $Author: alexj $
  * @since JDK1.3
  */
 
@@ -87,6 +87,7 @@ public class SaveAsDlg extends JDialog
    public void saveAs() {
      File file;
      String DOTEXT="";
+     String error  = "";
      //C rwfDlg = null;
 
      JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
@@ -133,8 +134,11 @@ public class SaveAsDlg extends JDialog
 
          }
        }else{
-         _dApplic.getDMediator().saveCurrentDoc(currentFile);
-         new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+         error = _dApplic.getDMediator().saveCurrentDoc(currentFile);
+         if (error.length() == 0)
+           new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+         else
+           new FatalProblemDlg(error);
        }
      }// end if(returnVal == JFileChooser.APPROVE_OPTION)
    }//end saveAs() method

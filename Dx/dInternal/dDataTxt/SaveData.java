@@ -38,8 +38,13 @@ public class SaveData {
   /**
    *
    * */
-  public void saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
+  public String saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
                           SetOfActivities act,SetOfStudents students, String fileName){
+    String error = "";
+    if (inst == null || rooms  == null ||  act == null || students == null){
+      error = "SaveData : Some data have a null reference";
+      return error;
+    }
     FilterFile filter;
      if(fileName.endsWith(".dia"))
       fileName=fileName.substring(0,fileName.length()-4);
@@ -60,7 +65,7 @@ public class SaveData {
     diaData+=LoadData._saveSeparator;
     filter= new FilterFile(diaData.getBytes());
     filter.saveFile(fileName+".dia");
-
+    return error;
   }
 
   /**
