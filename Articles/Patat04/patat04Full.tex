@@ -51,7 +51,7 @@ Université de Sherbrooke,\\
 
 
 {\bf Mots clés :} Production d'horaires, Génie logiciel, Qualité.
-\intd
+%\intd
 \section{Introduction}
 La production d'horaires est une tâche périodique effectué dans
 beaucoup d'insti\-tutions d'enseignement.  Ces institutions
@@ -181,16 +181,16 @@ par exemple les cours qui vont avoir lieu dans la période $p$; le
 format du cours (3h, ou 2+1h); les enseignants possibles ou
 assignées à certains cours; les locaux possibles ou assignées; la
 disponibilité des enseignants et des locaux et autres. Signalons
-que à l'Université de Sherbrooke il existe des Facultés où les
-étudiants font un pré-choix et d'autres où les horaires sont fait
-sans pré-choix. Le pre-choix des étudiants fait partie des données
-à saisir, s'il n'y a pas de pré-choix, il faut indiquer le nombre
-d'étudiants à admettre pour chaque cours.
+qu'il existe des institutions où les étudiants font un pré-choix
+et d'autres où les horaires sont fait sans pré-choix. Le pre-choix
+des étudiants fait partie des données à saisir, s'il n'y a pas de
+pré-choix, il faut indiquer le nombre d'étudiants à admettre pour
+chaque cours.
 
 
 \begin{figure}[htb] \begin{center}
 \setlength{\unitlength}{0.1cm}
-\begin{picture}(90,40)
+\begin{picture}(90,35)
 \deffilebox{20}{10}{0.2}
 \defprocessbox{20}{16}
 \put(0, 15){\fichier[\pro{Données}]}
@@ -210,39 +210,38 @@ d'étudiants à admettre pour chaque cours.
 \caption{La production d'horaires}\label{fig:fOne}
 \end{figure}
 
-La figure \ref{fig:fOne} est une vue de très haut niveau de la
-production d'horaires, le système de production inclue le logiciel
-de construction d'horaires. Dans le système que nous proposons,
-nous essayons de limiter le plus possible d'intervention humaine
-afin de réduire des erreurs de manipulation. Nous essayons de
-réduire aussi le sources possible d'erreurs en vérifiant l'entré
-de données.
+La figure \ref{fig:fOne} est une vue abstraite de la production
+d'horaires, le système de production inclue le logiciel de
+construction d'horaires.
 
 \begin{description}
-    \item[Système de production d'horaires] Il est composé de plusieurs logiciels,
-ou modules, qui fonctionnent de manière autonome, mais coordonnée.
+\item[Système de production d'horaires] Il est composé de
+plusieurs logiciels, ou modules, qui fonctionnent de manière
+autonome, mais coordonnée.
 
 
-    \item[\pro{Données}] représentent des données nécessaires à la production
-d'horaires. Nous allons sauvegarder tous les données nécessaires
-dans un base de données. Dans le schéma il n'est pas indiqué que
-ces données peuvent être manipulés par des modules du système de
-production d'horaires. Par exemple, le module de saisie de
-pre-choix, va sauvegarder les cours suivis par un étudiant. Le
+\item[Données] représentent des données nécessaires à la
+production d'horaires. Nous allons sauvegarder tous les données
+nécessaires dans un base de données. Dans le schéma il n'est pas
+indiqué que ces données peuvent être manipulés par des modules du
+système de production d'horaires. Par exemple, le module de saisie
+de pre-choix, va sauvegarder les cours suivis par un étudiant. Le
 module de construction de données va prendre son entrée dans la
 base et lorsque la construction sera faite les nouvelles données
 obtenues seront remises dans la base.
 
 
- \item[\pro{Papier} ou \pro{Web}] Il s'agit de la sortie du système.
-Ces sorties peuvent être des fichiers produits sur papier ou des
+\item[Papier ou Web] Il s'agit de la sortie du système. Ces
+sorties peuvent être des fichiers produits sur papier ou des
 données affichés sur une page Web, dans le deux cas les données
 sources viendront de la base de données.
 
 \end{description}
 
-Il nous apparaît clair que  le système doit avoir comme composante
-principale  une base de donnée.
+
+Il nous apparaît clair que  le système doit deux composantes
+principales une base de données et le système de construction
+d'horaires.
 
 \subsection{La préparation des données}
 La figure \ref{fig:fTwo} montre l'évolution des données dans la
@@ -364,47 +363,7 @@ Nous considérons que les données du trimestre commencent à exister
 et ne sont plus pertinentes  à l'instant $t_{f}$ qui est la fin du
 trimestre.
 
-Étapes de construction~:
 
-Pré-condition les données de base ont été saisies et validés.
-
-\begin{enumerate}
-    \item  Choisir les activités pédagogiques du trimestre
-
-    \item  Choisir les enseignants disponibles et associer une
-    disponibilité
-
-    \item  Choisir les locaux disponibles et et associer une
-    disponibilité
-
-    \item  Associer un format aux activités pédagogiques, associer un
-    nombre de groupes à chaque type d'activité
-
-    \item  Définir la grille horaire.
-\end{enumerate}
-
-De plus, lorsque un logiciel de construction est utilisé, il est
-possible de considérer que toutes les données nécessaires ont été
-correctement saisies et que il y n'aura aucun changement pendant
-la construction de l'horaire; une deuxième possibilité, qui semble
-plus réaliste est de considérer que certains données peuvent
-changer, par exemple certains cours sont enseignés par de
-intervenants externes, mais la personne n'est pas encore trouvé,
-sa disponibilité n'est pas connue, donc l'horaire est construit
-sur des hypothèses qui peuvent s'avérer fausses.
-
-Avant de parler de effectuer la construction avec un logiciel, il
-faut faire une verification des données.
-
-La construction peut se faire de manière automatique, le logiciel va
-produire un horaire au complet. La construction peut se faire de
-manière manuelle, ave
-construit avec des hypothèse
-
-On suppose que lorsque on décide de produire un horaire il existe
-une base de données contenant tous les cours qu'une Faculté peut
-offrir, tous les enseignants d'une Faculté, tous les locaux
-disponibles pour cette Faculté.
 
 
 La première tâche à faire est celle de définir les cours qui
@@ -429,8 +388,11 @@ Lorsque l'horaire est défini et satisfaisant, les données sont
 transférés à la base de données, pour construire les fichiers
 nécessaires à la livraison de l'horaire.
 
-Verification de contraintes (bd)
-
+Verification de contraintes (bd) Dans le système que nous
+proposons, nous essayons de limiter le plus possible
+d'intervention humaine afin de réduire des erreurs de
+manipulation. Nous essayons de réduire aussi le sources possible
+d'erreurs en vérifiant l'entrée de données.
 
 \section{La decomposition modulaire, top-down, alternatives et
 justifications} \label{sec:archi}
