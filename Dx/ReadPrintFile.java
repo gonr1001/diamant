@@ -25,7 +25,13 @@ public class ReadPrintFile {
       String str2 = "";
       if (i+16 < b.length) {
 		for(int j = 0 ; j < 16 ; j ++) {
-			   str1 += (byte) b[i + j ] + " ";
+				if (b[i+j] > 16) {
+					str1 += Integer.toHexString(b[i+ j]).toUpperCase() + " ";
+				} else {
+					str1 += "0";
+					str1 += Integer.toHexString(b[i+ j]).toUpperCase() + " ";
+				}
+			   
 			   if ( (byte)b[i + j ] < 126  && (byte)b[i + j] > 31 )
 				   str2 += (char) b[i + j ];
 			   else {
