@@ -116,7 +116,8 @@ public class GroupDlg extends JDialog implements ActionListener{
   private void setTopPanel(){
     //Set the panel containing the activities ComboBox
     JPanel actPanel, typePanel;
-    _actVector = _activities.getNamesVector();
+    //This vector contains the activities whose their champ visibility = true
+    _actVector = _activities.getIDsByField(3, "true");// .getNamesVector();
     //panel of activities
     _actCombo = new JComboBox(_actVector);
     actPanel = new JPanel();

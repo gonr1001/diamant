@@ -149,11 +149,13 @@ public class ActivityDlg extends JDialog implements ActionListener {
     //If button APPLY
     if (command.equals(_buttonsNames[1])){
       setActivitesVisibility();
+      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
       _buttonsPanel.getComponent(1).setEnabled(false);
     }
     //if button OK
     if (command.equals(_buttonsNames[0])){
       setActivitesVisibility();
+      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent();
       dispose();
     }
     if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])){

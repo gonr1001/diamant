@@ -15,7 +15,7 @@ import dResources.DConst;
 
 public class Activity extends DXObject{
 
-  /* Each field is linked to an index who serves for filtring and for selecting
+  /* Each field is linked to an index who serves for filtering and for selecting
   * an object.
   * Indexes :
   * _departement -> 0
