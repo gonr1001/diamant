@@ -51,8 +51,37 @@ public class Instructor extends Object {
   /**
    *
    * */
-  public Vector getInstDisp(){return _instructorDisp;}
+  public Vector getInstDisp(){
+    return _instructorDisp;
+  }
 
+  public int[][] getInstAvailability(){
+    String jour = (String) _instructorDisp.get(0);
+    StringTokenizer st = new StringTokenizer(jour);
+    int[][] a = new int[_instructorDisp.size()][st.countTokens()];
+    int nbOfTokens = st.countTokens();
+    for(int i = 0; i < _instructorDisp.size(); i++) {
+      jour = (String) _instructorDisp.get(i);
+      st = new StringTokenizer(jour);
+      nbOfTokens = st.countTokens();
+      for(int j=0; j < nbOfTokens; j++) {
+        a[i][j] = Integer.parseInt(st.nextToken());
+      } // end for j
+    } //end for i
+    return a;
+  }
+
+  public void  setInstAvailability(int[][] a){
+    _instructorDisp = new Vector();
+    String str = "";
+    for(int i = 0; i < a.length; i++) {
+      for(int j=0; j <a[i].length; j++) {
+        str += a[i][j] + " ";
+      } // end for j
+      _instructorDisp.add(str);
+      str = "";
+    } //end for i
+  }
   /**
    * Print local information
    * OUTPUT: String of instructorID and instructor availability
@@ -65,19 +94,6 @@ public class Instructor extends Object {
     return instInfo;
   }
 
-  public int disponibility(int i, int j){
-    //i = jour
-    String jour = (String) _instructorDisp.get(i);
-    StringTokenizer st = new StringTokenizer(jour);
-    for(int m = 0; m < st.countTokens(); m++) {
-      if (m < j)
-        jour=st.nextToken();
-      if (m==j)
-        break;
 
-    }
-    jour =st.nextToken();
-    return Integer.parseInt(jour);
-  }
 
 }

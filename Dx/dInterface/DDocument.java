@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.9 $  $Date: 2003-03-10 17:28:41 $
+ * Title: DDocument $Revision: 1.10 $  $Date: 2003-03-14 15:50:21 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -31,7 +31,9 @@ import javax.swing.event.*;
 import javax.swing.*;
 import javax.swing.JDesktopPane;
 
+
 import dInternal.DModel;
+import dInternal.Status;
 import dInternal.TTParameters;
 import dInternal.DModelEvent;
 import dInternal.DModelListener;
@@ -47,9 +49,11 @@ public class DDocument implements ActionListener, DModelListener{
   //private DMediator _mediator;
   private JInternalFrame _jif;
   private DModel _dm;
-  private JLabel _bottomLablel;
+  //private JLabel _bottomLablel;
   private TTPanel _ttPanel;
+  private JPanel _statusPanel;
   //private TTParameters _ttParameters;
+  JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
   //-------------------------------------------
   public DDocument(DApplication dApplic) {
@@ -70,9 +74,9 @@ public class DDocument implements ActionListener, DModelListener{
     //_mediator = mediator;
     _dm = new DModel();
     _jif = new JInternalFrame(DConst.UN_TITLED,true,true,true,true);
-    _bottomLablel = new JLabel("hello");
-    JPanel _bottomPanel = initBottomPanel(_bottomLablel);
-    _jif.getContentPane().add(_bottomPanel, BorderLayout.SOUTH);
+    //_bottomLablel = new JLabel("hello");
+    _statusPanel = initStatusPanel();
+    _jif.getContentPane().add(_statusPanel, BorderLayout.SOUTH);
     _ttPanel = new TTPanel();
     //_ttParameters = new TTParameters();
     _dm.addDModelListener(this);
@@ -114,16 +118,38 @@ public class DDocument implements ActionListener, DModelListener{
     } // end getJIF
     //-------------------------------------------
 
-    private JPanel initBottomPanel(JLabel label){
+    public JPanel initStatusPanel(){
       JPanel panel = new JPanel();
-      label.setForeground(Color.red);
-      panel.add(label);
+      _nbModif = new JLabel( "Modifications " + _dm.getStatus().getModif() );
+      _nbBlocs = new JLabel(DConst.BLOCS + _dm.getStatus().getModif() +" / " + _dm.getStatus().getModif() );
+      _nbCInstr = new JLabel("    +CON02+ nbCftIns");
+      _nbCInstr.setForeground(Color.red);
+      _nbCRoom = new JLabel("    +CON03+ nbCftRoom");
+      _nbCRoom.setForeground(Color.blue);
+      _nbCStu = new JLabel("    +CON01+nbCftStud");
+      _nbCStu.setForeground(Color.magenta);
+      panel.add(_nbModif);
+      panel.add(_nbBlocs);
+      panel.add(_nbCInstr);
+      panel.add(_nbCRoom);
+      panel.add(_nbCStu);
       return panel;
     } // initBottomPanel
 
-    public void updateBottomPanel(){
-      _bottomLablel.setText("Change done");
-    } // updateBottomPanel
+
+
+    public void updateStatusPanel() {
+      _nbModif.setText( "Modifications " + _dm.getStatus().getModif() );
+      _nbBlocs.setText(DConst.BLOCS + _dm.getStatus().getModif() +" / " + _dm.getStatus().getModif() );
+     _nbCInstr.setText("    +CON02+ nbCftIns");
+     _nbCInstr.setForeground(Color.red);
+     _nbCRoom.setText("    +CON03+ nbCftRoom");
+     _nbCRoom.setForeground(Color.blue);
+     _nbCStu.setText("    +CON01+nbCftStud");
+      _nbCStu.setForeground(Color.magenta);
+     }
+
+
 
 /*    public void updateTTPanel(){
       _ttPanel.setText("Change done");
@@ -139,8 +165,7 @@ public class DDocument implements ActionListener, DModelListener{
     }// end actionPerformed
 
     public void changeInDModel(DModelEvent  e) {
-       _bottomLablel.setText("Change done");
+      this.updateStatusPanel();
       _ttPanel.updateTTPanel(_dm.getTTParameters());
-      // repaint();
     }// end actionPerformed
 } /* end DDocument class */

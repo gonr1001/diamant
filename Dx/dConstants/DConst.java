@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.6 $  $Date: 2003-03-13 15:21:02 $
+ * Title: DConst $Revision: 1.7 $  $Date: 2003-03-14 15:50:22 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -29,6 +29,8 @@ public class DConst {
   public final static String APP_NAME = res.getString("appName");
   public final static String V_DATE = res.getString("vDate");
   public final static String UN_TITLED = res.getString("untitled");
+
+  public final static String BLOCS = "BLOCS";
 
 
   public final static String FILE = "Fichier";

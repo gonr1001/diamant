@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.3 $  $Date: 2003-03-13 17:47:22 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.4 $  $Date: 2003-03-14 15:50:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: rgr $
  * @since JDK1.3
  *
@@ -27,7 +27,12 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import dInternal.*;
+import dInternal.Instructor;
+import dInternal.DModel;
+
+/*import dInternal.DModelListener;
+import dInternal.DModelEvent;*/
+
 
 /**
  * Dialog used to set disponibilities for an instructor.  The user must select
@@ -48,7 +53,8 @@ import dInternal.*;
  * @since 1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
-                                implements ActionListener, ItemListener {
+                                implements ActionListener,
+                                           ItemListener {
   private final int nbPer = 14;
   private final int nbDay = 5;
 
@@ -74,12 +80,13 @@ public class InstructorAvailabiliyDlg  extends JDialog
   JButton butOk;
   JButton butApply;
   JComboBox chooser;
-  Vector posVect = new Vector();
+  Vector _posVect;
   int nbPerParJour;
   private boolean modified = false;
   private DModel _dm;
   //private InstructorsList _insList; // clone of the dictionnary
-  private Instructor  _instr;
+  private Instructor  _currentInstr;
+  private int [][] _currentAvailbility;
   //private String _sel;
 
 
@@ -119,8 +126,8 @@ public class InstructorAvailabiliyDlg  extends JDialog
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _instr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
-    centerPanel = makeGridPanel(_instr);
+    _currentInstr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
+    centerPanel = makeGridPanel(_currentInstr);
     getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //button Panel
@@ -141,54 +148,44 @@ public class InstructorAvailabiliyDlg  extends JDialog
   } // end  jbInit()
 
   public void actionPerformed( ActionEvent event) {
-
     String command = event.getActionCommand();
-
     if (command.equals( BUT02 )) {  // cancel
-      //_ddv._jFrame._log.append("Enseignants --> Bouton Annuler pressé\n");
+      //"Enseignants --> Bouton Annuler pressé\n"
       dispose();
-
     } else if (command.equals( BUT01 )) {  // OK
-   /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n");
-      _ddv.actualTT(_ddv._dicInstr.getInstr(_sel), true);
+   /*   _ddv._jFrame._log.append("Enseignants --> Bouton OK pressé\n"); */
+       _currentInstr.setInstAvailability(_currentAvailbility);
+        _dm.incrementModification();
+      modified = false;
+      butApply.setEnabled(false);
+    /*  _ddv.actualTT(_ddv._dicInstr.getInstr(_sel), true);
       _ddv._dicInstr = (DDicInstructors)dicIns.clone();
       _ddv.actualTT(_inst, false);//
       _ddv._mHasChanged = modified;
       _ddv.newReport = true;
       //_ddv.actualTT();*/
       dispose();
-
     } else if (command.equals( BUT00 )) {  // apply
-    /*  _ddv._jFrame._log.append("Enseignants --> Bouton Appliquer pressé\n");
-      _ddv.actualTT(_ddv._dicInstr.getInstr(_sel), true);
-       _ddv._dicInstr = (DDicInstructors)dicIns.clone();
-      _ddv.actualTT(_inst, false);//
-      _ddv._mHasChanged = modified;
-      _ddv.rebuildTT(false);
-      dicIns = (DDicInstructors)_ddv._dicInstr.clone();*/
-      //_ddv.getDDocument(_ddv._doc);
+    /*  "Enseignants --> Bouton Appliquer pressé\n");*/
+      _currentInstr.setInstAvailability(_currentAvailbility);
+      _dm.incrementModification();
+//      _dm.changeDModel();
       modified = false;
       butApply.setEnabled( false );
-
     // if a button of the grid has been pressed
-    } else if ( posVect.indexOf(event.getSource() ) > -1 ) {
-     // int index = posVect.indexOf(event.getSource());
-      //int day = index / nbPer;
-      //int per = index % nbPer;
-  /*    instr = dicIns.getInstr((String)chooser.getSelectedItem());
-      if ( ((JToggleButton)posVect.get(index)).isSelected() ){
-        _ddv._jFrame._log.append("Enseignants --> "+instr.name+" rendu disponible le jour: "+day+" La période: "+per+"\n");
-        instr.disponible[per][day] = 1;
+    } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
+      int index = _posVect.indexOf(event.getSource());
+      int day = index / nbPer;
+      int per = index % nbPer;
+      if ( ((JToggleButton)_posVect.get(index)).isSelected() ){
+        _currentAvailbility [day][per] = 1;
       }
       else{
-        _ddv._jFrame._log.append("Enseignants --> "+instr.name+" rendu indisponible le jour: "+day+" La période: "+per+"\n");
-        instr.disponible[per][day] = 5;
+        _currentAvailbility [day][per] = 5;
       }
-*/
       modified = true;
       butApply.setEnabled( true );
     }
-
   }
 
   /**
@@ -196,18 +193,17 @@ public class InstructorAvailabiliyDlg  extends JDialog
    */
   public void itemStateChanged( ItemEvent event ) {
     if ( event.getStateChange() == event.SELECTED ) {
-
       Object source = event.getSource();
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        Instructor _inst = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
-        centerPanel = makeGridPanel(_inst );
+        _currentInstr = (Instructor)_dm.getInstructorsList().getResource(sel).getObject();
+        centerPanel = makeGridPanel(_currentInstr);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();
       }
     }
-  }
+  }// end itemStateChangeed
 
 
   /**
@@ -220,11 +216,14 @@ public class InstructorAvailabiliyDlg  extends JDialog
     JPanel gridPanel = new JPanel();
     gridPanel.setLayout(new GridLayout(nbPer + 1, nbDay + 1));
     gridPanel.setBorder(BorderFactory.createTitledBorder(MES00));
-    //posVect.setSize(nbPer * nbDay);
+    _posVect = new Vector();
+    _posVect.setSize((nbPer +1 )*(nbDay+1));
     gridPanel.add(new JLabel("")); // top left corner
     for (int i = 0; i < DAY.length; i++)
       //first line :  name of days
       gridPanel.add(new JLabel(DAY[i], JLabel.CENTER));
+
+    _currentAvailbility = _currentInstr.getInstAvailability();
 
     for (int j = 0; j < nbPer; j++) {
       // first column : the time of the period
@@ -236,11 +235,11 @@ public class InstructorAvailabiliyDlg  extends JDialog
       //System.out.println(" DAInstructorDialog NbDays: "+nbDay+"   NbPerDays: "+nbPer); //DEBUG
       for (int i = 0; i < nbDay; i++) {
         JToggleButton tBut = new JToggleButton();
-        tBut.setSelected(instr.disponibility(i,j) ==1 );
+        tBut.setSelected(_currentAvailbility[i][j] == 1 );
         tBut.addActionListener( this );
         tBut.setPreferredSize(new Dimension(50,12));
         gridPanel.add(tBut);//, null);
-        posVect.add(tBut);//setElementAt(tBut, (i * nbPer) + j);
+        _posVect.setElementAt(tBut, (i * nbPer) + j);
       }
     }
     return gridPanel;
@@ -281,33 +280,6 @@ public class InstructorAvailabiliyDlg  extends JDialog
   }
   // end SetTIME
 
-  /**
-   * Nombre de périodes creuses
-   * objet retourné, un vecteur de type Integer
-   * */
-  private Vector creusePer(DModel dm){
-    Vector _cr = new Vector();
-    /*DPeriod _period, _nextPeriod;
-    for (int i=0; i<(_dic._timeTable.nbPeriodPerDay-1); i++){
-      _period = (DPeriod)_dic._timeTable.get(i);
-      _nextPeriod = (DPeriod)_dic._timeTable.get(i+1);
-      if (_period.timeEnd.get(Calendar.HOUR_OF_DAY)!= _nextPeriod.timeBegin.get(Calendar.HOUR_OF_DAY)){
-        _cr.add(new Integer(_period.timeEnd.get(Calendar.HOUR_OF_DAY)));
-        //System.out.println("Heure Creuse: "+_period.timeEnd.get(Calendar.HOUR_OF_DAY));//debug
-      }
-    }*/
-    return _cr;
-  }
 
-  /**
-   * _hour est il un element du vecteur _creux?
-  */
-  private boolean isCreuse(int _hour, Vector _creux){
-    boolean res = false;
-    for(int i=0; i<_creux.size(); i++)
-      if (_hour == ((Integer)_creux.get(i)).intValue())
-        res = true;
 
-    return true;// res;
-  }
 } /* end InstructorAvailabilityDlg */

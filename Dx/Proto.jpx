@@ -49,4 +49,5 @@
   <file path="DRun.java"/>
   <file path="DRunTest.java"/>
   <file path="Proto.html"/>
+  <file path="dInternal/Status.java"/>
 </project>

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.5 $  $Date: 2003-03-13 17:47:22 $
+ * Title: DModel $Revision: 1.6 $  $Date: 2003-03-14 15:50:22 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -26,14 +26,23 @@ import java.io.*;
 public class DModel{
   private Vector _dmListeners = new Vector();
   private TTParameters _ttParameters;
-  //private LoadData _loadData;
+  private Status _status;
   private InstructorsList _instructorsList;
   private RoomsList _roomsList;
   private StudentsList _studentList;
 
   public DModel() {
+    _status = new Status();
     _ttParameters = new TTParameters();
     importData("hello");
+  }
+
+  public Status getStatus() {
+    return _status;
+  }
+  public void incrementModification() {
+    _status.incrModif();
+    sendEvent();
   }
 
   public void importData(String str) {
@@ -44,6 +53,8 @@ public class DModel{
     // _roomsList =
     _studentList = loadData.extractStudents();
   }
+
+
 
   public InstructorsList getInstructorsList(){
     return _instructorsList;
@@ -71,6 +82,10 @@ public class DModel{
   public synchronized void removeTTParametersListener(DModelListener dml) {
     _dmListeners.removeElement(dml);
   }
+
+/*  public void changeDModel() {
+    sendEvent();
+  }*/
 
   public void setParameters(int [] a) {
     _ttParameters.setValues(a);

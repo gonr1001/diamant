@@ -9,7 +9,7 @@ public class AppInTTCmd implements Command {
   }
 
   public void execute(DApplication dApplic) {
-    _dd.updateBottomPanel();
+    _dd.updateStatusPanel();
     //_dd.getTTPanel().updateTTPanel();
 
   }
