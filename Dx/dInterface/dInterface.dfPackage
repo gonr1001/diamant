@@ -84,6 +84,22 @@ class reference7 {
 @__modelType reference 
 */
 class reference8 {
+}/**
+@__ref <oiref:java#Class#dInterface.helloCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#dInterface.helloDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:design#Class#id23apodi7tn7nsdiolxsue.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#dInterface.dAffectation:oiref> 
+*/
+class reference3 {
 }}/**
 @__tags
 @shapeType ClassDiagram 
