@@ -61,6 +61,20 @@ public class StudentsConflictsMatrix {
 
   }
 
+
+  /**
+   *
+   * @param str1 is the key of the first section ADM111.1.A
+   * @param str2 is the key of the second section ADM111.1.A
+   * @return
+   */
+  public int getNumberOfCOnflicts(String str1, String str2){
+    int[] index= getSectionsKeys(str1, str2);
+    if((index[0]!=-1) && (index[1]!=-1))
+      return _theMatrix[index[0]][index[1]];
+    return 0;
+  }
+
   /**
    *
    * @param str1

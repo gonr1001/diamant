@@ -33,7 +33,9 @@ public class DModelProcess {
   *
   */
  public void updateEventsInTTS(){
-   for (int i=0; i< _dm._setOfEvents.size(); i++){
+   _dm._conditionTest = new ConditionsTest(_dm);
+   _dm.getConditionsTest().buildAllConditions();
+   /*for (int i=0; i< _dm._setOfEvents.size(); i++){
      EventAttach event = (EventAttach)_dm._setOfEvents.getResourceAt(i).getAttach();
      StringTokenizer keys = new StringTokenizer(event.getPeriodKey(),".");
      long [] dayTimeKeys = {Long.parseLong(keys.nextToken()),Long.parseLong(keys.nextToken())
@@ -46,6 +48,7 @@ public class DModelProcess {
        period.getEventsInPeriod().addResource(new Resource(event.getPrincipalRescKey(),null),1);
      }// end if (_dm._ttStruct.getCurrentCycle().isPeriodContiguous(
    }// end for (int i=0; i< _dm._setOfEvents.size(); i++)
+   */
  }
 
  /**
@@ -87,13 +90,13 @@ public class DModelProcess {
    _dm._setOfEvents = new SetOfEvents();
    if (_dm._setOfActivities!=null){
      _dm._setOfEvents.build(_dm._ttStruct.getCurrentCycleResource(), _dm._setOfActivities, _dm._setOfInstructors, _dm._setOfRooms);
-     updateEventsInTTS();
+     //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);
-     _dm._conditionTest = new ConditionsTest();
+     _dm._conditionTest = new ConditionsTest(_dm);
      //_dm._conditionTest.buildStudentsMatrix(_dm._setOfActivities,_dm._setOfStudents);
      //System.out.println(conditionTest.getConflictsMatrix().toWriteMatrix());
-     _dm._setOfStates.sendEvent();
+    // _dm._setOfStates.sendEvent();
    }// end if (_setOfActivities!=null)
 
   }

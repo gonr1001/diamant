@@ -78,6 +78,22 @@ public class Period extends DXObject {
   }
 
   /**
+   * add number of students conflicts
+   * @param int the number of students conflicts
+   * */
+  public void addNbStudConflict(int conflict){
+     nbStudConflict+=conflict;
+  }
+
+  /**
+   * remove number of students conflicts
+   * @param int the number of students conflicts
+   * */
+  public void removeNbStudConflict(int conflict){
+     nbStudConflict-=conflict;
+  }
+
+  /**
    * get number of instructors conflicts
    * @param int the number of instructors conflicts
    * */

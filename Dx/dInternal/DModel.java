@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.67 $  $Date: 2003-09-11 19:25:39 $
+ * Title: DModel $Revision: 1.68 $  $Date: 2003-09-11 23:40:44 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.67 $
+ * @version $Revision: 1.68 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -74,6 +74,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     _error = "";
     _setOfStates = new SetOfStates();
     _setOfEvents = new SetOfEvents();
+
     _dApplic = dApplic;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){
       _error=loadTimeTable(fileName);
@@ -178,6 +179,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       if( _setOfStudents.getError().length()!=0){
         return _setOfStudents.getError();
       }
+      buildSetOfEvents();
       addAllListeners();
     }
     _constructionState=1;
@@ -242,6 +244,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
       return _setOfStudents.getError();
     }
     _constructionState=1;
+    buildSetOfEvents();
     _setOfStates.sendEvent();
     addAllListeners();
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR);

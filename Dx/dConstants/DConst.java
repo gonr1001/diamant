@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.47 $  $Date: 2003-09-11 19:25:39 $
+ * Title: DConst $Revision: 1.48 $  $Date: 2003-09-11 23:40:44 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.47 $
+ * @version $Revision: 1.48 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -37,6 +37,7 @@ public class DConst {
   public final static String BUT_APPLY = res.getString("butApply");//Appliquer
   public final static String BUT_BROWSE = res.getString("butBrowse");//Parcourir
 
+  public final static String TOKENSEPARATOR = ".";//Sans titre
   public final static String NO_NAME = res.getString("noName");//Sans titre
   public final static String DIA = res.getString("dia");//dia
   public final static String DIM = res.getString("dim");//dim
