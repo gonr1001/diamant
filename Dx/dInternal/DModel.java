@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.86 $  $Date: 2004-02-16 21:48:36 $
+ * Title: DModel $Revision: 1.87 $  $Date: 2004-03-19 21:17:03 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.86 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.87 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -42,6 +42,7 @@ import dInternal.dConditionsTest.SetOfEvents;
 public class DModel extends DModelProcess implements  DModelListener, TTStructureListener {
   private Vector _dmListeners = new Vector();
   private int _type;
+  private boolean _importDone = false;
   private boolean _modified = false;
   protected boolean _isTimeTable=true;
   protected int _constructionState=0;// tell where the time construction is
@@ -138,6 +139,21 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
    */
   public void setModified(){
      _modified = true;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public boolean getImportDone(){
+    return _importDone;
+  }
+  /**
+   *
+   * @return
+   */
+  public void setImportDone(boolean v){
+    _importDone = v;
   }
   /**
    *

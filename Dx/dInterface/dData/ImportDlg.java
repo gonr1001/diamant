@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ImportDlg $Revision: 1.13 $  $Date: 2004-02-16 17:31:56 $
+ * Title: ImportDlg $Revision: 1.14 $  $Date: 2004-03-19 21:17:03 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -43,7 +43,7 @@ import dResources.DConst;
 
 public class ImportDlg extends JDialog {
 
-  DApplication _dApplic;
+  //DApplication _dApplic;
   /**
     * the constructor will displays the dialog
     *
@@ -52,43 +52,44 @@ public class ImportDlg extends JDialog {
     */
 
    public ImportDlg(DApplication dApplic) {
-     _dApplic= dApplic;
-     loadData();
+     //_dApplic= dApplic;
+     loadData(dApplic);
    } // end constructor
 
    /**
     *
     * */
-   private void loadData(){
-     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
+   private void loadData(DApplication dApplic){
+     JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
      fc.setFileFilter(new DFileFilter ( new String[] {DConst.DIM},
          DConst.DIM_FILE ) );
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
      fc.setPreferredSize(new Dimension((int)d.getWidth()+100, (int)d.getHeight()));
-     int returnVal = fc.showDialog(_dApplic.getJFrame(), DConst.IMP_A_TD);
+     int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.IMP_A_TD);
 
      // If the file chooser exited sucessfully,
      // and a file was selected, continue
      if (returnVal == JFileChooser.APPROVE_OPTION) {
        // get the file name
        String fil = fc.getSelectedFile().getAbsolutePath();
-       _dApplic.setCurrentDir(fil);
+       dApplic.setCurrentDir(fil);
 
        String error = "";
-       if (_dApplic.getDMediator().getCurrentDoc() != null)
-         error= _dApplic.getDMediator().getCurrentDoc().getDM().importData(fil);
+       if (dApplic.getDMediator().getCurrentDoc() != null)
+         error= dApplic.getDMediator().getCurrentDoc().getDM().importData(fil);
        else
          error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
        if(error.length()==0){
-         new InformationDlg(_dApplic.getJFrame(), DConst.IMP_A_SUC);
+         new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
        }else{
-         new FatalProblemDlg(_dApplic.getJFrame(),error);
+         new FatalProblemDlg(dApplic.getJFrame(),error);
               System.exit(1);
        }
-       _dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+       dApplic.setCurrentDir(fc.getSelectedFile().getPath());
        dispose();
-       _dApplic.getMenuBar().postImportCmd();
+       dApplic.getDMediator().getCurrentDoc().getDM().setImportDone(true);
+       dApplic.getMenuBar().postImportCmd();
      }
    }// end method
 
