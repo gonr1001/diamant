@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.38 $  $Date: 2004-06-04 15:56:09 $
+ * Title: EditActivityDlg $Revision: 1.39 $  $Date: 2004-06-04 20:54:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.39 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -45,6 +45,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.ListModel;
@@ -59,6 +60,7 @@ import dInternal.DModel;
 import dInternal.dConditionsTest.EventAttach;
 import dInternal.dData.Activity;
 import dInternal.dData.Resource;
+import dInternal.dData.RoomAttach;
 import dInternal.dData.Section;
 import dInternal.dData.SetOfInstructors;
 import dInternal.dData.SetOfResources;
@@ -91,6 +93,7 @@ public class EditActivityDlg
 	private JTabbedPane _tabbedPane;
 	private JScrollPane _jScrollPane;
 	private ButtonsPanel _applyPanel;
+	private JLabel _capacity;
 	private boolean _canBeModified = false;
 	private Vector _unities = new Vector();           // contains event resource
 	private JList [] _instructorsLists;
@@ -188,10 +191,14 @@ public class EditActivityDlg
 	    String command = e.getActionCommand();
 		System.out.println(command);
 		if (command.equals("name")) {
-		  //System.out.println("change in Name");
+			System.out.println("change in name");
+			JPanel tpane= ((JPanel)_tabbedPane.getComponentAt(_currentActivityIndex));
+			String roomName = getSelectedRoom(tpane);			
+		  	_capacity.setText(getCapacity(roomName));
+		  System.out.println("change in Name" + getCapacity(roomName));
 		}
 		if (command.equals("cat")) {
-		  //System.out.println("change in Cat");
+		  System.out.println("change in Cat");
 		}
 	    if (command.equals(DConst.BUT_CLOSE)) {  // fermer
 	      dispose();
@@ -310,39 +317,49 @@ public class EditActivityDlg
 		JPanel myPanel = new JPanel();
 		JPanel roomPanel = new JPanel();
 		roomPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ROOM_NAME));
+		
+		// for development mode
+		Vector[] vectC =  buildCategoryRoomList();
+ 		JComboBox categoryRoomCB = new JComboBox(vectC[1]);
+ 		categoryRoomCB.setSelectedItem(vectC[0].get(0).toString());
+ 		categoryRoomCB.setActionCommand("cat");
+ 		categoryRoomCB.addActionListener(this);
+ 		
 		Vector[] vectR =  buildRoomList();
 		JComboBox roomCB = new JComboBox(vectR[1]);
 		roomCB.setActionCommand("name");
 		roomCB.setSelectedItem(vectR[0].get(0).toString());
 		roomCB.addActionListener(this);
+		
+		//Vector[] vectCapacity  = buildCapacityList();
+		String capacity = getCapacity(vectC[0].get(0).toString());
+		_capacity = new JLabel(capacity);
 
-                // for development mode
-		/*Vector[] vectC =  buildCategoryRoomList();
-		JComboBox categoryRoomCB = new JComboBox(vectC[1]);
-		categoryRoomCB.setSelectedItem(vectC[0].get(0).toString());
-		categoryRoomCB.setActionCommand("cat");
-		categoryRoomCB.addActionListener(this);*/
-
-
-		JPanel roomName = new JPanel();
-		roomName.setBorder(new TitledBorder(new EtchedBorder(), "Name"));
 		JPanel categoryRoom = new JPanel();
 		categoryRoom.setBorder(new TitledBorder(new EtchedBorder(), "Cat"));
+		categoryRoom.add(categoryRoomCB);
+		JPanel roomName = new JPanel();
+		roomName.setBorder(new TitledBorder(new EtchedBorder(), "Name"));
+		
 		roomName.add(roomCB);
-		//categoryRoom.add(categoryRoomCB);
+		roomName.add(_capacity);
+		roomPanel.add(categoryRoom);
 		roomPanel.add(roomName);
-		//roomPanel.add(categoryRoom);
+		
+
 		myPanel.add(roomPanel);
 
 		return myPanel;
 
 	} //end  buildRoomPanel
 
+
+
 	private String getSelectedRoom(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(2);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
 		JPanel roomJPanel = (JPanel) myJPanel.getComponent(0);
-		return ((JComboBox)roomJPanel.getComponent(0)).getSelectedItem().toString();
+		return ((JComboBox)roomJPanel.getComponent(1)).getSelectedItem().toString();
 	} // end getSelectedRoom
 
 
@@ -644,12 +661,47 @@ public class EditActivityDlg
       list[0].add(room.getID());
     else
       list[0].add(DConst.NO_ROOM_INTERNAL);
-    for(int i=0; i< sor.size(); i++)
-      list[1].add(sor.getResourceAt(i).getID());
+    for(int i=0; i< sor.size(); i++) {
+		list[1].add(sor.getResourceAt(i).getID());
+    }     
     list[1].add(DConst.NO_ROOM_INTERNAL);
     return list;
   }
 
+
+	private String getCapacity(String str) {
+		
+		SetOfRooms sor= _dm.getSetOfRooms();
+		Resource res = 	sor.getResource(str);	
+		if (res == null) {
+			return "0";
+		} else {
+			RoomAttach ra = (RoomAttach) res.getAttach();
+			return String.valueOf(ra.getCapacity());
+		}
+
+	}
+
+  /**
+   * @return
+   */
+  private Vector[] buildCapacityList() {
+	Vector list[] = {new Vector(1), new Vector(1)};
+   EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+   SetOfRooms sor= _dm.getSetOfRooms();
+   //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+   Resource room = sor.getResource(event.getRoomKey());
+   //if(room!=null)
+	// list[0].add(room.getID());
+   //else
+	// list[0].add(DConst.NO_ROOM_INTERNAL);
+   for(int i=0; i< sor.size(); i++) {
+   		RoomAttach ra = (RoomAttach) sor.getResourceAt(i).getAttach();
+	   list[1].add(String.valueOf(ra.getCapacity()));
+   }     
+   list[1].add(DConst.NO_ROOM_INTERNAL);
+   return list;
+  }
   private Vector[] buildCategoryRoomList(){
 	Vector list[] = {new Vector(1), new Vector(1)};
 	EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();

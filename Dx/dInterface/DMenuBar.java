@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.107 $  $Date: 2004-05-17 18:12:15 $
+ * Title: DMenuBar $Revision: 1.108 $  $Date: 2004-06-04 20:54:18 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.107 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.108 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -60,7 +60,7 @@ import dAux.StateZeroCmd;
 
 public class DMenuBar extends JMenuBar{
   private DApplication _dApplic;
-  private final boolean _DEVELOPMENT = DConst.DEVELOPMENT;
+  
 
   private final String _mfont = DConst.MFONTDialog;
   private final int _font = Font.PLAIN;
@@ -168,7 +168,7 @@ public class DMenuBar extends JMenuBar{
     createReportMenu();
     createPreferencesMenu();
     createHelpMenu();
-    if (_DEVELOPMENT)
+    if (DConst.DEVELOPMENT)
       createDevelopmentMenu();
     setAlways();
     setZero(); //setAll();
@@ -621,7 +621,7 @@ public class DMenuBar extends JMenuBar{
     // always _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -679,7 +679,7 @@ public class DMenuBar extends JMenuBar{
     // always _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -736,7 +736,7 @@ public class DMenuBar extends JMenuBar{
     // always _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -789,7 +789,7 @@ public class DMenuBar extends JMenuBar{
     // always _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -843,7 +843,7 @@ public class DMenuBar extends JMenuBar{
     // always _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -896,7 +896,7 @@ public class DMenuBar extends JMenuBar{
     // always _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -946,7 +946,7 @@ public class DMenuBar extends JMenuBar{
     _boolAbout = true;
 
     //the menu dev
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       _boolMenuDev = true;
       _boolMyFile = _boolShowAll = _boolStateZero = true;
     }
@@ -984,7 +984,7 @@ public class DMenuBar extends JMenuBar{
       setHelpMenu();
     else
       _help.setEnabled(_boolMenuHelp);
-    if (_DEVELOPMENT) {
+    if (DConst.DEVELOPMENT) {
       if (_boolMenuDev)
         setDevMenu();
       else
