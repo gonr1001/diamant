@@ -38,11 +38,11 @@ public class DXToolsMethodsTest extends TestCase{
     TTStructure tts = new TTStructure();
     tts.loadTTStructure("D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\DXToolsMethodsTest_resizeAvailability.xml");
     finalAvail = DXToolsMethods.resizeAvailability(initialAvail, tts);
-    for (int i = 0; i < finalAvail.length; i++){
+    /*for (int i = 0; i < finalAvail.length; i++){
       for (int j = 0; j < finalAvail[i].length; j++){
         System.out.println("finalAvail[" + i + "]["+ j + "]= " + finalAvail[i][j]);
       }
-    }
+    }*/
 
     assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 5, finalAvail.length);
     assertEquals("test_resizeAvailability finalAvail[0].length : assertEquals", 3, finalAvail[0].length);

@@ -176,27 +176,25 @@ public class DXToolsMethods {
        UpperLower=1;
      }
 
-     Day day = tt.getCurrentCycle().getCurrentDay();
+     Day day;
      Period per;
-     int itr=0;
      int[][] finalAvail= new int [tt.getNumberOfActiveDays()]
                        [tt.getCurrentCycle().getMaxNumberOfPeriodsADay()];
-     for (int i=0; i< day.getSetOfSequences().size(); i++){
-       for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
-         per = day.getSequence(i).getPeriod(j);
-         //boolean avail = isAvailableInRange(initialAvail)
-         for (int k=0; k< tt.getNumberOfActiveDays(); k++){
-           boolean avail = isAvailableInRange(initialAvail,k,per,tt.getPeriodLenght(),UpperLower);
+     for (int h=0; h< tt.getNumberOfActiveDays(); h++){
+       int itr=0;
+       day = tt.getCurrentCycle().getDayByIndex(h);
+       for (int i=0; i< day.getSetOfSequences().size(); i++){
+         for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
+           per = day.getSequence(i).getPeriod(j);
+           boolean avail = isAvailableInRange(initialAvail,h,per,tt.getPeriodLenght(),UpperLower);
            if (avail)
-             finalAvail[k][itr]=1;
+             finalAvail[h][itr]=1;
            else
-             finalAvail[k][itr]=5;
-         }// end for (int k=0; k< tt.getCurrentCycle().getNumberOfDays(); k++)
-         itr++;
-
-       }//end for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++)
-
-     }// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+             finalAvail[h][itr]=5;
+           itr++;
+         }//end for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++)
+       }// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+     }// end
      return finalAvail;
    }
 
@@ -215,13 +213,23 @@ public class DXToolsMethods {
      int beginIndex;
      int endIndex;
      beginIndex= beginH[0]- DConst.STIBEGINHOUR;
+     if (beginH[1] < DConst.STIBEGINMINUTE)
+       beginIndex--;
+     if (beginH[1] > DConst.STIBEGINMINUTE)
+       beginIndex++;
      if (beginIndex<0)
        return false;
      else{// else  if (beginIndex<0)
        endIndex = endH[0]- DConst.STIBEGINHOUR;
-       if(endIndex> initial[day].length)
+       if (endH[1] <= DConst.STIBEGINMINUTE)
+         endIndex--;
+       else if (endH[1] > DConst.STIBEGINMINUTE)
+         endIndex++;
+       if (endIndex<0)
          return false;
-       else{// else if(endIndex> initial[day].length)
+       if(endIndex>= initial[day].length){
+         return false;
+       }else{// else if(endIndex> initial[day].length)
          for (int i=beginIndex; i<= endIndex; i++)
            if(initial[day][i]==5)
              return false;

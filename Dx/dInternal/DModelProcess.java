@@ -105,6 +105,7 @@ public class DModelProcess {
     InstructorAttach attach;
     for (int i=0; i< _dm._setOfInstructors.size(); i++){
       attach = (InstructorAttach)_dm._setOfInstructors.getResourceAt(i).getAttach();
+      //System.out.println(_dm._setOfInstructors.getResourceAt(i).getID());//debug
       matrix=attach.getMatrixAvailability();
       matrix = DXToolsMethods.resizeAvailability(matrix,_dm._ttStruct);
       attach.setAvailability(matrix);
