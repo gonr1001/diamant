@@ -13,6 +13,7 @@ import dInterface.dUtil.DXTools;
 
 import dInternal.dData.*;
 import dInternal.dUtil.DXValue;
+import dInternal.dUtil.DXToolsMethods;
 import dInternal.DModel;
 
 
@@ -45,10 +46,19 @@ public class StudentsConflictsMatrix {
     for(int i=0; i< sos.size(); i++){
       StudentAttach student = (StudentAttach)sos.getResourceAt(i).getAttach();
       for(int j=0; j< student.getCoursesList().size()-1; j++){
-        for (int k=j; k< student.getCoursesList().size(); k++){
-          String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, soa._COURSENAMELENGTH)
+        String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, soa._COURSENAMELENGTH)
                    +"."+student.getCoursesList().getResourceAt(j).getID().substring(soa._COURSENAMELENGTH)+"."+
                    DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
+        String token= DXToolsMethods.getToken(course1,".",0);
+        String tokenType= DXToolsMethods.getToken(course1,".",1);
+          if(dm.getSetOfActivities().getType(token,tokenType)==null){
+            DXValue error= new DXValue();
+            error.setStringValue("Erreur --> "+sos.getResourceAt(i).getKey()+" - "
+                                 +sos.getResourceAt(i).getID()+"- Activity: "+token+tokenType+" *** INEXISTANTE");
+            dm.getSetOfImportErrors().addResource(new Resource("1",error),0);
+          }// end if(dm.getSetOfActivities().getResource(token)==null)
+
+        for (int k=j; k< student.getCoursesList().size(); k++){
           String course2 = student.getCoursesList().getResourceAt(k).getID().substring(0, soa._COURSENAMELENGTH)
                          +"."+student.getCoursesList().getResourceAt(k).getID().substring(soa._COURSENAMELENGTH)+"."+
                            DXTools.STIConvertGroup( ((DXValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());

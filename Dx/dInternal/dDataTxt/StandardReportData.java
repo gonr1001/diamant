@@ -175,7 +175,7 @@ public class StandardReportData {
    * @return
    */
   public String getStudentsReport( int principalElt, int[] otherElts){
-    return sortReport(getReport(_studentsReport,principalElt,otherElts));
+    return getReport(_studentsReport,principalElt,otherElts);
   }
 
   /**
