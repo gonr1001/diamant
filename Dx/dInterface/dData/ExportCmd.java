@@ -1,6 +1,6 @@
 /**
  *
- * Title: ExportCmd $Revision: 1.12 $  $Date: 2005-03-08 16:00:43 $
+ * Title: ExportCmd $Revision: 1.13 $  $Date: 2005-03-10 21:11:25 $
  * Description: ExportCmd is class used as the command
  *              which executes the exportation
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.13 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -39,8 +39,7 @@ import eLib.exit.dialog.InformationDlg;
    */
 
   public class ExportCmd implements Command {
-    public ExportCmd () {
-    } // end constructor
+    
 //------------------------------
     public void execute(DApplication dApplic) {
 

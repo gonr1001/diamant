@@ -147,7 +147,7 @@ Eclipse doit s'installer dans D:/Programs Files/eclipse.
             Non static access to static member & Warning \\
             Indirect access to static member & Warning \\
             Unqualified access to instance field & Ignore \\
-            Undocumented empty block & Ignore \\
+            Undocumented empty block & Warning \\
             Access to a non-accesible member of enclosig type & Ignore \\
             Methods with a constructor name & Warning \\
             \hline
@@ -173,8 +173,9 @@ Eclipse doit s'installer dans D:/Programs Files/eclipse.
             $\begin{array}{ll}
             \hline
             % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-            Field declaration hides another field or variable & Ignore \\
-            Local variable declaration hides another field or variable & Ignore \\
+            Field declaration hides another field or variable & Warning \\
+            Local variable declaration hides another field or variable & Warning \\
+            Include constructor or setter method parameters & / \\
             Methods overridden but not package visible & Warning \\
             Interface methods conflicts with protected 'Object' method & Warning \\
             \hline
@@ -186,6 +187,10 @@ Eclipse doit s'installer dans D:/Programs Files/eclipse.
             \hline
             % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
             Usage of deprecate API & Warning \\
+            Signal use of deprecated API inside deprecated code & /
+            \\
+            Signal overridding or implementing deprecated methods & /
+            \\
             \hline
             \end{array}$
 
