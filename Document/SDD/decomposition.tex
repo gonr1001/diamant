@@ -49,7 +49,7 @@ Les indexes de chaînes de caractères commencent à \verb!0!.
 
 \subsection{Description du modèle}
 
-Le modèle de \dx{} est bâti autour de quatre principaux composants: le composant \verb!model!, le composant \verb!data!, le composant \verb!ttstructure! et le composant \verb!optimization!.
+Le modèle de \dx{} est bâti autour de quatre principaux sous-composants: le sous-composant \verb!model!, le sous-composant \verb!data!, le sous-composant \verb!ttstructure! et le sous-composant \verb!optimization!.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -58,6 +58,10 @@ Le modèle de \dx{} est bâti autour de quatre principaux composants: le composant
     \caption{Architecture du modèle de \dx{}}\label{model}
   \end{center}
 \end{figure*} 
+
+\subsubsection{Description du sous-composant \verb!model!}
+
+Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur.
 
 \subsection{Description de la vue}
 
