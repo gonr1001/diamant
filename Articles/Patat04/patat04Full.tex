@@ -243,8 +243,8 @@ construction d'horaires.
 \item[Système de production d'horaires] Il est composé de
 plusieurs logiciels, ou modules, qui fonctionnent de manière
 autonome, mais coordonnée. Il nous apparaît clair que  le système
-doit avoir deux composantes principales~: une base de données et
-le logiciel de construction d'horaires.
+doit avoir deux composantes principales~: système de sauvegarde de
+données et le logiciel de construction d'horaires.
 
 \item[Données] représentent des données nécessaires à la
 production d'horaires. Nous allons sauvegarder toutes les données
@@ -274,8 +274,8 @@ base de données pendant la production de l'horaire.  L 'évolution
 présente les instances de données à différents instants du
 processus.
 
-La répartition de données sur une seule base de données (physique)
-ou sur plusieurs bases (base de données repartie) est un problème
+La répartition de données sur une seule base de données ou sur
+plusieurs bases (base de données repartie) est un problème
 d'implémentation. De manière conceptuelle il s'agit d'une seule
 base de données.
 
@@ -290,7 +290,7 @@ base de données.
 \put(0, 15){\fichier[$bd_{1}$]} \put(0, 5){\makebox(20,10){Données
 de base}} \put(20, 20){\vector(1,0){10}} \put(30,
 15){\fichier[$bd_{2}$]} \put(30, 5){\makebox(20,10){Données
-trimestre}} \put(50, 20){\vector(1,0){10}} \put(60,
+période $P$}} \put(50, 20){\vector(1,0){10}} \put(60,
 15){\fichier[$bd_{3}$]} \put(60, 5){\makebox(20,10){Données
 horaire}}
 \end{picture}%}
@@ -317,7 +317,7 @@ qui peut être une vue (une partie) de la base de données complète
 de l'institution.
 
 
-    \item[Données trimestre $p$] Ces données sont nécessaires à la
+    \item[Données période $P$] Ces données sont nécessaires à la
     construction d'un horaire pour la période concernée,
 elles contiennent les cours qui seront
     offerts à cette période, la disponibilité de enseignants pour cette période, etc.
@@ -326,8 +326,7 @@ elles contiennent les cours qui seront
     chaque construction. Cependant, ces données vont changer (mises-à-jour) pendant
 la construction de l'horaire. Par exemple lorsque on trouve un
 enseignant externe pour un cours donné, on saisira ses
-informations nom et disponibilité dans la base, même si la
-construction de l'horaire est déjà démarré.
+informations nom et disponibilité dans la base.
 
     \item[Données horaire] Ces donnés sont le résultat de  la
     construction de l'horaire. Elles vont contenir toutes les
@@ -352,7 +351,8 @@ de voir comment ces activités s'effectuent dans le temps.
 \end{picture}%}
 \end{center}
 
-\caption{Les activités de saisie et construction}\label{fig:fTime}
+\caption{Les activités de saisie et construction pour une période
+$P$}\label{fig:fTime}
 \end{figure}
 
 La figure \ref{fig:fTime} nous montre l'évolution de ces
@@ -404,13 +404,15 @@ devient définitif pour la période
 
 
 
-\section{L'architecture en couches} \label{sec:archi}
+
+\section{L'architecture} \label{sec:archi}
+
 
 Suite à l'étude du flot de données dans la production d'horaires,
-nous sommes en mesure de proposer une architecture pour implénter
-le système
+nous sommes en mesure de proposer une architecture pour
+implémenter le système
 
-\subsection {Architecture trois-tiers et la production d'horaires}
+\subsection{Une architecture pour la production d'horaires}
 
 De manière abstraite, une architecture logicielle décrit les
 éléments composants d'un système, elle montre aussi les
@@ -425,7 +427,7 @@ de notre problème complexe \cite{buschmann96}.
 
 À l'heure actuelle il y a plusieurs architectures disponibles pour
 développer des applications logicielles,  la plus adaptée pour
-mieux résoudre notre problème est celle de trois couches.
+mieux résoudre notre problème est celle en couches.
 
 L'architecture montré dans la figure \ref{fig:fThree} propose la
 division du système en trois couches, chacune avec une fonction
@@ -607,9 +609,9 @@ l'échange des données avec les autres systèmes.
 \item Un outil pour gérer la persistance des données.
 \end{enumerate}
 
-Après notre analyse, nous avons constaté qu'il n'y a pas un seul
-option, plutôt il y a plusieurs instances possibles pour
-implémenter cette architecture.
+Après notre analyse, nous avons constaté qu'il n'y a pas une seule
+option, plutôt il y a plusieurs possibilités pour implémenter
+cette architecture.
 
 Nous montrons ici une liste d'instances possibles, il faut
 remarquer qu'elle n'est pas exhaustive.
@@ -633,34 +635,33 @@ l'architecture}\label{tb:tbOne}
 \end{table}
 
 Tel que nous avons remarqué l'ensemble des instances montrées dans
-le Tableau \ref{tb:tbOne} n'est pas exhaustive, il peut y avoir
-quelques autres.
+le Tableau \ref{tb:tbOne} n'est pas exhaustive.
 
 Pour la construction de chaque instance nous avons pris en
 considération une certaine logique, nous avons mit ensemble les
 éléments qui ont des caractéristiques communes ou bien qui
-appartiennent à un même fabricant de logiciel, c'est un critère de
-construction qui a été choisi de manière arbitraire.
+appartiennent à un même famille de logiciels et qui sont ouverts,
+c'est un critère de construction qui a été choisi de manière
+arbitraire.
 
 Pour le volet base de données, nous n'avons pas mentionné le nom
-spécifique d'un système administrateur de base de données, le
-choix reste ouvert à l'implementation.
+spécifique d'un système de gestion de base de données, le choix
+reste ouvert à l'implementation.
 
-Nous pouvons dire que notre architecture est ouverte, étant donné
-qu'elle accepte plusieurs instances. L'architecture est aussi
-extensible, parce que nous pourrions changer les modules d'une
-manière facile, par exemple, nous pouvons commencer avec un
-élément de persistance de données comme un fichier en format texte
-plain, et après, nous pourrions effectuer quelques changements
-dans l'élément d'interface utilisateur pour pouvoir interagir avec
-des fichiers en format XML. Après, si nous voulons faire évoluer
-cette partie de persistance de données vers un système de bases de
-données, il faudrait faire des changements dans la couche
-d'interface d'utilisateur et programmer l'élément de persistance
-des données. Tous ces changements sans jamais toucher l'élément de
-la logique d'affaires. Dans le Tableau \ref{tb:tbTwo}, nous
-montrons l'évolution possible d'une instance de notre
-architecture.
+Notre architecture est ouverte, étant donné qu'elle accepte
+plusieurs instances. L'architecture est aussi extensible, parce
+que nous pourrions changer les modules d'une manière facile, par
+exemple, nous pouvons commencer avec un élément de persistance de
+données comme un fichier en format texte plain, et après, nous
+pourrions effectuer quelques changements dans l'élément
+d'interface utilisateur pour pouvoir interagir avec des fichiers
+en format XML. Après, si nous voulons faire évoluer cette partie
+de persistance de données vers un système de bases de données, il
+faudrait faire des changements dans la couche d'interface
+d'utilisateur et programmer l'élément de persistance des données.
+Tous ces changements sans jamais toucher l'élément de la logique
+d'affaires. Dans le Tableau \ref{tb:tbTwo}, nous montrons
+l'évolution possible d'une instance de notre architecture.
 
 \begin{table}
 \begin{tabular}{|c||c|c|c|}\hline
@@ -668,13 +669,13 @@ Technologie & Version 1 & Version 2 & Version 3\\ \hline\hline
 Langage pour affichage & HTML et JSP & HTML et JSP & HTML et JSP\\
 \hline
 
-Format pour échanger données & Text & XML & Base de données\\
+Format pour échanger données & Text & XML & SQL, Base de données\\
 \hline
 
 Langage pour coder la logique d'affaire & Java & Java & Java\\
 \hline
 
-La persistance de données & Text & XML & Base de données \\
+La persistance de données & Text & XML & SQL, Base de données \\
 \hline
 
 \end{tabular}
@@ -687,7 +688,7 @@ l'architecture}\label{tb:tbTwo}
 Nous pouvons aussi imaginer un système qui commence avec un
 interface utilisateur basé en affichage en mode textuel, qui va
 évoluer à un affichage basé en HTML et JSP en utilisant un serveur
-web.
+Web.
 
 \section{Une instance de l'architecture} \label{sec:tictac}
 
@@ -698,10 +699,10 @@ montré trois options d'instances de l'architecture (voir Tableau
 \ref{tb:tbOne}), pour notre implémentation, nous avons choisi
 l'option 1 de ce tableau.
 
-De depart il faut savoir que un élément est ouvert s'il est
+De le départ, il faut savoir que un élément est ouvert s'il est
 construit avec des standards approuvés, ou bien, s'il est
 construit avec une spécification privée mais rendue publique par
-les désignateurs.
+les développeurs.
 \footnote{http:\//\//www.webopedia.com\//TERM\//O\//open\_architecture.html}
 
 Il faut aussi tenir en compte que un élément est extensible s'il
@@ -757,7 +758,7 @@ Même si ce n'est pas la seule option pour l'implementation de
 notre système de production d'horaires, nous sommes convaincus que
 notre choix nous permettra de faire évoluer le système par
 versions en ajoutant ou en modifiant caractéristiques demandés par
-les utilisateurs.
+les institutions.
 
 
 \section{Conclusions}\label{sec:conc}
