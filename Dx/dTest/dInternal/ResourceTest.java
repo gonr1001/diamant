@@ -40,8 +40,8 @@ public class ResourceTest extends TestCase {
     _inst.addDispDay("5 5 5 1 5");
     _resc = new Resource("Yan",_inst);
     InstructorsList ilist = new InstructorsList(data, 4,5);
-    ilist.addResource(_resc);
-    ilist.addResource(_resc);
+    ilist.addResource(_resc,1);
+    ilist.addResource(_resc,1);
     assertEquals("Instructor Dispo equals :", _inst.getInstDisp(), ((Instructor)_resc.getObject()).getInstDisp());
     System.out.println("\r\n"+ilist.getResource(1));//debug
   }

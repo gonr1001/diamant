@@ -132,7 +132,7 @@ private int _numberOfColumns;// represent number of period a day.
          if (stateDispo> _numberOfLines){
            Instructor inst = new Instructor();
            inst.setInstructorDisp(avail);
-           this.addResource(new Resource( instID, inst));
+           this.addResource(new Resource( instID, inst),1);
            state =1;
          }
          break;

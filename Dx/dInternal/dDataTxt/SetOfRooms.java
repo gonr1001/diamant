@@ -144,7 +144,7 @@ public class RoomsList extends ResourceList{
                   break;
               }// end switch (state)
             }// end while (currentLine.hasMoreElements())
-            addResource(new Resource( roomID, room));
+            addResource(new Resource( roomID, room),1);
             break;
       }// end switch(position)
     }// end while (st.hasMoreElements())

@@ -89,7 +89,7 @@ public class StudentsList extends ResourceList{
   }
 
   /**
-   * analyse student datas by a finished states machine
+   * build studentlist from student datas by a finished states machine
    * INPUT: beginPosition, an integer (start position of the finished states machine)
    * OUTPUT: boolean. "true" the analysis proceeded successfully and false otherwise
    * */
@@ -143,8 +143,7 @@ public class StudentsList extends ResourceList{
    *   false otherwise
    * */
   public boolean addStudent(long matricule, String name, String temp, Student studentChoice){
-    if (studentChoice.getCourses().size()!=0)
-    if(this.getIndexOfResource(matricule)==-1){
+    if (studentChoice.getCourses().size()!=0){
       //Student newStudent = new Student();
       Resource resource = new Resource(name,studentChoice);
       if (temp.length()==0)
@@ -152,8 +151,7 @@ public class StudentsList extends ResourceList{
       else
         resource.setMessage(temp);
       setCurrentKey(matricule);
-      addResource(resource);
-      return true;
+      return addResource(resource,0);
     }// end if(this.getResource(matricule)!=null)
     return false;
   }

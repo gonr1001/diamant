@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import dResources.DXObject;
 
-abstract class ResourceList {
+public class ResourceList extends DXObject{
 
   /**contains list of resource (instructor, rooms, student or activity)*/
   private Vector _resourceList;
@@ -25,12 +25,21 @@ abstract class ResourceList {
   private int _numberOfLines;
   private int _numberOfColumns;// represent number of period a day.
   private long _currentKey=0;
-  private int _resourceType; // 0= activities, 1= students, 2= instructors, 3 = rooms
+  /**0= activities, 1= students, 2= instructors, 3 = rooms*/
+  private int _resourceType;
   private static final String CR_LF = "\r\n";
   private Resource _resource;
 
+
   /**
    * Constructor call with byte[]  dataloaded
+   * */
+  public ResourceList( int resType) {
+    _resourceList = new Vector();
+    _resourceType = resType;
+  }
+  /**
+   * Constructor call with byte[]  dataloaded and resource type resType
    * */
   public ResourceList(byte[]  dataloaded, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
@@ -40,7 +49,7 @@ abstract class ResourceList {
 
   /**
    * Constructor call with byte[]  dataloaded,  int nbDay (number of days),
-   * int ndPerDay (number of period a day)
+   * int ndPerDay (number of period a day) and resource type resType
    * */
   public ResourceList(byte[]  dataloaded, int nbDay, int ndPerDay, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
@@ -72,25 +81,59 @@ abstract class ResourceList {
   /**
    * Add a Resource to ResourceList
    * @param resource a Resource object
+   * @param insertType an integer. it select the type of insert you want to do
+   * insertType=0 (insert by using key); insertType=1 (insert by using ID)
    * @return boolean (true if Resource added to list, false if Resource not
    * added because it already exists)
    * */
-  public boolean addResource(Resource resource){
+  public boolean addResource(Resource resource, int insertType){
     //if (getIndexOfResource(resource.getID()) == -1){
       resource.setKey(_currentKey);
-      if (_stateSort!=0)
-        this.sortResourceListByKey();
-      int index = searchWhereToInsert(_currentKey);
-      if (index >= (_resourceList.size()-1))
-        _resourceList.add(resource);
-      else
-        _resourceList.insertElementAt(resource, index);
-      _currentKey++;
+      //if (_stateSort!=0)
+        //this.sortResourceListByKey();
+      int index = 0;
+      int add=-1;
+      if (insertType==0){
+        add = getIndexOfResource(_currentKey);
+        if (add==-1)
+          index = searchWhereToInsert(_currentKey);
+      } else{
+        if (insertType==1){
+          add = getIndexOfResource(resource.getID());
+          if (add==-1)
+            index =searchWhereToInsert(resource.getID());
+        }// end if (insertType==1)
+      }// end else if (insertType==0)
+
+      if (add==-1){
+        if (index >= (_resourceList.size()-1))
+          _resourceList.add(resource);
+        else
+          _resourceList.insertElementAt(resource, index);
+        _currentKey++;
+        return true;
+      }
       //_resourceList.add(resource);
 
-      return true;
+      return false;
     //}
     //return false;
+  }
+
+  /**
+   * set the resource list
+   * @param Vector the vector of resource list to set
+   * */
+  public void setResourceList(Vector rlist){
+    _resourceList = rlist;
+  }
+
+  /**
+   * get the resource list
+   * @return Vector the vector of resource list
+   * */
+  public Vector getResourceList(){
+    return _resourceList;
   }
 
   /**
@@ -105,20 +148,26 @@ abstract class ResourceList {
    * Remove a Resource from ResourceList
    * @param ResourceID, a String
    * */
-  public void removeResource(String ResourceID){
+  public boolean removeResource(String ResourceID){
     int index = getIndexOfResource(ResourceID);
-    if (index != -1)
+    if (index != -1){
       _resourceList.removeElementAt(index);
+      return true;
+    }
+    return false;
   }
 
   /**
    * Remove a Resource from ResourceList
    * @param key, a long integer
    * */
-  public void removeResource(long key){
+  public boolean removeResource(long key){
     int index = getIndexOfResource(key);
-    if (index!=-1)
+    if (index!=-1){
       _resourceList.removeElementAt(index);
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -148,7 +197,7 @@ abstract class ResourceList {
   }
   /**
   * Set a Resource in the ResourceList
-  * @param Resource resource to set
+  * @param Resource the resource to set
   * @return boolean true if Resource set succesful and false otherwise
   * */
  public boolean setResource(Resource resc){
@@ -203,15 +252,17 @@ abstract class ResourceList {
    * */
   public String toString(){
     String reslist="";
-    if (_resourceType==3){
-      for (int i=0; i< _resourceList.size()-1; i++)
-        reslist+= ((Resource)_resourceList.get(i)).toString(";")+CR_LF;
-      reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(";");
-    }else{
-      for (int i=0; i< _resourceList.size()-1; i++)
-        reslist+= ((Resource)_resourceList.get(i)).toString(CR_LF)+CR_LF;
-      reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(CR_LF);
-    }
+    if(_resourceList.size()>0){
+      if (_resourceType==3){
+        for (int i=0; i< _resourceList.size()-1; i++)
+          reslist+= ((Resource)_resourceList.get(i)).toString(";")+CR_LF;
+        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(";");
+      }else{
+        for (int i=0; i< _resourceList.size()-1; i++)
+          reslist+= ((Resource)_resourceList.get(i)).toString(CR_LF)+CR_LF;
+        reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(CR_LF);
+      }
+    }// end if(_resourceList.size()>0)
     return reslist;
   }
 
@@ -384,6 +435,31 @@ abstract class ResourceList {
   }
 
   /**
+   * finds a index in a sorted vector, using the binary search algorithm
+   * @param String the Resource ID from wich to find index in ResourceList
+   * @return int index of the Resource in ResourceList
+   * */
+  private int searchWhereToInsert(String id){
+    if (_stateSort!=1)
+      this.sortResourceListByID();
+    int low = 0;
+    int high = _resourceList.size()-1;
+    while(low <= high){
+      int mid = (low + high)/2;
+      int diff = ((Resource)_resourceList.get(mid)).getID().compareTo(id);
+      if (diff == 0)
+        return mid;
+      else{
+        if (diff < 0)
+          low = mid + 1;
+        else
+          high = mid - 1;
+      }//end else if (diff == 0)
+    }//end while(low <= high)
+    return low;
+  }
+
+  /**
    * finds a index where to insert a RESOURCE in a sorted vector, using the
    * binary search algorithm
    * @param long the Resource key from wich to find index in ResourceList
@@ -419,18 +495,5 @@ abstract class ResourceList {
     }//end while(low <= high)
     return low;
   }
-
-  // main
-  public static void main(String[] args) {
-       Instructor inst= new Instructor();
-       inst.addDispDay("1 1 1 5 5");
-       inst.addDispDay("5 5 1 1 5");
-       Resource resc = new Resource("Alex", inst);
-       System.out.println(resc.toString());//debug
-       resc = new Resource("Yannick", inst);
-       System.out.println(resc.toString());//debug
-
-    } // end main
-
 
 }

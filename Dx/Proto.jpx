@@ -53,11 +53,15 @@
   <file path="dInternal/Activity.java"/>
   <file path="dInternal/ActivityList.java"/>
   <file path="dInterface/AppInTTCmd.java"/>
+  <file path="dInternal/Bloc.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
   <file path="dResources/DXObject.java"/>
+  <file path="dInternal/Group.java"/>
+  <file path="dInternal/Nature.java"/>
   <file path="Proto.html"/>
   <file path="dInternal/Status.java"/>
   <file path="dResources/StudentChoice.java"/>
+  <file path="dInternal/WeekAssignment.java"/>
 </project>
