@@ -15,22 +15,34 @@ import java.util.Vector;
 public class SelectAlgorithm {
 
  private DModel _dm;
+ private Vector _algorithmToRun;
+ private int _currentAlgoToExecute=0;
   /**
    * constructor
    */
-  public SelectAlgorithm(DModel dm) {
+  public SelectAlgorithm(DModel dm, int contexte) {
     _dm= dm;
+    _algorithmToRun= new Vector(1);
+    buildAlgorithmToRun(contexte);
   }
 
   /**
-   * execute a selected algorithm
+   * build Algorithm To Run
    */
-  public void execute(int choice){
-    switch(choice){
-      case 1: FirstAffectAlgorithm firstAffect= new FirstAffectAlgorithm();
-        firstAffect.build(_dm, buildEventsVector());
+  private void buildAlgorithmToRun(int contexte){
+    switch(contexte){
+      case 0: _algorithmToRun.add(new FirstAffectAlgorithm());
         break;
     }// end  switch(choice)
+  }
+
+  /**
+   * execute algorithm
+   */
+  public void execute(){
+    if(_algorithmToRun.size()!=0){
+      ((Algorithm)_algorithmToRun.get(_currentAlgoToExecute)).build(_dm, buildEventsVector());
+    }
   }
 
   /**

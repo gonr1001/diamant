@@ -19,7 +19,7 @@ public class AlgorithmsCmd implements Command{
   }
 
   public void execute(DApplication dApplic) {
-    (new SelectAlgorithm(dApplic.getDMediator().getCurrentDoc().getDM())).execute(1);
+    (new SelectAlgorithm(dApplic.getDMediator().getCurrentDoc().getDM(),0)).execute();
 
   }
 }

@@ -15,6 +15,7 @@ import dInternal.dConditionsTest.*;
 import dInternal.dData.Resource;
 import java.util.Vector;
 import java.util.StringTokenizer;
+//import java.awt.import java.awt.Component;;
 
 public class FirstAffectAlgorithm implements Algorithm {
 
@@ -46,6 +47,8 @@ public class FirstAffectAlgorithm implements Algorithm {
     while(start()){
        currentPeriod= _dm.getTTStructure().getCurrentCycle().getNextPeriod(_currentDuration);
        _lastNumberOfNoPlaceEvents= _noPlaceEvent.size();
+       _noPlaceEvent.removeAllElements();
+       System.out.println("_lastNumberOfNoPlaceEvents: "+_lastNumberOfNoPlaceEvents);//debug
       while(!vectorOfEvents.isEmpty()){
         currentEvent= (Resource)vectorOfEvents.remove(0);
         int numberOfConflicts=0;
@@ -56,9 +59,10 @@ public class FirstAffectAlgorithm implements Algorithm {
           getResourceAt(dayIndex).getKey(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
         ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
         //numberOfConflicts= _dm.getTTStructure().getCurrentCycle().isPeriodContiguous()
-        numberOfConflicts=testConditions(currentPeriod,currentEvent,0);
+        //numberOfConflicts=testConditions(currentPeriod,currentEvent,0);
+        numberOfConflicts= _dm.getConditionsTest().addOrRemEventInPeriod(currentPeriod,currentEvent,0);
         if(numberOfConflicts==0){
-          testConditions(currentPeriod,currentEvent,1);
+          _dm.getConditionsTest().addOrRemEventInPeriod(currentPeriod,currentEvent,1);
           _placeEvent.add(currentEvent);
           currentPeriod= _dm.getTTStructure().getCurrentCycle().getNextPeriod(_currentDuration);
         }else{// end if if(numberOfConflicts==0)
@@ -67,7 +71,8 @@ public class FirstAffectAlgorithm implements Algorithm {
       }// end while(!vectorOfEvents.isEmpty())
       vectorOfEvents= (Vector)_noPlaceEvent.clone();
     }// end while(start())
-
+    _dm.getSetOfEvents().updateActivities(_placeEvent);
+    _dm.getSetOfActivities().sendEvent(null);
   }
 
   /**
@@ -78,30 +83,6 @@ public class FirstAffectAlgorithm implements Algorithm {
     if(_lastNumberOfNoPlaceEvents== _noPlaceEvent.size())
       return false;
     return true;
-  }
-
-  /**
-   *
-   * @param per
-   * @param event
-   * @param operation
-   * @return
-   */
-  private int testConditions(Period per, Resource event,int operation){
-    int numberC=0;
-    StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),".");
-    long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
-    _currentDuration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
-    int[] avoidPriority={};
-    if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],_currentDuration, avoidPriority)){
-      for (int k=0; k< _dm.getConditionsTest().getTestToRun().size(); k++){
-        Condition cond = (Condition)_dm.getConditionsTest().getTestToRun().get(k);
-        numberC+=cond.executeTest(per,event.getID(),operation);
-      }// end  for (int j=0; j< _testToRun.size(); j++)
-    }else{// end if (_dm.getTTStructure().getCurrentCycle().isP
-      numberC=-1;
-    }
-    return numberC;
   }
 
 }

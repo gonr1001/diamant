@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.91 $  $Date: 2003-10-06 15:15:07 $
+ * Title: DDocument $Revision: 1.92 $  $Date: 2003-10-09 00:51:41 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.91 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.92 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -108,7 +108,8 @@ public class DDocument  extends InternalFrameAdapter implements
   public void setCursor(int cursorValue, Component component){
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-    component.setCursor(Cursor.getPredefinedCursor(cursorValue));
+    if(component!=null)
+      component.setCursor(Cursor.getPredefinedCursor(cursorValue));
   }
   /**
    *
