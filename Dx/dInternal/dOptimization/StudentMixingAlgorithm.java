@@ -96,9 +96,12 @@ public class StudentMixingAlgorithm implements Algorithm {
         allConvexGroups.add(convGroup);
         //
       }// end
-      RefinedStudMixAlgo newAlgo = new RefinedStudMixAlgo(_dm,getAcceptableVariation());
-      newAlgo.build (actID,typeID,allConvexGroups);
-      //setStudentsInGroup(actID,typeID,allConvexGroups); //old algo ysyam
+      if(DConst.DEVELOPMENT){
+        RefinedStudMixAlgo newAlgo = new RefinedStudMixAlgo(_dm,getAcceptableVariation());
+        newAlgo.build (actID,typeID,allConvexGroups);
+      }else{
+        setStudentsInGroup(actID,typeID,allConvexGroups); //old algo ysyam
+      }
     }//end for(int i=0; i< _eventsRescList.size(); i++)
     _dm.getConditionsTest().setMatrixBuilded(false,false);
     _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
