@@ -1,6 +1,6 @@
 /**
  *
- * Title: OpenTTCmd $Revision: 1.1 $  $Date: 2003-06-02 15:50:44 $
+ * Title: OpenTTCmd $Revision: 1.2 $  $Date: 2003-09-09 13:09:59 $
  * Description: OpenTTCmd is a class used to open a file then display in
  *  			the document window
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -33,5 +33,6 @@ public class OpenTTCmd implements Command {
 
   public void execute(DApplication dApplic) {
     new OpenTTDlg(dApplic);
+    dApplic.getMenuBar().postOpenTTCmd();
   } // end execute
 } /* end OpenTTCmd class */

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.62 $  $Date: 2003-09-09 11:37:10 $
+ * Title: DMenuBar $Revision: 1.63 $  $Date: 2003-09-09 13:09:59 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -383,7 +383,7 @@ public class DMenuBar extends JMenuBar{
     setMenus();
   }
 
-  private void setImport() {
+  private void setReadyToBuildTT() {
   //the menu _file
   _boolFile = true;
   //the submenus
@@ -653,12 +653,16 @@ public class DMenuBar extends JMenuBar{
     setNewTTCy();
   }
 
+
   public void postNewTTExCmd(){
     setNewTTEx();
   }
 
+  public void postOpenTTCmd(){
+    setReadyToBuildTT();
+  }
   public void postImportCmd(){
-   setImport();
+   setReadyToBuildTT();
   }
 
   public void postAbout() {
@@ -669,7 +673,7 @@ public class DMenuBar extends JMenuBar{
     setAll();
   }
   public void postMyFile() {
-    setAll();
+    setReadyToBuildTT();;
   }
 
   public void postStateZero() {
