@@ -1,6 +1,6 @@
 /**
 *
-* Title: DModel $Revision: 1.113 $  $Date: 2004-12-21 16:15:46 $
+* Title: DModel $Revision: 1.114 $  $Date: 2005-01-12 15:17:11 $
 * Description: DModel is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.113 $
+* @version $Revision: 1.114 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -89,7 +89,7 @@ public class DModel extends DModelProcess implements DModelListener, TTStructure
 	protected SetOfEvents _setOfEvents;
 	private int _currentCycle = 1;
 	protected TestConditions _conditionTest;
-	//private DModel _dm;  //to be deleted
+	
 	/**
 	 * _setOfImportErrors contains a DXValue object where
 	 * the intvalue is the type of resource 0= activities, 1= students,

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.61 $  $Date: 2004-12-21 15:13:35 $
+ * Title: DApplication $Revision: 1.62 $  $Date: 2005-01-12 15:17:11 $
 
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.61 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.62 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -267,6 +267,7 @@ public class DApplication implements ActionListener {
      * @since JDK 1.2
      */
     private void closeApplic(WindowEvent e) {
+    	e.toString();
       closeApplic();
     }
 

@@ -1,6 +1,6 @@
 /**
 *
-* Title: DDocument $Revision: 1.123 $  $Date: 2004-12-21 15:13:35 $
+* Title: DDocument $Revision: 1.124 $  $Date: 2005-01-12 15:17:11 $
 * Description: DDocument is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.123 $
-* @author  $Author: garr2701 $
+* @version $Revision: 1.124 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInterface;
@@ -98,6 +98,7 @@ public class DDocument  extends InternalFrameAdapter implements
    _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
  } // end constructor DDocument()
  public void internalFrameActivated(InternalFrameEvent e) {
+ 	e.toString();
    _dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
  }
  //-------------------------------------------
