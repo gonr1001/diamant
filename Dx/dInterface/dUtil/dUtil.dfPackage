@@ -56,6 +56,16 @@ class reference6 {
 @__modelType reference 
 */
 class reference7 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.SwingWorker:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.LongTask:oiref><oihard>
+@__modelType reference 
+*/
+class reference8 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

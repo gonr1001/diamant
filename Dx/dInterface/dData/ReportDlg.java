@@ -28,6 +28,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTabbedPane;
 
 import dInterface.DApplication;
+import dInterface.ProgressBar;
 import dInterface.dTimeTable.SaveAsDlg;
 import dInterface.dUtil.DXTools;
 
@@ -52,13 +53,17 @@ public class ReportDlg extends JDialog implements ActionListener{
   public ReportDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
     _dApplic = dApplic;
+    ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
+    pBar.execute();
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,this);
     _srd = new StandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
     _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,this);
+    System.out.println("Génération de rapports terminé");
     jbInit();
     _resources = new SetOfResources[_tabbedPane.getComponentCount()];
     setLocationRelativeTo(dApplic.getJFrame());
     setVisible(true);
+
   }//end constructor
 
   /**
