@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.1.1.1 $  $Date: 2003-01-23 17:51:40 $
+ * Title: DConst $Revision: 1.2 $  $Date: 2003-01-24 18:42:15 $
  * Description: DConst is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1.1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -28,9 +28,9 @@ public class DConst {
   static ResourceBundle res = ResourceBundle.getBundle("dResources.DStringFrRes");
   public final static String APP_NAME = res.getString("appName");
   public final static String V_DATE = res.getString("vDate");
-  /*final static String AppName = res.getString("AppName");
-  final static String AppName = res.getString("AppName");
-  final static String AppName = res.getString("AppName");*/
+  public final static String UN_TITLED = res.getString("untitled");
+
+
   public final static String FILE = "Fichier";
   public final static String NEW = "Nouveau";
    final static String OPEN = "Ouvrir";
