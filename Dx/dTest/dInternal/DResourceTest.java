@@ -1,6 +1,6 @@
 /**
 *
-* Title: DResourceTest $Revision $  $Date: 2005-02-03 20:02:02 $
+* Title: DResourceTest $Revision $  $Date: 2005-02-09 14:41:11 $
 * Description: 	DResourceTest is a class used to test the class 
 * 				DResource
 *
@@ -74,7 +74,8 @@ public class DResourceTest extends TestCase{
   	assertTrue(a.isManuallyCreated());
   }
   public void testBtoWrite(){
-  	assertTrue(b.toWrite(";").compareTo("20;;-1;")==0);
+  	assertEquals("testBtoWrite: assertEquals", "020;;-1;", b.toWrite(";"));
+  	//assertEquals(.compareTo()==0);
   }
   public void testBisEquals(){
   	assertTrue(b.isEquals(c));

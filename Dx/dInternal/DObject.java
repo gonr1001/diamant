@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObject $Revision $  $Date: 2005-02-09 01:38:12 $
+* Title: DObject $Revision $  $Date: 2005-02-09 14:41:11 $
 * Description: DObject is a class used to
 *
 *
@@ -15,7 +15,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: garr2701 $
 * @since JDK1.3
 */
 
@@ -70,7 +70,6 @@ public abstract class  DObject extends Object{
    *
    * */
   public String externalKey(String str, String id){
-  	//str+="";
     return str+id;
   }
 

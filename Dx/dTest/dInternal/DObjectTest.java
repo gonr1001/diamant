@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObjectTest $Revision $  $Date: 2005-02-09 14:09:34 $
+* Title: DObjectTest $Revision $  $Date: 2005-02-09 14:41:11 $
 * Description: 	DObjectTest is a class used to test the class 
 * 				DObject using the class DValue
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: gonzrubi $
+* @author  $Author: garr2701 $
 * @since JDK1.3
 */
 
@@ -63,7 +63,7 @@ public class DObjectTest extends TestCase{
   	assertTrue(a.toWrite().compareTo(";-1;")==0);
   }
   public void testAexternalKey(){
-  	assertTrue(a.externalKey("3","4").compareTo("4")==0);
+  	assertTrue(a.externalKey("3","4").compareTo("34")==0);
   }
   public void testAisEquals(){
   	a.setField(1,"2");
