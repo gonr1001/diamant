@@ -1,5 +1,4 @@
-% -*- TeX -*- -*- FR -*-
-\documentclass[francais]{uds-article}
+\documentclass[francais]{report}
 
 %-----------------------------------------------------------------------------
 %----- Identification des packages nécessaires
@@ -7,11 +6,10 @@
 
 \usepackage{babel}
 \usepackage[latin1]{inputenc}
-%\usepackage{udstitle,dfd}
+\usepackage{DxTitle}
 %\newcommand{\diamant}{Diamant}
 \setlength{\oddsidemargin}{0.25in}
-\setlength{\evensidemargin}{0.25in}
-\setlength{\textwidth}{6.0in}
+\setlength{\evensidemargin}{0.25in} \setlength{\textwidth}{6.0in}
 %\setlength{\parskip}{0.2in}
 \newcounter{auxcounter}
 \renewcommand{\baselinestretch}{1.5}
@@ -46,10 +44,16 @@
 
 \newcommand{\diamant}{DIAMANT}
 \newcommand{\saphir}{SAPHIR}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125em
+it}
+
+\faculte{Facult\'e de g\'enie} \departement{G\'enie \'electrique
+et g\'enie informatique} \adresse{Sherbrooke (Qu\'ebec) Canada}
 
 %-----------------------------------------------------------------------------
 %----- Page Titre
 %-----------------------------------------------------------------------------
+
 
 \Titre{DX\\
 Choses à faire} \Logo{Images/logoDX.eps}
@@ -61,20 +65,21 @@ Ruben Gonzalez-Rubio} \Date{28 avril 2003}
 %----- Identification des fichiers des pages préliminaires et bibliographique
 %-----------------------------------------------------------------------------
 
-\FichierResume{} %{Inputs/resume}
-\FichierRemerciements{}
-\FichierGlossaire{} % \FichierLexique est équivalent
-\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
+%\FichierResume{} %{Inputs/resume}
+%\FichierRemerciements{}
+%\FichierGlossaire{} % \FichierLexique est équivalent
+%\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
 
 %-----------------------------------------------------------------------------
 %----- Le document
 %-----------------------------------------------------------------------------
 
-\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index
-}
+%\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index
+%}
 
 \begin{document}
-\begin{articleDX}
+%\begin{articleDX}
+\pageTitre
 
 \input{Inputs/toDoIn}
 %\input{Inputs/dataStructure}
@@ -91,5 +96,5 @@ Ruben Gonzalez-Rubio} \Date{28 avril 2003}
 %\input{Inputs/glossaire}
 %\input{Inputs/index}
 %\include{formules}
-\end{articleDX}
+%\end{articleDX}
 \end{document}
