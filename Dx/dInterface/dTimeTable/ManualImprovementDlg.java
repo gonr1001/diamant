@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 
 /**
- * <p>Title: Proto</p>
+ * <p>Title: Diamant</p>
  * <p>Description:  timetable construction</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Company: UdeS</p>
@@ -9,104 +9,117 @@ package dInterface.dTimeTable;
  * @version 1.0
  */
 
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.event.*;
+
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import javax.swing.DefaultDesktopManager;
-import javax.swing.JDesktopPane;
-
-import dInterface.dUtil.DXTools;
-import dInterface.DToolBar;
 import dInterface.DApplication;
+import dInterface.dUtil.DXTools;
+import javax.swing.JFrame;
+import dInterface.dAffectation.EventsDlgInterface;
+import dInternal.dConditionsTest.TestConditions;
+import dInternal.dConditionsTest.SetOfEvents;
+import dInternal.dConditionsTest.EventAttach;
+import dInternal.dTimeTable.*;
+import dInternal.DModel;
+import dInternal.dData.Resource;
+import dInternal.dUtil.DXToolsMethods;
+
 import dResources.DConst;
-import dInternal.dTimeTable.TTStructure;
 
-public class ManualImprovementDlg extends InternalFrameAdapter implements ActionListener{
+public class ManualImprovementDlg extends EventsDlgInterface{
 
-  //private JInternalFrame _jif;
-  private TTPanel _ttPanel;
-  private TTStructure _ttStruct;
-  private DToolBar _toolBar;
-
-
-  private String FRAMENAME="Amélioration Manuelle";
-  private int ZERO=0;
-  /**
-   * constructor
-   */
-  public ManualImprovementDlg(DApplication dApplic) {
-    //super(new JFrame(), "Amélioration Manuelle", true);
-    _ttStruct= dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure();
-    _toolBar= dApplic.getToolBar();
-    this.createFrame(FRAMENAME,false,"ADM1111");
-    //setVisible(true);
-  }
+   private String[] _buttonsNames = {DConst.BUT_CLOSE};
+   private ManualImprovementResultFrame _frameResult;
+   private DModel _dm;
+   TTStructure _newTTS;
+   JFrame _jInternalF;
 
   /**
-   *
-   * @param e
+   * Constructor
+   * @param dApplic The application
    */
+  public ManualImprovementDlg(DApplication dApplic, String title) {
+    super(dApplic,title);
+    TTStructure oldTTS= dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure();
+    _newTTS= new TTStructure();
+    _newTTS.setTTStructureDocument(oldTTS.getTTStructureDocument());
+    _frameResult= new ManualImprovementResultFrame(_newTTS,dApplic.getToolBar());
+    _dm= dApplic.getDMediator().getCurrentDoc().getDM();
+    buildButtons();
+    jbInit();
+  }//end method
+
+
+
   public void actionPerformed(ActionEvent e){
     String command = e.getActionCommand();
+    //if the source is one of the the _leftArrowsPanel buttons
+    //if Button CLOSE is pressed
+    if (command.equals(_buttonsNames[0]))
+      dispose();
+
+  }//end method
+
+  /**
+  * build buttom to use in the dialog
+  */
+ protected void buildButtons(){
+   _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+   String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
+   _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
+   _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,false);
+ }
+
+ /**
+  *
+  */
+  protected void doubleClicMouseProcess(){
+    Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+    buildNewTTSTestConditions(event);
+    _jInternalF=_frameResult.createFrame(true, event.getID());
+    String eventPeriodKey=((EventAttach)event.getAttach()).getPeriodKey();
+    long[] perKey={Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",0)),
+      Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",1)),
+      Long.parseLong(DXToolsMethods.getToken(eventPeriodKey,".",2))};
+    int dayIndex= _newTTS.getCurrentCycle().getSetOfDays().getIndexOfResource(perKey[0]);
+    int seqIndex= ((Day)_newTTS.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
+                   getAttach()).getSetOfSequences().getIndexOfResource(perKey[1]);
+    int perIndex= ((Sequence)((Day)_newTTS.getCurrentCycle().getSetOfDays().getResourceAt(dayIndex).
+                   getAttach()).getSetOfSequences().getResourceAt(seqIndex).getAttach()).
+                  getSetOfPeriods().getIndexOfResource(perKey[2]);
+    //int[] perKeyIndex={};
+    int duration = ((EventAttach)event.getAttach()).getDuration()/_dApplic.getDMediator()
+                 .getCurrentDoc().getDM().getTTStructure().getPeriodLenght();
+    _frameResult.setColorOfPanel(dayIndex,seqIndex,perIndex,duration);
+    //_frameResult.setColorOfPanel(event.getID());
+  }
+
+  /**
+   *
+   */
+  private void buildNewTTSTestConditions(Resource event){
+    _dm.getConditionsTest().buildAllConditions(_newTTS);
+    //Resource event= _dm.getSetOfEvents().getResource((String)selectedItems[0]);
+    String eventPeriodKey= ((EventAttach)event.getAttach()).getPeriodKey();
+    boolean eventAssignState= ((EventAttach)event.getAttach()).getAssignState();
+    if(event!=null){
+      _dm.getConditionsTest().addOrRemEventInTTs(_newTTS,event,-1);
+      for(int i=0; i< _newTTS.getCurrentCycle().getSetOfDays().size(); i++){
+        Resource day= _newTTS.getCurrentCycle().getSetOfDays().getResourceAt(i);
+        for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
+          Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+          for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
+            Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+            int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
+            String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+            ((EventAttach)event.getAttach()).setKey(4,periodKey);
+            _dm.getConditionsTest().addOrRemEventInTTs(_newTTS,event,1);
+          }// end for(int k=0; k< ((Sequence)seq.getAttach())
+        }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
+      }// end for(int i=0; i< _newTTS.getCurrentCycle()
+    }// end if(event!=null){
+    ((EventAttach)event.getAttach()).setKey(4,eventPeriodKey);
+    ((EventAttach)event.getAttach()).setAssignState(eventAssignState);
   }
 
 
-
-  /**
-   *
-   * @param simple
-   */
-  private JInternalFrame  buildInternalFrame(boolean simple, String eventName){
-    JInternalFrame jif;
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    Dimension frameDim = new Dimension(600,600);
-   //_documentName = title;
-   jif = new JInternalFrame(eventName, true, true, true, true);
-   jif.addInternalFrameListener(this);
-   jif.setDefaultCloseOperation(jif.DO_NOTHING_ON_CLOSE);
-   jif.setTitle(eventName);
-    //_simpleView= simpleView;
-    jif.addInternalFrameListener(this);
-   jif.setMinimumSize(frameDim);
-   jif.setPreferredSize(frameDim);
-
-   if (simple)
-     _ttPanel = new SimpleTTPanel(_ttStruct,_toolBar);
-   else
-     _ttPanel = new DetailedTTPanel(_ttStruct,_toolBar);
-   _ttPanel.getPeriodPanel(1).setPanelColor(3);
-   jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
-   jif.pack();
-   jif.setVisible(true);
-   return jif;
-  } // end buidDocument
-
-  /**
-   *
-   * @param str
-   * @return
-   */
-  private void createFrame(String str, boolean simple, String eventName ) {
-    JFrame jFrame= new JFrame(FRAMENAME);
-    JPanel panel = new JPanel(new BorderLayout(0,0));
-    JDesktopPane jDesktopPane = new JDesktopPane();
-    jDesktopPane.setOpaque(false);
-    jDesktopPane.setDesktopManager(new DefaultDesktopManager());
-    panel.add(jDesktopPane,BorderLayout.CENTER);
-    jFrame.setLocation(ZERO,ZERO);
-    jFrame.setContentPane(panel);
-    jFrame.getContentPane().add(this.buildInternalFrame(simple,eventName), BorderLayout.CENTER);
-    jFrame.pack();
-    jFrame.setVisible(true);
-    //return jFrame;
-    } //end createUI
-
-
-}
+}//end class

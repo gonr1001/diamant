@@ -12,6 +12,7 @@ package dInterface.dTimeTable;
 import javax.swing.JFrame;
 import dInterface.Command;
 import dInterface.DApplication;
+import dResources.DConst;
 
 
 public class ManualImprovementCmd implements Command {
@@ -20,6 +21,7 @@ public class ManualImprovementCmd implements Command {
   } //end OpenTTCmd
 
   public void execute(DApplication dApplic) {
-    new ManualImprovementDlg(dApplic);
+    new ManualImprovementDlg(dApplic,DConst.MANUALIMPROVEMENT_DLG_TITLE);
+    //new ManualImprovementResultFrame(dApplic);
   } // end execute
 } /* end ManualImprovementCmd class */

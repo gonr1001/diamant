@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.55 $  $Date: 2003-10-01 20:53:58 $
+ * Title: DConst $Revision: 1.56 $  $Date: 2003-10-03 02:52:05 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.56 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -196,6 +196,8 @@ public class DConst {
 
   //PartialTTStructureDlg
 
+  // Manual improvementDlg
+   public final static String MANUALIMPROVEMENT_DLG_TITLE = res.getString("ManImpDlgTitle");//Évenements
 
   //Optimisation dialogs
   public final static String INITIAL_AFFECT_MESSAGE = res.getString("InitialAffectMessage");//Affectation initiale effectuée

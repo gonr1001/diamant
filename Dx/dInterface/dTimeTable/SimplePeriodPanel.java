@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.2 $  $Date: 2003-10-02 23:34:25 $
+ * Title: SimplePeriodPanel $Revision: 1.3 $  $Date: 2003-10-03 02:52:04 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  *
@@ -122,7 +122,9 @@ public class SimplePeriodPanel extends PeriodPanel{
        break;
      case 2: color= Color.DARK_GRAY;
        break;
-     case 3: color= Color.GREEN;// to show a selected panel
+     case 3: color= Color.PINK;// to show a conflict panel
+       break;
+     case 4: color= Color.GREEN;// to show a selected panel
        break;
    }
    for (int i=0; i< getComponentCount(); i++){

@@ -63,40 +63,63 @@ public class TestConditions {
   */
   public void initAllConditions(){
     buildStudentConflictMatrix();
-    buildAllConditions();
+    buildAllConditions(_dm.getTTStructure());
   }
 
 
   /**
    *
    */
-  private void buildAllConditions(){
-    _dm.getTTStructure().getCurrentCycle().emptyAllEventsInPeriod();
-    //_dm.getSetOfEvents()._isEventPlaced=true;
-    for (int i=0; i< _dm.getSetOfEvents().size(); i++){
-      Resource event = _dm.getSetOfEvents().getResourceAt(i);
-      addOrRemEventInTTs(event,1);
-    }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
+  public void buildAllConditions(TTStructure tts){
+    if(_matrixIsBuilded){
+      tts.getCurrentCycle().emptyAllEventsInPeriod();
+      //_dm.getSetOfEvents()._isEventPlaced=true;
+      for (int i=0; i< _dm.getSetOfEvents().size(); i++){
+        Resource event = _dm.getSetOfEvents().getResourceAt(i);
+        addOrRemEventInTTs(tts, event,1);
+      }// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
+    }
   }
 
   /**
-   * add or remove an event in tts
+    * add or remove an event in a given tts
+    * @param event
+    * @param operation
+    * @return
+    */
+  public boolean addOrRemEventInTTs(TTStructure tts, Resource event, int operation){
+     return StandardAddOrRemEventInTTs(tts,event, operation);
+   }
+
+   /**
+    * add or remove an event in DModel tts
+    * @param event
+    * @param operation
+    * @return
+    */
+   public boolean addOrRemEventInTTs( Resource event, int operation){
+     return StandardAddOrRemEventInTTs(_dm.getTTStructure(),event, operation);
+   }
+
+
+  /**
+   * standard add or remove an event in tts
    * @param event
    * @param int operation -1= remove event, 0= do nothing, 1= add event
    * @return
    */
-  public boolean addOrRemEventInTTs(Resource event, int operation){
+  private boolean StandardAddOrRemEventInTTs(TTStructure tts, Resource event, int operation){
     StringTokenizer eventKey = new StringTokenizer(event.getID(),DConst.TOKENSEPARATOR);
     String[] evKey = {eventKey.nextToken(),eventKey.nextToken(),
       eventKey.nextToken(),eventKey.nextToken()};
     if (_dm.getSetOfActivities().getUnity(evKey[0],evKey[1],evKey[2],evKey[3]).isAssign()){
       StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
       long[] perKey={Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken()),Long.parseLong(periodKey.nextToken())};
-      int duration = ((EventAttach)event.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
+      int duration = ((EventAttach)event.getAttach()).getDuration()/tts.getPeriodLenght();
       int[] avoidPriority={};
-      if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration, avoidPriority)){
+      if (tts.getCurrentCycle().isPeriodContiguous(perKey[0],perKey[1],perKey[2],duration, avoidPriority)){
         for (int j=0; j< duration; j++){
-          Period per = _dm.getTTStructure().getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
+          Period per = tts.getCurrentCycle().getPeriodByKey(perKey[0],perKey[1],perKey[2]+j);
           for (int k=0; k< _testToRun.size(); k++){
             Condition cond = (Condition)_testToRun.get(k);
             cond.executeTest(per,event.getID(),operation);
@@ -104,7 +127,7 @@ public class TestConditions {
           ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
         return true;
-      }// end if (_dm.getTTStructure().getCurrentCycle().isPeriod
+      }// end if (tts.getCurrentCycle().isPeriod
     }// end if (_dm.getSetOfActivities().getUnity(
     return false;
   }

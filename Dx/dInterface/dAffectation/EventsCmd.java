@@ -11,6 +11,7 @@ package dInterface.dAffectation;
 
 import dInterface.Command;
 import dInterface.DApplication;
+import dResources.DConst;
 
 
 
@@ -22,6 +23,6 @@ public class EventsCmd implements Command{
   }
 
   public void execute(DApplication dApplic) {
-    new EventsDlg(dApplic);
+    new EventsDlg(dApplic,DConst.EVENTS_DLG_TITLE);
   }
 }

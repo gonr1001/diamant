@@ -9,29 +9,8 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-
-import dInternal.dConditionsTest.EventAttach;
-import dInternal.dConditionsTest.SetOfEvents;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.Unity;
-import dInternal.dUtil.DXToolsMethods;
-
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 
@@ -45,8 +24,8 @@ public class EventsDlg extends EventsDlgInterface{
    * Constructor
    * @param dApplic The application
    */
-  public EventsDlg(DApplication dApplic) {
-    super(dApplic,DConst.EVENTS_DLG_TITLE);
+  public EventsDlg(DApplication dApplic, String title) {
+    super(dApplic,title);
     buildButtons();
     jbInit();
   }//end method
@@ -99,12 +78,19 @@ public class EventsDlg extends EventsDlgInterface{
   /**
   * build buttom to use in the dialog
   */
- public void buildButtons(){
+ protected void buildButtons(){
    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
    String [] arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
    _leftArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
    _rightArrowsPanel = DXTools.arrowsPanel(this, arrowsNames,true);
  }
+
+ /**
+ *
+ */
+ protected void doubleClicMouseProcess(){
+   new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0]);
+  }
 
 
 }//end class

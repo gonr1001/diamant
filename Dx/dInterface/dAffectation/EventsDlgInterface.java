@@ -90,7 +90,8 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
     setRightPanel();
     //_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
     //setting disable the APPLY button
-    _buttonsPanel.getComponent(1).setEnabled(false);
+    if (_buttonsPanel.getComponentCount()>1)
+      _buttonsPanel.getComponent(1).setEnabled(false);
     getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
     setLocationRelativeTo(_dApplic.getJFrame());
     setVisible(true);
@@ -100,7 +101,7 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
   /**
    * build buttom to use in the dialog
    */
-  public void buildButtons(){
+  protected void buildButtons(){
 
   }
 
@@ -247,10 +248,16 @@ public abstract class EventsDlgInterface extends JDialog implements ActionListen
           selectedItems = _rightList.getSelectedValues();
       }//end if (e.getSource().equals(_rightList))
       if (e.getClickCount() == 2) {
-        new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0]);
+        doubleClicMouseProcess();
       }//end if
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+  /**
+  *
+  */
+  protected void doubleClicMouseProcess(){
+  }
 
 
 

@@ -55,15 +55,20 @@ public class TestStudentsConditions implements Condition {
           case 0:
             break;
           case 1:
-            period.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
+            Resource resc=period.getEventsInPeriod().getResource(eventKey);
+            if(resc!=null)
+              ((ConflictsAttach)resc.getAttach()).mergeConflictsAttach(confVal);
+            else
+              period.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
             period.addNbStudConflict(number);
             break;
           case -1:
             period.getEventsInPeriod().removeResource(eventKey);
-            period.removeNbStudConflict(number);
-            for(int i=0; i< period.getEventsInPeriod().size(); i++)
-              ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
-               getAttach()).removeConflict(eventKey,0);
+              period.removeNbStudConflict(number);
+              for(int i=0; i< period.getEventsInPeriod().size(); i++)
+                ((ConflictsAttach)period.getEventsInPeriod().getResourceAt(i).
+                 getAttach()).removeConflict(eventKey,0);
+
             break;
         }
         //return 0;
