@@ -5,7 +5,7 @@ package dInternal.dAlgorithms;
  * <p>Description:  timetable construction</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Company: UdeS</p>
- * @author unascribed
+ * @author ysyam
  * @version 1.0
  */
 
