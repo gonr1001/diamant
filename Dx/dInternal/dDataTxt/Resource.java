@@ -8,24 +8,26 @@ package dInternal;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
+import dResources.DXObject;
 
 public class Resource {
   private static final String CR_LF = "\r\n";
-  private int _resourcekey=0;
+  private long _resourcekey=0;
   private String _resourceID;// can be a name, an ID, a CIP code
-  private Object _resourceObjet;
+  private String _message="";// message to be write before _resourceID in toString method
+  private DXObject _resourceObjet;
 
-  public Resource( String id, Object obj) {
+  public Resource( String id, DXObject obj) {
     _resourceID = id;
-    _resourceObjet = new Object();
+    _resourceObjet = new DXObject();
     _resourceObjet = obj;
   }
 
-  public int getKey(){
+  public long getKey(){
     return _resourcekey;
   }
 
-  protected void setKey(int k){
+  protected void setKey(long k){
     _resourcekey=k;
   }
 
@@ -36,12 +38,12 @@ public class Resource {
     return _resourceID;
   }
 
-  public Object getObject(){
+  public DXObject getObject(){
     return _resourceObjet;
   }
 
-  public void setObject(Object obj){
-    _resourceObjet = new Object();
+  public void setObject(DXObject obj){
+    _resourceObjet = new DXObject();
     _resourceObjet = obj;
   }
 
@@ -49,11 +51,21 @@ public class Resource {
     _resourceID = id;
   }
 
-  public String toString(){
+  public void setMessage(String message){
+    _message = message;
+  }
+
+  public String toString(String separator){
     String instInfo;
-    instInfo= _resourceID + CR_LF;
+    if (_message.length()!=0){
+      String temp="0000000"+ Long.toString(_resourcekey);
+      temp= temp.substring(temp.length()-_SIZE1,temp.length());
+      _resourceID = temp+ _message +_resourceID;
+    }
+    instInfo= _resourceID + separator;
     instInfo += _resourceObjet.toString();
     return instInfo;
   }
 
+  private static final int _SIZE1=8;
 }

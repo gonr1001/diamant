@@ -7,12 +7,15 @@
 
 \usepackage{babel}
 \usepackage[latin1]{inputenc}
+\newcommand{\diamant}{Diamant}
 
 %-----------------------------------------------------------------------------
 %----- Page Titre
 %-----------------------------------------------------------------------------
 
-\Titre{DX}
+\Titre{DX\\
+le nouveau protype de \diamant{}}
+\Logo{udslogo.eps}
 \Auteurs{Ruben Gonzalez-Rubio, Yannick Syam, Alexander Jaramillo}
 \Date{\today}
 
@@ -29,12 +32,13 @@
 %----- Le document
 %-----------------------------------------------------------------------------
 
-\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index}
+\includeonly{Inputs/resume,Inputs/intro,Inputs/glossaire,Inputs/index
+}
 
 \begin{document}
 \begin{articleDX}
 
-\include{Inputs/intro}
+\input{Inputs/intro}
 
 %\part{Une partie}
 %\include{revue}
@@ -44,8 +48,8 @@
 %\include{conclu}
 
 \appendix
-\include{Inputs/glossaire}
-\include{Inputs/index}
+\input{Inputs/glossaire}
+\input{Inputs/index}
 %\include{formules}
 \end{articleDX}
 \end{document}

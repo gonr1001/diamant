@@ -10,41 +10,50 @@ package dInternal;
  */
 import java.util.StringTokenizer;
 import java.util.Vector;
+import dResources.DXObject;
 
 abstract class ResourceList {
 
-  private Vector _resourceList;// contains list of resource (instructor, rooms, student or activity)
-  private Resource _resource;
-  int _stateSort=0;// give type of the last sort
-  private StringTokenizer _st;// resource in text format
-  private int _numberOfLines;// represent number of days
+  /**contains list of resource (instructor, rooms, student or activity)*/
+  private Vector _resourceList;
+  /**give type of the last sort _stateSort 0= sortResourceListByKey;
+   * 1= sortResourceListByID; 2= sortResourceListBySelectedField
+   */
+  int _stateSort=0;
+  /**resource in text format*/
+  private StringTokenizer _st;//
+  private int _numberOfLines;
   private int _numberOfColumns;// represent number of period a day.
-  private int _currentKey=0;
+  private long _currentKey=0;
+  private int _resourceType; // 0= activities, 1= students, 2= instructors, 3 = rooms
   private static final String CR_LF = "\r\n";
+  private Resource _resource;
 
   /**
    * Constructor call with byte[]  dataloaded
    * */
-  public ResourceList(byte[]  dataloaded) {
+  public ResourceList(byte[]  dataloaded, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _resourceList = new Vector();
+    _resourceType = resType;
   }
 
   /**
    * Constructor call with byte[]  dataloaded,  int nbDay (number of days),
    * int ndPerDay (number of period a day)
    * */
-  public ResourceList(byte[]  dataloaded, int nbDay, int ndPerDay) {
+  public ResourceList(byte[]  dataloaded, int nbDay, int ndPerDay, int resType) {
     _st = new StringTokenizer(new String (dataloaded),"\r\n" );
     _numberOfLines = nbDay;
     _numberOfColumns = ndPerDay;
     _resourceList = new Vector();
+    _resourceType = resType;
   }
 
   /**
    * methode analyse st, a stringtokenizer variable
-   * INPUT:
-   * OUTPUT: Vector
+   * @param
+   * @return Vector
    */
   public boolean analyseTokens(){
 
@@ -61,39 +70,100 @@ abstract class ResourceList {
   }
 
   /**
-   *
+   * Add a Resource to ResourceList
+   * @param resource a Resource object
+   * @return boolean (true if Resource added to list, false if Resource not
+   * added because it already exists)
    * */
-  public void addResource(Resource resource){
-    resource.setKey(_currentKey);
-    _currentKey++;
-    _resourceList.add(resource);
+  public boolean addResource(Resource resource){
+    //if (getIndexOfResource(resource.getID()) == -1){
+      resource.setKey(_currentKey);
+      if (_stateSort!=0)
+        this.sortResourceListByKey();
+      int index = searchWhereToInsert(_currentKey);
+      if (index >= (_resourceList.size()-1))
+        _resourceList.add(resource);
+      else
+        _resourceList.insertElementAt(resource, index);
+      _currentKey++;
+      //_resourceList.add(resource);
+
+      return true;
+    //}
+    //return false;
   }
 
   /**
-   *
+   * Set the current key of the ResourceList
+   * @param currentkey, a long integer
    * */
-  public void removeResource(String instID){
-
+  public void setCurrentKey(long currentkey){
+    _currentKey = currentkey;
   }
 
   /**
-   *
+   * Remove a Resource from ResourceList
+   * @param ResourceID, a String
    * */
-  public Resource getResource(int key){
+  public void removeResource(String ResourceID){
+    int index = getIndexOfResource(ResourceID);
+    if (index != -1)
+      _resourceList.removeElementAt(index);
+  }
 
+  /**
+   * Remove a Resource from ResourceList
+   * @param key, a long integer
+   * */
+  public void removeResource(long key){
+    int index = getIndexOfResource(key);
+    if (index!=-1)
+      _resourceList.removeElementAt(index);
+  }
+
+  /**
+   * Get a Resource from the ResourceList
+   * @param long integer, the key of the Resource
+   * @return Resource null if Resource didn't found
+   * */
+  public Resource getResource(long key){
+    int index = getIndexOfResource(key);
+    if (index!=-1)
+      return (Resource) _resourceList.get(index);
     return null;
   }
 
   /**
-  *
-  * */
- public boolean setResource(Resource resc){
-
-   return false;
+   *
+   * */
+  public int getIndexOfResource(long key){
+    return searchKey(key);
   }
 
   /**
    *
+   * */
+  public int getIndexOfResource(String id){
+    return searchID(id);
+  }
+  /**
+  * Set a Resource in the ResourceList
+  * @param Resource resource to set
+  * @return boolean true if Resource set succesful and false otherwise
+  * */
+ public boolean setResource(Resource resc){
+   int index = getIndexOfResource(resc.getKey());
+   if (index != -1){
+     _resourceList.setElementAt(resc, index);
+    return true;
+   }
+   return false;
+  }
+
+  /**
+   * Get a Resource from the ResourceList
+   * @param String The ID of Resource
+   * @return Resource null if Resource didn't found
    * */
   public Resource getResource(String ID){
     for (int i = 0; i < _resourceList.size(); i++){
@@ -104,32 +174,51 @@ abstract class ResourceList {
   }
 
   /**
-   *
+   * Sort the ResourceList by Resource's ID from smallest to biggest
    * */
   public void sortResourceListByID(){
-    sort(0,_resourceList.size()-2,1);
+    sort(0,_resourceList.size()-1,1,0);
     _stateSort=1;
   }
 
   /**
-   *
+   * Sort the ResourceList by Resource's Key from smallest to biggest
    * */
   public void sortResourceListByKey(){
-    sort(0,_resourceList.size()-2,0);
+    sort(0,_resourceList.size()-1,0,0);
     _stateSort=0;
   }
 
   /**
-   *
+  * Sort the ResourceList by Resource object selected field from smallest to biggest
+  * */
+ public void sortResourceListBySelectedObjectField(int field){
+   sort(0,_resourceList.size()-1,2,field);
+   _stateSort=2;
+  }
+
+  /**
+   *This object (which is already a string!) is itself returned.
+   * @return the string itself
    * */
   public String toString(){
     String reslist="";
-    for (int i=0; i< _resourceList.size()-1; i++)
-      reslist+= ((Resource)_resourceList.get(i)).toString()+CR_LF;
-    reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString();
+    if (_resourceType==3){
+      for (int i=0; i< _resourceList.size()-1; i++)
+        reslist+= ((Resource)_resourceList.get(i)).toString(";")+CR_LF;
+      reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(";");
+    }else{
+      for (int i=0; i< _resourceList.size()-1; i++)
+        reslist+= ((Resource)_resourceList.get(i)).toString(CR_LF)+CR_LF;
+      reslist+= ((Resource)_resourceList.get(_resourceList.size()-1)).toString(CR_LF);
+    }
     return reslist;
   }
 
+  /**
+   * Build a list of Resources's ID
+   * @return Vector It contents the Resources's ID
+   * */
   public Vector getNamesVector(){
     Vector namesVector =new Vector();
     if(_stateSort!=1)
@@ -140,12 +229,14 @@ abstract class ResourceList {
   }
 
   /**
-   * Begin of private sort methods
-   * */
-  // principal sort
-  // INPUTS: begin (begin of resourceList vector), end (end of resourceList vector)
-  // sortType (0= sort by key; 1= sort by ID)
-  private void sort(int begin, int end, int sortType){
+   * principal sort
+  * @param integer represent the beginning of resourceList vector
+  * @param integer represent the end of resourceList vector
+  * @param integer 0= sort by key; 1= sort by ID, 2= sort by selected object field
+  * @param integer if there's sort by selected object field it represent the
+  * object's field selected
+  * */
+  private void sort(int begin, int end, int sortType, int field){
     if (begin >= end)
       return;
     int p=0;
@@ -156,12 +247,16 @@ abstract class ResourceList {
       case 1:
         p= partitionID(begin, end);
         break;
+      case 2:
+        p= partitionSelectedField(begin, end, field);
+        break;
     }// end switch(sortType)
-    sort(begin, p,sortType);
-    sort(p+1, end,sortType);
+     //System.out.print("+"+begin+"-"+end);//debug
+    sort(begin, p,sortType, field);
+    sort(p+1, end,sortType, field);
   }
 
-  // manage partition
+  // manage partition by key
   private int partitionKey(int begin, int end){
     Resource pivot= (Resource)_resourceList.get(begin);
     int i= begin -1;
@@ -170,6 +265,7 @@ abstract class ResourceList {
       i++;
       while(((Resource)_resourceList.get(i)).getKey() < pivot.getKey())
         i++;
+      j--;
       while(((Resource)_resourceList.get(j)).getKey() > pivot.getKey())
         j--;
       if(i < j)
@@ -178,6 +274,27 @@ abstract class ResourceList {
     return j;
   }
 
+  // manage partition by selected field of object
+  private int partitionSelectedField(int begin, int end, int field){
+    Resource pivot= (Resource)_resourceList.get(begin);
+    int i= begin -1;
+    int j= end+1;
+    while( i< j){
+      i++;
+      while(((Resource)_resourceList.get(i)).getObject().getSelectedField(field) <
+            pivot.getObject().getSelectedField(field))
+        i++;
+      j--;
+      while(((Resource)_resourceList.get(j)).getObject().getSelectedField(field) >
+            pivot.getObject().getSelectedField(field))
+        j--;
+      if(i < j)
+        swap(i,j);
+    }
+    return j;
+  }
+
+  // manage partition by ID
   private int partitionID(int begin, int end){
    Resource pivot= (Resource)_resourceList.get(begin);
    int i= begin -1;
@@ -186,6 +303,7 @@ abstract class ResourceList {
      i++;
      while(((Resource)_resourceList.get(i)).getID().compareTo(pivot.getID()) < 0)
        i++;
+     j--;
      while(((Resource)_resourceList.get(j)).getID().compareTo(pivot.getID()) > 0)
        j--;
      if(i < j)
@@ -197,6 +315,7 @@ abstract class ResourceList {
   // permit elements
   private void swap (int begin, int end){
     Resource temp;
+    //System.out.print("+"+begin+"-"+end);//debug
     temp = (Resource)_resourceList.get(begin);
     _resourceList.setElementAt((Resource)_resourceList.get(end),begin);
     _resourceList.setElementAt(temp,end);
@@ -204,8 +323,104 @@ abstract class ResourceList {
   //end of private sort methods
 
   /**
-   * Main
-   */
+   * finds a index in a sorted vector, using the binary search algorithm
+   * @param long the Resource key from wich to find index in ResourceList
+   * @return int index of the Resource in ResourceList
+   * */
+  private int searchKey(long key){
+    if (_stateSort!=0)
+      sortResourceListByKey();
+    int low = 0;
+    int high = _resourceList.size()-1;
+    long middleKey=0;
+    while(low <= high){
+      int mid = (low + high)/2;
+      int diff=1;
+      middleKey = ((Resource)_resourceList.get(mid)).getKey();
+      if (middleKey> key)
+        diff = 1;
+      else{
+         if (middleKey< key)
+           diff=-1;
+         else
+           diff=0;
+      }
+      //long diff = ((Resource)_resourceList.get(mid)).getKey() - key;
+      if (diff == 0)
+        return mid;
+      else{
+        if (diff < 0)
+          low = mid + 1;
+        else
+          high = mid - 1;
+      }//end else if (diff == 0)
+    }//end while(low <= high)
+    return -1;
+  }
+
+  /**
+   * finds a index in a sorted vector, using the binary search algorithm
+   * @param String the Resource ID from wich to find index in ResourceList
+   * @return int index of the Resource in ResourceList
+   * */
+  private int searchID(String id){
+    if (_stateSort!=1)
+      this.sortResourceListByID();
+    int low = 0;
+    int high = _resourceList.size()-1;
+    while(low <= high){
+      int mid = (low + high)/2;
+      int diff = ((Resource)_resourceList.get(mid)).getID().compareTo(id);
+      if (diff == 0)
+        return mid;
+      else{
+        if (diff < 0)
+          low = mid + 1;
+        else
+          high = mid - 1;
+      }//end else if (diff == 0)
+    }//end while(low <= high)
+    return -1;
+  }
+
+  /**
+   * finds a index where to insert a RESOURCE in a sorted vector, using the
+   * binary search algorithm
+   * @param long the Resource key from wich to find index in ResourceList
+   * @return int index of the Resource in ResourceList
+   * */
+  private int searchWhereToInsert(long key){
+    if (_stateSort!=0)
+      sortResourceListByKey();
+    int low = 0;
+    int high = _resourceList.size()-1;
+    long middleKey=0;
+    while(low <= high){
+      int mid = (low + high)/2;
+      int diff=1;
+      middleKey = ((Resource)_resourceList.get(mid)).getKey();
+      if (middleKey> key)
+        diff = 1;
+      else{
+         if (middleKey< key)
+           diff=-1;
+         else
+           diff=0;
+      }
+      //long diff = ((Resource)_resourceList.get(mid)).getKey() - key;
+      if (diff == 0)
+        return mid;
+      else{
+        if (diff < 0)
+          low = mid + 1;
+        else
+          high = mid - 1;
+      }//end else if (diff == 0)
+    }//end while(low <= high)
+    return low;
+  }
+
+  // main
   public static void main(String[] args) {
        Instructor inst= new Instructor();
        inst.addDispDay("1 1 1 5 5");

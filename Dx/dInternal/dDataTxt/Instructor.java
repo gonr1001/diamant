@@ -10,8 +10,9 @@ package dInternal;
  */
 import java.util.Vector;
 import java.util.StringTokenizer;
+import dResources.DXObject;
 
-public class Instructor extends Object {
+public class Instructor extends DXObject {
 
   private Vector _instructorDisp;//
   private final String CR_LF = "\r\n";
@@ -82,9 +83,22 @@ public class Instructor extends Object {
       str = "";
     } //end for i
   }
+
+  /**
+   * return the value of the selected key
+   * INPUT: choice, an integer. choice =
+   * OUTPUT: an integer. it return -1 if choice is invalid
+   * */
+  public int getSelectedField(int choice){
+    switch(choice){
+      case 0: break;
+    }
+    return -1;
+  }
+
   /**
    * Print local information
-   * OUTPUT: String of instructorID and instructor availability
+   * OUTPUT: String instructor availability
    * */
   public String toString(){
     String instInfo="";

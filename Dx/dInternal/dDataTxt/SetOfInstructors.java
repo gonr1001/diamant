@@ -14,17 +14,18 @@ import com.iLib.gDialog.FatalProblemDlg;
 
 public class InstructorsList extends ResourceList{
 
-private Vector instructorsList;// contains list of Instructor
+//private Vector instructorsList;// contains list of Instructor
 private byte[] _dataloaded; //_st;// instructors in text format
 private int _numberOfLines;// represent number of days
 private int _numberOfColumns;// represent number of period a day.
 
  /**
+  * constructor
   * INPUTS: byte[]  dataloaded (information from file in byte type),
   * int nbDay,
   * */
  public InstructorsList( byte[]  dataloaded, int nbDay, int nbPerDay) {
-   super(dataloaded, nbDay, nbPerDay);
+   super(dataloaded, nbDay, nbPerDay,2);
    _dataloaded = dataloaded;
    _numberOfLines = nbDay;
    _numberOfColumns = nbPerDay;
@@ -106,7 +107,6 @@ private int _numberOfColumns;// represent number of period a day.
     Vector avail= new Vector();
     String instID="";
     int state = 0;
-    int currentKey=0;
     int stateDispo =1;
     //Resource resc;
     //Instructor instruc;
@@ -134,7 +134,6 @@ private int _numberOfColumns;// represent number of period a day.
            inst.setInstructorDisp(avail);
            this.addResource(new Resource( instID, inst));
            state =1;
-           currentKey++;
          }
          break;
       }
