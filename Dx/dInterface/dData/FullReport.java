@@ -54,18 +54,27 @@ public class FullReport extends ViewReport implements ActionListener {
     String [] strArray ={DConst.BUT_OPTIONS};
     _allOptionsVec = buildAllOptionsVector();
     Vector options = getOptions(_allOptionsVec);
-    Vector rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
+    _rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
+    _elements = options.size() - _rightVec.size();
+    options = merge (options, _rightVec);
+    int car = 0;
+    if (_rightVec.size() == 0 )
+      _jTextArea.setText("Choisir options");
+    else {
+      car = indexElementIn ((String)_rightVec.get(0), _allOptionsVec);
+         int [] cdr = buildNext(_rightVec, _allOptionsVec);
+      _jTextArea.setText((_parentDlg.getStandardReportData()).getActivitiesReport(car, cdr));
+    }
 
-    /*
-    */
-
-
-    int [] a= {1,2,3,4,5,6,7,8,9,10};
-    _jTextArea.setText((_parentDlg.getStandardReportData()).getActivitiesReport(0,a));
   }
 
 /*
   * The option must be sorted by alphabetical order in the field String (second param)
+
+  * token number 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
+  * 5= day number where activity is assign, 6= day name where activity is assign
+  * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
+  * 10= room name
   * */
   private Vector buildAllOptionsVector() {
     Vector v = new Vector();
@@ -127,8 +136,8 @@ public class FullReport extends ViewReport implements ActionListener {
    if (e.getActionCommand().equals(DConst.BUT_OPTIONS))
      new ReportOptionsDlg(_dApplic,
                             _parentDlg,
-                            new Vector(),
-                            0);
+                            _rightVec,
+                            _elements);
    //if "Close" button
    if (e.getActionCommand().equals(DConst.BUT_CLOSE))
       //System.out.println("_buttonsNames[2]");
@@ -155,4 +164,6 @@ public class FullReport extends ViewReport implements ActionListener {
        new SaveAsDlg(_dApplic, data);
    }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
+
+
 }

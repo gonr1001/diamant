@@ -55,6 +55,8 @@ public class ViewReport  extends JPanel implements ActionListener {
   JTextArea _jTextArea;
   JPanel _buttonsPanel;
   Vector _allOptionsVec;
+  Vector _rightVec ;
+  int _elements;
 
   protected class FieldRecord {
    int _n;
@@ -99,74 +101,43 @@ public class ViewReport  extends JPanel implements ActionListener {
   }
 
   public void dispose() {
-
     _parentDlg.dispose();
   }
 
-  /*public void setImportReport(JTextArea jta){
-    jta.setFont(DConst.JLISTS_FONT);
-    jta.setText("Rapport d'importation");
-    jta.append(DConst.CR_LF+"---------------------------------------------------"+DConst.CR_LF);
-
-    // enseignants
-    jta.append(DConst.CR_LF+"------------------ENSEIGNANTS----------------------"+DConst.CR_LF);
-    Vector setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                        getSetOfImportErrors().selectIDValue("2");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-
-    //locaux
-    jta.append(DConst.CR_LF+"------------------LOCAUX----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("3");
-    for (int i=0; i< setOfErrors.size(); i++) {
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
+  protected Vector merge(Vector opt, Vector  right) {
+    Vector res =  new Vector();
+    for (int i = 0; i < right.size(); i++){
+      opt.remove(right.get(i));
     }
-    //etudiants
-    jta.append(DConst.CR_LF+"------------------ETUDIANTS----------------------"+DConst.CR_LF);
-    setOfErrors= _dApplic.getDMediator().getCurrentDoc().getDM().
-                 getSetOfImportErrors().selectIDValue("1");
-    for (int i=0; i< setOfErrors.size(); i++)
-      jta.append( ((DXValue)((Resource)setOfErrors.get(i)).getAttach()).getStringValue()+DConst.CR_LF);
-    //buildReport(fieldsNames, fieldLengths, subFields, "Rapport d'importation");
-    jta.setCaretPosition(0);
-  }*/
-  public void actionPerformed(ActionEvent e){ }
-    /*String command = e.getActionCommand();
-    //if "Option" button
-    if (e.getActionCommand().equals(_buttonsNames[1]))
-       /* new ReportOptionsDlg(_dApplic,
-                             _jd,
-                             _resources[_tabbedPane.getSelectedIndex()],
-                             _tabbedPane.getSelectedIndex());
-      System.out.println("_buttonsNames[1]");
-    //if "Close" button
-    if (e.getActionCommand().equals(_buttonsNames[2]))
-       System.out.println("_buttonsNames[2]");
-      //dispose();
-    //if "Save as" button
-    if (e.getActionCommand().equals(_buttonsNames[0])){
-       System.out.println("_buttonsNames[0]");
-      //if ( _done ){
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE-MMMM-dd-yyyy:kk:mm");
 
-        JTextArea jta = (JTextArea)_scrollPane.getViewport().getComponent(0);
-        String data = "***** " +
-                      DConst.REPORT +
-                      " " +
-                      DConst.TO_LEFT +
-                      //_tabbedPane.getTitleAt(_tabbedPane.getSelectedIndex()) +
-                      DConst.TO_RIGHT + " ";
-        data +=  DConst.REPORT_PRODUCED_AT +
-                 " " +
-                 sdf.format(date) +
-                 " *****" +
-                 DConst.CR_LF + DConst.CR_LF;
-        data +=  jta.getText();
-        new SaveAsDlg(_dApplic, data);
-      //}//end internal if
-    }//end if (e.getSource().equals(((JPanel)this.getContentPane().getComponent(1)).getComponent(0)))
-  }//end method*/
+    for (int i = 0; i < opt.size(); i++){
+      res.add(opt.get(i));
+    }
+
+    DXTools.sortVector(res);
+
+    for (int i = 0; i < right.size(); i++){
+      res.add(right.get(i));
+    }
+    return res;
+  }
+
+  protected int indexElementIn(String str, Vector v) {
+    int index = -1;
+
+    for(int i = 0; i < v.size(); i++) {
+      if ( ((FieldRecord)v.get(i))._str.compareTo(str)==0)
+        return i + 1;
+    }
+    return index;
+  }
+  protected int [] buildNext(Vector v, Vector allOpt) {
+    int [] a =  new int [v.size()];
+
+    for (int i = 1; i < v.size(); i++)
+      a [i] = indexElementIn((String)v.get(i),allOpt);
+    return a;
+  }
+  public void actionPerformed(ActionEvent e){ }
 }
 
