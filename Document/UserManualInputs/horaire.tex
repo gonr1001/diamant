@@ -212,21 +212,74 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
 
 \subsection{Construction de l'horaire}
 
-\subsubsection{Affectation des événements}
-
-Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire.
-
-L'\emph{affectation initiale} a pour but d'exécuter les commandes suivantes :
-
-\begin{enumerate}
-    \item Placer de façon aléatoire dans les groupes d'activité, les étudiants non pré-affectés à des groupes, tout en équilibrant les groupes.
-    \item Placer les événements pré-affectés (placés ou figés) dans la grille horaire.
-    \item Calculer les conflits générés.
-\end{enumerate}  
+Il est vivement recommandé de commencer cette étape en lançant l'\textbf{\emph{affectation initiale}} à partir du menu \textbf{\emph{Optimisation}} (si cela n'a pas été précédemment fait à la fin de la phase de préparation de l'horaire - section \ref{finprepa}) avant de poursuivre la production de l'horaire. La description des commandes exécutées par l'affectation initiale est faite à la section \ref{finprepa}.
 
 Une fois l'affectation initiale effectuée, l'étape suivante consiste à lancer le sous menu \textbf{\emph{Construire l'horaire}} à partir du menu \textbf{\emph{Optimisation}}, afin de laisser le logiciel placer automatiquement dans la grille horaire les événements (ceux qui n'ont pas encore été placés dans la grille horaire) respectant toutes les contraintes spécifiées et ne créant aucun nouveau conflit (conflits d'enseignants, conflits d'étudiants et conflits de locaux).
 
-\subsubsection{Raffinement de l'horaire}
+La modification des contraintes à respecter par \dx{} lors de la construction automatique de l'horaire se fait en lançant le sous-menu \textbf{\emph{Options Conflits}} à partir du menu \textbf{\emph{Préférences}} pour faire apparaître la fenêtre d'option de conflits (voir figure \ref{confc}). Cette fenêtre permet de modifier plusieurs paramètres, à savoir:
+
+\begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=3.5in]{UserManualInputs/images/optionconflict.eps}
+        \caption{Contraintes à respecter}\label{confc}
+      \end{center}
+    \end{figure}
+
+\begin{itemize}
+    \item \emph{Max Conflits Étu entre 2 Eve}: ce paramètre permet de fixer le nombre maximal admissible de conflits d'étudiants entre deux événements, dans une période.
+    \item \emph{Max Conflits Ens entre 2 Eve}: ce paramètre permet de fixer le nombre maximal admissible de conflits d'enseignants entre deux événements, dans une période.
+    \item \emph{Max Conflits Loc entre 2 Eve}: ce paramètre permet de fixer le nombre maximal admissible de conflits de locaux entre deux événements, dans une période.
+    \item \emph{Placer dans périodes (0=normale, 1=normale et basse, 2=normale, basse et nulle)}: ce paramètre permet de spécifier les types de périodes (normale, basse, nulle) de la grille horaire dans lesquels un événement peut être placé.
+    \item \emph{Nombre Max de cours dans une période}: ce paramètre permet de spécifier le nombre maximal d'événements pouvant être placés dans une même période de la grille horaire.
+    \item \emph{Période d'écart}: ce paramètre permet de spécifier l'écart (en nombre de périodes) à respecter entre deux événements potentiellement en conflit (conflits d'étudiants).
+\end{itemize}    
+
+Il est possible de modifier les contraintes et lancer ensuite la construction de l'horaire afin que le logiciel  utilise les nouvelles contraintes pour placer les événements qu'il n'a pas pu précédemment placer; tout ceci de façon itérative jusqu'à obtention d'un résultat paraissant satisfaisant aux yeux de l'utilisateur.
+
+Il est également possible de revenir à l'état initial de l'horaire (l'état de l'horaire juste après l'affectation initiale). Pour cela, il suffit de d'ouvrir la fenêtre \textbf{\emph{Liste des événements}} à partir du sous-menu \textbf{\emph{Événements}} du menu \textbf{\emph{Affectation}}, ensuite de sélectionner tous les événements de la colonnes des \textbf{\emph{Placés}}, puis de les faire passer de la colonne des \textbf{\emph{Placés}} à celle des \textbf{\emph{Non placés}} en cliquant sur la flèche allant de la gauche vers la droite et enfin cliquer sur le bouton Appliquer pour effectuer les changements.
+
+Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
+
+
+\section{Raffinement de l'horaire}
+Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, formation de groupes, modification, rapports), les voies et moyens d'amélioration de l'horaire construit.
+
+\subsection{Affectation manuelle}
+
+L'affectation manuelle permet à l'utilisateur de placer individuellement les événements dans la grille horaire. Elle se fait à partir de la fenêtre d'\textbf{\emph{Affection manuelle}} (voir figure \ref{manc}) obtenue à partir du sous-menu \textbf{\emph{Affectation manuelle}} du menu \textbf{\emph{Affectation}}.
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=3.5in]{UserManualInputs/images/manualaffect.eps}
+        \caption{Affectation manuelle}\label{manc}
+      \end{center}
+    \end{figure}
+
+La fenêtre d'affectation manuelle offre deux possibilités d'utilisation:
+
+\begin{enumerate}
+    \item \textbf{Modification d'un événement:} sélectionner un événement et cliquer sur le bouton \textbf{\emph{Modifier}} pour faire apparaître le dialogue d'\emph{affectation d'événements} (voir figure \ref{evente}). Il vous est possible de modifier, à partir de cette fenêtre d'\emph{affectation d'événements}, le jour et l'heure de début de l'événement, l'enseignant, le local, de placer ou figer l'événement.
+    \item \textbf{Recherche de potentiels conflits:} pour rechercher les potentiels conflits générés par un événement, double-cliquer sur l'événement en question pour voir apparaître une nouvelle grille horaire (voir figure \ref{man1c}) vous informant sur les conflits que peut généré l'événement dans chaque période de la grille horaire. \\
+
+Une représentation par les couleurs, de la grille horaire d'affectation manuelle, a été adoptée afin de vous permettre, d'un seul coup d'oeil, de repérer les périodes de potentiels conflits (couleur rouge), les périodes dans lesquelles l'événement peut être placé sans générer de conflits (couleur par défaut de la période), et la ou les périodes dans lesquelles l'événement est placé (s'il était précédemment placé dans le grille - couleur verte).
+
+    \begin{figure}[h]
+      % Requires \usepackage{graphicx}
+      \begin{center}
+        \includegraphics[width=4.0in]{UserManualInputs/images/manualaffectres.eps}
+        \caption{Grille horaire d'affectation manuelle}\label{man1c}
+      \end{center}
+    \end{figure}
+
+\end{enumerate}    
+
+\subsection{Modification des activités}
+
+\subsection{Formation de groupes}
+
+\subsection{Rapports}
 
 
 \section{Production d'un horaire d'examen}
@@ -397,7 +450,7 @@ Il est également possible de revenir à l'état initial de l'horaire (l'état de l'
 Si malgré les itérations, l'horaire construit n'est pas satisfaisant, il existe un certain nombre d'outils permettant de raffiner manuellement l'horaire.
 
 \section{Raffinement de l'horaire}
-Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, rapport), les voies et moyens d'amélioration de l'horaire construit.
+Le raffinement de l'horaire propose à travers certains outils (affectation manuelle, modification, rapports), les voies et moyens d'amélioration de l'horaire construit.
 
 \subsection{Affectation manuelle}
 
@@ -429,4 +482,17 @@ Une représentation par les couleurs, de la grille horaire d'affectation manuelle
 
 \end{enumerate}    
 
-\subsection{Rapports}
+
+\subsection{Modification des activités}
+
+La fonctionnalité de modification des activités permet d'ajouter ou supprimer une nature à une activité, d'ajouter ou supprimer un groupe à une nature d'activité, d'ajouter ou supprimer un bloc à un groupe et enfin modifier la durée d'un événement ou affecter un événement comme présenté dans la figure \ref{evente}. Il faut cependant noter qu'elle ne permet pas d'ajouter une activité.
+
+On pourrait par contre se poser la question de savoir pourquoi pour des horaires d'examen, les termes tels que activité, nature, groupe et blocs resurgissent à la place du terme examen par exemple. La réponse réside dans l'approche utilisée; car, que ce soit pour les cours, que pour les examens, la construction d'un horaire se fait à travers des événements. Pour les horaires de cours, un événement représente un cours - quadruplet (activité,nature,groupe,bloc) - qui doit avoir lieu, tandis que pour les horaires d'examen, un événement représente un examen qui doit avoir lieu. Dans un soucis d'homogénéité, nous avons donc déduit qu'un examen d'une activité pourrait être vue comme événement résultant d'une activité ne possédant qu'une seule nature (la nature 1), cette nature ne possédant qu'un seul groupe et ce groupe ne possédant qu'un seul bloc.
+
+Cette approche offre donc la possibilité de pouvoir attribuer à une activité, un examen de nature 2 (laboratoire) ou encore de diviser un examen devant se tenir dans un local en deux groupes afin qu'ils se déroulent dans deux locaux distincts.
+
+La modification d'une activité se fait en cascade, c'est à dire que pour faire des modifications sur un niveau, il faudrait traverser les niveaux précédents (par exemple, pour faire des modifications sur un groupe, il faut d'abord sélectionner l'activité concernée, ensuite sélectionner la nature et enfin sélectionner le groupe concerné).
+
+\subsubsection{Ajout/suppression de nature}
+
+\subsection{Rapports} 
