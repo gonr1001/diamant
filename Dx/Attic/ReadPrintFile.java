@@ -10,7 +10,8 @@ public class ReadPrintFile {
     byte [] b;
     ByteInputFile inputFile= new ByteInputFile (args[0]);
 
-    //InputStreamReader isr = new InputStreamReader(_fis);
+
+    //InputStreamReader isr = new InputStreamReader(_fis);rgr21333ff
     // System.out.println(isr.getEncoding());
     b = inputFile.readFileAsBytes();
     inputFile.close();
