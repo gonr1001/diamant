@@ -10,6 +10,7 @@ package dInternal.dData;
  */
 import dInternal.dUtil.DXObject;
 import java.util.Vector;
+import java.util.StringTokenizer;
 
 public class Assignment extends DXObject{
 
@@ -62,7 +63,9 @@ public class Assignment extends DXObject{
    * @param String the instructor name
    * */
   public void addInstructorName(String instructor){
-    _setInstructorNames.addResource(new Resource(instructor, null),0);
+    StringTokenizer inst= new StringTokenizer(instructor,":");
+    while(inst.hasMoreElements())
+      _setInstructorNames.addResource(new Resource(inst.nextToken().trim(), null),0);
   }
 
   /**
@@ -71,7 +74,7 @@ public class Assignment extends DXObject{
    * */
   public void addInstructorKeys(long instructor){
     _setInstructorKeys.setCurrentKey(instructor);
-    _setInstructorNames.addResource(new Resource("", null),0);
+    _setInstructorKeys.addResource(new Resource(Long.toString(instructor), null),0);
   }
 
   /**

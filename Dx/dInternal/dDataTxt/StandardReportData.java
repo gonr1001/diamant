@@ -136,7 +136,8 @@ public class StandardReportData {
                           minute.substring(minute.length()-2,minute.length())+";";
                 String str [] = currentCycAss.getInstructorNames();
                 for(int m = 0 ; m < str.length; m++ ) {
-                  actlist+= str[m] +":";
+                  actlist+= DXToolsMethods.getToken(str[m],",",0)+" "+DXToolsMethods.getToken(str[m],",",1)+",";
+                  //actlist+= str[m] +":";
                 }
                 actlist+= ";";
                 actlist+= currentCycAss.getRoomName()+";";

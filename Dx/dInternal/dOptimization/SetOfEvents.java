@@ -67,6 +67,7 @@ public class SetOfEvents extends SetOfResources{
                   int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(instructorNames[m]);
                   if(instructorIndex!=-1){
                     instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
+                    assignment.addInstructorKeys(instructorKey);
                   }else{
                     DXValue error= new DXValue();
                     error.setStringValue("Erreur --> "+ unityID+": "+ instructorNames[m] +" Inexistant ");
@@ -200,7 +201,7 @@ public class SetOfEvents extends SetOfResources{
       for (int j=0; j< instKeyTwo.length; j++){
         if(instKeyOne[i] == instKeyTwo[j]){
           String str= _dm.getSetOfInstructors().getResource(instKeyOne[i]).getID();
-          res += DXToolsMethods.getToken(str,",",0)+" "+DXToolsMethods.getToken(str,",",1)+":";
+          res += DXToolsMethods.getToken(str,",",0)+" "+DXToolsMethods.getToken(str,",",1)+",";
         }// end if(instKeyOne[i] == instKeyTwo[j])
       }// end for (int j=0; j< instKeyOne.length; j++)
     }// end for (int i=0; i< instKeyOne.length; i++)
@@ -218,7 +219,7 @@ public class SetOfEvents extends SetOfResources{
       Vector insKeys= (Vector)(confAt).getObjectValue();
       for (int j=0; j< insKeys.size(); j++){
         String str= _dm.getSetOfInstructors().getResource(((Long)insKeys.get(j)).longValue()).getID();
-          res += DXToolsMethods.getToken(str,",",0)+" "+DXToolsMethods.getToken(str,",",1)+":";
+          res += DXToolsMethods.getToken(str,",",0)+" "+DXToolsMethods.getToken(str,",",1)+",";
       }// end for (int j=0; j< insKeys.size(); j++)
 
     return res;

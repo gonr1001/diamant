@@ -143,12 +143,6 @@ public class TestInstructorsConditions  implements Condition{
           }
         }// end for(int k=0; k< keys2.length; k++)
       }// end for(int j=0; j< keys1.length; j++)
-      /*if(!event1.getPrincipalRescKey().equalsIgnoreCase(event2.getPrincipalRescKey())){
-        if((event1.getInstructorKey()==event2.getInstructorKey()) && (event1.getInstructorKey()!=-1)){
-          confV.addConflict(period.getEventsInPeriod().getResourceAt(i).getID(),1, DConst.R_INSTRUCTOR_NAME, new Vector());
-          nbConf++;
-        }
-      }*/
     }
     return nbConf;
   }

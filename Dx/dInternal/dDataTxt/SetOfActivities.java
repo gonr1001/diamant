@@ -478,7 +478,7 @@ public class SetOfActivities extends SetOfResources{
               String period= stLine.nextToken().trim();
               cycleAss.setPeriodKey(period);
             }// end else if(typeOfData==1)
-            cycleAss.addInstructorName(instructorName);
+            //cycleAss.addInstructorName(DXToolsMethods.getToken(instructorName,";",counter-1));
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                bloc.addAssignment(new Resource(Integer.toString(i),cycleAss));
               counter++;
