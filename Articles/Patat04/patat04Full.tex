@@ -51,10 +51,11 @@ Université de Sherbrooke,\\
 
 \section{Introduction}
 La production d'horaires est une tâche périodique effectué dans
-beaucoup d'insti\-tutions d'enseignement. Le coût de cette tâche
-peut être important dans certaines institutions. Ces institutions
+beaucoup d'insti\-tutions d'enseignement.  Ces institutions
 produisent un ou plusieurs horaires par année pour les cours et
-les examens. Il existe de logiciels pour effectuer la construction
+les examens. Le coût de production peut être important dans
+certaines institutions et peut aussi avoir des retombées
+importantes. Il existe de logiciels pour effectuer la construction
 d'horaires, on peut citer comme exemples
 \cite{gonzalezrubio00,ferland94}, mais il existe d'autres. En
 général ces logiciels vont avoir comme entrée un ou plusieurs
@@ -81,12 +82,14 @@ groupes (toutes les filles d'une promotion doivent être dans le
 même groupe), etc.. S'il existe plusieurs instances du logiciel,
 utilisées dans de sites différents, il faut que le logiciel puisse
 traiter les données des différents sites ou que les sites adoptent
-le format de fichiers. Le coût de ces problèmes est le coût de la
-modification dans le logiciel. Il peut être élevé si les logiciels
-ne sont pas préparés, c'est-à-dire si le logiciels n'ont pas été
-conçus pour être modifiables (extensibles). L'autre facteur qui
-peut augmenter le coût est de modifier un système monolithique ou
-fermé, une modification peut affecter tout le système.
+le format de fichiers. La solution pour le premier problème passe
+par l'automatisation de la vérification et validation de données,
+afin d'assurer que le logiciel de construction travaille sur les
+bonnes données. Le deuxième problème est plus délicat à traiter,
+si l'ensemble de logiciels de production ont été conçus pour être
+modifiables (extensibles) le coût de la solution sera faible, mais
+si le système est monolithique et fermé une modification sera très
+coûteuse.
 
 
 Dans cet article nous proposons l'architecture  d'un système de
@@ -95,10 +98,10 @@ caractéristiques suivantes~: ouverte et extensible. Une telle
 architecture doit aider à faire face plus facilement aux problèmes
 mentionnées en réduisant le coût de modifications et en validant
 les données à l'endroit nécessaire dans le processus.
-L'architecture met en oeuvre des bases de données, des sites Web
-et le logiciel de construction d'horaires. La base de données va
-aider à vérifier la validité des données au moment de la saisie,
-elle va fournir les données nécessaires au logiciel de
+L'architecture met en \oe{}uvre des bases de données, des sites
+Web et un logiciel de construction d'horaires. La base de données
+va aider à vérifier la validité des données au moment de la
+saisie, elle va fournir les données nécessaires au logiciel de
 construction d'horaires dans le format nécessaire. Les sites Web
 sont utilisés principalement pour la saisie de données, ceci
 permet de vérifier aussi la validité des données avant que la
@@ -127,7 +130,7 @@ d'avoir un standard pour le format de données pour des instances
 de horaires, leur but était de comparer des algorithmes
 (programmes) dans de benchmarks. Dans un travail plus récent,
 Kingston \cite{kingston02} propose un language STTL et un
-interpreteur, avec le même objectif. Özcan \cite{ozcan03} suggère
+interpréteur, avec le même objectif. Özcan \cite{ozcan03} suggère
 aussi un autre standard pour définir des instances de problèmes de
 construction d'horaires, ayant comme base le langage XML. Il nous
 semble qu'il serait souhaitable d'avoir un standard, mais le but
@@ -137,10 +140,10 @@ un format défini, soit de générer différents fichiers pour
 différents programmes.
 
 
-Pour arriver à cette architecture, nous avons procédé en deux
+Le développement de notre architecture, a été divisé en deux
 étapes, nous avons analysé le flot des données dans un système
 générique de production d'horaires, ceci nous a permis
-d'identifier les interfaces du système afin d'avoir une
+d'identifier les interfaces du système afin de définir une
 architecture ouverte. Ensuite nous avons défini l'architecture,
 ses modules et la responsabilité de chaque module évitant les
 traitements redondants. Ceci est présenté dans les sections
@@ -151,12 +154,10 @@ afin de l'implanter dans système de production d'horaires à
 l'Université de Sherbrooke, en utilisant des technologies
 existantes. Ainsi nous pouvons mettre en évidence que les
 objectifs de ouverture et extensibilité ont été atteints. Ceci est
-présenté dans la sections \ref{sec:tictac}.
+présenté dans la section \ref{sec:tictac}.
 
 Nous finissons par un bilan et des conclusions à la section
 \ref{sec:conc}.
-
-
 
 
 
@@ -171,16 +172,17 @@ année\footnote{Dans l'Université de Sherbrooke on parle de
 trimestre, mais en réalité il comporte seize semaines (presque
 quatre mois).}. Le processus fini lorsque toutes le personnes
 concernés reçoivent l'horaire sur un support papier ou sur le Web,
-voir figure \ref{fig:fOne}. Les données à saisir sont les cours
-qui vont avoir lieu dans la période $p$. Le format du cours (3h,
-ou 2+1h). Les enseignants possibles ou assignées à certains cours,
-les locaux possibles ou assignées. La disponibilité des ensignants
-et des locaux. Signalons que à l'Université de Sherbrooke il
-existe des Facultés où les étudiants font un pré-choix et d'autres
-où les horaires sont fait sans pré-choix. Le pre-choix des
-étudiants fait partie des données à saisir, s'il n'y a pas de
-pré-choix, il faut indiquer le nombre d'étudiants à admettre pour
-chaque cours.
+voir figure \ref{fig:fOne} et que la période de validité de
+l'horaire touche à sa fin. Les données à saisir sont multiples,
+par exemple les cours qui vont avoir lieu dans la période $p$; le
+format du cours (3h, ou 2+1h); les enseignants possibles ou
+assignées à certains cours; les locaux possibles ou assignées; la
+disponibilité des enseignants et des locaux et autres. Signalons
+que à l'Université de Sherbrooke il existe des Facultés où les
+étudiants font un pré-choix et d'autres où les horaires sont fait
+sans pré-choix. Le pre-choix des étudiants fait partie des données
+à saisir, s'il n'y a pas de pré-choix, il faut indiquer le nombre
+d'étudiants à admettre pour chaque cours.
 
 
 \begin{figure}[htb] \begin{center}
@@ -638,7 +640,7 @@ La persistance de données & Text & XML & Base de données \\
 l'architecture}\label{tb:tbTwo}
 \end{table}
 
-\section{\tictac, notre instance de l'architecture}
+\section{Une instance de l'architecture} \label{sec:tictac}
 
 Une fois que nous avons établi l'architecture et que nous sachons
 qu'elle est ouverte et extensible, il faut que l'instance que nous
