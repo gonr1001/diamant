@@ -6,7 +6,7 @@ import java.util.Vector;
 public class SetOfStates extends SetOfResources{
 
   String _error="";
-  private Vector _sosListener = new Vector();
+  private Vector _sosListener = new Vector(1);
   /***
    * constructor
    */

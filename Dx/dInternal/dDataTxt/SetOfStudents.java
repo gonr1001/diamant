@@ -26,7 +26,7 @@ public class SetOfStudents extends SetOfResources{
   private static final int _BEGINSTUDENTNUMBEROFCOURSE=30;
   private static final int _ENDSTUDENTNUMBEROFCOURSE=32;
   private String _error="";
-  private Vector _SOSListeners = new Vector();
+  private Vector _SOSListeners = new Vector(1);
   /** Course length*/
   private int _COURSELENGTH = 7;
   private int _COURSEGROUPLENGTH = 9;
@@ -269,7 +269,7 @@ public void sendEvent(Component component) {
   */
  public synchronized void addSetOfStudentsListener(SetOfStudentsListener sosl) {
    System.out.println("SetOfStudents listener added: ");//debug
-   if (_SOSListeners.contains(sosl)){
+   if ((sosl==null) || (_SOSListeners.contains(sosl))){
      return;
    }
    _SOSListeners.addElement(sosl);

@@ -17,7 +17,7 @@ import dResources.DConst;
 
 public class SetOfActivities extends SetOfResources{
 
-  private Vector _SOAListeners = new Vector();
+  private Vector _SOAListeners = new Vector(1);
   /**activities in text format*/
   private byte[] _dataloaded;
   private String _error="";
