@@ -1,0 +1,91 @@
+% -*- TeX -*- -*- FR -*-
+\documentclass[francais,letterpaper]{uds-article}
+
+%-----------------------------------------------------------------------------
+%----- Identification des packages nécessaires
+%-----------------------------------------------------------------------------
+
+\usepackage{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{udstitle,dfd}
+%\newcommand{\diamant}{Diamant}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\textwidth}{6.0in}
+%\setlength{\parskip}{0.2in}
+\newcounter{auxcounter}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
+
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small \normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small \normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small \normalsize}
+
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+
+
+\newcommand{\bv}{\verb}
+
+\newcommand{\bve}{\verb*}
+
+\newcommand{\brun}{\noindent $\triangleright$}
+\newcommand{\erun}{$\triangleleft$}
+
+\newcommand{\ang}{\textsf}
+\newcommand{\key}{\textsf}
+\newcommand{\ita}{\textit}
+\newcommand{\bld}{\textbf}
+\newcommand{\dos}{\textsc}
+\newcommand{\pro}{\texttt}
+
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\dia}{DIAMANT 1.0}
+\newcommand{\dx}{DIAMANT 1.5}
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\sig}{SIG}
+
+%-----------------------------------------------------------------------------
+%----- Page Titre
+%-----------------------------------------------------------------------------
+
+\Titre{Modélisation des données \\
+et l'implementation de l'importation sélective\\
+Diamant 2.0}
+\Logo{Images/logoDX.eps}
+\Auteurs{Domingo Palao et\\
+Ruben Gonzalez-Rubio \\
+Mis-à-jour : 12 mai 2003}
+
+\Date{\today}
+
+%-----------------------------------------------------------------------------
+%----- Identification des fichiers des pages préliminaires et bibliographique
+%-----------------------------------------------------------------------------
+
+\FichierResume{Inputs/resume}
+\FichierRemerciements{}
+\FichierGlossaire{} % \FichierLexique est équivalent
+\FichiersBibliographie{udsplain}{Inputs/bibDiamant,Inputs/bib2}
+
+%-----------------------------------------------------------------------------
+%----- Le document
+%-----------------------------------------------------------------------------
+
+\includeonly{Inputs/resume}
+
+\begin{document}
+\begin{articleDX}
+
+\input{Inputs/leflot}
+
+\appendix
+%%\input{Inputs/fieldsIdentificationTable}
+\end{articleDX}
+\end{document}
