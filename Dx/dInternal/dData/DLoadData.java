@@ -1,6 +1,6 @@
 /**
 *
-* Title: DLoadData $Revision: 1.4 $  $Date: 2005-01-21 21:56:54 $
+* Title: DLoadData $Revision: 1.5 $  $Date: 2005-01-22 01:46:11 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.5 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -522,21 +522,9 @@ public class DLoadData {
 	 	 	
 	 	 }
 */
-	 	 /**
-	 	  * 
-	 	  * @param source
-	 	  * @param target
-	 	  * @return
-	 	  */
-/*	 	  private Resource getResource(SetOfResources source,Resource target){
-	 	  	String str= source.getClass().getName();
-	 	  	if(str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
-	 	  		return source.getResource(target.getKey());
-	 	  	}
-	 	  	
-	 	 	return source.getResource(target.getID());
-	 	 }
-*/
+/**
+ * 
+ */
 	private DataExchange buildDataExchange(String fileName) {
 		byte[] dataloaded = preLoad(fileName);
 		StringTokenizer st = new StringTokenizer(new String (dataloaded), DConst.CR_LF);
@@ -550,7 +538,12 @@ public class DLoadData {
 		    return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String (dataloaded));
   	}
   
-  	public DataExchange buildDataExchange(byte[] dataloaded) {
+  	/**
+  	 * 
+  	 * @param dataloaded
+  	 * @return
+  	 */
+	public DataExchange buildDataExchange(byte[] dataloaded) {
 		//byte[] dataloaded = preLoad(fileName);
 		StringTokenizer st = new StringTokenizer(new String (dataloaded), DConst.CR_LF);
 		String token = st.nextToken().toString().trim();
@@ -575,57 +568,18 @@ public class DLoadData {
   		//int beginPosition=0;
   		byte[]  dataloaded = preLoad(file);
   		DSetOfResources newSetOfResc=null;
-  		//if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfInstructors")){
   		if (currentSetOfResc instanceof dInternal.dData.dInstructors.SetOfInstructors ){
-  			// implement selective import for instructors
   			_instructorFileName= file;
   			newSetOfResc= extractInstructors(null,false);
   			_dm.resizeResourceAvailability(newSetOfResc);
   			((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
   		} else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfRooms")){
-        // implement selective import for rooms
       	_roomsFileName= file;
           newSetOfResc= extractRooms(null,false);
           _dm.resizeResourceAvailability(newSetOfResc);
-        //((SetOfRooms)currentSetOfResc).setDataToLoad(dataloaded); //,5,14);
-      } /*else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfActivities")){
-       // implement selective import for activities
-        beginPosition=1;
-        _activitiesFileName= file;
-        newSetOfResc= extractActivities(null,false);
-        SetOfEvents soe = new SetOfEvents(_dm);
-        soe.build((SetOfActivities)newSetOfResc, new DSetOfResources(99));
-        soe.updateActivities((SetOfActivities)newSetOfResc,soe.getSetOfResources());
-        ((SetOfActivities)currentSetOfResc).setDataToLoad(dataloaded,false);
-      } else if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
-          _studentsFileName= file;
-          newSetOfResc= extractStudents(null,false);
-          
-        ((SetOfStudents)currentSetOfResc).setDataToLoad(dataloaded);
-      }*/ else {// (NullPointerException npe) {
+      } else {// (NullPointerException npe) {
       	new FatalProblemDlg("I was in LoadData.selectiveImport, No resource class available!!!" );
       }
-
-    /*  if (dataloaded != null) {
-        if (currentSetOfResc.analyseTokens(beginPosition)){
-        	makeDiff(currentSetOfResc, newSetOfResc);
-        	currentSetOfResc.buildSetOfResources(beginPosition);
-          currentSetOfResc.sortSetOfResourcesByID();
-          //DXValue = (DXValue)_dm.getSetOfImportSelErrors().getResourceAt(0).getAttach();
-          //System.out.println("Make diff: "+value.getStringValue());//debug
-          //System.out.println(_dm.getSetOfImportSelErrors().toWrite());//debug
-          //return currentsetOfResc;
-        }
-        
-      } else {// (NullPointerException npe) {
-        new FatalProblemDlg("I was in LoadData.selectiveImport. preload failed!!!" );     
-      }
-      if (str.equalsIgnoreCase("dInternal.dDataTxt.SetOfStudents")){
-      	updateSetOfStudents(currentSetOfResc, newSetOfResc);
-      	System.out.println("updateSetOfStudents: ");//debug
-      } */
-      
-      //setOfResc.sortSetOfResourcesByID();
       return currentSetOfResc;
     }
 	
