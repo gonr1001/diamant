@@ -15,6 +15,7 @@ import dInternal.dData.SetOfResources;
 import dInternal.dData.Resource;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
+import dResources.DConst;
 
 
 public class ConflictsAttach extends DXObject{
@@ -68,6 +69,30 @@ public class ConflictsAttach extends DXObject{
 
   }
 
+
+  /**
+   *
+   * @param event
+   * @return
+   */
+  public int [] getAllConflictsOfAnEvent(String eventName){
+    int [] nbconf={0,0,0};
+     for (int i=0; i< _setOfConflicts.size(); i++){
+      Resource conf= _setOfConflicts.getResourceAt(i);
+      if(conf.getID().equalsIgnoreCase(eventName)){
+        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
+          nbconf[0]+= ((DXValue)conf.getAttach()).getIntValue();
+        }
+        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
+          nbconf[1]+= ((DXValue)conf.getAttach()).getIntValue();
+        }
+        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
+          nbconf[2]+= ((DXValue)conf.getAttach()).getIntValue();
+        }
+      }// end if(conf.getID().equalsIgnoreCase(eventName))
+    }// end for (int i=0; i< _setOfConflicts.size(); i++)
+    return nbconf;
+  }
 
 
 

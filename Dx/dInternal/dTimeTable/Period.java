@@ -1,7 +1,10 @@
 package dInternal.dTimeTable;
 
 import dInternal.dUtil.DXObject;
+import dInternal.dUtil.DXValue;
+import dInternal.dConditionsTest.ConflictsAttach;
 import dInternal.dData.SetOfResources;
+import dInternal.dData.Resource;
 import xml.InPut.ReadXMLElement;
 import xml.OutPut.BuildXMLElement;
 import org.w3c.dom.Element;
@@ -225,6 +228,27 @@ public class Period extends DXObject {
    */
   public SetOfResources getEventsInPeriod(){
     return _eventsInPeriod;
+  }
+
+  /**
+   *Get events in period with his conflicts generated number
+   * @param String the event from wich we need conflicts in period
+   * @return
+   */
+  public SetOfResources getConflictsEventsInPeriod(String event){
+   // Vector inPeriod= new Vector();
+    SetOfResources setOfConf = new SetOfResources(99);
+    for (int i=0; i< _eventsInPeriod.size(); i++){
+      Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
+      String ID= eventInPeriod.getID();
+      if (!event.equalsIgnoreCase(eventInPeriod.getID())){
+        //inPeriod.add(_eventsInPeriod.getResourceAt(i).getID());
+        int [] nbconf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(ID);
+        ID= ID+" "+nbconf[0]+" "+nbconf[1]+" "+nbconf[1];
+      }// end if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
+      setOfConf.addResource(new Resource(ID, new DXValue()),1);
+    }// end for (int i=0; i< _eventsInPeriod.size(); i++){
+    return setOfConf;
   }
 
 
