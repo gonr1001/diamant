@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.26 $  $Date: 2004-05-19 12:17:31 $
+ * Title: SectionDlg $Revision: 1.27 $  $Date: 2004-06-09 18:06:21 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
 
@@ -353,6 +353,8 @@ public class SectionDlg extends JDialog implements ActionListener{
       _sortCombo.setEnabled(true);
       _applyPanel.setFirstDisable();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      //_conditionTest.setMatrixBuilded(false,true);
+      _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }

@@ -45,13 +45,14 @@ public class StudentMixingAlgorithm implements Algorithm {
   public void build(){
 
     Vector eventRescList=buildEventsVector();
-    //for(int i=0; i< 5; i++)
+    for(int i=0; i< 5; i++){
     compileStudents(eventRescList);
     //compileStudents(eventRescList);
-    /*Vector secondVec= new Vector();
-    for (int i=eventRescList.size()-1; i>=0; i--)
-      secondVec.add(eventRescList.get(i));
-    compileStudents(secondVec);*/
+    Vector secondVec= new Vector();
+    for (int j=eventRescList.size()-1; j>=0; j--)
+      secondVec.add(eventRescList.get(j));
+    compileStudents(secondVec);
+    }
 
   }
 
@@ -123,10 +124,10 @@ public class StudentMixingAlgorithm implements Algorithm {
       EventAttach event= (EventAttach)_dm.getSetOfEvents().getResource(eventID).getAttach();
       if(event.isPlaceInAPeriod()){
         int duration = event.getDuration()/_dm.getTTStructure().getPeriodLenght();
+        long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+        long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));
+        long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));
         for(int k=0; k< duration; k++){
-          long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-          long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));
-          long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));
           Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey+k);
           for (int l=0; l< period.getEventsInPeriod().size(); l++){
             String inPeriodEventID=period.getEventsInPeriod().getResourceAt(l).getID();
@@ -208,11 +209,9 @@ public class StudentMixingAlgorithm implements Algorithm {
         actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
         int group= student.getGroup(actID+typeID);
         Vector groupList= new Vector(1);
-        if((group<=0) ){
-         ;
-        }else{
+        if((group>0) ){
           groupList.add(DXTools.STIConvertGroup(group));
-        }
+        }// end if((group>0) )
 
         for(int k=0; k< groupList.size(); k++){
           String sectionID= groupList.get(k).toString().trim();
@@ -227,8 +226,8 @@ public class StudentMixingAlgorithm implements Algorithm {
               }// end if(assEvent!=null)
             }// end for(int l=0; l< section.getSetOfUnities().size(); l++)
           }//end if(section!=null)
-        }// end for (int j=0; j< student.getCoursesList().size(); j++)
-      }// end for(int k=0; k< groupList.size(); k++){
+        }// end for(int k=0; k< groupList.size(); k++)
+      }// end for (int j=0; j< student.getCoursesList().size(); j++)
       convexGroup.setCurrentKey(studentKey);
       convexGroup.addResource(new Resource(Integer.toString(nbOfPotentialConf),new DXValue()),0);
     }//end for (int i=0; i< studentsReg.size(); i++)
@@ -259,7 +258,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     while(newStudentGroup!=null){
       StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(newStudentGroup.getKey()).getAttach();
       int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
-          ((DXValue)newStudentGroup.getAttach()).getIntValue()-1).getID());//int group= i+1;
+          ((DXValue)newStudentGroup.getAttach()).getIntValue()).getID());//int group= i+1;
       //student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
       student.setInGroup(activityID+typeID, group,false);
       newStudentGroup= getStudent(allConvGroup,value, sizeOfGroups);
@@ -364,10 +363,10 @@ public class StudentMixingAlgorithm implements Algorithm {
           ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
 
       resc= (Resource)((SetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
-      ((DXValue)resc.getAttach()).setIntValue(bGroup+1);
+      ((DXValue)resc.getAttach()).setIntValue(bGroup);
       for (int i=0; i< allConvGroup.size(); i++)
         ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
-      currentConvGroup.setIntValue(bGroup+1);
+      currentConvGroup.setIntValue(bGroup);
     }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
     return resc;
   }
