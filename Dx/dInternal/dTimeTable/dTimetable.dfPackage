@@ -36,6 +36,16 @@ class reference5 {
 @__modelType reference 
 */
 class reference8 {
+}/**
+@__ref <oiref:java#Class#dInternal.dTimeTable.TTStructureEvent:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#dInternal.dTimeTable.TTStructureListener:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

@@ -63,10 +63,12 @@
   <property category="sys" name="Version" value="1.0"/>
   <property category="sys" name="VersionLabel" value="@version"/>
   <property category="sys" name="WorkingDirectory" value="."/>
+  <file path="dInterface/AbstractDocument.java"/>
   <file path="DRun.java"/>
   <file path="DRunInterTest.java"/>
   <file path="DRunTest.java"/>
   <file path="dInterface/DToolBar.java"/>
   <file path="Proto.html"/>
   <file path="dInterface/SelectCmd.java"/>
+  <file path="dInterface/TTSDocument.java"/>
 </project>

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.29 $  $Date: 2003-06-11 08:07:07 $
+ * Title: DDocument $Revision: 1.30 $  $Date: 2003-06-11 16:04:07 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.29 $
+ * @version $Revision: 1.30 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -50,21 +50,16 @@ import dInterface.dTimeTable.CloseCmd;
 import com.iLib.gDialog.FatalProblemDlg;
 //debug
 
-public class DDocument implements ActionListener, DModelListener, TTStructureListener{
+public class DDocument extends AbstractDocument implements ActionListener, DModelListener, TTStructureListener{
   private boolean _modified;
-  private DApplication _dApplic;
-  private JInternalFrame _jif;
-  private String _documentName;
   private DModel _dm;
-  private TTPanel _ttPanel;
   private JPanel _statusPanel;
   JLabel _nbModif, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
 
 
   //for new
    public DDocument(DApplication dApplic, String title, TTStructure ttStruct) {
-     _dApplic = dApplic;
-     _documentName = title;
+     super(dApplic, title);
      _dm = new DModel(_dApplic, ttStruct);
      ttStruct.addTTStructureListener(this);
      buidDocument();
@@ -74,8 +69,7 @@ public class DDocument implements ActionListener, DModelListener, TTStructureLis
   //for open
   //-------------------------------------------
   public DDocument(DApplication dApplic, String title) {
-    _dApplic = dApplic;
-    _documentName = title;
+     super(dApplic, title);
     _dm = new DModel(_dApplic,_documentName);
     // read TTstructure
     // TTStructure ttStruct = new TTStructure();
@@ -100,21 +94,8 @@ public class DDocument implements ActionListener, DModelListener, TTStructureLis
         return _modified;
     } // end getModified
     //-------------------------------------------
-    public JInternalFrame getJIF() {
-        return _jif;
-    } // end getJIF
 
-    //-------------------------------------------
-    public String getDocumentName() {
-      return _documentName;
-    } // end getDocumentName
 
-    //-------------------------------------------
-    public void setDocumentName(String name) {
-      _documentName = name;
-      _jif.setTitle(name);
-    } // end setDocumentName
-    //-------------------------------------------
     public DModel getDM(){
         return _dm;
     } //end getDModel
@@ -123,9 +104,9 @@ public class DDocument implements ActionListener, DModelListener, TTStructureLis
       return _dm.getTTStructure();
     } // end getJIF
 
-    public TTPanel getTTPanel() {
-      return _ttPanel;
-    } // end getJIF
+ //   public TTPanel getTTPanel() {
+  //    return _ttPanel;
+ //   } // end getJIF
     //-------------------------------------------
 
     public JPanel initStatusPanel(){
