@@ -44,7 +44,7 @@ public class DSetOfInstructorsTest  extends TestCase{
                    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
     DLoadData ld = new DLoadData();
     SetOfInstructors instructorsList= new SetOfInstructors(5,14);
-    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),3);
+    instructorsList.analyseTokens(ld.buildDataExchange(tokens.getBytes()),0);
     assertEquals("test_analyseTokens: assertEquals", DConst.INST_TEXT1,
                  instructorsList.getError().substring(0,DConst.INST_TEXT1.length()));
 
