@@ -134,7 +134,11 @@ public class StandardReportData {
                 minute= "00"+Integer.toString(mnEnd%_AHOUR);
                 actlist+= hour.substring(hour.length()-2,hour.length())+_HOURSEPARATOR+
                           minute.substring(minute.length()-2,minute.length())+";";
-                actlist+= currentCycAss.getInstructorName()+";";
+                String str [] = currentCycAss.getInstructorNames();
+                for(int m = 0 ; m < str.length; m++ ) {
+                  actlist+= str[m] +":";
+                }
+                actlist+= ";";
                 actlist+= currentCycAss.getRoomName()+";";
                 Vector v = activity.getStudentRegistered();
                 String nbOfStudents= "000"+_dm.getSetOfEvents().studentsInSection(v,activityName+activityType, activitySection).size();
@@ -245,9 +249,10 @@ public class StandardReportData {
                   _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
-               long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
-               String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
-               str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
+               //todo rgr long instKey [] =
+               //long instKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getInstructorKey();
+               //String strInst= _dm.getSetOfInstructors().getResource(instKey).getID();
+               //str= DXToolsMethods.getToken(strInst,",",0)+" "+DXToolsMethods.getToken(strInst,",",1);
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
                long roomKey= ((EventAttach)_dm.getSetOfEvents().getResource(confEvents.getID()).getAttach()).getRoomKey();

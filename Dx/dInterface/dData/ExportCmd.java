@@ -31,6 +31,7 @@ import dInterface.DApplication;
 //------------------------------
     public void execute(DApplication dApplic) {
       dApplic.getDMediator().getCurrentDoc().getDM().exportData();
+      dApplic.getDMediator().getCurrentDoc().getDM().exportData();
       new InformationDlg(dApplic.getJFrame(), DConst.EXPORT_MESSAGE);
     }
 } /* end class ImportCmd */

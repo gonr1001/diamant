@@ -57,9 +57,9 @@ public class SetOfEventsTest extends TestCase {
      public void test1_build(){
        SetOfEvents soe = new SetOfEvents(_dm);
        soe.build();
-       long insKey = ((EventAttach)soe.getResourceAt(0).getAttach()).getInstructorKey();
+       long insKey [] = ((EventAttach)soe.getResourceAt(0).getAttach()).getInstructorKey();
        //System.out.println("Event: "+soe.getResourceAt(0).getID()+" Instruc: "+((EventAttach)soe.getResourceAt(0).getAttach()).getInstructorKey());//debug
-       assertEquals("test_build : assertEquals: ", "THÉRIEN, NORMAND", _dm.getSetOfInstructors().getResource(insKey).getID());
+       assertEquals("test_build : assertEquals: ", "THÉRIEN, NORMAND", _dm.getSetOfInstructors().getResource(insKey[0]).getID());
      }
 
      /**

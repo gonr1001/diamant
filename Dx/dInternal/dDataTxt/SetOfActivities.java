@@ -478,7 +478,7 @@ public class SetOfActivities extends SetOfResources{
               String period= stLine.nextToken().trim();
               cycleAss.setPeriodKey(period);
             }// end else if(typeOfData==1)
-            cycleAss.setInstructor(instructorName);
+            cycleAss.addInstructorName(instructorName);
              for (int i=1; i<= _NUMBEROFCYCLE; i++)
                bloc.addAssignment(new Resource(Integer.toString(i),cycleAss));
               counter++;
@@ -514,7 +514,7 @@ public class SetOfActivities extends SetOfResources{
                ((Assignment)bloc.getAssignment(Integer.toString(i)
                    ).getAttach()).setRoom(room);
                ((Assignment)bloc.getAssignment(Integer.toString(i)
-                   ).getAttach()).setInstructor(inst);
+                   ).getAttach()).addInstructorName(inst);
              }
               counter++;
            }// end while(stLine.hasMoreElements())
@@ -653,7 +653,12 @@ public class SetOfActivities extends SetOfResources{
             lineDuration += bloc.getDuration()/60+" ";//
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();
-            instName += firstCycAss.getInstructorName()+" ;";
+            // a loop to be implemented
+            String [] a = firstCycAss.getInstructorNames();
+            for (int m = 0; m < a.length ; m++) {
+               instName += a[m]+" :"; // to save
+            }
+            instName += " ;" ; // to save
             /*lineTime+=Integer.toString(firstCycAss.getDateAndTime()[0])+" "+
                      DXToolsMethods.convertSTIPeriods (firstCycAss.getDateAndTime()[1],30)+" ";*/
             lineTime+= firstCycAss.getPeriodKey()+" ";

@@ -62,14 +62,18 @@ public class SetOfEvents extends SetOfResources{
                   assignment.setPeriodKey("1.1.1");
               }// end if(assignment.getPeriodKey()[0]==0)
               //System.out.println("event " +unityID+" InsName " +assignment.getInstructorName());
-              int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(assignment.getInstructorName());
-              if(instructorIndex!=-1){
-                instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
-              }else{
-                DXValue error= new DXValue();
-                error.setStringValue("Erreur --> "+ unityID+": "+assignment.getInstructorName()+" Inexistant ");
-                _dm.getSetOfImportErrors().addResource(new Resource("2",error),0);
+              String instructorNames [] = assignment.getInstructorNames();
+              for (int m = 0 ; m < instructorNames.length; m++) {
+                int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(instructorNames[m]);
+                if(instructorIndex!=-1){
+                  instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
+                }else{
+                  DXValue error= new DXValue();
+                  error.setStringValue("Erreur --> "+ unityID+": "+ instructorNames[m] +" Inexistant ");
+                  _dm.getSetOfImportErrors().addResource(new Resource("2",error),0);
+                }
               }
+
 
               int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
               if(roomIndex != -1){
@@ -85,7 +89,7 @@ public class SetOfEvents extends SetOfResources{
               }
               //int[] dayTime = assignment.getDateAndTime();
 
-              EventAttach event = new EventAttach(unityKey, instructorKey, roomKey,
+              EventAttach event = new EventAttach(unityKey, assignment.getSetInstructorKeys(), roomKey,
                   ((Unity)unity.getAttach()).getDuration(),assignment.getPeriodKey());
               event.setAssignState(((Unity)unity.getAttach()).isAssign());
               event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
@@ -148,7 +152,12 @@ public class SetOfEvents extends SetOfResources{
       Unity unity= _dm.getSetOfActivities().getUnity(actKey,typeKey,sectKey,unitKey);
       Assignment assignment= (Assignment)unity.getSetOfAssignments().getResourceAt(
           _dm.getTTStructure().getCurrentCycleIndex()).getAttach();
-      assignment.setInstructor(getRescName(_dm.getSetOfInstructors(),event.getInstructorKey()));
+      long keys [] = event.getInstructorKey();
+      assignment.emptyInstructorNames();
+      for (int j = 0 ; j < keys.length ; j++) {
+        assignment.addInstructorName(getRescName(_dm.getSetOfInstructors(),keys[j]));
+      }
+
       assignment.setRoom(getRescName(_dm.getSetOfRooms(),event.getRoomKey()));
      /* long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
       long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));

@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dInternal.dData.SetOfActivities;
+import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.ApplyPanel;
 
 
@@ -45,7 +46,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
   private JLabel _lVisible, _lNoVisible;
   private JList _rightList, _leftList;
   private JPanel _centerPanel, _arrowsPanel;
-  private ApplyPanel _applyPanel;
+  private ButtonsPanel _applyPanel;
   private Object [] _currentActivities = new Object[0];
   private SetOfActivities _activities;
   private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT};
@@ -107,7 +108,8 @@ public class ActivityDlg extends JDialog implements ActionListener {
     _centerPanel.add(_arrowsPanel, BorderLayout.CENTER);
     _centerPanel.add(rightPanel, BorderLayout.WEST);
     //_applyPanel
-    _applyPanel = new ApplyPanel(this);
+    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _applyPanel = new ApplyPanel(this, a);
     //Setting the button APPLY disable
     _applyPanel.setApplyDisable();
     //placing the elements into the JDialog

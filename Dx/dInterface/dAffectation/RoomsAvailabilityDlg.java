@@ -9,6 +9,7 @@ import dInternal.DModel;
 import dInternal.dData.RoomAttach;
 import dInterface.DApplication;
 import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.ButtonsPanel;
 
 import dResources.DConst;
 
@@ -37,7 +38,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   //private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private  String[] time;
 
-  private ApplyPanel _applyPanel ; //= new JPanel();
+  private ButtonsPanel _applyPanel ; //= new JPanel();
   private JPanel chooserPanel = new JPanel();
   private JPanel centerPanel;
   //JButton butApply;
@@ -97,7 +98,8 @@ public class RoomsAvailabilityDlg  extends JDialog
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //_applyPanel
-    _applyPanel = new ApplyPanel(this);
+    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _applyPanel = new ApplyPanel(this, a);
     //Setting the button APPLY disable
     _applyPanel.setApplyDisable();
     this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);

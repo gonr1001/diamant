@@ -760,7 +760,74 @@ public void test7_analyseTokens(){
     *
     *
     * */
-   public void test_instructorEqualsBlocs(){
+   public void test_nInstructorEqualsnBlocs(){
+     String tokens= "ADM1111  01"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "rgr, ys; rgr, ys " + "\r\n"+
+                    "2"+"\r\n"+
+                    "2 1"+"\r\n"+
+                    "1.3.1 1.1.1"+"\r\n"+
+                    "1 1"+"\r\n"+
+                    "C1-387 C1-387"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0; 0 0"+"\r\n"+
+                    "ADM1112  01"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "LUC LAJOIE"+"\r\n"+
+                    "1"+"\r\n"+
+                    "3"+"\r\n"+
+                    "1.3.1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "C1-387"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0 ; 0" + "\r\n" ;
+
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),true);
+     setOfActivities.analyseTokens(1);
+     assertEquals("test_nInstructorEqualsnBlocs: assertEquals", "",
+                  setOfActivities.getError());
+   }
+   /**
+    * test instructorEqualsBlocs,
+    *
+    *
+    * */
+   public void test_nSetInstructorEqualsnBlocs(){
+     String tokens= "ADM1111  01"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "rgr: ys; rgr: ys" + "\r\n"+
+                    "2"+"\r\n"+
+                    "2 1"+"\r\n"+
+                    "1.3.1 1.1.1"+"\r\n"+
+                    "1 1"+"\r\n"+
+                    "C1-387 C1-387"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0"+"\r\n"+
+                    "0 0; 0 0"+"\r\n"+
+                    "ADM1112  01"+"\r\n"+
+                    "1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "LUC LAJOIE"+"\r\n"+
+                    "1"+"\r\n"+
+                    "3"+"\r\n"+
+                    "1.3.1"+"\r\n"+
+                    "1"+"\r\n"+
+                    "C1-387"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0"+"\r\n"+
+                    "0 ; 0" + "\r\n" ;
+
+     SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),true);
+     setOfActivities.analyseTokens(1);
+     assertEquals("test_nSetInstructorEqualsnBlocs: assertEquals", "",
+                  setOfActivities.getError());
+   }
+   public void test_nInstructorNoEqualsnBlocs(){
      String tokens= "ADM1111  01"+"\r\n"+
                     "1"+"\r\n"+
                     "1"+"\r\n"+
@@ -788,10 +855,9 @@ public void test7_analyseTokens(){
 
      SetOfActivities setOfActivities= new SetOfActivities(tokens.getBytes(),true);
      setOfActivities.analyseTokens(1);
-     assertEquals("test_instructorEqualsBlocs: assertEquals", DConst.ACTI_TEXT13,
+     assertEquals("test_nInstructorNoEqualsnBlocs: assertEquals", DConst.ACTI_TEXT13,
                   setOfActivities.getError().substring(0,DConst.ACTI_TEXT13.length()));
    }
-
 
   private byte[] preLoad(String str) {
     FilterFile filter = new FilterFile();

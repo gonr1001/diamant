@@ -382,11 +382,15 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
     EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
     SetOfInstructors soi= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors();
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-    Resource instructor = soi.getResource(event.getInstructorKey());
-    if(instructor!=null)
-      list[0].add(instructor.getID());
-    else
-      list[0].add(DConst.NO_ROOM_INTERNAL);
+    long keys [] = event.getInstructorKey();
+    for (int i = 0 ; i < keys.length ; i ++ ) {
+      Resource instructor = soi.getResource(keys[i]);
+      if(instructor!=null)
+        list[0].add(instructor.getID());
+     // else
+      //  list[0].add(DConst.NO_ROOM_INTERNAL);
+    }
+
     for(int i=0; i< soi.size(); i++)
       list[1].add(soi.getResourceAt(i).getID());
     list[1].add(DConst.NO_ROOM_INTERNAL);

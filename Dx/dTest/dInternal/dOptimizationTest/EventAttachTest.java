@@ -3,14 +3,17 @@ package dTest.dInternal.dConditionsTest;
 
 import junit.framework.*;
 import dInternal.dConditionsTest.EventAttach;
-
+import dInternal.dData.Resource;
+import dInternal.dData.SetOfResources;
 
  public class EventAttachTest extends TestCase {
 
    EventAttach _eventAttach;
    public EventAttachTest(String name) {
      super(name);
-     _eventAttach= new EventAttach("1.1.2.1",1,52,60,"1.1.1");
+     SetOfResources sor = new SetOfResources(22);
+     sor.addResource(new Resource("", null), 1);
+     _eventAttach= new EventAttach("1.1.2.1",sor,52,60,"1.1.1");
      //String princKey, long key1, long key2, int eventDuration, String eventPeriod
    }
 
@@ -35,9 +38,11 @@ import dInternal.dConditionsTest.EventAttach;
     *
     */
    public void test_setKey_2(){
-     assertEquals("test_setKey_2 : assertEquals 1", 1, _eventAttach.getInstructorKey());
+     long a [] = _eventAttach.getInstructorKey();
+     assertEquals("test_setKey_2 : assertEquals 1", 1, a[0]);
      _eventAttach.setKey(1,"20");
-     assertEquals("test_setKey_2 : assertEquals 2", 20, _eventAttach.getInstructorKey());
+     a = _eventAttach.getInstructorKey();
+     assertEquals("test_setKey_2 : assertEquals 2", 20, a[0]);
    }
 
    /**

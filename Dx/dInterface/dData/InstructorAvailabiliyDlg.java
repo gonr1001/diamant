@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.9 $  $Date: 2004-04-05 14:10:36 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.10 $  $Date: 2004-04-07 14:35:30 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -29,6 +29,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import dInterface.DApplication;
 import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.ButtonsPanel;
 //import dInterface.dUtil.DXTools;
 import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
@@ -63,7 +64,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private String[] day;
   public String[] time;
 
-  private ApplyPanel _applyPanel;// = new JPanel();
+  private ButtonsPanel _applyPanel;// = new JPanel();
   private JPanel chooserPanel = new JPanel();
   private JPanel centerPanel;
 
@@ -125,7 +126,8 @@ public class InstructorAvailabiliyDlg  extends JDialog
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //_applyPanel
-    _applyPanel = new ApplyPanel(this);
+    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _applyPanel = new ApplyPanel(this, a);
     //Setting the button APPLY disable
     _applyPanel.setApplyDisable();
     this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);

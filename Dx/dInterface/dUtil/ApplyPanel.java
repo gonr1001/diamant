@@ -1,7 +1,8 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.1 $  $Date: 2004-04-05 12:50:54 $
- * Description: AboutDlg is a class representing the Dialog About
+ * Title: ApplyPanel $Revision: 1.2 $  $Date: 2004-04-07 14:35:30 $
+ * Description: ApplyPanel is a class used to have two buttons in a panel:
+ *              Apply and Close
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,18 +29,16 @@ import javax.swing.JButton;
 
 import dResources.DConst;
 
-public class ApplyPanel extends JPanel {
-  private String [] _buttonsNames = {DConst.BUT_APPLY, DConst.BUT_CLOSE};
+public class ApplyPanel extends ButtonsPanel {
 
-
-  public ApplyPanel(ActionListener parentDialog) {
+  public ApplyPanel(ActionListener parentDialog, String [] buttonsNames) {
     super();
-    JButton button = new JButton(DConst.BUT_APPLY);
-    button.setActionCommand(DConst.BUT_APPLY);
+    JButton button = new JButton(buttonsNames[0]);
+    button.setActionCommand(buttonsNames[0]);
     button.addActionListener(parentDialog);
     this.add(button);
-    button = new JButton(DConst.BUT_CLOSE);
-    button.setActionCommand(DConst.BUT_CLOSE);
+    button = new JButton(buttonsNames[1]);
+    button.setActionCommand(buttonsNames[1]);
     button.addActionListener(parentDialog);
     this.add(button) ;
   }

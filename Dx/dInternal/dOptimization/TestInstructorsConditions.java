@@ -80,7 +80,7 @@ public class TestInstructorsConditions  implements Condition{
    */
   private int InstructorAvailibilityConflicts(Period period, String eventKey){
     EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
-    long instKey = event.getInstructorKey();
+    /*long instKey = event.getInstructorKey();
     if((instKey!=-1) && (event.getPeriodKey().length()!=0)){
       InstructorAttach inst = (InstructorAttach)_dm.getSetOfInstructors().getResource(instKey).getAttach();
       long dayKey = Integer.parseInt(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
@@ -99,7 +99,7 @@ public class TestInstructorsConditions  implements Condition{
           return 1;
         }// end else if ((dayIndexAvail < matrix.length))
       }// end if(perPosition>0)
-    }
+    }*/
     return 0;
   }
 
@@ -113,7 +113,7 @@ public class TestInstructorsConditions  implements Condition{
     EventAttach event1 = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     EventAttach event2;
     int nbConf=0;
-    for(int i=0; i< period.getEventsInPeriod().size(); i++){
+  /*  for(int i=0; i< period.getEventsInPeriod().size(); i++){
       String event2ID = period.getEventsInPeriod().getResourceAt(i).getID();
       event2= (EventAttach)_dm.getSetOfEvents().getResource(event2ID).getAttach();
       if(!event1.getPrincipalRescKey().equalsIgnoreCase(event2.getPrincipalRescKey())){
@@ -122,7 +122,7 @@ public class TestInstructorsConditions  implements Condition{
           nbConf++;
         }
       }
-    }
+    }*/
     return nbConf;
   }
 

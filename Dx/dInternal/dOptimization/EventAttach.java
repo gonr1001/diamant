@@ -10,7 +10,8 @@ package dInternal.dConditionsTest;
  */
 
 import dInternal.dUtil.DXObject;
-
+import dInternal.dData.SetOfResources;
+import dInternal.dData.Resource;
 import java.util.Vector;
 
 public class EventAttach extends DXObject {
@@ -20,7 +21,9 @@ public class EventAttach extends DXObject {
    */
   private String _principalRescKey;
   private int _eventDuration=0;
-  private long _instructorRescKey; // the instructor key
+  //private long _instructorRescKey; // the instructor key
+  /** instructor key */
+  private SetOfResources _setInstructorKeys;
   private long _roomRescKey; // the room key
   // the student reference will be found in the conflicts matrix
   private Vector _tabuList; //
@@ -36,9 +39,9 @@ public class EventAttach extends DXObject {
    * @param key1
    * @param key2
    */
-  public EventAttach(String princKey, long key1, long key2, int eventDuration, String eventPeriod) {
+  public EventAttach(String princKey, SetOfResources inst, long key2, int eventDuration, String eventPeriod) {
     _principalRescKey = princKey;
-    _instructorRescKey = key1;
+    _setInstructorKeys = inst;
     _roomRescKey = key2;
     _eventDuration = eventDuration;
     _ttsKey = eventPeriod;
@@ -49,8 +52,12 @@ public class EventAttach extends DXObject {
     return _principalRescKey;
   }
 
-  public long getInstructorKey(){
-    return _instructorRescKey;
+  public long [] getInstructorKey(){
+    long keys [] = new long [_setInstructorKeys.size()];
+    for (int i = 0; i < _setInstructorKeys.size() ; i++){
+      keys [i] = _setInstructorKeys.getResourceAt(i).getKey();
+    }
+    return keys;
   }
 
  /* public void setInstructorKey(long key){
@@ -164,7 +171,7 @@ public class EventAttach extends DXObject {
     switch(field){
       case 0: _principalRescKey = value;
         break;
-      case 1: _instructorRescKey = Long.parseLong(value);
+      case 1: //_setInstructorKeys = ///_instructorRescKey = Long.parseLong(value);
         break;
       case 2: _roomRescKey = Long.parseLong(value);
         break;

@@ -9,7 +9,7 @@ package dInternal.dData;
  * @version 1.0
  */
 import dInternal.dUtil.DXObject;
-
+import java.util.Vector;
 
 public class Assignment extends DXObject{
 
@@ -19,9 +19,10 @@ public class Assignment extends DXObject{
    * c= period key*/
   private String _periodKey ="0.0.0";
   /**instructor name valid only for initialization*/
-  private String _instructorName="";
+  private SetOfResources _setInstructorNames;
   /** instructor key */
-  long  _instructorKey = -1;
+  private SetOfResources _setInstructorKeys;
+  //long  _instructorKey = -1;
   /** room valid only for initialization*/
   private String _roomName="";
   /** room key */
@@ -32,7 +33,8 @@ public class Assignment extends DXObject{
    *Constructor
    */
   public Assignment() {
-
+    _setInstructorNames = new SetOfResources(22);
+    _setInstructorKeys =  new SetOfResources(22);
   }
 
   /**
@@ -59,19 +61,26 @@ public class Assignment extends DXObject{
    * set the instructor name
    * @param String the instructor name
    * */
-  public void setInstructor(String instructor){
-    _instructorName = instructor;
+  public void addInstructorName(String instructor){
+    _setInstructorNames.addResource(new Resource(instructor, null),0);
   }
 
   /**
    * set the instructor key
    * @param long the instructor key
    * */
-  public void setInstructor(long instructor){
-    _instructorKey = instructor;
-    _instructorName = null;
+  public void addInstructorKeys(long instructor){
+    _setInstructorKeys.setCurrentKey(instructor);
+    _setInstructorNames.addResource(new Resource("", null),0);
   }
 
+  /**
+   * set the instructor key
+   * @param long the instructor key
+   * */
+  public void removeInstructorKeys(long instructor){
+    _setInstructorKeys.removeResource(instructor);
+  }
   /**
    * set the room name
    * @param String the room name
@@ -118,18 +127,35 @@ public class Assignment extends DXObject{
    * get instructor name of the bloc in this week
    * @return String the instructor name
    * */
-  public String getInstructorName(){
-    return _instructorName;
+  public String [] getInstructorNames(){
+    String names [] = new String [_setInstructorNames.size()];
+    for (int i = 0; i < _setInstructorNames.size() ; i++){
+      names [i] = _setInstructorNames.getResourceAt(i).getID();
+    }
+    return names;
   }
-
+  /**
+   * get instructor name of the bloc in this week
+   * @return String the instructor name
+   * */
+  public void emptyInstructorNames(){
+    _setInstructorNames.getSetOfResources().removeAllElements();
+  }
   /**
    * get instructor key of the unit
    * @return String the instructor key
    * */
-  public long getInstructorKey(){
-    return _instructorKey;
+  public long [] getInstructorKeys(){
+    long keys [] = new long [_setInstructorKeys.size()];
+    for (int i = 0; i < _setInstructorKeys.size() ; i++){
+      keys [i] = _setInstructorKeys.getResourceAt(i).getKey();
+    }
+    return keys;
   }
 
+  public SetOfResources getSetInstructorKeys(){
+    return _setInstructorKeys;
+  }
   /**
    * get room name of the bloc in this week
    * @return String the room name
@@ -161,14 +187,19 @@ public class Assignment extends DXObject{
 * */
   public boolean isEquals(DXObject ass){
     Assignment assmt = (Assignment)ass;
-    if(this._instructorKey!= assmt._instructorKey)
+    for(int i = 0 ; i < _setInstructorKeys.size(); i ++) {
+      if(this._setInstructorKeys.getResourceAt(i).getKey()!= assmt.getInstructorKeys()[i])
       return false;
+    }
+
     if(this._roomKey!= assmt._roomKey)
       return false;
     if(this._roomFixed!= assmt._roomFixed)
       return false;
-    if(!this._instructorName.equals(assmt._instructorName))
+    for(int i = 0 ; i < _setInstructorNames.size(); i ++) {
+      if(this._setInstructorNames.getResourceAt(i).getID().equalsIgnoreCase(assmt.getInstructorNames()[i].toString()))
       return false;
+    }
     if(!this._roomName.equals(assmt._roomName))
       return false;
     if((this._dateAndTime[0]!= assmt._dateAndTime[0])

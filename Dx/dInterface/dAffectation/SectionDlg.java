@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.18 $  $Date: 2004-04-05 12:41:19 $
+ * Title: SectionDlg $Revision: 1.19 $  $Date: 2004-04-07 14:35:30 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -45,6 +45,7 @@ import javax.swing.JScrollPane;
 
 import dInterface.DApplication;
 import dInterface.dUtil.ApplyPanel;
+import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DXTools;
 
 import dInternal.dData.Activity;
@@ -67,7 +68,7 @@ public class SectionDlg extends JDialog implements ActionListener{
   private DXJComboBox _actCombo, _typeCombo, _sortCombo;
   private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _insidePanel, _centerPanel, _notAssignedPanel;
-  private ApplyPanel _applyPanel;
+  private ButtonsPanel _applyPanel;
   private JScrollPane _scrollPane;
   private Section _section;
   private SetOfActivities _activities;
@@ -108,7 +109,8 @@ public class SectionDlg extends JDialog implements ActionListener{
     setResizable(false);
     setTopPanel();
     //_applyPanel
-    _applyPanel = new ApplyPanel(this);
+    String [] a ={DConst.BUT_APPLY, DConst.BUT_CLOSE};
+    _applyPanel = new ApplyPanel(this, a);
     //Setting the button APPLY disable
     _applyPanel.setApplyDisable();
     getContentPane().add(_applyPanel, BorderLayout.SOUTH);
