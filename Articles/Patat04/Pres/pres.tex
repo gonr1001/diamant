@@ -1,0 +1,363 @@
+%% BEGIN Présentation de  PILE aux Profs
+%\title Présentation de  PILE
+%\author : Ruben Gonzalez Rubio
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\tictac}{Tic-Tac}
+\newcommand{\xp}{eXtreme Programming}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+
+
+%%%0
+\bslide
+\bheading A timetable production system architecture for courses and 
+exams
+\eheading
+
+\begin{center}
+
+Ruben Gonzalez Rubio 
+
+and 
+
+Domingo Palao Muñoz
+
+Département de génie électrique \\
+et de génie informatique \\
+Université de Sherbrooke,\\
+Sherbrooke, Québec, J1K 2R1 \\
+Canada \\
+\pro{Ruben.Gonzalez-Rubio@USherbrooke.ca} 
+
+\end{center}
+
+\eslide
+
+%\bnote
+
+%\enote
+
+
+
+%%%0
+\bslide
+\bheading Presentation plan
+\eheading
+
+\bi
+\item Motivation
+\item Design patterns
+\item The Test Condition Pattern
+\bi
+
+\item Construction of a timetable for exams
+\item The Pattern 
+
+\item The code
+
+\ei
+
+
+\item Conclusions
+
+\ei
+
+\eslide
+
+%\bnote
+
+%\enote
+%%%0
+\bslide
+\bheading Motivation
+\eheading
+
+\bi
+ \item A
+timetable construction software must offer a flexible way to handle 
+constraints. 
+\ei
+
+\eslide
+
+%%%1% 
+
+
+%\enote
+%%%0
+\bslide
+\bheading  Design Patterns
+\eheading
+
+ \begin{itemize} 
+      \item ``Design patterns are recurring solutions to design 
+problems you see over and over''. 
+      \item ``Design patterns constitute a set of rules describing 
+how to 
+     accomplish certain tasks in the realm of software development''. 
+	 \item ``Patterns identify and specify 
+abstractions that 
+     are above the level of single classes and instances, or of 
+     components''. 
+ \end{itemize} 
+ 
+
+\eslide
+
+
+
+
+%%%0
+\bslide
+\bheading The Problem
+\eheading
+
+
+The construction of a timetable for exams.
+
+
+
+
+\eslide
+
+
+%%%0
+\bslide
+\bheading Problem Input
+\eheading
+
+
+
+ 
+\begin{itemize} 
+\item A set of exams. 
+\item A set of students who are taking exams; 
+each student is associated with the exams he/she must take.
+\item To simplify the problem,  one room 
+with a 
+given capacity. 
+\item An empty timetable. 
+The timetable is a data structure containing a number 
+of timeslots which are empty. 
+The algorithm takes one exam at the time, 
+then it assigns it to a timeslot. 
+Here assign means that the exam will take place at the assigned 
+timeslot. 
+\end{itemize} 
+
+
+\eslide
+
+
+\bslide
+\bheading Problem Constraints
+\eheading
+
+The timetable covers $n$ days spread in $m$ weeks, 
+the duration for each exam is t hours ($t=3$), 
+and there are two timeslots each day: 
+morning and afternoon (9:00 to 12:00 and 14:00 to 17:00). 
+
+The hard  constraints (conditions) to satisfy are:
+\begin{itemize} 
+\item  No student must have two exams at the same time. 
+\item The number of students in a period is less that the total 
+capacity. 
+\end{itemize} 
+ 
+Any produced timetable must respect these constraints. Each 
+constraint 
+could be seen as a condition to be respected. 
+
+\eslide
+
+\bslide
+\bheading Problem output
+\eheading
+
+ 
+
+\begin{itemize} 
+\item The timetable where each timeslot is associated to the exams 
+taking place at this timeslot without conflicts.  
+\item A set of \ita{exams that are impossible to assign to a 
+timeslot}. If all exams were assigned this set is empty. 
+\end{itemize} 
+\eslide
+
+%%%1
+
+
+
+
+
+
+\bslide
+\bheading The algoritm
+\eheading
+
+ 
+\begin{enumerate} 
+\item While the set of exams is not empty do : 
+\begin{enumerate} 
+\item Take out the exam with the greatest potential number of 
+conflicts from the 
+set of exams. 
+\item Assign the exam to the first timeslot where the conditions are 
+respected (\ita{no conflict with exams in this period} $ \wedge$ 
+\ita{number of students in this timeslot less than capacity}). If 
+this is impossible the exam then it will be placed in the set of 
+\ita{exams that are impossible to assign to a timeslot}. 
+\end{enumerate}
+\item If the set of \ita{exams impossible to assign to a timeslot} is 
+empty then print Timetable is ok else print Timetable is not ok 
+\end{enumerate} 
+
+\eslide
+
+%\bnote
+
+%\enote
+%%%0
+\bslide
+\bheading Adding Constraints
+\eheading
+
+{\it All Mathematics exams must be held during the morning}. 
+
+In order 
+to handle this new condition it must be possible to recognize whether 
+an exam is a mathematics exam and whether a period is a morning 
+period. 
+
+The algorithm remains basically the same, but a new (composed) 
+condition  must be added:  \ita{is this a mathematics exam?} $ 
+\wedge$  \ita{is this a morning period?}. This new condition must be 
+respected only if the exam is a mathematics one; otherwise, the 
+algorithm uses the original conditions. 
+
+\eslide
+
+%\bnote
+
+%\enote
+
+
+
+
+
+
+
+%%%0
+\bslide
+\bheading The Pattern
+\eheading
+
+A source of inspiration for the pattern was the Command pattern, 
+which encloses the request for a specific action inside an object and 
+gives a know public  \pro{interface}.
+
+\eslide
+
+%\bnote
+
+%\enote
+
+
+
+%%%0
+\bslide
+\bheading Condition
+\eheading
+
+We define the interface \pro{Condition} as follows: 
+ 
+\begin{verbatim} 
+public inteface Condition { 
+   public boolean doTest() 
+} 
+\end{verbatim} 
+
+
+\eslide
+
+%\bnote
+
+%\enote
+
+
+%%%0
+\bslide
+\bheading Testing Conditions
+\eheading
+
+\begin{verbatim} 
+... 
+public void buildTimeTable() { 
+... 
+   for(int i = 0; i < v.size(), i++) { 
+      Condition c = (Condition) v.elementAt(i); 
+      if (!c.doTest()) 
+         break; 
+   } //end for 
+   ... 
+} 
+... 
+\end{verbatim}
+
+\eslide
+
+%\bnote
+
+%\enote
+	
+
+ 
+%%%0
+\bslide
+\bheading A Condition
+\eheading
+
+\begin{verbatim} 
+public class Cond1 implements Condition { 
+   private Timetable tt; 
+   ... 
+   public boolean doTest() { 
+      Timeslot cP = tt.getCurrentTimeslot(); 
+      Exam cE = tt.getCurrentExam(); 
+      retour cP.noConflict(cE); 
+   } 
+   ... 
+} 
+\end{verbatim} 
+
+\eslide
+
+
+\bslide
+\bheading Advantages and disadvantage
+\eheading
+
+The main advantage of the proposed Design pattern is flexibility.
+
+The main disadvatage is efficiency compared with a typical 
+implementation but the execution time depends on the algorithm.
+
+\eslide
+
+\bslide
+\bheading Conclusion
+\eheading
+
+We present a Design pattern to test conditions in timetable 
+construction problems. We give the motivations for the Design 
+pattern, we show the implementation of the Design pattern and 
+evaluate the advantages and disadvantages. 
+ 
+As with many Design patterns, its description is very easy to 
+understand and to reuse in other cases. 
+
+\eslide
+
+
