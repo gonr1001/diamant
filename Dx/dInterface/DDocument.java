@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.84 $  $Date: 2003-09-30 15:20:27 $
+ * Title: DDocument $Revision: 1.85 $  $Date: 2003-09-30 17:35:36 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.84 $
+ * @version $Revision: 1.85 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -68,8 +68,6 @@ public class DDocument  extends InternalFrameAdapter implements
   private DStateBar _stateBar;
   private String _version;
 
-
-
   //for a new timetable and a open timetable
   //for new timetable Structure and open timetable Structure from a file
   public DDocument(DMediator dMediator, String ttName, String fileName, int type) {
@@ -86,14 +84,14 @@ public class DDocument  extends InternalFrameAdapter implements
     }
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   } // end constructor DDocument()
+  //-------------------------------------------
   public DDocument(){
-
   }
+  //-------------------------------------------
   public void internalFrameActivated(InternalFrameEvent e) {
     _dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
   }
-
-
+  //-------------------------------------------
   public final JInternalFrame getJIF() {
     return _jif;
   } // end getJIF
@@ -107,13 +105,11 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setTitle(name);
   } // end setDocumentName
   //-------------------------------------------
-
   public void setCursor(int cursorValue, Component component){
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     component.setCursor(Cursor.getPredefinedCursor(cursorValue));
   }
-
   /**
    *
    * @param cursorValue
@@ -122,8 +118,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
     _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
   }
-
-
+  //-------------------------------------------
   public String getError(){
     return _dm.getError();
   }
@@ -148,14 +143,10 @@ public class DDocument  extends InternalFrameAdapter implements
     return _dm.getTTStructure();
   } // end getJIF
   //-------------------------------------------
-
-  /***/
   public String getVersion(){
     return _version;
   }
-
-
-
+  //-------------------------------------------
   /**
    * */
   public void setVersion(String version){
@@ -167,12 +158,11 @@ public class DDocument  extends InternalFrameAdapter implements
   public void close(){
     _jif.dispose();
     _jif = null;
-    _documentName = "";
-    _dm = null;
     _ttPanel = null;
     _stateBar = null;
 
   }
+  //-------------------------------------------
   private String modifiyDocumentName(String str) {
     if (str.endsWith("pref"+File.separator+"StandardTTC.xml") ||
         str.endsWith("pref"+File.separator+"StandardTTE.xml") ){
@@ -181,7 +171,7 @@ public class DDocument  extends InternalFrameAdapter implements
     }
     return str;
   }
-
+  //-------------------------------------------
   public void actionPerformed(ActionEvent  e) {
     if (e.getSource() instanceof CommandHolder) {
       ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
@@ -190,8 +180,6 @@ public class DDocument  extends InternalFrameAdapter implements
       System.out.println("I do not know what to do, please help me (Action Performed)");
     }// end if ... else
   }// end actionPerformed
-
-
   //-------------------------------------------
   public void changeInDModel(DModelEvent  e, Component component) {
     setCursor(Cursor.WAIT_CURSOR, component);
@@ -206,15 +194,14 @@ public class DDocument  extends InternalFrameAdapter implements
 
     setCursor(Cursor.DEFAULT_CURSOR, component);
   }// end actionPerformed
-
+  //-------------------------------------------
     /*
     */
   public void changeInStateBar (SetOfStatesEvent e){
     _dm.setStateBarComponent();
     _stateBar.upDateDStateBar(_dm.getSetOfStates());
   }
-
-
+  //-------------------------------------------
   /**
    *
    * @param e
@@ -224,7 +211,7 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.setModified();
     _ttPanel.updateTTPanel(_dm.getTTStructure());
   }
-
+  //-------------------------------------------
   /**
    *
    * @param e
@@ -299,17 +286,17 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm.getSetOfStates().sendEvent();
     component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
   }// end changeInSetOfRooms
-
+  //-------------------------------------------
   public void displaySimple(){
-    _jif.dispose();
+    close();
     buidDocument(true);
   }
-
+  //-------------------------------------------
   public void displayDetailed(){
-    _jif.dispose();
+    close();
     buidDocument(false);
   }
-
+  //-------------------------------------------
   private void  buidDocument(boolean simple){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
     /* MIN_HEIGHT is needed to ajdust the minimum
@@ -360,6 +347,4 @@ public class DDocument  extends InternalFrameAdapter implements
       pve.printStackTrace();
     }
   } // end buidDocument
-
-
 } /* end DDocument class */

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPanel $Revision: 1.45 $  $Date: 2003-09-29 20:36:32 $
+ * Title: TTPanel $Revision: 1.46 $  $Date: 2003-09-30 17:35:36 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.45 $
+ * @version $Revision: 1.46 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -48,9 +48,19 @@ import dInternal.dTimeTable.TTStructure;
 
 
 public abstract class TTPanel {
+
+  //protected int MINHEIGHT = 60;
+  protected int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
+  protected int VWIDTH =  36; // timeTable.nbDays * MINWIDTH;
+  protected int UWIDTH =  100; // timeTable.nbDays * MINWIDTH;
+  protected int UHEIGHT =  60;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
+  protected int MinWidth=80;
+  protected int MinHeight=80;
+  protected int LASTHOUR=8;
   protected DModel _dm;
 
-  public TTPanel() {
+  public TTPanel(DModel dm) {
+    _dm = dm;
   }
 
   abstract public void updateTTPanel(TTStructure ttp);

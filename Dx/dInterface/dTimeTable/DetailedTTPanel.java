@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPanel $Revision: 1.2 $  $Date: 2003-09-29 20:36:32 $
+ * Title: DetailedTTPanel $Revision: 1.3 $  $Date: 2003-09-30 17:35:36 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -56,14 +56,14 @@ import dInternal.dTimeTable.*;
 
 public class DetailedTTPanel extends TTPanel {
 
-  //private int MINHEIGHT = 60;
+ /* //private int MINHEIGHT = 60;
   private int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
   private int VWIDTH =  36; // timeTable.nbDays * MINWIDTH;
   private int UWIDTH =  100; // timeTable.nbDays * MINWIDTH;
   private int UHEIGHT =  60;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
   private int MinWidth=80;
   private int MinHeight=80;
-  private int LASTHOUR=8;
+  private int LASTHOUR=8;*/
 
   private int _periodLenght;
   private MouseListener _mouseListener;
@@ -74,8 +74,7 @@ public class DetailedTTPanel extends TTPanel {
   private JScrollPane _jScrollPaneTwo;
 
   public DetailedTTPanel(DModel dm) {
-    super();
-    _dm = dm;
+    super(dm);
     _jScrollPaneOne = new JScrollPane();
     _jScrollPaneTwo = new JScrollPane();
     //_jScrollPaneTwo= _jScrollPaneOne;//debug

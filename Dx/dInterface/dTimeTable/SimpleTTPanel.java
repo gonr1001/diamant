@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimpleTTPanel $Revision: 1.4 $  $Date: 2003-09-29 20:36:32 $
+ * Title: SimpleTTPanel $Revision: 1.5 $  $Date: 2003-09-30 17:35:36 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -60,14 +60,14 @@ import dInternal.dTimeTable.TTStructure;
 
 public class SimpleTTPanel extends TTPanel {
 
-  //private int MINHEIGHT = 60;
+  /*//private int MINHEIGHT = 60;
   private int HHEIGHT =  24; // timeTable.nbDays * MINWIDTH;
   private int VWIDTH =  36; // timeTable.nbDays * MINWIDTH;
   private int UWIDTH =  100; // timeTable.nbDays * MINWIDTH;
   private int UHEIGHT =  60;// (timeTable.getLatest() - timeTable.getEarliest()) * MINHEIGHT;
   private int MinWidth=80;
   private int MinHeight=80;
-  private int LASTHOUR=8;
+  private int LASTHOUR=8;*/
 
   private int _periodLenght;
   private MouseListener _mouseListener;
@@ -75,31 +75,16 @@ public class SimpleTTPanel extends TTPanel {
   private JPanel _jSplitPane;
 
   private JScrollPane _jScrollPaneOne;
-   private JScrollPane _jScrollPaneTwo;
 
   public SimpleTTPanel(DModel dm) {
-    super();
-    _dm = dm;
+    super(dm);
     _jScrollPaneOne = new JScrollPane();
-    _jScrollPaneTwo = new JScrollPane();
-    //_jScrollPaneTwo= _jScrollPaneOne;//debug
     if(_dm.getTTStructure()!=null){
       initTTPaneOne();
-      initTTPaneTwo();
     }
-    //_jSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,_jScrollPane,_jScrollPane);
-
-    _jSplitPane = new JPanel();//JSplitPane.VERTICAL_SPLIT,true);//,_jScrollPane,new JLabel("B"));
-
+    _jSplitPane = new JPanel();
     _jSplitPane.add(_jScrollPaneOne);
-
-    //_jSplitPane.setTopComponent(_jScrollPaneOne);
-    //_jSplitPane.setBottomComponent(null);//_jScrollPaneTwo);//new JLabel("B")); //(_jScrollPane);
-   //  _jSplitPane.setOneTouchExpandable(true);
-    //   _jSplitPane.setDividerLocation(0);
-    //Dimension minSize= new Dimension (100, 100);
-   // _jScrollPaneOne.setMinimumSize(minSize);
-  }
+  } // end  SimpleTTPanel
 
   private void initTTPaneOne() {
     _periodLenght= _dm.getTTStructure().getPeriodLenght();
@@ -121,26 +106,7 @@ public class SimpleTTPanel extends TTPanel {
     manageActions();
 
   }
-  private void initTTPaneTwo() {
-    _periodLenght= _dm.getTTStructure().getPeriodLenght();
-    Cycle cycle =_dm.getTTStructure().getCurrentCycle();
-    MinWidth = cycle.getNumberOfDays() * UWIDTH;
-    Period lastPeriod = _dm.getTTStructure().getCurrentCycle().getLastPeriod();
-    LASTHOUR=lastPeriod.getEndHour(_periodLenght)[0];
-    if(lastPeriod.getEndHour(_periodLenght)[1]!=0)
-      LASTHOUR++;
-    //System.out.println("last Hour: "+ LASTHOUR+":"+lastPeriod.getEndHour(_periodLenght)[1]);//debug
-    MinHeight = (LASTHOUR-_dm.getTTStructure().getCurrentCycle().getFirstPeriod().getBeginHour()[0]) * UHEIGHT;
 
-    Point point= new Point(0,0);
-    point = _jScrollPaneTwo.getViewport().getViewPosition();
-    _jScrollPaneTwo.setColumnHeaderView(createColumnHeader());
-    _jScrollPaneTwo.setRowHeaderView(createRowHeader());
-    _jScrollPaneTwo.setViewportView(createViewPort());
-    _jScrollPaneTwo.getViewport().setViewPosition(point);
-    manageActions();
-
-  }
   /**
    *
    * */
@@ -172,7 +138,7 @@ public class SimpleTTPanel extends TTPanel {
 
   public void updateTTPanel(TTStructure ttp){
     initTTPaneOne();
-    initTTPaneTwo();
+    //initTTPaneTwo();
   }
 
   private JPanel createColumnHeader() {
