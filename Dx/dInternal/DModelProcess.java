@@ -90,9 +90,9 @@ public class DModelProcess {
   * setofrooms
   */
  public void buildSetOfEvents(){
-   _dm._setOfEvents = new SetOfEvents();
+   _dm._setOfEvents = new SetOfEvents(_dm);
    if (_dm._setOfActivities!=null){
-     _dm._setOfEvents.build(_dm._ttStruct.getCurrentCycleResource(), _dm._setOfActivities, _dm._setOfInstructors, _dm._setOfRooms);
+     _dm._setOfEvents.build();
      //updateEventsInTTS();
      if((_dm._setOfActivities!=null) && (_dm._setOfStudents!=null))
        _dm._setOfActivities.buildStudentRegisteredList(_dm._setOfStudents);

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.75 $  $Date: 2003-09-22 15:31:14 $
+ * Title: DModel $Revision: 1.76 $  $Date: 2003-10-01 19:01:19 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.75 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.76 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInternal;
@@ -74,7 +74,7 @@ public class DModel extends DModelProcess implements  DModelListener, TTStructur
     setModel(this);
     _error = "";
     _setOfStates = new SetOfStates();
-    _setOfEvents = new SetOfEvents();
+    _setOfEvents = new SetOfEvents(this);
 
     _dDocument = dDocument;
     if(fileName.endsWith(".dia")){//if(fileName.endsWith(".dia")){

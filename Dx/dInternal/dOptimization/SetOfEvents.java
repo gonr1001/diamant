@@ -11,6 +11,9 @@ import dInternal.dData.Assignment;
 import dInternal.dData.SetOfInstructors;
 import dInternal.dData.SetOfRooms;
 import dInternal.dTimeTable.Cycle;
+import dInternal.dTimeTable.Period;
+import dInternal.dUtil.DXToolsMethods;
+import dInternal.DModel;
 import dResources.DConst;
 
 import java.util.Vector;
@@ -22,23 +25,26 @@ public class SetOfEvents extends SetOfResources{
 
   public Vector _soeListeners = new Vector(1);
   protected boolean _isEventPlaced=false;
+  private DModel _dm;
+  private String _UNAVAILABLE= "------";
 
   /***
    * Constructor
    */
-  public SetOfEvents() {
+  public SetOfEvents(DModel dm) {
     super(6);
+    _dm= dm;
   }
 
+
   /**
-   * Build setOfEvents
+   * Build setOfEvents from activities
    * @param cycle
    */
-  public void build(Resource cycle, SetOfActivities soa, SetOfInstructors soi,
-                    SetOfRooms sor){
+  public void build(){
     String unityKey;
-    for (int i=0; i< soa.size(); i++){
-      Resource activity= soa.getResourceAt(i);
+    for (int i=0; i< _dm.getSetOfActivities().size(); i++){
+      Resource activity= _dm.getSetOfActivities().getResourceAt(i);
       long instructorKey=-1, roomKey=-1;
       if(((Activity)activity.getAttach()).getActivityVisibility()){
       for(int j=0; j< ((Activity)activity.getAttach()).getSetOfTypes().size(); j++){
@@ -47,20 +53,21 @@ public class SetOfEvents extends SetOfResources{
           Resource section = ((Type)type.getAttach()).getSetOfSections().getResourceAt(k);
           for(int l=0; l< ((Section)section.getAttach()).getSetOfUnities().size(); l++){
             Resource unity= ((Section)section.getAttach()).getSetOfUnities().getResourceAt(l);
-            Assignment assignment = (Assignment)((Unity)unity.getAttach()).getAssignment(cycle.getID()).getAttach();
+            Assignment assignment = (Assignment)((Unity)unity.getAttach()).getAssignment(
+                _dm.getTTStructure().getCurrentCycleResource().getID()).getAttach();
             if(assignment!=null){
-              int instructorIndex = soi.getIndexOfResource(assignment.getInstructorName());
+              int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(assignment.getInstructorName());
               if(instructorIndex!=-1)
-                instructorKey = soi.getResourceAt(instructorIndex).getKey();
-              int roomIndex = sor.getIndexOfResource(assignment.getRoomName());
+                instructorKey = _dm.getSetOfInstructors().getResourceAt(instructorIndex).getKey();
+              int roomIndex = _dm.getSetOfRooms().getIndexOfResource(assignment.getRoomName());
               if(roomIndex!=-1)
-                roomKey = sor.getResourceAt(roomIndex).getKey();
+                roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
               int[] dayTime = assignment.getDateAndTime();
               unityKey = activity.getKey()+"."+ type.getKey()+"."+section.getKey()+"."+unity.getKey()+".";
               String unityID = activity.getID()+"."+ type.getID()+"."+section.getID()+"."+unity.getID()+".";
               EventAttach event = new EventAttach(unityKey,instructorKey,roomKey,
                   ((Unity)unity.getAttach()).getDuration(),
-                  ((Cycle)cycle.getAttach()).getPeriod(dayTime));
+                  ((Cycle)_dm.getTTStructure().getCurrentCycleResource().getAttach()).getPeriod(dayTime));
               event.setAssignState(((Unity)unity.getAttach()).isAssign());
               event.setPermanentState(((Unity)unity.getAttach()).isPermanent());
               //System.out.println("Unity Key: "+unityKey+ " - Period Key: "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
@@ -107,6 +114,47 @@ public class SetOfEvents extends SetOfResources{
     }// end for (int i=0; i< this.size(); i++)
     return count;
   }
+
+  /**
+   * update activities from events
+   */
+  public void updateActivities(Vector eventsToUpdate){
+    EventAttach event;//= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+    for (int i=0; i< eventsToUpdate.size(); i++){
+      event=(EventAttach)((Resource)eventsToUpdate.get(i)).getAttach();
+      long actKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",0));
+      long typeKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",1));
+      long sectKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",2));
+      long unitKey= Long.parseLong(DXToolsMethods.getToken(event.getPrincipalRescKey(),".",3));
+      Unity unity= _dm.getSetOfActivities().getUnity(actKey,typeKey,sectKey,unitKey);
+      Assignment assignment= (Assignment)unity.getSetOfAssignments().getResourceAt(
+          _dm.getTTStructure().getCurrentCycleIndex()).getAttach();
+      assignment.setInstructor(getRescName(_dm.getSetOfInstructors(),event.getInstructorKey()));
+      assignment.setRoom(getRescName(_dm.getSetOfRooms(),event.getRoomKey()));
+      long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+      long seqKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",1));
+      long perKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",2));
+      Period period= _dm.getTTStructure().getCurrentCycle().getPeriodByKey(dayKey,seqKey,perKey);
+      assignment.setDateAndTime((int)dayKey,period.getBeginHour()[0],period.getBeginHour()[1]);
+      unity.setAssign(event.getAssignState());
+      unity.setPermanent(event.getPermanentState());
+    }// end for (int i=0; i< eventsToUpdate.size(); i++)
+
+  }
+
+  /**
+   * get a resource key
+   * @param soresc
+   * @param elt
+   * @return the resource key or -1 if key does not found
+   */
+  private String getRescName(SetOfResources soresc, long eltkey){
+    if (eltkey!=-1){
+      return soresc.getResource(eltkey).getID();
+    }
+    return _UNAVAILABLE;
+  }
+
 
   /**
   *

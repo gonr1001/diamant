@@ -9,24 +9,29 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dData.SetOfRooms;
 import dInternal.dData.Resource;
 import dInternal.dData.LoadData;
+import dInternal.DModel;
+import dInterface.DDocument;
 import java.util.Vector;
 import java.io.File;
 import java.util.StringTokenizer;
 
 public class SetOfEventsTest extends TestCase {
 
- private SetOfActivities _soa;
+ /*private SetOfActivities _soa;
  private SetOfInstructors _soi;
  private SetOfRooms _sor;
- private TTStructure _tts;
+ private TTStructure _tts;*/
+ private DModel _dm;
+
   public SetOfEventsTest(String name) {
     super(name);
-    LoadData _lData= new LoadData();
+    /*LoadData _lData= new LoadData();
     Vector timeTable = _lData.loadProject(System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia");
     _soa = (SetOfActivities)timeTable.get(4);
     _soi = (SetOfInstructors)timeTable.get(2);
     _sor = (SetOfRooms)timeTable.get(3);
-    _tts = (TTStructure)timeTable.get(1);
+    _tts = (TTStructure)timeTable.get(1);*/
+    _dm= new DModel(new DDocument(),System.getProperty("user.dir")+ File.separator+"dataTest"+File.separator+"loadData.dia",1);
   }
 
      public static Test suite() {
@@ -41,12 +46,12 @@ public class SetOfEventsTest extends TestCase {
       * test the principal key of the first event of the setofevents
       */
      public void test_build(){
-       SetOfEvents soe = new SetOfEvents();
-       soe.build(_tts.getCurrentCycleResource(),_soa,_soi,_sor);
+       SetOfEvents soe = new SetOfEvents(_dm);
+       soe.build();
        String pincKey = ((EventAttach)soe.getResourceAt(0).getAttach()).getPrincipalRescKey();
        StringTokenizer keys = new StringTokenizer(pincKey,".");
 
-       String firstEvent = _soa.getUnityCompleteName(Long.parseLong(keys.nextToken())
+       String firstEvent =  _dm.getSetOfActivities().getUnityCompleteName(Long.parseLong(keys.nextToken())
            ,Long.parseLong(keys.nextToken()),Long.parseLong(keys.nextToken()),
            Long.parseLong(keys.nextToken()));
        assertEquals("test_build : assertEquals: ", "AMC640.1.A.1.", firstEvent);
@@ -56,20 +61,20 @@ public class SetOfEventsTest extends TestCase {
       * test the instructor key of the first event of the setofevents
       */
      public void test1_build(){
-       SetOfEvents soe = new SetOfEvents();
-       soe.build(_tts.getCurrentCycleResource(),_soa,_soi,_sor);
+       SetOfEvents soe = new SetOfEvents(_dm);
+       soe.build();
        long insKey = ((EventAttach)soe.getResourceAt(0).getAttach()).getInstructorKey();
-       assertEquals("test_build : assertEquals: ", "THÉRIEN, NORMAND", _soi.getResource(insKey).getID());
+       assertEquals("test_build : assertEquals: ", "THÉRIEN, NORMAND", _dm.getSetOfInstructors().getResource(insKey).getID());
      }
 
      /**
       * test the rooms key of the first event of the setofevents
       */
      public void test2_build(){
-       SetOfEvents soe = new SetOfEvents();
-       soe.build(_tts.getCurrentCycleResource(),_soa,_soi,_sor);
+       SetOfEvents soe = new SetOfEvents(_dm);
+       soe.build();
        long roomKey = ((EventAttach)soe.getResourceAt(0).getAttach()).getRoomKey();
-       assertEquals("test_build : assertEquals: ", "D73020", _sor.getResource(roomKey).getID());
+       assertEquals("test_build : assertEquals: ", "D73020", _dm.getSetOfRooms().getResource(roomKey).getID());
      }
 
 

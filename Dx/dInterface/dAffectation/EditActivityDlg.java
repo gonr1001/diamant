@@ -38,7 +38,7 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
   private String _ROOM= "Local:";
   private String _UNAVAILABLE= "------";
   //private String _DIALOGMESSAGE= "Affectation d'évenement";
-  Vector _unities = new Vector();
+  Vector _unities = new Vector();// contains event resource
 
   JTabbedPane _tabbedPane;
   JPanel _bottomPanel;
@@ -366,6 +366,9 @@ public class EditActivityDlg extends JDialog implements ActionListener, ChangeLi
                                   getDM().getSetOfRooms(),room)));
     event.setAssignState(assignBut);
     event.setPermanentState(permanentBut);
+    Vector vect= new Vector();
+    vect.add(_unities.get(_currentActivityIndex));
+    _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().updateActivities(vect);
   }
 
   /**
