@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.104 $  $Date: 2004-03-24 14:25:40 $
+ * Title: DMenuBar $Revision: 1.105 $  $Date: 2004-04-15 21:40:33 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.104 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.105 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -81,7 +81,7 @@ public class DMenuBar extends JMenuBar{
   _boolMenuHelp, _boolMenuDev;
 
   // the file menu: sub-menus
-  private JMenu _newTTable, _newTTStruc;
+  private JMenu _newTTable, _newTTStruc, _importSelect;
   private boolean _boolNewTTable, _boolNewTTStruc;
 
   // the file menus
@@ -97,12 +97,16 @@ public class DMenuBar extends JMenuBar{
   _saveAs,        //calls nothing
   _defineFiles,   //calls nothing
   _import,        //calls postImportCmd calls setReadToBuildTT
+  _importSelectRoom,
+  _importSelectInst,
+  _importSelectAct,
+  ImportSelectStud,
   _export,        //
   _exit;
   private boolean _boolNewTTableCy, _boolNewTTableEx, _boolNewTTStrucCy,
   _boolNewTTStrucEx, _boolOpenTTable, _boolOpenTTStruc,
   _boolClose, _boolSave, _boolSaveAs,_boolDefineFiles,
-  _boolImport, _boolExport, _boolExit;
+  _boolImport, _boolImportSelect, _boolExport, _boolExit;
   // the edit menus
 
   // the assign menus
@@ -521,6 +525,27 @@ public class DMenuBar extends JMenuBar{
     _stateZero.setCommand(new StateZeroCmd());
     _stateZero.addActionListener(_dApplic);
     _dev.add(_stateZero);
+
+    // selective import
+    _importSelect = new JMenu(DConst.IMP_SELECT);
+    _importSelect.setFont( new java.awt.Font(_mfont, _font, _nPT));
+
+    // instructor selective import
+    _importSelectInst = new CmdMenu(DConst.IMP_SELECT_INST);
+    _importSelectInst.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _importSelectInst.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_INST));
+    _importSelectInst.addActionListener(_dApplic);
+    _importSelect.add(_importSelectInst);
+
+    // room selective import
+    _importSelectRoom = new CmdMenu(DConst.IMP_SELECT_ROOM);
+    _importSelectRoom.setFont( new java.awt.Font(_mfont, _font, _nPT));
+    _importSelectRoom.setCommand(new ImportSelectiveFileCmd(_dApplic.getJFrame(),DConst.IMP_SELECT_ROOM));
+    _importSelectRoom.addActionListener(_dApplic);
+    _importSelect.add(_importSelectRoom);
+
+    _dev.add(_importSelect);
+
   } // end createDevelopmentMenu
 
   private void setAlways() {
