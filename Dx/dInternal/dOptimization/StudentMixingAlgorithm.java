@@ -183,6 +183,10 @@ public class StudentMixingAlgorithm implements Algorithm {
       for (int j=0; j< student.getCoursesList().size(); j++){
         String actID= student.getCoursesList().getResourceAt(j).getID();
         int group= student.getGroup(actID);
+        if(group<=0){
+          group=1;
+          student.setInGroup(actID,group,false);
+        }
         String sectionID= Character.toString(DXTools.STIConvertGroup(group));
         String typeID= actID.substring(SetOfActivities._COURSENAMELENGTH,SetOfActivities._COURSENAMELENGTH+1);
         actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
@@ -233,10 +237,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     switch(_mixingType){
       case 0:
         int group=currentConvGroup.getIntValue();
-        SetOfResources biggestConvGroup= (SetOfResources)allConvGroup.get(group++);
-        if(group>=allConvGroup.size())
-          group=0;
-        currentConvGroup.setIntValue(group);
+        SetOfResources biggestConvGroup= (SetOfResources)allConvGroup.get(group);
         /*for (int i=1; i< allConvGroup.size(); i++){
           if (((SetOfResources)allConvGroup.get(i)).size() > biggestConvGroup.size()){
             biggestConvGroup= (SetOfResources)allConvGroup.get(i);
@@ -250,6 +251,9 @@ public class StudentMixingAlgorithm implements Algorithm {
           for (int i=0; i< allConvGroup.size(); i++)
             ((SetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
         }// end if(biggestConvGroup.size()>0)
+        if(++group>=allConvGroup.size())
+          group=0;
+        currentConvGroup.setIntValue(group);
         break;
       case 1:
 
