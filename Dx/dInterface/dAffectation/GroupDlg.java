@@ -88,9 +88,11 @@ public class GroupDlg extends JDialog implements ActionListener{
     setResizable(false);
     setTitlePanel();
     getContentPane().add(_titlePanel, BorderLayout.NORTH);
-    setnotAssignedPanel();
+    setNotAssignedPanel();
+    setAssignedPanel();
     //setGroupPanels();
     getContentPane().add(_notAssignedPanel, BorderLayout.WEST);
+    getContentPane().add(_assignedPanel, BorderLayout.EAST);
     triggerListeners();
   }
 
@@ -140,22 +142,39 @@ public class GroupDlg extends JDialog implements ActionListener{
   }
   */
 
-  private void setnotAssignedPanel(){
+  private void setNotAssignedPanel(){
     _notAssignedPanel = new JPanel();
+    JScrollPane scrollaPane = new JScrollPane();
     _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_NOT_ASSIGNED));
     _notAssignedPanel.setPreferredSize(new Dimension(200,300));
     _notAssignedVector = _students.getStudentsByGroup((String)_activitiesCombo.getSelectedItem(), "1", -1);
     System.out.println("(String)_activitiesCombo.getSelectedItem() "+(String)_activitiesCombo.getSelectedItem());
     System.out.println("_notAssignedVector" +_notAssignedVector);
     _notAssignedList = new JList(_notAssignedVector);
+    scrollaPane.setPreferredSize(new Dimension(100,200));
+    scrollaPane.getViewport().add(_notAssignedList);
     System.out.println("_notAssignedVector" + _notAssignedVector);
-    _notAssignedPanel.add(_notAssignedList);
+    _notAssignedPanel.add(scrollaPane);
 
   }
 
-  private JPanel setAssignedPanels(){
-    JPanel assignedPanel = new JPanel(new GridLayout(_currNumberOfSections, 1));
-    return assignedPanel;
+  private void setAssignedPanel(){
+    _assignedPanel = new JPanel(new GridLayout(_currNumberOfSections, 1));
+    JScrollPane scrollPane;
+    Vector assignedVector;
+    JList assignedList;
+    System.out.println("_currNumberOfSections "+_currNumberOfSections);
+    for (int i = 0; i < /*_currNumberOfSections*/ 3; i++){
+      /*assignedVector = _students.getStudentsByGroup(this._currActivityID, "1", i);
+      assignedList = new JList(assignedVector);
+      _assignedPanel.add(new JScrollPane());
+      System.out.println("_assignedPanel.add(new JScrollPane())");
+      scrollPane = (JScrollPane)_assignedPanel.getComponent(i);
+      System.out.println("scrollPane " + scrollPane);
+      scrollPane.setPreferredSize(new Dimension(100,100));
+      scrollPane.getViewport().add(assignedList);*/
+     _assignedPanel.add(new JButton("i " + i));
+    }
   }
 
 
@@ -198,13 +217,18 @@ public class GroupDlg extends JDialog implements ActionListener{
       for(int i = 0; i < _typesVector.size(); i++){
         _typesCombo.addItem(_typesVector.elementAt(i));
       }
+      _typesCombo.setSelectedIndex(0);
       //_notAssignedVector = getStudents(_currActivityID, _typesVector);
       _notAssignedVector = _students.getStudentsByGroup((String)_activitiesCombo.getSelectedItem(), "1", -1);
       _notAssignedList.setListData(_notAssignedVector);
+      setCurrents();
+      setAssignedPanel();
       //setGroupPanels();
     }//end if (e.getSource().equals(_activitiesCombo))
     if (e.getSource().equals(_typesCombo)){
       _currTypeID = (String)_typesCombo.getSelectedItem();
+      setCurrents();
+      setAssignedPanel();
       //setGroupPanels();
     }
   }//end method
