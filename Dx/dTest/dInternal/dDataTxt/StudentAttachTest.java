@@ -71,7 +71,7 @@ public class StudentAttachTest extends TestCase {
   }
 
   /**
-   * test3_addCourse, test that the group is solidify in the attach courses
+   * test3_addCourse, test that the group is solidify (figé) in the attach courses
    * */
   public void test3_addCourse(){
     String [] courses = {"GEI4521","GEI442101","GIN2001","GEI420101"};

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DStringFrRes $Revision: 1.10 $  $Date: 2003-05-07 10:35:55 $
+ * Title: DStringFrRes $Revision: 1.11 $  $Date: 2003-05-07 10:56:28 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -35,17 +35,17 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     */
 
     { "file", "Fichier" },
-    { "nTT", "Nouveau horaire" },
+    { "nTT", "Nouvel horaire" },
     { "open", "Ouvrir" },
     { "close", "Fermer" },
     //Separator
     { "save", "Enregistrer" },
     { "saveAs", "Enregistrer sous" },
     //Separator
-    { "impM", "Fichier" },
-    { "defF", "Nouveau horaire" },
-    { "impA", "Ouvrir" },
-    { "expo", "Fermer" },
+    { "impM", "Importer manuellement" },
+    { "defF", "Definir fichier import auto" },
+    { "impA", "Importer automatiquement" },
+    { "expo", "Exporter" },
     //Separator
     { "exit", "Quitter" },
 
@@ -87,6 +87,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"studText4","in the student file:"},
     {"studText5","I was in StudentList class and in analyseTokens method"},
     {"studText6","Wrong number of students in the students file:"},
+    {"studText7","Wrong number of student courses choices at line: "},
 
     };
   public Object[][] getContents() {

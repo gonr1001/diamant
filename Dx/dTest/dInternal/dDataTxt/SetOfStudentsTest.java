@@ -70,7 +70,6 @@ public class SetOfStudentsTest  extends TestCase{
    * choices in the students file
    * */
   public void test2_analyseTokens(){
-    String TEXT6= "Wrong number of student courses choices at line: ";
     String tokens= "    0015"+"\r\n"+
                    "009008132035030720003LUPIEN MY04"+"\r\n"+
                    "CTB301101 GIS251102 GIS3511 GRH111101 GRH332101"+"\r\n"+
@@ -80,8 +79,8 @@ public class SetOfStudentsTest  extends TestCase{
                    "CTB443101 CTB451102 CTB513102 CTB563101"+"\r\n";
     SetOfStudents setOfStudents= new SetOfStudents(tokens.getBytes());
     setOfStudents.analyseTokens(0);
-    assertEquals("test2_analyseTokens: assertEquals", TEXT6,
-                 setOfStudents.getError().substring(0,TEXT6.length()));
+    assertEquals("test2_analyseTokens: assertEquals", DConst.STUD_TEXT7,
+                 setOfStudents.getError().substring(0,DConst.STUD_TEXT7.length()));
   }
 
   /**

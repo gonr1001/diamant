@@ -93,7 +93,7 @@ public class SetOfStudents extends SetOfResources{
              numberOfCources= (new Integer (token.substring(_ENDSTUDENTNAME,
                 token.length()).trim())).intValue();
           }catch (NumberFormatException exc){
-            _error = "Wrong number of student courses choices at line: "+ line +  DConst.STUD_TEXT4  +
+            _error = DConst.STUD_TEXT7+ line +  DConst.STUD_TEXT4  +
             "\n" + DConst.STUD_TEXT5;
             return false;
           }
@@ -104,7 +104,7 @@ public class SetOfStudents extends SetOfResources{
           StringTokenizer courses = new StringTokenizer(new String (token) );
           String courseToken;
           if(courses.countTokens()!= numberOfCources){
-            _error = "Wrong number of student courses choices at line: "+ line +  DConst.STUD_TEXT4  +
+            _error = DConst.STUD_TEXT7+ line +  DConst.STUD_TEXT4  +
            "\n" + DConst.STUD_TEXT5;
             return false;
           }
