@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.83 $  $Date: 2003-09-30 14:57:14 $
+ * Title: DDocument $Revision: 1.84 $  $Date: 2003-09-30 15:20:27 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.83 $
+ * @version $Revision: 1.84 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -78,8 +78,9 @@ public class DDocument  extends InternalFrameAdapter implements
     _dm = new DModel(this, fileName, type);
     if(_dm.getError().length()==0){
       _dm.getTTStructure().addTTStructureListener(this);
-      ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
-      buidDocument(ttName);
+      //ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
+      _documentName = modifiyDocumentName(ttName);
+      buidDocument(true);
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _jif.addInternalFrameListener(this);
     }
@@ -300,25 +301,16 @@ public class DDocument  extends InternalFrameAdapter implements
   }// end changeInSetOfRooms
 
   public void displaySimple(){
-    //_ttPanel = null;
-    _jif.getContentPane().remove((Component)_ttPanel.getPanel());
-    _ttPanel = new SimpleTTPanel(_dm);
-    _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
-    _jif.pack();
-    _jif.setVisible(true);
-    _jif.repaint();
+    _jif.dispose();
+    buidDocument(true);
   }
 
   public void displayDetailed(){
-     _jif.getContentPane().remove((Component)_ttPanel.getPanel());
-    _ttPanel = new DetailedTTPanel(_dm);
-    _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
-    _jif.pack();
-    _jif.setVisible(true);
-    _jif.repaint();
+    _jif.dispose();
+    buidDocument(false);
   }
 
-  private void  buidDocument(String title){
+  private void  buidDocument(boolean simple){
     //     System.out.println("check token method : "+ (new StringTokenizer("    ")).countTokens());// debug
     /* MIN_HEIGHT is needed to ajdust the minimum
     * height of the _jif */
@@ -332,7 +324,7 @@ public class DDocument  extends InternalFrameAdapter implements
     /* MIN_WIDTH is needed to ajdust the minimum
     * width of the _jif */
     final int MAX_WIDTH = 1024;
-    _documentName = title;
+    //_documentName = title;
     _jif = new JInternalFrame(_documentName, true, true, true, true);
     _jif.setDefaultCloseOperation(_jif.DO_NOTHING_ON_CLOSE);
     _jif.addInternalFrameListener( new InternalFrameAdapter() {
@@ -340,8 +332,6 @@ public class DDocument  extends InternalFrameAdapter implements
         new CloseCmd().execute(_dMediator.getDApplication());
       }
     } );
-
-
 
     _dm.addDModelListener(this);
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();
@@ -351,8 +341,10 @@ public class DDocument  extends InternalFrameAdapter implements
     _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
     _jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
-    _ttPanel = new SimpleTTPanel(_dm);
-    //_ttPanel = new DetailedTTPanel(_dm);
+    if (simple)
+      _ttPanel = new SimpleTTPanel(_dm);
+    else
+      _ttPanel = new DetailedTTPanel(_dm);
     _jif.getContentPane().add(_ttPanel.getPanel(), BorderLayout.CENTER);
     _jif.pack();
     _dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
