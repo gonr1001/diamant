@@ -469,7 +469,7 @@ présenté, nous allons proposer un composant pour l'application de
 production d'horaires.
 
 La conception de haut niveau de notre système de production
-d'horaires est simple (voir figure\ref{fig:phOne}):
+d'horaires est simple (voir figure\ref{fig:phOne})~:
 
 \begin{enumerate}
 \item Nous avons des données qui rentrent dans le système, elles
@@ -495,19 +495,26 @@ dans autre moyen de stockage pertinent.
 
 Pour faire l'implémentation de notre architecture, il faut en
 premier lieu, trouver quels sont les éléments technologiques
-nécessaires. Nous trouvons qu'il faut avoir :
+nécessaires. Nous trouvons qu'il faut avoir~:
 
-Un langage pour faciliter l'affichage des données vers
+\begin{enumerate}
+\item Un langage pour faciliter l'affichage des données vers
 l'utilisateur ainsi que pour créer des formulaires pour saisir des
-données. Un format qui définit la manière d'établir l'échange des
-données avec les autres systèmes. Un langage pour coder la logique
-d'affaires. Un outil pour gérer la persistance des données.
+données.
+
+\item Un format qui définit la manière d'établir l'échange des
+données avec les autres systèmes.
+
+\item Un langage pour coder la logique d'affaires.
+
+\item Un outil pour gérer la persistance des données.
+\end{enumerate}
 
 Nous avons constaté qu'il n'y a pas un seul choix, plutôt il y a
 plusieurs instances possibles pour implémenter cette architecture.
 
-Nous montrons ici
-
+Nous montrons ici une liste d'instances possibles, il faut
+remarquer qu'elle n'est pas exhaustive.
 
 
 Java, jsp, jdbc, xml.
