@@ -9,14 +9,13 @@ package dInternal.dUtil;
  * @version 1.0
  */
 import java.util.StringTokenizer;
-import com.iLib.gDialog.FatalProblemDlg;
+
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
 import java.io.File;
-import java.util.Vector;
-import java.util.StringTokenizer;
+
 
 public class DXToolsMethods {
 

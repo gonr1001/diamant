@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.7 $  $Date: 2003-09-29 20:49:15 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.8 $  $Date: 2003-10-28 14:19:06 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.8 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -31,7 +31,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dInternal.dData.InstructorAttach;
 import dInternal.DModel;
-import dInternal.dTimeTable.TTStructure;
+
 import dResources.DConst;
 
 

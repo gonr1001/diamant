@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.11 $  $Date: 2003-10-20 21:01:58 $
+ * Title: DetailedPeriodPanel $Revision: 1.12 $  $Date: 2003-10-28 14:19:06 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -30,22 +30,19 @@ package dInterface.dTimeTable;
  *
  */
 import java.util.Vector;
-import java.awt.Dimension;
-import java.util.Collection;
+
 //import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
+
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.border.BevelBorder;
+
 import javax.swing.BorderFactory;
 import java.awt.BorderLayout;
 import dInternal.dTimeTable.Period;
 import dResources.DConst;
-import dInternal.dData.SetOfActivities;
-import dInternal.dData.Activity;
+
 
 
 public class DetailedPeriodPanel extends PeriodPanel{

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.20 $  $Date: 2003-10-22 19:28:36 $
+ * Title: NewTTDlg $Revision: 1.21 $  $Date: 2003-10-28 14:19:06 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,27 +19,26 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 import javax.swing.JFileChooser;
-import java.util.ResourceBundle;
+
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dResources.DFileFilter;
 import com.iLib.gDialog.FatalProblemDlg;
 
 import java.awt.Dimension;
-import java.io.File;
+
 
 import dResources.DConst;
-import dInternal.dTimeTable.TTStructure;
+
 
 
 /**

@@ -10,9 +10,7 @@ package dInterface.dTimeTable;
  */
 
 
-import javax.swing.JFrame;
 
-import dResources.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 

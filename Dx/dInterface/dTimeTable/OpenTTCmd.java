@@ -1,6 +1,6 @@
 /**
  *
- * Title: OpenTTCmd $Revision: 1.4 $  $Date: 2003-10-22 19:28:36 $
+ * Title: OpenTTCmd $Revision: 1.5 $  $Date: 2003-10-28 14:19:06 $
  * Description: OpenTTCmd is a class used to open a file then display in
  *  			the document window
  *
@@ -15,13 +15,13 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dTimeTable;
 
-import javax.swing.JFrame;
+
 import dInterface.Command;
 import dInterface.DApplication;
 

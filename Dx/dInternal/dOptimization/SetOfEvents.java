@@ -8,8 +8,7 @@ import dInternal.dData.Type;
 import dInternal.dData.Section;
 import dInternal.dData.Unity;
 import dInternal.dData.Assignment;
-import dInternal.dData.SetOfInstructors;
-import dInternal.dData.SetOfRooms;
+
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;

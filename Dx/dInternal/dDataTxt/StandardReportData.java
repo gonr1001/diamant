@@ -13,7 +13,7 @@ import dInternal.DModel;
 import dInternal.dTimeTable.*;
 import dInternal.dUtil.DXValue;
 import dInternal.dConditionsTest.ConflictsAttach;
-import dInternal.dConditionsTest.EventAttach;
+
 import dInterface.dUtil.DXTools;
 import dResources.DConst;
 import java.util.StringTokenizer;

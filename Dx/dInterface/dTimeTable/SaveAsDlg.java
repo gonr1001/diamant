@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.13 $  $Date: 2003-10-22 19:11:38 $
+ * Title: SaveAsDlg $Revision: 1.14 $  $Date: 2003-10-28 14:19:06 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,36 +15,24 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
- * @author  $Author: alexj $
+ * @version $Revision: 1.14 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
+
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
-import java.awt.GridLayout;
 
-import java.util.ResourceBundle;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.BorderFactory;
+
+
+
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
-import com.iLib.gIO.ByteOutputFile;
-import com.iLib.gException.IOFileException;
 import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gDialog.InformationDlg;
 import dInterface.DApplication;

@@ -97,9 +97,9 @@ public class ExportData {
    * @param fileName
    */
   public void saveExportReport(String fileName){
-    FilterFile filter = new FilterFile(exportActivities().getBytes());
+    FilterFile filter = new FilterFile(exportActivities().getBytes(),"");
     filter.saveFile(DXToolsMethods.getToken(fileName,".",0)+"_Export_1.txt");
-    filter = new FilterFile(exportStudents().getBytes());
+    filter = new FilterFile(exportStudents().getBytes(), "");
     filter.saveFile(DXToolsMethods.getToken(fileName,".",0)+"_Export_2.txt");
   }
 

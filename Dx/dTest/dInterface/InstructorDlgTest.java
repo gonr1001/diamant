@@ -9,17 +9,16 @@ package dTest.dInterface;
  * @version 1.0
  */
 import junit.framework.*;
-import dInternal.dData.InstructorAttach;
-import dInternal.DModel;
+
 import dInterface.dData.InstructorAvailabiliyDlg;
-import dResources.DConst;
+
 import dInterface.DApplication;
 import javax.swing.*;
-import java.util.Vector;
+
 import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.RobotTestHelper;
-import dInternal.dTimeTable.TTStructure;
+
 
 public class InstructorDlgTest extends JFCTestCase {
   DApplication _dApplic;

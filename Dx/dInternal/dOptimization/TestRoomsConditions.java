@@ -10,7 +10,7 @@ package dInternal.dConditionsTest;
  */
 import dInternal.DModel;
 import dInternal.dTimeTable.Period;
-import dInternal.dData.SetOfRooms;
+
 import dInternal.dData.RoomAttach;
 import dInternal.dData.Activity;
 import dInternal.dData.Type;

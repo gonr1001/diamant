@@ -2,8 +2,7 @@ package dTest.dInternal.dConditionsTest;
 
 
 import junit.framework.*;
-import dInternal.dConditionsTest.EventAttach;
-import java.util.Vector;
+
 
  public class EventAttachTest extends TestCase {
 

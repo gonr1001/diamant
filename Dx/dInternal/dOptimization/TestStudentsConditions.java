@@ -11,13 +11,11 @@ package dInternal.dConditionsTest;
 
 import dInternal.dTimeTable.Period;
 import dInternal.dData.SetOfActivities;
-import dInternal.dData.Activity;
-import dInternal.dData.Type;
-//import dInternal.dUtil.DXValue;
-import dInternal.dData.SetOfResources;
+
+
 import dInternal.dData.Resource;
 import dInternal.dUtil.DXToolsMethods;
-import java.util.StringTokenizer;
+
 import java.util.Vector;
 import dResources.DConst;
 

@@ -9,12 +9,11 @@ package dInterface.dTimeTable;
  * @version 1.0
  */
 
-import javax.swing.JFrame;
+
 import dInterface.Command;
 import dInterface.DApplication;
 import dResources.DConst;
-import dInterface.dTimeTable.ManualImprovementResultFrame;
-import dInternal.dTimeTable.TTStructure;
+
 
 
 public class ManualImprovementCmd implements Command {

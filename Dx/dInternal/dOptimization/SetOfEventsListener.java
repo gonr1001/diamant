@@ -13,7 +13,7 @@ package dInternal.dConditionsTest;
 
 import java.util.*;
 import java.awt.Component;
-import dInternal.DModelEvent;
+
 
 public interface SetOfEventsListener extends EventListener{
   void changeInSetOfEvents(SetOfEventsEvent e, Component c);

@@ -3,20 +3,17 @@ package dInterface.dData;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 import java.awt.Dimension;
 
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+
 import javax.swing.JDialog;
-import javax.swing.JLabel;
+
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+
 
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;

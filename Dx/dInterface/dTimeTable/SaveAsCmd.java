@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsCmd $Revision: 1.1 $  $Date: 2003-06-04 16:26:13 $
+ * Title: SaveAsCmd $Revision: 1.2 $  $Date: 2003-10-28 14:19:06 $
  * Description: SaveAsCmd is a class used to save a
  *  			document
  *
@@ -15,13 +15,13 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
- * @author  $Author: rgr $
+ * @version $Revision: 1.2 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dTimeTable;
 
-import javax.swing.JFrame;
+
 import dInterface.Command;
 import dInterface.DApplication;
 

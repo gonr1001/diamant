@@ -9,7 +9,7 @@ package dInternal.dData;
  * @version 1.0
  */
 import dInternal.dUtil.DXObject;
-import dInterface.dUtil.DXTools;
+
 
 public class Type extends DXObject{
 

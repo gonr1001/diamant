@@ -11,7 +11,7 @@ package dInterface.dTimeTable;
 
 
 import java.awt.event.ActionEvent;
-import javax.swing.JDialog;
+
 import dInterface.DApplication;
 import dInterface.DToolBar;
 import dInterface.dUtil.DXTools;
@@ -20,13 +20,10 @@ import javax.swing.JFrame;
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dAffectation.EditActivityDlg;
 
-import dInternal.dConditionsTest.TestConditions;
-import dInternal.dConditionsTest.SetOfEvents;
-import dInternal.dConditionsTest.EventAttach;
-import dInternal.dTimeTable.*;
+
 import dInternal.DModel;
 import dInternal.dData.Resource;
-import dInternal.dUtil.DXToolsMethods;
+
 
 import dResources.DConst;
 

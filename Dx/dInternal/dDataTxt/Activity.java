@@ -10,7 +10,6 @@ package dInternal.dData;
  */
 import dInternal.dUtil.DXObject;
 import java.util.Vector;
-import dResources.DConst;
 
 
 public class Activity extends DXObject{

@@ -9,9 +9,9 @@ package dInternal.dConditionsTest;
  * @version 1.0
  */
 import dInternal.DModel;
-import dInternal.dData.SetOfInstructors;
+
 import dInternal.dData.InstructorAttach;
-import dInternal.dData.SetOfResources;
+
 import dInternal.dData.Resource;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;

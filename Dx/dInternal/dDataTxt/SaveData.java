@@ -10,14 +10,10 @@ package dInternal.dData;
  */
 
 
-import java.util.Vector;
-import java.util.StringTokenizer;
-import java.io.File;
 
-import com.iLib.gDialog.FatalProblemDlg;
 import com.iLib.gIO.FilterFile;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
+
 
 public class SaveData {
 

@@ -13,9 +13,7 @@ package dInterface.dData;
   import dInterface.Command;
 
   import javax.swing.JFrame;
-  import java.util.ResourceBundle;
 
-  import dAux.DoNothingDlg;
   import dInterface.DApplication;
   /**
    *

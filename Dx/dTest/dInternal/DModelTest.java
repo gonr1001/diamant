@@ -11,7 +11,7 @@ package dTest.dInternal;
 
 import junit.framework.*;
 
-import dInternal.DModel;
+
 
 
 public class DModelTest extends TestCase{

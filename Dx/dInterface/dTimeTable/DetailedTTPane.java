@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedTTPane $Revision: 1.7 $  $Date: 2003-10-22 19:28:35 $
+ * Title: DetailedTTPane $Revision: 1.8 $  $Date: 2003-10-28 14:19:06 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -33,23 +33,13 @@ package dInterface.dTimeTable;
 import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import java.awt.Dimension;
-import java.util.*;
-import java.awt.*;
-import javax.swing.BorderFactory;
-import javax.swing.JViewport;
+
 import javax.swing.JSplitPane;
-import javax.swing.border.*;
-import java.awt.event.*;
-import javax.swing.BoxLayout;
+
 
 import dInterface.DToolBar;
 
-import dInternal.DModel;
-import dInternal.dData.Resource;
+
 import dInternal.dTimeTable.*;
 
 

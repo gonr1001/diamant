@@ -11,44 +11,27 @@ package dInterface.dTimeTable;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.event.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.DefaultDesktopManager;
-import javax.swing.JDesktopPane;
 
-import dInterface.dUtil.DXTools;
+
+
 import dInterface.DToolBar;
-import dInterface.DApplication;
-import dInterface.DMenuBar;
-import dResources.DConst;
-//import dInternal.dTimeTable.TTStructure;
-//import dInternal.dTimeTable.Period;
+
+
 import dInternal.dUtil.DXToolsMethods;
 
 
-import java.awt.event.ActionEvent;
 
-import dInterface.DApplication;
-import dInterface.DToolBar;
-
-import dInterface.dAffectation.EventsDlgInterface;
-import dInternal.dConditionsTest.TestConditions;
-import dInternal.dConditionsTest.SetOfEvents;
 import dInternal.dConditionsTest.EventAttach;
 import dInternal.dTimeTable.*;
 import dInternal.DModel;
 import dInternal.dData.Resource;
-import dInternal.dUtil.DXToolsMethods;
 
-import dResources.DConst;
 
 
 public class ManualImprovementResultFrame extends JDialog implements ActionListener{

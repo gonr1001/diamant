@@ -11,7 +11,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
-import com.iLib.gDialog.FatalProblemDlg;
+
 import dInternal.dUtil.DXToolsMethods;
 import dResources.DConst;
 

@@ -11,7 +11,6 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.awt.Component;
-import com.iLib.gDialog.FatalProblemDlg;
 import dResources.DConst;
 
 public class SetOfRooms extends SetOfResources{

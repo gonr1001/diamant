@@ -1,6 +1,6 @@
 package dTest.dInterface;
 
-import java.io.File;
+
 
 import junit.extensions.abbot.*;
 import junit.framework.Test;

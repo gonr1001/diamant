@@ -14,12 +14,11 @@ import dInterface.dUtil.DXTools;
 import dResources.DConst;
 import dInternal.dData.Section;
 import dInternal.dData.Resource;
-import dInternal.dData.Unity;
-import dInternal.dData.Assignment;
+
 import java.util.Vector;
 import java.awt.event.*;
 import java.awt.Dialog;
-import javax.swing.JFrame;
+
 
 public class UnityModifDlg extends SetOfElementsInterface{
 
