@@ -106,6 +106,7 @@ public class ReportDlg extends JDialog implements ActionListener{
     int[] otherFieldsKeys = new int[selectedResources.size()-1];
     int[] fieldLengths = new int[selectedResources.size()];
     String[] fieldsNames = new String[selectedResources.size()];
+    String[][][] subFields = new String[selectedResources.size()][][];
     Resource res;
     for (int i = 0; i < selectedResources.size(); i++){
       res = selectedResources.getResourceAt(i);
@@ -115,6 +116,7 @@ public class ReportDlg extends JDialog implements ActionListener{
         otherFieldsKeys[i-1] = (int)((DXValue)res.getAttach()).getIntValue();;
       fieldsNames[i] = selectedResources.getResourceAt(i).getID();
       fieldLengths[i] = Integer.parseInt(((DXValue)selectedResources.getResourceAt(i).getAttach()).getStringValue());
+      subFields[i] = (String[][])(((DXValue)selectedResources.getResourceAt(i).getAttach()).getObjectValue());
       ((DXValue)res.getAttach()).setBooleanValue(true);
       _resources[_tabbedPane.getSelectedIndex()] = selectedResources;
     }//end for
@@ -123,7 +125,8 @@ public class ReportDlg extends JDialog implements ActionListener{
     JTextArea jta = (JTextArea)scrollPanel.getViewport().getComponent(0);
     jta.setFont(DConst.JLISTS_FONT);
     jta.setText(reportData);
-    buildReport(fieldsNames, fieldLengths, reportData);
+    //buildReport(fieldsNames, fieldLengths, reportData);
+    buildReport(fieldsNames, fieldLengths, subFields, reportData);
   }//end method
 
   /**
@@ -132,7 +135,7 @@ public class ReportDlg extends JDialog implements ActionListener{
    * @param fieldsLengths The spaces allowed for the fields
    * @param reportData The data report
    */
-  private void buildReport(String[] fieldsNames, int[] fieldsLengths, String reportData){
+  private void buildReport(String[] fieldsNames, int[] fieldsLengths, String[][][] subFields, String reportData){
     StringTokenizer strLines = new StringTokenizer(reportData, DConst.CR_LF);
     StringTokenizer strFields;
     String fields;
@@ -165,6 +168,16 @@ public class ReportDlg extends JDialog implements ActionListener{
       resultLine = "";
       for(int j = 0; j < strFieldsLength; j++){
         currentField = strFields.nextToken();
+        if(subFields[j] != null){
+          System.out.println("subFields.length " + subFields.length);
+          System.out.println("subFields.length "+subFields[j].length);
+          for(int k = 0; k < subFields[j].length; k++){
+            if (currentField.equals(subFields[j][k][0])){
+              currentField = subFields[j][k][1];
+              break;
+            }//end internal if
+          }//end internal for
+        }//end external if
         currentField = currentField + blanks;
         currentField = currentField.substring(0, fieldsLengths[j]);
         currentField = currentField + "|  ";
