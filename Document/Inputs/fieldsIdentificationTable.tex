@@ -1,11 +1,11 @@
-\chapter{Description des champs pour \diamant{} 1.5}
+\chapter{Description des champs pour \diamant{} 1.5}\label{fields}
 
 \begin{table}[h]
     \begin{tabular}{*{5}{|c}|} \hline
-           \itshape Champ & \itshape Élément Diamant & \itshape  Description& \itshape Type & \itshape Genre\\ \hline
+           \itshape Champ & \itshape Élément Diamant & \itshape  Description& \itshape Type \footnotemark[1] & \itshape Genre \footnotemark[2]\\ \hline
           Nom du local & Liste de locaux & - & A & \\ \cline{1-4}
           & Liste de locaux & - & A & \\ \cline{2-4}
-          & Conflit de capacité de locaux & Recalculer les conflits & C & \\ \cline{2-4}
+          & Conflit de capa de locaux & Recalculer les conflits & C & \\ \cline{2-4}
           \raisebox{3.0ex}[1pt]{Capacité} & Période & Rafraîchissement de la période & C & \\ \cline{1-4}
           & Liste de locaux & - & A & \\ \cline{2-4}
           &  & Vérifier si les caractéristiques & & \\
@@ -13,18 +13,18 @@
           \raisebox{4.5ex}[1pt]{Liste de} & \raisebox{3.0ex}[1pt]{Warning de locaux} & à la nature du cours & \raisebox{3.0ex}[1pt]{C} &  \\ \cline{2-4}
           \raisebox{4.5ex}[1pt]{caractéristiques} & Période & Rafraîchissement de la période & C & \raisebox{12.0ex}[1pt]{D} \\ \hline
     \end{tabular}
-    \caption{\emph{Fichier de locaux}}
+    \caption{\emph{Fichier de locaux} }
     \label{tableLocaux}
 \end{table}
-
+\footnotetext[1]{A: champs affecté - C: champs calculé} \footnotetext[2]{S: champs statique (immuable) - D: champs dynamique (modifiable)}
 
 \begin{table}[h]
     \begin{tabular}{*{5}{|c}|} \hline
-          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type & \itshape Genre\\ \hline
+          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type \footnotemark[1] & \itshape Genre \footnotemark[2]\\ \hline
           Instructeur ID(nom) & Liste de professeurs & - & A & S \\ \hline
           & Liste de disp. de profs. & - & A & \\ \cline{2-4}
           & Conflit de disp. de profs. & Recalculer les conflits & C & \\ \cline{2-4}
-          \raisebox{3.0ex}[1pt]{Disponibilité} & Période & Rafraîchissement de la période & C & \raisebox{3.0ex}[1pt]{D} \\\hline
+          \raisebox{3.0ex}[1pt]{Disponibilité} & Période & Rafraîchissement de période & C & \raisebox{3.0ex}[1pt]{D} \\\hline
     \end{tabular}
     \caption{\emph{Fichier de Enseignants}}
     \label{tableEnseignants}
@@ -32,7 +32,7 @@
 
 \begin{table}[h]
     \begin{tabular}{*{5}{|c}|} \hline
-          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type & \itshape Genre\\ \hline
+          \itshape Champ & \itshape Élément Diamant & \itshape Description & \itshape Type \footnotemark[1] & \itshape Genre \footnotemark[2]\\ \hline
           Matricule & & - & & S \\ \cline{1-1} \cline{3-3} \cline{5-5}
           Nom et prénom & & - & & S \\ \cline{1-1} \cline{3-3} \cline{5-5}
           Sexe & & - & & D \\ \cline{1-1} \cline{3-3} \cline{5-5}
