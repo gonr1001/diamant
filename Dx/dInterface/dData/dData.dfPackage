@@ -56,6 +56,31 @@ class reference38 {
 @__modelType reference 
 */
 class reference15 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ImportReport:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ReportsDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.FullReport:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ViewReport:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#dInterface.dData.ConflictReport:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

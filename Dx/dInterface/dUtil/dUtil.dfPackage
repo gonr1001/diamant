@@ -66,6 +66,16 @@ class reference5 {
 @__modelType reference 
 */
 class reference8 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.ConflictDlg:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#dInterface.dUtil.ConflictCmd:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
 }}/**
 @__tags
 @shapeType ClassDiagram 

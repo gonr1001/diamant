@@ -52,16 +52,6 @@ class reference30 {
 */
 class reference31 {
 }/**
-@__ref <oiref:java#Class#dInterface.dAffectation.GroupCmd:oiref><oihard>
-@__modelType reference 
-*/
-class reference32 {
-}/**
-@__ref <oiref:java#Class#dInterface.dAffectation.GroupDlg:oiref><oihard>
-@__modelType reference 
-*/
-class reference33 {
-}/**
 @__ref <oiref:java#Class#dInterface.dAffectation.SectionCmd:oiref><oihard>
 @__modelType reference 
 */
