@@ -1,6 +1,6 @@
 /**
 *
-* Title: ManualImprovementDetailed $Revision: 1.16 $  $Date: 2004-12-16 19:20:52 $
+* Title: ManualImprovementDetailed $Revision: 1.17 $  $Date: 2005-02-01 21:27:15 $
 * Description: ManualImprovementDetailed is a class used to
 *              display the so called ManualImprovement which
 *              gives the conflicts between an event and the others events
@@ -17,8 +17,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.16 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.17 $
+* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -103,7 +103,7 @@ public class ManualImprovementDetailed extends JDialog {
     
     this.getContentPane().add(_ttPane.getPane());
 
-    this.show();
+    this.setVisible(true);
   }
 
    /**

@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.5 $  $Date: 2004-12-01 17:16:39 $
+ * Title: PLAFCmd $Revision: 1.6 $  $Date: 2005-02-01 21:27:15 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.6 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -32,7 +32,7 @@ public class InitialAssignCmd implements Command {
   } // end InitialAssignCmd
   //------------------------------
     public void execute(DApplication dApplic) {
-        dApplic.getDModel().sendEvent(dApplic.getJFrame());
+        dApplic.getDModel().changeInDModel(dApplic.getJFrame());
         new InformationDlg(dApplic.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
         dApplic.getMenuBar().postInitialAssign();
     } // end execute

@@ -1,9 +1,24 @@
-/*
- * Created on 26 nov. 2004
+/**
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * Title: SetOfActivities $Revision: 1.5 $  $Date: 2005-02-01 21:27:16 $
+ * Description: SetOfActivities is a class used to
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * @version $Revision: 1.5 $
+ * @author  $Author: syay1801 $
+ * @since JDK1.3
  */
+
 package dInternal.dData.dActivities;
 
 
@@ -21,58 +36,58 @@ import dInternal.dUtil.DXToolsMethods;
 //import d
 
 public class SetOfActivities extends DSetOfResources{
-
-  private Vector _SOAListeners = new Vector(1);
-  /**activities in text format*/
-  //private byte[] _dataloaded;
-  private String _error="";
-  private int _line=1;
-  private boolean _open;
-
-  //private String NULLINFORMATION = "xxxxxx";
-  private int _NUMBEROFCYCLE = 1;
-  final static public int _COURSENAMELENGTH=6;
-  //private int _ACTIVITYLENGTH=11;
-  /**
-   * Constructor
-   * */
-  public SetOfActivities(boolean open) {
-    super();
-    //_dataloaded = dataloaded;
-    _open= open;
-  }
-
-  /**
-   *
-   * @param dataloaded
-   */
-  /*public void setDataToLoad(byte[]  dataloaded, boolean open){
-    _dataloaded = dataloaded;
-    _open= open;
-  }*/
-
-
-  /**
-   * analyse activities data by a finished states machine
-   * @param integer the beginPosition (start position of the finished states machine)
-   * @return boolean "true" if the analysis proceeded successfully and false otherwise
-   * */
-  public boolean analyseTokens(DataExchange de, int beginPosition){
-  	de.toString();
-  	beginPosition+=0;
-  	 return false;
-  }
-  
-  
-
-
+	
+	private Vector _SOAListeners = new Vector(1);
+	/**activities in text format*/
+	
+	private String _error="";
+	private int _line=1;
+	private boolean _open;
+	
+	
+	private int _NUMBEROFCYCLE = 1;
+	final static public int _COURSENAMELENGTH=6;
+	
+	/**
+	 * Constructor
+	 * */
+	public SetOfActivities(boolean open) {
+		super();
+		//_dataloaded = dataloaded;
+		_open= open;
+	}
+	
+	/**
+	 *
+	 * @param dataloaded
+	 */
+	/*public void setDataToLoad(byte[]  dataloaded, boolean open){
+	 _dataloaded = dataloaded;
+	 _open= open;
+	 }*/
+	
+	
+	/**
+	 * analyse activities data by a finished states machine
+	 * @param integer the beginPosition (start position of the finished states machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
+	 * */
+	public boolean analyseTokens(DataExchange de, int beginPosition){
+		de.toString();
+		beginPosition+=0;
+		return false;
+	}
+	
+	
+	
+	
 	public void buildSetOfResources(DataExchange de, int beginPosition) {
-	    if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-	    	//buildSetOfResources1_6(de.getContents().getBytes(), beginPosition);
-	    } else {
-	    	buildSetOfResources1_5(de.getContents().getBytes(), beginPosition);
-	    }
-	      
+		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+			//buildSetOfResources1_6(de.getContents().getBytes(), beginPosition);
+		} else {
+			buildSetOfResources1_5(de.getContents().getBytes(), beginPosition);
+		}
+		
 	} //end analyseTokens
   
   /**

@@ -1,15 +1,25 @@
+/**
+*
+* Title: PersonalizeMixingAlgorithmDlg $Revision: 1.5 $  $Date: 2005-02-01 21:27:15 $
+* Description: PersonalizeMixingAlgorithmDlg is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.5 $
+* @author  $Author: syay1801 $
+* @since JDK1.3
+*/
 package dInterface.dAlgorithms;
 
-/**
- * <p>Title: Diamant 1.5</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
- */
-
-//public class PersonalizeMixingAlgorithmDlg {
 
 
 import javax.swing.JOptionPane;
@@ -21,7 +31,7 @@ import javax.swing.JOptionPane;
  */
 public class PersonalizeMixingAlgorithmDlg  {
 
- private String _initialValue="1";
+ private String _initialValue;
 
  /**
   *

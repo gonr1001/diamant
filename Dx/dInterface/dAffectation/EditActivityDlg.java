@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.54 $  $Date: 2004-12-16 19:20:46 $
+ * Title: EditActivityDlg $Revision: 1.55 $  $Date: 2005-02-01 21:27:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.54 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.55 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -220,7 +220,7 @@ public class EditActivityDlg
           _applyPanel.setFirstDisable();
       } // end for
       if(apply){
-      	_dApplic.getDModel().getTTStructure().sendEvent();
+      	_dApplic.getDModel().changeInDModelByEditActivityDlg(this);
         if(_evDlgInt!=null)
          _evDlgInt.initializePanel();
         //dispose();
@@ -752,7 +752,7 @@ public class EditActivityDlg
     String room = getSelectedRoom(tpane);
 
     boolean assignBut = isAssignedButtonSelected(tpane);
-//= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(0)).isSelected();
+
     boolean fixedBut = isFixedButtonSelected(tpane); //= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
     int[] daytime= {Integer.parseInt(DXToolsMethods.getToken(day,".",0)),Integer.parseInt(DXToolsMethods.getToken(hour,":",0)),
       Integer.parseInt(DXToolsMethods.getToken(hour,":",1))};

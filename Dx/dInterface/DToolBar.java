@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.53 $  $Date: 2004-12-16 19:20:45 $
+ * Title: DToolBar $Revision: 1.54 $  $Date: 2005-02-01 21:27:15 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -18,13 +18,15 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: gonzrubi $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -43,8 +45,7 @@ import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.TTStructureEvent;
-import dInternal.dTimeTable.TTStructureListener;
+
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.InformationDlg;
 
@@ -56,7 +57,7 @@ import eLib.exit.dialog.InformationDlg;
  *  One Toolbar is used to make changes in day and the other on periods
  *
  */
-public class DToolBar extends JToolBar  implements TTStructureListener{// ActionListener
+public class DToolBar extends JToolBar  implements Observer { // ActionListener
   private DApplication _dApplic;
   private static final String _toolBarNames [] = {DConst.TB_DAYS, DConst.TB_PER};
   private JComboBox _toolBarSelector;
@@ -165,7 +166,8 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
           else
             new InformationDlg(_dApplic.getJFrame(),"Valeur eronnée");
           //Treat event
-          _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
+          //_dApplic.getDModel().getTTStructure().sendEvent();
+          _dApplic.getDModel().changeInDModelByToolBar(this);
           setToolBarOne();
           setToolBarTwo();
         }
@@ -238,7 +240,6 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
       }//end actionPerformed
     });//end addActionListener
 
-
     _sameLine.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
       	e.toString();
@@ -255,7 +256,6 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
         _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().sendEvent();
       }//end actionPerformed
     });//end addActionListener
-
 
     _sameColumn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -456,11 +456,20 @@ public class DToolBar extends JToolBar  implements TTStructureListener{// Action
 
  // }
 
-  public void changeInTTStructure(TTStructureEvent  e) {
+/*  public void changeInTTStructure(TTStructureEvent  e) {
   	e.toString();
      //System.out.println("Toolbar change In TTSturtutre and Update TTpanel");
      //_dApplic.getDMediator().getCurrentDoc().getTTPanel().updateTTPanel(_tts);
     }// end actionPerformed
+*/
+
+/* (non-Javadoc)
+ * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+ */
+public void update(Observable o, Object arg) {
+	_dApplic.getDMediator().getCurrentDoc().getTTPane().updateTTPane(_tts);//.updateTTPanel(_tts);
+	
+}
 
 
 } // end classe

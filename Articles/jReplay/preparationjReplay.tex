@@ -45,20 +45,26 @@ Quelques particularités de son utilisation :
 
 \begin{description}
  \item [Quelle question avez-vous répondu?]
- Comment concevoir et réaliser un outil permettant \ldots
+ Comment concevoir et réaliser un outil permettant de reproduire
+ automatiquement les actions de l'utilisateur?
 
- Comment utiliser l'outil.
+ Comment l'outil pourra prendre l'information du fichier pour ré-exécuter?
 
 \item [Pourquoi est importante pour le lecteur cette réponse?]
 
 L'outil peut être utilisé dans les applications créés par le
-lecteur.
+lecteur. Il pourra reproduire l'exécution de son logiciel pour
+trouver les erreurs ou pour économiser du temps au moment de faire
+des tests manuels. Il peut aussi l'utiliser en l'implementation
+des tests automatiques
 
 \item [Quelle est l'extension de cette réponse?]
 
-Comment concevoir et réaliser un outil permettant \ldots
+Comment concevoir et réaliser un outil permettant la ré-exécution
+d'un logiciel en utilisant un fichier du texte avec le journal de
+l'ex/cution.
 
- Comment utiliser l'outil.
+Comment utiliser l'outil.
 
 \end{description}
 
@@ -68,18 +74,44 @@ Comment concevoir et réaliser un outil permettant \ldots
 
 \item [Quelle est votre contribution à la connaissance?]
 
-L'outil.
-
+L'outil qui permet la ré-exécution du journal.
 
 \item [Quels sont les travaux antérieurs?]
 
-débogage telles01, \ref{mcconnell04}
+%débogage telles01, \ref{mcconnell04}
 
 jUnit
 
-MVC
+\emph{MVC}
 
-Log4j
+Le modèle MVC sépare la mécanique de traitement d'information ,
+l'affichage et la mise à jour des données entre les trois
+composants pouvant être testés individuellement. Cette séparation
+rend plus facile le suivi de l'information a travers le logiciel.
+L'exécution du logiciel peut être tracée plus clairement, avec
+plus de simplicité. Le modèle peut être tracé est ré-exécute
+indépendamment de l'interface.
+
+
+\emph{Log4j}
+
+Log4j est un API de journalisation qui facilité la mise au point
+du code. Il réduit la tâche d'ajouter et d'enlever des
+instructions pour suivre l'exécution, il permet d'activer ou de
+désactiver certains messages en fonction des besoins. Il met trois
+sortes de composants à disposition du programmeur : les loggers,
+les appenders et les layouts. Les premiers permettent d'écrire les
+messages, les deuxièmes servent à sélectionner la destination des
+messages et les derniers à mettre en forme les messages.
+
+La plus grande difficulté réside dans l'insertion des instructions
+de journalisation. Il faut placer les instructions avec soin pour
+que les renseignements soient suffisamment précis sans verser dans
+le redondant ou l'inutile.  L'autre difficulté concerne tout
+simplement la dégradation possible des performances. Quelques
+entrées mal placées, par exemple dans un algorithme sensible (tri,
+recherche.), pourront entraîner des problèmes.
+
 
 Jacaretto
 
@@ -205,6 +237,9 @@ d'explique vos démarches.
 \item Travail connexe.
 \end{enumerate}
 
+\item Autres outils
+
+\begin{enumerate}
 \item Jacareto
 
 \item Abbot
@@ -216,6 +251,7 @@ d'explique vos démarches.
 \item Jemmy module
 
 \item JFCUnit
+\end{enumerate}
 
 \item Conclusions
 \end{enumerate}

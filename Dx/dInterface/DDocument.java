@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.129 $  $Date: 2005-01-21 21:56:51 $
+ * Title: DDocument $Revision: 1.130 $  $Date: 2005-02-01 21:27:15 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.129 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.130 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -25,9 +25,10 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.io.File;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
@@ -40,27 +41,19 @@ import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
 import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
-import dInternal.DModelEvent;
-import dInternal.DModelListener;
 
-import dInternal.dData.dActivities.SetOfActivitiesEvent;
-import dInternal.dData.dActivities.SetOfActivitiesListener;
+
 import dInternal.dData.dInstructors.SetOfInstructorsEvent;
-import dInternal.dData.dInstructors.SetOfInstructorsListener;
+
 
 import dInternal.dData.dRooms.SetOfRoomsEvent;
-import dInternal.dData.dRooms.SetOfRoomsListener;
-import dInternal.DSetOfStatesEvent;
-import dInternal.DSetOfStatesListener;
 
-import dInternal.dData.dStudents.SetOfStudentsEvent;
-import dInternal.dData.dStudents.SetOfStudentsListener;
 
-import dInternal.dOptimization.SetOfEventsEvent;
-import dInternal.dOptimization.SetOfEventsListener;
+
+
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.TTStructureEvent;
-import dInternal.dTimeTable.TTStructureListener;
+
+
 import eLib.exit.dialog.FatalProblemDlg;
 
 /**
@@ -71,10 +64,10 @@ import eLib.exit.dialog.FatalProblemDlg;
  *
  */
 
-public class DDocument  extends InternalFrameAdapter implements
-ActionListener, DModelListener, TTStructureListener, DSetOfStatesListener,
-SetOfActivitiesListener, SetOfStudentsListener, SetOfInstructorsListener,
-SetOfRoomsListener, SetOfEventsListener{
+public class DDocument  extends InternalFrameAdapter implements Observer
+/*ActionListener, DModelListener, TTStructureListener, DSetOfStatesListener,*/
+/*SetOfActivitiesListener, SetOfStudentsListener  /*,SetOfInstructorsListener,
+SetOfRoomsListener, SetOfEventsListener*/{
 	
 	private DMediator _dMediator;
 	private JInternalFrame _jif;
@@ -88,10 +81,10 @@ SetOfRoomsListener, SetOfEventsListener{
 	} //end DDocument
 	//-----------------------------
 	
-
+	
 	//for a new timetable and a open timetable
 	//for new timetable Structure and open timetable Structure from a file
-
+	
 	/**
 	 * 
 	 * @param dMediator (pattern Mediator)
@@ -106,7 +99,7 @@ SetOfRoomsListener, SetOfEventsListener{
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm = new DModel(this, fileName, type);
 		if(_dm.getError().length()==0){
-			_dm.getTTStructure().addTTStructureListener(this);
+			//_dm.getTTStructure().addTTStructureListener(this);
 			_documentName = modifiyDocumentName(ttName);
 			buidDocument(true, true);
 			_ttPane.updateTTPane(_dm.getTTStructure());
@@ -201,50 +194,41 @@ SetOfRoomsListener, SetOfEventsListener{
 		return str;
 	}
 	//-------------------------------------------
-	public void actionPerformed(ActionEvent  e) {
-		if (e.getSource() instanceof CommandHolder) {
-			((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
-		}
-		else {
-			System.out.println("I do not know what to do, please help me (Action Performed)");
-		}// end if ... else
+	/*	public void actionPerformed(ActionEvent  e) {
+	 if (e.getSource() instanceof CommandHolder) {
+	 ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
+	 }
+	 else {
+	 System.out.println("DDocument:I do not know what to do, please help me (Action Performed)");
+	 }// end if ... else
+	 }// end actionPerformed*/
+	//-------------------------------------------
+	
+	public void update(Observable dm, Object component) {
+		setCursor(Cursor.WAIT_CURSOR, (Component)component);
+		_ttPane.updateTTPane(((DModel)dm).getTTStructure());
+		_stateBar.upDateDStateBar(((DModel)dm).getSetOfStates());
+		
+		setCursor(Cursor.DEFAULT_CURSOR, (Component)component);
 	}// end actionPerformed
 	//-------------------------------------------
-	public void changeInDModel(DModelEvent  e, Component component) {
-		e.toString();
-		setCursor(Cursor.WAIT_CURSOR, component);
-		_dm.setModified();
-		
-		if (_dm.getTypeOfSchedule() == 2) {
-			_dm.prepareExamsData();
-		}
-		//System.out.println("Type of Schedule: "+_dm.getTypeOfSchedule());
-		_dm.buildSetOfEvents();
-		_dm.getConditionsTest().initAllConditions();
-		_dm.setStateBarComponent();
-		_dm.getSetOfActivities().sortSetOfResourcesByID();
-		
-		_ttPane.updateTTPane(_dm.getTTStructure());
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-		
-		setCursor(Cursor.DEFAULT_CURSOR, component);
-	}// end actionPerformed
-	//-------------------------------------------
-	/*
-	 */
-	public void changeInStateBar (DSetOfStatesEvent e){
+	
+
+
+	/*public void changeInStateBar (DSetOfStatesEvent e){
 		e.toString();
 		_dm.setStateBarComponent();
 		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-	}
+	}*/
+	
 	//-------------------------------------------
 	/**
 	 *
 	 * @param e
 	 */
-	public void changeInTTStructure(TTStructureEvent  e) {
-		e.toString();
-		System.out.println("I was in ttstructure listener");
+/*	public void changeInTTStructure(TTStructureEvent  e) {
+		//e.toString();
+		//System.out.println("I was in changeInTTStructure");
 		setCursor(Cursor.WAIT_CURSOR);
 		_dm.setModified();
 		_ttPane.updateTTPane(_dm.getTTStructure());
@@ -253,64 +237,16 @@ SetOfRoomsListener, SetOfEventsListener{
 		setCursor(Cursor.DEFAULT_CURSOR);
 	} // end changeInTTStructure
 	//-------------------------------------------
-	/**
-	 *
-	 * @param e
-	 * @param component
-	 */
-	public void changeInSetOfActivities(SetOfActivitiesEvent  e, Component component) {
-		e.toString();
-		setCursor(Cursor.WAIT_CURSOR, component);
-		
-		_dm.setModified();
-		_dm.getConditionsTest().setMatrixBuilded(false,true);
-		_dm.buildSetOfEvents();
-		_dm.getConditionsTest().initAllConditions();
-		_dm.setStateBarComponent();
-		_ttPane.updateTTPane(_dm.getTTStructure());
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-		_dm.getSetOfActivities().sortSetOfResourcesByID();
-		setCursor(Cursor.DEFAULT_CURSOR, component);
-	}// end ac
+*/
 	
 	/**
 	 *
 	 * @param e
 	 * @param component
 	 */
-	public void changeInSetOfStudents(SetOfStudentsEvent  e, Component component) {
-		e.toString();
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		_dm.setModified();
-		// TODO _dm.getSetOfActivities().buildStudentRegisteredList(_dm.getSetOfStudents());
-		_dm.getConditionsTest().initAllConditions();
-		_dm.setStateBarComponent();
-		_ttPane.updateTTPane(_dm.getTTStructure());
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-		_dm.getSetOfActivities().sortSetOfResourcesByID();
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	}// end ac
+
 	
-	/**
-	 *
-	 * @param e
-	 * @param component
-	 */
-	public void changeInSetOfEvents(SetOfEventsEvent  e, Component component) {
-		e.toString();
-		setCursor(Cursor.WAIT_CURSOR, component);
-		
-		_dm.setModified();
-		_dm.buildSetOfEvents();
-		//_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-		System.out.println("SetOfEvents Event started");//debug
-		_dm.getConditionsTest().initAllConditions();
-		_dm.setStateBarComponent();
-		_ttPane.updateTTPane(_dm.getTTStructure());
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-		
-		setCursor(Cursor.DEFAULT_CURSOR, component);
-	}// end ac
+
 	
 	/**
 	 *
@@ -319,6 +255,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 */
 	public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
 		e.toString();
+		System.out.println("I was in changeInSetOfInstructors");
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm.setModified();
 		_dm.getSetOfStates().sendEvent();
@@ -333,6 +270,7 @@ SetOfRoomsListener, SetOfEventsListener{
 	 */
 	public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
 		e.toString();
+		System.out.println("I was in changeInSetOfRooms");
 		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		_dm.setModified();
 		_dm.getSetOfStates().sendEvent();
@@ -370,7 +308,7 @@ SetOfRoomsListener, SetOfEventsListener{
 		/* MIN_WIDTH is needed to ajdust the minimum
 		 * width of the _jif */
 		final int MAX_WIDTH = 2048;
-		//_documentName = title;
+		
 		_jif = new JInternalFrame(_documentName, true, true, true, true);
 		_jif.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		_jif.addInternalFrameListener( new InternalFrameAdapter() {
@@ -380,24 +318,23 @@ SetOfRoomsListener, SetOfEventsListener{
 			}
 		} );
 		
-		_dm.addDModelListener(this);
+		_dm.addObserver(this);
 		_stateBar = new DStateBar(_dm.getSetOfStates());
-		_dm.getSetOfStates().sendEvent();
+		_dm.setStateBarComponent();
+		_stateBar.upDateDStateBar(_dm.getSetOfStates());
+		
 		_jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 		
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
-		//System.out.println("H " +_jif.getSize().height + "  W " + _jif.getSize().width);
-		//_jif.getSize();
-		
+				
 		if (simple) {
 			_ttPane = new SimpleTTPane(_dm.getTTStructure(),
 					_dMediator.getDApplication().getToolBar());
 		} else {
 			_ttPane = new DetailedTTPane(_dm.getTTStructure(),
 					_dMediator.getDApplication().getToolBar(),
-					vertical); //,
-			// _dMediator.getDApplication().getJFrame().getSize());
+					vertical); 
 		}
 		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();

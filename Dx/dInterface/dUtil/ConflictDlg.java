@@ -1,7 +1,7 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.6 $  $Date: 2004-06-21 15:38:17 $
- * Description: AboutDlg is a class representing the Dialog About
+ * Title: ConflictDlg $Revision: 1.7 $  $Date: 2005-02-01 21:27:16 $
+ * Description: ConflictDlg is a class representing the Dialog ConflictDlg
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface.dUtil;

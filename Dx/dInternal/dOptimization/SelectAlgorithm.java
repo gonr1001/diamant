@@ -29,7 +29,7 @@ public class SelectAlgorithm {
     _dm= dm;
     _algorithmToRun= new Vector(1);
     _currentAlgoToExecute= contexte;
-    System.out.println("Selected Context:"+contexte);
+    //System.out.println("Selected Context:"+contexte);
     buildAlgorithmToRun();
   }
 
@@ -38,7 +38,7 @@ public class SelectAlgorithm {
     _algorithmToRun= new Vector(1);
     _acceptableVariation= variation;
     _currentAlgoToExecute=4;
-    System.out.println("Selected variation:"+variation);
+   // System.out.println("Selected variation:"+variation);
     buildAlgorithmToRun();
   }
 
@@ -74,22 +74,5 @@ public class SelectAlgorithm {
   }
 
 
-
-  /**
-   *
-   * @param avoidPriority
-   */
-  /*public void setAvoidPriorityTable(int[] avoidPriority){
-    _avoidPriority= avoidPriority;
-  }*/
-
-  /**
-   *
-   * @param int[] acceptableConflictsTable range 0= student, range 1= instructor
-   * range 2= room
-   */
- /* public void setacceptableConflictsTable(int[] acceptableConflictsTable){
-    _acceptableConflictsTable= acceptableConflictsTable;
-  }*/
 
 }// end class

@@ -1,13 +1,26 @@
 package dInterface.dTimeTable;
 
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author rgr, ysyam, ajz
- * @version 1.0
- */
+*
+* Title: OpenTTSDlg $Revision: 1.14 $  $Date: 2005-02-01 21:27:16 $
+* Description: OpenTTSDlg is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.14 $
+* @author  $Author: syay1801 $
+* @since JDK1.3
+*/
+
 import java.awt.Dimension;
 
 import javax.swing.JDialog;

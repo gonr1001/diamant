@@ -1,5 +1,5 @@
 /**
- * Title: CmdMenu $Revision: 1.6 $  $Date: 2004-06-21 15:38:16 $
+ * Title: CmdMenu $Revision: 1.7 $  $Date: 2005-02-01 21:27:15 $
  * Description: CmdMenu is a class suggested by the
  *              command pattern. All menu items will be associated
  *              with a command.
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -43,11 +43,6 @@ public class CmdMenu extends JMenuItem implements CommandHolder {
   public CmdMenu(String str) {
     super(str);
   }
-
-
-/*  public CmdMenu(String str, JFrame jframe) {
-    super(str);
-  }*/
 
   //**-----------------------
   public void setCommand(Command cmd) {

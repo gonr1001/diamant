@@ -149,7 +149,7 @@ public class SetOfEvents extends DSetOfResources{
 
   /**
    * updateActivities when an event or more than an event is changed, this change must be
-   *                  reflected in the SetOfActivities, which is the persistance structure.
+   *                  reflected in the SetOfActivities, which is the persistant structure.
    * 				  
    * @param soa the SetOfActivities
    * @param eventsToUpdate <p> A vector containing all changed events

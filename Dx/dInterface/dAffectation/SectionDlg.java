@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.36 $  $Date: 2004-12-16 19:20:46 $
+ * Title: SectionDlg $Revision: 1.37 $  $Date: 2005-02-01 21:27:15 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students in groupes
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.37 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
@@ -87,8 +87,8 @@ public class SectionDlg extends JDialog implements ActionListener{
     _currentAssignedGroup = -1;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
-    _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
-    _students = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents();
+    _activities = _dApplic.getDModel().getSetOfActivities();
+    _students = _dApplic.getDModel().getSetOfStudents();
     _students.sortSetOfResourcesByID();
     if (_activities != null && _students != null){
       initialize();
@@ -350,8 +350,9 @@ public class SectionDlg extends JDialog implements ActionListener{
       _applyPanel.setFirstDisable();
       //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       //_conditionTest.setMatrixBuilded(false,true);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
+      _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
+      _dApplic.getDModel().changeInDModelByStudentsDlg(this);
+      _dApplic.getDModel().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
 

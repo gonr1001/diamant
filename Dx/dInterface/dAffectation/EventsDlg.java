@@ -85,7 +85,7 @@ public class EventsDlg extends EventsDlgInterface{
     //if Button APPLY is pressed
     if (command.equals(DConst.BUT_APPLY)){
       setUnities();
-      _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().sendEvent(this);
+      _dApplic.getDModel().changeInDModelByEventsDlg(this);
       _buttonsPanel.setFirstDisable();
     }// end if Button APPLY
   }//end method

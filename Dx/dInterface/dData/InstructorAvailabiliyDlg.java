@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.22 $  $Date: 2004-12-16 19:20:49 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.23 $  $Date: 2005-02-01 21:27:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.23 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -62,7 +62,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: gonzrubi $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
@@ -74,14 +74,12 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private String[] day;
   public String[] time;
 
-  private ButtonsPanel _applyPanel;// = new JPanel();
+  private ButtonsPanel _applyPanel;
   private JPanel chooserPanel = new JPanel();
   private JPanel centerPanel;
 
   private JComboBox chooser;
   private Vector _posVect;
-  //private int nbPerParJour;
-//  private boolean modified = false;
 
   private InstructorAttach  _currentInstr;
   private int [][] _currentAvailbility;
@@ -99,14 +97,13 @@ public class InstructorAvailabiliyDlg  extends JDialog
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
-    //_dm = _dApplic.getDMediator().getCurrentDoc().getDM();
-    time = _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
-    nbDay= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getNumberOfActiveDays();
+    time = _dApplic.getDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
+    nbDay= _dApplic.getDModel().getTTStructure().getNumberOfActiveDays();
     day = new String[nbDay];
-    //MES00 = DConst.AVAILABILITIES;
+ 
     for(int i=0; i< nbDay; i++)
-      day[i]= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getWeekTable()[i];
-    nbPer= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
+      day[i]= _dApplic.getDModel().getTTStructure().getWeekTable()[i];
+    nbPer= _dApplic.getDModel().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       initialize();
       pack();
@@ -124,15 +121,15 @@ public class InstructorAvailabiliyDlg  extends JDialog
   private void initialize() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all instructors
-    chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getNamesVector(1));
+    chooser = new JComboBox(_dApplic.getDModel().getSetOfInstructors().getNamesVector(1));
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _currentInstr = (InstructorAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getResource(sel).getAttach();
-    centerPanel = makeGridPanel();//_currentInstr);
+    _currentInstr = (InstructorAttach)_dApplic.getDModel().getSetOfInstructors().getResource(sel).getAttach();
+    centerPanel = makeGridPanel();
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
     //_applyPanel
@@ -148,10 +145,10 @@ public class InstructorAvailabiliyDlg  extends JDialog
     if (command.equals(DConst.BUT_CLOSE)) {  // close
       dispose();
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
-      _currentInstr.setAvailability(_currentAvailbility);
-      //modified = false;
+      
       _applyPanel.setFirstDisable();
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _currentInstr.setAvailability(_currentAvailbility);
+      _dApplic.getDModel().changeInDModelByInstructorsDlg(this);
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());
@@ -178,7 +175,7 @@ public class InstructorAvailabiliyDlg  extends JDialog
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        _currentInstr = (InstructorAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfInstructors().getResource(sel).getAttach();
+        _currentInstr = (InstructorAttach)_dApplic.getDModel().getSetOfInstructors().getResource(sel).getAttach();
         centerPanel = makeGridPanel();//_currentInstr);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();

@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.63 $  $Date: 2005-01-21 14:14:19 $
+ * Title: DApplication $Revision: 1.64 $  $Date: 2005-02-01 21:27:15 $
  
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.63 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.64 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -36,6 +36,7 @@ import javax.swing.DefaultDesktopManager;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -121,8 +122,7 @@ public class DApplication implements ActionListener {
 		jFrame.setJMenuBar(_dMenuBar);  //constructs the menu bar
 		
 		_tbar = new DToolBar(this); //constucts the tool bar
-		//jpToolBar.add(_tbar);
-		
+			
 		jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
 		// panel.add(_tbar,BorderLayout.NORTH);
 		
@@ -150,12 +150,13 @@ public class DApplication implements ActionListener {
 	
 	//-------------------------------------------
 	public void actionPerformed(ActionEvent  e) {
+		if (e.getSource() instanceof JRadioButton){
+		
+		}
 		if (e.getSource() instanceof CommandHolder) {
 			((CommandHolder) e.getSource()).getCommand().execute(this);
-			// repaint();
-		}
-		else {
-			System.out.println("I do not know what to do, please help me (Action Performed)");
+		} else {
+			System.out.println("DApplication: I do not know what to do, please help me (Action Performed)");
 		}// end if ... else
 	}// end actionPerformed
 	
@@ -250,28 +251,15 @@ public class DApplication implements ActionListener {
 	
 	public void constructToolBar(){
 		_tbar = new DToolBar(this); //constucts the tool bar
-		//jpToolBar.add(_tbar);
 		_tbar.updateUI();
 		
 		_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
 		// panel.add(_tbar,BorderLayout.NORTH);
 		_tbar.updateUI();
 		updateLAF(_preferences._lookAndFeel);
-		//hideToolBar();
+
 	}
-	//-------------------------------------------
-	/**
-	 * Closes the DDocument(s) and the application.
-	 * Use this method for processing close via the
-	 * WindowClosing Event.
-	 *
-	 * @return void
-	 * @since JDK 1.2
-	 */ 
-	// private void closeApplic() { 	
-	//   closeApplic();
-	// }  
-	
+	//-------------------------------------------	
 	//-------------------------------------------
 	/**
 	 * Closes the document(s) and the application.

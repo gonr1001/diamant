@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.23 $  $Date: 2004-11-05 13:53:48 $
+ * Title: PeriodPanel $Revision: 1.24 $  $Date: 2005-02-01 21:27:16 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: syay1801 $
  * @since JDK1.3
  *
@@ -101,8 +101,10 @@ public  abstract class PeriodPanel extends JPanel{
       break;
     case 3: color= Color.PINK;// to show a period where a conflict arises.
       break;
-    case 4: color= Color.GREEN;// to show where an event is affected.
+    case 4: color= Color.RED;// to show where an event is affected.
       break;
+    case 5: color= Color.ORANGE;// to show where an event is affected.
+    break;
     default:
       new FatalProblemDlg("I was in PeriodPanel class and the switch failed!!!" );
   }

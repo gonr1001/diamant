@@ -1,3 +1,26 @@
+/**
+*
+* Title: RoomsAvailabilityDlg $Revision: 1.17 $  $Date: 2005-02-01 21:27:15 $
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.17 $
+* @author  $Author: syay1801 $
+* @since JDK1.3
+*
+* Our convention is that: It's necessary to indicate explicitly
+* all Exceptions that a method can throw.
+* All Exceptions must be handled explicitly.
+*/
 package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
@@ -26,7 +49,7 @@ import dInternal.dData.dRooms.RoomAttach;
 
 
 /**
- * Dialog used to set disponibilities for the rooms.  The user must select
+ * Dialog used to set room's availability.  The user must select
  * the corresponding room in the combo list and click on a period to
  * select/deselect it.  A selected period (pressed) means that the room
  * is available at that period.
@@ -98,7 +121,7 @@ public class RoomsAvailabilityDlg  extends JDialog
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _currentRoom = (RoomAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getResource(sel).getAttach();
+    _currentRoom = (RoomAttach)_dApplic.getDModel().getSetOfRooms().getResource(sel).getAttach();
     centerPanel = makeGridPanel();//_currentRoom);
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
@@ -116,9 +139,9 @@ public class RoomsAvailabilityDlg  extends JDialog
       dispose();
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
       _currentRoom.setAvailability(_currentAvailbility); 
-      _dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
+      _dApplic.getDModel().changeInDModelByRoomsDlg(this);
       _applyPanel.setFirstDisable();
-      //DModel dm =_dApplic.getDMediator().getCurrentDoc().getDM();
+      
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());
@@ -145,7 +168,7 @@ public class RoomsAvailabilityDlg  extends JDialog
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        _currentRoom = (RoomAttach)_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getResource(sel).getAttach();
+        _currentRoom = (RoomAttach)_dApplic.getDModel().getSetOfRooms().getResource(sel).getAttach();
         centerPanel = makeGridPanel();//_currentRoom);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();

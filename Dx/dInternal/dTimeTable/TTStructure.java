@@ -288,7 +288,7 @@ public class TTStructure {
         System.out.println("TTstructure listener started: "+i);//debug
      }
    }
-
+/*
    public synchronized void addTTStructureListener(TTStructureListener ttsl) {
      if (_ttsListeners.contains(ttsl)){
        return;
@@ -300,7 +300,7 @@ public class TTStructure {
    public synchronized void removeTTStructureListener(TTStructureListener ttsl) {
      _ttsListeners.removeElement(ttsl);
    }
-
+*/
    /**
   *read a xml tag containing a set of cycle and build the resource
   * @param Element the root xml tag of the set of cycle

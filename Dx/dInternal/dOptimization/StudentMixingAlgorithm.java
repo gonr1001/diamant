@@ -131,7 +131,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     }//end for(int i=0; i< _eventsRescList.size(); i++)
     _dm.getConditionsTest().setMatrixBuilded(false,false);
     _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
-    _dm.sendEvent(null);
+    _dm.changeInDModel(null);
     //System.out.println("Mixing type: "+_mixingType);// debug
   }
 

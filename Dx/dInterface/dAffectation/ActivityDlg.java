@@ -1,13 +1,26 @@
+/**
+*
+* Title: ActivityDlg $Revision: 1.46 $  $Date: 2005-02-01 21:27:15 $
+* Description: ActivityDlg is a class used to
+*
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+* @version $Revision: 1.46 $
+* @author  $Author: syay1801 $
+* @since JDK1.3
+*/
 package dInterface.dAffectation;
 
-/**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author unascribed
- * @version 1.0
- */
+
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -144,7 +157,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
 		//if button APPLY
 		if (command.equals(DConst.BUT_APPLY)){
 			setActivitesVisibility();
-			_dApplic.getDModel().getSetOfActivities().sendEvent(this);
+			_dApplic.getDModel().changeInDModelByActivity(this);
 			_buttonsPanel.setFirstDisable();
 		}
 		//if arrows		

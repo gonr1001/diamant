@@ -70,13 +70,14 @@ private DApplication _dApplic;
       if(activity.getSetOfTypes().size()<2){
         activity.addType("2");
         Type type = (Type) activity.getSetOfTypes().getResource("2").getAttach();
-        int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
+        int nbCycle= _dApplic.getDModel().getTTStructure().getSetOfCycles().size();
         type.addSection("01",nbCycle,true);
         init();
          Vector students= activity.getStudentRegistered();
-         _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
-         _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
-        _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+         _dApplic.getDModel().changeInDmodelByModifyAdd(this, students, _activity.getID()+"201;0");
+         /*_dApplic.getDModel().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
+         _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
+        _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/
       }
     }
     if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
@@ -84,8 +85,9 @@ private DApplication _dApplic;
       if(activity.getSetOfTypes().size()>1){
         activity.getSetOfTypes().removeResource("2");
         init();
-        _dApplic.getDMediator().getCurrentDoc().getDM().getConditionsTest().setMatrixBuilded(false,false);
-        _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().sendEvent(this);
+        _dApplic.getDModel().ChangeInDModelByModifyRemove(this);
+        /*_dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
+        _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/
       }
     }
 
