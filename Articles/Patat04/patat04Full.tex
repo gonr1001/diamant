@@ -404,8 +404,7 @@ devient définitif pour la période
 
 
 
-\section{La decomposition modulaire, top-down, alternatives et
-justifications} \label{sec:archi}
+\section{L'architecture en couches} \label{sec:archi}
 
 Suite à l'étude du flot de données dans la production d'horaires,
 nous sommes en mesure de proposer une architecture pour implénter
@@ -466,26 +465,82 @@ de données complexes.
 
 Pour chaque élément de l'architecture trois couches que nous avons
 présenté, nous allons proposer un composant qui fait partie de
-l'application de production d'horaires.
+l'application de production d'horaires, dans cette section nous
+allons présenter l'integration entre le flot des données propre à
+notre système de production d'horaires et l'architecture proposé.
+
+La conception de haut niveau de notre système de production
+d'horaires est simple (voir figure \ref{fig:fOne})~:
+
+Pour chaque élément de l'architecture que nous avons présenté dans
+la section antérieure, nous allons proposer un composant qui fait
+partie de l'application de production d'horaires. Dans cette
+section nous allons montrer l'intégration entre le flot des
+données propre à un système de production d'horaires et
+l'architecture proposée.
 
 La conception de haut niveau de notre système de production
 d'horaires est simple (voir figure \ref{fig:fOne})~:
 
 \begin{enumerate}
 \item Nous avons des données qui entrent dans le système. Ces
-données sont gérées par la couche d'interface. Les données peuvent
-venir de la saisie directe des utilisateurs (données d'une
-période) ou bien des données qui sont générées par autres systèmes
-(données de base). Nous avons aussi des données qui sortent de
-notre système comme résultat de la création d'horaires (données
-horaire) (voir figure \ref{fig:fTwo})
+données sont gérées par la couche d'interface. Il y a trois
+sources possibles des données (voir figure \ref{fig:fTwo}):
+
+\begin{enumerate}
+\item La saisie directe des données d'une période. Cette activité
+est faite par l'utilisateur commis. Normalement, ces données
+changent à chaque création d'un horaire. Pour saisir les données,
+l'utilisateur commis a une page Web qui est affichée par un
+navigateur où il aura tous les champs à remplir. À cette étape, la
+couche d'interface peut faire quelques validations minimales de la
+cohérence de données, par exemple, vérifier que le type de données
+est correct, vérifier que les champs qui sont obligatoires sont
+remplis, etc. Dépendant de la taille de l'institution, il peut
+avoir plusieurs utilisateurs commis qui travaillent au même temps
+dans l'application, il faut en conséquence, prendre les mesures
+nécessaires pour permettre le travail concurrent dans la couche de
+persistance de données.
+
+\item Les données générées par autres systèmes (données de base).
+Depuis long temps il est prouvé que la meilleure manière
+d'échanger de l'information entre deux systèmes est le transfert
+de fichiers. C'est pour cette raison que notre système doit être
+capable de recevoir et envoyer des fichiers dans un format
+compatible entre plusieurs systèmes.
+
+\item Les données horaire sont créées par l'application de
+création d'horaires. Cette application est gérée par l'utilisateur
+responsable de la création d'horaires. Étant donné que cette
+activité est de nature itérative, il peut avoir un certain nombre
+de versions de travail que l'utilisateur responsable de la
+création d'horaires doit analyser pour trouver celle qui lui
+convient le mieux. Une fois qu'il a trouvé cette version, il doit
+appliquer l'opération " commit " pour rendre disponible
+l'information au reste des utilisateurs. Ce sont les données qui
+sortent de notre système, et ils sont envoyés vers autres systèmes
+ou bien vers autres utilisateurs, par exemple, les étudiants qui
+vont recevoir un papier avec son horaire personnalisé ou bien, il
+peut consulter cette information en utilisant un site Web crée
+pour ces fins, ou bien, l'organisme d'administration central de
+l'institution qui doit être informé de l'affectation des horaires.
+
+\end{enumerate}
+
+Il faut tenir en considération que la couche d'interface
+d'utilisateur communique uniquement avec la couche de logique
+d'affaires. Une application n'est pas capable d'ajouter, modifier
+ou effacer des données directement dans la base de données, elle
+doit passer irrémédiablement par la couche de logique d'affaires.
+Cette caractéristique nous permet d'assurer la cohérence des
+données.
 
 \item Les données sont traitées selon certaines règles et
 contraintes, ces règles sont définies par chaque institution et
 elles sont codées dans la couche logique d'affaires. C'est ici que
 nous pourrons exprimer des contraints propres à chaque
-institution, par exemple, la quantité maximale d'étudiants dans
-une classe, la capacité des sales des cours, etc.
+institution, par exemple, la quantité maximale d'étudiants dans un
+groupe, tous les cours de mathématique se déroulent le matin, etc.
 
 \item Les données résultats de ces traitements doivent être
 stockes dans quelque part pour pouvoir être utilisées après sa
