@@ -27,6 +27,7 @@ public class Sequence extends DXObject{
     return _setOfPeriods;
   }
 
+
   /**
    * */
   public Period getPeriod(int periodIndex){
