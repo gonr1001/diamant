@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SimplePeriodPanel $Revision: 1.12 $  $Date: 2003-11-21 15:50:48 $
+ * Title: SimplePeriodPanel $Revision: 1.13 $  $Date: 2003-12-12 16:11:04 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -76,7 +76,7 @@ public class SimplePeriodPanel extends PeriodPanel{
     constraints.gridy = 0;
     add(per, constraints);
 
-
+   /* buildConflictPanel(period);
     JPanel conflictPanel = new JPanel();
     _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
     _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
@@ -84,13 +84,13 @@ public class SimplePeriodPanel extends PeriodPanel{
     conflictPanel.add(_cStu);
     conflictPanel.add(_cTeach);
     conflictPanel.add(_cRoom);
-    conflictPanel.setBorder(BorderFactory.createEtchedBorder());
+    conflictPanel.setBorder(BorderFactory.createEtchedBorder());*/
 
-    if(period.getPriority()!=2){
+ /*   if(period.getPriority()!=2){
       _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
       _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
       _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
-    }
+    }*/
     //
     constraints.weightx = .850;
     constraints.weighty = 1.0;
@@ -98,7 +98,9 @@ public class SimplePeriodPanel extends PeriodPanel{
     constraints.gridwidth = 1;
     constraints.gridx = 1;
     constraints.gridy = 0;
-    add(conflictPanel, constraints);
+    JPanel conflict= buildConflictPanel(period);
+    conflict.setBorder(BorderFactory.createEtchedBorder());
+    add(conflict,constraints);    //conflictPanel, constraints);
 
     JLabel nbAct = new JLabel(DConst.SB_T_EVENT +" "+Integer.toString(period.getNumberOfEvents())+"");
     constraints.gridheight = 1;

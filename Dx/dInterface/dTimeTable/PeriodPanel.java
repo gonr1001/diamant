@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.16 $  $Date: 2003-10-28 14:19:06 $
+ * Title: PeriodPanel $Revision: 1.17 $  $Date: 2003-12-12 16:11:04 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -39,6 +39,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import dInternal.dTimeTable.Period;
+import javax.swing.BorderFactory;
+import dResources.DConst;
 
 import com.iLib.gDialog.FatalProblemDlg;
 
@@ -127,4 +129,21 @@ public  abstract class PeriodPanel extends JPanel{
     setBackground(color);
   }
 
+  public JPanel buildConflictPanel(Period period){
+  JPanel conflictPanel = new JPanel();
+  _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
+  _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
+  _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
+  conflictPanel.add(_cStu);
+  conflictPanel.add(_cTeach);
+  conflictPanel.add(_cRoom);
+  //conflictPanel.setBorder(BorderFactory.createEtchedBorder());
+
+    if(period.getPriority()!=2){
+      _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
+      _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
+      _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
+    }
+    return conflictPanel;
+  }
 }

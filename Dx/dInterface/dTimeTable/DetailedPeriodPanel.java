@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.12 $  $Date: 2003-10-28 14:19:06 $
+ * Title: DetailedPeriodPanel $Revision: 1.13 $  $Date: 2003-12-12 16:11:04 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -79,25 +79,25 @@ public class DetailedPeriodPanel extends PeriodPanel{
     //_rightList.addMouseListener(mouseListenerLists);
 
     JLabel nbAct = new JLabel( "("+Integer.toString(period.getNumberOfEvents())+")");
-    _cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
+    /*_cTeach = new JLabel(Integer.toString(period.getNbInstConflict()));
     _cRoom = new JLabel(Integer.toString(period.getNbRoomConflict()));
     _cStu = new JLabel(Integer.toString(period.getNbStudConflict()));
     if(period.getPriority()!=2){
       _cRoom.setForeground(DConst.COLOR_ROOM );// rooms conflicts color
       _cTeach.setForeground(DConst.COLOR_INST );// instructors conflicts color
       _cStu.setForeground(DConst.COLOR_STUD);// students conflicts color
-    }
+    }*/
     //
     topPanel.add(per);
     topPanel.add(nbAct);
     miPanel.add(_jList);
-    bottomPanel.add(_cTeach);
+    /*bottomPanel.add(_cTeach);
     bottomPanel.add(_cRoom);
-    bottomPanel.add(_cStu);
+    bottomPanel.add(_cStu);*/
     //
     add(topPanel, BorderLayout.NORTH); //add(topPanel);
     add(miPanel, BorderLayout.CENTER);
-    add(bottomPanel, BorderLayout.SOUTH);
+    add(buildConflictPanel(period), BorderLayout.SOUTH);
     // set period panel color
     setPanelColor( period.getPriority());
   }
