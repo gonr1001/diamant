@@ -47,17 +47,12 @@ import dResources.DConst;
 
 public class GroupDlg extends JDialog implements ActionListener{
 
-  //private Activity _act;
   private DApplication _dApplic = null;
-  //private Dimension dialogSize = new Dimension(550,500);
   private int _numberOfTypes, _numberOfSections, _currentAssignedGroup = -1;
-  //private JButton _apply, _cancel, _ok;
   private JComboBox _actCombo, _typeCombo;
-  //private JLabel _lNumberOfElements[];
   private JList _notAssignedList, _assignedLists[];
   private JPanel _arrowsPanel, _assignedPanel, _buttonsPanel, _insidePanel, _centerPanel, _notAssignedPanel;
   private JScrollPane _scrollPane;
-  //private Object [] _currentStudents = new Object[0];
   private Section _section;
   private SetOfActivities _activities;
   private SetOfStudents _students;
@@ -67,23 +62,12 @@ public class GroupDlg extends JDialog implements ActionListener{
   private Type _type;
   private Vector _actVector, _notAssignedVector, _typeVector, _assignedVectors[];
 
-  private static Color PANEL_BORDER_COLOR = Color.BLUE;//DConst.COLOR_STUD;
-  private static Color LABEL_BORDER_COLOR = Color.BLUE;
-  private static String ACT_STUD_NOT_ASSIGNED = DConst.ACT_STUD_NOT_ASSIGNED;
-  private static String ACT_STUD_ASSIGNED = DConst.ACT_STUD_ASSIGNED;
-  private static String ACTIVITY = DConst.ACTIVITY;
-  private static String GROUP_DLG_TITLE = DConst.GROUP_DLG_TITLE;
-  private static String GROUP = DConst.GROUP;
-  private static String NUMBER_OF_ELEMENTS = DConst.NUMBER_OF_ELEMENTS;
-  private static String TYPE = DConst.TYPE;
-
-
   /**
    * Constructor
    * @param dApplic
    */
   public GroupDlg(DApplication dApplic){
-    super(dApplic.getJFrame(), GROUP_DLG_TITLE, true);
+    super(dApplic.getJFrame(), DConst.GROUP_DLG_TITLE, true);
     _dApplic = dApplic;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
@@ -123,7 +107,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     _actCombo = new JComboBox(_actVector);
     //_actCombo.setSelectedIndex(0);
     actPanel = new JPanel();
-    actPanel.setBorder(new TitledBorder(new EtchedBorder(), ACTIVITY));
+    actPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACTIVITY));
     actPanel.add(_actCombo);
     actPanel.setPreferredSize(new Dimension(100,50));
     _actID = (String)_actVector.elementAt(0);
@@ -132,7 +116,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     _typeCombo = new JComboBox(_typeVector);
     //_typeCombo.setSelectedIndex(0);
     typePanel = new JPanel();
-    typePanel.setBorder(new TitledBorder(new EtchedBorder(), TYPE));
+    typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
     typePanel.add(_typeCombo);
     typePanel.setPreferredSize(new Dimension(100,50));
     _typeID = (String)_typeVector.elementAt(0);
@@ -158,7 +142,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     _notAssignedList = new JList(_notAssignedVector);
     _notAssignedList.addMouseListener(mouseListenerLists);
     _notAssignedPanel = DXTools.listPanel(_notAssignedList, (int)((dialogDim.getWidth()-50)*0.40), (int)dialogDim.getHeight()-130);
-    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_NOT_ASSIGNED));
+    _notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACT_STUD_NOT_ASSIGNED));
     _notAssignedPanel.setPreferredSize(panelDim);
   }
 
@@ -171,7 +155,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     Dimension panelDim = new Dimension((int)((dialogDim.getWidth()-50)*0.55), (int)dialogDim.getHeight()-130);
     Dimension scrollDim = new Dimension((int)panelDim.getWidth()-10,(int)panelDim.getHeight()-5);
     _assignedPanel = new JPanel(new BorderLayout());
-    _assignedPanel.setBorder(new TitledBorder(new EtchedBorder(), ACT_STUD_ASSIGNED));
+    _assignedPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.ACT_STUD_ASSIGNED));
     _assignedPanel.setPreferredSize(panelDim);
     _scrollPane = new JScrollPane();
     _scrollPane.setPreferredSize(scrollDim);
@@ -224,14 +208,14 @@ public class GroupDlg extends JDialog implements ActionListener{
     scrollContainer = DXTools.listPanel(_assignedLists[groupNumber], (int)insideWidth-5, GroupPanelHeight-infoPanelHeight-20);
     infoPanel.setPreferredSize(new Dimension(insideWidth-10, infoPanelHeight));
     numberOfElements = _assignedVectors[groupNumber].size();
-    JLabel lGroup = new JLabel(GROUP);
+    JLabel lGroup = new JLabel(DConst.GROUP);
     //JLabel lGroupID = new JLabel(String.valueOf(groupNumber));
     JLabel lGroupID = new JLabel(_type.getSetOfSections().getResourceAt(groupNumber).getID());
-    lGroupID.setForeground(LABEL_BORDER_COLOR);
-    JLabel lNumber = new JLabel(NUMBER_OF_ELEMENTS + " ");
+    lGroupID.setForeground(DConst.COLOR_QUANTITY_DLGS);
+    JLabel lNumber = new JLabel(DConst.NUMBER_OF_ELEMENTS + " ");
     //_lNumberOfElements = new JLabel [numberOfElements];
     lNumberOfElements = new JLabel(String.valueOf(numberOfElements));
-    lNumberOfElements.setForeground(LABEL_BORDER_COLOR);
+    lNumberOfElements.setForeground(DConst.COLOR_QUANTITY_DLGS);
     infoPanel.add(lGroup);
     infoPanel.add(lGroupID);
     infoPanel.add(new JLabel(" - "));
@@ -304,6 +288,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     if (command.equals(_buttonsNames[1])){
       setStudentsInGroups();
       _buttonsPanel.getComponent(1).setEnabled(false);
+      //_dApplic.getDMediator().getCurrentDoc().getDM().sendEvent(this);
       _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStudents().sendEvent(this);
       //_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfStates().sendEvent();
     }
@@ -390,7 +375,7 @@ public class GroupDlg extends JDialog implements ActionListener{
     for (int i = 0; i < _numberOfSections; i++){
       panel = (JPanel)_insidePanel.getComponent(i);
       if(i == selectedPanelID)
-        panel.setBorder(BorderFactory.createLineBorder(PANEL_BORDER_COLOR));
+        panel.setBorder(BorderFactory.createLineBorder(DConst.COLOR_QUANTITY_DLGS));
       else
         panel.setBorder(null);
     }
