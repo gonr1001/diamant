@@ -120,7 +120,7 @@ public class SetOfStudents extends SetOfResources{
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     int state=0;
     int position=beginPosition;
-    Student student= new Student();
+    StudentAttach student= new StudentAttach();
     String studentName="";
     /** the string beetween _ENDSTUDENTMATRICULE and _BEGINSTUDENTNAME*/
     String studentTemp="";
@@ -133,7 +133,7 @@ public class SetOfStudents extends SetOfResources{
           position = 1;
           break;
         case 1:// student ID (matricule and name)
-          student = new Student();
+          student = new StudentAttach();
           studentName = token.substring(_BEGINSTUDENTNAME, _ENDSTUDENTNAME).trim();
           studentKey = (new Integer (token.substring(_BEGINSTUDENTMATRICULE,
                 _ENDSTUDENTMATRICULE).trim())).longValue();
@@ -160,9 +160,9 @@ public class SetOfStudents extends SetOfResources{
    * OUTPUT: boolean, "true" if student added and if studentChoice contains an element
    *   false otherwise
    * */
-  public boolean addStudent(long matricule, String name, String temp, Student studentChoice){
-    if (studentChoice.getCourses().size()!=0){
-      //Student newStudent = new Student();
+  public boolean addStudent(long matricule, String name, String temp, StudentAttach studentChoice){
+    if (studentChoice.getCoursesList().size()!=0){
+      //StudentAttach newStudent = new StudentAttach();
 
       if (temp.length()==0)
         studentChoice.setAuxField("0000000000000");
@@ -175,19 +175,6 @@ public class SetOfStudents extends SetOfResources{
     return false;
   }
 
-  /**
-   * remove a student in the student list
-   * INPUT: matricule (an long int)
-   * OUTPUT: boolean, "true" if student removed succesfully and false if student
-   * did'nt found
-   * */
-  private boolean removeStudent(long matricule){
-    int index= getIndexOfResource(matricule);
-    if(index!=-1){
-      removeResource(matricule);
-      return true;
-    }
-    return false;
-  }
+
 
 }

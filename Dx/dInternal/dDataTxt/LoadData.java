@@ -82,8 +82,8 @@ public class LoadData {
        if(currentList!=null)
          _instructorsList.setSetOfResources(currentList.getSetOfResources());
 
-      if (_instructorsList.analyseTokens()){
-        _instructorsList.buildSetOfInstructors();
+      if (_instructorsList.analyseTokens(0)){
+        _instructorsList.buildSetOfInstructors(0);
         return _instructorsList;
       }
     } else {// (NullPointerException npe) {
@@ -184,11 +184,11 @@ public class LoadData {
 
     /** Student test*/
     SetOfStudents studentList = ldata.extractStudents(null, true);
-    Student yan = new Student();
+    StudentAttach yan = new StudentAttach();
     yan.addCourse("GEI4421");
     yan.addCourse("GEI4501");
     studentList.addStudent(99872506,"YANNICK SYAM","",yan);
-    yan = new Student();
+    yan = new StudentAttach();
     yan.addCourse("GEI4421");
     yan.addCourse("GEI4501");
     studentList.addStudent(99872506,"YANNICK SYAM","",yan);

@@ -38,10 +38,10 @@ public class SetOfInstructors extends SetOfResources{
    * INPUT:
    * OUTPUT: Vector
    */
-  public boolean analyseTokens(){
+  public boolean analyseTokens(int beginPosition){
     String token;
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
-    int state = 0;
+    int state = beginPosition;
     int line=0;
     int stateDispo =1;
     int numberOfInstructors=0;
@@ -109,12 +109,12 @@ public class SetOfInstructors extends SetOfResources{
    *use StringTokenizer st: instructors in text format
    *
    */
-  public void buildSetOfInstructors(){
+  public void buildSetOfInstructors(int beginPosition){
     StringTokenizer st = new StringTokenizer(new String (_dataloaded),"\r\n" );
     String token;
     Vector avail= new Vector();
     String instID="";
-    int state = 0;
+    int state = beginPosition;
     int stateDispo =1;
     //Resource resc;
     //Instructor instruc;
