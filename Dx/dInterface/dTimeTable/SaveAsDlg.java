@@ -1,7 +1,7 @@
 package dInterface.dTimeTable;
 /**
  *
- * Title: SaveAsDlg $Revision: 1.9 $  $Date: 2003-07-10 12:01:44 $
+ * Title: SaveAsDlg $Revision: 1.10 $  $Date: 2003-07-11 10:47:49 $
  * Description: SaveAsDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: ysyam $
+ * @version $Revision: 1.10 $
+ * @author  $Author: rgr $
  * @since JDK1.3
  */
 
@@ -84,58 +84,58 @@ public class SaveAsDlg extends JDialog
 
 
 
-  public void saveAs() {
-    File file;
-    String DOTEXT="";
-    //C rwfDlg = null;
+   public void saveAs() {
+     File file;
+     String DOTEXT="";
+     //C rwfDlg = null;
 
-    JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
-    if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
-      fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
-                DConst.DIA_FILE ) );
-      DOTEXT= DConst.DOT_DIA;
-    }
-    else{
-      fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
-                DConst.XML_FILE ) );
-      DOTEXT= DConst.DOT_XML;
-    }
+     JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
+     if(_dApplic.getDMediator().getCurrentDoc().getDM().isTimeTable()){
+       fc.setFileFilter( new DFileFilter ( new String[] {DConst.DIA},
+           DConst.DIA_FILE ) );
+       DOTEXT= DConst.DOT_DIA;
+     }
+     else{
+       fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
+           DConst.XML_FILE ) );
+       DOTEXT= DConst.DOT_XML;
+     }
 
-    fc.setMultiSelectionEnabled( false );
+     fc.setMultiSelectionEnabled( false );
 
-    // Display the file chooser in a dialog
-    int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
+     // Display the file chooser in a dialog
+     int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
 
-    // If the file chooser exited sucessfully,
-    // and a file was selected, continue
-    if (returnVal == JFileChooser.APPROVE_OPTION) {
+     // If the file chooser exited sucessfully,
+     // and a file was selected, continue
+     if (returnVal == JFileChooser.APPROVE_OPTION) {
 
-      // Save the file name
-      String currentFile = fc.getSelectedFile().getAbsolutePath();
-      System.out.println("currentFile " + currentFile);
-      if ( !currentFile.endsWith(DOTEXT) )
-        currentFile = currentFile.concat(DOTEXT);
+       // Save the file name
+       String currentFile = fc.getSelectedFile().getAbsolutePath();
+       System.out.println("currentFile " + currentFile);
+       if ( !currentFile.endsWith(DOTEXT) )
+         currentFile = currentFile.concat(DOTEXT);
 
 
-      // If there is a file with this file name in the same path
-      file = new File(currentFile);
-      if (file.exists()){
-        String fileName = currentFile.substring(currentFile.lastIndexOf(File.separator)+1);
-        int resp= ConfirmDlg.showMessage(_dApplic, "Remplacer le fichier " + fileName + " existante?");
-        if( resp== ConfirmDlg.OK_OPTION){
-        _dApplic.getDMediator().saveCurrentDoc(currentFile);
-        new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
-        }
-        if(resp == ConfirmDlg.NO_OPTION){
-          saveAs();
-        }
-        if(resp == ConfirmDlg.CANCEL_OPTION){
+       // If there is a file with this file name in the same path
+       file = new File(currentFile);
+       if (file.exists()){
+         String fileName = currentFile.substring(currentFile.lastIndexOf(File.separator)+1);
+         int resp= ConfirmDlg.showMessage(_dApplic, "Remplacer le fichier " + fileName + " existante?");
+         if( resp== ConfirmDlg.OK_OPTION){
+           _dApplic.getDMediator().saveCurrentDoc(currentFile);
+           new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+         }
+         if(resp == ConfirmDlg.NO_OPTION){
+           saveAs();
+         }
+         if(resp == ConfirmDlg.CANCEL_OPTION){
 
-        }
-      }else{
-        _dApplic.getDMediator().saveCurrentDoc(currentFile);
-        new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
-      }
-    }// end if(returnVal == JFileChooser.APPROVE_OPTION)
-  }//end saveAs() method
+         }
+       }else{
+         _dApplic.getDMediator().saveCurrentDoc(currentFile);
+         new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + currentFile);
+       }
+     }// end if(returnVal == JFileChooser.APPROVE_OPTION)
+   }//end saveAs() method
 }//end class

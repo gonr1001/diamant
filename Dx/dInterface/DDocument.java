@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.53 $  $Date: 2003-07-11 10:07:16 $
+ * Title: DDocument $Revision: 1.54 $  $Date: 2003-07-11 10:47:49 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.53 $
+ * @version $Revision: 1.54 $
  * @author  $Author: rgr $
  * @since JDK1.3
  */
@@ -64,13 +64,14 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
 
   //for a new timetable and a open timetable
   //for new timetable Structure and open timetable Structure from a file
-  public DDocument(DApplication dApplic, String TTName, String fileName, int type) {
+  public DDocument(DApplication dApplic, String ttName, String fileName, int type) {
     _dApplic = dApplic;
     _dm = new DModel(_dApplic, fileName, type);
     if(_dm.getError().length()==0){
       addTTListener(_dm.getTTStructure());
       _dm.getTTStructure().addTTStructureListener(this);
-      buidDocument(TTName);
+      ttName = modifiyDocumentName(ttName); // used only in the case of New TTStructure
+      buidDocument(ttName);
       _ttPanel.updateTTPanel(_dm.getTTStructure());
       _jif.addInternalFrameListener(this);
     }
@@ -273,5 +274,12 @@ public class DDocument  extends InternalFrameAdapter implements ActionListener, 
     _statusPanel = null;
     _nbModif = null;//, _nbBlocs,  _nbCStu, _nbCInstr, _nbCRoom;
   }
-
+  private String modifiyDocumentName(String str) {
+    if (str.endsWith("pref"+File.separator+"StandardTTC.xml") ||
+        str.endsWith("pref"+File.separator+"StandardTTE.xml") ){
+      str = str.substring(0,str.lastIndexOf("pref"));
+      str += DConst.NO_NAME;
+    }
+    return str;
+  }
 } /* end DDocument class */
