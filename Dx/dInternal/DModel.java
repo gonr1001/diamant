@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.57 $  $Date: 2003-08-28 00:23:02 $
+ * Title: DModel $Revision: 1.58 $  $Date: 2003-08-28 00:37:07 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.57 $
+ * @version $Revision: 1.58 $
  * @author  $Author: ysyam $
  * @since JDK1.3
  */
@@ -305,7 +305,8 @@ public class DModel implements  DModelListener, TTStructureListener {
   }
 
   /**
-   * build set of events
+   * build set of events using currentcycle, setofactivities, setofinstructors and
+   * setofrooms
    */
   public void buildSetOfEvents(){
     _setOfEvents = new SetOfEvents();
