@@ -152,6 +152,35 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
     }//end for
 }//end method
 
+/*
+public static void listTransfers2(JList[] sourceList, JList[] destinationList, Vector[] sourceVector, Vector[] destinationVector, int typeTransfer ){
+  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
+    return;
+  SetOfResources destinationRes = new SetOfResources(0);
+  Resource res;
+  Object [][] elementsToTransfer = new Object[2];
+  elementsToTransfer[0] = sourceList[0].getSelectedValues();
+  elementsToTransfer[1] = sourceList[1].getSelectedValues();
+  if (elementsToTransfer[0].length != 0){
+      String currentElement;
+      for (int i = 0; i < elementsToTransfer.length; i++){
+        sourceVector[0].remove(elementsToTransfer[0][i]);
+        destinationVector[0].add(elementsToTransfer[i]);
+      }
+      for(int j = 0; j < destinationVector[0].size(); j++){
+        res = new Resource((String)destinationVector[0].elementAt(j),null);
+        destinationRes.addResource(res, 1);
+      }
+      destinationRes.sortSetOfResourcesByID();
+      destinationVector = destinationRes.getNamesVector();
+      sourceList.setListData(sourceVector);
+      destinationList.setListData(destinationVector);
+      int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
+      destinationList.setSelectedIndices(indices);
+      sourceList.clearSelection();
+    }//end for
+}//end method
+*/
 
   /**
    * Set the vectors leftVector and rightVector with the values found in the SetOfActivities

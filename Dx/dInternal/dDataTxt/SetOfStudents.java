@@ -236,10 +236,35 @@ public class SetOfStudents extends SetOfResources{
       for(int i=0; i< size(); i++){
         studentRes = getResourceAt(i);
         if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
-          list.add(studentRes.getID());
+          list.add(studentRes.getID() + " " + studentRes.getKey());
+        //list.add(studentRes.getID());
       }//end for(int i=0; i< size(); i++)
-
     return list;
+  }
+
+  /**
+  * Build a list of Resources's ID
+  * @return Vector It contents the Resources's ID
+  * */
+  public Vector[] getStudentsByGroup2(String activityID, String typeID, int group){
+    String stringKey;
+    Resource studentRes;
+    Vector[] list= new Vector[2];
+    list[0] = new Vector();
+    list[1] = new Vector();
+      for(int i=0; i< size(); i++){
+        studentRes = getResourceAt(i);
+        if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group)){
+          list[0].add(studentRes.getID());
+          stringKey = String.valueOf(studentRes.getKey());
+          if (stringKey.length()<0)
+            stringKey = "00"+stringKey;
+          list[1].add(stringKey);
+        }
+          //list[0].add(studentRes.getID() + " " + studentRes.getKey());
+
+      }//end for(int i=0; i< size(); i++)
+      return list;
   }
 
   /**
