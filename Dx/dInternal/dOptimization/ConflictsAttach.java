@@ -115,7 +115,7 @@ public class ConflictsAttach extends DXObject{
    * @param event
    * @return
    */
-  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc, String eventName){
+  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc, String eventSource, String eventName){
       Vector vec= new Vector();
       //ArrayValue arrV= new ArrayValue(0);
        for (int i=0; i< _setOfConflicts.size(); i++){

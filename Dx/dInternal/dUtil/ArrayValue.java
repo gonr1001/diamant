@@ -31,7 +31,7 @@ public class ArrayValue extends DXObject{
    * @param index
    */
   public void setIntArrayValue(int value, int index){
-    if(_intArray.length< index)
+    if(index < _intArray.length)
     _intArray[index]= value;
   }
 
@@ -41,7 +41,7 @@ public class ArrayValue extends DXObject{
    * @return
    */
   public int getIntArrayValue(int index){
-     if(_intArray.length< index)
+     if(index < _intArray.length)
       return _intArray[index];
     return -1;
   }

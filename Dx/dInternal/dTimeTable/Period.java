@@ -247,7 +247,10 @@ public class Period extends DXObject {
       if (event.equalsIgnoreCase(eventInPeriod.getID())){
          setOfConf=((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
       }else {// else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
-       setOfConf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf, event);
+        int sizeIn= setOfConf.size();
+       setOfConf= ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf,ID, event);
+       if( setOfConf.size()== sizeIn)
+        setOfConf.addResource(new Resource(ID,new ArrayValue(3)),1);
       }// end  else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
     }// end for (int i=0; i< _eventsInPeriod.size(); i++){
     SetOfResources setOfRes = new SetOfResources(99);

@@ -138,7 +138,9 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
           for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
             Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
             int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
-             int duration = ((EventAttach)event.getAttach()).getDuration()/_ttStruct.getPeriodLenght();
+            int origDuration= ((EventAttach)event.getAttach()).getDuration();
+            ((EventAttach)event.getAttach()).setDuration(_ttStruct.getPeriodLenght());
+             int duration = 1;//((EventAttach)event.getAttach()).getDuration()/_ttStruct.getPeriodLenght();
             if(_ttStruct.getCurrentCycle().isPeriodContiguous(daytime[0],daytime[1],daytime[2],duration,new int[0],false)){
             String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
             ((EventAttach)event.getAttach()).setKey(4,periodKey);
@@ -146,6 +148,7 @@ public class ManualImprovementResultFrame extends JDialog implements ActionListe
             dm.getConditionsTest().addOrRemEventInTTs(_ttStruct,event,1,true);
             ((EventAttach)event.getAttach()).setAssignState(false);
             }// end  if(_ttStruct.getCurrentCycle().isPeriodContiguous(day
+            ((EventAttach)event.getAttach()).setDuration(origDuration);
           }// end for(int k=0; k< ((Sequence)seq.getAttach())
         }// end for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++)
       }// end for(int i=0; i< _newTTS.getCurrentCycle()
