@@ -52,6 +52,7 @@ public class EventsDlg extends JDialog implements ActionListener{
   private String[] _buttonsNames = {DConst.BUT_OK, DConst.BUT_APPLY, DConst.BUT_CANCEL};
   private Unity _currUnity;
   private Vector _leftVector, _centerVector, _rightVector;
+  private JDialog _jdialog;
 
   //private static Color LABEL_COLOR = DConst.COLOR_STUD;
   //private static String EVENTS_DLG_TITLE = DConst.EVENTS_DLG_TITLE;
@@ -67,6 +68,7 @@ public class EventsDlg extends JDialog implements ActionListener{
   public EventsDlg(DApplication dApplic) {
     super(dApplic.getJFrame(), DConst.EVENTS_DLG_TITLE, true);
     _dApplic = dApplic;
+    _jdialog= this;
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     _activities = _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities();
@@ -74,6 +76,7 @@ public class EventsDlg extends JDialog implements ActionListener{
       jbInit();
       setLocationRelativeTo(dApplic.getJFrame());
       setVisible(true);
+
   }//end method
 
 
@@ -275,8 +278,13 @@ public class EventsDlg extends JDialog implements ActionListener{
           _leftList.clearSelection();
           selectedItems = _rightList.getSelectedValues();
       }//end if (e.getSource().equals(_rightList))
+      if (e.getClickCount() == 2) {
+        new EditActivityDlg(_jdialog,_dApplic, (String)selectedItems[0]);
+      }//end if
     }// end public void mouseClicked
   };//end definition of MouseListener mouseListener = new MouseAdapter(){
+
+
 
   /**
   * Set the unities with the values in each JList

@@ -35,17 +35,20 @@ import dResources.DConst;
 import dInterface.DApplication;
 import dInternal.dData.*;
 import dInternal.dData.Resource;
+import dInternal.dUtil.DXToolsMethods;
 
 public class EditActivityDlg extends JDialog implements ActionListener{
 
   private DApplication _dApplic;
   private String _currentActivity;
+  private int _currentActivityIndex=0;
   private String _DURATION= "Durée:";
   private String _DAY= "Jour:";
   private String _HOUR="Heure de début:";
   private String _INSTRUCTOR= "Enseignant:";
   private String _ROOM= "Local:";
-  private Vector _unities= new Vector(1);
+  //private String _DIALOGMESSAGE= "Affectation d'évenement";
+  Vector _unities = new Vector();
 
   JPanel _centerPanel;
   JPanel _bottomPanel;
@@ -58,11 +61,13 @@ public class EditActivityDlg extends JDialog implements ActionListener{
    * @param currentActivity The ativiti choiced in the activityDialog
    */
   public EditActivityDlg(JDialog dialog, DApplication dApplic, String currentActivity) {
-    super(dialog, "Éditer activité");
+    super(dialog, "Affectation d'évenement");
     setLocationRelativeTo(dialog);
     _dApplic = dApplic;
     _currentActivity = currentActivity;
+    buildUnitiesVector();
     jbInit();
+
   }
 
   /**
@@ -81,7 +86,7 @@ public class EditActivityDlg extends JDialog implements ActionListener{
     _bottomPanel.add(_jButtonClose);
     getContentPane().add(_bottomPanel, BorderLayout.SOUTH);
     JTabbedPane tabbedPane = new JTabbedPane();
-    tabbedPane.addTab(_currentActivity, CreateUnityPanel());
+    tabbedPane.addTab(((Resource)_unities.get(0)).getID(), CreateUnityPanel(0));
     getContentPane().add(tabbedPane, BorderLayout.CENTER);
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     Dimension unitySize = new Dimension(280, 260 );
@@ -99,7 +104,7 @@ public class EditActivityDlg extends JDialog implements ActionListener{
    * Builds a panel to be placed in a tab of the tabbedPane
    * @return a JPanel to be placed in a tab of the tabbedPane
    */
-  public JPanel CreateUnityPanel(){
+  public JPanel CreateUnityPanel(int index){
     String [] comboIni = {"08:30", "19:00", "3"};
     JPanel centerPanel = new JPanel(new GridLayout(0,1));
     JPanel panel = new JPanel();
@@ -147,4 +152,33 @@ public class EditActivityDlg extends JDialog implements ActionListener{
     centerPanel.add(buttomPanel);
     return centerPanel;
   }
-}
+
+  /**
+   *Return vector of resource. each resource represent an event
+   */
+  private void buildUnitiesVector(){
+    int nbTokens= DXToolsMethods.countTokens(this._currentActivity, ".");
+     //Vector unities= new Vector(1);
+    //System.out.println("CounTokens: "+nbTokens);// debug
+    String actID= DXToolsMethods.getToken(_currentActivity,".",0);
+    String typID= DXToolsMethods.getToken(_currentActivity,".",1);
+    if(typID.length()!=0){
+      String secID= DXToolsMethods.getToken(_currentActivity,".",2);
+      if(secID.length()!=0){
+        String unitID= DXToolsMethods.getToken(_currentActivity,".",3);
+        if(unitID.length()!=0){
+          _unities.add(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfEvents().
+                      getResource(_currentActivity));
+
+        }else{// else unitID.length()!=0
+
+        }// end else unitID.length()!=0
+      }else{// else if(secID.length()!=0)
+
+      }// end else if(secID.length()!=0)
+    }else{// else if(typID.length()!=0)
+
+    }// end else if(typID.length()!=0)
+  }
+
+}// end class

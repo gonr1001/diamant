@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.80 $  $Date: 2003-09-29 20:36:32 $
+ * Title: DDocument $Revision: 1.81 $  $Date: 2003-09-29 22:32:00 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.80 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.81 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 package dInterface;
@@ -324,8 +324,8 @@ public class DDocument  extends InternalFrameAdapter implements
     } );
     //_bottomLablel = new JLabel("hello");
 
-    _ttPanel = new SimpleTTPanel(_dm);
-    //_ttPanel = new DetailedTTPanel(_dm);
+    //_ttPanel = new SimpleTTPanel(_dm);
+    _ttPanel = new DetailedTTPanel(_dm);
 
     _dm.addDModelListener(this);
     _stateBar = new DStateBar(_dm.getSetOfStates());//initStatusPanel();

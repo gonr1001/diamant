@@ -258,4 +258,14 @@ public class DXToolsMethods {
      return "";
    }
 
+   /**
+    * count the number of tokens
+    * @return
+    */
+   public final static int countTokens(String str, String delimiter){
+     StringTokenizer strToken= new StringTokenizer(str,delimiter);
+     return strToken.countTokens();
+
+   }
+
 }
