@@ -109,4 +109,22 @@ public class Resource {
     return instInfo;
   }
 
+  /**
+   * compare this resource with the specified resource
+   * @param resource the specified resource
+   * @return bolean true if this resource and the specified resource are equals
+   * false if they are not equals
+   * */
+  public boolean equals( Resource resource){
+    if(_resourceKey!=resource._resourceKey)
+      return false;
+    else
+      if(!_resourceID.equals(resource._resourceID) )
+        return false;
+    else
+      if (!_resourceAttach.equals(resource._resourceAttach))
+        return false;
+    return true;
+  }
+
 }

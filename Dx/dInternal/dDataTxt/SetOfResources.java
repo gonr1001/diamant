@@ -560,4 +560,19 @@ public class SetOfResources extends DXObject{
     return low;
   }
 
+  /**
+   * compare this resource with the specified resource
+   * @param SetOfResources the specified SetOfResources
+   * @return bolean true if this SetOfResources and the specified SetOfResources are equals
+   * false if they are not equals
+   * */
+  public boolean equals( SetOfResources setOfRes){
+    if (size()!= setOfRes.size())
+      return false;
+   for (int i=0; i< size(); i++)
+      if (!getResourceAt(i).equals(setOfRes.getResourceAt(i)))
+        return false;
+    return true;
+  }
+
 }
