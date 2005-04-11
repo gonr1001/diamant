@@ -1,6 +1,6 @@
 /**
 *
-* Title: FirstAffectAlgorithm $Revision: 1.18 $  $Date: 2005-02-08 21:21:19 $
+* Title: FirstAffectAlgorithm $Revision: 1.19 $  $Date: 2005-04-11 14:42:25 $
 * Description: FirstAffectAlgorithm is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.18 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.19 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 
@@ -42,7 +42,7 @@ public class FirstAffectAlgorithm implements Algorithm {
   /**
    * @associates DResource 
    */
-  private Vector _placeEvent;
+  private Vector _placeEvent; // XXXX Pascal: Commentaire?
   private DModel _dm;
 
   /**

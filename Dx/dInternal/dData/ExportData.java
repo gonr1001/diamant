@@ -83,7 +83,7 @@ public class ExportData {
  				_dm.getConditionsTest().initAllConditions();
  				DStandardReportData dataR = new DStandardReportData(_dm);
  				String str = getDataFromReport(dataR, table, type);
- 				strBuf = strBuf.append(str);
+ 				strBuf.append(str);
  			}
  		}
  		_dm.setCurrentSite(currentS);

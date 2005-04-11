@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectAlgorithm $Revision: 1.13 $  $Date: 2005-02-08 21:21:20 $
+ * Title: SelectAlgorithm $Revision: 1.14 $  $Date: 2005-04-11 14:42:25 $
  * Description: SelectAlgorithm is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.14 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 
@@ -54,6 +54,7 @@ public class SelectAlgorithm {
 	
 	/**
 	 * build Algorithm To Run
+	 * XXXX Pascal: case 0,1,2,3..... 
 	 */
 	private void buildAlgorithmToRun(){
 		_algorithmToRun.removeAllElements();
