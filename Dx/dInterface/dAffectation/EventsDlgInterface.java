@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.18 $  $Date: 2005-03-08 16:00:43 $
+ * Title: EventsDlgInterface $Revision: 1.19 $  $Date: 2005-04-11 14:39:33 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.19 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -145,13 +145,26 @@ public abstract class EventsDlgInterface extends JDialog implements
         int y = _dApplic.getJFrame().getY();
         this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
         //this.setLocationRelativeTo(_dApplic.getJFrame());
-        this.setMinimumSize(new Dimension(500, 300));
-        this.setPreferredSize(new Dimension(700, 400)); // the real
-        this.setMaximumSize(new Dimension(800, 400));
+//        this.setMinimumSize(new Dimension(500, 300));
+//        this.setPreferredSize(new Dimension(700, 400)); // the real
+//        this.setMaximumSize(new Dimension(800, 400)); // XXXX Pascal: lien inutile avec JDK 1.5
         this.pack();
         this.setResizable(false);
         this.setVisible(true);
     }
+
+	// XXXX Pascal: Fix Java 1.5->1.4
+	public Dimension getMinimumSize() {
+		return new Dimension(500, 300);
+	}
+    
+	public Dimension getPreferredSize() {
+		return new Dimension(700, 400);
+	}
+
+	public Dimension getMaximumSize() {
+		return new Dimension(800, 400);
+	}
 
     /**
      * initialize label in each panel

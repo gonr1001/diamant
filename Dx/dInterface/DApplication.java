@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.64 $  $Date: 2005-02-01 21:27:15 $
+ * Title: DApplication $Revision: 1.65 $  $Date: 2005-04-11 14:38:50 $
  
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.64 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.65 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 
@@ -89,6 +89,9 @@ public class DApplication implements ActionListener {
 		_logger.warn("Hi from DApplication");
 	}
 	
+	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent 
+	//              pour que ca vaille la peine d'assigner son resultat a une 
+	//              variable
 	public void doIt() {
 		_preferences = new Preferences(System.getProperty("user.dir")
 				+ File.separator +
@@ -102,7 +105,7 @@ public class DApplication implements ActionListener {
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
 		
 		setLAF(_preferences._lookAndFeel);
-		_logger.warn("bye_from DApplication");
+		_logger.warn("bye_from DApplication"); // XXXX Pascal: Comment ca 'bye' ?!
 	}
 	//-------------------------------------------  
 	private JFrame createFrame(String str) {
@@ -151,12 +154,14 @@ public class DApplication implements ActionListener {
 	//-------------------------------------------
 	public void actionPerformed(ActionEvent  e) {
 		if (e.getSource() instanceof JRadioButton){
-		
+		// XXXX Pascal: Pourquoi ce 'if' est-il vide?
+		//              Ne devrait pas etre laisse ds cet etat
 		}
 		if (e.getSource() instanceof CommandHolder) {
 			((CommandHolder) e.getSource()).getCommand().execute(this);
 		} else {
 			System.out.println("DApplication: I do not know what to do, please help me (Action Performed)");
+			// XXXX Pascal: Devrait etre logge
 		}// end if ... else
 	}// end actionPerformed
 	

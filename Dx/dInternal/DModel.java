@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.126 $  $Date: 2005-03-08 16:00:43 $
+ * Title: DModel $Revision: 1.127 $  $Date: 2005-04-11 14:41:39 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.126 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.127 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 package dInternal;
@@ -146,6 +146,7 @@ public class DModel extends Observable {
      *            3;
      *  
      */
+    //	XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
     public DModel(DDocument dDocument, String fileName, int type) {
         _error = "";
         _currentSite = DConst.ACTIVITY_STANDARD_SITE;

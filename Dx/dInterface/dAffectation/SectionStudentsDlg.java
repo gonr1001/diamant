@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionStudentsDlg $Revision: 1.2 $  $Date: 2005-03-08 16:00:43 $
+ * Title: SectionStudentsDlg $Revision: 1.3 $  $Date: 2005-04-11 14:39:34 $
  * Description: SectionStudentsDlg is class used
  *           to display a dialog to modifiy students assignation
  *           in sections
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.3 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
 
  */
@@ -105,15 +105,28 @@ public class SectionStudentsDlg extends JDialog implements ActionListener {
 			int x = _dApplic.getJFrame().getX();
 			int y = _dApplic.getJFrame().getY();
 			this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
-			this.setMinimumSize(new Dimension(200, 200));
-			this.setPreferredSize(new Dimension(600, 600));
-			this.setMaximumSize(new Dimension(1000, 1500));
+//			this.setMinimumSize(new Dimension(200, 200));
+//			this.setPreferredSize(new Dimension(600, 600));
+//			this.setMaximumSize(new Dimension(1000, 1500)); // XXXX Pascal: lien inutile avec JDK 1.5
 			this.pack();
 			this.setResizable(true);
 			this.setVisible(true);
 		} //end if
 
 	}//end SectionDlg
+
+	// XXXX Pascal: Fix Java 1.5->1.4
+	public Dimension getMinimumSize() {
+		return new Dimension(200, 200);
+	}
+    
+	public Dimension getPreferredSize() {
+		return new Dimension(600, 600);
+	}
+
+	public Dimension getMaximumSize() {
+		return new Dimension(1000, 1500);
+	}
 
 	/**
 	 * <p>

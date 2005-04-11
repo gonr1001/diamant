@@ -262,7 +262,8 @@ public class InstructorAttach extends DObject {
 					matrix[dayIndex][periodIndex] += site;
 					setAssignAvailability(matrix);
 				}else{// else if (matrix[dayIndex][periodIndex].equalsIgnoreCase("0"))
-					if(!matrix[dayIndex][periodIndex].contains(site)){
+//					if(!matrix[dayIndex][periodIndex].contains(site)){ // XXXX Pascal: lien inutile avec JDK 1.5
+					if(!matrix[dayIndex][periodIndex].matches(".*" + site + ".*")){
 						matrix[dayIndex][periodIndex] += /*DConst.AVAILABILITY_ASSIGN_SEPARATOR+*/ site;
 						setAssignAvailability(matrix);
 					}
@@ -285,7 +286,8 @@ public class InstructorAttach extends DObject {
 			String[][] matrix = getAssignAvailabilityTable(_instructorSiteAvailability);
 			if ((dayIndex < matrix.length))
 				if (periodIndex < matrix[dayIndex].length)
-					if(matrix[dayIndex][periodIndex].contains(site))
+//					if(matrix[dayIndex][periodIndex].contains(site)) // XXXX Pascal: lien inutile avec JDK 1.5
+			if(matrix[dayIndex][periodIndex].matches(".*" + site + ".*"))
 						v.add(site);
 		} //end for (int i = 0; i< sites.size(); i++)
 		return v;

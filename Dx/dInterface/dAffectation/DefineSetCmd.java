@@ -13,6 +13,7 @@ import dDeveloper.DoNothingDlg;
 import dInterface.Command;
 import dInterface.DApplication;
 
+// XXXX Pascal: A quoi sert cette classe?
 
 public class DefineSetCmd implements Command{
 

@@ -51,8 +51,8 @@ public class ProgressBar extends JPanel
     _startButton.setActionCommand("start");
     _startButton.addActionListener(this);
 
-    _jProgressBar = new JProgressBar(0, task.getLengthOfTask());
-    _jProgressBar.setValue(0);
+    _jProgressBar = new JProgressBar(0, task.getLengthOfTask());// XXXX Pascal: magic numbers
+    _jProgressBar.setValue(0);// XXXX Pascal: magic numbers
     _jProgressBar.setStringPainted(true);
     JPanel panel = new JPanel();
     //panel.add(_startButton);
@@ -60,7 +60,7 @@ public class ProgressBar extends JPanel
 
     add(panel, BorderLayout.PAGE_START);
     //add(new JScrollPane(taskOutput), BorderLayout.CENTER);
-    setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+    setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // XXXX Pascal: magic numbers
 
     //Create a timer.
     timer = new Timer(ONE_SECOND, new ActionListener() {

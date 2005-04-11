@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.125 $  $Date: 2005-03-08 16:00:43 $
+ * Title: DMenuBar $Revision: 1.126 $  $Date: 2005-04-11 14:38:50 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.125 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.126 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 package dInterface;
@@ -77,6 +77,8 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 	private final String cMFONT = DConst.MFONTDialog;
 	private final int cFONT = Font.PLAIN;
 	private final int cNPT11 = DConst.NPT11;
+	
+	// XXXX Pascal: Ne respecte pas le Java Coding Standard sect. 6.1
 	
 	//the main menus
 	private JMenu _file,
@@ -1074,6 +1076,7 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 		setMenus();
 	} // end setNewTTSCy
 	
+	// XXXX Pascal: Ne respecte pas le Java Coding Standard sec. 10.4
 	private void setAll() {
 		//the menu _file
 		_boolMenuFile = true;
@@ -1142,6 +1145,10 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 		setMenus();
 	} //end setAll()
 	
+	// XXXX Pascal: Cette methode n'est vraiment pas elegante.
+	//              Les methodes setFileMenu, setAssignMenu, etc. devraient 
+	//              prendre un boolean en parametre. 
+	//              ( p.ex.: setFileMenu(_boolMenuFile) )
 	private void setMenus() {
 		//System.out.println("setMenus" + _boolAssign);
 		if (_boolMenuFile)

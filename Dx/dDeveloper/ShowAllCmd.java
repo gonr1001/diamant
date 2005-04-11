@@ -12,6 +12,8 @@ package dDeveloper;
 import dInterface.Command;
 import dInterface.DApplication;
 
+
+// XXXX Pascal: A quoi sert cette classe?
 public class ShowAllCmd implements Command{
 
   public ShowAllCmd() {

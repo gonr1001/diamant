@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.57 $  $Date: 2005-02-08 21:24:23 $
+ * Title: EditActivityDlg $Revision: 1.58 $  $Date: 2005-04-11 14:39:33 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.57 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.58 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -173,6 +173,7 @@ public class EditActivityDlg
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+	// XXXX Pascal: magic numbers sans commentaire
     this.setBounds(screenSize.width/ 6,
                    screenSize.height/ 4,
                    screenSize.width/ 3,
@@ -190,7 +191,7 @@ public class EditActivityDlg
     String command = e.getActionCommand();
 	if (command.equals(DConst.CATEGORY_AC)) {
 		_roomCB.disableActionListeners();
-		Vector[] vectR =  buildRoomList();
+		Vector[] vectR =  buildRoomList(); // XXXX Pascal: Vector est 'deprecated' depuis plusieurs annees
 		_roomCB = new DXJComboBox(vectR[1]);
 		_roomCB.enableActionListeners();
 	  _applyPanel.setFirstEnable();

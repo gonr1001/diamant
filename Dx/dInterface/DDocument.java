@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.134 $  $Date: 2005-03-08 16:00:43 $
+ * Title: DDocument $Revision: 1.135 $  $Date: 2005-04-11 14:38:50 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.134 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.135 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 package dInterface;
@@ -88,6 +88,7 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 	 * 		 possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
 	 * 
 	 */
+	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DDocument(DMediator dMediator, String ttName, String fileName, int type) {
 		_dMediator = dMediator;
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

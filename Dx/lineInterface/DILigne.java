@@ -8,7 +8,7 @@ package lineInterface;
  * @author rgr + ys
  * @version 1.0
  */
-
+//XXXX Pascal: Huh ?!?
 public class DILigne {
 
   public DILigne() {

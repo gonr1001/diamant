@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.47 $ $Date: 2005-03-08 16:00:43 $
+ * Title: ActivityDlg $Revision: 1.48 $ $Date: 2005-04-11 14:39:33 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,8 +12,8 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.47 $
- * @author $Author: syay1801 $
+ * @version $Revision: 1.48 $
+ * @author $Author: durp1901 $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -89,13 +89,26 @@ public class ActivityDlg extends JDialog implements ActionListener {
         int x = _dApplic.getJFrame().getX();
         int y = _dApplic.getJFrame().getY();
         this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); 
-        this.setMinimumSize(new Dimension(300, 300));
-        this.setPreferredSize(new Dimension(400, 400)); //the real
-        this.setMaximumSize(new Dimension(500, 500));
+//        this.setMinimumSize(new Dimension(300, 300));
+//        this.setPreferredSize(new Dimension(400, 400)); //the real
+//        this.setMaximumSize(new Dimension(500, 500)); // XXXX Pascal: lien inutile avec JDK 1.5
         this.pack();
         this.setResizable(false);
         this.setVisible(true);
     }
+    
+    // XXXX Pascal: Fix Java 1.5->1.4
+    public Dimension getMinimumSize() {
+    	return new Dimension(300, 300);
+    }
+    
+    public Dimension getPreferredSize() {
+    	return new Dimension(400, 400);
+    }
+
+	public Dimension getMaximumSize() {
+		return new Dimension(500, 500);
+	}
 
     /**
      * Initialize the dialog

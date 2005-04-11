@@ -15,6 +15,9 @@ import dInterface.DApplication;
 import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.InformationDlg;
 
+// XXXX Pascal: Balance, Middle, Optimize sont tellement sembables...
+//              Pkoi ne pas avoir utilise le Template pattern?!
+
 public class BalanceMixingAlgorithmCmd implements Command{
 
   int _selectedContext=1;// context for balance mixing algorithm

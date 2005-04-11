@@ -13,6 +13,7 @@ package dDeveloper;
 import dInterface.Command;
 import dInterface.DApplication;
 
+// XXXX Pascal: A quoi sert cette classe?
 public class StateZeroCmd implements Command {
 
   public StateZeroCmd() {

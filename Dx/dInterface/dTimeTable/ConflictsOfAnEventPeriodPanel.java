@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.2 $  $Date: 2005-03-08 16:00:43 $
+ * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.3 $  $Date: 2005-04-11 14:41:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.3 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -88,7 +88,8 @@ public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
     topPanel.add(nbAct);
     // the events are displayed
     for(int i = 0; i < _vec.size(); i ++) {
-        if ( ((String)_vec.get(i)).contains(_shortEventName) ){
+//        if ( ((String)_vec.get(i)).contains(_shortEventName) ){ // XXXX Pascal: lien inutile avec JDK 1.5
+		if ( ((String)_vec.get(i)).matches(".*" + _shortEventName + ".*") ){
             JLabel jl = new JLabel((String)_vec.get(i));
             jl.setForeground(Color.BLUE);
             miPanel.add(jl);

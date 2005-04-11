@@ -1,6 +1,6 @@
 /**
 *
-* Title: ActivityCmd $Revision: 1.7 $  $Date: 2005-03-08 16:00:43 $
+* Title: ActivityCmd $Revision: 1.8 $  $Date: 2005-04-11 14:39:33 $
 * Description: ActivityCmd is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.8 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 package dInterface.dAffectation;
@@ -26,7 +26,11 @@ import dConstants.DConst;
 import dInterface.Command;
 import dInterface.DApplication;
 
-
+// XXXX Pascal: Pourquoi le constructeur des dialogues recoivent un DApplication 
+//              en parametre?  N'y a-t-il pas qu'un seul DApplication qui soit 
+//              instancie en tout temps?  
+//              Si oui, il serait bcq plus elegant d'utiliser le Singleton sur 
+//              DApplication
 
 
 public class ActivityCmd implements Command{

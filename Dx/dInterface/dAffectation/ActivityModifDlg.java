@@ -32,6 +32,8 @@ public class ActivityModifDlg extends SetOfElementsInterface{
    * Constructor
    * @param dApplic
    */
+  
+  // XXXX Pascal: On internationalise ou pas ?!
   public ActivityModifDlg(DApplication dApplic) {
     super(new Dialog(dApplic.getJFrame()),dApplic,"Activités","Nombre d'activités",1);
     getContentPane().add(new JLabel("hello"), BorderLayout.NORTH);
