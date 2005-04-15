@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.38 $  $Date: 2005-03-08 16:00:45 $
+* Title: TestConditions $Revision: 1.39 $  $Date: 2005-04-15 14:08:49 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.38 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.39 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 
@@ -35,7 +35,7 @@ public class TestConditions {
 
  private StudentsConflictsMatrix _matrix;
  private DModel _dm;
- private Vector _testToRun = new Vector(1);
+ private Vector _testToRun = new Vector(1); // XXXX Pascal: Pkoi 1 ?
  private boolean _matrixIsBuilded= false;
  private int[] _avoidPriority={1,2};
  private int [] _acceptableConflictsTable={0,0,0};
@@ -187,6 +187,8 @@ public class TestConditions {
    * <p>range 1= nb of instructors conflicts  </p>
    * <p> range 2= nb of rooms conflicts  </p>
    */
+  
+  // XXXX Pascal: Candidat pour un anti-pattern ?
   private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts, DResource event, int operation, boolean usePriority ){
     int[] numberOfConflicts={0,0,0};
 

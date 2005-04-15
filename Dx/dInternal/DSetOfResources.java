@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.7 $  $Date: 2005-02-09 01:38:12 $
+* Title: DSetOfResources $Revision: 1.8 $  $Date: 2005-04-15 14:08:49 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.8 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 
@@ -26,6 +26,8 @@ import dInternal.DResource;
 public abstract class DSetOfResources extends DObject{
 
   /**contains list of resource (instructor, rooms, student or activity)*/
+	// XXXX Pascal: Pkoi pas une Hash au lieu de Vecteur?  Il semble que quelqu'un a essaye d'implementer 
+	//              un hash en utiliant un Vector (deprecated en passant) comme contenant.  C'est tres bizzare.
   private Vector _resourceList;
   /**give type of the last sort _stateSort 0= sortSetOfResourcesByKey;
    * 1= sortSetOfResourcesByID; 2= sortSetOfResourcesBySelectedField
@@ -48,7 +50,7 @@ public abstract class DSetOfResources extends DObject{
    * @param int resType The resource type
    * */
   public DSetOfResources() {
-    _resourceList = new Vector(1,1);
+    _resourceList = new Vector(1,1); // XXXX Pascal: Pourquoi (1,1) ?  Quel est la motivation?
     //_resourceType = resType;
   }
 
@@ -99,6 +101,10 @@ public abstract class DSetOfResources extends DObject{
    * @return boolean (true if Resource added to list, false if Resource not
    * added because it already exists)
    * */
+  // XXXX Pascal: cette methode a un comportement X si insertType vaut 0 et Y si insertType vaut 1?
+  //              Ouch!  Pourquoi pas deux methodes distinctes?  On peut utiliser une methode privee pour le 
+  //              code qui est semblable afin d'eviter la redondance.
+  //              Sinon, on cree un API monstrueux.
   public boolean addResource(DResource resource, int insertType){
     //if (getIndexOfResource(resource.getID()) == -1){
       //if (_stateSort!=0)

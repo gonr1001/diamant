@@ -1,6 +1,6 @@
 /**
 *
-* Title: ReadXMLFile $Revision: 1.2 $  $Date: 2004-09-10 13:31:15 $
+* Title: ReadXMLFile $Revision: 1.3 $  $Date: 2005-04-15 14:08:50 $
 * Description: ReadXMLFile is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.3 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 
@@ -35,6 +35,7 @@ import org.xml.sax.SAXException;
  * Description: ReadXMLFile is a class used to read
  *              a XML file.
  */
+// XXXX Pascal: Mauvais nom de classe.  Read est un verbe.
 public class ReadXMLFile {
 private DocumentBuilder _builder;
 

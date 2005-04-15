@@ -47,7 +47,7 @@ public class TTStructure {
   //private int _row;
   public static int NUMBEROFACTIVESDAYS=5;// monday to friday
 
-  private int _periodLenght;
+  private int _periodLenght; // XXXX Pascal: Non initialise
   private int _currentCycleIndex=0;
   //private String _errorMessage = "XML file is corrupted";
   static final String _TAGITEM="TTcycle";
@@ -56,7 +56,7 @@ public class TTStructure {
   static final String _TAGITEM3="TTdays";
   
   public TTStructure() {
-    _setOfCycles= new SetOfResources(4);
+    _setOfCycles= new SetOfResources(4); // XXXX Pascal: magic number
   }
   
   public int getNumberOfActiveDays(){
@@ -129,14 +129,14 @@ public class TTStructure {
       Element eltSeqs;
       Element eltSeq;
       for (int cyc=0; cyc<nbOfCycles; cyc++){
-        eltCycle= wr.createElement(doc,ITEM2_subTag[0]);
+        eltCycle= wr.createElement(doc,ITEM2_subTag[0]); // XXXX Pascal: Magic numbers
         eltDays= wr.createElement(doc,ITEM2_subTag[1]);
         for (int day=0; day<nbOfDays; day++){
           eltDay= wr.createElement(doc,ITEM2_subTag[2]);
           eltSeqs= wr.createElement(doc,ITEM2_subTag[3]);
 
           //add AM periods
-          int [] beginT={8,15};
+          int [] beginT={8,15}; // XXXX Pascal: Magic numbers
           eltSeq= CreateSeqPeriods(doc,"AM",4,60,beginT,0);
           eltSeqs= wr.appendChildInElement(eltSeqs, eltSeq);
           //add PM periods
@@ -379,7 +379,7 @@ public class TTStructure {
    */
   private boolean preLoad(String str) {
    File fil= new File(str);
-   fil.exists();
+   fil.exists(); // XXXX Pascal: redondance?  Cette methode est-elle vraiment necessaire?
    return fil.exists();
  }
   

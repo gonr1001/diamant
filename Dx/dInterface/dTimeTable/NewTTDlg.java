@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.25 $  $Date: 2005-01-21 16:05:59 $
+ * Title: NewTTDlg $Revision: 1.26 $  $Date: 2005-04-15 14:08:49 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,8 +19,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.26 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 
@@ -36,6 +36,8 @@ import dInterface.dUtil.DXTools;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
 
+import org.apache.log4j.Logger;
+
 
 
 /**
@@ -44,6 +46,8 @@ import eLib.exit.dialog.FatalProblemDlg;
  *
  */
 public class NewTTDlg extends JDialog {
+	private static Logger logger = Logger.getLogger(NewTTDlg.class);
+	
   /**
     * the constructor will displays the dialog
     *
@@ -66,17 +70,20 @@ public class NewTTDlg extends JDialog {
      if (type == DConst.CYCLE) {
        str3 = DConst.NTT_CY_TD;
      }
-     if (type == DConst.EXAM) {
+     else if (type == DConst.EXAM) {
        str3 = DConst.NTT_EX_TD;
      }
-     if (type == DConst.CYCLEANDEXAM) {
+     else if (type == DConst.CYCLEANDEXAM) {
        str3 = DConst.NEW_TT_M;
+     }
+     else {
+     	logger.error("buildDocument type=" + type + " est inconnu");
      }
 
      fc.setFileFilter(new DFileFilter(new String[] {str1}, str2));
      // Display the file chooser in a dialog
      Dimension d = fc.getPreferredSize();
-     fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight()));
+     fc.setPreferredSize(new Dimension((int)d.getWidth()+ 100, (int)d.getHeight())); // XXXX Pascal: Magic number
      int returnVal =DXTools.showDialog(dApplic.getJFrame(),fc,str3);
 
      // If the file chooser exited sucessfully,
@@ -88,6 +95,14 @@ public class NewTTDlg extends JDialog {
 
        String error = dApplic.getDMediator().addDoc(dApplic.getCurrentDir() + DConst.NO_NAME, fil, type);
 
+       // XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
+       //              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
+       //                new FatalProblemDlg(dApplic.getJFrame(),error);
+       //                System.exit(1);
+       //
+       //              De plus, par convention, les valeurs positives de sortie d'une 
+       //              application indiquent que tout s'est BIEN passe.  Il faudrait 
+       //              retourner une valeur negative quand un probleme majeur survient.
        if(error.length()!=0){
          new FatalProblemDlg(dApplic.getJFrame(),error);
          System.exit(1);
@@ -95,6 +110,8 @@ public class NewTTDlg extends JDialog {
        dispose();
        dApplic.getMenuBar().postNewTTCyCmd();
      } // if ((returnVal == JFileChooser.APPROVE_OPTION)) {
+     // XXXX Pascal: else?  Si on choisi un mauvais fichier XML on recoit un message d'erreur est l'application ferme en catastrophe.
+     //              Si on choisi un fichier avec une mauvaise extension, on nous le fait savoir et, encore une fois, on ferme en catastrophe.
    }// end loadTTData
 
 } /* end class NewTTDlg */

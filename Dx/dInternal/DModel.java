@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.127 $  $Date: 2005-04-11 14:41:39 $
+ * Title: DModel $Revision: 1.128 $  $Date: 2005-04-15 14:08:49 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.127 $
+ * @version $Revision: 1.128 $
  * @author  $Author: durp1901 $
  * @since JDK1.3
  */
@@ -157,7 +157,7 @@ public class DModel extends Observable {
         _setOfImportErrors = new StandardCollection();
         _setOfImportSelErrors = new StandardCollection();
         _progressBarState = new DXValue();
-        _progressBarState.setIntValue(0);
+        _progressBarState.setIntValue(0);  // XXXX Pascal: magic number
         _dDocument = dDocument;
         if (fileName.endsWith(DConst.DOT_DIA)) {
             _error = loadTimeTable(fileName, getCurrentDir(fileName));
@@ -177,7 +177,7 @@ public class DModel extends Observable {
         _modified = false;
 
         this.notifyObservers(this);
-        this.clearChanged();
+        this.clearChanged(); // XXXX Pascal: Cette methode est appelee automatiquement par notifyObservers()
     }
 
     /**

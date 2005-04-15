@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.135 $  $Date: 2005-04-11 14:38:50 $
+ * Title: DDocument $Revision: 1.136 $  $Date: 2005-04-15 14:08:48 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.135 $
+ * @version $Revision: 1.136 $
  * @author  $Author: durp1901 $
  * @since JDK1.3
  */
@@ -54,7 +54,7 @@ import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 
 /**
- * Description: DDocument is a class used to  
+ * Description: DDocument is a class used to  // XXXX Pascal: used to what ??
  *
  *              <p>
  *              
@@ -106,7 +106,7 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 	
 	
 	public void internalFrameActivated(InternalFrameEvent e) {
-		e.toString();
+		e.toString(); // XXXX Pascal: Pkoi appelle toString?  Devrait etre e=e
 		_dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
 	} // end internalFrameActivated 
 	//-------------------------------------------
@@ -335,7 +335,7 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 		}
 		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();
-		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
+		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1)); // XXXX Pascal: Magic number
 		_jif.setVisible(true);
 	
 		//to comment if work with jifs
@@ -344,8 +344,8 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 			// to be present when the _jif is resized
 		}
 		catch (java.beans.PropertyVetoException pve) {
-			new FatalProblemDlg("I was in DDocument trying to make steMaximum!!!" );
-			System.exit(52);
+			new FatalProblemDlg("I was in DDocument trying to make setMaximum!!!" );
+			System.exit(52); // XXXX Pascal: 52 ?
 			pve.printStackTrace();
 		}
 	} // end buidDocument

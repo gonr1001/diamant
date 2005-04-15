@@ -1,7 +1,7 @@
 package dInternal;
 /**
 *
-* Title: DSetOfStates $Revision: 1.4 $  $Date: 2005-03-08 16:00:44 $
+* Title: DSetOfStates $Revision: 1.5 $  $Date: 2005-04-15 14:08:49 $
 * Description: DSetOfStates is a class used to
 *
 *
@@ -15,8 +15,8 @@ package dInternal;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.5 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 
@@ -43,6 +43,7 @@ public class DSetOfStates extends DSetOfResources{
    * The states must be in the order that they are displayed
    * on the StateBar
    */
+  // XXXX Pascal: Kosse ca ?!
   private void initSetOfStates(){
     DState state= new DState(DConst.COLOR_BLACK,-1);
     addResource(new DResource(DConst.SB_TOTAL,state),0);
