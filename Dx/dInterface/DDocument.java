@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.136 $  $Date: 2005-04-15 14:08:48 $
+ * Title: DDocument $Revision: 1.137 $  $Date: 2005-04-19 20:55:46 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,16 +14,14 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.136 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.137 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
 
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Dimension;
 
 import java.io.File;
@@ -71,8 +69,7 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 	private DStateBar _stateBar;
 	private String _version;
 	
-	public DDocument() {
-	} //end DDocument
+
 	//-----------------------------
 	
 	
@@ -91,7 +88,7 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DDocument(DMediator dMediator, String ttName, String fileName, int type) {
 		_dMediator = dMediator;
-		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		_dMediator.getDApplication().setCursorWait();
 		_dm = new DModel(this, fileName, type);
 		if(_dm.getError().length()==0){
 			//_dm.getTTStructure().addTTStructureListener(this);
@@ -101,10 +98,18 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 			_stateBar.upDateDStateBar(_dm.getSetOfStates());
 			_jif.addInternalFrameListener(this);
 		}
-		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		_dMediator.getDApplication().setCursorDefault();
 	} // end constructor DDocument()
 	
 	
+	/**
+	 * 
+	 */
+	public DDocument() {		
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void internalFrameActivated(InternalFrameEvent e) {
 		e.toString(); // XXXX Pascal: Pkoi appelle toString?  Devrait etre e=e
 		_dMediator.getDApplication().getToolBar().setToolBars(getTTStructure());
@@ -123,20 +128,20 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 		_jif.setTitle(name);
 	} // end setDocumentName
 	//-------------------------------------------
-	public void setCursor(int cursorValue, Component component){
+/*	public void setCursor(int cursorValue, Component component){
 		_dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
 		if(component!=null)
 			component.setCursor(Cursor.getPredefinedCursor(cursorValue));
-	}
+	}*/
 	/**
 	 *
 	 * @param cursorValue
 	 */
-	public void setCursor(int cursorValue){
+/*	public void setCursor(int cursorValue){
 		_dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
 		_dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-	}
+	}*/
 	//-------------------------------------------
 	public String getError(){
 		return _dm.getError();
@@ -189,91 +194,19 @@ public class DDocument  extends InternalFrameAdapter implements Observer {
 		}
 		return str;
 	}
-	//-------------------------------------------
-	/*	public void actionPerformed(ActionEvent  e) {
-	 if (e.getSource() instanceof CommandHolder) {
-	 ((CommandHolder) e.getSource()).getCommand().execute(_dMediator.getDApplication());
-	 }
-	 else {
-	 System.out.println("DDocument:I do not know what to do, please help me (Action Performed)");
-	 }// end if ... else
-	 }// end actionPerformed*/
-	//-------------------------------------------
+
 	
 	public void update(Observable dm, Object component) {
 		if(component != null) 
 			component.toString();
-		setCursor(Cursor.WAIT_CURSOR);
+		_dMediator.getDApplication().setCursorWait();
 		_ttPane.updateTTPane(((DModel)dm).getTTStructure());
 		_stateBar.upDateDStateBar(((DModel)dm).getSetOfStates());
 		
-		setCursor(Cursor.DEFAULT_CURSOR);
+		_dMediator.getDApplication().setCursorDefault();
 	}// end update
-	//-------------------------------------------
-	
 
 
-	/*public void changeInStateBar (DSetOfStatesEvent e){
-		e.toString();
-		_dm.setStateBarComponent();
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-	}*/
-	
-	//-------------------------------------------
-	/**
-	 *
-	 * @param e
-	 */
-/*	public void changeInTTStructure(TTStructureEvent  e) {
-		//e.toString();
-		//System.out.println("I was in changeInTTStructure");
-		setCursor(Cursor.WAIT_CURSOR);
-		_dm.setModified();
-		_ttPane.updateTTPane(_dm.getTTStructure());
-		_dm.setStateBarComponent();
-		_stateBar.upDateDStateBar(_dm.getSetOfStates());
-		setCursor(Cursor.DEFAULT_CURSOR);
-	} // end changeInTTStructure
-	//-------------------------------------------
-*/
-	
-	/**
-	 *
-	 * @param e
-	 * @param component
-	 */
-
-	
-
-	
-	/**
-	 *
-	 * @param e
-	 * @param component
-	 */
-/*	public void changeInSetOfInstructors(SetOfInstructorsEvent  e, Component component) {
-		e.toString();
-		System.out.println("I was in changeInSetOfInstructors");
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		_dm.setModified();
-		_dm.getSetOfStates().sendEvent();
-		
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	}// end ac*/
-	
-	/**
-	 *
-	 * @param e
-	 * @param component
-	 */
-/*	public void changeInSetOfRooms(SetOfRoomsEvent  e, Component component) {
-		e.toString();
-		System.out.println("I was in changeInSetOfRooms");
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		_dm.setModified();
-		_dm.getSetOfStates().sendEvent();
-		component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	}// end changeInSetOfRooms*/
 	//-------------------------------------------
 	public void displaySimple(){
 		close();

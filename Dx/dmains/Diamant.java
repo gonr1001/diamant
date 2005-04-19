@@ -1,6 +1,6 @@
 /**
  *
- * Title: Diamant $Revision: 1.21 $  $Date: 2005-04-11 14:43:02 $
+ * Title: Diamant $Revision: 1.22 $  $Date: 2005-04-19 20:55:48 $
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,8 +16,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.22 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dmains;
@@ -29,6 +29,7 @@ import lineInterface.DILigne;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+
 import eLib.exit.dialog.FatalProblemDlg;
 
 import dConstants.DConst;
@@ -37,11 +38,11 @@ import dInterface.DApplication;
 /**
  *
  * Diamant is used to call the whole application.
- * It makes an instance of Dview then call doIt methode
- * which runs the application
- * The constant TITLE is the title of the jFrame
- * the constant GUI (true) allows to have a Graphical User Interface
- * or when (false) a line interface
+ * It makes an instance of DApplication then call doIt methode
+ * which runs the application.
+ * 
+ * The constant GUI (true) allows to have a Graphical User Interface
+ * or when (false) a line interface.
  *
  */
 
@@ -49,12 +50,7 @@ public class Diamant {
 
     private final static boolean GUI = true;
     private static Logger _logger = Logger.getLogger(Diamant.class.getName());
-    /**
-     * The constructor is not necessary, so empty.
-     * All happens in main
-     */
-    public Diamant() {}
-
+    private static DApplication dApplic = new DApplication();
     /**
       * Just creating an instance of the DApplication
       * or a textual interface
@@ -71,20 +67,18 @@ public class Diamant {
     public static void main(String[] args) {
       PropertyConfigurator.configure("trace" + File.separator + "log4j.conf");
         if (GUI) {
-          _logger.warn("hello_with_a_GUI");
+          _logger.warn("hi_with_a_GUI");
           _logger.warn("Java version: "+ System.getProperty("java.version"));
-
-          if (0 <= System.getProperty("java.version").compareTo(DConst.JVM)) {
-			DApplication dApplic = new DApplication();
-			dApplic.doIt();
-          }
-          else {
+    
+          if ( DConst.JVM.compareToIgnoreCase(System.getProperty("java.version")) <= 0 ) {
+			dApplic.doIt();			
+          } else {
             new FatalProblemDlg("You need to download and install a new  \n" +
                                 "Java Virtual Machine");
             System.out.println("bye");
             System.exit(1);
           }
-
+          _logger.warn("hi_with_a_GUI");
         }
         else {
             System.out.println("hello");
@@ -93,7 +87,7 @@ public class Diamant {
             System.out.println("bye");
             System.exit(1);
         }
-        _logger.warn("bye");
+        
     } // end main
 
 } /* end class DRun */

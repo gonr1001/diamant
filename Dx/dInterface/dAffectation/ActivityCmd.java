@@ -1,6 +1,7 @@
 /**
 *
-* Title: ActivityCmd $Revision: 1.8 $  $Date: 2005-04-11 14:39:33 $
+* Title: ActivityCmd $Revision: 1.9 $  $Date: 2005-04-19 20:55:47 $
+=======
 * Description: ActivityCmd is a class used to
 *
 *
@@ -14,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
-* @author  $Author: durp1901 $
+* @version $Revision: 1.9 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInterface.dAffectation;
@@ -34,10 +35,6 @@ import dInterface.DApplication;
 
 
 public class ActivityCmd implements Command{
-
-  public ActivityCmd() {
-
-  }
 
   public void execute(DApplication dApplic) {
     new ActivityDlg(dApplic, DConst.ACT_LIST);

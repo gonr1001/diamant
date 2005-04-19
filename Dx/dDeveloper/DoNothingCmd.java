@@ -1,6 +1,6 @@
 /**
  *
- * Title: DoNothingCmd $Revision: 1.8 $  $Date: 2005-04-11 14:38:12 $
+ * Title: DoNothingCmd $Revision: 1.9 $  $Date: 2005-04-19 20:55:46 $
  * Description: DoNothingCmd is a class used by menus
  *              to execute a command
  *              which displays the DoNothingDlg which does nothing.
@@ -17,8 +17,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.9 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dDeveloper;
@@ -38,9 +38,6 @@ public class DoNothingCmd implements Command {
 
   private final static String TITLEBOX = "Do Nothing Cmd";
 
-
-  public DoNothingCmd () {
-  } // end constructor
 //------------------------------
   public void execute(DApplication dApplic) {
     new DoNothingDlg(dApplic, TITLEBOX);

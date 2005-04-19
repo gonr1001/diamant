@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.126 $  $Date: 2005-04-11 14:38:50 $
+ * Title: DMenuBar $Revision: 1.127 $  $Date: 2005-04-19 20:55:46 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.126 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.127 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -392,21 +392,21 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 		// instructor selective import
 		_mergeInstructors = new CmdMenu(DConst.IMP_SELECT_INST);
 		_mergeInstructors.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeInstructors.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_INST));
+		_mergeInstructors.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_INST));
 		_mergeInstructors.addActionListener(_dApplic);
 		_mSpecialImport.add(_mergeInstructors);
 		
 		// room selective import
 		_mergeRooms = new CmdMenu(DConst.IMP_SELECT_ROOM);
 		_mergeRooms.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeRooms.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ROOM));
+		_mergeRooms.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_ROOM));
 		_mergeRooms.addActionListener(_dApplic);
 		_mSpecialImport.add(_mergeRooms);
 		
 		// activity selective import
 		_mergeActivities = new CmdMenu(DConst.IMP_SELECT_ACT);
 		_mergeActivities.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_mergeActivities.setCommand(new ImportSelectiveFileCmd(/*_dApplic.getJFrame(),*/DConst.IMP_SELECT_ACT));
+		_mergeActivities.setCommand(new ImportSelectiveFileCmd(DConst.IMP_SELECT_ACT));
 		_mergeActivities.addActionListener(_dApplic);
 		_mSpecialImport.add(_mergeActivities);
 		
@@ -614,15 +614,7 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 	
     public void itemStateChanged(ItemEvent e) {
     	JCheckBoxMenuItem source = (JCheckBoxMenuItem)(e.getSource());
-        /*String s = "Item event detected."
-          //         + newline
-                   + "    Event source: " + source.getText()
-            //       + " (an instance of " + getClassName(source) + ")"
-              //     + newline
-                   + "    New state: "
-                   + ((e.getStateChange() == ItemEvent.SELECTED) ?
-                     "selected":"unselected");
-        System.out.println(s);*/
+
     	if (e.getStateChange() == ItemEvent.SELECTED){
     		_dApplic.getDModel().setCurrentSite(source.getText());
     		if(source.getText().equalsIgnoreCase(DConst.ALL_SITES))	
@@ -630,8 +622,7 @@ public class DMenuBar extends JMenuBar implements ItemListener{
     		 else 
     			_dApplic.getDModel().changeInDModel(_dApplic.getJFrame());
     	}
-        //output.append(s + newline);
-        //output.setCaretPosition(output.getDocument().getLength());
+ 
     }
 
 	
@@ -1330,10 +1321,7 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 	public void postStateZero() {
 		setZero();
 	}
-	
-	public void postConflict(){
-	}
-	
+		
 	public void postInitialAssign(){
 		setAfterInitialAssign();
 	}

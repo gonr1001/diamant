@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.128 $  $Date: 2005-04-15 14:08:49 $
+ * Title: DModel $Revision: 1.129 $  $Date: 2005-04-19 20:55:47 $
  * Description: DModel is a class used to
  *
  *
@@ -14,14 +14,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.128 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.129 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
 
-import java.awt.Component;
-import java.awt.Cursor;
 import java.io.File;
 import java.util.Observable;
 
@@ -373,7 +371,7 @@ public class DModel extends Observable {
          * xmlloadData.extractRooms(null, true); } // end debug
          */
         DLoadData loadData = new DLoadData(this, str);
-        _dDocument.setCursor(Cursor.WAIT_CURSOR);
+        //_dDocument.getDMediator().getDApplication().setCursorWait();
         // import set of instructors
         _setOfInstructors = loadData.extractInstructors(null, false);
         resizeResourceAvailability(_setOfInstructors);
@@ -403,7 +401,7 @@ public class DModel extends Observable {
         buildSetOfEvents();
         //_setOfStates.sendEvent();
 
-        _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
+        //_dDocument.getDMediator().getDApplication().setCursorDefault();
         setImportDone(true);
 
         return "";
@@ -783,11 +781,11 @@ public class DModel extends Observable {
         this.clearChanged();
     }
 
-    public void changeInDModel(DModelEvent e, Component c) {
+ /*   public void changeInDModel(DModelEvent e, Component c) {
         e.toString();
         c.toString();
     }// end changeInDModel
-
+*/
     public void changeInTTStructure(TTStructureEvent e) {
         e.toString();
     }// end changeInTTStructure
@@ -796,10 +794,10 @@ public class DModel extends Observable {
      * Export data from soft to SIG
      */
     public void exportData(String dir) {
-        _dDocument.setCursor(Cursor.WAIT_CURSOR);
+        _dDocument.getDMediator().getDApplication().setCursorWait();
         ExportData dataExp = new ExportData(this);
         dataExp.saveExportReport(dir);
-        _dDocument.setCursor(Cursor.DEFAULT_CURSOR);
+        _dDocument.getDMediator().getDApplication().setCursorDefault();
     }
 
     public String getCurrentSite() {

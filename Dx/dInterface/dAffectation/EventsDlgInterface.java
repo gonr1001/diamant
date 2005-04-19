@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.19 $  $Date: 2005-04-11 14:39:33 $
+ * Title: EventsDlgInterface $Revision: 1.20 $  $Date: 2005-04-19 20:55:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.20 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -344,6 +344,7 @@ public abstract class EventsDlgInterface extends JDialog implements
      *  
      */
     protected void doubleClicMouseProcess() {
+    	//    	 TODO Auto-generated constructor stub
     }
 
     /**
