@@ -1,7 +1,7 @@
 
 /**
 *
-* Title: DModel $Revision: 1.31 $  $Date: 2004-12-16 19:20:54 $
+* Title: DModel $Revision: 1.32 $  $Date: 2005-04-19 20:37:48 $
 * Description: DModel is a class used to
 *
 *
@@ -15,14 +15,14 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.31 $
+* @version $Revision: 1.32 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
 package dInternal;
 
-
+/*
 import dConstants.DConst;
 
 import dInternal.dData.dRooms.SetOfCategories;
@@ -47,11 +47,11 @@ public class DModelProcess {
   public void setModel(DModel dm){
     _dm= dm;
   }
-
+*/
   /**
   *
   */
- public void updateEventsInTTS(){
+ /*public void updateEventsInTTS(){
    //_dm._conditionTest = new ConditionsTest(_dm);
    _dm.getConditionsTest().initAllConditions();
  }
@@ -69,7 +69,7 @@ public class DModelProcess {
   /**
    *
    */
-  public void setStateBarComponent(){
+/*  public void setStateBarComponent(){
     if (_dm._constructionState>0){//_visibleVec = _activities.getIDsByField(3, "true");
       ((DState)_dm.getSetOfStates().getResource(DConst.SB_T_ACT).getAttach()).setValue(_dm.getSetOfActivities().getIDsByField(3, "true").size());
       ((DState)_dm.getSetOfStates().getResource(DConst.SB_T_INST).getAttach()).setValue(_dm.getSetOfInstructors().size());
@@ -89,13 +89,13 @@ public class DModelProcess {
       ((DState)_dm.getSetOfStates().getResource(DConst.SB_C_STUD).getAttach()).setValue(nbConf[2]);
       _dm.getSetOfStates().sortSetOfResourcesByKey();
     }
-  }
+  }*/
 
   /**
   * build set of events using currentcycle, setofactivities, setofinstructors and
   * setofrooms
   */
- public void buildSetOfEvents(){
+ /*public void buildSetOfEvents(){
    _dm._setOfEvents.getSetOfResources().removeAllElements();
    _dm._setOfEvents.setCurrentKey(1);
    if (_dm.getSetOfActivities() != null){
@@ -106,12 +106,12 @@ public class DModelProcess {
      	_dm._conditionTest = new TestConditions(_dm);
    }// end if (_setOfActivities!=null)
 
-  }
+  }*/
 
   /**
    * resize resource availability
    */
-  public void resizeResourceAvailability(DSetOfResources soRes){
+ /* public void resizeResourceAvailability(DSetOfResources soRes){
     int [][] matrix;
     DObject attach;
     for (int i=0; i< soRes.size(); i++){
@@ -120,7 +120,7 @@ public class DModelProcess {
       matrix = DXToolsMethods.resizeAvailability(matrix,_dm.getTTStructure());
       //attach.setAvailability(matrix);
     }
-  }
+  }*/
   /**
    * resize resource availability TO delete
    */
@@ -137,7 +137,7 @@ public class DModelProcess {
 	/**
 	 * @param ofSites
 	 */
-	public void resizeSiteAvailability(SetOfSites setOfSites) {
+/*	public void resizeSiteAvailability(SetOfSites setOfSites) {
 		int [][] matrix;
 	    DObject attach;
 	    for (int i=0; i< setOfSites.size(); i++){
@@ -152,5 +152,5 @@ public class DModelProcess {
 	    	} //end for (int j=0; j < soc.size(); j++) {
 	    }//end for (int i=0; i< setOfSites.size(); i++){	
 	} //resizeSiteAvailability
-
-}// end classe
+*/
+//}// end classe

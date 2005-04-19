@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.19 $  $Date: 2005-03-08 16:00:43 $
+ * Title: OpenTTDlg $Revision: 1.20 $  $Date: 2005-04-19 20:37:45 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.20 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -38,7 +38,7 @@ import eLib.exit.dialog.FatalProblemDlg;
 
 /**
  *
- * ImportDlg is a class used to show a dialog
+ * OpenTTDlg is a class used to show a dialog
  *
  */
 
@@ -52,7 +52,7 @@ public class OpenTTDlg extends JDialog {
     */
 
    public OpenTTDlg(DApplication dApplic) {
-     buildDocument(dApplic);
+     showDialog(dApplic);
    } // end constructor
 
    /**
@@ -60,7 +60,7 @@ public class OpenTTDlg extends JDialog {
    /**
     *
     * */
-   private void buildDocument(DApplication dApplic) {
+   private void showDialog(DApplication dApplic) {
      JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
 
      fc.setFileFilter( new DFileFilter (new String[] {DConst.DIA},
@@ -89,6 +89,6 @@ public class OpenTTDlg extends JDialog {
        dispose();
         dApplic.getMenuBar().postInitialAssign();
      }
-   }// end loadTTData
+   }// end OpenTTDlg
 
-} /* end class NewTTDlg */
+} /* end class OpenTTDlg */

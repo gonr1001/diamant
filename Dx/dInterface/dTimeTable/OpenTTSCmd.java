@@ -23,10 +23,6 @@ import dInterface.DApplication;
 
 public class OpenTTSCmd implements Command{
 
-  public OpenTTSCmd() {
-  }
-
-
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
     new OpenTTSDlg(dApplic);

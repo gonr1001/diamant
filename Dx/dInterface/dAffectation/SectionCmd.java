@@ -15,9 +15,6 @@ import dInterface.DApplication;
 
 public class SectionCmd implements Command{
 
-  public SectionCmd() {
-  }
-
   public void execute(DApplication dApplic) {
       new SectionStudentsDlg(dApplic);
       //new SectionDlg(dApplic);

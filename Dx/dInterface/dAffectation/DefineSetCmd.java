@@ -17,8 +17,6 @@ import dInterface.DApplication;
 
 public class DefineSetCmd implements Command{
 
-  public DefineSetCmd() {
-  }
 
   public void execute(DApplication dApplic) {
     new DoNothingDlg(dApplic, "DefineSetDlg");

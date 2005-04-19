@@ -1,6 +1,6 @@
 /**
 *
-* Title: RoomsAvailabilityDlg $Revision: 1.19 $  $Date: 2005-02-08 21:24:23 $
+* Title: RoomsAvailabilityDlg $Revision: 1.20 $  $Date: 2005-04-19 20:37:42 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.19 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.20 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 *
 * Our convention is that: It's necessary to indicate explicitly
@@ -149,15 +149,14 @@ public class RoomsAvailabilityDlg  extends JDialog
     // if a button of the grid has been pressed
     } else if ( _posVect.indexOf(event.getSource() ) > -1 ) {
       int index = _posVect.indexOf(event.getSource());
-      int day = index / nbPer;
+      int nday = index / nbPer;
       int per = index % nbPer;
       if ( ((JToggleButton)_posVect.get(index)).isSelected() ){
-        _currentAvailbility [day][per] = 1;
+        _currentAvailbility [nday][per] = 1;
       }
       else{
-        _currentAvailbility [day][per] = 5;
+        _currentAvailbility [nday][per] = 5;
       }
-      //_modified = true;
       _applyPanel.setFirstEnable();
     }
   }

@@ -10,8 +10,6 @@ package dInternal.dUtil;
  */
 
 public class  DXObject extends Object{
-  public DXObject() {
-  }
 
 
   /**

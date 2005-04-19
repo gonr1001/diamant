@@ -12,11 +12,11 @@ package dInternal;
  */
 
 
-import java.util.EventObject;
+//import java.util.EventObject;
 
-public class DModelEvent extends EventObject{
+/*public class DModelEvent extends EventObject{
 
   public DModelEvent(DModel source) {
     super (source);
   }
-}
+}*/

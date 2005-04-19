@@ -1,6 +1,6 @@
 /**
 *
-* Title: DResourceTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: DResourceTest $Revision $  $Date: 2005-04-19 20:37:53 $
 * Description: 	DResourceTest is a class used to test the class 
 * 				DResource
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -57,8 +57,8 @@ public class DResourceTest extends TestCase{
   	assertEquals("testA_getID: assertEquals", "10", a.getID());
   }
   public void testA_getAttach(){
-  	DValue tmp = new DValue();
-  	assertEquals("testA_getAttach: assertEquals", true, a.getAttach().isEquals(tmp));
+  	DValue aux = new DValue();
+  	assertEquals("testA_getAttach: assertEquals", true, a.getAttach().isEquals(aux));
   }
   public void testA_setAttach(){
   	tmp.setIntValue(20);

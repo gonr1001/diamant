@@ -1,6 +1,6 @@
 /**
  *
- * Title: ButtonsPanel $Revision: 1.4 $  $Date: 2004-06-02 20:39:07 $
+ * Title: ButtonsPanel $Revision: 1.5 $  $Date: 2005-04-19 20:37:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -30,7 +30,7 @@ import javax.swing.JPanel;
 
 
 public abstract class ButtonsPanel extends JPanel {
-  public ButtonsPanel(){}
+  //public ButtonsPanel(){}
 
   public abstract void setFirstEnable();
   public abstract void setFirstDisable();

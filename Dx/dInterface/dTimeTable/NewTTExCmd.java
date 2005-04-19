@@ -1,6 +1,6 @@
 /**
  *
- * Title: NewTTExCmd $Revision: 1.11 $  $Date: 2005-01-21 16:05:59 $
+ * Title: NewTTExCmd $Revision: 1.12 $  $Date: 2005-04-19 20:37:44 $
  * Description: NewTTExCmd is a class used to have a new
  *  			document window
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,8 +29,6 @@ import dInterface.DApplication;
 
 public class NewTTExCmd implements Command {
 	
-	public NewTTExCmd() {
-	} //end NewTTExCmd
 	
 	public void execute(DApplication dApplic) {
 		new NewTTDlg(dApplic, DConst.EXAM);

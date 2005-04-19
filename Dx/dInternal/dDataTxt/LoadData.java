@@ -1,6 +1,6 @@
 /**
 *
-* Title: LoadData $Revision: 1.59 $  $Date: 2005-03-08 16:00:44 $
+* Title: LoadData $Revision: 1.60 $  $Date: 2005-04-19 20:37:48 $
 * Description: LoadData is a class used to read all files then 
 *              the corresponding Resources are created.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.59 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.60 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -163,7 +163,7 @@ public class LoadData {
   	 *                        (if merge = false --> replace the current SetOfStudents by the new SetOfStudents)
 	 * @return SetOfStudents
 	 */  
-	public SetOfStudents extractStudents(SetOfStudents currentList, boolean merge){
+/*	public SetOfStudents extractStudents(SetOfStudents currentList, boolean merge){
     byte[]  dataloaded = preLoad(_studentsFileName);
      SetOfStudents studentsList = new SetOfStudents(dataloaded);
      if (dataloaded != null) {
@@ -180,7 +180,7 @@ public class LoadData {
      	System.exit(52);
      }
      return studentsList;
-  }
+  }*/
 
 	/**
 	 * 
@@ -326,11 +326,11 @@ public class LoadData {
      }
      extract.add(activitiesList);
      //extract SetOfStudents
-     SetOfStudents studentsList = new SetOfStudents(project.nextToken().trim().getBytes());
+ /*    //SetOfStudents studentsList = new SetOfStudents(project.nextToken().trim().getBytes());
      if (studentsList.analyseTokens(0)){
        studentsList.buildSetOfResources(0);
      }
-      extract.add(studentsList);
+      extract.add(studentsList);*/
 
      }else{
        new FatalProblemDlg("I was in"+getClass().toString()+" LoadData class and loadProject. extract failed!!!" );

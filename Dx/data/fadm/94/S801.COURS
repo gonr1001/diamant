@@ -7,47 +7,92 @@ ADM101
 
  1
  3
- 5  1
+ 1  6
 0
 xxxxxx
 1
 1
 0
 
-ADM1111  10
+ADM1011  02
 1
 1
-ADM111
-
-
- 2
- 3  3
- 1 12  3 12
-0  0
-xxxxxx     xxxxxx
-1  1
-1  1
-1  1
-
-ADM3321  01
-1
-1
-ADM332
+ADM101
 
 
  1
  3
- 4  6
+ 1  1
 0
 xxxxxx
 1
 1
 0
 
-ADM4461  01
+ADM4451  01
 1
 1
-ADM446
+ADM445
+
+
+ 1
+ 3
+ 3  1
+0
+xxxxxx
+1
+1
+0
+
+ADM4461  10
+1
+1
+ROCH, JOANNE
+
+
+ 1
+ 3
+ 2 12
+0
+xxxxxx
+1
+1
+1
+
+ADM5561  01
+1
+1
+ADM556
+
+
+ 1
+ 3
+ 5  6
+0
+xxxxxx
+1
+1
+0
+
+ADM6611  01
+1
+1
+PAGE, SUZANNE
+
+
+ 1
+ 3
+ 1  1
+0
+xxxxxx
+1
+1
+0
+
+ADM6611  02
+1
+1
+PAGE, SUZANNE
 
 
  1
@@ -59,60 +104,15 @@ xxxxxx
 1
 0
 
-ADM5561  01
+ADM6611  03
 1
 1
-ADM556
+PARADIS, GHISLAIN
 
 
  1
  3
  1  6
-0
-xxxxxx
-1
-1
-0
-
-ADM6611  01
-1
-1
-ADM661
-
-
- 1
- 3
- 5  1
-0
-xxxxxx
-1
-1
-0
-
-ADM6611  02
-1
-1
-ADM661
-
-
- 1
- 3
- 2  1
-0
-xxxxxx
-1
-1
-0
-
-ADM6611  03
-1
-1
-ADM661
-
-
- 1
- 3
- 3  1
 0
 xxxxxx
 1
@@ -127,7 +127,22 @@ ADM661
 
  1
  3
- 1  1
+ 2  6
+0
+xxxxxx
+1
+1
+0
+
+ADM6611  05
+1
+1
+ADM661
+
+
+ 1
+ 3
+ 5  6
 0
 xxxxxx
 1
@@ -142,37 +157,22 @@ ADM661
 
  1
  3
- 2  6
+ 4  6
 0
 xxxxxx
 1
 1
 1
 
-CTB1131  10
-1
-1
-CTB113
-
-
- 2
- 3  3
- 1 12  3 12
-0  0
-xxxxxx     xxxxxx
-1  1
-1  1
-1  1
-
 CTB2131  01
 1
 1
-CTB213
+BEAUCHESNE, ALAIN
 
 
  1
  3
- 1  6
+ 1  1
 0
 xxxxxx
 1
@@ -187,7 +187,7 @@ CTB213
 
  1
  3
- 3  1
+ 1  6
 0
 xxxxxx
 1
@@ -197,12 +197,27 @@ xxxxxx
 CTB3011  01
 1
 1
+MORIN, ROBERT
+
+
+ 1
+ 3
+ 4  1
+0
+xxxxxx
+1
+1
+0
+
+CTB3011  02
+1
+1
 CTB301
 
 
  1
  3
- 5  1
+ 3  1
 0
 xxxxxx
 1
@@ -217,7 +232,7 @@ CTB304
 
  1
  3
- 2  1
+ 1  1
 0
 xxxxxx
 1
@@ -232,32 +247,17 @@ CTB304
 
  1
  3
- 5  1
+ 4  1
 0
 xxxxxx
 1
 1
 0
 
-CTB3041  10
+CTB3041  03
 1
 1
 CTB304
-
-
- 1
- 3
- 2 12
-0
-xxxxxx
-1
-1
-1
-
-CTB3131  01
-1
-1
-CTB313
 
 
  1
@@ -269,7 +269,37 @@ xxxxxx
 1
 0
 
+CTB3131  01
+1
+1
+BEAULIEU, SUZANNE
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+0
+
 CTB3131  02
+1
+1
+BEAULIEU, SUZANNE
+
+
+ 1
+ 3
+ 2  6
+0
+xxxxxx
+1
+1
+0
+
+CTB3131  03
 1
 1
 CTB313
@@ -277,7 +307,7 @@ CTB313
 
  1
  3
- 2  1
+ 4  6
 0
 xxxxxx
 1
@@ -292,7 +322,22 @@ CTB314
 
  1
  3
- 3  1
+ 1  1
+0
+xxxxxx
+1
+1
+0
+
+CTB3141  02
+1
+1
+CTB314
+
+
+ 1
+ 3
+ 1  6
 0
 xxxxxx
 1
@@ -322,7 +367,7 @@ CTB331
 
  1
  3
- 2  6
+ 4  1
 0
 xxxxxx
 1
@@ -337,7 +382,7 @@ CTB333
 
  1
  3
- 1  6
+ 5  1
 0
 xxxxxx
 1
@@ -352,7 +397,7 @@ CTB333
 
  1
  3
- 1  1
+ 2  1
 0
 xxxxxx
 1
@@ -368,6 +413,21 @@ CTB333
  1
  3
  4  1
+0
+xxxxxx
+1
+1
+0
+
+CTB3331  04
+1
+1
+CTB333
+
+
+ 1
+ 3
+ 2  1
 0
 xxxxxx
 1
@@ -397,14 +457,29 @@ CTB334
 
  1
  3
- 2  6
+ 3  1
 0
 xxxxxx
 1
 1
 0
 
-CTB3411  10
+CTB3411  01
+1
+1
+JACQUES, MARIE
+
+
+ 1
+ 3
+ 4  1
+0
+xxxxxx
+1
+1
+0
+
+CTB3411  02
 1
 1
 CTB341
@@ -412,12 +487,12 @@ CTB341
 
  1
  3
- 3 12
+ 4  6
 0
 xxxxxx
 1
 1
-1
+0
 
 CTB4131  01
 1
@@ -427,14 +502,29 @@ CTB413
 
  1
  3
- 2  6
+ 4  1
 0
 xxxxxx
 1
 1
 0
 
-CTB4431  01
+CTB4131  02
+1
+1
+CTB413
+
+
+ 1
+ 3
+ 4  6
+0
+xxxxxx
+1
+1
+0
+
+CTB4431  10
 1
 1
 CTB443
@@ -442,22 +532,22 @@ CTB443
 
  1
  3
- 1  1
+ 2 12
 0
 xxxxxx
 1
 1
-0
+1
 
 CTB4531  01
 1
 1
-CTB453
+ELBEKKALI, ABDELHAQ
 
 
  1
  3
- 2  6
+ 1  6
 0
 xxxxxx
 1
@@ -467,7 +557,7 @@ xxxxxx
 CTB4531  02
 1
 1
-CTB453
+ELBEKKALI, ABDELHAQ
 
 
  1
@@ -487,7 +577,7 @@ CTB465
 
  1
  3
- 1  1
+ 4  1
 0
 xxxxxx
 1
@@ -502,7 +592,7 @@ CTB466
 
  1
  3
- 4  1
+ 2  1
 0
 xxxxxx
 1
@@ -512,12 +602,12 @@ xxxxxx
 CTB5611  01
 1
 1
-CTB561
+LEFEBVRE, JEAN-CLAUDE
 
 
  1
  3
- 1  1
+ 4  6
 0
 xxxxxx
 1
@@ -532,7 +622,7 @@ CTB561
 
  1
  3
- 1  6
+ 5  1
 0
 xxxxxx
 1
@@ -542,27 +632,12 @@ xxxxxx
 CTB5641  01
 1
 1
-CTB564
+BEAUCHESNE, ALAIN
 
 
  1
  3
- 4  1
-0
-xxxxxx
-1
-1
-1
-
-CTB5641  02
-1
-1
-CTB564
-
-
- 1
- 3
- 4  6
+ 2  6
 0
 xxxxxx
 1
@@ -572,12 +647,12 @@ xxxxxx
 CTB5651  01
 1
 1
-CTB565
+COTE, MARIO
 
 
  2
- 4  4
- 1 11  3 11
+ 3  3
+ 1  1  3  1
 0  0
 xxxxxx     xxxxxx
 1  1
@@ -587,7 +662,37 @@ xxxxxx     xxxxxx
 CTB6661  01
 1
 1
-CTB666
+LESSARD, NATHALIE
+
+
+ 1
+ 3
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+ECN2081  01
+1
+1
+GOULET, CLAUDE
+
+
+ 1
+ 2
+ 2  6
+0
+xxxxxx
+1
+1
+1
+
+ECN3151  01
+1
+1
+ROBERGE, MARC
 
 
  1
@@ -599,10 +704,55 @@ xxxxxx
 1
 1
 
-FEC1111  01
+ECN3231  01
 1
 1
-FEC111
+ROBERGE, MARC
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+ECN4071  01
+1
+1
+GOULET, CLAUDE
+
+
+ 1
+ 2
+ 4  6
+0
+xxxxxx
+1
+1
+1
+
+ECN4301  01
+1
+1
+BOCCANFUSO, DOROTHEE
+
+
+ 1
+ 3
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+ECN4321  01
+1
+1
+ECN432
 
 
  1
@@ -612,17 +762,122 @@ FEC111
 xxxxxx
 1
 1
+1
+
+ECN4541  01
+1
+1
+FORTIN, MARIO
+
+
+ 1
+ 3
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+ECN5301  01
+1
+1
+BOCCANFUSO, DOROTHEE
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+ECN5411  01
+1
+1
+ECN541
+
+
+ 1
+ 3
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+ECN6401  01
+1
+1
+SAVARD, LUC
+
+
+ 1
+ 3
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+ECN6421  01
+1
+1
+ECN642
+
+
+ 1
+ 3
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+ECN6631  01
+1
+1
+ECN663
+
+
+ 1
+ 3
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+FEC1111  01
+1
+1
+GOBERT, KARINE
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
 0
 
 FEC1111  02
 1
 1
-FEC111
+GOBERT, KARINE
 
 
  1
  3
- 1  1
+ 3  1
 0
 xxxxxx
 1
@@ -644,6 +899,21 @@ xxxxxx
 1
 0
 
+FEC1111  04
+1
+1
+FEC111
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+0
+
 FEC1111  10
 1
 1
@@ -652,7 +922,7 @@ FEC111
 
  2
  3  3
- 2 12  4 12
+ 1 12  3 12
 0  0
 xxxxxx     xxxxxx
 1  1
@@ -667,7 +937,7 @@ FEC211
 
  1
  3
- 5  6
+ 4 12
 0
 xxxxxx
 1
@@ -682,7 +952,7 @@ FEC211
 
  1
  3
- 2  1
+ 5  6
 0
 xxxxxx
 1
@@ -697,7 +967,7 @@ FEC333
 
  1
  3
- 2  1
+ 4  1
 0
 xxxxxx
 1
@@ -712,7 +982,7 @@ FEC333
 
  1
  3
- 4  1
+ 4  6
 0
 xxxxxx
 1
@@ -727,7 +997,7 @@ FEC443
 
  1
  3
- 1 12
+ 3  9
 0
 xxxxxx
 1
@@ -737,7 +1007,7 @@ xxxxxx
 FEC4441  01
 1
 1
-FEC444
+PAGE, JEAN-PAUL
 
 
  1
@@ -757,7 +1027,7 @@ FEC444
 
  1
  3
- 3 12
+ 3  9
 0
 xxxxxx
 1
@@ -772,7 +1042,7 @@ FEC451
 
  1
  3
- 3 12
+ 2 12
 0
 xxxxxx
 1
@@ -782,22 +1052,7 @@ xxxxxx
 FEC4541  01
 1
 1
-FEC454
-
-
- 1
- 3
- 2  1
-0
-xxxxxx
-1
-1
-0
-
-FEC5641  01
-1
-1
-FEC564
+VIERSTRAETE, VALERIE
 
 
  1
@@ -809,7 +1064,22 @@ xxxxxx
 1
 0
 
-FEC5641  10
+FEC5641  01
+1
+1
+BOUVIER, PIERRE
+
+
+ 1
+ 3
+ 2  9
+0
+xxxxxx
+1
+1
+0
+
+FEC5641  02
 1
 1
 FEC564
@@ -817,17 +1087,17 @@ FEC564
 
  1
  3
- 2 12
+ 1  6
 0
 xxxxxx
 1
 1
-1
+0
 
 FEC5651  01
 1
 1
-FEC565
+LAPOINTE, MARC-ANDRE
 
 
  1
@@ -839,35 +1109,35 @@ xxxxxx
 1
 0
 
-FEC5661  01
+FEC5661  10
 1
 1
-FEC566
+PREFONTAINE, JACQUES
 
 
  1
  3
- 1  6
+ 3 12
 0
 xxxxxx
 1
 1
 1
 
-FEC5661  08
+GIS1131  10
 1
 1
-FEC566
+GIS113
 
 
- 1
- 3
- 2  1
-0
-xxxxxx
-1
-1
-1
+ 2
+ 3  3
+ 2 12  4 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
 
 GIS1141  01
 1
@@ -877,7 +1147,7 @@ GIS114
 
  1
  3
- 2  6
+ 2  1
 0
 xxxxxx
 1
@@ -892,7 +1162,7 @@ GIS114
 
  1
  3
- 5  1
+ 2  6
 0
 xxxxxx
 1
@@ -907,7 +1177,7 @@ GIS115
 
  1
  3
- 3  1
+ 1  6
 0
 xxxxxx
 1
@@ -922,27 +1192,27 @@ GIS161
 
  1
  3
- 1  6
+ 5  1
 0
 xxxxxx
 1
 1
 1
 
-GIS2251  01
+GIS2251  10
 1
 1
 GIS225
 
 
- 1
- 3
- 3  1
-0
-xxxxxx
-1
-1
-0
+ 2
+ 3  3
+ 1 12  3 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
 
 GIS2331  01
 1
@@ -959,7 +1229,7 @@ xxxxxx
 1
 0
 
-GIS3541  10
+GIS3541  01
 1
 1
 GIS354
@@ -967,22 +1237,22 @@ GIS354
 
  1
  3
- 2 12
+ 4  6
 0
 xxxxxx
 1
 1
-1
+0
 
 GIS3631  01
 1
 1
-GIS363
+GINGRAS, LIN
 
 
  1
  3
- 5  6
+ 2  1
 0
 xxxxxx
 1
@@ -1012,7 +1282,37 @@ GRH111
 
  1
  3
- 4  1
+ 1  6
+0
+xxxxxx
+1
+1
+0
+
+GRH1111  03
+1
+1
+GRH111
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+0
+
+GRH1111  04
+1
+1
+GRH111
+
+
+ 1
+ 3
+ 2  6
 0
 xxxxxx
 1
@@ -1037,97 +1337,7 @@ xxxxxx     xxxxxx
 GRH2211  01
 1
 1
-GRH221
-
-
- 1
- 3
- 3  1
-0
-xxxxxx
-1
-1
-0
-
-GRH2211  02
-1
-1
-GRH221
-
-
- 1
- 3
- 2  6
-0
-xxxxxx
-1
-1
-0
-
-GRH2211  10
-1
-1
-GRH221
-
-
- 2
- 3  3
- 1 12  3 12
-0  0
-xxxxxx     xxxxxx
-1  1
-1  1
-1  1
-
-GRH3431  01
-1
-1
-GRH343
-
-
- 1
- 3
- 4  1
-0
-xxxxxx
-1
-1
-0
-
-GRH4531  10
-1
-1
-GRH453
-
-
- 2
- 3  3
- 1 12  3 12
-0  0
-xxxxxx     xxxxxx
-1  1
-1  1
-1  1
-
-GRH4621  01
-1
-1
-GRH462
-
-
- 1
- 3
- 5  1
-0
-xxxxxx
-1
-1
-0
-
-GRH5621  01
-1
-1
-GRH562
+RHNIMA, AZIZ
 
 
  1
@@ -1139,10 +1349,145 @@ xxxxxx
 1
 0
 
+GRH2211  02
+1
+1
+BERARD, ROCK
+
+
+ 1
+ 3
+ 4  1
+0
+xxxxxx
+1
+1
+0
+
+GRH2211  03
+1
+1
+GRH221
+
+
+ 1
+ 3
+ 1  6
+0
+xxxxxx
+1
+1
+0
+
+GRH2211  10
+1
+1
+PERRON, FRANCOIS
+
+
+ 2
+ 3  3
+ 1 12  3 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GRH3431  10
+1
+1
+BERARD, ROCK
+
+
+ 2
+ 3  3
+ 2 12  4 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GRH3431  11
+1
+1
+BERARD, ROCK
+
+
+ 2
+ 3  3
+ 1 12  3 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GRH4531  01
+1
+1
+GRH453
+
+
+ 1
+ 3
+ 3  1
+0
+xxxxxx
+1
+1
+0
+
+GRH4621  01
+1
+1
+DESMARAIS, LISE
+
+
+ 1
+ 3
+ 4  6
+0
+xxxxxx
+1
+1
+0
+
+MAR2211  10
+1
+1
+MAR221
+
+
+ 2
+ 3  3
+ 1 12  3 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
 MAR3311  01
 1
 1
 MAR331
+
+
+ 1
+ 3
+ 3  1
+0
+xxxxxx
+1
+1
+0
+
+MAR3331  01
+1
+1
+BOIVIN, CAROLINE
 
 
  1
@@ -1154,7 +1499,37 @@ xxxxxx
 1
 0
 
+MAR3331  02
+1
+1
+BOIVIN, CAROLINE
+
+
+ 1
+ 3
+ 2  6
+0
+xxxxxx
+1
+1
+0
+
 MAR4441  01
+1
+1
+MAR444
+
+
+ 1
+ 3
+ 1  1
+0
+xxxxxx
+1
+1
+0
+
+MAR4441  02
 1
 1
 MAR444
@@ -1177,7 +1552,7 @@ MAR454
 
  1
  3
- 1  6
+ 2  6
 0
 xxxxxx
 1
@@ -1192,32 +1567,32 @@ MAR455
 
  1
  3
- 1  1
+ 3  1
 0
 xxxxxx
 1
 1
 0
 
-MAR4641  10
+MAR4551  02
+1
+1
+MAR455
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+0
+
+MAR4641  01
 1
 1
 MAR464
-
-
- 2
- 3  3
- 2 12  4 12
-0  0
-xxxxxx     xxxxxx
-1  1
-1  1
-1  1
-
-MAR5571  01
-1
-1
-MAR557
 
 
  1
@@ -1229,7 +1604,7 @@ xxxxxx
 1
 0
 
-MAR5571  02
+MAR5571  10
 1
 1
 MAR557
@@ -1237,12 +1612,12 @@ MAR557
 
  1
  3
- 1  6
+ 2 12
 0
 xxxxxx
 1
 1
-0
+1
 
 MAR6641  01
 1
@@ -1252,22 +1627,7 @@ MAR664
 
  1
  3
- 3  1
-0
-xxxxxx
-1
-1
-0
-
-MAR6641  02
-1
-1
-MAR664
-
-
- 1
- 3
- 4  6
+ 2  6
 0
 xxxxxx
 1
@@ -1282,7 +1642,22 @@ MQG222
 
  1
  3
- 1  1
+ 5  1
+0
+xxxxxx
+1
+1
+0
+
+MQG2221  02
+1
+1
+MQG222
+
+
+ 1
+ 3
+ 4  1
 0
 xxxxxx
 1
@@ -1292,7 +1667,7 @@ xxxxxx
 MQG3321  01
 1
 1
-MQG332
+MALTAIS, GUY
 
 
  1
@@ -1307,12 +1682,12 @@ xxxxxx
 MQG3321  02
 1
 1
-MQG332
+MALTAIS, GUY
 
 
  1
  3
- 4  1
+ 2  1
 0
 xxxxxx
 1
@@ -1322,12 +1697,12 @@ xxxxxx
 MQG3321  03
 1
 1
-MQG332
+MALTAIS, GUY
 
 
  1
  3
- 2  6
+ 1  6
 0
 xxxxxx
 1
@@ -1342,7 +1717,7 @@ MQG332
 
  1
  3
- 1  1
+ 3  1
 0
 xxxxxx
 1
@@ -1352,12 +1727,12 @@ xxxxxx
 MQG3421  01
 1
 1
-MQG342
+VEILLEUX, LINE
 
 
  1
  3
- 2  1
+ 3  1
 0
 xxxxxx
 1
@@ -1367,12 +1742,27 @@ xxxxxx
 MQG3421  02
 1
 1
+VEILLEUX, LINE
+
+
+ 1
+ 3
+ 2  9
+0
+xxxxxx
+1
+1
+0
+
+MQG3421  03
+1
+1
 MQG342
 
 
  1
  3
- 5  1
+ 1  1
 0
 xxxxxx
 1
@@ -1387,7 +1777,7 @@ MQG542
 
  1
  3
- 3  9
+ 1  9
 0
 xxxxxx
 1

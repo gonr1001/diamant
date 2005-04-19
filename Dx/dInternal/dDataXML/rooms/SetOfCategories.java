@@ -134,7 +134,7 @@ public class SetOfCategories extends SetOfResources{
    * @return
    */
   private String readCategoryTag(String fileName){
-    _setofcat= XMLTools.getRootDocument(fileName);
+/*    _setofcat= XMLTools.getRootDocument(fileName);
     ReadXMLElement list= new ReadXMLElement();
     String ID="";
     String error= XMLTools.tagError(_setofcat,_ROOMTAGITEM1);
@@ -154,6 +154,8 @@ public class SetOfCategories extends SetOfResources{
       }// end for (int i=0; i< size; i++)
     }// end if(error.length()==0)
     return error;
+    */
+  	return "error";
   }
 
   /**
@@ -162,11 +164,11 @@ public class SetOfCategories extends SetOfResources{
    * @return
    */
   private String readRoomsTag(Element setofrooms){
-    //ReadXMLElement list= new ReadXMLElement();
+  /*  //ReadXMLElement list= new ReadXMLElement();
    //String name="", capacity="";
-   String error= XMLTools.tagError(setofrooms,_ROOMTAGITEM2);
-   if(error.length()==0){
-     for (int i=0; i< XMLTools.tagSize(setofrooms,_ROOMTAGITEM2); i++){
+  // String error= XMLTools.tagError(setofrooms,_ROOMTAGITEM2);
+   //if(error.length()==0){
+  //   for (int i=0; i< XMLTools.tagSize(setofrooms,_ROOMTAGITEM2); i++){
        //Element room= list.getElement(setofrooms,_ROOMTAGITEM2,i);
        //name= list.getElementValue(room,_ROOMTAGITEM2_1);
        //capacity= list.getElementValue(room,_ROOMTAGITEM2_2);
@@ -176,8 +178,8 @@ public class SetOfCategories extends SetOfResources{
        //System.out.println(" Room name: "+name+ " Capacity: "+ capacity);//debug
        //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
      }// end for (int i=0; i< size; i++)
-   }// end if(error.length()==0)
-    return error;
+   }// end if(error.length()==0)*/
+    return "error";
   }
 
 

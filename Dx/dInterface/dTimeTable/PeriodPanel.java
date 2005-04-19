@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.26 $  $Date: 2005-03-08 16:00:43 $
+ * Title: PeriodPanel $Revision: 1.27 $  $Date: 2005-04-19 20:37:45 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.27 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -49,8 +49,8 @@ public  abstract class PeriodPanel extends JPanel{
   protected int _TTSperiod;
   protected int _panelRefNo;
   protected String _str;
-
   protected PeriodPanel(){
+  	//
   }
 
   protected PeriodPanel(int refNo, String str) {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.53 $  $Date: 2005-02-08 16:24:40 $
+ * Title: DMediator $Revision: 1.54 $  $Date: 2005-04-19 20:37:41 $
  * Description: DMediatorNew is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.53 $
+ * @version $Revision: 1.54 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,7 +33,7 @@ import dInterface.dTimeTable.SaveCmd;
 import eLib.exit.dialog.FatalProblemDlg;
 
 /**
- * Description: DDocument is a class used to 
+ * Description: DMediator is a class used to 
  * 
  *              <p>
  *              
@@ -48,10 +48,7 @@ public class DMediator extends Object{
      */
 	private Vector _documents;
 	private boolean _cancel;
-	
-	public DMediator() {
-	}// end Mediator
-	
+		
 	//-----------------------------
 	
 	public DMediator(DApplication dApplic) {
@@ -76,7 +73,6 @@ public class DMediator extends Object{
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if(currentDoc.getError().length() == 0){
 			_documents.addElement(currentDoc);
-			//currentDoc.getDM().addAllListeners();
 			_dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
 			_dApplic.hideToolBar();
 		}else{

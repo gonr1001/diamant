@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
 *
-* Title: NewTTSCyCmd $Revision: 1.10 $  $Date: 2005-02-01 21:27:16 $
+* Title: NewTTSCyCmd $Revision: 1.11 $  $Date: 2005-04-19 20:37:45 $
 * Description: NewTTSCyCmd is a class used to
 *
 *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.10 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.11 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -34,10 +34,6 @@ import dInterface.DApplication;
  */
 
 public class NewTTSCyCmd implements Command{
-  //private final boolean PARTIAL = true;
-
-  public NewTTSCyCmd() {
-  }
 
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();

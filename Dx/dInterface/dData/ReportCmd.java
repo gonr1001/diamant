@@ -14,9 +14,6 @@ import dInterface.DApplication;
 
 public class ReportCmd implements Command{
 
-  public ReportCmd() {
-  }
-
   public void execute(DApplication dApplic) {
     new ReportsDlg(dApplic);
   }

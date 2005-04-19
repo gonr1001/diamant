@@ -18,10 +18,6 @@ import dInterface.DApplication;
 
 public class ManualImprovementCmd implements Command {
 
-
-  public ManualImprovementCmd() {
-  } //end OpenTTCmd
-
   public void execute(DApplication dApplic) {
     new ManualImprovementDlg(dApplic,DConst.MANUALIMPROVEMENT_DLG_TITLE);
   } // end execute

@@ -34,6 +34,7 @@ public class StudentsConflictsMatrix {
    * Constructor
    */
   public StudentsConflictsMatrix() {
+  	//
   }
 
   /**

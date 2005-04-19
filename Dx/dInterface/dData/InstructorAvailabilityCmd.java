@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.3 $  $Date: 2003-10-28 14:19:06 $
+ * Title: ClassName $Revision: 1.4 $  $Date: 2005-04-19 20:37:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -36,8 +36,6 @@ import dInterface.DApplication;
  */
 public class InstructorAvailabilityCmd implements Command {
 
-    public InstructorAvailabilityCmd () {
-    } // endInstructorAvailabilityCmd
     //------------------------------
     public void execute(DApplication dApplic) {
         new InstructorAvailabiliyDlg(dApplic);//.getJFrame(), DConst.INST_ASSIGN_TD, dApplic.getDMediator().getCurrentDoc().getDM());

@@ -31,8 +31,8 @@ public class ProgressBar extends JPanel
 
   private JProgressBar _jProgressBar;
   private Timer timer;
-  private static int WIDHT=300;
-  private static int HEIGHT=100;
+  private static int L_WIDHT=300;
+  private static int L_HEIGHT=100;
   private JButton _startButton;
   private LongTask task;
   //private JTextArea taskOutput;
@@ -106,7 +106,7 @@ public class ProgressBar extends JPanel
   private void createAndShowDialogGUI() {
     _jDialog= new JDialog(_dApplic.getJFrame(), _title, true);
     _jDialog.getContentPane().setLayout(new BorderLayout());
-    _jDialog.setSize(new Dimension(WIDHT,HEIGHT));
+    _jDialog.setSize(new Dimension(L_WIDHT,L_HEIGHT));
     _jDialog.setResizable(true);
     //buildVectors();
     //dialog.setPanels();

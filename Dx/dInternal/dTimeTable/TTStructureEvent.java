@@ -13,7 +13,7 @@ import java.util.EventObject;
 
 public class TTStructureEvent extends EventObject{
 
-  public TTStructureEvent(TTStructure source) {
-    super(source);
+  public TTStructureEvent(TTStructure s) {
+    super(s);
   }
 }

@@ -1,7 +1,7 @@
 package eTest;
 /**
  *
- * Title: ClassName $Revision: 1.4 $  $Date: 2004-10-27 14:26:41 $
+ * Title: ClassName $Revision: 1.5 $  $Date: 2005-04-19 20:37:54 $
  * Description: ClassName is a class used to
  *
  *
@@ -15,8 +15,8 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.5 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -52,6 +52,7 @@ public class ByteInputFileTest extends TestCase {
       _bif = new ByteInputFile("hello.txt");
       fail("Should raise an IOFileException");
     } catch (Exception e) {
+//    	 TODO Auto-generated constructor stub
     }
   }
 
@@ -84,6 +85,7 @@ public class ByteInputFileTest extends TestCase {
     try {
       b = _bif.readFileAsBytes();
     } catch (Exception e) {
+//    	 TODO Auto-generated constructor stub
     }
     assertEquals("Test testFileNotOpen :", null, b);
   }

@@ -1,6 +1,6 @@
 /**
 *
-* Title: ConflictsOfAnEventCmd $Revision: 1.2 $  $Date: 2005-03-08 16:00:43 $
+* Title: ConflictsOfAnEventCmd $Revision: 1.3 $  $Date: 2005-04-19 20:37:44 $
 * Description: ConflictsOfAnEventCmd is a class used to
 *              
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.3 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -37,8 +37,6 @@ import dInterface.DApplication;
 public class ConflictsOfAnEventCmd implements Command {
 
 
-  public ConflictsOfAnEventCmd() {
-  } //end ConflictsOfAnEventCmd
 
   public void execute(DApplication dApplic) {
     new ConflictsOfAnEventDlg(dApplic,DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);

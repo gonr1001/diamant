@@ -16,9 +16,6 @@ import dInterface.DApplication;
 // XXXX Pascal: A quoi sert cette classe?
 public class ShowAllCmd implements Command{
 
-  public ShowAllCmd() {
-  }
-
   public void execute(DApplication dApplic) {
     dApplic.getMenuBar().postShowAll();
   } // end execute

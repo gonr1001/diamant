@@ -24,9 +24,6 @@ import dInterface.DApplication;
 
 public class NewTTSExCmd implements Command{
 
-  public NewTTSExCmd() {
-  }
-
   public void execute(DApplication dApplic) {
     dApplic.showToolBar();
     dApplic.getDMediator().addDoc(dApplic.getPreferences()._standardTTE, DConst.NO_TYPE);

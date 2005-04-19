@@ -15,9 +15,6 @@ import dInterface.DApplication;
 
 public class PartialTTStructureCmd implements Command{
 
-  public PartialTTStructureCmd() {
-  }
-
   public void execute(DApplication dApplic) {
     new DoNothingDlg(dApplic, "PartialTTStructureDlg");
   }

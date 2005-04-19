@@ -1,6 +1,6 @@
 /**
 *
-* Title: ImportReport $Revision: 1.4 $  $Date: 2004-12-16 19:20:49 $
+* Title: ImportReport $Revision: 1.5 $  $Date: 2005-04-19 20:37:43 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
+* @version $Revision: 1.5 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -102,7 +102,9 @@ public class MergeReport extends ViewReport implements ActionListener {
  public void actionPerformed(ActionEvent e){
    //String command = e.getActionCommand();
    //if "Option" button
-   if (e.getActionCommand().equals(DConst.BUT_OPTIONS)){}
+   if (e.getActionCommand().equals(DConst.BUT_OPTIONS)){
+   	//
+   }
      // it is disabled
    //if "Close" button
    if (e.getActionCommand().equals(DConst.BUT_CLOSE))

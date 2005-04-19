@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.16 $  $Date: 2005-02-03 20:50:42 $
+ * Title: SectionModifDlg $Revision: 1.17 $  $Date: 2005-04-19 20:37:42 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -41,7 +41,7 @@ private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_
 private DResource _type;
 private String _title;
 //private Dialog _parent;
-private DApplication _dApplic;
+//private DApplication _dApplic;
   /**
    * Constructor
    * @param dApplic

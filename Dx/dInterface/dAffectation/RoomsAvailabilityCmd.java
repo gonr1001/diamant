@@ -17,10 +17,6 @@ import dInterface.DApplication;
 
 public class RoomsAvailabilityCmd implements Command{
 
-  public RoomsAvailabilityCmd() {
-
-  }
-
   public void execute(DApplication dApplic) {
     new RoomsAvailabilityDlg(dApplic);
   }

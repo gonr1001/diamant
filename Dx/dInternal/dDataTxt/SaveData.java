@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.17 $  $Date: 2005-03-08 16:00:44 $
+* Title: SaveData $Revision: 1.18 $  $Date: 2005-04-19 20:37:49 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.17 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.18 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -23,10 +23,7 @@ package dInternal.dDataTxt;
 
 
 import dConstants.DConst;
-import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.txt.FilterFile;
 
 
 public class SaveData {
@@ -48,7 +45,7 @@ public class SaveData {
   /**
    *
    * */
-  public String saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
+ /* public String saveTimeTable(TTStructure tts,SetOfInstructors inst, SetOfRooms rooms,
                           SetOfActivities act,SetOfStudents students, String fileName){
     String error = "";
     if (inst == null || rooms  == null ||  act == null || students == null){
@@ -77,7 +74,7 @@ public class SaveData {
     filter= new FilterFile(diaData.getBytes(),"");
     filter.saveFile(fileName + DConst.DOT_DIA);
     return error;
-  }
+  }*/
 
   /**
    *

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.14 $  $Date: 2005-02-08 18:54:03 $
+ * Title: ReportsDlg $Revision: 1.15 $  $Date: 2005-04-19 20:37:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -31,7 +31,6 @@
 package dInterface.dData;
 
 import java.awt.BorderLayout;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -65,10 +64,10 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
     //ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
     
     //_resources = new SetOfResources[1];
-    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.WAIT_CURSOR,_dApplic.getJFrame());
+    _dApplic.setCursorWait();
     //pBar.execute();
     _srd = new DStandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
-    _dApplic.getDMediator().getCurrentDoc().setCursor(Cursor.DEFAULT_CURSOR,_dApplic.getJFrame());
+    _dApplic.setCursorDefault();
     //System.out.println("Génération de rapports terminé");
     //pBar.close();
     initReportDlg();

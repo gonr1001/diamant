@@ -22,14 +22,11 @@ import eLib.exit.xml.input.ReadXMLFile;
 
 public class XMLTools {
 
-  public XMLTools() {
-  }
-
   /**
    * get a root document of an xml file
    * @param fileName
    * @return
-   */
+   
   public final static Element getRootDocument(String fileName){
     Element element;
    //int numberfoElements=0;
@@ -46,13 +43,13 @@ public class XMLTools {
     }
     return element;
   }
-
+*/
   /**
    * check if a tag exist in a xml element
    * @param element
    * @param tag
    * @return
-   */
+  
   public final static String tagError(Element element, String tag){
     ReadXMLElement list= new ReadXMLElement();
     String error="";
@@ -68,18 +65,18 @@ public class XMLTools {
     return error;
 
   }
-
+ */
   /**
    * return the number of occurence of an element représent by its tag
    * @param element
    * @param tag
    * @return
-   */
+   
   public final static int tagSize(Element element, String tag){
     ReadXMLElement list= new ReadXMLElement();
     if (element==null)
       return 0;
     return list.getSize(element,tag);
   }
-
+*/
 }

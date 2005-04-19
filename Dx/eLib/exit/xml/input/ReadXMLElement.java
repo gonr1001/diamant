@@ -1,6 +1,6 @@
 /**
 *
-* Title: ReadXMLElement $Revision: 1.2 $  $Date: 2004-09-10 13:31:15 $
+* Title: ReadXMLElement $Revision: 1.3 $  $Date: 2005-04-19 20:37:53 $
 * Description: ReadXMLElement is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
+* @version $Revision: 1.3 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -34,12 +34,6 @@ import org.w3c.dom.Text;
  *              an XML file.
  */
 public class ReadXMLElement {
-
-/***
- * Construct a parser that can parse item lists
- * */
-  public ReadXMLElement(){
-  }
 
   /**
    * Parses an XML file containing an elements list

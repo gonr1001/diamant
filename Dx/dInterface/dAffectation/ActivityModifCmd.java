@@ -18,10 +18,6 @@ import dInterface.DApplication;
 
 public class ActivityModifCmd implements Command{
 
-  public ActivityModifCmd() {
-
-  }
-
   public void execute(DApplication dApplic) {
     new ActivityModifDlg(dApplic);
   }

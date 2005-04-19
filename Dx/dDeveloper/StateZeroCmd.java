@@ -16,9 +16,6 @@ import dInterface.DApplication;
 // XXXX Pascal: A quoi sert cette classe?
 public class StateZeroCmd implements Command {
 
-  public StateZeroCmd() {
-  }
-
   public void execute(DApplication dApplic) {
     dApplic.getMenuBar().postStateZero();
   } // end execute

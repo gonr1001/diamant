@@ -4,10 +4,10 @@ import java.io.File;
 
 import java.util.Vector;
 
-//import dInternal.DModel;
+
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.Resource;
-//import dInternal.dUtil.DXObject;
+
 
 
 import org.w3c.dom.Document;
@@ -187,7 +187,6 @@ public class TTStructure {
 	
     ReadXMLFile xmlFile;
     Element root; //, item, ID;
-    //boolean preload = preLoad(fileName);
     if(preLoad(fileName)){
     try{
       xmlFile = new ReadXMLFile();

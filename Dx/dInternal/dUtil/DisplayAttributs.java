@@ -45,14 +45,16 @@ public class DisplayAttributs {
     _eventsInPeriods= eventsInPeriods;
   }
 
-  /**
-   * constructor
-   */
-  public DisplayAttributs(){
-
-  }
 
   /**
+ * 
+ */
+public DisplayAttributs() {	
+	// TODO Auto-generated constructor stub
+}
+
+
+/**
     * set atributs
     * @param periodKey
     * @param hourToDisplay

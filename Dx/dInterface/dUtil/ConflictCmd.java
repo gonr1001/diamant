@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictCmd $Revision: 1.1 $  $Date: 2003-12-04 18:09:56 $
+ * Title: ConflictCmd $Revision: 1.2 $  $Date: 2005-04-19 20:37:47 $
  * Description: ConflictCmd is class used as the command
  *              which displays the Conflict dialog
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,12 +33,10 @@ import dInterface.DApplication;
  */
 public class ConflictCmd implements Command {
 
-    public ConflictCmd() {
-    } // end AboutCmd
     //------------------------------
     public void execute(DApplication dApplic) {
         new ConflictDlg(dApplic);
-        dApplic.getMenuBar().postConflict();
+        //dApplic.getMenuBar().postConflict();
     } // end execute
 } /* end class AboutCmd */
 

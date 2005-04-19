@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFCmd $Revision: 1.3 $  $Date: 2004-10-14 18:59:32 $
+ * Title: PLAFCmd $Revision: 1.4 $  $Date: 2005-04-19 20:37:48 $
  * Description: PLAFCmd is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -25,8 +25,6 @@ import dInterface.DApplication;
 
 public class PLAFCmd implements Command {
 
-  public PLAFCmd () {
-  } // end PLAFCmd
   //------------------------------
     public void execute(DApplication dApplic) {
         new PLAFDlg( dApplic );

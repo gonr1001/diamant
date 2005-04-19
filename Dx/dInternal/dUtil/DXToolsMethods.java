@@ -20,11 +20,6 @@ import dInternal.dTimeTable.TTStructure;
 public class DXToolsMethods {
 
   /**
-   * Constructor
-   * */
-  public DXToolsMethods() {
-  }
-  /**
    *check if a String only contains a reference value and exit software otherwise
    * @param String the string value to check
    * @param String the reference value to use

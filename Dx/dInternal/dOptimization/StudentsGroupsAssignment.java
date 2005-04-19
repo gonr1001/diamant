@@ -9,8 +9,8 @@ package dInternal.dOptimization;
  * @version 1.0
  */
 
-public class StudentsGroupsAssignment {
+//public class StudentsGroupsAssignment {
 
-  public StudentsGroupsAssignment() {
-  }
-}
+  //public StudentsGroupsAssignment() {
+  //}
+//}

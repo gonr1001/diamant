@@ -8,21 +8,14 @@ package dInternal.dDataXML.rooms;
  * @author rgr, ysyam, alexander
  * @version 1.0
  */
-//import java.util.Vector;
 
-//import dConstants.DConst;
-//import dInternal.dDataTxt.RoomsAttributesInterpretor;
 import dInternal.dDataTxt.SetOfResources;
 
 public class SetOfRooms extends SetOfResources{
 
-  //private byte[] _dataloaded; //_st;// rooms in text format
-  //private int _numberOfLines;// represent number of days
-  //private int _numberOfColumns;// represent number of period a day.
-  //private RoomsAttributesInterpretor _attr;
+
   private String _error="";
-  //private Vector _sorListeners= new Vector(1);
-  //private RoomsAttributesInterpretor _roomsAttributesInterpretor;
+
 
  /***
   * constructor
@@ -53,9 +46,6 @@ public class SetOfRooms extends SetOfResources{
     return true;
   }
 
-  /*public void setAttributesInterpretor(RoomsAttributesInterpretor attr){
-    _roomsAttributesInterpretor= attr;
-  }*/
 
   /**
    *build rooms list.
@@ -66,18 +56,7 @@ public class SetOfRooms extends SetOfResources{
   	beginPosition+=0;
   }
 
-  /**
-   * */
-  /*private boolean isIntValue(String value, String message){
-    try{
-      (new Integer (value.trim())).intValue();
-    }catch (NumberFormatException exc){
-      _error = message +DConst.ROOM_TEXT5 +
-      "\n" + DConst.ROOM_TEXT6;
-      return false;
-    }
-    return true;
-  }*/
+
 
   public String getError() {
     return _error;

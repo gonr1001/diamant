@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportCmd $Revision: 1.4 $  $Date: 2004-06-21 15:38:16 $
+ * Title: DefFileToImportCmd $Revision: 1.5 $  $Date: 2005-04-19 20:37:43 $
  * Description: DefFileToImportCmd is a class used by menus
  *              to define the files to import
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -34,8 +34,6 @@ import dInterface.DApplication;
 
 public class DefFilesToImportCmd implements Command {
 
-  public DefFilesToImportCmd() {
-  } // end constructor
 //------------------------------
   public void execute(DApplication dApplic) {
     new DefFilesToImportDlg(dApplic);

@@ -34,9 +34,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 public class DXTools{
 
-  public DXTools() {
-  }
-
+  
   /**
     * check if the selected file exist before closed the dialog
     * @param string the file name
