@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.5 $  $Date: 2005-04-11 14:38:14 $
+ * Title: ClassName $Revision: 1.6 $  $Date: 2005-04-19 20:46:24 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.6 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -36,9 +36,10 @@ package dDeveloper;
  *
  */
 
-// XXXX Pascal: De ce que je peux voir, cette classe est totalement inutile
 public class Header {
+	public void doNothing(){
+		int i = 0;
+		i++;
+	}
 
-  public Header() {
-  }
 } /* end class Header */

@@ -14,13 +14,15 @@ import dInterface.DApplication;
 
 public class MyFileCmd implements Command{
 
+
   public MyFileCmd() {
   }
 
  // XXXX Pascal: Arrrggggg!!!! Des paths absolus dans du code... !!
+
   public void execute(DApplication dApplic) {
-    dApplic.setCurrentDir("D:\\Developpements\\DiamantExtreme\\Dx\\devData\\");
-    dApplic.getDMediator().addDoc("D:\\Developpements\\DiamantExtreme\\Dx\\devData\\fichier1.dia",0);
+    dApplic.setCurrentDir(".\\devData\\");
+    dApplic.getDMediator().addDoc(".\\devData\\fichier1.dia",0);
     dApplic.getDModel().changeInDModel(dApplic.getJFrame());
     dApplic.getMenuBar().postInitialAssign();
   }

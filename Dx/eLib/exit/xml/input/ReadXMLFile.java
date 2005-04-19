@@ -1,6 +1,6 @@
 /**
 *
-* Title: ReadXMLFile $Revision: 1.3 $  $Date: 2005-04-15 14:08:50 $
+* Title: ReadXMLFile $Revision: 1.4 $  $Date: 2005-04-19 20:49:56 $
 * Description: ReadXMLFile is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
-* @author  $Author: durp1901 $
+* @version $Revision: 1.4 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -48,7 +48,7 @@ private DocumentBuilder _builder;
   }
 
   /**
-   * Parses an XML file containing an elements list
+   * Parses an XML file containing a list of elements
    * INPUT: filename, the name of the file
    * OUTPUT: a root Element containing all children elements in the XML file
    * */

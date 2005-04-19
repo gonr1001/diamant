@@ -1,4 +1,3 @@
-package lineInterface;
 
 /**
  * <p>Title: Diamant 1.5</p>
@@ -8,15 +7,22 @@ package lineInterface;
  * @author rgr + ys
  * @version 1.0
  */
+
 //XXXX Pascal: Huh ?!?
+
+
+package lineInterface;
+
+
 public class DILigne {
 
   public DILigne() {
+  	//  TODO Auto-generated constructor stub
   }
 
   public void doIt(String[] args) {
   	if (args.length == 0){
-  		
+//  	 TODO Auto-generated constructor stub
   	}
   }
 }

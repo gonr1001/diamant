@@ -1,8 +1,8 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.65 $  $Date: 2005-04-11 14:38:50 $
- 
+ * Title: DApplication $Revision: 1.66 $  $Date: 2005-04-19 20:46:24 $
+ *
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
  *
@@ -17,13 +17,14 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.65 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.66 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -297,5 +298,13 @@ public class DApplication implements ActionListener {
 	 * @return
 	 */
 	
+	
+	public void setCursorWait() {
+		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));		
+	}
+	
+	public void setCursorDefault() {
+		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));		
+	}
 	
 } /* end class DApplication */
