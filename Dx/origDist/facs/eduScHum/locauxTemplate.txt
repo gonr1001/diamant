@@ -1,0 +1,10 @@
+Diamant1.6
+Faculte des ........;
+Liste des locaux pour reservations;
+
+Nom du local;   Capacite;   Fonction;   Liste des caracteristiques;     Localite;   Categorie;    Notes;
+
+A1-2001;        80;         211;        08,11,14,57;                    SHE;        CAT 1;      Multimedia;
+XW-2002;        60;         211;        08,11,14,57;                    LON;        CAT 1;      Multimedia;
+FM-3207;        40;         211;        08,11,14,57;                    SHE;        CAT 2;      Multimedia;
+FM-3201;        80;         211;        08,11,14,57;                    SHE;        CAT 1;      Multimedia;
