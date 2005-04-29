@@ -1,0 +1,88 @@
+\chapter{Autres requis non fonctionnels (``Other Nonfunctional Requirements'')}
+
+This section specifies nonfunctional requirements other than external
+interface requirements, which appear in section 4, and constraints,
+recorded in section 2.5.
+
+    \section{Requis de performance (``Performance Requirements'')}
+
+    State specific performance requirements for various system
+    operations. Explain their rationale to guide the developers in
+    making appropriate design choices. For instance, stringent
+    database response time demands might lead the designers to mirror
+    the database in multiple geographical locations or to denormalize
+    relational database tables for faster query responses. Specify the
+    number of transactions per second to be supported, response times,
+    computational accuracy, and timing relationships for real-time
+    systems. You could also specify memory and disk space
+    requirements, concurrent user loads, or the maximum number of rows
+    stored in database tables. If different functional requirements or
+    features have different performance requirements, it's appropriate
+    to specify those performance goals right with the corresponding
+    functional requirements, rather than collecting them all in this
+    one section.
+
+    Quantify the performance requirements as specifically as
+    possible--for example, "95 percent of catalog database queries
+    shall be completed within 3 seconds on a single-user 1.1-GHz Intel
+    Pentium 4 PC running Microsoft Windows XP with at least 60 percent
+    of the system resources free." An excellent method for precisely
+    specifying performance requirements is Tom Gilb's Planguage,
+    described in Chapter 12, "Beyond Functionality: Software Quality
+    Attributes."
+
+    \section{Requis face aux dangers et à la santé (``Safety Requirements'')}
+
+    Safety and security are examples of quality attributes, which are
+    more fully addressed in section 5.4. I've called these two
+    attributes out in separate sections of the SRS template because if
+    they are important at all, they are usually critical. In this
+    section, specify those requirements that are concerned with
+    possible loss, damage, or harm that could result from the use of
+    the product (Leveson 1995). Define any safeguards or actions that
+    must be taken, as well as potentially dangerous actions that must
+    be prevented. Identify any safety certifications, policies, or
+    regulations to which the product must conform. Examples of safety
+    requirements are
+
+    \begin{itemize}
+        \item{\textbf{SA-1}} The system shall terminate any operation
+              within 1 second if the measured tank pressure exceeds 95
+              percent of the specified maximum pressure.
+        \item{\textbf{SA-2}} The radiation beam shield shall remain
+              open only through continuous computer control. The
+              shield shall automatically fall into place if computer
+              control is lost for any reason.
+    \end{itemize}
+
+    \section{Requis au niveau de la sécurité (``Security Requirements'')}
+
+    Specify any requirements regarding security, integrity, or privacy
+    issues that affect access to the product, use of the product, and
+    protection of data that the product uses or creates. Security
+    requirements normally originate in business rules, so identify any
+    security or privacy policies or regulations to which the product
+    must conform. Alternatively, you could address these requirements
+    through the quality attribute called integrity. Following are
+    sample security requirements:
+
+    \begin{itemize}
+        \item{\textbf{SE-1}} Every user must change his initially
+              assigned login password immediately after his first
+              successful login. The initial password may never be
+              reused.
+        \item{\textbf{SE-2}} A door unlock that results from a
+              successful security badge read shall keep the door
+              unlocked for 8.0 seconds.
+    \end{itemize}
+
+    \section{Attributs de qualité du logiciel (``Software Quality Attributes'')}
+
+    State any additional product quality characteristics that will be
+    important to either customers or developers. (See Chapter 12.)
+    These characteristics should be specific, quantitative, and
+    verifiable. Indicate the relative priorities of various
+    attributes, such as ease of use over ease of learning, or
+    portability over efficiency. A rich specification notation such as
+    Planguage clarifies the needed levels of each quality much better
+    than can simple descriptive statements. 

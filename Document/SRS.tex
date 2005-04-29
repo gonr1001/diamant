@@ -1,0 +1,101 @@
+% -*- TeX -*- -*- FR -*-
+\documentclass[francais,letterpaper]{uds-article}
+
+%-----------------------------------------------------------------------------
+%----- Identification des packages nécessaires
+%-----------------------------------------------------------------------------
+
+\usepackage{babel}
+\usepackage[latin1]{inputenc}
+%\usepackage{udstitle,dfd}
+%\newcommand{\diamant}{Diamant}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\textwidth}{6.0in}
+%\setlength{\parskip}{0.2in}
+\newcounter{auxcounter}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\parskip}{1.5ex plus0.5ex minus0ex}
+
+\newcommand{\ints}{\renewcommand{\baselinestretch}{1.0}\small \normalsize}
+\newcommand{\intm}{\renewcommand{\baselinestretch}{1.5}\small \normalsize}
+\newcommand{\intd}{\renewcommand{\baselinestretch}{2.0}\small \normalsize}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+
+
+\newcommand{\bv}{\verb}
+
+\newcommand{\bve}{\verb*}
+
+\newcommand{\brun}{\noindent $\triangleright$}
+\newcommand{\erun}{$\triangleleft$}
+
+\newcommand{\ang}{\textsf}
+\newcommand{\key}{\textsf}
+\newcommand{\ita}{\textit}
+\newcommand{\bld}{\textbf}
+\newcommand{\dos}{\textsc}
+\newcommand{\pro}{\texttt}
+
+\newcommand{\diamant}{DIAMANT}
+\newcommand{\dia}{DIAMANT 1.0}
+\newcommand{\dx}{DIAMANT 1.5}
+\newcommand{\saphir}{SAPHIR}
+\newcommand{\sig}{SIG}
+
+%-----------------------------------------------------------------------------
+%----- Page Titre
+%-----------------------------------------------------------------------------
+
+\Titre{\textbf{-Projet XX-} \\ \\
+SOFTWARE REQUIREMENTS SPECIFICATION\\
+\small{\emph{IEEE SRS standard 830-1998}}\\
+}
+\Logo{logoDiamantNew.eps}
+\Auteurs{Yannick Syam} 
+\Date{\today}
+
+%-----------------------------------------------------------------------------
+%----- Identification des fichiers des pages préliminaires et bibliographique
+%-----------------------------------------------------------------------------
+
+\FichierResume{}
+\FichierRemerciements{}
+\FichierGlossaire{} % \FichierLexique est équivalent
+\FichiersBibliographie{udsplain}{}
+
+%-----------------------------------------------------------------------------
+%----- Le document
+%-----------------------------------------------------------------------------
+
+\includeonly{SRS/intro, SRS/desc_glob, SRS/func_syst, SRS/req_inter, SRS/req_non_funct, SRS/other_req}
+
+\begin{document}
+\begin{articleDX}
+
+%\input{Inputs/dataStructure}
+
+%\part{Architecture}
+\input{SRS/intro}
+\input{SRS/desc_glob}
+\input{SRS/func_syst}
+\input{SRS/req_inter}
+\input{SRS/req_non_funct}
+\input{SRS/other_req}
+
+
+
+%\appendix
+%\input{Inputs/fieldsIdentificationTable}
+%\input{Inputs/glossaire}
+%\input{Inputs/index}
+%\include{formules}
+\end{articleDX}
+\end{document}

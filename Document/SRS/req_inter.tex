@@ -1,0 +1,82 @@
+\chapter{Requis des interfaces externes (``External Interface Requirements'')}
+
+According to Richard Thayer (2002), "External interface requirements
+specify hardware, software, or database elements with which a system
+or component must interface...." This section provides information to
+ensure that the system will communicate properly with external
+components. If different portions of the product have different
+external interfaces, incorporate an instance of this section within
+the detailed requirements for each such portion.
+
+Reaching agreement on external and internal system interfaces has been
+identified as a software industry best practice (Brown 1996). Place
+detailed descriptions of the data and control components of the
+interfaces in the data dictionary. A complex system with multiple
+subcomponents should use a separate interface specification or system
+architecture specification (Hooks and Farry 2001). The interface
+documentation could incorporate material from other documents by
+reference. For instance, it could point to a separate application
+programming interface (API) specification or to a hardware device
+manual that lists the error codes that the device could send to the
+software.
+
+    \section{Interfaces utilisateurs (``User Interfaces'')}
+
+    Describe the logical characteristics of each user interface that
+    the system needs. Some possible items to include are
+
+    \begin{itemize}
+        \item References to GUI standards or product family style
+              guides that are to be followed.
+        \item Standards for fonts, icons, button labels, images, color
+              schemes, field tabbing sequences, commonly used
+              controls, and the like.
+        \item Screen layout or resolution constraints.
+        \item Standard buttons, functions, or navigation links that
+              will appear on every screen, such as a help button.
+        \item Shortcut keys.
+        \item Message display conventions.
+        \item Layout standards to facilitate software localization.
+        \item Accommodations for visually impaired users.
+    \end{itemize}
+
+    Document the user interface design details, such as specific
+    dialog box layouts, in a separate user interface specification,
+    not in the SRS. Including screen mock-ups in the SRS to
+    communicate another view of the requirements is helpful, but make
+    it clear that the mock-ups are not the committed screen
+    designs. If the SRS is specifying an enhancement to an existing
+    system, it sometimes makes sense to include screen displays
+    exactly as they are to be implemented. The developers are already
+    constrained by the current reality of the existing system, so it's
+    possible to know up front just what the modified, and perhaps the
+    new, screens should look like.
+
+    \section{Interfaces matériels (``Hardware Interfaces'')}
+
+    Describe the characteristics of each interface between the
+    software and hardware components of the system. This description
+    might include the supported device types, the data and control
+    interactions between the software and the hardware, and the
+    communication protocols to be used.
+
+    \section{Interfaces logiciels (``Software Interfaces'')}
+
+    Describe the connections between this product and other software
+    components (identified by name and version), including databases,
+    operating systems, tools, libraries, and integrated commercial
+    components. State the purpose of the messages, data, and control
+    items exchanged between the software components. Describe the
+    services needed by external software components and the nature of
+    the intercomponent communications. Identify data that will be
+    shared across software components. If the data-sharing mechanism
+    must be implemented in a specific way, such as a global data area,
+    specify this as a constraint.
+
+    \section{Interfaces de communication (``Communications Interfaces'')}
+
+    State the requirements for any communication functions the product
+    will use, including e-mail, Web browser, network communications
+    protocols, and electronic forms. Define any pertinent message
+    formatting. Specify communication security or encryption issues,
+    data transfer rates, and synchronization mechanisms. 
