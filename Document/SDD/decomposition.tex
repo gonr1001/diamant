@@ -76,13 +76,34 @@ Les facteurs suivants agissent sur le système dans le contexte présent et doiven
 
 \subsection{Description du modèle}
 
-Le modèle de \dx{} est bâti autour de quatre principaux sous-composants: le sous-composant \verb!model!, le sous-composant \verb!data!, le sous-composant \verb!ttstructure! et le sous-composant \verb!optimization! (voir figure \ref{model}).
+Le modèle de \dx{} est bâti autour de cinq principaux sous-composants: la structure composite (SetOfXxx) permettant de gérer des collections de données, le sous-composant \verb!model!, le sous-composant \verb!data!, le sous-composant \verb!ttstructure! et enfin le sous-composant \verb!optimization! (voir figure \ref{model}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
     \includegraphics[width=350pt]{SDD/images/Component-Global.eps}
     \caption{Architecture du composant modèle de \dx{}}\label{model}
+  \end{center}
+\end{figure*} 
+
+\subsubsection{Description de la structure composite SetOfXxx}
+
+Cette structure s'inspire du pattern composite et elle permet d'organiser les données dans un arbre (voir figure \ref{composite}). Une structure composite contient plusieurs objets (dans notre cas, ces objets sont de même type dans une structure), chaque objet est composé de plusieurs champs, les champs peuvent être des types de données différents. 
+
+Afin de pouvoir manipuler indifféremment les structures composites à partir de n'importe quel champ, nous les avons pourvu de certains comportement (inspirés des principales commandes SQL des bases de données relationnelles):
+
+\begin{itemize}
+    \item interroger (getXxx),
+    \item manipuler des entrées (setXxx, insertXxxx, removeXxx),
+    \item définir des données (addXxx)
+\end{itemize}    
+
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=300pt]{SDD/images/Composite_Structure.eps}
+    \caption{Description de la structure composite SetOfXxx}\label{composite}
   \end{center}
 \end{figure*} 
 
@@ -115,7 +136,7 @@ Vue le nombre d'interfaces qu'il pourrait avoir entre l'entité structure et l'en
 
 \subsubsection{Description du sous-composant data}
 
-Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer les accès aux données physiques (lecture et écriture). Il permet ensuite d'organiser les données sous une forme prédéfinie (structure de données). Il permet enfin de manipuler ces données (ajout, suppression, modification, recherche, tri).
+Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer les accès aux données physiques (lecture et écriture). Il permet ensuite d'organiser les données sous une forme prédéfinie (structure de données). Il permet enfin de manipuler ces données (ajout, suppression, modification, recherche, tri). Les données manipulées ici sont les enseignants, les locaux, les étudiants et les activités.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -124,6 +145,9 @@ Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer 
     \caption{Description du sous-composant data}\label{subdata}
   \end{center}
 \end{figure*} 
+
+
+
 
 \subsection{Description de la vue}
 
