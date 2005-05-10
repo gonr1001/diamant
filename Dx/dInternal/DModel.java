@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.129 $  $Date: 2005-04-19 20:55:47 $
+ * Title: DModel $Revision: 1.130 $  $Date: 2005-05-10 18:46:46 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.129 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.130 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 package dInternal;
@@ -874,7 +874,8 @@ public class DModel extends Observable {
      }*/
 
     /**
-     *
+     * Que fait cette methode?  Le nom n'est pas assez evocateur.  De plus, on y fait une trop grande
+     * utilisation des "magic numbers"
      */
     public void setStateBarComponent() {
         if (_constructionState > 0) {//_visibleVec = _activities.getIDsByField(3, "true");

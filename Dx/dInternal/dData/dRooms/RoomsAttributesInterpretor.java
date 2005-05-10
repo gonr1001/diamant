@@ -45,7 +45,7 @@ public class RoomsAttributesInterpretor {
    * */
   public boolean addFunction(int refNo, String function){
     _setOfFunctions.setCurrentKey(refNo);
-    return _setOfFunctions.addResource(new DResource(function, new DValue()),0);
+    return _setOfFunctions.addResource(new DResource(function, new DValue()),0); // XXXX Pascal: magic number
   }
 
   /**
@@ -98,7 +98,7 @@ public class RoomsAttributesInterpretor {
       //state =0;
       token = st.nextToken();
       StringTokenizer currentLine = new StringTokenizer(token,";" );
-      if (currentLine.countTokens()==2){
+      if (currentLine.countTokens()==2){ // XXXX Pascal: magic numbers
        addFunction(Integer.parseInt(currentLine.nextToken()),
                         currentLine.nextToken());
       }else

@@ -304,7 +304,7 @@ public class TTStructure {
   *read a xml tag containing a set of cycle and build the resource
   * @param Element the root xml tag of the set of cycle
   * */
- public String readXMLtag(Element setofCycles){
+ public String readXMLtag(Element setofCycles){ // XXXX Pascal: Le nom de cette methode est general, mais le parametre ne l'est pas dutout!
    ReadXMLElement list= new ReadXMLElement();
    String ID="";
    int size= list.getSize(setofCycles,_TAGITEM);

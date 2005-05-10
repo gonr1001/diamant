@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObject $Revision $  $Date: 2005-02-09 14:41:11 $
+* Title: DObject $Revision $  $Date: 2005-05-10 18:46:46 $
 * Description: DObject is a class used to
 *
 *
@@ -15,7 +15,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 
@@ -44,7 +44,7 @@ public abstract class  DObject extends Object{
   public boolean compareByField(int fieldIndex, String value) {
   	fieldIndex = fieldIndex+ 0;
   	value = ""+value;
-    return false;
+    return false; // XXXX Pascal: ???
   }
 
   /**
@@ -57,20 +57,20 @@ public abstract class  DObject extends Object{
   
   public void setField(int fieldIndex, String value){
   	fieldIndex = fieldIndex+ 0;
-  	value = ""+value;
+  	value = ""+value; // XXXX Pascal: ????
   }
 
   /**
    *
    * */
   public String toWrite(){
-    return "";
+    return ""; // XXXX Pascal: ?
   }
   /**
    *
    * */
   public String externalKey(String str, String id){
-    return str+id;
+    return str+id; // XXXX Pascal: Hmmmm
   }
 
   /**
@@ -78,7 +78,7 @@ public abstract class  DObject extends Object{
    * */
   public boolean isEquals(DObject obj){
   	obj.toString();
-    return true;
+    return true; // XXXX Pascal: ?
   }
 
   /**
@@ -87,7 +87,7 @@ public abstract class  DObject extends Object{
    */
   public int[][] getMatrixAvailability(){
     int [][] mat= new int[2][2];
-    return mat;
+    return mat; // XXXX Pascal: ?
   }
 
 
@@ -97,7 +97,7 @@ public abstract class  DObject extends Object{
    * @param mat
    */
   public void setAvailability(int[][] mat){
-  	mat[0][0]+=0;
+  	mat[0][0]+=0;// XXXX Pascal: ?
   }
 
 
@@ -107,7 +107,7 @@ public abstract class  DObject extends Object{
  */
 public long getSelectedField(int field) {
 	field+=0;
-	return 0;
+	return 0;// XXXX Pascal: ?
 }
 
 

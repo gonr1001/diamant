@@ -1,6 +1,6 @@
 /**
  *
- * Title: FilterFile $Revision: 1.5 $  $Date: 2005-01-21 15:27:26 $
+ * Title: FilterFile $Revision: 1.6 $  $Date: 2005-05-10 18:46:48 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.6 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -232,7 +232,7 @@ public class FilterFile {
 						byteVector.add(new Byte((byte)13));
 						byteVector.add(new Byte((byte)10));
 					} else {
-						if( _b[i+1] !=(byte)crlfStr.charAt(1) ){
+						if( _b[i+1] !=(byte)crlfStr.charAt(1) ){ // XXXX Pascal: != ou == ?
 							byteVector.add(new Byte((byte)13));
 							byteVector.add(new Byte((byte)10));
 						}
@@ -264,7 +264,7 @@ public class FilterFile {
 		byte []  bTemp = new byte[i + 1];
 		for (int j=0; j< bTemp.length; j++)
 			bTemp[j] = _b[j];
-		_b = null;
+		_b = null; // XXXX Pascal: instruction inutile
 		_b = bTemp;
 	}
 	//------------------------------------------------------
@@ -300,12 +300,12 @@ public class FilterFile {
 	
 	private boolean byteIn(byte b, byte[] bytes) {
 		for (int i = 0; i < bytes.length; i++) {
-			if (  (b - bytes[i]) == 0)
+			if (  (b - bytes[i]) == 0) // XXXX Pascal: pkoi pas b == bytes[i] ?
 				return true;
 		}
 		return false;
 	}
-	private boolean isIn(String str, byte[] b) {
+	private boolean isIn(String str, byte[] b) { // XXXX Pascal: Pourquoi reinventer la roue quand ce type de methode est dans l'API standard?
 		
 		for (int i = 0; i < str.length(); i ++) {
 			if (b[0] == str.charAt(i) )

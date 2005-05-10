@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.54 $  $Date: 2005-04-19 20:37:41 $
+ * Title: DMediator $Revision: 1.55 $  $Date: 2005-05-10 18:46:46 $
  * Description: DMediatorNew is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.54 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.55 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 
@@ -48,7 +48,10 @@ public class DMediator extends Object{
      */
 	private Vector _documents;
 	private boolean _cancel;
-		
+
+	public DMediator() { // XXXX Pascal: Devrait etre 'private', sinon on risque de travailler avec des references 'null' !!
+	}// end Mediator
+
 	//-----------------------------
 	
 	public DMediator(DApplication dApplic) {

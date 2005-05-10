@@ -1,6 +1,6 @@
 /**
  *
- * Title: DLoadData $Revision: 1.11 $  $Date: 2005-03-08 16:00:44 $
+ * Title: DLoadData $Revision: 1.12 $  $Date: 2005-05-10 18:46:46 $
  * Description: LoadData is a class used to read all files then 
  *              the corresponding Resources are created.
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.12 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 
@@ -94,7 +94,7 @@ public class DLoadData {
 	 */
 	public DLoadData(DModel dm, String args ) {
 		_dm = dm;
-		if (_dm != null)
+		if (_dm != null) // XXXX Pascal: else ?
 			_chars =_dm.getDDocument().getDMediator(
 			).getDApplication(
 			).getPreferences()._acceptedChars;
@@ -316,7 +316,7 @@ public class DLoadData {
 		_caractFileName= path + "DXcaracteristics.sig";
 	}
 	
-	private byte[] preLoad(String str) {
+	private byte[] preLoad(String str) { // XXXX Pascal: Ne devrait pas avoir 2 return
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
 		filter.appendToCharKnown(_chars);

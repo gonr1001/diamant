@@ -133,7 +133,7 @@ public class SetOfInstructors extends DSetOfResources{
     while (st.hasMoreElements()){
 
       token = st.nextToken();
-      switch (state){
+      switch (state){ // XXXX Pascal: Pas clair dutout...
         case 0:
           //number of instructors in the file
            state=1;
