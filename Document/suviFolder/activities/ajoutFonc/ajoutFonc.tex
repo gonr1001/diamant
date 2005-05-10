@@ -160,3 +160,56 @@ période est modifiée ou éliminée.
 \subsection{Entête de rapports} \label{rapport}
 
 La fonctionnalité garde toujours l'entête de rapports visible.
+
+\subsection{Définition des ensembles et grille partielle}
+
+\begin{itemize}
+  \item Les utilisateurs de Diamant doivent pouvoir créer des
+        ensembles d'\texttt{Activités}.
+
+        Le scénario motivant cette spécification est le suivant: après
+        avoir réalisé l'assignation des \texttt{Activités} aux
+        étudiants, on voudrait être en mesure de vérifier \og
+        manuellement \fg{} si l'horaire d'un étudiant \og type \fg{}
+        est \og balancé \fg{} ou si pour un département les activités sont balancés.
+
+        Un ensemble est formée par l'utilisateur en choisissant des
+        activités ou encore des ensembles. C'est l'utilisateur qui
+        va prendre un étudiant ou une cohorte pour former
+        l'ensemble.
+
+        Une fois un ensemble formé il sera possible de visualiser
+        dans la grille uniquement les activités appartenant à
+        l'ensemble.
+
+
+
+        En sélectionnant un étudiant \og type
+        \fg{} et en formant un ensemble des \texttt{Activités} que cet
+        étudiant doit suivre, il serait possible de représenter
+        visuellement l'horaire particulier de cet étudiant \og type
+        \fg{}.
+
+  \item La formation des ensembles doit se faire par l'entremise d'un
+        dialogue respectant les caractéristiques des dialogues déjà
+        existants de Diamant.
+
+  \item Il doit être possible d'associer un nom à un ensemble.
+
+  \item Il doit être possible de créer, lire et détruire un ou
+        plusieurs ensemble(s).
+
+  \item \textbf{Supporte-t-on l'opération de modification
+        d'ensembles?} oui
+
+  \item La sauvegarde d'ensembles doit être persistante.  C'est-à-dire
+        qu'il doit être possible de sauvegarder un ou plusieurs
+        ensembles créés lors d'une session d'utilisation et de
+        récupérer ces ensembles lors d'une session ultérieure.
+\end{itemize}
+
+\paragraph{Mock-up du dialogue de gestion des ensembles}
+
+Est-ce que l'on créé un dialogue par opération \og majeure \fg{}
+(création, lecture, destruction) ou bien crée-t-on un \og
+méga-dialogue \fg{} fourre-tout?
