@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.130 $  $Date: 2005-05-10 18:46:46 $
+ * Title: DModel $Revision: 1.131 $  $Date: 2005-05-12 14:43:24 $
  * Description: DModel is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.130 $
+ * @version $Revision: 1.131 $
  * @author  $Author: durp1901 $
  * @since JDK1.3
  */
@@ -312,6 +312,8 @@ public class DModel extends Observable {
      * @param fileName
      * @return
      */
+    
+    // XXXX Pascal: Magic number haven
     public String loadTimeTable(String fileName, String currentDir) {
         //	debug for xml file to be remove
         // ysyam
@@ -471,7 +473,7 @@ public class DModel extends Observable {
      * @return
      */
     public SetOfActivities getSetOfActivities() {
-        SetOfActivities soaTmp = new SetOfActivities(false);
+        SetOfActivities soaTmp = new SetOfActivities(false); // XXXX Pascal: pkoi false?
         if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
             for (int i = 0; i < _setOfActivitiesSites.size(); i++) {
                 SetOfActivities soa = (SetOfActivities) _setOfActivitiesSites
