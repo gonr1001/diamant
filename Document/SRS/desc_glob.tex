@@ -9,11 +9,11 @@
     \item Aucune portabilité,
     \item Difficulté d'adaptation du logiciel au changement des spécification,
     \item ...
-\end{itemize}    
+\end{itemize}
 
     \section{Fonctionnalités du produit}
 
-    
+
 \subsection{Fonctionnalité horaire d'examens}
 Cette fonctionnalité est en réalité un ensemble de fonctionnalités
 nécessaires à la construction d'un horaire des examens. Elle est
@@ -31,126 +31,66 @@ décrite dans le manuel utilisateur.
 \subsection{Fonctionnalité affectation d'enseignants}
 Cette fonctionnalité doit servir à assigner à une activité $n$
 enseignants. On peut ajouter uniquement des enseignants qui
-sont connus par \diamant{}, c'est-à-dire ceux qui sont dans les fichiers d'importation. 
+sont connus par \diamant{}, c'est-à-dire ceux qui sont dans les fichiers d'importation.
 
 \subsection{Fonctionnalité modification de la disponibilité des enseignants}
 Cette fonctionnalité doit permettre de modifier la disponibilité d'un enseignant (rendre un enseignant disponible ou indisponible dans une période donnée). Cette modification ne peut se faire que sur des enseignants connus par \diamant{}.
 
 \subsection{Fonctionnalité manipulation des groupes d'étudiants}
-Cette fonctionnalité doit permettre de déplacer les étudiants d'un groupe vers un autre ou encore de ne pas le placer dans un groupe, de figer un étudiant dans un groupe afin qu'il ne puisse pas être déplacé par le logiciel. 
+Cette fonctionnalité doit permettre de déplacer les étudiants d'un groupe vers un autre ou encore de ne pas le placer dans un groupe, de figer un étudiant dans un groupe afin qu'il ne puisse pas être déplacé par le logiciel.
 
 \subsection{Fonctionnalité Grille partielle}
-La fonctionnalité Grille partielle doit permettre de définir un
-ensemble d'activités, et de donner un nom à cet ensemble. Ensuite
-afficher sur la grille uniquement les cours de l'ensemble choisi.
+La fonctionnalité Grille partielle doit permettre de définir et
+sauvegarder des  ensembles d'activités. Ensuite afficher sur la
+grille uniquement les cours de l'ensemble choisi.
 
-Quelles classes sont à modifier?
-
-Il faut aussi sauvegarder les données nom de l'ensemble et les
-activités appartenant dans l'ensemble.
-
-\subsection{Fonctionnalité \ref{select}~: Importation sélective}
+\subsection{Fonctionnalité Importation sélective}
 La fonctionnalité importation sélective est de pouvoir importer un
 fichier sans changer les données dans les autres fichiers.
 
-Quels fichiers peuvent être importés de manière selective?
-
-Quelle sont les cas possibles~: donnée nouvelle, donnée modifie,
-donnée disparue, autres?
-
-Quoi faire dans chaque cas?
-
-
-Quelles classes sont à modifier?
-
-
-\subsection{Fonctionnalité \ref{menus}~: Menus}\label{menus}
+\subsection{Fonctionnalité  Menus}
 Les menus doivent être disponibles (enabled) ou non disponibles
-(disabled) en fonction de la dernière opération effectué.
-
-Revision de toute l'interface avec l'utilisateur.
-
-Quelles classes sont à modifier? \verb!DMenuBar! + toutes les
-classes \verb!XCmd! + certaines classes avec dialogue
-\verb!Annuler!
-
-\subsection{Fonctionnalité \ref{details}~: Détails}
-Détails n'est pas une fonctionnalité. Il s'agit de effectuer des
-changements mineurs dans le logiciel pour assurer entre autres~:
-
-\begin{enumerate}
-    \item Les termes sont utilisées de manière consistante.
-    \item Les boîtes de dialogue s'ajustent selon les informations
-    à présenter.
-    \item Autres ajustements, les utilisateurs vont les indiquer
-\end{enumerate}
-
+(disabled) en fonction de la dernière opération effectué et de
+l'état du logiciel.
 
 \subsection{Fonctionnalité  Toolbar}
-La fonctionnalité Toolbar est de pouvoir effectuer des
-modifications à une grille horaire qui est déjà associée à un
-ensemble de données. Ceci c'est le cas lorsque on travaille avec
-une grille faite par  Nouvel horaire (cours ou examens).
-
-Il s'agit de modifier la priorité de périodes, de ajouter ou
-enlever des journées. Modifier les noms de journées.
+La fonctionnalité Toolbar doit permettre d'effectuer, en mode
+grille, des modifications (ajout ou suppression de jours,
+modification de la priorité d'une période, modification du nom
+d'une journée, etc) sur une grille horaire.
 
 
-\subsection{Fonctionnalité \ref{event}~: Corriger dialogue de liste d'événements}
+\subsection{Fonctionnalité horaire sans Étudiants}
 
-La fonctionnalité est d'assurer que lorsque on n'applique pas les
-modifications l'événement reste  où il est.
+La fonctionnalité permet de faire un horaire sans ternir compte du
+fichier d'étudiants, mais uniquement du nombre d'étudiants associé
+à une activité (dans le fichier d'activité).
 
-\subsection{Fonctionnalité \ref{nostudents}~: sans Étudiants}
+\subsection{Fonctionnalité affectation de locaux}
 
-La fonctionnalité permet de faire un horaire sans étudiants.
-Nouveau fichier avec le nombre d'étudiants par activité.
-
-\subsection{Fonctionnalité \ref{rooms}~: affectation locaux}
-
-La fonctionnalité permet de assigner les locaux aux événements
-avec une utilisation optimal des locaux.
-
-\subsection{Fonctionnalité \ref{affecIni}~: Automate pour menu Affectation initiale}
-
-La fonctionnalité forcer l'utilisateur à passer par un seul chemin
-pour construire son horaire.
-
-\subsection{Fonctionnalité \ref{buttons}~: Remplacer les boutons de dialogues d'une manière unifiée.}
-
-La fonctionnalité sert à utiliser la même terminologie pour une
-même fonctionnalité.
-
-\subsection{Fonctionnalité \ref{rapports}~: Rendre le rapport d'import visible une seule fois (lors de
-creation d'un horaire)}
-
-La fonctionnalité forcer l'utilisateur à passer par un seul chemin
-pour construire son horaire.
-
-\subsection{Fonctionnalité \ref{headers}~: Entête de rapports}
-
-La fonctionnalité garde toujours l'entête de rapports visible.
+La fonctionnalité permet d'assigner des locaux aux événements avec
+une utilisation optimale des locaux. Les principaux éléments à
+prendre en compte dans cette affectation sont les suivantes:
+\begin{itemize}
+    \item La catégorie du local a assigner à une activité.
+    \item 
+    \item 
+\end{itemize}
 
 
-    \section{Classes et caractéristiques d'utilisateurs (``User Classes and Characteristics'')}
+    \section{Classes et caractéristiques d'utilisateurs}
 
-    Identify the various user classes that you anticipate will use
-    this product and describe their pertinent characteristics. (See
-    Chapter 6, "Finding the Voice of the Customer.") Some requirements
-    might pertain only to certain user classes. Identify the favored
-    user classes. User classes represent a subset of the stakeholders
-    described in the vision and scope document.
+    Les principaux utilisateurs de \diamant{} sont: les préposés
+    aux horaires, les sécrétaires académiques, les responsables de
+    programmes, les enseignants.
 
     \section{Environnement d'opération (``Operating Environment'')}
 
-    Describe the environment in which the software will operate,
-    including the hardware platform, the operating systems and
-    versions, and the geographical locations of users, servers, and
-    databases. List any other software components or applications with
-    which the system must peacefully coexist. The vision and scope
-    document might contain some of this information at a high level.
+    \diamant{} fonctionne sur toutes les plateformes matérielles
+    et logicielles à condition qu'y soit installé la machine
+    virtuelle Java.
 
-    \section{Contraintes de design et d'implémentation (``Design and Implementation Constraints'')}
+    \section{Contraintes de design et d'implémentation}
 
     Describe any factors that will restrict the options available to
     the developers and the rationale for each constraint. Constraints
@@ -178,14 +118,12 @@ La fonctionnalité garde toujours l'entête de rapports visible.
         \item Standard data interchange formats such as XML.
     \end{itemize}
 
-    \section{Documentation utilisateur (``User Documentation'')}
+    \section{Documentation utilisateur}
 
-    List the user documentation components that will be delivered
-    along with the executable software. These could include user
-    manuals, online help, and tutorials. Identify any required
-    documentation delivery formats, standards, or tools.
+    Le principal document mis à la disposition des utilisateurs
+    est le manuel d'utilisation de \diamant{}.
 
-    \section{\og{} Pris pour acquis \fg{} et dépendances (``Assumptions and Dependencies'')}
+    \section{\og{} Pris pour acquis \fg{} et dépendances}
 
     An assumption is a statement that is believed to be true in the
     absence of proof or definitive knowledge. Problems can arise if
@@ -206,4 +144,4 @@ La fonctionnalité garde toujours l'entête de rapports visible.
     another project is developing, you depend upon that project to
     supply the correctly operating components on schedule. If these
     dependencies are already documented elsewhere, such as in the
-    project plan, refer to those other documents here. 
+    project plan, refer to those other documents here.
