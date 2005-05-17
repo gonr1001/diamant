@@ -1,44 +1,72 @@
-\chapter{Fonctionnalités du systèmes (``System Features'')}
+\chapter{Fonctionnalités du systèmes}
 
-The template in Figure 10-1 is organized by system feature, which is
-just one possible way to arrange the functional requirements. Other
-organizational options include by use case, mode of operation, user
-class, stimulus, response, object class, or functional hierarchy (IEEE
-1998b). Combinations of these elements are also possible, such as use
-cases within user classes. There is no single right choice; you should
-select an organizational approach that makes it easy for readers to
-understand the product's intended capabilities. I'll describe the
-feature scheme as an example.
+Ce chapitre permet de décrire avec plus de détails, les
+fonctionnalités présentées à la section \ref{spec_prod}.
 
-    \section{Fonctionnalité X du système (``System Feature X'')}
 
-    State the name of the feature in just a few words, such as "3.1
-    Spell Check." Repeat subsections 3.x.1 through 3.x.3 for each
-    system feature.
+    \section{Affectation de locaux}\label{aff_locaux}
 
-    \subsection{Description et priorité (``Description and Priority'')}
+     Cette fonctionnalité permet d'assigner de façon optimale des locaux aux événements.
 
-    Provide a short description of the feature and indicate whether it
-    is of high, medium, or low priority. (See Chapter 14, "Setting
-    Requirement Priorities.") Priorities are dynamic, changing over
-    the course of the project. If you're using a requirements
-    management tool, define a requirement attribute for
-    priority. Requirements attributes are discussed in Chapter 18 and
-    requirements management tools in Chapter 21.
+    \subsection{Description et priorité}
 
-    \subsection{Séquences stimulis/réponses (``Stimulus/Response Sequences'')}
+ Le but de cette fonctionnalité est de placer le maximum d'étudiants dans le plus petit local pour
+chaque période de la journée.
 
-    List the sequences of input stimuli (user actions, signals from
-    external devices, or other triggers) and system responses that
-    define the behaviors for this feature. These stimuli correspond to
-    the initial dialog steps of use cases or to external system
-    events.
 
-    \subsection{Requis fonctionnels (``Functional Requirements'')}
+    \subsection{Séquences stimulis/réponses}
 
-    Itemize the detailed functional requirements associated with this
-    feature. These are the software capabilities that must be present
-    for the user to carry out the feature's services or to perform a
-    use case. Describe how the product should respond to anticipated
-    error conditions and to invalid inputs and actions. Uniquely label
-    each functional requirement. 
+    %List the sequences of input stimuli (user actions, signals from
+    %external devices, or other triggers) and system responses that
+    %define the behaviors for this feature. These stimuli correspond to
+    %the initial dialog steps of use cases or to external system
+    %events.
+
+    L'utilisation de cette fonctionnalité se fera à travers trois
+    interfaces: le menu d'affectation de locaux, le dialogue d'événements et le dialogue
+    d'option de conflits. Cette fonctionnalité va entrainer un
+    refactoring des événements et de préférences afin que ceux-ci
+    integrent les nouveaux champs dans les lectures, écritures et
+    traitementsè
+
+    \subsubsection{Le menu d'affectation de locaux }
+
+    \subsubsection{Le dialogue d'événements }
+
+    \subsubsection{Le dialogue d'option de conflits }
+
+    \subsubsection{Refactoring des événements}
+
+    \subsubsection{Refactoring des préférences}
+
+
+    \subsection{Requis fonctionnels}
+
+    De nombreux attributs doivent être pris en compte dans cette
+affectation.
+
+\subsubsection{Attributs des événements }
+\begin{itemize}
+    \item Le nom de l'événement: l'identifiant unique de
+    l'événement.
+    \item L'horaire: la ou les périodes dans lesquelles
+    l'événement est placé.
+    \item Le nombre d'étudiants participant à l'événement.
+    \item L'identifiant du local associé.
+\end{itemize}
+
+\subsubsection{Attributs des locaux }
+\begin{itemize}
+    \item Le nom du local: l'identifiant unique du local.
+    \item La capacité du local: nombre de sièges disponibles dans
+    le local.
+    \item La catégorie du local.
+    \item La fonction du local.
+    \item L'état du local: le local est figer dans une période et par conséquent il ne
+    peut plus faire l'objet d'une affectation.
+\end{itemize}
+
+\subsubsection{Contraintes d'optimisation }
+\begin{itemize}
+    \item Taux de remplissage des locaux.
+\end{itemize}
