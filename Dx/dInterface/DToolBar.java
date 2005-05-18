@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.57 $  $Date: 2005-02-03 20:50:42 $
+ * Title: DToolBar $Revision: 1.58 $  $Date: 2005-05-18 19:09:46 $
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -18,7 +18,7 @@ package dInterface;
  * you entered into with rgr-fdl.
  *
  * @version $Version$
- * @author  $Author: gonzrubi $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 
@@ -112,7 +112,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
 
     //JComboBox periodSelector initialisation
     String [] periodSelector = {"1","2","3","4","5","6","7"};
-    _periodSelector = new DXJComboBox(periodSelector);
+    _periodSelector = new DXJComboBox(periodSelector); 
     _periodSelector.setPreferredSize(new Dimension(50,DConst.NPT11 * c));
     _periodSelector.setMaximumSize(new Dimension(50,DConst.NPT11 * c));
     //_periodSelector.setEditable(true);
@@ -312,7 +312,8 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
   public void setToolBars(TTStructure ttStruct){
     _tts= ttStruct;
     setToolBarOne();
-    //TODO setToolBarTwo();
+    // lgd: bug 101
+    setToolBarTwo();
   }
 
   /**

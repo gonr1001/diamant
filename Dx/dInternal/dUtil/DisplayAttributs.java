@@ -60,11 +60,12 @@ public DisplayAttributs() {
     * @param hourToDisplay
     * @param eventsInPeriods
     */
-   public void setAttributs(String periodKey, String hourToDisplay, SetOfResources eventsInPeriods) {
+  /* lgd: La méthode setAttributs ne s'est utilisée pas
+   * public void setAttributs(String periodKey, String hourToDisplay, SetOfResources eventsInPeriods) {
     _periodKey= periodKey;
     _hourToDisplay= hourToDisplay;
     _eventsInPeriods= eventsInPeriods;
-  }
+  }*/
 
   /**
    * set the period type

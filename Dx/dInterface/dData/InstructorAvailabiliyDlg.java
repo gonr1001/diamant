@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.25 $  $Date: 2005-03-08 16:00:43 $
+ * Title: InstructorAvailabiliyDlg $Revision: 1.26 $  $Date: 2005-05-18 19:09:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.26 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -63,7 +63,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: syay1801 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
@@ -221,6 +221,9 @@ public class InstructorAvailabiliyDlg  extends JDialog
         			_dApplic.getDModel().getOtherSites());
 	        if(assignedSites.size()!=0){
 	        	Color col = this.getGridColor((String)assignedSites.get(0));
+                if (col == Color.RED ||  col == Color.BLUE ||col == Color.GREEN){
+                    tBut.setToolTipText(DConst.NOT_DISPO);
+                }
 	        	tBut.setBackground(col);
 	        	tBut.setEnabled(false);
 	        }else

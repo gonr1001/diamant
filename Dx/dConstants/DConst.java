@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.139 $  $Date: 2005-04-19 20:46:24 $
+ * Title: DConst $Revision: 1.140 $  $Date: 2005-05-18 19:09:46 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.139 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.140 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 
@@ -29,7 +29,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
   	public final static String V_DATE = "19 avril 2005";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = false;
+	public final static boolean DEVELOPMENT = true;
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_07"; //XXXX Pascal: Retour a 1.4.2
@@ -252,6 +252,7 @@ public class DConst {
   //InstructorAvailabiliyDlg and roomsAvailabiliyDlg
   public final static String AVAILABILITIES = res.getString("dispo");//Disponibilités
   public final static String ROOMS_DLG_TITLE = res.getString("roomsDlgTitle");
+  public final static String NOT_DISPO = res.getString("notDispo");
   //GroupDlg
   public final static String ACT_STUD_NOT_ASSIGNED = res.getString("ActStudNotAss");//Étudiants non assignés
   public final static String ACT_STUD_ASSIGNED = res.getString("ActStudAss");//Étudiants assignés
@@ -452,7 +453,14 @@ public class DConst {
   public final static String INSTRUCTOR_SEP = res.getString("instructorSep"); // "-Enseignants-";
   public final static String ROOM_SEP = res.getString("roomSep"); // "-Locaux-";
   public final static String STUDENT_SEP = res.getString("studentSep"); // "-Etudiants-";
-
+  public final static String ERROR_TAG = res.getString("errorTag"); // "Error tag";
+  public final static String NOT_ROOM = res.getString("notRoom"); // "Not room";
+  public final static String NOT_INSTRUCTOR = res.getString("notInstructor"); // "Not instructor";
+                      //"Not Student Activity";
+  public final static String NOT_STUD_ACT = res.getString("notStudentActivity");
+                      //"Not Student Group";
+  public final static String NOT_STUD_GROUP = res.getString("notStudentGroup"); 
+  
   public final static String NAME_AC = res.getString("nameAC"); // "nameAC";
   public final static String CATEGORY_AC = res.getString("categoryAC"); // "categoryAC";
 

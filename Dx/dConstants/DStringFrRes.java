@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: DStringFrRes $Revision: 1.132 $  $Date: 2005-03-08 16:00:43 $
+ * Title: DStringFrRes $Revision: 1.133 $  $Date: 2005-05-18 19:09:46 $
  * Description: DStringFrRes is a class used to handle all constants Strings
  *
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.132 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.133 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 
@@ -286,6 +286,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     //InstructorAvailabiliyDlg and roomsAvailability
     {"dispo","Disponibilités"},
     {"roomsDlgTitle", "Disponibilite de locaux"},
+    {"notDispo","Il est impossible de modifier la disponibilité"},
     //GroupDlg
     {"ActStudNotAss","Étudiants non assignés"},
     {"ActStudAss","Étudiants assignés"},
@@ -398,13 +399,19 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 	{"nameLabel", "Nom"},
 	{"categoryLabel", "Catégorie"},
 
-
+	// Import report
 	{"separator",     "------------------------------------------------------------------" },
 	{"instructorSep", "------------------------  Enseignants  ---------------------------" },
 	{"roomSep",       "------------------------  Locaux       ---------------------------" },
 	{"studentSep",    "------------------------  Etudiants    ---------------------------" },
-
-	
+    {"errorTag",   "Erreur --> "},
+    
+    {"notRoom", " Local inexistant "},
+    {"notInstructor", " Enseignant(e) inexistant(e) "},
+    {"notStudentActivity"," Activité Inexistante "},
+    {"notStudentGroup"," Groupe Inexistente "},
+    
+    // 
 	{"deletedElement", "élément supprimé : " },
 	{"addedElement", "élément ajouté : "},
 	{"changedElement", "élément modifié : "},

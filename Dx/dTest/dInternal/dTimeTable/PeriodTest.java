@@ -24,10 +24,10 @@ import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dTimeTable.Period;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
-import eLib.exit.xml.output.WriteXMLElement;
-import eLib.exit.xml.output.WriteXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
+import eLib.exit.xml.output.XMLWriter;
+import eLib.exit.xml.output.XMLOutputFile;
 
 
 public class PeriodTest extends TestCase {
@@ -49,13 +49,13 @@ String path;
    * test that read the period xml tag
    * */
   public void test_readXMLtag(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  item;
     Period period= new Period();
     try{
-      xmlFile = new ReadXMLFile();
-      Document  doc = xmlFile.getDocumentFile(path+"period.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      xmlFile = new XMLInputFile();
+      Document  doc = xmlFile.createDocument(path+"period.xml");
+      XMLReader list= new XMLReader();
       item= list.getRootElement(doc);
       period.readXMLtag(item);
       //_setOfCycles.readXMLtag(root);
@@ -71,13 +71,13 @@ String path;
    *
    */
   public void test_eventsInPeriod(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  item;
     Period period= new Period();
     try{
-      xmlFile = new ReadXMLFile();
-      Document  doc = xmlFile.getDocumentFile(path+"period.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      xmlFile = new XMLInputFile();
+      Document  doc = xmlFile.createDocument(path+"period.xml");
+      XMLReader list= new XMLReader();
       item= list.getRootElement(doc);
       period.readXMLtag(item);
       //_setOfCycles.readXMLtag(root);
@@ -103,13 +103,13 @@ String path;
    * test that gives the end hour
    * */
   public void test_getEndHour(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  item;
     Period period= new Period();
     try{
-      xmlFile = new ReadXMLFile();
-      Document  doc = xmlFile.getDocumentFile(path+"period.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      xmlFile = new XMLInputFile();
+      Document  doc = xmlFile.createDocument(path+"period.xml");
+      XMLReader list= new XMLReader();
       item= list.getRootElement(doc);
       period.readXMLtag(item);
       //_setOfCycles.readXMLtag(root);
@@ -125,12 +125,12 @@ String path;
    * test that gives the end hour
    * */
   public void test_writeXMLtag(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  item;
     Period period= new Period();
     Period periodS= new Period();
     try{
-      xmlFile = new ReadXMLFile();
+      xmlFile = new XMLInputFile();
       Document  doc;// = xmlFile.getDocumentFile(path+"period.xml");
       /*ReadXMLElement list= new ReadXMLElement();
       item= list.getRootElement(doc);
@@ -138,16 +138,17 @@ String path;
       //write xml file
       period.setBeginHour(9,30);
       period.setPriority(2);
-      WriteXMLElement wr= new WriteXMLElement();
+      XMLWriter wr= new XMLWriter();
       doc=wr.getNewDocument();
       Element ttPeriod= period.writeXMLtag(doc);
-      doc= wr.buildDOM(doc,ttPeriod);
-      WriteXMLFile.write(doc,"SavePeriod.xml");
+      doc= wr.buildDocument(doc,ttPeriod);
+      XMLOutputFile xmlOF = new XMLOutputFile();
+      xmlOF.write(doc,"SavePeriod.xml");
 
       // read xml file
-      doc = xmlFile.getDocumentFile("SavePeriod.xml");
+      doc = xmlFile.createDocument("SavePeriod.xml");
      
-      ReadXMLElement list= new ReadXMLElement();
+      XMLReader list= new XMLReader();
       item= list.getRootElement(doc);
       //System.out.println ("item " +item.toString());
       periodS= new Period();

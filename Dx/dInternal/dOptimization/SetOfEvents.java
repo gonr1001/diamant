@@ -114,10 +114,10 @@ public class SetOfEvents extends DSetOfResources {
 												.addInstructorKeys(instructorKey);
 									} else {
 										DValue error = new DValue();
-										error.setStringValue("Erreur --> "
+										error.setStringValue(DConst.ERROR_TAG
 												+ unityID + ": "
-												+ instructorNames[m]
-												+ " Inexistant ");
+												+ DConst.NOT_INSTRUCTOR
+                                                + "« "+ instructorNames[m] + " »");
 										soie.addResource(new DResource("2",
 												error), 0);
 									}
@@ -136,9 +136,9 @@ public class SetOfEvents extends DSetOfResources {
 									String str = assignment.getRoomName();
 									if (str.equals(DConst.NO_ROOM_INTERNAL))
 										str = DConst.NO_ROOM_EXTERNAL;
-									error.setStringValue("Erreur --> "
-											+ unityID + ": " + str
-											+ " Inexistant ");
+									error.setStringValue(DConst.ERROR_TAG
+											+ unityID + ": " + DConst.NOT_ROOM 
+                                            + "« "+ str + " »");
 									soie.addResource(new DResource("3", error),
 											0);
 								}

@@ -1,6 +1,6 @@
 /**
  *
- * Title: Period $Revision: 1.35 $  $Date: 2004-12-01 17:16:47 $
+ * Title: Period $Revision: 1.36 $  $Date: 2005-05-18 19:09:46 $
  * Description: Period is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.35 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.36 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 package dInternal.dTimeTable;
@@ -32,8 +32,8 @@ import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dUtil.ArrayValue;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.output.XMLWriter;
 import dConstants.DConst;
 
 public class Period extends DXObject {
@@ -211,7 +211,7 @@ public class Period extends DXObject {
 	 * @param Element the root xml tag of a period
 	 * */
 	public String readXMLtag(Element setPeriod){
-		ReadXMLElement list= new ReadXMLElement();
+		XMLReader list= new XMLReader();
 		//Period period = new Period();
 		String begin, end, prior;
 		begin= list.getElementValue(setPeriod,_TAGITEM);
@@ -236,9 +236,9 @@ public class Period extends DXObject {
 	 * @Element the xml tag of this period
 	 * */
 	public Element writeXMLtag(Document doc){
-		WriteXMLElement xmlElt;
+		XMLWriter xmlElt;
 		try{
-			xmlElt = new WriteXMLElement();
+			xmlElt = new XMLWriter();
 			String time= _beginHour[0]+":"+_beginHour[1];
 			Element eltPer= xmlElt.createElement(doc,Sequence._TAGITEM);
 			Element child0=xmlElt.createElement(doc,_TAGITEM,time);

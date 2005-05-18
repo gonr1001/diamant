@@ -24,17 +24,17 @@ import dInternal.dDataTxt.SetOfResources;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
-import eLib.exit.xml.output.WriteXMLElement;
-import eLib.exit.xml.output.WriteXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
+import eLib.exit.xml.output.XMLWriter;
+import eLib.exit.xml.output.XMLOutputFile;
 
 
 public class DayTest extends TestCase {
-String path;
+String _path;
   public DayTest(String name) {
     super(name);
-    path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+    _path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
   }
 
   public static Test suite() {
@@ -48,13 +48,13 @@ String path;
    * test to read the day xml tag
    * */
   public void test_readXMLtag(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  eDay;
     Day day= new Day();
     try{
-      xmlFile = new ReadXMLFile();
-      Document  doc = xmlFile.getDocumentFile(path+"day.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      xmlFile = new XMLInputFile();
+      Document  doc = xmlFile.createDocument(_path+"day.xml");
+      XMLReader list= new XMLReader();
       eDay = list.getRootElement(doc);
       day.readXMLtag(eDay);
     }catch(Exception e){
@@ -92,14 +92,14 @@ String path;
 
 
   public void test_writeXMLtag(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  eSetOfSequences;
     Day firstDay = new Day();
     Day savedDay = new Day();
     SetOfResources setOfSequences = new SetOfResources(4);
 
     try{
-      xmlFile = new ReadXMLFile();
+      xmlFile = new XMLInputFile();
       Document  doc;
       Sequence seq;
       for (int i = 1; i < 4; i++){
@@ -109,15 +109,16 @@ String path;
 
       }
       firstDay.setSetOfSequences(setOfSequences);
-      WriteXMLElement wr = new WriteXMLElement();
+      XMLWriter wr = new XMLWriter();
       doc = wr.getNewDocument();
       eSetOfSequences = firstDay.writeXMLtag(doc);
-      doc= wr.buildDOM(doc, eSetOfSequences);
-      WriteXMLFile.write(doc, path+"SavedDay.xml");
+      doc= wr.buildDocument(doc, eSetOfSequences);
+      XMLOutputFile xmlOF = new XMLOutputFile();
+      xmlOF.write(doc,_path+"SavedDay.xml");
 
       // read xml file
-      doc = xmlFile.getDocumentFile(path+"SavedDay.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      doc = xmlFile.createDocument(_path+"SavedDay.xml");
+      XMLReader list= new XMLReader();
       eSetOfSequences = list.getRootElement(doc);
       savedDay = new Day();
       savedDay.readXMLtag(eSetOfSequences);

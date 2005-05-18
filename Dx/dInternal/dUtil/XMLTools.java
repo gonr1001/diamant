@@ -15,8 +15,8 @@ import org.w3c.dom.Element;
 
 
 import dConstants.DConst;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
 
 
 

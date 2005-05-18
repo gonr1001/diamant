@@ -24,10 +24,10 @@ import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
-import eLib.exit.xml.output.WriteXMLElement;
-import eLib.exit.xml.output.WriteXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
+import eLib.exit.xml.output.XMLWriter;
+import eLib.exit.xml.output.XMLOutputFile;
 
     public class TTStructureTest extends TestCase {
       String path;
@@ -141,15 +141,15 @@ import eLib.exit.xml.output.WriteXMLFile;
      * test that read the cycle xml tag
      * */
     public void test_readXMLtag(){
-      ReadXMLFile xmlFile;
+      XMLInputFile xmlFile;
       Element  item;
       TTStructure tts= new TTStructure();
       //SetOfCycles setOfcycle= new SetOfCycles();
       try{
-        xmlFile = new ReadXMLFile();
+        xmlFile = new XMLInputFile();
         //System.out.println(path+"StandardTTC.xml");//debug
-        Document  doc = xmlFile.getDocumentFile(path+"StandardTTC.xml");
-        ReadXMLElement list= new ReadXMLElement();
+        Document  doc = xmlFile.createDocument(path+"StandardTTC.xml");
+        XMLReader list= new XMLReader();
         item= list.getRootElement(doc);
         tts.readXMLtag(item);
         //_setOfCycles.readXMLtag(root);
@@ -164,7 +164,7 @@ import eLib.exit.xml.output.WriteXMLFile;
     * test that write the cycle xml tag
     * */
    public void test_writeXMLtag(){
-     ReadXMLFile xmlFile;
+     XMLInputFile xmlFile;
      Element  item;
      TTStructure tts = new TTStructure();
      TTStructure newtts = new TTStructure();
@@ -183,19 +183,20 @@ import eLib.exit.xml.output.WriteXMLFile;
      tts.getSetOfCycles().addResource(new Resource("1",cycle),0);
      tts.getSetOfCycles().addResource(new Resource("2",cycle),0);
      try{
-       xmlFile = new ReadXMLFile();
+       xmlFile = new XMLInputFile();
        //System.out.println(path+"cycle.xml");//debug
        Document  doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
-       WriteXMLElement wr= new WriteXMLElement();
+       XMLWriter wr= new XMLWriter();
        doc=wr.getNewDocument();
        //write xml file
        Element ttCycle= tts.writeXMLtag(doc);
-       doc= wr.buildDOM(doc,ttCycle);
-       WriteXMLFile.write(doc,path+"SaveSetOfCycles.xml");
+       doc= wr.buildDocument(doc,ttCycle);
+       XMLOutputFile xmlOF = new XMLOutputFile();
+       xmlOF.write(doc,path+"SaveSetOfCycles.xml");
 
        // read xml file
-       doc = xmlFile.getDocumentFile(path+"SaveSetOfCycles.xml");
-       ReadXMLElement list= new ReadXMLElement();
+       doc = xmlFile.createDocument(path+"SaveSetOfCycles.xml");
+       XMLReader list= new XMLReader();
        item= list.getRootElement(doc);
        newtts.readXMLtag(item);
        //_setOfCycles.readXMLtag(root);

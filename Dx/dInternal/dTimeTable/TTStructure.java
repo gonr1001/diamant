@@ -15,10 +15,10 @@ import org.w3c.dom.Element;
 
 import dConstants.DConst;
 
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
-import eLib.exit.xml.output.WriteXMLElement;
-import eLib.exit.xml.output.WriteXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
+import eLib.exit.xml.output.XMLWriter;
+import eLib.exit.xml.output.XMLOutputFile;
 
 
 
@@ -118,9 +118,9 @@ public class TTStructure {
    * @return boolean the result of the operation
    * */
   public boolean createStandardTT(String fileName, int nbOfCycles, int nbOfDays){
-    WriteXMLElement wr;
+    XMLWriter wr;
     try{
-      wr= new WriteXMLElement();
+      wr= new XMLWriter();
       Document doc= wr.getNewDocument();
       Element eltTT= wr.createElement(doc,ITEM2);
       Element eltCycle;
@@ -167,8 +167,9 @@ public class TTStructure {
       }//for (int cyc=0; cyc<3; cyc++)
 
       // create document and write in the file
-      doc= wr.buildDOM(doc,eltTT);
-      WriteXMLFile.write(doc,fileName);
+      doc= wr.buildDocument(doc,eltTT);
+      XMLOutputFile xmlOF = new XMLOutputFile();
+      xmlOF.write(doc,fileName);
       return true;
     } catch(Exception e){
       System.out.println("TTStructure: "+e);//debug
@@ -185,13 +186,13 @@ public class TTStructure {
     
   public String loadTTStructure(String fileName){
 	
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element root; //, item, ID;
     if(preLoad(fileName)){
     try{
-      xmlFile = new ReadXMLFile();
-      Document  doc = xmlFile.getDocumentFile(fileName);
-      ReadXMLElement list= new ReadXMLElement();
+      xmlFile = new XMLInputFile();
+      Document  doc = xmlFile.createDocument(fileName);
+      XMLReader list= new XMLReader();
       root= list.getRootElement(doc);
       if (readXMLtag(root).length() != 0){
         _error = DConst.ERROR_XML_FILE;
@@ -217,7 +218,7 @@ public class TTStructure {
     //ReadXMLFile xmlFile;
     Element root; //, item, ID;
     try{
-      ReadXMLElement list= new ReadXMLElement();
+      XMLReader list= new XMLReader();
       root= list.getRootElement(doc);
       if (readXMLtag(root).length() != 0){
         _error = DConst.ERROR_XML_FILE;
@@ -239,14 +240,15 @@ public class TTStructure {
    * @return String the error message, empty if it does not found error
    * */
    public String saveTTStructure(String fileName){
-    WriteXMLElement wr;
+    XMLWriter wr;
     try{
-      wr= new WriteXMLElement();
+      wr= new XMLWriter();
       Document doc= wr.getNewDocument();
       Element ttStruc= writeXMLtag(doc);
       // create document and write in the file
-      doc= wr.buildDOM(doc,ttStruc);
-      WriteXMLFile.write(doc,fileName);
+      doc= wr.buildDocument(doc,ttStruc);
+      XMLOutputFile xmlOF = new XMLOutputFile();
+      xmlOF.write(doc,fileName);
       return "";
     } catch(Exception e){
       return e.toString();//debug
@@ -259,13 +261,13 @@ public class TTStructure {
    * @return Document doc the document containing the timetable structure
    * */
    public Document getTTStructureDocument(){
-    WriteXMLElement wr;
+    XMLWriter wr;
     try{
-      wr= new WriteXMLElement();
+      wr= new XMLWriter();
       Document doc= wr.getNewDocument();
       Element ttStruc= writeXMLtag(doc);
       // create document and write in the file
-      doc= wr.buildDOM(doc,ttStruc);
+      doc= wr.buildDocument(doc,ttStruc);
       return doc;
     } catch(Exception e){
       return null;//debug
@@ -304,8 +306,10 @@ public class TTStructure {
   *read a xml tag containing a set of cycle and build the resource
   * @param Element the root xml tag of the set of cycle
   * */
- public String readXMLtag(Element setofCycles){ // XXXX Pascal: Le nom de cette methode est general, mais le parametre ne l'est pas dutout!
-   ReadXMLElement list= new ReadXMLElement();
+
+ public String readXMLtag(Element setofCycles){
+   XMLReader list= new XMLReader();
+
    String ID="";
    int size= list.getSize(setofCycles,_TAGITEM);
    if (size == 0){
@@ -335,9 +339,9 @@ public class TTStructure {
   * @Element the xml tag of the set of cycles
   * */
   public Element writeXMLtag(Document doc){
-   WriteXMLElement xmlElt;
+   XMLWriter xmlElt;
    try{
-     xmlElt = new WriteXMLElement();
+     xmlElt = new XMLWriter();
      Element eltCycles= xmlElt.createElement(doc,TTStructure.ITEM2);
      for (int i=0; i<_setOfCycles.size(); i++){
        Element eltCycle= xmlElt.createElement(doc,_TAGITEM);
@@ -395,9 +399,9 @@ public class TTStructure {
    * */
   private Element CreateSeqPeriods(Document doc, String seqID, int nbOfPeriods, int periodLenght, int[] beginTime, int priority){
     //add PM periods
-    WriteXMLElement xmlElt;
+    XMLWriter xmlElt;
     try{
-      xmlElt = new WriteXMLElement();
+      xmlElt = new XMLWriter();
       Element eltSeq= xmlElt.createElement(doc,ITEM2_subTag[4]);
       Element eltPers= xmlElt.createElement(doc,ITEM2_subTag[5]);
       int hour=beginTime[0];

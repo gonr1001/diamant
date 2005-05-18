@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: PeriodPanel $Revision: 1.27 $  $Date: 2005-04-19 20:37:45 $
+ * Title: PeriodPanel $Revision: 1.28 $  $Date: 2005-05-18 19:09:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.28 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -83,7 +83,7 @@ public  abstract class PeriodPanel extends JPanel{
   }
 
   /**
-  *
+  * rgd: 28/04/2005 I changed the color case 2
   * */
 
   public void setPanelColor( int priority){
@@ -93,7 +93,7 @@ public  abstract class PeriodPanel extends JPanel{
       break;
     case 1: color= Color.LIGHT_GRAY;
       break;
-    case 2: color= Color.DARK_GRAY;
+    case 2: color= new Color(133,133,119); // gray medium to show low period
       break;
     case 3: color= Color.PINK;// to show a period where a conflict arises.
       break;

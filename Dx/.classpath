@@ -5,6 +5,5 @@
 	<classpathentry exported="true" kind="lib" path="D:/Program Files/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
 	<classpathentry kind="lib" path="D:/exitDev/exitProjects/DiamantExtreme/jars/log4j-1.2.8.jar"/>
 	<classpathentry kind="lib" path="D:/exitDev/exitProjects/DiamantExtreme/jars/xml-apis.jar"/>
-	<classpathentry kind="lib" path="D:/exitDev/exitProjects/DiamantExtreme/jars/jdom.jar"/>
 	<classpathentry kind="output" path="DxClasses"/>
 </classpath>

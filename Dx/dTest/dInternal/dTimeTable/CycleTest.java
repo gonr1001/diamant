@@ -24,10 +24,10 @@ import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
-import eLib.exit.xml.output.WriteXMLElement;
-import eLib.exit.xml.output.WriteXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
+import eLib.exit.xml.output.XMLWriter;
+import eLib.exit.xml.output.XMLOutputFile;
 
 public class CycleTest extends TestCase {
    String _path;
@@ -36,14 +36,14 @@ public class CycleTest extends TestCase {
      super(name);
      _path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
      //
-     ReadXMLFile xmlFile;
+     XMLInputFile xmlFile;
     Element  item;
     _cycle= new Cycle();
     try{
-      xmlFile = new ReadXMLFile();
+      xmlFile = new XMLInputFile();
       //System.out.println(path+"cycle.xml");//debug
-      Document  doc = xmlFile.getDocumentFile(_path+"cycle.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      Document  doc = xmlFile.createDocument(_path+"cycle.xml");
+      XMLReader list= new XMLReader();
       item= list.getRootElement(doc);
       _cycle.readXMLtag(item);
       //_setOfCycles.readXMLtag(root);
@@ -183,7 +183,7 @@ public class CycleTest extends TestCase {
   * test that write the cycle xml tag
   * */
  public void test_writeXMLtag(){
-   ReadXMLFile xmlFile;
+   XMLInputFile xmlFile;
    Element  item;
    Cycle cycle= new Cycle();
    Cycle newCycle= new Cycle();
@@ -193,19 +193,21 @@ public class CycleTest extends TestCase {
    cycle.addDays(3);
 
    try{
-     xmlFile = new ReadXMLFile();
+     xmlFile = new XMLInputFile();
      //System.out.println(path+"cycle.xml");//debug
      Document  doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
-     WriteXMLElement wr= new WriteXMLElement();
+     XMLWriter wr= new XMLWriter();
      doc=wr.getNewDocument();
      //write xml file
      Element ttCycle= cycle.writeXMLtag(doc);
-     doc= wr.buildDOM(doc,ttCycle);
-     WriteXMLFile.write(doc,_path+"SaveCycle.xml");
+     doc= wr.buildDocument(doc,ttCycle);
+     XMLOutputFile xmlOF = new XMLOutputFile();
+     xmlOF.write(doc,_path+"SaveCycle.xml");
+    
 
      // read xml file
-     doc = xmlFile.getDocumentFile(_path+"SaveCycle.xml");
-     ReadXMLElement list= new ReadXMLElement();
+     doc = xmlFile.createDocument(_path+"SaveCycle.xml");
+     XMLReader list= new XMLReader();
      item= list.getRootElement(doc);
      newCycle.readXMLtag(item);
      //item= list.getRootElement(doc);

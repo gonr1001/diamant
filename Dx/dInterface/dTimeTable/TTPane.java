@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.17 $  $Date: 2005-03-08 16:00:43 $
+ * Title: TTPane $Revision: 1.18 $  $Date: 2005-05-18 19:09:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.18 $
+ * @author  $Author: garr2701 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -48,10 +48,12 @@ import javax.swing.SwingConstants;
 
 import dInterface.DToolBar;
 import dInternal.dDataTxt.Resource;
+import dInternal.dDataTxt.SetOfResources;
 //import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
+import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DisplayAttributs;
@@ -285,10 +287,9 @@ public abstract class TTPane {
     long pKey = Long.parseLong(DXToolsMethods.getToken(str,".",2));
     int count = 0;
     Day day = _tts.getCurrentCycle().getDayByRefNo((int)dKey);
-    for(int i = 0; i < sKey-1; i++) {
+    for(int i = 0; i < sKey-1; i++) { 
       count += day.getSequence(i).getSetOfPeriods().size();
     }
-    return _tts.getCurrentCycle().getMaxNumberOfPeriodsADay() * ((int)dKey- 1)+ count + (int)pKey;
-
+    return _tts.getCurrentCycle().getBefNumberOfPeriodsADay(dKey) + count + (int)pKey;
   }
 } /*  end TTPane */

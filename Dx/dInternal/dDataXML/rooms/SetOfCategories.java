@@ -20,7 +20,7 @@ import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfRoomsListener;
 import dInternal.dUtil.XMLTools;
-import eLib.exit.xml.input.ReadXMLElement;
+import eLib.exit.xml.input.XMLReader;
 
 public class SetOfCategories extends SetOfResources{
 

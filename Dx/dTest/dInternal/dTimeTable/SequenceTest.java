@@ -23,10 +23,10 @@ import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.input.ReadXMLFile;
-import eLib.exit.xml.output.WriteXMLElement;
-import eLib.exit.xml.output.WriteXMLFile;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.input.XMLInputFile;
+import eLib.exit.xml.output.XMLWriter;
+import eLib.exit.xml.output.XMLOutputFile;
 
 
 public class SequenceTest extends TestCase {
@@ -48,14 +48,14 @@ String path;
    * test that read the sequence xml tag
    * */
   public void test_readXMLtag(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  setOfPers;
     Sequence sequence = new Sequence();
     try{
-      xmlFile = new ReadXMLFile();
+      xmlFile = new XMLInputFile();
       //System.out.println(path+"period.xml");//debug
-      Document  doc = xmlFile.getDocumentFile(path+"sequence.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      Document  doc = xmlFile.createDocument(path+"sequence.xml");
+      XMLReader list= new XMLReader();
       setOfPers= list.getRootElement(doc);
       sequence.readXMLtag(setOfPers);
       //_setOfCycles.readXMLtag(root);
@@ -95,27 +95,28 @@ String path;
    * test for writing a sequence XMLTag
    * */
   public void test_writeXMLtag(){
-    ReadXMLFile xmlFile;
+    XMLInputFile xmlFile;
     Element  eSetOfPers;
     Sequence firstSequence = new Sequence();
     Sequence savedSequence = new Sequence();
     SetOfResources setOfPeriods = new SetOfResources(4);
     try{
-      xmlFile = new ReadXMLFile();
+      xmlFile = new XMLInputFile();
       for (int i = 1; i < 5; i++){
         setOfPeriods.addResource(new Resource(Integer.toString(i), new Period()),1);
       }
       firstSequence.setSetOfPeriods(setOfPeriods);
-      WriteXMLElement wr= new WriteXMLElement();
+      XMLWriter wr= new XMLWriter();
       Document  doc;
       doc = wr.getNewDocument();
       eSetOfPers = firstSequence.writeXMLtag(doc);
-      doc = wr.buildDOM(doc,eSetOfPers);
-      WriteXMLFile.write(doc,path+"SavedSequence.xml");
+      doc = wr.buildDocument(doc,eSetOfPers);
+      XMLOutputFile xmlOF = new XMLOutputFile();
+      xmlOF.write(doc,"SavedSequence.xml");
 
       // read xml file
-      doc = xmlFile.getDocumentFile(path+"SavedSequence.xml");
-      ReadXMLElement list= new ReadXMLElement();
+      doc = xmlFile.createDocument(path+"SavedSequence.xml");
+      XMLReader list= new XMLReader();
       eSetOfPers = list.getRootElement(doc);
       savedSequence = new Sequence();
       savedSequence.readXMLtag(eSetOfPers);

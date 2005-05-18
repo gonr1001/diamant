@@ -11,8 +11,8 @@ import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.output.XMLWriter;
 
 public class Sequence extends DXObject{
 	
@@ -72,7 +72,7 @@ public class Sequence extends DXObject{
 	 * @param Element the root xml tag of the set of periods
 	 * */
 	public String readXMLtag(Element setofPers){
-		ReadXMLElement list= new ReadXMLElement();
+		XMLReader list= new XMLReader();
 		int size= list.getSize(setofPers,_TAGITEM);
 		if (size == 0){
 			_error = _errorMessage;
@@ -98,9 +98,9 @@ public class Sequence extends DXObject{
 	 * @Element the xml tag of the set of periods
 	 * */
 	public Element writeXMLtag(Document doc){
-		WriteXMLElement xmlElt;
+		XMLWriter xmlElt;
 		try{
-			xmlElt = new WriteXMLElement();
+			xmlElt = new XMLWriter();
 			Element eltPers= xmlElt.createElement(doc,Day._TAGITEM2);
 			for (int i=0; i<_setOfPeriods.size(); i++){
 				Element period= ((Period)_setOfPeriods.getResourceAt(i).getAttach()).writeXMLtag(doc);

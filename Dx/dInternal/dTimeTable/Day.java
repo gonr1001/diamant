@@ -10,8 +10,8 @@ import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXValue;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.output.XMLWriter;
 
 public class Day extends DXObject{
 
@@ -71,7 +71,7 @@ public class Day extends DXObject{
     * @param Element the root xml tag of the set of sequences
    * */
   public String readXMLtag(Element setofSeqs){
-    ReadXMLElement list= new ReadXMLElement();
+    XMLReader list= new XMLReader();
     String ID="";
     int size= list.getSize(setofSeqs,_TAGITEM);
     if (size == 0){
@@ -99,9 +99,9 @@ public class Day extends DXObject{
      * @Element the xml tag of the set of sequences
    * */
    public Element writeXMLtag(Document doc){
-    WriteXMLElement xmlElt;
+    XMLWriter xmlElt;
     try{
-      xmlElt = new WriteXMLElement();
+      xmlElt = new XMLWriter();
       Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM2);
       for (int i=0; i<_setOfSequences.size(); i++){
         Element eltSeqs= xmlElt.createElement(doc,_TAGITEM);

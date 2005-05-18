@@ -16,9 +16,14 @@ public class MyFileCmd implements Command{
 
 
   public MyFileCmd() {
+  	// to avoid warning
   }
-
- // XXXX Pascal: Arrrggggg!!!! Des paths absolus dans du code... !!
+  
+  /*
+   *  This is donne to accelerate the acess to a specific file 
+   *  and is just for test only available if
+   *  DConst.DEVELOPPER == true
+   */
 
   public void execute(DApplication dApplic) {
     dApplic.setCurrentDir(".\\devData\\");

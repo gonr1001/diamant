@@ -13,8 +13,8 @@ import dInternal.dUtil.DXObject;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DXValue;
 import dInternal.dUtil.DisplayAttributs;
-import eLib.exit.xml.input.ReadXMLElement;
-import eLib.exit.xml.output.WriteXMLElement;
+import eLib.exit.xml.input.XMLReader;
+import eLib.exit.xml.output.XMLWriter;
 
 public class Cycle extends DXObject{
 	
@@ -141,7 +141,7 @@ public class Cycle extends DXObject{
 	 * @param Element the root xml tag of the set of days
 	 * */
 	public String readXMLtag(Element setofDays){
-		ReadXMLElement list= new ReadXMLElement();
+		XMLReader list= new XMLReader();
 		String ID="";
 		String key="";
 		int size= list.getSize(setofDays,_TAGITEM);
@@ -171,9 +171,9 @@ public class Cycle extends DXObject{
 	 * @Element the xml tag of the set of days
 	 * */
 	public Element writeXMLtag(Document doc){
-		WriteXMLElement xmlElt;
+		XMLWriter xmlElt;
 		try{
-			xmlElt = new WriteXMLElement();
+			xmlElt = new XMLWriter();
 			Element eltDays= xmlElt.createElement(doc,TTStructure._TAGITEM3);
 			for (int i=0; i<_setOfDays.size(); i++){
 				Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM);
@@ -303,6 +303,23 @@ public class Cycle extends DXObject{
 		return maxPer;
 	}
 	
+    /**
+     * get the number of periods before the day dKey in a cycle
+     * @param dKey the current day
+     * @return int the max number of periods in a day
+     * lgd: Correction du bug 94
+     * */
+    public int getBefNumberOfPeriodsADay(long dKey){
+        int befPer=0;
+        for(int i=0; i< dKey-1; i++){
+            Day day =(Day)getSetOfDays().getResourceAt(i).getAttach();
+            for (int j=0; j< day.getSetOfSequences().size(); j++){
+                Sequence seq= (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
+                befPer+= seq.getSetOfPeriods().size();
+            }
+        }
+        return befPer;
+    }
 	/**
 	 * get the max number of periods in a sequence in a cycle
 	 * @param Cycle the cycle where we want to find the max number of sequences
