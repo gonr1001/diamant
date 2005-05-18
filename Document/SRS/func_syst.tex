@@ -29,17 +29,24 @@ chaque période de la journée.
     integrent les nouveaux champs dans les lectures, écritures et
     traitementsè
 
-    \subsubsection{Les menus affectation de locaux, affectation d'événements et option de conflits}
-        
+    \subsubsection{Les sous-menus affectation de locaux, affectation d'événements et option de conflits}
+
+Les nouveaux sous-menus (Affectation de locaux, Affectation
+d'événements et Option de conflits) devront être placés sous le
+menu \verb!BetaTest --> Fonctionnalités v 1.6.2! comme présenté
+sur la figure \ref{menu_feat}.
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
     \includegraphics[width=6.0in]{SRS/images/menu_feat_1-6-2.eps}
     \caption{Menu des fonctionnalités de la version 1.6.2}\label{menu_feat}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
     \subsubsection{Le dialogue d'événements }
+
+Le nouveau dialogue d'événements devra intégrer la fonction et
+l'état du local comme présenté par la figure \ref{dlg_event}.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -47,9 +54,13 @@ chaque période de la journée.
     \includegraphics[width=6.0in]{SRS/images/dlg_event.eps}
     \caption{Dialogue d'affectation d'événements de la version 1.6.2}\label{dlg_event}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
     \subsubsection{Le dialogue d'option de conflits }
+
+Le nouveau dialogue d'option de conflits devra intégrer un champ
+permettant de spécifier le taux d'occupation désiré pour les
+locaux comme présenté par la figure \ref{dlg_conf}.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -57,12 +68,26 @@ chaque période de la journée.
     \includegraphics[width=6.0in]{SRS/images/dlg_conflicts.eps}
     \caption{Dialogue d'option de conflits de la version 1.6.2}\label{dlg_conf}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
     \subsubsection{Refactoring des événements}
 
-    \subsubsection{Refactoring des préférences}
+    Étant donné que les événements devront intégrer de nouveaux
+    champs (fonction et état), il sera necessaire d'effectuer les tâches suivantes:
 
+    \begin{itemize}
+        \item Refactoring de l'ensemble des événements afin
+        d'intégrer les champs fonction et état du local dans un
+        événement.
+        \item Refactoring de l'ensemble des activités afin de permettre, d'une part, l'intégration des champs fonction et état du local, et d'autre part,
+        la lecture et la sauvegarde des nouveaux champs.
+        \item Création d'un nouvel ensemble contenant la liste des fonctions de locaux
+    disponibles.
+    \end{itemize}
+
+    \subsubsection{Refactoring des préférences}
+Faire le refactoring des préférences afin d'y intégrer le nouveau
+champ (taux de remplissage des locaux).
 
     \subsection{Requis fonctionnels}
 
@@ -92,5 +117,46 @@ affectation.
 
 \subsubsection{Contraintes d'optimisation }
 \begin{itemize}
-    \item Taux de remplissage des locaux.
+    \item Faire une affectation en tenant compte du taux de remplissage des locaux.
+    \item Faire une affectation en tenant compte de la
+    catégorie et de la fonction des locaux.
+    \item Faire une affectation en tenant compte de la
+    capacité des locaux.
+    \item Assigner un nouveau local à un événement si et seulement
+    si cet événement n'est figé dans aucun local (état figé du
+    local).
+    \item L'algorithme devra assigner des locaux aux événements placés dans
+chaque période de la grille.
+    \item  L'algorithme devra faire une
+assignation de sorte à avoir le maximum d'étudiants d'un événement
+donné dans le plus petit local disponible.
 \end{itemize}
+
+\subsubsection{Spécification de l'algorithme d'affectation de locaux}
+
+L'affectation de locaux est un problème d'optimisation, dans
+lequel on cherche à construire une solution à un problème qui
+optimise une fonction objectif.
+
+Ce problème d'optimisation peut se poser comme suit:
+
+\begin{enumerate}
+    \item pour une instance I (par exemple: les horaires des cours à
+assurer, des locaux à affecter),
+    \item trouver une solution (par exemple une affectation de local à
+chaque cours),
+    \item qui vérifie les contraintes (par exemple, il n'y a pas deux
+cours en même temps dans un local..., le nombre d'étudiants
+suivant un cours est < ou = à la capacité du local dans lequel ce
+cours va se donner),
+  \item et qui optimise une fonction objectif (par exemple, minimise
+le nombre de locaux).
+\end{enumerate}
+
+
+Pour résoudre ce problème d'optimisation, nous utiliserons la
+méthode gloutonne (algorithme glouton - greedy algorithm) en
+construisant tout simplement la solution incrémentalement, en
+rajoutant à chaque pas un élément selon un critère glouton, c'est
+à dire celui qui nous paraît «localement» le meilleurun choix à
+«court terme».
