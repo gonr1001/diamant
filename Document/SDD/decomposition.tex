@@ -7,7 +7,7 @@ Le logiciel \dx{} pour fonctionner à besoin de la machine virtuelle Java. Pour c
     \includegraphics[width=350pt]{SDD/images/Deploiement-global.eps}
     \caption{Système \dx{}}\label{datastruct}
   \end{center}
-\end{figure*} 
+\end{figure*}
 \section{Description des fichiers d'entrée de  \diamant{}}
 \dx{} utilisent les fichiers suivantes~:
 
@@ -34,8 +34,8 @@ Les indexes de chaînes de caractères commencent à \verb!0!.
 
 \subsection{Choix du modèle}
 
-\subsubsection{Contexte} 
-    L'objectif de la majorité des systèmes informatiques est de récupérer les données d'un entrepôt de données (fichiers, base de données) et de les présenter à l'utilisateur. Une fois que l'utilisateur a modifié les données, le système stocke les mises à jour dans l'entrepôt. Comme le principal flux d'informations s'effectue entre l'entrepôt de données et l'interface utilisateur, nous pourrions être tenté de lier ces deux éléments afin de réduire le volume de code et améliorer les performances de l'application. 
+\subsubsection{Contexte}
+    L'objectif de la majorité des systèmes informatiques est de récupérer les données d'un entrepôt de données (fichiers, base de données) et de les présenter à l'utilisateur. Une fois que l'utilisateur a modifié les données, le système stocke les mises à jour dans l'entrepôt. Comme le principal flux d'informations s'effectue entre l'entrepôt de données et l'interface utilisateur, nous pourrions être tenté de lier ces deux éléments afin de réduire le volume de code et améliorer les performances de l'application.
 
 Cette approche qui peut nous paraître naturelle n'est pas sans présenter certains problèmes non négligeables. L'un d'eux est que l'interface utilisateur a tendance à changer plus fréquemment que le système de stockage des données. Autre problème du couplage des données avec les éléments d'interface utilisateur, les applications métier tendent à intégrer une logique métier qui va bien au-delà de la transmission de données.
 
@@ -52,8 +52,8 @@ Les facteurs suivants agissent sur le système dans le contexte présent et doiven
     \item  L'activité de l'interface utilisateur se compose généralement de deux éléments : la présentation et la mise à jour. La partie présentation récupère les données d'un entrepôt de données et les met en forme avant de les afficher. Lorsque l'utilisateur effectue une action sur les données, la partie mise à jour passe la main à la logique métier pour mettre à jour les données.\\
     \item  Le code de l'interface utilisateur dépend généralement plus de la machine que la logique métier. Si vous souhaitez faire migrer l'application d'une application monolithique à une application sur navigateur ou à une application sur assistant personnel ou sur téléphone mobile compatible Web, vous devez réécrire une bonne partie du code de l'interface utilisateur alors que la logique métier pourra rester inchangée. Une séparation claire de ces deux éléments permet d'accélérer la migration et de réduire le risque d'introduction d'erreurs dans la logique métier.\\
     \item  La création de tests automatisés pour les interfaces utilisateur est généralement plus longue et difficile que les mêmes tests pour la logique métier. On comprend donc que réduire le volume de code directement lié à l'interface utilisateur permet d'améliorer les capacités d'évaluation de l'application.
-\end{itemize}    
-  
+\end{itemize}
+
 \subsubsection{Solution}
 
 \dx{} est une application GUI\footnote{Graphical User Interface}. Sa construction requiert donc l'utilisation d'un modèle adapté: le modèle Model-View-Controller (MVC), car il sépare la modélisation du domaine, la présentation et les actions reposant sur l'entrée utilisateur en trois composant distincts :
@@ -66,13 +66,13 @@ Les facteurs suivants agissent sur le système dans le contexte présent et doiven
     \includegraphics[width=350pt]{SDD/images/Deploiement-diamant.eps}
     \caption{Architecture MVC de \dx{}}\label{datastruct}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
 \begin{description}
     \item[Le modèle:] il gère le comportement et les données spécifiques de \dx{} (les enseignants, les locaux, les cours, les étudiants, la grille horaire, etc), répond aux demandes d'informations sur son état (souvent issues de la vue) ainsi qu'aux instructions de changement d'état (souvent issues du contrôleur).
     \item[La vue:] elle offre un ensemble fenêtre, dialogue, menu, etc permettant une mise en page de l'affichage d'informations. Il permet à l'utilisateur de faire des requêtes sur le modèle et de visualiser les résultats.
     \item[Le contrôleur:] il gère les événements d'entrée de l'utilisateur à partir de la souris ou du clavier. Chaque vue à un contrôleur associé qui la connecte avec avec les périphérique d'entrée.
-\end{description}    
+\end{description}
 
 \subsection{Description du modèle}
 
@@ -84,11 +84,11 @@ Le modèle de \dx{} est bâti autour de cinq principaux sous-composants: la struct
     \includegraphics[width=350pt]{SDD/images/Component-Global.eps}
     \caption{Architecture du composant modèle de \dx{}}\label{model}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
 \subsubsection{Description de la structure composite SetOfXxx}
 
-Cette structure s'inspire du pattern composite et elle permet d'organiser les données dans un arbre (voir figure \ref{composite}). Une structure composite contient plusieurs objets (dans notre cas, ces objets sont de même type dans une structure), chaque objet est composé de plusieurs champs, les champs peuvent être des types de données différents. 
+Cette structure s'inspire du pattern composite et elle permet d'organiser les données dans un arbre (voir figure \ref{composite}). Une structure composite contient plusieurs objets (dans notre cas, ces objets sont de même type dans une structure), chaque objet est composé de plusieurs champs, les champs peuvent être des types de données différents.
 
 Afin de pouvoir manipuler indifféremment les structures composites à partir de n'importe quel champ, nous les avons pourvu de certains comportement (inspirés des principales commandes SQL des bases de données relationnelles):
 
@@ -96,7 +96,7 @@ Afin de pouvoir manipuler indifféremment les structures composites à partir de n
     \item interroger (getXxx),
     \item manipuler des entrées (setXxx, insertXxxx, removeXxx),
     \item définir des données (addXxx)
-\end{itemize}    
+\end{itemize}
 
 
 \begin{figure*}[h]
@@ -105,13 +105,13 @@ Afin de pouvoir manipuler indifféremment les structures composites à partir de n
     \includegraphics[width=300pt]{SDD/images/Composite_Structure.eps}
     \caption{Description de la structure composite SetOfXxx}\label{composite}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
 \subsubsection{Description du sous-composant model}
 
-Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur. Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur. 
+Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur. Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur.
 
-La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et l'entité comportement ou processus (voir figure \ref{submodel}). 
+La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et l'entité comportement ou processus (voir figure \ref{submodel}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -119,20 +119,20 @@ La conception du sous-composant model est faite de sorte à l'organiser autour de
     \includegraphics[width=350pt]{SDD/images/sub_component_model.eps}
     \caption{Description du sous-composant model}\label{submodel}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
 \begin{description}
     \item[L'entité structure: ] elle fournit les interfaces permettant d'accéder aux données (étudiants, instructeurs, locaux, activités et grille horaire).
     \item[L'entité process: ] elle fournit les interfaces permettant de lancer les opérations sur les données (création des événements, algorithmes, etc).
     \item[L'entité model: ] elle regroupe les interfaces offertes par l'entité structure et l'entité process.
-\end{description}    
+\end{description}
 
 Vue le nombre d'interfaces qu'il pourrait avoir entre l'entité structure et l'entité model, vue la redondance de ces interfaces dans l'entité model, il est paru nécessaire de réorganiser ces entités et de les faire passer de trois à deux. Ainsi le sous-composant model sera réorganisé autour de deux entités: l'entité model-structure et l'entité process.
 
 \begin{description}
     \item[L'entité process: ] elle fournit les interfaces permettant de lancer les opérations sur les données (création des événements, algorithmes, etc).
     \item[L'entité model-structure: ] elle regroupe les interfaces offertes par l'entité process en plus de celles permettant d'accéder aux données.
-\end{description} 
+\end{description}
 
 \subsubsection{Description du sous-composant data}
 
@@ -144,9 +144,32 @@ Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer 
     \includegraphics[width=350pt]{SDD/images/sub_component_data.eps}
     \caption{Description du sous-composant data}\label{subdata}
   \end{center}
-\end{figure*} 
+\end{figure*}
 
 
+\subsubsection{Description du sous-composant optimization}
+
+Le sous-composant optimization comporte l'ensemble des événements,
+ainsi que les différents algorithmes (organisés autour du pattern
+strategie)
+\begin{description}
+    \item[Ensemble des événements: ] l'ensemble des événements est
+    une structure contruite à partir de la structure composite
+    SetOfxxx. Dans cette structure le composite est représenté par
+    l'entité \verb!SetOfEvents! et la feuille représenté par
+    l'entité \verb!EventAttach!.
+    \item[Pattern stratégie: ] il permet de définir une famille
+    d'algorithmes, les encapsule et les rend interchangeables.
+    L'implémentation de ce pattern se fera de sorte à représenter
+    le contexte par l'entité \verb!TestConditions!, la stratégie
+    par l'entité \verb!Algorithm! et les stratégies concrètes par
+    les entités \verb!TestxxxConditions!.
+    \item[Algorithme d'affectation initiale: ] il permet ...
+    \item[Algorithme de mixage de groupes d'étudiants: ] il permet
+    ...
+    \item[Algorithme de construction d'horaire: ] il permet ...
+    \item[Algorithme d'affectation de locaux: ] il permet
+\end{description}
 
 
 \subsection{Description de la vue}
