@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path=""/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/j2re1.4.2_04"/>
 	<classpathentry exported="true" kind="lib" path="D:/Program Files/eclipse/plugins/org.junit_3.8.1/junit.jar"/>
 	<classpathentry kind="lib" path="D:/exitDev/exitProjects/DiamantExtreme/jars/log4j-1.2.8.jar"/>
 	<classpathentry kind="lib" path="D:/exitDev/exitProjects/DiamantExtreme/jars/xml-apis.jar"/>

@@ -1,6 +1,6 @@
 /**
  *
- * Title: DConst $Revision: 1.140 $  $Date: 2005-05-18 19:09:46 $
+ * Title: DConst $Revision: 1.141 $  $Date: 2005-05-19 19:45:40 $
  * Description: DConst is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.140 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.141 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 
@@ -28,11 +28,11 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "19 avril 2005";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;
+  	public final static String V_DATE = "v 1.6.1.1 du 18 Mai 2005";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = false;
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
-	public final static String JVM = "1.4.2_07"; //XXXX Pascal: Retour a 1.4.2
+	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
 	
 	public final static String FILE_VER_NAME1_5 = res.getString("fileVerName1_5"); // "Diamant1.5" 
 	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6" 

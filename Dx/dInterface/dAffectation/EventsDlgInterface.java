@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.20 $  $Date: 2005-04-19 20:55:47 $
+ * Title: EventsDlgInterface $Revision: 1.21 $  $Date: 2005-05-19 19:45:40 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.21 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -125,7 +125,7 @@ public abstract class EventsDlgInterface extends JDialog implements
      * Initialise the dialog
      */
     protected void initialize() {
-        this.setLayout(new BorderLayout());
+        this.getContentPane().setLayout(new BorderLayout());
         //setSize(_dialogDim);
         setResizable(false);
         buildVectors();
@@ -136,14 +136,14 @@ public abstract class EventsDlgInterface extends JDialog implements
 
         _buttonsPanel = setButtons();
 
-        this.add(leftPanel, BorderLayout.WEST);
-        this.add(rightPanel, BorderLayout.EAST);
-        this.add(centerPanel, BorderLayout.CENTER);
-        this.add(_buttonsPanel, BorderLayout.SOUTH);
+        this.getContentPane().add(leftPanel, BorderLayout.WEST);
+        this.getContentPane().add(rightPanel, BorderLayout.EAST);
+        this.getContentPane().add(centerPanel, BorderLayout.CENTER);
+        this.getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
 
         int x = _dApplic.getJFrame().getX();
         int y = _dApplic.getJFrame().getY();
-        this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
+        this.getContentPane().setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
         //this.setLocationRelativeTo(_dApplic.getJFrame());
 //        this.setMinimumSize(new Dimension(500, 300));
 //        this.setPreferredSize(new Dimension(700, 400)); // the real
