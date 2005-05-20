@@ -136,7 +136,9 @@ Vue le nombre d'interfaces qu'il pourrait avoir entre l'entité structure et l'en
 
 \subsubsection{Description du sous-composant data}
 
-Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer les accès aux données physiques (lecture et écriture). Il permet ensuite d'organiser les données sous une forme prédéfinie (structure de données). Il permet enfin de manipuler ces données (ajout, suppression, modification, recherche, tri). Les données manipulées ici sont les enseignants, les locaux, les étudiants et les activités.
+Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer les accès aux données physiques (lecture et écriture).
+Il permet ensuite d'organiser les données sous une forme prédéfinie (structure de données). Il permet enfin de manipuler ces données
+(ajout, suppression, modification, recherche, tri). Les données manipulées ici sont les enseignants, les locaux, les étudiants et les activités.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -145,6 +147,20 @@ Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer 
     \caption{Description du sous-composant data}\label{subdata}
   \end{center}
 \end{figure*}
+
+
+
+\subsubsection{Description du sous-composant ttstructure}
+
+ Le sous-composant ttstructure permet de décrire et manipuler la
+ grille horaire. La structure de ce sous-composant est de type hiérarchique et le noeud principal est appelé ttstructure. Une ttstructure peut être composée
+ d'un ou de plusieurs cycle. Un cycle peut être composé d'un ou de
+ plusieurs jours. Un jour peut être composé d'une ou de plusieurs
+ séquences. Une séquence peut être composée d'une ou de plusieurs
+ périodes. La période est la plus petite unité d'une ttstructure,
+ elle est décrite en minutes.
+
+ \todo{Placer une image de la ttstructure}
 
 
 \subsubsection{Description du sous-composant optimization}
@@ -173,6 +189,57 @@ strategie)
 
 
 \subsection{Description de la vue}
+
+\diamant{} est une application avec une interface utilisateur
+graphique (GUI). Elle utilise une interface principale comme point
+d'entrée (fenêtre principale - \emph{main display}). L'interface
+principale intègre trois composants: la barre de menu (\emph{menu
+bar}), la fenêtre interne (\emph{internal frame}) et la barre
+d'état (\emph{state bar}).
+
+\subsection{Barre de menu}
+
+La barre de menu permet d'executer des commandes (traitements,
+lancement de dialogues) en cliquant sur le menu associé. Sa
+structure s'inspire du pattern de commande (voir figure
+\ref{command}) afin d'encapsuler une requête comme un objet, nous
+permettant de parametrer le client avec différentes requêtes.
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=250pt]{SDD/images/command.eps}
+    \caption{Description du pattern de commande de la barre de
+    menu}\label{command}
+  \end{center}
+\end{figure*}
+
+Les principales classes et objets participants dans ce pattern
+sont les suivantes:
+
+\begin{description}
+    \item[Command: ] elle déclare une interface permettant
+    d'éxécuter une opération. Elle gardera le même nom dans
+    \diaman{}.
+    \item[Invoker: ] elle externalise la requête de la commande.
+    Elle sera identifiée dans \diamant{} par la classe CmdMenu.
+    \item[ConcreteCommand: ] elle implemente la methode Execute
+    qui sera invoquée. Elle sera identifiée dans \diamant{} par
+    les classes de nom xxxCmd.
+\end{description}
+
+\subsection{Barre d'état}
+
+La barre d'état permet de visualiser à chaque instant l'état de
+certaines informations (les enseignants; les locaux, les
+activitées, les étudiants, les événements et les confits).
+
+\subsection{Fenêtre interne}
+
+La fenêtre interne est le corps de l'interface graphique. Elle
+présente une grille horaire pouvant contenir des événements
+
+ \todo{Placer une image de l'organisation de la vue}
 
 \subsection{Description du contrôleur}
 
