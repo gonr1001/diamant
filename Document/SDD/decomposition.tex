@@ -153,14 +153,20 @@ Il permet ensuite d'organiser les données sous une forme prédéfinie (structure d
 \subsubsection{Description du sous-composant ttstructure}
 
  Le sous-composant ttstructure permet de décrire et manipuler la
- grille horaire. La structure de ce sous-composant est de type hiérarchique et le noeud principal est appelé ttstructure. Une ttstructure peut être composée
+ grille horaire. La structure de ce sous-composant est de type hiérarchique et le noeud principal est appelé timetable (voir figure \ref{struct}). Une timetable peut être composée
  d'un ou de plusieurs cycle. Un cycle peut être composé d'un ou de
  plusieurs jours. Un jour peut être composé d'une ou de plusieurs
  séquences. Une séquence peut être composée d'une ou de plusieurs
- périodes. La période est la plus petite unité d'une ttstructure,
+ périodes. La période est la plus petite unité d'une timetable,
  elle est décrite en minutes.
 
- \todo{Placer une image de la ttstructure}
+ \begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=250pt]{SDD/images/ttstruct.eps}
+    \caption{Description de la grille horaire}\label{struct}
+  \end{center}
+\end{figure*}
 
 
 \subsubsection{Description du sous-composant optimization}
@@ -196,6 +202,14 @@ d'entrée (fenêtre principale - \emph{main display}). L'interface
 principale intègre trois composants: la barre de menu (\emph{menu
 bar}), la fenêtre interne (\emph{internal frame}) et la barre
 d'état (\emph{state bar}).
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=300pt]{SDD/images/application.eps}
+    \caption{Description des associations à partir du point d'entrée}\label{application}
+  \end{center}
+\end{figure*}
 
 \subsection{Barre de menu}
 
