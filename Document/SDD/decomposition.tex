@@ -109,9 +109,12 @@ Afin de pouvoir manipuler indifféremment les structures composites à partir de n
 
 \subsubsection{Description du sous-composant model}
 
-Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC), il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur. Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur.
+Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC),
+il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur.
+Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur.
 
-La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et l'entité comportement ou processus (voir figure \ref{submodel}).
+La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et
+ l'entité comportement ou processus (voir figure \ref{submodel}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -148,8 +151,6 @@ Il permet ensuite d'organiser les données sous une forme prédéfinie (structure d
   \end{center}
 \end{figure*}
 
-
-
 \subsubsection{Description du sous-composant ttstructure}
 
  Le sous-composant ttstructure permet de décrire et manipuler la
@@ -163,7 +164,7 @@ Il permet ensuite d'organiser les données sous une forme prédéfinie (structure d
  \begin{figure*}[h]
   % Requires \usepackage{graphicx}
   \begin{center}
-    \includegraphics[width=250pt]{SDD/images/ttstruct.eps}
+    \includegraphics[width=300pt]{SDD/images/ttstruct.eps}
     \caption{Description de la grille horaire}\label{struct}
   \end{center}
 \end{figure*}
@@ -173,7 +174,7 @@ Il permet ensuite d'organiser les données sous une forme prédéfinie (structure d
 
 Le sous-composant optimization comporte l'ensemble des événements,
 ainsi que les différents algorithmes (organisés autour du pattern
-strategie)
+strategie).
 \begin{description}
     \item[Ensemble des événements: ] l'ensemble des événements est
     une structure contruite à partir de la structure composite
@@ -190,7 +191,7 @@ strategie)
     \item[Algorithme de mixage de groupes d'étudiants: ] il permet
     ...
     \item[Algorithme de construction d'horaire: ] il permet ...
-    \item[Algorithme d'affectation de locaux: ] il permet
+    \item[Algorithme d'affectation de locaux: ] il permet ...
 \end{description}
 
 
@@ -198,10 +199,10 @@ strategie)
 
 \diamant{} est une application avec une interface utilisateur
 graphique (GUI). Elle utilise une interface principale comme point
-d'entrée (fenêtre principale - \emph{main display}). L'interface
-principale intègre trois composants: la barre de menu (\emph{menu
-bar}), la fenêtre interne (\emph{internal frame}) et la barre
-d'état (\emph{state bar}).
+d'entrée (fenêtre principale - \emph{main display}-
+\verb!DApplication!). L'interface principale intègre trois
+composants: la barre de menu (\verb!DMenuBar!), le médiateur
+(\verb!DMediator!) et la barre d'outils (\verb!DToolBar!).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -211,7 +212,7 @@ d'état (\emph{state bar}).
   \end{center}
 \end{figure*}
 
-\subsection{Barre de menu}
+\subsubsection{Barre de menu}
 
 La barre de menu permet d'executer des commandes (traitements,
 lancement de dialogues) en cliquant sur le menu associé. Sa
@@ -232,28 +233,51 @@ Les principales classes et objets participants dans ce pattern
 sont les suivantes:
 
 \begin{description}
-    \item[Command: ] elle déclare une interface permettant
+    \item[\verb!Command!: ] elle déclare une interface permettant
     d'éxécuter une opération. Elle gardera le même nom dans
-    \diaman{}.
-    \item[Invoker: ] elle externalise la requête de la commande.
+    \diamant{}.
+    \item[\verb!Invoker!: ] elle externalise la requête de la commande.
     Elle sera identifiée dans \diamant{} par la classe CmdMenu.
-    \item[ConcreteCommand: ] elle implemente la methode Execute
+    \item[\verb!ConcreteCommand!: ] elle implemente la methode Execute
     qui sera invoquée. Elle sera identifiée dans \diamant{} par
     les classes de nom xxxCmd.
 \end{description}
 
-\subsection{Barre d'état}
+\subsubsection{Barre d'outils}
 
-La barre d'état permet de visualiser à chaque instant l'état de
-certaines informations (les enseignants; les locaux, les
-activitées, les étudiants, les événements et les confits).
+La barre d'outils facilite, accélère et optimise la navigation
+dans la grille horaire. Elle permet d'ajouter ou supprimer des
+jours, modifier le nom d'une journée, modifier la priorité d'une
+ou de plusieurs périodes à la fois.
 
-\subsection{Fenêtre interne}
+\subsubsection{Médiateur}
 
-La fenêtre interne est le corps de l'interface graphique. Elle
-présente une grille horaire pouvant contenir des événements
+Le médiateur est le corps de l'interface graphique, il est composé
+d'une collection de documents (\verb!DDocument!), ce qui lui
+permet de gerer plusieurs documents ou plusieurs horaires. Un
+document (voir figure \ref{document}) est quant à lui composé
+d'une barre d'état (\verb!DStateBar!), d'un panneau de grille
+horaire (\verb!TTPanel!) et d'un modele (\verb!DModel!).
 
- \todo{Placer une image de l'organisation de la vue}
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=250pt]{SDD/images/mediator.eps}
+    \caption{Description d'un Document}\label{document}
+  \end{center}
+\end{figure*}
+
+\begin{description}
+    \item[Barre d'état: ] c'est la lisière située au bas de la fenêtre et affichant des
+    renseignements sur les enseignants, les locaux, les activités,
+    les étudiants, les événements et les conflits.
+    \item[Panneau de grille horaire: ] c'est la partie centrale de la
+    fenêtre, elle présente la grille horaire sous la forme d'un
+    calendrier (jour, séquence, période) et indique pour chaque
+    période, le nombre d'événements assigné et les conflits
+    générés dans cette période.
+    \item[Modèle: ] il contient les données spécifiques de \dx{}.
+\end{description}
 
 \subsection{Description du contrôleur}
 
