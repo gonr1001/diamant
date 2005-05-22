@@ -42,13 +42,13 @@
 \setlength{\parindent}{0 in}
 
 \renewcommand\section{\@startsection{section}{1}{0pt}%
-  {-2ex plus-0.5ex minus -0.5ex}{1ex}{\normalfont\Large\sf\bf}}
+{-2ex plus-0.5ex minus -0.5ex}{1ex}{\normalfont\Large\sf\bf}}
 
 \renewcommand\subsection{\@startsection{subsection}{2}{0pt}%
-  {-2ex plus-0.5ex minus -0.5ex}{0.5ex}{\normalfont\large\sf\bf}}
+{-2ex plus-0.5ex minus -0.5ex}{0.5ex}{\normalfont\large\sf\bf}}
 
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{0pt}%
-  {-2ex plus-0.5ex minus -0.5ex}{0.5ex}{\normalfont\normalsize\sf\bf}}
+{-2ex plus-0.5ex minus -0.5ex}{0.5ex}{\normalfont\normalsize\sf\bf}}
 
 \def\partNum{\ifcase\value{part}\or PREMI\`ERE\or DEUXI\`EME\or %
   TROISI\`EME\or QUATRI\`EME\or CINQUI\`EME\or SIXI\`EME\or %
@@ -58,7 +58,7 @@
   DIX-NEUVI\`EME\or VINGTI\`EME\fi}%
 
 \def\@part[#1]#2{%
-  \ifnum \c@secnumdepth >-2\relax
+  \ifnum \c@secnumdepth >-3\relax
     \refstepcounter{part}%
     \addcontentsline{toc}{part}{\MakeUppercase{\thepart\hspace{1em}#1}}%
   \else
@@ -70,7 +70,7 @@
     \centering
     \interlinepenalty \@M
     \normalfont
-    \ifnum \c@secnumdepth >-2\relax
+    \ifnum \c@secnumdepth >-3\relax
       \huge\bfseries \MakeUppercase{\partNum\ \partname}
       \par
       \vskip 20\p@

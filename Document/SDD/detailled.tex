@@ -1,10 +1,235 @@
 \chapter{Conception détaillée}
 
 \section{Conception détaillé des modules}
-\subsection{Module 1}
+\subsection{Module d'affectation de locaux}
+L'affectation de locaux requiert trois principales étapes:
+\begin{enumerate}
+    \item Le refactoring des activités, des événements et des préférences
+afin que ceux-ci integrent les nouveaux champs dans les lectures,
+écritures et traitements.
+    \item La création de nouvelles interfaces graphiques afin
+    d'adapter le menu, le dialogue de conflits et le dialogue
+    d'événements aux nouvelles spécifications.
+    \item L'implémentation de l'algorithme d'affectation de locaux
+    afin de pouvoir assigner de façon automatique des locaux aux
+    activités.
+\end{enumerate}
+
+
+\subsubsection{Modification du fichier d'activité}
+
+Le fichier d'activité contient des informations concernant les
+cours offerts durant une session. Ce fichier présente la structure
+ci-dessous:
+
+    Type ligne 1. \verb!ADM1111  A!\\
+    Type ligne 2. \verb!1!\\
+    Type ligne 3. \verb!1!\\
+    Type ligne 4. \verb!LUC LAJOIE!\\
+    Type ligne 5. \verb! !\\
+    Type ligne 6. \verb! !\\
+    Type ligne 7. \verb!2!\\
+    Type ligne 8. \verb!2 1!\\
+    Type ligne 9. \verb!2 1 4 2!\\
+    Type ligne 10. \verb!1 1!\\
+    Type ligne 11. \verb!C1-387 C1-380!\\
+    Type ligne 12. \verb!0 0!\\
+    Type ligne 13. \verb!0 0!\\
+    Type ligne 14. \verb!0 0!\\
+
+    Nous utiliserons les lignes de type 10 et 12 (\verb!1 1! et \verb!0 0!),
+    afin d'y integrer l'état et la fonction associés au local.
+    Ces lignes assureront les fonctions suivantes:
+
+    Type ligne 10. \verb!0 1!\\
+    Type ligne 12. \verb!2 3!\\
+    Ces expresions indiquent que le local C1-387 a une fonction
+    correspondant à la clé 2 et son état est non figé (c'est à dire que le cours n'est pas figé dans ce
+    local); tandis que le local C1-380 a une fonction
+    correspondant à la clé 3 et son état est figé (c'est à dire que le cours est figé dans ce
+    local).
+
+    La nouvelle structure du fichier sera:
+
+   Type ligne 1. \verb!ADM1111  A!\\
+    Type ligne 2. \verb!1!\\
+    Type ligne 3. \verb!1!\\
+    Type ligne 4. \verb!LUC LAJOIE!\\
+    Type ligne 5. \verb! !\\
+    Type ligne 6. \verb! !\\
+    Type ligne 7. \verb!2!\\
+    Type ligne 8. \verb!2 1!\\
+    Type ligne 9. \verb!2 1 4 2!\\
+    Type ligne 10. \verb!0 1!\\
+    Type ligne 11. \verb!C1-387 C1-380!\\
+    Type ligne 12. \verb!2 3!\\
+    Type ligne 13. \verb!0 0!\\
+    Type ligne 14. \verb!0 0!\\
+
+\subsubsection{Modification du fichier des préférences}
+
+Le fichier de préférence contient les informations sur paramètres
+par défaut du logiciel et les options sélectionneés par
+l'utilisateur. Il se présente sous la forme suivante:
+
+Type ligne 1. \verb!javax.swing.plaf.metal.MetalLookAndFeel!\\
+    Type ligne 2. \verb!French!\\
+    Type ligne 3. \verb!.\pref\StandardTTC.xml!\\
+    Type ligne 4. \verb!.\pref\StandardTTE.xml!\\
+    Type ligne 5. \verb!.\pref\pref.txt!\\
+    Type ligne 6. \verb!D:\Developpements\DiamantExtreme\Dx\pref\pref.txt!\\
+    Type ligne 7. \verb!éÉèÈáÁàÀÇçëËïîÏÎÔôÙù-'()Êê!\\
+    Type ligne 8. \verb!selectedOptionsInFullReport;JNum;Jour;Début;Fin;NombÉ;Acti;!
+    \verb!Nat;Grp;Blc;Durée;Enseignant;Local;!\\
+    Type ligne 9. \verb!selectedOptionsInConflictReport;Type Conf;JNum;Jour;PérJour;!
+    \verb!Début;Événement 1;Événement 2;Numb C;Conflits;!\\
+    Type ligne 10. \verb!conflictLimits;2;3;10;1;15;0;!\\
+
+La ligne de type 10 indique les options de conflit.
+
+\begin{itemize}
+    \item 2 = Nombre max de conflits d'étudiants permis dans une
+    période.
+    \item 3 = Nombre max de conflits d'enseignants permis dans une
+    période.
+    \item 10 = Nombre max de conflits de locaux permis dans une
+    période.
+    \item 1 = Utiliser les périodes de priorité 1 et inférieure
+    pour construire l'horaire.
+    \item 15 = Nombre max de cours à placer dans une période.
+    \item 0 = Nombre de période d'écart entre 2 activités en
+    conflit.
+\end{itemize}
+
+Nous rajouterons à la ligne de type 10 le taux de remplissage des
+locaux. Cette ligne prendra la forme suivante:
+
+    Type ligne 10. \verb!conflictLimits;2;3;10;1;15;0;85!\\. La
+    nouvelle valeur 85 indique que le taux de remplissage des
+    locaux est de 85%.
+
+    La nouvelle structure du fichier sera:
+    Type ligne 1. \verb!javax.swing.plaf.metal.MetalLookAndFeel!\\
+    Type ligne 2. \verb!French!\\
+    Type ligne 3. \verb!.\pref\StandardTTC.xml!\\
+    Type ligne 4. \verb!.\pref\StandardTTE.xml!\\
+    Type ligne 5. \verb!.\pref\pref.txt!\\
+    Type ligne 6. \verb!D:\Developpements\DiamantExtreme\Dx\pref\pref.txt!\\
+    Type ligne 7. \verb!éÉèÈáÁàÀÇçëËïîÏÎÔôÙù-'()Êê!\\
+    Type ligne 8.
+\verb!selectedOptionsInFullReport;JNum;Jour;Début;Fin;NombÉ;Acti;!
+    \verb!Nat;Grp;Blc;Durée;Enseignant;Local;!\\
+    Type ligne 9. \verb!selectedOptionsInConflictReport;Type Conf;JNum;Jour;PérJour;!
+    \verb!Début;Événement 1;Événement 2;Numb C;Conflits;!\\    Type ligne 10. \verb!conflictLimits;2;3;10;1;15;0;85;!\\
+
+\subsubsection{Modification de la structure des activités (SetOfActivities, Unity, Assignment)}
+La structure des activités doit être modifiée afin de l'adapter au
+nouveau fichier des activités (prise en charge de la fonction et
+de l'état des locaux). Les classes affectées par cette
+modification sont:
+
+\begin{itemize}
+    \item \verb!dInternal.dData.dActivities.SetOfActivitiesSites!
+    \item \verb!dInternal.dData.dActivities.SetOfActivities!
+    \item \verb!dInternal.dData.dActivities.Unity!
+    \item \verb!dInternal.dData.dActivities.Assignment!
+\end{itemize}
+
+\subsubsection{Modification de la structure des événements}
+La structure des événements doit être modifiée afin de l'adapter à
+la nouvelle structure des activités (prise en charge de la
+fonction et de l'état des locaux). Les classes affectées par cette
+modification sont:
+
+\begin{itemize}
+    \item \verb!dInternal.dOptimization.SetOfEvents!
+    \item \verb!dInternal.dOptimization.EventAttach!
+\end{itemize}
+
+\subsubsection{Modification de la structure des préférences}
+La structure des préférences doit être modifiée afin de l'adapter
+au nouveau fichier de préférences (prise en charge du taux
+d'occupation des locaux). La classe affectée par cette
+modification est:
+
+\begin{itemize}
+    \item \verb!dInternal.Preferences!
+\end{itemize}
+
+\subsubsection{Modification du menu}
+
+Le menu de \diamant{} sera modifié de sorte à rajouter sous le
+menu\\ \verb!BetaTest --> Fonctionnalités v 1.6.2!, les sous-menus
+Affectation de locaux, Affectation d'événements et Option de
+conflits (voir figure \ref{menu_feat}).
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=6.0in]{SDD/images/menu_feat_1-6-2.eps}
+    \caption{Menu des fonctionnalités de la version 1.6.2}\label{menu_feat}
+  \end{center}
+\end{figure*}
+
+Les classes affectées par cette modification sont:
+
+\begin{itemize}
+    \item \verb!dInterface.DMenuBar!
+\end{itemize}
+
+Les nouvelles classes à créer seront:
+
+\begin{itemize}
+    \item \verb!dInterface.dAffectation.RoomAffectCmd!: la
+    commande permettant de lancer l'algorithme d'affectation de
+    locaux.
+    \item \verb!dInterface.dAffectation.EventAffectCmd!: la
+    commande permettant de lancer le dialogue d'affectation
+    d'événements.
+    \item \verb!dInterface.dAffectation.ConflictOptionCmd!: la
+    commande permettant de lancer le dialogue d'option de
+    conflits.
+\end{itemize}
+
+\subsubsection{Modification du dialogue d'affectation d'événements}
+
+Le dialogue d'édition d'un événement de sorte à rajouter l'état et
+la fonction du local (voir figure \ref{dlg_event}). Les classes
+affectées par cette modification sont:
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=4.0in]{SDD/images/dlg_event.eps}
+    \caption{Dialogue d'affectation d'événements de la version 1.6.2}\label{dlg_event}
+  \end{center}
+\end{figure*}
+
+\begin{itemize}
+    \item \verb!dInterface.dAffectation.EventsDlg!: le dialogue
+    permettant de sélectionner l'événement à manipuler.
+    \item \verb!dInterface.dAffectation.EditActivityDlg!:
+\end{itemize}
+
+Les nouvelles classes à créer seront:
+
+\begin{itemize}
+    \item \verb!dInterface.dAffectation.EditEventDlg!: Cette
+    classe sera inspirée de\\
+    \verb!dInterface.dAffectation.EditActivityDlg! et elle
+    intégrera les nouvelles spécifications comme présentées à la
+    figure \ref{dlg_event}.
+\end{itemize}
+
+
+\subsubsection{Modification du dialogue d'option de conflits}
+
 \subsection{Module 2}
 
-\section{Conception détaillé des Données} 
-\subsection{Type de données 1}
-\subsection{Type de données 2}
-\subsection{Type de données 3} 
+\section{Conception détaillé des Données}
+\subsection{Ensemble des enseignants}
+\subsection{Ensemble des locaux}
+\subsection{Ensemble des activités}
+\subsection{Ensemble des étudiants}
+\subsection{Ensemble des événements}
+\subsection{Grille horaire}
+\subsection{Ensemble des états}
