@@ -192,9 +192,9 @@ Les nouvelles classes à créer seront:
 
 \subsubsection{Modification du dialogue d'affectation d'événements}
 
-Le dialogue d'édition d'un événement de sorte à rajouter l'état et
-la fonction du local (voir figure \ref{dlg_event}). Les classes
-affectées par cette modification sont:
+Le dialogue d'affectation d'un événement doit être modifié de
+sorte à rajouter l'état et la fonction du local (voir figure
+\ref{dlg_event}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -203,6 +203,8 @@ affectées par cette modification sont:
     \caption{Dialogue d'affectation d'événements de la version 1.6.2}\label{dlg_event}
   \end{center}
 \end{figure*}
+
+Les classes affectées par cette modification sont:
 
 \begin{itemize}
     \item \verb!dInterface.dAffectation.EventsDlg!: le dialogue
@@ -222,6 +224,87 @@ Les nouvelles classes à créer seront:
 
 
 \subsubsection{Modification du dialogue d'option de conflits}
+
+Le dialogue d'option de conflits doit être modifié de sorte à
+rajouter le taux de remplissage des locaux (voir figure
+\ref{dlg_conf}).
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=3.0in]{SDD/images/dlg_conflicts.eps}
+    \caption{Dialogue d'option de conflits de la version 1.6.2}\label{dlg_conf}
+  \end{center}
+\end{figure*}
+
+Les classes affectées par cette modification sont:
+
+\begin{itemize}
+    \item \verb!dInterface.dUtil.ConflictDlg!: le dialogue
+    permettant de spécifier les contraintes d'optimisation.
+\end{itemize}
+
+\subsubsection{Algorithme d'affectation de locaux}
+
+L'affectation de locaux est un problème d'optimisation, dans
+lequel on cherche à construire une solution à un problème qui
+optimise une fonction objectif. L'algorithme glouton utilisé pour
+résoudre ce problème est le suivant:
+\begin{verbatim}
+    //on va construire la solution dans Sol
+    //initialisation
+    Ens= E;/* ensemble des locaux disponibles pour
+    une affectation: DSetOfResources*/
+    Sol.Init //= ensemble (ou suite) "vide" ou..
+    tant que Non Sol.Complete?() ( et Ens.NonVide?())
+    select(x,Ens); //on choisit x selon critère glouton
+    si Sol.AjoutPossible(x) alors Sol.Ajout(x); fsi;
+    //dans certains problèmes, c'est toujours le cas
+    si CertainesConditions alors Ens.Retirer(x);
+    //selon les cas, x ne sera considéré qu'une fois
+    // ou jusqu'à qu'il ne puisse plus etre ajouté
+    fin tant que;
+    //la Solution partielle est complète ...normalement
+    retourne Sol
+    \end{verbatim}
+La nouvelle classe à créer pour l'implémentation de cet algorithme
+sera\\ \verb!dInternal.dOptimization.RoomAssignmentAlgo!. La
+structure de cette classe est présentée à la figure \ref{algo}.
+
+\begin{figure*}[h]
+  % Requires \usepackage{graphicx}
+  \begin{center}
+    \includegraphics[width=2.0in]{SDD/images/roomassignmentalgo.eps}
+    \caption{Structure de la classe RoomAssignmentAlgo}\label{algo}
+  \end{center}
+\end{figure*}
+
+\begin{itemize}
+    \item
+\end{itemize}
+
+Les champs et méthodes de la classe \verb!RoomAssignmentAlgo!
+auront les responsabilités:
+
+\begin{description}
+    \item[ensE :] c'est l'ensemble fini de locaux pouvant être
+    affectés.
+    \item[solution :] c'est l'ensemble des solutions du problème.
+    Chaque solution est un couplet (local, événement).
+    \item[select():] elle permet de choisir le meilleurs local parmi
+    les locaux restant à affecter, en respectant les contraintes de capacité et de
+    fonction des locaux.
+    \item[isFinish():] elle teste si une solution partielle est
+    une solution complète.
+    \item[isAddPossible():] elle teste si un couplet (local,
+    événement)peut être ajouté à une solution partielle.
+    \item[add():] elle permet d'ajouter un couplet (local,
+    événement) à une solution partielle si c'est possible.
+    \item[build():] c'est l'algorithme à proprement parler, il est
+    basé sur un critère local de sélection des éléments de ensE
+    pour construire une solution optimale.
+\end{description}
+
 
 \subsection{Module 2}
 
