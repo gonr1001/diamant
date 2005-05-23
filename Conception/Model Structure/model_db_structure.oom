@@ -1633,9 +1633,10 @@ ClassMethod 0 Arial,8,N</a:FontList>
 <a:Code>_ensE</a:Code>
 <a:CreationDate>1116790529</a:CreationDate>
 <a:Creator>Yannick S</a:Creator>
-<a:ModificationDate>1116790529</a:ModificationDate>
+<a:ModificationDate>1116791371</a:ModificationDate>
 <a:Modifier>Yannick S</a:Modifier>
 <a:DataType>DSetOfResources</a:DataType>
+<a:Attribute.Visibility>-</a:Attribute.Visibility>
 <c:ObjectDataType>
 <o:Class Ref="o26"/>
 </c:ObjectDataType>
@@ -1646,9 +1647,10 @@ ClassMethod 0 Arial,8,N</a:FontList>
 <a:Code>_solution</a:Code>
 <a:CreationDate>1116790529</a:CreationDate>
 <a:Creator>Yannick S</a:Creator>
-<a:ModificationDate>1116790529</a:ModificationDate>
+<a:ModificationDate>1116791371</a:ModificationDate>
 <a:Modifier>Yannick S</a:Modifier>
 <a:DataType>DSetOfResources</a:DataType>
+<a:Attribute.Visibility>-</a:Attribute.Visibility>
 <c:ObjectDataType>
 <o:Class Ref="o26"/>
 </c:ObjectDataType>
@@ -1710,9 +1712,10 @@ ClassMethod 0 Arial,8,N</a:FontList>
 <a:Code>isAddPossible</a:Code>
 <a:CreationDate>1116790781</a:CreationDate>
 <a:Creator>Yannick S</a:Creator>
-<a:ModificationDate>1116790781</a:ModificationDate>
+<a:ModificationDate>1116791352</a:ModificationDate>
 <a:Modifier>Yannick S</a:Modifier>
 <a:ReturnType>boolean</a:ReturnType>
+<a:Operation.Visibility>-</a:Operation.Visibility>
 <a:TemplateBody>%DefaultBody%</a:TemplateBody>
 </o:Operation>
 <o:Operation Id="o66">
@@ -1721,9 +1724,10 @@ ClassMethod 0 Arial,8,N</a:FontList>
 <a:Code>add</a:Code>
 <a:CreationDate>1116790781</a:CreationDate>
 <a:Creator>Yannick S</a:Creator>
-<a:ModificationDate>1116790781</a:ModificationDate>
+<a:ModificationDate>1116791352</a:ModificationDate>
 <a:Modifier>Yannick S</a:Modifier>
 <a:ReturnType>boolean</a:ReturnType>
+<a:Operation.Visibility>-</a:Operation.Visibility>
 <a:TemplateBody>%DefaultBody%</a:TemplateBody>
 </o:Operation>
 </c:Operations>
