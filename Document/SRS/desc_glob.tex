@@ -2,75 +2,93 @@
 
     \section{Perspective du produit}
 
-    \diamant{} a été développé pour remplacer le logiciel de construction d'horaire \saphir{}, lui même développé sous environ DOS et présentant les principaux défauts suivants:
-\begin{itemize}
-    \item Interfaces peu intuitives et donc pas très facile d'utilisation,
-    \item Fonctionnalités limitées, réduisant ainsi les possibilités de l'utilisateur,
-    \item Aucune portabilité,
-    \item Difficulté d'adaptation du logiciel au changement des spécification,
-    \item ...
-\end{itemize}
+    \diamant{} a été développé pour remplacer le logiciel de
+    construction d'horaire \saphir{}, lui même développé sous un
+    environnement DOS et présentant les principaux défauts suivants:
+
+    \begin{itemize}
+        \item Interfaces peu intuitives et donc pas facile d'utilisation,
+        \item Fonctionnalités limitées, réduisant ainsi les possibilités de l'utilisateur,
+        \item Aucune portabilité,
+        \item Difficulté d'adaptation du logiciel au changement des spécifications,
+        \item ...
+    \end{itemize}
 
     \section{Fonctionnalités du produit} \label{spec_prod}
 
 
-\subsection{Fonctionnalité horaire d'examens}
-Cette fonctionnalité est en réalité un ensemble de fonctionnalités
-nécessaires à la construction d'un horaire des examens. Elle est
-décrite dans le manuel utilisateur.
+        \subsection{Fonctionnalité horaire d'examens}
+        Cette fonctionnalité est en réalité un ensemble de
+        fonctionnalités nécessaires à la construction d'un horaire des
+        examens. Elle est décrite dans le manuel utilisateur.
 
-\subsection{Fonctionnalité horaire de cours}
-Cette fonctionnalité est en réalité un ensemble de fonctionnalités
-nécessaires à la construction d'un horaire de cours pour un seul cycle et cet horaire sera ensuite répété aux autres cycles d'un trimestre (Exp: pour construire l'horaire d'un trimestre comportant 13 semaines de cours, on construit l'horaire d'une semaine de 5 ou 6 jours et cet horaire reste le même durant les 13 semaines). Elle est
-décrite dans le manuel utilisateur.
+        \subsection{Fonctionnalité horaire de cours}
+        Cette fonctionnalité est en réalité un ensemble de
+        fonctionnalités nécessaires à la construction d'un horaire de
+        cours pour un seul cycle et cet horaire sera ensuite répété
+        aux autres cycles d'un trimestre (Exp: pour construire
+        l'horaire d'un trimestre comportant 13 semaines de cours, on
+        construit l'horaire d'une semaine de 5 ou 6 jours et cet
+        horaire reste le même durant les 13 semaines). Elle est
+        décrite dans le manuel utilisateur.
 
-\subsection{Fonctionnalité horaire trimestriel}
+        \subsection{Fonctionnalité horaire trimestriel}
 
-À venir ...
+        À venir ...
 
-\subsection{Fonctionnalité affectation d'enseignants}
-Cette fonctionnalité doit servir à assigner à une activité $n$
-enseignants. On peut ajouter uniquement des enseignants qui
-sont connus par \diamant{}, c'est-à-dire ceux qui sont dans les fichiers d'importation.
+        \subsection{Fonctionnalité affectation d'enseignants}
+        Cette fonctionnalité doit servir à assigner à une activité $n$
+        enseignants. On peut ajouter uniquement des enseignants qui
+        sont connus par \diamant{}, c'est-à-dire ceux qui sont dans
+        les fichiers d'importation.
 
-\subsection{Fonctionnalité modification de la disponibilité des enseignants}
-Cette fonctionnalité doit permettre de modifier la disponibilité d'un enseignant (rendre un enseignant disponible ou indisponible dans une période donnée). Cette modification ne peut se faire que sur des enseignants connus par \diamant{}.
+        \subsection{Fonctionnalité modification de la disponibilité des enseignants}
+        Cette fonctionnalité doit permettre de modifier la
+        disponibilité d'un enseignant (rendre un enseignant disponible
+        ou indisponible dans une période donnée). Cette modification
+        ne peut se faire que sur des enseignants connus par
+        \diamant{}.
 
-\subsection{Fonctionnalité manipulation des groupes d'étudiants}
-Cette fonctionnalité doit permettre de déplacer les étudiants d'un groupe vers un autre ou encore de ne pas le placer dans un groupe, de figer un étudiant dans un groupe afin qu'il ne puisse pas être déplacé par le logiciel.
+        \subsection{Fonctionnalité manipulation des groupes d'étudiants}
+        Cette fonctionnalité doit permettre de déplacer les étudiants
+        d'un groupe vers un autre ou encore de ne pas le
+        \corrpascal{``le'' ou ``les'' ?} placer dans un groupe, de
+        figer un étudiant dans un groupe afin qu'il ne puisse pas être
+        déplacé par le logiciel.
 
-\subsection{Fonctionnalité Grille partielle}
-La fonctionnalité Grille partielle doit permettre de définir et
-sauvegarder des  ensembles d'activités. Ensuite afficher sur la
-grille uniquement les cours de l'ensemble choisi.
+        \subsection{Fonctionnalité Grille partielle}
+        La fonctionnalité Grille partielle doit permettre de définir
+        et sauvegarder des ensembles d'activités. Ensuite afficher sur
+        la grille uniquement les cours de l'ensemble choisi.
 
-\subsection{Fonctionnalité Importation sélective}
-La fonctionnalité importation sélective est de pouvoir importer un
-fichier sans changer les données dans les autres fichiers.
+        \subsection{Fonctionnalité Importation sélective}
+        La fonctionnalité importation sélective est de pouvoir
+        importer un fichier sans changer les données dans les autres
+        fichiers.
 
-\subsection{Fonctionnalité  Menus}
-Les menus doivent être disponibles (enabled) ou non disponibles
-(disabled) en fonction de la dernière opération effectué et de
-l'état du logiciel.
+        \subsection{Fonctionnalité  Menus}
+        Les menus doivent être disponibles (``enabled'') ou non
+        disponibles (``disabled'') en fonction de la dernière
+        opération effectuée et de l'état du logiciel.
 
-\subsection{Fonctionnalité  Toolbar}
-La fonctionnalité Toolbar doit permettre d'effectuer, en mode
-grille, des modifications (ajout ou suppression de jours,
-modification de la priorité d'une période, modification du nom
-d'une journée, etc) sur une grille horaire.
+        \subsection{Fonctionnalité  Toolbar}
+        La fonctionnalité ``Toolbar'' doit permettre d'effectuer, en
+        mode grille, des modifications (ajout ou suppression de jours,
+        modification de la priorité d'une période, modification du nom
+        d'une journée, etc) sur une grille horaire.
 
 
-\subsection{Fonctionnalité horaire sans Étudiants}
+        \subsection{Fonctionnalité horaire sans Étudiants}
 
-La fonctionnalité permet de faire un horaire sans ternir compte du
-fichier d'étudiants, mais uniquement du nombre d'étudiants associé
-à une activité (dans le fichier d'activité).
+        La fonctionnalité permet de faire un horaire sans tenir compte
+        du fichier d'étudiants, mais uniquement du nombre d'étudiants
+        associés à une activité (dans le fichier d'activité).
 
-\subsection{Fonctionnalité affectation de locaux}
+        \subsection{Fonctionnalité affectation de locaux}
 
-La fonctionnalité permet d'assigner des locaux aux événements en
-faisant une utilisation optimale (voir section \ref{aff_locaux}
-pour plus de details).
+        La fonctionnalité permet d'assigner des locaux aux événements
+        en faisant une utilisation optimale (voir section
+        \ref{aff_locaux} pour plus de details).
 
     \section{Classes et caractéristiques d'utilisateurs}
 
@@ -80,24 +98,25 @@ pour plus de details).
 
     \section{Environnement d'opération}
 
-    \diamant{} fonctionne sur toutes les plateformes matérielles
-    et logicielles à condition qu'y soit installé la machine
-    virtuelle Java.
+    \diamant{} fonctionne sur toutes les plateformes matérielles et
+    logicielles à condition qu'il y soit installé la machine virtuelle
+    Java.
 
     \section{Contraintes de design et d'implémentation}
 
-Le developpement de \diamant{} doit se faire dans le respect des
-techniques, outils et technologies ci-dessous:
+    Le developpement de \diamant{} doit se faire dans le respect des
+    techniques, outils et technologies ci-dessous:
 
-\todo{Completer cette section avec les techniques, technologies,
-outils et conventions utilisées dans le groupe eXit}
-    \subsection{Techniques}
+    \todo{Completer cette section avec les techniques, technologies,
+    outils et conventions utilisées dans le groupe eXit}
+    
+        \subsection{Techniques}
 
-    \subsection{Technologies}
+        \subsection{Technologies}
 
-    \subsection{Outils}
+        \subsection{Outils}
 
-    \subsection{Conventions}
+        \subsection{Conventions}
 
 
     \section{Documentation utilisateur}

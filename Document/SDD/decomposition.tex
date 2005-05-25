@@ -1,5 +1,10 @@
 \chapter{Description de la décomposition}
-Le logiciel \dx{} pour fonctionner à besoin de la machine virtuelle Java. Pour construire un horaire \dx{} a besoin d'un ensemble de fichiers. Le déploiement de \dx{} devrait donc se faire en considérant les deux autres entités dont il a besoin (voir figure \ref{datastruct}).
+
+Pour fonctionner, le logiciel \dx{} a besoin de la machine virtuelle
+Java. Pour construire un horaire \dx{} a besoin d'un ensemble de
+fichiers. Le déploiement de \dx{} devrait donc se faire en considérant
+les deux autres entités dont il a besoin (voir figure
+\ref{datastruct}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -8,24 +13,25 @@ Le logiciel \dx{} pour fonctionner à besoin de la machine virtuelle Java. Pour c
     \caption{Système \dx{}}\label{datastruct}
   \end{center}
 \end{figure*}
+
+
 \section{Description des fichiers d'entrée de  \diamant{}}
-\dx{} utilisent les fichiers suivantes~:
+
+\dx{} utilisent les fichiers suivants~:
 
 \begin{enumerate}
-    \item Étudiants.
-    \item Instructeurs.
-    \item Activités.
+    \item Étudiants
+    \item Instructeurs
+    \item Activités
     \item Locaux
 \end{enumerate}
 
-Les trois premiers sont produits au STI (Système informatique
-central) et transférés via FTP.
-Le fichier de locaux est produit
-localement par l'utilisateur.
+Les trois premiers sont produits au STI (Système informatique central)
+et transférés via FTP.  Le fichier de locaux est produit localement
+par l'utilisateur.
 
-Tous les fichiers ont un format très
-rigide. Le nombre de caractères et leur position est à respecter
-obligatoirement.
+Tous les fichiers ont un format rigide. Le nombre de caractères et
+leur position est à respecter obligatoirement.
 
 Les indexes de chaînes de caractères commencent à \verb!0!.
 \input{SDD/inputData}
@@ -35,28 +41,96 @@ Les indexes de chaînes de caractères commencent à \verb!0!.
 \subsection{Choix du modèle}
 
 \subsubsection{Contexte}
-    L'objectif de la majorité des systèmes informatiques est de récupérer les données d'un entrepôt de données (fichiers, base de données) et de les présenter à l'utilisateur. Une fois que l'utilisateur a modifié les données, le système stocke les mises à jour dans l'entrepôt. Comme le principal flux d'informations s'effectue entre l'entrepôt de données et l'interface utilisateur, nous pourrions être tenté de lier ces deux éléments afin de réduire le volume de code et améliorer les performances de l'application.
+    L'objectif de la majorité des systèmes informatiques est de
+    récupérer les données d'un entrepôt de données (fichiers, base de
+    données) et de les présenter à l'utilisateur. \corrpascal{c'est une généralisation ``dangeureuse''} Une fois que
+    l'utilisateur a modifié les données, le système stocke les mises à
+    jour dans l'entrepôt. Comme le principal flux d'informations
+    s'effectue entre l'entrepôt de données et l'interface utilisateur,
+    nous pourrions être tenté de lier ces deux éléments afin de
+    réduire le volume de code et améliorer les performances de
+    l'application.
 
-Cette approche qui peut nous paraître naturelle n'est pas sans présenter certains problèmes non négligeables. L'un d'eux est que l'interface utilisateur a tendance à changer plus fréquemment que le système de stockage des données. Autre problème du couplage des données avec les éléments d'interface utilisateur, les applications métier tendent à intégrer une logique métier qui va bien au-delà de la transmission de données.
+    Cette approche qui peut nous paraître naturelle n'est pas sans
+    présenter certains problèmes non négligeables. L'un d'eux est que
+    l'interface utilisateur a tendance à changer plus fréquemment que
+    le système de stockage des données. Autre problème du couplage des
+    données avec les éléments d'interface utilisateur, les
+    applications métier \corrpascal{sans explication de ce qu'est une
+    application ``métier'', c'est mélangeant} tendent à intégrer une
+    logique métier qui va bien au-delà de la transmission de données.
 
 \subsubsection{Problème}
-Comment rendre modulaire l'interface utilisateur d'une application de sorte que chaque partie puisse être aisément modifiée individuellement?
+
+Comment rendre modulaire l'interface utilisateur d'une application de
+sorte que chaque partie puisse être aisément modifiée
+individuellement?
 
 \subsubsection{Facteurs à prendre en compte}
-Les facteurs suivants agissent sur le système dans le contexte présent et doivent être pris en compte dans la recherche de la solution au problème :
+
+Les facteurs suivants agissent sur le système dans le contexte présent
+et doivent être pris en compte dans la recherche de la solution au
+problème :
 
 \begin{itemize}
-    \item  La logique d'interface utilisateur est modifiée plus fréquemment que la logique métier. Il est possible, par exemple, d'ajouter de nouvelles fenêtres d'interface ou de réorganiser les fenêtres existantes. Si le code de présentation et la logique métier sont associés dans un seul et même objet, vous devrez modifier l'objet contenant la logique métier chaque fois que vous souhaiterez changer l'interface utilisateur. Cette démarche risque d'introduire des erreurs et nécessite à chaque modification de l'interface, même minime, de tester de nouveau l'ensemble de la logique métier.\\
-    \item  Dans certains cas, l'application affiche les mêmes données sous plusieurs formes. Par exemple, un analyste préférera visualiser les données dans une feuille de calcul alors que ses managers choisiront les graphiques à secteur pour afficher les mêmes données. Certaines interfaces utilisateur clientes riches présentent simultanément plusieurs vues des mêmes données. Si l'utilisateur modifie les données dans une vue, le système doit mettre à jour automatiquement toutes les autres vues des données.\\
-    \item  La conception d'interfaces visuellement efficaces et attirantes nécessite généralement des compétences autres que celles requises pour le développement d'une logique métier complexe. Et il est bien rare qu'une même personne présente cette double compétence. Il est donc préférable de séparer l'effort de développement de ces deux parties.\\
-    \item  L'activité de l'interface utilisateur se compose généralement de deux éléments : la présentation et la mise à jour. La partie présentation récupère les données d'un entrepôt de données et les met en forme avant de les afficher. Lorsque l'utilisateur effectue une action sur les données, la partie mise à jour passe la main à la logique métier pour mettre à jour les données.\\
-    \item  Le code de l'interface utilisateur dépend généralement plus de la machine que la logique métier. Si vous souhaitez faire migrer l'application d'une application monolithique à une application sur navigateur ou à une application sur assistant personnel ou sur téléphone mobile compatible Web, vous devez réécrire une bonne partie du code de l'interface utilisateur alors que la logique métier pourra rester inchangée. Une séparation claire de ces deux éléments permet d'accélérer la migration et de réduire le risque d'introduction d'erreurs dans la logique métier.\\
-    \item  La création de tests automatisés pour les interfaces utilisateur est généralement plus longue et difficile que les mêmes tests pour la logique métier. On comprend donc que réduire le volume de code directement lié à l'interface utilisateur permet d'améliorer les capacités d'évaluation de l'application.
+    \item La logique d'interface utilisateur est modifiée plus
+          fréquemment que la logique métier. Il est possible, par
+          exemple, d'ajouter de nouvelles fenêtres d'interface ou de
+          réorganiser les fenêtres existantes. Si le code de
+          présentation et la logique métier sont associés dans un seul
+          et même objet, vous devrez modifier l'objet contenant la
+          logique métier chaque fois que vous souhaiterez changer
+          l'interface utilisateur. Cette démarche risque d'introduire
+          des erreurs et nécessite à chaque modification de
+          l'interface, même minime, de tester de nouveau l'ensemble de
+          la logique métier.\\
+    \item Dans certains cas, l'application affiche les mêmes données
+          sous plusieurs formes. Par exemple, un analyste préférera
+          visualiser les données dans une feuille de calcul alors que
+          ses managers choisiront les graphiques à secteur pour
+          afficher les mêmes données. Certaines interfaces utilisateur
+          clientes riches présentent simultanément plusieurs vues des
+          mêmes données. Si l'utilisateur modifie les données dans une
+          vue, le système doit automatiquement mettre à jour toutes
+          les autres vues.\\
+    \item La conception d'interfaces visuellement efficaces et
+          attirantes nécessite généralement des compétences autres que
+          celles requises pour le développement d'une logique métier
+          complexe. Il est bien rare qu'une même personne présente
+          cette double compétence. Il est donc préférable de séparer
+          l'effort de développement de ces deux parties.\\
+    \item L'activité de l'interface utilisateur se compose
+          généralement de deux éléments : la présentation et la mise à
+          jour. La partie présentation récupère les données d'un
+          entrepôt de données et les met en forme avant de les
+          afficher. Lorsque l'utilisateur effectue une action sur les
+          données, la partie mise à jour passe la main à la logique
+          métier pour mettre à jour les données.\\
+    \item Le code de l'interface utilisateur dépend généralement plus
+          de la machine que la logique métier. Si vous souhaitez faire
+          migrer l'application d'une application monolithique à une
+          application sur navigateur ou à une application sur
+          assistant personnel ou sur téléphone mobile compatible Web,
+          vous devez réécrire une bonne partie du code de l'interface
+          utilisateur alors que la logique métier pourra rester
+          inchangée. Une séparation claire de ces deux éléments permet
+          d'accélérer la migration et de réduire le risque
+          d'introduction d'erreurs dans la logique métier.\\
+    \item La création de tests automatisés pour les interfaces
+          utilisateur est généralement plus longue et difficile que
+          les mêmes tests pour la logique métier. On comprend donc que
+          réduire le couplage du module de code métier et du module de
+          l'interface utilisateur permet d'améliorer les capacités
+          d'évaluation de l'application.
 \end{itemize}
 
 \subsubsection{Solution}
 
-\dx{} est une application GUI\footnote{Graphical User Interface}. Sa construction requiert donc l'utilisation d'un modèle adapté: le modèle Model-View-Controller (MVC), car il sépare la modélisation du domaine, la présentation et les actions reposant sur l'entrée utilisateur en trois composant distincts :
+\dx{} est une application GUI\footnote{Graphical User Interface}. Sa
+construction requiert donc l'utilisation d'un modèle adapté: le modèle
+Model-View-Controller (MVC), car il sépare la modélisation du domaine,
+la présentation et les actions reposant sur l'entrée utilisateur en
+trois composant distincts :
 
 
 
@@ -69,14 +143,29 @@ Les facteurs suivants agissent sur le système dans le contexte présent et doiven
 \end{figure*}
 
 \begin{description}
-    \item[Le modèle:] il gère le comportement et les données spécifiques de \dx{} (les enseignants, les locaux, les cours, les étudiants, la grille horaire, etc), répond aux demandes d'informations sur son état (souvent issues de la vue) ainsi qu'aux instructions de changement d'état (souvent issues du contrôleur).
-    \item[La vue:] elle offre un ensemble fenêtre, dialogue, menu, etc permettant une mise en page de l'affichage d'informations. Il permet à l'utilisateur de faire des requêtes sur le modèle et de visualiser les résultats.
-    \item[Le contrôleur:] il gère les événements d'entrée de l'utilisateur à partir de la souris ou du clavier. Chaque vue à un contrôleur associé qui la connecte avec avec les périphérique d'entrée.
+    \item[Le modèle:] il gère le comportement et les données
+         spécifiques de \dx{} (les enseignants, les locaux, les cours,
+         les étudiants, la grille horaire, etc), répond aux demandes
+         d'informations sur son état (souvent issues de la vue) ainsi
+         qu'aux instructions de changement d'état (souvent issues du
+         contrôleur).
+    \item[La vue:] elle offre un ensemble fenêtre, dialogue, menu, etc
+         permettant une mise en page de l'affichage d'informations. Il
+         permet à l'utilisateur de faire des requêtes sur le modèle et
+         de visualiser les résultats.
+    \item[Le contrôleur:] il gère les événements d'entrée de
+         l'utilisateur à partir de la souris ou du clavier. Chaque vue
+         a un contrôleur associé qui la connecte avec avec les
+         périphérique d'entrée.
 \end{description}
 
 \subsection{Description du modèle}
 
-Le modèle de \dx{} est bâti autour de cinq principaux sous-composants: la structure composite (SetOfXxx) permettant de gérer des collections de données, le sous-composant \verb!model!, le sous-composant \verb!data!, le sous-composant \verb!ttstructure! et enfin le sous-composant \verb!optimization! (voir figure \ref{model}).
+Le modèle de \dx{} est bâti autour de cinq principaux sous-composants:
+la structure composite (SetOfXxx) permettant de gérer des collections
+de données, le sous-composant \verb!Model!, le sous-composant
+\verb!Data!, le sous-composant \verb!TTStructure! et enfin le
+sous-composant \verb!Optimization! (voir figure \ref{model}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -88,9 +177,18 @@ Le modèle de \dx{} est bâti autour de cinq principaux sous-composants: la struct
 
 \subsubsection{Description de la structure composite SetOfXxx}
 
-Cette structure s'inspire du pattern composite et elle permet d'organiser les données dans un arbre (voir figure \ref{composite}). Une structure composite contient plusieurs objets (dans notre cas, ces objets sont de même type dans une structure), chaque objet est composé de plusieurs champs, les champs peuvent être des types de données différents.
+Cette structure s'inspire du pattern composite et elle permet
+d'organiser les données dans un arbre (voir figure \ref{composite})
+\corrpascal{la figure \ref{composite} n'a rien à voir avec un
+arbre}. Une structure composite contient plusieurs objets (dans notre
+cas, ces objets sont de même type), chaque objet est composé de
+plusieurs champs, les champs peuvent être de types de données
+différents.
 
-Afin de pouvoir manipuler indifféremment les structures composites à partir de n'importe quel champ, nous les avons pourvu de certains comportement (inspirés des principales commandes SQL des bases de données relationnelles):
+Afin de pouvoir manipuler indifféremment les structures composites à
+partir de n'importe quel champ, nous les avons pourvu de certains
+comportement (inspirés des principales commandes SQL des bases de
+données relationnelles):
 
 \begin{itemize}
     \item interroger (getXxx),
@@ -109,12 +207,18 @@ Afin de pouvoir manipuler indifféremment les structures composites à partir de n
 
 \subsubsection{Description du sous-composant model}
 
-Le sous-composant \verb!model! représente le point d'entrée du composant modèle (de l'architecture MVC),
-il est l'interface à travers laquelle le modèle communique avec les autres composants que sont la vue et le contrôleur.
-Il implémente donc uniquement les méthodes utiles à la vue et au contrôleur.
+Le sous-composant \verb!model! représente le point d'entrée du
+composant modèle (de l'architecture MVC). Il est l'interface à travers
+laquelle le modèle communique avec les autres composants que sont la
+vue et le contrôleur.  Il implémente donc uniquement les méthodes
+utiles à la vue et au contrôleur.
 
-La conception du sous-composant model est faite de sorte à l'organiser autour de trois entités: l'entité model, l'entité structure et
- l'entité comportement ou processus (voir figure \ref{submodel}).
+\corrpascal{les explications sur les sous-modèles modèle-structure et processus est pour le moins ambigue}
+
+La conception du sous-composant \verb!model! est faite de sorte à
+l'organiser autour de trois entités: l'entité model, l'entité
+structure et l'entité comportement ou processus (voir figure
+\ref{submodel}).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -125,23 +229,41 @@ La conception du sous-composant model est faite de sorte à l'organiser autour de
 \end{figure*}
 
 \begin{description}
-    \item[L'entité structure: ] elle fournit les interfaces permettant d'accéder aux données (étudiants, instructeurs, locaux, activités et grille horaire).
-    \item[L'entité process: ] elle fournit les interfaces permettant de lancer les opérations sur les données (création des événements, algorithmes, etc).
-    \item[L'entité model: ] elle regroupe les interfaces offertes par l'entité structure et l'entité process.
+    \item[L'entité structure: ] elle fournit les interfaces permettant
+    d'accéder aux données (étudiants, instructeurs, locaux, activités
+    et grille horaire).
+    \item[L'entité process: ] elle fournit les interfaces permettant
+    de lancer les opérations sur les données (création des événements,
+    algorithmes, etc).
+    \item[L'entité model: ] elle regroupe les interfaces offertes par
+    l'entité structure et l'entité process.
 \end{description}
 
-Vue le nombre d'interfaces qu'il pourrait avoir entre l'entité structure et l'entité model, vue la redondance de ces interfaces dans l'entité model, il est paru nécessaire de réorganiser ces entités et de les faire passer de trois à deux. Ainsi le sous-composant model sera réorganisé autour de deux entités: l'entité model-structure et l'entité process.
+Vue le nombre d'interfaces qu'il pourrait avoir entre l'entité
+structure et l'entité model, vue la redondance de ces interfaces dans
+l'entité model, il est paru nécessaire de réorganiser ces entités et
+de les faire passer de trois à deux. Ainsi le sous-composant model
+sera réorganisé autour de deux entités: l'entité model-structure et
+l'entité process.
 
 \begin{description}
-    \item[L'entité process: ] elle fournit les interfaces permettant de lancer les opérations sur les données (création des événements, algorithmes, etc).
-    \item[L'entité model-structure: ] elle regroupe les interfaces offertes par l'entité process en plus de celles permettant d'accéder aux données.
+    \item[L'entité process: ] elle fournit les interfaces permettant
+    de lancer les opérations sur les données (création des événements,
+    algorithmes, etc).
+    \item[L'entité model-structure: ] elle regroupe les interfaces
+    offertes par l'entité process en plus de celles permettant
+    d'accéder aux données.
 \end{description}
 
 \subsubsection{Description du sous-composant data}
 
-Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord de gérer les accès aux données physiques (lecture et écriture).
-Il permet ensuite d'organiser les données sous une forme prédéfinie (structure de données). Il permet enfin de manipuler ces données
-(ajout, suppression, modification, recherche, tri). Les données manipulées ici sont les enseignants, les locaux, les étudiants et les activités.
+Le sous-composant data (voir figure \ref{subdata}) permet tout d'abord
+de gérer les accès aux données physiques (lecture et écriture).  Il
+permet ensuite d'organiser les données sous une forme prédéfinie
+(structure de données). Il permet enfin de manipuler ces données
+(ajout, suppression, modification, recherche, tri). Les données
+manipulées ici sont les enseignants, les locaux, les étudiants et les
+activités.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -153,13 +275,14 @@ Il permet ensuite d'organiser les données sous une forme prédéfinie (structure d
 
 \subsubsection{Description du sous-composant ttstructure}
 
- Le sous-composant ttstructure permet de décrire et manipuler la
- grille horaire. La structure de ce sous-composant est de type hiérarchique et le noeud principal est appelé timetable (voir figure \ref{struct}). Une timetable peut être composée
- d'un ou de plusieurs cycle. Un cycle peut être composé d'un ou de
- plusieurs jours. Un jour peut être composé d'une ou de plusieurs
- séquences. Une séquence peut être composée d'une ou de plusieurs
- périodes. La période est la plus petite unité d'une timetable,
- elle est décrite en minutes.
+Le sous-composant \verb!TTstructure! permet de décrire et manipuler la
+grille horaire. La structure de ce sous-composant est de type
+hiérarchique et le noeud principal est appelé timetable (voir figure
+\ref{struct}). Une timetable peut être composée d'un ou de plusieurs
+cycle(s). Un cycle peut être composé d'un ou de plusieurs jour(s). Un
+jour peut être composé d'une ou de plusieurs séquence(s). Une séquence
+peut être composée d'une ou de plusieurs période(s). La période est la
+plus petite unité d'une timetable, elle est décrite en minutes.
 
  \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -174,7 +297,7 @@ Il permet ensuite d'organiser les données sous une forme prédéfinie (structure d
 
 Le sous-composant optimization comporte l'ensemble des événements,
 ainsi que les différents algorithmes (organisés autour du pattern
-strategie).
+stratégie).
 \begin{description}
     \item[Ensemble des événements: ] l'ensemble des événements est
     une structure contruite à partir de la structure composite
@@ -182,7 +305,7 @@ strategie).
     l'entité \verb!SetOfEvents! et la feuille représenté par
     l'entité \verb!EventAttach!.
     \item[Pattern stratégie: ] il permet de définir une famille
-    d'algorithmes, les encapsule et les rend interchangeables.
+    d'algorithmes, les encapsules et les rend interchangeables.
     L'implémentation de ce pattern se fera de sorte à représenter
     le contexte par l'entité \verb!TestConditions!, la stratégie
     par l'entité \verb!Algorithm! et les stratégies concrètes par
@@ -214,11 +337,11 @@ composants: la barre de menu (\verb!DMenuBar!), le médiateur
 
 \subsubsection{Barre de menu}
 
-La barre de menu permet d'executer des commandes (traitements,
-lancement de dialogues) en cliquant sur le menu associé. Sa
-structure s'inspire du pattern de commande (voir figure
-\ref{command}) afin d'encapsuler une requête comme un objet, nous
-permettant de parametrer le client avec différentes requêtes.
+La barre de menu permet d'exécuter des commandes (traitements,
+lancement de dialogues) en cliquant sur le menu associé. Sa structure
+s'inspire du pattern de commande (voir figure \ref{command}) afin
+d'encapsuler une requête dans un objet, nous permettant de paramétrer
+le client avec différentes requêtes.
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -234,11 +357,11 @@ sont les suivantes:
 
 \begin{description}
     \item[\verb!Command!: ] elle déclare une interface permettant
-    d'éxécuter une opération. Elle gardera le même nom dans
+    d'exécuter une opération. Elle gardera le même nom dans
     \diamant{}.
     \item[\verb!Invoker!: ] elle externalise la requête de la commande.
     Elle sera identifiée dans \diamant{} par la classe CmdMenu.
-    \item[\verb!ConcreteCommand!: ] elle implemente la methode Execute
+    \item[\verb!ConcreteCommand!: ] elle implémente la méthode Execute
     qui sera invoquée. Elle sera identifiée dans \diamant{} par
     les classes de nom xxxCmd.
 \end{description}
@@ -254,10 +377,10 @@ ou de plusieurs périodes à la fois.
 
 Le médiateur est le corps de l'interface graphique, il est composé
 d'une collection de documents (\verb!DDocument!), ce qui lui
-permet de gerer plusieurs documents ou plusieurs horaires. Un
+permet de gérer plusieurs documents ou plusieurs horaires. Un
 document (voir figure \ref{document}) est quant à lui composé
 d'une barre d'état (\verb!DStateBar!), d'un panneau de grille
-horaire (\verb!TTPanel!) et d'un modele (\verb!DModel!).
+horaire (\verb!TTPanel!) et d'un modèle (\verb!DModel!).
 
 \begin{figure*}[h]
   % Requires \usepackage{graphicx}
@@ -283,7 +406,11 @@ horaire (\verb!TTPanel!) et d'un modele (\verb!DModel!).
 
 \subsection{Problèmes de conception}
 
-\textcolor[rgb]{1.00,0.00,0.00}{L'architecture de \dx{} n'est pas totalement conforme au modèle MVC. En effet, certaines vues (exp: \verb!dInterface.dAffectation.EditActivityDlg.ApplyChanges()!) implémentent des méthodes modifiant l'état du modèle, ce qui créait une dépendance bi-directionnelle entre le modèle et la vue.}
+\textcolor[rgb]{1.00,0.00,0.00}{L'architecture de \dx{} n'est pas
+totalement conforme au modèle MVC. En effet, certaines vues (exp:
+\verb!dInterface.dAffectation.EditActivityDlg.ApplyChanges()!)
+implémentent des méthodes modifiant l'état du modèle, ce qui créait
+une dépendance bi-directionnelle entre le modèle et la vue.} \corrpascal{on parle au présent, puis au passé.}
 
 \section{Décomposition des données}
 
