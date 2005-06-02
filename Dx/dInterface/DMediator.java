@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMediator $Revision: 1.55 $  $Date: 2005-05-10 18:46:46 $
+ * Title: DMediator $Revision: 1.56 $  $Date: 2005-06-02 19:51:58 $
  * Description: DMediatorNew is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.55 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.56 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
