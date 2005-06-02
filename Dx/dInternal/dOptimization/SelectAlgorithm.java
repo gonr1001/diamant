@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectAlgorithm $Revision: 1.15 $  $Date: 2005-04-19 20:55:48 $
+ * Title: SelectAlgorithm $Revision: 1.16 $  $Date: 2005-06-02 19:42:54 $
  * Description: SelectAlgorithm is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -77,7 +77,8 @@ public class SelectAlgorithm {
 	public void execute(){
 		if(_algorithmToRun.size() != 0){
 			_dm.getDDocument().getDMediator().getDApplication().setCursorWait();
-			((Algorithm)_algorithmToRun.firstElement()).build( );
+			Algorithm algo = (Algorithm)_algorithmToRun.firstElement();
+			algo.build( );
 			_dm.getDDocument().getDMediator().getDApplication().setCursorDefault();
 		}
 	}
