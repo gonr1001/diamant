@@ -1,6 +1,6 @@
 /**
  *
- * Title: DModel $Revision: 1.131 $  $Date: 2005-05-12 14:43:24 $
+ * Title: DModel $Revision: 1.132 $  $Date: 2005-06-02 19:56:59 $
  * Description: DModel is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.131 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.132 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -84,6 +84,8 @@ public class DModel extends Observable {
     private boolean _modified = false;
 
     private boolean _isATimeTable = true;
+    
+    private boolean _isExamPrepared = false;
 
     protected int _constructionState = 0;// tell where the time construction is
 
@@ -262,8 +264,9 @@ public class DModel extends Observable {
         // supprime natures2
         // supprime groups
         // supprime events
-        for (int i = 0; i < _setOfActivities.size(); i++) {
-            Activity activity = (Activity) _setOfActivities.getResourceAt(i)
+    	
+        for (int i = 0; i < this.getSetOfActivities().size(); i++) {
+            Activity activity = (Activity) this.getSetOfActivities().getResourceAt(i)
                     .getAttach();
             activity.getSetOfTypes().getSetOfResources().removeAllElements();
             activity.addType("1");
@@ -283,10 +286,12 @@ public class DModel extends Observable {
                     .setFullAvailability();
         }
 
-        for (int i = 0; i < _setOfRooms.size(); i++) {
-            ((RoomAttach) _setOfRooms.getResourceAt(i).getAttach())
+        for (int i = 0; i < this.getSetOfRooms().size(); i++) {
+            ((RoomAttach) this.getSetOfRooms().getResourceAt(i).getAttach())
                     .setFullAvailability();
         }
+        
+        _isExamPrepared = true;
 
     }
 
@@ -751,7 +756,7 @@ public class DModel extends Observable {
             	updateInstructorAvail();//this._setOfEvents.setAssignedInstAvail();
         this.setModified();
 
-        if (this.getTypeOfSchedule() == DConst.EXAM) {
+        if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
             this.prepareExamsData();
         }
         this.buildSetOfEvents();
