@@ -309,7 +309,6 @@ public class TTStructure {
 
  public String readXMLtag(Element setofCycles){
    XMLReader list= new XMLReader();
-
    String ID="";
    int size= list.getSize(setofCycles,_TAGITEM);
    if (size == 0){
