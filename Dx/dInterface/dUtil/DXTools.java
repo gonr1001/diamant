@@ -43,7 +43,7 @@ public class DXTools{
    public final static int showOpenDialog(Component parent, JFileChooser fc){
      int returnVal=0;
       String filename="nothing.txt";
-      while((!DXToolsMethods.isFileExist(filename))&&
+      while((!DXToolsMethods.fileExists(filename))&&
             (returnVal==JFileChooser.APPROVE_OPTION)){
           returnVal = fc.showOpenDialog(parent);
         if(fc.getSelectedFile()!=null)
@@ -61,7 +61,7 @@ public class DXTools{
   public final static int showDialog(Component parent, JFileChooser fc, String message){
     int returnVal=0;
      String filename="nothing.txt";
-     while((!DXToolsMethods.isFileExist(filename))&&
+     while((!DXToolsMethods.fileExists(filename))&&
            (returnVal==JFileChooser.APPROVE_OPTION)){
          returnVal = fc.showDialog(parent, message);
        if(fc.getSelectedFile()!=null)

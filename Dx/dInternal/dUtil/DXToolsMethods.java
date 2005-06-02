@@ -148,7 +148,7 @@ public class DXToolsMethods {
    * @param string the file name
    * @return boolean true if the file exist a nd false otherwise
    * */
-  public final static boolean isFileExist(String filename){
+  public final static boolean fileExists(String filename){
     return (new File(filename)).exists();
   }
 

@@ -26,6 +26,11 @@
 			<location>D:/Developpements/DxTemp/classes</location>
 		</link>
 		<link>
+			<name>DXClasses</name>
+			<type>2</type>
+			<location>D:/exitDev/DXClasses</location>
+		</link>
+		<link>
 			<name>DxClasses</name>
 			<type>2</type>
 			<location>D:/exitDev/classes</location>

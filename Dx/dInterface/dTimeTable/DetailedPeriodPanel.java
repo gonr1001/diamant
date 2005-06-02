@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.22 $  $Date: 2004-12-16 19:20:50 $
+ * Title: DetailedPeriodPanel $Revision: 1.23 $  $Date: 2005-06-02 14:52:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -73,8 +73,11 @@ public class DetailedPeriodPanel extends PeriodPanel{
     //JPanel bottomPanel = new JPanel();
     JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
 
-    _vec = period.getEventsInPeriod().getNamesVector(1);
-    //_vec = period.getConflictsEventsInPeriod(_str).getNamesVector(1);
+    //_vec = period.getEventsInPeriod().getNamesVector(1);
+    
+    _vec = period.getConflictsEventsInPeriod(_str).getNamesVector(1);
+   
+    
     _jList  = new JList(_vec);
     //JLabel vec = new JLabel("moi");
     //_rightList.addMouseListener(mouseListenerLists);
