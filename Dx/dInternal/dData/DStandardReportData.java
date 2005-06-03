@@ -2,7 +2,7 @@ package dInternal.dData;
 
 /**
 *
-* Title: DStandardReportData $Revision: 1.7 $  $Date: 2005-03-08 16:00:44 $
+* Title: DStandardReportData $Revision: 1.8 $  $Date: 2005-06-03 14:03:39 $
 * Description: DStandardReportData is a class used to
 *
 *
@@ -16,7 +16,7 @@ package dInternal.dData;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
+* @version $Revision: 1.8 $
 * @author  $Author: syay1801 $
 * @since JDK1.3
 */
@@ -96,7 +96,7 @@ public class DStandardReportData {
   public DStandardReportData(DModel dm) {
     _dm = dm;
     _activitiesReport= buildActivitiesReport();  
-    _studentsReport = buildStudentsReport();  
+    //_studentsReport = buildStudentsReport(); to add only when we will build student report 
     _conflictsReport= buildConflictsReport();
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
