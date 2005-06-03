@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectAlgorithm $Revision: 1.16 $  $Date: 2005-06-02 19:42:54 $
+ * Title: SelectAlgorithm 
  * Description: SelectAlgorithm is a class used to
  *
  *
@@ -13,9 +13,7 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * @version $Revision: 1.16 $
- * @author  $Author: gonzrubi $
+
  * @since JDK1.3
  */
 

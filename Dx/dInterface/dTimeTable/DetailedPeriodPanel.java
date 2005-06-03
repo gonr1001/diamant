@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.23 $  $Date: 2005-06-02 14:52:47 $
+ * Title: DetailedPeriodPanel 
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,9 +14,6 @@ package dInterface.dTimeTable;
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * @version $Revision: 1.23 $
- * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly

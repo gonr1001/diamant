@@ -1,6 +1,6 @@
 /**
 *
-* Title: DObject $Revision $  $Date: 2005-05-10 18:46:46 $
+* Title: DObject 
 * Description: DObject is a class used to
 *
 *
@@ -13,9 +13,6 @@
 * shall not disclose such Confidential Information and shall use
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
-*
-* @version $ $
-* @author  $Author: durp1901 $
 * @since JDK1.3
 */
 

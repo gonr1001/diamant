@@ -1,6 +1,6 @@
 /**
  *
- * Title: ImportReport $Revision: 1.16 $  $Date: 2005-05-18 19:09:46 $
+ * Title: ImportReport
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -12,9 +12,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * @version $Revision: 1.16 $
- * @author  $Author: garr2701 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly

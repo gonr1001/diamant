@@ -2,7 +2,7 @@ package dInterface;
 
 /**
  *
- * Title: DToolBar $Revision: 1.58 $  $Date: 2005-05-18 19:09:46 $
+ * Title: DToolBar
  * Description: ToolBar is a class used to display a
  *               toolbar with buttons
  *
@@ -16,9 +16,6 @@ package dInterface;
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr-fdl.
- *
- * @version $Version$
- * @author  $Author: garr2701 $
  * @since JDK1.3
  */
 

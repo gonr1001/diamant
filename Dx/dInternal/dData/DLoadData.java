@@ -1,6 +1,6 @@
 /**
  *
- * Title: DLoadData $Revision: 1.12 $  $Date: 2005-05-10 18:46:46 $
+ * Title: DLoadData 
  * Description: LoadData is a class used to read all files then 
  *              the corresponding Resources are created.
  *
@@ -14,9 +14,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * @version $Revision: 1.12 $
- * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 

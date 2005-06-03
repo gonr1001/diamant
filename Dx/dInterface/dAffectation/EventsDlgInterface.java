@@ -1,6 +1,6 @@
 /**
  *
- * Title: EventsDlgInterface $Revision: 1.21 $  $Date: 2005-05-19 19:45:40 $
+ * Title: EventsDlgInterface
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -12,9 +12,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * @version $Revision: 1.21 $
- * @author  $Author: syay1801 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly

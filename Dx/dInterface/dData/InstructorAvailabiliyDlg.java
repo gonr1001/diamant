@@ -1,6 +1,6 @@
 /**
  *
- * Title: InstructorAvailabiliyDlg $Revision: 1.26 $  $Date: 2005-05-18 19:09:46 $
+ * Title: InstructorAvailabiliyDlg 
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -12,9 +12,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * @version $Revision: 1.26 $
- * @author  $Author: garr2701 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -63,7 +60,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: garr2701 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
  */
 public class InstructorAvailabiliyDlg  extends JDialog
