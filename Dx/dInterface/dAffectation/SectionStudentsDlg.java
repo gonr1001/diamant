@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionStudentsDlg $Revision: 1.4 $  $Date: 2005-06-20 13:02:54 $
+ * Title: SectionStudentsDlg 
  * Description: SectionStudentsDlg is class used
  *           to display a dialog to modifiy students assignation
  *           in sections
@@ -15,8 +15,6 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
- * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
