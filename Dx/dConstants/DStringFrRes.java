@@ -177,6 +177,10 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     { "userTest", "Beta Test"},
     { "user1", "Admin Formation Groupes"},
     { "user2", "Feph Importation Selective"},
+    { "feature", "Fonctionnalité v 1.6.2"},
+    { "roomAssign", "Affectation de locaux"},
+    { "eventAssign", "Affectation d'événements"},
+    { "conflictEffect", "Option de conflits"},
 
     // common buttons
     {"butOK", "Ok"},
@@ -212,6 +216,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"dghFile", "Fichier Grille Horaire (*.dgh)"},
     {"xmlFile", "Fichier Grille Horaire (*.xml)"},
     {"txtFile", "Fichier Rapport (*.txt)"},
+    {"all", "Tous..."},
     {"noRoomInternal", "------"},
     {"noRoomExternal", "xxxxxx"},
     {"noRoomExport", "      "},
@@ -303,6 +308,10 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"EventsFixed","Figés"},
     {"EventsPlaced","Placés"},
     {"EventsNotPlaced","Non placés"},
+    {"Places","places"},
+    {"RoomFixed","Figé"},
+    {"RoomPlaced","Placé"},
+    {"RoomNotPlaced","Non placé"},
     
     {"ConflictsOfAnEventDlgTitle","Conflits d'un événement"},
     {"ManImpDlgTitle","Affectation manuelle"},
@@ -320,6 +329,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
     //Optimisation dialogs
     {"InitialAssignMessage", "Affectation initiale effectuée"},
+    {"RoomAssignMessage", "Affectation de locaux effectuée"},
     {"TTBuildMessage", "Construction d'horaires terminée"},
     {"StudentsMixingMessage", "Formation de groupes terminé"},
 
@@ -338,6 +348,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"RActivityName","Acti"},
     {"RTypeName","Nat"},
     {"RSectionName","Grp"},
+    {"RTimeTableName","Horaire"},
     {"RUnityName","Blc"},
     {"RDuration","Durée"},
     {"RDayNumber","JNum"},
@@ -392,10 +403,15 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
 	{"nameAC", "nameAC"},
 	{"categoryAC", "categoryAC"},
+	{"functionAC", "functionAC"},
+	{"stateAC", "stateAC"},
 
 	{"nameLabel", "Nom"},
 	{"categoryLabel", "Catégorie"},
-
+	{"functionLabel", "Fonction"},
+	{"capacityLabel", "Capacité"},
+	{"stateLabel", "État"},
+	
 	// Import report
 	{"separator",     "------------------------------------------------------------------" },
 	{"instructorSep", "------------------------  Enseignants  ---------------------------" },

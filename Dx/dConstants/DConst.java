@@ -13,6 +13,7 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
+
  * @since JDK1.3
  */
 
@@ -25,8 +26,9 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "v 1.6.1.2 du 2 Juin 2005";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = false;
+	public final static String VERSION = "v 1.6.2";
+  	public final static String V_DATE = VERSION+" du 28 Mai 2005";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = true;
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
@@ -71,6 +73,7 @@ public class DConst {
   public final static String DGH_FILE = res.getString("dghFile");//*.dgh, unp
   public final static String XML_FILE = res.getString("xmlFile");//*.xml
   public final static String TXT_FILE = res.getString("txtFile");//*.txt
+  public final static String ALL = res.getString("all");//all
   public final static String NO_ROOM_INTERNAL = res.getString("noRoomInternal");//"------"
   public final static String NO_ROOM_EXTERNAL = res.getString("noRoomExternal");//"xxxxxx"
   public final static String NO_ROOM_EXPORT = res.getString("noRoomExport");//"      "
@@ -210,6 +213,11 @@ public class DConst {
   public final static String IN_TEST = res.getString("userTest");//Test utilisateur version beta
   public final static String SUBMENU1 = res.getString("user1");//Sous menu utilisateur 1
   public final static String SUBMENU2 = res.getString("user2");//Sous menu utilisateur 2
+  public final static String FEATURE_1_6_2 = res.getString("feature");//Sous menu feature 1.6.2
+  public final static String ROOMASSIGN = res.getString("roomAssign");//Sous menu feature 1.6.2 --> Affectation de locaux
+  public final static String EVENTASSIGN = res.getString("eventAssign");//Sous menu feature 1.6.2 --> Affectation d'événements
+  public final static String CONFLICTEFFECT = res.getString("conflictEffect");//Sous menu feature 1.6.2 --> Affectation Option de conflits
+  
 
   //**********Dialogs constants ***************************
   public final static Font JLISTS_FONT = new java.awt.Font("Courier", Font.PLAIN, 12);
@@ -262,6 +270,7 @@ public class DConst {
   public final static String SORT_BY_NAME = res.getString("SortByName");//par nom
   public final static String SORT_BY_PROGRAM = res.getString("SortByProgram");//par programme
   public final static String CHAR_FIXED_IN_GROUP = " *";
+  public final static String CHAR_NOTFIXED_IN_GROUP = "  ";
   public final static String INFORMATION_DLG_NAME = res.getString("InfoDlgName");//Info Dialog name
   public final static String INFORMATION_DLG_MES = res.getString("InfoDlgMes");//Info Dialog message
   public final static int NUM_OF_LISTS_IN_ASSIGNED_PANEL=4;
@@ -270,6 +279,10 @@ public class DConst {
   public final static String EVENTS_FIXED = res.getString("EventsFixed");//Figés
   public final static String EVENTS_PLACED = res.getString("EventsPlaced");//Placés
   public final static String EVENTS_NOT_PLACED = res.getString("EventsNotPlaced");//Non placés
+  public final static String ROOM_CAPACITY_DESC = res.getString("Places");//places
+  public final static String FIXED_ROOM_STATE = res.getString("RoomFixed");//Figés
+  public final static String PLACED_ROOM_STATE = res.getString("RoomPlaced");//Placés
+  public final static String NOT_PLACED_ROOM_STATE = res.getString("RoomNotPlaced");//Non placés
   //DefineSetDlg
 
 
@@ -292,6 +305,7 @@ public class DConst {
 
   //Optimisation dialogs
   public final static String INITIAL_ASSIGN_MESSAGE = res.getString("InitialAssignMessage");//Affectation initiale effectuée
+  public final static String ROOM_ASSIGN_MESSAGE = res.getString("RoomAssignMessage");//Affectation de locaux effectuée
   public final static String TT_BUILD_MESSAGE = res.getString("TTBuildMessage");//Construction d'horaire terminée
   public final static String STUDENTS_MIXING_MESSAGE = res.getString("StudentsMixingMessage");//brassage d'étudiants terminé
   //Preferences dialogs
@@ -313,6 +327,7 @@ public class DConst {
   public final static String R_ACTIVITY_NAME = res.getString("RActivityName");//Nom d'activité
   public final static String R_TYPE_NAME = res.getString("RTypeName");//Type
   public final static String R_SECTION_NAME = res.getString("RSectionName");//Section
+  public final static String R_TIMETABLE_NAME = res.getString("RTimeTableName");//Horaire
   public final static String R_UNITY_NAME = res.getString("RUnityName");//Unité
   public final static String R_TIME_LENGTH = res.getString("RDuration");//Durée
   public final static String R_DAY_NUMBER = res.getString("RDayNumber");//Jour numéro
@@ -460,9 +475,14 @@ public class DConst {
   
   public final static String NAME_AC = res.getString("nameAC"); // "nameAC";
   public final static String CATEGORY_AC = res.getString("categoryAC"); // "categoryAC";
+  public final static String FUNCTION_AC = res.getString("functionAC"); // "functionAC";
+  public final static String STATE_AC = res.getString("stateAC"); // "stateAC";
 
   public final static String NAME_LABEL = res.getString("nameLabel"); // "Nom";
   public final static String CATEGORY_LABEL = res.getString("categoryLabel"); // "Category";
+  public final static String FUNCTION_LABEL = res.getString("functionLabel"); // "function";
+  public final static String CAPACITY_LABEL = res.getString("capacityLabel"); // "capacity";
+  public final static String STATE_LABEL = res.getString("stateLabel"); // "capacity";
 
   public final static String DELETED_ELEMENT = res.getString("deletedElement"); // "élément supprimé";
   public final static String ADDED_ELEMENT = res.getString("addedElement"); // "élément ajouté";

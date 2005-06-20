@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionStudentsDlg $Revision: 1.3 $  $Date: 2005-04-11 14:39:34 $
+ * Title: SectionStudentsDlg $Revision: 1.4 $  $Date: 2005-06-20 13:02:54 $
  * Description: SectionStudentsDlg is class used
  *           to display a dialog to modifiy students assignation
  *           in sections
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.4 $
+ * @author  $Author: syay1801 $
  * @since JDK1.3
 
  */
@@ -81,6 +81,9 @@ public class SectionStudentsDlg extends JDialog implements ActionListener {
 	private ButtonsPanel _applyPanel;
 
 	private String[] _arrowsNames;
+	
+	private int DOUBLE_CLICK = 2;
+	private int FIXED_IN_GROUP_LIST_POSITION = 4;
 
 	/**
 	 * <p>
@@ -333,6 +336,26 @@ public class SectionStudentsDlg extends JDialog implements ActionListener {
 			sortAllPanel();
 			_applyPanel.setFirstEnable();
 		}
+	}
+	
+	
+	/**
+	 * The method is call when mouse listener has detect a double click in the <p>
+	 * assigned students panel. It put or remove a star at the end of the selected student 
+	 * @param list the student fixed in group list
+	 * 
+	 */
+	private void doDoubleClickOnLineInAAssPanel(){
+		JList list = this.getAListFromAssignedPanel(FIXED_IN_GROUP_LIST_POSITION, _currentAssignedGroup);
+		int selectedIndex = list.getSelectedIndex();
+		Vector assDataM =  getListVector(list);
+		String fixed_in_group = (String)assDataM.get(selectedIndex);
+		if(fixed_in_group.equalsIgnoreCase(DConst.CHAR_FIXED_IN_GROUP))
+			assDataM.setElementAt(DConst.CHAR_NOTFIXED_IN_GROUP,selectedIndex);
+		else
+			assDataM.setElementAt(DConst.CHAR_FIXED_IN_GROUP,selectedIndex);
+		list.setListData(assDataM);
+		_applyPanel.setFirstEnable();
 	}
 	
 	/**
@@ -782,11 +805,17 @@ public class SectionStudentsDlg extends JDialog implements ActionListener {
 	 */
 	private MouseListener mouseListenerLists = new MouseAdapter() {
 		public void mouseClicked(MouseEvent e) {
+			
 			if (e.getSource() instanceof JList) {
 				boolean isPanelSel = selectLineInANotAssPanel((JList) e.getSource());
-				if(!isPanelSel)
+				if(!isPanelSel){
+					if (e.getClickCount() == DOUBLE_CLICK) {
+						doDoubleClickOnLineInAAssPanel();
+				      }//end if (e.getClickCount() == 2)
 					selectLineInAAssPanel((JList) e.getSource());
+				}
 			}//end if (e.getSource() instanceof JList)
+			
 
 		}// end public void mouseClicked
 	};//end definition of MouseListener mouseListener = new MouseAdapter(){
