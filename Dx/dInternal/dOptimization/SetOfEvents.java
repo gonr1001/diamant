@@ -511,5 +511,4 @@ public class SetOfEvents extends DSetOfResources {
 			}// end if(event.isPlaceInAPeriod())
 		}// end for (int i = 0; i < this.size();
 	}
-	
 }// end class

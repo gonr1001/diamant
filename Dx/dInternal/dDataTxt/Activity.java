@@ -67,7 +67,7 @@ public class Activity extends DXObject{
    * @param Nature the nature to be added
    * @return boolean result of the operation
    * */
-  public boolean addType(Type type, String id){
+  public boolean addType(Type type, String id){ // XXXX Pascal: Jamais utilise
     Resource actType = new Resource(id,type);
     return _setOfTypes.addResource(actType,1);
   }
@@ -86,7 +86,7 @@ public class Activity extends DXObject{
    * @param Resource the nature resource
    * @return boolean result of the operation
    * */
-  public boolean setType(Resource type){
+  public boolean setType(Resource type){ // XXXX Pascal: Jamais utilise
     return _setOfTypes.setResource(type);
   }
 

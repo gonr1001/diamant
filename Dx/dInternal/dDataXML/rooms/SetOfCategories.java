@@ -15,12 +15,9 @@ import java.util.Vector;
 import org.w3c.dom.Element;
 
 
-import dInternal.dDataTxt.Resource;
 //import dInternal.dDataTxt.RoomsAttributesInterpretor;
 import dInternal.dDataTxt.SetOfResources;
 import dInternal.dDataTxt.SetOfRoomsListener;
-import dInternal.dUtil.XMLTools;
-import eLib.exit.xml.input.XMLReader;
 
 public class SetOfCategories extends SetOfResources{
 

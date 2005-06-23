@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.18 $  $Date: 2005-05-18 19:09:46 $
+ * Title: TTPane $Revision: 1.19 $  $Date: 2005-06-23 20:10:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.19 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -48,12 +48,10 @@ import javax.swing.SwingConstants;
 
 import dInterface.DToolBar;
 import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
 //import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
-import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DisplayAttributs;

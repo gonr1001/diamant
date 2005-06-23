@@ -1,6 +1,6 @@
 /**
  *
- * Title: WriteXMLElement $Revision: 1.2 $  $Date: 2005-05-18 19:09:47 $
+ * Title: WriteXMLElement $Revision: 1.3 $  $Date: 2005-06-23 20:10:34 $
  * Description: WriteXMLElement is a class used to build the tree of
  *              dom elements
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.3 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 

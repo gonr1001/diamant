@@ -9,13 +9,13 @@ package dInterface.dAffectation;
  * @version 1.0
  */
 
-import dDeveloper.DoNothingDlg;
 import dInterface.Command;
 import dInterface.DApplication;
+import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 
 public class PartialTTStructureCmd implements Command{
 
   public void execute(DApplication dApplic) {
-    new DoNothingDlg(dApplic, "PartialTTStructureDlg");
+    SelectiveScheduleDlg.getInstance().displayDlg();
   }
 }

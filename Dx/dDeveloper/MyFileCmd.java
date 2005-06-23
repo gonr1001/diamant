@@ -28,6 +28,7 @@ public class MyFileCmd implements Command{
   public void execute(DApplication dApplic) {
     dApplic.setCurrentDir(".\\devData\\");
     dApplic.getDMediator().addDoc(".\\devData\\fichier1.dia",0);
+    dApplic.getDMediator().getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
     dApplic.getDModel().changeInDModel(dApplic.getJFrame());
     dApplic.getMenuBar().postInitialAssign();
   }

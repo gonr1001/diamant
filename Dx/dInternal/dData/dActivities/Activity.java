@@ -138,7 +138,7 @@ public class Activity extends DObject{
    * get the activity visibility
    * @return boolean the activity visibility
    * */
-  public boolean getActivityVisibility(){
+  public boolean getActivityVisibility(){ // XXXX Pascal: Devrait pas plutot s'appeler 'isActivityVisible' ?
     return _activityVisible;
   }
 

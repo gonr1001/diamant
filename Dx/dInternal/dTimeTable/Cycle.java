@@ -504,7 +504,7 @@ public class Cycle extends DXObject{
 	 *return the AttributsToDisplay matrix
 	 * @return
 	 */
-	public DisplayAttributs[][] getAttributsToDisplay(int periodLength){
+	public DisplayAttributs[][] getAttributsToDisplay(int periodLength){ // XXXX Pascal: Cette methode devrait plutot s'appeler 'getAttributesToDisplay', non?
 		SetOfResources rowAtt=buildAttributsRowTodisplay(periodLength);
 		DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()-1];
 		for (int i=0; i< matrixToDisplay.length; i++){
@@ -564,20 +564,20 @@ public class Cycle extends DXObject{
 					String hour="00"+per.getBeginHour()[0];
 					String minute= "00"+per.getBeginHour()[1];
 					String beginHour= hour.substring(hour.length()-2,hour.length())+":"+
-					minute.substring(minute.length()-2,minute.length());
+					minute.substring(minute.length()-2,minute.length()); // XXXX Pascal: A quoi sert cet appel?
 					attrib.addResource(new Resource(beginHour,value),1);
 				}// end for(int k=0; k< seq.getSetOfPeriods().size(); k++)
-				if(j< day.getSetOfSequences().size()-1){
+				if(j< day.getSetOfSequences().size()-1){ // vrai sauf pour la derniere iteration du 'for' (ne traite pas le derniere Sequence de la journee)
 					DXValue value= new DXValue();
 					value.setIntValue(-1);
 					Period per = (Period)seq.getSetOfPeriods().getResourceAt(seq.getSetOfPeriods().size()-1).getAttach();
 					String hour="00"+per.getEndHour(periodLength)[0];
 					String minute= "00"+per.getEndHour(periodLength)[1];
 					String endHour= hour.substring(hour.length()-2,hour.length())+":"+
-					minute.substring(minute.length()-2,minute.length());
+					minute.substring(minute.length()-2,minute.length()); // XXXX Pascal: A quoi sert cet appel?
 					attrib.addResource(new Resource(endHour,value),1);
 				}
-				seq = (Sequence)day.getSetOfSequences().getResourceAt(
+				seq = (Sequence)day.getSetOfSequences().getResourceAt( // traite tjrs la derniere Sequence de la journee
 						day.getSetOfSequences().size()-1).getAttach();
 				Period per = (Period)seq.getSetOfPeriods().getResourceAt(
 						seq.getSetOfPeriods().size()-1).getAttach();
@@ -586,7 +586,7 @@ public class Cycle extends DXObject{
 				String hour="00"+per.getEndHour(periodLength)[0];
 				String minute= "00"+per.getEndHour(periodLength)[1];
 				String endHour= hour.substring(hour.length()-2,hour.length())+":"+
-				minute.substring(minute.length()-2,minute.length());
+				minute.substring(minute.length()-2,minute.length()); // XXXX Pascal: A quoi sert cet appel?
 				attrib.addResource(new Resource(endHour,value),1);
 			}// end for (int j=0; j< day.getSetOfSequences().size(); j++)
 		}// end for(int i=0; i< _setOfDays.size(); i++)

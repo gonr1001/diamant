@@ -1,10 +1,19 @@
 package dInternal.dUtil;
 
 /**
- * <p>Title: Proto</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
+ * <p>
+ * Title: Proto
+ * </p>
+ * <p>
+ * Description: timetable construction
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2002
+ * </p>
+ * <p>
+ * Company: UdeS
+ * </p>
+ * 
  * @author ysyam
  * @version 1.0
  */
@@ -110,5 +119,4 @@ public DisplayAttributs() {
   public SetOfResources getEventsInPeriods(){
     return _eventsInPeriods;
   }
-
 }// end class

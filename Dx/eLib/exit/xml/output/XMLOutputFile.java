@@ -1,6 +1,6 @@
 /**
  *
- * Title: XMLOutputFile $Revision: 1.2 $  $Date: 2005-05-18 19:09:47 $
+ * Title: XMLOutputFile $Revision: 1.3 $  $Date: 2005-06-23 20:10:34 $
  * Description: XMLOutputFile is a class used to create
  *              a Document org.w3c.dom.Document
  *              a typical use is :
@@ -17,8 +17,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.3 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 

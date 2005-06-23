@@ -9,25 +9,6 @@ package dInternal.dDataXML;
  * @version 1.0
  */
 
-import java.io.File;
-
-import java.util.Vector;
-
-import org.w3c.dom.Element;
-
-
-
-
-
-import dConstants.DConst;
-import dInternal.DModel;
-import dInternal.Preferences;
-import dInternal.dDataTxt.SetOfActivities;
-
-import dInternal.dDataXML.rooms.SetOfCategories;
-import dInternal.dUtil.XMLTools;
-import eLib.exit.txt.FilterFile;
-import eLib.exit.xml.input.XMLReader;
 //import eLib.exit.xml.input.ReadXMLFile;
 
 public class XMLLoadData {

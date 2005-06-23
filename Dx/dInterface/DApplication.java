@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.66 $  $Date: 2005-04-19 20:46:24 $
+ * Title: DApplication $Revision: 1.67 $  $Date: 2005-06-23 20:10:31 $
  *
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,8 +17,8 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.66 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.67 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 
@@ -55,6 +55,9 @@ import org.apache.log4j.PropertyConfigurator;
 
 public class DApplication implements ActionListener {
 	private static Logger _logger = Logger.getLogger(DApplication.class.getName());
+	
+	// Fake Singletonm, car besoin pour fonctionnalite de Grille Selective
+	private static DApplication _instance = null;
 	/* ZERO is needed to fix Frame Location (origin)  */
 	private final static int ZERO = 0;
 	/* ADJUST_HEIGHT is needed to ajdust the screenSize
@@ -88,6 +91,12 @@ public class DApplication implements ActionListener {
 	public DApplication() {
 		PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
 		_logger.warn("Hi from DApplication");
+		
+		_instance = this;
+	}
+	
+	public static DApplication getInstance() {
+	    return _instance;
 	}
 	
 	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent 

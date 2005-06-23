@@ -1,6 +1,6 @@
 /**
  *
- * Title: DMenuBar $Revision: 1.127 $  $Date: 2005-04-19 20:55:46 $
+ * Title: DMenuBar $Revision: 1.128 $  $Date: 2005-06-23 20:10:31 $
  * Description: DMenuBar is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.127 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.128 $
+ * @author  $Author: durp1901 $
  * @since JDK1.3
  */
 package dInterface;
@@ -132,8 +132,8 @@ public class DMenuBar extends JMenuBar implements ItemListener{
 	private CmdMenu _activities, _sections, _instructorAvailability,
 	_roomsAvailability, _events, /*_exclusion, _conflict, */ _defineSet, _partialTTStructure;
 	private boolean _boolActivities, _boolSections, _boolInstructorAvailability,
-	_boolRoomsAvailability, _boolEvents;  /* , _boolExcl, _boolConfl, _boolDefineSet;, */
-	//_boolPartialTTStructure;
+	_boolRoomsAvailability, _boolEvents,  /* , _boolExcl, _boolConfl, _boolDefineSet;, */
+	_boolPartialTTStructure;
 	
 	// the modification menus
 	private JMenu _mSpecialImport;
