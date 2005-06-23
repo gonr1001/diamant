@@ -13,10 +13,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
-<<<<<<< DConst.java
-
-=======
->>>>>>> 1.139.4.2
  * @since JDK1.3
  */
 
