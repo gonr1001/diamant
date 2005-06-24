@@ -7,6 +7,10 @@ package dInterface.selectiveSchedule.relationTesters;
 import dInternal.DResource;
 
 /**
+ * Interface identifiant un testeur de relation.  Le seul service
+ * offert par l'interface est la vérification de la présence d'une
+ * relation entre deux éléments.
+ * 
  * @author Pascal
  *  
  */

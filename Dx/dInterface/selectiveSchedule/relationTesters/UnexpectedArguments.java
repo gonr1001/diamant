@@ -1,16 +1,18 @@
 /*
  * Created on 29 mai 2005
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 package dInterface.selectiveSchedule.relationTesters;
 
 /**
+ * Exception lancée si on ne passe pas les bons types d'arguments à
+ * une implémentation de RelationTester.
+ *
+ * XXXX GS: Peut-être qu'il y a redondance, car la vérification est
+ * déjà effectuée par le SelectiveScheduleManager
+ * 
  * @author Pascal
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class UnexpectedArguments extends Exception {
 

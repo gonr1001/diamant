@@ -33,6 +33,10 @@ import dInterface.selectiveSchedule.persistance.PersistanceMismatch;
 import dInterface.selectiveSchedule.persistance.PersistanceMismatchManager;
 
 /**
+ * Dialogue présenté à l'utilisateur dans le cas où les éléments d'un
+ * ensemble ne sont plus disponibles lors de l'exécution courante de
+ * l'application
+ * 
  * @author Pascal
  *  
  */

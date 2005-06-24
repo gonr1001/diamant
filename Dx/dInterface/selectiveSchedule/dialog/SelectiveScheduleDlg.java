@@ -50,6 +50,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
+ * Dialogue principal du module de grille sélective.  C'est avec ce
+ * dialogue que l'utilisateur choisi le ou les ensembles qui vont
+ * servir de "filtre(s)" lors de l'affichage détaillé de la grille
+ * horaire.  Via ce dialogue, l'utilisateur a également la possibilité
+ * de créer, modifier et supprimer des ensembles.
+ * 
  * @author Pascal
  *  
  */

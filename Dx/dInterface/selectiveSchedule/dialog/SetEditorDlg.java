@@ -43,6 +43,10 @@ import javax.swing.ListModel;
 
 
 /**
+ * Dialogue d'édition d'ensemble.  Ce dialogue est utilisé lors de la
+ * création d'un ensemble ainsi que lors de la modification d'un
+ * ensemble.
+ * 
  * @author Pascal
  *
  */

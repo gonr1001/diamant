@@ -8,6 +8,14 @@ import dInterface.selectiveSchedule.relationTesters.RelationTesterTemplate;
 import dInterface.selectiveSchedule.relationTesters.RelationTester_ActivityEvent;
 
 /**
+ * Un Tuple est utilisé par SelectiveScheduleManager afin d'associer
+ * un tuple de types d'éléments à son RelationTester approprié.
+ *
+ * Par exemple, un Tuple contenant une instance de Class du type
+ * EventAttach et une instance de Class de Activity va permettre
+ * d'identifier que le RelationTester à utiliser est
+ * RelationTester_ActivityEvent.
+ *
  * @author Pascal
  *  
  */

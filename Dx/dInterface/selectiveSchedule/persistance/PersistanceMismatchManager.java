@@ -6,8 +6,10 @@ package dInterface.selectiveSchedule.persistance;
 
 import java.util.Collection;
 
-
 /**
+ * Gestionnaire des PersistanceMismatch.  Agit principalement comme
+ * "conteneur" de PersistanceMismatch.
+ * 
  * @author Pascal
  *
  */

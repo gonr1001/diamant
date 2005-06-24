@@ -54,17 +54,23 @@ import javax.swing.JOptionPane;
 
 
 /**
- * "Facade" pour la fonctionnalité de Grille Sélective.
+ * "Façade" pour la fonctionnalité de Grille Sélective.  Le
+ * SelectiveScheduleManager offre des services pour valider la
+ * relation entre un élément de l'extérieur et les éléments des
+ * ensembles qu'il contient.  Il offre également les services
+ * nécessaires pour la gestion des ensembles.  Finalement, les
+ * services de persistances des ensembles sont également offerts par
+ * cette classe.
  * 
  * @author Pascal
  *  
  */
 public class SelectiveScheduleManager {
     /**
+     * Implémentation de l'interface PersistanceMismatch
+     * 
      * @author Pascal
      * 
-     * TODO To change the template for this generated type comment go to Window -
-     * Preferences - Java - Code Style - Code Templates
      */
     public class PersistanceMismatchImpl implements PersistanceMismatch {
         private int _expectedNbOfElements = -1;
@@ -171,7 +177,7 @@ public class SelectiveScheduleManager {
     private static Logger logger = Logger.getLogger(SelectiveScheduleManager.class);
 
     /**
-     * Singleton
+     * "Singleton"
      *  
      */
     private static SelectiveScheduleManager _instance = null;
@@ -616,14 +622,5 @@ public class SelectiveScheduleManager {
     private String fetchXMLPersistanceFileName() {
         return DApplication.getInstance().getDMediator().getCurrentDoc()
                            .getAutoImportDIMFilePath() + "fgs.xml";
-    }
-
-    public static void main(String[] args) {
-        try {
-            SelectiveScheduleManager.getInstance().writeToPersistenceSink();
-        } catch (SelectiveScheduleFileIOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }

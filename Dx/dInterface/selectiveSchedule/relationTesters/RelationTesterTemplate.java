@@ -5,10 +5,10 @@
 package dInterface.selectiveSchedule.relationTesters;
 
 /**
- * XXXX GS: reecrire cette entete... Cette classe a pour utilite de tester une
- * relation entre deux entites. Par exemple, on pourrait desirer tester si une
- * instance de 'Event' est en relation avec une instance de 'Activity'. Pour se
- * faire, on appelle la methode isRelated(EventAttach, Activity) : boolean.
+ * Template que doit implémenter une instance concrète de
+ * RelationTester.  Indique à l'utilisteur qu'il est fortement
+ * conseillé d'utiliser le DP "Singleton" avec les implémentations de
+ * RelationTester.
  * 
  * @author Pascal
  *  

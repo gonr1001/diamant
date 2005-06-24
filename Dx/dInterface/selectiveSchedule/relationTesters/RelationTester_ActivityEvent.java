@@ -9,6 +9,10 @@ import dInternal.dData.dActivities.Activity;
 import dInternal.dOptimization.EventAttach;
 
 /**
+ * Une implémentation de RelationTester.  Permet de vérifier si
+ * l'Activity attachée au DResource passé en paramètre est en relation
+ * avec le EventAttach de l'autre DResource passé en paramètre.
+ *
  * @author Pascal
  * 
  */

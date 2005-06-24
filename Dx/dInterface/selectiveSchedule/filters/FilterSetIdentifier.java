@@ -7,8 +7,7 @@ package dInterface.selectiveSchedule.filters;
 import dInterface.selectiveSchedule.SelectiveScheduleManager;
 
 /**
- * Identificateur d'un ensemble d'elements servant de filtre pour l'affichage
- * selectif
+ * Identificateur d'un ensemble d'elements.
  * 
  * @author Pascal
  *  

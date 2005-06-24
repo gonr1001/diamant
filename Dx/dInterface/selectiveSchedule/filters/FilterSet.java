@@ -12,6 +12,10 @@ import java.util.HashSet;
 import dInternal.DResource;
 
 /**
+ * Représentation d'un ensemble.  Le nom "FilterSet" vient du fait que
+ * les éléments de l'ensemble ont pour effet de filtrer l'affichage de
+ * la grille horaire détaillée.
+ * 
  * @author Pascal
  *  
  */

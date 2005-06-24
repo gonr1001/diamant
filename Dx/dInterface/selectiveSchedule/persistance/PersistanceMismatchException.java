@@ -5,6 +5,9 @@
 package dInterface.selectiveSchedule.persistance;
 
 /**
+ * Exception lancée si un ou des élément(s) d'un ensemble
+ * n'apparaîssent plus dans l'exécution courante de Diamant.
+ * 
  * @author Pascal
  *
  */
