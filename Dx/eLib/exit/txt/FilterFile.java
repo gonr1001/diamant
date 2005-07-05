@@ -1,6 +1,6 @@
 /**
  *
- * Title: FilterFile $Revision: 1.6 $  $Date: 2005-05-10 18:46:48 $
+ * Title: FilterFile
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,6 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: durp1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly

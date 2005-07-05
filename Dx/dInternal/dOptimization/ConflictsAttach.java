@@ -13,14 +13,16 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+//import dInternal.dTimeTable.SetOfConflicts;
+import dInternal.dData.StandardCollection;
 import dInternal.dUtil.ArrayValue;
-import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
+import dInternal.DObject;
+import dInternal.DValue;
 
 
-public class ConflictsAttach extends DXObject{
+public class ConflictsAttach extends DObject{
 
 
   /**
@@ -30,14 +32,14 @@ public class ConflictsAttach extends DXObject{
    * stringValue is the type of conflict
    * objectValue is the setOfInformations associated in the conflict
    */
-  private SetOfResources _setOfConflicts;
+  private DSetOfResources _setOfConflicts;
 
 
   /**
    * Constructor
    * */
   public ConflictsAttach() {
-    _setOfConflicts = new SetOfResources(7);
+    _setOfConflicts = new StandardCollection();
   }// end DConflicts constructor
   //--------------------------------------------------------
 
@@ -52,11 +54,11 @@ public class ConflictsAttach extends DXObject{
    * students in conflicts, name of instructor in conflict, etc)
    */
   public void addConflict(String eventName, int numberOfConflicts,String typeOfConflict, Vector setOfInformations){
-    DXValue confValue= new DXValue();
+    DValue confValue= new DValue();
     confValue.setIntValue(numberOfConflicts);
     confValue.setStringValue(typeOfConflict);
     confValue.setObjectValue(setOfInformations);
-    _setOfConflicts.addResource(new Resource(eventName,confValue),0);
+    _setOfConflicts.addResource(new DResource(eventName,confValue),0);
   }
 
   /**
@@ -65,10 +67,9 @@ public class ConflictsAttach extends DXObject{
    */
   public void mergeConflictsAttach(ConflictsAttach cAttach){
     for (int i=0; i< cAttach.getConflictsAttach().size(); i++){
-      Resource resc= cAttach.getConflictsAttach().getResourceAt(i);
-      _setOfConflicts.addResource(new Resource(resc.getID(),resc.getAttach()),0);
+      DResource resc= cAttach.getConflictsAttach().getResourceAt(i);
+      _setOfConflicts.addResource(new DResource(resc.getID(),resc.getAttach()),0);
     }// end for (int i=0; i< cAttach.getConflictsAttach().size(); i++)
-
   }
 
 
@@ -77,26 +78,26 @@ public class ConflictsAttach extends DXObject{
    * @param event
    * @return
    */
-  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc){
+  public DSetOfResources getAllConflictsOfAnEvent(DSetOfResources soc){
       //Vector vec= new Vector();
       //ArrayValue arrV= new ArrayValue(0);
        for (int i=0; i< _setOfConflicts.size(); i++){
          int [] nbconf={0,0,0};
-        Resource conf= _setOfConflicts.getResourceAt(i);
+        DResource conf= _setOfConflicts.getResourceAt(i);
         String str= conf.getID();
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
-            nbconf[0]= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
+            nbconf[0]= ((DValue)conf.getAttach()).getIntValue();
           }
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
-            nbconf[1]= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
+            nbconf[1]= ((DValue)conf.getAttach()).getIntValue();
           }
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
-            nbconf[1]+= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
+            nbconf[1]+= ((DValue)conf.getAttach()).getIntValue();
           }
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
-            nbconf[2]= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
+            nbconf[2]= ((DValue)conf.getAttach()).getIntValue();
           }
-          Resource resc= soc.getResource(str);
+          DResource resc= soc.getResource(str);
           if(resc!=null){
              ArrayValue arrV= (ArrayValue)resc.getAttach();
             arrV.setIntArrayValue(arrV.getIntArrayValue(0)+nbconf[0],0);
@@ -107,7 +108,7 @@ public class ConflictsAttach extends DXObject{
             arrV.setIntArrayValue(nbconf[0],0);
             arrV.setIntArrayValue(nbconf[1],1);
             arrV.setIntArrayValue(nbconf[2],2);
-            soc.addResource(new Resource(str,arrV),1);
+            soc.addResource(new DResource(str,arrV),1);
           }// end else if(resc!=null)
         //vec.add(str+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2]);
       }// end for (int i=0; i< _setOfConflicts.size(); i++)
@@ -119,27 +120,27 @@ public class ConflictsAttach extends DXObject{
    * @param event
    * @return
    */
-  public SetOfResources getAllConflictsOfAnEvent(SetOfResources soc, /*String eventSource,*/ String eventName){
+  public DSetOfResources getAllConflictsOfAnEvent(DSetOfResources soc, /*String eventSource,*/ String eventName){
       //Vector vec= new Vector();
       //ArrayValue arrV= new ArrayValue(0);
        for (int i=0; i< _setOfConflicts.size(); i++){
          int [] nbconf={0,0,0};
-        Resource conf= _setOfConflicts.getResourceAt(i);
+        DResource conf= _setOfConflicts.getResourceAt(i);
         String str= conf.getID();
         if(str.equalsIgnoreCase(eventName)){
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
-            nbconf[0]= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
+            nbconf[0]= ((DValue)conf.getAttach()).getIntValue();
           }
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
-            nbconf[1]= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
+            nbconf[1]= ((DValue)conf.getAttach()).getIntValue();
           }
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
-            nbconf[1]+= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME_AVAIL)){
+            nbconf[1]+= ((DValue)conf.getAttach()).getIntValue();
           }
-          if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
-            nbconf[2]= ((DXValue)conf.getAttach()).getIntValue();
+          if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(DConst.R_ROOM_NAME)){
+            nbconf[2]= ((DValue)conf.getAttach()).getIntValue();
           }
-          Resource resc= soc.getResource(str);
+          DResource resc= soc.getResource(str);
           if(resc!=null){
              ArrayValue arrV= (ArrayValue)resc.getAttach();
             arrV.setIntArrayValue(arrV.getIntArrayValue(0)+nbconf[0],0);
@@ -150,7 +151,7 @@ public class ConflictsAttach extends DXObject{
             arrV.setIntArrayValue(nbconf[0],0);
             arrV.setIntArrayValue(nbconf[1],1);
             arrV.setIntArrayValue(nbconf[2],2);
-            soc.addResource(new Resource(str,arrV),1);
+            soc.addResource(new DResource(str,arrV),1);
           }// end else if(resc!=null)
         //vec.add(str+"   "+nbconf[0]+" "+nbconf[1]+" "+nbconf[2]);
         }// end if(str.equalsIgnoreCase(eventName))
@@ -167,9 +168,9 @@ public class ConflictsAttach extends DXObject{
    */
   public boolean removeConflict(String eventName, String typeOfConflict){
     for (int i=0; i< _setOfConflicts.size(); i++){
-      Resource conf= _setOfConflicts.getResourceAt(i);
+      DResource conf= _setOfConflicts.getResourceAt(i);
       if(conf.getID().equalsIgnoreCase(eventName)){
-        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
+        if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
           return _setOfConflicts.removeResourceAt(i);
         }
       }// end if(conf.getID().equalsIgnoreCase(eventName))
@@ -186,9 +187,9 @@ public class ConflictsAttach extends DXObject{
   public Vector getConflicts(String eventName, String typeOfConflict){
     Vector conflict= new Vector();
     for (int i=0; i< _setOfConflicts.size(); i++){
-      Resource conf= _setOfConflicts.getResourceAt(i);
+      DResource conf= _setOfConflicts.getResourceAt(i);
       if(conf.getID().equalsIgnoreCase(eventName)){
-        if ( ((DXValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
+        if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
           conflict.add(conf.getAttach());
         }
       }// end if(conf.getID().equalsIgnoreCase(eventName))
@@ -200,9 +201,16 @@ public class ConflictsAttach extends DXObject{
   /**
    * get names all elements in conflict. return a vector
    * */
-  public SetOfResources getConflictsAttach(){
+  public DSetOfResources getConflictsAttach(){
     return _setOfConflicts;
   }// end of Vector getList() method
   //--------------------------------------------------------
+/* (non-Javadoc)
+ * @see dInternal.DObject#getSelectedField()
+ */
+public long getSelectedField() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
 }// class end

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuCourses $Revision: 1.6 $  $Date: 2005-02-09 01:38:13 $
+* Title: SetOfStuCourses $Revision: 1.7 $  $Date: 2005-07-05 12:04:30 $
 * Description: SetOfStuCourses is a class used as a data structure container.
 *              It contains the student courses and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.7 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -35,16 +35,16 @@ import dInternal.DValue;
 
 public class SetOfStuCourses extends DSetOfResources {
 
-	/**the field to be write before name
+	/**the field to be written before name
 	   * and after matricule in toWrite method*/
-	  private String _auxField="";
+	private String _auxField;
 	
 	/**
 	 * 
 	 */
 	public SetOfStuCourses() {
 		super();
-		// TODO Auto-generated constructor stub
+		_auxField = "";
 	}
 
 	/* (non-Javadoc)
@@ -120,17 +120,12 @@ public class SetOfStuCourses extends DSetOfResources {
 	  }
 
 	  /**
-	   *set the aux field
+	   * set the aux field
 	   * @param String the resource temporary message
 	   * */
 	  public void setAuxField(String message){
 	    _auxField = message;
 	  }
-	/**
-	   *
-	   * */
-	 /* public DSetOfResources getCoursesList(){
-	    return getCoursesList();
-	  }*/
+
 
 }

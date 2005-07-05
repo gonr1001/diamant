@@ -22,18 +22,18 @@ import java.util.StringTokenizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dUtil.ArrayValue;
-import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
+import dInternal.DObject;
+import dInternal.DValue;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.output.XMLWriter;
 import dConstants.DConst;
 
-public class Period extends DXObject {
+public class Period extends DObject {
 	
 	private final int MINUTES = 60;
 	private int _nbStudConflict = 0;
@@ -50,14 +50,14 @@ public class Period extends DXObject {
 	 * contains a resource where ID is the event which is place in the period,
 	 * and resource attach is a conflictsattach type
 	 */
-	private SetOfResources _eventsInPeriod;//
+	private DSetOfResources _eventsInPeriod;//
 	
 	
 	/**
 	 * Constructor
 	 * */
 	public Period() {
-		_eventsInPeriod = new SetOfResources(6);
+		_eventsInPeriod =  new StandardCollection();
 	}
 	
 	/**
@@ -272,7 +272,7 @@ public class Period extends DXObject {
 	 *
 	 * @return
 	 */
-	public SetOfResources getEventsInPeriod(){
+	public DSetOfResources getEventsInPeriod(){
 		return _eventsInPeriod;
 	}
 	
@@ -281,12 +281,12 @@ public class Period extends DXObject {
 	 * @param String the event from which we need conflicts in period
 	 * @return SetOfRessources containing the conflicts as an attachment
 	 */
-	public SetOfResources getConflictsEventsInPeriod(String event){
+	public DSetOfResources getConflictsEventsInPeriod(String event){
 		//System.out.println("getConflictsEventsInPeriod");
-		SetOfResources setOfConf = new SetOfResources(99);
+		DSetOfResources setOfConf = new StandardCollection();
 		int sizeIn = 0;
 		for (int i=0; i< _eventsInPeriod.size(); i++){
-			Resource eventInPeriod= _eventsInPeriod.getResourceAt(i);
+			DResource eventInPeriod= _eventsInPeriod.getResourceAt(i);
 			String id= eventInPeriod.getID();
 			if (event.equalsIgnoreCase(eventInPeriod.getID())){
 				setOfConf=((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf);
@@ -294,25 +294,26 @@ public class Period extends DXObject {
 				sizeIn = setOfConf.size();
 				setOfConf = ((ConflictsAttach)eventInPeriod.getAttach()).getAllConflictsOfAnEvent(setOfConf, event);
 				if( setOfConf.size() == sizeIn)
-					setOfConf.addResource(new Resource(id, new ArrayValue(3)),1);
+					setOfConf.addResource(new DResource(id, new ArrayValue(3)),1);
 			}// end  else if (!event.equalsIgnoreCase(_eventsInPeriod.getResourceAt(i
 		}// end for (int i=0; i< _eventsInPeriod.size(); i++){
 		
 		return builtSetOfRessources(setOfConf);
 	}
 	
-	public SetOfResources builtSetOfRessources(SetOfResources setOfConf){
-		SetOfResources setOfRes = new SetOfResources(99);
+	private DSetOfResources builtSetOfRessources(DSetOfResources setOfConf){
+		DSetOfResources setOfRes = new StandardCollection();
 		for(int i=0; i< setOfConf.size(); i++){
 			ArrayValue array = (ArrayValue)setOfConf.getResourceAt(i).getAttach();
 			String id = setOfConf.getResourceAt(i).getID()+"  "+ 
 			array.getIntArrayValue(0) +"  "+ 
 			array.getIntArrayValue(1) +"  "+ 
 			array.getIntArrayValue(2);
-			setOfRes.addResource(new Resource(id, new DXValue()),1);
+			setOfRes.addResource(new DResource(id, new DValue()),1);
 		}
 		return setOfRes;
 	}
+
 	/**
 	 *
 	 * */
@@ -347,10 +348,18 @@ public class Period extends DXObject {
 	 *
 	 */
 	public void emptyEventsInPeriod(){
-		_eventsInPeriod = new SetOfResources(6);
+		_eventsInPeriod = new StandardCollection();
 		_nbStudConflict = 0;
 		_nbInstConflict = 0;
 		_nbRoomConflict= 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see dInternal.DObject#getSelectedField()
+	 */
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

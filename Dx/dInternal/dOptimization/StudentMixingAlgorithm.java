@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.37 $ $Date: 2005-03-08 16:00:45 $
+ * Title: StudentMixingAlgorithm $Revision: 1.38 $ $Date: 2005-07-05 12:04:31 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: syay1801 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -37,7 +37,7 @@ import dInternal.dData.dActivities.Type;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.DValue;
-import dInternal.dUtil.DXValue;
+
 
 public class StudentMixingAlgorithm implements Algorithm {
 
@@ -354,8 +354,8 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector includeGroupsList=new Vector();
     int smallGroup= RefinedStudMixAlgo.getSmallerGroupIndex(sizeOfGroups);
     for(int i=0; i< allConvGroup.size(); i++){
-      if ((((DXValue)sizeOfGroups.get(i)).getIntValue()-
-           ((DXValue)sizeOfGroups.get(smallGroup)).getIntValue())< acceptableVariation)
+      if ((((DValue)sizeOfGroups.get(i)).getIntValue()-
+           ((DValue)sizeOfGroups.get(smallGroup)).getIntValue())< acceptableVariation)
       includeGroupsList.add(new Integer(i));
     }// end for(int i=0; i< allConvGroup.size(); i++){
 
@@ -374,8 +374,8 @@ public class StudentMixingAlgorithm implements Algorithm {
       }// end if(bConf>=Integer.parseInt(((SetOfResources
       }// end for(int i=0; i< includeGroupsList.size(); i++){
       //currentConvGroup.setIntValue(bGroup);
-      ((DXValue)sizeOfGroups.get(bGroup)).setIntValue(
-          ((DXValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
+      ((DValue)sizeOfGroups.get(bGroup)).setIntValue(
+          ((DValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
 
       resc= ((DSetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
       ((DValue)resc.getAttach()).setIntValue(bGroup);

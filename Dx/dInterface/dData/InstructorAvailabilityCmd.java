@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.4 $  $Date: 2005-04-19 20:37:43 $
+ * Title: ClassName $Revision: 1.5 $  $Date: 2005-07-05 12:04:24 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -38,6 +38,6 @@ public class InstructorAvailabilityCmd implements Command {
 
     //------------------------------
     public void execute(DApplication dApplic) {
-        new InstructorAvailabiliyDlg(dApplic);//.getJFrame(), DConst.INST_ASSIGN_TD, dApplic.getDMediator().getCurrentDoc().getDM());
+        new InstructorAvailabiliyDlg(dApplic);
     } // end execute
 } /* end class InstructorAvailabilityCmd */

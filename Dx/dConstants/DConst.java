@@ -25,9 +25,8 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-	public final static String VERSION = "v 1.6.2";
-  	public final static String V_DATE = VERSION+" du 28 Mai 2005";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;
+  	public final static String V_DATE = "v 1.6.1.5 du 4 Juillet 2005";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = false;// false
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
@@ -507,6 +506,8 @@ public class DConst {
   public static final int STUD_COURSE_GROUP_LENGTH = 9;
   public static final int STUD_SITE_LENGTH = 3;
   
+  
+  public static final int NO_GROUP = -1;
   // activity
   public static final int NUMBER_OF_TOKEN_COURSE_LINE = 4;
   public static final int SIZE_OF_COURSE_TOKEN = 7;

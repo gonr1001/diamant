@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.58 $  $Date: 2005-04-11 14:39:33 $
+ * Title: EditActivityDlg $Revision: 1.59 $  $Date: 2005-07-05 12:04:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.58 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.59 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -63,7 +63,6 @@ import dInterface.dUtil.TwoButtonsPanel;
 
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
-import dInternal.dDataTxt.Resource;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dInstructors.SetOfInstructors;
@@ -617,7 +616,7 @@ public class EditActivityDlg
     EventAttach event= (EventAttach)((DResource)_unities.get(_currentActivityIndex)).getAttach();
     Cycle cycle= _dApplic.getDModel().getTTStructure().getCurrentCycle();
     long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-    Resource day = cycle.getSetOfDays().getResource(dayKey);
+    DResource day = cycle.getSetOfDays().getResource(dayKey);
     list[0].add(day.getKey()+"."+day.getID());
     for(int i=0; i< cycle.getSetOfDays().size(); i++)
       list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey()+"."+cycle.getSetOfDays().getResourceAt(i).getID());

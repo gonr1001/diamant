@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.16 $  $Date: 2004-12-01 17:16:41 $
+ * Title: FullReport $Revision: 1.17 $  $Date: 2005-07-05 12:04:24 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -42,7 +42,7 @@ import javax.swing.JTextArea;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-import dInternal.dUtil.DXValue;
+import dInternal.DValue;
 
 
 public class FullReport extends ViewReport implements ActionListener {
@@ -86,29 +86,29 @@ public class FullReport extends ViewReport implements ActionListener {
   * */
   private Vector buildAllOptionsVector() {
     Vector v = new Vector();
-    v.add(new DXValue(0,
+    v.add(new DValue(0,
                       new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME)));
-    v.add(new DXValue(1,
+    v.add(new DValue(1,
                       new FieldRecord(Integer.parseInt(DConst.R_TYPE_NAME_L), DConst.R_TYPE_NAME)));
-    v.add(new DXValue(2,
+    v.add(new DValue(2,
                       new FieldRecord(Integer.parseInt(DConst.R_SECTION_NAME_L), DConst.R_SECTION_NAME)));
-    v.add(new DXValue(3,
+    v.add(new DValue(3,
                       new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
-    v.add(new DXValue(4,
+    v.add(new DValue(4,
                       new FieldRecord(Integer.parseInt(DConst.R_DURATION_L), DConst.R_TIME_LENGTH)));
-    v.add(new DXValue(5,
+    v.add(new DValue(5,
                       new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
-    v.add(new DXValue(6,
+    v.add(new DValue(6,
                       new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME)));
-    v.add(new DXValue(7,
+    v.add(new DValue(7,
                       new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_BEGIN_HOUR_L), DConst.R_ACTIVITY_BEGIN_HOUR)));
-    v.add(new DXValue(8,
+    v.add(new DValue(8,
                       new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_END_HOUR_L), DConst.R_ACTIVITY_END_HOUR)));
-    v.add(new DXValue(9,
+    v.add(new DValue(9,
                       new FieldRecord(Integer.parseInt(DConst.R_INSTRUCTOR_NAME_L), DConst.R_INSTRUCTOR_NAME)));
-    v.add(new DXValue(10,
+    v.add(new DValue(10,
                       new FieldRecord(Integer.parseInt(DConst.R_ROOM_NAME_L), DConst.R_ROOM_NAME)));
-    v.add(new DXValue(11,
+    v.add(new DValue(11,
                       new FieldRecord(Integer.parseInt(DConst.R_STUDENT_SIZE_L), DConst.R_STUDENT_SIZE_NAME)));
     return v;
   }

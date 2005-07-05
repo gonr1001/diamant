@@ -20,6 +20,7 @@ package dInternal;
 
 public abstract class  DObject extends Object{
   public DObject() {
+  	//  to avoid warning
   }
 
 

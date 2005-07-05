@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfElementsInterface $Revision: 1.9 $  $Date: 2004-12-16 19:20:47 $
+* Title: SetOfElementsInterface $Revision: 1.10 $  $Date: 2005-07-05 12:04:23 $
 * Description: SetOfElementsInterface is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.9 $
+* @version $Revision: 1.10 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -142,7 +142,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
    * build buttom to use in the dialog
    */
   protected void buildButtons(){
-
+  		// to avid warning
   }
 
 
@@ -207,6 +207,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
   *
   */
   protected void doubleClicMouseProcess(){
+  	//to avoid warning
   }
 
 }//end class

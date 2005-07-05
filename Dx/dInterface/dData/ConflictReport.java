@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
-import dInternal.dUtil.DXValue;
+import dInternal.DValue;
 
 public class ConflictReport extends ViewReport implements ActionListener {
 
@@ -76,25 +76,25 @@ public class ConflictReport extends ViewReport implements ActionListener {
     v.add(new FieldRecord(Integer.parseInt(DConst.R_TYPE_OF_CONFLICT_L), DConst.R_TYPE_OF_CONFLICT));
     v.add(new FieldRecord(Integer.parseInt(DConst.R_ELEMENTS_IN_CONFLICT_L), DConst.R_ELEMENTS_IN_CONFLICT));
 */
-       v.add(new DXValue(0,
+       v.add(new DValue(0,
               new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
-        v.add(new DXValue(1,
+        v.add(new DValue(1,
               new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME)));
-        v.add(new DXValue(2,
+        v.add(new DValue(2,
               new FieldRecord(Integer.parseInt(DConst.R_SEQUENCE_ID_L), DConst.R_SEQUENCE_ID)));
         //v.add(new DXValue(3,
          //     new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), DConst.R_UNITY_NAME)));
-        v.add(new DXValue(4,
+        v.add(new DValue(4,
               new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN)));
-        v.add(new DXValue(5,
+        v.add(new DValue(5,
         new FieldRecord(Integer.parseInt(DConst.R_EVENT1_ID_L), DConst.R_EVENT1_ID)));
-        v.add(new DXValue(6,
+        v.add(new DValue(6,
             new FieldRecord(Integer.parseInt(DConst.R_EVENT2_ID_L), DConst.R_EVENT2_ID)));
-        v.add(new DXValue(7,
+        v.add(new DValue(7,
          new FieldRecord(Integer.parseInt(DConst.R_NUMBER_OF_CONFLICTS_L), DConst.R_NUMBER_OF_CONFLICTS)));
-        v.add(new DXValue(8,
+        v.add(new DValue(8,
         new FieldRecord(Integer.parseInt(DConst.R_TYPE_OF_CONFLICT_L), DConst.R_TYPE_OF_CONFLICT)));
-    v.add(new DXValue(9,
+    v.add(new DValue(9,
     new FieldRecord(Integer.parseInt(DConst.R_ELEMENTS_IN_CONFLICT_L), DConst.R_ELEMENTS_IN_CONFLICT)));
 
     return v;

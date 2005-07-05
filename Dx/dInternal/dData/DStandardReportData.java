@@ -2,7 +2,7 @@ package dInternal.dData;
 
 /**
 *
-* Title: DStandardReportData $Revision: 1.8 $  $Date: 2005-06-03 14:03:39 $
+* Title: DStandardReportData
 * Description: DStandardReportData is a class used to
 *
 *
@@ -16,8 +16,6 @@ package dInternal.dData;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
-* @author  $Author: syay1801 $
 * @since JDK1.3
 */
 
@@ -34,7 +32,8 @@ import dInternal.DSetOfResources;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dStudents.Student;
-import dInternal.dDataTxt.Resource;
+
+
 import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
@@ -43,7 +42,7 @@ import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
+
 
 public class DStandardReportData {
 
@@ -96,7 +95,7 @@ public class DStandardReportData {
   public DStandardReportData(DModel dm) {
     _dm = dm;
     _activitiesReport= buildActivitiesReport();  
-    //_studentsReport = buildStudentsReport(); to add only when we will build student report 
+    _studentsReport = buildStudentsReport();
     _conflictsReport= buildConflictsReport();
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
@@ -260,18 +259,18 @@ public class DStandardReportData {
     int size= _dm.getTTStructure().getCurrentCycle().getSetOfDays().size();
     for(int i=0; i< size; i++){
       _dm.getProgressBarState().setIntValue(STATE1+STATE2+STATE3*i/size);
-      Resource day= _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
+      DResource day= _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
       for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-        Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        DResource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
         for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
-          Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          DResource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
           ((Period)per.getAttach()).getEventsInPeriod().sortSetOfResourcesByID();
           for(int x=0; x< ((Period)per.getAttach()).getEventsInPeriod().size(); x++){
-            Resource confEvents= ((Period)per.getAttach()).getEventsInPeriod().getResourceAt(x);
+            DResource confEvents= ((Period)per.getAttach()).getEventsInPeriod().getResourceAt(x);
             ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().sortSetOfResourcesByID();
             for(int y=0; y< ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().size(); y++){
-              Resource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
-              DXValue confValue= (DXValue)confAttach.getAttach();
+              DResource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
+              DValue confValue= (DValue)confAttach.getAttach();
               StringBuffer strBuf = new StringBuffer("yyyyyyy");
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
                /* str = _dm.getSetOfEvents().getStudentConflictDescriptions(
@@ -335,40 +334,45 @@ public class DStandardReportData {
     }
     return "";
   }
-
-
+	
+  public void neverCall() {
+  	String str = buildStudentsReport();
+  	System.out.println(str);
+  }
   /**
    *
    * @return
    */
-  private String buildStudentsReport(){
+  public String buildStudentsReport(){
   	StringBuffer studlist= new StringBuffer("");
     //TODO when dInternal.dTimeTable and dInternal.dOptimization 
   	// will use DResource and DSetOfResource
   	
   	int size= _dm.getSetOfStudents().size();
     for (int i=0; i< size; i++){
-      //_dm.getProgressBarState().setIntValue(STATE1+STATE2*i/size);
-      //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResourceAt(i).getAttach();
-        //String line =
       String line = ((Student)_dm.getSetOfStudents().getResourceAt(i)).toWrite();
-      StringTokenizer strTokens= new StringTokenizer(line.substring(DConst.END_STUDENT_NUMBER_OF_COURSE,line.length()));
-      String name_mat = line.substring(0,DConst.BEGIN_STUDENT_NUMBER_OF_COURSE);
+      //StringTokenizer strTokens= new StringTokenizer(line.substring(DConst.END_STUDENT_NUMBER_OF_COURSE,line.length()));
+      StringTokenizer st = new StringTokenizer(line,"!");
+      String name_mat = st.nextToken();//)line.substring(0,DConst.BEGIN_STUDENT_NUMBER_OF_COURSE);
+      name_mat=name_mat.substring(0,name_mat.length()-2);
       String str= " "+name_mat.substring(0,DConst.END_STUDENT_MATRICULE)+";"+
                   name_mat.substring(DConst.END_STUDENT_MATRICULE, DConst.BEGIN_STUDENT_NAME)
                 +";"+name_mat.substring(DConst.BEGIN_STUDENT_NAME,DConst.END_STUDENT_NAME)+";";
       String strcrs="";
+      String rest = st.nextToken();
+      StringTokenizer strTokens= new StringTokenizer(rest," ");
       while(strTokens.hasMoreTokens()){
         String course= strTokens.nextToken();
         course = DXToolsMethods.getToken(course,";",0);
         String sect="";
-        if(course.length()==DConst.STUD_COURSE_GROUP_LENGTH){
-          int group= Integer.parseInt(course.substring(DConst.STUD_COURSE_LENGTH, DConst.STUD_COURSE_GROUP_LENGTH));
-          sect=course.substring(0,DConst.STUD_COURSE_LENGTH-1)+"."+
-               course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH)+
+        String aux = course.trim();
+        if(aux.length()==DConst.STUD_COURSE_GROUP_LENGTH){
+          int group= Integer.parseInt(aux.substring(DConst.STUD_COURSE_LENGTH, DConst.STUD_COURSE_GROUP_LENGTH));
+          sect=aux.substring(0,DConst.STUD_COURSE_LENGTH-1)+"."+
+               aux.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH)+
                "."+DXTools.STIConvertGroup(group)+".";
-          Section section= _dm.getSetOfActivities().getSection(course.substring(0,DConst.STUD_COURSE_LENGTH-1)
-              ,course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH),
+          Section section= _dm.getSetOfActivities().getSection(aux.substring(0,DConst.STUD_COURSE_LENGTH-1)
+              ,aux.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH),
               DXTools.STIConvertGroup(group));
           if(section!=null){
             for(int j=0; j<section.getSetOfUnities().size(); j++){

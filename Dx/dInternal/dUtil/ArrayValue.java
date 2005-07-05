@@ -1,5 +1,7 @@
 package dInternal.dUtil;
 
+import dInternal.DObject;
+
 /**
  * <p>Title: Diamant 1.5</p>
  * <p>Description: exam timetable construction with Condition Pattern</p>
@@ -9,7 +11,7 @@ package dInternal.dUtil;
  * @version 1.0
  */
 
-public class ArrayValue extends DXObject{
+public class ArrayValue extends DObject{
 
   /**the reference value of this object*/
   private int [] _intArray;
@@ -44,5 +46,13 @@ public class ArrayValue extends DXObject{
       return _intArray[index];
     return -1;
   }
+
+/* (non-Javadoc)
+ * @see dInternal.DObject#getSelectedField()
+ */
+public long getSelectedField() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
 }

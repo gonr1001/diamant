@@ -1,7 +1,7 @@
 package eLib.exit.dialog;
 /**
  *
- * Title: InformationDlg $Revision: 1.2 $  $Date: 2004-09-10 13:31:09 $
+ * Title: InformationDlg $Revision: 1.3 $  $Date: 2005-07-05 12:04:35 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package eLib.exit.dialog;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -30,7 +30,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 
 /**
-  * Description: FatalProblemDlg is a class used to display a message,
+  * Description: InformationDlg is a class used to display a message,
   *              when an exception is throwed, the dialog displays
   *              the exception message.
   *              Normally after that the dialog is displayed

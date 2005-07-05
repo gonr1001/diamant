@@ -5,10 +5,12 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dUtil.DXValue;
+//import dInternal.dTimeTable.SetOfConflicts;
+import dInternal.DValue;
 
  public class ConflictsAttachTest extends TestCase {
 
@@ -34,7 +36,7 @@ import dInternal.dUtil.DXValue;
     */
    public void test_addConflicts(){
      assertEquals("test_addConflicts : assertEquals 1",2 , _confAttach.getConflictsAttach().size());
-     Resource resc= _confAttach.getConflictsAttach().getResource("AMC640.1.02.1");
+     DResource resc= _confAttach.getConflictsAttach().getResource("AMC640.1.02.1");
      assertEquals("test_addConflicts : assertEquals 2","AMC640.1.02.1" , resc.getID());
    }
 
@@ -42,8 +44,8 @@ import dInternal.dUtil.DXValue;
    *
    */
   public void test_numberOfConflicts(){
-    Resource resc= _confAttach.getConflictsAttach().getResource("AMC640.1.02.1");
-    assertEquals("test_addConflicts : assertEquals",3, ((DXValue)resc.getAttach()).getIntValue());
+    DResource resc= _confAttach.getConflictsAttach().getResource("AMC640.1.02.1");
+    assertEquals("test_numberOfConflicts : assertEquals",3, ((DValue)resc.getAttach()).getIntValue());
    }
 
    /**
@@ -55,28 +57,19 @@ import dInternal.dUtil.DXValue;
      vec.add("YS,DP");
      confAttach.addConflict("ADM111.1.01.1",2,"student",vec);
      _confAttach.mergeConflictsAttach(confAttach);
-     Resource resc= _confAttach.getConflictsAttach().getResource("ADM111.1.01.1");
-     assertEquals("test_mergeConflictsAttach : assertEquals 1","ADM111.1.01.1" , resc.getID());
-     assertEquals("test_mergeConflictsAttach : assertEquals 2",2, ((DXValue)resc.getAttach()).getIntValue());
-   }
-
-   /**
-    *
-    */
-   public void test_removeConflicts(){
-     //_confAttach.addConflict("AMC645.1.01.1",1,"Instructor",vec);
-     _confAttach.removeConflict("AMC645.1.01.1","Instructor");
-     assertEquals("test_removeConflicts : assertEquals 1",1 , _confAttach.getConflictsAttach().size());
-      Resource resc= _confAttach.getConflictsAttach().getResource("AMC645.1.01.1");
-     assertEquals("test_removeConflicts : assertEquals", null, resc);
+     //DResource resc= _confAttach.getConflictsAttach().getResource("AMC645.1.01.1");
+     //assertEquals("test_mergeConflictsAttach : assertEquals", null, resc);
+     DResource resc= _confAttach.getConflictsAttach().getResource("ADM111.1.01.1");
+     assertEquals("test_mergeConflictsAttach1 : assertEquals 1","ADM111.1.01.1" , resc.getID());
+     assertEquals("test_mergeConflictsAttach2 : assertEquals 2",2, ((DValue)resc.getAttach()).getIntValue());
    }
 
    /**
     *
     */
    public void test_getAllConflictsOfAnEvent(){
-     SetOfResources sor= new SetOfResources(99);
-     sor= _confAttach.getAllConflictsOfAnEvent(sor);
+     DSetOfResources sor= new StandardCollection();
+     sor = _confAttach.getAllConflictsOfAnEvent(sor);
      assertEquals("test_getAllConflictsOfAnEvent : assertEquals", sor.size(), _confAttach.getConflictsAttach().size());
    }
 

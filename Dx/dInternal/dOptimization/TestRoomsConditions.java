@@ -19,7 +19,6 @@ import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dRooms.RoomAttach;
 //import dInternal.dDataTxt.RoomAttach;
 import dInternal.dData.dActivities.Type;
-import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -61,11 +60,11 @@ public class TestRoomsConditions implements Condition{
       case 0:
         break;
       case 1:
-        Resource resc = period.getEventsInPeriod().getResource(eventKey);
+        DResource resc = period.getEventsInPeriod().getResource(eventKey);
         if(resc!=null)
           ((ConflictsAttach)resc.getAttach()).mergeConflictsAttach(confVal);
         else
-          period.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
+          period.getEventsInPeriod().addResource(new DResource(eventKey,confVal),1);
         period.addNbRoomsConflict(number);
          break;
        case -1:period.getEventsInPeriod().removeResource(eventKey);

@@ -7,27 +7,34 @@ import org.w3c.dom.Element;
 
 
 import dConstants.DConst;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.DObject;
+import dInternal.DValue;
+import dInternal.dData.StandardCollection;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.output.XMLWriter;
 
-public class Sequence extends DXObject{
+public class Sequence extends DObject{
 	
+	private DSetOfResources _setOfPeriods;
+	private int _currentPeriodIndex = 0;
+	private String _error = "";
+	private String _errorMessage = "XML file is corrupted";
+	static final String _TAGITEM="TTperiod";
+	static final String _TAGITEM1="periodID";
 	/**
 	 * Constructor
 	 * */
 	public Sequence() {
-		_setOfPeriods= new SetOfResources(4);
+		_setOfPeriods= new StandardCollection();
 	}
 	
 	/**
 	 * get the set of periods
 	 * @return SetOfResources the set of periods
 	 * */
-	public SetOfResources getSetOfPeriods(){
+	public DSetOfResources getSetOfPeriods(){
 		return _setOfPeriods;
 	}
 	
@@ -63,7 +70,7 @@ public class Sequence extends DXObject{
 	 * set the set of periods
 	 * @param SetOfResources the set of periods
 	 * */
-	public void setSetOfPeriods(SetOfResources setOfPeriods){
+	public void setSetOfPeriods(DSetOfResources setOfPeriods){
 		_setOfPeriods= setOfPeriods;
 	}
 	
@@ -87,7 +94,7 @@ public class Sequence extends DXObject{
 				_error = _errorMessage;
 				return _error;
 			}
-			_setOfPeriods.addResource(new Resource(periodID,period),0);
+			_setOfPeriods.addResource(new DResource(periodID,period),0);
 		}// end for (int i=0; i< size; i++)
 		return _error;
 	}
@@ -124,7 +131,7 @@ public class Sequence extends DXObject{
 			Period newPer=((Period)this.getSetOfPeriods().getResourceAt(i).getAttach()).clonePeriod();
 			int position=(int)getSetOfPeriods().getResourceAt(i).getKey();
 			newSeq.getSetOfPeriods().setCurrentKey(position);
-			newSeq.getSetOfPeriods().addResource(new Resource(getSetOfPeriods().getResourceAt(i).getID(),newPer),0);
+			newSeq.getSetOfPeriods().addResource(new DResource(getSetOfPeriods().getResourceAt(i).getID(),newPer),0);
 		}
 		return newSeq;
 	}
@@ -137,7 +144,7 @@ public class Sequence extends DXObject{
 	 * return the next period and increment _currentPeriodIndex
 	 * @return
 	 */
-	public Period getNextPeriod(DXValue seqVal){
+	public Period getNextPeriod(DValue seqVal){
 		Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex++).getAttach();
 		if(_currentPeriodIndex>= _setOfPeriods.size()){
 			_currentPeriodIndex=0;
@@ -151,7 +158,7 @@ public class Sequence extends DXObject{
 	 * return the previous period and decrement _currentPeriodIndex
 	 * @return
 	 */
-	public Period getPreviousPeriod(DXValue seqVal){
+	public Period getPreviousPeriod(DValue seqVal){
 		//System.out.println("Period: "+_currentPeriodIndex);//debug
 		Period period= (Period)_setOfPeriods.getResourceAt(_currentPeriodIndex--).getAttach();
 		if(_currentPeriodIndex<=-1){
@@ -181,8 +188,8 @@ public class Sequence extends DXObject{
 	 */
 	public boolean isEquals(Sequence seq){
 		for (int i=0; i< _setOfPeriods.size(); i++){
-			Resource perR= _setOfPeriods.getResourceAt(i);
-			Resource perCloneR= seq.getSetOfPeriods().getResourceAt(i);
+			DResource perR= _setOfPeriods.getResourceAt(i);
+			DResource perCloneR= seq.getSetOfPeriods().getResourceAt(i);
 			if (!perR.getID().equalsIgnoreCase(perCloneR.getID()))
 				return false;
 			if(!perR.getAttach().isEquals(perCloneR.getAttach()))
@@ -190,12 +197,13 @@ public class Sequence extends DXObject{
 		}
 		return true;
 	}
-	
-	private SetOfResources _setOfPeriods;
-	private int _currentPeriodIndex = 0;
-	private String _error = "";
-	private String _errorMessage = "XML file is corrupted";
-	static final String _TAGITEM="TTperiod";
-	static final String _TAGITEM1="periodID";
-	
+
+	/* (non-Javadoc)
+	 * @see dInternal.DObject#getSelectedField()
+	 */
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+		
 }

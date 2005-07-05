@@ -1,6 +1,6 @@
 /**
 *
-* Title: FirstAffectAlgorithm $Revision: 1.19 $  $Date: 2005-04-11 14:42:25 $
+* Title: FirstAffectAlgorithm $Revision: 1.20 $  $Date: 2005-07-05 12:04:31 $
 * Description: FirstAffectAlgorithm is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.19 $
-* @author  $Author: durp1901 $
+* @version $Revision: 1.20 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -25,12 +25,9 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dInternal.DModel;
-//import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
-//import dInternal.dDataTxt.SetOfResources;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
-import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
@@ -130,11 +127,11 @@ public class FirstAffectAlgorithm implements Algorithm {
     DSetOfResources soresc= new StandardCollection();
     int counter=1;
     for (int i=0; i< _dm.getTTStructure().getCurrentCycle().getSetOfDays().size(); i++){
-      Resource day = _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
+      DResource day = _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
       for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-        Resource seq = ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        DResource seq = ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
         for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
-          Resource period= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          DResource period= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
           Period per= (Period)period.getAttach();
           if(per.getEventsInPeriod().size()< _dm.getConditionsTest().getPeriodAcceptableSize()){
             if (_dm.getTTStructure().getCurrentCycle().isPeriodContiguous(day.getKey(),seq.getKey(),period.getKey(),duration, avoidPriority,true)){

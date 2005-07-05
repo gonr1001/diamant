@@ -58,7 +58,7 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.TTStructureEvent;
 //import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
+//import dInternal.dUtil.DXValue;
 
 /**
  * Description: DModel is a class used to
@@ -130,7 +130,7 @@ public class DModel extends Observable {
     /**
      * intvalue is between 0-1000 and give the state of the progress bar
      */
-    private DXValue _progressBarState;
+    private DValue _progressBarState;
 
     /**
      * 
@@ -153,7 +153,7 @@ public class DModel extends Observable {
         _setOfEvents = new SetOfEvents(this);
         _setOfImportErrors = new StandardCollection();
         _setOfImportSelErrors = new StandardCollection();
-        _progressBarState = new DXValue();
+        _progressBarState = new DValue();
         _progressBarState.setIntValue(0);  // XXXX Pascal: magic number
         _dDocument = dDocument;
         if (fileName.endsWith(DConst.DOT_DIA)) {
@@ -189,7 +189,7 @@ public class DModel extends Observable {
      * 
      * @return
      */
-    public DXValue getProgressBarState() {
+    public DValue getProgressBarState() {
         return _progressBarState;
     }
 
@@ -353,6 +353,7 @@ public class DModel extends Observable {
                 return _setOfStuSites.getError();
             }
             buildSetOfEvents();
+            _conditionTest = new TestConditions(this);
             this.getConditionsTest().initAllConditions();
         }
         _constructionState = 1;
@@ -706,16 +707,7 @@ public class DModel extends Observable {
         changeInDModel(obj);
     }// end changeInDModelByBuildMatrixConflicts
 
-    public void changeInDModelByStudentsDlg(Object obj) {
-        this.setChanged();
-        this.setModified();
-        this.getConditionsTest().initAllConditions();
-        this.setStateBarComponent();
-        this.getSetOfActivities().sortSetOfResourcesByID();
-        //		notify
-        this.notifyObservers(obj);
-        this.clearChanged();
-    }// end ac
+
 
     public void changeInDModelByEditActivityDlg(Object obj) {
         this.setChanged();
@@ -744,9 +736,18 @@ public class DModel extends Observable {
     public void changeInDModelByRoomsDlg(Object obj) {
         changeInDModel(obj);
     }
-
-    public void changeInDModel(Object obj) {
-    	
+    public void changeInDModelByStudentsDlg(Object obj) {
+        this.setChanged();
+        this.setModified();
+        this.getConditionsTest().initAllConditions();
+        this.setStateBarComponent();
+        this.getSetOfActivities().sortSetOfResourcesByID();
+        //		notify
+        this.notifyObservers(obj);
+        this.clearChanged();
+    }// end changeInDModelByStudentsDlg
+    
+    public void changeInDModel(Object obj) {   	
     	this.setChanged();
         //change model
     	if(isMultiSite())
@@ -757,11 +758,30 @@ public class DModel extends Observable {
             this.prepareExamsData();
         }
         this.buildSetOfEvents();
-        this.getConditionsTest().initAllConditions();
+        this.getConditionsTest().initAllConditions();        
         this.setStateBarComponent();
         this.getSetOfActivities().sortSetOfResourcesByID();
-        
-        
+              
+        //notify
+        this.notifyObservers(obj);
+        this.clearChanged();
+    }
+    public void initChangeInDModel(Object obj) {   	
+    	this.setChanged();
+        //change model
+    	if(isMultiSite())
+            	updateInstructorAvail();//this._setOfEvents.setAssignedInstAvail();
+        this.setModified();
+
+        if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
+            this.prepareExamsData();
+        }
+        this.buildSetOfEvents();
+        _conditionTest = new TestConditions(this);
+        this.getConditionsTest().initAllConditions();        
+        this.setStateBarComponent();
+        this.getSetOfActivities().sortSetOfResourcesByID();
+              
         //notify
         this.notifyObservers(obj);
         this.clearChanged();
@@ -924,11 +944,10 @@ public class DModel extends Observable {
         _setOfEvents.setCurrentKey(1);
         if (getSetOfActivities() != null) {
             _setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
-
-            if ((getSetOfActivities() != null) && (getSetOfStudents() != null))//if((DModel._setOfActivities!=null) && (DModel._setOfStudents!=null))
+            if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
                 getSetOfActivities().buildStudentRegisteredList(
                         getSetOfStudents());
-            _conditionTest = new TestConditions(this);
+            //_conditionTest = new TestConditions(this);
         }// end if (_setOfActivities!=null)
 
     }

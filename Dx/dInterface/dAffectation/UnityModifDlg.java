@@ -83,7 +83,6 @@ private String _title;
       if(_section.getSetOfUnities().size()>1){
      _section.getSetOfUnities().removeResourceAt(_section.getSetOfUnities().size()-1);
       init();
-      //_dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
       _dApplic.getDModel().changeInModelByUnityModifDlg(this);
       }
     }

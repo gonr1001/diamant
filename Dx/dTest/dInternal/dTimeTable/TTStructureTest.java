@@ -18,7 +18,7 @@ import junit.framework.TestSuite;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -175,13 +175,13 @@ import eLib.exit.xml.output.XMLOutputFile;
      //cycle.addDays(3);
 
      Cycle cycle= new Cycle();
-     cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
-     cycle.getDayByIndex(0).getSetOfSequences().addResource(new Resource("AM",new Sequence()),0);
-     cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(new Resource("1",new Period()),0);
+     cycle.getSetOfDays().addResource(new DResource("Ma",new Day()),0);
+     cycle.getDayByIndex(0).getSetOfSequences().addResource(new DResource("AM",new Sequence()),0);
+     cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(new DResource("1",new Period()),0);
      cycle.addDays(3);
 
-     tts.getSetOfCycles().addResource(new Resource("1",cycle),0);
-     tts.getSetOfCycles().addResource(new Resource("2",cycle),0);
+     tts.getSetOfCycles().addResource(new DResource("1",cycle),0);
+     tts.getSetOfCycles().addResource(new DResource("2",cycle),0);
      try{
        xmlFile = new XMLInputFile();
        //System.out.println(path+"cycle.xml");//debug
@@ -220,7 +220,7 @@ import eLib.exit.xml.output.XMLOutputFile;
      assertEquals("test_cloneCurrentTTS : assertEquals 3 (PeriodLenght):",30,cloneTTS.getPeriodLenght());
      Period p = cloneTTS.getCurrentCycle().getFirstPeriod();
      int [] hour =p.getBeginHour();
-     Resource r= cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(0);
+     DResource r= cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(0);
      assertEquals("test_cloneCurrentTTS : assertEquals 4 (hour):",8,hour[0]);
      assertEquals("test_cloneCurrentTTS : assertEquals 5 (min):",0,hour[1]);
      assertEquals("test_cloneCurrentTTS : assertEquals 6 (day):","Lu",r.getID());
@@ -244,7 +244,7 @@ import eLib.exit.xml.output.XMLOutputFile;
      TTStructure cloneTTS = tts.cloneCurrentTTS();
      boolean isEquals = tts.getCurrentCycle().isEquals(cloneTTS.getCurrentCycle());
      assertEquals("test_cloneCurrentTTS : assertEquals 1 :clone:",true,isEquals);
-     Resource dayR = cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(0);
+     DResource dayR = cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(0);
      dayR.setID("Lun");
      isEquals = tts.getCurrentCycle().isEquals(cloneTTS.getCurrentCycle());
      assertEquals("test_cloneCurrentTTS : assertEquals 2 :clone:",false,isEquals);

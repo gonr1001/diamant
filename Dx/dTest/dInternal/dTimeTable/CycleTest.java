@@ -19,7 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -66,7 +66,7 @@ public class CycleTest extends TestCase {
     * */
    public void test_addDays(){
      Cycle cycle= new Cycle();
-     cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
+     cycle.getSetOfDays().addResource(new DResource("Ma",new Day()),0);
      cycle.addDays(3);
      assertEquals("test_addDays : assertEquals 1 (day 1):", cycle.getSetOfDays().getResourceAt(0).getID(), "Ma");
      assertEquals("test_addDays : assertEquals 2 (day 2):", cycle.getSetOfDays().getResourceAt(1).getID(), "Me");
@@ -80,7 +80,7 @@ public class CycleTest extends TestCase {
 
    public void test_removeDays(){
      Cycle cycle= new Cycle();
-     cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
+     cycle.getSetOfDays().addResource(new DResource("Ma",new Day()),0);
      cycle.addDays(4);
      cycle.removeDays(2);
      assertEquals("test_removeDays : assertEquals 1 (day 1):", cycle.getSetOfDays().getResourceAt(0).getID(), "Ma");
@@ -187,9 +187,9 @@ public class CycleTest extends TestCase {
    Element  item;
    Cycle cycle= new Cycle();
    Cycle newCycle= new Cycle();
-   cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
-   cycle.getDayByIndex(0).getSetOfSequences().addResource(new Resource("AM",new Sequence()),0);
-   cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(new Resource("1",new Period()),0);
+   cycle.getSetOfDays().addResource(new DResource("Ma",new Day()),0);
+   cycle.getDayByIndex(0).getSetOfSequences().addResource(new DResource("AM",new Sequence()),0);
+   cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(new DResource("1",new Period()),0);
    cycle.addDays(3);
 
    try{

@@ -1,7 +1,7 @@
 package dInternal;
 /**
 *
-* Title: DSetOfStates $Revision: 1.5 $  $Date: 2005-04-15 14:08:49 $
+* Title: DSetOfStates $Revision: 1.6 $  $Date: 2005-07-05 12:04:27 $
 * Description: DSetOfStates is a class used to
 *
 *
@@ -15,12 +15,12 @@ package dInternal;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
-* @author  $Author: durp1901 $
+* @version $Revision: 1.6 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
-import java.util.Vector;
+
 import dConstants.DConst;
 
 public class DSetOfStates extends DSetOfResources{
@@ -29,7 +29,7 @@ public class DSetOfStates extends DSetOfResources{
   /**
    * @associates DSetOfStatesListener 
    */
-  private Vector _sosListener = new Vector(1);
+  //private Vector _sosListener = new Vector(1);
   /***
    * constructor
    */
@@ -88,15 +88,15 @@ public class DSetOfStates extends DSetOfResources{
    *
    * @param sosl
    */
-  public synchronized void addSetOfStatesListener(DSetOfStatesListener sosl) {
+/*  public synchronized void addSetOfStatesListener(DSetOfStatesListener sosl) {
     if (_sosListener.contains(sosl)){
       return;
     }
     _sosListener.addElement(sosl);
     //System.out.println("addSetOfStates Listener ...");
-   }
+   }*/
 
-  public void sendEvent() {
+/*  public void sendEvent() {
     DSetOfStatesEvent event = new DSetOfStatesEvent(this);
     for (int i=0; i< _sosListener.size(); i++) {
       DSetOfStatesListener sosl = (DSetOfStatesListener) _sosListener.elementAt(i);
@@ -105,11 +105,11 @@ public class DSetOfStates extends DSetOfResources{
       // System.out.println("SetOfStates listener started: "+i);//debug
     }
    }
-
-   public synchronized void removeSetOfStatesListener(DSetOfStatesListener sosl) {
+*/
+/*   public synchronized void removeSetOfStatesListener(DSetOfStatesListener sosl) {
      _sosListener.removeElement(sosl);
    }
-
+*/
    /* (non-Javadoc)
     * @see dInternal.DSetOfResources#toWrite()
     */

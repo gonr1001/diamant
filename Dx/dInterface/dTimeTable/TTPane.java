@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: TTPane $Revision: 1.19 $  $Date: 2005-06-23 20:10:32 $
+ * Title: TTPane $Revision: 1.20 $  $Date: 2005-07-05 12:04:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.20 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -47,11 +47,12 @@ import javax.swing.JViewport;
 import javax.swing.SwingConstants;
 
 import dInterface.DToolBar;
-import dInternal.dDataTxt.Resource;
-//import dInternal.DResource;
+import dInternal.DResource;
+
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
+
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DisplayAttributs;
@@ -165,7 +166,7 @@ public abstract class TTPane {
       gridBC.gridx = i;
 
       cycle = _tts.getCurrentCycle();
-      Resource day = cycle.getSetOfDays().getResourceAt(i);
+      DResource day = cycle.getSetOfDays().getResourceAt(i);
       jLabel = new JLabel("J " + (i + 1) + " : " + day.getID(), SwingConstants.CENTER);
       jLabel.setMinimumSize(new Dimension(PERIOD_WIDTH, HEADER_HEIGHT));
       jLabel.setPreferredSize(new Dimension(PERIOD_WIDTH, HEADER_HEIGHT));

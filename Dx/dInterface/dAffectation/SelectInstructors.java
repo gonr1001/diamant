@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectInstructors $Revision: 1.8 $  $Date: 2004-12-16 19:20:47 $
+ * Title: SelectInstructors $Revision: 1.9 $  $Date: 2005-07-05 12:04:23 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -117,7 +117,7 @@ public class SelectInstructors
     leftPanel.add(listPanel, BorderLayout.SOUTH);
     //arrows panel  private
     String [] _arrows = {DConst.TO_RIGHT, DConst.TO_LEFT};
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrows, true);
+    _arrowsPanel = DXTools.arrowsPanel(this, _arrows, true); 
     //placing the panels and buttons into the _listsPanel
     _centerPanel = new JPanel();
     _centerPanel.add(leftPanel, BorderLayout.EAST);

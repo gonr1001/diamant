@@ -246,8 +246,7 @@ public class DXToolsMethods {
   	int nbTokens= strToken.countTokens();
   	for (int i=0; i< nbTokens; i++){
   		if(i==position)
-  			return strToken.nextToken();
-  		
+  			return strToken.nextToken(); 		
   		strToken.nextToken();
   	}
   	return "";

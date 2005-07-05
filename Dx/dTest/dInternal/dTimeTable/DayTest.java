@@ -19,8 +19,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
@@ -73,10 +74,10 @@ String _path;
   public void test_cloneDay(){
     Day firstDay = new Day();
     Day clonedDay = new Day();
-    SetOfResources setOfSequences = new SetOfResources(4);
+    DSetOfResources setOfSequences = new StandardCollection();
 
     for (int i = 1; i < 4; i++){
-      setOfSequences.addResource(new Resource(Integer.toString(i), new Sequence()),0);
+      setOfSequences.addResource(new DResource(Integer.toString(i), new Sequence()),0);
     }
     firstDay.setSetOfSequences(setOfSequences);
     clonedDay = firstDay.cloneDay();
@@ -96,7 +97,7 @@ String _path;
     Element  eSetOfSequences;
     Day firstDay = new Day();
     Day savedDay = new Day();
-    SetOfResources setOfSequences = new SetOfResources(4);
+    DSetOfResources setOfSequences = new StandardCollection();
 
     try{
       xmlFile = new XMLInputFile();
@@ -104,8 +105,8 @@ String _path;
       Sequence seq;
       for (int i = 1; i < 4; i++){
         seq= new Sequence();
-        seq.getSetOfPeriods().addResource(new Resource("AM",new Period()),0);
-        setOfSequences.addResource(new Resource(Integer.toString(i), seq),1);
+        seq.getSetOfPeriods().addResource(new DResource("AM",new Period()),0);
+        setOfSequences.addResource(new DResource(Integer.toString(i), seq),1);
 
       }
       firstDay.setSetOfSequences(setOfSequences);

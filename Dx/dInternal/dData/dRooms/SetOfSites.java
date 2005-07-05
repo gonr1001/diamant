@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.8 $  $Date: 2005-02-08 16:24:45 $
+* Title: SetOfSites $Revision: 1.9 $  $Date: 2005-07-05 12:04:30 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,24 +15,21 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
+* @version $Revision: 1.9 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
 package dInternal.dData.dRooms;
 
-import java.awt.Component;
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-//import dInternal.dDataTxt.Resource;
-//import dInternal.dDataTxt.SetOfResources;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
-//import dInternal.dDataTxt.Resource;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -43,7 +40,7 @@ public class SetOfSites extends DSetOfResources{
     /**
      * @associates SetOfSitesListener 
      */
-	private Vector _soSitesListeners;
+	
 	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
 
@@ -56,7 +53,6 @@ public class SetOfSites extends DSetOfResources{
 	public SetOfSites(){ 
 		super();
 		_error ="";
-		_soSitesListeners= new Vector();
 		_roomsAttributesInterpretor = null;
 	}
 
@@ -90,25 +86,25 @@ public class SetOfSites extends DSetOfResources{
 	   *
 	   * @param component
 	   */
-	 public void sendEvent(Component component) {
+/*	 public void sendEvent(Component component) {
 	   SetOfSitesEvent event = new SetOfSitesEvent(this);
 	   for (int i=0; i< _soSitesListeners.size(); i++) {
 	     SetOfSitesListener sorl = (SetOfSitesListener) _soSitesListeners.elementAt(i);
 	     sorl.changeInSetOfRooms(event, component);
 	   }
 	  }
-
+*/
 	  /**
 	   *
 	   * @param dml
 	   */
-	  public synchronized void addSetOfSitesListener(SetOfSitesListener soSitesl) {
+/*	  public synchronized void addSetOfSitesListener(SetOfSitesListener soSitesl) {
 	    if (_soSitesListeners.contains(soSitesl)){
 	      return;
 	    }
 	    _soSitesListeners.addElement(soSitesl);
 	  }
-
+*/
 		/**
 		 * 
 		 * @param attr

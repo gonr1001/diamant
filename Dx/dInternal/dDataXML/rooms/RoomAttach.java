@@ -11,17 +11,17 @@ package dInternal.dDataXML.rooms;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
 import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
+import dInternal.DValue;
 
 public class RoomAttach extends DXObject{
 
   private int _capacity=0;
   private String _description="";
   private int _function=-1;
-  private SetOfResources _setOfCaracteristics;
+  private DSetOfResources _setOfCaracteristics;
 
   /**
    * @associates String 
@@ -31,7 +31,7 @@ public class RoomAttach extends DXObject{
 
   public RoomAttach() {
     _roomAvailability = new Vector();
-    _setOfCaracteristics= new SetOfResources(3);
+    //_setOfCaracteristics= new DSetOfResources();
   }
   /**
    * add an availability day in roomDisp
@@ -71,7 +71,7 @@ public class RoomAttach extends DXObject{
   public boolean addCaracteristics(int  carac){
     if(carac!=-1){
       _setOfCaracteristics.setCurrentKey(carac);
-      return _setOfCaracteristics.addResource(new Resource("",new DXValue()),0);
+      return _setOfCaracteristics.addResource(new DResource("",new DValue()),0);
     }
     return false;
   }
@@ -124,7 +124,7 @@ public class RoomAttach extends DXObject{
 
   /**
    * */
-  public SetOfResources getSetOfCaracteristics(){
+  public DSetOfResources getSetOfCaracteristics(){
     return _setOfCaracteristics;
   }
 

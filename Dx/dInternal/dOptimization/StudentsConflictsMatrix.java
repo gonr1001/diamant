@@ -30,12 +30,6 @@ public class StudentsConflictsMatrix {
   private DSetOfResources _allSections;
   private boolean _doFirstGroupAssignement=true;
 
-  /**
-   * Constructor
-   */
-  public StudentsConflictsMatrix() {
-  	//
-  }
 
   /**
    *

@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.39 $  $Date: 2005-04-15 14:08:49 $
+* Title: TestConditions $Revision: 1.40 $  $Date: 2005-07-05 12:04:31 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.39 $
-* @author  $Author: durp1901 $
+* @version $Revision: 1.40 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import dInternal.DModel;
 import dInternal.DResource;
-import dInternal.dDataTxt.Resource;
+//import dInternal.dDataTxt.Resource;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
@@ -285,11 +285,11 @@ public class TestConditions {
   	DResource res = new DResource(event.getID(),eventAttach);
   	eventAttach.setDuration(improveTTStruct.getPeriodLenght());
   	for(int i=0; i< improveTTStruct.getCurrentCycle().getSetOfDays().size(); i++){
-  		Resource day= improveTTStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
+  		DResource day= improveTTStruct.getCurrentCycle().getSetOfDays().getResourceAt(i);
   		for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-  			Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+  			DResource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
   			for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size();k++){
-  				Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+  				DResource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
   				int[] daytime={(int)day.getKey(), (int)seq.getKey(), (int)per.getKey()};
   				
   				String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];

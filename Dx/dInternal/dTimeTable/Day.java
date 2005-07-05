@@ -6,28 +6,36 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXObject;
-import dInternal.dUtil.DXValue;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.DObject;
+import dInternal.DValue;
+import dInternal.dData.StandardCollection;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.output.XMLWriter;
 
-public class Day extends DXObject{
+public class Day extends DObject{
 
+	  private DSetOfResources _setOfSequences;
+	  private int _currentSequenceIndex = 0;
+	  private String _error = "";
+	  private String _errorMessage = "XML file is corrupted";
+	  static final String _TAGITEM="TTsequence";
+	  static final String _TAGITEM1="sequenceID";
+	  static final String _TAGITEM2="TTperiods";
 
   /**
    * Constructor
    * */
   public Day() {
-    _setOfSequences = new SetOfResources(4);
+    _setOfSequences = new StandardCollection();
   }
 
   /**
    * get the set of sequences
    * @return SetOfResources the set of sequences
    * */
-  public SetOfResources getSetOfSequences(){
+  public DSetOfResources getSetOfSequences(){
     return _setOfSequences;
   }
 
@@ -62,7 +70,7 @@ public class Day extends DXObject{
    * set the set of sequences
    * @param SetOfResources the set of sequences
    * */
-  public void setSetOfSequences(SetOfResources setOfSequences){
+  public void setSetOfSequences(DSetOfResources setOfSequences){
     _setOfSequences= setOfSequences;
   }
 
@@ -88,7 +96,7 @@ public class Day extends DXObject{
         _error = _errorMessage;
         return _error;
       }
-      _setOfSequences.addResource(new Resource(ID,setOfPeriods),0);
+      _setOfSequences.addResource(new DResource(ID,setOfPeriods),0);
     }// end for (int i=0; i< size; i++)
     return _error;
   }
@@ -129,7 +137,7 @@ public class Day extends DXObject{
      int key= (int)getSetOfSequences().getResourceAt(i).getKey();
      Sequence seq= ((Sequence)this.getSetOfSequences().getResourceAt(i).getAttach()).cloneSequence();
      newDay.getSetOfSequences().setCurrentKey(key);
-     newDay.getSetOfSequences().addResource(new Resource(id,seq),0);
+     newDay.getSetOfSequences().addResource(new DResource(id,seq),0);
    }// end for(int i=0; i< day.getSetOfSequences().size(); i++)
 
    return newDay;
@@ -143,10 +151,10 @@ public class Day extends DXObject{
    * return the  period and increment _currentSequenceIndex
    * @return
    */
-  public Period getNextPeriod(DXValue dayValue){
-    DXValue seqValue= new DXValue();
+  public Period getNextPeriod(DValue dayValue){
+    DValue seqValue= new DValue();
     seqValue.setIntValue(_currentSequenceIndex);
-    Period period=  ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex)
+    Period period = ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex)
              .getAttach()).getNextPeriod(seqValue);
      _currentSequenceIndex= seqValue.getIntValue();
     if(_currentSequenceIndex>= _setOfSequences.size()){
@@ -160,9 +168,9 @@ public class Day extends DXObject{
    * return the  previous period and decrement _currentSequenceIndex
    * @return
    */
-  public Period getPreviousPeriod(DXValue dayValue){
+  public Period getPreviousPeriod(DValue dayValue){
     //System.out.println("Sequence: "+_currentSequenceIndex);//debug
-    DXValue seqValue= new DXValue();
+    DValue seqValue= new DValue();
     seqValue.setIntValue(_currentSequenceIndex);
     Period period=  ((Sequence)_setOfSequences.getResourceAt(_currentSequenceIndex)
                      .getAttach()).getPreviousPeriod(seqValue);
@@ -186,7 +194,7 @@ public class Day extends DXObject{
   public String toString(String ID){
     String str="";
     for(int i=0; i< _setOfSequences.size(); i++){
-      Resource rescD= _setOfSequences.getResourceAt(i);
+      DResource rescD= _setOfSequences.getResourceAt(i);
       str+= ((Sequence)rescD.getAttach()).toString(ID+"--"+rescD.getID());
     }
     return str;
@@ -200,8 +208,8 @@ public class Day extends DXObject{
   * */
  public boolean isEquals(Day day){
  	for (int i=0; i< _setOfSequences.size(); i++){
-		Resource seqR= _setOfSequences.getResourceAt(i);
-		Resource seqCloneR= day.getSetOfSequences().getResourceAt(i);
+		DResource seqR= _setOfSequences.getResourceAt(i);
+		DResource seqCloneR= day.getSetOfSequences().getResourceAt(i);
 		if (!seqR.getID().equalsIgnoreCase(seqCloneR.getID()))
 			return false;
 		if(!seqR.getAttach().isEquals(seqCloneR.getAttach()))
@@ -210,12 +218,12 @@ public class Day extends DXObject{
 	return true;
  }
 
+/* (non-Javadoc)
+ * @see dInternal.DObject#getSelectedField()
+ */
+public long getSelectedField() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
-  private SetOfResources _setOfSequences;
-  private int _currentSequenceIndex = 0;
-  private String _error = "";
-  private String _errorMessage = "XML file is corrupted";
-  static final String _TAGITEM="TTsequence";
-  static final String _TAGITEM1="sequenceID";
-  static final String _TAGITEM2="TTperiods";
 }

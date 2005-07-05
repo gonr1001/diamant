@@ -1,6 +1,6 @@
 /**
 *
-* Title: DataExchangeTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: DataExchangeTest $Revision $  $Date: 2005-07-05 12:04:33 $
 * Description: 	DModelTest is a class used to test the class 
 * 				DModel
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dTest.dInternal;
@@ -43,5 +43,8 @@ public class DModelTest extends TestCase{
    return new TestSuite(DModelTest.class);
   } // end suite
 
-
+	public void test_1() {
+		assertEquals("test_1: assertEquals", 0, 
+				0);
+	}
 }

@@ -30,7 +30,7 @@ public class AssignmentTest extends TestCase {
 
 
   public void test_Assignment(){
-    assertEquals("No test is required: : assertEquals", true, true);
+    assertEquals("No test is required: assertEquals", true, true);
   }
 
 

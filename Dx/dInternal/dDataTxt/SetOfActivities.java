@@ -8,7 +8,7 @@ package dInternal.dDataTxt;
  * @author  ysyam, alexander
  * @version 1.0
  */
-import java.awt.Component;
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -20,7 +20,7 @@ public class SetOfActivities extends SetOfResources{
   /**
    * @associates SetOfActivitiesListener 
    */
-  private Vector _SOAListeners = new Vector(1);
+  //private Vector _SOAListeners = new Vector(1);
   /**activities in text format*/
   private byte[] _dataloaded;
   private String _error="";
@@ -1075,19 +1075,19 @@ public class SetOfActivities extends SetOfResources{
    *
    * @param component
    */
- public void sendEvent(Component component) {
+ /*public void sendEvent(Component component) {
    SetOfActivitiesEvent event = new SetOfActivitiesEvent(this);
    for (int i=0; i< _SOAListeners.size(); i++) {
      SetOfActivitiesListener soal = (SetOfActivitiesListener) _SOAListeners.elementAt(i);
      soal.changeInSetOfActivities(event, component);
    }
-  }
+  }*/
 
   /**
    *
    * @param dml
    */
-  public synchronized void addSetOfActivitiesListener(SetOfActivitiesListener soal) {
+ /* public synchronized void addSetOfActivitiesListener(SetOfActivitiesListener soal) {
     //System.out.println("SetOfActivities listener addeed: ");//debug
     if (_SOAListeners.contains(soal)){
       return;
@@ -1095,7 +1095,7 @@ public class SetOfActivities extends SetOfResources{
     _SOAListeners.addElement(soal);
     //System.out.println("addSetOfActivities Listener ...");//debug
   }
-  
+  */
   /**
 	 * check if there is an error detected
 	 * @return

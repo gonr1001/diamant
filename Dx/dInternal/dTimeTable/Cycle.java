@@ -7,22 +7,33 @@ import java.util.StringTokenizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXObject;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.DObject;
+import dInternal.dData.StandardCollection;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
+import dInternal.DValue;
 import dInternal.dUtil.DisplayAttributs;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.output.XMLWriter;
 
-public class Cycle extends DXObject{
+public class Cycle extends DObject{
 	
+	private DSetOfResources _setOfDays;
+	//private int _periodLength;
+	private String _error = "";
+	private int _currentDayIndex=0;
+	private String _errorMessage = "XML file is corrupted";
+	//XML tags
+	static final String _TAGITEM="TTday";
+	static final String _TAGITEM1="dayRef";
+	static final String _TAGITEM2="TTsequences";
+	static final String _TAGITEM4="dayID";
 	//private Day _currentDay;
 	//private int _currentDayIndex=0;
 	
 	public Cycle() {
-		_setOfDays = new SetOfResources(4);
+		_setOfDays = new StandardCollection();
 	}
 		
 	/**
@@ -30,7 +41,7 @@ public class Cycle extends DXObject{
 	 * */
 	public void addDays(int nbDays){		
 		int size= _setOfDays.size();
-		Resource day= _setOfDays.getResourceAt(size-1);
+		DResource day= _setOfDays.getResourceAt(size-1);
 		String lastDayID= day.getID();
 		int lastIndWeek=0;
 		for(int i=0; i< TTStructure._weekTable.length; i++)
@@ -42,7 +53,7 @@ public class Cycle extends DXObject{
 			lastIndWeek++;
 			String dayID= TTStructure._weekTable[lastIndWeek%TTStructure.NUMBEROFACTIVESDAYS];
 			_setOfDays.setCurrentKey(i+1);
-			_setOfDays.addResource(new Resource(dayID,((Day)day.getAttach()).cloneDay()),0);
+			_setOfDays.addResource(new DResource(dayID,((Day)day.getAttach()).cloneDay()),0);
 		}
 	}
 	
@@ -65,7 +76,7 @@ public class Cycle extends DXObject{
 	 * get the set of days
 	 * @return SetOfResources the set of days
 	 * */
-	public SetOfResources getSetOfDays(){
+	public DSetOfResources getSetOfDays(){
 		return _setOfDays;
 	}
 	
@@ -73,7 +84,7 @@ public class Cycle extends DXObject{
 	 * set the set of days
 	 * @param SetOfResources the set of days
 	 * */
-	public void setSetOfDays(SetOfResources setOfDays){
+	public void setSetOfDays(DSetOfResources setOfDays){
 		_setOfDays= setOfDays;
 	}
 	
@@ -160,7 +171,7 @@ public class Cycle extends DXObject{
 			return _error;
 			}
 			_setOfDays.setCurrentKey(Integer.parseInt(key));
-			_setOfDays.addResource(new Resource(ID,setOfSequences),0);
+			_setOfDays.addResource(new DResource(ID,setOfSequences),0);
 		}// end for (int i=0; i< size; i++)
 		return _error;
 	}
@@ -394,7 +405,7 @@ public class Cycle extends DXObject{
 			Sequence seq= (Sequence)day.getSetOfSequences().getResource(seqKey).getAttach();
 			if (seq!=null){
 				
-				Resource rperiod= seq.getSetOfPeriods().getResource(perKey);
+				DResource rperiod= seq.getSetOfPeriods().getResource(perKey);
 				if(rperiod!=null)
 					return (Period)rperiod.getAttach();
 				
@@ -516,11 +527,11 @@ public class Cycle extends DXObject{
 			}
 		}
 		for(int i=0; i< _setOfDays.size(); i++){
-			Resource day =_setOfDays.getResourceAt(i);
+			DResource day =_setOfDays.getResourceAt(i);
 			for (int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-				Resource seq = ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+				DResource seq = ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
 				for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
-					Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+					DResource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
 					String periodKey= day.getKey()+"."+seq.getKey()+"."+per.getKey()+".";
 					String hour="00"+((Period)per.getAttach()).getBeginHour()[0];
 					String minute= "00"+((Period)per.getAttach()).getBeginHour()[1];
@@ -551,14 +562,14 @@ public class Cycle extends DXObject{
 	 * @param periodLength
 	 * @return
 	 */
-	private SetOfResources buildAttributsRowTodisplay(int periodLength){
-		SetOfResources attrib= new SetOfResources(4);
+	private DSetOfResources buildAttributsRowTodisplay(int periodLength){
+		DSetOfResources attrib= new StandardCollection();//rgr rgr
 		for(int i=0; i< _setOfDays.size(); i++){
 			Day day =(Day)_setOfDays.getResourceAt(i).getAttach();
 			for (int j=0; j< day.getSetOfSequences().size(); j++){
 				Sequence seq = (Sequence)day.getSetOfSequences().getResourceAt(j).getAttach();
 				for(int k=0; k< seq.getSetOfPeriods().size(); k++){
-					DXValue value= new DXValue();
+					DValue value= new DValue();
 					value.setIntValue(1);
 					Period per = (Period)seq.getSetOfPeriods().getResourceAt(k).getAttach();
 					String hour="00"+per.getBeginHour()[0];
@@ -581,7 +592,7 @@ public class Cycle extends DXObject{
 						day.getSetOfSequences().size()-1).getAttach();
 				Period per = (Period)seq.getSetOfPeriods().getResourceAt(
 						seq.getSetOfPeriods().size()-1).getAttach();
-				DXValue value= new DXValue();
+				DValue value= new DValue();
 				value.setIntValue(1);
 				String hour="00"+per.getEndHour(periodLength)[0];
 				String minute= "00"+per.getEndHour(periodLength)[1];
@@ -673,7 +684,7 @@ public class Cycle extends DXObject{
 	 * @return
 	 */
 	public Period getNextPeriod(int steps){
-		DXValue dayValue= new DXValue();
+		DValue dayValue= new DValue();
 		Period period= getCurrentDay().getCurrentSequence().getCurrentPeriod();
 		for (int i=0; i< steps; i++){
 			dayValue.setIntValue(_currentDayIndex);
@@ -692,7 +703,7 @@ public class Cycle extends DXObject{
 	 * @return
 	 */
 	public Period getPreviousPeriod(int steps){
-		DXValue dayValue= new DXValue();
+		DValue dayValue= new DValue();
 		steps+=0;
 		Period period;//= getCurrentDay().getCurrentSequence().getCurrentPeriod();
 		//for (int i=steps; i> 0; i--){
@@ -719,7 +730,7 @@ public class Cycle extends DXObject{
 	public String toString(){
 		String str="";
 		for(int i=0; i< _setOfDays.size(); i++){
-			Resource rescD= _setOfDays.getResourceAt(i);
+			DResource rescD= _setOfDays.getResourceAt(i);
 			str+= ((Day)rescD.getAttach()).toString(rescD.getID());
 		}
 		return str;
@@ -733,8 +744,8 @@ public class Cycle extends DXObject{
 	 * */
 	public boolean isEquals(Cycle cycle){
 		for (int i=0; i< _setOfDays.size(); i++){
-			Resource dayR= _setOfDays.getResourceAt(i);
-			Resource dayCloneR= cycle.getSetOfDays().getResourceAt(i);
+			DResource dayR= _setOfDays.getResourceAt(i);
+			DResource dayCloneR= cycle.getSetOfDays().getResourceAt(i);
 			if (!dayR.getID().equalsIgnoreCase(dayCloneR.getID()))
 				return false;
 			if(!dayR.getAttach().isEquals(dayCloneR.getAttach()))
@@ -742,15 +753,14 @@ public class Cycle extends DXObject{
 		}
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see dInternal.DObject#getSelectedField()
+	 */
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
-	private SetOfResources _setOfDays;
-	//private int _periodLength;
-	private String _error = "";
-	private int _currentDayIndex=0;
-	private String _errorMessage = "XML file is corrupted";
-	//XML tags
-	static final String _TAGITEM="TTday";
-	static final String _TAGITEM1="dayRef";
-	static final String _TAGITEM2="TTsequences";
-	static final String _TAGITEM4="dayID";
+
 }

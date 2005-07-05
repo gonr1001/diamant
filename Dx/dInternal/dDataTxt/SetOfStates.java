@@ -1,9 +1,8 @@
 package dInternal.dDataTxt;
 
-import java.util.Vector;
+
 import dConstants.DConst;
-//import dInternal.DSetOfResources;
-//import dInternal.DResource;
+
 
 
 
@@ -14,7 +13,7 @@ public class SetOfStates extends SetOfResources{
   /**
    * @associates SetOfStatesListener 
    */
-  private Vector _sosListener = new Vector(1);
+  //private Vector _sosListener = new Vector(1);
   /***
    * constructor
    */
@@ -76,15 +75,15 @@ public class SetOfStates extends SetOfResources{
    *
    * @param sosl
    */
-  public synchronized void addSetOfStatesListener(SetOfStatesListener sosl) {
+/*  public synchronized void addSetOfStatesListener(SetOfStatesListener sosl) {
     if (_sosListener.contains(sosl)){
       return;
     }
     _sosListener.addElement(sosl);
     //System.out.println("addSetOfStates Listener ...");
    }
-
-   public void sendEvent() {
+*/
+ /*  public void sendEvent() {
     SetOfStatesEvent event = new SetOfStatesEvent(this);
     for (int i=0; i< _sosListener.size(); i++) {
       SetOfStatesListener sosl = (SetOfStatesListener) _sosListener.elementAt(i);
@@ -93,11 +92,11 @@ public class SetOfStates extends SetOfResources{
       // System.out.println("SetOfStates listener started: "+i);//debug
     }
    }
-
-   public synchronized void removeSetOfStatesListener(SetOfStatesListener sosl) {
+*/
+/*   public synchronized void removeSetOfStatesListener(SetOfStatesListener sosl) {
      _sosListener.removeElement(sosl);
    }
-
+*/
 /* (non-Javadoc)
  * @see dInternal.DSetOfResources#toWrite()
  */

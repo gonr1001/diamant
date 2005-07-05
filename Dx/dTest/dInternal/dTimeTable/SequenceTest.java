@@ -19,8 +19,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import eLib.exit.xml.input.XMLReader;
@@ -76,10 +77,10 @@ String path;
   public void test_cloneSequence(){
     Sequence firstSequence = new Sequence();
     Sequence clonedSequence = new Sequence();
-    SetOfResources setOfPeriods = new SetOfResources(4);
+    DSetOfResources setOfPeriods = new StandardCollection();
 
     for (int i = 0; i < 3; i++){
-        setOfPeriods.addResource(new Resource(Integer.toString(i), new Period()),0);
+        setOfPeriods.addResource(new DResource(Integer.toString(i), new Period()),0);
     }
     firstSequence.setSetOfPeriods(setOfPeriods);
     clonedSequence = firstSequence.cloneSequence();
@@ -99,11 +100,11 @@ String path;
     Element  eSetOfPers;
     Sequence firstSequence = new Sequence();
     Sequence savedSequence = new Sequence();
-    SetOfResources setOfPeriods = new SetOfResources(4);
+    DSetOfResources setOfPeriods = new StandardCollection();
     try{
       xmlFile = new XMLInputFile();
       for (int i = 1; i < 5; i++){
-        setOfPeriods.addResource(new Resource(Integer.toString(i), new Period()),1);
+        setOfPeriods.addResource(new DResource(Integer.toString(i), new Period()),1);
       }
       firstSequence.setSetOfPeriods(setOfPeriods);
       XMLWriter wr= new XMLWriter();

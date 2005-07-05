@@ -13,7 +13,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.dData.dActivities.SetOfActivities;
-import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
@@ -89,11 +89,11 @@ public class TestStudentsConditions implements Condition {
           case 0:
             break;
           case 1:
-            Resource resc=per.getEventsInPeriod().getResource(eventKey);
+            DResource resc=per.getEventsInPeriod().getResource(eventKey);
             if(resc!=null)
               ((ConflictsAttach)resc.getAttach()).mergeConflictsAttach(confVal);
             else
-              per.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
+              per.getEventsInPeriod().addResource(new DResource(eventKey,confVal),1);
             per.addNbStudConflict(number);
             break;
           case -1:

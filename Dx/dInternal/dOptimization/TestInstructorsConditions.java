@@ -14,7 +14,7 @@ import dConstants.DConst;
 import dInternal.DModel;
 //import dInternal.dDataTxt.InstructorAttach;
 import dInternal.dData.dInstructors.InstructorAttach;
-import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dTimeTable.Period;
 //import dInternal.dUtil.DXToolsMethods;
 
@@ -52,11 +52,11 @@ public class TestInstructorsConditions  implements Condition{
       case 0:
         break;
       case 1:
-        Resource resc=period.getEventsInPeriod().getResource(eventKey);
+        DResource resc=period.getEventsInPeriod().getResource(eventKey);
         if(resc!=null)
           ((ConflictsAttach)resc.getAttach()).mergeConflictsAttach(confVal);
         else
-          period.getEventsInPeriod().addResource(new Resource(eventKey,confVal),1);
+          period.getEventsInPeriod().addResource(new DResource(eventKey,confVal),1);
         period.addNbInstructorsConflict(number);
         break;
       case -1:period.getEventsInPeriod().removeResource(eventKey);

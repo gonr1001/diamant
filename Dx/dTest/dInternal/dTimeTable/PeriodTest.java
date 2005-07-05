@@ -20,8 +20,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dTimeTable.Period;
 import eLib.exit.xml.input.XMLReader;
@@ -88,13 +88,13 @@ String path;
      Vector vec= new Vector();
      vec.add("YS,RGR,AJ");
      confAttach.addConflict("AMC640.1.02.1",3,"student",vec);
-     period.getEventsInPeriod().addResource(new Resource("GEI200.1.01.1",confAttach),0);
+     period.getEventsInPeriod().addResource(new DResource("GEI200.1.01.1",confAttach),0);
      vec= new Vector();
      vec.add("Alex");
      confAttach= new ConflictsAttach();
      confAttach.addConflict("AMC645.1.01.1",1,"Instructor",vec);
-     period.getEventsInPeriod().addResource(new Resource("ADM111.1.01.1",confAttach),0);
-     SetOfResources sor= period.getConflictsEventsInPeriod("GEI200.1.01.1");
+     period.getEventsInPeriod().addResource(new DResource("ADM111.1.01.1",confAttach),0);
+     DSetOfResources sor= period.getConflictsEventsInPeriod("GEI200.1.01.1");
      assertEquals("test_eventsInPeriod : assertEquals :", 2, sor.size());
   }
 

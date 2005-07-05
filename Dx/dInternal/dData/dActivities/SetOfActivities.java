@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfActivities $Revision: 1.7 $  $Date: 2005-03-08 16:00:44 $
+ * Title: SetOfActivities $Revision: 1.8 $  $Date: 2005-07-05 12:04:29 $
  * Description: SetOfActivities is a class used to
  *
  *
@@ -14,15 +14,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.8 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 package dInternal.dData.dActivities;
 
 
-import java.awt.Component;
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -36,10 +36,7 @@ import dInternal.dUtil.DXToolsMethods;
 //import d
 
 public class SetOfActivities extends DSetOfResources{	
-    /**
-     * @associates SetOfActivitiesListener 
-     */
-	private Vector _SOAListeners = new Vector(1);
+    
 	/**activities in text format*/
 	
 	private String _error="";
@@ -291,8 +288,9 @@ public class SetOfActivities extends DSetOfResources{
    * @param sos
    */
   public void buildStudentRegisteredList(SetOfStudents sos){
-    for(int i=0; i< size(); i++)
+    for(int i=0; i< size(); i++){
       ((Activity)getResourceAt(i).getAttach()).getStudentRegistered().removeAllElements();
+    }
     for (int i=0; i< sos.size(); i++){
       SetOfStuCourses courses= ((SetOfStuCourses)sos.getResourceAt(i).getAttach());
       for (int j=0; j< courses.size(); j++){
@@ -615,7 +613,7 @@ public long getSelectedField() {
    *
    * @param component
    */
- public void sendEvent(Component component) {
+ /*public void sendEvent(Component component) {
    SetOfActivitiesEvent event = new SetOfActivitiesEvent(this);
    for (int i=0; i< _SOAListeners.size(); i++) {
      SetOfActivitiesListener soal = (SetOfActivitiesListener) _SOAListeners.elementAt(i);
@@ -623,11 +621,13 @@ public long getSelectedField() {
      //System.out.println("SetOfActivities listener started: "+i);//debug
    }
   }
-
+*/
   /**
    *
    * @param dml
    */
+
+/*
   public synchronized void addSetOfActivitiesListener(SetOfActivitiesListener soal) {
     //System.out.println("SetOfActivities listener addeed: ");//debug
     if (_SOAListeners.contains(soal)){
@@ -636,7 +636,7 @@ public long getSelectedField() {
     _SOAListeners.addElement(soal);
     //System.out.println("addSetOfActivities Listener ...");//debug
   }
-
+*/
 /* (non-Javadoc)
  * @see dInternal.DSetOfResources#toWrite()
  */

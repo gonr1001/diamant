@@ -1,6 +1,6 @@
 package dInternal.dOptimization;
 
-import java.awt.Component;
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -23,7 +23,6 @@ import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
 
 public class SetOfEvents extends DSetOfResources {
 	/**
@@ -351,7 +350,7 @@ public class SetOfEvents extends DSetOfResources {
 		return res;
 	}
 
-	public String getInstructorConflictDescriptions(DXValue confAt) {//, String
+/*	public String getInstructorConflictDescriptions(DValue confAt) {//, String
 		// eventIDOne)
 		// {
 		String res = "";
@@ -365,7 +364,7 @@ public class SetOfEvents extends DSetOfResources {
 
 		return res;
 	}
-
+*/
 	/**
 	 * 
 	 * @param eventIDOne
@@ -394,7 +393,10 @@ public class SetOfEvents extends DSetOfResources {
 			if (studentTwoInSection.contains(studentOneInSection.get(i))) {
 				String id = _dm.getSetOfStudents().getResource(
 						Long.parseLong(studentOneInSection.get(i).toString()))
-						.getID();
+						.getID();	
+				id = id.replace(',',' ');
+				id = id.replaceFirst("  "," ");
+				id = id.substring(0, DConst.STUDENT_ID_LENGTH);
 				String matricule = "00" + studentOneInSection.get(i).toString();
 				res += matricule.substring(matricule.length()
 						- DConst.END_STUDENT_MATRICULE)
@@ -430,26 +432,26 @@ public class SetOfEvents extends DSetOfResources {
 	 * 
 	 * @param component
 	 */
-	public void sendEvent(Component component) {
+	/*public void sendEvent(Component component) {
 		SetOfEventsEvent event = new SetOfEventsEvent(this);
 		for (int i = 0; i < _soeListeners.size(); i++) {
 			SetOfEventsListener soel = (SetOfEventsListener) _soeListeners
 					.elementAt(i);
 			soel.changeInSetOfEvents(event, component);
 		}
-	}
+	}*/
 
 	/**
 	 * 
 	 * @param dml
 	 */
-	public synchronized void addSetOfEventsListener(SetOfEventsListener sorl) {
+	/*public synchronized void addSetOfEventsListener(SetOfEventsListener sorl) {
 		if (_soeListeners.contains(sorl)) {
 			return;
 		}
 		_soeListeners.addElement(sorl);
 		//System.out.println("addSetOfEvents Listener ...");//debug
-	}
+	}*/
 
 	/*
 	 * (non-Javadoc)

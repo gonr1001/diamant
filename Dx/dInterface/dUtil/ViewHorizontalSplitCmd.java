@@ -1,6 +1,6 @@
 /**
  *
- * Title: ViewHorizontalSplitCmd $Revision: 1.2 $  $Date: 2003-10-28 14:24:53 $
+ * Title: ViewHorizontalSplitCmd $Revision: 1.3 $  $Date: 2005-07-05 12:04:26 $
  * Description: ViewDetailedCmd
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,6 +33,7 @@ import dInterface.DApplication;
 public class ViewHorizontalSplitCmd implements Command {
 
     public ViewHorizontalSplitCmd() {
+    	//to avoid warning
     } // end ViewDetailedCmd
     //------------------------------
     public void execute(DApplication dApplic) {

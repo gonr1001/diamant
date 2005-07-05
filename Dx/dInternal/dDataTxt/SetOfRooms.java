@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRooms $Revision: 1.30 $  $Date: 2005-02-08 16:24:43 $
+* Title: SetOfRooms $Revision: 1.31 $  $Date: 2005-07-05 12:04:28 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,16 +15,16 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.30 $
+* @version $Revision: 1.31 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
 package dInternal.dDataTxt;
 
-import java.awt.Component;
+
 import java.util.StringTokenizer;
-import java.util.Vector;
+
 
 import dConstants.DConst;
 import dInternal.dUtil.DXToolsMethods;
@@ -33,11 +33,6 @@ public class SetOfRooms extends SetOfResources{
 	
 	private byte[] _dataloaded; 
 	private String _error;
-
-    /**
-     * @associates SetOfRoomsListener 
-     */
-	private Vector _sorListeners;
 	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
 
@@ -50,7 +45,7 @@ public class SetOfRooms extends SetOfResources{
 	public SetOfRooms(byte[] dataloaded){ 
 		super(3);
 		_error ="";
-		_sorListeners= new Vector();
+		//_sorListeners= new Vector();
 		_dataloaded = dataloaded;
 		_roomsAttributesInterpretor = null;
 	}
@@ -482,19 +477,21 @@ public class SetOfRooms extends SetOfResources{
    *
    * @param component
    */
- public void sendEvent(Component component) {
+/* public void sendEvent(Component component) {
    SetOfRoomsEvent event = new SetOfRoomsEvent(this);
    for (int i=0; i< _sorListeners.size(); i++) {
      SetOfRoomsListener sorl = (SetOfRoomsListener) _sorListeners.elementAt(i);
      sorl.changeInSetOfRooms(event, component);
    }
-  }
+  }*/
 
   /**
    *
    * @param dml
    */
-  public synchronized void addSetOfRoomsListener(SetOfRoomsListener sorl) {
+ /*
+  * 
+   public synchronized void addSetOfRoomsListener(SetOfRoomsListener sorl) {
     //System.out.println("SetOfActivities listener addeed: ");//debug
     if (_sorListeners.contains(sorl)){
       return;
@@ -502,7 +499,7 @@ public class SetOfRooms extends SetOfResources{
     _sorListeners.addElement(sorl);
     //System.out.println("addSetOfRooms Listener ...");//debug
   }
-
+*/
   /**
    * */
   private boolean isIntValue(String value, String message){

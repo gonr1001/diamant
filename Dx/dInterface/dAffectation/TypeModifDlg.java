@@ -26,7 +26,7 @@ public class TypeModifDlg extends SetOfElementsInterface{
 
 private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};
 private DResource _activity;
-private DApplication _dApplic;
+//private DApplication _dApplic;
   /**
    * Constructor
    * @param dApplic
@@ -86,8 +86,6 @@ private DApplication _dApplic;
         activity.getSetOfTypes().removeResource("2");
         init();
         _dApplic.getDModel().changeInDModelByModifyRemove(this);
-        /*_dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
-        _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/
       }
     }
 

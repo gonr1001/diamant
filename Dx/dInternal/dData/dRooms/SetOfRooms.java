@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.7 $  $Date: 2005-02-08 16:24:45 $
+* Title: SetOfSites $Revision: 1.8 $  $Date: 2005-07-05 12:04:29 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,17 +15,16 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
+* @version $Revision: 1.8 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInternal.dData.dRooms;
 
-import java.awt.Component;
-import java.util.Vector;
+
+
 
 import dConstants.DConst;
-//import dInternal.DResource;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
@@ -34,10 +33,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 
 public class SetOfRooms extends DSetOfResources {
-    /**
-     * @associates SetOfRoomsListener 
-     */
-	private Vector _soSitesListeners;
+
 	
 	/**
 	 * 
@@ -103,23 +99,24 @@ public class SetOfRooms extends DSetOfResources {
 	   *
 	   * @param dml
 	   */
-	  public synchronized void addSetOfRoomsListener(SetOfRoomsListener soRoomsl) {
+/*	  public synchronized void addSetOfRoomsListener(SetOfRoomsListener soRoomsl) {
 	    if (_soSitesListeners.contains(soRoomsl)){
 	      return;
 	    }
 	    _soSitesListeners.addElement(soRoomsl);
 	  }
+	  */
 	  /**
 	   *
 	   * @param component
 	   */
-	 public void sendEvent(Component component) {
+/*	 public void sendEvent(Component component) {
 	 	SetOfRoomsEvent event = new SetOfRoomsEvent(this);
 	   for (int i=0; i< _soSitesListeners.size(); i++) {
 	     SetOfRoomsListener sorl = (SetOfRoomsListener) _soSitesListeners.elementAt(i);
 	     sorl.changeInSetOfRooms(event, component);
 	   }
 	  }
-
+*/
 	  
 }

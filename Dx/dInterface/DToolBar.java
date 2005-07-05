@@ -36,7 +36,7 @@ import javax.swing.JToolBar;
 import dConstants.DConst;
 import dInterface.dTimeTable.PeriodPanel;
 import dInterface.dUtil.DXJComboBox;
-import dInternal.dDataTxt.Resource;
+import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -177,7 +177,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
       	e.toString();
         int item = _daySelector.getSelectedIndex();
         //if( item != -1 ){
-          Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(item);
+          DResource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(item);
           _tts.getCurrentCycle().setCurrentDayIndex(item);
 
           _dayNameSelector.disableActionListeners();
@@ -192,7 +192,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
       public void actionPerformed(ActionEvent e) {
       	e.toString();
         int index= _tts.getCurrentCycle().getCurrentDayIndex();
-        Resource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
+        DResource resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(index);
         resc.setID((String)_dayNameSelector.getSelectedItem());
         //System.out.println("DToolbar.dayNameSelector");//debug
         //Treat event
@@ -339,7 +339,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
     //String [] nameDays= new String[nbDays];
     _daySelector.removeAllItems();
 
-    Resource resc;
+    DResource resc;
     for (int i=0; i< nbDays; i++){
       resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(i);
       days[i]=Integer.toString((int)resc.getKey());

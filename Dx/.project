@@ -16,24 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>DClasses</name>
+			<name>DiamantClasses</name>
 			<type>2</type>
-			<location>D:/Developpements/Classes</location>
-		</link>
-		<link>
-			<name>bin</name>
-			<type>2</type>
-			<location>D:/Developpements/DxTemp/classes</location>
-		</link>
-		<link>
-			<name>DXClasses</name>
-			<type>2</type>
-			<location>D:/exitDev/DXClasses</location>
-		</link>
-		<link>
-			<name>DxClasses</name>
-			<type>2</type>
-			<location>D:/exitDev/classes</location>
+			<location>D:/exitDev/DiamantClasses</location>
 		</link>
 	</linkedResources>
 </projectDescription>

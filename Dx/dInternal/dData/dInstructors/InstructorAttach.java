@@ -139,7 +139,7 @@ public class InstructorAttach extends DObject {
 	 * 
 	 */
 	public void setAvailability(int[][] a) {
-		_instructorAvailability = new Vector(1);
+		_instructorAvailability = new Vector();
 		String str = "";
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a[i].length - 1; j++) {

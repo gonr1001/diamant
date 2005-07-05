@@ -1,0 +1,321 @@
+% $Header: /grp/cvs/cvstictac/DiamantExtremeCopy/presentations/DiamantTrimestre.en.tex,v 1.2 2005-07-05 12:04:41 gonzrubi Exp $
+
+\documentclass{beamer}
+
+\usepackage{dfd,hhline}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice.
+
+\newcommand{\brun}{\noindent $\triangleright$}
+\newcommand{\erun}{$\triangleleft$}
+\newcommand{\key}{\textsf}
+\newcommand{\ita}{\textit}
+\newcommand{\dos}{\textsc}
+\newcommand{\bld}{\textbf}
+\newcommand{\ang}{\textsf}
+\newcommand{\pro}{\texttt}
+\newcommand{\uds}{Universit\'{e} de Sherbrooke}
+\newcommand{\bu}{Bishop's University}
+\def\eXit{$\epsilon$\kern-.100em \lower.5ex\hbox{X}\kern-.125emit}
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+  \usecolortheme{green}
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+%\usepackage[french]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title[Diamant T.] % (optional, use only with long paper titles)
+{Les horaires trimestriels et Diamant}
+
+\subtitle
+{Quelques idées} % (optional)
+
+\author[R.G.R.] % (optional, use only with lots of authors)
+{Ruben Gonzalez-Rubio\inst{1}}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+
+\institute[UdeS] % (optional, but mostly needed)
+{
+  \inst{1}%
+   D\'epartement de g\'enie \'electrique et de g\'enie informatique \\
+\uds{}, Sherbrooke, QC, J1K 2R1, Canada }
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[] % (optional)
+{Juin 05 / réunion}
+
+\subject{Talks}
+% This is only inserted into the PDF information catalog. Can be left
+% out.
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+\pgfdeclareimage[height=0.25cm]{university-logo}{udslogo}
+\logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Since this a solution template for a generic talk, very little can
+% be said about how it should be structured. However, the talk length
+% of between 15min and 45min and the theme suggest that you stick to
+% the following rules:
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+\section{Introduction}
+
+\subsection[]{Information}
+
+\begin{frame}
+  \frametitle{Entrée d'information}
+  \framesubtitle{Sources}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{itemize}
+  \item Registraire.
+    \pause
+    \begin{itemize}
+        \item Étudiants.
+        \pause
+        \end{itemize}
+    \item Facultés.
+       \pause
+        \begin{itemize}
+            \item Offre d'AP, données de l'horaire.
+        \pause
+        \end{itemize}
+    \item Diamant.
+        \pause
+        \begin{itemize}
+            \item Aide à construire l'horaire.
+        \pause
+        \end{itemize}
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{La production d'horaires}
+
+\begin{figure}
+
+\setlength{\unitlength}{0.1cm}
+\begin{picture}(90,35)
+\deffilebox{20}{10}{0.2}
+\defprocessbox{20}{16}
+\put(0, 15){\fichier[\pro{Données}]}
+ \put( 20,20){\vector(1,0){15}}
+\put(35, 12){\process[Système de\\production \\ d'horaires]}
+\put(55, 20){\vector(1,0){7}} \put(62, 20){\corner[y]{-10}{8}}
+\put(62, 20){\corner[y]{10}{8}} \put(70, 25){\fichier[\pro{Papier}]}
+\put(70, 5){\fichier[\pro{Page Web}]}
+\end{picture}
+\caption{La production d'horaires}\label{fig:fOne}
+\end{figure}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{L'évolution des données pendant la production d'un
+horaire}
+
+\begin{figure}[htb] \begin{center}
+\setlength{\unitlength}{0.1cm}
+\begin{picture}(90,40)
+\deffilebox{20}{10}{0.2}
+\defprocessbox{20}{16}
+\put(0, 15){\fichier[$bd_{1}$]}
+
+\put(0, 5){\makebox(20,10){D. de base}}
+
+\put(20, 20){\vector(1,0){10}} \put(30, 15){\fichier[$bd_{2}$]}
+\put(30, 5){\makebox(20,10){D. période $P$}}
+\put(50,20){\vector(1,0){10}}
+
+\put(60, 15){\fichier[$bd_{3}$]}
+
+\put(60, 5){\makebox(20,10){D. horaire}}
+\end{picture}
+\end{center}
+
+\caption{L'évolution des données pendant la production d'un
+horaire}\label{fig:fTwo}
+\end{figure}
+
+
+
+\end{frame}
+
+
+\section{Le trimestre}
+
+\subsection[]{Information nouvelle}
+
+\begin{frame}
+  \frametitle{Données à definir}
+  \framesubtitle{Sources}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{itemize}
+  \item Registraire.
+    \pause
+    \begin{itemize}
+        \item Étudiants. Rien à changer. Étudiant inscrit à AP.
+        \pause
+        \end{itemize}
+    \item Facultés.
+       \pause
+        \begin{itemize}
+            \item Offre d'AP, données de l'horaire. Correspondance
+            entre AP et APP. Événements dans un APP. Équipes ou-et
+            groupes? Grille horaire (déjà fait). Reservation de
+            locaux.
+        \pause
+        \end{itemize}
+    \item Diamant.
+        \pause
+        \begin{itemize}
+            \item Aide à construire l'horaire. Mêmes modifications
+            que sur les données. Plus unification finale?
+        \pause
+        \end{itemize}
+   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Réunion Faculté de génie}
+  \framesubtitle{Sources}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+  \begin{itemize}
+  \item Génie mécanique.
+    \pause
+    \begin{itemize}
+        \item Horaire dynamique (100\% sûr pour deux semaines).
+        \pause
+      \item Substitution de jours.
+        \pause
+        \end{itemize}
+    \item Génie électrique.
+       \pause
+        \begin{itemize}
+            \item Horaire dynamique (100\% sûr pour deux semaines).
+            \pause
+             \item Correspondance entre AP et APP.
+        \pause
+        \item Glossaire des APPs.
+        \end{itemize}
+   \end{itemize}
+\end{frame}
+\section*{La suite}
+
+\begin{frame}
+  \frametitle<presentation>{La suite}
+
+  % Keep the summary *very short*.
+  \begin{itemize}
+  \item
+    Résumé de discussions + actions.
+  \item
+    Validations. Unifier avec Faculté médecine.
+  \item
+    Planification du projet. Unifier avec Faculté médecine.
+  \end{itemize}
+
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
+    Autres possibilités
+    \begin{itemize}
+    \item
+      Possibilité
+    \item
+      Possibilité.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\end{document}

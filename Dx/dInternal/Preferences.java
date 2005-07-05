@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.24 $  $Date: 2004-12-21 15:13:36 $
+ * Title: Preferences $Revision: 1.25 $  $Date: 2005-07-05 12:04:27 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
- * @author  $Author: garr2701 $
+ * @version $Revision: 1.25 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal;
@@ -47,6 +47,7 @@ public class Preferences {
   private DApplication _dApplic;
 
   public Preferences() {
+  	//  to avoid warning
   }
   
   public Preferences(String str) {//throws InputFileException{

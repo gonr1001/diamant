@@ -32,7 +32,7 @@ public class ExportData {
     _dm = dm;
   }
 
-  public String exportActivities(){
+  private String exportActivities(){
     /* 0= activity name, 1= type name, 2= section name, 3= unity name, 4= duration of the activity
     * 5= day number where activity is assign, 6= day name where activity is assign
     * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
@@ -112,7 +112,7 @@ public class ExportData {
   	return "";
   }
   
-  public String exportStudents(){
+  private String exportStudents(){
      /*
   *_studentsReport is a string where each line contains more informations separeted
   * by a ";" separator

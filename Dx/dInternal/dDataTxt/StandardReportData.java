@@ -15,11 +15,11 @@ import java.util.Vector;
 import dConstants.DConst;
 //import dInterface.dUtil.DXTools;
 import dInternal.DModel;
-import dInternal.dOptimization.ConflictsAttach;
+/*import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
-import dInternal.dTimeTable.Sequence;
+import dInternal.dTimeTable.Sequence;*/
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.dUtil.DXValue;
 
@@ -27,9 +27,9 @@ public class StandardReportData {
 
   private DModel _dm;
   //private int _AHOUR=60;// a hour= 60 minutes
-  private int STATE1=300;
-  private int STATE2=600;
-  private int STATE3=100;
+  //private int STATE1=300;
+  //private int STATE2=600;
+  //private int STATE3=100;
   //private StringBuffer _HOURSEPARATOR= new StringBuffer("h");
   /*
   *_activitiesReport is a string where each line contains more informations separeted
@@ -76,9 +76,9 @@ public class StandardReportData {
     _activitiesReport = buildActivitiesReport();
     
     _studentsReport = buildStudentsReport();
-    
+/*    
     _conflictsReport= buildConflictsReport();
-    
+*/    
     _dm.getProgressBarState().setIntValue(1000);
    // System.out.println("**** Final Change progess bar: "+ _dm.getProgressBarState().getIntValue());
   }
@@ -235,6 +235,8 @@ public class StandardReportData {
    * type= 2: instructor conflict
    * @return
    */
+  
+ /*
   private String buildConflictsReport(){
     StringBuffer report= new StringBuffer("");
     int size= _dm.getTTStructure().getCurrentCycle().getSetOfDays().size();
@@ -242,21 +244,19 @@ public class StandardReportData {
       _dm.getProgressBarState().setIntValue(STATE1+STATE2+STATE3*i/size);
       Resource day= _dm.getTTStructure().getCurrentCycle().getSetOfDays().getResourceAt(i);
       for(int j=0; j< ((Day)day.getAttach()).getSetOfSequences().size(); j++){
-        Resource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
+        DResource seq= ((Day)day.getAttach()).getSetOfSequences().getResourceAt(j);
         for(int k=0; k< ((Sequence)seq.getAttach()).getSetOfPeriods().size(); k++){
-          Resource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
+          DResource per= ((Sequence)seq.getAttach()).getSetOfPeriods().getResourceAt(k);
           ((Period)per.getAttach()).getEventsInPeriod().sortSetOfResourcesByID();
           for(int x=0; x< ((Period)per.getAttach()).getEventsInPeriod().size(); x++){
-            Resource confEvents= ((Period)per.getAttach()).getEventsInPeriod().getResourceAt(x);
+            DResource confEvents= ((Period)per.getAttach()).getEventsInPeriod().getResourceAt(x);
             ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().sortSetOfResourcesByID();
             for(int y=0; y< ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().size(); y++){
               Resource confAttach= ((ConflictsAttach)confEvents.getAttach()).getConflictsAttach().getResourceAt(y);
               DXValue confValue= (DXValue)confAttach.getAttach();
               StringBuffer strBuf = new StringBuffer("yyyyyyy");
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_STUDENT_NAME)){
-               /* str = _dm.getSetOfEvents().getStudentConflictDescriptions(
-                  _dm.getSetOfEvents().getEventID(confEvents.getID(), _dm.getSetOfActivities()),
-                  _dm.getSetOfEvents().getEventID(confAttach.getID(), _dm.getSetOfActivities()));*/
+             
                 strBuf = new StringBuffer(_dm.getSetOfEvents().getStudentConflictDescriptions(confEvents.getID(),confAttach.getID()));
               }
               if (confValue.getStringValue().equalsIgnoreCase(DConst.R_INSTRUCTOR_NAME)){
@@ -290,7 +290,7 @@ public class StandardReportData {
     //System.out.println(report);//debug
     return report.toString();
   }
-
+*/
   /**
    *
    * @param str

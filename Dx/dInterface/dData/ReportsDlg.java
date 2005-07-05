@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.15 $  $Date: 2005-04-19 20:37:44 $
+ * Title: ReportsDlg $Revision: 1.16 $  $Date: 2005-07-05 12:04:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -39,7 +39,6 @@ import javax.swing.JTabbedPane;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-//import dInterface.ProgressBar;
 import dInternal.dData.DStandardReportData;
 
 public class ReportsDlg extends JDialog {// implements ActionListener{
@@ -66,7 +65,7 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
     //_resources = new SetOfResources[1];
     _dApplic.setCursorWait();
     //pBar.execute();
-    _srd = new DStandardReportData(_dApplic.getDMediator().getCurrentDoc().getDM());
+    _srd = new DStandardReportData(_dApplic.getDModel());
     _dApplic.setCursorDefault();
     //System.out.println("Génération de rapports terminé");
     //pBar.close();

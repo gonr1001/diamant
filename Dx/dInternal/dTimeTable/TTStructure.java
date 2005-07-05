@@ -4,11 +4,9 @@ import java.io.File;
 
 import java.util.Vector;
 
-
-import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.Resource;
-
-
+import dInternal.DSetOfResources;
+import dInternal.DResource;
+import dInternal.dData.StandardCollection;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,7 +22,7 @@ import eLib.exit.xml.output.XMLOutputFile;
 
 public class TTStructure {
   private Vector _ttsListeners = new Vector();
-  private SetOfResources _setOfCycles;
+  private DSetOfResources _setOfCycles;
 
   //private int _nbOfStCycles=2;
   //private int _nbOfStDays=7;
@@ -56,7 +54,7 @@ public class TTStructure {
   static final String _TAGITEM3="TTdays";
   
   public TTStructure() {
-    _setOfCycles= new SetOfResources(4); // XXXX Pascal: magic number
+    _setOfCycles= new StandardCollection(); // XXXX Pascal: magic number
   }
   
   public int getNumberOfActiveDays(){
@@ -73,7 +71,7 @@ public class TTStructure {
 
 
 
- public SetOfResources getSetOfCycles() {
+ public DSetOfResources getSetOfCycles() {
     return _setOfCycles;
  }
 
@@ -98,7 +96,7 @@ public class TTStructure {
     return (Cycle)_setOfCycles.getResourceAt(_currentCycleIndex).getAttach();
   }
 
-  public Resource getCurrentCycleResource(){
+  public DResource getCurrentCycleResource(){
    return _setOfCycles.getResourceAt(_currentCycleIndex);
   }
 
@@ -327,7 +325,7 @@ public class TTStructure {
        _error = DConst.ERROR_XML_FILE;
        return _error;
      }
-     _setOfCycles.addResource(new Resource(ID,setOfdays),0);
+     _setOfCycles.addResource(new DResource(ID,setOfdays),0);
    }// end for (int i=0; i< size; i++)
    return _error;
  }
@@ -365,7 +363,7 @@ public class TTStructure {
    * @return
    */
   public int findIndexInWeekTable(long key){
-    Resource day = this.getCurrentCycle().getSetOfDays().getResource(key);
+    DResource day = this.getCurrentCycle().getSetOfDays().getResource(key);
     if(day!=null){
       for (int i=0; i< _weekTable.length; i++)
         if(day.getID().equalsIgnoreCase(_weekTable[i]))
@@ -442,8 +440,8 @@ public class TTStructure {
 	 */
   public boolean isEquals(TTStructure tts){
 		for (int i=0; i< _setOfCycles.size(); i++){
-			Resource cycleR= _setOfCycles.getResourceAt(i);
-			Resource cycleCloneR= tts.getSetOfCycles().getResourceAt(i);
+			DResource cycleR= _setOfCycles.getResourceAt(i);
+			DResource cycleCloneR= tts.getSetOfCycles().getResourceAt(i);
 			if (!cycleR.getID().equalsIgnoreCase(cycleCloneR.getID()))
 				return false;
 			if(!cycleR.getAttach().isEquals(cycleCloneR.getAttach()))

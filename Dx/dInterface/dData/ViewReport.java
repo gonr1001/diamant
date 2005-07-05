@@ -24,7 +24,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DXTools;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DXValue;
+import dInternal.DValue;
 
 
 public abstract class ViewReport  extends JPanel implements ActionListener {
@@ -107,8 +107,8 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     int index = -1;
 
     for(int i = 0; i < v.size(); i++) {
-      if ( ((FieldRecord)((DXValue)v.get(i)).getObjectValue())._str.compareTo(str)==0)
-        return ((DXValue)v.get(i)).getIntValue();
+      if ( ((FieldRecord)((DValue)v.get(i)).getObjectValue())._str.compareTo(str)==0)
+        return ((DValue)v.get(i)).getIntValue();
     }
     return index;
   }
@@ -129,8 +129,8 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
 
     for(int i = 0; i < right.size(); i++) {
       for(int j = 0; j < allOpt.size(); j++){
-        if(((FieldRecord)((DXValue)allOpt.get(j)).getObjectValue())._str.compareTo((String) right.get(i)) == 0) {
-          a [i] = ( ((FieldRecord)((DXValue)allOpt.get(j)).getObjectValue())._n);
+        if(((FieldRecord)((DValue)allOpt.get(j)).getObjectValue())._str.compareTo((String) right.get(i)) == 0) {
+          a [i] = ( ((FieldRecord)((DValue)allOpt.get(j)).getObjectValue())._n);
           break;
         }
       }
@@ -144,7 +144,7 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     Vector v = new Vector();
     for (int i=0; i< opt.size(); i++)
       //v.add(((FieldRecord) opt.get(i))._str);
-      v.add((((FieldRecord)((DXValue) opt.get(i)).getObjectValue())._str));
+      v.add((((FieldRecord)((DValue) opt.get(i)).getObjectValue())._str));
     return v;
   }
   /**

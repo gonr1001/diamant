@@ -10,14 +10,14 @@ package dInternal.dDataXML.rooms;
  */
 
 import java.awt.Component;
-import java.util.Vector;
-
-import org.w3c.dom.Element;
 
 
-//import dInternal.dDataTxt.RoomsAttributesInterpretor;
+
+
+
+
 import dInternal.dDataTxt.SetOfResources;
-import dInternal.dDataTxt.SetOfRoomsListener;
+
 
 public class SetOfCategories extends SetOfResources{
 
@@ -35,7 +35,7 @@ public class SetOfCategories extends SetOfResources{
   static final String _ROOMTAGITEM2_4_1="day";
 
   //private byte[] _dataloaded; //_st;// rooms in text format to remove
-  private Element _setofcat;// XML set of category element
+  //private Element _setofcat;// XML set of category element
   //private int _numberOfLines;// represent number of days
   //private int _numberOfColumns;// represent number of period a day.
   private String _error="";
@@ -43,7 +43,7 @@ public class SetOfCategories extends SetOfResources{
   /**
    * @associates SetOfRoomsListener 
    */
-  private Vector _sorListeners= new Vector(1);
+  //private Vector _sorListeners= new Vector(1);
   //private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
  /***
@@ -87,7 +87,7 @@ public class SetOfCategories extends SetOfResources{
    *
    */
   public void buildSetOfResources(){
-
+//  to avoid warning
   }
 
 
@@ -116,7 +116,7 @@ public class SetOfCategories extends SetOfResources{
    *
    * @param dml
    */
-  public synchronized void addSetOfRoomsListener(SetOfRoomsListener sorl) {
+/*  public synchronized void addSetOfRoomsListener(SetOfRoomsListener sorl) {
     //System.out.println("SetOfActivities listener addeed: ");//debug
     if (_sorListeners.contains(sorl)){
       return;
@@ -124,13 +124,14 @@ public class SetOfCategories extends SetOfResources{
     _sorListeners.addElement(sorl);
     //System.out.println("addSetOfRooms Listener ...");//debug
   }
-
+*/
 
   /**
    * Read categories in the xml file
    * @return
    */
   private String readCategoryTag(String fileName){
+  	fileName.toString();
 /*    _setofcat= XMLTools.getRootDocument(fileName);
     ReadXMLElement list= new ReadXMLElement();
     String ID="";
@@ -160,7 +161,7 @@ public class SetOfCategories extends SetOfResources{
    * @param setofrooms
    * @return
    */
-  private String readRoomsTag(Element setofrooms){
+ // private String readRoomsTag(Element setofrooms){
   /*  //ReadXMLElement list= new ReadXMLElement();
    //String name="", capacity="";
   // String error= XMLTools.tagError(setofrooms,_ROOMTAGITEM2);
@@ -176,8 +177,8 @@ public class SetOfCategories extends SetOfResources{
        //_setOfCycles.addResource(new Resource(ID,setOfdays),0);
      }// end for (int i=0; i< size; i++)
    }// end if(error.length()==0)*/
-    return "error";
-  }
+   // return "error";
+ // }
 
 
 }

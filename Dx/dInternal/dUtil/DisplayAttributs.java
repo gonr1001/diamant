@@ -18,7 +18,7 @@ package dInternal.dUtil;
  * @version 1.0
  */
 
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DSetOfResources;
 
 public class DisplayAttributs {
   /**
@@ -40,7 +40,7 @@ public class DisplayAttributs {
    /**
     * events place in period
     */
-   private SetOfResources _eventsInPeriods;
+   private DSetOfResources _eventsInPeriods;
 
    /**
     * constructor
@@ -48,7 +48,7 @@ public class DisplayAttributs {
     * @param hourToDisplay
     * @param eventsInPeriods
     */
-   public DisplayAttributs(String periodKey, String hourToDisplay, SetOfResources eventsInPeriods) {
+   public DisplayAttributs(String periodKey, String hourToDisplay, DSetOfResources eventsInPeriods) {
     _periodKey= periodKey;
     _hourToDisplay= hourToDisplay;
     _eventsInPeriods= eventsInPeriods;
@@ -116,7 +116,7 @@ public DisplayAttributs() {
    *
    * @return
    */
-  public SetOfResources getEventsInPeriods(){
+  public DSetOfResources getEventsInPeriods(){
     return _eventsInPeriods;
   }
 }// end class
