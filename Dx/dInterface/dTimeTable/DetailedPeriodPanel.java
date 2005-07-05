@@ -37,9 +37,9 @@ import javax.swing.JPanel;
 
 import dConstants.DConst;
 import dInterface.selectiveSchedule.SelectiveScheduleManager;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dTimeTable.Period;
-import dInternal.dDataTxt.Resource;
 import dInterface.DApplication;
 import dInternal.DResource;
 
@@ -73,16 +73,16 @@ public class DetailedPeriodPanel extends PeriodPanel{
         JLabel per = new JLabel(" Période " + _panelRefNo + " ");
 
         if (SelectiveScheduleManager.getInstance().isEnabled()) {
-            SetOfResources sor = new SetOfResources(6); // 6 = events
+            DSetOfResources sor = new StandardCollection(); // 6 = events
             // On inclus seulement les evenements qui sont filtres par
             // SelectiveScheduleManager
 
-            SetOfResources eip = period.getEventsInPeriod();
+            DSetOfResources eip = period.getEventsInPeriod();
             Vector setOfResources = eip.getSetOfResources();
             Iterator itrSetOfResources = setOfResources.iterator();
 
             while (itrSetOfResources.hasNext()) {
-                Resource res = (Resource) itrSetOfResources.next();
+                DResource res = (DResource) itrSetOfResources.next();
                 DResource eventRes = DApplication.getInstance().getDModel()
                         .getSetOfEvents().getResource(res.getID());
                 if (SelectiveScheduleManager.getInstance().validateElement(
