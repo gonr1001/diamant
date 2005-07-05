@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "v 1.6.1.5 du 4 Juillet 2005";//res.getString("vDate");
+  	public final static String V_DATE = "v 1.6.2.1 du 5 Juillet 2005";//res.getString("vDate");
 	public final static boolean DEVELOPMENT = false;// false
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX

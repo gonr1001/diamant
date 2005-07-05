@@ -39,7 +39,6 @@ import dDeveloper.ShowAllCmd;
 import dDeveloper.StateZeroCmd;
 import dInterface.dAffectation.ActivityCmd;
 import dInterface.dAffectation.ActivityModifCmd;
-import dInterface.dAffectation.DefineSetCmd;
 import dInterface.dAffectation.EventsCmd;
 import dInterface.dAffectation.InitialAssignCmd;
 import dInterface.dAffectation.PartialTTStructureCmd;
