@@ -123,8 +123,8 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 	// the assign menus
 	private CmdMenu _activities, _sections, _instructorAvailability,
-			_roomsAvailability, _events, /* _exclusion, _conflict, */
-			_defineSet, _partialTTStructure;
+			_roomsAvailability, _events, /* _exclusion, _conflict,
+			_defineSet,*/ _partialTTStructure;
 
 	private boolean _boolActivities, _boolSections,
 			_boolInstructorAvailability, _boolRoomsAvailability, _boolEvents  /*
@@ -350,12 +350,12 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_assign.addSeparator();
 
-		_defineSet = new CmdMenu(DConst.DEFINE_SET_M);
+/*		_defineSet = new CmdMenu(DConst.DEFINE_SET_M);
 		_defineSet.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_defineSet.setCommand(new DefineSetCmd());
 		_defineSet.addActionListener(_dApplic);
 		_assign.add(_defineSet);
-
+*/
 		_partialTTStructure = new CmdMenu(DConst.PARTIAL_TTSTRUCTURE_M);
 		_partialTTStructure.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_partialTTStructure.setCommand(new PartialTTStructureCmd());
