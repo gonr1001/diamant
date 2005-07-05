@@ -13,9 +13,10 @@ import dInterface.Command;
 import dInterface.DApplication;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 
-public class PartialTTStructureCmd implements Command{
+public class PartialTTStructureCmd implements Command {
 
-  public void execute(DApplication dApplic) {
-    SelectiveScheduleDlg.getInstance().displayDlg();
-  }
+	public void execute(DApplication dApplic) {
+		dApplic.toString();
+		SelectiveScheduleDlg.getInstance().displayDlg();
+	}
 }

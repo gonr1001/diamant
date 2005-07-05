@@ -17,9 +17,6 @@ import dInternal.DResource;
 
 import org.apache.log4j.Logger;
 
-import java.awt.Dialog;
-import java.awt.Frame;
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,122 +70,122 @@ public class SetEditorDlg extends JDialog {
         initialize();
     }
     
-    /**
-     * @param owner
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Dialog owner) throws HeadlessException {
-        super(owner);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param modal
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Dialog owner, boolean modal) throws HeadlessException {
-        super(owner, modal);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Frame owner) throws HeadlessException {
-        super(owner);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param modal
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Frame owner, boolean modal) throws HeadlessException {
-        super(owner, modal);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param title
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Dialog owner, String title) throws HeadlessException {
-        super(owner, title);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param title
-     * @param modal
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Dialog owner, String title, boolean modal)
-    throws HeadlessException {
-        super(owner, title, modal);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param title
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Frame owner, String title) throws HeadlessException {
-        super(owner, title);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param title
-     * @param modal
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Frame owner, String title, boolean modal)
-    throws HeadlessException {
-        super(owner, title, modal);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param title
-     * @param modal
-     * @param gc
-     * @throws java.awt.HeadlessException
-     */
-    private SetEditorDlg(Dialog owner, String title, boolean modal,
-            GraphicsConfiguration gc) throws HeadlessException {
-        super(owner, title, modal, gc);
-        
-        initialize();
-    }
-    
-    /**
-     * @param owner
-     * @param title
-     * @param modal
-     * @param gc
-     */
-    private SetEditorDlg(Frame owner, String title, boolean modal,
-            GraphicsConfiguration gc) {
-        super(owner, title, modal, gc);
-        
-        initialize();
-    }
+//    /**
+//     * @param owner
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Dialog owner) throws HeadlessException {
+//        super(owner);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param modal
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Dialog owner, boolean modal) throws HeadlessException {
+//        super(owner, modal);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Frame owner) throws HeadlessException {
+//        super(owner);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param modal
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Frame owner, boolean modal) throws HeadlessException {
+//        super(owner, modal);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param title
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Dialog owner, String title) throws HeadlessException {
+//        super(owner, title);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param title
+//     * @param modal
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Dialog owner, String title, boolean modal)
+//    throws HeadlessException {
+//        super(owner, title, modal);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param title
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Frame owner, String title) throws HeadlessException {
+//        super(owner, title);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param title
+//     * @param modal
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Frame owner, String title, boolean modal)
+//    throws HeadlessException {
+//        super(owner, title, modal);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param title
+//     * @param modal
+//     * @param gc
+//     * @throws java.awt.HeadlessException
+//     */
+//    private SetEditorDlg(Dialog owner, String title, boolean modal,
+//            GraphicsConfiguration gc) throws HeadlessException {
+//        super(owner, title, modal, gc);
+//        
+//        initialize();
+//    }
+//    
+//    /**
+//     * @param owner
+//     * @param title
+//     * @param modal
+//     * @param gc
+//     */
+//    private SetEditorDlg(Frame owner, String title, boolean modal,
+//            GraphicsConfiguration gc) {
+//        super(owner, title, modal, gc);
+//        
+//        initialize();
+//    }
     
     /**
      * Le nom d'un ensemble doit commencer par une lettre. Ensuite il peut
@@ -220,8 +217,8 @@ public class SetEditorDlg extends JDialog {
         setVisible(true);
     }
     
-    private void createSet() {
-    }
+//    private void createSet() {
+//    }
     
     private void populateAvailableElements() {
         Iterator itrActivityNames = DApplication.getInstance().getDModel()
@@ -426,6 +423,7 @@ public class SetEditorDlg extends JDialog {
          * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
          */
         public void actionPerformed(ActionEvent e) {
+        	e.toString();
             transferElementFromSetToAvailable();
         }
         
@@ -480,6 +478,7 @@ public class SetEditorDlg extends JDialog {
          * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
          */
         public void actionPerformed(ActionEvent e) {
+        	e.toString();
             transferElementFromAvailableToSet();
         }
         
@@ -556,6 +555,7 @@ public class SetEditorDlg extends JDialog {
          */
         public void actionPerformed(ActionEvent e) {
             try {
+            	e.toString();
                 updateModel();
                 /* au cas où le model a changé suite à updateModel() */
                 SelectiveScheduleDlg.getInstance().updateDlg(); 
@@ -603,6 +603,7 @@ public class SetEditorDlg extends JDialog {
          * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
          */
         public void actionPerformed(ActionEvent e) {
+        	e.toString();
             SetEditorDlg.this.dispose();
         }
         

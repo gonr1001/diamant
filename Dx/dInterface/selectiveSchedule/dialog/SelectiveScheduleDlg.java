@@ -11,13 +11,10 @@ import dInterface.DApplication;
 import dInterface.selectiveSchedule.SelectiveScheduleManager;
 
 import dInterface.selectiveSchedule.filters.FilterSet;
-import dInterface.selectiveSchedule.filters.FilterSetNameException;
 import dInterface.selectiveSchedule.persistance.PersistanceMismatch;
 import dInterface.selectiveSchedule.persistance.PersistanceMismatchException;
 
 import dInternal.DResource;
-
-import dInternal.dData.dActivities.SetOfActivities;
 
 import org.apache.log4j.Logger;
 
@@ -226,36 +223,36 @@ public class SelectiveScheduleDlg extends JDialog {
      * elle qui est en fonction) est demandé
      *  
      */
-    private void test() {
-        // 1.
-        FilterSet fs = SelectiveScheduleManager.getInstance().createFilterSet();
-
-        SetOfActivities soa = DApplication.getInstance().getDMediator()
-                .getCurrentDoc().getDM().getSetOfActivities();
-        DResource activity = soa.getResource("GBT120");
-
-        try {
-            // 2.
-            fs.getFilterSetIdentifier().setFilterSetName("blah");
-        } catch (FilterSetNameException e) {
-            e.printStackTrace();
-        }
-
-        // 3.
-        // Cette fonctionnalite n'a pas encore ete designee. Devrais-je ajouter
-        // un service setActive aux Filtres?
-        fs.addFilter(activity);
-        SelectiveScheduleManager.getInstance().addFilterSet(fs);
-
-        // 4.
-        SelectiveScheduleManager.getInstance().setEnabled(true);
-
-        // 5.
-        // Le SelectiveSche.. est deja dans l'etat voulu
-        // 6.
-        // 7.
-        // a implementer (car si utilisateur est deja dans sa vue detaillee...)
-    }
+//    private void test() {
+//        // 1.
+//        FilterSet fs = SelectiveScheduleManager.getInstance().createFilterSet();
+//
+//        SetOfActivities soa = DApplication.getInstance().getDMediator()
+//                .getCurrentDoc().getDM().getSetOfActivities();
+//        DResource activity = soa.getResource("GBT120");
+//
+//        try {
+//            // 2.
+//            fs.getFilterSetIdentifier().setFilterSetName("blah");
+//        } catch (FilterSetNameException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // 3.
+//        // Cette fonctionnalite n'a pas encore ete designee. Devrais-je ajouter
+//        // un service setActive aux Filtres?
+//        fs.addFilter(activity);
+//        SelectiveScheduleManager.getInstance().addFilterSet(fs);
+//
+//        // 4.
+//        SelectiveScheduleManager.getInstance().setEnabled(true);
+//
+//        // 5.
+//        // Le SelectiveSche.. est deja dans l'etat voulu
+//        // 6.
+//        // 7.
+//        // a implementer (car si utilisateur est deja dans sa vue detaillee...)
+//    }
 
     /**
      * @author Pascal
@@ -518,9 +515,9 @@ public class SelectiveScheduleDlg extends JDialog {
             _mainPanel.add(scrollPane);
         }
 
-        void updateView() {
-
-        }
+//        void updateView() {
+//
+//        }
 
         void addFilterSetElements(FilterSet fs) {
             Iterator itr = fs.getIterator();
@@ -636,9 +633,10 @@ public class SelectiveScheduleDlg extends JDialog {
      */
     public class CreateFilterSetComboBoxAction implements ComboBoxAction {
         /**
-         *  
+         * 
          */
         CreateFilterSetComboBoxAction() {
+        	super();
         }
 
         /*
@@ -669,6 +667,7 @@ public class SelectiveScheduleDlg extends JDialog {
          *  
          */
         ModifyFilterSetComboBoxAction() {
+        	super();
         }
 
         /*
@@ -716,6 +715,7 @@ public class SelectiveScheduleDlg extends JDialog {
          *  
          */
         DeleteFilterSetComboBoxAction() {
+        	super();
         }
 
         /*
@@ -853,6 +853,7 @@ public class SelectiveScheduleDlg extends JDialog {
          */
         public void actionPerformed(ActionEvent e) {
             try {
+            	e.toString();
                 writeToPersistenceSink();
             } catch (SelectiveScheduleFileIOException e1) {
                 // TODO Auto-generated catch block
@@ -904,6 +905,7 @@ public class SelectiveScheduleDlg extends JDialog {
          * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
          */
         public void actionPerformed(ActionEvent e) {
+        	e.toString();
             SelectiveScheduleDlg.this.dispose();
         }
     }

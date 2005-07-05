@@ -28,7 +28,7 @@ public class FilterSetIdentifier {
     private boolean _active = false;
 
     public FilterSetIdentifier() {
-
+    	super();
     }
 
     public String getFilterSetName() {

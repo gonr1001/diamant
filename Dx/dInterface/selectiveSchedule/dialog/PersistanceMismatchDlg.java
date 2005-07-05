@@ -233,6 +233,7 @@ public class PersistanceMismatchDlg extends JDialog {
          * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
          */
         public void actionPerformed(ActionEvent e) {
+        	e.toString();
             PersistanceMismatchDlg.this.dispose();
         }
 

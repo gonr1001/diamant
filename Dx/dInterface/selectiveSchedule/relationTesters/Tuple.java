@@ -23,6 +23,7 @@ public class Tuple {
     private Class[] _elements = null;
 
     public Tuple() {
+    	super();
     }
     
     public Tuple(Class[] elements) {
