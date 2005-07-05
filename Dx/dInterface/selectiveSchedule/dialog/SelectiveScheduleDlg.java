@@ -471,7 +471,6 @@ public class SelectiveScheduleDlg extends JDialog {
                 if (fs.getFilterSetIdentifier().getFilterSetName().equals(
                         fileterSetName)) {
                     result = fs;
-                    ;
                 }
             }
 
