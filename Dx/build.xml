@@ -106,12 +106,15 @@
 		<unjar src="${eclipse}/org.junit_3.8.1/junit.jar" dest="${build}"/>
 	</target>
 	<target name="unjar2" depends="unjar1">
-		<unjar src="${localJars}\log4j-1.2.8.jar" dest="${build}"/>
+		<unjar src="${localJars}/log4j-1.2.8.jar" dest="${build}"/>
 	</target>
 	<target name="unjar3" depends="unjar2">
 		<unjar src="${localJars}/xml-apis.jar" dest="${build}"/>
 	</target>
-	<target name="manifest" depends="unjar3" description="make the manifest">
+	<target name="unjar4" depends="unjar3">
+		<unjar src="${localJars}/jdom.jar" dest="${build}"/>
+	</target>
+	<target name="manifest" depends="unjar4" description="make the manifest">
 		<manifest file="${srcDir}/MANIFEST.MF">
 			<attribute name="Built-By" value="${user.name}"/>
 			<attribute name="Built-On" value="${timestamp}"/>
