@@ -22,8 +22,8 @@ obligatoirement.
 Les indexes de chaînes de caractères commencent à \verb!0!.
 
 
-
-\section{Fichier d'étudiants}
+%-----------------------------------------------------------------------------
+\section{Fichier d'étudiants version 1.5}
 
 Ce fichier est un héritage de format \saphir{}.
 
@@ -124,6 +124,131 @@ Il est mis dans \verb!_auxField!.
 une liste de cours, ceci correspond aux cours dans la ligne de type trois.
 Il est mis dans \verb!_resourceAttach!.
 
+
+%-----------------------------------------------------------------------------
+\section{Fichier d'étudiants version 1.6}
+
+
+\subsection{Exemple des données qu'il contient}
+
+\begin{verbatim}
+Diamant1.6
+E 009164872605000220043 Gagnon-Auger, Maude
+C KIN102100 SHE
+C KIN125100 SHE
+C KIN214100 SHE
+C KIN214200 SHE
+C KIN216100 SHE
+C KIN216200 SHE
+C KIN220100 SHE
+C KIN222100 SHE
+C KIN241100 SHE
+C KIN302100 SHE
+E 009284382605000320053 Rivest, Catherine
+C EPS200100 SHE
+C EPS201100 SHE
+C EPS201200 SHE
+C EPS300100 SHE
+C EPS310100 SHE
+C KIN200100 SHE
+C KIN210100 SHE
+C KIN211100 SHE
+...
+T 00635
+
+\end{verbatim}
+
+\subsection{Signification des données}
+
+Il existe quatre types de lignes :
+
+\begin{enumerate}
+    \item Ligne d'identification de la version de Diamant (Ligne de
+    type 1).
+    \item Ligne de type E qui contient l'identification de
+    l'étudiant (Ligne de type 2).
+    \item Ligne de type C qui contient l'identification des cours que l'étudiant suit (Ligne de
+    type 3).
+    \item Ligne de type T qui contient le nombre d'étudiants dans le
+    fichier (Ligne de type 4).
+\end{enumerate}
+
+Voici la structure du fichier.
+
+\subsubsection{Détails de la ligne de type 1}
+
+Cette ligne contient le nom de la version de Diamant pour laquelle
+le fichier a été crée, dans l'exemple:
+
+Diamant1.6
+
+
+\subsubsection{Détails de la ligne de type 2}
+
+\begin{itemize}
+      \item Cette ligne commence avec la lettre E (Indice 1 à 1) et un espace (Indice 2 à 2).
+
+      \item Le matricule de l'étudiant qui correspond aux huit premiers caractères
+      du numéro d'identification (Indice 3 à 10). Dans notre exemple, \verb!00916487! pour l'étudiante
+      \verb!Gagnon-Auger, Maude! et \verb!00928438! pour l'étudiante \verb!Rivest, Catherine!.
+
+      \item Le programme auquel l'étudiant appartient correspond ensuite aux
+      six caractères suivants.
+      Soit \verb!260500! dans le cas du premier étudiant (Indice 11 à 16).
+
+      \item L'instance du programme que l'étudiant suit correspond aux deux
+      caractères suivants. Soit \verb!02! dans le cas du premier étudiant (Indice 17 à 18).
+
+      \item Des informations sur l'admission de l'étudiant sont données
+      par les cinq caractères suivants. Les quatre premiers correspondent à l'année d'admission tandis
+      que le cinquième indique le trimestre d'admission. Soit \verb!200043! dans le cas du premier étudiant (Indice 19 à 24).
+
+      \item Un espace vide (Indice 24 à 24)
+
+      \item Suivent le nom de famille de l'étudiant suivi d'une virgule et de son prénom (Indices 25 à 29XXXXX).
+      Soit, dans notre exemple, \verb!Gagnon-Auger, Maude! dans le cas de la première étudiante.
+\end{itemize}
+
+\subsubsection{Détails de la ligne de type 3}
+
+La ligne de type 3 contient les activités suivies par l'étudiant, un
+activité par chaque ligne.
+
+Les détails de la ligne de type 3.
+
+\begin{itemize}
+      \item Cette ligne commence avec la lettre C (Indice 1 à 1) et un espace (Indice 2 à 2).
+
+     \item Le siegle de l'activité pédagogique (\verb!KIN102!) (Indice 3 à 8).
+
+     \item Un caractère qui correspond à la nature ou type d'activité du cours (\verb!1!)
+     (1=Leçon Magistrale et 2=autre)(Indice 9 à 9).
+
+     \item Le groupe d'activité dans lequel l'étudiant est assigné. Au départ ils sont
+     (\verb!00!). (Indice 10 à 11).
+
+     \item Un espace vide (Indice 12 à 12).
+
+     \item Trois lettres qui représentent le site où l'activité en question est
+     donnée, dans l'exemple (\verb!SHE!) (SHE = Sherbrooke, LON =
+     Longueil, COW = Cowansville)
+
+\end{itemize}
+
+Un fichier peut avoir le groupe d'activité pour certains étudiants,
+Faculté d'administration.
+
+\subsubsection{Détails de la ligne de type 4}
+
+\begin{itemize}
+      \item Cette ligne commence avec la lettre T (Indice 1 à 1) et un espace (Indice 2 à 2).
+
+     \item Le total des étudiants envoyés dans le fichier (Indice 3 à 7).
+
+\end{itemize}
+
+
+%-----------------------------------------------------------------------------
 \section{Fichier d'instructeurs}\label{instructor}
 
 Ce fichier contient les données de disponibilités des enseignants.
@@ -187,10 +312,12 @@ Il est mis dans \verb!_resourceID!.
 \pro{String eVailability} correspond à la liste des disponibilités des lignes de type trois.
 elle est mise dans \verb!_resourceAttach!.
 
-\section{Fichier d'activités}
+%-----------------------------------------------------------------------------
+\section{Fichier d'activités version 1.5}
 
-Ce fichier contient des informations concernant les cours offerts à une session. Nous y retrouvons la liste des
-activités associées, l'agencement du cours, le nom de l'enseignant qui le donnera, etc.
+Ce fichier contient des informations concernant les cours offerts à
+une session. Nous y retrouvons la liste des activités associées,
+l'agencement du cours, le nom de l'enseignant qui le donnera, etc.
 C'est un fichier préalable à la construction de l'horaire.
 
 \subsection{Exemple des données qu'il contient}
@@ -242,6 +369,7 @@ D73020
 0
 0
 0
+
 \end{verbatim}
 
 
@@ -316,6 +444,136 @@ La structure du fichier :
 
 Ensuite le fichier continue.
 
+%-----------------------------------------------------------------------------
+\section{Fichier d'activités version 1.6}
+
+Ce fichier contient des informations concernant les cours offerts à une session. Nous y retrouvons la liste des
+activités associées, l'agencement du cours, le nom de l'enseignant qui le donnera, etc.
+C'est un fichier préalable à la construction de l'horaire.
+
+\subsection{Exemple des données qu'il contient}
+
+\begin{verbatim}
+Diamant1.6
+
+EPD1001  01 SHE    22
+1
+1
+ST-ARNAUD, L.
+
+
+ 2
+ 2 1
+ 2 1 4 2
+1 1
+C1-387 C1-380
+0 0
+0 0
+0 0
+
+EPD1001  02 SHE    22
+1
+1
+ST-ARNAUD, L.
+
+
+ 1
+ 3
+ 3  1
+1
+EPS
+0
+0
+1
+\end{verbatim}
+
+
+\subsection{Signification des données}
+
+Il existe quatorze types de lignes :
+
+\begin{enumerate}
+    \item la version du logiciel;
+    \item la ligne vide;
+    \item l'identification du cours;
+    \item l'état du cours (actif ou inactif);
+    \item le nombre d'activités associées au cours;
+    \item le nom de l'enseignant du cours;
+    \item le nombre d'unités de périodes séparées (exp: une unité de 2h et une autre de 1h);
+    \item la durée de chacune des unités prévues à la ligne précédente;
+    \item le jour et l'heure de début de chacune des unités décrites à la ligne précédente;
+    \item l'état du local affecté à chaque unité (fixé ou non fixé);
+    \item le nom du local assigné à chaque unité;
+    \item le type de locaux requis à chaque unité;
+    \item le type de locaux requis à chaque unité;
+    \item état d'affectation de chaque unité dans la grille horaire.
+\end{enumerate}
+
+La structure du fichier :
+
+
+\begin{enumerate}
+\item Le fichier commence par une ligne qui contiens la version du
+logiciel, dans l'exemple Diamant1.6
+
+\item vide, il s'agit d'une ligne du premier type.
+\item Ensuite il y a $n$ couples de lignes allant du type 3 au type 14.
+    \begin{enumerate}
+    \item La ligne de type 2 est une chaîne de caractères correspondant au sigle
+    du cours (\verb!EPD100!) (Indice 1 à 6).
+
+    Ceci décrit la leçon magistrale \verb!1!  du cours \verb!EPD100!
+    (Indice 7 à 7). E le groupe \verb!01!) (Indice 10 à 11).
+
+    Le site de l'activité \verb!SHE!) (Indice 13 à 15) (SHE = Sherbrooke, LON =
+     Longueil, COW = Cowansville).
+
+     La capacité du groupe (Indice  20 à 21)
+
+    Dans l'exemple cette ligne contient \verb!EPD1001  01 SHE    22!
+
+    \item La ligne de type 3 décrit l'état du cours,
+    c'est une valeur entière (0 si le cours est inactif et 1 dans l'autre cas).
+    Dans l'exemple cette ligne contient \verb!1!
+    \item La ligne de type 4 décrit le nombre d'activités associées au cours, c'est une valeur entière.
+    Dans l'exemple cette ligne contient \verb!1!
+    \item La ligne de type 5 est une chaîne de caractères correspondant au nom de l'enseignant.
+    Dans l'exemple cette ligne contient \verb!ST-ARNAUD, L.!
+    \item La ligne de type 6  le nombre de blocs de périodes séparées de la première fiche
+    (ex: si nous avons deux heures de cours collées à
+    trois endroits différents dans l'horaire, l'entier sera 3).
+    Dans l'exemple cette ligne contient \verb!2!
+    \item La ligne de type 7. Nous avons une suite de nombres qui correspond
+    à la durée de chacun des blocs prévus à la ligne précédente.
+    Dans ce cas-ci, la durée du premier bloc est de deux périodes
+    alors que la durée du deuxième est de seulement une période.
+    Dans l'exemple cette ligne contient \verb!2 1!
+    \item La ligne de type 8,  On a une  liste d'entiers représentant
+    le jour et l'heure de chacun des blocs précédents.
+    Par exemple, \texttt{2 1} nous indique que le premier bloc a lieu le mardi à 8h30
+    alors que \texttt{4 2} nous apprends que le deuxième bloc est le jeudi à 9h30.
+    Dans le exemple cette ligne contient \verb!2 1 4 2!
+    \item La ligne de type 9.  Cette ligne nous indique si le local de cette activité est fixé ou non.
+    Effectivement, un \texttt{1} nous dit qu'il l'est alors qu'un \texttt{0} nous indique le contraire.
+    Dans l'exemple cette ligne contient \verb!1 1!
+    \item La ligne de type 10. Sur cette ligne, nous avons les nom des locaux pour le premier
+    et le deuxième bloc respectivement.
+    Dans l'exemple cette ligne contient \verb!C1-387 C1-380!
+    \item La ligne de type 11. Puis vient le type de locaux requis par cette activité
+    (voir le manuel d'utilisation de \saphir{} \cite{ruben94}).
+    Dans l'exemple cette ligne contient \verb!0 0!
+    \item La ligne de type 12. Idem (voir le manuel d'utilisation de \saphir{} \cite{ruben94}).
+    Dans l'exemple cette ligne contient \verb!0 0!
+    \item La ligne de type 13. Finalement, cette rangée permet de savoir si le bloc à été
+    pré-affecté à l'horaire \texttt{(1)} ou non \texttt{(0)}.
+    Dans le'exemple cette ligne contient \verb!0 0!
+    \end{enumerate}
+\end{enumerate}
+
+Ensuite le fichier continue.
+
+
+%-----------------------------------------------------------------------------
 \section{Fichier de locaux}\label{room}
 
 \subsection{Exemple des données qu'il contient}
