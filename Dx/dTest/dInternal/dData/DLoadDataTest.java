@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
 *
-* Title: DLoadDataTest $Revision $  $Date: 2005-02-03 16:52:43 $
+* Title: DLoadDataTest $Revision $  $Date: 2005-07-28 21:19:51 $
 * Description: 	DLoadDataTest is a class used to test the class 
 * 				DLoadData
 *
@@ -18,7 +18,7 @@ package dTest.dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -44,15 +44,15 @@ import dInternal.dTimeTable.TTStructure;
 
 
 public class DLoadDataTest extends TestCase {
-  String path;
+  String _path;
   Vector _timeTable;
   Preferences _preferences;
 
   public DLoadDataTest(String name) {
     super(name);
-    path ="." + File.separator+"dataTest"+File.separator+"loadData.dia";
+    _path ="." + File.separator+"dataTest"+File.separator+"loadData.dia";
     DLoadData loadData= new DLoadData();
-    _timeTable = loadData.loadTheTT(path, "." + File.separator+"dataTest"+File.separator);
+    _timeTable = loadData.loadTheTT(_path, "." + File.separator+"dataTest"+File.separator);
   }
 
   public static Test suite() {
