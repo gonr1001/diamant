@@ -1,6 +1,6 @@
 /**
  *
- * Title: DoNothingDlg $Revision: 1.7 $  $Date: 2005-04-11 14:38:13 $
+ * Title: DoNothingDlg $Revision: 1.8 $  $Date: 2005-08-23 17:20:47 $
  * Description: DoNothingDlg is created by DoNotingCmd
  *              The dialog is displayed nothing is done.
  *              This class is used until
@@ -16,14 +16,13 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.8 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dDeveloper;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import dInterface.DApplication;
@@ -43,15 +42,7 @@ public class DoNothingDlg extends JDialog {
     * @param jframe    the parent of the dialog
     * @param str       the title of the window dialog
     * @since           JDK1.3
-    */
-   public DoNothingDlg(JFrame jframe, String str) {
-      JOptionPane.showMessageDialog( jframe,
-                                       STR,
-                                       str,
-                                       JOptionPane.INFORMATION_MESSAGE );
-   } // end constructor
-
-	// XXXX Pascal: pkoi cette redondance de constructeurs?
+    */	
    public DoNothingDlg(DApplication dApplic, String str) {
    JOptionPane.showMessageDialog( dApplic.getJFrame(),
                                     STR,

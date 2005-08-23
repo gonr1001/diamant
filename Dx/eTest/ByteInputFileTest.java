@@ -1,7 +1,7 @@
 package eTest;
 /**
  *
- * Title: ClassName $Revision: 1.6 $  $Date: 2005-08-01 18:00:45 $
+ * Title: ClassName $Revision: 1.7 $  $Date: 2005-08-23 17:20:47 $
  * Description: ClassName is a class used to
  *
  *
@@ -15,7 +15,7 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -55,7 +55,7 @@ public class ByteInputFileTest extends TestCase {
       fail("Should raise an IOFileException");
     } catch (Exception e) {
     	//System.out.println("Exception :" + e);
-    	//assertEquals("test_0 : assertEquals: ", "java.io.FileNotFound", e.toString().substring(0,"java.io.FileNotFound".length()));
+    	assertEquals("test_0 : assertEquals: ", "java.io.FileNotFound", e.toString().substring(0,"java.io.FileNotFound".length()));
     }
   }
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ButtonsPanel $Revision: 1.6 $  $Date: 2005-07-05 12:04:25 $
+ * Title: ButtonsPanel $Revision: 1.7 $  $Date: 2005-08-23 17:20:47 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -39,7 +39,7 @@ public abstract class ButtonsPanel extends JPanel {
 	/**
 	 * @return 
 	 */
-	public boolean isFirstEnable() {
+	public boolean isFirstEnable(){
 		return false;
 	}
 }
