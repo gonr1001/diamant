@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.5 $  $Date: 2005-02-04 16:14:37 $
+* Title: SaveData $Revision: 1.6 $  $Date: 2005-09-07 13:30:40 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
-* @author  $Author: garr2701 $
+* @version $Revision: 1.6 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -67,7 +67,6 @@ public class DSaveData {
     tts.saveTTStructure(fileName+DConst.DOT_XML);
     String diaData=_version+DConst.CR_LF;
     diaData+= DConst.SAVE_SEPARATOR + DConst.CR_LF;
-    //diaData+=fileName+DConst.DOT_XML+CR_LF;
     diaData+= DXToolsMethods.getRelativeFileName(fileName+DConst.DOT_XML).trim()+DConst.CR_LF;
     diaData+=DConst.SAVE_SEPARATOR + DConst.CR_LF;
     diaData+=inst.size()+DConst.CR_LF;
@@ -85,7 +84,7 @@ public class DSaveData {
     filter= new FilterFile(diaData.getBytes(),"");
     filter.saveFile(fileName + DConst.DOT_DIA);
     return error;
-  }
+  } //end saveTimeTable
 
   /**
    *
