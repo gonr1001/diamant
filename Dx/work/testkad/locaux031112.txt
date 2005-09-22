@@ -1,0 +1,15 @@
+Faculté des sciences;
+Liste des locaux pour réservations;
+
+Nom du local;Capacité;Fonction;Liste des caractéristiques;Notes;
+
+D1-3012;12;211;08,11,14,57;laboratoire de chimie;
+D1-3019;15;210;07,11,22,44;laboratoire informatique;
+D2-0051;12;210;8,11,27,44;laboratoire informatique;
+D2-2048;15;211;08,53;laboratoire de physique;
+D2-2050;10;211;08,11,53;laboratoire de physique;
+D4-0023;30;210;07,22,44;laboratoire informatique;
+D4-0132;12;210;07,27;laboratoire informatique;
+D4-1017;25;210;07,44,52;laboratoire informatique;
+D4-2027;16;211;08,54;laboratoire de biologie;
+
