@@ -418,18 +418,25 @@ public class DLoadData {
 		}
 		
 		if (de != null) {
-			if ((newSetOfResc != null) && (newSetOfResc.getError()=="")){
+			// newSetOfResc ne peut jamais être null !!!!
+			if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
 				makeDiff(newSetOfResc, currentSetOfResc);
+				System.out.println("make  Difference .... ");// debug
 				currentSetOfResc.buildSetOfResources(de, position);
 				currentSetOfResc.sortSetOfResourcesByID();
-			}
+				// Ramener ici par Kader
+				if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites) {
+					updateSetOfStudents(currentSetOfResc, newSetOfResc);
+					System.out.println("updateSetOfStudents: ");// debug
+				}
+			}// Ici sans le else on passe même s’il y a une erreur !!!!
+			else
+				new FatalProblemDlg(newSetOfResc.getError());
 		} else {// (NullPointerException npe) {
-			new FatalProblemDlg("I was in LoadData.selectiveImport. preload failed!!!" );     
+			new FatalProblemDlg(
+					"I was in LoadData.selectiveImport. preload failed!!!");
 		}
-		if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites){
-			updateSetOfStudents(currentSetOfResc, newSetOfResc);
-			System.out.println("updateSetOfStudents: ");//debug
-		} 
+
 		return currentSetOfResc;
 	}
 	/**

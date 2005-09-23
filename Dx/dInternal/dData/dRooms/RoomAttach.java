@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: RoomAttach $Revision: 1.3 $  $Date: 2005-02-08 16:24:45 $
+ * Title: RoomAttach $Revision: 1.4 $  $Date: 2005-09-23 16:08:22 $
  * Description: RoomAttach is a class used to
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -229,7 +229,7 @@ public class RoomAttach extends DObject{
 	 */
 	public void setStandardAvailability(){
 		String stAvail="1 1 1 1 1 1 1 1 1 1 1 1";
-		for (int i=0; i< 5; i++)
+		for (int i=0; i < 5; i++)
 			_roomAvailability.add(stAvail);
 	}
 	
