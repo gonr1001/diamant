@@ -22,6 +22,8 @@ package dInternal.dData;
 
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -421,15 +423,9 @@ public class DLoadData {
 			// newSetOfResc ne peut jamais être null !!!!
 			if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
 				makeDiff(newSetOfResc, currentSetOfResc);
-				System.out.println("make  Difference .... ");// debug
-				currentSetOfResc.buildSetOfResources(de, position);
+			//	currentSetOfResc.buildSetOfResources(de, position);
 				currentSetOfResc.sortSetOfResourcesByID();
-				// Ramener ici par Kader
-				if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites) {
-					updateSetOfStudents(currentSetOfResc, newSetOfResc);
-					System.out.println("updateSetOfStudents: ");// debug
-				}
-			}// Ici sans le else on passe même s’il y a une erreur !!!!
+              }// Ici sans le else on passe même s’il y a une erreur !!!!
 			else
 				new FatalProblemDlg(newSetOfResc.getError());
 		} else {// (NullPointerException npe) {
@@ -439,206 +435,405 @@ public class DLoadData {
 
 		return currentSetOfResc;
 	}
-	/**
-	 * 
-	 * @param newSites
-	 * @param currentSites
-	 */
-	private void findDeletedElement(DSetOfResources newSites, DSetOfResources currentSites){
-		//		find a site
-		int siteSize = getSiteSize(currentSites);
-		for(int i=0; i< siteSize; i++){
-			String rscSite = getSite(currentSites, i); 
-			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int catSize = getCategorySize(rescSite);
-			// find category in site
-			for(int j = 0; j < catSize; j++ ){
-				String rscCat = getCategory(rescSite, j); 
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
-				//find resource in a category
-				for (int k=0; k< rescCat.size(); k++){
-					//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
-					if(getResource(newSites,rescCat.getResourceAt(k), rscSite, rscCat)==null){
-						DValue error= new DValue();
-						error.setStringValue(DConst.DELETED_ELEMENT + rescCat.getResourceAt(k).getID());
-						_dm.getSetOfImportSelErrors().addResource(new DResource("1",error),0);
-					}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-				}// end for (int k=0; k< currentSites.size(); k++)
-			}
-		}// end for (int i=0; i< currentRsc.size(); i++)
-	}
-	
-	/**
-	 * 
-	 * @param newSites
-	 * @param currentSites
-	 */
-	private void findAddedElement(DSetOfResources newSites, DSetOfResources currentSites){
-		//		find a site
-		int siteSize = getSiteSize(newSites);
-		for(int i=0; i< siteSize; i++){
-			String rscSite = getSite(newSites, i); 
-			DSetOfResources rescSite = getRscSite(newSites, i);
-			int catSize = getCategorySize(rescSite);
-			// find category in site
-			for(int j = 0; j < catSize; j++ ){
-				String rscCat = getCategory(rescSite, j); 
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
-				//find resource in a category
-				for (int k=0; k< rescCat.size(); k++){
-					if(getResource(currentSites,rescCat.getResourceAt(k), rscSite, rscCat)==null){
-						DValue error= new DValue();
-						error.setStringValue(DConst.ADDED_ELEMENT + rescCat.getResourceAt(k).getID());
-						_dm.getSetOfImportSelErrors().addResource(new DResource("2",error),0);
-					}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-				}// end for (int k=0; k< currentSites.size(); k++)
-			}
-		}// end for (int i=0; i< currentRsc.size(); i++)
-	}
-	
-	/**
-	 * 
-	 * @param newSites
-	 * @param currentSites
-	 */
-	private void findChangedElement(DSetOfResources newSites, DSetOfResources currentSites){
-		//		find a site
-		int siteSize = getSiteSize(currentSites);
-		for(int i=0; i< siteSize; i++){
-			String rscSite = getSite(currentSites, i); 
-			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int catSize = getCategorySize(rescSite);
-			// find category in site
-			for(int j = 0; j < catSize; j++ ){
-				String rscCat = getCategory(rescSite, j); 
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
-				//find resource in a category
-				for (int k=0; k< rescCat.size(); k++){
-					//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
-					DResource r = getResource(newSites,rescCat.getResourceAt(k), rscSite, rscCat);
-					if(r!=null)
-						if(!r.getAttach().isEquals(rescCat.getResourceAt(k).getAttach())){
-							DValue error= new DValue();
-							error.setStringValue(DConst.CHANGED_ELEMENT + rescCat.getResourceAt(k).getID());
-							_dm.getSetOfImportSelErrors().addResource(new DResource("3",error),0);
-						}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-				}// end for (int k=0; k< currentSites.size(); k++)
-			}
-		}// end for (int i=0; i< currentRsc.size(); i++)
-	}
-	
-	/**
-	 * 
-	 * @param newSites
-	 * @param currentSites
-	 */
-	private void findUnChangedElement(DSetOfResources newSites, DSetOfResources currentSites){
-		//		find a site
-		int siteSize = getSiteSize(newSites);
-		for(int i=0; i< siteSize; i++){
-			String rscSite = getSite(newSites, i); 
-			DSetOfResources rescSite = getRscSite(newSites, i);
-			int catSize = getCategorySize(rescSite);
-			// find category in site
-			for(int j = 0; j < catSize; j++ ){
-				String rscCat = getCategory(rescSite, j); 
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
-				//find resource in a category
-				for (int k=0; k< rescCat.size(); k++){
-					//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
-					DResource r = getResource(currentSites,rescCat.getResourceAt(k), rscSite, rscCat);
-					if(r!=null)
-						if(!r.getAttach().isEquals(rescCat.getResourceAt(k).getAttach())){
-							DValue error= new DValue();
-							error.setStringValue(DConst.UNCHANGED_ELEMENT + rescCat.getResourceAt(k).getID());
-							_dm.getSetOfImportSelErrors().addResource(new DResource("4",error),0);
-						}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-				}// end for (int k=0; k< currentSites.size(); k++)
-			}
-		}// end for (int i=0; i< currentRsc.size(); i++)
-	}
-	
-	
-	/**
-	 * 
-	 * @param currentRsc
-	 * @param newRsc
-	 * @return
-	 */
-	private DSetOfResources makeDiff(DSetOfResources newSites, DSetOfResources currentSites){
-		//find deleted element
-		findDeletedElement(newSites,currentSites);
-		
-		//	  find added element
-		findAddedElement(newSites,currentSites);
-		
-		//	find changed element
-		findChangedElement(newSites,currentSites);
-		
-		//	find unchanged element
-		findUnChangedElement(newSites,currentSites);
-		
-		return null;
-	}
-	
-	/**
-	 * 
-	 * @param currentRsc
-	 * @param newRsc
-	 * @return
-	 */
-	private DSetOfResources updateSetOfStudents (DSetOfResources currentSites, DSetOfResources newSites){
-		//		find a site
-		int siteSize = getSiteSize(currentSites);
-		for(int i=0; i< siteSize; i++){
-			String rscSite = getSite(currentSites, i); 
-			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int stuSize = rescSite.size();
-			int inc=0;
-			//find deleted element
-			for (int j=0; j< stuSize; j++){
-				//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
-				DResource r = getResource(newSites,rescSite.getResourceAt(inc), rscSite,"");
-				if(r==null){
-					rescSite.removeResourceAt(inc);
-				}else// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-					inc++;
-			}// end for (int i=0; i< currentRsc.size(); i++)
-			
-			
-			//	find changed element
-			for (int j=0; j< rescSite.size(); j++){
-				//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
-				DResource r = getResource(newSites,rescSite.getResourceAt(j), rscSite,"");
-				if(r!=null){
-					if(!r.getAttach().isEquals(rescSite.getResourceAt(j).getAttach())) {
-						Student currentStudent = (Student) rescSite.getResourceAt(j);
-						SetOfStuCourses currentCourses =currentStudent.getCoursesList();
-						Student newStudent = (Student) r;
-						SetOfStuCourses newCourses =newStudent.getCoursesList();
-						// course deleted
-						for (int k=0; k< currentCourses.size(); k++){
-							//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
-							if(getResource(newCourses,currentCourses.getResourceAt(k), rscSite,"")==null){
-								currentCourses.removeResourceAt(k);
-							}
-						}	 	  				
-						//course added
-						for (int k=0; k< newCourses.size(); k++){
-							//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
-							if(getResource(currentCourses,newCourses.getResourceAt(k), rscSite,"")==null){
-								currentCourses.addResource(newCourses.getResourceAt(k),1);
-							}
-						}	
-					}
-				}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-			}// end for (int i=0; i< currentRsc.size(); i++)
-		}
-		
-		return null;
-		
-	}
-	
+    
+    /**
+        * 
+        * @param currentRsc
+        * @param newRsc
+        * @return
+        */
+       private void makeDiff(DSetOfResources newSites, DSetOfResources currentSites) {
+        System.err.println("...........MAKEDIFF.......................... \n");
+            // find changed and unchanged element
+
+            findChangesInElements(newSites, currentSites);
+
+            // find deleted element
+
+            findDeletedElements(newSites, currentSites);
+
+            // find added element
+
+            findAddedElements(newSites, currentSites);
+    }
+
+       /**
+         * 
+         * @param newSites
+         * @param currentSites
+         */
+       private void findDeletedElements(DSetOfResources newSites,DSetOfResources currentSites) {
+           // find a site
+         
+               int siteSize = getSiteSize(currentSites);
+               for (int i = 0; i < siteSize; i++) {
+                   String rscSite = getSite(currentSites, i);
+                   DSetOfResources rescSite = getRscSite(currentSites, i);
+                   int catSize = getCategorySize(rescSite);
+                   // find category in site
+                   for (int j = 0; j < catSize; j++) {
+                       String rscCat = getCategory(rescSite, j);
+                       DSetOfResources rescCat = getRscCategory(rescSite, j);
+                       // find resource in a category
+                       for (int k = 0; k < rescCat.size(); k++) {
+                           // current ressource
+                            DResource curResc = rescCat.getResourceAt(k);
+                           if (getResource(newSites, curResc,rscSite, rscCat) == null) {
+                               DValue error = new DValue();
+                               error.setStringValue(DConst.DELETED_ELEMENT
+                                       + curResc.getID());
+                               _dm.getSetOfImportSelErrors().addResource(
+                                       new DResource("1", error), 0);
+                             // System.out.println("DELETED_ELEMENT "+ curResc.getID());
+                               rescCat.removeResource(curResc.getID());
+                               k--;
+                           }// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+                       }// end for k++
+                   }// end for  j++
+               
+               }// end for  i++
+           
+       } 
+       
+       /**
+        * 
+        * @param newSites
+        * @param currentSites
+        */
+       private void findAddedElements(DSetOfResources newSites,
+               DSetOfResources currentSites) {
+           // find a site
+      
+               int newSize = getSiteSize(newSites);
+               for (int i = 0; i < newSize; i++) {
+                   String rscSite = getSite(newSites, i);
+                   DSetOfResources rescSite = getRscSite(newSites, i);
+                   int catSize = getCategorySize(rescSite);
+                   // find category in site
+                   for (int j = 0; j < catSize; j++) {
+                       String rscCat = getCategory(rescSite, j);
+                       DSetOfResources rescCat = getRscCategory(rescSite, j);
+                       // find resource in a category
+                       for (int k = 0; k < rescCat.size(); k++) {
+//                       current ressource
+                           DResource newRes = rescCat.getResourceAt(k);
+                           if (getResource(currentSites, newRes ,
+                                   rscSite, rscCat) == null) {
+                               DValue error = new DValue();
+                               error.setStringValue(DConst.ADDED_ELEMENT
+                                       + newRes.getID());
+                               _dm.getSetOfImportSelErrors().addResource(
+                                       new DResource("2", error), 0);
+                         //      System.out.println("ADDED_ELEMENT "+ newRes.getID());
+                               DResource crescSite =currentSites.getResource(rscSite);
+                              if ( crescSite!=null){
+                                  DSetOfResources crescCat =((DSetOfResources)crescSite.getAttach());
+                                  crescCat.addResourceMod(newRes,1);
+                              }
+                            }// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+                       }// end for k++
+                   }// end for j++
+               }// end for i++
+          
+       }
+       /**
+        * 
+        * @param newSites
+        * @param currentSites
+        */
+       private void findChangesInElements(DSetOfResources newSites,
+               DSetOfResources currentSites) {
+           // find a site
+     
+               int siteSize = getSiteSize(currentSites);
+               for (int i = 0; i < siteSize; i++) {
+                   String rscSite = getSite(currentSites, i);
+                   DSetOfResources rescSite = getRscSite(currentSites, i);
+                   int catSize = getCategorySize(rescSite);
+                   // find category in site
+                   for (int j = 0; j < catSize; j++) {
+                       String rscCat = getCategory(rescSite, j);
+                       DSetOfResources rescCat = getRscCategory(rescSite, j);
+                       // find resource in a category
+                       for (int k = 0; k < rescCat.size(); k++) {
+                           DResource resc = rescCat.getResourceAt(k);
+                           DResource newRes=getResource(newSites,resc ,rscSite, rscCat);
+                           if (newRes!= null) {
+                               // Already exist does it change ?
+                               boolean changed=false;
+                               if (currentSites instanceof SetOfStuSites) {
+                                   // Find if element change
+                                  changed=compareStudents(newRes,resc);
+                               }else if (currentSites instanceof SetOfInstructors) {
+                                   changed=compareInstructors(resc,newRes);
+                               } 
+                               DValue error = new DValue();
+                               if (changed == true) {
+                                   error.setStringValue(DConst.CHANGED_ELEMENT + newRes.getID());
+                                   _dm.getSetOfImportSelErrors().addResource(
+                                           new DResource("3", error), 0);
+                               //    System.out.println("CHANGED_ELEMENT "+ newRes.getID());
+                               } else {
+                                   error.setStringValue(DConst.UNCHANGED_ELEMENT + newRes.getID());
+                                   _dm.getSetOfImportSelErrors().addResource(
+                                           new DResource("4", error), 0);
+                                  // System.out.println("UNCHANGED_ELEMENT "+ newRes.getID());
+                               }
+                           }// end if !=null
+                       }// end for k++
+                   }// end for j++
+               }// end for i++
+        }
+       
+       /**
+        *  Compare two students
+        * @param newSites
+        * @param currentSites
+        * @return boolean resChanged
+        */ 
+       private boolean compareStudents(DResource newRes, DResource currentRes) {
+        boolean resChanged = false;
+        Student currentStudent = (Student) currentRes;
+        SetOfStuCourses currentCourses = currentStudent.getCoursesList();
+        Student newStudent = (Student) newRes;
+        SetOfStuCourses newCourses = newStudent.getCoursesList();
+        // course added
+        for (int m = 0; m < newCourses.size(); m++) {
+            if (currentCourses.getIndexOfResource(newCourses.getResourceAt(m)
+                    .getID()) == -1) {
+                resChanged = true;
+                System.out.println("added "
+                        + newCourses.getResourceAt(m).getID());// debug
+                currentCourses.addResourceMod(newCourses.getResourceAt(m), 1);
+            }
+        } // end for
+
+        // course deleted
+        for (int k = 0; k < currentCourses.size(); k++) {
+            // if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+            if (newCourses.getIndexOfResource(currentCourses.getResourceAt(k)
+                    .getID()) == -1) {
+                resChanged = true;
+                System.out.println("remove "
+                        + currentCourses.getResourceAt(k).getID());// debug
+                currentCourses.removeResourceAt(k);
+            }
+        }// end for
+        return resChanged;
+    }
+       /**
+         * Compare two Instructors
+         * 
+         * @param newSites
+         * @param currentSites
+         * @return boolean resChanged
+         */ 
+       private boolean compareInstructors(DResource currentRes,DResource newRes) {
+              boolean resChanged = false;
+             
+                   return resChanged;
+               }// end for 
+
+//	/**
+//	 * 
+//	 * @param newSites
+//	 * @param currentSites
+//	 */
+//	private void findDeletedElement(DSetOfResources newSites, DSetOfResources currentSites){
+//		//		find a site
+//		int siteSize = getSiteSize(currentSites);
+//		for(int i=0; i< siteSize; i++){
+//			String rscSite = getSite(currentSites, i); 
+//			DSetOfResources rescSite = getRscSite(currentSites, i);
+//			int catSize = getCategorySize(rescSite);
+//			// find category in site
+//			for(int j = 0; j < catSize; j++ ){
+//				String rscCat = getCategory(rescSite, j); 
+//				DSetOfResources rescCat = getRscCategory(rescSite, j);
+//				//find resource in a category
+//				for (int k=0; k< rescCat.size(); k++){
+//					//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
+//					if(getResource(newSites,rescCat.getResourceAt(k), rscSite, rscCat)==null){
+//						DValue error= new DValue();
+//						error.setStringValue(DConst.DELETED_ELEMENT + rescCat.getResourceAt(k).getID());
+//						_dm.getSetOfImportSelErrors().addResource(new DResource("1",error),0);
+//					}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+//				}// end for (int k=0; k< currentSites.size(); k++)
+//			}
+//		}// end for (int i=0; i< currentRsc.size(); i++)
+//	}
+//	
+//	/**
+//	 * 
+//	 * @param newSites
+//	 * @param currentSites
+//	 */
+//	private void findAddedElement(DSetOfResources newSites, DSetOfResources currentSites){
+//		//		find a site
+//		int siteSize = getSiteSize(newSites);
+//		for(int i=0; i< siteSize; i++){
+//			String rscSite = getSite(newSites, i); 
+//			DSetOfResources rescSite = getRscSite(newSites, i);
+//			int catSize = getCategorySize(rescSite);
+//			// find category in site
+//			for(int j = 0; j < catSize; j++ ){
+//				String rscCat = getCategory(rescSite, j); 
+//				DSetOfResources rescCat = getRscCategory(rescSite, j);
+//				//find resource in a category
+//				for (int k=0; k< rescCat.size(); k++){
+//					if(getResource(currentSites,rescCat.getResourceAt(k), rscSite, rscCat)==null){
+//						DValue error= new DValue();
+//						error.setStringValue(DConst.ADDED_ELEMENT + rescCat.getResourceAt(k).getID());
+//						_dm.getSetOfImportSelErrors().addResource(new DResource("2",error),0);
+//					}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+//				}// end for (int k=0; k< currentSites.size(); k++)
+//			}
+//		}// end for (int i=0; i< currentRsc.size(); i++)
+//	}
+//	
+//	/**
+//	 * 
+//	 * @param newSites
+//	 * @param currentSites
+//	 */
+//	private void findChangedElement(DSetOfResources newSites, DSetOfResources currentSites){
+//		//		find a site
+//		int siteSize = getSiteSize(currentSites);
+//		for(int i=0; i< siteSize; i++){
+//			String rscSite = getSite(currentSites, i); 
+//			DSetOfResources rescSite = getRscSite(currentSites, i);
+//			int catSize = getCategorySize(rescSite);
+//			// find category in site
+//			for(int j = 0; j < catSize; j++ ){
+//				String rscCat = getCategory(rescSite, j); 
+//				DSetOfResources rescCat = getRscCategory(rescSite, j);
+//				//find resource in a category
+//				for (int k=0; k< rescCat.size(); k++){
+//					//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
+//					DResource r = getResource(newSites,rescCat.getResourceAt(k), rscSite, rscCat);
+//					if(r!=null)
+//						if(!r.getAttach().isEquals(rescCat.getResourceAt(k).getAttach())){
+//							DValue error= new DValue();
+//							error.setStringValue(DConst.CHANGED_ELEMENT + rescCat.getResourceAt(k).getID());
+//							_dm.getSetOfImportSelErrors().addResource(new DResource("3",error),0);
+//						}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+//				}// end for (int k=0; k< currentSites.size(); k++)
+//			}
+//		}// end for (int i=0; i< currentRsc.size(); i++)
+//	}
+//	
+//	/**
+//	 * 
+//	 * @param newSites
+//	 * @param currentSites
+//	 */
+//	private void findUnChangedElement(DSetOfResources newSites, DSetOfResources currentSites){
+//		//		find a site
+//		int siteSize = getSiteSize(newSites);
+//		for(int i=0; i< siteSize; i++){
+//			String rscSite = getSite(newSites, i); 
+//			DSetOfResources rescSite = getRscSite(newSites, i);
+//			int catSize = getCategorySize(rescSite);
+//			// find category in site
+//			for(int j = 0; j < catSize; j++ ){
+//				String rscCat = getCategory(rescSite, j); 
+//				DSetOfResources rescCat = getRscCategory(rescSite, j);
+//				//find resource in a category
+//				for (int k=0; k< rescCat.size(); k++){
+//					//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
+//					DResource r = getResource(currentSites,rescCat.getResourceAt(k), rscSite, rscCat);
+//					if(r!=null)
+//						if(!r.getAttach().isEquals(rescCat.getResourceAt(k).getAttach())){
+//							DValue error= new DValue();
+//							error.setStringValue(DConst.UNCHANGED_ELEMENT + rescCat.getResourceAt(k).getID());
+//							_dm.getSetOfImportSelErrors().addResource(new DResource("4",error),0);
+//						}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+//				}// end for (int k=0; k< currentSites.size(); k++)
+//			}
+//		}// end for (int i=0; i< currentRsc.size(); i++)
+//	}
+//	
+//	
+//	/**
+//	 * 
+//	 * @param currentRsc
+//	 * @param newRsc
+//	 * @return
+//	 */
+//	private DSetOfResources makeDiff(DSetOfResources newSites, DSetOfResources currentSites){
+//		//find deleted element
+//		findDeletedElement(newSites,currentSites);
+//		
+//		//	  find added element
+//		findAddedElement(newSites,currentSites);
+//		
+//		//	find changed element
+//		findChangedElement(newSites,currentSites);
+//		
+//		//	find unchanged element
+//		findUnChangedElement(newSites,currentSites);
+//		
+//		return null;
+//	}
+//	
+//	/**
+//	 * 
+//	 * @param currentRsc
+//	 * @param newRsc
+//	 * @return
+//	 */
+//	private DSetOfResources updateSetOfStudents (DSetOfResources currentSites, DSetOfResources newSites){
+//		//		find a site
+//		int siteSize = getSiteSize(currentSites);
+//		for(int i=0; i< siteSize; i++){
+//			String rscSite = getSite(currentSites, i); 
+//			DSetOfResources rescSite = getRscSite(currentSites, i);
+//			int stuSize = rescSite.size();
+//			int inc=0;
+//			//find deleted element
+//			for (int j=0; j< stuSize; j++){
+//				//if(newRsc.getResource(currentRsc.getResourceAt(i).getKey())==null){
+//				DResource r = getResource(newSites,rescSite.getResourceAt(inc), rscSite,"");
+//				if(r==null){
+//					rescSite.removeResourceAt(inc);
+//				}else// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+//					inc++;
+//			}// end for (int i=0; i< currentRsc.size(); i++)
+//			
+//			
+//			//	find changed element
+//			for (int j=0; j< rescSite.size(); j++){
+//				//Resource r = newRsc.getResource(currentRsc.getResourceAt(i).getKey());
+//				DResource r = getResource(newSites,rescSite.getResourceAt(j), rscSite,"");
+//				if(r!=null){
+//					if(!r.getAttach().isEquals(rescSite.getResourceAt(j).getAttach())) {
+//						Student currentStudent = (Student) rescSite.getResourceAt(j);
+//						SetOfStuCourses currentCourses =currentStudent.getCoursesList();
+//						Student newStudent = (Student) r;
+//						SetOfStuCourses newCourses =newStudent.getCoursesList();
+//						// course deleted
+//						for (int k=0; k< currentCourses.size(); k++){
+//							//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+//							if(getResource(newCourses,currentCourses.getResourceAt(k), rscSite,"")==null){
+//								currentCourses.removeResourceAt(k);
+//							}
+//						}	 	  				
+//						//course added
+//						for (int k=0; k< newCourses.size(); k++){
+//							//if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+//							if(getResource(currentCourses,newCourses.getResourceAt(k), rscSite,"")==null){
+//								currentCourses.addResource(newCourses.getResourceAt(k),1);
+//							}
+//						}	
+//					}
+//				}// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+//			}// end for (int i=0; i< currentRsc.size(); i++)
+//		}
+//		
+//		return null;
+//		
+//	}
+//	
 	/**
 	 * 
 	 * @param source
@@ -678,7 +873,7 @@ public class DLoadData {
 		}
 		if(source instanceof SetOfStuSites ){
 			if (rescSite != null)
-				return ((DSetOfResources)rescSite.getAttach()).getResource(target.getKey());
+				return ((DSetOfResources)rescSite.getAttach()).getResource(target.getID());
 		}
 		
 		return null;

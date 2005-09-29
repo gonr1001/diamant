@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.8 $  $Date: 2005-04-15 14:08:49 $
+* Title: DSetOfResources $Revision: 1.9 $  $Date: 2005-09-29 19:50:47 $
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
-* @author  $Author: durp1901 $
+* @version $Revision: 1.9 $
+* @author  $Author: hara2602 $
 * @since JDK1.3
 */
 
@@ -135,7 +135,39 @@ public abstract class DSetOfResources extends DObject{
       //_resourceList.add(resource);
 
       return false;
+  }
     //}
+      public boolean addResourceMod(DResource resource, int insertType){
+          //if (getIndexOfResource(resource.getID()) == -1){
+            //if (_stateSort!=0)
+              //this.sortSetOfResourcesByKey();
+            int index = 0;
+            int add=-1;
+            if (insertType==0){
+              add = getIndexOfResource(_currentKey);
+              if (add==-1)
+                index = searchWhereToInsert(_currentKey);
+            } else{
+              if (insertType==1){
+                add = getIndexOfResource(resource.getID());
+                if (add==-1)
+                  index =searchWhereToInsert(resource.getID());
+              }// end if (insertType==1)
+            }// end else if (insertType==0)
+
+            if (add==-1){
+             // resource.setKey(_currentKey);
+              if (index > (_resourceList.size()-1))
+                _resourceList.add(resource);
+              else
+                _resourceList.insertElementAt(resource, index);
+              _currentKey++;
+              return true;
+            }
+            //_resourceList.add(resource);
+
+            return false;
+          //}
     //return false;
   }
 
