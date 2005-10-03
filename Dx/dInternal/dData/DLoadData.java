@@ -486,7 +486,7 @@ public class DLoadData {
                                        new DResource("1", error), 0);
                              // System.out.println("DELETED_ELEMENT "+ curResc.getID());
                                rescCat.removeResource(curResc.getID());
-                               k--;
+                               k--; // Puisque la liste est trié Sinon c est  k=0;
                            }// end if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
                        }// end for k++
                    }// end for  j++
