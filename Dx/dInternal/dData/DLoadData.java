@@ -36,7 +36,9 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 
 import dInternal.Preferences;
+import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;
@@ -622,17 +624,47 @@ public class DLoadData {
         return resChanged;
     }
        /**
-         * Compare two Instructors
-         * 
-         * @param newSites
-         * @param currentSites
-         * @return boolean resChanged
-         */ 
-       private boolean compareInstructors(DResource currentRes,DResource newRes) {
-              boolean resChanged = false;
+        * Compare two Instructors
+        * 
+        * @param newSites
+        * @param currentSites
+        * @return boolean resChanged
+        */ 
+      private boolean compareInstructors(DResource currentRes,DResource newRes) {
+             boolean resChanged = false;
+             InstructorAttach newAtt = (InstructorAttach) newRes.getAttach();
+             InstructorAttach curAtt = (InstructorAttach) currentRes.getAttach();
+            if (!curAtt.isEquals(newAtt)){
+                resChanged = true;
+                curAtt.setAvailability(newAtt.getMatrixAvailability());
+                currentRes.setAttach(curAtt);
+                System.out.println("Changed "   + currentRes.getID());// debug
+             }else
+                 System.out.println("UnChanged "   + currentRes.getID());// debug
              
-                   return resChanged;
-               }// end for 
+           return resChanged;
+              }// end for 
+      /**
+       * Compare two Courses
+       * 
+       * @param newSites
+       * @param currentSites
+       * @return boolean resChanged
+       */ 
+     private boolean compareCourses(DResource currentRes,DResource newRes) {
+            boolean resChanged = false;
+          Activity curAtt = (Activity) currentRes.getAttach();
+            System.err.println(newRes.getID()+"\n");
+           if (!curAtt.isEquals(newRes.getAttach())){
+               resChanged = true;
+//               curAtt.setAvailability(newAtt.getMatrixAvailability());
+//               currentRes.setAttach(curAtt);
+               System.out.println("Changed "   + currentRes.getID());// debug
+            }else
+                System.out.println("UnChanged "   + currentRes.getID());// debug
+            
+          return resChanged;
+             }// end for 
 
 //	/**
 //	 * 
