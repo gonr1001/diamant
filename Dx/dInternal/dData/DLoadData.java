@@ -22,8 +22,6 @@ package dInternal.dData;
 
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -400,7 +398,7 @@ public class DLoadData {
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc, String file){//, boolean merge){
 		DataExchange de = buildDataExchange(file);
 		DSetOfResources newSetOfResc=null;
-		int position=0;
+		//int position=0;
 		if (currentSetOfResc instanceof dInternal.dData.dInstructors.SetOfInstructors ){
 			_instructorFileName= file;
 			newSetOfResc= extractInstructors(null,false);
@@ -416,7 +414,7 @@ public class DLoadData {
 		}else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesSites){
 			_activitiesFileName= file;
 			newSetOfResc= extractActivities(null,false);
-			position=1;
+			//position=1;
 		}else {// (NullPointerException npe) {
 			new FatalProblemDlg("I was in LoadData.selectiveImport, No resource class available!!!" );
 		}
@@ -651,20 +649,20 @@ public class DLoadData {
        * @param currentSites
        * @return boolean resChanged
        */ 
-     private boolean compareCourses(DResource currentRes,DResource newRes) {
-            boolean resChanged = false;
-          Activity curAtt = (Activity) currentRes.getAttach();
-            System.err.println(newRes.getID()+"\n");
-           if (!curAtt.isEquals(newRes.getAttach())){
-               resChanged = true;
-//               curAtt.setAvailability(newAtt.getMatrixAvailability());
-//               currentRes.setAttach(curAtt);
-               System.out.println("Changed "   + currentRes.getID());// debug
-            }else
-                System.out.println("UnChanged "   + currentRes.getID());// debug
-            
-          return resChanged;
-             }// end for 
+//     private boolean compareCourses(DResource currentRes,DResource newRes) {
+//            boolean resChanged = false;
+//          Activity curAtt = (Activity) currentRes.getAttach();
+//            System.err.println(newRes.getID()+"\n");
+//           if (!curAtt.isEquals(newRes.getAttach())){
+//               resChanged = true;
+////               curAtt.setAvailability(newAtt.getMatrixAvailability());
+////               currentRes.setAttach(curAtt);
+//               System.out.println("Changed "   + currentRes.getID());// debug
+//            }else
+//                System.out.println("UnChanged "   + currentRes.getID());// debug
+//            
+//          return resChanged;
+//     }// end for 
 
 //	/**
 //	 * 
