@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
 *
-* Title: DLoadDataTest $Revision $  $Date: 2005-07-28 21:19:51 $
+* Title: DLoadDataTest $Revision $  $Date: 2005-10-11 17:56:09 $
 * Description: 	DLoadDataTest is a class used to test the class 
 * 				DLoadData
 *
@@ -18,7 +18,7 @@ package dTest.dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: gonzrubi $
+* @author  $Author: hara2602 $
 * @since JDK1.3
 */
 
@@ -36,8 +36,10 @@ import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
+import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
+import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.TTStructure;
 
@@ -47,11 +49,12 @@ public class DLoadDataTest extends TestCase {
   String _path;
   Vector _timeTable;
   Preferences _preferences;
+private DLoadData loadData;
 
   public DLoadDataTest(String name) {
     super(name);
     _path ="." + File.separator+"dataTest"+File.separator+"loadData.dia";
-    DLoadData loadData= new DLoadData();
+    loadData= new DLoadData();
     _timeTable = loadData.loadTheTT(_path, "." + File.separator+"dataTest"+File.separator);
   }
 
@@ -117,5 +120,34 @@ public void test5_loadTimeTable(){
   SetOfRooms setRooms= ((SetOfRooms)setCat.getResourceAt(0).getAttach());
   assertEquals("test5_2_loadTimeTable : assertEquals: ", "D13016", setRooms.getResourceAt(4).getID());
   }
+/**
+ * test that check the selective import of Students
+ * */
+public void test1_ImportSelective(){
+   
+    SetOfStuSites newStuSites = (SetOfStuSites) loadData.selectiveImport(((SetOfStuSites)_timeTable.get(5)), 
+            "." + File.separator+"dataTest"+File.separator+"ImportSTUDS.SIG");
+    assertEquals("test1_ImportSelective : assertEquals: ", "", newStuSites.getError());
+    if (newStuSites.getError()=="") {
+        // Set Of Student Sites. Check if Update is done 
+          SetOfStuSites setSite= ((SetOfStuSites)_timeTable.get(5));
+        // Test of DLoadData.findAddedElements
+        SetOfStudents setStud= (SetOfStudents)setSite.getResourceAt(0).getAttach();
+        assertNotNull("test1_ImportSelective: assertNotNull: added student", setStud.getResource("NOUVEAUET"));
+        
+        // Test of DLoadData.findChangesInElements
+        Student studentChanged=setStud.getStudent("GIRALDO-L");
+        SetOfStuCourses currentCourses =studentChanged.getCoursesList();
+        assertNull("test1_ImportSelective: assertNull: Changed student ",currentCourses.getResource("GIN3252"));
+     
+        // Test of DLoadData.findDeletedElements
+        assertNull("test1_ImportSelective: assertNull: Deleted student ",setStud.getStudent("RHEAULT M"));
+        
+    
+    }
+    
+   
+}
+ 
 
 }

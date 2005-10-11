@@ -482,7 +482,7 @@ public class DLoadData {
                                DValue error = new DValue();
                                error.setStringValue(DConst.DELETED_ELEMENT
                                        + curResc.getID());
-                               _dm.getSetOfImportSelErrors().addResource(
+                               if(_dm!=null)   _dm.getSetOfImportSelErrors().addResource(
                                        new DResource("1", error), 0);
                              // System.out.println("DELETED_ELEMENT "+ curResc.getID());
                                rescCat.removeResource(curResc.getID());
@@ -522,7 +522,7 @@ public class DLoadData {
                                DValue error = new DValue();
                                error.setStringValue(DConst.ADDED_ELEMENT
                                        + newRes.getID());
-                               _dm.getSetOfImportSelErrors().addResource(
+                               if(_dm!=null)    _dm.getSetOfImportSelErrors().addResource(
                                        new DResource("2", error), 0);
                          //      System.out.println("ADDED_ELEMENT "+ newRes.getID());
                                DResource crescSite =currentSites.getResource(rscSite);
@@ -570,12 +570,12 @@ public class DLoadData {
                                DValue error = new DValue();
                                if (changed == true) {
                                    error.setStringValue(DConst.CHANGED_ELEMENT + newRes.getID());
-                                   _dm.getSetOfImportSelErrors().addResource(
+                                   if(_dm!=null)     _dm.getSetOfImportSelErrors().addResource(
                                            new DResource("3", error), 0);
                                //    System.out.println("CHANGED_ELEMENT "+ newRes.getID());
                                } else {
                                    error.setStringValue(DConst.UNCHANGED_ELEMENT + newRes.getID());
-                                   _dm.getSetOfImportSelErrors().addResource(
+                                   if(_dm!=null)    _dm.getSetOfImportSelErrors().addResource(
                                            new DResource("4", error), 0);
                                   // System.out.println("UNCHANGED_ELEMENT "+ newRes.getID());
                                }
