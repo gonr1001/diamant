@@ -34,7 +34,6 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 
 import dInternal.Preferences;
-import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.dData.dInstructors.SetOfInstructors;

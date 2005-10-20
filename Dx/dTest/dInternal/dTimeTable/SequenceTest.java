@@ -113,7 +113,7 @@ String path;
       eSetOfPers = firstSequence.writeXMLtag(doc);
       doc = wr.buildDocument(doc,eSetOfPers);
       XMLOutputFile xmlOF = new XMLOutputFile();
-      xmlOF.write(doc,"SavedSequence.xml");
+      xmlOF.write(doc,path+"SavedSequence.xml");
 
       // read xml file
       doc = xmlFile.createDocument(path+"SavedSequence.xml");

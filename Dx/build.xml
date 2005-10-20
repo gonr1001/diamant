@@ -4,7 +4,7 @@
 		<tstamp/>
 		<property name="distDirZip" value="./Diamant1.6"/>
 		<property name="srcDir" value="."/>
-		<property name="localJars" value="D:/Developpements/DiamantExtreme/jars"/>
+		<property name="localJars" value="D:/exitDev/exitProjects/DiamantExtreme/jars"/>
 		<property name="eclipse" value="D:/Program Files/eclipse/plugins"/>
 		<property name="build" value="${srcDir}/classes"/>
 		<property name="reports" value="${srcDir}/reports"/>
