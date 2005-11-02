@@ -34,7 +34,7 @@ public class SequenceTest extends TestCase {
 String path;
   public SequenceTest(String name) {
     super(name);
-    path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+    path =System.getProperty("user.dir") + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
   }
 
   public static Test suite() {

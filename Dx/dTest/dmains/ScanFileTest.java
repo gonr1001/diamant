@@ -1,7 +1,7 @@
 
 /**
 *
-* Title: ELibTest $Revision: 1.1 $  $Date: 2004-10-21 18:39:15 $
+* Title: ELibTest $Revision: 1.2 $  $Date: 2005-11-02 16:32:14 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.1 $
+* @version $Revision: 1.2 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -40,19 +40,18 @@ import eLib.exit.txt.ByteInputFile;
 
 
 public class ScanFileTest extends TestCase {
-  String path;
-  
+ 
 
   public ScanFileTest(String name) {
     super(name);
-    path ="." + 
+    String path =System.getProperty("user.dir") + 
 				File.separator+"scanFileDataTest"+File.separator+"testFile.txt";
     String [] args = new String [1];
     args[0] = path;
 	ScanFile scan = new ScanFile();
 	if ( scan.fileNameExists(args) ) {
 		String inputFileName = scan.getFileName();
-		String outFileName = inputFileName + "out" + ".txt";
+		String outFileName = inputFileName.replaceFirst(".txt","") + "OUT" + ".txt";
 		scan.doIt(inputFileName, outFileName);
 		if (scan.getError()!= "")
 			System.out.println("Error in main : " + scan.getError());
@@ -79,7 +78,7 @@ public class ScanFileTest extends TestCase {
   	                                 + File.separator +
   	                                 "scanFileDataTest"
   	                                 + File.separator +
-  	                                   "testFile.txtout.txt";
+  	                                   "testFileOUT.txt";
 	try {
 		ByteInputFile bif= new ByteInputFile(str);	
 		b = bif.readFileAsBytes();
@@ -105,7 +104,7 @@ public class ScanFileTest extends TestCase {
   	                                 + File.separator +
   	                                 "scanFileDataTest"
   	                                 + File.separator +
-  	                                   "testFile.txtout.txt";
+  	                                   "testFileOUT.txt";
 	try {
 		ByteInputFile bif= new ByteInputFile(str);	
 		b = bif.readFileAsBytes();

@@ -396,7 +396,9 @@ public class SetOfEvents extends DSetOfResources {
 						.getID();	
 				id = id.replace(',',' ');
 				id = id.replaceFirst("  "," ");
-				id = id.substring(0, DConst.STUDENT_ID_LENGTH);
+				if (id.length() >= DConst.STUDENT_ID_LENGTH) {
+					id = id.substring(0, DConst.STUDENT_ID_LENGTH);
+				}
 				String matricule = "00" + studentOneInSection.get(i).toString();
 				res += matricule.substring(matricule.length()
 						- DConst.END_STUDENT_MATRICULE)

@@ -25,8 +25,10 @@ import java.util.ResourceBundle;
 public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
-  	public final static String V_DATE = "v 1.6.2.2 du 6 Juillet 2005";//res.getString("vDate");
-	public final static boolean DEVELOPMENT = true;// false
+
+  	public final static String V_DATE = "v 1.6.2.5 du 2 Novembre 2005";//res.getString("vDate");
+	public final static boolean DEVELOPMENT = false;// false
+
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
