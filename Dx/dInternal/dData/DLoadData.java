@@ -442,7 +442,7 @@ public class DLoadData {
         * @return
         */
        private void makeDiff(DSetOfResources newSites, DSetOfResources currentSites) {
-        System.err.println("...........MAKEDIFF.......................... \n");
+       // System.err.println("...........MAKEDIFF.......................... \n");
             // find changed and unchanged element
 
             findChangesInElements(newSites, currentSites);
@@ -601,8 +601,8 @@ public class DLoadData {
             if (currentCourses.getIndexOfResource(newCourses.getResourceAt(m)
                     .getID()) == -1) {
                 resChanged = true;
-                System.out.println("added "
-                        + newCourses.getResourceAt(m).getID());// debug
+//                System.out.println("added "
+//                        + newCourses.getResourceAt(m).getID());// debug
                 currentCourses.addResourceMod(newCourses.getResourceAt(m), 1);
             }
         } // end for
@@ -613,8 +613,8 @@ public class DLoadData {
             if (newCourses.getIndexOfResource(currentCourses.getResourceAt(k)
                     .getID()) == -1) {
                 resChanged = true;
-                System.out.println("remove "
-                        + currentCourses.getResourceAt(k).getID());// debug
+//                System.out.println("remove "
+//                        + currentCourses.getResourceAt(k).getID());// debug
                 currentCourses.removeResourceAt(k);
             }
         }// end for

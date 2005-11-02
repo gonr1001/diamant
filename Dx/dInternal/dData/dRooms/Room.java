@@ -1,6 +1,6 @@
 /**
 *
-* Title: Room $Revision: 1.3 $  $Date: 2005-09-23 16:08:22 $
+* Title: Room $Revision: 1.4 $  $Date: 2005-11-02 16:46:45 $
 * Description: Room is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */

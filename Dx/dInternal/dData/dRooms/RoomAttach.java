@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: RoomAttach $Revision: 1.4 $  $Date: 2005-09-23 16:08:22 $
+ * Title: RoomAttach $Revision: 1.5 $  $Date: 2005-11-02 16:46:45 $
  * Description: RoomAttach is a class used to
  *
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */

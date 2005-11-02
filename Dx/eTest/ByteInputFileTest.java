@@ -1,7 +1,7 @@
 package eTest;
 /**
  *
- * Title: ClassName $Revision: 1.8 $  $Date: 2005-10-20 13:01:15 $
+ * Title: ClassName $Revision: 1.9 $  $Date: 2005-11-02 16:46:46 $
  * Description: ClassName is a class used to
  *
  *
@@ -15,7 +15,7 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */

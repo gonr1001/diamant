@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
 *
-* Title: DLoadDataTest $Revision $  $Date: 2005-10-11 17:56:09 $
+* Title: DLoadDataTest $Revision: 1.6 $  
 * Description: 	DLoadDataTest is a class used to test the class 
 * 				DLoadData
 *
@@ -17,8 +17,7 @@ package dTest.dInternal.dData;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $ $
-* @author  $Author: hara2602 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 

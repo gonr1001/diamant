@@ -1,6 +1,6 @@
 /**
  *
- * Title: ButtonsPanel $Revision: 1.7 $  $Date: 2005-08-23 17:20:47 $
+ * Title: ButtonsPanel $Revision: 1.8 $  $Date: 2005-11-02 16:46:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
