@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.43 $  $Date: 2005-07-05 12:04:23 $
+ * Title: SectionDlg $Revision: 1.44 $  $Date: 2005-11-02 16:26:20 $
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students assignation 
  *           in sections
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.43 $
+ * @version $Revision: 1.44 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
 
@@ -125,7 +125,7 @@ public class SectionDlg extends DDialog implements
 	 * @param dApplic
 	 */
 	public SectionDlg(DApplication dApplic) {
-		super(dApplic.getJFrame(), "oct 04" + DConst.SECTION_DLG_TITLE, true);
+		super(dApplic.getJFrame(), DConst.SECTION_DLG_TITLE, true);
 		_dApplic = dApplic;
 		//_sortIndex = 0; // why 0?
 		_currentAssignedGroup = -1; // why -1
