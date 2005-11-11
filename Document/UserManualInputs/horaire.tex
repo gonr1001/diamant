@@ -247,13 +247,29 @@ un horaire dejà en cours de construction. On peut inserer de
 nouveaux enseignants, de nouveaux locaux, de nouveaux étudiants ou
 de nouvelles activités.
 
-Pour inserer une nouvelle liste d'enseignants
+La méthode utilisée pour l'insertion de nouvelles données est la
+suivante:
 
-Pour inserer une nouvelle liste de locaux
-
-Pour inserer une nouvelle liste d'étudiants
-
-Pour inserer une nouvelle liste d'activités
+\begin{description}
+    \item[Insertion de nouveaux enseignants: ] l'insertion de
+    nouveaux enseignants rajoute à la liste des enseignants
+    existant déjà dans \diamant{}, les nouveaux enseignants
+    contenu dans le fichier à insérer, sans modifier ceux se trouvant dejà dans \diamant{}.
+    \item[Insertion de nouveaux locaux: ] l'insertion de
+    nouveaux locaux rajoute à la liste des locaux
+    existant déjà dans \diamant{}, les nouveaux locaux
+    contenu dans le fichier à insérer, sans modifier ceux se trouvant dejà dans \diamant{}.
+    \item[Insertion de nouvelles activités:] l'insertion de
+    nouvelles activités rajoute à la liste des activités
+    existant déjà dans \diamant{}, les nouvelles activités
+    contenu dans le fichier à insérer, sans modifier ceux se trouvant dejà dans \diamant{}.
+    \item[Insertion de nouveaux étudiants: ] l'insertion de
+    nouveaux étudiants rajoute à la liste des étudiants
+    existant déjà dans \diamant{}, les nouveaux étudiants
+    contenu dans le fichier à insérer, supprime de cette liste les étudiants n'existant plus dans le
+    fichier et rajoute aux étudiants leurs nouveaux choix de
+    cours.
+\end{description}
 
 \subsubsection{\textcolor[rgb]{0.98,0.00,0.00}{Affectation manuelle}}
 
