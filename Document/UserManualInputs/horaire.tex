@@ -1,7 +1,7 @@
 \chapter{Construction d'un horaire avec \dx{}}
 \section{Introduction}\ \label{horaire}
 Construire un horaire avec \dx{} suppose que l'utilisateur a déjà
- sur son ordinateur les fichiers nécessaires \corrkad{les fichiers nécessaires sur son ordinateur ; changez l'ordre} (ceux du STI et
+les fichiers nécessaires sur son ordinateur (ceux du STI et
   ceux de la Faculté)~: \verb!cours.sig! (fichier de cours), \verb!choixet.sig!
 (fichier d'étudiants), \verb!disprof.sig! (fichier d'enseignants) et
 \verb!locaux.txt! (fichier de locaux). Ces fichiers peuvent porter
@@ -12,40 +12,26 @@ exemple \verb!hiver04! ou \verb!h2004!). Ainsi, les fichiers
 d'importation et les fichiers produits pendant la construction d'un
 horaire seront ensemble. La construction d'un horaire (cours ou
 examen) peut varier d'une faculté à une autre, car certaines
-facultés pour faire leurs horaires utilisent un seul site
-\corrolivier{Suggestion : "certaines facultés utilisent un seul site
-pour faire leurs horaires"}, tandis que d'autres en utilisent
-plusieurs (construction multi-site).
+facultés utilisent un seul site pour faire leurs horaires, tandis
+que d'autres en utilisent plusieurs (construction multi-site).
 
 La construction d'un nouvel horaire avec \dx{} comporte cinq phases:
 \begin{itemize}
-    \item Phase 1: elle concerne le chargement de données dans le
-    logiciel; \corrolivier{Je pense que ça serait légèrement mieux d'écrire "Phase 1 : Chargement des données dans le logiciel ;" plutôt que de répéter "elle concerne" à chaque fois (style à répéter pour les autres items)}
-    \item Phase 2: elle concerne la modification et l'épuration des données;
-    \item Phase 3: elle concerne la construction à proprement
-    parler; \corrolivier{En suivant le style de la phase 1 : "Phase 3 : Construction de l'horaire ;"}
-    \item Phase 4: elle concerne l'utilisation d'outils permettant de raffiner l'horaire (construction manuelle de
-    l'horaire);
-    \item Phase 5: elle concerne l'exportation de l'horaire.
+    \item Phase 1: Chargement des données dans le logiciel ;
+    \item Phase 2: Modification et épuration des données ;
+    \item Phase 3: Construction de l'horaire ;
+    \item Phase 4: Raffinage de l'horaire (construction manuelle de l'horaire) ;
+    \item Phase 5: Exportation de l'horaire.
 \end{itemize}
 
 En principe un horaire peut être fait en suivant les phases 1, 3 et
-5. Mais, il est fort possible qu'il soit nécessaire
-\corrolivier{Trop lourd, surtout que cette expression est répétée
-dans la phrase suivante. Suggestion : "Mais il peut être nécessaire
-de"} de modifier et d'épurer les données, phase 2 \corrolivier{Il
-est préférable de mettre "phase 2" entre parenthèses ici}. Il est
-aussi possible qu'il soit nécessaire de construire un horaire
-manuellement. La phase 4 décrit les opérations nécessaires, ainsi
-que les les opérations d'ouverture et de sauvegarde d'un horaire.
-\corrolivier{Suggestion pour les deux dernières phrases : Tout
-d'abord supprimer le point avant la phrase "Il est aussi possible"
-et le remplacer par "ou bien de construire un horaire manuellement
-(phase 4, notamment pour les opérations d'ouverture et de sauvegarde
-d'un horaire).}
+5. Mais il peut être nécessaire de modifier et d'épurer les données,
+(phase 2) ou bien de construire un horaire manuellement (phase 4,
+notamment pour les opérations d'ouverture et de sauvegarde d'un
+horaire).
 
-Nous vous présenterons dans ce chapitre toutes ces phases
-appliquées à la construction d'un horaire de cours et d'un horaire d'examen.
+Ces différentes phases, appliquées à la construction d'un horaire de
+cours ou d'examen, seront détaillées dans les prochaines sections.
 
 \section{Construction d'un horaire de cours}\label{prepacours}
 
@@ -55,14 +41,10 @@ appliquées à la construction d'un horaire de cours et d'un horaire d'examen.
     \item Lancer \dx{}.
     \item Aller au menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Nouvel
     horaire}}\index{Fichier \Rar Nouvel horaire}
-    \Rar \textbf{\emph{Horaire cycle}}\footnote{Le symbole \Rar est utilisé pour dire
-    qu'il faut chercher un niveau hiérarchique plus bas un sous-menu. \corrolivier{Un peu compliqué. Je pense que "[le symbôle] est utilisé pour indiquer un sous-menu" serait suffisant. A voir avec les utilisateurs.}}
-    , une boîte de dialogue comme celle
-de la Figure \ref{selectgrillecyc} doit apparaître
-\corrolivier{Suggestion de remplacement : "afin de choisir le
-fichier"} et elle vous permettra de choisir le fichier (fichier avec
-extension \emph{.xml}) contenant la définition de votre grille
-horaire.
+    \Rar \textbf{\emph{Horaire cycle}}\footnote{Le symbole \Rar est utilisé pour indiquer un sous-menu.}
+       , une boîte de dialogue (Figure \ref{selectgrillecyc}) doit apparaître afin de choisir
+le fichier le fichier (fichier avec extension \emph{.xml}) contenant
+la définition de votre grille horaire.
 
     \begin{figure}[h]
     % Requires \usepackage{graphicx}
@@ -97,8 +79,7 @@ Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de c
 
     \item Aller au menu \textbf{\emph{Fichier}} \Rar \textbf{\emph{Importer automatiquement}}.
     Une boite de dialogue apparaîtra et vous permettra de choisir le fichier \verb!.dim! de «configuration de
-    fichiers» \corrolivier{Dans le fichier dvi, ce type de guillement est mal reproduit. A vérifier.}
-    précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}}
+    fichiers» précédemment créé à partir de la fonction  \textbf{\emph{Définir fichiers à importer}}
     (dans l'exemple précédent il s'agit du fichier \verb!E02cours.dim!).
     Cliquer à présent sur le bouton \textbf{\emph{Importation de fichiers}},
     toutes vos données (cours, étudiants, enseignants et locaux) seront chargées dans le logiciel et
@@ -107,8 +88,8 @@ Exemple: choisissez le nom de fichier \verb!E02cours! pour Été 2002 horaire de c
 \item Lancer \textbf{\emph{Optimisation}} \Rar \textbf{\emph{Affectation initiale}} avant de passer à la phase 2. Elle exécutera les opérations suivantes:
 
 \begin{enumerate}
-    \item Place de façon aléatoire dans les groupes d'activité \corrolivier{S'il y a plusieurs activités dans un groupe, il faut ajouter un "s" à "activité"}, les étudiants non pré-affectés à des groupes, tout en équilibrant les
-    groupes. \corrolivier{Trop de répétition du mot "groupe". A alléger.}
+    \item Place de façon aléatoire dans les groupes d'activités, les étudiants non pré-affectés, tout en équilibrant ces
+    groupes.
     \item Place les événements pré-affectés (placés ou figés) dans la grille horaire.
     \item Calcule les conflits générés.
 \end{enumerate}
@@ -135,14 +116,7 @@ Le but de cette étape est de permettre de construire l'horaire uniquement à part
 À partir de la fenêtre \emph{liste des événements}, vous pouvez
 sélectionner un ou plusieurs événements et les faire passer de la
 colonne \emph{figés} (\emph{figés} veut dire que les événements sont
-placés et figés dans la grille horaire) \corrolivier{Rappel du
-problème que j'avais déjà évoqué lors d'une réunion : Je pense qu'il
-faudrait renommer cette colonne "Figé et placés" au lieu de
-simplement "Figés" car il y a une ambiguité avec le fonctionnement
-du bouton "Figer" de la boîte de dialogue d'événement disponible en
-double-cliquant sur un des événements de la liste. Si cette boîte de
-dialogue ne doit pas être utilisée ici pour éditer les événements,
-il faudrait alors en supprimer l'accès.} à \emph{placés}
+placés et figés dans la grille horaire) à \emph{placés}
 (\emph{placés} veut dire que les événements sont placés dans la
 grille horaire) ou de la colonne \emph{placés} à \emph{non placés}
 (\emph{non placés} veut dire que les événements ne sont pas encore
@@ -177,7 +151,7 @@ l'activité. Pour la modification de la durée d'un événement, voir la section \re
       % Requires \usepackage{graphicx}
       \begin{center}
         \includegraphics[width=2.5in]{UserManualInputs/images/event.eps}
-        \caption{Affectation d'événement \corrolivier{Capture à mettre à jour}}\label{eventc}
+        \caption{Affectation d'événement}\label{eventc}
       \end{center}
     \end{figure}
 
@@ -215,8 +189,7 @@ Cliquer sur \textbf{\emph{Appliquer}} pour accepter et effectuer les changements
     \item Modifier la disponibilité d'un local en cliquant sur le menu
     \textbf{\emph{Affectation}} \Rar  \textbf{\emph{Locaux}}
     pour voir apparaître la fenêtre de la figure  \ref{localc}.
-    En sélectionnant une zone correspondant au jour et à l'heure que vous souhaitez modifier. Une zone sélectionnée apparaît en foncé et indique que le local y est
-    disponible. \corrolivier{Les deux dernières phrases sont à remplacer. Suggestion : "Une sélection de la zone correspondant au jour et à l'heure que vous souhaitez modifier permet de passer de l'état disponible (couleur foncée) à l'état indisponible (couleur claire)."}
+   Une sélection de la zone correspondant au jour et à l'heure que vous souhaitez modifier permet de passer de l'état disponible (couleur foncée) à l'état indisponible (couleur claire).
 
     \begin{figure}[h]
       % Requires \usepackage{graphicx}
