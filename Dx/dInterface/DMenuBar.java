@@ -199,7 +199,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		createPreferencesMenu();
 		createHelpMenu();
 		createInTestMenu();
-		if (DConst.DEVELOPMENT)
+		if (_dApplic.getInDevelopment())
 			createDevelopmentMenu();
 		alwaysSet();
 		setZero(); // setAll();
@@ -759,7 +759,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// _boolmInTest2 = true;
 
 		// the menu dev
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -816,7 +816,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// always _boolAbout = true;
 
 		// the menu dev
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -881,7 +881,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// _boolmInTest2 = true;
 
 		// the menu dev
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -937,7 +937,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// always _boolAbout = true;
 
 		// the menu dev
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -1022,7 +1022,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// always _boolAbout = true;
 
 		// the menu dev
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -1089,7 +1089,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// _boolmInTest2 = true;
 
 		// the menu dev
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -1131,7 +1131,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 			setHelpMenu();
 		else
 			_help.setEnabled(_boolMenuHelp);
-		if (DConst.DEVELOPMENT) {
+		if (_dApplic.getInDevelopment()) {
 			if (_boolMenuDev)
 				setDevMenu();
 			else

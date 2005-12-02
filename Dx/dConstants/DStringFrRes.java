@@ -84,7 +84,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
     {"replace", "remplacer?"},
     { "expo", "Exporter" },
     //Separator
-    { "exit", "Quitter" },
+    { "exit", "eXit" },
 
 
     { "copy", "Copier"},

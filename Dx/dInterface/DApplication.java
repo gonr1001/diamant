@@ -1,7 +1,7 @@
 package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.69 $  $Date: 2005-11-02 16:46:43 $
+ * Title: DApplication $Revision: 1.70 $  $Date: 2005-12-02 16:44:23 $
  *
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,7 +17,7 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.69 $
+ * @version $Revision: 1.70 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -56,6 +56,7 @@ import org.apache.log4j.PropertyConfigurator;
 public class DApplication implements ActionListener {
 	private static Logger _logger = Logger.getLogger(DApplication.class.getName());
 	
+	boolean _inDevelopment;
 	// Fake Singletonm, car besoin pour fonctionnalite de Grille Selective
 	private static DApplication _instance = null;
 	/* ZERO is needed to fix Frame Location (origin)  */
@@ -90,9 +91,9 @@ public class DApplication implements ActionListener {
 	
 	public DApplication() {
 		PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
-		_logger.warn("Hi from DApplication");
-		
+		_logger.warn("Hi from DApplication");		
 		_instance = this;
+		_inDevelopment = false;
 	}
 	
 	public static DApplication getInstance() {
@@ -102,7 +103,15 @@ public class DApplication implements ActionListener {
 	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent 
 	//              pour que ca vaille la peine d'assigner son resultat a une 
 	//              variable
-	public void doIt() {
+	public void doIt(String[] args) {
+      	if (args.length > 0){
+			if(args[0].compareTo("-d") == 0){
+				_inDevelopment = true;
+				System.out.println("Mode développement");
+			}	
+		}
+
+
 		_preferences = new Preferences(System.getProperty("user.dir")
 				+ File.separator +
 				"pref"
@@ -148,7 +157,7 @@ public class DApplication implements ActionListener {
 		panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		panel.setMaximumSize(_screenSize);
 		
-		if(DConst.DEVELOPMENT){
+		if(_inDevelopment){
 			panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
 		}else{
 			panel.setPreferredSize(new Dimension(_screenSize.width - DConst.ADJUST_WIDTH,
@@ -313,6 +322,13 @@ public class DApplication implements ActionListener {
 	
 	public void setCursorDefault() {
 		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));		
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean getInDevelopment() {
+		return _inDevelopment;
 	}
 	
 } /* end class DApplication */

@@ -34,12 +34,13 @@ public class CycleTest extends TestCase {
    Cycle _cycle;
    public CycleTest(String name) {
      super(name);
-     _path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+     _path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
      //
      XMLInputFile xmlFile;
     Element  item;
     _cycle= new Cycle();
     try{
+    	
       xmlFile = new XMLInputFile();
       //System.out.println(path+"cycle.xml");//debug
       Document  doc = xmlFile.createDocument(_path+"cycle.xml");

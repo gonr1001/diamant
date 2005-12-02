@@ -33,7 +33,7 @@ import eLib.exit.xml.output.XMLOutputFile;
       String path;
       public TTStructureTest(String name) {
         super(name);
-        path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+        path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
       }
 
       public static Test suite() {

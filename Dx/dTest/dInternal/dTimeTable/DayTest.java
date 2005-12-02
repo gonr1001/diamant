@@ -35,7 +35,7 @@ public class DayTest extends TestCase {
 String _path;
   public DayTest(String name) {
     super(name);
-    _path ="." + File.separator+"data"+File.separator+"TTxmlFiles"+File.separator;
+    _path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
   }
 
   public static Test suite() {
