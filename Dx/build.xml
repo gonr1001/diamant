@@ -1,4 +1,3 @@
-<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
 <project name="DiamantBuild" basedir="." default="all">
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
 		<tstamp/>
