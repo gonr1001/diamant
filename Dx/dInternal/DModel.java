@@ -55,7 +55,7 @@ import dInternal.dOptimization.SetOfEvents;
 
 import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dTimeTable.TTStructureEvent;
+//import dInternal.dTimeTable.TTStructureEvent;
 //import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXToolsMethods;
 //import dInternal.dUtil.DXValue;
@@ -810,9 +810,9 @@ public class DModel extends Observable {
         c.toString();
     }// end changeInDModel
 */
-    public void changeInTTStructure(TTStructureEvent e) {
-        e.toString();
-    }// end changeInTTStructure
+//    public void changeInTTStructure(TTStructureEvent e) {
+//        e.toString();
+//    }// end changeInTTStructure
 
     /**
      * Export data from soft to SIG

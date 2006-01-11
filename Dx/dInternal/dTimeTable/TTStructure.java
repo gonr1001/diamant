@@ -2,8 +2,6 @@ package dInternal.dTimeTable;
 
 import java.io.File;
 
-import java.util.Vector;
-
 import dInternal.DSetOfResources;
 import dInternal.DResource;
 import dInternal.dData.StandardCollection;
@@ -19,17 +17,16 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class TTStructure {
-	private Vector _ttsListeners = new Vector();
-
+	
 	private DSetOfResources _setOfCycles;
 
-	//private int _nbOfStCycles=2;
-	//private int _nbOfStDays=7;
-	//private int _currentCycleIndex = 1;
-	//DXTimeTable tag
+	// private int _nbOfStCycles=2;
+	// private int _nbOfStDays=7;
+	// private int _currentCycleIndex = 1;
+	// DXTimeTable tag
 	static final String ITEM2 = "DXTimeTable";
 
-	//subtag
+	// subtag
 	private final String[] ITEM2_subTag = { "TTcycle", "TTdays", "TTday",
 			"TTsequences", "TTsequence", "TTperiods", "TTperiod" };
 
@@ -45,16 +42,16 @@ public class TTStructure {
 	// private String _str;
 	private String _error = "";
 
-	//private String _errorXMLFileMessage = "XML file is corrupted";
-	//private int _col;
-	//private int _row;
+	// private String _errorXMLFileMessage = "XML file is corrupted";
+	// private int _col;
+	// private int _row;
 	public static int NUMBEROFACTIVESDAYS = 5;// monday to friday
 
 	private int _periodLenght; // XXXX Pascal: Non initialise
 
 	private int _currentCycleIndex = 0;
 
-	//private String _errorMessage = "XML file is corrupted";
+	// private String _errorMessage = "XML file is corrupted";
 	static final String _TAGITEM = "TTcycle";
 
 	static final String _TAGITEM1 = "cycleID";
@@ -107,16 +104,20 @@ public class TTStructure {
 	}
 
 	public void setCurrentCycleIndex(int curCyc) {
-		_currentCycleIndex = curCyc;//_currentCycleIndex = curCyc;
+		_currentCycleIndex = curCyc;// _currentCycleIndex = curCyc;
 	}
 
 	/**
 	 * Create and save a standard TimeTable
-	 * @param String the timetable file name
-	 * @param int the number of cycles
-	 * @param int the number of days in each cycle
+	 * 
+	 * @param String
+	 *            the timetable file name
+	 * @param int
+	 *            the number of cycles
+	 * @param int
+	 *            the number of days in each cycle
 	 * @return boolean the result of the operation
-	 * */
+	 */
 	public boolean createStandardTT(String fileName, int nbOfCycles,
 			int nbOfDays) {
 		XMLWriter wr;
@@ -130,22 +131,25 @@ public class TTStructure {
 			Element eltSeqs;
 			Element eltSeq;
 			for (int cyc = 0; cyc < nbOfCycles; cyc++) {
-				eltCycle = wr.createElement(doc, ITEM2_subTag[0]); // XXXX Pascal: Magic numbers
+				eltCycle = wr.createElement(doc, ITEM2_subTag[0]); // XXXX
+																	// Pascal:
+																	// Magic
+																	// numbers
 				eltDays = wr.createElement(doc, ITEM2_subTag[1]);
 				for (int day = 0; day < nbOfDays; day++) {
 					eltDay = wr.createElement(doc, ITEM2_subTag[2]);
 					eltSeqs = wr.createElement(doc, ITEM2_subTag[3]);
 
-					//add AM periods
+					// add AM periods
 					int[] beginT = { 8, 15 }; // XXXX Pascal: Magic numbers
 					eltSeq = CreateSeqPeriods(doc, "AM", 4, 60, beginT, 0);
 					eltSeqs = wr.appendChildInElement(eltSeqs, eltSeq);
-					//add PM periods
+					// add PM periods
 					beginT[0] = 13;
 					beginT[1] = 30;
 					eltSeq = CreateSeqPeriods(doc, "PM", 5, 60, beginT, 0);
 					eltSeqs = wr.appendChildInElement(eltSeqs, eltSeq);
-					//add Evening periods
+					// add Evening periods
 					beginT[0] = 19;
 					beginT[1] = 00;
 					eltSeq = CreateSeqPeriods(doc, "EM", 3, 60, beginT, 1);
@@ -160,7 +164,7 @@ public class TTStructure {
 							ITEM2_subConst[8], dayID);
 					eltDay = wr.appendChildInElement(eltDay, childDay);
 					eltDay = wr.appendChildInElement(eltDay, childDayID);
-					//eltDays= wr.appendChildInElement(eltDays, childDay);
+					// eltDays= wr.appendChildInElement(eltDays, childDay);
 					eltDays = wr.appendChildInElement(eltDays, eltDay);
 				}// end for (day)
 				Element childCycle = wr.createElement(doc, ITEM2_subConst[0],
@@ -171,7 +175,7 @@ public class TTStructure {
 				eltCycle = wr.appendChildInElement(eltCycle, childCycle);
 				eltCycle = wr.appendChildInElement(eltCycle, eltDays);
 				eltTT = wr.appendChildInElement(eltTT, eltCycle);
-			}//for (int cyc=0; cyc<3; cyc++)
+			}// for (int cyc=0; cyc<3; cyc++)
 
 			// create document and write in the file
 			doc = wr.buildDocument(doc, eltTT);
@@ -179,21 +183,22 @@ public class TTStructure {
 			xmlOF.write(doc, fileName);
 			return true;
 		} catch (Exception e) {
-			System.out.println("TTStructure: " + e);//debug
+			System.out.println("TTStructure: " + e);// debug
 			return false;
 		}
 	}// end of CreateStandardTT method
 
 	/**
 	 * it load the time table structure
-	 * @param String the xml file containing the timetable structure
+	 * 
+	 * @param String
+	 *            the xml file containing the timetable structure
 	 * @return String the error message, empty if it does not found error
-	 * */
+	 */
 
 	public String loadTTStructure(String fileName) {
-		System.out.println("FileName :" + fileName);
 		XMLInputFile xmlFile;
-		Element root; //, item, ID;
+		Element root; // , item, ID;
 		if (preLoad(fileName)) {
 			try {
 				xmlFile = new XMLInputFile();
@@ -217,12 +222,14 @@ public class TTStructure {
 
 	/**
 	 * it set the time table structure
-	 * @param Document  doc the document containing the timetable structure
+	 * 
+	 * @param Document
+	 *            doc the document containing the timetable structure
 	 * @return String the error message, empty if it does not found error
-	 * */
+	 */
 	public String setTTStructureDocument(Document doc) {
-		//ReadXMLFile xmlFile;
-		Element root; //, item, ID;
+		// ReadXMLFile xmlFile;
+		Element root; // , item, ID;
 		try {
 			XMLReader list = new XMLReader();
 			root = list.getRootElement(doc);
@@ -240,9 +247,11 @@ public class TTStructure {
 
 	/**
 	 * it save the time table structure
-	 * @param String the xml file where the timetable structure must be saved
+	 * 
+	 * @param String
+	 *            the xml file where the timetable structure must be saved
 	 * @return String the error message, empty if it does not found error
-	 * */
+	 */
 	public String saveTTStructure(String fileName) {
 		XMLWriter wr;
 		try {
@@ -255,15 +264,16 @@ public class TTStructure {
 			xmlOF.write(doc, fileName);
 			return "";
 		} catch (Exception e) {
-			return e.toString();//debug
+			return e.toString();// debug
 		}
 
 	}
 
 	/**
 	 * it get the time table structure
+	 * 
 	 * @return Document doc the document containing the timetable structure
-	 * */
+	 */
 	public Document getTTStructureDocument() {
 		XMLWriter wr;
 		try {
@@ -274,44 +284,42 @@ public class TTStructure {
 			doc = wr.buildDocument(doc, ttStruc);
 			return doc;
 		} catch (Exception e) {
-			return null;//debug
+			return null;// debug
 		}
 
 	}
 
-	public void modification() {
-		sendEvent();
-		System.out.println("Sending events");
-	}
+	// public void modification() {
+	// sendEvent();
+	// System.out.println("Sending events");
+	// }
 
-	public void sendEvent() {
-		TTStructureEvent event = new TTStructureEvent(this);
-		for (int i = 0; i < _ttsListeners.size(); i++) {
-			TTStructureListener ttsl = (TTStructureListener) _ttsListeners
-					.elementAt(i);
-			ttsl.changeInTTStructure(event);
-			//System.out.println("sendEvent: "+event.toString()+"   --I:"+i);
-			System.out.println("TTstructure listener started: " + i);//debug
-		}
-	}
+	// public void sendEvent() {
+	// TTStructureEvent event = new TTStructureEvent(this);
+	// for (int i = 0; i < _ttsListeners.size(); i++) {
+	// TTStructureListener ttsl = (TTStructureListener) _ttsListeners
+	// .elementAt(i);
+	// ttsl.changeInTTStructure(event);
+	// //System.out.println("sendEvent: "+event.toString()+" --I:"+i);
+	// System.out.println("TTstructure listener started: " + i);//debug
+	// }
+	// }
 
 	/*
-	 public synchronized void addTTStructureListener(TTStructureListener ttsl) {
-	 if (_ttsListeners.contains(ttsl)){
-	 return;
-	 }
-	 _ttsListeners.addElement(ttsl);
-	 //System.out.println("addTTStructure Listener ...");
-	 }
-
-	 public synchronized void removeTTStructureListener(TTStructureListener ttsl) {
-	 _ttsListeners.removeElement(ttsl);
-	 }
+	 * public synchronized void addTTStructureListener(TTStructureListener ttsl) {
+	 * if (_ttsListeners.contains(ttsl)){ return; }
+	 * _ttsListeners.addElement(ttsl); //System.out.println("addTTStructure
+	 * Listener ..."); }
+	 * 
+	 * public synchronized void removeTTStructureListener(TTStructureListener
+	 * ttsl) { _ttsListeners.removeElement(ttsl); }
 	 */
 	/**
-	 *read a xml tag containing a set of cycle and build the resource
-	 * @param Element the root xml tag of the set of cycle
-	 * */
+	 * read a xml tag containing a set of cycle and build the resource
+	 * 
+	 * @param Element
+	 *            the root xml tag of the set of cycle
+	 */
 
 	public String readXMLtag(Element setofCycles) {
 		XMLReader list = new XMLReader();
@@ -321,14 +329,15 @@ public class TTStructure {
 			_error = DConst.ERROR_XML_FILE;
 			return _error;
 		}
-		//System.out.println(" Cycles Size: "+size);//debug
+		// System.out.println(" Cycles Size: "+size);//debug
 		for (int i = 0; i < size; i++) {
 			Cycle setOfdays = new Cycle();
 			Element cycle = list.getElement(setofCycles, _TAGITEM, i);
 			ID = list.getElementValue(cycle, _TAGITEM1);
 			_periodLenght = Integer.parseInt(list.getElementValue(cycle,
 					_TAGITEM2));
-			//System.out.println(" Cycle ID: "+ID+" PeriodLenght: "+_periodLenght);//debug
+			// System.out.println(" Cycle ID: "+ID+" PeriodLenght:
+			// "+_periodLenght);//debug
 			Element days = list.getElement(cycle, _TAGITEM3, 0);
 			if (!setOfdays.readXMLtag(days).equals("")) {
 				_error = DConst.ERROR_XML_FILE;
@@ -341,9 +350,11 @@ public class TTStructure {
 
 	/**
 	 * Contruct a xml element from the set of cycles
-	 * @param Document the root xml document
+	 * 
+	 * @param Document
+	 *            the root xml document
 	 * @Element the xml tag of the set of cycles
-	 * */
+	 */
 	public Element writeXMLtag(Document doc) {
 		XMLWriter xmlElt;
 		try {
@@ -364,13 +375,13 @@ public class TTStructure {
 			}
 			return eltCycles;
 		} catch (Exception e) {
-			System.out.println("SetOfCycle: " + e);//debug
+			System.out.println("SetOfCycle: " + e);// debug
 			return null;
 		}
 	}
 
 	/**
-	 *
+	 * 
 	 * @param ID
 	 * @return
 	 */
@@ -385,7 +396,7 @@ public class TTStructure {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param str
 	 * @return
 	 */
@@ -394,24 +405,32 @@ public class TTStructure {
 		if (!fil.exists()) {
 			System.out.println("fil.exists: " + fil.exists());
 		}
-		//fil.exists(); // XXXX Pascal: redondance?  Cette methode est-elle vraiment necessaire?
+		// fil.exists(); // XXXX Pascal: redondance? Cette methode est-elle
+		// vraiment necessaire?
 		return fil.exists();
 	}
 
 	/**
 	 * Create a sequence of periods
-	 * @param Document the xml document where we are working
-	 * @param String String the sequence ID (AM, PM or EM= evening)
-	 * @param int the number of periods in the sequence
-	 * @param int the lenght of each period in the sequence
-	 * @param int[2] the begin time of the period. the first element of the table
-	 * is the our, and the second is the minutes
-	 * @param int the prioryti of each period
+	 * 
+	 * @param Document
+	 *            the xml document where we are working
+	 * @param String
+	 *            String the sequence ID (AM, PM or EM= evening)
+	 * @param int
+	 *            the number of periods in the sequence
+	 * @param int
+	 *            the lenght of each period in the sequence
+	 * @param int[2]
+	 *            the begin time of the period. the first element of the table
+	 *            is the our, and the second is the minutes
+	 * @param int
+	 *            the prioryti of each period
 	 * @return Element the sequence element
-	 * */
+	 */
 	private Element CreateSeqPeriods(Document doc, String seqID,
 			int nbOfPeriods, int periodLenght, int[] beginTime, int priority) {
-		//add PM periods
+		// add PM periods
 		XMLWriter xmlElt;
 		try {
 			xmlElt = new XMLWriter();
@@ -447,16 +466,23 @@ public class TTStructure {
 
 			return eltSeq;
 		} catch (Exception e) {
-			System.out.println("TTStructure: " + e);//debug
+			System.out.println("TTStructure: " + e);// debug
 			return null;
 		}
 	}
 
 	/**
-	 isEquals checks if this TTStructure is equals to the TTStructure gives in arg
-	 * @param tts the TTStructure arg
-	 * @return <p> true if this TTStructure is equals to the TTStructure gives in arg </p>
-	 * false otherwise
+	 * isEquals checks if this TTStructure is equals to the TTStructure gives in
+	 * arg
+	 * 
+	 * @param tts
+	 *            the TTStructure arg
+	 * @return
+	 *            <p>
+	 *            true if this TTStructure is equals to the TTStructure gives in
+	 *            arg
+	 *            </p>
+	 *            false otherwise
 	 */
 	public boolean isEquals(TTStructure tts) {
 		for (int i = 0; i < _setOfCycles.size(); i++) {
@@ -471,12 +497,13 @@ public class TTStructure {
 	}
 
 	/**
-	 * cloneCurrentTTSruct 
+	 * cloneCurrentTTSruct
+	 * 
 	 * @param dm
 	 * @return TTStructure containing the values of the TTStructure in dm
 	 */
 	public TTStructure cloneCurrentTTS() {
-		//TTStructure oldTTS= dm.getTTStructure();
+		// TTStructure oldTTS= dm.getTTStructure();
 		TTStructure ttStruct = new TTStructure();
 		ttStruct.setTTStructureDocument(getTTStructureDocument());
 		return ttStruct;
