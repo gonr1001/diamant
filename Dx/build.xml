@@ -77,6 +77,7 @@
 			<pathelement path="${localJars}/log4j-1.2.8.jar"/>
 			<pathelement path="${localJars}/xml-api.jar"/>
 			<pathelement path="${localJars}/jdom.jar"/>
+			<pathelement path="${dataTest}"/>
 			<pathelement path="${build}"/>
 		</path>
 	</target>

@@ -242,13 +242,11 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
-		// tts.CreateStandardTT(path+"newStandardTT.xml",5,5);
 		tts.loadTTStructure(_path + "5j27p.xml");
 		
-		System.out.println("5j27p.xml " + tts.getError());
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
-		// assertEquals("test_cloneCurrentTTS1 : assertEquals 1 (number of
-		// cycles):",1,cloneTTS.getSetOfCycles().size());
+		assertEquals("test_cloneCurrentTTS1 : assertEquals 1 (number of cycles):",1,
+				cloneTTS.getSetOfCycles().size());
 		assertEquals(
 				"test_cloneCurrentTTS2 : assertEquals 2 (number of days):", 5,
 				cloneTTS.getCurrentCycle().getSetOfDays().size());
@@ -282,8 +280,8 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test1_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
-		// tts.CreateStandardTT(path+"newStandardTT.xml",5,5);
 		tts.loadTTStructure(_path + "5j27p.xml");
+
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		boolean isEquals = tts.getCurrentCycle().isEquals(
 				cloneTTS.getCurrentCycle());
