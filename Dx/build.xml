@@ -59,7 +59,7 @@
 	</target>
 	<target name="compilepath" depends="prepare" description="compile path classpath.">
 		<path id="c.classpath">
-			<pathelement path="${eclipse}/org.junit_3.8.1/junit.jar"/>
+			<pathelement path="${localJars}/junit.jar"/>
 			<pathelement path="${localJars}/log4j-1.2.8.jar"/>
 			<pathelement path="${localJars}/xml-api.jar"/>
 			<pathelement path="${localJars}/jdom.jar"/>
@@ -73,7 +73,7 @@
 	</target>
 	<target name="testpath" depends="prepare" description="test path classpath.">
 		<path id="t.classpath">
-			<pathelement path="${eclipse}/org.junit_3.8.1/junit.jar"/>
+			<pathelement path="${localJars}/junit.jar"/>
 			<pathelement path="${localJars}/log4j-1.2.8.jar"/>
 			<pathelement path="${localJars}/xml-api.jar"/>
 			<pathelement path="${localJars}/jdom.jar"/>
@@ -103,7 +103,7 @@
 		</java>
 	</target>
 	<target name="unjar1" depends="unitTest">
-		<unjar src="${eclipse}/org.junit_3.8.1/junit.jar" dest="${build}"/>
+		<unjar src="${localJars}/junit.jar" dest="${build}"/>
 	</target>
 	<target name="unjar2" depends="unjar1">
 		<unjar src="${localJars}/log4j-1.2.8.jar" dest="${build}"/>
