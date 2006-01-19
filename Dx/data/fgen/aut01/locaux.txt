@@ -1,9 +1,0 @@
-Faculte de genie 
-Liste des locaux pour reservation
-
-Nom du local ; Capacite ; Fonction ; Liste des caracteristiques ; Notes ;
-
-C1-134       ; 21       ; 0212     ;  1                          ; Grand                    ;
-C1-260       ; 10       ; 0212     ; 1                           ; Materiaux composites     ;
-C1-275-8     ; 24       ; 0211     ;  1                          ; xyz ;
-C1-302       ; 25       ; 0211     ; 30                         ; Laboratoire megatronique ;
