@@ -515,7 +515,7 @@ public class Cycle extends DObject{
 	 *return the AttributsToDisplay matrix
 	 * @return
 	 */
-	public DisplayAttributs[][] getAttributsToDisplay(int periodLength){ // XXXX Pascal: Cette methode devrait plutot s'appeler 'getAttributesToDisplay', non?
+	public DisplayAttributs[][] getAttributesToDisplay(int periodLength){
 		DSetOfResources rowAtt=buildAttributsRowTodisplay(periodLength);
 		DisplayAttributs[][] matrixToDisplay= new DisplayAttributs [_setOfDays.size()][rowAtt.size()-1];
 		for (int i=0; i< matrixToDisplay.length; i++){

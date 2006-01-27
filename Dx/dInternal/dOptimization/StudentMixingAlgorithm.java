@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.38 $ $Date: 2005-07-05 12:04:31 $
+ * Title: StudentMixingAlgorithm $Revision: 1.39 $ $Date: 2006-01-27 23:23:47 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -133,7 +133,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       }
     }//end for(int i=0; i< _eventsRescList.size(); i++)
     _dm.getConditionsTest().setMatrixBuilded(false,false);
-    _dm.getTTStructure().getCurrentCycle().getAttributsToDisplay(_dm.getTTStructure().getPeriodLenght());
+    _dm.getTTStructure().getCurrentCycle().getAttributesToDisplay(_dm.getTTStructure().getPeriodLenght());
     _dm.changeInDModel(null);
     //System.out.println("Mixing type: "+_mixingType);// debug
   }
