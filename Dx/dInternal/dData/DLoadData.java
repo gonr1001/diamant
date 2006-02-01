@@ -25,32 +25,26 @@ import java.io.File;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-
-
+import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.DataExchange;
-
 import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
-import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
-
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.Student;
-
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.txt.FilterFile;
-import dConstants.DConst;
 
 public class DLoadData {
 	
@@ -629,8 +623,8 @@ public class DLoadData {
         */ 
       private boolean compareInstructors(DResource currentRes,DResource newRes) {
              boolean resChanged = false;
-             InstructorAttach newAtt = (InstructorAttach) newRes.getAttach();
-             InstructorAttach curAtt = (InstructorAttach) currentRes.getAttach();
+             AvailabilityAttach newAtt = (AvailabilityAttach) newRes.getAttach();
+             AvailabilityAttach curAtt = (AvailabilityAttach) currentRes.getAttach();
             if (!curAtt.isEquals(newAtt)){
                 resChanged = true;
                 curAtt.setAvailability(newAtt.getMatrixAvailability());

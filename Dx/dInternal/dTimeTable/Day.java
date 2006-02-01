@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
+import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DObject;
@@ -20,9 +21,6 @@ public class Day extends DObject{
 	  private int _currentSequenceIndex = 0;
 	  private String _error = "";
 	  private String _errorMessage = "XML file is corrupted";
-	  static final String _TAGITEM="TTsequence";
-	  static final String _TAGITEM1="sequenceID";
-	  static final String _TAGITEM2="TTperiods";
 
   /**
    * Constructor
@@ -81,17 +79,17 @@ public class Day extends DObject{
   public String readXMLtag(Element setofSeqs){
     XMLReader list= new XMLReader();
     String ID="";
-    int size= list.getSize(setofSeqs,_TAGITEM);
+    int size= list.getSize(setofSeqs,DConst.TTXML_TTSEQUENCE);
     if (size == 0){
       _error = _errorMessage;
       return _error;
     }
     for (int i=0; i< size; i++){
       Sequence setOfPeriods = new Sequence();
-      Element sequence= list.getElement(setofSeqs,_TAGITEM,i);
-      ID= list.getElementValue(sequence,_TAGITEM1);
-      //System.out.println(" Sequences ID: "+ID);//debug
-      Element periods= list.getElement(sequence,_TAGITEM2,0);
+      Element sequence= list.getElement(setofSeqs,DConst.TTXML_TTSEQUENCE,i);
+      ID= list.getElementValue(sequence,DConst.TTXML_SEQUENCEID);
+  
+      Element periods= list.getElement(sequence,DConst.TTXML_TTPERIODS,0);
       if (!setOfPeriods.readXMLtag(periods).equals("")){
         _error = _errorMessage;
         return _error;
@@ -110,11 +108,11 @@ public class Day extends DObject{
     XMLWriter xmlElt;
     try{
       xmlElt = new XMLWriter();
-      Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM2);
+      Element eltDay= xmlElt.createElement(doc,DConst.TTXML_TTSEQUENCES);
       for (int i=0; i<_setOfSequences.size(); i++){
-        Element eltSeqs= xmlElt.createElement(doc,_TAGITEM);
+        Element eltSeqs= xmlElt.createElement(doc,DConst.TTXML_TTSEQUENCE);
         Element sequence= ((Sequence)_setOfSequences.getResourceAt(i).getAttach()).writeXMLtag(doc);
-        Element sequenceID= xmlElt.createElement(doc,_TAGITEM1,_setOfSequences.getResourceAt(i).getID());
+        Element sequenceID= xmlElt.createElement(doc,DConst.TTXML_SEQUENCEID,_setOfSequences.getResourceAt(i).getID());
         eltSeqs= xmlElt.appendChildInElement(eltSeqs, sequenceID);
         eltSeqs= xmlElt.appendChildInElement(eltSeqs, sequence);
         eltDay=xmlElt.appendChildInElement(eltDay, eltSeqs);

@@ -19,44 +19,31 @@ package dInternal;
 
 import java.io.File;
 import java.util.Observable;
-
 import java.util.Vector;
 
 import dConstants.DConst;
-
 import dInterface.DDocument;
-
+import dInternal.dData.AvailabilityAttach;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
+import dInternal.dData.ExportData;
 import dInternal.dData.StandardCollection;
-
 import dInternal.dData.dActivities.Activity;
-
+import dInternal.dData.dActivities.Section;
+import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
-import dInternal.dData.dActivities.Section;
-import dInternal.dData.dActivities.SetOfActivities;
-
+import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
-
-import dInternal.dData.dInstructors.SetOfInstructors;
-import dInternal.dData.dInstructors.InstructorAttach;
-
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
-
-import dInternal.dData.ExportData;
-
 import dInternal.dOptimization.SetOfEvents;
-
 import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.TTStructure;
-//import dInternal.dTimeTable.TTStructureEvent;
-//import dInternal.dTimeTable.TTStructureListener;
 import dInternal.dUtil.DXToolsMethods;
 //import dInternal.dUtil.DXValue;
 
@@ -279,7 +266,7 @@ public class DModel extends Observable {
         }
         // set new instructor availability
         for (int i = 0; i < _setOfInstructors.size(); i++) {
-            ((InstructorAttach) _setOfInstructors.getResourceAt(i).getAttach())
+            ((AvailabilityAttach) _setOfInstructors.getResourceAt(i).getAttach())
                     .setFullAvailability();
         }
 

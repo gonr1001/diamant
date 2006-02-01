@@ -17,6 +17,7 @@ import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
+import dInternal.dData.AvailabilityAttach;
 import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfInstructors extends DSetOfResources{
@@ -160,7 +161,7 @@ public class SetOfInstructors extends DSetOfResources{
          	siteAvail.add(secondPart);
          stateDispo++;
          if (stateDispo> _numberOfLines){
-           InstructorAttach inst = new InstructorAttach();
+         	AvailabilityAttach  inst = new AvailabilityAttach();
            inst.setAvailability(avail);
            inst.setAssignAvailability(siteAvail);
            this.addResource(new DResource( instID, inst),1);
@@ -199,7 +200,7 @@ public long getSelectedField() {
 
 public void remAllAssignedToASite(String site){
 	for (int i = 0; i < this.size(); i++) {
-		((InstructorAttach)this.getResourceAt(i).getAttach())
+		((AvailabilityAttach)this.getResourceAt(i).getAttach())
 		.remAllAssignedToASite(site);
 	}// for (int i = 0; i < _instructorSiteAvailability.size(); i++)
 }

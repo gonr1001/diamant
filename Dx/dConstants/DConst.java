@@ -20,6 +20,7 @@ package dConstants;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 public class DConst {
@@ -27,8 +28,8 @@ public class DConst {
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
   	public final static String V_DATE = "v 1.6.2.5 du 2 Novembre 2005";//res.getString("vDate");
-	//public static boolean DEVELOPMENT = false;// false
-
+  	/** The format of number * */
+    public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
@@ -118,8 +119,43 @@ public class DConst {
 
   //return constant
   public final static String CR_LF = "\r\n";//
-  
-  //Student file constants
+ 
+  // TTStructure XML file tags
+	public static final String TTXML_DXTIMETABLE = "DXTimeTable";
+
+	public static final String TTXML_TTCYCLE = "TTcycle";
+
+	public static final String TTXML_CYCLEID = "cycleID";
+
+	public static final String TTXML_PLENGTH = "pLength";
+
+	public static final String TTXML_TTDAYS = "TTdays";
+
+	public static final String TTXML_TTPERIOD = "TTperiod";
+
+	public static final String TTXML_PERIODID = "periodID";
+
+	public static final String TTXML_BEGINTIME = "BeginTime";
+
+	public static final String TTXML_ENDTIME = "EndTime";
+
+	public static final String TTXML_PRIORITY = "Priority";
+
+	public static final String TTXML_TTSEQUENCE = "TTsequence";
+
+	public static final String TTXML_SEQUENCEID = "sequenceID";
+
+	public static final String TTXML_TTPERIODS = "TTperiods";
+
+	public static final String TTXML_TTDAY = "TTday";
+
+	public static final String TTXML_DAYREF = "dayRef";
+
+	public static final String TTXML_TTSEQUENCES = "TTsequences";
+
+	public static final String TTXML_DAYID = "dayID";
+    
+  // Student file constants
   public final static char LINE_DESCRIPTOR_S = 'E';
   public final static char LINE_DESCRIPTOR_C = 'C';
   public final static char LINE_DESCRIPTOR_T = 'T';

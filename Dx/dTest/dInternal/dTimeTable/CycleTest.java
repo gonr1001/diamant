@@ -34,7 +34,7 @@ public class CycleTest extends TestCase {
    Cycle _cycle;
    public CycleTest(String name) {
      super(name);
-     _path ="." + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
+     _path =System.getProperty("user.dir") + File.separator+"dataTest"+File.separator+"TTxmlFiles"+File.separator;
      //
      XMLInputFile xmlFile;
     Element  item;

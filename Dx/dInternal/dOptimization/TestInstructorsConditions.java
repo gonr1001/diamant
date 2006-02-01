@@ -12,9 +12,8 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DModel;
-//import dInternal.dDataTxt.InstructorAttach;
-import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.DResource;
+import dInternal.dData.AvailabilityAttach;
 import dInternal.dTimeTable.Period;
 //import dInternal.dUtil.DXToolsMethods;
 
@@ -89,7 +88,7 @@ public class TestInstructorsConditions  implements Condition{
     //long instKey = event.getInstructorKey();
     for (int i=0; i< instKey.length; i++){
       if(event.getPeriodKey().length()!=0){
-        InstructorAttach inst = (InstructorAttach)_dm.getSetOfInstructors().getResource(instKey[i]).getAttach();
+        AvailabilityAttach inst = (AvailabilityAttach)_dm.getSetOfInstructors().getResource(instKey[i]).getAttach();
         //long dayKey = Integer.parseInt(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
         //int[] dayTime={(int)dayKey, period.getBeginHour()[0],period.getBeginHour()[1]};
         //String thePeriod= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);

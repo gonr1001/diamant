@@ -1,6 +1,6 @@
 /**
  *
- * Title: ClassName $Revision: 1.5 $  $Date: 2005-07-05 12:04:24 $
+ * Title: ClassName $Revision: 1.6 $  $Date: 2006-02-01 04:24:55 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.6 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -27,6 +27,7 @@ package dInterface.dData;
 
 import dInterface.Command;
 import dInterface.DApplication;
+import dInterface.dAffectation.AvailabiltyDialog;
 
 /**
  *
@@ -38,6 +39,7 @@ public class InstructorAvailabilityCmd implements Command {
 
     //------------------------------
     public void execute(DApplication dApplic) {
-        new InstructorAvailabiliyDlg(dApplic);
+    	 new AvailabiltyDialog(dApplic,dApplic.getDModel().getSetOfInstructors());
+    	// new InstructorAvailabiliyDlg(dApplic);
     } // end execute
 } /* end class InstructorAvailabilityCmd */

@@ -8,19 +8,18 @@ import dConstants.DConst;
 import dInterface.dUtil.DXTools;
 import dInternal.DModel;
 import dInternal.DResource;
+import dInternal.DSetOfResources;
 import dInternal.DValue;
-import dInternal.dData.dInstructors.InstructorAttach;
+import dInternal.dData.AvailabilityAttach;
+import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dActivities.Assignment;
+import dInternal.dData.dActivities.Section;
+import dInternal.dData.dActivities.SetOfActivities;
+import dInternal.dData.dActivities.Type;
+import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
-import dInternal.dData.dActivities.Activity;
-import dInternal.dData.dActivities.Assignment;
-
-import dInternal.dData.dActivities.Section;
-import dInternal.dData.dActivities.SetOfActivities;
-import dInternal.DSetOfResources;
-import dInternal.dData.dActivities.Type;
-import dInternal.dData.dActivities.Unity;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -503,7 +502,7 @@ public class SetOfEvents extends DSetOfResources {
 			if (event.isPlaceInAPeriod()) {
 				instKey = event.getInstructorKey();
 				for (int j = 0; j < instKey.length; j++) {
-					InstructorAttach inst = (InstructorAttach) _dm.getSetOfInstructors().getResource(instKey[j]).getAttach();
+					AvailabilityAttach inst = (AvailabilityAttach) _dm.getSetOfInstructors().getResource(instKey[j]).getAttach();
 					int dayIndex= _dm.getTTStructure().findIndexInWeekTable(perKey[0]);
 					int perPosition= _dm.getTTStructure().getCurrentCycle().getPeriodPositionInDay(perKey[0],perKey[1],perKey[2]);
 					if (event.getPeriodKey().length() != 0) 

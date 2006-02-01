@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DObject;
@@ -24,11 +25,7 @@ public class Cycle extends DObject{
 	private String _error = "";
 	private int _currentDayIndex=0;
 	private String _errorMessage = "XML file is corrupted";
-	//XML tags
-	static final String _TAGITEM="TTday";
-	static final String _TAGITEM1="dayRef";
-	static final String _TAGITEM2="TTsequences";
-	static final String _TAGITEM4="dayID";
+	
 	//private Day _currentDay;
 	//private int _currentDayIndex=0;
 	
@@ -155,17 +152,17 @@ public class Cycle extends DObject{
 		XMLReader list= new XMLReader();
 		String ID="";
 		String key="";
-		int size= list.getSize(setofDays,_TAGITEM);
+		int size= list.getSize(setofDays,DConst.TTXML_TTDAY);
 		if (size == 0){
 			_error = _errorMessage;
 			return _error;
 		}
 		for (int i=0; i< size; i++){
 			Day setOfSequences = new Day();
-			Element day= list.getElement(setofDays,_TAGITEM,i);
-			ID= list.getElementValue(day,_TAGITEM4);
-			key= list.getElementValue(day,_TAGITEM1);
-			Element sequences= list.getElement(day,_TAGITEM2,0);
+			Element day= list.getElement(setofDays,DConst.TTXML_TTDAY,i);
+			ID= list.getElementValue(day,DConst.TTXML_DAYID);
+			key= list.getElementValue(day,DConst.TTXML_DAYREF);
+			Element sequences= list.getElement(day,DConst.TTXML_TTSEQUENCES,0);
 			if (!setOfSequences.readXMLtag(sequences).equals("")){
 			_error = _errorMessage;
 			return _error;
@@ -185,12 +182,12 @@ public class Cycle extends DObject{
 		XMLWriter xmlElt;
 		try{
 			xmlElt = new XMLWriter();
-			Element eltDays= xmlElt.createElement(doc,TTStructure._TAGITEM3);
+			Element eltDays= xmlElt.createElement(doc,DConst.TTXML_TTDAYS);
 			for (int i=0; i<_setOfDays.size(); i++){
-				Element eltDay= xmlElt.createElement(doc,Cycle._TAGITEM);
+				Element eltDay= xmlElt.createElement(doc,DConst.TTXML_TTDAY);
 				Element day= ((Day)_setOfDays.getResourceAt(i).getAttach()).writeXMLtag(doc);
-				Element dayID= xmlElt.createElement(doc,_TAGITEM4,_setOfDays.getResourceAt(i).getID());
-				Element dayKey= xmlElt.createElement(doc,_TAGITEM1,Integer.toString((int)_setOfDays.getResourceAt(i).getKey()));
+				Element dayID= xmlElt.createElement(doc,DConst.TTXML_DAYID,_setOfDays.getResourceAt(i).getID());
+				Element dayKey= xmlElt.createElement(doc,DConst.TTXML_DAYREF,Integer.toString((int)_setOfDays.getResourceAt(i).getKey()));
 				eltDay= xmlElt.appendChildInElement(eltDay, day);
 				eltDay= xmlElt.appendChildInElement(eltDay, dayID);
 				eltDay= xmlElt.appendChildInElement(eltDay, dayKey);

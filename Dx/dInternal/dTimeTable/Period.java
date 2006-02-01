@@ -43,9 +43,7 @@ public class Period extends DObject {
 	private int _priority;// 0= normal; 1= low; 2= null
 	private String _error = "";
 	
-	static final String  _TAGITEM="BeginTime";
-	static final String _TAGITEM1="EndTime";
-	static final String _TAGITEM2="Priority";
+
 	/**
 	 * contains a resource where ID is the event which is place in the period,
 	 * and resource attach is a conflictsattach type
@@ -211,10 +209,10 @@ public class Period extends DObject {
 		XMLReader list= new XMLReader();
 		//Period period = new Period();
 		String begin, end, prior;
-		begin= list.getElementValue(setPeriod,_TAGITEM);
+		begin= list.getElementValue(setPeriod,DConst.TTXML_BEGINTIME);
 		StringTokenizer time= new StringTokenizer(begin,":");
-		end= list.getElementValue(setPeriod,_TAGITEM1);
-		prior= list.getElementValue(setPeriod,_TAGITEM2);
+		end= list.getElementValue(setPeriod,DConst.TTXML_ENDTIME);
+		prior= list.getElementValue(setPeriod,DConst.TTXML_PRIORITY);
 		_beginHour[0]= Integer.parseInt(time.nextToken());
 		_beginHour[1]= Integer.parseInt(time.nextToken());
 		_priority= Integer.parseInt(prior);
@@ -234,12 +232,13 @@ public class Period extends DObject {
 	 * */
 	public Element writeXMLtag(Document doc){
 		XMLWriter xmlElt;
-		try{
+		 DConst.HourFormat.setMinimumIntegerDigits(2);
+        try{
 			xmlElt = new XMLWriter();
-			String time= _beginHour[0]+":"+_beginHour[1];
-			Element eltPer= xmlElt.createElement(doc,Sequence._TAGITEM);
-			Element child0=xmlElt.createElement(doc,_TAGITEM,time);
-			Element child1=xmlElt.createElement(doc,_TAGITEM2,Integer.toString(_priority));
+			String time= DConst.HourFormat.format(_beginHour[0])+":"+DConst.HourFormat.format(_beginHour[1]);
+			Element eltPer= xmlElt.createElement(doc,DConst.TTXML_TTPERIOD);
+			Element child0=xmlElt.createElement(doc,DConst.TTXML_BEGINTIME,time);
+			Element child1=xmlElt.createElement(doc,DConst.TTXML_PRIORITY,Integer.toString(_priority));
 			eltPer= xmlElt.appendChildInElement(eltPer, child0);
 			eltPer= xmlElt.appendChildInElement(eltPer, child1);
 			return eltPer;
@@ -318,7 +317,8 @@ public class Period extends DObject {
 	 *
 	 * */
 	public String toString(){
-		String str=_beginHour[0]+":"+_beginHour[1]+" -- "+_priority;
+        DConst.HourFormat.setMinimumIntegerDigits(2);
+		String str=DConst.HourFormat.format(_beginHour[0])+":"+DConst.HourFormat.format(_beginHour[1])+" -- "+_priority;
 		return str;
 	}
 	

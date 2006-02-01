@@ -4,8 +4,6 @@ package dInternal.dTimeTable;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
-
 import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -21,15 +19,13 @@ public class Sequence extends DObject{
 	private int _currentPeriodIndex = 0;
 	private String _error = "";
 	private String _errorMessage = "XML file is corrupted";
-	static final String _TAGITEM="TTperiod";
-	static final String _TAGITEM1="periodID";
-	/**
+/**
 	 * Constructor
 	 * */
 	public Sequence() {
 		_setOfPeriods= new StandardCollection();
 	}
-	
+    
 	/**
 	 * get the set of periods
 	 * @return SetOfResources the set of periods
@@ -62,10 +58,7 @@ public class Sequence extends DObject{
 	public void setCurrentPeriodIndex(int curPeriodIndex){
 		_currentPeriodIndex = curPeriodIndex;
 	}
-	
-	
-	
-	
+
 	/**
 	 * set the set of periods
 	 * @param SetOfResources the set of periods
@@ -80,15 +73,15 @@ public class Sequence extends DObject{
 	 * */
 	public String readXMLtag(Element setofPers){
 		XMLReader list= new XMLReader();
-		int size= list.getSize(setofPers,_TAGITEM);
+		int size= list.getSize(setofPers,DConst.TTXML_TTPERIOD);
 		if (size == 0){
 			_error = _errorMessage;
 			return _error;
 		}
 		for (int i=0; i< size; i++){
 			Period period = new Period();
-			Element per= list.getElement(setofPers,_TAGITEM,i);
-			String periodID= list.getElementValue(per,_TAGITEM1);
+			Element per= list.getElement(setofPers,DConst.TTXML_TTPERIOD,i);
+			String periodID= list.getElementValue(per,DConst.TTXML_PERIODID);
 			//System.out.println("period.readXMLtag(per) "+ period.readXMLtag(per));//debug
 			if (!period.readXMLtag(per).equals("")){
 				_error = _errorMessage;
@@ -108,10 +101,10 @@ public class Sequence extends DObject{
 		XMLWriter xmlElt;
 		try{
 			xmlElt = new XMLWriter();
-			Element eltPers= xmlElt.createElement(doc,Day._TAGITEM2);
+			Element eltPers= xmlElt.createElement(doc,DConst.TTXML_TTPERIODS);
 			for (int i=0; i<_setOfPeriods.size(); i++){
 				Element period= ((Period)_setOfPeriods.getResourceAt(i).getAttach()).writeXMLtag(doc);
-				Element periodID=  xmlElt.createElement(doc, _TAGITEM1, _setOfPeriods.getResourceAt(i).getID());
+				Element periodID=  xmlElt.createElement(doc, DConst.TTXML_PERIODID, _setOfPeriods.getResourceAt(i).getID());
 				period= xmlElt.appendChildInElement(period, periodID);
 				eltPers= xmlElt.appendChildInElement(eltPers, period);
 			}
