@@ -1,6 +1,6 @@
 /**
  *
- * Title: Diamant $Revision: 1.24 $  $Date: 2005-12-02 16:44:25 $
+ * Title: Diamant 
  * Description: DRun is a class used to call the whole
  *              application Which uses the Model View Control pattern
  *
@@ -16,9 +16,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ * 
  */
 package dmains;
 

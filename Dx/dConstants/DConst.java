@@ -27,7 +27,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 1.6.2.5 du 2 Novembre 2005";//res.getString("vDate");
+  	public final static String V_DATE = "v 1.6.2.7 du 8 février 2006";//res.getString("vDate");
   	/** The format of number * */
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
@@ -182,7 +182,7 @@ public class DConst {
   public final static String IMP_SELECT_ACT  = res.getString("impSelectAct");//Importation selective d'activité
   public final static String IMP_SELECT_STUD  = res.getString("impSelectStud");//Importation selective d'étudiants
   public final static String EXPO  = res.getString("expo");//Exporter
-  public final static String EXIT  = res.getString("exit");//Quitter
+  public final static String EXIT  = res.getString("exit");//eXit
   //Edition Menu
   public final static String EDIT = "Edition";//unp
   final static String UNDO = "Annuler";//unp, the text is already in buttonCancel

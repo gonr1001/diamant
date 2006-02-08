@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.7 $  $Date: 2005-11-02 16:46:45 $
+* Title: SaveData 
 * Description: DConst is a class used to
 *
 *
@@ -14,9 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
-* @author  $Author: gonzrubi $
-* @since JDK1.3
+*
 */
 
 package dInternal.dData;

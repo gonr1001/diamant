@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionDlg $Revision: 1.44 $  $Date: 2005-11-02 16:26:20 $
+ * Title: SectionDlg 
  * Description: SectionDlg is class used
  *           to display a dialog to modifiy students assignation 
  *           in sections
@@ -15,10 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.44 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
-
+ *
+ *	
  */
 package dInterface.dAffectation;
 

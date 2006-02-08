@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectInstructors $Revision: 1.9 $  $Date: 2005-07-05 12:04:23 $
+ * Title: SelectInstructors $Revision: 1.10 $  $Date: 2006-02-08 22:11:34 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -101,7 +101,7 @@ public class SelectInstructors
     _rightList = new JList(_rightVec);
     _rightList.addMouseListener(mouseListenerLists);
     JPanel listPanel = DXTools.listPanel(_rightList, 150, 300);
-    _lNoVisible = new JLabel(_rightVec.size() + " " + DConst.NOT_INCLUDED + "rgr1");
+    _lNoVisible = new JLabel(_rightVec.size() + " " + DConst.NOT_INCLUDED);
     JPanel rightPanel = new JPanel(new BorderLayout());
     rightPanel.add(_lNoVisible, BorderLayout.NORTH);
     rightPanel.add(listPanel, BorderLayout.SOUTH);
@@ -109,7 +109,7 @@ public class SelectInstructors
     //_leftVec = new Vector(1);//_activities.getIDsByField(3, "true");
     _leftList = new JList(_leftVec);
     _leftList.addMouseListener(mouseListenerLists);
-    _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED + "rgr2");
+    _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);
     listPanel = DXTools.listPanel(_leftList, 150, 300);
     JPanel leftPanel = new JPanel();
     leftPanel = new JPanel(new BorderLayout());

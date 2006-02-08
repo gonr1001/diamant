@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResources $Revision: 1.10 $  $Date: 2005-11-02 16:46:44 $
+* Title: DSetOfResources
 * Description: DSetOfResources is a class used to
 *
 *
@@ -14,8 +14,6 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.10 $
-* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 

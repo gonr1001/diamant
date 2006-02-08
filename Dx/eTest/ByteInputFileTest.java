@@ -1,7 +1,6 @@
-package eTest;
 /**
  *
- * Title: ClassName $Revision: 1.9 $  $Date: 2005-11-02 16:46:46 $
+ * Title: ByteInputFileTest
  * Description: ClassName is a class used to
  *
  *
@@ -15,11 +14,10 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ *
  */
 
+package eTest;
 
 import junit.framework.*;
 

@@ -1,7 +1,6 @@
-
 /**
  *
- * Title: RoomAttach $Revision: 1.6 $  $Date: 2006-02-01 04:24:56 $
+ * Title: RoomAttach 
  * Description: RoomAttach is a class used to
  *
  *
@@ -15,9 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: hara2602 $
- * @since JDK1.3
+ *
  */
 package dInternal.dData.dRooms;
 

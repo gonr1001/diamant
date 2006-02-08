@@ -1,7 +1,6 @@
-package dInterface;
 /**
  *
- * Title: DApplication $Revision: 1.70 $  $Date: 2005-12-02 16:44:23 $
+ * Title: DApplication
  *
  * Description: DApplication is a class used display the application GUI,
  *              The class creates the main window, and ...
@@ -17,11 +16,10 @@ package dInterface;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.70 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ *
+ *
  */
-
+package dInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;

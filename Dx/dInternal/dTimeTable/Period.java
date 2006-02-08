@@ -91,7 +91,7 @@ public class Period extends DObject {
 	 * and the element in the range 1 is the minutes
 	 * */
 	public int[] getEndHour(int periodLenght){
-		int[] endHour={0,0};
+		int[] endHour = new int [2];
 		endHour[1] = (_beginHour[1] + periodLenght) % MINUTES;//
 		endHour[0] = _beginHour[0] + (_beginHour[1] + periodLenght)/MINUTES;
 		return endHour;
