@@ -19,12 +19,11 @@
  * All Exceptions must be handled explicitly.
  */
 
-
 /**
  * Description: SelectInstructors is a class used to
  *
- */package dInterface.dAffectation;
-
+ */
+package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -184,6 +183,6 @@ public class SelectInstructors
    */
 /*  private void setActivitesVisibility(){
 
-  }*/
+	 }*/
 
 }// end class

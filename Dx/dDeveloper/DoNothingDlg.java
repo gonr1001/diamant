@@ -27,9 +27,9 @@ import javax.swing.JOptionPane;
 import dInterface.DApplication;
 
 /**
- *
+ * 
  * DoNothingDlg is a class used to show a dialog which does nothing.
- *
+ * 
  */
 
 public class DoNothingDlg extends JDialog {

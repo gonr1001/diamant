@@ -63,9 +63,8 @@ import eLib.exit.dialog.InformationDlg;
  * 
  * SectionDlg
  */
-public class SectionDlg extends DDialog implements 
-									ActionListener,
-									RightLeftInterface {
+public class SectionDlg extends DDialog implements ActionListener,
+		RightLeftInterface {
 
 	private DApplication _dApplic;
 
@@ -84,9 +83,9 @@ public class SectionDlg extends DDialog implements
 	private JList _notAssignedList;
 
 	private JList _assignedLists[];
-	
+
 	private RigthLeftPanel _rigthLeftPanel;
-	
+
 	private JPanel _assignedPanel;
 
 	private JPanel _insidePanel;
@@ -104,7 +103,7 @@ public class SectionDlg extends DDialog implements
 	private String _selectedActivity;
 
 	private String _selectedType;
-	
+
 	private Type _type;
 
 	private Vector _activitiesVector;
@@ -235,38 +234,38 @@ public class SectionDlg extends DDialog implements
 		}
 
 		// Arrows
-/*		if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0]))
-				&& _currentAssignedGroup > -1) {
-			//if "toLeft" button is pressed
-			if (command.equals(_arrowsNames[1])) {
-				if (_currentAssignedGroup > -1) {
-					listTransfers(_assignedLists[_currentAssignedGroup],
-							_notAssignedList,
-							_assignedVectors[_currentAssignedGroup],
-							_notAssignedVector, DConst.CHAR_FIXED_IN_GROUP,
-							true, _sortIndex);
-					//_buttonsPanel.getComponent(1).setEnabled(true);
-					//_sortCombo.setEnabled(false);
-					_applyPanel.setFirstEnable();
-					//   _dApplic.getDMediator().getCurrentDoc().getDM()
-					//          .getSetOfStates().sendEvent();
-				}
-			} else {
-				if (_currentAssignedGroup > -1) {
-					listTransfers(_notAssignedList,
-							_assignedLists[_currentAssignedGroup],
-							_notAssignedVector,
-							_assignedVectors[_currentAssignedGroup],
-							DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
-					_applyPanel.setFirstEnable();
-				}
-			}
-			//SetText for the JLabel containing the number of elements in a
-			// group
-			((JLabel) ((JPanel) ((JPanel) _insidePanel
-					.getComponent(_currentAssignedGroup)).getComponent(0))
-					.getComponent(4)).setText(String
-					.valueOf(_assignedVectors[_currentAssignedGroup].size()));*/
+		/*		if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0]))
+		 && _currentAssignedGroup > -1) {
+		 //if "toLeft" button is pressed
+		 if (command.equals(_arrowsNames[1])) {
+		 if (_currentAssignedGroup > -1) {
+		 listTransfers(_assignedLists[_currentAssignedGroup],
+		 _notAssignedList,
+		 _assignedVectors[_currentAssignedGroup],
+		 _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP,
+		 true, _sortIndex);
+		 //_buttonsPanel.getComponent(1).setEnabled(true);
+		 //_sortCombo.setEnabled(false);
+		 _applyPanel.setFirstEnable();
+		 //   _dApplic.getDMediator().getCurrentDoc().getDM()
+		 //          .getSetOfStates().sendEvent();
+		 }
+		 } else {
+		 if (_currentAssignedGroup > -1) {
+		 listTransfers(_notAssignedList,
+		 _assignedLists[_currentAssignedGroup],
+		 _notAssignedVector,
+		 _assignedVectors[_currentAssignedGroup],
+		 DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
+		 _applyPanel.setFirstEnable();
+		 }
+		 }
+		 //SetText for the JLabel containing the number of elements in a
+		 // group
+		 ((JLabel) ((JPanel) ((JPanel) _insidePanel
+		 .getComponent(_currentAssignedGroup)).getComponent(0))
+		 .getComponent(4)).setText(String
+		 .valueOf(_assignedVectors[_currentAssignedGroup].size()));*/
 		//}//end if (command.equals(TO_LEFT) || command.equals(TO_RIGHT))*/
 	}//end method
 
@@ -825,24 +824,23 @@ public class SectionDlg extends DDialog implements
 	 * @see dInterface.dUtil.RightLeftInterface#rightPressed()
 	 */
 	public void rightPressed() {
-		if (_currentAssignedGroup  > -1) {
+		if (_currentAssignedGroup > -1) {
 			//System.out.println("rightPressed");
 			listTransfers(_notAssignedList,
-					_assignedLists[_currentAssignedGroup],
-					_notAssignedVector,
+					_assignedLists[_currentAssignedGroup], _notAssignedVector,
 					_assignedVectors[_currentAssignedGroup],
 					DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
 			_applyPanel.setFirstEnable();
-			
+
 			_activitiesCombo.setEnabled(false);
 			_typeCombo.setEnabled(false);
 			//_applyClosePanel.setApplyEnable();
-			
+
 			((JLabel) ((JPanel) ((JPanel) _insidePanel
 					.getComponent(_currentAssignedGroup)).getComponent(0))
 					.getComponent(4)).setText(String
 					.valueOf(_assignedVectors[_currentAssignedGroup].size()));
-		}		
+		}
 	}
 
 	/* (non-Javadoc)
@@ -851,16 +849,15 @@ public class SectionDlg extends DDialog implements
 	public void leftPressed() {
 		if (_currentAssignedGroup > -1) {
 			//System.out.println("leftPressed");
-//			doClickOnArrowToLeft();
+			//			doClickOnArrowToLeft();
 			listTransfers(_assignedLists[_currentAssignedGroup],
-					_notAssignedList,
-					_assignedVectors[_currentAssignedGroup],
-					_notAssignedVector, DConst.CHAR_FIXED_IN_GROUP,
-					true, _sortIndex);
+					_notAssignedList, _assignedVectors[_currentAssignedGroup],
+					_notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true,
+					_sortIndex);
 			//_buttonsPanel.getComponent(1).setEnabled(true);
 			//_sortCombo.setEnabled(false);
 			_applyPanel.setFirstEnable();
-	
+
 			_activitiesCombo.setEnabled(false);
 			_typeCombo.setEnabled(false);
 			//_applyClosePanel.setApplyEnable();
@@ -871,13 +868,12 @@ public class SectionDlg extends DDialog implements
 		}
 	}
 
-
 	/* (non-Javadoc)
 	 * @see dInterface.dUtil.ApplyCloseInterface#applyPressed()
 	 */
 	public void applyPressed() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/* (non-Javadoc)
@@ -885,7 +881,7 @@ public class SectionDlg extends DDialog implements
 	 */
 	public void closePresed() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }//end class

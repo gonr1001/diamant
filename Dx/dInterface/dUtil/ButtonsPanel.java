@@ -25,7 +25,7 @@ package dInterface.dUtil;
 import javax.swing.JPanel;
 
 public abstract class ButtonsPanel extends JPanel {
-	
+
 	public abstract void setFirstEnable();
 
 	public abstract void setFirstDisable();
@@ -35,7 +35,7 @@ public abstract class ButtonsPanel extends JPanel {
 	public abstract void setMiddleDisable();
 
 	/**
-	 * @return 
+	 * @return
 	 */
 	public boolean isFirstEnable(){
 		return false;

@@ -57,45 +57,62 @@ public class DApplication implements ActionListener {
 	boolean _inDevelopment;
 	// Fake Singletonm, car besoin pour fonctionnalite de Grille Selective
 	private static DApplication _instance = null;
-	/* ZERO is needed to fix Frame Location (origin)  */
+
+	/* ZERO is needed to fix Frame Location (origin) */
 	private final static int ZERO = 0;
-	/* ADJUST_HEIGHT is needed to ajdust the screenSize
-	 * minus the barSize (the value is a guess) at the bottom */
-	//private final static int ADJUST_HEIGHT = 92;
-	/* ADJUST_WIDTH is needed to ajdust the screenSize
-	 * minus border pixels (the value is a guess) at each side of the screen */
+
+	/*
+	 * ADJUST_HEIGHT is needed to ajdust the screenSize minus the barSize (the
+	 * value is a guess) at the bottom
+	 */
+	// private final static int ADJUST_HEIGHT = 92;
+	/*
+	 * ADJUST_WIDTH is needed to ajdust the screenSize minus border pixels (the
+	 * value is a guess) at each side of the screen
+	 */
 	private final static int ADJUST_WIDTH = 6;
-	/* MIN_HEIGHT is needed to ajdust the minimum
-	 * height of the screenSize */
+
+	/*
+	 * MIN_HEIGHT is needed to ajdust the minimum height of the screenSize
+	 */
 	private final static int MIN_HEIGHT = 512;
-	/* MIN_WIDTH is needed to ajdust the minimum
-	 * width screenSize */
+
+	/*
+	 * MIN_WIDTH is needed to ajdust the minimum width screenSize
+	 */
 	private final static int MIN_WIDTH = 512;
-	
+
 	/* _screenSize contains the Dimension of the screen in pixels */
 	private Dimension _screenSize;
+
 	private JFrame _jFrame;
+
 	private JDesktopPane _jDesktopPane;
+
 	private Preferences _preferences;
+
 	private DMediator _mediator;
+
 	private String _currentDir;
+
 	private DMenuBar _dMenuBar;
+
 	private DToolBar _tbar;
-	
-	//-------------------------------------------
+
+	// -------------------------------------------
 	/**
 	 * DApplication initialize the data members
 	 */
-	
+
 	public DApplication() {
 		PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
 		_logger.warn("Hi from DApplication");		
 		_instance = this;
 		_inDevelopment = false;
 	}
-	
+
 	public static DApplication getInstance() {
-	    return _instance;
+		return _instance;
 	}
 	
 	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent 
@@ -111,47 +128,46 @@ public class DApplication implements ActionListener {
 
 
 		_preferences = new Preferences(System.getProperty("user.dir")
-				+ File.separator +
-				"pref"
-				+ File.separator +
-		"pref.txt");
-		
-		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();  	
-		_mediator = new DMediator(this); 	
+				+ File.separator + "pref" + File.separator + "pref.txt");
+
+		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		_mediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-		
+
 		setLAF(_preferences._lookAndFeel);
-		_logger.warn("bye_from DApplication"); // XXXX Pascal: Comment ca 'bye' ?!
+		_logger.warn("bye_from DApplication"); // XXXX Pascal: Comment ca 'bye'
+												// ?!
 	}
-	//-------------------------------------------  
+
+	// -------------------------------------------
 	private JFrame createFrame(String str) {
-		JFrame jFrame= new JFrame(str + "   " + System.getProperty("user.dir"));
+		JFrame jFrame = new JFrame(str + "   " + System.getProperty("user.dir"));
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		
+
 		jFrame.addWindowListener(new WindowAdapter() {
-			public void windowClosing( WindowEvent e ) {
+			public void windowClosing(WindowEvent e) {
 				e.toString(); // this is to aboid a warning
 				closeApplic();
 			}
 		});
-		
-		JPanel panel = new JPanel(new BorderLayout(0,0));
+
+		JPanel panel = new JPanel(new BorderLayout(0, 0));
 		jFrame.setContentPane(panel);
 		_dMenuBar = new DMenuBar(this);
-		jFrame.setJMenuBar(_dMenuBar);  //constructs the menu bar
-		
-		_tbar = new DToolBar(this); //constucts the tool bar
-			
+		jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
+
+		_tbar = new DToolBar(this); // constucts the tool bar
+
 		jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
 		
 		hideToolBar();
-		
+
 		_jDesktopPane = new JDesktopPane();
 		_jDesktopPane.setOpaque(false);
 		_jDesktopPane.setDesktopManager(new DefaultDesktopManager());
-		panel.add(_jDesktopPane,BorderLayout.CENTER);
-		jFrame.setLocation(ZERO,ZERO);
+		panel.add(_jDesktopPane, BorderLayout.CENTER);
+		jFrame.setLocation(ZERO, ZERO);
 		panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		panel.setMaximumSize(_screenSize);
 		
@@ -161,138 +177,137 @@ public class DApplication implements ActionListener {
 			panel.setPreferredSize(new Dimension(_screenSize.width - DConst.ADJUST_WIDTH,
 					_screenSize.height - DConst.ADJUST_HEIGHT));
 		}
-		
+
 		jFrame.pack();
 		jFrame.setVisible(true);
 		return jFrame;
-	} //end createUI
-	
-	//-------------------------------------------
-	public void actionPerformed(ActionEvent  e) {
-		if (e.getSource() instanceof JRadioButton){
-		// XXXX Pascal: Pourquoi ce 'if' est-il vide?
-		//              Ne devrait pas etre laisse ds cet etat
+	} // end createUI
+
+	// -------------------------------------------
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() instanceof JRadioButton) {
+			// XXXX Pascal: Pourquoi ce 'if' est-il vide?
+			// Ne devrait pas etre laisse ds cet etat
 		}
 		if (e.getSource() instanceof CommandHolder) {
 			((CommandHolder) e.getSource()).getCommand().execute(this);
 		} else {
-			System.out.println("DApplication: I do not know what to do, please help me (Action Performed)");
+			System.out
+					.println("DApplication: I do not know what to do, please help me (Action Performed)");
 			// XXXX Pascal: Devrait etre logge
 		}// end if ... else
 	}// end actionPerformed
-	
-	public JDesktopPane getDesktop(){
+
+	public JDesktopPane getDesktop() {
 		return _jDesktopPane;
 	} // end getDesktop
-	
-	public JFrame getJFrame(){
+
+	public JFrame getJFrame() {
 		return _jFrame;
 	} // end getJFrame
-	
-	
-	public DMediator getDMediator(){
-		return _mediator;   	
+
+	public DMediator getDMediator() {
+		return _mediator;
 	} // end getJFrame
-	
-	public DMenuBar getMenuBar(){
+
+	public DMenuBar getMenuBar() {
 		return _dMenuBar;
 	} // end getDesktop
-	
-	public DToolBar getToolBar(){
+
+	public DToolBar getToolBar() {
 		return _tbar;
 	}
-	
-	//-------------------------------------------
-	public Preferences getPreferences(){
+
+	// -------------------------------------------
+	public Preferences getPreferences() {
 		return _preferences;
 	} // end getPreferences
-	
-	public String getCurrentDir(){
+
+	public String getCurrentDir() {
 		return _currentDir;
 	} // end getCurrentDir
-	
+
 	/*
 	 * the str can contain a file name, it will be left out
 	 */
-	public void setCurrentDir(String str){
-		_currentDir = str.substring(0,str.lastIndexOf(File.separator)+1);
+	public void setCurrentDir(String str) {
+		_currentDir = str.substring(0, str.lastIndexOf(File.separator) + 1);
 	} // end setCurrentDir
-	
-	public void showToolBar(){
+
+	public void showToolBar() {
 		_tbar.setVisible(true);
 	}
-	public void hideToolBar(){
+
+	public void hideToolBar() {
 		_tbar.setVisible(false);
 	}
-	
-	//-------------------------------------------
+
+	// -------------------------------------------
 	public void setLAF(String str) {
 		// Force SwingApp to come up in the System L&F
 		try {
 			UIManager.setLookAndFeel(str);
-			//System.out.println("pref" + str );
-		}
-		catch (UnsupportedLookAndFeelException ulafe)  {
+			// System.out.println("pref" + str );
+		} catch (UnsupportedLookAndFeelException ulafe) {
 			new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
 			System.err.println("Warning: UnsupportedLookAndFeel: " + str);
 			ulafe.printStackTrace();
 			System.exit(31);
-		}
-		catch (ClassNotFoundException cnfe) {
+		} catch (ClassNotFoundException cnfe) {
 			new FatalProblemDlg("Error ClassNotFound LookAndFeel" + str);
 			System.err.println("Error ClassNotFound LookAndFeel" + str);
 			cnfe.printStackTrace();
 			System.exit(41);
-		}
-		catch (IllegalAccessException iace) {
+		} catch (IllegalAccessException iace) {
 			new FatalProblemDlg("Error IllegalAccess LookAndFeel" + str);
 			System.err.println("Error IllegalAccess LookAndFeel" + str);
 			iace.printStackTrace();
 			System.exit(51);
-		}
-		catch (InstantiationException ie) {
+		} catch (InstantiationException ie) {
 			new FatalProblemDlg("Error Instantiation LookAndFeel" + str);
 			System.err.println("Error Instantiation LookAndFeel" + str);
 			ie.printStackTrace();
 			System.exit(61);
 		}
-		
-		//SwingUtilities.updateComponentTreeUI(_jFrame);  //To erease (AlexJ)
-	} //end setLF
-	
-	//-------------------------------------------
+
+		// SwingUtilities.updateComponentTreeUI(_jFrame); //To erease (AlexJ)
+	} // end setLF
+
+	// -------------------------------------------
 	/**
 	 * This methode updates the look and feel style
-	 * @param String A look and feel style
-	 **/
-	public void updateLAF(String str){
+	 * 
+	 * @param String
+	 *            A look and feel style
+	 */
+	public void updateLAF(String str) {
 		setLAF(str);
 		SwingUtilities.updateComponentTreeUI(_jFrame);
 	}
-	
-	public void constructToolBar(){
-		_tbar = new DToolBar(this); //constucts the tool bar
+
+	public void constructToolBar() {
+		_tbar = new DToolBar(this); // constucts the tool bar
 		_tbar.updateUI();
-		
+
 		_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
 		// panel.add(_tbar,BorderLayout.NORTH);
 		_tbar.updateUI();
 		updateLAF(_preferences._lookAndFeel);
 
 	}
-	//-------------------------------------------	
-	//-------------------------------------------
+
+	// -------------------------------------------
+	// -------------------------------------------
 	/**
-	 * Closes the document(s) and the application.
-	 * Use this method for processing close via the
-	 * quit menuItem.
-	 *
+	 * Closes the document(s) and the application. Use this method for
+	 * processing close via the quit menuItem.
+	 * 
 	 * @return void
 	 * @since JDK 1.2
 	 */
 	public void closeApplic() {
 		// if no Document exit ok
-		while (_mediator.getCurrentDoc() != null) { //is a while
+		while (_mediator.getCurrentDoc() != null) { // is a while
 			new CloseCmd().execute(this);
 			if (_mediator.getCancel())
 				break;
@@ -304,22 +319,21 @@ public class DApplication implements ActionListener {
 			System.exit(0);
 		}
 	}
-	
-	public DModel getDModel(){  
+
+	public DModel getDModel() {
 		return getDMediator().getCurrentDoc().getDM();
 	}
-	
+
 	/**
 	 * @return
 	 */
-	
-	
+
 	public void setCursorWait() {
-		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));		
+		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	}
-	
+
 	public void setCursorDefault() {
-		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));		
+		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	/**
