@@ -27,7 +27,6 @@ import lineInterface.DILigne;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-
 import eLib.exit.dialog.FatalProblemDlg;
 
 import dConstants.DConst;
@@ -46,47 +45,51 @@ import dInterface.DApplication;
 
 public class Diamant {
 
-    private final static boolean GUI = true;
-    private static Logger _logger = Logger.getLogger(Diamant.class.getName());
-    private static DApplication dApplic = new DApplication();
-    /**
-      * Just creating an instance of the DApplication
-      * or a textual interface
-      * When working with a DApplication instance
-      * doIt takes in chage the application
-      *
-      * When working with the textual interface
-      * the own method doIt takes in charge
-      * to run the application.
-      * 
-      * XXXX Pascal: ecrit en anglais et grammaticalement incomprehensible.
-      */
+	private final static boolean GUI = true;
 
-    public static void main(String[] args) {
-      PropertyConfigurator.configure(System.getProperty("user.dir")+File.separator +"trace" + File.separator + "log4j.conf");
-        if (GUI) {
-          _logger.warn("hi_with_a_GUI");
-          _logger.warn("Java version: "+ System.getProperty("java.version"));
-    
-          if ( DConst.JVM.compareToIgnoreCase(System.getProperty("java.version")) <= 0 ) {
-          	dApplic.doIt(args);
-          } else {
-            new FatalProblemDlg("You need to download and install a new  \n" +
-                                "Java Virtual Machine");
-            System.out.println("bye");
-            System.exit(1);
-          }
-          _logger.warn("hi_with_a_GUI");
-        }
-        else {
-            System.out.println("hello");
-            DILigne dil = new DILigne();
-            dil.doIt(args);
-            System.out.println("bye");
-            System.exit(1);
-        }
-        
-    } // end main
+	private static Logger _logger = Logger.getLogger(Diamant.class.getName());
+
+	private static DApplication dApplic = new DApplication();
+
+	/**
+	 * Just creating an instance of the DApplication
+	 * or a textual interface
+	 * When working with a DApplication instance
+	 * doIt takes in chage the application
+	 *
+	 * When working with the textual interface
+	 * the own method doIt takes in charge
+	 * to run the application.
+	 * 
+	 * XXXX Pascal: ecrit en anglais et grammaticalement incomprehensible.
+	 */
+
+	public static void main(String[] args) {
+		PropertyConfigurator.configure(System.getProperty("user.dir")
+				+ File.separator + "trace" + File.separator + "log4j.conf");
+		if (GUI) {
+			_logger.warn("hi_with_a_GUI");
+			_logger.warn("Java version: " + System.getProperty("java.version"));
+
+			if (DConst.JVM.compareToIgnoreCase(System
+					.getProperty("java.version")) <= 0) {
+				dApplic.doIt(args);
+			} else {
+				new FatalProblemDlg(
+						"You need to download and install a new  \n"
+								+ "Java Virtual Machine");
+				System.out.println("bye");
+				System.exit(1);
+			}
+			_logger.warn("hi_with_a_GUI");
+		} else {
+			System.out.println("hello");
+			DILigne dil = new DILigne();
+			dil.doIt(args);
+			System.out.println("bye");
+			System.exit(1);
+		}
+
+	} // end main
 
 } /* end class DRun */
-

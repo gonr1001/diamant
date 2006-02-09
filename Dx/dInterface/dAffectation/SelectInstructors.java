@@ -1,6 +1,6 @@
 /**
  *
- * Title: SelectInstructors $Revision: 1.10 $  $Date: 2006-02-08 22:11:34 $
+ * Title: SelectInstructors 
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,9 +13,6 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
  * all Exceptions that a method can throw.
