@@ -33,6 +33,7 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;

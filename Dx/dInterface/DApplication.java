@@ -343,5 +343,5 @@ public class DApplication implements ActionListener {
 	public boolean getInDevelopment() {
 		return _inDevelopment;
 	}
-	
+
 } /* end class DApplication */

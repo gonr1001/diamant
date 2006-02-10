@@ -34,18 +34,17 @@ import dInterface.DApplication;
 
 public class DoNothingDlg extends JDialog {
 
-  final static String STR = "rgr, \nNot Implemented yet, \nWorking on that!!";
-  /**
-    * the constructor will displays the dialog
-    *
-    * @param jframe    the parent of the dialog
-    * @param str       the title of the window dialog
-    * @since           JDK1.3
-    */	
-   public DoNothingDlg(DApplication dApplic, String str) {
-   JOptionPane.showMessageDialog( dApplic.getJFrame(),
-                                    STR,
-                                    str,
-                                    JOptionPane.INFORMATION_MESSAGE );
-   } // end constructor
+	final static String STR = "rgr, \nNot Implemented yet, \nWorking on that!!";
+
+	/**
+	 * the constructor will displays the dialog
+	 *
+	 * @param jframe    the parent of the dialog
+	 * @param str       the title of the window dialog
+	 * @since           JDK1.3
+	 */
+	public DoNothingDlg(DApplication dApplic, String str) {
+		JOptionPane.showMessageDialog(dApplic.getJFrame(), STR, str,
+				JOptionPane.INFORMATION_MESSAGE);
+	} // end constructor
 } /* end class DoNothingDlg */

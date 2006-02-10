@@ -59,9 +59,10 @@ public class ScanFileTest extends TestCase {
 
 	/**
 	 * test that the output file is ok
-	 * */
+	 */
 	public void test_beginOfFile() {
-		//path ="." + File.separator+"dataTest"+File.separator+"testFile.txt.out.txt";
+		// path ="." +
+		// File.separator+"dataTest"+File.separator+"testFile.txt.out.txt";
 		String s = "4D 61 6E 69 66 65 73 74 2D 56 65 72 73 69 6F 6E    Manifest-Version";
 		byte[] a = s.getBytes();
 		byte[] b = null;
@@ -86,7 +87,8 @@ public class ScanFileTest extends TestCase {
 	}
 
 	public void test_endOfFile() {
-		//path ="." + File.separator+"dataTest"+File.separator+"testFile.txt.out.txt";
+		// path ="." +
+		// File.separator+"dataTest"+File.separator+"testFile.txt.out.txt";
 		String s = "0D 0A                                              .."
 				+ DConst.CR_LF;
 		byte[] a = s.getBytes();
