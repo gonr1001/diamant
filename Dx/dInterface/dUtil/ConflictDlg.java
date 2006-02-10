@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictDlg $Revision: 1.7 $  $Date: 2005-02-01 21:27:16 $
+ * Title: ConflictDlg $Revision: 1.8 $  $Date: 2006-02-10 21:40:19 $
  * Description: ConflictDlg is a class representing the Dialog ConflictDlg
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.8 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dUtil;
@@ -51,6 +51,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
   private JTextField _textField3;
   private JTextField _textField4;
   private JTextField _textField5;
+  private JTextField _textField6;
   /**
    * the constructor will displays the dialog
    *
@@ -79,7 +80,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
       _textField3 = new JTextField(""+a[3]);
       _textField4 = new JTextField(""+a[4]);
       _textField5 = new JTextField(""+a[5]);
-      jPanel.setLayout(new GridLayout(6,2));
+      _textField6 = new JTextField(""+a[6]);
+      jPanel.setLayout(new GridLayout(7,2));
       jPanel.add(new JLabel("Max Conflits Étu entre 2 Eve ="));
       jPanel.add(_textField0);
 
@@ -98,6 +100,10 @@ public class ConflictDlg extends JDialog implements ActionListener {
 
       jPanel.add(new JLabel("Périodes d'écart ="));
       jPanel.add(_textField5);
+      
+
+      jPanel.add(new JLabel("Taux de remplissage des locaux (en %) ="));
+      jPanel.add(_textField6);
 
 
 
@@ -124,12 +130,13 @@ public class ConflictDlg extends JDialog implements ActionListener {
         v.add(_textField3.getText());
         v.add(_textField4.getText());
         v.add(_textField5.getText());
+        v.add(_textField6.getText());
         _dApplic.getPreferences().setConflicLimits(v);
         _dApplic.getPreferences().save();
         dispose();
       }
       else
-        JOptionPane.showMessageDialog(this,"Au moins une erreur en ligne "+ ligne);
+        JOptionPane.showMessageDialog(this,"Erreur à la ligne: "+ ligne);
 
     } //end if
 
@@ -150,6 +157,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
       return 5;
     if(!testText(_textField5.getText(), 0, 4))
       return 6;
+    if(!testText(_textField6.getText(), 1, 125))
+        return 7;
     return 0;
   }
 

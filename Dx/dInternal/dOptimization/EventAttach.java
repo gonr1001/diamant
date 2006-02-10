@@ -32,6 +32,9 @@ public class EventAttach extends DObject {
 	private DSetOfResources _setInstructorKeys;
 
 	private long _roomRescKey; // the room key
+	private boolean _roomState;/* the state of the event in the room
+	true if event is fixed in the room and false otherwise */
+	private int _roomFunction; // the prefered function for the event
 
 	// the student reference will be found in the conflicts matrix
 
@@ -164,6 +167,26 @@ public class EventAttach extends DObject {
 	public boolean getAssignState() {
 		return isAssign;
 	}
+	
+	public void setRoomState(boolean state){
+		_roomState = state;
+	}
+	
+	public boolean getRoomState(){
+		return _roomState;
+	}
+	
+	public void setRoomFunction(int function){
+		_roomFunction = function;
+	}
+	
+	public void setRoomKey(int roomKey){
+		_roomRescKey = roomKey;
+	}
+	
+	public int getRoomFunction(){
+		return _roomFunction;
+	}
 
 	/**
 	 * check if event is already place in a period
@@ -234,5 +257,16 @@ public class EventAttach extends DObject {
 	public long getSelectedField() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/**
+	 * @param state
+	 */
+	public void setState(String state) {
+		if(state.equalsIgnoreCase(DConst.FIXED_ROOM_STATE))
+			_roomState= true;
+		else
+			_roomState=false;
+		
 	}
 }

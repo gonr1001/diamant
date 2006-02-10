@@ -1,6 +1,6 @@
 /**
  *
- * Title: DiamantTest 1.5Test $Revision: 1.59 $  $Date: 2005-07-05 12:04:34 $
+ * Title: DiamantTest 
  * Description: Diamant 1.5Test is a class used to call the suite test.
  * Copyright (c) 2002 by rgr.
  * All rights reserved.
@@ -12,12 +12,9 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.59 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ *
  */
 //------------------------------
-
 /* Attention this file must be used with the terminal application
  * to execute you must type
  * java junit.swingui.TestRunner Diamant 1.5Test
@@ -85,25 +82,23 @@ import dTest.dInternal.dTimeTable.TTStructureTest;
 import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import dTest.dmains.ScanFileTest;
 
-
 public class DiamantTest {
 
-	
 	/**
 	 * 
 	 * @param args
 	 */
-	public static void main (String[] args) {
+	public static void main(String[] args) {
 		junit.textui.TestRunner.run(suite());
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	public static Test suite ( ) {
+	public static Test suite() {
 		System.out.println("Hello I am in tests");
-		TestSuite suite= new TestSuite("Dimanant Tests");	
+		TestSuite suite = new TestSuite("Dimanant Tests");
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
 		suite.addTest(SectionTest.suite());
@@ -123,7 +118,7 @@ public class DiamantTest {
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(StudentsConditionsTest.suite());
-		suite.addTest(ConditionsTest.suite());       
+		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(DRoomTest.suite());
 		suite.addTest(SetOfSitesTest.suite());
@@ -146,7 +141,7 @@ public class DiamantTest {
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
 		suite.addTest(FirstAffectAlgorithmTest.suite());
-		suite.addTest(SetOfCategoriesTest.suite()); 
+		suite.addTest(SetOfCategoriesTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());

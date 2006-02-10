@@ -180,8 +180,8 @@ public class DXToolsMethods {
       int itr=0;
       day = tt.getCurrentCycle().getDayByIndex(h);
       for (int i=0; i< day.getSetOfSequences().size(); i++){
-        for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
-          per = day.getSequence(i).getPeriod(j);
+        for (int j=0; j< day.getSequenceByIndex(i).getSetOfPeriods().size(); j++){
+          per = day.getSequenceByIndex(i).getPeriodByIndex(j);
           boolean avail = isAvailableInRange(initialAvail,h,per,tt.getPeriodLenght());//,UpperLower);
           if (avail)
             finalAvail[h][itr]=1;

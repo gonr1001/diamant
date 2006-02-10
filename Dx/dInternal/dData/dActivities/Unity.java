@@ -187,6 +187,30 @@ public class Unity extends DObject{
   public DSetOfResources getPreferFunctionRoom(){
     return _preferFunctionSetOfRooms;
   }
+  
+  /**
+   * get first index of the activity prefer function room
+   * @return int the function of the room
+   * */
+  public int getFirstPreferFunctionRoom(){
+  	if(_preferFunctionSetOfRooms.size() >= 1){
+  		String function = _preferFunctionSetOfRooms.getResourceAt(0).getID();
+  		return Integer.parseInt(function);
+  	}
+  	return 0;
+  }
+  
+  /*
+   * set the first index of the activity prefer function room
+   * @param int the function
+   */
+  public void setFirstPreferFunctionRoom(int function){
+  	String func =  String.valueOf(function);
+  	if(_preferFunctionSetOfRooms.size() >= 1){
+  		_preferFunctionSetOfRooms.getResourceAt(0).setID(func);
+  	}else
+  		this.addPreferFunctionRoom(func);
+  }
 
   /**
    * set activity prefer function room

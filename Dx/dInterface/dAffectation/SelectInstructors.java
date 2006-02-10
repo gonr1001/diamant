@@ -63,14 +63,19 @@ public class SelectInstructors
   private ButtonsPanel _validatePanel;
   //private DApplication _dApplic;
   private EditActivityDlg _ead;
+  private EditEventDlg _editEventdlg;
   private Vector _rightVec, _leftVec;
   //private JList _leftVec;
 
-  /**
-   * Dafault constructor
-   * @param dApplic The application object (for extracting the JFrame)
+  /*
+   * Constructeur
+   * il est utilisé par la classe EditActivityDlg pour manipuler
+   * les enseignants
+   * @param DApplication le noeud pere de l'application
+   * @param EditActivityDlg ead est le dialogue père
+   * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
+   * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
    */
-
   public SelectInstructors(DApplication dApplic,
   							EditActivityDlg ead,
   							Vector leftVec,
@@ -88,6 +93,31 @@ public class SelectInstructors
     setVisible(true);
   }
 
+  /*
+   * Constructeur
+   * il est utilisé par la classe EditEventDlg pour manipuler
+   * les enseignants
+   * @param DApplication le noeud pere de l'application
+   * @param EditEventDlg eEventd est le dialogue père
+   * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
+   * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
+   */
+  public SelectInstructors(DApplication dApplic,
+  							EditEventDlg eEventd,
+  							Vector leftVec,
+  							Vector rightVec) {
+    super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
+    //_dApplic = dApplic;
+    _editEventdlg = eEventd;
+    _leftVec = leftVec;
+    //_leftVec.
+    _rightVec = rightVec;
+    for (int i=0; i< _leftVec.size(); i++)
+      _rightVec.remove(_leftVec.get(i).toString());
+    initialize();
+    setLocationRelativeTo(dApplic.getJFrame());
+    setVisible(true);
+  }
 
   /**
    * Initialize the dialog
@@ -160,7 +190,10 @@ public class SelectInstructors
         dispose();
     //If button VALIDATE
     if (command.equals(DConst.BUT_VALIDATE)){
-      _ead.updateInstructorList(_leftVec);
+    	if( _ead != null)
+    		_ead.updateInstructorList(_leftVec);
+    	else if(_editEventdlg != null)
+    		_editEventdlg.updateInstructorList(_leftVec);
 	  _validatePanel.setFirstDisable();
 	  dispose();
 

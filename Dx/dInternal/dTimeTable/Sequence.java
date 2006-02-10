@@ -37,14 +37,16 @@ public class Sequence extends DObject{
 	
 	/**
 	 * */
-	public Period getPeriod(int periodIndex){
-		return (Period)_setOfPeriods.getResourceAt((periodIndex)).getAttach();
+	public Period getPeriodByIndex(int periodIndex){
+		if(periodIndex < _setOfPeriods.size())
+			return (Period)_setOfPeriods.getResourceAt((periodIndex)).getAttach();
+		return null;
 	}
 	
 	/**
 	 * */
 	public Period getCurrentPeriod(){
-		return getPeriod(_currentPeriodIndex) ;
+		return getPeriodByIndex(_currentPeriodIndex) ;
 	}
 	
 	/**
@@ -169,7 +171,7 @@ public class Sequence extends DObject{
 	public String toString(String ID){
 		String str="";
 		for(int i=0; i< _setOfPeriods.size(); i++)
-			str+=ID+"--"+getPeriod(i).toString()+DConst.CR_LF;
+			str+=ID+"--"+getPeriodByIndex(i).toString()+DConst.CR_LF;
 		return str;
 	}
 	

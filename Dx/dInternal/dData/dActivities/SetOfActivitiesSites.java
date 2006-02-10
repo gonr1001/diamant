@@ -688,7 +688,7 @@ public class SetOfActivitiesSites extends DSetOfResources{
    * @param integer the beginPosition (start position of the finished states machine)
    * @return boolean "true" if the analysis proceeded successfully and false otherwise
    * */
-  public void buildSetOfResources1_6(byte[]  dataloaded,int beginPosition){
+  public void buildSetOfResources1_6(byte[] dataloaded, int beginPosition){
   	String token;
     //String sousString; //auxiliar String for stocking a substring of a line
     StringTokenizer st = new StringTokenizer(new String (dataloaded),"\r\n" );

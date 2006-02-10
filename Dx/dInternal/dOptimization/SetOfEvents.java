@@ -152,6 +152,9 @@ public class SetOfEvents extends DSetOfResources {
 												.getAttach()).isAssign());
 								event.setPermanentState(((Unity) unity
 										.getAttach()).isPermanent());
+								event.setRoomState(assignment.getRoomState());
+								event.setRoomFunction(((Unity) unity.getAttach()).
+										getFirstPreferFunctionRoom());
 								//System.out.println("Unity Key: "+unityKey+ "
 								// - Period Key:
 								// "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
@@ -255,6 +258,9 @@ public class SetOfEvents extends DSetOfResources {
 			unity.setAssign(event.getAssignState());
 			unity.setPermanent(event.getPermanentState());
 			unity.setDuration(event.getDuration());
+			unity.setFirstPreferFunctionRoom(event.getRoomFunction());
+			assignment.setRoomState(event.getRoomState());
+			
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)
 
 	}

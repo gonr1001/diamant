@@ -38,6 +38,7 @@ import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
+import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
@@ -80,6 +81,8 @@ public class DModel extends Observable {
     private DSetOfStates _setOfStates;
 
     private SetOfInstructors _setOfInstructors = null;
+    
+    private SetOfRoomsFunctions _setOfRoomsFunctions = new SetOfRoomsFunctions(); 
 
     protected static SetOfSites _setOfSites = null;
 
@@ -159,7 +162,7 @@ public class DModel extends Observable {
             _isATimeTable = true;
         _type = type;
         _modified = false;
-
+        _setOfRoomsFunctions.functionReader();
         this.notifyObservers(this);
         this.clearChanged(); // XXXX Pascal: Cette methode est appelee automatiquement par notifyObservers()
     }
@@ -548,6 +551,14 @@ public class DModel extends Observable {
         return _setOfEvents;
     }
 
+    
+    /**
+     * 
+     * @return
+     */
+    public SetOfRoomsFunctions getSetOfRoomsFunctions() {
+        return _setOfRoomsFunctions;
+    }
     /**
      * 
      * @return

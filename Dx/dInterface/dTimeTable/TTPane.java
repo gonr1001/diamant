@@ -1,8 +1,6 @@
-package dInterface.dTimeTable;
-
 /**
  *
- * Title: TTPane $Revision: 1.21 $  $Date: 2006-01-27 23:23:47 $
+ * Title: TTPane 
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,15 +13,12 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
  * all Exceptions that a method can throw.
  * All Exceptions must be handled explicitly.
  */
-
+package dInterface.dTimeTable;
 
 /**
  * Description: TTPanel is a class used to
@@ -287,7 +282,7 @@ public abstract class TTPane {
     int count = 0;
     Day day = _tts.getCurrentCycle().getDayByRefNo((int)dKey);
     for(int i = 0; i < sKey-1; i++) { 
-      count += day.getSequence(i).getSetOfPeriods().size();
+      count += day.getSequenceByIndex(i).getSetOfPeriods().size();
     }
     return _tts.getCurrentCycle().getBefNumberOfPeriodsADay(dKey) + count + (int)pKey;
   }

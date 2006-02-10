@@ -8,7 +8,7 @@ package dInternal.dData;
 
 /**
 *
-* Title: StandardCollection $Revision $  $Date: 2005-03-08 16:00:44 $
+* Title: StandardCollection $Revision $  $Date: 2006-02-10 21:40:21 $
 * Description: StandardCollection is a class used to
 *
 *
@@ -23,10 +23,12 @@ package dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
+import dConstants.DConst;
+import dInternal.DResource;
 import dInternal.DSetOfResources;
 
 
@@ -52,7 +54,9 @@ public class StandardCollection extends DSetOfResources {
 	 * @see dInternal.DObject#toWrite()
 	 */
 	public String toWrite() {
-		// TODO Auto-generated method stub
+		String reslist="";
+	        for (int i=0; i< size()-1; i++)
+	          reslist+= ((DResource)this.getSetOfResources().get(i)).toWrite(";")+DConst.CR_LF;
 		return null;
 	}
 

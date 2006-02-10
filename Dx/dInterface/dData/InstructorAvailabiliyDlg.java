@@ -58,8 +58,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
  *
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ *
  */
 public class InstructorAvailabiliyDlg extends JDialog implements
 		ActionListener, ItemListener {

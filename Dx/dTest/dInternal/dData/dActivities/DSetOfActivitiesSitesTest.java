@@ -165,7 +165,6 @@ public class DSetOfActivitiesSitesTest extends TestCase{
 	     DLoadData ld = new DLoadData();
 	     setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
 	     if(setOfsites.getError().length()==0) {
-
 	     	setOfsites.buildSetOfResources(ld.buildDataExchange(tokens.getBytes()),1);
 	       //System.out.println(setOfActivities.toString());
 	     }

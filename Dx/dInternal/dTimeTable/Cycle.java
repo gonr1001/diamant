@@ -100,7 +100,9 @@ public class Cycle extends DObject{
 	 * @return
 	 */
 	public Day getDayByIndex(int dayIndex){
-		return (Day)_setOfDays.getResourceAt((dayIndex)).getAttach();
+		if(dayIndex < _setOfDays.size())
+			return (Day)_setOfDays.getResourceAt((dayIndex)).getAttach();
+		return null;
 	}
 	
 	/**

@@ -1,13 +1,22 @@
-package dTest.dInternal.dTimeTable;
-
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author  ysyam
- * @version 1.0
- */
+*
+* Title: TTStructureTest 
+* Description: 
+*
+* Copyright (c) 2001 by rgr.
+* All rights reserved.
+*
+*
+* This software is the confidential and proprietary information
+* of rgr. ("Confidential Information").  You
+* shall not disclose such Confidential Information and shall use
+* it only in accordance with the terms of the license agreement
+* you entered into with rgr.
+*
+*
+*
+*/
+package dTest.dInternal.dTimeTable;
 
 import java.io.File;
 

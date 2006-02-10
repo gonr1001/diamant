@@ -1,3 +1,21 @@
+/**
+ *
+ * Title: TTStructure 
+ * Description: 
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ *
+ *
+ */
 package dInternal.dTimeTable;
 
 import java.io.File;
@@ -17,7 +35,7 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class TTStructure {
-	
+
 	private DSetOfResources _setOfCycles;
 
 	// private int _nbOfStCycles=2;
@@ -132,9 +150,9 @@ public class TTStructure {
 			Element eltSeq;
 			for (int cyc = 0; cyc < nbOfCycles; cyc++) {
 				eltCycle = wr.createElement(doc, ITEM2_subTag[0]); // XXXX
-																	// Pascal:
-																	// Magic
-																	// numbers
+				// Pascal:
+				// Magic
+				// numbers
 				eltDays = wr.createElement(doc, ITEM2_subTag[1]);
 				for (int day = 0; day < nbOfDays; day++) {
 					eltDay = wr.createElement(doc, ITEM2_subTag[2]);

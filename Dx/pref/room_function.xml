@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
+<ROOM_FUNCTIONS>
+	<ROOM_FUNCTION>
+		<KEY>1</KEY>
+		<NAME>Semi</NAME>
+	</ROOM_FUNCTION>
+	<ROOM_FUNCTION>
+		<KEY>2</KEY>
+		<NAME>Lab Info</NAME>
+	</ROOM_FUNCTION>
+	<ROOM_FUNCTION>
+		<KEY>3</KEY>
+		<NAME>Multi</NAME>
+	</ROOM_FUNCTION>
+	<ROOM_FUNCTION>
+		<KEY>4</KEY>
+		<NAME>Salle cours</NAME>
+	</ROOM_FUNCTION>
+	<ROOM_FUNCTION>
+		<KEY>5</KEY>
+		<NAME>Salle de cours</NAME>
+	</ROOM_FUNCTION>
+	<ROOM_FUNCTION>
+		<KEY>6</KEY>
+		<NAME>Salle de conférence</NAME>
+	</ROOM_FUNCTION>
+</ROOM_FUNCTIONS>

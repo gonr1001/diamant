@@ -32,6 +32,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 
 import javax.swing.DefaultDesktopManager;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;

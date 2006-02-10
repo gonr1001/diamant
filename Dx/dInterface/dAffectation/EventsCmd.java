@@ -19,6 +19,6 @@ import dInterface.DApplication;
 public class EventsCmd implements Command{
 
   public void execute(DApplication dApplic) {
-    new EventsDlg(dApplic,DConst.EVENTS_DLG_TITLE);
+    new EventsDlg(dApplic,DConst.EVENTS_DLG_TITLE,false);
   }
 }

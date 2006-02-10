@@ -41,7 +41,7 @@ public class Room extends DResource {
 
 	/**
 	 * @param ex
-	 * @param i
+	 * @param position
 	 */
 	public void build(DataExchange ex, int position) {
 		position += 0;
@@ -96,6 +96,22 @@ public class Room extends DResource {
 		for (int i = 0; i < nbAvailT; i++)
 			((RoomAttach) getAttach()).addAvailability(availToken.nextToken());
 
+	}
+
+	/**
+	 * @return
+	 */
+	public int getRoomCapacity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getRoomFunction() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

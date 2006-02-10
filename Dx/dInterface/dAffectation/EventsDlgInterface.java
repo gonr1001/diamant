@@ -138,14 +138,15 @@ public abstract class EventsDlgInterface extends JDialog implements
         this.getContentPane().add(centerPanel, BorderLayout.CENTER);
         this.getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
 
-        int x = _dApplic.getJFrame().getX();
-        int y = _dApplic.getJFrame().getY();
-        this.getContentPane().setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
-        //this.setLocationRelativeTo(_dApplic.getJFrame());
+        //int x = _dApplic.getJFrame().getX();
+        //int y = _dApplic.getJFrame().getY();
+        //this.getContentPane().setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
+        this.pack();
+        this.setLocationRelativeTo(_dApplic.getJFrame());
 //        this.setMinimumSize(new Dimension(500, 300));
 //        this.setPreferredSize(new Dimension(700, 400)); // the real
 //        this.setMaximumSize(new Dimension(800, 400)); // XXXX Pascal: lien inutile avec JDK 1.5
-        this.pack();
+        
         this.setResizable(false);
         this.setVisible(true);
     }

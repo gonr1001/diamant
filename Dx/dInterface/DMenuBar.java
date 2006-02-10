@@ -42,6 +42,7 @@ import dInterface.dAffectation.ActivityModifCmd;
 import dInterface.dAffectation.EventsCmd;
 import dInterface.dAffectation.InitialAssignCmd;
 import dInterface.dAffectation.PartialTTStructureCmd;
+import dInterface.dAffectation.RoomAffectCmd;
 import dInterface.dAffectation.RoomsAvailabilityCmd;
 import dInterface.dAffectation.SectionCmd;
 import dInterface.dAlgorithms.AlgorithmsCmd;
