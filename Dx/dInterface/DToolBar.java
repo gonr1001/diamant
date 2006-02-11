@@ -263,7 +263,7 @@ public class DToolBar extends JToolBar  implements Observer { // ActionListener
         Sequence seq;
         Period period;
         for (int i = 0; i < day.getSetOfSequences().size(); i++){
-          seq = day.getSequenceByIndex(i);
+          seq = day.getSequence(i);
           for (int j = 0; j < seq.getSetOfPeriods().size(); j++ ){
             period = seq.getPeriodByIndex(j);
             period.setPriority(_periodTypeSelector.getSelectedIndex());

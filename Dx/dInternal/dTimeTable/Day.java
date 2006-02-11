@@ -40,17 +40,19 @@ public class Day extends DObject{
   /**
    * @param int the index of the sequence
    * */
-  public Sequence getSequenceByIndex(int sequenceIndex){
-  	if(sequenceIndex < _setOfSequences.size())
-  		return (Sequence)_setOfSequences.getResourceAt((sequenceIndex)).getAttach();
-  	return null;
+  /**
+   * @param int the index of the sequence
+   * */
+  public Sequence getSequence(int sequenceIndex){
+    return (Sequence)_setOfSequences.getResourceAt((sequenceIndex)).getAttach();
   }
 
   /**
    * */
   public Sequence getCurrentSequence(){
-    return getSequenceByIndex(_currentSequenceIndex) ;
+    return getSequence(_currentSequenceIndex) ;
   }
+
 
   /**
   * */
@@ -230,9 +232,9 @@ public long getSelectedField() {
  * @param i
  * @return
  */
-public Sequence getSequence(int i) {
-	// TODO Auto-generated method stub
-	return null;
-}
+//public Sequence getSequence(int i) {
+//	// TODO Auto-generated method stub
+//	return null;
+//}
 
 }

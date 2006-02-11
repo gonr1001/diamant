@@ -213,8 +213,8 @@ public class TTStructureTest extends TestCase {
 		cycle.getSetOfDays().addResource(new DResource("Ma", new Day()), 0);
 		cycle.getDayByIndex(0).getSetOfSequences().addResource(
 				new DResource("AM", new Sequence()), 0);
-		//cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(
-		//		new DResource("1", new Period()), 0);
+		cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(
+				new DResource("1", new Period()), 0);
 		cycle.addDays(3);
 
 		tts.getSetOfCycles().addResource(new DResource("1", cycle), 0);

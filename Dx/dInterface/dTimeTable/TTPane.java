@@ -282,7 +282,7 @@ public abstract class TTPane {
     int count = 0;
     Day day = _tts.getCurrentCycle().getDayByRefNo((int)dKey);
     for(int i = 0; i < sKey-1; i++) { 
-      count += day.getSequenceByIndex(i).getSetOfPeriods().size();
+      count += day.getSequence(i).getSetOfPeriods().size();
     }
     return _tts.getCurrentCycle().getBefNumberOfPeriodsADay(dKey) + count + (int)pKey;
   }
