@@ -1,11 +1,40 @@
+/**
+ *
+ * Title: CycleTest 
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ *
+ * Our convention is that: It's necessary to indicate explicitly
+ * all Exceptions that a method can throw.
+ * All Exceptions must be handled explicitly.
+ */
 package dTest.dInternal.dTimeTable;
 
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author  ysyam
+ * <p>
+ * Title: Diamant
+ * </p>
+ * <p>
+ * Description: timetable construction
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2002
+ * </p>
+ * <p>
+ * Company: UdeS
+ * </p>
+ * 
+ * @author ysyam
  * @version 1.0
  */
 
@@ -35,8 +64,8 @@ public class CycleTest extends TestCase {
 
 	public CycleTest(String name) {
 		super(name);
-		_path = "." + File.separator + "dataTest" + File.separator + "TTxmlFiles"
-				+ File.separator;
+		_path = "." + File.separator + "dataTest" + File.separator
+				+ "TTxmlFiles" + File.separator;
 
 		XMLInputFile xmlFile;
 		Element item;
@@ -44,12 +73,12 @@ public class CycleTest extends TestCase {
 		try {
 
 			xmlFile = new XMLInputFile();
-			//System.out.println(path+"cycle.xml");//debug
+			// System.out.println(path+"cycle.xml");//debug
 			Document doc = xmlFile.createDocument(_path + "cycle.xml");
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			_cycle.readXMLtag(item);
-			//_setOfCycles.readXMLtag(root);
+			// _setOfCycles.readXMLtag(root);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -64,7 +93,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test the added days in a cycle
-	 * */
+	 */
 	public void test_addDays() {
 		Cycle cycle = new Cycle();
 		cycle.getSetOfDays().addResource(new DResource("Ma", new Day()), 0);
@@ -79,7 +108,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test the removed days in a cycle
-	 * */
+	 */
 
 	public void test_removeDays() {
 		Cycle cycle = new Cycle();
@@ -96,7 +125,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that gives the previous period
-	 * */
+	 */
 	public void test_previousPeriod_1() {
 		_cycle.setCurrentDaySeqPerIndex(2, 1, 1);
 		_cycle.getPreviousPeriod(1);
@@ -109,7 +138,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that gives the previous period
-	 * */
+	 */
 	public void test_previousPeriod_2() {
 		_cycle.setCurrentDaySeqPerIndex(2, 1, 0);
 		_cycle.getPreviousPeriod(1);
@@ -122,7 +151,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that gives the previous period
-	 * */
+	 */
 	public void test_previousPeriod_3() {
 		_cycle.setCurrentDaySeqPerIndex(2, 0, 0);
 		for (int i = 0; i < 3; i++)
@@ -136,7 +165,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that gives the next period
-	 * */
+	 */
 	public void test_NextPeriod_1() {
 		_cycle.setCurrentDaySeqPerIndex(0, 0, 1);
 		_cycle.getNextPeriod(1);
@@ -149,7 +178,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that gives the next period
-	 * */
+	 */
 	public void test_NextPeriod_2() {
 		_cycle.setCurrentDaySeqPerIndex(0, 0, 3);
 		_cycle.getNextPeriod(1);
@@ -162,7 +191,7 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that gives the next period
-	 * */
+	 */
 	public void test_NextPeriod_3() {
 		_cycle.setCurrentDaySeqPerIndex(1, 2, 2);
 		for (int i = 0; i < 3; i++)
@@ -176,29 +205,24 @@ public class CycleTest extends TestCase {
 
 	/**
 	 * test that read the cycle xml tag
-	 * */
+	 */
 	public void test_readXMLtag() {
-		/*readFile xmlFile;
-		 Element  item;
-		 Cycle cycle= new Cycle();
-		 try{
-		 xmlFile = new readFile();
-		 //System.out.println(path+"cycle.xml");//debug
-		 Document  doc = xmlFile.getDocumentFile(_path+"cycle.xml");
-		 ReadXMLElement list= new ReadXMLElement();
-		 item= list.getRootElement(doc);
-		 cycle.readXMLtag(item);
-		 //_setOfCycles.readXMLtag(root);
-		 }catch(Exception e){
-		 System.out.println(e);
-		 }*/
+		/*
+		 * readFile xmlFile; Element item; Cycle cycle= new Cycle(); try{
+		 * xmlFile = new readFile();
+		 * //System.out.println(path+"cycle.xml");//debug Document doc =
+		 * xmlFile.getDocumentFile(_path+"cycle.xml"); ReadXMLElement list= new
+		 * ReadXMLElement(); item= list.getRootElement(doc);
+		 * cycle.readXMLtag(item); //_setOfCycles.readXMLtag(root);
+		 * }catch(Exception e){ System.out.println(e); }
+		 */
 		assertEquals("test_readXMLtag : assertEquals 1 (number of days):",
 				_cycle.getNumberOfDays(), 7);
 	}
 
 	/**
 	 * test that write the cycle xml tag
-	 * */
+	 */
 	public void test_writeXMLtag() {
 		XMLInputFile xmlFile;
 		Element item;
@@ -213,11 +237,11 @@ public class CycleTest extends TestCase {
 
 		try {
 			xmlFile = new XMLInputFile();
-			//System.out.println(path+"cycle.xml");//debug
+			// System.out.println(path+"cycle.xml");//debug
 			Document doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
 			XMLWriter wr = new XMLWriter();
 			doc = wr.getNewDocument();
-			//write xml file
+			// write xml file
 			Element ttCycle = cycle.writeXMLtag(doc);
 			doc = wr.buildDocument(doc, ttCycle);
 			XMLOutputFile xmlOF = new XMLOutputFile();
@@ -228,9 +252,9 @@ public class CycleTest extends TestCase {
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			newCycle.readXMLtag(item);
-			//item= list.getRootElement(doc);
-			//newCycle.readXMLtag(item);
-			//_setOfCycles.readXMLtag(root);
+			// item= list.getRootElement(doc);
+			// newCycle.readXMLtag(item);
+			// _setOfCycles.readXMLtag(root);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

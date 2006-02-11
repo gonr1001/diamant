@@ -40,11 +40,11 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class SequenceTest extends TestCase {
-	String path;
+	String _path;
 
 	public SequenceTest(String name) {
 		super(name);
-		path = System.getProperty("user.dir") + File.separator + "dataTest"
+		_path = System.getProperty("user.dir") + File.separator + "dataTest"
 				+ File.separator + "TTxmlFiles" + File.separator;
 	}
 
@@ -64,7 +64,7 @@ public class SequenceTest extends TestCase {
 		try {
 			xmlFile = new XMLInputFile();
 			// System.out.println(path+"period.xml");//debug
-			Document doc = xmlFile.createDocument(path + "sequence.xml");
+			Document doc = xmlFile.createDocument(_path + "sequence.xml");
 			XMLReader list = new XMLReader();
 			setOfPers = list.getRootElement(doc);
 			sequence.readXMLtag(setOfPers);
@@ -133,10 +133,10 @@ public class SequenceTest extends TestCase {
 			eSetOfPers = firstSequence.writeXMLtag(doc);
 			doc = wr.buildDocument(doc, eSetOfPers);
 			XMLOutputFile xmlOF = new XMLOutputFile();
-			xmlOF.write(doc, path + "SavedSequence.xml");
+			xmlOF.write(doc, _path + "SavedSequence.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument(path + "SavedSequence.xml");
+			doc = xmlFile.createDocument(_path + "SavedSequence.xml");
 			XMLReader list = new XMLReader();
 			eSetOfPers = list.getRootElement(doc);
 			savedSequence = new Sequence();

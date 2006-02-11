@@ -46,7 +46,7 @@ import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
-//import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
+// import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dData.dStudents.StudentTest;
@@ -99,6 +99,11 @@ public class DiamantTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("Dimanant Tests");
+		suite.addTest(InstructorAttachTest.suite());
+		suite.addTest(ResourceTest.suite());
+		suite.addTest(RoomsAttributesInterpretorTest.suite());
+		suite.addTest(RoomAttachTest.suite());
+		suite.addTest(SetOfRoomsTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
 		suite.addTest(SectionTest.suite());

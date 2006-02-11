@@ -1,21 +1,21 @@
 /**
-*
-* Title: TTStructureTest 
-* Description: 
-*
-* Copyright (c) 2001 by rgr.
-* All rights reserved.
-*
-*
-* This software is the confidential and proprietary information
-* of rgr. ("Confidential Information").  You
-* shall not disclose such Confidential Information and shall use
-* it only in accordance with the terms of the license agreement
-* you entered into with rgr.
-*
-*
-*
-*/
+ *
+ * Title: TTStructureTest 
+ * Description: 
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ *
+ *
+ */
 package dTest.dInternal.dTimeTable;
 
 import java.io.File;
@@ -252,10 +252,11 @@ public class TTStructureTest extends TestCase {
 	public void test_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
 		tts.loadTTStructure(_path + "5j27p.xml");
-		
+
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
-		assertEquals("test_cloneCurrentTTS1 : assertEquals 1 (number of cycles):",1,
-				cloneTTS.getSetOfCycles().size());
+		assertEquals(
+				"test_cloneCurrentTTS1 : assertEquals 1 (number of cycles):",
+				1, cloneTTS.getSetOfCycles().size());
 		assertEquals(
 				"test_cloneCurrentTTS2 : assertEquals 2 (number of days):", 5,
 				cloneTTS.getCurrentCycle().getSetOfDays().size());

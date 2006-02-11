@@ -36,20 +36,21 @@ public class DSaveData {
 
 	/**
 	 *
-	 * */
+	 */
 	public DSaveData(String version) {
 		_version = version;
 	}
 
 	/**
-	 * */
+	 * 
+	 */
 	public String getVersion() {
 		return _version;
 	}
 
 	/**
 	 *
-	 * */
+	 */
 	public String saveTimeTable(TTStructure tts, SetOfInstructors inst,
 			SetOfSites rooms, SetOfActivitiesSites act, SetOfStuSites students,
 			String fileName) {

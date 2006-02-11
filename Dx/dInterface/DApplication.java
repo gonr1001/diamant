@@ -135,7 +135,11 @@ public class DApplication implements ActionListener {
 		_mediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-
+		/*Icone de l'application*/
+		ImageIcon iconeDiamant= new ImageIcon(_currentDir + File.separator +
+				"pref"+ File.separator+"logoDiamant.gif");
+		_jFrame.setIconImage(iconeDiamant.getImage());
+		
 		setLAF(_preferences._lookAndFeel);
 		_logger.warn("bye_from DApplication"); // XXXX Pascal: Comment ca 'bye'
 												// ?!
