@@ -29,6 +29,7 @@ public class FilterSet {
 
     /**
      * Ensemble des élélements de ce FilterSet
+     * @associates DResource
      * 
      */
     private Set _set = null;

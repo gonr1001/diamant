@@ -43,6 +43,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.dData.dInstructors.InstructorAttach;
+import dInternal.dDlgModel.InstructorAvailabilityDlgModel;
 
 /**
  * Dialog used to set disponibilities for an instructor.  The user must select
@@ -65,17 +66,17 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	
 	private DApplication _dApplic;
 
-	private int _nbOfPeriods;
+	//private int _maxNbOfPeriods;
 
 	private int _nbOfDays;
 
-	private String[] _days;
+	//private String[] _days;
 
-	public String[] _time;
+	private InstructorAvailabilityDlgModel _iaDlgModel;
 
 	private ButtonsPanel _applyPanel;
 
-	private JPanel _chooserPanel;
+	//private JPanel _chooserPanel;
 
 	private JPanel _centerPanel;
 
@@ -99,17 +100,19 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	public InstructorAvailabiliyDlg(DApplication dApplic) {
 		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
 		_dApplic = dApplic;
-		if (_dApplic.getDMediator().getCurrentDoc() == null)
+		if (_dApplic.getDModel() == null)
 			return;
-		_time = _dApplic.getDModel().getTTStructure().getCurrentCycle()
-				.getHourOfPeriodsADay();
+		_iaDlgModel= _dApplic.getDModel().getIADlgModel();
+		
+		//_time = _dApplic.getDModel().getTTStructure().getCurrentCycle()
+		//		.getHourOfPeriodsADay();
 		_nbOfDays = _dApplic.getDModel().getTTStructure().getNumberOfActiveDays();
-		_days = new String[_nbOfDays];
-
-		for (int i = 0; i < _days.length; i++)
-			_days[i] = _dApplic.getDModel().getTTStructure().getWeekTable()[i];
-		_nbOfPeriods = _dApplic.getDModel().getTTStructure().getCurrentCycle()
-				.getMaxNumberOfPeriodsADay();
+//		_days = new String[_nbOfDays];
+//
+//		for (int i = 0; i < _days.length; i++)
+//			_days[i] = _dApplic.getDModel().getTTStructure().getWeekTable()[i];
+//		_nbMaxOfPeriods = _dApplic.getDModel().getTTStructure().getCurrentCycle()
+//				.getMaxNumberOfPeriodsADay();
 		try {
 			initialize();
 			pack();
@@ -124,13 +127,13 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	 * Component's initialisation and placement.
 	 */
 	private void initialize() throws Exception {
-		_chooserPanel = new JPanel();
+		JPanel chooserPanel = new JPanel();
 		//creates the JComboBox with the list of all instructors
 		_chooser = new JComboBox(_dApplic.getDModel().getSetOfInstructors()
 				.getNamesVector(1));
 		_chooser.addItemListener(this);
-		_chooserPanel.add(_chooser, null);
-		this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
+		chooserPanel.add(_chooser, null);
+		this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
 		//gridPanel
 		String sel = (String) _chooser.getSelectedItem();
@@ -159,14 +162,13 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 			// if a button of the grid has been pressed
 		} else if (_posVect.indexOf(event.getSource()) > -1) {
 			int index = _posVect.indexOf(event.getSource());
-			int day = index / _nbOfPeriods;
-			int per = index % _nbOfPeriods;
+			int day = index / _iaDlgModel.getMaxNbOfPeriods();
+			int per = index % _iaDlgModel.getMaxNbOfPeriods();
 			if (((JToggleButton) _posVect.get(index)).isSelected()) {
 				_currentAvailbility[day][per] = 1;
 			} else {
 				_currentAvailbility[day][per] = 5;
 			}
-			//modified = true;
 			_applyPanel.setFirstEnable();
 		}
 	}
@@ -198,24 +200,25 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	 */
 	private JPanel makeGridPanel(/*InstructorAttach instr*/) {
 		JPanel gridPanel = new JPanel();
-		gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
+		int maxNbOfPeriods = _iaDlgModel.getMaxNbOfPeriods();
+		gridPanel.setLayout(new GridLayout(maxNbOfPeriods + 1, _nbOfDays + 1));
 		gridPanel.setBorder(BorderFactory
 				.createTitledBorder(DConst.AVAILABILITIES));
 		_posVect = new Vector();
-		_posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
+		_posVect.setSize((maxNbOfPeriods + 1) * (_nbOfDays + 1));
 		gridPanel.add(new JLabel("")); // top left corner
-		for (int i = 0; i < _days.length; i++)
+		String [] days = _iaDlgModel.getDays();
+		for (int i = 0; i < days.length; i++)
 			//first line :  name of days
-			gridPanel.add(new JLabel(_days[i], SwingConstants.CENTER));
+			gridPanel.add(new JLabel(days[i], SwingConstants.CENTER));
 
 		_currentAvailbility = _currentInstr.getMatrixAvailability();
-
-		for (int j = 0; j < _nbOfPeriods; j++) {
+		String [] hours = _iaDlgModel.getHours();
+		for (int j = 0; j < maxNbOfPeriods; j++) {
 			// first column : the time of the period
-
-			gridPanel.add(new JLabel(_time[j], SwingConstants.RIGHT));
+			
+			gridPanel.add(new JLabel(hours[j], SwingConstants.RIGHT));
 			// create a button for each day for the period
-			//System.out.println(" DAInstructorDialog NbDays: "+nbDay+"   NbPerDays: "+nbPer); //DEBUG
 			for (int i = 0; i < _nbOfDays; i++) {
 				JToggleButton tBut = new JToggleButton();
 				if (_currentAvailbility[i][j] == 1) {
@@ -236,7 +239,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 				tBut.addActionListener(this);
 				tBut.setPreferredSize(new Dimension(50, 12));
 				gridPanel.add(tBut);//, null);
-				_posVect.setElementAt(tBut, (i * _nbOfPeriods) + j);
+				_posVect.setElementAt(tBut, (i * maxNbOfPeriods) + j);
 			}
 		}
 		return gridPanel;

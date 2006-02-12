@@ -210,12 +210,17 @@ public class DApplication implements ActionListener {
 	public JFrame getJFrame() {
 		return _jFrame;
 	} // end getJFrame
-
-	public DMediator getDMediator() {
-		return _mediator;
-	} // end getJFrame
-
-	public DMenuBar getMenuBar() {
+	
+	
+	public DMediator getDMediator(){
+		return _mediator;   	
+	} // end getDMediator
+	
+	public DDocument getCurrentDoc(){
+		return getDMediator().getCurrentDoc();   	
+	} // end getDMediator
+	
+	public DMenuBar getMenuBar(){
 		return _dMenuBar;
 	} // end getDesktop
 

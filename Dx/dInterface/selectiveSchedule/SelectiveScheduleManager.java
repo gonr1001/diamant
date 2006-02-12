@@ -74,6 +74,10 @@ public class SelectiveScheduleManager {
      */
     public class PersistanceMismatchImpl implements PersistanceMismatch {
         private int _expectedNbOfElements = -1;
+
+        /**
+         * @associates String 
+         */
         private List _unresolvedElementNames = null;
         private FilterSet _mismatchedFilterSet = null;
         
@@ -136,6 +140,9 @@ public class SelectiveScheduleManager {
      *  
      */
     public class PersistanceMismatchManagerImpl implements PersistanceMismatchManager {
+        /**
+         * @associates PersistanceMismatch 
+         */
         private List _persistanceMismatches = null;
 
         /**
@@ -184,6 +191,7 @@ public class SelectiveScheduleManager {
 
     /**
      * Une Map qui associe un Tuple à un RelationTester approprié
+     * @associates RelationTesterTemplate
      *  
      */
     private Map _tupleToRelationTester = null;
@@ -196,6 +204,7 @@ public class SelectiveScheduleManager {
 
     /**
      * Une Map qui associe un FilterSetIdentifier à FilterSet
+     * @associates FilterSet
      *  
      */
     private Map _filterSetIdentifierToFilterSets = null;

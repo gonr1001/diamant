@@ -42,11 +42,14 @@ import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
+
+import dInternal.dData.ExportData;
+import dInternal.dDlgModel.InstructorAvailabilityDlgModel;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-//import dInternal.dUtil.DXValue;
+
 
 /**
  * Description: DModel is a class used to
@@ -984,6 +987,22 @@ public class DModel extends Observable {
             } //end for (int j=0; j < soc.size(); j++) {
         }//end for (int i=0; i< setOfSites.size(); i++){	
     } //resizeSiteAvailability
+
+	/**
+	 * @return
+	 */
+	public InstructorAvailabilityDlgModel getIADlgModel() {
+		InstructorAvailabilityDlgModel iaDlgModel = new InstructorAvailabilityDlgModel();
+		iaDlgModel.setHours(getTTStructure().getCurrentCycle()
+				.getHourOfPeriodsADay());
+		
+		iaDlgModel.setDays(getTTStructure());
+		iaDlgModel.setMaxNumOfPeriods(getTTStructure());
+
+		return iaDlgModel;
+	}
+	
+	
 
     /*public void registerInterest(Observer obs) {
      _observers.addElement(obs);

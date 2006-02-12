@@ -88,8 +88,14 @@ public abstract class EventsDlgInterface extends JDialog implements
      */
     protected Vector _leftVector;
     
+    /**
+     * @associates String 
+     */
     protected Vector _centerVector;
     
+    /**
+     * @associates String 
+     */
     protected Vector _rightVector;
 
     protected JDialog _jDialog;
