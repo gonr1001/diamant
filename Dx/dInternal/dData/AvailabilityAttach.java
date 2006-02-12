@@ -1,18 +1,37 @@
-/*
- *  Title: AvailabilityAttach.java: Created on 2006-01-18
-** Copyright (c) 2001 by rgr.
-* All rights reserved.
-*/
+/**
+ * Created on Feb 12, 2006
+ * 
+ * TODO To change the class description for this generated file
+ * 
+ * Project affLoc
+ * Title: AvailabilityAttach.java 
+ * 
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * 
+ * 
+ */
+
 package dInternal.dData;
 
 /**
- * <p>Title: Diamant 1.6</p>
- * <p>Description: exam timetable construction with Condition Pattern</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author hara2602
- * @version 1.0
+ * @author : Ruben Gonzalez-Rubio
+ *
+ * Description: AvailabilityAttach.java is a class used to: 
+ * <p>
+ *
  */
+
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
