@@ -21,6 +21,7 @@
 		<delete dir="${reports}"/>
 		<delete file="Diamant.zip"/>
 		<delete file="tictac.jar"/>
+		<delete file="SavePeriod.xml"/>
 	</target>	
 	<target name="all" depends="clean" description="performs all targets">
     </target>
