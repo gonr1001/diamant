@@ -1,0 +1,27 @@
+<project name="DiamantClean" basedir="." default="all">
+	<target name="setDirs" unless="setDirs" description="setup the properites.">
+		<tstamp/>
+		<property name="distDirZip" value="./Diamant1.6"/>
+		<property name="srcDir" value="."/>
+		<property name="localJars" value="${srcDir}/jars"/>
+		<property name="eclipse" value="D:/Program Files/eclipse/plugins"/>
+		<property name="build" value="${srcDir}/classes"/>
+		<property name="reports" value="${srcDir}/reports"/>
+		<property name="dataTest" value="${build}/dataTest"/>
+		<property name="TTxmlFiles" value="${dataTest}/TTxmlFiles"/>
+		<property name="lib" value="${build}/lib"/>
+		<property name="distDir" value="${distDirZip}/Diamant"/>
+		<property name="origDist" value="${srcDir}/origDist"/>
+		<property name="tictacJar" value="${distDir}/tictac.jar"/>
+		<property name="setProps" value="true"/>
+	</target>
+	<target name="clean" depends="setDirs" description="clean up the output directories.">
+		<delete dir="${distDirZip}"/>
+		<delete dir="${build}"/>
+		<delete dir="${reports}"/>
+		<delete file="Diamant.zip"/>
+		<delete file="tictac.jar"/>
+	</target>	
+	<target name="all" depends="clean" description="performs all targets">
+    </target>
+</project>

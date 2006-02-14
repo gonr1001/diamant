@@ -13,7 +13,6 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
  * all Exceptions that a method can throw.
