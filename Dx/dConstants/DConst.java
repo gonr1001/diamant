@@ -192,12 +192,12 @@ public class DConst {
   final static String PASTE = "Coller";
   final static String CLEAR = "Effacer";
   //Assign menu
-  public final static String ASSIGN = res.getString("assign");//Affectation
-  public final static String INST_ASSIGN_M = res.getString("instAssignM");//Enseignants
+  public final static String M_ASSIGN = res.getString("assign");//Affectation
+  public final static String INST_AVAILABILITY_M = res.getString("instAssignM");//Enseignants
   public final static String LISTS_INSTRUCTOR_TD = res.getString("listsInstructorTD"); // "Listes d'enseignants"},
-  public final static String ACTI_ASSIGN_M = res.getString("ActiAssignM");//Activités
-  public final static String GROUP_ASSIGN_M = res.getString("GroupAssignM");//Groupes
-  public final static String LOCAUX_ASSIGN_M= res.getString("LocauxAssignM");//Locaux
+  public final static String ASSIGN_ACTIVITIES_M = res.getString("ActiAssignM");//Activités
+  public final static String ASSIGN_SECTION_M = res.getString("GroupAssignM");//Groupes
+  public final static String ROOM_AVAILABILITY_M= res.getString("LocauxAssignM");//Locaux
   public final static String EVENTS_ASSIGN_M= res.getString("EventsAssignM");//Évenements
   public final static String CONFLICTS_OF_AN_EVENT= res.getString("conflictsOfAnEvent");//Conflits d'un événement
   

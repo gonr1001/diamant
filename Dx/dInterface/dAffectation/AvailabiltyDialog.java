@@ -61,6 +61,9 @@ public class AvailabiltyDialog extends JDialog implements ActionListener,
 
     private JComboBox _chooser;
 
+    /**
+     * @associates JToggleButton 
+     */
     private Vector _posVect;
 
     protected DModel _dmodel;

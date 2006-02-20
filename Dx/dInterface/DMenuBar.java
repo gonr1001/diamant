@@ -1,11 +1,7 @@
 /**
- * Created on 2004
- * 
  *
- * 
- * Project ${project_name}
- * Title: ${file_name} 
- * 
+ * Title: JMenuBar 
+ * Description: JMenuBar
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -17,13 +13,15 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * 
- * @since JDK1.3
+ *
+ *
  */
-
 package dInterface;
 
+
+
 import java.awt.Font;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Vector;
@@ -33,12 +31,17 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
+
+
+
 import dConstants.DConst;
 import dDeveloper.MyFileCmd;
 import dDeveloper.ShowAllCmd;
 import dDeveloper.StateZeroCmd;
 import dInterface.dAffectation.ActivityCmd;
 import dInterface.dAffectation.ActivityModifCmd;
+import dInterface.dAffectation.ConflictOptionCmd;
+import dInterface.dAffectation.EventAffectCmd;
 import dInterface.dAffectation.EventsCmd;
 import dInterface.dAffectation.InitialAssignCmd;
 import dInterface.dAffectation.PartialTTStructureCmd;
@@ -73,13 +76,14 @@ import dInterface.dUtil.ViewSimpleCmd;
 import dInterface.dUtil.ViewVerticalSplitCmd;
 
 public class DMenuBar extends JMenuBar implements ItemListener {
+
+	public final String cMFONT = "Dialog";
+
+	public final int cFONT = Font.PLAIN;
+
+	public final int cNPT11 = 11;
+
 	private DApplication _dApplic;
-
-	private final String cMFONT = DConst.MFONTDialog;
-
-	private final int cFONT = Font.PLAIN;
-
-	private final int cNPT11 = DConst.NPT11;
 
 	// XXXX Pascal: Ne respecte pas le Java Coding Standard sect. 6.1
 
@@ -123,17 +127,17 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 	// the assign menus
 	private CmdMenu _activities, _sections, _instructorAvailability,
-			_roomsAvailability, _events, /* _exclusion, _conflict,
-			_defineSet,*/ _partialTTStructure;
+			_roomsAvailability, _events, /*
+											 * _exclusion, _conflict,
+											 * _defineSet,
+											 */_partialTTStructure;
 
 	private boolean _boolActivities, _boolSections,
-			_boolInstructorAvailability, _boolRoomsAvailability, _boolEvents  /*
-			 * ,
-			 * _boolExcl,
-			 * _boolConfl,
-			 * _boolDefineSet;,
+			_boolInstructorAvailability, _boolRoomsAvailability, _boolEvents
+			/*
+			 * , _boolExcl, _boolConfl, _boolDefineSet;,
 			 */
-			/*_boolPartialTTStructure*/;
+			/* _boolPartialTTStructure */;
 
 	// the modification menus
 	private JMenu _mSpecialImport;
@@ -177,6 +181,14 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 	private boolean _boolMyFile, _boolShowAll, _boolStateZero;
 
+	private CmdMenu _feature_1_6_2;
+
+	private CmdMenu _roomAssignment;
+
+	private CmdMenu _eventAssignment;
+
+	private CmdMenu _conflictOption;
+
 	/**
 	 * Constructor
 	 * 
@@ -187,6 +199,9 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		_dApplic = dApplic;
 		createMenuBar();
 	}
+
+
+
 
 	/**
 	 * 
@@ -200,10 +215,10 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		createPreferencesMenu();
 		createHelpMenu();
 		createInTestMenu();
-		if (_dApplic.getInDevelopment())
+		if (_dApplic.isInDevelopment())
 			createDevelopmentMenu();
 		alwaysSet();
-		setZero(); // setAll();
+		setZero();
 	} // end createMenus
 
 	private void createFileMenu() {
@@ -313,30 +328,30 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 	private void createAssignMenu() {
 
 		// Build the menu ASSIGN.
-		_assign = new JMenu(DConst.ASSIGN);
+		_assign = new JMenu(DConst.M_ASSIGN);
 		_assign.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		this.add(_assign);
 
-		_activities = new CmdMenu(DConst.ACTI_ASSIGN_M);
+		_activities = new CmdMenu(DConst.ASSIGN_ACTIVITIES_M);
 		_activities.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_activities.setCommand(new ActivityCmd());
 		_activities.addActionListener(_dApplic);
 		_assign.add(_activities);
 
-		_sections = new CmdMenu(DConst.GROUP_ASSIGN_M);
+		_sections = new CmdMenu(DConst.ASSIGN_SECTION_M);
 		_sections.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_sections.setCommand(new SectionCmd());
 		_sections.addActionListener(_dApplic);
 		_assign.add(_sections);
 
-		_instructorAvailability = new CmdMenu(DConst.INST_ASSIGN_M);
+		_instructorAvailability = new CmdMenu(DConst.INST_AVAILABILITY_M);
 		_instructorAvailability
 				.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_instructorAvailability.setCommand(new InstructorAvailabilityCmd());
 		_instructorAvailability.addActionListener(_dApplic);
 		_assign.add(_instructorAvailability);
 
-		_roomsAvailability = new CmdMenu(DConst.LOCAUX_ASSIGN_M);
+		_roomsAvailability = new CmdMenu(DConst.ROOM_AVAILABILITY_M);
 		_roomsAvailability.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_roomsAvailability.setCommand(new RoomsAvailabilityCmd());
 		_roomsAvailability.addActionListener(_dApplic);
@@ -350,12 +365,12 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_assign.addSeparator();
 
-/*		_defineSet = new CmdMenu(DConst.DEFINE_SET_M);
-		_defineSet.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_defineSet.setCommand(new DefineSetCmd());
-		_defineSet.addActionListener(_dApplic);
-		_assign.add(_defineSet);
-*/
+		/*
+		 * _defineSet = new CmdMenu(DConst.DEFINE_SET_M); _defineSet.setFont(new
+		 * java.awt.Font(cMFONT, cFONT, cNPT11)); _defineSet.setCommand(new
+		 * DefineSetCmd()); _defineSet.addActionListener(_dApplic);
+		 * _assign.add(_defineSet);
+		 */
 		_partialTTStructure = new CmdMenu(DConst.PARTIAL_TTSTRUCTURE_M);
 		_partialTTStructure.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_partialTTStructure.setCommand(new PartialTTStructureCmd());
@@ -529,6 +544,60 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		_help.add(_about);
 	} // end createHelpMenu
 
+	// private void createInTestMenu() {
+	// _inTest = new JMenu(DConst.IN_TEST);
+	// _inTest.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+	// this.add(_inTest);
+	// // Items in menu admin.
+	// // _cmdMenuTest1 = new JMenu(DConst.SUBMENU1);
+	// // _mInTest1.setFont( new java.awt.Font(cMFONT, cFONT, cNPT11));
+	//
+	// _cmdMenuTest1 = new CmdMenu(DConst.CONFLICTS_OF_AN_EVENT);// , this);
+	// _cmdMenuTest1.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+	// _cmdMenuTest1.setCommand(new ConflictsOfAnEventCmd());
+	// _cmdMenuTest1.addActionListener(_dApplic);
+	// // _userSubMenu1.add(_userTestMixingPersonal);
+	// // add item in submenu 1
+	// // _mInTest1.add(_cmdMenuTest1);
+	//
+	// // Items in menu feph.
+	// /*
+	// * _mInTest2 = new JMenu(DConst.SUBMENU2); _mInTest2.setFont( new
+	// * java.awt.Font(cMFONT, cFONT, cNPT11));
+	// *
+	// * // selective import // instructor selective import _mergeInstructors =
+	// * new CmdMenu(DConst.IMP_SELECT_INST); _mergeInstructors.setFont( new
+	// * java.awt.Font(cMFONT, cFONT, cNPT11));
+	// * _mergeInstructors.setCommand(new
+	// * ImportSelectiveFileCmd(DConst.IMP_SELECT_INST));
+	// * _mergeInstructors.addActionListener(_dApplic);
+	// * _mInTest2.add(_mergeInstructors);
+	// * // room selective import _mergeRooms = new
+	// * CmdMenu(DConst.IMP_SELECT_ROOM); _mergeRooms.setFont( new
+	// * java.awt.Font(cMFONT, cFONT, cNPT11)); _mergeRooms.setCommand(new
+	// * ImportSelectiveFileCmd(DConst.IMP_SELECT_ROOM));
+	// * _mergeRooms.addActionListener(_dApplic); _mInTest2.add(_mergeRooms);
+	// * // activity selective import _mergeActivities = new
+	// * CmdMenu(DConst.IMP_SELECT_ACT); _mergeActivities.setFont( new
+	// * java.awt.Font(cMFONT, cFONT, cNPT11));
+	// * _mergeActivities.setCommand(new
+	// * ImportSelectiveFileCmd(DConst.IMP_SELECT_ACT));
+	// * _mergeActivities.addActionListener(_dApplic);
+	// * _mInTest2.add(_mergeActivities);
+	// * // students selective import _mergeStudents = new
+	// * CmdMenu(DConst.IMP_SELECT_STUD); _mergeStudents.setFont( new
+	// * java.awt.Font(cMFONT, cFONT, cNPT11)); _mergeStudents.setCommand(new
+	// * ImportSelectiveFileCmd(DConst.IMP_SELECT_STUD));
+	// * _mergeStudents.addActionListener(_dApplic);
+	// * _mInTest2.add(_mergeStudents);
+	// *
+	// * //_mInTest2.add(_mInTest2);
+	// */
+	// _inTest.add(_cmdMenuTest1);
+	// // _inTest.add(_mInTest2);
+	//
+	// } // end createInTestMenu
+
 	private void createInTestMenu() {
 		_inTest = new JMenu(DConst.IN_TEST);
 		_inTest.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
@@ -541,45 +610,35 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		_cmdMenuTest1.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 		_cmdMenuTest1.setCommand(new ConflictsOfAnEventCmd());
 		_cmdMenuTest1.addActionListener(_dApplic);
-		// _userSubMenu1.add(_userTestMixingPersonal);
-		// add item in submenu 1
-		// _mInTest1.add(_cmdMenuTest1);
 
-		// Items in menu feph.
-		/*
-		 * _mInTest2 = new JMenu(DConst.SUBMENU2); _mInTest2.setFont( new
-		 * java.awt.Font(cMFONT, cFONT, cNPT11));
-		 * 
-		 *  // selective import // instructor selective import _mergeInstructors =
-		 * new CmdMenu(DConst.IMP_SELECT_INST); _mergeInstructors.setFont( new
-		 * java.awt.Font(cMFONT, cFONT, cNPT11));
-		 * _mergeInstructors.setCommand(new
-		 * ImportSelectiveFileCmd(DConst.IMP_SELECT_INST));
-		 * _mergeInstructors.addActionListener(_dApplic);
-		 * _mInTest2.add(_mergeInstructors);
-		 *  // room selective import _mergeRooms = new
-		 * CmdMenu(DConst.IMP_SELECT_ROOM); _mergeRooms.setFont( new
-		 * java.awt.Font(cMFONT, cFONT, cNPT11)); _mergeRooms.setCommand(new
-		 * ImportSelectiveFileCmd(DConst.IMP_SELECT_ROOM));
-		 * _mergeRooms.addActionListener(_dApplic); _mInTest2.add(_mergeRooms);
-		 *  // activity selective import _mergeActivities = new
-		 * CmdMenu(DConst.IMP_SELECT_ACT); _mergeActivities.setFont( new
-		 * java.awt.Font(cMFONT, cFONT, cNPT11));
-		 * _mergeActivities.setCommand(new
-		 * ImportSelectiveFileCmd(DConst.IMP_SELECT_ACT));
-		 * _mergeActivities.addActionListener(_dApplic);
-		 * _mInTest2.add(_mergeActivities);
-		 *  // students selective import _mergeStudents = new
-		 * CmdMenu(DConst.IMP_SELECT_STUD); _mergeStudents.setFont( new
-		 * java.awt.Font(cMFONT, cFONT, cNPT11)); _mergeStudents.setCommand(new
-		 * ImportSelectiveFileCmd(DConst.IMP_SELECT_STUD));
-		 * _mergeStudents.addActionListener(_dApplic);
-		 * _mInTest2.add(_mergeStudents);
-		 * 
-		 * //_mInTest2.add(_mInTest2);
-		 */
-		_inTest.add(_cmdMenuTest1);
-		// _inTest.add(_mInTest2);
+		// _feature_1_6_2 = new CmdMenu(DConst.ROOMASSIGN);
+		_feature_1_6_2 = new CmdMenu(DConst.ROOMASSIGN);
+		_feature_1_6_2.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+
+		// Affectation de locaux
+		_roomAssignment = new CmdMenu(DConst.ROOMASSIGN);
+		_roomAssignment.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_roomAssignment.setCommand(new RoomAffectCmd());
+		_roomAssignment.addActionListener(_dApplic);
+		_feature_1_6_2.add(_roomAssignment);
+
+		// Affectation d'événements
+		_eventAssignment = new CmdMenu(DConst.EVENTASSIGN);
+		_eventAssignment.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_eventAssignment.setCommand(new EventAffectCmd());
+		_eventAssignment.addActionListener(_dApplic);
+		_feature_1_6_2.add(_eventAssignment);
+
+		// Option de conflits
+		_conflictOption = new CmdMenu(DConst.CONFLICTEFFECT);
+		_conflictOption.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
+		_conflictOption.setCommand(new ConflictOptionCmd());
+		_conflictOption.addActionListener(_dApplic);
+		_feature_1_6_2.add(_conflictOption);
+
+		// * java.awt.Font(cMFONT, cFONT, cNPT11));
+		// _mergeStudents.setCommand(new
+		// // end createInTestMenu
 
 	} // end createInTestMenu
 
@@ -760,7 +819,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// _boolmInTest2 = true;
 
 		// the menu dev
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -817,7 +876,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// always _boolAbout = true;
 
 		// the menu dev
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -882,7 +941,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// _boolmInTest2 = true;
 
 		// the menu dev
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -938,7 +997,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// always _boolAbout = true;
 
 		// the menu dev
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -1023,7 +1082,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// always _boolAbout = true;
 
 		// the menu dev
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -1090,7 +1149,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// _boolmInTest2 = true;
 
 		// the menu dev
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			_boolMenuDev = true;
 			_boolMyFile = _boolShowAll = _boolStateZero = true;
 		}
@@ -1132,7 +1191,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 			setHelpMenu();
 		else
 			_help.setEnabled(_boolMenuHelp);
-		if (_dApplic.getInDevelopment()) {
+		if (_dApplic.isInDevelopment()) {
 			if (_boolMenuDev)
 				setDevMenu();
 			else
@@ -1298,4 +1357,5 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 			createMultiSiteMenu();
 	} // updateMenuBar
 
+	
 } /* end class DMenuBar */

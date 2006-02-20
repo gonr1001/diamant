@@ -1,6 +1,6 @@
 /**
 *
-* Title: FirstAffectAlgorithm $Revision: 1.20 $  $Date: 2005-07-05 12:04:31 $
+* Title: FirstAffectAlgorithm $Revision: 1.21 $  $Date: 2006-02-20 14:06:51 $
 * Description: FirstAffectAlgorithm is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.20 $
+* @version $Revision: 1.21 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -46,7 +46,7 @@ public class FirstAffectAlgorithm implements Algorithm {
    * constructor
    */
   public FirstAffectAlgorithm(DModel dm) {
-    _placeEvent= new Vector(1);
+    _placeEvent= new Vector();
     _dm= dm;
   }
 

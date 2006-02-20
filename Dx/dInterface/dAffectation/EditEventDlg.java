@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.2 $  $Date: 2006-02-10 21:40:18 $
+ * Title: EditActivityDlg $Revision: 1.3 $  $Date: 2006-02-20 14:06:50 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -61,7 +61,6 @@ import dInterface.dUtil.TwoButtonsPanel;
 
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
-import dInternal.dDataTxt.Resource;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dActivities.Section;
@@ -331,7 +330,7 @@ public class EditEventDlg
   private JPanel buildRoomPanel(int index) {
     JPanel myPanel = new JPanel(new BorderLayout());
     JPanel roomPanel = new JPanel();
-    JPanel functionPanel = new JPanel();
+    //J//Panel functionPanel = new JPanel();
     roomPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ROOM_NAME));
     roomPanel.setLayout(new GridLayout(2,2));
     
@@ -424,9 +423,9 @@ public class EditEventDlg
    * Modifie la valeur de la capacité du local courant dans le panel de capacité
    * @param roomName
    */
-  private void setRoomCapacity(String roomName){
-  	_capacity[_currentActivityIndex].setText(getCapacity(roomName));
-  }
+//  private void setRoomCapacity(String roomName){
+//  	_capacity[_currentActivityIndex].setText(getCapacity(roomName));
+//  }
   
   /**
    * Modifie la valeur de la liste des locaux dans le panel de locaux

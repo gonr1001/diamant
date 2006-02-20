@@ -30,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.StringTokenizer;
 
 import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
@@ -44,18 +45,29 @@ import javax.swing.WindowConstants;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
+import dInterface.dTimeTable.NewTTDlg;
+import dInterface.dTimeTable.OpenTTDlg;
+import dInterface.dTimeTable.OpenTTSDlg;
+import dInterface.dTimeTable.SaveAsTTDlg;
+import dInterface.dUtil.AboutDlg;
+import dInterface.dData.DefFilesToImportDlg;
+import dInterface.dData.ImportDlg;
+import dInterface.dMenus.DxMenuBar;
 import dInternal.DModel;
 
 import dInternal.Preferences;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.dialog.InformationDlg;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 public class DApplication implements ActionListener {
-	private static Logger _logger = Logger.getLogger(DApplication.class.getName());
-	
+	private static Logger _logger = Logger.getLogger(DApplication.class
+			.getName());
+
 	boolean _inDevelopment;
+
 	// Fake Singletonm, car besoin pour fonctionnalite de Grille Selective
 	private static DApplication _instance = null;
 
@@ -97,6 +109,8 @@ public class DApplication implements ActionListener {
 	private String _currentDir;
 
 	private DMenuBar _dMenuBar;
+	
+	private DxMenuBar _dxMenuBar;
 
 	private DToolBar _tbar;
 
@@ -106,8 +120,9 @@ public class DApplication implements ActionListener {
 	 */
 
 	public DApplication() {
-		PropertyConfigurator.configureAndWatch("trace"+File.separator+"log4j.conf");
-		_logger.warn("Hi from DApplication");		
+		PropertyConfigurator.configureAndWatch("trace" + File.separator
+				+ "log4j.conf");
+		_logger.warn("Hi from DApplication");
 		_instance = this;
 		_inDevelopment = false;
 	}
@@ -115,18 +130,17 @@ public class DApplication implements ActionListener {
 	public static DApplication getInstance() {
 		return _instance;
 	}
-	
-	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent 
-	//              pour que ca vaille la peine d'assigner son resultat a une 
-	//              variable
+
+	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent
+	// pour que ca vaille la peine d'assigner son resultat a une
+	// variable
 	public void doIt(String[] args) {
-      	if (args.length > 0){
-			if(args[0].compareTo("-d") == 0){
+		if (args.length > 0) {
+			if (args[0].compareTo("-d") == 0) {
 				_inDevelopment = true;
 				System.out.println("Mode développement");
-			}	
+			}
 		}
-
 
 		_preferences = new Preferences(System.getProperty("user.dir")
 				+ File.separator + "pref" + File.separator + "pref.txt");
@@ -135,14 +149,14 @@ public class DApplication implements ActionListener {
 		_mediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-		/*Icone de l'application*/
-		ImageIcon iconeDiamant= new ImageIcon(_currentDir + File.separator +
-				"pref"+ File.separator+"logoDiamant.gif");
+		/* Icone de l'application */
+		ImageIcon iconeDiamant = new ImageIcon(_currentDir + File.separator
+				+ "pref" + File.separator + "logoDiamant.gif");
 		_jFrame.setIconImage(iconeDiamant.getImage());
-		
+
 		setLAF(_preferences._lookAndFeel);
 		_logger.warn("bye_from DApplication"); // XXXX Pascal: Comment ca 'bye'
-												// ?!
+		// ?!
 	}
 
 	// -------------------------------------------
@@ -159,13 +173,18 @@ public class DApplication implements ActionListener {
 
 		JPanel panel = new JPanel(new BorderLayout(0, 0));
 		jFrame.setContentPane(panel);
-		_dMenuBar = new DMenuBar(this);
-		jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
+		if (_inDevelopment) {
+			_dxMenuBar = new DxMenuBar(this);
+			jFrame.setJMenuBar(_dxMenuBar); // constructs the menu bar
+		} else {
+			_dMenuBar = new DMenuBar(this);
+			jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
+		}
 
 		_tbar = new DToolBar(this); // constucts the tool bar
 
 		jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
-		
+
 		hideToolBar();
 
 		_jDesktopPane = new JDesktopPane();
@@ -175,12 +194,14 @@ public class DApplication implements ActionListener {
 		jFrame.setLocation(ZERO, ZERO);
 		panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		panel.setMaximumSize(_screenSize);
-		
-		if(_inDevelopment){
-			panel.setPreferredSize(new Dimension(_screenSize.width - ADJUST_WIDTH, 500));
-		}else{
-			panel.setPreferredSize(new Dimension(_screenSize.width - DConst.ADJUST_WIDTH,
-					_screenSize.height - DConst.ADJUST_HEIGHT));
+
+		if (_inDevelopment) {
+			panel.setPreferredSize(new Dimension(_screenSize.width
+					- ADJUST_WIDTH, 500));
+		} else {
+			panel.setPreferredSize(new Dimension(_screenSize.width
+					- DConst.ADJUST_WIDTH, _screenSize.height
+					- DConst.ADJUST_HEIGHT));
 		}
 
 		jFrame.pack();
@@ -210,18 +231,21 @@ public class DApplication implements ActionListener {
 	public JFrame getJFrame() {
 		return _jFrame;
 	} // end getJFrame
-	
-	
-	public DMediator getDMediator(){
-		return _mediator;   	
+
+	public DMediator getDMediator() {
+		return _mediator;
 	} // end getDMediator
-	
-	public DDocument getCurrentDoc(){
-		return getDMediator().getCurrentDoc();   	
+
+	public DDocument getCurrentDoc() {
+		return getDMediator().getCurrentDoc();
 	} // end getDMediator
-	
-	public DMenuBar getMenuBar(){
+
+	public DMenuBar getMenuBar() {
 		return _dMenuBar;
+	} // end getDesktop
+	
+	public DxMenuBar getDxMenuBar() {
+		return _dxMenuBar;
 	} // end getDesktop
 
 	public DToolBar getToolBar() {
@@ -330,6 +354,28 @@ public class DApplication implements ActionListener {
 		}
 	}
 
+	/**
+	 * Closes the document(s) and the application. Use this method for
+	 * processing close via the quit menuItem.
+	 * 
+	 * @return void
+	 * 
+	 */
+	public void exit() {
+		// if no Document exit ok
+		while (_mediator.getCurrentDoc() != null) { // is a while
+			new CloseCmd().execute(this);
+			if (_mediator.getCancel())
+				break;
+		}
+		// if Document changed as for save or not
+		if (_mediator.getCurrentDoc() == null) {
+			_jFrame.setVisible(false);
+			_jFrame.dispose();
+			System.exit(0);
+		}
+	}
+
 	public DModel getDModel() {
 		return getDMediator().getCurrentDoc().getDM();
 	}
@@ -349,8 +395,186 @@ public class DApplication implements ActionListener {
 	/**
 	 * @return
 	 */
-	public boolean getInDevelopment() {
+	public boolean isInDevelopment() {
 		return _inDevelopment;
 	}
+
+	/**
+	 * 
+	 */
+	public void showAboutDlg() {
+		new AboutDlg(this);
+	}
+	
+	/**
+	 * 
+	 */
+	public void newTTableCycle() {
+		new NewTTDlg(this, DConst.CYCLE);
+	}
+	
+	/**
+	 * 
+	 */
+	public void newTTableExam() {
+		new NewTTDlg(this, DConst.EXAM);		
+	}
+	
+	/**
+	 * the Time table can be cycle or exam
+	 */
+	public void afterNewTTable() {
+		this.getDxMenuBar().afterNewTTable();
+	}
+
+	/**
+	 * 
+	 */
+	public void newTTStrucCycle() {
+		this.showToolBar();
+	    this.getDMediator().addDoc(this.getPreferences()._standardTTC, DConst.NO_TYPE);
+	    this.getDxMenuBar().afterNewTTStruc();
+	}
+
+	/**
+	 * 
+	 */
+	public void newTTStrucExam() {
+		this.showToolBar();
+	    this.getDMediator().addDoc(this.getPreferences()._standardTTE, DConst.NO_TYPE);
+	    this.getDxMenuBar().afterNewTTStruc();
+	}
+	
+	/**
+	 * 
+	 */
+	public void openTTable() {
+		new OpenTTDlg(this);
+	}
+
+	
+	/**
+	 * 
+	 */
+	public void afterInitialAssign() {
+		this.getDxMenuBar().afterInitialAssign();		
+	}
+	
+	/**
+	 * 
+	 */
+	public void openTTStruc() {
+		this.showToolBar();
+	    new OpenTTSDlg(this);
+	}
+	
+	/**
+	 * 
+	 */
+	public void afterOpenTTSruc() {
+		this.getDxMenuBar().afterOpenTTSruc();		
+	}
+
+	
+	/**
+	 * 
+	 */
+	public void close() {
+	    this.getDMediator().closeCurrentDoc();
+	    if(!this.getDMediator().getCancel()) {
+	      this.getDxMenuBar().afterClose();
+	    }
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public void save() {
+	    if (this.getDMediator().getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
+	        new SaveAsTTDlg(this);
+	      else
+	        if (this.getDMediator().getCurrentDoc().isModified())
+	          this.getDMediator().saveCurrentDoc(this.getDMediator().getCurrentDoc().getDocumentName());
+	         //confirm dialog ?
+	         //else not necessary to save
+	}
+
+	/**
+	 * 
+	 */
+	public void saveAs() {
+		new SaveAsTTDlg(this);		
+	}
+	
+	/**
+	 * 
+	 */
+	public void defineFiles() {
+		new DefFilesToImportDlg(this);		
+	}
+	/**
+	 * 
+	 */
+	public void importFiles() {
+		new ImportDlg(this);		
+	}
+	
+	/**
+	 * 
+	 */
+	public void afterImport() {
+		this.getDxMenuBar().afterImport();
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public void exportFiles() {
+
+	      String dir = getTokenDir(this.getDMediator().getCurrentDoc().getDocumentName(),File.separator);
+
+	      File fileStu = new File(dir + DConst.TT_STUD_FILE);
+	      File fileTT = new File(dir + DConst.TT_FILE);
+	      String mess = "";
+	       if (fileStu.exists() || fileTT.exists()) {
+	         mess += "Un ou les deux fichiers existent dans le répertoire" + DConst.CR_LF;
+	                mess += "PAS d'exportation";
+	         new InformationDlg(this.getJFrame(),mess , DConst.EXPORT_MESSAGE);
+	       } else{ //if (fileStu.exists() || fileTT.exists())
+	         this.getDModel().exportData(dir);
+	         mess += dir + DConst.TT_STUD_FILE  + DConst.CR_LF + dir + DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
+	         new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
+	       }
+
+		
+	}
+
+	
+
+    /**
+   * return a token in from a stringtokenizer
+   * @param str
+   * @param delimiter
+   * @param position
+   * @return
+   */
+  private String getTokenDir(String str, String delimiter){
+    StringTokenizer strToken= new StringTokenizer(str,delimiter);
+    String string = "";
+    int nbTokens= strToken.countTokens();
+    for (int i=0; i< nbTokens-1; i++){
+      string+= strToken.nextToken() + delimiter;
+    }
+    return string;
+   }
+
+
+
+
+
+
+
 
 } /* end class DApplication */

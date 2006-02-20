@@ -27,7 +27,7 @@ public class SetOfEvents extends DSetOfResources {
 	/**
 	 * @associates SetOfEventsListener
 	 */
-	public Vector _soeListeners = new Vector(1);
+	//public Vector _soeListeners = new Vector(1);
 
 	//protected boolean _isEventPlaced=false;
 	private DModel _dm;

@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.39 $ $Date: 2006-01-27 23:23:47 $
+ * Title: StudentMixingAlgorithm $Revision: 1.40 $ $Date: 2006-02-20 14:06:52 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -31,8 +31,6 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.DSetOfResources;
-//import dInternal.dDataTxt.StudentAttach;
-
 import dInternal.dData.dActivities.Type;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;

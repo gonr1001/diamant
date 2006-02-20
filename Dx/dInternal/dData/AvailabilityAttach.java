@@ -49,6 +49,10 @@ public class AvailabilityAttach extends DObject {
      * @associates String 
      */
     protected Vector _ressourceAvailability;
+
+    /**
+     * @associates String 
+     */
     protected Vector _ressourceSiteAvailability;
 
     private final String CR_LF = "\r\n";

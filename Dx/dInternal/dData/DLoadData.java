@@ -14,9 +14,8 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- * @since JDK1.3
+ * 
  */
-
 package dInternal.dData;
 
 
@@ -33,7 +32,6 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
-import dInternal.dData.dInstructors.InstructorAttach;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;

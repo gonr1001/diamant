@@ -87,9 +87,9 @@ public class RoomAssignmentAlgo implements Algorithm {
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod().getSetOfResources();
 		SetOfEvents soe = _dm.getSetOfEvents();
 		SetOfRooms sor = _dm.getSetOfRooms();
-		int TOKEN_RANGE = 0;
+//		int TOKEN_RANGE = 0;
 		int ADD_RESOURCE_BY_KEY = 0;
-		int numberOfStudents;
+//		int numberOfStudents;
 		for (int i=0; i< sor.size(); i++){
 			setOfAvailRooms.setCurrentKey(sor.getResourceAt(i).getKey());
 			setOfAvailRooms.addResource(sor.getResourceAt(i),ADD_RESOURCE_BY_KEY);
@@ -162,17 +162,17 @@ public class RoomAssignmentAlgo implements Algorithm {
 	 * Elle permet de choisir le meilleurs local parmi les locaux restant à affecter
 	 * @return
 	 */
-	private int select(){
-		return -1;
-	}
+//	private int select(){
+//		return -1;
+//	}
 	
 	/**
 	 * Elle teste si une solution partielle est une solution complète
 	 * @return
 	 */
-	private boolean isFinish(){
-		return false;
-	}
+//	private boolean isFinish(){
+//		return false;
+//	}
 	
 	/**
 	 * Elle teste si un couplet (local, evenement) peut être ajouté à une <p>
@@ -210,8 +210,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 	 * si c'est possible
 	 *
 	 */
-	private void add(){
-		
-	}
+//	private void add(){		
+//	}
 	
 }

@@ -42,8 +42,6 @@ import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
-
-import dInternal.dData.ExportData;
 import dInternal.dDlgModel.InstructorAvailabilityDlgModel;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dOptimization.TestConditions;
