@@ -36,6 +36,7 @@ import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
@@ -45,17 +46,26 @@ import javax.swing.WindowConstants;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
+import dInterface.dTimeTable.ManualImprovementDlg;
 import dInterface.dTimeTable.NewTTDlg;
 import dInterface.dTimeTable.OpenTTDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsTTDlg;
 import dInterface.dUtil.AboutDlg;
+import dInterface.dAffectation.ActivityDlg;
+import dInterface.dAffectation.AvailabiltyDialog;
+import dInterface.dAffectation.EventsDlg;
+import dInterface.dAffectation.SectionDlg;
+import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dData.DefFilesToImportDlg;
 import dInterface.dData.ImportDlg;
+import dInterface.dData.ReportsDlg;
 import dInterface.dMenus.DxMenuBar;
+import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
 
 import dInternal.Preferences;
+import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 
@@ -109,7 +119,7 @@ public class DApplication implements ActionListener {
 	private String _currentDir;
 
 	private DMenuBar _dMenuBar;
-	
+
 	private DxMenuBar _dxMenuBar;
 
 	private DToolBar _tbar;
@@ -243,7 +253,7 @@ public class DApplication implements ActionListener {
 	public DMenuBar getMenuBar() {
 		return _dMenuBar;
 	} // end getDesktop
-	
+
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
 	} // end getDesktop
@@ -405,21 +415,21 @@ public class DApplication implements ActionListener {
 	public void showAboutDlg() {
 		new AboutDlg(this);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void newTTableCycle() {
 		new NewTTDlg(this, DConst.CYCLE);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void newTTableExam() {
-		new NewTTDlg(this, DConst.EXAM);		
+		new NewTTDlg(this, DConst.EXAM);
 	}
-	
+
 	/**
 	 * the Time table can be cycle or exam
 	 */
@@ -432,8 +442,9 @@ public class DApplication implements ActionListener {
 	 */
 	public void newTTStrucCycle() {
 		this.showToolBar();
-	    this.getDMediator().addDoc(this.getPreferences()._standardTTC, DConst.NO_TYPE);
-	    this.getDxMenuBar().afterNewTTStruc();
+		this.getDMediator().addDoc(this.getPreferences()._standardTTC,
+				DConst.NO_TYPE);
+		this.getDxMenuBar().afterNewTTStruc();
 	}
 
 	/**
@@ -441,10 +452,11 @@ public class DApplication implements ActionListener {
 	 */
 	public void newTTStrucExam() {
 		this.showToolBar();
-	    this.getDMediator().addDoc(this.getPreferences()._standardTTE, DConst.NO_TYPE);
-	    this.getDxMenuBar().afterNewTTStruc();
+		this.getDMediator().addDoc(this.getPreferences()._standardTTE,
+				DConst.NO_TYPE);
+		this.getDxMenuBar().afterNewTTStruc();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -452,129 +464,238 @@ public class DApplication implements ActionListener {
 		new OpenTTDlg(this);
 	}
 
-	
-	/**
-	 * 
-	 */
-	public void afterInitialAssign() {
-		this.getDxMenuBar().afterInitialAssign();		
-	}
-	
 	/**
 	 * 
 	 */
 	public void openTTStruc() {
 		this.showToolBar();
-	    new OpenTTSDlg(this);
+		new OpenTTSDlg(this);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void afterOpenTTSruc() {
-		this.getDxMenuBar().afterOpenTTSruc();		
+		this.getDxMenuBar().afterOpenTTSruc();
 	}
 
-	
 	/**
 	 * 
 	 */
 	public void close() {
-	    this.getDMediator().closeCurrentDoc();
-	    if(!this.getDMediator().getCancel()) {
-	      this.getDxMenuBar().afterClose();
-	    }
+		this.getDMediator().closeCurrentDoc();
+		if (!this.getDMediator().getCancel()) {
+			this.getDxMenuBar().setInitialState();
+		}
 	}
-	
-	
+
 	/**
 	 * 
 	 */
 	public void save() {
-	    if (this.getDMediator().getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
-	        new SaveAsTTDlg(this);
-	      else
-	        if (this.getDMediator().getCurrentDoc().isModified())
-	          this.getDMediator().saveCurrentDoc(this.getDMediator().getCurrentDoc().getDocumentName());
-	         //confirm dialog ?
-	         //else not necessary to save
+		if (this.getDMediator().getCurrentDoc().getDocumentName().endsWith(
+				DConst.NO_NAME))
+			new SaveAsTTDlg(this);
+		else if (this.getDMediator().getCurrentDoc().isModified())
+			this.getDMediator().saveCurrentDoc(
+					this.getDMediator().getCurrentDoc().getDocumentName());
+		//confirm dialog ?
+		//else not necessary to save
 	}
 
 	/**
 	 * 
 	 */
 	public void saveAs() {
-		new SaveAsTTDlg(this);		
+		new SaveAsTTDlg(this);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void defineFiles() {
-		new DefFilesToImportDlg(this);		
+		new DefFilesToImportDlg(this);
 	}
+
 	/**
 	 * 
 	 */
 	public void importFiles() {
-		new ImportDlg(this);		
+		new ImportDlg(this);
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void afterImport() {
 		this.getDxMenuBar().afterImport();
 	}
-	
-	
+
 	/**
 	 * 
 	 */
 	public void exportFiles() {
 
-	      String dir = getTokenDir(this.getDMediator().getCurrentDoc().getDocumentName(),File.separator);
+		String dir = getTokenDir(this.getDMediator().getCurrentDoc()
+				.getDocumentName(), File.separator);
 
-	      File fileStu = new File(dir + DConst.TT_STUD_FILE);
-	      File fileTT = new File(dir + DConst.TT_FILE);
-	      String mess = "";
-	       if (fileStu.exists() || fileTT.exists()) {
-	         mess += "Un ou les deux fichiers existent dans le répertoire" + DConst.CR_LF;
-	                mess += "PAS d'exportation";
-	         new InformationDlg(this.getJFrame(),mess , DConst.EXPORT_MESSAGE);
-	       } else{ //if (fileStu.exists() || fileTT.exists())
-	         this.getDModel().exportData(dir);
-	         mess += dir + DConst.TT_STUD_FILE  + DConst.CR_LF + dir + DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
-	         new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
-	       }
+		File fileStu = new File(dir + DConst.TT_STUD_FILE);
+		File fileTT = new File(dir + DConst.TT_FILE);
+		String mess = "";
+		if (fileStu.exists() || fileTT.exists()) {
+			mess += "Un ou les deux fichiers existent dans le répertoire"
+					+ DConst.CR_LF;
+			mess += "PAS d'exportation";
+			new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
+		} else { //if (fileStu.exists() || fileTT.exists())
+			this.getDModel().exportData(dir);
+			mess += dir + DConst.TT_STUD_FILE + DConst.CR_LF + dir
+					+ DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
+			new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
+		}
 
-		
 	}
 
+	/**
+	 * return a token in from a stringtokenizer
+	 * @param str
+	 * @param delimiter
+	 * @param position
+	 * @return
+	 */
+	private String getTokenDir(String str, String delimiter) {
+		StringTokenizer strToken = new StringTokenizer(str, delimiter);
+		String string = "";
+		int nbTokens = strToken.countTokens();
+		for (int i = 0; i < nbTokens - 1; i++) {
+			string += strToken.nextToken() + delimiter;
+		}
+		return string;
+	}
+
+	/**
+	 * 
+	 */
+	public void assignActivities() {
+		new ActivityDlg(this, DConst.ACT_LIST);
+	}
+
+	/**
+	 * 
+	 */
+	public void assignSections() {
+		new SectionDlg(this);
+	}
+
+	/**
+	 * 
+	 */
+	public void instructorAvailability() {
+		new AvailabiltyDialog(this, this.getDModel().getSetOfInstructors());
+	}
+
+	/**
+	 * 
+	 */
+	public void roomAvailability() {
+		new AvailabiltyDialog(this, this.getDModel().getSetOfRooms());
+	}
+
+	/**
+	 * 
+	 */
+	public void assignEvents() {
+		new EventsDlg(this, DConst.EVENTS_DLG_TITLE, true);
+	}
+
+	/**
+	 * 
+	 */
+	public void selectiveViews() {
+		SelectiveScheduleDlg.getInstance().displayDlg();
+	}
+
+	/**
+	 * 
+	 */
+	public void conflictOfAnEvent() {
+		new ManualImprovementDlg(this, DConst.MANUALIMPROVEMENT_DLG_TITLE);
+	}
+
+	/**
+	 * 
+	 */
+	public void initialAssignment() {
+		this.getDModel().initChangeInDModel(this.getJFrame());
+		this.getMenuBar().postInitialAssign();
+		new InformationDlg(this.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
+	}
+
+	/**
+	 * 
+	 */
+	public void afterInitialAssign() {
+		this.getDxMenuBar().afterInitialAssignment();
+	}
+
+	/**
+	 * 
+	 */
+	public void doTheTimeTable() {
+		int _selectedContext = 0;// context for first affect algorithm
+
+		(new SelectAlgorithm(this.getDModel(), _selectedContext)).execute();
+		new InformationDlg(this.getJFrame(), DConst.TT_BUILD_MESSAGE);
+	}
+
+	/**
+	 * 
+	 */
+	public void doSectionPartition() {
+		boolean _userTestActiv = true;
 	
+		DConst.USER_TEST_ACTIV= _userTestActiv;
+		//new PersonalizeMixingAlgorithmDlg();
+		PersonalizeMixingAlgorithmDlg perso= new PersonalizeMixingAlgorithmDlg(DConst.DEFAULT_MIX_ALGO);
+		String input= perso.showInputDialog();
+		if(input!=null){
+			int personalizeAcceptableVariation=Integer.parseInt(input);
+			(new SelectAlgorithm(personalizeAcceptableVariation,this.getDModel())).execute();
+			new InformationDlg(this.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
+		}
 
-    /**
-   * return a token in from a stringtokenizer
-   * @param str
-   * @param delimiter
-   * @param position
-   * @return
-   */
-  private String getTokenDir(String str, String delimiter){
-    StringTokenizer strToken= new StringTokenizer(str,delimiter);
-    String string = "";
-    int nbTokens= strToken.countTokens();
-    for (int i=0; i< nbTokens-1; i++){
-      string+= strToken.nextToken() + delimiter;
-    }
-    return string;
-   }
+	}
 
+	/**
+	 * 
+	 */
+	public void report() {
+		new ReportsDlg(this);
+	}
 
+	/**
+	 * 
+	 */
+	public void myFile() {
+		setCurrentDir(".\\devData\\");
+		getDMediator().addDoc(".\\devData\\fichier1.dia", 0);
+		getDMediator().getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
+		getDModel().changeInDModel(this.getJFrame());
+		this.getDxMenuBar().afterInitialAssignment();
+	}
 
+	/**
+	 * 
+	 */
+	public void initialState() {
+		this.getDxMenuBar().setInitialState();
+	}
 
-
-
-
+	/**
+	 * 
+	 */
+	public void showAllMenus() {
+		this.getDxMenuBar().showAllMenus();
+	}
 
 } /* end class DApplication */

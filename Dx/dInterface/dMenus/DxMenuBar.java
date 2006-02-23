@@ -37,8 +37,6 @@ import dInterface.DApplication;
  */
 public class DxMenuBar extends JMenuBar {
 
-	//private DApplication _dApplication;
-
 	private static final String cMFONT = "Dialog";
 
 	private static final int cFONT = Font.PLAIN;
@@ -55,7 +53,6 @@ public class DxMenuBar extends JMenuBar {
 	 */
 	public DxMenuBar(DApplication dApplication) {
 		super();
-		//_dApplication = dApplication;
 		_menus = buildMenuBar(dApplication);
 		setInitialState();
 	}
@@ -67,14 +64,15 @@ public class DxMenuBar extends JMenuBar {
 		Vector v = new Vector();
 		v.add(new DFileMenu(this, dApplication));
 		v.add(new DAssignMenu(this, dApplication));
-//		v.add(new DModificationMenu());
-//		v.add(new DOptimisationMenu());
-//		v.add(new DReportMenu());
-//		v.add(new DPreferencesMenu());
-//		v.add(new DHelpMenu());
-//		v.add(new DNewFeaturesMenu());
-//		if (_dApplication.getInDevelopment())
-//			v.add(new DDevelopmentMenu());
+		v.add(new DModificationMenu(this, dApplication));
+		v.add(new DOptimisationMenu(this, dApplication));
+		v.add(new DReportMenu(this, dApplication));
+		v.add(new DPreferencesMenu(this, dApplication));
+		v.add(new DHelpMenu(this, dApplication));
+		v.add(new DNewFeaturesMenu(this, dApplication));
+		if (dApplication.isInDevelopment()){
+			v.add(new DDevelopmentMenu(this, dApplication));
+		}
 		return v;
 	}
 
@@ -108,9 +106,9 @@ public class DxMenuBar extends JMenuBar {
 	/**
 	 * 
 	 */
-	public void afterInitialAssign() {
+	public void afterInitialAssignment() {
 		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).afterInitialAssign();
+			((MenuStates) _menus.get(i)).afterInitialAssignment();
 		}
 	}
 
@@ -123,14 +121,14 @@ public class DxMenuBar extends JMenuBar {
 		}
 	}
 	
-	/**
-	 * 
-	 */
-	public void afterClose() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).initialState();
-		}
-	}
+//	/**
+//	 * 
+//	 */
+//	public void afterClose() {
+//		for (int i = 0; i < _menus.size(); i++) {
+//			((MenuStates) _menus.get(i)).initialState();
+//		}
+//	}
 
 	/**
 	 * 
@@ -138,6 +136,15 @@ public class DxMenuBar extends JMenuBar {
 	public void afterImport() {
 		for (int i = 0; i < _menus.size(); i++) {
 			((MenuStates) _menus.get(i)).afterImport();
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void showAllMenus() {
+		for (int i = 0; i < _menus.size(); i++) {
+			((MenuStates) _menus.get(i)).showAllMenus();
 		}
 	}
 }

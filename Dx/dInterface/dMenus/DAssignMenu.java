@@ -1,7 +1,6 @@
 /**
  * Created on Feb 16, 2006
  * 
- * TODO To change the class description for this generated file
  * 
  * Title: DAssignMenu.java 
  * Description:
@@ -28,12 +27,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import dConstants.DConst;
-
 import dInterface.DApplication;
-
-import dInterface.dAffectation.PartialTTStructureCmd;
-
-import dInterface.dTimeTable.ManualImprovementCmd;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -97,7 +91,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class AAListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.assignActivities();
 			}
 		}
 		ActionListener assignActivitiesListener = new AAListener();
@@ -114,7 +108,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class ASListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.assignSections();
 			}
 		}
 		ActionListener assignSectionsListener = new ASListener();
@@ -131,7 +125,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class IAListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.instructorAvailability();
 			}
 		}
 		ActionListener instructorAvailabilityListener = new IAListener();
@@ -149,7 +143,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class RAListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.roomAvailability();
 			}
 		}
 		ActionListener roomsAvailabilityListener = new RAListener();
@@ -166,7 +160,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class AEListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.assignEvents();
 			}
 		}
 		ActionListener assignEventsListener = new AEListener();
@@ -183,7 +177,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class SVListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.selectiveViews();
 			}
 		}
 		ActionListener _selectiveViewsListener = new SVListener();
@@ -200,7 +194,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		class CEListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.conflictOfAnEvent();
 			}
 		}
 		ActionListener conflicsOfAnEventListener = new CEListener();
@@ -214,8 +208,14 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_assignActivities.setEnabled(false);
+		_assignSections.setEnabled(false);
+		_instructorAvailability.setEnabled(false);
+		_roomsAvailability.setEnabled(false);
+		_assignEvents.setEnabled(false);
+		_selectiveViews.setEnabled(false);
+		_conflicsOfAnEvent.setEnabled(false);
 	}
 
 	/*
@@ -224,8 +224,14 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_assignActivities.setEnabled(false);
+		_assignSections.setEnabled(false);
+		_instructorAvailability.setEnabled(false);
+		_roomsAvailability.setEnabled(false);
+		_assignEvents.setEnabled(false);
+		_selectiveViews.setEnabled(false);
+		_conflicsOfAnEvent.setEnabled(false);
 	}
 
 	/*
@@ -234,18 +240,14 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
-	 */
-	public void afterInitialAssign() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_assignActivities.setEnabled(false);
+		_assignSections.setEnabled(false);
+		_instructorAvailability.setEnabled(false);
+		_roomsAvailability.setEnabled(false);
+		_assignEvents.setEnabled(false);
+		_selectiveViews.setEnabled(false);
+		_conflicsOfAnEvent.setEnabled(false);
 	}
 
 	/*
@@ -254,8 +256,14 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_assignActivities.setEnabled(false);
+		_assignSections.setEnabled(false);
+		_instructorAvailability.setEnabled(false);
+		_roomsAvailability.setEnabled(false);
+		_assignEvents.setEnabled(false);
+		_selectiveViews.setEnabled(false);
+		_conflicsOfAnEvent.setEnabled(false);
 	}
 
 	/*
@@ -264,8 +272,46 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
-		// TODO Auto-generated method stub
+		this.setEnabled(false);
+		_assignActivities.setEnabled(false);
+		_assignSections.setEnabled(false);
+		_instructorAvailability.setEnabled(false);
+		_roomsAvailability.setEnabled(false);
+		_assignEvents.setEnabled(false);
+		_selectiveViews.setEnabled(false);
+		_conflicsOfAnEvent.setEnabled(false);
+	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
+	 */
+	public void afterInitialAssignment() {
+		this.setEnabled(true);
+		_assignActivities.setEnabled(true);
+		_assignSections.setEnabled(true);
+		_instructorAvailability.setEnabled(true);
+		_roomsAvailability.setEnabled(true);
+		_assignEvents.setEnabled(true);
+		_selectiveViews.setEnabled(true);
+		_conflicsOfAnEvent.setEnabled(true);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see dInterface.dMenus.MenuStates#showAllMenus()
+	 */
+	public void showAllMenus() {
+		this.setEnabled(true);
+		_assignActivities.setEnabled(true);
+		_assignSections.setEnabled(true);
+		_instructorAvailability.setEnabled(true);
+		_roomsAvailability.setEnabled(true);
+		_assignEvents.setEnabled(true);
+		_selectiveViews.setEnabled(true);
+		_conflicsOfAnEvent.setEnabled(true);
 	}
 
 }

@@ -3,7 +3,7 @@
  * 
  * TODO To change the class description for this generated file
  * 
- * Title: DOptimisationMenu.java 
+ * Title: DHelpMenu.java 
  * Description:
  *
  * Copyright (c) 2001 by rgr.
@@ -31,100 +31,59 @@ import dConstants.DConst;
 import dInterface.DApplication;
 
 /**
- * Ruben Gonzalez-Rubio
+ * @author : Ruben Gonzalez-Rubio
  *
- * Description: DOptimisationMenu.java is a class used to: 
+ * Description: DHelpMenu.java is a class used to: 
  * <p>
  *
  */
-public class DOptimisationMenu extends JMenu implements MenuStates {
-
+public class DHelpMenu extends JMenu implements MenuStates {
+	
 	private DApplication _dApplication;
 
-	private JMenuItem _initialAssignment;
+	private JMenuItem _about;
 
-	private JMenuItem _doOptimization;
-
-	private JMenuItem _doSectionPartition;
 
 	/**
 	 * @param application 
 	 * @param bar 
 	 * 
 	 */
-	public DOptimisationMenu(DxMenuBar bar, DApplication dApplication) {
-		super(DConst.OPTIMIZATION);
-		_dApplication = dApplication;
+	public DHelpMenu(DxMenuBar bar, DApplication application) {
+		super(DConst.HELP);
+		_dApplication = application;
 		setFont(DxMenuBar.DxMB_FONT);
 		bar.add(this);
 		buildMenu();
 	}
 
 	private void buildMenu() {
-		buildInitialAssignment();
-		buildDoTheTimeTable();
-		buildDoSectionPartition();
+		buildHelp();
 	}
-
+	
 	/**
 	 * 
 	 */
-	private void buildInitialAssignment() {
-		_initialAssignment = new JMenuItem(DConst.M_INITIAL_ASSIGN);
-		_initialAssignment.setFont(DxMenuBar.DxMB_FONT);
-		class IAListener implements ActionListener {
-			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
-				_dApplication.initialAssignment();
-			}
-		}
-		ActionListener initialAssignmentListener = new IAListener();
-		_initialAssignment.addActionListener(initialAssignmentListener);
-		this.add(_initialAssignment);
-	} // end buildInitialAssignment
-
-	/**
-	 * 
-	 */
-	private void buildDoTheTimeTable() {
-		_doOptimization = new JMenuItem(DConst.FIRSTALGORITHM);
-		_doOptimization.setFont(DxMenuBar.DxMB_FONT);
+	private void buildHelp() {
+		_about = new JMenuItem(DConst.ABOUT_M);
+		_about.setFont(DxMenuBar.DxMB_FONT);
 		class ExitListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
-				_dApplication.doTheTimeTable();
+				_dApplication.exit();
 			}
 		}
-		ActionListener exitlistener = new ExitListener();
-		_doOptimization.addActionListener(exitlistener);
-		this.add(_doOptimization);
-	} // end buildExit
-
-	/**
-	 * 
-	 */
-	private void buildDoSectionPartition() {
-		_doSectionPartition = new JMenuItem(DConst.SECTION_PARTITION);
-		_doSectionPartition.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
-			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
-				_dApplication.doSectionPartition();
-			}
-		}
-		ActionListener exitlistener = new ExitListener();
-		_doSectionPartition.addActionListener(exitlistener);
-		this.add(_doSectionPartition);
+		ActionListener exitListener = new ExitListener();
+		_about.addActionListener(exitListener);
+		this.add(_about);
 	} // end buildExit
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
-		this.setEnabled(false);
-		_initialAssignment.setEnabled(false);
-		_doOptimization.setEnabled(false);
-		_doSectionPartition.setEnabled(false);
+		// TODO Auto-generated method stub
+		
 	}
 
 	/* (non-Javadoc)
@@ -132,7 +91,7 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 */
 	public void afterNewTTable() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -140,7 +99,7 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 */
 	public void afterNewTTStruc() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -148,7 +107,7 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 */
 	public void afterInitialAssign() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -156,7 +115,7 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 */
 	public void afterOpenTTSruc() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -164,7 +123,7 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 */
 	public void afterImport() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
@@ -172,16 +131,15 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 */
 	public void afterInitialAssignment() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#showAllMenus()
 	 */
 	public void showAllMenus() {
-		this.setEnabled(true);
-		_initialAssignment.setEnabled(true);
-		_doOptimization.setEnabled(true);
-		_doSectionPartition.setEnabled(true);
+		// TODO Auto-generated method stub
+		
 	}
+
 }

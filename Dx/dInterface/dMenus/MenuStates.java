@@ -35,10 +35,12 @@ public interface MenuStates {
 	
 	public void afterNewTTStruc();
 
-	public void afterInitialAssign();
-
 	public void afterOpenTTSruc();
 
 	public void afterImport(); // ready for initial Assignment
+	
+	public void afterInitialAssignment();
+
+	public void showAllMenus();
 
 }

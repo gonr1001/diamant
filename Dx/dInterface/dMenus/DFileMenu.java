@@ -317,8 +317,8 @@ public class DFileMenu extends JMenu implements MenuStates {
 				_dApplication.exit();
 			}
 		}
-		ActionListener exitlistener = new ExitListener();
-		_exit.addActionListener(exitlistener);
+		ActionListener exitListener = new ExitListener();
+		_exit.addActionListener(exitListener);
 		this.add(_exit);
 	} // end buildExit
 
@@ -386,27 +386,6 @@ public class DFileMenu extends JMenu implements MenuStates {
 	}
 
 	/* (non-Javadoc)
-	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
-	 */
-	public void afterInitialAssign() {
-		_newTTable.setEnabled(false);
-		_newTTableCycle.setEnabled(false);
-		_newTTableExam.setEnabled(false);
-		_newTTStruc.setEnabled(false);
-		_newTTStrucCycle.setEnabled(false);
-		_newTTStrucExam.setEnabled(false);
-		_openTTable.setEnabled(false);
-		_openTTStruc.setEnabled(false);
-		_close.setEnabled(true);
-		_save.setEnabled(true);
-		_saveAs.setEnabled(true);
-		_defineFiles.setEnabled(true);
-		_import.setEnabled(false);
-		_export.setEnabled(true);
-		_exit.setEnabled(true);
-	}
-
-	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
@@ -445,6 +424,48 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_defineFiles.setEnabled(true);
 		_import.setEnabled(false);
 		_export.setEnabled(false);
+		_exit.setEnabled(true);
+	}
+
+	/* (non-Javadoc)
+	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
+	 */
+	public void afterInitialAssignment() {
+		_newTTable.setEnabled(false);
+		_newTTableCycle.setEnabled(false);
+		_newTTableExam.setEnabled(false);
+		_newTTStruc.setEnabled(false);
+		_newTTStrucCycle.setEnabled(false);
+		_newTTStrucExam.setEnabled(false);
+		_openTTable.setEnabled(false);
+		_openTTStruc.setEnabled(false);
+		_close.setEnabled(true);
+		_save.setEnabled(false);
+		_saveAs.setEnabled(false);
+		_defineFiles.setEnabled(true);
+		_import.setEnabled(false);
+		_export.setEnabled(false);
+		_exit.setEnabled(true);
+	}
+
+	/* (non-Javadoc)
+	 * @see dInterface.dMenus.MenuStates#showAllMenus()
+	 */
+	public void showAllMenus() {
+		_newTTable.setEnabled(true);
+		_newTTableCycle.setEnabled(true);
+		_newTTableExam.setEnabled(true);
+		_newTTStruc.setEnabled(true);
+		_newTTStrucCycle.setEnabled(true);
+		_newTTStrucExam.setEnabled(true);
+		_openTTable.setEnabled(true);
+		_openTTStruc.setEnabled(true);
+		_close.setEnabled(true);
+		_save.setEnabled(true);
+		_saveAs.setEnabled(true);
+		_defineFiles.setEnabled(true);
+		_import.setEnabled(true);
+		_export.setEnabled(true);
 		_exit.setEnabled(true);
 	}
 
