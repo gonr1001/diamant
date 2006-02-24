@@ -38,11 +38,10 @@ import dInterface.DApplication;
  *
  */
 public class DHelpMenu extends JMenu implements MenuStates {
-	
+
 	private DApplication _dApplication;
 
 	private JMenuItem _about;
-
 
 	/**
 	 * @param application 
@@ -60,7 +59,7 @@ public class DHelpMenu extends JMenu implements MenuStates {
 	private void buildMenu() {
 		buildHelp();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -70,7 +69,7 @@ public class DHelpMenu extends JMenu implements MenuStates {
 		class ExitListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
-				_dApplication.exit();
+				_dApplication.showAboutDlg();
 			}
 		}
 		ActionListener exitListener = new ExitListener();
@@ -82,64 +81,57 @@ public class DHelpMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
-		// TODO Auto-generated method stub
-		
+		// empty	
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
-		// TODO Auto-generated method stub
-		
+		// empty	
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
-		// TODO Auto-generated method stub
-		
+		// empty	
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
 	 */
 	public void afterInitialAssign() {
-		// TODO Auto-generated method stub
-		
+		// empty	
+
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
-		// TODO Auto-generated method stub
-		
+		// empty
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
-		// TODO Auto-generated method stub
-		
+		// empty
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
-		// TODO Auto-generated method stub
-		
+		// empty
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#showAllMenus()
 	 */
 	public void showAllMenus() {
-		// TODO Auto-generated method stub
-		
+		// empty
 	}
 
 }

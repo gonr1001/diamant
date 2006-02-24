@@ -66,9 +66,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 
 	private JMenuItem _defineFiles;
 
-	private JMenuItem _import; 
+	private JMenuItem _import;
 
-	private JMenuItem _export; 
+	private JMenuItem _export;
 
 	private JMenuItem _exit;
 

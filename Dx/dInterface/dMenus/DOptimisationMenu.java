@@ -1,7 +1,6 @@
 /**
  * Created on Feb 16, 2006
  * 
- * TODO To change the class description for this generated file
  * 
  * Title: DOptimisationMenu.java 
  * Description:
@@ -131,16 +130,19 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_initialAssignment.setEnabled(false);
+		_doOptimization.setEnabled(false);
+		_doSectionPartition.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
-		// TODO Auto-generated method stub
-
+		_initialAssignment.setEnabled(false);
+		_doOptimization.setEnabled(false);
+		_doSectionPartition.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
@@ -155,15 +157,20 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_initialAssignment.setEnabled(false);
+		_doOptimization.setEnabled(false);
+		_doSectionPartition.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
-		// TODO Auto-generated method stub
+		this.setEnabled(true);
+		_initialAssignment.setEnabled(true);
+		_doOptimization.setEnabled(false);
+		_doSectionPartition.setEnabled(false);
 
 	}
 
@@ -171,8 +178,10 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(true);
+		_initialAssignment.setEnabled(false);
+		_doOptimization.setEnabled(true);
+		_doSectionPartition.setEnabled(true);
 	}
 
 	/* (non-Javadoc)

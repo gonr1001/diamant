@@ -52,6 +52,8 @@ import dInterface.dTimeTable.OpenTTDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsTTDlg;
 import dInterface.dUtil.AboutDlg;
+import dInterface.dUtil.ConflictDlg;
+import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.AvailabiltyDialog;
 import dInterface.dAffectation.EventsDlg;
@@ -412,13 +414,6 @@ public class DApplication implements ActionListener {
 	/**
 	 * 
 	 */
-	public void showAboutDlg() {
-		new AboutDlg(this);
-	}
-
-	/**
-	 * 
-	 */
 	public void newTTableCycle() {
 		new NewTTDlg(this, DConst.CYCLE);
 	}
@@ -653,14 +648,16 @@ public class DApplication implements ActionListener {
 	 */
 	public void doSectionPartition() {
 		boolean _userTestActiv = true;
-	
-		DConst.USER_TEST_ACTIV= _userTestActiv;
+
+		DConst.USER_TEST_ACTIV = _userTestActiv;
 		//new PersonalizeMixingAlgorithmDlg();
-		PersonalizeMixingAlgorithmDlg perso= new PersonalizeMixingAlgorithmDlg(DConst.DEFAULT_MIX_ALGO);
-		String input= perso.showInputDialog();
-		if(input!=null){
-			int personalizeAcceptableVariation=Integer.parseInt(input);
-			(new SelectAlgorithm(personalizeAcceptableVariation,this.getDModel())).execute();
+		PersonalizeMixingAlgorithmDlg perso = new PersonalizeMixingAlgorithmDlg(
+				DConst.DEFAULT_MIX_ALGO);
+		String input = perso.showInputDialog();
+		if (input != null) {
+			int personalizeAcceptableVariation = Integer.parseInt(input);
+			(new SelectAlgorithm(personalizeAcceptableVariation, this
+					.getDModel())).execute();
 			new InformationDlg(this.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
 		}
 
@@ -671,6 +668,51 @@ public class DApplication implements ActionListener {
 	 */
 	public void report() {
 		new ReportsDlg(this);
+	}
+
+	/**
+	 * 
+	 */
+	public void showPLAFDlg() {
+		new PLAFDlg(this);
+	}
+
+	/**
+	 * 
+	 */
+	public void showConflictsDlg() {
+		new ConflictDlg(this);
+	}
+
+	/**
+	 * 
+	 */
+	public void simpleView() {
+		if (this.getDMediator().getCurrentDoc() != null)
+			this.getDMediator().getCurrentDoc().displaySimple();
+	}
+
+	/**
+	 * 
+	 */
+	public void horizontalSplitView() {
+		if (this.getDMediator().getCurrentDoc() != null)
+			this.getDMediator().getCurrentDoc().displayHorizontalSplit();
+	}
+
+	/**
+	 * 
+	 */
+	public void vericalSplitview() {
+		if (this.getDMediator().getCurrentDoc() != null)
+			this.getDMediator().getCurrentDoc().displayVericalSplit();
+	}
+
+	/**
+	 * 
+	 */
+	public void showAboutDlg() {
+		new AboutDlg(this);
 	}
 
 	/**

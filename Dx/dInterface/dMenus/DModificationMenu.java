@@ -165,48 +165,66 @@ public class DModificationMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_modifyActivity.setEnabled(false);
+		_specialImport.setEnabled(false);
+		_mergeInstructors.setEnabled(false);
+		_mergeRooms.setEnabled(false);
+		_mergeActivities.setEnabled(false);
+		_mergeStudents.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_modifyActivity.setEnabled(false);
+		_specialImport.setEnabled(false);
+		_mergeInstructors.setEnabled(false);
+		_mergeRooms.setEnabled(false);
+		_mergeActivities.setEnabled(false);
+		_mergeStudents.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
-	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
-	 */
-	public void afterInitialAssign() {
-		// TODO Auto-generated method stub
-
-	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_modifyActivity.setEnabled(false);
+		_specialImport.setEnabled(false);
+		_mergeInstructors.setEnabled(false);
+		_mergeRooms.setEnabled(false);
+		_mergeActivities.setEnabled(false);
+		_mergeStudents.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(false);
+		_modifyActivity.setEnabled(false);
+		_specialImport.setEnabled(false);
+		_mergeInstructors.setEnabled(false);
+		_mergeRooms.setEnabled(false);
+		_mergeActivities.setEnabled(false);
+		_mergeStudents.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
-		// TODO Auto-generated method stub
-
+		this.setEnabled(true);
+		_modifyActivity.setEnabled(true);
+		_specialImport.setEnabled(true);
+		_mergeInstructors.setEnabled(true);
+		_mergeRooms.setEnabled(true);
+		_mergeActivities.setEnabled(true);
+		_mergeStudents.setEnabled(true);
 	}
 
 	/* (non-Javadoc)
