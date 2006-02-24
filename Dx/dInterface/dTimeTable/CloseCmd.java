@@ -1,6 +1,6 @@
 /**
  *
- * Title: CloseCmd $Revision: 1.6 $  $Date: 2005-04-19 20:37:44 $
+ * Title: CloseCmd $Revision: 1.7 $  $Date: 2006-02-24 00:05:57 $
  * Description: CloseCmd is a class used to close a
  *  			document
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -31,7 +31,11 @@ public class CloseCmd implements Command {
   public void execute(DApplication dApplic) {
     dApplic.getDMediator().closeCurrentDoc();
     if(!dApplic.getDMediator().getCancel()) {
-      dApplic.getMenuBar().postCloseCmd();
+    	if (dApplic.isInDevelopment()) {
+			dApplic.initialState();
+		} else {
+			dApplic.getMenuBar().postCloseCmd();
+		}
     }
   } // end execute
 } /* end CloseCmd class */
