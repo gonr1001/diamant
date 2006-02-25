@@ -22,7 +22,6 @@ package dInterface.dMenus;
 
 import java.awt.Font;
 import java.util.Vector;
-
 import javax.swing.JMenuBar;
 
 import dInterface.DApplication;

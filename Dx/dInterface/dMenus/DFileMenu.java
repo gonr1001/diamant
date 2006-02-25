@@ -190,8 +190,6 @@ public class DFileMenu extends JMenu implements MenuStates {
 	private void buildOpenTTStuct() {
 		_openTTStruc = new JMenuItem(DConst.OPEN_TTS);
 		_openTTStruc.setFont(DxMenuBar.DxMB_FONT);
-		// _openTTStruc.setCommand(new OpenTTSCmd());
-		// _openTTStruc.addActionListener(_dApplic);
 		class OpenTTStrucListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
