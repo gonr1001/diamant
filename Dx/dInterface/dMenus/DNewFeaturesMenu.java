@@ -1,7 +1,7 @@
 /**
  * Created on Feb 16, 2006
  * 
- * TODO To change the class description for this generated file
+ * 
  * 
  * Title: DNewFeaturesMenu.java 
  * Description:
@@ -38,19 +38,18 @@ import dInterface.DApplication;
  *
  */
 public class DNewFeaturesMenu extends JMenu implements MenuStates {
-	
-	private DApplication _dApplication;
-	
-	private JMenuItem _test1;
-	
-	private JMenu _test2;
-	
-	private JMenuItem _test2_1;
-	
-	private JMenuItem _test2_2;
-	
-	private JMenuItem _test2_3;
 
+	private DApplication _dApplication;
+
+	private JMenuItem _test1;
+
+	private JMenu _test2;
+
+	private JMenuItem _test2_1;
+
+	private JMenuItem _test2_2;
+
+	private JMenuItem _test2_3;
 
 	/**
 	 * @param application 
@@ -70,7 +69,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		this.addSeparator();
 		buildTest2();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -133,79 +132,109 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		ActionListener test2_3Listener = new Test2_3Listener();
 		_test2_3.addActionListener(test2_3Listener);
 		_test2.add(_test2_3);
-		
-		
+
 		this.add(_test2);
-		
+
 	} // end buildExit
-	
+
 	/**
 	 * 
 	 */
-	
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_test1.setEnabled(false);
+		_test2.setEnabled(false);
+		_test2_1.setEnabled(false);
+		_test2_2.setEnabled(false);
+		_test2_3.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_test1.setEnabled(false);
+		_test2.setEnabled(false);
+		_test2_1.setEnabled(false);
+		_test2_2.setEnabled(false);
+		_test2_3.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_test1.setEnabled(false);
+		_test2.setEnabled(false);
+		_test2_1.setEnabled(false);
+		_test2_2.setEnabled(false);
+		_test2_3.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
 	 */
 	public void afterInitialAssign() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_test1.setEnabled(false);
+		_test2.setEnabled(false);
+		_test2_1.setEnabled(false);
+		_test2_2.setEnabled(false);
+		_test2_3.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_test1.setEnabled(false);
+		_test2.setEnabled(false);
+		_test2_1.setEnabled(false);
+		_test2_2.setEnabled(false);
+		_test2_3.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_test1.setEnabled(false);
+		_test2.setEnabled(false);
+		_test2_1.setEnabled(false);
+		_test2_2.setEnabled(false);
+		_test2_3.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(true);
+		_test1.setEnabled(true);
+		_test2.setEnabled(true);
+		_test2_1.setEnabled(true);
+		_test2_2.setEnabled(true);
+		_test2_3.setEnabled(true);
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#showAllMenus()
 	 */
 	public void showAllMenus() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(true);
+		_test1.setEnabled(true);
+		_test2.setEnabled(true);
+		_test2_1.setEnabled(true);
+		_test2_2.setEnabled(true);
+		_test2_3.setEnabled(true);
 	}
 
 }

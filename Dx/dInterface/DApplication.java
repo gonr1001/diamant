@@ -799,7 +799,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void eventAssignment() {
-		new EventsDlg(this,DConst.EVENTS_DLG_TITLE, true);
+		new EventsDlg(this, DConst.EVENTS_DLG_TITLE, true);
 	}
 
 	/**
@@ -807,7 +807,7 @@ public class DApplication implements ActionListener {
 	 */
 	public void conflictOption() {
 		new ConflictDlg(this);
-		
+
 	}
 
 } /* end class DApplication */
