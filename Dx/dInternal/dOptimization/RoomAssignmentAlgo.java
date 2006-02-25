@@ -144,7 +144,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 		int ADD_RESOURCE_BY_ID = 1;
 		int numberOfStudents;
 		for(int i = 0; i< eventsInPeriod.size(); i++){
-			String eventInPeriodName = ((Resource)eventsInPeriod.get(i)).getID();
+			String eventInPeriodName = ((DResource)eventsInPeriod.get(i)).getID();
 			EventAttach eventAttach = (EventAttach)soe.getResource(eventInPeriodName).getAttach();
 			if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED){
 				String actID = DXToolsMethods.getToken(eventInPeriodName, 

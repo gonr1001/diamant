@@ -46,6 +46,7 @@ import javax.swing.WindowConstants;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.CloseCmd;
+import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.ManualImprovementDlg;
 import dInterface.dTimeTable.NewTTDlg;
 import dInterface.dTimeTable.OpenTTDlg;
@@ -55,18 +56,21 @@ import dInterface.dUtil.AboutDlg;
 import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
+import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.AvailabiltyDialog;
 import dInterface.dAffectation.EventsDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dData.DefFilesToImportDlg;
 import dInterface.dData.ImportDlg;
+import dInterface.dData.ImportSelectiveFileDlg;
 import dInterface.dData.ReportsDlg;
 import dInterface.dMenus.DxMenuBar;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
 
 import dInternal.Preferences;
+import dInternal.dOptimization.RoomAssignmentAlgo;
 import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
@@ -494,8 +498,8 @@ public class DApplication implements ActionListener {
 		else if (this.getDMediator().getCurrentDoc().isModified())
 			this.getDMediator().saveCurrentDoc(
 					this.getDMediator().getCurrentDoc().getDocumentName());
-		//confirm dialog ?
-		//else not necessary to save
+		// confirm dialog ?
+		// else not necessary to save
 	}
 
 	/**
@@ -542,7 +546,7 @@ public class DApplication implements ActionListener {
 					+ DConst.CR_LF;
 			mess += "PAS d'exportation";
 			new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
-		} else { //if (fileStu.exists() || fileTT.exists())
+		} else { // if (fileStu.exists() || fileTT.exists())
 			this.getDModel().exportData(dir);
 			mess += dir + DConst.TT_STUD_FILE + DConst.CR_LF + dir
 					+ DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
@@ -553,6 +557,7 @@ public class DApplication implements ActionListener {
 
 	/**
 	 * return a token in from a stringtokenizer
+	 * 
 	 * @param str
 	 * @param delimiter
 	 * @param position
@@ -620,6 +625,41 @@ public class DApplication implements ActionListener {
 	/**
 	 * 
 	 */
+	public void modifyActivity() {
+		new ActivityModifDlg(this);
+	}
+
+	/**
+	 * 
+	 */
+	public void mergeInstructors() {
+		new ImportSelectiveFileDlg(this, DConst.IMP_SELECT_INST);
+	}
+
+	/**
+	 * 
+	 */
+	public void mergeRooms() {
+		new ImportSelectiveFileDlg(this, DConst.IMP_SELECT_ROOM);
+	}
+
+	/**
+	 * 
+	 */
+	public void mergeActivities() {
+		new ImportSelectiveFileDlg(this, DConst.IMP_SELECT_ACT);
+	}
+
+	/**
+	 * 
+	 */
+	public void mergeStudents() {
+		new ImportSelectiveFileDlg(this, DConst.IMP_SELECT_STUD);
+	}
+
+	/**
+	 * 
+	 */
 	public void initialAssignment() {
 		this.getDModel().initChangeInDModel(this.getJFrame());
 		this.getMenuBar().postInitialAssign();
@@ -650,7 +690,7 @@ public class DApplication implements ActionListener {
 		boolean _userTestActiv = true;
 
 		DConst.USER_TEST_ACTIV = _userTestActiv;
-		//new PersonalizeMixingAlgorithmDlg();
+		// new PersonalizeMixingAlgorithmDlg();
 		PersonalizeMixingAlgorithmDlg perso = new PersonalizeMixingAlgorithmDlg(
 				DConst.DEFAULT_MIX_ALGO);
 		String input = perso.showInputDialog();
@@ -738,6 +778,36 @@ public class DApplication implements ActionListener {
 	 */
 	public void showAllMenus() {
 		this.getDxMenuBar().showAllMenus();
+	}
+
+	/**
+	 * 
+	 */
+	public void conflictsOfAnEvent() {
+		new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
+	}
+
+	/**
+	 * 
+	 */
+	public void roomAssignment() {
+		new RoomAssignmentAlgo(this.getDModel());
+		new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+	}
+
+	/**
+	 * 
+	 */
+	public void eventAssignment() {
+		new EventsDlg(this,DConst.EVENTS_DLG_TITLE, true);
+	}
+
+	/**
+	 * 
+	 */
+	public void conflictOption() {
+		new ConflictDlg(this);
+		
 	}
 
 } /* end class DApplication */

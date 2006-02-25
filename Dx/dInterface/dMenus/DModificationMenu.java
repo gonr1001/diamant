@@ -80,7 +80,7 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		class MAListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.modifyActivity();
 			}
 		}
 		ActionListener modifyActivityListener = new MAListener();
@@ -101,7 +101,7 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		class MIListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.newTTableCycle();
+				_dApplication.mergeInstructors();
 			}
 		}
 		ActionListener mergeInstructorsListener = new MIListener();
@@ -113,7 +113,7 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		class MRListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.newTTableExam();
+				_dApplication.mergeRooms();
 			}
 		}
 		ActionListener mergeRoomslistener = new MRListener();
@@ -125,7 +125,7 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		class MAListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.newTTableExam();
+				_dApplication.mergeActivities();
 			}
 		}
 		ActionListener mergeActivitiesListener = new MAListener();
@@ -137,7 +137,7 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		class MSListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.newTTableExam();
+				_dApplication.mergeStudents();
 			}
 		}
 		ActionListener mergeStudentsListener = new MSListener();

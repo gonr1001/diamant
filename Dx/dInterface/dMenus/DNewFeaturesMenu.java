@@ -40,8 +40,18 @@ import dInterface.DApplication;
 public class DNewFeaturesMenu extends JMenu implements MenuStates {
 	
 	private DApplication _dApplication;
+	
+	private JMenuItem _test1;
+	
+	private JMenu _test2;
+	
+	private JMenuItem _test2_1;
+	
+	private JMenuItem _test2_2;
+	
+	private JMenuItem _test2_3;
 
-	private JMenuItem _about;
+
 	/**
 	 * @param application 
 	 * @param bar 
@@ -56,94 +66,84 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 	}
 
 	private void buildMenu() {
-		buildHelp();
+		buildTest1();
+		this.addSeparator();
+		buildTest2();
 	}
 	
 	/**
 	 * 
 	 */
-	private void buildHelp() {
-		_about = new JMenuItem(DConst.ABOUT_M);
-		_about.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
+	private void buildTest1() {
+		_test1 = new JMenuItem(DConst.CONFLICTS_OF_AN_EVENT);
+		_test1.setFont(DxMenuBar.DxMB_FONT);
+		class Test1Listener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
-				_dApplication.exit();
+				_dApplication.conflictsOfAnEvent();
 			}
 		}
-		ActionListener exitListener = new ExitListener();
-		_about.addActionListener(exitListener);
-		this.add(_about);
+		ActionListener test1Listener = new Test1Listener();
+		_test1.addActionListener(test1Listener);
+		this.add(_test1);
 	} // end buildExit
 
 	/**
 	 * 
 	 */
-	private void buildHelp1() {
-		_about = new JMenuItem(DConst.ABOUT_M);
-		_about.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
+	private void buildTest2() {
+		_test2 = new JMenu(DConst.ROOMASSIGN);
+		_test2.setFont(DxMenuBar.DxMB_FONT);
+
+		// Horaire cycle
+		_test2_1 = new JMenuItem(DConst.ROOMASSIGN);
+		_test2_1.setFont(DxMenuBar.DxMB_FONT);
+		class Test2_1Listener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
-				_dApplication.exit();
+				_dApplication.roomAssignment();
 			}
 		}
-		ActionListener exitListener = new ExitListener();
-		_about.addActionListener(exitListener);
-		this.add(_about);
+		ActionListener test2_1Listener = new Test2_1Listener();
+		_test2_1.addActionListener(test2_1Listener);
+		_test2.add(_test2_1);
+
+		// test2_2
+		_test2_2 = new JMenuItem(DConst.EVENTASSIGN);
+		_test2_2.setFont(DxMenuBar.DxMB_FONT);
+		class Test2_2Listener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); //to avoid warning;
+				_dApplication.eventAssignment();
+			}
+		}
+		ActionListener test2_2Listener = new Test2_2Listener();
+		_test2_2.addActionListener(test2_2Listener);
+		_test2.add(_test2_2);
+
+		// test2_3
+		_test2_3 = new JMenuItem(DConst.CONFLICTEFFECT);
+		_test2_3.setFont(DxMenuBar.DxMB_FONT);
+		class Test2_3Listener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); //to avoid warning;
+				_dApplication.showConflictsDlg();
+			}
+		}
+		ActionListener test2_3Listener = new Test2_3Listener();
+		_test2_3.addActionListener(test2_3Listener);
+		_test2.add(_test2_3);
+		
+		
+		this.add(_test2);
+		
 	} // end buildExit
 	
 	/**
 	 * 
 	 */
-	private void buildHelp2() {
-		_about = new JMenuItem(DConst.ABOUT_M);
-		_about.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
-			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
-				_dApplication.exit();
-			}
-		}
-		ActionListener exitListener = new ExitListener();
-		_about.addActionListener(exitListener);
-		this.add(_about);
-	} // end buildExit
 	
-	/**
-	 * 
-	 */
-	private void buildHelp3() {
-		_about = new JMenuItem(DConst.ABOUT_M);
-		_about.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
-			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
-				_dApplication.exit();
-			}
-		}
-		ActionListener exitListener = new ExitListener();
-		_about.addActionListener(exitListener);
-		this.add(_about);
-	} // end buildExit
-	
-	/**
-	 * 
-	 */
-	private void buildHelp4() {
-		_about = new JMenuItem(DConst.ABOUT_M);
-		_about.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
-			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
-				_dApplication.exit();
-			}
-		}
-		ActionListener exitListener = new ExitListener();
-		_about.addActionListener(exitListener);
-		this.add(_about);
-	} // end buildExit
-	
+
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
