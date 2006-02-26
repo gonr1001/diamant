@@ -109,6 +109,10 @@ public class DxMenuBar extends JMenuBar {
 		for (int i = 0; i < _menus.size(); i++) {
 			((MenuStates) _menus.get(i)).afterInitialAssignment();
 		}
+		
+//		updateMenuBar();
+//		setMenus();
+//		this.updateUI();
 	}
 
 	/**
@@ -120,14 +124,6 @@ public class DxMenuBar extends JMenuBar {
 		}
 	}
 	
-//	/**
-//	 * 
-//	 */
-//	public void afterClose() {
-//		for (int i = 0; i < _menus.size(); i++) {
-//			((MenuStates) _menus.get(i)).initialState();
-//		}
-//	}
 
 	/**
 	 * 

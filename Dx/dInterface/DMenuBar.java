@@ -35,7 +35,7 @@ import javax.swing.JMenuBar;
 
 
 import dConstants.DConst;
-import dDeveloper.MyFileCmd;
+
 import dDeveloper.ShowAllCmd;
 import dDeveloper.StateZeroCmd;
 import dInterface.dAffectation.ActivityCmd;
@@ -688,7 +688,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// Items in menu Development.
 		_myFile = new CmdMenu("fichier1.dia");
 		_myFile.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_myFile.setCommand(new MyFileCmd());
+	//	_myFile.setCommand(new MyFileCmd());
 		_myFile.addActionListener(_dApplic);
 		_dev.add(_myFile);
 
