@@ -79,63 +79,56 @@ public class DReportMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_report.setEnabled(false);		
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_report.setEnabled(false);	
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_report.setEnabled(false);	
 	}
 
-	/* (non-Javadoc)
-	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
-	 */
-	public void afterInitialAssign() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(false);
+		_report.setEnabled(false);		
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(true);
+		_report.setEnabled(true);		
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(true);
+		_report.setEnabled(true);		
 	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#showAllMenus()
 	 */
 	public void showAllMenus() {
-		// TODO Auto-generated method stub
-		
+		this.setEnabled(true);
+		_report.setEnabled(true);		
 	}
 }

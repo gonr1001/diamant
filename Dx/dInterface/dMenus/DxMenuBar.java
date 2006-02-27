@@ -22,6 +22,8 @@ package dInterface.dMenus;
 
 import java.awt.Font;
 import java.util.Vector;
+
+
 import javax.swing.JMenuBar;
 
 import dInterface.DApplication;
@@ -66,6 +68,7 @@ public class DxMenuBar extends JMenuBar {
 		v.add(new DModificationMenu(this, dApplication));
 		v.add(new DOptimisationMenu(this, dApplication));
 		v.add(new DReportMenu(this, dApplication));
+//		v.add(new DMultiSiteMenu(this,dApplication));
 		v.add(new DPreferencesMenu(this, dApplication));
 		v.add(new DHelpMenu(this, dApplication));
 		v.add(new DNewFeaturesMenu(this, dApplication));
@@ -82,6 +85,13 @@ public class DxMenuBar extends JMenuBar {
 		for (int i = 0; i < _menus.size(); i++) {
 			((MenuStates) _menus.get(i)).initialState();
 		}
+//		if (_multi != null) {
+//			for (int i = 0; i < this.getComponentCount(); i++) {
+//				JMenu comp = (JMenu) this.getComponent(i);
+//				if (comp.getText().equalsIgnoreCase(DConst.MULTI_SITE))
+//					this.remove(i);
+//			}
+//		}
 	}
 	/**
 	 * the Time table can be cycle or exam
@@ -142,4 +152,9 @@ public class DxMenuBar extends JMenuBar {
 			((MenuStates) _menus.get(i)).showAllMenus();
 		}
 	}
+	
+//	/**
+//	 * 
+//	 */
+//	private void remove
 }

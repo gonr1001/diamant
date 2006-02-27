@@ -810,4 +810,14 @@ public class DApplication implements ActionListener {
 
 	}
 
+	/**
+	 * 
+	 */
+	public boolean isMultiSite() {
+		if (this.getCurrentDoc() == null) {
+			return false;
+		}
+		return this.getDModel().isMultiSite();
+	}
+
 } /* end class DApplication */
