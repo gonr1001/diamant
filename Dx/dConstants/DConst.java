@@ -36,6 +36,7 @@ public class DConst {
 	
 	public final static String FILE_VER_NAME1_5 = res.getString("fileVerName1_5"); // "Diamant1.5" 
 	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6" 
+	public final static String FILE_VER_NAME1_6_1 = res.getString("fileVerName1_6_1"); // "Diamant1.6.1" 
 	public final static String FILE_VER_NAME_XML1_7 = res.getString("fileVerNameXML1_7"); // "DiamantXML1.7" 
 	
 	

@@ -50,11 +50,10 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DDevelopmentMenu(DxMenuBar bar, DApplication application) {
+	public DDevelopmentMenu(DApplication application) {
 		super("Development");
 		_dApplication = application;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

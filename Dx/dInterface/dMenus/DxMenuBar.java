@@ -21,13 +21,12 @@
 package dInterface.dMenus;
 
 import java.awt.Font;
-import java.util.Vector;
 
-
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
+import dConstants.DConst;
 import dInterface.DApplication;
-
 
 /**
  * Ruben Gonzalez-Rubio
@@ -37,6 +36,8 @@ import dInterface.DApplication;
  * 
  */
 public class DxMenuBar extends JMenuBar {
+	
+	private final int NO_CHANGE_MENUS = 3;
 
 	private static final String cMFONT = "Dialog";
 
@@ -47,114 +48,126 @@ public class DxMenuBar extends JMenuBar {
 	public static final Font DxMB_FONT = new java.awt.Font(cMFONT, cFONT,
 			cNPT11);
 
-	private Vector _menus;
+	private DApplication _dApplication;
 
 	/**
 	 * 
 	 */
 	public DxMenuBar(DApplication dApplication) {
 		super();
-		_menus = buildMenuBar(dApplication);
-		setInitialState();
+		_dApplication = dApplication;
+		buildMenuBar(_dApplication);
+		initialState();
 	}
 
 	/**
 	 * 
 	 */
-	private Vector buildMenuBar(DApplication dApplication) {
-		Vector v = new Vector();
-		v.add(new DFileMenu(this, dApplication));
-		v.add(new DAssignMenu(this, dApplication));
-		v.add(new DModificationMenu(this, dApplication));
-		v.add(new DOptimisationMenu(this, dApplication));
-		v.add(new DReportMenu(this, dApplication));
-//		v.add(new DMultiSiteMenu(this,dApplication));
-		v.add(new DPreferencesMenu(this, dApplication));
-		v.add(new DHelpMenu(this, dApplication));
-		v.add(new DNewFeaturesMenu(this, dApplication));
-		if (dApplication.isInDevelopment()){
-			v.add(new DDevelopmentMenu(this, dApplication));
+	public void initialState() {
+		if (this.getMenuCount() != 0) {
+			for (int i = 0; i < this.getComponentCount(); i++) {
+				JMenu comp = (JMenu) this.getComponent(i);
+				if (comp.getText().equalsIgnoreCase(DConst.MULTI_SITE))
+					this.remove(i);
+			}
 		}
-		return v;
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).initialState();
+		}
+		this.updateUI();
 	}
 
-	/**
-	 * 
-	 */
-	public void setInitialState() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).initialState();
-		}
-//		if (_multi != null) {
-//			for (int i = 0; i < this.getComponentCount(); i++) {
-//				JMenu comp = (JMenu) this.getComponent(i);
-//				if (comp.getText().equalsIgnoreCase(DConst.MULTI_SITE))
-//					this.remove(i);
-//			}
-//		}
-	}
 	/**
 	 * the Time table can be cycle or exam
 	 */
 	public void afterNewTTable() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).afterNewTTable();
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).afterNewTTable();
 		}
+		this.updateUI();
 	}
 
 	/**
 	 * 
 	 */
 	public void afterNewTTStruc() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).afterNewTTStruc();
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).afterNewTTStruc();
 		}
+		this.updateUI();
 	}
-
 
 	/**
 	 * 
 	 */
 	public void afterInitialAssignment() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).afterInitialAssignment();
+		if (_dApplication.isMultiSite()) {
+			addMultiSiteToMenuBar();
 		}
-		
-//		updateMenuBar();
-//		setMenus();
-//		this.updateUI();
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).afterInitialAssignment();
+		}
+		this.updateUI();
 	}
 
 	/**
 	 * 
 	 */
 	public void afterOpenTTSruc() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).afterOpenTTSruc();
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).afterOpenTTSruc();
 		}
 	}
-	
 
 	/**
 	 * 
 	 */
 	public void afterImport() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).afterImport();
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).afterImport();
+		}
+	}
+
+	/**
+	 * 
+	 */
+	public void showAllMenus() {
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).showAllMenus();
 		}
 	}
 	
 	/**
 	 * 
 	 */
-	public void showAllMenus() {
-		for (int i = 0; i < _menus.size(); i++) {
-			((MenuStates) _menus.get(i)).showAllMenus();
+	private void buildMenuBar(DApplication dApplication) {
+		this.add(new DFileMenu(dApplication));
+		this.add(new DAssignMenu(dApplication));
+		this.add(new DModificationMenu(dApplication));
+		this.add(new DOptimisationMenu(dApplication));
+		this.add(new DReportMenu(dApplication));
+		this.add(new DPreferencesMenu(dApplication));
+		this.add(new DHelpMenu(dApplication));
+		this.add(new DNewFeaturesMenu(dApplication));
+		if (_dApplication.isInDevelopment()) {
+			this.add(new DDevelopmentMenu(dApplication));
 		}
-	}
-	
-//	/**
-//	 * 
-//	 */
-//	private void remove
-}
+	} // end buildMenuBar
+
+	/**
+	 * 
+	 */
+	private void addMultiSiteToMenuBar() {
+			for (int i = this.getMenuCount() - 1; i > NO_CHANGE_MENUS; i--) {
+				this.remove(i);
+			}
+			this.add(new DMultiSiteMenu(_dApplication));
+			this.add(new DReportMenu(_dApplication));
+			this.add(new DPreferencesMenu(_dApplication));
+			this.add(new DHelpMenu(_dApplication));
+			this.add(new DNewFeaturesMenu(_dApplication));
+			if (_dApplication.isInDevelopment()) {
+				this.add(new DDevelopmentMenu(_dApplication));
+			}
+	}// end addMultiSiteToMenuBar
+} // end DxMenuBar

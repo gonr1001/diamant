@@ -48,11 +48,10 @@ public class DHelpMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DHelpMenu(DxMenuBar bar, DApplication application) {
+	public DHelpMenu(DApplication application) {
 		super(DConst.HELP);
 		_dApplication = application;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 
@@ -75,7 +74,7 @@ public class DHelpMenu extends JMenu implements MenuStates {
 		ActionListener exitListener = new ExitListener();
 		_about.addActionListener(exitListener);
 		this.add(_about);
-	} // end buildExit
+	} // end buildHelp
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#initialState()

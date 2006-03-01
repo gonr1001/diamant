@@ -51,11 +51,10 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DOptimisationMenu(DxMenuBar bar, DApplication dApplication) {
+	public DOptimisationMenu(DApplication dApplication) {
 		super(DConst.OPTIMIZATION);
 		_dApplication = dApplication;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

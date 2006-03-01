@@ -58,11 +58,10 @@ public class DModificationMenu extends JMenu implements MenuStates {
 	 * @param bar
 	 * 
 	 */
-	public DModificationMenu(DxMenuBar bar, DApplication application) {
+	public DModificationMenu(DApplication application) {
 		super(DConst.MODIFICATION);
 		_dApplication = application;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

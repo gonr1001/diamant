@@ -58,11 +58,10 @@ public class DPreferencesMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DPreferencesMenu(DxMenuBar bar, DApplication application) {
+	public DPreferencesMenu(DApplication application) {
 		super(DConst.PREF);
 		_dApplication = application;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

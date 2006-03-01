@@ -56,11 +56,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DNewFeaturesMenu(DxMenuBar bar, DApplication application) {
+	public DNewFeaturesMenu(DApplication application) {
 		super(DConst.IN_TEST);
 		_dApplication = application;
-		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

@@ -47,11 +47,10 @@ public class DReportMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DReportMenu(DxMenuBar bar, DApplication dApplication) {
+	public DReportMenu(DApplication dApplication) {
 		super(DConst.REPORT_M);
 		_dApplication = dApplication;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

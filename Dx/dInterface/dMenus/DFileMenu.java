@@ -77,11 +77,10 @@ public class DFileMenu extends JMenu implements MenuStates {
 	 * @param bar 
 	 * 
 	 */
-	public DFileMenu(DxMenuBar bar, DApplication dApplication) {
+	public DFileMenu(DApplication dApplication) {
 		super(DConst.M_FILE);
 		_dApplication = dApplication;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

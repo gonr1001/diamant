@@ -59,11 +59,10 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	 * @param bar
 	 * 
 	 */
-	public DAssignMenu(DxMenuBar bar, DApplication dApplication) {
+	public DAssignMenu(DApplication dApplication) {
 		super(DConst.M_ASSIGN);
 		_dApplication = dApplication;
 		setFont(DxMenuBar.DxMB_FONT);
-		bar.add(this);
 		buildMenu();
 	}
 

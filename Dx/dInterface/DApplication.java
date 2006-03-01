@@ -484,7 +484,7 @@ public class DApplication implements ActionListener {
 	public void close() {
 		this.getDMediator().closeCurrentDoc();
 		if (!this.getDMediator().getCancel()) {
-			this.getDxMenuBar().setInitialState();
+			this.getDxMenuBar().initialState();
 		}
 	}
 
@@ -662,7 +662,12 @@ public class DApplication implements ActionListener {
 	 */
 	public void initialAssignment() {
 		this.getDModel().initChangeInDModel(this.getJFrame());
-		this.getMenuBar().postInitialAssign();
+		
+		if(this.isInDevelopment()){
+			this.getDxMenuBar().afterInitialAssignment();
+		} else {
+			this.getMenuBar().postInitialAssign();
+		}
 		new InformationDlg(this.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
 	}
 
@@ -770,7 +775,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void initialState() {
-		this.getDxMenuBar().setInitialState();
+		this.getDxMenuBar().initialState();
 	}
 
 	/**

@@ -946,7 +946,7 @@ public class DModel extends Observable {
             if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
                 getSetOfActivities().buildStudentRegisteredList(
                         getSetOfStudents());
-            //_conditionTest = new TestConditions(this);
+            _conditionTest = new TestConditions(this);
         }// end if (_setOfActivities!=null)
 
     }
