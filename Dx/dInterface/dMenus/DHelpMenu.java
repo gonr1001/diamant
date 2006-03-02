@@ -1,10 +1,8 @@
 /**
  * Created on Feb 16, 2006
  * 
- * TODO To change the class description for this generated file
  * 
  * Title: DHelpMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -35,6 +33,8 @@ import dInterface.DApplication;
  *
  * Description: DHelpMenu.java is a class used to: 
  * <p>
+ * Build the DHelp Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  *
  */
 public class DHelpMenu extends JMenu implements MenuStates {
@@ -65,14 +65,14 @@ public class DHelpMenu extends JMenu implements MenuStates {
 	private void buildHelp() {
 		_about = new JMenuItem(DConst.ABOUT_M);
 		_about.setFont(DxMenuBar.DxMB_FONT);
-		class ExitListener implements ActionListener {
+		class HelpListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
 				_dApplication.showAboutDlg();
 			}
 		}
-		ActionListener exitListener = new ExitListener();
-		_about.addActionListener(exitListener);
+		ActionListener aboutListener = new HelpListener();
+		_about.addActionListener(aboutListener);
 		this.add(_about);
 	} // end buildHelp
 

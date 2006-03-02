@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 	/**
 	*
-	* Title: DSaveDataTest $Revision $  $Date: 2005-03-08 16:00:45 $
+	* Title: DSaveDataTest $Revision $  $Date: 2006-03-02 23:01:09 $
 	* Description: DSaveDataTest is a class used to test the class 
 	*              DSaveData
 	*
@@ -17,7 +17,7 @@ package dTest.dInternal.dData;
 	* you entered into with rgr.
 	*
 	* @version $ $
-	* @author  $Author: syay1801 $
+	* @author  $Author: gonzrubi $
 	* @since JDK1.3
 	*/
 
@@ -61,8 +61,8 @@ package dTest.dInternal.dData;
 	  	_dm1= new DModel(_dDocument1,_fileName1,_type);
 	  	
 	  	_error = _a.saveTimeTable(_dm1.getTTStructure(),_dm1.getSetOfInstructors(),
-	  			_dm1.get_setOfSites(),_dm1.get_setOfActivitiesSites(),
-				_dm1.get_setOfStuSites(),_fileName2);
+	  			_dm1.getSetOfSites(),_dm1.getSetOfActivitiesSites(),
+				_dm1.getSetOfStuSites(),_fileName2);
 	  	
 	  	_dm2 = new DModel(_dDocument2, _fileName2, _type);
 	  }
@@ -92,19 +92,19 @@ package dTest.dInternal.dData;
 	   * test that check that the saved file is the same as the loaded file
 	   * */
 	  public void test_loadRooms(){
-	  	assertEquals("test4_saveTimeTable: assertEquals ",true,_dm1.get_setOfSites().isEquals(_dm2.get_setOfSites()));
+	  	assertEquals("test4_saveTimeTable: assertEquals ",true,_dm1.getSetOfSites().isEquals(_dm2.getSetOfSites()));
 	  }
 	  /**
 	   * test that check that the saved file is the same as the loaded file
 	   * */
 	  public void test_loadActivities(){
-	  	assertEquals("test5_saveTimeTable: assertEquals ",true,_dm1.get_setOfActivitiesSites().isEquals(_dm2.get_setOfActivitiesSites()));
+	  	assertEquals("test5_saveTimeTable: assertEquals ",true,_dm1.getSetOfActivitiesSites().isEquals(_dm2.getSetOfActivitiesSites()));
 	  }
 	  /**
 	   * test that check that the saved file is the same as the loaded file
 	   * */
 	  public void test_loadStudents(){
-	  	assertEquals("test6_saveTimeTable: assertEquals ",true,_dm1.get_setOfStuSites().isEquals(_dm2.get_setOfStuSites()));
+	  	assertEquals("test6_saveTimeTable: assertEquals ",true,_dm1.getSetOfStuSites().isEquals(_dm2.getSetOfStuSites()));
 	  }
 	  /**
 	   * test that check that the saved file is the same as the loaded file

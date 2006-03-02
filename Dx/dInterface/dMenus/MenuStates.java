@@ -3,7 +3,6 @@
  * 
  * 
  * Title: MenuStates.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -25,6 +24,7 @@ package dInterface.dMenus;
  * 
  * Description: MenuStates.java is a interface used to:
  * <p>
+ * Interface implemented by each Menu Class
  * 
  */
 public interface MenuStates {
@@ -43,4 +43,4 @@ public interface MenuStates {
 
 	public void showAllMenus();
 
-}
+} // end MenuStates

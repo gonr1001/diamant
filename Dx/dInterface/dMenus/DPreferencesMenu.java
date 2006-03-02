@@ -1,10 +1,8 @@
 /**
  * Created on Feb 16, 2006
  * 
- * TODO To change the class description for this generated file
  * 
  * Title: DPreferencesMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -35,6 +33,8 @@ import dInterface.DApplication;
  *
  * Description: DPreferencesMenu.java is a class used to: 
  * <p>
+ * Build the DPreferences Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  *
  */
 public class DPreferencesMenu extends JMenu implements MenuStates {

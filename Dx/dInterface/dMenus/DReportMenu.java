@@ -3,7 +3,6 @@
  * 
  * 
  * Title: DReportMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -33,9 +32,10 @@ import dInterface.DApplication;
 /**
  * Ruben Gonzalez-Rubio
  *
- * Description: DReportMenu.java is a class used to: 
+ * Description: DReportMenu.java is a class used to:  
  * <p>
- *
+ * Build the DReport Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  */
 public class DReportMenu extends JMenu implements MenuStates {
 

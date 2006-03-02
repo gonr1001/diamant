@@ -3,7 +3,6 @@
  * 
  * 
  * Title: DOptimisationMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -34,6 +33,8 @@ import dInterface.DApplication;
  *
  * Description: DOptimisationMenu.java is a class used to: 
  * <p>
+ * Build the DOptimisation Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  *
  */
 public class DOptimisationMenu extends JMenu implements MenuStates {
@@ -96,7 +97,7 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 		ActionListener exitlistener = new ExitListener();
 		_doOptimization.addActionListener(exitlistener);
 		this.add(_doOptimization);
-	} // end buildExit
+	} // end buildDoTheTimeTable
 
 	/**
 	 * 
@@ -144,13 +145,6 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 		_doSectionPartition.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
-	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
-	 */
-	public void afterInitialAssign() {
-		// TODO Auto-generated method stub
-
-	}
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
@@ -192,4 +186,4 @@ public class DOptimisationMenu extends JMenu implements MenuStates {
 		_doOptimization.setEnabled(true);
 		_doSectionPartition.setEnabled(true);
 	}
-}
+} // end DOptimisationMenu

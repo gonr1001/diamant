@@ -3,7 +3,6 @@
  * 
  * 
  * Title: DModificationMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -27,7 +26,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import dConstants.DConst;
-
 import dInterface.DApplication;
 
 /**
@@ -35,6 +33,8 @@ import dInterface.DApplication;
  * 
  * Description: DModificationMenu.java is a class used to:
  * <p>
+ * Build the DModification Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  * 
  */
 public class DModificationMenu extends JMenu implements MenuStates {
@@ -85,7 +85,7 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		ActionListener modifyActivityListener = new MAListener();
 		_modifyActivity.addActionListener(modifyActivityListener);
 		this.add(_modifyActivity);
-	} // end buildExit
+	} // end buildModifyActivity
 
 	/**
 	 * 
@@ -151,13 +151,13 @@ public class DModificationMenu extends JMenu implements MenuStates {
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
-			this.setEnabled(false);
-			_modifyActivity.setEnabled(false);
-			_specialImport.setEnabled(false);
-			_mergeInstructors.setEnabled(false);
-			_mergeRooms.setEnabled(false);
-			_mergeActivities.setEnabled(false);
-			_mergeStudents.setEnabled(false);
+		this.setEnabled(false);
+		_modifyActivity.setEnabled(false);
+		_specialImport.setEnabled(false);
+		_mergeInstructors.setEnabled(false);
+		_mergeRooms.setEnabled(false);
+		_mergeActivities.setEnabled(false);
+		_mergeStudents.setEnabled(false);
 	}
 
 	/* (non-Javadoc)
@@ -185,7 +185,6 @@ public class DModificationMenu extends JMenu implements MenuStates {
 		_mergeActivities.setEnabled(false);
 		_mergeStudents.setEnabled(false);
 	}
-
 
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()

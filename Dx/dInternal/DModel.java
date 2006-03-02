@@ -533,14 +533,14 @@ public class DModel extends Observable {
     /**
      * @return Returns the _setOfActivitiesSites.
      */
-    public SetOfActivitiesSites get_setOfActivitiesSites() {
+    public SetOfActivitiesSites getSetOfActivitiesSites() {
         return _setOfActivitiesSites;
     }
 
     /**
      * @return Returns the _setOfStuSites.
      */
-    public SetOfStuSites get_setOfStuSites() {
+    public SetOfStuSites getSetOfStuSites() {
         return _setOfStuSites;
     }
 
@@ -634,7 +634,7 @@ public class DModel extends Observable {
     /**
      * @return Returns the _setOfSites.
      */
-    public SetOfSites get_setOfSites() {
+    public SetOfSites getSetOfSites() {
         return _setOfSites;
     }
 

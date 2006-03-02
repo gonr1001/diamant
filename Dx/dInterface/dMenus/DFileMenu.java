@@ -3,7 +3,6 @@
  * 
  * 
  * Title: DFileMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -34,8 +33,8 @@ import dInterface.DApplication;
  * 
  * Description: DFileMenu.java is a class used to:
  * <p>
- * Build the File Menu, for each menu there is a Listener to call the activated
- * action.
+ * Build the File Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  * 
  */
 public class DFileMenu extends JMenu implements MenuStates {
@@ -73,8 +72,8 @@ public class DFileMenu extends JMenu implements MenuStates {
 	private JMenuItem _exit;
 
 	/**
-	 * @param application 
-	 * @param bar 
+	 * @param application
+	 * @param bar
 	 * 
 	 */
 	public DFileMenu(DApplication dApplication) {
@@ -110,7 +109,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_newTTableCycle.setFont(DxMenuBar.DxMB_FONT);
 		class NewTTableCycleListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.newTTableCycle();
 			}
 		}
@@ -123,7 +122,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_newTTableExam.setFont(DxMenuBar.DxMB_FONT);
 		class NewTTableExamListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.newTTableExam();
 			}
 		}
@@ -142,7 +141,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_newTTStrucCycle.setFont(DxMenuBar.DxMB_FONT);
 		class NewTTStrucCycleListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.newTTStrucCycle();
 			}
 		}
@@ -155,7 +154,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_newTTStrucExam.setFont(DxMenuBar.DxMB_FONT);
 		class NewTTStrucExamListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.newTTStrucExam();
 			}
 		}
@@ -174,14 +173,14 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_openTTable.setFont(DxMenuBar.DxMB_FONT);
 		class OpenTTableListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.openTTable();
 			}
 		}
 		ActionListener openTTableListener = new OpenTTableListener();
 		_openTTable.addActionListener(openTTableListener);
 		this.add(_openTTable);
-	} // end close
+	} // end buildOpenTTable
 
 	/**
 	 * 
@@ -191,14 +190,14 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_openTTStruc.setFont(DxMenuBar.DxMB_FONT);
 		class OpenTTStrucListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.openTTStruc();
 			}
 		}
 		ActionListener _openTTStrucListener = new OpenTTStrucListener();
 		_openTTStruc.addActionListener(_openTTStrucListener);
 		this.add(_openTTStruc);
-	} // end close
+	} // end buildOpenTTStuct
 
 	/**
 	 * 
@@ -208,7 +207,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_close.setFont(DxMenuBar.DxMB_FONT);
 		class CloseListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.close();
 			}
 		}
@@ -225,7 +224,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_save.setFont(DxMenuBar.DxMB_FONT);
 		class SaveListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.save();
 			}
 		}
@@ -242,7 +241,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_saveAs.setFont(DxMenuBar.DxMB_FONT);
 		class SaveAsListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.saveAs();
 			}
 		}
@@ -259,7 +258,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_defineFiles.setFont(DxMenuBar.DxMB_FONT);
 		class DefineFilesListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.defineFiles();
 			}
 		}
@@ -276,14 +275,14 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_import.setFont(DxMenuBar.DxMB_FONT);
 		class ImportListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.importFiles();
 			}
 		}
 		ActionListener importListener = new ImportListener();
 		_import.addActionListener(importListener);
 		this.add(_import);
-	} // end buildExit
+	} // end buildImport
 
 	/**
 	 * 
@@ -293,7 +292,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_export.setFont(DxMenuBar.DxMB_FONT);
 		class ExportListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.exportFiles();
 			}
 		}
@@ -310,7 +309,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setFont(DxMenuBar.DxMB_FONT);
 		class ExitListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.exit();
 			}
 		}
@@ -319,7 +318,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		this.add(_exit);
 	} // end buildExit
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
@@ -340,7 +341,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setEnabled(true);
 	} // end initialState
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterNewTTCycle()
 	 */
 	public void afterNewTTable() {
@@ -361,7 +364,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setEnabled(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterNewTTSCycle()
 	 */
 	public void afterNewTTStruc() {
@@ -382,7 +387,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setEnabled(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
@@ -403,7 +410,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setEnabled(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
@@ -424,7 +433,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setEnabled(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
@@ -445,7 +456,9 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_exit.setEnabled(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#showAllMenus()
 	 */
 	public void showAllMenus() {

@@ -3,7 +3,6 @@
  * 
  * 
  * Title: DAssignMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -34,6 +33,8 @@ import dInterface.DApplication;
  * 
  * Description: DAssignMenu.java is a class used to:
  * <p>
+ * Build the DAssign Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
  * 
  */
 public class DAssignMenu extends JMenu implements MenuStates {
@@ -56,7 +57,6 @@ public class DAssignMenu extends JMenu implements MenuStates {
 
 	/**
 	 * @param application
-	 * @param bar
 	 * 
 	 */
 	public DAssignMenu(DApplication dApplication) {
@@ -165,7 +165,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		ActionListener assignEventsListener = new AEListener();
 		_assignEvents.addActionListener(assignEventsListener);
 		this.add(_assignEvents);
-	} // end buildExit
+	} // end buildAssignEvents
 
 	/**
 	 * 
@@ -199,7 +199,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		ActionListener conflicsOfAnEventListener = new CEListener();
 		_conflicsOfAnEvent.addActionListener(conflicsOfAnEventListener);
 		this.add(_conflicsOfAnEvent);
-	} // end buildExit
+	} // end buildConflictOfAnEvent
 
 	/*
 	 * (non-Javadoc)

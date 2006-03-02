@@ -3,7 +3,6 @@
  * 
  * 
  * Title: DDevelopmentMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -31,20 +30,26 @@ import dInterface.DApplication;
 /**
  * Ruben Gonzalez-Rubio
  *
- * Description: DDevelopmentMenu.java is a class used to: 
+ * Description: DDevelopmentMenu.java is a class used to:
  * <p>
+ * Build the DDevelopment Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
+ * <p>
+ * This menu is only used by developpers
+ * to be active the option -d is needed when launching the program.
+ * 
  *
  */
 public class DDevelopmentMenu extends JMenu implements MenuStates {
-	
+
 	private DApplication _dApplication;
 
 	private JMenuItem _myFile;
-	
+
 	private JMenuItem _showAll;
-	
+
 	private JMenuItem _initialState;
-	
+
 	/**
 	 * @param application 
 	 * @param bar 
@@ -62,7 +67,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		buildShowAllMenus();
 		buildInitialState();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -79,7 +84,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		_myFile.addActionListener(myFileListener);
 		this.add(_myFile);
 	} // end buildFile
-	
+
 	/**
 	 * 
 	 */
@@ -96,8 +101,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		_showAll.addActionListener(showAllListener);
 		this.add(_showAll);
 	} // end buildShowAllMenus
-	
-	
+
 	/**
 	 * 
 	 */
@@ -114,9 +118,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		_initialState.addActionListener(initialStateListener);
 		this.add(_initialState);
 	} // end buildInitialState
-	
-	
-	
+
 	/* (non-Javadoc)
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */

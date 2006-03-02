@@ -4,7 +4,6 @@
  * 
  * 
  * Title: DNewFeaturesMenu.java 
- * Description:
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -35,6 +34,10 @@ import dInterface.DApplication;
  *
  * Description: DNewFeaturesMenu.java is a class used to: 
  * <p>
+ * Build the DNewFeatures Menu, for each menu Item there is a Listener to call the
+ * activated action in DxApplication.
+ * 
+ * This menu is used only with new features that are in test
  *
  */
 public class DNewFeaturesMenu extends JMenu implements MenuStates {
@@ -83,7 +86,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		ActionListener test1Listener = new Test1Listener();
 		_test1.addActionListener(test1Listener);
 		this.add(_test1);
-	} // end buildExit
+	} // end buildTest1
 
 	/**
 	 * 
@@ -133,7 +136,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 
 		this.add(_test2);
 
-	} // end buildExit
+	} // end buildTest2
 
 	/**
 	 * 

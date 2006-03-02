@@ -2,8 +2,7 @@
  * Created on Feb 17, 2006
  * 
  * 
- * Title: DMenuBar.java 
- * Description:
+ * Title: DxMenuBar.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -33,10 +32,21 @@ import dInterface.DApplication;
  * 
  * Description: DMenuBar.java is a class used to:
  * <p>
+ * Display the menus. Each menu is a class.
+ * There is a finite state automaton to change each menu Item
+ * enabled or disabled.
+ * <p>
+ * The finite state automaton transitions are loops calling
+ * the corresponding method inside each menu class.
+ * <p>
+ * Each menu class implements MenuState interface, the names
+ * of methods in the Interface are the same that the transitions
+ * 
+ * 
  * 
  */
 public class DxMenuBar extends JMenuBar {
-	
+
 	private final int NO_CHANGE_MENUS = 3;
 
 	private static final String cMFONT = "Dialog";
@@ -51,16 +61,24 @@ public class DxMenuBar extends JMenuBar {
 	private DApplication _dApplication;
 
 	/**
-	 * 
+	 * @param dApplication is needed because individual
+	 * menus calls methods of dApplication.
+	 * the user see in the dialog display.
+	 *
+	 * <p>After buil the Menu transition initialState is done.
 	 */
 	public DxMenuBar(DApplication dApplication) {
 		super();
 		_dApplication = dApplication;
-		buildMenuBar(_dApplication);
+		buildMenuBar(); // uses _dApplication
 		initialState();
 	}
 
 	/**
+	 * 
+	 * In this transition if the MultiSite Menu is on the
+	 * menu bar it is removed
+	 * 
 	 * 
 	 */
 	public void initialState() {
@@ -78,7 +96,9 @@ public class DxMenuBar extends JMenuBar {
 	}
 
 	/**
-	 * the Time table can be cycle or exam
+	 * 
+	 * The Timetable can be cycle or exam
+	 * 
 	 */
 	public void afterNewTTable() {
 		for (int i = 0; i < this.getMenuCount(); i++) {
@@ -93,19 +113,6 @@ public class DxMenuBar extends JMenuBar {
 	public void afterNewTTStruc() {
 		for (int i = 0; i < this.getMenuCount(); i++) {
 			((MenuStates) this.getComponent(i)).afterNewTTStruc();
-		}
-		this.updateUI();
-	}
-
-	/**
-	 * 
-	 */
-	public void afterInitialAssignment() {
-		if (_dApplication.isMultiSite()) {
-			addMultiSiteToMenuBar();
-		}
-		for (int i = 0; i < this.getMenuCount(); i++) {
-			((MenuStates) this.getComponent(i)).afterInitialAssignment();
 		}
 		this.updateUI();
 	}
@@ -131,26 +138,39 @@ public class DxMenuBar extends JMenuBar {
 	/**
 	 * 
 	 */
+	public void afterInitialAssignment() {
+		if (_dApplication.isMultiSite()) {
+			addMultiSiteToMenuBar();
+		}
+		for (int i = 0; i < this.getMenuCount(); i++) {
+			((MenuStates) this.getComponent(i)).afterInitialAssignment();
+		}
+		this.updateUI();
+	}
+
+	/**
+	 * 
+	 */
 	public void showAllMenus() {
 		for (int i = 0; i < this.getMenuCount(); i++) {
 			((MenuStates) this.getComponent(i)).showAllMenus();
 		}
 	}
-	
+
 	/**
 	 * 
 	 */
-	private void buildMenuBar(DApplication dApplication) {
-		this.add(new DFileMenu(dApplication));
-		this.add(new DAssignMenu(dApplication));
-		this.add(new DModificationMenu(dApplication));
-		this.add(new DOptimisationMenu(dApplication));
-		this.add(new DReportMenu(dApplication));
-		this.add(new DPreferencesMenu(dApplication));
-		this.add(new DHelpMenu(dApplication));
-		this.add(new DNewFeaturesMenu(dApplication));
+	private void buildMenuBar() {
+		this.add(new DFileMenu(_dApplication));
+		this.add(new DAssignMenu(_dApplication));
+		this.add(new DModificationMenu(_dApplication));
+		this.add(new DOptimisationMenu(_dApplication));
+		this.add(new DReportMenu(_dApplication));
+		this.add(new DPreferencesMenu(_dApplication));
+		this.add(new DHelpMenu(_dApplication));
+		this.add(new DNewFeaturesMenu(_dApplication));
 		if (_dApplication.isInDevelopment()) {
-			this.add(new DDevelopmentMenu(dApplication));
+			this.add(new DDevelopmentMenu(_dApplication));
 		}
 	} // end buildMenuBar
 
@@ -158,16 +178,17 @@ public class DxMenuBar extends JMenuBar {
 	 * 
 	 */
 	private void addMultiSiteToMenuBar() {
-			for (int i = this.getMenuCount() - 1; i > NO_CHANGE_MENUS; i--) {
-				this.remove(i);
-			}
-			this.add(new DMultiSiteMenu(_dApplication));
-			this.add(new DReportMenu(_dApplication));
-			this.add(new DPreferencesMenu(_dApplication));
-			this.add(new DHelpMenu(_dApplication));
-			this.add(new DNewFeaturesMenu(_dApplication));
-			if (_dApplication.isInDevelopment()) {
-				this.add(new DDevelopmentMenu(_dApplication));
-			}
+		for (int i = this.getMenuCount() - 1; i > NO_CHANGE_MENUS; i--) {
+			this.remove(i);
+		}
+		this.add(new DMultiSiteMenu(_dApplication));
+		this.add(new DReportMenu(_dApplication));
+		this.add(new DPreferencesMenu(_dApplication));
+		this.add(new DHelpMenu(_dApplication));
+		this.add(new DNewFeaturesMenu(_dApplication));
+		if (_dApplication.isInDevelopment()) {
+			this.add(new DDevelopmentMenu(_dApplication));
+		}
 	}// end addMultiSiteToMenuBar
+	
 } // end DxMenuBar
