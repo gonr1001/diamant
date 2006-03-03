@@ -1,6 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.138 $  $Date: 2005-06-23 20:10:31 $
+ * Title: DDocument $Revision: 1.139 $  $Date: 2006-03-03 16:03:30 $
  * Description: DDocument is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.138 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.139 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface;
@@ -161,7 +161,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
     } // end getModified
 
     //-------------------------------------------
-    public DModel getDM() {
+    public DModel getCurrentDModel() {
         return _dm;
     } //end getDModel
 

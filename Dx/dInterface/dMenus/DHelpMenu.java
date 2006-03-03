@@ -40,7 +40,7 @@ import dInterface.DApplication;
 public class DHelpMenu extends JMenu implements MenuStates {
 
 	private DApplication _dApplication;
-
+	
 	private JMenuItem _about;
 
 	/**
@@ -51,7 +51,7 @@ public class DHelpMenu extends JMenu implements MenuStates {
 	public DHelpMenu(DApplication application) {
 		super(DConst.HELP);
 		_dApplication = application;
-		setFont(DxMenuBar.DxMB_FONT);
+		this.setFont(DxMenuBar.DxMB_FONT);
 		buildMenu();
 	}
 

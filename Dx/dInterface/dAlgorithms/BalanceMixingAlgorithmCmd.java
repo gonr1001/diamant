@@ -32,7 +32,7 @@ public class BalanceMixingAlgorithmCmd implements Command{
 
   public void execute(DApplication dApplic) {
     DConst.USER_TEST_ACTIV= _USER_TEST_ACTIV;
-    (new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();
+    (new SelectAlgorithm(dApplic.getCurrentDModel(),_selectedContext)).execute();
     new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
   }
 }

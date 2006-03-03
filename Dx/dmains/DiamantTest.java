@@ -29,6 +29,7 @@ package dmains;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
 import dTest.dInternal.DSetOfResourcesTest;
@@ -153,6 +154,8 @@ public class DiamantTest {
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(SetOfRoomsTest.suite());
+		suite.addTest(DFileMenuTest.suite());
+		System.out.println("Bye I was in tests");
 		return suite;
 	}
 }

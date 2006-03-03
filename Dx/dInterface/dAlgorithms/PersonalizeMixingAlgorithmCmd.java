@@ -1,6 +1,6 @@
 /**
  *
- * Title: PersonalizeMixingAlgorithmCmd $Revision: 1.5 $  $Date: 2005-02-01 21:27:15 $
+ * Title: PersonalizeMixingAlgorithmCmd $Revision: 1.6 $  $Date: 2006-03-03 16:03:34 $
  * Description: PersonalizeMixingAlgorithmCmd is a class used to
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.6 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAlgorithms;
@@ -52,7 +52,7 @@ public class PersonalizeMixingAlgorithmCmd implements Command{
 		String input= perso.showInputDialog();
 		if(input!=null){
 			int personalizeAcceptableVariation=Integer.parseInt(input);
-			(new SelectAlgorithm(personalizeAcceptableVariation,dApplic.getDModel())).execute();
+			(new SelectAlgorithm(personalizeAcceptableVariation,dApplic.getCurrentDModel())).execute();
 			new InformationDlg(dApplic.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
 		}
 	}

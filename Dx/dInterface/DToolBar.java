@@ -174,7 +174,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 								"Valeur eronnée");
 					//Treat event
 					//_dApplic.getDModel().getTTStructure().sendEvent();
-					_dApplic.getDModel().changeInDModelByToolBar(this);
+					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 					setToolBarOne();
 					setToolBarTwo();
 				}
@@ -209,7 +209,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				resc.setID((String) _dayNameSelector.getSelectedItem());
 				//System.out.println("DToolbar.dayNameSelector");//debug
 				//Treat event
-				_dApplic.getDModel().changeInDModelByToolBar(this);
+				_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 			}//end actionPerformed
 		});//end addActionListener
 
@@ -239,7 +239,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				period.setPriority(_periodTypeSelector.getSelectedIndex());
 				if (_comboBoxStatus) {
 
-					_dApplic.getDModel().changeInDModelByToolBar(this);
+					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 				}
 
 			}//end actionPerformed
@@ -259,7 +259,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 					period.setPriority(_periodTypeSelector.getSelectedIndex());
 				}
 
-				_dApplic.getDModel().changeInDModelByToolBar(this);
+				_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 			}//end actionPerformed
 		});//end addActionListener
 
@@ -282,7 +282,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 					}
 				}
 
-				_dApplic.getDModel().changeInDModelByToolBar(this);
+				_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 
 			}//end actionPerformed
 		});//end addActionListener

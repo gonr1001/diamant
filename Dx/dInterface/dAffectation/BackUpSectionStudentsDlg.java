@@ -104,8 +104,8 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 		_currentAssignedGroup = -1;
 		if (_dApplic.getDMediator().getCurrentDoc() == null)
 			return; //nothing happens if no CurrentDocument
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 		_arrowsNames = new String[] { DConst.TO_RIGHT, DConst.TO_LEFT };
 		if (activities != null && students != null) {
 			students.sortSetOfResourcesByID();
@@ -139,7 +139,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 */
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		//if activity combo box
 		if (e.getSource().equals(_activitiesCombo)) {
 			this.changeInActivityComboBox(activities);
@@ -164,7 +164,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 			_activitiesCombo.setEnabled(true);
 			_typeCombo.setEnabled(true);
 			_applyPanel.setFirstDisable();					
-			_dApplic.getDModel().changeInDModelByStudentsDlg(this);
+			_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
 		}
 		// Arrows
 		if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0]))
@@ -258,7 +258,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 */
 	private JPanel initActivityPanel() {
 		Vector activitiesVector = new Vector();
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		activitiesVector = activities.getIDsByField(3, "true");
 		//panel of activities
 		_activitiesCombo = new DXJComboBox(activitiesVector);
@@ -276,7 +276,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 * @return JPanel the Type Panel
 	 */
 	private JPanel initTypePanel() {
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		Vector typeVector = ((Activity) (activities
 				.getResource(selectedActivity).getAttach())).getSetOfTypes()
@@ -457,7 +457,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 *
 	 */
 	private void sortAssignedPanel(){
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -706,7 +706,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 */
 	private void setScrollPane(JScrollPane scrollPane, Dimension ScrollPaneDim, boolean updateInsidePanel) {
 		JPanel insidePanel;
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -807,7 +807,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 				infoPanelHeight));
 		JLabel lGroup = new JLabel(DConst.SECTION);
 		//add label in the infoPanel
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -906,7 +906,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 * @param selectList
 	 */
 	private void selectLineInAAssPanel(JList selectedList) {
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -942,9 +942,9 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 	 * using set of students from the model
 	 */
 	private void setAllLists() {
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		this.setNotAssignedLists(activities, students);
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -1168,7 +1168,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		String course = selectedActivity + selectedType;
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 		JList notAssList = this.getAListFromNotAssignedPanel(1);
 		Vector notAssVec = getListVector(notAssList);
 		//put
@@ -1203,7 +1203,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 		}// end for(int i=0; i< notAssVec.size(); i++)
 		
 		
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		Type type = activities.getType(selectedActivity, selectedType);
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
 			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
@@ -1385,7 +1385,7 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 		setNumOfEltOfGpPanelFromAssigned(_currentAssignedGroup, String.valueOf(assDataM.size()));
 		//sortAllPanel();
 		setStudentsInGroups();
-		_dApplic.getDModel().changeInDModelByStudentsDlg(this);
+		_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
 		//setAllLists();
 		
       // String studentData = "";

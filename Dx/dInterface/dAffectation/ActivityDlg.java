@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.48 $ $Date: 2005-04-11 14:39:33 $
+ * Title: ActivityDlg $Revision: 1.49 $ $Date: 2006-03-03 16:03:31 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,8 +12,8 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.48 $
- * @author $Author: durp1901 $
+ * @version $Revision: 1.49 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -84,7 +84,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         _jd = this; //to pass this dialog to the EditActivityDlg
         if (_dApplic.getDMediator().getCurrentDoc() == null)
             return;
-        _activities = _dApplic.getDModel().getSetOfActivities();
+        _activities = _dApplic.getCurrentDModel().getSetOfActivities();
         initialize();
         int x = _dApplic.getJFrame().getX();
         int y = _dApplic.getJFrame().getY();
@@ -189,7 +189,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         //if button APPLY
         if (command.equals(DConst.BUT_APPLY)) {
             setActivitesVisibility();
-            _dApplic.getDModel().changeInDModelByActivity(this);
+            _dApplic.getCurrentDModel().changeInDModelByActivity(this);
             _buttonsPanel.setFirstDisable();
         }
         //if arrows

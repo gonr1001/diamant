@@ -448,8 +448,8 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_openTTable.setEnabled(false);
 		_openTTStruc.setEnabled(false);
 		_close.setEnabled(true);
-		_save.setEnabled(false);
-		_saveAs.setEnabled(false);
+		_save.setEnabled(true);
+		_saveAs.setEnabled(true);
 		_defineFiles.setEnabled(true);
 		_import.setEnabled(false);
 		_export.setEnabled(false);

@@ -84,7 +84,7 @@ public class DApplication implements ActionListener {
 
 	boolean _inDevelopment;
 
-	// Fake Singletonm, car besoin pour fonctionnalite de Grille Selective
+	// Fake Singleton, car besoin pour fonctionnalite de Grille Selective
 	private static DApplication _instance = null;
 
 	/* ZERO is needed to fix Frame Location (origin) */
@@ -254,15 +254,15 @@ public class DApplication implements ActionListener {
 
 	public DDocument getCurrentDoc() {
 		return getDMediator().getCurrentDoc();
-	} // end getDMediator
+	} // end getCurrentDoc
 
 	public DMenuBar getMenuBar() {
 		return _dMenuBar;
-	} // end getDesktop
+	} // end getMenuBar
 
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
-	} // end getDesktop
+	} // end getDxMenuBar
 
 	public DToolBar getToolBar() {
 		return _tbar;
@@ -392,8 +392,8 @@ public class DApplication implements ActionListener {
 		}
 	}
 
-	public DModel getDModel() {
-		return getDMediator().getCurrentDoc().getDM();
+	public DModel getCurrentDModel() {
+		return getDMediator().getCurrentDoc().getCurrentDModel();
 	}
 
 	/**
@@ -433,7 +433,7 @@ public class DApplication implements ActionListener {
 	 * the Time table can be cycle or exam
 	 */
 	public void afterNewTTable() {
-		this.getDxMenuBar().afterNewTTable();
+		_dxMenuBar.afterNewTTable();
 	}
 
 	/**
@@ -443,7 +443,7 @@ public class DApplication implements ActionListener {
 		this.showToolBar();
 		this.getDMediator().addDoc(this.getPreferences()._standardTTC,
 				DConst.NO_TYPE);
-		this.getDxMenuBar().afterNewTTStruc();
+		_dxMenuBar.afterNewTTStruc();
 	}
 
 	/**
@@ -453,7 +453,7 @@ public class DApplication implements ActionListener {
 		this.showToolBar();
 		this.getDMediator().addDoc(this.getPreferences()._standardTTE,
 				DConst.NO_TYPE);
-		this.getDxMenuBar().afterNewTTStruc();
+		_dxMenuBar.afterNewTTStruc();
 	}
 
 	/**
@@ -475,7 +475,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void afterOpenTTSruc() {
-		this.getDxMenuBar().afterOpenTTSruc();
+		_dxMenuBar.afterOpenTTSruc();
 	}
 
 	/**
@@ -484,7 +484,7 @@ public class DApplication implements ActionListener {
 	public void close() {
 		this.getDMediator().closeCurrentDoc();
 		if (!this.getDMediator().getCancel()) {
-			this.getDxMenuBar().initialState();
+			_dxMenuBar.initialState();
 		}
 	}
 
@@ -498,7 +498,6 @@ public class DApplication implements ActionListener {
 		else if (this.getDMediator().getCurrentDoc().isModified())
 			this.getDMediator().saveCurrentDoc(
 					this.getDMediator().getCurrentDoc().getDocumentName());
-		// confirm dialog ?
 		// else not necessary to save
 	}
 
@@ -527,7 +526,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void afterImport() {
-		this.getDxMenuBar().afterImport();
+		_dxMenuBar.afterImport();
 	}
 
 	/**
@@ -547,12 +546,11 @@ public class DApplication implements ActionListener {
 			mess += "PAS d'exportation";
 			new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
 		} else { // if (fileStu.exists() || fileTT.exists())
-			this.getDModel().exportData(dir);
+			this.getCurrentDModel().exportData(dir);
 			mess += dir + DConst.TT_STUD_FILE + DConst.CR_LF + dir
 					+ DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
 			new InformationDlg(this.getJFrame(), mess, DConst.EXPORT_MESSAGE);
 		}
-
 	}
 
 	/**
@@ -591,14 +589,15 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-		new AvailabiltyDialog(this, this.getDModel().getSetOfInstructors());
+		new AvailabiltyDialog(this, this.getCurrentDModel()
+				.getSetOfInstructors());
 	}
 
 	/**
 	 * 
 	 */
 	public void roomAvailability() {
-		new AvailabiltyDialog(this, this.getDModel().getSetOfRooms());
+		new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfRooms());
 	}
 
 	/**
@@ -661,10 +660,10 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void initialAssignment() {
-		this.getDModel().initChangeInDModel(this.getJFrame());
-		
-		if(this.isInDevelopment()){
-			this.getDxMenuBar().afterInitialAssignment();
+		this.getCurrentDModel().initChangeInDModel(this.getJFrame());
+
+		if (this.isInDevelopment()) {
+			_dxMenuBar.afterInitialAssignment();
 		} else {
 			this.getMenuBar().postInitialAssign();
 		}
@@ -675,7 +674,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void afterInitialAssign() {
-		this.getDxMenuBar().afterInitialAssignment();
+		_dxMenuBar.afterInitialAssignment();
 	}
 
 	/**
@@ -684,7 +683,8 @@ public class DApplication implements ActionListener {
 	public void doTheTimeTable() {
 		int _selectedContext = 0;// context for first affect algorithm
 
-		(new SelectAlgorithm(this.getDModel(), _selectedContext)).execute();
+		(new SelectAlgorithm(this.getCurrentDModel(), _selectedContext))
+				.execute();
 		new InformationDlg(this.getJFrame(), DConst.TT_BUILD_MESSAGE);
 	}
 
@@ -702,7 +702,7 @@ public class DApplication implements ActionListener {
 		if (input != null) {
 			int personalizeAcceptableVariation = Integer.parseInt(input);
 			(new SelectAlgorithm(personalizeAcceptableVariation, this
-					.getDModel())).execute();
+					.getCurrentDModel())).execute();
 			new InformationDlg(this.getJFrame(), DConst.STUDENTS_MIXING_MESSAGE);
 		}
 
@@ -767,22 +767,22 @@ public class DApplication implements ActionListener {
 		setCurrentDir(".\\devData\\");
 		getDMediator().addDoc(".\\devData\\fichier1.dia", 0);
 		getDMediator().getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
-		getDModel().changeInDModel(this.getJFrame());
-		this.getDxMenuBar().afterInitialAssignment();
+		getCurrentDModel().changeInDModel(this.getJFrame());
+		_dxMenuBar.afterInitialAssignment();
 	}
 
 	/**
 	 * 
 	 */
 	public void initialState() {
-		this.getDxMenuBar().initialState();
+		_dxMenuBar.initialState();
 	}
 
 	/**
 	 * 
 	 */
 	public void showAllMenus() {
-		this.getDxMenuBar().showAllMenus();
+		_dxMenuBar.showAllMenus();
 	}
 
 	/**
@@ -796,7 +796,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void roomAssignment() {
-		new RoomAssignmentAlgo(this.getDModel());
+		new RoomAssignmentAlgo(this.getCurrentDModel());
 		new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 	}
 
@@ -822,7 +822,18 @@ public class DApplication implements ActionListener {
 		if (this.getCurrentDoc() == null) {
 			return false;
 		}
-		return this.getDModel().isMultiSite();
+		return this.getCurrentDModel().isMultiSite();
+	}
+
+	/**
+	 * @param str
+	 */
+	public void changeInMulti(String str) {
+		this.getCurrentDModel().setCurrentSite(str);
+		if (str.equalsIgnoreCase(DConst.ALL_SITES))
+			this.getCurrentDModel().changeInDModelByAllSites(this.getJFrame());
+		else
+			this.getCurrentDModel().changeInDModel(this.getJFrame());
 	}
 
 } /* end class DApplication */

@@ -83,7 +83,7 @@ public class DetailedPeriodPanel extends PeriodPanel{
 
             while (itrSetOfResources.hasNext()) {
                 DResource res = (DResource) itrSetOfResources.next();
-                DResource eventRes = DApplication.getInstance().getDModel()
+                DResource eventRes = DApplication.getInstance().getCurrentDModel()
                         .getSetOfEvents().getResource(res.getID());
                 if (SelectiveScheduleManager.getInstance().validateElement(
                         eventRes)) {

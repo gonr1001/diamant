@@ -36,8 +36,8 @@ import javax.swing.JMenuBar;
 
 import dConstants.DConst;
 
-import dDeveloper.ShowAllCmd;
-import dDeveloper.StateZeroCmd;
+//import dDeveloper.ShowAllCmd;
+//import dDeveloper.StateZeroCmd;
 import dInterface.dAffectation.ActivityCmd;
 import dInterface.dAffectation.ActivityModifCmd;
 import dInterface.dAffectation.ConflictOptionCmd;
@@ -650,12 +650,12 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_multi.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
 
-		Vector v = _dApplic.getDModel().getSites();
+		Vector v = _dApplic.getCurrentDModel().getSites();
 		ButtonGroup group = new ButtonGroup();
 		for (int i = 0; i < v.size(); i++) {
 			JCheckBoxMenuItem rbMenuItem = new JCheckBoxMenuItem((String) v
 					.get(i));
-			if (_dApplic.getDModel().getCurrentSite().equalsIgnoreCase(
+			if (_dApplic.getCurrentDModel().getCurrentSite().equalsIgnoreCase(
 					(String) v.get(i)))
 				rbMenuItem.setSelected(true);
 			else
@@ -671,12 +671,12 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		JCheckBoxMenuItem source = (JCheckBoxMenuItem) (e.getSource());
 
 		if (e.getStateChange() == ItemEvent.SELECTED) {
-			_dApplic.getDModel().setCurrentSite(source.getText());
+			_dApplic.getCurrentDModel().setCurrentSite(source.getText());
 			if (source.getText().equalsIgnoreCase(DConst.ALL_SITES))
-				_dApplic.getDModel().changeInDModelByAllSites(
+				_dApplic.getCurrentDModel().changeInDModelByAllSites(
 						_dApplic.getJFrame());
 			else
-				_dApplic.getDModel().changeInDModel(_dApplic.getJFrame());
+				_dApplic.getCurrentDModel().changeInDModel(_dApplic.getJFrame());
 		}
 
 	}
@@ -694,13 +694,13 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_showAll = new CmdMenu("showAllMenus");
 		_showAll.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_showAll.setCommand(new ShowAllCmd());
+		//_showAll.setCommand(new ShowAllCmd());
 		_showAll.addActionListener(_dApplic);
 		_dev.add(_showAll);
 
 		_stateZero = new CmdMenu("stateZero");
 		_stateZero.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_stateZero.setCommand(new StateZeroCmd());
+		//_stateZero.setCommand(new StateZeroCmd());
 		_stateZero.addActionListener(_dApplic);
 		_dev.add(_stateZero);
 
@@ -1353,7 +1353,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 	}
 
 	public void updateMenuBar() { // must be private
-		if (_dApplic.getDModel().isMultiSite())
+		if (_dApplic.getCurrentDModel().isMultiSite())
 			createMultiSiteMenu();
 	} // updateMenuBar
 

@@ -596,7 +596,7 @@ public class SelectiveScheduleManager {
                 // entre la description ds la persistance et ce qui se trouve
                 // réellement dans le système. Si l'ensemble devient vide, alors
                 // il faut carrément le retirer (et en informer l'utilisateur)
-                DResource activity = DApplication.getInstance().getDModel()
+                DResource activity = DApplication.getInstance().getCurrentDModel()
                                                  .getSetOfActivities()
                                                  .getResource(activityID);
 

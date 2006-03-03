@@ -70,11 +70,11 @@ private DResource _activity;
       if(activity.getSetOfTypes().size()<2){
         activity.addType("2");
         Type type = (Type) activity.getSetOfTypes().getResource("2").getAttach();
-        int nbCycle= _dApplic.getDModel().getTTStructure().getSetOfCycles().size();
+        int nbCycle= _dApplic.getCurrentDModel().getTTStructure().getSetOfCycles().size();
         type.addSection("01",nbCycle,true);
         init();
          Vector students= activity.getStudentRegistered();
-         _dApplic.getDModel().changeInDModelByModifyAdd(this, students, _activity.getID()+"201;0");
+         _dApplic.getCurrentDModel().changeInDModelByModifyAdd(this, students, _activity.getID()+"201;0");
          /*_dApplic.getDModel().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
          _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
         _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/
@@ -85,7 +85,7 @@ private DResource _activity;
       if(activity.getSetOfTypes().size()>1){
         activity.getSetOfTypes().removeResource("2");
         init();
-        _dApplic.getDModel().changeInDModelByModifyRemove(this);
+        _dApplic.getCurrentDModel().changeInDModelByModifyRemove(this);
       }
     }
 

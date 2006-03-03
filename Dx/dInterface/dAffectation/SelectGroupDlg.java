@@ -64,7 +64,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
       }
 
       if (ligne == 0) {
-        int nbCycle= _sectionMod.getDApplic().getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
+        int nbCycle= _sectionMod.getDApplic().getDMediator().getCurrentDoc().getCurrentDModel().getTTStructure().getSetOfCycles().size();
         _sectionMod.getType().addSection(_textField0.getText(),nbCycle,true);
         _sectionMod.init();
         //_sectionMod.getType().add

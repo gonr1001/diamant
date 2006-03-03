@@ -848,7 +848,6 @@ public class DModel extends Observable {
         Vector v = new Vector();
         for (int i = 0; i < _setOfActivitiesSites.size(); i++)
             v.add(_setOfActivitiesSites.getResourceAt(i).getID());
-        //v.add(new String(DConst.ALL_SITES));
         return v;
     }
 

@@ -21,7 +21,7 @@ public class RoomAffectCmd implements Command {
 	}
 	
 	public void execute(DApplication dApplic) {
-		new RoomAssignmentAlgo(dApplic.getDModel());
+		new RoomAssignmentAlgo(dApplic.getCurrentDModel());
 		new InformationDlg(dApplic.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 	}
 }

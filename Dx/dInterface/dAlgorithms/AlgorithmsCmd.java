@@ -11,7 +11,7 @@ public class AlgorithmsCmd implements Command{
   int _selectedContext=0;// context for first affect algorithm
 
   public void execute(DApplication dApplic) {
-    (new SelectAlgorithm(dApplic.getDModel(),_selectedContext)).execute();
+    (new SelectAlgorithm(dApplic.getCurrentDModel(),_selectedContext)).execute();
     new InformationDlg(dApplic.getJFrame(), DConst.TT_BUILD_MESSAGE);
   }
 }

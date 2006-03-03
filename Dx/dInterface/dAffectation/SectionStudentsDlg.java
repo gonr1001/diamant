@@ -101,7 +101,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 			_activitiesCombo.setEnabled(true);
 			_typeCombo.setEnabled(true);
 			_applyClosePanel.setApplyDisable();
-			_dApplic.getDModel().changeInDModelByStudentsDlg(this);
+			_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
 			
 		}
 
@@ -174,8 +174,8 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		_currentAssignedGroup = DConst.NO_GROUP;
 		if (_dApplic.getDMediator().getCurrentDoc() == null)
 			return; // nothing happens if no CurrentDocument
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 
 		if (activities != null && students != null) {
 			students.sortSetOfResourcesByID();
@@ -209,7 +209,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	 * @param ActionEvent
 	 */
 	public void actionPerformed(ActionEvent e) {
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		// if activity combo box
 		if (e.getSource().equals(_activitiesCombo)) {
 			System.out.println("Source _activitiesCombo");
@@ -313,7 +313,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	 */
 	private JPanel initActivityPanel() {
 		Vector activitiesVector = new Vector();
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		activitiesVector = activities.getIDsByField(3, "true");
 		// panel of activities
 		_activitiesCombo = new DXJComboBox(activitiesVector);
@@ -331,7 +331,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	 * @return JPanel the Type Panel
 	 */
 	private JPanel initTypePanel() {
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		Vector typeVector = ((Activity) (activities
 				.getResource(selectedActivity).getAttach())).getSetOfTypes()
@@ -491,9 +491,9 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	}
 	private void sortAllPanelP() {
 		//this.sortNotAssignedPanel();
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		//this.setNotAssignedLists(activities, students);
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -544,7 +544,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	 * 
 	 */
 	private void sortAssignedPanel() {
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -1161,9 +1161,9 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	 * using set of students from the model
 	 */
 	private void setAllLists() {
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		this.setNotAssignedListsProv(activities, students);
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		Type type = activities.getType(selectedActivity, selectedType);
@@ -1592,14 +1592,14 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		String selectedActivity = (String) _activitiesCombo.getSelectedItem();
 		String selectedType = (String) _typeCombo.getSelectedItem();
 		String course = selectedActivity + selectedType;
-		SetOfStudents students = _dApplic.getDModel().getSetOfStudents();
+		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();
 		JList notAssList = this.getAListFromNotAssignedPanel(1);
 		Vector notAssVec = getListVector(notAssList);
 		for (int i = 0; i < notAssVec.size(); i++) {
 			long matricule = Long.parseLong((String) notAssVec.get(i));
 			students.getStudent(matricule).setInGroup(course, -1, false);
 		}// end for(int i=0; i< notAssVec.size(); i++)
-		SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
+		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		Type type = activities.getType(selectedActivity, selectedType);
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
 			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
@@ -1828,7 +1828,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		_activitiesCombo.setEnabled(true);
 		_typeCombo.setEnabled(true);
 		_applyClosePanel.setApplyDisable();
-		_dApplic.getDModel().changeInDModelByStudentsDlg(this);
+		_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
 
 	}
 

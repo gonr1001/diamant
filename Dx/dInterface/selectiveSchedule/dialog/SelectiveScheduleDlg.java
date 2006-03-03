@@ -863,7 +863,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		private void updateScheduleGUIAndDispose() {
 			DApplication.getInstance().getDMediator().getCurrentDoc()
 					.getTTPane().updateTTPane(
-							DApplication.getInstance().getDModel()
+							DApplication.getInstance().getCurrentDModel()
 									.getTTStructure());
 
 			SelectiveScheduleDlg.this.dispose();

@@ -114,8 +114,8 @@ public abstract class EventsDlgInterface extends JDialog implements
         _jDialog = this;
         if (_dApplic.getDMediator().getCurrentDoc() == null)
             return;
-        _activities = _dApplic.getDModel().getSetOfActivities();
-        _events = _dApplic.getDModel().getSetOfEvents();
+        _activities = _dApplic.getCurrentDModel().getSetOfActivities();
+        _events = _dApplic.getCurrentDModel().getSetOfEvents();
     }//end method
 
     public abstract void actionPerformed(ActionEvent e);

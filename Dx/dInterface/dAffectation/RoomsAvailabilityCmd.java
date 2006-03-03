@@ -18,7 +18,7 @@ import dInterface.DApplication;
 public class RoomsAvailabilityCmd implements Command{
 
   public void execute(DApplication dApplic) {
-  	 new AvailabiltyDialog(dApplic,dApplic.getDModel().getSetOfRooms());
+  	 new AvailabiltyDialog(dApplic,dApplic.getCurrentDModel().getSetOfRooms());
   	// new RoomsAvailabilityDlg(dApplic);
   }
 }

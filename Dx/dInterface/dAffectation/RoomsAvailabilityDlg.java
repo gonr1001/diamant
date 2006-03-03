@@ -1,6 +1,6 @@
 /**
 *
-* Title: RoomsAvailabilityDlg $Revision: 1.20 $  $Date: 2005-04-19 20:37:42 $
+* Title: RoomsAvailabilityDlg $Revision: 1.21 $  $Date: 2006-03-03 16:03:33 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.20 $
+* @version $Revision: 1.21 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -95,12 +95,12 @@ public class RoomsAvailabilityDlg  extends JDialog
     if (_dApplic.getDMediator().getCurrentDoc() == null)
       return;
     //_dm = _dApplic.getDMediator().getCurrentDoc().getDM();
-    time = _dApplic.getDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
-    nbDay = _dApplic.getDModel().getTTStructure().getNumberOfActiveDays();
+    time = _dApplic.getCurrentDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
+    nbDay = _dApplic.getCurrentDModel().getTTStructure().getNumberOfActiveDays();
     day = new String[nbDay];
     for(int i=0; i< nbDay; i++)
-      day[i]= _dApplic.getDModel().getTTStructure().getWeekTable()[i];
-    nbPer= _dApplic.getDModel().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
+      day[i]= _dApplic.getCurrentDModel().getTTStructure().getWeekTable()[i];
+    nbPer= _dApplic.getCurrentDModel().getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay();
     try {
       initialize();
       pack();
@@ -118,14 +118,14 @@ public class RoomsAvailabilityDlg  extends JDialog
   private void initialize() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all rooms
-    chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getDM().getSetOfRooms().getNamesVector(1));
+    chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getSetOfRooms().getNamesVector(1));
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
     //gridPanel
     String sel = (String)chooser.getSelectedItem();
-    _currentRoom = (RoomAttach)_dApplic.getDModel().getSetOfRooms().getResource(sel).getAttach();
+    _currentRoom = (RoomAttach)_dApplic.getCurrentDModel().getSetOfRooms().getResource(sel).getAttach();
     centerPanel = makeGridPanel();//_currentRoom);
     this.getContentPane().add(centerPanel, BorderLayout.CENTER );
 
@@ -143,7 +143,7 @@ public class RoomsAvailabilityDlg  extends JDialog
       dispose();
     } else if (command.equals(DConst.BUT_APPLY)) {  // apply
       _currentRoom.setAvailability(_currentAvailbility); 
-      _dApplic.getDModel().changeInDModelByRoomsDlg(this);
+      _dApplic.getCurrentDModel().changeInDModelByRoomsDlg(this);
       _applyPanel.setFirstDisable();
       
     // if a button of the grid has been pressed
@@ -171,7 +171,7 @@ public class RoomsAvailabilityDlg  extends JDialog
       if (source.equals( chooser ) ) {
         getContentPane().remove(centerPanel);
         String sel = (String)chooser.getSelectedItem();
-        _currentRoom = (RoomAttach)_dApplic.getDModel().getSetOfRooms().getResource(sel).getAttach();
+        _currentRoom = (RoomAttach)_dApplic.getCurrentDModel().getSetOfRooms().getResource(sel).getAttach();
         centerPanel = makeGridPanel();//_currentRoom);
         getContentPane().add(centerPanel, BorderLayout.CENTER);
         pack();

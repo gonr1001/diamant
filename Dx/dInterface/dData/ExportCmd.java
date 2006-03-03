@@ -1,6 +1,6 @@
 /**
  *
- * Title: ExportCmd $Revision: 1.13 $  $Date: 2005-03-10 21:11:25 $
+ * Title: ExportCmd $Revision: 1.14 $  $Date: 2006-03-03 16:03:35 $
  * Description: ExportCmd is class used as the command
  *              which executes the exportation
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -53,7 +53,7 @@ import eLib.exit.dialog.InformationDlg;
                 mess += "PAS d'exportation";
          new InformationDlg(dApplic.getJFrame(),mess , DConst.EXPORT_MESSAGE);
        } else{ //if (fileStu.exists() || fileTT.exists())
-         dApplic.getDModel().exportData(dir);
+         dApplic.getCurrentDModel().exportData(dir);
          mess += dir + DConst.TT_STUD_FILE  + DConst.CR_LF + dir + DConst.TT_FILE + DConst.CR_LF + DConst.EXPORTED;
          new InformationDlg(dApplic.getJFrame(), mess, DConst.EXPORT_MESSAGE);
        }

@@ -46,7 +46,8 @@ public class DMediator extends Object{
 	private Vector _documents;
 	private boolean _cancel;
 
-	public DMediator() { // XXXX Pascal: Devrait etre 'private', sinon on risque de travailler avec des references 'null' !!
+	private DMediator() { 
+		//empty
 	}// end Mediator
 
 	//-----------------------------
@@ -73,7 +74,7 @@ public class DMediator extends Object{
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if(currentDoc.getError().length() == 0){
 			_documents.addElement(currentDoc);
-			_dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
+			_dApplic.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());
 			_dApplic.hideToolBar();
 		}else{
 			new FatalProblemDlg(_dApplic.getJFrame(), currentDoc.getError());
@@ -95,7 +96,7 @@ public class DMediator extends Object{
 		_documents.addElement(currentDoc);
 		if (currentDoc.getError().length() == 0){
 			//currentDoc.getDM().addAllListeners();
-			_dApplic.getToolBar().setToolBars(currentDoc.getDM().getTTStructure());
+			_dApplic.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());
 		}else{
 			new FatalProblemDlg(_dApplic.getJFrame(), currentDoc.getError());
 			System.exit(1);
@@ -121,7 +122,7 @@ public class DMediator extends Object{
 	public String saveCurrentDoc(String str){
 		getCurrentDoc().setDocumentName(str);
 		String error = "";
-		error = getCurrentDoc().getDM().saveTimeTable(str);
+		error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
 		return error;
 	}
 	
@@ -137,7 +138,7 @@ public class DMediator extends Object{
 			if(_documents.size()==0){
 				_dApplic.hideToolBar();
 			}else{
-				_dApplic.getToolBar().setToolBars(getCurrentDoc().getDM().getTTStructure());
+				_dApplic.getToolBar().setToolBars(getCurrentDoc().getCurrentDModel().getTTStructure());
 			}
 		}//end if
 		

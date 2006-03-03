@@ -1,6 +1,6 @@
 /**
 *
-* Title: ConflictsOfAnEventDlg $Revision: 1.2 $  $Date: 2005-03-08 16:00:43 $
+* Title: ConflictsOfAnEventDlg $Revision: 1.3 $  $Date: 2006-03-03 16:03:36 $
 * Description: ConflictsOfAnEventDlg is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.3 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInterface.dTimeTable;
@@ -47,7 +47,7 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
   public ConflictsOfAnEventDlg(DApplication dApplic, String title) {
     super(dApplic,title);
     _toolBar= dApplic.getToolBar();
-    _dm = dApplic.getDModel();
+    _dm = dApplic.getCurrentDModel();
     buildArrowButtons(false);
 	initialize();
   }//end method

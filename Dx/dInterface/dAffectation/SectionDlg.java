@@ -128,8 +128,8 @@ public class SectionDlg extends DDialog implements ActionListener,
 		_currentAssignedGroup = -1; // why -1
 		if (_dApplic.getDMediator().getCurrentDoc() == null)
 			return;
-		_activities = _dApplic.getDModel().getSetOfActivities();
-		_students = _dApplic.getDModel().getSetOfStudents();// is correct
+		_activities = _dApplic.getCurrentDModel().getSetOfActivities();
+		_students = _dApplic.getCurrentDModel().getSetOfStudents();// is correct
 		_students.sortSetOfResourcesByID();// is correct
 		if (_activities != null && _students != null) {
 			initializeDlg();
@@ -227,9 +227,9 @@ public class SectionDlg extends DDialog implements ActionListener,
 			_typeCombo.setEnabled(true);
 			_applyPanel.setFirstDisable();
 
-			_dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,
+			_dApplic.getCurrentDModel().getConditionsTest().setMatrixBuilded(false,
 					false);
-			_dApplic.getDModel().changeInDModelByStudentsDlg(this);
+			_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
 
 		}
 

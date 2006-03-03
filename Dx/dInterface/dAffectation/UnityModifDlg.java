@@ -73,17 +73,17 @@ private String _title;
     if (command.equals(DConst.BUT_ADD)) {  // Ajouter
       DResource unity= _section.getSetOfUnities().getResourceAt(_section.getSetOfUnities().size()-1);
       String ID= Integer.toString(Integer.parseInt(unity.getID())+1);
-      int nbCycle= _dApplic.getDMediator().getCurrentDoc().getDM().getTTStructure().getSetOfCycles().size();
+      int nbCycle= _dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getTTStructure().getSetOfCycles().size();
       _section.addUnity(ID,nbCycle, true);
       init();
      
-      _dApplic.getDModel().changeInModelByUnityModifDlg(this);
+      _dApplic.getCurrentDModel().changeInModelByUnityModifDlg(this);
     }
     if (command.equals(DConst.BUT_REMOVE)) {  // Supprimer
       if(_section.getSetOfUnities().size()>1){
      _section.getSetOfUnities().removeResourceAt(_section.getSetOfUnities().size()-1);
       init();
-      _dApplic.getDModel().changeInModelByUnityModifDlg(this);
+      _dApplic.getCurrentDModel().changeInModelByUnityModifDlg(this);
       }
     }
 

@@ -100,13 +100,13 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	public InstructorAvailabiliyDlg(DApplication dApplic) {
 		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
 		_dApplic = dApplic;
-		if (_dApplic.getDModel() == null)
+		if (_dApplic.getCurrentDModel() == null)
 			return;
-		_iaDlgModel= _dApplic.getDModel().getIADlgModel();
+		_iaDlgModel= _dApplic.getCurrentDModel().getIADlgModel();
 		
 		//_time = _dApplic.getDModel().getTTStructure().getCurrentCycle()
 		//		.getHourOfPeriodsADay();
-		_nbOfDays = _dApplic.getDModel().getTTStructure().getNumberOfActiveDays();
+		_nbOfDays = _dApplic.getCurrentDModel().getTTStructure().getNumberOfActiveDays();
 //		_days = new String[_nbOfDays];
 //
 //		for (int i = 0; i < _days.length; i++)
@@ -129,7 +129,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	private void initialize() throws Exception {
 		JPanel chooserPanel = new JPanel();
 		//creates the JComboBox with the list of all instructors
-		_chooser = new JComboBox(_dApplic.getDModel().getSetOfInstructors()
+		_chooser = new JComboBox(_dApplic.getCurrentDModel().getSetOfInstructors()
 				.getNamesVector(1));
 		_chooser.addItemListener(this);
 		chooserPanel.add(_chooser, null);
@@ -137,7 +137,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 
 		//gridPanel
 		String sel = (String) _chooser.getSelectedItem();
-		_currentInstr = (InstructorAttach) _dApplic.getDModel()
+		_currentInstr = (InstructorAttach) _dApplic.getCurrentDModel()
 				.getSetOfInstructors().getResource(sel).getAttach();
 		_centerPanel = makeGridPanel();
 		this.getContentPane().add(_centerPanel, BorderLayout.CENTER);
@@ -158,7 +158,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 
 			_applyPanel.setFirstDisable();
 			_currentInstr.setAvailability(_currentAvailbility);
-			_dApplic.getDModel().changeInDModelByInstructorsDlg(this);
+			_dApplic.getCurrentDModel().changeInDModelByInstructorsDlg(this);
 			// if a button of the grid has been pressed
 		} else if (_posVect.indexOf(event.getSource()) > -1) {
 			int index = _posVect.indexOf(event.getSource());
@@ -183,7 +183,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 			if (source.equals(_chooser)) {
 				getContentPane().remove(_centerPanel);
 				String sel = (String) _chooser.getSelectedItem();
-				_currentInstr = (InstructorAttach) _dApplic.getDModel()
+				_currentInstr = (InstructorAttach) _dApplic.getCurrentDModel()
 						.getSetOfInstructors().getResource(sel).getAttach();
 				_centerPanel = makeGridPanel();//_currentInstr);
 				getContentPane().add(_centerPanel, BorderLayout.CENTER);
@@ -223,7 +223,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 				JToggleButton tBut = new JToggleButton();
 				if (_currentAvailbility[i][j] == 1) {
 					Vector assignedSites = _currentInstr.isAssignedInPeriod(i,
-							j, _dApplic.getDModel().getOtherSites());
+							j, _dApplic.getCurrentDModel().getOtherSites());
 					if (assignedSites.size() != 0) {
 						Color col = this.getGridColor((String) assignedSites
 								.get(0));

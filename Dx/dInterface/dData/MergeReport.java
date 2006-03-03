@@ -1,6 +1,6 @@
 /**
 *
-* Title: ImportReport $Revision: 1.5 $  $Date: 2005-04-19 20:37:43 $
+* Title: ImportReport $Revision: 1.6 $  $Date: 2006-03-03 16:03:35 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -78,7 +78,7 @@ public class MergeReport extends ViewReport implements ActionListener {
    jtaUnchanged.append(DConst.CR_LF + DConst.UNCHANGED_ELEMENT + DConst.CR_LF);
    
    
-   DSetOfResources setOfImportSelErrors= _dApplic.getDMediator().getCurrentDoc().getDM().getSetOfImportSelErrors();
+   DSetOfResources setOfImportSelErrors= _dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getSetOfImportSelErrors();
    for (int i=0; i< setOfImportSelErrors.size(); i++){
 
      if(setOfImportSelErrors.getResourceAt(i).getID().equalsIgnoreCase("1"))

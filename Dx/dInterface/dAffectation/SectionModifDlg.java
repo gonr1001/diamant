@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.18 $  $Date: 2005-07-05 12:04:23 $
+ * Title: SectionModifDlg $Revision: 1.19 $  $Date: 2006-03-03 16:03:33 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -65,7 +65,7 @@ private String _title;
     Vector [] vect= new Vector[1];
     vect[0]= ((Type)_type.getAttach()).getSetOfSections().getNamesVector(1);
     setVectorsOfElements(vect);
-    _dApplic.getDModel().changeInDModelBySectionModDlg(this);
+    _dApplic.getCurrentDModel().changeInDModelBySectionModDlg(this);
   }
 
   /**

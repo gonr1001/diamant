@@ -1,6 +1,6 @@
 /**
 *
-* Title: ManualImprovementDlg $Revision: 1.27 $  $Date: 2005-03-08 16:00:43 $
+* Title: ManualImprovementDlg $Revision: 1.28 $  $Date: 2006-03-03 16:03:36 $
 * Description: DConst is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.27 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.28 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dInterface.dTimeTable;
@@ -47,7 +47,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
   public ManualImprovementDlg(DApplication dApplic, String title) {
     super(dApplic,title);
     _toolBar= dApplic.getToolBar();
-    _dm = dApplic.getDModel();
+    _dm = dApplic.getCurrentDModel();
     buildArrowButtons(false);
 	initialize();
   }//end method

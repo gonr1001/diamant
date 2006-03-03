@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.23 $  $Date: 2006-02-20 14:06:50 $
+ * Title: ImportDlg $Revision: 1.24 $  $Date: 2006-03-03 16:03:35 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.23 $
+ * @version $Revision: 1.24 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -83,7 +83,7 @@ public class ImportDlg extends JDialog {
             String error = "";
             dApplic.setCursorWait();
             if (dApplic.getDMediator().getCurrentDoc() != null) {
-                error = dApplic.getDModel().importData(fil);
+                error = dApplic.getCurrentDModel().importData(fil);
             } else
                 error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
             if (error.length() == 0) {
@@ -93,7 +93,7 @@ public class ImportDlg extends JDialog {
                 System.exit(1);
             }
             dApplic.setCursorDefault();
-            dApplic.getDModel().changeInDModelByImportDlg(this);
+            dApplic.getCurrentDModel().changeInDModelByImportDlg(this);
             dApplic.setCurrentDir(fc.getSelectedFile().getPath());
             dispose();
     		if (dApplic.isInDevelopment()) {

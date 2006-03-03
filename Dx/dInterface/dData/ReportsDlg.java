@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.16 $  $Date: 2005-07-05 12:04:25 $
+ * Title: ReportsDlg $Revision: 1.17 $  $Date: 2006-03-03 16:03:36 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -65,7 +65,7 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
     //_resources = new SetOfResources[1];
     _dApplic.setCursorWait();
     //pBar.execute();
-    _srd = new DStandardReportData(_dApplic.getDModel());
+    _srd = new DStandardReportData(_dApplic.getCurrentDModel());
     _dApplic.setCursorDefault();
     //System.out.println("Génération de rapports terminé");
     //pBar.close();
@@ -94,10 +94,10 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
 
     _tabbedPane.addTab(_tabsNames[0], new FullReport(this, _dApplic, tabbedPaneDim));
     _tabbedPane.addTab(_tabsNames[1], new ConflictReport(this, _dApplic, tabbedPaneDim));
-    if (_dApplic.getDMediator().getCurrentDoc().getDM().getImportDone()) {
+    if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getImportDone()) {
       _tabbedPane.addTab(_tabsNames[2], new ImportReport(this, _dApplic, tabbedPaneDim)) ;
     }
-    if (_dApplic.getDMediator().getCurrentDoc().getDM().getMergeDone()) {
+    if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getMergeDone()) {
         _tabbedPane.addTab(_tabsNames[2], new MergeReport(this, _dApplic, tabbedPaneDim)) ;
       }
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);

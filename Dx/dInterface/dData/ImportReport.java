@@ -69,7 +69,7 @@ public class ImportReport extends ViewReport implements ActionListener {
         // etudiants
         jtaStud.append(DConst.CR_LF + DConst.STUDENT_SEP + DConst.CR_LF);
         DSetOfResources setOfImportErrors = _dApplic.getDMediator()
-                .getCurrentDoc().getDM().getSetOfImportErrors();
+                .getCurrentDoc().getCurrentDModel().getSetOfImportErrors();
         for (int i = 0; i < setOfImportErrors.size(); i++) {
             // Etudiants
             if (setOfImportErrors.getResourceAt(i).getID()

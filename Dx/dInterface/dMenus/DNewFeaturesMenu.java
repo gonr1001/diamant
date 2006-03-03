@@ -62,6 +62,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 	public DNewFeaturesMenu(DApplication application) {
 		super(DConst.IN_TEST);
 		_dApplication = application;
+		setFont(DxMenuBar.DxMB_FONT);
 		buildMenu();
 	}
 

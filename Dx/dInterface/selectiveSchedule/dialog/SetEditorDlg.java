@@ -221,7 +221,7 @@ public class SetEditorDlg extends JDialog {
 //    }
     
     private void populateAvailableElements() {
-        Iterator itrActivityNames = DApplication.getInstance().getDModel()
+        Iterator itrActivityNames = DApplication.getInstance().getCurrentDModel()
         .getSetOfActivities()
         .getNamesVector(1).iterator();
         
@@ -521,7 +521,7 @@ public class SetEditorDlg extends JDialog {
                 ListModel setElements = _setElementsJList.getModel();
                 
                 for (int i = 0; i < setElements.getSize(); ++i) {
-                    fs.addFilter(DApplication.getInstance().getDModel()
+                    fs.addFilter(DApplication.getInstance().getCurrentDModel()
                             .getSetOfActivities().getResource((String) setElements.getElementAt(
                                     i)));
                 }
@@ -540,7 +540,7 @@ public class SetEditorDlg extends JDialog {
                 
                 for (int i = 0; i < _setElementsJListModel.getSize(); ++i) {
                     _modifiedFilterSet.addFilter(DApplication.getInstance()
-                            .getDModel()
+                            .getCurrentDModel()
                             .getSetOfActivities()
                             .getResource((String) _setElementsJListModel.getElementAt(
                                     i)));

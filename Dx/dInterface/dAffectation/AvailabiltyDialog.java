@@ -86,7 +86,7 @@ public class AvailabiltyDialog extends JDialog implements ActionListener,
         super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
         if (dApplic.getDMediator().getCurrentDoc() == null)
             return;
-        _dmodel = dApplic.getDModel();
+        _dmodel = dApplic.getCurrentDModel();
         _setOfResources=setOfResources;
         _time = _dmodel.getTTStructure().getCurrentCycle()
                 .getHourOfPeriodsADay();
