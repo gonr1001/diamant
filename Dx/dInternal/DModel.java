@@ -1001,8 +1001,5 @@ public class DModel extends Observable {
 	
 	
 
-    /*public void registerInterest(Observer obs) {
-     _observers.addElement(obs);
-     }*/
 
 } /* end class DModel */

@@ -1,7 +1,8 @@
 /**
  * Created on Mar 3, 2006
  * 
- * TODO To change the class description for this generated file
+ * 
+ * TODO: Put more tests  
  * 
  * Title: DFileMenuTest.java 
  *
@@ -20,6 +21,8 @@
  * 
  */
 package dTest.dInterface.dMenus;
+
+
 
 
 import javax.swing.JMenu;
@@ -81,8 +84,12 @@ public class DFileMenuTest extends TestCase {
 		DFileMenu dfm = (DFileMenu) _dxmb.getComponent(0);
 		assertEquals("testNewTTableCycle: test_newTTable", true, dfm
 				.getMenuComponent(0) instanceof JMenuItem);
-		JMenuItem jmi = (JMenuItem) dfm.getComponent();
-		JMenuItem jmix = (JMenuItem) jmi.getComponent(0);
-		assertEquals("testNewTTableCycle1: test_newTTable", 0, jmix.getText().compareToIgnoreCase(DConst.NTT_CY));
+		
+		JMenuItem jmi = null;
+		for (int i = 0; i < dfm.getItemCount(); i++){
+			jmi = dfm.getItem(i);	
+		}
+		assertEquals("testNewTTableCycle1:", 14, dfm.getItemCount());
+		assertEquals("testNewTTableCycle2:", 0,jmi.getText().compareToIgnoreCase(DConst.EXIT));
 	}
 }
