@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutCmd $Revision: 1.3 $  $Date: 2005-07-05 12:04:26 $
+ * Title: AboutCmd $Revision: 1.4 $  $Date: 2006-03-08 16:50:32 $
  * Description: AboutCmd is class used as the command
  *              which displays the About dialog
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -38,8 +38,8 @@ public class ViewSimpleCmd implements Command {
     } // end ViewSimpleCmd
     //------------------------------
     public void execute(DApplication dApplic) {
-      if ( dApplic.getDMediator().getCurrentDoc()!= null)
-        dApplic.getDMediator().getCurrentDoc().displaySimple();
+      if ( dApplic.getCurrentDoc()!= null)
+        dApplic.getCurrentDoc().displaySimple();
         //dApplic.getMenuBar().postAbout();
     } // end execute
 } /* end class ViewSimpleCmd */

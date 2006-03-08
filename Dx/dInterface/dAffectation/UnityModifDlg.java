@@ -73,7 +73,7 @@ private String _title;
     if (command.equals(DConst.BUT_ADD)) {  // Ajouter
       DResource unity= _section.getSetOfUnities().getResourceAt(_section.getSetOfUnities().size()-1);
       String ID= Integer.toString(Integer.parseInt(unity.getID())+1);
-      int nbCycle= _dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getTTStructure().getSetOfCycles().size();
+      int nbCycle= _dApplic.getCurrentDModel().getTTStructure().getSetOfCycles().size();
       _section.addUnity(ID,nbCycle, true);
       init();
      

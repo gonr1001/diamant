@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.49 $ $Date: 2006-03-03 16:03:31 $
+ * Title: ActivityDlg $Revision: 1.50 $ $Date: 2006-03-08 16:50:29 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.49 $
+ * @version $Revision: 1.50 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -82,7 +82,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         super(dApplic.getJFrame(), title, true);
         _dApplic = dApplic;
         _jd = this; //to pass this dialog to the EditActivityDlg
-        if (_dApplic.getDMediator().getCurrentDoc() == null)
+        if (_dApplic.getCurrentDoc() == null)
             return;
         _activities = _dApplic.getCurrentDModel().getSetOfActivities();
         initialize();

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.17 $  $Date: 2006-03-03 16:03:36 $
+ * Title: ReportsDlg $Revision: 1.18 $  $Date: 2006-03-08 16:50:32 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -94,10 +94,10 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
 
     _tabbedPane.addTab(_tabsNames[0], new FullReport(this, _dApplic, tabbedPaneDim));
     _tabbedPane.addTab(_tabsNames[1], new ConflictReport(this, _dApplic, tabbedPaneDim));
-    if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getImportDone()) {
+    if (_dApplic.getCurrentDModel().getImportDone()) {
       _tabbedPane.addTab(_tabsNames[2], new ImportReport(this, _dApplic, tabbedPaneDim)) ;
     }
-    if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getMergeDone()) {
+    if (_dApplic.getCurrentDModel().getMergeDone()) {
         _tabbedPane.addTab(_tabsNames[2], new MergeReport(this, _dApplic, tabbedPaneDim)) ;
       }
     getContentPane().add(_tabbedPane, BorderLayout.CENTER);

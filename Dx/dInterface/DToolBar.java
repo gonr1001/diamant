@@ -230,7 +230,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
-				PeriodPanel ppanel = _dApplic.getDMediator().getCurrentDoc()
+				PeriodPanel ppanel = _dApplic.getCurrentDoc()
 						.getTTPane().getPeriodPanel(Integer.parseInt(item));
 				Period period;
 				period = _tts.getCurrentCycle().getPeriodByIndex(
@@ -249,7 +249,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
-				PeriodPanel ppanel = _dApplic.getDMediator().getCurrentDoc()
+				PeriodPanel ppanel = _dApplic.getCurrentDoc()
 						.getTTPane().getPeriodPanel(Integer.parseInt(item));
 				Cycle cycle = _tts.getCurrentCycle();
 				Period period;
@@ -267,7 +267,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
-				PeriodPanel ppanel = _dApplic.getDMediator().getCurrentDoc()
+				PeriodPanel ppanel = _dApplic.getCurrentDoc()
 						.getTTPane().getPeriodPanel(Integer.parseInt(item));
 				int dayIndex = ppanel.getPeriodRef()[0];
 				Day day = _tts.getCurrentCycle().getDayByIndex(dayIndex);
@@ -293,7 +293,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 	 * */
 	public void setPeriodSelector(String item) {
 		if (DXToolsMethods.isIntValue(item)) {
-			PeriodPanel ppanel = _dApplic.getDMediator().getCurrentDoc()
+			PeriodPanel ppanel = _dApplic.getCurrentDoc()
 					.getTTPane().getPeriodPanel(Integer.parseInt(item));
 			Period period;
 			if (ppanel != null) {
@@ -377,7 +377,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 	public void setToolBarTwo() {
 		_periodSelector.disableActionListeners();
 		_comboBoxStatus = false;
-		JPanel thePane = (JPanel) _dApplic.getDMediator().getCurrentDoc()
+		JPanel thePane = (JPanel) _dApplic.getCurrentDoc()
 				.getTTPane().getViewport().getComponent(0);
 		//int nbOfPeriods= ttPanel.getComponentCount();
 		_periodSelector.removeAllItems();
@@ -480,7 +480,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 	 */
 
 	public void update(Observable o, Object arg) {
-		_dApplic.getDMediator().getCurrentDoc().update(o, arg);
+		_dApplic.getCurrentDoc().update(o, arg);
 	}
 
 } // end classe

@@ -1,7 +1,7 @@
 /**
  *
  * Title: DMediator
- * Description: DMediatorNew is a class used to
+ *
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- * @since JDK1.3
+ * 
  */
 
 package dInterface;
@@ -38,23 +38,23 @@ import eLib.exit.dialog.FatalProblemDlg;
  */
 
 public class DMediator extends Object{
-	private DApplication _dApplic;
+	private DApplication _dApplication;
 
     /**
      * @associates DDocument 
      */
-	private Vector _documents;
+	private Vector<DDocument> _documents;
 	private boolean _cancel;
 
-	private DMediator() { 
-		//empty
-	}// end Mediator
+//	private DMediator() { 
+//		//empty
+//	}// end Mediator
 
 	//-----------------------------
 	
 	public DMediator(DApplication dApplic) {
-		_dApplic = dApplic;
-		_documents = new Vector();
+		_dApplication = dApplic;
+		_documents = new Vector<DDocument>();
 		_cancel = false;
 	} // end Mediator
 	
@@ -74,10 +74,10 @@ public class DMediator extends Object{
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if(currentDoc.getError().length() == 0){
 			_documents.addElement(currentDoc);
-			_dApplic.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());
-			_dApplic.hideToolBar();
+			_dApplication.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());
+			_dApplication.hideToolBar();
 		}else{
-			new FatalProblemDlg(_dApplic.getJFrame(), currentDoc.getError());
+			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc.getError());
 			System.exit(1);
 		}
 		return currentDoc.getError();
@@ -92,15 +92,17 @@ public class DMediator extends Object{
 	 *
 	 */
 	public String addDoc(String fileName, int type) {
+		_dApplication.setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);
 		if (currentDoc.getError().length() == 0){
 			//currentDoc.getDM().addAllListeners();
-			_dApplic.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());
+			_dApplication.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());
 		}else{
-			new FatalProblemDlg(_dApplic.getJFrame(), currentDoc.getError());
+			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc.getError());
 			System.exit(1);
 		}
+		_dApplication.setCursorDefault();
 		return currentDoc.getError();
 	} //end addDoc
 	
@@ -108,13 +110,13 @@ public class DMediator extends Object{
 		_documents.remove(getCurrentDoc());
 		if (_documents.size()!=0) {
 			try{
-				((DDocument)_documents.get(0)).getJIF().setSelected(true);
+				_documents.get(0).getJIF().setSelected(true);
 			} catch (PropertyVetoException e){
-				new FatalProblemDlg(_dApplic.getJFrame(), e.toString());
+				new FatalProblemDlg(_dApplication.getJFrame(), e.toString());
 				System.exit(1);
 			}
 		}else{//end if (_documents.size()!=0)
-			_dApplic.getToolBar().setEnabledToolbar(false);
+			_dApplication.getToolBar().setEnabledToolbar(false);
 		}
 	} //end addDoc
 	//-------------------------------------------
@@ -136,9 +138,9 @@ public class DMediator extends Object{
 				aux.close();
 			} //end else
 			if(_documents.size()==0){
-				_dApplic.hideToolBar();
+				_dApplication.hideToolBar();
 			}else{
-				_dApplic.getToolBar().setToolBars(getCurrentDoc().getCurrentDModel().getTTStructure());
+				_dApplication.getToolBar().setToolBars(getCurrentDoc().getCurrentDModel().getTTStructure());
 			}
 		}//end if
 		
@@ -147,18 +149,18 @@ public class DMediator extends Object{
 	public DDocument getCurrentDoc() {
 		DDocument currentDoc = null;
 		for (int i =0; i < _documents.size(); i++) {
-			currentDoc = (DDocument) _documents.elementAt(i);
+			currentDoc =  _documents.elementAt(i);
 			JInternalFrame currentFrame = currentDoc.getJIF();
 			if (currentFrame.isSelected()) {
 				return currentDoc;
 			} // end if
 		} // end for
 		if (_documents.size()!=0){
-			currentDoc = (DDocument) _documents.elementAt(0);
+			currentDoc =  _documents.elementAt(0);
 			try{
 				currentDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e){
-				new FatalProblemDlg(_dApplic.getJFrame(), e.toString());
+				new FatalProblemDlg(_dApplication.getJFrame(), e.toString());
 				System.exit(1);
 			}
 			return currentDoc;
@@ -184,11 +186,11 @@ public class DMediator extends Object{
 	 * or the dialog's close button).  Otherwise, it return true.
 	 */
 	private boolean promptToSave() {
-		int retval = JOptionPane.showConfirmDialog(_dApplic.getJFrame(), DConst.SAVE_PROMPT );
+		int retval = JOptionPane.showConfirmDialog(_dApplication.getJFrame(), DConst.SAVE_PROMPT );
 		DDocument aux = getCurrentDoc();
 		switch ( retval ) {
 		case JOptionPane.YES_OPTION:
-			new SaveCmd().execute(_dApplic);
+			new SaveCmd().execute(_dApplication);
 		removeCurrentDoc();
 		aux.close();
 		return false;
@@ -207,6 +209,6 @@ public class DMediator extends Object{
 	
 	
 	public DApplication getDApplication() {
-		return _dApplic;
+		return _dApplication;
 	}
 } /* end class DMediator */

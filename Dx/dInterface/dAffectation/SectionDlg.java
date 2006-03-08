@@ -126,7 +126,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		_dApplic = dApplic;
 		//_sortIndex = 0; // why 0?
 		_currentAssignedGroup = -1; // why -1
-		if (_dApplic.getDMediator().getCurrentDoc() == null)
+		if (_dApplic.getCurrentDoc() == null)
 			return;
 		_activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		_students = _dApplic.getCurrentDModel().getSetOfStudents();// is correct

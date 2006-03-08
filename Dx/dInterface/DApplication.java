@@ -120,7 +120,7 @@ public class DApplication implements ActionListener {
 
 	private Preferences _preferences;
 
-	private DMediator _mediator;
+	private DMediator _dMediator;
 
 	private String _currentDir;
 
@@ -162,7 +162,7 @@ public class DApplication implements ActionListener {
 				+ File.separator + "pref" + File.separator + "pref.txt");
 
 		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		_mediator = new DMediator(this);
+		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
 		/* Icone de l'application */
@@ -249,11 +249,11 @@ public class DApplication implements ActionListener {
 	} // end getJFrame
 
 	public DMediator getDMediator() {
-		return _mediator;
+		return _dMediator;
 	} // end getDMediator
 
 	public DDocument getCurrentDoc() {
-		return getDMediator().getCurrentDoc();
+		return _dMediator.getCurrentDoc();
 	} // end getCurrentDoc
 
 	public DMenuBar getMenuBar() {
@@ -357,13 +357,13 @@ public class DApplication implements ActionListener {
 	 */
 	public void closeApplic() {
 		// if no Document exit ok
-		while (_mediator.getCurrentDoc() != null) { // is a while
+		while (_dMediator.getCurrentDoc() != null) { // is a while
 			new CloseCmd().execute(this);
-			if (_mediator.getCancel())
+			if (_dMediator.getCancel())
 				break;
 		}
 		// if Document changed as for save or not
-		if (_mediator.getCurrentDoc() == null) {
+		if (_dMediator.getCurrentDoc() == null) {
 			_jFrame.setVisible(false);
 			_jFrame.dispose();
 			System.exit(0);
@@ -379,13 +379,13 @@ public class DApplication implements ActionListener {
 	 */
 	public void exit() {
 		// if no Document exit ok
-		while (_mediator.getCurrentDoc() != null) { // is a while
+		while (_dMediator.getCurrentDoc() != null) { // is a while
 			new CloseCmd().execute(this);
-			if (_mediator.getCancel())
+			if (_dMediator.getCancel())
 				break;
 		}
 		// if Document changed as for save or not
-		if (_mediator.getCurrentDoc() == null) {
+		if (_dMediator.getCurrentDoc() == null) {
 			_jFrame.setVisible(false);
 			_jFrame.dispose();
 			System.exit(0);
@@ -393,7 +393,7 @@ public class DApplication implements ActionListener {
 	}
 
 	public DModel getCurrentDModel() {
-		return getDMediator().getCurrentDoc().getCurrentDModel();
+		return getCurrentDoc().getCurrentDModel();
 	}
 
 	/**
@@ -441,7 +441,7 @@ public class DApplication implements ActionListener {
 	 */
 	public void newTTStrucCycle() {
 		this.showToolBar();
-		this.getDMediator().addDoc(this.getPreferences()._standardTTC,
+		this._dMediator.addDoc(this.getPreferences()._standardTTC,
 				DConst.NO_TYPE);
 		_dxMenuBar.afterNewTTStruc();
 	}
@@ -451,7 +451,7 @@ public class DApplication implements ActionListener {
 	 */
 	public void newTTStrucExam() {
 		this.showToolBar();
-		this.getDMediator().addDoc(this.getPreferences()._standardTTE,
+		this._dMediator.addDoc(this.getPreferences()._standardTTE,
 				DConst.NO_TYPE);
 		_dxMenuBar.afterNewTTStruc();
 	}
@@ -482,8 +482,8 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void close() {
-		this.getDMediator().closeCurrentDoc();
-		if (!this.getDMediator().getCancel()) {
+		this._dMediator.closeCurrentDoc();
+		if (!this._dMediator.getCancel()) {
 			_dxMenuBar.initialState();
 		}
 	}
@@ -492,12 +492,11 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void save() {
-		if (this.getDMediator().getCurrentDoc().getDocumentName().endsWith(
-				DConst.NO_NAME))
+		if (this.getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
 			new SaveAsTTDlg(this);
-		else if (this.getDMediator().getCurrentDoc().isModified())
-			this.getDMediator().saveCurrentDoc(
-					this.getDMediator().getCurrentDoc().getDocumentName());
+		else if (this.getCurrentDoc().isModified())
+			this._dMediator.saveCurrentDoc(this.getCurrentDoc()
+					.getDocumentName());
 		// else not necessary to save
 	}
 
@@ -534,8 +533,8 @@ public class DApplication implements ActionListener {
 	 */
 	public void exportFiles() {
 
-		String dir = getTokenDir(this.getDMediator().getCurrentDoc()
-				.getDocumentName(), File.separator);
+		String dir = getTokenDir(this.getCurrentDoc().getDocumentName(),
+				File.separator);
 
 		File fileStu = new File(dir + DConst.TT_STUD_FILE);
 		File fileTT = new File(dir + DConst.TT_FILE);
@@ -733,24 +732,24 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void simpleView() {
-		if (this.getDMediator().getCurrentDoc() != null)
-			this.getDMediator().getCurrentDoc().displaySimple();
+		if (this.getCurrentDoc() != null)
+			this.getCurrentDoc().displaySimple();
 	}
 
 	/**
 	 * 
 	 */
 	public void horizontalSplitView() {
-		if (this.getDMediator().getCurrentDoc() != null)
-			this.getDMediator().getCurrentDoc().displayHorizontalSplit();
+		if (this.getCurrentDoc() != null)
+			this.getCurrentDoc().displayHorizontalSplit();
 	}
 
 	/**
 	 * 
 	 */
 	public void vericalSplitview() {
-		if (this.getDMediator().getCurrentDoc() != null)
-			this.getDMediator().getCurrentDoc().displayVericalSplit();
+		if (this.getCurrentDoc() != null)
+			this.getCurrentDoc().displayVericalSplit();
 	}
 
 	/**
@@ -765,8 +764,8 @@ public class DApplication implements ActionListener {
 	 */
 	public void myFile() {
 		setCurrentDir(".\\devData\\");
-		getDMediator().addDoc(".\\devData\\fichier1.dia", 0);
-		getDMediator().getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
+		_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
+		getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
 		getCurrentDModel().changeInDModel(this.getJFrame());
 		_dxMenuBar.afterInitialAssignment();
 	}

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ExportCmd $Revision: 1.14 $  $Date: 2006-03-03 16:03:35 $
+ * Title: ExportCmd $Revision: 1.15 $  $Date: 2006-03-08 16:50:31 $
  * Description: ExportCmd is class used as the command
  *              which executes the exportation
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -43,7 +43,7 @@ import eLib.exit.dialog.InformationDlg;
 //------------------------------
     public void execute(DApplication dApplic) {
 
-      String dir = getTokenDir(dApplic.getDMediator().getCurrentDoc().getDocumentName(),File.separator);
+      String dir = getTokenDir(dApplic.getCurrentDoc().getDocumentName(),File.separator);
 
       File fileStu = new File(dir + DConst.TT_STUD_FILE);
       File fileTT = new File(dir + DConst.TT_FILE);

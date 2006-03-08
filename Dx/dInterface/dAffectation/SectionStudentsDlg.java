@@ -172,7 +172,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		super(dApplic.getJFrame(), "ATTT" + DConst.SECTION_DLG_TITLE, true);
 		_dApplic = dApplic;
 		_currentAssignedGroup = DConst.NO_GROUP;
-		if (_dApplic.getDMediator().getCurrentDoc() == null)
+		if (_dApplic.getCurrentDoc() == null)
 			return; // nothing happens if no CurrentDocument
 		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		SetOfStudents students = _dApplic.getCurrentDModel().getSetOfStudents();

@@ -1,7 +1,6 @@
 /**
  *
- * Title: DDocument $Revision: 1.139 $  $Date: 2006-03-03 16:03:30 $
- * Description: DDocument is a class used to
+ * Title: DDocument 
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,9 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.139 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ *
  */
 package dInterface;
 
@@ -92,7 +89,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
     public DDocument(DMediator dMediator, String ttName, String fileName,
             int type) {
         _dMediator = dMediator;
-        _dMediator.getDApplication().setCursorWait();
+        //_dMediator.getDApplication().setCursorWait();
         _dm = new DModel(this, fileName, type);
         if (_dm.getError().length() == 0) {
             //_dm.getTTStructure().addTTStructureListener(this);
@@ -102,7 +99,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
             _stateBar.upDateDStateBar(_dm.getSetOfStates());
             _jif.addInternalFrameListener(this);
         }
-        _dMediator.getDApplication().setCursorDefault();
+        //_dMediator.getDApplication().setCursorDefault();
     } // end constructor DDocument()
 
     /**

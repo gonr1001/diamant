@@ -1,6 +1,6 @@
 /**
 *
-* Title: RoomsAvailabilityDlg $Revision: 1.21 $  $Date: 2006-03-03 16:03:33 $
+* Title: RoomsAvailabilityDlg $Revision: 1.22 $  $Date: 2006-03-08 16:50:29 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.21 $
+* @version $Revision: 1.22 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -92,7 +92,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   public RoomsAvailabilityDlg(DApplication dApplic){
     super(dApplic.getJFrame(), DConst.ROOMS_DLG_TITLE, false);
     _dApplic = dApplic;
-    if (_dApplic.getDMediator().getCurrentDoc() == null)
+    if (_dApplic.getCurrentDoc() == null)
       return;
     //_dm = _dApplic.getDMediator().getCurrentDoc().getDM();
     time = _dApplic.getCurrentDModel().getTTStructure().getCurrentCycle().getHourOfPeriodsADay();
@@ -118,7 +118,7 @@ public class RoomsAvailabilityDlg  extends JDialog
   private void initialize() throws Exception {
     //chooser Panel
     //creates the JComboBox with the list of all rooms
-    chooser = new JComboBox(_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().getSetOfRooms().getNamesVector(1));
+    chooser = new JComboBox(_dApplic.getCurrentDModel().getSetOfRooms().getNamesVector(1));
     chooser.addItemListener( this );
     chooserPanel.add(chooser, null);
     this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
