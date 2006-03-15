@@ -125,7 +125,7 @@ public class DApplication implements ActionListener {
 
 	private String _currentDir;
 
-	//private DMenuBar _dMenuBar;
+	// private DMenuBar _dMenuBar;
 
 	private DxMenuBar _dxMenuBar;
 
@@ -194,8 +194,8 @@ public class DApplication implements ActionListener {
 			_dxMenuBar = new DxMenuBar(this);
 			jFrame.setJMenuBar(_dxMenuBar); // constructs the menu bar
 		} else {
-//			_dMenuBar = new DMenuBar(this);
-//			jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
+			// _dMenuBar = new DMenuBar(this);
+			// jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
 		}
 
 		_tbar = new DToolBar(this); // constucts the tool bar
@@ -257,9 +257,9 @@ public class DApplication implements ActionListener {
 		return _dMediator.getCurrentDoc();
 	} // end getCurrentDoc
 
-//	public DMenuBar getMenuBar() {
-//		return _dMenuBar;
-//	} // end getMenuBar
+	// public DMenuBar getMenuBar() {
+	// return _dMenuBar;
+	// } // end getMenuBar
 
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
@@ -589,8 +589,8 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-//		new AvailabiltyDialog(this, this.getCurrentDModel()
-//				.getSetOfInstructors());
+		// new AvailabiltyDialog(this, this.getCurrentDModel()
+		// .getSetOfInstructors());
 		new InstructorAvailabiliyDlg(this);
 	}
 
@@ -662,12 +662,7 @@ public class DApplication implements ActionListener {
 	 */
 	public void initialAssignment() {
 		this.getCurrentDModel().changeInDModel(this.getJFrame());
-
-		if (this.isInDevelopment()) {
-			_dxMenuBar.afterInitialAssignment();
-		} else {
-//			this.getMenuBar().postInitialAssign();
-		}
+		_dxMenuBar.afterInitialAssignment();
 		new InformationDlg(this.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
 	}
 
@@ -682,8 +677,8 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void doTheTimeTable() {
-		this.setCursorWait(); 
-				
+		this.setCursorWait();
+
 		int _selectedContext = 0;// context for first affect algorithm
 
 		(new SelectAlgorithm(this.getCurrentDModel(), _selectedContext))
