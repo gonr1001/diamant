@@ -46,8 +46,8 @@ public class DMediator extends Object{
 	private Vector<DDocument> _documents;
 	private boolean _cancel;
 
-//	private DMediator() { 
-//		//empty
+//	private DMediator() {
+		//empty
 //	}// end Mediator
 
 	//-----------------------------
@@ -95,6 +95,7 @@ public class DMediator extends Object{
 		_dApplication.setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);
+		
 		if (currentDoc.getError().length() == 0){
 			//currentDoc.getDM().addAllListeners();
 			_dApplication.getToolBar().setToolBars(currentDoc.getCurrentDModel().getTTStructure());

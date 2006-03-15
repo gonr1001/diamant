@@ -67,7 +67,7 @@
 		</path>
 	</target>
 	<target name="compile" depends="compilepath" description="compile the java sources.">
-		<javac srcdir="${srcDir}" destdir="${build}" source="1.4">
+		<javac srcdir="${srcDir}" destdir="${build}" source="1.5">
 			<classpath refid="c.classpath"/>
 		</javac>
 	</target>

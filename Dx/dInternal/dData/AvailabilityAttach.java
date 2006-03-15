@@ -120,7 +120,6 @@ public class AvailabilityAttach extends DObject {
      * @return
      */
     private int[][] getMatrixAvailabilityTable(Vector vect) {
-        //String jour = (String) _ressourceAvailability.get(0);
         String jour = (String) vect.get(0);
         StringTokenizer st = new StringTokenizer(jour);
         int[][] a = new int[_ressourceAvailability.size()][st.countTokens()];
@@ -141,7 +140,6 @@ public class AvailabilityAttach extends DObject {
      * @return
      */
     private String[][] getAssignAvailabilityTable(Vector vect) {
-        //String jour = (String) _ressourceAvailability.get(0);
         String jour = (String) vect.get(0);
         StringTokenizer st = new StringTokenizer(jour);
         String[][] a = new String[vect.size()][st.countTokens()];

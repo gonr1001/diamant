@@ -38,15 +38,15 @@ import dConstants.DConst;
 
 //import dDeveloper.ShowAllCmd;
 //import dDeveloper.StateZeroCmd;
-import dInterface.dAffectation.ActivityCmd;
-import dInterface.dAffectation.ActivityModifCmd;
-import dInterface.dAffectation.ConflictOptionCmd;
-import dInterface.dAffectation.EventAffectCmd;
-import dInterface.dAffectation.EventsCmd;
-import dInterface.dAffectation.InitialAssignCmd;
-import dInterface.dAffectation.PartialTTStructureCmd;
-import dInterface.dAffectation.RoomAffectCmd;
-import dInterface.dAffectation.RoomsAvailabilityCmd;
+//import dInterface.dAffectation.ActivityCmd;
+//import dInterface.dAffectation.ActivityModifCmd;
+//import dInterface.dAffectation.ConflictOptionCmd;
+//import dInterface.dAffectation.EventAffectCmd;
+//import dInterface.dAffectation.EventsCmd;
+//import dInterface.dAffectation.InitialAssignCmd;
+//import dInterface.dAffectation.PartialTTStructureCmd;
+//import dInterface.dAffectation.RoomAffectCmd;
+//import dInterface.dAffectation.RoomsAvailabilityCmd;
 import dInterface.dAffectation.SectionCmd;
 import dInterface.dAlgorithms.AlgorithmsCmd;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmCmd;
@@ -67,7 +67,7 @@ import dInterface.dTimeTable.OpenTTCmd;
 import dInterface.dTimeTable.OpenTTSCmd;
 import dInterface.dTimeTable.SaveAsCmd;
 import dInterface.dTimeTable.SaveCmd;
-import dInterface.dUtil.AboutCmd;
+//import dInterface.dUtil.AboutCmd;
 import dInterface.dUtil.ConflictCmd;
 import dInterface.dUtil.ExitCmd;
 import dInterface.dUtil.PLAFCmd;
@@ -334,7 +334,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_activities = new CmdMenu(DConst.ASSIGN_ACTIVITIES_M);
 		_activities.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_activities.setCommand(new ActivityCmd());
+//		_activities.setCommand(new ActivityCmd());
 		_activities.addActionListener(_dApplic);
 		_assign.add(_activities);
 
@@ -353,13 +353,13 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_roomsAvailability = new CmdMenu(DConst.ROOM_AVAILABILITY_M);
 		_roomsAvailability.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_roomsAvailability.setCommand(new RoomsAvailabilityCmd());
+//		_roomsAvailability.setCommand(new RoomsAvailabilityCmd());
 		_roomsAvailability.addActionListener(_dApplic);
 		_assign.add(_roomsAvailability);
 
 		_events = new CmdMenu(DConst.EVENTS_ASSIGN_M);
 		_events.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_events.setCommand(new EventsCmd());
+//		_events.setCommand(new EventsCmd());
 		_events.addActionListener(_dApplic);
 		_assign.add(_events);
 
@@ -373,7 +373,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		 */
 		_partialTTStructure = new CmdMenu(DConst.PARTIAL_TTSTRUCTURE_M);
 		_partialTTStructure.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_partialTTStructure.setCommand(new PartialTTStructureCmd());
+//		_partialTTStructure.setCommand(new PartialTTStructureCmd());
 		_partialTTStructure.addActionListener(_dApplic);
 		_assign.add(_partialTTStructure);
 
@@ -395,7 +395,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 
 		_activityModif = new CmdMenu(DConst.ACTIVITY_MODIF_M);
 		_activityModif.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_activityModif.setCommand(new ActivityModifCmd());
+//		_activityModif.setCommand(new ActivityModifCmd());
 		_activityModif.addActionListener(_dApplic);
 		// _mActivitiesModif.add(_mTypeModif);
 		_modification.add(_activityModif);
@@ -449,7 +449,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// Items in menu Optimisation.
 		_initialAssign = new CmdMenu(DConst.M_INITIAL_ASSIGN);
 		_initialAssign.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_initialAssign.setCommand(new InitialAssignCmd());
+//		_initialAssign.setCommand(new InitialAssignCmd());
 		_initialAssign.addActionListener(_dApplic);
 		_optimisation.add(_initialAssign);
 
@@ -539,7 +539,7 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// this);
 
 		_about.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_about.setCommand(new AboutCmd());
+//		_about.setCommand(new AboutCmd());
 		_about.addActionListener(_dApplic);
 		_help.add(_about);
 	} // end createHelpMenu
@@ -618,21 +618,21 @@ public class DMenuBar extends JMenuBar implements ItemListener {
 		// Affectation de locaux
 		_roomAssignment = new CmdMenu(DConst.ROOMASSIGN);
 		_roomAssignment.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_roomAssignment.setCommand(new RoomAffectCmd());
+//		_roomAssignment.setCommand(new RoomAffectCmd());
 		_roomAssignment.addActionListener(_dApplic);
 		_feature_1_6_2.add(_roomAssignment);
 
 		// Affectation d'événements
 		_eventAssignment = new CmdMenu(DConst.EVENTASSIGN);
 		_eventAssignment.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_eventAssignment.setCommand(new EventAffectCmd());
+//		_eventAssignment.setCommand(new EventAffectCmd());
 		_eventAssignment.addActionListener(_dApplic);
 		_feature_1_6_2.add(_eventAssignment);
 
 		// Option de conflits
 		_conflictOption = new CmdMenu(DConst.CONFLICTEFFECT);
 		_conflictOption.setFont(new java.awt.Font(cMFONT, cFONT, cNPT11));
-		_conflictOption.setCommand(new ConflictOptionCmd());
+//		_conflictOption.setCommand(new ConflictOptionCmd());
 		_conflictOption.addActionListener(_dApplic);
 		_feature_1_6_2.add(_conflictOption);
 

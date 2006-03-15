@@ -64,6 +64,7 @@ import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dData.DefFilesToImportDlg;
 import dInterface.dData.ImportDlg;
 import dInterface.dData.ImportSelectiveFileDlg;
+import dInterface.dData.InstructorAvailabiliyDlg;
 import dInterface.dData.ReportsDlg;
 import dInterface.dMenus.DxMenuBar;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
@@ -588,8 +589,9 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-		new AvailabiltyDialog(this, this.getCurrentDModel()
-				.getSetOfInstructors());
+//		new AvailabiltyDialog(this, this.getCurrentDModel()
+//				.getSetOfInstructors());
+		new InstructorAvailabiliyDlg(this);
 	}
 
 	/**
@@ -659,7 +661,7 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void initialAssignment() {
-		this.getCurrentDModel().initChangeInDModel(this.getJFrame());
+		this.getCurrentDModel().changeInDModel(this.getJFrame());
 
 		if (this.isInDevelopment()) {
 			_dxMenuBar.afterInitialAssignment();
@@ -680,10 +682,13 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void doTheTimeTable() {
+		this.setCursorWait(); 
+				
 		int _selectedContext = 0;// context for first affect algorithm
 
 		(new SelectAlgorithm(this.getCurrentDModel(), _selectedContext))
 				.execute();
+		this.setCursorDefault();
 		new InformationDlg(this.getJFrame(), DConst.TT_BUILD_MESSAGE);
 	}
 

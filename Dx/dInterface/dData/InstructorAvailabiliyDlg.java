@@ -42,113 +42,103 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
-import dInternal.dData.dInstructors.InstructorAttach;
+import dInternal.dData.AvailabilityAttach;
 import dInternal.dDlgModel.InstructorAvailabilityDlgModel;
 
 /**
- * Dialog used to set disponibilities for an instructor.  The user must select
+ * Dialog used to set disponibilities for an instructor. The user must select
  * the corresponding instructor in the combo list and click on a period to
- * select/deselect it.  A selected period (pressed) means that the teacher
- * is available at that period.
- *
+ * select/deselect it. A selected period (pressed) means that the teacher is
+ * available at that period.
+ * 
  * User must be warned that changes made in this dialog box is only used by
  * DIAMANT and so does not represent what data is actually in the central
- * database.  In fact, as long as a difference exists between both sets of data,
+ * database. In fact, as long as a difference exists between both sets of data,
  * user must be warned of this difference in the import/export report...
- *
+ * 
  * The grid for each instructor is constructed to follow the standard model
  * proposed by the STI
- *
- *
+ * 
+ * 
  */
 public class InstructorAvailabiliyDlg extends JDialog implements
 		ActionListener, ItemListener {
-	
+
 	private DApplication _dApplic;
 
-	//private int _maxNbOfPeriods;
-
 	private int _nbOfDays;
-
-	//private String[] _days;
 
 	private InstructorAvailabilityDlgModel _iaDlgModel;
 
 	private ButtonsPanel _applyPanel;
-
-	//private JPanel _chooserPanel;
 
 	private JPanel _centerPanel;
 
 	private JComboBox _chooser;
 
 	/**
-	 * @associates JToggleButton 
+	 * @associates JToggleButton
 	 */
 	private Vector _posVect;
 
-	private InstructorAttach _currentInstr;
+	private AvailabilityAttach _currentInstr;
 
 	private int[][] _currentAvailbility;
 
 	/**
-	 * Default constructor.
+	 * Constructor.
+	 * 
+	 * @param dApplication
+	 *            The component on which the dialog will be displayed.
 	 *
-	 * @param owner The component on which the dialog will be displayed.
-	 * @param doc The active document.  Used to access the dictionnaries.
 	 */
-	public InstructorAvailabiliyDlg(DApplication dApplic) {
-		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
-		_dApplic = dApplic;
+	public InstructorAvailabiliyDlg(DApplication dApplication) {
+		super(dApplication.getJFrame(), DConst.INST_ASSIGN_TD, false);
+		_dApplic = dApplication;
 		if (_dApplic.getCurrentDModel() == null)
 			return;
-		_iaDlgModel= _dApplic.getCurrentDModel().getIADlgModel();
-		
-		//_time = _dApplic.getDModel().getTTStructure().getCurrentCycle()
-		//		.getHourOfPeriodsADay();
-		_nbOfDays = _dApplic.getCurrentDModel().getTTStructure().getNumberOfActiveDays();
-//		_days = new String[_nbOfDays];
-//
-//		for (int i = 0; i < _days.length; i++)
-//			_days[i] = _dApplic.getDModel().getTTStructure().getWeekTable()[i];
-//		_nbMaxOfPeriods = _dApplic.getDModel().getTTStructure().getCurrentCycle()
-//				.getMaxNumberOfPeriodsADay();
-		try {
+		_iaDlgModel = _dApplic.getCurrentDModel().getIADlgModel();
+
+		_nbOfDays = _dApplic.getCurrentDModel().getTTStructure()
+				.getNumberOfActiveDays();
+
+		//try {
 			initialize();
 			pack();
 			setLocationRelativeTo(_dApplic.getJFrame());
 			setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		//} catch (Exception e) {
+			// TODO process exceptions
+		//	e.printStackTrace();
+		//}
 	} // end InstructorAvailabiliyDlg
 
 	/**
 	 * Component's initialisation and placement.
 	 */
-	private void initialize() throws Exception {
+	private void initialize(){ // throws Exception {
 		JPanel chooserPanel = new JPanel();
-		//creates the JComboBox with the list of all instructors
-		_chooser = new JComboBox(_dApplic.getCurrentDModel().getSetOfInstructors()
-				.getNamesVector(1));
+		// creates the JComboBox with the list of all instructors
+		_chooser = new JComboBox(_iaDlgModel.getInstructorsNames());
 		_chooser.addItemListener(this);
 		chooserPanel.add(_chooser, null);
 		this.getContentPane().add(chooserPanel, BorderLayout.NORTH);
 
-		//gridPanel
+		// gridPanel
 		String sel = (String) _chooser.getSelectedItem();
-		_currentInstr = (InstructorAttach) _dApplic.getCurrentDModel()
+		//TODO change
+		_currentInstr = (AvailabilityAttach) _dApplic.getCurrentDModel()
 				.getSetOfInstructors().getResource(sel).getAttach();
 		_centerPanel = makeGridPanel();
 		this.getContentPane().add(_centerPanel, BorderLayout.CENTER);
 
-		//_applyPanel
-		String[] a = { DConst.BUT_APPLY, DConst.BUT_CLOSE };
+		// _applyPanel
+		String[] a = { DConst.BUT_APPLY, DConst.BUT_CLOSE }; 
 		_applyPanel = new TwoButtonsPanel(this, a);
-		//Setting the button APPLY disable
+		// Setting the button APPLY disable
 		_applyPanel.setFirstDisable();
 		this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
-	} // end  initialize()
+	} // end initialize()
 
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
@@ -157,7 +147,8 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 		} else if (command.equals(DConst.BUT_APPLY)) { // apply
 
 			_applyPanel.setFirstDisable();
-			_currentInstr.setAvailability(_currentAvailbility);
+			//TODO change
+			//_currentInstr.setAvailability(_currentAvailbility);
 			_dApplic.getCurrentDModel().changeInDModelByInstructorsDlg(this);
 			// if a button of the grid has been pressed
 		} else if (_posVect.indexOf(event.getSource()) > -1) {
@@ -183,9 +174,10 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 			if (source.equals(_chooser)) {
 				getContentPane().remove(_centerPanel);
 				String sel = (String) _chooser.getSelectedItem();
-				_currentInstr = (InstructorAttach) _dApplic.getCurrentDModel()
-						.getSetOfInstructors().getResource(sel).getAttach();
-				_centerPanel = makeGridPanel();//_currentInstr);
+				_currentInstr = (AvailabilityAttach) _dApplic
+						.getCurrentDModel().getSetOfInstructors().getResource(
+								sel).getAttach();
+				_centerPanel = makeGridPanel();// _currentInstr);
 				getContentPane().add(_centerPanel, BorderLayout.CENTER);
 				pack();
 			}
@@ -193,12 +185,13 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 	}// end itemStateChangeed
 
 	/**
-	 * Creates the grid of button.  The button is pressed if the instructor
-	 * is free at that period, depressed if not.
-	 *
-	 * @param instr the instructor for which the grid is constructed.
+	 * Creates the grid of button. The button is pressed if the instructor is
+	 * free at that period, depressed if not.
+	 * 
+	 * @param instr
+	 *            the instructor for which the grid is constructed.
 	 */
-	private JPanel makeGridPanel(/*InstructorAttach instr*/) {
+	private JPanel makeGridPanel(/* InstructorAttach instr */) {
 		JPanel gridPanel = new JPanel();
 		int maxNbOfPeriods = _iaDlgModel.getMaxNbOfPeriods();
 		gridPanel.setLayout(new GridLayout(maxNbOfPeriods + 1, _nbOfDays + 1));
@@ -207,16 +200,16 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 		_posVect = new Vector();
 		_posVect.setSize((maxNbOfPeriods + 1) * (_nbOfDays + 1));
 		gridPanel.add(new JLabel("")); // top left corner
-		String [] days = _iaDlgModel.getDays();
+		String[] days = _iaDlgModel.getDays();
 		for (int i = 0; i < days.length; i++)
-			//first line :  name of days
+			// first line : name of days
 			gridPanel.add(new JLabel(days[i], SwingConstants.CENTER));
 
 		_currentAvailbility = _currentInstr.getMatrixAvailability();
-		String [] hours = _iaDlgModel.getHours();
+		String[] hours = _iaDlgModel.getHours();
 		for (int j = 0; j < maxNbOfPeriods; j++) {
 			// first column : the time of the period
-			
+
 			gridPanel.add(new JLabel(hours[j], SwingConstants.RIGHT));
 			// create a button for each day for the period
 			for (int i = 0; i < _nbOfDays; i++) {
@@ -238,7 +231,7 @@ public class InstructorAvailabiliyDlg extends JDialog implements
 				}
 				tBut.addActionListener(this);
 				tBut.setPreferredSize(new Dimension(50, 12));
-				gridPanel.add(tBut);//, null);
+				gridPanel.add(tBut);// , null);
 				_posVect.setElementAt(tBut, (i * maxNbOfPeriods) + j);
 			}
 		}

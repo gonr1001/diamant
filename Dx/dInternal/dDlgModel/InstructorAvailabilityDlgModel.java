@@ -23,6 +23,9 @@
 
 package dInternal.dDlgModel;
 
+import java.util.Vector;
+
+import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dTimeTable.TTStructure;
 
 /**
@@ -36,6 +39,7 @@ public class InstructorAvailabilityDlgModel {
 	private String [] _hours;
 	private String [] _days;
 	private int _maxNbOfPeriods;
+	private Vector _instructorsNames;
 	/**
 	 * 
 	 */
@@ -71,7 +75,12 @@ public class InstructorAvailabilityDlgModel {
 		return _maxNbOfPeriods;
 	}
 
-
+	/**
+	 * @return
+	 */
+	public Vector getInstructorsNames() {
+		return _instructorsNames;
+	}
 	/**
 	 * @param structure
 	 */
@@ -89,4 +98,11 @@ public class InstructorAvailabilityDlgModel {
 		
 	}
 
+	public void setInstructorsNames(SetOfInstructors setOfInstructors) {
+		_instructorsNames = setOfInstructors.getNamesVector(1);
+	}
+	
+
+	
+	
 }

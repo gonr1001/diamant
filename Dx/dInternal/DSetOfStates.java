@@ -1,7 +1,7 @@
 package dInternal;
 /**
 *
-* Title: DSetOfStates $Revision: 1.6 $  $Date: 2005-07-05 12:04:27 $
+* Title: DSetOfStates $Revision: 1.7 $  $Date: 2006-03-15 13:35:53 $
 * Description: DSetOfStates is a class used to
 *
 *
@@ -15,7 +15,7 @@ package dInternal;
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
+* @version $Revision: 1.7 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -47,7 +47,6 @@ public class DSetOfStates extends DSetOfResources{
   private void initSetOfStates(){
     DState state= new DState(DConst.COLOR_BLACK,-1);
     addResource(new DResource(DConst.SB_TOTAL,state),0);
-
     state= new DState(DConst.COLOR_AUX, 0);
     addResource(new DResource(DConst.SB_T_ACT,state),0);
     state= new DState(DConst.COLOR_AUX,0);
@@ -84,35 +83,7 @@ public class DSetOfStates extends DSetOfResources{
     this.addResource(new DResource(id, state),0);
   }
 
-  /**
-   *
-   * @param sosl
-   */
-/*  public synchronized void addSetOfStatesListener(DSetOfStatesListener sosl) {
-    if (_sosListener.contains(sosl)){
-      return;
-    }
-    _sosListener.addElement(sosl);
-    //System.out.println("addSetOfStates Listener ...");
-   }*/
 
-/*  public void sendEvent() {
-    DSetOfStatesEvent event = new DSetOfStatesEvent(this);
-    for (int i=0; i< _sosListener.size(); i++) {
-      DSetOfStatesListener sosl = (DSetOfStatesListener) _sosListener.elementAt(i);
-      sosl.changeInStateBar(event);
-      //System.out.println("sendEvent: "+event.toString()+"   --I:"+i);
-      // System.out.println("SetOfStates listener started: "+i);//debug
-    }
-   }
-*/
-/*   public synchronized void removeSetOfStatesListener(DSetOfStatesListener sosl) {
-     _sosListener.removeElement(sosl);
-   }
-*/
-   /* (non-Javadoc)
-    * @see dInternal.DSetOfResources#toWrite()
-    */
    public String toWrite() {
 	 // TODO Auto-generated method stub
 	 return null;

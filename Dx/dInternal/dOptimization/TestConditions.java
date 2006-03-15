@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.40 $  $Date: 2005-07-05 12:04:31 $
+* Title: TestConditions $Revision: 1.41 $  $Date: 2006-03-15 13:35:54 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.40 $
+* @version $Revision: 1.41 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -35,7 +35,7 @@ public class TestConditions {
 
  private StudentsConflictsMatrix _matrix;
  private DModel _dm;
- private Vector _testToRun = new Vector(1); // XXXX Pascal: Pkoi 1 ?
+ private Vector _testToRun; // = new Vector(1); // XXXX Pascal: Pkoi 1 ?
  private boolean _matrixIsBuilded= false;
  private int[] _avoidPriority={1,2};
  private int [] _acceptableConflictsTable={0,0,0};
@@ -50,11 +50,11 @@ public class TestConditions {
   */
  public TestConditions(DModel dm) {
    _dm= dm;
+   _testToRun = new Vector(); 
     _matrix = new StudentsConflictsMatrix();
     _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle()));
     _testToRun.add( new TestInstructorsConditions(_dm));
     _testToRun.add( new TestRoomsConditions(_dm));
-    //dm.getDDocument().getDMediator().getDApplication().getPreferences();
   }
 
   public StudentsConflictsMatrix getConflictsMatrix(){

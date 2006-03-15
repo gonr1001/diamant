@@ -81,7 +81,7 @@ public class DModel extends Observable {
 
     private DSetOfStates _setOfStates;
 
-    private SetOfInstructors _setOfInstructors = null;
+    private SetOfInstructors _setOfInstructors;
     
     private SetOfRoomsFunctions _setOfRoomsFunctions = new SetOfRoomsFunctions(); 
 
@@ -765,26 +765,27 @@ public class DModel extends Observable {
         this.notifyObservers(obj);
         this.clearChanged();
     }
-    public void initChangeInDModel(Object obj) {   	
-    	this.setChanged();
-        //change model
-    	if(isMultiSite())
-            	updateInstructorAvail();//this._setOfEvents.setAssignedInstAvail();
-        this.setModified();
-
-        if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
-            this.prepareExamsData();
-        }
-        this.buildSetOfEvents();
-        _conditionTest = new TestConditions(this);
-        this.getConditionsTest().initAllConditions();        
-        this.setStateBarComponent();
-        this.getSetOfActivities().sortSetOfResourcesByID();
-              
-        //notify
-        this.notifyObservers(obj);
-        this.clearChanged();
-    }
+//    public void initChangeInDModel(Object obj) { 
+//    	//changeInDModel(obj);
+//    	this.setChanged();
+//        //change model
+//    	if(isMultiSite())
+//            	updateInstructorAvail();//this._setOfEvents.setAssignedInstAvail();
+//        this.setModified();
+//
+//        if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
+//            this.prepareExamsData();
+//        }
+//        this.buildSetOfEvents();
+//        _conditionTest = new TestConditions(this);
+//        this.getConditionsTest().initAllConditions();        
+//        this.setStateBarComponent();
+//        this.getSetOfActivities().sortSetOfResourcesByID();
+//              
+//        //notify
+//        this.notifyObservers(obj);
+//        this.clearChanged();
+//    }
 
     public void changeInDModelByAllSites(Object obj) {
         this.setChanged();
@@ -804,14 +805,6 @@ public class DModel extends Observable {
         this.clearChanged();
     }
 
- /*   public void changeInDModel(DModelEvent e, Component c) {
-        e.toString();
-        c.toString();
-    }// end changeInDModel
-*/
-//    public void changeInTTStructure(TTStructureEvent e) {
-//        e.toString();
-//    }// end changeInTTStructure
 
     /**
      * Export data from soft to SIG
@@ -939,7 +932,7 @@ public class DModel extends Observable {
      */
     public void buildSetOfEvents() {
     	_setOfEvents.getSetOfResources().removeAllElements();
-        _setOfEvents.setCurrentKey(1);
+        //_setOfEvents.setCurrentKey(1);
         if (getSetOfActivities() != null) {
             _setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
             if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
@@ -995,6 +988,7 @@ public class DModel extends Observable {
 		
 		iaDlgModel.setDays(getTTStructure());
 		iaDlgModel.setMaxNumOfPeriods(getTTStructure());
+		iaDlgModel.setInstructorsNames(_setOfInstructors);
 
 		return iaDlgModel;
 	}

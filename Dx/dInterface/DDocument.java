@@ -89,7 +89,6 @@ public class DDocument extends InternalFrameAdapter implements Observer {
     public DDocument(DMediator dMediator, String ttName, String fileName,
             int type) {
         _dMediator = dMediator;
-        //_dMediator.getDApplication().setCursorWait();
         _dm = new DModel(this, fileName, type);
         if (_dm.getError().length() == 0) {
             //_dm.getTTStructure().addTTStructureListener(this);
@@ -99,7 +98,6 @@ public class DDocument extends InternalFrameAdapter implements Observer {
             _stateBar.upDateDStateBar(_dm.getSetOfStates());
             _jif.addInternalFrameListener(this);
         }
-        //_dMediator.getDApplication().setCursorDefault();
     } // end constructor DDocument()
 
     /**
@@ -215,7 +213,6 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         _dMediator.getDApplication().setCursorWait();
         _ttPane.updateTTPane(((DModel) dm).getTTStructure());
         _stateBar.upDateDStateBar(((DModel) dm).getSetOfStates());
-
         _dMediator.getDApplication().setCursorDefault();
     }// end update
 

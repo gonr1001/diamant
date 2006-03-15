@@ -19,10 +19,6 @@
 package dInternal;
 
 public abstract class  DObject extends Object{
-  public DObject() {
-  	//  to avoid warning
-  }
-
 
   /**
    * this method is implemented in each resource object (Room, Instructor, Student
