@@ -12,11 +12,11 @@ package dInterface.dData;
 
 //import javax.swing.JFrame;
 
-import dInterface.Command;
+
 import dInterface.DApplication;
 
 
-public class ImportSelectiveFileCmd implements Command {
+public class ImportSelectiveFileCmd {
 
   String _selectionName;
   /**

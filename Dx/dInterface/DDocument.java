@@ -30,7 +30,6 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 import dConstants.DConst;
-import dInterface.dTimeTable.CloseCmd;
 import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
 import dInterface.dTimeTable.TTPane;
@@ -260,7 +259,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         _jif.addInternalFrameListener(new InternalFrameAdapter() {
             public void internalFrameClosing(InternalFrameEvent e) {
                 e.toString();
-                new CloseCmd().execute(_dMediator.getDApplication());
+                _dMediator.getDApplication().close();
             }
         });
 

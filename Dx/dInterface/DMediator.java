@@ -25,7 +25,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
-import dInterface.dTimeTable.SaveCmd;
+
 
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -202,7 +202,7 @@ public class DMediator extends Object {
 		DDocument aux = getCurrentDoc();
 		switch (retval) {
 		case JOptionPane.YES_OPTION:
-			new SaveCmd().execute(_dApplication);
+			_dApplication.close();
 			removeCurrentDoc();
 			aux.close();
 			return false;

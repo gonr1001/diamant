@@ -45,7 +45,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import dConstants.DConst;
-import dInterface.dTimeTable.CloseCmd;
 import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.ManualImprovementDlg;
 import dInterface.dTimeTable.NewTTDlg;
@@ -232,13 +231,13 @@ public class DApplication implements ActionListener {
 			// XXXX Pascal: Pourquoi ce 'if' est-il vide?
 			// Ne devrait pas etre laisse ds cet etat
 		}
-		if (e.getSource() instanceof CommandHolder) {
-			((CommandHolder) e.getSource()).getCommand().execute(this);
-		} else {
-			System.out
-					.println("DApplication: I do not know what to do, please help me (Action Performed)");
-			// XXXX Pascal: Devrait etre logge
-		}// end if ... else
+//		if (e.getSource() instanceof CommandHolder) {
+//			((CommandHolder) e.getSource()).getCommand().execute(this);
+//		} else {
+//			System.out
+//					.println("DApplication: I do not know what to do, please help me (Action Performed)");
+//			// XXXX Pascal: Devrait etre logge
+//		}// end if ... else
 	}// end actionPerformed
 
 	public JDesktopPane getDesktop() {
@@ -357,18 +356,7 @@ public class DApplication implements ActionListener {
 	 * @since JDK 1.2
 	 */
 	public void closeApplic() {
-		// if no Document exit ok
-		while (_dMediator.getCurrentDoc() != null) { // is a while
-			new CloseCmd().execute(this);
-			if (_dMediator.getCancel())
-				break;
-		}
-		// if Document changed as for save or not
-		if (_dMediator.getCurrentDoc() == null) {
-			_jFrame.setVisible(false);
-			_jFrame.dispose();
-			System.exit(0);
-		}
+		exit();
 	}
 
 	/**
@@ -381,7 +369,7 @@ public class DApplication implements ActionListener {
 	public void exit() {
 		// if no Document exit ok
 		while (_dMediator.getCurrentDoc() != null) { // is a while
-			new CloseCmd().execute(this);
+			this.close(); //new CloseCmd().execute(this);
 			if (_dMediator.getCancel())
 				break;
 		}
@@ -392,7 +380,7 @@ public class DApplication implements ActionListener {
 			System.exit(0);
 		}
 	}
-
+	
 	public DModel getCurrentDModel() {
 		return getCurrentDoc().getCurrentDModel();
 	}
