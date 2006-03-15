@@ -125,7 +125,7 @@ public class DApplication implements ActionListener {
 
 	private String _currentDir;
 
-	private DMenuBar _dMenuBar;
+	//private DMenuBar _dMenuBar;
 
 	private DxMenuBar _dxMenuBar;
 
@@ -194,8 +194,8 @@ public class DApplication implements ActionListener {
 			_dxMenuBar = new DxMenuBar(this);
 			jFrame.setJMenuBar(_dxMenuBar); // constructs the menu bar
 		} else {
-			_dMenuBar = new DMenuBar(this);
-			jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
+//			_dMenuBar = new DMenuBar(this);
+//			jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
 		}
 
 		_tbar = new DToolBar(this); // constucts the tool bar
@@ -257,9 +257,9 @@ public class DApplication implements ActionListener {
 		return _dMediator.getCurrentDoc();
 	} // end getCurrentDoc
 
-	public DMenuBar getMenuBar() {
-		return _dMenuBar;
-	} // end getMenuBar
+//	public DMenuBar getMenuBar() {
+//		return _dMenuBar;
+//	} // end getMenuBar
 
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
@@ -666,7 +666,7 @@ public class DApplication implements ActionListener {
 		if (this.isInDevelopment()) {
 			_dxMenuBar.afterInitialAssignment();
 		} else {
-			this.getMenuBar().postInitialAssign();
+//			this.getMenuBar().postInitialAssign();
 		}
 		new InformationDlg(this.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
 	}

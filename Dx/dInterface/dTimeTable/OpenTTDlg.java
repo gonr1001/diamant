@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.22 $  $Date: 2006-03-03 16:03:36 $
+ * Title: OpenTTDlg $Revision: 1.23 $  $Date: 2006-03-15 14:25:35 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.22 $
+ * @version $Revision: 1.23 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -90,7 +90,7 @@ public class OpenTTDlg extends JDialog {
 		if (dApplic.isInDevelopment()) {
 			dApplic.afterInitialAssign();
 		} else {
-			dApplic.getMenuBar().postInitialAssign();
+//			dApplic.getMenuBar().postInitialAssign();
 		}
      }
    }// end OpenTTDlg
