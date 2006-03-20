@@ -62,9 +62,9 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
 	 * */
 	public boolean analyseTokens(DataExchange de, int beginPosition) {
-		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6_1)) {
-			return analyseTokens1_6_1(de.getContents().getBytes(), beginPosition);
-		}
+//		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6_1)) {
+//			return analyseTokens1_6_1(de.getContents().getBytes(), beginPosition);
+//		}
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
 			return analyseTokens1_6(de.getContents().getBytes(), beginPosition);
 		} //else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {
@@ -119,33 +119,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		return true;
 	}
 	
-	/**
-	 * 
-	 *        without any header like Diamant1.6.1
-	 * @param beginPosition indicates from where start to read in the
-	 *        array
-	 * 
-	 * @return true <p>if no errors in _dataloaded </p>
-	 *         false otherwise
-	 */
-	private boolean analyseTokens1_6_1(byte[] dataloaded, int beginPosition) {
-		_error = "";
-		StringBuffer newFile = new StringBuffer("");
-		StringTokenizer st = new StringTokenizer(new String(dataloaded),
-				DConst.CR_LF);
-		st.nextToken();
-		while (st.hasMoreTokens()) {
-			newFile.append(st.nextToken() + DConst.CR_LF);
-		}
-		if (!analyseSIGTokens(newFile.toString().getBytes(), beginPosition)) {// analyse STI data
-			return false;
-		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
-			return analyseDeltaTokens1_6_1(dataloaded, beginPosition);// analyse Delta data
-		}// end else if(!analyseSIGTokens(beginPosition))
-
-		return true;
-	}
-
 	/**
 	 * analyse Delta activities data by a finished states machine
 	 * @param integer the beginPosition (start position of the finished states machine)
@@ -359,113 +332,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 * analyse Delta activities data by a  state machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
-	private boolean analyseDeltaTokens1_6_1(byte[] dataloaded, int beginPosition) {
-		String token;
-		//String sousString; //auxiliar String for stocking a substring of a line
-		StringTokenizer st = new StringTokenizer(new String(dataloaded),
-				DConst.CR_LF);
-		StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-		//int state=0;
-		int position = beginPosition;
-		token = st.nextToken();
-		_line = 0;
-		//String activityName="";
-		String instructorName = "";
-		int numberOfBlocs = 0;
-		while (st.hasMoreElements()) {
-			token = st.nextToken();
-			_line++;
-			if (_error.length() != 0)
-				return false;
-			switch (position) {
-			case 0:// empty line
-				position = 1;
-				break;
-			case 1:// activity name
-				analyseDelTaTokenName1_6_1(token, _line);
-				position = 2;
-				break;
-			case 2://activity visibility
-				position = 3;
-				break;
-			case 3://number of activities
-				position = 4;
-				break;
-			case 4:// teachers' names
-				instructorName = token;
-				position = 7;
-				break;
-			case 5:// empty line
-				position = 6;
-				break;
-			case 6:// empty line
-				position = 7;
-				break;
-			case 7://number of blocs
-				numberOfBlocs = Integer.parseInt(token.trim());
-				if (DXToolsMethods.countTokens(instructorName, ";") != numberOfBlocs) {
-					_error = DConst.ACTI_TEXT13
-							+ _line
-							+ ", I was in SetOfActivies class and in analyseDeltaTokens method ";
-					return false;
-				}
-				position = 8;
-				break;
-			case 8://duration of blocs
-
-				position = 9;
-				break;
-			case 9://days and periods of blocs
-				stLine = new StringTokenizer(token);
-				if (numberOfBlocs != stLine.countTokens()) {
-					_error = DConst.ACTI_TEXT5 + _line + " ActivityList";
-					return false;
-				}
-				while (stLine.hasMoreElements()) {
-					StringTokenizer stLine1;
-					stLine1 = new StringTokenizer(stLine.nextToken(), ".");
-					while (stLine1.hasMoreElements())
-						_error = DXToolsMethods.isIntValue(stLine1.nextToken(),
-								DConst.ACTI_TEXT8 + _line, "ActivityList");
-					if (_error.length() != 0)
-						return false;
-				}
-				position = 10;
-				break;
-			case 10://fixed rooms
-
-				position = 11;
-				break;
-			case 11://Preferred rooms
-
-				position = 12;
-				break;
-			case 12://type of rooms
-
-				position = 13;
-				break;
-			case 13://idem
-
-				position = 14;
-				break;
-			case 14://pre-affected cours
-				_error = analyseTokenPreaffectedRoom(token, numberOfBlocs, 1,
-						_line);
-				position = beginPosition;
-				break;
-
-			}// end switch (position)
-
-		}// end while (st.hasMoreElements())
-
-		return true;
-	}
-	
-	/**
 	 * 
 	 * @param str
 	 * @param numberOfUnitys
@@ -528,52 +394,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		// 4th token
 		st = DXToolsMethods.getToken(str, " ", 3);
 		if (isErrorEmpty()) {
-			if (st.length() != DConst.ACT_CAPACITY_LENGTH)
-				_error = DConst.ACTI_TEXT16 + line;
-		}
-		if (isErrorEmpty()) {
-			if (!DXToolsMethods.isIntValue(st))
-				_error = DConst.ACTI_TEXT16 + line;
-		}
-
-		return "";
-	}
-	/**
-	 * 
-	 * @param str
-	 * @param line
-	 * @return
-	 */
-	private String analyseDelTaTokenName1_6_1(String str, int line) {
-		// activity name number of token
-		if (DXToolsMethods.countTokens(str, " ") != DConst.NUMBER_OF_TOKEN_COURSE_LINE) {
-			_error = DConst.ACTI_TEXT3 + line;
-		}
-		// first token
-		String st = DXToolsMethods.getToken(str, " ", 0);
-		if (isErrorEmpty()) {
-			if (st.length() != DConst.SIZE_OF_COURSE_TOKEN)
-				_error = DConst.ACTI_TEXT1 + line;
-		}
-		// 2nd token
-		st = DXToolsMethods.getToken(str, " ", 1);
-		if (isErrorEmpty()) {
-			if (st.length() != DConst.SIZE_OF_GROUP_TOKEN)
-				_error = DConst.ACTI_TEXT14 + line;
-		}
-		if (isErrorEmpty()) {
-			if (!DXToolsMethods.isIntValue(st))
-				_error = DConst.ACTI_TEXT14 + line;
-		}
-		//3rd token
-		st = DXToolsMethods.getToken(str, " ", 2);
-		if (isErrorEmpty()) {
-			if (st.length() != DConst.ACT_SITE_LENGTH)
-				_error = DConst.ACTI_TEXT15 + line;
-		}
-		// 4th token
-		st = DXToolsMethods.getToken(str, " ", 3);
-		if (isErrorEmpty()) {
 			if (st.length() > DConst.ACT_CAPACITY_LENGTH)
 				_error = DConst.ACTI_TEXT16 + line;
 		}
@@ -584,6 +404,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 		return "";
 	}
+	
 	/**
 	 * analyse SIG activities data by a finished states machine
 	 * @param integer the beginPosition (start position of the finished states machine)

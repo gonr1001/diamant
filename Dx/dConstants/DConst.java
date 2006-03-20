@@ -27,7 +27,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 1.6.2.7 du 8 février 2006";//res.getString("vDate");
+  	public final static String V_DATE = "v 1.6.2.8 du 15 mars 2006";//res.getString("vDate");
   	/** The format of number * */
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
