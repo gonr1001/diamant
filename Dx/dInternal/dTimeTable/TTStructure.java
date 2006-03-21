@@ -65,6 +65,8 @@ public class TTStructure {
 	// private int _row;
 	public static int NUMBEROFACTIVESDAYS = 5;// monday to friday
 
+	private int _numberOfDays;
+	
 	private int _periodLenght; // XXXX Pascal: Non initialise
 
 	private int _currentCycleIndex = 0;
@@ -83,7 +85,7 @@ public class TTStructure {
 	}
 
 	public int getNumberOfActiveDays() {
-		return NUMBEROFACTIVESDAYS;
+		return _numberOfDays;
 	}
 
 	public String[] getWeekTable() {
@@ -357,10 +359,12 @@ public class TTStructure {
 			// System.out.println(" Cycle ID: "+ID+" PeriodLenght:
 			// "+_periodLenght);//debug
 			Element days = list.getElement(cycle, _TAGITEM3, 0);
+						
 			if (!setOfdays.readXMLtag(days).equals("")) {
 				_error = DConst.ERROR_XML_FILE;
 				return _error;
 			}
+			_numberOfDays = setOfdays.getNumberOfDays();
 			_setOfCycles.addResource(new DResource(ID, setOfdays), 0);
 		}// end for (int i=0; i< size; i++)
 		return _error;

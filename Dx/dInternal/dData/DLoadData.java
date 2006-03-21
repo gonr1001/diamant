@@ -156,7 +156,8 @@ public class DLoadData {
 	public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
 		//byte[]  dataloaded = preLoad(_instructorFileName);
 		DataExchange de = buildDataExchange(_instructorFileName);
-		SetOfInstructors instructorsList= new SetOfInstructors(5,14);// 5 jours et 14 periods!
+		SetOfInstructors instructorsList= new SetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
+				_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours et 14 periods!
 		if (de != null) {
 			if (merge)
 				if(currentList!= null)
