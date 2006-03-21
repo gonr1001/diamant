@@ -189,7 +189,7 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
     Period per;
     int[][] finalAvail= new int [tt.getNumberOfActiveDays()]
                       [tt.getCurrentCycle().getMaxNumberOfPeriodsADay()];
-    for (int h=0; h< tt.getNumberOfActiveDays(); h++){
+    for (int h=0; h < tt.getNumberOfActiveDays(); h++){
       int itr=0;
       day = tt.getCurrentCycle().getDayByIndex(h);
       for (int i=0; i< day.getSetOfSequences().size(); i++){

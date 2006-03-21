@@ -85,7 +85,7 @@ public class TTStructure {
 	}
 
 	public int getNumberOfActiveDays() {
-		return _numberOfDays;
+		return _numberOfDays; //NUMBEROFACTIVESDAYS; //
 	}
 
 	public String[] getWeekTable() {

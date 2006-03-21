@@ -44,7 +44,7 @@ public class DMediator extends Object {
 
 	private DApplication _dApplication;
 
-	private Vector<DDocument> _documents;
+	private Vector _documents;
 
 	private boolean _cancel;
 
@@ -52,7 +52,7 @@ public class DMediator extends Object {
 
 	public DMediator(DApplication dApplic) {
 		_dApplication = dApplic;
-		_documents = new Vector<DDocument>();
+		_documents = new Vector();
 		_cancel = false;
 	} // end Mediator
 
@@ -118,7 +118,7 @@ public class DMediator extends Object {
 		_documents.remove(getCurrentDoc());
 		if (_documents.size() != 0) {
 			try {
-				_documents.get(0).getJIF().setSelected(true);
+				((DDocument)_documents.get(0)).getJIF().setSelected(true);
 			} catch (PropertyVetoException e) {
 				new FatalProblemDlg(_dApplication.getJFrame(), e.toString());
 				System.exit(1);
@@ -160,14 +160,14 @@ public class DMediator extends Object {
 	public DDocument getCurrentDoc() {
 		DDocument currentDoc = null;
 		for (int i = 0; i < _documents.size(); i++) {
-			currentDoc = _documents.elementAt(i);
+			currentDoc = (DDocument)_documents.elementAt(i);
 			JInternalFrame currentFrame = currentDoc.getJIF();
 			if (currentFrame.isSelected()) {
 				return currentDoc;
 			} // end if
 		} // end for
 		if (_documents.size() != 0) {
-			currentDoc = _documents.elementAt(0);
+			currentDoc = (DDocument)_documents.elementAt(0);
 			try {
 				currentDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {

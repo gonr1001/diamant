@@ -218,7 +218,7 @@ public class FilterFile {
 	// 10
 	public void adjustingLines() {
 		String crlfStr = "\r\n";
-		ArrayList<Byte> byteArrayList = new ArrayList<Byte>();
+		ArrayList byteArrayList = new ArrayList();
 
 		for (int i = 0; i < _b.length; i++) {
 			if ((_b[i] != (byte) crlfStr.charAt(0))
@@ -247,7 +247,7 @@ public class FilterFile {
 		}// end for (int i=0; i< _b.length; i++)
 		_b = new byte[byteArrayList.size()];
 		for (int i = 0; i < byteArrayList.size(); i++)
-			_b[i] = byteArrayList.get(i).byteValue();
+			_b[i] =  ((Byte) byteArrayList.get(i)).byteValue();
 
 	}// end public void adjustingLines()
 

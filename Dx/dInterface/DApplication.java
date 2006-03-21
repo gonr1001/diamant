@@ -124,8 +124,6 @@ public class DApplication implements ActionListener {
 
 	private String _currentDir;
 
-	// private DMenuBar _dMenuBar;
-
 	private DxMenuBar _dxMenuBar;
 
 	private DToolBar _tbar;
@@ -189,13 +187,8 @@ public class DApplication implements ActionListener {
 
 		JPanel panel = new JPanel(new BorderLayout(0, 0));
 		jFrame.setContentPane(panel);
-		if (_inDevelopment) {
-			_dxMenuBar = new DxMenuBar(this);
-			jFrame.setJMenuBar(_dxMenuBar); // constructs the menu bar
-		} else {
-			// _dMenuBar = new DMenuBar(this);
-			// jFrame.setJMenuBar(_dMenuBar); // constructs the menu bar
-		}
+		_dxMenuBar = new DxMenuBar(this);
+		jFrame.setJMenuBar(_dxMenuBar); // constructs the menu bar
 
 		_tbar = new DToolBar(this); // constucts the tool bar
 
@@ -231,13 +224,14 @@ public class DApplication implements ActionListener {
 			// XXXX Pascal: Pourquoi ce 'if' est-il vide?
 			// Ne devrait pas etre laisse ds cet etat
 		}
-//		if (e.getSource() instanceof CommandHolder) {
-//			((CommandHolder) e.getSource()).getCommand().execute(this);
-//		} else {
-//			System.out
-//					.println("DApplication: I do not know what to do, please help me (Action Performed)");
-//			// XXXX Pascal: Devrait etre logge
-//		}// end if ... else
+		// if (e.getSource() instanceof CommandHolder) {
+		// ((CommandHolder) e.getSource()).getCommand().execute(this);
+		// } else {
+		// System.out
+		// .println("DApplication: I do not know what to do, please help me
+		// (Action Performed)");
+		// // XXXX Pascal: Devrait etre logge
+		// }// end if ... else
 	}// end actionPerformed
 
 	public JDesktopPane getDesktop() {
@@ -369,7 +363,7 @@ public class DApplication implements ActionListener {
 	public void exit() {
 		// if no Document exit ok
 		while (_dMediator.getCurrentDoc() != null) { // is a while
-			this.close(); //new CloseCmd().execute(this);
+			this.close(); // new CloseCmd().execute(this);
 			if (_dMediator.getCancel())
 				break;
 		}
@@ -380,7 +374,7 @@ public class DApplication implements ActionListener {
 			System.exit(0);
 		}
 	}
-	
+
 	public DModel getCurrentDModel() {
 		return getCurrentDoc().getCurrentDModel();
 	}
