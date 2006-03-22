@@ -117,8 +117,8 @@ public class DiamantTest {
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
 //		suite.addTest(DXToolsMethodsTest.suite());
-//		suite.addTest(EventAttachTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(EventAttachTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
 //		suite.addTest(ConflictsAttachTest.suite());
 //		suite.addTest(StudentsConflictsMatrixTest.suite());
 //		suite.addTest(InstructorsConditionsTest.suite());
