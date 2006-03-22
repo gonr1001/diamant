@@ -124,7 +124,7 @@ public class DiamantTest {
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(StudentsConditionsTest.suite());
-//		suite.addTest(ConditionsTest.suite());
+		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(DRoomTest.suite());
 		suite.addTest(SetOfSitesTest.suite());

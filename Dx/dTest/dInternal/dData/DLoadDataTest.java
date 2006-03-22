@@ -24,7 +24,6 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dInternal.Preferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
@@ -47,8 +46,6 @@ public class DLoadDataTest extends TestCase {
 	private Vector _timeTable5j;
 
 	private Vector _timeTable7j;
-
-	private Preferences _preferences;
 
 	private DLoadData _loadData5j;
 
