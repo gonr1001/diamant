@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ConditionsTest $Revision: 1.13 $ $Date: 2006-03-23 22:16:33 $
+ * Title: ConditionsTest $Revision: 1.14 $ $Date: 2006-03-24 13:28:24 $
  * Description: ConditionsTest is a class used to display a ConditionsTest with
  * buttons
  * 
@@ -336,43 +336,43 @@ public class ConditionsTest extends TestCase {
 		((EventAttach) event.getAttach()).setAssignState(true);
 		int[] nbConf = _dm7j.getConditionsTest().addEventInTTs(
 				_dm7j.getTTStructure(), event, true);
-		assertEquals("test1_addEventInTTs_1_5j : assertEquals 1", 0, nbConf[0]);
-		assertEquals("test2_addEventInTTs_1_5j : assertEquals 2", 1, nbConf[1]);
-		assertEquals("test3_addEventInTTs_1_5j : assertEquals 3", 0, nbConf[2]);
+		assertEquals("test1_addEventInTTs_1_7j : assertEquals 1", 0, nbConf[0]);
+		assertEquals("test2_addEventInTTs_1_7j : assertEquals 2", 1, nbConf[1]);
+		assertEquals("test3_addEventInTTs_1_7j : assertEquals 3", 0, nbConf[2]);
 		Period period = _dm7j.getTTStructure().getCurrentCycle()
 				.getPeriodByPeriodKey(periodKey);
-		assertEquals("test4_addEventInTTs_1_5j : assertEquals 4", 1, period
+		assertEquals("test4_addEventInTTs_1_7j : assertEquals 4", 1, period
 				.getEventsInPeriod().size());
 	}
 
 	/**
 	 * check conflicts and add in period
 	 */
-//	public void test_addEventInTTs_2_7j() {
-//		DResource event = _dm5j.getSetOfEvents().getResource("AMC645.1.01.1.");
-//		int[] dayTime = { 5, 8, 15 };
-//		String periodKey = _dm5j.getTTStructure().getCurrentCycle().getPeriod(
-//				dayTime);
-//		((EventAttach) event.getAttach()).setKey(4, periodKey);
-//		((EventAttach) event.getAttach()).setAssignState(true);
-//		int[] nbConf = _dm5j.getConditionsTest().addEventInTTs(
-//				_dm5j.getTTStructure(), event, true);
-//		event = _dm5j.getSetOfEvents().getResourceAt(0);
-//		((EventAttach) event.getAttach()).setKey(4, periodKey);
-//		((EventAttach) event.getAttach()).setAssignState(true);
-//		nbConf = _dm5j.getConditionsTest().addEventInTTs(
-//				_dm5j.getTTStructure(), event, true);
-//		assertEquals("test1_addEventInTTs_2_5j : assertEquals 1", 12,
-//				nbConf[0]);
-//		assertEquals("test2_addEventInTTs_2_5j : assertEquals 2", 1, nbConf[1]);
-//		assertEquals("test3_addEventInTTs_2_5j : assertEquals 3", 0, nbConf[2]);
-//		Period period = _dm5j.getTTStructure().getCurrentCycle()
-//				.getPeriodByPeriodKey(periodKey);
-//		assertEquals("test4_addEventInTTs_2_5j : assertEquals 4", 2, period
-//				.getEventsInPeriod().size());
-//		assertEquals("test5_addEventInTTs_2_5j : assertEquals 4", 2, period
-//				.getConflictsEventsInPeriod(event.getID()).size());
-//	}
+	public void test_addEventInTTs_2_7j() {
+		DResource event = _dm7j.getSetOfEvents().getResource("AMC645.1.01.1.");
+		int[] dayTime = { 5, 8, 15 };
+		String periodKey = _dm7j.getTTStructure().getCurrentCycle().getPeriod(
+				dayTime);
+		((EventAttach) event.getAttach()).setKey(4, periodKey);
+		((EventAttach) event.getAttach()).setAssignState(true);
+		int[] nbConf = _dm7j.getConditionsTest().addEventInTTs(
+				_dm7j.getTTStructure(), event, true);
+		event = _dm7j.getSetOfEvents().getResourceAt(0);
+		((EventAttach) event.getAttach()).setKey(4, periodKey);
+		((EventAttach) event.getAttach()).setAssignState(true);
+		nbConf = _dm7j.getConditionsTest().addEventInTTs(
+				_dm7j.getTTStructure(), event, true);
+		assertEquals("test1_addEventInTTs_2_7j : assertEquals 1", 12,
+				nbConf[0]);
+		assertEquals("test2_addEventInTTs_2_7j : assertEquals 2", 1, nbConf[1]);
+		assertEquals("test3_addEventInTTs_2_7j : assertEquals 3", 0, nbConf[2]);
+		Period period = _dm7j.getTTStructure().getCurrentCycle()
+				.getPeriodByPeriodKey(periodKey);
+		assertEquals("test4_addEventInTTs_2_7j : assertEquals 4", 2, period
+				.getEventsInPeriod().size());
+		assertEquals("test5_addEventInTTs_2_7j : assertEquals 4", 2, period
+				.getConflictsEventsInPeriod(event.getID()).size());
+	}
 //
 //	/**
 //	 * remove event in a period

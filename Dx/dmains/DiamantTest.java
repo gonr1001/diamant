@@ -118,7 +118,7 @@ public class DiamantTest {
 		suite.addTest(TTStructureTest.suite());
 //		suite.addTest(DXToolsMethodsTest.suite());
 		suite.addTest(EventAttachTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
@@ -146,7 +146,7 @@ public class DiamantTest {
 //		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
-		suite.addTest(FirstAffectAlgorithmTest.suite());
+//		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(SetOfCategoriesTest.suite());
 //		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
