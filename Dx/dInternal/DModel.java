@@ -110,6 +110,8 @@ public class DModel extends Observable {
     private int _currentCycle = 1;
 
     protected TestConditions _conditionTest;
+    
+    private int[] _nbConflicts;
 
     /**
      * _setOfImportErrors contains a DXValue object where the intvalue is the
@@ -143,6 +145,8 @@ public class DModel extends Observable {
         _importDone = false;
         _mergeDone = false;
         _setOfStates = new DSetOfStates();
+        //_stateBarModel = new DxStateBarModel();
+        _nbConflicts = new int[]{0,0,0};
         _setOfEvents = new SetOfEvents(this);
         _setOfImportErrors = new StandardCollection();
         _setOfImportSelErrors = new StandardCollection();
@@ -234,13 +238,13 @@ public class DModel extends Observable {
         return _isATimeTable;
     }
 
-    /**
-     * 
-     * @return
-     */
-    public DSetOfStates getSetOfStates() {
-        return _setOfStates;
-    }
+//    /**
+//     * 
+//     * @return
+//     */
+//    public DSetOfStates getSetOfStates() {
+//        return _setOfStates;
+//    }
 
     /**
      * 
@@ -694,7 +698,8 @@ public class DModel extends Observable {
         this.setChanged();
         //change model
         this.setModified();
-        this.setStateBarComponent();
+        //this.setStateBarComponent();
+        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         this.notifyObservers(obj);
         this.clearChanged();
     }// end changeInDModelByToolBar
@@ -713,7 +718,8 @@ public class DModel extends Observable {
     public void changeInDModelByEditActivityDlg(Object obj) {
         this.setChanged();
         this.setModified();
-        this.setStateBarComponent();
+        //this.setStateBarComponent();
+        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         //		notify
         this.notifyObservers(obj);
         this.clearChanged();
@@ -727,8 +733,8 @@ public class DModel extends Observable {
         this.setChanged();
         //change model
         this.setModified();
-        this.setStateBarComponent();
-
+        //this.setStateBarComponent();
+        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         //notify
         this.notifyObservers(obj);
         this.clearChanged();
@@ -741,9 +747,9 @@ public class DModel extends Observable {
         this.setChanged();
         this.setModified();
         this.getConditionsTest().initAllConditions();
-        this.setStateBarComponent();
         this.getSetOfActivities().sortSetOfResourcesByID();
         //		notify
+        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         this.notifyObservers(obj);
         this.clearChanged();
     }// end changeInDModelByStudentsDlg
@@ -760,10 +766,11 @@ public class DModel extends Observable {
         }
         this.buildSetOfEvents();
         this.getConditionsTest().initAllConditions();        
-        this.setStateBarComponent();
         this.getSetOfActivities().sortSetOfResourcesByID();
+        //_stateBarModel.update();
               
         //notify
+        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         this.notifyObservers(obj);
         this.clearChanged();
     }
@@ -800,9 +807,10 @@ public class DModel extends Observable {
         this.buildSetOfEvents();
         this.getConditionsTest().setMatrixBuilded(true, false);
         this.getConditionsTest().initAllConditions();
-        this.setStateBarComponent();
         this.getSetOfActivities().sortSetOfResourcesByID();
+        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         //notify
+        
         this.notifyObservers(obj);
         this.clearChanged();
     }
@@ -894,39 +902,39 @@ public class DModel extends Observable {
      * Que fait cette methode?  Le nom n'est pas assez evocateur.  De plus, on y fait une trop grande
      * utilisation des "magic numbers"
      */
-    public void setStateBarComponent() {
-        if (_constructionState > 0) {//_visibleVec = _activities.getIDsByField(3, "true");
-            ((DState) getSetOfStates().getResource(DConst.SB_T_ACT).getAttach())
-                    .setValue(getSetOfActivities().getIDsByField(3, "true")
-                            .size());
-            ((DState) getSetOfStates().getResource(DConst.SB_T_INST)
-                    .getAttach()).setValue(getSetOfInstructors().size());
-            ((DState) getSetOfStates().getResource(DConst.SB_T_ROOM)
-                    .getAttach()).setValue(getSetOfRooms().size());
-            ((DState) getSetOfStates().getResource(DConst.SB_T_STUD)
-                    .getAttach()).setValue(getSetOfStudents().size());
-
-            ((DState) getSetOfStates().getResource(DConst.SB_T_EVENT)
-                    .getAttach()).setValue(getSetOfEvents().size());
-            ((DState) getSetOfStates().getResource(DConst.SB_T_ASSIG)
-                    .getAttach()).setValue(getSetOfEvents()
-                    .getNumberOfEventAssign());
-
-            int[] nbConf = getTTStructure().getCurrentCycle()
-                    .getTotalNumberOfConflicts();
-
-            ((DState) getSetOfStates().getResource(DConst.SB_CONF).getAttach())
-                    .setValue(nbConf[0] + nbConf[1] + nbConf[2]);
-
-            ((DState) getSetOfStates().getResource(DConst.SB_C_INST)
-                    .getAttach()).setValue(nbConf[0]);
-            ((DState) getSetOfStates().getResource(DConst.SB_C_ROOM)
-                    .getAttach()).setValue(nbConf[1]);
-            ((DState) getSetOfStates().getResource(DConst.SB_C_STUD)
-                    .getAttach()).setValue(nbConf[2]);
-            getSetOfStates().sortSetOfResourcesByKey();
-        }
-    }
+//    public void setStateBarComponent() {
+//        if (_constructionState > 0) {//_visibleVec = _activities.getIDsByField(3, "true");
+//            ((DState) getSetOfStates().getResource(DConst.SB_T_ACT).getAttach())
+//                    .setValue(getSetOfActivities().getIDsByField(3, "true")
+//                            .size());
+//            ((DState) getSetOfStates().getResource(DConst.SB_T_INST)
+//                    .getAttach()).setValue(getSetOfInstructors().size());
+//            ((DState) getSetOfStates().getResource(DConst.SB_T_ROOM)
+//                    .getAttach()).setValue(getSetOfRooms().size());
+//            ((DState) getSetOfStates().getResource(DConst.SB_T_STUD)
+//                    .getAttach()).setValue(getSetOfStudents().size());
+//
+//            ((DState) getSetOfStates().getResource(DConst.SB_T_EVENT)
+//                    .getAttach()).setValue(getSetOfEvents().size());
+//            ((DState) getSetOfStates().getResource(DConst.SB_T_ASSIG)
+//                    .getAttach()).setValue(getSetOfEvents()
+//                    .getNumberOfEventAssign());
+//
+//            int[] nbConf = getTTStructure().getCurrentCycle()
+//                    .getTotalNumberOfConflicts();
+//
+//            ((DState) getSetOfStates().getResource(DConst.SB_CONF).getAttach())
+//                    .setValue(nbConf[0] + nbConf[1] + nbConf[2]);
+//
+//            ((DState) getSetOfStates().getResource(DConst.SB_C_INST)
+//                    .getAttach()).setValue(nbConf[0]);
+//            ((DState) getSetOfStates().getResource(DConst.SB_C_ROOM)
+//                    .getAttach()).setValue(nbConf[1]);
+//            ((DState) getSetOfStates().getResource(DConst.SB_C_STUD)
+//                    .getAttach()).setValue(nbConf[2]);
+//            getSetOfStates().sortSetOfResourcesByKey();
+//        }
+//    }
 
     /**
      * build set of events using currentcycle, setofactivities, setofinstructors and
@@ -994,8 +1002,16 @@ public class DModel extends Observable {
 
 		return iaDlgModel;
 	}
+		
+	public int getStudentConflicts() {
+		return _nbConflicts[0];
+	}
 	
+	public int getInstructorConflicts() {
+		return _nbConflicts[1];
+	}
 	
-
-
+	public int getRoomConflicts() {
+		return _nbConflicts[2];
+	}
 } /* end class DModel */

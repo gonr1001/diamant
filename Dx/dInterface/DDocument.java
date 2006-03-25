@@ -34,6 +34,7 @@ import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
 import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
+import dInternal.DxStateBarModel;
 
 import dInternal.dTimeTable.TTStructure;
 
@@ -93,7 +94,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
             _documentName = modifiyDocumentName(ttName);
             buidDocument(true, true);
             _ttPane.updateTTPane(_dm.getTTStructure());
-            _stateBar.upDateDStateBar(_dm.getSetOfStates());
+            _stateBar.upDate();
             _jif.addInternalFrameListener(this);
         }
     } // end constructor DDocument()
@@ -210,7 +211,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
             component.toString();
         _dMediator.getDApplication().setCursorWait();
         _ttPane.updateTTPane(((DModel) dm).getTTStructure());
-        _stateBar.upDateDStateBar(((DModel) dm).getSetOfStates());
+        _stateBar.upDate();
         _dMediator.getDApplication().setCursorDefault();
     }// end update
 
@@ -263,9 +264,9 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         });
 
         _dm.addObserver(this);
-        _stateBar = new DxStateBar(_dm.getSetOfStates());
-        //_dm.setStateBarComponent();
-
+        
+        _stateBar = new DxStateBar(new DxStateBarModel(_dm));
+       
         _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 
         _jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));

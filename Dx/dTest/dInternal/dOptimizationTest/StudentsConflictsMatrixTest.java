@@ -33,7 +33,7 @@ public StudentsConflictsMatrixTest(String name) {
   //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
   _dm.getConditionsTest().buildStudentConflictMatrix();
   _dm.getConditionsTest().buildAllConditions(_dm.getTTStructure());
-  _dm.setStateBarComponent();
+  //_dm.setStateBarComponent();
   _matrix = _dm.getConditionsTest().getConflictsMatrix();
 }
 
