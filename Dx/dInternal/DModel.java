@@ -80,6 +80,8 @@ public class DModel extends Observable {
     private String _error;
 
     private DSetOfStates _setOfStates;
+    
+    private DxStateBarModel _stateBarModel;
 
     private SetOfInstructors _setOfInstructors;
     

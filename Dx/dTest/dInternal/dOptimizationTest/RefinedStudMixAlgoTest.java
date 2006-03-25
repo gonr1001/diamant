@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgoTest $Revision: 1.2 $ $Date: 2005-03-08 16:00:45 $
+ * Title: RefinedStudMixAlgoTest $Revision: 1.3 $ $Date: 2006-03-25 19:25:15 $
  * Description: RefinedStudMixAlgoTest is a class used to test the class
  * 				RefinedStudMixAlgo 
  * 
@@ -14,7 +14,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: syay1801 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -45,7 +45,7 @@ public class RefinedStudMixAlgoTest extends TestCase {
     
     public void setUp(){
         _dDocument1 = new DDocument();
-      	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData.dia";
+      	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData5j.dia";
       	_type = 1;
       	_dm1= new DModel(_dDocument1,_fileName,_type);
       	_dm1.getConditionsTest().initAllConditions(); //Affectation initialle

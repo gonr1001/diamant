@@ -29,7 +29,7 @@ public class DXToolsMethodsTest extends TestCase{
   } // end suite
 
   public void test_resizeAvailability(){
-    int [][] initialAvail = new int[5][14];
+    int [][] initialAvail = new int[8][14];
     int [][] finalAvail;
     int [] line = {1, 1, 1, 1, 5, 1, 1, 1, 5, 5, 5, 1, 1, 1};
     for (int i = 0; i < initialAvail.length; i++){
@@ -44,7 +44,7 @@ public class DXToolsMethodsTest extends TestCase{
       }
     }*/
 
-    assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 5, finalAvail.length);
+    assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 8, finalAvail.length);
     assertEquals("test_resizeAvailability finalAvail[0].length : assertEquals", 3, finalAvail[0].length);
     assertEquals("test_resizeAvailability finalAvail[0][0].length : assertEquals", 1, finalAvail[0][0]);
     assertEquals("test_resizeAvailability finalAvail[0][1].length : assertEquals", 5, finalAvail[0][1]);
@@ -58,4 +58,4 @@ public class DXToolsMethodsTest extends TestCase{
 
   }
 
-}//ens class
+} //end class

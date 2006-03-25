@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2006-03-25 19:25:15 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -17,7 +17,7 @@ package dTest.dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -49,7 +49,7 @@ public class DStandardReportDataTest extends TestCase{
   
   public void setUp(){
   	_dDocument = new DDocument();
-  	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData.dia";
+  	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData5j.dia";
   	_type = 1;
   	_dm= new DModel(_dDocument,_fileName,_type);
   	_dm.getConditionsTest().initAllConditions(); //Affectation initialle

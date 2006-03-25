@@ -59,7 +59,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
 
     private DModel _dm;
 
-    private DStateBar _stateBar;
+    private DxStateBar _stateBar;
 
     private String _version;
 
@@ -90,7 +90,6 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         _dMediator = dMediator;
         _dm = new DModel(this, fileName, type);
         if (_dm.getError().length() == 0) {
-            //_dm.getTTStructure().addTTStructureListener(this);
             _documentName = modifiyDocumentName(ttName);
             buidDocument(true, true);
             _ttPane.updateTTPane(_dm.getTTStructure());
@@ -264,8 +263,8 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         });
 
         _dm.addObserver(this);
-        _stateBar = new DStateBar(_dm.getSetOfStates());
-        _dm.setStateBarComponent();
+        _stateBar = new DxStateBar(_dm.getSetOfStates());
+        //_dm.setStateBarComponent();
 
         _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
 

@@ -116,7 +116,7 @@ public class DiamantTest {
 		suite.addTest(DayTest.suite());
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
-//		suite.addTest(DXToolsMethodsTest.suite());
+		suite.addTest(DXToolsMethodsTest.suite());
 		suite.addTest(EventAttachTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
@@ -124,7 +124,7 @@ public class DiamantTest {
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(StudentsConditionsTest.suite());
-//		suite.addTest(ConditionsTest.suite());
+		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(DRoomTest.suite());
 		suite.addTest(SetOfSitesTest.suite());
@@ -143,12 +143,12 @@ public class DiamantTest {
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DSetOfStatesTest.suite());
-//		suite.addTest(DStandardReportDataTest.suite());
+		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
-//		suite.addTest(FirstAffectAlgorithmTest.suite());
+		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(SetOfCategoriesTest.suite());
-//		suite.addTest(RefinedStudMixAlgoTest.suite());
+		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
