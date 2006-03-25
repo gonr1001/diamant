@@ -79,10 +79,6 @@ public class DModel extends Observable {
 
     private String _error;
 
-    private DSetOfStates _setOfStates;
-    
-    private DxStateBarModel _stateBarModel;
-
     private SetOfInstructors _setOfInstructors;
     
     private SetOfRoomsFunctions _setOfRoomsFunctions = new SetOfRoomsFunctions(); 
@@ -144,8 +140,6 @@ public class DModel extends Observable {
         _currentSite = DConst.ACTIVITY_STANDARD_SITE;
         _importDone = false;
         _mergeDone = false;
-        _setOfStates = new DSetOfStates();
-        //_stateBarModel = new DxStateBarModel();
         _nbConflicts = new int[]{0,0,0};
         _setOfEvents = new SetOfEvents(this);
         _setOfImportErrors = new StandardCollection();
