@@ -63,7 +63,6 @@ import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dData.DefFilesToImportDlg;
 import dInterface.dData.ImportDlg;
 import dInterface.dData.ImportSelectiveFileDlg;
-import dInterface.dData.InstructorAvailabiliyDlg;
 import dInterface.dData.ReportsDlg;
 import dInterface.dMenus.DxMenuBar;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
@@ -573,14 +572,15 @@ public class DApplication implements ActionListener {
 	public void instructorAvailability() {
 		// new AvailabiltyDialog(this, this.getCurrentDModel()
 		// .getSetOfInstructors());
-		new InstructorAvailabiliyDlg(this);
+		//new InstructorAvailabiliyDlg(this);
+		new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
 
 	/**
 	 * 
 	 */
 	public void roomAvailability() {
-		new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfRooms());
+		new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfRooms(), DConst.ROOMASSIGN);
 	}
 
 	/**

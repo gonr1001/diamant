@@ -82,8 +82,8 @@ public class AvailabiltyDialog extends JDialog implements ActionListener,
      * @param doc
      *            The active document. Used to access the dictionnaries.
      */
-    public AvailabiltyDialog(DApplication dApplic, DSetOfResources setOfResources ) {
-        super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
+    public AvailabiltyDialog(DApplication dApplic, DSetOfResources setOfResources, String str) {
+        super(dApplic.getJFrame(), str, false);
         if (dApplic.getCurrentDoc() == null)
             return;
         _dmodel = dApplic.getCurrentDModel();
