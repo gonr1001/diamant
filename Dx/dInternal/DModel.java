@@ -140,7 +140,7 @@ public class DModel extends Observable {
         _currentSite = DConst.ACTIVITY_STANDARD_SITE;
         _importDone = false;
         _mergeDone = false;
-        _nbConflicts = new int[]{0,0,0};
+        _nbConflicts = new int[]{10,20,30};
         _setOfEvents = new SetOfEvents(this);
         _setOfImportErrors = new StandardCollection();
         _setOfImportSelErrors = new StandardCollection();
@@ -757,7 +757,7 @@ public class DModel extends Observable {
         //_stateBarModel.update();
               
         //notify
-        _nbConflicts = getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
+        _nbConflicts = this.getTTStructure().getCurrentCycle().getTotalNumberOfConflicts();
         this.notifyObservers(obj);
         this.clearChanged();
     }
