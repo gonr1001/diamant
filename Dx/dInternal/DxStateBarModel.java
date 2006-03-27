@@ -84,7 +84,7 @@ public class DxStateBarModel {
 	    /* 6 */
 		_al.elementAt(6).setValue(_dm.getSetOfActivities().getIDsByField(3, "true").size());
 	    /* 7 */
-		_al.elementAt(7).setValue(_dm.getSetOfEvents().getNumberOfEventAssign());
+		_al.elementAt(7).setValue(_dm.getStudentConflicts() + _dm.getInstructorConflicts() + _dm.getRoomConflicts());
 	    /* 8 */
 		_al.elementAt(8).setValue(_dm.getStudentConflicts());
 	    /* 9 */

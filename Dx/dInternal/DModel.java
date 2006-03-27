@@ -97,7 +97,7 @@ public class DModel extends Observable {
 
     protected static SetOfActivities _setOfActivities = null;
 
-    private DDocument _dDocument = null;
+    private DDocument _dDocument;
 
     private TTStructure _ttStruct;
 
@@ -971,14 +971,14 @@ public class DModel extends Observable {
 	}
 		
 	public int getStudentConflicts() {
-		return _nbConflicts[0];
+		return _nbConflicts[2];
 	}
 	
 	public int getInstructorConflicts() {
-		return _nbConflicts[1];
+		return _nbConflicts[0];
 	}
 	
 	public int getRoomConflicts() {
-		return _nbConflicts[2];
+		return _nbConflicts[1];
 	}
 } /* end class DModel */

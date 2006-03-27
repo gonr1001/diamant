@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2006-03-25 19:25:15 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2006-03-27 17:39:06 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -64,8 +64,7 @@ public class DStandardReportDataTest extends TestCase{
   public void test_getConflictsReport(){
   	int principalElt = 1;
   	int[] otherElts = {2,3};
-  	//String s =_report.getConflictsReport(principalElt,otherElts);
-	assertEquals("test_getConflictsReport: assertEquals","\r\n",_report.getConflictsReport(principalElt,otherElts));
+	assertEquals("test_getConflictsReport: assertEquals","Je;AM;3;\r\nJe;AM;4;\r\n",_report.getConflictsReport(principalElt,otherElts));
   }
   public void test_getStudentsReport(){
   	int principalElt = 1;

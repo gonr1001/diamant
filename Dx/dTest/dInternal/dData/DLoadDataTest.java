@@ -39,9 +39,6 @@ import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.TTStructure;
 
 public class DLoadDataTest extends TestCase {
-	private String _path5j;
-
-	private String _path7j;
 
 	private Vector _timeTable5j;
 
@@ -53,17 +50,17 @@ public class DLoadDataTest extends TestCase {
 
 	public DLoadDataTest(String name) {
 		super(name);
-		_path5j = "." + File.separator + "dataTest" + File.separator
+		String path5j = "." + File.separator + "dataTest" + File.separator
 				+ "loadData5j.dia";
 		_loadData5j = new DLoadData();
-		_timeTable5j = _loadData5j.loadTheTT(_path5j, "." + File.separator
-				+ "dataTest"); // + File.separator);
-		_path7j = "." + File.separator + "dataTest" + File.separator
+		_timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
+				+ "dataTest"); 
+		String path7j = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		_loadData7j = new DLoadData();
 
-		_timeTable7j = _loadData7j.loadTheTT(_path7j, "." + File.separator
-				+ "dataTest"); // + File.separator);
+		_timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
+				+ "dataTest"); 
 	}
 
 	public static Test suite() {

@@ -33,10 +33,9 @@ import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
 import dTest.dInternal.DSetOfResourcesTest;
-import dTest.dInternal.DSetOfStatesTest;
-import dTest.dInternal.DStateTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
+import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.DxStateTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
 import dTest.dInternal.dData.DLoadDataTest;
@@ -136,6 +135,7 @@ public class DiamantTest {
 		suite.addTest(DValueTest.suite());
 		suite.addTest(DObjectTest.suite());
 		suite.addTest(DxStateTest.suite());
+		suite.addTest(DxStateBarModelTest.suite());
 		suite.addTest(DataExchangeTest.suite());
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
@@ -143,7 +143,6 @@ public class DiamantTest {
 		suite.addTest(DLoadDataTest.suite());
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
-		suite.addTest(DSetOfStatesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());

@@ -47,7 +47,7 @@ public class DxStateTest extends TestCase{
   public static Test suite() {
    // the type safe way is in SimpleTest
    // the dynamic way :
-   return new TestSuite(DStateTest.class);
+   return new TestSuite(DxStateTest.class);
   } // end suite
   
   public void setUp(){
