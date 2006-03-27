@@ -1,6 +1,6 @@
 /**
 *
-* Title: DStateTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: DStateTest $Revision $  $Date: 2006-03-27 13:49:08 $
 * Description: 	DStateTest is a class used to test the class 
 * 				DState
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -24,52 +24,54 @@ package dTest.dInternal;
 
 import java.awt.Color;
 
-import dInternal.DState;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class DStateTest extends TestCase{
-	DState a;
-	DState b;
-	
-  public DStateTest(String name) {
-     super(name);
-
-  }
-  
-  public static Test suite() {
-   // the type safe way is in SimpleTest
-   // the dynamic way :
-   return new TestSuite(DStateTest.class);
-  } // end suite
-  
-  public void setUp(){
-  	a = new DState();
-  	b = new DState(Color.BLACK, 1);
-  }
-   
-  public void testA_setColor(){
-  	a.setColor(Color.RED);
-  	assertEquals("testA_setColor: assertEquals", Color.RED, a.getColor());
-  }
-  public void testA_setValue(){
-  	a.setValue(2);
-  	assertEquals("testA_setValue: assertEquals", 2, a.getValue());
-  }
-  public void testA_getSelectedField(){
-  	assertEquals("testA_getSelectedField: assertEquals", 0, a.getSelectedField());
-  }
- 
-  public void testB_setColor(){
-  	b.setColor(Color.BLUE);
-  	assertEquals("testB_setColor: assertEquals", Color.BLUE, b.getColor());
-  }
-  public void testB_setValue(){
-  	b.setValue(4);
-  	assertEquals("testB_setValue: assertEquals", 4, b.getValue());
-  }
-  public void testB_getSelectedField(){
-  	assertEquals("testB_getSelectedField: assertEquals", 0, b.getSelectedField());
-  }
 }
+
+//	DState a;
+//	DState b;
+//	
+//  public DStateTest(String name) {
+//     super(name);
+//
+//  }
+//  
+//  public static Test suite() {
+//   // the type safe way is in SimpleTest
+//   // the dynamic way :
+//   return new TestSuite(DStateTest.class);
+//  } // end suite
+//  
+//  public void setUp(){
+//  	a = new DState();
+//  	b = new DState(Color.BLACK, 1);
+//  }
+//   
+//  public void testA_setColor(){
+//  	a.setColor(Color.RED);
+//  	assertEquals("testA_setColor: assertEquals", Color.RED, a.getColor());
+//  }
+//  public void testA_setValue(){
+//  	a.setValue(2);
+//  	assertEquals("testA_setValue: assertEquals", 2, a.getValue());
+//  }
+//  public void testA_getSelectedField(){
+//  	assertEquals("testA_getSelectedField: assertEquals", 0, a.getSelectedField());
+//  }
+// 
+//  public void testB_setColor(){
+//  	b.setColor(Color.BLUE);
+//  	assertEquals("testB_setColor: assertEquals", Color.BLUE, b.getColor());
+//  }
+//  public void testB_setValue(){
+//  	b.setValue(4);
+//  	assertEquals("testB_setValue: assertEquals", 4, b.getValue());
+//  }
+//  public void testB_getSelectedField(){
+//  	assertEquals("testB_getSelectedField: assertEquals", 0, b.getSelectedField());
+//  }
+//}

@@ -232,13 +232,6 @@ public class DModel extends Observable {
         return _isATimeTable;
     }
 
-//    /**
-//     * 
-//     * @return
-//     */
-//    public DSetOfStates getSetOfStates() {
-//        return _setOfStates;
-//    }
 
     /**
      * 
@@ -768,27 +761,7 @@ public class DModel extends Observable {
         this.notifyObservers(obj);
         this.clearChanged();
     }
-//    public void initChangeInDModel(Object obj) { 
-//    	//changeInDModel(obj);
-//    	this.setChanged();
-//        //change model
-//    	if(isMultiSite())
-//            	updateInstructorAvail();//this._setOfEvents.setAssignedInstAvail();
-//        this.setModified();
-//
-//        if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
-//            this.prepareExamsData();
-//        }
-//        this.buildSetOfEvents();
-//        _conditionTest = new TestConditions(this);
-//        this.getConditionsTest().initAllConditions();        
-//        this.setStateBarComponent();
-//        this.getSetOfActivities().sortSetOfResourcesByID();
-//              
-//        //notify
-//        this.notifyObservers(obj);
-//        this.clearChanged();
-//    }
+
 
     public void changeInDModelByAllSites(Object obj) {
         this.setChanged();

@@ -37,6 +37,7 @@ import dTest.dInternal.DSetOfStatesTest;
 import dTest.dInternal.DStateTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
+import dTest.dInternal.DxStateTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
@@ -134,7 +135,7 @@ public class DiamantTest {
 		suite.addTest(DSetOfInstructorsTest.suite());
 		suite.addTest(DValueTest.suite());
 		suite.addTest(DObjectTest.suite());
-		suite.addTest(DStateTest.suite());
+		suite.addTest(DxStateTest.suite());
 		suite.addTest(DataExchangeTest.suite());
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
