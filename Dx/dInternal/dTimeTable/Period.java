@@ -48,7 +48,7 @@ public class Period extends DObject {
 	 * contains a resource where ID is the event which is place in the period,
 	 * and resource attach is a conflictsattach type
 	 */
-	private DSetOfResources _eventsInPeriod;//
+	private DSetOfResources _eventsInPeriod;
 	
 	
 	/**
@@ -56,6 +56,12 @@ public class Period extends DObject {
 	 * */
 	public Period() {
 		_eventsInPeriod =  new StandardCollection();
+		 _nbStudConflict = 0;
+		_nbInstConflict = 0;
+		_nbRoomConflict= 0;
+		_beginHour[0]= 8;  
+		_beginHour[1]= 0;
+		_error = "";
 	}
 	
 	/**
@@ -92,7 +98,7 @@ public class Period extends DObject {
 	 * */
 	public int[] getEndHour(int periodLenght){
 		int[] endHour = new int [2];
-		endHour[1] = (_beginHour[1] + periodLenght) % MINUTES;//
+		endHour[1] = (_beginHour[1] + periodLenght) % MINUTES;
 		endHour[0] = _beginHour[0] + (_beginHour[1] + periodLenght)/MINUTES;
 		return endHour;
 	}
@@ -281,7 +287,6 @@ public class Period extends DObject {
 	 * @return SetOfRessources containing the conflicts as an attachment
 	 */
 	public DSetOfResources getConflictsEventsInPeriod(String event){
-		//System.out.println("getConflictsEventsInPeriod");
 		DSetOfResources setOfConf = new StandardCollection();
 		int sizeIn = 0;
 		for (int i=0; i< _eventsInPeriod.size(); i++){

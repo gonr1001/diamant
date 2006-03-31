@@ -96,7 +96,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		 * @see dInterface.dUtil.ApplyCloseInterface#applyPressed()
 		 */
 		public void applyPressed() {
-			System.out.println("Button apply");
+			//System.out.println("Button apply");
 			setStudentsInGroups();
 			_activitiesCombo.setEnabled(true);
 			_typeCombo.setEnabled(true);

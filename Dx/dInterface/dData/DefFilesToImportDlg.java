@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.9 $  $Date: 2005-02-01 21:27:15 $
+ * Title: DefFileToImportDlg $Revision: 1.10 $  $Date: 2006-03-31 19:05:05 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.10 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -236,7 +236,7 @@ implements ActionListener{
 		} catch(IOFileException iofe) {
 			new FatalProblemDlg(_dApplic.getJFrame(),
 					iofe + "\n I was in DefFilesToImportDlg.saveFile");
-			System.out.println(iofe);
+			//System.out.println(iofe);
 			iofe.printStackTrace();
 			System.exit(31);
 		} // end catch

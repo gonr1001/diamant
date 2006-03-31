@@ -838,12 +838,12 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 
 			if ((e.getClickCount() == 1) && 
 					(e.getSource() instanceof JList)) 
-					System.out.println("clicking once the mouse " + e.getSource() );
+					//System.out.println("clicking once the mouse " + e.getSource() );
 			
 			if ((e.getClickCount() == 2) && 
 				(e.getSource() instanceof JList)) {
 				if (!_applyPanel.isFirstEnable()) {
-					System.out.println("you doubleclick");				
+					//System.out.println("you doubleclick");				
 					changeFixedInGroup(((JList) e.getSource()).getSelectedIndex());
 					//_applyPanel.setFirstEnable();
 				} else {

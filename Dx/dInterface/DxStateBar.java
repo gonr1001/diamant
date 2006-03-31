@@ -42,13 +42,11 @@ public class DxStateBar extends JPanel {
 
 	public DxStateBar(DxStateBarModel stateBarModel) {
 		_stateBarModel = stateBarModel;
-		System.out.println(_stateBarModel.size());
 		_theLabels = new JLabel[_stateBarModel.size()];
 		for (int i = 0; i < _stateBarModel.size(); i++) {
 			_theLabels[i] = new JLabel();
 			this.add(_theLabels[i]);
 		}
-		//showDStateBar(s);
 	}
 
 	public void upDate() {

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.28 $  $Date: 2006-03-15 14:25:35 $
+ * Title: NewTTDlg $Revision: 1.29 $  $Date: 2006-03-31 19:05:06 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -104,11 +104,8 @@ public class NewTTDlg extends JDialog {
 				System.exit(1);
 			}
 			dispose();
-			if (dApplic.isInDevelopment()) {
-				dApplic.afterNewTTable();
-			} else {
-//				dApplic.getMenuBar().postNewTTCyCmd();
-			}
+			dApplic.afterNewTTable();
+
 
 		} // if ((returnVal == JFileChooser.APPROVE_OPTION)) {
 		// XXXX Pascal: else?  Si on choisi un mauvais fichier XML on recoit un message d'erreur est l'application ferme en catastrophe.
