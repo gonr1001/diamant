@@ -40,6 +40,7 @@ public class Period extends DObject {
 	private int _nbInstConflict = 0;
 	private int _nbRoomConflict= 0;
 	private int[] _beginHour= {8,0};//_beginHour[0]= hour; _beginHour[1]= minute
+	private int[] _endHour= {9,0};//_endHour[0]= hour; _endHour[1]= minute
 	private int _priority;// 0= normal; 1= low; 2= null
 	private String _error = "";
 	
@@ -96,11 +97,8 @@ public class Period extends DObject {
 	 * @return int[2] the table of the begin hour. The in range 0 is the hour
 	 * and the element in the range 1 is the minutes
 	 * */
-	public int[] getEndHour(int periodLenght){
-		int[] endHour = new int [2];
-		endHour[1] = (_beginHour[1] + periodLenght) % MINUTES;
-		endHour[0] = _beginHour[0] + (_beginHour[1] + periodLenght)/MINUTES;
-		return endHour;
+	public int[] getEndHour(){
+	   return _endHour;
 	}
 	
 	/**
@@ -222,6 +220,19 @@ public class Period extends DObject {
 		_beginHour[0]= Integer.parseInt(time.nextToken());
 		_beginHour[1]= Integer.parseInt(time.nextToken());
 		_priority= Integer.parseInt(prior);
+		
+		try {
+			StringTokenizer timeend= new StringTokenizer(end,":");
+			_endHour[0]= Integer.parseInt(timeend.nextToken());
+			_endHour[1]= Integer.parseInt(timeend.nextToken());
+		} catch (Exception e) {
+			_endHour[1] = (_beginHour[1] + 60) % MINUTES;//
+			_endHour[0] = _beginHour[0] + (_beginHour[1] + 60)/MINUTES;
+			System.out.println(" Period -- no end time");
+			//e.printStackTrace();
+		}
+		
+		
 		if (begin == null || end == null || prior == null){
 			_error = DConst.ERROR_XML;
 			return _error;
@@ -241,12 +252,18 @@ public class Period extends DObject {
 		 DConst.HourFormat.setMinimumIntegerDigits(2);
         try{
 			xmlElt = new XMLWriter();
-			String time= DConst.HourFormat.format(_beginHour[0])+":"+DConst.HourFormat.format(_beginHour[1]);
 			Element eltPer= xmlElt.createElement(doc,DConst.TTXML_TTPERIOD);
+			String time= DConst.HourFormat.format(_beginHour[0])+":"+DConst.HourFormat.format(_beginHour[1]);
 			Element child0=xmlElt.createElement(doc,DConst.TTXML_BEGINTIME,time);
-			Element child1=xmlElt.createElement(doc,DConst.TTXML_PRIORITY,Integer.toString(_priority));
+			
+			String timeend= DConst.HourFormat.format(_endHour[0])+":"+DConst.HourFormat.format(_endHour[1]);
+			Element child1=xmlElt.createElement(doc,DConst.TTXML_ENDTIME,timeend);
+			
+			Element child2=xmlElt.createElement(doc,DConst.TTXML_PRIORITY,Integer.toString(_priority));
+			
 			eltPer= xmlElt.appendChildInElement(eltPer, child0);
 			eltPer= xmlElt.appendChildInElement(eltPer, child1);
+			eltPer= xmlElt.appendChildInElement(eltPer, child2);
 			return eltPer;
 		} catch(Exception e){
 			System.out.println("Period: "+e);//debug

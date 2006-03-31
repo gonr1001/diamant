@@ -116,8 +116,8 @@ String path;
     }catch(Exception e){
       System.out.println(e);
     }
-    assertEquals("test_getEndHour : assertEquals (endHour):", period.getEndHour(60)[0], 9);
-    assertEquals("test_getEndHour : assertEquals (endMinute):", period.getEndHour(60)[1], 15);
+    assertEquals("test_getEndHour : assertEquals (endHour):", period.getEndHour()[0], 9);
+    assertEquals("test_getEndHour : assertEquals (endMinute):", period.getEndHour()[1], 15);
   }
 
 

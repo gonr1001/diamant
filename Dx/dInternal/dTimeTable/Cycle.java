@@ -659,10 +659,10 @@ public class Cycle extends DObject {
 									.length());
 					String ehour = "00"
 							+ ((Period) per.getAttach())
-									.getEndHour(periodLength)[0];
+									.getEndHour()[0];
 					String eminute = "00"
 							+ ((Period) per.getAttach())
-									.getEndHour(periodLength)[1];
+									.getEndHour()[1];
 					String endHour = ehour.substring(ehour.length() - 2, ehour
 							.length())
 							+ ":"
@@ -724,8 +724,8 @@ public class Cycle extends DObject {
 					value.setIntValue(-1);
 					Period per = (Period) seq.getSetOfPeriods().getResourceAt(
 							seq.getSetOfPeriods().size() - 1).getAttach();
-					String hour = "00" + per.getEndHour(periodLength)[0];
-					String minute = "00" + per.getEndHour(periodLength)[1];
+					String hour = "00" + per.getEndHour()[0];
+					String minute = "00" + per.getEndHour()[1];
 					String endHour = hour.substring(hour.length() - 2, hour
 							.length())
 							+ ":"
@@ -746,8 +746,8 @@ public class Cycle extends DObject {
 						seq.getSetOfPeriods().size() - 1).getAttach();
 				DValue value = new DValue();
 				value.setIntValue(1);
-				String hour = "00" + per.getEndHour(periodLength)[0];
-				String minute = "00" + per.getEndHour(periodLength)[1];
+				String hour = "00" + per.getEndHour()[0];
+				String minute = "00" + per.getEndHour()[1];
 				String endHour = hour.substring(hour.length() - 2, hour
 						.length())
 						+ ":"

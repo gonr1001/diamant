@@ -218,7 +218,7 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 	private static boolean isAvailableInRange(int[][] initial, int day,
 			Period per, int periodLenght) {//, int up_low){
 		int[] beginH = per.getBeginHour();
-		int[] endH = per.getEndHour(periodLenght);
+		int[] endH = per.getEndHour();
 		int beginIndex;
 		int endIndex;
 		beginIndex = beginH[0] - DConst.STIBEGINHOUR;
