@@ -228,7 +228,7 @@ public class Period extends DObject {
 		} catch (Exception e) {
 			_endHour[1] = (_beginHour[1] + 60) % MINUTES;//
 			_endHour[0] = _beginHour[0] + (_beginHour[1] + 60)/MINUTES;
-			System.out.println(" Period -- no end time");
+			//System.out.println(" Period -- no end time");
 			//e.printStackTrace();
 		}
 		
