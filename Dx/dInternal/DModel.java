@@ -81,8 +81,7 @@ public class DModel extends Observable {
 
     private SetOfInstructors _setOfInstructors;
     
-    private SetOfRoomsFunctions _setOfRoomsFunctions = new SetOfRoomsFunctions(); 
-
+    private SetOfRoomsFunctions _setOfRoomsFunctions;
     protected static SetOfSites _setOfSites = null;
 
     protected static SetOfCategories _setOfCategories = null;
@@ -144,6 +143,7 @@ public class DModel extends Observable {
         _setOfEvents = new SetOfEvents(this);
         _setOfImportErrors = new StandardCollection();
         _setOfImportSelErrors = new StandardCollection();
+       
         _progressBarState = new DValue();
         _progressBarState.setIntValue(0);  // XXXX Pascal: magic number
         _dDocument = dDocument;
@@ -163,6 +163,7 @@ public class DModel extends Observable {
             _isATimeTable = true;
         _type = type;
         _modified = false;
+        _setOfRoomsFunctions = new SetOfRoomsFunctions(); 
         _setOfRoomsFunctions.functionReader();
         this.notifyObservers(this);
         this.clearChanged(); // XXXX Pascal: Cette methode est appelee automatiquement par notifyObservers()

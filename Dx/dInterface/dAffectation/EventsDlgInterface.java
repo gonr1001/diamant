@@ -109,7 +109,7 @@ public abstract class EventsDlgInterface extends JDialog implements
      *            the title of the dialog
      */
     public EventsDlgInterface(DApplication dApplic, String title) {
-        super(dApplic.getJFrame(), title, true);
+        super(dApplic.getJFrame(), title + " rgrEDL", true);
         _dApplic = dApplic;
         _jDialog = this;
         if (_dApplic.getCurrentDoc() == null)

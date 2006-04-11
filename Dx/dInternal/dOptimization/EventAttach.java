@@ -32,7 +32,8 @@ public class EventAttach extends DObject {
 	private DSetOfResources _setInstructorKeys;
 
 	private long _roomRescKey; // the room key
-	private boolean _roomState;/* the state of the event in the room
+	
+	private boolean _roomFixed;/* the state of the event in the room
 	true if event is fixed in the room and false otherwise */
 	private int _roomFunction; // the prefered function for the event
 
@@ -43,7 +44,7 @@ public class EventAttach extends DObject {
 	 */
 	private Vector _tabuList; //
 
-	private boolean isAssign = false;// tell if this event is place in the timetable
+	private boolean _isAssigned = false;// tell if this event is placed in the timetable
 
 	private boolean isPermanent = false;// tell if this event is permanent in the timetable
 
@@ -160,20 +161,20 @@ public class EventAttach extends DObject {
 		return false;
 	}
 
-	public void setAssignState(boolean state) {
-		isAssign = state;
+	public void setAssigned(boolean state) {
+		_isAssigned = state;
 	}
 
-	public boolean getAssignState() {
-		return isAssign;
+	public boolean isAssigned() {
+		return _isAssigned;
 	}
 	
-	public void setRoomState(boolean state){
-		_roomState = state;
+	public void setRoomFixed(boolean state){
+		_roomFixed = state;
 	}
 	
-	public boolean getRoomState(){
-		return _roomState;
+	public boolean isRoomFixed(){
+		return _roomFixed;
 	}
 	
 	public void setRoomFunction(int function){
@@ -264,9 +265,9 @@ public class EventAttach extends DObject {
 	 */
 	public void setState(String state) {
 		if(state.equalsIgnoreCase(DConst.FIXED_ROOM_STATE))
-			_roomState= true;
+			_roomFixed = true;
 		else
-			_roomState=false;
+			_roomFixed = false;
 		
 	}
 }

@@ -296,12 +296,6 @@ public abstract class DSetOfResources extends DObject {
 		if (index != -1)
 			return (DResource) _resourceList.get(index);
 		return null;
-
-		/*for (int i = 0; i < _resourceList.size(); i++){
-		 if (((DResource)_resourceList.get(i)).getID().equalsIgnoreCase( ID))
-		 return (DResource)_resourceList.get(i);
-		 }
-		 return null;*/
 	}
 
 	/**

@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.41 $  $Date: 2006-03-15 13:35:54 $
+* Title: TestConditions $Revision: 1.42 $  $Date: 2006-04-11 14:19:56 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.41 $
+* @version $Revision: 1.42 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -192,7 +192,7 @@ public class TestConditions {
   private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts, DResource event, int operation, boolean usePriority ){
     int[] numberOfConflicts={0,0,0};
 
-    if(((EventAttach)event.getAttach()).getAssignState()){
+    if(((EventAttach)event.getAttach()).isAssigned()){
       //StringTokenizer periodKey = new StringTokenizer(((EventAttach)event.getAttach()).getPeriodKey(),DConst.TOKENSEPARATOR);
       //int[] perKey=	{Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken()),Integer.parseInt(periodKey.nextToken())};
       int[] perKey= ((EventAttach)event.getAttach()).getPeriodKeyTable();
@@ -212,12 +212,12 @@ public class TestConditions {
           
           if (operation!=0){
             ((EventAttach)event.getAttach()).setInAPeriod(getBooleanValue(operation));
-            ((EventAttach)event.getAttach()).setAssignState(getBooleanValue(operation));
+            ((EventAttach)event.getAttach()).setAssigned(getBooleanValue(operation));
           }
         }// end for (int j=0; j< ((EventAttach)event.getAttach())
       }else{// end if (tts.getCurrentCycle().isPeriodContiguous(
         ((EventAttach)event.getAttach()).setInAPeriod(false);
-        ((EventAttach)event.getAttach()).setAssignState(false);
+        ((EventAttach)event.getAttach()).setAssigned(false);
         ((EventAttach)event.getAttach()).setPermanentState(false);
       }// end else if (tts.getCurrentCycle().isPeriodContiguous(
     }// end if (_dm.getSetOfActivities().getUnity(
@@ -281,7 +281,7 @@ public class TestConditions {
    */
   public void addEventInAllPeriods(TTStructure improveTTStruct, DResource event) {
   	EventAttach eventAttach = ((EventAttach) event.getAttach()).cloneEvent();
-  	eventAttach.setAssignState(true);
+  	eventAttach.setAssigned(true);
   	DResource res = new DResource(event.getID(),eventAttach);
   	eventAttach.setDuration(improveTTStruct.getPeriodLenght());
   	for(int i=0; i< improveTTStruct.getCurrentCycle().getSetOfDays().size(); i++){

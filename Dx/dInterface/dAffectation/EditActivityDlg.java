@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.60 $  $Date: 2006-03-03 16:03:31 $
+ * Title: EditActivityDlg $Revision: 1.61 $  $Date: 2006-04-11 14:19:54 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.60 $
+ * @version $Revision: 1.61 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -113,7 +113,7 @@ public class EditActivityDlg
                          DApplication dApplic,
                          String currentActivity,
                          boolean canBeModified) {
-    super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
+    super(dialog, DConst.T_AFFEC_DLG+"RGRMultiEvent");//"Affectation d'évenement(s)");
     continueContructor(dialog, dApplic, currentActivity, canBeModified);
 
   } // end EditActivityDlg
@@ -131,7 +131,7 @@ public class EditActivityDlg
                          String currentActivity,
                          EventsDlgInterface evDlg,
                          boolean canBeModified) {
-    super(dialog, DConst.EVENTS_DLG_TITLE);
+    super(dialog, DConst.EVENTS_DLG_TITLE+"RGROneEvent");
     _evDlgInt= evDlg;
     continueContructor(dialog, dApplic, currentActivity, canBeModified);
 
@@ -375,7 +375,7 @@ public class EditActivityDlg
     JPanel fixingPanel = new JPanel();
     fixingPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ASSIGN));
     JToggleButton assigned = new JToggleButton(DConst.BUT_PLACE);
-    assigned.setSelected(event.getAssignState());
+    assigned.setSelected(event.isAssigned());
     assigned.addActionListener(this);
     JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
 
@@ -753,7 +753,7 @@ public class EditActivityDlg
     event.setKey(4,periodKey);
     event.setKey(1,intructorKeys);
     event.setKey(2,Long.toString(getResourceKey(_dApplic.getCurrentDModel().getSetOfRooms(),room)));
-    event.setAssignState(assignBut);
+    event.setAssigned(assignBut);
     event.setPermanentState(fixedBut);
     Vector vect= new Vector();
     vect.add(_unities.get(_currentActivityIndex));

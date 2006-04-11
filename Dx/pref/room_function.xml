@@ -1,9 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
+<?xml version="1.0" encoding="UTF-8"?>
 <ROOM_FUNCTIONS>
 	<ROOM_FUNCTION>
 		<KEY>1</KEY>
-		<NAME>Semi</NAME>
+		<NAME>Tous</NAME>
 	</ROOM_FUNCTION>
 	<ROOM_FUNCTION>
 		<KEY>2</KEY>
@@ -24,5 +23,9 @@
 	<ROOM_FUNCTION>
 		<KEY>6</KEY>
 		<NAME>Salle de conférence</NAME>
+	</ROOM_FUNCTION>
+	<ROOM_FUNCTION>
+		<KEY>7</KEY>
+		<NAME>Semi</NAME>
 	</ROOM_FUNCTION>
 </ROOM_FUNCTIONS>

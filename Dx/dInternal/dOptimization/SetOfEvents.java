@@ -148,11 +148,11 @@ public class SetOfEvents extends DSetOfResources {
 												.getDuration(), assignment
 												.getPeriodKey());
 								event
-										.setAssignState(((Unity) unity
+										.setAssigned(((Unity) unity
 												.getAttach()).isAssign());
 								event.setPermanentState(((Unity) unity
 										.getAttach()).isPermanent());
-								event.setRoomState(assignment.getRoomState());
+								event.setRoomFixed(assignment.getRoomState());
 								event.setRoomFunction(((Unity) unity.getAttach()).
 										getFirstPreferFunctionRoom());
 								//System.out.println("Unity Key: "+unityKey+ "
@@ -255,11 +255,11 @@ public class SetOfEvents extends DSetOfResources {
 					.getRoomKey()));
 			assignment.setPeriodKey(event.getPeriodKey());
 
-			unity.setAssign(event.getAssignState());
+			unity.setAssign(event.isAssigned());
 			unity.setPermanent(event.getPermanentState());
 			unity.setDuration(event.getDuration());
 			unity.setFirstPreferFunctionRoom(event.getRoomFunction());
-			assignment.setRoomState(event.getRoomState());
+			assignment.setRoomState(event.isRoomFixed());
 			
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)
 

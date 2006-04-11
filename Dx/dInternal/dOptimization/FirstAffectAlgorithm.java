@@ -1,6 +1,6 @@
 /**
 *
-* Title: FirstAffectAlgorithm $Revision: 1.21 $  $Date: 2006-02-20 14:06:51 $
+* Title: FirstAffectAlgorithm $Revision: 1.22 $  $Date: 2006-04-11 14:19:56 $
 * Description: FirstAffectAlgorithm is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.21 $
+* @version $Revision: 1.22 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -72,7 +72,7 @@ public class FirstAffectAlgorithm implements Algorithm {
       int[] nbConf;
       /*while(((EventAttach)currentEvent.getAttach()).getAssignState())
         currentEvent= (Resource)vectorOfEvents.remove(0);*/
-      if(!((EventAttach)currentEvent.getAttach()).getAssignState()){
+      if(!((EventAttach)currentEvent.getAttach()).isAssigned()){
         currentDuration = ((EventAttach)currentEvent.getAttach()).getDuration()/_dm.getTTStructure().getPeriodLenght();
         periodList=buildSortContiguousPeriodVector(currentDuration,_dm.getConditionsTest().getAvoidPriorityTable());
         while(!periodList.isEmpty()){
@@ -80,12 +80,12 @@ public class FirstAffectAlgorithm implements Algorithm {
           currentPeriod= (Period)value.getObjectValue();
           int[] dayTime= {value.getIntValue(), currentPeriod.getBeginHour()[0],currentPeriod.getBeginHour()[1]};
           ((EventAttach)currentEvent.getAttach()).setKey(4,_dm.getTTStructure().getCurrentCycle().getPeriod(dayTime));
-          ((EventAttach)currentEvent.getAttach()).setAssignState(true);
+          ((EventAttach)currentEvent.getAttach()).setAssigned(true);
           nbConf= _dm.getConditionsTest().getEventConflictsInTTs(_dm.getTTStructure(),currentEvent,true);
           isNumberOfConflictsAccept= isConflictsAcceptable(nbConf);
-          ((EventAttach)currentEvent.getAttach()).setAssignState(false);
+          ((EventAttach)currentEvent.getAttach()).setAssigned(false);
           if((isNumberOfConflictsAccept) && ((EventAttach)currentEvent.getAttach()).getDuration()!=0){
-            ((EventAttach)currentEvent.getAttach()).setAssignState(true);
+            ((EventAttach)currentEvent.getAttach()).setAssigned(true);
             _dm.getConditionsTest().addEventInTTs(_dm.getTTStructure(),currentEvent,true);
             _placeEvent.add(currentEvent);
             periodList.removeAllElements();

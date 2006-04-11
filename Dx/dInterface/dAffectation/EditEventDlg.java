@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.4 $  $Date: 2006-03-03 16:03:32 $
+ * Title: EditActivityDlg $Revision: 1.5 $  $Date: 2006-04-11 14:19:54 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -112,7 +112,7 @@ public class EditEventDlg
                          DApplication dApplic,
                          String currentActivity,
                          boolean canBeModified) {
-    super(dialog, DConst.T_AFFEC_DLG);//"Affectation d'évenement(s)");
+    super(dialog, DConst.T_AFFEC_DLG+"RGRMultiEvent");//"Affectation d'évenement(s)");
     continueContructor(dialog, dApplic, currentActivity, canBeModified);
 
   } // end EditActivityDlg
@@ -130,7 +130,7 @@ public class EditEventDlg
                          String currentActivity,
                          EventsDlgInterface evDlg,
                          boolean canBeModified) {
-    super(dialog, DConst.EVENTS_DLG_TITLE);
+    super(dialog, DConst.EVENTS_DLG_TITLE+"RGROneEvent");
     _evDlgInt= evDlg;
     continueContructor(dialog, dApplic, currentActivity, canBeModified);
 
@@ -475,7 +475,7 @@ public class EditEventDlg
     JPanel fixingPanel = new JPanel();
     fixingPanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.R_ASSIGN));
     JToggleButton assigned = new JToggleButton(DConst.BUT_PLACE);
-    assigned.setSelected(event.getAssignState());
+    assigned.setSelected(event.isAssigned());
     assigned.addActionListener(this);
     JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
 
@@ -814,7 +814,7 @@ public class EditEventDlg
     if(event.getRoomKey()==-1)
     	list[0].add(DConst.NOT_PLACED_ROOM_STATE);
     else{
-    	if(event.getRoomState())
+    	if(event.isRoomFixed())
     		list[0].add(DConst.FIXED_ROOM_STATE);
     	else
     		list[0].add(DConst.PLACED_ROOM_STATE);
@@ -885,7 +885,7 @@ public class EditEventDlg
     event.setKey(4,periodKey);
     event.setKey(1,intructorKeys);
     event.setKey(2,Long.toString(getResourceKey(_dApplic.getCurrentDModel().getSetOfRooms(),room)));
-    event.setAssignState(assignBut);
+    event.setAssigned(assignBut);
     event.setPermanentState(fixedBut);
     event.setState(state);
     event.setRoomFunction((int)roomFunction.getKey());
