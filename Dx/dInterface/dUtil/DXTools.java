@@ -20,7 +20,7 @@ import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -29,47 +29,47 @@ import javax.swing.JScrollPane;
 import dConstants.DConst;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.SetOfResources;
-import dInternal.dUtil.DXToolsMethods;
+
 
 
 public class DXTools{
 
   
-  /**
-    * check if the selected file exist before closed the dialog
-    * @param string the file name
-    * @return boolean true if the file exist a nd false otherwise
-    * */
-   public final static int showOpenDialog(Component parent, JFileChooser fc){
-     int returnVal=0;
-      String filename="nothing.txt";
-      while((!DXToolsMethods.fileExists(filename))&&
-            (returnVal==JFileChooser.APPROVE_OPTION)){
-          returnVal = fc.showOpenDialog(parent);
-        if(fc.getSelectedFile()!=null)
-          filename= fc.getSelectedFile().getAbsolutePath();
+//  /**
+//    * check if the selected file exist before closed the dialog
+//    * @param string the file name
+//    * @return boolean true if the file exist a nd false otherwise
+//    * */
+//   public final static int showOpenDialog(Component parent, JFileChooser fc){
+//     int returnVal=0;
+//      String filename="nothing.txt";
+//      while((!DXToolsMethods.fileExists(filename))&&
+//            (returnVal==JFileChooser.APPROVE_OPTION)){
+//          returnVal = fc.showOpenDialog(parent);
+//        if(fc.getSelectedFile()!=null)
+//          filename= fc.getSelectedFile().getAbsolutePath();
+//
+//      }
+//     return returnVal;
+//   }
 
-      }
-     return returnVal;
-   }
-
-   /**
-   * check if the selected file exist before closed the dialog
-   * @param string the file name
-   * @return boolean true if the file exist a nd false otherwise
-   * */
-  public final static int showDialog(Component parent, JFileChooser fc, String message){
-    int returnVal=0;
-     String filename="nothing.txt";
-     while((!DXToolsMethods.fileExists(filename))&&
-           (returnVal==JFileChooser.APPROVE_OPTION)){
-         returnVal = fc.showDialog(parent, message);
-       if(fc.getSelectedFile()!=null)
-         filename= fc.getSelectedFile().getAbsolutePath();
-
-     }
-    return returnVal;
-   }
+//   /**
+//   * check if the selected file exist before closed the dialog
+//   * @param string the file name
+//   * @return boolean true if the file exist a nd false otherwise
+//   * */
+//  public final static int showDialog(Component parent, JFileChooser fc, String message){
+//    int returnVal=0;
+//     String filename="nothing.txt";
+//     while((!DXToolsMethods.fileExists(filename))&&
+//           (returnVal==JFileChooser.APPROVE_OPTION)){
+//         returnVal = fc.showDialog(parent, message);
+//       if(fc.getSelectedFile()!=null)
+//         filename= fc.getSelectedFile().getAbsolutePath();
+//
+//     }
+//    return returnVal;
+//   }
 
    /**
    * Search the indexes to be showed as selected in a JList.

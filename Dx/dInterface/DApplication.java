@@ -47,7 +47,6 @@ import javax.swing.WindowConstants;
 import dConstants.DConst;
 import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.ManualImprovementDlg;
-import dInterface.dTimeTable.NewTTDlg;
 import dInterface.dTimeTable.OpenTTDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsTTDlg;
@@ -64,6 +63,7 @@ import dInterface.dData.DefFilesToImportDlg;
 import dInterface.dData.ImportDlg;
 import dInterface.dData.ImportSelectiveFileDlg;
 import dInterface.dData.ReportsDlg;
+import dInterface.dFileMenuDlgs.NewTimeTableDlg;
 import dInterface.dMenus.DxMenuBar;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
@@ -122,6 +122,8 @@ public class DApplication implements ActionListener {
 	private DMediator _dMediator;
 
 	private String _currentDir;
+	
+	private String _fileToOpen;
 
 	private DxMenuBar _dxMenuBar;
 
@@ -248,10 +250,6 @@ public class DApplication implements ActionListener {
 	public DDocument getCurrentDoc() {
 		return _dMediator.getCurrentDoc();
 	} // end getCurrentDoc
-
-	// public DMenuBar getMenuBar() {
-	// return _dMenuBar;
-	// } // end getMenuBar
 
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
@@ -401,22 +399,56 @@ public class DApplication implements ActionListener {
 	 * 
 	 */
 	public void newTTableCycle() {
-		new NewTTDlg(this, DConst.CYCLE);
+		new NewTimeTableDlg(this, DConst.CYCLE);
+		this.setCurrentDir(_fileToOpen);
+		String error = this.getDMediator().addDoc(
+				this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.CYCLE);
+
+		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
+		//              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
+		//                new FatalProblemDlg(dApplic.getJFrame(),error);
+		//                System.exit(1);
+		//
+		//              De plus, par convention, les valeurs positives de sortie d'une 
+		//              application indiquent que tout s'est BIEN passe.  Il faudrait 
+		//              retourner une valeur negative quand un probleme majeur survient.
+		if (error.length() != 0) {
+			new FatalProblemDlg(this.getJFrame(), error);
+			System.exit(1);
+		}
+		_dxMenuBar.afterNewTTable();
 	}
 
 	/**
 	 * 
 	 */
 	public void newTTableExam() {
-		new NewTTDlg(this, DConst.EXAM);
+		new NewTimeTableDlg(this, DConst.EXAM);
+		this.setCurrentDir(_fileToOpen);
+		String error = this.getDMediator().addDoc(
+				this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
+
+		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
+		//              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
+		//                new FatalProblemDlg(dApplic.getJFrame(),error);
+		//                System.exit(1);
+		//
+		//              De plus, par convention, les valeurs positives de sortie d'une 
+		//              application indiquent que tout s'est BIEN passe.  Il faudrait 
+		//              retourner une valeur negative quand un probleme majeur survient.
+		if (error.length() != 0) {
+			new FatalProblemDlg(this.getJFrame(), error);
+			System.exit(1);
+		}
+		_dxMenuBar.afterNewTTable();
 	}
 
 	/**
 	 * the Time table can be cycle or exam
 	 */
-	public void afterNewTTable() {
-		_dxMenuBar.afterNewTTable();
-	}
+//	public void afterNewTTable() {
+//		_dxMenuBar.afterNewTTable();
+//	}
 
 	/**
 	 * 
@@ -815,6 +847,10 @@ public class DApplication implements ActionListener {
 			this.getCurrentDModel().changeInDModelByAllSites(this.getJFrame());
 		else
 			this.getCurrentDModel().changeInDModel(this.getJFrame());
+	}
+
+	public void setFileToOpen(String absolutePath) {
+		_fileToOpen = absolutePath;		
 	}
 
 } /* end class DApplication */

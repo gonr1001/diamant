@@ -1,6 +1,6 @@
 /**
  *
- * Title: Preferences $Revision: 1.25 $  $Date: 2005-07-05 12:04:27 $
+ * Title: Preferences $Revision: 1.26 $  $Date: 2006-04-24 01:27:55 $
  * Description: Preferences is a class used to save the
  *              user preferences
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -123,7 +123,7 @@ public class Preferences {
   public Vector getSelectedOptionsInFullReport() {
     StringTokenizer st = new StringTokenizer(_selectedOptionsInFullReport,";");
     String s = "selectedOptionsInFullReport";
-    Vector res= new Vector();
+    Vector <String> res= new Vector<String>();
     //st.nextToken();
     if (st.nextToken().equals(s)) {
       while (st.countTokens() > 0 ){
@@ -138,7 +138,7 @@ public class Preferences {
   public Vector getSelectedOptionsInConflictReport() {
     StringTokenizer st = new StringTokenizer(_selectedOptionsInConflictReport,";");
     String s = "selectedOptionsInConflictReport";
-    Vector res= new Vector();
+    Vector <String> res= new Vector<String>();
     //st.nextToken();
     if (st.nextToken().equals(s)) {
       while (st.countTokens() > 0 ){
@@ -153,7 +153,7 @@ public class Preferences {
   public int [] getConflictLimits() {
   StringTokenizer st = new StringTokenizer(_conflictLimits,";");
   String s = "conflictLimits";
-  Vector res= new Vector();
+  Vector <String> res= new Vector<String>();
   //st.nextToken();
   if (st.nextToken().equals(s)) {
     while (st.countTokens() > 0 ){
@@ -164,7 +164,7 @@ public class Preferences {
   }
   int [] a = new int[res.size()];
   for(int i = 0 ; i < a.length; i++) {
-    a[i] = Integer.parseInt((String)res.get(i));
+    a[i] = Integer.parseInt(res.get(i));
   }
 
   return a;

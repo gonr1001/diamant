@@ -18,7 +18,6 @@ public class PersistanceMismatchException extends Exception {
      */
     public PersistanceMismatchException() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**

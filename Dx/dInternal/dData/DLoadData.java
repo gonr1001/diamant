@@ -153,11 +153,16 @@ public class DLoadData {
 	 *                        (if merge = false --> replace the current SetOfInstructors by the new SetOfInstructors)
 	 * @return SetOfInstructors
 	 */
-	public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge){
+	public SetOfInstructors extractInstructors(SetOfInstructors currentList, boolean merge, boolean dotDia){
 		//byte[]  dataloaded = preLoad(_instructorFileName);
+		SetOfInstructors instructorsList= null;
 		DataExchange de = buildDataExchange(_instructorFileName);
-		SetOfInstructors instructorsList= new SetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
-				_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours et 14 periods!
+		if (dotDia) {
+			instructorsList= new SetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
+					_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours et 14 periods!
+		} else {
+			instructorsList= new SetOfInstructors(5,14);// 5 jours et 14 periods !
+		}
 		if (de != null) {
 			if (merge)
 				if(currentList!= null)
@@ -394,7 +399,7 @@ public class DLoadData {
 		//int position=0;
 		if (currentSetOfResc instanceof dInternal.dData.dInstructors.SetOfInstructors ){
 			_instructorFileName= file;
-			newSetOfResc= extractInstructors(null,false);
+			newSetOfResc= extractInstructors(null,false,false);
 			_dm.resizeResourceAvailability(newSetOfResc);
 			//((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
 		} else if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites){

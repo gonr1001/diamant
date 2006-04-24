@@ -184,7 +184,7 @@ public class DMediator extends Object {
 		DDocument currentDoc = getCurrentDoc();
 		if (currentDoc != null) {
 			return currentDoc.getJIF();
-		} // end if
+		} 
 		return null;
 	} // end getCurrentFrame
 

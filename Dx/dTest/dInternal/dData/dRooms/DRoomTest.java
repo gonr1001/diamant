@@ -1,6 +1,6 @@
 /**
 *
-* Title: DRoomTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: DRoomTest $Revision $  $Date: 2006-04-24 01:27:56 $
 * Description: 	DRoomTest is a class used to test the class 
 * 				DRoomTest 
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -47,7 +47,7 @@ public class DRoomTest extends TestCase {
 		String str="Z7-2001;80;211;08,11,14,57;SHE;CAT1;Multimedia;1 1 1 1 5," +
 		"1 1 1 5 5,1 1 1 5 5;"+"\r\n";
 		DataExchange dex= new ByteArrayMsg("Dia1.6",str);
-		Vector v = new Vector();
+		Vector <String> v = new  Vector<String>();
 		v.add("1 1 1 1 5");
 		v.add("1 1 1 5 5");
 		v.add("1 1 1 5 5");
@@ -58,7 +58,7 @@ public class DRoomTest extends TestCase {
 	}
 	
 	public void test_removeAvailability(){
-		Vector v = new Vector();
+		Vector <String> v = new  Vector<String>();
 		v.add("1 1 1 1 5");
 		String str="Z7-2001;80;211;08,11,14,57;SHE;CAT1;Multimedia;1 1 1 1 5," +
 		"1 1 1 5 5;"+"\r\n";
@@ -80,7 +80,7 @@ public class DRoomTest extends TestCase {
 		Room room = new Room("Room", new RoomAttach());
 		room.build(dex,0);
 		RoomAttach roomAttach = (RoomAttach)room.getAttach();
-		Vector v = new Vector();
+		Vector <String> v = new  Vector<String>();
 		v.add("1 1 1 1 1");
 		v.add("1 1 1 1 1");
 		//RoomAttach roomAttach = new RoomAttach();
@@ -95,7 +95,7 @@ public class DRoomTest extends TestCase {
 		Room room = new Room("Room", new RoomAttach());
 		room.build(dex,0);
 		RoomAttach roomAttach = (RoomAttach)room.getAttach();
-		Vector v = new Vector();
+		Vector <String> v = new  Vector<String>();
 		v.add("1 1 1 1 5");
 		v.add("1 1 1 5 5");
 		//RoomAttach roomAttach = new RoomAttach();
@@ -111,7 +111,7 @@ public class DRoomTest extends TestCase {
 		Room room = new Room("Room", new RoomAttach());
 		room.build(dex,0);
 		RoomAttach roomAttach = (RoomAttach)room.getAttach();
-		Vector v = new Vector();
+		Vector <String> v = new  Vector<String>();
 		v.add("1 1 1 1 5");
 		v.add("1 1 1 5 5");
 		//RoomAttach roomAttach = new RoomAttach();
@@ -127,7 +127,7 @@ public class DRoomTest extends TestCase {
 		Room room = new Room("Room", new RoomAttach());
 		room.build(dex,0);
 		RoomAttach roomAttach = (RoomAttach)room.getAttach();
-		Vector v = new Vector();
+		Vector <String> v = new  Vector<String>();
 		v.add("1 1 1 1 5 1");
 		v.add("1 1 1 5 5");
 		//RoomAttach roomAttach = new RoomAttach();

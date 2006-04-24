@@ -18,17 +18,19 @@ public class FilterSetIdentifier {
      * Le nom du FilterSet qui contient ce FilterSetIdentifier
      *  
      */
-    private String _filterSetName = null;
+    private String _filterSetName;
 
     /**
      * Identifie si le FilterSet qui est composé de ce FilterSetIdentifier est
      * actif ou non
      *  
      */
-    private boolean _active = false;
+    private boolean _active;
 
     public FilterSetIdentifier() {
     	super();
+    	_filterSetName = null;
+    	_active = false;
     }
 
     public String getFilterSetName() {

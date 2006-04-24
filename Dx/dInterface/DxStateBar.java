@@ -51,6 +51,10 @@ public class DxStateBar extends JPanel {
 
 	public void upDate() {
 		_stateBarModel.update();
+		this.paint();
+	} // end upDate
+
+	public void paint() {
 		DxState s;
 		for (int i = 0; i < _stateBarModel.size(); i++) {
 			s = _stateBarModel.elementAt(i);
@@ -65,5 +69,4 @@ public class DxStateBar extends JPanel {
 			}
 		} // end for
 	} // end upDate
-
 } // end class DxStateBar

@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.61 $  $Date: 2006-04-11 14:19:54 $
+ * Title: EditActivityDlg $Revision: 1.62 $  $Date: 2006-04-24 01:27:52 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -469,7 +469,7 @@ public class EditActivityDlg
   } // end getSelectedHour
 
   private Vector makeVector(JList jList) {
-    Vector v = new Vector();
+    Vector  v = new Vector ();
     if (jList!= null) {
       for (int i = 0; i < jList.getModel().getSize(); i++)
         v.add(jList.getModel().getElementAt(i));
@@ -785,7 +785,7 @@ public class EditActivityDlg
     return -1;
   }
   private Vector  buildThePeriods(int size) {
-    Vector v = new Vector();
+    Vector <String> v = new Vector <String>();
     for (int i=0; i <= size ; i++) {
       v.addElement(Integer.toString(i));
     }

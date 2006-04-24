@@ -69,7 +69,8 @@ public class DModel extends Observable {
 
     private boolean _modified = false;
 
-    private boolean _isATimeTable = true;
+    private boolean _isATimeTable;
+    private boolean _isOnlyATimeTable;
     
     private boolean _isExamPrepared = false;
 
@@ -147,6 +148,7 @@ public class DModel extends Observable {
         _progressBarState = new DValue();
         _progressBarState.setIntValue(0);  // XXXX Pascal: magic number
         _dDocument = dDocument;
+        _isOnlyATimeTable = false;
         if (fileName.endsWith(DConst.DOT_DIA)) {
             _error = loadTimeTable(fileName, getCurrentDir(fileName));
             _isATimeTable = true;
@@ -160,7 +162,7 @@ public class DModel extends Observable {
         if (_error.length() == 0 && _isATimeTable)
             _conditionTest = new TestConditions(this);
         if ((type == DConst.CYCLE) || (type == DConst.EXAM))
-            _isATimeTable = true;
+            _isOnlyATimeTable = true;
         _type = type;
         _modified = false;
         _setOfRoomsFunctions = new SetOfRoomsFunctions(); 
@@ -363,7 +365,7 @@ public class DModel extends Observable {
         DLoadData loadData = new DLoadData(this, str);
         //_dDocument.getDMediator().getDApplication().setCursorWait();
         // import set of instructors
-        _setOfInstructors = loadData.extractInstructors(null, false);
+        _setOfInstructors = loadData.extractInstructors(null, false,false);
         resizeResourceAvailability(_setOfInstructors);
         if (_setOfInstructors.getError().length() != 0) {
             return _setOfInstructors.getError();
@@ -393,7 +395,7 @@ public class DModel extends Observable {
 
         //_dDocument.getDMediator().getDApplication().setCursorDefault();
         setImportDone(true);
-
+        _isOnlyATimeTable =false;
         return "";
     }
 
@@ -799,7 +801,7 @@ public class DModel extends Observable {
     }
     
     public Vector getOtherSites(){
-    	Vector v = new Vector();
+    	Vector <String> v = new Vector <String>();
         for (int i = 0; i < _setOfActivitiesSites.size(); i++)
         	if(!_currentSite.equalsIgnoreCase(_setOfActivitiesSites.getResourceAt(i).getID()))
         		v.add(_setOfActivitiesSites.getResourceAt(i).getID());
@@ -816,7 +818,7 @@ public class DModel extends Observable {
     }
 
     public Vector getSites() {
-        Vector v = new Vector();
+    	Vector <String> v = new Vector <String>();
         for (int i = 0; i < _setOfActivitiesSites.size(); i++)
             v.add(_setOfActivitiesSites.getResourceAt(i).getID());
         return v;
@@ -981,5 +983,9 @@ public class DModel extends Observable {
 	
 	public int getRoomConflicts() {
 		return _nbConflicts[1];
+	}
+
+	public boolean isOnlyATimeTable() {
+		return _isOnlyATimeTable;
 	}
 } /* end class DModel */

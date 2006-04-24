@@ -36,6 +36,8 @@ public class DxStateBarModel {
 	
 	private final int _EMPTY = -1;
 	
+	private final int _ZERO = 0;
+	
 	private DModel _dm;
 	
 	private Vector <DxState> _stateVec;
@@ -44,30 +46,30 @@ public class DxStateBarModel {
 		_dm = dm;
 		_stateVec = new Vector<DxState>();
 		/* 0 */
-	    _stateVec.add(new DxState(DConst.SB_TOTAL, DConst.COLOR_BLACK, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_TOTAL, DConst.COLOR_BLACK, _ZERO));
 	    /* 1 */
-	    _stateVec.add(new DxState(DConst.SB_T_ACT, DConst.COLOR_AUX, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_T_ACT, DConst.COLOR_AUX, _ZERO));
 	    /* 2 */
-	    _stateVec.add(new DxState(DConst.SB_T_INST, DConst.COLOR_AUX, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_T_INST, DConst.COLOR_AUX, _ZERO));
 	    /* 3 */
-	    _stateVec.add(new DxState(DConst.SB_T_ROOM, DConst.COLOR_AUX, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_T_ROOM, DConst.COLOR_AUX, _ZERO));
 	    /* 4 */
-	    _stateVec.add(new DxState(DConst.SB_T_STUD, DConst.COLOR_AUX, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_T_STUD, DConst.COLOR_AUX, _ZERO));
 	    /* 5 */
-	    _stateVec.add(new DxState(DConst.SB_T_EVENT, DConst.COLOR_AUX, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_T_EVENT, DConst.COLOR_AUX, _ZERO));
 	    /* 6 */
-	    _stateVec.add(new DxState(DConst.SB_T_ASSIG, DConst.COLOR_AUX, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_T_ASSIG, DConst.COLOR_AUX, _ZERO));
 	    /* 7 */
-	    _stateVec.add(new DxState(DConst.SB_CONF, DConst.COLOR_BLACK, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_CONF, DConst.COLOR_BLACK, _ZERO));
 	    /* 8 */
-	    _stateVec.add(new DxState(DConst.SB_C_STUD, DConst.COLOR_STUD, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_C_STUD, DConst.COLOR_STUD, _ZERO));
 	    /* 9 */
-	    _stateVec.add(new DxState(DConst.SB_C_INST, DConst.COLOR_INST, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_C_INST, DConst.COLOR_INST, _ZERO));
 	    /* 10 */
-	    _stateVec.add(new DxState(DConst.SB_C_ROOM, DConst.COLOR_ROOM, _EMPTY));
+	    _stateVec.add(new DxState(DConst.SB_C_ROOM, DConst.COLOR_ROOM, _ZERO));
 	}
 
-	public void update() {					
+	public void update() {									
 		/* 0 */
 		_stateVec.elementAt(0).setValue(_EMPTY);
 	    /* 1 */
@@ -91,7 +93,6 @@ public class DxStateBarModel {
 	    /* 10 */
 		_stateVec.elementAt(10).setValue(_dm.getRoomConflicts());        
 	}
-
 	public int size() {
 		return _stateVec.size();
 	}

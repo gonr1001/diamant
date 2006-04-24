@@ -125,7 +125,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
-		Vector  v = new Vector();
+		Vector  <String> v = new Vector <String>();
 		//If buttons CANCEL
 		if (command.equals(DConst.BUT_OK)) {
 			int ligne = validation();

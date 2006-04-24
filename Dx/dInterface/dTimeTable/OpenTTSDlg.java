@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.17 $  $Date: 2006-03-31 19:05:06 $
+ * Title: OpenTTSDlg $Revision: 1.18 $  $Date: 2006-04-24 01:27:53 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,19 +16,20 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 import java.awt.Dimension;
+import java.io.File;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -54,7 +55,7 @@ public class OpenTTSDlg extends JDialog {
 		JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
 		String str1 = DConst.XML;
 		String str2 = DConst.XML_FILE;
-		String str3 = DConst.NEW_TT_M;
+		//String str3 = DConst.NEW_TT_M;
 
 		fc.setFileFilter(new DFileFilter(new String[] { str1 }, str2));
 		// Display the file chooser in a dialog
@@ -62,7 +63,18 @@ public class OpenTTSDlg extends JDialog {
 		fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
 				.getHeight()));
 		//int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
-		int returnVal = DXTools.showDialog(dApplic.getJFrame(), fc, str3);
+		//int returnVal = DXTools.showDialog(dApplic.getJFrame(), fc, str3);
+		
+		int returnVal=0;
+	      String filename="nothing.txt";
+	      while(!(new File(filename)).exists()&&
+	            (returnVal==JFileChooser.APPROVE_OPTION)){
+	          returnVal = fc.showOpenDialog(dApplic.getJFrame());
+	        if(fc.getSelectedFile()!=null)
+	          filename= fc.getSelectedFile().getAbsolutePath();
+
+	      }
+	     
 		// If the file chooser exited sucessfully,
 		// and a file was selected, continue
 		if (returnVal == JFileChooser.CANCEL_OPTION) {

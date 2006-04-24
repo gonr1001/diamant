@@ -78,15 +78,15 @@ public class SelectiveScheduleManager {
         /**
          * @associates String 
          */
-        private List _unresolvedElementNames = null;
-        private FilterSet _mismatchedFilterSet = null;
+        private ArrayList <String> _unresolvedElementNames;
+        private FilterSet _mismatchedFilterSet;
         
         /**
          *  
          */
         public PersistanceMismatchImpl(FilterSet mismatchedFilterSet) {
             _mismatchedFilterSet = mismatchedFilterSet;
-            _unresolvedElementNames = new ArrayList();
+            _unresolvedElementNames = new ArrayList <String>();
         }
 
         /*
@@ -471,7 +471,6 @@ public class SelectiveScheduleManager {
         try {
             xmlOut.output(doc, fileOutWriter);
         } catch (IOException e2) {
-            // TODO Auto-generated catch block
             e2.printStackTrace();
         }
     }

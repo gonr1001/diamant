@@ -25,21 +25,22 @@ public class FilterSet {
      * Identificateur propre à ce FilterSet
      * 
      */
-    private FilterSetIdentifier _fsi = null;
+    private FilterSetIdentifier _fsi;
 
     /**
      * Ensemble des élélements de ce FilterSet
      * @associates DResource
      * 
      */
-    private Set _set = null;
+    private Set <DResource> _set;
 
     /**
      *  
      */
     public FilterSet(FilterSetIdentifier id) {
+    	_set = null;
         _fsi = id;
-        _set = new HashSet();
+        _set = new HashSet <DResource>();
     }
 
     public boolean addFilter(DResource element) {
