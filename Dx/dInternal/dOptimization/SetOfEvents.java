@@ -52,7 +52,7 @@ public class SetOfEvents extends DSetOfResources {
 		for (int i = 0; i < soa.size(); i++) {
 			DResource activity = soa.getResourceAt(i);
 			long instructorKey = -1, roomKey; //=-1;
-			if (((Activity) activity.getAttach()).getActivityVisibility()) {
+			if (((Activity) activity.getAttach()).isActivityVisibility()) {
 				for (int j = 0; j < ((Activity) activity.getAttach())
 						.getSetOfTypes().size(); j++) {
 					DResource type = ((Activity) activity.getAttach())

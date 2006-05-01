@@ -1,7 +1,9 @@
 /**
+ * Created on 26 nov. 2004
  *
- * Title: SetOfActivities $Revision: 1.8 $  $Date: 2005-07-05 12:04:29 $
- * Description: SetOfActivities is a class used to
+ *
+ * Class SetOfActivities
+ * Description: SetOfActivities
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,9 +16,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ *
+ *
  */
 
 package dInternal.dData.dActivities;
@@ -55,16 +56,7 @@ public class SetOfActivities extends DSetOfResources{
 		//_dataloaded = dataloaded;
 		_open= open;
 	}
-	
-	/**
-	 *
-	 * @param dataloaded
-	 */
-	/*public void setDataToLoad(byte[]  dataloaded, boolean open){
-	 _dataloaded = dataloaded;
-	 _open= open;
-	 }*/
-	
+		
 	
 	/**
 	 * analyse activities data by a finished states machine
@@ -357,7 +349,7 @@ public class SetOfActivities extends DSetOfResources{
           actlist+= activity.getSetOfTypes().getResourceAt(j).getID()+"  ";// write nature and 2 space
           actlist+= nature.getSetOfSections().getResourceAt(k).getID();// write group and go to line
           actlist+= " "+site+" "+DConst.ACT_DEFAULT_CAPACITY+DConst.CR_LF;// write site and capacity of course
-          if(activity.getActivityVisibility())
+          if(activity.isActivityVisibility())
             actlist+=1+DConst.CR_LF;
           else
             actlist+=0+DConst.CR_LF;// write visibility of activity and go to line
@@ -427,10 +419,6 @@ public class SetOfActivities extends DSetOfResources{
    */
 
   public Unity getUnity(long actKey, long typeKey, long secKey, long unitKey){
-    /*Activity a = (Activity)getResource(actKey).getAttach();
-    Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
-    Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
-    Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();*/
     DResource a = getResource(actKey);
     if(a!=null){
       DResource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
@@ -456,10 +444,6 @@ public class SetOfActivities extends DSetOfResources{
    */
 
   public Unity getUnity(String actID, String typeID, String secID, String unitID){
-    /*Activity a = (Activity)getResource(actKey).getAttach();
-    Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
-    Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
-    Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();*/
     DResource a = getResource(actID);
     if(a!=null){
       DResource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeID);
@@ -598,7 +582,7 @@ public DSetOfResources  getSetOfType(String actID){
 
     
   
-/* (non-Javadoc)
+/** (non-Javadoc)
  * @see dInternal.DObject#getSelectedField()
  */
 public long getSelectedField() {
@@ -608,36 +592,7 @@ public long getSelectedField() {
 
 
 
-
-  /**
-   *
-   * @param component
-   */
- /*public void sendEvent(Component component) {
-   SetOfActivitiesEvent event = new SetOfActivitiesEvent(this);
-   for (int i=0; i< _SOAListeners.size(); i++) {
-     SetOfActivitiesListener soal = (SetOfActivitiesListener) _SOAListeners.elementAt(i);
-     soal.changeInSetOfActivities(event, component);
-     //System.out.println("SetOfActivities listener started: "+i);//debug
-   }
-  }
-*/
-  /**
-   *
-   * @param dml
-   */
-
-/*
-  public synchronized void addSetOfActivitiesListener(SetOfActivitiesListener soal) {
-    //System.out.println("SetOfActivities listener addeed: ");//debug
-    if (_SOAListeners.contains(soal)){
-      return;
-    }
-    _SOAListeners.addElement(soal);
-    //System.out.println("addSetOfActivities Listener ...");//debug
-  }
-*/
-/* (non-Javadoc)
+/** (non-Javadoc)
  * @see dInternal.DSetOfResources#toWrite()
  */
 public String toWrite() {

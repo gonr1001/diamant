@@ -3,7 +3,8 @@
  * Title: DApplication
  *
  * Description: DApplication is a class used display the application GUI,
- *              The class creates the main window, and ...
+ *              The class creates the main window, and menubar, and toolBar,
+ *              and the logger
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -25,8 +26,6 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -36,9 +35,7 @@ import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -77,7 +74,7 @@ import eLib.exit.dialog.InformationDlg;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-public class DApplication implements ActionListener {
+public class DApplication { //implements ActionListener {
 	private static Logger _logger = Logger.getLogger(DApplication.class
 			.getName());
 
@@ -146,9 +143,6 @@ public class DApplication implements ActionListener {
 		return _instance;
 	}
 
-	// XXXX Pascal: System.getProperty("user.dir") est appele assez souvent
-	// pour que ca vaille la peine d'assigner son resultat a une
-	// variable
 	public void doIt(String[] args) {
 		if (args.length > 0) {
 			if (args[0].compareTo("-d") == 0) {
@@ -170,8 +164,7 @@ public class DApplication implements ActionListener {
 		_jFrame.setIconImage(iconeDiamant.getImage());
 
 		setLAF(_preferences._lookAndFeel);
-		_logger.warn("bye_from DApplication"); // XXXX Pascal: Comment ca 'bye'
-		// ?!
+		_logger.warn("bye_from DApplication"); //this must be the end of an execution
 	}
 
 	// -------------------------------------------
@@ -220,20 +213,20 @@ public class DApplication implements ActionListener {
 	} // end createUI
 
 	// -------------------------------------------
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() instanceof JRadioButton) {
-			// XXXX Pascal: Pourquoi ce 'if' est-il vide?
-			// Ne devrait pas etre laisse ds cet etat
-		}
-		// if (e.getSource() instanceof CommandHolder) {
-		// ((CommandHolder) e.getSource()).getCommand().execute(this);
-		// } else {
-		// System.out
-		// .println("DApplication: I do not know what to do, please help me
-		// (Action Performed)");
-		// // XXXX Pascal: Devrait etre logge
-		// }// end if ... else
-	}// end actionPerformed
+//	public void actionPerformed(ActionEvent e) {
+//		if (e.getSource() instanceof JRadioButton) {
+//			// XXXX Pascal: Pourquoi ce 'if' est-il vide?
+//			// Ne devrait pas etre laisse ds cet etat
+//		}
+//		// if (e.getSource() instanceof CommandHolder) {
+//		// ((CommandHolder) e.getSource()).getCommand().execute(this);
+//		// } else {
+//		// System.out
+//		// .println("DApplication: I do not know what to do, please help me
+//		// (Action Performed)");
+//		// // XXXX Pascal: Devrait etre logge
+//		// }// end if ... else
+//	}// end actionPerformed
 
 	public JDesktopPane getDesktop() {
 		return _jDesktopPane;

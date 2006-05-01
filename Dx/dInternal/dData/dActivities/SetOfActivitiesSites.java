@@ -1,12 +1,26 @@
-/*
+/**
  * Created on 26 nov. 2004
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ *
+ * Class SetOfActivitiesSites
+ * Description: SetOfActivitiesSites
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ *
+ *
  */
 package dInternal.dData.dActivities;
 
-//import java.awt.Component;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -15,70 +29,56 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
-//import dInternal.dData.dStudents.SetOfStuCourses;
-//import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
 
-//import d
-
 public class SetOfActivitiesSites extends DSetOfResources {
-
-	//private Vector _SOAListeners = new Vector(1);
-	/**activities in text format*/
-	//private byte[] _dataloaded;
+	
 	private String _error = "";
 
 	private int _line = 1;
 
 	private boolean _open;
 
-	//private String NULLINFORMATION = "xxxxxx";
-	//private int _NUMBEROFCYCLE = 1;
 	final static public int _COURSENAMELENGTH = 6;
 
 	private int _ACTIVITYLENGTH = 11;
 
 	/**
 	 * Constructor
-	 * */
+	 */
 	public SetOfActivitiesSites(boolean open) {
 		super();
-		//_dataloaded = dataloaded;
 		_open = open;
 	}
 
 	/**
-	 *
-	 * @param dataloaded
-	 */
-	/*public void setDataToLoad(byte[]  dataloaded, boolean open){
-	 _dataloaded = dataloaded;
-	 _open= open;
-	 }*/
-
-	/**
 	 * analyse activities data by a finished states machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
+	 * 
+	 * @param integer
+	 *            the beginPosition (start position of the finished states
+	 *            machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false
+	 *         otherwise
+	 */
 	public boolean analyseTokens(DataExchange de, int beginPosition) {
-//		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6_1)) {
-//			return analyseTokens1_6_1(de.getContents().getBytes(), beginPosition);
-//		}
+
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
 			return analyseTokens1_6(de.getContents().getBytes(), beginPosition);
-		} //else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {
+		} // else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {
 		return analyseTokens1_5(de.getContents().getBytes(), beginPosition);
-		//return false;
 	}
 
 	/**
-	 * analyseTokens1_5 will analyse the tokens of files
-	 *        without any header like Diamant1.6
-	 * @param beginPosition indicates from where start to read in the
-	 *        array
+	 * analyseTokens1_5 will analyse the tokens of files without any header like
+	 * Diamant1.6
 	 * 
-	 * @return true <p>if no errors in _dataloaded </p>
+	 * @param beginPosition
+	 *            indicates from where start to read in the array
+	 * 
+	 * @return true
+	 *         <p>
+	 *         if no errors in _dataloaded
+	 *         </p>
 	 *         false otherwise
 	 */
 	private boolean analyseTokens1_5(byte[] dataloaded, int beginPosition) {
@@ -86,19 +86,25 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		if (!analyseSIGTokens(dataloaded, beginPosition)) {// analyse STI data
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
-			return analyseDeltaTokens1_5(dataloaded, beginPosition);// analyse Delta data
+			return analyseDeltaTokens1_5(dataloaded, beginPosition);// analyse
+																	// Delta
+																	// data
 		}// end else if(!analyseSIGTokens(beginPosition))
 
 		return true;
 	}
 
 	/**
-	 * analyseTokens1_5 will analyse the tokens of files
-	 *        without any header like Diamant1.6
-	 * @param beginPosition indicates from where start to read in the
-	 *        array
+	 * analyseTokens1_5 will analyse the tokens of files without any header like
+	 * Diamant1.6
 	 * 
-	 * @return true <p>if no errors in _dataloaded </p>
+	 * @param beginPosition
+	 *            indicates from where start to read in the array
+	 * 
+	 * @return true
+	 *         <p>
+	 *         if no errors in _dataloaded
+	 *         </p>
 	 *         false otherwise
 	 */
 	private boolean analyseTokens1_6(byte[] dataloaded, int beginPosition) {
@@ -110,30 +116,39 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		while (st.hasMoreTokens()) {
 			newFile.append(st.nextToken() + DConst.CR_LF);
 		}
-		if (!analyseSIGTokens(newFile.toString().getBytes(), beginPosition)) {// analyse STI data
+		if (!analyseSIGTokens(newFile.toString().getBytes(), beginPosition)) {// analyse
+																				// STI
+																				// data
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
-			return analyseDeltaTokens1_6(dataloaded, beginPosition);// analyse Delta data
+			return analyseDeltaTokens1_6(dataloaded, beginPosition);// analyse
+																	// Delta
+																	// data
 		}// end else if(!analyseSIGTokens(beginPosition))
 
 		return true;
 	}
-	
+
 	/**
 	 * analyse Delta activities data by a finished states machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
+	 * 
+	 * @param integer
+	 *            the beginPosition (start position of the finished states
+	 *            machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false
+	 *         otherwise
+	 */
 	private boolean analyseDeltaTokens1_5(byte[] dataloaded, int beginPosition) {
 		String token;
-		//String sousString; //auxiliar String for stocking a substring of a line
+
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
-		StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-		//int state=0;
+		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
+										// subStrings in a line
+		// int state=0;
 		int position = beginPosition;
 		_line = 0;
-		//String activityName="";
+		// String activityName="";
 		String instructorName = "";
 		int numberOfBlocs = 0;
 		while (st.hasMoreElements()) {
@@ -148,10 +163,10 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 1:// activity name
 				position = 2;
 				break;
-			case 2://activity visibility
+			case 2:// activity visibility
 				position = 3;
 				break;
-			case 3://number of activities
+			case 3:// number of activities
 				position = 4;
 				break;
 			case 4:// teachers' names
@@ -164,7 +179,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 6:// empty line
 				position = 7;
 				break;
-			case 7://number of blocs
+			case 7:// number of blocs
 				numberOfBlocs = Integer.parseInt(token.trim());
 				if (DXToolsMethods.countTokens(instructorName, ";") != numberOfBlocs) {
 					_error = DConst.ACTI_TEXT13
@@ -174,11 +189,11 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 8;
 				break;
-			case 8://duration of blocs
+			case 8:// duration of blocs
 
 				position = 9;
 				break;
-			case 9://days and periods of blocs
+			case 9:// days and periods of blocs
 				stLine = new StringTokenizer(token);
 				if (numberOfBlocs != stLine.countTokens()) {
 					_error = DConst.ACTI_TEXT5 + _line + " ActivityList";
@@ -195,23 +210,23 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 10;
 				break;
-			case 10://fixed rooms
+			case 10:// fixed rooms
 
 				position = 11;
 				break;
-			case 11://Preferred rooms
+			case 11:// Preferred rooms
 
 				position = 12;
 				break;
-			case 12://type of rooms
+			case 12:// type of rooms
 
 				position = 13;
 				break;
-			case 13://idem
+			case 13:// idem
 
 				position = 14;
 				break;
-			case 14://pre-affected cours
+			case 14:// pre-affected cours
 				_error = analyseTokenPreaffectedRoom(token, numberOfBlocs, 1,
 						_line);
 				position = beginPosition;
@@ -225,21 +240,26 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 * analyse Delta activities data by a  state machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
+	 * analyse Delta activities data by a state machine
+	 * 
+	 * @param integer
+	 *            the beginPosition (start position of the finished states
+	 *            machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false
+	 *         otherwise
+	 */
 	private boolean analyseDeltaTokens1_6(byte[] dataloaded, int beginPosition) {
 		String token;
-		//String sousString; //auxiliar String for stocking a substring of a line
+
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
-		StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-		//int state=0;
+		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
+										// subStrings in a line
+		// int state=0;
 		int position = beginPosition;
 		token = st.nextToken();
 		_line = 0;
-		//String activityName="";
+		// String activityName="";
 		String instructorName = "";
 		int numberOfBlocs = 0;
 		while (st.hasMoreElements()) {
@@ -255,10 +275,10 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				analyseDelTaTokenName1_6(token, _line);
 				position = 2;
 				break;
-			case 2://activity visibility
+			case 2:// activity visibility
 				position = 3;
 				break;
-			case 3://number of activities
+			case 3:// number of activities
 				position = 4;
 				break;
 			case 4:// teachers' names
@@ -271,7 +291,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 6:// empty line
 				position = 7;
 				break;
-			case 7://number of blocs
+			case 7:// number of blocs
 				numberOfBlocs = Integer.parseInt(token.trim());
 				if (DXToolsMethods.countTokens(instructorName, ";") != numberOfBlocs) {
 					_error = DConst.ACTI_TEXT13
@@ -281,11 +301,11 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 8;
 				break;
-			case 8://duration of blocs
+			case 8:// duration of blocs
 
 				position = 9;
 				break;
-			case 9://days and periods of blocs
+			case 9:// days and periods of blocs
 				stLine = new StringTokenizer(token);
 				if (numberOfBlocs != stLine.countTokens()) {
 					_error = DConst.ACTI_TEXT5 + _line + " ActivityList";
@@ -302,23 +322,23 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 10;
 				break;
-			case 10://fixed rooms
+			case 10:// fixed rooms
 
 				position = 11;
 				break;
-			case 11://Preferred rooms
+			case 11:// Preferred rooms
 
 				position = 12;
 				break;
-			case 12://type of rooms
+			case 12:// type of rooms
 
 				position = 13;
 				break;
-			case 13://idem
+			case 13:// idem
 
 				position = 14;
 				break;
-			case 14://pre-affected cours
+			case 14:// pre-affected cours
 				_error = analyseTokenPreaffectedRoom(token, numberOfBlocs, 1,
 						_line);
 				position = beginPosition;
@@ -341,13 +361,13 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 */
 	private String analyseTokenPreaffectedRoom(String str, int numberOfUnitys,
 			int position, int line) {
-		//  check permanent token
+		// check permanent token
 		String permanentToken = DXToolsMethods.getToken(str, ";", position);
 		StringTokenizer stLine = new StringTokenizer(permanentToken);
 		if (numberOfUnitys != stLine.countTokens()) {
 			return DConst.ACTI_TEXT12 + line + " ActivityList";
 		}
-		//check if the permanent value is belong 0 and 1
+		// check if the permanent value is belong 0 and 1
 		while (stLine.hasMoreElements()) {
 			String sousString = stLine.nextToken();
 			String error = DXToolsMethods.checkIfBelongsValues(sousString,
@@ -385,7 +405,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			if (!DXToolsMethods.isIntValue(st))
 				_error = DConst.ACTI_TEXT14 + line;
 		}
-		//3rd token
+		// 3rd token
 		st = DXToolsMethods.getToken(str, " ", 2);
 		if (isErrorEmpty()) {
 			if (st.length() != DConst.ACT_SITE_LENGTH)
@@ -404,25 +424,31 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 		return "";
 	}
-	
+
 	/**
 	 * analyse SIG activities data by a finished states machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
+	 * 
+	 * @param integer
+	 *            the beginPosition (start position of the finished states
+	 *            machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false
+	 *         otherwise
+	 */
 	private boolean analyseSIGTokens(byte[] dataloaded, int beginPosition) {
 		String token;
-		String sousString; //auxiliar String for stocking a substring of a line
+		String sousString; // auxiliar String for stocking a substring of a
+							// line
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
-		StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-		//int state=0;
+		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
+										// subStrings in a line
+		// int state=0;
 		int position = beginPosition;
 		if (!_open)
 			_line = 1;
 		else
 			_line = 0;
-		//String activityName="";
+		// String activityName="";
 		int numberOfUnities = 0;
 		while (st.hasMoreElements()) {
 			token = st.nextToken();
@@ -434,7 +460,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				position = 1;
 				break;
 			case 1:// activity name
-				//activityName=token.trim();
+				// activityName=token.trim();
 				if (token.trim().length() < _ACTIVITYLENGTH) {
 					_error = DConst.ACTI_TEXT1
 							+ _line
@@ -445,7 +471,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 2;
 				break;
-			case 2://activity visibility
+			case 2:// activity visibility
 				_error = DXToolsMethods.checkIfBelongsValues(token, "0 1",
 						DConst.ACTI_TEXT2 + _line, "ActivityList");
 				if (_error.length() != 0)
@@ -456,7 +482,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 					return false;
 				position = 3;
 				break;
-			case 3://number of activities
+			case 3:// number of activities
 				_error = DXToolsMethods.isIntValue(token.trim(),
 						DConst.ACTI_TEXT3 + _line, "ActivityList");
 				if (_error.length() != 0)
@@ -482,7 +508,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 6:// empty line
 				position = 7;
 				break;
-			case 7://number of blocs
+			case 7:// number of blocs
 				_error = DXToolsMethods.isIntValue(token.trim(),
 						DConst.ACTI_TEXT5 + _line, " ActivityList");
 				if (_error.length() != 0)
@@ -490,7 +516,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				numberOfUnities = Integer.parseInt(token.trim());
 				position = 8;
 				break;
-			case 8://duration of blocs
+			case 8:// duration of blocs
 				stLine = new StringTokenizer(token);
 				if (numberOfUnities != stLine.countTokens()) {
 					_error = DConst.ACTI_TEXT5
@@ -512,7 +538,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 9;
 				break;
-			case 9://days and periods of blocs
+			case 9:// days and periods of blocs
 				stLine = new StringTokenizer(token);
 				_error = DXToolsMethods.checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
@@ -524,8 +550,10 @@ public class SetOfActivitiesSites extends DSetOfResources {
 						_error = DConst.ACTI_TEXT5 + _line + " ActivityList";
 						return false;
 					}
-					while (stLine.hasMoreElements()) {// rgr A problem in tests allwhile is a problem in real life
-						//StringTokenizer stLine1;
+					while (stLine.hasMoreElements()) {// rgr A problem in
+														// tests allwhile is a
+														// problem in real life
+						// StringTokenizer stLine1;
 						_error = DXToolsMethods.isIntValue(stLine.nextToken(),
 								DConst.ACTI_TEXT8 + _line, "ActivityList");
 						if (_error.length() != 0)
@@ -534,7 +562,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}// end if(!_open)
 				position = 10;
 				break;
-			case 10://fixed rooms
+			case 10:// fixed rooms
 				stLine = new StringTokenizer(token);
 				_error = DXToolsMethods.checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
@@ -549,7 +577,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 11;
 				break;
-			case 11://Preferred rooms
+			case 11:// Preferred rooms
 				stLine = new StringTokenizer(token);
 				_error = DXToolsMethods.checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
@@ -565,7 +593,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 12;
 				break;
-			case 12://type of rooms
+			case 12:// type of rooms
 				stLine = new StringTokenizer(token);
 				_error = DXToolsMethods.checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
@@ -579,7 +607,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 13;
 				break;
-			case 13://idem
+			case 13:// idem
 				stLine = new StringTokenizer(token);
 				_error = DXToolsMethods.checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
@@ -593,7 +621,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				}
 				position = 14;
 				break;
-			case 14://pre-affected course
+			case 14:// pre-affected course
 
 				_error = analyseTokenPreaffectedRoom(token, numberOfUnities, 0,
 						_line);
@@ -616,19 +644,25 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			buildSetOfResources1_5(de.getContents().getBytes(), beginPosition);
 		}
 
-	} //end analyseTokens
+	} // end analyseTokens
 
 	/**
 	 * build activitiesList from activities data by a finite state machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
+	 * 
+	 * @param integer
+	 *            the beginPosition (start position of the finished states
+	 *            machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false
+	 *         otherwise
+	 */
 	public void buildSetOfResources1_5(byte[] dataloaded, int beginPosition) {
 		String token;
-		//String sousString; //auxiliar String for stocking a substring of a line
+		// String sousString; //auxiliar String for stocking a substring of a
+		// line
 		StringTokenizer st = new StringTokenizer(new String(dataloaded), "\r\n");
-		//StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-		//int state=0;
+		// StringTokenizer stLine = null; //auxiliar StringTokenizer for reading
+		// subStrings in a line
+		// int state=0;
 		int position = beginPosition;
 		String course = "";
 		while (st.hasMoreElements()) {
@@ -638,7 +672,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				position = 1;
 				break;
 			case 1:// activity name
-				//activityName= token;
+				// activityName= token;
 				course = "";
 				token += DConst.ACTIVITY_NAME_TOKEN_SEPARATOR
 						+ DConst.ACTIVITY_STANDARD_SITE
@@ -646,11 +680,11 @@ public class SetOfActivitiesSites extends DSetOfResources {
 						+ DConst.ACTIVITY_STANDARD_CAPACITY;
 				position = 2;
 				break;
-			case 2://activity visibility
+			case 2:// activity visibility
 
 				position = 3;
 				break;
-			case 3://number of activities
+			case 3:// number of activities
 				position = 4;
 				break;
 			case 4:// teachers' names
@@ -663,38 +697,39 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 6:// empty line
 				position = 7;
 				break;
-			case 7://number of blocs
+			case 7:// number of blocs
 				position = 8;
 				break;
-			case 8://duration of blocs
+			case 8:// duration of blocs
 				position = 9;
 				break;
-			case 9://days and periods of blocs
+			case 9:// days and periods of blocs
 
 				position = 10;
 				break;
-			case 10://fixed rooms
+			case 10:// fixed rooms
 
 				position = 11;
 				break;
-			case 11://Preferred rooms
+			case 11:// Preferred rooms
 
 				position = 12;
 				break;
-			case 12://type of rooms
+			case 12:// type of rooms
 
 				position = 13;
 				break;
-			case 13://idem
+			case 13:// idem
 
 				position = 14;
 				break;
-			case 14://activity is fixed or not
+			case 14:// activity is fixed or not
 				DataExchange dEx = new ByteArrayMsg(DConst.FILE_VER_NAME1_5,
 						course + token);
 				String site = DConst.ACTIVITY_STANDARD_SITE;
 				DResource actResc = getResource(site);
-				//SetOfStudents sos = (SetOfStudents)getResource(site).getAttach();
+				// SetOfStudents sos =
+				// (SetOfStudents)getResource(site).getAttach();
 				if (actResc == null) {
 					actResc = new DResource(site, new SetOfActivities(_open));
 					addResource(actResc, 1);
@@ -703,7 +738,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				SetOfActivities soa = (SetOfActivities) actResc.getAttach();
 				soa.buildSetOfResources(dEx, 1);
 				position = beginPosition;
-				//addResource(activityResource,1);
+				// addResource(activityResource,1);
 				break;
 
 			}// end switch (position)
@@ -715,15 +750,21 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	/**
 	 * build activitiesList from activities data by a finite state machine
-	 * @param integer the beginPosition (start position of the finished states machine)
-	 * @return boolean "true" if the analysis proceeded successfully and false otherwise
-	 * */
+	 * 
+	 * @param integer
+	 *            the beginPosition (start position of the finished states
+	 *            machine)
+	 * @return boolean "true" if the analysis proceeded successfully and false
+	 *         otherwise
+	 */
 	public void buildSetOfResources1_6(byte[] dataloaded, int beginPosition) {
 		String token;
-		//String sousString; //auxiliar String for stocking a substring of a line
+		// String sousString; //auxiliar String for stocking a substring of a
+		// line
 		StringTokenizer st = new StringTokenizer(new String(dataloaded), "\r\n");
-		//StringTokenizer stLine = null; //auxiliar StringTokenizer for reading subStrings in a line
-		//int state=0;
+		// StringTokenizer stLine = null; //auxiliar StringTokenizer for reading
+		// subStrings in a line
+		// int state=0;
 		int position = beginPosition;
 		String site = "", course = "";
 		st.nextToken();// jump the first line
@@ -734,18 +775,18 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				position = 1;
 				break;
 			case 1:// activity name
-				//activityName= token;
+				// activityName= token;
 				course = "";
 				site = DXToolsMethods.getToken(token,
 						DConst.STUDENT_TOKEN_SEPARATOR,
 						DConst.ACTIVITY_SITE_TOKEN);
 				position = 2;
 				break;
-			case 2://activity visibility
+			case 2:// activity visibility
 
 				position = 3;
 				break;
-			case 3://number of activities
+			case 3:// number of activities
 				position = 4;
 				break;
 			case 4:// teachers' names
@@ -758,47 +799,48 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 6:// empty line
 				position = 7;
 				break;
-			case 7://number of blocs
+			case 7:// number of blocs
 				position = 8;
 				break;
-			case 8://duration of blocs
+			case 8:// duration of blocs
 				position = 9;
 				break;
-			case 9://days and periods of blocs
+			case 9:// days and periods of blocs
 
 				position = 10;
 				break;
-			case 10://fixed rooms
+			case 10:// fixed rooms
 
 				position = 11;
 				break;
-			case 11://Preferred rooms
+			case 11:// Preferred rooms
 
 				position = 12;
 				break;
-			case 12://type of rooms
+			case 12:// type of rooms
 
 				position = 13;
 				break;
-			case 13://idem
+			case 13:// idem
 
 				position = 14;
 				break;
-			case 14://activity is fixed or not
+			case 14:// activity is fixed or not
 				DataExchange dEx = new ByteArrayMsg(DConst.FILE_VER_NAME1_5,
 						course + token);
 				DResource actResc = getResource(site);
-				//SetOfStudents sos = (SetOfStudents)getResource(site).getAttach();
+				// SetOfStudents sos =
+				// (SetOfStudents)getResource(site).getAttach();
 				if (actResc == null) {
 					actResc = new DResource(site, new SetOfActivities(_open));
-					//sos= new SetOfStudents();
+					// sos= new SetOfStudents();
 					addResource(actResc, 1);
 				}
 
 				SetOfActivities soa = (SetOfActivities) actResc.getAttach();
 				soa.buildSetOfResources(dEx, 1);
 				position = beginPosition;
-				//addResource(activityResource,1);
+				// addResource(activityResource,1);
 				break;
 
 			}// end switch (position)
@@ -819,9 +861,10 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 *This object (which is already a string!) is itself returned.
+	 * This object (which is already a string!) is itself returned.
+	 * 
 	 * @return the string itself
-	 * */
+	 */
 	public String toWrite() {
 		String reslist = "";
 		if (getSetOfResources().size() > 0) {
@@ -831,7 +874,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				siteRsc = ((DResource) getSetOfResources().get(i));
 				soa = (SetOfActivities) siteRsc.getAttach();
 				reslist += soa.toWrite(siteRsc.getID()) + DConst.CR_LF;
-				//reslist+= siteRsc.toWrite(DConst.CR_LF)+DConst.CR_LF;
+				// reslist+= siteRsc.toWrite(DConst.CR_LF)+DConst.CR_LF;
 			}
 			siteRsc = ((DResource) getSetOfResources().get(
 					getSetOfResources().size() - 1));
@@ -843,18 +886,20 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	/**
 	 * Return the unity specified by the parameters
-	 * @param actKey the activity key
-	 * @param typeKey the type key
-	 * @param secKey the section key
-	 * @param unitKey the unity key
+	 * 
+	 * @param actKey
+	 *            the activity key
+	 * @param typeKey
+	 *            the type key
+	 * @param secKey
+	 *            the section key
+	 * @param unitKey
+	 *            the unity key
 	 * @return The unity wanted
 	 */
 
 	public Unity getUnity(long actKey, long typeKey, long secKey, long unitKey) {
-		/*Activity a = (Activity)getResource(actKey).getAttach();
-		 Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
-		 Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
-		 Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();*/
+
 		DResource a = getResource(actKey);
 		if (a != null) {
 			DResource t = ((Activity) a.getAttach()).getSetOfTypes()
@@ -875,19 +920,21 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	/**
 	 * Return the unity specified by the parameters
-	 * @param actKey the activity ID
-	 * @param typeKey the type ID
-	 * @param secKey the section ID
-	 * @param unitKey the unity ID
+	 * 
+	 * @param actKey
+	 *            the activity ID
+	 * @param typeKey
+	 *            the type ID
+	 * @param secKey
+	 *            the section ID
+	 * @param unitKey
+	 *            the unity ID
 	 * @return The unity wanted
 	 */
 
 	public Unity getUnity(String actID, String typeID, String secID,
 			String unitID) {
-		/*Activity a = (Activity)getResource(actKey).getAttach();
-		 Type t = (Type)a.getSetOfTypes().getResource(typeKey).getAttach();
-		 Section s = (Section)t.getSetOfSections().getResource(secKey).getAttach();
-		 Unity u = (Unity)s.getSetOfUnities().getResource(unitKey).getAttach();*/
+
 		DResource a = getResource(actID);
 		if (a != null) {
 			DResource t = ((Activity) a.getAttach()).getSetOfTypes()
@@ -907,7 +954,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param actID
 	 * @param typeID
 	 * @param secID
@@ -929,7 +976,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param actID
 	 * @param typeID
 	 * @return
@@ -948,10 +995,15 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	/**
 	 * Return the name of the unity specified by the parameters
-	 * @param actKey the activity key
-	 * @param typeKey the type key
-	 * @param secKey the section key
-	 * @param unitKey the unity key
+	 * 
+	 * @param actKey
+	 *            the activity key
+	 * @param typeKey
+	 *            the type key
+	 * @param secKey
+	 *            the section key
+	 * @param unitKey
+	 *            the unity key
 	 * @return The name of the unity wanted
 	 */
 	public String getUnityCompleteName(long actKey, long typeKey, long secKey,
@@ -968,7 +1020,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param vect
 	 * @return
 	 */
@@ -990,12 +1042,19 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	/**
 	 * Sets a field belonging a Unity
-	 * @param actKey the activity key
-	 * @param typeKey the type key
-	 * @param secKey the section key
-	 * @param unitKey the unity key
-	 * @param fieldIndex The index identifaying the field
-	 * @param fieldValue The value to be setted in the field
+	 * 
+	 * @param actKey
+	 *            the activity key
+	 * @param typeKey
+	 *            the type key
+	 * @param secKey
+	 *            the section key
+	 * @param unitKey
+	 *            the unity key
+	 * @param fieldIndex
+	 *            The index identifaying the field
+	 * @param fieldValue
+	 *            The value to be setted in the field
 	 */
 	public void setUnityField(long actKey, long typeKey, long secKey,
 			long unitKey, int fieldIndex, String fieldValue) {
@@ -1010,7 +1069,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param actID
 	 * @param typeID
 	 * @param secID
@@ -1032,13 +1091,16 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	/**
 	 * check if there is an error detected
+	 * 
 	 * @return
 	 */
 	private boolean isErrorEmpty() {
 		return _error.length() == 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {

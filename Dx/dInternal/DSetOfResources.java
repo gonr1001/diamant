@@ -34,15 +34,10 @@ public abstract class DSetOfResources extends DObject {
 	 */
 	int _stateSort = 0;
 
-	/**resource in text format*/
-	//private StringTokenizer _st;//
-	//private int _numberOfLines;
-	//private int _numberOfColumns;// represent number of period a day.
-	private long _currentKey = 1;
 
+	private long _currentKey = 1;
 	/**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
-	//private int _resourceType;
-	//private Resource _resource;
+
 
 	/**
 	 * Constructor
@@ -55,14 +50,7 @@ public abstract class DSetOfResources extends DObject {
 		//_resourceType = resType;
 	}
 
-	/**
-	 *
-	 * @param dataloaded
-	 */
-	/*public void setDataToLoad(byte[]  dataloaded){
-	 //_dataloaded = dataloaded;
-	 dataloaded[0]+=0;
-	 }*/
+
 
 	/**
 	 * methode analyse st, a stringtokenizer variable
@@ -378,36 +366,8 @@ public abstract class DSetOfResources extends DObject {
 	 *This object (which is already a string!) is itself returned.
 	 * @return the string itself
 	 * */
-	public abstract String toWrite();/*{
-	 /*String reslist="";
-	 if(_resourceList.size()>0){
-	 if (_resourceType==3){
-	 for (int i=0; i< _resourceList.size()-1; i++)
-	 reslist+= ((DResource)_resourceList.get(i)).toWrite(";")+DConst.CR_LF;
-	 reslist+= ((DResource)_resourceList.get(_resourceList.size()-1)).toWrite(";");
-	 }else{
-	 for (int i=0; i< _resourceList.size()-1; i++)
-	 reslist+= ((DResource)_resourceList.get(i)).toWrite(DConst.CR_LF)+DConst.CR_LF;
-	 reslist+= ((DResource)_resourceList.get(_resourceList.size()-1)).toWrite(DConst.CR_LF);
-	 }
-	 }// end if(_resourceList.size()>0)
-	 return reslist;
-	 }*/
+	public abstract String toWrite();
 
-	/**
-	 * Build a list of Resources's ID
-	 * @return Vector It contents the Resources's ID
-	 * */
-	/*
-	 public Vector getNamesVector(){
-	 Vector namesVector =new Vector();
-	 if(_stateSort!=1)
-	 sortSetOfResourcesByID();
-	 for (int i=0; i< this._resourceList.size(); i++)
-	 namesVector.add(((DResource)_resourceList.get(i)).getID());
-	 return namesVector;
-	 }
-	 */
 
 	/**
 	 * Builds a list of Resources's ID
