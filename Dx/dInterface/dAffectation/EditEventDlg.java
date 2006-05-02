@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.5 $  $Date: 2006-04-11 14:19:54 $
+ * Title: EditActivityDlg $Revision: 1.6 $  $Date: 2006-05-02 20:00:40 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -284,9 +284,10 @@ public class EditEventDlg
     JPanel durationPanel = buildDurationPanel();
     JPanel dayPanel = buildDayPanel();
     JPanel hourPanel = buildHourPanel();
-    String max = "limite";
-    JLabel jlb = new JLabel(max);
-    //   String m = 
+    String max = "limite: ";
+    int lim = 10;
+    JLabel jlb = new JLabel(max + lim);
+    
     myPanel.add(durationPanel);
     myPanel.add(dayPanel);
     myPanel.add(hourPanel);

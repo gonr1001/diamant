@@ -31,9 +31,9 @@ public class EventsDlg extends EventsDlgInterface{
    * @boolean if false use EditActivityDld (the old dialog without room function and room state)
    * else if true use EditEventDlg (the new dialog with room function and room state)
    */
-  public EventsDlg(DApplication dApplic, String title, boolean withRoomFunction) {
+  public EventsDlg(DApplication dApplic, String title) {
     super(dApplic, title);
-    _withRoomFunction = withRoomFunction;
+    //_withRoomFunction = withRoomFunction;
     buildArrowButtons(true);
 	initialize();
   }//end method
@@ -100,10 +100,10 @@ public class EventsDlg extends EventsDlgInterface{
  */
  protected void doubleClicMouseProcess(){
  	if(!_buttonsPanel.isFirstEnable()){
-		if (this._withRoomFunction)
+		//if (this._withRoomFunction)
 			new EditEventDlg(_jDialog,_dApplic, (String)selectedItems[0], this, false);
-		else
-			new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0], this, false);
+		//else
+		//	new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0], this, false);
 		_buttonsPanel.setFirstDisable();
  	} else {
  		new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer", "Operation interdite");

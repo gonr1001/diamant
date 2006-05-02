@@ -2,7 +2,7 @@
  *
  * Title: DApplication
  *
- * Description: DApplication is a class used display the application GUI,
+ * Description: DApplication is a class used to display the application GUI,
  *              The class creates the main window, and menubar, and toolBar,
  *              and the logger
  *
@@ -595,9 +595,6 @@ public class DApplication { //implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-		// new AvailabiltyDialog(this, this.getCurrentDModel()
-		// .getSetOfInstructors());
-		//new InstructorAvailabiliyDlg(this);
 		new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
 
@@ -612,7 +609,7 @@ public class DApplication { //implements ActionListener {
 	 * 
 	 */
 	public void assignEvents() {
-		new EventsDlg(this, DConst.EVENTS_DLG_TITLE, true);
+		new EventsDlg(this, DConst.EVENTS_DLG_TITLE);
 	}
 
 	/**
@@ -810,7 +807,7 @@ public class DApplication { //implements ActionListener {
 	 * 
 	 */
 	public void eventAssignment() {
-		new EventsDlg(this, DConst.EVENTS_DLG_TITLE, true);
+		new EventsDlg(this, DConst.EVENTS_DLG_TITLE);
 	}
 
 	/**
