@@ -544,22 +544,22 @@ public DSetOfResources  getSetOfType(String actID){
     return result;
   }
 
-  /**
-   * Sets a field belonging a Unity
-   * @param actKey the activity key
-   * @param typeKey the type key
-   * @param secKey the section key
-   * @param unitKey the unity key
-   * @param fieldIndex The index identifaying the field
-   * @param fieldValue The value to be setted in the field
-   */
-  public void setUnityField(long actKey, long typeKey, long secKey, long unitKey, int fieldIndex, String fieldValue){
-    DResource a = getResource(actKey);
-    DResource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
-    DResource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
-    DResource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
-    u.getAttach().setField(fieldIndex, fieldValue);
-  }
+//  /**
+//   * Sets a field belonging a Unity
+//   * @param actKey the activity key
+//   * @param typeKey the type key
+//   * @param secKey the section key
+//   * @param unitKey the unity key
+//   * @param fieldIndex The index identifaying the field
+//   * @param fieldValue The value to be setted in the field
+//   */
+//  private void setUnityField(long actKey, long typeKey, long secKey, long unitKey, int fieldIndex, String fieldValue){
+//    DResource a = getResource(actKey);
+//    DResource t = ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
+//    DResource s = ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
+//    DResource u = ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
+//    u.getAttach().setField(fieldIndex, fieldValue);
+//  }
 
 
 

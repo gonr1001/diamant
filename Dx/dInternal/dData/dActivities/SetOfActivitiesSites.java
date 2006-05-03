@@ -22,7 +22,6 @@
 package dInternal.dData.dActivities;
 
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DResource;
@@ -32,7 +31,7 @@ import dInternal.dData.ByteArrayMsg;
 import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfActivitiesSites extends DSetOfResources {
-	
+
 	private String _error = "";
 
 	private int _line = 1;
@@ -87,8 +86,8 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
 			return analyseDeltaTokens1_5(dataloaded, beginPosition);// analyse
-																	// Delta
-																	// data
+			// Delta
+			// data
 		}// end else if(!analyseSIGTokens(beginPosition))
 
 		return true;
@@ -117,13 +116,13 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			newFile.append(st.nextToken() + DConst.CR_LF);
 		}
 		if (!analyseSIGTokens(newFile.toString().getBytes(), beginPosition)) {// analyse
-																				// STI
-																				// data
+			// STI
+			// data
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
 			return analyseDeltaTokens1_6(dataloaded, beginPosition);// analyse
-																	// Delta
-																	// data
+			// Delta
+			// data
 		}// end else if(!analyseSIGTokens(beginPosition))
 
 		return true;
@@ -144,7 +143,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
-										// subStrings in a line
+		// subStrings in a line
 		// int state=0;
 		int position = beginPosition;
 		_line = 0;
@@ -253,7 +252,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
-		StringTokenizer stLine = null; 
+		StringTokenizer stLine = null;
 		int position = beginPosition;
 		token = st.nextToken();
 		_line = 0;
@@ -434,11 +433,11 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	private boolean analyseSIGTokens(byte[] dataloaded, int beginPosition) {
 		String token;
 		String sousString; // auxiliar String for stocking a substring of a
-							// line
+		// line
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
-										// subStrings in a line
+		// subStrings in a line
 		// int state=0;
 		int position = beginPosition;
 		if (!_open)
@@ -548,8 +547,8 @@ public class SetOfActivitiesSites extends DSetOfResources {
 						return false;
 					}
 					while (stLine.hasMoreElements()) {// rgr A problem in
-														// tests allwhile is a
-														// problem in real life
+						// tests allwhile is a
+						// problem in real life
 						// StringTokenizer stLine1;
 						_error = DXToolsMethods.isIntValue(stLine.nextToken(),
 								DConst.ACTI_TEXT8 + _line, "ActivityList");
@@ -760,7 +759,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		int position = beginPosition;
 		String site = "", course = "";
 		st.nextToken();// jump the first line
-		
+
 		while (st.hasMoreElements()) {
 			token = st.nextToken();
 			switch (position) {
@@ -877,210 +876,212 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		return reslist;
 	}
 
-	/**
-	 * Return the unity specified by the parameters
-	 * 
-	 * @param actKey
-	 *            the activity key
-	 * @param typeKey
-	 *            the type key
-	 * @param secKey
-	 *            the section key
-	 * @param unitKey
-	 *            the unity key
-	 * @return The unity wanted
-	 */
+	// /**
+	// * Return the unity specified by the parameters
+	// *
+	// * @param actKey
+	// * the activity key
+	// * @param typeKey
+	// * the type key
+	// * @param secKey
+	// * the section key
+	// * @param unitKey
+	// * the unity key
+	// * @return The unity wanted
+	// */
+	//
+	// public Unity getUnity(long actKey, long typeKey, long secKey, long
+	// unitKey) {
+	//
+	// DResource a = getResource(actKey);
+	// if (a != null) {
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes()
+	// .getResource(typeKey);
+	// if (t != null) {
+	// DResource s = ((Type) t.getAttach()).getSetOfSections()
+	// .getResource(secKey);
+	// if (s != null) {
+	// DResource u = ((Section) s.getAttach()).getSetOfUnities()
+	// .getResource(unitKey);
+	// if (u != null)
+	// return (Unity) u.getAttach();
+	// }
+	// }
+	// }
+	// return null;
+	// }
 
-	public Unity getUnity(long actKey, long typeKey, long secKey, long unitKey) {
+	// /**
+	// * Return the unity specified by the parameters
+	// *
+	// * @param actKey
+	// * the activity ID
+	// * @param typeKey
+	// * the type ID
+	// * @param secKey
+	// * the section ID
+	// * @param unitKey
+	// * the unity ID
+	// * @return The unity wanted
+	// */
+	//
+	// public Unity getUnity(String actID, String typeID, String secID,
+	// String unitID) {
+	//
+	// DResource a = getResource(actID);
+	// if (a != null) {
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes()
+	// .getResource(typeID);
+	// if (t != null) {
+	// DResource s = ((Type) t.getAttach()).getSetOfSections()
+	// .getResource(secID);
+	// if (s != null) {
+	// DResource u = ((Section) s.getAttach()).getSetOfUnities()
+	// .getResource(unitID);
+	// if (u != null)
+	// return (Unity) u.getAttach();
+	// }
+	// }
+	// }
+	// return null;
+	// }
 
-		DResource a = getResource(actKey);
-		if (a != null) {
-			DResource t = ((Activity) a.getAttach()).getSetOfTypes()
-					.getResource(typeKey);
-			if (t != null) {
-				DResource s = ((Type) t.getAttach()).getSetOfSections()
-						.getResource(secKey);
-				if (s != null) {
-					DResource u = ((Section) s.getAttach()).getSetOfUnities()
-							.getResource(unitKey);
-					if (u != null)
-						return (Unity) u.getAttach();
-				}
-			}
-		}
-		return null;
-	}
+	// /**
+	// *
+	// * @param actID
+	// * @param typeID
+	// * @param secID
+	// * @return
+	// */
+	// public Section getSection(String actID, String typeID, String secID) {
+	// DResource a = getResource(actID);
+	// if (a != null) {
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes()
+	// .getResource(typeID);
+	// if (t != null) {
+	// DResource s = ((Type) t.getAttach()).getSetOfSections()
+	// .getResource(secID);
+	// if (s != null)
+	// return (Section) s.getAttach();
+	// }
+	// }
+	// return null;
+	// }
 
-	/**
-	 * Return the unity specified by the parameters
-	 * 
-	 * @param actKey
-	 *            the activity ID
-	 * @param typeKey
-	 *            the type ID
-	 * @param secKey
-	 *            the section ID
-	 * @param unitKey
-	 *            the unity ID
-	 * @return The unity wanted
-	 */
+	// /**
+	// *
+	// * @param actID
+	// * @param typeID
+	// * @return
+	// */
+	// public Type getType(String actID, String typeID) {
+	// DResource a = getResource(actID);
+	// if (a != null) {
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes()
+	// .getResource(typeID);
+	// if (t != null) {
+	// return (Type) t.getAttach();
+	// }
+	// }
+	// return null;
+	// }
 
-	public Unity getUnity(String actID, String typeID, String secID,
-			String unitID) {
+	// /**
+	// * Return the name of the unity specified by the parameters
+	// *
+	// * @param actKey
+	// * the activity key
+	// * @param typeKey
+	// * the type key
+	// * @param secKey
+	// * the section key
+	// * @param unitKey
+	// * the unity key
+	// * @return The name of the unity wanted
+	// */
+	// public String getUnityCompleteName(long actKey, long typeKey, long
+	// secKey,
+	// long unitKey) {
+	// DResource a = getResource(actKey);
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
+	// typeKey);
+	// DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
+	// secKey);
+	// DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
+	// unitKey);
+	// return a.getID() + "." + t.getID() + "." + s.getID() + "." + u.getID()
+	// + ".";
+	// }
 
-		DResource a = getResource(actID);
-		if (a != null) {
-			DResource t = ((Activity) a.getAttach()).getSetOfTypes()
-					.getResource(typeID);
-			if (t != null) {
-				DResource s = ((Type) t.getAttach()).getSetOfSections()
-						.getResource(secID);
-				if (s != null) {
-					DResource u = ((Section) s.getAttach()).getSetOfUnities()
-							.getResource(unitID);
-					if (u != null)
-						return (Unity) u.getAttach();
-				}
-			}
-		}
-		return null;
-	}
+	// /**
+	// *
+	// * @param vect
+	// * @return
+	// */
+	// public Vector getUnitiesNames(Vector vect) {
+	// Vector result = new Vector();
+	// for (int i = 0; i < vect.size(); i++) {
+	// long actKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
+	// .toString(), ".", 0));
+	// long typeKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
+	// .toString(), ".", 1));
+	// long secKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
+	// .toString(), ".", 2));
+	// long unitKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
+	// .toString(), ".", 3));
+	// result.add(getUnityCompleteName(actKey, typeKey, secKey, unitKey));
+	// }// end for (int i=0; i< vect.size(); i++)
+	// return result;
+	// }
 
-	/**
-	 * 
-	 * @param actID
-	 * @param typeID
-	 * @param secID
-	 * @return
-	 */
-	public Section getSection(String actID, String typeID, String secID) {
-		DResource a = getResource(actID);
-		if (a != null) {
-			DResource t = ((Activity) a.getAttach()).getSetOfTypes()
-					.getResource(typeID);
-			if (t != null) {
-				DResource s = ((Type) t.getAttach()).getSetOfSections()
-						.getResource(secID);
-				if (s != null)
-					return (Section) s.getAttach();
-			}
-		}
-		return null;
-	}
+	// /**
+	// * Sets a field belonging a Unity
+	// *
+	// * @param actKey
+	// * the activity key
+	// * @param typeKey
+	// * the type key
+	// * @param secKey
+	// * the section key
+	// * @param unitKey
+	// * the unity key
+	// * @param fieldIndex
+	// * The index identifaying the field
+	// * @param fieldValue
+	// * The value to be setted in the field
+	// */
+	// public void setUnityField(long actKey, long typeKey, long secKey,
+	// long unitKey, int fieldIndex, String fieldValue) {
+	// DResource a = getResource(actKey);
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
+	// typeKey);
+	// DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
+	// secKey);
+	// DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
+	// unitKey);
+	// u.getAttach().setField(fieldIndex, fieldValue);
+	// }
 
-	/**
-	 * 
-	 * @param actID
-	 * @param typeID
-	 * @return
-	 */
-	public Type getType(String actID, String typeID) {
-		DResource a = getResource(actID);
-		if (a != null) {
-			DResource t = ((Activity) a.getAttach()).getSetOfTypes()
-					.getResource(typeID);
-			if (t != null) {
-				return (Type) t.getAttach();
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Return the name of the unity specified by the parameters
-	 * 
-	 * @param actKey
-	 *            the activity key
-	 * @param typeKey
-	 *            the type key
-	 * @param secKey
-	 *            the section key
-	 * @param unitKey
-	 *            the unity key
-	 * @return The name of the unity wanted
-	 */
-	public String getUnityCompleteName(long actKey, long typeKey, long secKey,
-			long unitKey) {
-		DResource a = getResource(actKey);
-		DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
-				typeKey);
-		DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
-				secKey);
-		DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
-				unitKey);
-		return a.getID() + "." + t.getID() + "." + s.getID() + "." + u.getID()
-				+ ".";
-	}
-
-	/**
-	 * 
-	 * @param vect
-	 * @return
-	 */
-	public Vector getUnitiesNames(Vector vect) {
-		Vector result = new Vector();
-		for (int i = 0; i < vect.size(); i++) {
-			long actKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
-					.toString(), ".", 0));
-			long typeKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
-					.toString(), ".", 1));
-			long secKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
-					.toString(), ".", 2));
-			long unitKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
-					.toString(), ".", 3));
-			result.add(getUnityCompleteName(actKey, typeKey, secKey, unitKey));
-		}// end for (int i=0; i< vect.size(); i++)
-		return result;
-	}
-
-	/**
-	 * Sets a field belonging a Unity
-	 * 
-	 * @param actKey
-	 *            the activity key
-	 * @param typeKey
-	 *            the type key
-	 * @param secKey
-	 *            the section key
-	 * @param unitKey
-	 *            the unity key
-	 * @param fieldIndex
-	 *            The index identifaying the field
-	 * @param fieldValue
-	 *            The value to be setted in the field
-	 */
-	public void setUnityField(long actKey, long typeKey, long secKey,
-			long unitKey, int fieldIndex, String fieldValue) {
-		DResource a = getResource(actKey);
-		DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
-				typeKey);
-		DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
-				secKey);
-		DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
-				unitKey);
-		u.getAttach().setField(fieldIndex, fieldValue);
-	}
-
-	/**
-	 * 
-	 * @param actID
-	 * @param typeID
-	 * @param secID
-	 * @param unitID
-	 * @param fieldIndex
-	 * @param fieldValue
-	 */
-	public void setUnityField(String actID, String typeID, String secID,
-			String unitID, int fieldIndex, String fieldValue) {
-		DResource a = getResource(actID);
-		DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
-				typeID);
-		DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
-				secID);
-		DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
-				unitID);
-		u.getAttach().setField(fieldIndex, fieldValue);
-	}
+	// /**
+	// *
+	// * @param actID
+	// * @param typeID
+	// * @param secID
+	// * @param unitID
+	// * @param fieldIndex
+	// * @param fieldValue
+	// */
+	// public void setUnityField(String actID, String typeID, String secID,
+	// String unitID, int fieldIndex, String fieldValue) {
+	// DResource a = getResource(actID);
+	// DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
+	// typeID);
+	// DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
+	// secID);
+	// DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
+	// unitID);
+	// u.getAttach().setField(fieldIndex, fieldValue);
+	// }
 
 	/**
 	 * check if there is an error detected
