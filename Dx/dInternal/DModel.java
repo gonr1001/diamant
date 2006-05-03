@@ -463,7 +463,8 @@ public class DModel extends Observable {
      * @return
      */
     public SetOfActivities getSetOfActivities() {
-        SetOfActivities soaTmp = new SetOfActivities(false); // XXXX Pascal: pkoi false?
+    	boolean nomExpicite = false;
+        SetOfActivities soaTmp = new SetOfActivities(nomExpicite); 
         if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
             for (int i = 0; i < _setOfActivitiesSites.size(); i++) {
                 SetOfActivities soa = (SetOfActivities) _setOfActivitiesSites

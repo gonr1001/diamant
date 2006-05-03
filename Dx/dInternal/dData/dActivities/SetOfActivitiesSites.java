@@ -253,13 +253,10 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
-		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
-										// subStrings in a line
-		// int state=0;
+		StringTokenizer stLine = null; 
 		int position = beginPosition;
 		token = st.nextToken();
 		_line = 0;
-		// String activityName="";
 		String instructorName = "";
 		int numberOfBlocs = 0;
 		while (st.hasMoreElements()) {
@@ -759,15 +756,11 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 */
 	public void buildSetOfResources1_6(byte[] dataloaded, int beginPosition) {
 		String token;
-		// String sousString; //auxiliar String for stocking a substring of a
-		// line
 		StringTokenizer st = new StringTokenizer(new String(dataloaded), "\r\n");
-		// StringTokenizer stLine = null; //auxiliar StringTokenizer for reading
-		// subStrings in a line
-		// int state=0;
 		int position = beginPosition;
 		String site = "", course = "";
 		st.nextToken();// jump the first line
+		
 		while (st.hasMoreElements()) {
 			token = st.nextToken();
 			switch (position) {
