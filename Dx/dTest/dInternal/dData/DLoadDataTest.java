@@ -98,6 +98,8 @@ public class DLoadDataTest extends TestCase {
 				.get(4));
 		assertEquals("test2_loadTimeTable5j : assertEquals: ", "SHE", setSite
 				.getResourceAt(0).getID());
+		
+//		SetOfActivitiesSites setSite1 = (SetOfActivitiesSites) setSite.getResourceAt(0).getAttach();
 		SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
 				.getAttach();
 		assertEquals("test2_1_loadTimeTable5j : assertEquals: ", "AMC640", setAct

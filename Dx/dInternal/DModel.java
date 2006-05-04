@@ -95,7 +95,7 @@ public class DModel extends Observable {
 
     private static SetOfActivitiesSites _setOfActivitiesSites = null;
 
-    protected static SetOfActivities _setOfActivities = null;
+    //protected static SetOfActivities _setOfActivities = null;
 
     private DDocument _dDocument;
 
@@ -463,8 +463,9 @@ public class DModel extends Observable {
      * @return
      */
     public SetOfActivities getSetOfActivities() {
-    	boolean nomExpicite = false;
-        SetOfActivities soaTmp = new SetOfActivities(nomExpicite); 
+    	boolean open = false;
+        SetOfActivities soaTmp = new SetOfActivities(open); 
+        // all sites old way
         if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
             for (int i = 0; i < _setOfActivitiesSites.size(); i++) {
                 SetOfActivities soa = (SetOfActivities) _setOfActivitiesSites
@@ -475,6 +476,7 @@ public class DModel extends Observable {
             }// end for (int i = 0; i < _setOfActiv
             //return soaTmp;
         } else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
+        	// if new 
             DResource resc = _setOfActivitiesSites.getResource(_currentSite);
             if (resc != null)
                 soaTmp = (SetOfActivities) resc.getAttach();
