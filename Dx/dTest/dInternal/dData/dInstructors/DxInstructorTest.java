@@ -44,7 +44,7 @@ public class DxInstructorTest extends TestCase {
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
-		return new TestSuite(DSetOfInstructorsTest.class);
+		return new TestSuite(DxInstructorTest.class);
 	} // end suite
 
 }

@@ -19,23 +19,64 @@
  */
 package dInternal.dData;
 
+
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxAvailability is a class used to:
  * <p>
- * TODO:insert comments
+ * Holds availability data and provides easy way of accessing informations.
+ * DxAvailability don't make extensive verifications since, at this point,
+ * data should have already been verified and correct.
  * <p> 
  * 
  */
 public class DxAvailability {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public DxAvailability(int nDays)
+	{
+	}
 
+	/**
+     * compare this resource with the specified resource
+     * @param resource the specified resource
+     * @return bolean true if this resource and the specified resource are equals
+     * false if they are not equals
+     * */
+	public boolean setDayAvailability(int nDay, String sAvailabilities)
+	{
+		return true;
+	}
+	
+	public boolean setPeriodAvailability(int nDay, int nPeriod, int nAvailability)
+	{
+		return true;
+	}
+	
+	public boolean addPeriodAvailability(int nDay, int nAvailability)
+	{
+		return false;
+	}
+	
+
+	public int[] getDayAvailability(int nDay)
+	{
+		return null;
+	}
+	
+	public int getPeriodAvailability(int nDay, int nPeriod)
+	{
+		return 0;
+	}
+	
+	public int getPeriodCount(int nDay)
+	{
+		return 0;
+	}
+	
+	public int getDayCount()
+	{
+		return 0;
 	}
 
 }
