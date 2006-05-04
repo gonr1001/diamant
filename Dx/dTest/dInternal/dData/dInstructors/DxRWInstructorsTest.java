@@ -2,7 +2,7 @@
  * Created on May 4, 2006
  * 
  * 
- * Title: DxAvailabilityTest.java 
+ * Title: DxRWInstructorsTest.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -17,28 +17,27 @@
  * 
  * 
  */
-package dTest.dInternal.dData;
+package dTest.dInternal.dData.dInstructors;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
 
 /**
  * Ruben Gonzalez-Rubio
  * 
- * Description: DxAvailabilityTest is a class used to:
+ * Description: DxRWInstructorsTest is a class used to:
  * <p>
  * TODO:insert comments
  * <p> 
  * 
  */
-public class DxAvailabilityTest extends TestCase{
+public class DxRWInstructorsTest extends TestCase{
 
 	/**
 	 * @param args
 	 */
-	public DxAvailabilityTest(String name) {
+	public DxRWInstructorsTest(String name) {
 		super(name);
 	}
 
@@ -47,6 +46,5 @@ public class DxAvailabilityTest extends TestCase{
 		// the dynamic way :
 		return new TestSuite(DSetOfInstructorsTest.class);
 	} // end suite
-
 
 }

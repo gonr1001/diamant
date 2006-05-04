@@ -29,6 +29,7 @@ package dmains;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import dInternal.dData.dInstructors.DxRWInstructors;
 import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
@@ -41,10 +42,14 @@ import dTest.dInternal.dData.ByteArrayMessageTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
+import dTest.dInternal.dData.DxAvailabilityTest;
 import dTest.dInternal.dData.StandardCollectionTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
+import dTest.dInternal.dData.dInstructors.DxInstructorTest;
+import dTest.dInternal.dData.dInstructors.DxRWInstructorsTest;
+import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
 // import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
@@ -100,6 +105,10 @@ public class DiamantTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("Dimanant Tests");
+		suite.addTest(DxAvailabilityTest.suite());
+		suite.addTest(DxInstructorTest.suite());
+		suite.addTest(DxSetOfInstructorsTest.suite());
+		suite.addTest(DxRWInstructorsTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());

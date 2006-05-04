@@ -2,7 +2,7 @@
  * Created on May 4, 2006
  * 
  * 
- * Title: DxSetOfInstructors.java 
+ * Title: DxSetOfInstructorsTest.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -19,23 +19,32 @@
  */
 package dTest.dInternal.dData.dInstructors;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
- * Description: DxSetOfInstructors is a class used to:
+ * Description: DxSetOfInstructorsTest is a class used to:
  * <p>
  * TODO:insert comments
  * <p> 
  * 
  */
-public class DxSetOfInstructors {
+public class DxSetOfInstructorsTest extends TestCase {
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public DxSetOfInstructorsTest(String name) {
+		super(name);
 	}
+
+	public static Test suite() {
+		// the type safe way is in SimpleTest
+		// the dynamic way :
+		return new TestSuite(DSetOfInstructorsTest.class);
+	} // end suite
 
 }

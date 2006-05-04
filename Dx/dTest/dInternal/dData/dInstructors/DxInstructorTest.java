@@ -19,23 +19,32 @@
  */
 package dTest.dInternal.dData.dInstructors;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxInstructorTest is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
-public class DxInstructorTest {
+public class DxInstructorTest extends TestCase {
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public DxInstructorTest(String name) {
+		super(name);
 	}
+
+	public static Test suite() {
+		// the type safe way is in SimpleTest
+		// the dynamic way :
+		return new TestSuite(DSetOfInstructorsTest.class);
+	} // end suite
 
 }
