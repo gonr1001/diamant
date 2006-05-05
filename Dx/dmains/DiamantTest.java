@@ -109,7 +109,7 @@ public class DiamantTest {
 //		suite.addTest(DxInstructorTest.suite());
 //		suite.addTest(DxSetOfInstructorsTest.suite());
 //		suite.addTest(DxRWInstructorsTest.suite());
-//		suite.addTest(InstructorAttachTest.suite());
+		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
@@ -158,7 +158,6 @@ public class DiamantTest {
 		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(SetOfCategoriesTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
-		//suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());

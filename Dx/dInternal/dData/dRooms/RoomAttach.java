@@ -27,8 +27,6 @@ import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.dData.AvailabilityAttach;
 
-// import dInternal.dUtil.DXToolsMethods;
-// import dInternal.dUtil.DXValue;
 
 public class RoomAttach extends AvailabilityAttach {
 
@@ -43,7 +41,6 @@ public class RoomAttach extends AvailabilityAttach {
 	/**
 	 * @associates String
 	 */
-	// private final String CR_LF = "\r\n";
 	public RoomAttach() {
 		_capacity = 0;
 		_description = "";

@@ -12,10 +12,12 @@ package dTest.dInternal.dDataTxt;
 //public class RoomAttachTest {
 import java.util.Vector;
 
+import dInternal.dData.dRooms.RoomAttach;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dInternal.dDataTxt.RoomAttach;
+//import dInternal.dDataTxt.RoomAttach;
 
 public class RoomAttachTest extends TestCase {
   //private StudentAttach _student;
@@ -32,7 +34,7 @@ public class RoomAttachTest extends TestCase {
 
 
   public void test_addAvailability(){
-   Vector v = new Vector();
+   Vector <String>v = new Vector<String>();
    v.add("1 1 1 1 5");
    v.add("1 1 1 5 5");
    RoomAttach roomAttach = new RoomAttach();
@@ -42,7 +44,7 @@ public class RoomAttachTest extends TestCase {
  }
 
  public void test_removeAvailability(){
-   Vector v = new Vector();
+	 Vector <String>v = new Vector<String>();
    v.add("1 1 1 1 5");
    //v.add("1 1 1 5 5");
    RoomAttach roomAttach = new RoomAttach();
@@ -54,7 +56,7 @@ public class RoomAttachTest extends TestCase {
  }
 
  public void test_setAvailability(){
-   Vector v = new Vector();
+	 Vector <String>v = new Vector<String>();
    v.add("1 1 1 1 5");
    v.add("1 1 1 5 5");
    RoomAttach roomAttach = new RoomAttach();
@@ -63,7 +65,7 @@ public class RoomAttachTest extends TestCase {
   }
 
   public void test1_setAvailability(){
-    Vector v = new Vector();
+	  Vector <String>v = new Vector<String>();
     v.add("1 1 1 1 5");
     v.add("1 1 1 5 5");
     RoomAttach roomAttach = new RoomAttach();
@@ -73,7 +75,7 @@ public class RoomAttachTest extends TestCase {
   }
 
   public void test_getAvailability(){
-    Vector v = new Vector();
+	  Vector <String>v = new Vector<String>();
     v.add("1 1 1 1 5");
     v.add("1 1 1 5 5");
     RoomAttach roomAttach = new RoomAttach();
@@ -83,7 +85,7 @@ public class RoomAttachTest extends TestCase {
   }
 
   public void test1_getAvailability(){
-    Vector v = new Vector();
+	  Vector <String>v = new Vector<String>();
     v.add("1 1 1 1 5 1");
     v.add("1 1 1 5 5");
     RoomAttach roomAttach = new RoomAttach();
