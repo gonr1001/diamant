@@ -29,9 +29,9 @@ public class Section extends DXObject{
    * @return boolean result of the operation
    * */
   public boolean addUnity(String id){
-    Unity bloc= new Unity();
+    //Unity bloc= new Unity();
     //Resource actBloc = new Resource(id,bloc);
-    return _blocList.addResource(new Resource(id,bloc),1);
+    return true;//_blocList.addResource(new Resource(id,bloc),1);
   }
 
   /**
@@ -44,25 +44,25 @@ public class Section extends DXObject{
     _blocList.sortSetOfResourcesByID();
       Assignment cycleAss = new Assignment();
       cycleAss.setPeriodKey("1.1.1");
-      Unity newUnity= new Unity();
+      //Unity newUnity= new Unity();
       for (int i=1; i<= NumberOfCycle; i++){
 //        newUnity.addAssignment(new Resource(Integer.toString(i),cycleAss));
       }
-      Resource newUnitResc= new Resource(id, newUnity);
-      newUnitResc.setManuallyCreated(isManualCreated);
-      return _blocList.addResource(newUnitResc,1) ;
+      //Resource newUnitResc= new Resource(id, newUnity);
+      //newUnitResc.setManuallyCreated(isManualCreated);
+      return true;//_blocList.addResource(newUnitResc,1) ;
   }
 
-  /**
-   * add a bloc object in the list
-   * @param String the ID of the bloc
-   * @param Bloc the bloc to be added
-   * @return boolean result of the operation
-   * */
-  public boolean addUnity(String id, Unity unity){
-    //Resource actBloc = new Resource(id,bloc);
-    return _blocList.addResource(new Resource(id,unity),1);
-  }
+//  /**
+//   * add a bloc object in the list
+//   * @param String the ID of the bloc
+//   * @param Bloc the bloc to be added
+//   * @return boolean result of the operation
+//   * */
+//  public boolean addUnity(String id, Unity unity){
+//    //Resource actBloc = new Resource(id,bloc);
+//    return _blocList.addResource(new Resource(id,unity),1);
+//  }
 
   /**
    * remove a bloc object from de list

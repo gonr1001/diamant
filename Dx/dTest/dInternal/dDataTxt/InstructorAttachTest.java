@@ -15,7 +15,7 @@ import dInternal.dData.dInstructors.InstructorAttach;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-//import dInternal.dDataTxt.InstructorAttach;
+
 
 public class InstructorAttachTest extends TestCase {
   private InstructorAttach _inst;
@@ -32,7 +32,7 @@ public class InstructorAttachTest extends TestCase {
   } // end suite
 
   public void test_addAvailability(){
-    Vector v = new Vector();
+    Vector <String> v = new Vector <String>();
     v.add("1 1 1 1 5");
     v.add("1 1 1 5 5");
     _inst.addAvailability("1 1 1 1 5");
@@ -41,7 +41,7 @@ public class InstructorAttachTest extends TestCase {
   }
 
   public void test_removeAvailability(){
-    Vector v = new Vector();
+	  Vector <String> v = new Vector <String>();
     v.add("1 1 1 1 5");
     //v.add("1 1 1 5 5");
     _inst.addAvailability("1 1 1 1 5");
@@ -52,7 +52,7 @@ public class InstructorAttachTest extends TestCase {
   }
 
   public void test_setAvailability(){
-    Vector v = new Vector();
+	  Vector <String> v = new Vector <String>();
     v.add("1 1 1 1 5");
     v.add("1 1 1 5 5");
     _inst.setAvailability(v);
@@ -60,7 +60,7 @@ public class InstructorAttachTest extends TestCase {
   }
 
   public void test1_setAvailability(){
-    Vector v = new Vector();
+	  Vector <String> v = new Vector <String>();
     v.add("1 1 1 1 5");
     v.add("1 1 1 5 5");
     int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
@@ -69,7 +69,7 @@ public class InstructorAttachTest extends TestCase {
   }
 
   public void test_getAvailability(){
-    Vector v = new Vector();
+	  Vector <String> v = new Vector <String>();
     v.add("1 1 1 1 5");
     v.add("1 1 1 5 5");
     int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};
@@ -78,7 +78,7 @@ public class InstructorAttachTest extends TestCase {
   }
 
   public void test1_getAvailability(){
-    Vector v = new Vector();
+	  Vector <String> v = new Vector <String>();
     v.add("1 1 1 1 5 1");
     v.add("1 1 1 5 5");
     int [][] availMatrix={{1,1,1,1,5},{1,1,1,5,5}};

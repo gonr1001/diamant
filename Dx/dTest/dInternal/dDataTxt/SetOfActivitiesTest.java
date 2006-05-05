@@ -17,13 +17,11 @@ import junit.framework.TestSuite;
 
 
 import dConstants.DConst;
-import dInternal.dDataTxt.Activity;
+
 import dInternal.dDataTxt.Assignment;
 import dInternal.dDataTxt.Resource;
 import dInternal.dDataTxt.Section;
-import dInternal.dDataTxt.SetOfActivities;
-import dInternal.dDataTxt.Type;
-import dInternal.dDataTxt.Unity;
+
 import eLib.exit.txt.FilterFile;
 
 
