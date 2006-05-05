@@ -160,7 +160,7 @@ public class DiamantTest {
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
-		suite.addTest(RoomAttachTest.suite());
+//		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(SetOfRoomsTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		System.out.println("Bye I was in tests");

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRooms $Revision: 1.31 $  $Date: 2005-07-05 12:04:28 $
+* Title: SetOfRooms $Revision: 1.32 $  $Date: 2006-05-05 16:08:59 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.31 $
+* @version $Revision: 1.32 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -27,9 +27,12 @@ import java.util.StringTokenizer;
 
 
 import dConstants.DConst;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dUtil.DXToolsMethods;
 
-public class SetOfRooms extends SetOfResources{
+public class SetOfRooms extends DSetOfResources{
 	
 	private byte[] _dataloaded; 
 	private String _error;
@@ -43,7 +46,7 @@ public class SetOfRooms extends SetOfResources{
 	 *
 	 */
 	public SetOfRooms(byte[] dataloaded){ 
-		super(3);
+		super();
 		_error ="";
 		//_sorListeners= new Vector();
 		_dataloaded = dataloaded;
@@ -153,7 +156,7 @@ public class SetOfRooms extends SetOfResources{
 						break;
 					}// end switch (state)
 				}// end while (currentLine.hasMoreElements())
-				addResource(new Resource( roomID, room),1);
+				addResource(new DResource( roomID, room),1);
 				break;
 			}// end switch(position)
 		}// end while (st.hasMoreElements())
@@ -370,7 +373,7 @@ public class SetOfRooms extends SetOfResources{
 					str = DXToolsMethods.getToken(currentLine, ";",5).trim();
 					buildAvailability(room, str);
 				}
-				addResource(new Resource( roomID, room),1);
+				addResource(new DResource( roomID, room),1);
 				break;
 			}// end switch(position)
 		     
@@ -431,7 +434,7 @@ public class SetOfRooms extends SetOfResources{
 					str = DXToolsMethods.getToken(currentLine, ";",5).trim();
 					buildAvailability(room, str);
 				}
-				addResource(new Resource( roomID, room),1);
+				addResource(new DResource( roomID, room),1);
 				break;
 			}// end switch(position)
 		}// end while (st.hasMoreElements())
@@ -605,6 +608,18 @@ public class SetOfRooms extends SetOfResources{
 	    }// end while (st.hasMoreElements())
 	    return true;
 	} //end analyseTokens
+
+	@Override
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	
 }

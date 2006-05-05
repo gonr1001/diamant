@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRoomsZone $Revision: 1.4 $  $Date: 2004-12-01 17:16:46 $
+* Title: SetOfRoomsZone $Revision: 1.5 $  $Date: 2006-05-05 16:09:00 $
 * Description: SetOfRoomsZone is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.4 $
+* @version $Revision: 1.5 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -27,8 +27,11 @@ import java.util.StringTokenizer;
 //import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.dRooms.RoomAttach;
 
-public class SetOfRoomsZone extends SetOfResources{
+public class SetOfRoomsZone extends DSetOfResources{
 
 	private byte[] _dataloaded; //_st;// rooms in text format
 	private String _error;
@@ -43,7 +46,7 @@ public class SetOfRoomsZone extends SetOfResources{
 	 *
 	 */
 	public SetOfRoomsZone(byte[] dataloaded){ //, int nbDay, int nbPerDay) {
-		super(3);
+		super();
 		//_setOfRooms = null;
  //   _error ="";
  //   _sorListeners= new Vector(1);
@@ -216,7 +219,7 @@ public class SetOfRoomsZone extends SetOfResources{
                   break;
               }// end switch (state)
             }// end while (currentLine.hasMoreElements())
-            addResource(new Resource( roomID, room),1);
+            addResource(new DResource( roomID, room),1);
             break;
       }// end switch(position)
     }// end while (st.hasMoreElements())
@@ -237,4 +240,14 @@ public class SetOfRoomsZone extends SetOfResources{
 	    }
 	    return true;
 	  }
+	@Override
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
