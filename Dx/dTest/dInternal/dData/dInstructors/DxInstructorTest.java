@@ -19,6 +19,8 @@
  */
 package dTest.dInternal.dData.dInstructors;
 
+import dInternal.dData.DxAvailability;
+import dInternal.dData.dInstructors.DxInstructor;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -33,7 +35,6 @@ import junit.framework.TestSuite;
  * 
  */
 public class DxInstructorTest extends TestCase {
-
 	/**
 	 * @param args
 	 */
@@ -47,4 +48,45 @@ public class DxInstructorTest extends TestCase {
 		return new TestSuite(DxInstructorTest.class);
 	} // end suite
 
+	// Trying to set an unexisting day
+	public void test_DxInstructor() {
+		// assertEquals("test_setDayAvailability: assertEquals", _aTest
+		// .setDayAvailability(5, "1 5"), false);
+		DxAvailability aTemp = new DxAvailability(2);
+		aTemp.setDayAvailability(0, "1 5 1 5 1 5 1 5 1 5 1 5");
+		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp);
+		assertEquals("test_DxInstructor: assertEquals", iTemp
+				.getInstructorName(), "Smith, John");
+		assertEquals("test1_DxInstructor: assertEquals", iTemp
+				.getInstructorAvailability().getPeriodAvailability(0, 0), 1);
+		assertEquals("test2_DxInstructor: assertEquals", iTemp
+				.getInstructorID(), 0);
+	}
+
+	public void test_setInstructors() {
+		DxAvailability aTemp = new DxAvailability(2);
+		aTemp.setDayAvailability(0, "1 5 1 5 1 5 1 5 1 5 1 5");
+		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp);
+
+		iTemp.setInstructorName("");
+		assertEquals("test_setInstructors: assertEquals", iTemp
+				.getInstructorName(), "");
+
+		aTemp=new DxAvailability(2);
+		aTemp.setDayAvailability(0, "5 5 5 5 5 5 5 5");
+		assertEquals("test1_setInstructors: assertEquals", iTemp
+				.getInstructorAvailability().getPeriodAvailability(0, 0), 1);
+		iTemp.setInstructorAvailability(aTemp);
+		assertEquals("test2_setInstructors: assertEquals", iTemp
+				.getInstructorAvailability().getPeriodAvailability(0, 0), 5);
+	}
+
+	public void test_uniqueID() {
+		DxAvailability aTemp = new DxAvailability(2);
+		aTemp.setDayAvailability(0, "1 5 1 5");
+		DxInstructor iA = new DxInstructor("Instru1", aTemp);
+		DxInstructor iB = new DxInstructor("Instru2", aTemp);
+		assertNotSame("test_uniqueID: assertNotSame", iA.getInstructorID(), iB
+				.getInstructorID());
+	}
 }

@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.dData.DxAvailability;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -29,13 +31,77 @@ package dInternal.dData.dInstructors;
  * 
  */
 public class DxInstructor {
+	private static int UNIQUE_ID=0;
+	private int _nInstructorID;
+	private String _sName; 
+	private DxAvailability _aInstrucAvail;
+	 
 
 	/**
-	 * @param args
+	 * Constructor
+	 * 
+	 * @param sName
+	 *            Name of the new instructor
+	 * @param a
+	 *            Availability of the new instructor
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public DxInstructor(String sName, DxAvailability a)
+	{
+		_nInstructorID=UNIQUE_ID++;
+		_sName=sName;
+		_aInstrucAvail=a;
+		
 	}
-
+	
+	/**
+	 * Modify the availability of the instructor
+	 * 
+	 * @param aNewAvailability
+	 *            Availability that has to be assigned to the instructor            
+	 */
+	public void setInstructorAvailability(DxAvailability aNewAvailability)
+	{
+		_aInstrucAvail=aNewAvailability;
+	}
+	
+	/**
+	 * Modify instructor's name
+	 * 
+	 * @param sNewName
+	 *            New name for the instructor            
+	 */
+	public void setInstructorName(String sNewName)
+	{
+		_sName=sNewName;
+	}
+	
+	/**
+	 * 
+	 * @return DxAvailability 
+	 *            Availability of the instructor             
+	 */
+	public DxAvailability getInstructorAvailability()
+	{
+		return _aInstrucAvail;
+	}
+	
+	/**
+	 * 
+	 * @return String 
+	 *            Name of the instructor             
+	 */
+	public String getInstructorName()
+	{
+		return _sName;
+	}
+	
+	/**
+	 * 
+	 * @return int 
+	 *            Unique ID of the instructor             
+	 */
+	public int getInstructorID()
+	{
+		return _nInstructorID;
+	}
 }
