@@ -22,7 +22,6 @@ import dInternal.DResource;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.Assignment;
-//import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;

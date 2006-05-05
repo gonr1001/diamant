@@ -29,7 +29,6 @@ package dmains;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import dInternal.dData.dInstructors.DxRWInstructors;
 import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
@@ -52,7 +51,7 @@ import dTest.dInternal.dData.dInstructors.DxRWInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
-// import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
+
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dData.dStudents.StudentTest;
@@ -65,7 +64,7 @@ import dTest.dInternal.dDataTxt.RoomAttachTest;
 import dTest.dInternal.dDataTxt.RoomsAttributesInterpretorTest;
 
 import dTest.dInternal.dDataTxt.SectionTest;
-import dTest.dInternal.dDataTxt.SetOfActivitiesTest;
+
 
 import dTest.dInternal.dDataTxt.SetOfRoomsTest;
 import dTest.dInternal.dDataTxt.TypeTest;
@@ -105,10 +104,10 @@ public class DiamantTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("Dimanant Tests");
-//		suite.addTest(DxAvailabilityTest.suite());
-//		suite.addTest(DxInstructorTest.suite());
-//		suite.addTest(DxSetOfInstructorsTest.suite());
-//		suite.addTest(DxRWInstructorsTest.suite());
+		suite.addTest(DxAvailabilityTest.suite());
+		suite.addTest(DxInstructorTest.suite());
+		suite.addTest(DxSetOfInstructorsTest.suite());
+		suite.addTest(DxRWInstructorsTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
@@ -119,7 +118,6 @@ public class DiamantTest {
 		suite.addTest(SectionTest.suite());
 		suite.addTest(TypeTest.suite());
 		suite.addTest(ActivityTest.suite());
-		suite.addTest(SetOfActivitiesTest.suite());
 		suite.addTest(PeriodTest.suite());
 		suite.addTest(SequenceTest.suite());
 		suite.addTest(DayTest.suite());
@@ -133,7 +131,7 @@ public class DiamantTest {
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(StudentsConditionsTest.suite());
-		//suite.addTest(ConditionsTest.suite());
+		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(DRoomTest.suite());
 		suite.addTest(SetOfSitesTest.suite());
@@ -160,7 +158,6 @@ public class DiamantTest {
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
-//		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(SetOfRoomsTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		System.out.println("Bye I was in tests");

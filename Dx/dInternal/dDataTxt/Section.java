@@ -46,7 +46,7 @@ public class Section extends DXObject{
       cycleAss.setPeriodKey("1.1.1");
       Unity newUnity= new Unity();
       for (int i=1; i<= NumberOfCycle; i++){
-        newUnity.addAssignment(new Resource(Integer.toString(i),cycleAss));
+//        newUnity.addAssignment(new Resource(Integer.toString(i),cycleAss));
       }
       Resource newUnitResc= new Resource(id, newUnity);
       newUnitResc.setManuallyCreated(isManualCreated);
