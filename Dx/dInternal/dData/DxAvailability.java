@@ -19,6 +19,8 @@
  */
 package dInternal.dData;
 
+import java.util.Vector;
+
 
 /**
  * Ruben Gonzalez-Rubio
@@ -33,8 +35,24 @@ package dInternal.dData;
  */
 public class DxAvailability {
 
+	Vector [] _vDays;
+	int _nDaysQty;
+	int[] _nPeriodPerDay;
+	
+	/**
+     * Constructor
+     * @param nDays Specify how many days of availability this object will represent
+     * */
 	public DxAvailability(int nDays)
 	{
+		_nDaysQty=nDays;
+		_vDays=new Vector[_nDaysQty];
+		_nPeriodPerDay=new int[_nDaysQty];
+		for(int i=0;i<_nDaysQty;i++)
+		{
+			_vDays[i]=new Vector();
+			_nPeriodPerDay[i]=0;
+		}
 	}
 
 	/**
@@ -48,28 +66,28 @@ public class DxAvailability {
 		return true;
 	}
 	
-	public boolean setPeriodAvailability(int nDay, int nPeriod, int nAvailability)
+	public boolean setPeriodAvailability(int nDayIndex, int nPeriodIndex, int nAvailability)
 	{
 		return true;
 	}
 	
-	public boolean addPeriodAvailability(int nDay, int nAvailability)
+	public boolean addPeriodAvailability(int nDayIndex, int nAvailabilityIndex)
 	{
 		return false;
 	}
 	
 
-	public int[] getDayAvailability(int nDay)
+	public int[] getDayAvailability(int nDayIndex)
 	{
 		return null;
 	}
 	
-	public int getPeriodAvailability(int nDay, int nPeriod)
+	public int getPeriodAvailability(int nDayIndex, int nPeriodIndex)
 	{
 		return 0;
 	}
 	
-	public int getPeriodCount(int nDay)
+	public int getPeriodCount(int nDayIndex)
 	{
 		return 0;
 	}
