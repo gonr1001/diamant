@@ -19,8 +19,10 @@
  */
 package dInternal.dData;
 
+import java.util.StringTokenizer;
 import java.util.Vector;
 
+import dConstants.DConst;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -28,73 +30,132 @@ import java.util.Vector;
  * Description: DxAvailability is a class used to:
  * <p>
  * Holds availability data and provides easy way of accessing informations.
- * DxAvailability don't make extensive verifications since, at this point,
- * data should have already been verified and correct.
- * <p> 
+ * DxAvailability don't make extensive verifications since, at this point, data
+ * should have already been verified and correct.
+ * <p>
  * 
  */
 public class DxAvailability {
 
-	Vector [] _vDays;
-	int _nDaysQty;
-	int[] _nPeriodPerDay;
-	
+	Vector<Vector<Integer>> _vDays;
+
 	/**
-     * Constructor
-     * @param nDays Specify how many days of availability this object will represent
-     * */
-	public DxAvailability(int nDays)
-	{
-		_nDaysQty=nDays;
-		_vDays=new Vector[_nDaysQty];
-		_nPeriodPerDay=new int[_nDaysQty];
-		for(int i=0;i<_nDaysQty;i++)
-		{
-			_vDays[i]=new Vector();
-			_nPeriodPerDay[i]=0;
+	 * Constructor
+	 * 
+	 * @param nDays
+	 *            Specify how many days of availability this object will
+	 *            represent
+	 */
+	public DxAvailability(int nDays) {
+		_vDays = new Vector<Vector<Integer>>(nDays);
+		for (int i = 0; i < nDays; i++) {
+			_vDays.add(new Vector<Integer>());
 		}
 	}
 
 	/**
-     * compare this resource with the specified resource
-     * @param resource the specified resource
-     * @return bolean true if this resource and the specified resource are equals
-     * false if they are not equals
-     * */
-	public boolean setDayAvailability(int nDay, String sAvailabilities)
-	{
-		return true;
-	}
-	
-	public boolean setPeriodAvailability(int nDayIndex, int nPeriodIndex, int nAvailability)
-	{
-		return true;
-	}
-	
-	public boolean addPeriodAvailability(int nDayIndex, int nAvailabilityIndex)
-	{
+	 * Set the availability for a whole day
+	 * 
+	 * @param nDay
+	 *            The index of the day to be set (starts at 0)
+	 * @param sAvailabilities
+	 *            Different availabilities during a day, seperated by spaces
+	 * @return bolean true if the day was in the range specified by constructor,
+	 *         false in other cases
+	 */
+	public boolean setDayAvailability(int nDayIndex, String sAvailabilities) {
+		if (isValidDay(nDayIndex)) {
+			// Create a tokenizer on a string that include availability
+			StringTokenizer stAva = new StringTokenizer(sAvailabilities,
+					DConst.SPACE);
+			// Takes vector for the current day
+			Vector<Integer> vCurrentDay = new Vector<Integer>();
+
+			// Goes through tokens of a day and add availability to the
+			// corresponding day vector
+			while (stAva.hasMoreTokens()) {
+				vCurrentDay.add(new Integer(stAva.nextToken()));
+			}
+			_vDays.set(nDayIndex, vCurrentDay);
+			return true;
+		}
 		return false;
 	}
-	
 
-	public int[] getDayAvailability(int nDayIndex)
-	{
+	/**
+	 * Set availability for a single period of a day
+	 * 
+	 * @param nDayIndex
+	 *            Index of the day to be set (starts at 0)
+	 * @param nPeriodIndex
+	 *            Index of the period of the day to be set
+	 * @return bolean true if the Day and Period were valid, false in other
+	 *         cases
+	 */
+	public boolean setPeriodAvailability(int nDayIndex, int nPeriodIndex,
+			int nAvailability) {
+		if (isValidDay(nDayIndex)) {
+			Vector<Integer> vTemp = _vDays.get(nDayIndex);
+			if (nPeriodIndex >= 0 && nPeriodIndex < vTemp.size()) {
+				vTemp.set(nPeriodIndex, new Integer(nAvailability));
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Method that gives access to availibilities of a whole day through a vector of Integer
+	 * 
+	 * @param nDayIndex
+	 *            Index of the day to be retreived
+	 * @return Vector<Integer> The vector of Integer if the specified day was
+	 *         valid, null otherwise
+	 */
+	public Vector<Integer> getDayAvailability(int nDayIndex) {
+		if (isValidDay(nDayIndex))
+			return _vDays.get(nDayIndex);
 		return null;
 	}
-	
-	public int getPeriodAvailability(int nDayIndex, int nPeriodIndex)
-	{
-		return 0;
-	}
-	
-	public int getPeriodCount(int nDayIndex)
-	{
-		return 0;
-	}
-	
-	public int getDayCount()
-	{
-		return 0;
+
+	/**
+	 * Method granting acces to the availability for a certain period of a day
+	 * 
+	 * @param nDayIndex
+	 *            Index of the day to be retreived
+	 * @param nPeriodIndex Index of the period to be retrived
+	 * @return int The availability for the given period or -1 in case of invalid day or period index
+	 */
+	public int getPeriodAvailability(int nDayIndex, int nPeriodIndex) {
+		if (isValidDay(nDayIndex)) {
+			Vector<Integer> vTemp = _vDays.get(nDayIndex);
+			if (nPeriodIndex >= 0 && nPeriodIndex < vTemp.size()) {
+				return vTemp.get(nPeriodIndex).intValue();
+			}
+		}
+		return -1;
 	}
 
+	/**
+	 * Method giving the count of period during a certain day
+	 * 
+	 * @param nDayIndex
+	 *            Index of the day to be retreived
+	 * @return int The number of period in the specified day or -1 in case of invalid day index
+	 */
+	public int getPeriodCount(int nDayIndex) {
+		if (isValidDay(nDayIndex)) {
+			return _vDays.get(nDayIndex).size();
+
+		}
+		return -1;
+	}
+
+	public int getDayCount() {
+		return _vDays.size();
+	}
+
+	private boolean isValidDay(int nDayIndex) {
+		return ((nDayIndex >= 0) && (nDayIndex < _vDays.size()));
+	}
 }

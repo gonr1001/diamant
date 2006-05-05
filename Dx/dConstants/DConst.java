@@ -120,6 +120,8 @@ public class DConst {
 
   //return constant
   public final static String CR_LF = "\r\n";//
+  public final static String SPACE = " ";
+  
  
   // TTStructure XML file tags
 	public static final String TTXML_DXTIMETABLE = "DXTimeTable";

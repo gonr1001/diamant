@@ -19,6 +19,8 @@
  */
 package dTest.dInternal.dData;
 
+import java.util.Vector;
+
 import dInternal.dData.DxAvailability;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -57,9 +59,8 @@ public class DxAvailabilityTest extends TestCase {
 		}
 
 		// Add availibility item by item
-		for (int i = 0; i < 15; i++) {
-			_aTest.addPeriodAvailability(4, 5);
-		}
+		_aTest.setDayAvailability(4, "5 5 5 5 5 5 5 5 5 5 5 5 5 5 5");
+		
 		// Change availability item by item
 		for (int i = 0; i < 15; i += 2) {
 			_aTest.setPeriodAvailability(4, i, 1);
@@ -87,9 +88,9 @@ public class DxAvailabilityTest extends TestCase {
 	// Tests that values are stored correctly by the tokenizer
 	// and that get works correctly
 	public void test_getDayAvailability() {
-		int[] nTemp=_aTest.getDayAvailability(0);
+		Vector<Integer> nTemp=_aTest.getDayAvailability(0);
 		if(nTemp!=null)
-			assertEquals("test_getDayAvailability: assertEquals ", nTemp[5], 1);
+			assertEquals("test_getDayAvailability: assertEquals ", nTemp.get(5).intValue(), 1);
 	}
 
 	// Tests that getDayAvailability returns null in case of overflow
@@ -140,7 +141,7 @@ public class DxAvailabilityTest extends TestCase {
 	// there are no availabilities
 	public void test1_getPeriodCount() {
 		assertEquals("test1_getPeriodCount: assertEquals ", _aTest
-				.getPeriodCount(3), 13);
+				.getPeriodCount(3), 0);
 	}
 
 	// Verify that number of period in day is correct, even on a day where
