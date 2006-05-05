@@ -10,10 +10,12 @@ package dTest.dInternal.dDataTxt;
  */
 import java.util.Vector;
 
+import dInternal.dData.dInstructors.InstructorAttach;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dInternal.dDataTxt.InstructorAttach;
+//import dInternal.dDataTxt.InstructorAttach;
 
 public class InstructorAttachTest extends TestCase {
   private InstructorAttach _inst;
