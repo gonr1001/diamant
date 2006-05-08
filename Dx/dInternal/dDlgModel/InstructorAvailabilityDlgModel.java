@@ -25,6 +25,7 @@ package dInternal.dDlgModel;
 
 import java.util.Vector;
 
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dTimeTable.TTStructure;
 
@@ -102,7 +103,9 @@ public class InstructorAvailabilityDlgModel {
 		_instructorsNames = setOfInstructors.getNamesVector(1);
 	}
 	
-
+	public void setNewInstructorsNames(DxSetOfInstructors setOfInstructors) {
+		_instructorsNames = setOfInstructors.getNamesVector();
+	}
 	
 	
 }

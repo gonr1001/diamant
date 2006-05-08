@@ -53,6 +53,7 @@ import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dActivities.Section;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 
 import dInternal.dData.dRooms.SetOfRooms;
@@ -814,8 +815,14 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		Vector v = new Vector();// , new Vector(1)};
 		EventAttach event = (EventAttach) ((DResource) _unities.get(index))
 				.getAttach();
-		SetOfInstructors soi = _dApplic.getCurrentDModel()
+		SetOfInstructors soi= null;
+		if(!DConst.newInstructors) {
+		 soi = _dApplic.getCurrentDModel()
 				.getSetOfInstructors();
+		}else {
+			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+			.getDxSetOfInstructors();
+		}
 		// long dayKey=
 		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
 		long keys[] = event.getInstructorKey();
@@ -831,8 +838,14 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		Vector v = new Vector();// , new Vector(1)};
 		// EventAttach event=
 		// (EventAttach)((DResource)_unities.get(index)).getAttach();
-		SetOfInstructors soi = _dApplic.getCurrentDModel()
+		SetOfInstructors soi= null;
+		if(!DConst.newInstructors) {
+		 soi = _dApplic.getCurrentDModel()
 				.getSetOfInstructors();
+		}else {
+			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+			.getDxSetOfInstructors();
+		}
 		// long dayKey=
 		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
 		// long keys [] = event.getInstructorKey();

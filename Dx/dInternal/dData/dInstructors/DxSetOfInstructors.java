@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import java.util.Vector;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -33,6 +35,30 @@ public class DxSetOfInstructors {
 
 	public DxSetOfInstructors() {
 		
+	}
+
+	public DxSetOfInstructors(int numberOfActiveDays, int maxNumberOfPeriodsADay) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getInstructorID(int i) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public Vector getNamesVector() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String size() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

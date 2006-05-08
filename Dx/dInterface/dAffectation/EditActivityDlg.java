@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.62 $  $Date: 2006-04-24 01:27:52 $
+ * Title: EditActivityDlg $Revision: 1.63 $  $Date: 2006-05-08 15:01:12 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -65,6 +65,7 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dActivities.Section;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 
 import dInternal.dData.dRooms.SetOfRooms;
@@ -630,7 +631,15 @@ public class EditActivityDlg
   private Vector buildCurrentInstructorList(int index){
     Vector v = new Vector();//, new Vector(1)};
     EventAttach event= (EventAttach)((DResource)_unities.get(index)).getAttach();
-    SetOfInstructors soi= _dApplic.getCurrentDModel().getSetOfInstructors();
+	SetOfInstructors soi= null;
+	if(!DConst.newInstructors) {
+	 soi = _dApplic.getCurrentDModel()
+			.getSetOfInstructors();
+	}else {
+		DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+		.getDxSetOfInstructors();
+	}
+    
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     long keys [] = event.getInstructorKey();
     for (int i = 0 ; i < keys.length ; i ++ ) {
@@ -644,7 +653,14 @@ public class EditActivityDlg
   private Vector buildInstructorList(){//int index){
     Vector v = new Vector();//, new Vector(1)};
     //EventAttach event= (EventAttach)((DResource)_unities.get(index)).getAttach();
-    SetOfInstructors soi= _dApplic.getCurrentDModel().getSetOfInstructors();
+	SetOfInstructors soi= null;
+	if(!DConst.newInstructors) {
+	 soi = _dApplic.getCurrentDModel()
+			.getSetOfInstructors();
+	}else {
+		DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+		.getDxSetOfInstructors();
+	}
     //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
     //long keys [] = event.getInstructorKey();
     for(int i=0; i< soi.size(); i++)

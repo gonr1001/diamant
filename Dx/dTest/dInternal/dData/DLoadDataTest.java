@@ -24,9 +24,11 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -123,9 +125,16 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofinstructors
 	 */
 	public void test4_loadTimeTable5j() {
+		if(!DConst.newInstructors) {
 		SetOfInstructors setIns = ((SetOfInstructors) _timeTable5j.get(2));
 		assertEquals("test4_loadTimeTable5j : assertEquals: ",
 				"THÉRIAULT, MICHÈLE", setIns.getResourceAt(2).getID());
+		}
+		else {
+			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
+			assertEquals("test4_loadTimeTable5j : assertEquals: ",
+					"THÉRIAULT, MICHÈLE", setIns.getInstructorID(2));
+		}
 	}
 
 	/**
@@ -230,9 +239,15 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofinstructors
 	 */
 	public void test4_loadTimeTable7j() {
+		if(!DConst.newInstructors) {
 		SetOfInstructors setIns = ((SetOfInstructors) _timeTable7j.get(2));
 		assertEquals("test4_loadTimeTable7j : assertEquals: ",
 				"THÉRIAULT, MICHÈLE", setIns.getResourceAt(2).getID());
+		} else {
+			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
+			assertEquals("test4_loadTimeTable5j : assertEquals: ",
+					"THÉRIAULT, MICHÈLE", setIns.getInstructorID(2));
+		}
 	}
 
 	/**

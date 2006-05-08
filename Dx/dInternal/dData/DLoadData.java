@@ -32,6 +32,7 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;
@@ -177,6 +178,36 @@ public class DLoadData {
 		return instructorsList;
 	}
 	
+	/**
+	 * 
+	 * @param currentList the current SetOfInstructors
+	 * @param merge a boolean <p>(if merge = true --> merge the new SetOfInstructors to the current SetOfInstructors) </p>
+	 *                        (if merge = false --> replace the current SetOfInstructors by the new SetOfInstructors)
+	 * @return SetOfInstructors
+	 */
+	public DxSetOfInstructors extractInstructors(DxSetOfInstructors currentList, boolean merge, boolean dotDia){
+		//byte[]  dataloaded = preLoad(_instructorFileName);
+		DxSetOfInstructors instructorsList= null;
+		DataExchange de = buildDataExchange(_instructorFileName);
+		if (dotDia) {
+			instructorsList= new DxSetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
+					_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours et 14 periods!
+		} else {
+			instructorsList= new DxSetOfInstructors(5,14);// 5 jours et 14 periods !
+		}
+//		if (de != null) {
+//			if (merge)
+//				if(currentList!= null)
+//					instructorsList.setSetOfResources(currentList.getSetOfResources());		
+//			if (instructorsList.analyseTokens(de, 0)){
+//				instructorsList.buildSetOfResources(de, 0);
+//			}
+//		} else {// (NullPointerException npe) {
+//			new FatalProblemDlg("I was in LoadData.extractInstructors. preload failed!!!" );
+//			System.exit(52);
+//		}
+		return instructorsList;
+	}
 	/**
 	 * 
 	 * @param currentList the current SetOfStudents
@@ -399,7 +430,7 @@ public class DLoadData {
 		//int position=0;
 		if (currentSetOfResc instanceof dInternal.dData.dInstructors.SetOfInstructors ){
 			_instructorFileName= file;
-			newSetOfResc= extractInstructors(null,false,false);
+			newSetOfResc= extractInstructors((SetOfInstructors)null,false,false);
 			_dm.resizeResourceAvailability(newSetOfResc);
 			//((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
 		} else if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites){

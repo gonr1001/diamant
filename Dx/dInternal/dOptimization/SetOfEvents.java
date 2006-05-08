@@ -17,6 +17,7 @@ import dInternal.dData.dActivities.Section;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
@@ -290,6 +291,19 @@ public class SetOfEvents extends DSetOfResources {
 			return sor.getResource(eltkey).getID();
 		}
 		return DConst.NO_ROOM_INTERNAL;
+	}
+	/**
+	 * get a resource key
+	 * 
+	 * @param soresc
+	 * @param elt
+	 * @return the resource key or -1 if key does not found
+	 */
+	private int getNewInstName(DxSetOfInstructors sor, int eltkey) {
+		if (eltkey != -1) {
+			return  sor.getInstructorID(eltkey);
+		}
+		return 0;
 	}
 
 	/**

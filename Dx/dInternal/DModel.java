@@ -34,6 +34,7 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
@@ -81,6 +82,8 @@ public class DModel extends Observable {
     private String _error;
 
     private SetOfInstructors _setOfInstructors;
+    
+    private DxSetOfInstructors _dxSetOfInstructors;
     
     private SetOfRoomsFunctions _setOfRoomsFunctions;
     protected static SetOfSites _setOfSites = null;
@@ -321,7 +324,12 @@ public class DModel extends Observable {
             _ttStruct = (TTStructure) theTT.get(1);
             if (_ttStruct.getError().length() != 0)
                 return _ttStruct.getError();
+            if(!DConst.newInstructors) {
             _setOfInstructors = (SetOfInstructors) theTT.get(2);
+            }
+            else {
+//            	_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
+            }
             resizeResourceAvailability(_setOfInstructors);
             _setOfSites = (SetOfSites) theTT.get(3);
             resizeSiteAvailability(_setOfSites);
@@ -365,7 +373,7 @@ public class DModel extends Observable {
         DLoadData loadData = new DLoadData(this, str);
         //_dDocument.getDMediator().getDApplication().setCursorWait();
         // import set of instructors
-        _setOfInstructors = loadData.extractInstructors(null, false,false);
+        _setOfInstructors = loadData.extractInstructors((SetOfInstructors)null, false,false);
         resizeResourceAvailability(_setOfInstructors);
         if (_setOfInstructors.getError().length() != 0) {
             return _setOfInstructors.getError();
@@ -412,8 +420,13 @@ public class DModel extends Observable {
             // selective
             // --
             // Enseignants
+        	if(!DConst.newInstructors) {
             _setOfInstructors = (SetOfInstructors) loadData.selectiveImport(
                     _setOfInstructors, fileName);
+        	} else {
+//        		_dxSetOfInstructors = (DxSetOfInstructors) loadData.selectiveImport(
+//                        _dxSetOfInstructors, fileName);
+        	}
             resizeResourceAvailability(_setOfInstructors);
             error = _setOfInstructors.getError();
             changeInDModel(_dDocument.getJIF());
@@ -458,6 +471,13 @@ public class DModel extends Observable {
         return _setOfInstructors;
     }
 
+    /**
+     * 
+     * @return
+     */
+    public DxSetOfInstructors getDxSetOfInstructors() {
+        return _dxSetOfInstructors;
+    }
     /**
      * 
      * @return
