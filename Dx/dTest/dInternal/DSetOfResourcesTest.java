@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2006-05-08 12:40:50 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -80,7 +80,7 @@ public class DSetOfResourcesTest extends TestCase{
 	}
 	
 	public void test_setSetOfResources(){
-		Vector rlist = new Vector();
+		Vector <DResource> rlist = new Vector<DResource>();
 		rlist.add(resource11);
 		rlist.add(resource12);
 		_sos.setSetOfResources(rlist);

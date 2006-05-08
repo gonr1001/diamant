@@ -9,20 +9,9 @@ package dTest.dInternal.dDataTxt;
  * @version 1.0
  */
 
-import java.io.File;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-
-import dConstants.DConst;
-
-import dInternal.dDataTxt.Assignment;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.Section;
-
-import eLib.exit.txt.FilterFile;
 
 
 public class SetOfActivitiesTest  extends TestCase{
