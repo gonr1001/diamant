@@ -24,18 +24,15 @@ package dInternal.dData.dInstructors;
  * 
  * Description: DxSetOfInstructors is a class used to:
  * <p>
- * TODO:insert comments
+ * Hold many instructor in a single object. This object will provide access to
+ * instructors to reduce interconnections between classes.
  * <p> 
  * 
  */
 public class DxSetOfInstructors {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public DxSetOfInstructors() {
+		
 	}
 
 }
