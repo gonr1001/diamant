@@ -19,7 +19,7 @@ import dInternal.DValue;
    public ConflictsAttachTest(String name) {
      super(name);
      _confAttach= new ConflictsAttach();
-     Vector vec= new Vector();
+     Vector <String> vec= new Vector <String>();
      vec.add("YS,RGR,AJ");
      _confAttach.addConflict("AMC640.1.02.1",3,"student",vec);
      _confAttach.addConflict("AMC645.1.01.1",1,"Instructor",vec);
@@ -53,7 +53,7 @@ import dInternal.DValue;
     */
    public void test_mergeConflictsAttach(){
      ConflictsAttach confAttach= new ConflictsAttach();
-     Vector vec= new Vector();
+     Vector <String> vec= new Vector <String>();
      vec.add("YS,DP");
      confAttach.addConflict("ADM111.1.01.1",2,"student",vec);
      _confAttach.mergeConflictsAttach(confAttach);

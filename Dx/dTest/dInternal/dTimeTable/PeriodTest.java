@@ -85,11 +85,11 @@ String path;
       System.out.println(e);
     }
     ConflictsAttach confAttach= new ConflictsAttach();
-     Vector vec= new Vector();
+     Vector <String> vec= new Vector <String>();
      vec.add("YS,RGR,AJ");
      confAttach.addConflict("AMC640.1.02.1",3,"student",vec);
      period.getEventsInPeriod().addResource(new DResource("GEI200.1.01.1",confAttach),0);
-     vec= new Vector();
+     vec = new Vector<String>();
      vec.add("Alex");
      confAttach= new ConflictsAttach();
      confAttach.addConflict("AMC645.1.01.1",1,"Instructor",vec);

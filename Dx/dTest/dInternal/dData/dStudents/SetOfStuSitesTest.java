@@ -1,6 +1,6 @@
 /**
  * 
- * Title: SetOfStuSitesTest $Revision: 1.4 $ $Date: 2005-03-08 16:00:45 $
+ * Title: SetOfStuSitesTest $Revision: 1.5 $ $Date: 2006-05-08 12:40:51 $
  * Description: SetOfStuSitesTest is a class used as a test container. It test
  * students and their attributes.
  * 
@@ -13,8 +13,8 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.4 $
- * @author $Author: syay1801 $
+ * @version $Revision: 1.5 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -465,7 +465,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII155100 SHE" + "\r\n" + "C FII211100 SHE" + "\r\n"
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144101 LON" + "\r\n"
 				+ "T 003";
-		Vector list = new Vector();
+		Vector <String> list= new Vector <String>();
 		list.add("Syam, Yannick Ulrich            00939140");
 		list.add("Roy, Julie  01109838");
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
@@ -497,7 +497,7 @@ public class SetOfStuSitesTest extends TestCase {
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		setOfStuSites.buildSetOfResources(ld.buildDataExchange(tokens
 				.getBytes()), 0);
-		Vector list = new Vector();
+		Vector <String> list= new Vector <String>();
 		list.add("LUPIEN MY 00900813");
 		list.add("ALEX JARA 01902704");
 		SetOfStudents sos = (SetOfStudents) setOfStuSites.getResource(
@@ -520,7 +520,7 @@ public class SetOfStuSitesTest extends TestCase {
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		setOfStuSites.buildSetOfResources(ld.buildDataExchange(tokens
 				.getBytes()), 0);
-		Vector list = new Vector();
+		Vector <String> list= new Vector <String>();
 		list.add("LUPIEN MY 00900813");
 		list.add("ALEX JARA 01902704");
 		assertEquals("test_toWrite: assertEquals",
