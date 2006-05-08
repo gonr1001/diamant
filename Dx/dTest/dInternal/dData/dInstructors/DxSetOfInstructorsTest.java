@@ -19,6 +19,9 @@
  */
 package dTest.dInternal.dData.dInstructors;
 
+import dInternal.dData.DxAvailability;
+import dInternal.dData.dInstructors.DxInstructor;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -29,11 +32,10 @@ import junit.framework.TestSuite;
  * Description: DxSetOfInstructorsTest is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public class DxSetOfInstructorsTest extends TestCase {
-
 	/**
 	 * @param args
 	 */
@@ -47,4 +49,117 @@ public class DxSetOfInstructorsTest extends TestCase {
 		return new TestSuite(DxSetOfInstructorsTest.class);
 	} // end suite
 
+	public void test_addremoveInstructor() {
+		DxSetOfInstructors soiTest = new DxSetOfInstructors();
+		DxAvailability aTemp = new DxAvailability(5);
+		aTemp.setDayAvailability(0, "1 5 1");
+		aTemp.setDayAvailability(1, "5 5 1 1");
+		aTemp.setDayAvailability(2, "5 5 5 5 1");
+		aTemp.setDayAvailability(3, "1 1 1 5 5 5");
+		aTemp.setDayAvailability(4, "1 5 1 5 1 5 1");
+
+		DxInstructor iTemp = new DxInstructor("Erick", aTemp);
+		soiTest.addInstructor(iTemp);
+		iTemp = new DxInstructor("Daniel", aTemp);
+		soiTest.addInstructor(iTemp);
+		iTemp = new DxInstructor("Claude", aTemp);
+		soiTest.addInstructor(iTemp);
+		iTemp = new DxInstructor("Bruno", aTemp);
+		soiTest.addInstructor(iTemp);
+		iTemp = new DxInstructor("Alex", aTemp);
+		soiTest.addInstructor(iTemp);
+		soiTest.sortIntructors();
+
+		assertEquals("test_addInstructor: assertEquals", soiTest
+				.getInstructorName(soiTest.instructorCount() - 1), "Erick");
+		assertEquals("test1_addInstructor: assertEquals", soiTest
+				.getInstructorName(0), "Alex");
+
+		soiTest.removeInstructor(0);
+
+		assertEquals("test_removeInstructor: assertEquals", soiTest
+				.getInstructorName(0), "Bruno");
+	}
+
+	public void test_getsetInstructor() {
+		DxSetOfInstructors soiTest = new DxSetOfInstructors();
+
+		DxAvailability aTemp = new DxAvailability(3);
+		aTemp.setDayAvailability(0, "5 5 5");
+		aTemp.setDayAvailability(1, "5 5 5 5");
+		aTemp.setDayAvailability(2, "5 5 5 5 5");
+		DxInstructor iTemp = new DxInstructor("Alsa", aTemp);
+		soiTest.addInstructor(iTemp);
+
+		aTemp = new DxAvailability(3);
+		aTemp.setDayAvailability(0, "1 1 1");
+		aTemp.setDayAvailability(1, "1 1 1 1");
+		aTemp.setDayAvailability(2, "1 1 1 1 1");
+		iTemp = new DxInstructor("Zoe", aTemp);
+		soiTest.addInstructor(iTemp);
+
+		soiTest.sortIntructors();
+		aTemp = soiTest.getInstructorAvailability(0);
+
+		/*assertEquals("test_getInstructorAvailability: assertEquals", aTemp
+		 .getPeriodAvailability(aTemp.getDayCount() - 1, aTemp
+		 .getPeriodCount(aTemp.getDayCount() - 1)), 5);
+		 */
+		assertEquals("test_getInstructorAvailability: assertEquals", aTemp
+				.getPeriodAvailability(0,0), 5);
+		soiTest.setInstructorAvailability(0, soiTest
+				.getInstructorAvailability(1));
+		assertEquals("test_setInstructorAvailability: assertEquals", soiTest
+				.getInstructorAvailability(0).getPeriodAvailability(0, 0),
+				soiTest.getInstructorAvailability(1)
+						.getPeriodAvailability(0, 0));
+
+		soiTest.setInstructorName(0, "John");
+		assertEquals("test_setInstructorName: assertEquals", soiTest
+				.getInstructorName(0), "John");
+	}
+
+	public void test_isValidIndex() {
+		DxSetOfInstructors soiTest = new DxSetOfInstructors();
+
+		DxAvailability aTemp = new DxAvailability(3);
+		aTemp.setDayAvailability(0, "5 5 5");
+		aTemp.setDayAvailability(1, "5 5 5 5");
+		aTemp.setDayAvailability(2, "5 5 5 5 5");
+		DxInstructor iTemp = new DxInstructor("Alsa", aTemp);
+		soiTest.addInstructor(iTemp);
+		iTemp = new DxInstructor("Daniel", aTemp);
+		soiTest.addInstructor(iTemp);
+
+		assertEquals("test_isValidIndex: assertEquals", soiTest
+				.setInstructorAvailability(0, aTemp), true);
+		assertEquals("test1_isValidIndex: assertEquals", soiTest
+				.setInstructorAvailability(1, aTemp), true);
+		assertEquals("test2_isValidIndex: assertEquals", soiTest
+				.setInstructorAvailability(2, aTemp), false);
+
+	}
+
+	public void test_instructorCount() {
+		DxSetOfInstructors soiTest = new DxSetOfInstructors();
+
+		assertEquals("test_instructorCount: assertEquals", soiTest
+				.instructorCount(), 0);
+
+		DxAvailability aTemp = new DxAvailability(3);
+		aTemp.setDayAvailability(0, "5 5 5");
+		aTemp.setDayAvailability(1, "5 5 5 5");
+		aTemp.setDayAvailability(2, "5 5 5 5 5");
+		DxInstructor iTemp = new DxInstructor("Alsa", aTemp);
+		soiTest.addInstructor(iTemp);
+
+		assertEquals("test1_instructorCount: assertEquals", soiTest
+				.instructorCount(), 1);
+
+		iTemp = new DxInstructor("Daniel", aTemp);
+		soiTest.addInstructor(iTemp);
+		assertEquals("test2_instructorCount: assertEquals", soiTest
+				.instructorCount(), 2);
+
+	}
 }

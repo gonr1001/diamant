@@ -46,5 +46,10 @@ public class DxRWInstructorsTest extends TestCase{
 		// the dynamic way :
 		return new TestSuite(DxRWInstructorsTest.class);
 	} // end suite
+	
+	public void test_nothing()
+	{
+		//
+	}
 
 }

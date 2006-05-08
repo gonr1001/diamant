@@ -190,10 +190,10 @@ public class DLoadData {
 		DxSetOfInstructors instructorsList= null;
 		DataExchange de = buildDataExchange(_instructorFileName);
 		if (dotDia) {
-			instructorsList= new DxSetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
-					_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours et 14 periods!
+//			instructorsList= new DxSetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
+//					_dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours et 14 periods!
 		} else {
-			instructorsList= new DxSetOfInstructors(5,14);// 5 jours et 14 periods !
+//			instructorsList= new DxSetOfInstructors(5,14);// 5 jours et 14 periods !
 		}
 //		if (de != null) {
 //			if (merge)

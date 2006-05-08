@@ -19,46 +19,110 @@
  */
 package dInternal.dData.dInstructors;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Vector;
+
+import dInternal.dData.DxAvailability;
 
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxSetOfInstructors is a class used to:
  * <p>
- * Hold many instructor in a single object. This object will provide access to
+ * Hold many instructors in a single object. This object will provide access to
  * instructors to reduce interconnections between classes.
- * <p> 
+ * <p>
  * 
  */
+
 public class DxSetOfInstructors {
-
-	public DxSetOfInstructors() {
-		
+	
+	private ArrayList<DxInstructor> _vInstructors;
+	
+	public DxSetOfInstructors(){
+		_vInstructors=new ArrayList<DxInstructor>();
+	}
+	
+	public void addInstructor(DxInstructor iNewInstructor)
+	{
+		_vInstructors.add(iNewInstructor);
+	}
+	
+	public boolean removeInstructor(int nIndex) {
+		if(isValidIndex(nIndex))
+		{
+			_vInstructors.remove(nIndex);
+			return true;
+		}
+		return false;
 	}
 
-	public DxSetOfInstructors(int numberOfActiveDays, int maxNumberOfPeriodsADay) {
-		// TODO Auto-generated constructor stub
+	public void sortIntructors() {
+		Collections.sort((List<DxInstructor>)_vInstructors,DxInstructor.NameComparator);		
 	}
-
-	public int getInstructorID(int i) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public int instructorCount() {
+		return _vInstructors.size();
+	}
+	
+	public String toWrite() {
+		return null;
 	}
 
 	public Vector getNamesVector() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String size() {
-		// TODO Auto-generated method stub
+	public String getInstructorName(int nIndex) {
+		if(isValidIndex(nIndex))
+		{
+			return _vInstructors.get(nIndex).getInstructorName();
+		}
 		return null;
 	}
-
-	public String toWrite() {
-		// TODO Auto-generated method stub
+	
+	public int getInstructorID(int nIndex) {
+		if(isValidIndex(nIndex))
+		{
+			return _vInstructors.get(nIndex).getInstructorID();
+		}
+		return -1;
+	}
+	
+	public DxAvailability getInstructorAvailability(int nIndex) {
+		if(isValidIndex(nIndex))
+		{
+			return _vInstructors.get(nIndex).getInstructorAvailability();
+		}
 		return null;
+		
 	}
 
+	public boolean setInstructorAvailability(int nIndex, DxAvailability dxaNewAva) {
+		// TODO Auto-generated method stub
+		if(isValidIndex(nIndex))
+		{
+			_vInstructors.get(nIndex).setInstructorAvailability(dxaNewAva);
+			return true; 
+		}
+		return false;
+		
+	}
+
+	public boolean setInstructorName(int nIndex, String sNewName) {
+		// TODO Auto-generated method stub
+		if(isValidIndex(nIndex))
+		{
+			_vInstructors.get(nIndex).setInstructorName(sNewName);
+			return true; 
+		}
+		return false;
+	}
+	
+	private boolean isValidIndex(int nIndex)
+	{
+		return ((nIndex >= 0) && (nIndex < _vInstructors.size()));
+	}
 }

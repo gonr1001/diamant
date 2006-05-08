@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import java.util.Comparator;
+
 import dInternal.dData.DxAvailability;
 
 /**
@@ -27,15 +29,17 @@ import dInternal.dData.DxAvailability;
  * Description: DxInstructor is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public class DxInstructor {
-	private static int UNIQUE_ID=0;
+	private static int UNIQUE_ID = 0;
+
 	private int _nInstructorID;
-	private String _sName; 
+
+	private String _sName;
+
 	private DxAvailability _aInstrucAvail;
-	 
 
 	/**
 	 * Constructor
@@ -45,63 +49,62 @@ public class DxInstructor {
 	 * @param a
 	 *            Availability of the new instructor
 	 */
-	public DxInstructor(String sName, DxAvailability a)
-	{
-		_nInstructorID=UNIQUE_ID++;
-		_sName=sName;
-		_aInstrucAvail=a;
-		
+	public DxInstructor(String sName, DxAvailability a) {
+		_nInstructorID = UNIQUE_ID++;
+		_sName = sName;
+		_aInstrucAvail = a;
+
 	}
-	
+
 	/**
 	 * Modify the availability of the instructor
 	 * 
 	 * @param aNewAvailability
-	 *            Availability that has to be assigned to the instructor            
+	 *            Availability that has to be assigned to the instructor
 	 */
-	public void setInstructorAvailability(DxAvailability aNewAvailability)
-	{
-		_aInstrucAvail=aNewAvailability;
+	public void setInstructorAvailability(DxAvailability aNewAvailability) {
+		_aInstrucAvail = aNewAvailability;
 	}
-	
+
 	/**
 	 * Modify instructor's name
 	 * 
 	 * @param sNewName
-	 *            New name for the instructor            
+	 *            New name for the instructor
 	 */
-	public void setInstructorName(String sNewName)
-	{
-		_sName=sNewName;
+	public void setInstructorName(String sNewName) {
+		_sName = sNewName;
 	}
-	
+
 	/**
 	 * 
-	 * @return DxAvailability 
-	 *            Availability of the instructor             
+	 * @return DxAvailability Availability of the instructor
 	 */
-	public DxAvailability getInstructorAvailability()
-	{
+	public DxAvailability getInstructorAvailability() {
 		return _aInstrucAvail;
 	}
-	
+
 	/**
 	 * 
-	 * @return String 
-	 *            Name of the instructor             
+	 * @return String Name of the instructor
 	 */
-	public String getInstructorName()
-	{
+	public String getInstructorName() {
 		return _sName;
 	}
-	
+
 	/**
 	 * 
-	 * @return int 
-	 *            Unique ID of the instructor             
+	 * @return int Unique ID of the instructor
 	 */
-	public int getInstructorID()
-	{
+	public int getInstructorID() {
 		return _nInstructorID;
 	}
+
+	public static Comparator<DxInstructor> NameComparator = new Comparator<DxInstructor>() {
+		public int compare(DxInstructor arg0, DxInstructor arg1) {
+			DxInstructor left = arg0;
+			DxInstructor right = arg1;
+			return left._sName.compareTo(right._sName);
+		}
+	};
 }
