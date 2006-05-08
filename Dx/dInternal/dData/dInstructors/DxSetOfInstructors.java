@@ -41,15 +41,29 @@ public class DxSetOfInstructors {
 	
 	private ArrayList<DxInstructor> _vInstructors;
 	
+	/**
+	 * Constructor
+	 */
 	public DxSetOfInstructors(){
 		_vInstructors=new ArrayList<DxInstructor>();
 	}
 	
+	/**
+	 * Adds an instructor to the set
+	 * 
+	 * @param iNewInstructor The new instructor to be inserted
+	 */
 	public void addInstructor(DxInstructor iNewInstructor)
 	{
 		_vInstructors.add(iNewInstructor);
 	}
 	
+	/**
+	 * Removes an instructor from the set
+	 * 
+	 * @param nIndex Index of the instructor to be removed
+	 * @return boolean Returns true if the index was valid, false otherwise 
+	 */
 	public boolean removeInstructor(int nIndex) {
 		if(isValidIndex(nIndex))
 		{
@@ -59,22 +73,48 @@ public class DxSetOfInstructors {
 		return false;
 	}
 
+	/**
+	 * Sort the set of instructors by their name 
+	 */
 	public void sortIntructors() {
 		Collections.sort((List<DxInstructor>)_vInstructors,DxInstructor.NameComparator);		
 	}
 	
+	/**
+	 * Return the number of instructors currently in the set
+	 * 
+	 * @return int The number of instructor currently in the set 
+	 */
 	public int instructorCount() {
 		return _vInstructors.size();
 	}
 	
+	/**
+	 * Removes an instructor from the set
+	 * 
+	 * @param nIndex Index of the instructor to be removed
+	 * @return boolean Returns true if the index was valid, false otherwise 
+	 */
 	public String toWrite() {
 		return null;
 	}
 
+	/**
+	 * Removes an instructor from the set
+	 * 
+	 * @param nIndex Index of the instructor to be removed
+	 * @return boolean Returns true if the index was valid, false otherwise 
+	 */
 	public Vector getNamesVector() {
 		return null;
 	}
 
+	/**
+	 * Retreives the name of an instructor in the set
+	 * 
+	 * @param nIndex Index of the instructor whose name is wanted
+	 * @return String The name of the instructor, null if the index was invalid 
+	 */
 	public String getInstructorName(int nIndex) {
 		if(isValidIndex(nIndex))
 		{
@@ -83,6 +123,12 @@ public class DxSetOfInstructors {
 		return null;
 	}
 	
+	/**
+	 * Retreives the ID of an instructor in the set
+	 * 
+	 * @param nIndex Index of the instructor whose ID is wanted
+	 * @return int ID of the instructor, -1 if the index was invalid 
+	 */
 	public int getInstructorID(int nIndex) {
 		if(isValidIndex(nIndex))
 		{
@@ -91,6 +137,12 @@ public class DxSetOfInstructors {
 		return -1;
 	}
 	
+	/**
+	 * Retreives the availability of an instructor in the set
+	 * 
+	 * @param nIndex Index of the instructor whose availability is wanted
+	 * @return DxAvailability The availability of the instructor, null if the index was invalid 
+	 */
 	public DxAvailability getInstructorAvailability(int nIndex) {
 		if(isValidIndex(nIndex))
 		{
@@ -100,6 +152,12 @@ public class DxSetOfInstructors {
 		
 	}
 
+	/**
+	 * Modify the availability of instructor at index nIndex
+	 * 
+	 * @param nIndex Index of the instructor that availability needs to be modified
+	 * @return boolean true if the index was valid, false otherwise 
+	 */
 	public boolean setInstructorAvailability(int nIndex, DxAvailability dxaNewAva) {
 		// TODO Auto-generated method stub
 		if(isValidIndex(nIndex))
@@ -111,6 +169,13 @@ public class DxSetOfInstructors {
 		
 	}
 
+	
+	/**
+	 * Modify the name of instructor at index nIndex
+	 * 
+	 * @param nIndex Index of the instructor that name needs to be modified
+	 * @return boolean true if the index was valid, false otherwise 
+	 */
 	public boolean setInstructorName(int nIndex, String sNewName) {
 		// TODO Auto-generated method stub
 		if(isValidIndex(nIndex))
@@ -121,6 +186,12 @@ public class DxSetOfInstructors {
 		return false;
 	}
 	
+	/**
+	 * Validate that nIndex is a valid instrutor in the set
+	 * 
+	 * @param nIndex Index to be verified
+	 * @return boolean true if the index was valid, false otherwise 
+	 */
 	private boolean isValidIndex(int nIndex)
 	{
 		return ((nIndex >= 0) && (nIndex < _vInstructors.size()));

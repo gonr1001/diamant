@@ -101,12 +101,10 @@ public class DxSetOfInstructorsTest extends TestCase {
 		soiTest.sortIntructors();
 		aTemp = soiTest.getInstructorAvailability(0);
 
-		/*assertEquals("test_getInstructorAvailability: assertEquals", aTemp
-		 .getPeriodAvailability(aTemp.getDayCount() - 1, aTemp
-		 .getPeriodCount(aTemp.getDayCount() - 1)), 5);
-		 */
 		assertEquals("test_getInstructorAvailability: assertEquals", aTemp
-				.getPeriodAvailability(0,0), 5);
+		 .getPeriodAvailability(aTemp.getDayCount() - 1, aTemp
+		 .getPeriodCount(aTemp.getDayCount() - 1)-1), 5);
+		
 		soiTest.setInstructorAvailability(0, soiTest
 				.getInstructorAvailability(1));
 		assertEquals("test_setInstructorAvailability: assertEquals", soiTest

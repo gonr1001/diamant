@@ -105,7 +105,8 @@ public class DxAvailability {
 	}
 
 	/**
-	 * Method that gives access to availibilities of a whole day through a vector of Integer
+	 * Method that gives access to availibilities of a whole day through a
+	 * vector of Integer
 	 * 
 	 * @param nDayIndex
 	 *            Index of the day to be retreived
@@ -123,8 +124,10 @@ public class DxAvailability {
 	 * 
 	 * @param nDayIndex
 	 *            Index of the day to be retreived
-	 * @param nPeriodIndex Index of the period to be retrived
-	 * @return int The availability for the given period or -1 in case of invalid day or period index
+	 * @param nPeriodIndex
+	 *            Index of the period to be retrived
+	 * @return int The availability for the given period or -1 in case of
+	 *         invalid day or period index
 	 */
 	public int getPeriodAvailability(int nDayIndex, int nPeriodIndex) {
 		if (isValidDay(nDayIndex)) {
@@ -141,12 +144,12 @@ public class DxAvailability {
 	 * 
 	 * @param nDayIndex
 	 *            Index of the day to be retreived
-	 * @return int The number of period in the specified day or -1 in case of invalid day index
+	 * @return int The number of period in the specified day or -1 in case of
+	 *         invalid day index
 	 */
 	public int getPeriodCount(int nDayIndex) {
 		if (isValidDay(nDayIndex)) {
 			return _vDays.get(nDayIndex).size();
-
 		}
 		return -1;
 	}

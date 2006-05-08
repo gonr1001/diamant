@@ -150,4 +150,8 @@ public class DxAvailabilityTest extends TestCase {
 		assertEquals("test2_getPeriodCount: assertEquals ", _aTest
 				.getPeriodCount(4), 15);
 	}
+	
+	public void test_(){
+		
+	}
 }
