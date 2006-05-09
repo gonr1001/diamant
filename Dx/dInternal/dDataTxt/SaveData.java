@@ -1,6 +1,6 @@
 /**
 *
-* Title: SaveData $Revision: 1.18 $  $Date: 2005-04-19 20:37:49 $
+* Title: SaveData $Revision: 1.19 $  $Date: 2006-05-09 12:26:00 $
 * Description: DConst is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.18 $
+* @version $Revision: 1.19 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -22,25 +22,25 @@
 package dInternal.dDataTxt;
 
 
-import dConstants.DConst;
-import dInternal.dTimeTable.TTStructure;
+//import dConstants.DConst;
+//import dInternal.dTimeTable.TTStructure;
 
 
 public class SaveData {
 
-  private String _version = DConst.APP_NAME;
-  /**
-   *
-   * */
-  public SaveData(String version) {
-    _version= version;
-  }
-
-  /**
-   * */
-  public String getVersion(){
-    return _version;
-  }
+//  private String _version = DConst.APP_NAME;
+//  /**
+//   *
+//   * */
+//  public SaveData(String version) {
+//    _version= version;
+//  }
+//
+//  /**
+//   * */
+//  public String getVersion(){
+//    return _version;
+//  }
 
   /**
    *
@@ -79,11 +79,11 @@ public class SaveData {
   /**
    *
    * */
-  public void saveTTStructure(TTStructure tts, String fileName){
-     if(!fileName.endsWith(DConst.DOT_XML))
-      fileName=fileName+DConst.DOT_XML;
-    tts.saveTTStructure(fileName);
-  }
+//  public void saveTTStructure(TTStructure tts, String fileName){
+//     if(!fileName.endsWith(DConst.DOT_XML))
+//      fileName=fileName+DConst.DOT_XML;
+//    tts.saveTTStructure(fileName);
+//  }
 
 
 
