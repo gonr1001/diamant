@@ -151,7 +151,7 @@ public class DxAvailabilityTest extends TestCase {
 				.getPeriodCount(4), 15);
 	}
 	
-	public void test_(){
-		
-	}
+//	public void test_(){
+//		
+//	}
 }
