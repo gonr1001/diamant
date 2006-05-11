@@ -29,5 +29,5 @@ package dInternal;
  * 
  */
 public interface WriteBehavior {
-
+	void write();
 }

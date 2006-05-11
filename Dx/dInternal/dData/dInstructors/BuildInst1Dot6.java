@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.BuidBehavior;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -28,14 +30,12 @@ package dInternal.dData.dInstructors;
  * <p> 
  * 
  */
-public class BuildInst1Dot6 {
+public class BuildInst1Dot6 implements BuidBehavior{
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+
+	public void build() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

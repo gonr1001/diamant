@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.AnalyseBehavior;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -28,14 +30,12 @@ package dInternal.dData.dInstructors;
  * <p> 
  * 
  */
-public class AnalyseInst1Dot6 {
+public class AnalyseInst1Dot6 implements AnalyseBehavior{
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+
+	public void analyse() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

@@ -1,8 +1,8 @@
 /**
- * Created on May 9, 2006
+ * Created on May 11, 2006
  * 
  * 
- * Title: Build1Dot5.java 
+ * Title: DxReadInstructors1dot6.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -19,23 +19,20 @@
  */
 package dInternal.dData.dInstructors;
 
-import dInternal.BuidBehavior;
-
 /**
  * Ruben Gonzalez-Rubio
  * 
- * Description: Build1Dot5 is a class used to:
+ * Description: DxReadInstructors1dot6 is a class used to:
  * <p>
  * TODO:insert comments
  * <p> 
  * 
  */
-public class BuildInst1Dot5 implements BuidBehavior{
+public class DxReadInstructors1dot6 implements DxReadInstructorsBehavior{
 
-
-	public void build() {
+	public DxSetOfInstructors getSetOfInstructor() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }
