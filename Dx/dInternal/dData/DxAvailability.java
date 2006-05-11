@@ -46,11 +46,11 @@ public class DxAvailability {
 	 *            Specify how many days of availability this object will
 	 *            represent
 	 */
-	public DxAvailability(int nDays) {
-		_vDays = new Vector<Vector<Integer>>(nDays);
-		for (int i = 0; i < nDays; i++) {
+	public DxAvailability(/*int nDays*/) {
+		_vDays = new Vector<Vector<Integer>>(/*nDays*/);
+		/*for (int i = 0; i < nDays; i++) {
 			_vDays.add(new Vector<Integer>());
-		}
+		}*/
 	}
 
 	/**
@@ -63,8 +63,8 @@ public class DxAvailability {
 	 * @return bolean true if the day was in the range specified by constructor,
 	 *         false in other cases
 	 */
-	public boolean setDayAvailability(int nDayIndex, String sAvailabilities) {
-		if (isValidDay(nDayIndex)) {
+	public void addDayAvailability(String sAvailabilities) {
+		
 			// Create a tokenizer on a string that include availability
 			StringTokenizer stAva = new StringTokenizer(sAvailabilities,
 					DConst.SPACE);
@@ -76,10 +76,7 @@ public class DxAvailability {
 			while (stAva.hasMoreTokens()) {
 				vCurrentDay.add(new Integer(stAva.nextToken()));
 			}
-			_vDays.set(nDayIndex, vCurrentDay);
-			return true;
-		}
-		return false;
+			_vDays.add(vCurrentDay);
 	}
 
 	/**

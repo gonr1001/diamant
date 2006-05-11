@@ -52,25 +52,21 @@ public class DxAvailabilityTest extends TestCase {
 	} // end suite
 
 	public void setUp() {
-		_aTest = new DxAvailability(5);
+		_aTest = new DxAvailability();
 		// Add availabilites that will be parsed with tokenizer
 		for (int i = 0; i < 3; i++) {
-			_aTest.setDayAvailability(i, "1 1 5 5 1 1 5 5 5 5 1 1 1");
+			_aTest.addDayAvailability("1 1 5 5 1 1 5 5 5 5 1 1 1");
 		}
+		
+		_aTest.addDayAvailability("");
 
 		// Add availibility item by item
-		_aTest.setDayAvailability(4, "5 5 5 5 5 5 5 5 5 5 5 5 5 5 5");
+		_aTest.addDayAvailability("5 5 5 5 5 5 5 5 5 5 5 5 5 5 5");
 		
 		// Change availability item by item
 		for (int i = 0; i < 15; i += 2) {
 			_aTest.setPeriodAvailability(4, i, 1);
 		}
-	}
-
-	// Trying to set an unexisting day
-	public void test_setDayAvailability() {
-		assertEquals("test_setDayAvailability: assertEquals", _aTest
-				.setDayAvailability(5, "1 5"), false);
 	}
 
 	// Trying to set a period on an unexisting day

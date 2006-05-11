@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.DataExchange;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -30,9 +32,15 @@ package dInternal.dData.dInstructors;
  */
 public class DxReadInstructors1dot6 implements DxReadInstructorsBehavior{
 
-	public DxSetOfInstructors getSetOfInstructor() {
-		// TODO Auto-generated method stub
+	public boolean analyseTokens(DataExchange de) {
+		// 
+		return false;
+	}
+
+	public DxSetOfInstructors buildSetOfRessources(DataExchange de) {
+		// 
 		return null;
 	}
+
 
 }

@@ -51,12 +51,12 @@ public class DxSetOfInstructorsTest extends TestCase {
 
 	public void test_addremoveInstructor() {
 		DxSetOfInstructors soiTest = new DxSetOfInstructors();
-		DxAvailability aTemp = new DxAvailability(5);
-		aTemp.setDayAvailability(0, "1 5 1");
-		aTemp.setDayAvailability(1, "5 5 1 1");
-		aTemp.setDayAvailability(2, "5 5 5 5 1");
-		aTemp.setDayAvailability(3, "1 1 1 5 5 5");
-		aTemp.setDayAvailability(4, "1 5 1 5 1 5 1");
+		DxAvailability aTemp = new DxAvailability();
+		aTemp.addDayAvailability("1 5 1");
+		aTemp.addDayAvailability("5 5 1 1");
+		aTemp.addDayAvailability("5 5 5 5 1");
+		aTemp.addDayAvailability("1 1 1 5 5 5");
+		aTemp.addDayAvailability("1 5 1 5 1 5 1");
 
 		DxInstructor iTemp = new DxInstructor("Erick", aTemp);
 		soiTest.addInstructor(iTemp);
@@ -84,17 +84,17 @@ public class DxSetOfInstructorsTest extends TestCase {
 	public void test_getsetInstructor() {
 		DxSetOfInstructors soiTest = new DxSetOfInstructors();
 
-		DxAvailability aTemp = new DxAvailability(3);
-		aTemp.setDayAvailability(0, "5 5 5");
-		aTemp.setDayAvailability(1, "5 5 5 5");
-		aTemp.setDayAvailability(2, "5 5 5 5 5");
+		DxAvailability aTemp = new DxAvailability();
+		aTemp.addDayAvailability("5 5 5");
+		aTemp.addDayAvailability("5 5 5 5");
+		aTemp.addDayAvailability("5 5 5 5 5");
 		DxInstructor iTemp = new DxInstructor("Alsa", aTemp);
 		soiTest.addInstructor(iTemp);
 
-		aTemp = new DxAvailability(3);
-		aTemp.setDayAvailability(0, "1 1 1");
-		aTemp.setDayAvailability(1, "1 1 1 1");
-		aTemp.setDayAvailability(2, "1 1 1 1 1");
+		aTemp = new DxAvailability();
+		aTemp.addDayAvailability("1 1 1");
+		aTemp.addDayAvailability("1 1 1 1");
+		aTemp.addDayAvailability("1 1 1 1 1");
 		iTemp = new DxInstructor("Zoe", aTemp);
 		soiTest.addInstructor(iTemp);
 
@@ -120,10 +120,10 @@ public class DxSetOfInstructorsTest extends TestCase {
 	public void test_isValidIndex() {
 		DxSetOfInstructors soiTest = new DxSetOfInstructors();
 
-		DxAvailability aTemp = new DxAvailability(3);
-		aTemp.setDayAvailability(0, "5 5 5");
-		aTemp.setDayAvailability(1, "5 5 5 5");
-		aTemp.setDayAvailability(2, "5 5 5 5 5");
+		DxAvailability aTemp = new DxAvailability();
+		aTemp.addDayAvailability("5 5 5");
+		aTemp.addDayAvailability("5 5 5 5");
+		aTemp.addDayAvailability("5 5 5 5 5");
 		DxInstructor iTemp = new DxInstructor("Alsa", aTemp);
 		soiTest.addInstructor(iTemp);
 		iTemp = new DxInstructor("Daniel", aTemp);
@@ -144,10 +144,10 @@ public class DxSetOfInstructorsTest extends TestCase {
 		assertEquals("test_instructorCount: assertEquals", soiTest
 				.instructorCount(), 0);
 
-		DxAvailability aTemp = new DxAvailability(3);
-		aTemp.setDayAvailability(0, "5 5 5");
-		aTemp.setDayAvailability(1, "5 5 5 5");
-		aTemp.setDayAvailability(2, "5 5 5 5 5");
+		DxAvailability aTemp = new DxAvailability();
+		aTemp.addDayAvailability("5 5 5");
+		aTemp.addDayAvailability("5 5 5 5");
+		aTemp.addDayAvailability("5 5 5 5 5");
 		DxInstructor iTemp = new DxInstructor("Alsa", aTemp);
 		soiTest.addInstructor(iTemp);
 

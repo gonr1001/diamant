@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.DataExchange;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -30,12 +32,13 @@ package dInternal.dData.dInstructors;
  */
 public class DxRWInstructors {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public DxRWInstructors(int i, int j) {
+		// 
+	}
 
+	public boolean analyseTokens(DataExchange exchange, int i) {
+		// 
+		return false;
 	}
 
 }

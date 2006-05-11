@@ -19,15 +19,23 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.DataExchange;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxReadInstructors is a class used to:
  * <p>
- * TODO:insert comments
+ * Retreive a SetOfInstructors no mather what file format is currently used.
+ * This is also an implementation of the Strategy Pattern, since this class will delegate its work
+ * to the proper reader after determining the version.
  * <p> 
  * 
  */
 public class DxReadInstructors {
-
+	DxReadInstructorsBehavior _dxribVersion; 
+	public DxSetOfInstructors getSetOfInstructors(DataExchange de)
+	{
+		return null;
+	}
 }

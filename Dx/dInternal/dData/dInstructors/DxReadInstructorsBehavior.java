@@ -19,15 +19,18 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.DataExchange;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
- * Description: DxReadBehavior is a class used to:
+ * Description: DxReadBehavior is an interface used to:
  * <p>
- * TODO:insert comments
+ * Define the methods a ressource importer should always implement. Might also be applied more generally to all SetOfRessources. 
  * <p> 
  * 
  */
 public interface DxReadInstructorsBehavior {
-	DxSetOfInstructors getSetOfInstructor();
+	boolean analyseTokens(DataExchange de);
+	DxSetOfInstructors buildSetOfRessources(DataExchange de);
 }
