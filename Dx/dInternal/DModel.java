@@ -326,11 +326,12 @@ public class DModel extends Observable {
                 return _ttStruct.getError();
             if(!DConst.newInstructors) {
             _setOfInstructors = (SetOfInstructors) theTT.get(2);
+            resizeResourceAvailability(_setOfInstructors);
             }
             else {
-//            	_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
+            	_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
             }
-            resizeResourceAvailability(_setOfInstructors);
+            
             _setOfSites = (SetOfSites) theTT.get(3);
             resizeSiteAvailability(_setOfSites);
             _setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
@@ -373,11 +374,15 @@ public class DModel extends Observable {
         DLoadData loadData = new DLoadData(this, str);
         //_dDocument.getDMediator().getDApplication().setCursorWait();
         // import set of instructors
-        _setOfInstructors = loadData.extractInstructors((SetOfInstructors)null, false,false);
-        resizeResourceAvailability(_setOfInstructors);
-        if (_setOfInstructors.getError().length() != 0) {
-            return _setOfInstructors.getError();
-        }
+        if (!DConst.newInstructors){
+        	 _setOfInstructors = loadData.extractInstructors(null, false,false);
+             resizeResourceAvailability(_setOfInstructors);
+             if (_setOfInstructors.getError().length() != 0) {
+                 return _setOfInstructors.getError();
+             }       	
+        } else 
+        	_dxSetOfInstructors = loadData.extractInstructors();
+       
 
         // import set of sites
         _setOfSites = loadData.extractRooms(null, false);
@@ -398,7 +403,7 @@ public class DModel extends Observable {
             return _setOfStuSites.getError();
         }
         _constructionState = 1;
-        buildSetOfEvents();
+        //buildSetOfEvents();
         //_setOfStates.sendEvent();
 
         //_dDocument.getDMediator().getDApplication().setCursorDefault();
