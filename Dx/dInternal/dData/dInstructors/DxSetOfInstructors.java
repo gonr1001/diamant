@@ -85,7 +85,7 @@ public class DxSetOfInstructors {
 	 * 
 	 * @return int The number of instructor currently in the set 
 	 */
-	public int instructorCount() {
+	public int size() {
 		return _vInstructors.size();
 	}
 	

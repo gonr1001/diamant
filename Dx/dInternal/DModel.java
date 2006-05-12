@@ -403,7 +403,7 @@ public class DModel extends Observable {
             return _setOfStuSites.getError();
         }
         _constructionState = 1;
-        //buildSetOfEvents();
+        buildSetOfEvents();
         //_setOfStates.sendEvent();
 
         //_dDocument.getDMediator().getDApplication().setCursorDefault();

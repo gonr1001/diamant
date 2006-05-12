@@ -32,5 +32,5 @@ import dInternal.DataExchange;
  */
 public interface DxReadInstructorsBehavior {
 	boolean analyseTokens(DataExchange de);
-	DxSetOfInstructors buildSetOfRessources(DataExchange de);
+	DxSetOfInstructors buildSetOfInstructors(DataExchange de);
 }

@@ -37,7 +37,7 @@ public class DxReadInstructors1dot6 implements DxReadInstructorsBehavior{
 		return false;
 	}
 
-	public DxSetOfInstructors buildSetOfRessources(DataExchange de) {
+	public DxSetOfInstructors buildSetOfInstructors(DataExchange de) {
 		// 
 		return null;
 	}

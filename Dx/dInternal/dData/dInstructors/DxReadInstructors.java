@@ -28,28 +28,27 @@ import dInternal.DataExchange;
  * Description: DxReadInstructors is a class used to:
  * <p>
  * Retreive a SetOfInstructors no mather what file format is currently used.
- * This is also an implementation of the Strategy Pattern, since this class will delegate its work
- * to the proper reader after determining the version.
- * <p> 
+ * This is also an implementation of the Strategy Pattern, since this class will
+ * delegate its work to the proper reader after determining the version.
+ * <p>
  * 
  */
 public class DxReadInstructors {
-	private DxReadInstructorsBehavior _dxribVersion; 
-	public DxSetOfInstructors getSetOfInstructors(DataExchange de)
-	{
-		if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_5))
-		{
-			_dxribVersion=new DxReadInstructors1dot5();
+	private DxReadInstructorsBehavior _dxribVersion;
+
+	public DxSetOfInstructors getSetOfInstructors(DataExchange de) {
+		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_5)) {
+			_dxribVersion = new DxReadInstructors1dot5();
 		}
-		/*else if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6))
+		/*
+		 * else if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6))
 		 * 
 		 */
-		//try{
-		if(_dxribVersion.analyseTokens(de))
-		{
-			return _dxribVersion.buildSetOfRessources(de);
+		// try{
+		if (_dxribVersion.analyseTokens(de)) {
+			return _dxribVersion.buildSetOfInstructors(de);
 		}
 		return null;
-		
+
 	}
 }

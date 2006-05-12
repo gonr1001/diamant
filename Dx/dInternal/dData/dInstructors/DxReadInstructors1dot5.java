@@ -131,7 +131,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 		return true;
 	}
 
-	public DxSetOfInstructors buildSetOfRessources(DataExchange de) {
+	public DxSetOfInstructors buildSetOfInstructors(DataExchange de) {
 		StringTokenizer st = new StringTokenizer(de.getContents(), DConst.CR_LF);
 		String token;
 

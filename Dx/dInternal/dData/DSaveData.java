@@ -107,7 +107,7 @@ public class DSaveData {
 				.getRelativeFileName(fileName + DConst.DOT_XML).trim()
 				+ DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
-		diaData += inst.instructorCount() + DConst.CR_LF;
+		diaData += inst.size() + DConst.CR_LF;
 		diaData += inst.toWrite() + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += DConst.FILE_VER_NAME1_6 + DConst.CR_LF;
