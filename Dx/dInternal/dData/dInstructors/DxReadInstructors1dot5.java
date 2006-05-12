@@ -181,7 +181,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 				break;
 			}
 		}
-		return null;
+		return dxsoiInst;
 	}
 
 }

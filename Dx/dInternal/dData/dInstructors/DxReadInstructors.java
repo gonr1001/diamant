@@ -34,7 +34,7 @@ import dInternal.DataExchange;
  * 
  */
 public class DxReadInstructors {
-	DxReadInstructorsBehavior _dxribVersion; 
+	private DxReadInstructorsBehavior _dxribVersion; 
 	public DxSetOfInstructors getSetOfInstructors(DataExchange de)
 	{
 		if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_5))
