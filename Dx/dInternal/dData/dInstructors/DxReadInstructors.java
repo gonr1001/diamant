@@ -19,6 +19,7 @@
  */
 package dInternal.dData.dInstructors;
 
+import dConstants.DConst;
 import dInternal.DataExchange;
 
 /**
@@ -36,6 +37,19 @@ public class DxReadInstructors {
 	DxReadInstructorsBehavior _dxribVersion; 
 	public DxSetOfInstructors getSetOfInstructors(DataExchange de)
 	{
+		if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_5))
+		{
+			_dxribVersion=new DxReadInstructors1dot5();
+		}
+		/*else if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6))
+		 * 
+		 */
+		//try{
+		if(_dxribVersion.analyseTokens(de))
+		{
+			return _dxribVersion.buildSetOfRessources(de);
+		}
 		return null;
+		
 	}
 }
