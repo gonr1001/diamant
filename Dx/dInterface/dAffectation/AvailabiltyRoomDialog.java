@@ -42,7 +42,7 @@ import dInternal.DModel;
 import dInternal.DSetOfResources;
 import dInternal.dData.AvailabilityAttach;
 
-public class AvailabiltyDialog extends JDialog implements ActionListener,
+public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
         ItemListener {
 
     private int _nbOfPeriods;
@@ -82,7 +82,7 @@ public class AvailabiltyDialog extends JDialog implements ActionListener,
      * @param doc
      *            The active document. Used to access the dictionnaries.
      */
-    public AvailabiltyDialog(DApplication dApplic, DSetOfResources setOfResources, String str) {
+    public AvailabiltyRoomDialog(DApplication dApplic, DSetOfResources setOfResources, String str) {
         super(dApplic.getJFrame(), str, false);
         if (dApplic.getCurrentDoc() == null)
             return;

@@ -52,7 +52,7 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
-import dInterface.dAffectation.AvailabiltyDialog;
+import dInterface.dAffectation.AvailabiltyRoomDialog;
 import dInterface.dAffectation.EventsDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
@@ -596,7 +596,7 @@ public class DApplication { //implements ActionListener {
 	 */
 	public void instructorAvailability() {
 		if(!DConst.newInstructors)
-			new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfInstructors(), DConst.INST_ASSIGN_TD);
+			new AvailabiltyRoomDialog(this, this.getCurrentDModel().getSetOfInstructors(), DConst.INST_ASSIGN_TD);
 		/*else
 			new AvailabiltyDialog(this, this.getCurrentDModel().getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);*/
 	}
@@ -605,7 +605,7 @@ public class DApplication { //implements ActionListener {
 	 * 
 	 */
 	public void roomAvailability() {
-		new AvailabiltyDialog(this, this.getCurrentDModel().getSetOfRooms(), DConst.ROOMASSIGN);
+		new AvailabiltyRoomDialog(this, this.getCurrentDModel().getSetOfRooms(), DConst.ROOMASSIGN);
 	}
 
 	/**
