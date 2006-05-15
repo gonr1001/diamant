@@ -44,6 +44,8 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.DSetOfResources;
 import dInternal.dData.AvailabilityAttach;
+import dInternal.dData.DxAvailability;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -80,9 +82,9 @@ private Vector _posVect;
 
 protected DModel _dmodel;
 
-protected DSetOfResources _setOfResources;
+protected DxSetOfInstructors _soi;
 
-private AvailabilityAttach _currentInstr;
+private DxAvailability _currentInstr;
 
 private int[][] _currentAvailbility;
 
@@ -94,12 +96,12 @@ private int[][] _currentAvailbility;
  * @param doc
  *            The active document. Used to access the dictionnaries.
  */
-public AvailabilityInstructorDlg(DApplication dApplic, DSetOfResources setOfResources, String str) {
+public AvailabilityInstructorDlg(DApplication dApplic, DxSetOfInstructors soi, String str) {
     super(dApplic.getJFrame(), str, false);
     if (dApplic.getCurrentDoc() == null)
         return;
     _dmodel = dApplic.getCurrentDModel();
-    _setOfResources=setOfResources;
+    _soi = soi;
     _time = _dmodel.getTTStructure().getCurrentCycle()
             .getHourOfPeriodsADay();
     
@@ -131,12 +133,11 @@ public AvailabilityInstructorDlg(DApplication dApplic, DSetOfResources setOfReso
 private void initialize() throws Exception {
     _chooserPanel = new JPanel();
     // creates the JComboBox with the list of all instructors
-    _chooser = new JComboBox(_setOfResources.getNamesVector(1));
+    _chooser = new JComboBox(_soi.getNamesVector(1));
     _chooser.addItemListener(this);
     _chooserPanel.add(_chooser, null);
-    String sel = (String) _chooser.getSelectedItem();
-    _currentInstr = (AvailabilityAttach)_setOfResources
-    .getResource(sel).getAttach();  // First Element
+    int sel = _chooser.getSelectedIndex();
+    _currentInstr = _soi.getInstructorAvailability(sel);  // First Element
     this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
 
     // gridPanel
@@ -184,8 +185,8 @@ public void itemStateChanged(ItemEvent event) {
         Object source = event.getSource();
         if (source.equals(_chooser)) {
             getContentPane().remove(_centerPanel);
-            String sel = (String) _chooser.getSelectedItem();
-            _currentInstr = (AvailabilityAttach) _setOfResources.getResource(sel).getAttach();
+            int sel = _chooser.getSelectedIndex();
+            _currentInstr = _soi.getInstructorAvailability(sel);
             _centerPanel = makeGridPanel();// _currentInstr);
             getContentPane().add(_centerPanel, BorderLayout.CENTER);
             pack();
@@ -201,7 +202,7 @@ public void itemStateChanged(ItemEvent event) {
  *            the instructor for which the grid is constructed.
  */
 private JPanel makeGridPanel() {
-    JPanel gridPanel = new JPanel();
+	JPanel gridPanel = new JPanel();
     gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
     gridPanel.setBorder(BorderFactory
             .createTitledBorder(DConst.AVAILABILITIES));

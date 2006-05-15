@@ -100,6 +100,22 @@ public class DxAvailability {
 		}
 		return false;
 	}
+	
+	public void setAvailability(int[][] newAva)
+	{
+		_vDays.removeAllElements();
+		_vDays.setSize(newAva.length);
+		for(int i=0;i<newAva.length;i++)
+		{
+			Vector<Integer> vTemp=new Vector<Integer>(newAva[i].length);
+			for(int j=0;j<newAva[i].length;j++)
+			{
+				vTemp.add(new Integer(newAva[i][j]));
+			}
+			_vDays.add(vTemp);
+		}
+		
+	}
 
 	/**
 	 * Method that gives access to availibilities of a whole day through a
@@ -135,6 +151,23 @@ public class DxAvailability {
 		}
 		return -1;
 	}
+	
+	public int[][] getMatrixAvailability()
+	{
+			//Takes first day's number of period as a whole week constant
+		int[][] iRet=new int[_vDays.size()][_vDays.get(0).size()];
+		
+		for(int i=0;i<iRet.length;i++)
+		{
+			for(int j=0;j<iRet[0].length;j++)
+			{
+				iRet[i][j]=this.getPeriodAvailability(i,j);
+			}
+		}
+		
+		return iRet;
+		
+	}
 
 	/**
 	 * Method giving the count of period during a certain day
@@ -158,4 +191,47 @@ public class DxAvailability {
 	private boolean isValidDay(int nDayIndex) {
 		return ((nDayIndex >= 0) && (nDayIndex < _vDays.size()));
 	}
+	
+	   /**
+     * Return sites where instructor is already assigned in the given period
+     * @param dayIndex
+     * @param periodIndex
+     * @param site
+     * @return
+     */
+    public Vector isAssignedInPeriod(int dayIndex, int periodIndex, Vector sites){
+        Vector v= new Vector(1);
+        for (int i = 0; i< sites.size(); i++){
+            String site = (String)sites.get(i);
+//            if (_ressourceSiteAvailability.size()==0)
+//                this.initAssignAvailability();
+            String[][] matrix = getAssignAvailabilityTable(new Vector());
+            if ((dayIndex < matrix.length))
+                if (periodIndex < matrix[dayIndex].length)
+//                  if(matrix[dayIndex][periodIndex].contains(site)) // XXXX Pascal: lien inutile avec JDK 1.5
+            if(matrix[dayIndex][periodIndex].matches(".*" + site + ".*"))
+                        v.add(site);
+        } //end for (int i = 0; i< sites.size(); i++)
+        return v;
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    private String[][] getAssignAvailabilityTable(Vector vect) {
+        String jour = (String) vect.get(0);
+        StringTokenizer st = new StringTokenizer(jour);
+        String[][] a = new String[vect.size()][st.countTokens()];
+        int nbOfTokens = st.countTokens();
+        for (int i = 0; i < vect.size(); i++) {
+            jour = (String) vect.get(i);
+            st = new StringTokenizer(jour);
+            nbOfTokens = st.countTokens();
+            for (int j = 0; j < nbOfTokens; j++) {
+                a[i][j] = st.nextToken();
+            } // end for j
+        } //end for i
+        return a;
+    }
 }

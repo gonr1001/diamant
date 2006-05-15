@@ -52,6 +52,7 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
+import dInterface.dAffectation.AvailabilityInstructorDlg;
 import dInterface.dAffectation.AvailabiltyRoomDialog;
 import dInterface.dAffectation.EventsDlg;
 import dInterface.dAffectation.SectionDlg;
@@ -597,8 +598,8 @@ public class DApplication { //implements ActionListener {
 	public void instructorAvailability() {
 		if(!DConst.newInstructors)
 			new AvailabiltyRoomDialog(this, this.getCurrentDModel().getSetOfInstructors(), DConst.INST_ASSIGN_TD);
-		/*else
-			new AvailabiltyDialog(this, this.getCurrentDModel().getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);*/
+		else
+			new AvailabilityInstructorDlg(this, this.getCurrentDModel().getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
 
 	/**
