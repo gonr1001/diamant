@@ -32,8 +32,8 @@ public class DConst {
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 
-	//public static boolean newInstructors = true;
-	public static boolean newInstructors = false;
+	public static boolean newInstructors = true;
+	//public static boolean newInstructors = false;
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
 	

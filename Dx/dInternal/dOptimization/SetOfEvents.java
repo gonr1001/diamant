@@ -1,6 +1,5 @@
 package dInternal.dOptimization;
 
-
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -29,7 +28,6 @@ public class SetOfEvents extends DSetOfResources {
 	 * @associates SetOfEventsListener
 	 */
 	//public Vector _soeListeners = new Vector(1);
-
 	//protected boolean _isEventPlaced=false;
 	private DModel _dm;
 
@@ -97,30 +95,8 @@ public class SetOfEvents extends DSetOfResources {
 								}// end if(assignment.getPeriodKey()[0]==0)
 								//System.out.println("event " +unityID+"
 								// InsName " +assignment.getInstructorName());
-								String[] instructorNames = assignment
-										.getInstructorNames();
-								for (int m = 0; m < instructorNames.length; m++) {
-									int instructorIndex = _dm
-											.getSetOfInstructors()
-											.getIndexOfResource(
-													instructorNames[m]);
-									if (instructorIndex != -1) {
-										instructorKey = _dm
-												.getSetOfInstructors()
-												.getResourceAt(instructorIndex)
-												.getKey();
-										assignment
-												.addInstructorKeys(instructorKey);
-									} else {
-										DValue error = new DValue();
-										error.setStringValue(DConst.ERROR_TAG
-												+ unityID + ": "
-												+ DConst.NOT_INSTRUCTOR
-                                                + "« "+ instructorNames[m] + " »");
-										soie.addResource(new DResource("2",
-												error), 0);
-									}
-								}
+								if(!DConst.newInstructors)
+									rgr(soie, assignment, unityID);
 
 								int roomIndex = _dm.getSetOfRooms()
 										.getIndexOfResource(
@@ -136,8 +112,8 @@ public class SetOfEvents extends DSetOfResources {
 									if (str.equals(DConst.NO_ROOM_INTERNAL))
 										str = DConst.NO_ROOM_EXTERNAL;
 									error.setStringValue(DConst.ERROR_TAG
-											+ unityID + ": " + DConst.NOT_ROOM 
-                                            + "« "+ str + " »");
+											+ unityID + ": " + DConst.NOT_ROOM
+											+ "« " + str + " »");
 									soie.addResource(new DResource("3", error),
 											0);
 								}
@@ -148,14 +124,14 @@ public class SetOfEvents extends DSetOfResources {
 										roomKey, ((Unity) unity.getAttach())
 												.getDuration(), assignment
 												.getPeriodKey());
-								event
-										.setAssigned(((Unity) unity
-												.getAttach()).isAssign());
+								event.setAssigned(((Unity) unity.getAttach())
+										.isAssign());
 								event.setPermanentState(((Unity) unity
 										.getAttach()).isPermanent());
 								event.setRoomFixed(assignment.getRoomState());
-								event.setRoomFunction(((Unity) unity.getAttach()).
-										getFirstPreferFunctionRoom());
+								event.setRoomFunction(((Unity) unity
+										.getAttach())
+										.getFirstPreferFunctionRoom());
 								//System.out.println("Unity Key: "+unityKey+ "
 								// - Period Key:
 								// "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
@@ -173,6 +149,34 @@ public class SetOfEvents extends DSetOfResources {
 			}//end if(((Activity)activity.getAttach()).getActivityVisibility())
 		}// end for (int i=0; i< soa.size(); i++)
 	} //end build
+
+	private void rgr(DSetOfResources soie, Assignment assignment, String unityID) {
+		long instructorKey;
+		String[] instructorNames = assignment
+				.getInstructorNames();
+		for (int m = 0; m < instructorNames.length; m++) {
+			int instructorIndex = _dm
+					.getSetOfInstructors()
+					.getIndexOfResource(
+							instructorNames[m]);
+			if (instructorIndex != -1) {
+				instructorKey = _dm
+						.getSetOfInstructors()
+						.getResourceAt(instructorIndex)
+						.getKey();
+				assignment
+						.addInstructorKeys(instructorKey);
+			} else {
+				DValue error = new DValue();
+				error.setStringValue(DConst.ERROR_TAG
+						+ unityID + ": "
+						+ DConst.NOT_INSTRUCTOR + "« "
+						+ instructorNames[m] + " »");
+				soie.addResource(new DResource("2",
+						error), 0);
+			}
+		}
+	}
 
 	/**
 	 * get the complet activity name of an event
@@ -261,7 +265,7 @@ public class SetOfEvents extends DSetOfResources {
 			unity.setDuration(event.getDuration());
 			unity.setFirstPreferFunctionRoom(event.getRoomFunction());
 			assignment.setRoomState(event.isRoomFixed());
-			
+
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)
 
 	}
@@ -292,6 +296,7 @@ public class SetOfEvents extends DSetOfResources {
 		}
 		return DConst.NO_ROOM_INTERNAL;
 	}
+
 	/**
 	 * get a resource key
 	 * 
@@ -301,7 +306,7 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 	private int getNewInstName(DxSetOfInstructors sor, int eltkey) {
 		if (eltkey != -1) {
-			return  sor.getInstructorID(eltkey);
+			return sor.getInstructorID(eltkey);
 		}
 		return 0;
 	}
@@ -369,21 +374,21 @@ public class SetOfEvents extends DSetOfResources {
 		return res;
 	}
 
-/*	public String getInstructorConflictDescriptions(DValue confAt) {//, String
-		// eventIDOne)
-		// {
-		String res = "";
-		Vector insKeys = (Vector) (confAt).getObjectValue();
-		for (int j = 0; j < insKeys.size(); j++) {
-			String str = _dm.getSetOfInstructors().getResource(
-					((Long) insKeys.get(j)).longValue()).getID();
-			res += DXToolsMethods.getToken(str, ",", 0) + " "
-					+ DXToolsMethods.getToken(str, ",", 1) + ",";
-		}// end for (int j=0; j< insKeys.size(); j++)
+	/*	public String getInstructorConflictDescriptions(DValue confAt) {//, String
+	 // eventIDOne)
+	 // {
+	 String res = "";
+	 Vector insKeys = (Vector) (confAt).getObjectValue();
+	 for (int j = 0; j < insKeys.size(); j++) {
+	 String str = _dm.getSetOfInstructors().getResource(
+	 ((Long) insKeys.get(j)).longValue()).getID();
+	 res += DXToolsMethods.getToken(str, ",", 0) + " "
+	 + DXToolsMethods.getToken(str, ",", 1) + ",";
+	 }// end for (int j=0; j< insKeys.size(); j++)
 
-		return res;
-	}
-*/
+	 return res;
+	 }
+	 */
 	/**
 	 * 
 	 * @param eventIDOne
@@ -412,9 +417,9 @@ public class SetOfEvents extends DSetOfResources {
 			if (studentTwoInSection.contains(studentOneInSection.get(i))) {
 				String id = _dm.getSetOfStudents().getResource(
 						Long.parseLong(studentOneInSection.get(i).toString()))
-						.getID();	
-				id = id.replace(',',' ');
-				id = id.replaceFirst("  "," ");
+						.getID();
+				id = id.replace(',', ' ');
+				id = id.replaceFirst("  ", " ");
 				if (id.length() >= DConst.STUDENT_ID_LENGTH) {
 					id = id.substring(0, DConst.STUDENT_ID_LENGTH);
 				}
@@ -454,25 +459,25 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param component
 	 */
 	/*public void sendEvent(Component component) {
-		SetOfEventsEvent event = new SetOfEventsEvent(this);
-		for (int i = 0; i < _soeListeners.size(); i++) {
-			SetOfEventsListener soel = (SetOfEventsListener) _soeListeners
-					.elementAt(i);
-			soel.changeInSetOfEvents(event, component);
-		}
-	}*/
+	 SetOfEventsEvent event = new SetOfEventsEvent(this);
+	 for (int i = 0; i < _soeListeners.size(); i++) {
+	 SetOfEventsListener soel = (SetOfEventsListener) _soeListeners
+	 .elementAt(i);
+	 soel.changeInSetOfEvents(event, component);
+	 }
+	 }*/
 
 	/**
 	 * 
 	 * @param dml
 	 */
 	/*public synchronized void addSetOfEventsListener(SetOfEventsListener sorl) {
-		if (_soeListeners.contains(sorl)) {
-			return;
-		}
-		_soeListeners.addElement(sorl);
-		//System.out.println("addSetOfEvents Listener ...");//debug
-	}*/
+	 if (_soeListeners.contains(sorl)) {
+	 return;
+	 }
+	 _soeListeners.addElement(sorl);
+	 //System.out.println("addSetOfEvents Listener ...");//debug
+	 }*/
 
 	/*
 	 * (non-Javadoc)
@@ -504,7 +509,6 @@ public class SetOfEvents extends DSetOfResources {
 		return 0;
 	}
 
-	
 	/**
 	 * 
 	 * @param valueToFind
@@ -518,18 +522,25 @@ public class SetOfEvents extends DSetOfResources {
 		for (int i = 0; i < this.size(); i++) {
 			event = (EventAttach) this.getResourceAt(i).getAttach();
 			int[] perKey = event.getPeriodKeyTable();
-			int duration = event.getDuration()/_dm.getTTStructure().getPeriodLenght();
+			int duration = event.getDuration()
+					/ _dm.getTTStructure().getPeriodLenght();
 			if (event.isPlaceInAPeriod()) {
 				instKey = event.getInstructorKey();
 				for (int j = 0; j < instKey.length; j++) {
-					AvailabilityAttach inst = (AvailabilityAttach) _dm.getSetOfInstructors().getResource(instKey[j]).getAttach();
-					int dayIndex= _dm.getTTStructure().findIndexInWeekTable(perKey[0]);
-					int perPosition= _dm.getTTStructure().getCurrentCycle().getPeriodPositionInDay(perKey[0],perKey[1],perKey[2]);
-					if (event.getPeriodKey().length() != 0) 
-					for (int k = 0; k < duration; k++){
-						int perIndex= perPosition + k -1;
-				        inst.setAvailabilityOfAPeriod(dayIndex, perIndex,currentSite);
-					}
+					AvailabilityAttach inst = (AvailabilityAttach) _dm
+							.getSetOfInstructors().getResource(instKey[j])
+							.getAttach();
+					int dayIndex = _dm.getTTStructure().findIndexInWeekTable(
+							perKey[0]);
+					int perPosition = _dm.getTTStructure().getCurrentCycle()
+							.getPeriodPositionInDay(perKey[0], perKey[1],
+									perKey[2]);
+					if (event.getPeriodKey().length() != 0)
+						for (int k = 0; k < duration; k++) {
+							int perIndex = perPosition + k - 1;
+							inst.setAvailabilityOfAPeriod(dayIndex, perIndex,
+									currentSite);
+						}
 				}// end for (int j=0; j< instKey.length; j++)
 			}// end if(event.isPlaceInAPeriod())
 		}// end for (int i = 0; i < this.size();

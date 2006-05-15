@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
+import dInternal.DSetOfResources;
 import dInternal.dData.DxAvailability;
 
 /**
@@ -37,7 +38,7 @@ import dInternal.dData.DxAvailability;
  * 
  */
 
-public class DxSetOfInstructors {
+public class DxSetOfInstructors{
 	
 	private ArrayList<DxInstructor> _vInstructors;
 	
@@ -195,5 +196,18 @@ public class DxSetOfInstructors {
 	private boolean isValidIndex(int nIndex)
 	{
 		return ((nIndex >= 0) && (nIndex < _vInstructors.size()));
+	}
+	
+	public Vector<String> getNamesVector(int sortField)
+	{
+		Vector<String> vReturn=new Vector<String>();
+		if(sortField==1)
+		{
+			for(int i=0;i<this.size();i++)
+			{
+				vReturn.add(this.getInstructorName(i));
+			}
+		}
+		return vReturn;
 	}
 }
