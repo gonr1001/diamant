@@ -147,7 +147,11 @@ public class DxAvailabilityTest extends TestCase {
 				.getPeriodCount(4), 15);
 	}
 	
-//	public void test_(){
-//		
-//	}
+	public void test_MatrixConstructor(){
+		int[][] nTemp={{1,5,1,5,1,5},{5,1,5,1,5,1},{1,1,1,1,1,1},{5,5,5,5,5,5},{1,1,1,5,5,5}};
+		DxAvailability dxaTemp=new DxAvailability(nTemp);
+		assertEquals("test2_getPeriodCount: assertEquals ", dxaTemp.getDayCount(),5);
+		assertEquals("test2_getPeriodCount: assertEquals ", dxaTemp.getPeriodCount(0),6);
+		assertEquals("test2_getPeriodCount: assertEquals ", dxaTemp.getPeriodAvailability(4,5),5);
+	}
 }

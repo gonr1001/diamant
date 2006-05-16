@@ -152,6 +152,21 @@ public class DxSetOfInstructors{
 		return null;
 		
 	}
+	
+	/**
+	 * Retreives the availability of an instructor in the set
+	 * 
+	 * @param nIndex Index of the instructor whose availability is wanted
+	 * @return DxAvailability The availability of the instructor, null if the index was invalid 
+	 */
+	public int[][] getInstructorAvaMatrix(int nIndex) {
+		if(isValidIndex(nIndex))
+		{
+			return _vInstructors.get(nIndex).getInstructorAvailability().getMatrixAvailability();
+		}
+		return null;
+		
+	}
 
 	/**
 	 * Modify the availability of instructor at index nIndex

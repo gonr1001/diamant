@@ -42,8 +42,6 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
-import dInternal.DSetOfResources;
-import dInternal.dData.AvailabilityAttach;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 

@@ -46,11 +46,22 @@ public class DxAvailability {
 	 *            Specify how many days of availability this object will
 	 *            represent
 	 */
-	public DxAvailability(/*int nDays*/) {
-		_vDays = new Vector<Vector<Integer>>(/*nDays*/);
-		/*for (int i = 0; i < nDays; i++) {
-			_vDays.add(new Vector<Integer>());
-		}*/
+	public DxAvailability() {
+		_vDays = new Vector<Vector<Integer>>();
+	}
+
+	public DxAvailability(int[][] iMatrix) {
+		_vDays = new Vector<Vector<Integer>>();
+		for(int i=0;i<iMatrix.length;i++)
+		{
+			Vector<Integer> vTemp=new Vector<Integer>();
+			for(int j=0;j<iMatrix[i].length;j++)
+			{
+				vTemp.add(j,new Integer(iMatrix[i][j]));
+			}
+			_vDays.add(i,vTemp);
+		}
+		
 	}
 
 	/**

@@ -26,6 +26,7 @@ import dInterface.DDocument;
 import dInternal.dData.AvailabilityAttach;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
+import dInternal.dData.DxAvailability;
 import dInternal.dData.ExportData;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
@@ -380,8 +381,10 @@ public class DModel extends Observable {
              if (_setOfInstructors.getError().length() != 0) {
                  return _setOfInstructors.getError();
              }       	
-        } else 
+        } else {
         	_dxSetOfInstructors = loadData.extractInstructors();
+        	resizeInstructorsResource(_dxSetOfInstructors);
+        }
        
 
         // import set of sites
@@ -960,6 +963,16 @@ public class DModel extends Observable {
             matrix = DXToolsMethods
                     .resizeAvailability(matrix, getTTStructure());
             attach.setAvailability(matrix);
+        }
+    }
+    
+    private void resizeInstructorsResource(DxSetOfInstructors soiRes) {
+        int[][] matrix;
+        for (int i = 0; i < soiRes.size(); i++) {
+            matrix = soiRes.getInstructorAvaMatrix(i);
+            matrix = DXToolsMethods
+                    .resizeAvailability(matrix, getTTStructure());
+            soiRes.setInstructorAvailability(i,new DxAvailability(matrix));
         }
     }
 
