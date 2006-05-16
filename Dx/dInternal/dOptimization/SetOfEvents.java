@@ -186,7 +186,7 @@ public class SetOfEvents extends DSetOfResources {
 				.getInstructorNames();
 		for (int m = 0; m < instructorNames.length; m++) {
 			int instructorIndex = _dm
-					.getDxSetOfInstructors().getIndexofInstructor(instructorNames[m]);
+					.getDxSetOfInstructors().getIndexbyName(instructorNames[m]);
 					
 			if (instructorIndex != -1) {
 				instructorKey = _dm

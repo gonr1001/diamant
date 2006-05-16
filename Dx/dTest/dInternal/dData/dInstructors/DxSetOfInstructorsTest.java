@@ -160,4 +160,30 @@ public class DxSetOfInstructorsTest extends TestCase {
 				.size(), 2);
 
 	}
+    
+    /*public void test_getIndexbyName() {
+        DxSetOfInstructors soiTest = new DxSetOfInstructors();
+        DxAvailability aTemp = new DxAvailability();
+        aTemp.addDayAvailability("1 5 1");
+        aTemp.addDayAvailability("5 5 1 1");
+        aTemp.addDayAvailability("5 5 5 5 1");
+        aTemp.addDayAvailability("1 1 1 5 5 5");
+        aTemp.addDayAvailability("1 5 1 5 1 5 1");
+    
+        DxInstructor iTemp = new DxInstructor("Erick", aTemp);
+        soiTest.addInstructor(iTemp);
+        iTemp = new DxInstructor("Daniel", aTemp);
+        soiTest.addInstructor(iTemp);
+        iTemp = new DxInstructor("Claude", aTemp);
+        soiTest.addInstructor(iTemp);
+        iTemp = new DxInstructor("Bruno", aTemp);
+        soiTest.addInstructor(iTemp);
+        iTemp = new DxInstructor("Alex", aTemp);
+        soiTest.addInstructor(iTemp);
+        soiTest.sortIntructors();
+        
+        assertEquals("test_getIndexbyName: assertEquals",soiTest.getIndexbyName("Alex"),0);
+        assertEquals("test_getIndexbyName: assertEquals",soiTest.getIndexbyName("Erick"),4);
+        assertEquals("test_getIndexbyName: assertEquals",soiTest.getIndexbyName("John"),-1);
+    }*/
 }

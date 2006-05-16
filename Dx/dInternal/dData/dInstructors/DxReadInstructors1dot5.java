@@ -181,6 +181,8 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 				break;
 			}
 		}
+        
+        dxsoiInst.sortIntructors();
 		return dxsoiInst;
 	}
 

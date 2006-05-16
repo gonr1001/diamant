@@ -166,6 +166,13 @@ public class DxSetOfInstructors{
 		return null;
 		
 	}
+    
+    public int getIndexbyName(String sName) {
+        DxInstructor dxiTemp=new DxInstructor(sName,null);
+        int nIndex=Collections.binarySearch(_vInstructors,dxiTemp,DxInstructor.NameComparator);
+        
+        return (nIndex<0) ? (-1) : (nIndex);
+    }
 
 	/**
 	 * Modify the availability of instructor at index nIndex
@@ -225,8 +232,5 @@ public class DxSetOfInstructors{
 		return vReturn;
 	}
 
-	public int getIndexofInstructor(String string) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 }
