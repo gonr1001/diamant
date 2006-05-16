@@ -35,7 +35,7 @@ import dInternal.dData.DxAvailability;
 public class DxInstructor {
 	private static int UNIQUE_ID = 0;
 
-	private int _nInstructorID;
+	private long _instructorKey;
 
 	private String _sName;
 
@@ -50,7 +50,7 @@ public class DxInstructor {
 	 *            Availability of the new instructor
 	 */
 	public DxInstructor(String sName, DxAvailability a) {
-		_nInstructorID = UNIQUE_ID++;
+		_instructorKey = UNIQUE_ID++;
 		_sName = sName;
 		_aInstrucAvail = a;
 
@@ -96,8 +96,8 @@ public class DxInstructor {
 	 * 
 	 * @return int Unique ID of the instructor
 	 */
-	public int getInstructorID() {
-		return _nInstructorID;
+	public long getInstructorKey() {
+		return _instructorKey;
 	}
 
 	public static Comparator<DxInstructor> NameComparator = new Comparator<DxInstructor>() {

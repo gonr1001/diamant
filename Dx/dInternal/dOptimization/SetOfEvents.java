@@ -95,10 +95,11 @@ public class SetOfEvents extends DSetOfResources {
 								}// end if(assignment.getPeriodKey()[0]==0)
 								//System.out.println("event " +unityID+"
 								// InsName " +assignment.getInstructorName());
-								if(!DConst.newInstructors)
+								if (!DConst.newInstructors)
 									assignInstructors(soie, assignment, unityID);
 								else
-									assignDxInstructors(soie, assignment, unityID);
+									assignDxInstructors(soie, assignment,
+											unityID);
 								int roomIndex = _dm.getSetOfRooms()
 										.getIndexOfResource(
 												assignment.getRoomName());
@@ -151,56 +152,46 @@ public class SetOfEvents extends DSetOfResources {
 		}// end for (int i=0; i< soa.size(); i++)
 	} //end build
 
-	private void assignInstructors(DSetOfResources soie, Assignment assignment, String unityID) {
+	private void assignInstructors(DSetOfResources soie, Assignment assignment,
+			String unityID) {
 		long instructorKey;
-		String[] instructorNames = assignment
-				.getInstructorNames();
+		String[] instructorNames = assignment.getInstructorNames();
 		for (int m = 0; m < instructorNames.length; m++) {
-			int instructorIndex = _dm
-					.getSetOfInstructors()
-					.getIndexOfResource(
-							instructorNames[m]);
+			int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(
+					instructorNames[m]);
 			if (instructorIndex != -1) {
-				instructorKey = _dm
-						.getSetOfInstructors()
-						.getResourceAt(instructorIndex)
-						.getKey();
-				assignment
-						.addInstructorKeys(instructorKey);
+				instructorKey = _dm.getSetOfInstructors().getResourceAt(
+						instructorIndex).getKey();
+				assignment.addInstructorKeys(instructorKey);
 			} else {
 				DValue error = new DValue();
-				error.setStringValue(DConst.ERROR_TAG
-						+ unityID + ": "
-						+ DConst.NOT_INSTRUCTOR + "« "
-						+ instructorNames[m] + " »");
-				soie.addResource(new DResource("2",
-						error), 0);
+				error.setStringValue(DConst.ERROR_TAG + unityID + ": "
+						+ DConst.NOT_INSTRUCTOR + "« " + instructorNames[m]
+						+ " »");
+				soie.addResource(new DResource("2", error), 0);
 			}
 		}
-		
+
 	}
 
-	private void assignDxInstructors(DSetOfResources soie, Assignment assignment, String unityID) {
+	private void assignDxInstructors(DSetOfResources soie,
+			Assignment assignment, String unityID) {
 		long instructorKey;
-		String[] instructorNames = assignment
-				.getInstructorNames();
+		String[] instructorNames = assignment.getInstructorNames();
 		for (int m = 0; m < instructorNames.length; m++) {
-			int instructorIndex = _dm
-					.getDxSetOfInstructors().getIndexbyName(instructorNames[m]);
-					
+			int instructorIndex = _dm.getDxSetOfInstructors().getIndexByName(
+					instructorNames[m]);
+
 			if (instructorIndex != -1) {
-				instructorKey = _dm
-						.getDxSetOfInstructors().getInstructorID(instructorIndex);
-				assignment
-						.addInstructorKeys(instructorKey);
+				instructorKey = _dm.getDxSetOfInstructors().getInstructorKey(
+						instructorIndex);
+				assignment.addInstructorKeys(instructorKey);
 			} else {
 				DValue error = new DValue();
-				error.setStringValue(DConst.ERROR_TAG
-						+ unityID + ": "
-						+ DConst.NOT_INSTRUCTOR + "« "
-						+ instructorNames[m] + " »");
-				soie.addResource(new DResource("2",
-						error), 0);
+				error.setStringValue(DConst.ERROR_TAG + unityID + ": "
+						+ DConst.NOT_INSTRUCTOR + "« " + instructorNames[m]
+						+ " »");
+				soie.addResource(new DResource("2", error), 0);
 			}
 		}
 	}
@@ -278,10 +269,17 @@ public class SetOfEvents extends DSetOfResources {
 			long[] keys = event.getInstructorKey();
 
 			assignment.emptyInstructorNames();
-			for (int j = 0; j < keys.length; j++) {
-				assignment.addInstructorName(getInstName(_dm
-						.getSetOfInstructors(), keys[j]));
-			}// end for
+			if (!DConst.newInstructors) {
+				for (int j = 0; j < keys.length; j++) {
+					assignment.addInstructorName(getInstName(_dm
+							.getSetOfInstructors(), keys[j]));
+				}// end for
+			} else {
+				for (int j = 0; j < keys.length; j++) {
+					assignment.addInstructorName(getDxInstName(_dm
+							.getDxSetOfInstructors(), keys[j]));
+				}// end for
+			}
 
 			assignment.setRoom(getRoomName(_dm.getSetOfRooms(), event
 					.getRoomKey()));
@@ -295,6 +293,13 @@ public class SetOfEvents extends DSetOfResources {
 
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)
 
+	}
+
+	private String getDxInstName(DxSetOfInstructors soi, long key) {
+		if (key != -1) {
+			return soi.getInstructorName(soi.getInstructorByKey(key));
+		}
+		return DConst.NO_ROOM_INTERNAL;
 	}
 
 	/**
@@ -331,9 +336,9 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param elt
 	 * @return the resource key or -1 if key does not found
 	 */
-	private int getNewInstName(DxSetOfInstructors sor, int eltkey) {
+	private long getNewInstName(DxSetOfInstructors sor, int eltkey) {
 		if (eltkey != -1) {
-			return sor.getInstructorID(eltkey);
+			return sor.getInstructorKey(eltkey);
 		}
 		return 0;
 	}

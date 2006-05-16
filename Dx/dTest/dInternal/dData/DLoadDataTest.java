@@ -133,7 +133,7 @@ public class DLoadDataTest extends TestCase {
 		else {
 			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
 			assertEquals("test4_loadTimeTable5j : assertEquals: ",
-					"THÉRIAULT, MICHÈLE", setIns.getInstructorID(2));
+					"THÉRIAULT, MICHÈLE", setIns.getInstructorKey(2));
 		}
 	}
 
@@ -246,7 +246,7 @@ public class DLoadDataTest extends TestCase {
 		} else {
 			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
 			assertEquals("test4_loadTimeTable5j : assertEquals: ",
-					"THÉRIAULT, MICHÈLE", setIns.getInstructorID(2));
+					"THÉRIAULT, MICHÈLE", setIns.getInstructorKey(2));
 		}
 	}
 

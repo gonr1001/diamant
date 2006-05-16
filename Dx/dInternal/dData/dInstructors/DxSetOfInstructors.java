@@ -21,6 +21,7 @@ package dInternal.dData.dInstructors;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -129,10 +130,10 @@ public class DxSetOfInstructors{
 	 * @param nIndex Index of the instructor whose ID is wanted
 	 * @return int ID of the instructor, -1 if the index was invalid 
 	 */
-	public int getInstructorID(int nIndex) {
+	public long getInstructorKey(int nIndex) {
 		if(isValidIndex(nIndex))
 		{
-			return _vInstructors.get(nIndex).getInstructorID();
+			return _vInstructors.get(nIndex).getInstructorKey();
 		}
 		return -1;
 	}
@@ -167,8 +168,9 @@ public class DxSetOfInstructors{
 		
 	}
     
-    public int getIndexbyName(String sName) {
+    public int getIndexByName(String sName) {
         DxInstructor dxiTemp=new DxInstructor(sName,null);
+        
         int nIndex=Collections.binarySearch(_vInstructors,dxiTemp,DxInstructor.NameComparator);
         
         return (nIndex<0) ? (-1) : (nIndex);
@@ -232,5 +234,15 @@ public class DxSetOfInstructors{
 		return vReturn;
 	}
 
-	
+	public int getInstructorByKey(long key)
+	{
+		Iterator it = _vInstructors.iterator();
+		
+		for (int i=0; it.hasNext(); i++){
+			if (key == ((DxInstructor) it.next()).getInstructorKey());
+				return i;
+		}
+		
+		return -1;
+	}
 }

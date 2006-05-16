@@ -83,21 +83,25 @@ public class TestInstructorsConditions  implements Condition{
     EventAttach event = (EventAttach)_dm.getSetOfEvents().getResource(eventKey).getAttach();
     long instKey[] = event.getInstructorKey();
      int nbConf=0;
+     int [][] matrix;
      period.getBeginHour();// only to disable warning
      Vector description= new Vector();// is a vector of Long containing instructor keys
     //long instKey = event.getInstructorKey();
     for (int i=0; i< instKey.length; i++){
       if(event.getPeriodKey().length()!=0){
-        AvailabilityAttach inst = (AvailabilityAttach)_dm.getSetOfInstructors().getResource(instKey[i]).getAttach();
-        //long dayKey = Integer.parseInt(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-        //int[] dayTime={(int)dayKey, period.getBeginHour()[0],period.getBeginHour()[1]};
-        //String thePeriod= _dm.getTTStructure().getCurrentCycle().getPeriod(dayTime);
-        //long seqKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",1));
-        //long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,".",2));
+    	  if (!DConst.newInstructors) {
+    		  AvailabilityAttach inst = (AvailabilityAttach)_dm.getSetOfInstructors().getResource(instKey[i]).getAttach();
+        	  matrix= inst.getMatrixAvailability();
+    	  } else {
+    		  int index =_dm.getDxSetOfInstructors().getInstructorByKey(instKey[i]);
+    		  matrix = _dm.getDxSetOfInstructors().getInstructorAvaMatrix(index);
+    	  }
+    		  
+    	  
         int dayIndexAvail= _dm.getTTStructure().findIndexInWeekTable(perK[0]);
         int perPosition= _dm.getTTStructure().getCurrentCycle().getPeriodPositionInDay(perK[0],perK[1],perK[2]);
         if(perPosition>0){
-          int [][] matrix= inst.getMatrixAvailability();
+          
           if ((dayIndexAvail < matrix.length)){
             if(matrix[dayIndexAvail][perPosition-1]==_NOTAVAIL){
               nbConf++;

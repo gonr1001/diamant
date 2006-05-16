@@ -72,6 +72,7 @@ public class DModel extends Observable {
     private boolean _modified = false;
 
     private boolean _isATimeTable;
+    
     private boolean _isOnlyATimeTable;
     
     private boolean _isExamPrepared = false;

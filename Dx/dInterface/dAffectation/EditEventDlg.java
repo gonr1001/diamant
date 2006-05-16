@@ -1038,6 +1038,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	}
 
 	private String getInstructorKeys(ListModel lm) {
+		// TODO: DConst.newInstructors
 		String a = "";
 		for (int i = 0; i < lm.getSize(); i++) {
 			long key = _dApplic.getCurrentDModel().getSetOfInstructors()

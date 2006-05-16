@@ -596,7 +596,7 @@ public class DApplication { //implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-		if(!DConst.newInstructors)
+		if (!DConst.newInstructors)
 			new AvailabiltyRoomDialog(this, this.getCurrentDModel().getSetOfInstructors(), DConst.INST_ASSIGN_TD);
 		else
 			new AvailabilityInstructorDlg(this, this.getCurrentDModel().getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);

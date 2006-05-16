@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.64 $  $Date: 2006-05-15 17:03:26 $
+ * Title: EditActivityDlg $Revision: 1.65 $  $Date: 2006-05-16 19:54:43 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.64 $
- * @author  $Author: caln1901 $
+ * @version $Revision: 1.65 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -862,6 +862,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	}
 
 	private String getInstructorKeys(ListModel lm) {
+//		 TODO: DConst.newInstructors 
 		String a = "";
 		for (int i = 0; i < lm.getSize(); i++) {
 			long key = _dApplic.getCurrentDModel().getSetOfInstructors()

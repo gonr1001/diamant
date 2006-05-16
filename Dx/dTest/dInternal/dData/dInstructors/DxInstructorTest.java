@@ -60,7 +60,7 @@ public class DxInstructorTest extends TestCase {
 		assertEquals("test1_DxInstructor: assertEquals", iTemp
 				.getInstructorAvailability().getPeriodAvailability(0, 0), 1);
 		assertEquals("test2_DxInstructor: assertEquals", iTemp
-				.getInstructorID(), 0);
+				.getInstructorKey(), 0);
 	}
 
 	public void test_setInstructors() {
@@ -86,7 +86,7 @@ public class DxInstructorTest extends TestCase {
 		aTemp.addDayAvailability("1 5 1 5");
 		DxInstructor iA = new DxInstructor("Instru1", aTemp);
 		DxInstructor iB = new DxInstructor("Instru2", aTemp);
-		assertNotSame("test_uniqueID: assertNotSame", iA.getInstructorID(), iB
-				.getInstructorID());
+		assertNotSame("test_uniqueID: assertNotSame", iA.getInstructorKey(), iB
+				.getInstructorKey());
 	}
 }
