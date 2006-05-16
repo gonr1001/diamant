@@ -151,7 +151,7 @@ public class SetOfEvents extends DSetOfResources {
 		}// end for (int i=0; i< soa.size(); i++)
 	} //end build
 
-	private void assignDxInstructors(DSetOfResources soie, Assignment assignment, String unityID) {
+	private void assignInstructors(DSetOfResources soie, Assignment assignment, String unityID) {
 		long instructorKey;
 		String[] instructorNames = assignment
 				.getInstructorNames();
@@ -180,7 +180,7 @@ public class SetOfEvents extends DSetOfResources {
 		
 	}
 
-	private void assignInstructors(DSetOfResources soie, Assignment assignment, String unityID) {
+	private void assignDxInstructors(DSetOfResources soie, Assignment assignment, String unityID) {
 		long instructorKey;
 		String[] instructorNames = assignment
 				.getInstructorNames();
