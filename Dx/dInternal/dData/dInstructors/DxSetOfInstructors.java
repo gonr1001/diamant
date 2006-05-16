@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
-import dInternal.DSetOfResources;
 import dInternal.dData.DxAvailability;
 
 /**
@@ -224,5 +223,10 @@ public class DxSetOfInstructors{
 			}
 		}
 		return vReturn;
+	}
+
+	public int getIndexofInstructor(String string) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
