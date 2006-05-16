@@ -115,7 +115,10 @@ public class DxAvailability {
 	public void setAvailability(int[][] newAva)
 	{
 		_vDays.removeAllElements();
-		_vDays.setSize(newAva.length);
+			//Error: setSize caused problems since it allocate
+			//n elements to null. Thus, next add is appended after
+			//nulls. Would have had to use _vDays.set(index,.... for it to work
+		//_vDays.setSize(newAva.length);
 		for(int i=0;i<newAva.length;i++)
 		{
 			Vector<Integer> vTemp=new Vector<Integer>(newAva[i].length);

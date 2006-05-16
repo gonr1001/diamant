@@ -150,8 +150,19 @@ public class DxAvailabilityTest extends TestCase {
 	public void test_MatrixConstructor(){
 		int[][] nTemp={{1,5,1,5,1,5},{5,1,5,1,5,1},{1,1,1,1,1,1},{5,5,5,5,5,5},{1,1,1,5,5,5}};
 		DxAvailability dxaTemp=new DxAvailability(nTemp);
+		assertEquals("test_MatrixConstructor: assertEquals ", dxaTemp.getDayCount(),5);
+		assertEquals("test_MatrixConstructor: assertEquals ", dxaTemp.getPeriodCount(0),6);
+		assertEquals("test_MatrixConstructor: assertEquals ", dxaTemp.getPeriodAvailability(4,5),5);
+	}
+	
+	public void test_setAvailability(){
+		int[][] nTemp={{1,5,1,5,1,5},{5,1,5,1,5,1},{1,1,1,1,1,1},{5,5,5,5,5,5},{1,1,1,5,5,5}};
+		DxAvailability dxaTemp=new DxAvailability();
+		dxaTemp.setAvailability(nTemp);
 		assertEquals("test2_getPeriodCount: assertEquals ", dxaTemp.getDayCount(),5);
 		assertEquals("test2_getPeriodCount: assertEquals ", dxaTemp.getPeriodCount(0),6);
 		assertEquals("test2_getPeriodCount: assertEquals ", dxaTemp.getPeriodAvailability(4,5),5);
 	}
+	
+	
 }
