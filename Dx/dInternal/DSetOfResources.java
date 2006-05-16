@@ -35,7 +35,7 @@ public abstract class DSetOfResources extends DObject {
 	int _stateSort = 0;
 
 
-	private long _currentKey = 1;
+	private long _currentKey;
 	/**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
 
 
@@ -46,6 +46,7 @@ public abstract class DSetOfResources extends DObject {
 	 * @param int resType The resource type
 	 * */
 	public DSetOfResources() {
+		//_currentKey = KeyFactory.getKey();
 		_resourceList = new Vector(1, 1); // XXXX Pascal: Pourquoi (1,1) ?  Quel est la motivation?
 		//_resourceType = resType;
 	}
@@ -113,12 +114,13 @@ public abstract class DSetOfResources extends DObject {
 		}// end else if (insertType==0)
 
 		if (add == -1) {
+			_currentKey = KeyFactory.getKey();
 			resource.setKey(_currentKey);
 			if (index > (_resourceList.size() - 1))
 				_resourceList.add(resource);
 			else
 				_resourceList.insertElementAt(resource, index);
-			_currentKey++;
+			//_currentKey++;
 			return true;
 		}
 		//_resourceList.add(resource);
@@ -151,7 +153,7 @@ public abstract class DSetOfResources extends DObject {
 				_resourceList.add(resource);
 			else
 				_resourceList.insertElementAt(resource, index);
-			_currentKey++;
+			KeyFactory.getKey();//_currentKey++;
 			return true;
 		}
 		//_resourceList.add(resource);

@@ -29,7 +29,6 @@ public class StandardCollection extends DSetOfResources {
 	 */
 	public StandardCollection() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/*
