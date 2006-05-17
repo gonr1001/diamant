@@ -59,8 +59,8 @@ public class DxInstructorTest extends TestCase {
 				.getInstructorName(), "Smith, John");
 		assertEquals("test1_DxInstructor: assertEquals", iTemp
 				.getInstructorAvailability().getPeriodAvailability(0, 0), 1);
-		assertEquals("test2_DxInstructor: assertEquals", iTemp
-				.getInstructorKey(), 0);
+		assertEquals("test2_DxInstructor: assertEquals", 1, iTemp
+				.getInstructorKey());
 	}
 
 	public void test_setInstructors() {

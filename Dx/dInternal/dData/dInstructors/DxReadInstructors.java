@@ -36,9 +36,9 @@ import dInternal.DataExchange;
 public class DxReadInstructors {
 	private DxReadInstructorsBehavior _dxribVersion;
 
-	public DxSetOfInstructors getSetOfInstructors(DataExchange de) {
+	public DxSetOfInstructors getSetOfInstructors(DataExchange de, int nDays, int nPeriods) {
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_5)) {
-			_dxribVersion = new DxReadInstructors1dot5();
+			_dxribVersion = new DxReadInstructors1dot5(nDays, nPeriods);
 		}
 		/*
 		 * else if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6))

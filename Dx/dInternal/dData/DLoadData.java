@@ -386,7 +386,9 @@ public class DLoadData {
 					DataExchange de = buildDataExchange(project.nextToken()
 							.trim().getBytes());
 					DxReadInstructors ri = new DxReadInstructors();
-					extract.add(ri.getSetOfInstructors(de));
+					extract.add(ri.getSetOfInstructors(de,tts
+							.getNumberOfActiveDays(), tts.getCurrentCycle()
+							.getMaxNumberOfPeriodsADay()));
 				}
 
 			}// end if(tts.getError().length()==0)
@@ -1186,7 +1188,7 @@ public class DLoadData {
 //																		// periods!
 //			} else {
 			DxReadInstructors ri = new DxReadInstructors();// 5 jours et 14
-				return ri.getSetOfInstructors(de);												// periods !
+				return ri.getSetOfInstructors(de, 5, 14);												// periods !
 //			}
 //			if (de != null) {
 //				if (merge)

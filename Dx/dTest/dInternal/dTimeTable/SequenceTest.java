@@ -72,8 +72,8 @@ public class SequenceTest extends TestCase {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		assertEquals("test_readXMLtag : assertEquals 1(Number of periods):",
-				sequence.getSetOfPeriods().size(), 2);
+		assertEquals("test_readXMLtag : assertEquals 1(Number of periods):", 2,
+				sequence.getSetOfPeriods().size());
 		// assertEquals("test_readXMLtag : assertEquals 2(Minute):",
 		// sequence.getSetOfPeriods().getResourceAt(0).getID(), "1");
 		// assertEquals("test_readXMLtag : assertEquals 2(Minute):",

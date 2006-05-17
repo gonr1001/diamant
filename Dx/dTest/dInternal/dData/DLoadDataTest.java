@@ -56,13 +56,13 @@ public class DLoadDataTest extends TestCase {
 				+ "loadData5j.dia";
 		_loadData5j = new DLoadData();
 		_timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
-				+ "dataTest"); 
+				+ "dataTest");
 		String path7j = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		_loadData7j = new DLoadData();
 
 		_timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
-				+ "dataTest"); 
+				+ "dataTest");
 	}
 
 	public static Test suite() {
@@ -100,12 +100,13 @@ public class DLoadDataTest extends TestCase {
 				.get(4));
 		assertEquals("test2_loadTimeTable5j : assertEquals: ", "SHE", setSite
 				.getResourceAt(0).getID());
-		
-//		SetOfActivitiesSites setSite1 = (SetOfActivitiesSites) setSite.getResourceAt(0).getAttach();
+
+		// SetOfActivitiesSites setSite1 = (SetOfActivitiesSites)
+		// setSite.getResourceAt(0).getAttach();
 		SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
 				.getAttach();
-		assertEquals("test2_1_loadTimeTable5j : assertEquals: ", "AMC640", setAct
-				.getResourceAt(1).getID());
+		assertEquals("test2_1_loadTimeTable5j : assertEquals: ", "AMC640",
+				setAct.getResourceAt(1).getID());
 	}
 
 	/**
@@ -125,15 +126,15 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofinstructors
 	 */
 	public void test4_loadTimeTable5j() {
-		if(!DConst.newInstructors) {
-		SetOfInstructors setIns = ((SetOfInstructors) _timeTable5j.get(2));
-		assertEquals("test4_loadTimeTable5j : assertEquals: ",
-				"THÉRIAULT, MICHÈLE", setIns.getResourceAt(2).getID());
-		}
-		else {
-			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
-			assertEquals("test4_loadTimeTable5j : assertEquals: ",
-					"THÉRIAULT, MICHÈLE", setIns.getInstructorKey(2));
+		if (!DConst.newInstructors) {
+			SetOfInstructors setIns = ((SetOfInstructors) _timeTable5j.get(2));
+			assertEquals("test4_0_loadTimeTable5j : assertEquals: ",
+					"THÉRIAULT, MICHÈLE", setIns.getResourceAt(2).getID());
+		} else {
+			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j
+					.get(2));
+			assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
+					"THÉRIAULT, MICHÈLE", setIns.getInstructorName(2));
 		}
 	}
 
@@ -146,8 +147,8 @@ public class DLoadDataTest extends TestCase {
 				.getResourceAt(0).getID());
 		SetOfCategories setCat = ((SetOfCategories) setSite.getResourceAt(0)
 				.getAttach());
-		assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1", setCat
-				.getResourceAt(0).getID());
+		assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
+				setCat.getResourceAt(0).getID());
 		SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0).getAttach());
 		assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
 				setRooms.getResourceAt(4).getID());
@@ -177,16 +178,19 @@ public class DLoadDataTest extends TestCase {
 			// Test of DLoadData.findChangesInElements
 			Student studentChanged = setStud.getStudent("GIRALDO-L");
 			SetOfStuCourses currentCourses = studentChanged.getCoursesList();
-			assertNull("test3_ImportSelective5j : assertNull: Changed student ",
+			assertNull(
+					"test3_ImportSelective5j : assertNull: Changed student ",
 					currentCourses.getResource("GIN3252"));
 
 			// Test of DLoadData.findDeletedElements
-			assertNull("test4_ImportSelective5j : assertNull: Deleted student ",
+			assertNull(
+					"test4_ImportSelective5j : assertNull: Deleted student ",
 					setStud.getStudent("RHEAULT M"));
 
 		}
 
 	}
+
 	/**
 	 * test that check the version of timetable
 	 */
@@ -218,8 +222,8 @@ public class DLoadDataTest extends TestCase {
 				.getResourceAt(0).getID());
 		SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
 				.getAttach();
-		assertEquals("test2_1_loadTimeTable7j : assertEquals: ", "AMC640", setAct
-				.getResourceAt(1).getID());
+		assertEquals("test2_1_loadTimeTable7j : assertEquals: ", "AMC640",
+				setAct.getResourceAt(1).getID());
 	}
 
 	/**
@@ -239,14 +243,15 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofinstructors
 	 */
 	public void test4_loadTimeTable7j() {
-		if(!DConst.newInstructors) {
-		SetOfInstructors setIns = ((SetOfInstructors) _timeTable7j.get(2));
-		assertEquals("test4_loadTimeTable7j : assertEquals: ",
-				"THÉRIAULT, MICHÈLE", setIns.getResourceAt(2).getID());
+		if (!DConst.newInstructors) {
+			SetOfInstructors setIns = ((SetOfInstructors) _timeTable7j.get(2));
+			assertEquals("test4_loadTimeTable7j : assertEquals: ",
+					"THÉRIAULT, MICHÈLE", setIns.getResourceAt(2).getID());
 		} else {
-			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
-			assertEquals("test4_loadTimeTable5j : assertEquals: ",
-					"THÉRIAULT, MICHÈLE", setIns.getInstructorKey(2));
+			DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j
+					.get(2));
+			assertEquals("test4_1_loadTimeTable7j : assertEquals: ",
+					"THÉRIAULT, MICHÈLE", setIns.getInstructorName(2));
 		}
 	}
 
@@ -259,8 +264,8 @@ public class DLoadDataTest extends TestCase {
 				.getResourceAt(0).getID());
 		SetOfCategories setCat = ((SetOfCategories) setSite.getResourceAt(0)
 				.getAttach());
-		assertEquals("test5_1_loadTimeTable7j : assertEquals: ", "CAT 1", setCat
-				.getResourceAt(0).getID());
+		assertEquals("test5_1_loadTimeTable7j : assertEquals: ", "CAT 1",
+				setCat.getResourceAt(0).getID());
 		SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0).getAttach());
 		assertEquals("test5_2_loadTimeTable7j : assertEquals: ", "D13016",
 				setRooms.getResourceAt(4).getID());
@@ -290,11 +295,13 @@ public class DLoadDataTest extends TestCase {
 			// Test of DLoadData.findChangesInElements
 			Student studentChanged = setStud.getStudent("GIRALDO-L");
 			SetOfStuCourses currentCourses = studentChanged.getCoursesList();
-			assertNull("test3_ImportSelective7j : assertNull: Changed student ",
+			assertNull(
+					"test3_ImportSelective7j : assertNull: Changed student ",
 					currentCourses.getResource("GIN3252"));
 
 			// Test of DLoadData.findDeletedElements
-			assertNull("test4_ImportSelective7j : assertNull: Deleted student ",
+			assertNull(
+					"test4_ImportSelective7j : assertNull: Deleted student ",
 					setStud.getStudent("RHEAULT M"));
 
 		}

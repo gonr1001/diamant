@@ -31,7 +31,7 @@ public class DxReadInstructorsTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
 		DxReadInstructors dxriTest=new DxReadInstructors();		
-		assertEquals("test_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes())),null);
+		assertEquals("test_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14),null);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class DxReadInstructorsTest extends TestCase {
 	    "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
 		DLoadData ld = new DLoadData();
 		DxReadInstructors dxriTest=new DxReadInstructors();		
-		assertEquals("test1_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes())),null);
+		assertEquals("test1_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14),null);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class DxReadInstructorsTest extends TestCase {
         "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
 		DLoadData ld = new DLoadData();
 		DxReadInstructors dxriTest=new DxReadInstructors();		
-		assertEquals("test2_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes())),null);
+		assertEquals("test2_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14),null);
 	}
 	
 	/**
@@ -100,7 +100,7 @@ public class DxReadInstructorsTest extends TestCase {
         "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
 		DLoadData ld = new DLoadData();
 		DxReadInstructors dxriTest=new DxReadInstructors();		
-		assertEquals("test3_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes())),null);
+		assertEquals("test3_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14),null);
 	}
 	
 	/**
@@ -124,7 +124,7 @@ public class DxReadInstructorsTest extends TestCase {
         "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
 		DLoadData ld = new DLoadData();
 		DxReadInstructors dxriTest=new DxReadInstructors();		
-		assertEquals("test4_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes())),null);
+		assertEquals("test4_getSetOfInstructors: assertEquals",dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14),null);
 	}
 	
 	/**
@@ -148,7 +148,7 @@ public class DxReadInstructorsTest extends TestCase {
       "1 5 5 5 5 5 5 5 5 5 5 5 5 5"+"\r\n";
 		DLoadData ld = new DLoadData();
 		DxReadInstructors dxriTest=new DxReadInstructors();
-		DxSetOfInstructors dxsoiTemp=dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()));
+		DxSetOfInstructors dxsoiTemp=dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14);
 		assertNotSame("test5_getSetOfInstructors: assertNotSame",dxsoiTemp,null);
 		assertEquals("test5_getSetOfInstructors: assertEquals",dxsoiTemp.getInstructorName(0),"JAC");
 		assertEquals("test5_getSetOfInstructors: assertEquals",dxsoiTemp.getInstructorName(1),"POLM");

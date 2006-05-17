@@ -40,10 +40,13 @@ import dInternal.dUtil.DXToolsMethods;
  */
 public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 
-	//In version 1.5, there was a limit of 5 days a week and 14 periods a day
-	public final static int NUMBER_OF_DAYS = 5;
 
-	public final static int PERIODS_A_DAY = 14;
+	private int _days;
+	private int _periods;
+	public DxReadInstructors1dot5(int days, int periods) {
+		_days = days;
+		_periods = periods;
+	}
 
 	public boolean analyseTokens(DataExchange de) {
 		StringTokenizer st = new StringTokenizer(de.getContents(), "\r\n");
@@ -98,7 +101,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 				String firstPart = DXToolsMethods.getToken(token,
 						DConst.AVAILABILITY_SEPARATOR, 0);
 				StringTokenizer tokenDispo = new StringTokenizer(firstPart);
-				if (tokenDispo.countTokens() != PERIODS_A_DAY) {
+				if (tokenDispo.countTokens() != _periods) {
 					//_error = DConst.INST_TEXT3 + line + DConst.INST_TEXT5
 					//		+ "\n" + DConst.INST_TEXT6;
 					return false;
@@ -116,7 +119,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 				}
 
 				stateDispo++;
-				if (stateDispo > NUMBER_OF_DAYS)
+				if (stateDispo > _days)
 					state = 1;
 				break;
 			}
@@ -173,7 +176,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 				dxaAvaTemp.addDayAvailability(firstPart);
 				
 				stateDispo++;
-				if (stateDispo > NUMBER_OF_DAYS) {
+				if (stateDispo > _days) {
 					dxiTemp=new DxInstructor(instID,dxaAvaTemp);
 					dxsoiInst.addInstructor(dxiTemp);
 					state = 1;
@@ -185,5 +188,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
         dxsoiInst.sortIntructors();
 		return dxsoiInst;
 	}
+
+
 
 }

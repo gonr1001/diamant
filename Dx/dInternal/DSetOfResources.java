@@ -35,7 +35,7 @@ public abstract class DSetOfResources extends DObject {
 	int _stateSort = 0;
 
 
-	private long _currentKey;
+	private long _currentKey = 1;
 	/**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
 
 
@@ -114,13 +114,13 @@ public abstract class DSetOfResources extends DObject {
 		}// end else if (insertType==0)
 
 		if (add == -1) {
-			_currentKey = KeyFactory.getKey();
+			//_currentKey = KeyFactory.getKey();
 			resource.setKey(_currentKey);
 			if (index > (_resourceList.size() - 1))
 				_resourceList.add(resource);
 			else
 				_resourceList.insertElementAt(resource, index);
-			//_currentKey++;
+			_currentKey++;
 			return true;
 		}
 		//_resourceList.add(resource);
@@ -153,7 +153,7 @@ public abstract class DSetOfResources extends DObject {
 				_resourceList.add(resource);
 			else
 				_resourceList.insertElementAt(resource, index);
-			KeyFactory.getKey();//_currentKey++;
+			_currentKey++;
 			return true;
 		}
 		//_resourceList.add(resource);

@@ -341,9 +341,12 @@ public class DModel extends Observable {
             if (_setOfSites.getError().length() != 0) {
                 return _setOfSites.getError();
             }
-            if (_setOfInstructors.getError().length() != 0) {
-                return _setOfInstructors.getError();
-            }
+            if(!DConst.newInstructors){
+            	if (_setOfInstructors.getError().length() != 0) {
+                    return _setOfInstructors.getError();
+                }
+            } 
+            
             if (_setOfActivitiesSites.getError().length() != 0) {
                 return _setOfActivitiesSites.getError();
             }
