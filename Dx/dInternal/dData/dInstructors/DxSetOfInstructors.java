@@ -252,7 +252,7 @@ public class DxSetOfInstructors{
 		Iterator it = _vInstructors.iterator();
 		
 		for (int i=0; it.hasNext(); i++){
-			if (key == ((DxInstructor) it.next()).getInstructorKey());
+			if (key == ((DxInstructor) it.next()).getInstructorKey())
 				return i;
 		}
 		

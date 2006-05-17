@@ -19,7 +19,7 @@ public class StudentsConditionsTest extends TestCase {
 
   public StudentsConditionsTest(String name) {
     super(name);
-    _dm= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData.dia",1);
+    _dm= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData7j.dia",1);
     _dm.buildSetOfEvents();
     //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
     _dm.getConditionsTest().buildStudentConflictMatrix();

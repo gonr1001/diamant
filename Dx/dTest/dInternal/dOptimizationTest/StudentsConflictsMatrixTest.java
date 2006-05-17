@@ -28,7 +28,7 @@ DModel _dm;
 public StudentsConflictsMatrixTest(String name) {
   super(name);
   _dm= new DModel(new DDocument(),"." + File.separator+"dataTest"+
-                    File.separator+"loadData.dia",0);
+                    File.separator+"loadData7j.dia",0);
   _dm.buildSetOfEvents();
   //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
   _dm.getConditionsTest().buildStudentConflictMatrix();
@@ -50,8 +50,8 @@ public StudentsConflictsMatrixTest(String name) {
     String key1= "GCH100.1.01";// key 1
     String key2 = "AMC645.1.01";//key 136
     int[] index= _matrix.getSectionsKeys(key1,key2);
-    assertEquals("test_SectionKeys : assertEquals 1", 6, index[0]);
-    assertEquals("test_SectionKeys : assertEquals 2", 10, index[1]);
+    assertEquals("test_SectionKeys_1 : assertEquals 1", 6, index[0]);
+    assertEquals("test_SectionKeys_2 : assertEquals 2", 10, index[1]);
    }
 
    /**
@@ -70,7 +70,7 @@ public StudentsConflictsMatrixTest(String name) {
    public void test2_Matrix(){
      String key1= "AMC640.1.02";
     String key2 = "AMC645.1.01";
-    assertEquals("test1_Matrix : assertEquals", 1, _matrix.getNumberOfCOnflicts(key1,key2));
+    assertEquals("test2_Matrix : assertEquals", 1, _matrix.getNumberOfCOnflicts(key1,key2));
 
    }
 

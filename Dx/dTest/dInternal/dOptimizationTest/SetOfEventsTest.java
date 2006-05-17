@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;
@@ -21,8 +22,11 @@ public class SetOfEventsTest extends TestCase {
 		super(name);
 		_dm = new DModel(new DDocument(), "." + File.separator + "dataTest"
 				+ File.separator + "loadData5j.dia", 1);
-		_soe = new SetOfEvents(_dm);
-		_soe.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors());
+		_soe = _dm.getSetOfEvents();
+//		_soe.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors());
+//		
+//		_soe = new SetOfEvents(_dm);
+//		_soe.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors());
 	}
 
 	public static Test suite() {
@@ -52,10 +56,19 @@ public class SetOfEventsTest extends TestCase {
 	 * test the instructor key of the first event of the setofevents
 	 */
 	public void test1_build() {
-		long insKey[] = ((EventAttach) _soe.getResourceAt(0).getAttach())
-				.getInstructorKey();
-		assertEquals("test1_build : assertEquals: ", "THÉRIEN, NORMAND", _dm
-				.getSetOfInstructors().getResource(insKey[0]).getID());
+		if (!DConst.newInstructors) {
+			long insKey[] = ((EventAttach) _soe.getResourceAt(0).getAttach())
+					.getInstructorKey();
+			assertEquals("test1_build : assertEquals: ", "THÉRIEN, NORMAND",
+					_dm.getSetOfInstructors().getResource(insKey[0]).getID());
+		} else {
+			long insKey[] = ((EventAttach) _soe.getResourceAt(0).getAttach())
+					.getInstructorKey();
+			int index = _dm.getDxSetOfInstructors().getInstructorByKey(
+					insKey[0]);
+			assertEquals("test1_build : assertEquals: ", "THÉRIEN, NORMAND",
+					_dm.getDxSetOfInstructors().getInstructorName(index));
+		}
 	}
 
 	/**

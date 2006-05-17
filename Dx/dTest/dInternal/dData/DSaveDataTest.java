@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 	/**
 	*
-	* Title: DSaveDataTest $Revision $  $Date: 2006-03-02 23:01:09 $
+	* Title: DSaveDataTest $Revision $  $Date: 2006-05-17 20:39:38 $
 	* Description: DSaveDataTest is a class used to test the class 
 	*              DSaveData
 	*
@@ -54,7 +54,7 @@ package dTest.dInternal.dData;
 	  	_a = new DSaveData("1.6");
 	  	_dDocument1 = new DDocument();
 	  	_dDocument2 = new DDocument();
-	  	_fileName1 = "."  + File.separator+"dataTest"+File.separator+"loadData.dia";
+	  	_fileName1 = "."  + File.separator+"dataTest"+File.separator+"loadData7j.dia";
 	  	_fileName2 = "."  + File.separator+"dataTest"+File.separator+"downData.dia";
 	  	_fileNameTTS = "."  + File.separator+"dataTest"+File.separator+"downDataTTS.dia";
 	  	_type = 1;
