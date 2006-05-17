@@ -21,7 +21,6 @@ package dInternal.dData.dInstructors;
 
 import java.util.Comparator;
 
-import dInternal.KeyFactory;
 import dInternal.dData.DxAvailability;
 
 /**
@@ -50,8 +49,8 @@ public class DxInstructor {
 	 * @param a
 	 *            Availability of the new instructor
 	 */
-	public DxInstructor(String sName, DxAvailability a) {
-		_instructorKey = KeyFactory.getKey();
+	public DxInstructor(String sName, DxAvailability a, long lKey) {
+		_instructorKey = lKey;
 		_sName = sName;
 		_aInstrucAvail = a;
 

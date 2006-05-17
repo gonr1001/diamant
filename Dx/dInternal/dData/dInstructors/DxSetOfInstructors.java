@@ -41,12 +41,16 @@ import dInternal.dData.DxAvailability;
 public class DxSetOfInstructors{
 	
 	private ArrayList<DxInstructor> _vInstructors;
+    private long _uniqueKey;
+    private boolean _isSorted;
 	
 	/**
 	 * Constructor
 	 */
 	public DxSetOfInstructors(){
 		_vInstructors=new ArrayList<DxInstructor>();
+        _uniqueKey=1;
+        _isSorted=false;
 	}
 	
 	/**
@@ -54,9 +58,11 @@ public class DxSetOfInstructors{
 	 * 
 	 * @param iNewInstructor The new instructor to be inserted
 	 */
-	public void addInstructor(DxInstructor iNewInstructor)
+	public void addInstructor(String sName,DxAvailability dxaAva)
 	{
-		_vInstructors.add(iNewInstructor);
+        
+		_vInstructors.add(new DxInstructor(sName,dxaAva,_uniqueKey++));
+        _isSorted=false;
 	}
 	
 	/**
@@ -169,7 +175,8 @@ public class DxSetOfInstructors{
 	}
     
     public int getIndexByName(String sName) {
-        DxInstructor dxiTemp=new DxInstructor(sName,null);
+            //Dummy Instructor used for the research. Only name is used in the comparator
+        DxInstructor dxiTemp=new DxInstructor(sName,null,0);
         
         int nIndex=Collections.binarySearch(_vInstructors,dxiTemp,DxInstructor.NameComparator);
         
@@ -205,6 +212,7 @@ public class DxSetOfInstructors{
 		if(isValidIndex(nIndex))
 		{
 			_vInstructors.get(nIndex).setInstructorName(sNewName);
+            _isSorted=false;
 			return true; 
 		}
 		return false;
@@ -236,6 +244,11 @@ public class DxSetOfInstructors{
 
 	public int getInstructorByKey(long key)
 	{
+        if(!_isSorted)
+        {
+            sortIntructors();
+        }
+        
 		Iterator it = _vInstructors.iterator();
 		
 		for (int i=0; it.hasNext(); i++){

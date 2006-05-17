@@ -177,8 +177,7 @@ public class DxReadInstructors1dot5 implements DxReadInstructorsBehavior {
 				
 				stateDispo++;
 				if (stateDispo > _days) {
-					dxiTemp=new DxInstructor(instID,dxaAvaTemp);
-					dxsoiInst.addInstructor(dxiTemp);
+					dxsoiInst.addInstructor(instID,dxaAvaTemp);
 					state = 1;
 				}
 				break;

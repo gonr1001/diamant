@@ -54,7 +54,7 @@ public class DxInstructorTest extends TestCase {
 		// .setDayAvailability(5, "1 5"), false);
 		DxAvailability aTemp = new DxAvailability();
 		aTemp.addDayAvailability("1 5 1 5 1 5 1 5 1 5 1 5");
-		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp);
+		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp,1);
 		assertEquals("test_DxInstructor: assertEquals", iTemp
 				.getInstructorName(), "Smith, John");
 		assertEquals("test1_DxInstructor: assertEquals", iTemp
@@ -66,7 +66,7 @@ public class DxInstructorTest extends TestCase {
 	public void test_setInstructors() {
 		DxAvailability aTemp = new DxAvailability();
 		aTemp.addDayAvailability("1 5 1 5 1 5 1 5 1 5 1 5");
-		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp);
+		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp,1);
 
 		iTemp.setInstructorName("");
 		assertEquals("test_setInstructors: assertEquals", iTemp
@@ -79,14 +79,5 @@ public class DxInstructorTest extends TestCase {
 		iTemp.setInstructorAvailability(aTemp);
 		assertEquals("test2_setInstructors: assertEquals", iTemp
 				.getInstructorAvailability().getPeriodAvailability(0, 0), 5);
-	}
-
-	public void test_uniqueID() {
-		DxAvailability aTemp = new DxAvailability();
-		aTemp.addDayAvailability("1 5 1 5");
-		DxInstructor iA = new DxInstructor("Instru1", aTemp);
-		DxInstructor iB = new DxInstructor("Instru2", aTemp);
-		assertNotSame("test_uniqueID: assertNotSame", iA.getInstructorKey(), iB
-				.getInstructorKey());
 	}
 }
