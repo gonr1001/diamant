@@ -395,10 +395,19 @@ public class SetOfEvents extends DSetOfResources {
 		// eventIDOne)
 		// {
 		String res = "";
+        String str = "";
 		Vector insKeys = (Vector) (confAt).getObjectValue();
 		for (int j = 0; j < insKeys.size(); j++) {
-			String str = _dm.getSetOfInstructors().getResource(
+            if(!DConst.newInstructors)
+            {
+                str=_dm.getSetOfInstructors().getResource(
 					((Long) insKeys.get(j)).longValue()).getID();
+            }
+            else
+            {
+                int nInstIndex= _dm.getDxSetOfInstructors().getInstructorByKey(((Long) insKeys.get(j)).longValue());
+                str=_dm.getDxSetOfInstructors().getInstructorName(nInstIndex); 
+            }
 			res += DXToolsMethods.getToken(str, ",", 0) + " "
 					+ DXToolsMethods.getToken(str, ",", 1) + ",";
 		}// end for (int j=0; j< insKeys.size(); j++)

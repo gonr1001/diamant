@@ -19,12 +19,11 @@
  */
 package dTest.dInternal.dData.dInstructors;
 
-import dInternal.dData.DxAvailability;
-import dInternal.dData.dInstructors.DxInstructor;
-import dInternal.dData.dInstructors.DxSetOfInstructors;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dInternal.dData.DxAvailability;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 
 /**
  * Ruben Gonzalez-Rubio

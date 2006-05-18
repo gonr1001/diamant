@@ -15,15 +15,22 @@ import dInternal.dTimeTable.Period;
 
 public class StudentsConditionsTest extends TestCase {
 
-  private DModel _dm;
+  private DModel _dm1;  //For dataTest7j
+  private DModel _dm2;  //For dataTest5j
 
   public StudentsConditionsTest(String name) {
     super(name);
-    _dm= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData7j.dia",1);
-    _dm.buildSetOfEvents();
+    _dm1= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData7j.dia",1);
+    _dm1.buildSetOfEvents();
     //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
-    _dm.getConditionsTest().buildStudentConflictMatrix();
-    _dm.getConditionsTest().buildAllConditions(_dm.getTTStructure());
+    _dm1.getConditionsTest().buildStudentConflictMatrix();
+    _dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
+    
+    _dm2= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData5j.dia",1);
+    _dm2.buildSetOfEvents();
+    //_dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
+    _dm2.getConditionsTest().buildStudentConflictMatrix();
+    _dm2.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
   }
 
   public static Test suite() {
@@ -37,72 +44,128 @@ public class StudentsConditionsTest extends TestCase {
   /**
    *
    */
-  public void test_2EventsConflicts(){
-    _dm.getTTStructure().getCurrentCycle().getNextPeriod(1);
-    Period period= _dm.getTTStructure().getCurrentCycle().getNextPeriod(1);
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm.getConditionsTest().getConflictsMatrix(),
-        _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+  public void test_EventsConflicts(){
+    _dm1.getTTStructure().getCurrentCycle().getNextPeriod(1);
+    Period period= _dm1.getTTStructure().getCurrentCycle().getNextPeriod(1);
+    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+        _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     int[] perKey={1,1,2};
     testStud.executeTest(perKey,period,"AMC640.1.01.1.",1);
     int nbConf= testStud.executeTest(perKey,period,"AMC645.1.01.1.",0);
     assertEquals("test_2EventsConflicts : assertEquals 2",4,nbConf);
   }
+  
+  public void test2_EventsConflicts(){
+      _dm2.getTTStructure().getCurrentCycle().getNextPeriod(1);
+      Period period= _dm2.getTTStructure().getCurrentCycle().getNextPeriod(1);
+      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+          _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
+      int[] perKey={1,1,2};
+      testStud.executeTest(perKey,period,"AMC640.1.01.1.",1);
+      int nbConf= testStud.executeTest(perKey,period,"AMC645.1.01.1.",0);
+      assertEquals("test2_EventsConflicts : assertEquals 2",4,nbConf);
+    }
 
   /**
    *
    */
-  public void test_periodVariationEventsPeriods_1(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm.getConditionsTest().getConflictsMatrix(),
-        _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+  public void test_periodVariationEventsPeriods(){
+    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+        _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
     Vector perVec= testStud.periodVariationEventsPeriods(perKey);
     assertEquals("test_periodVariationEventsPeriods_1 : assertEquals 2",7,perVec.size());
   }
+  
+  public void test2_periodVariationEventsPeriods(){
+      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+          _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
+      testStud.setPeriodVariationEvents(3);
+      int[] perKey={2,1,2};
+      Vector perVec= testStud.periodVariationEventsPeriods(perKey);
+      assertEquals("test2_periodVariationEventsPeriods : assertEquals 2",7,perVec.size());
+    }
 
   /**
    *
    */
-  public void test_periodVariationEventsPeriods_2(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm.getConditionsTest().getConflictsMatrix(),
-        _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+  public void test3_periodVariationEventsPeriods(){
+    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+        _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
     Vector perVec= testStud.periodVariationEventsPeriods(perKey);
     Period per= (Period) perVec.get(3);
-    assertEquals("test_periodVariationEventsPeriods_2  : assertEquals 1(Hour):", 9, per.getBeginHour()[0]);
-    assertEquals("test_periodVariationEventsPeriods_2  : assertEquals 2(Minute):", 15, per.getBeginHour()[1]);
-    assertEquals("test_periodVariationEventsPeriods_2  : assertEquals 3(priotity):", 0, per.getPriority());
+    assertEquals("test3_1_periodVariationEventsPeriods  : assertEquals 1(Hour):", 9, per.getBeginHour()[0]);
+    assertEquals("test3_2_periodVariationEventsPeriods  : assertEquals 2(Minute):", 15, per.getBeginHour()[1]);
+    assertEquals("test3_3_periodVariationEventsPeriods  : assertEquals 3(priotity):", 0, per.getPriority());
   }
+  
+  public void test4_periodVariationEventsPeriods(){
+      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+          _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
+      testStud.setPeriodVariationEvents(3);
+      int[] perKey={2,1,2};
+      Vector perVec= testStud.periodVariationEventsPeriods(perKey);
+      Period per= (Period) perVec.get(3);
+      assertEquals("test4_1_periodVariationEventsPeriods  : assertEquals 1(Hour):", 9, per.getBeginHour()[0]);
+      assertEquals("test4_2_periodVariationEventsPeriods  : assertEquals 2(Minute):", 15, per.getBeginHour()[1]);
+      assertEquals("test4_3_periodVariationEventsPeriods  : assertEquals 3(priotity):", 0, per.getPriority());
+    }
 
   /**
    *
    */
-  public void test_periodVariationEventsPeriods_3(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm.getConditionsTest().getConflictsMatrix(),
-        _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+  public void test5_periodVariationEventsPeriods(){
+    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+        _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
     Vector perVec= testStud.periodVariationEventsPeriods(perKey);
     Period per= (Period) perVec.get(6);
-    assertEquals("test_periodVariationEventsPeriods_3  : assertEquals 1(Hour):", 13, per.getBeginHour()[0]);
-    assertEquals("test_periodVariationEventsPeriods_3  : assertEquals 2(Minute):", 30, per.getBeginHour()[1]);
-    assertEquals("test_periodVariationEventsPeriods_3  : assertEquals 3(priotity):", 0, per.getPriority());
+    assertEquals("test5_1_periodVariationEventsPeriods  : assertEquals 1(Hour):", 13, per.getBeginHour()[0]);
+    assertEquals("test5_2_periodVariationEventsPeriods  : assertEquals 2(Minute):", 30, per.getBeginHour()[1]);
+    assertEquals("test5_3_periodVariationEventsPeriods  : assertEquals 3(priotity):", 0, per.getPriority());
   }
+  
+  public void test6_periodVariationEventsPeriods(){
+      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+          _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
+      testStud.setPeriodVariationEvents(3);
+      int[] perKey={2,1,2};
+      Vector perVec= testStud.periodVariationEventsPeriods(perKey);
+      Period per= (Period) perVec.get(6);
+      assertEquals("test6_1_periodVariationEventsPeriods  : assertEquals 1(Hour):", 13, per.getBeginHour()[0]);
+      assertEquals("test6_2_periodVariationEventsPeriods  : assertEquals 2(Minute):", 30, per.getBeginHour()[1]);
+      assertEquals("test6_3_periodVariationEventsPeriods  : assertEquals 3(priotity):", 0, per.getPriority());
+    }
 
   /**
    *
    */
-  public void test_periodVariationEventsPeriods_4(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm.getConditionsTest().getConflictsMatrix(),
-        _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+  public void test7_periodVariationEventsPeriods(){
+    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+        _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
     Vector perVec= testStud.periodVariationEventsPeriods(perKey);
     Period per= (Period) perVec.get(0);
-    assertEquals("test_periodVariationEventsPeriods_3  : assertEquals 1(Hour):", 20, per.getBeginHour()[0]);
-    assertEquals("test_periodVariationEventsPeriods_3  : assertEquals 2(Minute):", 00, per.getBeginHour()[1]);
-    assertEquals("test_periodVariationEventsPeriods_3  : assertEquals 3(priotity):", 1, per.getPriority());
+    assertEquals("test7_1_periodVariationEventsPeriods  : assertEquals 1(Hour):", 20, per.getBeginHour()[0]);
+    assertEquals("test7_2_periodVariationEventsPeriods  : assertEquals 2(Minute):", 00, per.getBeginHour()[1]);
+    assertEquals("test7_3_periodVariationEventsPeriods  : assertEquals 3(priotity):", 1, per.getPriority());
   }
+  
+  public void test8_periodVariationEventsPeriods(){
+      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+          _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
+      testStud.setPeriodVariationEvents(3);
+      int[] perKey={2,1,2};
+      Vector perVec= testStud.periodVariationEventsPeriods(perKey);
+      Period per= (Period) perVec.get(0);
+      assertEquals("test8_1_periodVariationEventsPeriods  : assertEquals 1(Hour):", 20, per.getBeginHour()[0]);
+      assertEquals("test8_2_periodVariationEventsPeriods  : assertEquals 2(Minute):", 00, per.getBeginHour()[1]);
+      assertEquals("test8_3_periodVariationEventsPeriods  : assertEquals 3(priotity):", 1, per.getPriority());
+    }
 
 }
