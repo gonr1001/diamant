@@ -303,7 +303,7 @@ public class DStandardReportData {
 			String currentLine = theReport.nextToken();
 			String ID = extractToken(currentLine, principalAct);
 			DValue dValue = new DValue();
-			Vector vec = new Vector(1);
+			Vector <String> vec = new Vector <String> ();
 			for (int i = 0; i < otherAct.length; i++) {
 				vec.add(extractToken(currentLine, otherAct[i]));
 			}
@@ -596,7 +596,7 @@ public class DStandardReportData {
 		 * (int i=0; i < setOfRep.size(); i++) newRep+=
 		 * setOfRep.getResourceAt(i).getID()+SetOfActivities.CR_LF;
 		 */
-		Vector res = new Vector();
+		Vector <String> res = new Vector <String> ();
 		writeSortReport(setOfRep, newRep.toString(), res);
 		for (int i = 0; i < res.size(); i++)
 			newRep.append(res.get(i).toString() + DConst.CR_LF);
@@ -639,7 +639,7 @@ public class DStandardReportData {
 	 * @return
 	 */
 	private void writeSortReport(DSetOfResources setOr, String line,
-			Vector result) {
+			Vector <String> result) {
 		//="";
 		if (setOr.size() != 0) {
 			for (int i = 0; i < setOr.size(); i++) {
