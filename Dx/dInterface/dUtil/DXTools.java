@@ -27,8 +27,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import dConstants.DConst;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
+
 
 
 
@@ -97,7 +99,7 @@ public class DXTools{
    * @param sourceList The JList source. It contains the data to be transferred to the JList destination
    * @param destinationList The JList destination
    */
-  public static void actionButton(SetOfResources resources, int fieldIndex, String valueSource, String valueDestination, JList sourceList, JList destinationList) {
+  public static void actionButton(DSetOfResources resources, int fieldIndex, String valueSource, String valueDestination, JList sourceList, JList destinationList) {
     Object [] elementsToTransfer = sourceList.getSelectedValues();
     if (elementsToTransfer.length != 0){
       //String currentElement;
@@ -127,8 +129,8 @@ public class DXTools{
 public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, int sortIndex){
   if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
     return;
-  SetOfResources destinationRes = new SetOfResources(0);
-  Resource res;
+  DSetOfResources destinationRes = new StandardCollection();
+  DResource res;
   Object [] elementsToTransfer = sourceList.getSelectedValues();
 
   if (elementsToTransfer.length != 0){
@@ -138,7 +140,7 @@ public static void listTransfers(JList sourceList, JList destinationList, Vector
         destinationVector.add(elementsToTransfer[i]);
       }
       for(int j = 0; j < destinationVector.size(); j++){
-        res = new Resource((String)destinationVector.elementAt(j),null);
+        res = new DResource((String)destinationVector.elementAt(j),null);
         destinationRes.addResource(res, 1);
       }
       destinationVector = destinationRes.getNamesVector(sortIndex);
@@ -475,10 +477,10 @@ public static int STIConvertGroupToInt(String STIGroupID){
   * @return the vector sorted
   */
  public static Vector sortVector(Vector theVector){
-   SetOfResources resources = new SetOfResources(0);
-   Resource res;
+   DSetOfResources resources = new StandardCollection();
+   DResource res;
    for(int i = 0; i < theVector.size(); i++){
-        res = new Resource((String)theVector.elementAt(i),null);
+        res = new DResource((String)theVector.elementAt(i),null);
         resources.addResource(res, 1);
       }
       resources.sortSetOfResourcesByID();

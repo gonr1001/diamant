@@ -47,7 +47,6 @@ import javax.swing.event.ChangeListener;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.DDialog;
-//import dInterface.dUtil.ApplyCloseInterface;
 import dInterface.dUtil.ApplyClosePanel;
 import dInterface.dUtil.RightLeftInterface;
 import dInterface.dUtil.RigthLeftPanel;
@@ -55,13 +54,13 @@ import dInterface.dUtil.RigthLeftPanel;
 import dInterface.dUtil.DXJComboBox;
 import dInterface.dUtil.DXTools;
 
+import dInternal.DResource;
 import dInternal.DSetOfResources;
+import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dData.dActivities.Type;
-import dInternal.dDataTxt.Resource;
-import dInternal.dDataTxt.SetOfResources;
 import eLib.exit.dialog.InformationDlg;
 
 /**
@@ -837,8 +836,8 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	public static void listTransfers(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, int sortIndex){
 		  if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
 		    return;
-		  SetOfResources destinationRes = new SetOfResources(0);
-		  Resource res;
+		  DSetOfResources destinationRes = new StandardCollection();
+		  DResource res;
 		  Object [] elementsToTransfer = sourceList.getSelectedValues();
 
 		  if (elementsToTransfer.length != 0){
@@ -848,7 +847,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		        destinationVector.add(elementsToTransfer[i]);
 		      }
 		      for(int j = 0; j < destinationVector.size(); j++){
-		        res = new Resource((String)destinationVector.elementAt(j),null);
+		        res = new DResource((String)destinationVector.elementAt(j),null);
 		        destinationRes.addResource(res, 1);
 		      }
 		      destinationVector = destinationRes.getNamesVector(sortIndex);

@@ -9,9 +9,10 @@ package dInternal.dDataXML.rooms;
  * @version 1.0
  */
 
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DSetOfResources;
 
-public class SetOfRooms extends SetOfResources{
+
+public class SetOfRooms extends DSetOfResources{
 
 
   private String _error="";
@@ -23,7 +24,7 @@ public class SetOfRooms extends SetOfResources{
   * int nbDay (number of days), int nbPerDay (number of periods a day)
   * */
   public SetOfRooms(byte[] dataloaded, int nbDay, int nbPerDay) {
-    super(3);
+    super();
     dataloaded[0]+=0;
     nbDay+=0;
    nbPerDay+=0;
@@ -61,5 +62,17 @@ public class SetOfRooms extends SetOfResources{
   public String getError() {
     return _error;
   }
+
+@Override
+public String toWrite() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public long getSelectedField() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 
 }

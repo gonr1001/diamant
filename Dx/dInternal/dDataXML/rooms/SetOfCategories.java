@@ -20,9 +20,10 @@ package dInternal.dDataXML.rooms;
 
 import java.awt.Component;
 
-import dInternal.dDataTxt.SetOfResources;
+import dInternal.DSetOfResources;
 
-public class SetOfCategories extends SetOfResources {
+
+public class SetOfCategories extends DSetOfResources {
 
 	//XML tags
 	static final String _ROOMTAGITEM = "SetofCategories";
@@ -64,7 +65,7 @@ public class SetOfCategories extends SetOfResources {
 	 * int nbDay (number of days), int nbPerDay (number of periods a day)
 	 * */
 	public SetOfCategories(String fileName, int nbDay, int nbPerDay) {
-		super(3);
+		super();
 		//_numberOfLines = nbDay;
 		nbDay += 0;
 		//_numberOfColumns = nbPerDay;
@@ -165,6 +166,18 @@ public class SetOfCategories extends SetOfResources {
 		 return error;
 		 */
 		return "error";
+	}
+
+	@Override
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getSelectedField() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	/**
