@@ -64,7 +64,7 @@ public class InstructorAttach extends DObject {
 	 * */
 	public void setAvailability(Vector instDisp) {
 		_instructorAvailability = new Vector <String> ();
-		_instructorAvailability = (Vector) instDisp.clone();
+		_instructorAvailability = (Vector ) instDisp.clone();
 	}
 	
 	/**
