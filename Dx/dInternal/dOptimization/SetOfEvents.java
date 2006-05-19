@@ -328,19 +328,19 @@ public class SetOfEvents extends DSetOfResources {
 		return DConst.NO_ROOM_INTERNAL;
 	}
 
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-	private long getNewInstName(DxSetOfInstructors sor, int eltkey) {
-		if (eltkey != -1) {
-			return sor.getInstructorKey(eltkey);
-		}
-		return 0;
-	}
+//	/**
+//	 * get a resource key
+//	 * 
+//	 * @param soresc
+//	 * @param elt
+//	 * @return the resource key or -1 if key does not found
+//	 */
+//	private long getNewInstName(DxSetOfInstructors sor, int eltkey) {
+//		if (eltkey != -1) {
+//			return sor.getInstructorKey(eltkey);
+//		}
+//		return 0;
+//	}
 
 	/**
 	 * get a resource key

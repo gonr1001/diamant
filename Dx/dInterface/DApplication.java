@@ -687,8 +687,7 @@ public class DApplication { //implements ActionListener {
 	public void doTheTimeTable() {
 		this.setCursorWait();
 
-		int _selectedContext = 0;// context for first affect algorithm
-
+		int _selectedContext = 0;
 		(new SelectAlgorithm(this.getCurrentDModel(), _selectedContext))
 				.execute();
 		this.setCursorDefault();
@@ -702,7 +701,6 @@ public class DApplication { //implements ActionListener {
 		boolean _userTestActiv = true;
 
 		DConst.USER_TEST_ACTIV = _userTestActiv;
-		// new PersonalizeMixingAlgorithmDlg();
 		PersonalizeMixingAlgorithmDlg perso = new PersonalizeMixingAlgorithmDlg(
 				DConst.DEFAULT_MIX_ALGO);
 		String input = perso.showInputDialog();

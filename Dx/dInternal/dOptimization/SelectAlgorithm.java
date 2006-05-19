@@ -26,7 +26,7 @@ import dInternal.DModel;
 public class SelectAlgorithm {
 	
 	private DModel _dm;
-	private Vector _algorithmToRun;
+	private Vector <Algorithm> _algorithmToRun;
 	private int _currentAlgoToExecute=0;
 	private int _acceptableVariation=0;
 	
@@ -35,14 +35,14 @@ public class SelectAlgorithm {
 	 */
 	public SelectAlgorithm(DModel dm, int contexte) {
 		_dm = dm;
-		_algorithmToRun = new Vector(1);
+		_algorithmToRun = new Vector <Algorithm> ();
 		_currentAlgoToExecute = contexte;
 		buildAlgorithmToRun();
 	}
 	
 	public SelectAlgorithm(int variation, DModel dm) {
 		_dm= dm;
-		_algorithmToRun= new Vector(1);
+		_algorithmToRun= new Vector <Algorithm> ();
 		_acceptableVariation= variation;
 		_currentAlgoToExecute=4;
 		buildAlgorithmToRun();
