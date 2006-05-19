@@ -71,10 +71,8 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 		DLoadData ld = new DLoadData();
 		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
 		if (setOfsites.getError().length() == 0) {
-
 			setOfsites.buildSetOfResources(ld.buildDataExchange(tokens
 					.getBytes()), 1);
-			//System.out.println(setOfActivities.toString());
 		}
 		assertEquals("test0_buildSetOfResources1_5: assertEquals 0", 1,
 				setOfsites.size());

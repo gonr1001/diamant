@@ -812,7 +812,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 * @return
 	 */
 	private Vector buildCurrentInstructorList(int index) {
-		Vector v = new Vector();// , new Vector(1)};
+		Vector <String> v = new Vector <String>();
 
 		if (!DConst.newInstructors) {
 			EventAttach event = (EventAttach) ((DResource) _unities.get(index))
@@ -826,22 +826,22 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					v.add(instructor.getID());
 			}
 		} else {
-			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+			EventAttach event = (EventAttach) ((DResource) _unities.get(index))
+					.getAttach();
+			DxSetOfInstructors soi = _dApplic.getCurrentDModel()
 					.getDxSetOfInstructors();
-			for (int i = 0; i < dxsoi.size(); i++) {
-				v.add(dxsoi.getInstructorName(i));
+			long keys[] = event.getInstructorKey();
+			for (int i = 0; i < keys.length; i++) {
+				int insIndex = soi.getInstructorByKey(keys[i]);
+				if (insIndex != -1)
+					v.add(soi.getInstructorName(insIndex));
 			}
 		}
-		// long dayKey=
-		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-
 		return v;
 	}
 
 	private Vector buildInstructorList() {// int index){
-		Vector v = new Vector();// , new Vector(1)};
-		// EventAttach event=
-		// (EventAttach)((DResource)_unities.get(index)).getAttach();
+		Vector <String> v = new Vector <String>();
 
 		if (!DConst.newInstructors) {
 			SetOfInstructors soi = null;
@@ -856,9 +856,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				v.add(dxsoi.getInstructorName(i));
 			v.add(DConst.NO_ROOM_INTERNAL);
 		}
-		// long dayKey=
-		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-		// long keys [] = event.getInstructorKey();
+
 		return v;
 	}
 

@@ -62,7 +62,7 @@ public class DxSetOfInstructorsTest extends TestCase {
 		soiTest.addInstructor("Claude", aTemp);
 		soiTest.addInstructor("Bruno", aTemp);
 		soiTest.addInstructor("Alex", aTemp);
-        soiTest.sortIntructors();
+        soiTest.sortInstructors();
 
 		assertEquals("test_addInstructor: assertEquals", soiTest
 				.getInstructorName(soiTest.size() - 1), "Erick");
@@ -90,7 +90,7 @@ public class DxSetOfInstructorsTest extends TestCase {
 		aTemp.addDayAvailability("1 1 1 1 1");
 		soiTest.addInstructor("Zoe", aTemp);
 
-		soiTest.sortIntructors();
+		soiTest.sortInstructors();
 		aTemp = soiTest.getInstructorAvailability(0);
 
 		assertEquals("test_getInstructorAvailability: assertEquals", aTemp

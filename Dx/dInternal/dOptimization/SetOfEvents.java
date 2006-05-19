@@ -27,11 +27,10 @@ public class SetOfEvents extends DSetOfResources {
 	/**
 	 * @associates SetOfEventsListener
 	 */
-	//public Vector _soeListeners = new Vector(1);
-	//protected boolean _isEventPlaced=false;
+
 	private DModel _dm;
 
-	//private String _UNAVAILABLE= "------";
+
 
 	/***************************************************************************
 	 * Constructor
@@ -50,7 +49,7 @@ public class SetOfEvents extends DSetOfResources {
 		String unityKey;
 		for (int i = 0; i < soa.size(); i++) {
 			DResource activity = soa.getResourceAt(i);
-			long instructorKey = -1, roomKey; //=-1;
+			long  roomKey; 
 			if (((Activity) activity.getAttach()).isActivityVisibility()) {
 				for (int j = 0; j < ((Activity) activity.getAttach())
 						.getSetOfTypes().size(); j++) {
@@ -367,6 +366,7 @@ public class SetOfEvents extends DSetOfResources {
 	public String getInstructorConflictDescriptions(String eventIDOne,
 			String eventIDTwo) {
 		String res = "";
+		String str ;
 		long[] instKeyOne = ((EventAttach) getResource(eventIDOne).getAttach())
 				.getInstructorKey();
 		long[] instKeyTwo = ((EventAttach) getResource(eventIDTwo).getAttach())
@@ -374,8 +374,13 @@ public class SetOfEvents extends DSetOfResources {
 		for (int i = 0; i < instKeyOne.length; i++) {
 			for (int j = 0; j < instKeyTwo.length; j++) {
 				if (instKeyOne[i] == instKeyTwo[j]) {
-					String str = _dm.getSetOfInstructors().getResource(
-							instKeyOne[i]).getID();
+					if (!DConst.newInstructors){
+						str = _dm.getSetOfInstructors().getResource(
+								instKeyOne[i]).getID();
+					} else {
+						int index =_dm.getDxSetOfInstructors().getInstructorByKey(instKeyOne[i]);
+						str = _dm.getDxSetOfInstructors().getInstructorName(index);
+					}
 					res += DXToolsMethods.getToken(str, ",", 0) + " "
 							+ DXToolsMethods.getToken(str, ",", 1) + ",";
 				}// end if(instKeyOne[i] == instKeyTwo[j])
@@ -391,9 +396,7 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param eventIDTwo
 	 * @return
 	 */
-	public String getInstructorConflictDescriptions(DValue confAt) {//, String
-		// eventIDOne)
-		// {
+	public String getInstructorConflictDescriptions(DValue confAt) {
 		String res = "";
         String str = "";
 		Vector insKeys = (Vector) (confAt).getObjectValue();
@@ -411,25 +414,10 @@ public class SetOfEvents extends DSetOfResources {
 			res += DXToolsMethods.getToken(str, ",", 0) + " "
 					+ DXToolsMethods.getToken(str, ",", 1) + ",";
 		}// end for (int j=0; j< insKeys.size(); j++)
-
 		return res;
 	}
 
-	/*	public String getInstructorConflictDescriptions(DValue confAt) {//, String
-	 // eventIDOne)
-	 // {
-	 String res = "";
-	 Vector insKeys = (Vector) (confAt).getObjectValue();
-	 for (int j = 0; j < insKeys.size(); j++) {
-	 String str = _dm.getSetOfInstructors().getResource(
-	 ((Long) insKeys.get(j)).longValue()).getID();
-	 res += DXToolsMethods.getToken(str, ",", 0) + " "
-	 + DXToolsMethods.getToken(str, ",", 1) + ",";
-	 }// end for (int j=0; j< insKeys.size(); j++)
 
-	 return res;
-	 }
-	 */
 	/**
 	 * 
 	 * @param eventIDOne
@@ -484,8 +472,6 @@ public class SetOfEvents extends DSetOfResources {
 			String section) {
 		Vector res = new Vector();
 		for (int i = 0; i < students.size(); i++) {
-			//StudentAttach sa =
-			// (StudentAttach)_dm.getSetOfStudents().getResource(Long.parseLong((String)students.get(i))).getAttach();
 			Student student = _dm.getSetOfStudents().getStudent(
 					Long.parseLong((String) students.get(i)));
 			if (student.isInGroup(activityAndType, DXTools
@@ -495,30 +481,6 @@ public class SetOfEvents extends DSetOfResources {
 		return res;
 	}
 
-	/**
-	 * 
-	 * @param component
-	 */
-	/*public void sendEvent(Component component) {
-	 SetOfEventsEvent event = new SetOfEventsEvent(this);
-	 for (int i = 0; i < _soeListeners.size(); i++) {
-	 SetOfEventsListener soel = (SetOfEventsListener) _soeListeners
-	 .elementAt(i);
-	 soel.changeInSetOfEvents(event, component);
-	 }
-	 }*/
-
-	/**
-	 * 
-	 * @param dml
-	 */
-	/*public synchronized void addSetOfEventsListener(SetOfEventsListener sorl) {
-	 if (_soeListeners.contains(sorl)) {
-	 return;
-	 }
-	 _soeListeners.addElement(sorl);
-	 //System.out.println("addSetOfEvents Listener ...");//debug
-	 }*/
 
 	/*
 	 * (non-Javadoc)
@@ -526,7 +488,6 @@ public class SetOfEvents extends DSetOfResources {
 	 * @see dInternal.DSetOfResources#getError()
 	 */
 	public String getError() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -536,7 +497,6 @@ public class SetOfEvents extends DSetOfResources {
 	 * @see dInternal.DSetOfResources#toWrite()
 	 */
 	public String toWrite() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -546,7 +506,6 @@ public class SetOfEvents extends DSetOfResources {
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

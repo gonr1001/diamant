@@ -28,18 +28,17 @@ import dInternal.dData.DxAvailability;
  * 
  * Description: DxInstructor is a class used to:
  * <p>
- * TODO:insert comments
+ * Keep the state of an instructor
  * <p>
  * 
  */
 public class DxInstructor {
-	//private static int UNIQUE_ID = 0;
-
+	
 	private long _instructorKey;
 
-	private String _sName;
+	private String _name;
 
-	private DxAvailability _aInstrucAvail;
+	private DxAvailability _availability;
 
 	/**
 	 * Constructor
@@ -48,12 +47,13 @@ public class DxInstructor {
 	 *            Name of the new instructor
 	 * @param a
 	 *            Availability of the new instructor
+	 * @param lKey
+	 *            Instructor key
 	 */
 	public DxInstructor(String sName, DxAvailability a, long lKey) {
 		_instructorKey = lKey;
-		_sName = sName;
-		_aInstrucAvail = a;
-
+		_name = sName;
+		_availability = a;
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class DxInstructor {
 	 *            Availability that has to be assigned to the instructor
 	 */
 	public void setInstructorAvailability(DxAvailability aNewAvailability) {
-		_aInstrucAvail = aNewAvailability;
+		_availability = aNewAvailability;
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class DxInstructor {
 	 *            New name for the instructor
 	 */
 	public void setInstructorName(String sNewName) {
-		_sName = sNewName;
+		_name = sNewName;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class DxInstructor {
 	 * @return DxAvailability Availability of the instructor
 	 */
 	public DxAvailability getInstructorAvailability() {
-		return _aInstrucAvail;
+		return _availability;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class DxInstructor {
 	 * @return String Name of the instructor
 	 */
 	public String getInstructorName() {
-		return _sName;
+		return _name;
 	}
 
 	/**
@@ -100,11 +100,11 @@ public class DxInstructor {
 		return _instructorKey;
 	}
 
-	public static Comparator<DxInstructor> NameComparator = new Comparator<DxInstructor>() {
+	public static Comparator <DxInstructor> NameComparator = new Comparator <DxInstructor> () {
 		public int compare(DxInstructor arg0, DxInstructor arg1) {
 			DxInstructor left = arg0;
 			DxInstructor right = arg1;
-			return left._sName.compareTo(right._sName);
+			return left._name.compareTo(right._name);
 		}
 	};
 }

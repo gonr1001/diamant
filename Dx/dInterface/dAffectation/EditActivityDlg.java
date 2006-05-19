@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.65 $  $Date: 2006-05-16 19:54:43 $
+ * Title: EditActivityDlg $Revision: 1.66 $  $Date: 2006-05-19 12:49:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.65 $
+ * @version $Revision: 1.66 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -102,26 +102,34 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	private JList[] _instructorsLists;
 
 	/**
-	 * Constructor for EditActivityDlg in the case of one or more
-	 *        events
-	 * @param activityDialog The parent dialog of this dialog
-	 * @param dApplic The application
-	 * @param currentActivity The activity choiced in the activityDialog
+	 * Constructor for EditActivityDlg in the case of one or more events
+	 * 
+	 * @param activityDialog
+	 *            The parent dialog of this dialog
+	 * @param dApplic
+	 *            The application
+	 * @param currentActivity
+	 *            The activity choiced in the activityDialog
 	 * @param canBeModified
 	 */
 
 	public EditActivityDlg(JDialog dialog, DApplication dApplic,
 			String currentActivity, boolean canBeModified) {
-		super(dialog, DConst.T_AFFEC_DLG + "RGRMultiEvent");//"Affectation d'évenement(s)");
+		super(dialog, DConst.T_AFFEC_DLG + "RGRMultiEvent");// "Affectation
+															// d'évenement(s)");
 		continueContructor(dialog, dApplic, currentActivity, canBeModified);
 
 	} // end EditActivityDlg
 
 	/**
 	 * Constructor for EditActivityDlg, in the case of one event
-	 * @param dialog The parent dialog of this dialog
-	 * @param dApplic The application
-	 * @param currentActivity The activity choiced in the dialog
+	 * 
+	 * @param dialog
+	 *            The parent dialog of this dialog
+	 * @param dApplic
+	 *            The application
+	 * @param currentActivity
+	 *            The activity choiced in the dialog
 	 * @param evDlg,
 	 * @param isModified
 	 */
@@ -138,7 +146,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 			String currentActivity, boolean canBeModified) {
 		setLocationRelativeTo(dialog);
 		_dApplic = dApplic;
-		//_dm = dApplic.getDMediator().getCurrentDoc().getDM();
+		// _dm = dApplic.getDMediator().getCurrentDoc().getDM();
 		_canBeModified = canBeModified;
 		_unities = buildUnitiesVector(currentActivity);
 		_instructorsLists = new JList[_unities.size()];
@@ -154,7 +162,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		int FACTOR = 50;
 
 		_tabbedPane = buildTabbedPane();
-		//myJPanel.add(_tabbedPane, BorderLayout.CENTER);
+		// myJPanel.add(_tabbedPane, BorderLayout.CENTER);
 		this.getContentPane().add(_tabbedPane, BorderLayout.CENTER);
 		_tabbedPane.addChangeListener(this);
 		_currentActivityIndex = 0;
@@ -177,13 +185,16 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 	/**
 	 * action performed
+	 * 
 	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if (command.equals(DConst.CATEGORY_AC)) {
 			_roomCB.disableActionListeners();
-			Vector[] vectR = buildRoomList(); // XXXX Pascal: Vector est 'deprecated' depuis plusieurs annees
+			Vector[] vectR = buildRoomList(); // XXXX Pascal: Vector est
+												// 'deprecated' depuis plusieurs
+												// annees
 			_roomCB = new DXJComboBox(vectR[1]);
 			_roomCB.enableActionListeners();
 			_applyPanel.setFirstEnable();
@@ -217,7 +228,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 		} else if (command.equals("comboBoxChanged")
 				|| command.equals(DConst.BUT_PLACE)
-				|| command.equals(DConst.BUT_FIGE)) {// a comboBox has changed
+				|| command.equals(DConst.BUT_FIGE)) {// a comboBox has
+														// changed
 			_applyPanel.setFirstEnable();
 
 		} else if (command.equals(DConst.BUT_CHANGE)) {// change instrcutors
@@ -243,6 +255,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 	/**
 	 * Builds a panel to be placed in a tab of the tabbedPane
+	 * 
 	 * @return the JPanel to be placed in a tab of the tabbedPane
 	 */
 	private JPanel buildUnityPanel(int index) {
@@ -291,7 +304,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		jButtonChange.addActionListener(this);
 
 		instructorsPanel.add(_jScrollPane);
-		instructorsPanel.add(jButtonChange); //to be used when adding instructors
+		instructorsPanel.add(jButtonChange); // to be used when adding
+												// instructors
 
 		myPanel.add(instructorsPanel);
 		return myPanel;
@@ -318,13 +332,13 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		categoryRoomCB.setActionCommand(DConst.CATEGORY_AC);
 		categoryRoomCB.addActionListener(this);
 
-		Vector[] vectR = buildRoomList();//vectC[0].get(0).toString());
+		Vector[] vectR = buildRoomList();// vectC[0].get(0).toString());
 		_roomCB = new DXJComboBox(vectR[1]);
 		_roomCB.setActionCommand(DConst.NAME_AC);
 		_roomCB.setSelectedItem(vectR[0].get(0).toString());
 		_roomCB.addActionListener(this);
 
-		//Vector[] vectCapacity  = buildCapacityList();
+		// Vector[] vectCapacity = buildCapacityList();
 		String capacity = getCapacity(vectR[0].get(0).toString());
 		_capacity[index] = new JLabel(capacity);
 
@@ -346,7 +360,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 		return myPanel;
 
-	} //end  buildRoomPanel
+	} // end buildRoomPanel
 
 	private String getSelectedRoom(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(2);
@@ -356,12 +370,13 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 				.toString();
 	} // end getSelectedRoom
 
-	/* private String getSelectedCategory(JPanel jPanel) {
-	 JPanel externalPanel = (JPanel) jPanel.getComponent(2);
-	 JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
-	 JPanel catJPanel = (JPanel) myJPanel.getComponent(0);
-	 return ((JComboBox)catJPanel.getComponent(0)).getSelectedItem().toString();
-	 } // end getSelectedCategory
+	/*
+	 * private String getSelectedCategory(JPanel jPanel) { JPanel externalPanel =
+	 * (JPanel) jPanel.getComponent(2); JPanel myJPanel = (JPanel)
+	 * externalPanel.getComponent(0); JPanel catJPanel = (JPanel)
+	 * myJPanel.getComponent(0); return
+	 * ((JComboBox)catJPanel.getComponent(0)).getSelectedItem().toString(); } //
+	 * end getSelectedCategory
 	 */
 
 	private JPanel buildFixingPanel(int index) {
@@ -399,7 +414,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
 
 		return ((JToggleButton) (myJPanel.getComponent(1))).isSelected();
-	} //end isFixedButtonSelected
+	} // end isFixedButtonSelected
 
 	private JPanel buildDurationPanel() {
 		Vector thePeriods = buildThePeriods(_dApplic.getCurrentDModel()
@@ -448,7 +463,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		JPanel externalPanel = (JPanel) jPanel.getComponent(0);
 		JPanel dP = (JPanel) externalPanel.getComponent(1);
 		return ((JComboBox) dP.getComponent(0)).getSelectedItem().toString();
-	} //end getSelectedDay
+	} // end getSelectedDay
 
 	private JPanel buildHourPanel() {
 		JPanel hourPanel = new JPanel();
@@ -485,12 +500,13 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		_instructorsLists[_currentActivityIndex].setListData(v);
 		_jScrollPane.repaint();
 
-		//instructorsLists[_currentActivityIndex] = new JList(v.toArray());
+		// instructorsLists[_currentActivityIndex] = new JList(v.toArray());
 		_applyPanel.setFirstEnable();
 	}
 
 	/**
 	 * item state changed
+	 * 
 	 * @param e
 	 */
 	public void stateChanged(ChangeEvent ce) {
@@ -513,9 +529,9 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	 * Return vector of resources. each resource represent an event
 	 */
 	private Vector buildUnitiesVector(String activityName) {
-		//int nbTokens= DXToolsMethods.countTokens(activityName, ".");
+		// int nbTokens= DXToolsMethods.countTokens(activityName, ".");
 		Vector unities = new Vector(1);
-		//System.out.println("CounTokens: "+nbTokens);// debug
+		// System.out.println("CounTokens: "+nbTokens);// debug
 		String actID = DXToolsMethods.getToken(activityName, ".", 0);
 		String typID = DXToolsMethods.getToken(activityName, ".", 1);
 
@@ -543,7 +559,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 												+ sect.getSetOfUnities()
 														.getResourceAt(i)
 														.getID() + "."));
-					}// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
+					}// end for (int i=0; i<sect.getSetOfUnities().size();
+						// i++)
 				}// end else unitID.length()!=0
 			} else {// else if(secID.length()!=0)
 				Type type = _dApplic.getCurrentDModel().getSetOfActivities()
@@ -569,7 +586,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 												+ sect.getSetOfUnities()
 														.getResourceAt(j)
 														.getID() + "."));
-					}// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
+					}// end for (int i=0; i<sect.getSetOfUnities().size();
+						// i++)
 				}// end for(int i=0; i< type.getSetOfSections().size(); i++)
 			}// end else if(secID.length()!=0)
 		} else {// else if(typID.length()!=0)
@@ -600,7 +618,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 												+ sect.getSetOfUnities()
 														.getResourceAt(j)
 														.getID() + "."));
-					}// end for (int i=0; i<sect.getSetOfUnities().size(); i++)
+					}// end for (int i=0; i<sect.getSetOfUnities().size();
+						// i++)
 				}// end for(int i=0; i< type.getSetOfSections().size(); i++)
 			}
 		}// end else if(typID.length()!=0)
@@ -608,7 +627,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	}
 
 	/**
-	 *build duration
+	 * build duration
+	 * 
 	 * @return
 	 */
 	private String buildDuration() {
@@ -622,9 +642,10 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 	/**
 	 * build the hour list
+	 * 
 	 * @return Vector[] of two elements the first is a Vector containing
-	 *
-	 *                  the second contains
+	 * 
+	 * the second contains
 	 */
 	private Vector[] buildHourList() {
 		Vector list[] = { new Vector(), new Vector() };
@@ -664,7 +685,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	}
 
 	/**
-	 *build the day list
+	 * build the day list
+	 * 
 	 * @return
 	 */
 	private Vector[] buildDayList() {
@@ -684,18 +706,20 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	}
 
 	/**
-	 *build the instructor list
+	 * build the instructor list
+	 * 
 	 * @return
 	 */
 	private Vector buildCurrentInstructorList(int index) {
-		Vector v = new Vector();//, new Vector(1)};
-		
+		Vector<String> v = new Vector<String>();
+
 		if (!DConst.newInstructors) {
 			EventAttach event = (EventAttach) ((DResource) _unities.get(index))
-			.getAttach();
+					.getAttach();
 			SetOfInstructors soi = null;
 			soi = _dApplic.getCurrentDModel().getSetOfInstructors();
-			//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+			// long dayKey=
+			// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
 			long keys[] = event.getInstructorKey();
 			for (int i = 0; i < keys.length; i++) {
 				DResource instructor = soi.getResource(keys[i]);
@@ -703,20 +727,25 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 					v.add(instructor.getID());
 			}
 		} else {
-			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+			EventAttach event = (EventAttach) ((DResource) _unities.get(index))
+					.getAttach();
+			DxSetOfInstructors soi = _dApplic.getCurrentDModel()
 					.getDxSetOfInstructors();
-			for(int i=0;i<dxsoi.size();i++)
-			{
-				v.add(dxsoi.getInstructorName(i));
+			long keys[] = event.getInstructorKey();
+			for (int i = 0; i < keys.length; i++) {
+				int insIndex = soi.getInstructorByKey(keys[i]);
+				if (insIndex != -1)
+					v.add(soi.getInstructorName(insIndex));
 			}
 		}
 		return v;
 	}
 
-	private Vector buildInstructorList() {//int index){
-		Vector v = new Vector();//, new Vector(1)};
-		//EventAttach event= (EventAttach)((DResource)_unities.get(index)).getAttach();
-		
+	private Vector buildInstructorList() {// int index){
+		Vector <String> v = new Vector <String>();
+		// EventAttach event=
+		// (EventAttach)((DResource)_unities.get(index)).getAttach();
+
 		if (!DConst.newInstructors) {
 			SetOfInstructors soi = null;
 			soi = _dApplic.getCurrentDModel().getSetOfInstructors();
@@ -729,24 +758,24 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 			for (int i = 0; i < dxsoi.size(); i++)
 				v.add(dxsoi.getInstructorName(i));
 			v.add(DConst.NO_ROOM_INTERNAL);
-			
+
 		}
-		//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-		//long keys [] = event.getInstructorKey();
-		
+
 		return v;
 	}
 
 	/**
-	 *build the room list
+	 * build the room list
+	 * 
 	 * @return
 	 */
-	private Vector[] buildRoomList() {//String category){
+	private Vector[] buildRoomList() {// String category){
 		Vector list[] = { new Vector(1), new Vector(1) };
 		EventAttach event = (EventAttach) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
-		//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+		// long dayKey=
+		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
 		DResource room = sor.getResource(event.getRoomKey());
 		if (room != null)
 			list[0].add(room.getID());
@@ -773,35 +802,33 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	/**
 	 * @return
 	 */
-	/*  private Vector[] buildCapacityList() {
-	 Vector list[] = {new Vector(1), new Vector(1)};
-	 EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-	 SetOfRooms sor= _dm.getSetOfRooms();
-	 //long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-	 Resource room = sor.getResource(event.getRoomKey());
-	 //if(room!=null)
-	 // list[0].add(room.getID());
-	 //else
-	 // list[0].add(DConst.NO_ROOM_INTERNAL);
-	 for(int i=0; i< sor.size(); i++) {
-	 RoomAttach ra = (RoomAttach) sor.getResourceAt(i).getAttach();
-	 list[1].add(String.valueOf(ra.getCapacity()));
-	 }
-	 list[1].add(DConst.NO_ROOM_INTERNAL);
-	 return list;
-	 }*/
+	/*
+	 * private Vector[] buildCapacityList() { Vector list[] = {new Vector(1),
+	 * new Vector(1)}; EventAttach event=
+	 * (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+	 * SetOfRooms sor= _dm.getSetOfRooms(); //long dayKey=
+	 * Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+	 * Resource room = sor.getResource(event.getRoomKey()); //if(room!=null) //
+	 * list[0].add(room.getID()); //else //
+	 * list[0].add(DConst.NO_ROOM_INTERNAL); for(int i=0; i< sor.size(); i++) {
+	 * RoomAttach ra = (RoomAttach) sor.getResourceAt(i).getAttach();
+	 * list[1].add(String.valueOf(ra.getCapacity())); }
+	 * list[1].add(DConst.NO_ROOM_INTERNAL); return list; }
+	 */
 	private Vector[] buildCategoryRoomList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		//EventAttach event= (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
-		//SetOfCategories soc= _dm.getSetOfCategories();
-		//long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-		//Resource room = sor.getResource(event.getRoomKey());
-		//if(room!=null)
-		//list[0].add(room.getID());
-		//else
+		// EventAttach event=
+		// (EventAttach)((Resource)_unities.get(_currentActivityIndex)).getAttach();
+		// SetOfCategories soc= _dm.getSetOfCategories();
+		// long dayKey=
+		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+		// Resource room = sor.getResource(event.getRoomKey());
+		// if(room!=null)
+		// list[0].add(room.getID());
+		// else
 		list[0].add(DConst.NO_ROOM_INTERNAL);
-		//for(int i=0; i< soc.size(); i++)
-		//list[1].add(soc.getResourceAt(i).getID());
+		// for(int i=0; i< soc.size(); i++)
+		// list[1].add(soc.getResourceAt(i).getID());
 		list[1].add(DConst.NO_ROOM_INTERNAL);
 		return list;
 	}
@@ -814,7 +841,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 				.getCurrentCycle();
 		EventAttach event = (EventAttach) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
-		//remove event
+		// remove event
 		_dApplic.getCurrentDModel().getConditionsTest().removeEventInTTs(
 				_dApplic.getCurrentDModel().getTTStructure(),
 				(DResource) _unities.get(_currentActivityIndex), false);
@@ -835,7 +862,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 		boolean assignBut = isAssignedButtonSelected(tpane);
 
-		boolean fixedBut = isFixedButtonSelected(tpane); //= ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
+		boolean fixedBut = isFixedButtonSelected(tpane); // =
+															// ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
 		int[] daytime = {
 				Integer.parseInt(DXToolsMethods.getToken(day, ".", 0)),
 				Integer.parseInt(DXToolsMethods.getToken(hour, ":", 0)),
@@ -854,7 +882,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		vect.add(_unities.get(_currentActivityIndex));
 		_dApplic.getCurrentDModel().getSetOfEvents().updateActivities(
 				_dApplic.getCurrentDModel().getSetOfActivities(), vect);
-		//add event
+		// add event
 		_dApplic.getCurrentDModel().getConditionsTest().addEventInTTs(
 				_dApplic.getCurrentDModel().getTTStructure(),
 				(DResource) _unities.get(_currentActivityIndex), false);
@@ -862,7 +890,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 	}
 
 	private String getInstructorKeys(ListModel lm) {
-//		 TODO: DConst.newInstructors 
+		// TODO: DConst.newInstructors
 		String a = "";
 		for (int i = 0; i < lm.getSize(); i++) {
 			long key = _dApplic.getCurrentDModel().getSetOfInstructors()
@@ -874,6 +902,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 	/**
 	 * get a resource key
+	 * 
 	 * @param soresc
 	 * @param elt
 	 * @return the resource key or -1 if key does not found

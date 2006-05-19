@@ -37,7 +37,7 @@ import dConstants.DConst;
  */
 public class DxAvailability {
 
-    private Vector<Vector<Integer>> _vDays;
+    private Vector <Vector <Integer>> _vDays;
 
     /**
      * Constructor
@@ -47,19 +47,18 @@ public class DxAvailability {
      *            represent
      */
     public DxAvailability() {
-        _vDays = new Vector<Vector<Integer>>();
+        _vDays = new Vector <Vector <Integer>>();
     }
 
     public DxAvailability(int[][] iMatrix) {
-        _vDays = new Vector<Vector<Integer>>();
+        _vDays = new Vector <Vector <Integer>>();
         for (int i = 0; i < iMatrix.length; i++) {
-            Vector<Integer> vTemp = new Vector<Integer>();
+            Vector <Integer> vTemp = new Vector <Integer>();
             for (int j = 0; j < iMatrix[i].length; j++) {
                 vTemp.add(j, new Integer(iMatrix[i][j]));
             }
             _vDays.add(i, vTemp);
         }
-
     }
 
     /**
@@ -73,7 +72,6 @@ public class DxAvailability {
      *         false in other cases
      */
     public void addDayAvailability(String sAvailabilities) {
-
         // Create a tokenizer on a string that include availability
         StringTokenizer stAva = new StringTokenizer(sAvailabilities,
                 DConst.SPACE);
@@ -101,7 +99,7 @@ public class DxAvailability {
     public boolean setPeriodAvailability(int nDayIndex, int nPeriodIndex,
             int nAvailability) {
         if (isValidDay(nDayIndex)) {
-            Vector<Integer> vTemp = _vDays.get(nDayIndex);
+            Vector <Integer> vTemp = _vDays.get(nDayIndex);
             if (nPeriodIndex >= 0 && nPeriodIndex < vTemp.size()) {
                 vTemp.set(nPeriodIndex, new Integer(nAvailability));
                 return true;
@@ -112,18 +110,13 @@ public class DxAvailability {
 
     public void setAvailability(int[][] newAva) {
         _vDays.removeAllElements();
-        // Error: setSize caused problems since it allocate
-        // n elements to null. Thus, next add is appended after
-        // nulls. Would have had to use _vDays.set(index,.... for it to work
-        // _vDays.setSize(newAva.length);
         for (int i = 0; i < newAva.length; i++) {
-            Vector<Integer> vTemp = new Vector<Integer>(newAva[i].length);
+            Vector <Integer> vTemp = new Vector <Integer>(newAva[i].length);
             for (int j = 0; j < newAva[i].length; j++) {
                 vTemp.add(new Integer(newAva[i][j]));
             }
             _vDays.add(vTemp);
         }
-
     }
 
     /**
@@ -170,9 +163,7 @@ public class DxAvailability {
                 iRet[i][j] = this.getPeriodAvailability(i, j);
             }
         }
-
         return iRet;
-
     }
 
     /**
@@ -207,16 +198,12 @@ public class DxAvailability {
      * @return
      */
     public Vector isAssignedInPeriod(int dayIndex, int periodIndex, Vector sites) {
-        Vector<String> v = new Vector<String>();
+        Vector <String> v = new Vector <String>();
         for (int i = 0; i < sites.size(); i++) {
             String site = (String) sites.get(i);
-            // if (_ressourceSiteAvailability.size()==0)
-            // this.initAssignAvailability();
             String[][] matrix = getAssignAvailabilityTable(new Vector());
             if ((dayIndex < matrix.length))
                 if (periodIndex < matrix[dayIndex].length)
-                    // if(matrix[dayIndex][periodIndex].contains(site)) // XXXX
-                    // Pascal: lien inutile avec JDK 1.5
                     if (matrix[dayIndex][periodIndex].matches(".*" + site
                             + ".*"))
                         v.add(site);
@@ -245,21 +232,21 @@ public class DxAvailability {
     }
 
     public String toWrite() {
-        String sRet = "";
+        StringBuffer sRet = new StringBuffer();
 
         for (int i = 0; i < _vDays.size(); i++) {
-            Vector<Integer> vTemp = _vDays.get(i);
+            Vector <Integer> vTemp = _vDays.get(i);
             for (int j = 0; j < vTemp.size(); j++) {
-                sRet += vTemp.get(j).intValue();
+                sRet.append(vTemp.get(j).intValue());
                 if (j < (vTemp.size() - 1)) {
-                    sRet += ' ';
+                    sRet.append(' ');
                 }
             }
             if (i < (_vDays.size() - 1)) {
-                sRet += DConst.CR_LF;
+                sRet.append(DConst.CR_LF);
             }
         }
-        return sRet;
+        return sRet.toString();
     }
 
     public boolean isEquals(DxAvailability ava) {
