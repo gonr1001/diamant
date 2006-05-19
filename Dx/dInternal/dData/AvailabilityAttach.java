@@ -48,18 +48,18 @@ public class AvailabilityAttach extends DObject {
     /**
      * @associates String 
      */
-    protected Vector _ressourceAvailability;
+    protected Vector <String> _ressourceAvailability;
 
     /**
      * @associates String 
      */
-    protected Vector _ressourceSiteAvailability;
+    protected Vector <String> _ressourceSiteAvailability;
 
-    private final String CR_LF = "\r\n";
+    
 
     public AvailabilityAttach() {
-        _ressourceAvailability = new Vector();
-        _ressourceSiteAvailability = new Vector();
+        _ressourceAvailability = new Vector <String>();
+        _ressourceSiteAvailability = new Vector <String>();
     }
 
     /**
@@ -87,7 +87,7 @@ public class AvailabilityAttach extends DObject {
      * INPUT: Vector of new instructor availability (instDisp)
      * */
     public void setAvailability(Vector instDisp) {
-        _ressourceAvailability = new Vector();
+        _ressourceAvailability = new Vector <String>();
         _ressourceAvailability = (Vector) instDisp.clone();
     }
     
@@ -96,7 +96,7 @@ public class AvailabilityAttach extends DObject {
      * INPUT: Vector of new instructor availability (instDisp)
      * */
     public void setAssignAvailability(Vector instAssign) {
-        _ressourceSiteAvailability = new Vector();
+        _ressourceSiteAvailability = new Vector <String>();
         _ressourceSiteAvailability = (Vector) instAssign.clone();
     }
 
@@ -125,7 +125,7 @@ public class AvailabilityAttach extends DObject {
         int[][] a = new int[_ressourceAvailability.size()][st.countTokens()];
         int nbOfTokens = st.countTokens();
         for (int i = 0; i < _ressourceAvailability.size(); i++) {
-            jour = (String) _ressourceAvailability.get(i);
+            jour = _ressourceAvailability.get(i);
             st = new StringTokenizer(jour);
             nbOfTokens = st.countTokens();
             for (int j = 0; j < nbOfTokens; j++) {
@@ -165,7 +165,7 @@ public class AvailabilityAttach extends DObject {
      * 
      */
     public void setAvailability(int[][] a) {
-        _ressourceAvailability = new Vector();
+        _ressourceAvailability = new Vector <String> ();
         String str = "";
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length - 1; j++) {
@@ -179,7 +179,7 @@ public class AvailabilityAttach extends DObject {
     
     private void initAssignAvailability() {
         int[][] a =  this.getMatrixAvailabilityTable(_ressourceAvailability);
-        _ressourceSiteAvailability = new Vector(1);
+        _ressourceSiteAvailability = new Vector <String> ();
         String site="";
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length - 1; j++) {
@@ -193,7 +193,7 @@ public class AvailabilityAttach extends DObject {
     
     public void setAssignAvailability(String[][] a) {
         //_ressourceAvailability = new Vector(1);
-        _ressourceSiteAvailability = new Vector(1);
+        _ressourceSiteAvailability = new Vector <String> ();
         String str = "";
         //String site="";
         for (int i = 0; i < a.length; i++) {
@@ -236,17 +236,17 @@ public class AvailabilityAttach extends DObject {
     public String toWrite() {
         String instInfo = "";
         for (int i = 0; i < _ressourceAvailability.size() - 1; i++){
-            instInfo += (String) _ressourceAvailability.get(i);
+            instInfo +=  _ressourceAvailability.get(i);
             if(_ressourceSiteAvailability.size()==_ressourceAvailability.size())
                 instInfo += DConst.AVAILABILITY_SEPARATOR+
-                    (String) _ressourceSiteAvailability.get(i);
-            instInfo += CR_LF;
+                     _ressourceSiteAvailability.get(i);
+            instInfo += DConst.CR_LF;
         }
-        instInfo += (String) _ressourceAvailability
+        instInfo +=  _ressourceAvailability
                 .get(_ressourceAvailability.size() - 1);
         if(_ressourceSiteAvailability.size()==_ressourceAvailability.size())
             instInfo +=DConst.AVAILABILITY_SEPARATOR+
-                (String) _ressourceSiteAvailability.get(_ressourceAvailability.size() - 1);
+                 _ressourceSiteAvailability.get(_ressourceAvailability.size() - 1);
         return instInfo;
     }
 
@@ -304,7 +304,7 @@ public class AvailabilityAttach extends DObject {
      * @return
      */
     public Vector isAssignedInPeriod(int dayIndex, int periodIndex, Vector sites){
-        Vector v= new Vector(1);
+        Vector <String> v= new Vector <String>();
         for (int i = 0; i< sites.size(); i++){
             String site = (String)sites.get(i);
             if (_ressourceSiteAvailability.size()==0)
@@ -328,7 +328,7 @@ public class AvailabilityAttach extends DObject {
         if (_ressourceSiteAvailability.size()==0)
             this.initAssignAvailability();
         for (int i = 0; i < _ressourceSiteAvailability.size(); i++) {
-            String str = ((String)_ressourceSiteAvailability.get(i));
+            String str = _ressourceSiteAvailability.get(i);
             str = str.replaceAll(site,"");
             _ressourceSiteAvailability.setElementAt(str,i);
         }// for (int i = 0; i < _ressourceSiteAvailability.size(); i++)

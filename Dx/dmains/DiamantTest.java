@@ -113,7 +113,6 @@ public class DiamantTest {
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
-		suite.addTest(SetOfRoomsTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
 		suite.addTest(SectionTest.suite());
