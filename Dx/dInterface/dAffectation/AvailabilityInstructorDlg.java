@@ -131,7 +131,7 @@ public AvailabilityInstructorDlg(DApplication dApplic, DxSetOfInstructors soi, S
 private void initialize() throws Exception {
     _chooserPanel = new JPanel();
     // creates the JComboBox with the list of all instructors
-    _chooser = new JComboBox(_soi.getNamesVector(1));
+    _chooser = new JComboBox(_soi.getNamesVector());
     _chooser.addItemListener(this);
     _chooserPanel.add(_chooser, null);
     int sel = _chooser.getSelectedIndex();

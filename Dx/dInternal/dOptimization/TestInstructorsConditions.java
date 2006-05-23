@@ -93,7 +93,7 @@ public class TestInstructorsConditions  implements Condition{
     		  AvailabilityAttach inst = (AvailabilityAttach)_dm.getSetOfInstructors().getResource(instKey[i]).getAttach();
         	  matrix= inst.getMatrixAvailability();
     	  } else {
-    		  int index =_dm.getDxSetOfInstructors().getInstructorByKey(instKey[i]);
+    		  int index =_dm.getDxSetOfInstructors().getIndexByKey(instKey[i]);
     		  matrix = _dm.getDxSetOfInstructors().getInstructorAvaMatrix(index);
     	  }
     		  

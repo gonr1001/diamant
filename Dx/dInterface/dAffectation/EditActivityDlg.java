@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.66 $  $Date: 2006-05-19 12:49:44 $
+ * Title: EditActivityDlg $Revision: 1.67 $  $Date: 2006-05-23 21:04:50 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.66 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.67 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -733,18 +733,16 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 					.getDxSetOfInstructors();
 			long keys[] = event.getInstructorKey();
 			for (int i = 0; i < keys.length; i++) {
-				int insIndex = soi.getInstructorByKey(keys[i]);
-				if (insIndex != -1)
-					v.add(soi.getInstructorName(insIndex));
+				String sName = soi.getInstructorNameByKey(keys[i]);
+				if (sName != null)
+					v.add(sName);
 			}
 		}
 		return v;
 	}
 
-	private Vector buildInstructorList() {// int index){
+	private Vector buildInstructorList() {
 		Vector <String> v = new Vector <String>();
-		// EventAttach event=
-		// (EventAttach)((DResource)_unities.get(index)).getAttach();
 
 		if (!DConst.newInstructors) {
 			SetOfInstructors soi = null;
@@ -755,10 +753,8 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		} else {
 			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
 					.getDxSetOfInstructors();
-			for (int i = 0; i < dxsoi.size(); i++)
-				v.add(dxsoi.getInstructorName(i));
+			v=dxsoi.getNamesVector();
 			v.add(DConst.NO_ROOM_INTERNAL);
-
 		}
 
 		return v;

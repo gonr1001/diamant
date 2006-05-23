@@ -107,4 +107,17 @@ public class DxInstructor {
 			return left._name.compareTo(right._name);
 		}
 	};
+    
+    public static Comparator <DxInstructor> KeyComparator = new Comparator <DxInstructor> () {
+        public int compare(DxInstructor arg0, DxInstructor arg1) {
+            DxInstructor left = arg0;
+            DxInstructor right = arg1;
+            long diff=left._instructorKey-right._instructorKey;
+            if(diff>0)
+                return 1;
+            if(diff<0)
+                return -1;
+            return 0;
+        }
+    };
 }

@@ -296,7 +296,7 @@ public class SetOfEvents extends DSetOfResources {
 
 	private String getDxInstName(DxSetOfInstructors soi, long key) {
 		if (key != -1) {
-			return soi.getInstructorName(soi.getInstructorByKey(key));
+			return soi.getInstructorNameByKey(key);
 		}
 		return DConst.NO_ROOM_INTERNAL;
 	}
@@ -378,8 +378,7 @@ public class SetOfEvents extends DSetOfResources {
 						str = _dm.getSetOfInstructors().getResource(
 								instKeyOne[i]).getID();
 					} else {
-						int index =_dm.getDxSetOfInstructors().getInstructorByKey(instKeyOne[i]);
-						str = _dm.getDxSetOfInstructors().getInstructorName(index);
+						str = _dm.getDxSetOfInstructors().getInstructorNameByKey(instKeyOne[i]);
 					}
 					res += DXToolsMethods.getToken(str, ",", 0) + " "
 							+ DXToolsMethods.getToken(str, ",", 1) + ",";
@@ -408,8 +407,7 @@ public class SetOfEvents extends DSetOfResources {
             }
             else
             {
-                int nInstIndex= _dm.getDxSetOfInstructors().getInstructorByKey(((Long) insKeys.get(j)).longValue());
-                str=_dm.getDxSetOfInstructors().getInstructorName(nInstIndex); 
+                str=_dm.getDxSetOfInstructors().getInstructorNameByKey(((Long) insKeys.get(j)).longValue()); 
             }
 			res += DXToolsMethods.getToken(str, ",", 0) + " "
 					+ DXToolsMethods.getToken(str, ",", 1) + ",";

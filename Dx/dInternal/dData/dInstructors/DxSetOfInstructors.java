@@ -40,243 +40,254 @@ import dInternal.dData.DxAvailability;
 
 public class DxSetOfInstructors {
 
-	private Vector<DxInstructor> _vInstructors;
+    private Vector<DxInstructor> _vInstructors;
 
-	private long _uniqueKey;
+    private long _uniqueKey;
 
-	private boolean _isSorted;
+    // private boolean _isSorted;
 
-	/**
-	 * Constructor
-	 */
-	public DxSetOfInstructors() {
-		_vInstructors = new Vector<DxInstructor>();
-		_uniqueKey = 1;
-		_isSorted = false;
-	}
+    /**
+     * Constructor
+     */
+    public DxSetOfInstructors() {
+        _vInstructors = new Vector<DxInstructor>();
+        _uniqueKey = 1;
+        // _isSorted = false;
+    }
 
-	/**
-	 * Adds an instructor to the set
-	 * 
-	 * @param iNewInstructor
-	 *            The new instructor to be inserted
-	 */
-	public void addInstructor(String sName, DxAvailability dxaAva) {
-		_vInstructors.add(new DxInstructor(sName, dxaAva, _uniqueKey++));
-		_isSorted = false;
-	}
+    /**
+     * Adds an instructor to the set
+     * 
+     * @param iNewInstructor
+     *            The new instructor to be inserted
+     */
+    public void addInstructor(String sName, DxAvailability dxaAva) {
+        _vInstructors.add(new DxInstructor(sName, dxaAva, _uniqueKey++));
+        // _isSorted = false;
+    }
 
-	/**
-	 * Removes an instructor from the set
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor to be removed
-	 * @return boolean Returns true if the index was valid, false otherwise
-	 */
-	public boolean removeInstructor(int nIndex) {
-		if (isValidIndex(nIndex)) {
-			_vInstructors.remove(nIndex);
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Removes an instructor from the set
+     * 
+     * @param nIndex
+     *            Index of the instructor to be removed
+     * @return boolean Returns true if the index was valid, false otherwise
+     */
+    public boolean removeInstructor(int nIndex) {
+        if (isValidIndex(nIndex)) {
+            _vInstructors.remove(nIndex);
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Sort the set of instructors by their name
-	 */
-	public void sortInstructors() {
-		Collections.sort((List <DxInstructor>) _vInstructors,
-				DxInstructor.NameComparator);
-	}
+    // /**
+    // * Sort the set of instructors by their name
+    // */
+    // public void sortInstructors() {
+    // Collections.sort((List <DxInstructor>) _vInstructors,
+    // DxInstructor.NameComparator);
+    // }
 
-	/**
-	 * Return the number of instructors currently in the set
-	 * 
-	 * @return int The number of instructor currently in the set
-	 */
-	public int size() {
-		return _vInstructors.size();
-	}
+    /**
+     * Return the number of instructors currently in the set
+     * 
+     * @return int The number of instructor currently in the set
+     */
+    public int size() {
+        return _vInstructors.size();
+    }
 
-	/**
-	 * Removes an instructor from the set
-	 * 
-	 * @return String A string containing all the instructors informations
-	 */
-	public String toWrite() {
-		StringBuffer reslist = new StringBuffer();
-		int i;
-		if (size() > 0) {
-			for (i = 0; i < this.size(); i++) {
-				reslist.append(getInstructorName(i) + DConst.CR_LF);
-				reslist.append(getInstructorAvailability(i).toWrite());
-				// Avoid trailing line feed
-				if (i < (this.size() - 1)) {
-					reslist.append(DConst.CR_LF);
-				}
-			}
-		}
-		return reslist.toString();
-	}
+    /**
+     * Removes an instructor from the set
+     * 
+     * @return String A string containing all the instructors informations
+     */
+    public String toWrite() {
+        StringBuffer reslist = new StringBuffer();
+        int i;
+        if (size() > 0) {
+            for (i = 0; i < this.size(); i++) {
+                reslist.append(getInstructorName(i) + DConst.CR_LF);
+                reslist.append(getInstructorAvailability(i).toWrite());
+                // Avoid trailing line feed
+                if (i < (this.size() - 1)) {
+                    reslist.append(DConst.CR_LF);
+                }
+            }
+        }
+        return reslist.toString();
+    }
 
-	/**
-	 * Retreives the name of an instructor in the set
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor whose name is wanted
-	 * @return String The name of the instructor, null if the index was invalid
-	 */
-	public String getInstructorName(int nIndex) {
-		if (isValidIndex(nIndex)) {
-			return _vInstructors.get(nIndex).getInstructorName();
-		}
-		return null;
-	}
+    /**
+     * Retreives the name of an instructor in the set
+     * 
+     * @param nIndex
+     *            Index of the instructor whose name is wanted
+     * @return String The name of the instructor, null if the index was invalid
+     */
+    public String getInstructorNameByKey(long lKey) {
+        DxInstructor dxiTemp = new DxInstructor(null, null, lKey);
+        int nIndex = Collections.binarySearch(_vInstructors, dxiTemp,
+                DxInstructor.NameComparator);
+        if (nIndex >= 0) {
+            return _vInstructors.get(nIndex).getInstructorName();
+        }
 
-	/**
-	 * Retreives the ID of an instructor in the set
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor whose ID is wanted
-	 * @return int ID of the instructor, -1 if the index was invalid
-	 */
-	public long getInstructorKey(int nIndex) {
-		if (isValidIndex(nIndex)) {
-			return _vInstructors.get(nIndex).getInstructorKey();
-		}
-		return -1;
-	}
+        return null;
+    }
 
-	/**
-	 * Retreives the availability of an instructor in the set
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor whose availability is wanted
-	 * @return DxAvailability The availability of the instructor, null if the
-	 *         index was invalid
-	 */
-	public DxAvailability getInstructorAvailability(int nIndex) {
-		if (isValidIndex(nIndex)) {
-			return _vInstructors.get(nIndex).getInstructorAvailability();
-		}
-		return null;
-	}
+    /**
+     * Retreives the name of an instructor in the set
+     * 
+     * @param nIndex
+     *            Index of the instructor whose name is wanted
+     * @return String The name of the instructor, null if the index was invalid
+     */
+    public String getInstructorName(int nIndex) {
+        if (isValidIndex(nIndex)) {
+            return _vInstructors.get(nIndex).getInstructorName();
+        }
+        return null;
+    }
 
-	/**
-	 * Retreives the availability of an instructor in the set
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor whose availability is wanted
-	 * @return DxAvailability The availability of the instructor, null if the
-	 *         index was invalid
-	 */
-	public int[][] getInstructorAvaMatrix(int nIndex) {
-		if (isValidIndex(nIndex)) {
-			return _vInstructors.get(nIndex).getInstructorAvailability()
-					.getMatrixAvailability();
-		}
-		return null;
+    /**
+     * Retreives the ID of an instructor in the set
+     * 
+     * @param nIndex
+     *            Index of the instructor whose ID is wanted
+     * @return int ID of the instructor, -1 if the index was invalid
+     */
+    public long getInstructorKey(int nIndex) {
+        if (isValidIndex(nIndex)) {
+            return _vInstructors.get(nIndex).getInstructorKey();
+        }
+        return -1;
+    }
 
-	}
+    /**
+     * Retreives the availability of an instructor in the set
+     * 
+     * @param nIndex
+     *            Index of the instructor whose availability is wanted
+     * @return DxAvailability The availability of the instructor, null if the
+     *         index was invalid
+     */
+    public DxAvailability getInstructorAvailability(int nIndex) {
+        if (isValidIndex(nIndex)) {
+            return _vInstructors.get(nIndex).getInstructorAvailability();
+        }
+        return null;
+    }
 
-	public int getIndexByName(String sName) {
-		// Dummy Instructor used for the research. Only name is used in the
-		// comparator
-		DxInstructor dxiTemp = new DxInstructor(sName, null, 0);
+    /**
+     * Retreives the availability of an instructor in the set
+     * 
+     * @param nIndex
+     *            Index of the instructor whose availability is wanted
+     * @return DxAvailability The availability of the instructor, null if the
+     *         index was invalid
+     */
+    public int[][] getInstructorAvaMatrix(int nIndex) {
+        if (isValidIndex(nIndex)) {
+            return _vInstructors.get(nIndex).getInstructorAvailability()
+                    .getMatrixAvailability();
+        }
+        return null;
 
-		int nIndex = Collections.binarySearch(_vInstructors, dxiTemp,
-				DxInstructor.NameComparator);
+    }
 
-		return (nIndex < 0) ? (-1) : (nIndex);
-	}
+    public int getIndexByName(String sName) {
+        Iterator it = _vInstructors.iterator();
 
-	public Vector<String> getNamesVector(int sortField) {
-		if (!_isSorted) {
-			sortInstructors();
-		}
-		Vector<String> vReturn = new Vector<String>();
-		if (sortField == 1) {
-			for (int i = 0; i < this.size(); i++) {
-				vReturn.add(this.getInstructorName(i));
-			}
-		}
-		return vReturn;
-	}
+        for (int i = 0; it.hasNext(); i++) {
+            if (sName == ((DxInstructor) it.next()).getInstructorName())
+                return i;
+        }
+        return -1;
+    }
+    
+    public int getIndexByKey(long lKey) {
+        DxInstructor dxiTemp = new DxInstructor(null, null, lKey);
+        int nIndex = Collections.binarySearch(_vInstructors, dxiTemp,
+                DxInstructor.NameComparator);
+        if (nIndex >= 0) {
+            return nIndex;
+        }
+        return -1;
+    }
 
-	public int getInstructorByKey(long key) {
-		if (!_isSorted) {
-			sortInstructors();
-		}
+    public Vector<String> getNamesVector() {
+        // if (!_isSorted) {
+        // sortInstructors();
+        // }
+        Vector<String> vReturn = new Vector<String>();
+        for (int i = 0; i < this.size(); i++) {
+            vReturn.add(this.getInstructorName(i));
+        }
+        Collections.sort((List<String>) vReturn);
+        return vReturn;
+    }
 
-		Iterator it = _vInstructors.iterator();
+    /**
+     * Modify the availability of instructor at index nIndex
+     * 
+     * @param nIndex
+     *            Index of the instructor that availability needs to be modified
+     * @return boolean true if the index was valid, false otherwise
+     */
+    public boolean setInstructorAvailability(int nIndex,
+            DxAvailability dxaNewAva) {
+        if (isValidIndex(nIndex)) {
+            _vInstructors.get(nIndex).setInstructorAvailability(dxaNewAva);
+            return true;
+        }
+        return false;
 
-		for (int i = 0; it.hasNext(); i++) {
-			if (key == ((DxInstructor) it.next()).getInstructorKey())
-				return i;
-		}
+    }
 
-		return -1;
-	}
+    /**
+     * Modify the name of instructor at index nIndex
+     * 
+     * @param nIndex
+     *            Index of the instructor that name needs to be modified
+     * @return boolean true if the index was valid, false otherwise
+     */
+    public boolean setInstructorName(int nIndex, String sNewName) {
+        if (isValidIndex(nIndex)) {
+            _vInstructors.get(nIndex).setInstructorName(sNewName);
+            // _isSorted = false;
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Modify the availability of instructor at index nIndex
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor that availability needs to be modified
-	 * @return boolean true if the index was valid, false otherwise
-	 */
-	public boolean setInstructorAvailability(int nIndex,
-			DxAvailability dxaNewAva) {
-		if (isValidIndex(nIndex)) {
-			_vInstructors.get(nIndex).setInstructorAvailability(dxaNewAva);
-			return true;
-		}
-		return false;
+    public boolean isEquals(DxSetOfInstructors dxsoi) {
+        // If sizes differ, it is necessarly different
+        if (this.size() != dxsoi.size()) {
+            return false;
+        }
+        // For every instructors, verify that name and availabilities match
+        // Key is not verified
+        for (int i = 0; i < this.size(); i++) {
+            if (!this.getInstructorName(i).equalsIgnoreCase(
+                    dxsoi.getInstructorName(i))
+                    || !this.getInstructorAvailability(i).isEquals(
+                            dxsoi.getInstructorAvailability(i)))
+                return false;
+        }
+        return true;
+    }
 
-	}
-
-	/**
-	 * Modify the name of instructor at index nIndex
-	 * 
-	 * @param nIndex
-	 *            Index of the instructor that name needs to be modified
-	 * @return boolean true if the index was valid, false otherwise
-	 */
-	public boolean setInstructorName(int nIndex, String sNewName) {
-		if (isValidIndex(nIndex)) {
-			_vInstructors.get(nIndex).setInstructorName(sNewName);
-			_isSorted = false;
-			return true;
-		}
-		return false;
-	}
-
-	public boolean isEquals(DxSetOfInstructors dxsoi) {
-		// If sizes differ, it is necessarly different
-		if (this.size() != dxsoi.size()) {
-			return false;
-		}
-		// For every instructors, verify that name and availabilities match
-		// Key is not verified
-		for (int i = 0; i < this.size(); i++) {
-			if (!this.getInstructorName(i).equalsIgnoreCase(
-					dxsoi.getInstructorName(i))
-					|| !this.getInstructorAvailability(i).isEquals(
-							dxsoi.getInstructorAvailability(i)))
-				return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Validate that nIndex is a valid instrutor in the set
-	 * 
-	 * @param nIndex
-	 *            Index to be verified
-	 * @return boolean true if the index was valid, false otherwise
-	 */
-	private boolean isValidIndex(int nIndex) {
-		return ((nIndex >= 0) && (nIndex < _vInstructors.size()));
-	}
+    /**
+     * Validate that nIndex is a valid instrutor in the set
+     * 
+     * @param nIndex
+     *            Index to be verified
+     * @return boolean true if the index was valid, false otherwise
+     */
+    private boolean isValidIndex(int nIndex) {
+        return ((nIndex >= 0) && (nIndex < _vInstructors.size()));
+    }
 
 }
