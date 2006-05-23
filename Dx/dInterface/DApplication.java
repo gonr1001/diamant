@@ -34,6 +34,7 @@ import java.util.StringTokenizer;
 import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -527,6 +528,28 @@ public class DApplication { //implements ActionListener {
 	 */
 	public void importFiles() {
 		new ImportDlg(this);
+	}
+	
+	public void doImport(JDialog jD, String fil){
+		
+		try {
+            String error = "";
+            this.setCursorWait();
+            if (this.getCurrentDoc() != null) {
+                error = this.getCurrentDModel().importData(fil);
+            } else
+                error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
+            if (error.length() == 0) {
+                new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
+            } else {
+                new FatalProblemDlg(this.getJFrame(), error);
+                System.exit(1);
+            }
+            this.setCursorDefault();
+		} catch (Exception e){
+			new FatalProblemDlg(e.toString());
+			jD.dispose();
+		}
 	}
 
 	/**

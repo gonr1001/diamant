@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.28 $  $Date: 2006-04-24 01:27:52 $
+ * Title: ImportDlg $Revision: 1.29 $  $Date: 2006-05-23 20:58:57 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -78,20 +78,22 @@ public class ImportDlg extends JDialog {
                             fc.getSelectedFile().getAbsolutePath().lastIndexOf(
                                     File.separatorChar) + 1));
             dApplic.setCurrentDir(fil);
+            
+            dApplic.doImport(this, fil);
 
-            String error = "";
-            dApplic.setCursorWait();
-            if (dApplic.getCurrentDoc() != null) {
-                error = dApplic.getCurrentDModel().importData(fil);
-            } else
-                error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
-            if (error.length() == 0) {
-                new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
-            } else {
-                new FatalProblemDlg(dApplic.getJFrame(), error);
-                System.exit(1);
-            }
-            dApplic.setCursorDefault();
+//            String error = "";
+//            dApplic.setCursorWait();
+//            if (dApplic.getCurrentDoc() != null) {
+//                error = dApplic.getCurrentDModel().importData(fil);
+//            } else
+//                error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
+//            if (error.length() == 0) {
+//                new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
+//            } else {
+//                new FatalProblemDlg(dApplic.getJFrame(), error);
+//                System.exit(1);
+//            }
+//            dApplic.setCursorDefault();
             dApplic.getCurrentDModel().changeInDModelByImportDlg(this);
             dApplic.setCurrentDir(fc.getSelectedFile().getPath());
             dispose();
