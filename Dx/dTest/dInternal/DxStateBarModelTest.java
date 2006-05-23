@@ -42,9 +42,6 @@ import dInternal.DxStateBarModel;
  */
 public class DxStateBarModelTest extends TestCase {
 
-
-
-
 	public DxStateBarModelTest(String name) {
 		super(name);
 	}
@@ -88,6 +85,7 @@ public class DxStateBarModelTest extends TestCase {
 				+ "loadData7j.dia";
 		int _type = 1;
 		_dm7j = new DModel(_doc7j, fileName1, _type);
+		_dm7j.changeInDModel(new Object());
 		DxStateBarModel sbm = new DxStateBarModel(_dm7j);
 		sbm.update();
 		assertEquals("test0_StateBarModel_7j: assertEquals", -1, sbm.elementAt(0).getValue());
@@ -97,10 +95,10 @@ public class DxStateBarModelTest extends TestCase {
 		assertEquals("test4_StateBarModel_7j: assertEquals", 15, sbm.elementAt(4).getValue());
 		assertEquals("test5_StateBarModel_7j: assertEquals", 27, sbm.elementAt(5).getValue());
 		assertEquals("test6_StateBarModel_7j: assertEquals", 2, sbm.elementAt(6).getValue());
-		assertEquals("test7_StateBarModel_7j: assertEquals", 60, sbm.elementAt(7).getValue());
-		assertEquals("test8_StateBarModel_7j: assertEquals", 30, sbm.elementAt(8).getValue());
-		assertEquals("test9_StateBarModel_7j: assertEquals", 10, sbm.elementAt(9).getValue());
-		assertEquals("test10_StateBarModel_7j: assertEquals", 20, sbm.elementAt(10).getValue());
+		assertEquals("test7_StateBarModel_7j: assertEquals", 0, sbm.elementAt(7).getValue());
+		assertEquals("test8_StateBarModel_7j: assertEquals", 0, sbm.elementAt(8).getValue());
+		assertEquals("test9_StateBarModel_7j: assertEquals", 0, sbm.elementAt(9).getValue());
+		assertEquals("test10_StateBarModel_7j: assertEquals", 0, sbm.elementAt(10).getValue());
 	}
 
 }

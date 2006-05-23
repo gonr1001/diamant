@@ -102,7 +102,7 @@ public class DLoadData {
 			_chars = _dm.getDDocument().getDMediator().getDApplication()
 					.getPreferences()._acceptedChars;
 		completeLoadData();
-		_roomsAttributesInterpretor = extractRoomsAttributesInterpretor();
+//		_roomsAttributesInterpretor = extractRoomsAttributesInterpretor();
 		verifyImportDataFile(args);
 	}
 
