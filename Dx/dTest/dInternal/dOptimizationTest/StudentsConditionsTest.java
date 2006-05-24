@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DDocument;
 import dInternal.DModel;
+import dInternal.dOptimization.DxStudentCondtionsToTest;
 import dInternal.dOptimization.TestStudentsConditions;
 import dInternal.dTimeTable.Period;
 
@@ -47,7 +48,7 @@ public class StudentsConditionsTest extends TestCase {
   public void test_EventsConflicts(){
     _dm1.getTTStructure().getCurrentCycle().getNextPeriod(1);
     Period period= _dm1.getTTStructure().getCurrentCycle().getNextPeriod(1);
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+    DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm1.getConditionsTest().getConflictsMatrix(),
         _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     int[] perKey={1,1,2};
     testStud.executeTest(perKey,period,"AMC640.1.01.1.",1);
@@ -58,7 +59,7 @@ public class StudentsConditionsTest extends TestCase {
   public void test2_EventsConflicts(){
       _dm2.getTTStructure().getCurrentCycle().getNextPeriod(1);
       Period period= _dm2.getTTStructure().getCurrentCycle().getNextPeriod(1);
-      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+      DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm2.getConditionsTest().getConflictsMatrix(),
           _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
       int[] perKey={1,1,2};
       testStud.executeTest(perKey,period,"AMC640.1.01.1.",1);
@@ -70,7 +71,7 @@ public class StudentsConditionsTest extends TestCase {
    *
    */
   public void test_periodVariationEventsPeriods(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm1.getConditionsTest().getConflictsMatrix(),
         _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
@@ -79,7 +80,7 @@ public class StudentsConditionsTest extends TestCase {
   }
   
   public void test2_periodVariationEventsPeriods(){
-      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm2.getConditionsTest().getConflictsMatrix(),
           _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
       testStud.setPeriodVariationEvents(3);
       int[] perKey={2,1,2};
@@ -91,7 +92,7 @@ public class StudentsConditionsTest extends TestCase {
    *
    */
   public void test3_periodVariationEventsPeriods(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm1.getConditionsTest().getConflictsMatrix(),
         _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
@@ -103,7 +104,7 @@ public class StudentsConditionsTest extends TestCase {
   }
   
   public void test4_periodVariationEventsPeriods(){
-      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm2.getConditionsTest().getConflictsMatrix(),
           _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
       testStud.setPeriodVariationEvents(3);
       int[] perKey={2,1,2};
@@ -118,7 +119,7 @@ public class StudentsConditionsTest extends TestCase {
    *
    */
   public void test5_periodVariationEventsPeriods(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm1.getConditionsTest().getConflictsMatrix(),
         _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
@@ -130,7 +131,7 @@ public class StudentsConditionsTest extends TestCase {
   }
   
   public void test6_periodVariationEventsPeriods(){
-      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm2.getConditionsTest().getConflictsMatrix(),
           _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
       testStud.setPeriodVariationEvents(3);
       int[] perKey={2,1,2};
@@ -145,7 +146,7 @@ public class StudentsConditionsTest extends TestCase {
    *
    */
   public void test7_periodVariationEventsPeriods(){
-    TestStudentsConditions testStud= new TestStudentsConditions(_dm1.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm1.getConditionsTest().getConflictsMatrix(),
         _dm1.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
     testStud.setPeriodVariationEvents(3);
     int[] perKey={2,1,2};
@@ -157,7 +158,7 @@ public class StudentsConditionsTest extends TestCase {
   }
   
   public void test8_periodVariationEventsPeriods(){
-      TestStudentsConditions testStud= new TestStudentsConditions(_dm2.getConditionsTest().getConflictsMatrix(),
+	  DxStudentCondtionsToTest testStud= new DxStudentCondtionsToTest(_dm2.getConditionsTest().getConflictsMatrix(),
           _dm2.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
       testStud.setPeriodVariationEvents(3);
       int[] perKey={2,1,2};

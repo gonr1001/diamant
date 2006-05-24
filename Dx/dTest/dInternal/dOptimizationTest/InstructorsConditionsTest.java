@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DDocument;
 import dInternal.DModel;
+import dInternal.dOptimization.DxInstructorsConditionsToTest;
 import dInternal.dOptimization.TestInstructorsConditions;
 import dInternal.dTimeTable.Period;
 
@@ -55,7 +56,7 @@ public class InstructorsConditionsTest extends TestCase {
    public void test_2EventsConflicts5j(){
      _dm5j.getTTStructure().getCurrentCycle().getNextPeriod(1);
      Period period= _dm5j.getTTStructure().getCurrentCycle().getNextPeriod(1);
-     TestInstructorsConditions testIns= new TestInstructorsConditions(_dm5j);
+     DxInstructorsConditionsToTest testIns= new DxInstructorsConditionsToTest(_dm5j);
      int[] perKey={1,1,2};
      testIns.executeTest(perKey,period,"AMC640.1.01.1.",1);
      int nbConf= testIns.executeTest(perKey,period,"AMC640.1.02.1.",0);
@@ -67,7 +68,7 @@ public class InstructorsConditionsTest extends TestCase {
    */
   public void test_Availability7j(){
      Period period= _dm7j.getTTStructure().getCurrentCycle().getFirstPeriod();
-     TestInstructorsConditions testIns= new TestInstructorsConditions(_dm7j);
+     DxInstructorsConditionsToTest testIns= new DxInstructorsConditionsToTest(_dm7j);
      int[] perKey={1,1,1};
      int nbConf= testIns.executeTest(perKey,period,"AMC640.1.01.1.",0);
      assertEquals("test_Availability7j : assertEquals 2",1, nbConf);
@@ -79,7 +80,7 @@ public class InstructorsConditionsTest extends TestCase {
    public void test_2EventsConflicts7j(){
      _dm7j.getTTStructure().getCurrentCycle().getNextPeriod(1);
      Period period= _dm7j.getTTStructure().getCurrentCycle().getNextPeriod(1);
-     TestInstructorsConditions testIns= new TestInstructorsConditions(_dm7j);
+     DxInstructorsConditionsToTest testIns= new DxInstructorsConditionsToTest(_dm7j);
      int[] perKey={1,1,2};
      testIns.executeTest(perKey,period,"AMC640.1.01.1.",1);
      int nbConf= testIns.executeTest(perKey,period,"AMC640.1.02.1.",0);
