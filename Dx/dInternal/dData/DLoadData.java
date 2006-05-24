@@ -32,7 +32,6 @@ import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorReader;
 import dInternal.dData.dInstructors.DxReadInstructor1dot5;
-import dInternal.dData.dInstructors.DxReadInstructors;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
