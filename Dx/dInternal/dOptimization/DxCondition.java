@@ -42,5 +42,10 @@ public interface DxCondition {
 	 */
 	public int executeTest(int[] perKey, Period per, String eventKey,
 			int operation);
+	public int getInfo(int[] perKey, Period per, String eventKey);
+	
+	public int addTest(int[] perKey, Period per, String eventKey);
+	
+	public int removeTest(int[] perKey, Period per, String eventKey);
 
 }

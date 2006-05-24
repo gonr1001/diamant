@@ -38,6 +38,7 @@ import dInternal.dUtil.DXToolsMethods;
  * 
  */
 public class DxStudentCondtionsToTest implements DxCondition {
+
 	StudentsConflictsMatrix _matrix;
 
 	SetOfActivities _soa;
@@ -84,10 +85,9 @@ public class DxStudentCondtionsToTest implements DxCondition {
 				+ DConst.TOKENSEPARATOR
 				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 2);
 		int number = 0;
-		// if (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1){
 		int nbConf = 0;
 		ConflictsAttach confVal = new ConflictsAttach();
-		Vector allPeriods = new Vector(1);
+		Vector<Period> allPeriods = new Vector<Period>();
 		Period period;
 		if (operation == 0)
 			allPeriods = periodVariationEventsPeriods(perKey);
@@ -95,7 +95,7 @@ public class DxStudentCondtionsToTest implements DxCondition {
 			allPeriods.add(per);
 
 		for (int a = 0; a < allPeriods.size(); a++) {
-			period = (Period) allPeriods.get(a);
+			period = allPeriods.get(a);
 
 			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
 				String event2 = period.getEventsInPeriod().getResourceAt(i)
@@ -143,9 +143,6 @@ public class DxStudentCondtionsToTest implements DxCondition {
 
 			break;
 		}
-		// return 0;
-		// }// end if
-		// (period.getEventsInPeriod().getIndexOfResource(eventKey)==-1)
 		return number;
 	}
 
@@ -158,24 +155,170 @@ public class DxStudentCondtionsToTest implements DxCondition {
 	 *            (in number of periods)
 	 * @return
 	 */
-	public Vector periodVariationEventsPeriods(int[] perKey) {
-		Vector periodsVector = new Vector(1);
+	public Vector<Period> periodVariationEventsPeriods(int[] perKey) {
+		Vector<Period> vPeriods = new Vector<Period>();
 		_cycle.setCurrentDaySeqPerIndex(perKey[0] - 1, perKey[1] - 1,
 				perKey[2] - 1);
 		_cycle.getPreviousPeriod(1);
 		// get previous periods
 		for (int i = 0; i < _periodVariationEvents; i++) {
 			Period per = _cycle.getPreviousPeriod(1);
-			periodsVector.insertElementAt(per, 0);
+			vPeriods.insertElementAt(per, 0);
 		}
 		// get next periods
 		_cycle.setCurrentDaySeqPerIndex(perKey[0] - 1, perKey[1] - 1,
 				perKey[2] - 1);
 		for (int i = 0; i < _periodVariationEvents + 1; i++) {
 			Period per = _cycle.getNextPeriod(1);
-			periodsVector.add(per);
+			vPeriods.add(per);
 		}
-		return periodsVector;
+		return vPeriods;
+	}
+
+	public int addTest(int[] perKey, Period per, String eventKey) {
+		String key1 = DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR,
+				0)
+				+ DConst.TOKENSEPARATOR
+				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 1)
+				+ DConst.TOKENSEPARATOR
+				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 2);
+		int number = 0;
+		int nbConf = 0;
+		ConflictsAttach confVal = new ConflictsAttach();
+		Vector<Period> allPeriods = new Vector<Period>();
+		Period period;
+
+		allPeriods.add(per);
+
+		for (int a = 0; a < allPeriods.size(); a++) {
+			period = allPeriods.get(a);
+
+			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
+				String event2 = period.getEventsInPeriod().getResourceAt(i)
+						.getID();
+				String key2 = DXToolsMethods.getToken(event2,
+						DConst.TOKENSEPARATOR, 0)
+						+ DConst.TOKENSEPARATOR
+						+ DXToolsMethods.getToken(event2,
+								DConst.TOKENSEPARATOR, 1)
+						+ DConst.TOKENSEPARATOR
+						+ DXToolsMethods.getToken(event2,
+								DConst.TOKENSEPARATOR, 2);
+				if (!key1.equalsIgnoreCase(key2)) {
+					nbConf = _matrix.getNumberOfCOnflicts(key1, key2);
+					number += nbConf;
+					if (nbConf != 0)
+						confVal.addConflict(period.getEventsInPeriod()
+								.getResourceAt(i).getID(), nbConf,
+								DConst.R_STUDENT_NAME, new Vector());
+				}// end if(!key1.equalsIgnoreCase(key2))
+			}// end for (int i=0; i< period.getEventsInPeriod().size(); i++)
+
+		}// for(int a=0; a< allPeriods.size(); a++)
+
+		DResource resc = per.getEventsInPeriod().getResource(eventKey);
+		if (resc != null)
+			((ConflictsAttach) resc.getAttach()).mergeConflictsAttach(confVal);
+		else
+			per.getEventsInPeriod().addResource(
+					new DResource(eventKey, confVal), 1);
+		per.addNbStudConflict(number);
+
+		return number;
+	}
+
+	public int removeTest(int[] perKey, Period per, String eventKey) {
+		String key1 = DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR,
+				0)
+				+ DConst.TOKENSEPARATOR
+				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 1)
+				+ DConst.TOKENSEPARATOR
+				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 2);
+		int number = 0;
+		int nbConf = 0;
+		ConflictsAttach confVal = new ConflictsAttach();
+		Vector<Period> allPeriods = new Vector<Period>();
+		Period period;
+
+		allPeriods.add(per);
+
+		for (int a = 0; a < allPeriods.size(); a++) {
+			period = allPeriods.get(a);
+
+			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
+				String event2 = period.getEventsInPeriod().getResourceAt(i)
+						.getID();
+				String key2 = DXToolsMethods.getToken(event2,
+						DConst.TOKENSEPARATOR, 0)
+						+ DConst.TOKENSEPARATOR
+						+ DXToolsMethods.getToken(event2,
+								DConst.TOKENSEPARATOR, 1)
+						+ DConst.TOKENSEPARATOR
+						+ DXToolsMethods.getToken(event2,
+								DConst.TOKENSEPARATOR, 2);
+				if (!key1.equalsIgnoreCase(key2)) {
+					nbConf = _matrix.getNumberOfCOnflicts(key1, key2);
+					number += nbConf;
+					if (nbConf != 0)
+						confVal.addConflict(period.getEventsInPeriod()
+								.getResourceAt(i).getID(), nbConf,
+								DConst.R_STUDENT_NAME, new Vector());
+				}// end if(!key1.equalsIgnoreCase(key2))
+			}// end for (int i=0; i< period.getEventsInPeriod().size(); i++)
+
+		}// for(int a=0; a< allPeriods.size(); a++)
+
+		per.getEventsInPeriod().removeResource(eventKey);
+		per.removeNbStudConflict(number);
+		for (int i = 0; i < per.getEventsInPeriod().size(); i++)
+			((ConflictsAttach) per.getEventsInPeriod().getResourceAt(i)
+					.getAttach()).removeConflict(eventKey,
+					DConst.R_STUDENT_NAME);
+
+		return number;
+	}
+
+	public int getInfo(int[] perKey, Period per, String eventKey) {
+		String key1 = DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR,
+				0)
+				+ DConst.TOKENSEPARATOR
+				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 1)
+				+ DConst.TOKENSEPARATOR
+				+ DXToolsMethods.getToken(eventKey, DConst.TOKENSEPARATOR, 2);
+		int number = 0;
+		int nbConf = 0;
+		ConflictsAttach confVal = new ConflictsAttach();
+		Vector<Period> allPeriods = new Vector<Period>();
+		Period period;
+
+		allPeriods = periodVariationEventsPeriods(perKey);
+
+		for (int a = 0; a < allPeriods.size(); a++) {
+			period = allPeriods.get(a);
+
+			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
+				String event2 = period.getEventsInPeriod().getResourceAt(i)
+						.getID();
+				String key2 = DXToolsMethods.getToken(event2,
+						DConst.TOKENSEPARATOR, 0)
+						+ DConst.TOKENSEPARATOR
+						+ DXToolsMethods.getToken(event2,
+								DConst.TOKENSEPARATOR, 1)
+						+ DConst.TOKENSEPARATOR
+						+ DXToolsMethods.getToken(event2,
+								DConst.TOKENSEPARATOR, 2);
+				if (!key1.equalsIgnoreCase(key2)) {
+					nbConf = _matrix.getNumberOfCOnflicts(key1, key2);
+					number += nbConf;
+					if (nbConf != 0)
+						confVal.addConflict(period.getEventsInPeriod()
+								.getResourceAt(i).getID(), nbConf,
+								DConst.R_STUDENT_NAME, new Vector());
+				}// end if(!key1.equalsIgnoreCase(key2))
+			}// end for (int i=0; i< period.getEventsInPeriod().size(); i++)
+
+		}// for(int a=0; a< allPeriods.size(); a++)
+		return number;
 	}
 
 }
