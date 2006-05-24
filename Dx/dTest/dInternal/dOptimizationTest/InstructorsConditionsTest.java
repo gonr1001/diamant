@@ -44,7 +44,7 @@ public class InstructorsConditionsTest extends TestCase {
    */
   public void test_Availability5j(){
      Period period= _dm5j.getTTStructure().getCurrentCycle().getFirstPeriod();
-     TestInstructorsConditions testIns= new TestInstructorsConditions(_dm5j);
+     DxInstructorsConditionsToTest testIns= new DxInstructorsConditionsToTest(_dm5j);
      int[] perKey={1,1,1};
      int nbConf= testIns.executeTest(perKey,period,"AMC640.1.01.1.",0);
      assertEquals("test_Availability5j : assertEquals 2",1, nbConf);
