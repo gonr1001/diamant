@@ -56,54 +56,54 @@ public class DxRoomsConditionsToTest implements DxCondition {
 		_dm = dm;
 	}
 
-	/**
-	 * 
-	 * @param period
-	 * @param eventKey
-	 * @param operation
-	 * @return
-	 */
-	public int executeTest(int[] perKey, Period period, String eventKey,
-			int operation) {
-		int number = 0;
-		int nbConf1, nbConf2, nbConf3 = 0;
-		perKey[0] = perKey[0];
-		ConflictsAttach confVal = new ConflictsAttach();
-		nbConf1 = roomAvailibilityConflicts(period, eventKey);
-		nbConf2 = roomCapacityConflicts(/* period, */eventKey);
-		nbConf3 = roomEventsConflicts(period, eventKey, confVal);
-		number = nbConf1 + nbConf2 + nbConf3;
-		if (nbConf1 != 0)
-			confVal.addConflict("Disponibilite Local", nbConf1,
-					DConst.R_ROOM_NAME, new Vector());
-		if (nbConf2 != 0)
-			confVal.addConflict("Capacité Local", nbConf2, DConst.R_ROOM_NAME,
-					new Vector());
-
-		switch (operation) {
-		case 0:
-			break;
-		case 1:
-			DResource resc = period.getEventsInPeriod().getResource(eventKey);
-			if (resc != null)
-				((ConflictsAttach) resc.getAttach())
-						.mergeConflictsAttach(confVal);
-			else
-				period.getEventsInPeriod().addResource(
-						new DResource(eventKey, confVal), 1);
-			period.addNbRoomsConflict(number);
-			break;
-		case -1:
-			period.getEventsInPeriod().removeResource(eventKey);
-			period.removeNbRoomsConflict(number);
-			for (int i = 0; i < period.getEventsInPeriod().size(); i++)
-				((ConflictsAttach) period.getEventsInPeriod().getResourceAt(i)
-						.getAttach()).removeConflict(eventKey,
-						DConst.R_ROOM_NAME);
-			break;
-		}
-		return number;
-	}
+//	/**
+//	 * 
+//	 * @param period
+//	 * @param eventKey
+//	 * @param operation
+//	 * @return
+//	 */
+//	public int executeTest(int[] perKey, Period period, String eventKey,
+//			int operation) {
+//		int number = 0;
+//		int nbConf1, nbConf2, nbConf3 = 0;
+//		perKey[0] = perKey[0];
+//		ConflictsAttach confVal = new ConflictsAttach();
+//		nbConf1 = roomAvailibilityConflicts(period, eventKey);
+//		nbConf2 = roomCapacityConflicts(/* period, */eventKey);
+//		nbConf3 = roomEventsConflicts(period, eventKey, confVal);
+//		number = nbConf1 + nbConf2 + nbConf3;
+//		if (nbConf1 != 0)
+//			confVal.addConflict("Disponibilite Local", nbConf1,
+//					DConst.R_ROOM_NAME, new Vector());
+//		if (nbConf2 != 0)
+//			confVal.addConflict("Capacité Local", nbConf2, DConst.R_ROOM_NAME,
+//					new Vector());
+//
+//		switch (operation) {
+//		case 0:
+//			break;
+//		case 1:
+//			DResource resc = period.getEventsInPeriod().getResource(eventKey);
+//			if (resc != null)
+//				((ConflictsAttach) resc.getAttach())
+//						.mergeConflictsAttach(confVal);
+//			else
+//				period.getEventsInPeriod().addResource(
+//						new DResource(eventKey, confVal), 1);
+//			period.addNbRoomsConflict(number);
+//			break;
+//		case -1:
+//			period.getEventsInPeriod().removeResource(eventKey);
+//			period.removeNbRoomsConflict(number);
+//			for (int i = 0; i < period.getEventsInPeriod().size(); i++)
+//				((ConflictsAttach) period.getEventsInPeriod().getResourceAt(i)
+//						.getAttach()).removeConflict(eventKey,
+//						DConst.R_ROOM_NAME);
+//			break;
+//		}
+//		return number;
+//	}
 
 	/**
 	 * check room availability conflicts

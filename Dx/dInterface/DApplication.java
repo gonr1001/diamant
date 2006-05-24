@@ -164,7 +164,6 @@ public class DApplication { //implements ActionListener {
 		ImageIcon iconeDiamant = new ImageIcon(_currentDir + File.separator
 				+ "pref" + File.separator + "logoDiamant.gif");
 		_jFrame.setIconImage(iconeDiamant.getImage());
-
 		setLAF(_preferences._lookAndFeel);
 		_logger.warn("bye_from DApplication"); //this must be the end of an execution
 	}
@@ -214,21 +213,6 @@ public class DApplication { //implements ActionListener {
 		return jFrame;
 	} // end createUI
 
-	// -------------------------------------------
-//	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() instanceof JRadioButton) {
-//			// XXXX Pascal: Pourquoi ce 'if' est-il vide?
-//			// Ne devrait pas etre laisse ds cet etat
-//		}
-//		// if (e.getSource() instanceof CommandHolder) {
-//		// ((CommandHolder) e.getSource()).getCommand().execute(this);
-//		// } else {
-//		// System.out
-//		// .println("DApplication: I do not know what to do, please help me
-//		// (Action Performed)");
-//		// // XXXX Pascal: Devrait etre logge
-//		// }// end if ... else
-//	}// end actionPerformed
 
 	public JDesktopPane getDesktop() {
 		return _jDesktopPane;
@@ -254,7 +238,6 @@ public class DApplication { //implements ActionListener {
 		return _tbar;
 	}
 
-	// -------------------------------------------
 	public Preferences getPreferences() {
 		return _preferences;
 	} // end getPreferences
@@ -305,8 +288,6 @@ public class DApplication { //implements ActionListener {
 			ie.printStackTrace();
 			System.exit(61);
 		}
-
-		// SwingUtilities.updateComponentTreeUI(_jFrame); //To erease (AlexJ)
 	} // end setLF
 
 	// -------------------------------------------
@@ -332,8 +313,6 @@ public class DApplication { //implements ActionListener {
 
 	}
 
-	// -------------------------------------------
-	// -------------------------------------------
 	/**
 	 * Closes the document(s) and the application. Use this method for
 	 * processing close via the quit menuItem.

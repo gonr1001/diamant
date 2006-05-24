@@ -51,53 +51,53 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 		_dm = dm;
 	}
 
-	/**
-	 * 
-	 * @param period
-	 * @param eventKey
-	 * @param operation
-	 * @return
-	 */
-	public int executeTest(int[] perKey, Period period, String eventKey,
-			int operation) {
-		int number = 0;
-		int nbConf1, nbConf2;
-		ConflictsAttach confVal = new ConflictsAttach();
-		ConflictsAttach confVal2 = new ConflictsAttach();
-		nbConf1 = InstructorAvailibilityConflicts(period, perKey, eventKey,
-				confVal2);
-		nbConf2 = InstructorEventsConflicts(period, eventKey, confVal);
-		number = nbConf1 + nbConf2;
-		if (nbConf1 != 0)
-			confVal.mergeConflictsAttach(confVal2);
-		switch (operation) {
-		case 0:
-			break;
-		case 1:
-			DResource resc = period.getEventsInPeriod().getResource(eventKey);
-			if (resc != null)
-				((ConflictsAttach) resc.getAttach())
-						.mergeConflictsAttach(confVal);
-			else
-				period.getEventsInPeriod().addResource(
-						new DResource(eventKey, confVal), 1);
-			period.addNbInstructorsConflict(number);
-			break;
-		case -1:
-			period.getEventsInPeriod().removeResource(eventKey);
-			period.removeNbInstructorsConflict(number);
-			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
-				((ConflictsAttach) period.getEventsInPeriod().getResourceAt(i)
-						.getAttach()).removeConflict(eventKey,
-						DConst.R_INSTRUCTOR_NAME);
-				((ConflictsAttach) period.getEventsInPeriod().getResourceAt(i)
-						.getAttach()).removeConflict(eventKey,
-						DConst.R_INSTRUCTOR_NAME_AVAIL);
-			}
-			break;
-		}
-		return number;
-	}
+//	/**
+//	 * 
+//	 * @param period
+//	 * @param eventKey
+//	 * @param operation
+//	 * @return
+//	 */
+//	public int executeTest(int[] perKey, Period period, String eventKey,
+//			int operation) {
+//		int number = 0;
+//		int nbConf1, nbConf2;
+//		ConflictsAttach confVal = new ConflictsAttach();
+//		ConflictsAttach confVal2 = new ConflictsAttach();
+//		nbConf1 = InstructorAvailibilityConflicts(period, perKey, eventKey,
+//				confVal2);
+//		nbConf2 = InstructorEventsConflicts(period, eventKey, confVal);
+//		number = nbConf1 + nbConf2;
+//		if (nbConf1 != 0)
+//			confVal.mergeConflictsAttach(confVal2);
+//		switch (operation) {
+//		case 0:
+//			break;
+//		case 1:
+//			DResource resc = period.getEventsInPeriod().getResource(eventKey);
+//			if (resc != null)
+//				((ConflictsAttach) resc.getAttach())
+//						.mergeConflictsAttach(confVal);
+//			else
+//				period.getEventsInPeriod().addResource(
+//						new DResource(eventKey, confVal), 1);
+//			period.addNbInstructorsConflict(number);
+//			break;
+//		case -1:
+//			period.getEventsInPeriod().removeResource(eventKey);
+//			period.removeNbInstructorsConflict(number);
+//			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
+//				((ConflictsAttach) period.getEventsInPeriod().getResourceAt(i)
+//						.getAttach()).removeConflict(eventKey,
+//						DConst.R_INSTRUCTOR_NAME);
+//				((ConflictsAttach) period.getEventsInPeriod().getResourceAt(i)
+//						.getAttach()).removeConflict(eventKey,
+//						DConst.R_INSTRUCTOR_NAME_AVAIL);
+//			}
+//			break;
+//		}
+//		return number;
+//	}
 
 	/**
 	 * check Instructor availability conflicts

@@ -32,16 +32,6 @@ import dInternal.dTimeTable.Period;
  */
 public interface DxCondition {
 
-	/**
-	 * 
-	 * @param per
-	 * @param eventKey
-	 * @param int
-	 *            operation -1= remove event, 0= do nothing, 1= add event
-	 * @return
-	 */
-	public int executeTest(int[] perKey, Period per, String eventKey,
-			int operation);
 	public int getInfo(int[] perKey, Period per, String eventKey);
 	
 	public int addTest(int[] perKey, Period per, String eventKey);
