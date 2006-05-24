@@ -9,7 +9,6 @@ import junit.framework.TestSuite;
 import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dOptimization.DxStudentCondtionsToTest;
-import dInternal.dOptimization.TestStudentsConditions;
 import dInternal.dTimeTable.Period;
 
 
