@@ -23,7 +23,7 @@ import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
 
-public class TestRoomsConditions implements Condition{
+public class TestRoomsConditions implements DxCondition{
 
   private DModel _dm;
   private int _NOTAVAIL=5;

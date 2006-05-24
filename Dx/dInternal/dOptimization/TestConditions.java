@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.42 $  $Date: 2006-04-11 14:19:56 $
+* Title: TestConditions $Revision: 1.43 $  $Date: 2006-05-24 12:37:04 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.42 $
+* @version $Revision: 1.43 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -206,7 +206,7 @@ public class TestConditions {
           int [] newPerKey={perKey[0],perKey[1],perKey[2]+j};
           
           for (int k=0; k < _testToRun.size(); k++){
-            Condition cond = (Condition)_testToRun.get(k);
+            DxCondition cond = (DxCondition)_testToRun.get(k);
             numberOfConflicts[k] += cond.executeTest(newPerKey,per,event.getID(),operation);
           }// end  for (int j=0; j< _testToRun.size(); j++)
           

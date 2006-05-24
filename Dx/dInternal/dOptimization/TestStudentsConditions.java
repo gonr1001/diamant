@@ -18,7 +18,7 @@ import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
-public class TestStudentsConditions implements Condition {
+public class TestStudentsConditions implements DxCondition {
   StudentsConflictsMatrix _matrix;
   SetOfActivities _soa;
   Cycle _cycle;

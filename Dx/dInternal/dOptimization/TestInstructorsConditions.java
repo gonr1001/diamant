@@ -17,7 +17,7 @@ import dInternal.dData.AvailabilityAttach;
 import dInternal.dTimeTable.Period;
 //import dInternal.dUtil.DXToolsMethods;
 
-public class TestInstructorsConditions  implements Condition{
+public class TestInstructorsConditions  implements DxCondition{
 
   private DModel _dm;
   private int _NOTAVAIL=5;
