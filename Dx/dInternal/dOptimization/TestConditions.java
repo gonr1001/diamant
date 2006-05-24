@@ -1,6 +1,6 @@
 /**
 *
-* Title: TestConditions $Revision: 1.43 $  $Date: 2006-05-24 12:37:04 $
+* Title: TestConditions $Revision: 1.44 $  $Date: 2006-05-24 14:52:41 $
 * Description: TestConditions is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.43 $
+* @version $Revision: 1.44 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -52,9 +52,9 @@ public class TestConditions {
    _dm= dm;
    _testToRun = new Vector(); 
     _matrix = new StudentsConflictsMatrix();
-    _testToRun.add(new TestStudentsConditions(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle()));
-    _testToRun.add( new TestInstructorsConditions(_dm));
-    _testToRun.add( new TestRoomsConditions(_dm));
+    _testToRun.add(new DxStudentCondtionsToTest(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle()));
+    _testToRun.add( new DxInstructorsConditionsToTest(_dm));
+    _testToRun.add( new DxRoomsConditionsToTest(_dm));
   }
 
   public StudentsConflictsMatrix getConflictsMatrix(){
@@ -251,7 +251,7 @@ public class TestConditions {
         _avoidPriority[inc++]=i;
       _periodAcceptableSize= conflictsPreference[4];
       _periodVariationEvents = conflictsPreference[5];
-      ((TestStudentsConditions)_testToRun.get(0)).setPeriodVariationEvents(_periodVariationEvents);
+      ((DxStudentCondtionsToTest)_testToRun.get(0)).setPeriodVariationEvents(_periodVariationEvents);
     }
   }
 
@@ -270,7 +270,7 @@ public class TestConditions {
    */
   public Vector periodVariationEvents(int[] perKey){
     extractPreference();
-   TestStudentsConditions studTest= new TestStudentsConditions(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
+    DxStudentCondtionsToTest studTest= new DxStudentCondtionsToTest(_matrix, _dm.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle());
    studTest.setPeriodVariationEvents(_periodVariationEvents);
    return studTest.periodVariationEventsPeriods(perKey);
   }

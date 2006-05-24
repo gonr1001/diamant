@@ -26,7 +26,7 @@ import dInternal.dTimeTable.Period;
  * 
  * Description: DxCondition is a class used to:
  * <p>
- * TODO:insert comments
+ * ConditionsToTest Pattern
  * <p>
  * 
  */

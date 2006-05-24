@@ -45,8 +45,8 @@ import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dDlgModel.InstructorAvailabilityDlgModel;
+import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
-import dInternal.dOptimization.TestConditions;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -110,7 +110,7 @@ public class DModel extends Observable {
 
     private int _currentCycle = 1;
 
-    protected TestConditions _conditionTest;
+    protected DxConditionsToTest _conditionsToTest;
     
     private int[] _nbConflicts;
 
@@ -165,7 +165,7 @@ public class DModel extends Observable {
             _error = "Wrong type of file";
         }
         if (_error.length() == 0 && _isATimeTable)
-            _conditionTest = new TestConditions(this);
+            _conditionsToTest = new DxConditionsToTest(this);
         if ((type == DConst.CYCLE) || (type == DConst.EXAM))
             _isOnlyATimeTable = true;
         _type = type;
@@ -354,7 +354,7 @@ public class DModel extends Observable {
                 return _setOfStuSites.getError();
             }
             buildSetOfEvents();
-            _conditionTest = new TestConditions(this);
+            _conditionsToTest = new DxConditionsToTest(this);
             this.getConditionsTest().initAllConditions();
         }
         _constructionState = 1;
@@ -459,7 +459,7 @@ public class DModel extends Observable {
                     .selectiveImport(_setOfActivitiesSites, fileName);
             error = _setOfActivitiesSites.getError();
 
-            _conditionTest.setMatrixBuilded(false, true);
+            _conditionsToTest.setMatrixBuilded(false, true);
             changeInDModel(_dDocument.getJIF());
         } else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)) {//Importation
             // selective
@@ -468,7 +468,7 @@ public class DModel extends Observable {
             _setOfStuSites = (SetOfStuSites) loadData.selectiveImport(
                     _setOfStuSites, fileName);
             error = _setOfStuSites.getError();
-            _conditionTest.setMatrixBuilded(false, true);
+            _conditionsToTest.setMatrixBuilded(false, true);
             changeInDModel(_dDocument.getJIF());
         }
         _mergeDone = true;
@@ -595,8 +595,8 @@ public class DModel extends Observable {
      * 
      * @return
      */
-    public TestConditions getConditionsTest() {
-        return _conditionTest;
+    public DxConditionsToTest getConditionsTest() {
+        return _conditionsToTest;
     }
 
     /**
@@ -953,7 +953,7 @@ public class DModel extends Observable {
             if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
                 getSetOfActivities().buildStudentRegisteredList(
                         getSetOfStudents());
-            _conditionTest = new TestConditions(this);
+            _conditionsToTest = new DxConditionsToTest(this);
         }// end if (_setOfActivities!=null)
 
     }
