@@ -70,9 +70,10 @@ public class DMediator extends Object {
 	 * @param type
 	 *            is the type of timetable to be constructed possible types
 	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * @throws Exception 
 	 * 
 	 */
-	public String addDoc(String ttName, String fileName, int type) {
+	public String addDoc(String ttName, String fileName, int type) throws Exception /*!!!NIC!!!*/{
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if (currentDoc.getError().length() == 0) {
 			_documents.addElement(currentDoc);
@@ -94,9 +95,10 @@ public class DMediator extends Object {
 	 *            is the full path file name containing the TTStructure
 	 * @param type
 	 *            is the type of timetable to be constructed
+	 * @throws Exception 
 	 * 
 	 */
-	public String addDoc(String fileName, int type) {
+	public String addDoc(String fileName, int type) throws Exception /*!!!NIC!!!*/{
 		_dApplication.setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);

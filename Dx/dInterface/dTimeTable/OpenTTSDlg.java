@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.18 $  $Date: 2006-04-24 01:27:53 $
+ * Title: OpenTTSDlg $Revision: 1.19 $  $Date: 2006-05-24 19:10:31 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.19 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  */
 
@@ -85,11 +85,16 @@ public class OpenTTSDlg extends JDialog {
 			// get the file name
 			String fil = fc.getSelectedFile().getAbsolutePath();
 			dApplic.setCurrentDir(fil);
-			String error = dApplic.getDMediator().addDoc(fil, 0);
-			if (error.length() != 0) {
-				new FatalProblemDlg(dApplic.getJFrame(), error);
-				System.exit(1);
-			}
+///*!!!NIC!!!*/			String error;
+            try {
+                /*!!!NIC!!!error = */dApplic.getDMediator().addDoc(fil, 0);
+            } catch (Exception e) {
+                /*!!!NIC!!!*/
+            }
+///*!!!NIC!!!*/			if (error.length() != 0) {
+///*!!!NIC!!!*/				new FatalProblemDlg(dApplic.getJFrame(), error);
+///*!!!NIC!!!*/				System.exit(1);
+///*!!!NIC!!!*/			}
 			dispose();
 			dApplic.afterOpenTTSruc();
 

@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-05-18 17:14:00 $
+ * Title: DSaveDataTest $Revision $  $Date: 2006-05-24 19:10:33 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -74,7 +74,11 @@ public class DSaveDataTest extends TestCase {
         _fileNameTTS = "." + File.separator + "dataTest" + File.separator
                 + "downDataTTS.dia";
         _type = 1;
-        _dm1 = new DModel(_dDocument1, _fileName1, _type);
+        try {
+            _dm1 = new DModel(_dDocument1, _fileName1, _type);
+        } catch (Exception e) {
+            // Should not fail in controled conditions
+        }
 
         if (!DConst.newInstructors) {
             _error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
@@ -88,7 +92,11 @@ public class DSaveDataTest extends TestCase {
                     _fileName2);
         }
 
-        _dm2 = new DModel(_dDocument2, _fileName2, _type);
+        try {
+            _dm2 = new DModel(_dDocument2, _fileName2, _type);
+        } catch (Exception e) {
+            //Should not fail in controled conditions
+        }
     }
 
     public void test_getVersion() {

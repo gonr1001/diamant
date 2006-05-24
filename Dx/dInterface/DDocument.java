@@ -83,11 +83,12 @@ public class DDocument extends InternalFrameAdapter implements Observer {
 	 *            is the type of timetable to be constructed see DConst.
 	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM =
 	 *            3;
+	 * @throws Exception 
 	 * 
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DDocument(DMediator dMediator, String ttName, String fileName,
-			int type) {
+			int type) throws Exception /*!!!NIC!!!*/{
 		_dMediator = dMediator;
 		_dm = new DModel(this, fileName, type);
 		if (_dm.getError().length() == 0) {

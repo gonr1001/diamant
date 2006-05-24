@@ -59,6 +59,10 @@ public class DxReadInstructor1dot5 implements DxInstructorReader {
 
             // Line containing the name of the instructor
             case 1:
+                // TODO: This error will never happen since tokenizer skips all
+                // delimiters
+                // Thus, if string is empty, 2 delimiters will be skipped and
+                // the empty string wont appear
                 if (token.length() == 0) {
                     // _error = DConst.INST_TEXT2 + line + DConst.INST_TEXT5
                     // + "\n" + DConst.INST_TEXT6;
@@ -86,7 +90,7 @@ public class DxReadInstructor1dot5 implements DxInstructorReader {
                     // _error = DConst.INST_TEXT3 + line + DConst.INST_TEXT5
                     // + "\n" + DConst.INST_TEXT6;
                     // TODO: throw: Invalid number of periods per day
-                    throw new Exception(DConst.INST_TEXT3 + line
+                    throw new Exception(DConst.INST_TEXT3 + currentLine
                             + DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6);
                 }
 
@@ -99,7 +103,7 @@ public class DxReadInstructor1dot5 implements DxInstructorReader {
                         // _error = DConst.INST_TEXT4 + line + DConst.INST_TEXT5
                         // + "\n" + DConst.INST_TEXT6;
                         // TODO: throw: Invalid period availability
-                        throw new Exception(DConst.INST_TEXT4 + line
+                        throw new Exception(DConst.INST_TEXT4 + currentLine
                                 + DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6);
                     }
                 }
@@ -112,8 +116,10 @@ public class DxReadInstructor1dot5 implements DxInstructorReader {
                 // Once we have nDays availability for an instructor, we are
                 // ready to create it and step to next instructor
                 if (stateDispo > _nDays)
+                {
                     dxsoiInst.addInstructor(instID, dxaAvaTemp);
-                state = 1;
+                    state = 1;
+                }
                 break;
             }
         }

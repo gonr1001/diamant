@@ -52,17 +52,27 @@ public class DLoadDataTest extends TestCase {
 
 	public DLoadDataTest(String name) {
 		super(name);
+        
 		String path5j = "." + File.separator + "dataTest" + File.separator
 				+ "loadData5j.dia";
 		_loadData5j = new DLoadData();
-		_timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
-				+ "dataTest");
+		try {
+            _timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
+            		+ "dataTest");
+        } catch (Exception e) {
+            // Controled test should not fail
+        }
+        
 		String path7j = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		_loadData7j = new DLoadData();
 
-		_timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
-				+ "dataTest");
+		try {
+            _timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
+            		+ "dataTest");
+        } catch (Exception e) {
+            //Controled test should not fail
+        }
 	}
 
 	public static Test suite() {

@@ -19,6 +19,11 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.StringTokenizer;
+
+import dConstants.DConst;
+import dInternal.DataExchange;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -28,6 +33,26 @@ package dInternal.dData.dRooms;
  * <p> 
  * 
  */
-public class DxReadSite1dot5 {
+public class DxReadSite1dot5 implements DxSiteReader{
+    DataExchange _deSites;
+    public DxReadSite1dot5(DataExchange de)
+    {
+        _deSites=de;
+    }
+
+    public DxSetOfSites getSetOfSite() {
+        StringTokenizer st = new StringTokenizer(_deSites.getContents(),
+                DConst.CR_LF);
+        String sToken;
+        
+        int currentLine=0;
+        int state = 0;
+        
+        while (st.hasMoreElements()) {
+            sToken = st.nextToken();
+            currentLine++;
+        }
+        return null;
+    }
 
 }

@@ -28,6 +28,11 @@ package dInternal.dData.dRooms;
  * <p> 
  * 
  */
-public class DxReadSite1dot6 {
+public class DxReadSite1dot6 implements DxSiteReader{
+
+    public DxSetOfSites getSetOfSite() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

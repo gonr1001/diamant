@@ -396,8 +396,14 @@ public class DApplication { //implements ActionListener {
 	public void newTTableCycle() {
 		new NewTimeTableDlg(this, DConst.CYCLE);
 		this.setCurrentDir(_fileToOpen);
-		String error = this.getDMediator().addDoc(
-				this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.CYCLE);
+//		String error; !!!NIC!!!
+        try {/*!!!NIC!!!*/
+            /*error = !!!NIC!!!*/this.getDMediator().addDoc(
+            		this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.CYCLE);
+        } catch (Exception e) {/*!!!NIC!!!*/
+            // TODO Auto-generated catch block
+            e.printStackTrace();/*!!!NIC!!!*/
+        }/*!!!NIC!!!*/
 
 		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
 		//              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
@@ -407,10 +413,10 @@ public class DApplication { //implements ActionListener {
 		//              De plus, par convention, les valeurs positives de sortie d'une 
 		//              application indiquent que tout s'est BIEN passe.  Il faudrait 
 		//              retourner une valeur negative quand un probleme majeur survient.
-		if (error.length() != 0) {
-			new FatalProblemDlg(this.getJFrame(), error);
-			System.exit(1);
-		}
+//	!!!NIC!!!	if (error.length() != 0) {
+//	!!!NIC!!!		new FatalProblemDlg(this.getJFrame(), error);
+//	!!!NIC!!!		System.exit(1);
+//	!!!NIC!!!	}
 		_dxMenuBar.afterNewTTable();
 	}
 
@@ -420,8 +426,13 @@ public class DApplication { //implements ActionListener {
 	public void newTTableExam() {
 		new NewTimeTableDlg(this, DConst.EXAM);
 		this.setCurrentDir(_fileToOpen);
-		String error = this.getDMediator().addDoc(
-				this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
+        /*!!!NIC!!!String error;*/
+        try {
+            /*!!!NIC!!!error = */this.getDMediator().addDoc(
+            		this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
+        } catch (Exception e) {
+            /*!!!NIC!!!*/
+        }
 
 		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
 		//              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
@@ -431,10 +442,10 @@ public class DApplication { //implements ActionListener {
 		//              De plus, par convention, les valeurs positives de sortie d'une 
 		//              application indiquent que tout s'est BIEN passe.  Il faudrait 
 		//              retourner une valeur negative quand un probleme majeur survient.
-		if (error.length() != 0) {
-			new FatalProblemDlg(this.getJFrame(), error);
-			System.exit(1);
-		}
+///*!!!NIC!!!*/		if (error.length() != 0) {
+///*!!!NIC!!!*/			new FatalProblemDlg(this.getJFrame(), error);
+//	/*!!!NIC!!!*/		System.exit(1);
+//	/*!!!NIC!!!*/	}
 		_dxMenuBar.afterNewTTable();
 	}
 
@@ -450,8 +461,12 @@ public class DApplication { //implements ActionListener {
 	 */
 	public void newTTStrucCycle() {
 		this.showToolBar();
-		this._dMediator.addDoc(this.getPreferences()._standardTTC,
-				DConst.NO_TYPE);
+		try {
+            this._dMediator.addDoc(this.getPreferences()._standardTTC,
+            		DConst.NO_TYPE);
+        } catch (Exception e) {
+            /*!!!NIC!!!*/
+        }
 		_dxMenuBar.afterNewTTStruc();
 	}
 
@@ -460,8 +475,12 @@ public class DApplication { //implements ActionListener {
 	 */
 	public void newTTStrucExam() {
 		this.showToolBar();
-		this._dMediator.addDoc(this.getPreferences()._standardTTE,
-				DConst.NO_TYPE);
+		try {
+            this._dMediator.addDoc(this.getPreferences()._standardTTE,
+            		DConst.NO_TYPE);
+        } catch (Exception e) {
+            /*!!!NIC!!!*/
+        }
 		_dxMenuBar.afterNewTTStruc();
 	}
 
@@ -793,7 +812,11 @@ public class DApplication { //implements ActionListener {
 	 */
 	public void myFile() {
 		setCurrentDir(".\\devData\\");
-		_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
+		try {
+            _dMediator.addDoc(".\\devData\\fichier1.dia", 0);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+        }
 		getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
 		getCurrentDModel().changeInDModel(this.getJFrame());
 		_dxMenuBar.afterInitialAssignment();

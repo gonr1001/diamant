@@ -45,8 +45,12 @@ public class ConditionsTest extends TestCase {
 
 	public ConditionsTest(String name) {
 		super(name);
-		_dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
-				+ File.separator + "loadData5j.dia", 1);
+		try {
+            _dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
+            		+ File.separator + "loadData5j.dia", 1);
+        } catch (Exception e) {
+            //Should not fail in controled conditions
+        }
 		_dm5j.buildSetOfEvents();
 		_dm5j.getConditionsTest().buildStudentConflictMatrix();
 		_dm5j.getConditionsTest().buildAllConditions(_dm5j.getTTStructure());
@@ -54,15 +58,23 @@ public class ConditionsTest extends TestCase {
 		_period5j = _dm5j.getTTStructure().getCurrentCycle().getNextPeriod(1);
 		
 		
-		_dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
-				+ File.separator + "horaireRGR.dia", 1);
+		try {
+            _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
+            		+ File.separator + "horaireRGR.dia", 1);
+        } catch (Exception e) {
+            //Should not fail in controled conditions
+        }
 		_dmh.buildSetOfEvents();
 		_dmh.getConditionsTest().buildStudentConflictMatrix();
 		_dmh.getConditionsTest().buildAllConditions(_dmh.getTTStructure());
 
 		
-		_dm7j = new DModel(new DDocument(), "." + File.separator + "dataTest"
-				+ File.separator + "loadData7j.dia", 1);
+		try {
+            _dm7j = new DModel(new DDocument(), "." + File.separator + "dataTest"
+            		+ File.separator + "loadData7j.dia", 1);
+        } catch (Exception e) {
+            //Should not fail in controled conditions
+        }
 		_dm7j.buildSetOfEvents();
 		_dm7j.getConditionsTest().buildStudentConflictMatrix();
 		_dm7j.getConditionsTest().buildAllConditions(_dm7j.getTTStructure());

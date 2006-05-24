@@ -20,9 +20,12 @@ import dInternal.dOptimization.StudentsConflictsMatrix;
 public class StudentsConflictsMatrixTest extends TestCase {
 
     StudentsConflictsMatrix _matrix1;
-    DModel _dm1;    //For LoadData7j
+
+    DModel _dm1; // For LoadData7j
+
     StudentsConflictsMatrix _matrix2;
-    DModel _dm2;    //For LoadData5j
+
+    DModel _dm2; // For LoadData5j
 
     // SetOfActivities _soa;
     // SetOfStudents _sos;
@@ -30,8 +33,12 @@ public class StudentsConflictsMatrixTest extends TestCase {
 
     public StudentsConflictsMatrixTest(String name) {
         super(name);
-        _dm1 = new DModel(new DDocument(), "." + File.separator + "dataTest"
-                + File.separator + "loadData7j.dia", 0);
+        try {
+            _dm1 = new DModel(new DDocument(), "." + File.separator
+                    + "dataTest" + File.separator + "loadData7j.dia", 0);
+        } catch (Exception e) {
+            // Should not fail in controled conditions
+        }
         _dm1.buildSetOfEvents();
         // _dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
         _dm1.getConditionsTest().buildStudentConflictMatrix();
@@ -39,8 +46,12 @@ public class StudentsConflictsMatrixTest extends TestCase {
         // _dm.setStateBarComponent();
         _matrix1 = _dm1.getConditionsTest().getConflictsMatrix();
 
-        _dm2 = new DModel(new DDocument(), "." + File.separator + "dataTest"
-                + File.separator + "loadData5j.dia", 0);
+        try {
+            _dm2 = new DModel(new DDocument(), "." + File.separator
+                    + "dataTest" + File.separator + "loadData5j.dia", 0);
+        } catch (Exception e) {
+            // Should not fail in controled conditions
+        }
         _dm2.buildSetOfEvents();
         // _dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
         _dm2.getConditionsTest().buildStudentConflictMatrix();
@@ -65,6 +76,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
         assertEquals("test_SectionKeys_1 : assertEquals 1", 6, index[0]);
         assertEquals("test_SectionKeys_2 : assertEquals 2", 10, index[1]);
     }
+
     public void test2_SectionKeys() {
         String key1 = "GCH100.1.01";// key 1
         String key2 = "AMC645.1.01";// key 136
@@ -104,7 +116,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
         assertEquals("test3_Matrix : assertEquals", 1, _matrix1
                 .getNumberOfCOnflicts(key1, key2));
     }
-    
+
     /**
      * 
      */

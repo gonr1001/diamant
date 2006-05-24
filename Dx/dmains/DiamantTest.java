@@ -51,6 +51,7 @@ import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxReadInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
+import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
 
@@ -111,6 +112,7 @@ public class DiamantTest {
 		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(DxReadInstructorsTest.suite());
         suite.addTest(DxInstructorReaderTest.suite());
+        suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());

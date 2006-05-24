@@ -53,7 +53,7 @@ public class DxStateBarModelTest extends TestCase {
 	} // end suite
 
 
-	public void testStateBarModel_5j() {
+	public void testStateBarModel_5j() throws Exception {
 		DDocument _doc5j;		
 		DModel _dm5j;
 		_doc5j = new DDocument();
@@ -77,7 +77,7 @@ public class DxStateBarModelTest extends TestCase {
 		assertEquals("test10_StateBarModel_5j: assertEquals", 2, sbm.elementAt(10).getValue());		
 	}
 
-	public void testStateBarModel_7j() {
+	public void testStateBarModel_7j() throws Exception {
 		DDocument _doc7j;
 		DModel _dm7j;
 		_doc7j = new DDocument();

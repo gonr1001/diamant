@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.25 $  $Date: 2006-04-24 01:27:53 $
+ * Title: OpenTTDlg $Revision: 1.26 $  $Date: 2006-05-24 19:10:31 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.26 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  */
 
@@ -85,13 +85,18 @@ public class OpenTTDlg extends JDialog {
 			String fil = fc.getSelectedFile().getAbsolutePath();
 			dApplic.setCurrentDir(fil);
 
-			String error = dApplic.getDMediator().addDoc(fil, fil,
-					DConst.NO_TYPE);
+            /*!!!NIC!!!String error;*/
+            try {
+                /*!!!NIC!!!error =*/ dApplic.getDMediator().addDoc(fil, fil,
+                		DConst.NO_TYPE);
+            } catch (Exception e) {
+                /*!!!NIC!!!*/
+            }
 
-			if (error.length() != 0) {
-				new FatalProblemDlg(dApplic.getJFrame(), error);
-				System.exit(1);
-			}
+//	/*!!!NIC!!!*/		if (error.length() != 0) {
+//	/*!!!NIC!!!*/			new FatalProblemDlg(dApplic.getJFrame(), error);
+//	/*!!!NIC!!!*/			System.exit(1);
+//	/*!!!NIC!!!*/		}
 			dApplic.setCurrentDir(fc.getSelectedFile().getPath());
 			dApplic.getCurrentDModel().changeInDModel(dApplic.getJFrame());
 

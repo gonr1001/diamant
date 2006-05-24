@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.3 $ $Date: 2006-03-25 19:25:15 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.4 $ $Date: 2006-05-24 19:10:34 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: gonzrubi $
+ * @author $Author: caln1901 $
  * @since JDK1.3
  */
 
@@ -29,28 +29,43 @@ import dInternal.DModel;
 import dInternal.dOptimization.FirstAffectAlgorithm;
 
 public class FirstAffectAlgorithmTest extends TestCase {
-    
+
     FirstAffectAlgorithm _first;
-  	DModel 		_dm1;
-  	DModel 		_dm2;
-  	DDocument 	_dDocument1;
-  	DDocument 	_dDocument2;
-  	String 		_fileName;
-  	int 		_type;
-  	
-  	public FirstAffectAlgorithmTest(String name) {
+
+    DModel _dm1;
+
+    DModel _dm2;
+
+    DDocument _dDocument1;
+
+    DDocument _dDocument2;
+
+    String _fileName;
+
+    int _type;
+
+    public FirstAffectAlgorithmTest(String name) {
         super(name);
     }
-    
-    public void setUp(){
+
+    public void setUp() {
         _dDocument1 = new DDocument();
-      	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData5j.dia";
-      	_type = 1;
-      	_dm1= new DModel(_dDocument1,_fileName,_type);
-      	_dm1.getConditionsTest().initAllConditions(); //Affectation initialle
-      	_dDocument2 = new DDocument();
-      	_dm2= new DModel(_dDocument2,_fileName,_type);
-      	_first = new FirstAffectAlgorithm(_dm2);
+        _fileName = "." + File.separator + "dataTest" + File.separator
+                + "loadData5j.dia";
+        _type = 1;
+        try {
+            _dm1 = new DModel(_dDocument1, _fileName, _type);
+        } catch (Exception e) {
+            // Should not fail in controled conditions
+        }
+        _dm1.getConditionsTest().initAllConditions(); // Affectation initialle
+        _dDocument2 = new DDocument();
+        try {
+            _dm2 = new DModel(_dDocument2, _fileName, _type);
+        } catch (Exception e) {
+            // Should not fail in controled conditions
+        }
+        _first = new FirstAffectAlgorithm(_dm2);
     }
 
     public static Test suite() {
@@ -59,8 +74,8 @@ public class FirstAffectAlgorithmTest extends TestCase {
         return new TestSuite(FirstAffectAlgorithmTest.class);
     } // end suite
 
-    public void test_build(){
+    public void test_build() {
         _first.build();
-       // assertEquals("test_build: assertEquals", "", _dm1);   
+        // assertEquals("test_build: assertEquals", "", _dm1);
     }
 }

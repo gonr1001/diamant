@@ -76,8 +76,8 @@ public class DxInstructorReaderTest extends TestCase {
             dxsoi.getIndexByKey(0);
         } catch (Exception e) {
             assertEquals("test1_1_getSetOfInstructors: assertEquals",
-                    "java.lang.Exception: " + DConst.INST_TEXT2 + 2 // line 1
-                            + DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
+                    "java.lang.Exception: " + DConst.INST_TEXT3 + 7
+                    + DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
                             .toString());
         }
     }
@@ -120,7 +120,7 @@ public class DxInstructorReaderTest extends TestCase {
      * invalid number of periods in second instructor, 3rd day
      */
     public void test3_getSetOfInstructors() {
-        String tokens = "    2" + "\r\n" + "" + "\r\n"
+        String tokens = "    2" + "\r\n" + "John" + "\r\n"
                 + "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
                 + "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
