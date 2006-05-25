@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Vector;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -29,9 +31,15 @@ package dInternal.dData.dRooms;
  * 
  */
 public class DxRoom {
-    private long _lRoomKey;
-    private String _sRoomName;
-    private int _nRoomCapacity;
+    private long _lKey;
+    private String _sName;
+    private int _nCapacity;
+    
+        //Next members are not required but are provided in legacy files
+        //Kept in case it would be needed
+    private int _nFunction;
+    private Vector<Integer> _ivCharacteristics;
+    private String _sComment;
     
 
 }
