@@ -12,7 +12,7 @@ import dInternal.dOptimization.DxStudentCondtionsToTest;
 import dInternal.dTimeTable.Period;
 
 public class StudentsConditionsTest extends TestCase {
-
+//
 //    private DModel _dm1; // For dataTest7j
 //
 //    private DModel _dm2; // For dataTest5j
