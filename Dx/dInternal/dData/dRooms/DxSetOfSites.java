@@ -19,6 +19,10 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Vector;
+
+import dInternal.dData.dInstructors.DxInstructor;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -29,5 +33,7 @@ package dInternal.dData.dRooms;
  * 
  */
 public class DxSetOfSites {
+    private Vector<DxSite> _vSites;
+    private long _uniqueKey;
 
 }

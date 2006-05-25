@@ -29,5 +29,7 @@ package dInternal.dData.dRooms;
  * 
  */
 public class DxSite {
+    private long _lKey;
+    private DxSetOfCategories _dxsocCat;
 
 }
