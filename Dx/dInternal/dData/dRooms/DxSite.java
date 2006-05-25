@@ -19,17 +19,62 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Comparator;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxSite is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public class DxSite {
     private long _lKey;
+    private String _sName;
     private DxSetOfCategories _dxsocCat;
 
+    /**
+     * Constructor
+     * 
+     * @param lKey
+     *            Unique key of the new site
+     * @param sName
+     *            Name if the site created
+     */
+    public DxSite(long lKey, String sName)
+    {
+        _lKey=lKey;
+        _sName=sName;
+        _dxsocCat=new DxSetOfCategories();
+    }
+    
+    public static Comparator <DxSite> KeyComparator = new Comparator <DxSite> () {
+        public int compare(DxSite arg0, DxSite arg1) {
+            DxSite left = arg0;
+            DxSite right = arg1;
+            long diff=left._lKey-right._lKey;
+            if(diff>0)
+                return 1;
+            if(diff<0)
+                return -1;
+            return 0;
+        }
+    };
+
+    
+    public void addCategory(String sName) {
+        _dxsocCat.addCategory(sName);
+    }
+
+
+    public String getSiteName() {
+        return _sName;
+    }
+
+
+    public long getSiteKey() {
+        return _lKey;
+    }
 }

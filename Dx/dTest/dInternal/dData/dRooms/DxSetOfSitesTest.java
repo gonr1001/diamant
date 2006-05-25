@@ -62,24 +62,35 @@ public class DxSetOfSitesTest extends TestCase {
     } // end suite
 
     public void test_getSetOfSitesSingleSite() {
-        assertEquals("test_1_getSetOfSitesSingleSite: asserEquals",1,_dxsosSingle.getSiteCount());
-        assertEquals("test_2_getSetOfSitesSingleSite: asserEquals",1,_dxsosSingle.getCatCount(0));
-        
-        
-        
+        assertEquals("test_1_getSetOfSitesSingleSite: asserEquals", 1,
+                _dxsosSingle.getSiteCount());
+        assertEquals("test_2_getSetOfSitesSingleSite: asserEquals", 1,
+                _dxsosSingle.getCatCount(1));
+        assertEquals("test_2_getSetOfSitesSingleSite: asserEquals", 1,
+                _dxsosSingle.getRoomCount(1, 1));
+
         assertEquals("test_4_getSetOfSitesSingleSite: assertEquals",
-                DConst.ROOM_STANDARD_SITE, _dxsosSingle.getSiteName(0));
-        assertEquals("test_5_getSetOfSitesSingleSite: asserEquals",DConst.ROOM_STANDARD_CAT,_dxsosSingle.getCatName(0,0));
-        assertEquals("test_6_getSetOfSitesSingleSite: asserEquals","D13012",_dxsosSingle.getRoomName(0,0,0));
-        
+                DConst.ROOM_STANDARD_SITE, _dxsosSingle.getSiteName(1));
+        assertEquals("test_5_getSetOfSitesSingleSite: asserEquals",
+                DConst.ROOM_STANDARD_CAT, _dxsosSingle.getCatName(1, 1));
+        assertEquals("test_6_getSetOfSitesSingleSite: asserEquals", "D13012",
+                _dxsosSingle.getRoomName(1, 1, 1));
+        assertEquals("test_7_getSetOfSitesSingleSite: asserEquals", "D13000",
+                _dxsosSingle.getRoomName(1, 1, 44));
+        assertEquals("test_8_getSetOfSitesSingleSite: asserEquals", 20,
+                _dxsosSingle.getRoomCapacity(1, 1, 44));
+
+        assertEquals("test_9_getSetOfSitesSingleSite: asserEquals", null,
+                _dxsosSingle.getRoomAvailabilityByKey(1, 1, 23));
+
     }
 
     public void test_getSetOfSitesMultiSite() {
-
+//
     }
 
     public void test_getSetOfSitesDia() {
-
+//
     }
 
     private byte[] preLoad(String str) {

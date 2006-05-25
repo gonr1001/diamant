@@ -38,7 +38,7 @@ public class DxRoom {
         //Next members are not required but are provided in legacy files
         //Kept in case it would be needed
     private int _nFunction;
-    private Vector<Integer> _ivCharacteristics;
+    private Vector<Integer> _viCharacteristics;
     private String _sComment;
     
 

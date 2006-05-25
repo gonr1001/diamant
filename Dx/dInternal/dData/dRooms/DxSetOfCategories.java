@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Vector;
 
 import dInternal.dData.dInstructors.DxInstructor;
@@ -33,6 +35,31 @@ import dInternal.dData.dInstructors.DxInstructor;
  * 
  */
 public class DxSetOfCategories {
-    private Vector<DxInstructor> _vRooms;
+    private Vector<DxCategory> _vCategories;
     private long _uniqueKey;
+    
+    public DxSetOfCategories() {
+        _uniqueKey = 1;
+        _vCategories = new Vector<DxCategory>();
+    }
+    
+    private long getCategoryKeyByName(String sCatName) {
+        Iterator it= _vCategories.iterator();
+        while(it.hasNext()) {
+            DxCategory dxcIt = (DxCategory)it.next();
+            if (sCatName == dxcIt.getCategoryName())
+                return dxcIt.getCategoryKey();
+        }
+        return -1;
+    }
+    
+    public void addCategory(String sNewCatName) {
+        if (getCategoryKeyByName(sNewCatName) != -1) {
+            _vCategories.add(new DxCategory(_uniqueKey++, sNewCatName));
+        }
+    }
+
+
+
+    
 }

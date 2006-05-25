@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Comparator;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -33,5 +35,30 @@ public class DxCategory {
     private String _sName;
     private DxSetOfRooms _dxsorRooms;
     
+    public DxCategory(long lKey, String sName) {
+        _lKey=lKey;
+        _sName=sName;
+        _dxsorRooms=new DxSetOfRooms();
+    }
+    
+    public static Comparator <DxCategory> KeyComparator = new Comparator <DxCategory> () {
+        public int compare(DxCategory arg0, DxCategory arg1) {
+            DxCategory left = arg0;
+            DxCategory right = arg1;
+            long diff=left._lKey-right._lKey;
+            if(diff>0)
+                return 1;
+            if(diff<0)
+                return -1;
+            return 0;
+        }
+    };
 
+    public String getCategoryName() {
+        return _sName;
+    }
+
+    public long getCategoryKey() {
+        return _lKey;
+    }
 }
