@@ -51,7 +51,6 @@ import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxReadInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
-import dTest.dInternal.dData.dRooms.DxReadSite1dot5Test;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
