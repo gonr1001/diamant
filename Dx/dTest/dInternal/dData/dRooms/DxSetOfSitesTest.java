@@ -8,6 +8,9 @@ import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
+import dInternal.dData.dRooms.DxReadSite1dot5;
+import dInternal.dData.dRooms.DxReadSite1dot6;
+import dInternal.dData.dRooms.DxSiteReader;
 import dInternal.dData.dRooms.SetOfSites;
 import eLib.exit.txt.FilterFile;
 
@@ -31,6 +34,26 @@ public class DxSetOfSitesTest extends TestSuite {
         byte[] dataloaded = preLoad(path);
         DLoadData ld = new DLoadData();
         DataExchange de = ld.buildDataExchange(dataloaded);
+        DxSiteReader dxsr = new DxReadSite1dot5(de);
+
+    }
+
+    public void test_getSetOfSitesMultiSite() {
+        String path = "." + File.separator + "dataTest" + File.separator
+                + "locaux.txt";
+        byte[] dataloaded = preLoad(path);
+        DLoadData ld = new DLoadData();
+        DataExchange de = ld.buildDataExchange(dataloaded);
+        DxSiteReader dxsr = new DxReadSite1dot6(de);
+    }
+
+    public void test_getSetOfSitesDia() {
+        String path = "." + File.separator + "dataTest" + File.separator
+                + "locaux.txt";
+        byte[] dataloaded = preLoad(path);
+        DLoadData ld = new DLoadData();
+        DataExchange de = ld.buildDataExchange(dataloaded);
+        //DxSiteReader dxsr = new DxReadSitedotDia(de);
 
     }
 

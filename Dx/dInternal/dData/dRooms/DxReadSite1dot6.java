@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
+import dInternal.DataExchange;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -29,6 +31,10 @@ package dInternal.dData.dRooms;
  * 
  */
 public class DxReadSite1dot6 implements DxSiteReader{
+
+    public DxReadSite1dot6(DataExchange de) {
+        // TODO Auto-generated constructor stub
+    }
 
     public DxSetOfSites getSetOfSite() {
         // TODO Auto-generated method stub

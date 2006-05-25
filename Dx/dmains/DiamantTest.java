@@ -112,7 +112,6 @@ public class DiamantTest {
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(DxReadInstructorsTest.suite());
-        suite.addTest(DxReadSite1dot5Test.suite());
         suite.addTest(DxInstructorReaderTest.suite());
         suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
