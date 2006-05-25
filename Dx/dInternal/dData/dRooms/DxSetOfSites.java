@@ -35,5 +35,25 @@ import dInternal.dData.dInstructors.DxInstructor;
 public class DxSetOfSites {
     private Vector<DxSite> _vSites;
     private long _uniqueKey;
+    public String getSiteName(int nSiteIndex) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    public String getCatName(int nSiteIndex, int nCatIndex) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    public Object getRoomName(int nSiteIndex, int nCatIndex, int nRoomIndex) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    public int getSiteCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+    public int getCatCount(int nSiteIndex) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

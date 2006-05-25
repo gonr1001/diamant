@@ -10,16 +10,49 @@ import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
+import dInternal.dData.dRooms.DxReadSitedotDia;
+import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
-import dInternal.dData.dRooms.SetOfSites;
 import eLib.exit.txt.FilterFile;
 
 import junit.framework.Test;
+import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class DxSetOfSitesTest extends TestSuite {
+public class DxSetOfSitesTest extends TestCase {
+    DxSetOfSites _dxsosSingle, _dxsosMulti, _dxsosDia;
+
     public DxSetOfSitesTest(String name) {
         super(name);
+
+        String path = "." + File.separator + "dataTest" + File.separator
+                + "locaux.txt";
+        byte[] dataloaded = preLoad(path);
+        DLoadData ld = new DLoadData();
+        DataExchange de = ld.buildDataExchange(dataloaded);
+        DxSiteReader dxsr = new DxReadSite1dot5(de);
+
+        _dxsosSingle = dxsr.getSetOfSite();
+
+        path = "." + File.separator + "dataTest" + File.separator
+                + "locauxINFIRComplet.txt";
+        dataloaded = preLoad(path);
+        de = ld.buildDataExchange(dataloaded);
+        dxsr = new DxReadSite1dot6(de);
+
+        _dxsosMulti = dxsr.getSetOfSite();
+
+        path = "." + File.separator + "dataTest" + File.separator
+                + "loadData7j.dia";
+        dataloaded = preLoad(path);
+        StringTokenizer st = new StringTokenizer(new String(dataloaded),
+                DConst.SAVE_SEPARATOR);
+        st.nextToken(); // Skips time table definition
+        st.nextToken(); // Skips instructors
+        de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, st.nextToken().trim());
+        dxsr = new DxReadSitedotDia(de, 7, 12);
+
+        _dxsosDia = dxsr.getSetOfSite();
     }
 
     public static Test suite() {
@@ -29,31 +62,23 @@ public class DxSetOfSitesTest extends TestSuite {
     } // end suite
 
     public void test_getSetOfSitesSingleSite() {
-        String path = "." + File.separator + "dataTest" + File.separator
-                + "locaux.txt";
-        byte[] dataloaded = preLoad(path);
-        DLoadData ld = new DLoadData();
-        DataExchange de = ld.buildDataExchange(dataloaded);
-        DxSiteReader dxsr = new DxReadSite1dot5(de);
-
+        assertEquals("test_1_getSetOfSitesSingleSite: asserEquals",1,_dxsosSingle.getSiteCount());
+        assertEquals("test_2_getSetOfSitesSingleSite: asserEquals",1,_dxsosSingle.getCatCount(0));
+        
+        
+        
+        assertEquals("test_4_getSetOfSitesSingleSite: assertEquals",
+                DConst.ROOM_STANDARD_SITE, _dxsosSingle.getSiteName(0));
+        assertEquals("test_5_getSetOfSitesSingleSite: asserEquals",DConst.ROOM_STANDARD_CAT,_dxsosSingle.getCatName(0,0));
+        assertEquals("test_6_getSetOfSitesSingleSite: asserEquals","D13012",_dxsosSingle.getRoomName(0,0,0));
+        
     }
 
     public void test_getSetOfSitesMultiSite() {
-        String path = "." + File.separator + "dataTest" + File.separator
-                + "locaux.txt";
-        byte[] dataloaded = preLoad(path);
-        DLoadData ld = new DLoadData();
-        DataExchange de = ld.buildDataExchange(dataloaded);
-        DxSiteReader dxsr = new DxReadSite1dot6(de);
+
     }
 
     public void test_getSetOfSitesDia() {
-        String path = "." + File.separator + "dataTest" + File.separator
-                + "locaux.txt";
-        byte[] dataloaded = preLoad(path);
-        DLoadData ld = new DLoadData();
-        DataExchange de = ld.buildDataExchange(dataloaded);
-        //DxSiteReader dxsr = new DxReadSitedotDia(de);
 
     }
 
