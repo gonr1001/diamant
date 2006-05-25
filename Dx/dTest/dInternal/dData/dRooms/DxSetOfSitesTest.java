@@ -8,6 +8,7 @@ import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
+import dInternal.dData.dRooms.SetOfSites;
 import eLib.exit.txt.FilterFile;
 
 import junit.framework.Test;
@@ -17,36 +18,31 @@ public class DxSetOfSitesTest extends TestSuite {
     public DxSetOfSitesTest(String name) {
         super(name);
     }
-    
+
     public static Test suite() {
         // the type safe way is in SimpleTest
         // the dynamic way :
         return new TestSuite(DxSetOfSitesTest.class);
     } // end suite
-    
-    public void test_getSetOfSitesSingleSite(){
-     
-       /* DataExchange de = new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String(preLoad("." + File.separator + "dataTest"
-                + File.separator + "locaux.txt")));*/
-        
-        /*
-         * StringTokenizer st = new StringTokenizer(new String(), DConst.CR_LF);
-         * String token = st.nextToken().toString().trim();
-         */
-        
+
+    public void test_getSetOfSitesSingleSite() {
+        String path = "." + File.separator + "dataTest" + File.separator
+                + "locaux.txt";
+        byte[] dataloaded = preLoad(path);
+        DLoadData ld = new DLoadData();
+        DataExchange de = ld.buildDataExchange(dataloaded);
+
     }
-    
-private byte[] preLoad(String str) {
-    Preferences preferences = new Preferences("."+ File.separator +
-            "pref"
-            + File.separator +
-            "pref.txt");
-    FilterFile filter = new FilterFile();
-    filter.setCharKnown("");
-    filter.appendToCharKnown(preferences._acceptedChars);
-    if (filter.validFile(str)) {
-        return filter.getByteArray();
-    } 
-    return null;
-} // preLoad(String str)
+
+    private byte[] preLoad(String str) {
+        Preferences preferences = new Preferences("." + File.separator + "pref"
+                + File.separator + "pref.txt");
+        FilterFile filter = new FilterFile();
+        filter.setCharKnown("");
+        filter.appendToCharKnown(preferences._acceptedChars);
+        if (filter.validFile(str)) {
+            return filter.getByteArray();
+        }
+        return null;
+    } // preLoad(String str)
 }

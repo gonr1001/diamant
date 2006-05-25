@@ -51,6 +51,7 @@ import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxReadInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
+import dTest.dInternal.dData.dRooms.DxReadSite1dot5Test;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
@@ -111,6 +112,7 @@ public class DiamantTest {
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(DxReadInstructorsTest.suite());
+        suite.addTest(DxReadSite1dot5Test.suite());
         suite.addTest(DxInstructorReaderTest.suite());
         suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(InstructorAttachTest.suite());
@@ -133,8 +135,8 @@ public class DiamantTest {
 		suite.addTest(ConflictsAttachTest.suite());
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
-		suite.addTest(StudentsConditionsTest.suite());
+		//suite.addTest(RoomsConditionsTest.suite());
+		//suite.addTest(StudentsConditionsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(DRoomTest.suite());

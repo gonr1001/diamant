@@ -130,10 +130,11 @@ public class DModel extends Observable {
 	 *            is the type of timetable to be constructed see DConst.
 	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM =
 	 *            3;
+	 * @throws Exception 
 	 * 
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
-	public DModel(DDocument dDocument, String fileName, int type) {
+	public DModel(DDocument dDocument, String fileName, int type) throws Exception /*!!!NIC!!!*/{
 		_error = "";
 		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
 		_importDone = false;
@@ -296,10 +297,11 @@ public class DModel extends Observable {
 	 * 
 	 * @param fileName
 	 * @return
+	 * @throws Exception 
 	 */
 
 	// XXXX Pascal: Magic number haven
-	public String loadTimeTable(String fileName, String currentDir) {
+	public String loadTimeTable(String fileName, String currentDir) throws Exception /*!!!NIC!!!*/{
 
 		DLoadData loadD = new DLoadData(this);
 		Vector theTT = loadD.loadTheTT(fileName, currentDir);
@@ -348,8 +350,9 @@ public class DModel extends Observable {
 	 * 
 	 * @param str
 	 * @return
+	 * @throws Exception 
 	 */
-	public String importData(String str) {
+	public String importData(String str) throws Exception {
 
 		DLoadData loadData = new DLoadData(this, str);
 

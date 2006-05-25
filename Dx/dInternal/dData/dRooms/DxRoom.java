@@ -29,5 +29,9 @@ package dInternal.dData.dRooms;
  * 
  */
 public class DxRoom {
+    private long _lRoomKey;
+    private String _sRoomName;
+    private int _nRoomCapacity;
+    
 
 }
