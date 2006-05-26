@@ -110,17 +110,6 @@ public class DxSetOfSites {
         }
     }
 
-    public String getRoomName(String sSiteName, String sCatName,
-            String sRoomName) {
-        try {
-            return _vSites.get(getSiteIndexByName(sSiteName)).getRoomName(
-                    sCatName, sRoomName);
-        } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
-            return null;
-        }
-    }
-
     public int getRoomCapacity(long lSiteKey, long lCatKey, long lRoomKey) {
         try {
             return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomCapacity(
@@ -142,12 +131,6 @@ public class DxSetOfSites {
         }
     }
 
-    public int[][] getRoomAvailabilityMatrixByKey(long lSiteKey, long lCatKey,
-            long lRoomKey) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     public DxAvailability getRoomAvailabilityByKey(long lSiteKey, long lCatKey,
             long lRoomKey) {
         // TODO Auto-generated method stub
@@ -158,7 +141,7 @@ public class DxSetOfSites {
         Iterator it = _vSites.iterator();
         while (it.hasNext()) {
             DxSite dxsIt = (DxSite) it.next();
-            if (sSiteName == dxsIt.getSiteName())
+            if (sSiteName .equalsIgnoreCase(dxsIt.getSiteName()))
                 return dxsIt.getSiteKey();
         }
         return -1;
@@ -188,7 +171,7 @@ public class DxSetOfSites {
      *            Name of the new site to be added
      */
     public void addSite(String sNewSiteName) {
-        if (getSiteKeyByName(sNewSiteName) != -1) {
+        if (getSiteKeyByName(sNewSiteName) == -1) {
             _vSites.add(new DxSite(_uniqueKey++, sNewSiteName));
         }
     }
@@ -280,7 +263,7 @@ public class DxSetOfSites {
      *            Comment on the room to be added
      */
     public void addRoom(String sSiteName, String sCatName, DxRoom dxrRoom) {
-        try {
+        try{
             _vSites.get(getSiteIndexByName(sSiteName)).addRoom(sCatName,
                     dxrRoom);
         } catch (Exception e) {

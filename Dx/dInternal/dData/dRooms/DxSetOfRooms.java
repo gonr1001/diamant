@@ -51,10 +51,6 @@ public class DxSetOfRooms {
         return getRoomNameByIndex(getRoomIndexByKey(lRoomKey));
     }
 
-    public String getRoomName(String sRoomName) {
-        return getRoomNameByIndex(getRoomIndexByName(sRoomName));
-    }
-    
     private String getRoomNameByIndex(int nRoomIndex)
     {
         try{
@@ -86,7 +82,7 @@ public class DxSetOfRooms {
     }
     
     public void addRoom(DxRoom dxrRoom) {
-        if(getRoomKeyByName(dxrRoom.getRoomName()) != -1) {
+        if(getRoomKeyByName(dxrRoom.getRoomName()) == -1) {
             _vRooms.add(dxrRoom);
             dxrRoom.setKey(_uniqueKey++);
         }

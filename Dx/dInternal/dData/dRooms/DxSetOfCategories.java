@@ -90,15 +90,6 @@ public class DxSetOfCategories {
         }
     }
 
-    public String getRoomName(String sCatName, String sRoomName) {
-        try{
-            return _vCategories.get(getCategoryIndexByName(sCatName)).getRoomName(sRoomName);
-        }catch(Exception e){
-            //If index was invalid, Null pointer Exception will be thrown
-            return null;
-        }
-    }
-    
     public int getRoomCapacity(long lCatKey, long lRoomKey) {
         try{
             return _vCategories.get(getCategoryIndexByKey(lCatKey)).getRoomCapacity(lRoomKey);
@@ -118,20 +109,20 @@ public class DxSetOfCategories {
     }
 
     public void addCategory(String sNewCatName) {
-        if (getCategoryKeyByName(sNewCatName) != -1) {
+        if (getCategoryKeyByName(sNewCatName) == -1) {
             _vCategories.add(new DxCategory(_uniqueKey++, sNewCatName));
         }
     }
 
     public void addRoom(long lCatKey, DxRoom dxrRoom) {
-        addRoom(getCategoryIndexByKey(lCatKey), dxrRoom);
+        addRoomByIndex(getCategoryIndexByKey(lCatKey), dxrRoom);
     }
 
     public void addRoom(String sCatName, DxRoom dxrRoom) {
-        addRoom(getCategoryIndexByName(sCatName), dxrRoom);
+        addRoomByIndex(getCategoryIndexByName(sCatName), dxrRoom);
     }
 
-    private void addRoom(int nCatIndex, DxRoom dxrRoom) {
+    private void addRoomByIndex(int nCatIndex, DxRoom dxrRoom) {
         try{
             _vCategories.get(nCatIndex).addRoom(dxrRoom);
         }catch (Exception e){

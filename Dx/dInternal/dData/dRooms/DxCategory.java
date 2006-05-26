@@ -56,10 +56,6 @@ public class DxCategory {
         return _dxsorRooms.getRoomName(lRoomKey);
     }
 
-    public String getRoomName(String sRoomName) {
-        return _dxsorRooms.getRoomName(sRoomName);
-    }
-
     public int getRoomCapacity(long lRoomKey) {
         return _dxsorRooms.getRoomCapacity(lRoomKey);
     }

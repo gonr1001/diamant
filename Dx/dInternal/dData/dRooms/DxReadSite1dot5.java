@@ -49,7 +49,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
         String sFileToken;
         String sLineToken;
 
-        int nCurrentLine = 1;
+        int nCurrentLine = 0;
         int nCurrentLineState = 0;
 
         // Initialized to avoid further warnings
@@ -64,11 +64,11 @@ public class DxReadSite1dot5 implements DxSiteReader {
 
         // In version 1.5, there is only one site and one category
         dxsosBuild.addSite(DConst.ROOM_STANDARD_SITE);
-        dxsosBuild.addCat(DConst.ROOM_STANDARD_SITE, DConst.ROOM_STANDARD_SITE);
+        dxsosBuild.addCat(DConst.ROOM_STANDARD_SITE, DConst.ROOM_STANDARD_CAT);
 
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()
-                && nCurrentLine <= DConst.ROOM_USELESS_HEADER) {
+                && nCurrentLine < DConst.ROOM_USELESS_HEADER) {
             sFileToken = stFileTokenizer.nextToken();
             nCurrentLine++;
         }
@@ -81,7 +81,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
                     DConst.ROOM_FIELD_SEPARATOR_TOKEN);
             if (stLineTokenizer.countTokens() == DConst.ROOM_1DOT5_TOKEN_COUNT) {
                 while (nCurrentLineState < DConst.ROOM_1DOT5_TOKEN_COUNT) {
-                    sLineToken = stLineTokenizer.nextToken();
+                    sLineToken = stLineTokenizer.nextToken().trim();
 
                     // Finite state machine for fields on a line
                     switch (nCurrentLineState) {
@@ -119,13 +119,12 @@ public class DxReadSite1dot5 implements DxSiteReader {
                         break;
 
                     }
-
-                    dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
-                            nRoomFunction, viCharacteristics, sNote, null);
-                    dxsosBuild.addRoom(DConst.ROOM_STANDARD_SITE,
-                            DConst.ROOM_STANDARD_SITE, dxrTempRoom);
                     nCurrentLineState++;
                 }
+                dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
+                        nRoomFunction, viCharacteristics, sNote, null);
+                dxsosBuild.addRoom(DConst.ROOM_STANDARD_SITE,
+                        DConst.ROOM_STANDARD_CAT, dxrTempRoom);
             } else {
                 // ERROR: Invalid token count
             }

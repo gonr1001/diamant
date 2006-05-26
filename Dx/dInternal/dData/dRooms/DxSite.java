@@ -90,10 +90,6 @@ public class DxSite {
         return _dxsocCat.getRoomName(lCatKey, lRoomKey);
     }
 
-    public String getRoomName(String sCatName, String sRoomName) {
-        return _dxsocCat.getRoomName(sCatName, sRoomName);
-    }
-    
     public int getRoomCapacity(long lCatKey, long lRoomKey) {
         // TODO Auto-generated method stub
         return _dxsocCat.getRoomCapacity(lCatKey, lRoomKey);

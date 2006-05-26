@@ -562,7 +562,7 @@ public class DConst {
   public static final String ACT_DEFAULT_CAPACITY ="99999";
   
   // rooms and sites v 1.7
-  public static final int ROOM_USELESS_HEADER= 5;
+  public static final int ROOM_USELESS_HEADER= 3;
   public static final int ROOM_1DOT5_TOKEN_COUNT = 5;
   public static final int ROOM_1DOT6_TOKEN_COUNT = 7;
   public static final int ROOM_DIA_TOKEN_COUNT = 8;
