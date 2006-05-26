@@ -21,6 +21,7 @@ package dInternal.dData.dRooms;
 
 import java.util.Comparator;
 
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -32,7 +33,9 @@ import java.util.Comparator;
  */
 public class DxSite {
     private long _lKey;
+
     private String _sName;
+
     private DxSetOfCategories _dxsocCat;
 
     /**
@@ -43,38 +46,91 @@ public class DxSite {
      * @param sName
      *            Name if the site created
      */
-    public DxSite(long lKey, String sName)
-    {
-        _lKey=lKey;
-        _sName=sName;
-        _dxsocCat=new DxSetOfCategories();
+    public DxSite(long lKey, String sName) {
+        _lKey = lKey;
+        _sName = sName;
+        _dxsocCat = new DxSetOfCategories();
     }
     
-    public static Comparator <DxSite> KeyComparator = new Comparator <DxSite> () {
-        public int compare(DxSite arg0, DxSite arg1) {
-            DxSite left = arg0;
-            DxSite right = arg1;
-            long diff=left._lKey-right._lKey;
-            if(diff>0)
-                return 1;
-            if(diff<0)
-                return -1;
-            return 0;
-        }
-    };
-
-    
-    public void addCategory(String sName) {
-        _dxsocCat.addCategory(sName);
-    }
-
-
+    /**
+     * Return the name of the current site
+     * 
+     * @return The name of the current site
+     */
     public String getSiteName() {
         return _sName;
     }
 
-
+    /**
+     * Return the key of the current site
+     * 
+     * @return The key of the current site
+     */
     public long getSiteKey() {
         return _lKey;
     }
+    
+    public int getCatCount() {
+        return _dxsocCat.getCatCount();
+    }
+    
+    public String getCatName(long lCatKey) {
+        return _dxsocCat.getCatName(lCatKey);
+    }
+    
+    public int getRoomCount(long lCatKey) {
+        return _dxsocCat.getRoomCount(lCatKey);
+    }
+
+    public int getRoomCount(String sCatName) {
+        return _dxsocCat.getRoomCount(sCatName);
+    }
+    
+    public String getRoomName(long lCatKey, long lRoomKey) {
+        return _dxsocCat.getRoomName(lCatKey, lRoomKey);
+    }
+
+    public String getRoomName(String sCatName, String sRoomName) {
+        return _dxsocCat.getRoomName(sCatName, sRoomName);
+    }
+    
+    public int getRoomCapacity(long lCatKey, long lRoomKey) {
+        // TODO Auto-generated method stub
+        return _dxsocCat.getRoomCapacity(lCatKey, lRoomKey);
+    }
+
+    public int getRoomCapacity(String sCatName, String sRoomName) {
+        return _dxsocCat.getRoomCapacity(sCatName, sRoomName);
+    }
+
+    /**
+     * Add a category to the current site
+     * 
+     * @param sName
+     *            Name of the category that should be added to the site
+     */
+    public void addCategory(String sName) {
+        _dxsocCat.addCategory(sName);
+    }
+
+    public void addRoom(long lCatKey, DxRoom dxrRoom) {
+        _dxsocCat.addRoom(lCatKey, dxrRoom);
+    }
+
+    public void addRoom(String sCatName, DxRoom dxrRoom) {
+        _dxsocCat.addRoom(sCatName, dxrRoom);
+    }
+    
+    public static Comparator<DxSite> KeyComparator = new Comparator<DxSite>() {
+        public int compare(DxSite arg0, DxSite arg1) {
+            DxSite left = arg0;
+            DxSite right = arg1;
+            long diff = left._lKey - right._lKey;
+            if (diff > 0)
+                return 1;
+            if (diff < 0)
+                return -1;
+            return 0;
+        }
+    };
 }

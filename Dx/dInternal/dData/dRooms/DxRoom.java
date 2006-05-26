@@ -19,7 +19,10 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Comparator;
 import java.util.Vector;
+
+import dInternal.dData.DxAvailability;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -40,6 +43,61 @@ public class DxRoom {
     private int _nFunction;
     private Vector<Integer> _viCharacteristics;
     private String _sComment;
+    private DxAvailability _dxaAva;
     
+    public DxRoom(String sRoomName, int nCapacity, int nFunction, Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {
+        _lKey=-1;
+        _sName=sRoomName;
+        _nCapacity=nCapacity;
+        _nFunction=nFunction;
+        _viCharacteristics=viChar;
+        _sComment=sNote;
+        _dxaAva=dxaAva;
+    }
 
+    public String getRoomName() {
+        return _sName;
+    }
+
+    public long getRoomKey() {
+        return _lKey;
+    }
+    
+    public int getRoomCapacity(){
+        return _nCapacity;
+    }
+    
+    public int getRoomFunction(){
+        return _nFunction;
+    }
+
+    public Vector<Integer> getRoomCharacteristics(){
+        return _viCharacteristics;
+    }
+    
+    public String getRoomComment(){
+        return _sComment;
+    }
+    
+    public DxAvailability getRoomAvailability(){
+        return _dxaAva;
+    }
+    
+    protected void setKey(long lKey)
+    {
+        _lKey=lKey;
+    }
+    
+    public static Comparator<DxRoom> KeyComparator = new Comparator<DxRoom>() {
+        public int compare(DxRoom arg0, DxRoom arg1) {
+            DxRoom left = arg0;
+            DxRoom right = arg1;
+            long diff = left._lKey - right._lKey;
+            if (diff > 0)
+                return 1;
+            if (diff < 0)
+                return -1;
+            return 0;
+        }
+    };
 }

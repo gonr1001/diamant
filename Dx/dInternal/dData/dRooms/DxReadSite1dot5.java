@@ -51,21 +51,20 @@ public class DxReadSite1dot5 implements DxSiteReader {
 
         int nCurrentLine = 1;
         int nCurrentLineState = 0;
-        int nState = 0;
 
-        String sRoomName;
-        int nRoomCapacity;
-        int nRoomFunction;
-        Vector<Integer> viCharacteristics;
-        String sNote;
+        // Initialized to avoid further warnings
+        String sRoomName = null;
+        int nRoomCapacity = 0;
+        int nRoomFunction = 0;
+        Vector<Integer> viCharacteristics = null;
+        String sNote = null;
 
-        DxSetOfSites dxsosTemp = new DxSetOfSites();
-        
-        //In version 1.5, there is only one site and one category
-        dxsosTemp.addSite(DConst.ROOM_STANDARD_SITE);
-        dxsosTemp.addCat(dxsosTemp.getSiteKeyByName(DConst.ROOM_STANDARD_SITE),DConst.ROOM_STANDARD_SITE);
-        
-        
+        DxSetOfSites dxsosBuild = new DxSetOfSites();
+        DxRoom dxrTempRoom;
+
+        // In version 1.5, there is only one site and one category
+        dxsosBuild.addSite(DConst.ROOM_STANDARD_SITE);
+        dxsosBuild.addCat(DConst.ROOM_STANDARD_SITE, DConst.ROOM_STANDARD_SITE);
 
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()
@@ -83,69 +82,72 @@ public class DxReadSite1dot5 implements DxSiteReader {
             if (stLineTokenizer.countTokens() == DConst.ROOM_1DOT5_TOKEN_COUNT) {
                 while (nCurrentLineState < DConst.ROOM_1DOT5_TOKEN_COUNT) {
                     sLineToken = stLineTokenizer.nextToken();
-                    
-                    //Finite state machine for fields on a line
+
+                    // Finite state machine for fields on a line
                     switch (nCurrentLineState) {
-                    //Room name field
+                    // Room name field
                     case 0:
                         sRoomName = sLineToken;
                         break;
 
-                        //Room capacity
+                    // Room capacity
                     case 1:
-                        try{
-                            nRoomCapacity=new Integer(sLineToken).intValue();
-                        }catch(NumberFormatException e){
-                            //ERROR: Invalid room capacity must be thrown
+                        try {
+                            nRoomCapacity = new Integer(sLineToken).intValue();
+                        } catch (NumberFormatException e) {
+                            // ERROR: Invalid room capacity must be thrown
                         }
                         break;
-                        
-                        //Room function
+
+                    // Room function
                     case 2:
-                        try{
-                            nRoomFunction=new Integer(sLineToken).intValue();
-                        }catch(NumberFormatException e){
-                            //ERROR: Invalid room function must be thrown
+                        try {
+                            nRoomFunction = new Integer(sLineToken).intValue();
+                        } catch (NumberFormatException e) {
+                            // ERROR: Invalid room function must be thrown
                         }
                         break;
 
-                        //Room characteristics list
+                    // Room characteristics list
                     case 3:
-                        viCharacteristics=parseCharacteristics(sLineToken);
+                        viCharacteristics = parseCharacteristics(sLineToken);
                         break;
 
-                        //Room comment or note
+                    // Room comment or note
                     case 4:
-                        sNote=sLineToken;
+                        sNote = sLineToken;
                         break;
 
                     }
+
+                    dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
+                            nRoomFunction, viCharacteristics, sNote, null);
+                    dxsosBuild.addRoom(DConst.ROOM_STANDARD_SITE,
+                            DConst.ROOM_STANDARD_SITE, dxrTempRoom);
                     nCurrentLineState++;
                 }
             } else {
-                // ERROR: Wrong file type must be thrown
+                // ERROR: Invalid token count
             }
             nCurrentLine++;
         }
-        return dxsosTemp;
+        return dxsosBuild;
     }
-    
-    private Vector<Integer> parseCharacteristics(String token)
-    {
-        Vector<Integer> viTemp=new Vector<Integer>();
-        
-        StringTokenizer stChar=new StringTokenizer(token,DConst.ROOM_CHAR_SEPARATOR_TOKEN);
-        
-        while(stChar.hasMoreTokens())
-        {
-            try{
+
+    private Vector<Integer> parseCharacteristics(String token) {
+        Vector<Integer> viTemp = new Vector<Integer>();
+
+        StringTokenizer stChar = new StringTokenizer(token,
+                DConst.ROOM_CHAR_SEPARATOR_TOKEN);
+
+        while (stChar.hasMoreTokens()) {
+            try {
                 viTemp.add(new Integer(stChar.nextToken()));
-            }catch(NumberFormatException e)
-            {
-                //ERROR: Invalid characteristic must be thrown
+            } catch (NumberFormatException e) {
+                // ERROR: Invalid characteristic must be thrown
             }
         }
-        
+
         return viTemp;
     }
 }

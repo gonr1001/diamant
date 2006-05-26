@@ -24,7 +24,6 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import dInternal.dData.DxAvailability;
-import dInternal.dData.dInstructors.DxInstructor;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -37,6 +36,7 @@ import dInternal.dData.dInstructors.DxInstructor;
  */
 public class DxSetOfSites {
     private Vector<DxSite> _vSites;
+
     private long _uniqueKey;
 
     public DxSetOfSites() {
@@ -45,39 +45,101 @@ public class DxSetOfSites {
     }
 
     public String getSiteName(long lSiteKey) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return _vSites.get(getSiteIndexByKey(lSiteKey)).getSiteName();
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
     }
 
     public String getCatName(long lSiteKey, long lCatKey) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public Object getRoomName(long lSiteKey, long lCatKey, long lRoomKey) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return _vSites.get(getSiteIndexByKey(lSiteKey)).getCatName(lCatKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
     }
 
     public int getSiteCount() {
-        // TODO Auto-generated method stub
-        return 0;
+        return _vSites.size();
     }
 
     public int getCatCount(long lSiteKey) {
-        // TODO Auto-generated method stub
-        return 0;
+        return getCatCountByIndex(getSiteIndexByKey(lSiteKey));
+    }
+
+    public int getCatCount(String sSiteName) {
+        return getCatCountByIndex(getSiteIndexByName(sSiteName));
+    }
+
+    private int getCatCountByIndex(int nIndex) {
+        try {
+            return _vSites.get(nIndex).getCatCount();
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     public int getRoomCount(long lSiteKey, long lCatKey) {
-        // TODO Auto-generated method stub
-        return 0;
+        try {
+            return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomCount(
+                    lCatKey);
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
-    public DxAvailability getRoomAvailabilityByKey(long lSiteKey, long lCatKey,
-            long lRoomKey) {
-        // TODO Auto-generated method stub
-        return null;
+    public int getRoomCount(String sSiteName, String sCatName) {
+        try {
+            return _vSites.get(getSiteIndexByName(sSiteName)).getRoomCount(
+                    sCatName);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public String getRoomName(long lSiteKey, long lCatKey, long lRoomKey) {
+        try {
+            return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomName(
+                    lCatKey, lRoomKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
+    }
+
+    public String getRoomName(String sSiteName, String sCatName,
+            String sRoomName) {
+        try {
+            return _vSites.get(getSiteIndexByName(sSiteName)).getRoomName(
+                    sCatName, sRoomName);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
+    }
+
+    public int getRoomCapacity(long lSiteKey, long lCatKey, long lRoomKey) {
+        try {
+            return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomCapacity(
+                    lCatKey, lRoomKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return 0;
+        }
+    }
+
+    public int getRoomCapacity(String sSiteName, String sCatName,
+            String sRoomName) {
+        try {
+            return _vSites.get(getSiteIndexByName(sSiteName)).getRoomCapacity(
+                    sCatName, sRoomName);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return 0;
+        }
     }
 
     public int[][] getRoomAvailabilityMatrixByKey(long lSiteKey, long lCatKey,
@@ -86,15 +148,16 @@ public class DxSetOfSites {
         return null;
     }
 
-    public int getRoomCapacity(long lSiteKey, long lCatKey, long lRoomKey) {
+    public DxAvailability getRoomAvailabilityByKey(long lSiteKey, long lCatKey,
+            long lRoomKey) {
         // TODO Auto-generated method stub
-        return 0;
+        return null;
     }
 
     public long getSiteKeyByName(String sSiteName) {
-        Iterator it= _vSites.iterator();
-        while(it.hasNext()) {
-            DxSite dxsIt = (DxSite)it.next();
+        Iterator it = _vSites.iterator();
+        while (it.hasNext()) {
+            DxSite dxsIt = (DxSite) it.next();
             if (sSiteName == dxsIt.getSiteName())
                 return dxsIt.getSiteKey();
         }
@@ -138,18 +201,96 @@ public class DxSetOfSites {
      * @param sCatName
      *            Name of the new category to be added
      */
-public void addCat(long lSiteKey, String sCatName) {
-        try{
-            _vSites.get(getSiteIndexByKey(lSiteKey)).addCategory(sCatName);
-        }catch(Exception e)
-        {
-            //Null pointer exception can occur if index was invalid
-            //Should throw and exception
-        }
-
+    public void addCat(long lSiteKey, String sCatName) {
+        addCatByIndex(getSiteIndexByKey(lSiteKey), sCatName);
     }
+
     /**
      * Adds a category to the site given by lSiteKey
+     * 
+     * @param sSiteName
+     *            Name of the site to which the category should be added
+     * @param sCatName
+     *            Name of the new category to be added
+     */
+    public void addCat(String sSiteName, String sCatName) {
+        addCatByIndex(getSiteIndexByName(sSiteName), sCatName);
+    }
+
+    /**
+     * Adds a category once the index of the site has been found
+     * 
+     * @param nSiteIndex
+     *            Index of the site in the site vector
+     * @param sCatName
+     *            Name of the new category to be added
+     */
+    private void addCatByIndex(int nSiteIndex, String sCatName) {
+        try {
+            _vSites.get(nSiteIndex).addCategory(sCatName);
+        } catch (Exception e) {
+            // Null pointer exception can occur if index was invalid
+            // Should throw and exception
+        }
+    }
+
+    /**
+     * Adds a category to the site given by lSiteKey
+     * 
+     * @param lSiteKey
+     *            Key of the site to which the category should be added
+     * @param lCatKey
+     *            Key of the category to which the room should be added
+     * @param sRoomName
+     *            Name of the room to be added
+     * @param nCapacity
+     *            Capacity of the room to be added
+     * @param nFunction
+     *            Function of the room to be added
+     * @param vChar
+     *            Vector of characteristics of the room to be added
+     * @param sNote
+     *            Comment on the room to be added
+     */
+    public void addRoom(long lSiteKey, long lCatKey, DxRoom dxrRoom) {
+        try {
+            _vSites.get(getSiteIndexByKey(lSiteKey)).addRoom(lCatKey, dxrRoom);
+        } catch (Exception e) {
+            // Null pointer exception can occur if index was invalid
+            // Should throw and exception
+        }
+    }
+
+    /**
+     * Adds a category to the site given by lSiteKey
+     * 
+     * @param sSiteName
+     *            Name of the site to which the category should be added
+     * @param sCatName
+     *            Name of the category to which the room should be added
+     * @param sRoomName
+     *            Name of the room to be added
+     * @param nCapacity
+     *            Capacity of the room to be added
+     * @param nFunction
+     *            Function of the room to be added
+     * @param vChar
+     *            Vector of characteristics of the room to be added
+     * @param sNote
+     *            Comment on the room to be added
+     */
+    public void addRoom(String sSiteName, String sCatName, DxRoom dxrRoom) {
+        try {
+            _vSites.get(getSiteIndexByName(sSiteName)).addRoom(sCatName,
+                    dxrRoom);
+        } catch (Exception e) {
+            // Null pointer exception can occur if index was invalid
+            // Should throw and exception
+        }
+    }
+
+    /**
+     * Retreives the index of a site by its key
      * 
      * @param lKey
      *            Key of the site that is searched
@@ -162,6 +303,28 @@ public void addCat(long lSiteKey, String sCatName) {
                 DxSite.KeyComparator);
         if (nIndex >= 0) {
             return nIndex;
+        }
+        return -1;
+    }
+
+    /**
+     * Search the sites for a certain site name and return it's position, -1 if
+     * not found
+     * 
+     * @param sName
+     *            Name of the site that is searched
+     * 
+     * @return Index of the site in the vector, -1 if not found
+     */
+    private int getSiteIndexByName(String sName) {
+        Iterator it = _vSites.iterator();
+        int i;
+
+        for (i = 0; it.hasNext(); i++) {
+            DxSite dxsTemp = (DxSite) it.next();
+            if (dxsTemp.getSiteName().equalsIgnoreCase(sName)) {
+                return i;
+            }
         }
         return -1;
     }
