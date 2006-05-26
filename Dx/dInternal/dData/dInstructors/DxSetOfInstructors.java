@@ -201,7 +201,7 @@ public class DxSetOfInstructors {
         Iterator it = _vInstructors.iterator();
 
         for (int i = 0; it.hasNext(); i++) {
-            if (sName == ((DxInstructor) it.next()).getInstructorName())
+            if (sName.equalsIgnoreCase(((DxInstructor) it.next()).getInstructorName()))
                 return i;
         }
         return -1;
