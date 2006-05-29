@@ -11,8 +11,7 @@ import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
-import eLib.exit.dialog.FatalProblemDlg;
-import eLib.exit.exception.IOFileException;
+
 
 public class SetOfEventsTest extends TestCase {
 

@@ -10,7 +10,6 @@ import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
-import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import eLib.exit.txt.FilterFile;
