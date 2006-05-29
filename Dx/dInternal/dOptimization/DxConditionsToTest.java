@@ -195,14 +195,11 @@ public class DxConditionsToTest {
 						DxCondition cond = _conditionsToTest.get(k);
 						numberOfConflicts[k] += cond.addTest(newPerKey,
 								per, event.getID());
-					}// end for (int j=0; j< _testToRun.size(); j++)
-
-					
+					}// end for (int j=0; j< _testToRun.size(); j++)					
 						((EventAttach) event.getAttach())
 								.setInAPeriod(getBooleanValue(1));
 						((EventAttach) event.getAttach())
-								.setAssigned(getBooleanValue(1));
-				
+								.setAssigned(getBooleanValue(1));				
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 				((EventAttach) event.getAttach()).setInAPeriod(false);

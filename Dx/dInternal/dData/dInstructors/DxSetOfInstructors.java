@@ -129,7 +129,7 @@ public class DxSetOfInstructors {
     public String getInstructorNameByKey(long lKey) {
         DxInstructor dxiTemp = new DxInstructor(null, null, lKey);
         int nIndex = Collections.binarySearch(_vInstructors, dxiTemp,
-                DxInstructor.NameComparator);
+                DxInstructor.KeyComparator);
         if (nIndex >= 0) {
             return _vInstructors.get(nIndex).getInstructorName();
         }
@@ -210,7 +210,7 @@ public class DxSetOfInstructors {
     public int getIndexByKey(long lKey) {
         DxInstructor dxiTemp = new DxInstructor(null, null, lKey);
         int nIndex = Collections.binarySearch(_vInstructors, dxiTemp,
-                DxInstructor.NameComparator);
+                DxInstructor.KeyComparator);
         if (nIndex >= 0) {
             return nIndex;
         }

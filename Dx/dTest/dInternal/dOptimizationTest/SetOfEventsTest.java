@@ -11,6 +11,8 @@ import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
+import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.IOFileException;
 
 public class SetOfEventsTest extends TestCase {
 
@@ -24,7 +26,8 @@ public class SetOfEventsTest extends TestCase {
             _dm = new DModel(new DDocument(), "." + File.separator + "dataTest"
                     + File.separator + "loadData5j.dia", 1);
         } catch (Exception e) {
-            // Should not fail in controled conditions
+     			System.out.println(e);
+     			e.printStackTrace();    			
         }
         _soe = _dm.getSetOfEvents();
         // _soe.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors());

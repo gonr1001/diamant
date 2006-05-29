@@ -103,7 +103,13 @@ public class DxInstructor {
 	public static Comparator <DxInstructor> NameComparator = new Comparator <DxInstructor> () {
 		public int compare(DxInstructor arg0, DxInstructor arg1) {
 			DxInstructor left = arg0;
+			if(left == null){
+				return 1;
+			}
 			DxInstructor right = arg1;
+			if(right == null){
+				return -1;
+			}
 			return left._name.compareTo(right._name);
 		}
 	};
