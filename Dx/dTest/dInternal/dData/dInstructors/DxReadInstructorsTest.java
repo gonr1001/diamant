@@ -150,7 +150,7 @@ public class DxReadInstructorsTest extends TestCase {
 		DxReadInstructors dxriTest=new DxReadInstructors();
 		DxSetOfInstructors dxsoiTemp=dxriTest.getSetOfInstructors(ld.buildDataExchange(tokens.getBytes()), 5, 14);
 		assertNotSame("test5_getSetOfInstructors: assertNotSame",dxsoiTemp,null);
-		assertEquals("test5_getSetOfInstructors: assertEquals",dxsoiTemp.getInstructorName(0),"JAC");
-		assertEquals("test5_getSetOfInstructors: assertEquals",dxsoiTemp.getInstructorName(1),"POLM");
+		assertEquals("test5_getSetOfInstructors: assertEquals",dxsoiTemp.getInstructorName(1),"JAC");
+		assertEquals("test5_getSetOfInstructors: assertEquals",dxsoiTemp.getInstructorName(2),"POLM");
 	}
 }

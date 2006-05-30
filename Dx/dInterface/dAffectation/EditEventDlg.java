@@ -832,7 +832,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					.getDxSetOfInstructors();
 			long keys[] = event.getInstructorKey();
 			for (int i = 0; i < keys.length; i++) {
-				String sName = soi.getInstructorNameByKey(keys[i]);
+				String sName = soi.getInstructorName(keys[i]);
 				if (sName!= null)
 					v.add(sName);
 			}
@@ -852,8 +852,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		} else {
 			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
 					.getDxSetOfInstructors();
-			for (int i = 0; i < dxsoi.size(); i++)
-				v.add(dxsoi.getInstructorName(i));
+			v=dxsoi.getNamesVector();
 			v.add(DConst.NO_ROOM_INTERNAL);
 		}
 

@@ -902,7 +902,7 @@ public class DModel extends Observable {
 	private void resizeInstructorsResource(DxSetOfInstructors soiRes) {
 		int[][] matrix;
 		for (int i = 0; i < soiRes.size(); i++) {
-			matrix = soiRes.getInstructorAvaMatrix(i);
+			matrix = soiRes.getInstructorAvailability(i).getMatrixAvailability();
 			matrix = DXToolsMethods
 					.resizeAvailability(matrix, getTTStructure());
 			soiRes.setInstructorAvailability(i, new DxAvailability(matrix));

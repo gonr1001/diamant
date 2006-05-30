@@ -40,7 +40,7 @@ public class DxInstructorReaderTest extends TestCase {
                     true);
 
             // To avoid warning
-            dxsoi.getIndexByKey(0);
+            dxsoi.equals(dxsoi);
         } catch (Exception e) {
             assertEquals("test_1_getSetOfInstructors: assertEquals",
                     "java.lang.Exception: " + DConst.INST_TEXT1 + "\n"
@@ -73,7 +73,7 @@ public class DxInstructorReaderTest extends TestCase {
                     true);
 
             // To avoid warning
-            dxsoi.getIndexByKey(0);
+            dxsoi.equals(dxsoi);
         } catch (Exception e) {
             assertEquals("test1_1_getSetOfInstructors: assertEquals",
                     "java.lang.Exception: " + DConst.INST_TEXT3 + 7
@@ -107,7 +107,7 @@ public class DxInstructorReaderTest extends TestCase {
                     true);
 
             // To avoid warning
-            dxsoi.getIndexByKey(0);
+            dxsoi.equals(dxsoi);
         } catch (Exception e) {
             assertEquals("test2_1_getSetOfInstructors: assertEquals",
                     "java.lang.Exception: " + DConst.INST_TEXT1 + "\n"
@@ -140,7 +140,7 @@ public class DxInstructorReaderTest extends TestCase {
                     true);
 
             // To avoid warning
-            dxsoi.getIndexByKey(0);
+            dxsoi.equals(dxsoi);
         } catch (Exception e) {
             assertEquals("test3_1_getSetOfInstructors: assertEquals",
                     "java.lang.Exception: " + DConst.INST_TEXT3 + 11
@@ -175,7 +175,7 @@ public class DxInstructorReaderTest extends TestCase {
                     true);
 
             // To avoid warning
-            dxsoi.getIndexByKey(0);
+            dxsoi.equals(dxsoi);
         } catch (Exception e) {
             assertEquals("test4_1_getSetOfInstructors: assertEquals",
                     "java.lang.Exception: " + DConst.INST_TEXT4 + 3
@@ -209,9 +209,9 @@ public class DxInstructorReaderTest extends TestCase {
             assertNotSame("test5_getSetOfInstructors: assertNotSame",
                     dxsoiTemp, null);
             assertEquals("test5_1_getSetOfInstructors: assertEquals", dxsoiTemp
-                    .getInstructorName(0), "JAC");
+                    .getInstructorName(1), "JAC");
             assertEquals("test5_2_getSetOfInstructors: assertEquals", dxsoiTemp
-                    .getInstructorName(1), "POLM");
+                    .getInstructorName(2), "POLM");
         } catch (Exception e) {
             assertFalse("test5_3_getSetOfInstructors: Should not have failed" + e.toString(), true);
         }

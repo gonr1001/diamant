@@ -71,7 +71,7 @@ public class SetOfEventsTest extends TestCase {
             long insKey[] = ((EventAttach) _soe.getResourceAt(0).getAttach())
                     .getInstructorKey();
             assertEquals("test1_build : assertEquals: ", "THÉRIEN, NORMAND",
-                    _dm.getDxSetOfInstructors().getInstructorNameByKey(
+                    _dm.getDxSetOfInstructors().getInstructorName(
                             insKey[0]));
         }
     }

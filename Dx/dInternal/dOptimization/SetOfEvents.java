@@ -175,16 +175,13 @@ public class SetOfEvents extends DSetOfResources {
 
 	private void assignDxInstructors(DSetOfResources soie,
 			Assignment assignment, String unityID) {
-		long instructorKey;
 		String[] instructorNames = assignment.getInstructorNames();
 		for (int m = 0; m < instructorNames.length; m++) {
-			int instructorIndex = _dm.getDxSetOfInstructors().getIndexByName(
+			long lKey = _dm.getDxSetOfInstructors().getInstructorKeyByName(
 					instructorNames[m]);
 
-			if (instructorIndex != -1) {
-				instructorKey = _dm.getDxSetOfInstructors().getInstructorKey(
-						instructorIndex);
-				assignment.addInstructorKeys(instructorKey);
+			if (lKey != -1) {
+				assignment.addInstructorKeys(lKey);
 			} else {
 				DValue error = new DValue();
 				error.setStringValue(DConst.ERROR_TAG + unityID + ": "
@@ -296,7 +293,7 @@ public class SetOfEvents extends DSetOfResources {
 
 	private String getDxInstName(DxSetOfInstructors soi, long key) {
 		if (key != -1) {
-			return soi.getInstructorNameByKey(key);
+			return soi.getInstructorName(key);
 		}
 		return DConst.NO_ROOM_INTERNAL;
 	}
@@ -378,7 +375,7 @@ public class SetOfEvents extends DSetOfResources {
 						str = _dm.getSetOfInstructors().getResource(
 								instKeyOne[i]).getID();
 					} else {
-						str = _dm.getDxSetOfInstructors().getInstructorNameByKey(instKeyOne[i]);
+						str = _dm.getDxSetOfInstructors().getInstructorName(instKeyOne[i]);
 					}
 					res += DXToolsMethods.getToken(str, ",", 0) + " "
 							+ DXToolsMethods.getToken(str, ",", 1) + ",";
@@ -407,7 +404,7 @@ public class SetOfEvents extends DSetOfResources {
             }
             else
             {
-                str=_dm.getDxSetOfInstructors().getInstructorNameByKey(((Long) insKeys.get(j)).longValue()); 
+                str=_dm.getDxSetOfInstructors().getInstructorName(((Long) insKeys.get(j)).longValue()); 
             }
 			res += DXToolsMethods.getToken(str, ",", 0) + " "
 					+ DXToolsMethods.getToken(str, ",", 1) + ",";
