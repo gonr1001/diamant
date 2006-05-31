@@ -43,30 +43,21 @@ import dTest.dInternal.dData.DxAvailabilityTest;
 import dTest.dInternal.dData.StandardCollectionTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
-import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorReaderTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
-//import dTest.dInternal.dData.dInstructors.DxReadInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
-
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dData.dStudents.StudentTest;
 import dTest.dInternal.dDataTxt.ActivityTest;
 import dTest.dInternal.dDataTxt.AssignmentTest;
-import dTest.dInternal.dDataTxt.InstructorAttachTest;
-
 import dTest.dInternal.dDataTxt.ResourceTest;
 import dTest.dInternal.dDataTxt.RoomAttachTest;
-//import dTest.dInternal.dDataTxt.RoomsAttributesInterpretorTest;
-
 import dTest.dInternal.dDataTxt.SectionTest;
-
-
 import dTest.dInternal.dDataTxt.SetOfRoomsTest;
 import dTest.dInternal.dDataTxt.TypeTest;
 import dTest.dInternal.dDataTxt.UnityTest;
@@ -108,10 +99,8 @@ public class DiamantTest {
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
-//		suite.addTest(DxReadInstructorsTest.suite());
         suite.addTest(DxInstructorReaderTest.suite());
         suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(InstructorAttachTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
@@ -140,7 +129,6 @@ public class DiamantTest {
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(DSetOfActivitiesTest.suite());
 		suite.addTest(DSetOfActivitiesSitesTest.suite());
-		suite.addTest(DSetOfInstructorsTest.suite());
 		suite.addTest(DValueTest.suite());
 		suite.addTest(DObjectTest.suite());
 		suite.addTest(DxStateTest.suite());
