@@ -68,15 +68,15 @@ public class DModel extends Observable {
 
 	private boolean _mergeDone;
 
-	private boolean _modified = false;
+	private boolean _modified;
 
 	private boolean _isATimeTable;
 
 	private boolean _isOnlyATimeTable;
 
-	private boolean _isExamPrepared = false;
+	private boolean _isExamPrepared;
 
-	protected int _constructionState = 0;// tell where the time construction
+	protected int _constructionState;// tell where the time construction
 
 	private String _version;
 
@@ -106,7 +106,7 @@ public class DModel extends Observable {
 
 	protected SetOfEvents _setOfEvents;
 
-	private int _currentCycle = 1;
+	private int _currentCycle;
 
 	protected DxConditionsToTest _conditionsToTest;
 
@@ -136,9 +136,13 @@ public class DModel extends Observable {
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DModel(DDocument dDocument, String fileName, int type) throws Exception /*!!!NIC!!!*/{
 		_error = "";
+		 _modified = false;
+		 _isExamPrepared = false;
 		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
 		_importDone = false;
 		_mergeDone = false;
+		_constructionState = 0;
+		_currentCycle = 1;
 		_nbConflicts = new int[] { 10, 20, 30 };
 		_setOfEvents = new SetOfEvents(this);
 		_setOfImportErrors = new StandardCollection();
@@ -167,8 +171,6 @@ public class DModel extends Observable {
 		//_setOfRoomsFunctions = new SetOfRoomsFunctions();
 		//_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
-//		this.clearChanged(); // XXXX Pascal: Cette methode est appelee
-//								// automatiquement par notifyObservers()
 	}
 
 	/**
