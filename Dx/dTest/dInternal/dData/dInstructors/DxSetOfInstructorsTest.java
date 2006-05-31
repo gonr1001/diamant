@@ -109,25 +109,6 @@ public class DxSetOfInstructorsTest extends TestCase {
                         .getPeriodAvailability(0, 0));
     }
 
-    public void test_isValidIndex() {
-        DxSetOfInstructors soiTest = new DxSetOfInstructors();
-
-        DxAvailability aTemp = new DxAvailability();
-        aTemp.addDayAvailability("5 5 5");
-        aTemp.addDayAvailability("5 5 5 5");
-        aTemp.addDayAvailability("5 5 5 5 5");
-        soiTest.addInstructor("Alsa", aTemp);
-        soiTest.addInstructor("Daniel", aTemp);
-
-        assertEquals("test_isValidIndex: assertEquals", soiTest
-                .setInstructorAvailability(0, aTemp), true);
-        assertEquals("test1_isValidIndex: assertEquals", soiTest
-                .setInstructorAvailability(1, aTemp), true);
-        assertEquals("test2_isValidIndex: assertEquals", soiTest
-                .setInstructorAvailability(2, aTemp), false);
-
-    }
-
     public void test_instructorCount() {
         DxSetOfInstructors soiTest = new DxSetOfInstructors();
 

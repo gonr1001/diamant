@@ -17,11 +17,115 @@
  * 
  * 
  */
+//package dInternal.dData.dInstructors;
+//
+//import java.util.Comparator;
+//
+//import dInternal.dData.DxAvailability;
+//
+///**
+// * Ruben Gonzalez-Rubio
+// * 
+// * Description: DxInstructor is a class used to:
+// * <p>
+// * Keep the state of an instructor
+// * <p>
+// * 
+// */
+//public class DxInstructor {
+//	
+//	private long _instructorKey;
+//
+//	private String _name;
+//
+//	private DxAvailability _availability;
+//
+//	/**
+//	 * Constructor
+//	 * 
+//	 * @param sName
+//	 *            Name of the new instructor
+//	 * @param a
+//	 *            Availability of the new instructor
+//	 * @param lKey
+//	 *            Instructor key
+//	 */
+//	public DxInstructor(String sName, DxAvailability a, long lKey) {
+//		_instructorKey = lKey;
+//		_name = sName;
+//		_availability = a;
+//	}
+//
+//	/**
+//	 * Modify the availability of the instructor
+//	 * 
+//	 * @param aNewAvailability
+//	 *            Availability that has to be assigned to the instructor
+//	 */
+//	public void setInstructorAvailability(DxAvailability aNewAvailability) {
+//		_availability = aNewAvailability;
+//	}
+//
+//	/**
+//	 * Modify instructor's name
+//	 * 
+//	 * @param sNewName
+//	 *            New name for the instructor
+//	 */
+//	public void setInstructorName(String sNewName) {
+//		_name = sNewName;
+//	}
+//
+//	/**
+//	 * 
+//	 * @return DxAvailability Availability of the instructor
+//	 */
+//	public DxAvailability getInstructorAvailability() {
+//		return _availability;
+//	}
+//
+//	/**
+//	 * 
+//	 * @return String Name of the instructor
+//	 */
+//	public String getInstructorName() {
+//		return _name;
+//	}
+//
+//	/**
+//	 * 
+//	 * @return int Unique ID of the instructor
+//	 */
+//	public long getInstructorKey() {
+//		return _instructorKey;
+//	}
+//
+//	public static Comparator <DxInstructor> NameComparator = new Comparator <DxInstructor> () {
+//		public int compare(DxInstructor arg0, DxInstructor arg1) {
+//			DxInstructor left = arg0;
+//			DxInstructor right = arg1;
+//			return left._name.compareTo(right._name);
+//		}
+//	};
+//    
+//    public static Comparator <DxInstructor> KeyComparator = new Comparator <DxInstructor> () {
+//        public int compare(DxInstructor arg0, DxInstructor arg1) {
+//            DxInstructor left = arg0;
+//            DxInstructor right = arg1;
+//            long diff=left._instructorKey-right._instructorKey;
+//            if(diff>0)
+//                return 1;
+//            if(diff<0)
+//                return -1;
+//            return 0;
+//        }
+//    };
+//}
+
 package dInternal.dData.dInstructors;
 
-import java.util.Comparator;
-
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxRessource;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -32,98 +136,55 @@ import dInternal.dData.DxAvailability;
  * <p>
  * 
  */
-public class DxInstructor {
-	
-	private long _instructorKey;
+public class DxInstructor extends DxRessource{
+    private DxAvailability _availability;
 
-	private String _name;
+    /**
+     * Constructor
+     * 
+     * @param sName
+     *            Name of the new instructor
+     * @param a
+     *            Availability of the new instructor
+     * @param lKey
+     *            Instructor key
+     */
+    public DxInstructor(long lKey, String sName, DxAvailability a) {
+        super(lKey,sName);
+        _availability = a;
+    }
 
-	private DxAvailability _availability;
+    /**
+     * Modify the availability of the instructor
+     * 
+     * @param aNewAvailability
+     *            Availability that has to be assigned to the instructor
+     */
+    public void setInstructorAvailability(DxAvailability aNewAvailability) {
+        _availability = aNewAvailability;
+    }
 
-	/**
-	 * Constructor
-	 * 
-	 * @param sName
-	 *            Name of the new instructor
-	 * @param a
-	 *            Availability of the new instructor
-	 * @param lKey
-	 *            Instructor key
-	 */
-	public DxInstructor(String sName, DxAvailability a, long lKey) {
-		_instructorKey = lKey;
-		_name = sName;
-		_availability = a;
-	}
+    /**
+     * 
+     * @return DxAvailability Availability of the instructor
+     */
+    public DxAvailability getInstructorAvailability() {
+        return _availability;
+    }
 
-	/**
-	 * Modify the availability of the instructor
-	 * 
-	 * @param aNewAvailability
-	 *            Availability that has to be assigned to the instructor
-	 */
-	public void setInstructorAvailability(DxAvailability aNewAvailability) {
-		_availability = aNewAvailability;
-	}
+    /**
+     * 
+     * @return String Name of the instructor
+     */
+    public String getInstructorName() {
+        return this.getRessourceName();
+    }
 
-	/**
-	 * Modify instructor's name
-	 * 
-	 * @param sNewName
-	 *            New name for the instructor
-	 */
-	public void setInstructorName(String sNewName) {
-		_name = sNewName;
-	}
-
-	/**
-	 * 
-	 * @return DxAvailability Availability of the instructor
-	 */
-	public DxAvailability getInstructorAvailability() {
-		return _availability;
-	}
-
-	/**
-	 * 
-	 * @return String Name of the instructor
-	 */
-	public String getInstructorName() {
-		return _name;
-	}
-
-	/**
-	 * 
-	 * @return int Unique ID of the instructor
-	 */
-	public long getInstructorKey() {
-		return _instructorKey;
-	}
-
-	public static Comparator <DxInstructor> NameComparator = new Comparator <DxInstructor> () {
-		public int compare(DxInstructor arg0, DxInstructor arg1) {
-			DxInstructor left = arg0;
-			if(left == null){
-				return 1;
-			}
-			DxInstructor right = arg1;
-			if(right == null){
-				return -1;
-			}
-			return left._name.compareTo(right._name);
-		}
-	};
-    
-    public static Comparator <DxInstructor> KeyComparator = new Comparator <DxInstructor> () {
-        public int compare(DxInstructor arg0, DxInstructor arg1) {
-            DxInstructor left = arg0;
-            DxInstructor right = arg1;
-            long diff=left._instructorKey-right._instructorKey;
-            if(diff>0)
-                return 1;
-            if(diff<0)
-                return -1;
-            return 0;
-        }
-    };
+    /**
+     * 
+     * @return int Unique ID of the instructor
+     */
+    public long getInstructorKey() {
+        return this.getRessourceKey();
+    }
 }
