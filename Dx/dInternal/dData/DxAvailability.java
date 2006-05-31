@@ -276,4 +276,9 @@ public class DxAvailability {
         }
         return true;
     }
+
+	public void setAvailabilityOfAPeriod(int dayIndex, int perIndex, String currentSite) {
+		System.out.println("DxAvailability.setAvailabilityOfAPeriod must be implemented");
+		
+	}
 }

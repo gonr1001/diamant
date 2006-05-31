@@ -54,7 +54,6 @@ import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import dInternal.dData.dInstructors.SetOfInstructors;
 
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dActivities.Type;
@@ -812,49 +811,29 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 * @return
 	 */
 	private Vector buildCurrentInstructorList(int index) {
-		Vector <String> v = new Vector <String>();
+		Vector<String> v = new Vector<String>();
 
-		if (!DConst.newInstructors) {
-			EventAttach event = (EventAttach) ((DResource) _unities.get(index))
-					.getAttach();
-			SetOfInstructors soi = null;
-			soi = _dApplic.getCurrentDModel().getSetOfInstructors();
-			long keys[] = event.getInstructorKey();
-			for (int i = 0; i < keys.length; i++) {
-				DResource instructor = soi.getResource(keys[i]);
-				if (instructor != null)
-					v.add(instructor.getID());
-			}
-		} else {
-			EventAttach event = (EventAttach) ((DResource) _unities.get(index))
-					.getAttach();
-			DxSetOfInstructors soi = _dApplic.getCurrentDModel()
-					.getDxSetOfInstructors();
-			long keys[] = event.getInstructorKey();
-			for (int i = 0; i < keys.length; i++) {
-				String sName = soi.getInstructorName(keys[i]);
-				if (sName!= null)
-					v.add(sName);
-			}
+		EventAttach event = (EventAttach) ((DResource) _unities.get(index))
+				.getAttach();
+		DxSetOfInstructors soi = _dApplic.getCurrentDModel()
+				.getDxSetOfInstructors();
+		long keys[] = event.getInstructorKey();
+		for (int i = 0; i < keys.length; i++) {
+			String sName = soi.getInstructorName(keys[i]);
+			if (sName != null)
+				v.add(sName);
 		}
+
 		return v;
 	}
 
 	private Vector buildInstructorList() {// int index){
-		Vector <String> v = new Vector <String>();
+		Vector<String> v = new Vector<String>();
 
-		if (!DConst.newInstructors) {
-			SetOfInstructors soi = null;
-			soi = _dApplic.getCurrentDModel().getSetOfInstructors();
-			for (int i = 0; i < soi.size(); i++)
-				v.add(soi.getResourceAt(i).getID());
-			v.add(DConst.NO_ROOM_INTERNAL);
-		} else {
-			DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
-					.getDxSetOfInstructors();
-			v=dxsoi.getNamesVector();
-			v.add(DConst.NO_ROOM_INTERNAL);
-		}
+		DxSetOfInstructors dxsoi = _dApplic.getCurrentDModel()
+				.getDxSetOfInstructors();
+		v = dxsoi.getNamesVector();
+		v.add(DConst.NO_ROOM_INTERNAL);
 
 		return v;
 	}
@@ -1038,8 +1017,8 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		// TODO: DConst.newInstructors
 		String a = "";
 		for (int i = 0; i < lm.getSize(); i++) {
-			long key = _dApplic.getCurrentDModel().getSetOfInstructors()
-					.getResource((String) lm.getElementAt(i)).getKey();
+			long key = _dApplic.getCurrentDModel().getDxSetOfInstructors()
+					.getInstructorKeyByName((String) lm.getElementAt(i));
 			a += key + ":";
 		}
 		return a;

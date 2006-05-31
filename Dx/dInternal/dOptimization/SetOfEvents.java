@@ -9,7 +9,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
-import dInternal.dData.AvailabilityAttach;
+import dInternal.dData.DxAvailability;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Section;
@@ -17,7 +17,6 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Period;
@@ -29,8 +28,6 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 
 	private DModel _dm;
-
-
 
 	/***************************************************************************
 	 * Constructor
@@ -49,7 +46,7 @@ public class SetOfEvents extends DSetOfResources {
 		String unityKey;
 		for (int i = 0; i < soa.size(); i++) {
 			DResource activity = soa.getResourceAt(i);
-			long  roomKey; 
+			long roomKey;
 			if (((Activity) activity.getAttach()).isActivityVisibility()) {
 				for (int j = 0; j < ((Activity) activity.getAttach())
 						.getSetOfTypes().size(); j++) {
@@ -92,20 +89,17 @@ public class SetOfEvents extends DSetOfResources {
 									else
 										assignment.setPeriodKey("1.1.1");
 								}// end if(assignment.getPeriodKey()[0]==0)
-								//System.out.println("event " +unityID+"
+								// System.out.println("event " +unityID+"
 								// InsName " +assignment.getInstructorName());
-								if (!DConst.newInstructors)
-									assignInstructors(soie, assignment, unityID);
-								else
-									assignDxInstructors(soie, assignment,
-											unityID);
+
+								assignDxInstructors(soie, assignment, unityID);
 								int roomIndex = _dm.getSetOfRooms()
 										.getIndexOfResource(
 												assignment.getRoomName());
 								if (roomIndex != -1) {
 									roomKey = _dm.getSetOfRooms()
 											.getResourceAt(roomIndex).getKey();
-									//assignment.setRoomKey(roomKey);
+									// assignment.setRoomKey(roomKey);
 								} else {
 									roomKey = -1;
 									DValue error = new DValue();
@@ -118,7 +112,7 @@ public class SetOfEvents extends DSetOfResources {
 									soie.addResource(new DResource("3", error),
 											0);
 								}
-								//int[] dayTime = assignment.getDateAndTime();
+								// int[] dayTime = assignment.getDateAndTime();
 
 								EventAttach event = new EventAttach(unityKey,
 										assignment.getSetInstructorKeys(),
@@ -133,12 +127,12 @@ public class SetOfEvents extends DSetOfResources {
 								event.setRoomFunction(((Unity) unity
 										.getAttach())
 										.getFirstPreferFunctionRoom());
-								//System.out.println("Unity Key: "+unityKey+ "
+								// System.out.println("Unity Key: "+unityKey+ "
 								// - Period Key:
 								// "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
 								this.addResource(new DResource(unityID, event),
 										0);
-								//System.out.println("event " +unityID+"
+								// System.out.println("event " +unityID+"
 								// InsName " +assignment.getInstructorName());
 							}// end if(assignement!=null)
 						}// end for(int l=0; l<
@@ -146,32 +140,12 @@ public class SetOfEvents extends DSetOfResources {
 						// l++)
 					}// end for(int k=0; k<
 					// ((Type)type.getAttach()).getSetOfSections().size(); k++)
-				}//for(int j=0; j< activity.getSetOfTypes().size(); j++)
-			}//end if(((Activity)activity.getAttach()).getActivityVisibility())
+				}// for(int j=0; j< activity.getSetOfTypes().size(); j++)
+			}// end
+			// if(((Activity)activity.getAttach()).getActivityVisibility())
 		}// end for (int i=0; i< soa.size(); i++)
-	} //end build
+	} // end build
 
-	private void assignInstructors(DSetOfResources soie, Assignment assignment,
-			String unityID) {
-		long instructorKey;
-		String[] instructorNames = assignment.getInstructorNames();
-		for (int m = 0; m < instructorNames.length; m++) {
-			int instructorIndex = _dm.getSetOfInstructors().getIndexOfResource(
-					instructorNames[m]);
-			if (instructorIndex != -1) {
-				instructorKey = _dm.getSetOfInstructors().getResourceAt(
-						instructorIndex).getKey();
-				assignment.addInstructorKeys(instructorKey);
-			} else {
-				DValue error = new DValue();
-				error.setStringValue(DConst.ERROR_TAG + unityID + ": "
-						+ DConst.NOT_INSTRUCTOR + "« " + instructorNames[m]
-						+ " »");
-				soie.addResource(new DResource("2", error), 0);
-			}
-		}
-
-	}
 
 	private void assignDxInstructors(DSetOfResources soie,
 			Assignment assignment, String unityID) {
@@ -265,17 +239,11 @@ public class SetOfEvents extends DSetOfResources {
 			long[] keys = event.getInstructorKey();
 
 			assignment.emptyInstructorNames();
-			if (!DConst.newInstructors) {
-				for (int j = 0; j < keys.length; j++) {
-					assignment.addInstructorName(getInstName(_dm
-							.getSetOfInstructors(), keys[j]));
-				}// end for
-			} else {
-				for (int j = 0; j < keys.length; j++) {
-					assignment.addInstructorName(getDxInstName(_dm
-							.getDxSetOfInstructors(), keys[j]));
-				}// end for
-			}
+
+			for (int j = 0; j < keys.length; j++) {
+				assignment.addInstructorName(getDxInstName(_dm
+						.getDxSetOfInstructors(), keys[j]));
+			}// end for
 
 			assignment.setRoom(getRoomName(_dm.getSetOfRooms(), event
 					.getRoomKey()));
@@ -311,33 +279,21 @@ public class SetOfEvents extends DSetOfResources {
 	 * DConst.NO_ROOM_INTERNAL; }
 	 */
 
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-	private String getInstName(SetOfInstructors sor, long eltkey) {
-		if (eltkey != -1) {
-			return sor.getResource(eltkey).getID();
-		}
-		return DConst.NO_ROOM_INTERNAL;
-	}
 
-//	/**
-//	 * get a resource key
-//	 * 
-//	 * @param soresc
-//	 * @param elt
-//	 * @return the resource key or -1 if key does not found
-//	 */
-//	private long getNewInstName(DxSetOfInstructors sor, int eltkey) {
-//		if (eltkey != -1) {
-//			return sor.getInstructorKey(eltkey);
-//		}
-//		return 0;
-//	}
+
+	// /**
+	// * get a resource key
+	// *
+	// * @param soresc
+	// * @param elt
+	// * @return the resource key or -1 if key does not found
+	// */
+	// private long getNewInstName(DxSetOfInstructors sor, int eltkey) {
+	// if (eltkey != -1) {
+	// return sor.getInstructorKey(eltkey);
+	// }
+	// return 0;
+	// }
 
 	/**
 	 * get a resource key
@@ -363,7 +319,7 @@ public class SetOfEvents extends DSetOfResources {
 	public String getInstructorConflictDescriptions(String eventIDOne,
 			String eventIDTwo) {
 		String res = "";
-		String str ;
+		String str;
 		long[] instKeyOne = ((EventAttach) getResource(eventIDOne).getAttach())
 				.getInstructorKey();
 		long[] instKeyTwo = ((EventAttach) getResource(eventIDTwo).getAttach())
@@ -371,12 +327,8 @@ public class SetOfEvents extends DSetOfResources {
 		for (int i = 0; i < instKeyOne.length; i++) {
 			for (int j = 0; j < instKeyTwo.length; j++) {
 				if (instKeyOne[i] == instKeyTwo[j]) {
-					if (!DConst.newInstructors){
-						str = _dm.getSetOfInstructors().getResource(
-								instKeyOne[i]).getID();
-					} else {
-						str = _dm.getDxSetOfInstructors().getInstructorName(instKeyOne[i]);
-					}
+					str = _dm.getDxSetOfInstructors().getInstructorName(
+							instKeyOne[i]);
 					res += DXToolsMethods.getToken(str, ",", 0) + " "
 							+ DXToolsMethods.getToken(str, ",", 1) + ",";
 				}// end if(instKeyOne[i] == instKeyTwo[j])
@@ -394,24 +346,16 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 	public String getInstructorConflictDescriptions(DValue confAt) {
 		String res = "";
-        String str = "";
+		String str = "";
 		Vector insKeys = (Vector) (confAt).getObjectValue();
 		for (int j = 0; j < insKeys.size(); j++) {
-            if(!DConst.newInstructors)
-            {
-                str=_dm.getSetOfInstructors().getResource(
-					((Long) insKeys.get(j)).longValue()).getID();
-            }
-            else
-            {
-                str=_dm.getDxSetOfInstructors().getInstructorName(((Long) insKeys.get(j)).longValue()); 
-            }
+			str = _dm.getDxSetOfInstructors().getInstructorName(
+					((Long) insKeys.get(j)).longValue());
 			res += DXToolsMethods.getToken(str, ",", 0) + " "
 					+ DXToolsMethods.getToken(str, ",", 1) + ",";
 		}// end for (int j=0; j< insKeys.size(); j++)
 		return res;
 	}
-
 
 	/**
 	 * 
@@ -421,7 +365,7 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 	public String getStudentConflictDescriptions(String eventIDOne,
 			String eventIDTwo) {
-		//System.out.println("Event 1: "+eventIDOne+" Event2: "+eventIDTwo);
+		// System.out.println("Event 1: "+eventIDOne+" Event2: "+eventIDTwo);
 		Vector studentOne = ((Activity) _dm.getSetOfActivities().getResource(
 				DXToolsMethods.getToken(eventIDOne, ".", 0)).getAttach())
 				.getStudentRegistered();
@@ -476,7 +420,6 @@ public class SetOfEvents extends DSetOfResources {
 		return res;
 	}
 
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -513,7 +456,7 @@ public class SetOfEvents extends DSetOfResources {
 		EventAttach event;
 		long instKey[];
 		String currentSite = _dm.getCurrentSite();
-		_dm.getSetOfInstructors().remAllAssignedToASite(currentSite);
+		_dm.getDxSetOfInstructors().remAllAssignedToASite(currentSite);
 		for (int i = 0; i < this.size(); i++) {
 			event = (EventAttach) this.getResourceAt(i).getAttach();
 			int[] perKey = event.getPeriodKeyTable();
@@ -522,9 +465,8 @@ public class SetOfEvents extends DSetOfResources {
 			if (event.isPlaceInAPeriod()) {
 				instKey = event.getInstructorKey();
 				for (int j = 0; j < instKey.length; j++) {
-					AvailabilityAttach inst = (AvailabilityAttach) _dm
-							.getSetOfInstructors().getResource(instKey[j])
-							.getAttach();
+					DxAvailability instAvailability =  _dm
+							.getDxSetOfInstructors().getInstructorAvailabilityByKey(instKey[j]);
 					int dayIndex = _dm.getTTStructure().findIndexInWeekTable(
 							perKey[0]);
 					int perPosition = _dm.getTTStructure().getCurrentCycle()
@@ -533,7 +475,7 @@ public class SetOfEvents extends DSetOfResources {
 					if (event.getPeriodKey().length() != 0)
 						for (int k = 0; k < duration; k++) {
 							int perIndex = perPosition + k - 1;
-							inst.setAvailabilityOfAPeriod(dayIndex, perIndex,
+							instAvailability.setAvailabilityOfAPeriod(dayIndex, perIndex,
 									currentSite);
 						}
 				}// end for (int j=0; j< instKey.length; j++)

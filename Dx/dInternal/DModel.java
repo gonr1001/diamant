@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInterface.DDocument;
-import dInternal.dData.AvailabilityAttach;
+//import dInternal.dData.AvailabilityAttach;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
 import dInternal.dData.DxAvailability;
@@ -36,7 +36,6 @@ import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import dInternal.dData.dInstructors.SetOfInstructors;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -82,7 +81,7 @@ public class DModel extends Observable {
 
 	private String _error;
 
-	private SetOfInstructors _setOfInstructors;
+	//private SetOfInstructors _setOfInstructors;
 
 	private DxSetOfInstructors _dxSetOfInstructors;
 
@@ -266,10 +265,11 @@ public class DModel extends Observable {
 			// unity.addAssignment("1");
 		}
 		// set new instructor availability
-		for (int i = 0; i < _setOfInstructors.size(); i++) {
-			((AvailabilityAttach) _setOfInstructors.getResourceAt(i)
-					.getAttach()).setFullAvailability();
-		}
+//		for (int i = 0; i < _DxSetOfInstructors.size(); i++) {
+//			_dxSetOfInstructors.getResourceAt(i)
+//					.getAttach()).setFullAvailability();
+//		}
+		_dxSetOfInstructors.alwaysAvailable();
 
 		for (int i = 0; i < this.getSetOfRooms().size(); i++) {
 			((RoomAttach) this.getSetOfRooms().getResourceAt(i).getAttach())
@@ -313,12 +313,8 @@ public class DModel extends Observable {
 			_ttStruct = (TTStructure) theTT.get(1);
 			if (_ttStruct.getError().length() != 0)
 				return _ttStruct.getError();
-			if (!DConst.newInstructors) {
-				_setOfInstructors = (SetOfInstructors) theTT.get(2);
-				resizeResourceAvailability(_setOfInstructors);
-			} else {
 				_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
-			}
+
 
 			_setOfSites = (SetOfSites) theTT.get(3);
 			resizeSiteAvailability(_setOfSites);
@@ -327,11 +323,7 @@ public class DModel extends Observable {
 			if (_setOfSites.getError().length() != 0) {
 				return _setOfSites.getError();
 			}
-			if (!DConst.newInstructors) {
-				if (_setOfInstructors.getError().length() != 0) {
-					return _setOfInstructors.getError();
-				}
-			}
+
 
 			if (_setOfActivitiesSites.getError().length() != 0) {
 				return _setOfActivitiesSites.getError();
@@ -358,16 +350,10 @@ public class DModel extends Observable {
 
 		DLoadData loadData = new DLoadData(this, str);
 
-		if (!DConst.newInstructors) {
-			_setOfInstructors = loadData.extractInstructors(null, false, false);
-			resizeResourceAvailability(_setOfInstructors);
-			if (_setOfInstructors.getError().length() != 0) {
-				return _setOfInstructors.getError();
-			}
-		} else {
+
 			_dxSetOfInstructors = loadData.extractInstructors();
 			resizeInstructorsResource(_dxSetOfInstructors);
-		}
+
 
 		// import set of sites
 		_setOfSites = loadData.extractRooms(null, false);
@@ -408,16 +394,17 @@ public class DModel extends Observable {
 			// selective
 			// --
 			// Enseignants
-			if (!DConst.newInstructors) {
-				_setOfInstructors = (SetOfInstructors) loadData
-						.selectiveImport(_setOfInstructors, fileName);
-			} else {
-				// _dxSetOfInstructors = (DxSetOfInstructors)
-				// loadData.selectiveImport(
-				// _dxSetOfInstructors, fileName);
-			}
-			resizeResourceAvailability(_setOfInstructors);
-			error = _setOfInstructors.getError();
+			// TODO revoir ceci
+//			if (!DConst.newInstructors) {
+//				_setOfInstructors = (SetOfInstructors) loadData
+//						.selectiveImport(_setOfInstructors, fileName);
+//			} else {
+//				// _dxSetOfInstructors = (DxSetOfInstructors)
+//				// loadData.selectiveImport(
+//				// _dxSetOfInstructors, fileName);
+//			}
+			//resizeResourceAvailability(_setOfInstructors);
+			
 			changeInDModel(_dDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)) {// Importation
 			// selective
@@ -452,13 +439,6 @@ public class DModel extends Observable {
 		return error;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public SetOfInstructors getSetOfInstructors() {
-		return _setOfInstructors;
-	}
 
 	/**
 	 * 
@@ -656,7 +636,7 @@ public class DModel extends Observable {
 		String error = "";
 		if (_isATimeTable) {
 			updateInstructorAvail();
-			error = saveD.saveTimeTable(_ttStruct, _setOfInstructors,
+			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 					_setOfSites, _setOfActivitiesSites, _setOfStuSites,
 					filename);
 			if (error.length() != 0)
@@ -942,7 +922,7 @@ public class DModel extends Observable {
 
 		iaDlgModel.setDays(getTTStructure());
 		iaDlgModel.setMaxNumOfPeriods(getTTStructure());
-		iaDlgModel.setInstructorsNames(_setOfInstructors);
+		iaDlgModel.setInstructorsNames(_dxSetOfInstructors);
 
 		return iaDlgModel;
 	}
