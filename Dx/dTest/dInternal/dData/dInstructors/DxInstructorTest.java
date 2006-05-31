@@ -50,8 +50,6 @@ public class DxInstructorTest extends TestCase {
 
 	// Trying to set an unexisting day
 	public void test_DxInstructor() {
-		// assertEquals("test_setDayAvailability: assertEquals", _aTest
-		// .setDayAvailability(5, "1 5"), false);
 		DxAvailability aTemp = new DxAvailability();
 		aTemp.addDayAvailability("1 5 1 5 1 5 1 5 1 5 1 5");
 		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp,1);

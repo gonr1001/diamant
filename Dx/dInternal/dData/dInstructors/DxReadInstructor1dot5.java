@@ -97,9 +97,7 @@ public class DxReadInstructor1dot5 implements DxInstructorReader {
                 // Verifies that every availability element is valid
                 while (tokenDispo.hasMoreElements()) {
                     String dispo = tokenDispo.nextToken();
-                    if ((!dispo.equalsIgnoreCase("1"))
-                            && (!dispo.equalsIgnoreCase("5"))
-                            && (!dispo.equalsIgnoreCase("2"))) {
+                    if (isValidDayAvailability(dispo)) {
                         // _error = DConst.INST_TEXT4 + line + DConst.INST_TEXT5
                         // + "\n" + DConst.INST_TEXT6;
                         // TODO: throw: Invalid period availability
@@ -133,5 +131,12 @@ public class DxReadInstructor1dot5 implements DxInstructorReader {
         }
 
         return dxsoiInst;
+    }
+    
+    private boolean isValidDayAvailability(String sDispo)
+    {
+        return (!sDispo.equalsIgnoreCase("1"))
+        && (!sDispo.equalsIgnoreCase("5"))
+        && (!sDispo.equalsIgnoreCase("2"));
     }
 }

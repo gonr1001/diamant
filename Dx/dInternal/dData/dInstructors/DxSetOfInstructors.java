@@ -67,7 +67,6 @@ public class DxSetOfInstructors {
     public void addInstructor(String sName, DxAvailability dxaAva) {
         DxInstructor dxiTemp = new DxInstructor(sName, dxaAva, _uniqueKey++);
         _vSortedByKey.add(dxiTemp);
-
         _vSortedByName.add(dxiTemp);
         _isSorted = false;
     }
@@ -85,7 +84,6 @@ public class DxSetOfInstructors {
         if (nIndexKey != -1 && nIndexName != -1) {
             _vSortedByKey.remove(nIndexKey);
             _vSortedByName.remove(nIndexName);
-            _isSorted = false;
         }
     }
 
@@ -94,8 +92,12 @@ public class DxSetOfInstructors {
      * 
      * @return int The number of instructor currently in the set
      */
-    public int size() {
+    public int size(){
         return _vSortedByKey.size();
+    }
+    
+    public boolean areVectorsSync(){
+        return _vSortedByKey.size()==_vSortedByName.size();
     }
 
     /**
@@ -104,7 +106,7 @@ public class DxSetOfInstructors {
      * @return String A string containing all the instructors informations
      */
     public String toWrite() {
-        if(_isSorted)
+        if(!_isSorted)
         {
             sortInstructors();
         }
@@ -173,6 +175,10 @@ public class DxSetOfInstructors {
      *         index was invalid
      */
     public DxAvailability getInstructorAvailability(int nIndex) {
+        if(!_isSorted)
+        {
+            sortInstructors();
+        }
         if (isValidIndex(nIndex)) {
             return _vSortedByName.get(nIndex).getInstructorAvailability();
         }

@@ -22,8 +22,6 @@
  * eventually it is necessary to fix the CLASSPATH
  * include in .login file a line like
  * setenv classpath=%classpath%;INSTALL_DIR/junit.jar
- *
- *
  */
 package dmains;
 
@@ -48,7 +46,7 @@ import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DSetOfInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorReaderTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
-import dTest.dInternal.dData.dInstructors.DxReadInstructorsTest;
+//import dTest.dInternal.dData.dInstructors.DxReadInstructorsTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
@@ -110,7 +108,7 @@ public class DiamantTest {
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
-		suite.addTest(DxReadInstructorsTest.suite());
+//		suite.addTest(DxReadInstructorsTest.suite());
         suite.addTest(DxInstructorReaderTest.suite());
         suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(InstructorAttachTest.suite());

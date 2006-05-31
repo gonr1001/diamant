@@ -35,132 +35,14 @@ import dInternal.dData.DxAvailability;
  * 
  */
 public class DxSetOfSites {
-    private Vector<DxSite> _vSites;
+    private Vector<DxSite> _vSitesByKey;
 
     private long _uniqueKey;
 
     public DxSetOfSites() {
         _uniqueKey = 1;
-        _vSites = new Vector<DxSite>();
-    }
+        _vSitesByKey = new Vector<DxSite>();
 
-    public String getSiteName(long lSiteKey) {
-        try {
-            return _vSites.get(getSiteIndexByKey(lSiteKey)).getSiteName();
-        } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
-            return null;
-        }
-    }
-
-    public String getCatName(long lSiteKey, long lCatKey) {
-        try {
-            return _vSites.get(getSiteIndexByKey(lSiteKey)).getCatName(lCatKey);
-        } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
-            return null;
-        }
-    }
-
-    public int getSiteCount() {
-        return _vSites.size();
-    }
-
-    public int getCatCount(long lSiteKey) {
-        return getCatCountByIndex(getSiteIndexByKey(lSiteKey));
-    }
-
-    public int getCatCount(String sSiteName) {
-        return getCatCountByIndex(getSiteIndexByName(sSiteName));
-    }
-
-    private int getCatCountByIndex(int nIndex) {
-        try {
-            return _vSites.get(nIndex).getCatCount();
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    public int getRoomCount(long lSiteKey, long lCatKey) {
-        try {
-            return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomCount(
-                    lCatKey);
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    public int getRoomCount(String sSiteName, String sCatName) {
-        try {
-            return _vSites.get(getSiteIndexByName(sSiteName)).getRoomCount(
-                    sCatName);
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    public String getRoomName(long lSiteKey, long lCatKey, long lRoomKey) {
-        try {
-            return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomName(
-                    lCatKey, lRoomKey);
-        } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
-            return null;
-        }
-    }
-
-    public int getRoomCapacity(long lSiteKey, long lCatKey, long lRoomKey) {
-        try {
-            return _vSites.get(getSiteIndexByKey(lSiteKey)).getRoomCapacity(
-                    lCatKey, lRoomKey);
-        } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
-            return 0;
-        }
-    }
-
-    public int getRoomCapacity(String sSiteName, String sCatName,
-            String sRoomName) {
-        try {
-            return _vSites.get(getSiteIndexByName(sSiteName)).getRoomCapacity(
-                    sCatName, sRoomName);
-        } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
-            return 0;
-        }
-    }
-
-    public DxAvailability getRoomAvailabilityByKey(long lSiteKey, long lCatKey,
-            long lRoomKey) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public long getSiteKeyByName(String sSiteName) {
-        Iterator it = _vSites.iterator();
-        while (it.hasNext()) {
-            DxSite dxsIt = (DxSite) it.next();
-            if (sSiteName .equalsIgnoreCase(dxsIt.getSiteName()))
-                return dxsIt.getSiteKey();
-        }
-        return -1;
-    }
-
-    public long getCatKeyByName(long lSiteKey, String sSiteName) {
-        return 0;
-    }
-
-    public long getRoomKeyByName(long lSiteKey, long lCatKey, String sSiteName) {
-        return 0;
-    }
-
-    public DxSetOfCategories getDxSetOfCat(long lSiteKey) {
-        return null;
-    }
-
-    public DxSetOfRooms getDxSetOfRooms(long lSiteKey, long lCatKey) {
-        return null;
     }
 
     /**
@@ -172,7 +54,7 @@ public class DxSetOfSites {
      */
     public void addSite(String sNewSiteName) {
         if (getSiteKeyByName(sNewSiteName) == -1) {
-            _vSites.add(new DxSite(_uniqueKey++, sNewSiteName));
+            _vSitesByKey.add(new DxSite(_uniqueKey++, sNewSiteName));
         }
     }
 
@@ -210,7 +92,7 @@ public class DxSetOfSites {
      */
     private void addCatByIndex(int nSiteIndex, String sCatName) {
         try {
-            _vSites.get(nSiteIndex).addCategory(sCatName);
+            _vSitesByKey.get(nSiteIndex).addCategory(sCatName);
         } catch (Exception e) {
             // Null pointer exception can occur if index was invalid
             // Should throw and exception
@@ -237,7 +119,8 @@ public class DxSetOfSites {
      */
     public void addRoom(long lSiteKey, long lCatKey, DxRoom dxrRoom) {
         try {
-            _vSites.get(getSiteIndexByKey(lSiteKey)).addRoom(lCatKey, dxrRoom);
+            _vSitesByKey.get(getSiteIndexByKey(lSiteKey)).addRoom(lCatKey,
+                    dxrRoom);
         } catch (Exception e) {
             // Null pointer exception can occur if index was invalid
             // Should throw and exception
@@ -263,13 +146,133 @@ public class DxSetOfSites {
      *            Comment on the room to be added
      */
     public void addRoom(String sSiteName, String sCatName, DxRoom dxrRoom) {
-        try{
-            _vSites.get(getSiteIndexByName(sSiteName)).addRoom(sCatName,
+        try {
+            _vSitesByKey.get(getSiteIndexByName(sSiteName)).addRoom(sCatName,
                     dxrRoom);
         } catch (Exception e) {
             // Null pointer exception can occur if index was invalid
             // Should throw and exception
         }
+    }
+
+    public String getSiteName(long lSiteKey) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByKey(lSiteKey)).getSiteName();
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
+    }
+
+    public String getCatName(long lSiteKey, long lCatKey) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByKey(lSiteKey)).getCatName(
+                    lCatKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
+    }
+
+    public int getSiteCount() {
+        return _vSitesByKey.size();
+    }
+
+    public int getCatCount(long lSiteKey) {
+        return getCatCountByIndex(getSiteIndexByKey(lSiteKey));
+    }
+
+    public int getCatCount(String sSiteName) {
+        return getCatCountByIndex(getSiteIndexByName(sSiteName));
+    }
+
+    private int getCatCountByIndex(int nIndex) {
+        try {
+            return _vSitesByKey.get(nIndex).getCatCount();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public int getRoomCount(long lSiteKey, long lCatKey) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByKey(lSiteKey)).getRoomCount(
+                    lCatKey);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public int getRoomCount(String sSiteName, String sCatName) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByName(sSiteName))
+                    .getRoomCount(sCatName);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public String getRoomName(long lSiteKey, long lCatKey, long lRoomKey) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByKey(lSiteKey)).getRoomName(
+                    lCatKey, lRoomKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return null;
+        }
+    }
+
+    public int getRoomCapacity(long lSiteKey, long lCatKey, long lRoomKey) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByKey(lSiteKey))
+                    .getRoomCapacity(lCatKey, lRoomKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return 0;
+        }
+    }
+
+    public int getRoomCapacity(String sSiteName, String sCatName,
+            String sRoomName) {
+        try {
+            return _vSitesByKey.get(getSiteIndexByName(sSiteName))
+                    .getRoomCapacity(sCatName, sRoomName);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return 0;
+        }
+    }
+
+    public DxAvailability getRoomAvailabilityByKey(long lSiteKey, long lCatKey,
+            long lRoomKey) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public long getSiteKeyByName(String sSiteName) {
+        Iterator it = _vSitesByKey.iterator();
+        while (it.hasNext()) {
+            DxSite dxsIt = (DxSite) it.next();
+            if (sSiteName.equalsIgnoreCase(dxsIt.getSiteName()))
+                return dxsIt.getSiteKey();
+        }
+        return -1;
+    }
+
+    public long getCatKeyByName(long lSiteKey, String sSiteName) {
+        return 0;
+    }
+
+    public long getRoomKeyByName(long lSiteKey, long lCatKey, String sSiteName) {
+        return 0;
+    }
+
+    public DxSetOfCategories getDxSetOfCat(long lSiteKey) {
+        return null;
+    }
+
+    public DxSetOfRooms getDxSetOfRooms(long lSiteKey, long lCatKey) {
+        return null;
     }
 
     /**
@@ -282,7 +285,7 @@ public class DxSetOfSites {
      */
     private int getSiteIndexByKey(long lKey) {
         DxSite dxsResearch = new DxSite(lKey, null);
-        int nIndex = Collections.binarySearch(_vSites, dxsResearch,
+        int nIndex = Collections.binarySearch(_vSitesByKey, dxsResearch,
                 DxSite.KeyComparator);
         if (nIndex >= 0) {
             return nIndex;
@@ -300,7 +303,7 @@ public class DxSetOfSites {
      * @return Index of the site in the vector, -1 if not found
      */
     private int getSiteIndexByName(String sName) {
-        Iterator it = _vSites.iterator();
+        Iterator it = _vSitesByKey.iterator();
         int i;
 
         for (i = 0; it.hasNext(); i++) {
@@ -311,5 +314,4 @@ public class DxSetOfSites {
         }
         return -1;
     }
-
 }

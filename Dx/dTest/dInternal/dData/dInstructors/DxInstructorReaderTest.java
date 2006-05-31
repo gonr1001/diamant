@@ -1,15 +1,21 @@
 package dTest.dInternal.dData.dInstructors;
 
+import java.io.File;
+
 import dConstants.DConst;
+import dInternal.DataExchange;
+import dInternal.Preferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dInstructors.DxInstructorReader;
 import dInternal.dData.dInstructors.DxReadInstructor1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import eLib.exit.txt.FilterFile;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class DxInstructorReaderTest extends TestCase {
+
     public DxInstructorReaderTest(String name) {
         super(name);
     }
@@ -77,7 +83,7 @@ public class DxInstructorReaderTest extends TestCase {
         } catch (Exception e) {
             assertEquals("test1_1_getSetOfInstructors: assertEquals",
                     "java.lang.Exception: " + DConst.INST_TEXT3 + 7
-                    + DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
+                            + DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
                             .toString());
         }
     }
@@ -213,7 +219,66 @@ public class DxInstructorReaderTest extends TestCase {
             assertEquals("test5_2_getSetOfInstructors: assertEquals", dxsoiTemp
                     .getInstructorName(2), "POLM");
         } catch (Exception e) {
-            assertFalse("test5_3_getSetOfInstructors: Should not have failed" + e.toString(), true);
+            assertFalse("test5_3_getSetOfInstructors: Should not have failed"
+                    + e.toString(), true);
         }
     }
+
+    public void test6_getSetOfInstructors() {
+        DxSetOfInstructors dxsoi = null;
+        String path = "." + File.separator + "dataTest" + File.separator
+                + "disprof.sig.DISPROF";
+        byte[] dataloaded = preLoad(path);
+        DLoadData ld = new DLoadData();
+        DataExchange de = ld.buildDataExchange(dataloaded);
+
+        DxInstructorReader dxir = new DxReadInstructor1dot5(de, 5, 14);
+        try {
+            dxsoi = dxir.getSetOfInstructors();
+        } catch (Exception e) {
+            assertFalse("DxInstructorReaderTest: assertFalse" + e.toString(),
+                    true);
+        }
+
+        assertEquals("test6_1_getSetOfInstructors: assertEquals", 126, dxsoi
+                .size());
+        assertEquals("test6_2_getSetOfInstructors: assertEquals", true, dxsoi
+                .areVectorsSync());
+        assertEquals("test6_3_getSetOfInstructors: assertEquals",
+                "ABATZOGLOU, NICOLAS", dxsoi.getInstructorName(1));
+        assertEquals("test6_4_getSetOfInstructors: assertEquals",
+                "YAHIA, AMMAR", dxsoi.getInstructorName(126));
+        assertEquals("test6_5_getSetOfInstructors: assertEquals", 4, dxsoi
+                .getInstructorKeyByName("AMÉDIN, CELSE KAFUI"));
+
+        assertEquals("test6_6_getSetOfInstructors: assertEquals", 5, dxsoi
+                .getInstructorAvailabilityByKey(126).getPeriodAvailability(4,
+                        13));
+        assertEquals("test6_7_getSetOfInstructors: assertEquals", 1, dxsoi
+                .getInstructorAvailabilityByKey(5).getPeriodAvailability(2,
+                        7));
+
+        dxsoi.removeInstructor(1);
+        dxsoi.removeInstructor(126);
+        assertEquals("test6_8_getSetOfInstructors: assertEquals", 124, dxsoi
+                .size());
+        assertEquals("test6_9_getSetOfInstructors: assertEquals", true, dxsoi
+                .areVectorsSync());
+        assertEquals("test6_10_getSetOfInstructors: assertEquals", true, dxsoi
+                .areVectorsSync());
+        assertEquals("test6_11_getSetOfInstructors: assertEquals", -1, dxsoi
+                .getInstructorKeyByName("YAHIA, AMMAR"));
+    }
+
+    private byte[] preLoad(String str) {
+        Preferences preferences = new Preferences("." + File.separator + "pref"
+                + File.separator + "pref.txt");
+        FilterFile filter = new FilterFile();
+        filter.setCharKnown("");
+        filter.appendToCharKnown(preferences._acceptedChars);
+        if (filter.validFile(str)) {
+            return filter.getByteArray();
+        }
+        return null;
+    } // preLoad(String str)
 }
