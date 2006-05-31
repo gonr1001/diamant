@@ -625,7 +625,7 @@ C1-2038; 60; 620; 11,14,24; SHE; CAT 1; Salle de classe avec console multi-média
 
 ===================================
 Diamant1.6
-AMC6001  1 SHE 99999
+AMC6001  01 SHE 99999
 1
 1
 Corbeil, Philippe :  ;
@@ -637,7 +637,7 @@ Corbeil, Philippe :  ;
 1
 1
  0 ; 0
-AMC6401  1 SHE 99999
+AMC6401  01 SHE 99999
 1
 1
 Chagnon, Mathieu :  ;
@@ -649,7 +649,7 @@ Chagnon, Mathieu :  ;
 1
 1
  0 ; 0
-AMC6551  1 SHE 99999
+AMC6551  01 SHE 99999
 1
 1
 Néaimé, Samir F. :  ;
@@ -661,7 +661,7 @@ Néaimé, Samir F. :  ;
 1
 1
  0 ; 0
-AMC9001  1 SHE 99999
+AMC9001  01 SHE 99999
 1
 1
 Doucet, Patrik :  ;
@@ -673,7 +673,7 @@ Doucet, Patrik :  ;
 1
 1
  0 ; 0
-BGM9161  1 SHE 99999
+BGM9161  01 SHE 99999
 1
 1
 Rancourt, Denis :  ;
@@ -685,7 +685,7 @@ Rancourt, Denis :  ;
 1
 1
  0 ; 0
-GBT2101  1 SHE 99999
+GBT2101  01 SHE 99999
 1
 1
 Soucy, Gervais :  ;
@@ -697,7 +697,7 @@ Soucy, Gervais :  ;
 1
 1
  0 ; 0
-GBT4031  1 SHE 99999
+GBT4031  01 SHE 99999
 1
 1
 Lamiot, Éric :  ;
@@ -709,7 +709,7 @@ Lamiot, Éric :  ;
 1
 1
  0 ; 0
-GCH1041  1 SHE 99999
+GCH1041  01 SHE 99999
 1
 1
 Nikiema, Sompassate Josiane :  ;
@@ -721,7 +721,7 @@ Nikiema, Sompassate Josiane :  ;
 1
 1
  0 ; 0
-GCH1061  1 SHE 99999
+GCH1061  01 SHE 99999
 1
 1
 Gitzhofer, François :  ;
@@ -733,7 +733,7 @@ Gitzhofer, François :  ;
 1
 1
  0 ; 0
-GCH1091  1 SHE 99999
+GCH1091  01 SHE 99999
 1
 1
 Jurewicz, Jerzy :  ;
@@ -745,7 +745,7 @@ Jurewicz, Jerzy :  ;
 1
 1
  0 ; 0
-GCH1511  1 SHE 99999
+GCH1511  01 SHE 99999
 1
 1
 Lavoie, Jean :  ;
@@ -757,7 +757,7 @@ Lavoie, Jean :  ;
 1
 1
  0 ; 0
-GCH2051  1 SHE 99999
+GCH2051  01 SHE 99999
 1
 1
 Bannari, Abdelfettah :  ;
@@ -769,7 +769,7 @@ Bannari, Abdelfettah :  ;
 1
 1
  0 ; 0
-GCH2101  1 SHE 99999
+GCH2101  01 SHE 99999
 1
 1
 Soucy, Gervais :  ;
@@ -781,7 +781,7 @@ Soucy, Gervais :  ;
 1
 1
  0 ; 0
-GCH2201  1 SHE 99999
+GCH2201  01 SHE 99999
 1
 1
 Marquis, Marie-Eve :  ;
@@ -793,7 +793,7 @@ Marquis, Marie-Eve :  ;
 1
 1
  0 ; 0
-GCH3211  1 SHE 99999
+GCH3211  01 SHE 99999
 1
 1
 Abatzoglou, Nicolas :  ;
@@ -805,7 +805,7 @@ Abatzoglou, Nicolas :  ;
 1
 1
  0 ; 0
-GCH4301  1 SHE 99999
+GCH4301  01 SHE 99999
 1
 1
 Jurewicz, Jerzy :  ;
@@ -817,7 +817,7 @@ Jurewicz, Jerzy :  ;
 1
 1
  0 ; 0
-GCH4401  1 SHE 99999
+GCH4401  01 SHE 99999
 1
 1
 Sirois, Joël :  ;
@@ -829,7 +829,7 @@ Sirois, Joël :  ;
 1
 1
  0 ; 0
-GCH5321  1 SHE 99999
+GCH5321  01 SHE 99999
 1
 1
 Laroche, Isabelle :  ;
@@ -841,7 +841,7 @@ Laroche, Isabelle :  ;
 1
 1
  0 ; 0
-GCI1021  1 SHE 99999
+GCI1021  01 SHE 99999
 1
 1
 Yahiaoui, Abdallah :  ;
@@ -853,7 +853,7 @@ Yahiaoui, Abdallah :  ;
 1
 1
  0 ; 0
-GCI2001  1 SHE 99999
+GCI2001  01 SHE 99999
 1
 1
 Harraq, Anas :  ;
@@ -865,7 +865,7 @@ Harraq, Anas :  ;
 1
 1
  0 ; 0
-GCI2201  1 SHE 99999
+GCI2201  01 SHE 99999
 1
 1
 Proulx, Jean :  ;
@@ -877,7 +877,7 @@ Proulx, Jean :  ;
 1
 1
  0 ; 0
-GCI3101  1 SHE 99999
+GCI3101  01 SHE 99999
 1
 1
 Smith, Marc :  ;
@@ -889,7 +889,7 @@ Smith, Marc :  ;
 1
 1
  0 ; 0
-GCI3201  1 SHE 99999
+GCI3201  01 SHE 99999
 1
 1
 Lupien, Claude :  ;
@@ -901,7 +901,7 @@ Lupien, Claude :  ;
 1
 1
  0 ; 0
-GCI4101  1 SHE 99999
+GCI4101  01 SHE 99999
 1
 1
 Côté, Bertrand :  ;
@@ -913,7 +913,7 @@ Côté, Bertrand :  ;
 1
 1
  0 ; 0
-GCI5201  1 SHE 99999
+GCI5201  01 SHE 99999
 1
 1
 Cabral, Alexandre :  ;
@@ -925,7 +925,7 @@ Cabral, Alexandre :  ;
 1
 1
  0 ; 0
-GCI6001  1 SHE 99999
+GCI6001  01 SHE 99999
 1
 1
 Lefebvre, Dominique :  ;
@@ -937,7 +937,7 @@ Lefebvre, Dominique :  ;
 1
 1
  0 ; 0
-GCI6101  1 SHE 99999
+GCI6101  01 SHE 99999
 1
 1
 Khayat, Kamal H. :  ;
@@ -949,7 +949,7 @@ Khayat, Kamal H. :  ;
 1
 1
  0 ; 0
-GIN6001  1 SHE 99999
+GIN6001  01 SHE 99999
 1
 1
 Clément, Jonathan :  ;
@@ -961,7 +961,7 @@ Clément, Jonathan :  ;
 1
 1
  0 ; 0
-GIN6011  1 SHE 99999
+GIN6011  01 SHE 99999
 1
 1
 Yahia, Ammar :  ;
@@ -973,7 +973,7 @@ Yahia, Ammar :  ;
 1
 1
  0 ; 0
-GMC2401  1 SHE 99999
+GMC2401  01 SHE 99999
 1
 1
 Bilodeau, Stéphane :  ;
@@ -985,7 +985,7 @@ Bilodeau, Stéphane :  ;
 1
 1
  0 ; 0
-GMC5401  1 SHE 99999
+GMC5401  01 SHE 99999
 1
 1
 Veilleux, Lyne :  ;
@@ -997,7 +997,7 @@ Veilleux, Lyne :  ;
 1
 1
  0 ; 0
-IMC1111  1 SHE 99999
+IMC1111  01 SHE 99999
 1
 1
 Atalla, Noureddine :  ;
@@ -1009,7 +1009,7 @@ Atalla, Noureddine :  ;
 1
 1
  0 ; 0
-IMC1171  1 SHE 99999
+IMC1171  01 SHE 99999
 1
 1
 Payre, Guy :  ;
@@ -1021,7 +1021,7 @@ Payre, Guy :  ;
 1
 1
  0 ; 0
-IMC2101  1 SHE 99999
+IMC2101  01 SHE 99999
 1
 1
 Groulx, Dominic :  ;
@@ -1033,7 +1033,7 @@ Groulx, Dominic :  ;
 1
 1
  0 ; 0
-IMC3101  1 SHE 99999
+IMC3101  01 SHE 99999
 1
 1
 Arès, Richard :  ;
@@ -1045,7 +1045,7 @@ Arès, Richard :  ;
 1
 1
  0 ; 0
-IMC3251  1 SHE 99999
+IMC3251  01 SHE 99999
 1
 1
 Micheau, Philippe :  ;
@@ -1057,7 +1057,7 @@ Micheau, Philippe :  ;
 1
 1
  0 ; 0
-IMC3501  1 SHE 99999
+IMC3501  01 SHE 99999
 1
 1
 Lalonde, Serge :  ;
@@ -1069,7 +1069,7 @@ Lalonde, Serge :  ;
 1
 1
  0 ; 0
-IMC4551  1 SHE 99999
+IMC4551  01 SHE 99999
 1
 1
 Micheau, Philippe :  ;
@@ -1081,7 +1081,7 @@ Micheau, Philippe :  ;
 1
 1
  0 ; 0
-IMC5001  1 SHE 99999
+IMC5001  01 SHE 99999
 1
 1
 Panneton, Raymond :  ;
@@ -1093,7 +1093,7 @@ Panneton, Raymond :  ;
 1
 1
  0 ; 0
-IMC9001  1 SHE 99999
+IMC9001  01 SHE 99999
 1
 1
 Doucet, Patrik :  ;
@@ -1105,7 +1105,7 @@ Doucet, Patrik :  ;
 1
 1
  0 ; 0
-IMC9161  1 SHE 99999
+IMC9161  01 SHE 99999
 1
 1
 Vittecoq, Pierre :  ;
@@ -1117,7 +1117,7 @@ Vittecoq, Pierre :  ;
 1
 1
  0 ; 0
-ING5101  1 SHE 99999
+ING5101  01 SHE 99999
 1
 1
 Gagnon, Lollie :  ;
@@ -1129,7 +1129,7 @@ Gagnon, Lollie :  ;
 1
 1
  0 ; 0
-ING5251  1 SHE 99999
+ING5251  01 SHE 99999
 1
 1
 Douville, Serge :  ;
@@ -1141,7 +1141,7 @@ Douville, Serge :  ;
 1
 1
  0 ; 0
-ING6101  1 SHE 99999
+ING6101  01 SHE 99999
 1
 1
 Panneton, Raymond :  ;
@@ -1153,7 +1153,7 @@ Panneton, Raymond :  ;
 1
 1
  0 ; 0
-ING6261  1 SHE 99999
+ING6261  01 SHE 99999
 1
 1
 Doucet, Patrik :  ;
