@@ -48,7 +48,7 @@ import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
-import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
+//import dTest.dInternal.dData.dRooms.RoomsAttributesInterpretorTest;
 import dTest.dInternal.dData.dRooms.SetOfCategoriesTest;
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
@@ -58,7 +58,7 @@ import dTest.dInternal.dDataTxt.AssignmentTest;
 import dTest.dInternal.dDataTxt.ResourceTest;
 import dTest.dInternal.dDataTxt.RoomAttachTest;
 import dTest.dInternal.dDataTxt.SectionTest;
-import dTest.dInternal.dDataTxt.SetOfRoomsTest;
+//import dTest.dInternal.dDataTxt.SetOfRoomsTest;
 import dTest.dInternal.dDataTxt.TypeTest;
 import dTest.dInternal.dDataTxt.UnityTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
@@ -102,7 +102,7 @@ public class DiamantTest {
         suite.addTest(DxInstructorsReaderTest.suite());
         suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(ResourceTest.suite());
-		suite.addTest(RoomsAttributesInterpretorTest.suite());
+//		suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
@@ -147,7 +147,7 @@ public class DiamantTest {
 		suite.addTest(SetOfCategoriesTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
-		suite.addTest(SetOfRoomsTest.suite());
+//		suite.addTest(SetOfRoomsTest.suite()); old 
 		suite.addTest(DFileMenuTest.suite());
 		System.out.println("Bye I was in tests");
 		return suite;

@@ -1,6 +1,6 @@
 /**
 *
-* Title: RoomsAttributesInterpretorTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: RoomsAttributesInterpretorTest $Revision $  $Date: 2006-06-01 19:27:45 $
 * Description: 	RoomsAttributesInterpretorTest is a class used to test the class 
 * 				RoomsAttributesInterpretorTest 
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 package dTest.dInternal.dData.dRooms;
@@ -24,10 +24,10 @@ package dTest.dInternal.dData.dRooms;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dInternal.dData.dRooms.RoomsAttributesInterpretor;
+//import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 
 public class RoomsAttributesInterpretorTest extends TestCase {
-	private RoomsAttributesInterpretor _rait;
+//	private RoomsAttributesInterpretor _rait;
 	
 	public RoomsAttributesInterpretorTest(String name) {
 		super(name);
@@ -39,15 +39,15 @@ public class RoomsAttributesInterpretorTest extends TestCase {
 		return new TestSuite(RoomsAttributesInterpretorTest.class);
 	} // end suite
 	
-	public void setUp(){
-		_rait = new RoomsAttributesInterpretor();
-	}
+//	public void setUp(){
+//		_rait = new RoomsAttributesInterpretor();
+//	}
 	
-	public void test_addFunction(){
-		assertEquals("test_addFunction: assertEquals",true, _rait.addFunction(1,"test1"));
-		//assertEquals("test_addAvailability: assertEquals", roomAttach.getVectorAvailability(), v);
-	}
-	public void test_getSetOfFunctions(){
-		System.out.println(_rait.getSetOfFunctions());
-	}		
+//	public void test_addFunction(){
+//		assertEquals("test_addFunction: assertEquals",true, _rait.addFunction(1,"test1"));
+//		//assertEquals("test_addAvailability: assertEquals", roomAttach.getVectorAvailability(), v);
+//	}
+//	public void test_getSetOfFunctions(){
+//		System.out.println(_rait.getSetOfFunctions());
+//	}		
 }

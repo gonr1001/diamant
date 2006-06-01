@@ -33,7 +33,7 @@ import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import dInternal.dData.dRooms.RoomsAttributesInterpretor;
+//import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
@@ -61,7 +61,7 @@ public class DLoadData {
 
 	private DModel _dm;
 
-	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
+//	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
 	private String _chars;
 
@@ -106,22 +106,22 @@ public class DLoadData {
 		verifyImportDataFile(args);
 	}
 
-	/**
-	 * extractRoomsAttributesInterpretor produces an instance of
-	 * RoomsAttributesInterpretor
-	 * 
-	 * @return the instance of RoomsAttributesInterpretor
-	 */
-	public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
-		RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
-		byte[] dataloaded = preLoad(_functionFileName);
-		if (dataloaded != null)
-			attr.loadSetOfFunctions(dataloaded);
-		dataloaded = preLoad(_caractFileName);
-		if (dataloaded != null)
-			attr.loadSetOfCaracteristics(dataloaded);
-		return attr;
-	}
+//	/**
+//	 * extractRoomsAttributesInterpretor produces an instance of
+//	 * RoomsAttributesInterpretor
+//	 * 
+//	 * @return the instance of RoomsAttributesInterpretor
+//	 */
+//	public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
+//		RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
+//		byte[] dataloaded = preLoad(_functionFileName);
+//		if (dataloaded != null)
+//			attr.loadSetOfFunctions(dataloaded);
+//		dataloaded = preLoad(_caractFileName);
+//		if (dataloaded != null)
+//			attr.loadSetOfCaracteristics(dataloaded);
+//		return attr;
+//	}
 
 	/**
 	 * extractRooms
@@ -150,7 +150,7 @@ public class DLoadData {
 					roomsList
 							.setSetOfResources(currentList.getSetOfResources());
 			if (roomsList.analyseTokens(de, 0)) {
-				roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+//				roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 				roomsList.buildSetOfResources(de, 0);
 			}
 		} else {// (NullPointerException npe) {
@@ -391,7 +391,7 @@ public class DLoadData {
 			DataExchange de = buildDataExchange(project.nextToken().trim()
 					.getBytes());
 			if (roomsList.analyseTokens(de, 3)) {
-				roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+//				roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 				roomsList.buildSetOfResources(de, 3);
 			}
 			extract.add(roomsList);
@@ -420,7 +420,7 @@ public class DLoadData {
 	}
 
 	private void initLoadData() {
-		_roomsAttributesInterpretor = new RoomsAttributesInterpretor();
+//		_roomsAttributesInterpretor = new RoomsAttributesInterpretor();
 		Preferences preferences = new Preferences(System
 				.getProperty("user.dir")
 				+ File.separator + "pref" + File.separator + "pref.txt");

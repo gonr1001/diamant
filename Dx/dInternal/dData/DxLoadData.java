@@ -29,5 +29,5 @@ package dInternal.dData;
  * 
  */
 public class DxLoadData {
-//
+	// to avoid warning
 }

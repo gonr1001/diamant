@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.30 $  $Date: 2006-06-01 17:26:12 $
+ * Title: ImportDlg $Revision: 1.31 $  $Date: 2006-06-01 19:27:44 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
- * @author  $Author: caln1901 $
+ * @version $Revision: 1.31 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -30,8 +30,7 @@ import javax.swing.JFileChooser;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
-//import eLib.exit.dialog.FatalProblemDlg;
-//import eLib.exit.dialog.InformationDlg;
+
 
 /**
  * 

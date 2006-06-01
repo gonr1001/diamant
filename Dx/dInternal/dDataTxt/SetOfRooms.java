@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfRooms $Revision: 1.33 $  $Date: 2006-05-16 18:29:14 $
+* Title: SetOfRooms $Revision: 1.34 $  $Date: 2006-06-01 19:27:44 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.33 $
+* @version $Revision: 1.34 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -30,14 +30,14 @@ import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.dRooms.RoomAttach;
-import dInternal.dData.dRooms.RoomsAttributesInterpretor;
+//import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfRooms extends DSetOfResources{
 	
 	private byte[] _dataloaded; 
 	private String _error;
-	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
+//	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
 
 	/**
@@ -51,7 +51,7 @@ public class SetOfRooms extends DSetOfResources{
 		_error ="";
 		//_sorListeners= new Vector();
 		_dataloaded = dataloaded;
-		_roomsAttributesInterpretor = null;
+//		_roomsAttributesInterpretor = null;
 	}
 
 	public boolean analyseTokens(int beginPosition) {
@@ -440,21 +440,21 @@ public class SetOfRooms extends DSetOfResources{
 			}// end switch(position)
 		}// end while (st.hasMoreElements())
 	} //end builSetOfResources
-	/**
-	 * 
-	 * @param attr
-	 */
-	public void setAttributesInterpretor(RoomsAttributesInterpretor attr){
-		_roomsAttributesInterpretor = attr;
-	}
-	
-	/**
-	 * 
-	 * @return _roomsAttributesInterpretor
-	 */
-	public RoomsAttributesInterpretor getAttributesInterpretor(){
-		return _roomsAttributesInterpretor;
-	}
+//	/**
+//	 * 
+//	 * @param attr
+//	 */
+//	public void setAttributesInterpretor(RoomsAttributesInterpretor attr){
+//		_roomsAttributesInterpretor = attr;
+//	}
+//	
+//	/**
+//	 * 
+//	 * @return _roomsAttributesInterpretor
+//	 */
+//	public RoomsAttributesInterpretor getAttributesInterpretor(){
+//		return _roomsAttributesInterpretor;
+//	}
 	  
 
 	private void buildSetOfCaracteristics(RoomAttach roomAt, String str) {

@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInterface.DDocument;
-//import dInternal.dData.AvailabilityAttach;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
 import dInternal.dData.DxAvailability;
@@ -81,19 +80,17 @@ public class DModel extends Observable {
 
 	private String _error;
 
-	//private SetOfInstructors _setOfInstructors;
-
 	private DxSetOfInstructors _dxSetOfInstructors;
 
 	private SetOfRoomsFunctions _setOfRoomsFunctions;
 
 	protected static SetOfSites _setOfSites;
 
-	protected static SetOfCategories _setOfCategories ;
+	protected static SetOfCategories _setOfCategories;
 
 	protected static SetOfRooms _setOfRooms;
 
-	protected static SetOfStuSites _setOfStuSites ;
+	protected static SetOfStuSites _setOfStuSites;
 
 	protected static SetOfStudents _setOfStudents;
 
@@ -111,9 +108,9 @@ public class DModel extends Observable {
 
 	private int[] _nbConflicts;
 
-	private DSetOfResources _setOfImportErrors; 
+	private DSetOfResources _setOfImportErrors;
 
-	private DSetOfResources _setOfImportSelErrors; 
+	private DSetOfResources _setOfImportSelErrors;
 
 	/**
 	 * intvalue is between 0-1000 and give the state of the progress bar
@@ -129,14 +126,15 @@ public class DModel extends Observable {
 	 *            is the type of timetable to be constructed see DConst.
 	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM =
 	 *            3;
-	 * @throws Exception 
+	 * @throws Exception
 	 * 
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
-	public DModel(DDocument dDocument, String fileName, int type) throws Exception /*!!!NIC!!!*/{
+	public DModel(DDocument dDocument, String fileName, int type)
+			throws Exception /* !!!NIC!!! */{
 		_error = "";
-		 _modified = false;
-		 _isExamPrepared = false;
+		_modified = false;
+		_isExamPrepared = false;
 		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
 		_importDone = false;
 		_mergeDone = false;
@@ -151,6 +149,7 @@ public class DModel extends Observable {
 		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
 		_dDocument = dDocument;
 		_isOnlyATimeTable = false;
+
 		if (fileName.endsWith(DConst.DOT_DIA)) {
 			_error = loadTimeTable(fileName, getCurrentDir(fileName));
 			_isATimeTable = true;
@@ -163,13 +162,15 @@ public class DModel extends Observable {
 		}
 		if (_error.length() == 0 && _isATimeTable)
 			_conditionsToTest = new DxConditionsToTest(this);
-		if ((type == DConst.CYCLE) || (type == DConst.EXAM))
+		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
+			_isATimeTable = true;
 			_isOnlyATimeTable = true;
+		}
 		_type = type;
 		_modified = false;
-		//_setOfRoomsFunctions = new SetOfRoomsFunctions();
-		//_setOfRoomsFunctions.functionReader();
+
 		this.notifyObservers(this);
+
 	}
 
 	/**
@@ -265,10 +266,10 @@ public class DModel extends Observable {
 			// unity.addAssignment("1");
 		}
 		// set new instructor availability
-//		for (int i = 0; i < _DxSetOfInstructors.size(); i++) {
-//			_dxSetOfInstructors.getResourceAt(i)
-//					.getAttach()).setFullAvailability();
-//		}
+		// for (int i = 0; i < _DxSetOfInstructors.size(); i++) {
+		// _dxSetOfInstructors.getResourceAt(i)
+		// .getAttach()).setFullAvailability();
+		// }
 		_dxSetOfInstructors.alwaysAvailable();
 
 		for (int i = 0; i < this.getSetOfRooms().size(); i++) {
@@ -299,11 +300,12 @@ public class DModel extends Observable {
 	 * 
 	 * @param fileName
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 
 	// XXXX Pascal: Magic number haven
-	public String loadTimeTable(String fileName, String currentDir) throws Exception /*!!!NIC!!!*/{
+	public String loadTimeTable(String fileName, String currentDir)
+			throws Exception /* !!!NIC!!! */{
 
 		DLoadData loadD = new DLoadData(this);
 		Vector theTT = loadD.loadTheTT(fileName, currentDir);
@@ -313,8 +315,7 @@ public class DModel extends Observable {
 			_ttStruct = (TTStructure) theTT.get(1);
 			if (_ttStruct.getError().length() != 0)
 				return _ttStruct.getError();
-				_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
-
+			_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
 
 			_setOfSites = (SetOfSites) theTT.get(3);
 			resizeSiteAvailability(_setOfSites);
@@ -323,7 +324,6 @@ public class DModel extends Observable {
 			if (_setOfSites.getError().length() != 0) {
 				return _setOfSites.getError();
 			}
-
 
 			if (_setOfActivitiesSites.getError().length() != 0) {
 				return _setOfActivitiesSites.getError();
@@ -344,16 +344,14 @@ public class DModel extends Observable {
 	 * 
 	 * @param str
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public String importData(String str) throws Exception {
 
 		DLoadData loadData = new DLoadData(this, str);
 
-
-			_dxSetOfInstructors = loadData.extractInstructors();
-			resizeInstructorsResource(_dxSetOfInstructors);
-
+		_dxSetOfInstructors = loadData.extractInstructors();
+		resizeInstructorsResource(_dxSetOfInstructors);
 
 		// import set of sites
 		_setOfSites = loadData.extractRooms(null, false);
@@ -395,16 +393,16 @@ public class DModel extends Observable {
 			// --
 			// Enseignants
 			// TODO revoir ceci
-//			if (!DConst.newInstructors) {
-//				_setOfInstructors = (SetOfInstructors) loadData
-//						.selectiveImport(_setOfInstructors, fileName);
-//			} else {
-//				// _dxSetOfInstructors = (DxSetOfInstructors)
-//				// loadData.selectiveImport(
-//				// _dxSetOfInstructors, fileName);
-//			}
-			//resizeResourceAvailability(_setOfInstructors);
-			
+			// if (!DConst.newInstructors) {
+			// _setOfInstructors = (SetOfInstructors) loadData
+			// .selectiveImport(_setOfInstructors, fileName);
+			// } else {
+			// // _dxSetOfInstructors = (DxSetOfInstructors)
+			// // loadData.selectiveImport(
+			// // _dxSetOfInstructors, fileName);
+			// }
+			// resizeResourceAvailability(_setOfInstructors);
+
 			changeInDModel(_dDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)) {// Importation
 			// selective
@@ -438,7 +436,6 @@ public class DModel extends Observable {
 		_mergeDone = true;
 		return error;
 	}
-
 
 	/**
 	 * 
@@ -776,7 +773,7 @@ public class DModel extends Observable {
 		_nbConflicts = getTTStructure().getCurrentCycle()
 				.getTotalNumberOfConflicts();
 		this.notifyObservers(obj);
-		//this.clearChanged();
+		// this.clearChanged();
 	}
 
 	/**
@@ -851,7 +848,6 @@ public class DModel extends Observable {
 		this.setCurrentSite(currentS);
 	}
 
-
 	/**
 	 * build set of events using currentcycle, setofactivities, setofinstructors
 	 * and setofrooms
@@ -884,7 +880,8 @@ public class DModel extends Observable {
 	private void resizeInstructorsResource(DxSetOfInstructors soiRes) {
 		int[][] matrix;
 		for (int i = 0; i < soiRes.size(); i++) {
-			matrix = soiRes.getInstructorAvailability(i).getMatrixAvailability();
+			matrix = soiRes.getInstructorAvailability(i)
+					.getMatrixAvailability();
 			matrix = DXToolsMethods
 					.resizeAvailability(matrix, getTTStructure());
 			soiRes.setInstructorAvailability(i, new DxAvailability(matrix));
