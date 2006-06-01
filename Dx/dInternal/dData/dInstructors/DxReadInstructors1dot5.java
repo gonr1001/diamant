@@ -7,13 +7,13 @@ import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
 
-public class DxReadInstructor1dot5 implements DxInstructorsReader {
+public class DxReadInstructors1dot5 implements DxInstructorsReader {
 
     private DataExchange _deInstructors;
 
     private int _nDays, _nPeriods;
 
-    public DxReadInstructor1dot5(DataExchange de, int nDays, int nPeriods) {
+    public DxReadInstructors1dot5(DataExchange de, int nDays, int nPeriods) {
         _deInstructors = de;
         _nDays = nDays;
         _nPeriods = nPeriods;
