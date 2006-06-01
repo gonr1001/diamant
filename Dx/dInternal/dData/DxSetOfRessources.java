@@ -32,7 +32,7 @@ import java.util.Vector;
  * <p>
  * 
  */
-public class DxSetOfRessource {
+public class DxSetOfRessources {
     private Vector<DxRessource> _vRessourceSortedByKey;
 
     private Vector<DxRessource> _vRessourceSortedByName;
@@ -41,7 +41,7 @@ public class DxSetOfRessource {
 
     private long _lUniqueKey;
 
-    public DxSetOfRessource() {
+    public DxSetOfRessources() {
         _vRessourceSortedByKey = new Vector<DxRessource>();
         _vRessourceSortedByName = new Vector<DxRessource>();
         _lUniqueKey = 1;

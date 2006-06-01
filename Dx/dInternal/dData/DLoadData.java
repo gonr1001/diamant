@@ -30,7 +30,7 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
-import dInternal.dData.dInstructors.DxInstructorReader;
+import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructor1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.RoomsAttributesInterpretor;
@@ -380,7 +380,7 @@ public class DLoadData {
 			if (tts.getError().length() == 0) {
 				DataExchange de = buildDataExchange(project.nextToken().trim()
 						.getBytes());
-				DxInstructorReader dxir = new DxReadInstructor1dot5(de, tts
+				DxInstructorsReader dxir = new DxReadInstructor1dot5(de, tts
 						.getNumberOfActiveDays(), tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
 				extract.add(dxir.getSetOfInstructors());
@@ -1192,7 +1192,7 @@ public class DLoadData {
 		// // et 14
 		// // periods!
 		// } else {
-		DxInstructorReader dxir = new DxReadInstructor1dot5(de, 5, 14);// 5
+		DxInstructorsReader dxir = new DxReadInstructor1dot5(de, 5, 14);// 5
 		// jours
 		// et 14
 		return dxir.getSetOfInstructors(); // periods !

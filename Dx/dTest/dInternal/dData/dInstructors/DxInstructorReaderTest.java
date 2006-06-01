@@ -6,7 +6,7 @@ import dConstants.DConst;
 import dInternal.DataExchange;
 import dInternal.Preferences;
 import dInternal.dData.DLoadData;
-import dInternal.dData.dInstructors.DxInstructorReader;
+import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructor1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import eLib.exit.txt.FilterFile;
@@ -38,7 +38,7 @@ public class DxInstructorReaderTest extends TestCase {
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
         DLoadData ld = new DLoadData();
-        DxInstructorReader dxriTest = new DxReadInstructor1dot5(ld
+        DxInstructorsReader dxriTest = new DxReadInstructor1dot5(ld
                 .buildDataExchange(tokens.getBytes()), 5, 14);
         try {
             DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
@@ -71,7 +71,7 @@ public class DxInstructorReaderTest extends TestCase {
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
         DLoadData ld = new DLoadData();
-        DxInstructorReader dxriTest = new DxReadInstructor1dot5(ld
+        DxInstructorsReader dxriTest = new DxReadInstructor1dot5(ld
                 .buildDataExchange(tokens.getBytes()), 5, 14);
         try {
             DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
@@ -105,7 +105,7 @@ public class DxInstructorReaderTest extends TestCase {
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
         DLoadData ld = new DLoadData();
-        DxInstructorReader dxriTest = new DxReadInstructor1dot5(ld
+        DxInstructorsReader dxriTest = new DxReadInstructor1dot5(ld
                 .buildDataExchange(tokens.getBytes()), 5, 14);
         try {
             DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
@@ -138,7 +138,7 @@ public class DxInstructorReaderTest extends TestCase {
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
         DLoadData ld = new DLoadData();
-        DxInstructorReader dxriTest = new DxReadInstructor1dot5(ld
+        DxInstructorsReader dxriTest = new DxReadInstructor1dot5(ld
                 .buildDataExchange(tokens.getBytes()), 5, 14);
         try {
             DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
@@ -173,7 +173,7 @@ public class DxInstructorReaderTest extends TestCase {
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
         DLoadData ld = new DLoadData();
-        DxInstructorReader dxriTest = new DxReadInstructor1dot5(ld
+        DxInstructorsReader dxriTest = new DxReadInstructor1dot5(ld
                 .buildDataExchange(tokens.getBytes()), 5, 14);
         try {
             DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
@@ -208,7 +208,7 @@ public class DxInstructorReaderTest extends TestCase {
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
                 + "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
         DLoadData ld = new DLoadData();
-        DxInstructorReader dxriTest = new DxReadInstructor1dot5(ld
+        DxInstructorsReader dxriTest = new DxReadInstructor1dot5(ld
                 .buildDataExchange(tokens.getBytes()), 5, 14);
         try {
             DxSetOfInstructors dxsoiTemp = dxriTest.getSetOfInstructors();
@@ -232,7 +232,7 @@ public class DxInstructorReaderTest extends TestCase {
         DLoadData ld = new DLoadData();
         DataExchange de = ld.buildDataExchange(dataloaded);
 
-        DxInstructorReader dxir = new DxReadInstructor1dot5(de, 5, 14);
+        DxInstructorsReader dxir = new DxReadInstructor1dot5(de, 5, 14);
         try {
             dxsoi = dxir.getSetOfInstructors();
         } catch (Exception e) {

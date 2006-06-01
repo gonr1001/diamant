@@ -7,7 +7,7 @@ import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
 
-public class DxReadInstructor1dot5 implements DxInstructorReader {
+public class DxReadInstructor1dot5 implements DxInstructorsReader {
 
     private DataExchange _deInstructors;
 
