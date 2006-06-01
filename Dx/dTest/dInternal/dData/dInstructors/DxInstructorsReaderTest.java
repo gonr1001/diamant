@@ -14,16 +14,16 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class DxInstructorReaderTest extends TestCase {
+public class DxInstructorsReaderTest extends TestCase {
 
-    public DxInstructorReaderTest(String name) {
+    public DxInstructorsReaderTest(String name) {
         super(name);
     }
 
     public static Test suite() {
         // the type safe way is in SimpleTest
         // the dynamic way :
-        return new TestSuite(DxInstructorReaderTest.class);
+        return new TestSuite(DxInstructorsReaderTest.class);
     } // end suite
 
     /**
