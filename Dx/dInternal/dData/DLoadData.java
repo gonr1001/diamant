@@ -199,14 +199,14 @@ public class DLoadData {
 		// }
 		if (de != null) {
 			//TODO a revoir
-			if (merge) ;
+//			if (merge)
 //				if (currentList != null)
 //					instructorsList.setSetOfResources(currentList
 //							.getSetOfResources());
 //			if (instructorsList.analyseTokens(de, 0)) {
 //				instructorsList.buildSetOfResources(de, 0);
 //			}
-		} else {// (NullPointerException npe) {
+//		} else {// (NullPointerException npe) {
 			new FatalProblemDlg(
 					"I was in LoadData.extractInstructors. preload failed!!!");
 			System.exit(52);
@@ -520,14 +520,14 @@ public class DLoadData {
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
 		//TODO a revoir	
-		if(false){;
+//		if(false){;
 //		if (currentSetOfResc instanceof dInternal.dData.dInstructors.DxSetOfInstructors) {
 //			_instructorFileName = file;
 //			newSetOfResc = extractInstructors((DxSetOfInstructors) null, false,
 //					false);
-			_dm.resizeResourceAvailability(newSetOfResc);
+//			_dm.resizeResourceAvailability(newSetOfResc);
 			// ((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
-		} else if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
+/*		} else*/ if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
 			_roomsFileName = file;
 			newSetOfResc = extractRooms(null, false);
 			_dm.resizeSiteAvailability((SetOfSites) newSetOfResc);

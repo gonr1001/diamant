@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
 import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;

@@ -43,7 +43,7 @@ import dTest.dInternal.dData.DxAvailabilityTest;
 import dTest.dInternal.dData.StandardCollectionTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
-import dTest.dInternal.dData.dInstructors.DxInstructorReaderTest;
+import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
 import dTest.dInternal.dData.dRooms.DRoomTest;
@@ -99,7 +99,7 @@ public class DiamantTest {
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
-        suite.addTest(DxInstructorReaderTest.suite());
+        suite.addTest(DxInstructorsReaderTest.suite());
         suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(RoomsAttributesInterpretorTest.suite());

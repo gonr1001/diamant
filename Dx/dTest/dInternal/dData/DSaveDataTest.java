@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-05-31 20:56:39 $
+ * Title: DSaveDataTest $Revision $  $Date: 2006-06-01 17:26:13 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -18,13 +18,12 @@ package dTest.dInternal.dData;
  * you entered into with rgr.
  *
  * @version $ $
- * @author  $Author: gonzrubi $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  */
 
 import java.io.File;
 
-import dConstants.DConst;
 import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dData.DSaveData;

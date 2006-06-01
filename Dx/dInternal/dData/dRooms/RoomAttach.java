@@ -145,12 +145,12 @@ public class RoomAttach extends AvailabilityAttach {
 	}
 
 	public int[][] getMatrixAvailability() {
-		String jour = (String) _ressourceAvailability.get(0);
+		String jour = _ressourceAvailability.get(0);
 		StringTokenizer st = new StringTokenizer(jour);
 		int[][] a = new int[_ressourceAvailability.size()][st.countTokens()];
 		int nbOfTokens = st.countTokens();
 		for (int i = 0; i < _ressourceAvailability.size(); i++) {
-			jour = (String) _ressourceAvailability.get(i);
+			jour = _ressourceAvailability.get(i);
 			st = new StringTokenizer(jour);
 			nbOfTokens = st.countTokens();
 			for (int j = 0; j < nbOfTokens; j++) {
@@ -208,10 +208,10 @@ public class RoomAttach extends AvailabilityAttach {
 
 		String avail = "";
 		for (int i = 0; i < _ressourceAvailability.size() - 1; i++)
-			avail += (String) _ressourceAvailability.get(i) + ",";
+			avail += _ressourceAvailability.get(i) + ",";
 		// System.out.println("Room: "+_capacity+" --
 		// "+_caracteristics+_ressourceAvailability.size());//debug
-		avail += (String) _ressourceAvailability.get(_ressourceAvailability
+		avail += _ressourceAvailability.get(_ressourceAvailability
 				.size() - 1);
 		String roomInfo = _capacity + ";" + _function + ";" + _caracteristics
 				+ ";" + _description + ";" + avail + ";";

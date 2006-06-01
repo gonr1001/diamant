@@ -21,7 +21,7 @@ import eLib.exit.dialog.InformationDlg;
 
 public class EventsDlg extends EventsDlgInterface{
     private String [] _arrowsNames = {DConst.TO_RIGHT, DConst.TO_LEFT,};
-    private boolean _withRoomFunction;
+//    private boolean _withRoomFunction;
 
   
   /**

@@ -867,10 +867,10 @@ public class BackUpSectionStudentsDlg extends JDialog implements ActionListener 
 			
 
 		}// end public void mouseClicked
-		public void mouseDragged(MouseEvent e){
-			System.out.println("dragging the mouse " + e.getSource() );
-			//
-		}
+//		public void mouseDragged(MouseEvent e){
+//			System.out.println("dragging the mouse " + e.getSource() );
+//			//
+//		}
 	};//end definition of MouseListener mouseListener = new MouseAdapter(){
 
 	/**
