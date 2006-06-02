@@ -365,6 +365,7 @@ public class DLoadData {
 		Vector<Object> extract = new Vector<Object>();
 		String dataloaded = new String(preLoad(fileName));
 		StringTokenizer project;
+        DataExchange de;
 		if (!DConst.IN_DIA) {
 			project = new StringTokenizer(dataloaded,
 				DConst.SAVE_SEPARATOR);
@@ -383,12 +384,14 @@ public class DLoadData {
 				tts.loadTTStructure(1, ttsFileName);
 				extract.add(tts);
 			} else {
-				tts.loadTTStructure(project.nextToken().trim());
+                de = buildDataExchange(project.nextToken().trim()
+                        .getBytes());
+				tts.loadTTStructure(de.getContents());
 				extract.add(tts);
 			}
 			// extract SetOfInstructor
 			if (tts.getError().length() == 0) {
-				DataExchange de = buildDataExchange(project.nextToken().trim()
+				de = buildDataExchange(project.nextToken().trim()
 						.getBytes());
 				DxInstructorsReader dxir = new DxReadInstructors1dot5(de, tts
 						.getNumberOfActiveDays(), tts.getCurrentCycle()
@@ -398,7 +401,7 @@ public class DLoadData {
 
 			// SetOfRooms
 			SetOfSites roomsList = new SetOfSites(); // ,5,14);
-			DataExchange de = buildDataExchange(project.nextToken().trim()
+			de = buildDataExchange(project.nextToken().trim()
 					.getBytes());
 			if (roomsList.analyseTokens(de, 3)) {
 				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
