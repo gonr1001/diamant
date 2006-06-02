@@ -24,10 +24,14 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import dInternal.dData.dRooms.DxSetOfCategories;
+import dInternal.dData.dRooms.DxSetOfRooms;
+import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
@@ -147,16 +151,29 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofrooms
 	 */
 	public void test5_loadTimeTable5j() {
-		SetOfSites setSite = ((SetOfSites) _timeTable5j.get(3));
-		assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
-				.getResourceAt(0).getID());
-		SetOfCategories setCat = ((SetOfCategories) setSite.getResourceAt(0)
-				.getAttach());
-		assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
-				setCat.getResourceAt(0).getID());
-		SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0).getAttach());
-		assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
-				setRooms.getResourceAt(4).getID());
+		if (!DConst.newRooms) {
+			SetOfSites setSite = ((SetOfSites) _timeTable5j.get(3));
+			assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
+					.getResourceAt(0).getID());
+			SetOfCategories setCat = ((SetOfCategories) setSite
+					.getResourceAt(0).getAttach());
+			assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
+					setCat.getResourceAt(0).getID());
+			SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
+					.getAttach());
+			assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
+					setRooms.getResourceAt(4).getID());
+		} else {
+			DxSetOfSites setSite = ((DxSetOfSites) _timeTable5j.get(3));
+			assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
+					.getSiteName(1));
+			DxSetOfCategories setCat = setSite.getSetOfCat(1);
+			assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
+					setCat.getCatName(1));
+			DxSetOfRooms setRooms =  setCat.getDxSetOfRooms(1);
+			assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
+					setRooms.getRoomName(5));
+		}
 	}
 
 	/**
@@ -261,6 +278,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofrooms
 	 */
 	public void test5_loadTimeTable7j() {
+		if (!DConst.newRooms) {
 		SetOfSites setSite = ((SetOfSites) _timeTable7j.get(3));
 		assertEquals("test5_loadTimeTable7j : assertEquals: ", "SHE", setSite
 				.getResourceAt(0).getID());
@@ -271,6 +289,17 @@ public class DLoadDataTest extends TestCase {
 		SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0).getAttach());
 		assertEquals("test5_2_loadTimeTable7j : assertEquals: ", "D13016",
 				setRooms.getResourceAt(4).getID());
+		}else {
+			DxSetOfSites setSite = ((DxSetOfSites) _timeTable7j.get(3));
+			assertEquals("test7_loadTimeTable : assertEquals: ", "SHE", setSite
+					.getSiteName(1));
+			DxSetOfCategories setCat = setSite.getSetOfCat(1);
+			assertEquals("test7_1_loadTimeTable5j : assertEquals: ", "CAT 1",
+					setCat.getCatName(1));
+			DxSetOfRooms setRooms =  setCat.getDxSetOfRooms(1);
+			assertEquals("test7_2_loadTimeTable5j : assertEquals: ", "D13016",
+					setRooms.getRoomName(5));
+		}
 	}
 
 	/**

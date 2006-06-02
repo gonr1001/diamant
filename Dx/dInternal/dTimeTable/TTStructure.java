@@ -227,11 +227,11 @@ public class TTStructure {
 				xmlFile = new XMLInputFile();
 				Document doc = xmlFile.createDocument(fileName);
 				
-				DocumentBuilderFactory factory =
-				      DocumentBuilderFactory.newInstance();
-				DocumentBuilder builder =
-			        factory.newDocumentBuilder();
-				Document   document = builder.parse(fileName);
+//				DocumentBuilderFactory factory =
+//				      DocumentBuilderFactory.newInstance();
+//				DocumentBuilder builder =
+//			        factory.newDocumentBuilder();
+//				Document   document = builder.parse(fileName);
 				XMLReader list = new XMLReader();
 				root = list.getRootElement(doc);
 				if (readXMLtag(root).length() != 0) {
@@ -265,7 +265,7 @@ public class TTStructure {
 				      DocumentBuilderFactory.newInstance();
 				DocumentBuilder builder =
 			        factory.newDocumentBuilder();
-				Document   document = builder.parse(str);
+				Document document = builder.parse(str);
 				XMLReader list = new XMLReader();
 				root = list.getRootElement(document);
 				if (readXMLtag(root).length() != 0) {

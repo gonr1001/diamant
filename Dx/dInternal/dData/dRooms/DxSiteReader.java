@@ -29,5 +29,5 @@ package dInternal.dData.dRooms;
  * 
  */
 public interface DxSiteReader {
-    public DxSetOfSites getSetOfSite();
+    public DxSetOfSites getSetOfSites();
 }

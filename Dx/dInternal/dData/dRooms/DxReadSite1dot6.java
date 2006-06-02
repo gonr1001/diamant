@@ -41,7 +41,7 @@ public class DxReadSite1dot6 implements DxSiteReader {
         _deSites = de;
     }
 
-    public DxSetOfSites getSetOfSite() {
+    public DxSetOfSites getSetOfSites() {
         StringTokenizer stLineTokenizer;
         StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
                 .getContents(), DConst.CR_LF);

@@ -28,7 +28,7 @@ public class DxReadSitedotDia implements DxSiteReader {
         // TODO Auto-generated constructor stub
     }
 
-    public DxSetOfSites getSetOfSite() {
+    public DxSetOfSites getSetOfSites() {
         // TODO Auto-generated method stub
         return null;
     }

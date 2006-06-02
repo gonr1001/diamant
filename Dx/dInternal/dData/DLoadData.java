@@ -34,6 +34,9 @@ import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 // import dInternal.dData.dRooms.RoomsAttributesInterpretor;
+import dInternal.dData.dRooms.DxReadSite1dot5;
+import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dRooms.DxSiteReader;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
@@ -140,7 +143,6 @@ public class DLoadData {
 	 */
 
 	public SetOfSites extractRooms(SetOfSites currentList, boolean merge) {
-
 		DataExchange de = buildDataExchange(_roomsFileName);
 		SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
 		// periods!
@@ -159,6 +161,31 @@ public class DLoadData {
 			System.exit(52);
 		}
 		return roomsList;
+	}// end extractRooms
+
+	public DxSetOfSites extractDxRooms(SetOfSites currentList, boolean merge) {
+		DxSetOfSites sitesList;
+		DataExchange de = buildDataExchange(_roomsFileName);
+		sitesList = new DxSetOfSites();
+
+		// periods!
+		if (de != null) {
+			// TODO a revoir merge
+			// if (merge)
+			// if (currentList != null)
+			// roomsList
+			// .setSetOfResources(currentList.getSetOfResources());
+			// if (roomsList.analyseTokens(de, 0)) {
+			// //
+			// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+			// roomsList.buildSetOfResources(de, 0);
+			// }
+			// } else {// (NullPointerException npe) {
+			new FatalProblemDlg(
+					"I was in LoadData.extractRooms. preload failed!!!");
+			System.exit(52);
+		}
+		return sitesList;
 	}// end extractRooms
 
 	/*
@@ -188,17 +215,10 @@ public class DLoadData {
 		// byte[] dataloaded = preLoad(_instructorFileName);
 		DxSetOfInstructors instructorsList;
 		DataExchange de = buildDataExchange(_instructorFileName);
-		// if (dotDia) {
-		// instructorsList = new DxSetOfInstructors(_dm.getTTStructure()
-		// .getNumberOfActiveDays(), _dm.getTTStructure()
-		// .getCurrentCycle().getMaxNumberOfPeriodsADay());// 5 jours
-		// // et 14
-		// // periods!
-		// } else {
 		instructorsList = new DxSetOfInstructors();
-		// }
+
 		if (de != null) {
-			// TODO a revoir
+			// TODO a revoir merge
 			// if (merge)
 			// if (currentList != null)
 			// instructorsList.setSetOfResources(currentList
@@ -209,7 +229,7 @@ public class DLoadData {
 			// } else {// (NullPointerException npe) {
 			new FatalProblemDlg(
 					"I was in LoadData.extractInstructors. preload failed!!!");
-			System.exit(52);
+			System.exit(1);
 		}
 		return instructorsList;
 	}
@@ -362,52 +382,54 @@ public class DLoadData {
 	// application, I thought throws was the solution
 	public Vector loadTheTT(String fileName, String currentDir)
 			throws Exception /* !!!NIC!!! */{
-		Vector<Object> extract = new Vector<Object>();
+		Vector<Object> diaData = new Vector<Object>();
 		String dataloaded = new String(preLoad(fileName));
 		StringTokenizer project;
-        DataExchange de;
+		DataExchange de;
 		if (!DConst.IN_DIA) {
-			project = new StringTokenizer(dataloaded,
-				DConst.SAVE_SEPARATOR);
+			project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
 		} else {
-			project = new StringTokenizer(dataloaded,
-					DConst.SAVE_SEPARATOR_VIS);
+			project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR_VIS);
 		}
 		if (project.countTokens() == 6) { // 6 !!!!!!!!!!!!!!
 			// extract version
-			extract.add(project.nextToken().trim());
+			diaData.add(project.nextToken().trim());
 			// extract ttStructure
 			TTStructure tts = new TTStructure();
 			if (!DConst.IN_DIA) {
 				String ttsFileName = DXToolsMethods.getAbsoluteFileName(
 						currentDir, project.nextToken().trim());
 				tts.loadTTStructure(1, ttsFileName);
-				extract.add(tts);
+				diaData.add(tts);
 			} else {
-                de = buildDataExchange(project.nextToken().trim()
-                        .getBytes());
+				de = buildDataExchange(project.nextToken().trim().getBytes());
 				tts.loadTTStructure(de.getContents());
-				extract.add(tts);
+				diaData.add(tts);
 			}
 			// extract SetOfInstructor
 			if (tts.getError().length() == 0) {
-				de = buildDataExchange(project.nextToken().trim()
-						.getBytes());
+				de = buildDataExchange(project.nextToken().trim().getBytes());
 				DxInstructorsReader dxir = new DxReadInstructors1dot5(de, tts
 						.getNumberOfActiveDays(), tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
-				extract.add(dxir.getSetOfInstructors());
+				diaData.add(dxir.getSetOfInstructors());
 			}// end if(tts.getError().length()==0)
 
-			// SetOfRooms
-			SetOfSites roomsList = new SetOfSites(); // ,5,14);
-			de = buildDataExchange(project.nextToken().trim()
-					.getBytes());
-			if (roomsList.analyseTokens(de, 3)) {
-				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-				roomsList.buildSetOfResources(de, 3);
+			// extract SetOfSites
+			if (!DConst.newRooms) {
+				SetOfSites roomsList = new SetOfSites();
+				de = buildDataExchange(project.nextToken().trim().getBytes());
+				if (roomsList.analyseTokens(de, 3)) {
+					// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+					roomsList.buildSetOfResources(de, 3);
+				}
+				diaData.add(roomsList);
+
+			} else {
+				de = buildDataExchange(project.nextToken().trim().getBytes());
+				DxSiteReader dxrr = new DxReadSite1dot5(de);
+				diaData.add(dxrr.getSetOfSites());
 			}
-			extract.add(roomsList);
 
 			// extract SetOfActivities
 			de = buildDataExchange(project.nextToken().trim().getBytes());
@@ -415,21 +437,21 @@ public class DLoadData {
 			if (activitiesList.analyseTokens(de, 1)) {
 				activitiesList.buildSetOfResources(de, 1);
 			}
-			extract.add(activitiesList);
+			diaData.add(activitiesList);
 			// extract SetOfStudents
 			de = buildDataExchange(project.nextToken().trim().getBytes());
 			SetOfStuSites studentsList = new SetOfStuSites();
 			if (studentsList.analyseTokens(de, 0)) {
 				studentsList.buildSetOfResources(de, 0);
 			}
-			extract.add(studentsList);
+			diaData.add(studentsList);
 
 		} else {
 			new FatalProblemDlg("I was in" + getClass().toString()
 					+ " LoadData class and loadProject. extract failed!!!");
 			System.exit(1);
 		}
-		return extract;
+		return diaData;
 	}
 
 	private void initLoadData() {
@@ -541,9 +563,7 @@ public class DLoadData {
 		// false);
 		// _dm.resizeResourceAvailability(newSetOfResc);
 		// ((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
-		/* } else */if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
-			_roomsFileName = file;
-			newSetOfResc = extractRooms(null, false);
+		/* } else*/ if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
 			_dm.resizeSiteAvailability((SetOfSites) newSetOfResc);
 		} else if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites) {
 			_studentsFileName = file;

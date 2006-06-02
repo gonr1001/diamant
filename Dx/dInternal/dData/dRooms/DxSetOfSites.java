@@ -262,7 +262,7 @@ public class DxSetOfSites extends DxSetOfRessources {
         }
     }
 
-    public DxSetOfCategories getDxSetOfCat(long lSiteKey) {
+    public DxSetOfCategories getSetOfCat(long lSiteKey) {
         try {
             return ((DxSite) this.getRessource(lSiteKey)).getDxSetOfCat();
         } catch (Exception e) {
@@ -271,7 +271,7 @@ public class DxSetOfSites extends DxSetOfRessources {
         }
     }
 
-    public DxSetOfCategories getDxSetOfCat(String sSiteName) {
+    public DxSetOfCategories getSetOfCat(String sSiteName) {
         try {
             return ((DxSite) this.getRessourceByName(sSiteName))
                     .getDxSetOfCat();
@@ -281,7 +281,7 @@ public class DxSetOfSites extends DxSetOfRessources {
         }
     }
 
-    public DxSetOfRooms getDxSetOfRooms(long lSiteKey, long lCatKey) {
+    public DxSetOfRooms getSetOfRooms(long lSiteKey, long lCatKey) {
         try {
             return ((DxSite) this.getRessource(lSiteKey))
                     .getDxSetOfRooms(lCatKey);
@@ -291,7 +291,7 @@ public class DxSetOfSites extends DxSetOfRessources {
         }
     }
 
-    public DxSetOfRooms getDxSetOfRooms(String sSiteName, String sCatName) {
+    public DxSetOfRooms getSetOfRooms(String sSiteName, String sCatName) {
         try {
             return ((DxSite) this.getRessourceByName(sSiteName))
                     .getDxSetOfRooms(sCatName);
@@ -300,4 +300,14 @@ public class DxSetOfSites extends DxSetOfRessources {
             return null;
         }
     }
+
+	public void resizeSiteAvailability() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

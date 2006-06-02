@@ -35,6 +35,7 @@ import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -85,6 +86,8 @@ public class DModel extends Observable {
 	private SetOfRoomsFunctions _setOfRoomsFunctions;
 
 	protected static SetOfSites _setOfSites;
+	
+	private DxSetOfSites _dxSetOfSites;
 
 	protected static SetOfCategories _setOfCategories;
 
@@ -317,8 +320,15 @@ public class DModel extends Observable {
 				return _ttStruct.getError();
 			_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
 
-			_setOfSites = (SetOfSites) theTT.get(3);
-			resizeSiteAvailability(_setOfSites);
+			if(!DConst.newRooms) {
+				_setOfSites = (SetOfSites) theTT.get(3);
+				resizeSiteAvailability(_setOfSites);
+			} else {
+				_dxSetOfSites = (DxSetOfSites) theTT.get(3);
+				//_dxSetOfSites.resizeSiteAvailability(_ttStructure);
+			}
+			
+			
 			_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
 			_setOfStuSites = (SetOfStuSites) theTT.get(5);
 			if (_setOfSites.getError().length() != 0) {
@@ -408,10 +418,11 @@ public class DModel extends Observable {
 			// selective
 			// --
 			// Locaux
-			_setOfSites = (SetOfSites) loadData.selectiveImport(_setOfSites,
-					fileName);
-			resizeSiteAvailability(_setOfSites);
-			error = _setOfSites.getError();
+//			 TODO revoir ceci
+//			_setOfSites = (SetOfSites) loadData.selectiveImport(_setOfSites,
+//					fileName);
+//			resizeSiteAvailability(_setOfSites);
+//			error = _setOfSites.getError();
 			this.changeInDModel(_dDocument.getJIF());// _setOfRooms.sendEvent(_dDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)) {// Importation
 			// selective
@@ -621,6 +632,13 @@ public class DModel extends Observable {
 	 */
 	public SetOfSites getSetOfSites() {
 		return _setOfSites;
+	}
+	
+	/**
+	 * @return Returns the _setOfSites.
+	 */
+	public DxSetOfSites getDxSetOfSites() {
+		return _dxSetOfSites;
 	}
 
 	/**
@@ -909,6 +927,22 @@ public class DModel extends Observable {
 		}// end for (int i=0; i< setOfSites.size(); i++){
 	} // resizeSiteAvailability
 
+	/**
+	 * @param ofSites
+	 */
+	public void resizeSiteAvailability(DxSetOfSites dxSetOfSites) {
+		System.out.println("DModel.resizeSiteAvailability : to be implemented ");
+//		for (int i = 0; i < dxSetOfSites.size(); i++) {
+//			SetOfCategories soc = (SetOfCategories) dxSetOfSites.getResourceAt(i)
+//					.getAttach();
+//			for (int j = 0; j < soc.size(); j++) {
+//				SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j).getAttach();
+//				resizeResource(sor);
+//			} // end for (int j=0; j < soc.size(); j++) {
+//		}// end for (int i=0; i< setOfSites.size(); i++){
+	} // resizeSiteAvailability
+
+	
 	/**
 	 * @return
 	 */

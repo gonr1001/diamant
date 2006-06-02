@@ -31,7 +31,7 @@ public class DxSetOfSitesTest extends TestCase {
         DataExchange de = ld.buildDataExchange(dataloaded);
         DxSiteReader dxsr = new DxReadSite1dot5(de);
 
-        _dxsosSingle = dxsr.getSetOfSite();
+        _dxsosSingle = dxsr.getSetOfSites();
 
         path = "." + File.separator + "dataTest" + File.separator
                 + "locauxINFIRComplet.txt";
@@ -47,7 +47,7 @@ public class DxSetOfSitesTest extends TestCase {
         de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, s1dot6);
         dxsr = new DxReadSite1dot6(de);
 
-        _dxsosMulti = dxsr.getSetOfSite();
+        _dxsosMulti = dxsr.getSetOfSites();
 /*
         path = "." + File.separator + "dataTest" + File.separator
                 + "loadData7j.dia";
