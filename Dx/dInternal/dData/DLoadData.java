@@ -33,7 +33,7 @@ import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-//import dInternal.dData.dRooms.RoomsAttributesInterpretor;
+// import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
@@ -55,13 +55,13 @@ public class DLoadData {
 
 	private String _studentsFileName;
 
-	private String _functionFileName;
-
-	private String _caractFileName;
+	// private String _functionFileName;
+	//
+	// private String _caractFileName;
 
 	private DModel _dm;
 
-//	private RoomsAttributesInterpretor _roomsAttributesInterpretor;
+	// private RoomsAttributesInterpretor _roomsAttributesInterpretor;
 
 	private String _chars;
 
@@ -72,7 +72,7 @@ public class DLoadData {
 	public DLoadData() {
 		_dm = null;
 		initLoadData();
-		completeLoadData();
+		// completeLoadData();
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class DLoadData {
 	public DLoadData(DModel dm) {
 		_dm = dm;
 		initLoadData();
-		completeLoadData();
+		// completeLoadData();
 	}
 
 	/**
@@ -101,27 +101,27 @@ public class DLoadData {
 		if (_dm != null) // XXXX Pascal: else ?
 			_chars = _dm.getDDocument().getDMediator().getDApplication()
 					.getPreferences()._acceptedChars;
-		completeLoadData();
+		// completeLoadData();
 		// _roomsAttributesInterpretor = extractRoomsAttributesInterpretor();
 		verifyImportDataFile(args);
 	}
 
-//	/**
-//	 * extractRoomsAttributesInterpretor produces an instance of
-//	 * RoomsAttributesInterpretor
-//	 * 
-//	 * @return the instance of RoomsAttributesInterpretor
-//	 */
-//	public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
-//		RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
-//		byte[] dataloaded = preLoad(_functionFileName);
-//		if (dataloaded != null)
-//			attr.loadSetOfFunctions(dataloaded);
-//		dataloaded = preLoad(_caractFileName);
-//		if (dataloaded != null)
-//			attr.loadSetOfCaracteristics(dataloaded);
-//		return attr;
-//	}
+	// /**
+	// * extractRoomsAttributesInterpretor produces an instance of
+	// * RoomsAttributesInterpretor
+	// *
+	// * @return the instance of RoomsAttributesInterpretor
+	// */
+	// public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
+	// RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
+	// byte[] dataloaded = preLoad(_functionFileName);
+	// if (dataloaded != null)
+	// attr.loadSetOfFunctions(dataloaded);
+	// dataloaded = preLoad(_caractFileName);
+	// if (dataloaded != null)
+	// attr.loadSetOfCaracteristics(dataloaded);
+	// return attr;
+	// }
 
 	/**
 	 * extractRooms
@@ -150,7 +150,7 @@ public class DLoadData {
 					roomsList
 							.setSetOfResources(currentList.getSetOfResources());
 			if (roomsList.analyseTokens(de, 0)) {
-//				roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 				roomsList.buildSetOfResources(de, 0);
 			}
 		} else {// (NullPointerException npe) {
@@ -198,15 +198,15 @@ public class DLoadData {
 		instructorsList = new DxSetOfInstructors();
 		// }
 		if (de != null) {
-			//TODO a revoir
-//			if (merge)
-//				if (currentList != null)
-//					instructorsList.setSetOfResources(currentList
-//							.getSetOfResources());
-//			if (instructorsList.analyseTokens(de, 0)) {
-//				instructorsList.buildSetOfResources(de, 0);
-//			}
-//		} else {// (NullPointerException npe) {
+			// TODO a revoir
+			// if (merge)
+			// if (currentList != null)
+			// instructorsList.setSetOfResources(currentList
+			// .getSetOfResources());
+			// if (instructorsList.analyseTokens(de, 0)) {
+			// instructorsList.buildSetOfResources(de, 0);
+			// }
+			// } else {// (NullPointerException npe) {
 			new FatalProblemDlg(
 					"I was in LoadData.extractInstructors. preload failed!!!");
 			System.exit(52);
@@ -364,18 +364,28 @@ public class DLoadData {
 			throws Exception /* !!!NIC!!! */{
 		Vector<Object> extract = new Vector<Object>();
 		String dataloaded = new String(preLoad(fileName));
-
-		StringTokenizer project = new StringTokenizer(dataloaded,
+		StringTokenizer project;
+		if (!DConst.IN_DIA) {
+			project = new StringTokenizer(dataloaded,
 				DConst.SAVE_SEPARATOR);
+		} else {
+			project = new StringTokenizer(dataloaded,
+					DConst.SAVE_SEPARATOR_VIS);
+		}
 		if (project.countTokens() == 6) { // 6 !!!!!!!!!!!!!!
 			// extract version
 			extract.add(project.nextToken().trim());
 			// extract ttStructure
 			TTStructure tts = new TTStructure();
-			String ttsFileName = DXToolsMethods.getAbsoluteFileName(currentDir,
-					project.nextToken().trim());
-			tts.loadTTStructure(ttsFileName);
-			extract.add(tts);
+			if (!DConst.IN_DIA) {
+				String ttsFileName = DXToolsMethods.getAbsoluteFileName(
+						currentDir, project.nextToken().trim());
+				tts.loadTTStructure(1, ttsFileName);
+				extract.add(tts);
+			} else {
+				tts.loadTTStructure(project.nextToken().trim());
+				extract.add(tts);
+			}
 			// extract SetOfInstructor
 			if (tts.getError().length() == 0) {
 				DataExchange de = buildDataExchange(project.nextToken().trim()
@@ -391,7 +401,7 @@ public class DLoadData {
 			DataExchange de = buildDataExchange(project.nextToken().trim()
 					.getBytes());
 			if (roomsList.analyseTokens(de, 3)) {
-//				roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 				roomsList.buildSetOfResources(de, 3);
 			}
 			extract.add(roomsList);
@@ -420,19 +430,19 @@ public class DLoadData {
 	}
 
 	private void initLoadData() {
-//		_roomsAttributesInterpretor = new RoomsAttributesInterpretor();
+		// _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
 		Preferences preferences = new Preferences(System
 				.getProperty("user.dir")
 				+ File.separator + "pref" + File.separator + "pref.txt");
 		_chars = preferences._acceptedChars;
 	}
 
-	private void completeLoadData() {
-		String path = System.getProperty("user.dir") + File.separator + "pref"
-				+ File.separator;
-		_functionFileName = path + "DXfunctions.sig";
-		_caractFileName = path + "DXcaracteristics.sig";
-	}
+	// private void completeLoadData() {
+	// String path = System.getProperty("user.dir") + File.separator + "pref"
+	// + File.separator;
+	// _functionFileName = path + "DXfunctions.sig";
+	// _caractFileName = path + "DXcaracteristics.sig";
+	// }
 
 	private byte[] preLoad(String str) { // XXXX Pascal: Ne devrait pas avoir
 		// 2 return
@@ -519,15 +529,16 @@ public class DLoadData {
 		DataExchange de = buildDataExchange(file);
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
-		//TODO a revoir	
-//		if(false){;
-//		if (currentSetOfResc instanceof dInternal.dData.dInstructors.DxSetOfInstructors) {
-//			_instructorFileName = file;
-//			newSetOfResc = extractInstructors((DxSetOfInstructors) null, false,
-//					false);
-//			_dm.resizeResourceAvailability(newSetOfResc);
-			// ((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
-/*		} else*/ if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
+		// TODO a revoir
+		// if(false){;
+		// if (currentSetOfResc instanceof
+		// dInternal.dData.dInstructors.DxSetOfInstructors) {
+		// _instructorFileName = file;
+		// newSetOfResc = extractInstructors((DxSetOfInstructors) null, false,
+		// false);
+		// _dm.resizeResourceAvailability(newSetOfResc);
+		// ((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
+		/* } else */if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
 			_roomsFileName = file;
 			newSetOfResc = extractRooms(null, false);
 			_dm.resizeSiteAvailability((SetOfSites) newSetOfResc);
@@ -697,10 +708,10 @@ public class DLoadData {
 						if (currentSites instanceof SetOfStuSites) {
 							// Find if element change
 							changed = compareStudents(newRes, resc);
-						}  //TODO a revoir
-//						else if (currentSites instanceof SetOfInstructors) {
-//							changed = compareInstructors(resc, newRes);
-//						}
+						} // TODO a revoir
+						// else if (currentSites instanceof SetOfInstructors) {
+						// changed = compareInstructors(resc, newRes);
+						// }
 						DValue error = new DValue();
 						if (changed == true) {
 							error.setStringValue(DConst.CHANGED_ELEMENT
@@ -1049,9 +1060,10 @@ public class DLoadData {
 		// String str= source.getClass().getName();
 		// TODO make getResource for each site to search the resource
 		// TODO a revoir
-//		if (source instanceof dInternal.dData.dInstructors.SetOfInstructors) {
-//			return source.getResource(target.getID());
-//		}
+		// if (source instanceof dInternal.dData.dInstructors.SetOfInstructors)
+		// {
+		// return source.getResource(target.getID());
+		// }
 		DResource rescSite = source.getResource(site);
 		if (source instanceof SetOfSites) {
 			if (rescSite != null) {
@@ -1083,10 +1095,11 @@ public class DLoadData {
 	 * @return
 	 */
 	private String getSite(DSetOfResources sourceSites, int index) {
-		//TODO a revoir
-//		if (sourceSites instanceof dInternal.dData.dInstructors.SetOfInstructors) {
-//			return DConst.ROOM_STANDARD_SITE;
-//		}
+		// TODO a revoir
+		// if (sourceSites instanceof
+		// dInternal.dData.dInstructors.SetOfInstructors) {
+		// return DConst.ROOM_STANDARD_SITE;
+		// }
 		DResource rsc = sourceSites.getResourceAt(index);
 		if (rsc != null)
 			return rsc.getID();
@@ -1100,10 +1113,11 @@ public class DLoadData {
 	 * @return
 	 */
 	private int getSiteSize(DSetOfResources sourceSites) {
-//		TODO a revoir
-//		if (sourceSites instanceof dInternal.dData.dInstructors.SetOfInstructors) {
-//			return 1;
-//		}
+		// TODO a revoir
+		// if (sourceSites instanceof
+		// dInternal.dData.dInstructors.SetOfInstructors) {
+		// return 1;
+		// }
 		return sourceSites.size();
 
 	}
@@ -1115,10 +1129,11 @@ public class DLoadData {
 	 * @return
 	 */
 	private DSetOfResources getRscSite(DSetOfResources sourceSites, int index) {
-//		TODO a revoir
-//		if (sourceSites instanceof dInternal.dData.dInstructors.SetOfInstructors) {
-//			return sourceSites;
-//		}
+		// TODO a revoir
+		// if (sourceSites instanceof
+		// dInternal.dData.dInstructors.SetOfInstructors) {
+		// return sourceSites;
+		// }
 		DResource rsc = sourceSites.getResourceAt(index);
 		if (rsc != null)
 			return (DSetOfResources) rsc.getAttach();

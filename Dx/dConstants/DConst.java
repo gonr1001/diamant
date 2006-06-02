@@ -34,7 +34,7 @@ public class DConst {
 
     //public static boolean newInstructors = true;
 	public static boolean newRooms = false;
-	
+	public static boolean IN_DIA = true;
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
 	
@@ -533,7 +533,11 @@ public class DConst {
   public final static String UNCHANGED_ELEMENT = res.getString("unchangedElement"); // "élément no modifié";
 
   public final static String HOUR_SEPARATOR = res.getString("hourSeparator"); //"h";
+
   public final static String SAVE_SEPARATOR = res.getString("saveSeparator"); //"=================================";
+
+  public final static String SAVE_SEPARATOR_VIS = "!!!!!!!!!!"; //"=================================";
+
   public final static String ERROR_XML =res.getString("errorXML"); // "XML file is corrupted";
   
   public static final int BEGIN_STUDENT_MATRICULE=0;

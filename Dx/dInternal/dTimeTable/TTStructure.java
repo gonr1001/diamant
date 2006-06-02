@@ -20,6 +20,9 @@ package dInternal.dTimeTable;
 
 import java.io.File;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import dInternal.DSetOfResources;
 import dInternal.DResource;
 import dInternal.dData.StandardCollection;
@@ -216,13 +219,19 @@ public class TTStructure {
 	 * @return String the error message, empty if it does not found error
 	 */
 
-	public String loadTTStructure(String fileName) {
+	public String loadTTStructure(int i, String fileName) {
 		XMLInputFile xmlFile;
 		Element root; // , item, ID;
 		if (preLoad(fileName)) {
 			try {
 				xmlFile = new XMLInputFile();
 				Document doc = xmlFile.createDocument(fileName);
+				
+				DocumentBuilderFactory factory =
+				      DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder =
+			        factory.newDocumentBuilder();
+				Document   document = builder.parse(fileName);
 				XMLReader list = new XMLReader();
 				root = list.getRootElement(doc);
 				if (readXMLtag(root).length() != 0) {
@@ -239,7 +248,38 @@ public class TTStructure {
 		}
 		return _error;
 	}
+	/**
+	 * it load the time table structure
+	 * 
+	 * @param String
+	 *            the xml file containing the timetable structure
+	 * @return String the error message, empty if it does not found error
+	 */
 
+	public String loadTTStructure(String str) {
+		//XMLInputFile xmlFile;
+		Element root; // , item, ID;
+		try{
+				
+				DocumentBuilderFactory factory =
+				      DocumentBuilderFactory.newInstance();
+				DocumentBuilder builder =
+			        factory.newDocumentBuilder();
+				Document   document = builder.parse(str);
+				XMLReader list = new XMLReader();
+				root = list.getRootElement(document);
+				if (readXMLtag(root).length() != 0) {
+					_error = DConst.ERROR_XML_FILE;
+					return _error;
+				}
+			} catch (Exception e) {
+				System.out.println("TTStructure 1 :" + e);
+				_error = e.toString();
+				return e.toString();
+			}
+		 
+		return null;
+	}
 	/**
 	 * it set the time table structure
 	 * 
