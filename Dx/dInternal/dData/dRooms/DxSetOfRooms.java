@@ -19,9 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Vector;
+import dInternal.dData.DxAvailability;
+import dInternal.dData.DxSetOfRessources;
 
 
 /**
@@ -29,114 +28,69 @@ import java.util.Vector;
  * 
  * Description: DxSetofRooms is a class used to:
  * <p>
- * TODO:insert comments
+ * Holds a collection of rooms
  * <p>
  * 
  */
-public class DxSetOfRooms {
-    private Vector<DxRoom> _vRooms;
-
-    private long _uniqueKey;
-
-    public DxSetOfRooms() {
-        _uniqueKey = 1;
-        _vRooms = new Vector<DxRoom>();
-    }
+public class DxSetOfRooms extends DxSetOfRessources{
 
     public int getRoomCount() {
-        return _vRooms.size();
+        return this.size();
     }
     
     public String getRoomName(long lRoomKey) {
-        return getRoomNameByIndex(getRoomIndexByKey(lRoomKey));
-    }
-
-    private String getRoomNameByIndex(int nRoomIndex)
-    {
         try{
-            return _vRooms.get(nRoomIndex).getRoomName();
+            return this.getRessourceName(lRoomKey);
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
         }
-        
-    }
-    
-    public int getRoomCapacity(long lRoomKey) {
-        return getRoomCapacityByIndex(getRoomIndexByKey(lRoomKey));
     }
 
-    public int getRoomCapacity(String sRoomName) {
-        return getRoomCapacityByIndex(getRoomIndexByName(sRoomName));
-    }
-    
-    private int getRoomCapacityByIndex(int nRoomIndex)
-    {
+    public int getRoomCapacity(long lRoomKey) {
         try{
-            return _vRooms.get(nRoomIndex).getRoomCapacity();
+            return ((DxRoom)this.getRessource(lRoomKey)).getRoomCapacity();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return 0;
         }
-        
+    }
+
+    public int getRoomCapacity(String sRoomName) {
+        try{
+            return ((DxRoom)this.getRessourceByName(sRoomName)).getRoomCapacity();
+        }catch (Exception e){
+            //Null pointer exception will be thrown if room doesnt exist
+            return 0;
+        }
     }
     
     public void addRoom(DxRoom dxrRoom) {
-        if(getRoomKeyByName(dxrRoom.getRoomName()) == -1) {
-            _vRooms.add(dxrRoom);
-            dxrRoom.setKey(_uniqueKey++);
+        if(this.getRessourceKeyByName(dxrRoom.getRoomName()) == -1) {
+            this.addRessource(dxrRoom);
         }
 
     }
 
     public long getRoomKeyByName(String sRoomName) {
-        Iterator it = _vRooms.iterator();
-        while (it.hasNext()) {
-            DxRoom dxcIt = (DxRoom) it.next();
-            if (sRoomName.equalsIgnoreCase(dxcIt.getRoomName()))
-                return dxcIt.getRoomKey();
-        }
-        return -1;
-    }
-    
-    /**
-     * Retreives the index of a categroy by its key
-     * 
-     * @param lKey
-     *            Key of the category that is searched
-     * 
-     * @return Index of the site in the vector, -1 if not found
-     */
-    private int getRoomIndexByKey(long lKey) {
-        DxRoom dxrResearch = new DxRoom(null,0,0,null,null,null);
-        dxrResearch.setKey(lKey);
-        int nIndex = Collections.binarySearch(_vRooms, dxrResearch,
-                DxRoom.KeyComparator);
-        if (nIndex >= 0) {
-            return nIndex;
-        }
-        return -1;
+        return this.getRessourceKeyByName(sRoomName);
     }
 
-    /**
-     * Search the categories for a certain site name and return it's position,
-     * -1 if not found
-     * 
-     * @param sName
-     *            Name of the category that is searched
-     * 
-     * @return Index of the site in the vector, -1 if not found
-     */
-    private int getRoomIndexByName(String sName) {
-        Iterator it = _vRooms.iterator();
-        int i;
-
-        for (i = 0; it.hasNext(); i++) {
-            DxRoom dxcTemp = (DxRoom) it.next();
-            if (dxcTemp.getRoomName().equalsIgnoreCase(sName)) {
-                return i;
-            }
+    public DxAvailability getRoomAvailability(long lRoomKey) {
+        try{
+            return ((DxRoom)this.getRessource(lRoomKey)).getRoomAvailability();
+        }catch (Exception e){
+            //Null pointer exception will be thrown if room doesnt exist
+            return null;
         }
-        return -1;
+    }
+
+    public DxAvailability getRoomAvailability(String sRoomName) {
+        try{
+            return ((DxRoom)this.getRessourceByName(sRoomName)).getRoomAvailability();
+        }catch (Exception e){
+            //Null pointer exception will be thrown if room doesnt exist
+            return null;
+        }
     }
 }

@@ -154,6 +154,9 @@ public class DxSetOfRessources {
      * @return The ressource
      */
     public DxRessource getRessourceByName(String sName) {
+        if (!_bNamesSorted) {
+            sortRessources();
+        }
         DxRessource dxrTemp = new DxRessource(0, sName);
         int nIndex = Collections.binarySearch(_vRessourceSortedByName, dxrTemp,
                 DxRessource.NameComparator);
@@ -173,6 +176,9 @@ public class DxSetOfRessources {
      * @return The key of ressour sName, -1 if instructor not found
      */
     public long getRessourceKeyByName(String sName) {
+        if (!_bNamesSorted) {
+            sortRessources();
+        }
         DxRessource dxrTemp = getRessourceByName(sName);
         if (dxrTemp != null) {
             return dxrTemp.getRessourceKey();
@@ -197,7 +203,6 @@ public class DxSetOfRessources {
         return null;
     }
 
-    
     public Vector<String> getNamesVector() {
         if (!_bNamesSorted) {
             sortRessources();

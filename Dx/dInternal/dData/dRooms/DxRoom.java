@@ -19,23 +19,21 @@
  */
 package dInternal.dData.dRooms;
 
-import java.util.Comparator;
 import java.util.Vector;
 
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxRessource;
 
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxRoom is a class used to:
  * <p>
- * TODO:insert comments
+ * Holds a room informations
  * <p> 
  * 
  */
-public class DxRoom {
-    private long _lKey;
-    private String _sName;
+public class DxRoom extends DxRessource{
     private int _nCapacity;
     
         //Next members are not required but are provided in legacy files
@@ -46,8 +44,7 @@ public class DxRoom {
     private DxAvailability _dxaAva;
     
     public DxRoom(String sRoomName, int nCapacity, int nFunction, Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {
-        _lKey=-1;
-        _sName=sRoomName;
+        super(sRoomName);
         _nCapacity=nCapacity;
         _nFunction=nFunction;
         _viCharacteristics=viChar;
@@ -56,11 +53,11 @@ public class DxRoom {
     }
 
     public String getRoomName() {
-        return _sName;
+        return this.getRessourceName();
     }
 
     public long getRoomKey() {
-        return _lKey;
+        return this.getRessourceKey();
     }
     
     public int getRoomCapacity(){
@@ -81,23 +78,5 @@ public class DxRoom {
     
     public DxAvailability getRoomAvailability(){
         return _dxaAva;
-    }
-    
-    protected void setKey(long lKey)
-    {
-        _lKey=lKey;
-    }
-    
-    public static Comparator<DxRoom> KeyComparator = new Comparator<DxRoom>() {
-        public int compare(DxRoom arg0, DxRoom arg1) {
-            DxRoom left = arg0;
-            DxRoom right = arg1;
-            long diff = left._lKey - right._lKey;
-            if (diff > 0)
-                return 1;
-            if (diff < 0)
-                return -1;
-            return 0;
-        }
-    };
+    }    
 }

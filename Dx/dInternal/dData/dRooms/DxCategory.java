@@ -19,7 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
-import java.util.Comparator;
+import dInternal.dData.DxAvailability;
+import dInternal.dData.DxRessource;
 
 
 /**
@@ -27,29 +28,38 @@ import java.util.Comparator;
  * 
  * Description: DxCategory is a class used to:
  * <p>
- * TODO:insert comments
+ * Holds a category
  * <p>
  * 
  */
-public class DxCategory {
-    private long _lKey;
-
-    private String _sName;
-
+public class DxCategory extends DxRessource{
     private DxSetOfRooms _dxsorRooms;
 
+    public DxCategory() {
+        _dxsorRooms = new DxSetOfRooms();
+    }
+    
+    public DxCategory(long lKey) {
+        super(lKey);
+        _dxsorRooms = new DxSetOfRooms();
+    }
+    
+    public DxCategory(String sName) {
+        super(sName);
+        _dxsorRooms = new DxSetOfRooms();
+    }
+    
     public DxCategory(long lKey, String sName) {
-        _lKey = lKey;
-        _sName = sName;
+        super(lKey,sName);
         _dxsorRooms = new DxSetOfRooms();
     }
 
     public String getCategoryName() {
-        return _sName;
+        return this.getRessourceName();
     }
 
     public long getCategoryKey() {
-        return _lKey;
+        return this.getRessourceKey();
     }
 
     public String getRoomName(long lRoomKey) {
@@ -69,20 +79,23 @@ public class DxCategory {
 
     }
 
-    public static Comparator<DxCategory> KeyComparator = new Comparator<DxCategory>() {
-        public int compare(DxCategory arg0, DxCategory arg1) {
-            DxCategory left = arg0;
-            DxCategory right = arg1;
-            long diff = left._lKey - right._lKey;
-            if (diff > 0)
-                return 1;
-            if (diff < 0)
-                return -1;
-            return 0;
-        }
-    };
-
     public int getRoomCount() {
         return _dxsorRooms.getRoomCount();
+    }
+
+    public DxAvailability getRoomAvailability(long lRoomKey) {
+        return _dxsorRooms.getRoomAvailability(lRoomKey);
+    }
+
+    public DxAvailability getRoomAvailability(String sRoomName) {
+        return _dxsorRooms.getRoomAvailability(sRoomName);
+    }
+
+    public long getRoomKeyByName(String sSiteName) {
+        return _dxsorRooms.getRoomKeyByName(sSiteName);
+    }
+
+    public DxSetOfRooms getDxSetOfRooms() {
+        return _dxsorRooms;
     }
 }

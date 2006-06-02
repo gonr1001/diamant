@@ -19,155 +19,142 @@
  */
 package dInternal.dData.dRooms;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Vector;
+import dInternal.dData.DxAvailability;
+import dInternal.dData.DxSetOfRessources;
 
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxSetofCatagories is a class used to:
  * <p>
- * TODO:insert comments
+ * Holds a collection of categories
  * <p>
  * 
  */
-public class DxSetOfCategories {
-    private Vector<DxCategory> _vCategories;
+public class DxSetOfCategories extends DxSetOfRessources {
 
-    private long _uniqueKey;
-
-    public DxSetOfCategories() {
-        _uniqueKey = 1;
-        _vCategories = new Vector<DxCategory>();
-    }
-    
     public String getCatName(long lCatKey) {
-        try{
-            return _vCategories.get(getCategoryIndexByKey(lCatKey)).getCategoryName();
-        }catch (Exception e){
-            return null;
-        }
+        return this.getRessourceName(lCatKey);
     }
-    
+
     public int getCatCount() {
-        return _vCategories.size();
+        return this.size();
     }
 
     public long getCategoryKeyByName(String sCatName) {
-        Iterator it = _vCategories.iterator();
-        while (it.hasNext()) {
-            DxCategory dxcIt = (DxCategory) it.next();
-            if (sCatName.equalsIgnoreCase(dxcIt.getCategoryName()))
-                return dxcIt.getCategoryKey();
-        }
-        return -1;
-    }
-    
-    public int getRoomCount(long lCatKey) {
-        return getRoomCountByIndex(getCategoryIndexByKey(lCatKey));
+        return this.getRessourceKeyByName(sCatName);
     }
 
-    public int getRoomCount(String sCatName) {
-        return getRoomCountByIndex(getCategoryIndexByName(sCatName));
-    }
-    
-    private int getRoomCountByIndex(int nIndex){
-        try{
-            return _vCategories.get(nIndex).getRoomCount();
-        }catch(Exception e){
-            //If index was invalid, Null pointer Exception will be thrown
+    public int getRoomCount(long lCatKey) {
+        try {
+            return ((DxCategory) this.getRessource(lCatKey)).getRoomCount();
+        } catch (Exception e) {
             return -1;
         }
     }
-    
+
+    public int getRoomCount(String sCatName) {
+        try {
+            return ((DxCategory) this.getRessourceByName(sCatName))
+                    .getRoomCount();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
     public String getRoomName(long lCatKey, long lRoomKey) {
-        try{
-            return _vCategories.get(getCategoryIndexByKey(lCatKey)).getRoomName(lRoomKey);
-        }catch(Exception e){
-            //If index was invalid, Null pointer Exception will be thrown
+        try {
+            return ((DxCategory) this.getRessource(lCatKey))
+                    .getRoomName(lRoomKey);
+        } catch (Exception e) {
             return null;
         }
     }
 
     public int getRoomCapacity(long lCatKey, long lRoomKey) {
-        try{
-            return _vCategories.get(getCategoryIndexByKey(lCatKey)).getRoomCapacity(lRoomKey);
-        }catch(Exception e){
-            //If index was invalid, Null pointer Exception will be thrown
+        try {
+            return ((DxCategory) this.getRessource(lCatKey))
+                    .getRoomCapacity(lRoomKey);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
             return 0;
         }
     }
 
     public int getRoomCapacity(String sCatName, String sRoomName) {
-        try{
-            return _vCategories.get(getCategoryIndexByName(sCatName)).getRoomCapacity(sRoomName);
-        }catch(Exception e){
-            //If index was invalid, Null pointer Exception will be thrown
+        try {
+            return ((DxCategory) this.getRessourceByName(sCatName))
+                    .getRoomCapacity(sRoomName);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
             return 0;
         }
     }
 
     public void addCategory(String sNewCatName) {
-        if (getCategoryKeyByName(sNewCatName) == -1) {
-            _vCategories.add(new DxCategory(_uniqueKey++, sNewCatName));
+        if (this.getRessourceKeyByName(sNewCatName) == -1) {
+            this.addRessource(new DxCategory(sNewCatName));
         }
     }
 
     public void addRoom(long lCatKey, DxRoom dxrRoom) {
-        addRoomByIndex(getCategoryIndexByKey(lCatKey), dxrRoom);
+        try {
+            ((DxCategory) this.getRessource(lCatKey)).addRoom(dxrRoom);
+        } catch (Exception e) {
+            // If category was not found a null pointer exception will occur
+        }
     }
 
     public void addRoom(String sCatName, DxRoom dxrRoom) {
-        addRoomByIndex(getCategoryIndexByName(sCatName), dxrRoom);
+        try {
+            ((DxCategory) this.getRessourceByName(sCatName)).addRoom(dxrRoom);
+        } catch (Exception e) {
+            // If category was not found a null pointer exception will occur
+        }
+    }
+    
+    public DxAvailability getRoomAvailability(long lCatKey, long lRoomKey) {
+        try {
+            return ((DxCategory) this.getRessource(lCatKey))
+                    .getRoomAvailability(lRoomKey);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
-    private void addRoomByIndex(int nCatIndex, DxRoom dxrRoom) {
-        try{
-            _vCategories.get(nCatIndex).addRoom(dxrRoom);
-        }catch (Exception e){
-            //If category was not found a null pointer exception will occur
+    public DxAvailability getRoomAvailability(String sCatName, String sRoomName) {
+        try {
+            return ((DxCategory) this.getRessourceByName(sCatName))
+                    .getRoomAvailability(sRoomName);
+        } catch (Exception e) {
+            return null;
         }
-
     }
 
-    /**
-     * Retreives the index of a categroy by its key
-     * 
-     * @param lKey
-     *            Key of the category that is searched
-     * 
-     * @return Index of the site in the vector, -1 if not found
-     */
-    private int getCategoryIndexByKey(long lKey) {
-        DxCategory dxcResearch = new DxCategory(lKey, null);
-        int nIndex = Collections.binarySearch(_vCategories, dxcResearch,
-                DxCategory.KeyComparator);
-        if (nIndex >= 0) {
-            return nIndex;
+    public long getRoomKeyByName(long lCatKey, String sSiteName) {
+        try {
+            return ((DxCategory) this.getRessource(lCatKey))
+                    .getRoomKeyByName(sSiteName);
+        } catch (Exception e) {
+            return -1;
         }
-        return -1;
     }
 
-    /**
-     * Search the categories for a certain site name and return it's position,
-     * -1 if not found
-     * 
-     * @param sName
-     *            Name of the category that is searched
-     * 
-     * @return Index of the site in the vector, -1 if not found
-     */
-    private int getCategoryIndexByName(String sName) {
-        Iterator it = _vCategories.iterator();
-        int i;
-
-        for (i = 0; it.hasNext(); i++) {
-            DxCategory dxcTemp = (DxCategory) it.next();
-            if (dxcTemp.getCategoryName().equalsIgnoreCase(sName)) {
-                return i;
-            }
+    public DxSetOfRooms getDxSetOfRooms(long lCatKey) {
+        try {
+            return ((DxCategory) this.getRessource(lCatKey))
+                    .getDxSetOfRooms();
+        } catch (Exception e) {
+            return null;
         }
-        return -1;
+    }
+
+    public DxSetOfRooms getDxSetOfRooms(String sCatName) {
+        try {
+            return ((DxCategory) this.getRessourceByName(sCatName))
+                    .getDxSetOfRooms();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

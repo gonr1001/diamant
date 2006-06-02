@@ -95,7 +95,7 @@ public class DxSetOfSitesTest extends TestCase {
                 _dxsosSingle.getRoomCapacity(1, 1, 44));
 
         assertEquals("test_9_getSetOfSitesSingleSite: asserEquals", null,
-                _dxsosSingle.getRoomAvailabilityByKey(1, 1, 23));
+                _dxsosSingle.getRoomAvailability(1, 1, 23));
 
         assertEquals("test_10_getSetOfSitesSingleSite: asserEquals", 61,
                 _dxsosSingle.getRoomCapacity(DConst.ROOM_STANDARD_SITE,
@@ -139,7 +139,7 @@ public class DxSetOfSitesTest extends TestCase {
                 _dxsosMulti.getRoomCapacity(2, 2, 2));
 
         assertEquals("test_11_getSetOfSitesMultiSite: asserEquals", null,
-                _dxsosMulti.getRoomAvailabilityByKey(2, 2, 23));
+                _dxsosMulti.getRoomAvailability(2, 2, 23));
 
         assertEquals("test_12_getSetOfSitesMultiSite: asserEquals", 40,
                 _dxsosMulti.getRoomCapacity("SHE","CAT2","FM-3207"));
