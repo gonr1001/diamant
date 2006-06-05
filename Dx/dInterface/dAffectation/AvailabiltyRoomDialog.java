@@ -95,9 +95,11 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
         .getMaxNumberOfPeriodsADay();
         _nbOfDays = _dmodel.getTTStructure().getNumberOfActiveDays();
        
-        _days = new String[_nbOfDays];
-          for (int i = 0; i < _days.length; i++)
-            _days[i] = _dmodel.getTTStructure().getWeekTable()[i];
+        _days = _dmodel.getTTStructure().getDayNames();
+        
+//        _days = new String[_nbOfDays];
+//          for (int i = 0; i < _days.length; i++)
+//            _days[i] = _dmodel.getTTStructure().getWeekTable()[i];
         /**
          * TODO à revoir , Car rien ne dit qu'on utilise Lu-Ma-Me-Je-Ve.
          *  La weektable n'est pas un cas generale.Utiliser plutot les dates des "TTXML Days".

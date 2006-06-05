@@ -67,14 +67,14 @@ public class TTStructureTest extends TestCase {
 	/**
 	 * test that creates the standard xml timetable file
 	 */
-	public void test_CreateStandardTT() {
+	public void test_CreateDefaultTT() {
 		TTStructure tts = new TTStructure();
-		tts.createStandardTT(_path + "newStandardTT.xml", 5, 5);
+		tts.createDefaultTT(_path + "newStandardTT.xml", 5, 5);
 		tts.loadTTStructure(_path + "newStandardTT.xml");
 		assertEquals(
-				"test_CreateStandardTT : assertEquals 1 (number of cycles):",
+				"test1_CreateDefaultTT : assertEquals 1 (number of cycles):",
 				5, tts.getSetOfCycles().size());
-		assertEquals("test_CreateStandardTT : assertEquals 2 (PeriodLenght):",
+		assertEquals("test2_CreateDefaultTT : assertEquals 2 (PeriodLenght):",
 				60, tts.getPeriodLenght());
 	}
 

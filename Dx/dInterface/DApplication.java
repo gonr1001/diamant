@@ -76,7 +76,7 @@ import eLib.exit.dialog.InformationDlg;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-public class DApplication { //implements ActionListener {
+public class DApplication { // implements ActionListener {
 	private static Logger _logger = Logger.getLogger(DApplication.class
 			.getName());
 
@@ -121,7 +121,7 @@ public class DApplication { //implements ActionListener {
 	private DMediator _dMediator;
 
 	private String _currentDir;
-	
+
 	private String _fileToOpen;
 
 	private DxMenuBar _dxMenuBar;
@@ -165,7 +165,8 @@ public class DApplication { //implements ActionListener {
 				+ "pref" + File.separator + "logoDiamant.gif");
 		_jFrame.setIconImage(iconeDiamant.getImage());
 		setLAF(_preferences._lookAndFeel);
-		_logger.warn("bye_from DApplication"); //this must be the end of an execution
+		_logger.warn("bye_from DApplication"); // this must be the end of an
+												// execution
 	}
 
 	// -------------------------------------------
@@ -212,7 +213,6 @@ public class DApplication { //implements ActionListener {
 		jFrame.setVisible(true);
 		return jFrame;
 	} // end createUI
-
 
 	public JDesktopPane getDesktop() {
 		return _jDesktopPane;
@@ -375,27 +375,28 @@ public class DApplication { //implements ActionListener {
 	public void newTTableCycle() {
 		new NewTimeTableDlg(this, DConst.CYCLE);
 		this.setCurrentDir(_fileToOpen);
-//		String error; !!!NIC!!!
-        try {/*!!!NIC!!!*/
-            /*error = !!!NIC!!!*/this.getDMediator().addDoc(
-            		this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.CYCLE);
-        } catch (Exception e) {/*!!!NIC!!!*/
-            // TODO Auto-generated catch block
-            e.printStackTrace();/*!!!NIC!!!*/
-        }/*!!!NIC!!!*/
+		// String error; !!!NIC!!!
+		try {/* !!!NIC!!! */
+			/* error = !!!NIC!!! */this.getDMediator().addDoc(
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
+					DConst.CYCLE);
+		} catch (Exception e) {/* !!!NIC!!! */
+			// TODO Auto-generated catch block
+			e.printStackTrace();/* !!!NIC!!! */
+		}/* !!!NIC!!! */
 
-		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
-		//              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
-		//                new FatalProblemDlg(dApplic.getJFrame(),error);
-		//                System.exit(1);
+		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans
+		// dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme
+		// new FatalProblemDlg(dApplic.getJFrame(),error);
+		// System.exit(1);
 		//
-		//              De plus, par convention, les valeurs positives de sortie d'une 
-		//              application indiquent que tout s'est BIEN passe.  Il faudrait 
-		//              retourner une valeur negative quand un probleme majeur survient.
-//	!!!NIC!!!	if (error.length() != 0) {
-//	!!!NIC!!!		new FatalProblemDlg(this.getJFrame(), error);
-//	!!!NIC!!!		System.exit(1);
-//	!!!NIC!!!	}
+		// De plus, par convention, les valeurs positives de sortie d'une
+		// application indiquent que tout s'est BIEN passe. Il faudrait
+		// retourner une valeur negative quand un probleme majeur survient.
+		// !!!NIC!!! if (error.length() != 0) {
+		// !!!NIC!!! new FatalProblemDlg(this.getJFrame(), error);
+		// !!!NIC!!! System.exit(1);
+		// !!!NIC!!! }
 		_dxMenuBar.afterNewTTable();
 	}
 
@@ -405,47 +406,47 @@ public class DApplication { //implements ActionListener {
 	public void newTTableExam() {
 		new NewTimeTableDlg(this, DConst.EXAM);
 		this.setCurrentDir(_fileToOpen);
-        /*!!!NIC!!!String error;*/
-        try {
-            /*!!!NIC!!!error = */this.getDMediator().addDoc(
-            		this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
-        } catch (Exception e) {
-            /*!!!NIC!!!*/
-        }
+		/* !!!NIC!!!String error; */
+		try {
+			/* !!!NIC!!!error = */this.getDMediator().addDoc(
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
+					DConst.EXAM);
+		} catch (Exception e) {
+			/* !!!NIC!!! */
+		}
 
-		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans 
-		//              dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme 
-		//                new FatalProblemDlg(dApplic.getJFrame(),error);
-		//                System.exit(1);
+		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans
+		// dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme
+		// new FatalProblemDlg(dApplic.getJFrame(),error);
+		// System.exit(1);
 		//
-		//              De plus, par convention, les valeurs positives de sortie d'une 
-		//              application indiquent que tout s'est BIEN passe.  Il faudrait 
-		//              retourner une valeur negative quand un probleme majeur survient.
-///*!!!NIC!!!*/		if (error.length() != 0) {
-///*!!!NIC!!!*/			new FatalProblemDlg(this.getJFrame(), error);
-//	/*!!!NIC!!!*/		System.exit(1);
-//	/*!!!NIC!!!*/	}
+		// De plus, par convention, les valeurs positives de sortie d'une
+		// application indiquent que tout s'est BIEN passe. Il faudrait
+		// retourner une valeur negative quand un probleme majeur survient.
+		// /*!!!NIC!!!*/ if (error.length() != 0) {
+		// /*!!!NIC!!!*/ new FatalProblemDlg(this.getJFrame(), error);
+		// /*!!!NIC!!!*/ System.exit(1);
+		// /*!!!NIC!!!*/ }
 		_dxMenuBar.afterNewTTable();
 	}
 
 	/**
 	 * the Time table can be cycle or exam
 	 */
-//	public void afterNewTTable() {
-//		_dxMenuBar.afterNewTTable();
-//	}
-
+	// public void afterNewTTable() {
+	// _dxMenuBar.afterNewTTable();
+	// }
 	/**
 	 * 
 	 */
 	public void newTTStrucCycle() {
 		this.showToolBar();
 		try {
-            this._dMediator.addDoc(this.getPreferences()._standardTTC,
-            		DConst.NO_TYPE);
-        } catch (Exception e) {
-            /*!!!NIC!!!*/
-        }
+			this._dMediator.addDoc(this.getPreferences()._standardTTC,
+					DConst.NO_TYPE);
+		} catch (Exception e) {
+			/* !!!NIC!!! */
+		}
 		_dxMenuBar.afterNewTTStruc();
 	}
 
@@ -455,11 +456,11 @@ public class DApplication { //implements ActionListener {
 	public void newTTStrucExam() {
 		this.showToolBar();
 		try {
-            this._dMediator.addDoc(this.getPreferences()._standardTTE,
-            		DConst.NO_TYPE);
-        } catch (Exception e) {
-            /*!!!NIC!!!*/
-        }
+			this._dMediator.addDoc(this.getPreferences()._standardTTE,
+					DConst.NO_TYPE);
+		} catch (Exception e) {
+			/* !!!NIC!!! */
+		}
 		_dxMenuBar.afterNewTTStruc();
 	}
 
@@ -527,24 +528,24 @@ public class DApplication { //implements ActionListener {
 	public void importFiles() {
 		new ImportDlg(this);
 	}
-	
-	public void doImport(JDialog jD, String fil){
-		
+
+	public void doImport(JDialog jD, String fil) {
+
 		try {
-            String error = "";
-            this.setCursorWait();
-            if (this.getCurrentDoc() != null) {
-                error = this.getCurrentDModel().importData(fil);
-            } else
-                error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
-            if (error.length() == 0) {
-                new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
-            } else {
-                new FatalProblemDlg(this.getJFrame(), error);
-                System.exit(1);
-            }
-            this.setCursorDefault();
-		} catch (Exception e){
+			String error = "";
+			this.setCursorWait();
+			if (this.getCurrentDoc() != null) {
+				error = this.getCurrentDModel().importData(fil);
+			} else
+				error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
+			if (error.length() == 0) {
+				new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
+			} else {
+				new FatalProblemDlg(this.getJFrame(), error);
+				System.exit(1);
+			}
+			this.setCursorDefault();
+		} catch (Exception e) {
 			new FatalProblemDlg(e.toString());
 			jD.dispose();
 		}
@@ -617,14 +618,21 @@ public class DApplication { //implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-			new AvailabilityInstructorDlg(this, this.getCurrentDModel().getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
+		new AvailabilityInstructorDlg(this, this.getCurrentDModel()
+				.getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
 
 	/**
 	 * 
 	 */
 	public void roomAvailability() {
-		new AvailabiltyRoomDialog(this, this.getCurrentDModel().getSetOfRooms(), DConst.ROOMASSIGN);
+		if (DConst.newRooms) {
+//			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+//					.getDxSetOfRooms(), DConst.ROOMASSIGN);
+		} else {
+			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+					.getSetOfRooms(), DConst.ROOMASSIGN);
+		}
 	}
 
 	/**
@@ -789,10 +797,10 @@ public class DApplication { //implements ActionListener {
 	public void myFile() {
 		setCurrentDir(".\\devData\\");
 		try {
-            _dMediator.addDoc(".\\devData\\fichier1.dia", 0);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-        }
+			_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
 		getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
 		getCurrentDModel().changeInDModel(this.getJFrame());
 		_dxMenuBar.afterInitialAssignment();
@@ -864,7 +872,7 @@ public class DApplication { //implements ActionListener {
 	}
 
 	public void setFileToOpen(String absolutePath) {
-		_fileToOpen = absolutePath;		
+		_fileToOpen = absolutePath;
 	}
 
 } /* end class DApplication */

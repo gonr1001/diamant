@@ -43,25 +43,28 @@ public class Day extends DObject {
 
 	/**
 	 * Constructor
-	 * */
+	 */
 	public Day() {
 		_setOfSequences = new StandardCollection();
 	}
 
 	/**
 	 * get the set of sequences
+	 * 
 	 * @return SetOfResources the set of sequences
-	 * */
+	 */
 	public DSetOfResources getSetOfSequences() {
 		return _setOfSequences;
 	}
 
 	/**
-	 * @param int the index of the sequence
-	 * */
+	 * @param int
+	 *            the index of the sequence
+	 */
 	/**
-	 * @param int the index of the sequence
-	 * */
+	 * @param int
+	 *            the index of the sequence
+	 */
 	public Sequence getSequence(int sequenceIndex) {
 		return (Sequence) _setOfSequences.getResourceAt((sequenceIndex))
 				.getAttach();
@@ -87,16 +90,20 @@ public class Day extends DObject {
 
 	/**
 	 * set the set of sequences
-	 * @param SetOfResources the set of sequences
-	 * */
+	 * 
+	 * @param SetOfResources
+	 *            the set of sequences
+	 */
 	public void setSetOfSequences(DSetOfResources setOfSequences) {
 		_setOfSequences = setOfSequences;
 	}
 
 	/**
-	 *read a xml tag containing a set of sequences and build the resource
-	 * @param Element the root xml tag of the set of sequences
-	 * */
+	 * read a xml tag containing a set of sequences and build the resource
+	 * 
+	 * @param Element
+	 *            the root xml tag of the set of sequences
+	 */
 	public String readXMLtag(Element setofSeqs) {
 		XMLReader list = new XMLReader();
 		String ID = "";
@@ -124,9 +131,11 @@ public class Day extends DObject {
 
 	/**
 	 * Contruct a xml element from the set of sequences
-	 * @param Document the root xml document
+	 * 
+	 * @param Document
+	 *            the root xml document
 	 * @Element the xml tag of the set of sequences
-	 * */
+	 */
 	public Element writeXMLtag(Document doc) {
 		XMLWriter xmlElt;
 		try {
@@ -145,10 +154,10 @@ public class Day extends DObject {
 				eltSeqs = xmlElt.appendChildInElement(eltSeqs, sequence);
 				eltDay = xmlElt.appendChildInElement(eltDay, eltSeqs);
 			}
-			//eltDay=xmlElt.appendChildInElement(eltDay, sequence);
+			// eltDay=xmlElt.appendChildInElement(eltDay, sequence);
 			return eltDay;
 		} catch (Exception e) {
-			System.out.println("Day: " + e);//debug
+			System.out.println("Day: " + e);// debug
 			return null;
 		}
 	}
@@ -175,7 +184,8 @@ public class Day extends DObject {
 	}
 
 	/**
-	 * return the  period and increment _currentSequenceIndex
+	 * return the period and increment _currentSequenceIndex
+	 * 
 	 * @return
 	 */
 	public Period getNextPeriod(DValue dayValue) {
@@ -192,11 +202,12 @@ public class Day extends DObject {
 	}
 
 	/**
-	 * return the  previous period and decrement _currentSequenceIndex
+	 * return the previous period and decrement _currentSequenceIndex
+	 * 
 	 * @return
 	 */
 	public Period getPreviousPeriod(DValue dayValue) {
-		//System.out.println("Sequence: "+_currentSequenceIndex);//debug
+		// System.out.println("Sequence: "+_currentSequenceIndex);//debug
 		DValue seqValue = new DValue();
 		seqValue.setIntValue(_currentSequenceIndex);
 		Period period = ((Sequence) _setOfSequences.getResourceAt(
@@ -205,11 +216,11 @@ public class Day extends DObject {
 		if (seqValue.getIntValue() <= -1) {
 			seqValue.setIntValue(_setOfSequences.size() - 1);
 			dayValue.setIntValue(dayValue.getIntValue() - 1);
-			//getCurrentSequence().setCurrentPeriodIndex(getCurrentSequence().getSetOfPeriods().size()-1);
+			// getCurrentSequence().setCurrentPeriodIndex(getCurrentSequence().getSetOfPeriods().size()-1);
 		}// end if(_currentSequenceIndex>= _setOfSequences.size())
 		if (_currentSequenceIndex != seqValue.getIntValue()) {
 			_currentSequenceIndex = seqValue.getIntValue();
-			//setCurrentSequenceIndex(_setOfSequences.size()-1);
+			// setCurrentSequenceIndex(_setOfSequences.size()-1);
 			getCurrentSequence().setCurrentPeriodIndex(
 					getCurrentSequence().getSetOfPeriods().size() - 1);
 		}
@@ -217,8 +228,8 @@ public class Day extends DObject {
 	}
 
 	/**
-	 *
-	 * */
+	 * 
+	 */
 	public String toString(String ID) {
 		String str = "";
 		for (int i = 0; i < _setOfSequences.size(); i++) {
@@ -231,10 +242,15 @@ public class Day extends DObject {
 
 	/**
 	 * isEquals checks if this Day is equals to the Day gives in arg
-	 * @param day the Day arg
-	 * @return <p> true if this Day is equals to the Day gives in arg </p>
-	 * false otherwise
-	 * */
+	 * 
+	 * @param day
+	 *            the Day arg
+	 * @return
+	 *            <p>
+	 *            true if this Day is equals to the Day gives in arg
+	 *            </p>
+	 *            false otherwise
+	 */
 	public boolean isEquals(Day day) {
 		for (int i = 0; i < _setOfSequences.size(); i++) {
 			DResource seqR = _setOfSequences.getResourceAt(i);
@@ -247,7 +263,9 @@ public class Day extends DObject {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {
@@ -255,12 +273,4 @@ public class Day extends DObject {
 		return 0;
 	}
 
-	/**
-	 * @param i
-	 * @return
-	 */
-	//public Sequence getSequence(int i) {
-	//	// TODO Auto-generated method stub
-	//	return null;
-	//}
 }

@@ -20,6 +20,8 @@ package dInternal.dTimeTable;
 
 import java.io.File;
 
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -69,7 +71,7 @@ public class TTStructure {
 	public static int NUMBEROFACTIVESDAYS = 5;// monday to friday
 
 	private int _numberOfDays;
-	
+
 	private int _periodLenght; // XXXX Pascal: Non initialise
 
 	private int _currentCycleIndex = 0;
@@ -83,17 +85,23 @@ public class TTStructure {
 
 	static final String _TAGITEM3 = "TTdays";
 
+//	private String[] _dayNames;
+
 	public TTStructure() {
 		_setOfCycles = new StandardCollection(); // XXXX Pascal: magic number
 	}
 
 	public int getNumberOfActiveDays() {
-		return _numberOfDays; ////NUMBEROFACTIVESDAYS; //
+		return _numberOfDays; // //NUMBEROFACTIVESDAYS; //
 	}
 
 	public String[] getWeekTable() {
 		return _weekTable;
 	}
+
+//	public String[] getDayNames() {
+//		return _dayNames;
+//	}
 
 	public int getPeriodLenght() {
 		return _periodLenght;
@@ -141,8 +149,7 @@ public class TTStructure {
 	 *            the number of days in each cycle
 	 * @return boolean the result of the operation
 	 */
-	public boolean createStandardTT(String fileName, int nbOfCycles,
-			int nbOfDays) {
+	public boolean createDefaultTT(String fileName, int nbOfCycles, int nbOfDays) {
 		XMLWriter wr;
 		try {
 			wr = new XMLWriter();
@@ -226,12 +233,6 @@ public class TTStructure {
 			try {
 				xmlFile = new XMLInputFile();
 				Document doc = xmlFile.createDocument(fileName);
-				
-//				DocumentBuilderFactory factory =
-//				      DocumentBuilderFactory.newInstance();
-//				DocumentBuilder builder =
-//			        factory.newDocumentBuilder();
-//				Document   document = builder.parse(fileName);
 				XMLReader list = new XMLReader();
 				root = list.getRootElement(doc);
 				if (readXMLtag(root).length() != 0) {
@@ -248,6 +249,7 @@ public class TTStructure {
 		}
 		return _error;
 	}
+
 	/**
 	 * it load the time table structure
 	 * 
@@ -257,29 +259,28 @@ public class TTStructure {
 	 */
 
 	public String loadTTStructure(String str) {
-		//XMLInputFile xmlFile;
-		Element root; // , item, ID;
-		try{
-				
-				DocumentBuilderFactory factory =
-				      DocumentBuilderFactory.newInstance();
-				DocumentBuilder builder =
-			        factory.newDocumentBuilder();
-				Document document = builder.parse(str);
-				XMLReader list = new XMLReader();
-				root = list.getRootElement(document);
-				if (readXMLtag(root).length() != 0) {
-					_error = DConst.ERROR_XML_FILE;
-					return _error;
-				}
-			} catch (Exception e) {
-				System.out.println("TTStructure 1 :" + e);
-				_error = e.toString();
-				return e.toString();
+		Element root;
+		try {
+
+			DocumentBuilderFactory factory = DocumentBuilderFactory
+					.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(str);
+			XMLReader list = new XMLReader();
+			root = list.getRootElement(document);
+			if (readXMLtag(root).length() != 0) {
+				_error = DConst.ERROR_XML_FILE;
+				return _error;
 			}
-		 
+		} catch (Exception e) {
+			System.out.println("TTStructure 1 :" + e);
+			_error = e.toString();
+			return e.toString();
+		}
+
 		return null;
 	}
+
 	/**
 	 * it set the time table structure
 	 * 
@@ -399,7 +400,7 @@ public class TTStructure {
 			// System.out.println(" Cycle ID: "+ID+" PeriodLenght:
 			// "+_periodLenght);//debug
 			Element days = list.getElement(cycle, _TAGITEM3, 0);
-						
+
 			if (!setOfdays.readXMLtag(days).equals("")) {
 				_error = DConst.ERROR_XML_FILE;
 				return _error;
@@ -565,10 +566,18 @@ public class TTStructure {
 	 * @return TTStructure containing the values of the TTStructure in dm
 	 */
 	public TTStructure cloneCurrentTTS() {
-		// TTStructure oldTTS= dm.getTTStructure();
 		TTStructure ttStruct = new TTStructure();
 		ttStruct.setTTStructureDocument(getTTStructureDocument());
 		return ttStruct;
 	}
 
+	public String[] getDayNames() {
+		Cycle cTemp = (Cycle) _setOfCycles.getResourceAt(_currentCycleIndex)
+				.getAttach();
+		String[] sReturn = new String [cTemp.getNumberOfDays()];
+		for (int i = 0; i < cTemp.getNumberOfDays(); i++) {
+			sReturn[i] = new String (cTemp.getSetOfDays().getResourceAt(i).getID());
+		}
+		return sReturn;
+	}
 }
