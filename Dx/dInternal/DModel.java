@@ -171,7 +171,8 @@ public class DModel extends Observable {
 		}
 		_type = type;
 		_modified = false;
-
+		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
 
 	}
