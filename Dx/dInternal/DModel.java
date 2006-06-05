@@ -974,8 +974,4 @@ public class DModel extends Observable {
 	public boolean isOnlyATimeTable() {
 		return _isOnlyATimeTable;
 	}
-
-	public DxSetOfSites getDxSetOfRooms() {
-		return _dxSetOfSites;
-	}
 } /* end class DModel */

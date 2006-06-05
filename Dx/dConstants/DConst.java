@@ -291,6 +291,7 @@ public class DConst {
   public final static String TO_RIGHT  = res.getString("toRight");//»»
   public final static String TO_UP  = res.getString("toUp");//+
   public final static String TO_DOWN  = res.getString("toDown");//-
+  public final static String SHOW_ALL = res.getString("all"); //Tous
   //ActivityDlg
   public final static String ACT_LIST  = res.getString("actList"); //Liste des activités
   public final static String SHOW  = res.getString("show"); //Aficher
@@ -301,6 +302,7 @@ public class DConst {
   public final static String AVAILABILITIES = res.getString("dispo");//Disponibilités
   public final static String ROOMS_DLG_TITLE = res.getString("roomsDlgTitle");
   public final static String NOT_DISPO = res.getString("notDispo");
+  
   //GroupDlg
   public final static String ACT_STUD_NOT_ASSIGNED = res.getString("ActStudNotAss");//Étudiants non assignés
   public final static String ACT_STUD_ASSIGNED = res.getString("ActStudAss");//Étudiants assignés

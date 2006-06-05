@@ -237,6 +237,13 @@ public class DxSetOfSites extends DxSetOfRessources {
             return null;
         }
     }
+    
+    public DxAvailability getAllRooms(String sSiteName,
+            String sCatName, String sRoomName)
+    {
+        return null;
+        //TODO
+    }
 
     public long getSiteKeyByName(String sSiteName) {
         return this.getRessourceKeyByName(sSiteName);

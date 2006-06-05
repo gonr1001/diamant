@@ -53,8 +53,9 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
-import dInterface.dAffectation.AvailabilityInstructorDlg;
 import dInterface.dAffectation.AvailabiltyRoomDialog;
+import dInterface.dAffectation.DxInstructorAvailabilityDlg;
+import dInterface.dAffectation.DxRoomAvailabilityDlg;
 import dInterface.dAffectation.EventsDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
@@ -618,10 +619,10 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-//		new DxIntructorAvailabilityDlg(this, this.getCurrentDModel()
-//		.getDxSetOfInstructors());
-		new AvailabilityInstructorDlg(this, this.getCurrentDModel()
-				.getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
+		new DxInstructorAvailabilityDlg(this, this.getCurrentDModel()
+		.getDxSetOfInstructors());
+//		new AvailabilityInstructorDlg(this, this.getCurrentDModel()
+//				.getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
 
 	/**
@@ -631,6 +632,7 @@ public class DApplication { // implements ActionListener {
 		if (DConst.newRooms) {
 //			new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 //					.getDxSetOfRooms(), DConst.ROOMASSIGN);
+			new DxRoomAvailabilityDlg(this, this.getCurrentDModel().getDxSetOfSites());
 		} else {
 			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
 					.getSetOfRooms(), DConst.ROOMASSIGN);
