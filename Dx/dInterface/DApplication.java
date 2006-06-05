@@ -618,6 +618,8 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
+//		new DxIntructorAvailabilityDlg(this, this.getCurrentDModel()
+//		.getDxSetOfInstructors());
 		new AvailabilityInstructorDlg(this, this.getCurrentDModel()
 				.getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
@@ -627,7 +629,7 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAvailability() {
 		if (DConst.newRooms) {
-//			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+//			new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 //					.getDxSetOfRooms(), DConst.ROOMASSIGN);
 		} else {
 			new AvailabiltyRoomDialog(this, this.getCurrentDModel()

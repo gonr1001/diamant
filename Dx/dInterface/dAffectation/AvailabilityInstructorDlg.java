@@ -99,6 +99,7 @@ public AvailabilityInstructorDlg(DApplication dApplic, DxSetOfInstructors soi, S
     if (dApplic.getCurrentDoc() == null)
         return;
     _dmodel = dApplic.getCurrentDModel();
+    //_ttruct
     _soi = soi;
     _time = _dmodel.getTTStructure().getCurrentCycle()
             .getHourOfPeriodsADay();
