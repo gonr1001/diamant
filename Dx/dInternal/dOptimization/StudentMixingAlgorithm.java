@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.41 $ $Date: 2006-06-06 17:56:55 $
+ * Title: StudentMixingAlgorithm $Revision: 1.42 $ $Date: 2006-06-06 18:49:43 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -247,7 +247,7 @@ public class StudentMixingAlgorithm implements Algorithm {
         String typeID= actID.substring(SetOfActivities._COURSENAMELENGTH,SetOfActivities._COURSENAMELENGTH+1);
         actID=actID.substring(0,SetOfActivities._COURSENAMELENGTH);
         int group= student.getGroup(actID+typeID);
-        Vector groupList= new Vector(1);
+        Vector <String> groupList= new Vector <String> ();
         if((group>0) ){
           groupList.add(DXTools.STIConvertGroup(group));
         }// end if((group>0) )
