@@ -95,6 +95,16 @@ public class DxSite extends DxRessource {
         return this.getRessourceKey();
     }
 
+    public DxCategory getCat(long catKey) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public DxCategory getCat(String catName) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
     public int getCatCount() {
         return _dxsocCat.getCatCount();
     }
@@ -169,4 +179,13 @@ public class DxSite extends DxRessource {
         return _dxsocCat.getDxSetOfRooms(sCatName);
     }
 
+    public DxRoom getRoom(long catKey, long roomKey) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public DxRoom getRoom(String catName, String roomName) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

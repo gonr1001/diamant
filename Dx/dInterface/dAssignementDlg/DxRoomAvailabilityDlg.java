@@ -84,6 +84,8 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
     private DxAvailability _currentRoomAva;
 
+    private boolean _isMultiSite;
+
     private int[][] _currentAvailbility;
 
     /**
@@ -96,10 +98,13 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
      * @param doc
      *            The active document. Used to access the dictionnaries.
      */
-    public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites) {
+    public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites,
+            boolean isMultisite) {
         super(dApplic.getJFrame(), DConst.ROOMASSIGN, false);
         if (dApplic.getCurrentDoc() == null)
             return;
+
+        _isMultiSite = isMultisite;
         _dmodel = dApplic.getCurrentDModel();
         _dxsosSites = dxsosSites;
         _time = _dmodel.getTTStructure().getCurrentCycle()
@@ -133,29 +138,35 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
     /**
      * Component's initialisation and placement.
      */
-private void initialize() throws Exception {
+    private void initialize() throws Exception {
+        Vector<String> vTemp;
         _chooserPanel = new JPanel();
-        // creates the JComboBox with the list of all sites and add an entry to
-        // display all sites
-        Vector <String > vTemp=_dxsosSites.getNamesVector();
-        vTemp.add(DConst.ALL_SITES);
-        
-        _cbSites = new JComboBox(vTemp);
-//        _dxsCurrentSite = _dxsosSites.get
-        _cbSites.addItemListener(this);
-        
-        // vTemp=_dxsosSites.getSetOfCat(getNamesVector());
-        vTemp.add(DConst.ALL_SITES);
-        _cbCategories= new JComboBox(vTemp);
-        _cbCategories.addItemListener(this);
-        
-        _cbRooms = new JComboBox(vTemp);
-        _cbRooms.addItemListener(this);
-        
-        _chooserPanel.add(_cbSites, null);
-// String sel = (String) _chooser.getSelectedItem();
-// _currentInstr = (AvailabilityAttach) _setOfResources.getResource(sel)
-// .getAttach(); // First Element
+
+        if (_isMultiSite) {
+            // creates the JComboBox with the list of all sites and add an entry
+            // to
+            // display all sites
+            vTemp = _dxsosSites.getNamesVector();
+
+            _cbSites = new JComboBox(vTemp);
+            // Selects last index which represent all sites
+            _cbSites.setSelectedIndex(vTemp.size() - 1);
+            _dxsCurrentSite = null;
+            _cbSites.addItemListener(this);
+
+            // vTemp=_dxsosSites.getSetOfCat(getNamesVector());
+            _cbCategories = new JComboBox(vTemp);
+            _cbCategories.addItemListener(this);
+
+            _cbRooms = new JComboBox(vTemp);
+            _cbRooms.addItemListener(this);
+
+            _chooserPanel.add(_cbSites, null);
+        }
+        else
+        {
+            
+        }
         this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
 
         // gridPanel
@@ -169,6 +180,7 @@ private void initialize() throws Exception {
         _applyPanel.setFirstDisable();
         this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
     } // end initialize()
+
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
         if (command.equals(DConst.BUT_CLOSE)) { // close

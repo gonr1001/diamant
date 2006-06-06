@@ -43,7 +43,7 @@ public class DxSetOfSites extends DxSetOfRessources {
         if (this.getRessourceKeyByName(sNewSiteName) == -1) {
             this.addRessource(new DxSite(sNewSiteName));
         }
-        
+
     }
 
     /**
@@ -108,22 +108,15 @@ public class DxSetOfSites extends DxSetOfRessources {
     }
 
     /**
-     * Adds a category to the site given by lSiteKey
+     * Adds a room to the site given by lSiteKey
      * 
      * @param sSiteName
      *            Name of the site to which the category should be added
      * @param sCatName
      *            Name of the category to which the room should be added
-     * @param sRoomName
-     *            Name of the room to be added
-     * @param nCapacity
-     *            Capacity of the room to be added
-     * @param nFunction
-     *            Function of the room to be added
-     * @param vChar
-     *            Vector of characteristics of the room to be added
-     * @param sNote
-     *            Comment on the room to be added
+     * @param dxrRoom
+     *            Room to be added
+     * 
      */
     public void addRoom(String sSiteName, String sCatName, DxRoom dxrRoom) {
         try {
@@ -135,8 +128,43 @@ public class DxSetOfSites extends DxSetOfRessources {
 
     }
 
+    public DxSite getSite(long lSiteKey) {
+        return (DxSite) this.getRessource(lSiteKey);
+    }
+
+    public DxSite getSite(String sSiteName) {
+        return (DxSite) this.getRessourceByName(sSiteName);
+    }
+
     public String getSiteName(long lSiteKey) {
         return this.getRessourceName(lSiteKey);
+    }
+
+    public long getSiteKeyByName(String sSiteName) {
+        return this.getRessourceKeyByName(sSiteName);
+    }
+
+    public int getSiteCount() {
+        return this.size();
+    }
+
+    public DxCategory getCat(long lSiteKey, long lCatKey) {
+        try {
+            return ((DxSite) this.getRessource(lSiteKey)).getCat(lCatKey);
+        } catch (Exception e) {
+            // if key was invalid, getter returns null
+            return null;
+        }
+    }
+
+    public DxCategory getCat(String sSiteName, String sCatName) {
+        try {
+            return ((DxSite) this.getRessourceByName(sSiteName))
+                    .getCat(sCatName);
+        } catch (Exception e) {
+            // if key was invalid, getter returns null
+            return null;
+        }
     }
 
     public String getCatName(long lSiteKey, long lCatKey) {
@@ -147,9 +175,15 @@ public class DxSetOfSites extends DxSetOfRessources {
             return null;
         }
     }
-
-    public int getSiteCount() {
-        return this.size();
+    
+    public long getCatKeyByName(long lSiteKey, String sCatName) {
+        try {
+            return ((DxSite) this.getRessource(lSiteKey))
+                    .getCatKeyByName(sCatName);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return -1;
+        }
     }
 
     public int getCatCount(long lSiteKey) {
@@ -168,20 +202,21 @@ public class DxSetOfSites extends DxSetOfRessources {
         }
     }
 
-    public int getRoomCount(long lSiteKey, long lCatKey) {
+    public DxRoom getRoom(long lSiteKey, long lCatKey, long lRoomKey) {
         try {
-            return ((DxSite) this.getRessource(lSiteKey)).getRoomCount(lCatKey);
+            return ((DxSite) this.getRessource(lSiteKey)).getRoom(lCatKey,lRoomKey);
         } catch (Exception e) {
-            return -1;
+            // if key was invalid, getter returns null
+            return null;
         }
     }
 
-    public int getRoomCount(String sSiteName, String sCatName) {
+    public DxRoom getRoom(String sSiteName, String sCatName, String sRoomName) {
         try {
-            return ((DxSite) this.getRessourceByName(sSiteName))
-                    .getRoomCount(sCatName);
+            return ((DxSite) this.getRessourceByName(sSiteName)).getRoom(sCatName,sRoomName);
         } catch (Exception e) {
-            return -1;
+            // if key was invalid, getter returns null
+            return null;
         }
     }
 
@@ -192,6 +227,16 @@ public class DxSetOfSites extends DxSetOfRessources {
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;
+        }
+    }
+    
+    public long getRoomKeyByName(long lSiteKey, long lCatKey, String sSiteName) {
+        try {
+            return ((DxSite) this.getRessource(lSiteKey)).getRoomKeyByName(
+                    lCatKey, sSiteName);
+        } catch (Exception e) {
+            // If index was invalid, Null pointer Exception will be thrown
+            return -1;
         }
     }
 
@@ -230,41 +275,27 @@ public class DxSetOfSites extends DxSetOfRessources {
     public DxAvailability getRoomAvailability(String sSiteName,
             String sCatName, String sRoomName) {
         try {
-            return ((DxSite) this.getRessourceByName(sSiteName)).getRoomAvailability(
-                    sCatName, sRoomName);
+            return ((DxSite) this.getRessourceByName(sSiteName))
+                    .getRoomAvailability(sCatName, sRoomName);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;
         }
     }
-    
-    public DxAvailability getAllRooms(String sSiteName,
-            String sCatName, String sRoomName)
-    {
-        return null;
-        //TODO
-    }
 
-    public long getSiteKeyByName(String sSiteName) {
-        return this.getRessourceKeyByName(sSiteName);
-    }
-
-    public long getCatKeyByName(long lSiteKey, String sCatName) {
+    public int getRoomCount(long lSiteKey, long lCatKey) {
         try {
-            return ((DxSite) this.getRessource(lSiteKey))
-                    .getCatKeyByName(sCatName);
+            return ((DxSite) this.getRessource(lSiteKey)).getRoomCount(lCatKey);
         } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
             return -1;
         }
     }
 
-    public long getRoomKeyByName(long lSiteKey, long lCatKey, String sSiteName) {
+    public int getRoomCount(String sSiteName, String sCatName) {
         try {
-            return ((DxSite) this.getRessource(lSiteKey)).getRoomKeyByName(
-                    lCatKey, sSiteName);
+            return ((DxSite) this.getRessourceByName(sSiteName))
+                    .getRoomCount(sCatName);
         } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
             return -1;
         }
     }
@@ -308,13 +339,13 @@ public class DxSetOfSites extends DxSetOfRessources {
         }
     }
 
-	public void resizeSiteAvailability() {
-		// TODO Auto-generated method stub
-		
-	}
+    public void resizeSiteAvailability() {
+        // TODO Auto-generated method stub
 
-	public String toWrite() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
+
+    public String toWrite() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
