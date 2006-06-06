@@ -99,11 +99,11 @@ public class Room extends DResource {
 	}
 
 	/**
+	 * 
 	 * @return
 	 */
-	public int getRoomCapacity() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getRoomCapacity(){
+		return ((RoomAttach)getAttach()).getCapacity();
 	}
 
 	/**
