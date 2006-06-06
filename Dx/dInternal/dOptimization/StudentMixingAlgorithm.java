@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.40 $ $Date: 2006-02-20 14:06:52 $
+ * Title: StudentMixingAlgorithm $Revision: 1.41 $ $Date: 2006-06-06 17:56:55 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -142,7 +142,7 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @return
    */
   private Vector buildEventsVector(){
-    Vector vect= new Vector(1);
+    Vector <String> vect= new Vector<String>();
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){
       DResource rescEvent= _dm.getSetOfEvents().getResourceAt(i);
       if(((EventAttach)rescEvent.getAttach()).isPlaceInAPeriod()){
@@ -207,7 +207,7 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @return
    */
   private Vector buildStudentsRegistered(String activityID, String typeID){
-    Vector studentR= new Vector(1);
+    Vector <String> studentR= new Vector<String> (1);
     Activity activity= (Activity)_dm.getSetOfActivities().getResource(activityID).getAttach();
     Vector studentList= activity.getStudentRegistered();
     for (int i=0; i< studentList.size(); i++){
@@ -285,7 +285,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     DValue value= new DValue();
     value.setIntValue(0);
     DValue size;
-    Vector sizeOfGroups= new Vector();
+    Vector <DValue> sizeOfGroups= new Vector <DValue>();
     Type type= _dm.getSetOfActivities().getType(activityID,typeID);
     for(int i=0; i< allConvGroup.size(); i++){
       size= new DValue();
@@ -349,7 +349,7 @@ public class StudentMixingAlgorithm implements Algorithm {
    */
   private DResource giveBestGroup(DResource resc, Vector allConvGroup,
                                  DValue currentConvGroup, Vector sizeOfGroups, int acceptableVariation){
-    Vector includeGroupsList=new Vector();
+    Vector <Integer>includeGroupsList=new Vector<Integer>();
     int smallGroup= RefinedStudMixAlgo.getSmallerGroupIndex(sizeOfGroups);
     for(int i=0; i< allConvGroup.size(); i++){
       if ((((DValue)sizeOfGroups.get(i)).getIntValue()-
@@ -357,7 +357,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       includeGroupsList.add(new Integer(i));
     }// end for(int i=0; i< allConvGroup.size(); i++){
 
-    int bGroup=((Integer)includeGroupsList.get(0)).intValue();
+    int bGroup=(includeGroupsList.get(0)).intValue();
     if(((DSetOfResources)allConvGroup.get( bGroup)).size()>0){
       //System.out.println("bGroup: "+bGroup+" ((SetOfResources)allConvGroup.get( bGroup)) size: "+((SetOfResources)allConvGroup.get( bGroup)).size() );//debug
       int bConf=Integer.parseInt(((DSetOfResources)allConvGroup.get(
@@ -365,10 +365,10 @@ public class StudentMixingAlgorithm implements Algorithm {
 
       for(int i=1; i< includeGroupsList.size(); i++){
         if(bConf>Integer.parseInt(((DSetOfResources)allConvGroup.get(
-            ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
+            (includeGroupsList.get(i)).intValue())).getResourceAt(0).getID())){
         bConf=Integer.parseInt(((DSetOfResources)allConvGroup.get(
-        ((Integer)includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
-        bGroup=((Integer)includeGroupsList.get(i)).intValue();
+        (includeGroupsList.get(i)).intValue())).getResourceAt(0).getID());
+        bGroup=(includeGroupsList.get(i)).intValue();
       }// end if(bConf>=Integer.parseInt(((SetOfResources
       }// end for(int i=0; i< includeGroupsList.size(); i++){
       //currentConvGroup.setIntValue(bGroup);

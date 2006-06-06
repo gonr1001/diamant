@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.9 $  $Date: 2005-07-05 12:04:30 $
+ * Title: SetOfStudents $Revision: 1.10 $  $Date: 2006-06-06 17:56:54 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -135,7 +135,7 @@ public class SetOfStudents extends DSetOfResources {
 		int diff;
 		String iD, key;
 		Student studentRes;
-		Vector list = new Vector();
+		Vector <String> list = new Vector <String>();
 		for (int i = 0; i < size(); i++) {
 			studentRes = (Student) getResourceAt(i);
 			if (studentRes.isInGroup(activityID + typeID, group)) {
@@ -172,7 +172,7 @@ public class SetOfStudents extends DSetOfResources {
 		int diff;
 		String iD, key, studentProgram, str = null;
 		Student studentRes;
-		Vector list = new Vector();
+		Vector <String> list = new Vector <String>();
 		if (order == 0)
 			sortSetOfResourcesByID();
 		if (order == 1)
@@ -224,11 +224,11 @@ public class SetOfStudents extends DSetOfResources {
 
 	public Vector getStudentsByGroupTable(String activityID, String typeID,
 			int group, int order) {
-		Vector v = new Vector(3);
-		Vector vID = new Vector(1);
-		Vector vKey = new Vector(1);
-		Vector vSelField = new Vector(1);
-		Vector vFixState = new Vector(1);
+		Vector v = new Vector ();
+		Vector vID = new Vector();
+		Vector <String> vKey = new Vector <String> ();
+		Vector vSelField = new Vector();
+		Vector <String> vFixState = new Vector <String>();
 		
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
 		

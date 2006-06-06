@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.69 $  $Date: 2006-05-31 20:56:36 $
+ * Title: EditActivityDlg $Revision: 1.70 $  $Date: 2006-06-06 17:56:54 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.69 $
+ * @version $Revision: 1.70 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -74,6 +74,7 @@ import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+
 
 public class EditActivityDlg extends JDialog implements ActionListener,
 		ChangeListener {

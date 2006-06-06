@@ -409,7 +409,7 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 	public Vector studentsInSection(Vector students, String activityAndType,
 			String section) {
-		Vector res = new Vector();
+		Vector <Object> res = new Vector <Object>();
 		for (int i = 0; i < students.size(); i++) {
 			Student student = _dm.getSetOfStudents().getStudent(
 					Long.parseLong((String) students.get(i)));

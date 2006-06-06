@@ -20,8 +20,7 @@ package dInternal.dTimeTable;
 
 import java.io.File;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
