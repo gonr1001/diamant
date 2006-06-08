@@ -463,7 +463,7 @@ public class DModel extends Observable {
 	 */
 	public SetOfActivities getSetOfActivities() {
 		boolean open = false;
-		SetOfActivities soaTmp = new SetOfActivities(open);
+		SetOfActivities soaTmp = new SetOfActivities(open,_ttStruct.getPeriodLenght());
 		// all sites old way
 		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
 			for (int i = 0; i < _setOfActivitiesSites.size(); i++) {

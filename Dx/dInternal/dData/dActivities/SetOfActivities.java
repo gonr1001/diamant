@@ -43,6 +43,7 @@ public class SetOfActivities extends DSetOfResources{
 	private String _error="";
 	private int _line=1;
 	private boolean _open;
+	private int _periodLength;
 	
 	
 	private int _NUMBEROFCYCLE = 1;
@@ -55,9 +56,18 @@ public class SetOfActivities extends DSetOfResources{
 		super();
 		//_dataloaded = dataloaded;
 		_open= open;
+		_periodLength = 60;
 	}
 		
 	
+	public SetOfActivities(boolean open, int periodLength) {
+		super();
+		//_dataloaded = dataloaded;
+		_open= open;
+		_periodLength = periodLength;
+	}
+
+
 	/**
 	 * analyse activities data by a finished states machine
 	 * @param integer the beginPosition (start position of the finished states machine)
@@ -155,7 +165,7 @@ public class SetOfActivities extends DSetOfResources{
            while(stLine.hasMoreElements()){
              unityResource= section.getUnity(Integer.toString(counter));
              Unity unity= (Unity)unityResource.getAttach();
-             unity.setDuration(Integer.parseInt(stLine.nextToken().trim())*60);
+             unity.setDuration(Integer.parseInt(stLine.nextToken().trim())*_periodLength)/*was60*/; 
              unityResource.setAttach(unity);
              section.setUnity(unityResource);
              counter++;
@@ -361,7 +371,7 @@ public class SetOfActivities extends DSetOfResources{
           /* duration, time of each bloc*/
           for(int l=0; l< section.getSetOfUnities().size(); l++){
             bloc= (Unity)section.getSetOfUnities().getResourceAt(l).getAttach();
-            lineDuration += bloc.getDuration()/60+" ";//
+            lineDuration += bloc.getDuration()/ _periodLength /*was60*/+" ";//
             Assignment firstCycAss = (Assignment)bloc.getSetOfAssignments(
                 ).getResourceAt(0).getAttach();
             // a loop to be implemented
