@@ -73,7 +73,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
     /**
      * @associates JToggleButton
      */
-    private Vector _posVect;
+    private Vector <JToggleButton> _posVect;
 
     protected DModel _dmodel;
 
@@ -167,7 +167,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
             int index = _posVect.indexOf(event.getSource());
             int day = index / _nbOfPeriods;
             int per = index % _nbOfPeriods;
-            if (((JToggleButton) _posVect.get(index)).isSelected()) {
+            if ( _posVect.get(index).isSelected()) {
                 _currentAvailbility[day][per] = 1;
             } else {
                 _currentAvailbility[day][per] = 5;
@@ -207,7 +207,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
         gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
         gridPanel.setBorder(BorderFactory
                 .createTitledBorder(DConst.AVAILABILITIES));
-        _posVect = new Vector();
+        _posVect = new Vector <JToggleButton> ();
         _posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
         gridPanel.add(new JLabel("")); // top left corner
         for (int i = 0; i < _days.length; i++)

@@ -36,8 +36,6 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
-import dInternal.DSetOfResources;
-import dInternal.dData.AvailabilityAttach;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
@@ -70,7 +68,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
     /**
      * @associates JToggleButton
      */
-    private Vector _posVect;
+    private Vector <JToggleButton> _posVect;
 
     private DModel _dmodel;
 
@@ -139,7 +137,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
      * Component's initialisation and placement.
      */
     private void initialize() throws Exception {
-        Vector<String> vTemp;
+        Vector <String> vTemp;
         _chooserPanel = new JPanel();
 
         if (_isMultiSite) {
@@ -195,7 +193,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             int index = _posVect.indexOf(event.getSource());
             int day = index / _nbOfPeriods;
             int per = index % _nbOfPeriods;
-            if (((JToggleButton) _posVect.get(index)).isSelected()) {
+            if ( _posVect.get(index).isSelected()) {
                 _currentAvailbility[day][per] = 1;
             } else {
                 _currentAvailbility[day][per] = 5;
@@ -241,7 +239,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
         gridPanel.setBorder(BorderFactory
                 .createTitledBorder(DConst.AVAILABILITIES));
-        _posVect = new Vector();
+        _posVect = new Vector <JToggleButton> ();
         _posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
         gridPanel.add(new JLabel("")); // top left corner
         for (int i = 0; i < _days.length; i++)
