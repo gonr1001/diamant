@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.42 $ $Date: 2006-06-06 18:49:43 $
+ * Title: StudentMixingAlgorithm $Revision: 1.43 $ $Date: 2006-06-08 21:33:12 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: gonzrubi $
+ * @author $Author: caln1901 $
  * @since JDK1.3
  */
 
@@ -22,7 +22,7 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dStudents.Student;
@@ -249,7 +249,7 @@ public class StudentMixingAlgorithm implements Algorithm {
         int group= student.getGroup(actID+typeID);
         Vector <String> groupList= new Vector <String> ();
         if((group>0) ){
-          groupList.add(DXTools.STIConvertGroup(group));
+          groupList.add(DxTools.STIConvertGroup(group));
         }// end if((group>0) )
 
         for(int k=0; k< groupList.size(); k++){
@@ -289,7 +289,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     Type type= _dm.getSetOfActivities().getType(activityID,typeID);
     for(int i=0; i< allConvGroup.size(); i++){
       size= new DValue();
-      int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
+      int group= DxTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
       size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
       //size.setIntValue(0);
       sizeOfGroups.add(size);
@@ -298,7 +298,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     while(newStudentGroup!=null){
       //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(newStudentGroup.getKey()).getAttach();
     	Student student= _dm.getSetOfStudents().getStudent(newStudentGroup.getKey());
-    	int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
+    	int group= DxTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
           ((DValue)newStudentGroup.getAttach()).getIntValue()).getID());//int group= i+1;
       //student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
       student.setInGroup(activityID+typeID, group,false);

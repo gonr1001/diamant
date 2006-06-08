@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: NewTTDlg $Revision: 1.30 $  $Date: 2006-04-24 01:27:52 $
+ * Title: NewTTDlg $Revision: 1.31 $  $Date: 2006-06-08 21:33:10 $
  * Description: NewTTDlg is created by NewTTDCmd it is used when
  *              a new document (timetable) will be created,
  *              it is necessary to ask for
@@ -19,8 +19,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.31 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  */
 
@@ -80,7 +80,7 @@ public class NewTTDlg extends JDialog {
 		Dimension d = fc.getPreferredSize();
 		fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
 				.getHeight())); // XXXX Pascal: Magic number
-		//int returnVal = DXTools.showDialog(dApplic.getJFrame(), fc, str3);
+		//int returnVal = DxTools.showDialog(dApplic.getJFrame(), fc, str3);
 	    int returnVal=0;
 	     String filename="nothing.txt";
 	     while(!(new File(filename)).exists()&&

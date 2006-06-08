@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.70 $  $Date: 2006-06-06 17:56:54 $
+ * Title: EditActivityDlg $Revision: 1.71 $  $Date: 2006-06-08 21:33:07 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.70 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.71 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -54,7 +54,7 @@ import javax.swing.event.ChangeListener;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXJComboBox;
+import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
 
 import dInternal.DResource;
@@ -91,7 +91,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 
 	private ButtonsPanel _applyPanel;
 
-	private DXJComboBox _roomCB;
+	private DxJComboBox _roomCB;
 
 	private JLabel[] _capacity;
 
@@ -195,7 +195,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 			Vector[] vectR = buildRoomList(); // XXXX Pascal: Vector est
 			// 'deprecated' depuis plusieurs
 			// annees
-			_roomCB = new DXJComboBox(vectR[1]);
+			_roomCB = new DxJComboBox(vectR[1]);
 			_roomCB.enableActionListeners();
 			_applyPanel.setFirstEnable();
 		}
@@ -333,7 +333,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 		categoryRoomCB.addActionListener(this);
 
 		Vector[] vectR = buildRoomList();// vectC[0].get(0).toString());
-		_roomCB = new DXJComboBox(vectR[1]);
+		_roomCB = new DxJComboBox(vectR[1]);
 		_roomCB.setActionCommand(DConst.NAME_AC);
 		_roomCB.setSelectedItem(vectR[0].get(0).toString());
 		_roomCB.addActionListener(this);

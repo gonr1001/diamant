@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.50 $ $Date: 2006-03-08 16:50:29 $
+ * Title: ActivityDlg $Revision: 1.51 $ $Date: 2006-06-08 21:33:07 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,8 +12,8 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.50 $
- * @author $Author: gonzrubi $
+ * @version $Revision: 1.51 $
+ * @author $Author: caln1901 $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -35,7 +35,7 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.dData.dActivities.SetOfActivities;
 
@@ -119,7 +119,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         _rightList = new JList(_rightVec);
         _rightList.addMouseListener(mouseListenerLists);
         
-        JPanel listPanel = DXTools.listPanel(_rightList);
+        JPanel listPanel = DxTools.listPanel(_rightList);
         _lNoVisible = new JLabel(_rightVec.size() + " " + DConst.NOT_INCLUDED);
         JPanel rightPanel = new JPanel(new BorderLayout());
         listPanel.setMinimumSize(new Dimension(100, 100));
@@ -132,7 +132,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         _leftList = new JList(_leftVec);
         _leftList.addMouseListener(mouseListenerLists);
         _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);
-        JPanel listPanelLeft = DXTools.listPanel(_leftList);
+        JPanel listPanelLeft = DxTools.listPanel(_leftList);
         JPanel leftPanel = new JPanel();
         listPanelLeft.setMinimumSize(new Dimension(100, 100));
         listPanelLeft.setPreferredSize(new Dimension(100, 300));
@@ -141,7 +141,7 @@ public class ActivityDlg extends JDialog implements ActionListener {
         leftPanel.add(_lVisible, BorderLayout.NORTH);
         leftPanel.add(listPanelLeft, BorderLayout.CENTER);
         //arrows panel
-        JPanel arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, true);
+        JPanel arrowsPanel = DxTools.arrowsPanel(this, _arrowsNames, true);
         //placing the panels and buttons into the _listsPanel
         JPanel centerPanel = new JPanel();
         centerPanel.add(leftPanel, BorderLayout.EAST);
@@ -195,10 +195,10 @@ public class ActivityDlg extends JDialog implements ActionListener {
         //if arrows
         if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])) {
             if (command.equals(_arrowsNames[1])) {
-                DXTools.listTransfers(_rightList, _leftList, _rightVec,
+                DxTools.listTransfers(_rightList, _leftList, _rightVec,
                         _leftVec, 1);
             } else {
-                DXTools.listTransfers(_leftList, _rightList, _leftVec,
+                DxTools.listTransfers(_leftList, _rightList, _leftVec,
                         _rightVec, 1);
             }
             _lNoVisible.setText(_rightVec.size() + " " + DConst.NOT_INCLUDED);

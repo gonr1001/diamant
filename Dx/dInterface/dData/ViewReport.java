@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.DValue;
 
@@ -60,7 +60,7 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     _scrollPane.getViewport().setView(_jTextArea);
     this.add(_scrollPane,BorderLayout.CENTER);
     String[] _buttonsNames = {DConst.BUT_SAVE_AS, DConst.BUT_OPTIONS, DConst.BUT_CLOSE};
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
     this.add(_buttonsPanel, BorderLayout.SOUTH);
   }
 
@@ -95,7 +95,7 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
       res.add(opt.get(i));
     }
 
-    res = DXTools.sortVector(res);
+    res = DxTools.sortVector(res);
 
     for (int i = 0; i < right.size(); i++){
       res.add(right.get(i));

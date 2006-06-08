@@ -43,7 +43,7 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.EventAttach;
@@ -198,7 +198,7 @@ public abstract class EventsDlgInterface extends JDialog implements
         _centerLabel = new JLabel(String.valueOf(_centerVector.size()));
         _centerLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
         //The listContainerPanel
-        JPanel listPanel = DXTools.listPanel(_centerList);
+        JPanel listPanel = DxTools.listPanel(_centerList);
         listPanel.setMinimumSize(new Dimension(150, 100));
         listPanel.setPreferredSize(new Dimension(150, 300));
         listPanel.setMaximumSize(new Dimension(150, 400));
@@ -237,7 +237,7 @@ public abstract class EventsDlgInterface extends JDialog implements
         _leftLabel = new JLabel(String.valueOf(_leftVector.size()));
         _leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
 
-        JPanel listPanel = DXTools.listPanel(_leftList);
+        JPanel listPanel = DxTools.listPanel(_leftList);
         listPanel.setMinimumSize(new Dimension(150, 100));
         listPanel.setPreferredSize(new Dimension(150, 300));
         listPanel.setMaximumSize(new Dimension(150, 400));
@@ -264,7 +264,7 @@ public abstract class EventsDlgInterface extends JDialog implements
         _rightLabel = new JLabel(String.valueOf(_rightVector.size()));
         _rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
 
-        JPanel listPanel = DXTools.listPanel(_rightList);
+        JPanel listPanel = DxTools.listPanel(_rightList);
         listPanel.setMinimumSize(new Dimension(150, 100));
         listPanel.setPreferredSize(new Dimension(150, 300));
         listPanel.setMaximumSize(new Dimension(150, 400));

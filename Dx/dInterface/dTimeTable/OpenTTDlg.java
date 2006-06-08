@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.27 $  $Date: 2006-05-25 15:04:30 $
+ * Title: OpenTTDlg $Revision: 1.28 $  $Date: 2006-06-08 21:33:10 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: caln1901 $
  * @since JDK1.3
  */
@@ -67,7 +67,7 @@ public class OpenTTDlg extends JDialog {
         Dimension d = fc.getPreferredSize();
         fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
                 .getHeight()));
-        // int returnVal = DXTools.showOpenDialog(dApplic.getJFrame(), fc);
+        // int returnVal = DxTools.showOpenDialog(dApplic.getJFrame(), fc);
 
         int returnVal = 0;
         String filename = "nothing.txt";

@@ -15,7 +15,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 //import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
@@ -36,7 +36,7 @@ private String _title;
     _title=title+section.getID()+".";
     _section= (Section)section.getAttach();
     init();
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
     initDialog();
   }
 

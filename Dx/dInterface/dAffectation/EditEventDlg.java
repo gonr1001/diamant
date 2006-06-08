@@ -45,7 +45,7 @@ import javax.swing.event.ChangeListener;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXJComboBox;
+import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
 
 import dInternal.DResource;
@@ -82,7 +82,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 	private ButtonsPanel _applyPanel;
 
-	private DXJComboBox _roomCB;
+	private DxJComboBox _roomCB;
 
 	private JLabel[] _capacity;
 
@@ -189,7 +189,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			String functionName = getSelectedFunction(tpane);
 			Vector[] vectR = buildRoomList(functionName);
 			setRoomList(tpane, vectR);
-			// _roomCB = new DXJComboBox(vectR[1]);
+			// _roomCB = new DxJComboBox(vectR[1]);
 			_roomCB.enableActionListeners();
 			_applyPanel.setFirstEnable();
 		}
@@ -340,7 +340,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		// construction de la combobox de functions de locaux
 		Vector[] vectF = buildRoomFunctionList();
 		String selectedFunction = vectF[0].get(0).toString();
-		DXJComboBox functionRoomCB = new DXJComboBox(vectF[1]);
+		DxJComboBox functionRoomCB = new DxJComboBox(vectF[1]);
 		functionRoomCB.setMaximumSize(new Dimension(10, 10));
 		functionRoomCB.setSelectedItem(selectedFunction);
 		functionRoomCB.setActionCommand(DConst.FUNCTION_AC);
@@ -348,7 +348,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 		// contruction de la combobox de locaux
 		Vector[] vectR = buildRoomList(selectedFunction);// vectC[0].get(0).toString());
-		_roomCB = new DXJComboBox(vectR[1]);
+		_roomCB = new DxJComboBox(vectR[1]);
 		_roomCB.setActionCommand(DConst.NAME_AC);
 		_roomCB.setSelectedItem(vectR[0].get(0).toString());
 		_roomCB.addActionListener(this);
@@ -359,7 +359,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 		// construction de la combobox de l'État du local
 		Vector[] vectC = buildRoomStateList();
-		DXJComboBox roomStateCB = new DXJComboBox(vectC[1]);
+		DxJComboBox roomStateCB = new DxJComboBox(vectC[1]);
 		roomStateCB.setSelectedItem(vectC[0].get(0).toString());
 		roomStateCB.setActionCommand(DConst.STATE_AC);
 		roomStateCB.addActionListener(this);

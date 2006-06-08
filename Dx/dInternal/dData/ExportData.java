@@ -14,7 +14,7 @@ import java.util.Vector;
 
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.txt.FilterFile;
@@ -58,7 +58,7 @@ public class ExportData {
         if(roomTemp.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
           roomTemp= DConst.NO_ROOM_EXPORT;
         String room= roomTemp+"          ";
-        report.append(room.substring(0,_ROOMSIZE)+DXTools.STIConvertGroup(section));
+        report.append(room.substring(0,_ROOMSIZE)+DxTools.STIConvertGroup(section));
       //}// end while(tokens.hasMoreTokens())
         report.append(DConst.CR_LF);
     }// end while(strTokens.hasMoreTokens())

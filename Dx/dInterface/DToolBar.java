@@ -36,7 +36,7 @@ import javax.swing.JToolBar;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.PeriodPanel;
-import dInterface.dUtil.DXJComboBox;
+import dInterface.dUtil.DxJComboBox;
 import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
@@ -63,7 +63,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 
 	private JComboBox _toolBarSelector;
 
-	private DXJComboBox _daySelector, _dayNameSelector, _periodSelector,
+	private DxJComboBox _daySelector, _dayNameSelector, _periodSelector,
 			_periodTypeSelector;
 
 	private boolean _comboBoxStatus = true;
@@ -107,24 +107,24 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 
 		//JComboBox daySelector initialisation
 		String[] daySelector = { "1", "2", "3", "4", "5", "6", "7" };
-		_daySelector = new DXJComboBox(daySelector);
+		_daySelector = new DxJComboBox(daySelector);
 		_daySelector.setPreferredSize(new Dimension(50, DConst.NPT11 * c));
 		_daySelector.setMaximumSize(new Dimension(50, DConst.NPT11 * c));
 
 		//JComboBox dayNameSelector initialisation
-		_dayNameSelector = new DXJComboBox(TTStructure._weekTable);
+		_dayNameSelector = new DxJComboBox(TTStructure._weekTable);
 		_dayNameSelector.setPreferredSize(new Dimension(50, DConst.NPT11 * c));
 		_dayNameSelector.setMaximumSize(new Dimension(50, DConst.NPT11 * c));
 
 		//JComboBox periodSelector initialisation
 		String[] periodSelector = { "1", "2", "3", "4", "5", "6", "7" };
-		_periodSelector = new DXJComboBox(periodSelector);
+		_periodSelector = new DxJComboBox(periodSelector);
 		_periodSelector.setPreferredSize(new Dimension(50, DConst.NPT11 * c));
 		_periodSelector.setMaximumSize(new Dimension(50, DConst.NPT11 * c));
 		//_periodSelector.setEditable(true);
 
 		String[] periodTypes = { "B", "N", "Z" };
-		_periodTypeSelector = new DXJComboBox(periodTypes);
+		_periodTypeSelector = new DxJComboBox(periodTypes);
 		_periodTypeSelector.setPreferredSize(new Dimension(100, DConst.NPT11
 				* c));
 		_periodTypeSelector

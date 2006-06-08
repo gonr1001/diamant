@@ -51,8 +51,8 @@ import dInterface.dUtil.ApplyClosePanel;
 import dInterface.dUtil.RightLeftInterface;
 import dInterface.dUtil.RigthLeftPanel;
 
-import dInterface.dUtil.DXJComboBox;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxJComboBox;
+import dInterface.dUtil.DxTools;
 
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -135,11 +135,11 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 
 	private int _currentAssignedGroup;
 
-	private DXJComboBox _activitiesCombo;
+	private DxJComboBox _activitiesCombo;
 
-	private DXJComboBox _typeCombo;
+	private DxJComboBox _typeCombo;
 
-	private DXJComboBox _sortCombo;
+	private DxJComboBox _sortCombo;
 
 	private RigthLeftPanel _rigthLeftPanel;
 
@@ -315,7 +315,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		activitiesVector = activities.getIDsByField(3, "true");
 		// panel of activities
-		_activitiesCombo = new DXJComboBox(activitiesVector);
+		_activitiesCombo = new DxJComboBox(activitiesVector);
 		_activitiesCombo.addActionListener(this);
 		JPanel activityPanel = new JPanel();
 		activityPanel.setBorder(new TitledBorder(new EtchedBorder(),
@@ -335,7 +335,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		Vector typeVector = ((Activity) (activities
 				.getResource(selectedActivity).getAttach())).getSetOfTypes()
 				.getNamesVector(1);
-		_typeCombo = new DXJComboBox(typeVector);
+		_typeCombo = new DxJComboBox(typeVector);
 		_typeCombo.addActionListener(this);
 		JPanel typePanel = new JPanel();
 		typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
@@ -350,7 +350,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 	 * @return JPanel the Type Panel
 	 */
 	private JPanel initSortPanel() {
-		_sortCombo = new DXJComboBox(buildSortVector());
+		_sortCombo = new DxJComboBox(buildSortVector());
 		JPanel sortPanel = new JPanel();
 		sortPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.SORT_TITLE));
@@ -685,7 +685,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 //		
 ////		JList dest = getJList(_notAssignedTabbedPane);
 //		Object [] elementsToTransfer = source.getSelectedValues();
-////		int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+////		int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 ////				.getResourceAt(_assignedTabbedPane.getSelectedIndex()).getID());
 ////	    JPanel jp = new JPanel();
 ////	    JScrollPane scrollPane = new JScrollPane();	   
@@ -996,7 +996,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 //			for (int i = 0; i < jlist.length; i++)
 //				jlist[i].addMouseListener(mouseListenerLists);
 //		}
-//		scrollContainer = DXTools.listPanel(scrollContainer, jlist,
+//		scrollContainer = DxTools.listPanel(scrollContainer, jlist,
 //				(insideWidth - 20), GroupPanelHeight - infoPanelHeight - 20);
 //		JPanel infoPanel = initInfoPanelFromAssPanel(insideWidth,
 //				infoPanelHeight, groupNumber, lNumberOfElements);
@@ -1185,7 +1185,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 //		System.out.println("setAssignedLists");
 //		_assignedTabbedPane.removeAll();
 //		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-//			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+//			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 //					.getResourceAt(i).getID());
 //		    JPanel jp = new JPanel();
 //		JList[] jlist = { new JList(new Vector()),
@@ -1233,7 +1233,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		System.out.println("setAssignedListsProv");
 		_assignedTabbedPane.removeAll();
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(i).getID());
 		    JPanel jp = new JPanel();
 		    JScrollPane scrollPane = new JScrollPane();	   
@@ -1601,7 +1601,7 @@ public class SectionStudentsDlg extends DDialog implements ActionListener,
 		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 		Type type = activities.getType(selectedActivity, selectedType);
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(i).getID());
 			JList assList = this.getAListFromAssignedPanel(1, i);
 			Vector assVec = getListVector(assList);

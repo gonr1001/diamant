@@ -34,7 +34,7 @@ import javax.swing.SwingConstants;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXJComboBox;
+import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.dData.DxAvailability;
@@ -60,11 +60,11 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
     private JPanel _centerPanel;
 
-    private DXJComboBox _cbSites;
+    private DxJComboBox _cbSites;
 
-    private DXJComboBox _cbCategories;
+    private DxJComboBox _cbCategories;
 
-    private DXJComboBox _cbRooms;
+    private DxJComboBox _cbRooms;
 
     /**
      * @associates JToggleButton
@@ -125,13 +125,13 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             // to
             // display all sites
             vTemp = _dxsosSites.getNamesVector();
-            _cbSites = new DXJComboBox(vTemp);
+            _cbSites = new DxJComboBox(vTemp);
             _cbSites.addItemListener(this);
             _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
                     .getSelectedItem());
 
             vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
-            _cbCategories = new DXJComboBox(vTemp);
+            _cbCategories = new DxJComboBox(vTemp);
             _cbCategories.addItemListener(this);
             _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
                     .getSelectedItem());
@@ -146,7 +146,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         }
 
         vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
-        _cbRooms = new DXJComboBox(vTemp);
+        _cbRooms = new DxJComboBox(vTemp);
         _cbRooms.addItemListener(this);
         _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
                 .getSelectedItem());
@@ -214,7 +214,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
                 
                 Vector <String> vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
                 _cbCategories.disableActionListeners();
-                _cbCategories = new DXJComboBox(vTemp);
+                _cbCategories = new DxJComboBox(vTemp);
                 _cbCategories.enableActionListeners();
                 _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
                         .getSelectedItem());

@@ -2,7 +2,7 @@
  * Created on August 3rd, 2005
  * 
  * 
- * Title: DXJComboBox.java 
+ * Title: DxJComboBox.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -29,7 +29,7 @@ import javax.swing.JComboBox;
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
-public class DXJComboBox extends JComboBox {
+public class DxJComboBox extends JComboBox {
     ActionListener[] _actionList;
 
     boolean _disableListener;
@@ -37,7 +37,7 @@ public class DXJComboBox extends JComboBox {
     /**
      * Constructor
      */
-    public DXJComboBox() {
+    public DxJComboBox() {
         super();
         _disableListener = false;
     }
@@ -45,7 +45,7 @@ public class DXJComboBox extends JComboBox {
     /**
      * Constructor
      */
-    public DXJComboBox(Vector items) {
+    public DxJComboBox(Vector items) {
         super(items);
         _disableListener = false;
     }
@@ -53,7 +53,7 @@ public class DXJComboBox extends JComboBox {
     /**
      * Constructor
      */
-    public DXJComboBox(Object[] items) {
+    public DxJComboBox(Object[] items) {
         super(items);
         _disableListener = false;
     }
@@ -80,4 +80,4 @@ public class DXJComboBox extends JComboBox {
             }
         }
     }
-}// end DXJComboBox
+}// end DxJComboBox

@@ -42,7 +42,7 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 
 public class SelectInstructors
@@ -126,7 +126,7 @@ public class SelectInstructors
 
     _rightList = new JList(_rightVec);
     _rightList.addMouseListener(mouseListenerLists);
-    JPanel listPanel = DXTools.listPanel(_rightList, 150, 300);
+    JPanel listPanel = DxTools.listPanel(_rightList, 150, 300);
     _lNoVisible = new JLabel(_rightVec.size() + " " + DConst.NOT_INCLUDED);
     JPanel rightPanel = new JPanel(new BorderLayout());
     rightPanel.add(_lNoVisible, BorderLayout.NORTH);
@@ -136,14 +136,14 @@ public class SelectInstructors
     _leftList = new JList(_leftVec);
     _leftList.addMouseListener(mouseListenerLists);
     _lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);
-    listPanel = DXTools.listPanel(_leftList, 150, 300);
+    listPanel = DxTools.listPanel(_leftList, 150, 300);
     JPanel leftPanel = new JPanel();
     leftPanel = new JPanel(new BorderLayout());
     leftPanel.add(_lVisible, BorderLayout.NORTH);
     leftPanel.add(listPanel, BorderLayout.SOUTH);
     //arrows panel  private
     String [] _arrows = {DConst.TO_RIGHT, DConst.TO_LEFT};
-    _arrowsPanel = DXTools.arrowsPanel(this, _arrows, true); 
+    _arrowsPanel = DxTools.arrowsPanel(this, _arrows, true); 
     //placing the panels and buttons into the _listsPanel
     _centerPanel = new JPanel();
     _centerPanel.add(leftPanel, BorderLayout.EAST);
@@ -200,9 +200,9 @@ public class SelectInstructors
     }
     if (command.equals(DConst.TO_RIGHT) || command.equals(DConst.TO_LEFT)){
       if (command.equals(DConst.TO_LEFT)){
-        DXTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
+        DxTools.listTransfers(_rightList, _leftList, _rightVec, _leftVec, 1);
       } else {
-		DXTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 1);
+		DxTools.listTransfers(_leftList, _rightList, _leftVec, _rightVec, 1);
       }
       _lNoVisible.setText(_rightVec.size() + " " + DConst.NOT_INCLUDED);
       _lVisible.setText(_leftVec.size() + " " + DConst.INCLUDED);

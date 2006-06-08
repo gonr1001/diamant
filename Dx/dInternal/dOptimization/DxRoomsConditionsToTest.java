@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
@@ -166,7 +166,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
 				.getResource(event1.nextToken());
 		int nbOfStudents = _dm.getSetOfStudents().getStudentsByGroup(
 				activity.getID(), type.getID(),
-				DXTools.STIConvertGroupToInt(section.getID())).size();
+				DxTools.STIConvertGroupToInt(section.getID())).size();
 		long roomKey = event.getRoomKey();
 		if (roomKey != -1) {
 			RoomAttach room = (RoomAttach) _dm.getSetOfRooms().getResource(

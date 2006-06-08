@@ -113,7 +113,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		this.setLocationRelativeTo(dApplic.getJFrame());
 		this.setResizable(false);
 
-		_buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+		_buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
 
 		this.getContentPane().add(jPanel, BorderLayout.CENTER);
 		this.getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);

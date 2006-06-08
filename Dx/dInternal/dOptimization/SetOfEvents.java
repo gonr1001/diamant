@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -413,7 +413,7 @@ public class SetOfEvents extends DSetOfResources {
 		for (int i = 0; i < students.size(); i++) {
 			Student student = _dm.getSetOfStudents().getStudent(
 					Long.parseLong((String) students.get(i)));
-			if (student.isInGroup(activityAndType, DXTools
+			if (student.isInGroup(activityAndType, DxTools
 					.STIConvertGroupToInt(section)))
 				res.add(students.get(i));
 		}

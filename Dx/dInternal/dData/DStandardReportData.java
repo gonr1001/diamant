@@ -21,7 +21,7 @@ package dInternal.dData;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.DResource;
@@ -523,12 +523,12 @@ public class DStandardReportData {
 							+ "."
 							+ aux.substring(DConst.STUD_COURSE_LENGTH - 1,
 									DConst.STUD_COURSE_LENGTH) + "."
-							+ DXTools.STIConvertGroup(group) + ".";
+							+ DxTools.STIConvertGroup(group) + ".";
 					Section section = _dm.getSetOfActivities().getSection(
 							aux.substring(0, DConst.STUD_COURSE_LENGTH - 1),
 							aux.substring(DConst.STUD_COURSE_LENGTH - 1,
 									DConst.STUD_COURSE_LENGTH),
-							DXTools.STIConvertGroup(group));
+							DxTools.STIConvertGroup(group));
 					if (section != null) {
 						for (int j = 0; j < section.getSetOfUnities().size(); j++) {
 							Unity bloc = (Unity) section.getSetOfUnities()

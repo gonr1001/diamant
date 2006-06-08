@@ -41,8 +41,8 @@ import javax.swing.border.TitledBorder;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXJComboBox;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxJComboBox;
+import dInterface.dUtil.DxTools;
 import dInterface.DDialog;
 import dInterface.dUtil.RightLeftInterface;
 import dInterface.dUtil.RigthLeftPanel;
@@ -74,11 +74,11 @@ public class SectionDlg extends DDialog implements ActionListener,
 
 	private int _sortIndex;
 
-	private DXJComboBox _activitiesCombo;
+	private DxJComboBox _activitiesCombo;
 
-	private DXJComboBox _typeCombo;
+	private DxJComboBox _typeCombo;
 
-	private DXJComboBox _sortCombo;
+	private DxJComboBox _sortCombo;
 
 	private JList _notAssignedList;
 
@@ -326,7 +326,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		// true
 		_activitiesVector = _activities.getIDsByField(3, "true");
 		//panel of activities
-		_activitiesCombo = new DXJComboBox(_activitiesVector);
+		_activitiesCombo = new DxJComboBox(_activitiesVector);
 		_activitiesCombo.addActionListener(this);
 		JPanel activityPanel = new JPanel();
 		activityPanel.setBorder(new TitledBorder(new EtchedBorder(),
@@ -347,7 +347,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	private JPanel initTypePanel() {
 		_typeVector = ((Activity) (_activities.getResource(_selectedActivity)
 				.getAttach())).getSetOfTypes().getNamesVector(1);
-		_typeCombo = new DXJComboBox(_typeVector);
+		_typeCombo = new DxJComboBox(_typeVector);
 		_typeCombo.addActionListener(this);
 
 		JPanel typePanel = new JPanel();
@@ -367,7 +367,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	 */
 	private JPanel initSortPanel() {
 		_sortVector = buildSortVector();
-		_sortCombo = new DXJComboBox(_sortVector);
+		_sortCombo = new DxJComboBox(_sortVector);
 		JPanel sortPanel = new JPanel();
 		sortPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.SORT_TITLE));
@@ -387,12 +387,12 @@ public class SectionDlg extends DDialog implements ActionListener,
 				(int) ((dialogDim.getWidth() - 50) * 0.40), (int) dialogDim
 						.getHeight() - 150);
 		JPanel notAssignedPanel = new JPanel();
-		//notAssignedPanel = DXTools.listPanel(_notAssignedList, (int) (panelDim
+		//notAssignedPanel = DxTools.listPanel(_notAssignedList, (int) (panelDim
 		//         .getWidth() - 112), (int) panelDim.getHeight() - 35);
 		//JList jlistname = new JList(studentName());     
 		//JList jlistMat = new JList(studentMatricule()); 
-		//notAssignedPanel = DXTools.listPanel(jlistname,jlistMat, ((int)((550-50) *0.4) - 112),  550- 150 - 35);
-		notAssignedPanel = DXTools.listPanel(_notAssignedList,
+		//notAssignedPanel = DxTools.listPanel(jlistname,jlistMat, ((int)((550-50) *0.4) - 112),  550- 150 - 35);
+		notAssignedPanel = DxTools.listPanel(_notAssignedList,
 				((int) ((550 - 50) * 0.4) - 112), 550 - 150 - 35);
 		notAssignedPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.ACT_STUD_NOT_ASSIGNED));
@@ -484,7 +484,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		JPanel infoPanel = new JPanel();
 		//The scrollPane
 		JPanel scrollContainer = new JPanel();
-		scrollContainer = DXTools.listPanel(_assignedLists[groupNumber],
+		scrollContainer = DxTools.listPanel(_assignedLists[groupNumber],
 				(insideWidth - 20), GroupPanelHeight - infoPanelHeight - 20);
 		infoPanel.setPreferredSize(new Dimension(insideWidth - 10,
 				infoPanelHeight));
@@ -514,7 +514,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	 */
 	private JPanel initCenterPanel() {
 		_notAssignedPanel = initNotAssignedPanel();//dialogDim);
-		_rigthLeftPanel = new RigthLeftPanel(this);//_arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, true);
+		_rigthLeftPanel = new RigthLeftPanel(this);//_arrowsPanel = DxTools.arrowsPanel(this, _arrowsNames, true);
 		_assignedPanel = initAssignedPanel();
 		if (_numberOfSections == 1) {
 			_rigthLeftPanel.setRigthDisable();
@@ -650,7 +650,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		}
 		Type type = _activities.getType(_selectedActivity, _selectedType);
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(i).getID());
 			//for(int i = 0; i < _numberOfSections; i++){
 			_assignedVectors[i] = _students.getStudentsByGroup(
@@ -681,7 +681,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		}
 		Type type = _activities.getType(_selectedActivity, _selectedType);
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(i).getID());
 			//for(int i = 0; i < _numberOfSections; i++){
 			_assignedVectors[i] = getSortStudents(_assignedLists[i],/* newIndex, */
@@ -710,7 +710,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		}//end for(int i = 0; i < _notAssignedVector.size(); i++)
 		Type type = _activities.getType(_selectedActivity, _selectedType);
 		for (int j = 0; j < _assignedVectors.length; j++) {
-			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(j).getID());
 			for (int k = 0; k < _assignedVectors[j].size(); k++) {
 				studentData = (String) _assignedVectors[j].elementAt(k);
@@ -782,7 +782,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			destinationRes.getNamesVector(destinationVector);
 			sourceList.setListData(sourceVector);
 			destinationList.setListData(destinationVector);
-			int[] indices = DXTools.getIndicesOfIntersection(destinationVector,
+			int[] indices = DxTools.getIndicesOfIntersection(destinationVector,
 					elementsToTransfer);
 			destinationList.setSelectedIndices(indices);
 			sourceList.clearSelection();

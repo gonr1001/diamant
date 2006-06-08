@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 //import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
 import dInternal.dData.dActivities.SetOfActivities;
@@ -44,7 +44,7 @@ public class ActivityModifDlg extends SetOfElementsInterface{
        button.setActionCommand( DConst.BUT_CLOSE);
       button.addActionListener(this);
       vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");;*/
-     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
     // _buttonsPanel.getComponent(0).setEnabled(false);
    // _buttonsPanel.getComponent(1).setEnabled(false);
     setVectorsOfElements(vect);

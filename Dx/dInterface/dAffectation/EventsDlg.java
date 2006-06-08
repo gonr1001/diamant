@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import eLib.exit.dialog.InformationDlg;
 
@@ -53,8 +53,8 @@ public class EventsDlg extends EventsDlgInterface{
    * build buttom to use in the dialog
    */
   public void buildArrowButtons(boolean enableArrows){	
-	_leftArrowsPanel = DXTools.arrowsPanel(this, "left", _arrowsNames, enableArrows);
-	_rightArrowsPanel = DXTools.arrowsPanel(this, "right", _arrowsNames, enableArrows);
+	_leftArrowsPanel = DxTools.arrowsPanel(this, "left", _arrowsNames, enableArrows);
+	_rightArrowsPanel = DxTools.arrowsPanel(this, "right", _arrowsNames, enableArrows);
   }
 
 
@@ -63,9 +63,9 @@ public class EventsDlg extends EventsDlgInterface{
          (e.getActionCommand().equalsIgnoreCase("left" +_arrowsNames[1])) ){
       //if "toRight" button
       if (e.getActionCommand().equalsIgnoreCase("left" +_arrowsNames[0]))
-          DXTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1); 
+          DxTools.listTransfers(_leftList, _centerList, _leftVector, _centerVector, 1); 
       else
-          DXTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
+          DxTools.listTransfers(_centerList, _leftList, _centerVector, _leftVector, 1);
                  
       _leftLabel.setText(String.valueOf(_leftVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
@@ -76,9 +76,9 @@ public class EventsDlg extends EventsDlgInterface{
          (e.getActionCommand().equalsIgnoreCase("right"+_arrowsNames[1])) ){
       //if "toRight" button
       if (e.getActionCommand().equalsIgnoreCase("right"+_arrowsNames[0]))
-          DXTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1); 
+          DxTools.listTransfers(_centerList, _rightList, _centerVector, _rightVector, 1); 
       else
-          DXTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);      
+          DxTools.listTransfers(_rightList, _centerList, _rightVector, _centerVector, 1);      
       _rightLabel.setText(String.valueOf(_rightVector.size()));
       _centerLabel.setText(String.valueOf(_centerVector.size()));
       _buttonsPanel.setFirstEnable();

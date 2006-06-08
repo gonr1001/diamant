@@ -13,7 +13,7 @@
 ////import java.util.Vector;
 ////
 ////import dConstants.DConst;
-//////import dInterface.dUtil.DXTools;
+//////import dInterface.dUtil.DxTools;
 ////import dInternal.DModel;
 /////*import dInternal.dOptimization.ConflictsAttach;
 ////import dInternal.dOptimization.EventAttach;
@@ -340,10 +340,10 @@
 ////          int group= Integer.parseInt(course.substring(DConst.STUD_COURSE_LENGTH, DConst.STUD_COURSE_GROUP_LENGTH));
 ////          sect=course.substring(0,DConst.STUD_COURSE_LENGTH-1)+"."+
 ////               course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH)+
-////               "."+DXTools.STIConvertGroup(group)+".";
+////               "."+DxTools.STIConvertGroup(group)+".";
 ////          Section section= new Section();//_dm.getSetOfActivities().getSection(course.substring(0,DConst.STUD_COURSE_LENGTH-1)
 ////              //,course.substring(DConst.STUD_COURSE_LENGTH-1, DConst.STUD_COURSE_LENGTH),
-////              //DXTools.STIConvertGroup(group));
+////              //DxTools.STIConvertGroup(group));
 ////          if(section!=null){
 ////            for(int j=0; j<section.getSetOfUnities().size(); j++){
 ////              Unity bloc= (Unity)section.getSetOfUnities().getResourceAt(j).getAttach();

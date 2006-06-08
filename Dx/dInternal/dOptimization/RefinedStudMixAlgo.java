@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgo $Revision: 1.12 $ $Date: 2005-03-08 16:00:44 $
+ * Title: RefinedStudMixAlgo $Revision: 1.13 $ $Date: 2006-06-08 21:33:12 $
  * Description: RefinedStudMixAlgo  - Algorithme raffiné de formation de groupe
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: syay1801 $
+ * @author $Author: caln1901 $
  * @since JDK1.3
  */
 
@@ -21,7 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DValue;
 import dInternal.dData.StandardCollection;
@@ -71,7 +71,7 @@ public class RefinedStudMixAlgo{
    //System.out.println("*****************Activity: "+ activityID+typeID);// debug
    for(int i=0; i< type.getSetOfSections().size(); i++){
      DValue size= new DValue();
-     int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
+     int group= DxTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
      size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
      sizeOfGroups.add(size);
     }// end for(int i=0; i< type.getSetOfSections().size(); i++)
@@ -126,7 +126,7 @@ public class RefinedStudMixAlgo{
    Type type= _dm.getSetOfActivities().getType(activityID,typeID);
    //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();   
    Student student= _dm.getSetOfStudents().getStudent(studentKey);
-   int group= DXTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
+   int group= DxTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
        groupIndex).getID());//int group= i+1;
    DValue value= (DValue)sizeOfGroups.get(groupIndex);
    value.setIntValue(value.getIntValue()+1);

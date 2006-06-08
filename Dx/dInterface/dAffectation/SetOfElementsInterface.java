@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfElementsInterface $Revision: 1.10 $  $Date: 2005-07-05 12:04:23 $
+* Title: SetOfElementsInterface $Revision: 1.11 $  $Date: 2006-06-08 21:33:09 $
 * Description: SetOfElementsInterface is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.10 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.11 $
+* @author  $Author: caln1901 $
 * @since JDK1.3
 */
 
@@ -40,7 +40,7 @@ import javax.swing.JPanel;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 
 public abstract class SetOfElementsInterface extends JDialog implements ActionListener{
 
@@ -157,7 +157,7 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
   	_labelOfElements[_selectedPanel] = new JLabel(String.valueOf(_vectorOfElements[_selectedPanel].size()));
   	_labelOfElements[_selectedPanel].setForeground(DConst.COLOR_QUANTITY_DLGS);
   	//The listContainerPanel
-  	JPanel listPanel = DXTools.listPanel(_listOfElements[_selectedPanel]
+  	JPanel listPanel = DxTools.listPanel(_listOfElements[_selectedPanel]
 														 , (int)_panelDim.getWidth(), (int)_panelDim.getHeight());
   	JPanel listContainerPanel = new JPanel();
   	JPanel topContainerPanel = new JPanel();

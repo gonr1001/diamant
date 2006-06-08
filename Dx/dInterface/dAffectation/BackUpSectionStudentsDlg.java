@@ -48,8 +48,8 @@
 //import dConstants.DConst;
 //import dInterface.DApplication;
 //import dInterface.dUtil.ButtonsPanel;
-//import dInterface.dUtil.DXJComboBox;
-//import dInterface.dUtil.DXTools;
+//import dInterface.dUtil.DxJComboBox;
+//import dInterface.dUtil.DxTools;
 //import dInterface.dUtil.TwoButtonsPanel;
 //import dInternal.DSetOfResources;
 //import dInternal.dData.dActivities.Activity;
@@ -71,11 +71,11 @@
 //
 //	private int _currentAssignedGroup;
 //
-//	private DXJComboBox _activitiesCombo;
+//	private DxJComboBox _activitiesCombo;
 //
-//	private DXJComboBox _typeCombo;
+//	private DxJComboBox _typeCombo;
 //
-//	private DXJComboBox _sortCombo;
+//	private DxJComboBox _sortCombo;
 //
 //	private JPanel _arrowsPanel;
 //
@@ -241,7 +241,7 @@
 //	 */
 //	private JPanel initCenterPanel() {
 //		_notAssignedPanel = initNotAssignedPanel();
-//		_arrowsPanel = DXTools.arrowsPanel(this, _arrowsNames, true);
+//		_arrowsPanel = DxTools.arrowsPanel(this, _arrowsNames, true);
 //		_assignedPanel = initAssignedPanel();
 //		JPanel centerPanel = new JPanel();
 //		centerPanel.add(_notAssignedPanel);
@@ -261,7 +261,7 @@
 //		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 //		activitiesVector = activities.getIDsByField(3, "true");
 //		//panel of activities
-//		_activitiesCombo = new DXJComboBox(activitiesVector);
+//		_activitiesCombo = new DxJComboBox(activitiesVector);
 //		_activitiesCombo.addActionListener(this);
 //		JPanel activityPanel = new JPanel();
 //		activityPanel.setBorder(new TitledBorder(new EtchedBorder(),
@@ -281,7 +281,7 @@
 //		Vector typeVector = ((Activity) (activities
 //				.getResource(selectedActivity).getAttach())).getSetOfTypes()
 //				.getNamesVector(1);
-//		_typeCombo = new DXJComboBox(typeVector);
+//		_typeCombo = new DxJComboBox(typeVector);
 //		_typeCombo.addActionListener(this);
 //		JPanel typePanel = new JPanel();
 //		typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
@@ -296,7 +296,7 @@
 //	 * @return JPanel the Type Panel
 //	 */
 //	private JPanel initSortPanel() {
-//		_sortCombo = new DXJComboBox(buildSortVector());
+//		_sortCombo = new DxJComboBox(buildSortVector());
 //		JPanel sortPanel = new JPanel();
 //		sortPanel.setBorder(new TitledBorder(new EtchedBorder(),
 //				DConst.SORT_TITLE));
@@ -776,7 +776,7 @@
 //			for (int i = 0; i < jlist.length; i++)
 //				jlist[i].addMouseListener(mouseListenerLists);
 //		}
-//		scrollContainer = DXTools.listPanel(scrollContainer, jlist, (insideWidth - 20),
+//		scrollContainer = DxTools.listPanel(scrollContainer, jlist, (insideWidth - 20),
 //				GroupPanelHeight - infoPanelHeight - 20);
 //		JPanel infoPanel = initInfoPanelFromAssPanel(insideWidth,
 //				infoPanelHeight, groupNumber, lNumberOfElements);
@@ -965,7 +965,7 @@
 //	private void setAssignedLists(Type type, SetOfStudents students,
 //			String selectedActivity) {
 //		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-//			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+//			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 //					.getResourceAt(i).getID());
 //			String selectedType = (String) _typeCombo.getSelectedItem();
 //			int sortIndex = 1;// order Key, ID, Program
@@ -1178,7 +1178,7 @@
 //			SetOfActivities activities = _dApplic.getDModel().getSetOfActivities();
 ///*			Type type = activities.getType(selectedActivity, selectedType);
 ///*			for (int j = 0; j < type.getSetOfSections().size(); j++) {
-//				//int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+//				//int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 //				//		.getResourceAt(j).getID());
 //				JList assList = this.getAListFromAssignedPanel(1, j);
 //				Vector assVec = getListVector(assList);
@@ -1206,7 +1206,7 @@
 //		SetOfActivities activities = _dApplic.getCurrentDModel().getSetOfActivities();
 //		Type type = activities.getType(selectedActivity, selectedType);
 //		for (int i = 0; i < type.getSetOfSections().size(); i++) {
-//			int group = DXTools.STIConvertGroupToInt(type.getSetOfSections()
+//			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 //					.getResourceAt(i).getID());
 //			JList assList = this.getAListFromAssignedPanel(1, i);
 //			Vector assVec = getListVector(assList);

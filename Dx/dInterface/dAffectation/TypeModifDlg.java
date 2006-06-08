@@ -15,7 +15,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.dData.dActivities.Activity;
 //import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
@@ -37,7 +37,7 @@ private DResource _activity;
     Vector [] vect= new Vector[1];
     _activity= activity;
     vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
-     _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
      _buttonsPanel.getComponent(0).setEnabled(true);
      _buttonsPanel.getComponent(1).setEnabled(true);
     setVectorsOfElements(vect);

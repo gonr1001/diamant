@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.28 $  $Date: 2004-10-21 13:39:45 $
+ * Title: ReportOptionsDlg $Revision: 1.29 $  $Date: 2006-06-08 21:33:10 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -17,8 +17,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.29 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  */
 import java.awt.BorderLayout;
@@ -36,7 +36,7 @@ import javax.swing.JScrollPane;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 
 public class ReportOptionsDlg extends JDialog implements ActionListener {
@@ -99,7 +99,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
                                  _leftList,
                                  DConst.REPORT_OP_FIELDS_NOT_CHOICED));
 
-    centerPanel.add(DXTools.arrowsPanel(this, _arrowsNames,true));
+    centerPanel.add(DxTools.arrowsPanel(this, _arrowsNames,true));
     centerPanel.add(setListPanel(listPanelDim,
                                  _rightList,
                                  DConst.REPORT_OP_FIELDS__CHOICED));
@@ -169,10 +169,10 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
         destination.add(elementsToTransfer[i]);
       }
       if(left)
-        destination= DXTools.sortVector(destination);
+        destination= DxTools.sortVector(destination);
       else
-        source=DXTools.sortVector(source);
-      int[] indexes = DXTools.getIndicesOfIntersection(destination, elementsToTransfer);
+        source=DxTools.sortVector(source);
+      int[] indexes = DxTools.getIndicesOfIntersection(destination, elementsToTransfer);
       d.setListData(destination);
       d.setSelectedIndices(indexes);
       s.setListData(source);

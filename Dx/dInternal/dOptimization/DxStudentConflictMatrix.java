@@ -20,7 +20,7 @@
 package dInternal.dOptimization;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -81,7 +81,7 @@ public class DxStudentConflictMatrix {
 						+ student.getCoursesList().getResourceAt(j).getID()
 								.substring(SetOfActivities._COURSENAMELENGTH)
 						+ "."
-						+ DXTools.STIConvertGroup(((DValue) student
+						+ DxTools.STIConvertGroup(((DValue) student
 								.getCoursesList().getResourceAt(j).getAttach())
 								.getIntValue());
 				String token = DXToolsMethods.getToken(course1, ".", 0);
@@ -109,7 +109,7 @@ public class DxStudentConflictMatrix {
 									.substring(
 											SetOfActivities._COURSENAMELENGTH)
 							+ "."
-							+ DXTools.STIConvertGroup(((DValue) student
+							+ DxTools.STIConvertGroup(((DValue) student
 									.getCoursesList().getResourceAt(k)
 									.getAttach()).getIntValue());
 					int[] index = getSectionsKeys(course1, course2);
@@ -212,7 +212,7 @@ public class DxStudentConflictMatrix {
 							.getSetOfSections().getResourceAt(z);
 					tab[z] = sos.getStudentsByGroup(rescActivity.getID(),
 							rescType.getID(),
-							DXTools.STIConvertGroupToInt(rescSection.getID()))
+							DxTools.STIConvertGroupToInt(rescSection.getID()))
 							.size();
 				}// end for(int z=0;
 					
@@ -224,7 +224,7 @@ public class DxStudentConflictMatrix {
 							.getAttach()).getStudentRegistered().get(k);
 					Student student = (Student) sos.getResource(Long
 							.parseLong(studentKey));
-					int groupValue = DXTools
+					int groupValue = DxTools
 							.STIConvertGroupToInt(((Type) rescType.getAttach())
 									.getSetOfSections().getResourceAt(groupInd)
 									.getID());
@@ -243,7 +243,7 @@ public class DxStudentConflictMatrix {
 						int studentGroup = student.getGroup(rescActivity
 								.getID()
 								+ rescType.getID());
-						String groupeID = DXTools.STIConvertGroup(studentGroup);
+						String groupeID = DxTools.STIConvertGroup(studentGroup);
 						if (soa.getSection(rescActivity.getID(), rescType
 								.getID(), groupeID) == null) {
 							DValue error = new DValue();

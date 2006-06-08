@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 /**
  *
  * AboutDlg is a class used to display the about dialog.
@@ -101,7 +101,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
     setLocation(200,200);
     this.setResizable(true);
 
-    _buttonsPanel = DXTools.buttonsPanel(this, _buttonsNames);
+    _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
 
     this.getContentPane().add(jPanel, BorderLayout.CENTER);
     this.getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);

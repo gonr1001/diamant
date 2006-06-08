@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.20 $  $Date: 2006-06-01 17:26:12 $
+ * Title: OpenTTSDlg $Revision: 1.21 $  $Date: 2006-06-08 21:33:10 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: caln1901 $
  * @since JDK1.3
  */
@@ -63,7 +63,7 @@ public class OpenTTSDlg extends JDialog {
 		fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
 				.getHeight()));
 		//int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
-		//int returnVal = DXTools.showDialog(dApplic.getJFrame(), fc, str3);
+		//int returnVal = DxTools.showDialog(dApplic.getJFrame(), fc, str3);
 		
 		int returnVal=0;
 	      String filename="nothing.txt";

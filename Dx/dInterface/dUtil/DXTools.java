@@ -34,7 +34,7 @@ import dInternal.dData.StandardCollection;
 
 
 
-public class DXTools{
+public class DxTools{
 
   
 //  /**

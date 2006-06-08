@@ -10,7 +10,7 @@ package dInternal.dOptimization;
  */
 
 import dConstants.DConst;
-import dInterface.dUtil.DXTools;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DValue;
@@ -58,7 +58,7 @@ public class StudentsConflictsMatrix {
     	for(int j=0; j< student.getCoursesList().size(); j++){
         String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
                    +"."+student.getCoursesList().getResourceAt(j).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
-                   DXTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
+                   DxTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
         String token= DXToolsMethods.getToken(course1,".",0);
         String tokenType= DXToolsMethods.getToken(course1,".",1);
           if(dm.getSetOfActivities().getType(token,tokenType)==null){
@@ -74,7 +74,7 @@ public class StudentsConflictsMatrix {
         for (int k=j; k< student.getCoursesList().size(); k++){
           String course2 = student.getCoursesList().getResourceAt(k).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
                          +"."+student.getCoursesList().getResourceAt(k).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
-                           DXTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
+                           DxTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
           int[] index= getSectionsKeys(course1, course2);
           //System.out.println("Course = ["+ course1+","+course2+"]");//debug
           //System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
@@ -162,14 +162,14 @@ public class StudentsConflictsMatrix {
         for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++){
           DResource rescSection= ((Type)rescType.getAttach()).getSetOfSections().getResourceAt(z);
           tab[z]= sos.getStudentsByGroup(rescActivity.getID(),rescType.getID(),
-              DXTools.STIConvertGroupToInt(rescSection.getID())).size();
+              DxTools.STIConvertGroupToInt(rescSection.getID())).size();
         }//end for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++)
 
         for (int k=0; k< ((Activity)rescActivity.getAttach()).getStudentRegistered().size(); k++){
           groupInd= this.getIndexOfSmallerValue(tab);//groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
           String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
           Student student = (Student)sos.getResource(Long.parseLong(studentKey));
-          int groupValue = DXTools.STIConvertGroupToInt(((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getID());
+          int groupValue = DxTools.STIConvertGroupToInt(((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getID());
           //int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();
 
           if((!student.isFixedInGroup(rescActivity.getID()+rescType.getID(),groupValue))
@@ -179,7 +179,7 @@ public class StudentsConflictsMatrix {
             //groupInc++;
           }else{// else if(!((StudentAttach)student.getAttach()).isFixedInGroup
             int studentGroup=student.getGroup(rescActivity.getID()+rescType.getID());
-            String groupeID=DXTools.STIConvertGroup(studentGroup);
+            String groupeID=DxTools.STIConvertGroup(studentGroup);
             if(soa.getSection(rescActivity.getID(),rescType.getID(),groupeID)==null){
               DValue error= new DValue();
               error.setStringValue(DConst.ERROR_TAG + student.getKey()+" - "+student.getID()+"- Activité: "+rescActivity.getID()
