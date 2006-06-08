@@ -13,9 +13,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * 
- * 
  */
 package dInternal.dData.dRooms;
 
@@ -95,14 +92,12 @@ public class DxSite extends DxRessource {
         return this.getRessourceKey();
     }
 
-    public DxCategory getCat(long catKey) {
-        // TODO Auto-generated method stub
-        return null;
+    public DxCategory getCat(long lCatKey) {
+        return _dxsocCat.getCat(lCatKey);
     }
 
-    public DxCategory getCat(String catName) {
-        // TODO Auto-generated method stub
-        return null;
+    public DxCategory getCat(String sCatName) {
+        return _dxsocCat.getCat(sCatName);
     }
     
     public int getCatCount() {
@@ -113,6 +108,14 @@ public class DxSite extends DxRessource {
         return _dxsocCat.getCatName(lCatKey);
     }
 
+    public DxRoom getRoom(long lCatKey, long lRoomKey) {
+        return _dxsocCat.getRoom(lCatKey,lRoomKey);
+    }
+
+    public DxRoom getRoom(String sCatName, String sRoomName) {
+        return _dxsocCat.getRoom(sCatName,sRoomName);
+    }
+    
     public int getRoomCount(long lCatKey) {
         return _dxsocCat.getRoomCount(lCatKey);
     }
@@ -167,25 +170,15 @@ public class DxSite extends DxRessource {
         return _dxsocCat.getRoomKeyByName(lCatKey, sSiteName);
     }
 
-    public DxSetOfCategories getDxSetOfCat() {
+    public DxSetOfCategories getSetOfCat() {
         return _dxsocCat;
     }
 
-    public DxSetOfRooms getDxSetOfRooms(long lCatKey) {
-        return _dxsocCat.getDxSetOfRooms(lCatKey);
+    public DxSetOfRooms getSetOfRooms(long lCatKey) {
+        return _dxsocCat.getSetOfRooms(lCatKey);
     }
 
-    public DxSetOfRooms getDxSetOfRooms(String sCatName) {
-        return _dxsocCat.getDxSetOfRooms(sCatName);
-    }
-
-    public DxRoom getRoom(long catKey, long roomKey) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public DxRoom getRoom(String catName, String roomName) {
-        // TODO Auto-generated method stub
-        return null;
+    public DxSetOfRooms getSetOfRooms(String sCatName) {
+        return _dxsocCat.getSetOfRooms(sCatName);
     }
 }

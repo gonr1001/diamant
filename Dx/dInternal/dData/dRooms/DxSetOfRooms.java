@@ -34,6 +34,24 @@ import dInternal.dData.DxSetOfRessources;
  */
 public class DxSetOfRooms extends DxSetOfRessources{
 
+    public DxRoom getRoom(long lRoomKey) {
+        try{
+            return (DxRoom)this.getRessource(lRoomKey);
+        }catch (Exception e){
+            //Null pointer exception will be thrown if room doesnt exist
+            return null;
+        }
+    }
+
+    public DxRoom getRoom(String sRoomName) {
+        try{
+            return (DxRoom)this.getRessourceByName(sRoomName);
+        }catch (Exception e){
+            //Null pointer exception will be thrown if room doesnt exist
+            return null;
+        }
+    }
+    
     public int getRoomCount() {
         return this.size();
     }

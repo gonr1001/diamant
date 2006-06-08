@@ -302,7 +302,7 @@ public class DxSetOfSites extends DxSetOfRessources {
 
     public DxSetOfCategories getSetOfCat(long lSiteKey) {
         try {
-            return ((DxSite) this.getRessource(lSiteKey)).getDxSetOfCat();
+            return ((DxSite) this.getRessource(lSiteKey)).getSetOfCat();
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;
@@ -312,7 +312,7 @@ public class DxSetOfSites extends DxSetOfRessources {
     public DxSetOfCategories getSetOfCat(String sSiteName) {
         try {
             return ((DxSite) this.getRessourceByName(sSiteName))
-                    .getDxSetOfCat();
+                    .getSetOfCat();
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;
@@ -322,7 +322,7 @@ public class DxSetOfSites extends DxSetOfRessources {
     public DxSetOfRooms getSetOfRooms(long lSiteKey, long lCatKey) {
         try {
             return ((DxSite) this.getRessource(lSiteKey))
-                    .getDxSetOfRooms(lCatKey);
+                    .getSetOfRooms(lCatKey);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;
@@ -332,7 +332,7 @@ public class DxSetOfSites extends DxSetOfRessources {
     public DxSetOfRooms getSetOfRooms(String sSiteName, String sCatName) {
         try {
             return ((DxSite) this.getRessourceByName(sSiteName))
-                    .getDxSetOfRooms(sCatName);
+                    .getSetOfRooms(sCatName);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;

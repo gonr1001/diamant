@@ -32,6 +32,21 @@ import dInternal.dData.DxSetOfRessources;
  * 
  */
 public class DxSetOfCategories extends DxSetOfRessources {
+    public DxCategory getCat(long lCatKey) {
+        try {
+            return ((DxCategory) this.getRessource(lCatKey));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public DxCategory getCat(String sCatName) {
+        try {
+            return ((DxCategory) this.getRessourceByName(sCatName));
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public String getCatName(long lCatKey) {
         return this.getRessourceName(lCatKey);
@@ -43,6 +58,22 @@ public class DxSetOfCategories extends DxSetOfRessources {
 
     public long getCategoryKeyByName(String sCatName) {
         return this.getRessourceKeyByName(sCatName);
+    }
+
+    public DxRoom getRoom(long lCatKey, long lRoomKey) {
+        try {
+            return ((DxCategory) this.getRessource(lCatKey)).getRoom(lRoomKey);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public DxRoom getRoom(String sCatName, String sRoomName) {
+        try {
+            return ((DxCategory) this.getRessourceByName(sCatName)).getRoom(sRoomName);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public int getRoomCount(long lCatKey) {
@@ -112,7 +143,7 @@ public class DxSetOfCategories extends DxSetOfRessources {
             // If category was not found a null pointer exception will occur
         }
     }
-    
+
     public DxAvailability getRoomAvailability(long lCatKey, long lRoomKey) {
         try {
             return ((DxCategory) this.getRessource(lCatKey))
@@ -140,19 +171,18 @@ public class DxSetOfCategories extends DxSetOfRessources {
         }
     }
 
-    public DxSetOfRooms getDxSetOfRooms(long lCatKey) {
+    public DxSetOfRooms getSetOfRooms(long lCatKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey))
-                    .getDxSetOfRooms();
+            return ((DxCategory) this.getRessource(lCatKey)).getSetOfRooms();
         } catch (Exception e) {
             return null;
         }
     }
 
-    public DxSetOfRooms getDxSetOfRooms(String sCatName) {
+    public DxSetOfRooms getSetOfRooms(String sCatName) {
         try {
             return ((DxCategory) this.getRessourceByName(sCatName))
-                    .getDxSetOfRooms();
+                    .getSetOfRooms();
         } catch (Exception e) {
             return null;
         }

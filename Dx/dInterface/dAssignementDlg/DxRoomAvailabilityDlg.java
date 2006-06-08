@@ -34,6 +34,7 @@ import javax.swing.SwingConstants;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
+import dInterface.dUtil.DXJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.dData.DxAvailability;
@@ -59,16 +60,16 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
     private JPanel _centerPanel;
 
-    private JComboBox _cbSites;
+    private DXJComboBox _cbSites;
 
-    private JComboBox _cbCategories;
+    private DXJComboBox _cbCategories;
 
-    private JComboBox _cbRooms;
+    private DXJComboBox _cbRooms;
 
     /**
      * @associates JToggleButton
      */
-    private Vector <JToggleButton> _posVect;
+    private Vector<JToggleButton> _posVect;
 
     private DModel _dmodel;
 
@@ -80,22 +81,10 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
     private DxRoom _dxrCurrentRoom;
 
-    private DxAvailability _currentRoomAva;
-
     private boolean _isMultiSite;
 
     private int[][] _currentAvailbility;
 
-    /**
-     * Default constructor.
-     * 
-     * @param setOfResources
-     *            TODO
-     * @param owner
-     *            The component on which the dialog will be displayed.
-     * @param doc
-     *            The active document. Used to access the dictionnaries.
-     */
     public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites,
             boolean isMultisite) {
         super(dApplic.getJFrame(), DConst.ROOMASSIGN, false);
@@ -114,15 +103,6 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
         _days = _dmodel.getTTStructure().getDayNames();
 
-        // _days = new String[_nbOfDays];
-        // for (int i = 0; i < _days.length; i++)
-        // _days[i] = _dmodel.getTTStructure().getWeekTable()[i];
-        /**
-         * TODO à revoir , Car rien ne dit qu'on utilise Lu-Ma-Me-Je-Ve. La
-         * weektable n'est pas un cas generale.Utiliser plutot les dates des
-         * "TTXML Days".
-         */
-
         try {
             initialize();
             pack();
@@ -137,7 +117,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
      * Component's initialisation and placement.
      */
     private void initialize() throws Exception {
-        Vector <String> vTemp;
+        Vector<String> vTemp;
         _chooserPanel = new JPanel();
 
         if (_isMultiSite) {
@@ -145,26 +125,34 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             // to
             // display all sites
             vTemp = _dxsosSites.getNamesVector();
-
-            _cbSites = new JComboBox(vTemp);
-            // Selects last index which represent all sites
-            _cbSites.setSelectedIndex(vTemp.size() - 1);
-            _dxsCurrentSite = null;
+            _cbSites = new DXJComboBox(vTemp);
             _cbSites.addItemListener(this);
+            _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
+                    .getSelectedItem());
 
-            // vTemp=_dxsosSites.getSetOfCat(getNamesVector());
-            _cbCategories = new JComboBox(vTemp);
+            vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
+            _cbCategories = new DXJComboBox(vTemp);
             _cbCategories.addItemListener(this);
+            _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
+                    .getSelectedItem());
 
-            _cbRooms = new JComboBox(vTemp);
-            _cbRooms.addItemListener(this);
+            vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
 
             _chooserPanel.add(_cbSites, null);
+            _chooserPanel.add(_cbCategories, null);
+        } else {
+            _dxsCurrentSite = _dxsosSites.getSite(DConst.ROOM_STANDARD_SITE);
+            _dxcCurrentCat = _dxsCurrentSite.getCat(DConst.ROOM_STANDARD_CAT);
         }
-        else
-        {
-            
-        }
+
+        vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
+        _cbRooms = new DXJComboBox(vTemp);
+        _cbRooms.addItemListener(this);
+        _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
+                .getSelectedItem());
+
+        _chooserPanel.add(_cbRooms, null);
+
         this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
 
         // gridPanel
@@ -193,7 +181,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             int index = _posVect.indexOf(event.getSource());
             int day = index / _nbOfPeriods;
             int per = index % _nbOfPeriods;
-            if ( _posVect.get(index).isSelected()) {
+            if (_posVect.get(index).isSelected()) {
                 _currentAvailbility[day][per] = 1;
             } else {
                 _currentAvailbility[day][per] = 5;
@@ -207,23 +195,41 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
      * combobox item selected
      */
     public void itemStateChanged(ItemEvent event) {
+        int nSwitch = 0;
         _applyPanel.setFirstDisable();
         if (event.getStateChange() == ItemEvent.SELECTED) {
             Object source = event.getSource();
             if (source.equals(_cbSites)) {
-                getContentPane().remove(_centerPanel);
-                String sel = (String) _cbSites.getSelectedItem();
-                // _currentInstr = (AvailabilityAttach) _setOfResources
-                // .getResource(sel).getAttach();
-                _centerPanel = makeGridPanel();// _currentInstr);
-                getContentPane().add(_centerPanel, BorderLayout.CENTER);
-                pack();
+                nSwitch = 1;
             } else if (source.equals(_cbCategories)) {
-
+                nSwitch = 2;
             } else if (source.equals(_cbRooms)) {
-
+                nSwitch = 3;
             }
 
+            switch (nSwitch) {
+            case 1:
+                _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
+                        .getSelectedItem());
+                
+                Vector <String> vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
+                _cbCategories.disableActionListeners();
+                _cbCategories = new DXJComboBox(vTemp);
+                _cbCategories.enableActionListeners();
+                _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
+                        .getSelectedItem());
+            case 2:
+            case 3:
+            default:
+                break;
+            }
+            getContentPane().remove(_centerPanel);
+            String sel = (String) _cbSites.getSelectedItem();
+            // _currentInstr = (AvailabilityAttach) _setOfResources
+            // .getResource(sel).getAttach();
+            _centerPanel = makeGridPanel();// _currentInstr);
+            getContentPane().add(_centerPanel, BorderLayout.CENTER);
+            pack();
         }
     }// end itemStateChangeed
 
@@ -239,7 +245,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
         gridPanel.setBorder(BorderFactory
                 .createTitledBorder(DConst.AVAILABILITIES));
-        _posVect = new Vector <JToggleButton> ();
+        _posVect = new Vector<JToggleButton>();
         _posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
         gridPanel.add(new JLabel("")); // top left corner
         for (int i = 0; i < _days.length; i++)

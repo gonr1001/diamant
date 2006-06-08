@@ -170,7 +170,7 @@ public class DLoadDataTest extends TestCase {
 			DxSetOfCategories setCat = setSite.getSetOfCat(1);
 			assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
 					setCat.getCatName(1));
-			DxSetOfRooms setRooms =  setCat.getDxSetOfRooms(1);
+			DxSetOfRooms setRooms =  setCat.getSetOfRooms(1);
 			assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
 					setRooms.getRoomName(5));
 		}
@@ -296,7 +296,7 @@ public class DLoadDataTest extends TestCase {
 			DxSetOfCategories setCat = setSite.getSetOfCat(1);
 			assertEquals("test7_1_loadTimeTable5j : assertEquals: ", "CAT 1",
 					setCat.getCatName(1));
-			DxSetOfRooms setRooms =  setCat.getDxSetOfRooms(1);
+			DxSetOfRooms setRooms =  setCat.getSetOfRooms(1);
 			assertEquals("test7_2_loadTimeTable5j : assertEquals: ", "D13016",
 					setRooms.getRoomName(5));
 		}

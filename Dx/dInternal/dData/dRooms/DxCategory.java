@@ -62,6 +62,14 @@ public class DxCategory extends DxRessource{
         return this.getRessourceKey();
     }
 
+    public DxRoom getRoom(long lRoomKey) {
+        return _dxsorRooms.getRoom(lRoomKey);
+    }
+
+    public DxRoom getRoom(String sRoomName) {
+        return _dxsorRooms.getRoom(sRoomName);
+    }
+    
     public String getRoomName(long lRoomKey) {
         return _dxsorRooms.getRoomName(lRoomKey);
     }
@@ -95,7 +103,7 @@ public class DxCategory extends DxRessource{
         return _dxsorRooms.getRoomKeyByName(sSiteName);
     }
 
-    public DxSetOfRooms getDxSetOfRooms() {
+    public DxSetOfRooms getSetOfRooms() {
         return _dxsorRooms;
     }
 }
