@@ -35,6 +35,7 @@ import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 // import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.DxReadSite1dot5;
+import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import dInternal.dData.dRooms.SetOfCategories;
@@ -163,39 +164,6 @@ public class DLoadData {
 		return roomsList;
 	}// end extractRooms
 
-	public DxSetOfSites extractDxRooms(SetOfSites currentList, boolean merge) {
-		DxSetOfSites sitesList;
-		DataExchange de = buildDataExchange(_roomsFileName);
-		sitesList = new DxSetOfSites();
-
-		// periods!
-		if (de != null) {
-			// TODO a revoir merge
-			// if (merge)
-			// if (currentList != null)
-			// roomsList
-			// .setSetOfResources(currentList.getSetOfResources());
-			// if (roomsList.analyseTokens(de, 0)) {
-			// //
-			// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-			// roomsList.buildSetOfResources(de, 0);
-			// }
-			// } else {// (NullPointerException npe) {
-			new FatalProblemDlg(
-					"I was in LoadData.extractRooms. preload failed!!!");
-			System.exit(52);
-		}
-		return sitesList;
-	}// end extractRooms
-
-	/*
-	 * // SetOfRooms SetOfSites roomsList = new SetOfSites(); //,5,14);
-	 * DataExchange de =
-	 * buildDataExchange(project.nextToken().trim().getBytes()); if
-	 * (roomsList.analyseTokens(de,0)){
-	 * roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-	 * roomsList.buildSetOfResources(de, 3); } extract.add(roomsList);
-	 */
 	/**
 	 * 
 	 * @param currentList
@@ -229,7 +197,7 @@ public class DLoadData {
 			// } else {// (NullPointerException npe) {
 			new FatalProblemDlg(
 					"I was in LoadData.extractInstructors. preload failed!!!");
-			System.exit(1);
+			System.exit(-1);
 		}
 		return instructorsList;
 	}
@@ -1250,4 +1218,18 @@ public class DLoadData {
 		// }
 		//
 	}
+    
+    public DxSetOfSites extractDxRooms() {
+        DataExchange de = buildDataExchange(_roomsFileName);
+        DxSiteReader dxsrReader;
+        if(de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6))
+        {
+            dxsrReader = new DxReadSite1dot6(de);
+        }
+        else{
+            dxsrReader = new DxReadSite1dot5(de);
+        }
+            
+        return dxsrReader.getSetOfSites();
+    }// end extractDxRooms
 }

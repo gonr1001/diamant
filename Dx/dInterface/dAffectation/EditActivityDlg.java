@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.71 $  $Date: 2006-06-08 21:33:07 $
+ * Title: EditActivityDlg $Revision: 1.72 $  $Date: 2006-06-09 20:28:14 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.71 $
+ * @version $Revision: 1.72 $
  * @author  $Author: caln1901 $
  * @since JDK1.3
  *
@@ -848,8 +848,16 @@ public class EditActivityDlg extends JDialog implements ActionListener,
 						.getPeriodLenght());
 		event.setKey(4, periodKey);
 		event.setKey(1, intructorKeys);
-		event.setKey(2, Long.toString(getResourceKey(_dApplic
-				.getCurrentDModel().getSetOfRooms(), room)));
+        if(DConst.newRooms)
+        {
+            event.setKey(2, Long.toString(getResourceKey(_dApplic
+                    .getCurrentDModel().getSetOfRooms(), room)));
+        }
+        else{
+//            event.setKey(2, Long.toString(getResourceKey(_dApplic
+//                    .getCurrentDModel().getDxSetOfRooms(), room)));
+        }
+		
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
 		Vector vect = new Vector();

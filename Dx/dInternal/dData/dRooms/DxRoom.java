@@ -78,5 +78,9 @@ public class DxRoom extends DxRessource{
     
     public DxAvailability getRoomAvailability(){
         return _dxaAva;
-    }    
+    }
+    
+    public void setRoomAvailability(DxAvailability dxaNew){
+        _dxaAva=dxaNew;
+    }
 }
