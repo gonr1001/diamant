@@ -636,10 +636,8 @@ public class DApplication { // implements ActionListener {
             new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
                     .getDxSetOfSites(), false);
         } else {
-        	new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
-                    .getDxSetOfSites(), false);
-//            new AvailabiltyRoomDialog(this, this.getCurrentDModel()
-//                    .getSetOfRooms(), DConst.ROOMASSIGN);
+            new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+                    .getSetOfRooms(), DConst.ROOMASSIGN);
         }
     }
 
