@@ -24,7 +24,6 @@ import java.awt.event.ItemListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -196,9 +195,14 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
      */
     public void itemStateChanged(ItemEvent event) {
         int nSwitch = 0;
+        Vector<String> vTemp;
+
         _applyPanel.setFirstDisable();
         if (event.getStateChange() == ItemEvent.SELECTED) {
             Object source = event.getSource();
+
+            // Determines which combox has changed so we know which actions we
+            // need to perform
             if (source.equals(_cbSites)) {
                 nSwitch = 1;
             } else if (source.equals(_cbCategories)) {
@@ -211,15 +215,21 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             case 1:
                 _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
                         .getSelectedItem());
-                
-                Vector <String> vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
+
+                vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
                 _cbCategories.disableActionListeners();
                 _cbCategories = new DxJComboBox(vTemp);
                 _cbCategories.enableActionListeners();
+            case 2:
                 _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
                         .getSelectedItem());
-            case 2:
+                vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
+                _cbRooms.disableActionListeners();
+                _cbRooms = new DxJComboBox(vTemp);
+                _cbRooms.enableActionListeners();
             case 3:
+                _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
+                        .getSelectedItem());
             default:
                 break;
             }
@@ -264,20 +274,20 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             for (int i = 0; i < _nbOfDays; i++) {
                 JToggleButton tBut = new JToggleButton();
                 if (_currentAvailbility[i][j] == 1) {
-                    // Vector assignedSites =
-                    // _currentInstr.isAssignedInPeriod(i,
-                    // j, _dmodel.getOtherSites());
-                    // if (assignedSites.size() != 0) {
-                    // Color col = this.getGridColor((String) assignedSites
-                    // .get(0));
-                    // if (col == Color.RED || col == Color.BLUE
-                    // || col == Color.GREEN) {
-                    // tBut.setToolTipText(DConst.NOT_DISPO);
-                    // }
-                    // tBut.setBackground(col);
-                    // tBut.setEnabled(false);
-                    // } else
-                    // tBut.setSelected(_currentAvailbility[i][j] == 1);
+//                     Vector assignedSites =
+//                     _currentInstr.isAssignedInPeriod(i,
+//                     j, _dmodel.getOtherSites());
+//                     if (assignedSites.size() != 0) {
+//                     Color col = this.getGridColor((String) assignedSites
+//                     .get(0));
+//                     if (col == Color.RED || col == Color.BLUE
+//                     || col == Color.GREEN) {
+//                     tBut.setToolTipText(DConst.NOT_DISPO);
+//                     }
+//                     tBut.setBackground(col);
+//                     tBut.setEnabled(false);
+//                     } else
+//                     tBut.setSelected(_currentAvailbility[i][j] == 1);
                 }
                 tBut.addActionListener(this);
                 tBut.setPreferredSize(new Dimension(50, 12));
@@ -288,15 +298,15 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         return gridPanel;
     }
 
-    private Color getGridColor(String site) {
-        if (site.equalsIgnoreCase(DConst.USEDSHE)) {
-            return Color.RED;
-        } else if (site.equalsIgnoreCase(DConst.USEDLON)) {
-            return Color.BLUE;
-        } else if (site.equalsIgnoreCase(DConst.USEDCOW)) {
-            return Color.GREEN;
-        }
-        return Color.GRAY;
-    }
+//    private Color getGridColor(String site) {
+//        if (site.equalsIgnoreCase(DConst.USEDSHE)) {
+//            return Color.RED;
+//        } else if (site.equalsIgnoreCase(DConst.USEDLON)) {
+//            return Color.BLUE;
+//        } else if (site.equalsIgnoreCase(DConst.USEDCOW)) {
+//            return Color.GREEN;
+//        }
+//        return Color.GRAY;
+//    }
 
 } /* end InstructorAvailabilityDlg */
