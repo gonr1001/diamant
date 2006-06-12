@@ -288,7 +288,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		private JPanel _filterSetView = null;
 
 		/* key=FilterSet value=Boolean (Boolean=true si FilterSet est coché) */
-		private SortedMap _checkBoxes = null;
+		private SortedMap  _checkBoxes = null;
 
 		/**
 		 * 

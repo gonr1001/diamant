@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.10 $  $Date: 2006-06-06 17:56:54 $
+ * Title: SetOfStudents $Revision: 1.11 $  $Date: 2006-06-12 13:12:28 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -321,9 +321,9 @@ public class SetOfStudents extends DSetOfResources {
 	 * @return
 	 */
 	public static Vector createAVectorInstance(DSetOfResources sos) {
-		Vector v = new Vector(1);
-		Vector[] vec = { new Vector(1), new Vector(1), new Vector(1),
-				new Vector(1) };
+		Vector v = new Vector();
+		Vector[] vec = { new Vector(), new Vector(), new Vector(),
+				new Vector() };
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
 		int diff;
 		String key;
