@@ -32,7 +32,7 @@ import java.util.Vector;
  * <p>
  * 
  */
-public class DxSetOfRessources {
+public class DxSetOfRessources implements Iterable {
     private Vector<DxRessource> _vRessourceSortedByKey;
 
     private Vector<DxRessource> _vRessourceSortedByName;
@@ -60,6 +60,18 @@ public class DxSetOfRessources {
         _vRessourceSortedByKey.add(dxrRes);
         _vRessourceSortedByName.add(dxrRes);
         _bNamesSorted = false;
+    }
+
+    /**
+     * Adds all the ressources in the other set of ressources
+     * 
+     * @param dxrRes
+     *            Ressource that has to be added to the set
+     */
+    public void addRessources(DxSetOfRessources dxsorRessources) {
+        for (int i = 0; i < dxsorRessources.size(); i++) {
+            this.addRessource(dxsorRessources._vRessourceSortedByKey.get(i));
+        }
     }
 
     /**
@@ -269,5 +281,9 @@ public class DxSetOfRessources {
     private void sortRessources() {
         Collections.sort((List<DxRessource>) _vRessourceSortedByName,
                 DxRessource.NameComparator);
+    }
+
+    public Iterator iterator() {
+        return _vRessourceSortedByKey.iterator();
     }
 }

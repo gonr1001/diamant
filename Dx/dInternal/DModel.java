@@ -18,6 +18,7 @@
 package dInternal;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
 
@@ -35,8 +36,11 @@ import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import dInternal.dData.dRooms.DxCategory;
+import dInternal.dData.dRooms.DxSetOfCategories;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -526,37 +530,36 @@ public class DModel extends Observable {
         }
         return sorTmp;
     }
-    
+
     public DxSetOfRooms getDxSetOfRooms() {
-        return null;
-//        DxSetOfRooms sorTmp = new DxSetOfRooms();
-//        // SetOfRooms sorTmp;
-//        if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
-//            for (int i = 0; i < _dxSetOfSites.size(); i++) {
-//                DxSetOfCategories soc = (SetOfCategories) _setOfSites
-//                        .getResourceAt(i).getAttach();
-//                for (int j = 0; j < soc.size(); j++) {
-//                    SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j)
-//                            .getAttach();
-//                    for (int k = 0; k < soc.size(); k++) {
-//                        sorTmp.addResource(sor.getResourceAt(k), 1);
-//                    }
-//                }// end for (int j = 0; j < sor.size(); j++)
-//            }// end for (int i = 0; i < _setOfSites
-//            // return sorTmp;
-//        } else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
-//            DResource resc = _setOfSites.getResource(_currentSite);
-//            if (resc != null) {
-//                SetOfCategories site = (SetOfCategories) resc.getAttach();
-//                for (int i = 0; i < site.size(); i++) {
-//                    SetOfRooms catSOR = (SetOfRooms) site.getResourceAt(i)
-//                            .getAttach();
-//                    for (int j = 0; j < catSOR.size(); j++)
-//                        sorTmp.addResource(catSOR.getResourceAt(j), 1);
-//                }
-//            }
-//        }
-//        return sorTmp;
+        DxSetOfRooms dxsorTmp = new DxSetOfRooms();
+        if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
+            Iterator itSites = _dxSetOfSites.iterator();
+            while(itSites.hasNext()){
+                DxSetOfCategories dxsoc = ((DxSite)itSites.next()).getSetOfCat();
+                Iterator itCategory = dxsoc.iterator();
+                while(itCategory.hasNext())
+                {
+                    DxSetOfRooms dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
+                    dxsorTmp.addRessources(dxsor);
+                }// end for (int j = 0; j < sor.size(); j++)
+            }// end for (int i = 0; i < _setOfSites
+        } else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
+            DxSite dxsCurrentSite = _dxSetOfSites.getSite(_currentSite);
+            if (dxsCurrentSite != null) {
+                DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
+                Iterator itCategory = dxsoc.iterator();
+                while(itCategory.hasNext())
+                {
+                    DxSetOfRooms dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
+                    dxsorTmp.addRessources(dxsor);
+                }
+            }
+            else{
+                dxsorTmp=null;
+            }
+        }
+        return dxsorTmp;
     }
 
     /**
