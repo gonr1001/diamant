@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.17 $  $Date: 2005-07-05 12:04:24 $
+ * Title: FullReport $Revision: 1.18 $  $Date: 2006-06-12 20:35:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -85,7 +85,7 @@ public class FullReport extends ViewReport implements ActionListener {
   * 10= room name
   * */
   private Vector buildAllOptionsVector() {
-    Vector v = new Vector();
+    Vector <DValue> v = new Vector<DValue>();
     v.add(new DValue(0,
                       new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME)));
     v.add(new DValue(1,

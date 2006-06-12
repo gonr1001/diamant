@@ -64,18 +64,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
   * 9= conflict description
   * */
   private Vector buildAllOptionsVector() {
-    Vector v = new Vector();
-    /*v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_DAY_NAME_L), DConst.R_DAY_NAME));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_SEQUENCE_ID_L), DConst.R_SEQUENCE_ID));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_UNITY_NAME_L), ""));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_PERIOD_BEGIN_H_L), DConst.R_PERIOD_BEGIN_H));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_EVENT1_ID_L), DConst.R_EVENT1_ID));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_EVENT2_ID_L), DConst.R_EVENT2_ID));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_NUMBER_OF_CONFLICTS_L), DConst.R_NUMBER_OF_CONFLICTS));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_TYPE_OF_CONFLICT_L), DConst.R_TYPE_OF_CONFLICT));
-    v.add(new FieldRecord(Integer.parseInt(DConst.R_ELEMENTS_IN_CONFLICT_L), DConst.R_ELEMENTS_IN_CONFLICT));
-*/
+    Vector <DValue> v = new Vector <DValue>();
        v.add(new DValue(0,
               new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
         v.add(new DValue(1,
