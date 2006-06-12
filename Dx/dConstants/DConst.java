@@ -27,7 +27,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 1.7 du 28 mars 2006";//res.getString("vDate");
+  	public final static String V_DATE = "v 2.1 du 12 juin 2006";//res.getString("vDate");
   	/** The format of number * */
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
@@ -35,7 +35,7 @@ public class DConst {
 //    public static boolean newRooms = true;
 	public static boolean newRooms = false;
     
-	public static boolean IN_DIA = false;
+	//public static boolean IN_DIA = false;
     
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
@@ -45,6 +45,9 @@ public class DConst {
 	public final static String FILE_VER_NAME1_6_1 = res.getString("fileVerName1_6_1"); // "Diamant1.6.1" 
 	public final static String FILE_VER_NAME_XML1_7 = res.getString("fileVerNameXML1_7"); // "DiamantXML1.7" 
 	
+	public final static String FILE_HEADER_NAME1_5 = res.getString("fileHeaderName1_5"); // "1.5" 
+	public final static String FILE_HEADER_NAME1_6 = res.getString("fileHeaderName1_6"); // "1.6" 
+	public final static String FILE_HEADER_NAME2_1 = res.getString("fileHeaderName2_1"); // "2.1"
 	
   //********** Shared and others constants ***************************
   public final static String APP_NAME = res.getString("appName");//Diamant 1.6

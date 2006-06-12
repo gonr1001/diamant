@@ -159,7 +159,7 @@ public class DModel extends Observable {
             _isATimeTable = true;
         } else if (fileName.endsWith(DConst.DOT_XML)) {
             _ttStruct = new TTStructure();
-            _error = _ttStruct.loadTTStructure(fileName);
+            _error = _ttStruct.loadTTSFromFile(fileName);
             _isATimeTable = false;
         } else {
             _error = "Wrong type of file";

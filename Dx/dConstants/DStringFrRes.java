@@ -27,6 +27,9 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 			{ "fileVerName1_6", "Diamant1.6" },
 			{ "fileVerName1_6_1", "Diamant1.6.1" },
 			{ "fileVerNameXML1_7", "Diamant1.7" },
+			{ "fileHeaderName1_5",  "1.5" },
+			{ "fileHeaderName1_6", "1.6" },
+			{ "fileHeaderName2_1",  "2.1"},
 			{ "vDate", "30 sep 2004" },
 			{ "bye", "bye" },
 			/**

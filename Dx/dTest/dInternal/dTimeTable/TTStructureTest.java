@@ -58,7 +58,7 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_loadTTStructure() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "StandardTTC.xml");
+		tts.loadTTSFromFile(_path + "StandardTTC.xml");
 		assertEquals(
 				"test_CreateStandardTT : assertEquals 1 (number of cycles):",
 				3, tts.getSetOfCycles().size());
@@ -70,7 +70,7 @@ public class TTStructureTest extends TestCase {
 	public void test_CreateDefaultTT() {
 		TTStructure tts = new TTStructure();
 		tts.createDefaultTT(_path + "newStandardTT.xml", 5, 5);
-		tts.loadTTStructure(_path + "newStandardTT.xml");
+		tts.loadTTSFromFile(_path + "newStandardTT.xml");
 		assertEquals(
 				"test1_CreateDefaultTT : assertEquals 1 (number of cycles):",
 				5, tts.getSetOfCycles().size());
@@ -83,7 +83,7 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_getFirstPeriod() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "StandardTTC.xml");
+		tts.loadTTSFromFile(_path + "StandardTTC.xml");
 		Period per = tts.getCurrentCycle().getFirstPeriod();
 		assertEquals("test_getFirstPeriod : assertEquals 1 (begin hour):", 8,
 				per.getBeginHour()[0]);
@@ -98,7 +98,7 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_getLastPeriod() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "StandardTTC.xml");
+		tts.loadTTSFromFile(_path + "StandardTTC.xml");
 		Period per = tts.getCurrentCycle().getLastPeriod();
 		assertEquals("test_getLastPeriod : assertEquals 1 (begin hour):", 21,
 				per.getBeginHour()[0]);
@@ -114,7 +114,7 @@ public class TTStructureTest extends TestCase {
 
 	public void test_getMaxNumberOfPeriodsADay() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "nonUniformTT.xml");
+		tts.loadTTSFromFile(_path + "nonUniformTT.xml");
 		int maxPer = tts.getCurrentCycle().getMaxNumberOfPeriodsADay();
 		assertEquals("test_getMaxNumberOfPeriodsADay : assertEquals 1 :", 12,
 				maxPer);
@@ -126,7 +126,7 @@ public class TTStructureTest extends TestCase {
 
 	public void test_getMaxNumberOfSeqs() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "nonUniformTT.xml");
+		tts.loadTTSFromFile(_path + "nonUniformTT.xml");
 		int maxSeq = tts.getCurrentCycle().getMaxNumberOfSeqs();
 		assertEquals("test_getMaxNumberOfSequences : assertEquals 1 :", 3,
 				maxSeq);
@@ -137,7 +137,7 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_getPeriod() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "StandardTTC.xml");
+		tts.loadTTSFromFile(_path + "StandardTTC.xml");
 		Period per = tts.getCurrentCycle().getPeriodByIndex(4, 2, 1);
 		assertEquals("test_getPeriod : assertEquals 1 (begin hour):", 20, per
 				.getBeginHour()[0]);
@@ -152,10 +152,10 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_saveTTStructure() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "StandardTTC.xml");
+		tts.loadTTSFromFile(_path + "StandardTTC.xml");
 		tts.saveTTStructure(_path + "SaveStandardTTC.xml");
 		TTStructure newtts = new TTStructure();
-		newtts.loadTTStructure(_path + "SaveStandardTTC.xml");
+		newtts.loadTTSFromFile(_path + "SaveStandardTTC.xml");
 		Period lastPer = newtts.getCurrentCycle().getLastPeriod();
 		assertEquals(
 				"test_saveTTStructure : assertEquals 1 (number of cycles):", 3,
@@ -251,7 +251,7 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "5j27p.xml");
+		tts.loadTTSFromFile(_path + "5j27p.xml");
 
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		assertEquals(
@@ -290,7 +290,7 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test1_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTStructure(_path + "5j27p.xml");
+		tts.loadTTSFromFile(_path + "5j27p.xml");
 
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		boolean isEquals = tts.getCurrentCycle().isEquals(

@@ -36,7 +36,7 @@ public class DXToolsMethodsTest extends TestCase{
       initialAvail[i] = line;
     }
     TTStructure tts = new TTStructure();
-    tts.loadTTStructure("."+ File.separator + "dataTest"+ File.separator +"DXToolsMethodsTest_resizeAvailability.xml");
+    tts.loadTTSFromFile("."+ File.separator + "dataTest"+ File.separator +"DXToolsMethodsTest_resizeAvailability.xml");
     finalAvail = DXToolsMethods.resizeAvailability(initialAvail, tts);
 
     assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 8, finalAvail.length);

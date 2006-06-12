@@ -18,7 +18,9 @@
  */
 package dInternal.dTimeTable;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 
 
 import javax.xml.parsers.DocumentBuilder;
@@ -225,7 +227,7 @@ public class TTStructure {
      * @return String the error message, empty if it does not found error
      */
 
-    public String loadTTStructure(int i, String fileName) {
+    public String loadTTSFromFile(String fileName) {
         XMLInputFile xmlFile;
         Element root; // , item, ID;
         if (preLoad(fileName)) {
@@ -257,14 +259,16 @@ public class TTStructure {
      * @return String the error message, empty if it does not found error
      */
 
-    public String loadTTStructure(String str) {
+    public String loadTTSFromString(String str) {
         Element root;
         try {
 
             DocumentBuilderFactory factory = DocumentBuilderFactory
                     .newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(str);
+            ByteArrayInputStream bais = new ByteArrayInputStream(str.getBytes());
+            //InputStream is = new InputStream(bais);
+            Document document = builder.parse(bais) ;
             XMLReader list = new XMLReader();
             root = list.getRootElement(document);
             if (readXMLtag(root).length() != 0) {
