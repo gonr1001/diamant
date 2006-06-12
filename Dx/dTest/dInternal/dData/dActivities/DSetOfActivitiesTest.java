@@ -72,7 +72,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test_analyseTokens: assertEquals", DConst.ACTI_TEXT1,
@@ -88,7 +88,7 @@ public class DSetOfActivitiesTest  extends TestCase{
 
    String fileName ="." + File.separator+"dataTest"+File.separator+"cours1.sig";
    String tokens = new String (preLoad(fileName));
-   SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+   SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
    DLoadData ld = new DLoadData();
    setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
    assertEquals("test0_analyseTokens: assertEquals", 30,setOfActivities.getLine());
@@ -103,7 +103,7 @@ public class DSetOfActivitiesTest  extends TestCase{
 
    String fileName = "." + File.separator+"dataTest"+File.separator+"cours2.sig";
    String tokens = new String (preLoad(fileName));
-   SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+   SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
    DLoadData ld = new DLoadData();
    setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
    assertEquals("test00_analyseTokens: assertEquals", 25,setOfActivities.getLine());
@@ -141,7 +141,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test1_analyseTokens: assertEquals", DConst.ACTI_TEXT2,
@@ -179,7 +179,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test2_analyseTokens: assertEquals", DConst.ACTI_TEXT3,
@@ -219,7 +219,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test3_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
@@ -257,7 +257,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test4_analyseTokens: assertEquals 1", DConst.ACTI_TEXT5,
@@ -296,7 +296,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test5_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
@@ -332,7 +332,7 @@ public class DSetOfActivitiesTest  extends TestCase{
                    "0"+"\r\n"+
                    "0"+"\r\n"+
                    "0"+"\r\n";
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test6_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
@@ -369,7 +369,7 @@ public void test7_analyseTokens(){
                  "0"+"\r\n"+
                  "0"+"\r\n";
 
-  SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+  SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
   DLoadData ld = new DLoadData();
   setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
   assertEquals("test7_analyseTokens: assertEquals", DConst.ACTI_TEXT5,
@@ -406,7 +406,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test8_analyseTokens: assertEquals", DConst.ACTI_TEXT7,
@@ -443,7 +443,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test9_analyseTokens: assertEquals", DConst.ACTI_TEXT8,
@@ -480,7 +480,7 @@ public void test7_analyseTokens(){
                    "0"+"\r\n"+
                    "0"+"\r\n";
 
-    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
     DLoadData ld = new DLoadData();
     setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
     assertEquals("test10_analyseTokens: assertEquals", DConst.ACTI_TEXT9,
@@ -517,7 +517,7 @@ public void test7_analyseTokens(){
                   "0"+"\r\n"+
                   "0"+"\r\n";
 
-   SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+   SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
    DLoadData ld = new DLoadData();
    setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
    assertEquals("test11_analyseTokens: assertEquals", DConst.ACTI_TEXT10,
@@ -554,7 +554,7 @@ public void test7_analyseTokens(){
                      "0"+"\r\n"+
                      "0"+"\r\n";
 
-      SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+      SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
       DLoadData ld = new DLoadData();
       setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
       assertEquals("test12_analyseTokens: assertEquals", DConst.ACTI_TEXT11,
@@ -591,7 +591,7 @@ public void test7_analyseTokens(){
                      "0"+"\r\n"+
                      "0"+"\r\n";
 
-      SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+      SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
       DLoadData ld = new DLoadData();
       setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
       assertEquals("test13_analyseTokens: assertEquals", DConst.ACTI_TEXT11,
@@ -628,7 +628,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0"+"\r\n";
 
-     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false);
+     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
      DLoadData ld = new DLoadData();
      setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
      assertEquals("test14_analyseTokens: assertEquals", DConst.ACTI_TEXT12,
@@ -689,7 +689,7 @@ public void test7_analyseTokens(){
                     "0 0"+"\r\n"+
                     "0 0"+"\r\n";
 
-     SetOfActivitiesSites setOfActivitiesSites= new SetOfActivitiesSites(false);
+     SetOfActivitiesSites setOfActivitiesSites= new SetOfActivitiesSites(false, 60);
      DLoadData ld = new DLoadData();
      setOfActivitiesSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
      if(setOfActivitiesSites.getError().length()==0) {
@@ -757,7 +757,7 @@ public void test7_analyseTokens(){
                     "0 0"+"\r\n"+
                     "0 0"+"\r\n";
 
-     SetOfActivitiesSites setOfActivitiesSites= new SetOfActivitiesSites(false);
+     SetOfActivitiesSites setOfActivitiesSites= new SetOfActivitiesSites(false, 60);
      DLoadData ld = new DLoadData();
      setOfActivitiesSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
      if(setOfActivitiesSites.getError().length()==0) {
@@ -813,7 +813,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0 ; 0" + "\r\n" ;
 
-     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(true);
+     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(true, 60);
      DLoadData ld = new DLoadData();
      setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
      assertEquals("test_nInstructorEqualsnBlocs: assertEquals", "",
@@ -850,7 +850,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0 ; 0" + "\r\n" ;
 
-     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(true);
+     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(true, 60);
      DLoadData ld = new DLoadData();
      setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
      assertEquals("test_nSetInstructorEqualsnBlocs: assertEquals", "",
@@ -882,7 +882,7 @@ public void test7_analyseTokens(){
                     "0"+"\r\n"+
                     "0 ; 0" + "\r\n" ;
 
-     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(true);
+     SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(true, 60 );
      DLoadData ld = new DLoadData();
      setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
      assertEquals("test_nInstructorNoEqualsnBlocs: assertEquals", DConst.ACTI_TEXT13,

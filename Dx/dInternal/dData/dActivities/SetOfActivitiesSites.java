@@ -42,12 +42,16 @@ public class SetOfActivitiesSites extends DSetOfResources {
 
 	private int _ACTIVITYLENGTH = 11;
 
+	private int _periodLength;
+
 	/**
 	 * Constructor
 	 */
-	public SetOfActivitiesSites(boolean open) {
+	public SetOfActivitiesSites(boolean open, int periodLength) {
 		super();
+		// _dataloaded = dataloaded;
 		_open = open;
+		_periodLength = periodLength;
 	}
 
 	/**

@@ -67,7 +67,7 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 				+ "C1-387 C1-330" + "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n"
 				+ "0 0" + "\r\n";
 
-		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false);
+		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false, 60);
 		DLoadData ld = new DLoadData();
 		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
 		if (setOfsites.getError().length() == 0) {
@@ -113,7 +113,7 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 				+ "1 12 2 2" + "\r\n" + "1 1" + "\r\n" + "C1-387 C1-330"
 				+ "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n";
 
-		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false);
+		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false, 60);
 		DLoadData ld = new DLoadData();
 		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
 		if (setOfsites.getError().length() == 0) {

@@ -298,7 +298,7 @@ public class DLoadData {
 	public SetOfActivitiesSites extractActivities(
 			SetOfActivitiesSites currentList, boolean merge) {
 		DataExchange de = buildDataExchange(_activitiesFileName);
-		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false);
+		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,_dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
 			if (merge)
 				if (currentList != null)
@@ -487,7 +487,7 @@ public class DLoadData {
 
 			// extract SetOfActivities
 			de = buildDataExchange(project.nextToken().trim().getBytes());
-			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true);
+			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true, tts.getPeriodLenght());
 			if (activitiesList.analyseTokens(de, 1)) {
 				activitiesList.buildSetOfResources(de, 1);
 			}
@@ -559,7 +559,7 @@ public class DLoadData {
 
 			// extract SetOfActivities
 			de = buildDataExchange(project.nextToken().trim().getBytes());
-			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true);
+			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true, tts.getPeriodLenght());
 			if (activitiesList.analyseTokens(de, 1)) {
 				activitiesList.buildSetOfResources(de, 1);
 			}
