@@ -25,21 +25,23 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
+import dInternal.dData.DxAvailability;
+import dInternal.dUtil.DXToolsMethods;
 
 public class DxReadSitedotDia implements DxSiteReader {
 
-	private DataExchange _deSites;
+    private DataExchange _deSites;
 
     private int _nDays, _nPeriods;
-	
+
     public DxReadSitedotDia(DataExchange de, int nDays, int nPeriods) {
-    	_deSites = de;
+        _deSites = de;
         _nDays = nDays;
         _nPeriods = nPeriods;
     }
 
     public DxSetOfSites getSetOfSites() {
-    	StringTokenizer stLineTokenizer;
+        StringTokenizer stLineTokenizer;
         StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
                 .getContents(), DConst.CR_LF);
 
@@ -57,6 +59,7 @@ public class DxReadSitedotDia implements DxSiteReader {
         String sRoomSite = null;
         String sRoomCat = null;
         String sNote = null;
+        DxAvailability dxaAva = null;
 
         DxSetOfSites dxsosBuild = new DxSetOfSites();
         DxRoom dxrTempRoom;
@@ -120,19 +123,25 @@ public class DxReadSitedotDia implements DxSiteReader {
                     case 6:
                         sNote = sLineToken;
                         break;
-                        
-                        //Room availability
+
+                    // Room availability
                     case 7:
-                        sNote = sLineToken;
+                        dxaAva = parseAvailability(sLineToken);
+                        if(dxaAva==null)
+                        {
+                            //there was an error in availabilities
+                        }
                         break;
 
                     }
                     nCurrentLineState++;
                 }
                 dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
-                        nRoomFunction, viCharacteristics, sNote, null);
-                dxsosBuild.addSite(sRoomSite);
-                dxsosBuild.addCat(sRoomSite, sRoomCat);
+                        nRoomFunction, viCharacteristics, sNote, dxaAva);
+                dxsosBuild.addSite(sRoomSite); // If site exists, it's not
+                // added
+                dxsosBuild.addCat(sRoomSite, sRoomCat);// If cat exits, it's
+                // not added
                 dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
             } else {
                 // ERROR: Invalid token count
@@ -158,4 +167,47 @@ public class DxReadSitedotDia implements DxSiteReader {
 
         return viTemp;
     }
+
+    private DxAvailability parseAvailability(String sAvailabilities) {
+        // extract a line that gives availability of a day
+
+        DxAvailability dxaRet = new DxAvailability();
+
+        StringTokenizer stDays = new StringTokenizer(sAvailabilities,
+                DConst.AVAILABILITY_DAY_SEPARATOR);
+
+        if (stDays.countTokens() != _nDays) {
+            return null;
+        }
+
+        while (stDays.hasMoreTokens()) {
+            String sDay = stDays.nextToken();
+            StringTokenizer stPeriods = new StringTokenizer(sDay);
+
+            // Verifies that number of period per day was correctly
+            // indicated
+            if (stPeriods.countTokens() != _nPeriods) {
+                return null;
+            }
+
+            // Verifies that every availability element is valid
+            while (stPeriods.hasMoreElements()) {
+                String dispo = stPeriods.nextToken();
+                if (isValidDayAvailability(dispo)) {
+                    return null;
+                }
+            }
+
+            // After line is validated, we add it to the availability
+            dxaRet.addDayAvailability(sDay);
+        }
+        return dxaRet;
+    }
+
+    private boolean isValidDayAvailability(String sDispo) {
+        return (!sDispo.equalsIgnoreCase("1"))
+                && (!sDispo.equalsIgnoreCase("5"))
+                && (!sDispo.equalsIgnoreCase("2"));
+    }
+
 }
