@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;
@@ -73,8 +74,15 @@ public class SetOfEventsTest extends TestCase {
 	public void test2_build() {
 		long roomKey = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getRoomKey();
-		assertEquals("test_build : assertEquals: ", "D73020", _dm
-				.getSetOfRooms().getResource(roomKey).getID());
+		if(DConst.newRooms)
+		{
+			assertEquals("test_build : assertEquals: ", "D73020", _dm
+					.getDxSetOfRooms().getRoomName(roomKey));
+		}
+		else{
+			assertEquals("test_build : assertEquals: ", "D73020", _dm
+					.getSetOfRooms().getResource(roomKey).getID());			
+		}
 	}
 
 }

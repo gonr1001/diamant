@@ -20,7 +20,6 @@ package dInternal.dTimeTable;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.InputStream;
 
 
 import javax.xml.parsers.DocumentBuilder;
@@ -240,6 +239,7 @@ public class TTStructure {
                     _error = DConst.ERROR_XML_FILE;
                     return _error;
                 }
+                //_periodLenght = 60; //horreur necessaire overwrite a value of a file
             } catch (Exception e) {
                 System.out.println("TTStructure 1 :" + e);
                 _error = e.toString();

@@ -348,4 +348,8 @@ public class DxSetOfSites extends DxSetOfRessources {
         // TODO Auto-generated method stub
         return null;
     }
+
+	public void alwaysAvailable() {
+			System.out.println("DxSetOfIntructors.alwaysAvailable must be implemented");			
+	}
 }

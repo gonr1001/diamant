@@ -33,7 +33,7 @@ public class DConst {
     public static boolean USER_TEST_ACTIV = false; // comm
 
 //    public static boolean newRooms = true;
-	public static boolean newRooms = false;
+	public static boolean newRooms = true;
     
 	//public static boolean IN_DIA = false;
     

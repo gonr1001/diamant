@@ -78,7 +78,12 @@ public class DxStateBarModel {
 		/* 2 */
 		_stateVec.elementAt(2).setValue(_dm.getDxSetOfInstructors().size());
 		/* 3 */
-		_stateVec.elementAt(3).setValue(_dm.getSetOfRooms().size());
+		if(DConst.newRooms)
+		{
+			_stateVec.elementAt(3).setValue(_dm.getDxSetOfRooms().size());
+		}else{
+			_stateVec.elementAt(3).setValue(_dm.getSetOfRooms().size());
+		}
 		/* 4 */
 		_stateVec.elementAt(4).setValue(_dm.getSetOfStudents().size());
 		/* 5 */

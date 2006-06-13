@@ -33,6 +33,7 @@ import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
 
+
 // import d
 
 public class SetOfActivities extends DSetOfResources {
@@ -54,12 +55,12 @@ public class SetOfActivities extends DSetOfResources {
     /**
      * Constructor
      */
-    public SetOfActivities(boolean open) {
-        super();
-        // _dataloaded = dataloaded;
-        _open = open;
-        _periodLength = 60;
-    }
+//    public SetOfActivities(boolean open) {
+//        super();
+//        // _dataloaded = dataloaded;
+//        _open = open;
+//        _periodLength = 60;
+//    }
 
     /**
      * 
@@ -187,7 +188,7 @@ public class SetOfActivities extends DSetOfResources {
                     Unity unity = (Unity) unityResource.getAttach();
                     unity.setDuration(Integer.parseInt(stLine.nextToken()
                             .trim())
-                            * _periodLength)/* was60 */;
+                            * 60);//_periodLength)/*RGRRGRRGR was60 */;
                     unityResource.setAttach(unity);
                     section.setUnity(unityResource);
                     counter++;

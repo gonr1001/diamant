@@ -36,6 +36,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 // import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
+import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import dInternal.dData.dRooms.SetOfCategories;
@@ -298,7 +299,8 @@ public class DLoadData {
 	public SetOfActivitiesSites extractActivities(
 			SetOfActivitiesSites currentList, boolean merge) {
 		DataExchange de = buildDataExchange(_activitiesFileName);
-		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,_dm.getTTStructure().getPeriodLenght());
+		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
+				_dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
 			if (merge)
 				if (currentList != null)
@@ -470,7 +472,16 @@ public class DLoadData {
 			}// end if(tts.getError().length()==0)
 
 			// extract SetOfSites
-			if (!DConst.newRooms) {
+			if (DConst.newRooms) {
+				de = buildDataExchange(project.nextToken().trim().getBytes());
+
+				DxSiteReader dxrr = new DxReadSitedotDia(de, tts
+						.getNumberOfActiveDays(), tts.getCurrentCycle()
+						.getMaxNumberOfPeriodsADay());
+				// DxSiteReader dxrr=new DxReadSite1dot5(de);
+
+				diaData.add(dxrr.getSetOfSites());
+			} else {
 				SetOfSites roomsList = new SetOfSites();
 				de = buildDataExchange(project.nextToken().trim().getBytes());
 				if (roomsList.analyseTokens(de, 3)) {
@@ -478,16 +489,12 @@ public class DLoadData {
 					roomsList.buildSetOfResources(de, 3);
 				}
 				diaData.add(roomsList);
-
-			} else {
-				de = buildDataExchange(project.nextToken().trim().getBytes());
-				DxSiteReader dxrr = new DxReadSite1dot5(de);
-				diaData.add(dxrr.getSetOfSites());
 			}
 
 			// extract SetOfActivities
 			de = buildDataExchange(project.nextToken().trim().getBytes());
-			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true, tts.getPeriodLenght());
+			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(
+					true, tts.getPeriodLenght());
 			if (activitiesList.analyseTokens(de, 1)) {
 				activitiesList.buildSetOfResources(de, 1);
 			}
@@ -559,7 +566,8 @@ public class DLoadData {
 
 			// extract SetOfActivities
 			de = buildDataExchange(project.nextToken().trim().getBytes());
-			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true, tts.getPeriodLenght());
+			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(
+					true, tts.getPeriodLenght());
 			if (activitiesList.analyseTokens(de, 1)) {
 				activitiesList.buildSetOfResources(de, 1);
 			}

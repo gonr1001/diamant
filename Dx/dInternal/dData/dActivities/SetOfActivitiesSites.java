@@ -731,7 +731,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				// SetOfStudents sos =
 				// (SetOfStudents)getResource(site).getAttach();
 				if (actResc == null) {
-					actResc = new DResource(site, new SetOfActivities(_open));
+					actResc = new DResource(site, new SetOfActivities(_open, _periodLength));
 					addResource(actResc, 1);
 				}
 
@@ -828,7 +828,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				// SetOfStudents sos =
 				// (SetOfStudents)getResource(site).getAttach();
 				if (actResc == null) {
-					actResc = new DResource(site, new SetOfActivities(_open));
+					actResc = new DResource(site, new SetOfActivities(_open, _periodLength));
 					// sos= new SetOfStudents();
 					addResource(actResc, 1);
 				}
