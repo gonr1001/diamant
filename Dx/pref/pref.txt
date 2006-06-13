@@ -5,6 +5,6 @@ French
 .\pref\pref.txt
 D:\Developpements\DiamantExtreme\Dx\pref\pref.txt
 éÉèÈáÁàÀÇçëËïîÏÎÔôùÙüÜ-'()ÊêûÛâÂöÖ
-selectedOptionsInFullReport;Local;Acti;Nomb É;JNum;Jour;Début;Fin;Nat;Grp;Blc;Durée;Enseignant;
-selectedOptionsInConflictReport;Type Conf;Début;Événement 2;Conflits;Événement 1;Numb C;Jour;PérJour;
+selectedOptionsInFullReport;Jour;Local;Acti;Nomb É;JNum;Début;Fin;Nat;Grp;Blc;Durée;Enseignant;
+selectedOptionsInConflictReport;JNum;Jour;Type Conf;Début;Événement 2;Conflits;Événement 1;Numb C;PérJour;
 conflictLimits;0;5;2;0;30;2;50;

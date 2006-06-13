@@ -62,7 +62,8 @@ public class ConditionsTest extends TestCase {
             _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
             		+ File.separator + "horaireRGR.dia", 1);
         } catch (Exception e) {
-            //Should not fail in controled conditions
+        	e.printStackTrace();
+            System.out.println("ici "+ e.toString());
         }
 		_dmh.buildSetOfEvents();
 		_dmh.getConditionsTest().buildStudentConflictMatrix();

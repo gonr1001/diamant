@@ -188,7 +188,7 @@ public class SetOfActivities extends DSetOfResources {
                     Unity unity = (Unity) unityResource.getAttach();
                     unity.setDuration(Integer.parseInt(stLine.nextToken()
                             .trim())
-                            * 60);//_periodLength)/*RGRRGRRGR was60 */;
+                            * _periodLength)/*RGRRGRRGR was60 */;
                     unityResource.setAttach(unity);
                     section.setUnity(unityResource);
                     counter++;

@@ -117,11 +117,6 @@ public class DxRoomsConditionsToTest implements DxCondition {
                 eventKey).getAttach();
         long roomKey = event.getRoomKey();
         if ((roomKey != -1) && (event.getPeriodKey().length() != 0)) {
-            RoomAttach room = null;
-            if (!DConst.newRooms) {
-                room = (RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                        .getAttach();
-            }
             long dayKey = Integer.parseInt(DXToolsMethods.getToken(event
                     .getPeriodKey(), ".", 0));
             int[] dayTime = { (int) dayKey, period.getBeginHour()[0],
@@ -142,10 +137,11 @@ public class DxRoomsConditionsToTest implements DxCondition {
                     matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
                             .getRoomAvailability().getMatrixAvailability();
                 } else {
-                    matrix = room.getMatrixAvailability();
+                    matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+                    .getAttach()).getMatrixAvailability();
                 }
                 if ((dayIndexAvail < matrix.length)) {
-                    if (room.getMatrixAvailability()[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
+                    if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
                         return 1;
                 } else {// else if ((dayIndexAvail < matrix.length))
                     return 1;

@@ -28,10 +28,6 @@ public class SetOfEventsTest extends TestCase {
 			e.printStackTrace();
 		}
 		_soe = _dm.getSetOfEvents();
-		// _soe.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors());
-		//		
-		// _soe = new SetOfEvents(_dm);
-		// _soe.build(_dm.getSetOfActivities(), _dm.getSetOfImportErrors());
 	}
 
 	public static Test suite() {
@@ -74,14 +70,12 @@ public class SetOfEventsTest extends TestCase {
 	public void test2_build() {
 		long roomKey = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getRoomKey();
-		if(DConst.newRooms)
-		{
+		if (DConst.newRooms) {
 			assertEquals("test_build : assertEquals: ", "D73020", _dm
 					.getDxSetOfRooms().getRoomName(roomKey));
-		}
-		else{
+		} else {
 			assertEquals("test_build : assertEquals: ", "D73020", _dm
-					.getSetOfRooms().getResource(roomKey).getID());			
+					.getSetOfRooms().getResource(roomKey).getID());
 		}
 	}
 

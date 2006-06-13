@@ -32,8 +32,8 @@ public class DConst {
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 
-//    public static boolean newRooms = true;
-	public static boolean newRooms = true;
+    public static boolean newRooms = true;
+//	public static boolean newRooms = false;
     
 	//public static boolean IN_DIA = false;
     
@@ -542,7 +542,7 @@ public class DConst {
   public final static String HOUR_SEPARATOR = res.getString("hourSeparator"); //"h";
 
   public final static String SAVE_SEPARATOR = res.getString("saveSeparator"); //"=================================";
-  public final static String SAVE_SEPARATOR_VIS = "!!!!!!!!!!"; //"=================================";
+  public final static String SAVE_SEPARATOR_VIS = "!!!!!!!!!!"; //"!!!!!!!!!!";
 
   public final static String ERROR_XML =res.getString("errorXML"); // "XML file is corrupted";
   
@@ -573,6 +573,7 @@ public class DConst {
   
   // rooms and sites v 1.7
   public static final int ROOM_USELESS_HEADER= 3;
+  public static final int ROOM_USELESS_DIA_HEADER= 1;
   public static final int ROOM_1DOT5_TOKEN_COUNT = 5;
   public static final int ROOM_1DOT6_TOKEN_COUNT = 7;
   public static final int ROOM_DIA_TOKEN_COUNT = 8;

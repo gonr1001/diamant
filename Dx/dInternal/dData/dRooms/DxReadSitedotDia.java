@@ -64,9 +64,10 @@ public class DxReadSitedotDia implements DxSiteReader {
         DxSetOfSites dxsosBuild = new DxSetOfSites();
         DxRoom dxrTempRoom;
 
+//	No useless lines in dia files
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()
-                && nCurrentLine < DConst.ROOM_USELESS_HEADER) {
+                && nCurrentLine < DConst.ROOM_USELESS_DIA_HEADER) {
             sFileToken = stFileTokenizer.nextToken();
             nCurrentLine++;
         }
