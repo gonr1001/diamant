@@ -19,6 +19,9 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Iterator;
+
+import dConstants.DConst;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfRessources;
 
@@ -110,5 +113,34 @@ public class DxSetOfRooms extends DxSetOfRessources{
             //Null pointer exception will be thrown if room doesnt exist
             return null;
         }
+    }
+
+    public String toWrite(String sSiteName, String sCatName) {
+        StringBuffer sbReturn = new StringBuffer();
+        Iterator itRooms = this.iterator();
+        while(itRooms.hasNext())
+        {
+            sbReturn.append(((DxRoom)itRooms.next()).toWrite(sSiteName,sCatName));
+            if(itRooms.hasNext())
+            {
+                sbReturn.append(DConst.CR_LF);
+            }
+        }
+        return sbReturn.toString();
+    }
+
+    public boolean isEquals(DxSetOfRooms dxsorRooms) {
+        if (this.getRoomCount() != dxsorRooms.getRoomCount()) {
+            return false;
+        }
+
+        for (int i = 0; i < this.getRoomCount(); i++) {
+            DxRoom dxsThisRoom = (DxRoom) this.getRessourceByNameIndex(i);
+            DxRoom dxsOtherRoom = (DxRoom) this.getRessourceByNameIndex(i);
+            if (!dxsThisRoom.isEquals(dxsOtherRoom)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

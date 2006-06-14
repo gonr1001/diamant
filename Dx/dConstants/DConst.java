@@ -624,7 +624,9 @@ public class DConst {
   public static final int AVAILABILITY_ASSIGN_DEFAULT = 0;
   public static final String AVAILABILITY_ASSIGN_SEPARATOR = "+";
   public static final String AVAILABILITY_SEPARATOR = "/";
-  public static final String AVAILABILITY_DAY_SEPARATOR = ",";  //in dia files
+  public static final String AVAILABILITY_DAY_SEPARATOR_ROOM = ",";  //in dia files
+  public static final String AVAILABILITY_DAY_SEPARATOR_INST = CR_LF;  //in dia files
+  public static final String AVAILABILITY_PERIOD_SEPARATOR = SPACE;  //in dia files
   
   public static final String USEDSHE="SHE";
   public static final String USEDLON="LON";

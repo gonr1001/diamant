@@ -231,7 +231,7 @@ public class DxAvailability {
         return a;
     }
 
-    public String toWrite() {
+    public String toWrite(String sDaySeparator, String sPeriodSeparator) {
         StringBuffer sRet = new StringBuffer();
 
         for (int i = 0; i < _vDays.size(); i++) {
@@ -239,11 +239,11 @@ public class DxAvailability {
             for (int j = 0; j < vTemp.size(); j++) {
                 sRet.append(vTemp.get(j).intValue());
                 if (j < (vTemp.size() - 1)) {
-                    sRet.append(' ');
+                    sRet.append(sPeriodSeparator);
                 }
             }
             if (i < (_vDays.size() - 1)) {
-                sRet.append(DConst.CR_LF);
+                sRet.append(sDaySeparator);
             }
         }
         return sRet.toString();

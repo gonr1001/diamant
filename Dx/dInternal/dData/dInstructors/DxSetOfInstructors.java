@@ -71,10 +71,10 @@ public class DxSetOfInstructors extends DxSetOfRessources {
                 DxInstructor dxiTemp = (DxInstructor) this
                         .getRessourceByNameIndex(i);
                 reslist.append(dxiTemp.getInstructorName() + DConst.CR_LF);
-                reslist.append(dxiTemp.getInstructorAvailability().toWrite());
+                reslist.append(dxiTemp.getInstructorAvailability().toWrite(DConst.AVAILABILITY_DAY_SEPARATOR_INST, DConst.AVAILABILITY_PERIOD_SEPARATOR));
                 // Avoid trailing line feed
                 if (i < (this.size() - 1)) {
-                    reslist.append(DConst.CR_LF);
+                    reslist.append(DConst.AVAILABILITY_DAY_SEPARATOR_INST);
                 }
             }
         }

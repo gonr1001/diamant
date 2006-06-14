@@ -99,7 +99,7 @@ public class DxSite extends DxRessource {
     public DxCategory getCat(String sCatName) {
         return _dxsocCat.getCat(sCatName);
     }
-    
+
     public int getCatCount() {
         return _dxsocCat.getCatCount();
     }
@@ -109,13 +109,13 @@ public class DxSite extends DxRessource {
     }
 
     public DxRoom getRoom(long lCatKey, long lRoomKey) {
-        return _dxsocCat.getRoom(lCatKey,lRoomKey);
+        return _dxsocCat.getRoom(lCatKey, lRoomKey);
     }
 
     public DxRoom getRoom(String sCatName, String sRoomName) {
-        return _dxsocCat.getRoom(sCatName,sRoomName);
+        return _dxsocCat.getRoom(sCatName, sRoomName);
     }
-    
+
     public int getRoomCount(long lCatKey) {
         return _dxsocCat.getRoomCount(lCatKey);
     }
@@ -180,5 +180,22 @@ public class DxSite extends DxRessource {
 
     public DxSetOfRooms getSetOfRooms(String sCatName) {
         return _dxsocCat.getSetOfRooms(sCatName);
+    }
+
+    public String toWrite() {
+
+        return _dxsocCat.toWrite(this.getSiteName());
+    }
+
+    public boolean isEquals(DxSite dxsOtherSite) {
+        if (!this.getSiteName().equalsIgnoreCase(dxsOtherSite.getSiteName())) {
+            return false;
+        }
+
+        if (!this._dxsocCat.isEquals(dxsOtherSite._dxsocCat)) {
+            return false;
+        }
+
+        return true;
     }
 }

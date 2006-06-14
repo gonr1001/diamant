@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
+import java.util.Iterator;
+
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfRessources;
 
@@ -186,5 +188,30 @@ public class DxSetOfCategories extends DxSetOfRessources {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public String toWrite(String sSiteName) {
+        StringBuffer sbReturn = new StringBuffer();
+        Iterator itCategories = this.iterator();
+        while(itCategories.hasNext())
+        {
+            sbReturn.append(((DxCategory)itCategories.next()).toWrite(sSiteName));
+        }
+        return sbReturn.toString();
+    }
+
+    public boolean isEquals(DxSetOfCategories dxsocOtherCats) {
+        if (this.getCatCount() != dxsocOtherCats.getCatCount()) {
+            return false;
+        }
+
+        for (int i = 0; i < this.getCatCount(); i++) {
+            DxCategory dxsThisCat = (DxCategory) this.getRessourceByNameIndex(i);
+            DxCategory dxsOtherCat = (DxCategory) this.getRessourceByNameIndex(i);
+            if (!dxsThisCat.isEquals(dxsOtherCat)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

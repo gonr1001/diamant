@@ -22,7 +22,6 @@ package dInternal.dData.dRooms;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxRessource;
 
-
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -32,25 +31,25 @@ import dInternal.dData.DxRessource;
  * <p>
  * 
  */
-public class DxCategory extends DxRessource{
+public class DxCategory extends DxRessource {
     private DxSetOfRooms _dxsorRooms;
 
     public DxCategory() {
         _dxsorRooms = new DxSetOfRooms();
     }
-    
+
     public DxCategory(long lKey) {
         super(lKey);
         _dxsorRooms = new DxSetOfRooms();
     }
-    
+
     public DxCategory(String sName) {
         super(sName);
         _dxsorRooms = new DxSetOfRooms();
     }
-    
+
     public DxCategory(long lKey, String sName) {
-        super(lKey,sName);
+        super(lKey, sName);
         _dxsorRooms = new DxSetOfRooms();
     }
 
@@ -69,7 +68,7 @@ public class DxCategory extends DxRessource{
     public DxRoom getRoom(String sRoomName) {
         return _dxsorRooms.getRoom(sRoomName);
     }
-    
+
     public String getRoomName(long lRoomKey) {
         return _dxsorRooms.getRoomName(lRoomKey);
     }
@@ -105,5 +104,22 @@ public class DxCategory extends DxRessource{
 
     public DxSetOfRooms getSetOfRooms() {
         return _dxsorRooms;
+    }
+
+    public String toWrite(String sSiteName) {
+        return _dxsorRooms.toWrite(sSiteName, this.getCategoryName());
+    }
+
+    public boolean isEquals(DxCategory dxcOtherCat) {
+        if (!this.getCategoryName().equalsIgnoreCase(
+                dxcOtherCat.getCategoryName())) {
+            return false;
+        }
+
+        if (!this._dxsorRooms.isEquals(dxcOtherCat._dxsorRooms)) {
+            return false;
+        }
+
+        return true;
     }
 }

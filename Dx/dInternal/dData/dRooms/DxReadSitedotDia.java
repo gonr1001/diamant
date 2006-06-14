@@ -26,7 +26,6 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
-import dInternal.dUtil.DXToolsMethods;
 
 public class DxReadSitedotDia implements DxSiteReader {
 
@@ -175,7 +174,7 @@ public class DxReadSitedotDia implements DxSiteReader {
         DxAvailability dxaRet = new DxAvailability();
 
         StringTokenizer stDays = new StringTokenizer(sAvailabilities,
-                DConst.AVAILABILITY_DAY_SEPARATOR);
+                DConst.AVAILABILITY_DAY_SEPARATOR_ROOM);
 
         if (stDays.countTokens() != _nDays) {
             return null;
