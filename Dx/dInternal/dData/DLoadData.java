@@ -66,8 +66,6 @@ public class DLoadData {
 
 	private DModel _dm;
 
-	// private RoomsAttributesInterpretor _roomsAttributesInterpretor;
-
 	private String _chars;
 
 	/**
@@ -76,8 +74,7 @@ public class DLoadData {
 	 */
 	public DLoadData() {
 		_dm = null;
-		initLoadData();
-		// completeLoadData();
+		doLoadData();
 	}
 
 	/**
@@ -88,8 +85,7 @@ public class DLoadData {
 	 */
 	public DLoadData(DModel dm) {
 		_dm = dm;
-		initLoadData();
-		// completeLoadData();
+		doLoadData();
 	}
 
 	/**
@@ -106,8 +102,6 @@ public class DLoadData {
 		if (_dm != null) // XXXX Pascal: else ?
 			_chars = _dm.getDDocument().getDMediator().getDApplication()
 					.getPreferences()._acceptedChars;
-		// completeLoadData();
-		// _roomsAttributesInterpretor = extractRoomsAttributesInterpretor();
 		verifyImportDataFile(args);
 	}
 
@@ -589,7 +583,7 @@ public class DLoadData {
 
 	}
 
-	private void initLoadData() {
+	private void doLoadData() {
 		// _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
 		Preferences preferences = new Preferences(System
 				.getProperty("user.dir")
