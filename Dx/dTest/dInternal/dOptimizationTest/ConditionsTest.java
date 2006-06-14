@@ -60,7 +60,7 @@ public class ConditionsTest extends TestCase {
 		
 		try {
             _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
-            		+ File.separator + "horaireRGR.dia", 1);
+            		+ File.separator + "lData5j30min.dia", 1);
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println("ici "+ e.toString());
