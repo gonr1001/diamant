@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.5 $ $Date: 2006-06-14 13:13:47 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.6 $ $Date: 2006-06-14 21:29:19 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -50,22 +50,26 @@ public class FirstAffectAlgorithmTest extends TestCase {
 
 	public void setUp() {
 		_dDocument1 = new DDocument();
-		_fileName = "." + File.separator + "dataTest" + File.separator
-				+ "loadData5j.dia";
+		_fileName = "." + File.separator;
+		_fileName += "dataTest" + File.separator;
+		_fileName += "refFiles" + File.separator;
+		_fileName += "facs" + File.separator;
+		_fileName += "sciBase" + File.separator;
+		_fileName += "scNoAssigned.dia";
 		_type = 1;
 		try {
 			_dm1 = new DModel(_dDocument1, _fileName, _type);
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm1.getConditionsTest().initAllConditions(); // Affectation initialle
-		_dDocument2 = new DDocument();
-		try {
-			_dm2 = new DModel(_dDocument2, _fileName, _type);
-		} catch (Exception e) {
-			// Should not fail in controled conditions
-		}
-		_first = new FirstAffectAlgorithm(_dm2);
+//		_dm1.getConditionsTest().initAllConditions(); // Affectation initialle
+//		_dDocument2 = new DDocument();
+//		try {
+//			_dm2 = new DModel(_dDocument2, _fileName, _type);
+//		} catch (Exception e) {
+//			// Should not fail in controled conditions
+//		}
+//		_first = new FirstAffectAlgorithm(_dm2);
 	}
 
 	public static Test suite() {
@@ -75,7 +79,11 @@ public class FirstAffectAlgorithmTest extends TestCase {
 	} // end suite
 
 	public void test_build() {
-		_first.build();
-		// assertEquals("test_build: assertEquals", "", _dm1);
+		_dm1.changeInDModel(new Object());
+		 assertEquals("test_build: assertEquals", 140, _dm1.getSetOfActivities().size());
+		 assertEquals("test_build: assertEquals", 275, _dm1.getSetOfEvents().size());
+			_first = new FirstAffectAlgorithm(_dm1);
+			_first.build();
+			assertEquals("test_build: assertEquals", 275, _dm1.getSetOfEvents().getNumberOfEventAssign());
 	}
 }
