@@ -241,6 +241,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
                     .getMatrixAvailability();
             _centerPanel = makeGridPanel();// _currentInstr);
             getContentPane().add(_centerPanel, BorderLayout.CENTER);
+            pack();
         }
     }// end itemStateChangeed
 
