@@ -32,7 +32,7 @@ public class DConst {
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 
-    public static boolean newRooms = false;
+    public static boolean newRooms = true;
 //	public static boolean newRooms = false;
     
 	//public static boolean IN_DIA = false;
@@ -98,11 +98,11 @@ public class DConst {
   public final static int CYCLE = 1;
   public final static int EXAM = 2;
   public final static int CYCLEANDEXAM = 3;
-  public final static int STINBOFDAYS=5;
-  public final static int STINBOFPERIODSADAY=14;
-  public final static int STIBEGINHOUR=8;
-  public final static int STIBEGINMINUTE=30;
-  public final static int COURSENAMELENGTH=6;
+  public final static int STI_NB_OF_DAYS=5;
+  public final static int STI_NB_OF_PERIODS_A_DAY=14;
+  public final static int STI_BEGIN_HOUR=8;
+  public final static int STI_BEGIN_MINUTE=30;
+  public final static int COURSE_NAME_LENGTH=6;
 
   public final static int STUDENT_ID_LENGTH=9;
   public final static int STUDENT_KEY_LENGTH=8;

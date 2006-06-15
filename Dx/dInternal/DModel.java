@@ -37,6 +37,7 @@ import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxCategory;
+import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfCategories;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
@@ -64,13 +65,13 @@ import dInternal.dUtil.DXToolsMethods;
 
 public class DModel extends Observable {
 
-	private int _type;
+    private int _type;
 
-	private String _currentSite;
+    private String _currentSite;
 
-	private boolean _importDone;
+    private boolean _importDone;
 
-	private boolean _mergeDone;
+    private boolean _mergeDone;
 
 	private boolean _modified;
 
@@ -980,16 +981,16 @@ public class DModel extends Observable {
 	 * @param ofSites
 	 */
 	public void resizeSiteAvailability(DxSetOfSites dxSetOfSites) {
-		System.out
-				.println("DModel.resizeSiteAvailability : to be implemented ");
-		// for (int i = 0; i < dxSetOfSites.size(); i++) {
-		// SetOfCategories soc = (SetOfCategories) dxSetOfSites.getResourceAt(i)
-		// .getAttach();
-		// for (int j = 0; j < soc.size(); j++) {
-		// SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j).getAttach();
-		// resizeResource(sor);
-		// } // end for (int j=0; j < soc.size(); j++) {
-		// }// end for (int i=0; i< setOfSites.size(); i++){
+        DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
+        Iterator itRooms = dxrAllRooms.iterator();
+        while (itRooms.hasNext()) {
+            DxRoom dxrTemp = (DxRoom) itRooms.next();
+            int[][] nMatrix = dxrTemp.getRoomAvailability()
+                    .getMatrixAvailability();
+            nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
+                    getTTStructure());
+            dxrTemp.setRoomAvailability(new DxAvailability(nMatrix));
+        }
 	} // resizeSiteAvailability
 
 	/**

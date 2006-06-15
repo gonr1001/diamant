@@ -214,18 +214,18 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 		int[] endH = per.getEndHour();
 		int beginIndex;
 		int endIndex;
-		beginIndex = beginH[0] - DConst.STIBEGINHOUR;
-		if (beginH[1] < DConst.STIBEGINMINUTE)
+		beginIndex = beginH[0] - DConst.STI_BEGIN_HOUR;
+		if (beginH[1] < DConst.STI_BEGIN_MINUTE)
 			beginIndex--;
-		if (beginH[1] > DConst.STIBEGINMINUTE)
+		if (beginH[1] > DConst.STI_BEGIN_MINUTE)
 			beginIndex++;
 		if (beginIndex < 0)
 			return false;
 		//else{// else  if (beginIndex<0)
-		endIndex = endH[0] - DConst.STIBEGINHOUR;
-		if (endH[1] <= DConst.STIBEGINMINUTE)
+		endIndex = endH[0] - DConst.STI_BEGIN_HOUR;
+		if (endH[1] <= DConst.STI_BEGIN_MINUTE)
 			endIndex--;
-		else if (endH[1] > DConst.STIBEGINMINUTE)
+		else if (endH[1] > DConst.STI_BEGIN_MINUTE)
 			endIndex++;
 		if (endIndex < 0)
 			return false;
