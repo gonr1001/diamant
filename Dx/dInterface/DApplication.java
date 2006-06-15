@@ -542,12 +542,12 @@ public class DApplication { // implements ActionListener {
             if (error.length() == 0) {
                 new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
             } else {
-                new FatalProblemDlg(this.getJFrame(), error);
+                new FatalProblemDlg(this.getJFrame(), "In DApplication.doImport: " + error );
                 System.exit(1);
             }
             this.setCursorDefault();
         } catch (Exception e) {
-            new FatalProblemDlg(e.toString());
+            new FatalProblemDlg("In DApplication.doImport: " + e.toString());
             jD.dispose();
         }
     }

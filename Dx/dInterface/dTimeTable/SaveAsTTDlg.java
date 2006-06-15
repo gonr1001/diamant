@@ -1,7 +1,7 @@
 
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.11 $  $Date: 2006-03-03 16:03:37 $
+ * Title: SaveAsTTDlg $Revision: 1.12 $  $Date: 2006-06-15 18:19:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.12 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -68,7 +68,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
      if (error.length() == 0)
        new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + fileName);
      else
-       new FatalProblemDlg(error);
+       new FatalProblemDlg("In SaveAsTTDlg.doSave: " + error);
    } // doSave
 
    public String setExtension(JFileChooser fc){

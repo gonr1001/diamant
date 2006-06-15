@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.8 $  $Date: 2005-01-24 21:27:55 $
+ * Title: SaveAsTxtDlg $Revision: 1.9 $  $Date: 2006-06-15 18:19:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.9 $
+ * @author  $Author: caln1901 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -67,7 +67,7 @@ public class SaveAsTxtDlg extends SaveAsDlg{
 			return error;
 		} catch(Exception e){
 			error = "Problem with the file";
-			new FatalProblemDlg(error);
+			new FatalProblemDlg("In SaveAsTxtDlg.inNewFile: "+error);
 			return error;
 		}
 	}

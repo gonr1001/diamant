@@ -94,10 +94,7 @@ public class DxSetOfSitesTest extends TestCase {
         assertEquals("test_8_getSetOfSitesSingleSite: asserEquals", 20,
                 _dxsosSingle.getRoomCapacity(1, 1, 44));
 
-        assertEquals("test_9_getSetOfSitesSingleSite: asserEquals", null,
-                _dxsosSingle.getRoomAvailability(1, 1, 23));
-
-        assertEquals("test_10_getSetOfSitesSingleSite: asserEquals", 61,
+        assertEquals("test_9_getSetOfSitesSingleSite: asserEquals", 61,
                 _dxsosSingle.getRoomCapacity(DConst.ROOM_STANDARD_SITE,
                         DConst.ROOM_STANDARD_CAT, "D72007"));
 

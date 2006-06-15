@@ -22,50 +22,52 @@ import eLib.exit.dialog.InformationDlg;
 
 public class ImportSelectiveFileDlg extends JDialog {
 
-  /**
-   *
-   * @param dApplic
-   * @param str
-   */
-  public ImportSelectiveFileDlg(DApplication dApplic, String str) {
-     loadData(dApplic, str);
-   } // end constructor
+    /**
+     * 
+     * @param dApplic
+     * @param str
+     */
+    public ImportSelectiveFileDlg(DApplication dApplic, String str) {
+        loadData(dApplic, str);
+    } // end constructor
 
-   /**
-    *
-    * @param dApplic
-    * @param str
-    */
-   private void loadData(DApplication dApplic, String str){
-     JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
-     fc.setFileFilter(new DFileFilter ( new String[] {DConst.SIG},
-         DConst.SIG_FILE) );
-     // Display the file chooser in a dialog
-     Dimension d = fc.getPreferredSize();
-     fc.setPreferredSize(new Dimension((int)d.getWidth(), (int)d.getHeight()));
-     int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.IMP_SELECT+" : "+str);
+    /**
+     * 
+     * @param dApplic
+     * @param str
+     */
+    private void loadData(DApplication dApplic, String str) {
+        JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
+        fc.setFileFilter(new DFileFilter(new String[] { DConst.SIG },
+                DConst.SIG_FILE));
+        // Display the file chooser in a dialog
+        Dimension d = fc.getPreferredSize();
+        fc.setPreferredSize(new Dimension((int) d.getWidth(), (int) d
+                .getHeight()));
+        int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.IMP_SELECT
+                + " : " + str);
 
-     if (returnVal == JFileChooser.APPROVE_OPTION) {
-       // get the file name
-       String fil = fc.getSelectedFile().getAbsolutePath();
-       dApplic.setCurrentDir(fil);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            // get the file name
+            String fil = fc.getSelectedFile().getAbsolutePath();
+            dApplic.setCurrentDir(fil);
 
-       String error = "";
-       if (dApplic.getCurrentDoc() != null){
-         error = dApplic.getCurrentDModel().mergeData(fil, str);
-         if(error.length()==0){
-            new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
-          }else{
-            new FatalProblemDlg(dApplic.getJFrame(),error);
-                // System.exit(1);
-          }
-       }
-       else
-         new FatalProblemDlg(dApplic.getJFrame(), "ImportSelectiveFileDlg : Il n'existe pas de document pour effectuer l'importation des données");
+            String error = "";
+            if (dApplic.getCurrentDoc() != null) {
+                error = dApplic.getCurrentDModel().mergeData(fil, str);
+                if (error.length() == 0) {
+                    new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
+                } else {
+                    new FatalProblemDlg(dApplic.getJFrame(),
+                            "In ImportSelectiveFileDLg.loadData: " + error);
+                    // System.exit(1);
+                }
+            } else
+                new FatalProblemDlg(
+                        dApplic.getJFrame(),
+                        "ImportSelectiveFileDlg : Il n'existe pas de document pour effectuer l'importation des données");
 
-     }
-   }// end method
+        }
+    }// end method
 
 } /* end class ImportSelectiveFileDlg */
-
-

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.28 $  $Date: 2006-06-08 21:33:10 $
+ * Title: OpenTTDlg $Revision: 1.29 $  $Date: 2006-06-15 18:19:25 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: caln1901 $
  * @since JDK1.3
  */
@@ -91,7 +91,7 @@ public class OpenTTDlg extends JDialog {
                         DConst.NO_TYPE);
             } catch (Exception e) {
                     //Solution pour FFMS
-                new FatalProblemDlg(dApplic.getJFrame(), e.toString());
+                new FatalProblemDlg(dApplic.getJFrame(), "In OpenTTDlg.showDialog: " + e.toString());
                 System.exit(1);
             }
 

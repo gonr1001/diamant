@@ -81,7 +81,8 @@ public class DMediator extends Object {
 					currentDoc.getCurrentDModel().getTTStructure());
 			_dApplication.hideToolBar();
 		} else {
-			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
+			new FatalProblemDlg(_dApplication.getJFrame(),
+                    "In DMediator.addDoc: " + currentDoc
 					.getError());
 			System.exit(1);
 		}
@@ -122,7 +123,7 @@ public class DMediator extends Object {
 			try {
 				_documents.get(0).getJIF().setSelected(true);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(), e.toString());
+				new FatalProblemDlg(_dApplication.getJFrame(), "In DMediator.removeCurrentDoc: " + e.toString());
 				System.exit(1);
 			}
 		} else {// end if (_documents.size()!=0)
@@ -173,7 +174,7 @@ public class DMediator extends Object {
 			try {
 				currentDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(), e.toString());
+				new FatalProblemDlg(_dApplication.getJFrame(), "In DMediator.getCurrentDoc: " + e.toString());
 				System.exit(1);
 			}
 			return currentDoc;
