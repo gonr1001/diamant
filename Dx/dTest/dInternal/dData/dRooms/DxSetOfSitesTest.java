@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.Preferences;
+import dInternal.DxPreferences;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.DxReadSite1dot5;
@@ -150,7 +150,7 @@ public class DxSetOfSitesTest extends TestCase {
     }
 
     private byte[] preLoad(String str) {
-        Preferences preferences = new Preferences("." + File.separator + "pref"
+        DxPreferences preferences = new DxPreferences("." + File.separator + "pref"
                 + File.separator + "pref.txt");
         FilterFile filter = new FilterFile();
         filter.setCharKnown("");

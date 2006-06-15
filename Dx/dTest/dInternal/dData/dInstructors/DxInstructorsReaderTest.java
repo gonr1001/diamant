@@ -4,7 +4,7 @@ import java.io.File;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.Preferences;
+import dInternal.DxPreferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
@@ -271,7 +271,7 @@ public class DxInstructorsReaderTest extends TestCase {
     }
 
     private byte[] preLoad(String str) {
-        Preferences preferences = new Preferences("." + File.separator + "pref"
+        DxPreferences preferences = new DxPreferences("." + File.separator + "pref"
                 + File.separator + "pref.txt");
         FilterFile filter = new FilterFile();
         filter.setCharKnown("");

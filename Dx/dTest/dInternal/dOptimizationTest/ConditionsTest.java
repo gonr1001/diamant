@@ -268,14 +268,14 @@ public class ConditionsTest extends TestCase {
 		_dmh.getConditionsTest().addEventInTTs(cloneTTS,
 				new DResource("PED200.1.21.1.", eventClone), false);
 		per = cloneTTS.getCurrentCycle().getPeriodByKey(3, 3, 5);
-		assertEquals("test15_buildAllConditionsInCloneTTS : assertEquals 14", 84, per
+		assertEquals("test15_buildAllConditionsInCloneTTS : assertEquals 14", 20, per
 				.getNbStudConflict());
 		assertEquals("test16_buildAllConditionsInCloneTTS : assertEquals 15", 0, per
 				.getNbInstConflict());
 		assertEquals("test16_buildAllConditionsInCloneTTS : assertEquals 16", 0, per
 				.getNbRoomConflict());
 		per = cloneTTS.getCurrentCycle().getPeriodByKey(3, 3, 7);
-		assertEquals("test16_buildAllConditionsInCloneTTS : assertEquals 14", 20, per
+		assertEquals("test16_buildAllConditionsInCloneTTS : assertEquals 14", 0, per
 				.getNbStudConflict());
 	}
 	

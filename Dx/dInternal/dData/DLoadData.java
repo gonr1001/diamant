@@ -28,7 +28,7 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.DataExchange;
-import dInternal.Preferences;
+import dInternal.DxPreferences;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
@@ -585,7 +585,7 @@ public class DLoadData {
 
 	private void doLoadData() {
 		// _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
-		Preferences preferences = new Preferences(System
+		DxPreferences preferences = new DxPreferences(System
 				.getProperty("user.dir")
 				+ File.separator + "pref" + File.separator + "pref.txt");
 		_chars = preferences._acceptedChars;

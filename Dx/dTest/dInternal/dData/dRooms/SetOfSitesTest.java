@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2005-03-08 16:00:45 $
+* Title: SetOfSitesTest $Revision $  $Date: 2006-06-15 17:29:22 $
 * Description: 	SetOfSitesTest is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: syay1801 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -28,7 +28,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
-import dInternal.Preferences;
+import dInternal.DxPreferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -313,7 +313,7 @@ public class SetOfSitesTest  extends TestCase{
  * @return
  */	
  private byte[] preLoad(String str) {
-		Preferences preferences = new Preferences("."+ File.separator +
+		DxPreferences preferences = new DxPreferences("."+ File.separator +
 	            "pref"
 	            + File.separator +
 	            "pref.txt");
