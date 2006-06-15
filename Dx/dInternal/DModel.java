@@ -90,29 +90,29 @@ public class DModel extends Observable {
 
 	private SetOfRoomsFunctions _setOfRoomsFunctions;
 
-	protected static SetOfSites _setOfSites;
+	private SetOfSites _setOfSites;
 
 	private DxSetOfSites _dxSetOfSites;
 
-	protected static SetOfCategories _setOfCategories;
+	private SetOfCategories _setOfCategories;
 
-	protected static SetOfRooms _setOfRooms;
+	//private SetOfRooms _setOfRooms;
 
-	protected static SetOfStuSites _setOfStuSites;
+	private SetOfStuSites _setOfStuSites;
 
-	protected static SetOfStudents _setOfStudents;
+//	private SetOfStudents _setOfStudents;
 
-	private static SetOfActivitiesSites _setOfActivitiesSites;
+	private SetOfActivitiesSites _setOfActivitiesSites;
 
 	private DDocument _dDocument;
 
 	private TTStructure _ttStruct;
 
-	protected SetOfEvents _setOfEvents;
+	private SetOfEvents _setOfEvents;
 
 	private int _currentCycle;
 
-	protected DxConditionsToTest _conditionsToTest;
+	private DxConditionsToTest _conditionsToTest;
 
 	private int[] _nbConflicts;
 
