@@ -68,7 +68,7 @@ import dInterface.dMenus.DxMenuBar;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
 
-import dInternal.Preferences;
+import dInternal.DxPreferences;
 import dInternal.dOptimization.RoomAssignmentAlgo;
 import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.FatalProblemDlg;
@@ -117,7 +117,7 @@ public class DApplication { // implements ActionListener {
 
     private JDesktopPane _jDesktopPane;
 
-    private Preferences _preferences;
+    private DxPreferences _preferences;
 
     private DMediator _dMediator;
 
@@ -154,7 +154,7 @@ public class DApplication { // implements ActionListener {
             }
         }
 
-        _preferences = new Preferences(System.getProperty("user.dir")
+        _preferences = new DxPreferences(System.getProperty("user.dir")
                 + File.separator + "pref" + File.separator + "pref.txt");
 
         _screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -239,7 +239,7 @@ public class DApplication { // implements ActionListener {
         return _tbar;
     }
 
-    public Preferences getPreferences() {
+    public DxPreferences getPreferences() {
         return _preferences;
     } // end getPreferences
 
