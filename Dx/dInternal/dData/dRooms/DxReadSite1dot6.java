@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
+import dInternal.dData.DxAvailability;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -66,7 +67,7 @@ public class DxReadSite1dot6 implements DxSiteReader {
 
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()
-                && nCurrentLine < DConst.ROOM_USELESS_HEADER) {
+                && nCurrentLine < DConst.ROOM_1_DOT_6_USELESS_HEADER) {
             sFileToken = stFileTokenizer.nextToken();
             nCurrentLine++;
         }
@@ -127,8 +128,9 @@ public class DxReadSite1dot6 implements DxSiteReader {
                     }
                     nCurrentLineState++;
                 }
+                DxAvailability dxaAlways = getDummyAvailability();
                 dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
-                        nRoomFunction, viCharacteristics, sNote, null);
+                        nRoomFunction, viCharacteristics, sNote, dxaAlways);
                 dxsosBuild.addSite(sRoomSite);
                 dxsosBuild.addCat(sRoomSite, sRoomCat);
                 dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
@@ -155,6 +157,17 @@ public class DxReadSite1dot6 implements DxSiteReader {
         }
 
         return viTemp;
+    }
+
+    private DxAvailability getDummyAvailability() {
+        int nTemp[][] = new int[DConst.STI_NB_OF_DAYS][DConst.STI_NB_OF_PERIODS_A_DAY];
+        for (int i = 0; i < DConst.STI_NB_OF_DAYS; i++) {
+            for (int j = 0; j < DConst.STI_NB_OF_PERIODS_A_DAY; j++) {
+                nTemp[i][j] = DConst.AVAILABILITY_YES;
+            }
+        }
+
+        return new DxAvailability(nTemp);
     }
 
 }

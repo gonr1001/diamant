@@ -69,7 +69,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
 
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()
-                && nCurrentLine < DConst.ROOM_USELESS_HEADER) {
+                && nCurrentLine < DConst.ROOM_1_DOT_5_USELESS_HEADER) {
             sFileToken = stFileTokenizer.nextToken();
             nCurrentLine++;
         }

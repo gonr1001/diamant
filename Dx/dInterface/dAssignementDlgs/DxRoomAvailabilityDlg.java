@@ -23,6 +23,8 @@ import java.awt.event.ItemListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +34,6 @@ import javax.swing.SwingConstants;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
-import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.dData.DxAvailability;
@@ -43,7 +44,7 @@ import dInternal.dData.dRooms.DxSite;
 
 public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         ItemListener {
-
+    
     private int _nbOfPeriods;
 
     private int _nbOfDays;
@@ -58,11 +59,14 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
     private JPanel _centerPanel;
 
-    private DxJComboBox _cbSites;
+    private JComboBox _cbSites;
+    private DefaultComboBoxModel  _dcbmSites;
 
-    private DxJComboBox _cbCategories;
+    private JComboBox _cbCategories;
+    private DefaultComboBoxModel  _dcbmCategories;
 
-    private DxJComboBox _cbRooms;
+    private JComboBox _cbRooms;
+    private DefaultComboBoxModel  _dcbmRooms;
 
     /**
      * @associates JToggleButton
@@ -124,19 +128,22 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         // to
         // display all sites
         vTemp = _dxsosSites.getNamesVector();
-        _cbSites = new DxJComboBox(vTemp);
+        _dcbmSites = new DefaultComboBoxModel(vTemp);
+        _cbSites = new JComboBox(_dcbmSites);
         _cbSites.addItemListener(this);
         _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
                 .getSelectedItem());
 
         vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
-        _cbCategories = new DxJComboBox(vTemp);
+        _dcbmCategories = new DefaultComboBoxModel(vTemp);
+        _cbCategories = new JComboBox(_dcbmCategories);
         _cbCategories.addItemListener(this);
         _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
                 .getSelectedItem());
 
         vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
-        _cbRooms = new DxJComboBox(vTemp);
+        _dcbmRooms = new DefaultComboBoxModel(vTemp);
+        _cbRooms = new JComboBox(_dcbmRooms);
         _cbRooms.addItemListener(this);
         _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
                 .getSelectedItem());
@@ -218,16 +225,16 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
                         .getSelectedItem());
 
                 vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
-                _cbCategories.disableActionListeners();
-                _cbCategories = new DxJComboBox(vTemp);
-                _cbCategories.enableActionListeners();
+                _dcbmCategories = new DefaultComboBoxModel(vTemp);
+                _cbCategories.setModel(_dcbmCategories);
+                
             case 2:
                 _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
                         .getSelectedItem());
                 vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
-                _cbRooms.disableActionListeners();
-                _cbRooms = new DxJComboBox(vTemp);
-                _cbRooms.enableActionListeners();
+                _dcbmRooms = new DefaultComboBoxModel(vTemp);
+                _cbRooms.setModel(_dcbmRooms);
+                
             case 3:
                 _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
                         .getSelectedItem());
