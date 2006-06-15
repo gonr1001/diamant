@@ -36,15 +36,7 @@ public class DxSetOfSitesTest extends TestCase {
         path = "." + File.separator + "dataTest" + File.separator
                 + "locauxINFIRComplet.txt";
         dataloaded = preLoad(path);
-        StringTokenizer st=new StringTokenizer(new String(dataloaded),DConst.CR_LF);
-        String s1dot6="";
-        st.nextToken(); //Removes Diamant 1.6
-        while(st.hasMoreTokens())
-        {
-            //Rebuild file, but without Diamant 1.6
-            s1dot6+=(st.nextToken()+DConst.CR_LF);
-        }
-        de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, s1dot6);
+        de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(dataloaded));
         dxsr = new DxReadSite1dot6(de);
 
         _dxsosMulti = dxsr.getSetOfSites();
