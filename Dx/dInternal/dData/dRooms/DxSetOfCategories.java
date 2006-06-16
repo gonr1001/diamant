@@ -21,6 +21,7 @@ package dInternal.dData.dRooms;
 
 import java.util.Iterator;
 
+import dConstants.DConst;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfRessources;
 
@@ -196,6 +197,10 @@ public class DxSetOfCategories extends DxSetOfRessources {
         while(itCategories.hasNext())
         {
             sbReturn.append(((DxCategory)itCategories.next()).toWrite(sSiteName));
+            if(itCategories.hasNext())
+            {
+                sbReturn.append(DConst.CR_LF);
+            }
         }
         return sbReturn.toString();
     }

@@ -347,10 +347,12 @@ public class DxSetOfSites extends DxSetOfRessources {
         StringBuffer sbReturn = new StringBuffer();
         Iterator itSites = this.iterator();
 
-        sbReturn.append(DConst.FILE_VER_NAME1_6);
-
         while (itSites.hasNext()) {
             sbReturn.append(((DxSite) itSites.next()).toWrite());
+            if(itSites.hasNext())
+            {
+                sbReturn.append(DConst.CR_LF);
+            }
         }
         return sbReturn.toString();
     }
