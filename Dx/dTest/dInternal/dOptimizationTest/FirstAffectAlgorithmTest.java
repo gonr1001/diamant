@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.7 $ $Date: 2006-06-15 17:29:22 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.8 $ $Date: 2006-06-16 19:31:01 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -61,7 +61,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		return new TestSuite(FirstAffectAlgorithmTest.class);
 	} // end suite
 
-	public void test_build() {
+	public void test_build1() {
 		DModel dm1= null;
 		DDocument _dDocument1 = new DDocument();
 		String fileName = "." + File.separator;
@@ -84,5 +84,30 @@ public class FirstAffectAlgorithmTest extends TestCase {
 			_first = new FirstAffectAlgorithm(dm1);
 			_first.build();
 			assertEquals("test_build: assertEquals", 255, dm1.getSetOfEvents().getNumberOfEventAssign());
+	}
+	
+	public void test_build2() {
+		DModel dm1= null;
+		DDocument _dDocument1 = new DDocument();
+		String fileName = "." + File.separator;
+		fileName += "dataTest" + File.separator;
+		fileName += "refFiles" + File.separator;
+		fileName += "facs" + File.separator;
+		fileName += "genAlgo" + File.separator;
+		fileName += "genNoAssigned.dia";
+		int type = 1;
+		
+		
+		try {
+			dm1 = new DModel(_dDocument1, fileName, type);
+		} catch (Exception e) {
+			// Should not fail in controled conditions
+		}
+		dm1.changeInDModel(new Object());
+		 assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities().size());
+		 assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents().size());
+			_first = new FirstAffectAlgorithm(dm1);
+			_first.build();
+			assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents().getNumberOfEventAssign());
 	}
 }

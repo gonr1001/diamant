@@ -118,10 +118,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
      */
     private void initialize() throws Exception {
         Vector<String> vTemp;
-        vTemp = new Vector<String>();
-        vTemp.add("a");
-        vTemp.add("b");
-        vTemp.add("c");
+        
         _chooserPanel = new JPanel();
 
         // creates the JComboBox with the list of all sites and add an entry
