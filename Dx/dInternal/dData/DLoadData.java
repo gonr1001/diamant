@@ -472,7 +472,6 @@ public class DLoadData {
                 DxSiteReader dxrr = new DxReadSitedotDia(de, tts
                         .getNumberOfActiveDays(), tts.getCurrentCycle()
                         .getMaxNumberOfPeriodsADay());
-                // DxSiteReader dxrr=new DxReadSite1dot5(de);
 
                 diaData.add(dxrr.getSetOfSites());
             } else {
@@ -554,7 +553,10 @@ public class DLoadData {
 
             } else {
                 de = buildDataExchange(project.nextToken().trim().getBytes());
-                DxSiteReader dxrr = new DxReadSite1dot5(de);
+                DxSiteReader dxrr = new DxReadSitedotDia(de, tts
+                        .getNumberOfActiveDays(), tts.getCurrentCycle()
+                        .getMaxNumberOfPeriodsADay());
+                
                 diaData.add(dxrr.getSetOfSites());
             }
 
