@@ -106,7 +106,7 @@ public class DiamantTest {
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
-		// // suite.addTest(RoomsAttributesInterpretorTest.suite());
+		// suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
