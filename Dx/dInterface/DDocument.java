@@ -95,6 +95,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         // listener quand même. L'erreur survient à l'appel du FramListener.
         // Après trace de la construction du DModel, les instructeurs sont
         // valide mais les activities créent une erreur.
+        System.out.println("My error is " + _dm.getError());
         if (_dm.getError().length() == 0) {
             _documentName = modifiyDocumentName(ttName);
             buidDocument(true, true);
