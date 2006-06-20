@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.43 $ $Date: 2006-06-08 21:33:12 $
+ * Title: StudentMixingAlgorithm $Revision: 1.44 $ $Date: 2006-06-20 14:39:26 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: caln1901 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -95,7 +95,7 @@ public class StudentMixingAlgorithm implements Algorithm {
    * @param DModel
    * @param vectorOfEvents
    */
-  public void build(){
+  public void doWork(){
 
     Vector eventRescList=buildEventsVector();
     for(int i=0; i< 2; i++)

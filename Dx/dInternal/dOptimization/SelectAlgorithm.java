@@ -76,7 +76,7 @@ public class SelectAlgorithm {
 		if(_algorithmToRun.size() != 0){
 			//_dm.getDDocument().getDMediator().getDApplication().setCursorWait();
 			Algorithm algo = _algorithmToRun.firstElement();
-			algo.build( );
+			algo.doWork();
 			//_dm.getDDocument().getDMediator().getDApplication().setCursorDefault();
 		}
 	}

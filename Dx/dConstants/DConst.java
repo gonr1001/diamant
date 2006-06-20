@@ -32,10 +32,11 @@ public class DConst {
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 
-    public static boolean newRooms = true;
+    public static boolean newRooms = false;
 //	public static boolean newRooms = false;
     
-	//public static boolean IN_DIA = false;
+	public static boolean newAlg = false;
+//	public static boolean newAlg = false;
     
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
@@ -591,6 +592,8 @@ public class DConst {
   public static final String ROOM_STANDARD_SITE= "SHE";
   public static final String ROOM_STANDARD_CAT= "CAT 1";
   
+  
+  public static final String CONFLICT_LIMITS_SEPARATOR= ";";
   // students v 1.7
   public static final int STUDENT_COURSE_LENGTH = 7;
   public static final String STUDENT_STANDARD_SITE= "SHE";

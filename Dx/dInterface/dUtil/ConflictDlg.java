@@ -31,6 +31,7 @@ import javax.swing.JTextField;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInternal.DxConflictLimits;
 
 /**
  *
@@ -74,6 +75,16 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		setResizable(false);
 		this.getContentPane().setLayout(new BorderLayout());
 		JPanel jPanel = new JPanel();
+		if(DConst.newAlg){
+			DxConflictLimits cl= _dApplic.getPreferences().getDxConflictLimits();
+			_textField0 = new JTextField("" + cl.getMStudConfBetweenTwoEvents());
+			_textField1 = new JTextField("" + cl.getMInstConfBetweenTwoEvents());
+			_textField2 = new JTextField("" + cl.getMRoomConfBetweenTwoEvents());
+			_textField3 = new JTextField("" + cl.getMAllowedPriority());
+			_textField4 = new JTextField("" + cl.getMNumOfEventsInPeriod());
+			_textField5 = new JTextField("" + cl.getMinPeriodSpacing());
+			_textField6 = new JTextField("" + cl.getRoomBookingRate());
+		} else {
 		int[] a = _dApplic.getPreferences().getConflictLimits();
 		/*String [] b = new  String  [a.length];
 		 for(int i= 0; i <a.length; i ++) {
@@ -87,6 +98,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		_textField4 = new JTextField("" + a[4]);
 		_textField5 = new JTextField("" + a[5]);
 		_textField6 = new JTextField("" + a[6]);
+		}
 		jPanel.setLayout(new GridLayout(7, 2));
 		jPanel.add(new JLabel("Max Conflits Étu entre 2 Eve ="));
 		jPanel.add(_textField0);
@@ -127,16 +139,31 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		if (command.equals(DConst.BUT_OK)) {
 			int ligne = validation();
 			if (ligne == 0) {
-				v.add(_textField0.getText());
-				v.add(_textField1.getText());
-				v.add(_textField2.getText());
-				v.add(_textField3.getText());
-				v.add(_textField4.getText());
-				v.add(_textField5.getText());
-				v.add(_textField6.getText());
-				_dApplic.getPreferences().setConflicLimits(v);
-				_dApplic.getPreferences().save();
-				dispose();
+				if(DConst.newAlg){
+					//DxConflictLimits  cl = new DxConflictLimits();
+					StringBuffer strB = new StringBuffer("conflictLimits" + ";");
+					strB.append(_textField0.getText()+ ";");
+					strB.append(_textField1.getText()+ ";");
+					strB.append(_textField2.getText()+ ";");
+					strB.append(_textField3.getText()+ ";");
+					strB.append(_textField4.getText()+ ";");
+					strB.append(_textField5.getText()+ ";");
+					strB.append(_textField6.getText()+ ";");
+					_dApplic.getPreferences().setDxConflictLimits(strB.toString());
+					_dApplic.getPreferences().save();
+					dispose();
+				} else {
+					v.add(_textField0.getText());
+					v.add(_textField1.getText());
+					v.add(_textField2.getText());
+					v.add(_textField3.getText());
+					v.add(_textField4.getText());
+					v.add(_textField5.getText());
+					v.add(_textField6.getText());
+					_dApplic.getPreferences().setConflictLimits(v);
+					_dApplic.getPreferences().save();
+					dispose();
+				}
 			} else
 				JOptionPane.showMessageDialog(this, "Erreur à la ligne: "
 						+ ligne);

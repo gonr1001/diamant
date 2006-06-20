@@ -97,11 +97,7 @@ public class DModel extends Observable {
 
     private SetOfCategories _setOfCategories;
 
-    // private SetOfRooms _setOfRooms;
-
     private SetOfStuSites _setOfStuSites;
-
-    // private SetOfStudents _setOfStudents;
 
     private SetOfActivitiesSites _setOfActivitiesSites;
 

@@ -1,6 +1,6 @@
 /**
  *
- * Title: FirstAffectAlgorithm $Revision: 1.24 $  $Date: 2006-06-12 13:12:28 $
+ * Title: FirstAffectAlgorithm $Revision: 1.25 $  $Date: 2006-06-20 14:39:25 $
  * Description: FirstAffectAlgorithm is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -53,7 +53,7 @@ public class FirstAffectAlgorithm implements Algorithm {
 	 * @param tts
 	 * @param vectorOfEvents
 	 */
-	public void build() {
+	public void doWork() {
 		DResource currentEvent;
 		Period currentPeriod;
 		Vector periodList;

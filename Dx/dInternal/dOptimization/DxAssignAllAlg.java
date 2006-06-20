@@ -25,6 +25,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
+import dInternal.DxConflictLimits;
 import dInternal.dData.StandardCollection;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -35,44 +36,44 @@ import dInternal.dTimeTable.Sequence;
  * 
  * Description: DxAssignAllAlg is a class used to:
  * <p>
- * TODO:insert comments
+ * assign events to the timetable
  * <p>
  * 
  */
 public class DxAssignAllAlg implements Algorithm {
-	/**
-	 * @associates DResource
-	 */
+
 	private Vector<DResource> _placeEvent;
 
 	private DModel _dm;
+	
+	private DxConflictLimits _dxCL;
 
 	/**
 	 * constructor
 	 */
-	public DxAssignAllAlg(DModel dm) {
+	public DxAssignAllAlg(DModel dm, DxConflictLimits dxcl) {
 		_placeEvent = new Vector<DResource>();
 		_dm = dm;
+		_dxCL = dxcl;
 	}
 
 	/**
 	 * 
-	 * @param tts
-	 * @param vectorOfEvents
 	 */
-	public void build() {
+	public void doWork() {
 		DResource currentEvent = null;
 		Period currentPeriod = null;
 		Vector vPeriods;
-		Vector vEventsNotAssigned = getEventsNotAssigned();
+		Vector vNotAssignedEvents = getEvents();
 		int currentDuration = 0;
+		_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
 
 		_dm.getConditionsTest().extractPreference();
-
-		for (int i = 0; i < vEventsNotAssigned.size(); i++) {
-			currentEvent = (DResource) vEventsNotAssigned.get(i);
+		int[] nbConf;
+		for (int i = 0; i < vNotAssignedEvents.size(); i++) {
+			currentEvent = (DResource) vNotAssignedEvents.get(i);
 			boolean isNumberOfConflictsAcceptable = false;
-			int[] nbConf;
+			
 			/*
 			 * while(((EventAttach)currentEvent.getAttach()).getAssignState())
 			 * currentEvent= (Resource)vectorOfEvents.remove(0);
@@ -123,7 +124,7 @@ public class DxAssignAllAlg implements Algorithm {
 	 * 
 	 * @return
 	 */
-	private Vector getEventsNotAssigned() {
+	private Vector getEvents() {
 		return _dm.getSetOfEvents().getSetOfResources();
 	}
 
@@ -184,9 +185,9 @@ public class DxAssignAllAlg implements Algorithm {
 									.toString(counter++), value), 1);
 						}// end if (_dm.getTTStructure()
 					}// end if(per.getEventsInPeriod().size()<
-					// _dm.getConditionsTest().
+					
 				}// end for(int k=0; k<
-				// ((Sequence)seq.getAttach()).getSetOfPeriod
+				
 			}// end for(int j=0; j< ((Day)day.getAttach()).getSetO
 		}// end for (int i=0; i< _dm.getTTStructure().getCurrentCycle()
 		soresc.sortSetOfResourcesByKey();

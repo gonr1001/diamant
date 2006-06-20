@@ -26,7 +26,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DDocument;
 import dInternal.DModel;
-import dInternal.DxPreferences;
+import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
 
 /**
@@ -39,18 +39,14 @@ import dInternal.dOptimization.DxAssignAllAlg;
  * 
  */
 public class DxAssignAllAlgTest extends TestCase {
-
-	DxAssignAllAlg _alg;
-
+	
 	public DxAssignAllAlgTest(String name) {
 		super(name);
 	}
 
-	public void setUp() {
-		DxPreferences pref = new DxPreferences();
-		String str = "0;0;0;0;30;0;100;";
-		pref.setConflicLimitsString(str);
-	}
+//	public void setUp() {
+//
+//	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -59,18 +55,21 @@ public class DxAssignAllAlgTest extends TestCase {
 	} // end suite
 
 	public void test_build1() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
 		DModel dm1 = null;
 		DDocument _dDocument1 = new DDocument();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "sciBase" + File.separator;
-		fileName += "scNoAssigned.dia";
+		StringBuffer fileName = new StringBuffer("." + File.separator);
+		fileName.append("dataTest" + File.separator);
+		fileName.append("refFiles" + File.separator);
+		fileName.append("facs" + File.separator);
+		fileName.append("sciBase" + File.separator);
+		fileName.append("scNoAssigned.dia");
 		int type = 1;
 
 		try {
-			dm1 = new DModel(_dDocument1, fileName, type);
+			dm1 = new DModel(_dDocument1, fileName.toString(), type);
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -79,25 +78,30 @@ public class DxAssignAllAlgTest extends TestCase {
 				.size());
 		assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
 				.size());
-		_alg = new DxAssignAllAlg(dm1);
-		_alg.build();
+		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+		alg.doWork();
 		assertEquals("test_build: assertEquals", 255, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
+		dm1 = null;
+		_dDocument1 = null;
 	}
 
 	public void test_build2() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
 		DModel dm1 = null;
 		DDocument _dDocument1 = new DDocument();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "genAlgo" + File.separator;
-		fileName += "genNoAssigned.dia";
+		StringBuffer fileName = new StringBuffer("." + File.separator);
+		fileName.append("dataTest" + File.separator);
+		fileName.append("refFiles" + File.separator);
+		fileName.append("facs" + File.separator);
+		fileName.append("genAlgo" + File.separator);
+		fileName.append("genNoAssigned.dia");
 		int type = 1;
 
 		try {
-			dm1 = new DModel(_dDocument1, fileName, type);
+			dm1 = new DModel(_dDocument1, fileName.toString(), type);
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -106,9 +110,11 @@ public class DxAssignAllAlgTest extends TestCase {
 				.size());
 		assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
 				.size());
-		_alg = new DxAssignAllAlg(dm1);
-		_alg.build();
+		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+		alg.doWork();
 		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
+		dm1 = null;
+		_dDocument1 = null;
 	}
 }

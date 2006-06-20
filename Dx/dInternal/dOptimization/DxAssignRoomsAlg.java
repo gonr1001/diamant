@@ -25,6 +25,7 @@ import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
+import dInternal.DxConflictLimits;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dRooms.Room;
@@ -51,24 +52,28 @@ public class DxAssignRoomsAlg implements Algorithm {
 	DResource _allRscFunct;
 
 	int[] _conflictsPreference;
+	
+	DxConflictLimits _dxCL;
 
 	/**
 	 * Constructeur
+	 * @param limits 
 	 */
-	public DxAssignRoomsAlg(DModel dm) {
+	public DxAssignRoomsAlg(DModel dm, DxConflictLimits limits) {
 		super();
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
-		_conflictsPreference = _dm.getDDocument().getDMediator()
-				.getDApplication().getPreferences().getConflictLimits();
+		_dm.getConditionsTest().extractPreference();
+		_dxCL = limits;
+//		_conflictsPreference = _dm.getDDocument().getDMediator()
+//				.getDApplication().getPreferences().getConflictLimits();
 		setNoRoomToEventsWithRoomsNotFixed();
-		build();
 	}
 
 	/*
 	 * Cette méthode construit l'algorithme
 	 */
-	public void build() {
+	public void doWork() {
 		int periodStep = 1;
 		int sortRoomsByCapacity = 0;
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
@@ -220,13 +225,13 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *         et false sinon.
 	 */
 	private boolean isAddPossible(Room room, DResource event) {
-		int FILLFULL_RATE_INDEX = 6;
+		
 		int PERCENT = 100;
 		int numberOfStudents = Integer.parseInt(event.getID());
 		int needed_room_size = (numberOfStudents * PERCENT)
-				/ _conflictsPreference[FILLFULL_RATE_INDEX];
+				/ _dxCL.getRoomBookingRate();
 		int needed_room_rest = (numberOfStudents * PERCENT)
-				% _conflictsPreference[FILLFULL_RATE_INDEX];
+				% _dxCL.getRoomBookingRate();
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
 		if (_allRscFunct != null) {

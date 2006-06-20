@@ -26,7 +26,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DDocument;
 import dInternal.DModel;
-import dInternal.DxPreferences;
+import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignRoomsAlg;
 
 /**
@@ -39,16 +39,18 @@ import dInternal.dOptimization.DxAssignRoomsAlg;
  * 
  */
 public class DxAssignRoomsAlgTest extends TestCase {
+	
 	DxAssignRoomsAlg _alg;
 
+	DxConflictLimits _dxCL;
 	public DxAssignRoomsAlgTest(String name) {
 		super(name);
 	}
 
 	public void setUp() {
-		DxPreferences pref = new DxPreferences();
-		String str = "0;0;0;0;30;0;100;";
-		pref.setConflicLimitsString(str);
+		_dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		_dxCL.readLimits(str);
 	}
 
 	public static Test suite() {
@@ -74,14 +76,16 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			// Should not fail in controled conditions
 		}
 		dm1.changeInDModel(new Object());
-//		assertEquals("test_build: assertEquals", 94, dm1.getSetOfActivities()
-//				.size());
-//		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
-//				.size());
-//		_alg = new DxAssignRoomsAlg(dm1);
-//		_alg.build();
-//		assertEquals("test_build: assertEquals", 3, dm1.getSetOfEvents()
-//				.getNumberOfEventAssign());
+		assertEquals("test_build: assertEquals", 94, dm1.getSetOfActivities()
+				.size());
+		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
+				.size());
+		_alg = new DxAssignRoomsAlg(dm1, _dxCL);
+		_alg.doWork();
+		assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
+				.getNumberOfEventAssign());
+		dm1 = null;
+		_dDocument1 = null;
 	}
 
 	public void test_build2() {
@@ -92,7 +96,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		fileName += "refFiles" + File.separator;
 		fileName += "facs" + File.separator;
 		fileName += "flsh2_1" + File.separator;
-		fileName += "RoomAffContTT.dia";
+		fileName += "AnotherRoomAffContTT.dia";
 		int type = 1;
 
 		try {
@@ -101,13 +105,15 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			// Should not fail in controled conditions
 		}
 		dm1.changeInDModel(new Object());
-//		assertEquals("test_build: assertEquals", 94, dm1.getSetOfActivities()
-//				.size());
-//		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
-//				.size());
-//		_alg = new DxAssignRoomsAlg(dm1);
-//		_alg.build();
-//		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
-//				.getNumberOfEventAssign());
+		assertEquals("test_build: assertEquals", 94, dm1.getSetOfActivities()
+				.size());
+		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
+				.size());
+		_alg = new DxAssignRoomsAlg(dm1, _dxCL);
+		_alg.doWork();
+		assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
+				.getNumberOfEventAssign());
+		dm1 = null;
+		_dDocument1 = null;
 	}
 }

@@ -37,6 +37,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
  * 
  */
 public class DxSetOfInstructorsTest extends TestCase {
+	
     /**
      * @param args
      */
@@ -124,6 +125,5 @@ public class DxSetOfInstructorsTest extends TestCase {
 
         soiTest.addInstructor("Daniel", aTemp);
         assertEquals("test2_instructorCount: assertEquals", soiTest.size(), 2);
-
     }
 }

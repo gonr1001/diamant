@@ -41,13 +41,13 @@ public class RoomAssignmentAlgo implements Algorithm {
 		_conflictsPreference = _dm.getDDocument().getDMediator()
 				.getDApplication().getPreferences().getConflictLimits();
 		setNoRoomToEventsWithRoomsNotFixed();
-		build();
+		doWork();
 	}
 
 	/*
 	 * Cette méthode construit l'algorithme
 	 */
-	public void build() {
+	public void doWork() {
 		int periodStep = 1;
 		int sortRoomsByCapacity = 0;
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
