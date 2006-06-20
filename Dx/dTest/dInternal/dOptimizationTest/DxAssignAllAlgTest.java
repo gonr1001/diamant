@@ -44,10 +44,6 @@ public class DxAssignAllAlgTest extends TestCase {
 		super(name);
 	}
 
-//	public void setUp() {
-//
-//	}
-
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :

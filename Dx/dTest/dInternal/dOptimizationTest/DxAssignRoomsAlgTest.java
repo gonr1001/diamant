@@ -40,17 +40,8 @@ import dInternal.dOptimization.DxAssignRoomsAlg;
  */
 public class DxAssignRoomsAlgTest extends TestCase {
 	
-	DxAssignRoomsAlg _alg;
-
-	DxConflictLimits _dxCL;
 	public DxAssignRoomsAlgTest(String name) {
 		super(name);
-	}
-
-	public void setUp() {
-		_dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		_dxCL.readLimits(str);
 	}
 
 	public static Test suite() {
@@ -60,6 +51,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	} // end suite
 
 	public void test_build1() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
 		DModel dm1 = null;
 		DDocument _dDocument1 = new DDocument();
 		String fileName = "." + File.separator;
@@ -80,8 +74,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				.size());
 		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
 				.size());
-		_alg = new DxAssignRoomsAlg(dm1, _dxCL);
-		_alg.doWork();
+		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+		alg.doWork();
 		assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
@@ -89,6 +83,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	}
 
 	public void test_build2() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
 		DModel dm1 = null;
 		DDocument _dDocument1 = new DDocument();
 		String fileName = "." + File.separator;
@@ -109,8 +106,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				.size());
 		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
 				.size());
-		_alg = new DxAssignRoomsAlg(dm1, _dxCL);
-		_alg.doWork();
+		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+		alg.doWork();
 		assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
