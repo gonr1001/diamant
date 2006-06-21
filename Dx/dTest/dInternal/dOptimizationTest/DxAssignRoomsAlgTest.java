@@ -102,13 +102,13 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			// Should not fail in controled conditions
 		}
 		dm1.changeInDModel(new Object());
-		assertEquals("test_build: assertEquals", 94, dm1.getSetOfActivities()
+		assertEquals("test_build: assertEquals", 199, dm1.getSetOfActivities()
 				.size());
-		assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
+		assertEquals("test_build: assertEquals", 253, dm1.getSetOfEvents()
 				.size());
 		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
 		alg.doWork();
-		assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
+		assertEquals("test_build: assertEquals", 250, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
 		_dDocument1 = null;

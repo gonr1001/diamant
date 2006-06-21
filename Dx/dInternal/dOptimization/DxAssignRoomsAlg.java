@@ -226,22 +226,22 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *         et false sinon.
 	 */
 	private boolean isAddPossible(Room room, DResource event) {
-		int FILLFULL_RATE_INDEX = 6;
+//		int FILLFULL_RATE_INDEX = 6;
 		int PERCENT = 100;
 		int needed_room_size = 0;
 		int needed_room_rest = 0;
 		int numberOfStudents = Integer.parseInt(event.getID());
-		if (DConst.newAlg) {
+//		if (DConst.newAlg) {
 			needed_room_size = (numberOfStudents * PERCENT)
 					/ _dxCL.getRoomBookingRate();
 			needed_room_rest = (numberOfStudents * PERCENT)
 					% _dxCL.getRoomBookingRate();
-		} else {
-			needed_room_size = (numberOfStudents * PERCENT)
-					/ _conflictsPreference[FILLFULL_RATE_INDEX];
-			needed_room_rest = (numberOfStudents * PERCENT)
-					% _conflictsPreference[FILLFULL_RATE_INDEX];
-		}
+//		} else {
+//			needed_room_size = (numberOfStudents * PERCENT)
+//					/ _conflictsPreference[FILLFULL_RATE_INDEX];
+//			needed_room_rest = (numberOfStudents * PERCENT)
+//					% _conflictsPreference[FILLFULL_RATE_INDEX];
+//		}
 
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
