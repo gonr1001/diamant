@@ -42,7 +42,7 @@ public class EventAttach extends DObject {
 	/**
 	 * @associates String 
 	 */
-	private Vector _tabuList; //
+	private Vector <String> _tabuList; //
 
 	private boolean _isAssigned = false;// tell if this event is placed in the timetable
 
@@ -66,7 +66,7 @@ public class EventAttach extends DObject {
 		_roomRescKey = key2;
 		_eventDuration = eventDuration;
 		_ttsKey = eventPeriod;
-		_tabuList = new Vector();
+		_tabuList = new Vector<String>();
 	}
 
 	public String getPrincipalRescKey() {

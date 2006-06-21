@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.44 $ $Date: 2006-06-20 14:39:26 $
+ * Title: StudentMixingAlgorithm $Revision: 1.45 $ $Date: 2006-06-21 14:57:02 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -110,7 +110,7 @@ public class StudentMixingAlgorithm implements Algorithm {
   private void compileStudents(Vector eventRescList){
     _eventsRescList= eventRescList;//buildEventsVector();
     for(int i=0; i< _eventsRescList.size(); i++){
-      Vector allConvexGroups= new Vector(1);
+      Vector <DSetOfResources> allConvexGroups= new Vector<DSetOfResources>();
       String actID= DXToolsMethods.getToken(_eventsRescList.get(i).toString(),".",0);
       String typeID= DXToolsMethods.getToken(_eventsRescList.get(i).toString(),".",1);
       Type type= _dm.getSetOfActivities().getType(actID,typeID);

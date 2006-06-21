@@ -185,7 +185,7 @@ public class ConflictsAttach extends DObject{
    * @return Vector of dxvalue containing conflict information
    */
   public Vector getConflicts(String eventName, String typeOfConflict){
-    Vector conflict = new Vector();
+    Vector <DObject>conflict = new Vector<DObject>();
     for (int i=0; i< _setOfConflicts.size(); i++){
       DResource conf= _setOfConflicts.getResourceAt(i);
       if(conf.getID().equalsIgnoreCase(eventName)){

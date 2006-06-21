@@ -93,7 +93,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		fileName += "refFiles" + File.separator;
 		fileName += "facs" + File.separator;
 		fileName += "flsh2_1" + File.separator;
-		fileName += "AnotherRoomAffContTT.dia";
+		fileName += "Aut2006flsh170m.dia";
 		int type = 1;
 
 		try {

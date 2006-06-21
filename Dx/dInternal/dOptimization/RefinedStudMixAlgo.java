@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgo $Revision: 1.13 $ $Date: 2006-06-08 21:33:12 $
+ * Title: RefinedStudMixAlgo $Revision: 1.14 $ $Date: 2006-06-21 14:57:02 $
  * Description: RefinedStudMixAlgo  - Algorithme raffiné de formation de groupe
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: caln1901 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -66,7 +66,7 @@ public class RefinedStudMixAlgo{
   * @param allConvGroup
   */
  private void mixStudentsInGroup(String activityID, String typeID, Vector allConvGroups, DSetOfResources sumList){
-   Vector sizeOfGroups= new Vector();
+   Vector <DValue>sizeOfGroups= new Vector<DValue>();
    Type type= _dm.getSetOfActivities().getType(activityID,typeID);
    //System.out.println("*****************Activity: "+ activityID+typeID);// debug
    for(int i=0; i< type.getSetOfSections().size(); i++){
@@ -75,14 +75,14 @@ public class RefinedStudMixAlgo{
      size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
      sizeOfGroups.add(size);
     }// end for(int i=0; i< type.getSetOfSections().size(); i++)
-    Vector removedStudents= new Vector();
-    Vector placedStudents = new Vector();
-    Vector students= buildVectorOfKeys(sumList);
+    Vector <String>removedStudents= new Vector<String>();
+    Vector<String> placedStudents = new Vector<String>();
+    Vector <String> students= buildVectorOfKeys(sumList);
     int level=0;
     while(students.size()>0){
       boolean studentAffected= false;
       for (int i=0; i< students.size(); i++){
-        long studentKey= Long.parseLong((String)students.get(students.size()-1));
+        long studentKey= Long.parseLong(students.get(students.size()-1));
         int groupIndex= getGroupIndex(studentKey, allConvGroups,sizeOfGroups,level);
         if(groupIndex!=-1){
           sizeOfGroups= setStudentInAGroup(studentKey,groupIndex,sizeOfGroups,activityID,typeID);
@@ -103,7 +103,7 @@ public class RefinedStudMixAlgo{
         }
         students.trimToSize();
         for(int i=removedStudents.size()-1; i>=0; i--){
-          String StudKey= (String)removedStudents.get(i);
+          String StudKey= removedStudents.get(i);
           students.add(StudKey);
         }// end for(int i=0; i< removeStudents.size(); i++)
         removedStudents.removeAllElements();
@@ -121,14 +121,14 @@ public class RefinedStudMixAlgo{
   * @param typeID
   * @return
   */
- private Vector setStudentInAGroup(long studentKey, int groupIndex, Vector sizeOfGroups,
+ private Vector <DValue> setStudentInAGroup(long studentKey, int groupIndex, Vector <DValue>sizeOfGroups,
                                  String activityID, String typeID){
    Type type= _dm.getSetOfActivities().getType(activityID,typeID);
    //StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(studentKey).getAttach();   
    Student student= _dm.getSetOfStudents().getStudent(studentKey);
    int group= DxTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(
        groupIndex).getID());//int group= i+1;
-   DValue value= (DValue)sizeOfGroups.get(groupIndex);
+   DValue value= sizeOfGroups.get(groupIndex);
    value.setIntValue(value.getIntValue()+1);
    student.setInGroup(activityID+typeID, group,false);
    return sizeOfGroups;
@@ -168,8 +168,8 @@ public class RefinedStudMixAlgo{
   * @param sor
   * @return
   */
- private Vector buildVectorOfKeys(DSetOfResources sor){
-   Vector vOfKeys = new Vector();
+ private Vector <String> buildVectorOfKeys(DSetOfResources sor){
+   Vector<String> vOfKeys = new Vector<String>();
    for (int i=0; i< sor.size(); i++){
      long key = sor.getResourceAt(i).getKey();
      vOfKeys.add(String.valueOf(key));
@@ -244,7 +244,7 @@ public class RefinedStudMixAlgo{
    * @return
    */
   private Vector getBestGroupsIndex(DSetOfResources setOfConflicts, int level){
-    Vector bestGroupsIndex= new Vector();
+    Vector <DValue> bestGroupsIndex= new Vector<DValue>();
     setOfConflicts.sortSetOfResourcesByID();
     int iteration=0;
     String bestNumOfConf= setOfConflicts.getResourceAt(0).getID();

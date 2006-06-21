@@ -144,10 +144,6 @@ public class DxAssignRoomsAlg implements Algorithm {
 					eventInPeriodName).getAttach();
 			if (eventAttach.getRoomKey() != NO_ROOM_ASSIGNED) {
 				setOfAvailRooms.removeResource(eventAttach.getRoomKey());
-				// Room room =
-				// (Room)_dm.getSetOfRooms().getResource(eventAttach.getRoomKey());
-				// setOfAvailRooms.setCurrentKey(eventAttach.getRoomKey());
-				// setOfAvailRooms.addResource(room,ADD_RESOURCE_BY_KEY);
 			}// end if(eventAttach.getRoomKey() != NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfAvailRooms;
