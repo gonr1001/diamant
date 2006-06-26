@@ -44,7 +44,7 @@ public class DxSetOfInstructors extends DxSetOfRessources {
      *            The new instructor to be inserted
      */
     public void addInstructor(String sName, DxAvailability dxaAva) {
-        DxInstructor dxiTemp = new DxInstructor(0, sName, dxaAva);
+        DxInstructor dxiTemp = new DxInstructor(sName, dxaAva);
         this.addRessource(dxiTemp);
     }
 

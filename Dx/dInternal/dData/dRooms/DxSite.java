@@ -39,17 +39,6 @@ public class DxSite extends DxRessource {
     }
 
     /**
-     * Constructor, lKey is the site key.
-     * 
-     * @param lKey
-     *            Specifies Ressource key
-     */
-    public DxSite(long lKey) {
-        super(lKey);
-        _dxsocCat = new DxSetOfCategories();
-    }
-
-    /**
      * Constructor, sName is the ressource name, ressource key is -1.
      * 
      * @param SName
