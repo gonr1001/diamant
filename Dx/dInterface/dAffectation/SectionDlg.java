@@ -112,7 +112,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 
 	private Vector _typeVector;
 
-	private Vector _assignedVectors[];
+	private Vector <String>_assignedVectors[];
 
 	private Vector _sortVector;
 
@@ -713,7 +713,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(j).getID());
 			for (int k = 0; k < _assignedVectors[j].size(); k++) {
-				studentData = (String) _assignedVectors[j].elementAt(k);
+				studentData =  _assignedVectors[j].elementAt(k);
 				s = (Student) getStudent(studentData);
 
 				if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
@@ -813,7 +813,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	}//end method
 
 	private Vector buildSortVector() {
-		Vector v = new Vector();
+		Vector <String> v = new Vector<String>();
 		v.add(DConst.SORT_BY_NAME);
 		v.add(DConst.SORT_BY_MATRICUL);
 		v.add(DConst.SORT_BY_PROGRAM);

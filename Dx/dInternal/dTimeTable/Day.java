@@ -128,6 +128,38 @@ public class Day extends DObject {
 		}// end for (int i=0; i< size; i++)
 		return _error;
 	}
+	
+	/**
+	 * read a xml tag containing a set of sequences and build the resource
+	 * 
+	 * @param Element
+	 *            the root xml tag of the set of sequences
+	 */
+	public void readXMLTTTag(Element setofSeqs) throws Exception{
+		XMLReader list = new XMLReader();
+		String ID = "";
+		int size = list.getSize(setofSeqs, DConst.TTXML_TTSEQUENCE);
+//		if (size == 0) {
+//			_error = _errorMessage;
+//			return _error;
+//		}
+		for (int i = 0; i < size; i++) {
+			Sequence setOfPeriods = new Sequence();
+			Element sequence = list.getElement(setofSeqs,
+					DConst.TTXML_TTSEQUENCE, i);
+			ID = list.getElementValue(sequence, DConst.TTXML_SEQUENCEID);
+
+			Element periods = list.getElement(sequence, DConst.TTXML_TTPERIODS,
+					0);
+			setOfPeriods.readXMLTTTag(periods);
+//			if (!setOfPeriods.readXMLtag(periods).equals("")) {
+//				_error = _errorMessage;
+//				return _error;
+//			}
+			_setOfSequences.addResource(new DResource(ID, setOfPeriods), 0);
+		}// end for (int i=0; i< size; i++)
+//		return _error;
+	}
 
 	/**
 	 * Contruct a xml element from the set of sequences

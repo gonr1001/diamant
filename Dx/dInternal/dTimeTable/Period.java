@@ -242,6 +242,42 @@ public class Period extends DObject {
 		//System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
 	}
 	
+	
+	/**
+	 *read a xml tag containing a period and build the resource
+	 * @param Element the root xml tag of a period
+	 * */
+	public void readXMLTTTag(Element setPeriod) throws Exception{
+		XMLReader list= new XMLReader();
+		String begin, end, prior;
+		begin= list.getElementValue(setPeriod,DConst.TTXML_BEGINTIME);
+		StringTokenizer time= new StringTokenizer(begin,":");
+		end= list.getElementValue(setPeriod,DConst.TTXML_ENDTIME);
+		prior= list.getElementValue(setPeriod,DConst.TTXML_PRIORITY);
+		_beginHour[0]= Integer.parseInt(time.nextToken());
+		_beginHour[1]= Integer.parseInt(time.nextToken());
+		_priority= Integer.parseInt(prior);
+		
+		try {
+			StringTokenizer timeend= new StringTokenizer(end,":");
+			_endHour[0]= Integer.parseInt(timeend.nextToken());
+			_endHour[1]= Integer.parseInt(timeend.nextToken());
+		} catch (Exception e) {
+			_endHour[1] = (_beginHour[1] + 60) % MINUTES;//
+			_endHour[0] = _beginHour[0] + (_beginHour[1] + 60)/MINUTES;
+
+		}
+		
+		
+//		if (begin == null || end == null || prior == null){
+//			_error = DConst.ERROR_XML;
+//			return _error;
+//		}
+//		return _error;
+		
+		//System.out.println(" Period properties -- begin: "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority: "+prior);//debug
+	}
+	
 	/**
 	 * Contruct a xml element from this period
 	 * @param Document the root xml document

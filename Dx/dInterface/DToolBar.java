@@ -377,8 +377,16 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 	public void setToolBarTwo() {
 		_periodSelector.disableActionListeners();
 		_comboBoxStatus = false;
-		JPanel thePane = (JPanel) _dApplic.getCurrentDoc()
-				.getTTPane().getViewport().getComponent(0);
+		JPanel thePane = null;
+		if (DConst.newDoc) {
+			thePane = (JPanel) _dApplic.getCurrentDxDoc()
+			.getTTPane().getViewport().getComponent(0);
+		} else {
+			thePane = (JPanel) _dApplic.getCurrentDoc()
+			.getTTPane().getViewport().getComponent(0);
+		}
+//		JPanel thePane = (JPanel) _dApplic.getCurrentDoc()
+//				.getTTPane().getViewport().getComponent(0);
 		//int nbOfPeriods= ttPanel.getComponentCount();
 		_periodSelector.removeAllItems();
 		for (int i = 0; i < thePane.getComponentCount(); i++) {

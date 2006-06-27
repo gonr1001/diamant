@@ -26,14 +26,12 @@ import javax.swing.JOptionPane;
 
 import dConstants.DConst;
 
-
 import eLib.exit.dialog.FatalProblemDlg;
 
 /**
- * Description: DMediator is a class used as in the pattern
- *     mediator to make a link between DApplication and the
- *     current DDocument. There is only one currect document
- *     the one which is at the top of all jInternalFrames
+ * Description: DMediator is a class used as in the pattern mediator to make a
+ * link between DApplication and the current DDocument. There is only one
+ * currect document the one which is at the top of all jInternalFrames
  * 
  * <p>
  * 
@@ -44,15 +42,16 @@ public class DMediator extends Object {
 
 	private DApplication _dApplication;
 
-	private Vector <DDocument> _documents;
+	private Vector<DDocument> _documents;
+	private Vector<DxDocument> _dxDocuments;
 
 	private boolean _cancel;
 
 	// -----------------------------
-
 	public DMediator(DApplication dApplic) {
 		_dApplication = dApplic;
-		_documents = new Vector <DDocument>();
+		_documents = new Vector<DDocument>();
+		_dxDocuments = new Vector<DxDocument>();
 		_cancel = false;
 	} // end Mediator
 
@@ -70,10 +69,11 @@ public class DMediator extends Object {
 	 * @param type
 	 *            is the type of timetable to be constructed possible types
 	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
-	 * @throws Exception 
+	 * @throws Exception
 	 * 
 	 */
-	public String addDoc(String ttName, String fileName, int type) throws Exception /*!!!NIC!!!*/{
+	public String addDoc(String ttName, String fileName, int type)
+			throws Exception /* !!!NIC!!! */{
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if (currentDoc.getError().length() == 0) {
 			_documents.addElement(currentDoc);
@@ -82,8 +82,7 @@ public class DMediator extends Object {
 			_dApplication.hideToolBar();
 		} else {
 			new FatalProblemDlg(_dApplication.getJFrame(),
-                    "In DMediator.addDoc: " + currentDoc
-					.getError());
+					"In DMediator.addDoc: " + currentDoc.getError());
 			System.exit(1);
 		}
 		return currentDoc.getError();
@@ -96,16 +95,15 @@ public class DMediator extends Object {
 	 *            is the full path file name containing the TTStructure
 	 * @param type
 	 *            is the type of timetable to be constructed
-	 * @throws Exception 
+	 * @throws Exception
 	 * 
 	 */
-	public String addDoc(String fileName, int type) throws Exception /*!!!NIC!!!*/{
+	public String addDoc(String fileName, int type) throws Exception /* !!!NIC!!! */{
 		_dApplication.setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);
 
 		if (currentDoc.getError().length() == 0) {
-			// currentDoc.getDM().addAllListeners();
 			_dApplication.getToolBar().setToolBars(
 					currentDoc.getCurrentDModel().getTTStructure());
 		} else {
@@ -117,13 +115,103 @@ public class DMediator extends Object {
 		return currentDoc.getError();
 	} // end addDoc
 
+	
+	/**
+	 * for new tt and for open tt
+	 * 
+	 * @param ttname
+	 *            This string will be displayed as the title of the JIF
+	 * @param fileName
+	 *            is the full path file name containing the TTStructure
+	 * @param type
+	 *            is the type of timetable to be constructed possible types
+	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * @throws Exception
+	 * 
+	 */
+	public String addDxTTCycleDoc(String ttName, String fileName)
+			throws Exception /* !!!NIC!!! */{
+		DxDocument currentDoc = new DxTTCycleDoc(this, ttName, fileName);
+//		if (currentDoc.getError().length() == 0) {
+			_dxDocuments.addElement(currentDoc);
+			_dApplication.getToolBar().setToolBars(
+					currentDoc.getCurrentDModel().getTTStructure());
+			_dApplication.hideToolBar();
+//		} else {
+//			new FatalProblemDlg(_dApplication.getJFrame(),
+//					"In DMediator.addDoc: " + currentDoc.getError());
+//			System.exit(1);
+//		}
+//	return currentDoc.getError();
+		return "error";
+	} // end addDoc
+
+	/**
+	 * for new ttStructure and for open ttStructure
+	 * 
+	 * @param fileName
+	 *            is the full path file name containing the TTStructure
+	 * @param type
+	 *            is the type of timetable to be constructed
+	 * @throws Exception
+	 * 
+	 */
+	public String addDxTTExamDoc(String fileName, int type) throws Exception /* !!!NIC!!! */{
+		_dApplication.setCursorWait();
+		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
+		_documents.addElement(currentDoc);
+
+		if (currentDoc.getError().length() == 0) {
+			_dApplication.getToolBar().setToolBars(
+					currentDoc.getCurrentDModel().getTTStructure());
+		} else {
+			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
+					.getError());
+			System.exit(1);
+		}
+		_dApplication.setCursorDefault();
+		return currentDoc.getError();
+	} // end addDoc
+	
+	
+	/**
+	 * for new ttStructure and for open ttStructure
+	 * 
+	 * @param fileName
+	 *            is the full path file name containing the TTStructure
+	 * @param type
+	 *            is the type of timetable to be constructed
+	 * @throws Exception
+	 * 
+	 */
+	public String addDxTTStructureDoc(String fileName) throws Exception /* !!!NIC!!! */{
+		
+		DxDocument currentDoc = new DxTTStructureDoc(this, fileName, fileName);
+		_dxDocuments.addElement(currentDoc);
+
+//		if (currentDoc.getError().length() == 0) {
+			_dApplication.getToolBar().setToolBars(
+					currentDoc.getTTStructure());
+////		} else {
+//			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
+//					.getError());
+//			System.exit(1);
+//		}
+		
+		return "error";
+	} // end addDoc
+	
+	
+	
+	
 	public void removeCurrentDoc() {
 		_documents.remove(getCurrentDoc());
 		if (_documents.size() != 0) {
 			try {
 				_documents.get(0).getJIF().setSelected(true);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(), "In DMediator.removeCurrentDoc: " + e.toString());
+				new FatalProblemDlg(_dApplication.getJFrame(),
+						"In DMediator.removeCurrentDoc: " + e.toString());
 				System.exit(1);
 			}
 		} else {// end if (_documents.size()!=0)
@@ -174,20 +262,42 @@ public class DMediator extends Object {
 			try {
 				currentDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(), "In DMediator.getCurrentDoc: " + e.toString());
+				new FatalProblemDlg(_dApplication.getJFrame(),
+						"In DMediator.getCurrentDoc: " + e.toString());
 				System.exit(1);
 			}
 			return currentDoc;
 		}
 		return null;
 	} // end getCurrentDoc
-
+	public DxDocument getCurrentDxDoc() {
+		DxDocument currentDoc = null;
+		for (int i = 0; i < _dxDocuments.size(); i++) {
+			currentDoc = _dxDocuments.elementAt(i);
+			JInternalFrame currentFrame = currentDoc.getJIF();
+			if (currentFrame.isSelected()) {
+				return currentDoc;
+			} // end if
+		} // end for
+		if (_dxDocuments.size() != 0) {
+			currentDoc = _dxDocuments.elementAt(0);
+			try {
+				currentDoc.getJIF().setIcon(false);
+			} catch (PropertyVetoException e) {
+				new FatalProblemDlg(_dApplication.getJFrame(),
+						"In DMediator.getCurrentDoc: " + e.toString());
+				System.exit(1);
+			}
+			return currentDoc;
+		}
+		return null;
+	}
 	// -------------------------------------------
 	public JInternalFrame getCurrentFrame() {
 		DDocument currentDoc = getCurrentDoc();
 		if (currentDoc != null) {
 			return currentDoc.getJIF();
-		} 
+		}
 		return null;
 	} // end getCurrentFrame
 
@@ -225,4 +335,6 @@ public class DMediator extends Object {
 	public DApplication getDApplication() {
 		return _dApplication;
 	}
+
+
 } /* end class DMediator */

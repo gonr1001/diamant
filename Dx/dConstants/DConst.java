@@ -37,6 +37,9 @@ public class DConst {
     
 	public static boolean newAlg = false;
 //	public static boolean newAlg = false;
+	
+	public static boolean newDoc = true;
+//	public static boolean newDoc = false;
     
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2

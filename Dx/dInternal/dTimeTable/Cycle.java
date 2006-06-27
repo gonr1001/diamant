@@ -202,6 +202,39 @@ public class Cycle extends DObject {
 		return _error;
 	}
 
+	
+	/**
+	 * read a xml tag containing a set of days and build the resource
+	 * 
+	 * @param Element
+	 *            the root xml tag of the set of days
+	 */
+	public void readXMLTTTag(Element setofDays) throws Exception{
+		XMLReader list = new XMLReader();
+		String ID = "";
+		String key = "";
+		int size = list.getSize(setofDays, DConst.TTXML_TTDAY);
+//		if (size == 0) {
+//			_error = _errorMessage;
+//			return _error;
+//		}
+		for (int i = 0; i < size; i++) {
+			Day setOfSequences = new Day();
+			Element day = list.getElement(setofDays, DConst.TTXML_TTDAY, i);
+			ID = list.getElementValue(day, DConst.TTXML_DAYID);
+			key = list.getElementValue(day, DConst.TTXML_DAYREF);
+			Element sequences = list.getElement(day, DConst.TTXML_TTSEQUENCES,
+					0);
+			setOfSequences.readXMLTTTag(sequences);
+//			if (!setOfSequences.readXMLtag(sequences).equals("")) {
+//				_error = _errorMessage;
+//				return _error;
+//			}
+			_setOfDays.setCurrentKey(Integer.parseInt(key));
+			_setOfDays.addResource(new DResource(ID, setOfSequences), 0);
+		}// end for (int i=0; i< size; i++)
+//		return _error;
+	}
 	/**
 	 * Contruct a xml element from the set of days
 	 * 

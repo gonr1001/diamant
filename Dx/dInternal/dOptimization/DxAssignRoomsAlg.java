@@ -51,13 +51,11 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 	DResource _allRscFunct;
 
-	int[] _conflictsPreference;
-
 	DxConflictLimits _dxCL;
 
 	/**
-	 * Constructeur
 	 * 
+	 * @param dm
 	 * @param limits
 	 */
 	public DxAssignRoomsAlg(DModel dm, DxConflictLimits limits) {
@@ -65,13 +63,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
 		_dm.getConditionsTest().extractPreference();
-//		if (DConst.newAlg) {
-			_dxCL = limits;
-//		} else {
-//			_conflictsPreference = _dm.getDDocument().getDMediator()
-//					.getDApplication().getPreferences().getConflictLimits();
-//		}
-
+		_dxCL = limits;
 		setNoRoomToEventsWithRoomsNotFixed();
 	}
 
@@ -109,7 +101,6 @@ public class DxAssignRoomsAlg implements Algorithm {
 				}// end for(int k= 0; k < sor.size();k++)
 			}// end while
 		}// end for
-
 		_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 				eventsToUpdate);
 	}
@@ -226,22 +217,15 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *         et false sinon.
 	 */
 	private boolean isAddPossible(Room room, DResource event) {
-//		int FILLFULL_RATE_INDEX = 6;
 		int PERCENT = 100;
 		int needed_room_size = 0;
 		int needed_room_rest = 0;
 		int numberOfStudents = Integer.parseInt(event.getID());
-//		if (DConst.newAlg) {
-			needed_room_size = (numberOfStudents * PERCENT)
-					/ _dxCL.getRoomBookingRate();
-			needed_room_rest = (numberOfStudents * PERCENT)
-					% _dxCL.getRoomBookingRate();
-//		} else {
-//			needed_room_size = (numberOfStudents * PERCENT)
-//					/ _conflictsPreference[FILLFULL_RATE_INDEX];
-//			needed_room_rest = (numberOfStudents * PERCENT)
-//					% _conflictsPreference[FILLFULL_RATE_INDEX];
-//		}
+
+		needed_room_size = (numberOfStudents * PERCENT)
+				/ _dxCL.getRoomBookingRate();
+		needed_room_rest = (numberOfStudents * PERCENT)
+				% _dxCL.getRoomBookingRate();
 
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
@@ -250,15 +234,12 @@ public class DxAssignRoomsAlg implements Algorithm {
 					.getKey()) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;
-			}// end if(((EventAttach)event.getAttach()).getRoomFunction() ==
-			// allRscFunct.getKey()){
+			}// end if
 			else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
 					.getRoomFunction())) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;
 			}// end else
-			// if((((EventAttach)event.getAttach()).getRoomFunction() ==
-			// room.getRoomFunction()))
 		}// end if(allRscFunct!= null)
 		return false;
 	}

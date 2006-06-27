@@ -232,6 +232,11 @@ public class DApplication { // implements ActionListener {
 	public DDocument getCurrentDoc() {
 		return _dMediator.getCurrentDoc();
 	} // end getCurrentDoc
+	
+	
+	public DxDocument getCurrentDxDoc() {
+		return _dMediator.getCurrentDxDoc();
+	}
 
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
@@ -378,29 +383,28 @@ public class DApplication { // implements ActionListener {
 	public void newTTableCycle() {
 		new NewTimeTableDlg(this, DConst.CYCLE);
 		this.setCurrentDir(_fileToOpen);
-		// String error; !!!NIC!!!
-		try {/* !!!NIC!!! */
-			/* error = !!!NIC!!! */this.getDMediator().addDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
-					DConst.CYCLE);
-		} catch (Exception e) {/* !!!NIC!!! */
-			// TODO Auto-generated catch block
-			e.printStackTrace();/* !!!NIC!!! */
-		}/* !!!NIC!!! */
 
-		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans
-		// dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme
-		// new FatalProblemDlg(dApplic.getJFrame(),error);
-		// System.exit(1);
-		//
-		// De plus, par convention, les valeurs positives de sortie d'une
-		// application indiquent que tout s'est BIEN passe. Il faudrait
-		// retourner une valeur negative quand un probleme majeur survient.
-		// !!!NIC!!! if (error.length() != 0) {
-		// !!!NIC!!! new FatalProblemDlg(this.getJFrame(), error);
-		// !!!NIC!!! System.exit(1);
-		// !!!NIC!!! }
-		_dxMenuBar.afterNewTTable();
+		if (DConst.newDoc) {
+			try {
+				this.getDMediator().addDxTTCycleDoc(
+						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
+				_dxMenuBar.afterNewTTable();
+			} catch (Exception e) {
+				new FatalProblemDlg(this._jFrame, e.toString());
+				e.printStackTrace();
+			}
+		} else {
+			try {/* !!!NIC!!! */
+				/* error = !!!NIC!!! */this.getDMediator().addDoc(
+						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
+						DConst.CYCLE);
+				_dxMenuBar.afterNewTTable();
+			} catch (Exception e) {/* !!!NIC!!! */
+				// TODO Auto-generated catch block
+				e.printStackTrace();/* !!!NIC!!! */
+			}/* !!!NIC!!! */
+		}
+
 	}
 
 	/**
@@ -434,23 +438,32 @@ public class DApplication { // implements ActionListener {
 	}
 
 	/**
-	 * the Time table can be cycle or exam
-	 */
-	// public void afterNewTTable() {
-	// _dxMenuBar.afterNewTTable();
-	// }
-	/**
 	 * 
 	 */
 	public void newTTStrucCycle() {
 		this.showToolBar();
-		try {
-			this._dMediator.addDoc(this.getPreferences()._standardTTC,
-					DConst.NO_TYPE);
-		} catch (Exception e) {
-			/* !!!NIC!!! */
+		this.setCursorWait();
+		if (DConst.newDoc) {
+			try {
+				 this._dMediator.addDxTTStructureDoc(this.getPreferences()._standardTTC);
+				 _dxMenuBar.afterNewTTStruc();
+			} catch (Exception e) {
+				new FatalProblemDlg(this._jFrame, e.toString());
+				//as a complement
+				e.printStackTrace();
+				this.hideToolBar();
+			}
+		} else {
+			try {
+				this._dMediator.addDoc(this.getPreferences()._standardTTC,
+						DConst.NO_TYPE);
+				_dxMenuBar.afterNewTTStruc();
+			} catch (Exception e) {
+				/* !!!NIC!!! */
+			}
 		}
-		_dxMenuBar.afterNewTTStruc();
+		this.setCursorDefault();
+
 	}
 
 	/**
@@ -722,17 +735,16 @@ public class DApplication { // implements ActionListener {
 	public void doTheTimeTable() {
 		this.setCursorWait();
 
-	   	if(DConst.newAlg) {
-	   		new DxAssignAllAlg(this.getCurrentDModel(), this.getPreferences().getDxConflictLimits()).doWork();
-	   		
-	   	} else {
+		if (DConst.newAlg) {
+			new DxAssignAllAlg(this.getCurrentDModel(), this.getPreferences()
+					.getDxConflictLimits()).doWork();
+
+		} else {
 			int _selectedContext = 0;
 			(new SelectAlgorithm(this.getCurrentDModel(), _selectedContext))
 					.execute();
-	   	}
+		}
 
-
-		
 		this.setCursorDefault();
 		new InformationDlg(this.getJFrame(), DConst.TT_BUILD_MESSAGE);
 	}
@@ -849,7 +861,8 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAssignment() {
 		if (DConst.newAlg) {
-			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getPreferences().getDxConflictLimits()).doWork();
+			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getPreferences()
+					.getDxConflictLimits()).doWork();
 			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDModel());
@@ -896,5 +909,7 @@ public class DApplication { // implements ActionListener {
 	public void setFileToOpen(String absolutePath) {
 		_fileToOpen = absolutePath;
 	}
+
+
 
 } /* end class DApplication */

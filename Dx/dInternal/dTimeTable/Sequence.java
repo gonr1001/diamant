@@ -105,6 +105,32 @@ public class Sequence extends DObject {
 	}
 
 	/**
+	 * read a xml tag containing a set of periods and build the resource
+	 * 
+	 * @param Element
+	 *            the root xml tag of the set of periods
+	 */
+	public void readXMLTTTag(Element setofPers)throws Exception {
+		XMLReader list = new XMLReader();
+		int size = list.getSize(setofPers, DConst.TTXML_TTPERIOD);
+//		if (size == 0) {
+//			_error = _errorMessage;
+//			return _error;
+//		}
+		for (int i = 0; i < size; i++) {
+			Period period = new Period();
+			Element per = list.getElement(setofPers, DConst.TTXML_TTPERIOD, i);
+			String periodID = list.getElementValue(per, DConst.TTXML_PERIODID);
+			period.readXMLTTTag(per);
+//			if (!period.readXMLtag(per).equals("")) {
+//				_error = _errorMessage;
+//				return _error;
+//			}
+			_setOfPeriods.addResource(new DResource(periodID, period), 0);
+		}// end for (int i=0; i< size; i++)
+//		return _error;
+	}
+	/**
 	 * Contruct a xml element from the set of periods
 	 * 
 	 * @param Document
