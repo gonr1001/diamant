@@ -214,8 +214,8 @@ public class DxInstructorsReaderTest extends TestCase {
             DxSetOfInstructors dxsoiTemp = dxriTest.getSetOfInstructors();
             assertNotSame("test5_getSetOfInstructors: assertNotSame",
                     dxsoiTemp, null);
-            assertEquals("test5_1_getSetOfInstructors: assertEquals", dxsoiTemp
-                    .getInstructorName(1), "JAC");
+            assertEquals("test5_1_getSetOfInstructors: assertEquals", "JAC", dxsoiTemp
+                    .getInstructorName(1));
             assertEquals("test5_2_getSetOfInstructors: assertEquals", dxsoiTemp
                     .getInstructorName(2), "POLM");
         } catch (Exception e) {

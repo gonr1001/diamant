@@ -39,12 +39,12 @@ public class DxSetOfRessources implements Iterable {
 
     private boolean _bNamesSorted;
 
-    private long _lUniqueKey;
+    //private long _lUniqueKey;
 
     public DxSetOfRessources() {
         _vRessourceSortedByKey = new Vector<DxRessource>();
         _vRessourceSortedByName = new Vector<DxRessource>();
-        _lUniqueKey = 1;
+        //_lUniqueKey = 1;
         _bNamesSorted = false;
     }
 
@@ -56,7 +56,7 @@ public class DxSetOfRessources implements Iterable {
      *            Ressource that has to be added to the set
      */
     public void addRessource(DxRessource dxrRes) {
-        dxrRes.setRessourceKey(_lUniqueKey++);
+        //dxrRes.setRessourceKey(_lUniqueKey++);
         _vRessourceSortedByKey.add(dxrRes);
         _vRessourceSortedByName.add(dxrRes);
         _bNamesSorted = false;

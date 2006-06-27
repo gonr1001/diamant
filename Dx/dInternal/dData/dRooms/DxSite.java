@@ -29,14 +29,8 @@ import dInternal.dData.DxRessource;
  * 
  */
 public class DxSite extends DxRessource {
+    private static long _lUniqueKey=1;
     private DxSetOfCategories _dxsocCat;
-
-    /**
-     * Default constructor
-     */
-    public DxSite() {
-        _dxsocCat = new DxSetOfCategories();
-    }
 
     /**
      * Constructor, sName is the ressource name, ressource key is -1.
@@ -45,21 +39,7 @@ public class DxSite extends DxRessource {
      *            Specifies Ressource name
      */
     public DxSite(String sName) {
-        super(sName);
-        _dxsocCat = new DxSetOfCategories();
-    }
-
-    /**
-     * Constructor, sName is the ressource name, lKey is the ressource key.
-     * 
-     * @param lKey
-     *            Specifies Ressource key
-     * @param sName
-     *            Specifies Ressource name
-     * 
-     */
-    public DxSite(long lKey, String sName) {
-        super(lKey, sName);
+        super(_lUniqueKey++,sName);
         _dxsocCat = new DxSetOfCategories();
     }
 

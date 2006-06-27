@@ -32,24 +32,11 @@ import dInternal.dData.DxRessource;
  * 
  */
 public class DxCategory extends DxRessource {
+    private static long _lUniqueKey=1;
     private DxSetOfRooms _dxsorRooms;
 
-    public DxCategory() {
-        _dxsorRooms = new DxSetOfRooms();
-    }
-
-    public DxCategory(long lKey) {
-        super(lKey);
-        _dxsorRooms = new DxSetOfRooms();
-    }
-
     public DxCategory(String sName) {
-        super(sName);
-        _dxsorRooms = new DxSetOfRooms();
-    }
-
-    public DxCategory(long lKey, String sName) {
-        super(lKey, sName);
+        super(_lUniqueKey++,sName);
         _dxsorRooms = new DxSetOfRooms();
     }
 

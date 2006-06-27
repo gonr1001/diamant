@@ -35,6 +35,7 @@ import dInternal.dData.DxRessource;
  * 
  */
 public class DxRoom extends DxRessource {
+    private static long _lUniqueKey=1;
     private int _nCapacity;
 
     // Next members are not required but are provided in legacy files
@@ -49,7 +50,7 @@ public class DxRoom extends DxRessource {
 
     public DxRoom(String sRoomName, int nCapacity, int nFunction,
             Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {
-        super(sRoomName);
+        super(_lUniqueKey++,sRoomName);
         _nCapacity = nCapacity;
         _nFunction = nFunction;
         _viCharacteristics = viChar;

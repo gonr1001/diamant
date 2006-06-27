@@ -49,28 +49,6 @@ public class DxRessource {
     }
 
     /**
-     * Constructor, lKey is the ressource key, ressource name is null.
-     * 
-     * @param lKey
-     *            Specifies Ressource key
-     */
-    public DxRessource(long lKey) {
-        _lKey = lKey;
-        _sName = null;
-    }
-
-    /**
-     * Constructor, sName is the ressource name, ressource key is -1.
-     * 
-     * @param SName
-     *            Specifies Ressource name
-     */
-    public DxRessource(String sName) {
-        _lKey = -1;
-        _sName = sName;
-    }
-
-    /**
      * Constructor, sName is the ressource name, lKey is the ressource key.
      * 
      * @param lKey

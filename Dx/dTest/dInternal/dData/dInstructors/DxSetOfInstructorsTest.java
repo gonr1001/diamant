@@ -72,7 +72,7 @@ public class DxSetOfInstructorsTest extends TestCase {
                 .size() - 1), "Erick");
         assertEquals("test1_addInstructor: assertEquals", vTemp.get(0), "Alex");
 
-        soiTest.removeInstructor(1);
+        soiTest.removeInstructor(soiTest.getInstructorKeyByName("Erick"));
         assertEquals("test_removeInstructor: assertEquals",  -1, soiTest.getInstructorKeyByName("Erick"));
         
         assertEquals("test_getInstructorKeyByName: assertEquals", 5, soiTest.getInstructorKeyByName("Alex"));
