@@ -45,7 +45,7 @@ public class RoomAttach extends AvailabilityAttach {
 		_capacity = 0;
 		_description = "";
 		_function = -1;
-		_ressourceAvailability = new Vector();
+		_ressourceAvailability = new Vector<String>();
 		_setOfCaracteristics = new SetOfCaracteristics();
 	}
 
@@ -109,7 +109,7 @@ public class RoomAttach extends AvailabilityAttach {
 	 * clear and set roomDisp INPUT: Vector of new room availability (roomDisp)
 	 */
 	public void setAvailability(Vector roomDisp) {
-		_ressourceAvailability = new Vector();
+		_ressourceAvailability = new Vector<String>();
 		_ressourceAvailability = (Vector) roomDisp.clone();
 	}
 
@@ -161,7 +161,7 @@ public class RoomAttach extends AvailabilityAttach {
 	}
 
 	public void setAvailability(int[][] a) {
-		_ressourceAvailability = new Vector();
+		_ressourceAvailability = new Vector<String>();
 		String str = "";
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a[i].length; j++) {
