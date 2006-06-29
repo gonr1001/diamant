@@ -23,7 +23,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxSetOfRessources;
+import dInternal.dData.DxSetOfResources;
 
 
 /**
@@ -35,7 +35,7 @@ import dInternal.dData.DxSetOfRessources;
  * <p>
  * 
  */
-public class DxSetOfRooms extends DxSetOfRessources{
+public class DxSetOfRooms extends DxSetOfResources{
 
     public DxRoom getRoom(long lRoomKey) {
         try{

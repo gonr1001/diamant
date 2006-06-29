@@ -2,7 +2,7 @@
  * Created on May 31st, 2006
  * 
  * 
- * Title: DxRessource.java 
+ * Title: DxResource.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -21,7 +21,7 @@ import java.util.Comparator;
 /**
  * Nicolas Calderon
  * 
- * Description: DxRessource is a class used to:
+ * Description: DxResource is a class used to:
  * <p>
  * Contains a ressource generical informations like key and name. Ressource will
  * usually be sublcassed to implements more attributes. Attributes like name and
@@ -31,7 +31,7 @@ import java.util.Comparator;
  * <p>
  * 
  */
-public class DxRessource {
+public class DxResource {
 
     // -1 if not attributed, 0 is never attributed by a set
     private long _lKey;
@@ -43,7 +43,7 @@ public class DxRessource {
      * _sName=null)
      * 
      */
-    public DxRessource() {
+    public DxResource() {
         _lKey = -1;
         _sName = null;
     }
@@ -57,7 +57,7 @@ public class DxRessource {
      *            Specifies Ressource name
      * 
      */
-    public DxRessource(long lKey, String sName) {
+    public DxResource(long lKey, String sName) {
         _lKey = lKey;
         _sName = sName;
     }
@@ -95,8 +95,8 @@ public class DxRessource {
      * Method that will be used for Sort and BinarySearch in a Name ordered
      * vector
      */
-    public static Comparator<DxRessource> NameComparator = new Comparator<DxRessource>() {
-        public int compare(DxRessource left, DxRessource right) {
+    public static Comparator<DxResource> NameComparator = new Comparator<DxResource>() {
+        public int compare(DxResource left, DxResource right) {
             return left._sName.compareTo(right._sName);
         }
     };
@@ -105,8 +105,8 @@ public class DxRessource {
      * Method that will be used for Sort and BinarySearch in a Key ordered
      * vector
      */
-    public static Comparator<DxRessource> KeyComparator = new Comparator<DxRessource>() {
-        public int compare(DxRessource left, DxRessource right) {
+    public static Comparator<DxResource> KeyComparator = new Comparator<DxResource>() {
+        public int compare(DxResource left, DxResource right) {
             long diff = left._lKey - right._lKey;
             if (diff > 0)
                 return 1;

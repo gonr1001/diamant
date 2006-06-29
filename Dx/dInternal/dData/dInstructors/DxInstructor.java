@@ -20,7 +20,7 @@
 package dInternal.dData.dInstructors;
 
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxRessource;
+import dInternal.dData.DxResource;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -31,7 +31,7 @@ import dInternal.dData.DxRessource;
  * <p>
  * 
  */
-public class DxInstructor extends DxRessource{
+public class DxInstructor extends DxResource{
     private static long lKey=1;
     private DxAvailability _availability;
 

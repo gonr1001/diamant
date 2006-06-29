@@ -23,7 +23,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxSetOfRessources;
+import dInternal.dData.DxSetOfResources;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -34,7 +34,7 @@ import dInternal.dData.DxSetOfRessources;
  * <p>
  * 
  */
-public class DxSetOfSites extends DxSetOfRessources {
+public class DxSetOfSites extends DxSetOfResources {
     /**
      * Adds a site to the set of sites if this one is not already part of the
      * set of sites.

@@ -22,7 +22,7 @@ package dInternal.dData.dInstructors;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxSetOfRessources;
+import dInternal.dData.DxSetOfResources;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -35,7 +35,7 @@ import dInternal.dData.DxSetOfRessources;
  * 
  */
 
-public class DxSetOfInstructors extends DxSetOfRessources {
+public class DxSetOfInstructors extends DxSetOfResources {
 
     /**
      * Adds an instructor to the set

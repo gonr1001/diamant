@@ -23,7 +23,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxSetOfRessources;
+import dInternal.dData.DxSetOfResources;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -34,7 +34,7 @@ import dInternal.dData.DxSetOfRessources;
  * <p>
  * 
  */
-public class DxSetOfCategories extends DxSetOfRessources {
+public class DxSetOfCategories extends DxSetOfResources {
     public DxCategory getCat(long lCatKey) {
         try {
             return ((DxCategory) this.getRessource(lCatKey));

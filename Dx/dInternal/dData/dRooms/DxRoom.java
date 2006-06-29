@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxRessource;
+import dInternal.dData.DxResource;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -34,7 +34,7 @@ import dInternal.dData.DxRessource;
  * <p>
  * 
  */
-public class DxRoom extends DxRessource {
+public class DxRoom extends DxResource {
     private static long _lUniqueKey=1;
     private int _nCapacity;
 

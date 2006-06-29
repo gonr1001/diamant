@@ -32,18 +32,18 @@ import java.util.Vector;
  * <p>
  * 
  */
-public class DxSetOfRessources implements Iterable {
-    private Vector<DxRessource> _vRessourceSortedByKey;
+public class DxSetOfResources implements Iterable {
+    private Vector<DxResource> _vRessourceSortedByKey;
 
-    private Vector<DxRessource> _vRessourceSortedByName;
+    private Vector<DxResource> _vRessourceSortedByName;
 
     private boolean _bNamesSorted;
 
     //private long _lUniqueKey;
 
-    public DxSetOfRessources() {
-        _vRessourceSortedByKey = new Vector<DxRessource>();
-        _vRessourceSortedByName = new Vector<DxRessource>();
+    public DxSetOfResources() {
+        _vRessourceSortedByKey = new Vector<DxResource>();
+        _vRessourceSortedByName = new Vector<DxResource>();
         //_lUniqueKey = 1;
         _bNamesSorted = false;
     }
@@ -55,7 +55,7 @@ public class DxSetOfRessources implements Iterable {
      * @param dxrRes
      *            Ressource that has to be added to the set
      */
-    public void addRessource(DxRessource dxrRes) {
+    public void addRessource(DxResource dxrRes) {
         //dxrRes.setRessourceKey(_lUniqueKey++);
         _vRessourceSortedByKey.add(dxrRes);
         _vRessourceSortedByName.add(dxrRes);
@@ -68,7 +68,7 @@ public class DxSetOfRessources implements Iterable {
      * @param dxrRes
      *            Ressource that has to be added to the set
      */
-    public void addRessources(DxSetOfRessources dxsorRessources) {
+    public void addRessources(DxSetOfResources dxsorRessources) {
         for (int i = 0; i < dxsorRessources.size(); i++) {
             this.addRessource(dxsorRessources._vRessourceSortedByKey.get(i));
         }
@@ -134,7 +134,7 @@ public class DxSetOfRessources implements Iterable {
      *            Index of the instructor whose name is wanted
      * @return String The name of the instructor, null if the index was invalid
      */
-    public DxRessource getRessource(long lKey) {
+    public DxResource getRessource(long lKey) {
         int nIndex = getSortedKeyIndexByKey(lKey);
         if (nIndex >= 0) {
             return _vRessourceSortedByKey.get(nIndex);
@@ -150,7 +150,7 @@ public class DxSetOfRessources implements Iterable {
      * @return String The name of the instructor, null if the index was invalid
      */
     public String getRessourceName(long lKey) {
-        DxRessource dxrTemp = getRessource(lKey);
+        DxResource dxrTemp = getRessource(lKey);
         if (dxrTemp != null) {
             return dxrTemp.getRessourceName();
         }
@@ -165,13 +165,13 @@ public class DxSetOfRessources implements Iterable {
      *            Name of the ressource we need
      * @return The ressource
      */
-    public DxRessource getRessourceByName(String sName) {
+    public DxResource getRessourceByName(String sName) {
         if (!_bNamesSorted) {
             sortRessources();
         }
-        DxRessource dxrTemp = new DxRessource(0, sName);
+        DxResource dxrTemp = new DxResource(0, sName);
         int nIndex = Collections.binarySearch(_vRessourceSortedByName, dxrTemp,
-                DxRessource.NameComparator);
+                DxResource.NameComparator);
         if (nIndex >= 0) {
             return _vRessourceSortedByName.get(nIndex);
         }
@@ -191,7 +191,7 @@ public class DxSetOfRessources implements Iterable {
         if (!_bNamesSorted) {
             sortRessources();
         }
-        DxRessource dxrTemp = getRessourceByName(sName);
+        DxResource dxrTemp = getRessourceByName(sName);
         if (dxrTemp != null) {
             return dxrTemp.getRessourceKey();
         }
@@ -205,7 +205,7 @@ public class DxSetOfRessources implements Iterable {
      *            index of the ressource we need
      * @return The ressource, null if index was invalid
      */
-    public DxRessource getRessourceByNameIndex(int nIndex) {
+    public DxResource getRessourceByNameIndex(int nIndex) {
         if (!_bNamesSorted) {
             sortRessources();
         }
@@ -247,9 +247,9 @@ public class DxSetOfRessources implements Iterable {
      * @return Index of the ressource if found, -1 if not
      */
     private int getSortedKeyIndexByKey(long lKey) {
-        DxRessource dxrTemp = new DxRessource(lKey, null);
+        DxResource dxrTemp = new DxResource(lKey, null);
         int nIndex = Collections.binarySearch(_vRessourceSortedByKey, dxrTemp,
-                DxRessource.KeyComparator);
+                DxResource.KeyComparator);
         if (nIndex >= 0) {
             return nIndex;
         }
@@ -269,7 +269,7 @@ public class DxSetOfRessources implements Iterable {
         Iterator it = _vRessourceSortedByName.iterator();
 
         for (int i = 0; it.hasNext(); i++) {
-            if (((DxRessource) it.next()).getRessourceKey() == lKey)
+            if (((DxResource) it.next()).getRessourceKey() == lKey)
                 return i;
         }
         return -1;
@@ -279,8 +279,8 @@ public class DxSetOfRessources implements Iterable {
      * Sorts the name ordered vector
      */
     private void sortRessources() {
-        Collections.sort((List<DxRessource>) _vRessourceSortedByName,
-                DxRessource.NameComparator);
+        Collections.sort((List<DxResource>) _vRessourceSortedByName,
+                DxResource.NameComparator);
     }
 
     public Iterator iterator() {

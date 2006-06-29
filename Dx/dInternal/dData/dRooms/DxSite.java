@@ -17,7 +17,7 @@
 package dInternal.dData.dRooms;
 
 import dInternal.dData.DxAvailability;
-import dInternal.dData.DxRessource;
+import dInternal.dData.DxResource;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -28,7 +28,7 @@ import dInternal.dData.DxRessource;
  * <p>
  * 
  */
-public class DxSite extends DxRessource {
+public class DxSite extends DxResource {
     private static long _lUniqueKey=1;
     private DxSetOfCategories _dxsocCat;
 
