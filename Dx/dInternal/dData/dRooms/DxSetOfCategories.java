@@ -206,16 +206,16 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
 
     public boolean isEquals(DxSetOfCategories dxsocOtherCats) {
-        if (this.getCatCount() != dxsocOtherCats.getCatCount()) {
+        if (!super.isEqual(dxsocOtherCats)) {
             return false;
         }
 
-        for (int i = 0; i < this.getCatCount(); i++) {
-            DxCategory dxsThisCat = (DxCategory) this.getResourceByNameIndex(i);
-            DxCategory dxsOtherCat = (DxCategory) this.getResourceByNameIndex(i);
-            if (!dxsThisCat.isEquals(dxsOtherCat)) {
+        Iterator itRes = this.iterator();
+        while (itRes.hasNext()) {
+            DxCategory dxcThis = (DxCategory) itRes.next();
+            DxCategory dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryKey());
+            if (!dxcThis.isEquals(dxcOther))
                 return false;
-            }
         }
         return true;
     }

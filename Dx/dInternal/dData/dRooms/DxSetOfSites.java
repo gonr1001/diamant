@@ -325,8 +325,7 @@ public class DxSetOfSites extends DxSetOfResources {
 
     public DxSetOfRooms getSetOfRooms(long lSiteKey, long lCatKey) {
         try {
-            return ((DxSite) this.getResource(lSiteKey))
-                    .getSetOfRooms(lCatKey);
+            return ((DxSite) this.getResource(lSiteKey)).getSetOfRooms(lCatKey);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return null;
@@ -349,8 +348,7 @@ public class DxSetOfSites extends DxSetOfResources {
 
         while (itSites.hasNext()) {
             sbReturn.append(((DxSite) itSites.next()).toWrite());
-            if(itSites.hasNext())
-            {
+            if (itSites.hasNext()) {
                 sbReturn.append(DConst.CR_LF);
             }
         }
@@ -358,16 +356,16 @@ public class DxSetOfSites extends DxSetOfResources {
     }
 
     public boolean isEquals(DxSetOfSites dxsosSetOfSites) {
-        if (this.getSiteCount() != dxsosSetOfSites.getSiteCount()) {
+        if (!super.isEqual(dxsosSetOfSites)) {
             return false;
         }
 
-        for (int i = 0; i < this.getSiteCount(); i++) {
-            DxSite dxsThisSite = (DxSite) this.getResourceByNameIndex(i);
-            DxSite dxsOtherSite = (DxSite) this.getResourceByNameIndex(i);
-            if (!dxsThisSite.isEquals(dxsOtherSite)) {
+        Iterator itRes = this.iterator();
+        while (itRes.hasNext()) {
+            DxSite dxsThis = (DxSite) itRes.next();
+            DxSite dxsOther = dxsosSetOfSites.getSite(dxsThis.getSiteKey());
+            if (!dxsThis.isEquals(dxsOther))
                 return false;
-            }
         }
         return true;
     }

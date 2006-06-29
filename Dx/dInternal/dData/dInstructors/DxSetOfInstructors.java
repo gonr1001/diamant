@@ -65,15 +65,14 @@ public class DxSetOfInstructors extends DxSetOfResources {
      */
     public String toWrite() {
         StringBuffer reslist = new StringBuffer();
-        int i;
         if (size() > 0) {
-            for (i = 0; i < this.size(); i++) {
-                DxInstructor dxiTemp = (DxInstructor) this
-                        .getResourceByNameIndex(i);
+            Iterator itInstructors = this.iterator();
+            while(itInstructors.hasNext()){
+                DxInstructor dxiTemp = (DxInstructor) itInstructors.next();
                 reslist.append(dxiTemp.getInstructorName() + DConst.CR_LF);
                 reslist.append(dxiTemp.getInstructorAvailability().toWrite(DConst.AVAILABILITY_DAY_SEPARATOR_INST, DConst.AVAILABILITY_PERIOD_SEPARATOR));
                 // Avoid trailing line feed
-                if (i < (this.size() - 1)) {
+                if (itInstructors.hasNext()) {
                     reslist.append(DConst.AVAILABILITY_DAY_SEPARATOR_INST);
                 }
             }
@@ -105,25 +104,25 @@ public class DxSetOfInstructors extends DxSetOfResources {
         return this.getResourceKeyByName(sName);
     }
 
-    /**
-     * Retreives the availability of an instructor in the set
-     * 
-     * @param nIndex
-     *            Index of an instructor who's availability is wanted. This
-     *            should be the index in the list returned by getNamesVector.
-     *            Note that this index is valid until an instructor is added or
-     *            removed.
-     * @return DxAvailability The availability of the instructor, null if the
-     *         index was invalid
-     */
-    public DxAvailability getInstructorAvailability(int nIndex) {
-        DxInstructor dxiTemp = (DxInstructor) this
-                .getResourceByNameIndex(nIndex);
-        if (dxiTemp != null) {
-            return dxiTemp.getInstructorAvailability();
-        }
-        return null;
-    }
+//    /**
+//     * Retreives the availability of an instructor in the set
+//     * 
+//     * @param nIndex
+//     *            Index of an instructor who's availability is wanted. This
+//     *            should be the index in the list returned by getNamesVector.
+//     *            Note that this index is valid until an instructor is added or
+//     *            removed.
+//     * @return DxAvailability The availability of the instructor, null if the
+//     *         index was invalid
+//     */
+//    public DxAvailability getInstructorAvailability(int nIndex) {
+//        DxInstructor dxiTemp = (DxInstructor) this
+//                .getResourceByNameIndex(nIndex);
+//        if (dxiTemp != null) {
+//            return dxiTemp.getInstructorAvailability();
+//        }
+//        return null;
+//    }
 
     /**
      * Retreives the availability of an instructor in the set
@@ -141,41 +140,42 @@ public class DxSetOfInstructors extends DxSetOfResources {
         return null;
     }
 
-    /**
-     * Modify the availability of instructor at index nIndex
-     * 
-     * @param nIndex
-     *            Index of the instructor that availability needs to be modified
-     */
-    public void setInstructorAvailability(int nIndex, DxAvailability dxaNewAva) {
-        DxInstructor dxiTemp = (DxInstructor) this
-                .getResourceByNameIndex(nIndex);
-        if (dxiTemp != null) {
-            dxiTemp.setInstructorAvailability(dxaNewAva);
-        }
-    }
+//    /**
+//     * Modify the availability of instructor at index nIndex
+//     * 
+//     * @param nIndex
+//     *            Index of the instructor that availability needs to be modified
+//     */
+//    public void setInstructorAvailability(int nIndex, DxAvailability dxaNewAva) {
+//        DxInstructor dxiTemp = (DxInstructor) this
+//                .getResourceByNameIndex(nIndex);
+//        if (dxiTemp != null) {
+//            dxiTemp.setInstructorAvailability(dxaNewAva);
+//        }
+//    }
 
     public boolean isEquals(DxSetOfInstructors dxsoi) {
-        // If sizes differ, it is necessarly different
-        if (this.size() != dxsoi.size()) {
+        if(!super.isEqual(dxsoi))
+        {
             return false;
         }
-        // For every instructors, verify that name and availabilities match
-        // Key is not verified
-        for (int i = 0; i < this.size(); i++) {
-            if (!this
-                    .getResourceByNameIndex(i)
-                    .getResourceName()
-                    .equalsIgnoreCase(
-                            dxsoi.getResourceByNameIndex(i).getResourceName())
-                    || !this.getInstructorAvailability(i).isEquals(
-                            dxsoi.getInstructorAvailability(i)))
+        // For every instructors, verify that availabilities match
+        Iterator itRes = this.iterator();
+        while(itRes.hasNext()){
+            DxInstructor dxiThis = (DxInstructor)itRes.next();
+            DxInstructor dxiOther = dxsoi.getInstructor(dxiThis.getInstructorKey());
+            if (!dxiThis.getInstructorAvailability().isEquals(
+                    dxiOther.getInstructorAvailability()))
                 return false;
         }
         return true;
     }
 
-	public void remAllAssignedToASite(String currentSite) {
+	public DxInstructor getInstructor(long lKey) {
+        return (DxInstructor)this.getResource(lKey);
+    }
+
+    public void remAllAssignedToASite(String currentSite) {
 		System.out.println("DxSetOfIntructors.remAllAssignedToASite must be implemented");		
 	}
 

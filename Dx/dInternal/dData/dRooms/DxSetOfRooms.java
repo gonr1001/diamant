@@ -130,16 +130,16 @@ public class DxSetOfRooms extends DxSetOfResources{
     }
 
     public boolean isEquals(DxSetOfRooms dxsorRooms) {
-        if (this.getRoomCount() != dxsorRooms.getRoomCount()) {
+        if (!super.isEqual(dxsorRooms)) {
             return false;
         }
 
-        for (int i = 0; i < this.getRoomCount(); i++) {
-            DxRoom dxsThisRoom = (DxRoom) this.getResourceByNameIndex(i);
-            DxRoom dxsOtherRoom = (DxRoom) this.getResourceByNameIndex(i);
-            if (!dxsThisRoom.isEquals(dxsOtherRoom)) {
+        Iterator itRes = this.iterator();
+        while (itRes.hasNext()) {
+            DxRoom dxrThis = (DxRoom) itRes.next();
+            DxRoom dxrOther = dxsorRooms.getRoom(dxrThis.getRoomKey());
+            if (!dxrThis.isEquals(dxrOther))
                 return false;
-            }
         }
         return true;
     }

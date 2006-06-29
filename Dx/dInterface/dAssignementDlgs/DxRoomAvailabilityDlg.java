@@ -126,21 +126,21 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 		// to
 		// display all sites
 		_dcbmSites = new DefaultComboBoxModel(_dxsosSites
-				.getRessourcesSortedByName());
+				.getResourcesSortedByName());
 		_cbSites = new JComboBox(_dcbmSites);
 		_cbSites.addItemListener(this);
 		_dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
 				.getSelectedItem());
 
 		_dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
-				.getSetOfCat().getRessourcesSortedByName());
+				.getSetOfCat().getResourcesSortedByName());
 		_cbCategories = new JComboBox(_dcbmCategories);
 		_cbCategories.addItemListener(this);
 		_dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
 				.getSelectedItem());
 
 		_dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat.getSetOfRooms()
-				.getRessourcesSortedByName());
+				.getResourcesSortedByName());
 		_cbRooms = new JComboBox(_dcbmRooms);
 		_cbRooms.addItemListener(this);
 		_dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
@@ -221,13 +221,13 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 				_dxsCurrentSite = (DxSite) _cbSites.getSelectedItem();
 
 				_dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
-						.getSetOfCat().getRessourcesSortedByName());
+						.getSetOfCat().getResourcesSortedByName());
 				_cbCategories.setModel(_dcbmCategories);
 
 			case 2:
 				_dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
 				_dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat
-						.getSetOfRooms().getRessourcesSortedByName());
+						.getSetOfRooms().getResourcesSortedByName());
 				_cbRooms.setModel(_dcbmRooms);
 
 			case 3:

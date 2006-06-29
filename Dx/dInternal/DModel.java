@@ -35,6 +35,7 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
+import dInternal.dData.dInstructors.DxInstructor;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
@@ -949,12 +950,17 @@ public class DModel extends Observable {
 
     private void resizeInstructorsResource(DxSetOfInstructors soiRes) {
         int[][] matrix;
-        for (int i = 0; i < soiRes.size(); i++) {
-            matrix = soiRes.getInstructorAvailability(i)
+        DxInstructor dxiTemp;
+
+        Iterator itInst = soiRes.iterator();
+        while (itInst.hasNext()) {
+            dxiTemp = (DxInstructor) itInst.next();
+            matrix = dxiTemp.getInstructorAvailability()
                     .getMatrixAvailability();
             matrix = DXToolsMethods
                     .resizeAvailability(matrix, getTTStructure());
-            soiRes.setInstructorAvailability(i, new DxAvailability(matrix));
+            dxiTemp.setInstructorAvailability(new DxAvailability(matrix));
+            
         }
     }
 
