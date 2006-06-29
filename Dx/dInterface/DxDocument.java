@@ -22,16 +22,8 @@ package dInterface;
 
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.JInternalFrame;
-
-import javax.swing.event.InternalFrameAdapter;
-
-
-
 import dInterface.dTimeTable.TTPane;
-
-
 import dInternal.dTimeTable.TTStructure;
 
 
@@ -44,7 +36,7 @@ import dInternal.dTimeTable.TTStructure;
  * <p> 
  * 
  */
-public class  DxDocument extends InternalFrameAdapter implements Observer{
+public abstract class  DxDocument  implements Observer{
 
     protected DMediator _dMediator;
 
@@ -54,12 +46,9 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 
     protected TTPane _ttPane;
 
-//    protected DModel _dm;
-
-//    protected DxStateBar _stateBar;
-
-
     protected String _autoImportDIMFilePath; 
+    
+    public abstract void update(Observable dm, Object component); 
 
 //    // -----------------------------
 //
@@ -112,40 +101,22 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //        e.toString(); // XXXX Pascal: Pkoi appelle toString? Devrait etre e=e
 //        _dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
 //    } // end internalFrameActivated
-//
-//    // -------------------------------------------
-    public  JInternalFrame getJIF() {
+
+    // -------------------------------------------
+    public  final JInternalFrame getJIF() {
         return _jif;
     } // end getJIF
-//
-//    // -------------------------------------------
-//    public final String getDocumentName() {
-//        return _documentName;
-//    } // end getDocumentName
-//
-//    // -------------------------------------------
-//    public final void setDocumentName(String name) {
-//        _documentName = name;
-//        _jif.setTitle(name);
-//    } // end setDocumentName
-//
-//    // -------------------------------------------
-//    /*
-//     * public void setCursor(int cursorValue, Component component){
-//     * _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-//     * _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-//     * if(component!=null)
-//     * component.setCursor(Cursor.getPredefinedCursor(cursorValue)); }
-//     */
-//    /**
-//     * 
-//     * @param cursorValue
-//     */
-//    /*
-//     * public void setCursor(int cursorValue){
-//     * _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-//     * _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue)); }
-//     */
+
+    // -------------------------------------------
+    public final String getDocumentName() {
+        return _documentName;
+    } // end getDocumentName
+
+    // -------------------------------------------
+    public final void setDocumentName(String name) {
+        _documentName = name;
+        _jif.setTitle(name);
+    } // end setDocumentName
 
 //
 //    // -------------------------------------------
@@ -164,19 +135,13 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //    } // end getDModel
 //
 //    // -------------------------------------------
-    public TTPane getTTPane() {
+    public final TTPane getTTPane() {
         return _ttPane;
     }
-//
-//    // -------------------------------------------
-    public  TTStructure getTTStructure(){
-		return null;  	
-    }
-//        return _dm.getTTStructure();
-//    } // end getJIF
-//
 
-//
+    public abstract TTStructure getTTStructure();
+
+
 //    /*
 //     * a revoir
 //     */
@@ -197,9 +162,7 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //        return str;
 //    }
 //
-    public void update(Observable dm, Object component) {
-    		// to avoid warning
-    }// end update
+   
 //
 //    // -------------------------------------------
 //    public void displaySimple() {
@@ -286,27 +249,27 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //        }
 //    } // end buidDocument
 //
-//    /**
-//     * Retourne le nom du fichier utilisé afin de réaliser l'importation
-//     * automatique des données
-//     * 
-//     * @return le nom du fichier utilisé afin de réaliser l'importation
-//     *         automatique des données
-//     */
-//    public String getAutoImportDIMFilePath() {
-//        return _autoImportDIMFilePath;
-//    }
-//
-//    /**
-//     * Applique le nom du fichier utilisé lors de l'importation automatique des
-//     * données
-//     * 
-//     * XXXX n'est pas appelé lorsque l'on est en mode debug, car en mode debug,
-//     * ImportDlg n'est pas utilisé
-//     * 
-//     * @param importDIMFileName
-//     */
-//    public void setAutoImportDIMFilePath(String importDIMFilePath) {
-//        _autoImportDIMFilePath = importDIMFilePath;
-//    }
+    /**
+     * Retourne le nom du fichier utilisé afin de réaliser l'importation
+     * automatique des données
+     * 
+     * @return le nom du fichier utilisé afin de réaliser l'importation
+     *         automatique des données
+     */
+    public String getAutoImportDIMFilePath() {
+        return _autoImportDIMFilePath;
+    }
+
+    /**
+     * Applique le nom du fichier utilisé lors de l'importation automatique des
+     * données
+     * 
+     * XXXX n'est pas appelé lorsque l'on est en mode debug, car en mode debug,
+     * ImportDlg n'est pas utilisé
+     * 
+     * @param importDIMFileName
+     */
+    public void setAutoImportDIMFilePath(String importDIMFilePath) {
+        _autoImportDIMFilePath = importDIMFilePath;
+    }
 } /* end DxDocument class */

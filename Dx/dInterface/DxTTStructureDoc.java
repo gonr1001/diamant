@@ -29,11 +29,11 @@ import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
-import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
@@ -47,7 +47,7 @@ import eLib.exit.dialog.FatalProblemDlg;
  * <p>
  * 
  */
-public class DxTTStructureDoc extends DxDocument  {
+public class DxTTStructureDoc extends DxDocument implements InternalFrameListener {
 
 	// private DMediator _dMediator;
 
@@ -99,26 +99,14 @@ public class DxTTStructureDoc extends DxDocument  {
 
 	} // end constructor DDocument()
 
-	public void internalFrameActivated(InternalFrameEvent e) {
-		e.toString(); // to avoid warning
-		_dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
-	} // end internalFrameActivated
+
 
 //	// -------------------------------------------
 //	public JInternalFrame getJIF() {
 //		return _jif;
 //	} // end getJIF
 
-	// -------------------------------------------
-	public final String getDocumentName() {
-		return _documentName;
-	} // end getDocumentName
 
-	// -------------------------------------------
-	public final void setDocumentName(String name) {
-		_documentName = name;
-		_jif.setTitle(name);
-	} // end setDocumentName
 
 //	// -------------------------------------------
 //	public String getError() {
@@ -140,10 +128,10 @@ public class DxTTStructureDoc extends DxDocument  {
 		return _dMediator;
 	} // end getDModel
 
-	// -------------------------------------------
-	public TTPane getTTPane() {
-		return _ttPane;
-	}
+//	// -------------------------------------------
+//	public TTPane getTTPane() {
+//		return _ttPane;
+//	}
 
 	// -------------------------------------------
 	public TTStructure getTTStructure() {
@@ -298,5 +286,40 @@ public class DxTTStructureDoc extends DxDocument  {
 	 */
 	public void setAutoImportDIMFilePath(String importDIMFilePath) {
 		_autoImportDIMFilePath = importDIMFilePath;
+	}
+
+
+	public void internalFrameOpened(InternalFrameEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void internalFrameClosing(InternalFrameEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void internalFrameClosed(InternalFrameEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void internalFrameIconified(InternalFrameEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void internalFrameDeiconified(InternalFrameEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void internalFrameActivated(InternalFrameEvent e) {
+		e.toString(); // to avoid warning
+		_dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
+	} // end internalFrameActivated
+	
+	public void internalFrameDeactivated(InternalFrameEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

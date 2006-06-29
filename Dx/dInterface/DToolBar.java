@@ -293,6 +293,29 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 	 * */
 	public void setPeriodSelector(String item) {
 		if (DXToolsMethods.isIntValue(item)) {
+			if (DConst.newDoc) {
+				PeriodPanel ppanel = _dApplic.getCurrentDxDoc()
+				.getTTPane().getPeriodPanel(Integer.parseInt(item));
+		Period period;
+		if (ppanel != null) {
+
+			_periodSelector.setSelectedItem(Integer.toString(ppanel
+					.getPanelRefNo()));
+			period = _tts.getCurrentCycle().getPeriodByIndex(
+					ppanel.getPeriodRef()[0], ppanel.getPeriodRef()[1],
+					ppanel.getPeriodRef()[2]);
+			_periodTypeSelector.disableActionListeners();
+			_periodTypeSelector
+					.setSelectedItem(TTStructure._priorityTable[period
+							.getPriority()]);
+			_periodTypeSelector.enableActionListeners();
+		
+		} else {
+			new InformationDlg(_dApplic.getJFrame(), "Période non trouvée");
+			_periodSelector.setSelectedIndex(0);
+		}
+				
+			} else {
 			PeriodPanel ppanel = _dApplic.getCurrentDoc()
 					.getTTPane().getPeriodPanel(Integer.parseInt(item));
 			Period period;
@@ -308,9 +331,11 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 						.setSelectedItem(TTStructure._priorityTable[period
 								.getPriority()]);
 				_periodTypeSelector.enableActionListeners();
+			
 			} else {
 				new InformationDlg(_dApplic.getJFrame(), "Période non trouvée");
 				_periodSelector.setSelectedIndex(0);
+			}
 			}// end if(ppanel!=null)
 		} else {// end if(DXToolsMethods.isIntValue(item))
 			new InformationDlg(_dApplic.getJFrame(), "Valeur eronnée");

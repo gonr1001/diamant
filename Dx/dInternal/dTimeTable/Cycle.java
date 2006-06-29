@@ -202,22 +202,21 @@ public class Cycle extends DObject {
 		return _error;
 	}
 
-	
 	/**
 	 * read a xml tag containing a set of days and build the resource
 	 * 
 	 * @param Element
 	 *            the root xml tag of the set of days
 	 */
-	public void readXMLTTTag(Element setofDays) throws Exception{
+	public void readXMLTTTag(Element setofDays) throws Exception {
 		XMLReader list = new XMLReader();
 		String ID = "";
 		String key = "";
 		int size = list.getSize(setofDays, DConst.TTXML_TTDAY);
-//		if (size == 0) {
-//			_error = _errorMessage;
-//			return _error;
-//		}
+		// if (size == 0) {
+		// _error = _errorMessage;
+		// return _error;
+		// }
 		for (int i = 0; i < size; i++) {
 			Day setOfSequences = new Day();
 			Element day = list.getElement(setofDays, DConst.TTXML_TTDAY, i);
@@ -226,15 +225,16 @@ public class Cycle extends DObject {
 			Element sequences = list.getElement(day, DConst.TTXML_TTSEQUENCES,
 					0);
 			setOfSequences.readXMLTTTag(sequences);
-//			if (!setOfSequences.readXMLtag(sequences).equals("")) {
-//				_error = _errorMessage;
-//				return _error;
-//			}
+			// if (!setOfSequences.readXMLtag(sequences).equals("")) {
+			// _error = _errorMessage;
+			// return _error;
+			// }
 			_setOfDays.setCurrentKey(Integer.parseInt(key));
 			_setOfDays.addResource(new DResource(ID, setOfSequences), 0);
 		}// end for (int i=0; i< size; i++)
-//		return _error;
+		// return _error;
 	}
+
 	/**
 	 * Contruct a xml element from the set of days
 	 * 
@@ -691,11 +691,9 @@ public class Cycle extends DObject {
 							+ minute.substring(minute.length() - 2, minute
 									.length());
 					String ehour = "00"
-							+ ((Period) per.getAttach())
-									.getEndHour()[0];
+							+ ((Period) per.getAttach()).getEndHour()[0];
 					String eminute = "00"
-							+ ((Period) per.getAttach())
-									.getEndHour()[1];
+							+ ((Period) per.getAttach()).getEndHour()[1];
 					String endHour = ehour.substring(ehour.length() - 2, ehour
 							.length())
 							+ ":"
@@ -941,13 +939,13 @@ public class Cycle extends DObject {
 					getCurrentDay().getCurrentSequence().getSetOfPeriods()
 							.size() - 1);
 		}
-		//}
+		// }
 		return period;
 	}
 
 	/**
-	 *
-	 * */
+	 * 
+	 */
 	public String toString() {
 		String str = "";
 		for (int i = 0; i < _setOfDays.size(); i++) {
@@ -959,10 +957,15 @@ public class Cycle extends DObject {
 
 	/**
 	 * isEquals checks if this Cycle is equals to the Cycle gives in arg
-	 * @param cycle the Cycle arg
-	 * @return <p> true if this Cycle is equals to the Cycle gives in arg </p>
-	 * false otherwise
-	 * */
+	 * 
+	 * @param cycle
+	 *            the Cycle arg
+	 * @return
+	 *            <p>
+	 *            true if this Cycle is equals to the Cycle gives in arg
+	 *            </p>
+	 *            false otherwise
+	 */
 	public boolean isEquals(Cycle cycle) {
 		for (int i = 0; i < _setOfDays.size(); i++) {
 			DResource dayR = _setOfDays.getResourceAt(i);
@@ -975,7 +978,9 @@ public class Cycle extends DObject {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {

@@ -19,6 +19,10 @@
  */
 package dInterface;
 
+import java.util.Observable;
+
+import dInternal.dTimeTable.TTStructure;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -32,6 +36,18 @@ public class DxTTCycleDoc extends DxDocument{
 
 	public DxTTCycleDoc(DMediator mediator, String ttName, String fileName) {
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void update(Observable dm, Object component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TTStructure getTTStructure() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

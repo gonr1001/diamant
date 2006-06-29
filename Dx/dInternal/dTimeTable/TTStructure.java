@@ -76,7 +76,7 @@ public class TTStructure {
 	private int _currentCycleIndex = 0;
 
 	// private String _errorMessage = "XML file is corrupted";
-	static final String _TAGITEM = "TTcycle";
+	static final String _TAG_TT_CYCLE = "TTcycle";
 
 	static final String _TAGITEM1 = "cycleID";
 
@@ -266,10 +266,10 @@ public class TTStructure {
 		XMLReader list = new XMLReader();
 		root = list.getRootElement(doc);
 		readXMLTTTag(root);
-//		if (readXMLtag(root).length() != 0) {
-//			_error = DConst.ERROR_XML_FILE;
-//			// return _error;
-//		}
+		// if (readXMLtag(root).length() != 0) {
+		// _error = DConst.ERROR_XML_FILE;
+		// // return _error;
+		// }
 	} // loadTTStructFromFile
 
 	/**
@@ -411,7 +411,7 @@ public class TTStructure {
 	public String readXMLtag(Element setofCycles) {
 		XMLReader list = new XMLReader();
 		String ID = "";
-		int size = list.getSize(setofCycles, _TAGITEM);
+		int size = list.getSize(setofCycles, _TAG_TT_CYCLE);
 		if (size == 0) {
 			_error = DConst.ERROR_XML_FILE;
 			return _error;
@@ -419,7 +419,7 @@ public class TTStructure {
 		// System.out.println(" Cycles Size: "+size);//debug
 		for (int i = 0; i < size; i++) {
 			Cycle setOfdays = new Cycle();
-			Element cycle = list.getElement(setofCycles, _TAGITEM, i);
+			Element cycle = list.getElement(setofCycles, _TAG_TT_CYCLE, i);
 			ID = list.getElementValue(cycle, _TAGITEM1);
 			_periodLenght = Integer.parseInt(list.getElementValue(cycle,
 					_TAGITEM2));
@@ -436,8 +436,7 @@ public class TTStructure {
 		}// end for (int i=0; i< size; i++)
 		return _error;
 	}
-	
-	
+
 	/**
 	 * read a xml tag containing a set of cycle and build the resource
 	 * 
@@ -448,30 +447,28 @@ public class TTStructure {
 	public void readXMLTTTag(Element setofCycles) throws Exception {
 		XMLReader list = new XMLReader();
 		String ID = "";
-		int size = list.getSize(setofCycles, _TAGITEM);
-//		if (size == 0) {
-//			_error = DConst.ERROR_XML_FILE;
-//			//return _error;
-//		}
-		// System.out.println(" Cycles Size: "+size);//debug
+		int size = list.getSize(setofCycles, _TAG_TT_CYCLE);
+		// if (size == 0) {
+		// _error = DConst.ERROR_XML_FILE;
+		// //return _error;
+		// }
 		for (int i = 0; i < size; i++) {
 			Cycle setOfdays = new Cycle();
-			Element cycle = list.getElement(setofCycles, _TAGITEM, i);
+			Element cycle = list.getElement(setofCycles, _TAG_TT_CYCLE, i);
 			ID = list.getElementValue(cycle, _TAGITEM1);
 			_periodLenght = Integer.parseInt(list.getElementValue(cycle,
 					_TAGITEM2));
-			// System.out.println(" Cycle ID: "+ID+" PeriodLenght:
-			// "+_periodLenght);//debug
+
 			Element days = list.getElement(cycle, _TAGITEM3, 0);
 			setOfdays.readXMLTTTag(days);
-//			if (!setOfdays.readXMLtag(days).equals("")) {
-//				_error = DConst.ERROR_XML_FILE;
-//				//return _error;
-//			}
+			// if (!setOfdays.readXMLtag(days).equals("")) {
+			// _error = DConst.ERROR_XML_FILE;
+			// //return _error;
+			// }
 			_numberOfDays = setOfdays.getNumberOfDays();
 			_setOfCycles.addResource(new DResource(ID, setOfdays), 0);
 		}// end for (int i=0; i< size; i++)
-		//return _error;
+		// return _error;
 	}
 
 	/**
@@ -487,7 +484,7 @@ public class TTStructure {
 			xmlElt = new XMLWriter();
 			Element eltCycles = xmlElt.createElement(doc, TTStructure.ITEM2);
 			for (int i = 0; i < _setOfCycles.size(); i++) {
-				Element eltCycle = xmlElt.createElement(doc, _TAGITEM);
+				Element eltCycle = xmlElt.createElement(doc, _TAG_TT_CYCLE);
 				Element cycle = ((Cycle) _setOfCycles.getResourceAt(i)
 						.getAttach()).writeXMLtag(doc);
 				Element cycleID = xmlElt.createElement(doc, _TAGITEM1,
