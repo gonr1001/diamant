@@ -150,17 +150,17 @@ public class DxTTStructureDoc extends DxDocument  {
 		return _ttStructure;
 	} // end getJIF
 
-	// -------------------------------------------
-	public String getVersion() {
-		return this._version;
-	}
-
-	// -------------------------------------------
-	/**
-	 * */
-	public void setVersion(String version) {
-		_version = version;
-	}
+//	// -------------------------------------------
+//	public String getVersion() {
+//		return this._version;
+//	}
+//
+//	// -------------------------------------------
+//	/**
+//	 * */
+//	public void setVersion(String version) {
+//		_version = version;
+//	}
 
 	/*
 	 * a revoir

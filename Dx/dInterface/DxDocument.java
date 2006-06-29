@@ -58,7 +58,6 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 
 //    protected DxStateBar _stateBar;
 
-    protected String _version;
 
     protected String _autoImportDIMFilePath; 
 
@@ -176,17 +175,7 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //        return _dm.getTTStructure();
 //    } // end getJIF
 //
-//    // -------------------------------------------
-//    public String getVersion() {
-//        return this._version;
-//    }
-//
-//    // -------------------------------------------
-//    /**
-//     * */
-//    public void setVersion(String version) {
-//        _version = version;
-//    }
+
 //
 //    /*
 //     * a revoir
