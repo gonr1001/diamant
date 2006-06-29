@@ -1,11 +1,11 @@
 [Project]
 Language=java
-Root.2=$PROJECT_DIR$
-Root.2.access=writable
-Root.2.file_types=java_source;java_class;;diagram;;;;;
-Root.2.package_prefix=
-Root.2.srcControlEnabled=false
-Root.2.srcControlProject=
+Root.0=$PROJECT_DIR$
+Root.0.access=writable
+Root.0.file_types=java_source;java_class;;diagram;;;;;
+Root.0.package_prefix=
+Root.0.srcControlEnabled=false
+Root.0.srcControlProject=
 Version=3.0
 debugger.SkipClass.0=,com.sun.*,1
 debugger.SkipClass.1=,java.*,1
@@ -13,35 +13,26 @@ debugger.SkipClass.2=,javax.*,1
 debugger.SkipClass.3=,org.omg.*,1
 debugger.SkipClass.4=,sun.*,1
 debugger.SmartStep=true
-Root.3=$PROJECT_DIR$/theLibrary/theLibrary.jar
+Root.1=$PROJECT_DIR$/theLibrary/theLibrary.jar
+Root.1.access=import
+Root.1.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
+Root.1.package_prefix=
+Root.2=$PROJECT_DIR$/theLibrary/xmlLibrary.jar
+Root.2.access=import
+Root.2.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
+Root.2.package_prefix=
+Root.3=D:/Program Files/JBuilder7/extras/junit/junit.jar
 Root.3.access=import
 Root.3.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
 Root.3.package_prefix=
-Root.4=$PROJECT_DIR$/theLibrary/xmlLibrary.jar
+Root.4=D:/Program Files/Java
 Root.4.access=import
 Root.4.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
-Root.4.package_prefix=
-Root.5=D:/Program Files/JBuilder7/extras/junit/junit.jar
-Root.5.access=import
-Root.5.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
-Root.5.package_prefix=
-Root.8=D:/Program Files/Java
-Root.8.access=import
-Root.8.file_types=java_source;java_class;element;diagram;vb_files;cpp_source;cpp_header;csharp_source;idl_source;vbnet_source
 Project.JDK=D:\\Program Files\\Java\\jdk1.5.0_01
 projectfile.encoding=Cp1252
-Root.12=D:\\Program Files\\Java\\jdk1.5.0_01\\jre\\lib\\rt.jar
-Root.12.access=import
-Root.12.non_removable=
-Root.49=D:\\Program Files\\Java\\jdk1.5.0_01\\jre\\lib
-Root.49.access=import
-Root.49.non_removable=
-Root.65=D:\\Program Files\\Java\\jdk1.5.0_01\\bin
-Root.65.access=import
-Root.65.non_removable=
-Root.66=D:\\Program Files\\Java\\jdk1.5.0_01\\jre
-Root.66.access=import
-Root.66.non_removable=
+Root.5=D:\\Program Files\\Java\\jdk1.5.0_01\\jre\\lib\\rt.jar
+Root.5.access=import
+Root.5.non_removable=
 [testingframework]
 none.created=true
 server.config.0.isLocal=true
@@ -57,30 +48,30 @@ server.config.1.url=http://localhost:9080/tf
 server.config.2.url=http://localhost:9080/tf
 server.config.3.url=http://localhost:9080/tf
 [editor]
-recent.file.0=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\dAffectation\\EditActivityDlg.java
-recent.file.1=D:\\Program Files\\Java\\jdk1.5.0_01\\src.zip\\java\\lang\\Object.java
-recent.file.2=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DMediator.java
-recent.file.3=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\Preferences.java
-recent.file.4=D:\\Developpements\\DiamantExtreme\\Diamant1.5\\Horaire\\horaire0.xml
-recent.file.5=D:\\Developpements\\DiamantExtreme\\Dx\\data\\finfir\\80\\erreur.xml
-recent.file.6=D:\\Developpements\\DiamantExtreme\\Dx\\dataTest\\TTxmlFiles\\StandardTTC.xml
-recent.file.7=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\DSetOfResources.java
-recent.file.8=D:\\Developpements\\DiamantExtreme\\Dx\\dInternal\\dData\\dRooms\\SetOfSitesListener.java
-recent.file.9=D:\\Developpements\\DiamantExtreme\\Dx\\dInterface\\dAffectation\\ActivityDlg.java
+recent.file.0=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DxTTStructureDoc.java
+recent.file.1=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DDocument.java
+recent.file.2=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DApplication.java
+recent.file.3=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DDevelopmentMenu.java
+recent.file.4=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\dMenus\\DDevelopmentMenu.java
+recent.file.5=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DxDocument.java
+recent.file.6=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\RefinedStudMixAlgo.java
+recent.file.7=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\RoomAssignmentAlgo.java
+recent.file.8=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\SelectAlgorithm.java
+recent.file.9=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\dAffectation\\EditActivityDlg.java
 [runtimeargs]
 applet_vmoptions0=-classic
 applet_vmoptions1=-classic
 applet_vmoptions2=-classic
 applet_vmoptions3=-classic
 applet_vmoptions4=-classic
-applic_mainclass0=DRun
+applic_mainclass0=dmains.Diamant
 applic_mainclass2=com.togethersoft.testing.TestServer
 applic_mainclass3=com.togethersoft.testing.TestServer
 applic_vmoptions1=-Dtestserver.port=9580 -Dtestserver.home=D:\\TogetherSoft\\Together6.0\\modules\\com\\togethersoft\\modules\\testingframework -Dtestserver.configuration="Test Suite - GUI" 
 applic_vmoptions2=-Dtestserver.port=9580 -Dtestserver.home=D:\\TogetherSoft\\Together6.0\\modules\\com\\togethersoft\\modules\\testingframework -Dtestserver.configuration="Test Suite - No GUI" 
 applic_vmoptions3=-Dtestserver.port=9080 -Dtestserver.home=D:\\TogetherSoft\\Together6.0\\modules\\com\\togethersoft\\modules\\testingframework -Dtestserver.configuration="JUnit" 
 applic_vmoptions4=-Dtestserver.port=10080 -Dtestserver.home=D:\\TogetherSoft\\Together6.0\\modules\\com\\togethersoft\\modules\\testingframework -Dtestserver.configuration="Visual Script" 
-confname0=NoName
+confname0=Dia
 confname1=Test Suite - GUI
 confname2=Test Suite - No GUI
 confname3=JUnit
@@ -93,13 +84,14 @@ jsp_vmoptions3=-classic
 jsp_vmoptions4=-classic
 askbeforedebug=true
 askbeforerun=true
+applic_args0=-d
 [workspace]
 Developer.CodingWorkspace={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,66,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,66,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,5,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,0,66,50,25,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DebugWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,19,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,19,145,321,763,313}${0,3,-1,0,0,0,0,1,0,1,1,50,50,19,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,19,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,19,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,18,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.proto={{0,2,-1,0,0,0,0,1,0,1,1,23,75,17,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,23,75,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,17,14,81,1003,615}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 names.Developer={<default>}
-Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,1,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,0,57,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
+Developer.<default>={{0,2,-1,0,0,0,0,1,0,1,1,100,75,9,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,100,75,9,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,9,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,9,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,9,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 [lastOpenProjectName]
 Developer=<default>
 [compiler]
@@ -128,7 +120,7 @@ preview.scale=1
 [diagramconverter]
 nativemode=false
 [builder]
-userCompilingTool_enabled=false
+userCompilingTool_enabled=true
 [parser]
 java.java14syntax=false
 [jdkit]

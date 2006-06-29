@@ -30,7 +30,7 @@ import javax.swing.event.InternalFrameAdapter;
 
 
 import dInterface.dTimeTable.TTPane;
-import dInternal.DModel;
+
 
 import dInternal.dTimeTable.TTStructure;
 
@@ -54,9 +54,9 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 
     protected TTPane _ttPane;
 
-    protected DModel _dm;
+//    protected DModel _dm;
 
-    protected DxStateBar _stateBar;
+//    protected DxStateBar _stateBar;
 
     protected String _version;
 
@@ -107,12 +107,7 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //
 //    } // end constructor DDocument()
 //
-//    /**
-//     * 
-//     */
-//    public DxDocument() {
-//        // to avoid warning
-//    }
+
 //
 //    public void internalFrameActivated(InternalFrameEvent e) {
 //        e.toString(); // XXXX Pascal: Pkoi appelle toString? Devrait etre e=e
@@ -152,20 +147,17 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //     * _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
 //     * _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue)); }
 //     */
-//    // -------------------------------------------
-//    public String getError() {
-//        return _dm.getError();
-//    }
+
 //
 //    // -------------------------------------------
 //    public boolean isModified() {
 //        return _dm.getModified();
 //    } // end getModified
 //
-    // -------------------------------------------
-    public DModel getCurrentDModel() {
-        return _dm;
-    } // end getDModel
+//    // -------------------------------------------
+//    public DModel getCurrentDModel() {
+//        return _dm;
+//    } // end getDModel
 //
 //    // -------------------------------------------
 //    public DMediator getDMediator() {
@@ -217,12 +209,7 @@ public class  DxDocument extends InternalFrameAdapter implements Observer{
 //    }
 //
     public void update(Observable dm, Object component) {
-        if (component != null)
-            component.toString();
-        _dMediator.getDApplication().setCursorWait();
-        _ttPane.updateTTPane(((DModel) dm).getTTStructure());
-        _stateBar.upDate();
-        _dMediator.getDApplication().setCursorDefault();
+    		// to avoid warning
     }// end update
 //
 //    // -------------------------------------------

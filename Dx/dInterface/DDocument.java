@@ -62,9 +62,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
 
     private DxStateBar _stateBar;
 
-    private String _version;
-
-    private String _autoImportDIMFilePath = null; // XXXX GS
+    private String _autoImportDIMFilePath; 
 
     // -----------------------------
 
@@ -112,7 +110,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
     } // end constructor DDocument()
 
     /**
-     * 
+     *  used in tests
      */
     public DDocument() {
         // to avoid warning
@@ -139,23 +137,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         _jif.setTitle(name);
     } // end setDocumentName
 
-    // -------------------------------------------
-    /*
-     * public void setCursor(int cursorValue, Component component){
-     * _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-     * _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-     * if(component!=null)
-     * component.setCursor(Cursor.getPredefinedCursor(cursorValue)); }
-     */
-    /**
-     * 
-     * @param cursorValue
-     */
-    /*
-     * public void setCursor(int cursorValue){
-     * _dMediator.getCurrentFrame().setCursor(Cursor.getPredefinedCursor(cursorValue));
-     * _dMediator.getDApplication().getJFrame().setCursor(Cursor.getPredefinedCursor(cursorValue)); }
-     */
+
     // -------------------------------------------
     public String getError() {
         return _dm.getError();
@@ -186,17 +168,6 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         return _dm.getTTStructure();
     } // end getJIF
 
-    // -------------------------------------------
-    public String getVersion() {
-        return this._version;
-    }
-
-    // -------------------------------------------
-    /**
-     * */
-    public void setVersion(String version) {
-        _version = version;
-    }
 
     /*
      * a revoir

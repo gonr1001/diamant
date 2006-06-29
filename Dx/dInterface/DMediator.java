@@ -134,8 +134,8 @@ public class DMediator extends Object {
 		DxDocument currentDoc = new DxTTCycleDoc(this, ttName, fileName);
 //		if (currentDoc.getError().length() == 0) {
 			_dxDocuments.addElement(currentDoc);
-			_dApplication.getToolBar().setToolBars(
-					currentDoc.getCurrentDModel().getTTStructure());
+//			_dApplication.getToolBar().setToolBars(
+//					currentDoc.getCurrentDModel().getTTStructure());
 			_dApplication.hideToolBar();
 //		} else {
 //			new FatalProblemDlg(_dApplication.getJFrame(),

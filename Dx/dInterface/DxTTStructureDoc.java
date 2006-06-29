@@ -22,7 +22,8 @@ package dInterface;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
-import java.util.Observer;
+import java.util.Observable;
+//import java.util.Observer;
 
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
@@ -46,7 +47,7 @@ import eLib.exit.dialog.FatalProblemDlg;
  * <p>
  * 
  */
-public class DxTTStructureDoc extends DxDocument implements Observer {
+public class DxTTStructureDoc extends DxDocument  {
 
 	// private DMediator _dMediator;
 
@@ -119,20 +120,20 @@ public class DxTTStructureDoc extends DxDocument implements Observer {
 		_jif.setTitle(name);
 	} // end setDocumentName
 
-	// -------------------------------------------
-	public String getError() {
-		return _dm.getError();
-	}
+//	// -------------------------------------------
+//	public String getError() {
+//		return _dm.getError();
+//	}
 
 	// -------------------------------------------
-	public boolean isModified() {
-		return _dm.getModified();
-	} // end getModified
+//	public boolean isModified() {
+//		return _dm.getModified();
+//	} // end getModified
 
 	// -------------------------------------------
-	public DModel getCurrentDModel() {
-		return _dm;
-	} // end getDModel
+//	public DModel getCurrentDModel() {
+//		return _dm;
+//	} // end getDModel
 
 	// -------------------------------------------
 	public DMediator getDMediator() {
@@ -168,7 +169,7 @@ public class DxTTStructureDoc extends DxDocument implements Observer {
 		_jif.dispose();
 		_jif = null;
 		_ttPane = null;
-		_stateBar = null;
+//		_stateBar = null;
 	}
 
 	// -------------------------------------------
@@ -181,33 +182,33 @@ public class DxTTStructureDoc extends DxDocument implements Observer {
 		return str;
 	}
 
-	// public void update(Observable dm, Object component) {
-	// if (component != null)
-	// component.toString();
-	// _dMediator.getDApplication().setCursorWait();
-	// _ttPane.updateTTPane(((DModel) dm).getTTStructure());
-	// _stateBar.upDate();
-	// _dMediator.getDApplication().setCursorDefault();
-	// }// end update
+	 public void update(Observable dm, Object component) {
+	 if (component != null)
+	 component.toString();
+	 _dMediator.getDApplication().setCursorWait();
+	 _ttPane.updateTTPane(((DModel) dm).getTTStructure());
+//	 _stateBar.upDate();
+	 _dMediator.getDApplication().setCursorDefault();
+	 }// end update
 
 	// -------------------------------------------
 	public void displaySimple() {
 		close();
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		_ttPane.updateTTPane(_ttStructure);
 	}
 
 	// -------------------------------------------
 	public void displayHorizontalSplit() {
 		close();
 		buidDocument(false, false);
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		_ttPane.updateTTPane(_ttStructure);
 	}
 
 	public void displayVericalSplit() {
 		close();
 		buidDocument(false, true);
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		_ttPane.updateTTPane(_ttStructure);
 	}
 
 	// -------------------------------------------
