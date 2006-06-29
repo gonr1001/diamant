@@ -43,251 +43,248 @@ import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
 
 public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
-        ItemListener {
-    
-    private int _nbOfPeriods;
+		ItemListener {
 
-    private int _nbOfDays;
+	private int _nbOfPeriods;
 
-    private String[] _days;
+	private int _nbOfDays;
 
-    public String[] _time;
+	private String[] _days;
 
-    private ButtonsPanel _applyPanel;
+	public String[] _time;
 
-    private JPanel _chooserPanel;
+	private ButtonsPanel _applyPanel;
 
-    private JPanel _centerPanel;
+	private JPanel _chooserPanel;
 
-    private JComboBox _cbSites;
-    private DefaultComboBoxModel  _dcbmSites;
+	private JPanel _centerPanel;
 
-    private JComboBox _cbCategories;
-    private DefaultComboBoxModel  _dcbmCategories;
+	private JComboBox _cbSites;
 
-    private JComboBox _cbRooms;
-    private DefaultComboBoxModel  _dcbmRooms;
+	private DefaultComboBoxModel _dcbmSites;
 
-    /**
-     * @associates JToggleButton
-     */
-    private Vector<JToggleButton> _posVect;
+	private JComboBox _cbCategories;
 
-    private DModel _dmodel;
+	private DefaultComboBoxModel _dcbmCategories;
 
-    private DxSetOfSites _dxsosSites;
+	private JComboBox _cbRooms;
 
-    private DxSite _dxsCurrentSite;
+	private DefaultComboBoxModel _dcbmRooms;
 
-    private DxCategory _dxcCurrentCat;
+	/**
+	 * @associates JToggleButton
+	 */
+	private Vector<JToggleButton> _posVect;
 
-    private DxRoom _dxrCurrentRoom;
+	private DModel _dmodel;
 
-    private int[][] _dxaCurrentAvailbility;
+	private DxSetOfSites _dxsosSites;
 
-    public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites) {
-        super(dApplic.getJFrame(), DConst.ROOMASSIGN + "rgr", false);
+	private DxSite _dxsCurrentSite;
 
-        if (dApplic.getCurrentDoc() == null)
-            return;
+	private DxCategory _dxcCurrentCat;
 
-        _dmodel = dApplic.getCurrentDModel();
-        _dxsosSites = dxsosSites;
+	private DxRoom _dxrCurrentRoom;
 
-        _time = _dmodel.getTTStructure().getCurrentCycle()
-                .getHourOfPeriodsADay();
+	private int[][] _dxaCurrentAvailbility;
 
-        _nbOfPeriods = _dmodel.getTTStructure().getCurrentCycle()
-                .getMaxNumberOfPeriodsADay();
-        _nbOfDays = _dmodel.getTTStructure().getNumberOfActiveDays();
+	public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites) {
+		super(dApplic.getJFrame(), DConst.ROOMASSIGN + "rgr", false);
 
-        _days = _dmodel.getTTStructure().getDayNames();
+		if (dApplic.getCurrentDoc() == null)
+			return;
 
-        try {
-            initialize();
-            pack();
-            setLocationRelativeTo(dApplic.getJFrame());
-            setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    } // end DxRoomAvailabilityDlg
+		_dmodel = dApplic.getCurrentDModel();
+		_dxsosSites = dxsosSites;
 
-    /**
-     * Component's initialisation and placement.
-     */
-    private void initialize() throws Exception {
-        Vector<String> vTemp;
-        
-        _chooserPanel = new JPanel();
+		_time = _dmodel.getTTStructure().getCurrentCycle()
+				.getHourOfPeriodsADay();
 
-        // creates the JComboBox with the list of all sites and add an entry
-        // to
-        // display all sites
-        vTemp = _dxsosSites.getNamesVector();
-        _dcbmSites = new DefaultComboBoxModel(vTemp);
-        _cbSites = new JComboBox(_dcbmSites);
-        _cbSites.addItemListener(this);
-        _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
-                .getSelectedItem());
+		_nbOfPeriods = _dmodel.getTTStructure().getCurrentCycle()
+				.getMaxNumberOfPeriodsADay();
+		_nbOfDays = _dmodel.getTTStructure().getNumberOfActiveDays();
 
-        vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
-        _dcbmCategories = new DefaultComboBoxModel(vTemp);
-        _cbCategories = new JComboBox(_dcbmCategories);
-        _cbCategories.addItemListener(this);
-        _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
-                .getSelectedItem());
+		_days = _dmodel.getTTStructure().getDayNames();
 
-        vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
-        _dcbmRooms = new DefaultComboBoxModel(vTemp);
-        _cbRooms = new JComboBox(_dcbmRooms);
-        _cbRooms.addItemListener(this);
-        _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
-                .getSelectedItem());
+		try {
+			initialize();
+			pack();
+			setLocationRelativeTo(dApplic.getJFrame());
+			setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	} // end DxRoomAvailabilityDlg
 
-        _dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
-                .getMatrixAvailability();
+	/**
+	 * Component's initialisation and placement.
+	 */
+	private void initialize() throws Exception {
+		_chooserPanel = new JPanel();
 
-        // TODO: Create StringRes and const for labels
-        _chooserPanel.add(new JLabel("Sites: "), null);
-        _chooserPanel.add(_cbSites, null);
-        _chooserPanel.add(new JLabel("Catégorie: "), null);
-        _chooserPanel.add(_cbCategories, null);
-        _chooserPanel.add(new JLabel("Local: "), null);
-        _chooserPanel.add(_cbRooms, null);
+		// creates the JComboBox with the list of all sites and add an entry
+		// to
+		// display all sites
+		_dcbmSites = new DefaultComboBoxModel(_dxsosSites
+				.getRessourcesSortedByName());
+		_cbSites = new JComboBox(_dcbmSites);
+		_cbSites.addItemListener(this);
+		_dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
+				.getSelectedItem());
 
-        this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
+		_dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
+				.getSetOfCat().getRessourcesSortedByName());
+		_cbCategories = new JComboBox(_dcbmCategories);
+		_cbCategories.addItemListener(this);
+		_dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
+				.getSelectedItem());
 
-        // gridPanel
-        _centerPanel = makeGridPanel();
-        this.getContentPane().add(_centerPanel, BorderLayout.CENTER);
+		_dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat.getSetOfRooms()
+				.getRessourcesSortedByName());
+		_cbRooms = new JComboBox(_dcbmRooms);
+		_cbRooms.addItemListener(this);
+		_dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
+				.getSelectedItem());
 
-        // _applyPanel
-        String[] butnames = { DConst.BUT_APPLY, DConst.BUT_CLOSE };
-        _applyPanel = new TwoButtonsPanel(this, butnames);
-        // Setting the button APPLY disable
-        _applyPanel.setFirstDisable();
-        this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
-    } // end initialize()
+		_dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
+				.getMatrixAvailability();
 
-    public void actionPerformed(ActionEvent event) {
-        String command = event.getActionCommand();
-        if (command.equals(DConst.BUT_CLOSE)) { // close
-            dispose();
-        } else if (command.equals(DConst.BUT_APPLY)) { // apply
+		// TODO: Create StringRes and const for labels
+		_chooserPanel.add(new JLabel("Sites: "), null);
+		_chooserPanel.add(_cbSites, null);
+		_chooserPanel.add(new JLabel("Catégorie: "), null);
+		_chooserPanel.add(_cbCategories, null);
+		_chooserPanel.add(new JLabel("Local: "), null);
+		_chooserPanel.add(_cbRooms, null);
 
-            _applyPanel.setFirstDisable();
-            _dxrCurrentRoom.setRoomAvailability(new DxAvailability(
-                    _dxaCurrentAvailbility));
-            // _dmodel.changeInDModelByInstructorsDlg(this);
-            // if a button of the grid has been pressed
-        } else if (_posVect.indexOf(event.getSource()) > -1) {
-            int index = _posVect.indexOf(event.getSource());
-            int day = index / _nbOfPeriods;
-            int per = index % _nbOfPeriods;
-            if (_posVect.get(index).isSelected()) {
-                _dxaCurrentAvailbility[day][per] = 1;
-            } else {
-                _dxaCurrentAvailbility[day][per] = 5;
-            }
-            // modified = true;
-            _applyPanel.setFirstEnable();
-        }
-    }
+		this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
 
-    /**
-     * combobox item selected
-     */
-    public void itemStateChanged(ItemEvent event) {
-        int nSwitch = 0;
-        Vector<String> vTemp;
+		// gridPanel
+		_centerPanel = makeGridPanel();
+		this.getContentPane().add(_centerPanel, BorderLayout.CENTER);
 
-        _applyPanel.setFirstDisable();
-        if (event.getStateChange() == ItemEvent.SELECTED) {
-            Object source = event.getSource();
+		// _applyPanel
+		String[] butnames = { DConst.BUT_APPLY, DConst.BUT_CLOSE };
+		_applyPanel = new TwoButtonsPanel(this, butnames);
+		// Setting the button APPLY disable
+		_applyPanel.setFirstDisable();
+		this.getContentPane().add(_applyPanel, BorderLayout.SOUTH);
+	} // end initialize()
 
-            // Determines which combox has changed so we know which actions we
-            // need to perform
-            if (source.equals(_cbSites)) {
-                nSwitch = 1;
-            } else if (source.equals(_cbCategories)) {
-                nSwitch = 2;
-            } else if (source.equals(_cbRooms)) {
-                nSwitch = 3;
-            }
+	public void actionPerformed(ActionEvent event) {
+		String command = event.getActionCommand();
+		if (command.equals(DConst.BUT_CLOSE)) { // close
+			dispose();
+		} else if (command.equals(DConst.BUT_APPLY)) { // apply
 
-            switch (nSwitch) {
-            case 1:
-                _dxsCurrentSite = _dxsosSites.getSite((String) _cbSites
-                        .getSelectedItem());
+			_applyPanel.setFirstDisable();
+			_dxrCurrentRoom.setRoomAvailability(new DxAvailability(
+					_dxaCurrentAvailbility));
+			// _dmodel.changeInDModelByInstructorsDlg(this);
+			// if a button of the grid has been pressed
+		} else if (_posVect.indexOf(event.getSource()) > -1) {
+			int index = _posVect.indexOf(event.getSource());
+			int day = index / _nbOfPeriods;
+			int per = index % _nbOfPeriods;
+			if (_posVect.get(index).isSelected()) {
+				_dxaCurrentAvailbility[day][per] = 1;
+			} else {
+				_dxaCurrentAvailbility[day][per] = 5;
+			}
+			// modified = true;
+			_applyPanel.setFirstEnable();
+		}
+	}
 
-                vTemp = _dxsCurrentSite.getSetOfCat().getNamesVector();
-                _dcbmCategories = new DefaultComboBoxModel(vTemp);
-                _cbCategories.setModel(_dcbmCategories);
-                
-            case 2:
-                _dxcCurrentCat = _dxsCurrentSite.getCat((String) _cbCategories
-                        .getSelectedItem());
-                vTemp = _dxcCurrentCat.getSetOfRooms().getNamesVector();
-                _dcbmRooms = new DefaultComboBoxModel(vTemp);
-                _cbRooms.setModel(_dcbmRooms);
-                
-            case 3:
-                _dxrCurrentRoom = _dxcCurrentCat.getRoom((String) _cbRooms
-                        .getSelectedItem());
+	/**
+	 * combobox item selected
+	 */
+	public void itemStateChanged(ItemEvent event) {
+		int nSwitch = 0;
 
-            default:
-                break;
-            }
+		_applyPanel.setFirstDisable();
+		if (event.getStateChange() == ItemEvent.SELECTED) {
+			Object source = event.getSource();
 
-            getContentPane().remove(_centerPanel);
-            _dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
-                    .getMatrixAvailability();
-            _centerPanel = makeGridPanel();// _currentInstr);
-            getContentPane().add(_centerPanel, BorderLayout.CENTER);
-            pack();
-        }
-    }// end itemStateChangeed
+			// Determines which combox has changed so we know which actions we
+			// need to perform
+			if (source.equals(_cbSites)) {
+				nSwitch = 1;
+			} else if (source.equals(_cbCategories)) {
+				nSwitch = 2;
+			} else if (source.equals(_cbRooms)) {
+				nSwitch = 3;
+			}
 
-    /**
-     * Creates the grid of button. The button is pressed if the instructor is
-     * free at that period, depressed if not.
-     * 
-     * @param instr
-     *            the instructor for which the grid is constructed.
-     */
-    private JPanel makeGridPanel() {
-        JPanel gridPanel = new JPanel();
-        gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
-        gridPanel.setBorder(BorderFactory
-                .createTitledBorder(DConst.AVAILABILITIES));
-        _posVect = new Vector<JToggleButton>();
-        _posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
-        gridPanel.add(new JLabel("")); // top left corner
-        for (int i = 0; i < _days.length; i++)
-            // first line : name of days
-            gridPanel.add(new JLabel(_days[i], SwingConstants.CENTER));
+			switch (nSwitch) {
+			case 1:
+				_dxsCurrentSite = (DxSite) _cbSites.getSelectedItem();
 
-        _dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
-                .getMatrixAvailability();
+				_dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
+						.getSetOfCat().getRessourcesSortedByName());
+				_cbCategories.setModel(_dcbmCategories);
 
-        for (int j = 0; j < _nbOfPeriods; j++) {
-            // first column : the time of the period
+			case 2:
+				_dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
+				_dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat
+						.getSetOfRooms().getRessourcesSortedByName());
+				_cbRooms.setModel(_dcbmRooms);
 
-            gridPanel.add(new JLabel(_time[j], SwingConstants.RIGHT));
-            // create a button for each day for the period
-            // System.out.println(" DAInstructorDialog NbDays: "+nbDay+"
-            // NbPerDays: "+nbPer); //DEBUG
-            for (int i = 0; i < _nbOfDays; i++) {
-                JToggleButton tBut = new JToggleButton();
-                tBut.setSelected(_dxaCurrentAvailbility[i][j] == 1);
-                tBut.addActionListener(this);
-                tBut.setPreferredSize(new Dimension(50, 12));
-                gridPanel.add(tBut);// , null);
-                _posVect.setElementAt(tBut, (i * _nbOfPeriods) + j);
-            }
-        }
-        return gridPanel;
-    }
+			case 3:
+				_dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
+
+			default:
+				break;
+			}
+
+			getContentPane().remove(_centerPanel);
+			_dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
+					.getMatrixAvailability();
+			_centerPanel = makeGridPanel();// _currentInstr);
+			getContentPane().add(_centerPanel, BorderLayout.CENTER);
+			pack();
+		}
+	}// end itemStateChangeed
+
+	/**
+	 * Creates the grid of button. The button is pressed if the instructor is
+	 * free at that period, depressed if not.
+	 * 
+	 * @param instr
+	 *            the instructor for which the grid is constructed.
+	 */
+	private JPanel makeGridPanel() {
+		JPanel gridPanel = new JPanel();
+		gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
+		gridPanel.setBorder(BorderFactory
+				.createTitledBorder(DConst.AVAILABILITIES));
+		_posVect = new Vector<JToggleButton>();
+		_posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
+		gridPanel.add(new JLabel("")); // top left corner
+		for (int i = 0; i < _days.length; i++)
+			// first line : name of days
+			gridPanel.add(new JLabel(_days[i], SwingConstants.CENTER));
+
+		_dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
+				.getMatrixAvailability();
+
+		for (int j = 0; j < _nbOfPeriods; j++) {
+			// first column : the time of the period
+
+			gridPanel.add(new JLabel(_time[j], SwingConstants.RIGHT));
+			// create a button for each day for the period
+			// System.out.println(" DAInstructorDialog NbDays: "+nbDay+"
+			// NbPerDays: "+nbPer); //DEBUG
+			for (int i = 0; i < _nbOfDays; i++) {
+				JToggleButton tBut = new JToggleButton();
+				tBut.setSelected(_dxaCurrentAvailbility[i][j] == 1);
+				tBut.addActionListener(this);
+				tBut.setPreferredSize(new Dimension(50, 12));
+				gridPanel.add(tBut);// , null);
+				_posVect.setElementAt(tBut, (i * _nbOfPeriods) + j);
+			}
+		}
+		return gridPanel;
+	}
 
 } /* end InstructorAvailabilityDlg */

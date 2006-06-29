@@ -41,11 +41,11 @@ public class DxCategory extends DxResource {
     }
 
     public String getCategoryName() {
-        return this.getRessourceName();
+        return this.getResourceName();
     }
 
     public long getCategoryKey() {
-        return this.getRessourceKey();
+        return this.getResourceKey();
     }
 
     public DxRoom getRoom(long lRoomKey) {

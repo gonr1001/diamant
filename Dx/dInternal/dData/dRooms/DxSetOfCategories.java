@@ -37,7 +37,7 @@ import dInternal.dData.DxSetOfResources;
 public class DxSetOfCategories extends DxSetOfResources {
     public DxCategory getCat(long lCatKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey));
+            return ((DxCategory) this.getResource(lCatKey));
         } catch (Exception e) {
             return null;
         }
@@ -45,14 +45,14 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxCategory getCat(String sCatName) {
         try {
-            return ((DxCategory) this.getRessourceByName(sCatName));
+            return ((DxCategory) this.getResourceByName(sCatName));
         } catch (Exception e) {
             return null;
         }
     }
 
     public String getCatName(long lCatKey) {
-        return this.getRessourceName(lCatKey);
+        return this.getResourceName(lCatKey);
     }
 
     public int getCatCount() {
@@ -60,12 +60,12 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
 
     public long getCategoryKeyByName(String sCatName) {
-        return this.getRessourceKeyByName(sCatName);
+        return this.getResourceKeyByName(sCatName);
     }
 
     public DxRoom getRoom(long lCatKey, long lRoomKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey)).getRoom(lRoomKey);
+            return ((DxCategory) this.getResource(lCatKey)).getRoom(lRoomKey);
         } catch (Exception e) {
             return null;
         }
@@ -73,7 +73,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxRoom getRoom(String sCatName, String sRoomName) {
         try {
-            return ((DxCategory) this.getRessourceByName(sCatName)).getRoom(sRoomName);
+            return ((DxCategory) this.getResourceByName(sCatName)).getRoom(sRoomName);
         } catch (Exception e) {
             return null;
         }
@@ -81,7 +81,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public int getRoomCount(long lCatKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey)).getRoomCount();
+            return ((DxCategory) this.getResource(lCatKey)).getRoomCount();
         } catch (Exception e) {
             return -1;
         }
@@ -89,7 +89,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public int getRoomCount(String sCatName) {
         try {
-            return ((DxCategory) this.getRessourceByName(sCatName))
+            return ((DxCategory) this.getResourceByName(sCatName))
                     .getRoomCount();
         } catch (Exception e) {
             return -1;
@@ -98,7 +98,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public String getRoomName(long lCatKey, long lRoomKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey))
+            return ((DxCategory) this.getResource(lCatKey))
                     .getRoomName(lRoomKey);
         } catch (Exception e) {
             return null;
@@ -107,7 +107,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public int getRoomCapacity(long lCatKey, long lRoomKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey))
+            return ((DxCategory) this.getResource(lCatKey))
                     .getRoomCapacity(lRoomKey);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
@@ -117,7 +117,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public int getRoomCapacity(String sCatName, String sRoomName) {
         try {
-            return ((DxCategory) this.getRessourceByName(sCatName))
+            return ((DxCategory) this.getResourceByName(sCatName))
                     .getRoomCapacity(sRoomName);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
@@ -126,14 +126,14 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
 
     public void addCategory(String sNewCatName) {
-        if (this.getRessourceKeyByName(sNewCatName) == -1) {
-            this.addRessource(new DxCategory(sNewCatName));
+        if (this.getResourceKeyByName(sNewCatName) == -1) {
+            this.addResource(new DxCategory(sNewCatName));
         }
     }
 
     public void addRoom(long lCatKey, DxRoom dxrRoom) {
         try {
-            ((DxCategory) this.getRessource(lCatKey)).addRoom(dxrRoom);
+            ((DxCategory) this.getResource(lCatKey)).addRoom(dxrRoom);
         } catch (Exception e) {
             // If category was not found a null pointer exception will occur
         }
@@ -141,7 +141,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public void addRoom(String sCatName, DxRoom dxrRoom) {
         try {
-            ((DxCategory) this.getRessourceByName(sCatName)).addRoom(dxrRoom);
+            ((DxCategory) this.getResourceByName(sCatName)).addRoom(dxrRoom);
         } catch (Exception e) {
             // If category was not found a null pointer exception will occur
         }
@@ -149,7 +149,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxAvailability getRoomAvailability(long lCatKey, long lRoomKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey))
+            return ((DxCategory) this.getResource(lCatKey))
                     .getRoomAvailability(lRoomKey);
         } catch (Exception e) {
             return null;
@@ -158,7 +158,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxAvailability getRoomAvailability(String sCatName, String sRoomName) {
         try {
-            return ((DxCategory) this.getRessourceByName(sCatName))
+            return ((DxCategory) this.getResourceByName(sCatName))
                     .getRoomAvailability(sRoomName);
         } catch (Exception e) {
             return null;
@@ -167,7 +167,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public long getRoomKeyByName(long lCatKey, String sSiteName) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey))
+            return ((DxCategory) this.getResource(lCatKey))
                     .getRoomKeyByName(sSiteName);
         } catch (Exception e) {
             return -1;
@@ -176,7 +176,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxSetOfRooms getSetOfRooms(long lCatKey) {
         try {
-            return ((DxCategory) this.getRessource(lCatKey)).getSetOfRooms();
+            return ((DxCategory) this.getResource(lCatKey)).getSetOfRooms();
         } catch (Exception e) {
             return null;
         }
@@ -184,7 +184,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxSetOfRooms getSetOfRooms(String sCatName) {
         try {
-            return ((DxCategory) this.getRessourceByName(sCatName))
+            return ((DxCategory) this.getResourceByName(sCatName))
                     .getSetOfRooms();
         } catch (Exception e) {
             return null;
@@ -211,8 +211,8 @@ public class DxSetOfCategories extends DxSetOfResources {
         }
 
         for (int i = 0; i < this.getCatCount(); i++) {
-            DxCategory dxsThisCat = (DxCategory) this.getRessourceByNameIndex(i);
-            DxCategory dxsOtherCat = (DxCategory) this.getRessourceByNameIndex(i);
+            DxCategory dxsThisCat = (DxCategory) this.getResourceByNameIndex(i);
+            DxCategory dxsOtherCat = (DxCategory) this.getResourceByNameIndex(i);
             if (!dxsThisCat.isEquals(dxsOtherCat)) {
                 return false;
             }

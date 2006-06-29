@@ -73,7 +73,7 @@ public class DxInstructor extends DxResource{
      * @return String Name of the instructor
      */
     public String getInstructorName() {
-        return this.getRessourceName();
+        return this.getResourceName();
     }
 
     /**
@@ -81,6 +81,10 @@ public class DxInstructor extends DxResource{
      * @return int Unique ID of the instructor
      */
     public long getInstructorKey() {
-        return this.getRessourceKey();
+        return this.getResourceKey();
     }
+
+	public void setInstructorAvailability(int[][] nAvailbilities) {
+		_availability.setAvailability(nAvailbilities);
+	}
 }

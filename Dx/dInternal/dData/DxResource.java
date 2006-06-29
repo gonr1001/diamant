@@ -23,9 +23,9 @@ import java.util.Comparator;
  * 
  * Description: DxResource is a class used to:
  * <p>
- * Contains a ressource generical informations like key and name. Ressource will
+ * Contains a resource generical informations like key and name. Resource will
  * usually be sublcassed to implements more attributes. Attributes like name and
- * keys are not publicly modifiable as DxSetOfRessource rely on those
+ * keys are not publicly modifiable as DxSetOfResource rely on those
  * informations. If name was accessible to modifications, there would be no way
  * to tell if the name sorted vector was still sorted.
  * <p>
@@ -49,12 +49,12 @@ public class DxResource {
     }
 
     /**
-     * Constructor, sName is the ressource name, lKey is the ressource key.
+     * Constructor, sName is the resource name, lKey is the resource key.
      * 
      * @param lKey
-     *            Specifies Ressource key
+     *            Specifies resource key
      * @param sName
-     *            Specifies Ressource name
+     *            Specifies resource name
      * 
      */
     public DxResource(long lKey, String sName) {
@@ -63,31 +63,39 @@ public class DxResource {
     }
 
     /**
-     * @return Key of the Ressource, -1 if not attributed. 0 value is not
+     * @return Key of the resource, -1 if not attributed. 0 value is not
      *         attributed by a set.
      */
-    public long getRessourceKey() {
+    public long getResourceKey() {
         return _lKey;
     }
 
     /**
-     * @return Name of the ressource, null if not attributed.
+     * @return Name of the resource, null if not attributed.
      */
-    public String getRessourceName() {
+    public String getResourceName() {
         return _sName;
+    }
+    
+    public boolean isEqual(DxResource dxrOtherRes){
+    	if(this._sName.compareTo(dxrOtherRes._sName)==0)
+    	{
+    		return true;
+    	}
+    	return false;
     }
 
     /**
-     * Sets a Ressource key. This method should only be used by a
-     * DxSetOfRessource when a ressource is added to the set. This justify
+     * Sets a resource key. This method should only be used by a
+     * DxSetOfResource when a resource is added to the set. This justify
      * package visibility. Full acces to this method means that everyone could
      * modify key at will which could cause a scrambling key ordered vector in
-     * DxSetOfRessource.
+     * DxSetOfResource.
      * 
      * @param lKey
-     *            New key of the ressource
+     *            New key of the resource
      */
-    void setRessourceKey(long lKey) {
+    void setResourceKey(long lKey) {
         _lKey = lKey;
     }
 
@@ -115,4 +123,9 @@ public class DxResource {
             return 0;
         }
     };
+    
+    public String toString()
+    {
+    	return _sName;
+    }
 }

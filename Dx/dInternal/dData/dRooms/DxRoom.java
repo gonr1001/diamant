@@ -59,11 +59,11 @@ public class DxRoom extends DxResource {
     }
 
     public String getRoomName() {
-        return this.getRessourceName();
+        return this.getResourceName();
     }
 
     public long getRoomKey() {
-        return this.getRessourceKey();
+        return this.getResourceKey();
     }
 
     public int getRoomCapacity() {

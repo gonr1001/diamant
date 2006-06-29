@@ -75,7 +75,7 @@ public class DxSetOfInstructorsTest extends TestCase {
         soiTest.removeInstructor(soiTest.getInstructorKeyByName("Erick"));
         assertEquals("test_removeInstructor: assertEquals",  -1, soiTest.getInstructorKeyByName("Erick"));
         
-        assertNotNull("test_getInstructorKeyByName: assertEquals", soiTest.getRessourceByName("Alex"));
+        assertNotNull("test_getInstructorKeyByName: assertEquals", soiTest.getResourceByName("Alex"));
         
     }
 

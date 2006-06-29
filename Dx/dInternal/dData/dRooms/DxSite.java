@@ -49,7 +49,7 @@ public class DxSite extends DxResource {
      * @return The name of the current site
      */
     public String getSiteName() {
-        return this.getRessourceName();
+        return this.getResourceName();
     }
 
     /**
@@ -58,7 +58,7 @@ public class DxSite extends DxResource {
      * @return The key of the current site
      */
     public long getSiteKey() {
-        return this.getRessourceKey();
+        return this.getResourceKey();
     }
 
     public DxCategory getCat(long lCatKey) {
@@ -132,7 +132,7 @@ public class DxSite extends DxResource {
     }
 
     public long getCatKeyByName(String sCatName) {
-        return _dxsocCat.getRessourceKeyByName(sCatName);
+        return _dxsocCat.getResourceKeyByName(sCatName);
     }
 
     public long getRoomKeyByName(long lCatKey, String sSiteName) {

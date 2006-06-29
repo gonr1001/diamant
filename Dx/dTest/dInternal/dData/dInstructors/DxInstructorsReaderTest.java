@@ -215,9 +215,9 @@ public class DxInstructorsReaderTest extends TestCase {
 			assertNotSame("test5_getSetOfInstructors: assertNotSame",
 					dxsoiTemp, null);
 			assertNotNull("test5_1_getSetOfInstructors: assertEquals",
-					dxsoiTemp.getRessourceByName("JAC"));
+					dxsoiTemp.getResourceByName("JAC"));
 			assertNotNull("test5_2_getSetOfInstructors: assertEquals",
-					dxsoiTemp.getRessourceByName("POLM"));
+					dxsoiTemp.getResourceByName("POLM"));
 		} catch (Exception e) {
 			assertFalse("test5_3_getSetOfInstructors: Should not have failed"
 					+ e.toString(), true);
@@ -245,11 +245,11 @@ public class DxInstructorsReaderTest extends TestCase {
 		assertEquals("test6_2_getSetOfInstructors: assertEquals", true, dxsoi
 				.areVectorsSync());
 		assertNotNull("test6_3_getSetOfInstructors: assertEquals", dxsoi
-				.getRessourceByName("ABATZOGLOU, NICOLAS"));
+				.getResourceByName("ABATZOGLOU, NICOLAS"));
 		assertNotNull("test6_4_getSetOfInstructors: assertEquals", dxsoi
-				.getRessourceByName("YAHIA, AMMAR"));
+				.getResourceByName("YAHIA, AMMAR"));
 		assertNotNull("test6_5_getSetOfInstructors: assertEquals", dxsoi
-				.getRessourceByName("AMÉDIN, CELSE KAFUI"));
+				.getResourceByName("AMÉDIN, CELSE KAFUI"));
 
 		//assertEquals("test6_6_getSetOfInstructors: assertEquals", 5, dxsoi
 		//		.getInstructorAvailabilityByName("YAHIA, AMMAR").getPeriodAvailability(4,

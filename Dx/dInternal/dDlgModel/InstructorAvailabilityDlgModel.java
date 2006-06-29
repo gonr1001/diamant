@@ -99,7 +99,8 @@ public class InstructorAvailabilityDlgModel {
 	}
 
 	public void setInstructorsNames(DxSetOfInstructors setOfInstructors) {
-		_instructorsNames = setOfInstructors.getNamesVector();
+		//Unused code
+		//_instructorsNames = setOfInstructors.getNamesVector();
 	}
 		
 	

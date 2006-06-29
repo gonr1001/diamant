@@ -39,7 +39,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public DxRoom getRoom(long lRoomKey) {
         try{
-            return (DxRoom)this.getRessource(lRoomKey);
+            return (DxRoom)this.getResource(lRoomKey);
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
@@ -48,7 +48,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public DxRoom getRoom(String sRoomName) {
         try{
-            return (DxRoom)this.getRessourceByName(sRoomName);
+            return (DxRoom)this.getResourceByName(sRoomName);
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
@@ -61,7 +61,7 @@ public class DxSetOfRooms extends DxSetOfResources{
     
     public String getRoomName(long lRoomKey) {
         try{
-            return this.getRessourceName(lRoomKey);
+            return this.getResourceName(lRoomKey);
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
@@ -70,7 +70,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public int getRoomCapacity(long lRoomKey) {
         try{
-            return ((DxRoom)this.getRessource(lRoomKey)).getRoomCapacity();
+            return ((DxRoom)this.getResource(lRoomKey)).getRoomCapacity();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return 0;
@@ -79,7 +79,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public int getRoomCapacity(String sRoomName) {
         try{
-            return ((DxRoom)this.getRessourceByName(sRoomName)).getRoomCapacity();
+            return ((DxRoom)this.getResourceByName(sRoomName)).getRoomCapacity();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return 0;
@@ -87,19 +87,19 @@ public class DxSetOfRooms extends DxSetOfResources{
     }
     
     public void addRoom(DxRoom dxrRoom) {
-        if(this.getRessourceKeyByName(dxrRoom.getRoomName()) == -1) {
-            this.addRessource(dxrRoom);
+        if(this.getResourceKeyByName(dxrRoom.getRoomName()) == -1) {
+            this.addResource(dxrRoom);
         }
 
     }
 
     public long getRoomKeyByName(String sRoomName) {
-        return this.getRessourceKeyByName(sRoomName);
+        return this.getResourceKeyByName(sRoomName);
     }
 
     public DxAvailability getRoomAvailability(long lRoomKey) {
         try{
-            return ((DxRoom)this.getRessource(lRoomKey)).getRoomAvailability();
+            return ((DxRoom)this.getResource(lRoomKey)).getRoomAvailability();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
@@ -108,7 +108,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public DxAvailability getRoomAvailability(String sRoomName) {
         try{
-            return ((DxRoom)this.getRessourceByName(sRoomName)).getRoomAvailability();
+            return ((DxRoom)this.getResourceByName(sRoomName)).getRoomAvailability();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
@@ -135,8 +135,8 @@ public class DxSetOfRooms extends DxSetOfResources{
         }
 
         for (int i = 0; i < this.getRoomCount(); i++) {
-            DxRoom dxsThisRoom = (DxRoom) this.getRessourceByNameIndex(i);
-            DxRoom dxsOtherRoom = (DxRoom) this.getRessourceByNameIndex(i);
+            DxRoom dxsThisRoom = (DxRoom) this.getResourceByNameIndex(i);
+            DxRoom dxsOtherRoom = (DxRoom) this.getResourceByNameIndex(i);
             if (!dxsThisRoom.isEquals(dxsOtherRoom)) {
                 return false;
             }

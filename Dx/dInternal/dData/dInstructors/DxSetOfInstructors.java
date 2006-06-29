@@ -20,6 +20,8 @@
 
 package dInternal.dData.dInstructors;
 
+import java.util.Vector;
+
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfResources;
@@ -45,7 +47,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      */
     public void addInstructor(String sName, DxAvailability dxaAva) {
         DxInstructor dxiTemp = new DxInstructor(sName, dxaAva);
-        this.addRessource(dxiTemp);
+        this.addResource(dxiTemp);
     }
 
     /**
@@ -55,7 +57,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      *            Key of the instructor to be removed
      */
     public void removeInstructor(long lKey) {
-        this.removeRessource(lKey);
+        this.removeResource(lKey);
     }
 
     /**
@@ -69,7 +71,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
         if (size() > 0) {
             for (i = 0; i < this.size(); i++) {
                 DxInstructor dxiTemp = (DxInstructor) this
-                        .getRessourceByNameIndex(i);
+                        .getResourceByNameIndex(i);
                 reslist.append(dxiTemp.getInstructorName() + DConst.CR_LF);
                 reslist.append(dxiTemp.getInstructorAvailability().toWrite(DConst.AVAILABILITY_DAY_SEPARATOR_INST, DConst.AVAILABILITY_PERIOD_SEPARATOR));
                 // Avoid trailing line feed
@@ -89,7 +91,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      * @return String The name of the instructor, null if the index was invalid
      */
     public String getInstructorName(long lKey) {
-        return this.getRessourceName(lKey);
+        return this.getResourceName(lKey);
     }
 
     /**
@@ -102,7 +104,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      * @return long The key of instructor sName, -1 if instructor not found
      */
     public long getInstructorKeyByName(String sName) {
-        return this.getRessourceKeyByName(sName);
+        return this.getResourceKeyByName(sName);
     }
 
     /**
@@ -118,7 +120,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      */
     public DxAvailability getInstructorAvailability(int nIndex) {
         DxInstructor dxiTemp = (DxInstructor) this
-                .getRessourceByNameIndex(nIndex);
+                .getResourceByNameIndex(nIndex);
         if (dxiTemp != null) {
             return dxiTemp.getInstructorAvailability();
         }
@@ -134,7 +136,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      *         index was invalid
      */
     public DxAvailability getInstructorAvailabilityByKey(long lKey) {
-        DxInstructor dxiTemp = (DxInstructor) this.getRessource(lKey);
+        DxInstructor dxiTemp = (DxInstructor) this.getResource(lKey);
         if (dxiTemp != null) {
             return dxiTemp.getInstructorAvailability();
         }
@@ -149,7 +151,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
      */
     public void setInstructorAvailability(int nIndex, DxAvailability dxaNewAva) {
         DxInstructor dxiTemp = (DxInstructor) this
-                .getRessourceByNameIndex(nIndex);
+                .getResourceByNameIndex(nIndex);
         if (dxiTemp != null) {
             dxiTemp.setInstructorAvailability(dxaNewAva);
         }
@@ -164,10 +166,10 @@ public class DxSetOfInstructors extends DxSetOfResources {
         // Key is not verified
         for (int i = 0; i < this.size(); i++) {
             if (!this
-                    .getRessourceByNameIndex(i)
-                    .getRessourceName()
+                    .getResourceByNameIndex(i)
+                    .getResourceName()
                     .equalsIgnoreCase(
-                            dxsoi.getRessourceByNameIndex(i).getRessourceName())
+                            dxsoi.getResourceByNameIndex(i).getResourceName())
                     || !this.getInstructorAvailability(i).isEquals(
                             dxsoi.getInstructorAvailability(i)))
                 return false;
@@ -182,5 +184,4 @@ public class DxSetOfInstructors extends DxSetOfResources {
 	public void alwaysAvailable() {
 		System.out.println("DxSetOfIntructors.alwaysAvailable must be implemented");			
 	}
-
 }
