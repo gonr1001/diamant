@@ -20,6 +20,7 @@ package dInternal.dTimeTable;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.util.Observable;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,7 +39,7 @@ import eLib.exit.xml.input.XMLInputFile;
 import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
-public class TTStructure {
+public class TTStructure extends Observable {
 
 	private DSetOfResources _setOfCycles;
 
@@ -641,4 +642,12 @@ public class TTStructure {
 		}
 		return sReturn;
 	}
+	
+    public void changeInTTStructure(Object obj) {
+        this.setChanged();
+        // change model
+
+        this.notifyObservers(obj);
+        this.clearChanged();
+    }
 }

@@ -20,6 +20,8 @@
 
 package dInternal.dData.dInstructors;
 
+import java.util.Iterator;
+
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfResources;

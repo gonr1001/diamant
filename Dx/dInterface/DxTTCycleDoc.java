@@ -21,6 +21,7 @@ package dInterface;
 
 import java.util.Observable;
 
+import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 
 /**
@@ -39,9 +40,13 @@ public class DxTTCycleDoc extends DxDocument{
 	}
 
 	@Override
-	public void update(Observable dm, Object component) {
-		// TODO Auto-generated method stub
-		
+	public void update(Observable ttS, Object component) {
+        if (component != null)
+            component.toString();
+        _dMediator.getDApplication().setCursorWait();
+        _ttPane.updateTTPane((TTStructure) ttS);
+        //_stateBar.upDate();
+        _dMediator.getDApplication().setCursorDefault();
 	}
 
 	@Override

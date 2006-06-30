@@ -209,7 +209,12 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				resc.setID((String) _dayNameSelector.getSelectedItem());
 				//System.out.println("DToolbar.dayNameSelector");//debug
 				//Treat event
-				_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
+				if (DConst.newDoc) {
+//					_dApplic.getCurrentDModel()// to aboid warning
+				} else {
+					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
+				}
+				
 			}//end actionPerformed
 		});//end addActionListener
 

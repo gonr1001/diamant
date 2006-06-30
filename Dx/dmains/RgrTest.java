@@ -50,13 +50,13 @@ public class RgrTest {
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
-		TestSuite suite = new TestSuite("miniTest");
+		TestSuite suite = new TestSuite("rgrTest");
 
-		suite.addTest(DxAssignAllAlgTest.suite());
+//		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 
 
-		System.out.println("Bye I was in miniTest");
+		System.out.println("Bye I was in rgrTest");
 		return suite;
 	}
 }
