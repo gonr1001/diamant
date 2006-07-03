@@ -48,7 +48,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public DxRoom getRoom(String sRoomName) {
         try{
-            return (DxRoom)this.getResourceByName(sRoomName);
+            return (DxRoom)this.getResource(sRoomName);
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
@@ -79,7 +79,7 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public int getRoomCapacity(String sRoomName) {
         try{
-            return ((DxRoom)this.getResourceByName(sRoomName)).getRoomCapacity();
+            return ((DxRoom)this.getResource(sRoomName)).getRoomCapacity();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return 0;
@@ -87,14 +87,14 @@ public class DxSetOfRooms extends DxSetOfResources{
     }
     
     public void addRoom(DxRoom dxrRoom) {
-        if(this.getResourceKeyByName(dxrRoom.getRoomName()) == -1) {
+        if(this.getResourceKey(dxrRoom.getRoomName()) == -1) {
             this.addResource(dxrRoom);
         }
 
     }
 
     public long getRoomKeyByName(String sRoomName) {
-        return this.getResourceKeyByName(sRoomName);
+        return this.getResourceKey(sRoomName);
     }
 
     public DxAvailability getRoomAvailability(long lRoomKey) {
@@ -108,11 +108,19 @@ public class DxSetOfRooms extends DxSetOfResources{
 
     public DxAvailability getRoomAvailability(String sRoomName) {
         try{
-            return ((DxRoom)this.getResourceByName(sRoomName)).getRoomAvailability();
+            return ((DxRoom)this.getResource(sRoomName)).getRoomAvailability();
         }catch (Exception e){
             //Null pointer exception will be thrown if room doesnt exist
             return null;
         }
+    }
+    
+    public DxRoom[] getRoomsSortedByKey(){
+        return this.getKeySortedVector().toArray(new DxRoom[this.size()]);
+    }
+    
+    public DxRoom[] getRoomsSortedByName(){
+        return this.getNameSortedVector().toArray(new DxRoom[this.size()]);
     }
 
     public String toWrite(String sSiteName, String sCatName) {
@@ -137,7 +145,7 @@ public class DxSetOfRooms extends DxSetOfResources{
         Iterator itRes = this.iterator();
         while (itRes.hasNext()) {
             DxRoom dxrThis = (DxRoom) itRes.next();
-            DxRoom dxrOther = dxsorRooms.getRoom(dxrThis.getRoomKey());
+            DxRoom dxrOther = dxsorRooms.getRoom(dxrThis.getRoomName());
             if (!dxrThis.isEquals(dxrOther))
                 return false;
         }

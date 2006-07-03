@@ -19,12 +19,11 @@
  */
 package dTest.dInternal.dData.dInstructors;
 
-import java.util.Vector;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.dInstructors.DxInstructor;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 
 /**
@@ -37,7 +36,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
  * 
  */
 public class DxSetOfInstructorsTest extends TestCase {
-	
+
     /**
      * @param args
      */
@@ -66,17 +65,38 @@ public class DxSetOfInstructorsTest extends TestCase {
         soiTest.addInstructor("Bruno", aTemp);
         soiTest.addInstructor("Alex", aTemp);
 
-        Vector<String> vTemp = soiTest.getNamesVector();
+        DxInstructor dxiTemp[] = soiTest.getInstructorsSortedByKey();
+        assertEquals("test1_getInstructorsSortedByKey: assertEquals", "Erick",
+                dxiTemp[0].getInstructorName());
+        assertEquals("test2_getInstructorsSortedByKey: assertEquals", "Claude",
+                dxiTemp[2].getInstructorName());
+        assertEquals("test3_getInstructorsSortedByKey: assertEquals", "Alex",
+                dxiTemp[4].getInstructorName());
 
-        assertEquals("test_addInstructor: assertEquals", vTemp.get(soiTest
-                .size() - 1), "Erick");
-        assertEquals("test1_addInstructor: assertEquals", vTemp.get(0), "Alex");
+        dxiTemp = soiTest.getInstructorsSortedByName();
+        assertEquals("test1_getInstructorsSortedByName: assertEquals", "Alex",
+                dxiTemp[0].getInstructorName());
+        assertEquals("test2_getInstructorsSortedByName: assertEquals",
+                "Claude", dxiTemp[2].getInstructorName());
+        assertEquals("test3_getInstructorsSortedByName: assertEquals", "Erick",
+                dxiTemp[4].getInstructorName());
 
-        soiTest.removeInstructor(soiTest.getInstructorKeyByName("Erick"));
-        assertEquals("test_removeInstructor: assertEquals",  -1, soiTest.getInstructorKeyByName("Erick"));
-        
-        assertNotNull("test_getInstructorKeyByName: assertEquals", soiTest.getResourceByName("Alex"));
-        
+        soiTest.removeInstructor(soiTest.getInstructorKey("Erick"));
+        dxiTemp = soiTest.getInstructorsSortedByKey();
+        assertEquals("test1_removeInstructor: assertEquals", "Daniel",
+                dxiTemp[0].getInstructorName());
+        assertEquals("test2_removeInstructor: assertEquals", -1, soiTest
+                .getInstructorKey("Erick"));
+        assertEquals("test3_removeInstructor: asserEquals", null, soiTest
+                .getInstructor("Erick"));
+
+        assertNotNull("test1_getInstructor: assertEquals", soiTest
+                .getInstructor("Alex"));
+        assertEquals("test2_getInstructor: assertEquals", "Alex", soiTest
+                .getInstructor("Alex").getInstructorName());
+        assertEquals("test3_getInstructor: assertEquals", "Daniel", soiTest
+                .getInstructor("Daniel").getInstructorName());
+
     }
 
     public void test_getInstructorAvailability() {
@@ -94,18 +114,21 @@ public class DxSetOfInstructorsTest extends TestCase {
         aTemp.addDayAvailability("1 1 1 1 1");
         soiTest.addInstructor("Zoe", aTemp);
 
-//        aTemp = soiTest.getInstructorAvailability(0);
+        DxInstructor[] dxiInsts = soiTest.getInstructorsSortedByName();
+        aTemp = soiTest.getInstructorAvailability(dxiInsts[0]
+                .getInstructorKey());
 
-        assertEquals("test_getInstructorAvailability: assertEquals", aTemp
+        assertEquals("test_getInstructorAvailability: assertEquals", 5, aTemp
                 .getPeriodAvailability(aTemp.getDayCount() - 1, aTemp
-                        .getPeriodCount(aTemp.getDayCount() - 1) - 1), 5);
+                        .getPeriodCount(aTemp.getDayCount() - 1) - 1));
 
-//        soiTest.setInstructorAvailability(0, soiTest
-//                .getInstructorAvailability(1));
-//        assertEquals("test_setInstructorAvailability: assertEquals", soiTest
-//                .getInstructorAvailability(0).getPeriodAvailability(0, 0),
-//                soiTest.getInstructorAvailability(1)
-//                        .getPeriodAvailability(0, 0));
+        dxiInsts[1].setInstructorAvailability(dxiInsts[0]
+                .getInstructorAvailability());
+
+        assertEquals("test_setInstructorAvailability: assertEquals",
+                dxiInsts[0].getInstructorAvailability().getPeriodAvailability(
+                        0, 0), dxiInsts[1].getInstructorAvailability()
+                        .getPeriodAvailability(0, 0));
     }
 
     public void test_instructorCount() {

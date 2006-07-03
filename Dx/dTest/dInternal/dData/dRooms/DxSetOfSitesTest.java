@@ -7,9 +7,11 @@ import dInternal.DataExchange;
 import dInternal.DxPreferences;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
+import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.DxSiteReader;
 import eLib.exit.txt.FilterFile;
 
@@ -39,19 +41,18 @@ public class DxSetOfSitesTest extends TestCase {
         dxsr = new DxReadSite1dot6(de);
 
         _dxsosMulti = dxsr.getSetOfSites();
-/*
-        path = "." + File.separator + "dataTest" + File.separator
-                + "loadData7j.dia";
-        dataloaded = preLoad(path);
-        st = new StringTokenizer(new String(dataloaded),
-                DConst.SAVE_SEPARATOR);
-        st.nextToken(); // Skips time table definition
-        st.nextToken(); // Skips instructors
-        de = new ByteArrayMsg(DConst.FILE_VER_NAME1_5, st.nextToken().trim());
-        ////7 days and 12 periods in this file, would normaly begiven by the time table
-        dxsr = new DxReadSitedotDia(de, 7, 12); 
-
-        _dxsosDia = dxsr.getSetOfSite();*/
+        /*
+         * path = "." + File.separator + "dataTest" + File.separator +
+         * "loadData7j.dia"; dataloaded = preLoad(path); st = new
+         * StringTokenizer(new String(dataloaded), DConst.SAVE_SEPARATOR);
+         * st.nextToken(); // Skips time table definition st.nextToken(); //
+         * Skips instructors de = new ByteArrayMsg(DConst.FILE_VER_NAME1_5,
+         * st.nextToken().trim()); ////7 days and 12 periods in this file, would
+         * normaly begiven by the time table dxsr = new DxReadSitedotDia(de, 7,
+         * 12);
+         * 
+         * _dxsosDia = dxsr.getSetOfSite();
+         */
     }
 
     public static Test suite() {
@@ -81,7 +82,7 @@ public class DxSetOfSitesTest extends TestCase {
                 _dxsosSingle.getRoomName(1, 1, 1));
         assertEquals("test_7_getSetOfSitesSingleSite: asserEquals", "D13000",
                 _dxsosSingle.getRoomName(1, 1, 44));
-        
+
         assertEquals("test_8_getSetOfSitesSingleSite: asserEquals", 20,
                 _dxsosSingle.getRoomCapacity(1, 1, 44));
 
@@ -94,35 +95,37 @@ public class DxSetOfSitesTest extends TestCase {
     public void test_getSetOfSitesMultiSite() {
         assertEquals("test_1_getSetOfSitesMultiSite: asserEquals", 3,
                 _dxsosMulti.getSiteCount());
+        DxSite[] dxsosAll = _dxsosMulti.getSitesSortedByKey();
+        DxCategory dxsocShe = dxsosAll[0].getCat(DConst.ROOM_STANDARD_CAT);
         assertEquals("test_2_getSetOfSitesMultiSite: asserEquals", 2,
-                _dxsosMulti.getCatCount(1));
+                dxsosAll[0].getCatCount());
         assertEquals("test_2_1_getSetOfSitesMultiSite: asserEquals", 1,
-                _dxsosMulti.getCatCount(3));
+                dxsosAll[2].getCatCount());
         assertEquals("test_3_getSetOfSitesMultiSite: asserEquals", 2,
                 _dxsosMulti.getCatCount(DConst.ROOM_STANDARD_SITE));
         assertEquals("test_4_getSetOfSitesMultiSite: asserEquals", 7,
-                _dxsosMulti.getRoomCount(1, 1));
+                _dxsosMulti.getRoomCount("SHE", "CAT1"));
         assertEquals("test_5_getSetOfSitesMultiSite: asserEquals", -1,
-                _dxsosMulti.getRoomCount("COW","CAT1"));
+                _dxsosMulti.getRoomCount("COW", "CAT1"));
 
         assertEquals("test_6_getSetOfSitesMultiSite: assertEquals",
                 DConst.ROOM_STANDARD_SITE, _dxsosMulti.getSiteName(1));
-        assertEquals("test_6_1_getSetOfSitesMultiSite: assertEquals",
-                "LON", _dxsosMulti.getSiteName(2));
-        assertEquals("test_7_getSetOfSitesMultiSite: asserEquals",
-                "CAT1", _dxsosMulti.getCatName(1, 1));
-        assertEquals("test_7_1_getSetOfSitesMultiSite: asserEquals",
-                "CAT2", _dxsosMulti.getCatName(3, 1));
+        assertEquals("test_6_1_getSetOfSitesMultiSite: assertEquals", "LON",
+                _dxsosMulti.getSiteName(2));
+        assertEquals("test_7_getSetOfSitesMultiSite: asserEquals", "CAT1",
+                _dxsosMulti.getCatName(1, 1));
+        assertEquals("test_7_1_getSetOfSitesMultiSite: asserEquals", "CAT2",
+                _dxsosMulti.getCatName(3, 1));
         assertEquals("test_8_getSetOfSitesMultiSite: asserEquals", "Z7-2001",
                 _dxsosMulti.getRoomName(1, 1, 1));
         assertEquals("test_9_getSetOfSitesMultiSite: asserEquals", null,
                 _dxsosMulti.getRoomName(1, 1, 44));
         assertEquals("test_9_1_getSetOfSitesMultiSite: asserEquals", "101",
                 _dxsosMulti.getRoomName(3, 1, 1));
-        
+
         assertEquals("test_10_getSetOfSitesMultiSite: asserEquals", 80,
                 _dxsosMulti.getRoomCapacity(1, 1, 1));
-        
+
         assertEquals("test_11_getSetOfSitesMultiSite: asserEquals", 60,
                 _dxsosMulti.getRoomCapacity(2, 2, 2));
 
@@ -130,7 +133,7 @@ public class DxSetOfSitesTest extends TestCase {
                 _dxsosMulti.getRoomAvailability(2, 2, 23));
 
         assertEquals("test_12_getSetOfSitesMultiSite: asserEquals", 40,
-                _dxsosMulti.getRoomCapacity("SHE","CAT2","FM-3207"));
+                _dxsosMulti.getRoomCapacity("SHE", "CAT2", "FM-3207"));
     }
 
     public void test_getSetOfSitesDia() {
@@ -138,8 +141,8 @@ public class DxSetOfSitesTest extends TestCase {
     }
 
     private byte[] preLoad(String str) {
-        DxPreferences preferences = new DxPreferences("." + File.separator + "pref"
-                + File.separator + "pref.txt");
+        DxPreferences preferences = new DxPreferences("." + File.separator
+                + "pref" + File.separator + "pref.txt");
         FilterFile filter = new FilterFile();
         filter.setCharKnown("");
         filter.appendToCharKnown(preferences._acceptedChars);

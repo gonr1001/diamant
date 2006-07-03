@@ -546,7 +546,7 @@ public class DModel extends Observable {
                 while (itCategory.hasNext()) {
                     DxSetOfRooms dxsor = ((DxCategory) itCategory.next())
                             .getSetOfRooms();
-                    dxsorTmp.addResources(dxsor);
+                    dxsorTmp.addSetOfResources(dxsor);
                 }// end for (int j = 0; j < sor.size(); j++)
             }// end for (int i = 0; i < _setOfSites
         } else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
@@ -557,7 +557,7 @@ public class DModel extends Observable {
                 while (itCategory.hasNext()) {
                     DxSetOfRooms dxsor = ((DxCategory) itCategory.next())
                             .getSetOfRooms();
-                    dxsorTmp.addResources(dxsor);
+                    dxsorTmp.addSetOfResources(dxsor);
                 }
             } else {
                 dxsorTmp = null;

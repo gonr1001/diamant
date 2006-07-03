@@ -64,7 +64,7 @@ public class DxSetOfResources implements Iterable {
      * @param dxrRes
      *            Resource that has to be added to the set
      */
-    public void addResources(DxSetOfResources dxsorResources) {
+    public void addSetOfResources(DxSetOfResources dxsorResources) {
         for (int i = 0; i < dxsorResources.size(); i++) {
             this.addResource(dxsorResources._vResourceSortedByKey.get(i));
         }
@@ -122,6 +122,27 @@ public class DxSetOfResources implements Iterable {
     }
 
     /**
+     * Retreives a ressource by its name. If there are two ressources with the
+     * same name, there is no guaranty on which ressource will be returned
+     * 
+     * @param sName
+     *            Name of the ressource we need
+     * @return The ressource
+     */
+    public DxResource getResource(String sName) {
+        if (!_bSorted) {
+            sortResources();
+        }
+        DxResource dxrTemp = new DxResource(0, sName);
+        int nIndex = Collections.binarySearch(_vResourceSortedByName, dxrTemp,
+                DxResource.NameComparator);
+        if (nIndex >= 0) {
+            return _vResourceSortedByName.get(nIndex);
+        }
+        return null;
+    }
+
+    /**
      * Retreives the name of a ressource in the set
      * 
      * @param nIndex
@@ -138,27 +159,6 @@ public class DxSetOfResources implements Iterable {
     }
 
     /**
-     * Retreives a ressource by its name. If there are two ressources with the
-     * same name, there is no guaranty on which ressource will be returned
-     * 
-     * @param sName
-     *            Name of the ressource we need
-     * @return The ressource
-     */
-    public DxResource getResourceByName(String sName) {
-        if (!_bSorted) {
-            sortResources();
-        }
-        DxResource dxrTemp = new DxResource(0, sName);
-        int nIndex = Collections.binarySearch(_vResourceSortedByName, dxrTemp,
-                DxResource.NameComparator);
-        if (nIndex >= 0) {
-            return _vResourceSortedByName.get(nIndex);
-        }
-        return null;
-    }
-
-    /**
      * Retreives the key of a ressource by its name. If there are two ressources
      * with the same name, there is no guaranty on which ressource key will be
      * returned
@@ -167,27 +167,16 @@ public class DxSetOfResources implements Iterable {
      *            Name of the ressource we need the key
      * @return The key of ressour sName, -1 if instructor not found
      */
-    public long getResourceKeyByName(String sName) {
+    public long getResourceKey(String sName) {
         if (!_bSorted) {
             sortResources();
         }
-        DxResource dxrTemp = getResourceByName(sName);
+        DxResource dxrTemp = getResource(sName);
         if (dxrTemp != null) {
             return dxrTemp.getResourceKey();
         }
         return -1;
     }
-
-    // public Vector<String> getNamesVector() {
-    // if (!_bNamesSorted) {
-    // sortResources();
-    // }
-    // Vector<String> vReturn = new Vector<String>();
-    // for (int i = 0; i < _vResourceSortedByName.size(); i++) {
-    // vReturn.add(_vResourceSortedByName.get(i).getResourceName());
-    // }
-    // return vReturn;
-    // }
 
     public DxResource[] getResourcesSortedByName() {
         if (!_bSorted) {
@@ -197,7 +186,24 @@ public class DxSetOfResources implements Iterable {
     }
 
     public DxResource[] getResourcesSortedByKey() {
+        if (!_bSorted) {
+            sortResources();
+        }
         return _vResourceSortedByKey.toArray(new DxResource[this.size()]);
+    }
+    
+    protected Vector<DxResource> getNameSortedVector() {
+        if (!_bSorted) {
+            sortResources();
+        }
+        return _vResourceSortedByName;
+    }
+
+    protected Vector<DxResource> getKeySortedVector() {
+        if (!_bSorted) {
+            sortResources();
+        }
+        return _vResourceSortedByKey;
     }
 
     public Vector<String> getNamesVector() {
@@ -212,19 +218,6 @@ public class DxSetOfResources implements Iterable {
 
         return vReturn;
     }
-
-    // /**
-    // * Validate that nIndex is a valid index in the set
-    // *
-    // * @param nIndex
-    // * Index to be verified
-    // * @return true if the index was valid, false otherwise
-    // */
-    // private boolean isValidIndex(int nIndex) {
-    // return ((nIndex >= 0) && (nIndex < _vResourceSortedByKey.size()) &&
-    // (nIndex < _vResourceSortedByName
-    // .size()));
-    // }
 
     /**
      * Searches the index of a ressource in the key sorted vector given it's
@@ -289,7 +282,7 @@ public class DxSetOfResources implements Iterable {
         Iterator itRes = this.iterator();
         while (itRes.hasNext()) {
             DxResource dxrTemp = (DxResource) itRes.next();
-            if(!dxsorOther.ressourceExists(dxrTemp.getResourceName())){
+            if (!dxsorOther.ressourceExists(dxrTemp.getResourceName())) {
                 return false;
             }
         }
@@ -313,8 +306,7 @@ public class DxSetOfResources implements Iterable {
     }
 
     public boolean ressourceExists(long lKey) {
-        if(getSortedKeyIndex(lKey)==-1)
-        {
+        if (getSortedKeyIndex(lKey) == -1) {
             return false;
         }
         return true;

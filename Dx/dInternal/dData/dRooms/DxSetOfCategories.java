@@ -45,7 +45,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxCategory getCat(String sCatName) {
         try {
-            return ((DxCategory) this.getResourceByName(sCatName));
+            return ((DxCategory) this.getResource(sCatName));
         } catch (Exception e) {
             return null;
         }
@@ -60,7 +60,7 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
 
     public long getCategoryKeyByName(String sCatName) {
-        return this.getResourceKeyByName(sCatName);
+        return this.getResourceKey(sCatName);
     }
 
     public DxRoom getRoom(long lCatKey, long lRoomKey) {
@@ -73,7 +73,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxRoom getRoom(String sCatName, String sRoomName) {
         try {
-            return ((DxCategory) this.getResourceByName(sCatName)).getRoom(sRoomName);
+            return ((DxCategory) this.getResource(sCatName)).getRoom(sRoomName);
         } catch (Exception e) {
             return null;
         }
@@ -89,7 +89,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public int getRoomCount(String sCatName) {
         try {
-            return ((DxCategory) this.getResourceByName(sCatName))
+            return ((DxCategory) this.getResource(sCatName))
                     .getRoomCount();
         } catch (Exception e) {
             return -1;
@@ -117,7 +117,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public int getRoomCapacity(String sCatName, String sRoomName) {
         try {
-            return ((DxCategory) this.getResourceByName(sCatName))
+            return ((DxCategory) this.getResource(sCatName))
                     .getRoomCapacity(sRoomName);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
@@ -126,7 +126,7 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
 
     public void addCategory(String sNewCatName) {
-        if (this.getResourceKeyByName(sNewCatName) == -1) {
+        if (this.getResourceKey(sNewCatName) == -1) {
             this.addResource(new DxCategory(sNewCatName));
         }
     }
@@ -141,7 +141,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public void addRoom(String sCatName, DxRoom dxrRoom) {
         try {
-            ((DxCategory) this.getResourceByName(sCatName)).addRoom(dxrRoom);
+            ((DxCategory) this.getResource(sCatName)).addRoom(dxrRoom);
         } catch (Exception e) {
             // If category was not found a null pointer exception will occur
         }
@@ -158,7 +158,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxAvailability getRoomAvailability(String sCatName, String sRoomName) {
         try {
-            return ((DxCategory) this.getResourceByName(sCatName))
+            return ((DxCategory) this.getResource(sCatName))
                     .getRoomAvailability(sRoomName);
         } catch (Exception e) {
             return null;
@@ -184,11 +184,19 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public DxSetOfRooms getSetOfRooms(String sCatName) {
         try {
-            return ((DxCategory) this.getResourceByName(sCatName))
+            return ((DxCategory) this.getResource(sCatName))
                     .getSetOfRooms();
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    public DxCategory[] getCatsSortedByKey(){
+        return this.getKeySortedVector().toArray(new DxCategory[this.size()]);
+    }
+    
+    public DxCategory[] getCatsSortedByName(){
+        return this.getNameSortedVector().toArray(new DxCategory[this.size()]);
     }
 
     public String toWrite(String sSiteName) {
@@ -213,7 +221,7 @@ public class DxSetOfCategories extends DxSetOfResources {
         Iterator itRes = this.iterator();
         while (itRes.hasNext()) {
             DxCategory dxcThis = (DxCategory) itRes.next();
-            DxCategory dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryKey());
+            DxCategory dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryName());
             if (!dxcThis.isEquals(dxcOther))
                 return false;
         }

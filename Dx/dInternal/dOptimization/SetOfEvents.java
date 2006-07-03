@@ -176,7 +176,7 @@ public class SetOfEvents extends DSetOfResources {
 			Assignment assignment, String unityID) {
 		String[] instructorNames = assignment.getInstructorNames();
 		for (int m = 0; m < instructorNames.length; m++) {
-			long lKey = _dm.getDxSetOfInstructors().getInstructorKeyByName(
+			long lKey = _dm.getDxSetOfInstructors().getInstructorKey(
 					instructorNames[m]);
 
 			if (lKey != -1) {
@@ -502,7 +502,7 @@ public class SetOfEvents extends DSetOfResources {
 				for (int j = 0; j < instKey.length; j++) {
 					DxAvailability instAvailability = _dm
 							.getDxSetOfInstructors()
-							.getInstructorAvailabilityByKey(instKey[j]);
+							.getInstructorAvailability(instKey[j]);
 					int dayIndex = _dm.getTTStructure().findIndexInWeekTable(
 							perKey[0]);
 					int perPosition = _dm.getTTStructure().getCurrentCycle()

@@ -130,7 +130,8 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	private void initialize() {//throws Exception {
 		_chooserPanel = new JPanel();
 		// creates the JComboBox with the list of all instructors
-		_chooser = new JComboBox(_soi.getResourcesSortedByName());
+		_chooser = new JComboBox(_soi.getInstructorsSortedByName());
+        _currentInst = (DxInstructor)_chooser.getSelectedItem();
 		_chooser.addItemListener(this);
 		_chooserPanel.add(_chooser, null);
 		this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
@@ -182,7 +183,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			if (source.equals(_chooser)) {
 				getContentPane().remove(_centerPanel);
 				_currentInst = ((DxInstructor)_chooser.getSelectedItem());
-				_centerPanel = makeGridPanel();// _currentInstr);
+				_centerPanel = makeGridPanel();
 				getContentPane().add(_centerPanel, BorderLayout.CENTER);
 				pack();
 			}

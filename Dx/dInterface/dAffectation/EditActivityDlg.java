@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.73 $  $Date: 2006-06-12 21:57:28 $
+ * Title: EditActivityDlg $Revision: 1.74 $  $Date: 2006-07-03 20:03:03 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.73 $
+ * @version $Revision: 1.74 $
  * @author  $Author: caln1901 $
  * @since JDK1.3
  *
@@ -903,7 +903,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
         String a = "";
         for (int i = 0; i < lm.getSize(); i++) {
             long key = _dApplic.getCurrentDModel().getDxSetOfInstructors()
-                    .getInstructorKeyByName((String) lm.getElementAt(i));
+                    .getInstructorKey((String) lm.getElementAt(i));
             a += key + ":";
         }
         return a;

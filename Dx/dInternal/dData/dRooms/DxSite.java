@@ -132,7 +132,7 @@ public class DxSite extends DxResource {
     }
 
     public long getCatKeyByName(String sCatName) {
-        return _dxsocCat.getResourceKeyByName(sCatName);
+        return _dxsocCat.getResourceKey(sCatName);
     }
 
     public long getRoomKeyByName(long lCatKey, String sSiteName) {

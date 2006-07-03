@@ -99,14 +99,14 @@ public class DiamantTest {
 		TestSuite suite = new TestSuite("Dimanant Tests");
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
-//		suite.addTest(DxSetOfInstructorsTest.suite());
+		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(DxInstructorsReaderTest.suite());
-//		suite.addTest(DxSetOfSitesTest.suite());
+		suite.addTest(DxSetOfSitesTest.suite());
 //		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
-		// suite.addTest(RoomsAttributesInterpretorTest.suite());
+//		 suite.addTest(RoomsAttributesInterpretorTest.suite());
 		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
@@ -132,7 +132,7 @@ public class DiamantTest {
 		suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(DSetOfActivitiesTest.suite());
-//		suite.addTest(DSetOfActivitiesSitesTest.suite());
+		suite.addTest(DSetOfActivitiesSitesTest.suite());
 		suite.addTest(DValueTest.suite());
 		suite.addTest(DObjectTest.suite());
 		suite.addTest(DxStateTest.suite());
@@ -141,8 +141,8 @@ public class DiamantTest {
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
 		suite.addTest(DResourceTest.suite());
-//		suite.addTest(DLoadDataTest.suite());
-//		suite.addTest(DSaveDataTest.suite());
+		suite.addTest(DLoadDataTest.suite());
+		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());

@@ -1069,7 +1069,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
         String a = "";
         for (int i = 0; i < lm.getSize(); i++) {
             long key = _dApplic.getCurrentDModel().getDxSetOfInstructors()
-                    .getInstructorKeyByName((String) lm.getElementAt(i));
+                    .getInstructorKey((String) lm.getElementAt(i));
             a += key + ":";
         }
         return a;

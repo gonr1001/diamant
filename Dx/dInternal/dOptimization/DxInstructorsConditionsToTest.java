@@ -119,7 +119,7 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 		for (int i = 0; i < instKey.length; i++) {
 			if (event.getPeriodKey().length() != 0) {
 				matrix = _dm.getDxSetOfInstructors()
-						.getInstructorAvailabilityByKey(instKey[i])
+						.getInstructorAvailability(instKey[i])
 						.getMatrixAvailability();
 
 				int dayIndexAvail = _dm.getTTStructure().findIndexInWeekTable(
