@@ -162,9 +162,10 @@ public class SelectiveScheduleDlg extends JDialog {
 		Iterator itrOnPM = SelectiveScheduleManager.getInstance()
 				.getPersistanceMismatchManager().getPersistanceMismatches()
 				.iterator();
+        PersistanceMismatch pm;
 
 		while (itrOnPM.hasNext()) {
-			PersistanceMismatch pm = (PersistanceMismatch) itrOnPM.next();
+			pm = (PersistanceMismatch) itrOnPM.next();
 			SelectiveScheduleManager.getInstance().removeFilterSet(
 					pm.getMismatchedFilterSet());
 		}
@@ -184,9 +185,10 @@ public class SelectiveScheduleDlg extends JDialog {
 		 * sont plus dans le model ?
 		 */
 		Iterator itr = _filterSetSelectorPanel.getFilterSets().iterator();
+        FilterSet fs;
 
 		while (itr.hasNext()) {
-			FilterSet fs = (FilterSet) itr.next();
+			fs = (FilterSet) itr.next();
 
 			boolean found = false;
 			for (int i = 0; i < allFilterSet.length; ++i) {
@@ -342,16 +344,19 @@ public class SelectiveScheduleDlg extends JDialog {
 			Collection checkedFilterSets = getCheckedFilterSets();
 			Iterator itrFS = getFilterSets().iterator();
 
+            Object next;
+            FilterSet fs;
+            JCheckBox checkBox;
 			while (itrFS.hasNext()) {
-				Object next = itrFS.next();
+				next = itrFS.next();
 
 				if (next == null) {
 					continue;
 				}
 
-				FilterSet fs = (FilterSet) next;
+				fs = (FilterSet) next;
 
-				JCheckBox checkBox = createJCheckBox(fs
+				checkBox = createJCheckBox(fs
 						.getFilterSetIdentifier().getFilterSetName());
 
 				if (checkedFilterSets.contains(fs)) {
@@ -398,9 +403,10 @@ public class SelectiveScheduleDlg extends JDialog {
 			Set entrySet = _checkBoxes.entrySet();
 
 			Iterator itr = entrySet.iterator();
+            Entry mapEntry;
 
 			while (itr.hasNext()) {
-				Entry mapEntry = (Entry) itr.next();
+				mapEntry = (Entry) itr.next();
 
 				if (((Boolean) mapEntry.getValue()).equals(Boolean.TRUE)) {
 					mapEntry.setValue(Boolean.FALSE);
@@ -430,9 +436,10 @@ public class SelectiveScheduleDlg extends JDialog {
 			Collection coll = new ArrayList();
 
 			Iterator itr = entrySet.iterator();
+            Entry entry;
 
 			while (itr.hasNext()) {
-				Entry entry = (Entry) itr.next();
+				entry = (Entry) itr.next();
 				if (((Boolean) entry.getValue()).equals(Boolean.TRUE)) {
 					coll.add(entry.getKey());
 				}
@@ -471,9 +478,10 @@ public class SelectiveScheduleDlg extends JDialog {
 		private FilterSet getFilterSetFromName(String fileterSetName) {
 			FilterSet result = null;
 			Iterator itrFilterSets = _checkBoxes.keySet().iterator();
+            FilterSet fs;
 
 			while (itrFilterSets.hasNext()) {
-				FilterSet fs = (FilterSet) itrFilterSets.next();
+				fs = (FilterSet) itrFilterSets.next();
 
 				if (fs.getFilterSetIdentifier().getFilterSetName().equals(
 						fileterSetName)) {
@@ -531,9 +539,10 @@ public class SelectiveScheduleDlg extends JDialog {
 
 		void addFilterSetElements(FilterSet fs) {
 			Iterator itr = fs.getIterator();
+            DResource next;
 
 			while (itr.hasNext()) {
-				DResource next = (DResource) itr.next();
+				next = (DResource) itr.next();
 
 				if (next == null) {
 					continue;
@@ -550,9 +559,10 @@ public class SelectiveScheduleDlg extends JDialog {
 
 		void removeFilterSetElements(FilterSet fs) {
 			Iterator itr = fs.getIterator();
+            DResource next;
 
 			while (itr.hasNext()) {
-				DResource next = (DResource) itr.next();
+				next = (DResource) itr.next();
 
 				if (next == null) {
 					continue;
@@ -806,9 +816,10 @@ public class SelectiveScheduleDlg extends JDialog {
 
 			/* L'utilisateur est certains, alors on y va... */
 			Iterator itr = checkedFilterSets.iterator();
+            FilterSet fsToDelete;
 
 			while (itr.hasNext()) {
-				FilterSet fsToDelete = (FilterSet) itr.next();
+				fsToDelete = (FilterSet) itr.next();
 
 				/* on retire le FS du model */
 				SelectiveScheduleManager.getInstance().removeFilterSet(
@@ -876,9 +887,10 @@ public class SelectiveScheduleDlg extends JDialog {
 			Collection allFilterSets = _filterSetSelectorPanel.getFilterSets();
 
 			Iterator itrAllFS = allFilterSets.iterator();
+            Object next;
 
 			while (itrAllFS.hasNext()) {
-				Object next = itrAllFS.next();
+				next = itrAllFS.next();
 				if (next == null) {
 					continue;
 				}

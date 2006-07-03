@@ -219,9 +219,11 @@ public class DxSetOfCategories extends DxSetOfResources {
         }
 
         Iterator itRes = this.iterator();
+        DxCategory dxcThis;
+        DxCategory dxcOther;
         while (itRes.hasNext()) {
-            DxCategory dxcThis = (DxCategory) itRes.next();
-            DxCategory dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryName());
+            dxcThis = (DxCategory) itRes.next();
+            dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryName());
             if (!dxcThis.isEquals(dxcOther))
                 return false;
         }

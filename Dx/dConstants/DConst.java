@@ -32,7 +32,7 @@ public class DConst {
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 
-    public static boolean newRooms = true;
+    public static boolean newRooms = false;
 //	public static boolean newRooms = false;
     
 	public static boolean newAlg = false;

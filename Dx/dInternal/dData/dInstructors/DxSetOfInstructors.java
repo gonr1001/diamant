@@ -81,8 +81,9 @@ public class DxSetOfInstructors extends DxSetOfResources {
         StringBuffer reslist = new StringBuffer();
         if (size() > 0) {
             Iterator itInstructors = this.iterator();
+            DxInstructor dxiTemp;
             while (itInstructors.hasNext()) {
-                DxInstructor dxiTemp = (DxInstructor) itInstructors.next();
+                dxiTemp = (DxInstructor) itInstructors.next();
                 reslist.append(dxiTemp.getInstructorName() + DConst.CR_LF);
                 reslist.append(dxiTemp.getInstructorAvailability().toWrite(
                         DConst.AVAILABILITY_DAY_SEPARATOR_INST,
@@ -159,9 +160,11 @@ public class DxSetOfInstructors extends DxSetOfResources {
         }
         // For every instructors, verify that availabilities match
         Iterator itRes = this.iterator();
+        DxInstructor dxiThis;
+        DxInstructor dxiOther;
         while (itRes.hasNext()) {
-            DxInstructor dxiThis = (DxInstructor) itRes.next();
-            DxInstructor dxiOther = dxsoi.getInstructor(dxiThis
+            dxiThis = (DxInstructor) itRes.next();
+            dxiOther = dxsoi.getInstructor(dxiThis
                     .getInstructorName());
             if (dxiOther == null) {
                 return false;

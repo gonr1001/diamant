@@ -539,12 +539,13 @@ public class DModel extends Observable {
         DxSetOfRooms dxsorTmp = new DxSetOfRooms();
         if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
             Iterator itSites = _dxSetOfSites.iterator();
+            DxSetOfCategories dxsoc;
+            DxSetOfRooms dxsor;
             while (itSites.hasNext()) {
-                DxSetOfCategories dxsoc = ((DxSite) itSites.next())
-                        .getSetOfCat();
+                dxsoc = ((DxSite) itSites.next()).getSetOfCat();
                 Iterator itCategory = dxsoc.iterator();
                 while (itCategory.hasNext()) {
-                    DxSetOfRooms dxsor = ((DxCategory) itCategory.next())
+                    dxsor = ((DxCategory) itCategory.next())
                             .getSetOfRooms();
                     dxsorTmp.addSetOfResources(dxsor);
                 }// end for (int j = 0; j < sor.size(); j++)
@@ -554,8 +555,9 @@ public class DModel extends Observable {
             if (dxsCurrentSite != null) {
                 DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
                 Iterator itCategory = dxsoc.iterator();
+                DxSetOfRooms dxsor;
                 while (itCategory.hasNext()) {
-                    DxSetOfRooms dxsor = ((DxCategory) itCategory.next())
+                     dxsor = ((DxCategory) itCategory.next())
                             .getSetOfRooms();
                     dxsorTmp.addSetOfResources(dxsor);
                 }
@@ -960,7 +962,7 @@ public class DModel extends Observable {
             matrix = DXToolsMethods
                     .resizeAvailability(matrix, getTTStructure());
             dxiTemp.setInstructorAvailability(new DxAvailability(matrix));
-            
+
         }
     }
 

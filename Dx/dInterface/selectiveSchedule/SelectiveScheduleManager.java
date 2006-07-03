@@ -307,8 +307,9 @@ public class SelectiveScheduleManager {
              * pour chaque filtre, on effectue un test afin de savoir si un
              * "match" existe
              */
+            DResource el;
             while (itrFilterSet.hasNext()) {
-                DResource el = (DResource) itrFilterSet.next();
+                el = (DResource) itrFilterSet.next();
 
                 if (el == null) {
                     continue;
@@ -376,8 +377,9 @@ public class SelectiveScheduleManager {
 
         Iterator itr = _filterSetIdentifierToFilterSets.values().iterator();
 
+        FilterSet fs;
         while (itr.hasNext()) {
-            FilterSet fs = (FilterSet) itr.next();
+            fs = (FilterSet) itr.next();
 
             if (fs == null) {
                 continue;
@@ -442,9 +444,9 @@ public class SelectiveScheduleManager {
 
         Iterator itrFilterSet = _filterSetIdentifierToFilterSets.values()
                                                                 .iterator();
-
+        FilterSet fs;
         while (itrFilterSet.hasNext()) {
-            FilterSet fs = (FilterSet) itrFilterSet.next();
+            fs = (FilterSet) itrFilterSet.next();
 
             Element setElement = new Element("Set");
 
@@ -456,9 +458,11 @@ public class SelectiveScheduleManager {
             setElement.addContent(setElementsElement);
 
             Iterator itrFilterSetElements = fs.getIterator();
+            
+            Element setElementElement;
 
             while (itrFilterSetElements.hasNext()) {
-                Element setElementElement = new Element("Element");
+                setElementElement = new Element("Element");
                 setElementsElement.addContent(setElementElement);
                 setElementElement.setAttribute("type", "Activity");
                 setElementElement.setAttribute("id",
@@ -559,10 +563,13 @@ public class SelectiveScheduleManager {
 
         Iterator itrSetsElement = setsElement.getChildren("Set").iterator();
 
+        FilterSet fs;
+        Element setElement;
+        
         while (itrSetsElement.hasNext()) {
-            FilterSet fs = createFilterSet();
+            fs = createFilterSet();
 
-            Element setElement = (Element) itrSetsElement.next();
+            setElement = (Element) itrSetsElement.next();
 
             try {
                 fs.getFilterSetIdentifier().setFilterSetName(setElement.getAttributeValue(
@@ -584,10 +591,14 @@ public class SelectiveScheduleManager {
 
             Iterator itrSetElement = setElement.getChild("Elements")
             .getChildren("Element").iterator();
+            
+            Element setElementElement;
+            String activityID;
+            DResource activity;
 
             while (itrSetElement.hasNext()) {
-                Element setElementElement = (Element) itrSetElement.next();
-                String activityID = setElementElement.getAttributeValue("id");
+                setElementElement = (Element) itrSetElement.next();
+                activityID = setElementElement.getAttributeValue("id");
 
                 // Si l'activité spécificée dans le fichier XML n'existe plus,
                 // alors il ne faut pas l'ajouter à l'ensemble
@@ -595,7 +606,7 @@ public class SelectiveScheduleManager {
                 // entre la description ds la persistance et ce qui se trouve
                 // réellement dans le système. Si l'ensemble devient vide, alors
                 // il faut carrément le retirer (et en informer l'utilisateur)
-                DResource activity = DApplication.getInstance().getCurrentDModel()
+                activity = DApplication.getInstance().getCurrentDModel()
                                                  .getSetOfActivities()
                                                  .getResource(activityID);
 

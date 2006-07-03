@@ -370,9 +370,11 @@ public class DxSetOfSites extends DxSetOfResources {
         }
 
         Iterator itRes = this.iterator();
+        DxSite dxsThis;
+        DxSite dxsOther;
         while (itRes.hasNext()) {
-            DxSite dxsThis = (DxSite) itRes.next();
-            DxSite dxsOther = dxsosSetOfSites.getSite(dxsThis.getSiteName());
+            dxsThis = (DxSite) itRes.next();
+            dxsOther = dxsosSetOfSites.getSite(dxsThis.getSiteName());
             if (!dxsThis.isEquals(dxsOther))
                 return false;
         }

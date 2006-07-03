@@ -80,10 +80,12 @@ public class DetailedPeriodPanel extends PeriodPanel{
             DSetOfResources eip = period.getEventsInPeriod();
             Vector setOfResources = eip.getSetOfResources();
             Iterator itrSetOfResources = setOfResources.iterator();
+            DResource res;
+            DResource eventRes;
 
             while (itrSetOfResources.hasNext()) {
-                DResource res = (DResource) itrSetOfResources.next();
-                DResource eventRes = DApplication.getInstance().getCurrentDModel()
+                res = (DResource) itrSetOfResources.next();
+                eventRes = DApplication.getInstance().getCurrentDModel()
                         .getSetOfEvents().getResource(res.getID());
                 if (SelectiveScheduleManager.getInstance().validateElement(
                         eventRes)) {

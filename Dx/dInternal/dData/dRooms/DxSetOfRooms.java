@@ -143,9 +143,11 @@ public class DxSetOfRooms extends DxSetOfResources{
         }
 
         Iterator itRes = this.iterator();
+        DxRoom dxrThis;
+        DxRoom dxrOther;
         while (itRes.hasNext()) {
-            DxRoom dxrThis = (DxRoom) itRes.next();
-            DxRoom dxrOther = dxsorRooms.getRoom(dxrThis.getRoomName());
+            dxrThis = (DxRoom) itRes.next();
+            dxrOther = dxsorRooms.getRoom(dxrThis.getRoomName());
             if (!dxrThis.isEquals(dxrOther))
                 return false;
         }

@@ -46,16 +46,19 @@ public class DxSetOfResources implements Iterable {
     }
 
     /**
-     * Adds an ressource to the set and changes it's key so it is correct
-     * according to the set to wich it is being added.
+     * Adds a ressource to the set if it's key was not already in use within the
+     * set
+     * 
      * 
      * @param dxrRes
      *            Resource that has to be added to the set
      */
     public void addResource(DxResource dxrRes) {
-        _vResourceSortedByKey.add(dxrRes);
-        _vResourceSortedByName.add(dxrRes);
-        _bSorted = false;
+        if (getResource(dxrRes.getResourceKey()) == null) {
+            _vResourceSortedByKey.add(dxrRes);
+            _vResourceSortedByName.add(dxrRes);
+            _bSorted = false;
+        }
     }
 
     /**
@@ -64,9 +67,22 @@ public class DxSetOfResources implements Iterable {
      * @param dxrRes
      *            Resource that has to be added to the set
      */
-    public void addSetOfResources(DxSetOfResources dxsorResources) {
-        for (int i = 0; i < dxsorResources.size(); i++) {
-            this.addResource(dxsorResources._vResourceSortedByKey.get(i));
+    public void addSetOfResources(DxSetOfResources dxsorNew) {
+//        Iterator itNew = dxsorNew.iterator();
+//        DxResource dxrNew; 
+//        while(itNew.hasNext())
+//        {
+//            dxrNew = (DxResource)itNew.next();
+//            if(!this.ressourceExists(dxrNew)){
+//                this.addResource(dxrNew);
+//            }
+//            else
+//            {
+//                
+//            }
+//        }
+        for (int i = 0; i < dxsorNew.size(); i++) {
+            this.addResource(dxsorNew._vResourceSortedByKey.get(i));
         }
         _bSorted = false;
     }
@@ -191,7 +207,7 @@ public class DxSetOfResources implements Iterable {
         }
         return _vResourceSortedByKey.toArray(new DxResource[this.size()]);
     }
-    
+
     protected Vector<DxResource> getNameSortedVector() {
         if (!_bSorted) {
             sortResources();
@@ -280,8 +296,9 @@ public class DxSetOfResources implements Iterable {
         }
 
         Iterator itRes = this.iterator();
+        DxResource dxrTemp;
         while (itRes.hasNext()) {
-            DxResource dxrTemp = (DxResource) itRes.next();
+             dxrTemp = (DxResource) itRes.next();
             if (!dxsorOther.ressourceExists(dxrTemp.getResourceName())) {
                 return false;
             }
@@ -310,5 +327,16 @@ public class DxSetOfResources implements Iterable {
             return false;
         }
         return true;
+    }
+    
+    public boolean ressourceExists(DxResource dxrAdded) {
+        if (this.getSortedKeyIndex(dxrAdded.getResourceKey()) == -1) {
+            return false;
+        }
+        return true;
+    }
+    
+    public DxResource merge(DxResource dxrOriginal, DxResource dxrNew){
+        return dxrOriginal;
     }
 }

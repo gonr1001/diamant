@@ -160,9 +160,10 @@ public class PersistanceMismatchDlg extends JDialog {
             Collection sets = pmm.getPersistanceMismatches();
             _mismatchedSetsComboBoxModel.removeAllElements();
             Iterator itr = sets.iterator();
+            PersistanceMismatch pm;
 
             while (itr.hasNext()) {
-                PersistanceMismatch pm = (PersistanceMismatch) itr.next();
+                pm = (PersistanceMismatch) itr.next();
                 if (pm != null) {
                     _mismatchedSetsComboBoxModel.addElement(pm
                             .getMismatchedFilterSet().getFilterSetIdentifier()
@@ -189,9 +190,10 @@ public class PersistanceMismatchDlg extends JDialog {
             _missingElementsPanel.clearElements();
 
             Iterator itrElementNames = pm.getMissingElementNames().iterator();
+            String elementName;
 
             while (itrElementNames.hasNext()) {
-                String elementName = (String) itrElementNames.next();
+                elementName = (String) itrElementNames.next();
                 if (elementName != null) {
                     _missingElementsPanel.addElement(elementName);
                 }
@@ -321,9 +323,10 @@ public class PersistanceMismatchDlg extends JDialog {
         Iterator itrPM = SelectiveScheduleManager.getInstance()
                 .getPersistanceMismatchManager().getPersistanceMismatches()
                 .iterator();
+        PersistanceMismatch pm;
 
         while (itrPM.hasNext()) {
-            PersistanceMismatch pm = (PersistanceMismatch) itrPM.next();
+            pm = (PersistanceMismatch) itrPM.next();
             if (pm.getMismatchedFilterSet().getFilterSetIdentifier()
                     .getFilterSetName().equals(filterSetName)) {
                 return pm;

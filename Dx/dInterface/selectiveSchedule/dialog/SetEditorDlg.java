@@ -253,9 +253,10 @@ public class SetEditorDlg extends JDialog {
         populateAvailableElements();
         
         _setElementsJListModel.clear();
+        String elementID;
         
         while (itrElementsOfFilterSetToModify.hasNext()) {
-            String elementID = ((DResource) itrElementsOfFilterSetToModify.next()).getID();
+            elementID = ((DResource) itrElementsOfFilterSetToModify.next()).getID();
             _setElementsJListModel.addElement(elementID);
             _availableElementsJListModel.removeElement(elementID);
         }
