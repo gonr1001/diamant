@@ -506,10 +506,18 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void close() {
-		this._dMediator.closeCurrentDoc();
-		if (!this._dMediator.getCancel()) {
-			_dxMenuBar.initialState();
+		if(DConst.newDoc) {
+			this._dMediator.closeCurrentDxDoc();
+			if (!this._dMediator.getCancel()) {
+				_dxMenuBar.initialState();
+			}
+		} else {
+			this._dMediator.closeCurrentDoc();
+			if (!this._dMediator.getCancel()) {
+				_dxMenuBar.initialState();
+			}
 		}
+		
 	}
 
 	/**

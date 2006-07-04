@@ -19,6 +19,7 @@
  */
 package dInterface;
 
+import java.awt.event.ActionListener;
 import java.util.Observable;
 
 import dInternal.dTimeTable.TTStructure;
@@ -28,11 +29,15 @@ import dInternal.dTimeTable.TTStructure;
  * 
  * Description: DxTTExamDoc is a class used to:
  * <p>
- * TODO:insert comments
+ * make a link between the DxDocument and the DxModel 
  * <p> 
  * 
  */
 public class DxTTExamDoc extends DxDocument{
+
+	public DxTTExamDoc(DMediator dMed) {
+		super(dMed);
+	}
 
 	@Override
 	public void update(Observable dm, Object component) {
@@ -44,5 +49,17 @@ public class DxTTExamDoc extends DxDocument{
 	public TTStructure getTTStructure() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void changeInModel(ActionListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
 	}
 }

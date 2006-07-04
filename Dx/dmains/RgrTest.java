@@ -28,10 +28,10 @@ import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
 /**
  * Ruben Gonzalez-Rubio
  * 
- * Description: MiniTest is a class used to:
+ * Description: RgrTest is a class used to:
  * <p>
- * TODO:insert comments
- * <p> 
+ * pass only some tests quickly
+ * <p>
  * 
  */
 public class RgrTest {
@@ -52,9 +52,8 @@ public class RgrTest {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("rgrTest");
 
-//		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
-
 
 		System.out.println("Bye I was in rgrTest");
 		return suite;

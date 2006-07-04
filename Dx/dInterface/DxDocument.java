@@ -20,6 +20,7 @@
 package dInterface;
 
 
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JInternalFrame;
@@ -32,7 +33,10 @@ import dInternal.dTimeTable.TTStructure;
  * 
  * Description: DxDocument is a class used to:
  * <p>
- * TODO:insert comments
+ * treat the two types of DxDocument,
+ * 		DxTTStructure 
+ * <p> and <p>
+ * 		DxTTCycleDoc or DxTTExamDoc
  * <p> 
  * 
  */
@@ -48,7 +52,33 @@ public abstract class  DxDocument  implements Observer{
 
     protected String _autoImportDIMFilePath; 
     
+    public DxDocument(DMediator dMed) {
+    	_dMediator = dMed;
+    }
+    
     public abstract void update(Observable dm, Object component); 
+    
+    // -------------------------------------------
+    public  final JInternalFrame getJIF() {
+        return _jif;
+    } // end getJIF
+
+    // -------------------------------------------
+    public final String getDocumentName() {
+        return _documentName;
+    } // end getDocumentName
+
+    // -------------------------------------------
+    public final void setDocumentName(String name) {
+        _documentName = name;
+        _jif.setTitle(name);
+    } // end setDocumentName
+    
+    public final TTPane getTTPane() {
+        return _ttPane;
+    }
+
+    public abstract TTStructure getTTStructure();
 
 //    // -----------------------------
 //
@@ -102,27 +132,13 @@ public abstract class  DxDocument  implements Observer{
 //        _dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
 //    } // end internalFrameActivated
 
-    // -------------------------------------------
-    public  final JInternalFrame getJIF() {
-        return _jif;
-    } // end getJIF
 
-    // -------------------------------------------
-    public final String getDocumentName() {
-        return _documentName;
-    } // end getDocumentName
-
-    // -------------------------------------------
-    public final void setDocumentName(String name) {
-        _documentName = name;
-        _jif.setTitle(name);
-    } // end setDocumentName
 
 //
 //    // -------------------------------------------
-//    public boolean isModified() {
-//        return _dm.getModified();
-//    } // end getModified
+    public boolean isModified() {
+        return  true;//_dm.getModified();
+    } // end getModified
 //
 //    // -------------------------------------------
 //    public DModel getCurrentDModel() {
@@ -135,22 +151,14 @@ public abstract class  DxDocument  implements Observer{
 //    } // end getDModel
 //
 //    // -------------------------------------------
-    public final TTPane getTTPane() {
-        return _ttPane;
-    }
-
-    public abstract TTStructure getTTStructure();
 
 
-//    /*
-//     * a revoir
-//     */
-//    public void close() {
-//        _jif.dispose();
-//        _jif = null;
-//        _ttPane = null;
-//        _stateBar = null;
-//    }
+
+    /*
+     * a revoir
+     */
+    public abstract void close();
+   
 //
 //    // -------------------------------------------
 //    private String modifiyDocumentName(String str) {
@@ -272,4 +280,14 @@ public abstract class  DxDocument  implements Observer{
     public void setAutoImportDIMFilePath(String importDIMFilePath) {
         _autoImportDIMFilePath = importDIMFilePath;
     }
+
+	public void loadTT(String fileName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public abstract void changeInModel(ActionListener listener);
+
+
+
 } /* end DxDocument class */

@@ -43,6 +43,7 @@ public class DMediator extends Object {
 	private DApplication _dApplication;
 
 	private Vector<DDocument> _documents;
+
 	private Vector<DxDocument> _dxDocuments;
 
 	private boolean _cancel;
@@ -115,7 +116,6 @@ public class DMediator extends Object {
 		return currentDoc.getError();
 	} // end addDoc
 
-	
 	/**
 	 * for new tt and for open tt
 	 * 
@@ -131,18 +131,20 @@ public class DMediator extends Object {
 	 */
 	public String addDxTTCycleDoc(String ttName, String fileName)
 			throws Exception /* !!!NIC!!! */{
-		DxDocument currentDoc = new DxTTCycleDoc(this, ttName, fileName);
-//		if (currentDoc.getError().length() == 0) {
-			_dxDocuments.addElement(currentDoc);
-//			_dApplication.getToolBar().setToolBars(
-//					currentDoc.getCurrentDModel().getTTStructure());
-			_dApplication.hideToolBar();
-//		} else {
-//			new FatalProblemDlg(_dApplication.getJFrame(),
-//					"In DMediator.addDoc: " + currentDoc.getError());
-//			System.exit(1);
-//		}
-//	return currentDoc.getError();
+		DxDocument currentDoc = new DxTTCycleDoc(this);
+		currentDoc.setDocumentName(ttName);
+		currentDoc.loadTT(fileName);
+		// if (currentDoc.getError().length() == 0) {
+		_dxDocuments.addElement(currentDoc);
+		// _dApplication.getToolBar().setToolBars(
+		// currentDoc.getCurrentDModel().getTTStructure());
+		_dApplication.hideToolBar();
+		// } else {
+		// new FatalProblemDlg(_dApplication.getJFrame(),
+		// "In DMediator.addDoc: " + currentDoc.getError());
+		// System.exit(1);
+		// }
+		// return currentDoc.getError();
 		return "error";
 	} // end addDoc
 
@@ -172,8 +174,7 @@ public class DMediator extends Object {
 		_dApplication.setCursorDefault();
 		return currentDoc.getError();
 	} // end addDoc
-	
-	
+
 	/**
 	 * for new ttStructure and for open ttStructure
 	 * 
@@ -185,25 +186,23 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTStructureDoc(String fileName) throws Exception /* !!!NIC!!! */{
-		
-		DxDocument currentDoc = new DxTTStructureDoc(this, fileName, fileName);
+
+		DxDocument currentDoc = new DxTTStructureDoc(this, fileName);
+		// currentDoc.setDocumentName(fileName);
+		// currentDoc.loadTT(fileName);
 		_dxDocuments.addElement(currentDoc);
 
-//		if (currentDoc.getError().length() == 0) {
-			_dApplication.getToolBar().setToolBars(
-					currentDoc.getTTStructure());
-////		} else {
-//			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
-//					.getError());
-//			System.exit(1);
-//		}
-		
+		// if (currentDoc.getError().length() == 0) {
+		_dApplication.getToolBar().setToolBars(currentDoc.getTTStructure());
+		// // } else {
+		// new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
+		// .getError());
+		// System.exit(1);
+		// }
+
 		return "error";
 	} // end addDoc
-	
-	
-	
-	
+
 	public void removeCurrentDoc() {
 		_documents.remove(getCurrentDoc());
 		if (_documents.size() != 0) {
@@ -270,6 +269,7 @@ public class DMediator extends Object {
 		}
 		return null;
 	} // end getCurrentDoc
+
 	public DxDocument getCurrentDxDoc() {
 		DxDocument currentDoc = null;
 		for (int i = 0; i < _dxDocuments.size(); i++) {
@@ -292,6 +292,7 @@ public class DMediator extends Object {
 		}
 		return null;
 	}
+
 	// -------------------------------------------
 	public JInternalFrame getCurrentFrame() {
 		DDocument currentDoc = getCurrentDoc();
@@ -312,6 +313,27 @@ public class DMediator extends Object {
 	private boolean promptToSave() {
 		int retval = JOptionPane.showConfirmDialog(_dApplication.getJFrame(),
 				DConst.SAVE_PROMPT);
+
+		if (DConst.newDoc) {
+			DxDocument aux = getCurrentDxDoc();
+			switch (retval) {
+			case JOptionPane.YES_OPTION:
+				_dApplication.close();
+				removeCurrentDoc();
+				aux.close();
+				return false;
+
+			case JOptionPane.NO_OPTION:
+				removeCurrentDoc();
+				aux.close();
+				return false;
+
+			case JOptionPane.CANCEL_OPTION:
+			case JOptionPane.CLOSED_OPTION:
+				return true;
+			}// end switch
+			return true;// it does not matter
+		}
 		DDocument aux = getCurrentDoc();
 		switch (retval) {
 		case JOptionPane.YES_OPTION:
@@ -336,5 +358,22 @@ public class DMediator extends Object {
 		return _dApplication;
 	}
 
+	public void closeCurrentDxDoc() {
+		if (getCurrentDxDoc() != null) {
+			if (getCurrentDxDoc().isModified()) {
+				_cancel = promptToSave();
+			} else {// end if
+				DxDocument aux = getCurrentDxDoc();
+				_documents.remove(getCurrentDxDoc());
+				aux.close();
+			} // end else
+			if (_documents.size() == 0) {
+				_dApplication.hideToolBar();
+				// } else {
+				// _dApplication.getToolBar().setToolBars(
+				// getCurrentDoc().getCurrentDModel().getTTStructure());
+			}
+		}// end if
+	}
 
 } /* end class DMediator */

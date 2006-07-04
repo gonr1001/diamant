@@ -645,9 +645,16 @@ public class TTStructure extends Observable {
 	
     public void changeInTTStructure(Object obj) {
         this.setChanged();
-        // change model
-
         this.notifyObservers(obj);
         this.clearChanged();
     }
+    
+//    .setChanged();
+//    // change model
+//    _ttStructure.setModified();
+//    // this.setStateBarComponent();
+////    _nbConflicts = getTTStructure().getCurrentCycle()
+////            .getTotalNumberOfConflicts();
+//    _ttStructure.notifyObservers(obj);
+//    _ttStructure.clearChanged();
 }

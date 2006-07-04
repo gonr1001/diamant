@@ -19,9 +19,9 @@
  */
 package dInterface;
 
+import java.awt.event.ActionListener;
 import java.util.Observable;
 
-import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 
 /**
@@ -29,14 +29,14 @@ import dInternal.dTimeTable.TTStructure;
  * 
  * Description: DxTTCycleDoc is a class used to:
  * <p>
- * TODO:insert comments
+ *  make a link between the DxDocument and the DxModel 
  * <p> 
  * 
  */
 public class DxTTCycleDoc extends DxDocument{
 
-	public DxTTCycleDoc(DMediator mediator, String ttName, String fileName) {
-		// TODO Auto-generated constructor stub
+	public DxTTCycleDoc(DMediator mediator) {
+		super(mediator);
 	}
 
 	@Override
@@ -53,6 +53,18 @@ public class DxTTCycleDoc extends DxDocument{
 	public TTStructure getTTStructure() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void changeInModel(ActionListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

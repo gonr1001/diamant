@@ -21,9 +21,10 @@ package dInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
-//import java.util.Observer;
+// import java.util.Observer;
 
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
@@ -34,7 +35,6 @@ import javax.swing.event.InternalFrameListener;
 import dConstants.DConst;
 import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
-import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -43,11 +43,12 @@ import eLib.exit.dialog.FatalProblemDlg;
  * 
  * Description: DxTTStructureDoc is a class used to:
  * <p>
- * TODO:insert comments
+ * make a link between the DxDocument and the DxTTStructure
  * <p>
  * 
  */
-public class DxTTStructureDoc extends DxDocument implements InternalFrameListener {
+public class DxTTStructureDoc extends DxDocument { //implements
+//		InternalFrameListener {
 
 	// private DMediator _dMediator;
 
@@ -85,9 +86,9 @@ public class DxTTStructureDoc extends DxDocument implements InternalFrameListene
 	 * @throws Exception
 	 * 
 	 */
-	public DxTTStructureDoc(DMediator mediator, String fileName,
-			String fileName2) throws Exception {
-		_dMediator = mediator;
+
+	public DxTTStructureDoc(DMediator dMed, String fileName) throws Exception {
+		super(dMed);
 		_ttStructure = new TTStructure();
 		// try {
 		_ttStructure.loadTTStructFromFile(fileName);
@@ -95,60 +96,68 @@ public class DxTTStructureDoc extends DxDocument implements InternalFrameListene
 		_documentName = modifiyDocumentName(fileName);
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_ttStructure);
-		_jif.addInternalFrameListener(this);
+		//_jif.addInternalFrameListener(this);
+	}
 
-	} // end constructor DDocument()
+//	public void doDxTTStructureDoc(DMediator mediator, String fileName,
+//			String fileName2) throws Exception {
+//		_dMediator = mediator;
+//		_ttStructure = new TTStructure();
+//		// try {
+//		_ttStructure.loadTTStructFromFile(fileName);
+//		// }
+//		_documentName = modifiyDocumentName(fileName);
+//		buidDocument(true, true);
+//		_ttPane.updateTTPane(_ttStructure);
+//		_jif.addInternalFrameListener(this);
+//
+//	} // end constructor DDocument()
+	// // -------------------------------------------
+	// public JInternalFrame getJIF() {
+	// return _jif;
+	// } // end getJIF
 
-
-
-//	// -------------------------------------------
-//	public JInternalFrame getJIF() {
-//		return _jif;
-//	} // end getJIF
-
-
-
-//	// -------------------------------------------
-//	public String getError() {
-//		return _dm.getError();
-//	}
+	// // -------------------------------------------
+	// public String getError() {
+	// return _dm.getError();
+	// }
 
 	// -------------------------------------------
-//	public boolean isModified() {
-//		return _dm.getModified();
-//	} // end getModified
+	// public boolean isModified() {
+	// return _dm.getModified();
+	// } // end getModified
 
 	// -------------------------------------------
-//	public DModel getCurrentDModel() {
-//		return _dm;
-//	} // end getDModel
+	// public DModel getCurrentDModel() {
+	// return _dm;
+	// } // end getDModel
 
 	// -------------------------------------------
 	public DMediator getDMediator() {
 		return _dMediator;
 	} // end getDModel
 
-//	// -------------------------------------------
-//	public TTPane getTTPane() {
-//		return _ttPane;
-//	}
+	// // -------------------------------------------
+	// public TTPane getTTPane() {
+	// return _ttPane;
+	// }
 
 	// -------------------------------------------
 	public TTStructure getTTStructure() {
 		return _ttStructure;
 	} // end getJIF
 
-//	// -------------------------------------------
-//	public String getVersion() {
-//		return this._version;
-//	}
-//
-//	// -------------------------------------------
-//	/**
-//	 * */
-//	public void setVersion(String version) {
-//		_version = version;
-//	}
+	// // -------------------------------------------
+	// public String getVersion() {
+	// return this._version;
+	// }
+	//
+	// // -------------------------------------------
+	// /**
+	// * */
+	// public void setVersion(String version) {
+	// _version = version;
+	// }
 
 	/*
 	 * a revoir
@@ -157,7 +166,7 @@ public class DxTTStructureDoc extends DxDocument implements InternalFrameListene
 		_jif.dispose();
 		_jif = null;
 		_ttPane = null;
-//		_stateBar = null;
+		// _stateBar = null;
 	}
 
 	// -------------------------------------------
@@ -170,14 +179,14 @@ public class DxTTStructureDoc extends DxDocument implements InternalFrameListene
 		return str;
 	}
 
-	 public void update(Observable dm, Object component) {
-	 if (component != null)
-	 component.toString();
-	 _dMediator.getDApplication().setCursorWait();
-	 _ttPane.updateTTPane(((DModel) dm).getTTStructure());
-//	 _stateBar.upDate();
-	 _dMediator.getDApplication().setCursorDefault();
-	 }// end update
+	public void update(Observable dm, Object component) {
+		if (component != null)
+			component.toString();
+		_dMediator.getDApplication().setCursorWait();
+		_ttPane.updateTTPane(_ttStructure);
+		// _stateBar.upDate();
+		_dMediator.getDApplication().setCursorDefault();
+	}// end update
 
 	// -------------------------------------------
 	public void displaySimple() {
@@ -227,7 +236,7 @@ public class DxTTStructureDoc extends DxDocument implements InternalFrameListene
 			}
 		});
 
-		// _ttStructure.addObserver(this);
+		_ttStructure.addObserver(this);
 
 		// _stateBar = new DxStateBar(new DxStateBarModel(_dm));
 
@@ -288,38 +297,59 @@ public class DxTTStructureDoc extends DxDocument implements InternalFrameListene
 		_autoImportDIMFilePath = importDIMFilePath;
 	}
 
+//	public void internalFrameOpened(InternalFrameEvent e) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	public void internalFrameClosing(InternalFrameEvent e) {
+//		 e.toString();
+//         _dMediator.getDApplication().close();
+//	}
+//
+//	public void internalFrameClosed(InternalFrameEvent e) {
+////		 e.toString();
+////         _dMediator.getDApplication().close();
+//	}
+//
+//	public void internalFrameIconified(InternalFrameEvent e) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	public void internalFrameDeiconified(InternalFrameEvent e) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	public void internalFrameActivated(InternalFrameEvent e) {
+//		e.toString(); // to avoid warning
+//		_dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
+//	} // end internalFrameActivated
+//
+//	public void internalFrameDeactivated(InternalFrameEvent e) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
-	public void internalFrameOpened(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void changeInModelByToolBar(ActionListener listener) {
+		System.out.println("changeInModelByToolBar+ rgr here");
+
 	}
 
-	public void internalFrameClosing(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	@Override
+	public void changeInModel(ActionListener listener) {
+		System.out.println("changeInModel+ rgr here");
+		_ttStructure.changeInTTStructure(listener);
+	}// end changeInDModel
 
-	public void internalFrameClosed(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void internalFrameIconified(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void internalFrameDeiconified(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void internalFrameActivated(InternalFrameEvent e) {
-		e.toString(); // to avoid warning
-		_dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
-	} // end internalFrameActivated
 	
-	public void internalFrameDeactivated(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+//	   /*
+//     * a revoir
+//     */
+//    public void close() {
+//        _jif.dispose();
+//        _jif = null;
+//        _ttPane = null;
+//    }
 }

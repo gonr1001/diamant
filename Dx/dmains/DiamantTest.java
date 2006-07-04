@@ -102,7 +102,7 @@ public class DiamantTest {
 		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
-//		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
@@ -147,7 +147,7 @@ public class DiamantTest {
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
-//		suite.addTest(FirstAffectAlgorithmTest.suite());
+		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		System.out.println("Bye I was in tests");

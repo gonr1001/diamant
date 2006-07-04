@@ -323,6 +323,7 @@ public class Period extends DObject {
 		newPer._nbStudConflict=0;
 		newPer._priority= this._priority;
 		newPer._beginHour= this._beginHour;
+		newPer._endHour = this._endHour;
 		return newPer;
 	}
 	
