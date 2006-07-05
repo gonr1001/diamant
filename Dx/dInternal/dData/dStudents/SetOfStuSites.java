@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.5 $  $Date: 2005-02-08 21:21:19 $
+* Title: SetOfStuSites $Revision: 1.6 $  $Date: 2006-07-05 20:22:04 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,7 +16,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -103,11 +103,11 @@ public class SetOfStuSites extends DSetOfResources {
 	    	DResource siteRsc;
 	    	SetOfStudents sos;
 	        for (int i=0; i< getSetOfResources().size()-1; i++){
-	        	siteRsc = ((DResource)getSetOfResources().get(i));
+	        	siteRsc = getSetOfResources().get(i);
 	        	sos= (SetOfStudents)siteRsc.getAttach();
 	        	save.append(sos.toWrite(siteRsc.getID()) + DConst.CR_LF);
 	        }
-	        siteRsc = ((DResource)getSetOfResources().get(getSetOfResources().size()-1));
+	        siteRsc = getSetOfResources().get(getSetOfResources().size()-1);
 	        sos= (SetOfStudents)siteRsc.getAttach();
 	        save.append(sos.toWrite(siteRsc.getID()));
 	      }	   

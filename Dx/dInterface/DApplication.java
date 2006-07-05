@@ -480,7 +480,6 @@ public class DApplication { // implements ActionListener {
 			}
 		}
 		this.setCursorDefault();
-
 	}
 
 	/**
@@ -488,13 +487,29 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void newTTStrucExam() {
 		this.showToolBar();
-		try {
-			this._dMediator.addDoc(this.getPreferences()._standardTTE,
-					DConst.NO_TYPE);
-		} catch (Exception e) {
-			/* !!!NIC!!! */
+		this.setCursorWait();
+		if (DConst.newDoc) {
+			try {
+				this._dMediator
+						.addDxTTStructureDoc(this.getPreferences()._standardTTE);
+				_dxMenuBar.afterNewTTStruc();
+			} catch (Exception e) {
+				new FatalProblemDlg(this._jFrame, e.toString());
+				// as a complement
+				e.printStackTrace();
+				this.hideToolBar();
+			}
+		} else {
+			try {
+				this._dMediator.addDoc(this.getPreferences()._standardTTE,
+						DConst.NO_TYPE);
+				_dxMenuBar.afterNewTTStruc();
+			} catch (Exception e) {
+				/* !!!NIC!!! */
+			}
 		}
-		_dxMenuBar.afterNewTTStruc();
+		this.setCursorDefault();
+
 	}
 
 	/**
@@ -510,6 +525,10 @@ public class DApplication { // implements ActionListener {
 	public void openTTStruc() {
 		this.showToolBar();
 		new OpenTTSDlg(this);
+//		this._dMediator
+//		//.addDxTTStructureDoc(this.getPreferences()._standardTTC);
+		_dxMenuBar.afterNewTTStruc();
+		afterOpenTTSruc();
 	}
 
 	/**

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.21 $  $Date: 2006-06-08 21:33:10 $
+ * Title: OpenTTSDlg $Revision: 1.22 $  $Date: 2006-07-05 20:22:04 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
- * @author  $Author: caln1901 $
+ * @version $Revision: 1.22 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -31,7 +31,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 
 import dResources.DFileFilter;
-//import eLib.exit.dialog.FatalProblemDlg;
+
 
 public class OpenTTSDlg extends JDialog {
 
@@ -44,7 +44,6 @@ public class OpenTTSDlg extends JDialog {
 	 */
 
 	public OpenTTSDlg(DApplication dApplic) {
-		//dApplic= dApplic;
 		buildDocument(dApplic);
 	} // end constructor
 
@@ -87,7 +86,11 @@ public class OpenTTSDlg extends JDialog {
 			dApplic.setCurrentDir(fil);
 ///*!!!NIC!!!*/			String error;
             try {
-                /*!!!NIC!!!error = */dApplic.getDMediator().addDoc(fil, 0);
+            	if (DConst.newDoc){
+            		dApplic.getDMediator().addDxTTStructureDoc(fil);
+            	} else {
+            		/*!!!NIC!!!error = */dApplic.getDMediator().addDoc(fil, 0);
+            	}
             } catch (Exception e) {
                 /*!!!NIC!!!*/
             }
@@ -96,7 +99,7 @@ public class OpenTTSDlg extends JDialog {
 ///*!!!NIC!!!*/				System.exit(1);
 ///*!!!NIC!!!*/			}
 			dispose();
-			dApplic.afterOpenTTSruc();
+			
 
 		}
 	}// end loadTTData

@@ -628,7 +628,7 @@ public class SetOfActivities extends DSetOfResources {
      * @return
      */
     public Vector getUnitiesNames(Vector vect) {
-        Vector result = new Vector();
+        Vector <String>result = new Vector<String>();
         for (int i = 0; i < vect.size(); i++) {
             long actKey = Long.parseLong(DXToolsMethods.getToken(vect.get(i)
                     .toString(), ".", 0));

@@ -1,6 +1,6 @@
 /**
  * 
- * Title: SetOfCategoriesTest $Revision $ $Date: 2005-03-08 16:00:45 $
+ * Title: SetOfCategoriesTest $Revision $ $Date: 2006-07-05 20:22:05 $
  * Description: SetOfCategoriesTest is a class used to test the class
  * SetOfCategories
  * 
@@ -14,14 +14,13 @@
  * agreement you entered into with rgr.
  * 
  * @version $ $
- * @author $Author: syay1801 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
 package dTest.dInternal.dData.dRooms;
 
 import dConstants.DConst;
-import dInternal.DResource;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
@@ -59,7 +58,7 @@ public class SetOfCategoriesTest extends TestCase {
                 + "\r\n" + "D60054;40;217;9,11,14,15,37,38,44;SHE;CAT 2;xxx;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1"
                 + "\r\n";
         _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes()), 0);
-        assertEquals("test_buildSetOfResources: assertEquals", "CAT 1", ((DResource) _setOfCategories.getSetOfResources().firstElement()).getID());
+        assertEquals("test_buildSetOfResources: assertEquals", "CAT 1",  _setOfCategories.getSetOfResources().firstElement().getID());
     }
 
     public void test1_analyseTokens() {

@@ -46,7 +46,7 @@ import eLib.exit.dialog.FatalProblemDlg;
  * <p>
  * 
  */
-public class DxTTStructureDoc extends DxDocument { 
+public class DxTTStructureDoc extends DxDocument {
 
 	private TTStructure _ttStructure;
 
@@ -56,10 +56,7 @@ public class DxTTStructureDoc extends DxDocument {
 	 *            (pattern Mediator)
 	 * @param fileName
 	 *            is the full path file name containing the TTStructure
-	 * @param type
-	 *            is the type of timetable to be constructed see DConst.
-	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM =
-	 *            3;
+	 * 
 	 * @throws Exception
 	 * 
 	 */
@@ -72,31 +69,14 @@ public class DxTTStructureDoc extends DxDocument {
 		// }
 		_documentName = modifiyDocumentName(fileName);
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_ttStructure);		
+		_ttPane.updateTTPane(_ttStructure);
 	}
-
-
-//	// -------------------------------------------
-//	public DMediator getDMediator() {
-//		return _dMediator;
-//	} // end getDModel
-
 
 	// -------------------------------------------
 	public TTStructure getTTStructure() {
 		return _ttStructure;
 	} // end getTTStructure
 
-
-
-	/*
-	 * a revoir
-	 */
-//	public void close() {
-//		_jif.dispose();
-//		_jif = null;
-//		_ttPane = null
-//	}
 
 	// -------------------------------------------
 	private String modifiyDocumentName(String str) {
@@ -179,9 +159,9 @@ public class DxTTStructureDoc extends DxDocument {
 		}
 		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();
-		// the 1 in Integer(1) could be any integer 
-		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1)); 
-		
+		// the 1 in Integer(1) could be any integer
+		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
+
 		_jif.setVisible(true);
 
 		// to comment if work with jifs
@@ -221,12 +201,10 @@ public class DxTTStructureDoc extends DxDocument {
 		_autoImportDIMFilePath = importDIMFilePath;
 	}
 
-
-
-//	public void changeInModelByToolBar(ActionListener listener) {
-//		System.out.println("changeInModelByToolBar+ rgr here");
-//
-//	}
+	// public void changeInModelByToolBar(ActionListener listener) {
+	// System.out.println("changeInModelByToolBar+ rgr here");
+	//
+	// }
 
 	@Override
 	public void changeInModel(ActionListener listener) {
@@ -234,9 +212,8 @@ public class DxTTStructureDoc extends DxDocument {
 		_ttStructure.changeInTTStructure(listener);
 	}// end changeInDModel
 
-
 	@Override
-	public void  saveTTStrucure(String str) {
-		 _ttStructure.saveTTStructure(str);
+	public void saveTTStrucure(String str) {
+		_ttStructure.saveTTStructure(str);
 	}
 }
