@@ -30,7 +30,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.DetailedTTPane;
