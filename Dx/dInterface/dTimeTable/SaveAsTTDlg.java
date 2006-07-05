@@ -1,7 +1,6 @@
-
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.12 $  $Date: 2006-06-15 18:19:25 $
+ * Title: SaveAsTTDlg $Revision: 1.13 $  $Date: 2006-07-05 19:58:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: caln1901 $
+ * @version $Revision: 1.13 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -23,63 +22,75 @@
  * All Exceptions must be handled explicitly.
  */
 
-
 /**
  * Description: SaveAsTTDlg is a class used to
  *
  */
 package dInterface.dTimeTable;
 
-
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.DxTTStructureDoc;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 
 public class SaveAsTTDlg extends SaveAsDlg {
 
-  /**
-   * Constructor
-   * @param dApplic The application
-   *
-   */
-  public SaveAsTTDlg(DApplication dApplic) {
-    super(dApplic);
-    saveAs(null,false); //no data, no report
-  } // end constructor*/
+	/**
+	 * Constructor
+	 * 
+	 * @param dApplic
+	 *            The application
+	 * 
+	 */
+	public SaveAsTTDlg(DApplication dApplic) {
+		super(dApplic);
+		saveAs(null, false); // no data, no report
+	} // end constructor*/
 
-  public SaveAsTTDlg(DApplication dApplic, String str) { 	
-    super(dApplic);
-    str +="";
-    saveAs(null,false); //no data, no report
-  } // end constructor
+	public SaveAsTTDlg(DApplication dApplic, String str) {
+		super(dApplic);
+		str += "";
+		saveAs(null, false); // no data, no report
+	} // end constructor
 
-  public String inNewFile(String currentFile, String data) {
-  	data += "";
-    return _dApplic.getDMediator().saveCurrentDoc(currentFile);
-  }
+	public String inNewFile(String currentFile, String data) {
+		data += "";
+		return _dApplic.getDMediator().saveCurrentDoc(currentFile);
+	}
 
-   public  void doSave(String fileName) { //. String str) {
-     String error = "";
-     error = _dApplic.getDMediator().saveCurrentDoc(fileName);
-     if (error.length() == 0)
-       new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + fileName);
-     else
-       new FatalProblemDlg("In SaveAsTTDlg.doSave: " + error);
-   } // doSave
+	public void doSave(String fileName) { // . String str) {
+		String error = "";
+		error = _dApplic.getDMediator().saveCurrentDoc(fileName);
+		if (error.length() == 0)
+			new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7 + fileName);
+		else
+			new FatalProblemDlg("In SaveAsTTDlg.doSave: " + error);
+	} // doSave
 
-   public String setExtension(JFileChooser fc){
-   	if(_dApplic.getDMediator().getCurrentDoc().getCurrentDModel().isATimeTable()){
-   		fc.setFileFilter(new DFileFilter (new String[] {DConst.DOT_DIA},
-   				DConst.DIA_FILE) );
-   		return DConst.DOT_DIA;
-   	} 
-   	fc.setFileFilter( new DFileFilter ( new String[] {DConst.XML},
-   			DConst.XML_FILE ) );
-   	return DConst.DOT_XML;
-   	
-   } // setFilters
+	public String setExtension(JFileChooser fc) {
+		if (DConst.newDoc) {
+			if (_dApplic.getDMediator().getCurrentDxDoc() instanceof DxTTStructureDoc) {
+				fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
+						DConst.XML_FILE));
+				return DConst.DOT_XML;
+			}
+			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
+					DConst.DIA_FILE));
+			return DConst.DOT_DIA;
+		}
+		if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel()
+				.isATimeTable()) {
+			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
+					DConst.DIA_FILE));
+			return DConst.DOT_DIA;
+		}
+		fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
+				DConst.XML_FILE));
+		return DConst.DOT_XML;
+
+	} // setFilters
 }

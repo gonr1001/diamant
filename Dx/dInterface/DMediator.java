@@ -133,7 +133,7 @@ public class DMediator extends Object {
 			throws Exception /* !!!NIC!!! */{
 		DxDocument currentDoc = new DxTTCycleDoc(this);
 		currentDoc.setDocumentName(ttName);
-		currentDoc.loadTT(fileName);
+		//currentDoc.loadTT(fileName);
 		// if (currentDoc.getError().length() == 0) {
 		_dxDocuments.addElement(currentDoc);
 		// _dApplication.getToolBar().setToolBars(
@@ -145,7 +145,7 @@ public class DMediator extends Object {
 		// System.exit(1);
 		// }
 		// return currentDoc.getError();
-		return "error";
+		return "";
 	} // end addDoc
 
 	/**
@@ -185,23 +185,11 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDxTTStructureDoc(String fileName) throws Exception /* !!!NIC!!! */{
-
-		DxDocument currentDoc = new DxTTStructureDoc(this, fileName);
-		// currentDoc.setDocumentName(fileName);
-		// currentDoc.loadTT(fileName);
-		_dxDocuments.addElement(currentDoc);
-
-		// if (currentDoc.getError().length() == 0) {
-		_dApplication.getToolBar().setToolBars(currentDoc.getTTStructure());
-		// // } else {
-		// new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
-		// .getError());
-		// System.exit(1);
-		// }
-
-		return "error";
-	} // end addDoc
+	public void addDxTTStructureDoc(String fileName) throws Exception {
+		DxDocument currentDxDoc = new DxTTStructureDoc(this, fileName);
+		_dxDocuments.addElement(currentDxDoc);
+		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
+	} // end addDxTTStructureDoc
 
 	public void removeCurrentDoc() {
 		_documents.remove(getCurrentDoc());
@@ -216,11 +204,32 @@ public class DMediator extends Object {
 		} else {// end if (_documents.size()!=0)
 			_dApplication.getToolBar().setEnabledToolbar(false);
 		}
-	} // end addDoc
+	} // end removeCurrentDoc
 
+	private void removeCurrentDxDoc() {
+		_dxDocuments.remove(getCurrentDxDoc());
+		if (_dxDocuments.size() != 0) {
+			try {
+				_dxDocuments.get(0).getJIF().setSelected(true);
+			} catch (PropertyVetoException e) {
+				new FatalProblemDlg(_dApplication.getJFrame(),
+						"In DMediator.removeCurrentDoc: " + e.toString());
+				System.exit(1);
+			}
+		} else {// end if (_documents.size()!=0)
+			_dApplication.getToolBar().setEnabledToolbar(false);
+		}
+		
+	}
 	// -------------------------------------------
 
 	public String saveCurrentDoc(String str) {
+		if (DConst.newDoc) {
+			getCurrentDxDoc().setDocumentName(str);
+			String error = "";
+			getCurrentDxDoc().saveTTStrucure(str);
+			return error;
+		}
 		getCurrentDoc().setDocumentName(str);
 		String error = "";
 		error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
@@ -246,6 +255,23 @@ public class DMediator extends Object {
 
 	}
 
+	public void closeCurrentDxDoc() {
+		if (getCurrentDxDoc() != null) {
+			if (getCurrentDxDoc().isModified()) {
+				_cancel = promptToSave();
+			} else {// end if
+				DxDocument aux = getCurrentDxDoc();
+				_dxDocuments.remove(getCurrentDxDoc());
+				aux.close();
+			} // end else
+			if (_dxDocuments.size() == 0) {
+				_dApplication.hideToolBar();
+				} else {
+				 _dApplication.getToolBar().setToolBars(
+				getCurrentDxDoc().getTTStructure());
+			}
+		}// end if
+	}
 	// -------------------------------------------
 	public DDocument getCurrentDoc() {
 		DDocument currentDoc = null;
@@ -271,24 +297,24 @@ public class DMediator extends Object {
 	} // end getCurrentDoc
 
 	public DxDocument getCurrentDxDoc() {
-		DxDocument currentDoc = null;
+		DxDocument currentDxDoc = null;
 		for (int i = 0; i < _dxDocuments.size(); i++) {
-			currentDoc = _dxDocuments.elementAt(i);
-			JInternalFrame currentFrame = currentDoc.getJIF();
+			currentDxDoc = _dxDocuments.elementAt(i);
+			JInternalFrame currentFrame = currentDxDoc.getJIF();
 			if (currentFrame.isSelected()) {
-				return currentDoc;
+				return currentDxDoc;
 			} // end if
 		} // end for
 		if (_dxDocuments.size() != 0) {
-			currentDoc = _dxDocuments.elementAt(0);
+			currentDxDoc = _dxDocuments.elementAt(0);
 			try {
-				currentDoc.getJIF().setIcon(false);
+				currentDxDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
 				new FatalProblemDlg(_dApplication.getJFrame(),
 						"In DMediator.getCurrentDoc: " + e.toString());
 				System.exit(1);
 			}
-			return currentDoc;
+			return currentDxDoc;
 		}
 		return null;
 	}
@@ -318,13 +344,13 @@ public class DMediator extends Object {
 			DxDocument aux = getCurrentDxDoc();
 			switch (retval) {
 			case JOptionPane.YES_OPTION:
-				_dApplication.close();
-				removeCurrentDoc();
+				_dApplication.save();
+				removeCurrentDxDoc();
 				aux.close();
 				return false;
 
 			case JOptionPane.NO_OPTION:
-				removeCurrentDoc();
+				removeCurrentDxDoc();
 				aux.close();
 				return false;
 
@@ -354,26 +380,12 @@ public class DMediator extends Object {
 		return true;// it does not matter
 	}// end promptToSave
 
+
+
 	public DApplication getDApplication() {
 		return _dApplication;
 	}
 
-	public void closeCurrentDxDoc() {
-		if (getCurrentDxDoc() != null) {
-			if (getCurrentDxDoc().isModified()) {
-				_cancel = promptToSave();
-			} else {// end if
-				DxDocument aux = getCurrentDxDoc();
-				_documents.remove(getCurrentDxDoc());
-				aux.close();
-			} // end else
-			if (_documents.size() == 0) {
-				_dApplication.hideToolBar();
-				// } else {
-				// _dApplication.getToolBar().setToolBars(
-				// getCurrentDoc().getCurrentDModel().getTTStructure());
-			}
-		}// end if
-	}
+
 
 } /* end class DMediator */

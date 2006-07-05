@@ -19,7 +19,6 @@
 package dInternal.dData;
 
 import dConstants.DConst;
-import dInternal.DResource;
 import dInternal.DSetOfResources;
 
 public class StandardCollection extends DSetOfResources {
@@ -49,7 +48,7 @@ public class StandardCollection extends DSetOfResources {
 	public String toWrite() {
 		String reslist = "";
 		for (int i = 0; i < size() - 1; i++)
-			reslist += ((DResource) this.getSetOfResources().get(i))
+			reslist +=  this.getSetOfResources().get(i)
 					.toWrite(";")
 					+ DConst.CR_LF;
 		return null;

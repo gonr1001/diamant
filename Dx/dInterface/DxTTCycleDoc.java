@@ -67,4 +67,10 @@ public class DxTTCycleDoc extends DxDocument{
 		
 	}
 
+	@Override
+	public void saveTTStrucure(String str) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

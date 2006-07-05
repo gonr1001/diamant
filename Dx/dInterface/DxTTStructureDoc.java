@@ -46,36 +46,14 @@ import eLib.exit.dialog.FatalProblemDlg;
  * <p>
  * 
  */
-public class DxTTStructureDoc extends DxDocument { //implements
-//		InternalFrameListener {
-
-	// private DMediator _dMediator;
-
-	// private JInternalFrame _jif;
-
-	// private String _documentName;
-
-	// private TTPane _ttPane;
+public class DxTTStructureDoc extends DxDocument { 
 
 	private TTStructure _ttStructure;
-
-	// private DxStateBar _stateBar;
-
-	// private String _version;
-
-	// private String _autoImportDIMFilePath = null; // XXXX GS
-
-	// -----------------------------
-
-	// for a new timetable and a open timetable
-	// for new timetable Structure and open timetable Structure from a file
 
 	/**
 	 * 
 	 * @param dMediator
 	 *            (pattern Mediator)
-	 * @param ttname
-	 *            This string will be displayed as the title of the JIF
 	 * @param fileName
 	 *            is the full path file name containing the TTStructure
 	 * @param type
@@ -94,79 +72,31 @@ public class DxTTStructureDoc extends DxDocument { //implements
 		// }
 		_documentName = modifiyDocumentName(fileName);
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_ttStructure);
-		//_jif.addInternalFrameListener(this);
+		_ttPane.updateTTPane(_ttStructure);		
 	}
 
-//	public void doDxTTStructureDoc(DMediator mediator, String fileName,
-//			String fileName2) throws Exception {
-//		_dMediator = mediator;
-//		_ttStructure = new TTStructure();
-//		// try {
-//		_ttStructure.loadTTStructFromFile(fileName);
-//		// }
-//		_documentName = modifiyDocumentName(fileName);
-//		buidDocument(true, true);
-//		_ttPane.updateTTPane(_ttStructure);
-//		_jif.addInternalFrameListener(this);
-//
-//	} // end constructor DDocument()
-	// // -------------------------------------------
-	// public JInternalFrame getJIF() {
-	// return _jif;
-	// } // end getJIF
 
-	// // -------------------------------------------
-	// public String getError() {
-	// return _dm.getError();
-	// }
+//	// -------------------------------------------
+//	public DMediator getDMediator() {
+//		return _dMediator;
+//	} // end getDModel
 
-	// -------------------------------------------
-	// public boolean isModified() {
-	// return _dm.getModified();
-	// } // end getModified
-
-	// -------------------------------------------
-	// public DModel getCurrentDModel() {
-	// return _dm;
-	// } // end getDModel
-
-	// -------------------------------------------
-	public DMediator getDMediator() {
-		return _dMediator;
-	} // end getDModel
-
-	// // -------------------------------------------
-	// public TTPane getTTPane() {
-	// return _ttPane;
-	// }
 
 	// -------------------------------------------
 	public TTStructure getTTStructure() {
 		return _ttStructure;
-	} // end getJIF
+	} // end getTTStructure
 
-	// // -------------------------------------------
-	// public String getVersion() {
-	// return this._version;
-	// }
-	//
-	// // -------------------------------------------
-	// /**
-	// * */
-	// public void setVersion(String version) {
-	// _version = version;
-	// }
+
 
 	/*
 	 * a revoir
 	 */
-	public void close() {
-		_jif.dispose();
-		_jif = null;
-		_ttPane = null;
-		// _stateBar = null;
-	}
+//	public void close() {
+//		_jif.dispose();
+//		_jif = null;
+//		_ttPane = null
+//	}
 
 	// -------------------------------------------
 	private String modifiyDocumentName(String str) {
@@ -237,10 +167,6 @@ public class DxTTStructureDoc extends DxDocument { //implements
 
 		_ttStructure.addObserver(this);
 
-		// _stateBar = new DxStateBar(new DxStateBarModel(_dm));
-
-		// _jif.getContentPane().add(_stateBar, BorderLayout.SOUTH);
-
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
@@ -253,10 +179,9 @@ public class DxTTStructureDoc extends DxDocument { //implements
 		}
 		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();
-		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1)); // XXXX
-		// Pascal:
-		// Magic
-		// number
+		// the 1 in Integer(1) could be any integer 
+		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1)); 
+		
 		_jif.setVisible(true);
 
 		// to comment if work with jifs
@@ -267,7 +192,7 @@ public class DxTTStructureDoc extends DxDocument { //implements
 		} catch (java.beans.PropertyVetoException pve) {
 			new FatalProblemDlg(
 					"I was in DDocument trying to make setMaximum!!!");
-			System.exit(52); // XXXX Pascal: 52 ?
+			System.exit(1); // end of execution abnormal
 			pve.printStackTrace();
 		}
 	} // end buidDocument
@@ -296,45 +221,12 @@ public class DxTTStructureDoc extends DxDocument { //implements
 		_autoImportDIMFilePath = importDIMFilePath;
 	}
 
-//	public void internalFrameOpened(InternalFrameEvent e) {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	public void internalFrameClosing(InternalFrameEvent e) {
-//		 e.toString();
-//         _dMediator.getDApplication().close();
-//	}
-//
-//	public void internalFrameClosed(InternalFrameEvent e) {
-////		 e.toString();
-////         _dMediator.getDApplication().close();
-//	}
-//
-//	public void internalFrameIconified(InternalFrameEvent e) {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	public void internalFrameDeiconified(InternalFrameEvent e) {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	public void internalFrameActivated(InternalFrameEvent e) {
-//		e.toString(); // to avoid warning
-//		_dMediator.getDApplication().getToolBar().setToolBars(_ttStructure);
-//	} // end internalFrameActivated
-//
-//	public void internalFrameDeactivated(InternalFrameEvent e) {
-//		// TODO Auto-generated method stub
-//
-//	}
 
-	public void changeInModelByToolBar(ActionListener listener) {
-		System.out.println("changeInModelByToolBar+ rgr here");
 
-	}
+//	public void changeInModelByToolBar(ActionListener listener) {
+//		System.out.println("changeInModelByToolBar+ rgr here");
+//
+//	}
 
 	@Override
 	public void changeInModel(ActionListener listener) {
@@ -342,13 +234,9 @@ public class DxTTStructureDoc extends DxDocument { //implements
 		_ttStructure.changeInTTStructure(listener);
 	}// end changeInDModel
 
-	
-//	   /*
-//     * a revoir
-//     */
-//    public void close() {
-//        _jif.dispose();
-//        _jif = null;
-//        _ttPane = null;
-//    }
+
+	@Override
+	public void  saveTTStrucure(String str) {
+		 _ttStructure.saveTTStructure(str);
+	}
 }

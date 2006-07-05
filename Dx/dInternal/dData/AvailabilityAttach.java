@@ -86,9 +86,9 @@ public class AvailabilityAttach extends DObject {
      * clear and set instructorDisp
      * INPUT: Vector of new instructor availability (instDisp)
      * */
-    public void setAvailability(Vector instDisp) {
+    public void setAvailability(Vector <String> instDisp) {
         _ressourceAvailability = new Vector <String>();
-        _ressourceAvailability = (Vector) instDisp.clone();
+        _ressourceAvailability =  (Vector) instDisp.clone();
     }
     
     /**

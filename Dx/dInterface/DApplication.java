@@ -232,8 +232,7 @@ public class DApplication { // implements ActionListener {
 	public DDocument getCurrentDoc() {
 		return _dMediator.getCurrentDoc();
 	} // end getCurrentDoc
-	
-	
+
 	public DxDocument getCurrentDxDoc() {
 		return _dMediator.getCurrentDxDoc();
 	}
@@ -340,18 +339,35 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void exit() {
-		// if no Document exit ok
-		while (_dMediator.getCurrentDoc() != null) { // is a while
-			this.close(); // new CloseCmd().execute(this);
-			if (_dMediator.getCancel())
-				break;
+		if (DConst.newDoc) {
+//			 if no Document exit ok
+			while (_dMediator.getCurrentDxDoc() != null) { // is a while
+				this.close(); // new CloseCmd().execute(this);
+				if (_dMediator.getCancel())
+					break;
+			}
+			// if Document changed as for save or not
+			if (_dMediator.getCurrentDxDoc() == null) {
+				_jFrame.setVisible(false);
+				_jFrame.dispose();
+				System.exit(0);
+			}
+			
+		} else {
+//			 if no Document exit ok
+			while (_dMediator.getCurrentDoc() != null) { // is a while
+				this.close(); // new CloseCmd().execute(this);
+				if (_dMediator.getCancel())
+					break;
+			}
+			// if Document changed as for save or not
+			if (_dMediator.getCurrentDoc() == null) {
+				_jFrame.setVisible(false);
+				_jFrame.dispose();
+				System.exit(0);
+			}	
 		}
-		// if Document changed as for save or not
-		if (_dMediator.getCurrentDoc() == null) {
-			_jFrame.setVisible(false);
-			_jFrame.dispose();
-			System.exit(0);
-		}
+		
 	}
 
 	public DModel getCurrentDModel() {
@@ -445,11 +461,12 @@ public class DApplication { // implements ActionListener {
 		this.setCursorWait();
 		if (DConst.newDoc) {
 			try {
-				 this._dMediator.addDxTTStructureDoc(this.getPreferences()._standardTTC);
-				 _dxMenuBar.afterNewTTStruc();
+				this._dMediator
+						.addDxTTStructureDoc(this.getPreferences()._standardTTC);
+				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
 				new FatalProblemDlg(this._jFrame, e.toString());
-				//as a complement
+				// as a complement
 				e.printStackTrace();
 				this.hideToolBar();
 			}
@@ -506,7 +523,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void close() {
-		if(DConst.newDoc) {
+		if (DConst.newDoc) {
 			this._dMediator.closeCurrentDxDoc();
 			if (!this._dMediator.getCancel()) {
 				_dxMenuBar.initialState();
@@ -517,19 +534,29 @@ public class DApplication { // implements ActionListener {
 				_dxMenuBar.initialState();
 			}
 		}
-		
+
 	}
 
 	/**
 	 * 
 	 */
 	public void save() {
-		if (this.getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
-			new SaveAsTTDlg(this);
-		else if (this.getCurrentDoc().isModified())
-			this._dMediator.saveCurrentDoc(this.getCurrentDoc()
-					.getDocumentName());
-		// else not necessary to save
+		if (DConst.newDoc){
+			if (this.getCurrentDxDoc().getDocumentName().endsWith(DConst.NO_NAME))
+				new SaveAsTTDlg(this);
+			else if (this.getCurrentDoc().isModified())
+				this._dMediator.saveCurrentDoc(this.getCurrentDxDoc()
+						.getDocumentName());
+			// else not necessary to save
+		}else{
+			if (this.getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
+				new SaveAsTTDlg(this);
+			else if (this.getCurrentDoc().isModified())
+				this._dMediator.saveCurrentDoc(this.getCurrentDoc()
+						.getDocumentName());
+			// else not necessary to save
+		}
+		
 	}
 
 	/**
@@ -917,7 +944,5 @@ public class DApplication { // implements ActionListener {
 	public void setFileToOpen(String absolutePath) {
 		_fileToOpen = absolutePath;
 	}
-
-
 
 } /* end class DApplication */

@@ -24,7 +24,7 @@ import java.util.Iterator;
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfResources;
-import dInternal.dData.dInstructors.DxInstructor;
+
 
 /**
  * Ruben Gonzalez-Rubio

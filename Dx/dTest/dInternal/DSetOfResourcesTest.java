@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2006-05-08 12:40:50 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2006-07-05 19:58:24 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -178,7 +178,7 @@ public class DSetOfResourcesTest extends TestCase{
 	}
 	
 	public void test_getNamesVector(){
-		Vector vector= new Vector();
+		Vector <String>vector= new Vector <String>();
 		//	lgd:it's the same function of getNamesVector(0) or getNamesVector(1)
 		_sos.getNamesVector(vector); 
 		assertEquals("test_getNamesVector: assertEquals", "2", vector.get(1)

@@ -201,7 +201,7 @@ public abstract class DSetOfResources extends DObject {
 	 * get the resource list
 	 * @return Vector the vector of resource list
 	 * */
-	public Vector getSetOfResources() {
+	public Vector <DResource> getSetOfResources() {
 		return _resourceList;
 	}
 

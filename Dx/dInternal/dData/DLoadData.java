@@ -60,10 +60,6 @@ public class DLoadData {
 
     private String _studentsFileName;
 
-    // private String _functionFileName;
-    //
-    // private String _caractFileName;
-
     private DModel _dm;
 
     private String _chars;
@@ -296,8 +292,10 @@ public class DLoadData {
         SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
                 _dm.getTTStructure().getPeriodLenght());
         if (de.getContents() != null) {
-            if (merge)
-                if (currentList != null)
+//            Vector  setOfResources = currentList
+//                            .getSetOfResources();
+			if (merge)
+                
                     activitiesList.setSetOfResources(currentList
                             .getSetOfResources());
             if (activitiesList.analyseTokens(de, 1)) {

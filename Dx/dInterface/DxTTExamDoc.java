@@ -62,4 +62,10 @@ public class DxTTExamDoc extends DxDocument{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void saveTTStrucure(String str) {
+		// TODO Auto-generated method stub
+		
+	}
 }

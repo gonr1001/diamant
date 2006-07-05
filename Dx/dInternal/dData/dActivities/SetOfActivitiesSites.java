@@ -731,7 +731,8 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				// SetOfStudents sos =
 				// (SetOfStudents)getResource(site).getAttach();
 				if (actResc == null) {
-					actResc = new DResource(site, new SetOfActivities(_open, _periodLength));
+					actResc = new DResource(site, new SetOfActivities(_open,
+							_periodLength));
 					addResource(actResc, 1);
 				}
 
@@ -828,7 +829,8 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				// SetOfStudents sos =
 				// (SetOfStudents)getResource(site).getAttach();
 				if (actResc == null) {
-					actResc = new DResource(site, new SetOfActivities(_open, _periodLength));
+					actResc = new DResource(site, new SetOfActivities(_open,
+							_periodLength));
 					// sos= new SetOfStudents();
 					addResource(actResc, 1);
 				}
@@ -867,13 +869,12 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			DResource siteRsc;
 			SetOfActivities soa;
 			for (int i = 0; i < getSetOfResources().size() - 1; i++) {
-				siteRsc = ((DResource) getSetOfResources().get(i));
+				siteRsc = getSetOfResources().get(i);
 				soa = (SetOfActivities) siteRsc.getAttach();
 				reslist += soa.toWrite(siteRsc.getID()) + DConst.CR_LF;
 				// reslist+= siteRsc.toWrite(DConst.CR_LF)+DConst.CR_LF;
 			}
-			siteRsc = ((DResource) getSetOfResources().get(
-					getSetOfResources().size() - 1));
+			siteRsc = getSetOfResources().get(getSetOfResources().size() - 1);
 			soa = (SetOfActivities) siteRsc.getAttach();
 			reslist += soa.toWrite(siteRsc.getID());
 		}

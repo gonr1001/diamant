@@ -7,7 +7,6 @@ import dInternal.DataExchange;
 import dInternal.DxPreferences;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
-import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxSetOfSites;
@@ -96,7 +95,7 @@ public class DxSetOfSitesTest extends TestCase {
         assertEquals("test_1_getSetOfSitesMultiSite: asserEquals", 3,
                 _dxsosMulti.getSiteCount());
         DxSite[] dxsosAll = _dxsosMulti.getSitesSortedByKey();
-        DxCategory dxsocShe = dxsosAll[0].getCat(DConst.ROOM_STANDARD_CAT);
+//        DxCategory dxsocShe = dxsosAll[0].getCat(DConst.ROOM_STANDARD_CAT);
         assertEquals("test_2_getSetOfSitesMultiSite: asserEquals", 2,
                 dxsosAll[0].getCatCount());
         assertEquals("test_2_1_getSetOfSitesMultiSite: asserEquals", 1,
