@@ -24,6 +24,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
 /**
@@ -154,28 +155,6 @@ public class DxSetOfInstructors extends DxSetOfResources {
                 .toArray(new DxInstructor[this.size()]);
     }
 
-    public boolean isEquals(DxSetOfInstructors dxsoi) {
-        if (!super.isEqual(dxsoi)) {
-            return false;
-        }
-        // For every instructors, verify that availabilities match
-        Iterator itRes = this.iterator();
-        DxInstructor dxiThis;
-        DxInstructor dxiOther;
-        while (itRes.hasNext()) {
-            dxiThis = (DxInstructor) itRes.next();
-            dxiOther = dxsoi.getInstructor(dxiThis
-                    .getInstructorName());
-            if (dxiOther == null) {
-                return false;
-            }
-            if (!dxiThis.getInstructorAvailability().isEquals(
-                    dxiOther.getInstructorAvailability()))
-                return false;
-        }
-        return true;
-    }
-
     public void remAllAssignedToASite(String currentSite) {
         System.out
                 .println("DxSetOfIntructors.remAllAssignedToASite must be implemented");
@@ -184,5 +163,23 @@ public class DxSetOfInstructors extends DxSetOfResources {
     public void alwaysAvailable() {
         System.out
                 .println("DxSetOfIntructors.alwaysAvailable must be implemented");
+    }
+
+    @Override
+    protected DxResource findIdenticalResource(DxResource dxrFind) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected DxResource manualMerge(DxResource dxrOriginal, DxResource dxrNew) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected DxResource findCorrespondingResource(DxResource dxrFind) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

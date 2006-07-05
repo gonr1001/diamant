@@ -32,7 +32,7 @@ import java.util.Vector;
  * <p>
  * 
  */
-public class DxSetOfResources implements Iterable {
+public abstract class DxSetOfResources implements Iterable {
     private Vector<DxResource> _vResourceSortedByKey;
 
     private Vector<DxResource> _vResourceSortedByName;
@@ -53,39 +53,40 @@ public class DxSetOfResources implements Iterable {
      * @param dxrRes
      *            Resource that has to be added to the set
      */
-    public void addResource(DxResource dxrRes) {
-        if (getResource(dxrRes.getResourceKey()) == null) {
-            _vResourceSortedByKey.add(dxrRes);
-            _vResourceSortedByName.add(dxrRes);
-            _bSorted = false;
-        }
-    }
-
-    /**
-     * Adds all the ressources in the other set of ressources
-     * 
-     * @param dxrRes
-     *            Resource that has to be added to the set
-     */
-    public void addSetOfResources(DxSetOfResources dxsorNew) {
-//        Iterator itNew = dxsorNew.iterator();
-//        DxResource dxrNew; 
-//        while(itNew.hasNext())
-//        {
-//            dxrNew = (DxResource)itNew.next();
-//            if(!this.ressourceExists(dxrNew)){
-//                this.addResource(dxrNew);
-//            }
-//            else
-//            {
-//                
-//            }
-//        }
-        for (int i = 0; i < dxsorNew.size(); i++) {
-            this.addResource(dxsorNew._vResourceSortedByKey.get(i));
-        }
+    public final void addResource(DxResource dxrRes) {
+        _vResourceSortedByKey.add(dxrRes);
+        _vResourceSortedByName.add(dxrRes);
         _bSorted = false;
     }
+
+// /**
+// * Adds all the ressources in the other set of ressources
+// *
+// * @param dxrRes
+// * Resource that has to be added to the set
+// */
+// public final void addSetOfResources(DxSetOfResources dxsorNew) {
+// Iterator itNew = dxsorNew.iterator();
+// DxResource dxrNew;
+// DxResource dxrFound;
+//
+// while (itNew.hasNext()) {
+// dxrNew = (DxResource) itNew.next();
+// dxrFound = this.findCorrespondingResource(dxrNew);
+// if (dxrFound == null) {
+// this.addResource(dxrNew);
+// } else {
+// this.removeResource(dxrFound.getResourceKey());
+// this.addResource(dxrNew);
+// }
+// }
+// /*
+// * for (int i = 0; i < dxsorNew.size(); i++) {
+// * this.addResource(dxsorNew._vResourceSortedByKey.get(i)); }
+// */
+// _bSorted = false;
+//
+// }
 
     /**
      * Removes an instructor from the set
@@ -93,12 +94,15 @@ public class DxSetOfResources implements Iterable {
      * @param lKey
      *            Key of the instructor to be removed
      */
-    public void removeResource(long lKey) {
+    public final void removeResource(long lKey) {
         int nIndexKey = getSortedKeyIndex(lKey);
         int nIndexName = getSortedNameIndex(lKey);
         if (nIndexKey != -1 && nIndexName != -1) {
             _vResourceSortedByKey.remove(nIndexKey);
             _vResourceSortedByName.remove(nIndexName);
+        } else {
+            System.out
+                    .println("dInternal.dData.DxSetOfResources: A ressource was found in a vector but not the other");
         }
     }
 
@@ -107,7 +111,7 @@ public class DxSetOfResources implements Iterable {
      * 
      * @return The number of instructor currently in the set
      */
-    public int size() {
+    public final int size() {
         return _vResourceSortedByKey.size();
     }
 
@@ -118,7 +122,7 @@ public class DxSetOfResources implements Iterable {
      * @return true if name ordered vector and key ordered vector are the same
      *         size
      */
-    public boolean areVectorsSync() {
+    public final boolean areVectorsSync() {
         return _vResourceSortedByKey.size() == _vResourceSortedByName.size();
     }
 
@@ -129,7 +133,7 @@ public class DxSetOfResources implements Iterable {
      *            Index of the instructor whose name is wanted
      * @return String The name of the instructor, null if the index was invalid
      */
-    public DxResource getResource(long lKey) {
+    public final DxResource getResource(long lKey) {
         int nIndex = getSortedKeyIndex(lKey);
         if (nIndex >= 0) {
             return _vResourceSortedByKey.get(nIndex);
@@ -145,7 +149,7 @@ public class DxSetOfResources implements Iterable {
      *            Name of the ressource we need
      * @return The ressource
      */
-    public DxResource getResource(String sName) {
+    public final DxResource getResource(String sName) {
         if (!_bSorted) {
             sortResources();
         }
@@ -165,7 +169,7 @@ public class DxSetOfResources implements Iterable {
      *            Index of the instructor whose name is wanted
      * @return String The name of the instructor, null if the index was invalid
      */
-    public String getResourceName(long lKey) {
+    public final String getResourceName(long lKey) {
 
         DxResource dxrTemp = getResource(lKey);
         if (dxrTemp != null) {
@@ -183,7 +187,7 @@ public class DxSetOfResources implements Iterable {
      *            Name of the ressource we need the key
      * @return The key of ressour sName, -1 if instructor not found
      */
-    public long getResourceKey(String sName) {
+    public final long getResourceKey(String sName) {
         if (!_bSorted) {
             sortResources();
         }
@@ -194,28 +198,28 @@ public class DxSetOfResources implements Iterable {
         return -1;
     }
 
-    public DxResource[] getResourcesSortedByName() {
+    public final DxResource[] getResourcesSortedByName() {
         if (!_bSorted) {
             sortResources();
         }
         return _vResourceSortedByName.toArray(new DxResource[this.size()]);
     }
 
-    public DxResource[] getResourcesSortedByKey() {
+    public final DxResource[] getResourcesSortedByKey() {
         if (!_bSorted) {
             sortResources();
         }
         return _vResourceSortedByKey.toArray(new DxResource[this.size()]);
     }
 
-    protected Vector<DxResource> getNameSortedVector() {
+    protected final Vector<DxResource> getNameSortedVector() {
         if (!_bSorted) {
             sortResources();
         }
         return _vResourceSortedByName;
     }
 
-    protected Vector<DxResource> getKeySortedVector() {
+    protected final Vector<DxResource> getKeySortedVector() {
         if (!_bSorted) {
             sortResources();
         }
@@ -229,7 +233,7 @@ public class DxSetOfResources implements Iterable {
         Vector<String> vReturn = new Vector<String>();
         Iterator itNames = _vResourceSortedByName.iterator();
         while (itNames.hasNext()) {
-            vReturn.add(((DxResource) itNames.next()).getResourceName());
+            vReturn.add(((DxResource) itNames.next()).toString());
         }
 
         return vReturn;
@@ -290,53 +294,8 @@ public class DxSetOfResources implements Iterable {
         return _vResourceSortedByKey.iterator();
     }
 
-    public boolean isEqual(DxSetOfResources dxsorOther) {
-        if (this.size() != dxsorOther.size()) {
-            return false;
-        }
-
-        Iterator itRes = this.iterator();
-        DxResource dxrTemp;
-        while (itRes.hasNext()) {
-             dxrTemp = (DxResource) itRes.next();
-            if (!dxsorOther.ressourceExists(dxrTemp.getResourceName())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean ressourceExists(String sName) {
-        if (!_bSorted) {
-            sortResources();
-        }
-
-        DxResource dxrTemp = new DxResource(0, sName);
-
-        int nIndex = Collections.binarySearch(_vResourceSortedByName, dxrTemp,
-                DxResource.NameComparator);
-
-        if (nIndex >= 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean ressourceExists(long lKey) {
-        if (getSortedKeyIndex(lKey) == -1) {
-            return false;
-        }
-        return true;
-    }
-    
-    public boolean ressourceExists(DxResource dxrAdded) {
-        if (this.getSortedKeyIndex(dxrAdded.getResourceKey()) == -1) {
-            return false;
-        }
-        return true;
-    }
-    
-    public DxResource merge(DxResource dxrOriginal, DxResource dxrNew){
-        return dxrOriginal;
-    }
+    public abstract int findEquivalent(DxResource);
+    public abstract boolean merge(DxSetOfResources dxsorOther);
+    public abstract boolean isEqual(DxSetOfResources dxsorOther);
+    public abstract boolean isEquivalent(DxSetOfResources dxsorOther);
 }
