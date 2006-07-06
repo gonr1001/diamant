@@ -10,7 +10,6 @@ import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxSetOfSites;
-import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.DxSiteReader;
 import eLib.exit.txt.FilterFile;
 
@@ -94,43 +93,45 @@ public class DxSetOfSitesTest extends TestCase {
     public void test_getSetOfSitesMultiSite() {
         assertEquals("test_1_getSetOfSitesMultiSite: asserEquals", 3,
                 _dxsosMulti.getSiteCount());
-        DxSite[] dxsosAll = _dxsosMulti.getSitesSortedByKey();
-//        DxCategory dxsocShe = dxsosAll[0].getCat(DConst.ROOM_STANDARD_CAT);
+
         assertEquals("test_2_getSetOfSitesMultiSite: asserEquals", 2,
-                dxsosAll[0].getCatCount());
+                _dxsosMulti.getSitesSortedByKey()[0].getCatCount());
         assertEquals("test_2_1_getSetOfSitesMultiSite: asserEquals", 1,
-                dxsosAll[2].getCatCount());
+                _dxsosMulti.getSitesSortedByKey()[2].getCatCount());
         assertEquals("test_3_getSetOfSitesMultiSite: asserEquals", 2,
                 _dxsosMulti.getCatCount(DConst.ROOM_STANDARD_SITE));
         assertEquals("test_4_getSetOfSitesMultiSite: asserEquals", 7,
-                _dxsosMulti.getRoomCount("SHE", "CAT1"));
+                _dxsosMulti.getSitesSortedByKey()[0].getCat("CAT1")
+                        .getRoomCount());
         assertEquals("test_5_getSetOfSitesMultiSite: asserEquals", -1,
                 _dxsosMulti.getRoomCount("COW", "CAT1"));
-
         assertEquals("test_6_getSetOfSitesMultiSite: assertEquals",
-                DConst.ROOM_STANDARD_SITE, _dxsosMulti.getSiteName(1));
+                DConst.ROOM_STANDARD_SITE, _dxsosMulti.getSitesSortedByKey()[0]
+                        .getSiteName());
         assertEquals("test_6_1_getSetOfSitesMultiSite: assertEquals", "LON",
-                _dxsosMulti.getSiteName(2));
+                _dxsosMulti.getSitesSortedByKey()[1].getSiteName());
         assertEquals("test_7_getSetOfSitesMultiSite: asserEquals", "CAT1",
-                _dxsosMulti.getCatName(1, 1));
+                _dxsosMulti.getSitesSortedByKey()[0].getSetOfCat()
+                        .getCatsSortedByKey()[0].getCategoryName());
         assertEquals("test_7_1_getSetOfSitesMultiSite: asserEquals", "CAT2",
-                _dxsosMulti.getCatName(3, 1));
+                _dxsosMulti.getSitesSortedByKey()[2].getSetOfCat()
+                        .getCatsSortedByKey()[0].getCategoryName());
         assertEquals("test_8_getSetOfSitesMultiSite: asserEquals", "Z7-2001",
-                _dxsosMulti.getRoomName(1, 1, 1));
-        assertEquals("test_9_getSetOfSitesMultiSite: asserEquals", null,
-                _dxsosMulti.getRoomName(1, 1, 44));
+                _dxsosMulti.getSitesSortedByKey()[0].getSetOfCat()
+                        .getCatsSortedByKey()[0].getSetOfRooms()
+                        .getRoomsSortedByKey()[0].getRoomName());
         assertEquals("test_9_1_getSetOfSitesMultiSite: asserEquals", "101",
-                _dxsosMulti.getRoomName(3, 1, 1));
-
+                _dxsosMulti.getSitesSortedByKey()[2].getSetOfCat()
+                        .getCatsSortedByKey()[0].getSetOfRooms()
+                        .getRoomsSortedByKey()[0].getRoomName());
         assertEquals("test_10_getSetOfSitesMultiSite: asserEquals", 80,
-                _dxsosMulti.getRoomCapacity(1, 1, 1));
-
+                _dxsosMulti.getSitesSortedByKey()[0].getSetOfCat()
+                        .getCatsSortedByKey()[0].getSetOfRooms()
+                        .getRoomsSortedByKey()[0].getRoomCapacity());
         assertEquals("test_11_getSetOfSitesMultiSite: asserEquals", 60,
-                _dxsosMulti.getRoomCapacity(2, 2, 2));
-
-        assertEquals("test_11_getSetOfSitesMultiSite: asserEquals", null,
-                _dxsosMulti.getRoomAvailability(2, 2, 23));
-
+                _dxsosMulti.getSitesSortedByKey()[1].getSetOfCat()
+                        .getCatsSortedByKey()[1].getSetOfRooms()
+                        .getRoomsSortedByKey()[1].getRoomCapacity());
         assertEquals("test_12_getSetOfSitesMultiSite: asserEquals", 40,
                 _dxsosMulti.getRoomCapacity("SHE", "CAT2", "FM-3207"));
     }

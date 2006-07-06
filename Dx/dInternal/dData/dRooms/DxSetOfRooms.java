@@ -166,4 +166,8 @@ public class DxSetOfRooms extends DxSetOfResources{
 		// TODO Auto-generated method stub
 		
 	}
+
+    public void addSetOfRooms(DxSetOfRooms dxsor) {
+        this.addSetOfResources(dxsor);
+    }
 }

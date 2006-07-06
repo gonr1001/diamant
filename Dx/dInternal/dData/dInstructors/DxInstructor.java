@@ -31,8 +31,9 @@ import dInternal.dData.DxResource;
  * <p>
  * 
  */
-public class DxInstructor extends DxResource{
-    private static long lKey=1;
+public class DxInstructor extends DxResource {
+    private static long lKey = 1;
+
     private DxAvailability _availability;
 
     /**
@@ -46,7 +47,7 @@ public class DxInstructor extends DxResource{
      *            Instructor key
      */
     public DxInstructor(String sName, DxAvailability a) {
-        super(lKey++,sName);
+        super(lKey++, sName);
         _availability = a;
     }
 
@@ -84,20 +85,22 @@ public class DxInstructor extends DxResource{
         return this.getResourceKey();
     }
 
-	public void setInstructorAvailability(int[][] nAvailbilities) {
-		_availability.setAvailability(nAvailbilities);
-	}
-	
-	public boolean isEqual(DxResource dxrOther){
-		DxInstructor dxiOther = (DxInstructor)dxrOther;
-		if(!this.getResourceName().equalsIgnoreCase(dxiOther.getResourceName())){
-			return false;
-		}
-		
-		if(!this.getInstructorAvailability().isEqual(dxiOther.getInstructorAvailability())){
-			return false;
-		}
-		
-		return true;
-	}
+    public void setInstructorAvailability(int[][] nAvailbilities) {
+        _availability.setAvailability(nAvailbilities);
+    }
+
+    public boolean isEqual(DxResource dxrOther) {
+        DxInstructor dxiOther = (DxInstructor) dxrOther;
+        if (!this.getResourceName()
+                .equalsIgnoreCase(dxiOther.getResourceName())) {
+            return false;
+        }
+
+        if (!this.getInstructorAvailability().isEqual(
+                dxiOther.getInstructorAvailability())) {
+            return false;
+        }
+
+        return true;
+    }
 }

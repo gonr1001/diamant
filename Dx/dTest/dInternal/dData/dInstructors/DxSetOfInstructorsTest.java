@@ -147,4 +147,49 @@ public class DxSetOfInstructorsTest extends TestCase {
         soiTest.addInstructor("Daniel", aTemp);
         assertEquals("test2_instructorCount: assertEquals", soiTest.size(), 2);
     }
+
+    public void test_addSetOfInstructors() {
+        DxSetOfInstructors dxsoiOne = new DxSetOfInstructors();
+        DxSetOfInstructors dxsoiTwo = new DxSetOfInstructors();
+        DxAvailability aOne = new DxAvailability();
+        DxAvailability aTwo = new DxAvailability();
+
+        aOne.addDayAvailability("5 5 5");
+        aOne.addDayAvailability("5 5 5 5");
+        aOne.addDayAvailability("5 5 5 5 5");
+
+        aTwo.addDayAvailability("1 1 1");
+        aTwo.addDayAvailability("1 1 1 1");
+        aTwo.addDayAvailability("1 1 1 1 1");
+
+        dxsoiOne.addInstructor("a", aOne);
+        dxsoiOne.addInstructor("b", aOne);
+        dxsoiOne.addInstructor("c", aOne);
+
+        dxsoiTwo.addInstructor("a", aTwo);
+        dxsoiTwo.addInstructor("b", aTwo);
+        dxsoiTwo.addInstructor("c", aTwo);
+        dxsoiTwo.addInstructor("d", aTwo);
+        dxsoiTwo.addInstructor("e", aTwo);
+        dxsoiTwo.addInstructor("f", aTwo);
+        dxsoiTwo.addInstructor("g", aTwo);
+        dxsoiTwo.addInstructor("h", aTwo);
+        dxsoiTwo.addInstructor("i", aTwo);
+        dxsoiTwo.addInstructor("j", aTwo);
+
+        dxsoiOne.addSetOfInstructors(dxsoiTwo);
+
+        assertEquals("test_addSetOfInstructors: assertEquals", 10, dxsoiOne
+                .size());
+        assertEquals("test_addSetOfInstructors: assertEquals", "a", dxsoiOne
+                .getInstructorsSortedByName()[0].getInstructorName());
+        assertEquals("test_addSetOfInstructors: assertEquals", "j", dxsoiOne
+                .getInstructorsSortedByName()[9].getInstructorName());
+        assertEquals("test_addSetOfInstructors: assertEquals", 5, dxsoiOne
+                .getInstructorsSortedByName()[2].getInstructorAvailability()
+                .getPeriodAvailability(2, 4));
+        assertEquals("test_addSetOfInstructors: assertEquals", 1, dxsoiOne
+                .getInstructorsSortedByName()[9].getInstructorAvailability()
+                .getPeriodAvailability(2, 4));
+    }
 }

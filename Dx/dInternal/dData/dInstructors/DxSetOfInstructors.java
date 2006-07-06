@@ -165,13 +165,14 @@ public class DxSetOfInstructors extends DxSetOfResources {
 				.println("DxSetOfIntructors.alwaysAvailable must be implemented");
 	}
 
-	public DxResource findEquivalent(DxResource dxrSearch) {
+	protected DxResource findEquivalent(DxResource dxrSearch) {
 		return this.getInstructor(dxrSearch.getResourceName());
 	}
 
-	public void merge(DxResource dxrModify, DxResource dxrNew) {
-		((DxInstructor) dxrModify)
-				.setInstructorAvailability(((DxInstructor) dxrNew)
-						.getInstructorAvailability());
+	protected void merge(DxResource dxrModify, DxResource dxrNew) {
+        
+//		((DxInstructor) dxrModify)
+//				.setInstructorAvailability(((DxInstructor) dxrNew)
+//						.getInstructorAvailability());
 	}
 }
