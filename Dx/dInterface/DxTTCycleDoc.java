@@ -34,9 +34,12 @@ import dInternal.dTimeTable.TTStructure;
  * 
  */
 public class DxTTCycleDoc extends DxDocument{
-
+	
+	private  String _type;
+	
 	public DxTTCycleDoc(DMediator mediator) {
 		super(mediator);
+		_type = "type";
 	}
 
 	@Override
@@ -72,5 +75,7 @@ public class DxTTCycleDoc extends DxDocument{
 		// TODO Auto-generated method stub
 		
 	}
-
+	public String getTTtype(){
+		return _type;
+	}
 }
