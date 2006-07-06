@@ -23,6 +23,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
 /**
@@ -213,20 +214,29 @@ public class DxSetOfCategories extends DxSetOfResources {
         return sbReturn.toString();
     }
 
-    public boolean isEquals(DxSetOfCategories dxsocOtherCats) {
-        if (!super.isEqual(dxsocOtherCats)) {
-            return false;
-        }
+//    public boolean isEquals(DxSetOfCategories dxsocOtherCats) {
+//        if (!super.isEqual(dxsocOtherCats)) {
+//            return false;
+//        }
+//
+//        Iterator itRes = this.iterator();
+//        DxCategory dxcThis;
+//        DxCategory dxcOther;
+//        while (itRes.hasNext()) {
+//            dxcThis = (DxCategory) itRes.next();
+//            dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryName());
+//            if (!dxcThis.isEquals(dxcOther))
+//                return false;
+//        }
+//        return true;
+//    }
 
-        Iterator itRes = this.iterator();
-        DxCategory dxcThis;
-        DxCategory dxcOther;
-        while (itRes.hasNext()) {
-            dxcThis = (DxCategory) itRes.next();
-            dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryName());
-            if (!dxcThis.isEquals(dxcOther))
-                return false;
-        }
-        return true;
-    }
+	public DxResource findEquivalent(DxResource dxrSearch) {
+		return this.getResource(dxrSearch.getResourceName());
+	}
+
+	public void merge(DxResource dxrModify, DxResource dxrNew) {
+		// TODO Auto-generated method stub
+		
+	}
 }

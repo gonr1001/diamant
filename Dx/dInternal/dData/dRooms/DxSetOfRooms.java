@@ -23,6 +23,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
 
@@ -137,20 +138,32 @@ public class DxSetOfRooms extends DxSetOfResources{
         return sbReturn.toString();
     }
 
-    public boolean isEquals(DxSetOfRooms dxsorRooms) {
-        if (!super.isEqual(dxsorRooms)) {
-            return false;
-        }
+//    public boolean isEquals(DxSetOfRooms dxsorRooms) {
+//        if (!super.isEqual(dxsorRooms)) {
+//            return false;
+//        }
+//
+//        Iterator itRes = this.iterator();
+//        DxRoom dxrThis;
+//        DxRoom dxrOther;
+//        while (itRes.hasNext()) {
+//            dxrThis = (DxRoom) itRes.next();
+//            dxrOther = dxsorRooms.getRoom(dxrThis.getRoomName());
+//            if (!dxrThis.isEquals(dxrOther))
+//                return false;
+//        }
+//        return true;
+//    }
 
-        Iterator itRes = this.iterator();
-        DxRoom dxrThis;
-        DxRoom dxrOther;
-        while (itRes.hasNext()) {
-            dxrThis = (DxRoom) itRes.next();
-            dxrOther = dxsorRooms.getRoom(dxrThis.getRoomName());
-            if (!dxrThis.isEquals(dxrOther))
-                return false;
-        }
-        return true;
-    }
+	@Override
+	public DxResource findEquivalent(DxResource dxrSearch) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void merge(DxResource dxrModify, DxResource dxrNew) {
+		// TODO Auto-generated method stub
+		
+	}
 }

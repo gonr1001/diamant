@@ -87,4 +87,17 @@ public class DxInstructor extends DxResource{
 	public void setInstructorAvailability(int[][] nAvailbilities) {
 		_availability.setAvailability(nAvailbilities);
 	}
+	
+	public boolean isEqual(DxResource dxrOther){
+		DxInstructor dxiOther = (DxInstructor)dxrOther;
+		if(!this.getResourceName().equalsIgnoreCase(dxiOther.getResourceName())){
+			return false;
+		}
+		
+		if(!this.getInstructorAvailability().isEqual(dxiOther.getInstructorAvailability())){
+			return false;
+		}
+		
+		return true;
+	}
 }

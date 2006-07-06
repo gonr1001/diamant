@@ -126,7 +126,9 @@ public class DxRoom extends DxResource {
         return sbChars.toString();
     }
 
-    public boolean isEquals(DxRoom dxrOtherRoom) {
+    public boolean isEqual(DxResource dxrOther) {
+    	DxRoom dxrOtherRoom = (DxRoom)dxrOther;
+    	
         if (!this.getRoomName().equalsIgnoreCase(
                 dxrOtherRoom.getRoomName())) {
             return false;
@@ -150,7 +152,7 @@ public class DxRoom extends DxResource {
             return false;
         }
         
-        if(!this._dxaAva.isEquals(dxrOtherRoom._dxaAva))
+        if(!this._dxaAva.isEqual(dxrOtherRoom._dxaAva))
         {
             return false;
         }

@@ -156,12 +156,13 @@ public class DxSite extends DxResource {
         return _dxsocCat.toWrite(this.getSiteName());
     }
 
-    public boolean isEquals(DxSite dxsOtherSite) {
+    public boolean isEqual(DxResource dxrOtherSite) {
+    	DxSite dxsOtherSite = (DxSite)dxrOtherSite;
         if (!this.getSiteName().equalsIgnoreCase(dxsOtherSite.getSiteName())) {
             return false;
         }
 
-        if (!this._dxsocCat.isEquals(dxsOtherSite._dxsocCat)) {
+        if (!this._dxsocCat.isEqual(dxsOtherSite._dxsocCat)) {
             return false;
         }
 

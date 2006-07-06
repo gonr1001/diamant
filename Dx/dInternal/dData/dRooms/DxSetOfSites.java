@@ -23,6 +23,7 @@ import java.util.Iterator;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
 
@@ -364,22 +365,22 @@ public class DxSetOfSites extends DxSetOfResources {
         return sbReturn.toString();
     }
 
-    public boolean isEquals(DxSetOfSites dxsosSetOfSites) {
-        if (!super.isEqual(dxsosSetOfSites)) {
-            return false;
-        }
-
-        Iterator itRes = this.iterator();
-        DxSite dxsThis;
-        DxSite dxsOther;
-        while (itRes.hasNext()) {
-            dxsThis = (DxSite) itRes.next();
-            dxsOther = dxsosSetOfSites.getSite(dxsThis.getSiteName());
-            if (!dxsThis.isEquals(dxsOther))
-                return false;
-        }
-        return true;
-    }
+//    public boolean isEquals(DxSetOfSites dxsosSetOfSites) {
+//        if (!super.isEqual(dxsosSetOfSites)) {
+//            return false;
+//        }
+//
+//        Iterator itRes = this.iterator();
+//        DxSite dxsThis;
+//        DxSite dxsOther;
+//        while (itRes.hasNext()) {
+//            dxsThis = (DxSite) itRes.next();
+//            dxsOther = dxsosSetOfSites.getSite(dxsThis.getSiteName());
+//            if (!dxsThis.isEquals(dxsOther))
+//                return false;
+//        }
+//        return true;
+//    }
 
     public void resizeSiteAvailability() {
         // TODO Auto-generated method stub
@@ -390,4 +391,13 @@ public class DxSetOfSites extends DxSetOfResources {
         System.out
                 .println("DxSetOfIntructors.alwaysAvailable must be implemented");
     }
+
+	public DxResource findEquivalent(DxResource dxrSearch) {
+		return this.getSite(dxrSearch.getResourceName());
+	}
+
+	public void merge(DxResource dxrModify, DxResource dxrNew) {
+		// TODO Auto-generated method stub
+		
+	}
 }
