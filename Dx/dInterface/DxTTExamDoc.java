@@ -22,6 +22,7 @@ package dInterface;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 
+import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 
 /**
@@ -67,5 +68,17 @@ public class DxTTExamDoc extends DxDocument{
 	public void saveTTStrucure(String str) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void changeInModel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public DModel getCurrentDModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

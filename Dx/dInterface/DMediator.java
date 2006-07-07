@@ -61,35 +61,6 @@ public class DMediator extends Object {
 	}
 
 	/**
-	 * for new tt and for open tt
-	 * 
-	 * @param ttname
-	 *            This string will be displayed as the title of the JIF
-	 * @param fileName
-	 *            is the full path file name containing the TTStructure
-	 * @param type
-	 *            is the type of timetable to be constructed possible types
-	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
-	 * @throws Exception
-	 * 
-	 */
-	public String addDoc(String ttName, String fileName, int type)
-			throws Exception /* !!!NIC!!! */{
-		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
-		if (currentDoc.getError().length() == 0) {
-			_documents.addElement(currentDoc);
-			_dApplication.getToolBar().setToolBars(
-					currentDoc.getCurrentDModel().getTTStructure());
-			_dApplication.hideToolBar();
-		} else {
-			new FatalProblemDlg(_dApplication.getJFrame(),
-					"In DMediator.addDoc: " + currentDoc.getError());
-			System.exit(1);
-		}
-		return currentDoc.getError();
-	} // end addDoc
-
-	/**
 	 * for new ttStructure and for open ttStructure
 	 * 
 	 * @param fileName
@@ -129,11 +100,38 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDxTTCycleDoc(String ttName, String fileName)
+	public String addDoc(String ttName, String fileName, int type)
 			throws Exception /* !!!NIC!!! */{
-		DxDocument currentDoc = new DxTTCycleDoc(this);
+		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
+		if (currentDoc.getError().length() == 0) {
+			_documents.addElement(currentDoc);
+			_dApplication.getToolBar().setToolBars(
+					currentDoc.getCurrentDModel().getTTStructure());
+			_dApplication.hideToolBar();
+		} else {
+			new FatalProblemDlg(_dApplication.getJFrame(),
+					"In DMediator.addDoc: " + currentDoc.getError());
+			System.exit(1);
+		}
+		return currentDoc.getError();
+	} // end addDoc
+	/**
+	 * for new tt and for open tt
+	 * 
+	 * @param ttname
+	 *            This string will be displayed as the title of the JIF
+	 * @param fileName
+	 *            is the full path file name containing the TTStructure
+	 * @param type
+	 *            is the type of timetable to be constructed possible types
+	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * @throws Exception
+	 * 
+	 */
+	public String addDxTTableDoc(String ttName, String fileName)
+			throws Exception /* !!!NIC!!! */{
+		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
-		//currentDoc.loadTT(fileName);
 		// if (currentDoc.getError().length() == 0) {
 		_dxDocuments.addElement(currentDoc);
 		// _dApplication.getToolBar().setToolBars(

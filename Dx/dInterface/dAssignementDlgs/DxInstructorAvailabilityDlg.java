@@ -73,17 +73,17 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	/**
 	 * @associates JToggleButton
 	 */
-	private Vector <JToggleButton> _posVect;
+	private Vector<JToggleButton> _posVect;
 
 	protected DModel _dmodel;
 
 	protected DxSetOfInstructors _soi;
 
 	private int[][] _currentAvailbility;
-	
+
 	private DxInstructor _currentInst;
-	
-	//private boolean _isMultiSite;
+
+	// private boolean _isMultiSite;
 
 	/**
 	 * Default constructor.
@@ -98,11 +98,18 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	public DxInstructorAvailabilityDlg(DApplication dApplic,
 			DxSetOfInstructors soi) {
 		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
+
 		
-		if (dApplic.getCurrentDoc() == null)
-			return;
-		
-		_dmodel = dApplic.getCurrentDModel();
+		if (DConst.newDoc) {
+			if (dApplic.getCurrentDxDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+
+		} else {
+			if (dApplic.getCurrentDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDModel();
+		}
 		_soi = soi;
 		_time = _dmodel.getTTStructure().getCurrentCycle()
 				.getHourOfPeriodsADay();
@@ -126,11 +133,11 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	/**
 	 * Component's initialisation and placement.
 	 */
-	private void initialize() {//throws Exception {
+	private void initialize() {// throws Exception {
 		_chooserPanel = new JPanel();
 		// creates the JComboBox with the list of all instructors
 		_chooser = new JComboBox(_soi.getInstructorsSortedByName());
-        _currentInst = (DxInstructor)_chooser.getSelectedItem();
+		_currentInst = (DxInstructor) _chooser.getSelectedItem();
 		_chooser.addItemListener(this);
 		_chooserPanel.add(_chooser, null);
 		this.getContentPane().add(_chooserPanel, BorderLayout.NORTH);
@@ -154,7 +161,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		} else if (command.equals(DConst.BUT_APPLY)) { // apply
 
 			_applyPanel.setFirstDisable();
-			_currentInst=((DxInstructor)_chooser.getSelectedItem());
+			_currentInst = ((DxInstructor) _chooser.getSelectedItem());
 			_currentInst.setInstructorAvailability(_currentAvailbility);
 			_dmodel.changeInDModelByInstructorsDlg(this);
 			// if a button of the grid has been pressed
@@ -181,7 +188,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			Object source = event.getSource();
 			if (source.equals(_chooser)) {
 				getContentPane().remove(_centerPanel);
-				_currentInst = ((DxInstructor)_chooser.getSelectedItem());
+				_currentInst = ((DxInstructor) _chooser.getSelectedItem());
 				_centerPanel = makeGridPanel();
 				getContentPane().add(_centerPanel, BorderLayout.CENTER);
 				pack();
@@ -208,7 +215,8 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			// first line : name of days
 			gridPanel.add(new JLabel(_days[i], SwingConstants.CENTER));
 
-		_currentAvailbility = _currentInst.getInstructorAvailability().getMatrixAvailability();
+		_currentAvailbility = _currentInst.getInstructorAvailability()
+				.getMatrixAvailability();
 
 		for (int j = 0; j < _nbOfPeriods; j++) {
 			// first column : the time of the period
@@ -220,8 +228,9 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			for (int i = 0; i < _nbOfDays; i++) {
 				JToggleButton tBut = new JToggleButton();
 				if (_currentAvailbility[i][j] == 1) {
-					Vector assignedSites = _currentInst.getInstructorAvailability().isAssignedInPeriod(i,
-							j, _dmodel.getOtherSites());
+					Vector assignedSites = _currentInst
+							.getInstructorAvailability().isAssignedInPeriod(i,
+									j, _dmodel.getOtherSites());
 					if (assignedSites.size() != 0) {
 						Color col = this.getGridColor((String) assignedSites
 								.get(0));

@@ -34,6 +34,7 @@ import javax.swing.event.InternalFrameEvent;
 import dConstants.DConst;
 import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
+import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -215,5 +216,17 @@ public class DxTTStructureDoc extends DxDocument {
 	@Override
 	public void saveTTStrucure(String str) {
 		_ttStructure.saveTTStructure(str);
+	}
+
+	@Override
+	public void changeInModel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public DModel getCurrentDModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

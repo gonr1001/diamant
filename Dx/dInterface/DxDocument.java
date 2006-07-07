@@ -24,6 +24,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JInternalFrame;
 import dInterface.dTimeTable.TTPane;
+import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 
 /**
@@ -287,12 +288,11 @@ public abstract class DxDocument implements Observer {
 	}
 
 	public abstract void saveTTStrucure(String str);
+
+	public abstract void changeInModel();
+
+	public abstract DModel getCurrentDModel();
 	
 
-	//public abstract void loadTT(String fileName);  
-
-
-
-	
 
 } /* end DxDocument class */

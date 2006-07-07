@@ -110,7 +110,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		class NewTTableCycleListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.newTTableCycle();
+				_dApplication.newTTable();
 			}
 		}
 		ActionListener newTTableCycleListener = new NewTTableCycleListener();

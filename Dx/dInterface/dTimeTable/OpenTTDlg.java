@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.30 $  $Date: 2006-06-20 20:41:24 $
+ * Title: OpenTTDlg $Revision: 1.31 $  $Date: 2006-07-07 19:49:05 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
- * @author  $Author: nuna2502 $
+ * @version $Revision: 1.31 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -39,74 +39,93 @@ import eLib.exit.dialog.FatalProblemDlg;
  */
 
 public class OpenTTDlg extends JDialog {
-    /**
-     * the constructor will displays the dialog
-     * 
-     * @param jframe
-     *            the parent of the dialog
-     * @param str
-     *            the title of the window dialog
-     * @since JDK1.3
-     */
+	/**
+	 * the constructor will displays the dialog
+	 * 
+	 * @param jframe
+	 *            the parent of the dialog
+	 * @param str
+	 *            the title of the window dialog
+	 * @since JDK1.3
+	 */
 
-    public OpenTTDlg(DApplication dApplic) {
-        showDialog(dApplic);
-    } // end constructor
+	public OpenTTDlg(DApplication dApplic) {
+		showDialog(dApplic);
+	} // end constructor
 
-    /**
-     * */
-    /**
-     * 
-     */
-    private void showDialog(DApplication dApplic) {
-        JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
+	/**
+	 * */
+	/**
+	 * 
+	 */
+	private void showDialog(DApplication dApplic) {
+		JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
 
-        fc.setFileFilter(new DFileFilter(new String[] { DConst.DIA },
-                DConst.DIA_FILE));
-        // Display the file chooser in a dialog
-        Dimension d = fc.getPreferredSize();
-        fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
-                .getHeight()));
-        // int returnVal = DxTools.showOpenDialog(dApplic.getJFrame(), fc);
+		fc.setFileFilter(new DFileFilter(new String[] { DConst.DIA },
+				DConst.DIA_FILE));
+		// Display the file chooser in a dialog
+		Dimension d = fc.getPreferredSize();
+		fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
+				.getHeight()));
+		// int returnVal = DxTools.showOpenDialog(dApplic.getJFrame(), fc);
 
-        int returnVal = 0;
-        String filename = "nothing.txt";
-        while (!(new File(filename)).exists()
-                && (returnVal == JFileChooser.APPROVE_OPTION)) {
-            returnVal = fc.showOpenDialog(dApplic.getJFrame());
-            if (fc.getSelectedFile() != null)
-                filename = fc.getSelectedFile().getAbsolutePath();
+		int returnVal = 0;
+		String filename = "nothing.txt";
+		while (!(new File(filename)).exists()
+				&& (returnVal == JFileChooser.APPROVE_OPTION)) {
+			returnVal = fc.showOpenDialog(dApplic.getJFrame());
+			if (fc.getSelectedFile() != null)
+				filename = fc.getSelectedFile().getAbsolutePath();
 
-        }
-        // If the file chooser exited sucessfully,
-        // and a file was selected, continue
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            // get the file name
-            String fil = fc.getSelectedFile().getAbsolutePath();
-            dApplic.setCurrentDir(fil);
+		}
+		// If the file chooser exited sucessfully,
+		// and a file was selected, continue
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			// get the file name
+			String fil = fc.getSelectedFile().getAbsolutePath();
+			dApplic.setCurrentDir(fil);
 
-            /* !!!NIC!!!String error; */
-            try {
-                /* !!!NIC!!!error = */dApplic.getDMediator().addDoc(fil, fil,
-                        DConst.NO_TYPE);
-            } catch (Exception e) {
+			/* !!!NIC!!!String error; */
 
-            	e.printStackTrace();
-            	
-                new FatalProblemDlg(dApplic.getJFrame(), "In OpenTTDlg.showDialog: " + e.toString());
-                System.exit(1);
-            }
+			if (DConst.newDoc) {
+				try {
+					dApplic.getDMediator().addDxTTableDoc(fil, fil);
+				} catch (Exception e) {
 
-            // /*!!!NIC!!!*/ if (error.length() != 0) {
-            // /*!!!NIC!!!*/ new FatalProblemDlg(dApplic.getJFrame(), error);
-            // /*!!!NIC!!!*/ System.exit(1);
-            // /*!!!NIC!!!*/ }
-            dApplic.setCurrentDir(fc.getSelectedFile().getPath());
-            dApplic.getCurrentDModel().changeInDModel(dApplic.getJFrame());
+					e.printStackTrace();
 
-            dispose();
-            dApplic.afterInitialAssign();
-        }
-    }// end OpenTTDlg
+					new FatalProblemDlg(dApplic.getJFrame(),
+							"In OpenTTDlg.showDialog: " + e.toString());
+					System.exit(1);
+				}
+			} else {
+				try {
+					dApplic.getDMediator().addDoc(fil, fil, DConst.NO_TYPE);
+				} catch (Exception e) {
+
+					e.printStackTrace();
+
+					new FatalProblemDlg(dApplic.getJFrame(),
+							"In OpenTTDlg.showDialog: " + e.toString());
+					System.exit(1);
+				}
+			}
+
+			// /*!!!NIC!!!*/ if (error.length() != 0) {
+			// /*!!!NIC!!!*/ new FatalProblemDlg(dApplic.getJFrame(), error);
+			// /*!!!NIC!!!*/ System.exit(1);
+			// /*!!!NIC!!!*/ }
+			dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+			if (DConst.newDoc) {
+				dApplic.getCurrentDxDoc().changeInModel();
+			} else {
+				dApplic.getCurrentDModel().changeInDModel(dApplic.getJFrame());
+			}
+
+
+			dispose();
+
+		}
+	}// end OpenTTDlg
 
 } /* end class OpenTTDlg */

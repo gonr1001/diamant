@@ -371,8 +371,15 @@ public class DApplication { // implements ActionListener {
 	}
 
 	public DModel getCurrentDModel() {
+		if(DConst.newDoc){
+			return getCurrentDxDoc().getCurrentDModel();
+		}
 		return getCurrentDoc().getCurrentDModel();
 	}
+	
+//	public DModel getCurrentDxModel() {
+//		return getCurrentDxDoc()..getCurrentDModel();
+//	}
 
 	/**
 	 * @return
@@ -396,13 +403,13 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * 
 	 */
-	public void newTTableCycle() {
+	public void newTTable() {
 		new NewTimeTableDlg(this, DConst.CYCLE);
 		this.setCurrentDir(_fileToOpen);
 
 		if (DConst.newDoc) {
 			try {
-				this.getDMediator().addDxTTCycleDoc(
+				this.getDMediator().addDxTTableDoc(
 						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
 				_dxMenuBar.afterNewTTable();
 			} catch (Exception e) {
@@ -517,6 +524,7 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void openTTable() {
 		new OpenTTDlg(this);
+		this.afterInitialAssign();
 	}
 
 	/**
@@ -528,7 +536,7 @@ public class DApplication { // implements ActionListener {
 //		this._dMediator
 //		//.addDxTTStructureDoc(this.getPreferences()._standardTTC);
 		_dxMenuBar.afterNewTTStruc();
-		afterOpenTTSruc();
+		this.afterOpenTTSruc();
 	}
 
 	/**
@@ -689,10 +697,12 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
+		if(DConst.newDoc){
+			new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc().getCurrentDModel()
+					.getDxSetOfInstructors());
+		}		
 		new DxInstructorAvailabilityDlg(this, this.getCurrentDModel()
 				.getDxSetOfInstructors());
-		// new AvailabilityInstructorDlg(this, this.getCurrentDModel()
-		// .getDxSetOfInstructors(), DConst.INST_ASSIGN_TD);
 	}
 
 	/**
