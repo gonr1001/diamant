@@ -132,7 +132,7 @@ public class DxReadSite1dot6 implements DxSiteReader {
                 dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
                         nRoomFunction, viCharacteristics, sNote, dxaAlways);
                 dxsosBuild.addSite(sRoomSite);
-                dxsosBuild.addCat(sRoomSite, sRoomCat);
+                dxsosBuild.addCategory(sRoomSite, sRoomCat);
                 dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
             } else {
                 // ERROR: Invalid token count

@@ -26,7 +26,6 @@ import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
-
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -36,59 +35,68 @@ import dInternal.dData.DxSetOfResources;
  * <p>
  * 
  */
-public class DxSetOfRooms extends DxSetOfResources{
+public class DxSetOfRooms extends DxSetOfResources {
+
+    public void addSetOfRooms(DxSetOfRooms dxsor) {
+        this.addSetOfResources(dxsor);
+    }
+    
+    public DxResource findEquivalent(DxResource dxrSearch) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
     public DxRoom getRoom(long lRoomKey) {
-        try{
-            return (DxRoom)this.getResource(lRoomKey);
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        try {
+            return (DxRoom) this.getResource(lRoomKey);
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return null;
         }
     }
 
     public DxRoom getRoom(String sRoomName) {
-        try{
-            return (DxRoom)this.getResource(sRoomName);
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        try {
+            return (DxRoom) this.getResource(sRoomName);
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return null;
         }
     }
-    
+
     public int getRoomCount() {
         return this.size();
     }
-    
+
     public String getRoomName(long lRoomKey) {
-        try{
+        try {
             return this.getResourceName(lRoomKey);
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return null;
         }
     }
 
     public int getRoomCapacity(long lRoomKey) {
-        try{
-            return ((DxRoom)this.getResource(lRoomKey)).getRoomCapacity();
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        try {
+            return ((DxRoom) this.getResource(lRoomKey)).getCapacity();
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return 0;
         }
     }
 
     public int getRoomCapacity(String sRoomName) {
-        try{
-            return ((DxRoom)this.getResource(sRoomName)).getRoomCapacity();
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        try {
+            return ((DxRoom) this.getResource(sRoomName)).getCapacity();
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return 0;
         }
     }
-    
+
     public void addRoom(DxRoom dxrRoom) {
-        if(this.getResourceKey(dxrRoom.getRoomName()) == -1) {
+        if (this.getResourceKey(dxrRoom.getName()) == -1) {
             this.addResource(dxrRoom);
         }
 
@@ -99,75 +107,46 @@ public class DxSetOfRooms extends DxSetOfResources{
     }
 
     public DxAvailability getRoomAvailability(long lRoomKey) {
-        try{
-            return ((DxRoom)this.getResource(lRoomKey)).getRoomAvailability();
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        try {
+            return ((DxRoom) this.getResource(lRoomKey)).getAvailability();
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return null;
         }
     }
 
     public DxAvailability getRoomAvailability(String sRoomName) {
-        try{
-            return ((DxRoom)this.getResource(sRoomName)).getRoomAvailability();
-        }catch (Exception e){
-            //Null pointer exception will be thrown if room doesnt exist
+        try {
+            return ((DxRoom) this.getResource(sRoomName)).getAvailability();
+        } catch (Exception e) {
+            // Null pointer exception will be thrown if room doesnt exist
             return null;
         }
     }
-    
-    public DxRoom[] getRoomsSortedByKey(){
+
+    public DxRoom[] getRoomsSortedByKey() {
         return this.getKeySortedVector().toArray(new DxRoom[this.size()]);
     }
-    
-    public DxRoom[] getRoomsSortedByName(){
+
+    public DxRoom[] getRoomsSortedByName() {
         return this.getNameSortedVector().toArray(new DxRoom[this.size()]);
+    }
+    
+    public void merge(DxResource dxrModify, DxResource dxrNew) {
+        // TODO Auto-generated method stub
+
     }
 
     public String toWrite(String sSiteName, String sCatName) {
         StringBuffer sbReturn = new StringBuffer();
         Iterator itRooms = this.iterator();
-        while(itRooms.hasNext())
-        {
-            sbReturn.append(((DxRoom)itRooms.next()).toWrite(sSiteName,sCatName));
-            if(itRooms.hasNext())
-            {
+        while (itRooms.hasNext()) {
+            sbReturn.append(((DxRoom) itRooms.next()).toWrite(sSiteName,
+                    sCatName));
+            if (itRooms.hasNext()) {
                 sbReturn.append(DConst.CR_LF);
             }
         }
         return sbReturn.toString();
-    }
-
-//    public boolean isEquals(DxSetOfRooms dxsorRooms) {
-//        if (!super.isEqual(dxsorRooms)) {
-//            return false;
-//        }
-//
-//        Iterator itRes = this.iterator();
-//        DxRoom dxrThis;
-//        DxRoom dxrOther;
-//        while (itRes.hasNext()) {
-//            dxrThis = (DxRoom) itRes.next();
-//            dxrOther = dxsorRooms.getRoom(dxrThis.getRoomName());
-//            if (!dxrThis.isEquals(dxrOther))
-//                return false;
-//        }
-//        return true;
-//    }
-
-	@Override
-	public DxResource findEquivalent(DxResource dxrSearch) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void merge(DxResource dxrModify, DxResource dxrNew) {
-		// TODO Auto-generated method stub
-		
-	}
-
-    public void addSetOfRooms(DxSetOfRooms dxsor) {
-        this.addSetOfResources(dxsor);
     }
 }

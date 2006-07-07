@@ -67,24 +67,24 @@ public class DxSetOfInstructorsTest extends TestCase {
 
         DxInstructor dxiTemp[] = soiTest.getInstructorsSortedByKey();
         assertEquals("test1_getInstructorsSortedByKey: assertEquals", "Erick",
-                dxiTemp[0].getInstructorName());
+                dxiTemp[0].getName());
         assertEquals("test2_getInstructorsSortedByKey: assertEquals", "Claude",
-                dxiTemp[2].getInstructorName());
+                dxiTemp[2].getName());
         assertEquals("test3_getInstructorsSortedByKey: assertEquals", "Alex",
-                dxiTemp[4].getInstructorName());
+                dxiTemp[4].getName());
 
         dxiTemp = soiTest.getInstructorsSortedByName();
         assertEquals("test1_getInstructorsSortedByName: assertEquals", "Alex",
-                dxiTemp[0].getInstructorName());
+                dxiTemp[0].getName());
         assertEquals("test2_getInstructorsSortedByName: assertEquals",
-                "Claude", dxiTemp[2].getInstructorName());
+                "Claude", dxiTemp[2].getName());
         assertEquals("test3_getInstructorsSortedByName: assertEquals", "Erick",
-                dxiTemp[4].getInstructorName());
+                dxiTemp[4].getName());
 
         soiTest.removeInstructor(soiTest.getInstructorKey("Erick"));
         dxiTemp = soiTest.getInstructorsSortedByKey();
         assertEquals("test1_removeInstructor: assertEquals", "Daniel",
-                dxiTemp[0].getInstructorName());
+                dxiTemp[0].getName());
         assertEquals("test2_removeInstructor: assertEquals", -1, soiTest
                 .getInstructorKey("Erick"));
         assertEquals("test3_removeInstructor: asserEquals", null, soiTest
@@ -93,9 +93,9 @@ public class DxSetOfInstructorsTest extends TestCase {
         assertNotNull("test1_getInstructor: assertEquals", soiTest
                 .getInstructor("Alex"));
         assertEquals("test2_getInstructor: assertEquals", "Alex", soiTest
-                .getInstructor("Alex").getInstructorName());
+                .getInstructor("Alex").getName());
         assertEquals("test3_getInstructor: assertEquals", "Daniel", soiTest
-                .getInstructor("Daniel").getInstructorName());
+                .getInstructor("Daniel").getName());
 
     }
 
@@ -116,18 +116,18 @@ public class DxSetOfInstructorsTest extends TestCase {
 
         DxInstructor[] dxiInsts = soiTest.getInstructorsSortedByName();
         aTemp = soiTest.getInstructorAvailability(dxiInsts[0]
-                .getInstructorKey());
+                .getKey());
 
         assertEquals("test_getInstructorAvailability: assertEquals", 5, aTemp
                 .getPeriodAvailability(aTemp.getDayCount() - 1, aTemp
                         .getPeriodCount(aTemp.getDayCount() - 1) - 1));
 
-        dxiInsts[1].setInstructorAvailability(dxiInsts[0]
-                .getInstructorAvailability());
+        dxiInsts[1].setAvailability(dxiInsts[0]
+                .getAvailability());
 
         assertEquals("test_setInstructorAvailability: assertEquals",
-                dxiInsts[0].getInstructorAvailability().getPeriodAvailability(
-                        0, 0), dxiInsts[1].getInstructorAvailability()
+                dxiInsts[0].getAvailability().getPeriodAvailability(
+                        0, 0), dxiInsts[1].getAvailability()
                         .getPeriodAvailability(0, 0));
     }
 
@@ -182,14 +182,14 @@ public class DxSetOfInstructorsTest extends TestCase {
         assertEquals("test_addSetOfInstructors: assertEquals", 10, dxsoiOne
                 .size());
         assertEquals("test_addSetOfInstructors: assertEquals", "a", dxsoiOne
-                .getInstructorsSortedByName()[0].getInstructorName());
+                .getInstructorsSortedByName()[0].getName());
         assertEquals("test_addSetOfInstructors: assertEquals", "j", dxsoiOne
-                .getInstructorsSortedByName()[9].getInstructorName());
+                .getInstructorsSortedByName()[9].getName());
         assertEquals("test_addSetOfInstructors: assertEquals", 5, dxsoiOne
-                .getInstructorsSortedByName()[2].getInstructorAvailability()
+                .getInstructorsSortedByName()[2].getAvailability()
                 .getPeriodAvailability(2, 4));
         assertEquals("test_addSetOfInstructors: assertEquals", 1, dxsoiOne
-                .getInstructorsSortedByName()[9].getInstructorAvailability()
+                .getInstructorsSortedByName()[9].getAvailability()
                 .getPeriodAvailability(2, 4));
     }
 }

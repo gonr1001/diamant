@@ -19,6 +19,7 @@
  */
 package dInternal.dData.dInstructors;
 
+import dInternal.dData.AvailableResource;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 
@@ -31,7 +32,7 @@ import dInternal.dData.DxResource;
  * <p>
  * 
  */
-public class DxInstructor extends DxResource {
+public class DxInstructor extends DxResource implements AvailableResource {
     private static long lKey = 1;
 
     private DxAvailability _availability;
@@ -52,52 +53,36 @@ public class DxInstructor extends DxResource {
     }
 
     /**
+     * 
+     * @return DxAvailability Availability of the instructor
+     */
+    public DxAvailability getAvailability() {
+        return _availability;
+    }
+
+    /**
      * Modify the availability of the instructor
      * 
      * @param aNewAvailability
      *            Availability that has to be assigned to the instructor
      */
-    public void setInstructorAvailability(DxAvailability aNewAvailability) {
+    public void setAvailability(DxAvailability aNewAvailability) {
         _availability = aNewAvailability;
     }
-
-    /**
-     * 
-     * @return DxAvailability Availability of the instructor
-     */
-    public DxAvailability getInstructorAvailability() {
-        return _availability;
-    }
-
-    /**
-     * 
-     * @return String Name of the instructor
-     */
-    public String getInstructorName() {
-        return this.getResourceName();
-    }
-
-    /**
-     * 
-     * @return int Unique ID of the instructor
-     */
-    public long getInstructorKey() {
-        return this.getResourceKey();
-    }
-
-    public void setInstructorAvailability(int[][] nAvailbilities) {
+    
+    public void setAvailability(int[][] nAvailbilities) {
         _availability.setAvailability(nAvailbilities);
     }
 
     public boolean isEqual(DxResource dxrOther) {
         DxInstructor dxiOther = (DxInstructor) dxrOther;
-        if (!this.getResourceName()
-                .equalsIgnoreCase(dxiOther.getResourceName())) {
+        if (!this.getName()
+                .equalsIgnoreCase(dxiOther.getName())) {
             return false;
         }
 
-        if (!this.getInstructorAvailability().isEqual(
-                dxiOther.getInstructorAvailability())) {
+        if (!this.getAvailability().isEqual(
+                dxiOther.getAvailability())) {
             return false;
         }
 

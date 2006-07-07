@@ -33,7 +33,8 @@ import java.util.Comparator;
  */
 public class DxResource {
 
-    // -1 if not attributed, 0 is never attributed by a set
+    // -1 if not attributed, 0 if used as a search resource. All other values
+    // are valid.
     private long _lKey;
 
     private String _sName;
@@ -66,36 +67,41 @@ public class DxResource {
      * @return Key of the resource, -1 if not attributed. 0 value is not
      *         attributed by a set.
      */
-    public long getResourceKey() {
+    public final long getKey() {
         return _lKey;
     }
 
     /**
      * @return Name of the resource, null if not attributed.
      */
-    public String getResourceName() {
+    public final String getName() {
         return _sName;
-    }
-    
-    public boolean isEqual(DxResource dxrOtherRes){
-    	if(this._sName.compareTo(dxrOtherRes._sName)==0)
-    	{
-    		return true;
-    	}
-    	return false;
     }
 
     /**
-     * Sets a resource key. This method should only be used by a
-     * DxSetOfResource when a resource is added to the set. This justify
-     * package visibility. Full acces to this method means that everyone could
-     * modify key at will which could cause a scrambling key ordered vector in
-     * DxSetOfResource.
+     * isEqual method is called by DxSetOfResource to determine if a resource is
+     * equal to another. If Dxresource is subclassed, this method should be
+     * overriden to specialise isEqual and verify added properties.
+     * 
+     * @param dxrOtherRes
+     * @return
+     */
+    public boolean isEqual(DxResource dxrOtherRes) {
+        if (this._sName.compareTo(dxrOtherRes._sName) == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * This method can be used to change the key of a resource. Care should be
+     * taken when using this method as it could create a double of a key. If a
+     * key is duplicated, DxSetOfResource behavior will be altered.
      * 
      * @param lKey
      *            New key of the resource
      */
-    void setResourceKey(long lKey) {
+    protected final void setKey(long lKey) {
         _lKey = lKey;
     }
 
@@ -123,9 +129,13 @@ public class DxResource {
             return 0;
         }
     };
-    
-    public String toString()
-    {
-    	return _sName;
+
+    /**
+     * Function that will be used by JComboBox to determine what has to be
+     * displayed in the list. If something else that the name has to be
+     * displayed, it should be overidden in subclass.
+     */
+    public String toString() {
+        return _sName;
     }
 }

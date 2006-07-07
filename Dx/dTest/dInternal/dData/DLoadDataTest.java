@@ -146,7 +146,7 @@ public class DLoadDataTest extends TestCase {
         assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
                 "THÉRIAULT, MICHÈLE", setIns
                         .getInstructor("THÉRIAULT, MICHÈLE")
-                        .getInstructorName());
+                        .getName());
     }
 
     /**
@@ -275,7 +275,7 @@ public class DLoadDataTest extends TestCase {
         assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
                 "THÉRIAULT, MICHÈLE", setIns
                         .getInstructor("THÉRIAULT, MICHÈLE")
-                        .getInstructorName());
+                        .getName());
     }
 
     /**

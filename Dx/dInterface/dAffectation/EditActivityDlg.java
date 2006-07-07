@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.74 $  $Date: 2006-07-03 20:03:03 $
+ * Title: EditActivityDlg $Revision: 1.75 $  $Date: 2006-07-07 21:27:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.74 $
+ * @version $Revision: 1.75 $
  * @author  $Author: caln1901 $
  * @since JDK1.3
  *
@@ -753,13 +753,13 @@ public class EditActivityDlg extends JDialog implements ActionListener,
             DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
             DxRoom dxr = dxsor.getRoom(event.getRoomKey());
             if (dxr != null)
-                list[0].add(dxr.getRoomName());
+                list[0].add(dxr.getName());
             else
                 list[0].add(DConst.NO_ROOM_INTERNAL);
 
             Iterator itDxSor = dxsor.iterator();
             while (itDxSor.hasNext()) {
-                list[1].add(((DxRoom) itDxSor.next()).getRoomName());
+                list[1].add(((DxRoom) itDxSor.next()).getName());
             }
             list[1].add(DConst.NO_ROOM_INTERNAL);
 
@@ -788,7 +788,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
             {
                 return "000";
             }
-            return String.valueOf(dxr.getRoomCapacity());
+            return String.valueOf(dxr.getCapacity());
         }
         
         //Old Rooms

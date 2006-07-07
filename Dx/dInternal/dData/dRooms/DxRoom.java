@@ -22,6 +22,7 @@ package dInternal.dData.dRooms;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.dData.AvailableResource;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 
@@ -34,8 +35,9 @@ import dInternal.dData.DxResource;
  * <p>
  * 
  */
-public class DxRoom extends DxResource {
-    private static long _lUniqueKey=1;
+public class DxRoom extends DxResource implements AvailableResource {
+    private static long _lUniqueKey = 1;
+
     private int _nCapacity;
 
     // Next members are not required but are provided in legacy files
@@ -50,7 +52,7 @@ public class DxRoom extends DxResource {
 
     public DxRoom(String sRoomName, int nCapacity, int nFunction,
             Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {
-        super(_lUniqueKey++,sRoomName);
+        super(_lUniqueKey++, sRoomName);
         _nCapacity = nCapacity;
         _nFunction = nFunction;
         _viCharacteristics = viChar;
@@ -58,42 +60,65 @@ public class DxRoom extends DxResource {
         _dxaAva = dxaAva;
     }
 
-    public String getRoomName() {
-        return this.getResourceName();
-    }
-
-    public long getRoomKey() {
-        return this.getResourceKey();
-    }
-
-    public int getRoomCapacity() {
+    public int getCapacity() {
         return _nCapacity;
     }
 
-    public int getRoomFunction() {
+    public int getFunction() {
         return _nFunction;
     }
 
-    public Vector<Integer> getRoomCharacteristics() {
+    public Vector<Integer> getCharacteristics() {
         return _viCharacteristics;
     }
 
-    public String getRoomComment() {
+    public String getComment() {
         return _sComment;
     }
 
-    public DxAvailability getRoomAvailability() {
+    public DxAvailability getAvailability() {
         return _dxaAva;
     }
 
-    public void setRoomAvailability(DxAvailability dxaNew) {
+    public void setAvailability(DxAvailability dxaNew) {
         _dxaAva = dxaNew;
+    }
+
+    public boolean isEqual(DxResource dxrOther) {
+        DxRoom dxrOtherRoom = (DxRoom) dxrOther;
+
+        if (!this.getName().equalsIgnoreCase(dxrOtherRoom.getName())) {
+            return false;
+        }
+
+        if (this._nCapacity != dxrOtherRoom._nCapacity) {
+            return false;
+        }
+
+        if (this._nFunction != dxrOtherRoom._nFunction) {
+            return false;
+        }
+
+        if (!this.getCharString()
+                .equalsIgnoreCase(dxrOtherRoom.getCharString())) {
+            return false;
+        }
+
+        if (!this._sComment.equalsIgnoreCase(dxrOtherRoom._sComment)) {
+            return false;
+        }
+
+        if (!this._dxaAva.isEqual(dxrOtherRoom._dxaAva)) {
+            return false;
+        }
+
+        return true;
     }
 
     public String toWrite(String sSiteName, String sCatName) {
         String sReturn = new String();
 
-        sReturn = this.getRoomName()
+        sReturn = this.getName()
                 + DConst.ROOM_FIELD_SEPARATOR_TOKEN
                 + _nCapacity
                 + DConst.ROOM_FIELD_SEPARATOR_TOKEN
@@ -116,7 +141,7 @@ public class DxRoom extends DxResource {
 
     private String getCharString() {
         StringBuffer sbChars = new StringBuffer();
-        
+
         for (int i = 0; i < _viCharacteristics.size(); i++) {
             sbChars.append(_viCharacteristics.get(i).intValue());
             if (i < (_viCharacteristics.size() - 1)) {
@@ -124,39 +149,5 @@ public class DxRoom extends DxResource {
             }
         }
         return sbChars.toString();
-    }
-
-    public boolean isEqual(DxResource dxrOther) {
-    	DxRoom dxrOtherRoom = (DxRoom)dxrOther;
-    	
-        if (!this.getRoomName().equalsIgnoreCase(
-                dxrOtherRoom.getRoomName())) {
-            return false;
-        }
-        
-        if (this._nCapacity!=dxrOtherRoom._nCapacity) {
-            return false;
-        }
-        
-        if (this._nFunction!=dxrOtherRoom._nFunction) {
-            return false;
-        }
-        
-        if (!this.getCharString().equalsIgnoreCase(
-                dxrOtherRoom.getCharString())) {
-            return false;
-        }
-        
-        if (!this._sComment.equalsIgnoreCase(
-                dxrOtherRoom._sComment)) {
-            return false;
-        }
-        
-        if(!this._dxaAva.isEqual(dxrOtherRoom._dxaAva))
-        {
-            return false;
-        }
-        
-        return true;
     }
 }

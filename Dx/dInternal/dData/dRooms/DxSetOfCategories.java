@@ -27,7 +27,7 @@ import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
 /**
- * Ruben Gonzalez-Rubio
+ * Nicolas Calderon
  * 
  * Description: DxSetofCatagories is a class used to:
  * <p>
@@ -36,6 +36,33 @@ import dInternal.dData.DxSetOfResources;
  * 
  */
 public class DxSetOfCategories extends DxSetOfResources {
+    
+    public void addCategory(String sNewCatName) {
+        if (this.getResourceKey(sNewCatName) == -1) {
+            this.addResource(new DxCategory(sNewCatName));
+        }
+    }
+
+    public void addRoom(long lCatKey, DxRoom dxrRoom) {
+        try {
+            ((DxCategory) this.getResource(lCatKey)).addRoom(dxrRoom);
+        } catch (Exception e) {
+            // If category was not found a null pointer exception will occur
+        }
+    }
+
+    public void addRoom(String sCatName, DxRoom dxrRoom) {
+        try {
+            ((DxCategory) this.getResource(sCatName)).addRoom(dxrRoom);
+        } catch (Exception e) {
+            // If category was not found a null pointer exception will occur
+        }
+    }
+    
+    public DxResource findEquivalent(DxResource dxrSearch) {
+        return this.getResource(dxrSearch.getName());
+    }
+    
     public DxCategory getCat(long lCatKey) {
         try {
             return ((DxCategory) this.getResource(lCatKey));
@@ -126,28 +153,6 @@ public class DxSetOfCategories extends DxSetOfResources {
         }
     }
 
-    public void addCategory(String sNewCatName) {
-        if (this.getResourceKey(sNewCatName) == -1) {
-            this.addResource(new DxCategory(sNewCatName));
-        }
-    }
-
-    public void addRoom(long lCatKey, DxRoom dxrRoom) {
-        try {
-            ((DxCategory) this.getResource(lCatKey)).addRoom(dxrRoom);
-        } catch (Exception e) {
-            // If category was not found a null pointer exception will occur
-        }
-    }
-
-    public void addRoom(String sCatName, DxRoom dxrRoom) {
-        try {
-            ((DxCategory) this.getResource(sCatName)).addRoom(dxrRoom);
-        } catch (Exception e) {
-            // If category was not found a null pointer exception will occur
-        }
-    }
-
     public DxAvailability getRoomAvailability(long lCatKey, long lRoomKey) {
         try {
             return ((DxCategory) this.getResource(lCatKey))
@@ -199,6 +204,10 @@ public class DxSetOfCategories extends DxSetOfResources {
     public DxCategory[] getCatsSortedByName(){
         return this.getNameSortedVector().toArray(new DxCategory[this.size()]);
     }
+    
+    public void merge(DxResource dxrModify, DxResource dxrNew) {
+        // TODO Auto-generated method stub
+    }
 
     public String toWrite(String sSiteName) {
         StringBuffer sbReturn = new StringBuffer();
@@ -213,30 +222,4 @@ public class DxSetOfCategories extends DxSetOfResources {
         }
         return sbReturn.toString();
     }
-
-//    public boolean isEquals(DxSetOfCategories dxsocOtherCats) {
-//        if (!super.isEqual(dxsocOtherCats)) {
-//            return false;
-//        }
-//
-//        Iterator itRes = this.iterator();
-//        DxCategory dxcThis;
-//        DxCategory dxcOther;
-//        while (itRes.hasNext()) {
-//            dxcThis = (DxCategory) itRes.next();
-//            dxcOther = dxsocOtherCats.getCat(dxcThis.getCategoryName());
-//            if (!dxcThis.isEquals(dxcOther))
-//                return false;
-//        }
-//        return true;
-//    }
-
-	public DxResource findEquivalent(DxResource dxrSearch) {
-		return this.getResource(dxrSearch.getResourceName());
-	}
-
-	public void merge(DxResource dxrModify, DxResource dxrNew) {
-		// TODO Auto-generated method stub
-		
-	}
 }

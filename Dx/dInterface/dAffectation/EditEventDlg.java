@@ -855,14 +855,14 @@ public class EditEventDlg extends JDialog implements ActionListener,
             DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
             DxRoom dxr = dxsor.getRoom(event.getRoomKey());
             if (dxr != null)
-                list[0].add(dxr.getRoomName());
+                list[0].add(dxr.getName());
             else
                 list[0].add(DConst.NO_ROOM_INTERNAL);
 
             if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
                 Iterator itDxSor = dxsor.iterator();
                 while (itDxSor.hasNext()) {
-                    list[1].add(((DxRoom) itDxSor.next()).getRoomName());
+                    list[1].add(((DxRoom) itDxSor.next()).getName());
                 }
             } else {
                 SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
@@ -874,8 +874,8 @@ public class EditEventDlg extends JDialog implements ActionListener,
                     dxr = (DxRoom) itDxSor.next();
                     // With new sites, functions are irrelevant. Room key and
                     // SetOfRoomsFunctions key wont match
-                    if (dxr.getRoomFunction() == functionKey) {
-                        list[1].add(dxr.getRoomName());
+                    if (dxr.getFunction() == functionKey) {
+                        list[1].add(dxr.getName());
                     }
                 }
             }
@@ -918,7 +918,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
             if (dxr == null) {
                 return "000";
             }
-            return "    " + String.valueOf(dxr.getRoomCapacity()) + " "
+            return "    " + String.valueOf(dxr.getCapacity()) + " "
                     + DConst.ROOM_CAPACITY_DESC;
         }
 

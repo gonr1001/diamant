@@ -65,7 +65,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
 
         // In version 1.5, there is only one site and one category
         dxsosBuild.addSite(DConst.ROOM_STANDARD_SITE);
-        dxsosBuild.addCat(DConst.ROOM_STANDARD_SITE, DConst.ROOM_STANDARD_CAT);
+        dxsosBuild.addCategory(DConst.ROOM_STANDARD_SITE, DConst.ROOM_STANDARD_CAT);
 
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()

@@ -33,12 +33,16 @@ import java.util.Vector;
  * 
  */
 public abstract class DxSetOfResources implements Iterable {
+
     private Vector<DxResource> _vResourceSortedByKey;
 
     private Vector<DxResource> _vResourceSortedByName;
 
     private boolean _bSorted;
 
+    /**
+     * Default constructor. Initialise vectors.
+     */
     public DxSetOfResources() {
         _vResourceSortedByKey = new Vector<DxResource>();
         _vResourceSortedByName = new Vector<DxResource>();
@@ -56,7 +60,7 @@ public abstract class DxSetOfResources implements Iterable {
      *            Resource that has to be added to the set
      */
     protected final void addResource(DxResource dxrRes) {
-        if (getResource(dxrRes.getResourceKey()) == null) {
+        if (getResource(dxrRes.getKey()) == null) {
             _vResourceSortedByKey.add(dxrRes);
             _vResourceSortedByName.add(dxrRes);
             _bSorted = false;
@@ -64,7 +68,9 @@ public abstract class DxSetOfResources implements Iterable {
     }
 
     /**
-     * Adds all the ressources in the other set of ressources
+     * Merge a new set of ressources into the current one. Function is protected
+     * to allow type control from child (avoid adding a SetOfInstructor to a
+     * SetOfCategory).
      * 
      * @param dxrRes
      *            Resource that has to be added to the set
@@ -83,40 +89,30 @@ public abstract class DxSetOfResources implements Iterable {
                 merge(dxrFound, dxrNew);
             }
         }
-        /*
-         * for (int i = 0; i < dxsorNew.size(); i++) {
-         * this.addResource(dxsorNew._vResourceSortedByKey.get(i)); }
-         */
         _bSorted = false;
-
     }
 
     /**
-     * Removes an instructor from the set
+     * This method is used for tests only, to make sure add and remove will
+     * corretly manage both vectors
      * 
-     * @param lKey
-     *            Key of the instructor to be removed
+     * @return true if name ordered vector and key ordered vector are the same
+     *         size
      */
-    public final void removeResource(long lKey) {
-        int nIndexKey = getSortedKeyIndex(lKey);
-        int nIndexName = getSortedNameIndex(lKey);
-        if (nIndexKey != -1 && nIndexName != -1) {
-            _vResourceSortedByKey.remove(nIndexKey);
-            _vResourceSortedByName.remove(nIndexName);
-        } else {
-            System.out
-                    .println("dInternal.dData.DxSetOfResources: A ressource was found in a vector but not the other");
-        }
+    public final boolean areVectorsSync() {
+        return _vResourceSortedByKey.size() == _vResourceSortedByName.size();
     }
 
     /**
-     * Return the number of ressource currently in the set
+     * This function must be implemented in subclasses so addSetOfRessources
+     * knows what Ressource is already in the set
      * 
-     * @return The number of instructor currently in the set
+     * @param dxrSearch
+     *            Resource that should be searched in the current set. If an
+     *            equivalent is found, it must be returned. If none is found,
+     *            null will be returned.
      */
-    public final int size() {
-        return _vResourceSortedByKey.size();
-    }
+    protected abstract DxResource findEquivalent(DxResource dxrSearch);
 
     public final boolean isEqual(DxSetOfResources dxsorOther) {
         this.sort();
@@ -139,17 +135,6 @@ public abstract class DxSetOfResources implements Iterable {
         }
 
         return true;
-    }
-
-    /**
-     * This method is used for tests only, to make sure add and remove will
-     * corretly manage both vectors
-     * 
-     * @return true if name ordered vector and key ordered vector are the same
-     *         size
-     */
-    public final boolean areVectorsSync() {
-        return _vResourceSortedByKey.size() == _vResourceSortedByName.size();
     }
 
     /**
@@ -194,10 +179,10 @@ public abstract class DxSetOfResources implements Iterable {
      * @return String The name of the instructor, null if the index was invalid
      */
     public final String getResourceName(long lKey) {
-
+        
         DxResource dxrTemp = getResource(lKey);
         if (dxrTemp != null) {
-            return dxrTemp.getResourceName();
+            return dxrTemp.getName();
         }
         return null;
     }
@@ -212,10 +197,9 @@ public abstract class DxSetOfResources implements Iterable {
      * @return The key of ressour sName, -1 if instructor not found
      */
     public final long getResourceKey(String sName) {
-        sort();
         DxResource dxrTemp = getResource(sName);
         if (dxrTemp != null) {
-            return dxrTemp.getResourceKey();
+            return dxrTemp.getKey();
         }
         return -1;
     }
@@ -280,17 +264,73 @@ public abstract class DxSetOfResources implements Iterable {
      * @return Index of the resource if found, -1 if not
      */
     private int getSortedNameIndex(long lKey) {
+        sort();
         Iterator it = _vResourceSortedByName.iterator();
 
         for (int i = 0; it.hasNext(); i++) {
-            if (((DxResource) it.next()).getResourceKey() == lKey)
+            if (((DxResource) it.next()).getKey() == lKey)
                 return i;
         }
         return -1;
     }
 
     /**
-     * Sorts the name ordered vector
+     * Return an iterator that will iterate on all resources. It iterates
+     * thhrough resource in ascending key order.
+     */
+    public Iterator iterator() {
+        return _vResourceSortedByKey.iterator();
+    }
+    
+    /**
+     * This function must be implemented in subclasses. When an equivalent
+     * resource is found during addSetOfResources, this function will be called
+     * with current resource and found resource. Client class must merge
+     * pertinent informations from dxrNew in dxrModify.
+     * 
+     * @param dxrModify
+     *            Resource that was in the original set (the one on which
+     *            addSetOfResource was called). This resource is currently in
+     *            the set and every change to this object will be reflected in
+     *            the set. If this resource is not modified, it will remain
+     *            intact, losing any data that should be added from dxrNew.
+     * @param dxrNew
+     *            Resource found that has an equivalent in the original set of
+     *            resource. If this resource is modified, it will be in the new
+     *            set of resource, but hose changes wont appear in the old one.
+     * 
+     */
+    protected abstract void merge(DxResource dxrModify, DxResource dxrNew);
+
+    /**
+     * Removes an instructor from the set
+     * 
+     * @param lKey
+     *            Key of the instructor to be removed
+     */
+    public final void removeResource(long lKey) {
+        int nIndexKey = getSortedKeyIndex(lKey);
+        int nIndexName = getSortedNameIndex(lKey);
+        if (nIndexKey != -1 && nIndexName != -1) {
+            _vResourceSortedByKey.remove(nIndexKey);
+            _vResourceSortedByName.remove(nIndexName);
+        } else {
+            System.out
+                    .println("dInternal.dData.DxSetOfResources: A ressource was found in a vector but not the other");
+        }
+    }
+
+    /**
+     * Return the number of ressource currently in the set
+     * 
+     * @return The number of instructor currently in the set
+     */
+    public final int size() {
+        return _vResourceSortedByKey.size();
+    }
+
+    /**
+     * Sort vectors
      */
     private void sort() {
         if (!_bSorted) {
@@ -301,12 +341,4 @@ public abstract class DxSetOfResources implements Iterable {
         }
         _bSorted = true;
     }
-
-    public Iterator iterator() {
-        return _vResourceSortedByKey.iterator();
-    }
-
-    protected abstract DxResource findEquivalent(DxResource dxrSearch);
-
-    protected abstract void merge(DxResource dxrModify, DxResource dxrNew);
 }

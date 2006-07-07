@@ -135,7 +135,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
                 int[][] matrix = null;
                 if (DConst.newRooms) {
                     matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
-                            .getRoomAvailability().getMatrixAvailability();
+                            .getAvailability().getMatrixAvailability();
                 } else {
                     matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
                     .getAttach()).getMatrixAvailability();

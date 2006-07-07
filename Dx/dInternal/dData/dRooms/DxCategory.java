@@ -40,14 +40,11 @@ public class DxCategory extends DxResource {
 		super(_lUniqueKey++, sName);
 		_dxsorRooms = new DxSetOfRooms();
 	}
+    
+    public void addRoom(DxRoom dxrRoom) {
+        _dxsorRooms.addRoom(dxrRoom);
 
-	public String getCategoryName() {
-		return this.getResourceName();
-	}
-
-	public long getCategoryKey() {
-		return this.getResourceKey();
-	}
+    }
 
 	public DxRoom getRoom(long lRoomKey) {
 		return _dxsorRooms.getRoom(lRoomKey);
@@ -69,11 +66,6 @@ public class DxCategory extends DxResource {
 		return _dxsorRooms.getRoomCapacity(sRoomName);
 	}
 
-	public void addRoom(DxRoom dxrRoom) {
-		_dxsorRooms.addRoom(dxrRoom);
-
-	}
-
 	public int getRoomCount() {
 		return _dxsorRooms.getRoomCount();
 	}
@@ -93,22 +85,22 @@ public class DxCategory extends DxResource {
 	public DxSetOfRooms getSetOfRooms() {
 		return _dxsorRooms;
 	}
+    
+    public boolean isEqual(DxResource dxrOther) {
+        DxCategory dxcOtherCat = (DxCategory) dxrOther;
+        if (!this.getName().equalsIgnoreCase(
+                dxcOtherCat.getName())) {
+            return false;
+        }
+
+        if (!this._dxsorRooms.isEqual(dxcOtherCat._dxsorRooms)) {
+            return false;
+        }
+
+        return true;
+    }
 
 	public String toWrite(String sSiteName) {
-		return _dxsorRooms.toWrite(sSiteName, this.getCategoryName());
-	}
-
-	public boolean isEqual(DxResource dxrOther) {
-		DxCategory dxcOtherCat = (DxCategory) dxrOther;
-		if (!this.getCategoryName().equalsIgnoreCase(
-				dxcOtherCat.getCategoryName())) {
-			return false;
-		}
-
-		if (!this._dxsorRooms.isEqual(dxcOtherCat._dxsorRooms)) {
-			return false;
-		}
-
-		return true;
+		return _dxsorRooms.toWrite(sSiteName, this.getName());
 	}
 }

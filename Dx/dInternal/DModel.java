@@ -1004,11 +1004,11 @@ public class DModel extends Observable {
 		Iterator itInst = soiRes.iterator();
 		while (itInst.hasNext()) {
 			dxiTemp = (DxInstructor) itInst.next();
-			matrix = dxiTemp.getInstructorAvailability()
+			matrix = dxiTemp.getAvailability()
 					.getMatrixAvailability();
 			matrix = DXToolsMethods
 					.resizeAvailability(matrix, getTTStructure());
-			dxiTemp.setInstructorAvailability(new DxAvailability(matrix));
+			dxiTemp.setAvailability(new DxAvailability(matrix));
 
 		}
 	}
@@ -1042,11 +1042,11 @@ public class DModel extends Observable {
 		Iterator itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();
-			int[][] nMatrix = dxrTemp.getRoomAvailability()
+			int[][] nMatrix = dxrTemp.getAvailability()
 					.getMatrixAvailability();
 			nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
 					getTTStructure());
-			dxrTemp.setRoomAvailability(new DxAvailability(nMatrix));
+			dxrTemp.setAvailability(new DxAvailability(nMatrix));
 		}
 	} // resizeSiteAvailability
 

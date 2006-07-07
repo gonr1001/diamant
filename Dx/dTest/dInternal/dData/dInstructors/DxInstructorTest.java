@@ -54,9 +54,9 @@ public class DxInstructorTest extends TestCase {
 		aTemp.addDayAvailability("1 5 1 5 1 5 1 5 1 5 1 5");
 		DxInstructor iTemp = new DxInstructor("Smith, John", aTemp);
 		assertEquals("test_DxInstructor: assertEquals", iTemp
-				.getInstructorName(), "Smith, John");
+				.getName(), "Smith, John");
 		assertEquals("test1_DxInstructor: assertEquals", iTemp
-				.getInstructorAvailability().getPeriodAvailability(0, 0), 1);
+				.getAvailability().getPeriodAvailability(0, 0), 1);
 	}
 
 	public void test_setInstructors() {
@@ -67,9 +67,9 @@ public class DxInstructorTest extends TestCase {
 		aTemp=new DxAvailability();
 		aTemp.addDayAvailability("5 5 5 5 5 5 5 5");
 		assertEquals("test1_setInstructors: assertEquals", iTemp
-				.getInstructorAvailability().getPeriodAvailability(0, 0), 1);
-		iTemp.setInstructorAvailability(aTemp);
+				.getAvailability().getPeriodAvailability(0, 0), 1);
+		iTemp.setAvailability(aTemp);
 		assertEquals("test2_setInstructors: assertEquals", iTemp
-				.getInstructorAvailability().getPeriodAvailability(0, 0), 5);
+				.getAvailability().getPeriodAvailability(0, 0), 5);
 	}
 }

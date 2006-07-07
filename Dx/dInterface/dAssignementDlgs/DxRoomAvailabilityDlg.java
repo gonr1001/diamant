@@ -143,7 +143,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         _cbRooms.addItemListener(this);
         _dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
 
-        _dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
+        _dxaCurrentAvailbility = _dxrCurrentRoom.getAvailability()
                 .getMatrixAvailability();
 
         // TODO: Create StringRes and const for labels
@@ -175,7 +175,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         } else if (command.equals(DConst.BUT_APPLY)) { // apply
 
             _applyPanel.setFirstDisable();
-            _dxrCurrentRoom.setRoomAvailability(new DxAvailability(
+            _dxrCurrentRoom.setAvailability(new DxAvailability(
                     _dxaCurrentAvailbility));
             // _dmodel.changeInDModelByInstructorsDlg(this);
             // if a button of the grid has been pressed
@@ -235,7 +235,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             }
 
             getContentPane().remove(_centerPanel);
-            _dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
+            _dxaCurrentAvailbility = _dxrCurrentRoom.getAvailability()
                     .getMatrixAvailability();
             _centerPanel = makeGridPanel();// _currentInstr);
             getContentPane().add(_centerPanel, BorderLayout.CENTER);
@@ -262,7 +262,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             // first line : name of days
             gridPanel.add(new JLabel(_days[i], SwingConstants.CENTER));
 
-        _dxaCurrentAvailbility = _dxrCurrentRoom.getRoomAvailability()
+        _dxaCurrentAvailbility = _dxrCurrentRoom.getAvailability()
                 .getMatrixAvailability();
 
         for (int j = 0; j < _nbOfPeriods; j++) {

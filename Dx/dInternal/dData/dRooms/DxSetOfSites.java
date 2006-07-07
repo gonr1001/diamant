@@ -13,9 +13,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * 
- * 
  */
 package dInternal.dData.dRooms;
 
@@ -28,7 +25,7 @@ import dInternal.dData.DxSetOfResources;
 
 
 /**
- * Ruben Gonzalez-Rubio
+ * Nicolas Calderon
  * 
  * Description: DxSetOfSites is a class used to:
  * <p>
@@ -59,7 +56,7 @@ public class DxSetOfSites extends DxSetOfResources {
      * @param sCatName
      *            Name of the new category to be added
      */
-    public void addCat(long lSiteKey, String sCatName) {
+    public void addCategory(long lSiteKey, String sCatName) {
         try {
             ((DxSite) this.getResource(lSiteKey)).addCategory(sCatName);
         } catch (Exception e) {
@@ -78,7 +75,7 @@ public class DxSetOfSites extends DxSetOfResources {
      * @param sCatName
      *            Name of the new category to be added
      */
-    public void addCat(String sSiteName, String sCatName) {
+    public void addCategory(String sSiteName, String sCatName) {
         try {
             ((DxSite) this.getResource(sSiteName)).addCategory(sCatName);
         } catch (Exception e) {
@@ -184,7 +181,7 @@ public class DxSetOfSites extends DxSetOfResources {
     public long getCatKey(long lSiteKey, String sCatName) {
         try {
             return ((DxSite) this.getResource(lSiteKey))
-                    .getCatKeyByName(sCatName);
+                    .getCatKey(sCatName);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
             return -1;
@@ -239,7 +236,7 @@ public class DxSetOfSites extends DxSetOfResources {
 
     public long getRoomKey(long lSiteKey, long lCatKey, String sSiteName) {
         try {
-            return ((DxSite) this.getResource(lSiteKey)).getRoomKeyByName(
+            return ((DxSite) this.getResource(lSiteKey)).getRoomKey(
                     lCatKey, sSiteName);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
@@ -311,7 +308,7 @@ public class DxSetOfSites extends DxSetOfResources {
         try {
             return ((DxSite) this.getResource(lSiteKey)).getSetOfCat();
         } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
+            // If key was invalid, Null pointer Exception will be thrown
             return null;
         }
     }
@@ -320,7 +317,7 @@ public class DxSetOfSites extends DxSetOfResources {
         try {
             return ((DxSite) this.getResource(sSiteName)).getSetOfCat();
         } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
+            // If name was invalid, Null pointer Exception will be thrown
             return null;
         }
     }
@@ -329,7 +326,7 @@ public class DxSetOfSites extends DxSetOfResources {
         try {
             return ((DxSite) this.getResource(lSiteKey)).getSetOfRooms(lCatKey);
         } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
+            // If keys were invalid, Null pointer Exception will be thrown
             return null;
         }
     }
@@ -339,7 +336,7 @@ public class DxSetOfSites extends DxSetOfResources {
             return ((DxSite) this.getResource(sSiteName))
                     .getSetOfRooms(sCatName);
         } catch (Exception e) {
-            // If index was invalid, Null pointer Exception will be thrown
+            // If names was invalid, Null pointer Exception will be thrown
             return null;
         }
     }
@@ -350,19 +347,6 @@ public class DxSetOfSites extends DxSetOfResources {
     
     public DxSite[] getSitesSortedByName(){
         return this.getNameSortedVector().toArray(new DxSite[this.size()]);
-    }
-
-    public String toWrite() {
-        StringBuffer sbReturn = new StringBuffer();
-        Iterator itSites = this.iterator();
-
-        while (itSites.hasNext()) {
-            sbReturn.append(((DxSite) itSites.next()).toWrite());
-            if (itSites.hasNext()) {
-                sbReturn.append(DConst.CR_LF);
-            }
-        }
-        return sbReturn.toString();
     }
 
 //    public boolean isEquals(DxSetOfSites dxsosSetOfSites) {
@@ -382,22 +366,30 @@ public class DxSetOfSites extends DxSetOfResources {
 //        return true;
 //    }
 
-    public void resizeSiteAvailability() {
-        // TODO Auto-generated method stub
-
-    }
-
     public void alwaysAvailable() {
         System.out
                 .println("DxSetOfIntructors.alwaysAvailable must be implemented");
     }
 
 	public DxResource findEquivalent(DxResource dxrSearch) {
-		return this.getSite(dxrSearch.getResourceName());
+		return this.getSite(dxrSearch.getName());
 	}
 
 	public void merge(DxResource dxrModify, DxResource dxrNew) {
 		// TODO Auto-generated method stub
 		
 	}
+    
+    public String toWrite() {
+        StringBuffer sbReturn = new StringBuffer();
+        Iterator itSites = this.iterator();
+
+        while (itSites.hasNext()) {
+            sbReturn.append(((DxSite) itSites.next()).toWrite());
+            if (itSites.hasNext()) {
+                sbReturn.append(DConst.CR_LF);
+            }
+        }
+        return sbReturn.toString();
+    }
 }
