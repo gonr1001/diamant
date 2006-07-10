@@ -22,6 +22,7 @@ package dInterface;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 
+import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 
 /**
@@ -77,5 +78,17 @@ public class DxTTCycleDoc extends DxDocument{
 	}
 	public String getTTtype(){
 		return _type;
+	}
+
+	@Override
+	public void changeInModel() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public DModel getCurrentDModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

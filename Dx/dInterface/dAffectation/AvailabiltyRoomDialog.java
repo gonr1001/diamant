@@ -36,6 +36,7 @@ import javax.swing.SwingConstants;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
@@ -43,7 +44,7 @@ import dInternal.DSetOfResources;
 import dInternal.dData.AvailabilityAttach;
 
 public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
-        ItemListener {
+        ItemListener, DlgIdentification {
 
     private int _nbOfPeriods;
 
@@ -84,8 +85,16 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
      */
     public AvailabiltyRoomDialog(DApplication dApplic, DSetOfResources setOfResources, String str) {
         super(dApplic.getJFrame(), str, false);
-        if (dApplic.getCurrentDoc() == null)
-            return;
+             
+		if (DConst.newDoc) {
+			if (dApplic.getCurrentDxDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		} else {
+			if (dApplic.getCurrentDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDModel();
+		}
         _dmodel = dApplic.getCurrentDModel();
         _setOfResources=setOfResources;
         _time = _dmodel.getTTStructure().getCurrentCycle()
@@ -149,7 +158,12 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 
             _applyPanel.setFirstDisable();
             _currentInstr.setAvailability(_currentAvailbility);
-            _dmodel.changeInDModelByInstructorsDlg(this);
+			if (DConst.newDoc) {
+				_dmodel.changeInDModel(this.idDlgToString());
+			} else {
+				_dmodel.changeInDModelByInstructorsDlg(this);
+			}
+            //_dmodel.changeInDModelByInstructorsDlg(this);
             // if a button of the grid has been pressed
         } else if (_posVect.indexOf(event.getSource()) > -1) {
             int index = _posVect.indexOf(event.getSource());
@@ -246,5 +260,9 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
         }
         return Color.GRAY;
     }
+
+	public String idDlgToString() {
+		return "roomDlg";
+	}
 
 } /* end InstructorAvailabilityDlg */

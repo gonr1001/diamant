@@ -161,7 +161,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		} else if (command.equals(DConst.BUT_APPLY)) { // apply
 			_applyPanel.setFirstDisable();
 			_currentInst = ((DxInstructor) _chooser.getSelectedItem());
-			_currentInst.setInstructorAvailability(_currentAvailbility);
+			_currentInst.setAvailability(_currentAvailbility);
 			if (DConst.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
 			} else {

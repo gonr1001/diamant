@@ -840,9 +840,9 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}
 
-	public void changeInDModelByRoomsDlg(Object obj) {
-		changeInDModel(obj);
-	}
+//	public void changeInDModelByRoomsDlg(Object obj) {
+//		changeInDModel(obj);
+//	}
 
 	public void changeInDModelByStudentsDlg(Object obj) {
 		this.setChanged();

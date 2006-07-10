@@ -712,11 +712,18 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAvailability() {
 		if (DConst.newRooms) {
+			if (DConst.newDoc) {
+				new DxRoomAvailabilityDlg(this, this.getCurrentDxDoc()
+						.getCurrentDModel().getDxSetOfSites());
+			} else {
+				new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
+						.getDxSetOfSites());
+			}
 			// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 			// .getDxSetOfRooms(), DConst.ROOMASSIGN);
 			// !!!NIC!!! How do we verify if it's multisite?
-			new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
-					.getDxSetOfSites());
+//			new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
+//					.getDxSetOfSites());
 		} else {
 			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
 					.getSetOfRooms(), DConst.ROOMASSIGN);

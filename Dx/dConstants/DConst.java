@@ -32,13 +32,13 @@ public class DConst {
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
     public static boolean USER_TEST_ACTIV = false; // comm
 
-    public static boolean newRooms = false;
+    public static boolean newRooms = true;
 //	public static boolean newRooms = false;
     
 	public static boolean newAlg = false;
 //	public static boolean newAlg = false;
 	
-	public static boolean newDoc = false;
+	public static boolean newDoc = true;
 //	public static boolean newDoc = false;
     
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
