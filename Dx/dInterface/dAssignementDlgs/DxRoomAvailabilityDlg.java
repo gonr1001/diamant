@@ -33,6 +33,7 @@ import javax.swing.SwingConstants;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
@@ -43,7 +44,7 @@ import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
 
 public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
-        ItemListener {
+        ItemListener, DlgIdentification {
 
     private int _nbOfPeriods;
 
@@ -94,7 +95,17 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         if (dApplic.getCurrentDoc() == null)
             return;
 
-        _dmodel = dApplic.getCurrentDModel();
+        
+		if (DConst.newDoc) {
+			if (dApplic.getCurrentDxDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		} else {
+			if (dApplic.getCurrentDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDModel();
+		}
+        
         _dxsosSites = dxsosSites;
 
         _time = _dmodel.getTTStructure().getCurrentCycle()
@@ -173,9 +184,10 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         if (command.equals(DConst.BUT_CLOSE)) { // close
             dispose();
         } else if (command.equals(DConst.BUT_APPLY)) { // apply
-
             _applyPanel.setFirstDisable();
-            _dxrCurrentRoom.setAvailability(new DxAvailability(
+            
+            
+            _dxrCurrentRoom.setRoomAvailability(new DxAvailability(
                     _dxaCurrentAvailbility));
             // _dmodel.changeInDModelByInstructorsDlg(this);
             // if a button of the grid has been pressed
@@ -283,5 +295,9 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
         }
         return gridPanel;
     }
+
+	public String idDlgToString() {
+		return "roomDlg";
+	}
 
 } /* end InstructorAvailabilityDlg */

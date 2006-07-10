@@ -340,7 +340,7 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void exit() {
 		if (DConst.newDoc) {
-//			 if no Document exit ok
+			// if no Document exit ok
 			while (_dMediator.getCurrentDxDoc() != null) { // is a while
 				this.close(); // new CloseCmd().execute(this);
 				if (_dMediator.getCancel())
@@ -352,9 +352,9 @@ public class DApplication { // implements ActionListener {
 				_jFrame.dispose();
 				System.exit(0);
 			}
-			
+
 		} else {
-//			 if no Document exit ok
+			// if no Document exit ok
 			while (_dMediator.getCurrentDoc() != null) { // is a while
 				this.close(); // new CloseCmd().execute(this);
 				if (_dMediator.getCancel())
@@ -365,21 +365,21 @@ public class DApplication { // implements ActionListener {
 				_jFrame.setVisible(false);
 				_jFrame.dispose();
 				System.exit(0);
-			}	
+			}
 		}
-		
+
 	}
 
 	public DModel getCurrentDModel() {
-		if(DConst.newDoc){
+		if (DConst.newDoc) {
 			return getCurrentDxDoc().getCurrentDModel();
 		}
 		return getCurrentDoc().getCurrentDModel();
 	}
-	
-//	public DModel getCurrentDxModel() {
-//		return getCurrentDxDoc()..getCurrentDModel();
-//	}
+
+	// public DModel getCurrentDxModel() {
+	// return getCurrentDxDoc()..getCurrentDModel();
+	// }
 
 	/**
 	 * @return
@@ -533,8 +533,8 @@ public class DApplication { // implements ActionListener {
 	public void openTTStruc() {
 		this.showToolBar();
 		new OpenTTSDlg(this);
-//		this._dMediator
-//		//.addDxTTStructureDoc(this.getPreferences()._standardTTC);
+		// this._dMediator
+		// //.addDxTTStructureDoc(this.getPreferences()._standardTTC);
 		_dxMenuBar.afterNewTTStruc();
 		this.afterOpenTTSruc();
 	}
@@ -568,14 +568,15 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void save() {
-		if (DConst.newDoc){
-			if (this.getCurrentDxDoc().getDocumentName().endsWith(DConst.NO_NAME))
+		if (DConst.newDoc) {
+			if (this.getCurrentDxDoc().getDocumentName().endsWith(
+					DConst.NO_NAME))
 				new SaveAsTTDlg(this);
 			else if (this.getCurrentDoc().isModified())
 				this._dMediator.saveCurrentDoc(this.getCurrentDxDoc()
 						.getDocumentName());
 			// else not necessary to save
-		}else{
+		} else {
 			if (this.getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
 				new SaveAsTTDlg(this);
 			else if (this.getCurrentDoc().isModified())
@@ -583,7 +584,7 @@ public class DApplication { // implements ActionListener {
 						.getDocumentName());
 			// else not necessary to save
 		}
-		
+
 	}
 
 	/**
@@ -697,12 +698,13 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-		if(DConst.newDoc){
-			new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc().getCurrentDModel()
+		if (DConst.newDoc) {
+			new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc()
+					.getCurrentDModel().getDxSetOfInstructors());
+		} else {
+			new DxInstructorAvailabilityDlg(this, this.getCurrentDModel()
 					.getDxSetOfInstructors());
-		}		
-		new DxInstructorAvailabilityDlg(this, this.getCurrentDModel()
-				.getDxSetOfInstructors());
+		}
 	}
 
 	/**

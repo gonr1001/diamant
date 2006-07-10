@@ -36,6 +36,7 @@ import javax.swing.SwingConstants;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
@@ -52,7 +53,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
  * 
  */
 public class DxInstructorAvailabilityDlg extends JDialog implements
-		ActionListener, ItemListener {
+		ActionListener, ItemListener, DlgIdentification {
 
 	private int _nbOfPeriods;
 
@@ -98,18 +99,17 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	public DxInstructorAvailabilityDlg(DApplication dApplic,
 			DxSetOfInstructors soi) {
 		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
-
 		
 		if (DConst.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-
 		} else {
 			if (dApplic.getCurrentDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDModel();
 		}
+		
 		_soi = soi;
 		_time = _dmodel.getTTStructure().getCurrentCycle()
 				.getHourOfPeriodsADay();
@@ -159,11 +159,14 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		if (command.equals(DConst.BUT_CLOSE)) { // close
 			dispose();
 		} else if (command.equals(DConst.BUT_APPLY)) { // apply
-
 			_applyPanel.setFirstDisable();
-			_currentInst=((DxInstructor)_chooser.getSelectedItem());
-			_currentInst.setAvailability(_currentAvailbility);
-			_dmodel.changeInDModelByInstructorsDlg(this);
+			_currentInst = ((DxInstructor) _chooser.getSelectedItem());
+			_currentInst.setInstructorAvailability(_currentAvailbility);
+			if (DConst.newDoc) {
+				_dmodel.changeInDModel(this.idDlgToString());
+			} else {
+				_dmodel.changeInDModelByInstructorsDlg(this);
+			}
 			// if a button of the grid has been pressed
 		} else if (_posVect.indexOf(event.getSource()) > -1) {
 			int index = _posVect.indexOf(event.getSource());
@@ -260,5 +263,9 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		}
 		return Color.GRAY;
 	}
-
+	
+	public String idDlgToString() {
+		return "instructorDlg";
+		
+	}
 } /* end AvailabilityInstructorDlg */
