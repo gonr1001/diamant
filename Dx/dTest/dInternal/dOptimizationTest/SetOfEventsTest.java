@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
@@ -21,8 +22,16 @@ public class SetOfEventsTest extends TestCase {
 	public SetOfEventsTest(String name) {
 		super(name);
 		try {
-			_dm = new DModel(new DDocument(), "." + File.separator + "dataTest"
-					+ File.separator + "loadData5j.dia", 1);
+			if(DConst.newDoc){
+				_dm = new DModel(new DxTTableDoc(), "." + File.separator + "dataTest"
+						+ File.separator + "loadData5j.dia");
+			} else{
+				_dm = new DModel(new DDocument(), "." + File.separator + "dataTest"
+						+ File.separator + "loadData5j.dia", 1);
+			}
+				
+			
+			
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
