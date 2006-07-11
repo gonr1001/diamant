@@ -23,7 +23,9 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dOptimization.EventAttach;
@@ -46,8 +48,15 @@ public class ConditionsTest extends TestCase {
 	public ConditionsTest(String name) {
 		super(name);
 		try {
-            _dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
-            		+ File.separator + "loadData5j.dia", 1);
+//            _dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
+//            		+ File.separator + "loadData5j.dia", 1);
+            if (DConst.newDoc) {
+    			_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
+    					+ "dataTest" + File.separator + "loadData5j.dia");
+    		} else {
+    			_dm5j = new DModel(new DDocument(), "." + File.separator
+    					+ "dataTest" + File.separator + "loadData5j.dia", 1);
+    		}
         } catch (Exception e) {
             //Should not fail in controled conditions
         }
@@ -59,8 +68,15 @@ public class ConditionsTest extends TestCase {
 		
 		
 		try {
-            _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
-            		+ File.separator + "lData5j30min.dia", 1);
+//            _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
+//            		+ File.separator + "lData5j30min.dia", 1);
+            if (DConst.newDoc) {
+    			_dmh = new DModel(new DxTTableDoc(), "." + File.separator
+    					+ "dataTest" + File.separator + "lData5j30min.dia");
+    		} else {
+    			_dmh = new DModel(new DDocument(), "." + File.separator
+    					+ "dataTest" + File.separator + "lData5j30min.dia", 1);
+    		}
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println("ici "+ e.toString());
@@ -71,8 +87,15 @@ public class ConditionsTest extends TestCase {
 
 		
 		try {
-            _dm7j = new DModel(new DDocument(), "." + File.separator + "dataTest"
-            		+ File.separator + "loadData7j.dia", 1);
+//            _dm7j = new DModel(new DDocument(), "." + File.separator + "dataTest"
+//            		+ File.separator + "loadData7j.dia", 1);
+            if (DConst.newDoc) {
+    			_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
+    					+ "dataTest" + File.separator + "loadData7j.dia");
+    		} else {
+    			_dm7j = new DModel(new DDocument(), "." + File.separator
+    					+ "dataTest" + File.separator + "lloadData7j", 1);
+    		}
         } catch (Exception e) {
             //Should not fail in controled conditions
         }

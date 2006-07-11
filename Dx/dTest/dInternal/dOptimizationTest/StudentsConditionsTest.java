@@ -6,7 +6,9 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dOptimization.DxStudentCondtionsToTest;
 import dInternal.dTimeTable.Period;
@@ -20,7 +22,14 @@ public class StudentsConditionsTest extends TestCase {
   public StudentsConditionsTest(String name) {
     super(name);
     try {
-        _dm1= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData7j.dia",1);
+//        _dm1= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData7j.dia",1);
+        if (DConst.newDoc) {
+			_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData7j.dia");
+		} else {
+			_dm1 = new DModel(new DDocument(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData7j.dia", 1);
+		}
     } catch (Exception e) {
         // Should not fail in tests
         e.printStackTrace();
@@ -31,7 +40,14 @@ public class StudentsConditionsTest extends TestCase {
     _dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
     
     try {
-        _dm2= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData5j.dia",1);
+//        _dm2= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData5j.dia",1);
+        if (DConst.newDoc) {
+			_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData5j.dia");
+		} else {
+			_dm2 = new DModel(new DDocument(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData5j.dia", 1);
+		}
     } catch (Exception e) {
         // Should not fail in tests
         e.printStackTrace();

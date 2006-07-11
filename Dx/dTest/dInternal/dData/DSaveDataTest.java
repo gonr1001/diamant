@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-07-06 16:01:20 $
+ * Title: DSaveDataTest $Revision $  $Date: 2006-07-11 20:40:00 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -18,7 +18,7 @@ package dTest.dInternal.dData;
  * you entered into with rgr.
  *
  * @version $ $
- * @author  $Author: caln1901 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -26,6 +26,8 @@ import java.io.File;
 
 import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dData.DSaveData;
 import junit.framework.Test;
@@ -40,9 +42,9 @@ public class DSaveDataTest extends TestCase {
 	DModel _dm2;
 
 	DDocument _dDocument1;
-
+	DxDocument _dxDocument1;
 	DDocument _dDocument2;
-
+	DxDocument _dxDocument2;
 	String _fileName1; // to read
 
 	String _fileName2; // to write and read
@@ -67,6 +69,8 @@ public class DSaveDataTest extends TestCase {
 		_a = new DSaveData("1.6");
 		_dDocument1 = new DDocument();
 		_dDocument2 = new DDocument();
+		_dxDocument1 = new DxTTableDoc();
+		_dxDocument2 = new DxTTableDoc();
 		_fileName1 = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		_fileName2 = "." + File.separator + "dataTest" + File.separator
@@ -75,7 +79,12 @@ public class DSaveDataTest extends TestCase {
 				+ "downDataTTS.dia";
 		_type = 1;
 		try {
-			_dm1 = new DModel(_dDocument1, _fileName1, _type);
+//			_dm1 = new DModel(_dDocument1, _fileName1, _type);
+			if(DConst.newDoc){
+				_dm1 = new DModel(_dxDocument1, _fileName1);
+			} else {
+				_dm1 = new DModel(_dDocument1, _fileName1, _type);
+			}
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -93,7 +102,12 @@ public class DSaveDataTest extends TestCase {
 		}
 
 		try {
-			_dm2 = new DModel(_dDocument2, _fileName2, _type);
+//			_dm2 = new DModel(_dDocument2, _fileName2, _type);
+			if(DConst.newDoc){
+				_dm2 = new DModel(_dxDocument2, _fileName2);
+			} else {
+				_dm2 = new DModel(_dDocument2, _fileName2, _type);
+			}
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}

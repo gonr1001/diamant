@@ -5,7 +5,9 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dOptimization.DxRoomsConditionsToTest;
 import dInternal.dTimeTable.Period;
@@ -19,8 +21,16 @@ public class RoomsConditionsTest extends TestCase {
     public RoomsConditionsTest(String name) {
         super(name);
         try {
-            _dm1 = new DModel(new DDocument(), "." + File.separator
-                    + "dataTest" + File.separator + "loadData7j.dia", 1);
+//            _dm1 = new DModel(new DDocument(), "." + File.separator
+//                    + "dataTest" + File.separator + "loadData7j.dia", 1);
+            if (DConst.newDoc) {
+				_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
+						+ "dataTest" + File.separator + "loadData7j.dia");
+			} else {
+				_dm1 = new DModel(new DDocument(), "." + File.separator
+						+ "dataTest" + File.separator + "loadData7j.dia", 1);
+			}
+            
         } catch (Exception e) {
             // Should not fail in tests
             e.printStackTrace();
@@ -31,8 +41,15 @@ public class RoomsConditionsTest extends TestCase {
         _dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
 
         try {
-            _dm2 = new DModel(new DDocument(), "." + File.separator
-                    + "dataTest" + File.separator + "loadData5j.dia", 1);
+//            _dm2 = new DModel(new DDocument(), "." + File.separator
+//                    + "dataTest" + File.separator + "loadData5j.dia", 1);
+            if (DConst.newDoc) {
+            	_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
+						+ "dataTest" + File.separator + "loadData5j.dia");
+			} else {
+				_dm2 = new DModel(new DDocument(), "." + File.separator
+						+ "dataTest" + File.separator + "loadData5j.dia", 1);
+			}
         } catch (Exception e) {
             // Should not fail in tests
             e.printStackTrace();

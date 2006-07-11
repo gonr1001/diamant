@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2006-05-24 19:10:33 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2006-07-11 20:40:00 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -17,13 +17,16 @@ package dTest.dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: caln1901 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
 import java.io.File;
 
+import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dData.DStandardReportData;
 import junit.framework.Test;
@@ -35,6 +38,7 @@ public class DStandardReportDataTest extends TestCase{
   	DStandardReportData _report;
   	DModel 		_dm;
   	DDocument 	_dDocument;
+  	DxDocument 	_dxDocument;
   	String 		_fileName;
   	int 		_type;
 	  
@@ -49,10 +53,16 @@ public class DStandardReportDataTest extends TestCase{
   
   public void setUp(){
   	_dDocument = new DDocument();
+  	_dxDocument = new DxTTableDoc();
   	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData5j.dia";
   	_type = 1;
   	try {
-        _dm= new DModel(_dDocument,_fileName,_type);
+//        _dm= new DModel(_dDocument,_fileName,_type);
+        if(DConst.newDoc){
+			_dm = new DModel(_dxDocument, _fileName);
+		} else {
+			_dm = new DModel(_dDocument, _fileName, _type);
+		}
     } catch (Exception e) {
         //Shoudl not fail in controled conditions
     }

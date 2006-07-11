@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.9 $ $Date: 2006-06-20 14:39:27 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.10 $ $Date: 2006-07-11 20:40:01 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -24,7 +24,10 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxPreferences;
 import dInternal.dOptimization.FirstAffectAlgorithm;
@@ -64,6 +67,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 	public void test_build1() {
 		DModel dm1 = null;
 		DDocument _dDocument1 = new DDocument();
+		DxDocument _dxDocument1 = new DxTTableDoc();
 		String fileName = "." + File.separator;
 		fileName += "dataTest" + File.separator;
 		fileName += "refFiles" + File.separator;
@@ -73,7 +77,12 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		int type = 1;
 
 		try {
-			dm1 = new DModel(_dDocument1, fileName, type);
+			if(DConst.newDoc){
+				dm1 = new DModel(_dxDocument1, fileName);
+			} else {
+				dm1 = new DModel(_dDocument1, fileName, type);
+			}
+//			dm1 = new DModel(_dDocument1, fileName, type);
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -93,6 +102,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 	public void test_build2() {
 		DModel dm1 = null;
 		DDocument _dDocument1 = new DDocument();
+		DxDocument _dxDocument1 = new DxTTableDoc();
 		String fileName = "." + File.separator;
 		fileName += "dataTest" + File.separator;
 		fileName += "refFiles" + File.separator;
@@ -102,7 +112,12 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		int type = 1;
 
 		try {
-			dm1 = new DModel(_dDocument1, fileName, type);
+			if(DConst.newDoc){
+				dm1 = new DModel(_dxDocument1, fileName);
+			} else {
+				dm1 = new DModel(_dDocument1, fileName, type);
+			}
+//			dm1 = new DModel(_dDocument1, fileName, type);
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}

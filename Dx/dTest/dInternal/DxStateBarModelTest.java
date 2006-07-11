@@ -101,13 +101,19 @@ public class DxStateBarModelTest extends TestCase {
 	}
 
 	public void testStateBarModel_7j() throws Exception {
-		DDocument _doc7j;
+		DDocument _doc7j = new DDocument();
+		DxDocument _dxDoc7j = new DxTTableDoc();
 		DModel _dm7j;
-		_doc7j = new DDocument();
+		
 		String fileName1 = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		int _type = 1;
-		_dm7j = new DModel(_doc7j, fileName1, _type);
+		if(DConst.newDoc){
+			_dm7j = new DModel(_dxDoc7j, fileName1);
+		} else {
+			_dm7j = new DModel(_doc7j, fileName1, _type);
+		}
+//		_dm7j = new DModel(_doc7j, fileName1, _type);
 		_dm7j.changeInDModel(new Object());
 		DxStateBarModel sbm = new DxStateBarModel(_dm7j);
 		sbm.update();
