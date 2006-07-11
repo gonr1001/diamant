@@ -297,7 +297,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
     }
 
 	public String idDlgToString() {
-		return "roomDlg";
+		return this.getClass().toString();
 	}
 
 } /* end InstructorAvailabilityDlg */

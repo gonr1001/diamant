@@ -21,7 +21,6 @@ package dInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
 // import java.util.Observer;
@@ -207,11 +206,11 @@ public class DxTTStructureDoc extends DxDocument {
 	//
 	// }
 
-	@Override
-	public void changeInModel(ActionListener listener) {
-		System.out.println("changeInModel+ rgr here");
-		_ttStructure.changeInTTStructure(listener);
-	}// end changeInDModel
+//	@Override
+//	public void changeInModel(ActionListener listener) {
+//		System.out.println("changeInModel+ rgr here");
+//		_ttStructure.changeInTTStructure(listener);
+//	}// end changeInDModel
 
 	@Override
 	public void saveTTStrucure(String str) {
@@ -219,14 +218,12 @@ public class DxTTStructureDoc extends DxDocument {
 	}
 
 	@Override
-	public void changeInModel() {
-		// TODO Auto-generated method stub
-		
+	public DModel getCurrentDModel() {
+		return null;
 	}
 
 	@Override
-	public DModel getCurrentDModel() {
-		// TODO Auto-generated method stub
-		return null;
+	public void changeInModel(String str) {
+		_ttStructure.changeInTTStructure(str);	
 	}
 }

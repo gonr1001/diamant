@@ -76,9 +76,9 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	 */
 	private Vector<JToggleButton> _posVect;
 
-	protected DModel _dmodel;
+	private DModel _dmodel;
 
-	protected DxSetOfInstructors _soi;
+	private DxSetOfInstructors _soi;
 
 	private int[][] _currentAvailbility;
 
@@ -265,7 +265,6 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	}
 	
 	public String idDlgToString() {
-		return "instructorDlg";
-		
+		return this.getClass().toString();		
 	}
 } /* end AvailabilityInstructorDlg */

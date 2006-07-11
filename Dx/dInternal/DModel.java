@@ -867,6 +867,8 @@ public class DModel extends Observable {
 			this.prepareExamsData();
 		}
 		this.buildSetOfEvents();
+		if (isMultiSite())
+			this.getConditionsTest().setMatrixBuilded(true, false);
 		this.getConditionsTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
 		// _stateBarModel.update();

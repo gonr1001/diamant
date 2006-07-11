@@ -21,7 +21,6 @@ package dInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 import java.util.Observable;
 
 import javax.swing.JInternalFrame;
@@ -52,6 +51,10 @@ public class DxTTableDoc extends DxDocument {
 	private DxStateBar _stateBar;
 
 	private DModel _dm;
+
+	public DxTTableDoc() {
+		// for tests
+	}
 
 	public DxTTableDoc(DMediator mediator, String fileName) throws Exception {
 		super(mediator);
@@ -144,10 +147,9 @@ public class DxTTableDoc extends DxDocument {
 		return null;
 	}
 
-	@Override
-	public void changeInModel() {
+	public void changeInModel(String str) {
 		System.out.println("changeInModel+ rgr here");
-		_dm.changeInDModel(new Object());
+		_dm.changeInDModel(str);
 	}// end changeInDModel
 
 	@Override
@@ -155,11 +157,11 @@ public class DxTTableDoc extends DxDocument {
 		// TODO Auto-generated method stub
 
 	}
-	
-    // -------------------------------------------
-    public DModel getCurrentDModel() {
-        return _dm;
-    } // end getDModel
+
+	// -------------------------------------------
+	public DModel getCurrentDModel() {
+		return _dm;
+	} // end getDModel
 
 	@Override
 	public void saveTTStrucure(String str) {
@@ -172,8 +174,35 @@ public class DxTTableDoc extends DxDocument {
 	}
 
 	@Override
-	public void changeInModel(ActionListener listener) {
-		// TODO Auto-generated method stub
-
+	public void displaySimple() {
+		close();
+		buidDocument(true, true);
+		_ttPane.updateTTPane(_dm.getTTStructure());
 	}
+
+	@Override
+	public void displayVericalSplit() {
+		 close();
+		 buidDocument(false, false);
+		 _ttPane.updateTTPane(_dm.getTTStructure());
+	}
+
+	@Override
+	public void displayHorizontalSplit() {
+		 close();
+		 buidDocument(false, true);
+		 _ttPane.updateTTPane(_dm.getTTStructure());		
+	}
+
+	// public void displayHorizontalSplit() {
+	// close();
+	// buidDocument(false, false);
+	// _ttPane.updateTTPane(_dm.getTTStructure());
+	// }
+	//
+	// public void displayVericalSplit() {
+	// close();
+	// buidDocument(false, true);
+	// _ttPane.updateTTPane(_dm.getTTStructure());
+	// }
 }

@@ -40,6 +40,7 @@ import javax.swing.border.TitledBorder;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.DxTools;
@@ -47,6 +48,7 @@ import dInterface.DDialog;
 import dInterface.dUtil.RightLeftInterface;
 import dInterface.dUtil.RigthLeftPanel;
 import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
@@ -64,9 +66,11 @@ import eLib.exit.dialog.InformationDlg;
  * SectionDlg
  */
 public class SectionDlg extends DDialog implements ActionListener,
-		RightLeftInterface {
+		RightLeftInterface, DlgIdentification {
 
 	private DApplication _dApplic;
+	
+	private DModel _dmodel;
 
 	private int _numberOfSections;
 
@@ -112,7 +116,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 
 	private Vector _typeVector;
 
-	private Vector <String>_assignedVectors[];
+	private Vector _assignedVectors[];
 
 	private Vector _sortVector;
 
@@ -126,10 +130,17 @@ public class SectionDlg extends DDialog implements ActionListener,
 		_dApplic = dApplic;
 		//_sortIndex = 0; // why 0?
 		_currentAssignedGroup = -1; // why -1
-		if (_dApplic.getCurrentDoc() == null)
-			return;
-		_activities = _dApplic.getCurrentDModel().getSetOfActivities();
-		_students = _dApplic.getCurrentDModel().getSetOfStudents();// is correct
+		if (DConst.newDoc) {
+			if (dApplic.getCurrentDxDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		} else {
+			if (dApplic.getCurrentDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDModel();
+		}
+		_activities = _dmodel.getSetOfActivities();
+		_students = _dmodel.getSetOfStudents();// is correct
 		_students.sortSetOfResourcesByID();// is correct
 		if (_activities != null && _students != null) {
 			initializeDlg();
@@ -227,46 +238,19 @@ public class SectionDlg extends DDialog implements ActionListener,
 			_typeCombo.setEnabled(true);
 			_applyPanel.setFirstDisable();
 
-			_dApplic.getCurrentDModel().getConditionsTest().setMatrixBuilded(false,
-					false);
-			_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
+			if (DConst.newDoc) {
+				_dmodel.getConditionsTest().setMatrixBuilded(false,
+						false);
+				_dmodel.changeInDModel(this.idDlgToString());
+			} else {
+				_dApplic.getCurrentDModel().getConditionsTest().setMatrixBuilded(false,
+						false);
+				_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
+			}
+
 
 		}
 
-		// Arrows
-		/*		if ((command.equals(_arrowsNames[1]) || command.equals(_arrowsNames[0]))
-		 && _currentAssignedGroup > -1) {
-		 //if "toLeft" button is pressed
-		 if (command.equals(_arrowsNames[1])) {
-		 if (_currentAssignedGroup > -1) {
-		 listTransfers(_assignedLists[_currentAssignedGroup],
-		 _notAssignedList,
-		 _assignedVectors[_currentAssignedGroup],
-		 _notAssignedVector, DConst.CHAR_FIXED_IN_GROUP,
-		 true, _sortIndex);
-		 //_buttonsPanel.getComponent(1).setEnabled(true);
-		 //_sortCombo.setEnabled(false);
-		 _applyPanel.setFirstEnable();
-		 //   _dApplic.getDMediator().getCurrentDoc().getDM()
-		 //          .getSetOfStates().sendEvent();
-		 }
-		 } else {
-		 if (_currentAssignedGroup > -1) {
-		 listTransfers(_notAssignedList,
-		 _assignedLists[_currentAssignedGroup],
-		 _notAssignedVector,
-		 _assignedVectors[_currentAssignedGroup],
-		 DConst.CHAR_FIXED_IN_GROUP, false, _sortIndex);
-		 _applyPanel.setFirstEnable();
-		 }
-		 }
-		 //SetText for the JLabel containing the number of elements in a
-		 // group
-		 ((JLabel) ((JPanel) ((JPanel) _insidePanel
-		 .getComponent(_currentAssignedGroup)).getComponent(0))
-		 .getComponent(4)).setText(String
-		 .valueOf(_assignedVectors[_currentAssignedGroup].size()));*/
-		//}//end if (command.equals(TO_LEFT) || command.equals(TO_RIGHT))*/
 	}//end method
 
 	/**
@@ -713,7 +697,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
 					.getResourceAt(j).getID());
 			for (int k = 0; k < _assignedVectors[j].size(); k++) {
-				studentData =  _assignedVectors[j].elementAt(k);
+				studentData =  (String)_assignedVectors[j].elementAt(k);
 				s = (Student) getStudent(studentData);
 
 				if (studentData.endsWith(DConst.CHAR_FIXED_IN_GROUP))
@@ -882,6 +866,10 @@ public class SectionDlg extends DDialog implements ActionListener,
 	public void closePresed() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String idDlgToString() {
+		return this.getClass().toString();
 	}
 
 }//end class

@@ -44,6 +44,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
+import dInternal.DModel;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.EventAttach;
@@ -82,21 +83,23 @@ public abstract class EventsDlgInterface extends JDialog implements
     protected String _eventFullKey;
 
     protected Unity _currUnity;
+    
+    private DModel _dmodel;
 
     /**
      * @associates String
      */
-    protected Vector _leftVector;
+    protected Vector <String>_leftVector;
     
     /**
      * @associates String 
      */
-    protected Vector _centerVector;
+    protected Vector <String> _centerVector;
     
     /**
      * @associates String 
      */
-    protected Vector _rightVector;
+    protected Vector <String>  _rightVector;
 
     protected JDialog _jDialog;
 
@@ -112,10 +115,17 @@ public abstract class EventsDlgInterface extends JDialog implements
         super(dApplic.getJFrame(), title + " rgrEDL", true);
         _dApplic = dApplic;
         _jDialog = this;
-        if (_dApplic.getCurrentDoc() == null)
-            return;
-        _activities = _dApplic.getCurrentDModel().getSetOfActivities();
-        _events = _dApplic.getCurrentDModel().getSetOfEvents();
+		if (DConst.newDoc) {
+			if (dApplic.getCurrentDxDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		} else {
+			if (dApplic.getCurrentDoc() == null)
+				return;
+			_dmodel = dApplic.getCurrentDModel();
+		}
+        _activities = _dmodel.getSetOfActivities();
+        _events = _dmodel.getSetOfEvents();
     }//end method
 
     public abstract void actionPerformed(ActionEvent e);
@@ -287,9 +297,9 @@ public abstract class EventsDlgInterface extends JDialog implements
      */
 
     private void buildVectors() {
-        _leftVector = new Vector();
-        _centerVector = new Vector();
-        _rightVector = new Vector();
+        _leftVector = new Vector<String>();
+        _centerVector = new Vector<String>();
+        _rightVector = new Vector<String>();
         String _eventFullID;
         StringTokenizer stk;
         for (int i = 0; i < _events.size(); i++) {
@@ -357,7 +367,7 @@ public abstract class EventsDlgInterface extends JDialog implements
     protected void setUnities() {
         String str = null;
         for (int i = 0; i < _leftVector.size(); i++) {
-            str = (String) _leftVector.elementAt(i);
+            str =  _leftVector.elementAt(i);
             _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
                     DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
                             .getToken(str, ".", 2), DXToolsMethods.getToken(
@@ -368,7 +378,7 @@ public abstract class EventsDlgInterface extends JDialog implements
                             str, ".", 3), 2, "true");
         }//end for
         for (int i = 0; i < _centerVector.size(); i++) {
-            str = (String) _centerVector.elementAt(i);
+            str =  _centerVector.elementAt(i);
             _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
                     DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
                             .getToken(str, ".", 2), DXToolsMethods.getToken(
@@ -380,7 +390,7 @@ public abstract class EventsDlgInterface extends JDialog implements
         }//end for
         for (int i = 0; i < _rightVector.size(); i++) {
 
-            str = (String) _rightVector.elementAt(i);
+            str =  _rightVector.elementAt(i);
             _activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
                     DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
                             .getToken(str, ".", 2), DXToolsMethods.getToken(

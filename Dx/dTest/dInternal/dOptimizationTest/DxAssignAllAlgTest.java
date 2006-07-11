@@ -69,7 +69,7 @@ public class DxAssignAllAlgTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		dm1.changeInDModel(new Object());
+		dm1.changeInDModel(new String("DxAssign"));
 		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
 				.size());
 		assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
