@@ -684,7 +684,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void assignActivities() {
-		new ActivityDlg(this, DConst.ACT_LIST);
+		new ActivityDlg(this);
 	}
 
 	/**
@@ -722,8 +722,8 @@ public class DApplication { // implements ActionListener {
 			// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 			// .getDxSetOfRooms(), DConst.ROOMASSIGN);
 			// !!!NIC!!! How do we verify if it's multisite?
-//			new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
-//					.getDxSetOfSites());
+			// new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
+			// .getDxSetOfSites());
 		} else {
 			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
 					.getSetOfRooms(), DConst.ROOMASSIGN);
@@ -734,7 +734,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void assignEvents() {
-		new EventsDlg(this, DConst.EVENTS_DLG_TITLE);
+		new EventsDlg(this);
 	}
 
 	/**
@@ -866,24 +866,41 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void simpleView() {
-		if (this.getCurrentDoc() != null)
-			this.getCurrentDoc().displaySimple();
+		if (DConst.newDoc){
+			if (this.getCurrentDxDoc() != null)
+				this.getCurrentDxDoc().displaySimple();
+		} else {
+			if (this.getCurrentDoc() != null)
+				this.getCurrentDoc().displaySimple();
+		}
+		
+		
 	}
 
 	/**
 	 * 
 	 */
 	public void horizontalSplitView() {
+		if (DConst.newDoc){
+			if (this.getCurrentDxDoc() != null)
+				this.getCurrentDxDoc().displayHorizontalSplit();
+		} else {
 		if (this.getCurrentDoc() != null)
 			this.getCurrentDoc().displayHorizontalSplit();
+		}
 	}
 
 	/**
 	 * 
 	 */
 	public void vericalSplitview() {
+		if (DConst.newDoc){
+			if (this.getCurrentDxDoc() != null)
+				this.getCurrentDxDoc().displayVericalSplit();
+		} else {
 		if (this.getCurrentDoc() != null)
 			this.getCurrentDoc().displayVericalSplit();
+		}
 	}
 
 	/**
@@ -899,12 +916,22 @@ public class DApplication { // implements ActionListener {
 	public void myFile() {
 		setCurrentDir(".\\devData\\");
 		try {
-			_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
+			if (DConst.newDoc) {
+				_dMediator.addDxTTableDoc("", ".\\devData\\fichier1.dia");
+			} else {
+				_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		}
-		getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
-		getCurrentDModel().changeInDModel(this.getJFrame());
+		if (DConst.newDoc) {
+			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
+			getCurrentDxDoc().getCurrentDModel().changeInDModel(
+					this.getJFrame());
+		} else {
+			getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
+			getCurrentDModel().changeInDModel(this.getJFrame());
+		}
 		_dxMenuBar.afterInitialAssignment();
 	}
 
@@ -934,12 +961,25 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAssignment() {
 		if (DConst.newAlg) {
-			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getPreferences()
-					.getDxConflictLimits()).doWork();
-			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			if (DConst.newDoc) {
+				new DxAssignRoomsAlg(this.getCurrentDxDoc().getCurrentDModel(),
+						this.getPreferences().getDxConflictLimits()).doWork();
+				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			} else {
+				new DxAssignRoomsAlg(this.getCurrentDModel(), this
+						.getPreferences().getDxConflictLimits()).doWork();
+				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			}
+
 		} else {
-			new RoomAssignmentAlgo(this.getCurrentDModel());
-			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			if (DConst.newDoc) {
+				new RoomAssignmentAlgo(this.getCurrentDxDoc()
+						.getCurrentDModel());
+				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			} else {
+				new RoomAssignmentAlgo(this.getCurrentDModel());
+				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			}
 		}
 	}
 
@@ -947,7 +987,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void eventAssignment() {
-		new EventsDlg(this, DConst.EVENTS_DLG_TITLE);
+		new EventsDlg(this);
 	}
 
 	/**
@@ -962,21 +1002,41 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public boolean isMultiSite() {
+		if (DConst.newDoc) {
+			if (this.getCurrentDxDoc() == null) {
+				return false;
+			}
+			return this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
+		}
 		if (this.getCurrentDoc() == null) {
 			return false;
 		}
 		return this.getCurrentDModel().isMultiSite();
+
 	}
 
 	/**
 	 * @param str
 	 */
 	public void changeInMulti(String str) {
-		this.getCurrentDModel().setCurrentSite(str);
-		if (str.equalsIgnoreCase(DConst.ALL_SITES))
-			this.getCurrentDModel().changeInDModelByAllSites(this.getJFrame());
-		else
-			this.getCurrentDModel().changeInDModel(this.getJFrame());
+		if (DConst.newDoc) {
+			this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
+			if (str.equalsIgnoreCase(DConst.ALL_SITES))
+				this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+						this.getJFrame());
+			else
+				this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+						this.getJFrame());
+
+		} else {
+			this.getCurrentDModel().setCurrentSite(str);
+			if (str.equalsIgnoreCase(DConst.ALL_SITES))
+				this.getCurrentDModel().changeInDModelByAllSites(
+						this.getJFrame());
+			else
+				this.getCurrentDModel().changeInDModel(this.getJFrame());
+		}
+
 	}
 
 	public void setFileToOpen(String absolutePath) {

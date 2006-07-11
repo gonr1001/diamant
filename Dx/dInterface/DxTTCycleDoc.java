@@ -19,7 +19,7 @@
  */
 package dInterface;
 
-import java.awt.event.ActionListener;
+
 import java.util.Observable;
 
 import dInternal.DModel;
@@ -59,11 +59,11 @@ public class DxTTCycleDoc extends DxDocument{
 		return null;
 	}
 
-	@Override
-	public void changeInModel(ActionListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void changeInModel(ActionListener listener) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	public void close() {
@@ -80,15 +80,39 @@ public class DxTTCycleDoc extends DxDocument{
 		return _type;
 	}
 
-	@Override
-	public void changeInModel() {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void changeInModel() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	public DModel getCurrentDModel() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void changeInModel(String str) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displaySimple() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayVericalSplit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayHorizontalSplit() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -19,7 +19,7 @@
  */
 package dInterface;
 
-import java.awt.event.ActionListener;
+// import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JInternalFrame;
@@ -52,14 +52,18 @@ public abstract class DxDocument implements Observer {
 
 	protected String _autoImportDIMFilePath;
 
+	public DxDocument() {
+		// for tests
+	}
+
 	public DxDocument(DMediator dMed) {
 		_dMediator = dMed;
 	}
 
 	public abstract void update(Observable dm, Object component);
 
-	public abstract void changeInModel(ActionListener listener);
-	
+	public abstract void changeInModel(String str);
+
 	// -------------------------------------------
 	public final JInternalFrame getJIF() {
 		return _jif;
@@ -90,7 +94,6 @@ public abstract class DxDocument implements Observer {
 	}
 
 	public abstract TTStructure getTTStructure();
-	
 
 	// // -----------------------------
 	//
@@ -159,10 +162,10 @@ public abstract class DxDocument implements Observer {
 
 	// // -------------------------------------------
 
-//	/*
-//	 * a revoir
-//	 */
-//	public abstract void close();
+	// /*
+	// * a revoir
+	// */
+	// public abstract void close();
 
 	//
 	// // -------------------------------------------
@@ -289,10 +292,32 @@ public abstract class DxDocument implements Observer {
 
 	public abstract void saveTTStrucure(String str);
 
-	public abstract void changeInModel();
-
 	public abstract DModel getCurrentDModel();
-	
 
+	public abstract void displaySimple(); 
+
+	public abstract void displayVericalSplit();
+
+	public abstract void displayHorizontalSplit();
+	// // -------------------------------------------
+	// public void displaySimple() {
+	// close();
+	// buidDocument(true, true);
+	// _ttPane.updateTTPane(_dm.getTTStructure());
+	// }
+	//
+	// // -------------------------------------------
+	// public void displayHorizontalSplit() {
+	// close();
+	// buidDocument(false, false);
+	// _ttPane.updateTTPane(_dm.getTTStructure());
+	// }
+	//
+	// public void displayVericalSplit() {
+	// close();
+	// buidDocument(false, true);
+	// _ttPane.updateTTPane(_dm.getTTStructure());
+	// }
+	//
 
 } /* end DxDocument class */

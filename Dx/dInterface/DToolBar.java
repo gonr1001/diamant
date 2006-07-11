@@ -55,7 +55,7 @@ import eLib.exit.dialog.InformationDlg;
  * periods
  * 
  */
-public class DToolBar extends JToolBar implements Observer { // ActionListener
+public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 
 	private DApplication _dApplic;
 
@@ -178,7 +178,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 					// Treat event
 					// _dApplic.getDModel().getTTStructure().sendEvent();
 					if (DConst.newDoc) {
-						_dApplic.getCurrentDxDoc().changeInModel(this);
+						_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 						setToolBarOne();
 						setToolBarTwo();
 					} else {
@@ -190,6 +190,9 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				}
 				// System.out.println("Number of days: "+nbDays);
 			}// end actionPerformed
+			public String idDlgToString() {
+				return this.getClass().toString();		
+			}
 		});// end addActionListener
 
 		// * _daySelector
@@ -219,12 +222,15 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				resc.setID((String) _dayNameSelector.getSelectedItem());
 				
 				if (DConst.newDoc) {
-					_dApplic.getCurrentDxDoc().changeInModel(this);
+					_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 				} else {
 					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 				}
 
 			}// end actionPerformed
+			public String idDlgToString() {
+				return this.getClass().toString();		
+			}
 		});// end addActionListener
 
 		// *** Actions for the elements of the bar two
@@ -256,13 +262,16 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				period.setPriority(_periodTypeSelector.getSelectedIndex());
 				if (_comboBoxStatus) {
 					if (DConst.newDoc) {
-						_dApplic.getCurrentDxDoc().changeInModel(this);
+						_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 					} else {
 						_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 					}
 				}
 
 			}// end actionPerformed
+			public String idDlgToString() {
+				return this.getClass().toString();		
+			}
 		});// end addActionListener
 
 		_sameLine.addActionListener(new ActionListener() {
@@ -286,12 +295,15 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 				}
 
 				if (DConst.newDoc) {
-					_dApplic.getCurrentDxDoc().changeInModel(this);
+					_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 				} else {
 					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 				}
 
 			}// end actionPerformed
+			public String idDlgToString() {
+				return this.getClass().toString();		
+			}
 		});// end addActionListener
 
 		_sameColumn.addActionListener(new ActionListener() {
@@ -319,12 +331,16 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 					}
 				}
 				if (DConst.newDoc) {
-					_dApplic.getCurrentDxDoc().changeInModel(this);
+					_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 				} else {
 					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
 				}
 			}// end actionPerformed
+			public String idDlgToString() {
+				return this.getClass().toString();		
+			}
 		});// end addActionListener
+		
 	}
 
 	/**
@@ -547,4 +563,7 @@ public class DToolBar extends JToolBar implements Observer { // ActionListener
 		_dApplic.getCurrentDxDoc().update(o, arg);
 	}
 
+	public String idDlgToString() {
+		return this.getClass().toString();		
+	}
 } // end classe
