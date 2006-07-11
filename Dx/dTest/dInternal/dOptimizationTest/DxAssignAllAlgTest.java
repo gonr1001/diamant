@@ -24,7 +24,10 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
 import dInterface.DDocument;
+import dInterface.DxDocument;
+import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
@@ -55,7 +58,8 @@ public class DxAssignAllAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 		DModel dm1 = null;
-		DDocument _dDocument1 = new DDocument();
+		DDocument dDocument1 = new DDocument();
+		DxDocument dxDocument1 = new DxTTableDoc();
 		StringBuffer fileName = new StringBuffer("." + File.separator);
 		fileName.append("dataTest" + File.separator);
 		fileName.append("refFiles" + File.separator);
@@ -65,7 +69,11 @@ public class DxAssignAllAlgTest extends TestCase {
 		int type = 1;
 
 		try {
-			dm1 = new DModel(_dDocument1, fileName.toString(), type);
+			if (DConst.newDoc) {
+				dm1 = new DModel(dxDocument1, fileName.toString());
+			} else {
+				dm1 = new DModel(dDocument1, fileName.toString(), type);
+			}		
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -79,7 +87,7 @@ public class DxAssignAllAlgTest extends TestCase {
 		assertEquals("test_build: assertEquals", 255, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
-		_dDocument1 = null;
+		dDocument1 = null;
 	}
 
 	public void test_build2() {
@@ -87,7 +95,8 @@ public class DxAssignAllAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 		DModel dm1 = null;
-		DDocument _dDocument1 = new DDocument();
+		DDocument dDocument1 = new DDocument();
+		DxDocument dxDocument1 = new DxTTableDoc();
 		StringBuffer fileName = new StringBuffer("." + File.separator);
 		fileName.append("dataTest" + File.separator);
 		fileName.append("refFiles" + File.separator);
@@ -97,7 +106,11 @@ public class DxAssignAllAlgTest extends TestCase {
 		int type = 1;
 
 		try {
-			dm1 = new DModel(_dDocument1, fileName.toString(), type);
+			if (DConst.newDoc) {
+				dm1 = new DModel(dxDocument1, fileName.toString());
+			} else {
+				dm1 = new DModel(dDocument1, fileName.toString(), type);
+			}	
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -111,6 +124,6 @@ public class DxAssignAllAlgTest extends TestCase {
 		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
-		_dDocument1 = null;
+		dDocument1 = null;
 	}
 }
