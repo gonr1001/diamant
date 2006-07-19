@@ -1,8 +1,7 @@
 /**
- * Created on Jun 29, 2006
- * 
- * 
- * Title: ASequence.java 
+ *
+ * Title: Cycle 
+ * Description: Cycle
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -14,20 +13,39 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * 
- * 
+ *
+ *
  */
 package dInternal.dTimeTable;
 
-/**
- * Ruben Gonzalez-Rubio
- * 
- * Description: ASequence is a class used to:
- * <p>
- * TODO:insert comments
- * <p> 
- * 
- */
 public class ASequence {
-	//
+
+	private int ttsequenceid;
+
+	private String ttsequencename;
+
+	public ASequence() {
+	}
+
+	public int getttsequenceid() {
+		return ttsequenceid;
+	}
+
+	public String getttsequencename() {
+		return ttsequencename;
+	}
+
+	public void setttsequenceid(int _ttsequenceid) {
+		this.ttsequenceid = _ttsequenceid;
+	}
+
+	public void setttsequencename(String _ttsequencename) {
+		this.ttsequencename = _ttsequencename;
+	}
+
+	public String toString() {
+		return new StringBuffer("TTsequenceid : ").append(ttsequenceid).append(
+				", ").append("TTsequencename : ").append(ttsequencename)
+				.toString();
+	}
 }
