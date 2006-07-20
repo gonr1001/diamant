@@ -216,7 +216,7 @@ public class ATTSAXContentHandler extends DefaultHandler {
 			SAXParser parseur = fabrique.newSAXParser();
 
 			// lecture d'un fichier XML avec un DefaultHandler
-			File afichier = new File("./GrilleAmineTest.xml");
+			File afichier = new File("./dataTest/AmineData/GrilleAmineTest.xml");
 			DefaultHandler agestionnaire = new ATTSAXContentHandler();
 			parseur.parse(afichier, agestionnaire);
 
