@@ -127,8 +127,8 @@
 			<fileset dir="${build}" />
 		</jar>
 	</target>
-	<target name="signjar" depends="package" description="Signs the jar for WebStart deployment">
-		<signjar jar="${distDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" keypass="Diamant" storepass="Diamant" />
+	<target name="signjar" depends="completepackage" description="Signs the jar for WebStart deployment">
+		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
 	<target name="completepackage" depends="package">
 		<copy file="${origDist}/Diamant.bat" todir="${distDir}" />
