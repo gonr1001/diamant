@@ -50,8 +50,8 @@ public class AmineTest {
 		System.out.println("Hello I am in Aminetests");
 		TestSuite suite = new TestSuite("AmineTest");
 
-		suite.addTest(ATTStructureTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(ATTStructureTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
 
 
 		System.out.println("Bye I was in AmineTest");

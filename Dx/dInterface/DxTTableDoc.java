@@ -152,17 +152,15 @@ public class DxTTableDoc extends DxDocument {
 		_dm.changeInDModel(str);
 	}// end changeInDModel
 
-//	@Override
-//	public void close() {
-//		// TODO Auto-generated method stub
-//
-//	}
 
 	// -------------------------------------------
 	public DModel getCurrentDModel() {
 		return _dm;
 	} // end getDModel
+	
+	
 	// -------------------------------------------
+	@Override
 	public boolean isModified() {
 		return _dm.getModified();
 	} // end getDModel
@@ -197,16 +195,4 @@ public class DxTTableDoc extends DxDocument {
 		 buidDocument(false, true);
 		 _ttPane.updateTTPane(_dm.getTTStructure());		
 	}
-
-	// public void displayHorizontalSplit() {
-	// close();
-	// buidDocument(false, false);
-	// _ttPane.updateTTPane(_dm.getTTStructure());
-	// }
-	//
-	// public void displayVericalSplit() {
-	// close();
-	// buidDocument(false, true);
-	// _ttPane.updateTTPane(_dm.getTTStructure());
-	// }
 }

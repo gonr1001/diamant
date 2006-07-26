@@ -201,16 +201,6 @@ public class DxTTStructureDoc extends DxDocument {
 		_autoImportDIMFilePath = importDIMFilePath;
 	}
 
-	// public void changeInModelByToolBar(ActionListener listener) {
-	// System.out.println("changeInModelByToolBar+ rgr here");
-	//
-	// }
-
-//	@Override
-//	public void changeInModel(ActionListener listener) {
-//		System.out.println("changeInModel+ rgr here");
-//		_ttStructure.changeInTTStructure(listener);
-//	}// end changeInDModel
 
 	@Override
 	public void saveTTStrucure(String str) {
