@@ -572,7 +572,7 @@ public class DApplication { // implements ActionListener {
 			if (this.getCurrentDxDoc().getDocumentName().endsWith(
 					DConst.NO_NAME))
 				new SaveAsTTDlg(this);
-			else if (this.getCurrentDoc().isModified())
+			else if (this.getCurrentDxDoc().isModified())
 				this._dMediator.saveCurrentDoc(this.getCurrentDxDoc()
 						.getDocumentName());
 			// else not necessary to save

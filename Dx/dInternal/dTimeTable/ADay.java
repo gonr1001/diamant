@@ -25,6 +25,7 @@ public class ADay {
 	private String ttdayname;
 
 	public ADay() {
+		//a
 	}
 
 	public int getttdayid() {

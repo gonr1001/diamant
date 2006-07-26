@@ -43,6 +43,8 @@ public class TTStructure extends Observable {
 
 	private DSetOfResources _setOfCycles;
 
+	private boolean _modified;
+
 	// private int _nbOfStCycles=2;
 	// private int _nbOfStDays=7;
 	// private int _currentCycleIndex = 1;
@@ -89,6 +91,7 @@ public class TTStructure extends Observable {
 
 	public TTStructure() {
 		_setOfCycles = new StandardCollection();
+		_modified = false;
 	}
 
 	public int getNumberOfActiveDays() {
@@ -350,10 +353,12 @@ public class TTStructure extends Observable {
 			doc = wr.buildDocument(doc, ttStruc);
 			XMLOutputFile xmlOF = new XMLOutputFile();
 			xmlOF.write(doc, fileName);
-			return "";
+			_modified = false;
+			return "";		
 		} catch (Exception e) {
 			return e.toString();// debug
 		}
+		
 
 	}
 
@@ -642,19 +647,31 @@ public class TTStructure extends Observable {
 		}
 		return sReturn;
 	}
-	
-    public void changeInTTStructure(Object obj) {
-        this.setChanged();
-        this.notifyObservers(obj);
-        this.clearChanged();
-    }
-    
-//    .setChanged();
-//    // change model
-//    _ttStructure.setModified();
-//    // this.setStateBarComponent();
-////    _nbConflicts = getTTStructure().getCurrentCycle()
-////            .getTotalNumberOfConflicts();
-//    _ttStructure.notifyObservers(obj);
-//    _ttStructure.clearChanged();
+
+	public void changeInTTStructure(Object obj) {
+		this.setModified();
+		this.setChanged();
+		this.notifyObservers(obj);
+		this.clearChanged();
+	}
+
+	public boolean isModified() {
+		return _modified;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public void setModified() {
+		_modified = true;
+	}
+	//    .setChanged();
+	//    // change model
+	//    _ttStructure.setModified();
+	//    // this.setStateBarComponent();
+	////    _nbConflicts = getTTStructure().getCurrentCycle()
+	////            .getTotalNumberOfConflicts();
+	//    _ttStructure.notifyObservers(obj);
+	//    _ttStructure.clearChanged();
 }

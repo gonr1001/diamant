@@ -94,7 +94,7 @@ public class ConditionsTest extends TestCase {
     					+ "dataTest" + File.separator + "loadData7j.dia");
     		} else {
     			_dm7j = new DModel(new DDocument(), "." + File.separator
-    					+ "dataTest" + File.separator + "lloadData7j", 1);
+    					+ "dataTest" + File.separator + "loadData7j.dia", 1);
     		}
         } catch (Exception e) {
             //Should not fail in controled conditions

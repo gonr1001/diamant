@@ -6,6 +6,5 @@
 	<classpathentry kind="lib" path="jars/log4j-1.2.8.jar"/>
 	<classpathentry kind="lib" path="jars/xml-apis.jar"/>
 	<classpathentry kind="lib" path="jars/junit.jar"/>
-	<classpathentry kind="lib" path="/DiamantWeb/Diamant2.0/WEB-INF/lib/xerces.jar"/>
 	<classpathentry kind="output" path="DiamantClasses"/>
 </classpath>

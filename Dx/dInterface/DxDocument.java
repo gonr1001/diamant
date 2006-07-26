@@ -149,9 +149,8 @@ public abstract class DxDocument implements Observer {
 
 	//
 	// // -------------------------------------------
-	public boolean isModified() {
-		return true;// _dm.getModified();
-	} // end getModified
+	public abstract boolean isModified();
+
 
 	//
 	// // -------------------------------------------

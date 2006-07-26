@@ -33,6 +33,15 @@ projectfile.encoding=Cp1252
 Root.5=D:\\Program Files\\Java\\jdk1.5.0_01\\jre\\lib\\rt.jar
 Root.5.access=import
 Root.5.non_removable=
+Root.6=$PROJECT_DIR$/jars/jdom.jar
+Root.6.access=import
+Root.6.file_types=element;java_source;diagram;vb_files;cpp_source;idl_source;csharp_source;vbnet_source;cpp_header;java_class
+Root.7=$PROJECT_DIR$/jars/log4j-1.2.8.jar
+Root.7.access=import
+Root.7.file_types=element;java_source;diagram;vb_files;cpp_source;idl_source;csharp_source;vbnet_source;cpp_header;java_class
+Root.8=$PROJECT_DIR$/jars/xml-apis.jar
+Root.8.access=import
+Root.8.file_types=element;java_source;diagram;vb_files;cpp_source;idl_source;csharp_source;vbnet_source;cpp_header;java_class
 [testingframework]
 none.created=true
 server.config.0.isLocal=true
@@ -48,16 +57,16 @@ server.config.1.url=http://localhost:9080/tf
 server.config.2.url=http://localhost:9080/tf
 server.config.3.url=http://localhost:9080/tf
 [editor]
-recent.file.0=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DxTTStructureDoc.java
-recent.file.1=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DDocument.java
-recent.file.2=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DApplication.java
-recent.file.3=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DDevelopmentMenu.java
-recent.file.4=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\dMenus\\DDevelopmentMenu.java
-recent.file.5=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DxDocument.java
-recent.file.6=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\RefinedStudMixAlgo.java
-recent.file.7=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\RoomAssignmentAlgo.java
-recent.file.8=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\SelectAlgorithm.java
-recent.file.9=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\dAffectation\\EditActivityDlg.java
+recent.file.0=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\RoomAssignmentAlgo.java
+recent.file.1=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\SelectAlgorithm.java
+recent.file.2=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\dAffectation\\EditActivityDlg.java
+recent.file.3=D:\\Program Files\\Java\\jdk1.5.0_01\\src.zip\\java\\lang\\Object.java
+recent.file.4=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DMediator.java
+recent.file.5=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DDocument.java
+recent.file.6=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DxTTableDoc.java
+recent.file.7=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\Makefile
+recent.file.8=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInternal\\dOptimization\\RefinedStudMixAlgo.java
+recent.file.9=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\dInterface\\DxTTStructureDoc.java
 [runtimeargs]
 applet_vmoptions0=-classic
 applet_vmoptions1=-classic
@@ -91,7 +100,7 @@ Developer.DebugWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,19,-1,-1,-1,-1}${0,1,-1,
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.proto={{0,2,-1,0,0,0,0,1,0,1,1,23,75,17,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,23,75,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,17,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,17,14,81,1003,615}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 names.Developer={<default>}
-Developer.<default>={{0,2,-1,0,0,0,0,1,0,1,1,100,75,9,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,100,75,9,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,9,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,9,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,9,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
+Developer.<default>={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 [lastOpenProjectName]
 Developer=<default>
 [compiler]
@@ -127,3 +136,7 @@ java.java14syntax=false
 homedir=D:\\Program Files\\Java\\jdk1.5.0_01
 [vcs]
 provider.class=CVS LAN
+[tool]
+f.command=D:\\_exitDev\\exitProjects\\DiamantExtreme\\Dx\\build.xml
+f.parameters=
+g.name=

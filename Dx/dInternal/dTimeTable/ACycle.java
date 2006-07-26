@@ -33,6 +33,7 @@ public class ACycle {
 	 */
 	// private ADay[] days;
 	public ACycle() {
+		//aa
 	}
 
 	public String getttcycleid() {

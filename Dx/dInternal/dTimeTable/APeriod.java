@@ -31,6 +31,7 @@ public class APeriod {
 	private String ttperiodname;
 
 	public APeriod() {
+		//aa
 	}
 
 	public int getttperiodperiodid() {

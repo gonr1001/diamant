@@ -25,6 +25,7 @@ public class ASequence {
 	private String ttsequencename;
 
 	public ASequence() {
+		//a
 	}
 
 	public int getttsequenceid() {

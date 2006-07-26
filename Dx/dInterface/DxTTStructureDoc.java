@@ -226,4 +226,9 @@ public class DxTTStructureDoc extends DxDocument {
 	public void changeInModel(String str) {
 		_ttStructure.changeInTTStructure(str);	
 	}
+
+	@Override
+	public boolean isModified() {
+		return _ttStructure.isModified();
+	}
 }

@@ -152,15 +152,19 @@ public class DxTTableDoc extends DxDocument {
 		_dm.changeInDModel(str);
 	}// end changeInDModel
 
-	@Override
-	public void close() {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void close() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	// -------------------------------------------
 	public DModel getCurrentDModel() {
 		return _dm;
+	} // end getDModel
+	// -------------------------------------------
+	public boolean isModified() {
+		return _dm.getModified();
 	} // end getDModel
 
 	@Override
