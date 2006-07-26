@@ -1,158 +1,161 @@
 <project name="DiamantBuild" basedir="." default="all">
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
-		<tstamp/>
-		<property name="distDirZip" value="./Diamant1.6"/>
-		<property name="srcDir" value="."/>
-		<property name="localJars" value="${srcDir}/jars"/>
-		<property name="eclipse" value="D:/Program Files/eclipse/plugins"/>
-		<property name="build" value="${srcDir}/classes"/>
-		<property name="reports" value="${srcDir}/reports"/>
-		<property name="dataTest" value="${build}/dataTest"/>
-		<property name="TTxmlFiles" value="${dataTest}/TTxmlFiles"/>
-		<property name="lib" value="${build}/lib"/>
-		<property name="distDir" value="${distDirZip}/Diamant"/>
-		<property name="origDist" value="${srcDir}/origDist"/>
-		<property name="tictacJar" value="${distDir}/tictac.jar"/>
-		<property name="setProps" value="true"/>
+		<tstamp />
+		<property name="distDirZip" value="./Diamant1.6" />
+		<property name="srcDir" value="." />
+		<property name="localJars" value="${srcDir}/jars" />
+		<property name="eclipse" value="D:/Program Files/eclipse/plugins" />
+		<property name="build" value="${srcDir}/classes" />
+		<property name="reports" value="${srcDir}/reports" />
+		<property name="dataTest" value="${build}/dataTest" />
+		<property name="TTxmlFiles" value="${dataTest}/TTxmlFiles" />
+		<property name="lib" value="${build}/lib" />
+		<property name="distDir" value="${distDirZip}/Diamant" />
+		<property name="origDist" value="${srcDir}/origDist" />
+		<property name="tictacJar" value="${distDir}/tictac.jar" />
+		<property name="setProps" value="true" />
 	</target>
 	<target name="clean" depends="setDirs" description="clean up the output directories.">
-		<delete dir="${distDirZip}"/>
-		<delete dir="${build}"/>
+		<delete dir="${distDirZip}" />
+		<delete dir="${build}" />
 	</target>
 	<target name="prepare" depends="clean" description="prepare the output directories.">
-		<mkdir dir="${build}"/>
-		<mkdir dir="${reports}"/>
-		<mkdir dir="${dataTest}"/>
-		<mkdir dir="${lib}"/>
-		<mkdir dir="${distDirZip}"/>
-		<mkdir dir="${distDir}"/>
-		<mkdir dir="${distDir}/pref"/>
-		<mkdir dir="${distDir}/trace"/>
-		<mkdir dir="${distDir}/qVerif"/>
-		<mkdir dir="${distDir}/facs"/>
-		<mkdir dir="${distDir}/facs/admin"/>
-		<mkdir dir="${distDir}/facs/admin/exemple"/>
-		<mkdir dir="${distDir}/facs/education"/>
-		<mkdir dir="${distDir}/facs/education/exemple"/>
-		<mkdir dir="${distDir}/facs/eduPh"/>
-		<mkdir dir="${distDir}/facs/eduPh/exemple"/>
-		<mkdir dir="${distDir}/facs/genie"/>
-		<mkdir dir="${distDir}/facs/genie/exemple"/>
-		<mkdir dir="${distDir}/facs/lettres"/>
-		<mkdir dir="${distDir}/facs/lettres/exemple"/>
-		<mkdir dir="${distDir}/facs/medInf"/>
-		<mkdir dir="${distDir}/facs/medInf/exemple"/>
-		<mkdir dir="${distDir}/facs/sciences"/>
-		<mkdir dir="${distDir}/facs/sciences/exemple"/>
+		<mkdir dir="${build}" />
+		<mkdir dir="${reports}" />
+		<mkdir dir="${dataTest}" />
+		<mkdir dir="${lib}" />
+		<mkdir dir="${distDirZip}" />
+		<mkdir dir="${distDir}" />
+		<mkdir dir="${distDir}/pref" />
+		<mkdir dir="${distDir}/trace" />
+		<mkdir dir="${distDir}/qVerif" />
+		<mkdir dir="${distDir}/facs" />
+		<mkdir dir="${distDir}/facs/admin" />
+		<mkdir dir="${distDir}/facs/admin/exemple" />
+		<mkdir dir="${distDir}/facs/education" />
+		<mkdir dir="${distDir}/facs/education/exemple" />
+		<mkdir dir="${distDir}/facs/eduPh" />
+		<mkdir dir="${distDir}/facs/eduPh/exemple" />
+		<mkdir dir="${distDir}/facs/genie" />
+		<mkdir dir="${distDir}/facs/genie/exemple" />
+		<mkdir dir="${distDir}/facs/lettres" />
+		<mkdir dir="${distDir}/facs/lettres/exemple" />
+		<mkdir dir="${distDir}/facs/medInf" />
+		<mkdir dir="${distDir}/facs/medInf/exemple" />
+		<mkdir dir="${distDir}/facs/sciences" />
+		<mkdir dir="${distDir}/facs/sciences/exemple" />
 		<copy todir="${dataTest}">
 			<fileset dir="${srcDir}/dataTest">
-				<exclude name="**/CVS"/>
-				<exclude name="**/*.txvpck"/>
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 		<copy todir="${TTxmlFiles}">
 			<fileset dir="${srcDir}/dataTest/TTxmlFiles">
-				<exclude name="**/CVS"/>
-				<exclude name="**/*.txvpck"/>
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 	</target>
 	<target name="compilepath" depends="prepare" description="compile path classpath.">
 		<path id="c.classpath">
-			<pathelement path="${localJars}/junit.jar"/>
-			<pathelement path="${localJars}/log4j-1.2.8.jar"/>
-			<pathelement path="${localJars}/xml-api.jar"/>
-			<pathelement path="${localJars}/jdom.jar"/>
-			<pathelement path="${build}"/>
+			<pathelement path="${localJars}/junit.jar" />
+			<pathelement path="${localJars}/log4j-1.2.8.jar" />
+			<pathelement path="${localJars}/xml-api.jar" />
+			<pathelement path="${localJars}/jdom.jar" />
+			<pathelement path="${build}" />
 		</path>
 	</target>
 	<target name="compile" depends="compilepath" description="compile the java sources.">
-		<javac srcdir="${srcDir}" destdir="${build}" source="1.5" >
-			<compilerarg value="-Xlint"/>
-			<classpath refid="c.classpath"/>
+		<javac srcdir="${srcDir}" destdir="${build}" source="1.5">
+			<compilerarg value="-Xlint" />
+			<classpath refid="c.classpath" />
 		</javac>
 	</target>
 	<target name="testpath" depends="prepare" description="test path classpath.">
 		<path id="t.classpath">
-			<pathelement path="${localJars}/junit.jar"/>
-			<pathelement path="${localJars}/log4j-1.2.8.jar"/>
-			<pathelement path="${localJars}/xml-api.jar"/>
-			<pathelement path="${localJars}/jdom.jar"/>
-			<pathelement path="${dataTest}"/>
-			<pathelement path="${build}"/>
+			<pathelement path="${localJars}/junit.jar" />
+			<pathelement path="${localJars}/log4j-1.2.8.jar" />
+			<pathelement path="${localJars}/xml-api.jar" />
+			<pathelement path="${localJars}/jdom.jar" />
+			<pathelement path="${dataTest}" />
+			<pathelement path="${build}" />
 		</path>
 	</target>
 	<target name="unitTest" depends="compile, testpath" description="test the java sources">
 		<junit printsummary="false" haltonfailure="true">
-			<classpath refid="t.classpath"/>
-			<formatter type="brief" usefile="false"/>
-			<formatter type="xml"/>
+			<classpath refid="t.classpath" />
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
 			<batchtest todir="${reports}">
-				<fileset dir="${build}" includes="dmains/*Test.class"/>
+				<fileset dir="${build}" includes="dmains/*Test.class" />
 			</batchtest>
 		</junit>
 		<junitreport todir="${reports}">
 			<fileset dir="${reports}">
-				<include name="TEST-*.xml"/>
+				<include name="TEST-*.xml" />
 			</fileset>
-			<report format="frames" todir="${reports}"/>
+			<report format="frames" todir="${reports}" />
 		</junitreport>
 	</target>
 	<target name="exe" depends="unitTest" description="execute the java sources.">
 		<java classname="dmains.Diamant">
-			<classpath refid="c.classpath"/>
+			<classpath refid="c.classpath" />
 		</java>
 	</target>
 	<target name="unjar1" depends="unitTest">
-		<unjar src="${localJars}/junit.jar" dest="${build}"/>
+		<unjar src="${localJars}/junit.jar" dest="${build}" />
 	</target>
 	<target name="unjar2" depends="unjar1">
-		<unjar src="${localJars}/log4j-1.2.8.jar" dest="${build}"/>
+		<unjar src="${localJars}/log4j-1.2.8.jar" dest="${build}" />
 	</target>
 	<target name="unjar3" depends="unjar2">
-		<unjar src="${localJars}/xml-apis.jar" dest="${build}"/>
+		<unjar src="${localJars}/xml-apis.jar" dest="${build}" />
 	</target>
 	<target name="unjar4" depends="unjar3">
-		<unjar src="${localJars}/jdom.jar" dest="${build}"/>
+		<unjar src="${localJars}/jdom.jar" dest="${build}" />
 	</target>
 	<target name="manifest" depends="unjar4" description="make the manifest">
 		<manifest file="${srcDir}/MANIFEST.MF">
-			<attribute name="Built-By" value="${user.name}"/>
-			<attribute name="Built-On" value="${timestamp}"/>
-			<attribute name="Main-Class" value="dmains.Diamant"/>
+			<attribute name="Built-By" value="${user.name}" />
+			<attribute name="Built-On" value="${timestamp}" />
+			<attribute name="Main-Class" value="dmains.Diamant" />
 		</manifest>
 	</target>
 	<target name="package" depends="manifest">
 		<jar jarfile="${distDir}/tictac.jar" index="true" manifest="${srcDir}/MANIFEST.MF">
-			<fileset dir="${build}"/>
+			<fileset dir="${build}" />
 		</jar>
 	</target>
+	<target name="signjar" depends="package" description="Signs the jar for WebStart deployment">
+		<signjar jar="${distDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" keypass="Diamant" storepass="Diamant" />
+	</target>
 	<target name="completepackage" depends="package">
-		<copy file="${origDist}/Diamant.bat" todir="${distDir}"/>
-		<copy file="${distDir}/tictac.jar" todir="${srcDir}"/>
+		<copy file="${origDist}/Diamant.bat" todir="${distDir}" />
+		<copy file="${distDir}/tictac.jar" todir="${srcDir}" />
 		<copy todir="${distDir}/pref">
 			<fileset dir="${srcDir}/pref">
-				<exclude name="**/CVS"/>
-				<exclude name="**/*.txvpck"/>
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
-		<copy file="${srcDir}/trace/log4j.conf" todir="${distDir}/trace"/>
+		<copy file="${srcDir}/trace/log4j.conf" todir="${distDir}/trace" />
 		<copy todir="${distDir}/qVerif">
 			<fileset dir="${origDist}/qVerif">
-				<exclude name="**/CVS"/>
-				<exclude name="**/*.txvpck"/>
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 		<copy todir="${distDir}/facs">
 			<fileset dir="${origDist}/facs">
-				<exclude name="**/CVS"/>
-				<exclude name="**/*.txvpck"/>
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 	</target>
 	<target name="zip" depends="completepackage" description="performs theZip">
-		<zip basedir="${distDirZip}" destfile="${srcDir}/Diamant.zip"/>
+		<zip basedir="${distDirZip}" destfile="${srcDir}/Diamant.zip" />
 	</target>
 	<target name="all" depends="clean, package, zip" description="performs all targets">
-    </target>
+	</target>
 </project>
