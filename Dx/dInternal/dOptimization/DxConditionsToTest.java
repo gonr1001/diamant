@@ -21,7 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.Day;
@@ -379,7 +379,7 @@ public class DxConditionsToTest {
 	 * extract preference tables
 	 */
 	public void extractPreference() {
-		if (DConst.newDoc){
+		if (DxFlags.newDoc){
 			if (_dm.getDxDocument().getDMediator() != null) {
 				int[] conflictsPreference = _dm.getDxDocument().getDMediator()
 						.getDApplication().getPreferences().getConflictLimits();

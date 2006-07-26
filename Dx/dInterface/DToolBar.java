@@ -35,6 +35,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.dTimeTable.PeriodPanel;
 import dInterface.dUtil.DxJComboBox;
 import dInternal.DResource;
@@ -177,7 +178,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 								"Valeur eronnée");
 					// Treat event
 					// _dApplic.getDModel().getTTStructure().sendEvent();
-					if (DConst.newDoc) {
+					if (DxFlags.newDoc) {
 						_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 						setToolBarOne();
 						setToolBarTwo();
@@ -221,7 +222,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 						.getResourceAt(index);
 				resc.setID((String) _dayNameSelector.getSelectedItem());
 				
-				if (DConst.newDoc) {
+				if (DxFlags.newDoc) {
 					_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 				} else {
 					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
@@ -249,7 +250,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
 				PeriodPanel ppanel = null;
-				if (DConst.newDoc) {
+				if (DxFlags.newDoc) {
 					ppanel = _dApplic.getCurrentDxDoc().getTTPane()
 					.getPeriodPanel(Integer.parseInt(item));
 				} else {
@@ -261,7 +262,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 						ppanel.getPeriodRef()[2]);
 				period.setPriority(_periodTypeSelector.getSelectedIndex());
 				if (_comboBoxStatus) {
-					if (DConst.newDoc) {
+					if (DxFlags.newDoc) {
 						_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 					} else {
 						_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
@@ -279,7 +280,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
 				PeriodPanel ppanel = null;
-				if (DConst.newDoc) {
+				if (DxFlags.newDoc) {
 					ppanel = _dApplic.getCurrentDxDoc().getTTPane()
 					.getPeriodPanel(Integer.parseInt(item));
 				} else {
@@ -294,7 +295,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 					period.setPriority(_periodTypeSelector.getSelectedIndex());
 				}
 
-				if (DConst.newDoc) {
+				if (DxFlags.newDoc) {
 					_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 				} else {
 					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
@@ -311,7 +312,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
 				PeriodPanel ppanel = null;
-				if (DConst.newDoc) {
+				if (DxFlags.newDoc) {
 					ppanel = _dApplic.getCurrentDxDoc().getTTPane()
 					.getPeriodPanel(Integer.parseInt(item));
 				} else {
@@ -330,7 +331,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 								.getSelectedIndex());
 					}
 				}
-				if (DConst.newDoc) {
+				if (DxFlags.newDoc) {
 					_dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 				} else {
 					_dApplic.getCurrentDModel().changeInDModelByToolBar(this);
@@ -348,7 +349,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 	 */
 	public void setPeriodSelector(String item) {
 		if (DXToolsMethods.isIntValue(item)) {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				PeriodPanel ppanel = _dApplic.getCurrentDxDoc().getTTPane()
 						.getPeriodPanel(Integer.parseInt(item));
 				Period period;
@@ -462,7 +463,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		_periodSelector.disableActionListeners();
 		_comboBoxStatus = false;
 		JPanel thePane = null;
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			thePane = (JPanel) _dApplic.getCurrentDxDoc().getTTPane()
 					.getViewport().getComponent(0);
 		} else {

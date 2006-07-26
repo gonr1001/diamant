@@ -23,7 +23,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -50,7 +50,7 @@ public class ConditionsTest extends TestCase {
 		try {
 //            _dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
 //            		+ File.separator + "loadData5j.dia", 1);
-            if (DConst.newDoc) {
+            if (DxFlags.newDoc) {
     			_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
     					+ "dataTest" + File.separator + "loadData5j.dia");
     		} else {
@@ -70,7 +70,7 @@ public class ConditionsTest extends TestCase {
 		try {
 //            _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
 //            		+ File.separator + "lData5j30min.dia", 1);
-            if (DConst.newDoc) {
+            if (DxFlags.newDoc) {
     			_dmh = new DModel(new DxTTableDoc(), "." + File.separator
     					+ "dataTest" + File.separator + "lData5j30min.dia");
     		} else {
@@ -89,7 +89,7 @@ public class ConditionsTest extends TestCase {
 		try {
 //            _dm7j = new DModel(new DDocument(), "." + File.separator + "dataTest"
 //            		+ File.separator + "loadData7j.dia", 1);
-            if (DConst.newDoc) {
+            if (DxFlags.newDoc) {
     			_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
     					+ "dataTest" + File.separator + "loadData7j.dia");
     		} else {

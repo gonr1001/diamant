@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.13 $  $Date: 2006-07-05 19:58:22 $
+ * Title: SaveAsTTDlg $Revision: 1.14 $  $Date: 2006-07-26 17:55:46 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -31,6 +31,7 @@ package dInterface.dTimeTable;
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxTTStructureDoc;
 import dResources.DFileFilter;
@@ -72,7 +73,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 	} // doSave
 
 	public String setExtension(JFileChooser fc) {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (_dApplic.getDMediator().getCurrentDxDoc() instanceof DxTTStructureDoc) {
 				fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
 						DConst.XML_FILE));

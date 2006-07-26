@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-07-11 20:40:00 $
+ * Title: DSaveDataTest $Revision $  $Date: 2006-07-26 17:55:54 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -24,7 +24,7 @@ package dTest.dInternal.dData;
 
 import java.io.File;
 
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
@@ -80,7 +80,7 @@ public class DSaveDataTest extends TestCase {
 		_type = 1;
 		try {
 //			_dm1 = new DModel(_dDocument1, _fileName1, _type);
-			if(DConst.newDoc){
+			if(DxFlags.newDoc){
 				_dm1 = new DModel(_dxDocument1, _fileName1);
 			} else {
 				_dm1 = new DModel(_dDocument1, _fileName1, _type);
@@ -88,7 +88,7 @@ public class DSaveDataTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		if (DConst.newRooms) {
+		if (DxFlags.newRooms) {
 			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
 					.getDxSetOfInstructors(), _dm1.getDxSetOfSites(), _dm1
 					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
@@ -103,7 +103,7 @@ public class DSaveDataTest extends TestCase {
 
 		try {
 //			_dm2 = new DModel(_dDocument2, _fileName2, _type);
-			if(DConst.newDoc){
+			if(DxFlags.newDoc){
 				_dm2 = new DModel(_dxDocument2, _fileName2);
 			} else {
 				_dm2 = new DModel(_dDocument2, _fileName2, _type);
@@ -147,7 +147,7 @@ public class DSaveDataTest extends TestCase {
 	 * test that check that the saved file is the same as the loaded file
 	 */
 	public void test_loadRooms() {
-		if (DConst.newRooms) {
+		if (DxFlags.newRooms) {
 			assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
 					.getDxSetOfSites().isEqual(_dm2.getDxSetOfSites()));
 		} else {

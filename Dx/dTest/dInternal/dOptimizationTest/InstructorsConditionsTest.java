@@ -5,7 +5,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -21,7 +21,7 @@ public class InstructorsConditionsTest extends TestCase {
 	public InstructorsConditionsTest(String name) {
 		super(name);
 		try {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData5j.dia");
 			} else {
@@ -38,7 +38,7 @@ public class InstructorsConditionsTest extends TestCase {
 		try {
 //			_dm7j = new DModel(new DDocument(), "." + File.separator
 //				+ "dataTest" + File.separator + "loadData5j.dia", 1);
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData5j.dia");
 			} else {

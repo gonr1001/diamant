@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.52 $ $Date: 2006-07-11 15:14:10 $
+ * Title: ActivityDlg $Revision: 1.53 $ $Date: 2006-07-26 17:55:43 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.52 $
+ * @version $Revision: 1.53 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,6 +33,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
@@ -87,7 +88,7 @@ public class ActivityDlg extends JDialog implements ActionListener, DlgIdentific
         _dApplic = dApplic;
         _jd = this; //to pass this dialog to the EditActivityDlg
         
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
@@ -201,7 +202,7 @@ public class ActivityDlg extends JDialog implements ActionListener, DlgIdentific
         //if button APPLY
         if (command.equals(DConst.BUT_APPLY)) {
             setActivitesVisibility();
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
 			} else {
 				_dmodel.changeInDModelByActivity(this);

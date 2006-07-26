@@ -24,7 +24,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
@@ -69,7 +69,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		int type = 1;
 
 		try {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName.toString());
 			} else {
 				dm1 = new DModel(_dDocument1, fileName.toString(), type);
@@ -106,7 +106,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		int type = 1;
 
 		try {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName.toString());
 			} else {
 				dm1 = new DModel(_dDocument1, fileName.toString(), type);

@@ -4,6 +4,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
@@ -95,7 +96,7 @@ public class SetOfEvents extends DSetOfResources {
 
 								assignDxInstructors(soie, assignment, unityID);
 
-								if (DConst.newRooms)
+								if (DxFlags.newRooms)
 									roomKey = assignDxRooms(soie, assignment,
 											unityID);
 								else
@@ -270,7 +271,7 @@ public class SetOfEvents extends DSetOfResources {
 						.getDxSetOfInstructors(), keys[j]));
 			}// end for
 
-			if(DConst.newRooms)
+			if(DxFlags.newRooms)
 			{
 				assignment.setRoom(getRoomName(_dm.getDxSetOfRooms(), event
 						.getRoomKey()));

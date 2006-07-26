@@ -43,6 +43,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.ManualImprovementDlg;
 import dInterface.dTimeTable.OpenTTDlg;
@@ -339,7 +340,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void exit() {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			// if no Document exit ok
 			while (_dMediator.getCurrentDxDoc() != null) { // is a while
 				this.close(); // new CloseCmd().execute(this);
@@ -371,7 +372,7 @@ public class DApplication { // implements ActionListener {
 	}
 
 	public DModel getCurrentDModel() {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			return getCurrentDxDoc().getCurrentDModel();
 		}
 		return getCurrentDoc().getCurrentDModel();
@@ -407,7 +408,7 @@ public class DApplication { // implements ActionListener {
 		new NewTimeTableDlg(this, DConst.CYCLE);
 		this.setCurrentDir(_fileToOpen);
 
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			try {
 				this.getDMediator().addDxTTableDoc(
 						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
@@ -466,7 +467,7 @@ public class DApplication { // implements ActionListener {
 	public void newTTStrucCycle() {
 		this.showToolBar();
 		this.setCursorWait();
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			try {
 				this._dMediator
 						.addDxTTStructureDoc(this.getPreferences()._standardTTC);
@@ -495,7 +496,7 @@ public class DApplication { // implements ActionListener {
 	public void newTTStrucExam() {
 		this.showToolBar();
 		this.setCursorWait();
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			try {
 				this._dMediator
 						.addDxTTStructureDoc(this.getPreferences()._standardTTE);
@@ -550,7 +551,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void close() {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			this._dMediator.closeCurrentDxDoc();
 			if (!this._dMediator.getCancel()) {
 				_dxMenuBar.initialState();
@@ -568,7 +569,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void save() {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (this.getCurrentDxDoc().getDocumentName().endsWith(
 					DConst.NO_NAME))
 				new SaveAsTTDlg(this);
@@ -698,7 +699,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc()
 					.getCurrentDModel().getDxSetOfInstructors());
 		} else {
@@ -711,8 +712,8 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void roomAvailability() {
-		if (DConst.newRooms) {
-			if (DConst.newDoc) {
+		if (DxFlags.newRooms) {
+			if (DxFlags.newDoc) {
 				new DxRoomAvailabilityDlg(this, this.getCurrentDxDoc()
 						.getCurrentDModel().getDxSetOfSites());
 			} else {
@@ -808,7 +809,7 @@ public class DApplication { // implements ActionListener {
 	public void doTheTimeTable() {
 		this.setCursorWait();
 
-		if (DConst.newAlg) {
+		if (DxFlags.newAlg) {
 			new DxAssignAllAlg(this.getCurrentDModel(), this.getPreferences()
 					.getDxConflictLimits()).doWork();
 
@@ -826,9 +827,9 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void doSectionPartition() {
-		boolean _userTestActiv = true;
-
-		DConst.USER_TEST_ACTIV = _userTestActiv;
+//		boolean _userTestActiv = true;
+//
+//		DConst.USER_TEST_ACTIV = _userTestActiv;
 		PersonalizeMixingAlgorithmDlg perso = new PersonalizeMixingAlgorithmDlg(
 				DConst.DEFAULT_MIX_ALGO);
 		String input = perso.showInputDialog();
@@ -866,7 +867,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void simpleView() {
-		if (DConst.newDoc){
+		if (DxFlags.newDoc){
 			if (this.getCurrentDxDoc() != null)
 				this.getCurrentDxDoc().displaySimple();
 		} else {
@@ -881,7 +882,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void horizontalSplitView() {
-		if (DConst.newDoc){
+		if (DxFlags.newDoc){
 			if (this.getCurrentDxDoc() != null)
 				this.getCurrentDxDoc().displayHorizontalSplit();
 		} else {
@@ -894,7 +895,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void vericalSplitview() {
-		if (DConst.newDoc){
+		if (DxFlags.newDoc){
 			if (this.getCurrentDxDoc() != null)
 				this.getCurrentDxDoc().displayVericalSplit();
 		} else {
@@ -916,7 +917,7 @@ public class DApplication { // implements ActionListener {
 	public void myFile() {
 		setCurrentDir(".\\devData\\");
 		try {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dMediator.addDxTTableDoc("", ".\\devData\\fichier1.dia");
 			} else {
 				_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
@@ -924,7 +925,7 @@ public class DApplication { // implements ActionListener {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		}
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
 			getCurrentDxDoc().getCurrentDModel().changeInDModel(
 					this.getJFrame());
@@ -960,8 +961,8 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void roomAssignment() {
-		if (DConst.newAlg) {
-			if (DConst.newDoc) {
+		if (DxFlags.newAlg) {
+			if (DxFlags.newDoc) {
 				new DxAssignRoomsAlg(this.getCurrentDxDoc().getCurrentDModel(),
 						this.getPreferences().getDxConflictLimits()).doWork();
 				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
@@ -972,7 +973,7 @@ public class DApplication { // implements ActionListener {
 			}
 
 		} else {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				new RoomAssignmentAlgo(this.getCurrentDxDoc()
 						.getCurrentDModel());
 				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
@@ -1002,7 +1003,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public boolean isMultiSite() {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (this.getCurrentDxDoc() == null) {
 				return false;
 			}
@@ -1019,7 +1020,7 @@ public class DApplication { // implements ActionListener {
 	 * @param str
 	 */
 	public void changeInMulti(String str) {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
 			if (str.equalsIgnoreCase(DConst.ALL_SITES))
 				this.getCurrentDxDoc().getCurrentDModel().changeInDModel(

@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -22,7 +22,7 @@ public class SetOfEventsTest extends TestCase {
 	public SetOfEventsTest(String name) {
 		super(name);
 		try {
-			if(DConst.newDoc){
+			if(DxFlags.newDoc){
 				_dm = new DModel(new DxTTableDoc(), "." + File.separator + "dataTest"
 						+ File.separator + "loadData5j.dia");
 			} else{
@@ -79,7 +79,7 @@ public class SetOfEventsTest extends TestCase {
 	public void test2_build() {
 		long roomKey = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getRoomKey();
-		if (DConst.newRooms) {
+		if (DxFlags.newRooms) {
 			assertEquals("test_build : assertEquals: ", "D73020", _dm
 					.getDxSetOfRooms().getRoomName(roomKey));
 		} else {

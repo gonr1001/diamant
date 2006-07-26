@@ -24,6 +24,7 @@ import java.util.Observable;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInternal.dData.DLoadData;
@@ -326,7 +327,7 @@ public class DModel extends Observable {
 		// }
 		_dxSetOfInstructors.alwaysAvailable();
 
-		if (DConst.newRooms) {
+		if (DxFlags.newRooms) {
 			_dxSetOfSites.alwaysAvailable();
 		} else {
 			for (int i = 0; i < this.getSetOfRooms().size(); i++) {
@@ -375,7 +376,7 @@ public class DModel extends Observable {
 				return _ttStruct.getError();
 			_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
 
-			if (DConst.newRooms) {
+			if (DxFlags.newRooms) {
 				_dxSetOfSites = (DxSetOfSites) theTT.get(3);
 				// _dxSetOfSites.resizeSiteAvailability(_ttStructure);
 			} else {
@@ -385,7 +386,7 @@ public class DModel extends Observable {
 
 			_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
 			_setOfStuSites = (SetOfStuSites) theTT.get(5);
-			if (!DConst.newRooms) {
+			if (!DxFlags.newRooms) {
 				if (_setOfSites.getError().length() != 0) {
 					return _setOfSites.getError();
 				}
@@ -420,7 +421,7 @@ public class DModel extends Observable {
 		resizeInstructorsResource(_dxSetOfInstructors);
 
 		// import set of sites
-		if (DConst.newRooms) {
+		if (DxFlags.newRooms) {
 			_dxSetOfSites = loadData.extractDxRooms();
 			resizeSiteAvailability(_dxSetOfSites);
 
@@ -745,7 +746,7 @@ public class DModel extends Observable {
 		String error = "";
 		if (_isATimeTable) {
 			updateInstructorAvail();
-			if (DConst.newRooms) {
+			if (DxFlags.newRooms) {
 				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 						_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
 						filename);

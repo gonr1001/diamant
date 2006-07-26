@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgoTest $Revision: 1.5 $ $Date: 2006-07-11 15:33:12 $
+ * Title: RefinedStudMixAlgoTest $Revision: 1.6 $ $Date: 2006-07-26 17:55:57 $
  * Description: RefinedStudMixAlgoTest is a class used to test the class
  * 				RefinedStudMixAlgo 
  * 
@@ -25,7 +25,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
@@ -59,7 +59,7 @@ public class RefinedStudMixAlgoTest extends TestCase {
                 + "loadData5j.dia";
         _type = 1;
         try {
-            if (DConst.newDoc) {
+            if (DxFlags.newDoc) {
 				_dm1 = new DModel(_dxDocument1, _fileName.toString());
 			} else {
 				_dm1 = new DModel(_dDocument1, _fileName.toString(), _type);
@@ -71,7 +71,7 @@ public class RefinedStudMixAlgoTest extends TestCase {
         _dDocument2 = new DDocument();
 		_dxDocument2 = new DxTTableDoc();
         try {
-            if (DConst.newDoc) {
+            if (DxFlags.newDoc) {
 				_dm2 = new DModel(_dxDocument2, _fileName.toString());
 			} else {
 				_dm2 = new DModel(_dDocument2, _fileName.toString(), _type);

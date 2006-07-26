@@ -25,6 +25,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -222,7 +223,7 @@ public class DMediator extends Object {
 	// -------------------------------------------
 
 	public String saveCurrentDoc(String str) {
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setDocumentName(str);
 			String error = "";
 			getCurrentDxDoc().saveTTStrucure(str);
@@ -338,7 +339,7 @@ public class DMediator extends Object {
 		int retval = JOptionPane.showConfirmDialog(_dApplication.getJFrame(),
 				DConst.SAVE_PROMPT);
 
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			DxDocument aux = getCurrentDxDoc();
 			switch (retval) {
 			case JOptionPane.YES_OPTION:

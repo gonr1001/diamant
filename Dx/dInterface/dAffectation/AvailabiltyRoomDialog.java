@@ -35,6 +35,7 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
@@ -86,7 +87,7 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
     public AvailabiltyRoomDialog(DApplication dApplic, DSetOfResources setOfResources, String str) {
         super(dApplic.getJFrame(), str, false);
              
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
@@ -158,7 +159,7 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 
             _applyPanel.setFirstDisable();
             _currentInstr.setAvailability(_currentAvailbility);
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
 			} else {
 				_dmodel.changeInDModelByInstructorsDlg(this);

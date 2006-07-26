@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.45 $ $Date: 2006-06-21 14:57:02 $
+ * Title: StudentMixingAlgorithm $Revision: 1.46 $ $Date: 2006-07-26 17:55:52 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -21,7 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.dData.StandardCollection;
@@ -123,7 +123,7 @@ public class StudentMixingAlgorithm implements Algorithm {
         allConvexGroups.add(convGroup);
         //
       }// end
-      if(DConst.USER_TEST_ACTIV){
+      if(DxFlags.newPartitionAlg){
         RefinedStudMixAlgo newAlgo = new RefinedStudMixAlgo(_dm,getAcceptableVariation());
         newAlgo.build (actID,typeID,allConvexGroups);
       }else{

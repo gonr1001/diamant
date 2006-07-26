@@ -22,6 +22,7 @@
 package dInterface.selectiveSchedule.dialog;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 
 import dInterface.DApplication;
 
@@ -872,7 +873,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		 * met a jour l'affichage de la grille horaire
 		 */
 		private void updateScheduleGUIAndDispose() {
-			if(DConst.newDoc) {
+			if(DxFlags.newDoc) {
 	    		DApplication.getInstance().getCurrentDxDoc().getTTPane().updateTTPane(
 						DApplication.getInstance().getCurrentDxDoc().getCurrentDModel()
 						.getTTStructure());

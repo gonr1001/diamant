@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2006-07-11 20:40:00 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2006-07-26 17:55:54 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -23,7 +23,7 @@ package dTest.dInternal.dData;
 
 import java.io.File;
 
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
@@ -58,7 +58,7 @@ public class DStandardReportDataTest extends TestCase{
   	_type = 1;
   	try {
 //        _dm= new DModel(_dDocument,_fileName,_type);
-        if(DConst.newDoc){
+        if(DxFlags.newDoc){
 			_dm = new DModel(_dxDocument, _fileName);
 		} else {
 			_dm = new DModel(_dDocument, _fileName, _type);

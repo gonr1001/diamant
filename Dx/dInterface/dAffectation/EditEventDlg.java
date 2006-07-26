@@ -44,6 +44,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxJComboBox;
@@ -851,7 +852,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
         Vector list[] = { new Vector(1), new Vector(1) };
         EventAttach event = (EventAttach) ((DResource) _unities
                 .get(_currentActivityIndex)).getAttach();
-        if (DConst.newRooms) {
+        if (DxFlags.newRooms) {
             DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
             DxRoom dxr = dxsor.getRoom(event.getRoomKey());
             if (dxr != null)
@@ -912,7 +913,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
     private String getCapacity(String str) {
 
-        if (DConst.newRooms) {
+        if (DxFlags.newRooms) {
             DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
             DxRoom dxr = dxsor.getRoom(str);
             if (dxr == null) {
@@ -1040,7 +1041,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
                         .getPeriodLenght());
         event.setKey(4, periodKey);
         event.setKey(1, intructorKeys);
-        if (DConst.newRooms) {
+        if (DxFlags.newRooms) {
             event.setKey(2, Long.toString(_dApplic.getCurrentDModel()
                     .getDxSetOfRooms().getRoomKeyByName(room)));
         } else {

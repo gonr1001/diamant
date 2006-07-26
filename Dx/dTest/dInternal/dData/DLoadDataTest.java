@@ -24,7 +24,7 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
@@ -153,7 +153,7 @@ public class DLoadDataTest extends TestCase {
      * test that check the setofrooms
      */
     public void test5_loadTimeTable5j() {
-        if (!DConst.newRooms) {
+        if (!DxFlags.newRooms) {
             SetOfSites setSite = ((SetOfSites) _timeTable5j.get(3));
             assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
                     .getResourceAt(0).getID());
@@ -282,7 +282,7 @@ public class DLoadDataTest extends TestCase {
      * test that check the setofrooms
      */
     public void test5_loadTimeTable7j() {
-        if (!DConst.newRooms) {
+        if (!DxFlags.newRooms) {
             SetOfSites setSite = ((SetOfSites) _timeTable7j.get(3));
             assertEquals("test5_loadTimeTable7j : assertEquals: ", "SHE",
                     setSite.getResourceAt(0).getID());

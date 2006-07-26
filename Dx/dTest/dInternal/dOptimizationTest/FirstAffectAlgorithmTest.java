@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.10 $ $Date: 2006-07-11 20:40:01 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.11 $ $Date: 2006-07-26 17:55:56 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -24,7 +24,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
@@ -77,7 +77,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		int type = 1;
 
 		try {
-			if(DConst.newDoc){
+			if(DxFlags.newDoc){
 				dm1 = new DModel(_dxDocument1, fileName);
 			} else {
 				dm1 = new DModel(_dDocument1, fileName, type);
@@ -112,7 +112,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		int type = 1;
 
 		try {
-			if(DConst.newDoc){
+			if(DxFlags.newDoc){
 				dm1 = new DModel(_dxDocument1, fileName);
 			} else {
 				dm1 = new DModel(_dDocument1, fileName, type);

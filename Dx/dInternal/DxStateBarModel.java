@@ -22,6 +22,7 @@ package dInternal;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -78,7 +79,7 @@ public class DxStateBarModel {
 		/* 2 */
 		_stateVec.elementAt(2).setValue(_dm.getDxSetOfInstructors().size());
 		/* 3 */
-		if(DConst.newRooms)
+		if(DxFlags.newRooms)
 		{
 			_stateVec.elementAt(3).setValue(_dm.getDxSetOfRooms().size());
 		}else{

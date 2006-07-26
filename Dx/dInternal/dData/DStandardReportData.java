@@ -33,6 +33,7 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dStudents.Student;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.EventAttach;
@@ -407,7 +408,7 @@ public class DStandardReportData {
                                         .getSetOfEvents().getResource(
                                                 confEvents.getID()).getAttach())
                                         .getRoomKey();
-                                if (DConst.newRooms) {
+                                if (DxFlags.newRooms) {
                                     strBuf = new StringBuffer(_dm
                                             .getDxSetOfRooms().getRoomName(
                                                     roomKey));

@@ -12,6 +12,7 @@ package dInterface.dAffectation;
 import java.awt.event.ActionEvent;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
@@ -104,7 +105,7 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dApplic.getCurrentDxDoc().getCurrentDModel().changeInDModel(
 						this.idDlgToString());
 			} else {

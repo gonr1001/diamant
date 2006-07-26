@@ -23,6 +23,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -394,7 +395,7 @@ public class DLoadData {
         // }// end if(tts.getError().length()==0)
         //
         // // extract SetOfSites
-        // if (!DConst.newRooms) {
+        // if (!DxFlags.newRooms) {
         // SetOfSites roomsList = new SetOfSites();
         // de = buildDataExchange(project.nextToken().trim().getBytes());
         // if (roomsList.analyseTokens(de, 3)) {
@@ -464,7 +465,7 @@ public class DLoadData {
             }// end if(tts.getError().length()==0)
 
             // extract SetOfSites
-            if (DConst.newRooms) {
+            if (DxFlags.newRooms) {
                 de = buildDataExchange(project.nextToken().trim().getBytes());
 
                 DxSiteReader dxrr = new DxReadSitedotDia(de, tts
@@ -540,7 +541,7 @@ public class DLoadData {
             }// end if(tts.getError().length()==0)
 
             // extract SetOfSites
-            if (!DConst.newRooms) {
+            if (!DxFlags.newRooms) {
                 SetOfSites roomsList = new SetOfSites();
                 de = buildDataExchange(project.nextToken().trim().getBytes());
                 if (roomsList.analyseTokens(de, 3)) {

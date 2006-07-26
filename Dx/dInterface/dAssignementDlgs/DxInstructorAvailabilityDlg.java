@@ -35,6 +35,7 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
@@ -100,7 +101,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			DxSetOfInstructors soi) {
 		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
 		
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
@@ -162,7 +163,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			_applyPanel.setFirstDisable();
 			_currentInst = ((DxInstructor) _chooser.getSelectedItem());
 			_currentInst.setAvailability(_currentAvailbility);
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
 			} else {
 				_dmodel.changeInDModelByInstructorsDlg(this);

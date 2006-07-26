@@ -39,6 +39,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
@@ -130,7 +131,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		_dApplic = dApplic;
 		//_sortIndex = 0; // why 0?
 		_currentAssignedGroup = -1; // why -1
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
@@ -238,7 +239,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			_typeCombo.setEnabled(true);
 			_applyPanel.setFirstDisable();
 
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dmodel.getConditionsTest().setMatrixBuilded(false,
 						false);
 				_dmodel.changeInDModel(this.idDlgToString());

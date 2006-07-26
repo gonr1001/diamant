@@ -28,19 +28,10 @@ public class DConst {
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
   	public final static String V_DATE = "v 2.1 du 19 juin 2006";//res.getString("vDate");
-  	/** The format of number * */
+  	/** The number format for Hours **/
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
-    public static boolean USER_TEST_ACTIV = false; // comm
 
-    public static boolean newRooms = false;
-//	public static boolean newRooms = false;
-    
-	public static boolean newAlg = false;
-//	public static boolean newAlg = false;
-	
-	public static boolean newDoc = true;
-//	public static boolean newDoc = false;
-    
+   
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
 	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
 	

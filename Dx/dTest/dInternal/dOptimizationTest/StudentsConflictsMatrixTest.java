@@ -13,7 +13,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -36,7 +36,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
 	public StudentsConflictsMatrixTest(String name) {
 		super(name);
 		try {
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData7j.dia");
 			} else {
@@ -54,7 +54,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		_matrix1 = _dm1.getConditionsTest().getConflictsMatrix();
 
 		try {			
-			if (DConst.newDoc) {
+			if (DxFlags.newDoc) {
 				_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData5j.dia");
 			} else {

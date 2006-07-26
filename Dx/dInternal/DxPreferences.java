@@ -23,6 +23,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.IOFileException;
@@ -85,7 +86,7 @@ public class DxPreferences {
 				_acceptedChars = st.nextToken();
 				_selectedOptionsInFullReport = st.nextToken();
 				_selectedOptionsInConflictReport = st.nextToken();
-				if (DConst.newAlg) {
+				if (DxFlags.newAlg) {
 					_dxConflictLimits = new DxConflictLimits();
 					_dxConflictLimits.readLimits(st.nextToken().trim());
 				} else {
@@ -124,7 +125,7 @@ public class DxPreferences {
 		str += DConst.CR_LF;
 		str += _selectedOptionsInConflictReport;
 		str += DConst.CR_LF;
-		if (DConst.newAlg) {
+		if (DxFlags.newAlg) {
 			str += _dxConflictLimits.toString();
 		} else {
 			str += _conflictLimits;

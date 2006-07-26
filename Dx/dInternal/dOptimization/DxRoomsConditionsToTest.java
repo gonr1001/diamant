@@ -23,6 +23,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
@@ -133,7 +134,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
                     .getPeriodPositionInDay(dayKey, seqKey, perKey);
             if (perPosition > 0) {
                 int[][] matrix = null;
-                if (DConst.newRooms) {
+                if (DxFlags.newRooms) {
                     matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
                             .getAvailability().getMatrixAvailability();
                 } else {
@@ -175,7 +176,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
         long roomKey = event.getRoomKey();
         if (roomKey != -1) {
             int nCapa = 0;
-            if (DConst.newRooms) {
+            if (DxFlags.newRooms) {
                 nCapa = _dm.getDxSetOfRooms().getRoomCapacity(roomKey);
             } else {
                 nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)

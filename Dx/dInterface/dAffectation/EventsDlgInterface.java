@@ -41,6 +41,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
@@ -115,7 +116,7 @@ public abstract class EventsDlgInterface extends JDialog implements
         super(dApplic.getJFrame(), title + " rgrEDL", true);
         _dApplic = dApplic;
         _jDialog = this;
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();

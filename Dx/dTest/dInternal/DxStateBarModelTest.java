@@ -24,7 +24,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
@@ -65,7 +65,7 @@ public class DxStateBarModelTest extends TestCase {
 		String fileName = "." + File.separator + "dataTest" + File.separator
 				+ "loadData5j.dia";
 		int _type = 1;
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			_dm5j = new DModel(_dxDoc5j, fileName);
 			_dm5j.changeInDModel(new Object());
 			sbm = new DxStateBarModel(_dm5j);
@@ -108,7 +108,7 @@ public class DxStateBarModelTest extends TestCase {
 		String fileName1 = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		int _type = 1;
-		if(DConst.newDoc){
+		if(DxFlags.newDoc){
 			_dm7j = new DModel(_dxDoc7j, fileName1);
 		} else {
 			_dm7j = new DModel(_doc7j, fileName1, _type);

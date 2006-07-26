@@ -3,6 +3,7 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -38,7 +39,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 		super();
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
-		if (DConst.newDoc) {
+		if (DxFlags.newDoc) {
 			_conflictsPreference = _dm.getDxDocument().getDMediator()
 			.getDApplication().getPreferences().getConflictLimits();
 		} else {

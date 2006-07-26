@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInternal.DxConflictLimits;
 
@@ -75,7 +76,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		setResizable(false);
 		this.getContentPane().setLayout(new BorderLayout());
 		JPanel jPanel = new JPanel();
-		if(DConst.newAlg){
+		if(DxFlags.newAlg){
 			DxConflictLimits cl= _dApplic.getPreferences().getDxConflictLimits();
 			_textField0 = new JTextField("" + cl.getMStudConfBetweenTwoEvents());
 			_textField1 = new JTextField("" + cl.getMInstConfBetweenTwoEvents());
@@ -139,7 +140,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		if (command.equals(DConst.BUT_OK)) {
 			int ligne = validation();
 			if (ligne == 0) {
-				if(DConst.newAlg){
+				if(DxFlags.newAlg){
 					//DxConflictLimits  cl = new DxConflictLimits();
 					StringBuffer strB = new StringBuffer("conflictLimits" + ";");
 					strB.append(_textField0.getText()+ ";");

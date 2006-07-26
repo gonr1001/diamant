@@ -6,7 +6,7 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -23,7 +23,7 @@ public class StudentsConditionsTest extends TestCase {
     super(name);
     try {
 //        _dm1= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData7j.dia",1);
-        if (DConst.newDoc) {
+        if (DxFlags.newDoc) {
 			_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
 					+ "dataTest" + File.separator + "loadData7j.dia");
 		} else {
@@ -41,7 +41,7 @@ public class StudentsConditionsTest extends TestCase {
     
     try {
 //        _dm2= new DModel(new DDocument(),"."+ File.separator+"dataTest"+File.separator+"loadData5j.dia",1);
-        if (DConst.newDoc) {
+        if (DxFlags.newDoc) {
 			_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
 					+ "dataTest" + File.separator + "loadData5j.dia");
 		} else {
