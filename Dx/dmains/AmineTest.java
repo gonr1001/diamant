@@ -21,7 +21,6 @@ package dmains;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
 import dTest.dInternal.dTimeTable.ATTStructureTest;
 
 /**
@@ -50,9 +49,7 @@ public class AmineTest {
 		System.out.println("Hello I am in Aminetests");
 		TestSuite suite = new TestSuite("AmineTest");
 
-//		suite.addTest(ATTStructureTest.suite());
-//		suite.addTest(DxAssignRoomsAlgTest.suite());
-
+		suite.addTest(ATTStructureTest.suite());
 
 		System.out.println("Bye I was in AmineTest");
 		return suite;

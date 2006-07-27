@@ -84,7 +84,7 @@ public class DxAssignAllAlgTest extends TestCase {
 				.size());
 		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
 		alg.doWork();
-		assertEquals("test_build: assertEquals", 255, dm1.getSetOfEvents()
+		assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
 		dDocument1 = null;

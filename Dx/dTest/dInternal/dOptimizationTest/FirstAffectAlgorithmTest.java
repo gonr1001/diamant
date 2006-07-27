@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.11 $ $Date: 2006-07-26 17:55:56 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.12 $ $Date: 2006-07-27 12:13:35 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -35,18 +35,6 @@ import dInternal.dOptimization.FirstAffectAlgorithm;
 public class FirstAffectAlgorithmTest extends TestCase {
 
 	FirstAffectAlgorithm _first;
-
-	// DModel _dm1;
-
-	// DModel _dm2;
-	//
-	// DDocument _dDocument1;
-	//
-	// DDocument _dDocument2;
-	//
-	// String _fileName;
-	//
-	// int _type;
 
 	public FirstAffectAlgorithmTest(String name) {
 		super(name);
@@ -93,7 +81,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 				.size());
 		_first = new FirstAffectAlgorithm(dm1);
 		_first.doWork();
-		assertEquals("test_build: assertEquals", 255, dm1.getSetOfEvents()
+		assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
 				.getNumberOfEventAssign());
 		dm1 = null;
 		_dDocument1 = null;
