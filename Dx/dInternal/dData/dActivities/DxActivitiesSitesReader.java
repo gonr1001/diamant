@@ -1,8 +1,11 @@
 /**
- * Created on May 23, 2006
+ * Created on Jul 26, 2006
  * 
+ * TODO To change the class description for this generated file
  * 
- * Title: DxSiteReader.java 
+ * Project Dx
+ * Title: DxActivitiesSitesReader.java 
+ * 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -15,8 +18,8 @@
  * you entered into with rgr.
  */
 
-package dInternal.dData.dInstructors;
+package dInternal.dData.dActivities;
 
-public interface DxInstructorsReader{
-    public DxSetOfInstructors readSetOfInstructors() throws Exception;
+public interface DxActivitiesSitesReader {
+    public DxSetOfActivitiesSites readSetOfActivitiesSites() throws Exception;
 }

@@ -135,7 +135,19 @@ public class DxSite extends DxResource {
     }
     
     public boolean isEqual(DxResource dxrOtherSite) {
-        DxSite dxsOtherSite = (DxSite) dxrOtherSite;
+        DxSite dxsOtherSite = null;
+        try {
+            dxsOtherSite = (DxSite) dxrOtherSite;
+        } catch (ClassCastException e) {
+            // Message intended for programmers, application
+            // can't continue after this error
+            System.out
+                    .println("isEqual in DxSite was called with a Resource "
+                            + "that could not be converted into a Site:");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        
         if (!this.getName().equalsIgnoreCase(dxsOtherSite.getName())) {
             return false;
         }

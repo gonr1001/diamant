@@ -19,7 +19,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
         _nPeriods = nPeriods;
     }
 
-    public DxSetOfInstructors getSetOfInstructors() throws Exception {
+    public DxSetOfInstructors readSetOfInstructors() throws Exception {
         StringTokenizer st = new StringTokenizer(_deInstructors.getContents(),
                 DConst.CR_LF);
         String token;

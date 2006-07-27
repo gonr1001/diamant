@@ -30,19 +30,19 @@ package dDeveloper;
  */
 public class DxFlags {
 	
-    public static boolean newRooms = false;
-//	public static boolean newRooms = false;
+    public final static boolean newRooms = false;
+//	public final static boolean newRooms = false;
     
-	public static boolean newAlg = false;
-//	public static boolean newAlg = false;
+	public final static boolean newAlg = false;
+//	public final static boolean newAlg = false;
 	
-	public static boolean newDoc = true;
-//	public static boolean newDoc = false;
+	public final static boolean newDoc = true;
+//	public final static boolean newDoc = false;
 		
-	public static boolean newPartitionAlg = true;
-//	public static boolean newPartitionAlg = false;
+	public final static boolean newPartitionAlg = true;
+//	public final static boolean newPartitionAlg = false;
 	
-	public static boolean newActivity = true;
-//	public static boolean newPartitionAlg = false;
+	public final static boolean newActivity = true;
+//	public final static boolean newPartitionAlg = false;
 	
 }

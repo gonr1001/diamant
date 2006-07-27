@@ -140,8 +140,8 @@ public abstract class DxSetOfResources implements Iterable {
     /**
      * Retreives a ressource in the set
      * 
-     * @param nIndex
-     *            Index of the instructor whose name is wanted
+     * @param lKey
+     *            Key of the resource that has to be returned
      * @return String The name of the instructor, null if the index was invalid
      */
     public final DxResource getResource(long lKey) {
@@ -174,9 +174,9 @@ public abstract class DxSetOfResources implements Iterable {
     /**
      * Retreives the name of a ressource in the set
      * 
-     * @param nIndex
-     *            Index of the instructor whose name is wanted
-     * @return String The name of the instructor, null if the index was invalid
+     * @param lKey
+     *            Key of the instructor whose name is wanted
+     * @return The name of the instructor, null if the index was invalid
      */
     public final String getResourceName(long lKey) {
         

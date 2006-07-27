@@ -246,7 +246,7 @@ public class DxSetOfSites extends DxSetOfResources {
 
     public int getRoomCapacity(long lSiteKey, long lCatKey, long lRoomKey) {
         try {
-            return ((DxSite) this.getResource(lCatKey)).getRoomCapacity(
+            return ((DxSite) this.getResource(lSiteKey)).getRoomCapacity(
                     lCatKey, lRoomKey);
         } catch (Exception e) {
             // If index was invalid, Null pointer Exception will be thrown
@@ -374,12 +374,21 @@ public class DxSetOfSites extends DxSetOfResources {
 	public DxResource findEquivalent(DxResource dxrSearch) {
 		return this.getSite(dxrSearch.getName());
 	}
-
-	public void merge(DxResource dxrModify, DxResource dxrNew) {
-		// TODO Auto-generated method stub
+	
+    
+	public void merge(DxResource dxrModify,  DxResource dxrNew) {
 		
 	}
     
+    /***************************************************************************
+     * Temporary function that return value that should be written to a dia
+     * file. Eventually, a class structure as the one used for reading should be
+     * implemented. An idea for DxSetOfSitesReader would have a method
+     * like: String toWrite(DxSetOfSite dxsoi) which could output data for
+     * a dia file, or eventually sql querries.
+     * 
+     * @return A string containing all the instructors informations
+     **************************************************************************/
     public String toWrite() {
         StringBuffer sbReturn = new StringBuffer();
         Iterator itSites = this.iterator();

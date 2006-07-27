@@ -69,20 +69,30 @@ public class DxInstructor extends DxResource implements AvailableResource {
     public void setAvailability(DxAvailability aNewAvailability) {
         _availability = aNewAvailability;
     }
-    
+
     public void setAvailability(int[][] nAvailbilities) {
         _availability.setAvailability(nAvailbilities);
     }
 
     public boolean isEqual(DxResource dxrOther) {
-        DxInstructor dxiOther = (DxInstructor) dxrOther;
-        if (!this.getName()
-                .equalsIgnoreCase(dxiOther.getName())) {
+        DxInstructor dxiOther = null;
+        try {
+            dxiOther = (DxInstructor) dxrOther;
+        } catch (ClassCastException e) {
+            // Message intended for programmers, application
+            // can't continue after this error
+            System.out
+                    .println("isEqual in DxInstructor was called with a Resource "
+                            + "that could not be converted into an Instructor:");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
+        if (!this.getName().equalsIgnoreCase(dxiOther.getName())) {
             return false;
         }
 
-        if (!this.getAvailability().isEqual(
-                dxiOther.getAvailability())) {
+        if (!this.getAvailability().isEqual(dxiOther.getAvailability())) {
             return false;
         }
 

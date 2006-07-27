@@ -80,7 +80,7 @@ public class DxResource {
 
     /**
      * isEqual method is called by DxSetOfResource to determine if a resource is
-     * equal to another. If Dxresource is subclassed, this method should be
+     * equal to another. If DxResource is subclassed, this method should be
      * overriden to specialise isEqual and verify added properties.
      * 
      * @param dxrOtherRes

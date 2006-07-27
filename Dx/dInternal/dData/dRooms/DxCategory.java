@@ -13,9 +13,6 @@
  * shall not disclose such Confidential Information and shall use
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
- *
- * 
- * 
  */
 package dInternal.dData.dRooms;
 
@@ -87,7 +84,19 @@ public class DxCategory extends DxResource {
 	}
     
     public boolean isEqual(DxResource dxrOther) {
-        DxCategory dxcOtherCat = (DxCategory) dxrOther;
+        DxCategory dxcOtherCat = null;
+        try {
+            dxcOtherCat = (DxCategory) dxrOther;
+        } catch (ClassCastException e) {
+            // Message intended for programmers, application
+            // can't continue after this error
+            System.out
+                    .println("isEqual in DxCategory was called with a Resource "
+                            + "that could not be converted into a Category:");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        
         if (!this.getName().equalsIgnoreCase(
                 dxcOtherCat.getName())) {
             return false;

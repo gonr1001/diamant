@@ -41,7 +41,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
+			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test_getSetOfInstructors: Should have failed before",
 					true);
 
@@ -74,7 +74,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
+			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test1_getSetOfInstructors: Should have failed before",
 					true);
 
@@ -108,7 +108,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
+			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test2_getSetOfInstructors: Should have failed before",
 					true);
 
@@ -141,7 +141,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
+			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test3_getSetOfInstructors: Shoudd have failed before",
 					true);
 
@@ -176,7 +176,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			DxSetOfInstructors dxsoi = dxriTest.getSetOfInstructors();
+			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test4_getSetOfInstructors: Shoudd have failed before",
 					true);
 
@@ -211,7 +211,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			DxSetOfInstructors dxsoiTemp = dxriTest.getSetOfInstructors();
+			DxSetOfInstructors dxsoiTemp = dxriTest.readSetOfInstructors();
 			assertNotSame("test5_getSetOfInstructors: assertNotSame",
 					dxsoiTemp, null);
 			assertNotNull("test5_1_getSetOfInstructors: assertEquals",
@@ -234,7 +234,7 @@ public class DxInstructorsReaderTest extends TestCase {
 
 		DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);
 		try {
-			dxsoi = dxir.getSetOfInstructors();
+			dxsoi = dxir.readSetOfInstructors();
 		} catch (Exception e) {
 			assertFalse("DxInstructorReaderTest: assertFalse" + e.toString(),
 					true);

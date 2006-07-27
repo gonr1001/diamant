@@ -85,7 +85,18 @@ public class DxRoom extends DxResource implements AvailableResource {
     }
 
     public boolean isEqual(DxResource dxrOther) {
-        DxRoom dxrOtherRoom = (DxRoom) dxrOther;
+        DxRoom dxrOtherRoom = null;
+        try {
+            dxrOtherRoom = (DxRoom) dxrOther;
+        } catch (ClassCastException e) {
+            // Message intended for programmers, application
+            // can't continue after this error
+            System.out
+                    .println("isEqual in DxRoom was called with a Resource "
+                            + "that could not be converted into a Room:");
+            e.printStackTrace();
+            System.exit(-1);
+        }
 
         if (!this.getName().equalsIgnoreCase(dxrOtherRoom.getName())) {
             return false;

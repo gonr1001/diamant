@@ -66,6 +66,8 @@ public class Diamant {
 	 */
 
 	public static void main(String[] args) {
+        System.out.println(System.getProperty("user.home"));
+        
 		PropertyConfigurator.configure(System.getProperty("user.dir")
 				+ File.separator + "trace" + File.separator + "log4j.conf");
 		if (GUI) {

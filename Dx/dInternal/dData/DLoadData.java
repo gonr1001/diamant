@@ -461,7 +461,7 @@ public class DLoadData {
                 DxInstructorsReader dxir = new DxReadInstructors1dot5(de, tts
                         .getNumberOfActiveDays(), tts.getCurrentCycle()
                         .getMaxNumberOfPeriodsADay());
-                diaData.add(dxir.getSetOfInstructors());
+                diaData.add(dxir.readSetOfInstructors());
             }// end if(tts.getError().length()==0)
 
             // extract SetOfSites
@@ -537,7 +537,7 @@ public class DLoadData {
                 DxInstructorsReader dxir = new DxReadInstructors1dot5(de, tts
                         .getNumberOfActiveDays(), tts.getCurrentCycle()
                         .getMaxNumberOfPeriodsADay());
-                diaData.add(dxir.getSetOfInstructors());
+                diaData.add(dxir.readSetOfInstructors());
             }// end if(tts.getError().length()==0)
 
             // extract SetOfSites
@@ -1365,7 +1365,7 @@ public class DLoadData {
         DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);// 5
         // jours
         // et 14
-        return dxir.getSetOfInstructors(); // periods !
+        return dxir.readSetOfInstructors(); // periods !
         // }
         // if (de != null) {
         // if (merge)

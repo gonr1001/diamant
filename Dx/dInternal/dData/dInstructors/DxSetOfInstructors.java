@@ -54,6 +54,17 @@ public class DxSetOfInstructors extends DxSetOfResources {
     }
 
     /**
+     * Adds an instructor to the set
+     * 
+     * @param dxiNewInst
+     *            New instructor
+     */
+    public void addInstructor(DxInstructor dxiNewInst) {
+        this.addResource(dxiNewInst);
+
+    }
+
+    /**
      * Adds a set of instructors to the set
      * 
      * @param dxsoiNew
@@ -130,11 +141,14 @@ public class DxSetOfInstructors extends DxSetOfResources {
     }
 
     protected void merge(DxResource dxrModify, DxResource dxrNew) {
+        dxrModify.getKey(); // To avoid warnings
+        dxrNew.getKey(); // To avoid warnings
         // If an instructor already exist, we want to keep availabilities as
         // they might have been modified
     }
 
     public void remAllAssignedToASite(String currentSite) {
+
         System.out
                 .println("DxSetOfIntructors.remAllAssignedToASite must be implemented");
     }
