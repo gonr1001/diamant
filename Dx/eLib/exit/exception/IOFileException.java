@@ -1,7 +1,7 @@
 package eLib.exit.exception;
 /**
  *
- * Title: IOFileException $Revision: 1.2 $  $Date: 2004-09-10 13:31:10 $
+ * Title: IOFileException $Revision: 1.3 $  $Date: 2006-07-27 15:07:13 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package eLib.exit.exception;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.3 $
+ * @author  $Author: vimj9401 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -34,6 +34,11 @@ package eLib.exit.exception;
 public class IOFileException extends Exception{
 
   /**
+     * 
+     */
+    //private static final long serialVersionUID = -5343466873661872412L;
+
+/**
    * Requires: an exception.
    *
    * <p>

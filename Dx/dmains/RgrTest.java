@@ -52,8 +52,8 @@ public class RgrTest {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("rgrTest");
 
-		suite.addTest(DxAssignAllAlgTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(DxAssignAllAlgTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
 
 		System.out.println("Bye I was in rgrTest");
 		return suite;

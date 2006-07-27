@@ -1,6 +1,6 @@
 /**
  *
- * Title: ELibTest $Revision: 1.6 $  $Date: 2004-11-09 15:41:46 $
+ * Title: ELibTest $Revision: 1.7 $  $Date: 2006-07-27 15:07:12 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.7 $
+ * @author  $Author: vimj9401 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -54,9 +54,9 @@ public class ELibTest {
 	// The tests are very poor at the moment
 	public static Test suite ( ) {
 		TestSuite suite= new TestSuite("Library eLib tests");
-			suite.addTest(SimpleTest.suite());
-			suite.addTest(ByteInputFileTest.suite());
-            suite.addTest(FilterFileTest.suite());
+//			suite.addTest(SimpleTest.suite());
+//			suite.addTest(ByteInputFileTest.suite());
+//            suite.addTest(FilterFileTest.suite());
 	    return suite;
 	} //end suite
 } /* end ILibTest */
