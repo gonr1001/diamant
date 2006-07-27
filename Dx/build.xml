@@ -3,8 +3,7 @@
 		<tstamp />
 		<property name="distDirZip" value="./Diamant1.6" />
 		<property name="srcDir" value="." />
-		<property name="localJars" value="${srcDir}/jars" />
-		<property name="eclipse" value="D:/Program Files/eclipse/plugins" />
+		<property name="localJars" value="${srcDir}/jars" />		
 		<property name="build" value="${srcDir}/classes" />
 		<property name="reports" value="${srcDir}/reports" />
 		<property name="dataTest" value="${build}/dataTest" />
@@ -127,9 +126,7 @@
 			<fileset dir="${build}" />
 		</jar>
 	</target>
-	<target name="signjar" depends="completepackage" description="Signs the jar for WebStart deployment">
-		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
-	</target>
+
 	<target name="completepackage" depends="package">
 		<copy file="${origDist}/Diamant.bat" todir="${distDir}" />
 		<copy file="${distDir}/tictac.jar" todir="${srcDir}" />
@@ -153,9 +150,14 @@
 			</fileset>
 		</copy>
 	</target>
-	<target name="zip" depends="completepackage" description="performs theZip">
+	
+	<target name="signjar" depends="completepackage" description="Signs the jar for WebStart deployment">
+		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
+	</target>
+	
+	<target name="zip" depends="signjar" description="performs theZip">
 		<zip basedir="${distDirZip}" destfile="${srcDir}/Diamant.zip" />
 	</target>
-	<target name="all" depends="clean, package, zip" description="performs all targets">
+	<target name="all" depends="clean, package, signjar, zip" description="performs all targets">
 	</target>
 </project>
