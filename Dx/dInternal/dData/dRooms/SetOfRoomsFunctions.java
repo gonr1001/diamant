@@ -44,7 +44,7 @@ public class SetOfRoomsFunctions extends DSetOfResources {
 	 * @param String le nom du fichier
 	 */
 	public void functionReader() {
-		String fileName = System.getProperty("user.dir") + File.separator
+		String fileName = System.getProperty("user.home") + File.separator
 				+ "pref" + File.separator + "room_function.xml";
 		XMLInputFile xmlFile;
 		Element root; //, item, ID;

@@ -31,6 +31,7 @@ import eLib.exit.dialog.FatalProblemDlg;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInternal.DxDeploymentManager;
 
 /**
  *
@@ -66,9 +67,8 @@ public class Diamant {
 	 */
 
 	public static void main(String[] args) {
-        System.out.println(System.getProperty("user.home"));
-        
-		PropertyConfigurator.configure(System.getProperty("user.dir")
+        (new DxDeploymentManager()).checkAndDeploy();
+		PropertyConfigurator.configure(System.getProperty("user.home")
 				+ File.separator + "trace" + File.separator + "log4j.conf");
 		if (GUI) {
 			_logger.warn("hi_with_a_GUI");

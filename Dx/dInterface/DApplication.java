@@ -157,12 +157,12 @@ public class DApplication { // implements ActionListener {
 			}
 		}
 
-		_preferences = new DxPreferences(System.getProperty("user.dir")
+		_preferences = new DxPreferences(System.getProperty("user.home")
 				+ File.separator + "pref" + File.separator + "pref.txt");
 
 		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		_dMediator = new DMediator(this);
-		_currentDir = System.getProperty("user.dir");
+		_currentDir = System.getProperty("user.home");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
 		/* Icone de l'application */
 		ImageIcon iconeDiamant = new ImageIcon(_currentDir + File.separator

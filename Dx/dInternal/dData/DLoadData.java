@@ -587,7 +587,7 @@ public class DLoadData {
     private void doLoadData() {
         // _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
         DxPreferences preferences = new DxPreferences(System
-                .getProperty("user.dir")
+                .getProperty("user.home")
                 + File.separator + "pref" + File.separator + "pref.txt");
         _chars = preferences._acceptedChars;
     }

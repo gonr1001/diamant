@@ -3,9 +3,11 @@
 		<tstamp />
 		<property name="distDirZip" value="./Diamant1.6" />
 		<property name="srcDir" value="." />
-		<property name="localJars" value="${srcDir}/jars" />		
+		<property name="localJars" value="${srcDir}/jars" />
 		<property name="build" value="${srcDir}/classes" />
 		<property name="reports" value="${srcDir}/reports" />
+		<property name="pref" value="${srcDir}/pref" />
+		<property name="trace" value="${srcDir}/trace" />
 		<property name="dataTest" value="${build}/dataTest" />
 		<property name="TTxmlFiles" value="${dataTest}/TTxmlFiles" />
 		<property name="lib" value="${build}/lib" />
@@ -122,6 +124,18 @@
 		</manifest>
 	</target>
 	<target name="package" depends="manifest">
+		<copy todir="${build}/pref">
+			<fileset dir="${srcDir}/pref">
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
+			</fileset>
+		</copy>
+		<copy todir="${build}/trace">
+			<fileset dir="${srcDir}/trace">
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
+			</fileset>
+		</copy>
 		<jar jarfile="${distDir}/tictac.jar" index="true" manifest="${srcDir}/MANIFEST.MF">
 			<fileset dir="${build}" />
 		</jar>
@@ -150,11 +164,11 @@
 			</fileset>
 		</copy>
 	</target>
-	
+
 	<target name="signjar" depends="completepackage" description="Signs the jar for WebStart deployment">
 		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
-	
+
 	<target name="zip" depends="signjar" description="performs theZip">
 		<zip basedir="${distDirZip}" destfile="${srcDir}/Diamant.zip" />
 	</target>
