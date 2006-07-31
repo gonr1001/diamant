@@ -31,46 +31,54 @@
 //public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 //
 //    private DataExchange _deActivities;
+//
 //    private int _nPeriodLength;
-//    
+//
 //    final static public int _COURSENAMELENGTH = 6;
-//    
-//    public DxReadActivitiesSites1dot5(DataExchange de, int nPeriodLength){
+//
+//    public DxReadActivitiesSites1dot5(DataExchange de, int nPeriodLength) {
 //        _deActivities = de;
 //        _nPeriodLength = nPeriodLength;
 //    }
 //
 //    public DxSetOfActivitiesSites readSetOfActivitiesSites() throws Exception {
-//        
+//
 //        String token;
 //        // String sousString; //auxiliar String for stocking a substring of a
 //        // line
-//        StringTokenizer st = new StringTokenizer(_deActivities.getContents(), "\r\n");
+//        StringTokenizer st = new StringTokenizer(_deActivities.getContents(),
+//                "\r\n");
 //        StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
-//                                        // subStrings in a line
-//        
-//            //Starting position of the finite state machine
-//        int nPosition = 1;
+//        // subStrings in a line
+//
+//        // Starting position of the finite state machine
+//        int nPosition = 0;
 //        int line = 1;
 //        int numberOfUnity = 0;
 //        int counter = 0;
 //        DxSetOfActivitiesSites dxsoasSites = new DxSetOfActivitiesSites();
 //        DxActivitySite dxasCurrentActSite;
-//        
+//
 //        String activityName = "";
 //        String instructorName = "";
-//        Activity activity = new Activity();
-//        Section section = new Section();
-//        DResource unityResource, typeResource, activityResource = null;
+//        DxSetOfActivitiesSites dxsoasAllSites = new DxSetOfActivitiesSites();
+//        DxActivitySite dxasCurentSite = new DxActivitySite(DConst.ACTIVITY_STANDARD_SITE);
+//        DxActivity dxaActivity = null;
+//        DxType dxtType = null;
+//        DxSection dxsSection = null;
+//        DxUnity dxuUnity = null;
+//        DxAssignement dxassAssign = null;
+//        
 //        while (st.hasMoreElements()) {
 //            token = st.nextToken();
 //            line++;
 //            switch (nPosition) {
-//            case 1:// activity name
-//                activityName = token;
-//                nPosition = 2;
+//            case 0:// activity name
+//                activityName = token.substring(0, _COURSENAMELENGTH);
+//
+//                nPosition = 1;
 //                break;
-//            case 2:// activity visibility
+//            case 1:// activity visibility
 //                activityResource = this.getResource(activityName.substring(0,
 //                        _COURSENAMELENGTH));
 //                if (activityResource == null)
@@ -86,23 +94,17 @@
 //                        _COURSENAMELENGTH + 1));
 //                // nature =
 //                // activity.getNature(activityName.substring(_COURSENAMELENGTH,_COURSENAMELENGTH+1));
+//                nPosition = 2;
+//                break;
+//            case 2:// number of activities
 //                nPosition = 3;
 //                break;
-//            case 3:// number of activities
-//                nPosition = 4;
-//                break;
-//            case 4:// teachers' names
+//            case 3:// teachers' names
 //                instructorName = token;
-//                nPosition = 7;
+//                nPosition = 4;
 //                line += 2;
 //                break;
-//            case 5:// empty line
-//                nPosition = 6;
-//                break;
-//            case 6:// empty line
-//                nPosition = 7;
-//                break;
-//            case 7:// number of blocs
+//            case 4:// number of blocs
 //                typeResource = activity.getType(activityName.substring(
 //                        _COURSENAMELENGTH, _COURSENAMELENGTH + 1));
 //                section = new Section();
@@ -111,9 +113,9 @@
 //                    section.addUnity(Integer.toString(i));
 //                ((Type) typeResource.getAttach()).addSection(DXToolsMethods
 //                        .getToken(activityName, " ", 1), section);
-//                nPosition = 8;
+//                nPosition = 5;
 //                break;
-//            case 8:// duration of blocs
+//            case 5:// duration of blocs
 //                stLine = new StringTokenizer(token);
 //                counter = 1;
 //                while (stLine.hasMoreElements()) {
@@ -121,14 +123,14 @@
 //                    Unity unity = (Unity) unityResource.getAttach();
 //                    unity.setDuration(Integer.parseInt(stLine.nextToken()
 //                            .trim())
-//                            * _nPeriodLength)/*RGRRGRRGR was60 */;
+//                            * _nPeriodLength)/* RGRRGRRGR was60 */;
 //                    unityResource.setAttach(unity);
 //                    section.setUnity(unityResource);
 //                    counter++;
 //                }// end while(stLine.hasMoreElements())
-//                nPosition = 9;
+//                nPosition = 6;
 //                break;
-//            case 9:// days and periods of blocs
+//            case 6:// days and periods of blocs
 //                stLine = new StringTokenizer(token);
 //                counter = 1;
 //                while (stLine.hasMoreElements()) {
@@ -153,9 +155,9 @@
 //                                cycleAss));
 //                    counter++;
 //                }// end while(stLine.hasMoreElements())
-//                nPosition = 10;
+//                nPosition = 7;
 //                break;
-//            case 10:// fixed rooms
+//            case 7:// fixed rooms
 //                stLine = new StringTokenizer(token);
 //                counter = 1;
 //                while (stLine.hasMoreElements()) {
@@ -167,9 +169,9 @@
 //                                .getAttach()).setRoomState(fixed == 1);
 //                    counter++;
 //                }// end while(stLine.hasMoreElements())
-//                nPosition = 11;
+//                nPosition = 8;
 //                break;
-//            case 11:// Preferred rooms
+//            case 8:// Preferred rooms
 //                stLine = new StringTokenizer(token);
 //                counter = 1;
 //                String inst = instructorName;
@@ -194,9 +196,9 @@
 //                    }
 //                    counter++;
 //                }// end while(stLine.hasMoreElements())
-//                nPosition = 12;
+//                nPosition = 9;
 //                break;
-//            case 12:// type of rooms
+//            case 9:// type of rooms
 //                stLine = new StringTokenizer(token);
 //                counter = 1;
 //                while (stLine.hasMoreElements()) {
@@ -206,14 +208,13 @@
 //                    bloc.addPreferFunctionRoom(roomType);
 //                    counter++;
 //                }// end while(stLine.hasMoreElements())
-//                nPosition = 13;
+//                nPosition = 10;
 //                break;
-//            case 13:// idem
+//            case 10:// idem
 //                activity.setIdemLine(token.trim());
-//                nPosition = 14;
-//
+//                nPosition = 11;
 //                break;
-//            case 14:// activity is fixed or not
+//            case 11:// activity is fixed or not
 //                StringTokenizer visiToken = new StringTokenizer(new String(
 //                        token), ";");
 //                int nbTokens = visiToken.countTokens();
@@ -236,7 +237,7 @@
 //                    counter++;
 //                }// end while(stLine.hasMoreElements())
 //
-//                nPosition = beginPosition;
+//                nPosition = 0;
 //                this.addResource(activityResource, 1);
 //                break;
 //
@@ -244,6 +245,4 @@
 //        }// end while (st.hasMoreElements())
 //        return dxsoasSites;
 //    }
-//
-//
 //}
