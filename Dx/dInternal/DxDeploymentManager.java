@@ -23,7 +23,6 @@ package dInternal;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,25 +40,23 @@ public class DxDeploymentManager {
 
 	public static String deploymentTarget = System.getProperty("user.home");
 
-	// path of the file which lists the ressources to deploy 
-	private static String fileListPath;
+	// path of the file which lists the ressources to deploy
+	// TODO change the path of list files
+	private static String fileListPath = System.getProperty("user.dir")
+			+ File.separator + "dInternal" + File.separator + "dDeployment"
+			+ File.separator + "dDeploymentList";
 
 	// list of ressources to deploy
 	private Vector<DxConfigResource> vsFileNames;
 
-	
 	/**
 	 * Constructor
 	 */
 	public DxDeploymentManager() {
-		fileListPath = Diamant.class.getClassLoader() + File.separator
-				+ "dInternal" + File.separator + "dDeployment" + File.separator
-				+ "dDeploymentList";
-
 		try {
 			vsFileNames = listFile(new File(fileListPath));
 		} catch (IOException e1) {
-			// TODO catch block
+			// TODO Modifier la facon de faire le log
 			e1.printStackTrace();
 		}
 
@@ -149,10 +146,9 @@ public class DxDeploymentManager {
 		}
 	}
 
-	
-	
 	/**
-	 * Check if a list of ressources is deployed and deploys those who arn't from the jar of the application
+	 * Check if a list of ressources is deployed and deploys those who arn't
+	 * from the jar of the application
 	 */
 	public void checkAndDeploy() {
 		Iterator<DxConfigResource> itList = vsFileNames.iterator();
@@ -166,22 +162,20 @@ public class DxDeploymentManager {
 				try {
 					deploy(sCurrentFile);
 				} catch (IOException e) {
-					// TODO catch bloc
+					// TODO Modifier la facon de faire le log
 					e.printStackTrace();
 				}
 			}
 		}
 	}
 
-	
 	/**
 	 * List the paths of ressources written in a file
 	 * 
 	 * @param fileListPath
 	 *            the file where ressources'paths are listed
-	 *            
-	 * @return Vector<DxConfigResource>
-	 * 			   list of ressources
+	 * 
+	 * @return Vector<DxConfigResource> list of ressources
 	 */
 	public Vector<DxConfigResource> listFile(File fileListPath)
 			throws IOException {
@@ -203,7 +197,7 @@ public class DxDeploymentManager {
 			parentName = stCheminFich.nextToken();
 
 			// Change of object Parent when his name change
-			if (parent.getPath().equals(parentName)) {
+			if (!(parent.getClassLoaderPath().equals(parentName))) {
 				parent = new DxConfigResource(parentName, true);
 				vsFileNames.add(parent);
 			}
@@ -220,18 +214,15 @@ public class DxDeploymentManager {
 
 	}
 
-	
 	/**
 	 * Access to the list of ressources
 	 * 
-	 * @return Vector<DxConfigResource>
-	 * 			   list of ressources
+	 * @return Vector<DxConfigResource> list of ressources
 	 */
-	public Vector<DxConfigResource> getListRessource()
-	{
+	public Vector<DxConfigResource> getListRessource() {
 		return vsFileNames;
 	}
-	
+
 	/*
 	 * public void checkAndDeploy() { Vector<String> vsFileNames = new Vector<String>(); //
 	 * Listage des noms de fichiers pour le systeme de fichier

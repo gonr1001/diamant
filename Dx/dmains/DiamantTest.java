@@ -34,6 +34,7 @@ import dTest.dInternal.DResourceTest;
 import dTest.dInternal.DSetOfResourcesTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
+import dTest.dInternal.DxDeploymentManagerTest;
 import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.DxStateTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
@@ -80,7 +81,6 @@ import dTest.dInternal.dTimeTable.SequenceTest;
 import dTest.dInternal.dTimeTable.TTStructureTest;
 import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import dTest.dmains.ScanFileTest;
-import dTestd.Internal.dDeployment.dDeploymentTest;
 
 public class DiamantTest {
 
@@ -99,7 +99,7 @@ public class DiamantTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("Dimanant Tests");
-		suite.addTest(DxAvailabilityTest.suite());
+		/*suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(DxInstructorsReaderTest.suite());
@@ -155,9 +155,8 @@ public class DiamantTest {
 		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
-		
-		suite.addTest(dDeploymentTest.suite());
-		
+		*/
+		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in tests");
 		return suite;
 	}
