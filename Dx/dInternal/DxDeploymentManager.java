@@ -91,7 +91,7 @@ public class DxDeploymentManager {
 		boolean toReturn = false;
 		File fToDeploy = ressource.getRessourceAsFile();
 
-		if (checkParent(ressource)) {
+		if (ressource.isDirectory() || checkParent(ressource) ) {
 			if (fToDeploy.exists()) {
 				// check that the file and the ressource to deploy are the same
 				if ((fToDeploy.isDirectory() && ressource.isDirectory())
@@ -160,7 +160,8 @@ public class DxDeploymentManager {
 		// If Files do not exist then Creation of them
 		while (itList.hasNext()) {
 			DxConfigResource sCurrentFile = itList.next();
-			// Check that File exist
+			// Check that File exist		
+			
 			if (!check(sCurrentFile)) {
 				// else creation of File
 				try {
