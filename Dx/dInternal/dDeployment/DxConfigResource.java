@@ -118,4 +118,11 @@ public class DxConfigResource {
     public boolean isDirectory() {
         return _isDirectory;
     }
+    
+    /**
+     * @return true if the ressource is a file false else
+     */
+    public boolean isFile() {
+        return !(_isDirectory);
+    }
 }

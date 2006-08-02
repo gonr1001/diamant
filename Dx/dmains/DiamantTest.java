@@ -80,6 +80,7 @@ import dTest.dInternal.dTimeTable.SequenceTest;
 import dTest.dInternal.dTimeTable.TTStructureTest;
 import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import dTest.dmains.ScanFileTest;
+import dTestd.Internal.dDeployment.dDeploymentTest;
 
 public class DiamantTest {
 
@@ -154,6 +155,9 @@ public class DiamantTest {
 		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
+		
+		suite.addTest(dDeploymentTest.suite());
+		
 		System.out.println("Bye I was in tests");
 		return suite;
 	}
