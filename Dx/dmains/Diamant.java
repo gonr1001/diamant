@@ -70,8 +70,8 @@ public class Diamant {
 		
 		// Check that all files required by Diamant exist
 		// If not deploy them
-		//DxDeploymentManager deploymentManager = new DxDeploymentManager();
-		//deploymentManager.checkAndDeploy();
+		DxDeploymentManager deploymentManager = new DxDeploymentManager();
+		deploymentManager.checkAndDeploy();
 		
 		PropertyConfigurator.configure(System.getProperty("user.home")
 				+ File.separator + "trace" + File.separator + "log4j.conf");

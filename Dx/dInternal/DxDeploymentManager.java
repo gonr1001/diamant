@@ -1,8 +1,6 @@
 /**
  * Created on Jul 28, 2006
  * 
- * TODO To change the class description for this generated file
- * 
  * Project Dx
  * Title: DxDeploymentManager.java 
  * 
@@ -50,9 +48,8 @@ public class DxDeploymentManager {
 	// list of ressources to deploy
 	private Vector<DxConfigResource> _vsFileNames;
 
-	
 	private static Logger _logger = Logger.getLogger(Diamant.class.getName());
-	
+
 	/**
 	 * Constructor
 	 */
@@ -61,117 +58,10 @@ public class DxDeploymentManager {
 			_vsFileNames = new Vector<DxConfigResource>();
 			listFile(new File(_fileListPath));
 		} catch (IOException e1) {
-			_logger.error("Unable read list of files required by Diamant's software");
+			_logger
+					.error("Unable to read the list of files required by Diamant's software");
 		}
 
-	}
-
-	/**
-	 * Checks if the parent of the ressource was already deployed to avoid
-	 * IOExceptions
-	 * 
-	 * @param ressource
-	 *            the ressource we want to check the parent
-	 * @return trus if the parent is deployed, false else
-	 */
-	private boolean checkParent(DxConfigResource ressource) {
-		DxConfigResource toCheck = ressource.getParent();
-
-		return check(toCheck);
-	}
-
-	/**
-	 * Method that checks if the ressource was already deployed
-	 * 
-	 * @param ressource
-	 *            the ressource to check
-	 * @return true if the ressource is deployed, false else
-	 */
-	private boolean check(DxConfigResource ressource) {
-		boolean toReturn = false;
-		File fToDeploy = ressource.getRessourceAsFile();
-
-		if (ressource.isDirectory() || checkParent(ressource) ) {
-			if (fToDeploy.exists()) {
-				// check that the file and the ressource to deploy are the same
-				if ((fToDeploy.isDirectory() && ressource.isDirectory())
-						|| (fToDeploy.isFile() && ressource.isFile())) {
-					toReturn = true;
-				}
-			}
-		}
-
-		return toReturn;
-	}
-
-	/**
-	 * Deploys a ressource from the jar of the application
-	 * 
-	 * @param ressource
-	 *            the resssource to deploy
-	 * @throws IOException
-	 */
-	private void deploy(DxConfigResource ressource) throws IOException {
-		File fToDeploy = ressource.getRessourceAsFile();
-
-		// create the file
-		if (ressource.isDirectory()) {
-			fToDeploy.mkdir();
-		} else {
-			fToDeploy.createNewFile();
-		}
-
-		// the classloader is used to extract ressource from the jar
-		ClassLoader clLoader = Diamant.class.getClassLoader();
-
-		InputStream isDeploy = clLoader.getResourceAsStream(ressource
-				.getClassLoaderPath());
-		OutputStream osDeploy = null;
-
-		osDeploy = new FileOutputStream(fToDeploy);
-
-		// Copy from the jar to the filesystem
-		byte[] buf = new byte[1024];
-		int len;
-		try {
-			while ((len = isDeploy.read(buf)) > 0) {
-				osDeploy.write(buf, 0, len);
-			}
-		} catch (IOException e) {
-			// TODO Modifier la facon de faire le log
-			System.out.println("Impossible de lire");
-		}
-		try {
-			isDeploy.close();
-			osDeploy.close();
-		} catch (IOException e) {
-			// TODO Modifier la facon de faire le log
-			System.out.println("Bordel de merde, j'en ai mare");
-		}
-	}
-
-	/**
-	 * Check if a list of ressources is deployed and deploys those who arn't
-	 * from the jar of the application
-	 */
-	public void checkAndDeploy() {
-		Iterator<DxConfigResource> itList = _vsFileNames.iterator();
-
-		// If Files do not exist then Creation of them
-		while (itList.hasNext()) {
-			DxConfigResource sCurrentFile = itList.next();
-			// Check that File exist		
-			
-			if (!check(sCurrentFile)) {
-				// else creation of File
-				try {
-					deploy(sCurrentFile);
-				} catch (IOException e) {
-					// TODO Modifier la facon de faire le log
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 
 	/**
@@ -182,8 +72,7 @@ public class DxDeploymentManager {
 	 * 
 	 * @return Vector<DxConfigResource> list of ressources
 	 */
-	public void listFile(File fileListPath)
-			throws IOException {
+	public void listFile(File fileListPath) throws IOException {
 		// opening of file which lists all files'paths
 		BufferedReader fList = null;
 		InputStream isList = new FileInputStream(fileListPath);
@@ -217,6 +106,114 @@ public class DxDeploymentManager {
 	}
 
 	/**
+	 * Checks if the parent of the ressource was already deployed to avoid
+	 * IOExceptions
+	 * 
+	 * @param ressource
+	 *            the ressource we want to check the parent
+	 * @return trus if the parent is deployed, false else
+	 */
+	private boolean checkParent(DxConfigResource ressource) {
+		DxConfigResource toCheck = ressource.getParent();
+
+		return check(toCheck);
+	}
+
+	/**
+	 * Check if a list of ressources is deployed and deploys those who arn't
+	 * from the jar of the application
+	 */
+	public void checkAndDeploy() {
+		Iterator<DxConfigResource> itList = _vsFileNames.iterator();
+
+		// If Files do not exist then Creation of them
+		while (itList.hasNext()) {
+			DxConfigResource sCurrentFile = itList.next();
+			// Check that File exist
+
+			if (!check(sCurrentFile)) {
+				// else creation of File
+				try {
+					deploy(sCurrentFile);
+				} catch (IOException e) {
+					_logger.error("Unable to deploy File "+ sCurrentFile.getClassLoaderPath());
+				}
+			}
+		}
+	}
+
+	/**
+	 * Method that checks if the ressource was already deployed
+	 * 
+	 * @param ressource
+	 *            the ressource to check
+	 * @return true if the ressource is deployed, false else
+	 */
+	private boolean check(DxConfigResource ressource) {
+		boolean toReturn = false;
+		File fToDeploy = ressource.getRessourceAsFile();
+
+		if (ressource.isDirectory() || checkParent(ressource)) {
+			if (fToDeploy.exists()) {
+				// check that the file and the ressource to deploy are the same
+				if ((fToDeploy.isDirectory() && ressource.isDirectory())
+						|| (fToDeploy.isFile() && ressource.isFile())) {
+					toReturn = true;
+				}
+			}
+		}
+
+		return toReturn;
+	}
+
+	/**
+	 * Deploys a ressource from the jar of the application
+	 * 
+	 * @param ressource
+	 *            the resssource to deploy
+	 * @throws IOException
+	 */
+	private void deploy(DxConfigResource ressource) throws IOException {
+		File fToDeploy = ressource.getRessourceAsFile();
+
+		// create the file
+		if (ressource.isDirectory()) {
+			fToDeploy.mkdir();
+		} else {
+			fToDeploy.createNewFile();
+
+			// the classloader is used to extract ressource from the jar
+			ClassLoader clLoader = Diamant.class.getClassLoader();
+
+			InputStream isDeploy = clLoader.getResourceAsStream(ressource
+					.getClassLoaderPath());
+			OutputStream osDeploy = null;
+
+			osDeploy = new FileOutputStream(fToDeploy);
+
+			// when we have to create a non empty file
+			if (isDeploy != null) {
+				// Copy from the jar to the filesystem
+				byte[] buf = new byte[1024];
+				int len;
+				try {
+					while ((len = isDeploy.read(buf)) > 0) {
+						osDeploy.write(buf, 0, len);
+					}
+				} catch (IOException e) {
+					_logger.error("Unabled to write on file "+fToDeploy.getPath());
+				}
+				try {
+					isDeploy.close();
+					osDeploy.close();
+				} catch (IOException e) {
+					_logger.error("Problem while closing File"+ fToDeploy.getPath());
+				}
+			}
+		}
+	}
+
+	/**
 	 * Access to the list of ressources
 	 * 
 	 * @return Vector<DxConfigResource> list of ressources
@@ -224,61 +221,5 @@ public class DxDeploymentManager {
 	public Vector<DxConfigResource> getListRessource() {
 		return _vsFileNames;
 	}
-
-	/*
-	 * public void checkAndDeploy() { Vector<String> vsFileNames = new Vector<String>(); //
-	 * Listage des noms de fichiers pour le systeme de fichier
-	 * vsFileNames.add("pref" + File.separator + "pref.txt");
-	 * vsFileNames.add("pref" + File.separator + "DXcaracteristics.sig");
-	 * vsFileNames.add("pref" + File.separator + "DXfunctions.sig");
-	 * vsFileNames.add("pref" + File.separator + "logoDiamant.gif");
-	 * vsFileNames.add("pref" + File.separator + "room_function.xml");
-	 * vsFileNames.add("pref" + File.separator + "StandardTTC.xml");
-	 * vsFileNames.add("pref" + File.separator + "StandardTTE.xml");
-	 * 
-	 * vsFileNames.add("trace" + File.separator + "log4j.conf");
-	 * vsFileNames.add("trace" + File.separator + "log4jreex.conf");
-	 * vsFileNames.add("trace" + File.separator + "trace.log"); // Listage des
-	 * noms de fichiers pour le jar Vector<String> vsClassLoader = new Vector<String>();
-	 * vsClassLoader.add("pref" + "/" + "pref.txt"); vsClassLoader.add("pref" +
-	 * "/" + "DXcaracteristics.sig"); vsClassLoader.add("pref" + "/" +
-	 * "DXfunctions.sig"); vsClassLoader.add("pref" + "/" + "logoDiamant.gif");
-	 * vsClassLoader.add("pref" + "/" + "room_function.xml");
-	 * vsClassLoader.add("pref" + "/" + "StandardTTC.xml");
-	 * vsClassLoader.add("pref" + "/" + "StandardTTE.xml");
-	 * 
-	 * vsClassLoader.add("trace" + "/" + "log4j.conf");
-	 * vsClassLoader.add("trace" + "/" + "log4jreex.conf");
-	 * vsClassLoader.add("trace" + "/" + "trace.log"); // Verification que le
-	 * dossier pref exist sinon creation File fDir = new File(deploymentTarget +
-	 * File.separator + "pref"); if (!(fDir.exists() && fDir.isDirectory())) {
-	 * fDir.mkdir(); } // Verification que le dossier trace exist sinon creation
-	 * fDir = new File(deploymentTarget + File.separator + "trace"); if
-	 * (!(fDir.exists() && fDir.isDirectory())) { fDir.mkdir(); }
-	 * 
-	 * Iterator<String> itNames = vsFileNames.iterator(); Iterator<String>
-	 * itClass = vsClassLoader.iterator(); while (itNames.hasNext()) { String
-	 * sCurrentFile = itNames.next(); File fPref = new File(deploymentTarget +
-	 * File.separator + sCurrentFile); if (!(fPref.exists())) {
-	 * 
-	 * try { fPref.createNewFile(); System.out.println("CreateFile fonctionne"); }
-	 * catch (IOException e) { System.out.println("CreateFile n'a pas marche"); }
-	 * 
-	 * ClassLoader clLoader = Diamant.class.getClassLoader(); InputStream isPref =
-	 * clLoader.getResourceAsStream(itClass .next());
-	 * 
-	 * if (isPref == null) { System.out.println("Classloader en probleme"); }
-	 * OutputStream osPref = null; try { osPref = new FileOutputStream(System
-	 * .getProperty("user.home") + File.separator + sCurrentFile);
-	 * System.out.println("Fichier de sortie ouvert"); } catch
-	 * (FileNotFoundException e) { System.out.println("Impossible d'ouvrir le
-	 * fichier"); }
-	 * 
-	 * byte[] buf = new byte[1024]; int len; try { while ((len =
-	 * isPref.read(buf)) > 0) { osPref.write(buf, 0, len); } } catch
-	 * (IOException e) { System.out.println("Impossible de lire"); } try {
-	 * isPref.close(); osPref.close(); } catch (IOException e) {
-	 * System.out.println("Bordel de merde, j'en ai mare"); } } } }
-	 */
 
 }
