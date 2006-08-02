@@ -32,6 +32,8 @@ import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
+
 import dInternal.dDeployment.DxConfigResource;
 import dmains.Diamant;
 
@@ -41,23 +43,25 @@ public class DxDeploymentManager {
 	public static String deploymentTarget = System.getProperty("user.home");
 
 	// path of the file which lists the ressources to deploy
-	// TODO change the path of list files
-	private static String fileListPath = System.getProperty("user.dir")
+	private static String _fileListPath = System.getProperty("user.dir")
 			+ File.separator + "dInternal" + File.separator + "dDeployment"
 			+ File.separator + "dDeploymentList";
 
 	// list of ressources to deploy
-	private Vector<DxConfigResource> vsFileNames;
+	private Vector<DxConfigResource> _vsFileNames;
 
+	
+	private static Logger _logger = Logger.getLogger(Diamant.class.getName());
+	
 	/**
 	 * Constructor
 	 */
 	public DxDeploymentManager() {
 		try {
-			vsFileNames = listFile(new File(fileListPath));
+			_vsFileNames = new Vector<DxConfigResource>();
+			listFile(new File(_fileListPath));
 		} catch (IOException e1) {
-			// TODO Modifier la facon de faire le log
-			e1.printStackTrace();
+			_logger.error("Unable read list of files required by Diamant's software");
 		}
 
 	}
@@ -151,7 +155,7 @@ public class DxDeploymentManager {
 	 * from the jar of the application
 	 */
 	public void checkAndDeploy() {
-		Iterator<DxConfigResource> itList = vsFileNames.iterator();
+		Iterator<DxConfigResource> itList = _vsFileNames.iterator();
 
 		// If Files do not exist then Creation of them
 		while (itList.hasNext()) {
@@ -177,12 +181,9 @@ public class DxDeploymentManager {
 	 * 
 	 * @return Vector<DxConfigResource> list of ressources
 	 */
-	public Vector<DxConfigResource> listFile(File fileListPath)
+	public void listFile(File fileListPath)
 			throws IOException {
-		// create the list of all file's name
-		Vector<DxConfigResource> vsFileNames = new Vector<DxConfigResource>();
-
-		// opening of the file which lists all names of the files
+		// opening of file which lists all files'paths
 		BufferedReader fList = null;
 		InputStream isList = new FileInputStream(fileListPath);
 
@@ -194,23 +195,23 @@ public class DxDeploymentManager {
 		// reading list
 		while ((cheminFich = fList.readLine()) != null) {
 			StringTokenizer stCheminFich = new StringTokenizer(cheminFich, "/");
+
+			// reading of parent path
 			parentName = stCheminFich.nextToken();
 
-			// Change of object Parent when his name change
+			// Change of ressource Parent when his path change
 			if (!(parent.getClassLoaderPath().equals(parentName))) {
 				parent = new DxConfigResource(parentName, true);
-				vsFileNames.add(parent);
+				_vsFileNames.add(parent);
 			}
 
-			// Add Children to the list
-			vsFileNames.add(new DxConfigResource(parent, stCheminFich
+			// Add Ressource to the list
+			_vsFileNames.add(new DxConfigResource(parent, stCheminFich
 					.nextToken(), false));
 		}
 
 		// closing list's File
 		fList.close();
-
-		return vsFileNames;
 
 	}
 
@@ -220,7 +221,7 @@ public class DxDeploymentManager {
 	 * @return Vector<DxConfigResource> list of ressources
 	 */
 	public Vector<DxConfigResource> getListRessource() {
-		return vsFileNames;
+		return _vsFileNames;
 	}
 
 	/*

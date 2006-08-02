@@ -99,6 +99,7 @@ public class DiamantTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("Dimanant Tests");
+		
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
@@ -155,7 +156,6 @@ public class DiamantTest {
 		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
-
 		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in tests");
 		return suite;
