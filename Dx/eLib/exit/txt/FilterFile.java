@@ -217,39 +217,46 @@ public class FilterFile {
 	// ordre de succession de fin de ligne sous windows: \r\n = cr + lf = 13 +
 	// 10
 	public void adjustingLines() {
-		String crlfStr = "\r\n";
-		ArrayList <Byte> byteArrayList = new ArrayList<Byte>();
+		final String crlfStr = "\r\n";
+		ArrayList<Byte> byteArrayList = new ArrayList<Byte>();
 
 		for (int i = 0; i < _b.length; i++) {
 			if ((_b[i] != (byte) crlfStr.charAt(0))
 					&& (_b[i] != (byte) crlfStr.charAt(1))) {
 				byteArrayList.add(new Byte(_b[i]));
-			} else {// end if ((_b[i] != (byte)crlfStr.charAt(0
-				if (_b[i] == (byte) crlfStr.charAt(0)) {
-					if (i == (_b.length - 1)) { // end of file?
-						byteArrayList.add(new Byte((byte) 13));
-						byteArrayList.add(new Byte((byte) 10));
-					} else {
-						if (_b[i + 1] != (byte) crlfStr.charAt(1)) {
-							byteArrayList.add(new Byte((byte) 13));
-							byteArrayList.add(new Byte((byte) 10));
-						}
-					}
-				} else { // (_b[i]==(byte)crlfStr.charAt(0)){
-					if (_b[i] == (byte) crlfStr.charAt(1)) { // adjusting LF
-						byteArrayList.add(new Byte((byte) 13));
-						byteArrayList.add(new Byte((byte) 10));
+			}
+			// } else {// end if ((_b[i] != (byte)crlfStr.charAt(0)
+			if (_b[i] == (byte) crlfStr.charAt(0)) {
+				if (i == (_b.length - 1)) { // end of file?
+					addCrLf(byteArrayList);
+				} else {
+					if (_b[i + 1] != (byte) crlfStr.charAt(1)) {
+						addCrLf(byteArrayList);
 					}
 				}
-
+			} else { // (_b[i]==(byte)crlfStr.charAt(1)){
+				if (_b[i] == (byte) crlfStr.charAt(1)) { // adjusting LF
+					addCrLf(byteArrayList);
+				}
 			}
 
+			// }
+
 		}// end for (int i=0; i< _b.length; i++)
-		_b = new byte[byteArrayList.size()];
-		for (int i = 0; i < byteArrayList.size(); i++)
-			_b[i] =  byteArrayList.get(i).byteValue();
+		toArrayOfBytes(byteArrayList);
 
 	}// end public void adjustingLines()
+
+	private void toArrayOfBytes(ArrayList<Byte> byteArrayList) {
+		_b = new byte[byteArrayList.size()];
+		for (int i = 0; i < byteArrayList.size(); i++)
+			_b[i] = byteArrayList.get(i).byteValue();
+	}
+
+	private void addCrLf(ArrayList<Byte> byteArrayList) {
+		byteArrayList.add(new Byte((byte) 13));
+		byteArrayList.add(new Byte((byte) 10));
+	}
 
 	// ------------------------------------------------------
 	public void adjustingEndFile() {
@@ -310,9 +317,9 @@ public class FilterFile {
 	}
 
 	private boolean isIn(String str, byte[] b) { // XXXX Pascal: Pourquoi
-													// reinventer la roue quand
-													// ce type de methode est
-													// dans l'API standard?
+		// reinventer la roue quand
+		// ce type de methode est
+		// dans l'API standard?
 
 		for (int i = 0; i < str.length(); i++) {
 			if (b[0] == str.charAt(i))
