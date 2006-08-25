@@ -46,7 +46,8 @@ public class RgrTest {
 
 	/**
 	 * 
-	 * @return
+	 * @return suite
+	 * 	 
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am in tests");

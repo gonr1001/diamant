@@ -30,9 +30,9 @@ import java.io.FileOutputStream;
 
 // System.out.println("char: "+(char)b[i] +
 // " int: "+ b[i] +
-//" byte: " + (byte)b[i] +
-//" short: "+(short)b[i] +
-//" HEX:" + Integer.toHexString(b[i]).toUpperCase());
+// " byte: " + (byte)b[i] +
+// " short: "+(short)b[i] +
+// " HEX:" + Integer.toHexString(b[i]).toUpperCase());
 public class ScanFile {
 	String _error;
 
