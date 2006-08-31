@@ -377,7 +377,7 @@ public class DxSetOfSites extends DxSetOfResources {
 	
     
 	public void merge(DxResource dxrModify,  DxResource dxrNew) {
-		
+//		// to avoid warning
 	}
     
     /***************************************************************************

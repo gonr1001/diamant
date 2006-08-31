@@ -26,7 +26,7 @@ import dInternal.dData.DxSetOfResources;
 public class DxSetOfActivitiesSites extends DxSetOfResources {
 
     public void addActivitiySite(String sSiteName){
-        
+//    	to avoid warning 
     }
 
     protected DxResource findEquivalent(DxResource dxrSearch) {
@@ -34,6 +34,7 @@ public class DxSetOfActivitiesSites extends DxSetOfResources {
     }
 
     protected void merge(DxResource dxrModify, DxResource dxrNew) {
+    	//to avoid warning
     }
 
 }

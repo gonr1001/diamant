@@ -47,7 +47,6 @@ import dInternal.DxDeploymentManager;
 public class Diamant {
 
 	private final static boolean GUI = true;
-
 	
 	private static Logger _logger = Logger.getLogger(Diamant.class.getName());
 

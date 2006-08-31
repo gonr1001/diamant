@@ -391,7 +391,7 @@ public abstract class DSetOfResources extends DObject {
 	 * the set of resources is sorted by the resource ID.
 	 * @return
 	 */
-	public Vector getNamesVector(int sortIndex) {
+	public Vector <String>getNamesVector(int sortIndex) {
 		Vector <String>namesVector = new Vector<String>();
 		if (sortIndex == 0)
 			sortSetOfResourcesByKey();

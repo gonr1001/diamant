@@ -88,7 +88,7 @@ public class AvailabilityAttach extends DObject {
      * */
     public void setAvailability(Vector <String> instDisp) {
         _ressourceAvailability = new Vector <String>();
-        _ressourceAvailability =  (Vector) instDisp.clone();
+        _ressourceAvailability =   (Vector<String>) instDisp.clone();
     }
     
     /**
@@ -97,7 +97,7 @@ public class AvailabilityAttach extends DObject {
      * */
     public void setAssignAvailability(Vector instAssign) {
         _ressourceSiteAvailability = new Vector <String>();
-        _ressourceSiteAvailability = (Vector) instAssign.clone();
+        _ressourceSiteAvailability =  (Vector<String>) instAssign.clone();
     }
 
     /**

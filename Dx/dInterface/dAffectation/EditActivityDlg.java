@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.76 $  $Date: 2006-07-26 17:55:43 $
+ * Title: EditActivityDlg $Revision: 1.77 $  $Date: 2006-08-31 19:29:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.76 $
+ * @version $Revision: 1.77 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -747,7 +747,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
      * @return
      */
     private Vector[] buildRoomList() {// String category){
-        Vector list[] = { new Vector(1), new Vector(1) };
+        Vector list[] = { new Vector<String>(), new Vector<String>() };
         EventAttach event = (EventAttach) ((DResource) _unities
                 .get(_currentActivityIndex)).getAttach();
         if (DxFlags.newRooms) {

@@ -712,6 +712,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		}//end for(int j = 0; j < _assignedVectors.length; j++)
 	}//end method
 
+	@SuppressWarnings("unchecked")
 	private void changeFixedInGroup(Object[] obj, int group) {
 		//boolean fixedInGroup;
 		int index = 0;
