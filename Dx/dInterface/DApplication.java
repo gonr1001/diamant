@@ -610,10 +610,33 @@ public class DApplication { // implements ActionListener {
 	}
 
 	public void doImport(JDialog jD, String fil) {
-
+		if (DxFlags.newDoc){
+			try {
+				String error = "";
+				this.setCursorWait();
+				
+				if (this.getCurrentDxDoc() != null) {
+					error = this.getCurrentDxDoc().getCurrentDModel().importData(fil);
+				} else
+					error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
+				if (error.length() == 0) {
+					new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
+				} else {
+					new FatalProblemDlg(this.getJFrame(),
+							"In DApplication.doImport: " + error);
+					System.exit(1);
+				}
+				this.setCursorDefault();
+			} catch (Exception e) {
+				new FatalProblemDlg("In DApplication.doImport: " + e.toString());
+				jD.dispose();
+			}
+			
+		}else {
 		try {
 			String error = "";
 			this.setCursorWait();
+			
 			if (this.getCurrentDoc() != null) {
 				error = this.getCurrentDModel().importData(fil);
 			} else
@@ -629,6 +652,7 @@ public class DApplication { // implements ActionListener {
 		} catch (Exception e) {
 			new FatalProblemDlg("In DApplication.doImport: " + e.toString());
 			jD.dispose();
+		}
 		}
 	}
 
