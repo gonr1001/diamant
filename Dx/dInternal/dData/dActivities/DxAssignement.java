@@ -19,11 +19,11 @@
 package dInternal.dData.dActivities;
 
 import dInternal.dData.DxResource;
-import dInternal.dData.dInstructors.DxInstructor;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 
 public class DxAssignement extends DxResource {
+	private static long _lUniqueKey =1;
     /* Key of the day, begin hour and begin minute at respective indexes */
     private int[] _nDayAndTime;
 
@@ -41,23 +41,18 @@ public class DxAssignement extends DxResource {
     private boolean _bRoomFixed;
 
     public DxAssignement() {
-        _nDayAndTime = new int[] { 1, 8, 30 };
+        
+    }
+
+    public DxAssignement(String sAssignementName) {
+    	super(_lUniqueKey++,sAssignementName);
+    	_nDayAndTime = new int[] { 1, 8, 30 };
         _sPeriodKey = "0.0.0";
         _bRoomFixed = false;
 
         _dxrRoom = null;
         _dxsoiInstructors = new DxSetOfInstructors();
-    }
-
-    /**
-     * Add an instructor to the assignement
-     * 
-     * @param dxiNewInst
-     *            Instructor to be added
-     */
-    public void addInstructor(DxInstructor dxiNewInst) {
-        _dxsoiInstructors.addInstructor(dxiNewInst);
-    }
+	}
 
     /**
      * Get date and time of the bloc in this week
@@ -194,4 +189,13 @@ public class DxAssignement extends DxResource {
     public void setRoomState(boolean bFixed) {
         _bRoomFixed = bFixed;
     }
+
+	public void setSetOfInstructors(DxSetOfInstructors dxsoiInstructors) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getRoomName() {
+		return _dxrRoom.getName();
+	}
 }

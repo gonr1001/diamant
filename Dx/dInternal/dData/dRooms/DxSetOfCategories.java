@@ -59,6 +59,11 @@ public class DxSetOfCategories extends DxSetOfResources {
         }
     }
     
+    public void addSetOfCategories(DxSetOfCategories dxsocNew)
+    {
+    	this.addSetOfResources(dxsocNew);
+    }
+    
     public DxResource findEquivalent(DxResource dxrSearch) {
         return this.getResource(dxrSearch.getName());
     }
@@ -206,7 +211,10 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
     
     public void merge(DxResource dxrModify, DxResource dxrNew) {
-        // TODO Auto-generated method stub
+    	DxCategory dxcModify = (DxCategory) dxrModify;
+    	DxCategory dxcNew = (DxCategory) dxrNew;
+		
+		dxcModify.getSetOfRooms().addSetOfRooms(dxcNew.getSetOfRooms());
     }
 
     public String toWrite(String sSiteName) {

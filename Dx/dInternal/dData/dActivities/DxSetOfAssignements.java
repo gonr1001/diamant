@@ -35,4 +35,16 @@ public class DxSetOfAssignements extends DxSetOfResources {
 
     }
 
+	public void addAssignement(DxAssignement dxassAssign) {
+		this.addResource(dxassAssign);
+	}
+
+	public DxAssignement getAssignement(String sAssignementName) {
+		return (DxAssignement)this.getResource(sAssignementName);
+	}
+	
+	public DxAssignement getAssignement(long lAssignementKey) {
+		return (DxAssignement)this.getResource(lAssignementKey);
+	}
+
 }

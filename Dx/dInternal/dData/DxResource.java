@@ -33,109 +33,116 @@ import java.util.Comparator;
  */
 public class DxResource {
 
-    // -1 if not attributed, 0 if used as a search resource. All other values
-    // are valid.
-    private long _lKey;
+	/**
+	 * DxReource has no setter methods since a DxResource is contained in a
+	 * DxSetOfResource. DxSetOfResource behavior is correct only if key and name
+	 * are constant (because of sorts). If DxResource is changed without
+	 * DxSetOfResource knowing, problems can occur.
+	 */
 
-    private String _sName;
+	// -1 if not attributed, 0 if used as a search resource. All other values
+	// are valid.
+	private long _lKey;
 
-    /**
-     * Default Constructor. Attributes are set to unassigned values (lKey=-1,
-     * _sName=null)
-     * 
-     */
-    public DxResource() {
-        _lKey = -1;
-        _sName = null;
-    }
+	private String _sName;
 
-    /**
-     * Constructor, sName is the resource name, lKey is the resource key.
-     * 
-     * @param lKey
-     *            Specifies resource key
-     * @param sName
-     *            Specifies resource name
-     * 
-     */
-    public DxResource(long lKey, String sName) {
-        _lKey = lKey;
-        _sName = sName;
-    }
+	/**
+	 * Default Constructor. Attributes are set to unassigned values (lKey=-1,
+	 * _sName=null)
+	 * 
+	 */
+	public DxResource() {
+		_lKey = -1;
+		_sName = null;
+	}
 
-    /**
-     * @return Key of the resource, -1 if not attributed. 0 value is not
-     *         attributed by a set.
-     */
-    public final long getKey() {
-        return _lKey;
-    }
+	/**
+	 * Constructor, sName is the resource name, lKey is the resource key.
+	 * 
+	 * @param lKey
+	 *            Specifies resource key
+	 * @param sName
+	 *            Specifies resource name
+	 * 
+	 */
+	public DxResource(long lKey, String sName) {
+		_lKey = lKey;
+		_sName = sName;
+	}
 
-    /**
-     * @return Name of the resource, null if not attributed.
-     */
-    public final String getName() {
-        return _sName;
-    }
+	/**
+	 * @return Key of the resource, -1 if not attributed. 0 value is not
+	 *         attributed by a set.
+	 */
+	public final long getKey() {
+		return _lKey;
+	}
 
-    /**
-     * isEqual method is called by DxSetOfResource to determine if a resource is
-     * equal to another. If DxResource is subclassed, this method should be
-     * overriden to specialise isEqual and verify added properties.
-     * 
-     * @param dxrOtherRes
-     * @return
-     */
-    public boolean isEqual(DxResource dxrOtherRes) {
-        if (this._sName.compareTo(dxrOtherRes._sName) == 0) {
-            return true;
-        }
-        return false;
-    }
+	/**
+	 * @return Name of the resource, null if not attributed.
+	 */
+	public final String getName() {
+		return _sName;
+	}
 
-    /**
-     * This method can be used to change the key of a resource. Care should be
-     * taken when using this method as it could create a double of a key. If a
-     * key is duplicated, DxSetOfResource behavior will be altered.
-     * 
-     * @param lKey
-     *            New key of the resource
-     */
-    protected final void setKey(long lKey) {
-        _lKey = lKey;
-    }
+	/**
+	 * isEqual method is called by DxSetOfResource to determine if a resource is
+	 * equal to another. If DxResource is subclassed, this method should be
+	 * overriden to specialise isEqual and verify added properties.
+	 * 
+	 * @param dxrOtherRes
+	 * @return
+	 */
+	public boolean isEqual(DxResource dxrOtherRes) {
+		if (this._sName.compareTo(dxrOtherRes._sName) == 0) {
+			return true;
+		}
+		return false;
+	}
 
-    /**
-     * Method that will be used for Sort and BinarySearch in a Name ordered
-     * vector
-     */
-    public static Comparator<DxResource> NameComparator = new Comparator<DxResource>() {
-        public int compare(DxResource left, DxResource right) {
-            return left._sName.compareTo(right._sName);
-        }
-    };
+	// /**
+	// * This method can be used to change the key of a resource. Care should be
+	// * taken when using this method as it could create a double of a key. If a
+	// * key is duplicated, DxSetOfResource behavior will be altered.
+	// *
+	// * @param lKey
+	// * New key of the resource
+	// */
+	// protected final void setKey(long lKey) {
+	// _lKey = lKey;
+	// }
 
-    /**
-     * Method that will be used for Sort and BinarySearch in a Key ordered
-     * vector
-     */
-    public static Comparator<DxResource> KeyComparator = new Comparator<DxResource>() {
-        public int compare(DxResource left, DxResource right) {
-            long diff = left._lKey - right._lKey;
-            if (diff > 0)
-                return 1;
-            if (diff < 0)
-                return -1;
-            return 0;
-        }
-    };
+	/**
+	 * Method that will be used for Sort and BinarySearch in a Name ordered
+	 * vector
+	 */
+	public static Comparator<DxResource> NameComparator = new Comparator<DxResource>() {
+		public int compare(DxResource left, DxResource right) {
+			return left._sName.compareTo(right._sName);
+		}
+	};
 
-    /**
-     * Function that will be used by JComboBox to determine what has to be
-     * displayed in the list. If something else that the name has to be
-     * displayed, it should be overidden in subclass.
-     */
-    public String toString() {
-        return _sName;
-    }
+	/**
+	 * Method that will be used for Sort and BinarySearch in a Key ordered
+	 * vector
+	 */
+	public static Comparator<DxResource> KeyComparator = new Comparator<DxResource>() {
+		public int compare(DxResource left, DxResource right) {
+			long diff = left._lKey - right._lKey;
+			if (diff > 0)
+				return 1;
+			if (diff < 0)
+				return -1;
+			return 0;
+		}
+	};
+
+	/**
+	 * Function that will be used by JComboBox to determine what has to be
+	 * displayed in the list. If something else that the name has to be
+	 * displayed, it should be overidden in subclass.
+	 */
+	public String toString() {
+		return _sName;
+	}
 }

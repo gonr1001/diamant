@@ -565,6 +565,9 @@ public class DConst {
   public static final int ACT_SITE_LENGTH = 3;
   public static final int ACT_CAPACITY_LENGTH = 5;
   public static final String ACT_DEFAULT_CAPACITY ="99999";
+  public static final String ACT_UNITY_SEPARATOR=";";
+  public static final String ACT_INST_SEPARATOR=":";
+  
   
   // rooms and sites v 1.7
   public static final int ROOM_1_DOT_5_USELESS_HEADER= 3;

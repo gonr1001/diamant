@@ -25,10 +25,6 @@ import dInternal.dData.DxSetOfResources;
 
 public class DxSetOfActivitiesSites extends DxSetOfResources {
 
-    public void addActivitiySite(String sSiteName){
-//    	to avoid warning 
-    }
-
     protected DxResource findEquivalent(DxResource dxrSearch) {
         return null;
     }
@@ -36,5 +32,18 @@ public class DxSetOfActivitiesSites extends DxSetOfResources {
     protected void merge(DxResource dxrModify, DxResource dxrNew) {
     	//to avoid warning
     }
+
+	public void addActivitiySite(DxActivitySite dxasSite) {
+		this.addResource(dxasSite);
+		
+	}
+
+	public DxActivitySite getActivitySite(String sSiteName) {
+		return (DxActivitySite)this.getResource(sSiteName);
+	}
+	
+	public DxActivitySite getActivitySite(long lSiteKey) {
+		return (DxActivitySite)this.getResource(lSiteKey);
+	}
 
 }

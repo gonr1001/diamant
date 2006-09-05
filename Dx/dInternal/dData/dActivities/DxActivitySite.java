@@ -24,13 +24,30 @@ import dInternal.dData.DxResource;
 
 public class DxActivitySite extends DxResource {
     private static long _lUniqueKey=1;
-    //private DxSetOfActivities dxsoaActivities;
+    private DxSetOfActivities _dxsoaActivities;
     
     
 
     public DxActivitySite(String sName){
         super(_lUniqueKey++,sName);
+        _dxsoaActivities = new DxSetOfActivities();
         
         
     }
+    
+	public DxActivity getActivity(String sActivitySiteName) {
+		return _dxsoaActivities.getActivity(sActivitySiteName);
+	}
+	
+	public DxActivity getActivity(Long lActivitySiteKey) {
+		return _dxsoaActivities.getActivity(lActivitySiteKey);
+	}
+	
+	public void addActivity(DxActivity dxaActivity) {
+		_dxsoaActivities.addActivity(dxaActivity);
+	}
+
+	public Object getActivityCount() {
+		return _dxsoaActivities.size();
+	}
 }

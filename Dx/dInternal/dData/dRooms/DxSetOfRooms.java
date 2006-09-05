@@ -42,8 +42,7 @@ public class DxSetOfRooms extends DxSetOfResources {
     }
     
     public DxResource findEquivalent(DxResource dxrSearch) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.getResource(dxrSearch.getName());
     }
 
     public DxRoom getRoom(long lRoomKey) {
@@ -133,7 +132,7 @@ public class DxSetOfRooms extends DxSetOfResources {
     }
     
     public void merge(DxResource dxrModify, DxResource dxrNew) {
-        // TODO Auto-generated method stub
+        // Rooms remain unchanged
 
     }
 

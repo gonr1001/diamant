@@ -42,7 +42,7 @@ public class DxFlags {
 	public final static boolean newPartitionAlg = true;
 //	public final static boolean newPartitionAlg = false;
 	
-	public final static boolean newActivity = true;
-//	public final static boolean newActivity = false;
+//	public final static boolean newActivity = true;
+	public final static boolean newActivity = false;
 	
 }

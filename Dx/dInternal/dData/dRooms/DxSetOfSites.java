@@ -129,6 +129,10 @@ public class DxSetOfSites extends DxSetOfResources {
         }
 
     }
+    
+    public void addSetOfSites(DxSetOfSites dxsosAdd){
+    	this.addSetOfResources(dxsosAdd);
+    }
 
     public DxSite getSite(long lSiteKey) {
         return (DxSite) this.getResource(lSiteKey);
@@ -377,7 +381,10 @@ public class DxSetOfSites extends DxSetOfResources {
 	
     
 	public void merge(DxResource dxrModify,  DxResource dxrNew) {
-//		// to avoid warning
+		DxSite dxsModify = (DxSite) dxrModify;
+		DxSite dxsNew = (DxSite) dxrNew;
+		
+		dxsModify.getSetOfCat().addSetOfCategories(dxsNew.getSetOfCat());
 	}
     
     /***************************************************************************
@@ -401,4 +408,30 @@ public class DxSetOfSites extends DxSetOfResources {
         }
         return sbReturn.toString();
     }
+
+	public DxSetOfRooms getAllRooms() {
+		DxSite dxsCurrentSite;
+		DxCategory dxcCurrentCat;
+		DxSetOfRooms dxsorAllRooms = null;
+		
+		Iterator itSites;
+		Iterator itCategories;
+		
+		itSites = this.iterator();
+		while(itSites.hasNext()){
+			dxsCurrentSite = (DxSite)itSites.next();
+			itCategories = dxsCurrentSite.getSetOfCat().iterator();
+			while(itCategories.hasNext()){
+				dxcCurrentCat = (DxCategory)itCategories.next();
+				if(dxsorAllRooms == null){
+					dxsorAllRooms = dxcCurrentCat.getSetOfRooms();
+				}
+				else{
+					dxsorAllRooms.addSetOfRooms(dxcCurrentCat.getSetOfRooms());
+				}
+			}
+		}
+		
+		return dxsorAllRooms;
+	}
 }
