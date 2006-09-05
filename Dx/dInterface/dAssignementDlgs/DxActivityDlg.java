@@ -26,7 +26,6 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxSetOfActivities;
-import dInternal.dData.dActivities.SetOfActivities;
 
 public class DxActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {

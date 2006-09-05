@@ -290,7 +290,7 @@ public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 					try {
 						nFixed = Integer.parseInt(stLine.nextToken().trim());
 					} catch (NumberFormatException e) {
-
+						//TODO
 					}
 					if (!(nFixed == 0 || nFixed == 1)) {
 						// TODO: Must throw error

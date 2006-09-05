@@ -43,8 +43,6 @@ public class DxReadActivitiesSites1dot6 implements DxActivitiesSitesReader {
 
 	final static private int _COURSENAMELENGTH = 6;
 
-	final static private int _ACTIVITYLENGTH = 11;
-
 	private int _NUMBEROFCYCLE = 1;
 
 	private boolean _isDia;
@@ -310,7 +308,7 @@ public class DxReadActivitiesSites1dot6 implements DxActivitiesSitesReader {
 					try {
 						nFixed = Integer.parseInt(stLine.nextToken().trim());
 					} catch (NumberFormatException e) {
-
+						//TODO
 					}
 					if (!(nFixed == 0 || nFixed == 1)) {
 						// TODO: Must throw error

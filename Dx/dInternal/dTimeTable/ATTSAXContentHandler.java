@@ -30,7 +30,7 @@ public class ATTSAXContentHandler extends DefaultHandler {
 			inTTday, indayRef, indayID, inTTsequences, inTTsequence,
 			insequenceID, inTTperiods, inTTperiod, inperiodID, inBeginTime,
 			inEndTime, inpriority;
-
+	
 	private final String[] AITEM_subTag = { "DXTimeTable", "TTcycle", "TTdays",
 			"TTday", "TTsequences", "TTsequence", "TTperiods", "TTperiod" };
 

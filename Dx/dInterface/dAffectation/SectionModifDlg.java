@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.20 $  $Date: 2006-06-08 21:33:08 $
+ * Title: SectionModifDlg $Revision: 1.21 $  $Date: 2006-09-05 17:50:02 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
- * @author  $Author: caln1901 $
+ * @version $Revision: 1.21 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -85,7 +85,7 @@ private String _title;
     String command = e.getActionCommand();
     //System.out.println("Choix: "+command);
     Type type= (Type)_type.getAttach();
-    Vector vect= type.getSetOfSections().getNamesVector(1);
+    Vector <String> vect= type.getSetOfSections().getNamesVector(1);
     //boolean _change = false, _restore = false;
     if (command.equals(DConst.BUT_CLOSE)) {  // fermer
       dispose();
@@ -97,7 +97,7 @@ private String _title;
       //new SelectGroupDlg(this, vect, false);
       Object str= _listOfElements[_selectedPanel].getSelectedValue();
       if (str!=null && (type.getSetOfSections().size()>1)){
-        vect= new Vector();
+        vect= new Vector<String>();
         vect.add(str.toString());
         new SelectGroupDlg(this, vect, false);
         //init();
