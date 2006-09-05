@@ -20,6 +20,8 @@
 
 package dInternal.dData.dActivities;
 
+import java.util.Iterator;
+
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
@@ -46,4 +48,24 @@ public class DxSetOfActivitiesSites extends DxSetOfResources {
 		return (DxActivitySite)this.getResource(lSiteKey);
 	}
 
+	public DxSetOfActivities getAllActivities() {
+		DxSetOfActivities dxsoaReturn = null;
+		Iterator itSites = this.iterator();
+		while(itSites.hasNext())
+		{
+			DxActivitySite dxasCurrentSite = (DxActivitySite)itSites.next();
+			if(dxsoaReturn == null)
+			{
+				dxsoaReturn = dxasCurrentSite.getSetOfActivities();
+			}else{
+				dxsoaReturn.addSetOfActivities(dxasCurrentSite.getSetOfActivities());
+			}
+		}
+		return dxsoaReturn;
+	}
+	
+	public String toWrite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

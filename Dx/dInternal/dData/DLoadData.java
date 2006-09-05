@@ -32,6 +32,8 @@ import dInternal.DataExchange;
 import dInternal.DxPreferences;
 import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
+import dInternal.dData.dActivities.DxReadActivitiesSites1dot6;
+import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
@@ -40,6 +42,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxReadSitedotDia;
+import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import dInternal.dData.dRooms.SetOfCategories;
@@ -63,149 +66,148 @@ public class DLoadData {
 
 	private String _studentsFileName;
 
-    private DModel _dm;
+	private DModel _dm;
 
-    private String _chars;
+	private String _chars;
 
-    /**
-     * LoadData initiate the private fields
-     * 
-     */
-    public DLoadData() {
-        _dm = null;
-        doLoadData();
-    }
+	/**
+	 * LoadData initiate the private fields
+	 * 
+	 */
+	public DLoadData() {
+		_dm = null;
+		doLoadData();
+	}
 
-    /**
-     * LoadData initiate the private fields
-     * 
-     * @param model
-     *            the current DModel is taken in account
-     */
-    public DLoadData(DModel dm) {
-        _dm = dm;
-        doLoadData();
-    }
+	/**
+	 * LoadData initiate the private fields
+	 * 
+	 * @param model
+	 *            the current DModel is taken in account
+	 */
+	public DLoadData(DModel dm) {
+		_dm = dm;
+		doLoadData();
+	}
 
-    /**
-     * LoadData initiate the private fields
-     * 
-     * @param dm
-     *            the current DModel is taken in account
-     * @param args
-     *            contents of a .dim file
-     * 
-     */
-    public DLoadData(DModel dm, String args) {
-        _dm = dm;
-        if (_dm != null) // XXXX Pascal: else ?
-        	if (DxFlags.newDoc){
-        		_chars = _dm.getDxDocument().getDMediator().getDApplication()
-                .getPreferences()._acceptedChars;
-        	}else {
-            _chars = _dm.getDDocument().getDMediator().getDApplication()
-                    .getPreferences()._acceptedChars;
-        	}
-        verifyImportDataFile(args);
-    }
+	/**
+	 * LoadData initiate the private fields
+	 * 
+	 * @param dm
+	 *            the current DModel is taken in account
+	 * @param args
+	 *            contents of a .dim file
+	 * 
+	 */
+	public DLoadData(DModel dm, String args) {
+		_dm = dm;
+		if (_dm != null) // XXXX Pascal: else ?
+			if (DxFlags.newDoc) {
+				_chars = _dm.getDxDocument().getDMediator().getDApplication()
+						.getPreferences()._acceptedChars;
+			} else {
+				_chars = _dm.getDDocument().getDMediator().getDApplication()
+						.getPreferences()._acceptedChars;
+			}
+		verifyImportDataFile(args);
+	}
 
-    // /**
-    // * extractRoomsAttributesInterpretor produces an instance of
-    // * RoomsAttributesInterpretor
-    // *
-    // * @return the instance of RoomsAttributesInterpretor
-    // */
-    // public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
-    // RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
-    // byte[] dataloaded = preLoad(_functionFileName);
-    // if (dataloaded != null)
-    // attr.loadSetOfFunctions(dataloaded);
-    // dataloaded = preLoad(_caractFileName);
-    // if (dataloaded != null)
-    // attr.loadSetOfCaracteristics(dataloaded);
-    // return attr;
-    // }
+	// /**
+	// * extractRoomsAttributesInterpretor produces an instance of
+	// * RoomsAttributesInterpretor
+	// *
+	// * @return the instance of RoomsAttributesInterpretor
+	// */
+	// public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
+	// RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
+	// byte[] dataloaded = preLoad(_functionFileName);
+	// if (dataloaded != null)
+	// attr.loadSetOfFunctions(dataloaded);
+	// dataloaded = preLoad(_caractFileName);
+	// if (dataloaded != null)
+	// attr.loadSetOfCaracteristics(dataloaded);
+	// return attr;
+	// }
 
-    /**
-     * extractRooms
-     * 
-     * @param currentList
-     *            the current SetOfRooms
-     * @param merge
-     *            a boolean
-     *            <p>
-     *            (if merge = true --> merge the new SetOfRooms to the current
-     *            SetOfRooms)
-     *            </p>
-     *            (if merge = false --> replace the current SetOfRooms by the
-     *            new SetOfRooms)
-     * @return SetOfRooms
-     */
+	/**
+	 * TODO: Create extractRooms for DxSetOfSites
+	 * 
+	 * @param currentList
+	 *            the current SetOfRooms
+	 * @param merge
+	 *            a boolean
+	 *            <p>
+	 *            (if merge = true --> merge the new SetOfRooms to the current
+	 *            SetOfRooms)
+	 *            </p>
+	 *            (if merge = false --> replace the current SetOfRooms by the
+	 *            new SetOfRooms)
+	 * @return SetOfRooms
+	 */
 
-    public SetOfSites extractRooms(SetOfSites currentList, boolean merge) {
-        DataExchange de = buildDataExchange(_roomsFileName);
-        SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
-        // periods!
-        if (de != null) {
-            if (merge)
-                if (currentList != null)
-                    roomsList
-                            .setSetOfResources(currentList.getSetOfResources());
-            if (roomsList.analyseTokens(de, 0)) {
-                // roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-                roomsList.buildSetOfResources(de, 0);
-            }
-        } else {// (NullPointerException npe) {
-            new FatalProblemDlg(
-                    "I was in LoadData.extractRooms. preload failed!!!");
-            System.exit(52);
-        }
-        return roomsList;
-    }// end extractRooms
+	public SetOfSites extractRooms(SetOfSites currentList, boolean merge) {
+		DataExchange de = buildDataExchange(_roomsFileName);
+		SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
+		// periods!
+		if (de != null) {
+			if (merge)
+				if (currentList != null)
+					roomsList
+							.setSetOfResources(currentList.getSetOfResources());
+			if (roomsList.analyseTokens(de, 0)) {
+				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+				roomsList.buildSetOfResources(de, 0);
+			}
+		} else {// (NullPointerException npe) {
+			new FatalProblemDlg(
+					"I was in LoadData.extractRooms. preload failed!!!");
+			System.exit(52);
+		}
+		return roomsList;
+	}// end extractRooms
 
-    /**
-     * 
-     * @param currentList
-     *            the current SetOfInstructors
-     * @param merge
-     *            a boolean
-     *            <p>
-     *            (if merge = true --> merge the new SetOfInstructors to the
-     *            current SetOfInstructors)
-     *            </p>
-     *            (if merge = false --> replace the current SetOfInstructors by
-     *            the new SetOfInstructors)
-     * @return SetOfInstructors
-     */
-//     public DxSetOfInstructors extractInstructors(
-//     DxSetOfInstructors currentList, boolean merge, boolean dotDia) {
-//     // byte[] dataloaded = preLoad(_instructorFileName);
-//     DxSetOfInstructors instructorsList = null;
-//     DataExchange de = buildDataExchange(_instructorFileName);
-//     if (dotDia) {
-//     // instructorsList= new
-//     // DxSetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
-//     // _dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());//
-//     // 5 jours et 14 periods!
-//     } else {
-//     // instructorsList= new DxSetOfInstructors(5,14);// 5 jours et 14
-//     // periods !
-//     }
-//     // if (de != null) {
-//     // if (merge)
-//     // if(currentList!= null)
-//     // instructorsList.setSetOfResources(currentList.getSetOfResources());
-//     // if (instructorsList.analyseTokens(de, 0)){
-//     // instructorsList.buildSetOfResources(de, 0);
-//     // }
-//     // } else {// (NullPointerException npe) {
-//     // new FatalProblemDlg("I was in LoadData.extractInstructors. preload
-//     // failed!!!" );
-//     // System.exit(52);
-//     // }
-//     return instructorsList;
-//     }
-
+	/**
+	 * 
+	 * @param currentList
+	 *            the current SetOfInstructors
+	 * @param merge
+	 *            a boolean
+	 *            <p>
+	 *            (if merge = true --> merge the new SetOfInstructors to the
+	 *            current SetOfInstructors)
+	 *            </p>
+	 *            (if merge = false --> replace the current SetOfInstructors by
+	 *            the new SetOfInstructors)
+	 * @return SetOfInstructors
+	 */
+	// public DxSetOfInstructors extractInstructors(
+	// DxSetOfInstructors currentList, boolean merge, boolean dotDia) {
+	// // byte[] dataloaded = preLoad(_instructorFileName);
+	// DxSetOfInstructors instructorsList = null;
+	// DataExchange de = buildDataExchange(_instructorFileName);
+	// if (dotDia) {
+	// // instructorsList= new
+	// // DxSetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
+	// // _dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());//
+	// // 5 jours et 14 periods!
+	// } else {
+	// // instructorsList= new DxSetOfInstructors(5,14);// 5 jours et 14
+	// // periods !
+	// }
+	// // if (de != null) {
+	// // if (merge)
+	// // if(currentList!= null)
+	// // instructorsList.setSetOfResources(currentList.getSetOfResources());
+	// // if (instructorsList.analyseTokens(de, 0)){
+	// // instructorsList.buildSetOfResources(de, 0);
+	// // }
+	// // } else {// (NullPointerException npe) {
+	// // new FatalProblemDlg("I was in LoadData.extractInstructors. preload
+	// // failed!!!" );
+	// // System.exit(52);
+	// // }
+	// return instructorsList;
+	// }
 	/**
 	 * 
 	 * @param currentList
@@ -518,8 +520,7 @@ public class DLoadData {
 				diaData.add(dxsoiInst);
 
 				// extract SetOfSites
-				de = buildDataExchange(project.nextToken().trim()
-						.getBytes());
+				de = buildDataExchange(project.nextToken().trim().getBytes());
 				if (DxFlags.newRooms) {
 					DxSiteReader dxrr = new DxReadSitedotDia(de, tts
 							.getNumberOfActiveDays(), tts.getCurrentCycle()
@@ -535,12 +536,12 @@ public class DLoadData {
 					diaData.add(roomsList);
 				}
 
-				//extract SetOfActivities
-				de = buildDataExchange(project.nextToken().trim()
-						.getBytes());
+				// extract SetOfActivities
+				de = buildDataExchange(project.nextToken().trim().getBytes());
 				if (DxFlags.newActivity) {
 					DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
-							de,dxsoiInst,dxsosRooms.getAllRooms(),tts.getPeriodLenght(),true);
+							de, dxsoiInst, dxsosRooms.getAllRooms(), tts
+									.getPeriodLenght(), true);
 
 					diaData.add(dxasr.readSetOfActivitiesSites());
 				} else {
@@ -578,7 +579,8 @@ public class DLoadData {
 
 	private Vector<Object> load2dot1(String fileName, String currentDir)
 			throws Exception {
-
+		DxSetOfInstructors dxsoiInst = null;
+		DxSetOfSites dxsosRooms = null;
 		Vector<Object> diaData = new Vector<Object>();
 		String dataloaded = new String(preLoad(fileName));
 		StringTokenizer project;
@@ -605,6 +607,7 @@ public class DLoadData {
 				DxInstructorsReader dxir = new DxReadInstructors1dot5(de, tts
 						.getNumberOfActiveDays(), tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
+				dxsoiInst = dxir.readSetOfInstructors();
 				diaData.add(dxir.readSetOfInstructors());
 			}// end if(tts.getError().length()==0)
 
@@ -624,17 +627,27 @@ public class DLoadData {
 						.getNumberOfActiveDays(), tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
 
-				diaData.add(dxrr.getSetOfSites());
+				dxsosRooms = dxrr.getSetOfSites();
+				diaData.add(dxsosRooms);
 			}
 
 			// extract SetOfActivities
 			de = buildDataExchange(project.nextToken().trim().getBytes());
-			SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(
-					true, tts.getPeriodLenght());
-			if (activitiesList.analyseTokens(de, 1)) {
-				activitiesList.buildSetOfResources(de, 1);
+			if (DxFlags.newActivity) {
+				DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
+						de, dxsoiInst, dxsosRooms.getAllRooms(), tts
+								.getPeriodLenght(), true);
+
+				diaData.add(dxasr.readSetOfActivitiesSites());
+			} else {
+				SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(
+						true, tts.getPeriodLenght());
+				if (activitiesList.analyseTokens(de, 1)) {
+					activitiesList.buildSetOfResources(de, 1);
+				}
+				diaData.add(activitiesList);
 			}
-			diaData.add(activitiesList);
+
 			// extract SetOfStudents
 			de = buildDataExchange(project.nextToken().trim().getBytes());
 			SetOfStuSites studentsList = new SetOfStuSites();
@@ -1466,4 +1479,20 @@ public class DLoadData {
 
 		return dxsrReader.getSetOfSites();
 	}// end extractDxRooms
+
+	public DxSetOfActivitiesSites extractDxActivity(
+			DxSetOfInstructors dxsoiInst, DxSetOfRooms dxsorRooms, int nPerLen)
+			throws Exception {
+		DataExchange de = buildDataExchange(_activitiesFileName);
+		DxActivitiesSitesReader dxasrReader;
+		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+			dxasrReader = new DxReadActivitiesSites1dot6(de, dxsoiInst,
+					dxsorRooms, nPerLen, false);
+		} else {
+			dxasrReader = new DxReadActivitiesSites1dot5(de, dxsoiInst,
+					dxsorRooms, nPerLen, false);
+		}
+
+		return dxasrReader.readSetOfActivitiesSites();
+	}
 }

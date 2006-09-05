@@ -33,6 +33,9 @@ import dInternal.dData.DxAvailability;
 import dInternal.dData.ExportData;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dActivities.DxActivitySite;
+import dInternal.dData.dActivities.DxSetOfActivities;
+import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
@@ -93,11 +96,13 @@ public class DModel extends Observable {
 
 	private DxSetOfInstructors _dxSetOfInstructors;
 
+	private DxSetOfSites _dxSetOfSites;
+
+	private DxSetOfActivitiesSites _dxsoasSetOfAct;
+
 	private SetOfRoomsFunctions _setOfRoomsFunctions;
 
 	private SetOfSites _setOfSites;
-
-	private DxSetOfSites _dxSetOfSites;
 
 	private SetOfCategories _setOfCategories;
 
@@ -106,9 +111,8 @@ public class DModel extends Observable {
 	private SetOfActivitiesSites _setOfActivitiesSites;
 
 	private DDocument _dDocument;
-	
-	private DxDocument _dxDocument;
 
+	private DxDocument _dxDocument;
 
 	private TTStructure _ttStruct;
 
@@ -185,8 +189,7 @@ public class DModel extends Observable {
 
 	}
 
-	public DModel(DxDocument dxDocument, String fileName)
-			throws Exception /* !!!NIC!!! */{
+	public DModel(DxDocument dxDocument, String fileName) throws Exception /* !!!NIC!!! */{
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -217,11 +220,11 @@ public class DModel extends Observable {
 		}
 		if (_error.length() == 0 && _isATimeTable)
 			_conditionsToTest = new DxConditionsToTest(this);
-//		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
-//			_isATimeTable = true;
-//			_isOnlyATimeTable = true;
-//		}
-//		_type = type;
+		// if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
+		// _isATimeTable = true;
+		// _isOnlyATimeTable = true;
+		// }
+		// _type = type;
 		_setOfRoomsFunctions = new SetOfRoomsFunctions();
 		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
@@ -325,8 +328,11 @@ public class DModel extends Observable {
 		// _dxSetOfInstructors.getResourceAt(i)
 		// .getAttach()).setFullAvailability();
 		// }
+
+		// TODO a revoir
 		_dxSetOfInstructors.alwaysAvailable();
 
+		// TODO a revoir
 		if (DxFlags.newRooms) {
 			_dxSetOfSites.alwaysAvailable();
 		} else {
@@ -384,7 +390,12 @@ public class DModel extends Observable {
 				resizeSiteAvailability(_setOfSites);
 			}
 
-			_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
+			if (DxFlags.newActivity) {
+				_dxsoasSetOfAct = (DxSetOfActivitiesSites) theTT.get(4);
+			} else {
+				_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
+			}
+
 			_setOfStuSites = (SetOfStuSites) theTT.get(5);
 			if (!DxFlags.newRooms) {
 				if (_setOfSites.getError().length() != 0) {
@@ -434,9 +445,18 @@ public class DModel extends Observable {
 		}
 
 		// import set of activities
-		_setOfActivitiesSites = loadData.extractActivities(null, false);
-		if (_setOfActivitiesSites.getError().length() != 0) {
-			return _setOfActivitiesSites.getError();
+		if (DxFlags.newActivity) {
+			if (!DxFlags.newRooms) {
+				System.out
+						.println("DModel.importData cannot be completed with new Activites and old Rooms");
+			}
+			_dxsoasSetOfAct = loadData.extractDxActivity(_dxSetOfInstructors,
+					_dxSetOfSites.getAllRooms(), _ttStruct.getPeriodLenght());
+		} else {
+			_setOfActivitiesSites = loadData.extractActivities(null, false);
+			if (_setOfActivitiesSites.getError().length() != 0) {
+				return _setOfActivitiesSites.getError();
+			}
 		}
 
 		// import set of students
@@ -488,14 +508,15 @@ public class DModel extends Observable {
 			// error = _setOfSites.getError();
 			this.changeInDModel(_dDocument.getJIF());// _setOfRooms.sendEvent(_dDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)) {// Importation
-			// selective
-			// --
-			// Activité
-			_setOfActivitiesSites = (SetOfActivitiesSites) loadData
-					.selectiveImport(_setOfActivitiesSites, fileName);
-			error = _setOfActivitiesSites.getError();
-
-			_conditionsToTest.setMatrixBuilded(false, true);
+			// // selective
+			// // --
+			// // Activité
+			// TODO revoir ceci
+			// _setOfActivitiesSites = (SetOfActivitiesSites) loadData
+			// .selectiveImport(_setOfActivitiesSites, fileName);
+			// error = _setOfActivitiesSites.getError();
+			//
+			// _conditionsToTest.setMatrixBuilded(false, true);
 			changeInDModel(_dDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)) {// Importation
 			// selective
@@ -547,6 +568,21 @@ public class DModel extends Observable {
 		return soaTmp;
 	}
 
+	public DxSetOfActivities getDxSetOfActivities() {
+		DxSetOfActivities dxsoaTmp = null;
+		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
+			dxsoaTmp = _dxsoasSetOfAct.getAllActivities();
+
+		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
+			DxActivitySite dxasCurrentSite = _dxsoasSetOfAct
+					.getActivitySite(_currentSite);
+			if (dxasCurrentSite != null) {
+				dxsoaTmp = dxasCurrentSite.getSetOfActivities();
+			}
+		}
+		return dxsoaTmp;
+	}
+
 	/**
 	 * 
 	 * @return
@@ -584,31 +620,31 @@ public class DModel extends Observable {
 	}
 
 	public DxSetOfRooms getDxSetOfRooms() {
-		DxSetOfRooms dxsorTmp = new DxSetOfRooms();
+		DxSetOfRooms dxsorTmp = null;
 		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
-			Iterator itSites = _dxSetOfSites.iterator();
-			DxSetOfCategories dxsoc;
-			DxSetOfRooms dxsor;
-			while (itSites.hasNext()) {
-				dxsoc = ((DxSite) itSites.next()).getSetOfCat();
-				Iterator itCategory = dxsoc.iterator();
-				while (itCategory.hasNext()) {
-					dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
-					dxsorTmp.addSetOfRooms(dxsor);
-				}// end for (int j = 0; j < sor.size(); j++)
-			}// end for (int i = 0; i < _setOfSites
+			dxsorTmp = _dxSetOfSites.getAllRooms();
+			// Iterator itSites = _dxSetOfSites.iterator();
+			// DxSetOfCategories dxsoc;
+			// DxSetOfRooms dxsor;
+			// while (itSites.hasNext()) {
+			// dxsoc = ((DxSite) itSites.next()).getSetOfCat();
+			// Iterator itCategory = dxsoc.iterator();
+			// while (itCategory.hasNext()) {
+			// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
+			// dxsorTmp.addSetOfRooms(dxsor);
+			// }// end for (int j = 0; j < sor.size(); j++)
+			// }// end for (int i = 0; i < _setOfSites
 		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
 			DxSite dxsCurrentSite = _dxSetOfSites.getSite(_currentSite);
 			if (dxsCurrentSite != null) {
-				DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
-				Iterator itCategory = dxsoc.iterator();
-				DxSetOfRooms dxsor;
-				while (itCategory.hasNext()) {
-					dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
-					dxsorTmp.addSetOfRooms(dxsor);
-				}
-			} else {
-				dxsorTmp = null;
+				dxsorTmp = dxsCurrentSite.getAllRooms();
+				// DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
+				// Iterator itCategory = dxsoc.iterator();
+				// DxSetOfRooms dxsor;
+				// while (itCategory.hasNext()) {
+				// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
+				// dxsorTmp.addSetOfRooms(dxsor);
+				// }
 			}
 		}
 		return dxsorTmp;
@@ -627,6 +663,10 @@ public class DModel extends Observable {
 	 */
 	public SetOfActivitiesSites getSetOfActivitiesSites() {
 		return _setOfActivitiesSites;
+	}
+
+	public DxSetOfActivitiesSites getDxSetOfActivitiesSites() {
+		return _dxsoasSetOfAct;
 	}
 
 	/**
@@ -746,10 +786,17 @@ public class DModel extends Observable {
 		String error = "";
 		if (_isATimeTable) {
 			updateInstructorAvail();
-			if (DxFlags.newRooms) {
+			if (DxFlags.newRooms && DxFlags.newActivity) {
+				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+						_dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites,
+						filename);
+			} else if (DxFlags.newRooms) {
 				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 						_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
 						filename);
+			} else if (DxFlags.newActivity) {
+				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+						_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
 			} else {
 				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 						_setOfSites, _setOfActivitiesSites, _setOfStuSites,
@@ -839,9 +886,9 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}
 
-//	public void changeInDModelByRoomsDlg(Object obj) {
-//		changeInDModel(obj);
-//	}
+	// public void changeInDModelByRoomsDlg(Object obj) {
+	// changeInDModel(obj);
+	// }
 
 	public void changeInDModelByStudentsDlg(Object obj) {
 		this.setChanged();
@@ -1005,8 +1052,7 @@ public class DModel extends Observable {
 		Iterator itInst = soiRes.iterator();
 		while (itInst.hasNext()) {
 			dxiTemp = (DxInstructor) itInst.next();
-			matrix = dxiTemp.getAvailability()
-					.getMatrixAvailability();
+			matrix = dxiTemp.getAvailability().getMatrixAvailability();
 			matrix = DXToolsMethods
 					.resizeAvailability(matrix, getTTStructure());
 			dxiTemp.setAvailability(new DxAvailability(matrix));
@@ -1043,8 +1089,7 @@ public class DModel extends Observable {
 		Iterator itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();
-			int[][] nMatrix = dxrTemp.getAvailability()
-					.getMatrixAvailability();
+			int[][] nMatrix = dxrTemp.getAvailability().getMatrixAvailability();
 			nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
 					getTTStructure());
 			dxrTemp.setAvailability(new DxAvailability(nMatrix));

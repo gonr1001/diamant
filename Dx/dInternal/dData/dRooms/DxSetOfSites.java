@@ -411,24 +411,16 @@ public class DxSetOfSites extends DxSetOfResources {
 
 	public DxSetOfRooms getAllRooms() {
 		DxSite dxsCurrentSite;
-		DxCategory dxcCurrentCat;
 		DxSetOfRooms dxsorAllRooms = null;
-		
 		Iterator itSites;
-		Iterator itCategories;
-		
 		itSites = this.iterator();
 		while(itSites.hasNext()){
 			dxsCurrentSite = (DxSite)itSites.next();
-			itCategories = dxsCurrentSite.getSetOfCat().iterator();
-			while(itCategories.hasNext()){
-				dxcCurrentCat = (DxCategory)itCategories.next();
-				if(dxsorAllRooms == null){
-					dxsorAllRooms = dxcCurrentCat.getSetOfRooms();
-				}
-				else{
-					dxsorAllRooms.addSetOfRooms(dxcCurrentCat.getSetOfRooms());
-				}
+			if(dxsorAllRooms == null){
+				dxsorAllRooms = dxsCurrentSite.getAllRooms();
+			}
+			else{
+				dxsorAllRooms.addSetOfRooms(dxsCurrentSite.getAllRooms());
 			}
 		}
 		
