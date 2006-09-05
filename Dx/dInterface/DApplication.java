@@ -55,6 +55,7 @@ import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.AvailabiltyRoomDialog;
+import dInterface.dAssignementDlgs.DxActivityDlg;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
 import dInterface.dAffectation.EventsDlg;
@@ -610,13 +611,14 @@ public class DApplication { // implements ActionListener {
 	}
 
 	public void doImport(JDialog jD, String fil) {
-		if (DxFlags.newDoc){
+		if (DxFlags.newDoc) {
 			try {
 				String error = "";
 				this.setCursorWait();
-				
+
 				if (this.getCurrentDxDoc() != null) {
-					error = this.getCurrentDxDoc().getCurrentDModel().importData(fil);
+					error = this.getCurrentDxDoc().getCurrentDModel()
+							.importData(fil);
 				} else
 					error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
 				if (error.length() == 0) {
@@ -631,28 +633,28 @@ public class DApplication { // implements ActionListener {
 				new FatalProblemDlg("In DApplication.doImport: " + e.toString());
 				jD.dispose();
 			}
-			
-		}else {
-		try {
-			String error = "";
-			this.setCursorWait();
-			
-			if (this.getCurrentDoc() != null) {
-				error = this.getCurrentDModel().importData(fil);
-			} else
-				error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
-			if (error.length() == 0) {
-				new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
-			} else {
-				new FatalProblemDlg(this.getJFrame(),
-						"In DApplication.doImport: " + error);
-				System.exit(1);
+
+		} else {
+			try {
+				String error = "";
+				this.setCursorWait();
+
+				if (this.getCurrentDoc() != null) {
+					error = this.getCurrentDModel().importData(fil);
+				} else
+					error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
+				if (error.length() == 0) {
+					new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
+				} else {
+					new FatalProblemDlg(this.getJFrame(),
+							"In DApplication.doImport: " + error);
+					System.exit(1);
+				}
+				this.setCursorDefault();
+			} catch (Exception e) {
+				new FatalProblemDlg("In DApplication.doImport: " + e.toString());
+				jD.dispose();
 			}
-			this.setCursorDefault();
-		} catch (Exception e) {
-			new FatalProblemDlg("In DApplication.doImport: " + e.toString());
-			jD.dispose();
-		}
 		}
 	}
 
@@ -709,7 +711,11 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void assignActivities() {
-		new ActivityDlg(this);
+		if (DxFlags.newActivity) {
+			new DxActivityDlg(this);
+		} else {
+			new ActivityDlg(this);
+		}
 	}
 
 	/**
@@ -851,9 +857,9 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void doSectionPartition() {
-//		boolean _userTestActiv = true;
-//
-//		DConst.USER_TEST_ACTIV = _userTestActiv;
+		// boolean _userTestActiv = true;
+		//
+		// DConst.USER_TEST_ACTIV = _userTestActiv;
 		PersonalizeMixingAlgorithmDlg perso = new PersonalizeMixingAlgorithmDlg(
 				DConst.DEFAULT_MIX_ALGO);
 		String input = perso.showInputDialog();
@@ -891,27 +897,26 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void simpleView() {
-		if (DxFlags.newDoc){
+		if (DxFlags.newDoc) {
 			if (this.getCurrentDxDoc() != null)
 				this.getCurrentDxDoc().displaySimple();
 		} else {
 			if (this.getCurrentDoc() != null)
 				this.getCurrentDoc().displaySimple();
 		}
-		
-		
+
 	}
 
 	/**
 	 * 
 	 */
 	public void horizontalSplitView() {
-		if (DxFlags.newDoc){
+		if (DxFlags.newDoc) {
 			if (this.getCurrentDxDoc() != null)
 				this.getCurrentDxDoc().displayHorizontalSplit();
 		} else {
-		if (this.getCurrentDoc() != null)
-			this.getCurrentDoc().displayHorizontalSplit();
+			if (this.getCurrentDoc() != null)
+				this.getCurrentDoc().displayHorizontalSplit();
 		}
 	}
 
@@ -919,12 +924,12 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void vericalSplitview() {
-		if (DxFlags.newDoc){
+		if (DxFlags.newDoc) {
 			if (this.getCurrentDxDoc() != null)
 				this.getCurrentDxDoc().displayVericalSplit();
 		} else {
-		if (this.getCurrentDoc() != null)
-			this.getCurrentDoc().displayVericalSplit();
+			if (this.getCurrentDoc() != null)
+				this.getCurrentDoc().displayVericalSplit();
 		}
 	}
 
