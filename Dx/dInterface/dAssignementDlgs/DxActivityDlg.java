@@ -214,13 +214,13 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		}
 		// if arrows
 		if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])) {
-			if (command.equals(_arrowsNames[1])) {
-				DxTools.listTransfers(_rightList, _leftList, _rightVec,
-						_leftVec, 1);
-			} else {
-				DxTools.listTransfers(_leftList, _rightList, _leftVec,
-						_rightVec, 1);
-			}
+//			if (command.equals(_arrowsNames[1])) {
+//				DxTools.listTransfers(_rightList, _leftList, _rightVec,
+//						_leftVec, 1);
+//			} else {
+//				DxTools.listTransfers(_leftList, _rightList, _leftVec,
+//						_rightVec, 1);
+//			}
 			_lNoVisible.setText(_dxavRight.size() + " " + DConst.NOT_INCLUDED);
 			_lVisible.setText(_dxavLeft.size() + " " + DConst.INCLUDED);
 			_buttonsPanel.setFirstEnable();
