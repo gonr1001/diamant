@@ -73,7 +73,7 @@
 			<classpath refid="c.classpath" />
 		</javac>
 	</target>
-	<target name="testpath" depends="prepare" description="test path classpath.">
+	<target name="testpath" depends="prepare,compile" description="test path classpath.">
 		<path id="t.classpath">
 			<pathelement path="${localJars}/junit.jar" />
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
