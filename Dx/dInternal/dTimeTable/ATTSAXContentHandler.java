@@ -26,15 +26,15 @@ public class ATTSAXContentHandler extends DefaultHandler {
 	private APeriod aperiod;
 
 	// flags nous indiquant la position du parseur
-	private boolean inDXTimeTable, inTTcycle, incycleID, inpLength, inTTdays,
+	public boolean inDXTimeTable, inTTcycle, incycleID, inpLength, inTTdays,
 			inTTday, indayRef, indayID, inTTsequences, inTTsequence,
 			insequenceID, inTTperiods, inTTperiod, inperiodID, inBeginTime,
 			inEndTime, inpriority;
 	
-	private final String[] AITEM_subTag = { "DXTimeTable", "TTcycle", "TTdays",
+	public final String[] AITEM_subTag = { "DXTimeTable", "TTcycle", "TTdays",
 			"TTday", "TTsequences", "TTsequence", "TTperiods", "TTperiod" };
 
-	private final String[] AITEM_subConst = { "cycleID", "pLength", "dayRef",
+	public final String[] AITEM_subConst = { "cycleID", "pLength", "dayRef",
 			"sequenceID", "priority", "BeginTime", "EndTime", "periodID",
 			"dayID" };
 
