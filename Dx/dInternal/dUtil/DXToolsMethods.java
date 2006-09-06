@@ -291,7 +291,7 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 		return strToken.countTokens();
 
 	}
-
+	
 	/**
 	 * give the relative path of a file
 	 * Exemple:

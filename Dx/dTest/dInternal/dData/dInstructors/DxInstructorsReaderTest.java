@@ -9,6 +9,7 @@ import dInternal.dData.DLoadData;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -47,10 +48,9 @@ public class DxInstructorsReaderTest extends TestCase {
 
 			// To avoid warning
 			dxsoi.equals(dxsoi);
-		} catch (Exception e) {
-			assertEquals("test_1_getSetOfInstructors: assertEquals",
-					"java.lang.Exception: " + DConst.INST_TEXT1 + "\n"
-							+ DConst.INST_TEXT6, e.toString());
+		} catch (NumberFormatException e) {
+			assertEquals("test_1_getSetOfInstructors: assertEquals",DConst.INVALID_NUMBER_OF_INSTRUCTORS, e.getMessage());
+		} catch (DxException e) {
 		}
 
 	}
@@ -80,11 +80,10 @@ public class DxInstructorsReaderTest extends TestCase {
 
 			// To avoid warning
 			dxsoi.equals(dxsoi);
-		} catch (Exception e) {
+		} catch (DxException e) {
 			assertEquals("test1_1_getSetOfInstructors: assertEquals",
-					"java.lang.Exception: " + DConst.INST_TEXT3 + 7
-							+ DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
-							.toString());
+					DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE+"11", e
+							.getMessage());
 		}
 	}
 
@@ -114,10 +113,9 @@ public class DxInstructorsReaderTest extends TestCase {
 
 			// To avoid warning
 			dxsoi.equals(dxsoi);
-		} catch (Exception e) {
+		} catch (DxException e) {
 			assertEquals("test2_1_getSetOfInstructors: assertEquals",
-					"java.lang.Exception: " + DConst.INST_TEXT1 + "\n"
-							+ DConst.INST_TEXT6, e.toString());
+					 DConst.INVALID_NUMBER_OF_INSTRUCTORS, e.getMessage());
 		}
 	}
 
@@ -149,9 +147,7 @@ public class DxInstructorsReaderTest extends TestCase {
 			dxsoi.equals(dxsoi);
 		} catch (Exception e) {
 			assertEquals("test3_1_getSetOfInstructors: assertEquals",
-					"java.lang.Exception: " + DConst.INST_TEXT3 + 11
-							+ DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
-							.toString());
+				 DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE+"15", e.getMessage());
 		}
 	}
 
@@ -184,9 +180,7 @@ public class DxInstructorsReaderTest extends TestCase {
 			dxsoi.equals(dxsoi);
 		} catch (Exception e) {
 			assertEquals("test4_1_getSetOfInstructors: assertEquals",
-					"java.lang.Exception: " + DConst.INST_TEXT4 + 3
-							+ DConst.INST_TEXT5 + "\n" + DConst.INST_TEXT6, e
-							.toString());
+					DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE+"7", e.getMessage());
 		}
 	}
 
@@ -218,9 +212,9 @@ public class DxInstructorsReaderTest extends TestCase {
 					dxsoiTemp.getResource("JAC"));
 			assertNotNull("test5_2_getSetOfInstructors: assertEquals",
 					dxsoiTemp.getResource("POLM"));
-		} catch (Exception e) {
+		} catch (DxException e) {
 			assertFalse("test5_3_getSetOfInstructors: Should not have failed"
-					+ e.toString(), true);
+					+ e.getMessage(), true);
 		}
 	}
 

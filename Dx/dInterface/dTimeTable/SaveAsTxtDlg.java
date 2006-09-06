@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.9 $  $Date: 2006-06-15 18:19:25 $
+ * Title: SaveAsTxtDlg $Revision: 1.10 $  $Date: 2006-09-06 02:22:45 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: caln1901 $
+ * @version $Revision: 1.10 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -31,7 +31,9 @@ package dInterface.dTimeTable;
 
 
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.ObjectStreamException;
 
 import javax.swing.JFileChooser;
 
@@ -39,6 +41,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxExceptionDlg;
 
 public class SaveAsTxtDlg extends SaveAsDlg{
 	
@@ -58,17 +61,18 @@ public class SaveAsTxtDlg extends SaveAsDlg{
 	} // end constructor
 	
 	
-	public String inNewFile(String currentFile, String data) {
-		String error = "";
+	public void addInNewFile(String currentFile, String data) {
+
 		try{
 			FileWriter fw = new FileWriter(currentFile);
 			fw.write(data);
 			fw.close();
-			return error;
+		} catch(FileNotFoundException fnfe){
+			new DxExceptionDlg("In SaveAsTxtDlg.inNewFile: "+fnfe.getMessage(),fnfe);
+		} catch(ObjectStreamException ose){
+			new DxExceptionDlg("In SaveAsTxtDlg.inNewFile: "+ose.getMessage(),ose);
 		} catch(Exception e){
-			error = "Problem with the file";
-			new FatalProblemDlg("In SaveAsTxtDlg.inNewFile: "+error);
-			return error;
+			new DxExceptionDlg("In SaveAsTxtDlg.inNewFile: "+e.getMessage(),e);
 		}
 	}
 	

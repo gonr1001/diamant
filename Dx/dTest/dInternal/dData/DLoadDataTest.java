@@ -46,6 +46,7 @@ import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.TTStructure;
+import eLib.exit.exception.DxException;
 
 public class DLoadDataTest extends TestCase {
 
@@ -194,10 +195,16 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test1_ImportSelective5j() {
 
-		SetOfStuSites newStuSites = (SetOfStuSites) _loadData5j
-				.selectiveImport(((SetOfStuSites) _timeTable5j.get(5)), "."
-						+ File.separator + "dataTest" + File.separator
-						+ "ImportSTUDS.SIG");
+		SetOfStuSites newStuSites=null;
+		try {
+			newStuSites = (SetOfStuSites) _loadData5j
+					.selectiveImport(((SetOfStuSites) _timeTable5j.get(5)), "."
+							+ File.separator + "dataTest" + File.separator
+							+ "ImportSTUDS.SIG");
+		} catch (DxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals("test1_ImportSelective : assertEquals: ", "", newStuSites
 				.getError());
 		if (newStuSites.getError() == "") {
@@ -329,10 +336,16 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test1_ImportSelective7j() {
 
-		SetOfStuSites newStuSites = (SetOfStuSites) _loadData7j
-				.selectiveImport(((SetOfStuSites) _timeTable7j.get(5)), "."
-						+ File.separator + "dataTest" + File.separator
-						+ "ImportSTUDS.SIG");
+		SetOfStuSites newStuSites=null;
+		try {
+			newStuSites = (SetOfStuSites) _loadData7j
+					.selectiveImport(((SetOfStuSites) _timeTable7j.get(5)), "."
+							+ File.separator + "dataTest" + File.separator
+							+ "ImportSTUDS.SIG");
+		} catch (DxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals("test1_ImportSelective : assertEquals: ", "", newStuSites
 				.getError());
 		if (newStuSites.getError() == "") {

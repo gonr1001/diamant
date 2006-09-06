@@ -26,8 +26,8 @@ import javax.swing.JOptionPane;
 
 import dConstants.DConst;
 import dDeveloper.DxFlags;
-
-import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Description: DMediator is a class used as in the pattern mediator to make a
@@ -71,7 +71,7 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDoc(String fileName, int type) throws Exception /* !!!NIC!!! */{
+	public String addDoc(String fileName, int type) throws DxException /* !!!NIC!!! */{
 		_dApplication.setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);
@@ -80,7 +80,7 @@ public class DMediator extends Object {
 			_dApplication.getToolBar().setToolBars(
 					currentDoc.getCurrentDModel().getTTStructure());
 		} else {
-			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
+			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc
 					.getError());
 			System.exit(1);
 		}
@@ -110,7 +110,7 @@ public class DMediator extends Object {
 					currentDoc.getCurrentDModel().getTTStructure());
 			_dApplication.hideToolBar();
 		} else {
-			new FatalProblemDlg(_dApplication.getJFrame(),
+			new DxExceptionDlg(_dApplication.getJFrame(),
 					"In DMediator.addDoc: " + currentDoc.getError());
 			System.exit(1);
 		}
@@ -130,7 +130,7 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTableDoc(String ttName, String fileName)
-			throws Exception /* !!!NIC!!! */{
+			throws DxException /* !!!NIC!!! */{
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
 		// if (currentDoc.getError().length() == 0) {
@@ -166,7 +166,7 @@ public class DMediator extends Object {
 			_dApplication.getToolBar().setToolBars(
 					currentDoc.getCurrentDModel().getTTStructure());
 		} else {
-			new FatalProblemDlg(_dApplication.getJFrame(), currentDoc
+			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc
 					.getError());
 			System.exit(1);
 		}
@@ -196,8 +196,8 @@ public class DMediator extends Object {
 			try {
 				_documents.get(0).getJIF().setSelected(true);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(),
-						"In DMediator.removeCurrentDoc: " + e.toString());
+				new DxExceptionDlg(_dApplication.getJFrame(), e.toString());
+				e.printStackTrace();
 				System.exit(1);
 			}
 		} else {// end if (_documents.size()!=0)
@@ -211,8 +211,7 @@ public class DMediator extends Object {
 			try {
 				_dxDocuments.get(0).getJIF().setSelected(true);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(),
-						"In DMediator.removeCurrentDoc: " + e.toString());
+				new DxExceptionDlg(_dApplication.getJFrame(),e.getMessage(),e);
 				System.exit(1);
 			}
 		} else {// end if (_documents.size()!=0)
@@ -223,15 +222,14 @@ public class DMediator extends Object {
 	// -------------------------------------------
 
 	public String saveCurrentDoc(String str) {
+		String error = "";
 		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setDocumentName(str);
-			String error = "";
 			getCurrentDxDoc().saveTTStrucure(str);
-			return error;
-		}
+		}else{
 		getCurrentDoc().setDocumentName(str);
-		String error = "";
-		error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
+		error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);	
+	}
 		return error;
 	}
 
@@ -286,8 +284,8 @@ public class DMediator extends Object {
 			try {
 				currentDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(),
-						"In DMediator.getCurrentDoc: " + e.toString());
+				new DxExceptionDlg(_dApplication.getJFrame(),
+						"In DMediator.getCurrentDoc: " +e.getMessage(),e);
 				System.exit(1);
 			}
 			return currentDoc;
@@ -309,8 +307,9 @@ public class DMediator extends Object {
 			try {
 				currentDxDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
-				new FatalProblemDlg(_dApplication.getJFrame(),
-						"In DMediator.getCurrentDoc: " + e.toString());
+				new DxExceptionDlg(_dApplication.getJFrame(),
+						e.getMessage(),e);
+				e.printStackTrace();
 				System.exit(1);
 			}
 			return currentDxDoc;

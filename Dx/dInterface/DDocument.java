@@ -19,7 +19,6 @@ package dInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
@@ -35,10 +34,9 @@ import dInterface.dTimeTable.SimpleTTPane;
 import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
 import dInternal.DxStateBarModel;
-
 import dInternal.dTimeTable.TTStructure;
-
-import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Description: DDocument is a class used to // XXXX Pascal: used to what ??
@@ -86,7 +84,7 @@ public class DDocument extends InternalFrameAdapter implements Observer {
      */
     // XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
     public DDocument(DMediator dMediator, String ttName, String fileName,
-            int type) throws Exception /* !!!NIC!!! */{
+            int type) throws DxException /* !!!NIC!!! */{
         _dMediator = dMediator;
         _dm = new DModel(this, fileName, type);
         // ####RGR S'il y a une erreur, on ne fait rien et on ajoute le frame
@@ -270,17 +268,16 @@ public class DDocument extends InternalFrameAdapter implements Observer {
         // number
         _jif.setVisible(true);
 
-        // to comment if work with jifs
         try {
-            _jif.setMaximum(true); // This line allows the scrollbars of the
-            // TTPanel
-            // to be present when the _jif is resized
-        } catch (java.beans.PropertyVetoException pve) {
-            new FatalProblemDlg(
-                    "I was in DDocument trying to make setMaximum!!!");
-            System.exit(52); // XXXX Pascal: 52 ?
-            pve.printStackTrace();
-        }
+			_jif.setMaximum(true); // This line allows the scrollbars of the
+			// TTPanel
+			// to be present when the _jif is resized
+		} catch (java.beans.PropertyVetoException pve) {
+			new DxExceptionDlg(
+					"I was in DDocument trying to make setMaximum!!!\n"+pve.getMessage());
+			pve.printStackTrace();
+			System.exit(1); // end of execution abnormal
+		}
     } // end buidDocument
 
     /**

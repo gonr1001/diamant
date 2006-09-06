@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.33 $  $Date: 2006-07-26 17:55:46 $
+ * Title: OpenTTDlg $Revision: 1.34 $  $Date: 2006-09-06 02:22:44 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.34 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  */
 
@@ -35,6 +35,7 @@ import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * 
@@ -95,23 +96,17 @@ public class OpenTTDlg extends JDialog implements ActionListener, DlgIdentificat
 				try {
 					dApplic.getDMediator().addDxTTableDoc(fil, fil);
 				} catch (Exception e) {
-
+                    new DxExceptionDlg(dApplic.getJFrame(),e.toString(),e);
 					e.printStackTrace();
-
-					new FatalProblemDlg(dApplic.getJFrame(),
-							"In OpenTTDlg.showDialog: " + e.toString());
-					System.exit(1);
+                    System.exit(1);
 				}
 			} else {
 				try {
 					dApplic.getDMediator().addDoc(fil, fil, DConst.NO_TYPE);
 				} catch (Exception e) {
-
-					e.printStackTrace();
-
-					new FatalProblemDlg(dApplic.getJFrame(),
-							"In OpenTTDlg.showDialog: " + e.toString());
-					System.exit(1);
+					  new DxExceptionDlg(dApplic.getJFrame(),e.toString(),e);
+						e.printStackTrace();
+	                    System.exit(1);
 				}
 			}
 

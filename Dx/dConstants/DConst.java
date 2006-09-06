@@ -633,4 +633,9 @@ public class DConst {
   public static final String USEDLON="LON";
   public static final String USEDCOW="COW";
   public static final String DEFAULT_MIX_ALGO = "8";
+
+public static final String INVALID_NUMBER_OF_INSTRUCTORS = "Invalid number of instructors:";
+
+public static final String INVALID_PERIOD_AVAILABILITY_AT_LINE = "Invalid period availability at Line ";
+  
 }

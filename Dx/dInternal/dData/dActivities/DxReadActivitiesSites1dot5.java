@@ -30,6 +30,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.exception.DxException;
 
 public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 
@@ -59,7 +60,7 @@ public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 		_isDia = isDia;
 	}
 
-	public DxSetOfActivitiesSites readSetOfActivitiesSites() throws Exception {
+	public DxSetOfActivitiesSites readSetOfActivitiesSites() throws DxException {
 
 		String sToken;
 		// String sousString; //auxiliar String for stocking a substring of a

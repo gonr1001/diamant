@@ -19,6 +19,7 @@
 package dInternal.dData;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -38,7 +39,6 @@ import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-// import dInternal.dData.dRooms.RoomsAttributesInterpretor;
 import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxReadSitedotDia;
@@ -54,6 +54,7 @@ import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 
 public class DLoadData {
@@ -109,7 +110,12 @@ public class DLoadData {
 				_chars = _dm.getDDocument().getDMediator().getDApplication()
 						.getPreferences()._acceptedChars;
 			}
-		verifyImportDataFile(args);
+		try {
+			verifyImportDataFile(args);
+		} catch (DxException e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 	// /**
@@ -340,14 +346,14 @@ public class DLoadData {
 	 *            the new SetOfActivities)
 	 * @return SetOfActivities
 	 */
-	public SetOfActivitiesSites extractActivities(
-			SetOfActivitiesSites currentList, boolean merge) {
+public SetOfActivitiesSites extractActivities(
+			SetOfActivitiesSites currentList, boolean merge) throws DxException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
 		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
 				_dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
-			// Vector setOfResources = currentList
-			// .getSetOfResources();
+			//            Vector  setOfResources = currentList
+			//                            .getSetOfResources();
 			if (merge)
 
 				activitiesList.setSetOfResources(currentList
@@ -356,12 +362,11 @@ public class DLoadData {
 				activitiesList.buildSetOfResources(de, 1);
 			}
 		} else {// (NullPointerException npe) {
-			new FatalProblemDlg(
-					"I was in LoadData.extractActivities. preload failed!!!");
-			System.exit(52);
+			throw new DxException("NullPointerException: Preload failed!!!");
 		}
 		return activitiesList;
 	}
+
 
 	/**
 	 * loadTheTT this loads a full timetable as it was saved
@@ -397,7 +402,7 @@ public class DLoadData {
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
 	public Vector<Object> loadTheTT(String fileName, String currentDir)
-			throws Exception /* !!!NIC!!! */{
+			throws FileNotFoundException, DxException {
 		// Vector <Object> diaData = new Vector <Object>();
 		String dataloaded = new String(preLoad(fileName));
 		// StringTokenizer project;
@@ -412,9 +417,7 @@ public class DLoadData {
 		} else if (head.equalsIgnoreCase(DConst.FILE_HEADER_NAME2_1)) {
 			return load2dot1(fileName, currentDir);
 		} else {
-			new FatalProblemDlg("I was in" + getClass().toString()
-					+ " LoadData class and loadProject. file not know!!!");
-			throw new Exception("ay");
+			throw new DxException("Invalid FILE_HEADER_NAME !");
 		}
 
 		// DataExchange de;
@@ -487,7 +490,7 @@ public class DLoadData {
 	}
 
 	private Vector<Object> load1dot5(String fileName, String currentDir)
-			throws Exception {
+			throws DxException {
 
 		DxSetOfInstructors dxsoiInst = null;
 		DxSetOfSites dxsosRooms = null;
@@ -578,7 +581,7 @@ public class DLoadData {
 	}
 
 	private Vector<Object> load2dot1(String fileName, String currentDir)
-			throws Exception {
+			throws DxException {
 		DxSetOfInstructors dxsoiInst = null;
 		DxSetOfSites dxsosRooms = null;
 		Vector<Object> diaData = new Vector<Object>();
@@ -691,7 +694,7 @@ public class DLoadData {
 		return null;
 	} // preLoad(String str)
 
-	private void verifyImportDataFile(String str) {
+	private void verifyImportDataFile(String str) throws DxException {
 		FilterFile filter = new FilterFile(_chars);
 		if (filter.validFile(str)) {
 			StringTokenizer st = new StringTokenizer(new String(filter
@@ -702,19 +705,18 @@ public class DLoadData {
 				_activitiesFileName = st.nextToken();
 				_studentsFileName = st.nextToken();
 			} else {
-				new FatalProblemDlg("Wrong number of lines in the file:" + str
-						+ "\n" + "I was in DLoadData constructor ");
-				System.exit(1);
+				throw new DxException("Wrong number of lines in the file:");
 			}
 		} else {
-			new FatalProblemDlg("Unable to filter a file" + str + "\n"
-					+ "I was in DLoadData constructor "); // ys
-			System.exit(1);
+			throw new DxException("Unable to filter a file:"); // yes
 		}
 	}
 
+
 	/**
 	 * 
+	 * @param fileName
+	 * @return
 	 */
 	private DataExchange buildDataExchange(String fileName) {
 		byte[] dataloaded = preLoad(fileName);
@@ -761,7 +763,7 @@ public class DLoadData {
 	 *         current DSetOfResources
 	 */
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc,
-			String file) {// , boolean merge){
+			String file) throws DxException {// , boolean merge){
 		DataExchange de = buildDataExchange(file);
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
@@ -774,36 +776,27 @@ public class DLoadData {
 		// false);
 		// _dm.resizeResourceAvailability(newSetOfResc);
 		// ((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
-		/* } else */if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
+		/* } else */
+		if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
 			_dm.resizeSiteAvailability((SetOfSites) newSetOfResc);
 		} else if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites) {
 			_studentsFileName = file;
 			newSetOfResc = extractStudents(null, false);
-		} /*
-			 * TODO: Manage selective import for DxSetOfActivities else if
-			 * (currentSetOfResc instanceof
-			 * dInternal.dData.dActivities.SetOfActivitiesSites) {
-			 * _activitiesFileName = file; newSetOfResc =
-			 * extractActivities(null, false); // position=1; }
-			 */else {// (NullPointerException npe) {
-			new FatalProblemDlg(
-					"I was in LoadData.selectiveImport, No resource class available!!!");
+		} else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesSites) {
+			_activitiesFileName = file;
+			newSetOfResc = extractActivities(null, false);
+			// position=1;
+		} else {// (NullPointerException npe) {
+			throw new DxException("Unknown resource type !!!");
 		}
 
-		if (de != null) {
-			// newSetOfResc ne peut jamais être null !!!!
-			if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
-				makeDiff(newSetOfResc, currentSetOfResc);
-				// currentSetOfResc.buildSetOfResources(de, position);
-				currentSetOfResc.sortSetOfResourcesByID();
-			}// Ici sans le else on passe même s’il y a une erreur !!!!
-			else
-				new FatalProblemDlg("In DLoadData.selectiveImport: "
-						+ newSetOfResc.getError());
-		} else {// (NullPointerException npe) {
-			new FatalProblemDlg(
-					"I was in LoadData.selectiveImport. preload failed!!!");
-		}
+		if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
+			makeDiff(newSetOfResc, currentSetOfResc);
+			// currentSetOfResc.buildSetOfResources(de, position);
+			currentSetOfResc.sortSetOfResourcesByID();
+		}// Ici sans le else on passe même s’il y a une erreur !!!!
+		else
+			throw new DxException(newSetOfResc.getError());
 
 		return currentSetOfResc;
 	}
@@ -1434,7 +1427,7 @@ public class DLoadData {
 	// thorws to function
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
-	public DxSetOfInstructors extractInstructors() throws Exception /* !!!NIC!!! */{
+	public DxSetOfInstructors extractInstructors() throws DxException /* !!!NIC!!! */{
 		// public SetOfInstructors extractInstructors(SetOfInstructors
 		// currentList,
 		// boolean merge, boolean dotDia) {
@@ -1482,7 +1475,7 @@ public class DLoadData {
 
 	public DxSetOfActivitiesSites extractDxActivity(
 			DxSetOfInstructors dxsoiInst, DxSetOfRooms dxsorRooms, int nPerLen)
-			throws Exception {
+			throws DxException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
 		DxActivitiesSitesReader dxasrReader;
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {

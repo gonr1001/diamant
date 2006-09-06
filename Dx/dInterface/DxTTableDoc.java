@@ -33,7 +33,8 @@ import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.DxStateBarModel;
 import dInternal.dTimeTable.TTStructure;
-import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -56,12 +57,10 @@ public class DxTTableDoc extends DxDocument {
 		// for tests
 	}
 
-	public DxTTableDoc(DMediator mediator, String fileName) throws Exception {
+	public DxTTableDoc(DMediator mediator, String fileName) throws DxException {
 		super(mediator);
 		_type = "type";
-		// try {
 		_dm = new DModel(this, fileName);
-		// }
 		_documentName = fileName;
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_dm.getTTStructure());
@@ -123,10 +122,10 @@ public class DxTTableDoc extends DxDocument {
 			// TTPanel
 			// to be present when the _jif is resized
 		} catch (java.beans.PropertyVetoException pve) {
-			new FatalProblemDlg(
-					"I was in DDocument trying to make setMaximum!!!");
-			System.exit(1); // end of execution abnormal
+			new DxExceptionDlg(
+					"I was in DDocument trying to make setMaximum!!!\n"+pve.getMessage());
 			pve.printStackTrace();
+			System.exit(1); // end of execution abnormal
 		}
 	} // end buidDocument
 
@@ -143,8 +142,8 @@ public class DxTTableDoc extends DxDocument {
 
 	@Override
 	public TTStructure getTTStructure() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return _dm.getTTStructure();
 	}
 
 	public void changeInModel(String str) {

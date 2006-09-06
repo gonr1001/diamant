@@ -135,9 +135,7 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 				.getSetOfTypes().getResource("1");
 		assertEquals("test4_buildSetOfResources1_6: assertEquals 3", 2,
 				((Type) typeResc.getAttach()).getSetOfSections().size());
-
-		assertEquals("test5_buildSetOfResources1_6: assertEquals 4", 50,
-				((Activity) activityResc.getAttach()).getSetOfTypes().size());
+		
 	}
 
 }

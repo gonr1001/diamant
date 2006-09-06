@@ -26,6 +26,7 @@ import dConstants.DConst;
 import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxExceptionDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 import eLib.exit.txt.FilterFile;
@@ -140,9 +141,7 @@ public class DxPreferences {
 			bof.writeFileFromBytes(data.getBytes());
 			bof.close();
 		} catch (IOFileException iofe) {
-			new FatalProblemDlg(_dApplic.getJFrame(), iofe
-					+ "\n I was in Preferences.writeFile");
-			System.out.println(iofe);
+			new DxExceptionDlg(_dApplic.getJFrame(),iofe.getMessage(), iofe);
 			iofe.printStackTrace();
 			System.exit(31);
 		} // end catch

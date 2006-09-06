@@ -248,7 +248,7 @@ public class TTStructure extends Observable {
 				return e.toString();
 			}
 		} else {
-			_error = DConst.M_FILE + " " + fileName + " Inexistant";
+			_error = DConst.M_FILE + " " + fileName + " not found !";
 		}
 		return _error;
 	}

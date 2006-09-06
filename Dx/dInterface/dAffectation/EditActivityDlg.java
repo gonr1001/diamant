@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.77 $  $Date: 2006-08-31 19:29:31 $
+ * Title: EditActivityDlg $Revision: 1.78 $  $Date: 2006-09-06 02:22:44 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.77 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.78 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -58,31 +58,33 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
-
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dActivities.Section;
+import dInternal.dData.dActivities.Type;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.RoomAttach;
-import dInternal.dData.dActivities.Section;
-import dInternal.dData.dInstructors.DxSetOfInstructors;
-
 import dInternal.dData.dRooms.SetOfRooms;
-import dInternal.dData.dActivities.Type;
-
 import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.DxExceptionDlg;
 
 public class EditActivityDlg extends JDialog implements ActionListener,
         ChangeListener {
 
-    private DApplication _dApplic;
+    /**
+	 * Comment for <code>serialVersionUID</code>
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private DApplication _dApplic;
 
     private EventsDlgInterface _evDlgInt = null;
 
@@ -217,7 +219,7 @@ public class EditActivityDlg extends JDialog implements ActionListener,
                 _currentActivityIndex = i;
                 apply = applyChanges();
                 if (!apply) {
-                    new FatalProblemDlg(this, "Valeur erronée");
+                    new DxExceptionDlg(this, "Valeur erronée");
                     break;
                 }
                 _applyPanel.setFirstDisable();

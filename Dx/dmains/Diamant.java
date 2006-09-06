@@ -27,11 +27,10 @@ import lineInterface.DILigne;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import eLib.exit.dialog.FatalProblemDlg;
-
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.DxDeploymentManager;
+import eLib.exit.exception.DxExceptionDlg;
 
 /**
  *
@@ -82,7 +81,7 @@ public class Diamant {
 					.getProperty("java.version")) <= 0) {
 				dApplic.doIt(args);
 			} else {
-				new FatalProblemDlg(
+				new DxExceptionDlg(
 						"You need to download and install a new  \n"
 								+ "Java Virtual Machine");
 				System.out.println("bye");

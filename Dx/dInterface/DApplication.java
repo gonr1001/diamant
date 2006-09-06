@@ -77,6 +77,8 @@ import dInternal.dOptimization.RoomAssignmentAlgo;
 import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -85,7 +87,7 @@ public class DApplication { // implements ActionListener {
 	private static Logger _logger = Logger.getLogger(DApplication.class
 			.getName());
 
-	boolean _inDevelopment;
+	public static boolean _inDevelopment;
 
 	// Fake Singleton, car besoin pour fonctionnalite de Grille Selective
 	private static DApplication _instance = null;
@@ -398,7 +400,7 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * @return
 	 */
-	public boolean isInDevelopment() {
+	public static boolean isInDevelopment() {
 		return _inDevelopment;
 	}
 
@@ -415,7 +417,7 @@ public class DApplication { // implements ActionListener {
 						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
 				_dxMenuBar.afterNewTTable();
 			} catch (Exception e) {
-				new FatalProblemDlg(this._jFrame, e.toString());
+				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
 				e.printStackTrace();
 			}
 		} else {
@@ -474,7 +476,7 @@ public class DApplication { // implements ActionListener {
 						.addDxTTStructureDoc(this.getPreferences()._standardTTC);
 				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
-				new FatalProblemDlg(this._jFrame, e.toString());
+				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
 				// as a complement
 				e.printStackTrace();
 				this.hideToolBar();
@@ -503,7 +505,7 @@ public class DApplication { // implements ActionListener {
 						.addDxTTStructureDoc(this.getPreferences()._standardTTE);
 				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
-				new FatalProblemDlg(this._jFrame, e.toString());
+				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
 				// as a complement
 				e.printStackTrace();
 				this.hideToolBar();
@@ -951,8 +953,8 @@ public class DApplication { // implements ActionListener {
 			} else {
 				_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (DxException e) {
+			new DxExceptionDlg("myFile",e);
 		}
 		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
@@ -1072,5 +1074,6 @@ public class DApplication { // implements ActionListener {
 	public void setFileToOpen(String absolutePath) {
 		_fileToOpen = absolutePath;
 	}
+
 
 } /* end class DApplication */

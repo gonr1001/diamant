@@ -169,7 +169,7 @@ public class DxMenuBar extends JMenuBar {
 		this.add(new DPreferencesMenu(_dApplication));
 		this.add(new DHelpMenu(_dApplication));
 		this.add(new DNewFeaturesMenu(_dApplication));
-		if (_dApplication.isInDevelopment()) {
+		if (DApplication.isInDevelopment()) {
 			this.add(new DDevelopmentMenu(_dApplication));
 		}
 	} // end buildMenuBar

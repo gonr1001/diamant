@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.14 $  $Date: 2006-07-26 17:55:46 $
+ * Title: SaveAsTTDlg $Revision: 1.15 $  $Date: 2006-09-06 02:22:45 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.15 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -37,6 +37,7 @@ import dInterface.DxTTStructureDoc;
 import dResources.DFileFilter;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.DxExceptionDlg;
 
 public class SaveAsTTDlg extends SaveAsDlg {
 
@@ -58,9 +59,10 @@ public class SaveAsTTDlg extends SaveAsDlg {
 		saveAs(null, false); // no data, no report
 	} // end constructor
 
-	public String inNewFile(String currentFile, String data) {
-		data += "";
-		return _dApplic.getDMediator().saveCurrentDoc(currentFile);
+	public void addInNewFile(String currentFile, String data) {
+		String error = _dApplic.getDMediator().saveCurrentDoc(currentFile);
+		if(error!="")
+		  new DxExceptionDlg(error);;
 	}
 
 	public void doSave(String fileName) { // . String str) {

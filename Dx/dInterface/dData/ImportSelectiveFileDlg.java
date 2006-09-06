@@ -17,8 +17,9 @@ import javax.swing.JFileChooser;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 
 public class ImportSelectiveFileDlg extends JDialog {
 
@@ -52,18 +53,16 @@ public class ImportSelectiveFileDlg extends JDialog {
             String fil = fc.getSelectedFile().getAbsolutePath();
             dApplic.setCurrentDir(fil);
 
-            String error = "";
             if (dApplic.getCurrentDoc() != null) {
-                error = dApplic.getCurrentDModel().mergeData(fil, str);
-                if (error.length() == 0) {
-                    new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
-                } else {
-                    new FatalProblemDlg(dApplic.getJFrame(),
-                            "In ImportSelectiveFileDLg.loadData: " + error);
-                    // System.exit(1);
-                }
+                try {
+					dApplic.getCurrentDModel().mergeData(fil, str);
+					new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
+				} catch (DxException dxe) {
+					 new DxExceptionDlg(dApplic.getJFrame(),dxe.getMessage());
+					dxe.printStackTrace();
+				}
             } else
-                new FatalProblemDlg(
+                new DxExceptionDlg(
                         dApplic.getJFrame(),
                         "ImportSelectiveFileDlg : Il n'existe pas de document pour effectuer l'importation des données");
 

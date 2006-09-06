@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.10 $  $Date: 2006-03-31 19:05:05 $
+ * Title: DefFileToImportDlg $Revision: 1.11 $  $Date: 2006-09-06 02:22:44 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.11 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  */
 
@@ -36,8 +36,8 @@ import javax.swing.JTextField;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.DxExceptionDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 
@@ -234,9 +234,7 @@ implements ActionListener{
 			bof.writeFileFromBytes(thefiles.getBytes());
 			bof.close();
 		} catch(IOFileException iofe) {
-			new FatalProblemDlg(_dApplic.getJFrame(),
-					iofe + "\n I was in DefFilesToImportDlg.saveFile");
-			//System.out.println(iofe);
+			new DxExceptionDlg(_dApplic.getJFrame(),iofe.getMessage(),iofe);
 			iofe.printStackTrace();
 			System.exit(31);
 		} // end catch

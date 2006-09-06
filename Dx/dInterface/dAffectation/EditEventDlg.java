@@ -49,27 +49,24 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
-
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
+import dInternal.dData.dActivities.Section;
+import dInternal.dData.dActivities.Type;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.RoomAttach;
-import dInternal.dData.dRooms.SetOfRoomsFunctions;
-import dInternal.dData.dActivities.Section;
-import dInternal.dData.dInstructors.DxSetOfInstructors;
-
 import dInternal.dData.dRooms.SetOfRooms;
-import dInternal.dData.dActivities.Type;
-
+import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
+import eLib.exit.exception.DxExceptionDlg;
 
 public class EditEventDlg extends JDialog implements ActionListener,
         ChangeListener {
@@ -219,7 +216,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
                 _currentActivityIndex = i;
                 apply = applyChanges();
                 if (!apply) {
-                    new FatalProblemDlg(this, "Valeur erronée");
+                    new DxExceptionDlg(this, "Valeur erronée");
                     break;
                 }
                 _applyPanel.setFirstDisable();

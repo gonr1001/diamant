@@ -19,6 +19,9 @@ package dInternal;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectStreamException;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
@@ -61,6 +64,8 @@ import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Description: DModel is a class used to
@@ -147,7 +152,7 @@ public class DModel extends Observable {
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DModel(DDocument dDocument, String fileName, int type)
-			throws Exception /* !!!NIC!!! */{
+			throws DxException /* !!!NIC!!! */{
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -189,7 +194,7 @@ public class DModel extends Observable {
 
 	}
 
-	public DModel(DxDocument dxDocument, String fileName) throws Exception /* !!!NIC!!! */{
+	public DModel(DxDocument dxDocument, String fileName) throws DxException /* !!!NIC!!! */{
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -369,11 +374,20 @@ public class DModel extends Observable {
 	 */
 
 	// XXXX Pascal: Magic number haven
-	public String loadTimeTable(String fileName, String currentDir)
-			throws Exception /* !!!NIC!!! */{
+	public String loadTimeTable(String fileName, String currentDir){
 
 		DLoadData loadD = new DLoadData(this);
-		Vector theTT = loadD.loadTheTT(fileName, currentDir);
+		Vector theTT=null;
+		try {
+			theTT = loadD.loadTheTT(fileName, currentDir);
+		}
+		catch (FileNotFoundException fnfe)
+		{ // alert the user that the specified file does not exist
+			new DxExceptionDlg(fnfe.getMessage());
+		}
+		 catch (DxException e) {
+			e.printStackTrace();
+		}
 
 		if (theTT.size() != 0) {
 			setVersion((String) theTT.get(0));
@@ -424,7 +438,7 @@ public class DModel extends Observable {
 	 * @return
 	 * @throws Exception
 	 */
-	public String importData(String str) throws Exception {
+	public String importData(String str) throws DxException {
 
 		DLoadData loadData = new DLoadData(this, str);
 
@@ -476,8 +490,9 @@ public class DModel extends Observable {
 	 * 
 	 * @param str
 	 * @return
+	 * @throws DxException 
 	 */
-	public String mergeData(String fileName, String selectionName) {
+	public void mergeData(String fileName, String selectionName) throws DxException {
 		_setOfImportSelErrors = new StandardCollection();
 		String error = "";
 		DLoadData loadData = new DLoadData(this);
@@ -529,8 +544,8 @@ public class DModel extends Observable {
 			changeInDModel(_dDocument.getJIF());
 		}
 		_mergeDone = true;
-		return error;
-	}
+		if(error!="") throw new DxException(error);
+	 }
 
 	/**
 	 * 

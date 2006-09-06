@@ -24,6 +24,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.exception.DxException;
+import eLib.exit.exception.DxExceptionDlg;
 import eLib.exit.exception.IOFileException;
 
 /**
@@ -43,7 +45,7 @@ public class FilterFile {
 
 	private ByteOutputFile _bof;
 
-	private byte[] _b;
+	private byte[] _bytesArray;
 
 	private String _charKnown;
 
@@ -60,7 +62,7 @@ public class FilterFile {
 	 * 
 	 */
 	public FilterFile() {
-		_b = null;
+		_bytesArray = null;
 		_charKnown = "";
 	} // end FilterFile
 
@@ -80,7 +82,7 @@ public class FilterFile {
 	 * 
 	 */
 	public FilterFile(String charKnown) {
-		_b = null;
+		_bytesArray = null;
 		if (charKnown != null)
 			_charKnown = charKnown;
 		else
@@ -106,7 +108,7 @@ public class FilterFile {
 	 * 
 	 */
 	public FilterFile(byte[] b, String charKnown) {
-		_b = b;
+		_bytesArray = b;
 		if (charKnown != null)
 			_charKnown = charKnown;
 		else
@@ -192,24 +194,22 @@ public class FilterFile {
 	} // end validFile
 
 	public byte[] getByteArray() {
-		return _b;
+		return _bytesArray;
 	}
 
 	public void readFile(String str) {
 		try {
 			_bif = new ByteInputFile(fixSeparator(str));
-			_b = _bif.readFileAsBytes();
-			if (_b == null) {
-				new FatalProblemDlg("Empty File"
-						+ "\n I was in FilterFile.readFile(" + str + ")");
-				System.exit(101);
-			} // end if
+			_bytesArray = _bif.readFileAsBytes();
+			_bif.close();
+//			if (_b == null) {
+//				new FatalProblemDlg("Empty File"
+//						+ "\n I was in FilterFile.readFile(" + str + ")");
+//				System.exit(101);
+//			} // end if
 		} catch (IOFileException iofe) {
-			new FatalProblemDlg(iofe + "\n I was in FilterFile.readFile(" + str
-					+ ")");
-			System.out.println(iofe);
-			iofe.printStackTrace();
-			System.exit(101);
+			new DxExceptionDlg(iofe.getMessage(),iofe);
+			System.exit(1);
 		} // end catch
 	}// readFile(String str)
 
@@ -220,22 +220,22 @@ public class FilterFile {
 		final String crlfStr = "\r\n";
 		ArrayList<Byte> byteArrayList = new ArrayList<Byte>();
 
-		for (int i = 0; i < _b.length; i++) {
-			if ((_b[i] != (byte) crlfStr.charAt(0))
-					&& (_b[i] != (byte) crlfStr.charAt(1))) {
-				byteArrayList.add(new Byte(_b[i]));
+		for (int i = 0; i < _bytesArray.length; i++) {
+			if ((_bytesArray[i] != (byte) crlfStr.charAt(0))
+					&& (_bytesArray[i] != (byte) crlfStr.charAt(1))) {
+				byteArrayList.add(new Byte(_bytesArray[i]));
 			}
 			// } else {// end if ((_b[i] != (byte)crlfStr.charAt(0)
-			if (_b[i] == (byte) crlfStr.charAt(0)) {
-				if (i == (_b.length - 1)) { // end of file?
+			if (_bytesArray[i] == (byte) crlfStr.charAt(0)) {
+				if (i == (_bytesArray.length - 1)) { // end of file?
 					addCrLf(byteArrayList);
 				} else {
-					if (_b[i + 1] != (byte) crlfStr.charAt(1)) {
+					if (_bytesArray[i + 1] != (byte) crlfStr.charAt(1)) {
 						addCrLf(byteArrayList);
 					}
 				}
 			} else { // (_b[i]==(byte)crlfStr.charAt(1)){
-				if (_b[i] == (byte) crlfStr.charAt(1)) { // adjusting LF
+				if (_bytesArray[i] == (byte) crlfStr.charAt(1)) { // adjusting LF
 					addCrLf(byteArrayList);
 				}
 			}
@@ -248,9 +248,9 @@ public class FilterFile {
 	}// end public void adjustingLines()
 
 	private void toArrayOfBytes(ArrayList<Byte> byteArrayList) {
-		_b = new byte[byteArrayList.size()];
+		_bytesArray = new byte[byteArrayList.size()];
 		for (int i = 0; i < byteArrayList.size(); i++)
-			_b[i] = byteArrayList.get(i).byteValue();
+			_bytesArray[i] = byteArrayList.get(i).byteValue();
 	}
 
 	private void addCrLf(ArrayList<Byte> byteArrayList) {
@@ -262,29 +262,25 @@ public class FilterFile {
 	public void adjustingEndFile() {
 		// Vector byteVector = new Vector();
 		int i;
-		for (i = (_b.length - 1); i >= 0; i -= 2) {
-			if ((_b[i] != (byte) 10) && (_b[i] != (byte) 13)) {
+		for (i = (_bytesArray.length - 1); i >= 0; i -= 2) {
+			if ((_bytesArray[i] != (byte) 10) && (_bytesArray[i] != (byte) 13)) {
 				break;
 			}
 		}// end for (int i=_b.length-1; i>=0; i--)
 		byte[] bTemp = new byte[i + 1];
 		for (int j = 0; j < bTemp.length; j++)
-			bTemp[j] = _b[j];
-		_b = null; // XXXX Pascal: instruction inutile
-		_b = bTemp;
+			bTemp[j] = _bytesArray[j];
+		_bytesArray = bTemp;
 	}
 
 	// ------------------------------------------------------
 	public void saveFile(String str) {
 		try {
 			_bof = new ByteOutputFile(str);
-			_bof.writeFileFromBytes(_b);
+			_bof.writeFileFromBytes(_bytesArray);
 			_bof.close();
 		} catch (IOFileException iofe) {
-			new FatalProblemDlg(iofe + "\n I was in FilterFile.saveFile(" + str
-					+ ")");
-			System.out.println(iofe);
-			iofe.printStackTrace();
+			new DxException("Error while writing bytes !\n"+iofe.getMessage());
 			System.exit(101);
 		} // end catch
 
@@ -310,7 +306,7 @@ public class FilterFile {
 
 	private boolean byteIn(byte b, byte[] bytes) {
 		for (int i = 0; i < bytes.length; i++) {
-			if ((b - bytes[i]) == 0) // XXXX Pascal: pkoi pas b == bytes[i] ?
+			if (b == bytes[i]) 
 				return true;
 		}
 		return false;
@@ -335,15 +331,11 @@ public class FilterFile {
 
 		validCharTable = (nonImpStr + _charKnown).getBytes();
 
-		for (int i = 0; i < _b.length; i++) {
-			if (!asciiChar(_b[i]))
-				if (!byteIn(_b[i], validCharTable)) {
-					new FatalProblemDlg(
-							"I was in FilterFile.testValidityOfBytes,  i = "
-									+ i + "; _b[i] = " + Byte.toString(_b[i])
-									+ "; nonImpStr.charAt(j) = "
-									+ writeTo(validCharTable));
-					return false;
+		for (int i = 0; i < _bytesArray.length; i++) {
+			if (!asciiChar(_bytesArray[i]))
+				if (!byteIn(_bytesArray[i], validCharTable)) {
+					new DxException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
+            return false;
 					// //if (charIn(_b[i],nonImpStr)); else
 				} // if (asciiChar(_b[i]) ; else
 		}
