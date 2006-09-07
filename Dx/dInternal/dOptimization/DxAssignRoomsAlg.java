@@ -22,6 +22,7 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -120,7 +121,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 				.getSetOfResources();
 		SetOfEvents soe = _dm.getSetOfEvents();
 		SetOfRooms sor = _dm.getSetOfRooms();
-
+		
 		int ADD_RESOURCE_BY_KEY = 0;
 
 		for (int i = 0; i < sor.size(); i++) {

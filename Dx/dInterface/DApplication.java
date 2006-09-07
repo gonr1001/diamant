@@ -631,8 +631,8 @@ public class DApplication { // implements ActionListener {
 					System.exit(1);
 				}
 				this.setCursorDefault();
-			} catch (Exception e) {
-				new FatalProblemDlg("In DApplication.doImport: " + e.toString());
+			} catch (DxException e) {
+				new DxExceptionDlg(e.getMessage(),e);
 				jD.dispose();
 			}
 
