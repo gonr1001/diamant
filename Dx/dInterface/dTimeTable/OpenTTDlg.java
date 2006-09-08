@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.34 $  $Date: 2006-09-06 02:22:44 $
+ * Title: OpenTTDlg $Revision: 1.35 $  $Date: 2006-09-08 18:23:57 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.35 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -34,8 +34,8 @@ import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dResources.DFileFilter;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.DxExceptionDlg;
+
 
 /**
  * 

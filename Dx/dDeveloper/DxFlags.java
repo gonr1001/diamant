@@ -25,25 +25,26 @@ package dDeveloper;
  * Description: DxFlags is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public class DxFlags {
-	
- //public final static boolean newRooms = true;
- 	 public final static boolean newRooms = false;
-    
+
+	// public final static boolean newRooms = true;
+	public final static boolean newRooms = false;
+
 	public final static boolean newAlg = false;
-//	public final static boolean newAlg = false;
-	
+
+	// public final static boolean newAlg = false;
+
 	public final static boolean newDoc = true;
-//	public final static boolean newDoc = false;
-		
-//	public final static boolean newPartitionAlg = true;
-    public final static boolean newPartitionAlg = false;
-	
-//	public final static boolean newActivity = true;
-    public final static boolean newActivity = false;
-	
-	 public static boolean unitTest = false;
+	// public final static boolean newDoc = false;
+
+	// public final static boolean newPartitionAlg = true;
+	public final static boolean newPartitionAlg = false;
+
+	// public final static boolean newActivity = true;
+	public final static boolean newActivity = false;
+
+	public static boolean unitTest = false;
 }

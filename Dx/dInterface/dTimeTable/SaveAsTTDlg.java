@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.15 $  $Date: 2006-09-06 02:22:45 $
+ * Title: SaveAsTTDlg $Revision: 1.16 $  $Date: 2006-09-08 18:23:58 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.16 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -62,7 +62,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 	public void addInNewFile(String currentFile, String data) {
 		String error = _dApplic.getDMediator().saveCurrentDoc(currentFile);
 		if(error!="")
-		  new DxExceptionDlg(error);;
+		  new DxExceptionDlg(error);
 	}
 
 	public void doSave(String fileName) { // . String str) {

@@ -8,7 +8,7 @@ import java.io.*;
 
 public class ASAXParser extends DefaultHandler {
 
-	public static void main(String args[]) throws IOException {
+	public static void main(String args[]) {
 		if (args.length != 1) {
 			System.err.println("Erreur, il manque un argument");
 			System.exit(1);
@@ -74,7 +74,7 @@ public class ASAXParser extends DefaultHandler {
 	}
 
 	public void endElemet(String namespaceURI, String simpleName,
-			String qualifiedName) throws SAXException {
+			String qualifiedName){// throws SAXException {
 		String nomElement = simpleName;
 		//nomElement.equals("")
 		if ("".equals(nomElement)) {
