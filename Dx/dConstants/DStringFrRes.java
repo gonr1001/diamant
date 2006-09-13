@@ -239,13 +239,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
 			// Rooms constants
 			{ "roomText1", "Wrong name of room at line: " },
-			{ "roomText2", "Wrong capacity at line: " },
-			{ "roomText3", "Wrong function at line: " },
+			{ "roomText2", "Wrong room capacity at line: " },
+			{ "roomText3", "Wrong room function at line: " },
 			{ "roomText4", "Wrong caracteristics at line: " },
 			{ "roomText5", " in the room file:" },
 			{ "roomText6",
 					"I was in roomList class and in analyseTokens method" },
-			{ "roomText7", "Wrong line format at line: " },
+			{ "roomText7", "Wrong room line format at line: " },
 			{ "roomText8", "Wrong name of site at line: " },
 			// activities constants
 			{ "activText1", "Wrong activity name at line: " },

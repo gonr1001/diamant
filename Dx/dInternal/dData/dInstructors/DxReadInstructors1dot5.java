@@ -51,7 +51,6 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 							.intValue();
 				} catch (NumberFormatException exc) {
 					// _error = DConst.INST_TEXT1 + "\n" + DConst.INST_TEXT6;
-					// TODO: throw: Instructor count expected, invalid format
 					throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
 							+ exc.getMessage());
 				}
@@ -60,13 +59,11 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 
 			// Line containing the name of the instructor
 			case 1:
-				// TODO: This error will never happen since tokenizer skips all
 				// delimiters
 				// Thus, if string is empty, 2 delimiters will be skipped and
 				// the empty string wont appear
 				if (token.length() == 0) {
 
-					// TODO: throw: Line should contain name of the instructor
 					throw new DxException("Line should contain name of the instructor !");
 				}
 				state = 2;
@@ -86,10 +83,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				// Verifies that number of period per day was correctly
 				// indicated
 				if (tokenDispo.countTokens() != _nPeriods) {
-					// _error = DConst.INST_TEXT3 + line + DConst.INST_TEXT5
-					// + "\n" + DConst.INST_TEXT6;
-					// TODO: throw: Invalid number of periods per day
-					throw new DxException(DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE
+				        throw new DxException(DConst.INVALID_NUMBER_OF_PERIODS_AT
 									+ currentLine);
 				}
 
@@ -97,8 +91,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				while (tokenDispo.hasMoreElements()) {
 					String dispo = tokenDispo.nextToken();
 					if (isValidDayAvailability(dispo)) {
-						// TODO: throw: Invalid period availability
-						throw new DxException(DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE
+						throw new DxException(DConst.INVALID_NUMBER_OF_PERIODS_AT
 										+ currentLine);
 					}
 				}
@@ -122,7 +115,6 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 		// file was valid
 		if (countInstructor != numberOfInstructors) {
 			// _error = DConst.INST_TEXT1 + "\n" + DConst.INST_TEXT6;
-			// TODO: throw: Invalid number of instructors
 			throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS);
 		}
 

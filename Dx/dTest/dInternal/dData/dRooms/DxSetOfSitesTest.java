@@ -11,6 +11,7 @@ import dInternal.dData.dRooms.DxReadSite1dot5;
 import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
+import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 
 import junit.framework.Test;
@@ -25,20 +26,42 @@ public class DxSetOfSitesTest extends TestCase {
 
 		String path = "." + File.separator + "dataTest" + File.separator
 				+ "locaux.txt";
-		byte[] dataloaded = preLoad(path);
 		DLoadData ld = new DLoadData();
+		byte[] dataloaded = null;
+		try {
+			dataloaded = ld.preLoad(path);
+		} catch (DxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		DataExchange de = ld.buildDataExchange(dataloaded);
 		DxSiteReader dxsr = new DxReadSite1dot5(de);
 
-		_dxsosSingle = dxsr.getSetOfSites();
+		try {
+			_dxsosSingle = dxsr.readSetOfSites();
+		} catch (DxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		path = "." + File.separator + "dataTest" + File.separator
 				+ "locauxINFIRComplet.txt";
-		dataloaded = preLoad(path);
+		try {
+			dataloaded = ld.preLoad(path);
+		} catch (DxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(dataloaded));
 		dxsr = new DxReadSite1dot6(de);
 
-		_dxsosMulti = dxsr.getSetOfSites();
+		try {
+			_dxsosMulti = dxsr.readSetOfSites();
+		} catch (DxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		/*
 		 * path = "." + File.separator + "dataTest" + File.separator +
 		 * "loadData7j.dia"; dataloaded = preLoad(path); st = new
@@ -155,15 +178,4 @@ public class DxSetOfSitesTest extends TestCase {
 		
 	}
 
-	private byte[] preLoad(String str) {
-		DxPreferences preferences = new DxPreferences("." + File.separator
-				+ "pref" + File.separator + "pref.txt");
-		FilterFile filter = new FilterFile();
-		filter.setCharKnown("");
-		filter.appendToCharKnown(preferences._acceptedChars);
-		if (filter.validFile(str)) {
-			return filter.getByteArray();
-		}
-		return null;
-	} // preLoad(String str)
 }

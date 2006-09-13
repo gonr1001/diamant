@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.16 $  $Date: 2006-09-08 18:23:58 $
+ * Title: SaveAsTTDlg $Revision: 1.17 $  $Date: 2006-09-13 13:08:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.17 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -35,9 +35,9 @@ import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxTTStructureDoc;
 import dResources.DFileFilter;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.DxExceptionDlg;
 
 public class SaveAsTTDlg extends SaveAsDlg {
 

@@ -588,7 +588,7 @@ public class DConst {
   public static final String ROOM_CHAR_SEPARATOR_TOKEN= ",";
   public static final String ROOM_STANDARD_SITE= "SHE";
   public static final String ROOM_STANDARD_CAT= "CAT 1";
-  
+
   
   public static final String CONFLICT_LIMITS_SEPARATOR= ";";
   // students v 1.7
@@ -634,8 +634,12 @@ public class DConst {
   public static final String USEDCOW="COW";
   public static final String DEFAULT_MIX_ALGO = "8";
 
-public static final String INVALID_NUMBER_OF_INSTRUCTORS = "Invalid number of instructors:";
+public static final String INVALID_NUMBER_OF_INSTRUCTORS = "Availability:Invalid number of instructors ";
+public static final String INVALID_NUMBER_OF_PERIODS_AT = "Availability: Invalid number of period per day at Line ";
+public static final String INVALID_NUMBER_OF_DAYS_LINE ="Availability: Invalid number of days at Line ";
 
-public static final String INVALID_PERIOD_AVAILABILITY_AT_LINE = "Invalid period availability at Line ";
+public static final String INVALID_FILE_FILTER = "Invalid filter file !";
+
+public static final String FILE_PRELOAD_FAILED = "File prelaod failed !";
   
 }

@@ -8,6 +8,7 @@ import dInternal.DxPreferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
+import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
@@ -39,7 +40,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
-		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
+		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
@@ -71,7 +72,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
-		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
+		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
@@ -82,7 +83,7 @@ public class DxInstructorsReaderTest extends TestCase {
 			dxsoi.equals(dxsoi);
 		} catch (DxException e) {
 			assertEquals("test1_1_getSetOfInstructors: assertEquals",
-					DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE+"11", e
+					DConst.INVALID_NUMBER_OF_PERIODS_AT+"11", e
 							.getMessage());
 		}
 	}
@@ -104,7 +105,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
-		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
+		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
@@ -136,7 +137,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
-		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
+		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
@@ -147,7 +148,7 @@ public class DxInstructorsReaderTest extends TestCase {
 			dxsoi.equals(dxsoi);
 		} catch (Exception e) {
 			assertEquals("test3_1_getSetOfInstructors: assertEquals",
-				 DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE+"15", e.getMessage());
+				 DConst.INVALID_NUMBER_OF_PERIODS_AT+"15", e.getMessage());
 		}
 	}
 
@@ -169,7 +170,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
-		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
+		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
@@ -180,7 +181,7 @@ public class DxInstructorsReaderTest extends TestCase {
 			dxsoi.equals(dxsoi);
 		} catch (Exception e) {
 			assertEquals("test4_1_getSetOfInstructors: assertEquals",
-					DConst.INVALID_PERIOD_AVAILABILITY_AT_LINE+"7", e.getMessage());
+					DConst.INVALID_NUMBER_OF_PERIODS_AT+"7", e.getMessage());
 		}
 	}
 
@@ -202,7 +203,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
-		DxInstructorsReader dxriTest = new DxReadInstructors1dot5(ld
+		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoiTemp = dxriTest.readSetOfInstructors();
@@ -222,11 +223,18 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxSetOfInstructors dxsoi = null;
 		String path = "." + File.separator + "dataTest" + File.separator
 				+ "disprof.sig.DISPROF";
-		byte[] dataloaded = preLoad(path);
 		DLoadData ld = new DLoadData();
+		byte[] dataloaded = null;
+		try {
+			dataloaded = ld.preLoad(path);
+		} catch (DxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		DataExchange de = ld.buildDataExchange(dataloaded);
 
-		DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);
+		DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, 5, 14);
 		try {
 			dxsoi = dxir.readSetOfInstructors();
 		} catch (Exception e) {
@@ -260,15 +268,4 @@ public class DxInstructorsReaderTest extends TestCase {
 //				.getInstructorKeyByName("YAHIA, AMMAR"));
 	}
 
-	private byte[] preLoad(String str) {
-		DxPreferences preferences = new DxPreferences("." + File.separator
-				+ "pref" + File.separator + "pref.txt");
-		FilterFile filter = new FilterFile();
-		filter.setCharKnown("");
-		filter.appendToCharKnown(preferences._acceptedChars);
-		if (filter.validFile(str)) {
-			return filter.getByteArray();
-		}
-		return null;
-	} // preLoad(String str)
 }

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2006-06-15 17:29:22 $
+* Title: SetOfSitesTest $Revision $  $Date: 2006-09-13 13:08:26 $
 * Description: 	SetOfSitesTest is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: gonzrubi $
+* @author  $Author: hara2602 $
 * @since JDK1.3
 */
 
@@ -33,6 +33,7 @@ import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
+import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 
 
@@ -227,20 +228,34 @@ public class SetOfSitesTest  extends TestCase{
  
  public void test4_analyseFile1_5(){
  	String path ="." + File.separator+"dataTest"+File.separator+"locaux.txt";
- 	byte[] dataloaded = preLoad (path);
-    SetOfSites setOfSites= new SetOfSites();
-    DLoadData ld = new DLoadData();
+ 	 DLoadData ld = new DLoadData();
+ 	byte[] dataloaded = getDataLoad(path, ld);
+   
+ 	SetOfSites setOfSites= new SetOfSites();
+   
     boolean analyse = setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
  	//boolean analyse = setOfSites.analyseTokens(dataloaded, 0);
  	//boolean analyse =
  	assertEquals("test4_analyseFile1_5: assertEquals", true,analyse);
  }
+
+private byte[] getDataLoad(String path, DLoadData ld) {
+	byte[] dataloaded = null;
+	try {
+		dataloaded = ld.preLoad (path);
+	} catch (DxException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return dataloaded;
+}
  
  public void test4_buildSetOfResources1_5(){
  	String path ="." + File.separator+"dataTest"+File.separator+"locaux.txt";
- 	byte[] dataloaded = preLoad (path);
+	DLoadData ld = new DLoadData();
+ 	byte[] dataloaded =getDataLoad(path,ld);
  	SetOfSites setOfSites= new SetOfSites();
- 	DLoadData ld = new DLoadData();
+ 
     setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
  	setOfSites.buildSetOfResources(ld.buildDataExchange(dataloaded), 0);
  	assertEquals("test4_buildSetOfResources1_5-1: assertEquals", "SHE",
@@ -257,19 +272,20 @@ public class SetOfSitesTest  extends TestCase{
  
  public void test4_analyseFile1_6(){
  	String path ="." + File.separator+"dataTest"+File.separator+"locauxINFIR.txt";
- 	byte[] dataloaded = preLoad (path);
+ 	 DLoadData ld = new DLoadData();
+ 	byte[] dataloaded = getDataLoad (path,ld);
  	SetOfSites setOfSites= new SetOfSites();
-    DLoadData ld = new DLoadData();
+   
     boolean analyse = setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
  	assertEquals("test4_analyseFile1_6: assertEquals", true,analyse);
  }
  
  public void test4_buildSetOfResources1_6(){
  	String path ="." + File.separator+"dataTest"+File.separator+"locauxINFIRComplet.txt";
- 	byte[] dataloaded = preLoad (path);
+	DLoadData ld = new DLoadData();
+ 	byte[] dataloaded =getDataLoad(path,ld);
  	SetOfSites setOfSites= new SetOfSites();
- 	DLoadData ld = new DLoadData();
-    setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
+   setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
  	setOfSites.buildSetOfResources(ld.buildDataExchange(dataloaded), 0);
  	assertEquals("test4_buildSetOfResources1_6-1: assertEquals", "COW",
  			setOfSites.getResourceAt(0).getID());
@@ -279,9 +295,10 @@ public class SetOfSitesTest  extends TestCase{
  
  public void test5_buildSetOfResources1_6(){
  	String path ="." + File.separator+"dataTest"+File.separator+"locauxINFIRComplet.txt";
- 	byte[] dataloaded = preLoad (path);
- 	SetOfSites setOfSites= new SetOfSites();
  	DLoadData ld = new DLoadData();
+ 	byte[] dataloaded =getDataLoad(path,ld);
+ 	SetOfSites setOfSites= new SetOfSites();
+ 	
     setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
  	setOfSites.buildSetOfResources(ld.buildDataExchange(dataloaded), 0);
  	SetOfCategories setOfCat= (SetOfCategories) setOfSites.getResourceAt(setOfSites.size()-1).getAttach();
@@ -293,9 +310,10 @@ public class SetOfSitesTest  extends TestCase{
  
  public void test6_buildSetOfResources1_6(){
  	String path ="." + File.separator+"dataTest"+File.separator+"locauxINFIRComplet.txt";
- 	byte[] dataloaded = preLoad (path);
- 	SetOfSites setOfSites= new SetOfSites();
  	DLoadData ld = new DLoadData();
+ 	byte[] dataloaded = getDataLoad(path,ld);
+ 	SetOfSites setOfSites= new SetOfSites();
+ 	
     setOfSites.analyseTokens(ld.buildDataExchange(dataloaded),0);
  	setOfSites.buildSetOfResources(ld.buildDataExchange(dataloaded), 0);
  	SetOfCategories setOfCat= (SetOfCategories) setOfSites.getResourceAt(setOfSites.size()-1).getAttach();
@@ -307,24 +325,6 @@ public class SetOfSitesTest  extends TestCase{
  			setOfRooms.getResourceAt(setOfRooms.size()-1).getID());
  }
 
-/**
- * 
- * @param str
- * @return
- */	
- private byte[] preLoad(String str) {
-		DxPreferences preferences = new DxPreferences("."+ File.separator +
-	            "pref"
-	            + File.separator +
-	            "pref.txt");
-		FilterFile filter = new FilterFile();
-		filter.setCharKnown("");
-		filter.appendToCharKnown(preferences._acceptedChars);
-		if (filter.validFile(str)) {
-			return filter.getByteArray();
-		} 
-		return null;
-	} // preLoad(String str)
- 
+
 
 }

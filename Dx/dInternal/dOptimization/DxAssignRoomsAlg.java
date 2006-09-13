@@ -121,7 +121,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 				.getSetOfResources();
 		SetOfEvents soe = _dm.getSetOfEvents();
 		SetOfRooms sor = _dm.getSetOfRooms();
-		
+
 		int ADD_RESOURCE_BY_KEY = 0;
 
 		for (int i = 0; i < sor.size(); i++) {

@@ -33,8 +33,8 @@ import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.DxStateBarModel;
 import dInternal.dTimeTable.TTStructure;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Ruben Gonzalez-Rubio

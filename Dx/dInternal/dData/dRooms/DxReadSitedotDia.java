@@ -26,6 +26,8 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
+import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.exception.DxException;
 
 public class DxReadSitedotDia implements DxSiteReader {
 
@@ -39,7 +41,7 @@ public class DxReadSitedotDia implements DxSiteReader {
         _nPeriods = nPeriods;
     }
 
-    public DxSetOfSites getSetOfSites() {
+    public DxSetOfSites readSetOfSites() throws DxException{
         StringTokenizer stLineTokenizer;
         StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
                 .getContents(), DConst.CR_LF);
@@ -63,14 +65,15 @@ public class DxReadSitedotDia implements DxSiteReader {
         DxSetOfSites dxsosBuild = new DxSetOfSites();
         DxRoom dxrTempRoom;
 
-//	No useless lines in dia files
-        // Skips useless lines
-        while (stFileTokenizer.hasMoreElements()
-                && nCurrentLine < DConst.ROOM_USELESS_DIA_HEADER) {
-            sFileToken = stFileTokenizer.nextToken();
-            nCurrentLine++;
-        }
+////	No useless lines in dia files
+//        // Skips useless lines
+//        while (stFileTokenizer.hasMoreElements()
+//                && nCurrentLine < DConst.ROOM_USELESS_DIA_HEADER) {
+//            sFileToken = stFileTokenizer.nextToken();
+//            nCurrentLine++;
+//        }
 
+        stFileTokenizer.nextToken(); // "Diamant1.6" token
         // For every line containing a room
         while (stFileTokenizer.hasMoreElements()) {
             sFileToken = stFileTokenizer.nextToken();
@@ -93,7 +96,7 @@ public class DxReadSitedotDia implements DxSiteReader {
                         try {
                             nRoomCapacity = new Integer(sLineToken).intValue();
                         } catch (NumberFormatException e) {
-                            // ERROR: Invalid room capacity must be thrown
+                        	 throw new DxException(DConst.ROOM_TEXT2+nCurrentLine);
                         }
                         break;
 
@@ -102,13 +105,13 @@ public class DxReadSitedotDia implements DxSiteReader {
                         try {
                             nRoomFunction = new Integer(sLineToken).intValue();
                         } catch (NumberFormatException e) {
-                            // ERROR: Invalid room function must be thrown
+                        	throw new DxException(DConst.ROOM_TEXT3+nCurrentLine);
                         }
                         break;
 
                     // Room characteristics list
                     case 3:
-                        viCharacteristics = parseCharacteristics(sLineToken);
+                        viCharacteristics = parseCharacteristics(sLineToken,nCurrentLine);
                         break;
 
                     case 4:
@@ -126,11 +129,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 
                     // Room availability
                     case 7:
-                        dxaAva = parseAvailability(sLineToken);
-                        if(dxaAva==null)
-                        {
-                            //there was an error in availabilities
-                        }
+                        dxaAva = parseAvailability(sLineToken,nCurrentLine);
                         break;
 
                     }
@@ -144,65 +143,67 @@ public class DxReadSitedotDia implements DxSiteReader {
                 // not added
                 dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
             } else {
-                // ERROR: Invalid token count
+            	 throw new DxException(DConst.ROOM_TEXT7+nCurrentLine);
             }
             nCurrentLine++;
         }
         return dxsosBuild;
     }
 
-    private Vector<Integer> parseCharacteristics(String token) {
-        Vector<Integer> viTemp = new Vector<Integer>();
+    private Vector<Integer> parseCharacteristics (String token, int nCurrentLine) {
+		Vector<Integer> viTemp = new Vector<Integer>();
 
-        StringTokenizer stChar = new StringTokenizer(token,
-                DConst.ROOM_CHAR_SEPARATOR_TOKEN);
+		StringTokenizer stChar = new StringTokenizer(token,
+				DConst.ROOM_CHAR_SEPARATOR_TOKEN);
 
-        while (stChar.hasMoreTokens()) {
-            try {
-                viTemp.add(new Integer(stChar.nextToken()));
-            } catch (NumberFormatException e) {
-                // ERROR: Invalid characteristic must be thrown
-            }
-        }
+		while (stChar.hasMoreTokens()) {
+			try {
+				viTemp.add(new Integer(stChar.nextToken()));
+			} catch (NumberFormatException e) {
+				new DxException(DConst.ROOM_TEXT4 + nCurrentLine);
+			}
+		}
 
-        return viTemp;
-    }
+		return viTemp;
+	}
 
-    private DxAvailability parseAvailability(String sAvailabilities) {
-        // extract a line that gives availability of a day
+    private DxAvailability parseAvailability(String sAvailabilities,
+			int nCurrentLine) throws DxException {
+		// extract a line that gives availability of a day
 
-        DxAvailability dxaRet = new DxAvailability();
+		DxAvailability dxaRet = new DxAvailability();
 
-        StringTokenizer stDays = new StringTokenizer(sAvailabilities,
-                DConst.AVAILABILITY_DAY_SEPARATOR_ROOM);
+		StringTokenizer stDays = new StringTokenizer(sAvailabilities,
+				DConst.AVAILABILITY_DAY_SEPARATOR_ROOM);
 
-        if (stDays.countTokens() != _nDays) {
-            return null;
-        }
+		if (stDays.countTokens() == _nDays) {
+			while (stDays.hasMoreTokens()) {
+				String sDay = stDays.nextToken();
+				StringTokenizer stPeriods = new StringTokenizer(sDay);
 
-        while (stDays.hasMoreTokens()) {
-            String sDay = stDays.nextToken();
-            StringTokenizer stPeriods = new StringTokenizer(sDay);
+				// Verifies that number of period per day was correctly
+				// indicated
+				if (stPeriods.countTokens() == _nPeriods) {
+					// Verifies that every availability element is valid
+					while (stPeriods.hasMoreElements()) {
+						String dispo = stPeriods.nextToken();
+						if (isValidDayAvailability(dispo)) {
+							return null;
+						}
+					}
+            	// After line is validated, we add it to the availability
+					dxaRet.addDayAvailability(sDay);
+				} else
+					throw new DxException(
+							DConst.INVALID_NUMBER_OF_PERIODS_AT
+									+ nCurrentLine);
+               }
+		} else {
+			throw new DxException(DConst.INVALID_NUMBER_OF_DAYS_LINE);
+		}
 
-            // Verifies that number of period per day was correctly
-            // indicated
-            if (stPeriods.countTokens() != _nPeriods) {
-                return null;
-            }
-
-            // Verifies that every availability element is valid
-            while (stPeriods.hasMoreElements()) {
-                String dispo = stPeriods.nextToken();
-                if (isValidDayAvailability(dispo)) {
-                    return null;
-                }
-            }
-
-            // After line is validated, we add it to the availability
-            dxaRet.addDayAvailability(sDay);
-        }
-        return dxaRet;
-    }
+		return dxaRet;
+	}
 
     private boolean isValidDayAvailability(String sDispo) {
         return (!sDispo.equalsIgnoreCase("1"))

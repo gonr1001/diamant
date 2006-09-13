@@ -17,9 +17,9 @@ import javax.swing.JFileChooser;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 
 public class ImportSelectiveFileDlg extends JDialog {
 

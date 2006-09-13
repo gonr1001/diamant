@@ -27,6 +27,7 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
+import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 
 
@@ -87,7 +88,13 @@ public class DSetOfActivitiesTest  extends TestCase{
  public void test0_analyseTokens(){
 
    String fileName ="." + File.separator+"dataTest"+File.separator+"cours1.sig";
-   String tokens = new String (preLoad(fileName));
+   String tokens="";
+try {
+	tokens = new String (dataPreLoad(fileName));
+} catch (DxException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
    DLoadData ld = new DLoadData();
    setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
@@ -102,7 +109,13 @@ public class DSetOfActivitiesTest  extends TestCase{
  public void test00_analyseTokens(){
 
    String fileName = "." + File.separator+"dataTest"+File.separator+"cours2.sig";
-   String tokens = new String (preLoad(fileName));
+   String tokens = "";
+try {
+	tokens = new String (dataPreLoad(fileName));
+} catch (DxException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
    SetOfActivitiesSites setOfActivities= new SetOfActivitiesSites(false, 60);
    DLoadData ld = new DLoadData();
    setOfActivities.analyseTokens(ld.buildDataExchange(tokens.getBytes()),1);
@@ -889,7 +902,7 @@ public void test7_analyseTokens(){
                   setOfActivities.getError().substring(0,DConst.ACTI_TEXT13.length()));
    }
 
-  private byte[] preLoad(String str) {
+  private byte[] dataPreLoad(String str) throws DxException {
     FilterFile filter = new FilterFile();
     filter.appendToCharKnown("ิห้-',:; ()๊.เ");
     if (filter.validFile(str)) {

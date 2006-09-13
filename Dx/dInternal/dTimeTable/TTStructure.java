@@ -34,6 +34,8 @@ import org.w3c.dom.Element;
 
 import dConstants.DConst;
 
+import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.exception.DxException;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.input.XMLInputFile;
 import eLib.exit.xml.output.XMLWriter;
@@ -232,7 +234,6 @@ public class TTStructure extends Observable {
 	public String loadTTSFromFile(String fileName) {
 		XMLInputFile xmlFile;
 		Element root; // , item, ID;
-		if (preLoad(fileName)) {
 			try {
 				xmlFile = new XMLInputFile();
 				Document doc = xmlFile.createDocument(fileName);
@@ -243,13 +244,9 @@ public class TTStructure extends Observable {
 					return _error;
 				}
 			} catch (Exception e) {
-				System.out.println("TTStructure 1 :" + e);
-				_error = e.toString();
-				return e.toString();
+				_error = e.getMessage();
+				new DxExceptionDlg(_error,e);
 			}
-		} else {
-			_error = DConst.M_FILE + " " + fileName + " not found !";
-		}
 		return _error;
 	}
 
@@ -524,20 +521,6 @@ public class TTStructure extends Observable {
 		return -1;
 	}
 
-	/**
-	 * 
-	 * @param str
-	 * @return
-	 */
-	private boolean preLoad(String str) {
-		File fil = new File(str);
-		if (!fil.exists()) {
-			System.out.println("fil.exists: " + fil.exists());
-		}
-		// fil.exists(); // XXXX Pascal: redondance? Cette methode est-elle
-		// vraiment necessaire?
-		return fil.exists();
-	}
 
 	/**
 	 * Create a sequence of periods

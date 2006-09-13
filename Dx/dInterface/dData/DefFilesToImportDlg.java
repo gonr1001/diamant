@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.11 $  $Date: 2006-09-06 02:22:44 $
+ * Title: DefFileToImportDlg $Revision: 1.12 $  $Date: 2006-09-13 13:08:22 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,7 +15,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  * @author  $Author: hara2602 $
  * @since JDK1.3
  */
@@ -36,8 +36,8 @@ import javax.swing.JTextField;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.DxExceptionDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 

@@ -30,7 +30,7 @@ import org.apache.log4j.PropertyConfigurator;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.DxDeploymentManager;
-import eLib.exit.exception.DxExceptionDlg;
+import eLib.exit.dialog.DxExceptionDlg;
 
 /**
  *

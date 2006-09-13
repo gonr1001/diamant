@@ -64,8 +64,8 @@ import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Description: DModel is a class used to

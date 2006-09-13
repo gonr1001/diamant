@@ -35,8 +35,8 @@ import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
 import dInternal.DxStateBarModel;
 import dInternal.dTimeTable.TTStructure;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Description: DDocument is a class used to // XXXX Pascal: used to what ??

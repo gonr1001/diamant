@@ -23,9 +23,11 @@ package eLib.exit.txt;
 import java.io.File;
 import java.util.ArrayList;
 
+import dConstants.DConst;
+
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 import eLib.exit.exception.IOFileException;
 
 /**
@@ -176,14 +178,13 @@ public class FilterFile {
 		}
 	}
 
-	public boolean validFile(String str) {
+	public boolean validFile(String str) throws DxException {
 		readFile(str);
 		if (testValidityOfBytes()) {
 			adjustingLines();
 			adjustingEndFile();
 			return true;
-		}
-		return false;
+		}else throw new DxException(DConst.INVALID_FILE_FILTER);
 	} // end validFile
 
 	public boolean adjustingFile(String str) {
@@ -202,14 +203,8 @@ public class FilterFile {
 			_bif = new ByteInputFile(fixSeparator(str));
 			_bytesArray = _bif.readFileAsBytes();
 			_bif.close();
-//			if (_b == null) {
-//				new FatalProblemDlg("Empty File"
-//						+ "\n I was in FilterFile.readFile(" + str + ")");
-//				System.exit(101);
-//			} // end if
 		} catch (IOFileException iofe) {
 			new DxExceptionDlg(iofe.getMessage(),iofe);
-			System.exit(1);
 		} // end catch
 	}// readFile(String str)
 
@@ -285,7 +280,6 @@ public class FilterFile {
 		} // end catch
 
 	}
-
 	private String writeTo(byte[] bytes) {
 		String toReturn = "";
 		// byte [] b = str.getBytes();
@@ -325,7 +319,7 @@ public class FilterFile {
 	}
 
 	// -----------------------------------------------------------------------
-	private boolean testValidityOfBytes() {
+	private boolean testValidityOfBytes() throws DxException {
 		String nonImpStr = "\r\n\t";
 		byte[] validCharTable = null;
 
@@ -334,10 +328,8 @@ public class FilterFile {
 		for (int i = 0; i < _bytesArray.length; i++) {
 			if (!asciiChar(_bytesArray[i]))
 				if (!byteIn(_bytesArray[i], validCharTable)) {
-					new DxException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
-            return false;
-					// //if (charIn(_b[i],nonImpStr)); else
-				} // if (asciiChar(_b[i]) ; else
+					throw new DxException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
+              } // if (asciiChar(_b[i]) ;
 		}
 		return true;
 	}// end testByte method

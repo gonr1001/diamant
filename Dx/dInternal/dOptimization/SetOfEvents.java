@@ -139,8 +139,9 @@ public class SetOfEvents extends DSetOfResources {
 	private long assignRooms(DSetOfResources soie, Assignment assignment,
 			String unityID) {
 		long roomKey;
-		int roomIndex = _dm.getSetOfRooms().getIndexOfResource(
-				assignment.getRoomName());
+			int	roomIndex=_dm.getSetOfRooms().getIndexOfResource(
+						assignment.getRoomName());
+			
 		if (roomIndex != -1) {
 			roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
 			// assignment.setRoomKey(roomKey);

@@ -19,6 +19,8 @@
  */
 package dInternal.dData.dRooms;
 
+import eLib.exit.exception.DxException;
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -29,5 +31,5 @@ package dInternal.dData.dRooms;
  * 
  */
 public interface DxSiteReader {
-    public DxSetOfSites getSetOfSites();
+    public DxSetOfSites readSetOfSites()throws DxException;
 }

@@ -20,7 +20,15 @@
 
 package eLib.exit.exception;
 
+import dConstants.DConst;
+import eLib.exit.dialog.DxExceptionDlg;
+
 public class DxException extends Exception {
+
+	/**
+	 * Comment for <code>serialVersionUID</code>
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public DxException() {
 		super();
@@ -28,6 +36,7 @@ public class DxException extends Exception {
 
 	public DxException(String message) {
 		super(message);
+		message+=DConst.CR_LF+getCurrentMethod(this);
 		new DxExceptionDlg(message);
 	}
 

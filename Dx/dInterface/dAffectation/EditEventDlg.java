@@ -65,8 +65,8 @@ import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.DxExceptionDlg;
 
 public class EditEventDlg extends JDialog implements ActionListener,
         ChangeListener {

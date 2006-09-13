@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.11 $  $Date: 2006-09-08 18:23:58 $
+ * Title: SaveAsTxtDlg $Revision: 1.12 $  $Date: 2006-09-13 13:08:22 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.11 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.12 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -41,7 +41,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 
-import eLib.exit.exception.DxExceptionDlg;
+import eLib.exit.dialog.DxExceptionDlg;
 
 public class SaveAsTxtDlg extends SaveAsDlg{
 	

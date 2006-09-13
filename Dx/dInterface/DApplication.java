@@ -75,10 +75,10 @@ import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
 import dInternal.dOptimization.RoomAssignmentAlgo;
 import dInternal.dOptimization.SelectAlgorithm;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;

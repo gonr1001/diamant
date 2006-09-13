@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.6 $  $Date: 2006-07-05 20:22:04 $
+* Title: SetOfStuSites $Revision: 1.7 $  $Date: 2006-09-13 13:08:24 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,8 +16,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
-* @author  $Author: gonzrubi $
+* @version $Revision: 1.7 $
+* @author  $Author: hara2602 $
 * @since JDK1.3
 */
 package dInternal.dData.dStudents;
@@ -259,9 +259,6 @@ public class SetOfStuSites extends DSetOfResources {
 					DConst.STUDENT_LINE_DESC_TOKEN).trim();
 			char desc= lineDesc.toUpperCase().charAt(DConst.STUDENT_LINE_DESC_TOKEN);
 			switch (desc){
-			case 'A':// Version of the file				
-				//position = 1;
-				break;
 			case DConst.LINE_DESCRIPTOR_S:// student ID (matricule and name)
 				//if(needToBuild){
 					

@@ -26,8 +26,8 @@ import javax.swing.JOptionPane;
 
 import dConstants.DConst;
 import dDeveloper.DxFlags;
+import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.DxExceptionDlg;
 
 /**
  * Description: DMediator is a class used as in the pattern mediator to make a
