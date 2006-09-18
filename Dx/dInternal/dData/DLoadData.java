@@ -486,16 +486,11 @@ public SetOfActivitiesSites extractActivities(
 				diaData.add(studentsList);
 			}// end if(tts.getError().length()==0)
 			else {
-				new FatalProblemDlg(
-						"I was in"
-								+ getClass().toString()
-								+ " LoadData class and loadProject. extract failed, wrong time table structure!!!");
+				new DxExceptionDlg("wrong time table structure!");
 			}
 
-		} else {
-			new FatalProblemDlg("I was in" + getClass().toString()
-					+ " LoadData class and loadProject. extract failed!!!");
-			// System.exit(-1);
+		} else {	
+			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY+DConst.CR_LF+DConst.SAVE_SEPARATOR_VIS);
 		}
 		return diaData;
 
@@ -515,7 +510,7 @@ public SetOfActivitiesSites extractActivities(
 
 		project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR_VIS);
 
-		if (project.countTokens() == 6) { // 6 !!!!!!!!!!!!!!
+		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6 !!!!!!!!!!!!!!
 			// extract version
 			diaData.add(project.nextToken().trim());
 			// extract ttStructure
@@ -581,8 +576,7 @@ public SetOfActivitiesSites extractActivities(
 			diaData.add(studentsList);
 
 		} else {
-			new FatalProblemDlg("I was in" + getClass().toString()
-					+ " LoadData class and loadProject. extract failed!!!");
+			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY+DConst.CR_LF+DConst.SAVE_SEPARATOR_VIS);
 			// System.exit(-1);
 		}
 		return diaData;

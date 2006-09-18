@@ -641,5 +641,11 @@ public static final String INVALID_NUMBER_OF_DAYS_LINE ="Availability: Invalid n
 public static final String INVALID_FILE_FILTER = "Invalid filter file !";
 
 public static final String FILE_PRELOAD_FAILED = "File prelaod failed !";
+
+public static final String IMPORT_STUDENTS = "IMPORT_STUDENTS: ";
+
+public static final int SAVE_SEPARATOR_COUNT = 6;
+
+public static final String PARTS_IN_DIA_SEPARATED_BY = "Wrong number of parts in .dia separated by ";
   
 }

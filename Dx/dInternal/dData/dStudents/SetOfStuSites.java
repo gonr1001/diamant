@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.7 $  $Date: 2006-09-13 13:08:24 $
+* Title: SetOfStuSites $Revision: 1.8 $  $Date: 2006-09-18 14:45:53 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,7 +16,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
+* @version $Revision: 1.8 $
 * @author  $Author: hara2602 $
 * @since JDK1.3
 */
@@ -260,24 +260,16 @@ public class SetOfStuSites extends DSetOfResources {
 			char desc= lineDesc.toUpperCase().charAt(DConst.STUDENT_LINE_DESC_TOKEN);
 			switch (desc){
 			case DConst.LINE_DESCRIPTOR_S:// student ID (matricule and name)
-				//if(needToBuild){
-					
-		      		//setOfStudent.buildSetOfResources(dEx,0);
-		      		//coursesLine="";
-		      		//needToBuild=false;
-				//}
-				nameLine = token+DConst.CR_LF;
+		         nameLine = token+DConst.CR_LF;
 				//position = 2;
 				break;
 			case DConst.LINE_DESCRIPTOR_C:// student courses choice
 				String site = DXToolsMethods.getToken(token, DConst.STUDENT_TOKEN_SEPARATOR, 
 						DConst.STUDENT_SITE_TOKEN).trim();
 				DResource stResc = getResource(site);
-				//SetOfStudents sos = (SetOfStudents)getResource(site).getAttach();
 				if(stResc==null){
 					stResc = new DResource(site,new SetOfStudents());
-					//sos= new SetOfStudents();
-					addResource(stResc,1);
+			         addResource(stResc,1);
 				}
 				
 				SetOfStudents sos = (SetOfStudents)stResc.getAttach();

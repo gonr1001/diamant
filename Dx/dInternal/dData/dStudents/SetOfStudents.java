@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.13 $  $Date: 2006-07-04 20:49:53 $
+ * Title: SetOfStudents $Revision: 1.14 $  $Date: 2006-09-18 14:45:53 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.14 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  */
 package dInternal.dData.dStudents;
@@ -30,6 +30,8 @@ import dInternal.DValue;
 import dInternal.DataExchange;
 import dInternal.dData.StandardCollection;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.exception.DxException;
 
 /**
  * @author syay1801
@@ -78,7 +80,12 @@ public class SetOfStudents extends DSetOfResources {
 	 */
 	public void addCourses(String version, String stuLine, String courses) {
 		if (version.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-			addCourses1_6(stuLine, courses);
+			try {
+				addCourses1_6(stuLine, courses);
+			} catch (StringIndexOutOfBoundsException e) {
+				new DxException(e.getMessage()+DConst.CR_LF+stuLine);
+				System.exit(-1);
+			} 
 		} else {
 			addCourses1_5(stuLine, courses);
 		}
@@ -472,11 +479,7 @@ public class SetOfStudents extends DSetOfResources {
 	 * @param stuLine
 	 * @param courses
 	 */
-	private void addCourses1_6(String nameLine, String coursesLine) {
-		/*String coursesLine = DXToolsMethods.getToken(de.getContents(), DConst.CR_LF,
-		 DConst.STUDENT_COURSE_LINE).trim();*/
-
-		//String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME, DConst.END_STUDENT_NAME).trim();
+	private void addCourses1_6(String nameLine, String coursesLine) throws StringIndexOutOfBoundsException{
 		String stuInfo = buildLines1_6(nameLine, coursesLine);
 		String stuLine = DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
 				DConst.STUDENT_NAME_LINE).trim();

@@ -31,8 +31,9 @@ import eLib.exit.exception.DxException;
 
 public class DxExceptionDlg {
 
+	private static final String DX_EXCEPTION = "DxException";
 	public DxExceptionDlg(String message) {
-		new DxExceptionDlg(null,message,"DxException");
+		new DxExceptionDlg(null,message,DX_EXCEPTION);
 	}
 	public DxExceptionDlg(Component comp, String message, String title) {
 		if (!DxFlags.unitTest)
@@ -41,18 +42,18 @@ public class DxExceptionDlg {
 	}
 
 	public DxExceptionDlg(String message, Exception e) {
-		new DxExceptionDlg(null,message,"DxException",e);
+		new DxExceptionDlg(null,message,DX_EXCEPTION,e);
 	}
 
 	public DxExceptionDlg(Component comp, String error) {
-		new DxExceptionDlg(comp,error,"DxException");
+		new DxExceptionDlg(comp,error,DX_EXCEPTION);
 	}
 	public DxExceptionDlg(Component comp, String message, String title, Exception e) {
 		message=message+DConst.CR_LF+DxException.getCurrentMethod(e);
 		new DxExceptionDlg(comp,message,title);
 	}
 	public DxExceptionDlg(Component comp, String message, Exception e) {
-		new DxExceptionDlg(comp,message,"DxException",e);
+		new DxExceptionDlg(comp,message,DX_EXCEPTION,e);
 	}
 
 }
