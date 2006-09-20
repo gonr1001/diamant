@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.14 $  $Date: 2006-09-18 14:45:53 $
+ * Title: SetOfStudents $Revision: 1.15 $  $Date: 2006-09-20 03:09:04 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: hara2602 $
  * @since JDK1.3
  */
@@ -63,7 +63,6 @@ public class SetOfStudents extends DSetOfResources {
 	 * @param beginPosition
 	 */
 	public void buildSetOfResources(DataExchange de, int beginPosition) {
-		beginPosition += 0;
 		String nameLine = DXToolsMethods.getToken(de.getContents(),
 				DConst.CR_LF, DConst.STUDENT_NAME_LINE).trim();
 		String coursesLine = DXToolsMethods.getToken(de.getContents(),
@@ -83,8 +82,8 @@ public class SetOfStudents extends DSetOfResources {
 			try {
 				addCourses1_6(stuLine, courses);
 			} catch (StringIndexOutOfBoundsException e) {
-				new DxException(e.getMessage()+DConst.CR_LF+stuLine);
-				System.exit(-1);
+				new DxExceptionDlg(e.getMessage()+DConst.CR_LF+stuLine);
+			//	System.exit(-1);
 			} 
 		} else {
 			addCourses1_5(stuLine, courses);
@@ -475,7 +474,6 @@ public class SetOfStudents extends DSetOfResources {
 	}
 
 	/**
-	 * 
 	 * @param stuLine
 	 * @param courses
 	 */
@@ -485,6 +483,7 @@ public class SetOfStudents extends DSetOfResources {
 				DConst.STUDENT_NAME_LINE).trim();
 		String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME)
 				.trim();
+	//	System.out.println(stuLine);
 		String courses = DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
 				DConst.STUDENT_COURSE_LINE).trim();
 		long studentKey = (new Integer(stuLine.substring(

@@ -1,7 +1,7 @@
 package eLib.exit.dialog;
 /**
  *
- * Title: FatalProblemDlg $Revision: 1.3 $  $Date: 2004-11-09 15:41:46 $
+ * Title: FatalProblemDlg $Revision: 1.4 $  $Date: 2006-09-20 03:09:04 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package eLib.exit.dialog;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.4 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -62,10 +62,7 @@ public class FatalProblemDlg {
    * <p>Clicking in the button will dispose the dialog.
    */
   public FatalProblemDlg(String message, String title) {
-    JOptionPane.showMessageDialog(null,
-                                 message,
-                                 title,
-                                 JOptionPane.ERROR_MESSAGE);
+	  new FatalProblemDlg(null,message,FATAL_PROBLEM);
   }
 
  /**
@@ -77,10 +74,7 @@ public class FatalProblemDlg {
   * <p>Clicking in the button will dispose the dialog.
   */
   public FatalProblemDlg(Component comp, String message) {
-  JOptionPane.showMessageDialog(comp,
-                               message,
-                               FATAL_PROBLEM,
-                               JOptionPane.ERROR_MESSAGE);
+	 new FatalProblemDlg(comp,message,FATAL_PROBLEM);
   }
   
   
@@ -94,10 +88,8 @@ public class FatalProblemDlg {
    * <p>Clicking in the button will dispose the dialog.
    */
   public FatalProblemDlg(Component comp, String message, String title) {
-  	JOptionPane.showMessageDialog(comp,
-  			message,
-			title,
-			JOptionPane.ERROR_MESSAGE);
+  	JOptionPane.showMessageDialog(comp,message,
+			title,JOptionPane.ERROR_MESSAGE);
   }
   
 } /* FatalProblemDlg */

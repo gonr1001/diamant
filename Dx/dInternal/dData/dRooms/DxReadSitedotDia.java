@@ -143,6 +143,7 @@ public class DxReadSitedotDia implements DxSiteReader {
                 // not added
                 dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
             } else {
+            	  //if (stLineTokenizer.countTokens() == DConst.ROOM_DIA_TOKEN_COUNT)
             	 throw new DxException(DConst.ROOM_TEXT7+nCurrentLine);
             }
             nCurrentLine++;

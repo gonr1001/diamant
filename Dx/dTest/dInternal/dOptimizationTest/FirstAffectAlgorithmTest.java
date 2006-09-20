@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.12 $ $Date: 2006-07-27 12:13:35 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.13 $ $Date: 2006-09-20 03:09:04 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: gonzrubi $
+ * @author $Author: hara2602 $
  * @since JDK1.3
  */
 
@@ -31,6 +31,8 @@ import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxPreferences;
 import dInternal.dOptimization.FirstAffectAlgorithm;
+import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.exception.DxException;
 
 public class FirstAffectAlgorithmTest extends TestCase {
 
@@ -98,17 +100,16 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		fileName += "genAlgo" + File.separator;
 		fileName += "genNoAssigned.dia";
 		int type = 1;
-
 		try {
-			if(DxFlags.newDoc){
+			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName);
 			} else {
 				dm1 = new DModel(_dDocument1, fileName, type);
-			}
-//			dm1 = new DModel(_dDocument1, fileName, type);
-		} catch (Exception e) {
-			// Should not fail in controled conditions
+			}	
+		} catch (DxException e) {
+			new DxExceptionDlg(e.getMessage(),e);
 		}
+
 		dm1.changeInDModel(new Object());
 		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
 				.size());

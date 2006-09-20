@@ -152,7 +152,7 @@ public class DModel extends Observable {
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DModel(DDocument dDocument, String fileName, int type)
-			throws DxException /* !!!NIC!!! */{
+			throws DxException {
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -181,8 +181,11 @@ public class DModel extends Observable {
 		} else {
 			_error = "Wrong type of file";
 		}
-		if (_error.length() == 0 && _isATimeTable)
-			_conditionsToTest = new DxConditionsToTest(this);
+		if (_error.length() == 0){
+			if (_isATimeTable) _conditionsToTest = new DxConditionsToTest(this);
+		}else{
+			throw new DxException(_error);
+		}
 		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
 			_isATimeTable = true;
 			_isOnlyATimeTable = true;
@@ -194,7 +197,7 @@ public class DModel extends Observable {
 
 	}
 
-	public DModel(DxDocument dxDocument, String fileName) throws DxException /* !!!NIC!!! */{
+	public DModel(DxDocument dxDocument, String fileName) throws DxException {
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -223,8 +226,11 @@ public class DModel extends Observable {
 		} else {
 			_error = "Wrong type of file";
 		}
-		if (_error.length() == 0 && _isATimeTable)
-			_conditionsToTest = new DxConditionsToTest(this);
+		if (_error.length() == 0){
+			if (_isATimeTable) _conditionsToTest = new DxConditionsToTest(this);
+		}else{
+			throw new DxException(_error);
+		}
 		// if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
 		// _isATimeTable = true;
 		// _isOnlyATimeTable = true;
@@ -384,9 +390,8 @@ public class DModel extends Observable {
 		catch (FileNotFoundException fnfe)
 		{ // alert the user that the specified file does not exist
 			new DxExceptionDlg(fnfe.getMessage());
-		}
-		 catch (DxException e) {
-			e.printStackTrace();
+		} catch (DxException e) {
+			new DxExceptionDlg(e.getMessage(),e);
 		}
 
 		if (theTT.size() != 0) {

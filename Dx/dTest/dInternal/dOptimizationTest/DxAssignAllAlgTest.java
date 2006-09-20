@@ -31,6 +31,8 @@ import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
+import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.exception.DxException;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -111,8 +113,8 @@ public class DxAssignAllAlgTest extends TestCase {
 			} else {
 				dm1 = new DModel(dDocument1, fileName.toString(), type);
 			}	
-		} catch (Exception e) {
-			// Should not fail in controled conditions
+		} catch (DxException e) {
+			new DxExceptionDlg(e.getMessage(),e);
 		}
 		dm1.changeInDModel(new Object());
 		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()

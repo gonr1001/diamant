@@ -36,8 +36,8 @@ public class DxException extends Exception {
 
 	public DxException(String message) {
 		super(message);
-		message+=DConst.CR_LF+getCurrentMethod(this);
-		new DxExceptionDlg(message);
+//		message+=DConst.CR_LF+getCurrentMethod(this);
+//		new DxExceptionDlg(message);
 	}
 
 	 public static String getCurrentMethod(Exception e){

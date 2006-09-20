@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfStuSites $Revision: 1.8 $  $Date: 2006-09-18 14:45:53 $
+* Title: SetOfStuSites $Revision: 1.9 $  $Date: 2006-09-20 03:09:03 $
 * Description: SetOfStuSites is a class used as a data structure container.
 *              It contains the sites where students can take a
 *              course and their attributes.
@@ -16,7 +16,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.8 $
+* @version $Revision: 1.9 $
 * @author  $Author: hara2602 $
 * @since JDK1.3
 */
@@ -271,7 +271,7 @@ public class SetOfStuSites extends DSetOfResources {
 					stResc = new DResource(site,new SetOfStudents());
 			         addResource(stResc,1);
 				}
-				
+				// TODO hara2602 Methode trop brut , pour ajouter un cours, pad besoin de revérifer si le student exite ou pas.
 				SetOfStudents sos = (SetOfStudents)stResc.getAttach();
 				dEx.setContents(nameLine+token);
 				sos.buildSetOfResources(dEx,0);

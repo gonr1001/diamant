@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.36 $  $Date: 2006-09-13 13:08:22 $
+ * Title: OpenTTDlg $Revision: 1.37 $  $Date: 2006-09-20 03:09:03 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.36 $
+ * @version $Revision: 1.37 $
  * @author  $Author: hara2602 $
  * @since JDK1.3
  */
@@ -35,6 +35,7 @@ import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dResources.DFileFilter;
 import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.exception.DxException;
 
 
 /**
@@ -90,30 +91,21 @@ public class OpenTTDlg extends JDialog implements ActionListener, DlgIdentificat
 			String fil = fc.getSelectedFile().getAbsolutePath();
 			dApplic.setCurrentDir(fil);
 
-			/* !!!NIC!!!String error; */
-
 			if (DxFlags.newDoc) {
 				try {
 					dApplic.getDMediator().addDxTTableDoc(fil, fil);
-				} catch (Exception e) {
-                    new DxExceptionDlg(dApplic.getJFrame(),e.toString(),e);
-					e.printStackTrace();
-                    System.exit(1);
+				} catch (DxException e) {
+                    new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
+					System.exit(1);
 				}
 			} else {
 				try {
 					dApplic.getDMediator().addDoc(fil, fil, DConst.NO_TYPE);
-				} catch (Exception e) {
-					  new DxExceptionDlg(dApplic.getJFrame(),e.toString(),e);
-						e.printStackTrace();
-	                    System.exit(1);
+				} catch (DxException e) {
+					  new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
+						 System.exit(1);
 				}
 			}
-
-			// /*!!!NIC!!!*/ if (error.length() != 0) {
-			// /*!!!NIC!!!*/ new FatalProblemDlg(dApplic.getJFrame(), error);
-			// /*!!!NIC!!!*/ System.exit(1);
-			// /*!!!NIC!!!*/ }
 			dApplic.setCurrentDir(fc.getSelectedFile().getPath());
 			if (DxFlags.newDoc) {
 				dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());

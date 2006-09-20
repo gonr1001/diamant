@@ -102,7 +102,7 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDoc(String ttName, String fileName, int type)
-			throws Exception /* !!!NIC!!! */{
+	throws DxException {
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if (currentDoc.getError().length() == 0) {
 			_documents.addElement(currentDoc);
@@ -110,9 +110,7 @@ public class DMediator extends Object {
 					currentDoc.getCurrentDModel().getTTStructure());
 			_dApplication.hideToolBar();
 		} else {
-			new DxExceptionDlg(_dApplication.getJFrame(),
-					"In DMediator.addDoc: " + currentDoc.getError());
-			System.exit(1);
+			throw new DxException(currentDoc.getError());
 		}
 		return currentDoc.getError();
 	} // end addDoc
@@ -130,22 +128,14 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTableDoc(String ttName, String fileName)
-			throws DxException /* !!!NIC!!! */{
+			throws DxException{
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
-		// if (currentDoc.getError().length() == 0) {
 		_dxDocuments.addElement(currentDoc);
-		// _dApplication.getToolBar().setToolBars(
-		// currentDoc.getCurrentDModel().getTTStructure());
 		_dApplication.hideToolBar();
-		// } else {
-		// new FatalProblemDlg(_dApplication.getJFrame(),
-		// "In DMediator.addDoc: " + currentDoc.getError());
-		// System.exit(1);
-		// }
-		// return currentDoc.getError();
+		
 		return "";
-	} // end addDoc
+	} 
 
 	/**
 	 * for new ttStructure and for open ttStructure

@@ -1,7 +1,7 @@
 package eLib.exit.dialog;
 /**
  *
- * Title: InformationDlg $Revision: 1.3 $  $Date: 2005-07-05 12:04:35 $
+ * Title: InformationDlg $Revision: 1.4 $  $Date: 2006-09-20 03:09:04 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package eLib.exit.dialog;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.4 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -47,10 +47,7 @@ public class InformationDlg {
    * <p>Clicking in the button will dispose the dialog.
    */
   public InformationDlg(String message) {
-    JOptionPane.showMessageDialog(null,
-                                  message,
-                                  INFORMATION,
-                                  JOptionPane.INFORMATION_MESSAGE);
+	  new InformationDlg(null, message,INFORMATION);
   }
 
   /**
@@ -62,10 +59,7 @@ public class InformationDlg {
    * <p>Clicking in the button will dispose the dialog.
    */
   public InformationDlg(String message, String title) {
-    JOptionPane.showMessageDialog(null,
-                                 message,
-                                 title,
-                                 JOptionPane.INFORMATION_MESSAGE);
+	  new InformationDlg(null, message,title);
   }
 
  /**
@@ -77,10 +71,7 @@ public class InformationDlg {
    * <p>Clicking in the button will dispose the dialog.
    */
   public InformationDlg(Component comp, String message) {
-    JOptionPane.showMessageDialog(comp,
-                               message,
-                               INFORMATION,
-                               JOptionPane.INFORMATION_MESSAGE);
+         new InformationDlg(comp, message,INFORMATION);
   }
 /**
   * @param comp a Component the parent of the JOptionPane

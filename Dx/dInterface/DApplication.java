@@ -416,20 +416,17 @@ public class DApplication { // implements ActionListener {
 				this.getDMediator().addDxTTableDoc(
 						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
 				_dxMenuBar.afterNewTTable();
-			} catch (Exception e) {
-				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
-				e.printStackTrace();
+			} catch (DxException e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 			}
 		} else {
-			try {/* !!!NIC!!! */
-				/* error = !!!NIC!!! */this.getDMediator().addDoc(
-						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
-						DConst.CYCLE);
+			try {
+				getDMediator().addDoc(this.getCurrentDir() + DConst.NO_NAME,
+						_fileToOpen, DConst.CYCLE);
 				_dxMenuBar.afterNewTTable();
-			} catch (Exception e) {/* !!!NIC!!! */
-				// TODO Auto-generated catch block
-				e.printStackTrace();/* !!!NIC!!! */
-			}/* !!!NIC!!! */
+			} catch (DxException e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			}
 		}
 
 	}
@@ -440,13 +437,12 @@ public class DApplication { // implements ActionListener {
 	public void newTTableExam() {
 		new NewTimeTableDlg(this, DConst.EXAM);
 		this.setCurrentDir(_fileToOpen);
-		/* !!!NIC!!!String error; */
+
 		try {
-			/* !!!NIC!!!error = */this.getDMediator().addDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
-					DConst.EXAM);
-		} catch (Exception e) {
-			/* !!!NIC!!! */
+			this.getDMediator().addDoc(this.getCurrentDir() + DConst.NO_NAME,
+					_fileToOpen, DConst.EXAM);
+		} catch (DxException e) {
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		}
 
 		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans
@@ -457,10 +453,6 @@ public class DApplication { // implements ActionListener {
 		// De plus, par convention, les valeurs positives de sortie d'une
 		// application indiquent que tout s'est BIEN passe. Il faudrait
 		// retourner une valeur negative quand un probleme majeur survient.
-		// /*!!!NIC!!!*/ if (error.length() != 0) {
-		// /*!!!NIC!!!*/ new FatalProblemDlg(this.getJFrame(), error);
-		// /*!!!NIC!!!*/ System.exit(1);
-		// /*!!!NIC!!!*/ }
 		_dxMenuBar.afterNewTTable();
 	}
 
@@ -477,8 +469,6 @@ public class DApplication { // implements ActionListener {
 				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
 				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
-				// as a complement
-				e.printStackTrace();
 				this.hideToolBar();
 			}
 		} else {
@@ -487,7 +477,7 @@ public class DApplication { // implements ActionListener {
 						DConst.NO_TYPE);
 				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
-				/* !!!NIC!!! */
+				
 			}
 		}
 		this.setCursorDefault();
@@ -506,8 +496,6 @@ public class DApplication { // implements ActionListener {
 				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
 				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
-				// as a complement
-				e.printStackTrace();
 				this.hideToolBar();
 			}
 		} else {
@@ -515,8 +503,8 @@ public class DApplication { // implements ActionListener {
 				this._dMediator.addDoc(this.getPreferences()._standardTTE,
 						DConst.NO_TYPE);
 				_dxMenuBar.afterNewTTStruc();
-			} catch (Exception e) {
-				/* !!!NIC!!! */
+			} catch (DxException e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(),e);
 			}
 		}
 		this.setCursorDefault();
@@ -537,9 +525,7 @@ public class DApplication { // implements ActionListener {
 	public void openTTStruc() {
 		this.showToolBar();
 		new OpenTTSDlg(this);
-		// this._dMediator
-		// //.addDxTTStructureDoc(this.getPreferences()._standardTTC);
-		_dxMenuBar.afterNewTTStruc();
+       _dxMenuBar.afterNewTTStruc();
 		this.afterOpenTTSruc();
 	}
 
@@ -626,14 +612,12 @@ public class DApplication { // implements ActionListener {
 				if (error.length() == 0) {
 					new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
 				} else {
-					new FatalProblemDlg(this.getJFrame(),
-							"In DApplication.doImport: " + error);
-					System.exit(1);
+					throw new DxException(error);
 				}
 				this.setCursorDefault();
 			} catch (DxException e) {
 				new DxExceptionDlg(e.getMessage(),e);
-				jD.dispose();
+			   System.exit(-1);
 			}
 
 		} else {
@@ -648,14 +632,12 @@ public class DApplication { // implements ActionListener {
 				if (error.length() == 0) {
 					new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
 				} else {
-					new FatalProblemDlg(this.getJFrame(),
-							"In DApplication.doImport: " + error);
-					System.exit(1);
+					throw new DxException(error);
 				}
 				this.setCursorDefault();
-			} catch (Exception e) {
-				new FatalProblemDlg("In DApplication.doImport: " + e.toString());
-				jD.dispose();
+			} catch (DxException e) {
+				new DxExceptionDlg(e.getMessage(),e);
+			   System.exit(-1);
 			}
 		}
 	}
