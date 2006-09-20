@@ -130,11 +130,12 @@ public class DxDeploymentManager {
 		while (itList.hasNext()) {
 			DxConfigResource sCurrentFile = itList.next();
 			// Check that File exist
-
+			System.out.println(sCurrentFile.getPath()+"\n");
 			if (!check(sCurrentFile)) {
 				// else creation of File
 				try {
 					deploy(sCurrentFile);
+					System.out.println("        deployed\n");
 				} catch (IOException e) {
 					_logger.error("Unable to deploy File "+ sCurrentFile.getClassLoaderPath());
 				}
