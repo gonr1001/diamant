@@ -166,7 +166,7 @@
 	</target>
 
 	<target name="signjar" depends="completepackage" description="Signs the jar for WebStart deployment">
-		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/sTictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
+		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
 
 	<target name="zip" depends="signjar" description="performs theZip">

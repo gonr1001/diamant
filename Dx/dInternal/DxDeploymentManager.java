@@ -40,10 +40,7 @@ public class DxDeploymentManager {
 
 	public static String deploymentTarget = System.getProperty("user.home");
 
-	// path of the file which lists the ressources to deploy
-	private static String _fileListPath = System.getProperty("user.dir")
-			+ File.separator + "dInternal" + File.separator + "dDeployment"
-			+ File.separator + "dDeploymentList";
+	private static Vector<String> _vsListFiles;
 
 	// list of ressources to deploy
 	private Vector<DxConfigResource> _vsFileNames;
@@ -54,9 +51,23 @@ public class DxDeploymentManager {
 	 * Constructor
 	 */
 	public DxDeploymentManager() {
+		
+		_vsListFiles = new Vector<String>();
+		//chargement ds vecteur
+		_vsListFiles.add("pref/pref.txt");
+		_vsListFiles.add("pref/DXcaracteristics.sig");
+		_vsListFiles.add("pref/DXfunctions.sig");
+		_vsListFiles.add("pref/logoDiamant.gif");
+		_vsListFiles.add("pref/room_function.xml");
+		_vsListFiles.add("pref/StandardTTC.xml");
+		_vsListFiles.add("pref/StandardTTE.xml");
+		_vsListFiles.add("trace/log4j.conf");
+		_vsListFiles.add("trace/log4jreex.conf");
+		_vsListFiles.add("trace/trace.log");
+		
 		try {
 			_vsFileNames = new Vector<DxConfigResource>();
-			listFile(new File(_fileListPath));
+			listFile(_vsListFiles);
 		} catch (IOException e1) {
 			_logger
 					.error("Unable to read the list of files required by Diamant's software");
@@ -72,18 +83,19 @@ public class DxDeploymentManager {
 	 * 
 	 * @return Vector<DxConfigResource> list of ressources
 	 */
-	public void listFile(File fileListPath) throws IOException {
-		// opening of file which lists all files'paths
-		BufferedReader fList = null;
-		InputStream isList = new FileInputStream(fileListPath);
-
-		fList = new BufferedReader(new InputStreamReader(isList));
+	public void listFile(Vector fileListPath) throws IOException {
+		
 		String cheminFich;
 		String parentName;
 		DxConfigResource parent = new DxConfigResource("", true);
 
 		// reading list
-		while ((cheminFich = fList.readLine()) != null) {
+		int i=0;
+		while (i<_vsListFiles.size()) {
+			
+			cheminFich = _vsListFiles.elementAt(i);
+			i++;
+			
 			StringTokenizer stCheminFich = new StringTokenizer(cheminFich, "/");
 
 			// reading of parent path
@@ -99,10 +111,6 @@ public class DxDeploymentManager {
 			_vsFileNames.add(new DxConfigResource(parent, stCheminFich
 					.nextToken(), false));
 		}
-
-		// closing list's File
-		fList.close();
-
 	}
 
 	/**
@@ -130,12 +138,10 @@ public class DxDeploymentManager {
 		while (itList.hasNext()) {
 			DxConfigResource sCurrentFile = itList.next();
 			// Check that File exist
-			System.out.println(sCurrentFile.getPath()+"\n");
 			if (!check(sCurrentFile)) {
 				// else creation of File
 				try {
 					deploy(sCurrentFile);
-					System.out.println("        deployed\n");
 				} catch (IOException e) {
 					_logger.error("Unable to deploy File "+ sCurrentFile.getClassLoaderPath());
 				}
