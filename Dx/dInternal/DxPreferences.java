@@ -26,7 +26,6 @@ import dConstants.DConst;
 import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 import eLib.exit.txt.FilterFile;

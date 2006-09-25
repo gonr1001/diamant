@@ -55,7 +55,6 @@ import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 

@@ -26,7 +26,6 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
-import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 
 public class DxReadSitedotDia implements DxSiteReader {

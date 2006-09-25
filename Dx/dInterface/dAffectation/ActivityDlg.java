@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.55 $ $Date: 2006-09-05 17:11:04 $
+ * Title: ActivityDlg $Revision: 1.56 $ $Date: 2006-09-25 13:36:26 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,8 +12,8 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.55 $
- * @author $Author: caln1901 $
+ * @version $Revision: 1.56 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInterface.dAffectation;
@@ -40,7 +40,6 @@ import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
-import dInternal.dData.dActivities.DxSetOfActivities;
 import dInternal.dData.dActivities.SetOfActivities;
 
 public class ActivityDlg extends JDialog implements ActionListener,

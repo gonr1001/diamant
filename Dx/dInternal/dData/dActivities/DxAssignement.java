@@ -41,7 +41,7 @@ public class DxAssignement extends DxResource {
     private boolean _bRoomFixed;
 
     public DxAssignement() {
-        
+        // to avoid warning 
     }
 
     public DxAssignement(String sAssignementName) {

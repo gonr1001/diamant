@@ -28,7 +28,7 @@ import dConstants.DConst;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.exception.DxException;
+
 
 public class DxReadInstructorsdotDia implements DxInstructorsReader {
  	private DataExchange _deInstructors;

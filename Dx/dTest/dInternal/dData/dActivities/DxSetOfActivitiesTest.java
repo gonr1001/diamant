@@ -8,29 +8,27 @@
  */
 package dTest.dInternal.dData.dActivities;
 
-import java.io.File;
+
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import dConstants.DConst;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxActivitySite;
 import dInternal.dData.dActivities.DxAssignement;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
-import dInternal.dData.dActivities.DxReadActivitiesSites1dot6;
 import dInternal.dData.dActivities.DxSection;
-import dInternal.dData.dActivities.DxSetOfActivities;
+
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dActivities.DxType;
 import dInternal.dData.dActivities.DxUnity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
-import eLib.exit.txt.FilterFile;
+
 
 public class DxSetOfActivitiesTest extends TestCase {
 

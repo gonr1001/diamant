@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.15 $  $Date: 2006-09-20 03:09:04 $
+ * Title: SetOfStudents $Revision: 1.16 $  $Date: 2006-09-25 13:36:28 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,8 +15,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.15 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.16 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 package dInternal.dData.dStudents;
@@ -31,7 +31,6 @@ import dInternal.DataExchange;
 import dInternal.dData.StandardCollection;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.exception.DxException;
 
 /**
  * @author syay1801

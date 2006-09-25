@@ -477,7 +477,7 @@ public class DApplication { // implements ActionListener {
 						DConst.NO_TYPE);
 				_dxMenuBar.afterNewTTStruc();
 			} catch (Exception e) {
-				
+				// to avoid warning
 			}
 		}
 		this.setCursorDefault();

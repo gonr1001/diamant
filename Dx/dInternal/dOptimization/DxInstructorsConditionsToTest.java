@@ -127,8 +127,7 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 				int perPosition = _dm.getTTStructure().getCurrentCycle()
 						.getPeriodPositionInDay(perK[0], perK[1], perK[2]);
 				if (perPosition > 0) {
-
-					if ((dayIndexAvail < matrix.length)) {
+					if (dayIndexAvail < matrix.length && dayIndexAvail >= 0) {
 						if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL) {
 							nbConf++;
 							description.add(new Long(instKey[i]));

@@ -42,7 +42,7 @@ import dInternal.dTimeTable.Sequence;
  */
 public class DxAssignAllAlg implements Algorithm {
 
-	private Vector<DResource> _placeEvent;
+	private Vector<DResource> _placedEvents;
 
 	private DModel _dm;
 	
@@ -52,7 +52,7 @@ public class DxAssignAllAlg implements Algorithm {
 	 * constructor
 	 */
 	public DxAssignAllAlg(DModel dm, DxConflictLimits dxcl) {
-		_placeEvent = new Vector<DResource>();
+		_placedEvents = new Vector<DResource>();
 		_dm = dm;
 		_dxCL = dxcl;
 	}
@@ -64,14 +64,14 @@ public class DxAssignAllAlg implements Algorithm {
 		DResource currentEvent = null;
 		Period currentPeriod = null;
 		Vector vPeriods;
-		Vector vNotAssignedEvents = getEvents();
+		Vector vNotYetAssignedEvents = getEvents();
 		int currentDuration = 0;
 		_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
 
 		_dm.getConditionsTest().extractPreference();
 		int[] nbConf;
-		for (int i = 0; i < vNotAssignedEvents.size(); i++) {
-			currentEvent = (DResource) vNotAssignedEvents.get(i);
+		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {
+			currentEvent = (DResource) vNotYetAssignedEvents.get(i);
 			boolean isNumberOfConflictsAcceptable = false;
 			
 			/*
@@ -106,7 +106,7 @@ public class DxAssignAllAlg implements Algorithm {
 								.setAssigned(true);
 						_dm.getConditionsTest().addEventInTTs(
 								_dm.getTTStructure(), currentEvent, true);
-						_placeEvent.add(currentEvent);
+						_placedEvents.add(currentEvent);
 						vPeriods.removeAllElements();
 					}// else{// end if if(numberOfConflicts==0)
 				}// end while(!periodList.isEmpty())
@@ -115,7 +115,7 @@ public class DxAssignAllAlg implements Algorithm {
 		}// end for(int i=0; i< vect.size(); i++)
 		// _dm.getConditionsTest().emptyAvoidPriorityTable();
 		_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
-				_placeEvent);
+				_placedEvents);
 		_dm.changeInDModel(null);
 	}
 
