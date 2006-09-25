@@ -33,11 +33,20 @@ public class DxReadSitedotDia implements DxSiteReader {
     private DataExchange _deSites;
 
     private int _nDays, _nPeriods;
-
+    /**
+     * Used to report line where error was found
+     */ 
+   	private long currentLine=0;
     public DxReadSitedotDia(DataExchange de, int nDays, int nPeriods) {
         _deSites = de;
         _nDays = nDays;
         _nPeriods = nPeriods;
+    }
+    public DxReadSitedotDia(DataExchange de, int nDays, int nPeriods,long line) {
+    	_deSites = de;
+        _nDays = nDays;
+        _nPeriods = nPeriods;
+    	currentLine=line;
     }
 
     public DxSetOfSites readSetOfSites() throws DxException{
@@ -48,7 +57,6 @@ public class DxReadSitedotDia implements DxSiteReader {
         String sFileToken;
         String sLineToken;
 
-        int nCurrentLine = 0;
         int nCurrentLineState = 0;
 
         // Initialized to avoid further warnings
@@ -95,7 +103,7 @@ public class DxReadSitedotDia implements DxSiteReader {
                         try {
                             nRoomCapacity = new Integer(sLineToken).intValue();
                         } catch (NumberFormatException e) {
-                        	 throw new DxException(DConst.ROOM_TEXT2+nCurrentLine);
+                        	 throw new DxException(DConst.ROOM_TEXT2+currentLine);
                         }
                         break;
 
@@ -104,13 +112,13 @@ public class DxReadSitedotDia implements DxSiteReader {
                         try {
                             nRoomFunction = new Integer(sLineToken).intValue();
                         } catch (NumberFormatException e) {
-                        	throw new DxException(DConst.ROOM_TEXT3+nCurrentLine);
+                        	throw new DxException(DConst.ROOM_TEXT3+currentLine);
                         }
                         break;
 
                     // Room characteristics list
                     case 3:
-                        viCharacteristics = parseCharacteristics(sLineToken,nCurrentLine);
+                        viCharacteristics = parseCharacteristics(sLineToken,currentLine);
                         break;
 
                     case 4:
@@ -128,7 +136,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 
                     // Room availability
                     case 7:
-                        dxaAva = parseAvailability(sLineToken,nCurrentLine);
+                        dxaAva = parseAvailability(sLineToken,currentLine);
                         break;
 
                     }
@@ -143,14 +151,14 @@ public class DxReadSitedotDia implements DxSiteReader {
                 dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
             } else {
             	  //if (stLineTokenizer.countTokens() == DConst.ROOM_DIA_TOKEN_COUNT)
-            	 throw new DxException(DConst.ROOM_TEXT7+nCurrentLine);
+            	 throw new DxException(DConst.ROOM_TEXT7+currentLine);
             }
-            nCurrentLine++;
+            currentLine++;
         }
         return dxsosBuild;
     }
 
-    private Vector<Integer> parseCharacteristics (String token, int nCurrentLine) {
+    private Vector<Integer> parseCharacteristics (String token, long currentLine2) {
 		Vector<Integer> viTemp = new Vector<Integer>();
 
 		StringTokenizer stChar = new StringTokenizer(token,
@@ -160,7 +168,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 			try {
 				viTemp.add(new Integer(stChar.nextToken()));
 			} catch (NumberFormatException e) {
-				new DxException(DConst.ROOM_TEXT4 + nCurrentLine);
+				new DxException(DConst.ROOM_TEXT4 + currentLine2);
 			}
 		}
 
@@ -168,7 +176,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 	}
 
     private DxAvailability parseAvailability(String sAvailabilities,
-			int nCurrentLine) throws DxException {
+			long nCurrentLine) throws DxException {
 		// extract a line that gives availability of a day
 
 		DxAvailability dxaRet = new DxAvailability();

@@ -34,13 +34,22 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
  	private DataExchange _deInstructors;
 
 		private int _nDays, _nPeriods;
+ /**
+  * Used to report line where error was found
+  */ 
+		private long currentLine=0;
 
 		public DxReadInstructorsdotDia(DataExchange de, int nDays, int nPeriods) {
 			_deInstructors = de;
 			_nDays = nDays;
 			_nPeriods = nPeriods;
 		}
-
+		public DxReadInstructorsdotDia(DataExchange de, int nDays, int nPeriods,long line) {
+			_deInstructors = de;
+			_nDays = nDays;
+			_nPeriods = nPeriods;
+			currentLine=line;
+		}
 		public DxSetOfInstructors readSetOfInstructors() throws DxException {
 			StringTokenizer st = new StringTokenizer(_deInstructors.getContents(),
 					DConst.CR_LF);
@@ -50,8 +59,6 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 			int stateDispo = 1;
 			int numberOfInstructors = 0;
 			int countInstructor = 0;
-			// Used to report line where error was found
-			int currentLine =4;
 
 			String instID = "";
 			DxSetOfInstructors dxsoiInst = new DxSetOfInstructors();
@@ -71,9 +78,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 						numberOfInstructors = (new Integer(token.trim()))
 								.intValue();
 					} catch (NumberFormatException exc) {
-						// _error = DConst.INST_TEXT1 + "\n" + DConst.INST_TEXT6;
-						throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
-								+ exc.getMessage());
+						throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS+exc.getMessage());
 					}
 					state = 1;
 					break;
@@ -83,15 +88,16 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 					// delimiters
 					// Thus, if string is empty, 2 delimiters will be skipped and
 					// the empty string wont appear
-					if (token.length() == 0) {
+					instID = token;
+					if (token.trim().length()<=DConst.MINIMUN_NAME) {
 
-						throw new DxException("Line should contain name of the instructor !");
+						throw new DxException(DConst.NO_NAME_OF_THE_INSTRUCTOR+ currentLine);
 					}
 					state = 2;
 					stateDispo = 1;
 					countInstructor++;
 
-					instID = token;
+					
 					dxaAvaTemp = new DxAvailability();
 					break;
 
@@ -101,11 +107,8 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 							DConst.AVAILABILITY_SEPARATOR, 0);
 					StringTokenizer tokenDispo = new StringTokenizer(line);
 
-					// Verifies that number of period per day was correctly
-					// indicated
+					// Verifies that number of period per day was correctly indicated
 					if (tokenDispo.countTokens() != _nPeriods) {
-						// _error = DConst.INST_TEXT3 + line + DConst.INST_TEXT5
-						// + "\n" + DConst.INST_TEXT6;
 						throw new DxException(DConst.INVALID_NUMBER_OF_PERIODS_AT
 										+ currentLine);
 					}

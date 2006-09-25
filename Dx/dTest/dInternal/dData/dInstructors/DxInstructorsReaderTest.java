@@ -1,20 +1,19 @@
 package dTest.dInternal.dData.dInstructors;
 
 import java.io.File;
+import java.io.IOException;
 
-import dConstants.DConst;
-import dInternal.DataExchange;
-import dInternal.DxPreferences;
-import dInternal.dData.DLoadData;
-import dInternal.dData.dInstructors.DxInstructorsReader;
-import dInternal.dData.dInstructors.DxReadInstructors1dot5;
-import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
-import dInternal.dData.dInstructors.DxSetOfInstructors;
-import eLib.exit.exception.DxException;
-import eLib.exit.txt.FilterFile;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
+import dInternal.DataExchange;
+import dInternal.dData.DLoadData;
+import dInternal.dData.dInstructors.DxInstructorsReader;
+import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
+import dInternal.dData.dInstructors.DxSetOfInstructors;
+import eLib.exit.exception.DxException;
+import eLib.exit.txt.ByteInputFile;
 
 public class DxInstructorsReaderTest extends TestCase {
 
@@ -29,7 +28,7 @@ public class DxInstructorsReaderTest extends TestCase {
 	} // end suite
 
 	/**
-	 * test_getSetOfInstructors, verifies v1.5 analyser Should fail because of
+	 * test_getSetOfInstructors, Analyser Should fail because of
 	 * invalid instructor count format
 	 */
 	public void test_getSetOfInstructors() {
@@ -43,16 +42,14 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
+			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test_getSetOfInstructors: Should have failed before",
 					true);
-
-			// To avoid warning
-			dxsoi.equals(dxsoi);
-		} catch (NumberFormatException e) {
-			assertEquals("test_1_getSetOfInstructors: assertEquals",DConst.INVALID_NUMBER_OF_INSTRUCTORS, e.getMessage());
-		} catch (DxException e) {
-		}
+     } catch (DxException e) {
+		assertEquals("test_1_getSetOfInstructors: assertEquals",DConst.INVALID_NUMBER_OF_INSTRUCTORS+"For input string: \"1k\"", e.getMessage());
+			
+	}
 
 	}
 
@@ -60,7 +57,7 @@ public class DxInstructorsReaderTest extends TestCase {
 	 * test1_getSetOfInstructors, verifies v1.5 analyser invalid instructor name
 	 */
 	public void test1_getSetOfInstructors() {
-		String tokens = "    2" + "\r\n" + "" + "\r\n"
+		String tokens = "    2" + "\r\n" + " " + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -72,6 +69,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DLoadData ld = new DLoadData();
+	
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
@@ -79,12 +77,9 @@ public class DxInstructorsReaderTest extends TestCase {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test1_getSetOfInstructors: Should have failed before",
 					true);
-
-			// To avoid warning
-			//dxsoi.equals(dxsoi);
-		} catch (DxException e) {
+      } catch (DxException e) {
 			assertEquals("test1_1_getSetOfInstructors: assertEquals",
-					DConst.INVALID_NUMBER_OF_PERIODS_AT+"11", e
+					DConst.NO_NAME_OF_THE_INSTRUCTOR+"6", e
 							.getMessage());
 		}
 	}
@@ -114,8 +109,6 @@ public class DxInstructorsReaderTest extends TestCase {
 			assertFalse("test2_getSetOfInstructors: Should have failed before",
 					true);
 
-			// To avoid warning
-			//dxsoi.equals(dxsoi);
 		} catch (DxException e) {
 			assertEquals("test2_1_getSetOfInstructors: assertEquals",
 					 DConst.INVALID_NUMBER_OF_INSTRUCTORS, e.getMessage());
@@ -142,12 +135,11 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
+			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test3_getSetOfInstructors: Shoudd have failed before",
 					true);
 
-			// To avoid warning
-			dxsoi.equals(dxsoi);
 		} catch (Exception e) {
 			assertEquals("test3_1_getSetOfInstructors: assertEquals",
 				 DConst.INVALID_NUMBER_OF_PERIODS_AT+"15", e.getMessage());
@@ -175,12 +167,10 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
+			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			assertFalse("test4_getSetOfInstructors: Shoudd have failed before",
 					true);
-
-			// To avoid warning
-			dxsoi.equals(dxsoi);
 		} catch (Exception e) {
 			assertEquals("test4_1_getSetOfInstructors: assertEquals",
 					DConst.INVALID_NUMBER_OF_PERIODS_AT+"7", e.getMessage());

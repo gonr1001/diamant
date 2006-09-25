@@ -647,5 +647,11 @@ public static final String IMPORT_STUDENTS = "IMPORT_STUDENTS: ";
 public static final int SAVE_SEPARATOR_COUNT = 6;
 
 public static final String PARTS_IN_DIA_SEPARATED_BY = "Wrong number of parts in .dia separated by ";
+
+public static final int MINIMUN_NAME = 3;
+
+public static final String NO_NAME_OF_THE_INSTRUCTOR = "No name of the instructor at line:";
+
+public static final String WRONG_TIME_TABLE_STRUCTURE = "Wrong time table structure!";
   
 }

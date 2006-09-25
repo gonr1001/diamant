@@ -1,7 +1,7 @@
 package eLib.exit.txt;
 /**
  *
- * Title: ByteInputFile $Revision: 1.2 $  $Date: 2004-09-10 13:31:14 $
+ * Title: ByteInputFile $Revision: 1.3 $  $Date: 2006-09-25 14:41:23 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package eLib.exit.txt;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.2 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.3 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -24,9 +24,12 @@ package eLib.exit.txt;
  */
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.StringReader;
 
 import eLib.exit.exception.IOFileException;
 
@@ -112,6 +115,30 @@ public class ByteInputFile {
     }// end catch
     return b;
   } // end readFileAsBytes()
+ 
+  /**
+   * Count lines, words and characters in given input stream
+   * @param string
+   * @return number of lines
+   */
+  
+	public static long count(String string) {
+		long numLines = 0;
+		String line;
+		BufferedReader in = new BufferedReader(new StringReader(string));
+		try {
+			do {
+				line = in.readLine();
+
+				if (line != null) {
+					numLines++;
+				}
+			} while (line != null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return numLines;
+	}
 
  /**
    *
