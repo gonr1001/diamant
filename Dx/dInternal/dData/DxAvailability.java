@@ -35,6 +35,8 @@ import dConstants.DConst;
  * <p>
  * 
  */
+
+//TODO: int[][] should be removed
 public class DxAvailability {
 
 	private Vector<Vector<Integer>> _vDays;
@@ -185,10 +187,6 @@ public class DxAvailability {
 		return _vDays.size();
 	}
 
-	private boolean isValidDay(int nDayIndex) {
-		return ((nDayIndex >= 0) && (nDayIndex < _vDays.size()));
-	}
-
 	/**
 	 * Return sites where instructor is already assigned in the given period
 	 * 
@@ -209,26 +207,6 @@ public class DxAvailability {
 						v.add(site);
 		} // end for (int i = 0; i< sites.size(); i++)
 		return v;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	private String[][] getAssignAvailabilityTable(Vector vect) {
-		String jour = (String) vect.get(0);
-		StringTokenizer st = new StringTokenizer(jour);
-		String[][] a = new String[vect.size()][st.countTokens()];
-		int nbOfTokens = st.countTokens();
-		for (int i = 0; i < vect.size(); i++) {
-			jour = (String) vect.get(i);
-			st = new StringTokenizer(jour);
-			nbOfTokens = st.countTokens();
-			for (int j = 0; j < nbOfTokens; j++) {
-				a[i][j] = st.nextToken();
-			} // end for j
-		} // end for i
-		return a;
 	}
 
 	public String toWrite(String sDaySeparator, String sPeriodSeparator) {
@@ -283,5 +261,29 @@ public class DxAvailability {
 		System.out
 				.println("DxAvailability.setAvailabilityOfAPeriod must be implemented");
 
+	}
+	
+	private boolean isValidDay(int nDayIndex) {
+		return ((nDayIndex >= 0) && (nDayIndex < _vDays.size()));
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String[][] getAssignAvailabilityTable(Vector vect) {
+		String jour = (String) vect.get(0);
+		StringTokenizer st = new StringTokenizer(jour);
+		String[][] a = new String[vect.size()][st.countTokens()];
+		int nbOfTokens = st.countTokens();
+		for (int i = 0; i < vect.size(); i++) {
+			jour = (String) vect.get(i);
+			st = new StringTokenizer(jour);
+			nbOfTokens = st.countTokens();
+			for (int j = 0; j < nbOfTokens; j++) {
+				a[i][j] = st.nextToken();
+			} // end for j
+		} // end for i
+		return a;
 	}
 }
