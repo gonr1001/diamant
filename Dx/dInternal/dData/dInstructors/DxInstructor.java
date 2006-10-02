@@ -33,7 +33,8 @@ import dInternal.dData.DxResource;
  * 
  */
 public class DxInstructor extends DxResource implements AvailableResource {
-    private static long lKey = 1;
+	/** Instructor key **/ 
+	private static long lKey = 1;
 
     private DxAvailability _availability;
 
@@ -44,8 +45,6 @@ public class DxInstructor extends DxResource implements AvailableResource {
      *            Name of the new instructor
      * @param a
      *            Availability of the new instructor
-     * @param lKey
-     *            Instructor key
      */
     public DxInstructor(String sName, DxAvailability a) {
         super(lKey++, sName);

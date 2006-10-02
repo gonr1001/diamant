@@ -124,11 +124,11 @@ public class DxSetOfRooms extends DxSetOfResources {
     }
 
     public DxRoom[] getRoomsSortedByKey() {
-        return this.getKeySortedVector().toArray(new DxRoom[this.size()]);
+        return this.getKeySortedRessources().toArray(new DxRoom[this.size()]);
     }
 
     public DxRoom[] getRoomsSortedByName() {
-        return this.getNameSortedVector().toArray(new DxRoom[this.size()]);
+        return this.getNameSortedRessources().toArray(new DxRoom[this.size()]);
     }
     
     public void merge(DxResource dxrModify, DxResource dxrNew) {

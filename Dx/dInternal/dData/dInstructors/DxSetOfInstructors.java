@@ -132,15 +132,15 @@ public class DxSetOfInstructors extends DxSetOfResources {
 		return null;
 	}
 
-	// TODO: Should be removed from tests
-	public DxInstructor[] getInstructorsSortedByKey() {
-		return this.getKeySortedVector().toArray(new DxInstructor[this.size()]);
-	}
-
-	public DxInstructor[] getInstructorsSortedByName() {
-		return this.getNameSortedVector()
-				.toArray(new DxInstructor[this.size()]);
-	}
+//	// TODO: Should be removed from tests
+//	public DxInstructor[] getInstructorsSortedByKey() {
+//		return this.getKeySortedVector().toArray(new DxInstructor[this.size()]);
+//	}
+//
+//	public DxInstructor[] getInstructorsSortedByName() {
+//		return this.getNameSortedVector()
+//				.toArray(new DxInstructor[this.size()]);
+//	}
 
 	protected void merge(DxResource dxrModify, DxResource dxrNew) {
 		dxrModify.getKey(); // To avoid warnings

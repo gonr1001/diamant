@@ -346,11 +346,11 @@ public class DxSetOfSites extends DxSetOfResources {
     }
     
     public DxSite[] getSitesSortedByKey(){
-        return this.getKeySortedVector().toArray(new DxSite[this.size()]);
+        return this.getKeySortedRessources().toArray(new DxSite[this.size()]);
     }
     
     public DxSite[] getSitesSortedByName(){
-        return this.getNameSortedVector().toArray(new DxSite[this.size()]);
+        return this.getNameSortedRessources().toArray(new DxSite[this.size()]);
     }
 
 //    public boolean isEquals(DxSetOfSites dxsosSetOfSites) {

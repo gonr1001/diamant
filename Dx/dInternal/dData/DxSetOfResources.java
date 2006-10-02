@@ -216,12 +216,12 @@ public abstract class DxSetOfResources implements Iterable {
 	// return _vResourceSortedByKey.toArray(new DxResource[this.size()]);
 	// }
 
-	protected final Vector<DxResource> getNameSortedVector() {
+	public final Vector<DxResource> getNameSortedRessources() {
 		sort();
 		return _vResourceSortedByName;
 	}
 
-	protected final Vector<DxResource> getKeySortedVector() {
+	public  final Vector<DxResource> getKeySortedRessources() {
 		sort();
 		return _vResourceSortedByKey;
 	}

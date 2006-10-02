@@ -203,11 +203,11 @@ public class DxSetOfCategories extends DxSetOfResources {
     }
     
     public DxCategory[] getCatsSortedByKey(){
-        return this.getKeySortedVector().toArray(new DxCategory[this.size()]);
+        return this.getKeySortedRessources().toArray(new DxCategory[this.size()]);
     }
     
     public DxCategory[] getCatsSortedByName(){
-        return this.getNameSortedVector().toArray(new DxCategory[this.size()]);
+        return this.getNameSortedRessources().toArray(new DxCategory[this.size()]);
     }
     
     public void merge(DxResource dxrModify, DxResource dxrNew) {
