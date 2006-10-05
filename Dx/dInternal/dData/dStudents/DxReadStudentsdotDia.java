@@ -20,14 +20,8 @@
 
 package dInternal.dData.dStudents;
 
-import eLib.exit.exception.DxException;
-
-import java.util.StringTokenizer;
-
-import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.dData.DxAvailability;
-import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.exception.DxException;
 
 
 public class DxReadStudentsdotDia implements DxStudentsReader {

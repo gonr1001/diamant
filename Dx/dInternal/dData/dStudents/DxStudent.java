@@ -20,7 +20,6 @@
 
 package dInternal.dData.dStudents;
 
-import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 
 /**

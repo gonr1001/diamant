@@ -19,12 +19,7 @@
  */
 package dInternal.dData.dStudents;
 
-import java.util.StringTokenizer;
-
-import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.dData.DxAvailability;
-import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.exception.DxException;
 
 public class DxReadStudents1dot5 implements DxStudentsReader {

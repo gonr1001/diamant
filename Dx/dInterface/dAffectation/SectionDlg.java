@@ -119,7 +119,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 
 	private Vector _assignedVectors[];
 
-	private Vector _sortVector;
+	private Vector <String> _sortVector;
 
 	/**
 	 * Constructor
@@ -798,7 +798,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		return s;
 	}//end method
 
-	private Vector buildSortVector() {
+	private Vector <String> buildSortVector() {
 		Vector <String> v = new Vector<String>();
 		v.add(DConst.SORT_BY_NAME);
 		v.add(DConst.SORT_BY_MATRICUL);

@@ -1,7 +1,6 @@
 package dTest.dInternal.dData.dInstructors;
 
 import java.io.File;
-import java.io.IOException;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -13,7 +12,7 @@ import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import eLib.exit.exception.DxException;
-import eLib.exit.txt.ByteInputFile;
+
 
 public class DxInstructorsReaderTest extends TestCase {
 
@@ -57,7 +56,7 @@ public class DxInstructorsReaderTest extends TestCase {
 	 * test1_getSetOfInstructors, verifies v1.5 analyser invalid instructor name
 	 */
 	public void test1_getSetOfInstructors() {
-		String tokens = "    2" + "\r\n" + " " + "\r\n"
+		String tokens = "    2" + "\r\n"  + " " + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -68,7 +67,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData();
+		DLoadData ld = new DLoadData(); 
 	
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);

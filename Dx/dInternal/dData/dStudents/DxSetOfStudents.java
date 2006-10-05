@@ -21,9 +21,6 @@
 package dInternal.dData.dStudents;
 
 
-import java.util.Iterator;
-
-import dConstants.DConst;
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 
