@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2006-10-11 18:44:07 $
+* Title: SetOfSitesTest $Revision $  $Date: 2006-10-11 18:58:20 $
 * Description: 	SetOfSitesTestt is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -49,7 +49,7 @@ public class DxSiteReaderTest  extends TestCase{
  public void test2_readSetOfSites(){
 	 String tokens = "Diamant1.6"+"\r\n"+
      "C1-2018;10;212;11;SHE;CAT 1;Matériaux composites;" + 
-		"1 1 1 1 1 1 1 x 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," + // bad availability
+		"1 1 1 1 1 1 1 x 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," + // x bad availability
 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
 		"1 1 1 1 1 1 1 1 1 1 1 1;"+"\r\n"+
 		"C1-3007;56;620;11,14;SHE;CAT 1;Avec console multi-média;" +

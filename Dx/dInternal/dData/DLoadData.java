@@ -1366,8 +1366,11 @@ public SetOfActivitiesSites extractActivities(
 	public DxSetOfSites extractDxRooms()throws DxException {
 		DataExchange de = buildDataExchange(_roomsFileName);
 		DxSiteReader dxsrReader;
+		TTStructure tts = _dm.getTTStructure();
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-			dxsrReader = new DxReadSite1dot6(de);
+			dxsrReader = new DxReadSitedotDia(de, tts
+					.getNumberOfActiveDays(), tts.getCurrentCycle()
+					.getMaxNumberOfPeriodsADay());
 		} else {
 			dxsrReader = new DxReadSite1dot5(de);
 		}
