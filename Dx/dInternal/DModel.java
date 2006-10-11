@@ -17,6 +17,7 @@
  */
 package dInternal;
 
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -375,7 +376,6 @@ public class DModel extends Observable {
 	 * @throws Exception
 	 */
 
-	// XXXX Pascal: Magic number haven
 	public String loadTimeTable(String fileName, String currentDir){
 
 		DLoadData loadD = new DLoadData(this);
@@ -385,10 +385,15 @@ public class DModel extends Observable {
 		}
 		catch (FileNotFoundException fnfe)
 		{ // alert the user that the specified file does not exist
-			new DxExceptionDlg(fnfe.getMessage());
+			new DxExceptionDlg(fnfe.getMessage(),fnfe);
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(),e);
+		// TODO hara2602
+		// Use finally to reset cursor to DEFAULT.
+		}finally {
+			_dDocument.getDMediator().getDApplication().setCursorDefault();
 		}
+
 
 		if (theTT.size() != 0) {
 			setVersion((String) theTT.get(0));

@@ -78,7 +78,7 @@ public class DxInstructorsReaderTest extends TestCase {
 					true);
       } catch (DxException e) {
 			assertEquals("test1_1_getSetOfInstructors: assertEquals",
-					DConst.NO_NAME_OF_THE_INSTRUCTOR+"6", e
+					DConst.INVALID_NAME_OF_THE_INSTRUCTOR+"2", e
 							.getMessage());
 		}
 	}
@@ -115,7 +115,7 @@ public class DxInstructorsReaderTest extends TestCase {
 	}
 
 	/**
-	 * test2_getSetOfInstructors, verifies v1.5 analyser Should fail because of
+	 * test3_getSetOfInstructors, verifies v1.5 analyser Should fail because of
 	 * invalid number of periods in second instructor, 3rd day
 	 */
 	public void test3_getSetOfInstructors() {
@@ -141,12 +141,12 @@ public class DxInstructorsReaderTest extends TestCase {
 
 		} catch (Exception e) {
 			assertEquals("test3_1_getSetOfInstructors: assertEquals",
-				 DConst.INVALID_NUMBER_OF_PERIODS_AT+"15", e.getMessage());
+					DConst.INVALID_AVAILABILITY_AT+"11", e.getMessage());
 		}
 	}
 
 	/**
-	 * test2_getSetOfInstructors, verifies v1.5 analyser Make sure analyser
+	 * test4_getSetOfInstructors, verifies v1.5 analyser Make sure analyser
 	 * verify nature of period availability. 3 is an invalid period availability
 	 * in v1.5
 	 */
@@ -172,14 +172,12 @@ public class DxInstructorsReaderTest extends TestCase {
 					true);
 		} catch (Exception e) {
 			assertEquals("test4_1_getSetOfInstructors: assertEquals",
-					DConst.INVALID_NUMBER_OF_PERIODS_AT+"7", e.getMessage());
+					DConst.INVALID_AVAILABILITY_AT+"3", e.getMessage());
 		}
 	}
 
 	/**
-	 * test2_getSetOfInstructors, verifies v1.5 builder Make sure analyser
-	 * verify nature of period availability. 3 is an invalid period availability
-	 * in v1.5
+	 * test5_getSetOfInstructors
 	 */
 	public void test5_getSetOfInstructors() {
 		String tokens = "    2" + "\r\n" + "JAC" + "\r\n"
@@ -209,7 +207,10 @@ public class DxInstructorsReaderTest extends TestCase {
 					+ e.getMessage(), true);
 		}
 	}
-
+/**
+ * 
+ *
+ */
 	public void test6_getSetOfInstructors() {
 		DxSetOfInstructors dxsoi = null;
 		String path = "." + File.separator + "dataTest" + File.separator

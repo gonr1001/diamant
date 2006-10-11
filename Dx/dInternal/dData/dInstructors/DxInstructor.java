@@ -76,6 +76,7 @@ public class DxInstructor extends DxResource implements AvailableResource {
     public boolean isEqual(DxResource dxrOther) {
         DxInstructor dxiOther = null;
         try {
+        	
             dxiOther = (DxInstructor) dxrOther;
         } catch (ClassCastException e) {
             // Message intended for programmers, application

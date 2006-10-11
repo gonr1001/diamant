@@ -23,6 +23,8 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.exception.DxException;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -266,7 +268,44 @@ public class DxAvailability {
 	private boolean isValidDay(int nDayIndex) {
 		return ((nDayIndex >= 0) && (nDayIndex < _vDays.size()));
 	}
-	
+//	 private boolean isValidDayAvailability(String sDispo) {
+//	        return (!sDispo.equalsIgnoreCase("1"))
+//	                && (!sDispo.equalsIgnoreCase("5"))
+//	                && (!sDispo.equalsIgnoreCase("2"));
+//	    }
+//	    public void parseAvailability(String sAvailabilities,
+//				 long currentLine) throws DxException {
+//			// extract a line that gives availability of a day
+//
+//			StringTokenizer stDays = new StringTokenizer(sAvailabilities,
+//					DConst.AVAILABILITY_DAY_SEPARATOR_ROOM);
+//			String token=null;
+//			DxAvailability dxaAvaTemp = new DxAvailability();
+//			for (int i = 0; stDays.hasMoreElements() && i < _nDays; i++) {
+//				 token = stDays.nextToken();
+//				currentLine++;
+//				// extract a line that gives availability of a day
+//				String line = DXToolsMethods.getToken(token,
+//						DConst.AVAILABILITY_SEPARATOR, 0);
+//				StringTokenizer tokenDispo = new StringTokenizer(line);
+//				// Verifies that number of period per day was correctly
+//				// indicated
+//				if (tokenDispo.countTokens() == _nPeriods) {
+//					// Verifies that every availability element is valid
+//					while (tokenDispo.hasMoreElements()) {
+//						String dispo = tokenDispo.nextToken();
+//						if (!isValidDayAvailability(dispo)) {
+//							throw new DxException(
+//									DConst.INVALID_AVAILABILITY_AT
+//											+ currentLine);
+//						}
+//					}
+//					// After line is validated, we add it to the availability
+//					dxaAvaTemp.addDayAvailability(line);
+//				} else
+//					throw new DxException(DConst.INVALID_AVAILABILITY_AT+ currentLine);
+//			}// end for(int i=1;
+//		}
 	/**
 	 * 
 	 * @return

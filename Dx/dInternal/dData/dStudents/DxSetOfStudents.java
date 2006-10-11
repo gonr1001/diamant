@@ -101,7 +101,6 @@ public class DxSetOfStudents extends DxSetOfResources {
 
 
 	protected void merge(DxResource dxrModify, DxResource dxrNew) {
-		
 		// If an Student already exist, we want to keep courses as
 		// they might have been modified
 	}

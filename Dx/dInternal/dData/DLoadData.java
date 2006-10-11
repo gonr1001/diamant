@@ -447,7 +447,7 @@ public SetOfActivitiesSites extractActivities(
 			tts.loadTTSFromFile(inDiaTTSFileName);
 			diaData.add(tts);
 			linePosition++; // for separator =========================
-			if (tts.getError().length() == 0) {
+	//		if (tts.getError().length() == 0) {
 				// extract SetOfInstructor
 				inDiaFileInstructors=project.nextToken().trim();
 				de = buildDataExchange(inDiaFileInstructors.getBytes());
@@ -505,10 +505,10 @@ public SetOfActivitiesSites extractActivities(
 					studentsList.buildSetOfResources(de, 0);
 				}
 				diaData.add(studentsList);
-			}// end if(tts.getError().length()==0)
-			else {
-				throw new DxException(DConst.WRONG_TIME_TABLE_STRUCTURE);
-			}
+//			}// end if(tts.getError().length()==0)
+//			else {
+//				throw new DxException(DConst.WRONG_TIME_TABLE_STRUCTURE);
+//			}
 
 		} else {	
 			throw new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY+DConst.CR_LF+DConst.SAVE_SEPARATOR);

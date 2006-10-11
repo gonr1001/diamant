@@ -635,8 +635,7 @@ public class DConst {
   public static final String DEFAULT_MIX_ALGO = "8";
 
 public static final String INVALID_NUMBER_OF_INSTRUCTORS = "Availability:Invalid number of instructors ";
-public static final String INVALID_NUMBER_OF_PERIODS_AT = "Availability: Invalid number of period per day at Line ";
-public static final String INVALID_NUMBER_OF_DAYS_LINE ="Availability: Invalid number of days at Line ";
+public static final String INVALID_AVAILABILITY_AT = "Invalid Availability  at line:";
 
 public static final String INVALID_FILE_FILTER = "Invalid filter file !";
 
@@ -648,10 +647,12 @@ public static final int SAVE_SEPARATOR_COUNT = 6;
 
 public static final String PARTS_IN_DIA_SEPARATED_BY = "Wrong number of parts in .dia separated by ";
 
-public static final int MINIMUN_NAME = 3;
+public static final int MINIMUN_NAME = 1;
 
-public static final String NO_NAME_OF_THE_INSTRUCTOR = "No name of the instructor at line:";
+public static final String INVALID_NAME_OF_THE_INSTRUCTOR = "Name of instructor should begin by a Letter at line:";
 
 public static final String WRONG_TIME_TABLE_STRUCTURE = "Wrong time table structure!";
+
+
   
 }

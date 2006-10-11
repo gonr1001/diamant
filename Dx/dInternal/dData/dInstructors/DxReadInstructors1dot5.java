@@ -83,7 +83,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				// Verifies that number of period per day was correctly
 				// indicated
 				if (tokenDispo.countTokens() != _nPeriods) {
-				        throw new DxException(DConst.INVALID_NUMBER_OF_PERIODS_AT
+				        throw new DxException(DConst.INVALID_AVAILABILITY_AT
 									+ currentLine);
 				}
 
@@ -91,7 +91,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				while (tokenDispo.hasMoreElements()) {
 					String dispo = tokenDispo.nextToken();
 					if (isValidDayAvailability(dispo)) {
-						throw new DxException(DConst.INVALID_NUMBER_OF_PERIODS_AT
+						throw new DxException(DConst.INVALID_AVAILABILITY_AT
 										+ currentLine);
 					}
 				}
