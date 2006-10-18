@@ -18,7 +18,6 @@ package dInternal.dData;
 
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 
 /**
@@ -338,9 +337,9 @@ public abstract class DxSetOfResources implements Iterable {
 	 */
 	private void sort() {
 		if (!_bSorted) {
-			Collections.sort((List<DxResource>) _vResourceSortedByName,
+			Collections.sort( _vResourceSortedByName,
 					DxResource.NameComparator);
-			Collections.sort((List<DxResource>) _vResourceSortedByKey,
+			Collections.sort( _vResourceSortedByKey,
 					DxResource.KeyComparator);
 		}
 		_bSorted = true;
