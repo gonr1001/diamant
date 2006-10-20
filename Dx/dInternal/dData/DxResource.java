@@ -34,7 +34,7 @@ import java.util.Comparator;
 public class DxResource {
 
 	/**
-	 * DxReource has no setter methods since a DxResource is contained in a
+	 * DxResource has no setter methods since a DxResource is contained in a
 	 * DxSetOfResource. DxSetOfResource behavior is correct only if key and name
 	 * are constant (because of sorts). If DxResource is changed without
 	 * DxSetOfResource knowing, problems can occur.
