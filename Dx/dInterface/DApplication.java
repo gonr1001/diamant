@@ -80,6 +80,7 @@ import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
 
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -149,6 +150,11 @@ public class DApplication { // implements ActionListener {
 	}
 
 	public static DApplication getInstance() {
+		if (_instance == null) {
+
+			_instance = new DApplication();
+		}
+
 		return _instance;
 	}
 
@@ -165,10 +171,10 @@ public class DApplication { // implements ActionListener {
 
 		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		_dMediator = new DMediator(this);
-		_currentDir = System.getProperty("user.home");
+		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
 		/* Icone de l'application */
-		ImageIcon iconeDiamant = new ImageIcon(_currentDir + File.separator
+		ImageIcon iconeDiamant = new ImageIcon(System.getProperty("user.home")+ File.separator
 				+ "pref" + File.separator + "logoDiamant.gif");
 		_jFrame.setIconImage(iconeDiamant.getImage());
 		setLAF(_preferences._lookAndFeel);
@@ -390,10 +396,12 @@ public class DApplication { // implements ActionListener {
 	 */
 
 	public void setCursorWait() {
+		if(_jFrame!=null)
 		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	}
 
 	public void setCursorDefault() {
+		if(_jFrame!=null)
 		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 

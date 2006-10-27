@@ -27,6 +27,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dDeveloper.DxFlags;
+import dInterface.DApplication;
 import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInternal.dData.DLoadData;
@@ -391,7 +392,7 @@ public class DModel extends Observable {
 		// TODO hara2602
 		// Use finally to reset cursor to DEFAULT.
 		}finally {
-			_dDocument.getDMediator().getDApplication().setCursorDefault();
+			DApplication.getInstance().setCursorDefault();
 		}
 
 
