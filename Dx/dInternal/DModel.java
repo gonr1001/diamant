@@ -970,10 +970,10 @@ public class DModel extends Observable {
 	 * Export data from soft to SIG
 	 */
 	public void exportData(String dir) {
-		_dDocument.getDMediator().getDApplication().setCursorWait();
+		DApplication.getInstance().setCursorWait();
 		ExportData dataExp = new ExportData(this);
 		dataExp.saveExportReport(dir);
-		_dDocument.getDMediator().getDApplication().setCursorDefault();
+		DApplication.getInstance().setCursorDefault();
 	}
 
 	public String getCurrentSite() {

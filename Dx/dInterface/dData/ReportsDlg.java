@@ -1,6 +1,6 @@
 /**
  *
- * Title: ReportsDlg $Revision: 1.18 $  $Date: 2006-03-08 16:50:32 $
+ * Title: ReportsDlg $Revision: 1.19 $  $Date: 2006-10-27 15:28:00 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
- * @author  $Author: gonzrubi $
+ * @version $Revision: 1.19 $
+ * @author  $Author: hara2602 $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -63,10 +63,10 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
     //ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
     
     //_resources = new SetOfResources[1];
-    _dApplic.setCursorWait();
+    DApplication.getInstance().setCursorWait();
     //pBar.execute();
     _srd = new DStandardReportData(_dApplic.getCurrentDModel());
-    _dApplic.setCursorDefault();
+    DApplication.getInstance().setCursorDefault();
     //System.out.println("Génération de rapports terminé");
     //pBar.close();
     initReportDlg();

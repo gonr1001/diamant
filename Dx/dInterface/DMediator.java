@@ -72,7 +72,7 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDoc(String fileName, int type) throws DxException /* !!!NIC!!! */{
-		_dApplication.setCursorWait();
+		DApplication.getInstance().setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);
 
@@ -84,7 +84,7 @@ public class DMediator extends Object {
 					.getError());
 			System.exit(1);
 		}
-		_dApplication.setCursorDefault();
+		DApplication.getInstance().setCursorDefault();
 		return currentDoc.getError();
 	} // end addDoc
 
@@ -148,7 +148,7 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTExamDoc(String fileName, int type) throws Exception /* !!!NIC!!! */{
-		_dApplication.setCursorWait();
+		DApplication.getInstance().setCursorWait();
 		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
 		_documents.addElement(currentDoc);
 
@@ -160,7 +160,7 @@ public class DMediator extends Object {
 					.getError());
 			System.exit(1);
 		}
-		_dApplication.setCursorDefault();
+		DApplication.getInstance().setCursorDefault();
 		return currentDoc.getError();
 	} // end addDoc
 
