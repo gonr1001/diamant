@@ -63,16 +63,18 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 	}
 
 	private void buildMenu() {
-		buildFile();
+		buildFile("Ete2006CoursGenie.dia");
+		buildFile("fichier1.dia");
 		buildShowAllMenus();
 		buildInitialState();
 	}
 
 	/**
+	 * @param file 
 	 * 
 	 */
-	private void buildFile() {
-		_myFile = new JMenuItem("fichier1.dia");
+	private void buildFile(String file) {
+		_myFile = new JMenuItem(file);
 		_myFile.setFont(DxMenuBar.DxMB_FONT);
 		class MyFileListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
@@ -85,9 +87,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		this.add(_myFile);
 	} // end buildFile
 
-	/**
-	 * 
-	 */
+	
 	private void buildShowAllMenus() {
 		_showAll = new JMenuItem("showAllMenus");
 		_showAll.setFont(DxMenuBar.DxMB_FONT);
