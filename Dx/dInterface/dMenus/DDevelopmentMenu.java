@@ -63,7 +63,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 	}
 
 	private void buildMenu() {
-		buildFile("Ete2006CoursGenie.dia");
+		//buildFile("Ete2006CoursGenie.dia");
 		buildFile("fichier1.dia");
 		buildShowAllMenus();
 		buildInitialState();
@@ -79,7 +79,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		class MyFileListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
-				_dApplication.myFile();
+				_dApplication.myTestFile();
 			}
 		}
 		ActionListener myFileListener = new MyFileListener();

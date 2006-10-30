@@ -935,7 +935,7 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * 
 	 */
-	public void myFile() {
+	public void myTestFile() {
 		setCurrentDir(".\\devData\\");
 		try {
 			if (DxFlags.newDoc) {
@@ -944,7 +944,7 @@ public class DApplication { // implements ActionListener {
 				_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
 			}
 		} catch (DxException e) {
-			new DxExceptionDlg("myFile",e);
+			new DxExceptionDlg(e.getMessage(),e);
 		}
 		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
