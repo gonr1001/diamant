@@ -51,10 +51,10 @@ public class ConditionsTest extends TestCase {
 //            _dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
 //            		+ File.separator + "loadData5j.dia", 1);
             if (DxFlags.newDoc) {
-    			_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
+    			_dm5j = new DModel(new DxTTableDoc(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "loadData5j.dia");
     		} else {
-    			_dm5j = new DModel(new DDocument(), "." + File.separator
+    			_dm5j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "loadData5j.dia", 1);
     		}
         } catch (Exception e) {
@@ -68,13 +68,13 @@ public class ConditionsTest extends TestCase {
 		
 		
 		try {
-//            _dmh = new DModel(new DDocument(), "." + File.separator + "dataTest"
+//            _dmh = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator + "dataTest"
 //            		+ File.separator + "lData5j30min.dia", 1);
             if (DxFlags.newDoc) {
-    			_dmh = new DModel(new DxTTableDoc(), "." + File.separator
+    			_dmh = new DModel(new DxTTableDoc(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "lData5j30min.dia");
     		} else {
-    			_dmh = new DModel(new DDocument(), "." + File.separator
+    			_dmh = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "lData5j30min.dia", 1);
     		}
         } catch (Exception e) {
@@ -87,13 +87,13 @@ public class ConditionsTest extends TestCase {
 
 		
 		try {
-//            _dm7j = new DModel(new DDocument(), "." + File.separator + "dataTest"
+//            _dm7j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator + "dataTest"
 //            		+ File.separator + "loadData7j.dia", 1);
             if (DxFlags.newDoc) {
-    			_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
+    			_dm7j = new DModel(new DxTTableDoc(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "loadData7j.dia");
     		} else {
-    			_dm7j = new DModel(new DDocument(), "." + File.separator
+    			_dm7j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "loadData7j.dia", 1);
     		}
         } catch (Exception e) {
@@ -257,7 +257,7 @@ public class ConditionsTest extends TestCase {
 		DResource event = _dmh.getSetOfEvents().getResource("PED200.1.21.1.");
 		EventAttach eventClone = ((EventAttach) event.getAttach()).cloneEvent();
 		eventClone.setAssigned(true);
-		//String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+		//String periodKey=daytime[0]+System.getProperty("user.dir")+daytime[1]+System.getProperty("user.dir")+daytime[2];
 		// set event key monday at 8h30
 		eventClone.setKey(4, "1.1.2");
 		_dmh.getConditionsTest().addEventInTTs(cloneTTS,
@@ -428,7 +428,7 @@ public class ConditionsTest extends TestCase {
 //	 *  
 //	 */
 //	public void test_buildAllConditionsInCloneTTS7j() {
-//		DModel dm = new DModel(new DDocument(), "." + File.separator
+//		DModel dm = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
 //				+ "dataTest" + File.separator + "horaireRGR.dia", 1);
 //		dm.buildSetOfEvents();
 //		dm.getConditionsTest().buildStudentConflictMatrix();
@@ -457,7 +457,7 @@ public class ConditionsTest extends TestCase {
 //		DResource event = dm.getSetOfEvents().getResource("PED200.1.21.1.");
 //		EventAttach eventClone = ((EventAttach) event.getAttach()).cloneEvent();
 //		eventClone.setAssignState(true);
-//		//String periodKey=daytime[0]+"."+daytime[1]+"."+daytime[2];
+//		//String periodKey=daytime[0]+System.getProperty("user.dir")+daytime[1]+System.getProperty("user.dir")+daytime[2];
 //		// set event key monday at 8h30
 //		eventClone.setKey(4, "1.1.2");
 //		dm.getConditionsTest().addEventInTTs(cloneTTS,
