@@ -22,56 +22,58 @@ import java.sql.Time;
 
 public class APeriod {
 
-	private int ttperiodperiodid;
+	private int _periodID;
 
-	private Time ttperiodbegintime;
+	private Time _periodBeginTime;
 
-	private int ttperiodpriority;
+	private int _periodPriority;
 
-	private String ttperiodname;
-
-	public APeriod() {
-		//aa
-	}
+	private String _periodName;
 
 	public int getttperiodperiodid() {
-		return ttperiodperiodid;
+		return _periodID;
 	}
 
 	public Time getttperiodbegintime() {
-		return ttperiodbegintime;
+		return _periodBeginTime;
 	}
 
 	public int getttperiodpriority() {
-		return ttperiodpriority;
+		return _periodPriority;
 	}
 
 	public String getttperiodname() {
-		return ttperiodname;
+		return _periodName;
 	}
 
 	public void setttperiodperiodid(int _ttperiodperiodid) {
-		this.ttperiodperiodid = _ttperiodperiodid;
+		this._periodID = _ttperiodperiodid;
 	}
 
 	public void setttperiodbegintime(Time _ttperiodbegintime) {
-		this.ttperiodbegintime = _ttperiodbegintime;
+		this._periodBeginTime = _ttperiodbegintime;
 	}
 
 	public void setttperiodpriority(int _ttperiodpriority) {
-		this.ttperiodpriority = _ttperiodpriority;
+		this._periodPriority = _ttperiodpriority;
 	}
 
 	public void setttperiodname(String _ttperiodname) {
-		this.ttperiodname = _ttperiodname;
+		this._periodName = _ttperiodname;
 	}
 
 	public String toString() {
-		return new StringBuffer("TTperiodperiodid : ").append(ttperiodperiodid)
-				.append(", ").append("TTperiodbegintime : ").append(
-						ttperiodbegintime).append(", ").append(
-						"TTperiodpriority : ").append(ttperiodpriority).append(
-						",").append("TTperiodname : ").append(ttperiodname)
-				.toString();
+		StringBuffer sb = new StringBuffer("TTperiodperiodid : ");
+		sb.append(_periodID);		
+		sb.append(", ");
+		sb.append("TTperiodbegintime : ");
+		sb.append(_periodBeginTime);
+		sb.append(", ");
+		sb.append("TTperiodpriority : ");
+		sb.append(_periodPriority);
+		sb.append(",");
+		sb.append("TTperiodname : ");
+		sb.append(_periodName);
+		return sb.toString();
 	}
 }

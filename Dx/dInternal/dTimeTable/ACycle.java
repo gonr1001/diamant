@@ -20,52 +20,43 @@ package dInternal.dTimeTable;
 
 public class ACycle {
 
-	private String ttcycleid, ttcycleperiodlength, ttcycletypeid, ttcyclename;
+	private String _cycleID, _cyclePeriodLength, _cycleTypeID, _cycleName;
 
-	/*
-	 * private int ttcycleid;
-	 * 
-	 * private String ttcyclename;
-	 * 
-	 * private Time ttcycleperiodlength;
-	 * 
-	 * private int ttcycletypeid;
-	 */
-	// private ADay[] days;
+	
 	public ACycle() {
-		//aa
+	
 	}
 
 	public String getttcycleid() {
-		return ttcycleid;
+		return _cycleID;
 	}
 
 	public String getttcyclename() {
-		return ttcyclename;
+		return _cycleName;
 	}
 
 	public String getttcycleperiodlength() {
-		return ttcycleperiodlength;
+		return _cyclePeriodLength;
 	}
 
 	public String getttcycletypeid() {
-		return ttcycletypeid;
+		return _cycleTypeID;
 	}
 
 	public void setttcycleid(String ttcycleid) {
-		this.ttcycleid = ttcycleid;
+		this._cycleID = ttcycleid;
 	}
 
 	public void setttcyclename(String _ttcyclename) {
-		this.ttcyclename = _ttcyclename;
+		this._cycleName = _ttcyclename;
 	}
 
 	public void setttcycleperiodlength(String ttcycleperiodlength) {
-		this.ttcycleperiodlength = ttcycleperiodlength;
+		this._cyclePeriodLength = ttcycleperiodlength;
 	}
 
 	public void setttcycletypeid(String _ttcycletypeid) {
-		this.ttcycletypeid = _ttcycletypeid;
+		this._cycleTypeID = _ttcycletypeid;
 	}
 
 	/*
@@ -78,10 +69,17 @@ public class ACycle {
 	 */
 
 	public String toString() {
-		return new StringBuffer("TTcycleid : ").append(ttcycleid).append(", ")
-				.append("TTcyclename : ").append(ttcyclename).append(", ")
-				.append("TTcycleperiodlength : ").append(ttcycleperiodlength)
-				.append(",").append("TTcycletypeid : ").append(ttcycletypeid)
-				.toString();
+		StringBuffer sb = new StringBuffer("TTcycleid : ");
+		sb.append(_cycleID);		
+		sb.append(", ");
+		sb.append("TTcyclename : ");
+		sb.append(_cycleName);
+		sb.append(", ");
+		sb.append("TTcycleperiodlength : ");
+		sb.append(_cyclePeriodLength);
+		sb.append(",");
+		sb.append("TTcycletypeid : ");
+		sb.append(_cycleTypeID);
+		return sb.toString();
 	}
 }

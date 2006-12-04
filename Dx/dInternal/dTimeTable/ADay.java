@@ -20,32 +20,36 @@ package dInternal.dTimeTable;
 
 public class ADay {
 
-	private int ttdayid;
+	private int _dayID;
 
-	private String ttdayname;
+	private String _dayName;
 
 	public ADay() {
 		//a
 	}
 
 	public int getttdayid() {
-		return ttdayid;
+		return _dayID;
 	}
 
 	public String getttdayname() {
-		return ttdayname;
+		return _dayName;
 	}
 
 	public void setttdayid(int _ttdayid) {
-		this.ttdayid = _ttdayid;
+		this._dayID = _ttdayid;
 	}
 
 	public void setttdayname(String _ttdayname) {
-		this.ttdayname = _ttdayname;
+		this._dayName = _ttdayname;
 	}
 
 	public String toString() {
-		return new StringBuffer("TTdayid : ").append(ttdayid).append(", ")
-				.append("TTdayname : ").append(ttdayname).toString();
+		StringBuffer sb = new StringBuffer("TTdayid : ");
+		sb.append(_dayID);		
+		sb.append(", ");
+		sb.append("TTdayname : ");
+		sb.append(_dayName);
+		return sb.toString();
 	}
 }

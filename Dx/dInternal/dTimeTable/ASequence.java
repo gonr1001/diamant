@@ -20,33 +20,36 @@ package dInternal.dTimeTable;
 
 public class ASequence {
 
-	private int ttsequenceid;
+	private int _sequenceID;
 
-	private String ttsequencename;
+	private String _sequenceName;
 
 	public ASequence() {
-		//a
+		
 	}
 
 	public int getttsequenceid() {
-		return ttsequenceid;
+		return _sequenceID;
 	}
 
 	public String getttsequencename() {
-		return ttsequencename;
+		return _sequenceName;
 	}
 
 	public void setttsequenceid(int _ttsequenceid) {
-		this.ttsequenceid = _ttsequenceid;
+		this._sequenceID = _ttsequenceid;
 	}
 
 	public void setttsequencename(String _ttsequencename) {
-		this.ttsequencename = _ttsequencename;
+		this._sequenceName = _ttsequencename;
 	}
 
 	public String toString() {
-		return new StringBuffer("TTsequenceid : ").append(ttsequenceid).append(
-				", ").append("TTsequencename : ").append(ttsequencename)
-				.toString();
+		StringBuffer sb = new StringBuffer("TTsequenceid : ");
+		sb.append(_sequenceID);		
+		sb.append(", ");
+		sb.append("TTsequencename : ");
+		sb.append(_sequenceName);
+		return sb.toString();
 	}
 }
