@@ -24,7 +24,7 @@ public class ACycle {
 
 	
 	public ACycle() {
-	
+	/* */
 	}
 
 	public String getttcycleid() {

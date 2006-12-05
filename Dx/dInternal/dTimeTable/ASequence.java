@@ -25,7 +25,7 @@ public class ASequence {
 	private String _sequenceName;
 
 	public ASequence() {
-		
+		/* */
 	}
 
 	public int getttsequenceid() {
