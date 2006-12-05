@@ -257,13 +257,16 @@ public class Activity extends DObject {
 		case 0:
 			if (_departement.equals(value))
 				return true;
+			break;
 		case 1:
 			if (_activityType.equals(value))
 				return true;
+			break;
 		case 2:
 			int intValue = Integer.parseInt(value);
 			if (_activitySession == intValue)
 				return true;
+			break;
 		case 3:
 			boolean boolValue = Boolean.valueOf(value).booleanValue();
 

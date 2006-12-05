@@ -20,8 +20,7 @@
 
 package eLib.exit.exception;
 
-import dConstants.DConst;
-import eLib.exit.dialog.DxExceptionDlg;
+
 
 public class DxException extends Exception {
 

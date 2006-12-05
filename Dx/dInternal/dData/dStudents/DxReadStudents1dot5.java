@@ -25,13 +25,13 @@ import eLib.exit.exception.DxException;
 public class DxReadStudents1dot5 implements DxStudentsReader {
 
 	private DataExchange _deStudents;
+	
     public DxReadStudents1dot5(DataExchange de, int nDays, int nPeriods) {
 		_deStudents = de;
 	}
 
 	public DxSetOfStudents readSetOfStudents() throws DxException {
-		DxSetOfStudents dxsosStud = new DxSetOfStudents();
-		
+		DxSetOfStudents dxsosStud = new DxSetOfStudents();		
 		return dxsosStud;
 	}
 

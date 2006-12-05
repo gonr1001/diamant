@@ -1,7 +1,7 @@
 package eLib.exit.txt;
 /**
  *
- * Title: ByteInputFile $Revision: 1.3 $  $Date: 2006-09-25 14:41:23 $
+ * Title: ByteInputFile $Revision: 1.4 $  $Date: 2006-12-05 14:22:20 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package eLib.exit.txt;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.4 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -24,7 +24,6 @@ package eLib.exit.txt;
  */
 
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

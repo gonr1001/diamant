@@ -63,13 +63,13 @@ public class DxDeploymentManager {
 		_vsListFiles.add("trace/log4jreex.conf");
 		_vsListFiles.add("trace/trace.log");
 		
-		try {
+//		try {
 			_vsFileNames = new Vector<DxConfigResource>();
 			listFile(_vsListFiles);
-		} catch (IOException e1) {
-			_logger
-					.error("Unable to read the list of files required by Diamant's software");
-		}
+//		} catch (IOException e1) {
+//			_logger
+//					.error("Unable to read the list of files required by Diamant's software");
+//		}
 
 	}
 
@@ -81,7 +81,7 @@ public class DxDeploymentManager {
 	 * 
 	 * @return Vector<DxConfigResource> list of ressources
 	 */
-	public void listFile(Vector fileListPath) throws IOException {
+	public void listFile(Vector fileListPath) { //throws {// IOException {
 		
 		String cheminFich;
 		String parentName;

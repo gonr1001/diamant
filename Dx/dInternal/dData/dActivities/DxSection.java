@@ -18,7 +18,7 @@ public class DxSection extends DxResource {
 	}
 
 	public Iterator<DxUnity> getUnitiesIterator() {
-		return (Iterator<DxUnity>)_dxsouUnities.iterator();
+		return _dxsouUnities.iterator();
 	}
 
 	public int getUnityCount() {

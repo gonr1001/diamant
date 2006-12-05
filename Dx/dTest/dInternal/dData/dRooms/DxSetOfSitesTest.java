@@ -4,7 +4,6 @@ import java.io.File;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.DxPreferences;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.DxReadSite1dot5;
@@ -12,7 +11,7 @@ import dInternal.dData.dRooms.DxReadSite1dot6;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import eLib.exit.exception.DxException;
-import eLib.exit.txt.FilterFile;
+
 
 import junit.framework.Test;
 import junit.framework.TestCase;

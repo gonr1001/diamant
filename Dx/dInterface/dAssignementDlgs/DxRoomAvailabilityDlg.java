@@ -233,16 +233,17 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
                 _dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
                         .getSetOfCat().getCatsSortedByName());
                 _cbCategories.setModel(_dcbmCategories);
-
+                break;
             case 2:
                 _dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
                 _dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat
                         .getSetOfRooms().getRoomsSortedByName());
                 _cbRooms.setModel(_dcbmRooms);
+                break;
 
             case 3:
                 _dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
-
+                break;
             default:
                 break;
             }

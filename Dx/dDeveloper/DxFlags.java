@@ -45,5 +45,5 @@ public class DxFlags {
 	// public final static boolean newActivity = true;
 	public final static boolean newActivity = false;
 
-	public static boolean unitTest = false;
+	public static boolean unitTest = true;
 }

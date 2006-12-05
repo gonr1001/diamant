@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2006-09-13 13:08:26 $
+* Title: SetOfSitesTest $Revision $  $Date: 2006-12-05 14:22:19 $
 * Description: 	SetOfSitesTest is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: hara2602 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -28,13 +28,12 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
-import dInternal.DxPreferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
 import eLib.exit.exception.DxException;
-import eLib.exit.txt.FilterFile;
+
 
 
 public class SetOfSitesTest  extends TestCase{

@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import dConstants.DConst;
 
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.exception.DxException;
 import eLib.exit.exception.IOFileException;
 
@@ -184,7 +183,8 @@ public class FilterFile {
 			adjustingLines();
 			adjustingEndFile();
 			return true;
-		}else throw new DxException(DConst.INVALID_FILE_FILTER);
+		}
+		throw new DxException(DConst.INVALID_FILE_FILTER);
 	} // end validFile
 
 	public boolean adjustingFile(String str) {
@@ -280,14 +280,14 @@ public class FilterFile {
 		} // end catch
 
 	}
-	private String writeTo(byte[] bytes) {
-		String toReturn = "";
-		// byte [] b = str.getBytes();
-		for (int i = 0; i < bytes.length; i++) {
-			toReturn += (int) bytes[i] + " ";
-		}
-		return toReturn;
-	}
+//	private String writeTo(byte[] bytes) {
+//		String toReturn = "";
+//		// byte [] b = str.getBytes();
+//		for (int i = 0; i < bytes.length; i++) {
+//			toReturn += (int) bytes[i] + " ";
+//		}
+//		return toReturn;
+//	}
 
 	private String fixSeparator(String str) {
 		return str.replace('/', File.separatorChar);

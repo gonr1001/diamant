@@ -17,7 +17,6 @@
  */
 package dInternal;
 
-import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;

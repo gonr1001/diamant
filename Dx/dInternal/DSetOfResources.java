@@ -21,7 +21,6 @@ package dInternal;
 
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 import dInternal.DResource;
 
@@ -347,7 +346,7 @@ public abstract class DSetOfResources extends DObject {
 	 * Sort the SetOfResources by DResource's ID from smallest to biggest
 	 * */
 	public void sortSetOfResourcesByID() {
-        Collections.sort((List<DResource>) _resourceList,
+        Collections.sort(_resourceList,
                 DResource.IDComparator);
 //		sort(0, _resourceList.size() - 1, 1, 0);
 		_stateSort = 1;
@@ -357,7 +356,7 @@ public abstract class DSetOfResources extends DObject {
 	 * Sort the SetOfResources by DResource's Key from smallest to biggest
 	 * */
 	public void sortSetOfResourcesByKey() {
-        Collections.sort((List<DResource>) _resourceList,
+        Collections.sort(_resourceList,
                 DResource.KeyComparator);
 //		sort(0, _resourceList.size() - 1, 0, 0);
 		_stateSort = 0;
@@ -371,7 +370,7 @@ public abstract class DSetOfResources extends DObject {
         while(it.hasNext())
             ((DResource)it.next()).setSearchField(field);
         
-        Collections.sort((List<DResource>) _resourceList,
+        Collections.sort(_resourceList,
                 DResource.FieldComparator);
 //		sort(0, _resourceList.size() - 1, 2, field);
 		_stateSort = 2;

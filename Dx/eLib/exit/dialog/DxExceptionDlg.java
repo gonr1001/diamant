@@ -22,7 +22,6 @@ package eLib.exit.dialog;
 
 import java.awt.Component;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
