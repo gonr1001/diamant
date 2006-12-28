@@ -179,12 +179,13 @@ public class DDocument extends InternalFrameAdapter implements Observer {
 
     // -------------------------------------------
     private String modifiyDocumentName(String str) {
-        if (str.endsWith("pref" + File.separator + "StandardTTC.xml")
-                || str.endsWith("pref" + File.separator + "StandardTTE.xml")) {
-            str = str.substring(0, str.lastIndexOf("pref"));
-            str += DConst.NO_NAME;
+    	String iStr = str;
+        if (iStr.endsWith("pref" + File.separator + "StandardTTC.xml")
+                || iStr.endsWith("pref" + File.separator + "StandardTTE.xml")) {
+        	iStr = iStr.substring(0, iStr.lastIndexOf("pref"));
+        	iStr += DConst.NO_NAME;
         }
-        return str;
+        return iStr;
     }
 
     public void update(Observable dm, Object component) {

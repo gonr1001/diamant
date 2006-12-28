@@ -34,7 +34,6 @@ import java.util.StringTokenizer;
 import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -606,7 +605,7 @@ public class DApplication { // implements ActionListener {
 		new ImportDlg(this);
 	}
 
-	public void doImport(JDialog jD, String fil) {
+	public void doImport(String fil) {
 		if (DxFlags.newDoc) {
 			try {
 				String error = "";

@@ -139,7 +139,7 @@ public class DxSetOfSitesTest extends TestCase {
 						.getName());
 		assertEquals("test_6_1_getSetOfSitesMultiSite: assertEquals", "LON",
 				_dxsosMulti.getSitesSortedByKey()[1].getName());
-		assertEquals("test_7_getSetOfSitesMultiSite: asserEquals", "CAT11",
+		assertEquals("test_7_getSetOfSitesMultiSite: asserEquals", "CAT1",
 				_dxsosMulti.getSitesSortedByKey()[0].getSetOfCat()
 						.getCatsSortedByKey()[0].getName());
 		assertEquals("test_7_1_getSetOfSitesMultiSite: asserEquals", "CAT2",

@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.46 $ $Date: 2006-07-26 17:55:52 $
+ * Title: StudentMixingAlgorithm $Revision: 1.47 $ $Date: 2006-12-28 15:57:31 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -375,7 +375,7 @@ public class StudentMixingAlgorithm implements Algorithm {
       ((DValue)sizeOfGroups.get(bGroup)).setIntValue(
           ((DValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
 
-      resc= ((DSetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
+      resc = ((DSetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
       ((DValue)resc.getAttach()).setIntValue(bGroup);
       for (int i=0; i< allConvGroup.size(); i++)
         ((DSetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());

@@ -1,7 +1,7 @@
 package eLib.exit.dialog;
 /**
  *
- * Title: FatalProblemDlg $Revision: 1.4 $  $Date: 2006-09-20 03:09:04 $
+ * Title: FatalProblemDlg $Revision: 1.5 $  $Date: 2006-12-28 15:57:31 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,8 +14,8 @@ package eLib.exit.dialog;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.5 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -61,9 +61,9 @@ public class FatalProblemDlg {
    *
    * <p>Clicking in the button will dispose the dialog.
    */
-  public FatalProblemDlg(String message, String title) {
-	  new FatalProblemDlg(null,message,FATAL_PROBLEM);
-  }
+//  public FatalProblemDlg(String message) {
+//	  new FatalProblemDlg(null,message,FATAL_PROBLEM);
+//  }
 
  /**
   * @param comp a Component the parent of the JOptionPane

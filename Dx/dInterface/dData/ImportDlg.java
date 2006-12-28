@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.32 $  $Date: 2006-08-31 09:40:12 $
+ * Title: ImportDlg $Revision: 1.33 $  $Date: 2006-12-28 15:57:31 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -79,7 +79,8 @@ public class ImportDlg extends JDialog {
 										.lastIndexOf(File.separatorChar) + 1));
 				dApplic.setCurrentDir(fil);
 
-				dApplic.doImport(this, fil);
+				//dApplic.doImport(this, fil);
+				dApplic.doImport(fil);
 
 				dApplic.getCurrentDxDoc().getCurrentDModel()
 						.changeInDModelByImportDlg(this);
@@ -96,7 +97,9 @@ public class ImportDlg extends JDialog {
 										.lastIndexOf(File.separatorChar) + 1));
 				dApplic.setCurrentDir(fil);
 
-				dApplic.doImport(this, fil);
+				//dApplic.doImport(this, fil);
+				dApplic.doImport(fil);
+
 
 				// String error = "";
 				// dApplic.setCursorWait();
