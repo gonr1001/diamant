@@ -63,27 +63,28 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 		DxSetOfActivitiesSites dxsoasAct = null;
 		try {
 			dxsoasAct = dxrasSiteReader.readSetOfActivitiesSites();
+			DxActivitySite dxasShe = dxsoasAct.getActivitySite("SHE");
+			assertNotNull("test1_buildSetOfResources1_5: assertNotNull 0",
+					dxasShe);
+
+			DxActivity dxaAdm111 = dxasShe.getActivity("ADM111");
+			assertNotNull("test2_buildSetOfResources1_5: assertNotNull 1",
+					dxaAdm111);
+
+			DxType dxtType1 = dxaAdm111.getType("1");
+			assertNotNull("test2_buildSetOfResources1_5: assertNotNull 2",
+					dxtType1);
+
+			assertEquals("test0_buildSetOfResources1_5: assertEquals 0", 1,
+					dxsoasAct.size());
+			assertEquals("test3_buildSetOfResources1_5: assertEquals 1", 2,
+					dxaAdm111.getTypeCount());
+			assertEquals("test4_buildSetOfResources1_5: assertEquals 2", 2,
+					dxtType1.getSectionCount());
 		} catch (Exception e) {
 			assertTrue("test_buildSetOfResources1_5: Read failed", false);
 		}
 
-		DxActivitySite dxasShe = dxsoasAct.getActivitySite("SHE");
-		assertNotNull("test1_buildSetOfResources1_5: assertNotNull 0", dxasShe);
-		
-		DxActivity dxaAdm111 = dxasShe.getActivity("ADM111");
-		assertNotNull("test2_buildSetOfResources1_5: assertNotNull 1",
-				dxaAdm111);
-		
-		DxType dxtType1 = dxaAdm111.getType("1");
-		assertNotNull("test2_buildSetOfResources1_5: assertNotNull 2",
-				dxtType1);
-		
-		assertEquals("test0_buildSetOfResources1_5: assertEquals 0", 1,
-				dxsoasAct.size());
-		assertEquals("test3_buildSetOfResources1_5: assertEquals 1", 2,
-				dxaAdm111.getTypeCount());
-		assertEquals("test4_buildSetOfResources1_5: assertEquals 2", 2,
-				dxtType1.getSectionCount());
 	}
 
 	public void test_buildSetOfResources1_6() {
@@ -122,27 +123,29 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 		DxSetOfActivitiesSites dxsoasAct = null;
 		try {
 			dxsoasAct = dxrasSiteReader.readSetOfActivitiesSites();
+			DxActivitySite dxasSite = dxsoasAct.getActivitySite("SHE");
+			assertNotNull("test1_buildSetOfResources1_6: assertNotNull 0",
+					dxasSite);
+
+			DxActivity dxaActivity = dxasSite.getActivity("ADM111");
+			assertNotNull("test1_buildSetOfResources1_6: assertNotNull 1",
+					dxaActivity);
+
+			DxType dxtType = dxaActivity.getType("1");
+			assertNotNull("test1_buildSetOfResources1_6: assertNotNull 2",
+					dxtType);
+
+			assertEquals("test0_buildSetOfResources1_6: assertEquals 0", 1,
+					dxsoasAct.size());
+			assertEquals("test3_buildSetOfResources1_6: assertEquals 1", 2,
+					dxaActivity.getTypeCount());
+			assertEquals("test4_buildSetOfResources1_6: assertEquals 2", 2,
+					dxtType.getSectionCount());
+			// assertEquals("test5_buildSetOfResources1_6: assertEquals 3", 50,
+			// dxaActivity.getCapacity());
 		} catch (Exception e) {
 			assertTrue("test_buildSetOfResources1_6: Read failed", false);
 		}
 
-		DxActivitySite dxasSite = dxsoasAct.getActivitySite("SHE");
-		assertNotNull("test1_buildSetOfResources1_6: assertNotNull 0", dxasSite);
-		
-		DxActivity dxaActivity = dxasSite.getActivity("ADM111");
-		assertNotNull("test1_buildSetOfResources1_6: assertNotNull 1", dxaActivity);
-		
-		DxType dxtType = dxaActivity.getType("1");
-		assertNotNull("test1_buildSetOfResources1_6: assertNotNull 2", dxtType);
-
-		
-		assertEquals("test0_buildSetOfResources1_6: assertEquals 0", 1,
-				dxsoasAct.size());
-		assertEquals("test3_buildSetOfResources1_6: assertEquals 1", 2,
-				dxaActivity.getTypeCount());
-		assertEquals("test4_buildSetOfResources1_6: assertEquals 2", 2,
-				dxtType.getSectionCount());
-//		assertEquals("test5_buildSetOfResources1_6: assertEquals 3", 50,
-//				dxaActivity.getCapacity());
 	}
 }

@@ -75,21 +75,23 @@ public class DxAssignAllAlgTest extends TestCase {
 				dm1 = new DModel(dxDocument1, fileName.toString());
 			} else {
 				dm1 = new DModel(dDocument1, fileName.toString(), type);
-			}		
+			}	
+			dm1.changeInDModel(new String("DxAssign"));
+			assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
+					.size());
+			assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
+					.size());
+			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+			alg.doWork();
+			assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
+					.getNumberOfEventAssign());
+			dm1 = null;
+			dDocument1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		dm1.changeInDModel(new String("DxAssign"));
-		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
-				.size());
-		assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
-				.size());
-		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
-		alg.doWork();
-		assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
-				.getNumberOfEventAssign());
-		dm1 = null;
-		dDocument1 = null;
+		
+
 	}
 
 	public void test_build2() {
@@ -113,19 +115,20 @@ public class DxAssignAllAlgTest extends TestCase {
 			} else {
 				dm1 = new DModel(dDocument1, fileName.toString(), type);
 			}	
+			dm1.changeInDModel(new Object());
+			assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
+					.size());
+			assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
+					.size());
+			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+			alg.doWork();
+			assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
+					.getNumberOfEventAssign());
+			dm1 = null;
+			dDocument1 = null;
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(),e);
 		}
-		dm1.changeInDModel(new Object());
-		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
-				.size());
-		assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
-				.size());
-		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
-		alg.doWork();
-		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
-				.getNumberOfEventAssign());
-		dm1 = null;
-		dDocument1 = null;
+
 	}
 }

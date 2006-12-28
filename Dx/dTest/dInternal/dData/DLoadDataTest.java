@@ -193,40 +193,39 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test1_ImportSelective5j() {
 
-		SetOfStuSites newStuSites=null;
+		SetOfStuSites newStuSites = null;
 		try {
-			newStuSites = (SetOfStuSites) _loadData5j
-					.selectiveImport(((SetOfStuSites) _timeTable5j.get(5)), "."
-							+ File.separator + "dataTest" + File.separator
-							+ "ImportSTUDS.SIG");
+			newStuSites = (SetOfStuSites) _loadData5j.selectiveImport(
+					((SetOfStuSites) _timeTable5j.get(5)), "." + File.separator
+							+ "dataTest" + File.separator + "ImportSTUDS.SIG");
+			assertEquals("test1_ImportSelective : assertEquals: ", "",
+					newStuSites.getError());
+			if (newStuSites.getError() == "") {
+				// Set Of Student Sites. Check if Update is done
+				SetOfStuSites setSite = ((SetOfStuSites) _timeTable5j.get(5));
+				// Test of DLoadData.findAddedElements
+				SetOfStudents setStud = (SetOfStudents) setSite
+						.getResourceAt(0).getAttach();
+				assertNotNull(
+						"test2_ImportSelective5j : assertNotNull: added student",
+						setStud.getResource("NOUVEAUET"));
+
+				// Test of DLoadData.findChangesInElements
+				Student studentChanged = setStud.getStudent("GIRALDO-L");
+				SetOfStuCourses currentCourses = studentChanged
+						.getCoursesList();
+				assertNull(
+						"test3_ImportSelective5j : assertNull: Changed student ",
+						currentCourses.getResource("GIN3252"));
+
+				// Test of DLoadData.findDeletedElements
+				assertNull(
+						"test4_ImportSelective5j : assertNull: Deleted student ",
+						setStud.getStudent("RHEAULT M"));
+			}
 		} catch (DxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		assertEquals("test1_ImportSelective : assertEquals: ", "", newStuSites
-				.getError());
-		if (newStuSites.getError() == "") {
-			// Set Of Student Sites. Check if Update is done
-			SetOfStuSites setSite = ((SetOfStuSites) _timeTable5j.get(5));
-			// Test of DLoadData.findAddedElements
-			SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
-					.getAttach();
-			assertNotNull(
-					"test2_ImportSelective5j : assertNotNull: added student",
-					setStud.getResource("NOUVEAUET"));
-
-			// Test of DLoadData.findChangesInElements
-			Student studentChanged = setStud.getStudent("GIRALDO-L");
-			SetOfStuCourses currentCourses = studentChanged.getCoursesList();
-			assertNull(
-					"test3_ImportSelective5j : assertNull: Changed student ",
-					currentCourses.getResource("GIN3252"));
-
-			// Test of DLoadData.findDeletedElements
-			assertNull(
-					"test4_ImportSelective5j : assertNull: Deleted student ",
-					setStud.getStudent("RHEAULT M"));
-
 		}
 
 	}
@@ -334,41 +333,41 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test1_ImportSelective7j() {
 
-		SetOfStuSites newStuSites=null;
+		SetOfStuSites newStuSites = null;
 		try {
-			newStuSites = (SetOfStuSites) _loadData7j
-					.selectiveImport(((SetOfStuSites) _timeTable7j.get(5)), "."
-							+ File.separator + "dataTest" + File.separator
-							+ "ImportSTUDS.SIG");
+			newStuSites = (SetOfStuSites) _loadData7j.selectiveImport(
+					((SetOfStuSites) _timeTable7j.get(5)), "." + File.separator
+							+ "dataTest" + File.separator + "ImportSTUDS.SIG");
+			assertEquals("test1_ImportSelective : assertEquals: ", "",
+					newStuSites.getError());
+			if (newStuSites.getError() == "") {
+				// Set Of Student Sites. Check if Update is done
+				SetOfStuSites setSite = ((SetOfStuSites) _timeTable7j.get(5));
+				// Test of DLoadData.findAddedElements
+				SetOfStudents setStud = (SetOfStudents) setSite
+						.getResourceAt(0).getAttach();
+				assertNotNull(
+						"test2_ImportSelective7j : assertNotNull: added student",
+						setStud.getResource("NOUVEAUET"));
+
+				// Test of DLoadData.findChangesInElements
+				Student studentChanged = setStud.getStudent("GIRALDO-L");
+				SetOfStuCourses currentCourses = studentChanged
+						.getCoursesList();
+				assertNull(
+						"test3_ImportSelective7j : assertNull: Changed student ",
+						currentCourses.getResource("GIN3252"));
+
+				// Test of DLoadData.findDeletedElements
+				assertNull(
+						"test4_ImportSelective7j : assertNull: Deleted student ",
+						setStud.getStudent("RHEAULT M"));
+			}
 		} catch (DxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals("test1_ImportSelective : assertEquals: ", "", newStuSites
-				.getError());
-		if (newStuSites.getError() == "") {
-			// Set Of Student Sites. Check if Update is done
-			SetOfStuSites setSite = ((SetOfStuSites) _timeTable7j.get(5));
-			// Test of DLoadData.findAddedElements
-			SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
-					.getAttach();
-			assertNotNull(
-					"test2_ImportSelective7j : assertNotNull: added student",
-					setStud.getResource("NOUVEAUET"));
 
-			// Test of DLoadData.findChangesInElements
-			Student studentChanged = setStud.getStudent("GIRALDO-L");
-			SetOfStuCourses currentCourses = studentChanged.getCoursesList();
-			assertNull(
-					"test3_ImportSelective7j : assertNull: Changed student ",
-					currentCourses.getResource("GIN3252"));
-
-			// Test of DLoadData.findDeletedElements
-			assertNull(
-					"test4_ImportSelective7j : assertNull: Deleted student ",
-					setStud.getStudent("RHEAULT M"));
-
-		}
 	}
 
 }

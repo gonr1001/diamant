@@ -47,7 +47,7 @@ public class DxActivitySite extends DxResource {
 		_dxsoaActivities.addActivity(dxaActivity);
 	}
 
-	public Object getActivityCount() {
+	public int getActivityCount() {
 		return _dxsoaActivities.size();
 	}
 

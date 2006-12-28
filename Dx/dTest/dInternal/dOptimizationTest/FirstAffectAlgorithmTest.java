@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.13 $ $Date: 2006-09-20 03:09:04 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.14 $ $Date: 2006-12-28 20:25:42 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -13,7 +13,7 @@
  * agreement you entered into with rgr-fdl.
  * 
  * @version $Version$
- * @author $Author: hara2602 $
+ * @author $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -67,26 +67,27 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		int type = 1;
 
 		try {
-			if(DxFlags.newDoc){
+			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName);
 			} else {
 				dm1 = new DModel(_dDocument1, fileName, type);
 			}
-//			dm1 = new DModel(_dDocument1, fileName, type);
+			// dm1 = new DModel(_dDocument1, fileName, type);
+			dm1.changeInDModel(new Object());
+			assertEquals("test_build: assertEquals", 140, dm1
+					.getSetOfActivities().size());
+			assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
+					.size());
+			_first = new FirstAffectAlgorithm(dm1);
+			_first.doWork();
+			assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
+					.getNumberOfEventAssign());
+			dm1 = null;
+			_dDocument1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		dm1.changeInDModel(new Object());
-		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
-				.size());
-		assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
-				.size());
-		_first = new FirstAffectAlgorithm(dm1);
-		_first.doWork();
-		assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
-				.getNumberOfEventAssign());
-		dm1 = null;
-		_dDocument1 = null;
+
 	}
 
 	public void test_build2() {
@@ -105,21 +106,21 @@ public class FirstAffectAlgorithmTest extends TestCase {
 				dm1 = new DModel(_dxDocument1, fileName);
 			} else {
 				dm1 = new DModel(_dDocument1, fileName, type);
-			}	
+			}
+			dm1.changeInDModel(new Object());
+			assertEquals("test_build: assertEquals", 140, dm1
+					.getSetOfActivities().size());
+			assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
+					.size());
+			_first = new FirstAffectAlgorithm(dm1);
+			_first.doWork();
+			assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
+					.getNumberOfEventAssign());
+			dm1 = null;
+			_dDocument1 = null;
 		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(),e);
+			new DxExceptionDlg(e.getMessage(), e);
 		}
 
-		dm1.changeInDModel(new Object());
-		assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
-				.size());
-		assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
-				.size());
-		_first = new FirstAffectAlgorithm(dm1);
-		_first.doWork();
-		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
-				.getNumberOfEventAssign());
-		dm1 = null;
-		_dDocument1 = null;
 	}
 }

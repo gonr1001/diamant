@@ -60,7 +60,7 @@ public class DxDeploymentManagerTest extends TestCase {
 		Iterator<DxConfigResource> itList = vsFileNames.iterator();
 		Iterator<DxConfigResource> itListExpected = vsFileNamesExpected
 				.iterator();
-		Integer i = 0;
+		int i = 0;
 
 		while (itList.hasNext()) {
 			i++;

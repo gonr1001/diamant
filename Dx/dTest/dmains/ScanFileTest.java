@@ -72,14 +72,12 @@ public class ScanFileTest extends TestCase {
 		try {
 			ByteInputFile bif = new ByteInputFile(str);
 			b = bif.readFileAsBytes();
+			for (int i = 0; i < c.length; i++) {
+				c[i] = b[i];
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
-		}
-
-		for (int i = 0; i < c.length; i++) {
-			c[i] = b[i];
-
 		}
 
 		assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
@@ -96,17 +94,16 @@ public class ScanFileTest extends TestCase {
 		byte[] c = new byte[a.length];
 		String str = System.getProperty("user.dir") + File.separator
 				+ "scanFileDataTest" + File.separator + "testFileOUT.txt";
+		int offset = 759;
 		try {
 			ByteInputFile bif = new ByteInputFile(str);
 			b = bif.readFileAsBytes();
+			for (int i = 0; i < c.length; i++) {
+				c[i] = b[offset + i];
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
-		}
-		int offset = 759;
-		for (int i = 0; i < c.length; i++) {
-			c[i] = b[offset + i];
-
 		}
 
 		assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,

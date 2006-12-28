@@ -33,69 +33,68 @@ import dInternal.dData.DxResource;
  * 
  */
 public class DxInstructor extends DxResource implements AvailableResource {
-	/** Instructor key **/ 
+	/** Instructor key * */
 	private static long lKey = 1;
 
-    private DxAvailability _availability;
+	private DxAvailability _availability;
 
-    /**
-     * Constructor
-     * 
-     * @param sName
-     *            Name of the new instructor
-     * @param a
-     *            Availability of the new instructor
-     */
-    public DxInstructor(String sName, DxAvailability a) {
-        super(lKey++, sName);
-        _availability = a;
-    }
+	/**
+	 * Constructor
+	 * 
+	 * @param sName
+	 *            Name of the new instructor
+	 * @param a
+	 *            Availability of the new instructor
+	 */
+	public DxInstructor(String sName, DxAvailability a) {
+		super(lKey++, sName);
+		_availability = a;
+	}
 
-    /**
-     * 
-     * @return DxAvailability Availability of the instructor
-     */
-    public DxAvailability getAvailability() {
-        return _availability;
-    }
+	/**
+	 * 
+	 * @return DxAvailability Availability of the instructor
+	 */
+	public DxAvailability getAvailability() {
+		return _availability;
+	}
 
-    /**
-     * Modify the availability of the instructor
-     * 
-     * @param aNewAvailability
-     *            Availability that has to be assigned to the instructor
-     */
-    public void setAvailability(DxAvailability aNewAvailability) {
-        _availability = aNewAvailability;
-    }
+	/**
+	 * Modify the availability of the instructor
+	 * 
+	 * @param aNewAvailability
+	 *            Availability that has to be assigned to the instructor
+	 */
+	public void setAvailability(DxAvailability aNewAvailability) {
+		_availability = aNewAvailability;
+	}
 
-    public void setAvailability(int[][] nAvailbilities) {
-        _availability.setAvailability(nAvailbilities);
-    }
+	public void setAvailability(int[][] nAvailbilities) {
+		_availability.setAvailability(nAvailbilities);
+	}
 
-    public boolean isEqual(DxResource dxrOther) {
-        DxInstructor dxiOther = null;
-        try {
-        	
-            dxiOther = (DxInstructor) dxrOther;
-        } catch (ClassCastException e) {
-            // Message intended for programmers, application
-            // can't continue after this error
-            System.out
-                    .println("isEqual in DxInstructor was called with a Resource "
-                            + "that could not be converted into an Instructor:");
-            e.printStackTrace();
-            System.exit(-1);
-        }
+	public boolean isEqual(DxResource dxrOther) {
+		DxInstructor dxiOther = null;
+		try {
 
-        if (!this.getName().equalsIgnoreCase(dxiOther.getName())) {
-            return false;
-        }
+			dxiOther = (DxInstructor) dxrOther;
+			if (!this.getName().equalsIgnoreCase(dxiOther.getName())) {
+				return false;
+			}
 
-        if (!this.getAvailability().isEqual(dxiOther.getAvailability())) {
-            return false;
-        }
+			if (!this.getAvailability().isEqual(dxiOther.getAvailability())) {
+				return false;
+			}
+		} catch (ClassCastException e) {
+			// Message intended for programmers, application
+			// can't continue after this error
+			System.out
+					.println("isEqual in DxInstructor was called with a Resource "
+							+ "that could not be converted into an Instructor:");
+			e.printStackTrace();
+			System.exit(-1);
+		}
 
-        return true;
-    }
+		return true;
+	}
 }

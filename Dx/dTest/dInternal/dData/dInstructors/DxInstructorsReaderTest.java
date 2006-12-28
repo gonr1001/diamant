@@ -229,35 +229,36 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, 5, 14);
 		try {
 			dxsoi = dxir.readSetOfInstructors();
+			assertEquals("test6_1_getSetOfInstructors: assertEquals", 126, dxsoi
+					.size());
+			assertEquals("test6_2_getSetOfInstructors: assertEquals", true, dxsoi
+					.areVectorsSync());
+			assertNotNull("test6_3_getSetOfInstructors: assertEquals", dxsoi
+					.getResource("ABATZOGLOU, NICOLAS"));
+			assertNotNull("test6_4_getSetOfInstructors: assertEquals", dxsoi
+					.getResource("YAHIA, AMMAR"));
+			assertNotNull("test6_5_getSetOfInstructors: assertEquals", dxsoi
+					.getResource("AMÉDIN, CELSE KAFUI"));
+
+			//assertEquals("test6_6_getSetOfInstructors: assertEquals", 5, dxsoi
+			//		.getInstructorAvailabilityByName("YAHIA, AMMAR").getPeriodAvailability(4,
+			//				13));
+//			assertEquals("test6_7_getSetOfInstructors: assertEquals", 1, dxsoi
+//					.getInstructorAvailabilityByKey(5).getPeriodAvailability(2, 7));
+//			dxsoi.removeInstructor(1);
+//			dxsoi.removeInstructor(126);
+//			assertEquals("test6_8_getSetOfInstructors: assertEquals", 124, dxsoi
+//					.size());
+//			assertEquals("test6_9_getSetOfInstructors: assertEquals", true, dxsoi
+//					.areVectorsSync());
+//			assertEquals("test6_10_getSetOfInstructors: assertEquals", -1, dxsoi
+//					.getInstructorKeyByName("YAHIA, AMMAR"));
 		} catch (Exception e) {
 			assertFalse("DxInstructorReaderTest: assertFalse" + e.toString(),
 					true);
 		}
 
-		assertEquals("test6_1_getSetOfInstructors: assertEquals", 126, dxsoi
-				.size());
-		assertEquals("test6_2_getSetOfInstructors: assertEquals", true, dxsoi
-				.areVectorsSync());
-		assertNotNull("test6_3_getSetOfInstructors: assertEquals", dxsoi
-				.getResource("ABATZOGLOU, NICOLAS"));
-		assertNotNull("test6_4_getSetOfInstructors: assertEquals", dxsoi
-				.getResource("YAHIA, AMMAR"));
-		assertNotNull("test6_5_getSetOfInstructors: assertEquals", dxsoi
-				.getResource("AMÉDIN, CELSE KAFUI"));
 
-		//assertEquals("test6_6_getSetOfInstructors: assertEquals", 5, dxsoi
-		//		.getInstructorAvailabilityByName("YAHIA, AMMAR").getPeriodAvailability(4,
-		//				13));
-//		assertEquals("test6_7_getSetOfInstructors: assertEquals", 1, dxsoi
-//				.getInstructorAvailabilityByKey(5).getPeriodAvailability(2, 7));
-//		dxsoi.removeInstructor(1);
-//		dxsoi.removeInstructor(126);
-//		assertEquals("test6_8_getSetOfInstructors: assertEquals", 124, dxsoi
-//				.size());
-//		assertEquals("test6_9_getSetOfInstructors: assertEquals", true, dxsoi
-//				.areVectorsSync());
-//		assertEquals("test6_10_getSetOfInstructors: assertEquals", -1, dxsoi
-//				.getInstructorKeyByName("YAHIA, AMMAR"));
 	}
 
 }
