@@ -116,15 +116,15 @@ public abstract class EventsDlgInterface extends JDialog implements
         super(dApplic.getJFrame(), title + " rgrEDL", true);
         _dApplic = dApplic;
         _jDialog = this;
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		} else {
-			if (dApplic.getCurrentDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDModel();
-		}
+//		} else {
+//			if (dApplic.getCurrentDoc() == null)
+//				return;
+//			_dmodel = dApplic.getCurrentDModel();
+//		}
         _activities = _dmodel.getSetOfActivities();
         _events = _dmodel.getSetOfEvents();
     }//end method

@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.56 $ $Date: 2006-09-25 13:36:26 $
+ * Title: ActivityDlg $Revision: 1.57 $ $Date: 2006-12-30 17:23:00 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.56 $
+ * @version $Revision: 1.57 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -89,15 +89,15 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
 
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		} else {
-			if (dApplic.getCurrentDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDModel();
-		}
+//		} else {
+//			if (dApplic.getCurrentDoc() == null)
+//				return;
+//			_dmodel = dApplic.getCurrentDModel();
+//		}
 
 		_activities = _dmodel.getSetOfActivities();
 
@@ -206,11 +206,11 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		// if button APPLY
 		if (command.equals(DConst.BUT_APPLY)) {
 			setActivitesVisibility();
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
-			} else {
-				_dmodel.changeInDModelByActivity(this);
-			}
+//			} else {
+//				_dmodel.changeInDModelByActivity(this);
+//			}
 			_buttonsPanel.setFirstDisable();
 		}
 		// if arrows

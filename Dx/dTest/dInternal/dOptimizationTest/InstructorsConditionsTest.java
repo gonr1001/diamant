@@ -21,13 +21,13 @@ public class InstructorsConditionsTest extends TestCase {
 	public InstructorsConditionsTest(String name) {
 		super(name);
 		try {
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData5j.dia");
-			} else {
-				_dm5j = new DModel(new DDocument(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData5j.dia", 1);
-			}
+//			} else {
+//				_dm5j = new DModel(new DDocument(), "." + File.separator
+//						+ "dataTest" + File.separator + "loadData5j.dia", 1);
+//			}
 		} catch (Exception e) {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
@@ -38,13 +38,13 @@ public class InstructorsConditionsTest extends TestCase {
 		try {
 //			_dm7j = new DModel(new DDocument(), "." + File.separator
 //				+ "dataTest" + File.separator + "loadData5j.dia", 1);
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData5j.dia");
-			} else {
-				_dm7j = new DModel(new DDocument(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData5j.dia", 1);
-			}
+//			} else {
+//				_dm7j = new DModel(new DDocument(), "." + File.separator
+//						+ "dataTest" + File.separator + "loadData5j.dia", 1);
+//			}
 		} catch (Exception e) {
 			// !!!NIC!!! Has to be handled or causes errors
 		}

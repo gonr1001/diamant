@@ -114,13 +114,13 @@ public class DLoadData {
 	public DLoadData(DModel dm, String args) {
 		_dm = dm;
 		if (_dm != null) // XXXX Pascal: else ?
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_chars = _dm.getDxDocument().getDMediator().getDApplication()
 						.getPreferences()._acceptedChars;
-			} else {
-				_chars = _dm.getDDocument().getDMediator().getDApplication()
-						.getPreferences()._acceptedChars;
-			}
+//			} else {
+//				_chars = _dm.getDDocument().getDMediator().getDApplication()
+//						.getPreferences()._acceptedChars;
+//			}
 		try {
 			verifyImportDataFile(args);
 		} catch (DxException e) {

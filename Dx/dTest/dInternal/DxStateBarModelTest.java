@@ -65,17 +65,17 @@ public class DxStateBarModelTest extends TestCase {
 		String fileName = "." + File.separator + "dataTest" + File.separator
 				+ "loadData5j.dia";
 		int _type = 1;
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			_dm5j = new DModel(_dxDoc5j, fileName);
 			_dm5j.changeInDModel(new Object());
 			sbm = new DxStateBarModel(_dm5j);
 			sbm.update();
-		} else {
-			_dm5j = new DModel(_doc5j, fileName, _type);
-			_dm5j.changeInDModel(new Object());
-			sbm = new DxStateBarModel(_dm5j);
-			sbm.update();
-		}
+//		} else {
+//			_dm5j = new DModel(_doc5j, fileName, _type);
+//			_dm5j.changeInDModel(new Object());
+//			sbm = new DxStateBarModel(_dm5j);
+//			sbm.update();
+//		}
 		assertEquals("test0_StateBarModel_5j: assertEquals", -1, sbm.elementAt(
 				0).getValue());
 		assertEquals("test1_StateBarModel_5j: assertEquals", 11, sbm.elementAt(
@@ -108,11 +108,11 @@ public class DxStateBarModelTest extends TestCase {
 		String fileName1 = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
 		int _type = 1;
-		if(DxFlags.newDoc){
+//		if(DxFlags.newDoc){
 			_dm7j = new DModel(_dxDoc7j, fileName1);
-		} else {
-			_dm7j = new DModel(_doc7j, fileName1, _type);
-		}
+//		} else {
+//			_dm7j = new DModel(_doc7j, fileName1, _type);
+//		}
 //		_dm7j = new DModel(_doc7j, fileName1, _type);
 		_dm7j.changeInDModel(new Object());
 		DxStateBarModel sbm = new DxStateBarModel(_dm7j);

@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.33 $  $Date: 2006-12-28 15:57:31 $
+ * Title: ImportDlg $Revision: 1.34 $  $Date: 2006-12-30 17:23:02 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.33 $
+ * @version $Revision: 1.34 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -70,7 +70,7 @@ public class ImportDlg extends JDialog {
 		// and a file was selected, continue
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			// get the file name
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				String fil = fc.getSelectedFile().getAbsolutePath();
 				dApplic.getCurrentDxDoc().setAutoImportDIMFilePath(
 						fc.getSelectedFile().getAbsolutePath().substring(
@@ -88,38 +88,38 @@ public class ImportDlg extends JDialog {
 				dispose();
 				dApplic.afterImport();
 
-			} else {
-				String fil = fc.getSelectedFile().getAbsolutePath();
-				dApplic.getCurrentDoc().setAutoImportDIMFilePath(
-						fc.getSelectedFile().getAbsolutePath().substring(
-								0,
-								fc.getSelectedFile().getAbsolutePath()
-										.lastIndexOf(File.separatorChar) + 1));
-				dApplic.setCurrentDir(fil);
-
-				//dApplic.doImport(this, fil);
-				dApplic.doImport(fil);
-
-
-				// String error = "";
-				// dApplic.setCursorWait();
-				// if (dApplic.getCurrentDoc() != null) {
-				// error = dApplic.getCurrentDModel().importData(fil);
-				// } else
-				// error = "ImportDlg : Il n'existe pas de document pour
-				// effectuer l'importation des données";
-				// if (error.length() == 0) {
-				// new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
-				// } else {
-				// new FatalProblemDlg(dApplic.getJFrame(), error);
-				// System.exit(1);
-				// }
-				// dApplic.setCursorDefault();
-				dApplic.getCurrentDModel().changeInDModelByImportDlg(this);
-				dApplic.setCurrentDir(fc.getSelectedFile().getPath());
-				dispose();
-				dApplic.afterImport();
-			}
+//			} else {
+//				String fil = fc.getSelectedFile().getAbsolutePath();
+//				dApplic.getCurrentDoc().setAutoImportDIMFilePath(
+//						fc.getSelectedFile().getAbsolutePath().substring(
+//								0,
+//								fc.getSelectedFile().getAbsolutePath()
+//										.lastIndexOf(File.separatorChar) + 1));
+//				dApplic.setCurrentDir(fil);
+//
+//				//dApplic.doImport(this, fil);
+//				dApplic.doImport(fil);
+//
+//
+//				// String error = "";
+//				// dApplic.setCursorWait();
+//				// if (dApplic.getCurrentDoc() != null) {
+//				// error = dApplic.getCurrentDModel().importData(fil);
+//				// } else
+//				// error = "ImportDlg : Il n'existe pas de document pour
+//				// effectuer l'importation des données";
+//				// if (error.length() == 0) {
+//				// new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
+//				// } else {
+//				// new FatalProblemDlg(dApplic.getJFrame(), error);
+//				// System.exit(1);
+//				// }
+//				// dApplic.setCursorDefault();
+//				dApplic.getCurrentDModel().changeInDModelByImportDlg(this);
+//				dApplic.setCurrentDir(fc.getSelectedFile().getPath());
+//				dispose();
+//				dApplic.afterImport();
+//			}
 
 		}
 	}// end method

@@ -873,16 +873,16 @@ public class SelectiveScheduleDlg extends JDialog {
 		 * met a jour l'affichage de la grille horaire
 		 */
 		private void updateScheduleGUIAndDispose() {
-			if(DxFlags.newDoc) {
+//			if(DxFlags.newDoc) {
 	    		DApplication.getInstance().getCurrentDxDoc().getTTPane().updateTTPane(
 						DApplication.getInstance().getCurrentDxDoc().getCurrentDModel()
 						.getTTStructure());
-	    	} else {
-			DApplication.getInstance().getCurrentDoc()
-					.getTTPane().updateTTPane(
-							DApplication.getInstance().getCurrentDModel()
-									.getTTStructure());
-	    	}
+//	    	} else {
+//			DApplication.getInstance().getCurrentDoc()
+//					.getTTPane().updateTTPane(
+//							DApplication.getInstance().getCurrentDModel()
+//									.getTTStructure());
+//	    	}
 			SelectiveScheduleDlg.this.dispose();
 		}
 

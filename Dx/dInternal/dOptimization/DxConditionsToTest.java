@@ -379,7 +379,7 @@ public class DxConditionsToTest {
 	 * extract preference tables
 	 */
 	public void extractPreference() {
-		if (DxFlags.newDoc){
+//		if (DxFlags.newDoc){
 			if (_dm.getDxDocument().getDMediator() != null) {
 				int[] conflictsPreference = _dm.getDxDocument().getDMediator()
 						.getDApplication().getPreferences().getConflictLimits();
@@ -395,22 +395,22 @@ public class DxConditionsToTest {
 						.setPeriodVariationEvents(_periodVariationEvents);
 			}
 			
-		} else {
-			if (_dm.getDDocument().getDMediator() != null) {
-				int[] conflictsPreference = _dm.getDDocument().getDMediator()
-						.getDApplication().getPreferences().getConflictLimits();
-				for (int i = 0; i < _acceptableConflictsTable.length; i++)
-					_acceptableConflictsTable[i] = conflictsPreference[i];
-				_avoidPriority = new int[2 - conflictsPreference[3]];
-				int inc = 0;
-				for (int i = conflictsPreference[3] + 1; i < 3; i++)
-					_avoidPriority[inc++] = i;
-				_periodAcceptableSize = conflictsPreference[4];
-				_periodVariationEvents = conflictsPreference[5];
-				((DxStudentCondtionsToTest) _conditionsToTest.get(0))
-						.setPeriodVariationEvents(_periodVariationEvents);
-			}
-		}
+//		} else {
+//			if (_dm.getDDocument().getDMediator() != null) {
+//				int[] conflictsPreference = _dm.getDDocument().getDMediator()
+//						.getDApplication().getPreferences().getConflictLimits();
+//				for (int i = 0; i < _acceptableConflictsTable.length; i++)
+//					_acceptableConflictsTable[i] = conflictsPreference[i];
+//				_avoidPriority = new int[2 - conflictsPreference[3]];
+//				int inc = 0;
+//				for (int i = conflictsPreference[3] + 1; i < 3; i++)
+//					_avoidPriority[inc++] = i;
+//				_periodAcceptableSize = conflictsPreference[4];
+//				_periodVariationEvents = conflictsPreference[5];
+//				((DxStudentCondtionsToTest) _conditionsToTest.get(0))
+//						.setPeriodVariationEvents(_periodVariationEvents);
+//			}
+//		}
 		
 	}
 

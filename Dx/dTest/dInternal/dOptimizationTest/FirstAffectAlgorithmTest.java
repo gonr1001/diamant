@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.14 $ $Date: 2006-12-28 20:25:42 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.15 $ $Date: 2006-12-30 17:23:05 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -67,11 +67,11 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		int type = 1;
 
 		try {
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName);
-			} else {
-				dm1 = new DModel(_dDocument1, fileName, type);
-			}
+//			} else {
+//				dm1 = new DModel(_dDocument1, fileName, type);
+//			}
 			// dm1 = new DModel(_dDocument1, fileName, type);
 			dm1.changeInDModel(new Object());
 			assertEquals("test_build: assertEquals", 140, dm1
@@ -102,11 +102,11 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		fileName += "genNoAssigned.dia";
 		int type = 1;
 		try {
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName);
-			} else {
-				dm1 = new DModel(_dDocument1, fileName, type);
-			}
+//			} else {
+//				dm1 = new DModel(_dDocument1, fileName, type);
+//			}
 			dm1.changeInDModel(new Object());
 			assertEquals("test_build: assertEquals", 140, dm1
 					.getSetOfActivities().size());

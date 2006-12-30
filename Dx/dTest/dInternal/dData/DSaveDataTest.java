@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-07-26 17:55:54 $
+ * Title: DSaveDataTest $Revision $  $Date: 2006-12-30 17:23:03 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -80,11 +80,11 @@ public class DSaveDataTest extends TestCase {
 		_type = 1;
 		try {
 //			_dm1 = new DModel(_dDocument1, _fileName1, _type);
-			if(DxFlags.newDoc){
+//			if(DxFlags.newDoc){
 				_dm1 = new DModel(_dxDocument1, _fileName1);
-			} else {
-				_dm1 = new DModel(_dDocument1, _fileName1, _type);
-			}
+//			} else {
+//				_dm1 = new DModel(_dDocument1, _fileName1, _type);
+//			}
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -103,11 +103,11 @@ public class DSaveDataTest extends TestCase {
 
 		try {
 //			_dm2 = new DModel(_dDocument2, _fileName2, _type);
-			if(DxFlags.newDoc){
+//			if(DxFlags.newDoc){
 				_dm2 = new DModel(_dxDocument2, _fileName2);
-			} else {
-				_dm2 = new DModel(_dDocument2, _fileName2, _type);
-			}
+//			} else {
+//				_dm2 = new DModel(_dDocument2, _fileName2, _type);
+//			}
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}

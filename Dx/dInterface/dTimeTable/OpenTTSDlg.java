@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.24 $  $Date: 2006-07-26 17:55:46 $
+ * Title: OpenTTSDlg $Revision: 1.25 $  $Date: 2006-12-30 17:23:02 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.24 $
+ * @version $Revision: 1.25 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -87,11 +87,11 @@ public class OpenTTSDlg extends JDialog {
 			dApplic.setCurrentDir(fil);
 ///*!!!NIC!!!*/			String error;
             try {
-            	if (DxFlags.newDoc){
+//            	if (DxFlags.newDoc){
             		dApplic.getDMediator().addDxTTStructureDoc(fil);
-            	} else {
-            		dApplic.getDMediator().addDoc(fil, 0);
-            	}
+//            	} else {
+//            		dApplic.getDMediator().addDoc(fil, 0);
+//            	}
             } catch (Exception e) {
                 /*!!!NIC!!!*/
             }

@@ -73,15 +73,15 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
 
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		} else {
-			if (dApplic.getCurrentDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDModel();
-		}
+//		} else {
+//			if (dApplic.getCurrentDoc() == null)
+//				return;
+//			_dmodel = dApplic.getCurrentDModel();
+//		}
 		_dxsoaAct = _dmodel.getDxSetOfActivities();
 
 		initialize();
@@ -204,11 +204,11 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		// if button APPLY
 		if (command.equals(DConst.BUT_APPLY)) {
 			setActivitesVisibility();
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
-			} else {
-				_dmodel.changeInDModelByActivity(this);
-			}
+//			} else {
+//				_dmodel.changeInDModelByActivity(this);
+//			}
 			_buttonsPanel.setFirstDisable();
 		}
 		// if arrows

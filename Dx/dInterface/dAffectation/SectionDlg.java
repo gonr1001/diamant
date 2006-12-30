@@ -131,15 +131,15 @@ public class SectionDlg extends DDialog implements ActionListener,
 		_dApplic = dApplic;
 		//_sortIndex = 0; // why 0?
 		_currentAssignedGroup = -1; // why -1
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		} else {
-			if (dApplic.getCurrentDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDModel();
-		}
+//		} else {
+//			if (dApplic.getCurrentDoc() == null)
+//				return;
+//			_dmodel = dApplic.getCurrentDModel();
+//		}
 		_activities = _dmodel.getSetOfActivities();
 		_students = _dmodel.getSetOfStudents();// is correct
 		_students.sortSetOfResourcesByID();// is correct
@@ -239,15 +239,15 @@ public class SectionDlg extends DDialog implements ActionListener,
 			_typeCombo.setEnabled(true);
 			_applyPanel.setFirstDisable();
 
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dmodel.getConditionsTest().setMatrixBuilded(false,
 						false);
 				_dmodel.changeInDModel(this.idDlgToString());
-			} else {
-				_dApplic.getCurrentDModel().getConditionsTest().setMatrixBuilded(false,
-						false);
-				_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
-			}
+//			} else {
+//				_dApplic.getCurrentDModel().getConditionsTest().setMatrixBuilded(false,
+//						false);
+//				_dApplic.getCurrentDModel().changeInDModelByStudentsDlg(this);
+//			}
 
 
 		}

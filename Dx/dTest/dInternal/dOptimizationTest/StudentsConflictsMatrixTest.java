@@ -36,13 +36,13 @@ public class StudentsConflictsMatrixTest extends TestCase {
 	public StudentsConflictsMatrixTest(String name) {
 		super(name);
 		try {
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData7j.dia");
-			} else {
-				_dm1 = new DModel(new DDocument(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData7j.dia", 1);
-			}
+//			} else {
+//				_dm1 = new DModel(new DDocument(), "." + File.separator
+//						+ "dataTest" + File.separator + "loadData7j.dia", 1);
+//			}
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -54,13 +54,13 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		_matrix1 = _dm1.getConditionsTest().getConflictsMatrix();
 
 		try {			
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
 						+ "dataTest" + File.separator + "loadData5j.dia");
-			} else {
-				_dm2 = new DModel(new DDocument(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData5j.dia", 1);
-			}
+//			} else {
+//				_dm2 = new DModel(new DDocument(), "." + File.separator
+//						+ "dataTest" + File.separator + "loadData5j.dia", 1);
+//			}
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}

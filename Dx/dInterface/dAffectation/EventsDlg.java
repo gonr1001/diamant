@@ -105,12 +105,12 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dApplic.getCurrentDxDoc().getCurrentDModel().changeInDModel(
 						this.idDlgToString());
-			} else {
-				_dApplic.getCurrentDModel().changeInDModelByEventsDlg(this);
-			}
+//			} else {
+//				_dApplic.getCurrentDModel().changeInDModelByEventsDlg(this);
+//			}
 			_buttonsPanel.setFirstDisable();
 		}// end if Button APPLY
 	}// end method

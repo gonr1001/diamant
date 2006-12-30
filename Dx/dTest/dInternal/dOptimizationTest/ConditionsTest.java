@@ -50,13 +50,13 @@ public class ConditionsTest extends TestCase {
 		try {
 //            _dm5j = new DModel(new DDocument(), "." + File.separator + "dataTest"
 //            		+ File.separator + "loadData5j.dia", 1);
-            if (DxFlags.newDoc) {
+//            if (DxFlags.newDoc) {
     			_dm5j = new DModel(new DxTTableDoc(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "loadData5j.dia");
-    		} else {
-    			_dm5j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
-    					+ "dataTest" + File.separator + "loadData5j.dia", 1);
-    		}
+//    		} else {
+//    			_dm5j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
+//    					+ "dataTest" + File.separator + "loadData5j.dia", 1);
+//    		}
         } catch (Exception e) {
             //Should not fail in controled conditions
         }
@@ -70,13 +70,13 @@ public class ConditionsTest extends TestCase {
 		try {
 //            _dmh = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator + "dataTest"
 //            		+ File.separator + "lData5j30min.dia", 1);
-            if (DxFlags.newDoc) {
+//            if (DxFlags.newDoc) {
     			_dmh = new DModel(new DxTTableDoc(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "lData5j30min.dia");
-    		} else {
-    			_dmh = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
-    					+ "dataTest" + File.separator + "lData5j30min.dia", 1);
-    		}
+//    		} else {
+//    			_dmh = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
+//    					+ "dataTest" + File.separator + "lData5j30min.dia", 1);
+//    		}
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println("ici "+ e.toString());
@@ -89,13 +89,13 @@ public class ConditionsTest extends TestCase {
 		try {
 //            _dm7j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator + "dataTest"
 //            		+ File.separator + "loadData7j.dia", 1);
-            if (DxFlags.newDoc) {
+//            if (DxFlags.newDoc) {
     			_dm7j = new DModel(new DxTTableDoc(), System.getProperty("user.dir") + File.separator
     					+ "dataTest" + File.separator + "loadData7j.dia");
-    		} else {
-    			_dm7j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
-    					+ "dataTest" + File.separator + "loadData7j.dia", 1);
-    		}
+//    		} else {
+//    			_dm7j = new DModel(new DDocument(), System.getProperty("user.dir") + File.separator
+//    					+ "dataTest" + File.separator + "loadData7j.dia", 1);
+//    		}
         } catch (Exception e) {
             //Should not fail in controled conditions
         }

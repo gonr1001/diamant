@@ -71,11 +71,11 @@ public class DxAssignAllAlgTest extends TestCase {
 		int type = 1;
 
 		try {
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				dm1 = new DModel(dxDocument1, fileName.toString());
-			} else {
-				dm1 = new DModel(dDocument1, fileName.toString(), type);
-			}	
+//			} else {
+//				dm1 = new DModel(dDocument1, fileName.toString(), type);
+//			}	
 			dm1.changeInDModel(new String("DxAssign"));
 			assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
 					.size());
@@ -110,11 +110,11 @@ public class DxAssignAllAlgTest extends TestCase {
 		int type = 1;
 
 		try {
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				dm1 = new DModel(dxDocument1, fileName.toString());
-			} else {
-				dm1 = new DModel(dDocument1, fileName.toString(), type);
-			}	
+//			} else {
+//				dm1 = new DModel(dDocument1, fileName.toString(), type);
+//			}	
 			dm1.changeInDModel(new Object());
 			assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
 					.size());

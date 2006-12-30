@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.37 $  $Date: 2006-09-20 03:09:03 $
+ * Title: OpenTTDlg $Revision: 1.38 $  $Date: 2006-12-30 17:23:02 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,8 +16,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.37 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.38 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -91,27 +91,27 @@ public class OpenTTDlg extends JDialog implements ActionListener, DlgIdentificat
 			String fil = fc.getSelectedFile().getAbsolutePath();
 			dApplic.setCurrentDir(fil);
 
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				try {
 					dApplic.getDMediator().addDxTTableDoc(fil, fil);
 				} catch (DxException e) {
                     new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
 					System.exit(1);
 				}
-			} else {
-				try {
-					dApplic.getDMediator().addDoc(fil, fil, DConst.NO_TYPE);
-				} catch (DxException e) {
-					  new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
-						 System.exit(1);
-				}
-			}
+//			} else {
+//				try {
+//					dApplic.getDMediator().addDoc(fil, fil, DConst.NO_TYPE);
+//				} catch (DxException e) {
+//					  new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
+//						 System.exit(1);
+//				}
+//			}
 			dApplic.setCurrentDir(fc.getSelectedFile().getPath());
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
-			} else {
-				dApplic.getCurrentDModel().changeInDModel(dApplic.getJFrame());
-			}
+//			} else {
+//				dApplic.getCurrentDModel().changeInDModel(dApplic.getJFrame());
+//			}
 
 
 			dispose();

@@ -101,15 +101,15 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			DxSetOfInstructors soi) {
 		super(dApplic.getJFrame(), DConst.INST_ASSIGN_TD, false);
 		
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		} else {
-			if (dApplic.getCurrentDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDModel();
-		}
+//		} else {
+//			if (dApplic.getCurrentDoc() == null)
+//				return;
+//			_dmodel = dApplic.getCurrentDModel();
+//		}
 		
 		_soi = soi;
 		_time = _dmodel.getTTStructure().getCurrentCycle()
@@ -164,11 +164,11 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			_applyPanel.setFirstDisable();
 			_currentInst = ((DxInstructor) _chooser.getSelectedItem());
 			_currentInst.setAvailability(_currentAvailbility);
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
-			} else {
-				_dmodel.changeInDModelByInstructorsDlg(this);
-			}
+//			} else {
+//				_dmodel.changeInDModelByInstructorsDlg(this);
+//			}
 			// if a button of the grid has been pressed
 		} else if (_posVect.indexOf(event.getSource()) > -1) {
 			int index = _posVect.indexOf(event.getSource());

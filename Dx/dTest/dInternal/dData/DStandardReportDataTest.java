@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2006-07-26 17:55:54 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2006-12-30 17:23:03 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -58,11 +58,11 @@ public class DStandardReportDataTest extends TestCase{
   	_type = 1;
   	try {
 //        _dm= new DModel(_dDocument,_fileName,_type);
-        if(DxFlags.newDoc){
+//        if(DxFlags.newDoc){
 			_dm = new DModel(_dxDocument, _fileName);
-		} else {
-			_dm = new DModel(_dDocument, _fileName, _type);
-		}
+//		} else {
+//			_dm = new DModel(_dDocument, _fileName, _type);
+//		}
     } catch (Exception e) {
         //Shoudl not fail in controled conditions
     }

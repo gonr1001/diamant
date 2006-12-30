@@ -22,13 +22,13 @@ public class SetOfEventsTest extends TestCase {
 	public SetOfEventsTest(String name) {
 		super(name);
 		try {
-			if(DxFlags.newDoc){
+//			if(DxFlags.newDoc){
 				_dm = new DModel(new DxTTableDoc(), "." + File.separator + "dataTest"
 						+ File.separator + "loadData5j.dia");
-			} else{
-				_dm = new DModel(new DDocument(), "." + File.separator + "dataTest"
-						+ File.separator + "loadData5j.dia", 1);
-			}
+//			} else{
+//				_dm = new DModel(new DDocument(), "." + File.separator + "dataTest"
+//						+ File.separator + "loadData5j.dia", 1);
+//			}
 				
 			
 			

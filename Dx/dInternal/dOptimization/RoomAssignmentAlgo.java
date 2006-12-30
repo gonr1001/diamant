@@ -39,13 +39,13 @@ public class RoomAssignmentAlgo implements Algorithm {
 		super();
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			_conflictsPreference = _dm.getDxDocument().getDMediator()
 			.getDApplication().getPreferences().getConflictLimits();
-		} else {
-			_conflictsPreference = _dm.getDDocument().getDMediator()
-			.getDApplication().getPreferences().getConflictLimits();
-		}
+//		} else {
+//			_conflictsPreference = _dm.getDDocument().getDMediator()
+//			.getDApplication().getPreferences().getConflictLimits();
+//		}
 		
 		setNoRoomToEventsWithRoomsNotFixed();
 		doWork();

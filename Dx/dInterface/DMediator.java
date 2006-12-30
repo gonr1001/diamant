@@ -213,13 +213,13 @@ public class DMediator extends Object {
 
 	public String saveCurrentDoc(String str) {
 		String error = "";
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setDocumentName(str);
 			getCurrentDxDoc().saveDxDocument(str);
-		} else {
-			getCurrentDoc().setDocumentName(str);
-			error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
-		}
+//		} else {
+//			getCurrentDoc().setDocumentName(str);
+//			error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
+//		}
 		return error;
 	}
 
@@ -328,7 +328,7 @@ public class DMediator extends Object {
 		int retval = JOptionPane.showConfirmDialog(_dApplication.getJFrame(),
 				DConst.SAVE_PROMPT);
 
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			DxDocument aux = getCurrentDxDoc();
 			switch (retval) {
 			case JOptionPane.YES_OPTION:
@@ -347,25 +347,25 @@ public class DMediator extends Object {
 				return true;
 			}// end switch
 			return true;// it does not matter
-		}
-		DDocument aux = getCurrentDoc();
-		switch (retval) {
-		case JOptionPane.YES_OPTION:
-			_dApplication.close();
-			removeCurrentDoc();
-			aux.close();
-			return false;
-
-		case JOptionPane.NO_OPTION:
-			removeCurrentDoc();
-			aux.close();
-			return false;
-
-		case JOptionPane.CANCEL_OPTION:
-		case JOptionPane.CLOSED_OPTION:
-			return true;
-		}// end switch
-		return true;// it does not matter
+//		}
+//		DDocument aux = getCurrentDoc();
+//		switch (retval) {
+//		case JOptionPane.YES_OPTION:
+//			_dApplication.close();
+//			removeCurrentDoc();
+//			aux.close();
+//			return false;
+//
+//		case JOptionPane.NO_OPTION:
+//			removeCurrentDoc();
+//			aux.close();
+//			return false;
+//
+//		case JOptionPane.CANCEL_OPTION:
+//		case JOptionPane.CLOSED_OPTION:
+//			return true;
+//		}// end switch
+//		return true;// it does not matter
 	}// end promptToSave
 
 	public DApplication getDApplication() {

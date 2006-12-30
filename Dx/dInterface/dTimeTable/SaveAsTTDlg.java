@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.18 $  $Date: 2006-12-30 16:23:24 $
+ * Title: SaveAsTTDlg $Revision: 1.19 $  $Date: 2006-12-30 17:23:02 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -70,7 +70,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 	} // doSave
 
 	public String setExtension(JFileChooser fc) {
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (_dApplic.getDMediator().getCurrentDxDoc() instanceof DxTTStructureDoc) {
 				fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
 						DConst.XML_FILE));
@@ -79,15 +79,15 @@ public class SaveAsTTDlg extends SaveAsDlg {
 			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
 					DConst.DIA_FILE));
 			return DConst.DOT_DIA;
-		} 
-		if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel()
-				.isATimeTable()) {
-			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
-					DConst.DIA_FILE));
-			return DConst.DOT_DIA;
-		}
-		fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
-				DConst.XML_FILE));
-		return DConst.DOT_XML;
+//		} 
+//		if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel()
+//				.isATimeTable()) {
+//			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
+//					DConst.DIA_FILE));
+//			return DConst.DOT_DIA;
+//		}
+//		fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
+//				DConst.XML_FILE));
+//		return DConst.DOT_XML;
 	} // setFilters
 }

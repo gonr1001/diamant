@@ -93,15 +93,15 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
     public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites) {
         super(dApplic.getJFrame(), DConst.ROOMASSIGN + "rgr", false);
    
-		if (DxFlags.newDoc) {
+//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		} else {
-			if (dApplic.getCurrentDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDModel();
-		}
+//		} else {
+//			if (dApplic.getCurrentDoc() == null)
+//				return;
+//			_dmodel = dApplic.getCurrentDModel();
+//		}
         
         _dxsosSites = dxsosSites;
 
@@ -186,11 +186,11 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
             
             _dxrCurrentRoom.setAvailability(new DxAvailability(
                     _dxaCurrentAvailbility));
-			if (DxFlags.newDoc) {
+//			if (DxFlags.newDoc) {
 				_dmodel.changeInDModel(this.idDlgToString());
-			} else {
-				_dmodel.changeInDModelByInstructorsDlg(this);
-			}
+//			} else {
+//				_dmodel.changeInDModelByInstructorsDlg(this);
+//			}
             // if a button of the grid has been pressed
         } else if (_posVect.indexOf(event.getSource()) > -1) {
             int index = _posVect.indexOf(event.getSource());
