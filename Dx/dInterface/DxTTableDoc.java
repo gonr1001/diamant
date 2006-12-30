@@ -34,6 +34,7 @@ import dInternal.DModel;
 import dInternal.DxStateBarModel;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.DxExceptionDlg;
+import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
 
 /**
@@ -130,7 +131,8 @@ public class DxTTableDoc extends DxDocument {
 	} // end buidDocument
 
 	@Override
-	public void update(Observable ttS, Object component) {
+	public void update(Observable md, Object component) {
+		if (md instanceof DModel){
 		if (component != null)
 			component.toString();
 		_dMediator.getDApplication().setCursorWait();
@@ -138,16 +140,18 @@ public class DxTTableDoc extends DxDocument {
 		_stateBar.upDate();
 		_stateBar.upDate();
 		_dMediator.getDApplication().setCursorDefault();
+		} else {
+		new InformationDlg("I am in DxTTTableDoc.update \n" 
+				+"This message will never ocurrs in normal conditions");
+		}	
 	}
 
 	@Override
-	public TTStructure getTTStructure() {
-		
+	public TTStructure getTTStructure() {		
 		return _dm.getTTStructure();
 	}
 
 	public void changeInModel(String str) {
-		System.out.println("changeInModel+ rgr here");
 		_dm.changeInDModel(str);
 	}// end changeInDModel
 
@@ -164,11 +168,11 @@ public class DxTTableDoc extends DxDocument {
 		return _dm.getModified();
 	} // end getDModel
 
-	@Override
-	public void saveTTStrucure(String str) {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void saveTTStrucure(String str) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	public String getTTtype() {
 		return _type;
@@ -193,5 +197,11 @@ public class DxTTableDoc extends DxDocument {
 		 close();
 		 buidDocument(false, true);
 		 _ttPane.updateTTPane(_dm.getTTStructure());		
+	}
+
+	@Override
+	public void saveDxDocument(String str) {
+		_dm.saveTimeTable(str);
+		
 	}
 }

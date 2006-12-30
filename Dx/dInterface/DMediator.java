@@ -80,8 +80,7 @@ public class DMediator extends Object {
 			_dApplication.getToolBar().setToolBars(
 					currentDoc.getCurrentDModel().getTTStructure());
 		} else {
-			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc
-					.getError());
+			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
 			System.exit(1);
 		}
 		DApplication.getInstance().setCursorDefault();
@@ -102,7 +101,7 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDoc(String ttName, String fileName, int type)
-	throws DxException {
+			throws DxException {
 		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
 		if (currentDoc.getError().length() == 0) {
 			_documents.addElement(currentDoc);
@@ -114,6 +113,7 @@ public class DMediator extends Object {
 		}
 		return currentDoc.getError();
 	} // end addDoc
+
 	/**
 	 * for new tt and for open tt
 	 * 
@@ -128,14 +128,14 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTableDoc(String ttName, String fileName)
-			throws DxException{
+			throws DxException {
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);
 		_dApplication.hideToolBar();
-		
+
 		return "";
-	} 
+	}
 
 	/**
 	 * for new ttStructure and for open ttStructure
@@ -156,8 +156,7 @@ public class DMediator extends Object {
 			_dApplication.getToolBar().setToolBars(
 					currentDoc.getCurrentDModel().getTTStructure());
 		} else {
-			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc
-					.getError());
+			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
 			System.exit(1);
 		}
 		DApplication.getInstance().setCursorDefault();
@@ -201,25 +200,26 @@ public class DMediator extends Object {
 			try {
 				_dxDocuments.get(0).getJIF().setSelected(true);
 			} catch (PropertyVetoException e) {
-				new DxExceptionDlg(_dApplication.getJFrame(),e.getMessage(),e);
+				new DxExceptionDlg(_dApplication.getJFrame(), e.getMessage(), e);
 				System.exit(1);
 			}
 		} else {// end if (_documents.size()!=0)
 			_dApplication.getToolBar().setEnabledToolbar(false);
 		}
-		
+
 	}
+
 	// -------------------------------------------
 
 	public String saveCurrentDoc(String str) {
 		String error = "";
 		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setDocumentName(str);
-			getCurrentDxDoc().saveTTStrucure(str);
-		}else{
-		getCurrentDoc().setDocumentName(str);
-		error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);	
-	}
+			getCurrentDxDoc().saveDxDocument(str);
+		} else {
+			getCurrentDoc().setDocumentName(str);
+			error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
+		}
 		return error;
 	}
 
@@ -253,12 +253,13 @@ public class DMediator extends Object {
 			} // end else
 			if (_dxDocuments.size() == 0) {
 				_dApplication.hideToolBar();
-				} else {
-				 _dApplication.getToolBar().setToolBars(
-				getCurrentDxDoc().getTTStructure());
+			} else {
+				_dApplication.getToolBar().setToolBars(
+						getCurrentDxDoc().getTTStructure());
 			}
 		}// end if
 	}
+
 	// -------------------------------------------
 	public DDocument getCurrentDoc() {
 		DDocument currentDoc = null;
@@ -275,7 +276,7 @@ public class DMediator extends Object {
 				currentDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
 				new DxExceptionDlg(_dApplication.getJFrame(),
-						"In DMediator.getCurrentDoc: " +e.getMessage(),e);
+						"In DMediator.getCurrentDoc: " + e.getMessage(), e);
 				System.exit(1);
 			}
 			return currentDoc;
@@ -297,8 +298,7 @@ public class DMediator extends Object {
 			try {
 				currentDxDoc.getJIF().setIcon(false);
 			} catch (PropertyVetoException e) {
-				new DxExceptionDlg(_dApplication.getJFrame(),
-						e.getMessage(),e);
+				new DxExceptionDlg(_dApplication.getJFrame(), e.getMessage(), e);
 				e.printStackTrace();
 				System.exit(1);
 			}
@@ -368,12 +368,8 @@ public class DMediator extends Object {
 		return true;// it does not matter
 	}// end promptToSave
 
-
-
 	public DApplication getDApplication() {
 		return _dApplication;
 	}
-
-
 
 } /* end class DMediator */

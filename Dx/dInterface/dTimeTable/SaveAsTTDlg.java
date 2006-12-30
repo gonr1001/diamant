@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.17 $  $Date: 2006-09-13 13:08:22 $
+ * Title: SaveAsTTDlg $Revision: 1.18 $  $Date: 2006-12-30 16:23:24 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.18 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -51,13 +51,8 @@ public class SaveAsTTDlg extends SaveAsDlg {
 	public SaveAsTTDlg(DApplication dApplic) {
 		super(dApplic);
 		saveAs(null, false); // no data, no report
-	} // end constructor*/
-
-	public SaveAsTTDlg(DApplication dApplic, String str) {
-		super(dApplic);
-		str += "";
-		saveAs(null, false); // no data, no report
 	} // end constructor
+
 
 	public void addInNewFile(String currentFile, String data) {
 		String error = _dApplic.getDMediator().saveCurrentDoc(currentFile);
@@ -84,7 +79,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
 					DConst.DIA_FILE));
 			return DConst.DOT_DIA;
-		}
+		} 
 		if (_dApplic.getDMediator().getCurrentDoc().getCurrentDModel()
 				.isATimeTable()) {
 			fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
@@ -94,6 +89,5 @@ public class SaveAsTTDlg extends SaveAsDlg {
 		fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
 				DConst.XML_FILE));
 		return DConst.DOT_XML;
-
 	} // setFilters
 }

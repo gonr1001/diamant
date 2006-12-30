@@ -36,6 +36,7 @@ import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.FatalProblemDlg;
+import eLib.exit.dialog.InformationDlg;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -89,13 +90,19 @@ public class DxTTStructureDoc extends DxDocument {
 		return iStr;
 	}
 
-	public void update(Observable dm, Object component) {
-		if (component != null)
+	@Override
+	public void update(Observable ttS, Object component) {		
+		if (ttS instanceof TTStructure){
+			if (component != null)
 			component.toString();
 		_dMediator.getDApplication().setCursorWait();
 		_ttPane.updateTTPane(_ttStructure);
 		// _stateBar.upDate();
 		_dMediator.getDApplication().setCursorDefault();
+		} else {
+			new InformationDlg("I am in DxTTStructureDoc.update \n" 
+					+"This message will never ocurrs in normal conditions");
+		}
 	}// end update
 
 	// -------------------------------------------
@@ -202,11 +209,10 @@ public class DxTTStructureDoc extends DxDocument {
 		_autoImportDIMFilePath = importDIMFilePath;
 	}
 
-
-	@Override
-	public void saveTTStrucure(String str) {
-		_ttStructure.saveTTStructure(str);
-	}
+//	@Override
+//	public void saveTTStrucure(String str) {
+//		_ttStructure.saveTTStructure(str);
+//	}
 
 	@Override
 	public DModel getCurrentDModel() {
@@ -221,5 +227,10 @@ public class DxTTStructureDoc extends DxDocument {
 	@Override
 	public boolean isModified() {
 		return _ttStructure.isModified();
+	}
+
+	@Override
+	public void saveDxDocument(String str) {
+		_ttStructure.saveTTStructure(str);	
 	}
 }

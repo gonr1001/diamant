@@ -124,7 +124,7 @@ public abstract class DxDocument implements Observer {
 
 	public abstract boolean isModified();
 	
-	public abstract void saveTTStrucure(String str);
+	public abstract void saveDxDocument(String str);
 
 	public abstract DModel getCurrentDModel();
 

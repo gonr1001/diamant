@@ -178,9 +178,10 @@ public class DModel extends Observable {
 		} else {
 			_error = "Wrong type of file";
 		}
-		if (_error.length() == 0){
-			if (_isATimeTable) _conditionsToTest = new DxConditionsToTest(this);
-		}else{
+		if (_error.length() == 0) {
+			if (_isATimeTable)
+				_conditionsToTest = new DxConditionsToTest(this);
+		} else {
 			throw new DxException(_error);
 		}
 		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
@@ -223,9 +224,10 @@ public class DModel extends Observable {
 		} else {
 			_error = "Wrong type of file";
 		}
-		if (_error.length() == 0){
-			if (_isATimeTable) _conditionsToTest = new DxConditionsToTest(this);
-		}else{
+		if (_error.length() == 0) {
+			if (_isATimeTable)
+				_conditionsToTest = new DxConditionsToTest(this);
+		} else {
 			throw new DxException(_error);
 		}
 		// if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
@@ -376,66 +378,66 @@ public class DModel extends Observable {
 	 * @throws Exception
 	 */
 
-	public String loadTimeTable(String fileName, String currentDir){
+	public String loadTimeTable(String fileName, String currentDir) {
 
 		DLoadData loadD = new DLoadData(this);
-		Vector theTT=null;
+		Vector theTT = null;
 		try {
 			theTT = loadD.loadTheTT(fileName, currentDir);
-		}
-		catch (FileNotFoundException fnfe)
-		{ // alert the user that the specified file does not exist
-			new DxExceptionDlg(fnfe.getMessage(),fnfe);
+			if (theTT.size() != 0) {
+				setVersion((String) theTT.get(0));
+				_ttStruct = (TTStructure) theTT.get(1);
+				if (_ttStruct.getError().length() != 0)
+					return _ttStruct.getError();
+				_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
+
+				if (DxFlags.newRooms) {
+					_dxSetOfSites = (DxSetOfSites) theTT.get(3);
+					// _dxSetOfSites.resizeSiteAvailability(_ttStructure);
+				} else {
+					_setOfSites = (SetOfSites) theTT.get(3);
+					resizeSiteAvailability(_setOfSites);
+				}
+
+				if (DxFlags.newActivity) {
+					_dxsoasSetOfAct = (DxSetOfActivitiesSites) theTT.get(4);
+				} else {
+					_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
+				}
+
+				_setOfStuSites = (SetOfStuSites) theTT.get(5);
+				if (!DxFlags.newRooms) {
+					if (_setOfSites.getError().length() != 0) {
+						return _setOfSites.getError();
+					}
+				}
+
+				if (_setOfActivitiesSites.getError().length() != 0) {
+					return _setOfActivitiesSites.getError();
+				}
+				if (_setOfStuSites.getError().length() != 0) {
+					return _setOfStuSites.getError();
+				}
+				buildSetOfEvents();
+				_conditionsToTest = new DxConditionsToTest(this);
+				this.getConditionsTest().initAllConditions();
+			}
+			_constructionState = 1;
+			setImportDone(false);
+			return "";
+
+		} catch (FileNotFoundException fnfe) { // alert the user that the
+												// specified file does not exist
+			new DxExceptionDlg(fnfe.getMessage(), fnfe);
 		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(),e);
-		// TODO hara2602
-		// Use finally to reset cursor to DEFAULT.
-		}finally {
+			new DxExceptionDlg(e.getMessage(), e);
+			// TODO hara2602
+			// Use finally to reset cursor to DEFAULT.
+		} finally {
 			DApplication.getInstance().setCursorDefault();
 		}
-
-
-		if (theTT.size() != 0) {
-			setVersion((String) theTT.get(0));
-			_ttStruct = (TTStructure) theTT.get(1);
-			if (_ttStruct.getError().length() != 0)
-				return _ttStruct.getError();
-			_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
-
-			if (DxFlags.newRooms) {
-				_dxSetOfSites = (DxSetOfSites) theTT.get(3);
-				// _dxSetOfSites.resizeSiteAvailability(_ttStructure);
-			} else {
-				_setOfSites = (SetOfSites) theTT.get(3);
-				resizeSiteAvailability(_setOfSites);
-			}
-
-			if (DxFlags.newActivity) {
-				_dxsoasSetOfAct = (DxSetOfActivitiesSites) theTT.get(4);
-			} else {
-				_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
-			}
-
-			_setOfStuSites = (SetOfStuSites) theTT.get(5);
-			if (!DxFlags.newRooms) {
-				if (_setOfSites.getError().length() != 0) {
-					return _setOfSites.getError();
-				}
-			}
-
-			if (_setOfActivitiesSites.getError().length() != 0) {
-				return _setOfActivitiesSites.getError();
-			}
-			if (_setOfStuSites.getError().length() != 0) {
-				return _setOfStuSites.getError();
-			}
-			buildSetOfEvents();
-			_conditionsToTest = new DxConditionsToTest(this);
-			this.getConditionsTest().initAllConditions();
-		}
-		_constructionState = 1;
-		setImportDone(false);
 		return "";
+
 	}
 
 	/**
@@ -454,7 +456,7 @@ public class DModel extends Observable {
 		// import set of sites
 		if (DxFlags.newRooms) {
 			_dxSetOfSites = loadData.extractDxRooms();
-			resizeSiteAvailability(_dxSetOfSites);
+			resizeSiteAvailability();//_dxSetOfSites);
 
 		} else {
 			_setOfSites = loadData.extractRooms(null, false);
@@ -496,9 +498,10 @@ public class DModel extends Observable {
 	 * 
 	 * @param str
 	 * @return
-	 * @throws DxException 
+	 * @throws DxException
 	 */
-	public void mergeData(String fileName, String selectionName) throws DxException {
+	public void mergeData(String fileName, String selectionName)
+			throws DxException {
 		_setOfImportSelErrors = new StandardCollection();
 		String error = "";
 		DLoadData loadData = new DLoadData(this);
@@ -550,8 +553,9 @@ public class DModel extends Observable {
 			changeInDModel(_dDocument.getJIF());
 		}
 		_mergeDone = true;
-		if(error!="") throw new DxException(error);
-	 }
+		if (error != "")
+			throw new DxException(error);
+	}
 
 	/**
 	 * 
@@ -1105,7 +1109,7 @@ public class DModel extends Observable {
 	/**
 	 * @param ofSites
 	 */
-	public void resizeSiteAvailability(DxSetOfSites dxSetOfSites) {
+	public void resizeSiteAvailability(){//DxSetOfSites dxSetOfSites) {
 		DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
 		Iterator itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
