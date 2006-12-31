@@ -16,7 +16,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAffectation.EditActivityDlg;
@@ -72,16 +71,9 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
 		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
-
-//		if (DxFlags.newDoc) {
-			if (dApplic.getCurrentDxDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-//		} else {
-//			if (dApplic.getCurrentDoc() == null)
-//				return;
-//			_dmodel = dApplic.getCurrentDModel();
-//		}
+		if (dApplic.getCurrentDxDoc() == null)
+			return;
+		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
 		_dxsoaAct = _dmodel.getDxSetOfActivities();
 
 		initialize();
@@ -114,22 +106,22 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 	 * Initialize the dialog
 	 */
 	protected void initialize() {
-		
+
 		_dxavRight = new Vector<DxActivity>();
 		_dxavLeft = new Vector<DxActivity>();
-		
+
 		DxActivity dxaCurrentAct;
 		Iterator itActivities = _dxsoaAct.iterator();
-		while(itActivities.hasNext()){
-			dxaCurrentAct = (DxActivity)itActivities.next();
-			if(dxaCurrentAct.getVisibility()){
+		while (itActivities.hasNext()) {
+			dxaCurrentAct = (DxActivity) itActivities.next();
+			if (dxaCurrentAct.getVisibility()) {
 				_dxavLeft.add(dxaCurrentAct);
-			}else{
+			} else {
 				_dxavRight.add(dxaCurrentAct);
 			}
-			
+
 		}
-		
+
 		// right panel
 		_rightList = new JList(_dxavRight);
 		_rightList.addMouseListener(mouseListenerLists);
@@ -142,7 +134,7 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		listPanel.setMaximumSize(new Dimension(100, 400));
 		rightPanel.add(_lNoVisible, BorderLayout.NORTH);
 		rightPanel.add(listPanel, BorderLayout.SOUTH);
-		
+
 		// left panel
 		_leftList = new JList(_dxavLeft);
 		_leftList.addMouseListener(mouseListenerLists);
@@ -204,27 +196,24 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		// if button APPLY
 		if (command.equals(DConst.BUT_APPLY)) {
 			setActivitesVisibility();
-//			if (DxFlags.newDoc) {
-				_dmodel.changeInDModel(this.idDlgToString());
-//			} else {
-//				_dmodel.changeInDModelByActivity(this);
-//			}
+
+			_dmodel.changeInDModel(this.idDlgToString());
 			_buttonsPanel.setFirstDisable();
 		}
 		// if arrows
 		if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])) {
-//			if (command.equals(_arrowsNames[1])) {
-//				DxTools.listTransfers(_rightList, _leftList, _rightVec,
-//						_leftVec, 1);
-//			} else {
-//				DxTools.listTransfers(_leftList, _rightList, _leftVec,
-//						_rightVec, 1);
-//			}
+			// if (command.equals(_arrowsNames[1])) {
+			// DxTools.listTransfers(_rightList, _leftList, _rightVec,
+			// _leftVec, 1);
+			// } else {
+			// DxTools.listTransfers(_leftList, _rightList, _leftVec,
+			// _rightVec, 1);
+			// }
 			_lNoVisible.setText(_dxavRight.size() + " " + DConst.NOT_INCLUDED);
 			_lVisible.setText(_dxavLeft.size() + " " + DConst.INCLUDED);
 			_buttonsPanel.setFirstEnable();
 		}// end if (command.equals(_arrowsNames[0]) ||
-			// command.equals(_arrowsNames[1]))
+		// command.equals(_arrowsNames[1]))
 	}// end method
 
 	/**
@@ -233,12 +222,12 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 	 */
 	private void setActivitesVisibility() {
 		Iterator<DxActivity> itAct = _dxavRight.iterator();
-		while(itAct.hasNext()){
+		while (itAct.hasNext()) {
 			itAct.next().setVisibility(false);
 		}
-		
+
 		itAct = _dxavLeft.iterator();
-		while(itAct.hasNext()){
+		while (itAct.hasNext()) {
 			itAct.next().setVisibility(true);
 		}
 	}
@@ -246,4 +235,4 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 	public String idDlgToString() {
 		return this.getClass().toString();
 	}
-}
+} // end DxActivityDlg

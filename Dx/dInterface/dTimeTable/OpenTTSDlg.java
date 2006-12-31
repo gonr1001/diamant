@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.25 $  $Date: 2006-12-30 17:23:02 $
+ * Title: OpenTTSDlg $Revision: 1.26 $  $Date: 2006-12-31 18:09:52 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,7 +28,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.DApplication;
 
 import dResources.DFileFilter;
@@ -78,7 +77,7 @@ public class OpenTTSDlg extends JDialog {
 		// If the file chooser exited sucessfully,
 		// and a file was selected, continue
 		if (returnVal == JFileChooser.CANCEL_OPTION) {
-			dApplic.getDMediator().closeCurrentDoc();
+			dApplic.getDMediator().closeCurrentDxDoc();
 			dApplic.hideToolBar();
 		}
 		if (returnVal == JFileChooser.APPROVE_OPTION) {

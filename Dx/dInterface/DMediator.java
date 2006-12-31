@@ -25,7 +25,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 
@@ -43,7 +42,7 @@ public class DMediator extends Object {
 
 	private DApplication _dApplication;
 
-	private Vector<DDocument> _documents;
+//	private Vector<DDocument> _documents;
 
 	private Vector<DxDocument> _dxDocuments;
 
@@ -52,7 +51,7 @@ public class DMediator extends Object {
 	// -----------------------------
 	public DMediator(DApplication dApplic) {
 		_dApplication = dApplic;
-		_documents = new Vector<DDocument>();
+//		_documents = new Vector<DDocument>();
 		_dxDocuments = new Vector<DxDocument>();
 		_cancel = false;
 	} // end Mediator
@@ -71,21 +70,21 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDoc(String fileName, int type) throws DxException /* !!!NIC!!! */{
-		DApplication.getInstance().setCursorWait();
-		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
-		_documents.addElement(currentDoc);
-
-		if (currentDoc.getError().length() == 0) {
-			_dApplication.getToolBar().setToolBars(
-					currentDoc.getCurrentDModel().getTTStructure());
-		} else {
-			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
-			System.exit(1);
-		}
-		DApplication.getInstance().setCursorDefault();
-		return currentDoc.getError();
-	} // end addDoc
+//	public String addDoc(String fileName, int type) throws DxException /* !!!NIC!!! */{
+//		DApplication.getInstance().setCursorWait();
+//		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
+//		_documents.addElement(currentDoc);
+//
+//		if (currentDoc.getError().length() == 0) {
+//			_dApplication.getToolBar().setToolBars(
+//					currentDoc.getCurrentDModel().getTTStructure());
+//		} else {
+//			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
+//			System.exit(1);
+//		}
+//		DApplication.getInstance().setCursorDefault();
+//		return currentDoc.getError();
+//	} // end addDoc
 
 	/**
 	 * for new tt and for open tt
@@ -100,19 +99,19 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDoc(String ttName, String fileName, int type)
-			throws DxException {
-		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
-		if (currentDoc.getError().length() == 0) {
-			_documents.addElement(currentDoc);
-			_dApplication.getToolBar().setToolBars(
-					currentDoc.getCurrentDModel().getTTStructure());
-			_dApplication.hideToolBar();
-		} else {
-			throw new DxException(currentDoc.getError());
-		}
-		return currentDoc.getError();
-	} // end addDoc
+//	public String addDoc(String ttName, String fileName, int type)
+//			throws DxException {
+//		DDocument currentDoc = new DDocument(this, ttName, fileName, type);
+//		if (currentDoc.getError().length() == 0) {
+//			_documents.addElement(currentDoc);
+//			_dApplication.getToolBar().setToolBars(
+//					currentDoc.getCurrentDModel().getTTStructure());
+//			_dApplication.hideToolBar();
+//		} else {
+//			throw new DxException(currentDoc.getError());
+//		}
+//		return currentDoc.getError();
+//	} // end addDoc
 
 	/**
 	 * for new tt and for open tt
@@ -148,19 +147,21 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTExamDoc(String fileName, int type) throws Exception /* !!!NIC!!! */{
+		//TODO review all this method
 		DApplication.getInstance().setCursorWait();
-		DDocument currentDoc = new DDocument(this, fileName, fileName, type);
-		_documents.addElement(currentDoc);
+//		DxDocument currentDoc = new DxTTableDoc(this, fileName);
+//		_documents.addElement(currentDoc);
 
-		if (currentDoc.getError().length() == 0) {
-			_dApplication.getToolBar().setToolBars(
-					currentDoc.getCurrentDModel().getTTStructure());
-		} else {
-			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
-			System.exit(1);
-		}
-		DApplication.getInstance().setCursorDefault();
-		return currentDoc.getError();
+//		if (currentDoc.getError().length() == 0) {
+//			_dApplication.getToolBar().setToolBars(
+//					currentDoc.getCurrentDModel().getTTStructure());
+//		} else {
+//			new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
+//			System.exit(1);
+//		}
+//		DApplication.getInstance().setCursorDefault();
+//		return currentDoc.getError();
+		return "addDxTTExamDoc";
 	} // end addDoc
 
 	/**
@@ -179,20 +180,20 @@ public class DMediator extends Object {
 		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
 	} // end addDxTTStructureDoc
 
-	public void removeCurrentDoc() {
-		_documents.remove(getCurrentDoc());
-		if (_documents.size() != 0) {
-			try {
-				_documents.get(0).getJIF().setSelected(true);
-			} catch (PropertyVetoException e) {
-				new DxExceptionDlg(_dApplication.getJFrame(), e.toString());
-				e.printStackTrace();
-				System.exit(1);
-			}
-		} else {// end if (_documents.size()!=0)
-			_dApplication.getToolBar().setEnabledToolbar(false);
-		}
-	} // end removeCurrentDoc
+//	public void removeCurrentDoc() {
+//		_documents.remove(getCurrentDoc());
+//		if (_documents.size() != 0) {
+//			try {
+//				_documents.get(0).getJIF().setSelected(true);
+//			} catch (PropertyVetoException e) {
+//				new DxExceptionDlg(_dApplication.getJFrame(), e.toString());
+//				e.printStackTrace();
+//				System.exit(1);
+//			}
+//		} else {// end if (_documents.size()!=0)
+//			_dApplication.getToolBar().setEnabledToolbar(false);
+//		}
+//	} // end removeCurrentDoc
 
 	private void removeCurrentDxDoc() {
 		_dxDocuments.remove(getCurrentDxDoc());
@@ -213,34 +214,29 @@ public class DMediator extends Object {
 
 	public String saveCurrentDoc(String str) {
 		String error = "";
-//		if (DxFlags.newDoc) {
 			getCurrentDxDoc().setDocumentName(str);
 			getCurrentDxDoc().saveDxDocument(str);
-//		} else {
-//			getCurrentDoc().setDocumentName(str);
-//			error = getCurrentDoc().getCurrentDModel().saveTimeTable(str);
-//		}
 		return error;
 	}
 
-	public void closeCurrentDoc() {
-		if (getCurrentDoc() != null) {
-			if (getCurrentDoc().isModified()) {
-				_cancel = promptToSave();
-			} else {// end if
-				DDocument aux = getCurrentDoc();
-				_documents.remove(getCurrentDoc());
-				aux.close();
-			} // end else
-			if (_documents.size() == 0) {
-				_dApplication.hideToolBar();
-			} else {
-				_dApplication.getToolBar().setToolBars(
-						getCurrentDoc().getCurrentDModel().getTTStructure());
-			}
-		}// end if
-
-	}
+//	public void closeCurrentDoc() {
+//		if (getCurrentDoc() != null) {
+//			if (getCurrentDoc().isModified()) {
+//				_cancel = promptToSave();
+//			} else {// end if
+//				DDocument aux = getCurrentDoc();
+//				_documents.remove(getCurrentDoc());
+//				aux.close();
+//			} // end else
+//			if (_documents.size() == 0) {
+//				_dApplication.hideToolBar();
+//			} else {
+//				_dApplication.getToolBar().setToolBars(
+//						getCurrentDoc().getCurrentDModel().getTTStructure());
+//			}
+//		}// end if
+//
+//	}
 
 	public void closeCurrentDxDoc() {
 		if (getCurrentDxDoc() != null) {
@@ -261,28 +257,28 @@ public class DMediator extends Object {
 	}
 
 	// -------------------------------------------
-	public DDocument getCurrentDoc() {
-		DDocument currentDoc = null;
-		for (int i = 0; i < _documents.size(); i++) {
-			currentDoc = _documents.elementAt(i);
-			JInternalFrame currentFrame = currentDoc.getJIF();
-			if (currentFrame.isSelected()) {
-				return currentDoc;
-			} // end if
-		} // end for
-		if (_documents.size() != 0) {
-			currentDoc = _documents.elementAt(0);
-			try {
-				currentDoc.getJIF().setIcon(false);
-			} catch (PropertyVetoException e) {
-				new DxExceptionDlg(_dApplication.getJFrame(),
-						"In DMediator.getCurrentDoc: " + e.getMessage(), e);
-				System.exit(1);
-			}
-			return currentDoc;
-		}
-		return null;
-	} // end getCurrentDoc
+//	public DDocument getCurrentDoc() {
+//		DDocument currentDoc = null;
+//		for (int i = 0; i < _documents.size(); i++) {
+//			currentDoc = _documents.elementAt(i);
+//			JInternalFrame currentFrame = currentDoc.getJIF();
+//			if (currentFrame.isSelected()) {
+//				return currentDoc;
+//			} // end if
+//		} // end for
+//		if (_documents.size() != 0) {
+//			currentDoc = _documents.elementAt(0);
+//			try {
+//				currentDoc.getJIF().setIcon(false);
+//			} catch (PropertyVetoException e) {
+//				new DxExceptionDlg(_dApplication.getJFrame(),
+//						"In DMediator.getCurrentDoc: " + e.getMessage(), e);
+//				System.exit(1);
+//			}
+//			return currentDoc;
+//		}
+//		return null;
+//	} // end getCurrentDoc
 
 	public DxDocument getCurrentDxDoc() {
 		DxDocument currentDxDoc = null;
@@ -308,13 +304,13 @@ public class DMediator extends Object {
 	}
 
 	// -------------------------------------------
-	public JInternalFrame getCurrentFrame() {
-		DDocument currentDoc = getCurrentDoc();
-		if (currentDoc != null) {
-			return currentDoc.getJIF();
-		}
-		return null;
-	} // end getCurrentFrame
+//	public JInternalFrame getCurrentFrame() {
+//		DDocument currentDoc = getCurrentDoc();
+//		if (currentDoc != null) {
+//			return currentDoc.getJIF();
+//		}
+//		return null;
+//	} // end getCurrentFrame
 
 	/**
 	 * Prompts to save if document has changed. This checks the document to see
@@ -328,7 +324,6 @@ public class DMediator extends Object {
 		int retval = JOptionPane.showConfirmDialog(_dApplication.getJFrame(),
 				DConst.SAVE_PROMPT);
 
-//		if (DxFlags.newDoc) {
 			DxDocument aux = getCurrentDxDoc();
 			switch (retval) {
 			case JOptionPane.YES_OPTION:
@@ -347,25 +342,7 @@ public class DMediator extends Object {
 				return true;
 			}// end switch
 			return true;// it does not matter
-//		}
-//		DDocument aux = getCurrentDoc();
-//		switch (retval) {
-//		case JOptionPane.YES_OPTION:
-//			_dApplication.close();
-//			removeCurrentDoc();
-//			aux.close();
-//			return false;
-//
-//		case JOptionPane.NO_OPTION:
-//			removeCurrentDoc();
-//			aux.close();
-//			return false;
-//
-//		case JOptionPane.CANCEL_OPTION:
-//		case JOptionPane.CLOSED_OPTION:
-//			return true;
-//		}// end switch
-//		return true;// it does not matter
+
 	}// end promptToSave
 
 	public DApplication getDApplication() {

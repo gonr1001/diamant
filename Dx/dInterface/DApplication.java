@@ -79,7 +79,6 @@ import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
 
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -173,8 +172,8 @@ public class DApplication { // implements ActionListener {
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
 		/* Icone de l'application */
-		ImageIcon iconeDiamant = new ImageIcon(System.getProperty("user.home")+ File.separator
-				+ "pref" + File.separator + "logoDiamant.gif");
+		ImageIcon iconeDiamant = new ImageIcon(System.getProperty("user.home")
+				+ File.separator + "pref" + File.separator + "logoDiamant.gif");
 		_jFrame.setIconImage(iconeDiamant.getImage());
 		setLAF(_preferences._lookAndFeel);
 		_logger.warn("bye_from DApplication"); // this must be the end of an
@@ -238,9 +237,9 @@ public class DApplication { // implements ActionListener {
 		return _dMediator;
 	} // end getDMediator
 
-	public DDocument getCurrentDoc() {
-		return _dMediator.getCurrentDoc();
-	} // end getCurrentDoc
+	// public DDocument getCurrentDoc() {
+	// return _dMediator.getCurrentDoc();
+	// } // end getCurrentDoc
 
 	public DxDocument getCurrentDxDoc() {
 		return _dMediator.getCurrentDxDoc();
@@ -348,60 +347,39 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void exit() {
-//		if (DxFlags.newDoc) {
-			// if no Document exit ok
-			while (_dMediator.getCurrentDxDoc() != null) { // is a while
-				this.close(); // new CloseCmd().execute(this);
-				if (_dMediator.getCancel())
-					break;
-			}
-			// if Document changed as for save or not
-			if (_dMediator.getCurrentDxDoc() == null) {
-				_jFrame.setVisible(false);
-				_jFrame.dispose();
-				System.exit(0);
-			}
-
-//		} else {
-//			// if no Document exit ok
-//			while (_dMediator.getCurrentDoc() != null) { // is a while
-//				this.close(); // new CloseCmd().execute(this);
-//				if (_dMediator.getCancel())
-//					break;
-//			}
-//			// if Document changed as for save or not
-//			if (_dMediator.getCurrentDoc() == null) {
-//				_jFrame.setVisible(false);
-//				_jFrame.dispose();
-//				System.exit(0);
-//			}
-//		}
+		// if no Document exit ok
+		while (_dMediator.getCurrentDxDoc() != null) { // is a while
+			this.close(); // new CloseCmd().execute(this);
+			if (_dMediator.getCancel())
+				break;
+		}
+		// if Document changed as for save or not
+		if (_dMediator.getCurrentDxDoc() == null) {
+			_jFrame.setVisible(false);
+			_jFrame.dispose();
+			System.exit(0);
+		}
 
 	}
 
 	public DModel getCurrentDModel() {
-//		if (DxFlags.newDoc) {
-			return getCurrentDxDoc().getCurrentDModel();
-//		}
-//		return getCurrentDoc().getCurrentDModel();
+		return getCurrentDxDoc().getCurrentDModel();
 	}
-
-	// public DModel getCurrentDxModel() {
-	// return getCurrentDxDoc()..getCurrentDModel();
-	// }
 
 	/**
 	 * @return
 	 */
 
 	public void setCursorWait() {
-		if(_jFrame!=null)
-		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		if (_jFrame != null)
+			_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	}
 
 	public void setCursorDefault() {
-		if(_jFrame!=null)
-		_jFrame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		if (_jFrame != null)
+			_jFrame
+					.setCursor(Cursor
+							.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	/**
@@ -417,24 +395,13 @@ public class DApplication { // implements ActionListener {
 	public void newTTable() {
 		new NewTimeTableDlg(this, DConst.CYCLE);
 		this.setCurrentDir(_fileToOpen);
-
-//		if (DxFlags.newDoc) {
-			try {
-				this.getDMediator().addDxTTableDoc(
-						this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
-				_dxMenuBar.afterNewTTable();
-			} catch (DxException e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			}
-//		} else {
-//			try {
-//				getDMediator().addDoc(this.getCurrentDir() + DConst.NO_NAME,
-//						_fileToOpen, DConst.CYCLE);
-//				_dxMenuBar.afterNewTTable();
-//			} catch (DxException e) {
-//				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-//			}
-//		}
+		try {
+			this.getDMediator().addDxTTableDoc(
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
+			_dxMenuBar.afterNewTTable();
+		} catch (DxException e) {
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+		}
 
 	}
 
@@ -446,10 +413,12 @@ public class DApplication { // implements ActionListener {
 		this.setCurrentDir(_fileToOpen);
 
 		try {
-			this.getDMediator().addDoc(this.getCurrentDir() + DConst.NO_NAME,
-					_fileToOpen, DConst.EXAM);
+			this.getDMediator().addDxTTExamDoc(_fileToOpen, DConst.EXAM);
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans
@@ -469,24 +438,14 @@ public class DApplication { // implements ActionListener {
 	public void newTTStrucCycle() {
 		this.showToolBar();
 		this.setCursorWait();
-//		if (DxFlags.newDoc) {
-			try {
-				this._dMediator
-						.addDxTTStructureDoc(this.getPreferences()._standardTTC);
-				_dxMenuBar.afterNewTTStruc();
-			} catch (Exception e) {
-				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
-				this.hideToolBar();
-			}
-//		} else {
-//			try {
-//				this._dMediator.addDoc(this.getPreferences()._standardTTC,
-//						DConst.NO_TYPE);
-//				_dxMenuBar.afterNewTTStruc();
-//			} catch (Exception e) {
-//				// to avoid warning
-//			}
-//		}
+		try {
+			this._dMediator
+					.addDxTTStructureDoc(this.getPreferences()._standardTTC);
+			_dxMenuBar.afterNewTTStruc();
+		} catch (Exception e) {
+			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
+			this.hideToolBar();
+		}
 		this.setCursorDefault();
 	}
 
@@ -496,24 +455,14 @@ public class DApplication { // implements ActionListener {
 	public void newTTStrucExam() {
 		this.showToolBar();
 		this.setCursorWait();
-//		if (DxFlags.newDoc) {
-			try {
-				this._dMediator
-						.addDxTTStructureDoc(this.getPreferences()._standardTTE);
-				_dxMenuBar.afterNewTTStruc();
-			} catch (Exception e) {
-				new DxExceptionDlg(this._jFrame, e.getMessage(),e);
-				this.hideToolBar();
-			}
-//		} else {
-//			try {
-//				this._dMediator.addDoc(this.getPreferences()._standardTTE,
-//						DConst.NO_TYPE);
-//				_dxMenuBar.afterNewTTStruc();
-//			} catch (DxException e) {
-//				new DxExceptionDlg(_jFrame, e.getMessage(),e);
-//			}
-//		}
+		try {
+			this._dMediator
+					.addDxTTStructureDoc(this.getPreferences()._standardTTE);
+			_dxMenuBar.afterNewTTStruc();
+		} catch (Exception e) {
+			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
+			this.hideToolBar();
+		}
 		this.setCursorDefault();
 
 	}
@@ -532,7 +481,7 @@ public class DApplication { // implements ActionListener {
 	public void openTTStruc() {
 		this.showToolBar();
 		new OpenTTSDlg(this);
-       _dxMenuBar.afterNewTTStruc();
+		_dxMenuBar.afterNewTTStruc();
 		this.afterOpenTTSruc();
 	}
 
@@ -547,41 +496,21 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void close() {
-//		if (DxFlags.newDoc) {
-			this._dMediator.closeCurrentDxDoc();
-			if (!this._dMediator.getCancel()) {
-				_dxMenuBar.initialState();
-			}
-//		} else {
-//			this._dMediator.closeCurrentDoc();
-//			if (!this._dMediator.getCancel()) {
-//				_dxMenuBar.initialState();
-//			}
-//		}
-
+		this._dMediator.closeCurrentDxDoc();
+		if (!this._dMediator.getCancel()) {
+			_dxMenuBar.initialState();
+		}
 	}
 
 	/**
 	 * 
 	 */
 	public void save() {
-//		if (DxFlags.newDoc) {
-			if (this.getCurrentDxDoc().getDocumentName().endsWith(
-					DConst.NO_NAME))
-				new SaveAsTTDlg(this);
-			else if (this.getCurrentDxDoc().isModified())
-				this._dMediator.saveCurrentDoc(this.getCurrentDxDoc()
-						.getDocumentName());
-			// else not necessary to save
-//		} else {
-//			if (this.getCurrentDoc().getDocumentName().endsWith(DConst.NO_NAME))
-//				new SaveAsTTDlg(this);
-//			else if (this.getCurrentDoc().isModified())
-//				this._dMediator.saveCurrentDoc(this.getCurrentDoc()
-//						.getDocumentName());
-//			// else not necessary to save
-//		}
-
+		if (this.getCurrentDxDoc().getDocumentName().endsWith(DConst.NO_NAME))
+			new SaveAsTTDlg(this);
+		else if (this.getCurrentDxDoc().isModified())
+			this._dMediator.saveCurrentDoc(this.getCurrentDxDoc()
+					.getDocumentName());
 	}
 
 	/**
@@ -606,47 +535,25 @@ public class DApplication { // implements ActionListener {
 	}
 
 	public void doImport(String fil) {
-//		if (DxFlags.newDoc) {
-			try {
-				String error = "";
-				this.setCursorWait();
+		try {
+			String error = "";
+			this.setCursorWait();
 
-				if (this.getCurrentDxDoc() != null) {
-					error = this.getCurrentDxDoc().getCurrentDModel()
-							.importData(fil);
-				} else
-					error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
-				if (error.length() == 0) {
-					new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
-				} else {
-					throw new DxException(error);
-				}
-				this.setCursorDefault();
-			} catch (DxException e) {
-				new DxExceptionDlg(e.getMessage(),e);
-			   System.exit(-1);
+			if (this.getCurrentDxDoc() != null) {
+				error = this.getCurrentDxDoc().getCurrentDModel().importData(
+						fil);
+			} else
+				error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
+			if (error.length() == 0) {
+				new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
+			} else {
+				throw new DxException(error);
 			}
-
-//		} else {
-//			try {
-//				String error = "";
-//				this.setCursorWait();
-//
-//				if (this.getCurrentDoc() != null) {
-//					error = this.getCurrentDModel().importData(fil);
-//				} else
-//					error = "ImportDlg : Il n'existe pas de document pour effectuer l'importation des données";
-//				if (error.length() == 0) {
-//					new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
-//				} else {
-//					throw new DxException(error);
-//				}
-//				this.setCursorDefault();
-//			} catch (DxException e) {
-//				new DxExceptionDlg(e.getMessage(),e);
-//			   System.exit(-1);
-//			}
-//		}
+			this.setCursorDefault();
+		} catch (DxException e) {
+			new DxExceptionDlg(e.getMessage(), e);
+			System.exit(-1);
+		}
 	}
 
 	/**
@@ -661,7 +568,7 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void exportFiles() {
 
-		String dir = getTokenDir(this.getCurrentDoc().getDocumentName(),
+		String dir = getTokenDir(this.getCurrentDxDoc().getDocumentName(),
 				File.separator);
 
 		File fileStu = new File(dir + DConst.TT_STUD_FILE);
@@ -720,13 +627,8 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void instructorAvailability() {
-//		if (DxFlags.newDoc) {
-			new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc()
-					.getCurrentDModel().getDxSetOfInstructors());
-//		} else {
-//			new DxInstructorAvailabilityDlg(this, this.getCurrentDModel()
-//					.getDxSetOfInstructors());
-//		}
+		new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc()
+				.getCurrentDModel().getDxSetOfInstructors());
 	}
 
 	/**
@@ -734,13 +636,8 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAvailability() {
 		if (DxFlags.newRooms) {
-//			if (DxFlags.newDoc) {
-				new DxRoomAvailabilityDlg(this, this.getCurrentDxDoc()
-						.getCurrentDModel().getDxSetOfSites());
-//			} else {
-//				new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
-//						.getDxSetOfSites());
-//			}
+			new DxRoomAvailabilityDlg(this, this.getCurrentDxDoc()
+					.getCurrentDModel().getDxSetOfSites());
 			// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 			// .getDxSetOfRooms(), DConst.ROOMASSIGN);
 			// !!!NIC!!! How do we verify if it's multisite?
@@ -888,40 +785,24 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void simpleView() {
-//		if (DxFlags.newDoc) {
-			if (this.getCurrentDxDoc() != null)
-				this.getCurrentDxDoc().displaySimple();
-//		} else {
-//			if (this.getCurrentDoc() != null)
-//				this.getCurrentDoc().displaySimple();
-//		}
-
+		if (this.getCurrentDxDoc() != null)
+			this.getCurrentDxDoc().displaySimple();
 	}
 
 	/**
 	 * 
 	 */
 	public void horizontalSplitView() {
-//		if (DxFlags.newDoc) {
-			if (this.getCurrentDxDoc() != null)
-				this.getCurrentDxDoc().displayHorizontalSplit();
-//		} else {
-//			if (this.getCurrentDoc() != null)
-//				this.getCurrentDoc().displayHorizontalSplit();
-//		}
+		if (this.getCurrentDxDoc() != null)
+			this.getCurrentDxDoc().displayHorizontalSplit();
 	}
 
 	/**
 	 * 
 	 */
 	public void vericalSplitview() {
-//		if (DxFlags.newDoc) {
-			if (this.getCurrentDxDoc() != null)
-				this.getCurrentDxDoc().displayVericalSplit();
-//		} else {
-//			if (this.getCurrentDoc() != null)
-//				this.getCurrentDoc().displayVericalSplit();
-//		}
+		if (this.getCurrentDxDoc() != null)
+			this.getCurrentDxDoc().displayVericalSplit();
 	}
 
 	/**
@@ -937,22 +818,12 @@ public class DApplication { // implements ActionListener {
 	public void myTestFile() {
 		setCurrentDir(".\\devData\\");
 		try {
-//			if (DxFlags.newDoc) {
-				_dMediator.addDxTTableDoc("", ".\\devData\\fichier1.dia");
-//			} else {
-//				_dMediator.addDoc(".\\devData\\fichier1.dia", 0);
-//			}
+			_dMediator.addDxTTableDoc("", ".\\devData\\fichier1.dia");
 		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(),e);
+			new DxExceptionDlg(e.getMessage(), e);
 		}
-//		if (DxFlags.newDoc) {
-			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
-			getCurrentDxDoc().getCurrentDModel().changeInDModel(
-					this.getJFrame());
-//		} else {
-//			getCurrentDoc().setAutoImportDIMFilePath(".\\devData\\");
-//			getCurrentDModel().changeInDModel(this.getJFrame());
-//		}
+		getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
+		getCurrentDxDoc().getCurrentDModel().changeInDModel(this.getJFrame());
 		_dxMenuBar.afterInitialAssignment();
 	}
 
@@ -982,25 +853,12 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
-//			if (DxFlags.newDoc) {
-				new DxAssignRoomsAlg(this.getCurrentDxDoc().getCurrentDModel(),
-						this.getPreferences().getDxConflictLimits()).doWork();
-				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
-//			} else {
-//				new DxAssignRoomsAlg(this.getCurrentDModel(), this
-//						.getPreferences().getDxConflictLimits()).doWork();
-//				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
-//			}
-
+			new DxAssignRoomsAlg(this.getCurrentDxDoc().getCurrentDModel(),
+					this.getPreferences().getDxConflictLimits()).doWork();
+			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 		} else {
-//			if (DxFlags.newDoc) {
-				new RoomAssignmentAlgo(this.getCurrentDxDoc()
-						.getCurrentDModel());
-				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
-//			} else {
-//				new RoomAssignmentAlgo(this.getCurrentDModel());
-//				new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
-//			}
+			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
+			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 		}
 	}
 
@@ -1023,16 +881,10 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public boolean isMultiSite() {
-//		if (DxFlags.newDoc) {
-			if (this.getCurrentDxDoc() == null) {
-				return false;
-			}
-			return this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
-//		}
-//		if (this.getCurrentDoc() == null) {
-//			return false;
-//		}
-//		return this.getCurrentDModel().isMultiSite();
+		if (this.getCurrentDxDoc() == null) {
+			return false;
+		}
+		return this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
 
 	}
 
@@ -1040,29 +892,17 @@ public class DApplication { // implements ActionListener {
 	 * @param str
 	 */
 	public void changeInMulti(String str) {
-//		if (DxFlags.newDoc) {
-			this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
-			if (str.equalsIgnoreCase(DConst.ALL_SITES))
-				this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
-						this.getJFrame());
-			else
-				this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
-						this.getJFrame());
-
-//		} else {
-//			this.getCurrentDModel().setCurrentSite(str);
-//			if (str.equalsIgnoreCase(DConst.ALL_SITES))
-//				this.getCurrentDModel().changeInDModelByAllSites(
-//						this.getJFrame());
-//			else
-//				this.getCurrentDModel().changeInDModel(this.getJFrame());
-//		}
-
+		this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
+		if (str.equalsIgnoreCase(DConst.ALL_SITES))
+			this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+					this.getJFrame());
+		else
+			this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+					this.getJFrame());
 	}
 
 	public void setFileToOpen(String absolutePath) {
 		_fileToOpen = absolutePath;
 	}
-
 
 } /* end class DApplication */

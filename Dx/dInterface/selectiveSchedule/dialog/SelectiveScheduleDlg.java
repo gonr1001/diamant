@@ -1,20 +1,20 @@
 /**
-*
-* Title: SelectiveScheduleDlg 
-* Description: SelectiveScheduleDlg is a class used to
-*
-*
-* Copyright (c) 2001 by rgr.
-* All rights reserved.
-*
-*
-* This software is the confidential and proprietary information
-* of rgr. ("Confidential Information").  You
-* shall not disclose such Confidential Information and shall use
-* it only in accordance with the terms of the license agreement
-* you entered into with rgr.
-* @since JDK1.3
-*/
+ *
+ * Title: SelectiveScheduleDlg 
+ * Description: SelectiveScheduleDlg is a class used to
+ *
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ * @since JDK1.3
+ */
 /*
  * Created on 28 mai 2005
  *
@@ -22,8 +22,6 @@
 package dInterface.selectiveSchedule.dialog;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
-
 import dInterface.DApplication;
 
 import dInterface.selectiveSchedule.SelectiveScheduleManager;
@@ -163,7 +161,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		Iterator itrOnPM = SelectiveScheduleManager.getInstance()
 				.getPersistanceMismatchManager().getPersistanceMismatches()
 				.iterator();
-        PersistanceMismatch pm;
+		PersistanceMismatch pm;
 
 		while (itrOnPM.hasNext()) {
 			pm = (PersistanceMismatch) itrOnPM.next();
@@ -186,7 +184,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		 * sont plus dans le model ?
 		 */
 		Iterator itr = _filterSetSelectorPanel.getFilterSets().iterator();
-        FilterSet fs;
+		FilterSet fs;
 
 		while (itr.hasNext()) {
 			fs = (FilterSet) itr.next();
@@ -274,7 +272,6 @@ public class SelectiveScheduleDlg extends JDialog {
 	// // 7.
 	// // a implementer (car si utilisateur est deja dans sa vue detaillee...)
 	// }
-
 	/**
 	 * Composant utilisé par l'utilisateur pour sélectionner les ensembles qu'il
 	 * désire utiliser pour l'affichage sélectif
@@ -291,7 +288,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		private JPanel _filterSetView = null;
 
 		/* key=FilterSet value=Boolean (Boolean=true si FilterSet est coché) */
-		private SortedMap  _checkBoxes = null;
+		private SortedMap _checkBoxes = null;
 
 		/**
 		 * 
@@ -345,9 +342,9 @@ public class SelectiveScheduleDlg extends JDialog {
 			Collection checkedFilterSets = getCheckedFilterSets();
 			Iterator itrFS = getFilterSets().iterator();
 
-            Object next;
-            FilterSet fs;
-            JCheckBox checkBox;
+			Object next;
+			FilterSet fs;
+			JCheckBox checkBox;
 			while (itrFS.hasNext()) {
 				next = itrFS.next();
 
@@ -357,8 +354,8 @@ public class SelectiveScheduleDlg extends JDialog {
 
 				fs = (FilterSet) next;
 
-				checkBox = createJCheckBox(fs
-						.getFilterSetIdentifier().getFilterSetName());
+				checkBox = createJCheckBox(fs.getFilterSetIdentifier()
+						.getFilterSetName());
 
 				if (checkedFilterSets.contains(fs)) {
 					checkBox.setSelected(true);
@@ -404,7 +401,7 @@ public class SelectiveScheduleDlg extends JDialog {
 			Set entrySet = _checkBoxes.entrySet();
 
 			Iterator itr = entrySet.iterator();
-            Entry mapEntry;
+			Entry mapEntry;
 
 			while (itr.hasNext()) {
 				mapEntry = (Entry) itr.next();
@@ -437,7 +434,7 @@ public class SelectiveScheduleDlg extends JDialog {
 			Collection coll = new ArrayList();
 
 			Iterator itr = entrySet.iterator();
-            Entry entry;
+			Entry entry;
 
 			while (itr.hasNext()) {
 				entry = (Entry) itr.next();
@@ -479,7 +476,7 @@ public class SelectiveScheduleDlg extends JDialog {
 		private FilterSet getFilterSetFromName(String fileterSetName) {
 			FilterSet result = null;
 			Iterator itrFilterSets = _checkBoxes.keySet().iterator();
-            FilterSet fs;
+			FilterSet fs;
 
 			while (itrFilterSets.hasNext()) {
 				fs = (FilterSet) itrFilterSets.next();
@@ -540,7 +537,7 @@ public class SelectiveScheduleDlg extends JDialog {
 
 		void addFilterSetElements(FilterSet fs) {
 			Iterator itr = fs.getIterator();
-            DResource next;
+			DResource next;
 
 			while (itr.hasNext()) {
 				next = (DResource) itr.next();
@@ -560,7 +557,7 @@ public class SelectiveScheduleDlg extends JDialog {
 
 		void removeFilterSetElements(FilterSet fs) {
 			Iterator itr = fs.getIterator();
-            DResource next;
+			DResource next;
 
 			while (itr.hasNext()) {
 				next = (DResource) itr.next();
@@ -657,7 +654,8 @@ public class SelectiveScheduleDlg extends JDialog {
 
 		public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
 			e.toString();
-			_comboBox.setSelectedIndex(0); // revient a l'item GiveClueToUserComboBoxAction
+			_comboBox.setSelectedIndex(0); // revient a l'item
+											// GiveClueToUserComboBoxAction
 		}
 
 		// non utilise
@@ -817,7 +815,7 @@ public class SelectiveScheduleDlg extends JDialog {
 
 			/* L'utilisateur est certains, alors on y va... */
 			Iterator itr = checkedFilterSets.iterator();
-            FilterSet fsToDelete;
+			FilterSet fsToDelete;
 
 			while (itr.hasNext()) {
 				fsToDelete = (FilterSet) itr.next();
@@ -873,16 +871,10 @@ public class SelectiveScheduleDlg extends JDialog {
 		 * met a jour l'affichage de la grille horaire
 		 */
 		private void updateScheduleGUIAndDispose() {
-//			if(DxFlags.newDoc) {
-	    		DApplication.getInstance().getCurrentDxDoc().getTTPane().updateTTPane(
-						DApplication.getInstance().getCurrentDxDoc().getCurrentDModel()
-						.getTTStructure());
-//	    	} else {
-//			DApplication.getInstance().getCurrentDoc()
-//					.getTTPane().updateTTPane(
-//							DApplication.getInstance().getCurrentDModel()
-//									.getTTStructure());
-//	    	}
+			DApplication.getInstance().getCurrentDxDoc().getTTPane()
+					.updateTTPane(
+							DApplication.getInstance().getCurrentDxDoc()
+									.getCurrentDModel().getTTStructure());
 			SelectiveScheduleDlg.this.dispose();
 		}
 
@@ -893,7 +885,7 @@ public class SelectiveScheduleDlg extends JDialog {
 			Collection allFilterSets = _filterSetSelectorPanel.getFilterSets();
 
 			Iterator itrAllFS = allFilterSets.iterator();
-            Object next;
+			Object next;
 
 			while (itrAllFS.hasNext()) {
 				next = itrAllFS.next();
@@ -983,4 +975,3 @@ public class SelectiveScheduleDlg extends JDialog {
 		}
 	}
 }
-

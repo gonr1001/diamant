@@ -27,7 +27,6 @@ import java.util.Vector;
 import dConstants.DConst;
 import dDeveloper.DxFlags;
 import dInterface.DApplication;
-import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
@@ -112,7 +111,7 @@ public class DModel extends Observable {
 
 	private SetOfActivitiesSites _setOfActivitiesSites;
 
-	private DDocument _dDocument;
+//	private DDocument _dDocument;
 
 	private DxDocument _dxDocument;
 
@@ -148,52 +147,52 @@ public class DModel extends Observable {
 	 * 
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
-	public DModel(DDocument dDocument, String fileName, int type)
-			throws DxException {
-		_error = "";
-		_modified = false;
-		_isExamPrepared = false;
-		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
-		_importDone = false;
-		_mergeDone = false;
-		_constructionState = 0;
-		_currentCycle = 1;
-		_nbConflicts = new int[] { 10, 20, 30 };
-		_setOfEvents = new SetOfEvents(this);
-		_setOfImportErrors = new StandardCollection();
-		_setOfImportSelErrors = new StandardCollection();
-
-		_progressBarState = new DValue();
-		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
-		_dDocument = dDocument;
-		_isOnlyATimeTable = false;
-
-		if (fileName.endsWith(DConst.DOT_DIA)) {
-			_error = loadTimeTable(fileName, getCurrentDir(fileName));
-			_isATimeTable = true;
-		} else if (fileName.endsWith(DConst.DOT_XML)) {
-			_ttStruct = new TTStructure();
-			_error = _ttStruct.loadTTSFromFile(fileName);
-			_isATimeTable = false;
-		} else {
-			_error = "Wrong type of file";
-		}
-		if (_error.length() == 0) {
-			if (_isATimeTable)
-				_conditionsToTest = new DxConditionsToTest(this);
-		} else {
-			throw new DxException(_error);
-		}
-		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
-			_isATimeTable = true;
-			_isOnlyATimeTable = true;
-		}
-		_type = type;
-		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-		_setOfRoomsFunctions.functionReader();
-		this.notifyObservers(this);
-
-	}
+//	public DModel(DDocument dDocument, String fileName, int type)
+//			throws DxException {
+//		_error = "";
+//		_modified = false;
+//		_isExamPrepared = false;
+//		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
+//		_importDone = false;
+//		_mergeDone = false;
+//		_constructionState = 0;
+//		_currentCycle = 1;
+//		_nbConflicts = new int[] { 10, 20, 30 };
+//		_setOfEvents = new SetOfEvents(this);
+//		_setOfImportErrors = new StandardCollection();
+//		_setOfImportSelErrors = new StandardCollection();
+//
+//		_progressBarState = new DValue();
+//		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
+//		_dDocument = dDocument;
+//		_isOnlyATimeTable = false;
+//
+//		if (fileName.endsWith(DConst.DOT_DIA)) {
+//			_error = loadTimeTable(fileName, getCurrentDir(fileName));
+//			_isATimeTable = true;
+//		} else if (fileName.endsWith(DConst.DOT_XML)) {
+//			_ttStruct = new TTStructure();
+//			_error = _ttStruct.loadTTSFromFile(fileName);
+//			_isATimeTable = false;
+//		} else {
+//			_error = "Wrong type of file";
+//		}
+//		if (_error.length() == 0) {
+//			if (_isATimeTable)
+//				_conditionsToTest = new DxConditionsToTest(this);
+//		} else {
+//			throw new DxException(_error);
+//		}
+//		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
+//			_isATimeTable = true;
+//			_isOnlyATimeTable = true;
+//		}
+//		_type = type;
+//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+//		_setOfRoomsFunctions.functionReader();
+//		this.notifyObservers(this);
+//
+//	}
 
 	public DModel(DxDocument dxDocument, String fileName) throws DxException {
 		_error = "";
@@ -305,13 +304,13 @@ public class DModel extends Observable {
 		return _isATimeTable;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public DDocument getDDocument() {
-		return _dDocument;
-	}
+//	/**
+//	 * 
+//	 * @return
+//	 */
+//	public DDocument getDDocument() {
+//		return _dDocument;
+//	}
 
 	public void prepareExamsData() {
 		// supprime natures2
@@ -426,9 +425,9 @@ public class DModel extends Observable {
 			setImportDone(false);
 			return "";
 
-		} catch (FileNotFoundException fnfe) { // alert the user that the
-												// specified file does not exist
-			new DxExceptionDlg(fnfe.getMessage(), fnfe);
+//		} catch (FileNotFoundException fnfe) { // alert the user that the
+//												// specified file does not exist
+//			new DxExceptionDlg(fnfe.getMessage(), fnfe);
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 			// TODO hara2602
@@ -520,7 +519,7 @@ public class DModel extends Observable {
 			// }
 			// resizeResourceAvailability(_setOfInstructors);
 
-			changeInDModel(_dDocument.getJIF());
+			changeInDModel(_dxDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ROOM)) {// Importation
 			// selective
 			// --
@@ -530,7 +529,7 @@ public class DModel extends Observable {
 			// fileName);
 			// resizeSiteAvailability(_setOfSites);
 			// error = _setOfSites.getError();
-			this.changeInDModel(_dDocument.getJIF());// _setOfRooms.sendEvent(_dDocument.getJIF());
+			this.changeInDModel(_dxDocument.getJIF());// _setOfRooms.sendEvent(_dDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_ACT)) {// Importation
 			// // selective
 			// // --
@@ -541,7 +540,7 @@ public class DModel extends Observable {
 			// error = _setOfActivitiesSites.getError();
 			//
 			// _conditionsToTest.setMatrixBuilded(false, true);
-			changeInDModel(_dDocument.getJIF());
+			changeInDModel(_dxDocument.getJIF());
 		} else if (selectionName.equalsIgnoreCase(DConst.IMP_SELECT_STUD)) {// Importation
 			// selective
 			// --
@@ -550,7 +549,7 @@ public class DModel extends Observable {
 					_setOfStuSites, fileName);
 			error = _setOfStuSites.getError();
 			_conditionsToTest.setMatrixBuilded(false, true);
-			changeInDModel(_dDocument.getJIF());
+			changeInDModel(_dxDocument.getJIF());
 		}
 		_mergeDone = true;
 		if (error != "")

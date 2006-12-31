@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.15 $ $Date: 2006-12-30 17:23:05 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.16 $ $Date: 2006-12-31 18:09:55 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -24,8 +24,6 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -56,7 +54,6 @@ public class FirstAffectAlgorithmTest extends TestCase {
 
 	public void test_build1() {
 		DModel dm1 = null;
-		DDocument _dDocument1 = new DDocument();
 		DxDocument _dxDocument1 = new DxTTableDoc();
 		String fileName = "." + File.separator;
 		fileName += "dataTest" + File.separator;
@@ -83,7 +80,6 @@ public class FirstAffectAlgorithmTest extends TestCase {
 			assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
 					.getNumberOfEventAssign());
 			dm1 = null;
-			_dDocument1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -92,7 +88,6 @@ public class FirstAffectAlgorithmTest extends TestCase {
 
 	public void test_build2() {
 		DModel dm1 = null;
-		DDocument _dDocument1 = new DDocument();
 		DxDocument _dxDocument1 = new DxTTableDoc();
 		String fileName = "." + File.separator;
 		fileName += "dataTest" + File.separator;
@@ -102,11 +97,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		fileName += "genNoAssigned.dia";
 		int type = 1;
 		try {
-//			if (DxFlags.newDoc) {
 				dm1 = new DModel(_dxDocument1, fileName);
-//			} else {
-//				dm1 = new DModel(_dDocument1, fileName, type);
-//			}
 			dm1.changeInDModel(new Object());
 			assertEquals("test_build: assertEquals", 140, dm1
 					.getSetOfActivities().size());
@@ -117,7 +108,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 			assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
 					.getNumberOfEventAssign());
 			dm1 = null;
-			_dDocument1 = null;
+
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 		}

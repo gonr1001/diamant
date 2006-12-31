@@ -36,9 +36,6 @@ public class DxFlags {
 	public final static boolean newAlg = false;
 	// public final static boolean newAlg = false;
 
-//	public final static boolean newDoc = true;
-//	// public final static boolean newDoc = false;
-
 	// public final static boolean newPartitionAlg = true;
 	public final static boolean newPartitionAlg = false;
 

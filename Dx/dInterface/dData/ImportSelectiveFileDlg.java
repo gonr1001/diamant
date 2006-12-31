@@ -53,7 +53,7 @@ public class ImportSelectiveFileDlg extends JDialog {
             String fil = fc.getSelectedFile().getAbsolutePath();
             dApplic.setCurrentDir(fil);
 
-            if (dApplic.getCurrentDoc() != null) {
+            if (dApplic.getCurrentDxDoc() != null) {
                 try {
 					dApplic.getCurrentDModel().mergeData(fil, str);
 					new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);

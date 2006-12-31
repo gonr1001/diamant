@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2006-12-30 17:23:03 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2006-12-31 18:09:54 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -23,8 +23,6 @@ package dTest.dInternal.dData;
 
 import java.io.File;
 
-import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -37,7 +35,6 @@ import junit.framework.TestSuite;
 public class DStandardReportDataTest extends TestCase{
   	DStandardReportData _report;
   	DModel 		_dm;
-  	DDocument 	_dDocument;
   	DxDocument 	_dxDocument;
   	String 		_fileName;
   	int 		_type;
@@ -52,7 +49,7 @@ public class DStandardReportDataTest extends TestCase{
   } // end suite
   
   public void setUp(){
-  	_dDocument = new DDocument();
+//  	_dDocument = new DDocument();
   	_dxDocument = new DxTTableDoc();
   	_fileName = "."  + File.separator+"dataTest"+File.separator+"loadData5j.dia";
   	_type = 1;

@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-12-30 17:23:03 $
+ * Title: DSaveDataTest $Revision $  $Date: 2006-12-31 18:09:54 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -25,7 +25,6 @@ package dTest.dInternal.dData;
 import java.io.File;
 
 import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -41,9 +40,9 @@ public class DSaveDataTest extends TestCase {
 
 	DModel _dm2;
 
-	DDocument _dDocument1;
+//	DDocument _dDocument1;
 	DxDocument _dxDocument1;
-	DDocument _dDocument2;
+//	DDocument _dDocument2;
 	DxDocument _dxDocument2;
 	String _fileName1; // to read
 
@@ -67,8 +66,6 @@ public class DSaveDataTest extends TestCase {
 
 	public void setUp() {
 		_a = new DSaveData("1.6");
-		_dDocument1 = new DDocument();
-		_dDocument2 = new DDocument();
 		_dxDocument1 = new DxTTableDoc();
 		_dxDocument2 = new DxTTableDoc();
 		_fileName1 = "." + File.separator + "dataTest" + File.separator

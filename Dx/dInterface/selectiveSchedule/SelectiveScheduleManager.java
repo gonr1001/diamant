@@ -4,7 +4,7 @@
  */
 package dInterface.selectiveSchedule;
 
-import dDeveloper.DxFlags;
+
 import dInterface.DApplication;
 
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
@@ -640,10 +640,6 @@ public class SelectiveScheduleManager {
     }
     
     private String fetchXMLPersistanceFileName() {
-//    	if(DxFlags.newDoc) {
     		return DApplication.getInstance().getCurrentDxDoc().getAutoImportDIMFilePath() + "fgs.xml";
-//    	}
-//        return DApplication.getInstance().getCurrentDoc()
-//                           .getAutoImportDIMFilePath() + "fgs.xml";
     }
-}
+} // end SelectiveScheduleManager

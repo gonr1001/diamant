@@ -12,7 +12,6 @@ package dInterface.dAffectation;
 import java.awt.event.ActionEvent;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
@@ -79,8 +78,8 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 			_centerLabel.setText(String.valueOf(_centerVector.size()));
 			_buttonsPanel.setFirstEnable();
 		}// end if (
-			// (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) ||
-			// (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
+		// (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) ||
+		// (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
 		// if the source is one of the the _rightArrowsPanel buttons
 		if ((e.getActionCommand().equalsIgnoreCase("right" + _arrowsNames[0]))
 				|| (e.getActionCommand().equalsIgnoreCase("right"
@@ -97,20 +96,16 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 			_centerLabel.setText(String.valueOf(_centerVector.size()));
 			_buttonsPanel.setFirstEnable();
 		}// end if (
-			// (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
-			// (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
+		// (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
+		// (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
 		// if Button CLOSE is pressed
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE))
 			dispose();
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
-//			if (DxFlags.newDoc) {
-				_dApplic.getCurrentDxDoc().getCurrentDModel().changeInDModel(
-						this.idDlgToString());
-//			} else {
-//				_dApplic.getCurrentDModel().changeInDModelByEventsDlg(this);
-//			}
+			_dApplic.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+					this.idDlgToString());
 			_buttonsPanel.setFirstDisable();
 		}// end if Button APPLY
 	}// end method
