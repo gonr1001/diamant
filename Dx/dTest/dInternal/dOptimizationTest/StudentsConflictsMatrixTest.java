@@ -13,8 +13,6 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dOptimization.StudentsConflictsMatrix;
@@ -29,46 +27,28 @@ public class StudentsConflictsMatrixTest extends TestCase {
 
 	DModel _dm2; // For LoadData5j
 
-	// SetOfActivities _soa;
-	// SetOfStudents _sos;
-	// public class ResourceTest extends TestCase {
-
 	public StudentsConflictsMatrixTest(String name) {
 		super(name);
 		try {
-//			if (DxFlags.newDoc) {
-				_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData7j.dia");
-//			} else {
-//				_dm1 = new DModel(new DDocument(), "." + File.separator
-//						+ "dataTest" + File.separator + "loadData7j.dia", 1);
-//			}
+			_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData7j.dia");
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
 		_dm1.buildSetOfEvents();
-		// _dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
 		_dm1.getConditionsTest().buildStudentConflictMatrix();
 		_dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
-		// _dm.setStateBarComponent();
 		_matrix1 = _dm1.getConditionsTest().getConflictsMatrix();
 
-		try {			
-//			if (DxFlags.newDoc) {
-				_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData5j.dia");
-//			} else {
-//				_dm2 = new DModel(new DDocument(), "." + File.separator
-//						+ "dataTest" + File.separator + "loadData5j.dia", 1);
-//			}
+		try {
+			_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData5j.dia");
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
 		_dm2.buildSetOfEvents();
-		// _dm.getConditionsTest().buildStudentsMatrix(_dm.getSetOfActivities(),_dm.getSetOfStudents());
 		_dm2.getConditionsTest().buildStudentConflictMatrix();
 		_dm2.getConditionsTest().buildAllConditions(_dm2.getTTStructure());
-		// _dm.setStateBarComponent();
 		_matrix2 = _dm2.getConditionsTest().getConflictsMatrix();
 	}
 
@@ -116,7 +96,6 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		String key2 = "AMC645.1.01";
 		assertEquals("test2_Matrix : assertEquals", 1, _matrix1
 				.getNumberOfCOnflicts(key1, key2));
-
 	}
 
 	/**
@@ -137,7 +116,6 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		String key2 = "AMC645.1.01";
 		assertEquals("test4_Matrix : assertEquals", 4, _matrix2
 				.getNumberOfCOnflicts(key1, key2));
-
 	}
 
 	/**
@@ -161,4 +139,4 @@ public class StudentsConflictsMatrixTest extends TestCase {
 				.getNumberOfCOnflicts(key1, key2));
 	}
 
-}
+}// end StudentsConflictsMatrixTest

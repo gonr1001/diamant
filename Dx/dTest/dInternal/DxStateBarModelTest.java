@@ -24,8 +24,6 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -36,7 +34,9 @@ import dInternal.DxStateBarModel;
  * 
  * Description: DxStateBarModelTest is a class used to:
  * <p>
- * Test DxStateBarModel
+ * Test DxStateBarModel 
+ * The test are done by reading some files and comparing
+ * the values on the DxStateBarModel and the expected values
  * <p>
  * 
  */
@@ -54,28 +54,18 @@ public class DxStateBarModelTest extends TestCase {
 
 	public void testStateBarModel_5j() throws Exception {
 		DModel _dm5j;
-
-		DDocument _doc5j;
-		_doc5j = new DDocument();
-
 		DxStateBarModel sbm;
 
 		DxDocument _dxDoc5j;
 		_dxDoc5j = new DxTTableDoc();
 		String fileName = "." + File.separator + "dataTest" + File.separator
 				+ "loadData5j.dia";
-		int _type = 1;
-//		if (DxFlags.newDoc) {
-			_dm5j = new DModel(_dxDoc5j, fileName);
-			_dm5j.changeInDModel(new Object());
-			sbm = new DxStateBarModel(_dm5j);
-			sbm.update();
-//		} else {
-//			_dm5j = new DModel(_doc5j, fileName, _type);
-//			_dm5j.changeInDModel(new Object());
-//			sbm = new DxStateBarModel(_dm5j);
-//			sbm.update();
-//		}
+
+		_dm5j = new DModel(_dxDoc5j, fileName);
+		_dm5j.changeInDModel(new Object());
+		sbm = new DxStateBarModel(_dm5j);
+		sbm.update();
+
 		assertEquals("test0_StateBarModel_5j: assertEquals", -1, sbm.elementAt(
 				0).getValue());
 		assertEquals("test1_StateBarModel_5j: assertEquals", 11, sbm.elementAt(
@@ -101,19 +91,14 @@ public class DxStateBarModelTest extends TestCase {
 	}
 
 	public void testStateBarModel_7j() throws Exception {
-		DDocument _doc7j = new DDocument();
 		DxDocument _dxDoc7j = new DxTTableDoc();
 		DModel _dm7j;
-		
+
 		String fileName1 = "." + File.separator + "dataTest" + File.separator
 				+ "loadData7j.dia";
-		int _type = 1;
-//		if(DxFlags.newDoc){
-			_dm7j = new DModel(_dxDoc7j, fileName1);
-//		} else {
-//			_dm7j = new DModel(_doc7j, fileName1, _type);
-//		}
-//		_dm7j = new DModel(_doc7j, fileName1, _type);
+
+		_dm7j = new DModel(_dxDoc7j, fileName1);
+
 		_dm7j.changeInDModel(new Object());
 		DxStateBarModel sbm = new DxStateBarModel(_dm7j);
 		sbm.update();
@@ -140,5 +125,4 @@ public class DxStateBarModelTest extends TestCase {
 		assertEquals("test10_StateBarModel_7j: assertEquals", 0, sbm.elementAt(
 				10).getValue());
 	}
-
-}
+} // end DxStateBarModelTest
