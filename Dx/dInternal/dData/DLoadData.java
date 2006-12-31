@@ -19,7 +19,6 @@
 package dInternal.dData;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -114,37 +113,15 @@ public class DLoadData {
 	public DLoadData(DModel dm, String args) {
 		_dm = dm;
 		if (_dm != null) // XXXX Pascal: else ?
-//			if (DxFlags.newDoc) {
-				_chars = _dm.getDxDocument().getDMediator().getDApplication()
-						.getPreferences()._acceptedChars;
-//			} else {
-//				_chars = _dm.getDDocument().getDMediator().getDApplication()
-//						.getPreferences()._acceptedChars;
-//			}
+			_chars = _dm.getDxDocument().getDMediator().getDApplication()
+					.getPreferences()._acceptedChars;
 		try {
 			verifyImportDataFile(args);
 		} catch (DxException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
-
-	// /**
-	// * extractRoomsAttributesInterpretor produces an instance of
-	// * RoomsAttributesInterpretor
-	// *
-	// * @return the instance of RoomsAttributesInterpretor
-	// */
-	// public RoomsAttributesInterpretor extractRoomsAttributesInterpretor() {
-	// RoomsAttributesInterpretor attr = new RoomsAttributesInterpretor();
-	// byte[] dataloaded = preLoad(_functionFileName);
-	// if (dataloaded != null)
-	// attr.loadSetOfFunctions(dataloaded);
-	// dataloaded = preLoad(_caractFileName);
-	// if (dataloaded != null)
-	// attr.loadSetOfCaracteristics(dataloaded);
-	// return attr;
-	// }
 
 	/**
 	 * TODO: Create extractRooms for DxSetOfSites
@@ -160,10 +137,11 @@ public class DLoadData {
 	 *            (if merge = false --> replace the current SetOfRooms by the
 	 *            new SetOfRooms)
 	 * @return SetOfRooms
-	 * @throws DxException 
+	 * @throws DxException
 	 */
 
-	public SetOfSites extractRooms(SetOfSites currentList, boolean merge) throws DxException {
+	public SetOfSites extractRooms(SetOfSites currentList, boolean merge)
+			throws DxException {
 		DataExchange de = buildDataExchange(_roomsFileName);
 		SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
 		// periods!
@@ -176,7 +154,7 @@ public class DLoadData {
 				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 				roomsList.buildSetOfResources(de, 0);
 			}
-		}else {// (NullPointerException npe)
+		} else {// (NullPointerException npe)
 			new DxExceptionDlg(
 					"I was in LoadData.extractRooms. preload failed!!!");
 			System.exit(52);
@@ -184,48 +162,6 @@ public class DLoadData {
 		return roomsList;
 	}// end extractRooms
 
-	/**
-	 * 
-	 * @param currentList
-	 *            the current SetOfInstructors
-	 * @param merge
-	 *            a boolean
-	 *            <p>
-	 *            (if merge = true --> merge the new SetOfInstructors to the
-	 *            current SetOfInstructors)
-	 *            </p>
-	 *            (if merge = false --> replace the current SetOfInstructors by
-	 *            the new SetOfInstructors)
-	 * @return SetOfInstructors
-	 */
-	// public DxSetOfInstructors extractInstructors(
-	// DxSetOfInstructors currentList, boolean merge, boolean dotDia) {
-	// // byte[] dataloaded = preLoad(_instructorFileName);
-	// DxSetOfInstructors instructorsList = null;
-	// DataExchange de = buildDataExchange(_instructorFileName);
-	// if (dotDia) {
-	// // instructorsList= new
-	// // DxSetOfInstructors(_dm.getTTStructure().getNumberOfActiveDays(),
-	// // _dm.getTTStructure().getCurrentCycle().getMaxNumberOfPeriodsADay());//
-	// // 5 jours et 14 periods!
-	// } else {
-	// // instructorsList= new DxSetOfInstructors(5,14);// 5 jours et 14
-	// // periods !
-	// }
-	// // if (de != null) {
-	// // if (merge)
-	// // if(currentList!= null)
-	// // instructorsList.setSetOfResources(currentList.getSetOfResources());
-	// // if (instructorsList.analyseTokens(de, 0)){
-	// // instructorsList.buildSetOfResources(de, 0);
-	// // }
-	// // } else {// (NullPointerException npe) {
-	// // new FatalProblemDlg("I was in LoadData.extractInstructors. preload
-	// // failed!!!" );
-	// // System.exit(52);
-	// // }
-	// return instructorsList;
-	// }
 	/**
 	 * 
 	 * @param currentList
@@ -239,12 +175,12 @@ public class DLoadData {
 	 *            (if merge = false --> replace the current SetOfStudents by the
 	 *            new SetOfStudents)
 	 * @return SetOfStudents
-	 * @throws DxException 
+	 * @throws DxException
 	 */
 	public SetOfStuSites extractStudents(SetOfStuSites currentList,
 			boolean merge) throws DxException {
 		DataExchange de = buildDataExchange(_studentsFileName);
-		 SetOfStuSites studentsList = new SetOfStuSites();
+		SetOfStuSites studentsList = new SetOfStuSites();
 		if (de.getContents() != null) {
 			if (merge)
 				if (currentList != null)
@@ -276,14 +212,14 @@ public class DLoadData {
 	 *            the new SetOfActivities)
 	 * @return SetOfActivities
 	 */
-public SetOfActivitiesSites extractActivities(
+	public SetOfActivitiesSites extractActivities(
 			SetOfActivitiesSites currentList, boolean merge) throws DxException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
 		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
 				_dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
-			//            Vector  setOfResources = currentList
-			//                            .getSetOfResources();
+			// Vector setOfResources = currentList
+			// .getSetOfResources();
 			if (merge)
 
 				activitiesList.setSetOfResources(currentList
@@ -296,7 +232,6 @@ public SetOfActivitiesSites extractActivities(
 		}
 		return activitiesList;
 	}
-
 
 	/**
 	 * loadTheTT this loads a full timetable as it was saved
@@ -332,7 +267,7 @@ public SetOfActivitiesSites extractActivities(
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
 	public Vector<Object> loadTheTT(String fileName, String currentDir)
-			throws FileNotFoundException, DxException {
+			throws DxException {
 		// Vector <Object> diaData = new Vector <Object>();
 		String dataloaded = new String(preLoad(fileName));
 		// StringTokenizer project;
@@ -345,78 +280,11 @@ public SetOfActivitiesSites extractActivities(
 				|| head.equalsIgnoreCase(DConst.FILE_HEADER_NAME1_6)) {
 			return load1dot5(fileName, currentDir);
 		} else if (head.equalsIgnoreCase(DConst.FILE_HEADER_NAME2_1)) {
-			return load2dot1(fileName, currentDir);
+			return load2dot1(fileName);
 		} else {
 			throw new DxException("Invalid FILE_HEADER_NAME !");
 		}
 
-		// DataExchange de;
-		// if (!DConst.IN_DIA) {
-		// project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
-		// } else {
-		// project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR_VIS);
-		// }
-		// if (project.countTokens() == 6) { // 6 !!!!!!!!!!!!!!
-		// // extract version
-		// diaData.add(project.nextToken().trim());
-		// // extract ttStructure
-		// TTStructure tts = new TTStructure();
-		// if (!DConst.IN_DIA) {
-		// String ttsFileName = DXToolsMethods.getAbsoluteFileName(
-		// currentDir, project.nextToken().trim());
-		// tts.loadTTSFromFile(ttsFileName);
-		// diaData.add(tts);
-		// } else {
-		// de = buildDataExchange(project.nextToken().trim().getBytes());
-		// tts.loadTTSFromString(de.getContents());
-		// diaData.add(tts);
-		// }
-		// // extract SetOfInstructor
-		// if (tts.getError().length() == 0) {
-		// de = buildDataExchange(project.nextToken().trim().getBytes());
-		// DxInstructorsReader dxir = new DxReadInstructors1dot5(de, tts
-		// .getNumberOfActiveDays(), tts.getCurrentCycle()
-		// .getMaxNumberOfPeriodsADay());
-		// diaData.add(dxir.getSetOfInstructors());
-		// }// end if(tts.getError().length()==0)
-		//
-		// // extract SetOfSites
-		// if (!DxFlags.newRooms) {
-		// SetOfSites roomsList = new SetOfSites();
-		// de = buildDataExchange(project.nextToken().trim().getBytes());
-		// if (roomsList.analyseTokens(de, 3)) {
-		// // roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-		// roomsList.buildSetOfResources(de, 3);
-		// }
-		// diaData.add(roomsList);
-		//
-		// } else {
-		// de = buildDataExchange(project.nextToken().trim().getBytes());
-		// DxSiteReader dxrr = new DxReadSite1dot5(de);
-		// diaData.add(dxrr.getSetOfSites());
-		// }
-		//
-		// // extract SetOfActivities
-		// de = buildDataExchange(project.nextToken().trim().getBytes());
-		// SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(true);
-		// if (activitiesList.analyseTokens(de, 1)) {
-		// activitiesList.buildSetOfResources(de, 1);
-		// }
-		// diaData.add(activitiesList);
-		// // extract SetOfStudents
-		// de = buildDataExchange(project.nextToken().trim().getBytes());
-		// SetOfStuSites studentsList = new SetOfStuSites();
-		// if (studentsList.analyseTokens(de, 0)) {
-		// studentsList.buildSetOfResources(de, 0);
-		// }
-		// diaData.add(studentsList);
-		//
-		// } else {
-		// new FatalProblemDlg("I was in" + getClass().toString()
-		// + " LoadData class and loadProject. extract failed!!!");
-		// //System.exit(-1);
-		// }
-		// return diaData;
 	}
 
 	private Vector<Object> load1dot5(String fileName, String currentDir)
@@ -427,96 +295,97 @@ public SetOfActivitiesSites extractActivities(
 		Vector<Object> diaData = new Vector<Object>();
 		String dataloaded = new String(preLoad(fileName));
 		StringTokenizer project;
-         long linePosition=0;
+		long linePosition = 0;
 		DataExchange de;
 
 		project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
 
-		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { //  =================================
+		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // =================================
 			// extract version
-			inDiaFileVersion=project.nextToken().trim();
-			linePosition+=ByteInputFile.count(inDiaFileVersion);
+			inDiaFileVersion = project.nextToken().trim();
+			linePosition += ByteInputFile.count(inDiaFileVersion);
 			diaData.add(inDiaFileVersion);
 			linePosition++; // for separator =========================
 			// extract ttStructure
 			TTStructure tts = new TTStructure();
-			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(currentDir,
-					project.nextToken().trim());
+			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(
+					currentDir, project.nextToken().trim());
 			linePosition++;// for XML file name line
 			tts.loadTTSFromFile(inDiaTTSFileName);
 			diaData.add(tts);
 			linePosition++; // for separator =========================
-	//		if (tts.getError().length() == 0) {
-				// extract SetOfInstructor
-				inDiaFileInstructors=project.nextToken().trim();
-				de = buildDataExchange(inDiaFileInstructors.getBytes());
-				DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, tts
+			// if (tts.getError().length() == 0) {
+			// extract SetOfInstructor
+			inDiaFileInstructors = project.nextToken().trim();
+			de = buildDataExchange(inDiaFileInstructors.getBytes());
+			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, tts
+					.getNumberOfActiveDays(), tts.getCurrentCycle()
+					.getMaxNumberOfPeriodsADay(), linePosition);
+			dxsoiInst = dxir.readSetOfInstructors();
+			diaData.add(dxsoiInst);
+			linePosition += ByteInputFile.count(inDiaFileInstructors);
+			linePosition++; // for separator =========================
+			// extract SetOfSites
+			inDiaFileRooms = project.nextToken().trim();
+			de = buildDataExchange(inDiaFileRooms.getBytes());
+			if (DxFlags.newRooms) {
+				DxSiteReader dxrr = new DxReadSitedotDia(de, tts
 						.getNumberOfActiveDays(), tts.getCurrentCycle()
-						.getMaxNumberOfPeriodsADay(),linePosition);
-				dxsoiInst = dxir.readSetOfInstructors();
-				diaData.add(dxsoiInst);
-				linePosition+=ByteInputFile.count(inDiaFileInstructors);
-				linePosition++; // for separator =========================
-				// extract SetOfSites
-				inDiaFileRooms=project.nextToken().trim();
-				de = buildDataExchange(inDiaFileRooms.getBytes());
-				if (DxFlags.newRooms) {
-					DxSiteReader dxrr = new DxReadSitedotDia(de, tts
-							.getNumberOfActiveDays(), tts.getCurrentCycle()
-							.getMaxNumberOfPeriodsADay(),linePosition);
-					dxsosRooms = dxrr.readSetOfSites();
-					diaData.add(dxsosRooms);
-				} else {
-					SetOfSites roomsList = new SetOfSites();
-					if (roomsList.analyseTokens(de, 3)) {
-						// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-						roomsList.buildSetOfResources(de, 3);
-					}
-					diaData.add(roomsList);
+						.getMaxNumberOfPeriodsADay(), linePosition);
+				dxsosRooms = dxrr.readSetOfSites();
+				diaData.add(dxsosRooms);
+			} else {
+				SetOfSites roomsList = new SetOfSites();
+				if (roomsList.analyseTokens(de, 3)) {
+					// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+					roomsList.buildSetOfResources(de, 3);
 				}
-				linePosition+=ByteInputFile.count(inDiaFileRooms);
-				linePosition++; // for separator =========================
-				// extract SetOfActivities
-				inDiaFileActivities=project.nextToken().trim();	
-				de = buildDataExchange(inDiaFileActivities.getBytes());
-				if (DxFlags.newActivity) {
-					DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
-							de, dxsoiInst, dxsosRooms.getAllRooms(), tts
-									.getPeriodLenght(), true);
+				diaData.add(roomsList);
+			}
+			linePosition += ByteInputFile.count(inDiaFileRooms);
+			linePosition++; // for separator =========================
+			// extract SetOfActivities
+			inDiaFileActivities = project.nextToken().trim();
+			de = buildDataExchange(inDiaFileActivities.getBytes());
+			if (DxFlags.newActivity) {
+				DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
+						de, dxsoiInst, dxsosRooms.getAllRooms(), tts
+								.getPeriodLenght(), true);
 
-					diaData.add(dxasr.readSetOfActivitiesSites());
-				} else {
-					SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(
-							true, tts.getPeriodLenght());
-					if (activitiesList.analyseTokens(de, 1)) {
-						activitiesList.buildSetOfResources(de, 1);
-					}
-					diaData.add(activitiesList);
+				diaData.add(dxasr.readSetOfActivitiesSites());
+			} else {
+				SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(
+						true, tts.getPeriodLenght());
+				if (activitiesList.analyseTokens(de, 1)) {
+					activitiesList.buildSetOfResources(de, 1);
 				}
-				linePosition+=ByteInputFile.count(inDiaFileActivities);
-				linePosition++; // for separator =========================
-				// extract SetOfStudents
-				inDiaFileStudents=project.nextToken().trim();
-				linePosition+=ByteInputFile.count(inDiaFileStudents);
-				de = buildDataExchange(inDiaFileStudents.getBytes());
-				SetOfStuSites studentsList = new SetOfStuSites();
-				if (studentsList.analyseTokens(de, 0)) {
-					studentsList.buildSetOfResources(de, 0);
-				}
-				diaData.add(studentsList);
-//			}// end if(tts.getError().length()==0)
-//			else {
-//				throw new DxException(DConst.WRONG_TIME_TABLE_STRUCTURE);
-//			}
+				diaData.add(activitiesList);
+			}
+			linePosition += ByteInputFile.count(inDiaFileActivities);
+			linePosition++; // for separator =========================
+			// extract SetOfStudents
+			inDiaFileStudents = project.nextToken().trim();
+			linePosition += ByteInputFile.count(inDiaFileStudents);
+			de = buildDataExchange(inDiaFileStudents.getBytes());
+			SetOfStuSites studentsList = new SetOfStuSites();
+			if (studentsList.analyseTokens(de, 0)) {
+				studentsList.buildSetOfResources(de, 0);
+			}
+			diaData.add(studentsList);
+			// }// end if(tts.getError().length()==0)
+			// else {
+			// throw new DxException(DConst.WRONG_TIME_TABLE_STRUCTURE);
+			// }
 
-		} else {	
-			throw new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY+DConst.CR_LF+DConst.SAVE_SEPARATOR);
+		} else {
+			throw new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY
+					+ DConst.CR_LF + DConst.SAVE_SEPARATOR);
 		}
 		return diaData;
 
 	}
 
-	private Vector<Object> load2dot1(String fileName, String currentDir)
+	private Vector<Object> load2dot1(String fileName)// , String currentDir)
 			throws DxException {
 		DxSetOfInstructors dxsoiInst = null;
 		DxSetOfSites dxsosRooms = null;
@@ -528,7 +397,8 @@ public SetOfActivitiesSites extractActivities(
 
 		project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR_VIS);
 
-		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6 !!!!!!!!!!!!!!
+		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6
+			// !!!!!!!!!!!!!!
 			// extract version
 			diaData.add(project.nextToken().trim());
 			// extract ttStructure
@@ -594,7 +464,8 @@ public SetOfActivitiesSites extractActivities(
 			diaData.add(studentsList);
 
 		} else {
-			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY+DConst.CR_LF+DConst.SAVE_SEPARATOR_VIS);
+			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
+					+ DConst.SAVE_SEPARATOR_VIS);
 			// System.exit(-1);
 		}
 		return diaData;
@@ -616,13 +487,13 @@ public SetOfActivitiesSites extractActivities(
 	// _caractFileName = path + "DXcaracteristics.sig";
 	// }
 
-	public byte[] preLoad(String str) throws DxException { 
+	public byte[] preLoad(String str) throws DxException {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
 		filter.appendToCharKnown(_chars);
 		filter.validFile(str);
 		return filter.getByteArray();
-	} 
+	}
 
 	private void verifyImportDataFile(String str) throws DxException {
 		FilterFile filter = new FilterFile(_chars);
@@ -638,23 +509,22 @@ public SetOfActivitiesSites extractActivities(
 				throw new DxException("Wrong number of lines in the file:");
 			}
 		} else {
-			throw new DxException("Invalid file:"+str); 
+			throw new DxException("Invalid file:" + str);
 		}
 	}
-
 
 	/**
 	 * 
 	 * @param fileName
 	 * @return
-	 * @throws DxException 
+	 * @throws DxException
 	 */
 	private DataExchange buildDataExchange(String fileName) throws DxException {
 		byte[] dataloaded = preLoad(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		String token = st.nextToken().toString().trim();
-		
+
 		if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
 			return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(
 					dataloaded));
@@ -696,7 +566,7 @@ public SetOfActivitiesSites extractActivities(
 	 */
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc,
 			String file) throws DxException {// , boolean merge){
-		DataExchange de = buildDataExchange(file);
+		// DataExchange de = buildDataExchange(file);
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
 		// TODO a revoir
@@ -717,19 +587,17 @@ public SetOfActivitiesSites extractActivities(
 		} else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesSites) {
 			_activitiesFileName = file;
 			newSetOfResc = extractActivities(null, false);
-			// position=1;
 		} else {// (NullPointerException npe) {
 			throw new DxException("Unknown resource type !!!");
 		}
 
 		if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
 			makeDiff(newSetOfResc, currentSetOfResc);
-			// currentSetOfResc.buildSetOfResources(de, position);
 			currentSetOfResc.sortSetOfResourcesByID();
 		}// Ici sans le else on passe même s’il y a une erreur !!!!
-		else
+		else {
 			throw new DxException(newSetOfResc.getError());
-
+		}
 		return currentSetOfResc;
 	}
 
@@ -1357,19 +1225,21 @@ public SetOfActivitiesSites extractActivities(
 	public DxSetOfInstructors extractInstructors() throws DxException {
 		DataExchange de = buildDataExchange(_instructorFileName);
 		// hara2602 ! TODO params 4 et 14 Trop dangeureux
-		DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);// 5 jours  et 14
+		DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);// 5
+		// jours
+		// et
+		// 14
 		return dxir.readSetOfInstructors(); // 
-	
+
 	}
 
-	public DxSetOfSites extractDxRooms()throws DxException {
+	public DxSetOfSites extractDxRooms() throws DxException {
 		DataExchange de = buildDataExchange(_roomsFileName);
 		DxSiteReader dxsrReader;
 		TTStructure tts = _dm.getTTStructure();
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-			dxsrReader = new DxReadSitedotDia(de, tts
-					.getNumberOfActiveDays(), tts.getCurrentCycle()
-					.getMaxNumberOfPeriodsADay());
+			dxsrReader = new DxReadSitedotDia(de, tts.getNumberOfActiveDays(),
+					tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
 		} else {
 			dxsrReader = new DxReadSite1dot5(de);
 		}
@@ -1392,4 +1262,4 @@ public SetOfActivitiesSites extractActivities(
 
 		return dxasrReader.readSetOfActivitiesSites();
 	}
-}
+} // end DLoadData

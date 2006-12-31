@@ -21,7 +21,6 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.Day;
@@ -44,7 +43,7 @@ public class DxConditionsToTest {
 
 	private DModel _dm;
 
-	private Vector <DxCondition> _conditionsToTest;
+	private Vector<DxCondition> _conditionsToTest;
 
 	private boolean _matrixIsBuilded;
 
@@ -52,7 +51,7 @@ public class DxConditionsToTest {
 
 	private int[] _acceptableConflictsTable;
 
-	private int _periodAcceptableSize ;
+	private int _periodAcceptableSize;
 
 	private int _periodVariationEvents;
 
@@ -65,12 +64,12 @@ public class DxConditionsToTest {
 	public DxConditionsToTest(DModel dm) {
 		_dm = dm;
 		_matrixIsBuilded = false;
-		_avoidPriority = new int [] { 1, 2 };
-		_acceptableConflictsTable =  new int []{ 0, 0, 0 };
+		_avoidPriority = new int[] { 1, 2 };
+		_acceptableConflictsTable = new int[] { 0, 0, 0 };
 		_periodAcceptableSize = 20;
 		_periodVariationEvents = 0;
-		
-		_conditionsToTest = new Vector <DxCondition> ();
+
+		_conditionsToTest = new Vector<DxCondition>();
 		_matrix = new StudentsConflictsMatrix();
 		_conditionsToTest.add(new DxStudentCondtionsToTest(_matrix, _dm
 				.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle()));
@@ -106,8 +105,6 @@ public class DxConditionsToTest {
 	public int[] getAcceptableConflictsTable() {
 		return _acceptableConflictsTable;
 	}
-
-
 
 	/**
 	 * 
@@ -194,13 +191,13 @@ public class DxConditionsToTest {
 
 					for (int k = 0; k < _conditionsToTest.size(); k++) {
 						DxCondition cond = _conditionsToTest.get(k);
-						numberOfConflicts[k] += cond.addTest(newPerKey,
-								per, event.getID());
+						numberOfConflicts[k] += cond.addTest(newPerKey, per,
+								event.getID());
 					}// end for (int j=0; j< _testToRun.size(); j++)					
-						((EventAttach) event.getAttach())
-								.setInAPeriod(getBooleanValue(1));
-						((EventAttach) event.getAttach())
-								.setAssigned(getBooleanValue(1));				
+					((EventAttach) event.getAttach())
+							.setInAPeriod(getBooleanValue(1));
+					((EventAttach) event.getAttach())
+							.setAssigned(getBooleanValue(1));
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 				((EventAttach) event.getAttach()).setInAPeriod(false);
@@ -233,16 +230,15 @@ public class DxConditionsToTest {
 
 					for (int k = 0; k < _conditionsToTest.size(); k++) {
 						DxCondition cond = _conditionsToTest.get(k);
-						numberOfConflicts[k] += cond.removeTest(newPerKey,
-								per, event.getID());
+						numberOfConflicts[k] += cond.removeTest(newPerKey, per,
+								event.getID());
 					}// end for (int j=0; j< _testToRun.size(); j++)
 
+					((EventAttach) event.getAttach())
+							.setInAPeriod(getBooleanValue(-1));
+					((EventAttach) event.getAttach())
+							.setAssigned(getBooleanValue(-1));
 
-						((EventAttach) event.getAttach())
-								.setInAPeriod(getBooleanValue(-1));
-						((EventAttach) event.getAttach())
-								.setAssigned(getBooleanValue(-1));
-				
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 				((EventAttach) event.getAttach()).setInAPeriod(false);
@@ -257,7 +253,7 @@ public class DxConditionsToTest {
 			boolean usePriority) {
 		//return addOrRemoveOrGetConflictsEventInTTs(tts, event, 0, usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
-		
+
 		if (((EventAttach) event.getAttach()).isAssigned()) {
 			int[] perKey = ((EventAttach) event.getAttach())
 					.getPeriodKeyTable();
@@ -275,8 +271,8 @@ public class DxConditionsToTest {
 
 					for (int k = 0; k < _conditionsToTest.size(); k++) {
 						DxCondition cond = _conditionsToTest.get(k);
-						numberOfConflicts[k] += cond.getInfo(newPerKey,
-								per, event.getID());
+						numberOfConflicts[k] += cond.getInfo(newPerKey, per,
+								event.getID());
 					}// end for 					
 				}// end for 
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
@@ -286,7 +282,7 @@ public class DxConditionsToTest {
 			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
 		}
 		return numberOfConflicts;
-		
+
 	}
 
 	/**
@@ -321,55 +317,54 @@ public class DxConditionsToTest {
 	 *         </p>
 	 */
 
-//	// XXXX Pascal: Candidat pour un anti-pattern ?
-//	private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts,
-//			DResource event, int operation, boolean usePriority) {
-//		int[] numberOfConflicts = { 0, 0, 0 };
-//
-//		if (((EventAttach) event.getAttach()).isAssigned()) {
-//			int[] perKey = ((EventAttach) event.getAttach())
-//					.getPeriodKeyTable();
-//			int duration = ((EventAttach) event.getAttach()).getDuration()
-//					/ tts.getPeriodLenght();
-//
-//			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
-//					perKey[2], duration, _avoidPriority, usePriority))
-//					&& (duration > 0)) {
-//
-//				for (int j = 0; j < duration; j++) {
-//					Period per = tts.getCurrentCycle().getPeriodByKey(
-//							perKey[0], perKey[1], perKey[2] + j);
-//					int[] newPerKey = { perKey[0], perKey[1], perKey[2] + j };
-//
-//					for (int k = 0; k < _conditionsToTest.size(); k++) {
-//						DxCondition cond = _conditionsToTest.get(k);
-//						numberOfConflicts[k] += cond.executeTest(newPerKey,
-//								per, event.getID(), operation);
-//					}// end for (int j=0; j< _testToRun.size(); j++)
-//
-//					if (operation != 0) {
-//						((EventAttach) event.getAttach())
-//								.setInAPeriod(getBooleanValue(operation));
-//						((EventAttach) event.getAttach())
-//								.setAssigned(getBooleanValue(operation));
-//					}
-//				}// end for (int j=0; j< ((EventAttach)event.getAttach())
-//			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
-//				((EventAttach) event.getAttach()).setInAPeriod(false);
-//				((EventAttach) event.getAttach()).setAssigned(false);
-//				((EventAttach) event.getAttach()).setPermanentState(false);
-//			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
-//		}
-//		return numberOfConflicts;
-//	}
-
+	//	// XXXX Pascal: Candidat pour un anti-pattern ?
+	//	private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts,
+	//			DResource event, int operation, boolean usePriority) {
+	//		int[] numberOfConflicts = { 0, 0, 0 };
+	//
+	//		if (((EventAttach) event.getAttach()).isAssigned()) {
+	//			int[] perKey = ((EventAttach) event.getAttach())
+	//					.getPeriodKeyTable();
+	//			int duration = ((EventAttach) event.getAttach()).getDuration()
+	//					/ tts.getPeriodLenght();
+	//
+	//			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
+	//					perKey[2], duration, _avoidPriority, usePriority))
+	//					&& (duration > 0)) {
+	//
+	//				for (int j = 0; j < duration; j++) {
+	//					Period per = tts.getCurrentCycle().getPeriodByKey(
+	//							perKey[0], perKey[1], perKey[2] + j);
+	//					int[] newPerKey = { perKey[0], perKey[1], perKey[2] + j };
+	//
+	//					for (int k = 0; k < _conditionsToTest.size(); k++) {
+	//						DxCondition cond = _conditionsToTest.get(k);
+	//						numberOfConflicts[k] += cond.executeTest(newPerKey,
+	//								per, event.getID(), operation);
+	//					}// end for (int j=0; j< _testToRun.size(); j++)
+	//
+	//					if (operation != 0) {
+	//						((EventAttach) event.getAttach())
+	//								.setInAPeriod(getBooleanValue(operation));
+	//						((EventAttach) event.getAttach())
+	//								.setAssigned(getBooleanValue(operation));
+	//					}
+	//				}// end for (int j=0; j< ((EventAttach)event.getAttach())
+	//			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
+	//				((EventAttach) event.getAttach()).setInAPeriod(false);
+	//				((EventAttach) event.getAttach()).setAssigned(false);
+	//				((EventAttach) event.getAttach()).setPermanentState(false);
+	//			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
+	//		}
+	//		return numberOfConflicts;
+	//	}
 	/**
 	 * 
 	 * @param oper
 	 * @return
 	 */
 	private boolean getBooleanValue(int oper) {
-		if (oper ==1) 
+		if (oper == 1)
 			return true;
 
 		return false;
@@ -379,39 +374,21 @@ public class DxConditionsToTest {
 	 * extract preference tables
 	 */
 	public void extractPreference() {
-//		if (DxFlags.newDoc){
-			if (_dm.getDxDocument().getDMediator() != null) {
-				int[] conflictsPreference = _dm.getDxDocument().getDMediator()
-						.getDApplication().getPreferences().getConflictLimits();
-				for (int i = 0; i < _acceptableConflictsTable.length; i++)
-					_acceptableConflictsTable[i] = conflictsPreference[i];
-				_avoidPriority = new int[2 - conflictsPreference[3]];
-				int inc = 0;
-				for (int i = conflictsPreference[3] + 1; i < 3; i++)
-					_avoidPriority[inc++] = i;
-				_periodAcceptableSize = conflictsPreference[4];
-				_periodVariationEvents = conflictsPreference[5];
-				((DxStudentCondtionsToTest) _conditionsToTest.get(0))
-						.setPeriodVariationEvents(_periodVariationEvents);
-			}
-			
-//		} else {
-//			if (_dm.getDDocument().getDMediator() != null) {
-//				int[] conflictsPreference = _dm.getDDocument().getDMediator()
-//						.getDApplication().getPreferences().getConflictLimits();
-//				for (int i = 0; i < _acceptableConflictsTable.length; i++)
-//					_acceptableConflictsTable[i] = conflictsPreference[i];
-//				_avoidPriority = new int[2 - conflictsPreference[3]];
-//				int inc = 0;
-//				for (int i = conflictsPreference[3] + 1; i < 3; i++)
-//					_avoidPriority[inc++] = i;
-//				_periodAcceptableSize = conflictsPreference[4];
-//				_periodVariationEvents = conflictsPreference[5];
-//				((DxStudentCondtionsToTest) _conditionsToTest.get(0))
-//						.setPeriodVariationEvents(_periodVariationEvents);
-//			}
-//		}
-		
+
+		if (_dm.getDxDocument().getDMediator() != null) {
+			int[] conflictsPreference = _dm.getDxDocument().getDMediator()
+					.getDApplication().getPreferences().getConflictLimits();
+			for (int i = 0; i < _acceptableConflictsTable.length; i++)
+				_acceptableConflictsTable[i] = conflictsPreference[i];
+			_avoidPriority = new int[2 - conflictsPreference[3]];
+			int inc = 0;
+			for (int i = conflictsPreference[3] + 1; i < 3; i++)
+				_avoidPriority[inc++] = i;
+			_periodAcceptableSize = conflictsPreference[4];
+			_periodVariationEvents = conflictsPreference[5];
+			((DxStudentCondtionsToTest) _conditionsToTest.get(0))
+					.setPeriodVariationEvents(_periodVariationEvents);
+		}
 	}
 
 	/**
@@ -430,8 +407,8 @@ public class DxConditionsToTest {
 	 */
 	public Vector periodVariationEvents(int[] perKey) {
 		extractPreference();
-		DxStudentCondtionsToTest studTest = new DxStudentCondtionsToTest(_matrix,
-				_dm.getSetOfActivities(), _dm.getTTStructure()
+		DxStudentCondtionsToTest studTest = new DxStudentCondtionsToTest(
+				_matrix, _dm.getSetOfActivities(), _dm.getTTStructure()
 						.getCurrentCycle());
 		studTest.setPeriodVariationEvents(_periodVariationEvents);
 		return studTest.periodVariationEventsPeriods(perKey);
@@ -466,14 +443,12 @@ public class DxConditionsToTest {
 					String periodKey = daytime[0] + "." + daytime[1] + "."
 							+ daytime[2];
 					eventAttach.setKey(4, periodKey);
-					// ((EventAttach)event.getAttach()).setAssignState(true);
 					System.out.println(i + " " + j + " " + k);
 					addEventInTTs(improveTTStruct, res, false);
 
 				}// end for(int k=0; k< ((Sequence)seq.getAttach())
 			}// end for(int j=0; j<
-			// ((Day)day.getAttach()).getSetOfSequences().size(); j++)
 		}// end for(int i=0; i< _newTTS.getCurrentCycle()
 	}
 
-}// end class
+}// end DxConditionsToTest

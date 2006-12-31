@@ -3,7 +3,6 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -39,14 +38,8 @@ public class RoomAssignmentAlgo implements Algorithm {
 		super();
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
-//		if (DxFlags.newDoc) {
-			_conflictsPreference = _dm.getDxDocument().getDMediator()
-			.getDApplication().getPreferences().getConflictLimits();
-//		} else {
-//			_conflictsPreference = _dm.getDDocument().getDMediator()
-//			.getDApplication().getPreferences().getConflictLimits();
-//		}
-		
+		_conflictsPreference = _dm.getDxDocument().getDMediator()
+				.getDApplication().getPreferences().getConflictLimits();
 		setNoRoomToEventsWithRoomsNotFixed();
 		doWork();
 	}
@@ -61,7 +54,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 		int numberOfPeriods = cycle.getNumberOfDays()
 				* cycle.getMaxNumberOfPeriodsADay();
-		Vector <DResource>eventsToUpdate = new Vector<DResource>();
+		Vector<DResource> eventsToUpdate = new Vector<DResource>();
 		DSetOfResources setOfEventsToAssign = new StandardCollection();
 		DSetOfResources setOfAvailableRooms;
 		for (int i = 0; i < numberOfPeriods; i++) {
@@ -120,10 +113,6 @@ public class RoomAssignmentAlgo implements Algorithm {
 					eventInPeriodName).getAttach();
 			if (eventAttach.getRoomKey() != NO_ROOM_ASSIGNED) {
 				setOfAvailRooms.removeResource(eventAttach.getRoomKey());
-				// Room room =
-				// (Room)_dm.getSetOfRooms().getResource(eventAttach.getRoomKey());
-				// setOfAvailRooms.setCurrentKey(eventAttach.getRoomKey());
-				// setOfAvailRooms.addResource(room,ADD_RESOURCE_BY_KEY);
 			}// end if(eventAttach.getRoomKey() != NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfAvailRooms;
@@ -191,7 +180,6 @@ public class RoomAssignmentAlgo implements Algorithm {
 		return newSetOfEvents;
 	}
 
-
 	/**
 	 * Elle teste si un couplet (local, evenement) peut être ajouté à une
 	 * <p>
@@ -221,18 +209,13 @@ public class RoomAssignmentAlgo implements Algorithm {
 					.getKey()) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;
-			}// end if(((EventAttach)event.getAttach()).getRoomFunction() ==
-				// allRscFunct.getKey()){
-			else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
+			} else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
 					.getRoomFunction())) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;
 			}// end else
-				// if((((EventAttach)event.getAttach()).getRoomFunction() ==
-				// room.getRoomFunction()))
 		}// end if(allRscFunct!= null)
 		return false;
 	}
 
-
-}
+} // end RoomAssignmentAlgo
