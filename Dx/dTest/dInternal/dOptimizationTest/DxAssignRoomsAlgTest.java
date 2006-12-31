@@ -24,8 +24,6 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -58,7 +56,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 		DModel dm1 = null;
-		DDocument _dDocument1 = new DDocument();
+
 		DxDocument _dxDocument1 = new DxTTableDoc();
 		String fileName = "." + File.separator;
 		fileName += "dataTest" + File.separator;
@@ -66,14 +64,10 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		fileName += "facs" + File.separator;
 		fileName += "flsh2_1" + File.separator;
 		fileName += "RoomAffContTT.dia";
-		int type = 1;
 
 		try {
-//			if (DxFlags.newDoc) {
-				dm1 = new DModel(_dxDocument1, fileName.toString());
-//			} else {
-//				dm1 = new DModel(_dDocument1, fileName.toString(), type);
-//			}
+
+			dm1 = new DModel(_dxDocument1, fileName.toString());
 			dm1.changeInDModel(new Object());
 			assertEquals("test_build: assertEquals", 94, dm1
 					.getSetOfActivities().size());
@@ -84,7 +78,6 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
 					.getNumberOfEventAssign());
 			dm1 = null;
-			_dDocument1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
@@ -96,7 +89,6 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 		DModel dm1 = null;
-		DDocument _dDocument1 = new DDocument();
 		DxDocument _dxDocument1 = new DxTTableDoc();
 		String fileName = "." + File.separator;
 		fileName += "dataTest" + File.separator;
@@ -104,14 +96,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		fileName += "facs" + File.separator;
 		fileName += "flsh2_1" + File.separator;
 		fileName += "Aut2006flsh170m.dia";
-		int type = 1;
 
 		try {
-//			if (DxFlags.newDoc) {
-				dm1 = new DModel(_dxDocument1, fileName.toString());
-//			} else {
-//				dm1 = new DModel(_dDocument1, fileName.toString(), type);
-//			}
+			dm1 = new DModel(_dxDocument1, fileName.toString());
 			dm1.changeInDModel(new Object());
 			assertEquals("test_build: assertEquals", 199, dm1
 					.getSetOfActivities().size());
@@ -122,10 +109,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			assertEquals("test_build: assertEquals", 250, dm1.getSetOfEvents()
 					.getNumberOfEventAssign());
 			dm1 = null;
-			_dDocument1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
 
 	}
-}
+} // end DxAssignRoomsAlgTest

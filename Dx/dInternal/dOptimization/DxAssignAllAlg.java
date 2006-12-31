@@ -45,7 +45,7 @@ public class DxAssignAllAlg implements Algorithm {
 	private Vector<DResource> _placedEvents;
 
 	private DModel _dm;
-	
+
 	private DxConflictLimits _dxCL;
 
 	/**
@@ -73,7 +73,7 @@ public class DxAssignAllAlg implements Algorithm {
 		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {
 			currentEvent = (DResource) vNotYetAssignedEvents.get(i);
 			boolean isNumberOfConflictsAcceptable = false;
-			
+
 			/*
 			 * while(((EventAttach)currentEvent.getAttach()).getAssignState())
 			 * currentEvent= (Resource)vectorOfEvents.remove(0);
@@ -185,9 +185,9 @@ public class DxAssignAllAlg implements Algorithm {
 									.toString(counter++), value), 1);
 						}// end if (_dm.getTTStructure()
 					}// end if(per.getEventsInPeriod().size()<
-					
+
 				}// end for(int k=0; k<
-				
+
 			}// end for(int j=0; j< ((Day)day.getAttach()).getSetO
 		}// end for (int i=0; i< _dm.getTTStructure().getCurrentCycle()
 		soresc.sortSetOfResourcesByKey();

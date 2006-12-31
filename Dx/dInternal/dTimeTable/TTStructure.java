@@ -45,10 +45,6 @@ public class TTStructure extends Observable {
 
 	private boolean _modified;
 
-	// private int _nbOfStCycles=2;
-	// private int _nbOfStDays=7;
-	// private int _currentCycleIndex = 1;
-	// DXTimeTable tag
 	static final String ITEM2 = "DXTimeTable";
 
 	// subtag
@@ -64,12 +60,8 @@ public class TTStructure extends Observable {
 
 	public static final String[] _priorityTable = { "Normale", "Basse", "Nulle" };
 
-	// private String _str;
 	private String _error = "";
 
-	// private String _errorXMLFileMessage = "XML file is corrupted";
-	// private int _col;
-	// private int _row;
 	public static int NUMBEROFACTIVESDAYS = 5;// monday to friday
 
 	private int _numberOfDays;
@@ -78,7 +70,6 @@ public class TTStructure extends Observable {
 
 	private int _currentCycleIndex = 0;
 
-	// private String _errorMessage = "XML file is corrupted";
 	static final String _TAG_TT_CYCLE = "TTcycle";
 
 	static final String _TAGITEM1 = "cycleID";
@@ -232,19 +223,19 @@ public class TTStructure extends Observable {
 	public String loadTTSFromFile(String fileName) {
 		XMLInputFile xmlFile;
 		Element root; // , item, ID;
-			try {
-				xmlFile = new XMLInputFile();
-				Document doc = xmlFile.createDocument(fileName);
-				XMLReader list = new XMLReader();
-				root = list.getRootElement(doc);
-				if (readXMLtag(root).length() != 0) {
-					_error = DConst.ERROR_XML_FILE;
-					return _error;
-				}
-			} catch (Exception e) {
-				_error = e.getMessage();
-				new DxExceptionDlg(_error,e);
+		try {
+			xmlFile = new XMLInputFile();
+			Document doc = xmlFile.createDocument(fileName);
+			XMLReader list = new XMLReader();
+			root = list.getRootElement(doc);
+			if (readXMLtag(root).length() != 0) {
+				_error = DConst.ERROR_XML_FILE;
+				return _error;
 			}
+		} catch (Exception e) {
+			_error = e.getMessage();
+			new DxExceptionDlg(_error, e);
+		}
 		return _error;
 	}
 
@@ -265,10 +256,7 @@ public class TTStructure extends Observable {
 		XMLReader list = new XMLReader();
 		root = list.getRootElement(doc);
 		readXMLTTTag(root);
-		// if (readXMLtag(root).length() != 0) {
-		// _error = DConst.ERROR_XML_FILE;
-		// // return _error;
-		// }
+
 	} // loadTTStructFromFile
 
 	/**
@@ -287,7 +275,6 @@ public class TTStructure extends Observable {
 					.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			ByteArrayInputStream bais = new ByteArrayInputStream(str.getBytes());
-			// InputStream is = new InputStream(bais);
 			Document document = builder.parse(bais);
 			XMLReader list = new XMLReader();
 			root = list.getRootElement(document);
@@ -298,7 +285,6 @@ public class TTStructure extends Observable {
 		} catch (Exception e) {
 			System.out.println("TTStructure 1 :" + e);
 			_error = e.toString();
-			// return e.toString();
 		}
 		return _error;
 		// return null; Cannot return null, causes error because caller verifies
@@ -314,8 +300,7 @@ public class TTStructure extends Observable {
 	 * @return String the error message, empty if it does not found error
 	 */
 	public String setTTStructureDocument(Document doc) {
-		// ReadXMLFile xmlFile;
-		Element root; // , item, ID;
+		Element root;
 		try {
 			XMLReader list = new XMLReader();
 			root = list.getRootElement(doc);
@@ -349,11 +334,10 @@ public class TTStructure extends Observable {
 			XMLOutputFile xmlOF = new XMLOutputFile();
 			xmlOF.write(doc, fileName);
 			_modified = false;
-			return "";		
+			return "";
 		} catch (Exception e) {
 			return e.toString();// debug
 		}
-		
 
 	}
 
@@ -377,31 +361,6 @@ public class TTStructure extends Observable {
 
 	}
 
-	// public void modification() {
-	// sendEvent();
-	// System.out.println("Sending events");
-	// }
-
-	// public void sendEvent() {
-	// TTStructureEvent event = new TTStructureEvent(this);
-	// for (int i = 0; i < _ttsListeners.size(); i++) {
-	// TTStructureListener ttsl = (TTStructureListener) _ttsListeners
-	// .elementAt(i);
-	// ttsl.changeInTTStructure(event);
-	// //System.out.println("sendEvent: "+event.toString()+" --I:"+i);
-	// System.out.println("TTstructure listener started: " + i);//debug
-	// }
-	// }
-
-	/*
-	 * public synchronized void addTTStructureListener(TTStructureListener ttsl) {
-	 * if (_ttsListeners.contains(ttsl)){ return; }
-	 * _ttsListeners.addElement(ttsl); //System.out.println("addTTStructure
-	 * Listener ..."); }
-	 * 
-	 * public synchronized void removeTTStructureListener(TTStructureListener
-	 * ttsl) { _ttsListeners.removeElement(ttsl); }
-	 */
 	/**
 	 * read a xml tag containing a set of cycle and build the resource
 	 * 
@@ -417,15 +376,12 @@ public class TTStructure extends Observable {
 			_error = DConst.ERROR_XML_FILE;
 			return _error;
 		}
-		// System.out.println(" Cycles Size: "+size);//debug
 		for (int i = 0; i < size; i++) {
 			Cycle setOfdays = new Cycle();
 			Element cycle = list.getElement(setofCycles, _TAG_TT_CYCLE, i);
 			ID = list.getElementValue(cycle, _TAGITEM1);
 			_periodLenght = Integer.parseInt(list.getElementValue(cycle,
 					_TAGITEM2));
-			// System.out.println(" Cycle ID: "+ID+" PeriodLenght:
-			// "+_periodLenght);//debug
 			Element days = list.getElement(cycle, _TAGITEM3, 0);
 
 			if (!setOfdays.readXMLtag(days).equals("")) {
@@ -462,10 +418,6 @@ public class TTStructure extends Observable {
 
 			Element days = list.getElement(cycle, _TAGITEM3, 0);
 			setOfdays.readXMLTTTag(days);
-			// if (!setOfdays.readXMLtag(days).equals("")) {
-			// _error = DConst.ERROR_XML_FILE;
-			// //return _error;
-			// }
 			_numberOfDays = setOfdays.getNumberOfDays();
 			_setOfCycles.addResource(new DResource(ID, setOfdays), 0);
 		}// end for (int i=0; i< size; i++)
@@ -518,7 +470,6 @@ public class TTStructure extends Observable {
 		}
 		return -1;
 	}
-
 
 	/**
 	 * Create a sequence of periods
@@ -647,12 +598,5 @@ public class TTStructure extends Observable {
 	public void setModified() {
 		_modified = true;
 	}
-	//    .setChanged();
-	//    // change model
-	//    _ttStructure.setModified();
-	//    // this.setStateBarComponent();
-	////    _nbConflicts = getTTStructure().getCurrentCycle()
-	////            .getTotalNumberOfConflicts();
-	//    _ttStructure.notifyObservers(obj);
-	//    _ttStructure.clearChanged();
-}
+
+} // end TTStructure

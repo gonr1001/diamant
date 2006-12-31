@@ -5,8 +5,6 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
-import dInterface.DDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.dOptimization.DxInstructorsConditionsToTest;
@@ -21,13 +19,8 @@ public class InstructorsConditionsTest extends TestCase {
 	public InstructorsConditionsTest(String name) {
 		super(name);
 		try {
-//			if (DxFlags.newDoc) {
-				_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData5j.dia");
-//			} else {
-//				_dm5j = new DModel(new DDocument(), "." + File.separator
-//						+ "dataTest" + File.separator + "loadData5j.dia", 1);
-//			}
+			_dm5j = new DModel(new DxTTableDoc(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData5j.dia");
 		} catch (Exception e) {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
@@ -36,15 +29,8 @@ public class InstructorsConditionsTest extends TestCase {
 		_dm5j.getConditionsTest().buildAllConditions(_dm5j.getTTStructure());
 
 		try {
-//			_dm7j = new DModel(new DDocument(), "." + File.separator
-//				+ "dataTest" + File.separator + "loadData5j.dia", 1);
-//			if (DxFlags.newDoc) {
-				_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
-						+ "dataTest" + File.separator + "loadData5j.dia");
-//			} else {
-//				_dm7j = new DModel(new DDocument(), "." + File.separator
-//						+ "dataTest" + File.separator + "loadData5j.dia", 1);
-//			}
+			_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
+					+ "dataTest" + File.separator + "loadData5j.dia");
 		} catch (Exception e) {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
@@ -115,4 +101,4 @@ public class InstructorsConditionsTest extends TestCase {
 		assertEquals("test_2EventsConflicts7j : assertEquals 2", 1, nbConf);
 	}
 
-}
+} // end InstructorsConditionsTest
