@@ -90,6 +90,7 @@ public class DFileMenuTest extends TestCase {
 			jmi = dfm.getItem(i);	
 		}
 		assertEquals("testNewTTableCycle1:", 14, dfm.getItemCount());
-		assertEquals("testNewTTableCycle2:", 0,jmi.getText().compareToIgnoreCase(DConst.EXIT));
+		if (jmi != null) 
+			assertEquals("testNewTTableCycle2:", 0,jmi.getText().compareToIgnoreCase(DConst.EXIT));
 	}
 }

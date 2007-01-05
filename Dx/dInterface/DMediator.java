@@ -128,11 +128,12 @@ public class DMediator extends Object {
 	 */
 	public String addDxTTableDoc(String ttName, String fileName)
 			throws DxException {
+		DApplication.getInstance().setCursorWait();
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);
 		_dApplication.hideToolBar();
-
+		DApplication.getInstance().setCursorDefault();
 		return "";
 	}
 
@@ -146,11 +147,16 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDxTTExamDoc(String fileName, int type) throws Exception /* !!!NIC!!! */{
+	public String addDxTTExamDoc(String ttName, String fileName, int type) throws Exception /* !!!NIC!!! */{
 		//TODO review all this method
 		DApplication.getInstance().setCursorWait();
-//		DxDocument currentDoc = new DxTTableDoc(this, fileName);
-//		_documents.addElement(currentDoc);
+		DxDocument currentDoc = new DxTTableDoc(this, fileName, type);
+		currentDoc.setDocumentName(ttName);
+		_dxDocuments.addElement(currentDoc);
+		_dApplication.hideToolBar();
+		DApplication.getInstance().setCursorDefault();
+	
+		//		_documents.addElement(currentDoc);
 
 //		if (currentDoc.getError().length() == 0) {
 //			_dApplication.getToolBar().setToolBars(
@@ -212,7 +218,7 @@ public class DMediator extends Object {
 
 	// -------------------------------------------
 
-	public String saveCurrentDoc(String str) {
+	public String saveCurrentDxDoc(String str) {
 		String error = "";
 			getCurrentDxDoc().setDocumentName(str);
 			getCurrentDxDoc().saveDxDocument(str);

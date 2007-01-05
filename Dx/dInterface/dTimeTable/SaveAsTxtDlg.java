@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTxtDlg $Revision: 1.12 $  $Date: 2006-09-13 13:08:22 $
+ * Title: SaveAsTxtDlg $Revision: 1.13 $  $Date: 2007-01-05 20:14:26 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,8 +13,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.13 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -62,7 +62,6 @@ public class SaveAsTxtDlg extends SaveAsDlg{
 	
 	
 	public void addInNewFile(String currentFile, String data) {
-
 		try{
 			FileWriter fw = new FileWriter(currentFile);
 			fw.write(data);
@@ -96,7 +95,7 @@ public class SaveAsTxtDlg extends SaveAsDlg{
 	 }
 	 }// saveReport*/
 	
-	public String setExtension(JFileChooser fc){
+	public String setFilters(JFileChooser fc){
 		fc.setFileFilter( new DFileFilter ( new String[] {DConst.TXT},
 				DConst.TXT_FILE ) );
 		return DConst.DOT_TXT;

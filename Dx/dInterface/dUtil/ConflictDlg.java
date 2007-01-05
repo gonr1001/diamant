@@ -86,20 +86,16 @@ public class ConflictDlg extends JDialog implements ActionListener {
 			_textField5 = new JTextField("" + cl.getMinPeriodSpacing());
 			_textField6 = new JTextField("" + cl.getRoomBookingRate());
 		} else {
-		int[] a = _dApplic.getPreferences().getConflictLimits();
-		/*String [] b = new  String  [a.length];
-		 for(int i= 0; i <a.length; i ++) {
-		 b [i] = "" + a[i];
-		 }*/
+				int[] a = _dApplic.getPreferences().getConflictLimits();
+				_textField0 = new JTextField("" + a[0]);
+				_textField1 = new JTextField("" + a[1]);
+				_textField2 = new JTextField("" + a[2]);
+				_textField3 = new JTextField("" + a[3]);
+				_textField4 = new JTextField("" + a[4]);
+				_textField5 = new JTextField("" + a[5]);
+				_textField6 = new JTextField("" + a[6]);
+			}
 
-		_textField0 = new JTextField("" + a[0]);
-		_textField1 = new JTextField("" + a[1]);
-		_textField2 = new JTextField("" + a[2]);
-		_textField3 = new JTextField("" + a[3]);
-		_textField4 = new JTextField("" + a[4]);
-		_textField5 = new JTextField("" + a[5]);
-		_textField6 = new JTextField("" + a[6]);
-		}
 		jPanel.setLayout(new GridLayout(7, 2));
 		jPanel.add(new JLabel("Max Conflits Étu entre 2 Eve ="));
 		jPanel.add(_textField0);

@@ -19,7 +19,6 @@ package dInternal;
 
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
@@ -110,8 +109,6 @@ public class DModel extends Observable {
 	private SetOfStuSites _setOfStuSites;
 
 	private SetOfActivitiesSites _setOfActivitiesSites;
-
-//	private DDocument _dDocument;
 
 	private DxDocument _dxDocument;
 
@@ -212,10 +209,11 @@ public class DModel extends Observable {
 		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
 		_dxDocument = dxDocument;
 		_isOnlyATimeTable = false;
-
+		_isATimeTable = true;
+		
 		if (fileName.endsWith(DConst.DOT_DIA)) {
 			_error = loadTimeTable(fileName, getCurrentDir(fileName));
-			_isATimeTable = true;
+			//			_isATimeTable = true;
 		} else if (fileName.endsWith(DConst.DOT_XML)) {
 			_ttStruct = new TTStructure();
 			_error = _ttStruct.loadTTSFromFile(fileName);
@@ -247,7 +245,15 @@ public class DModel extends Observable {
 	public String getError() {
 		return _error;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
+	public void  setIsATimeTable() {
+		_isATimeTable = true;
+	}
+	
+	
 	/**
 	 * 
 	 * @return
@@ -899,6 +905,7 @@ public class DModel extends Observable {
 	}
 
 	public void changeInDModelByImportDlg(Object obj) {
+		
 		this.setChanged();
 		// change model
 		this.setModified();

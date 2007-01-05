@@ -1,6 +1,6 @@
 /**
  * 
- * Title: Algorithm $Revision: 1.7 $ $Date: 2006-06-20 14:39:25 $ Description: Algorithm is a interface
+ * Title: Algorithm $Revision: 1.8 $ $Date: 2007-01-05 20:14:27 $ Description: Algorithm is a interface
  * used as
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -22,7 +22,7 @@ package dInternal.dOptimization;
 public interface Algorithm {
 
     /**
-     * build the algorithm
+     * execute the algorithm
      */
     public void doWork();
 

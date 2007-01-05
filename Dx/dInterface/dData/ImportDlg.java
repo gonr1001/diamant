@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ImportDlg $Revision: 1.34 $  $Date: 2006-12-30 17:23:02 $
+ * Title: ImportDlg $Revision: 1.35 $  $Date: 2007-01-05 20:14:24 $
  * Description: ImportDlg is created by DefFileToImportCmd
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.34 $
+ * @version $Revision: 1.35 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,7 +28,6 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 
@@ -78,11 +77,9 @@ public class ImportDlg extends JDialog {
 								fc.getSelectedFile().getAbsolutePath()
 										.lastIndexOf(File.separatorChar) + 1));
 				dApplic.setCurrentDir(fil);
-
-				//dApplic.doImport(this, fil);
 				dApplic.doImport(fil);
-
-				dApplic.getCurrentDxDoc().getCurrentDModel()
+				dApplic.getCurrentDModel().setIsATimeTable();
+				dApplic.getCurrentDModel()
 						.changeInDModelByImportDlg(this);
 				dApplic.setCurrentDir(fc.getSelectedFile().getPath());
 				dispose();

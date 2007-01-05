@@ -21,6 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -68,7 +69,12 @@ public class DxAssignAllAlg implements Algorithm {
 		int currentDuration = 0;
 		_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
 
-		_dm.getConditionsTest().extractPreference();
+	
+		if (DxFlags.newAlg) {
+			_dm.getConditionsTest().extractDxPreference();
+		} else {
+			_dm.getConditionsTest().extractPreference();
+		}
 		int[] nbConf;
 		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {
 			currentEvent = (DResource) vNotYetAssignedEvents.get(i);

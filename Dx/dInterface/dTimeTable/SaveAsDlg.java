@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SaveAsDlg $Revision: 1.27 $  $Date: 2006-12-30 16:23:24 $
+ * Title: SaveAsDlg $Revision: 1.28 $  $Date: 2007-01-05 20:14:26 $
  * Description: SaveAsDlg(DApplication dApplic) can be created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) can be created
  *                        by ConflicReport, FullReport,
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -46,32 +46,19 @@ public abstract class SaveAsDlg {
 	/**
 	 * 
 	 * @param DApplication
-	 *            dApplic gives acces to the dialog's parent
+	 *            dApplic gives acces to the parent's dialog
 	 * @since JDK1.3
 	 */
 	public SaveAsDlg(DApplication dApplic) {
 		_dApplic = dApplic;
 	}
 
-	/**
-	 * Constructor
-	 * 
-	 * @param dApplic
-	 *            The application
-	 * @param data
-	 *            contains a String the string will be saved as in reports
-	 */
-//	public SaveAsDlg(DApplication dApplic) {//, String data) {
-//		//data += "";
-//		_dApplic = dApplic;
-//	} // end constructor
 
 	public void saveAs(String data, boolean report) {
-		String dotExt = "";
-
+		
 		JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
 		fc.setMultiSelectionEnabled(false);
-		dotExt = setExtension(fc);
+		String dotExt = setFilters(fc);
 
 		int returnVal = fc.showSaveDialog(_dApplic.getJFrame());
 		// If the file chooser exited by Ok, do Save
@@ -116,5 +103,6 @@ public abstract class SaveAsDlg {
 
 	protected abstract void addInNewFile(String currentFile, String data);
 
-	protected abstract String setExtension(JFileChooser fc);
+	protected abstract String setFilters(JFileChooser fc);
+	
 }// end class

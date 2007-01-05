@@ -48,8 +48,8 @@ public class DxExceptionDlg {
 		new DxExceptionDlg(comp,error,DX_EXCEPTION);
 	}
 	public DxExceptionDlg(Component comp, String message, String title, Exception e) {
-		message=message+DConst.CR_LF+DxException.getCurrentMethod(e);
-		new DxExceptionDlg(comp,message,title);
+		String nmessage = message + DConst.CR_LF + DxException.getCurrentMethod(e);
+		new DxExceptionDlg(comp, nmessage, title);
 	}
 	public DxExceptionDlg(Component comp, String message, Exception e) {
 		new DxExceptionDlg(comp,message,DX_EXCEPTION,e);

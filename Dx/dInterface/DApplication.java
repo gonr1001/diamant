@@ -163,9 +163,10 @@ public class DApplication { // implements ActionListener {
 				System.out.println("Mode développement");
 			}
 		}
-
-		_preferences = new DxPreferences(System.getProperty("user.home")
-				+ File.separator + "pref" + File.separator + "pref.txt");
+		String str = System.getProperty("user.home") + File.separator + "pref"
+				+ File.separator + "pref.txt";
+		System.out.println("Preference file is in :" + str);
+		_preferences = new DxPreferences(str);
 
 		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		_dMediator = new DMediator(this);
@@ -237,13 +238,13 @@ public class DApplication { // implements ActionListener {
 		return _dMediator;
 	} // end getDMediator
 
-	// public DDocument getCurrentDoc() {
-	// return _dMediator.getCurrentDoc();
-	// } // end getCurrentDoc
-
 	public DxDocument getCurrentDxDoc() {
 		return _dMediator.getCurrentDxDoc();
 	}
+
+	public String saveCurrentDxDoc(String str) {
+		return _dMediator.saveCurrentDxDoc(str);
+	} // end getCurrentDoc
 
 	public DxMenuBar getDxMenuBar() {
 		return _dxMenuBar;
@@ -413,7 +414,9 @@ public class DApplication { // implements ActionListener {
 		this.setCurrentDir(_fileToOpen);
 
 		try {
-			this.getDMediator().addDxTTExamDoc(_fileToOpen, DConst.EXAM);
+			this.getDMediator().addDxTTExamDoc(
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
+					DConst.EXAM);
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		} catch (Exception e) {
@@ -509,7 +512,7 @@ public class DApplication { // implements ActionListener {
 		if (this.getCurrentDxDoc().getDocumentName().endsWith(DConst.NO_NAME))
 			new SaveAsTTDlg(this);
 		else if (this.getCurrentDxDoc().isModified())
-			this._dMediator.saveCurrentDoc(this.getCurrentDxDoc()
+			this._dMediator.saveCurrentDxDoc(this.getCurrentDxDoc()
 					.getDocumentName());
 	}
 
@@ -853,13 +856,12 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
-			new DxAssignRoomsAlg(this.getCurrentDxDoc().getCurrentDModel(),
-					this.getPreferences().getDxConflictLimits()).doWork();
-			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getPreferences()
+					.getDxConflictLimits()).doWork();
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
-			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 		}
+		new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 	}
 
 	/**

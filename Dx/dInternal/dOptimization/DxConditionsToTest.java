@@ -21,8 +21,10 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
+import dInternal.DxConflictLimits;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
@@ -130,7 +132,11 @@ public class DxConditionsToTest {
 	 */
 	public void initAllConditions() {
 		buildStudentConflictMatrix();
-		extractPreference();
+		if (DxFlags.newAlg) {
+			extractDxPreference();
+		} else {
+			extractPreference();
+		}
 		buildAllConditions(_dm.getTTStructure());
 	}
 
@@ -171,7 +177,8 @@ public class DxConditionsToTest {
 
 	public int[] addEventInTTs(TTStructure tts, DResource event,
 			boolean usePriority) {
-		//return addOrRemoveOrGetConflictsEventInTTs(tts, event, 1, usePriority);
+		// return addOrRemoveOrGetConflictsEventInTTs(tts, event, 1,
+		// usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
 
 		if (((EventAttach) event.getAttach()).isAssigned()) {
@@ -193,7 +200,7 @@ public class DxConditionsToTest {
 						DxCondition cond = _conditionsToTest.get(k);
 						numberOfConflicts[k] += cond.addTest(newPerKey, per,
 								event.getID());
-					}// end for (int j=0; j< _testToRun.size(); j++)					
+					}// end for (int j=0; j< _testToRun.size(); j++)
 					((EventAttach) event.getAttach())
 							.setInAPeriod(getBooleanValue(1));
 					((EventAttach) event.getAttach())
@@ -210,7 +217,8 @@ public class DxConditionsToTest {
 
 	public int[] removeEventInTTs(TTStructure tts, DResource event,
 			boolean usePriority) {
-		//return addOrRemoveOrGetConflictsEventInTTs(tts, event, -1, usePriority);
+		// return addOrRemoveOrGetConflictsEventInTTs(tts, event, -1,
+		// usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
 
 		if (((EventAttach) event.getAttach()).isAssigned()) {
@@ -251,7 +259,8 @@ public class DxConditionsToTest {
 
 	public int[] getEventConflictsInTTs(TTStructure tts, DResource event,
 			boolean usePriority) {
-		//return addOrRemoveOrGetConflictsEventInTTs(tts, event, 0, usePriority);
+		// return addOrRemoveOrGetConflictsEventInTTs(tts, event, 0,
+		// usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
 
 		if (((EventAttach) event.getAttach()).isAssigned()) {
@@ -273,8 +282,8 @@ public class DxConditionsToTest {
 						DxCondition cond = _conditionsToTest.get(k);
 						numberOfConflicts[k] += cond.getInfo(newPerKey, per,
 								event.getID());
-					}// end for 					
-				}// end for 
+					}// end for
+				}// end for
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 				((EventAttach) event.getAttach()).setInAPeriod(false);
 				((EventAttach) event.getAttach()).setAssigned(false);
@@ -317,47 +326,47 @@ public class DxConditionsToTest {
 	 *         </p>
 	 */
 
-	//	// XXXX Pascal: Candidat pour un anti-pattern ?
-	//	private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts,
-	//			DResource event, int operation, boolean usePriority) {
-	//		int[] numberOfConflicts = { 0, 0, 0 };
+	// // XXXX Pascal: Candidat pour un anti-pattern ?
+	// private int[] addOrRemoveOrGetConflictsEventInTTs(TTStructure tts,
+	// DResource event, int operation, boolean usePriority) {
+	// int[] numberOfConflicts = { 0, 0, 0 };
 	//
-	//		if (((EventAttach) event.getAttach()).isAssigned()) {
-	//			int[] perKey = ((EventAttach) event.getAttach())
-	//					.getPeriodKeyTable();
-	//			int duration = ((EventAttach) event.getAttach()).getDuration()
-	//					/ tts.getPeriodLenght();
+	// if (((EventAttach) event.getAttach()).isAssigned()) {
+	// int[] perKey = ((EventAttach) event.getAttach())
+	// .getPeriodKeyTable();
+	// int duration = ((EventAttach) event.getAttach()).getDuration()
+	// / tts.getPeriodLenght();
 	//
-	//			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
-	//					perKey[2], duration, _avoidPriority, usePriority))
-	//					&& (duration > 0)) {
+	// if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
+	// perKey[2], duration, _avoidPriority, usePriority))
+	// && (duration > 0)) {
 	//
-	//				for (int j = 0; j < duration; j++) {
-	//					Period per = tts.getCurrentCycle().getPeriodByKey(
-	//							perKey[0], perKey[1], perKey[2] + j);
-	//					int[] newPerKey = { perKey[0], perKey[1], perKey[2] + j };
+	// for (int j = 0; j < duration; j++) {
+	// Period per = tts.getCurrentCycle().getPeriodByKey(
+	// perKey[0], perKey[1], perKey[2] + j);
+	// int[] newPerKey = { perKey[0], perKey[1], perKey[2] + j };
 	//
-	//					for (int k = 0; k < _conditionsToTest.size(); k++) {
-	//						DxCondition cond = _conditionsToTest.get(k);
-	//						numberOfConflicts[k] += cond.executeTest(newPerKey,
-	//								per, event.getID(), operation);
-	//					}// end for (int j=0; j< _testToRun.size(); j++)
+	// for (int k = 0; k < _conditionsToTest.size(); k++) {
+	// DxCondition cond = _conditionsToTest.get(k);
+	// numberOfConflicts[k] += cond.executeTest(newPerKey,
+	// per, event.getID(), operation);
+	// }// end for (int j=0; j< _testToRun.size(); j++)
 	//
-	//					if (operation != 0) {
-	//						((EventAttach) event.getAttach())
-	//								.setInAPeriod(getBooleanValue(operation));
-	//						((EventAttach) event.getAttach())
-	//								.setAssigned(getBooleanValue(operation));
-	//					}
-	//				}// end for (int j=0; j< ((EventAttach)event.getAttach())
-	//			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
-	//				((EventAttach) event.getAttach()).setInAPeriod(false);
-	//				((EventAttach) event.getAttach()).setAssigned(false);
-	//				((EventAttach) event.getAttach()).setPermanentState(false);
-	//			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
-	//		}
-	//		return numberOfConflicts;
-	//	}
+	// if (operation != 0) {
+	// ((EventAttach) event.getAttach())
+	// .setInAPeriod(getBooleanValue(operation));
+	// ((EventAttach) event.getAttach())
+	// .setAssigned(getBooleanValue(operation));
+	// }
+	// }// end for (int j=0; j< ((EventAttach)event.getAttach())
+	// } else {// end if (tts.getCurrentCycle().isPeriodContiguous(
+	// ((EventAttach) event.getAttach()).setInAPeriod(false);
+	// ((EventAttach) event.getAttach()).setAssigned(false);
+	// ((EventAttach) event.getAttach()).setPermanentState(false);
+	// }// end else if (tts.getCurrentCycle().isPeriodContiguous(
+	// }
+	// return numberOfConflicts;
+	// }
 	/**
 	 * 
 	 * @param oper
@@ -392,6 +401,33 @@ public class DxConditionsToTest {
 	}
 
 	/**
+	 * extract preference tables
+	 */
+	public void extractDxPreference() {
+
+		if (_dm.getDxDocument().getDMediator() != null) {
+			DxConflictLimits conflictsPreference = _dm.getDxDocument().getDMediator()
+					.getDApplication().getPreferences().getDxConflictLimits();
+//			for (int i = 0; i < _acceptableConflictsTable.length; i++)
+				_acceptableConflictsTable[0] = conflictsPreference.getMStudConfBetweenTwoEvents();
+				_acceptableConflictsTable[1] = conflictsPreference.getMInstConfBetweenTwoEvents();
+				_acceptableConflictsTable[2] = conflictsPreference.getMRoomConfBetweenTwoEvents();
+//				_acceptableConflictsTable[3] = conflictsPreference.getMAllowedPriority();
+//				_acceptableConflictsTable[4] = conflictsPreference.getMNumOfEventsInPeriod();
+//				_acceptableConflictsTable[5] = conflictsPreference.getMinPeriodSpacing();
+//				_acceptableConflictsTable[6] = conflictsPreference.getRoomBookingRate();
+			_avoidPriority = new int[2 - conflictsPreference.getMAllowedPriority()];
+			int inc = 0;
+			for (int i = conflictsPreference.getMAllowedPriority() + 1; i < 3; i++)
+				_avoidPriority[inc++] = i;
+			_periodAcceptableSize = conflictsPreference.getMNumOfEventsInPeriod();
+			_periodVariationEvents = conflictsPreference.getMinPeriodSpacing();
+			((DxStudentCondtionsToTest) _conditionsToTest.get(0))
+					.setPeriodVariationEvents(_periodVariationEvents);
+		}
+	}
+
+	/**
 	 * get all test to run
 	 * 
 	 * @return
@@ -406,7 +442,11 @@ public class DxConditionsToTest {
 	 * @return
 	 */
 	public Vector periodVariationEvents(int[] perKey) {
-		extractPreference();
+		if (DxFlags.newAlg) {
+			extractDxPreference();
+		} else {
+			extractPreference();
+		}
 		DxStudentCondtionsToTest studTest = new DxStudentCondtionsToTest(
 				_matrix, _dm.getSetOfActivities(), _dm.getTTStructure()
 						.getCurrentCycle());

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTDlg $Revision: 1.38 $  $Date: 2006-12-30 17:23:02 $
+ * Title: OpenTTDlg $Revision: 1.39 $  $Date: 2007-01-05 20:14:25 $
  * Description: OpenTTDlg is created by OpenTTDCmd
  *
  *
@@ -16,27 +16,25 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.38 $
+ * @version $Revision: 1.39 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dResources.DFileFilter;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
-
 
 /**
  * 
@@ -44,7 +42,8 @@ import eLib.exit.exception.DxException;
  * 
  */
 
-public class OpenTTDlg extends JDialog implements ActionListener, DlgIdentification {
+public class OpenTTDlg extends JDialog  implements //ActionListener,
+		DlgIdentification {
 	/**
 	 * the constructor will displays the dialog
 	 * 
@@ -91,38 +90,24 @@ public class OpenTTDlg extends JDialog implements ActionListener, DlgIdentificat
 			String fil = fc.getSelectedFile().getAbsolutePath();
 			dApplic.setCurrentDir(fil);
 
-//			if (DxFlags.newDoc) {
-				try {
-					dApplic.getDMediator().addDxTTableDoc(fil, fil);
-				} catch (DxException e) {
-                    new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
-					System.exit(1);
-				}
-//			} else {
-//				try {
-//					dApplic.getDMediator().addDoc(fil, fil, DConst.NO_TYPE);
-//				} catch (DxException e) {
-//					  new DxExceptionDlg(dApplic.getJFrame(),e.getMessage(),e);
-//						 System.exit(1);
-//				}
-//			}
+			try {
+				dApplic.getDMediator().addDxTTableDoc(fil, fil);
+			} catch (DxException e) {
+				new DxExceptionDlg(dApplic.getJFrame(), e.getMessage(), e);
+				System.exit(1);
+			}
 			dApplic.setCurrentDir(fc.getSelectedFile().getPath());
-//			if (DxFlags.newDoc) {
-				dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
-//			} else {
-//				dApplic.getCurrentDModel().changeInDModel(dApplic.getJFrame());
-//			}
-
-
+			dApplic.getCurrentDxDoc().changeInModel(this.idDlgToString());
 			dispose();
 
 		}
 	}// end OpenTTDlg
+
 	public String idDlgToString() {
-		return this.getClass().toString();		
+		return this.getClass().toString();
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub	
-	}
+//	public void actionPerformed(ActionEvent e) {
+//		// TODO Auto-generated method stub	
+//	}
 } /* end class OpenTTDlg */

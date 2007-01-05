@@ -1,6 +1,6 @@
 /**
  *
- * Title: FirstAffectAlgorithm $Revision: 1.25 $  $Date: 2006-06-20 14:39:25 $
+ * Title: FirstAffectAlgorithm $Revision: 1.26 $  $Date: 2007-01-05 20:14:28 $
  * Description: FirstAffectAlgorithm is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.25 $
+ * @version $Revision: 1.26 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -23,6 +23,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
+import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -62,7 +63,12 @@ public class FirstAffectAlgorithm implements Algorithm {
 
 		// _dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
 		// _dm.getConditionsTest().setacceptableConflictsTable(_acceptableConflictsTable);
-		_dm.getConditionsTest().extractPreference();
+		if (DxFlags.newAlg) {
+			_dm.getConditionsTest().extractDxPreference();
+		} else {
+			_dm.getConditionsTest().extractPreference();
+		}
+		
 
 		for (int i = 0; i < vect.size(); i++) {
 			currentEvent = (DResource) vect.get(i);
