@@ -53,16 +53,6 @@ public class SetOfActivities extends DSetOfResources {
     final static public int _COURSENAMELENGTH = 6;
 
     /**
-     * Constructor
-     */
-//    public SetOfActivities(boolean open) {
-//        super();
-//        // _dataloaded = dataloaded;
-//        _open = open;
-//        _periodLength = 60;
-//    }
-
-    /**
      * 
      * @param open
      * @param periodLength

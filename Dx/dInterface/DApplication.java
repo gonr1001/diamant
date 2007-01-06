@@ -415,8 +415,8 @@ public class DApplication { // implements ActionListener {
 
 		try {
 			this.getDMediator().addDxTTExamDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
-					DConst.EXAM);
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);//,
+					//DConst.EXAM);
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		} catch (Exception e) {

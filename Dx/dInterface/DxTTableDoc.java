@@ -48,7 +48,7 @@ import eLib.exit.exception.DxException;
  */
 public class DxTTableDoc extends DxDocument {
 
-	private String _type;
+//	private int _type;
 
 	private DxStateBar _stateBar;
 
@@ -60,21 +60,21 @@ public class DxTTableDoc extends DxDocument {
 
 	public DxTTableDoc(DMediator mediator, String fileName) throws DxException {
 		super(mediator);
-		_type = "type";
+//		_type = 0;
 		_dm = new DModel(this, fileName);
 		_documentName = fileName;
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_dm.getTTStructure());
 	}
 	
-	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException {
-		super(mediator);
-		_type = "type";
-		_dm = new DModel(this, fileName);
-		_documentName = fileName;
-		buidDocument(true, true);
-		_ttPane.updateTTPane(_dm.getTTStructure());
-	}
+//	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException {
+//		super(mediator);
+////		_type = type;
+//		_dm = new DModel(this, fileName);
+//		_documentName = fileName;
+//		buidDocument(true, true);
+//		_ttPane.updateTTPane(_dm.getTTStructure());
+//	}
 
 	// -------------------------------------------
 	private void buidDocument(boolean simple, boolean vertical) {
@@ -183,9 +183,9 @@ public class DxTTableDoc extends DxDocument {
 //
 //	}
 
-	public String getTTtype() {
-		return _type;
-	}
+//	public String getTTtype() {
+//		return _type;
+//	}
 
 	@Override
 	public void displaySimple() {

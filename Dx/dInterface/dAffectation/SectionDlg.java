@@ -134,7 +134,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			return;
 		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
 		_activities = _dmodel.getSetOfActivities();
-		_students = _dmodel.getSetOfStudents();// is correct
+		_students = _dmodel.getSetOfStudents();
 		_students.sortSetOfResourcesByID();// is correct
 		if (_activities != null && _students != null) {
 			initializeDlg();
