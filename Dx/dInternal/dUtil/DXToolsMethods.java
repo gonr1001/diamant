@@ -188,7 +188,7 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
       for (int i=0; i< day.getSetOfSequences().size(); i++){
         for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
           per = day.getSequence(i).getPeriodByIndex(j);
-          boolean avail = isAvailableInRange(initialAvail,h,per,tt.getPeriodLenght());
+          boolean avail = isAvailableInRange(initialAvail,h,per);//,tt.getPeriodLenght());
           if (avail)
             finalAvail[h][itr]=1;
           else
@@ -209,7 +209,8 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 	 * @return boolean
 	 */
 	private static boolean isAvailableInRange(int[][] initial, int day,
-			Period per, int periodLenght) {//, int up_low){
+			Period per){
+			//, int periodLenght) {//, int up_low){
 		int[] beginH = per.getBeginHour();
 		int[] endH = per.getEndHour();
 		int beginIndex;

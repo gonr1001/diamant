@@ -657,8 +657,8 @@ public class Cycle extends DObject {
 	 * 
 	 * @return
 	 */
-	public DisplayAttributs[][] getAttributesToDisplay(int periodLength) {
-		DSetOfResources rowAtt = buildAttributsRowTodisplay(periodLength);
+	public DisplayAttributs[][] getAttributesToDisplay() {
+		DSetOfResources rowAtt = buildAttributsRowTodisplay();
 		DisplayAttributs[][] matrixToDisplay = new DisplayAttributs[_setOfDays
 				.size()][rowAtt.size() - 1];
 		for (int i = 0; i < matrixToDisplay.length; i++) {
@@ -720,7 +720,7 @@ public class Cycle extends DObject {
 	 * @param periodLength
 	 * @return
 	 */
-	private DSetOfResources buildAttributsRowTodisplay(int periodLength) {
+	private DSetOfResources buildAttributsRowTodisplay() {
 		DSetOfResources attrib = new StandardCollection();// rgr rgr
 		for (int i = 0; i < _setOfDays.size(); i++) {
 			Day day = (Day) _setOfDays.getResourceAt(i).getAttach();

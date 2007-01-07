@@ -238,8 +238,9 @@ public abstract class ViewReport  extends JPanel implements ActionListener {
     String blanks =" ";
     for (int i=0; i< 10; i++)
         blanks +="             ";
-    str += blanks;
-    return str= str.substring(0,size);
+    String s = str;
+    s += blanks;
+    return s= s.substring(0,size);
   }
 
 }

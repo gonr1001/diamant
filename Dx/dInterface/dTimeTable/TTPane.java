@@ -124,7 +124,7 @@ public abstract class TTPane {
   }
   //-------------------------------------------
   protected void findRowHeaders() {
-    _toDisplay = _tts.getCurrentCycle().getAttributesToDisplay(_tts.getPeriodLenght());
+    _toDisplay = _tts.getCurrentCycle().getAttributesToDisplay();//_tts.getPeriodLenght());
     _rowHeaders = new RowRecord [_toDisplay[0].length];
     for(int i = 0; i < _toDisplay[0].length; i++) {
       if (_toDisplay[0][i].getEventsInPeriods()!=null){
