@@ -441,6 +441,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	 * @return a panel to be inserted into _insidePanel
 	 */
 	private JPanel setGroupPanel(int groupNumber, JLabel lNumberOfElements) {
+		JLabel lnOfEl = lNumberOfElements;
 		int numberOfElements = 0;
 		int insideWidth = (int) _insidePanel.getPreferredSize().getWidth();
 		int GroupPanelHeight = (int) ((_scrollPane.getPreferredSize()
@@ -464,8 +465,8 @@ public class SectionDlg extends DDialog implements ActionListener,
 				groupNumber).getID());
 		lGroupID.setForeground(DConst.COLOR_QUANTITY_DLGS);
 		JLabel lNumber = new JLabel(DConst.NUMBER_OF_ELEMENTS + " ");
-		lNumberOfElements = new JLabel(String.valueOf(numberOfElements));
-		lNumberOfElements.setForeground(DConst.COLOR_QUANTITY_DLGS);
+		lnOfEl = new JLabel(String.valueOf(numberOfElements));
+		lnOfEl.setForeground(DConst.COLOR_QUANTITY_DLGS);
 		infoPanel.add(lGroup);
 		infoPanel.add(lGroupID);
 		infoPanel.add(new JLabel(" - "));

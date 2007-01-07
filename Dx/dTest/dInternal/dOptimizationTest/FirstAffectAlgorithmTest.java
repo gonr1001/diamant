@@ -1,6 +1,6 @@
 /**
  * 
- * Title: FirstAffectAlgorithmTest $Revision: 1.16 $ $Date: 2006-12-31 18:09:55 $
+ * Title: FirstAffectAlgorithmTest $Revision: 1.17 $ $Date: 2007-01-07 22:38:17 $
  * Description: FirstAffectAlgorithmTest is a class used to 
  * 
  * 
@@ -61,7 +61,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		fileName += "facs" + File.separator;
 		fileName += "sciBase" + File.separator;
 		fileName += "scNoAssigned.dia";
-		int type = 1;
+//		int type = 1;
 
 		try {
 //			if (DxFlags.newDoc) {
@@ -95,7 +95,7 @@ public class FirstAffectAlgorithmTest extends TestCase {
 		fileName += "facs" + File.separator;
 		fileName += "genAlgo" + File.separator;
 		fileName += "genNoAssigned.dia";
-		int type = 1;
+//		int type = 1;
 		try {
 				dm1 = new DModel(_dxDocument1, fileName);
 			dm1.changeInDModel(new Object());

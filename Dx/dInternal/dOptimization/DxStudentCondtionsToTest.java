@@ -159,10 +159,10 @@ public class DxStudentCondtionsToTest implements DxCondition {
 		Vector<Period> vPeriods = new Vector<Period>();
 		_cycle.setCurrentDaySeqPerIndex(perKey[0] - 1, perKey[1] - 1,
 				perKey[2] - 1);
-		_cycle.getPreviousPeriod(1);
+		_cycle.getPreviousPeriod();
 		// get previous periods
 		for (int i = 0; i < _periodVariationEvents; i++) {
-			Period per = _cycle.getPreviousPeriod(1);
+			Period per = _cycle.getPreviousPeriod();
 			vPeriods.insertElementAt(per, 0);
 		}
 		// get next periods

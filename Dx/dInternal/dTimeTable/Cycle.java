@@ -916,9 +916,9 @@ public class Cycle extends DObject {
 	 * 
 	 * @return
 	 */
-	public Period getPreviousPeriod(int steps) {
+	public Period getPreviousPeriod(){//int steps) {
 		DValue dayValue = new DValue();
-		steps += 0;
+	//	steps += 0;
 		Period period;// =
 		// getCurrentDay().getCurrentSequence().getCurrentPeriod();
 		// for (int i=steps; i> 0; i--){

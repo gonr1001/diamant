@@ -410,7 +410,7 @@ public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 						// DConst.ACTI_TEXT11 + _line, "ActivityList"
 					}
 				}
-				dxaActivity.setIdemLine(sToken.trim());
+//				dxaActivity.setIdemLine(sToken.trim());
 
 				nPosition = 11;
 				break;

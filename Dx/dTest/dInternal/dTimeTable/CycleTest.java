@@ -128,8 +128,8 @@ public class CycleTest extends TestCase {
 	 */
 	public void test_previousPeriod_1() {
 		_cycle.setCurrentDaySeqPerIndex(2, 1, 1);
-		_cycle.getPreviousPeriod(1);
-		Period period = _cycle.getPreviousPeriod(1);
+		_cycle.getPreviousPeriod();
+		Period period = _cycle.getPreviousPeriod();
 		assertEquals("test_previousPeriod_1 : assertEquals (BeginHour):",
 				period.getBeginHour()[0], 13);
 		assertEquals("test_previousPeriod_1 : assertEquals (BeginMinute):",
@@ -141,8 +141,8 @@ public class CycleTest extends TestCase {
 	 */
 	public void test_previousPeriod_2() {
 		_cycle.setCurrentDaySeqPerIndex(2, 1, 0);
-		_cycle.getPreviousPeriod(1);
-		Period period = _cycle.getPreviousPeriod(1);
+		_cycle.getPreviousPeriod();
+		Period period = _cycle.getPreviousPeriod();
 		assertEquals("test_previousPeriod_2 : assertEquals (BeginHour):", 11,
 				period.getBeginHour()[0]);
 		assertEquals("test_previousPeriod_2 : assertEquals (BeginMinute):", 15,
@@ -155,8 +155,8 @@ public class CycleTest extends TestCase {
 	public void test_previousPeriod_3() {
 		_cycle.setCurrentDaySeqPerIndex(2, 0, 0);
 		for (int i = 0; i < 3; i++)
-			_cycle.getPreviousPeriod(1);
-		Period period = _cycle.getPreviousPeriod(1);
+			_cycle.getPreviousPeriod();
+		Period period = _cycle.getPreviousPeriod();
 		assertEquals("test_previousPeriod_3 : assertEquals (BeginHour):", 19,
 				period.getBeginHour()[0]);
 		assertEquals("test_previousPeriod_3 : assertEquals (BeginMinute):", 00,

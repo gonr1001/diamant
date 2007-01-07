@@ -1,6 +1,6 @@
 /**
  *
- * Title: Student $Revision: 1.6 $  $Date: 2005-07-05 12:04:30 $
+ * Title: Student $Revision: 1.7 $  $Date: 2007-01-07 22:38:14 $
  * Description: Student is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -294,7 +294,6 @@ public class Student extends DResource {
 				((DValue) courseValue.getAttach()).setIntValue(group);
 				((DValue) courseValue.getAttach()).setBooleanValue(fixeInGroup);
 			}// end if(courseValue!=null)
-
 		}
 	}
 
