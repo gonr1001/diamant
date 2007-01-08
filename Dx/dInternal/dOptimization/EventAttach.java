@@ -59,11 +59,11 @@ public class EventAttach extends DObject {
 	 * @param key1
 	 * @param key2
 	 */
-	public EventAttach(String princKey, DSetOfResources inst, long key2,
+	public EventAttach(String princKey, DSetOfResources inst, long key,
 			int eventDuration, String eventPeriod) {
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
-		_roomRescKey = key2;
+		_roomRescKey = key;
 		_eventDuration = eventDuration;
 		_ttsKey = eventPeriod;
 		_tabuList = new Vector<String>();

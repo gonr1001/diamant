@@ -17,7 +17,6 @@ import dInternal.dOptimization.EventAttach;
      DSetOfResources sor = new StandardCollection();
      sor.addResource(new DResource("", null), 1);
      _eventAttach= new EventAttach("1.1.2.1",sor,52,60,"1.1.1");
-     //String princKey, long key1, long key2, int eventDuration, String eventPeriod
    }
 
    public static Test suite() {

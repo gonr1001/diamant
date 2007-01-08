@@ -26,6 +26,10 @@ public class RoomAssignmentAlgo implements Algorithm {
 	private DModel _dm;
 
 	private final int NO_ROOM_ASSIGNED = -1;
+	
+	private final int TOKEN_RANGE = 0;
+	
+	private final int ADD_RESOURCE_BY_ID = 1;
 
 	DResource _allRscFunct;
 
@@ -154,16 +158,22 @@ public class RoomAssignmentAlgo implements Algorithm {
 	 * @return l'ensemble des événements
 	 */
 	private DSetOfResources buildSetOfEvents(Period currentPeriod) {
+		// The container for the result
 		DSetOfResources newSetOfEvents = new StandardCollection();
+		// Vector contains the events (Ressources) in the currentPeriod
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
+		// Get all events
 		SetOfEvents soe = _dm.getSetOfEvents();
-		int TOKEN_RANGE = 0;
-		int ADD_RESOURCE_BY_ID = 1;
+//		int TOKEN_RANGE = 0;
+//		int ADD_RESOURCE_BY_ID = 1;
 		int numberOfStudents;
+		// for each event in period
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
+			// get the name of an event in the period
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
+			// get the attach of the event
 			EventAttach eventAttach = (EventAttach) soe.getResource(
 					eventInPeriodName).getAttach();
 			if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
