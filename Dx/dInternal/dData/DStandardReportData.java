@@ -54,7 +54,6 @@ public class DStandardReportData {
 
 	private int STATE3 = 100;
 
-	// private StringBuffer _HOURSEPARATOR= new StringBuffer("h");
 	/*
 	 * _activitiesReport is a string where each line contains more informations
 	 * separeted by a ";" separator token number 0= activity name, 1= type name,
@@ -99,8 +98,6 @@ public class DStandardReportData {
 		_studentsReport = buildStudentsReport();
 		_conflictsReport = buildConflictsReport();
 		_dm.getProgressBarState().setIntValue(1000);
-		// System.out.println("**** Final Change progess bar: "+
-		// _dm.getProgressBarState().getIntValue());
 	}
 
 	/**

@@ -29,17 +29,16 @@ public abstract class DSetOfResources extends DObject {
 	/**contains list of resource (instructor, rooms, student or activity)*/
 	// XXXX Pascal: Pkoi pas une Hash au lieu de Vecteur?  Il semble que quelqu'un a essaye d'implementer 
 	//              un hash en utiliant un Vector (deprecated en passant) comme contenant.  C'est tres bizzare.
-	private Vector <DResource>_resourceList;
+	private Vector<DResource> _resourceList;
 
 	/**give type of the last sort _stateSort 0= sortSetOfResourcesByKey;
 	 * 1= sortSetOfResourcesByID; 2= sortSetOfResourcesBySelectedField
 	 */
 	int _stateSort = 0;
 
-
 	private long _currentKey = 1;
-	/**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
 
+	/**0= activities, 1= students, 2= instructors, 3 = rooms, 4= other*/
 
 	/**
 	 * Constructor
@@ -49,22 +48,20 @@ public abstract class DSetOfResources extends DObject {
 	 * */
 	public DSetOfResources() {
 		//_currentKey = KeyFactory.getKey();
-		_resourceList = new Vector<DResource> (1, 1); // XXXX Pascal: Pourquoi (1,1) ?  Quel est la motivation?
+		_resourceList = new Vector<DResource>(1, 1); // XXXX Pascal: Pourquoi (1,1) ?  Quel est la motivation?
 		//_resourceType = resType;
 	}
 
-
-
-	/**
-	 * methode analyse st, a stringtokenizer variable
-	 * @param
-	 * @return <{Vector}>
-	 */
-	public boolean analyseTokens(byte[] dataloaded, int beginPosition) {
-		beginPosition += 0;
-		dataloaded[0] += 0;
-		return false;
-	}
+	//	/**
+	//	 * methode analyse st, a stringtokenizer variable
+	//	 * @param
+	//	 * @return <{Vector}>
+	//	 */
+	//	public boolean analyseTokens(byte[] dataloaded, int beginPosition) {
+	//		beginPosition += 0;
+	//		dataloaded[0] += 0;
+	//		return false;
+	//	}
 
 	/**
 	 * 
@@ -130,6 +127,42 @@ public abstract class DSetOfResources extends DObject {
 		return false;
 	}
 
+	public boolean addResourceUsingKey(DResource resource) {
+		int index = 0;
+		int add = -1;
+
+		add = searchKey(_currentKey);
+		if (add == -1){
+			index = searchWhereToInsert(_currentKey);
+			resource.setKey(_currentKey);
+			if (index > (_resourceList.size() - 1))
+				_resourceList.add(resource);
+			else
+				_resourceList.insertElementAt(resource, index);
+			_currentKey++;
+			return true;
+		}
+		return false;
+	}
+
+	public boolean addResourceUsingID(DResource resource) {
+		int index = 0;
+		int add = -1;
+
+		add = searchID(resource.getID());
+		if (add == -1) {
+			index = searchWhereToInsert(resource.getID());
+			resource.setKey(_currentKey);
+			if (index > (_resourceList.size() - 1))
+				_resourceList.add(resource);
+			else
+				_resourceList.insertElementAt(resource, index);
+			_currentKey++;
+			return true;
+		}
+		return false;
+	}
+
 	//}
 	public boolean addResourceMod(DResource resource, int insertType) {
 		//if (getIndexOfResource(resource.getID()) == -1){
@@ -169,7 +202,7 @@ public abstract class DSetOfResources extends DObject {
 	 * set the resource list
 	 * @param Vector the vector of resource list to set
 	 * */
-	public void setSetOfResources(Vector <DResource>rlist) {
+	public void setSetOfResources(Vector<DResource> rlist) {
 		_resourceList = rlist;
 	}
 
@@ -200,7 +233,7 @@ public abstract class DSetOfResources extends DObject {
 	 * get the resource list
 	 * @return Vector the vector of resource list
 	 * */
-	public Vector <DResource> getSetOfResources() {
+	public Vector<DResource> getSetOfResources() {
 		return _resourceList;
 	}
 
@@ -274,7 +307,7 @@ public abstract class DSetOfResources extends DObject {
 	public DResource getResource(long key) {
 		int index = getIndexOfResource(key);
 		if (index != -1)
-			return  _resourceList.get(index);
+			return _resourceList.get(index);
 		return null;
 	}
 
@@ -286,7 +319,7 @@ public abstract class DSetOfResources extends DObject {
 	public DResource getResource(String ID) {
 		int index = getIndexOfResource(ID);
 		if (index != -1)
-			return  _resourceList.get(index);
+			return _resourceList.get(index);
 		return null;
 	}
 
@@ -297,7 +330,7 @@ public abstract class DSetOfResources extends DObject {
 	 * */
 	public DResource getResourceAt(int position) {
 		if (position < _resourceList.size())
-			return  _resourceList.get(position);
+			return _resourceList.get(position);
 		return null;
 	}
 
@@ -346,9 +379,7 @@ public abstract class DSetOfResources extends DObject {
 	 * Sort the SetOfResources by DResource's ID from smallest to biggest
 	 * */
 	public void sortSetOfResourcesByID() {
-        Collections.sort(_resourceList,
-                DResource.IDComparator);
-//		sort(0, _resourceList.size() - 1, 1, 0);
+		Collections.sort(_resourceList, DResource.IDComparator);
 		_stateSort = 1;
 	}
 
@@ -356,9 +387,8 @@ public abstract class DSetOfResources extends DObject {
 	 * Sort the SetOfResources by DResource's Key from smallest to biggest
 	 * */
 	public void sortSetOfResourcesByKey() {
-        Collections.sort(_resourceList,
-                DResource.KeyComparator);
-//		sort(0, _resourceList.size() - 1, 0, 0);
+		Collections.sort(_resourceList, DResource.KeyComparator);
+		//		sort(0, _resourceList.size() - 1, 0, 0);
 		_stateSort = 0;
 	}
 
@@ -366,13 +396,12 @@ public abstract class DSetOfResources extends DObject {
 	 * Sort the SetOfResources by DResource object selected field from smallest to biggest
 	 * */
 	public void sortSetOfResourcesBySelectedAttachField(int field) {
-        Iterator it= _resourceList.iterator();
-        while(it.hasNext())
-            ((DResource)it.next()).setSearchField(field);
-        
-        Collections.sort(_resourceList,
-                DResource.FieldComparator);
-//		sort(0, _resourceList.size() - 1, 2, field);
+		Iterator it = _resourceList.iterator();
+		while (it.hasNext())
+			((DResource) it.next()).setSearchField(field);
+
+		Collections.sort(_resourceList, DResource.FieldComparator);
+		//		sort(0, _resourceList.size() - 1, 2, field);
 		_stateSort = 2;
 	}
 
@@ -382,7 +411,6 @@ public abstract class DSetOfResources extends DObject {
 	 * */
 	public abstract String toWrite();
 
-
 	/**
 	 * Builds a list of Resources's ID
 	 * @param orderIndex The order of elements arrangement. If sortIndex == 0 then
@@ -390,8 +418,8 @@ public abstract class DSetOfResources extends DObject {
 	 * the set of resources is sorted by the resource ID.
 	 * @return
 	 */
-	public Vector <String>getNamesVector(int sortIndex) {
-		Vector <String>namesVector = new Vector<String>();
+	public Vector<String> getNamesVector(int sortIndex) {
+		Vector<String> namesVector = new Vector<String>();
 		if (sortIndex == 0)
 			sortSetOfResourcesByKey();
 		if (sortIndex == 1) {
@@ -406,12 +434,11 @@ public abstract class DSetOfResources extends DObject {
 	 * Build a list of Resources's ID
 	 * @return Vector It contents the Resources's ID
 	 * */
-	public Vector getNamesVector(Vector <String>namesVector) {
-		//Vector namesVector =new Vector();
+	public Vector getNamesVector(Vector<String> namesVector) {
 		if (_stateSort != 1)
 			sortSetOfResourcesByID();
 		for (int i = 0; i < this._resourceList.size(); i++)
-			namesVector.add( _resourceList.get(i).getID());
+			namesVector.add(_resourceList.get(i).getID());
 		return namesVector;
 	}
 
@@ -420,7 +447,7 @@ public abstract class DSetOfResources extends DObject {
 	 * @return
 	 */
 	public Vector selectIDValue(String idToSelect) {
-		Vector <DResource>select = new Vector<DResource>();
+		Vector<DResource> select = new Vector<DResource>();
 		if (_stateSort != 1)
 			sortSetOfResourcesByID();
 		int beginIndex = getIndexOfResource(idToSelect);
@@ -445,7 +472,7 @@ public abstract class DSetOfResources extends DObject {
 	 * @return a vector containing the IDs of the resources selected
 	 */
 	public Vector getIDsByField(int fieldIndex, String fieldValue) {
-		Vector <String> idVector = new Vector<String>();
+		Vector<String> idVector = new Vector<String>();
 		DResource res = null;
 		boolean membership = false;
 		for (int i = 0; i < size(); i++) {
@@ -474,103 +501,103 @@ public abstract class DSetOfResources extends DObject {
 		}
 	}
 
-//	/**
-//	 * principal sort
-//	 * @param integer represent the beginning of resourceList vector
-//	 * @param integer represent the end of resourceList vector
-//	 * @param integer 0= sort by key; 1= sort by ID, 2= sort by selected object field
-//	 * @param integer if there's sort by selected object field it represent the
-//	 * object's field selected
-//	 * */
-//	private void sort(int begin, int end, int sortType, int field) {
-//		if (begin >= end)
-//			return;
-//		int p = 0;
-//		switch (sortType) {
-//		case 0:
-//			p = partitionKey(begin, end);
-//			break;
-//		case 1:
-//			p = partitionID(begin, end);
-//			break;
-//		case 2:
-//			p = partitionSelectedField(begin, end, field);
-//			break;
-//		}// end switch(sortType)
-//		//System.out.print("+"+begin+"-"+end);//debug
-//		sort(begin, p, sortType, field);
-//		sort(p + 1, end, sortType, field);
-//	}
+	//	/**
+	//	 * principal sort
+	//	 * @param integer represent the beginning of resourceList vector
+	//	 * @param integer represent the end of resourceList vector
+	//	 * @param integer 0= sort by key; 1= sort by ID, 2= sort by selected object field
+	//	 * @param integer if there's sort by selected object field it represent the
+	//	 * object's field selected
+	//	 * */
+	//	private void sort(int begin, int end, int sortType, int field) {
+	//		if (begin >= end)
+	//			return;
+	//		int p = 0;
+	//		switch (sortType) {
+	//		case 0:
+	//			p = partitionKey(begin, end);
+	//			break;
+	//		case 1:
+	//			p = partitionID(begin, end);
+	//			break;
+	//		case 2:
+	//			p = partitionSelectedField(begin, end, field);
+	//			break;
+	//		}// end switch(sortType)
+	//		//System.out.print("+"+begin+"-"+end);//debug
+	//		sort(begin, p, sortType, field);
+	//		sort(p + 1, end, sortType, field);
+	//	}
 
-//	// manage partition by key
-//	private int partitionKey(int begin, int end) {
-//		DResource pivot = (DResource) _resourceList.get(begin);
-//		int i = begin - 1;
-//		int j = end + 1;
-//		while (i < j) {
-//			i++;
-//			while (((DResource) _resourceList.get(i)).getKey() < pivot.getKey())
-//				i++;
-//			j--;
-//			while (((DResource) _resourceList.get(j)).getKey() > pivot.getKey())
-//				j--;
-//			if (i < j)
-//				swap(i, j);
-//		}
-//		return j;
-//	}
+	//	// manage partition by key
+	//	private int partitionKey(int begin, int end) {
+	//		DResource pivot = (DResource) _resourceList.get(begin);
+	//		int i = begin - 1;
+	//		int j = end + 1;
+	//		while (i < j) {
+	//			i++;
+	//			while (((DResource) _resourceList.get(i)).getKey() < pivot.getKey())
+	//				i++;
+	//			j--;
+	//			while (((DResource) _resourceList.get(j)).getKey() > pivot.getKey())
+	//				j--;
+	//			if (i < j)
+	//				swap(i, j);
+	//		}
+	//		return j;
+	//	}
 
-//	// manage partition by selected field of object
-//	private int partitionSelectedField(int begin, int end, int field) {
-//		field = field + 0;
-//		DResource pivot = (DResource) _resourceList.get(begin);
-//		int i = begin - 1;
-//		int j = end + 1;
-//		while (i < j) {
-//			i++;
-//			while (((DResource) _resourceList.get(i)).getAttach()
-//					.getSelectedField(field) < pivot.getAttach()
-//					.getSelectedField(field))
-//				i++;
-//			j--;
-//			while (((DResource) _resourceList.get(j)).getAttach()
-//					.getSelectedField(field) > pivot.getAttach()
-//					.getSelectedField(field))
-//				j--;
-//			if (i < j)
-//				swap(i, j);
-//		}
-//		return j;
-//	}
+	//	// manage partition by selected field of object
+	//	private int partitionSelectedField(int begin, int end, int field) {
+	//		field = field + 0;
+	//		DResource pivot = (DResource) _resourceList.get(begin);
+	//		int i = begin - 1;
+	//		int j = end + 1;
+	//		while (i < j) {
+	//			i++;
+	//			while (((DResource) _resourceList.get(i)).getAttach()
+	//					.getSelectedField(field) < pivot.getAttach()
+	//					.getSelectedField(field))
+	//				i++;
+	//			j--;
+	//			while (((DResource) _resourceList.get(j)).getAttach()
+	//					.getSelectedField(field) > pivot.getAttach()
+	//					.getSelectedField(field))
+	//				j--;
+	//			if (i < j)
+	//				swap(i, j);
+	//		}
+	//		return j;
+	//	}
 
-//	// manage partition by ID
-//	private int partitionID(int begin, int end) {
-//		DResource pivot = (DResource) _resourceList.get(begin);
-//		int i = begin - 1;
-//		int j = end + 1;
-//		while (i < j) {
-//			i++;
-//			while (((DResource) _resourceList.get(i)).getID().compareTo(
-//					pivot.getID()) < 0)
-//				i++;
-//			j--;
-//			while (((DResource) _resourceList.get(j)).getID().compareTo(
-//					pivot.getID()) > 0)
-//				j--;
-//			if (i < j)
-//				swap(i, j);
-//		}
-//		return j;
-//	}
+	//	// manage partition by ID
+	//	private int partitionID(int begin, int end) {
+	//		DResource pivot = (DResource) _resourceList.get(begin);
+	//		int i = begin - 1;
+	//		int j = end + 1;
+	//		while (i < j) {
+	//			i++;
+	//			while (((DResource) _resourceList.get(i)).getID().compareTo(
+	//					pivot.getID()) < 0)
+	//				i++;
+	//			j--;
+	//			while (((DResource) _resourceList.get(j)).getID().compareTo(
+	//					pivot.getID()) > 0)
+	//				j--;
+	//			if (i < j)
+	//				swap(i, j);
+	//		}
+	//		return j;
+	//	}
 
-//	// permit elements
-//	private void swap(int begin, int end) {
-//		DResource temp;
-//		//System.out.print("+"+begin+"-"+end);//debug
-//		temp = (DResource) _resourceList.get(begin);
-//		_resourceList.setElementAt(_resourceList.get(end), begin);
-//		_resourceList.setElementAt(temp, end);
-//	}
+	//	// permit elements
+	//	private void swap(int begin, int end) {
+	//		DResource temp;
+	//		//System.out.print("+"+begin+"-"+end);//debug
+	//		temp = (DResource) _resourceList.get(begin);
+	//		_resourceList.setElementAt(_resourceList.get(end), begin);
+	//		_resourceList.setElementAt(temp, end);
+	//	}
 
 	//end of private sort methods
 
@@ -622,8 +649,7 @@ public abstract class DSetOfResources extends DObject {
 		int high = _resourceList.size() - 1;
 		while (low <= high) {
 			int mid = (low + high) / 2;
-			int diff = ( _resourceList.get(mid)).getID().compareTo(
-					id);
+			int diff = (_resourceList.get(mid)).getID().compareTo(id);
 			if (diff == 0)
 				return mid;
 			//else{
@@ -633,7 +659,7 @@ public abstract class DSetOfResources extends DObject {
 				high = mid - 1;
 			//}//end else if (diff == 0)
 		}//end while(low <= high)
-		return -1;
+		return -1;  // element is not in the Set
 	}
 
 	/**
@@ -648,8 +674,7 @@ public abstract class DSetOfResources extends DObject {
 		int high = _resourceList.size() - 1;
 		while (low <= high) {
 			int mid = (low + high) / 2;
-			int diff = ( _resourceList.get(mid)).getID().compareTo(
-					id);
+			int diff = (_resourceList.get(mid)).getID().compareTo(id);
 			if (diff == 0)
 				return mid;
 			//else{
@@ -677,7 +702,7 @@ public abstract class DSetOfResources extends DObject {
 		while (low <= high) {
 			int mid = (low + high) / 2;
 			int diff = 1;
-			middleKey = ( _resourceList.get(mid)).getKey();
+			middleKey = (_resourceList.get(mid)).getKey();
 			if (middleKey > key)
 				diff = 1;
 			else {
