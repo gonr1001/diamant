@@ -184,7 +184,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				numberOfStudents = activity.getStudentRegistered().size();
 				DResource resc = new DResource(Integer
 						.toString(numberOfStudents), eventAttach);
-				newSetOfEvents.addResourceUsingID(resc);
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return newSetOfEvents;

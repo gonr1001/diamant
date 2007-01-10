@@ -471,7 +471,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		infoPanel.add(lGroupID);
 		infoPanel.add(new JLabel(" - "));
 		infoPanel.add(lNumber);
-		infoPanel.add(lNumberOfElements);
+		infoPanel.add(lnOfEl);
 		//adding the sub-panels to the panel
 		groupPanel.add(infoPanel);
 		groupPanel.add(scrollContainer);
@@ -649,6 +649,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			_assignedVectors = new Vector[_numberOfSections];
 			_assignedLists = new JList[_numberOfSections];
 		}
+		//RGR RGR RGR for groups
 		Type type = _activities.getType(_selectedActivity, _selectedType);
 		for (int i = 0; i < type.getSetOfSections().size(); i++) {
 			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()

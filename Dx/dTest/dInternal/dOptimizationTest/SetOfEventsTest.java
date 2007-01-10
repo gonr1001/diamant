@@ -35,8 +35,6 @@ public class SetOfEventsTest extends TestCase {
 
 	private final int TOKEN_RANGE = 0;
 
-	private final int ADD_RESOURCE_BY_ID = 1;
-
 	public SetOfEventsTest(String name) {
 		super(name);
 		try {
@@ -111,7 +109,7 @@ public class SetOfEventsTest extends TestCase {
 		DSetOfResources newSetOfEvents = new StandardCollection();
 		// Vector contains the events (Ressources) in the currentPeriod
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
-				.getSetOfResources();	
+				.getSetOfResources();
 		int numberOfStudents;
 		int index;
 
@@ -133,81 +131,189 @@ public class SetOfEventsTest extends TestCase {
 				.toString(numberOfStudents));
 		assertEquals("test_addEvents : assertEquals: ", 0, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingID(resc);
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		
-		
+
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
 		eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
 		// get the attach of the event
-		eventAttach = (EventAttach) _soe1.getResource(
-				eventInPeriodName).getAttach();
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
 
 		actID = DXToolsMethods.getToken(eventInPeriodName,
 				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		activity = (Activity) _dm1.getSetOfActivities().getResource(
-				actID).getAttach();
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
 		numberOfStudents = activity.getStudentRegistered().size();
-		resc = new DResource(Integer.toString(numberOfStudents),
-				eventAttach);
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
 		assertEquals("test_addEvents : assertEquals: ", 1, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingID(resc);
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 
-		
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
 		eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
 		// get the attach of the event
-		eventAttach = (EventAttach) _soe1.getResource(
-				eventInPeriodName).getAttach();
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
 
 		actID = DXToolsMethods.getToken(eventInPeriodName,
 				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		activity = (Activity) _dm1.getSetOfActivities().getResource(
-				actID).getAttach();
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
 		numberOfStudents = activity.getStudentRegistered().size();
-		resc = new DResource(Integer.toString(numberOfStudents),
-				eventAttach);
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
 		assertEquals("test_addEvents : assertEquals: ", 1, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingID(resc);
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
 		assertEquals("test_addEvents : assertEquals: ", 3, newSetOfEvents
 				.size());
-		
+
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
 		eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
 		// get the attach of the event
-		eventAttach = (EventAttach) _soe1.getResource(
-				eventInPeriodName).getAttach();
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
 
 		actID = DXToolsMethods.getToken(eventInPeriodName,
 				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		activity = (Activity) _dm1.getSetOfActivities().getResource(
-				actID).getAttach();
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
 		numberOfStudents = activity.getStudentRegistered().size();
-		resc = new DResource(Integer.toString(numberOfStudents),
-				eventAttach);
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
 		assertEquals("test_addEvents : assertEquals: ", 1, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingID(resc);
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
 		assertEquals("test_addEvents : assertEquals: ", 4, newSetOfEvents
 				.size());
-		
-		
+
+		// for each event in period do some tests
+		// get next, get the name of an event in the period
+		eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
+		// get the attach of the event
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
+
+		actID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
+		numberOfStudents = activity.getStudentRegistered().size();
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
+		index = newSetOfEvents.searchWhereToInsert(Integer
+				.toString(numberOfStudents));
+		assertEquals("test_addEvents : assertEquals: ", 3, index);
+		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+		newSetOfEvents.sortSetOfResourcesByID();
+		assertEquals("test_addEvents : assertEquals: ", 5, newSetOfEvents
+				.size());
+
+		// for each event in period do some tests
+		// get next, get the name of an event in the period
+		eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
+		// get the attach of the event
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
+
+		actID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
+		numberOfStudents = activity.getStudentRegistered().size();
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
+		index = newSetOfEvents.searchWhereToInsert(Integer
+				.toString(numberOfStudents));
+		assertEquals("test_addEvents : assertEquals: ", 3, index);
+		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+		newSetOfEvents.sortSetOfResourcesByID();
+		assertEquals("test_addEvents : assertEquals: ", 6, newSetOfEvents
+				.size());
+
+		// for each event in period do some tests
+		// get next, get the name of an event in the period
+		eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
+		// get the attach of the event
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
+
+		actID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
+		numberOfStudents = activity.getStudentRegistered().size();
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
+		index = newSetOfEvents.searchWhereToInsert(Integer
+				.toString(numberOfStudents));
+		assertEquals("test_addEvents : assertEquals: ", 5, index);
+		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+		newSetOfEvents.sortSetOfResourcesByID();
+		assertEquals("test_addEvents : assertEquals: ", 6, newSetOfEvents
+				.size());
+
+		// for each event in period do some tests
+		// get next, get the name of an event in the period
+		eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
+		// get the attach of the event
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
+
+		actID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
+		numberOfStudents = activity.getStudentRegistered().size();
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
+		index = newSetOfEvents.searchWhereToInsert(Integer
+				.toString(numberOfStudents));
+		assertEquals("test_addEvents : assertEquals: ", 5, index);
+		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+		newSetOfEvents.sortSetOfResourcesByID();
+		assertEquals("test_addEvents : assertEquals: ", 6, newSetOfEvents
+				.size());
+
+		// for each event in period do some tests
+		// get next, get the name of an event in the period
+		eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
+		// get the attach of the event
+		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
+				.getAttach();
+
+		actID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
+				.getAttach();
+		numberOfStudents = activity.getStudentRegistered().size();
+		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
+		index = newSetOfEvents.searchWhereToInsert(Integer
+				.toString(numberOfStudents));
+		assertEquals("test_addEvents : assertEquals: ", 5, index);
+		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+		newSetOfEvents.sortSetOfResourcesByID();
+		assertEquals("test_addEvents : assertEquals: ", 6, newSetOfEvents
+				.size());
 		eventInPeriodName = (newSetOfEvents.getResourceAt(0).getID());
 		// get the attach of the event
 		eventAttach = (EventAttach) newSetOfEvents.getResource(
@@ -229,26 +335,27 @@ public class SetOfEventsTest extends TestCase {
 				eventInPeriodName).getAttach();
 		actID = DXToolsMethods.getToken(eventInPeriodName,
 				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-//		assertEquals("test_addEvents : ", "34", actID);
-//		eventInPeriodName = (newSetOfEvents.getResourceAt(3).getID());
-//		//		 get the attach of the event
-//		//		 get the attach of the event
-//		eventAttach = (EventAttach) newSetOfEvents.getResource(
-//				eventInPeriodName).getAttach();
-//		actID = DXToolsMethods.getToken(eventInPeriodName,
-//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-//		assertEquals("test_addEvents : ", "36", actID);
-//		eventInPeriodName = (newSetOfEvents.getResourceAt(4).getID());
-//		//		 get the attach of the event
-//		//		 get the attach of the event
-//		eventAttach = (EventAttach) newSetOfEvents.getResource(
-//				eventInPeriodName).getAttach();
-//		actID = DXToolsMethods.getToken(eventInPeriodName,
-//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-//		assertEquals("test_addEvents : ", "7", actID);
-//
-//		assertEquals("test_addEvents : assertEquals: ", 5, newSetOfEvents
-//				.size());
+
+		//		assertEquals("test_addEvents : ", "34", actID);
+		//		eventInPeriodName = (newSetOfEvents.getResourceAt(3).getID());
+		//		//		 get the attach of the event
+		//		//		 get the attach of the event
+		//		eventAttach = (EventAttach) newSetOfEvents.getResource(
+		//				eventInPeriodName).getAttach();
+		//		actID = DXToolsMethods.getToken(eventInPeriodName,
+		//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		//		assertEquals("test_addEvents : ", "36", actID);
+		//		eventInPeriodName = (newSetOfEvents.getResourceAt(4).getID());
+		//		//		 get the attach of the event
+		//		//		 get the attach of the event
+		//		eventAttach = (EventAttach) newSetOfEvents.getResource(
+		//				eventInPeriodName).getAttach();
+		//		actID = DXToolsMethods.getToken(eventInPeriodName,
+		//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		//		assertEquals("test_addEvents : ", "7", actID);
+		//
+		//		assertEquals("test_addEvents : assertEquals: ", 5, newSetOfEvents
+		//				.size());
 	}
 
 } //end SetOfEventsTest

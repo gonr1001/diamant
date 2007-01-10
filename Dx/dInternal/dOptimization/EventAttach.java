@@ -130,36 +130,36 @@ public class EventAttach extends DObject {
 		_eventDuration = duration;
 	}
 
-	/**
-	 * Tests if the specified string is a component in the tabulist vector.
-	 * @param princKey
-	 * @return
-	 */
-	public boolean isInTabuList(String princKey) {
-		return _tabuList.contains(princKey);
-	}
+//	/**
+//	 * Tests if the specified string is a component in the tabulist vector.
+//	 * @param princKey
+//	 * @return
+//	 */
+//	public boolean isInTabuList(String princKey) {
+//		return _tabuList.contains(princKey);
+//	}
 
-	/**
-	 * Removes the first occurrence of the specified element in the tabulist vector If
-	 * it does not contain the element, it is unchanged.
-	 * @param princKey
-	 * @return
-	 */
-	public boolean removeFromTabuList(String princKey) {
-		return _tabuList.remove(princKey);
-	}
+//	/**
+//	 * Removes the first occurrence of the specified element in the tabulist vector If
+//	 * it does not contain the element, it is unchanged.
+//	 * @param princKey
+//	 * @return
+//	 */
+//	public boolean removeFromTabuList(String princKey) {
+//		return _tabuList.remove(princKey);
+//	}
 
-	/**
-	 * Adds the specified element to the end of the tabulist vector or let it unchanged
-	 * if the element already exist in the vector
-	 * @param princKey
-	 * @return
-	 */
-	public boolean addToTabuList(String princKey) {
-		if (_tabuList.contains(princKey))
-			return _tabuList.add(princKey);
-		return false;
-	}
+//	/**
+//	 * Adds the specified element to the end of the tabulist vector or let it unchanged
+//	 * if the element already exist in the vector
+//	 * @param princKey
+//	 * @return
+//	 */
+//	public boolean addToTabuList(String princKey) {
+//		if (_tabuList.contains(princKey))
+//			return _tabuList.add(princKey);
+//		return false;
+//	}
 
 	public void setAssigned(boolean state) {
 		_isAssigned = state;
