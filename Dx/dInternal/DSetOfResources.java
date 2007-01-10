@@ -149,7 +149,7 @@ public abstract class DSetOfResources extends DObject {
 		int index = 0;
 		int add = -1;
 
-		add = searchID(resource.getID());
+		//add = searchID(resource.getID());
 		if (add == -1) {
 			index = searchWhereToInsert(resource.getID());
 			resource.setKey(_currentKey);
@@ -667,7 +667,7 @@ public abstract class DSetOfResources extends DObject {
 	 * @param String the DResource ID from wich to find index in SetOfResources
 	 * @return int index of the DResource in SetOfResources
 	 * */
-	private int searchWhereToInsert(String id) {
+	public int searchWhereToInsert(String id) {
 		if ((_stateSort != 1)) //|| (_resourceList.size()<=3))
 			sortSetOfResourcesByID();
 		int low = 0;

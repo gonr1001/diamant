@@ -819,9 +819,9 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void myTestFile() {
-		setCurrentDir(".\\devData\\");
+		setCurrentDir(".\\dataTest\\");
 		try {
-			_dMediator.addDxTTableDoc("", ".\\devData\\locaux.dia");
+			_dMediator.addDxTTableDoc("", ".\\dataTest\\assignRooms.dia");
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 		}
