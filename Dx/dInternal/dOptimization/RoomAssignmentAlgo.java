@@ -29,7 +29,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 	
 	private final int TOKEN_RANGE = 0;
 	
-	private final int ADD_RESOURCE_BY_ID = 1;
+//	private final int ADD_RESOURCE_BY_ID = 1;
 
 	DResource _allRscFunct;
 
@@ -185,6 +185,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				DResource resc = new DResource(Integer
 						.toString(numberOfStudents), eventAttach);
 				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//				newSetOfEvents.addResourceUsingID(resc);
 			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return newSetOfEvents;
