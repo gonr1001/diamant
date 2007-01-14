@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.48 $ $Date: 2007-01-07 21:14:16 $
+ * Title: StudentMixingAlgorithm $Revision: 1.49 $ $Date: 2007-01-14 18:29:35 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -213,8 +213,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     for (int i=0; i< studentList.size(); i++){
       long studentKey= Long.parseLong(studentList.get(i).toString());
       Student student= _dm.getSetOfStudents().getStudent(studentKey);
-      int group= student.getGroup(activityID+typeID);
-      if(!student.isFixedInGroup(activityID+typeID,group)){
+      if(!student.isFixedInGroup(activityID+typeID)){ 
         studentR.add(Long.toString(studentKey));
         student.setInGroup(activityID+typeID,-1,false);
       }// end if(student.isFixedInGroup(activityID+typeID,group))

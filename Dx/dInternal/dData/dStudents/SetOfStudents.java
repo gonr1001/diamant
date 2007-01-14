@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.16 $  $Date: 2006-09-25 13:36:28 $
+ * Title: SetOfStudents $Revision: 1.17 $  $Date: 2007-01-14 18:29:34 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -207,7 +207,7 @@ public class SetOfStudents extends DSetOfResources {
 					str = key + " " + iD + " " + studentProgram;
 				if (order == 2)
 					str = studentProgram + " " + iD + " " + key;
-				if (studentRes.isFixedInGroup(activityID + typeID, group))
+				if (studentRes.isFixedInGroup(activityID + typeID))
 					str = str + DConst.CHAR_FIXED_IN_GROUP;
 				list.add(str);
 				//list.add(studentRes.getID());
@@ -261,7 +261,7 @@ public class SetOfStudents extends DSetOfResources {
 				vID.add(iD);
 				vKey.add(key);
 				vSelField.add(studentProgram);
-				if (studentRes.isFixedInGroup(activityID + typeID, group))
+				if (studentRes.isFixedInGroup(activityID + typeID))
 					vFixState.add("" + DConst.CHAR_FIXED_IN_GROUP);
 				else
 					vFixState.add(" ");
@@ -435,15 +435,16 @@ public class SetOfStudents extends DSetOfResources {
 		int countToken = DXToolsMethods.countTokens(nameLine,
 				DConst.STUDENT_TOKEN_SEPARATOR);
 		String name = "";
+		String cLine = "";
 		for (int i = DConst.STUDENT_FIRST_NAME_TOKEN; i < countToken; i++) {
 			name += DXToolsMethods.getToken(nameLine,
 					DConst.STUDENT_TOKEN_SEPARATOR, i)
 					+ DConst.STUDENT_TOKEN_SEPARATOR;
 		}
-		coursesLine = DXToolsMethods.getToken(coursesLine,
+		cLine = DXToolsMethods.getToken(coursesLine,
 				DConst.STUDENT_TOKEN_SEPARATOR, DConst.STUDENT_COURSE_TOKEN)
 				.trim();
-		return matricule + name + DConst.CR_LF + coursesLine;
+		return matricule + name + DConst.CR_LF + cLine;
 	}
 
 	/**

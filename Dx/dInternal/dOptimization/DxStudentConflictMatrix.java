@@ -230,8 +230,8 @@ public class DxStudentConflictMatrix {
 									.getID());
 					
 
-					if ((!student.isFixedInGroup(rescActivity.getID()
-							+ rescType.getID(), groupValue))
+					if (!student.isFixedInGroup(rescActivity.getID()
+							+ rescType.getID())
 							&& (student.getGroup(rescActivity.getID()
 									+ rescType.getID()) == -1)) {
 						(student).setInGroup(rescActivity.getID()

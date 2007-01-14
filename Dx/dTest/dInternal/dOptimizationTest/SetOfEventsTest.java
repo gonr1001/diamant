@@ -16,7 +16,6 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
-import dInternal.dData.dActivities.Type;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
@@ -143,8 +142,8 @@ public class SetOfEventsTest extends TestCase {
 				eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : AMC600 Event i: ", 0, index);
-		assertEquals("test_addEvents : AMC600 Event nS: ", 20, v.size());
+		assertEquals("test_addEvents AMC600 Event i : ", 0, index);
+		assertEquals("test_addEvents AMC600 Event nS : ", 20, v.size());
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
@@ -165,7 +164,7 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : AMC640 Event i:", 1, index);
+		assertEquals("test_addEvents AMC640 Event i :", 1, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
@@ -186,12 +185,12 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : GCH109 Event i:", 1, index);
+		assertEquals("test_addEvents GCH109 Event i :", 1, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : GCH109 Event size:", 3, newSetOfEvents
+		assertEquals("test_addEvents GCH109 Event size :", 3, newSetOfEvents
 				.size());
 
 		// for each event in period do some tests
@@ -210,12 +209,12 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : GCH321 Event i:", 1, index);
+		assertEquals("test_addEvents GCH321 Event i :", 1, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : GCH321 Event size:", 4, newSetOfEvents
+		assertEquals("test_addEvents GCH321 Event size :", 4, newSetOfEvents
 				.size());
 
 		// for each event in period do some tests
@@ -234,16 +233,17 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : GEI460 Event i:", 3, index);
+		assertEquals("test_addEvents GEI460 Event i :", 3, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : GEI460 Event size:", 5, newSetOfEvents
+		assertEquals("test_addEvents GEI460 Event size :", 5, newSetOfEvents
 				.size());
 
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
+		// this is the GEL440 Event 
 		eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
 		// get the attach of the event
 		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
@@ -257,16 +257,17 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : assertEquals: ", 3, index);
+		assertEquals("test_addEvents GEL440 Event i :", 3, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : assertEquals: ", 6, newSetOfEvents
+		assertEquals("test_addEvents GEL440 Event size :", 6, newSetOfEvents
 				.size());
 
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
+		// this is the IMC111 Event
 		eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
 		// get the attach of the event
 		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
@@ -280,16 +281,17 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : assertEquals: ", 5, index);
+		assertEquals("test_addEvents IMC111 Event i :", 5, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : assertEquals: ", 6, newSetOfEvents
+		assertEquals("test_addEvents IMC111 Event size :", 6, newSetOfEvents
 				.size());
 
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
+		// this is the IMC455 Event
 		eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
 		// get the attach of the event
 		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
@@ -297,22 +299,32 @@ public class SetOfEventsTest extends TestCase {
 
 		actID = DXToolsMethods.getToken(eventInPeriodName,
 				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+		typeID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+		secID = DXToolsMethods.getToken(eventInPeriodName,
+				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 		activity = (Activity) _dm1.getSetOfActivities().getResource(actID)
 				.getAttach();
 		numberOfStudents = activity.getStudentRegistered().size();
+
+		section = DxTools.STIConvertGroupToInt(secID);
+		students = _dm1.getSetOfStudents();
+		v = students.getStudentsByGroup(actID, typeID, section, 0);
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : assertEquals: ", 5, index);
+		assertEquals("test_addEvents IMC455 Event i : ", 5, index);
+		assertEquals("test_addEvents IMC455 Event nS : ", 10, v.size());
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : assertEquals: ", 7, newSetOfEvents
+
+		assertEquals("test_addEvents IMC455 Event size : ", 7, newSetOfEvents
 				.size());
 
 		// for each event in period do some tests
 		// get next, get the name of an event in the period
+		// this is the IMC500 Event
 		eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
 		// get the attach of the event
 		eventAttach = (EventAttach) _soe1.getResource(eventInPeriodName)
@@ -326,55 +338,14 @@ public class SetOfEventsTest extends TestCase {
 		resc = new DResource(Integer.toString(numberOfStudents), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer
 				.toString(numberOfStudents));
-		assertEquals("test_addEvents : assertEquals: ", 6, index);
+		assertEquals("test_addEvents IMC500 Event i : ", 6, index);
 		if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
 			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents : assertEquals: ", 7, newSetOfEvents
+		assertEquals("test_addEvents IMC500 Event size : ", 7, newSetOfEvents
 				.size());
-		eventInPeriodName = (newSetOfEvents.getResourceAt(0).getID());
-		// get the attach of the event
-		eventAttach = (EventAttach) newSetOfEvents.getResource(
-				eventInPeriodName).getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		assertEquals("test_addEvents : assertEquals: ", "20", actID);
-		eventInPeriodName = (newSetOfEvents.getResourceAt(1).getID());
-		//		 get the attach of the event
-		eventAttach = (EventAttach) newSetOfEvents.getResource(
-				eventInPeriodName).getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		assertEquals("test_addEvents : assertEquals: ", "33", actID);
-		eventInPeriodName = (newSetOfEvents.getResourceAt(2).getID());
-		//		 get the attach of the event
-		//		 get the attach of the event
-		eventAttach = (EventAttach) newSetOfEvents.getResource(
-				eventInPeriodName).getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
 
-		//		assertEquals("test_addEvents : ", "34", actID);
-		//		eventInPeriodName = (newSetOfEvents.getResourceAt(3).getID());
-		//		//		 get the attach of the event
-		//		//		 get the attach of the event
-		//		eventAttach = (EventAttach) newSetOfEvents.getResource(
-		//				eventInPeriodName).getAttach();
-		//		actID = DXToolsMethods.getToken(eventInPeriodName,
-		//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		//		assertEquals("test_addEvents : ", "36", actID);
-		//		eventInPeriodName = (newSetOfEvents.getResourceAt(4).getID());
-		//		//		 get the attach of the event
-		//		//		 get the attach of the event
-		//		eventAttach = (EventAttach) newSetOfEvents.getResource(
-		//				eventInPeriodName).getAttach();
-		//		actID = DXToolsMethods.getToken(eventInPeriodName,
-		//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		//		assertEquals("test_addEvents : ", "7", actID);
-		//
-		//		assertEquals("test_addEvents : assertEquals: ", 5, newSetOfEvents
-		//				.size());
 	}
 
 } //end SetOfEventsTest

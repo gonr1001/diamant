@@ -3,13 +3,14 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
-import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dRooms.Room;
 import dInternal.dData.dRooms.SetOfRooms;
+import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
@@ -26,10 +27,14 @@ public class RoomAssignmentAlgo implements Algorithm {
 	private DModel _dm;
 
 	private final int NO_ROOM_ASSIGNED = -1;
-	
+
 	private final int TOKEN_RANGE = 0;
-	
-//	private final int ADD_RESOURCE_BY_ID = 1;
+
+	private final int TOKEN_RANGE1 = 1;
+
+	private final int TOKEN_RANGE2 = 2;
+
+	//	private final int ADD_RESOURCE_BY_ID = 1;
 
 	DResource _allRscFunct;
 
@@ -165,27 +170,37 @@ public class RoomAssignmentAlgo implements Algorithm {
 				.getSetOfResources();
 		// Get all events
 		SetOfEvents soe = _dm.getSetOfEvents();
-//		int TOKEN_RANGE = 0;
-//		int ADD_RESOURCE_BY_ID = 1;
-		int numberOfStudents;
-		// for each event in period
+		SetOfStudents students = _dm.getSetOfStudents();
+		String eventInPeriodName = "";
+		String actID = "";
+		String typeID = "";
+		String secID = "";
+		EventAttach eventAttach = null;
+		int section = 0;
+		Vector v = null;
+		DResource resc = null;
+
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			// get the name of an event in the period
-			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
-					.getID();
+			eventInPeriodName = ((DResource) eventsInPeriod.get(i)).getID();
 			// get the attach of the event
-			EventAttach eventAttach = (EventAttach) soe.getResource(
-					eventInPeriodName).getAttach();
+			eventAttach = (EventAttach) soe.getResource(eventInPeriodName)
+					.getAttach();
 			if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-				String actID = DXToolsMethods.getToken(eventInPeriodName,
+				actID = DXToolsMethods.getToken(eventInPeriodName,
 						DConst.TOKENSEPARATOR, TOKEN_RANGE);
-				Activity activity = (Activity) _dm.getSetOfActivities()
-						.getResource(actID).getAttach();
-				numberOfStudents = activity.getStudentRegistered().size();
-				DResource resc = new DResource(Integer
-						.toString(numberOfStudents), eventAttach);
+				typeID = DXToolsMethods.getToken(eventInPeriodName,
+						DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+				secID = DXToolsMethods.getToken(eventInPeriodName,
+						DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+
+				section = DxTools.STIConvertGroupToInt(secID);
+
+				v = students.getStudentsByGroup(actID, typeID, section, 0);
+				resc = new DResource(Integer.toString(v.size()), eventAttach);
+
 				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-//				newSetOfEvents.addResourceUsingID(resc);
+				//				newSetOfEvents.addResourceUsingID(resc);
 			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return newSetOfEvents;
