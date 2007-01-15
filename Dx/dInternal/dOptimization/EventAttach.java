@@ -10,7 +10,6 @@ package dInternal.dOptimization;
  */
 
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DResource;
@@ -20,41 +19,49 @@ import dInternal.dUtil.DXToolsMethods;
 
 public class EventAttach extends DObject {
 
-	/** _principalRescKey is the composition of activity, type, section and
-	 * unity keys of an activity wich is represent in the following format a.b.c.d
+	/**
+	 * _principalRescKey is the composition of activity, type, section and unity
+	 * keys of an activity wich is represent in the following format a.b.c.d
 	 */
 	private String _principalRescKey;
 
 	private int _eventDuration = 0;
 
-	//private long _instructorRescKey; // the instructor key
+	// private long _instructorRescKey; // the instructor key
 	/** instructor key */
 	private DSetOfResources _setInstructorKeys;
 
 	private long _roomRescKey; // the room key
-	
-	private boolean _roomFixed;/* the state of the event in the room
-	true if event is fixed in the room and false otherwise */
+
+	private boolean _roomFixed;/*
+								 * the state of the event in the room true if
+								 * event is fixed in the room and false
+								 * otherwise
+								 */
+
 	private int _roomFunction; // the prefered function for the event
 
 	// the student reference will be found in the conflicts matrix
 
 	/**
-	 * @associates String 
+	 * @associates String
 	 */
-	private Vector <String> _tabuList; //
+	// private Vector <String> _tabuList; //
+	private boolean _isAssigned = false;// tell if this event is placed in the
+										// timetable
 
-	private boolean _isAssigned = false;// tell if this event is placed in the timetable
+	private boolean isPermanent = false;// tell if this event is permanent in
+										// the timetable
 
-	private boolean isPermanent = false;// tell if this event is permanent in the timetable
+	private String _ttsKey = "";// give the key of the period where event is
+								// place
 
-	private String _ttsKey = "";// give the key of the period where event is place
-
-	//is in a.b.c format where a = day, b= sequence, c = period
+	// is in a.b.c format where a = day, b= sequence, c = period
 	private boolean _isPlaceInAPeriod = false;
 
 	/**
 	 * Constructor
+	 * 
 	 * @param princKey
 	 * @param key1
 	 * @param key2
@@ -66,7 +73,7 @@ public class EventAttach extends DObject {
 		_roomRescKey = key;
 		_eventDuration = eventDuration;
 		_ttsKey = eventPeriod;
-		_tabuList = new Vector<String>();
+		// _tabuList = new Vector<String>();
 	}
 
 	public String getPrincipalRescKey() {
@@ -81,20 +88,20 @@ public class EventAttach extends DObject {
 		return keys;
 	}
 
-	/* public void setInstructorKey(long key){
-	 _instructorRescKey= key;
-	 }*/
+	/*
+	 * public void setInstructorKey(long key){ _instructorRescKey= key; }
+	 */
 
 	public long getRoomKey() {
 		return _roomRescKey;
 	}
 
-	/* public void setRoomKey(long key){
-	 _roomRescKey= key;
-	 }*/
+	/*
+	 * public void setRoomKey(long key){ _roomRescKey= key; }
+	 */
 
 	/**
-	 *
+	 * 
 	 * @return
 	 */
 	public String getPeriodKey() {
@@ -102,7 +109,7 @@ public class EventAttach extends DObject {
 	}
 
 	/**
-	 *
+	 * 
 	 * @return
 	 */
 	public int[] getPeriodKeyTable() {
@@ -115,7 +122,7 @@ public class EventAttach extends DObject {
 	}
 
 	/**
-	 *
+	 * 
 	 * @return
 	 */
 	public int getDuration() {
@@ -123,43 +130,45 @@ public class EventAttach extends DObject {
 	}
 
 	/**
-	 *
+	 * 
 	 * @return
 	 */
 	public void setDuration(int duration) {
 		_eventDuration = duration;
 	}
 
-//	/**
-//	 * Tests if the specified string is a component in the tabulist vector.
-//	 * @param princKey
-//	 * @return
-//	 */
-//	public boolean isInTabuList(String princKey) {
-//		return _tabuList.contains(princKey);
-//	}
+	// /**
+	// * Tests if the specified string is a component in the tabulist vector.
+	// * @param princKey
+	// * @return
+	// */
+	// public boolean isInTabuList(String princKey) {
+	// return _tabuList.contains(princKey);
+	// }
 
-//	/**
-//	 * Removes the first occurrence of the specified element in the tabulist vector If
-//	 * it does not contain the element, it is unchanged.
-//	 * @param princKey
-//	 * @return
-//	 */
-//	public boolean removeFromTabuList(String princKey) {
-//		return _tabuList.remove(princKey);
-//	}
+	// /**
+	// * Removes the first occurrence of the specified element in the tabulist
+	// vector If
+	// * it does not contain the element, it is unchanged.
+	// * @param princKey
+	// * @return
+	// */
+	// public boolean removeFromTabuList(String princKey) {
+	// return _tabuList.remove(princKey);
+	// }
 
-//	/**
-//	 * Adds the specified element to the end of the tabulist vector or let it unchanged
-//	 * if the element already exist in the vector
-//	 * @param princKey
-//	 * @return
-//	 */
-//	public boolean addToTabuList(String princKey) {
-//		if (_tabuList.contains(princKey))
-//			return _tabuList.add(princKey);
-//		return false;
-//	}
+	// /**
+	// * Adds the specified element to the end of the tabulist vector or let it
+	// unchanged
+	// * if the element already exist in the vector
+	// * @param princKey
+	// * @return
+	// */
+	// public boolean addToTabuList(String princKey) {
+	// if (_tabuList.contains(princKey))
+	// return _tabuList.add(princKey);
+	// return false;
+	// }
 
 	public void setAssigned(boolean state) {
 		_isAssigned = state;
@@ -168,29 +177,30 @@ public class EventAttach extends DObject {
 	public boolean isAssigned() {
 		return _isAssigned;
 	}
-	
-	public void setRoomFixed(boolean state){
+
+	public void setRoomFixed(boolean state) {
 		_roomFixed = state;
 	}
-	
-	public boolean isRoomFixed(){
+
+	public boolean isRoomFixed() {
 		return _roomFixed;
 	}
-	
-	public void setRoomFunction(int function){
+
+	public void setRoomFunction(int function) {
 		_roomFunction = function;
 	}
-	
-	public void setRoomKey(int roomKey){
+
+	public void setRoomKey(int roomKey) {
 		_roomRescKey = roomKey;
 	}
-	
-	public int getRoomFunction(){
+
+	public int getRoomFunction() {
 		return _roomFunction;
 	}
 
 	/**
 	 * check if event is already place in a period
+	 * 
 	 * @return
 	 */
 	public boolean isPlaceInAPeriod() {
@@ -199,6 +209,7 @@ public class EventAttach extends DObject {
 
 	/**
 	 * tell to event that event is already place in a period
+	 * 
 	 * @param isInPeriod
 	 */
 	public void setInAPeriod(boolean isInPeriod) {
@@ -215,8 +226,10 @@ public class EventAttach extends DObject {
 
 	/**
 	 * set events keys by the appropriate field
-	 * @param field 0= set principal key, 1= set secondary key1, 2= set secondary key2
-	 * 4= tts Key
+	 * 
+	 * @param field
+	 *            0= set principal key, 1= set secondary key1, 2= set secondary
+	 *            key2 4= tts Key
 	 * @param value
 	 */
 	public void setKey(int field, String value) {
@@ -232,7 +245,7 @@ public class EventAttach extends DObject {
 						.getToken(value, ":", i)));
 				_setInstructorKeys.addResource(new DResource("", null), 0);
 			}
-			///_instructorRescKey = Long.parseLong(value);
+			// /_instructorRescKey = Long.parseLong(value);
 			break;
 		case 2:
 			_roomRescKey = Long.parseLong(value);
@@ -252,7 +265,9 @@ public class EventAttach extends DObject {
 		return eA;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {
@@ -264,10 +279,10 @@ public class EventAttach extends DObject {
 	 * @param state
 	 */
 	public void setState(String state) {
-		if(state.equalsIgnoreCase(DConst.FIXED_ROOM_STATE))
+		if (state.equalsIgnoreCase(DConst.FIXED_ROOM_STATE))
 			_roomFixed = true;
 		else
 			_roomFixed = false;
-		
+
 	}
 }
