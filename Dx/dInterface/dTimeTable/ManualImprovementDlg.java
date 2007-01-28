@@ -1,6 +1,6 @@
 /**
 *
-* Title: ManualImprovementDlg $Revision: 1.28 $  $Date: 2006-03-03 16:03:36 $
+* Title: ManualImprovementDlg $Revision: 1.29 $  $Date: 2007-01-28 23:48:34 $
 * Description: DConst is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.28 $
+* @version $Revision: 1.29 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -63,7 +63,7 @@ public class ManualImprovementDlg extends EventsDlgInterface {
    * build buttom to use in the dialog
    */
   public void buildArrowButtons(boolean enableArrows) {
-  	enableArrows = enableArrows && true;
+  	//enableArrows = enableArrows && true;
 	_leftArrowsPanel = new JPanel();
 	_rightArrowsPanel = new JPanel();
   }

@@ -39,7 +39,7 @@ public class DxActivitySite extends DxResource {
 		return _dxsoaActivities.getActivity(sActivitySiteName);
 	}
 	
-	public DxActivity getActivity(Long lActivitySiteKey) {
+	public DxActivity getActivity(long lActivitySiteKey) {
 		return _dxsoaActivities.getActivity(lActivitySiteKey);
 	}
 	

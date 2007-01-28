@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.49 $ $Date: 2007-01-14 18:29:35 $
+ * Title: StudentMixingAlgorithm $Revision: 1.50 $ $Date: 2007-01-28 23:48:38 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -348,7 +348,9 @@ public class StudentMixingAlgorithm implements Algorithm {
    */
   private DResource giveBestGroup(DResource resc, Vector allConvGroup,
                                  DValue currentConvGroup, Vector sizeOfGroups, int acceptableVariation){
-    Vector <Integer>includeGroupsList=new Vector<Integer>();
+    
+	  DResource resc1= null;
+	  Vector <Integer>includeGroupsList=new Vector<Integer>();
     int smallGroup= RefinedStudMixAlgo.getSmallerGroupIndex(sizeOfGroups);
     for(int i=0; i< allConvGroup.size(); i++){
       if ((((DValue)sizeOfGroups.get(i)).getIntValue()-
@@ -374,13 +376,13 @@ public class StudentMixingAlgorithm implements Algorithm {
       ((DValue)sizeOfGroups.get(bGroup)).setIntValue(
           ((DValue)sizeOfGroups.get(bGroup)).getIntValue()+1);
 
-      resc = ((DSetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
+      resc1 = ((DSetOfResources)allConvGroup.get(bGroup)).getResourceAt(0);
       ((DValue)resc.getAttach()).setIntValue(bGroup);
       for (int i=0; i< allConvGroup.size(); i++)
         ((DSetOfResources)allConvGroup.get(i)).removeResource(resc.getKey());
       currentConvGroup.setIntValue(bGroup);
     }// end if(((SetOfResources)allConvGroup.get( bGroup)).size()>0)
-    return resc;
+    return resc1;
   }
 
 }// end class

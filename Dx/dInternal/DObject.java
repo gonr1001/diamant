@@ -101,8 +101,8 @@ public abstract class  DObject extends Object{
  * @param field
  * @return
  */
-public long getSelectedField(int field) {
-	field+=0;
+public long getSelectedField(@SuppressWarnings("unused")
+int field) {
 	return 0;// XXXX Pascal: ?
 }
 

@@ -18,7 +18,7 @@ public class DxSetOfActivities extends DxSetOfResources {
 		return (DxActivity)this.getResource(sActivitySiteName);
 	}
 
-	public DxActivity getActivity(Long lActivitySiteKey) {
+	public DxActivity getActivity(long lActivitySiteKey) {
 		return (DxActivity)this.getResource(lActivitySiteKey);
 	}
 
