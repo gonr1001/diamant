@@ -48,7 +48,7 @@ import eLib.exit.exception.DxException;
  */
 public class DxTTableDoc extends DxDocument {
 
-//	private int _type;
+	private int _type;
 
 	private DxStateBar _stateBar;
 
@@ -60,8 +60,8 @@ public class DxTTableDoc extends DxDocument {
 
 	public DxTTableDoc(DMediator mediator, String fileName) throws DxException {
 		super(mediator);
-//		_type = 0;
-		_dm = new DModel(this, fileName);
+		_type = 0;
+		_dm = new DModel(this, fileName, _type);
 		_documentName = fileName;
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_dm.getTTStructure());

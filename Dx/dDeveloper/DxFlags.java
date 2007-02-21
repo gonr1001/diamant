@@ -30,11 +30,11 @@ package dDeveloper;
  */
 public class DxFlags {
 
-	 // public final static boolean newRooms = false;
-    public final static boolean newRooms = false;
+	// public final static boolean newRooms = false;
+	public final static boolean newRooms = false;
 
 	public final static boolean newAlg = false;
-	// public final static boolean newAlg = false;
+	// public final static boolean newAlg = true;
 
 	// public final static boolean newPartitionAlg = true;
 	public final static boolean newPartitionAlg = false;
@@ -43,4 +43,5 @@ public class DxFlags {
 	public final static boolean newActivity = false;
 
 	public static boolean unitTest = true;
+
 }

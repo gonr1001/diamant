@@ -55,9 +55,10 @@ import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.AvailabiltyRoomDialog;
 import dInterface.dAssignementDlgs.DxActivityDlg;
+import dInterface.dAssignementDlgs.DxEventsDlg;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
-import dInterface.dAffectation.EventsDlg;
+
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dData.DefFilesToImportDlg;
@@ -656,7 +657,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void assignEvents() {
-		new EventsDlg(this);
+		new DxEventsDlg(this);
 	}
 
 	/**
@@ -868,7 +869,7 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void eventAssignment() {
-		new EventsDlg(this);
+		new DxEventsDlg(this);
 	}
 
 	/**

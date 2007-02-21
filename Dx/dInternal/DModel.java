@@ -144,52 +144,52 @@ public class DModel extends Observable {
 	 * 
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
-//	public DModel(DDocument dDocument, String fileName, int type)
-//			throws DxException {
-//		_error = "";
-//		_modified = false;
-//		_isExamPrepared = false;
-//		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
-//		_importDone = false;
-//		_mergeDone = false;
-//		_constructionState = 0;
-//		_currentCycle = 1;
-//		_nbConflicts = new int[] { 10, 20, 30 };
-//		_setOfEvents = new SetOfEvents(this);
-//		_setOfImportErrors = new StandardCollection();
-//		_setOfImportSelErrors = new StandardCollection();
-//
-//		_progressBarState = new DValue();
-//		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
-//		_dDocument = dDocument;
-//		_isOnlyATimeTable = false;
-//
-//		if (fileName.endsWith(DConst.DOT_DIA)) {
-//			_error = loadTimeTable(fileName, getCurrentDir(fileName));
-//			_isATimeTable = true;
-//		} else if (fileName.endsWith(DConst.DOT_XML)) {
-//			_ttStruct = new TTStructure();
-//			_error = _ttStruct.loadTTSFromFile(fileName);
-//			_isATimeTable = false;
-//		} else {
-//			_error = "Wrong type of file";
-//		}
-//		if (_error.length() == 0) {
-//			if (_isATimeTable)
-//				_conditionsToTest = new DxConditionsToTest(this);
-//		} else {
-//			throw new DxException(_error);
-//		}
-//		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
-//			_isATimeTable = true;
-//			_isOnlyATimeTable = true;
-//		}
-//		_type = type;
-//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-//		_setOfRoomsFunctions.functionReader();
-//		this.notifyObservers(this);
-//
-//	}
+	public DModel(DxDocument dDocument, String fileName, int type)
+			throws DxException {
+		_error = "";
+		_modified = false;
+		_isExamPrepared = false;
+		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
+		_importDone = false;
+		_mergeDone = false;
+		_constructionState = 0;
+		_currentCycle = 1;
+		_nbConflicts = new int[] { 10, 20, 30 };
+		_setOfEvents = new SetOfEvents(this);
+		_setOfImportErrors = new StandardCollection();
+		_setOfImportSelErrors = new StandardCollection();
+
+		_progressBarState = new DValue();
+		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
+		_dxDocument = dDocument;
+		_isOnlyATimeTable = false;
+
+		if (fileName.endsWith(DConst.DOT_DIA)) {
+			_error = loadTimeTable(fileName, getCurrentDir(fileName));
+			_isATimeTable = true;
+		} else if (fileName.endsWith(DConst.DOT_XML)) {
+			_ttStruct = new TTStructure();
+			_error = _ttStruct.loadTTSFromFile(fileName);
+			_isATimeTable = false;
+		} else {
+			_error = "Wrong type of file";
+		}
+		if (_error.length() == 0) {
+			if (_isATimeTable)
+				_conditionsToTest = new DxConditionsToTest(this);
+		} else {
+			throw new DxException(_error);
+		}
+		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
+			_isATimeTable = true;
+			_isOnlyATimeTable = true;
+		}
+		_type = type;
+		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+		_setOfRoomsFunctions.functionReader();
+		this.notifyObservers(this);
+
+	}
 
 	public DModel(DxDocument dxDocument, String fileName) throws DxException {
 		_error = "";
