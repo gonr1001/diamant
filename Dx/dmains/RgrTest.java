@@ -24,6 +24,7 @@ import junit.framework.TestSuite;
 
 //import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 //import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
+import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 
 /**
@@ -56,7 +57,7 @@ public class RgrTest {
 		suite.addTest(SetOfEventsTest.suite());
 //		suite.addTest(DxAssignAllAlgTest.suite());
 //		suite.addTest(DxAssignRoomsAlgTest.suite());
-
+		suite.addTest(DxEditEventDlgTest.suite());
 		System.out.println("Bye I was in rgrTest");
 		return suite;
 	}

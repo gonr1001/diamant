@@ -30,21 +30,22 @@ package dInterface.dAssignementDlgs;
  */
 
 import java.awt.event.ActionEvent;
+import java.util.Observable;
+import java.util.Observer;
 
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
-import dInterface.dAffectation.EditEventDlg;
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import eLib.exit.dialog.InformationDlg;
 
-public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification {
-	private String[] _arrowsNames = { DConst.TO_RIGHT, DConst.TO_LEFT, };
+public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIdentification {
+	
+	private String[] _arrowsNames;
 
-	// private boolean _withRoomFunction;
 
 	/**
 	 * Constructor
@@ -59,8 +60,11 @@ public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification
 	 */
 	public DxEventsDlg(DApplication dApplic) {
 		super(dApplic, DConst.EVENTS_DLG_TITLE);
-		// _withRoomFunction = withRoomFunction;
+		_arrowsNames = new String [2];		
+		_arrowsNames [0] = DConst.TO_RIGHT;
+		_arrowsNames [1] = DConst.TO_LEFT;
 		buildArrowButtons(true);
+		_dApplic.getCurrentDModel().addObserver(this);
 		initialize();
 	}// end method
 
@@ -71,7 +75,6 @@ public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification
 		// Setting the button APPLY disable
 		_buttonsPanel.setFirstDisable();
 		return _buttonsPanel;
-
 	}
 
 	/**
@@ -100,8 +103,7 @@ public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification
 			_centerLabel.setText(String.valueOf(_centerVector.size()));
 			_buttonsPanel.setFirstEnable();
 		}// end if (
-		// (e.getSource().equals(_leftArrowsPanel.getComponent(0)))) ||
-		// (e.getSource().equals(_leftArrowsPanel.getComponent(1)))) )
+
 		// if the source is one of the the _rightArrowsPanel buttons
 		if ((e.getActionCommand().equalsIgnoreCase("right" + _arrowsNames[0]))
 				|| (e.getActionCommand().equalsIgnoreCase("right"
@@ -118,11 +120,12 @@ public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification
 			_centerLabel.setText(String.valueOf(_centerVector.size()));
 			_buttonsPanel.setFirstEnable();
 		}// end if (
-		// (e.getSource().equals(_rightArrowsPanel.getComponent(0))) ||
-		// (e.getSource().equals(_rightArrowsPanel.getComponent(1))) )
 		// if Button CLOSE is pressed
-		if (e.getActionCommand().equals(DConst.BUT_CLOSE))
+		if (e.getActionCommand().equals(DConst.BUT_CLOSE)){
+			_dApplic.getCurrentDModel().deleteObserver(this);
 			dispose();
+			
+		}
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
@@ -137,12 +140,8 @@ public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification
 	 */
 	protected void doubleClicMouseProcess() {
 		if (!_buttonsPanel.isFirstEnable()) {
-			// if (this._withRoomFunction)
-			new EditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
-					this, false);
-			// else
-			// new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0],
-			// this, false);
+			new DxEditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
+					/*this,*/ false);
 			_buttonsPanel.setFirstDisable();
 		} else {
 			new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer",
@@ -152,6 +151,12 @@ public class DxEventsDlg extends EventsDlgInterface implements DlgIdentification
 
 	public String idDlgToString() {
 		return this.getClass().toString();
+	}
+
+	public void update(@SuppressWarnings("unused")
+	Observable o, @SuppressWarnings("unused")
+	Object arg) {
+		this.initializePanel();		
 	}
 
 }// end EventsDlg

@@ -15,6 +15,7 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.dAssignementDlgs.DxEditActivityDlg;
 import dInterface.dUtil.DxTools;
 //import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
@@ -57,7 +58,7 @@ private String _title;
     DResource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
     //new UnityModifDlg(this,_title+unity.getID()+".", section);
-    new EditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
+    new DxEditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
   }
 
   /**

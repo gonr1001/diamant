@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.58 $ $Date: 2007-01-05 20:14:24 $
+ * Title: ActivityDlg $Revision: 1.59 $ $Date: 2007-02-24 19:14:36 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.58 $
+ * @version $Revision: 1.59 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,8 +33,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
+import dInterface.dAssignementDlgs.DxEditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -88,15 +90,9 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
 
-//		if (DxFlags.newDoc) {
 			if (dApplic.getCurrentDxDoc() == null)
 				return;
 			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-//		} else {
-//			if (dApplic.getCurrentDoc() == null)
-//				return;
-//			_dmodel = dApplic.getCurrentDModel();
-//		}
 
 		_activities = _dmodel.getSetOfActivities();
 
@@ -186,8 +182,14 @@ public class ActivityDlg extends JDialog implements ActionListener,
 				_leftList.clearSelection();
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
 			if (e.getClickCount() == 2) {
-				new EditActivityDlg(_jd, _dApplic,
-						(String) _currentActivities[0], false);
+				if (DxFlags.newEditEventDlg) {
+					new DxEditEventDlg(_jd, _dApplic,
+							(String) _currentActivities[0], false);
+				} else {
+					new EditEventDlg(_jd, _dApplic,
+							(String) _currentActivities[0], false);
+				}
+				
 			}// end if
 		}// end public void mouseClicked
 	};// end definition of MouseListener mouseListener = new MouseAdapter(){

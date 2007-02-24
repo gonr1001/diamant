@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
-import dInterface.dAffectation.EditActivityDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -32,9 +31,6 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 
 	private JDialog _jd;
 
-	/**
-	 * the lists containing the activities ID
-	 */
 	private JLabel _lVisible;
 
 	private JLabel _lNoVisible;
@@ -89,7 +85,6 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		this.setVisible(true);
 	}
 
-	// XXXX Pascal: Fix Java 1.5->1.4
 	public Dimension getMinimumSize() {
 		return new Dimension(300, 300);
 	}
@@ -176,8 +171,9 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 			else
 				_leftList.clearSelection();
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
+			
 			if (e.getClickCount() == 2) {
-				new EditActivityDlg(_jd, _dApplic,
+				new DxEditEventDlg(_jd, _dApplic,
 						(String) _currentActivities[0], false);
 			}// end if
 		}// end public void mouseClicked
@@ -202,13 +198,6 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		}
 		// if arrows
 		if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1])) {
-			// if (command.equals(_arrowsNames[1])) {
-			// DxTools.listTransfers(_rightList, _leftList, _rightVec,
-			// _leftVec, 1);
-			// } else {
-			// DxTools.listTransfers(_leftList, _rightList, _leftVec,
-			// _rightVec, 1);
-			// }
 			_lNoVisible.setText(_dxavRight.size() + " " + DConst.NOT_INCLUDED);
 			_lVisible.setText(_dxavLeft.size() + " " + DConst.INCLUDED);
 			_buttonsPanel.setFirstEnable();

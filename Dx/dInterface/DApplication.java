@@ -44,7 +44,6 @@ import javax.swing.WindowConstants;
 import dConstants.DConst;
 import dDeveloper.DxFlags;
 import dInterface.dTimeTable.ConflictsOfAnEventDlg;
-import dInterface.dTimeTable.ManualImprovementDlg;
 import dInterface.dTimeTable.OpenTTDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsTTDlg;
@@ -54,6 +53,7 @@ import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.AvailabiltyRoomDialog;
+import dInterface.dAffectation.EventsDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
 import dInterface.dAssignementDlgs.DxEventsDlg;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
@@ -417,7 +417,7 @@ public class DApplication { // implements ActionListener {
 		try {
 			this.getDMediator().addDxTTExamDoc(
 					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);//,
-					//DConst.EXAM);
+			//DConst.EXAM);
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		} catch (Exception e) {
@@ -616,7 +616,11 @@ public class DApplication { // implements ActionListener {
 		if (DxFlags.newActivity) {
 			new DxActivityDlg(this);
 		} else {
-			new ActivityDlg(this);
+			if (DxFlags.newEditEventDlg) {
+				new ActivityDlg(this);
+			} else {
+				new ActivityDlg(this);
+			}
 		}
 	}
 
@@ -656,8 +660,12 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * 
 	 */
-	public void assignEvents() {
-		new DxEventsDlg(this);
+	public void assignEvents() {		
+			if (DxFlags.newEditEventDlg) {
+				new DxEventsDlg(this);
+			} else {
+				new EventsDlg(this);
+			}
 	}
 
 	/**
@@ -670,8 +678,8 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * 
 	 */
-	public void conflictOfAnEvent() {
-		new ManualImprovementDlg(this, DConst.MANUALIMPROVEMENT_DLG_TITLE);
+	public void conflictsOfAnEvent() {
+		new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
 	}
 
 	/**
@@ -845,12 +853,12 @@ public class DApplication { // implements ActionListener {
 		_dxMenuBar.showAllMenus();
 	}
 
-	/**
-	 * 
-	 */
-	public void conflictsOfAnEvent() {
-		new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
-	}
+//	/**
+//	 * 
+//	 */
+//	public void conflictsOfAnEvent() {
+//		new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
+//	}
 
 	/**
 	 * 
@@ -869,7 +877,11 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void eventAssignment() {
-		new DxEventsDlg(this);
+		if (DxFlags.newEditEventDlg) {
+			new DxEventsDlg(this);
+		} else {
+			new EventsDlg(this);
+		}
 	}
 
 	/**

@@ -71,9 +71,6 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 
 	private JComboBox _chooser;
 
-	/**
-	 * @associates JToggleButton
-	 */
 	private Vector<JToggleButton> _posVect;
 
 	private DModel _dmodel;
@@ -87,14 +84,11 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	// private boolean _isMultiSite;
 
 	/**
-	 * Default constructor.
-	 * 
-	 * @param setOfResources
-	 *            TODO
-	 * @param owner
+	 *
+	 * @param dApplic
 	 *            The component on which the dialog will be displayed.
-	 * @param doc
-	 *            The active document. Used to access the dictionnaries.
+	 * @param soi
+	 *            The setOfResources to be displayed.
 	 */
 	public DxInstructorAvailabilityDlg(DApplication dApplic,
 			DxSetOfInstructors soi) {
@@ -127,10 +121,9 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	/**
 	 * Component's initialisation and placement.
 	 */
-	private void initialize() {// throws Exception {
+	private void initialize() {
 		_chooserPanel = new JPanel();
 		// creates the JComboBox with the list of all instructors
-		// _chooser = new JComboBox(_soi.getInstructorsSortedByName());
 		_chooser = new JComboBox(_soi.getNameSortedRessources());
 		_currentInst = (DxInstructor) _chooser.getSelectedItem();
 		_chooser.addItemListener(this);
@@ -168,7 +161,6 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			} else {
 				_currentAvailbility[day][per] = 5;
 			}
-			// modified = true;
 			_applyPanel.setFirstEnable();
 		}
 	}
@@ -188,7 +180,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 				pack();
 			}
 		}
-	}// end itemStateChangeed
+	}// end itemStateChanged
 
 	/**
 	 * Creates the grid of button. The button is pressed if the instructor is
@@ -214,11 +206,8 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 
 		for (int j = 0; j < _nbOfPeriods; j++) {
 			// first column : the time of the period
-
 			gridPanel.add(new JLabel(_time[j], SwingConstants.RIGHT));
 			// create a button for each day for the period
-			// System.out.println(" DAInstructorDialog NbDays: "+nbDay+"
-			// NbPerDays: "+nbPer); //DEBUG
 			for (int i = 0; i < _nbOfDays; i++) {
 				JToggleButton tBut = new JToggleButton();
 				if (_currentAvailbility[i][j] == 1) {

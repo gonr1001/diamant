@@ -78,7 +78,7 @@ public class DAssignMenu extends JMenu implements MenuStates {
 		this.addSeparator();
 		buildSelectiveViews();
 		this.addSeparator();
-		buildConflictOfAnEvent();
+		buildConflictsOfAnEvent();
 	}
 
 	/**
@@ -187,13 +187,13 @@ public class DAssignMenu extends JMenu implements MenuStates {
 	/**
 	 * 
 	 */
-	private void buildConflictOfAnEvent() {
-		_conflicsOfAnEvent = new JMenuItem(DConst.MANUAL_ASSIGN_M);
+	private void buildConflictsOfAnEvent() {
+		_conflicsOfAnEvent = new JMenuItem(DConst.CONFLICTS_OF_AN_EVENT);
 		_conflicsOfAnEvent.setFont(DxMenuBar.DxMB_FONT);
 		class CEListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.conflictOfAnEvent();
+				_dApplication.conflictsOfAnEvent();
 			}
 		}
 		ActionListener conflicsOfAnEventListener = new CEListener();

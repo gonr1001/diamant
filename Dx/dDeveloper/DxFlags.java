@@ -41,6 +41,9 @@ public class DxFlags {
 
 	// public final static boolean newActivity = true;
 	public final static boolean newActivity = false;
+	
+//	 public final static boolean newActivity = true;
+	public final static boolean newEditEventDlg = true;
 
 	public static boolean unitTest = true;
 

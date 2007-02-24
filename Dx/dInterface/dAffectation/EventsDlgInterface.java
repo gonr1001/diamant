@@ -56,7 +56,6 @@ public abstract class EventsDlgInterface extends JDialog implements
 
 	protected DApplication _dApplic;
 
-	//protected Dimension _dialogDim = new Dimension(600, 400);
 	protected EventAttach _currEvent;
 
 	protected int buttonsPanelHeight = 80;

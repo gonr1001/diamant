@@ -28,6 +28,7 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dDeveloper.DxFlags;
+import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
@@ -158,6 +159,7 @@ public class DiamantTest {
 		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
+		suite.addTest(DxEditEventDlgTest.suite());
 		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in tests");
 		return suite;

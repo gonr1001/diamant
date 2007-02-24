@@ -1,6 +1,6 @@
 /**
 *
-* Title: ConflictsOfAnEventDlg $Revision: 1.3 $  $Date: 2006-03-03 16:03:36 $
+* Title: ConflictsOfAnEventDlg $Revision: 1.4 $  $Date: 2007-02-24 19:14:42 $
 * Description: ConflictsOfAnEventDlg is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.3 $
+* @version $Revision: 1.4 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -25,10 +25,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DToolBar;
-import dInterface.dAffectation.EditActivityDlg;
+import dInterface.dAffectation.EditEventDlg;
 import dInterface.dAffectation.EventsDlgInterface;
+import dInterface.dAssignementDlgs.DxEditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 
@@ -63,7 +65,6 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
    * build buttom to use in the dialog
    */
   public void buildArrowButtons(boolean enableArrows) {
-  	enableArrows = enableArrows && true;
 	_leftArrowsPanel = new JPanel();
 	_rightArrowsPanel = new JPanel();
   }
@@ -74,7 +75,12 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
     if (command.equals(DConst.BUT_CLOSE))
       dispose();
     if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
-      new EditActivityDlg(_jDialog, _dApplic, (String)selectedItems[0], this, false);
+    	if (DxFlags.newEditEventDlg) {
+    		new DxEditEventDlg(_jDialog, _dApplic, (String)selectedItems[0], /*this,*/ false);
+		} else {
+			new EditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
+					this, false);
+		}
     }
   }//end actionPerformed
 

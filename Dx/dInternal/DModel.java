@@ -1024,7 +1024,6 @@ public class DModel extends Observable {
 	 * 
 	 */
 	public void updateEventsInTTS() {
-		// _dm._conditionTest = new ConditionsTest(_dm);
 		getConditionsTest().initAllConditions();
 	}
 
