@@ -26,6 +26,8 @@
 package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -33,7 +35,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-//import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -68,44 +69,41 @@ public class SelectInstructors extends JDialog implements ActionListener {
 
 	private ButtonsPanel _validatePanel;
 
-	//private DApplication _dApplic;
 	private DxEditActivityDlg _dxEad;
 
 	private DxEditEventDlg _dxEEventDlg;
 
 //	private EditActivityDlg _ead;
 
-	private EditEventDlg _eEventDlg;
+//	private EditEventDlg _eEventDlg;
 
-	//  private EditActivityDlg _ead;
-	//  private DxEditEventDlg _editEventdlg;
 	private Vector _rightVec, _leftVec;
 
 	//private JList _leftVec;
 
-	/*
-	 * Constructeur
-	 * il est utilisé par la classe EditActivityDlg pour manipuler
-	 * les enseignants
-	 * @param DApplication le noeud pere de l'application
-	 * @param EditActivityDlg ead est le dialogue père
-	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
-	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
-	 */
-	public SelectInstructors(DApplication dApplic, DxEditActivityDlg dxEad,
-			Vector leftVec, Vector rightVec) {
-		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
-		//_dApplic = dApplic;
-		_dxEad = dxEad;
-		_leftVec = leftVec;
-		//_leftVec.
-		_rightVec = rightVec;
-		for (int i = 0; i < _leftVec.size(); i++)
-			_rightVec.remove(_leftVec.get(i).toString());
-		initialize();
-		setLocationRelativeTo(dApplic.getJFrame());
-		setVisible(true);
-	}
+//	/*
+//	 * Constructeur
+//	 * il est utilisé par la classe EditActivityDlg pour manipuler
+//	 * les enseignants
+//	 * @param DApplication le noeud pere de l'application
+//	 * @param EditActivityDlg ead est le dialogue père
+//	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
+//	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
+//	 */
+//	public SelectInstructors(DApplication dApplic, DxEditActivityDlg dxEad,
+//			Vector leftVec, Vector rightVec) {
+//		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
+//		//_dApplic = dApplic;
+//		_dxEad = dxEad;
+//		_leftVec = leftVec;
+//		//_leftVec.
+//		_rightVec = rightVec;
+//		for (int i = 0; i < _leftVec.size(); i++)
+//			_rightVec.remove(_leftVec.get(i).toString());
+//		initialize();
+//		setLocationRelativeTo(dApplic.getJFrame());
+//		setVisible(true);
+//	}
 
 	/*
 	 * Constructeur
@@ -118,16 +116,40 @@ public class SelectInstructors extends JDialog implements ActionListener {
 	 */
 	public SelectInstructors(DApplication dApplic, DxEditEventDlg dxEEventDlg,
 			Vector leftVec, Vector rightVec) {
-		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
-		//_dApplic = dApplic;
+		
+		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg	
+//		int FACTOR = 50;
 		_dxEEventDlg = dxEEventDlg;
 		_leftVec = leftVec;
-		//_leftVec.
 		_rightVec = rightVec;
 		for (int i = 0; i < _leftVec.size(); i++)
 			_rightVec.remove(_leftVec.get(i).toString());
-		initialize();
+		
+//		this.setBounds(screenSize.width / 4, screenSize.height / 4,
+//				screenSize.width / 3, screenSize.height / 2 + FACTOR);initialize();
 		setLocationRelativeTo(dApplic.getJFrame());
+//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		setVisible(true);
+	}
+	
+	public SelectInstructors(DxEditEventDlg dxEEventDlg,
+			Vector leftVec, Vector rightVec) {
+		
+		super(dxEEventDlg, DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg	
+		int FACTOR = 50;
+		_dxEEventDlg = dxEEventDlg;
+		_leftVec = leftVec;
+		_rightVec = rightVec;
+		for (int i = 0; i < _leftVec.size(); i++)
+			_rightVec.remove(_leftVec.get(i).toString());
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setBounds(screenSize.width / 6, screenSize.height / 4,
+				screenSize.width / 3, screenSize.height / 2 + FACTOR);
+		initialize();
+		setLocationRelativeTo(dxEEventDlg);
+		
 		setVisible(true);
 	}
 
@@ -159,9 +181,8 @@ public class SelectInstructors extends JDialog implements ActionListener {
 			Vector leftVec, Vector rightVec) {
 		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
 		//_dApplic = dApplic;
-		_eEventDlg = eEventd;
+//		_eEventDlg = eEventd;
 		_leftVec = leftVec;
-		//_leftVec.
 		_rightVec = rightVec;
 		for (int i = 0; i < _leftVec.size(); i++)
 			_rightVec.remove(_leftVec.get(i).toString());
@@ -174,7 +195,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
 	 * Initialize the dialog
 	 */
 	protected void initialize() {
-
+//		_chooser = new JComboBox(_soi.getNameSortedRessources());
 		_rightList = new JList(_rightVec);
 		_rightList.addMouseListener(mouseListenerLists);
 		JPanel listPanel = DxTools.listPanel(_rightList, 150, 300);
@@ -183,7 +204,6 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		rightPanel.add(_lNoVisible, BorderLayout.NORTH);
 		rightPanel.add(listPanel, BorderLayout.SOUTH);
 		//left panel
-		//_leftVec = new Vector(1);//_activities.getIDsByField(3, "true");
 		_leftList = new JList(_leftVec);
 		_leftList.addMouseListener(mouseListenerLists);
 		_lVisible = new JLabel(_leftVec.size() + " " + DConst.INCLUDED);
@@ -242,6 +262,8 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		if (command.equals(DConst.BUT_VALIDATE)) {
 			if (_dxEad != null)
 				_dxEad.updateInstructorList(_leftVec);
+			
+			//next two lines must be deleted
 			else if (_dxEEventDlg != null)
 				_dxEEventDlg.updateInstructorList(_leftVec);
 			_validatePanel.setFirstDisable();
@@ -262,12 +284,5 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		}//end if (command.equals(_arrowsNames[0]) || command.equals(_arrowsNames[1]))
 	}//end method
 
-	/**
-	 * Sets the field "Visible" of the activities, according with their position
-	 * in the JLists. If an activity is in the _rightList, Visible = false.
-	 */
-	/*  private void setActivitesVisibility(){
-
-	 }*/
 
 }// end class

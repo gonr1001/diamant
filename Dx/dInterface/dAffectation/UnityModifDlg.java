@@ -57,7 +57,6 @@ private String _title;
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
     DResource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
-    //new UnityModifDlg(this,_title+unity.getID()+".", section);
     new DxEditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
   }
 

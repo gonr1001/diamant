@@ -235,9 +235,9 @@ public class DxEditActivityDlg extends JDialog implements ActionListener,
             _applyPanel.setFirstEnable();
 
         } else if (command.equals(DConst.BUT_CHANGE)) {// change instrcutors
-            new SelectInstructors(_dApplic, this,
-                    makeVector(_instructorsLists[_currentActivityIndex]),
-                    buildInstructorList());
+//            new SelectInstructors(_dApplic, this,
+//                    makeVector(_instructorsLists[_currentActivityIndex]),
+//                    buildInstructorList());
         }
 
     }

@@ -55,14 +55,6 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 public class DxInstructorAvailabilityDlg extends JDialog implements
 		ActionListener, ItemListener, DlgIdentification {
 
-	private int _nbOfPeriods;
-
-	private int _nbOfDays;
-
-	private String[] _days;
-
-	public String[] _time;
-
 	private ButtonsPanel _applyPanel;
 
 	private JPanel _chooserPanel;
@@ -84,7 +76,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	// private boolean _isMultiSite;
 
 	/**
-	 *
+	 * 
 	 * @param dApplic
 	 *            The component on which the dialog will be displayed.
 	 * @param soi
@@ -97,16 +89,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		if (dApplic.getCurrentDxDoc() == null)
 			return;
 		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-
 		_soi = soi;
-		_time = _dmodel.getTTStructure().getCurrentCycle()
-				.getHourOfPeriodsADay();
-
-		_nbOfPeriods = _dmodel.getTTStructure().getCurrentCycle()
-				.getMaxNumberOfPeriodsADay();
-		_nbOfDays = _dmodel.getTTStructure().getNumberOfActiveDays();
-
-		_days = _dmodel.getTTStructure().getDayNames();
 
 		try {
 			initialize();
@@ -154,8 +137,10 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			// if a button of the grid has been pressed
 		} else if (_posVect.indexOf(event.getSource()) > -1) {
 			int index = _posVect.indexOf(event.getSource());
-			int day = index / _nbOfPeriods;
-			int per = index % _nbOfPeriods;
+			int nbOfPeriods = _dmodel.getTTStructure().getCurrentCycle()
+					.getMaxNumberOfPeriodsADay();
+			int day = index / nbOfPeriods;
+			int per = index % nbOfPeriods;
 			if (_posVect.get(index).isSelected()) {
 				_currentAvailbility[day][per] = 1;
 			} else {
@@ -190,12 +175,18 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	 *            the instructor for which the grid is constructed.
 	 */
 	private JPanel makeGridPanel() {
+		String[] time = _dmodel.getTTStructure().getCurrentCycle()
+				.getHourOfPeriodsADay();
+		int nbOfPeriods = _dmodel.getTTStructure().getCurrentCycle()
+				.getMaxNumberOfPeriodsADay();
+		int nbOfDays = _dmodel.getTTStructure().getNumberOfActiveDays();
+		String[] _days = _dmodel.getTTStructure().getDayNames();
 		JPanel gridPanel = new JPanel();
-		gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
+		gridPanel.setLayout(new GridLayout(nbOfPeriods + 1, nbOfDays + 1));
 		gridPanel.setBorder(BorderFactory
 				.createTitledBorder(DConst.AVAILABILITIES));
 		_posVect = new Vector<JToggleButton>();
-		_posVect.setSize((_nbOfPeriods + 1) * (_nbOfDays + 1));
+		_posVect.setSize((nbOfPeriods + 1) * (nbOfDays + 1));
 		gridPanel.add(new JLabel("")); // top left corner
 		for (int i = 0; i < _days.length; i++)
 			// first line : name of days
@@ -204,11 +195,11 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		_currentAvailbility = _currentInst.getAvailability()
 				.getMatrixAvailability();
 
-		for (int j = 0; j < _nbOfPeriods; j++) {
+		for (int j = 0; j < nbOfPeriods; j++) {
 			// first column : the time of the period
-			gridPanel.add(new JLabel(_time[j], SwingConstants.RIGHT));
+			gridPanel.add(new JLabel(time[j], SwingConstants.RIGHT));
 			// create a button for each day for the period
-			for (int i = 0; i < _nbOfDays; i++) {
+			for (int i = 0; i < nbOfDays; i++) {
 				JToggleButton tBut = new JToggleButton();
 				if (_currentAvailbility[i][j] == 1) {
 					Vector assignedSites = _currentInst.getAvailability()
@@ -228,7 +219,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 				tBut.addActionListener(this);
 				tBut.setPreferredSize(new Dimension(50, 12));
 				gridPanel.add(tBut);// , null);
-				_posVect.setElementAt(tBut, (i * _nbOfPeriods) + j);
+				_posVect.setElementAt(tBut, (i * nbOfPeriods) + j);
 			}
 		}
 		return gridPanel;

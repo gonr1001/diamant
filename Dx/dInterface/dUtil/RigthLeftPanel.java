@@ -59,12 +59,9 @@ public class RigthLeftPanel extends JPanel implements ActionListener {
 			JButton button = new JButton(buttonsNames[i]);
 			button.setActionCommand(buttonsNames[i]);
 			button.addActionListener(this);
-			//verticalBox.add(Box.createVerticalGlue());
 			verticalBox.add(button);
 			verticalBox.add(Box.createVerticalStrut(10));
 		}
-
-		//verticalBox.add(Box.createVerticalGlue());
 		this.add(verticalBox);
 	}
 	 

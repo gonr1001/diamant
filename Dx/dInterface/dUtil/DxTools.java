@@ -487,22 +487,6 @@ public static int STIConvertGroupToInt(String STIGroupID){
 
 
 
-// /**
-//  * change the cursor
-//  * @param frame the parent frame
-//  * @param state if 0: set DEFAULT_CURSOR; 1 = WAIT_CURSOR; 2 = HAND_CURSOR
-//  */
-// public static void setCursor(Component component, int state){
-//   switch (state){
-//     case 0: component.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-//       break;
-//     case 1: component.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//       break;
-//     case 2: component.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//       break;
-//   }
-// }
-
 
 
 }
