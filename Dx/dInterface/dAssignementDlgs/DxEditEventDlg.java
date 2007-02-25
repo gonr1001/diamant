@@ -27,7 +27,7 @@ package dInterface.dAssignementDlgs;
  * Description: DxEditEventDlg is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 
@@ -37,9 +37,12 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Iterator;
 import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -67,12 +70,15 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
-//import dInternal.dData.dActivities.DxActivity;
+// import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
+import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
@@ -86,9 +92,9 @@ import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
 
 public class DxEditEventDlg extends JDialog implements ActionListener,
-		ChangeListener, DlgIdentification {
+ItemListener, ChangeListener, DlgIdentification {
 
-	//	private DApplication _dApplic;
+	// private DApplication _dApplic;
 
 	private DModel _dModel;
 
@@ -103,8 +109,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private DxJComboBox _roomCB;
 
 	private JLabel[] _capacity;
-
-//	private boolean _canBeModified;
 
 	private Vector _unities; // contains event resource
 
@@ -132,30 +136,32 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	public DxEditEventDlg(JDialog dialog, DApplication dApplic,
 			String currentActivity, boolean canBeModified) {
-		super(dialog, DConst.T_AFFEC_DLG + "Dx!!!!!!!!");// "One activity or n Events
+		super(dialog, DConst.T_AFFEC_DLG + "Dx!!!!!!!!");// "One activity or
+															// n Events
 		setLocationRelativeTo(dialog);
-//		_currentActivityIndex = 0;
+		// _currentActivityIndex = 0;
 		_dModel = dApplic.getCurrentDModel();
-//		_canBeModified = canBeModified;
+		// _canBeModified = canBeModified;
 		_unities = buildUnitiesVector(currentActivity);
-		//		DxActivity a = (DxActivity) dApplic.getCurrentDModel().getDxSetOfActivities().getActivity(currentActivity);
-		//a.
-		//		_instructorsLists = new JList[_unities.size()];
+		// DxActivity a = (DxActivity)
+		// dApplic.getCurrentDModel().getDxSetOfActivities().getActivity(currentActivity);
+		// a.
+		// _instructorsLists = new JList[_unities.size()];
 		_capacity = new JLabel[_unities.size()];
 		initialize(currentActivity, canBeModified);
 	} // end DxEditActivityDlg
 
-	//    private void continueContructor(JDialog dialog, DApplication dApplic,
-	//            String currentActivity, boolean canBeModified) {
-	//    	setLocationRelativeTo(dialog);
-	//        _dApplic = dApplic;
-	//        _canBeModified = canBeModified;
-	//        _unities = buildUnitiesVector(currentActivity);
-	//        _instructorsLists = new JList[_unities.size()];
-	//        _capacity = new JLabel[_unities.size()];
+	// private void continueContructor(JDialog dialog, DApplication dApplic,
+	// String currentActivity, boolean canBeModified) {
+	// setLocationRelativeTo(dialog);
+	// _dApplic = dApplic;
+	// _canBeModified = canBeModified;
+	// _unities = buildUnitiesVector(currentActivity);
+	// _instructorsLists = new JList[_unities.size()];
+	// _capacity = new JLabel[_unities.size()];
 	//
-	//        initialize();
-	//    }
+	// initialize();
+	// }
 
 	/**
 	 * Initialize the dialog
@@ -177,7 +183,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		//the constants 
+		// the constants
 		this.setBounds(screenSize.width / 6, screenSize.height / 4,
 				screenSize.width / 3, screenSize.height / 2 + FACTOR);
 		this.pack();
@@ -240,7 +246,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			_applyPanel.setFirstEnable();
 
 		} else if (command.equals(DConst.BUT_CHANGE)) {// change instrcutors
-			new SelectInstructors(/*_dApplic,*/ this,
+			new SelectInstructors(/* _dApplic, */this,
 					makeVector(_instructorsLists[_currentActivityIndex]),
 					buildInstructorList());
 		}
@@ -338,22 +344,38 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private JPanel buildRoomPanel(int index) {
 		JPanel myPanel = new JPanel(new BorderLayout());
 		JPanel roomPanel = new JPanel();
-		// J//Panel functionPanel = new JPanel();
+
+		DxSetOfSites _dxsosSites = _dModel.getDxSetOfSites();
 		roomPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_ROOM_NAME));
 		roomPanel.setLayout(new GridLayout(2, 2));
+		DefaultComboBoxModel _dcbmSites = new DefaultComboBoxModel(_dxsosSites
+				.getSitesSortedByName());
+		JComboBox _cbSites = new JComboBox(_dcbmSites);
+		_cbSites.addItemListener(this);
+		DxSite _dxsCurrentSite = (DxSite) _cbSites.getSelectedItem();
 
 		// construction de la combobox de functions de locaux
 		Vector[] vectF = buildRoomFunctionList();
-		String selectedFunction = vectF[0].get(0).toString();
-		DxJComboBox functionRoomCB = new DxJComboBox(vectF[1]);
-		functionRoomCB.setMaximumSize(new Dimension(10, 10));
-		functionRoomCB.setSelectedItem(selectedFunction);
-		functionRoomCB.setActionCommand(DConst.FUNCTION_AC);
-		functionRoomCB.addActionListener(this);
+		String selectedCategory = vectF[0].get(0).toString();
+//		DxJComboBox categoriyRoomCB = new DxJComboBox(vectF[1]);
+//		categoriyRoomCB.setMaximumSize(new Dimension(10, 10));
+//		categoriyRoomCB.setSelectedItem(selectedCategory);
+//		categoriyRoomCB.setActionCommand(DConst.FUNCTION_AC);
+//		categoriyRoomCB.addActionListener(this);
+
+		DefaultComboBoxModel _dcbmCategories = new DefaultComboBoxModel(
+				_dxsCurrentSite.getSetOfCat().getCatsSortedByName());
+		JComboBox _cbCategories = new JComboBox(_dcbmCategories);
+		//DxJComboBox categoriyRoomCB = new DxJComboBox(vectF[1]);
+		_cbCategories.setMaximumSize(new Dimension(10, 10));
+		//_cbCategories.setSelectedItem(selectedCategory);
+		_cbCategories.setActionCommand(DConst.CATEGORY_LABEL);
+		_cbCategories.addItemListener(this);
+		DxCategory _dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
 
 		// contruction de la combobox de locaux
-		Vector[] vectR = buildRoomList(selectedFunction);// vectC[0].get(0).toString());
+		Vector[] vectR = buildRoomList(selectedCategory);// vectC[0].get(0).toString());
 		_roomCB = new DxJComboBox(vectR[1]);
 		_roomCB.setActionCommand(DConst.NAME_AC);
 		_roomCB.setSelectedItem(vectR[0].get(0).toString());
@@ -391,8 +413,40 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		// construction du contour de la combobox de fonction de locaux
 		JPanel functionRoom = new JPanel();
 		functionRoom.setBorder(new TitledBorder(new EtchedBorder(),
-				DConst.FUNCTION_LABEL));
-		functionRoom.add(functionRoomCB);
+				DConst.CATEGORY_LABEL));
+		functionRoom.add(_cbCategories);
+
+		// creates the JComboBox with the list of all sites and add an entry
+		// to
+		// display all sites
+		// _dcbmSites = new DefaultComboBoxModel(_dxsosSites
+		// .getSitesSortedByName());
+		// _cbSites = new JComboBox(_dcbmSites);
+		// _cbSites.addItemListener(this);
+		// _dxsCurrentSite = (DxSite) _cbSites.getSelectedItem();
+		//
+		// _dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
+		// .getSetOfCat().getCatsSortedByName());
+		// _cbCategories = new JComboBox(_dcbmCategories);
+		// _cbCategories.addItemListener(this);
+		// _dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
+		//
+		// _dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat.getSetOfRooms()
+		// .getRoomsSortedByName());
+		// _cbRooms = new JComboBox(_dcbmRooms);
+		// _cbRooms.addItemListener(this);
+		// _dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
+		//
+		// _dxaCurrentAvailbility = _dxrCurrentRoom.getAvailability()
+		// .getMatrixAvailability();
+		//
+		// // TODO: Create StringRes and const for labels
+		// _chooserPanel.add(new JLabel("Sites: "), null);
+		// _chooserPanel.add(_cbSites, null);
+		// _chooserPanel.add(new JLabel("Catégorie: "), null);
+		// _chooserPanel.add(_cbCategories, null);
+		// _chooserPanel.add(new JLabel("Local: "), null);
+		// _chooserPanel.add(_cbRooms, null);
 
 		// construction du panel complet
 		roomPanel.add(functionRoom);
@@ -971,8 +1025,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		EventAttach event = (EventAttach) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		// remove event
-		_dModel.getConditionsTest().removeEventInTTs(
-				_dModel.getTTStructure(),
+		_dModel.getConditionsTest().removeEventInTTs(_dModel.getTTStructure(),
 				(DResource) _unities.get(_currentActivityIndex), false);
 
 		JPanel tpane = ((JPanel) _tabbedPane
@@ -991,8 +1044,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String room = getSelectedRoom(tpane);
 		String state = this.getSelectedState(tpane);
 		String function = getSelectedFunction(tpane);
-		SetOfRoomsFunctions sorf = _dModel
-				.getSetOfRoomsFunctions();
+		SetOfRoomsFunctions sorf = _dModel.getSetOfRoomsFunctions();
 		DResource roomFunction = sorf.getResource(function);
 
 		boolean assignBut = isAssignedButtonSelected(tpane);
@@ -1023,11 +1075,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		Vector vect = new Vector();
 		vect.add(_unities.get(_currentActivityIndex));
-		_dModel.getSetOfEvents().updateActivities(
-				_dModel.getSetOfActivities(), vect);
+		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
+				vect);
 		// add event
-		_dModel.getConditionsTest().addEventInTTs(
-				_dModel.getTTStructure(),
+		_dModel.getConditionsTest().addEventInTTs(_dModel.getTTStructure(),
 				(DResource) _unities.get(_currentActivityIndex), false);
 		return true;
 	}
@@ -1036,8 +1087,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		// TODO: DConst.newInstructors
 		String a = "";
 		for (int i = 0; i < lm.getSize(); i++) {
-			long key = _dModel.getDxSetOfInstructors()
-					.getInstructorKey((String) lm.getElementAt(i));
+			long key = _dModel.getDxSetOfInstructors().getInstructorKey(
+					(String) lm.getElementAt(i));
 			a += key + ":";
 		}
 		return a;
@@ -1067,5 +1118,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	public String idDlgToString() {
 		return this.getClass().toString();
+	}
+
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }// end class

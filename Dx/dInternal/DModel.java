@@ -54,7 +54,6 @@ import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
-import dInternal.dDlgModel.InstructorAvailabilityDlgModel;
 import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
@@ -1125,20 +1124,20 @@ public class DModel extends Observable {
 		}
 	} // resizeSiteAvailability
 
-	/**
-	 * @return
-	 */
-	public InstructorAvailabilityDlgModel getIADlgModel() {
-		InstructorAvailabilityDlgModel iaDlgModel = new InstructorAvailabilityDlgModel();
-		iaDlgModel.setHours(getTTStructure().getCurrentCycle()
-				.getHourOfPeriodsADay());
-
-		iaDlgModel.setDays(getTTStructure());
-		iaDlgModel.setMaxNumOfPeriods(getTTStructure());
-		iaDlgModel.setInstructorsNames(_dxSetOfInstructors);
-
-		return iaDlgModel;
-	}
+//	/**
+//	 * @return
+//	 */
+//	public InstructorAvailabilityDlgModel getIADlgModel() {
+//		InstructorAvailabilityDlgModel iaDlgModel = new InstructorAvailabilityDlgModel();
+//		iaDlgModel.setHours(getTTStructure().getCurrentCycle()
+//				.getHourOfPeriodsADay());
+//
+//		iaDlgModel.setDays(getTTStructure());
+//		iaDlgModel.setMaxNumOfPeriods(getTTStructure());
+//		iaDlgModel.setInstructorsNames(_dxSetOfInstructors);
+//
+//		return iaDlgModel;
+//	}
 
 	public int getStudentConflicts() {
 		return _nbConflicts[2];

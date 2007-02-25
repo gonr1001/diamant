@@ -107,6 +107,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				.getSetOfResources();
 		SetOfEvents soe = _dm.getSetOfEvents();
 		SetOfRooms sor = _dm.getSetOfRooms();
+
 		// int TOKEN_RANGE = 0;
 		int ADD_RESOURCE_BY_KEY = 0;
 		// int numberOfStudents;
