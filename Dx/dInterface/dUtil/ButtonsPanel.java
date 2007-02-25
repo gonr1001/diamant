@@ -34,10 +34,5 @@ public abstract class ButtonsPanel extends JPanel {
 
 	public abstract void setMiddleDisable();
 
-	/**
-	 * @return
-	 */
-	public boolean isFirstEnable(){
-		return false;
-	}
+	public abstract boolean isFirstEnable();
 }

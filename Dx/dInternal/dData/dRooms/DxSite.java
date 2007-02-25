@@ -140,6 +140,13 @@ public class DxSite extends DxResource {
         DxSite dxsOtherSite = null;
         try {
             dxsOtherSite = (DxSite) dxrOtherSite;
+            if (!this.getName().equalsIgnoreCase(dxsOtherSite.getName())) {
+                return false;
+            }
+
+            if (!this._dxsocCat.isEqual(dxsOtherSite._dxsocCat)) {
+                return false;
+            }
         } catch (ClassCastException e) {
             // Message intended for programmers, application
             // can't continue after this error
@@ -149,15 +156,6 @@ public class DxSite extends DxResource {
             e.printStackTrace();
             System.exit(-1);
         }
-        
-        if (!this.getName().equalsIgnoreCase(dxsOtherSite.getName())) {
-            return false;
-        }
-
-        if (!this._dxsocCat.isEqual(dxsOtherSite._dxsocCat)) {
-            return false;
-        }
-
         return true;
     }
 

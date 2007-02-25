@@ -87,6 +87,13 @@ public class DxCategory extends DxResource {
         DxCategory dxcOtherCat = null;
         try {
             dxcOtherCat = (DxCategory) dxrOther;
+            if (!this.getName().equalsIgnoreCase(
+                    dxcOtherCat.getName())) {
+                return false;
+            }
+            if (!this._dxsorRooms.isEqual(dxcOtherCat._dxsorRooms)) {
+                return false;
+            }
         } catch (ClassCastException e) {
             // Message intended for programmers, application
             // can't continue after this error
@@ -96,17 +103,8 @@ public class DxCategory extends DxResource {
             e.printStackTrace();
             System.exit(-1);
         }
-        
-        if (!this.getName().equalsIgnoreCase(
-                dxcOtherCat.getName())) {
-            return false;
-        }
-
-        if (!this._dxsorRooms.isEqual(dxcOtherCat._dxsorRooms)) {
-            return false;
-        }
-
         return true;
+
     }
 
 	public String toWrite(String sSiteName) {

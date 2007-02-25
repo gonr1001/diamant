@@ -88,6 +88,31 @@ public class DxRoom extends DxResource implements AvailableResource {
         DxRoom dxrOtherRoom = null;
         try {
             dxrOtherRoom = (DxRoom) dxrOther;
+            if (!this.getName().equalsIgnoreCase(dxrOtherRoom.getName())) {
+                return false;
+            }
+
+            if (this._nCapacity != dxrOtherRoom._nCapacity) {
+                return false;
+            }
+
+            if (this._nFunction != dxrOtherRoom._nFunction) {
+                return false;
+            }
+
+            if (!this.getCharString()
+                    .equalsIgnoreCase(dxrOtherRoom.getCharString())) {
+                return false;
+            }
+
+            if (!this._sComment.equalsIgnoreCase(dxrOtherRoom._sComment)) {
+                return false;
+            }
+
+            if (!this._dxaAva.isEqual(dxrOtherRoom._dxaAva)) {
+                return false;
+            }
+
         } catch (ClassCastException e) {
             // Message intended for programmers, application
             // can't continue after this error
@@ -97,32 +122,6 @@ public class DxRoom extends DxResource implements AvailableResource {
             e.printStackTrace();
             System.exit(-1);
         }
-
-        if (!this.getName().equalsIgnoreCase(dxrOtherRoom.getName())) {
-            return false;
-        }
-
-        if (this._nCapacity != dxrOtherRoom._nCapacity) {
-            return false;
-        }
-
-        if (this._nFunction != dxrOtherRoom._nFunction) {
-            return false;
-        }
-
-        if (!this.getCharString()
-                .equalsIgnoreCase(dxrOtherRoom.getCharString())) {
-            return false;
-        }
-
-        if (!this._sComment.equalsIgnoreCase(dxrOtherRoom._sComment)) {
-            return false;
-        }
-
-        if (!this._dxaAva.isEqual(dxrOtherRoom._dxaAva)) {
-            return false;
-        }
-
         return true;
     }
 
