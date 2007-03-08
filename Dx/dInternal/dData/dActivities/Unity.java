@@ -12,6 +12,7 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.dData.StandardCollection;
+import dInternal.dOptimization.EventAttach;
 
 public class Unity extends DObject{
 
@@ -365,6 +366,14 @@ public class Unity extends DObject{
 public long getSelectedField() {
 	// TODO Auto-generated method stub
 	return 0;
+}
+
+public void updateWith(EventAttach event) {
+	this.setAssign(event.isAssigned());
+	this.setPermanent(event.getPermanentState());
+	this.setDuration(event.getDuration());
+	this.setFirstPreferFunctionRoom(event.getRoomFunction());
+	
 }
 
 }

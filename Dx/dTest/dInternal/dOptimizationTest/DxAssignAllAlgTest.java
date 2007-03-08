@@ -42,7 +42,7 @@ import eLib.exit.exception.DxException;
  * 
  */
 public class DxAssignAllAlgTest extends TestCase {
-	
+
 	public DxAssignAllAlgTest(String name) {
 		super(name);
 	}
@@ -67,10 +67,10 @@ public class DxAssignAllAlgTest extends TestCase {
 		fileName.append("scNoAssigned.dia");
 
 		try {
-				dm1 = new DModel(dxDocument1, fileName.toString());
+			dm1 = new DModel(dxDocument1, fileName.toString());
 			dm1.changeInDModel(new String("DxAssign"));
-			assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
-					.size());
+			assertEquals("test_build: assertEquals", 140, dm1
+					.getSetOfActivities().size());
 			assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
 					.size());
 			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
@@ -81,7 +81,6 @@ public class DxAssignAllAlgTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		
 
 	}
 
@@ -98,12 +97,11 @@ public class DxAssignAllAlgTest extends TestCase {
 		fileName.append("genAlgo" + File.separator);
 		fileName.append("genNoAssigned.dia");
 
-
 		try {
-				dm1 = new DModel(dxDocument1, fileName.toString());
+			dm1 = new DModel(dxDocument1, fileName.toString());
 			dm1.changeInDModel(new Object());
-			assertEquals("test_build: assertEquals", 140, dm1.getSetOfActivities()
-					.size());
+			assertEquals("test_build: assertEquals", 140, dm1
+					.getSetOfActivities().size());
 			assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
 					.size());
 			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
@@ -112,7 +110,7 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getNumberOfEventAssign());
 			dm1 = null;
 		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(),e);
+			new DxExceptionDlg(e.getMessage(), e);
 		}
 
 	}

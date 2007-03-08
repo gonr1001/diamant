@@ -68,7 +68,7 @@ import dTest.dInternal.dOptimizationTest.ConflictsAttachTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
 import dTest.dInternal.dOptimizationTest.EventAttachTest;
-import dTest.dInternal.dOptimizationTest.FirstAffectAlgorithmTest;
+//import dTest.dInternal.dOptimizationTest.FirstAffectAlgorithmTest;
 import dTest.dInternal.dOptimizationTest.InstructorsConditionsTest;
 import dTest.dInternal.dOptimizationTest.RefinedStudMixAlgoTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
@@ -156,7 +156,7 @@ public class DiamantTest {
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
-		suite.addTest(FirstAffectAlgorithmTest.suite());
+//		suite.addTest(FirstAffectAlgorithmTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());

@@ -28,7 +28,7 @@ public class DxSetOfSitesTest extends TestCase {
 		DLoadData ld = new DLoadData();
 		byte[] dataloaded = null;
 		try {
-			dataloaded = ld.preLoad(path);
+			dataloaded = ld.filterBadChars(path);
 		} catch (DxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -47,7 +47,7 @@ public class DxSetOfSitesTest extends TestCase {
 		path = "." + File.separator + "dataTest" + File.separator
 				+ "locauxINFIRComplet.txt";
 		try {
-			dataloaded = ld.preLoad(path);
+			dataloaded = ld.filterBadChars(path);
 		} catch (DxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

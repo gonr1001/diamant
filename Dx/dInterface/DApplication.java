@@ -89,7 +89,7 @@ public class DApplication { // implements ActionListener {
 
 	public static boolean _inDevelopment;
 
-	// Fake Singleton, car besoin pour fonctionnalite de Grille Selective
+	//  Singleton
 	private static DApplication _instance = null;
 
 	/* ZERO is needed to fix Frame Location (origin) */
@@ -116,9 +116,6 @@ public class DApplication { // implements ActionListener {
 	 */
 	private final static int MIN_WIDTH = 512;
 
-	/* _screenSize contains the Dimension of the screen in pixels */
-	private Dimension _screenSize;
-
 	private JFrame _jFrame;
 
 	private JDesktopPane _jDesktopPane;
@@ -133,7 +130,7 @@ public class DApplication { // implements ActionListener {
 
 	private DxMenuBar _dxMenuBar;
 
-	private DToolBar _tbar;
+	private DToolBar _toolBar;
 
 	// -------------------------------------------
 	/**
@@ -148,38 +145,39 @@ public class DApplication { // implements ActionListener {
 		_inDevelopment = false;
 	}
 
+	
+	// sigleton only one instance
 	public static DApplication getInstance() {
 		if (_instance == null) {
-
 			_instance = new DApplication();
 		}
-
 		return _instance;
 	}
 
+	
+	
 	public void doIt(String[] args) {
 		if (args.length > 0) {
-			if (args[0].compareTo("-d") == 0) {
-				_inDevelopment = true;
-				System.out.println("Mode développement");
-			}
+			lookUpforOption(args);
 		}
 		String str = System.getProperty("user.home") + File.separator + "pref"
 				+ File.separator + "pref.txt";
 		System.out.println("Preference file is in :" + str);
 		_preferences = new DxPreferences(str);
-
-		_screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-		/* Icone de l'application */
-		ImageIcon iconeDiamant = new ImageIcon(System.getProperty("user.home")
-				+ File.separator + "pref" + File.separator + "logoDiamant.gif");
-		_jFrame.setIconImage(iconeDiamant.getImage());
 		setLAF(_preferences._lookAndFeel);
 		_logger.warn("bye_from DApplication"); // this must be the end of an
 		// execution
+	}
+
+
+	private void lookUpforOption(String[] args) {
+		if (args[0].compareTo("-d") == 0) {
+			_inDevelopment = true;
+			System.out.println("Mode développement");
+		}
 	}
 
 	// -------------------------------------------
@@ -188,40 +186,43 @@ public class DApplication { // implements ActionListener {
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		jFrame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				e.toString(); // this is to aboid a warning
+			public void windowClosing(@SuppressWarnings("unused")
+			WindowEvent e) {
 				closeApplic();
 			}
 		});
 
 		JPanel panel = new JPanel(new BorderLayout(0, 0));
 		jFrame.setContentPane(panel);
-		_dxMenuBar = new DxMenuBar(this);
-		jFrame.setJMenuBar(_dxMenuBar); // constructs the menu bar
+		_dxMenuBar = new DxMenuBar(this); // constructs the menu bar
+		jFrame.setJMenuBar(_dxMenuBar); 
 
-		_tbar = new DToolBar(this); // constucts the tool bar
-
-		jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
-
+		_toolBar = new DToolBar(this); // constucts the tool bar
+		jFrame.getContentPane().add(_toolBar, BorderLayout.NORTH);
 		hideToolBar();
 
 		_jDesktopPane = new JDesktopPane();
 		_jDesktopPane.setOpaque(false);
 		_jDesktopPane.setDesktopManager(new DefaultDesktopManager());
 		panel.add(_jDesktopPane, BorderLayout.CENTER);
+		
 		jFrame.setLocation(ZERO, ZERO);
 		panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
-		panel.setMaximumSize(_screenSize);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		panel.setMaximumSize(screenSize);
 
 		if (_inDevelopment) {
-			panel.setPreferredSize(new Dimension(_screenSize.width
+			panel.setPreferredSize(new Dimension(screenSize.width
 					- ADJUST_WIDTH, 500));
 		} else {
-			panel.setPreferredSize(new Dimension(_screenSize.width
-					- DConst.ADJUST_WIDTH, _screenSize.height
+			panel.setPreferredSize(new Dimension(screenSize.width
+					- DConst.ADJUST_WIDTH, screenSize.height
 					- DConst.ADJUST_HEIGHT));
 		}
-
+		/* Icone de l'application */
+		ImageIcon iconeDiamant = new ImageIcon(System.getProperty("user.home")
+				+ File.separator + "pref" + File.separator + "logoDiamant.gif");
+		jFrame.setIconImage(iconeDiamant.getImage());
 		jFrame.pack();
 		jFrame.setVisible(true);
 		return jFrame;
@@ -252,7 +253,7 @@ public class DApplication { // implements ActionListener {
 	} // end getDxMenuBar
 
 	public DToolBar getToolBar() {
-		return _tbar;
+		return _toolBar;
 	}
 
 	public DxPreferences getPreferences() {
@@ -271,11 +272,11 @@ public class DApplication { // implements ActionListener {
 	} // end setCurrentDir
 
 	public void showToolBar() {
-		_tbar.setVisible(true);
+		_toolBar.setVisible(true);
 	}
 
 	public void hideToolBar() {
-		_tbar.setVisible(false);
+		_toolBar.setVisible(false);
 	}
 
 	// -------------------------------------------
@@ -288,22 +289,22 @@ public class DApplication { // implements ActionListener {
 			new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
 			System.err.println("Warning: UnsupportedLookAndFeel: " + str);
 			ulafe.printStackTrace();
-			System.exit(31);
+			System.exit(1);
 		} catch (ClassNotFoundException cnfe) {
 			new FatalProblemDlg("Error ClassNotFound LookAndFeel" + str);
 			System.err.println("Error ClassNotFound LookAndFeel" + str);
 			cnfe.printStackTrace();
-			System.exit(41);
+			System.exit(1);
 		} catch (IllegalAccessException iace) {
 			new FatalProblemDlg("Error IllegalAccess LookAndFeel" + str);
 			System.err.println("Error IllegalAccess LookAndFeel" + str);
 			iace.printStackTrace();
-			System.exit(51);
+			System.exit(1);
 		} catch (InstantiationException ie) {
 			new FatalProblemDlg("Error Instantiation LookAndFeel" + str);
 			System.err.println("Error Instantiation LookAndFeel" + str);
 			ie.printStackTrace();
-			System.exit(61);
+			System.exit(1);
 		}
 	} // end setLF
 
@@ -319,20 +320,20 @@ public class DApplication { // implements ActionListener {
 		SwingUtilities.updateComponentTreeUI(_jFrame);
 	}
 
-	public void constructToolBar() {
-		_tbar = new DToolBar(this); // constucts the tool bar
-		_tbar.updateUI();
-
-		_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
-		// panel.add(_tbar,BorderLayout.NORTH);
-		_tbar.updateUI();
-		updateLAF(_preferences._lookAndFeel);
-
-	}
+//	public void constructToolBar() {
+//		_tbar = new DToolBar(this); // constucts the tool bar
+//		_tbar.updateUI();
+//
+//		//_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
+//		// panel.add(_tbar,BorderLayout.NORTH);
+//		//_tbar.updateUI();
+//		updateLAF(_preferences._lookAndFeel);
+//
+//	}
 
 	/**
 	 * Closes the document(s) and the application. Use this method for
-	 * processing close via the quit menuItem.
+	 * processing close via the exit menuItem.
 	 * 
 	 * @return void
 	 * @since JDK 1.2
@@ -343,26 +344,26 @@ public class DApplication { // implements ActionListener {
 
 	/**
 	 * Closes the document(s) and the application. Use this method for
-	 * processing close via the quit menuItem.
+	 * processing close via the exit menuItem.
 	 * 
 	 * @return void
 	 * 
 	 */
 	public void exit() {
-		// if no Document exit ok
+		// while documents to close, close them
 		while (_dMediator.getCurrentDxDoc() != null) { // is a while
 			this.close(); // new CloseCmd().execute(this);
+			// but if the user cancel break
 			if (_dMediator.getCancel())
 				break;
 		}
-		// if Document changed as for save or not
+		// if there is no Document open exit the application
 		if (_dMediator.getCurrentDxDoc() == null) {
 			_jFrame.setVisible(false);
 			_jFrame.dispose();
 			System.exit(0);
 		}
-
-	}
+	} // end exit
 
 	public DModel getCurrentDModel() {
 		return getCurrentDxDoc().getCurrentDModel();
@@ -404,7 +405,6 @@ public class DApplication { // implements ActionListener {
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		}
-
 	}
 
 	/**
@@ -416,8 +416,7 @@ public class DApplication { // implements ActionListener {
 
 		try {
 			this.getDMediator().addDxTTExamDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);//,
-			//DConst.EXAM);
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		} catch (Exception e) {

@@ -218,7 +218,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		DLoadData ld = new DLoadData();
 		byte[] dataloaded = null;
 		try {
-			dataloaded = ld.preLoad(path);
+			dataloaded = ld.filterBadChars(path);
 		} catch (DxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

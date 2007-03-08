@@ -109,6 +109,7 @@ public class SetOfEvents extends DSetOfResources {
 										roomKey, ((Unity) unity.getAttach())
 												.getDuration(), assignment
 												.getPeriodKey());
+								//event.update()
 								event.setAssigned(((Unity) unity.getAttach())
 										.isAssign());
 								event.setPermanentState(((Unity) unity
@@ -259,8 +260,8 @@ public class SetOfEvents extends DSetOfResources {
 			long unitKey = Long.parseLong(DXToolsMethods.getToken(event
 					.getPrincipalRescKey(), ".", 3));
 
-			Unity unity = soa.getUnity(actKey, typeKey, sectKey, unitKey);
-			Assignment assignment = (Assignment) unity.getSetOfAssignments()
+			Unity unit = soa.getUnity(actKey, typeKey, sectKey, unitKey);
+			Assignment assignment = (Assignment) unit.getSetOfAssignments()
 					.getResourceAt(_dm.getTTStructure().getCurrentCycleIndex())
 					.getAttach();
 			long[] keys = event.getInstructorKey();
@@ -282,10 +283,11 @@ public class SetOfEvents extends DSetOfResources {
 			}
 			assignment.setPeriodKey(event.getPeriodKey());
 
-			unity.setAssign(event.isAssigned());
-			unity.setPermanent(event.getPermanentState());
-			unity.setDuration(event.getDuration());
-			unity.setFirstPreferFunctionRoom(event.getRoomFunction());
+			unit.updateWith(event);
+//			unit.setAssign(event.isAssigned());
+//			unit.setPermanent(event.getPermanentState());
+//			unit.setDuration(event.getDuration());
+//			unit.setFirstPreferFunctionRoom(event.getRoomFunction());
 			assignment.setRoomState(event.isRoomFixed());
 
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)

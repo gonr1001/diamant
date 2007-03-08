@@ -209,10 +209,10 @@ public class DModel extends Observable {
 		_dxDocument = dxDocument;
 		_isOnlyATimeTable = false;
 		_isATimeTable = true;
-		
+
 		if (fileName.endsWith(DConst.DOT_DIA)) {
 			_error = loadTimeTable(fileName, getCurrentDir(fileName));
-			//			_isATimeTable = true;
+			// _isATimeTable = true;
 		} else if (fileName.endsWith(DConst.DOT_XML)) {
 			_ttStruct = new TTStructure();
 			_error = _ttStruct.loadTTSFromFile(fileName);
@@ -244,15 +244,15 @@ public class DModel extends Observable {
 	public String getError() {
 		return _error;
 	}
+
 	/**
 	 * 
 	 * @return
 	 */
-	public void  setIsATimeTable() {
+	public void setIsATimeTable() {
 		_isATimeTable = true;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @return
@@ -309,13 +309,13 @@ public class DModel extends Observable {
 		return _isATimeTable;
 	}
 
-//	/**
-//	 * 
-//	 * @return
-//	 */
-//	public DDocument getDDocument() {
-//		return _dDocument;
-//	}
+	// /**
+	// *
+	// * @return
+	// */
+	// public DDocument getDDocument() {
+	// return _dDocument;
+	// }
 
 	public void prepareExamsData() {
 		// supprime natures2
@@ -397,7 +397,6 @@ public class DModel extends Observable {
 
 				if (DxFlags.newRooms) {
 					_dxSetOfSites = (DxSetOfSites) theTT.get(3);
-					// _dxSetOfSites.resizeSiteAvailability(_ttStructure);
 				} else {
 					_setOfSites = (SetOfSites) theTT.get(3);
 					resizeSiteAvailability(_setOfSites);
@@ -430,9 +429,9 @@ public class DModel extends Observable {
 			setImportDone(false);
 			return "";
 
-//		} catch (FileNotFoundException fnfe) { // alert the user that the
-//												// specified file does not exist
-//			new DxExceptionDlg(fnfe.getMessage(), fnfe);
+			// } catch (FileNotFoundException fnfe) { // alert the user that the
+			// // specified file does not exist
+			// new DxExceptionDlg(fnfe.getMessage(), fnfe);
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 			// TODO hara2602
@@ -460,7 +459,7 @@ public class DModel extends Observable {
 		// import set of sites
 		if (DxFlags.newRooms) {
 			_dxSetOfSites = loadData.extractDxRooms();
-			resizeSiteAvailability();//_dxSetOfSites);
+			resizeSiteAvailability();// _dxSetOfSites);
 
 		} else {
 			_setOfSites = loadData.extractRooms(null, false);
@@ -904,7 +903,7 @@ public class DModel extends Observable {
 	}
 
 	public void changeInDModelByImportDlg(Object obj) {
-		
+
 		this.setChanged();
 		// change model
 		this.setModified();
@@ -1112,7 +1111,7 @@ public class DModel extends Observable {
 	/**
 	 * @param ofSites
 	 */
-	public void resizeSiteAvailability(){//DxSetOfSites dxSetOfSites) {
+	public void resizeSiteAvailability() {// DxSetOfSites dxSetOfSites) {
 		DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
 		Iterator itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
@@ -1124,20 +1123,21 @@ public class DModel extends Observable {
 		}
 	} // resizeSiteAvailability
 
-//	/**
-//	 * @return
-//	 */
-//	public InstructorAvailabilityDlgModel getIADlgModel() {
-//		InstructorAvailabilityDlgModel iaDlgModel = new InstructorAvailabilityDlgModel();
-//		iaDlgModel.setHours(getTTStructure().getCurrentCycle()
-//				.getHourOfPeriodsADay());
-//
-//		iaDlgModel.setDays(getTTStructure());
-//		iaDlgModel.setMaxNumOfPeriods(getTTStructure());
-//		iaDlgModel.setInstructorsNames(_dxSetOfInstructors);
-//
-//		return iaDlgModel;
-//	}
+	// /**
+	// * @return
+	// */
+	// public InstructorAvailabilityDlgModel getIADlgModel() {
+	// InstructorAvailabilityDlgModel iaDlgModel = new
+	// InstructorAvailabilityDlgModel();
+	// iaDlgModel.setHours(getTTStructure().getCurrentCycle()
+	// .getHourOfPeriodsADay());
+	//
+	// iaDlgModel.setDays(getTTStructure());
+	// iaDlgModel.setMaxNumOfPeriods(getTTStructure());
+	// iaDlgModel.setInstructorsNames(_dxSetOfInstructors);
+	//
+	// return iaDlgModel;
+	// }
 
 	public int getStudentConflicts() {
 		return _nbConflicts[2];

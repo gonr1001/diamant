@@ -268,9 +268,8 @@ public class DLoadData {
 	// application, I thought throws was the solution
 	public Vector<Object> loadTheTT(String fileName, String currentDir)
 			throws DxException {
-		// Vector <Object> diaData = new Vector <Object>();
-		String dataloaded = new String(preLoad(fileName));
-		// StringTokenizer project;
+		
+		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
 		readFile = new StringTokenizer(dataloaded, DConst.CR_LF);
 
@@ -293,7 +292,7 @@ public class DLoadData {
 		DxSetOfInstructors dxsoiInst = null;
 		DxSetOfSites dxsosRooms = null;
 		Vector<Object> diaData = new Vector<Object>();
-		String dataloaded = new String(preLoad(fileName));
+		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer project;
 		long linePosition = 0;
 		DataExchange de;
@@ -390,7 +389,7 @@ public class DLoadData {
 		DxSetOfInstructors dxsoiInst = null;
 		DxSetOfSites dxsosRooms = null;
 		Vector<Object> diaData = new Vector<Object>();
-		String dataloaded = new String(preLoad(fileName));
+		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer project;
 
 		DataExchange de;
@@ -480,14 +479,8 @@ public class DLoadData {
 		_chars = preferences._acceptedChars;
 	}
 
-	// private void completeLoadData() {
-	// String path = System.getProperty("user.dir") + File.separator + "pref"
-	// + File.separator;
-	// _functionFileName = path + "DXfunctions.sig";
-	// _caractFileName = path + "DXcaracteristics.sig";
-	// }
 
-	public byte[] preLoad(String str) throws DxException {
+	public byte[] filterBadChars(String str) throws DxException {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
 		filter.appendToCharKnown(_chars);
@@ -520,7 +513,7 @@ public class DLoadData {
 	 * @throws DxException
 	 */
 	private DataExchange buildDataExchange(String fileName) throws DxException {
-		byte[] dataloaded = preLoad(fileName);
+		byte[] dataloaded = filterBadChars(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		String token = st.nextToken().toString().trim();

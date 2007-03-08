@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2006-12-05 14:22:19 $
+* Title: SetOfSitesTest $Revision $  $Date: 2007-03-08 20:43:43 $
 * Description: 	SetOfSitesTest is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -241,7 +241,7 @@ public class SetOfSitesTest  extends TestCase{
 private byte[] getDataLoad(String path, DLoadData ld) {
 	byte[] dataloaded = null;
 	try {
-		dataloaded = ld.preLoad (path);
+		dataloaded = ld.filterBadChars (path);
 	} catch (DxException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

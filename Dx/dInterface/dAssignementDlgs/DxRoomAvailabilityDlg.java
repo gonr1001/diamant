@@ -243,7 +243,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 			getContentPane().add(_centerPanel, BorderLayout.CENTER);
 			pack();
 		}
-	}// end itemStateChangeed
+	}// end itemStateChanged
 
 	/**
 	 * Creates the grid of button. The button is pressed if the instructor is
