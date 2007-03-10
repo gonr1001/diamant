@@ -369,9 +369,6 @@ public class DApplication { // implements ActionListener {
 		return getCurrentDxDoc().getCurrentDModel();
 	}
 
-	/**
-	 * @return
-	 */
 
 	public void setCursorWait() {
 		if (_jFrame != null)
@@ -413,7 +410,6 @@ public class DApplication { // implements ActionListener {
 	public void newTTableExam() {
 		new NewTimeTableDlg(this, DConst.EXAM);
 		this.setCurrentDir(_fileToOpen);
-
 		try {
 			this.getDMediator().addDxTTExamDoc(
 					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
@@ -423,15 +419,6 @@ public class DApplication { // implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		// XXXX Pascal: Ce 'if' n'est jamais appele s'il y a une erreur dans
-		// dApplic.getDMediator().addDoc(), car addDoc() appelle lui-meme
-		// new FatalProblemDlg(dApplic.getJFrame(),error);
-		// System.exit(1);
-		//
-		// De plus, par convention, les valeurs positives de sortie d'une
-		// application indiquent que tout s'est BIEN passe. Il faudrait
-		// retourner une valeur negative quand un probleme majeur survient.
 		_dxMenuBar.afterNewTTable();
 	}
 
@@ -467,7 +454,6 @@ public class DApplication { // implements ActionListener {
 			this.hideToolBar();
 		}
 		this.setCursorDefault();
-
 	}
 
 	/**
@@ -830,6 +816,7 @@ public class DApplication { // implements ActionListener {
 		setCurrentDir(".\\dataTest\\");
 		try {
 			_dMediator.addDxTTableDoc("", ".\\dataTest\\assignRooms.dia");
+			System.out.println("path: "+ getCurrentDir()+ "\\assignRooms.dia");
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 		}

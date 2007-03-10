@@ -68,8 +68,8 @@ public abstract class DSetOfResources extends DObject {
 	 * @param de
 	 * @param beginPosition
 	 */
-	public void buildSetOfResources(DataExchange de, int beginPosition) {
-		beginPosition += 0;
+	public void buildSetOfResources(DataExchange de, @SuppressWarnings("unused")
+	int beginPosition) {
 		de.getHeader();
 	}
 

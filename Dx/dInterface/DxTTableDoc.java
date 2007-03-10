@@ -67,14 +67,14 @@ public class DxTTableDoc extends DxDocument {
 		_ttPane.updateTTPane(_dm.getTTStructure());
 	}
 	
-//	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException {
-//		super(mediator);
-////		_type = type;
-//		_dm = new DModel(this, fileName);
-//		_documentName = fileName;
-//		buidDocument(true, true);
-//		_ttPane.updateTTPane(_dm.getTTStructure());
-//	}
+	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException {
+		super(mediator);
+		_type = type;
+		_dm = new DModel(this, fileName,type);
+		_documentName = fileName;
+		buidDocument(true, true);
+		_ttPane.updateTTPane(_dm.getTTStructure());
+	}
 
 	// -------------------------------------------
 	private void buidDocument(boolean simple, boolean vertical) {

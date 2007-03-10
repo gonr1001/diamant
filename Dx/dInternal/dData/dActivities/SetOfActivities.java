@@ -76,7 +76,6 @@ public class SetOfActivities extends DSetOfResources {
      */
     public boolean analyseTokens(DataExchange de, int beginPosition) {
         de.toString();
-        beginPosition += 0;
         return false;
     }
 
@@ -87,7 +86,6 @@ public class SetOfActivities extends DSetOfResources {
         } else {
             buildSetOfResources1_5(de.getContents().getBytes(), beginPosition);
         }
-
     } // end analyseTokens
 
     /**

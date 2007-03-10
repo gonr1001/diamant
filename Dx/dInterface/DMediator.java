@@ -150,7 +150,7 @@ public class DMediator extends Object {
 	public String addDxTTExamDoc(String ttName, String fileName, int type) throws Exception /* !!!NIC!!! */{
 		//TODO review all this method
 		DApplication.getInstance().setCursorWait();
-		DxDocument currentDoc = new DxTTableDoc(this, fileName);//, type);
+		DxDocument currentDoc = new DxTTableDoc(this, fileName, type);
 		currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);
 		_dApplication.hideToolBar();

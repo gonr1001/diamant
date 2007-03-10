@@ -35,7 +35,7 @@ public class Activity extends DObject {
 	 * selecting an object. Indexes : _departement -> 0 _activityType -> 1
 	 * _activitySession -> 2 _activityVisible -> 3
 	 */
-	private String _departement;// eg. génie electrique
+	//private String _departement;// eg. génie electrique
 
 	private String _activityType; // eg. informatique
 
@@ -172,24 +172,24 @@ public class Activity extends DObject {
 		return _activityVisible;
 	}
 
-	/**
-	 * set activity Department
-	 * 
-	 * @param String
-	 *            the activity Department
-	 */
-	public void setActivityDepartment(String department) {
-		_departement = department;
-	}
-
-	/**
-	 * get the activity Department
-	 * 
-	 * @return String the activity Department
-	 */
-	public String getActivityDepartment() {
-		return _departement;
-	}
+//	/**
+//	 * set activity Department
+//	 * 
+//	 * @param String
+//	 *            the activity Department
+//	 */
+//	public void setActivityDepartment(String department) {
+//		_departement = department;
+//	}
+//
+//	/**
+//	 * get the activity Department
+//	 * 
+//	 * @return String the activity Department
+//	 */
+//	public String getActivityDepartment() {
+//		return _departement;
+//	}
 
 	/**
 	 * set activity Type
@@ -254,10 +254,10 @@ public class Activity extends DObject {
 	 */
 	public boolean compareByField(int fieldIndex, String value) {
 		switch (fieldIndex) {
-		case 0:
-			if (_departement.equals(value))
-				return true;
-			break;
+//		case 0:
+//			if (_departement.equals(value))
+//				return true;
+//			break;
 		case 1:
 			if (_activityType.equals(value))
 				return true;
@@ -288,9 +288,9 @@ public class Activity extends DObject {
 		int intValue;
 		boolean boolValue;
 		switch (fieldIndex) {
-		case 0:
-			setActivityDepartment(value);
-			break;
+//		case 0:
+//			setActivityDepartment(value);
+//			break;
 		case 1:
 			setActivityType(value);
 			break;
@@ -358,5 +358,11 @@ public class Activity extends DObject {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+//	boolean iisActivityVisibility(){
+//		return this.getAttach().isActivityVisibility();
+//		((DResource) this.getAttach()).isActivityVisibility()
+//	}
+	
 
 }

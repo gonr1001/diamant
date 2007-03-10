@@ -48,9 +48,9 @@ import eLib.exit.exception.DxException;
 
 public class DLoadDataTest extends TestCase {
 
-	private Vector _timeTable5j;
-
-	private Vector _timeTable7j;
+//	private DLoadData _timeTable5j;
+//
+//	private Vector _timeTable7j;
 
 	private DLoadData _loadData5j;
 
@@ -63,8 +63,10 @@ public class DLoadDataTest extends TestCase {
 				+ "loadData5j.dia";
 		_loadData5j = new DLoadData();
 		try {
-			_timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
+			boolean timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
 					+ "dataTest");
+			assertEquals("test_loadTimeTable5j : loadDataOk: ", true,
+					timeTable5j);
 		} catch (Exception e) {
 			System.out.println("DLoadDataTest failed to load loadData5j.dia");
 		}
@@ -74,8 +76,10 @@ public class DLoadDataTest extends TestCase {
 		_loadData7j = new DLoadData();
 
 		try {
-			_timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
+			boolean timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
 					+ "dataTest");
+			assertEquals("test_loadTimeTable7j : loadDataOk: ", true,
+					timeTable7j);
 		} catch (Exception e) {
 			System.out.println("DLoadDataTest failed to load loadData7j.dia");
 		}
@@ -91,20 +95,20 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the version of timetable
 	 */
 	public void test_loadTimeTable5j() {
-		assertEquals("test_loadTimeTable5j : assertEquals: ", "1.5",
-				(String) _timeTable5j.get(0));
+		assertEquals("test_loadTimeTable5j : getVersion: ", "1.5",
+				 _loadData5j.getVersion());
 	}
 
 	/**
 	 * test that check the xml file
 	 */
 	public void test1_loadTimeTable5j() {
-		Cycle cycle = ((TTStructure) _timeTable5j.get(1)).getCurrentCycle();
-		assertEquals("test1_loadTimeTable5j : assertEquals1: ", 12, cycle
+		Cycle cycle = _loadData5j.getTTStructure().getCurrentCycle();
+		assertEquals("test1_loadTimeTable5j : getMaxNumberOfPeriodsADay: ", 12, cycle
 				.getMaxNumberOfPeriodsADay());
-		assertEquals("test1_loadTimeTable5j : assertEquals2: ", 3, cycle
+		assertEquals("test1_loadTimeTable5j : getMaxNumberOfSeqs: ", 3, cycle
 				.getMaxNumberOfSeqs());
-		assertEquals("test1_loadTimeTable : assertEquals3: ", 5,
+		assertEquals("test1_loadTimeTable : active days: ", 5,
 				TTStructure.NUMBEROFACTIVESDAYS);
 	}
 
@@ -113,20 +117,17 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test2_loadTimeTable5j() {
 		if (DxFlags.newActivity) {
-			DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) _timeTable5j
-					.get(4);
+			DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) _loadData5j
+					.getDxActivitiesSitesReader();
 			DxActivitySite dxasSite = dxsoasSet.getActivitySite("SHE");
 			assertNotNull("test2_loadTimeTable5j", dxasSite);
 			assertNotNull("test2_1_loadTimeTable5j", dxasSite
 					.getActivity("AMC640"));
 		} else {
-			SetOfActivitiesSites setSite = ((SetOfActivitiesSites) _timeTable5j
-					.get(4));
+			SetOfActivitiesSites setSite =  _loadData5j.getSetOfActivitiesSites();
 			assertEquals("test2_2_loadTimeTable5j : assertEquals: ", "SHE",
 					setSite.getResourceAt(0).getID());
 
-			// SetOfActivitiesSites setSite1 = (SetOfActivitiesSites)
-			// setSite.getResourceAt(0).getAttach();
 			SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
 					.getAttach();
 			assertEquals("test2_3_loadTimeTable5j : assertEquals: ", "AMC640",
@@ -138,7 +139,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofstudents
 	 */
 	public void test3_loadTimeTable5j() {
-		SetOfStuSites setSite = ((SetOfStuSites) _timeTable5j.get(5));
+		SetOfStuSites setSite =  _loadData5j.getSetofStuSites();
 		assertEquals("test3_loadTimeTable5j : assertEquals: ", "SHE", setSite
 				.getResourceAt(0).getID());
 		SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
@@ -151,7 +152,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofinstructors
 	 */
 	public void test4_loadTimeTable5j() {
-		DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
+		DxSetOfInstructors setIns = _loadData5j.getDxSetOfInstructors();
 		// Above, we get instructor at index 2, and here we get at 3. Reason
 		// is that above is an index and bellow is a key, which start at 1
 		assertNotNull("test4_1_loadTimeTable5j : assertNotNull: ", setIns
@@ -166,7 +167,7 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test5_loadTimeTable5j() {
 		if (DxFlags.newRooms) {
-			DxSetOfSites dxsosSetSites = ((DxSetOfSites) _timeTable5j.get(3));
+			DxSetOfSites dxsosSetSites = _loadData5j.getDxSetOfSitesRooms();
 			DxSite dxsSite = dxsosSetSites.getSite("SHE");
 			assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
 			DxCategory dxcCat1 = dxsSite.getCat("CAT 1");
@@ -174,7 +175,7 @@ public class DLoadDataTest extends TestCase {
 			DxRoom dxrRoom = dxcCat1.getRoom("D13016");
 			assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
 		} else {
-			SetOfSites setSite = ((SetOfSites) _timeTable5j.get(3));
+			SetOfSites setSite =  _loadData5j.getSetOfSitesRooms();
 			assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
 					.getResourceAt(0).getID());
 			SetOfCategories setCat = ((SetOfCategories) setSite
@@ -196,13 +197,13 @@ public class DLoadDataTest extends TestCase {
 		SetOfStuSites newStuSites = null;
 		try {
 			newStuSites = (SetOfStuSites) _loadData5j.selectiveImport(
-					((SetOfStuSites) _timeTable5j.get(5)), "." + File.separator
+					_loadData5j.getSetofStuSites(), "." + File.separator
 							+ "dataTest" + File.separator + "ImportSTUDS.SIG");
 			assertEquals("test1_ImportSelective : assertEquals: ", "",
 					newStuSites.getError());
 			if (newStuSites.getError() == "") {
 				// Set Of Student Sites. Check if Update is done
-				SetOfStuSites setSite = ((SetOfStuSites) _timeTable5j.get(5));
+				SetOfStuSites setSite = _loadData5j.getSetofStuSites();
 				// Test of DLoadData.findAddedElements
 				SetOfStudents setStud = (SetOfStudents) setSite
 						.getResourceAt(0).getAttach();
@@ -235,14 +236,14 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test_loadTimeTable7j() {
 		assertEquals("test_loadTimeTable7j : assertEquals: ", "1.5",
-				(String) _timeTable7j.get(0));
+				 _loadData7j.getVersion());
 	}
 
 	/**
 	 * test that check the xml file
 	 */
 	public void test1_loadTimeTable7j() {
-		Cycle cycle = ((TTStructure) _timeTable7j.get(1)).getCurrentCycle();
+		Cycle cycle =  _loadData7j.getTTStructure().getCurrentCycle();
 		assertEquals("test1_loadTimeTable7j : assertEquals1: ", 12, cycle
 				.getMaxNumberOfPeriodsADay());
 		assertEquals("test1_loadTimeTable7j : assertEquals2: ", 3, cycle
@@ -256,15 +257,15 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test2_loadTimeTable7j() {
 		if (DxFlags.newActivity) {
-			DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) _timeTable7j
-					.get(4);
+			DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) _loadData7j
+					.getDxActivitiesSitesReader();
 			DxActivitySite dxasSite = dxsoasSet.getActivitySite("SHE");
 			assertNotNull("test2_loadTimeTable5j", dxasSite);
 			assertNotNull("test2_1_loadTimeTable5j", dxasSite
 					.getActivity("AMC640"));
 		} else {
-			SetOfActivitiesSites setSite = ((SetOfActivitiesSites) _timeTable7j
-					.get(4));
+			SetOfActivitiesSites setSite =  _loadData7j
+					.getSetOfActivitiesSites();
 			assertEquals("test2_loadTimeTable7j : assertEquals: ", "SHE",
 					setSite.getResourceAt(0).getID());
 			SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
@@ -278,7 +279,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofstudents
 	 */
 	public void test3_loadTimeTable7j() {
-		SetOfStuSites setSite = ((SetOfStuSites) _timeTable7j.get(5));
+		SetOfStuSites setSite =  _loadData7j.getSetofStuSites();
 		assertEquals("test3_loadTimeTable7j : assertEquals: ", "SHE", setSite
 				.getResourceAt(0).getID());
 		SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
@@ -291,7 +292,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofinstructors
 	 */
 	public void test4_loadTimeTable7j() {
-		DxSetOfInstructors setIns = ((DxSetOfInstructors) _timeTable5j.get(2));
+		DxSetOfInstructors setIns = _loadData7j.getDxSetOfInstructors();
 		// Above, we get instructor at index 2, and here we get at 3. Reason
 		// is that above is an index and bellow is a key, which start at 1
 		assertNotNull("test4_1_loadTimeTable5j : assertNotNull: ", setIns
@@ -306,7 +307,7 @@ public class DLoadDataTest extends TestCase {
 	 */
 	public void test5_loadTimeTable7j() {
 		if (DxFlags.newRooms) {
-			DxSetOfSites dxsosSetSites = ((DxSetOfSites) _timeTable7j.get(3));
+			DxSetOfSites dxsosSetSites = _loadData7j.getDxSetOfSitesRooms();
 			DxSite dxsSite = dxsosSetSites.getSite("SHE");
 			assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
 			DxCategory dxcCat1 = dxsSite.getCat("CAT 1");
@@ -314,7 +315,7 @@ public class DLoadDataTest extends TestCase {
 			DxRoom dxrRoom = dxcCat1.getRoom("D13016");
 			assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
 		} else {
-			SetOfSites setSite = ((SetOfSites) _timeTable7j.get(3));
+			SetOfSites setSite = _loadData7j.getSetOfSitesRooms();
 			assertEquals("test5_loadTimeTable7j : assertEquals: ", "SHE",
 					setSite.getResourceAt(0).getID());
 			SetOfCategories setCat = ((SetOfCategories) setSite
@@ -336,13 +337,13 @@ public class DLoadDataTest extends TestCase {
 		SetOfStuSites newStuSites = null;
 		try {
 			newStuSites = (SetOfStuSites) _loadData7j.selectiveImport(
-					((SetOfStuSites) _timeTable7j.get(5)), "." + File.separator
+					 _loadData7j.getSetofStuSites(), "." + File.separator
 							+ "dataTest" + File.separator + "ImportSTUDS.SIG");
 			assertEquals("test1_ImportSelective : assertEquals: ", "",
 					newStuSites.getError());
 			if (newStuSites.getError() == "") {
 				// Set Of Student Sites. Check if Update is done
-				SetOfStuSites setSite = ((SetOfStuSites) _timeTable7j.get(5));
+				SetOfStuSites setSite =  _loadData7j.getSetofStuSites();
 				// Test of DLoadData.findAddedElements
 				SetOfStudents setStud = (SetOfStudents) setSite
 						.getResourceAt(0).getAttach();

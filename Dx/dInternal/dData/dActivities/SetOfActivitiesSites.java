@@ -49,7 +49,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 */
 	public SetOfActivitiesSites(boolean open, int periodLength) {
 		super();
-		// _dataloaded = dataloaded;
 		_open = open;
 		_periodLength = periodLength;
 	}
@@ -64,7 +63,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 *         otherwise
 	 */
 	public boolean analyseTokens(DataExchange de, int beginPosition) {
-
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
 			return analyseTokens1_6(de.getContents().getBytes(), beginPosition);
 		} // else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {
@@ -90,10 +88,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
 			return analyseDeltaTokens1_5(dataloaded, beginPosition);// analyse
-			// Delta
-			// data
 		}// end else if(!analyseSIGTokens(beginPosition))
-
 		return true;
 	}
 
@@ -125,8 +120,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
 			return analyseDeltaTokens1_6(dataloaded, beginPosition);// analyse
-			// Delta
-			// data
 		}// end else if(!analyseSIGTokens(beginPosition))
 
 		return true;
@@ -775,7 +768,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				// activityName= token;
 				course = "";
 				site = DXToolsMethods.getToken(token,
-						DConst.STUDENT_TOKEN_SEPARATOR,
+						DConst.ACTIVITY_TOKEN_SEPARATOR,
 						DConst.ACTIVITY_SITE_TOKEN);
 				position = 2;
 				break;

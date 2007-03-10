@@ -27,7 +27,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 2.1 du 19 juin 2006";//res.getString("vDate");
+  	public final static String V_DATE = "v 2.1 19 jui 07";//res.getString("vDate");
   	/** The number format for Hours **/
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
 
@@ -598,6 +598,7 @@ public class DConst {
   public static final int STUDENT_COURSE_LINE = 1;
   public static final int STUDENT_LINE_DESC_TOKEN=0;
   public static final String STUDENT_TOKEN_SEPARATOR= " ";
+  public static final String ACTIVITY_TOKEN_SEPARATOR= " ";
   public static final int STUDENT_MAT_TOKEN=1;
   public static final int STUDENT_COURSE_TOKEN=1;
   public static final int STUDENT_SITE_TOKEN=2;

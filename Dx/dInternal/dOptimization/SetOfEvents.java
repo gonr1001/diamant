@@ -46,9 +46,9 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 	public void build(SetOfActivities soa, DSetOfResources soie) {
 		String unityKey;
+		long roomKey;
 		for (int i = 0; i < soa.size(); i++) {
-			DResource activity = soa.getResourceAt(i);
-			long roomKey;
+			DResource activity = soa.getResourceAt(i);	
 			if (((Activity) activity.getAttach()).isActivityVisibility()) {
 				for (int j = 0; j < ((Activity) activity.getAttach())
 						.getSetOfTypes().size(); j++) {

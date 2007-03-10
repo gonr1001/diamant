@@ -21,13 +21,11 @@ public class SetOfCaracteristics extends DSetOfResources {
 	}
 	
 	public boolean analyseTokens(byte[]  dataloaded, int beginPosition){
-		beginPosition+=0;
 		dataloaded[0]+=0;
 		return false;
 	}
 	
 	public  void buildSetOfResources(byte[]  dataloaded, int beginPosition){
-		beginPosition+=0;
 		dataloaded[0]+=0;
 	}
 	

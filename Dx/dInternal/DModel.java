@@ -387,34 +387,36 @@ public class DModel extends Observable {
 		DLoadData loadD = new DLoadData(this);
 		Vector theTT = null;
 		try {
-			theTT = loadD.loadTheTT(fileName, currentDir);
-			if (theTT.size() != 0) {
-				setVersion((String) theTT.get(0));
-				_ttStruct = (TTStructure) theTT.get(1);
+			// exeptions can be trown while reading the file
+		//	theTT = loadD.loadTheTT(fileName, currentDir);
+			boolean loadOk = loadD.loadTheTT(fileName, currentDir);
+			if (loadOk) {
+//			if (theTT.size() != 0) {
+//				setVersion((String) theTT.get(0));
+				setVersion(loadD.getVersion());
+//				_ttStruct = (TTStructure) theTT.get(1);
+				_ttStruct =  loadD.getTTStructure();
 				if (_ttStruct.getError().length() != 0)
 					return _ttStruct.getError();
-				_dxSetOfInstructors = (DxSetOfInstructors) theTT.get(2);
+				_dxSetOfInstructors = loadD.getDxSetOfInstructors();
 
 				if (DxFlags.newRooms) {
-					_dxSetOfSites = (DxSetOfSites) theTT.get(3);
+					_dxSetOfSites = loadD.getDxSetOfSitesRooms();
 				} else {
-					_setOfSites = (SetOfSites) theTT.get(3);
+					_setOfSites = loadD.getSetOfSitesRooms();
 					resizeSiteAvailability(_setOfSites);
 				}
-
 				if (DxFlags.newActivity) {
-					_dxsoasSetOfAct = (DxSetOfActivitiesSites) theTT.get(4);
+					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadD.getDxActivitiesSitesReader();
 				} else {
-					_setOfActivitiesSites = (SetOfActivitiesSites) theTT.get(4);
+					_setOfActivitiesSites = loadD.getSetOfActivitiesSites();
 				}
-
-				_setOfStuSites = (SetOfStuSites) theTT.get(5);
+				_setOfStuSites = loadD.getSetofStuSites();
 				if (!DxFlags.newRooms) {
 					if (_setOfSites.getError().length() != 0) {
 						return _setOfSites.getError();
 					}
 				}
-
 				if (_setOfActivitiesSites.getError().length() != 0) {
 					return _setOfActivitiesSites.getError();
 				}
@@ -435,7 +437,7 @@ public class DModel extends Observable {
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 			// TODO hara2602
-			// Use finally to reset cursor to DEFAULT.
+			
 		} finally {
 			DApplication.getInstance().setCursorDefault();
 		}
@@ -1087,12 +1089,12 @@ public class DModel extends Observable {
 		}
 	}
 
-	/**
-	 * resize resource availability
-	 */
-	public void resizeResourceAvailability(DSetOfResources soRes) {
-		resizeResource(soRes);
-	} // resizeResourceAvailability
+//	/**
+//		 * resize resource availability
+//		 */
+//		public void resizeResourceAvailability(DSetOfResources soRes) {
+//			resizeResource(soRes);
+//		} // resizeResourceAvailability
 
 	/**
 	 * @param ofSites
@@ -1180,4 +1182,10 @@ public class DModel extends Observable {
 		this.notifyObservers(listener);
 		this.clearChanged();
 	}
+	
+	public DxPreferences getPreferences() {
+		return this.getDxDocument().getDMediator().getDApplication()
+		.getPreferences();
+	}
+
 } /* end class DModel */
