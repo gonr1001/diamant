@@ -304,7 +304,6 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 	 */
 	public final static String getAbsoluteFileName(String absolutePath,
 			String str) {
-		//String currentDir= _dm.getDDocument().getDMediator().getDApplication().getCurrentDir();
 		return absolutePath + File.separator + getRelativeFileName(str);
 	} // end getRelativeFileName
 
@@ -319,5 +318,16 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 	public final static String getRelativeFileName(String str) {
 		return str.substring(str.lastIndexOf(File.separator) + 1, str.length());
 	} // end getRelativeFileName
+
+	public static String getToken4Activitiy(String activityName, String delimiter, int position) {
+		StringTokenizer strToken = new StringTokenizer(activityName, delimiter);
+		int nbTokens = strToken.countTokens();
+		for (int i = 0; i < nbTokens; i++) {
+			if (i == position)
+				return strToken.nextToken();
+			strToken.nextToken();
+		}
+		return "";
+	}
 
 }

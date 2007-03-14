@@ -56,7 +56,6 @@ import dConstants.DConst;
 import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.dAffectation.EventsDlgInterface;
-import dInterface.dAffectation.SelectInstructors;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxJComboBox;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -532,13 +531,13 @@ public class DxEditActivityDlg extends JDialog implements ActionListener,
         // int nbTokens= DXToolsMethods.countTokens(activityName, ".");
         Vector unities = new Vector(1);
         // System.out.println("CounTokens: "+nbTokens);// debug
-        String actID = DXToolsMethods.getToken(activityName, ".", 0);
-        String typID = DXToolsMethods.getToken(activityName, ".", 1);
+        String actID = DXToolsMethods.getToken4Activitiy(activityName, ".", 0);
+        String typID = DXToolsMethods.getToken4Activitiy(activityName, ".", 1);
 
         if (typID.length() != 0) {
-            String secID = DXToolsMethods.getToken(activityName, ".", 2);
+            String secID = DXToolsMethods.getToken4Activitiy(activityName, ".", 2);
             if (secID.length() != 0) {
-                String unitID = DXToolsMethods.getToken(activityName, ".", 3);
+                String unitID = DXToolsMethods.getToken4Activitiy(activityName, ".", 3);
                 if (unitID.length() != 0) {
                     unities.add(_dApplic.getCurrentDModel().getSetOfEvents()
                             .getResource(activityName));

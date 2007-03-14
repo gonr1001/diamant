@@ -20,92 +20,96 @@
  */
 package dInternal;
 
-public abstract class  DObject extends Object{
+public abstract class DObject extends Object {
 
-  /**
-   * this method is implemented in each resource object (Room, Instructor, Student
-   * and Activity)
-   * */
-  
-  public abstract long getSelectedField();
+	/**
+	 * this method is implemented in each resource object (Room, Instructor,
+	 * Student and Activity)
+	 */
 
-  /**
-   * Method to be implemented in each resource object. It compares if the argument
-   * "value" has the same value of the field indicated by the fieldIndex
-   * @param fieldIndex The index of the field. The value of the index is assigned in each
-   * resource
-   * @param value The value tibe compared
-   * @return true if the field has the same value of the argument "value"
-   */
-  public boolean compareByField(int fieldIndex, String value) {
-  	fieldIndex = fieldIndex+ 0;
-  	value = ""+value;
-    return false; // XXXX Pascal: ???
-  }
+	public abstract long getSelectedField();
 
-  /**
-   * Method to be implemented in each resource object. It sets the field indicated by the
-   * argument "fieldValue" with the value "value"
-   * @param fieldIndex. The index of the field. The value of the index is assigned in each
-   * resource
-   * @param value The value to be setted
-   */
-  
-  public void setField(int fieldIndex, String value){
-  	fieldIndex = fieldIndex+ 0;
-  	value = ""+value; // XXXX Pascal: ????
-  }
+	/**
+	 * Method to be implemented in each resource object. It compares if the
+	 * argument "value" has the same value of the field indicated by the
+	 * fieldIndex
+	 * 
+	 * @param fieldIndex
+	 *            The index of the field. The value of the index is assigned in
+	 *            each resource
+	 * @param value
+	 *            The value tibe compared
+	 * @return true if the field has the same value of the argument "value"
+	 */
+	public boolean compareByField(@SuppressWarnings("unused")
+	int fieldIndex, @SuppressWarnings("unused")
+	String value) {
+		return false; // XXXX Pascal: ???
+	}
 
-  /**
-   *
-   * */
-  public String toWrite(){
-    return ""; // XXXX Pascal: ?
-  }
-  /**
-   *
-   * */
-  public String externalKey(String str, String id){
-    return str+id; // XXXX Pascal: Hmmmm
-  }
+	/**
+	 * Method to be implemented in each resource object. It sets the field
+	 * indicated by the argument "fieldValue" with the value "value"
+	 * 
+	 * @param fieldIndex.
+	 *            The index of the field. The value of the index is assigned in
+	 *            each resource
+	 * @param value
+	 *            The value to be setted
+	 */
 
-  /**
-   *
-   * */
-  public boolean isEquals(DObject obj){
-  	obj.toString();
-    return true; // XXXX Pascal: ?
-  }
+	public void setField(@SuppressWarnings("unused")
+	int fieldIndex, @SuppressWarnings("unused")
+	String value) {
+		// to avoid warning
+	}
 
-  /**
-   *
-   * @return
-   */
-  public int[][] getMatrixAvailability(){
-    int [][] mat= new int[2][2];
-    return mat; // XXXX Pascal: ?
-  }
+	/**
+	 * 
+	 */
+	public String toWrite() {
+		return ""; // XXXX Pascal: ?
+	}
 
+	/**
+	 * 
+	 */
+	public String externalKey(String str, String id) {
+		return str + id; // XXXX Pascal: Hmmmm
+	}
 
+	/**
+	 * 
+	 */
+	public boolean isEquals(DObject obj) {
+		obj.toString();
+		return true; // XXXX Pascal: ?
+	}
 
-  /**
-   *
-   * @param mat
-   */
-  public void setAvailability(int[][] mat){
-  	mat[0][0]+=0;// XXXX Pascal: ?
-  }
+	/**
+	 * 
+	 * @return
+	 */
+	public int[][] getMatrixAvailability() {
+		int[][] mat = new int[2][2];
+		return mat; // XXXX Pascal: ?
+	}
 
+	/**
+	 * 
+	 * @param mat
+	 */
+	public void setAvailability(int[][] mat) {
+		mat[0][0] += 0;// XXXX Pascal: ?
+	}
 
-/**
- * @param field
- * @return
- */
-public long getSelectedField(@SuppressWarnings("unused")
-int field) {
-	return 0;// XXXX Pascal: ?
-}
-
-
+	/**
+	 * @param field
+	 * @return
+	 */
+	public long getSelectedField(@SuppressWarnings("unused")
+	int field) {
+		return 0;// XXXX Pascal: ?
+	}
 
 }

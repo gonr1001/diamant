@@ -251,13 +251,13 @@ public class SetOfEvents extends DSetOfResources {
 			event = (EventAttach) ((DResource) eventsToUpdate.get(i))
 					.getAttach();
 
-			long actKey = Long.parseLong(DXToolsMethods.getToken(event
+			long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
 					.getPrincipalRescKey(), ".", 0));
-			long typeKey = Long.parseLong(DXToolsMethods.getToken(event
+			long typeKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
 					.getPrincipalRescKey(), ".", 1));
-			long sectKey = Long.parseLong(DXToolsMethods.getToken(event
+			long sectKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
 					.getPrincipalRescKey(), ".", 2));
-			long unitKey = Long.parseLong(DXToolsMethods.getToken(event
+			long unitKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
 					.getPrincipalRescKey(), ".", 3));
 
 			Unity unit = soa.getUnity(actKey, typeKey, sectKey, unitKey);

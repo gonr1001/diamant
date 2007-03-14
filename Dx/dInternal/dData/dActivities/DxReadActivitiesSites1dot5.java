@@ -119,10 +119,10 @@ public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 					dxaActivity.addType(dxtType);
 				}
 
-				String sSectionName = DXToolsMethods.getToken(sToken, " ", 1);
+				String sSectionName = DXToolsMethods.getToken4Activitiy(sToken, " ", 1);
 				dxsSection = dxtType.getSection(sSectionName);
 				if (dxsSection == null) {
-					dxsSection = new DxSection(DXToolsMethods.getToken(sToken,
+					dxsSection = new DxSection(DXToolsMethods.getToken4Activitiy(sToken,
 							" ", 1));
 					dxtType.addSection(dxsSection);
 				}

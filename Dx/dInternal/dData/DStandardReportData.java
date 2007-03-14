@@ -518,7 +518,7 @@ public class DStandardReportData {
 			StringTokenizer strTokens = new StringTokenizer(rest, " ");
 			while (strTokens.hasMoreTokens()) {
 				String course = strTokens.nextToken();
-				course = DXToolsMethods.getToken(course, ";", 0);
+				course = DXToolsMethods.getToken4Activitiy(course, ";", 0);
 				String sect = "";
 				String aux = course.trim();
 				if (aux.length() == DConst.STUD_COURSE_GROUP_LENGTH) {

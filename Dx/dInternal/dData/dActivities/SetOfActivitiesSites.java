@@ -64,9 +64,9 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 */
 	public boolean analyseTokens(DataExchange de, int beginPosition) {
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-			return analyseTokens1_6(de.getContents().getBytes(), beginPosition);
+			return analyseTokens1dot6(de.getContents().getBytes(), beginPosition);
 		} // else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {
-		return analyseTokens1_5(de.getContents().getBytes(), beginPosition);
+		return analyseTokens1dot5(de.getContents().getBytes(), beginPosition);
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 *         </p>
 	 *         false otherwise
 	 */
-	private boolean analyseTokens1_5(byte[] dataloaded, int beginPosition) {
+	private boolean analyseTokens1dot5(byte[] dataloaded, int beginPosition) {
 		_error = "";
 		if (!analyseSIGTokens(dataloaded, beginPosition)) {// analyse STI data
 			return false;
@@ -105,7 +105,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 *         </p>
 	 *         false otherwise
 	 */
-	private boolean analyseTokens1_6(byte[] dataloaded, int beginPosition) {
+	private boolean analyseTokens1dot6(byte[] dataloaded, int beginPosition) {
 		_error = "";
 		StringBuffer newFile = new StringBuffer("");
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
@@ -117,6 +117,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		if (!analyseSIGTokens(newFile.toString().getBytes(), beginPosition)) {// analyse
 			// STI
 			// data
+//		if (!analyseSIGTokens(dataloaded, beginPosition)) {// analyse STI data
 			return false;
 		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
 			return analyseDeltaTokens1_6(dataloaded, beginPosition);// analyse
@@ -377,19 +378,19 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 * @param line
 	 * @return
 	 */
-	private String analyseDelTaTokenName1_6(String str, int line) {
-		// activity name number of token
+	private void analyseDelTaTokenName1_6(String str, int line) {
+		// activity name number of tokens
 		if (DXToolsMethods.countTokens(str, " ") != DConst.NUMBER_OF_TOKEN_COURSE_LINE) {
 			_error = DConst.ACTI_TEXT3 + line;
 		}
 		// first token
-		String st = DXToolsMethods.getToken(str, " ", 0);
+		String st = DXToolsMethods.getToken4Activitiy(str, " ", 0);
 		if (isErrorEmpty()) {
 			if (st.length() != DConst.SIZE_OF_COURSE_TOKEN)
 				_error = DConst.ACTI_TEXT1 + line;
 		}
 		// 2nd token
-		st = DXToolsMethods.getToken(str, " ", 1);
+		st = DXToolsMethods.getToken4Activitiy(str, " ", 1);
 		if (isErrorEmpty()) {
 			if (st.length() != DConst.SIZE_OF_GROUP_TOKEN)
 				_error = DConst.ACTI_TEXT14 + line;
@@ -399,13 +400,13 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				_error = DConst.ACTI_TEXT14 + line;
 		}
 		// 3rd token
-		st = DXToolsMethods.getToken(str, " ", 2);
+		st = DXToolsMethods.getToken4Activitiy(str, " ", 2);
 		if (isErrorEmpty()) {
 			if (st.length() != DConst.ACT_SITE_LENGTH)
 				_error = DConst.ACTI_TEXT15 + line;
 		}
 		// 4th token
-		st = DXToolsMethods.getToken(str, " ", 3);
+		st = DXToolsMethods.getToken4Activitiy(str, " ", 3);
 		if (isErrorEmpty()) {
 			if (st.length() > DConst.ACT_CAPACITY_LENGTH)
 				_error = DConst.ACTI_TEXT16 + line;
@@ -415,11 +416,11 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				_error = DConst.ACTI_TEXT16 + line;
 		}
 
-		return "";
+	//	return "";
 	}
 
 	/**
-	 * analyse SIG activities data by a finished states machine
+	 * analyse SIG activities data by a finite states machine
 	 * 
 	 * @param integer
 	 *            the beginPosition (start position of the finished states
@@ -650,12 +651,9 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 */
 	public void buildSetOfResources1_5(byte[] dataloaded, int beginPosition) {
 		String token;
-		// String sousString; //auxiliar String for stocking a substring of a
-		// line
+
 		StringTokenizer st = new StringTokenizer(new String(dataloaded), "\r\n");
-		// StringTokenizer stLine = null; //auxiliar StringTokenizer for reading
-		// subStrings in a line
-		// int state=0;
+
 		int position = beginPosition;
 		String course = "";
 		while (st.hasMoreElements()) {
@@ -721,8 +719,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 						course + token);
 				String site = DConst.ACTIVITY_STANDARD_SITE;
 				DResource actResc = getResource(site);
-				// SetOfStudents sos =
-				// (SetOfStudents)getResource(site).getAttach();
+
 				if (actResc == null) {
 					actResc = new DResource(site, new SetOfActivities(_open,
 							_periodLength));
@@ -732,7 +729,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				SetOfActivities soa = (SetOfActivities) actResc.getAttach();
 				soa.buildSetOfResources(dEx, 1);
 				position = beginPosition;
-				// addResource(activityResource,1);
 				break;
 
 			}// end switch (position)
@@ -753,7 +749,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 */
 	public void buildSetOfResources1_6(byte[] dataloaded, int beginPosition) {
 		String token;
-		StringTokenizer st = new StringTokenizer(new String(dataloaded), "\r\n");
+		StringTokenizer st = new StringTokenizer(new String(dataloaded), DConst.CR_LF);
 		int position = beginPosition;
 		String site = "", course = "";
 		st.nextToken();// jump the first line
@@ -819,26 +815,21 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				DataExchange dEx = new ByteArrayMsg(DConst.FILE_VER_NAME1_5,
 						course + token);
 				DResource actResc = getResource(site);
-				// SetOfStudents sos =
-				// (SetOfStudents)getResource(site).getAttach();
+
 				if (actResc == null) {
 					actResc = new DResource(site, new SetOfActivities(_open,
 							_periodLength));
-					// sos= new SetOfStudents();
 					addResource(actResc, 1);
 				}
 
 				SetOfActivities soa = (SetOfActivities) actResc.getAttach();
 				soa.buildSetOfResources(dEx, 1);
 				position = beginPosition;
-				// addResource(activityResource,1);
 				break;
-
 			}// end switch (position)
 			course += token + DConst.CR_LF;
 
 		}// end while (st.hasMoreElements())
-
 	}
 
 	public String getError() {

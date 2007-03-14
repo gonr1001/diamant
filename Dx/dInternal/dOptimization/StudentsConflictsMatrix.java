@@ -59,8 +59,8 @@ public class StudentsConflictsMatrix {
         String course1 = student.getCoursesList().getResourceAt(j).getID().substring(0, SetOfActivities._COURSENAMELENGTH)
                    +"."+student.getCoursesList().getResourceAt(j).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
                    DxTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(j).getAttach()).getIntValue());
-        String token= DXToolsMethods.getToken(course1,".",0);
-        String tokenType= DXToolsMethods.getToken(course1,".",1);
+        String token= DXToolsMethods.getToken4Activitiy(course1,".",0);
+        String tokenType= DXToolsMethods.getToken4Activitiy(course1,".",1);
           if(dm.getSetOfActivities().getType(token,tokenType)==null){
             DValue error= new DValue();
             String matricule= "00000000"+sos.getResourceAt(i).getKey();
@@ -76,8 +76,6 @@ public class StudentsConflictsMatrix {
                          +"."+student.getCoursesList().getResourceAt(k).getID().substring(SetOfActivities._COURSENAMELENGTH)+"."+
                            DxTools.STIConvertGroup( ((DValue)student.getCoursesList().getResourceAt(k).getAttach()).getIntValue());
           int[] index= getSectionsKeys(course1, course2);
-          //System.out.println("Course = ["+ course1+","+course2+"]");//debug
-          //System.out.println("Index = ["+ index[0]+","+index[1]+"]");//debug
           if((index[0]!=-1) && (index[1]!=-1)){
             _theMatrix[index[0]][index[1]]++;
           }
@@ -139,7 +137,6 @@ public class StudentsConflictsMatrix {
         for (int k=0; k< ((Type)type.getAttach()).getSetOfSections().size(); k++){
           String idSection= activity.getID()+"."+type.getID()+"."+
                    ((Type)type.getAttach()).getSetOfSections().getResourceAt(k).getID();
-          //System.out.println("ID Section: "+idSection);//debug
           allSections.addResource(new DResource(idSection,null),0);
         }// end for (int k=0; k< ((Type)type.getAttach()).getSetOfSections().
       }// end for (int j=0; j< activity.getSetOfTypes().size(); j++)

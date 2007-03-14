@@ -24,6 +24,7 @@ import junit.framework.*;
 import java.lang.RuntimeException;
 import java.io.*;
 
+import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteInputFile;
 
 public class ByteInputFileTest extends TestCase {
@@ -40,21 +41,22 @@ public class ByteInputFileTest extends TestCase {
 		return new TestSuite(ByteInputFileTest.class);
 	} // end suite
 
-	public void testFileNotExist() throws Exception {
-		try {
-			_bif = new ByteInputFile("hello.txt");
-			fail("Should raise an IOFileException");
-		} catch (Exception e) {
-			//System.out.println("Exception :" + e);
-			//assertEquals("test_0 : assertEquals: ", "java.io.FileNotFound", e.toString().substring(0,"java.io.FileNotFound".length()));
-		}
+	public void testFileNotExist()  {		
+		 try {
+			 _bif = new ByteInputFile("hello.txt");
+			 }
+			 catch (IOFileException e) {
+			   return;
+			 }
+			 fail("Expected IOFileException");
 	}
 
-	public void testFileEmpty() throws Exception {
+	
+	public void testFileEmpty()throws Exception  {
 		try {
 			_bif = new ByteInputFile("." + File.separator + "eDataTest"
 					+ File.separator + "empty.txt");
-		} catch (Exception e) {
+		} catch (IOFileException e) {
 			System.out.println(e);
 			e.printStackTrace();
 			throw new RuntimeException("Problem in testFileEmpty");
@@ -68,21 +70,24 @@ public class ByteInputFileTest extends TestCase {
 		String str = null;
 		try {
 			_bif = new ByteInputFile(str);
-		} catch (Exception e) {
-			System.out.println(e);
-			//e.printStackTrace();
+		} catch (IOFileException e) {
+			e.toString();
 		}
 		assertEquals("testNameFileEmpty :", null, str);
 	}
 
-	public void testFileNotOpen() throws Exception {
+	public void testFileNotOpen() {
+		@SuppressWarnings("unused")
 		byte[] b = null;
 		try {
 			b = _bif.readFileAsBytes();
-		} catch (Exception e) {
-			System.out.println("Exception :" + e);
+		} catch (IOFileException e){
+			System.out.println("hello");
+		} catch (NullPointerException e) {
+			return; //System.out.println("Exception :" + e);
 		}
-		assertEquals("Test testFileNotOpen :", null, b);
+		fail("Expected NullPointerException");
 	}
+
 } // end ByteInputFileTest
 

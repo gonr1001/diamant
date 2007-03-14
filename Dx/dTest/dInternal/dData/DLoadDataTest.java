@@ -19,7 +19,6 @@
 package dTest.dInternal.dData;
 
 import java.io.File;
-import java.util.Vector;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -47,10 +46,6 @@ import dInternal.dTimeTable.TTStructure;
 import eLib.exit.exception.DxException;
 
 public class DLoadDataTest extends TestCase {
-
-//	private DLoadData _timeTable5j;
-//
-//	private Vector _timeTable7j;
 
 	private DLoadData _loadData5j;
 

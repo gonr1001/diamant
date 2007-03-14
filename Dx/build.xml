@@ -83,7 +83,7 @@
 			<pathelement path="${build}" />
 		</path>
 	</target>
-<!--	<target name="unitTest" depends="compile, testpath" description="test the java sources">
+	<target name="unitTest" depends="compile, testpath" description="test the java sources">
 		<junit printsummary="false" haltonfailure="true">
 			<classpath refid="t.classpath" />
 			<formatter type="brief" usefile="false" />
@@ -103,8 +103,8 @@
 		<java classname="dmains.Diamant">
 			<classpath refid="c.classpath" />
 		</java>
-	</target>-->
-	<target name="unjar1" depends="testpath">
+	</target>
+	<target name="unjar1" depends="unitTest">
 		<unjar src="${localJars}/junit.jar" dest="${build}" />
 	</target>
 	<target name="unjar2" depends="unjar1">

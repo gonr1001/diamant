@@ -384,34 +384,29 @@ public class DModel extends Observable {
 
 	public String loadTimeTable(String fileName, String currentDir) {
 
-		DLoadData loadD = new DLoadData(this);
-		Vector theTT = null;
+		DLoadData loadData = new DLoadData(this);
 		try {
-			// exeptions can be trown while reading the file
-		//	theTT = loadD.loadTheTT(fileName, currentDir);
-			boolean loadOk = loadD.loadTheTT(fileName, currentDir);
+			boolean loadOk = loadData.loadTheTT(fileName, currentDir);
 			if (loadOk) {
-//			if (theTT.size() != 0) {
-//				setVersion((String) theTT.get(0));
-				setVersion(loadD.getVersion());
-//				_ttStruct = (TTStructure) theTT.get(1);
-				_ttStruct =  loadD.getTTStructure();
+				setVersion(loadData.getVersion());
+				_ttStruct = loadData.getTTStructure();
 				if (_ttStruct.getError().length() != 0)
 					return _ttStruct.getError();
-				_dxSetOfInstructors = loadD.getDxSetOfInstructors();
+				_dxSetOfInstructors = loadData.getDxSetOfInstructors();
 
 				if (DxFlags.newRooms) {
-					_dxSetOfSites = loadD.getDxSetOfSitesRooms();
+					_dxSetOfSites = loadData.getDxSetOfSitesRooms();
 				} else {
-					_setOfSites = loadD.getSetOfSitesRooms();
+					_setOfSites = loadData.getSetOfSitesRooms();
 					resizeSiteAvailability(_setOfSites);
 				}
 				if (DxFlags.newActivity) {
-					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadD.getDxActivitiesSitesReader();
+					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadData
+							.getDxActivitiesSitesReader();
 				} else {
-					_setOfActivitiesSites = loadD.getSetOfActivitiesSites();
+					_setOfActivitiesSites = loadData.getSetOfActivitiesSites();
 				}
-				_setOfStuSites = loadD.getSetofStuSites();
+				_setOfStuSites = loadData.getSetofStuSites();
 				if (!DxFlags.newRooms) {
 					if (_setOfSites.getError().length() != 0) {
 						return _setOfSites.getError();
@@ -437,7 +432,7 @@ public class DModel extends Observable {
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 			// TODO hara2602
-			
+
 		} finally {
 			DApplication.getInstance().setCursorDefault();
 		}
@@ -1089,12 +1084,12 @@ public class DModel extends Observable {
 		}
 	}
 
-//	/**
-//		 * resize resource availability
-//		 */
-//		public void resizeResourceAvailability(DSetOfResources soRes) {
-//			resizeResource(soRes);
-//		} // resizeResourceAvailability
+	// /**
+	// * resize resource availability
+	// */
+	// public void resizeResourceAvailability(DSetOfResources soRes) {
+	// resizeResource(soRes);
+	// } // resizeResourceAvailability
 
 	/**
 	 * @param ofSites
@@ -1182,10 +1177,10 @@ public class DModel extends Observable {
 		this.notifyObservers(listener);
 		this.clearChanged();
 	}
-	
+
 	public DxPreferences getPreferences() {
 		return this.getDxDocument().getDMediator().getDApplication()
-		.getPreferences();
+				.getPreferences();
 	}
 
 } /* end class DModel */

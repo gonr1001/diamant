@@ -72,21 +72,21 @@ public class DLoadData {
 	private String _chars;
 
 	private String _inDiaFileVersion;
-	
+
 	private TTStructure _tts;
-	
+
 	private DxSetOfInstructors _dxSoInst;
-	
+
 	private DxSetOfSites _dxSoSRooms;
-	
+
 	private SetOfSites _roomsList;
-	
+
 	private DxActivitiesSitesReader _dxasr;
-	
+
 	private SetOfActivitiesSites _activitiesList;
 
 	private SetOfStuSites _studentsList;
-	
+
 	private String inDiaFileInstructors;
 
 	private String inDiaFileActivities;
@@ -94,7 +94,7 @@ public class DLoadData {
 	private String inDiaFileRooms;
 
 	private String inDiaFileStudents;
-	
+
 	Vector<Object> _diaData;
 
 	/**
@@ -283,13 +283,12 @@ public class DLoadData {
 	// application, I thought throws was the solution
 	public boolean loadTheTT(String fileName, String currentDir)
 			throws DxException {
-		
+
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
 		readFile = new StringTokenizer(dataloaded, DConst.CR_LF);
 
 		String head = readFile.nextToken().trim();
-
 		if (head.equalsIgnoreCase(DConst.FILE_HEADER_NAME1_5)
 				|| head.equalsIgnoreCase(DConst.FILE_HEADER_NAME1_6)) {
 			return loadData(fileName, currentDir);
@@ -304,186 +303,159 @@ public class DLoadData {
 	private boolean loadData(String fileName, String currentDir)
 			throws DxException {
 
-		//DxSetOfInstructors dxsoiInst = null;
-		//DxSetOfSites dxsosRooms = null;
-		//Vector<Object> diaData = new Vector<Object>();
 		String dataloaded = new String(filterBadChars(fileName));
-		StringTokenizer project;
+		StringTokenizer dataTokens;
 		long linePosition = 0;
 		DataExchange de;
 
-		project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
+		dataTokens = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
 
-		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // =================================
+		if (dataTokens.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // =================================
 			// extract version
-			_inDiaFileVersion = project.nextToken().trim();
+			_inDiaFileVersion = dataTokens.nextToken().trim();
 			linePosition += ByteInputFile.count(_inDiaFileVersion);
-			//diaData.add(inDiaFileVersion);
+
 			linePosition++; // for separator =========================
 			// extract ttStructure
 			_tts = new TTStructure();
 			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(
-					currentDir, project.nextToken().trim());
+					currentDir, dataTokens.nextToken().trim());
 			linePosition++;// for XML file name line
 			_tts.loadTTSFromFile(inDiaTTSFileName);
-			//diaData.add(tts);
-			
+
 			linePosition++; // for separator =========================
-			// if (tts.getError().length() == 0) {
-			// extract SetOfInstructor
-			inDiaFileInstructors = project.nextToken().trim();
+			inDiaFileInstructors = dataTokens.nextToken().trim();
 			de = buildDataExchange(inDiaFileInstructors.getBytes());
 			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, _tts
 					.getNumberOfActiveDays(), _tts.getCurrentCycle()
 					.getMaxNumberOfPeriodsADay(), linePosition);
 			_dxSoInst = dxir.readSetOfInstructors();
-			//diaData.add(dxsoiInst);
+
 			linePosition += ByteInputFile.count(inDiaFileInstructors);
 			linePosition++; // for separator =========================
 			// extract SetOfSites
-			inDiaFileRooms = project.nextToken().trim();
+			inDiaFileRooms = dataTokens.nextToken().trim();
 			de = buildDataExchange(inDiaFileRooms.getBytes());
 			if (DxFlags.newRooms) {
 				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay(), linePosition);
 				_dxSoSRooms = dxrr.readSetOfSites();
-				//diaData.add(dxsosRooms);
 			} else {
 				SetOfSites roomsList = new SetOfSites();
 				if (roomsList.analyseTokens(de, 3)) {
-					// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 					roomsList.buildSetOfResources(de, 3);
 				}
-				//diaData.add(roomsList);
 			}
 			linePosition += ByteInputFile.count(inDiaFileRooms);
 			linePosition++; // for separator =========================
 			// extract SetOfActivities
-			inDiaFileActivities = project.nextToken().trim();
+			inDiaFileActivities = dataTokens.nextToken().trim();
 			de = buildDataExchange(inDiaFileActivities.getBytes());
 			if (DxFlags.newActivity) {
 				DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
 						de, _dxSoInst, _dxSoSRooms.getAllRooms(), _tts
 								.getPeriodLenght(), true);
-
-				//diaData.add(dxasr.readSetOfActivitiesSites());
 			} else {
-				_activitiesList = new SetOfActivitiesSites(
-						true, _tts.getPeriodLenght());
+				_activitiesList = new SetOfActivitiesSites(true, _tts
+						.getPeriodLenght());
 				if (_activitiesList.analyseTokens(de, 1)) {
 					_activitiesList.buildSetOfResources(de, 1);
 				}
-				//diaData.add(activitiesList);
 			}
 			linePosition += ByteInputFile.count(inDiaFileActivities);
 			linePosition++; // for separator =========================
 			// extract SetOfStudents
-			inDiaFileStudents = project.nextToken().trim();
+			inDiaFileStudents = dataTokens.nextToken().trim();
 			linePosition += ByteInputFile.count(inDiaFileStudents);
 			de = buildDataExchange(inDiaFileStudents.getBytes());
 			_studentsList = new SetOfStuSites();
 			if (_studentsList.analyseTokens(de, 0)) {
 				_studentsList.buildSetOfResources(de, 0);
 			}
-			//diaData.add(studentsList);
-			// }// end if(tts.getError().length()==0)
-			// else {
-			// throw new DxException(DConst.WRONG_TIME_TABLE_STRUCTURE);
-			// }
-
 		} else {
 			throw new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY
 					+ DConst.CR_LF + DConst.SAVE_SEPARATOR);
 		}
+		// if we arrive here there is no exception
+		// so true can be used as a constant 
 		return true;
-
 	}
 
-	private boolean load2dot1(String fileName)// , String currentDir)
-			throws DxException {
-//		DxSetOfInstructors dxsoiInst = null;
-//		DxSetOfSites dxsosRooms = null;
-//		Vector<Object> diaData = new Vector<Object>();
+	private boolean load2dot1(String fileName) throws DxException {
+
 		String dataloaded = new String(filterBadChars(fileName));
-		StringTokenizer project;
+		StringTokenizer dataTokens;
 
 		DataExchange de;
 
-		project = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR_VIS);
+		dataTokens = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR_VIS);
 
-		if (project.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6
+		if (dataTokens.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6
 			// !!!!!!!!!!!!!!
 			// extract version
-			_inDiaFileVersion = project.nextToken().trim();
-//			diaData.add(project.nextToken().trim());
+			_inDiaFileVersion = dataTokens.nextToken().trim();
+			//			diaData.add(project.nextToken().trim());
 			// extract ttStructure
 			_tts = new TTStructure();
 
-			de = buildDataExchange(project.nextToken().trim().getBytes());
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 			_tts.loadTTSFromString(de.getContents());
-			//diaData.add(tts);
 
 			// extract SetOfInstructor
 			if (_tts.getError().length() == 0) {
-				de = buildDataExchange(project.nextToken().trim().getBytes());
+				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 				DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
 				_dxSoInst = dxir.readSetOfInstructors();
-//				diaData.add(dxir.readSetOfInstructors());
 			}// end if(tts.getError().length()==0)
 
 			// extract SetOfSites
 			if (!DxFlags.newRooms) {
 				_roomsList = new SetOfSites();
-				de = buildDataExchange(project.nextToken().trim().getBytes());
+				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 				if (_roomsList.analyseTokens(de, 3)) {
 					// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 					_roomsList.buildSetOfResources(de, 3);
 				}
-				//diaData.add(roomsList);
-
 			} else {
-				de = buildDataExchange(project.nextToken().trim().getBytes());
+				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
 
 				_dxSoSRooms = dxrr.readSetOfSites();
-//				diaData.add(dxsosRooms);
 			}
 
 			// extract SetOfActivities
-			de = buildDataExchange(project.nextToken().trim().getBytes());
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 			if (DxFlags.newActivity) {
-				_dxasr = new DxReadActivitiesSites1dot5(
-						de, _dxSoInst, _dxSoSRooms.getAllRooms(), _tts
-								.getPeriodLenght(), true);
+				_dxasr = new DxReadActivitiesSites1dot5(de, _dxSoInst,
+						_dxSoSRooms.getAllRooms(), _tts.getPeriodLenght(), true);
 
-				//diaData.add(dxasr.readSetOfActivitiesSites());
 			} else {
-				_activitiesList = new SetOfActivitiesSites(
-						true, _tts.getPeriodLenght());
+				_activitiesList = new SetOfActivitiesSites(true, _tts
+						.getPeriodLenght());
 				if (_activitiesList.analyseTokens(de, 1)) {
 					_activitiesList.buildSetOfResources(de, 1);
 				}
-				//diaData.add(activitiesList);
 			}
 
 			// extract SetOfStudents
-			de = buildDataExchange(project.nextToken().trim().getBytes());
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 			_studentsList = new SetOfStuSites();
 			if (_studentsList.analyseTokens(de, 0)) {
 				_studentsList.buildSetOfResources(de, 0);
 			}
-			//diaData.add(studentsList);
 
 		} else {
 			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
 					+ DConst.SAVE_SEPARATOR_VIS);
 			// System.exit(-1);
 		}
+		// if we arrive here there is no exception
+		// so true can be used as a constant 
 		return true;
 
 	}
@@ -495,7 +467,6 @@ public class DLoadData {
 				+ File.separator + "pref" + File.separator + "pref.txt");
 		_chars = preferences._acceptedChars;
 	}
-
 
 	public byte[] filterBadChars(String str) throws DxException {
 		FilterFile filter = new FilterFile();
@@ -1272,37 +1243,37 @@ public class DLoadData {
 
 		return dxasrReader.readSetOfActivitiesSites();
 	}
-	
-	
+
 	public String getVersion() {
 		return _inDiaFileVersion;
 	}
-	
+
 	public TTStructure getTTStructure() {
 		return _tts;
 	}
-	
+
 	public DxSetOfInstructors getDxSetOfInstructors() {
 		return _dxSoInst;
 	}
-	
+
 	public DxSetOfSites getDxSetOfSitesRooms() {
 		return _dxSoSRooms;
 	}
 
 	public SetOfSites getSetOfSitesRooms() {
-		return  _roomsList;
+		return _roomsList;
 	}
-	
+
 	public DxActivitiesSitesReader getDxActivitiesSitesReader() {
-		return  _dxasr;
+		return _dxasr;
 	}
+
 	public SetOfActivitiesSites getSetOfActivitiesSites() {
-		return  _activitiesList;
+		return _activitiesList;
 	}
-	
-	public SetOfStuSites getSetofStuSites(){
+
+	public SetOfStuSites getSetofStuSites() {
 		return _studentsList;
 	}
-	
+
 } // end DLoadData

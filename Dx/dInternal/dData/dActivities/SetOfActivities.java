@@ -48,7 +48,7 @@ public class SetOfActivities extends DSetOfResources {
 
     private int _periodLength;
 
-    private int _NUMBEROFCYCLE = 1;
+    private int _NUMBEROFCYCLES = 1;
 
     final static public int _COURSENAMELENGTH = 6;
 
@@ -65,19 +65,19 @@ public class SetOfActivities extends DSetOfResources {
         _periodLength = periodLength;
     }
 
-    /**
-     * analyse activities data by a finite states machine
-     * 
-     * @param integer
-     *            the beginPosition (start position of the finished states
-     *            machine)
-     * @return boolean "true" if the analysis proceeded successfully and false
-     *         otherwise
-     */
-    public boolean analyseTokens(DataExchange de, int beginPosition) {
-        de.toString();
-        return false;
-    }
+//    /**
+//     * analyse activities data by a finite states machine
+//     * 
+//     * @param integer
+//     *            the beginPosition (start position of the finished states
+//     *            machine)
+//     * @return boolean "true" if the analysis proceeded successfully and false
+//     *         otherwise
+//     */
+//    public boolean analyseTokens(DataExchange de, int beginPosition) {
+//        de.toString();
+//        return false;
+//    }
 
     public void buildSetOfResources(DataExchange de, int beginPosition) {
         if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
@@ -99,12 +99,10 @@ public class SetOfActivities extends DSetOfResources {
      */
     public void buildSetOfResources1_5(byte[] dataloaded, int beginPosition) {
         String token;
-        // String sousString; //auxiliar String for stocking a substring of a
-        // line
-        StringTokenizer st = new StringTokenizer(new String(dataloaded), "\r\n");
+        StringTokenizer st = new StringTokenizer(new String(dataloaded), DConst.CR_LF);
         StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
                                         // subStrings in a line
-        // int state=0;
+
         int position = beginPosition;
         int line = 1;
         int numberOfUnity = 0;
@@ -113,7 +111,9 @@ public class SetOfActivities extends DSetOfResources {
         String instructorName = "";
         Activity activity = new Activity();
         Section section = new Section();
-        DResource unityResource, typeResource, activityResource = null;
+        DResource unityResource;
+        DResource typeResource;
+        DResource activityResource = null;
         while (st.hasMoreElements()) {
             token = st.nextToken();
             line++;
@@ -139,8 +139,6 @@ public class SetOfActivities extends DSetOfResources {
                     activity.setActivityVisibility(false);
                 activity.addType(activityName.substring(_COURSENAMELENGTH,
                         _COURSENAMELENGTH + 1));
-                // nature =
-                // activity.getNature(activityName.substring(_COURSENAMELENGTH,_COURSENAMELENGTH+1));
                 position = 3;
                 break;
             case 3:// number of activities
@@ -165,7 +163,7 @@ public class SetOfActivities extends DSetOfResources {
                 for (int i = 1; i <= numberOfUnity; i++)
                     section.addUnity(Integer.toString(i));
                 ((Type) typeResource.getAttach()).addSection(DXToolsMethods
-                        .getToken(activityName, " ", 1), section);
+                        .getToken4Activitiy(activityName, " ", 1), section);
                 position = 8;
                 break;
             case 8:// duration of blocs
@@ -203,7 +201,7 @@ public class SetOfActivities extends DSetOfResources {
                         cycleAss.setPeriodKey(period);
                     }// end else if(typeOfData==1)
                     // cycleAss.addInstructorName(DXToolsMethods.getToken(instructorName,";",counter-1));
-                    for (int i = 1; i <= _NUMBEROFCYCLE; i++)
+                    for (int i = 1; i <= _NUMBEROFCYCLES; i++)
                         bloc.addAssignment(new DResource(Integer.toString(i),
                                 cycleAss));
                     counter++;
@@ -217,7 +215,7 @@ public class SetOfActivities extends DSetOfResources {
                     unityResource = section.getUnity(Integer.toString(counter));
                     int fixed = Integer.parseInt(stLine.nextToken().trim());
                     Unity bloc = (Unity) unityResource.getAttach();
-                    for (int i = 1; i <= _NUMBEROFCYCLE; i++)
+                    for (int i = 1; i <= _NUMBEROFCYCLES; i++)
                         ((Assignment) bloc.getAssignment(Integer.toString(i))
                                 .getAttach()).setRoomState(fixed == 1);
                     counter++;
@@ -241,7 +239,7 @@ public class SetOfActivities extends DSetOfResources {
 
                     if (instLine.hasMoreElements())
                         inst = instLine.nextToken().trim();
-                    for (int i = 1; i <= _NUMBEROFCYCLE; i++) {
+                    for (int i = 1; i <= _NUMBEROFCYCLES; i++) {
                         ((Assignment) bloc.getAssignment(Integer.toString(i))
                                 .getAttach()).setRoom(room);
                         ((Assignment) bloc.getAssignment(Integer.toString(i))
