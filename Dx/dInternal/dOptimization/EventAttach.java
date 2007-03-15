@@ -55,6 +55,9 @@ public class EventAttach extends DObject {
 
 	private String _ttsKey = "";// give the key of the period where event is
 								// place
+	private int  _cLimit;// give the key of the period where event is
+	// place
+
 
 	// is in a.b.c format where a = day, b= sequence, c = period
 	private boolean _isPlaceInAPeriod = false;
@@ -67,12 +70,15 @@ public class EventAttach extends DObject {
 	 * @param key2
 	 */
 	public EventAttach(String princKey, DSetOfResources inst, long key,
-			int eventDuration, String eventPeriod) {
+			int eventDuration, String eventPeriod, int cLimit) {
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
 		_roomRescKey = key;
 		_eventDuration = eventDuration;
 		_ttsKey = eventPeriod;
+		_cLimit  = cLimit;
+		// place
+
 		// _tabuList = new Vector<String>();
 	}
 
@@ -261,7 +267,7 @@ public class EventAttach extends DObject {
 
 	public EventAttach cloneEvent() {
 		EventAttach eA = new EventAttach(_principalRescKey, _setInstructorKeys,
-				_roomRescKey, _eventDuration, _ttsKey);
+				_roomRescKey, _eventDuration, _ttsKey, _cLimit);
 		return eA;
 	}
 
@@ -285,4 +291,8 @@ public class EventAttach extends DObject {
 			_roomFixed = false;
 
 	}
+	public long getCapacityLimit() {
+		return _cLimit;
+	}
+	
 }

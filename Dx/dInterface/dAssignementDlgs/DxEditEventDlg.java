@@ -72,6 +72,7 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
 // import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.Section;
+import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxCategory;
@@ -83,6 +84,7 @@ import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -124,9 +126,11 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private JLabel[] _capacity;
 
-	private Vector _unities; // contains event resource
-	
+	private Vector _events; // contains event resource
+
 	private int _index;
+
+//	private int _limit;
 
 	private JList[] _instructorsLists;
 
@@ -156,19 +160,18 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		// n Events
 		setLocationRelativeTo(dialog);
 		_dModel = dApplic.getCurrentDModel();
-		_unities = buildUnitiesVector(currentActivity);
-		_capacity = new JLabel[_unities.size()];
+		_events = getEventsVector(currentActivity);
+		_capacity = new JLabel[_events.size()];
 		initialize(currentActivity, canBeModified);
 	} // end DxEditActivityDlg
-
 
 	/**
 	 * Initialize the dialog
 	 */
 	private void initialize(String currentActivity, boolean canBeModified) {
 		int FACTOR = 50;
-		_unities = buildUnitiesVector(currentActivity);
-		_tabbedPane = buildTabbedPane(canBeModified);
+		_events = getEventsVector(currentActivity);
+		_tabbedPane = buildTabbedPane(currentActivity, canBeModified);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(_tabbedPane, BorderLayout.NORTH);
 		_tabbedPane.addChangeListener(this);
@@ -224,7 +227,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			dispose();
 		} else if (command.equals(DConst.BUT_APPLY)) {
 			boolean apply = false;
-			for (int i = 0; i < this._unities.size(); i++) {
+			for (int i = 0; i < this._events.size(); i++) {
 				_currentActivityIndex = i;
 				apply = applyChanges();
 				if (!apply) {
@@ -251,14 +254,15 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	}
 
-	private JTabbedPane buildTabbedPane(boolean canBeModified) {
+	private JTabbedPane buildTabbedPane(String currentActivity,
+			boolean canBeModified) {
 		JTabbedPane jtp = new JTabbedPane();
-		_instructorsLists = new JList[_unities.size()];
-		for (int i = 0; i < _unities.size(); i++) {
-			if (_unities.get(i) != null) {
+		_instructorsLists = new JList[_events.size()];
+		for (int i = 0; i < _events.size(); i++) {
+			if (_events.get(i) != null) {
 				_currentActivityIndex = i;
-				jtp.addTab(((DResource) _unities.get(i)).getID(),
-						buildUnityPanel(i, canBeModified));
+				jtp.addTab(((DResource) _events.get(i)).getID(),
+						buildUnityPanel(i, currentActivity, canBeModified));
 			} // end if
 		}// end for
 		return jtp;
@@ -269,12 +273,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * 
 	 * @return the JPanel to be placed in a tab of the tabbedPane
 	 */
-	private JPanel buildUnityPanel(int index, boolean canBeModified) {
+	private JPanel buildUnityPanel(int index, String currentActivity,
+			boolean canBeModified) {
 		JPanel myPanel = new JPanel();
 		// myPanel.setLayout(new GridLayout(4,1));
 		myPanel.setLayout(new BorderLayout());
 		_index = index;
-		JPanel timePanel = buildTimePanel(canBeModified);
+		JPanel timePanel = buildTimePanel(currentActivity, canBeModified);
 		JPanel instructorPanel = buildInstructorPanel(_index);
 		JPanel roomPanel = buildRoomPanel(_index);
 		JPanel fixingPanel = buildFixingPanel(_index);
@@ -287,7 +292,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return myPanel;
 	} // end buildUnityPanel
 
-	private JPanel buildTimePanel(boolean canBeModified) {
+	private JPanel buildTimePanel(String currentActivity, boolean canBeModified) {
 		JPanel myPanel = new JPanel();
 		myPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_TIMETABLE_NAME));
@@ -295,8 +300,27 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JPanel dayPanel = buildDayPanel();
 		JPanel hourPanel = buildHourPanel();
 		String max = "limite: ";
-		int lim = 10;
-		JLabel jlb = new JLabel(max + lim);
+
+		SetOfActivities soa = _dModel.getSetOfActivities();
+		String activityName = DXToolsMethods.getToken4Activitiy(
+				currentActivity, ".", 0);
+		DResource activityResource = soa.getResource(activityName);
+		Activity activity = (Activity) activityResource.getAttach();
+
+		// RGR RGR
+		EventAttach event = (EventAttach) ((DResource) _events
+				.get(_currentActivityIndex)).getAttach();
+		
+//		SetOfEvents soe = _dModel.getSetOfEvents();
+//
+//		DResource eResource = soe.getResource(activityName);
+//		EventAttach ea = (EventAttach) eResource.getAttach();
+
+		// RGR RGR
+
+//		JLabel jlb = new JLabel(max + activity.getCapacityLimit());
+
+		JLabel jlb = new JLabel(max + event.getCapacityLimit());
 
 		myPanel.add(durationPanel);
 		myPanel.add(dayPanel);
@@ -354,7 +378,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_cbSites.addItemListener(this);
 		_dxsCurrentSite = (DxSite) _cbSites.getSelectedItem();
 
-
 		_dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
 				.getSetOfCat().getCatsSortedByName());
 		_cbCategories = new JComboBox(_dcbmCategories);
@@ -362,7 +385,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_cbCategories.setActionCommand(DConst.CATEGORY_LABEL);
 		_cbCategories.addItemListener(this);
 		_dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
-
 
 		_dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat.getSetOfRooms()
 				.getRoomsSortedByName());
@@ -404,7 +426,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		functionRoom.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.CATEGORY_LABEL));
 		functionRoom.add(_cbCategories);
-
 
 		// construction du panel complet
 		roomPanel.add(functionRoom);
@@ -498,7 +519,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	} // end getSelectedCategory
 
 	private JPanel buildFixingPanel(int index) {
-		EventAttach event = (EventAttach) ((DResource) _unities.get(index))
+		EventAttach event = (EventAttach) ((DResource) _events.get(index))
 				.getAttach();
 		JPanel myPanel = new JPanel();
 		JPanel fixingPanel = new JPanel();
@@ -641,26 +662,27 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	/**
 	 * Return vector of resources. each resource represent an event
 	 */
-	private Vector buildUnitiesVector(String activityName) {
+	private Vector getEventsVector(String activityName) {
 
-		Vector unities = new Vector();
-		// System.out.println("CounTokens: "+nbTokens);// debug
+		Vector <DResource>events = new Vector<DResource>();
 		String actID = DXToolsMethods.getToken4Activitiy(activityName, ".", 0);
 		String typID = DXToolsMethods.getToken4Activitiy(activityName, ".", 1);
 
 		if (typID.length() != 0) {
-			String secID = DXToolsMethods.getToken4Activitiy(activityName, ".", 2);
+			String secID = DXToolsMethods.getToken4Activitiy(activityName, ".",
+					2);
 			if (secID.length() != 0) {
-				String unitID = DXToolsMethods.getToken4Activitiy(activityName, ".", 3);
+				String unitID = DXToolsMethods.getToken4Activitiy(activityName,
+						".", 3);
 				if (unitID.length() != 0) {
-					unities.add(_dModel.getSetOfEvents().getResource(
+					events.add(_dModel.getSetOfEvents().getResource(
 							activityName));
 
 				} else {// else unitID.length()!=0
 					Section sect = _dModel.getSetOfActivities().getSection(
 							actID, typID, secID);
 					for (int i = 0; i < sect.getSetOfUnities().size(); i++) {
-						unities.add(_dModel.getSetOfEvents().getResource(
+						events.add(_dModel.getSetOfEvents().getResource(
 								actID
 										+ "."
 										+ typID
@@ -679,7 +701,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 							actID, typID,
 							type.getSetOfSections().getResourceAt(i).getID());
 					for (int j = 0; j < sect.getSetOfUnities().size(); j++) {
-						unities.add(_dModel.getSetOfEvents().getResource(
+						events.add(_dModel.getSetOfEvents().getResource(
 								actID
 										+ "."
 										+ typID
@@ -704,7 +726,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 							actID, typID,
 							type.getSetOfSections().getResourceAt(i).getID());
 					for (int j = 0; j < sect.getSetOfUnities().size(); j++) {
-						unities.add(_dModel.getSetOfEvents().getResource(
+						events.add(_dModel.getSetOfEvents().getResource(
 								actID
 										+ "."
 										+ typID
@@ -719,7 +741,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				}// end for(int i=0; i< type.getSetOfSections().size(); i++)
 			}
 		}// end else if(typID.length()!=0)
-		return unities;
+		return events;
 	}
 
 	/**
@@ -728,7 +750,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @return
 	 */
 	private String buildDuration() {
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		int duration = event.getDuration()
 				/ _dModel.getTTStructure().getPeriodLenght();
@@ -744,7 +766,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildHourList() {
 		Vector list[] = { new Vector(), new Vector() };
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
@@ -784,7 +806,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildDayList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
@@ -805,7 +827,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private Vector buildCurrentInstructorList(int index) {
 		Vector<String> v = new Vector<String>();
 
-		EventAttach event = (EventAttach) ((DResource) _unities.get(index))
+		EventAttach event = (EventAttach) ((DResource) _events.get(index))
 				.getAttach();
 		DxSetOfInstructors soi = _dModel.getDxSetOfInstructors();
 		long keys[] = event.getInstructorKey();
@@ -834,7 +856,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private Vector[] buildRoomList(String selectedFunction) {// String
 		// category){
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		if (DxFlags.newRooms) {
 			DxSetOfRooms dxsor = _dModel.getDxSetOfRooms();
@@ -927,7 +949,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildRoomStateList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		// SetOfCategories soc= _dm.getSetOfCategories();
 		// long dayKey=
@@ -960,7 +982,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildRoomFunctionList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		SetOfRoomsFunctions sorf = _dModel.getSetOfRoomsFunctions();
 		DResource roomFunction = sorf.getResource(event.getRoomFunction());
@@ -980,11 +1002,11 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private boolean applyChanges() {
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
-		EventAttach event = (EventAttach) ((DResource) _unities
+		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
 		// remove event
 		_dModel.getConditionsTest().removeEventInTTs(_dModel.getTTStructure(),
-				(DResource) _unities.get(_currentActivityIndex), false);
+				(DResource) _events.get(_currentActivityIndex), false);
 
 		JPanel tpane = ((JPanel) _tabbedPane
 				.getComponentAt(_currentActivityIndex));
@@ -1032,12 +1054,12 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		event.setRoomFunction((int) roomFunction.getKey());
 
 		Vector vect = new Vector();
-		vect.add(_unities.get(_currentActivityIndex));
+		vect.add(_events.get(_currentActivityIndex));
 		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
 				vect);
 		// add event
 		_dModel.getConditionsTest().addEventInTTs(_dModel.getTTStructure(),
-				(DResource) _unities.get(_currentActivityIndex), false);
+				(DResource) _events.get(_currentActivityIndex), false);
 		return true;
 	}
 
@@ -1113,7 +1135,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				_dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
 				capacity = _dxrCurrentRoom.getCapacity();
 				_capacity[_index].setText(new Integer(capacity).toString());
-				//roomCapacity.add(_capacity[index]);
+				// roomCapacity.add(_capacity[index]);
 				this.repaint();
 				break;
 
@@ -1127,13 +1149,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				break;
 			}
 
-			// getContentPane().remove(_centerPanel);
-			// _dxaCurrentAvailbility = _dxrCurrentRoom.getAvailability()
-			// .getMatrixAvailability();
-			// _centerPanel = makeGridPanel();// _currentInstr);
-			// getContentPane().add(_centerPanel, BorderLayout.CENTER);
-			// pack();
-			// }
 		}// end itemStateChangeed
 	}
 }// end class

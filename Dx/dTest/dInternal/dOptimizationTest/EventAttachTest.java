@@ -16,7 +16,7 @@ import dInternal.dOptimization.EventAttach;
      super(name);
      DSetOfResources sor = new StandardCollection();
      sor.addResource(new DResource("", null), 1);
-     _eventAttach= new EventAttach("1.1.2.1",sor,52,60,"1.1.1");
+     _eventAttach= new EventAttach("1.1.2.1",sor,52,60,"1.1.1", 10);
    }
 
    public static Test suite() {

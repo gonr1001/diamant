@@ -42,7 +42,7 @@ import javax.swing.JPanel;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dAssignementDlgs.DxEditActivityDlg;
+//import dInterface.dAssignementDlgs.DxEditActivityDlg;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
 //import dInterface.dAffectation.EditActivityDlg;
 import dInterface.dAffectation.EditEventDlg;
@@ -69,7 +69,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
 
 	private ButtonsPanel _validatePanel;
 
-	private DxEditActivityDlg _dxEad;
+//	private DxEditActivityDlg _dxEad;
 
 	private DxEditEventDlg _dxEEventDlg;
 
@@ -260,11 +260,12 @@ public class SelectInstructors extends JDialog implements ActionListener {
 			dispose();
 		//If button VALIDATE
 		if (command.equals(DConst.BUT_VALIDATE)) {
-			if (_dxEad != null)
-				_dxEad.updateInstructorList(_leftVec);
+//			if (_dxEad != null)
+//				_dxEad.updateInstructorList(_leftVec);
+//			
 			
-			//next two lines must be deleted
-			else if (_dxEEventDlg != null)
+//			else 
+				if (_dxEEventDlg != null)
 				_dxEEventDlg.updateInstructorList(_leftVec);
 			_validatePanel.setFirstDisable();
 			dispose();

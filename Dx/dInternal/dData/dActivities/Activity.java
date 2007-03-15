@@ -40,6 +40,8 @@ public class Activity extends DObject {
 	private String _activityType; // eg. informatique
 
 	private int _activitySession;//
+	
+	private int _capacityLimit;//
 
 	private boolean _activityVisible;//
 
@@ -171,6 +173,8 @@ public class Activity extends DObject {
 	public boolean isActivityVisibility() {
 		return _activityVisible;
 	}
+	
+
 
 //	/**
 //	 * set activity Department

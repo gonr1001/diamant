@@ -105,7 +105,7 @@ public class SetOfActivities extends DSetOfResources {
 
         int position = beginPosition;
         int line = 1;
-        int numberOfUnity = 0;
+        int numberOfBlocs = 0;
         int counter = 0;
         String activityName = "";
         String instructorName = "";
@@ -159,8 +159,11 @@ public class SetOfActivities extends DSetOfResources {
                 typeResource = activity.getType(activityName.substring(
                         _COURSENAMELENGTH, _COURSENAMELENGTH + 1));
                 section = new Section();
-                numberOfUnity = Integer.parseInt(token.trim());
-                for (int i = 1; i <= numberOfUnity; i++)
+                
+                String s = DXToolsMethods.getToken4Activitiy(activityName, " ", 3);
+                section.setCapacityLimit(Integer.parseInt(s));
+                numberOfBlocs = Integer.parseInt(token.trim());
+                for (int i = 1; i <= numberOfBlocs; i++)
                     section.addUnity(Integer.toString(i));
                 ((Type) typeResource.getAttach()).addSection(DXToolsMethods
                         .getToken4Activitiy(activityName, " ", 1), section);

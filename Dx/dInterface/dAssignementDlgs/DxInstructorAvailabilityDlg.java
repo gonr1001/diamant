@@ -88,7 +88,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 
 		if (dApplic.getCurrentDxDoc() == null)
 			return;
-		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		_dmodel = dApplic.getCurrentDModel();
 		_soi = soi;
 
 		try {

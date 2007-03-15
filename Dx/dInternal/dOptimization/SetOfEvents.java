@@ -104,11 +104,14 @@ public class SetOfEvents extends DSetOfResources {
 											unityID);
 								// int[] dayTime = assignment.getDateAndTime();
 
+//								Activity a = (Activity) activity.getAttach();
+//								//a.getCapacityLimit();
+								int cLimit = ((Section)section.getAttach()).getCapacityLimit();
 								EventAttach event = new EventAttach(unityKey,
 										assignment.getSetInstructorKeys(),
 										roomKey, ((Unity) unity.getAttach())
 												.getDuration(), assignment
-												.getPeriodKey());
+												.getPeriodKey(), cLimit);
 								//event.update()
 								event.setAssigned(((Unity) unity.getAttach())
 										.isAssign());

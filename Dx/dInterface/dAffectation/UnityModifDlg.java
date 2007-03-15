@@ -15,7 +15,8 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInterface.dAssignementDlgs.DxEditActivityDlg;
+//import dInterface.dAssignementDlgs.DxEditActivityDlg;
+import dInterface.dAssignementDlgs.DxEditEventDlg;
 import dInterface.dUtil.DxTools;
 //import dInternal.dDataTxt.Resource;
 import dInternal.DResource;
@@ -57,7 +58,8 @@ private String _title;
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
     DResource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
-    new DxEditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
+    new DxEditEventDlg(this,this._dApplic, _title+unity.getID()+".",true);
+    //new DxEditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
   }
 
   /**
