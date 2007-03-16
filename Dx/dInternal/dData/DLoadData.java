@@ -342,9 +342,9 @@ public class DLoadData {
 						.getMaxNumberOfPeriodsADay(), linePosition);
 				_dxSoSRooms = dxrr.readSetOfSites();
 			} else {
-				SetOfSites roomsList = new SetOfSites();
-				if (roomsList.analyseTokens(de, 3)) {
-					roomsList.buildSetOfResources(de, 3);
+				_roomsList = new SetOfSites();
+				if (_roomsList.analyseTokens(de, 3)) {
+					_roomsList.buildSetOfResources(de, 3);
 				}
 			}
 			linePosition += ByteInputFile.count(inDiaFileRooms);

@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: SaveAsDlg $Revision: 1.28 $  $Date: 2007-01-05 20:14:26 $
+ * Title: SaveAsDlg $Revision: 1.29 $  $Date: 2007-03-16 22:16:18 $
  * Description: SaveAsDlg(DApplication dApplic) can be created by SaveAsCmd, SaveCmd
  *              SaveAsDlg(DApplication dApplic, String data) can be created
  *                        by ConflicReport, FullReport,
@@ -19,7 +19,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -53,9 +53,8 @@ public abstract class SaveAsDlg {
 		_dApplic = dApplic;
 	}
 
-
 	public void saveAs(String data, boolean report) {
-		
+
 		JFileChooser fc = new JFileChooser(_dApplic.getCurrentDir());
 		fc.setMultiSelectionEnabled(false);
 		String dotExt = setFilters(fc);
@@ -73,7 +72,7 @@ public abstract class SaveAsDlg {
 			if (file.exists()) {
 				doFileExist(currentFile, data, report);
 			} else { // if (file.exists())
-				addInNewFile(currentFile, data);
+				addInNewFile(currentFile);//, data);
 				new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7
 						+ currentFile);
 			}
@@ -88,7 +87,7 @@ public abstract class SaveAsDlg {
 		int resp = JOptionPane.showConfirmDialog(_dApplic.getJFrame(), message,
 				DConst.SAVE_AS, JOptionPane.YES_NO_OPTION);
 		if (resp == JOptionPane.OK_OPTION) {
-			addInNewFile(currentFile, data);
+			addInNewFile(currentFile); //, data);
 			new InformationDlg(_dApplic.getJFrame(), DConst.DEF_F_D7
 					+ currentFile);
 		}
@@ -101,8 +100,8 @@ public abstract class SaveAsDlg {
 
 	} // doFileExist
 
-	protected abstract void addInNewFile(String currentFile, String data);
+	protected abstract void addInNewFile(String currentFile);//, String data);
 
 	protected abstract String setFilters(JFileChooser fc);
-	
+
 }// end class

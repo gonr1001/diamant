@@ -6,7 +6,10 @@ import dInternal.dData.DxResource;
 
 public class DxSection extends DxResource {
 	private static long _lUniqueKey = 1;
-	DxSetOfUnities _dxsouUnities;
+	
+	private DxSetOfUnities _dxsouUnities;
+	
+	private int _capacityLimit;
 
 	public DxSection(String sSectionName) {
 		super(_lUniqueKey++,sSectionName);
@@ -17,7 +20,7 @@ public class DxSection extends DxResource {
 		_dxsouUnities.addUnity(dxuUnity);
 	}
 
-	public Iterator<DxUnity> getUnitiesIterator() {
+	public Iterator getUnitiesIterator() {
 		return _dxsouUnities.iterator();
 	}
 
@@ -33,4 +36,20 @@ public class DxSection extends DxResource {
 		return _dxsouUnities.getUnity(lUnityKey);
 	}
 
+	/**
+	 * 
+	 * @param c
+	 *            the capacity limit
+	 */
+	public void setCapacityLimit(int c) {
+		_capacityLimit = c;
+	}
+	
+	/**
+	 * 
+	 * 
+	 */
+	public int getCapacityLimit() {
+		return _capacityLimit;
+	}
 }

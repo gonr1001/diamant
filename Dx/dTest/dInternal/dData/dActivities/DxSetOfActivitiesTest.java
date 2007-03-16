@@ -8,8 +8,6 @@
  */
 package dTest.dInternal.dData.dActivities;
 
-
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -28,7 +26,6 @@ import dInternal.dData.dActivities.DxUnity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
-
 
 public class DxSetOfActivitiesTest extends TestCase {
 

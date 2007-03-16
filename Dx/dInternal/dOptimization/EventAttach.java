@@ -34,10 +34,10 @@ public class EventAttach extends DObject {
 	private long _roomRescKey; // the room key
 
 	private boolean _roomFixed;/*
-								 * the state of the event in the room true if
-								 * event is fixed in the room and false
-								 * otherwise
-								 */
+	 * the state of the event in the room true if
+	 * event is fixed in the room and false
+	 * otherwise
+	 */
 
 	private int _roomFunction; // the prefered function for the event
 
@@ -48,16 +48,19 @@ public class EventAttach extends DObject {
 	 */
 	// private Vector <String> _tabuList; //
 	private boolean _isAssigned = false;// tell if this event is placed in the
-										// timetable
+
+	// timetable
 
 	private boolean isPermanent = false;// tell if this event is permanent in
-										// the timetable
+
+	// the timetable
 
 	private String _ttsKey = "";// give the key of the period where event is
-								// place
-	private int  _cLimit;// give the key of the period where event is
-	// place
 
+	// place
+	private int _cLimit;// give the key of the period where event is
+
+	// place
 
 	// is in a.b.c format where a = day, b= sequence, c = period
 	private boolean _isPlaceInAPeriod = false;
@@ -76,7 +79,7 @@ public class EventAttach extends DObject {
 		_roomRescKey = key;
 		_eventDuration = eventDuration;
 		_ttsKey = eventPeriod;
-		_cLimit  = cLimit;
+		_cLimit = cLimit;
 		// place
 
 		// _tabuList = new Vector<String>();
@@ -291,8 +294,9 @@ public class EventAttach extends DObject {
 			_roomFixed = false;
 
 	}
+
 	public long getCapacityLimit() {
 		return _cLimit;
 	}
-	
+
 }

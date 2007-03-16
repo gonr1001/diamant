@@ -19,6 +19,7 @@ import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxSetOfRooms;
+import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Period;
@@ -45,107 +46,104 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param cycle
 	 */
 	public void build(SetOfActivities soa, DSetOfResources soie) {
+		for (int i = 0; i < soa.size(); i++) {
+			DResource activityResource = soa.getResourceAt(i);
+			Activity activity = (Activity) activityResource.getAttach();
+			forEachActivity(soie, activityResource, activity);
+		}
+	} // end build
+
+	private void forEachActivity(DSetOfResources soie, DResource activityResource, Activity activity) {
+		if (activity.isActivityVisibility()) {
+			for (int j = 0; j < activity.getSetOfTypes().size(); j++) {
+				DResource type = activity.getSetOfTypes().getResourceAt(j);
+				forEachType(soie, activityResource, type);
+			}
+		}
+	}
+
+	private void forEachType(DSetOfResources soie, DResource activityResource, DResource type) {
 		String unityKey;
 		long roomKey;
-		for (int i = 0; i < soa.size(); i++) {
-			DResource activity = soa.getResourceAt(i);	
-			if (((Activity) activity.getAttach()).isActivityVisibility()) {
-				for (int j = 0; j < ((Activity) activity.getAttach())
-						.getSetOfTypes().size(); j++) {
-					DResource type = ((Activity) activity.getAttach())
-							.getSetOfTypes().getResourceAt(j);
-					for (int k = 0; k < ((Type) type.getAttach())
-							.getSetOfSections().size(); k++) {
-						DResource section = ((Type) type.getAttach())
-								.getSetOfSections().getResourceAt(k);
-						for (int l = 0; l < ((Section) section.getAttach())
-								.getSetOfUnities().size(); l++) {
-							DResource unity = ((Section) section.getAttach())
-									.getSetOfUnities().getResourceAt(l);
-							Assignment assignment = (Assignment) ((Unity) unity
-									.getAttach()).getAssignment(
-									_dm.getTTStructure()
-											.getCurrentCycleResource().getID())
-									.getAttach();
-							if (assignment != null) {
-								unityKey = activity.getKey() + "."
-										+ type.getKey() + "."
-										+ section.getKey() + "."
-										+ unity.getKey() + ".";
-								String unityID = activity.getID() + "."
-										+ type.getID() + "." + section.getID()
-										+ "." + unity.getID() + ".";
-								if (DXToolsMethods.getToken(
-										assignment.getPeriodKey(), ".", 0)
-										.equalsIgnoreCase("0")) {
-									String perKeys = _dm
-											.getTTStructure()
-											.getCurrentCycle()
-											.getPeriod(
-													assignment.getDateAndTime());
-									Period per = _dm.getTTStructure()
-											.getCurrentCycle()
-											.getPeriodByPeriodKey(perKeys);
-									if (per != null)
-										assignment.setPeriodKey(perKeys);
-									else
-										assignment.setPeriodKey("1.1.1");
-								}// end if(assignment.getPeriodKey()[0]==0)
-								// System.out.println("event " +unityID+"
-								// InsName " +assignment.getInstructorName());
+		for (int k = 0; k < ((Type) type.getAttach())
+				.getSetOfSections().size(); k++) {
+			DResource section = ((Type) type.getAttach())
+					.getSetOfSections().getResourceAt(k);
+			for (int l = 0; l < ((Section) section.getAttach())
+					.getSetOfUnities().size(); l++) {
+				DResource unity = ((Section) section.getAttach())
+						.getSetOfUnities().getResourceAt(l);
+				Assignment assignment = (Assignment) ((Unity) unity
+						.getAttach()).getAssignment(
+						_dm.getTTStructure()
+								.getCurrentCycleResource().getID())
+						.getAttach();
+				if (assignment != null) {
+					unityKey = activityResource.getKey() + "."
+							+ type.getKey() + "."
+							+ section.getKey() + "."
+							+ unity.getKey() + ".";
+					String unityID = activityResource.getID() + "."
+							+ type.getID() + "." + section.getID()
+							+ "." + unity.getID() + ".";
+					if (DXToolsMethods.getToken(
+							assignment.getPeriodKey(), ".", 0)
+							.equalsIgnoreCase("0")) {
+						String perKeys = _dm
+								.getTTStructure()
+								.getCurrentCycle()
+								.getPeriod(
+										assignment.getDateAndTime());
+						Period per = _dm.getTTStructure()
+								.getCurrentCycle()
+								.getPeriodByPeriodKey(perKeys);
+						if (per != null)
+							assignment.setPeriodKey(perKeys);
+						else
+							assignment.setPeriodKey("1.1.1");
+					}// end if(assignment.getPeriodKey()[0]==0)
 
-								assignDxInstructors(soie, assignment, unityID);
+					assignDxInstructors(soie, assignment, unityID);
 
-								if (DxFlags.newRooms)
-									roomKey = assignDxRooms(soie, assignment,
-											unityID);
-								else
-									roomKey = assignRooms(soie, assignment,
-											unityID);
-								// int[] dayTime = assignment.getDateAndTime();
+					if (DxFlags.newRooms)
+						roomKey = assignDxRooms(soie, assignment,
+								unityID);
+					else
+						roomKey = assignRooms(soie, assignment,
+								unityID);
 
-//								Activity a = (Activity) activity.getAttach();
-//								//a.getCapacityLimit();
-								int cLimit = ((Section)section.getAttach()).getCapacityLimit();
-								EventAttach event = new EventAttach(unityKey,
-										assignment.getSetInstructorKeys(),
-										roomKey, ((Unity) unity.getAttach())
-												.getDuration(), assignment
-												.getPeriodKey(), cLimit);
-								//event.update()
-								event.setAssigned(((Unity) unity.getAttach())
-										.isAssign());
-								event.setPermanentState(((Unity) unity
-										.getAttach()).isPermanent());
-								event.setRoomFixed(assignment.getRoomState());
-								event.setRoomFunction(((Unity) unity
-										.getAttach())
-										.getFirstPreferFunctionRoom());
-								// System.out.println("Unity Key: "+unityKey+ "
-								// - Period Key:
-								// "+((Cycle)cycle.getAttach()).getPeriod(dayTime));//debug
-								this.addResource(new DResource(unityID, event),
-										0);
-								// System.out.println("event " +unityID+"
-								// InsName " +assignment.getInstructorName());
-							}// end if(assignement!=null)
-						}// end for(int l=0; l<
-						// ((Section)section.getAttach()).getSetOfUnities().size();
-						// l++)
-					}// end for(int k=0; k<
-					// ((Type)type.getAttach()).getSetOfSections().size(); k++)
-				}// for(int j=0; j< activity.getSetOfTypes().size(); j++)
-			}// end
-			// if(((Activity)activity.getAttach()).getActivityVisibility())
-		}// end for (int i=0; i< soa.size(); i++)
-	} // end build
+					int cLimit = ((Section) section.getAttach())
+							.getCapacityLimit();
+					EventAttach event = new EventAttach(unityKey,
+							assignment.getSetInstructorKeys(),
+							roomKey, ((Unity) unity.getAttach())
+									.getDuration(), assignment
+									.getPeriodKey(), cLimit);
+					// event.update()
+					event.setAssigned(((Unity) unity.getAttach())
+							.isAssign());
+					event.setPermanentState(((Unity) unity
+							.getAttach()).isPermanent());
+					event.setRoomFixed(assignment.getRoomState());
+					event.setRoomFunction(((Unity) unity
+							.getAttach())
+							.getFirstPreferFunctionRoom());
+
+					this.addResource(new DResource(unityID, event),
+							0);
+				}// end if(assignement!=null)
+			}// end for(int l=0; l<
+			// ((Section)section.getAttach()).getSetOfUnities().size();
+			// l++)
+		}// end for(int k=0; k<
+	}
 
 	private long assignRooms(DSetOfResources soie, Assignment assignment,
 			String unityID) {
 		long roomKey;
-			int	roomIndex=_dm.getSetOfRooms().getIndexOfResource(
-						assignment.getRoomName());
-			
+		int roomIndex = _dm.getSetOfRooms().getIndexOfResource(
+				assignment.getRoomName());
+
 		if (roomIndex != -1) {
 			roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
 			// assignment.setRoomKey(roomKey);
@@ -166,6 +164,8 @@ public class SetOfEvents extends DSetOfResources {
 			String unityID) {
 		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
 				assignment.getRoomName());
+//		long roomKey = _dm.getDxSetOfSites().getAllRooms().getRoomKeyByName(
+//				assignment.getRoomName());
 		if (roomKey == -1) {
 			DValue error = new DValue();
 			String str = assignment.getRoomName();
@@ -174,7 +174,7 @@ public class SetOfEvents extends DSetOfResources {
 			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
 					+ DConst.NOT_ROOM + "« " + str + " »");
 			soie.addResource(new DResource("3", error), 0);
-		} 
+		}
 		return roomKey;
 	}
 
@@ -254,14 +254,14 @@ public class SetOfEvents extends DSetOfResources {
 			event = (EventAttach) ((DResource) eventsToUpdate.get(i))
 					.getAttach();
 
-			long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
-					.getPrincipalRescKey(), ".", 0));
-			long typeKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
-					.getPrincipalRescKey(), ".", 1));
-			long sectKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
-					.getPrincipalRescKey(), ".", 2));
-			long unitKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(event
-					.getPrincipalRescKey(), ".", 3));
+			long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
+					event.getPrincipalRescKey(), ".", 0));
+			long typeKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
+					event.getPrincipalRescKey(), ".", 1));
+			long sectKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
+					event.getPrincipalRescKey(), ".", 2));
+			long unitKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
+					event.getPrincipalRescKey(), ".", 3));
 
 			Unity unit = soa.getUnity(actKey, typeKey, sectKey, unitKey);
 			Assignment assignment = (Assignment) unit.getSetOfAssignments()
@@ -276,21 +276,20 @@ public class SetOfEvents extends DSetOfResources {
 						.getDxSetOfInstructors(), keys[j]));
 			}// end for
 
-			if(DxFlags.newRooms)
-			{
-				assignment.setRoom(getRoomName(_dm.getDxSetOfRooms(), event
+			if (DxFlags.newRooms) {
+				assignment.setRoom(getDxRoomName(_dm.getDxSetOfRooms(), event
 						.getRoomKey()));
-			}else{
+			} else {
 				assignment.setRoom(getRoomName(_dm.getSetOfRooms(), event
 						.getRoomKey()));
 			}
 			assignment.setPeriodKey(event.getPeriodKey());
 
 			unit.updateWith(event);
-//			unit.setAssign(event.isAssigned());
-//			unit.setPermanent(event.getPermanentState());
-//			unit.setDuration(event.getDuration());
-//			unit.setFirstPreferFunctionRoom(event.getRoomFunction());
+			// unit.setAssign(event.isAssigned());
+			// unit.setPermanent(event.getPermanentState());
+			// unit.setDuration(event.getDuration());
+			// unit.setFirstPreferFunctionRoom(event.getRoomFunction());
 			assignment.setRoomState(event.isRoomFixed());
 
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)
@@ -337,19 +336,40 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param elt
 	 * @return the resource key or -1 if key does not found
 	 */
+//	private String getRoomName(SetOfRooms sor, long eltkey) {
+//		if (eltkey != -1) {
+//			return sor.getResource(eltkey).getID();
+//		}
+//		return DConst.NO_ROOM_INTERNAL;
+//	}
 	private String getRoomName(SetOfRooms sor, long eltkey) {
 		if (eltkey != -1) {
 			return sor.getResource(eltkey).getID();
 		}
 		return DConst.NO_ROOM_INTERNAL;
 	}
+
 	
-	private String getRoomName(DxSetOfRooms dxsor, long eltkey) {
+	/**
+	 * get a resource key
+	 * 
+	 * @param soresc
+	 * @param elt
+	 * @return the resource key or -1 if key does not found
+	 */
+	private String getDxRoomName(DxSetOfRooms sor, long eltkey) {
 		if (eltkey != -1) {
-			return dxsor.getRoomName(eltkey);
+//			return sor.getResource(eltkey).getID();
+			return sor.getResourceName(eltkey);
 		}
 		return DConst.NO_ROOM_INTERNAL;
 	}
+//	private String getRoomName(DxSetOfRooms dxsor, long eltkey) {
+//		if (eltkey != -1) {
+//			return dxsor.getRoomName(eltkey);
+//		}
+//		return DConst.NO_ROOM_INTERNAL;
+//	}
 
 	/**
 	 * for two event in conflict
@@ -508,8 +528,8 @@ public class SetOfEvents extends DSetOfResources {
 				instKey = event.getInstructorKey();
 				for (int j = 0; j < instKey.length; j++) {
 					DxAvailability instAvailability = _dm
-							.getDxSetOfInstructors()
-							.getInstructorAvailability(instKey[j]);
+							.getDxSetOfInstructors().getInstructorAvailability(
+									instKey[j]);
 					int dayIndex = _dm.getTTStructure().findIndexInWeekTable(
 							perKey[0]);
 					int perPosition = _dm.getTTStructure().getCurrentCycle()

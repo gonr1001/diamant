@@ -72,7 +72,7 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
 // import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.Section;
-import dInternal.dData.dActivities.SetOfActivities;
+// import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxCategory;
@@ -84,7 +84,7 @@ import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dOptimization.EventAttach;
-import dInternal.dOptimization.SetOfEvents;
+// import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -130,7 +130,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private int _index;
 
-//	private int _limit;
+	// private int _limit;
 
 	private JList[] _instructorsLists;
 
@@ -171,7 +171,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private void initialize(String currentActivity, boolean canBeModified) {
 		int FACTOR = 50;
 		_events = getEventsVector(currentActivity);
-		_tabbedPane = buildTabbedPane(currentActivity, canBeModified);
+		_tabbedPane = buildTabbedPane(canBeModified);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(_tabbedPane, BorderLayout.NORTH);
 		_tabbedPane.addChangeListener(this);
@@ -254,15 +254,14 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	}
 
-	private JTabbedPane buildTabbedPane(String currentActivity,
-			boolean canBeModified) {
+	private JTabbedPane buildTabbedPane(boolean canBeModified) {
 		JTabbedPane jtp = new JTabbedPane();
 		_instructorsLists = new JList[_events.size()];
 		for (int i = 0; i < _events.size(); i++) {
 			if (_events.get(i) != null) {
 				_currentActivityIndex = i;
 				jtp.addTab(((DResource) _events.get(i)).getID(),
-						buildUnityPanel(i, currentActivity, canBeModified));
+						buildUnityPanel(i, canBeModified));
 			} // end if
 		}// end for
 		return jtp;
@@ -273,13 +272,12 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * 
 	 * @return the JPanel to be placed in a tab of the tabbedPane
 	 */
-	private JPanel buildUnityPanel(int index, String currentActivity,
-			boolean canBeModified) {
+	private JPanel buildUnityPanel(int index, boolean canBeModified) {
 		JPanel myPanel = new JPanel();
 		// myPanel.setLayout(new GridLayout(4,1));
 		myPanel.setLayout(new BorderLayout());
 		_index = index;
-		JPanel timePanel = buildTimePanel(currentActivity, canBeModified);
+		JPanel timePanel = buildTimePanel(canBeModified);
 		JPanel instructorPanel = buildInstructorPanel(_index);
 		JPanel roomPanel = buildRoomPanel(_index);
 		JPanel fixingPanel = buildFixingPanel(_index);
@@ -292,7 +290,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return myPanel;
 	} // end buildUnityPanel
 
-	private JPanel buildTimePanel(String currentActivity, boolean canBeModified) {
+	private JPanel buildTimePanel(boolean canBeModified) {
 		JPanel myPanel = new JPanel();
 		myPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_TIMETABLE_NAME));
@@ -301,24 +299,24 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JPanel hourPanel = buildHourPanel();
 		String max = "limite: ";
 
-		SetOfActivities soa = _dModel.getSetOfActivities();
-		String activityName = DXToolsMethods.getToken4Activitiy(
-				currentActivity, ".", 0);
-		DResource activityResource = soa.getResource(activityName);
-		Activity activity = (Activity) activityResource.getAttach();
+		// SetOfActivities soa = _dModel.getSetOfActivities();
+		// String activityName = DXToolsMethods.getToken4Activitiy(
+		// / currentActivity, ".", 0);
+		// DResource activityResource = soa.getResource(activityName);
+		// Activity activity = (Activity) activityResource.getAttach();
 
 		// RGR RGR
 		EventAttach event = (EventAttach) ((DResource) _events
 				.get(_currentActivityIndex)).getAttach();
-		
-//		SetOfEvents soe = _dModel.getSetOfEvents();
-//
-//		DResource eResource = soe.getResource(activityName);
-//		EventAttach ea = (EventAttach) eResource.getAttach();
+
+		// SetOfEvents soe = _dModel.getSetOfEvents();
+		//
+		// DResource eResource = soe.getResource(activityName);
+		// EventAttach ea = (EventAttach) eResource.getAttach();
 
 		// RGR RGR
 
-//		JLabel jlb = new JLabel(max + activity.getCapacityLimit());
+		// JLabel jlb = new JLabel(max + activity.getCapacityLimit());
 
 		JLabel jlb = new JLabel(max + event.getCapacityLimit());
 
@@ -624,7 +622,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	} // end getSelectedHour
 
 	private Vector makeVector(JList jList) {
-		Vector v = new Vector();
+		Vector<Object> v = new Vector<Object>();
 		if (jList != null) {
 			for (int i = 0; i < jList.getModel().getSize(); i++)
 				v.add(jList.getModel().getElementAt(i));
@@ -664,7 +662,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector getEventsVector(String activityName) {
 
-		Vector <DResource>events = new Vector<DResource>();
+		Vector<DResource> events = new Vector<DResource>();
 		String actID = DXToolsMethods.getToken4Activitiy(activityName, ".", 0);
 		String typID = DXToolsMethods.getToken4Activitiy(activityName, ".", 1);
 
@@ -1053,7 +1051,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		event.setState(state);
 		event.setRoomFunction((int) roomFunction.getKey());
 
-		Vector vect = new Vector();
+		Vector<Object> vect = new Vector<Object>();
 		vect.add(_events.get(_currentActivityIndex));
 		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
 				vect);
@@ -1089,7 +1087,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	}
 
 	private Vector buildThePeriods(int size) {
-		Vector v = new Vector();
+		Vector<String> v = new Vector<String>();
 		for (int i = 0; i <= size; i++) {
 			v.addElement(Integer.toString(i));
 		}

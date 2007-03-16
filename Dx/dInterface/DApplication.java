@@ -89,7 +89,7 @@ public class DApplication { // implements ActionListener {
 
 	public static boolean _inDevelopment;
 
-	//  Singleton
+	// Singleton
 	private static DApplication _instance = null;
 
 	/* ZERO is needed to fix Frame Location (origin) */
@@ -145,7 +145,6 @@ public class DApplication { // implements ActionListener {
 		_inDevelopment = false;
 	}
 
-	
 	// sigleton only one instance
 	public static DApplication getInstance() {
 		if (_instance == null) {
@@ -154,8 +153,6 @@ public class DApplication { // implements ActionListener {
 		return _instance;
 	}
 
-	
-	
 	public void doIt(String[] args) {
 		if (args.length > 0) {
 			lookUpforOption(args);
@@ -171,7 +168,6 @@ public class DApplication { // implements ActionListener {
 		_logger.warn("bye_from DApplication"); // this must be the end of an
 		// execution
 	}
-
 
 	private void lookUpforOption(String[] args) {
 		if (args[0].compareTo("-d") == 0) {
@@ -195,7 +191,7 @@ public class DApplication { // implements ActionListener {
 		JPanel panel = new JPanel(new BorderLayout(0, 0));
 		jFrame.setContentPane(panel);
 		_dxMenuBar = new DxMenuBar(this); // constructs the menu bar
-		jFrame.setJMenuBar(_dxMenuBar); 
+		jFrame.setJMenuBar(_dxMenuBar);
 
 		_toolBar = new DToolBar(this); // constucts the tool bar
 		jFrame.getContentPane().add(_toolBar, BorderLayout.NORTH);
@@ -205,7 +201,7 @@ public class DApplication { // implements ActionListener {
 		_jDesktopPane.setOpaque(false);
 		_jDesktopPane.setDesktopManager(new DefaultDesktopManager());
 		panel.add(_jDesktopPane, BorderLayout.CENTER);
-		
+
 		jFrame.setLocation(ZERO, ZERO);
 		panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -320,16 +316,16 @@ public class DApplication { // implements ActionListener {
 		SwingUtilities.updateComponentTreeUI(_jFrame);
 	}
 
-//	public void constructToolBar() {
-//		_tbar = new DToolBar(this); // constucts the tool bar
-//		_tbar.updateUI();
-//
-//		//_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
-//		// panel.add(_tbar,BorderLayout.NORTH);
-//		//_tbar.updateUI();
-//		updateLAF(_preferences._lookAndFeel);
-//
-//	}
+	// public void constructToolBar() {
+	// _tbar = new DToolBar(this); // constucts the tool bar
+	// _tbar.updateUI();
+	//
+	// //_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
+	// // panel.add(_tbar,BorderLayout.NORTH);
+	// //_tbar.updateUI();
+	// updateLAF(_preferences._lookAndFeel);
+	//
+	// }
 
 	/**
 	 * Closes the document(s) and the application. Use this method for
@@ -368,7 +364,6 @@ public class DApplication { // implements ActionListener {
 	public DModel getCurrentDModel() {
 		return getCurrentDxDoc().getCurrentDModel();
 	}
-
 
 	public void setCursorWait() {
 		if (_jFrame != null)
@@ -412,7 +407,8 @@ public class DApplication { // implements ActionListener {
 		this.setCurrentDir(_fileToOpen);
 		try {
 			this.getDMediator().addDxTTExamDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen, DConst.EXAM);
+					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
+					DConst.EXAM);
 		} catch (DxException e) {
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 		} catch (Exception e) {
@@ -645,12 +641,12 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * 
 	 */
-	public void assignEvents() {		
-			if (DxFlags.newEditEventDlg) {
-				new DxEventsDlg(this);
-			} else {
-				new EventsDlg(this);
-			}
+	public void assignEvents() {
+		if (DxFlags.newEditEventDlg) {
+			new DxEventsDlg(this);
+		} else {
+			new EventsDlg(this);
+		}
 	}
 
 	/**
@@ -815,8 +811,9 @@ public class DApplication { // implements ActionListener {
 	public void myTestFile() {
 		setCurrentDir(".\\dataTest\\");
 		try {
-			_dMediator.addDxTTableDoc("", ".\\dataTest\\assignRooms.dia");
-			System.out.println("path: "+ getCurrentDir()+ "\\assignRooms.dia");
+			_dMediator.addDxTTableDoc("", ".\\devData\\hETE_flsh170min.dia");
+			System.out
+					.println("path: " + getCurrentDir() + "\\hETE_flsh170min.dia");
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 		}
@@ -839,12 +836,12 @@ public class DApplication { // implements ActionListener {
 		_dxMenuBar.showAllMenus();
 	}
 
-//	/**
-//	 * 
-//	 */
-//	public void conflictsOfAnEvent() {
-//		new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
-//	}
+	// /**
+	// *
+	// */
+	// public void conflictsOfAnEvent() {
+	// new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
+	// }
 
 	/**
 	 * 

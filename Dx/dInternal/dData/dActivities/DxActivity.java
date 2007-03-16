@@ -9,14 +9,14 @@ public class DxActivity extends DxResource {
 
 	private boolean _bVisibility;
 
-//	private String _sIdemLine;
+	// private String _sIdemLine;
 
 	private int _nCapacity;
 
 	public DxActivity(String sActivityName) {
 		super(_lUniqueKey++, sActivityName);
 		_dxsotTypes = new DxSetOfTypes();
-//		_sIdemLine = "";
+		// _sIdemLine = "";
 		_bVisibility = false;
 		_nCapacity = 0;
 	}
@@ -33,10 +33,10 @@ public class DxActivity extends DxResource {
 		return _bVisibility;
 	}
 
-//	public void setIdemLine(String sIdemLine) {
-//		_sIdemLine = sIdemLine;
-//
-//	}
+	// public void setIdemLine(String sIdemLine) {
+	// _sIdemLine = sIdemLine;
+	//
+	// }
 
 	public DxType getType(String sTypeName) {
 		return _dxsotTypes.getType(sTypeName);
@@ -57,8 +57,8 @@ public class DxActivity extends DxResource {
 	public int getCapacity() {
 		return _nCapacity;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return this.getName();
 	}
 

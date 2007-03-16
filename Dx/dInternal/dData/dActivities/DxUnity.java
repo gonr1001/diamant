@@ -36,7 +36,7 @@ public class DxUnity extends DxResource {
 
 	}
 
-	public Iterator<DxAssignement> getAssignementsIterator() {
+	public Iterator getAssignementsIterator() {
 		return _dxsoassAssign.iterator();
 	}
 
@@ -60,7 +60,7 @@ public class DxUnity extends DxResource {
 	public DxAssignement getAssignement(String sAssignementName) {
 		return _dxsoassAssign.getAssignement(sAssignementName);
 	}
-	
+
 	public DxAssignement getAssignement(long lAssignementKey) {
 		return _dxsoassAssign.getAssignement(lAssignementKey);
 	}

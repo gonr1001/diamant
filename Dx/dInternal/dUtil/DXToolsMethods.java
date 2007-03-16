@@ -146,59 +146,49 @@ public class DXToolsMethods {
 	}
 
 	/**
-	 * Convert periods and STI Time
-	 * @param int[2] the first element of the table is hour and the second element
-	 *  is minute
-	 * @return  int the reference period
-	 * */
-//	public final static int convertSTIPeriods(int hour, int minute) {
-//		minute += 0;
-//		return hour - 7;
-//	}
-
-
-
-	/**
 	 *
 	 * @param initialAvail
 	 * @param tt
 	 * @return
 	 */
-public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure tt){
-    //check if is upper, lower or nothing operation
-   // int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
-    if(initialAvail[0].length== tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
-     // UpperLower=0;
-      return initialAvail;
-    }
-    else if(initialAvail[0].length > tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
-      //UpperLower=-1;
-    }
-    else if(initialAvail[0].length< tt.getCurrentCycle().getMaxNumberOfPeriodsADay()) {
-      //UpperLower=1;
-    }
+	public final static int[][] resizeAvailability(int[][] initialAvail,
+			TTStructure tt) {
+		//check if is upper, lower or nothing operation
+		// int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
+		if (initialAvail[0].length == tt.getCurrentCycle()
+				.getMaxNumberOfPeriodsADay()) {
+			// UpperLower=0;
+			return initialAvail;
+		} else if (initialAvail[0].length > tt.getCurrentCycle()
+				.getMaxNumberOfPeriodsADay()) {
+			//UpperLower=-1;
+		} else if (initialAvail[0].length < tt.getCurrentCycle()
+				.getMaxNumberOfPeriodsADay()) {
+			//UpperLower=1;
+		}
 
-    Day day;
-    Period per;
-    int[][] finalAvail= new int [tt.getNumberOfActiveDays()]
-                      [tt.getCurrentCycle().getMaxNumberOfPeriodsADay()];
-    for (int h=0; h < tt.getNumberOfActiveDays(); h++){
-      int itr=0;
-      day = tt.getCurrentCycle().getDayByIndex(h);
-      for (int i=0; i< day.getSetOfSequences().size(); i++){
-        for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++){
-          per = day.getSequence(i).getPeriodByIndex(j);
-          boolean avail = isAvailableInRange(initialAvail,h,per);//,tt.getPeriodLenght());
-          if (avail)
-            finalAvail[h][itr]=1;
-          else
-            finalAvail[h][itr]=5;
-          itr++;
-        }//end for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++)
-      }// end for (int i=0; i< day.getSetOfSequences().size(); i++)
-    }// end
-    return finalAvail;
-  }
+		Day day;
+		Period per;
+		int[][] finalAvail = new int[tt.getNumberOfActiveDays()][tt
+				.getCurrentCycle().getMaxNumberOfPeriodsADay()];
+		for (int h = 0; h < tt.getNumberOfActiveDays(); h++) {
+			int itr = 0;
+			day = tt.getCurrentCycle().getDayByIndex(h);
+			for (int i = 0; i < day.getSetOfSequences().size(); i++) {
+				for (int j = 0; j < day.getSequence(i).getSetOfPeriods().size(); j++) {
+					per = day.getSequence(i).getPeriodByIndex(j);
+					boolean avail = isAvailableInRange(initialAvail, h, per);//,tt.getPeriodLenght());
+					if (avail)
+						finalAvail[h][itr] = 1;
+					else
+						finalAvail[h][itr] = 5;
+					itr++;
+				}//end for (int j=0; j< day.getSequence(i).getSetOfPeriods().size(); j++)
+			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+		}// end
+		return finalAvail;
+	}
+
 	/**
 	 * check the state availability in the range
 	 * @param initial the availability matrix
@@ -209,8 +199,8 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 	 * @return boolean
 	 */
 	private static boolean isAvailableInRange(int[][] initial, int day,
-			Period per){
-			//, int periodLenght) {//, int up_low){
+			Period per) {
+		//, int periodLenght) {//, int up_low){
 		int[] beginH = per.getBeginHour();
 		int[] endH = per.getEndHour();
 		int beginIndex;
@@ -270,7 +260,6 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 	public final static String removeToken(String str, String delimiter,
 			int position) {
 		StringTokenizer strToken = new StringTokenizer(str, delimiter);
-		//int nbTokens= strToken.countTokens();
 		String res = "";
 		int inc = 0;
 		while (strToken.hasMoreElements()) {
@@ -292,7 +281,7 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 		return strToken.countTokens();
 
 	}
-	
+
 	/**
 	 * give the relative path of a file
 	 * Exemple:
@@ -319,7 +308,8 @@ public final static int[][] resizeAvailability(int[][] initialAvail, TTStructure
 		return str.substring(str.lastIndexOf(File.separator) + 1, str.length());
 	} // end getRelativeFileName
 
-	public static String getToken4Activitiy(String activityName, String delimiter, int position) {
+	public static String getToken4Activitiy(String activityName,
+			String delimiter, int position) {
 		StringTokenizer strToken = new StringTokenizer(activityName, delimiter);
 		int nbTokens = strToken.countTokens();
 		for (int i = 0; i < nbTokens; i++) {

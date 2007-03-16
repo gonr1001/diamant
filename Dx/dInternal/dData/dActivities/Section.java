@@ -13,14 +13,14 @@ import dInternal.dData.StandardCollection;
 
 public class Section extends DObject {
 
-	/**the bloc list*/
+	/** the bloc list */
 	private DSetOfResources _blocList;
 
-	int _capacityLimit;
+	private int _capacityLimit;
 
 	/**
 	 * Constructor
-	 * */
+	 */
 	public Section() {
 		_blocList = new StandardCollection();
 	}
@@ -46,21 +46,26 @@ public class Section extends DObject {
 
 	/**
 	 * add a bloc object in the list
-	 * @param String the ID of the bloc
+	 * 
+	 * @param String
+	 *            the ID of the bloc
 	 * @return boolean result of the operation
-	 * */
+	 */
 	public boolean addUnity(String id) {
 		Unity bloc = new Unity();
-		//Resource actBloc = new Resource(id,bloc);
+		// Resource actBloc = new Resource(id,bloc);
 		return _blocList.addResource(new DResource(id, bloc), 1);
 	}
 
 	/**
 	 * add a bloc object in the list
-	 * @param String the ID of the bloc
-	 * @param int the number of cycle in de TTStructure
+	 * 
+	 * @param String
+	 *            the ID of the bloc
+	 * @param int
+	 *            the number of cycle in de TTStructure
 	 * @return boolean result of the operation
-	 * */
+	 */
 	public boolean addUnity(String id, int NumberOfCycle,
 			boolean isManualCreated) {
 		_blocList.sortSetOfResourcesByID();
@@ -78,65 +83,78 @@ public class Section extends DObject {
 
 	/**
 	 * add a bloc object in the list
-	 * @param String the ID of the bloc
-	 * @param Bloc the bloc to be added
+	 * 
+	 * @param String
+	 *            the ID of the bloc
+	 * @param Bloc
+	 *            the bloc to be added
 	 * @return boolean result of the operation
-	 * */
+	 */
 	public boolean addUnity(String id, Unity unity) {
-		//Resource actBloc = new Resource(id,bloc);
 		return _blocList.addResource(new DResource(id, unity), 1);
 	}
 
 	/**
 	 * remove a bloc object from de list
-	 * @param String the ID of the bloc
+	 * 
+	 * @param String
+	 *            the ID of the bloc
 	 * @return boolean result of the operation
-	 * */
+	 */
 	public boolean removeUnity(String id) {
 		return _blocList.removeResource(id);
 	}
 
 	/**
 	 * set a bloc object in the list
-	 * @param Resource the bloc resource
+	 * 
+	 * @param Resource
+	 *            the bloc resource
 	 * @return boolean result of the operation
-	 * */
+	 */
 	public boolean setUnity(DResource section) {
 		return _blocList.setResource(section);
 	}
 
 	/**
 	 * return a bloc object from de the list
-	 * @param String the ID of the bloc
+	 * 
+	 * @param String
+	 *            the ID of the bloc
 	 * @return Resource the nature object
-	 * */
+	 */
 	public DResource getUnity(String id) {
 		return _blocList.getResource(id);
 	}
 
 	/**
 	 * return a bloc object from de the list
-	 * @param String the ID of the bloc
+	 * 
+	 * @param String
+	 *            the ID of the bloc
 	 * @return Resource the nature object
-	 * */
+	 */
 	public DSetOfResources getSetOfUnities() {
 		return _blocList;
 	}
 
 	/**
-	 *This object (which is already a string!) is itself returned.
+	 * This object (which is already a string!) is itself returned.
+	 * 
 	 * @return the string itself
-	 * */
+	 */
 	public String toWrite() {
 		return _blocList.toWrite();
 	}
 
 	/**
 	 * compare this resource with the specified resource
-	 * @param resource the specified resource
-	 * @return bolean true if this resource and the specified resource are equals
-	 * false if they are not equals
-	 * */
+	 * 
+	 * @param resource
+	 *            the specified resource
+	 * @return bolean true if this resource and the specified resource are
+	 *         equals false if they are not equals
+	 */
 	public boolean isEquals(DObject sec) {
 		Section section = (Section) sec;
 		if (!this._blocList.isEquals(section._blocList))
@@ -144,7 +162,9 @@ public class Section extends DObject {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInternal.DObject#getSelectedField()
 	 */
 	public long getSelectedField() {

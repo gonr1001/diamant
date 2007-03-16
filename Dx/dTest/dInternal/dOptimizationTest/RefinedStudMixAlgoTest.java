@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgoTest $Revision: 1.8 $ $Date: 2006-12-31 18:09:55 $
+ * Title: RefinedStudMixAlgoTest $Revision: 1.9 $ $Date: 2007-03-16 22:16:22 $
  * Description: RefinedStudMixAlgoTest is a class used to test the class
  * 				RefinedStudMixAlgo 
  * 
@@ -82,7 +82,7 @@ public class RefinedStudMixAlgoTest extends TestCase {
 	} // end suite
 
 	public void test_build() {
-		// _refined.build();
-		// assertEquals("test_build: assertEquals", "", _dm1);
+//		 _refined.build();
+//	 assertEquals("test_build: assertEquals", "", _dm1);
 	}
 }

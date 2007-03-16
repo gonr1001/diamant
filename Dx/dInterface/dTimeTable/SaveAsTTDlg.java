@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.20 $  $Date: 2007-01-05 20:14:26 $
+ * Title: SaveAsTTDlg $Revision: 1.21 $  $Date: 2007-03-16 22:16:18 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -52,7 +52,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 		saveAs(null, false); // no data, no report
 	} // end constructor
 
-	public void addInNewFile(String currentFile, String data) {
+	public void addInNewFile(String currentFile) {// , String data) {
 		String error = _dApplic.saveCurrentDxDoc(currentFile);
 		if (error != "")
 			new DxExceptionDlg(error);
@@ -72,7 +72,7 @@ public class SaveAsTTDlg extends SaveAsDlg {
 			fc.setFileFilter(new DFileFilter(new String[] { DConst.XML },
 					DConst.XML_FILE));
 			return DConst.DOT_XML;
-		} // else 
+		} // else
 		fc.setFileFilter(new DFileFilter(new String[] { DConst.DOT_DIA },
 				DConst.DIA_FILE));
 		return DConst.DOT_DIA;
