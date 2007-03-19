@@ -146,7 +146,6 @@ public class SetOfEvents extends DSetOfResources {
 
 		if (roomIndex != -1) {
 			roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
-			// assignment.setRoomKey(roomKey);
 		} else {
 			roomKey = -1;
 			DValue error = new DValue();

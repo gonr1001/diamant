@@ -660,9 +660,9 @@ public class DModel extends Observable {
 			// }// end for (int j = 0; j < sor.size(); j++)
 			// }// end for (int i = 0; i < _setOfSites
 		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
-			DxSite dxsCurrentSite = _dxSetOfSites.getSite(_currentSite);
-			if (dxsCurrentSite != null) {
-				dxsorTmp = dxsCurrentSite.getAllRooms();
+//			DxSite dxsCurrentSite = _dxSetOfSites.getSite(_currentSite);
+//			if (dxsCurrentSite != null) {
+//				dxsorTmp = dxsCurrentSite.getAllRooms();
 				// DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
 				// Iterator itCategory = dxsoc.iterator();
 				// DxSetOfRooms dxsor;
@@ -670,7 +670,8 @@ public class DModel extends Observable {
 				// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
 				// dxsorTmp.addSetOfRooms(dxsor);
 				// }
-			}
+			dxsorTmp = _dxSetOfSites.getAllRooms();
+//			}
 		}
 		return dxsorTmp;
 	}
