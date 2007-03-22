@@ -416,7 +416,6 @@ public class DLoadData {
 				_roomsList = new SetOfSites();
 				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 				if (_roomsList.analyseTokens(de, 3)) {
-					// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
 					_roomsList.buildSetOfResources(de, 3);
 				}
 			} else {

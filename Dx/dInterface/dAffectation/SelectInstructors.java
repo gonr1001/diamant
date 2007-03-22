@@ -42,10 +42,8 @@ import javax.swing.JPanel;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-//import dInterface.dAssignementDlgs.DxEditActivityDlg;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
-//import dInterface.dAffectation.EditActivityDlg;
-import dInterface.dAffectation.EditEventDlg;
+
 
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
@@ -105,33 +103,33 @@ public class SelectInstructors extends JDialog implements ActionListener {
 //		setVisible(true);
 //	}
 
-	/*
-	 * Constructeur
-	 * il est utilisé par la classe EditEventDlg pour manipuler
-	 * les enseignants
-	 * @param DApplication le noeud pere de l'application
-	 * @param EditEventDlg eEventd est le dialogue père
-	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
-	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
-	 */
-	public SelectInstructors(DApplication dApplic, DxEditEventDlg dxEEventDlg,
-			Vector leftVec, Vector rightVec) {
-		
-		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg	
-//		int FACTOR = 50;
-		_dxEEventDlg = dxEEventDlg;
-		_leftVec = leftVec;
-		_rightVec = rightVec;
-		for (int i = 0; i < _leftVec.size(); i++)
-			_rightVec.remove(_leftVec.get(i).toString());
-		
-//		this.setBounds(screenSize.width / 4, screenSize.height / 4,
-//				screenSize.width / 3, screenSize.height / 2 + FACTOR);initialize();
-		setLocationRelativeTo(dApplic.getJFrame());
-//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		
-		setVisible(true);
-	}
+//	/*
+//	 * Constructeur
+//	 * il est utilisé par la classe EditEventDlg pour manipuler
+//	 * les enseignants
+//	 * @param DApplication le noeud pere de l'application
+//	 * @param EditEventDlg eEventd est le dialogue père
+//	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
+//	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
+//	 */
+//	public SelectInstructors(DApplication dApplic, DxEditEventDlg dxEEventDlg,
+//			Vector leftVec, Vector rightVec) {
+//		
+//		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg	
+////		int FACTOR = 50;
+//		_dxEEventDlg = dxEEventDlg;
+//		_leftVec = leftVec;
+//		_rightVec = rightVec;
+//		for (int i = 0; i < _leftVec.size(); i++)
+//			_rightVec.remove(_leftVec.get(i).toString());
+//		
+////		this.setBounds(screenSize.width / 4, screenSize.height / 4,
+////				screenSize.width / 3, screenSize.height / 2 + FACTOR);initialize();
+//		setLocationRelativeTo(dApplic.getJFrame());
+////		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//		
+//		setVisible(true);
+//	}
 	
 	public SelectInstructors(DxEditEventDlg dxEEventDlg,
 			Vector leftVec, Vector rightVec) {
@@ -168,15 +166,15 @@ public class SelectInstructors extends JDialog implements ActionListener {
 //		setVisible(true);
 //	}
 
-	/*
-	 * Constructeur
-	 * il est utilisé par la classe EditEventDlg pour manipuler
-	 * les enseignants
-	 * @param DApplication le noeud pere de l'application
-	 * @param EditEventDlg eEventd est le dialogue père
-	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
-	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
-	 */
+//	/*
+//	 * Constructeur
+//	 * il est utilisé par la classe EditEventDlg pour manipuler
+//	 * les enseignants
+//	 * @param DApplication le noeud pere de l'application
+//	 * @param EditEventDlg eEventd est le dialogue père
+//	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
+//	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
+//	 */
 	public SelectInstructors(DApplication dApplic, EditEventDlg eEventd,
 			Vector leftVec, Vector rightVec) {
 		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
@@ -190,6 +188,10 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		setLocationRelativeTo(dApplic.getJFrame());
 		setVisible(true);
 	}
+
+//	public SelectInstructors(DApplication applic, EditEventDlg dlg, Vector vector, Vector vector2) {
+//		// TODO Auto-generated constructor stub
+//	}
 
 	/**
 	 * Initialize the dialog

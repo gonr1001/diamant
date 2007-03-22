@@ -94,8 +94,11 @@ public class SetOfEventsTest extends TestCase {
 		long roomKey = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getRoomKey();
 		if (DxFlags.newRooms) {
-			assertEquals("test_RoomInEvent : ", "D73020", _dm.getDxSetOfRooms()
-					.getRoomName(roomKey));
+			// 22mars07
+// assertEquals("test_RoomInEvent : ", "D73020", _dm.getDxSetOfRooms()
+// .getRoomName(roomKey));
+			assertEquals("test_RoomInEvent : ", "D73020", _dm.getDxSetOfSites().getResourceName(roomKey));
+// .getRoomName(roomKey));
 		} else {
 			assertEquals("test_RoomInEvent : ", "D73020", _dm.getSetOfRooms()
 					.getResource(roomKey).getID());
@@ -341,4 +344,19 @@ public class SetOfEventsTest extends TestCase {
 
 	}
 
-} //end SetOfEventsTest
+	/**
+	 * test the rooms key of the first event of the setofevents
+	 */
+	public void test_capacityOfAnEvent() {
+		EventAttach event = (EventAttach) _dm.getSetOfEvents().getResourceAt(0)
+				.getAttach();
+		assertEquals("test_capacityOfAnEvent 0 : ", 17, event
+				.getCapacityLimit());
+
+		event = (EventAttach) _dm.getSetOfEvents().getResourceAt(1).getAttach();
+		assertEquals("test_capacityOfAnEvent 1: ", 52, event.getCapacityLimit());
+		event = (EventAttach) _dm.getSetOfEvents().getResourceAt(2).getAttach();
+		assertEquals("test_capacityOfAnEvent 2: ", 33, event.getCapacityLimit());
+	}
+
+} // end SetOfEventsTest

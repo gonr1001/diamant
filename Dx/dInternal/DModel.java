@@ -46,7 +46,6 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
-import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfCategories;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -645,35 +644,35 @@ public class DModel extends Observable {
 	}
 
 	public DxSetOfRooms getDxSetOfRooms() {
-		DxSetOfRooms dxsorTmp = null;
-		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
-			dxsorTmp = _dxSetOfSites.getAllRooms();
-			// Iterator itSites = _dxSetOfSites.iterator();
-			// DxSetOfCategories dxsoc;
-			// DxSetOfRooms dxsor;
-			// while (itSites.hasNext()) {
-			// dxsoc = ((DxSite) itSites.next()).getSetOfCat();
-			// Iterator itCategory = dxsoc.iterator();
-			// while (itCategory.hasNext()) {
-			// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
-			// dxsorTmp.addSetOfRooms(dxsor);
-			// }// end for (int j = 0; j < sor.size(); j++)
-			// }// end for (int i = 0; i < _setOfSites
-		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
-//			DxSite dxsCurrentSite = _dxSetOfSites.getSite(_currentSite);
-//			if (dxsCurrentSite != null) {
-//				dxsorTmp = dxsCurrentSite.getAllRooms();
-				// DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
-				// Iterator itCategory = dxsoc.iterator();
-				// DxSetOfRooms dxsor;
-				// while (itCategory.hasNext()) {
-				// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
-				// dxsorTmp.addSetOfRooms(dxsor);
-				// }
-			dxsorTmp = _dxSetOfSites.getAllRooms();
-//			}
-		}
-		return dxsorTmp;
+////		DxSetOfRooms dxsorTmp = new DxSetOfRooms();
+////		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
+////			dxsorTmp = _dxSetOfSites.getAllRooms();
+////			// Iterator itSites = _dxSetOfSites.iterator();
+////			// DxSetOfCategories dxsoc;
+////			// DxSetOfRooms dxsor;
+////			// while (itSites.hasNext()) {
+////			// dxsoc = ((DxSite) itSites.next()).getSetOfCat();
+////			// Iterator itCategory = dxsoc.iterator();
+////			// while (itCategory.hasNext()) {
+////			// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
+////			// dxsorTmp.addSetOfRooms(dxsor);
+////			// }// end for (int j = 0; j < sor.size(); j++)
+////			// }// end for (int i = 0; i < _setOfSites
+////		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
+////		// DxSite dxsCurrentSite = _dxSetOfSites.getSite(_currentSite);
+////		// if (dxsCurrentSite != null) {
+////		// dxsorTmp = dxsCurrentSite.getAllRooms();
+////			// DxSetOfCategories dxsoc = dxsCurrentSite.getSetOfCat();
+////			// Iterator itCategory = dxsoc.iterator();
+////			// DxSetOfRooms dxsor;
+////			// while (itCategory.hasNext()) {
+////			// dxsor = ((DxCategory) itCategory.next()).getSetOfRooms();
+////			// dxsorTmp.addSetOfRooms(dxsor);
+////			// }
+////			dxsorTmp = _dxSetOfSites.getAllRooms();
+////			// }
+////		}
+		return _dxSetOfSites.getAllRooms();
 	}
 
 	/**
@@ -1110,7 +1109,8 @@ public class DModel extends Observable {
 	 * @param ofSites
 	 */
 	public void resizeSiteAvailability() {// DxSetOfSites dxSetOfSites) {
-		DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
+//		DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
+		DxSetOfRooms dxrAllRooms = _dxSetOfSites.getAllRooms();
 		Iterator itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();

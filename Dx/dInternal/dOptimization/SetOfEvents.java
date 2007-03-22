@@ -161,10 +161,13 @@ public class SetOfEvents extends DSetOfResources {
 
 	private long assignDxRooms(DSetOfResources soie, Assignment assignment,
 			String unityID) {
-		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
-				assignment.getRoomName());
+//		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
+//				assignment.getRoomName());
 //		long roomKey = _dm.getDxSetOfSites().getAllRooms().getRoomKeyByName(
 //				assignment.getRoomName());
+		long roomKey = _dm.getDxSetOfSites().getResourceKey(
+			assignment.getRoomName());
+		
 		if (roomKey == -1) {
 			DValue error = new DValue();
 			String str = assignment.getRoomName();
@@ -276,7 +279,7 @@ public class SetOfEvents extends DSetOfResources {
 			}// end for
 
 			if (DxFlags.newRooms) {
-				assignment.setRoom(getDxRoomName(_dm.getDxSetOfRooms(), event
+				assignment.setRoom(getDxRoomName(_dm.getDxSetOfSites(), event
 						.getRoomKey()));
 			} else {
 				assignment.setRoom(getRoomName(_dm.getSetOfRooms(), event
@@ -358,17 +361,23 @@ public class SetOfEvents extends DSetOfResources {
 	 */
 	private String getDxRoomName(DxSetOfRooms sor, long eltkey) {
 		if (eltkey != -1) {
-//			return sor.getResource(eltkey).getID();
 			return sor.getResourceName(eltkey);
 		}
 		return DConst.NO_ROOM_INTERNAL;
 	}
-//	private String getRoomName(DxSetOfRooms dxsor, long eltkey) {
-//		if (eltkey != -1) {
-//			return dxsor.getRoomName(eltkey);
-//		}
-//		return DConst.NO_ROOM_INTERNAL;
-//	}
+	/**
+	 * get a resource key
+	 * 
+	 * @param soresc
+	 * @param elt
+	 * @return the resource key or -1 if key does not found
+	 */
+	private String getDxRoomName(DxSetOfSites sos, long eltkey) {
+		if (eltkey != -1) {
+			return sos.getResourceName(eltkey);
+		}
+		return DConst.NO_ROOM_INTERNAL;
+	}
 
 	/**
 	 * for two event in conflict

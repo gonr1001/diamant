@@ -366,11 +366,11 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JPanel myPanel = new JPanel(new BorderLayout());
 		JPanel roomPanel = new JPanel();
 
-		DxSetOfSites _dxsosSites = _dModel.getDxSetOfSites();
+		DxSetOfSites dxsosSites = _dModel.getDxSetOfSites();
 		roomPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_ROOM_NAME));
 		roomPanel.setLayout(new GridLayout(2, 2));
-		DefaultComboBoxModel _dcbmSites = new DefaultComboBoxModel(_dxsosSites
+		DefaultComboBoxModel _dcbmSites = new DefaultComboBoxModel(dxsosSites
 				.getSitesSortedByName());
 		_cbSites = new JComboBox(_dcbmSites);
 		_cbSites.addItemListener(this);

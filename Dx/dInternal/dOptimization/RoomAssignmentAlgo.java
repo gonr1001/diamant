@@ -3,13 +3,11 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
-import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.Room;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.SetOfStudents;
@@ -108,29 +106,29 @@ public class RoomAssignmentAlgo implements Algorithm {
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
 		SetOfEvents soe = _dm.getSetOfEvents();
-		DxSetOfRooms dxsor;
-		SetOfRooms sor;
-		if (DxFlags.newRooms)
-			dxsor = _dm.getDxSetOfRooms();
-		else
-			sor = _dm.getSetOfRooms();
+//		DxSetOfRooms dxsor;
+		SetOfRooms sor =_dm.getSetOfRooms();
+//		if (DxFlags.newRooms)
+//			dxsor = _dm.getDxSetOfRooms();
+//		else
+//			sor = _dm.getSetOfRooms();
 
 		// int TOKEN_RANGE = 0;
 		int ADD_RESOURCE_BY_KEY = 0;
 		// int numberOfStudents;
 
-		if (DxFlags.newRooms)
-			for (int i = 0; i < dxsor.size(); i++) {
-//				setOfAvailRooms.setCurrentKey(dxsor..getKey());
-//				setOfAvailRooms.addResource(dxsor.getResource(lKey).getResourceAt(i),
-//						ADD_RESOURCE_BY_KEY);
-			}
-		else {
+//		if (DxFlags.newRooms)
+//			for (int i = 0; i < dxsor.size(); i++) {
+////				setOfAvailRooms.setCurrentKey(dxsor..getKey());
+////				setOfAvailRooms.addResource(dxsor.getResource(lKey).getResourceAt(i),
+////						ADD_RESOURCE_BY_KEY);
+//			}
+//		else {
 			for (int i = 0; i < sor.size(); i++) {
 				setOfAvailRooms.setCurrentKey(sor.getResourceAt(i).getKey());
 				setOfAvailRooms.addResource(sor.getResourceAt(i),
 						ADD_RESOURCE_BY_KEY);
-			}
+//			}
 		}
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
