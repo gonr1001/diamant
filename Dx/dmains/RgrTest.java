@@ -22,10 +22,14 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-//import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
-//import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
-import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
-import dTest.dInternal.dOptimizationTest.EventAttachTest;
+
+
+import dTest.dInternal.DxStateBarModelTest;
+import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
+import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
+import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
+
+import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 
 /**
@@ -55,11 +59,12 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("rgrTest");
-//		suite.addTest(DxAssignAllAlgTest.suite());
-//		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DxEditEventDlgTest.suite());
-		suite.addTest(EventAttachTest.suite());
+		suite.addTest(DxSetOfSitesTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
+		suite.addTest(DxStateBarModelTest.suite());
 		System.out.println("Bye I was in rgrTest");
 		return suite;
 	}

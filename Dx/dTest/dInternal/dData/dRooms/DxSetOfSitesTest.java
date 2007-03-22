@@ -12,13 +12,16 @@ import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import eLib.exit.exception.DxException;
 
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class DxSetOfSitesTest extends TestCase {
-	DxSetOfSites _dxsosSingle, _dxsosMulti, _dxsosDia;
+	DxSetOfSites _dxsosSingle;
+
+	DxSetOfSites _dxsosMulti;
+
+	DxSetOfSites _dxsosFlsh;
 
 	public DxSetOfSitesTest(String name) {
 		super(name);
@@ -30,17 +33,17 @@ public class DxSetOfSitesTest extends TestCase {
 		try {
 			dataloaded = ld.filterBadChars(path);
 		} catch (DxException e1) {
-			// TODO Auto-generated catch block
+			// normally no exception
 			e1.printStackTrace();
 		}
-		
+
 		DataExchange de = ld.buildDataExchange(dataloaded);
 		DxSiteReader dxsr = new DxReadSite1dot5(de);
 
 		try {
 			_dxsosSingle = dxsr.readSetOfSites();
 		} catch (DxException e) {
-			// TODO Auto-generated catch block
+			// normally no exception
 			e.printStackTrace();
 		}
 
@@ -49,7 +52,7 @@ public class DxSetOfSitesTest extends TestCase {
 		try {
 			dataloaded = ld.filterBadChars(path);
 		} catch (DxException e1) {
-			// TODO Auto-generated catch block
+			// normally no exception
 			e1.printStackTrace();
 		}
 		de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(dataloaded));
@@ -58,7 +61,25 @@ public class DxSetOfSitesTest extends TestCase {
 		try {
 			_dxsosMulti = dxsr.readSetOfSites();
 		} catch (DxException e) {
-			// TODO Auto-generated catch block
+			// normally no exception
+			e.printStackTrace();
+		}
+
+		path = "." + File.separator + "dataTest" + File.separator
+				+ "locauxFlsh.txt";
+		try {
+			dataloaded = ld.filterBadChars(path);
+		} catch (DxException e1) {
+			// normally no exception
+			e1.printStackTrace();
+		}
+		de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(dataloaded));
+		dxsr = new DxReadSite1dot6(de);
+
+		try {
+			_dxsosFlsh = dxsr.readSetOfSites();
+		} catch (DxException e) {
+			// normally no exception
 			e.printStackTrace();
 		}
 		/*
@@ -163,7 +184,7 @@ public class DxSetOfSitesTest extends TestCase {
 						.getRoomsSortedByKey()[1].getCapacity());
 		assertEquals("test_12_getSetOfSitesMultiSite: asserEquals", 40,
 				_dxsosMulti.getRoomCapacity("SHE", "CAT2", "FM-3207"));
-		
+
 		assertNotNull("test_13_getSetOfSitesSingleSite: asserNotNull",
 				_dxsosMulti.getAllRooms().getRoom("Z7-2001"));
 		assertNotNull("test_14_getSetOfSitesSingleSite: asserNotNull",
@@ -174,7 +195,13 @@ public class DxSetOfSitesTest extends TestCase {
 				_dxsosMulti.getAllRooms().getRoom("130-6"));
 		assertNotNull("test_17_getSetOfSitesSingleSite: asserNotNull",
 				_dxsosMulti.getAllRooms().getRoom("101"));
-		
-	}
 
+	}
+	
+	
+	public void test_getSetOfSitesMultiCat() {
+		assertEquals("test1_getSetOfSitesMultiCat: asserEquals", 1,
+				_dxsosFlsh.getSiteCount());
+	}
+	
 }

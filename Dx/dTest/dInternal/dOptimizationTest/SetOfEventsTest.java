@@ -24,9 +24,9 @@ import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfEventsTest extends TestCase {
 
-	private DModel _dm;
+	private DModel _dmData5j;
 
-	private DModel _dm1;
+	private DModel _dmData7j;
 
 	private SetOfEvents _soe;
 
@@ -43,16 +43,16 @@ public class SetOfEventsTest extends TestCase {
 	public SetOfEventsTest(String name) {
 		super(name);
 		try {
-			_dm = new DModel(new DxTTableDoc(), "." + File.separator
+			_dmData5j = new DModel(new DxTTableDoc(), "." + File.separator
 					+ "dataTest" + File.separator + "loadData5j.dia");
-			_dm1 = new DModel(new DxTTableDoc(), "." + File.separator
+			_dmData7j = new DModel(new DxTTableDoc(), "." + File.separator
 					+ "dataTest" + File.separator + "assignRooms.dia");
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
 		}
-		_soe = _dm.getSetOfEvents();
-		_soe1 = _dm1.getSetOfEvents();
+		_soe = _dmData5j.getSetOfEvents();
+		_soe1 = _dmData7j.getSetOfEvents();
 	}
 
 	public static Test suite() {
@@ -68,7 +68,7 @@ public class SetOfEventsTest extends TestCase {
 		String pincKey = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getPrincipalRescKey();
 		StringTokenizer keys = new StringTokenizer(pincKey, ".");
-		String firstEvent = _dm.getSetOfActivities().getUnityCompleteName(
+		String firstEvent = _dmData5j.getSetOfActivities().getUnityCompleteName(
 				Long.parseLong(keys.nextToken()),
 				Long.parseLong(keys.nextToken()),
 				Long.parseLong(keys.nextToken()),
@@ -82,7 +82,7 @@ public class SetOfEventsTest extends TestCase {
 	public void test_InstructorInEvent() {
 		long insKey[] = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getInstructorKey();
-		assertEquals("test_InstructorInEvent : ", "THÉRIEN, NORMAND", _dm
+		assertEquals("test_InstructorInEvent : ", "THÉRIEN, NORMAND", _dmData5j
 				.getDxSetOfInstructors().getInstructorName(insKey[0]));
 
 	}
@@ -97,10 +97,10 @@ public class SetOfEventsTest extends TestCase {
 			// 22mars07
 // assertEquals("test_RoomInEvent : ", "D73020", _dm.getDxSetOfRooms()
 // .getRoomName(roomKey));
-			assertEquals("test_RoomInEvent : ", "D73020", _dm.getDxSetOfSites().getResourceName(roomKey));
+			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j.getDxSetOfSites().getResourceName(roomKey));
 // .getRoomName(roomKey));
 		} else {
-			assertEquals("test_RoomInEvent : ", "D73020", _dm.getSetOfRooms()
+			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j.getSetOfRooms()
 					.getResource(roomKey).getID());
 		}
 	}
@@ -109,7 +109,7 @@ public class SetOfEventsTest extends TestCase {
 	 * test the principal key of the first event of the setofevents
 	 */
 	public void test_addEvents() {
-		Cycle cycle = _dm1.getTTStructure().getCurrentCycle();
+		Cycle cycle = _dmData7j.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 		Period currentPeriod = cycle.getNextPeriod(1);
 		DSetOfResources newSetOfEvents = new StandardCollection();
@@ -135,7 +135,7 @@ public class SetOfEventsTest extends TestCase {
 				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 
 		int section = DxTools.STIConvertGroupToInt(secID);
-		SetOfStudents students = _dm1.getSetOfStudents();
+		SetOfStudents students = _dmData7j.getSetOfStudents();
 		Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
 		DResource resc = new DResource(Integer.toString(v.size()), eventAttach);
 		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
@@ -348,14 +348,14 @@ public class SetOfEventsTest extends TestCase {
 	 * test the rooms key of the first event of the setofevents
 	 */
 	public void test_capacityOfAnEvent() {
-		EventAttach event = (EventAttach) _dm.getSetOfEvents().getResourceAt(0)
+		EventAttach event = (EventAttach) _dmData5j.getSetOfEvents().getResourceAt(0)
 				.getAttach();
 		assertEquals("test_capacityOfAnEvent 0 : ", 17, event
 				.getCapacityLimit());
 
-		event = (EventAttach) _dm.getSetOfEvents().getResourceAt(1).getAttach();
+		event = (EventAttach) _dmData5j.getSetOfEvents().getResourceAt(1).getAttach();
 		assertEquals("test_capacityOfAnEvent 1: ", 52, event.getCapacityLimit());
-		event = (EventAttach) _dm.getSetOfEvents().getResourceAt(2).getAttach();
+		event = (EventAttach) _dmData5j.getSetOfEvents().getResourceAt(2).getAttach();
 		assertEquals("test_capacityOfAnEvent 2: ", 33, event.getCapacityLimit());
 	}
 
