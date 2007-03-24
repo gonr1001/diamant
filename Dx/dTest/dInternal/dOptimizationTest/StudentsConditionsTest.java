@@ -26,7 +26,7 @@ public class StudentsConditionsTest extends TestCase {
 			// Should not fail in tests
 			e.printStackTrace();
 		}
-		_dm1.buildSetOfEvents();
+//		_dm1.buildSetOfEvents();
 		_dm1.getConditionsTest().buildStudentConflictMatrix();
 		_dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
 
@@ -37,7 +37,7 @@ public class StudentsConditionsTest extends TestCase {
 			// Should not fail in tests
 			e.printStackTrace();
 		}
-		_dm2.buildSetOfEvents();
+//		_dm2.buildSetOfEvents();
 		_dm2.getConditionsTest().buildStudentConflictMatrix();
 		_dm2.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
 	}

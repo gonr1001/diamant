@@ -179,4 +179,25 @@ public class DxSite extends DxResource {
 		}
 		return dxsorAllRooms;
 	}
+	
+	
+	public DxSetOfCategories getAllDxCategories() {
+		return _dxsocCat;
+	}
+	
+	public DxSetOfRooms getAllDxRooms() {
+		DxSetOfRooms dxsorAllRooms = null;
+		DxCategory dxcCurrentCat;
+		Iterator itCategories = _dxsocCat.iterator();
+		while(itCategories.hasNext()){
+			dxcCurrentCat = (DxCategory)itCategories.next();
+			if(dxsorAllRooms == null){
+				dxsorAllRooms = dxcCurrentCat.getSetOfDxRooms();
+			}
+			else{
+				dxsorAllRooms.addSetOfRooms(dxcCurrentCat.getSetOfDxRooms());
+			}
+		}
+		return dxsorAllRooms;
+	}
 }

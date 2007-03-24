@@ -586,7 +586,7 @@ public class DConst {
   public static final int ROOM_AVAILABILITY_TOKEN= 7;
   public static final String ROOM_FIELD_SEPARATOR_TOKEN= ";";
   public static final String ROOM_CHAR_SEPARATOR_TOKEN= ",";
-  public static final String ROOM_STANDARD_SITE= "SHE";
+  public static final String ROOM_DEFAULT_SITE= "SHE";
   public static final String ROOM_STANDARD_CAT= "CAT 1";
 
   

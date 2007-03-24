@@ -54,7 +54,7 @@ public class ConditionsTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm5j.buildSetOfEvents();
+//		_dm5j.buildSetOfEvents();
 		_dm5j.getConditionsTest().buildStudentConflictMatrix();
 		_dm5j.getConditionsTest().buildAllConditions(_dm5j.getTTStructure());
 		_dm5j.getTTStructure().getCurrentCycle().getNextPeriod(1);
@@ -68,7 +68,7 @@ public class ConditionsTest extends TestCase {
 			e.printStackTrace();
 			System.out.println("ici " + e.toString());
 		}
-		_dmh.buildSetOfEvents();
+//		_dmh.buildSetOfEvents();
 		_dmh.getConditionsTest().buildStudentConflictMatrix();
 		_dmh.getConditionsTest().buildAllConditions(_dmh.getTTStructure());
 
@@ -82,7 +82,7 @@ public class ConditionsTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm7j.buildSetOfEvents();
+//		_dm7j.buildSetOfEvents();
 		_dm7j.getConditionsTest().buildStudentConflictMatrix();
 		_dm7j.getConditionsTest().buildAllConditions(_dm7j.getTTStructure());
 		_dm7j.getTTStructure().getCurrentCycle().getNextPeriod(1);

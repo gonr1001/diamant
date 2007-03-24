@@ -521,7 +521,6 @@ public class DLoadData {
 	 * @return
 	 */
 	public DataExchange buildDataExchange(byte[] dataloaded) {
-		// byte[] dataloaded = preLoad(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		String token = st.nextToken().toString().trim();

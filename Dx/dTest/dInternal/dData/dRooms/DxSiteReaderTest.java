@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSitesTest $Revision $  $Date: 2006-10-11 18:58:20 $
+* Title: SetOfSitesTest $Revision $  $Date: 2007-03-24 13:47:53 $
 * Description: 	SetOfSitesTestt is a class used to test the class 
 * 				SetOfSitesTest 
 *
@@ -16,7 +16,7 @@
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: hara2602 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -28,6 +28,7 @@ import junit.framework.TestSuite;
 import dConstants.DConst;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dRooms.DxReadSitedotDia;
+import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import eLib.exit.exception.DxException;
@@ -35,14 +36,13 @@ import eLib.exit.exception.DxException;
 
 public class DxSiteReaderTest  extends TestCase{
 
-  public DxSiteReaderTest(String name) {
-    super(name);
-  }
+	public DxSiteReaderTest(String name) {
+		super(name);
+	}
 
-  public static Test suite() {
-  
-   return new TestSuite(DxSiteReaderTest.class);
-  } // end suite
+	public static Test suite() {
+		return new TestSuite(DxSiteReaderTest.class);
+	} // end suite
 
 
  
@@ -64,10 +64,9 @@ public class DxSiteReaderTest  extends TestCase{
 		DxSetOfSites dxsor = dxSites.readSetOfSites();
 		assertFalse("test2_readSetOfSites: Should have failed before",
 				true);
-} catch (DxException e) {
-	assertEquals("test2_readSetOfSites: assertEquals",DConst.INVALID_AVAILABILITY_AT+"2", e.getMessage());
-		
-}
+	} catch (DxException e) {
+		assertEquals("test2_readSetOfSites: assertEquals",DConst.INVALID_AVAILABILITY_AT+"2", e.getMessage());		
+	}
 }
  
  public void test1_readSetOfSites(){
@@ -154,6 +153,41 @@ public class DxSiteReaderTest  extends TestCase{
 }
  }
 
-
+ public void test1_readSetOfSitesMultiCat(){
+	 String tokens = "Diamant1.6"+"\r\n"+
+	        "C1-2018;10;212;11;SHE;CAT1;Matériaux composites;" + 
+	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1;"+"\r\n"+
+	 		"C1-3007;12;620;11,14;SHE;CAT2;Avec console multi-média;" + 
+	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1;"+"\r\n"+
+	 		"C1-4030;25;211;11;SHE;CAT3;Équipement pour photoélasticité;" +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
+	 		"1 1 1 1 1 1 1 1 1 1 1 1;";
+		DLoadData ld = new DLoadData();
+		DxSiteReader dxSites = new DxReadSitedotDia(ld
+				.buildDataExchange(tokens.getBytes()), 5, 12);
+		
+		/* Not use a key in test!!!!
+		 * 
+		 */
+		
+		try {
+			DxSetOfSites dxSos = dxSites.readSetOfSites();
+			assertEquals("t_readSetOfSitesMultiCat: siteCount 1",1, dxSos.getSiteCount());
+			assertEquals("t_readSetOfSitesMultiCat: catCount 3",3, dxSos.getCatCount(DConst.ROOM_DEFAULT_SITE));
+			DxSetOfRooms dxSor= dxSos.getAllDxRooms();
+			assertEquals("t_readSetOfSitesMultiCat: SetofRooms Size 3",3, dxSor.size());
+			assertEquals("test2_readSetOfSitesMultiCat: room Cap 10",10, dxSor.getRoomCapacity("C1-2018"));
+			assertEquals("test2_readSetOfSitesMultiCat: room Cap 12",12, dxSor.getRoomCapacity("C1-3007"));
+			assertEquals("test2_readSetOfSitesMultiCat: room Cap 25",25, dxSor.getRoomCapacity("C1-4030"));
+			assertEquals("test2_readSetOfSitesMultiCat: room Cap 0",0, dxSor.getRoomCapacity("-----"));
+     } catch (DxException e) {
+		//never here			
+	}
+ }
 
 }

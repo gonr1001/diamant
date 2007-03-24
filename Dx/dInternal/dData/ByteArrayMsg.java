@@ -7,7 +7,7 @@
 package dInternal.dData;
 /**
 *
-* Title: ByteArrayMsg $Revision $  $Date: 2005-02-03 16:52:42 $
+* Title: ByteArrayMsg $Revision $  $Date: 2007-03-24 13:47:49 $
 * Description: ByteArrayMsg is a class used to
 *
 *
@@ -22,7 +22,7 @@ package dInternal.dData;
 * you entered into with rgr.
 *
 * @version $ $
-* @author  $Author: garr2701 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -41,7 +41,6 @@ public class ByteArrayMsg extends DataExchange {
 	 */
 	public ByteArrayMsg(String header, String contents) {
 		super(header, contents);
-		// TODO Auto-generated constructor stub
 	}
 
 }

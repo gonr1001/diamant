@@ -1,8 +1,4 @@
 Diamant1.6
-Faculte des lettres etSciences humaines;
-Liste des locaux pour reservations;
-
-Nom du local; 	Capacite; 	Fonction; 	Liste des caracteristiques; 	Localite; Categorie;	Notes;
 A3-004; 46; 0111; 11; SHE; Classe; Classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
 A3-113; 59; 0111; 11; SHE; Multimédia; Multimédia; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
 A3-131; 12; 0111; 11; SHE; Séminaire; Séminaire; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;

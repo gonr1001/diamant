@@ -163,10 +163,12 @@ public class SetOfEvents extends DSetOfResources {
 			String unityID) {
 //		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
 //				assignment.getRoomName());
-//		long roomKey = _dm.getDxSetOfSites().getAllRooms().getRoomKeyByName(
-//				assignment.getRoomName());
-		long roomKey = _dm.getDxSetOfSites().getResourceKey(
-			assignment.getRoomName());
+		long roomKey = _dm.getDxSetOfSites().getAllDxRooms().getRoomKeyByName(
+				assignment.getRoomName());
+		//System.out.println("rkey"+ roomKey);
+		
+//		long roomKey = _dm.getDxSetOfSites().getResourceKey(
+//			assignment.getRoomName());
 		
 		if (roomKey == -1) {
 			DValue error = new DValue();

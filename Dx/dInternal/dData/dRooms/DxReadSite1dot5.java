@@ -65,8 +65,8 @@ public class DxReadSite1dot5 implements DxSiteReader {
         DxRoom dxrTempRoom;
 
         // In version 1.5, there is only one site and one category
-        dxsosBuild.addSite(DConst.ROOM_STANDARD_SITE);
-        dxsosBuild.addCategory(DConst.ROOM_STANDARD_SITE, DConst.ROOM_STANDARD_CAT);
+        dxsosBuild.addSite(DConst.ROOM_DEFAULT_SITE);
+        dxsosBuild.addCategory(DConst.ROOM_DEFAULT_SITE, DConst.ROOM_STANDARD_CAT);
 
         // Skips useless lines
         while (stFileTokenizer.hasMoreElements()
@@ -126,7 +126,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
                 DxAvailability dxaAlways = getDummyAvailability();
                 dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
                         nRoomFunction, viCharacteristics, sNote, dxaAlways);
-                dxsosBuild.addRoom(DConst.ROOM_STANDARD_SITE,
+                dxsosBuild.addRoom(DConst.ROOM_DEFAULT_SITE,
                         DConst.ROOM_STANDARD_CAT, dxrTempRoom);
             } else {
                 // ERROR: Invalid token count

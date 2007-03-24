@@ -24,7 +24,7 @@ public class InstructorsConditionsTest extends TestCase {
 		} catch (Exception e) {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
-		_dm5j.buildSetOfEvents();
+//		_dm5j.buildSetOfEvents();
 		_dm5j.getConditionsTest().buildStudentConflictMatrix();
 		_dm5j.getConditionsTest().buildAllConditions(_dm5j.getTTStructure());
 
@@ -34,7 +34,7 @@ public class InstructorsConditionsTest extends TestCase {
 		} catch (Exception e) {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
-		_dm7j.buildSetOfEvents();
+//		_dm7j.buildSetOfEvents();
 		_dm7j.getConditionsTest().buildStudentConflictMatrix();
 		_dm7j.getConditionsTest().buildAllConditions(_dm7j.getTTStructure());
 	}

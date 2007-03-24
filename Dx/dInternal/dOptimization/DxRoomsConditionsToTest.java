@@ -159,7 +159,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
      * @param eventKey
      * @return
      */
-    private int roomCapacityConflicts(/* Period period, */String eventKey) {
+    private int roomCapacityConflicts(Period period, String eventKey) {
         EventAttach event = (EventAttach) _dm.getSetOfEvents().getResource(
                 eventKey).getAttach();
         StringTokenizer event1 = new StringTokenizer(eventKey,
@@ -226,7 +226,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
         perKey[0] = perKey[0];
         ConflictsAttach confVal = new ConflictsAttach();
         nbConf1 = roomAvailibilityConflicts(period, eventKey);
-        nbConf2 = roomCapacityConflicts(/* period, */eventKey);
+        nbConf2 = roomCapacityConflicts( period, eventKey);
         nbConf3 = roomEventsConflicts(period, eventKey, confVal);
         number = nbConf1 + nbConf2 + nbConf3;
         if (nbConf1 != 0)
@@ -253,7 +253,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
         perKey[0] = perKey[0];
         ConflictsAttach confVal = new ConflictsAttach();
         nbConf1 = roomAvailibilityConflicts(period, eventKey);
-        nbConf2 = roomCapacityConflicts(/* period, */eventKey);
+        nbConf2 = roomCapacityConflicts( period, eventKey);
         nbConf3 = roomEventsConflicts(period, eventKey, confVal);
         number = nbConf1 + nbConf2 + nbConf3;
         if (nbConf1 != 0)
@@ -275,10 +275,10 @@ public class DxRoomsConditionsToTest implements DxCondition {
     public int getInfo(int[] perKey, Period period, String eventKey) {
         int number = 0;
         int nbConf1, nbConf2, nbConf3 = 0;
-        perKey[0] = perKey[0];
+ //       perKey[0] = perKey[0];
         ConflictsAttach confVal = new ConflictsAttach();
         nbConf1 = roomAvailibilityConflicts(period, eventKey);
-        nbConf2 = roomCapacityConflicts(/* period, */eventKey);
+        nbConf2 = roomCapacityConflicts( period, eventKey);
         nbConf3 = roomEventsConflicts(period, eventKey, confVal);
         number = nbConf1 + nbConf2 + nbConf3;
         if (nbConf1 != 0)

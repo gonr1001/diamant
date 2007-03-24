@@ -613,7 +613,6 @@ public class DModel extends Observable {
 	 */
 	public SetOfRooms getSetOfRooms() {
 		SetOfRooms sorTmp = new SetOfRooms();
-		// SetOfRooms sorTmp;
 		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
 			sorTmp = new SetOfRooms();
 			for (int i = 0; i < _setOfSites.size(); i++) {
@@ -672,7 +671,7 @@ public class DModel extends Observable {
 ////			dxsorTmp = _dxSetOfSites.getAllRooms();
 ////			// }
 ////		}
-		return _dxSetOfSites.getAllRooms();
+		return _dxSetOfSites.getAllDxRooms();
 	}
 
 	/**
@@ -938,7 +937,7 @@ public class DModel extends Observable {
 		if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
 			this.prepareExamsData();
 		}
-		this.buildSetOfEvents();
+		//this.buildSetOfEvents();
 		if (isMultiSite())
 			this.getConditionsTest().setMatrixBuilded(true, false);
 		this.getConditionsTest().initAllConditions();

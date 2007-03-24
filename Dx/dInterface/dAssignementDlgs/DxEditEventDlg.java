@@ -969,31 +969,31 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return list;
 	}
 
-	/**
-	 * Cette methode construit la liste des functions de locaux
-	 * 
-	 * @return Vector[] elle retourne un tableau à 2 dimension de vecteurs
-	 *         <p>
-	 *         Vecteur[0] contient la fonction par défaut de l'événement courant
-	 *         <p>
-	 *         Vecteur[1] contient la liste de toutes les fonctions de locaux
-	 */
-	private Vector[] buildRoomFunctionList() {
-		Vector list[] = { new Vector(1), new Vector(1) };
-		EventAttach event = (EventAttach) ((DResource) _events
-				.get(_currentActivityIndex)).getAttach();
-		SetOfRoomsFunctions sorf = _dModel.getSetOfRoomsFunctions();
-		DResource roomFunction = sorf.getResource(event.getRoomFunction());
-		if (roomFunction != null && event.getRoomKey() != -1)
-			list[0].add(roomFunction.getID());
-		else
-			list[0].add(DConst.ALL);
-		sorf.sortSetOfResourcesByID();
-		for (int i = 0; i < sorf.size(); i++)
-			list[1].add(sorf.getResourceAt(i).getID());
-		// list[1].add(DConst.ALL);
-		return list;
-	}
+//	/**
+//	 * Cette methode construit la liste des functions de locaux
+//	 * 
+//	 * @return Vector[] elle retourne un tableau à 2 dimension de vecteurs
+//	 *         <p>
+//	 *         Vecteur[0] contient la fonction par défaut de l'événement courant
+//	 *         <p>
+//	 *         Vecteur[1] contient la liste de toutes les fonctions de locaux
+//	 */
+//	private Vector[] buildRoomFunctionList() {
+//		Vector list[] = { new Vector(1), new Vector(1) };
+//		EventAttach event = (EventAttach) ((DResource) _events
+//				.get(_currentActivityIndex)).getAttach();
+//		SetOfRoomsFunctions sorf = _dModel.getSetOfRoomsFunctions();
+//		DResource roomFunction = sorf.getResource(event.getRoomFunction());
+//		if (roomFunction != null && event.getRoomKey() != -1)
+//			list[0].add(roomFunction.getID());
+//		else
+//			list[0].add(DConst.ALL);
+//		sorf.sortSetOfResourcesByID();
+//		for (int i = 0; i < sorf.size(); i++)
+//			list[1].add(sorf.getResourceAt(i).getID());
+//		// list[1].add(DConst.ALL);
+//		return list;
+//	}
 
 	/**
 	 * apply change in a event

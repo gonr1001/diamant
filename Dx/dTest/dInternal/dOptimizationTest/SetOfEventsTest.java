@@ -15,6 +15,9 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
+import dInternal.dData.dRooms.DxSetOfRooms;
+import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;
@@ -94,11 +97,12 @@ public class SetOfEventsTest extends TestCase {
 		long roomKey = ((EventAttach) _soe.getResourceAt(0).getAttach())
 				.getRoomKey();
 		if (DxFlags.newRooms) {
-			// 22mars07
-// assertEquals("test_RoomInEvent : ", "D73020", _dm.getDxSetOfRooms()
-// .getRoomName(roomKey));
-			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j.getDxSetOfSites().getResourceName(roomKey));
-// .getRoomName(roomKey));
+			DxSetOfSites sos = _dmData5j.getDxSetOfSites();
+			DxSetOfRooms sor = sos.getAllDxRooms();
+			assertEquals("test_RoomInEvent : siteCount1  ", 1, sos.getSiteCount());
+			assertEquals("test_RoomInEvent : catCount 1", 1, sos.getCatCount(sos.getSiteKey(DConst.ROOM_DEFAULT_SITE)));
+			assertEquals("test_RoomInEvent : ", true, sor.getNamesVector().contains("D73020"));
+
 		} else {
 			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j.getSetOfRooms()
 					.getResource(roomKey).getID());

@@ -35,7 +35,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm1.buildSetOfEvents();
+//		_dm1.buildSetOfEvents();
 		_dm1.getConditionsTest().buildStudentConflictMatrix();
 		_dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
 		_matrix1 = _dm1.getConditionsTest().getConflictsMatrix();
@@ -46,7 +46,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm2.buildSetOfEvents();
+//		_dm2.buildSetOfEvents();
 		_dm2.getConditionsTest().buildStudentConflictMatrix();
 		_dm2.getConditionsTest().buildAllConditions(_dm2.getTTStructure());
 		_matrix2 = _dm2.getConditionsTest().getConflictsMatrix();

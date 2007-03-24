@@ -53,7 +53,8 @@ public class DxAssignAllAlgTest extends TestCase {
 		return new TestSuite(DxAssignAllAlgTest.class);
 	} // end suite
 
-	public void test_build1() {
+	@SuppressWarnings("null")
+	public void test_buildScNoAssigned() {
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
@@ -68,23 +69,23 @@ public class DxAssignAllAlgTest extends TestCase {
 
 		try {
 			dm1 = new DModel(dxDocument1, fileName.toString());
-			dm1.changeInDModel(new String("DxAssign"));
-			assertEquals("test_build: assertEquals", 140, dm1
-					.getSetOfActivities().size());
-			assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
-					.size());
-			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
-			alg.doWork();
-			assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
-					.getNumberOfEventAssign());
-			dm1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-
+		dm1.changeInDModel(new String("DxAssign"));
+		assertEquals("test_build: assertEquals", 140, dm1
+				.getSetOfActivities().size());
+		assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
+				.size());
+		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+		alg.doWork();
+		assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
+				.getNumberOfEventAssign());
+		dm1 = null;
 	}
 
-	public void test_build2() {
+	@SuppressWarnings("null")
+	public void test_buildGenNoAssigned() {
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
@@ -99,19 +100,19 @@ public class DxAssignAllAlgTest extends TestCase {
 
 		try {
 			dm1 = new DModel(dxDocument1, fileName.toString());
-			dm1.changeInDModel(new Object());
-			assertEquals("test_build: assertEquals", 140, dm1
-					.getSetOfActivities().size());
-			assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
-					.size());
-			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
-			alg.doWork();
-			assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
-					.getNumberOfEventAssign());
-			dm1 = null;
+
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 		}
-
+		dm1.changeInDModel(new Object());
+		assertEquals("test_build: assertEquals", 140, dm1
+				.getSetOfActivities().size());
+		assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
+				.size());
+		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+		alg.doWork();
+		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
+				.getNumberOfEventAssign());
+		dm1 = null;
 	}
 } // end DxAssignAllAlgTest
