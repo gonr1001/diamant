@@ -959,7 +959,7 @@ public class DModel extends Observable {
 		if (this.getTypeOfSchedule() == DConst.EXAM) {
 			this.prepareExamsData();
 		}
-		this.buildSetOfEvents();
+//		this.buildSetOfEvents();
 		this.getConditionsTest().setMatrixBuilded(true, false);
 		this.getConditionsTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
@@ -1031,7 +1031,7 @@ public class DModel extends Observable {
 			for (int i = 0; i < sites.size(); i++) {
 				if (!DConst.ALL_SITES.equalsIgnoreCase(sites.get(i).toString())) {
 					this.setCurrentSite(sites.get(i).toString());
-					this.buildSetOfEvents();
+//					this.buildSetOfEvents();
 					this.getConditionsTest().initAllConditions();
 					this._setOfEvents.setAssignedInstAvail();
 				}
@@ -1166,7 +1166,7 @@ public class DModel extends Observable {
 		if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
 			this.prepareExamsData();
 		}
-		this.buildSetOfEvents();
+//		this.buildSetOfEvents();
 		this.getConditionsTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
 		// _stateBarModel.update();

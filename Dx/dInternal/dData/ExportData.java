@@ -79,7 +79,7 @@ public class ExportData {
  		for(int i = 0; i < sites.size(); i++){
  			if(!DConst.ALL_SITES.equalsIgnoreCase(sites.get(i).toString())){
  				_dm.setCurrentSite(sites.get(i).toString());
- 				_dm.buildSetOfEvents();
+ //				_dm.buildSetOfEvents();
  				_dm.getConditionsTest().initAllConditions();
  				DStandardReportData dataR = new DStandardReportData(_dm);
  				String str = getDataFromReport(dataR, table, type);
@@ -87,7 +87,7 @@ public class ExportData {
  			}
  		}
  		_dm.setCurrentSite(currentS);
- 		_dm.buildSetOfEvents();
+ //		_dm.buildSetOfEvents();
 		_dm.getConditionsTest().initAllConditions();
  	}else{
  		DStandardReportData dataR = new DStandardReportData(_dm);
