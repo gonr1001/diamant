@@ -24,11 +24,14 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignRoomsAlg;
+import dInternal.dOptimization.RoomAssignmentAlgo;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -73,8 +76,13 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
 					.size());
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
-			alg.doWork();
+			
+			if (DxFlags.newAlg){
+				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+				alg.doWork();
+			}	else {
+				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
+			}
 			assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
 					.getNumberOfEventAssign());
 			dm1 = null;
@@ -104,8 +112,14 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_build: assertEquals", 253, dm1.getSetOfEvents()
 					.size());
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
-			alg.doWork();
+			
+			if (DxFlags.newAlg){
+				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+				alg.doWork();
+			}	else {
+				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
+			}
+
 			assertEquals("test_build: assertEquals", 250, dm1.getSetOfEvents()
 					.getNumberOfEventAssign());
 			dm1 = null;

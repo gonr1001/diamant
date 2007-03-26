@@ -175,6 +175,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_tabbedPane.addChangeListener(this);
 		_currentActivityIndex = 0; _index= 0;
 		_tabbedPane.setSelectedIndex(_index);
+		//buildRoomPanel(_index);
 		repaint();
 
 

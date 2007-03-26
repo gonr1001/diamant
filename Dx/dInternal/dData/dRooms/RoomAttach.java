@@ -108,9 +108,9 @@ public class RoomAttach extends AvailabilityAttach {
 	/**
 	 * clear and set roomDisp INPUT: Vector of new room availability (roomDisp)
 	 */
-	public void setAvailability(Vector roomDisp) {
+	public void setAvailability(Vector<String> roomDisp) {
 		_ressourceAvailability = new Vector<String>();
-		_ressourceAvailability = (Vector) roomDisp.clone();
+		_ressourceAvailability =(Vector<String>) roomDisp.clone();
 	}
 
 	/**

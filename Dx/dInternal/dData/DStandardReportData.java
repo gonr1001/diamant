@@ -55,7 +55,7 @@ public class DStandardReportData {
 	private int STATE3 = 100;
 
 	/*
-	 * _activitiesReport is a string where each line contains more informations
+	 * _activitiesReport is a string where each line contains some information
 	 * separeted by a ";" separator token number 0= activity name, 1= type name,
 	 * 2= section name, 3= unity name, 4= duration of the activity 5= day number
 	 * where activity is assign, 6= day name where activity is assign 7= begin

@@ -18,7 +18,6 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
@@ -161,10 +160,10 @@ public class SetOfEvents extends DSetOfResources {
 
 	private long assignDxRooms(DSetOfResources soie, Assignment assignment,
 			String unityID) {
-//		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
-//				assignment.getRoomName());
-		long roomKey = _dm.getDxSetOfSites().getAllDxRooms().getRoomKeyByName(
+		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
 				assignment.getRoomName());
+//		long roomKey = _dm.getDxSetOfSites().getAllDxRooms().getRoomKeyByName(
+//				assignment.getRoomName());
 		//System.out.println("rkey"+ roomKey);
 		
 //		long roomKey = _dm.getDxSetOfSites().getResourceKey(
@@ -281,10 +280,14 @@ public class SetOfEvents extends DSetOfResources {
 			}// end for
 
 			if (DxFlags.newRooms) {
-				assignment.setRoom(getDxRoomName(_dm.getDxSetOfSites(), event
+//				assignment.setRoomName(getDxRoomName(_dm.getDxSetOfSites(), event
+//						.getRoomKey()));
+				assignment.setRoomName(_dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
+						.getRoomKey()));
+				System.out.println("room Name "+ _dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
 						.getRoomKey()));
 			} else {
-				assignment.setRoom(getRoomName(_dm.getSetOfRooms(), event
+				assignment.setRoomName(getRoomName(_dm.getSetOfRooms(), event
 						.getRoomKey()));
 			}
 			assignment.setPeriodKey(event.getPeriodKey());
@@ -354,19 +357,19 @@ public class SetOfEvents extends DSetOfResources {
 	}
 
 	
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-	private String getDxRoomName(DxSetOfRooms sor, long eltkey) {
-		if (eltkey != -1) {
-			return sor.getResourceName(eltkey);
-		}
-		return DConst.NO_ROOM_INTERNAL;
-	}
+//	/**
+//	 * get a resource key
+//	 * 
+//	 * @param soresc
+//	 * @param elt
+//	 * @return the resource key or -1 if key does not found
+//	 */
+//	private String getDxRoomName(DxSetOfRooms sor, long eltkey) {
+//		if (eltkey != -1) {
+//			return sor.getResourceName(eltkey);
+//		}
+//		return DConst.NO_ROOM_INTERNAL;
+//	}
 	/**
 	 * get a resource key
 	 * 

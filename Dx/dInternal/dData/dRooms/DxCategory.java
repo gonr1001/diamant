@@ -16,7 +16,6 @@
  */
 package dInternal.dData.dRooms;
 
-import java.util.Iterator;
 
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;

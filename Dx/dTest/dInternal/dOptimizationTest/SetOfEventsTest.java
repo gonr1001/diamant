@@ -17,7 +17,6 @@ import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
-import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dOptimization.EventAttach;
 import dInternal.dOptimization.SetOfEvents;

@@ -105,7 +105,7 @@ public class Assignment extends DObject {
 	 * set the room name
 	 * @param String the room name
 	 * */
-	public void setRoom(String room) {
+	public void setRoomName(String room) {
 		_roomName = room;
 	}
 

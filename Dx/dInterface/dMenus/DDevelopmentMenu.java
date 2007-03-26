@@ -63,8 +63,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 	}
 
 	private void buildMenu() {
-		//buildFile("Ete2006CoursGenie.dia");
-		buildFile("fichier1.dia");
+		buildFile("fichier1xx.dia");
 		buildShowAllMenus();
 		buildInitialState();
 	}
