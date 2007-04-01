@@ -625,8 +625,7 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAvailability() {
 		if (DxFlags.newRooms) {
-			new DxRoomAvailabilityDlg(this, this.getCurrentDxDoc()
-					.getCurrentDModel().getDxSetOfSites());
+			new DxRoomAvailabilityDlg(this);
 			// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 			// .getDxSetOfRooms(), DConst.ROOMASSIGN);
 			// !!!NIC!!! How do we verify if it's multisite?

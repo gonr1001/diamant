@@ -51,7 +51,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 	private final int NO_ROOM_ASSIGNED = -1;
 
-	DResource _allRscFunct;
+//	DResource _allRscFunct;
 
 	DxConflictLimits _dxCL;
 
@@ -63,9 +63,8 @@ public class DxAssignRoomsAlg implements Algorithm {
 	public DxAssignRoomsAlg(DModel dm, DxConflictLimits limits) {
 		super();
 		_dm = dm;
-		// TODO find out equivalence
-		// _allRscFunct = _dm.getDxSetOfSites().g;
-		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
+		// TODO find out an equivalence for next line
+//		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
 		_dm.getConditionsTest().extractDxPreference();
 		_dxCL = limits;
 		setNoRoomToEventsWithRoomsNotFixed();
@@ -85,6 +84,8 @@ public class DxAssignRoomsAlg implements Algorithm {
 		DSetOfResources setOfEventsToAssign = new StandardCollection();
 		// DSetOfResources setOfAvailableRooms;
 		DxSetOfResources setOfAvailableDxRooms;
+		
+		// for each period try to assign the free rooms
 		for (int i = 0; i < numberOfPeriods; i++) {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
 			setOfEventsToAssign = this.buildSetOfEvents(currentPeriod);
@@ -245,16 +246,21 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 * @return l'ensemble des événements
 	 */
 	private DSetOfResources buildSetOfEvents(Period currentPeriod) {
+//		 The container for the result
 		DSetOfResources newSetOfEvents = new StandardCollection();
+//		 Vector contains the events (Ressources) in the currentPeriod
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
+//		 Get all events
 		SetOfEvents soe = _dm.getSetOfEvents();
 		int TOKEN_RANGE = 0;
 		int ADD_RESOURCE_BY_ID = 1;
 		int numberOfStudents;
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
+//			 get the name of an event in the period
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
+			// get the attach of the event
 			EventAttach eventAttach = (EventAttach) soe.getResource(
 					eventInPeriodName).getAttach();
 			if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
@@ -298,18 +304,18 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
-		if (_allRscFunct != null) {
-			if (((EventAttach) event.getAttach()).getRoomFunction() == _allRscFunct
-					.getKey()) {
-				if (needed_room_size <= room.getCapacity())
-					return true;
-			}// end if
-			else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
-					.getFunction())) {
-				if (needed_room_size <= room.getCapacity())
-					return true;
-			}// end else
-		}// end if(allRscFunct!= null)
+//		if (_allRscFunct != null) {
+//			if (((EventAttach) event.getAttach()).getRoomFunction() == _allRscFunct
+//					.getKey()) {
+//				if (needed_room_size <= room.getCapacity())
+//					return true;
+//			}// end if
+//			else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
+//					.getFunction())) {
+//				if (needed_room_size <= room.getCapacity())
+//					return true;
+//			}// end else
+//		}// end if(allRscFunct!= null)
 		return false;
 	}
 

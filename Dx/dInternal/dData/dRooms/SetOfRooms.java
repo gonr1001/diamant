@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.9 $  $Date: 2006-07-05 19:58:24 $
+* Title: SetOfSites $Revision: 1.10 $  $Date: 2007-04-01 13:30:08 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.9 $
+* @version $Revision: 1.10 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -41,20 +41,19 @@ public class SetOfRooms extends DSetOfResources {
 		super();
 	}
 
-	/* (non-Javadoc)
-	 * @see dInternal.DSetOfResources#analyseTokens(byte[], int)
-	 */
-	public boolean analyseTokens(byte[] dataloaded, int beginPosition) {
-		dataloaded[0]+=0;
-		beginPosition+=0;
-		return false;
-	}
+//	/* (non-Javadoc)
+//	 * @see dInternal.DSetOfResources#analyseTokens(byte[], int)
+//	 */
+//	public boolean analyseTokens(byte[] dataloaded, int beginPosition) {
+//		dataloaded[0]+=0;
+//		beginPosition+=0;
+//		return false;
+//	}
 
 	/* (non-Javadoc)
 	 * @see dInternal.DSetOfResources#buildSetOfResources(byte[], int)
 	 */
-	public void buildSetOfResources(DataExchange de, int beginPosition) {
-		beginPosition+=0;
+	public void buildSetOfResources(DataExchange de/*, int beginPosition*/) {
 		String room = DXToolsMethods.getToken(de.getContents(), ";",DConst.ROOM_NAME_TOKEN).trim();
 		Room roomRsc= (Room)getResource(room);
 		if(roomRsc==null){

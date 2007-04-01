@@ -24,7 +24,7 @@ public class EventAttach extends DObject {
 	 * keys of an activity wich is represent in the following format a.b.c.d
 	 */
 	private String _principalRescKey;
-
+	private String _fullName;
 	private int _eventDuration = 0;
 
 	// private long _instructorRescKey; // the instructor key
@@ -74,6 +74,7 @@ public class EventAttach extends DObject {
 	 */
 	public EventAttach(String princKey, DSetOfResources inst, long key,
 			int eventDuration, String eventPeriod, int cLimit) {
+		_fullName = "name";
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
 		_roomRescKey = key;
@@ -87,6 +88,10 @@ public class EventAttach extends DObject {
 
 	public String getPrincipalRescKey() {
 		return _principalRescKey;
+	}
+	
+	public String getfullName() {
+		return _fullName;
 	}
 
 	public long[] getInstructorKey() {

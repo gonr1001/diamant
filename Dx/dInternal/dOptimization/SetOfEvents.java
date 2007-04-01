@@ -56,12 +56,12 @@ public class SetOfEvents extends DSetOfResources {
 		if (activity.isActivityVisibility()) {
 			for (int j = 0; j < activity.getSetOfTypes().size(); j++) {
 				DResource type = activity.getSetOfTypes().getResourceAt(j);
-				forEachType(soie, activityResource, type);
+				forEachType(soie, activityResource, type, activity);
 			}
 		}
 	}
 
-	private void forEachType(DSetOfResources soie, DResource activityResource, DResource type) {
+	private void forEachType(DSetOfResources soie, DResource activityResource, DResource type, Activity activity) {
 		String unityKey;
 		long roomKey;
 		for (int k = 0; k < ((Type) type.getAttach())
@@ -110,7 +110,7 @@ public class SetOfEvents extends DSetOfResources {
 					else
 						roomKey = assignRooms(soie, assignment,
 								unityID);
-
+//					String fullName  = activity.getSelectedField(0);
 					int cLimit = ((Section) section.getAttach())
 							.getCapacityLimit();
 					EventAttach event = new EventAttach(unityKey,

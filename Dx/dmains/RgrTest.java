@@ -29,9 +29,9 @@ import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.DxAssignRoomsAlgTest;
-import dTest.dInternal.dOptimizationTest.InstructorsConditionsTest;
-import dTest.dInternal.dOptimizationTest.StudentsConditionsTest;
-import dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest;
+//import dTest.dInternal.dOptimizationTest.InstructorsConditionsTest;
+//import dTest.dInternal.dOptimizationTest.StudentsConditionsTest;
+//import dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest;
 
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;

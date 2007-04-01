@@ -553,9 +553,12 @@ public class SelectiveScheduleManager {
 
 		SAXBuilder saxBuilder = new SAXBuilder();
 		Document doc = null;
-
+		Iterator itrSetsElement= null;
 		try {
 			doc = saxBuilder.build(fileInReader);
+			Element selectiveScheduleElement = doc.getRootElement();
+			Element setsElement = selectiveScheduleElement.getChild("Sets");
+			itrSetsElement = setsElement.getChildren("Set").iterator();
 		} catch (JDOMException e1) {
 			logger.error(e1);
 			JOptionPane.showMessageDialog(DApplication.getInstance()
@@ -570,10 +573,10 @@ public class SelectiveScheduleManager {
 					JOptionPane.ERROR_MESSAGE);
 		}
 
-		Element selectiveScheduleElement = doc.getRootElement();
-		Element setsElement = selectiveScheduleElement.getChild("Sets");
+//		Element selectiveScheduleElement = doc.getRootElement();
 
-		Iterator itrSetsElement = setsElement.getChildren("Set").iterator();
+
+
 
 		FilterSet fs;
 		Element setElement;

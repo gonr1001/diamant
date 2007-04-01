@@ -1,6 +1,6 @@
 /**
  * 
- * Title: SetOfCategoriesTest $Revision $ $Date: 2006-07-05 20:22:05 $
+ * Title: SetOfCategoriesTest $Revision $ $Date: 2007-04-01 13:30:08 $
  * Description: SetOfCategoriesTest is a class used to test the class
  * SetOfCategories
  * 
@@ -57,7 +57,7 @@ public class SetOfCategoriesTest extends TestCase {
         String tokens = "D13013;40;211;8,11,57;SHE;CAT 1;laboratoire de chimie;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1;"
                 + "\r\n" + "D60054;40;217;9,11,14,15,37,38,44;SHE;CAT 2;xxx;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1"
                 + "\r\n";
-        _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes()), 0);
+        _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes())/*, 0*/);
         assertEquals("test_buildSetOfResources: assertEquals", "CAT 1",  _setOfCategories.getSetOfResources().firstElement().getID());
     }
 
@@ -65,8 +65,8 @@ public class SetOfCategoriesTest extends TestCase {
         String tokens = "D13013;40;211;8,11,57;SHE;CAT 1;laboratoire de chimie;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1;"
             + "\r\n" + "D60054;40;217;9,11,14,15,37,38,44;SHE;CAT 2;xxx;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1"
             + "\r\n";
-        _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes()), 0);
-        _setOfCategories.analyseTokens(_loadData.buildDataExchange(tokens.getBytes()), 0);
+        _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes())/*, 0*/);
+    //    _setOfCategories.analyseTokens(_loadData.buildDataExchange(tokens.getBytes()), 0);
         assertEquals("test1_analyseTokens: assertEquals", "", _setOfCategories.getError());
     }
 
@@ -74,7 +74,7 @@ public class SetOfCategoriesTest extends TestCase {
         String tokens = "D13013;40;211;8,11,57;SHE;CAT 1;laboratoire de chimie;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1;"
             + "\r\n" + "D60054;40;217;9,11,14,15,37,38,44;SHE;CAT 2;xxx;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1"
             + "\r\n";
-        _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes()), 0);
+        _setOfCategories.buildSetOfResources(_loadData.buildDataExchange(tokens.getBytes())/*, 0*/);
         assertEquals("test_toWrite: assertEquals", 
                  "D13013;40;211;8,11,57;Diamant1.6;CAT 1;laboratoire de chimie;1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1;\r\n",
                  _setOfCategories.toWrite(DConst.FILE_VER_NAME1_6));

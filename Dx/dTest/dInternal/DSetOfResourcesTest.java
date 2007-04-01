@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2006-07-05 19:58:24 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2007-04-01 13:30:08 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -71,9 +71,9 @@ public class DSetOfResourcesTest extends TestCase{
 		
 		
 	}
-	public void test_analyseTokens(){
-		assertFalse(_sos.analyseTokens(new ByteArrayMsg("",""), 1));
-	}
+//	public void test_analyseTokens(){
+//		assertFalse(_sos.analyseTokens(new ByteArrayMsg("",""), 1));
+//	}
 	
 	public void test_addResource(){
 		assertEquals("test_addResource: assertEquals",true,_sos.addResource(resource3,insertType));

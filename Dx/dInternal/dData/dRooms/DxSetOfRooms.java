@@ -68,13 +68,19 @@ public class DxSetOfRooms extends DxSetOfResources {
     }
 
     public String getRoomName(long lRoomKey) {
-        try {
-            return this.getResourceName(lRoomKey);
-        } catch (Exception e) {
-            // Null pointer exception will be thrown if room doesnt exist
-            return null;
-        }
-    }
+//    	private String getRoomName(SetOfRooms sor, long eltkey) {
+		if (lRoomKey != -1) {
+			return this.getResourceName(lRoomKey);
+		}
+		return DConst.NO_ROOM_INTERNAL;
+	}
+//        try {
+//            return this.getResourceName(lRoomKey);
+//        } catch (Exception e) {
+//            // Null pointer exception will be thrown if room doesnt exist
+//            return DConst.NO_ROOM_INTERNAL;
+//        }
+//    }
 
     public int getRoomCapacity(long lRoomKey) {
         try {

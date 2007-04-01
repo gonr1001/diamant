@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.17 $  $Date: 2007-01-14 18:29:34 $
+ * Title: SetOfStudents $Revision: 1.18 $  $Date: 2007-04-01 13:30:08 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.17 $
+ * @version $Revision: 1.18 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -50,11 +50,10 @@ public class SetOfStudents extends DSetOfResources {
 		super();
 	}
 
-	public boolean analyseTokens(DataExchange de, int beginPosition) {
-		beginPosition += 0;
-		de.toString();
-		return false;
-	}
+//	public boolean analyseTokens(DataExchange de, int beginPosition) {
+//		de.toString();
+//		return false;
+//	}
 
 	/**
 	 * 

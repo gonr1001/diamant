@@ -1,6 +1,6 @@
 /**
 *
-* Title: Category $Revision: 1.6 $  $Date: 2005-02-08 03:25:10 $
+* Title: Category $Revision: 1.7 $  $Date: 2007-04-01 13:30:08 $
 * Description: SetOfRooms is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.7 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -39,15 +39,15 @@ public class SetOfCategories extends DSetOfResources{
 		super();
 	}
 	
-	public boolean analyseTokens(DataExchange de, int beginPosition){
-  	beginPosition+=0;
-  	de.toString();
-  	//dataloaded[0]+=0;
-    return false;
-  }
+//	public boolean analyseTokens(DataExchange de, int beginPosition){
+//  	beginPosition+=0;
+//  	de.toString();
+//  	//dataloaded[0]+=0;
+//    return false;
+//  }
 	
-	public  void buildSetOfResources(DataExchange de, int beginPosition){
-  	beginPosition+=0;
+	public  void buildSetOfResources(DataExchange de/*, int beginPosition*/){
+  	//beginPosition+=0;
   	String cat = DXToolsMethods.getToken(de.getContents(), ";",DConst.ROOM_CATEGORY_TOKEN).trim();
 		DResource catRsc= getResource(cat);
 		if(catRsc==null){
@@ -56,7 +56,7 @@ public class SetOfCategories extends DSetOfResources{
 		}
 		SetOfRooms setOfRooms= ((SetOfRooms)catRsc.getAttach());
 		DataExchange dEx= new ByteArrayMsg(DConst.FILE_VER_NAME1_6, de.getContents());
-		setOfRooms.buildSetOfResources(dEx,0);
+		setOfRooms.buildSetOfResources(dEx/*,0*/);
   	//dataloaded[0]+=0;
   }
 	

@@ -223,7 +223,6 @@ public class DxRoomsConditionsToTest implements DxCondition {
     public int addTest(int[] perKey, Period period, String eventKey) {
         int number = 0;
         int nbConf1, nbConf2, nbConf3 = 0;
-        perKey[0] = perKey[0];
         ConflictsAttach confVal = new ConflictsAttach();
         nbConf1 = roomAvailibilityConflicts(period, eventKey);
         nbConf2 = roomCapacityConflicts( period, eventKey);
@@ -250,7 +249,6 @@ public class DxRoomsConditionsToTest implements DxCondition {
     public int removeTest(int[] perKey, Period period, String eventKey) {
         int number = 0;
         int nbConf1, nbConf2, nbConf3 = 0;
-        perKey[0] = perKey[0];
         ConflictsAttach confVal = new ConflictsAttach();
         nbConf1 = roomAvailibilityConflicts(period, eventKey);
         nbConf2 = roomCapacityConflicts( period, eventKey);
@@ -290,4 +288,9 @@ public class DxRoomsConditionsToTest implements DxCondition {
 
         return number;
     }
+
+
+
+
+
 }

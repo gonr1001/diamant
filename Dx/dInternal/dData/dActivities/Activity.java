@@ -36,6 +36,14 @@ public class Activity extends DObject {
 	 * _activitySession -> 2 _activityVisible -> 3
 	 */
 	// private String _departement;// eg. génie electrique
+	private String _name;
+	
+	private String _type;
+	
+	private String _section;
+	
+	
+	
 	private String _activityType; // eg. informatique
 
 	private int _activitySession;//

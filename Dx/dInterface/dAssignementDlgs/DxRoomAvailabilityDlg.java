@@ -89,14 +89,16 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
 	private int[][] _dxaCurrentAvailbility;
 
-	public DxRoomAvailabilityDlg(DApplication dApplic, DxSetOfSites dxsosSites) {
+	public DxRoomAvailabilityDlg(DApplication dApplic) {
 		super(dApplic.getJFrame(), DConst.ROOMASSIGN + "rgr", false);
-
+		
+		// this is done to aboid an exception when all menus are allowed
 		if (dApplic.getCurrentDxDoc() == null)
 			return;
-		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		
+		_dmodel = dApplic.getCurrentDModel();
 
-		_dxsosSites = dxsosSites;
+		_dxsosSites = _dmodel.getDxSetOfSites(); 			// get the attach of the event;
 
 		_time = _dmodel.getTTStructure().getCurrentCycle()
 				.getHourOfPeriodsADay();
