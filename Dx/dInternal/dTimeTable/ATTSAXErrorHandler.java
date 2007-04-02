@@ -29,5 +29,5 @@ package dInternal.dTimeTable;
  * 
  */
 public class ATTSAXErrorHandler {
-	//
+	//TODO NON necessaire pour ce travail
 }

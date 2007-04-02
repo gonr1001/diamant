@@ -29,5 +29,5 @@ package dInternal.dTimeTable;
  * 
  */
 public class AXMLTTData {
-	//
+	//TODO NON necessaire pour ce travail
 }
