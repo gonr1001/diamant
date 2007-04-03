@@ -61,14 +61,12 @@ public class AmineTest {
 		suite.addTest(ASequenceTest.suite());
 		suite.addTest(ADayTest.suite());
 		suite.addTest(ACycleTest.suite());
-				
+
 		suite.addTest(ATTSAXParserTest.suite());
 		suite.addTest(ATTSAXValidationTest.suite());
 		suite.addTest(ATTSAXWriteXmlTest.suite());
-		
 
 		System.out.println("Bye I was in AmineTest");
 		return suite;
 	}
 }
-

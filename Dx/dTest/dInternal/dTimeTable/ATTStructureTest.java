@@ -45,7 +45,7 @@ import eLib.exit.xml.output.XMLWriter;
  * Description: ATTStructureTest is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public class ATTStructureTest extends TestCase {
@@ -213,11 +213,6 @@ public class ATTStructureTest extends TestCase {
 		Element item;
 		TTStructure tts = new TTStructure();
 		TTStructure newtts = new TTStructure();
-		// SetOfCycles setOfcycle= new SetOfCycles();
-		// SetOfCycles newSetOfcycle= new SetOfCycles();
-		// Cycle newCycle= new Cycle();
-		// cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
-		// cycle.addDays(3);
 
 		Cycle cycle = new Cycle();
 		cycle.getSetOfDays().addResource(new DResource("Ma", new Day()), 0);
@@ -231,7 +226,7 @@ public class ATTStructureTest extends TestCase {
 		tts.getSetOfCycles().addResource(new DResource("2", cycle), 0);
 		try {
 			xmlFile = new XMLInputFile();
-			// System.out.println(path+"cycle.xml");//debug
+
 			Document doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
 			XMLWriter wr = new XMLWriter();
 			doc = wr.getNewDocument();
@@ -246,7 +241,7 @@ public class ATTStructureTest extends TestCase {
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			newtts.readXMLtag(item);
-			// _setOfCycles.readXMLtag(root);
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}

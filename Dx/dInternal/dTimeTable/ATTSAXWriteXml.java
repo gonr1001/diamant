@@ -6,12 +6,14 @@
  *
  */
 package dInternal.dTimeTable;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 public class ATTSAXWriteXml {
-	public ATTSAXWriteXml(String fileName, ACycle ttCycle) throws FileNotFoundException{
+	public ATTSAXWriteXml(String fileName, ACycle ttCycle)
+			throws FileNotFoundException {
 		String _fileSpec = fileName;
 		PrintStream ps;
 		FileOutputStream fHandler = new FileOutputStream(_fileSpec);

@@ -35,20 +35,21 @@ import junit.framework.TestSuite;
  * Description: ACycleTest is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
-public class ACycleTest extends TestCase{
-	
+public class ACycleTest extends TestCase {
+
 	public ACycleTest(String name) {
 		super(name);
-		}
-	
+	}
+
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
 		return new TestSuite(ACycleTest.class);
 	} // end suite
+
 	public void testCycleEqual() {
 		System.out.println("-- Begin Test ACycle ----");
 		ACycle cycleUn = new ACycle();
@@ -56,9 +57,11 @@ public class ACycleTest extends TestCase{
 		assertTrue(cycleDeux.isEquals(cycleUn));
 		System.out.println(cycleDeux.isEquals(cycleUn));
 		System.out.println(cycleDeux.toString());
-		System.out.println("-- Creation et comparaison de deux cycles vides ----");
-		
+		System.out
+				.println("-- Creation et comparaison de deux cycles vides ----");
+
 	}
+
 	public void testCycleNotEqual() {
 		System.out.println("-- Begin Test ACycle ----");
 		Vector<ADay> lesDays;
@@ -82,11 +85,11 @@ public class ACycleTest extends TestCase{
 		ACycle cycleUn = new ACycle();
 		cycleUn.setpLength(250);
 		cycleUn.setCycleID(120);
-		
+
 		ACycle cycleDeux = new ACycle();
 		cycleDeux.setpLength(250);
 		cycleDeux.setCycleID(120);
-		
+
 		lesDays = new Vector<ADay>();
 		leLundi = new ADay();
 		leMardi = new ADay();
@@ -101,9 +104,9 @@ public class ACycleTest extends TestCase{
 		leMardiMatin.setSequenceId("AM");
 		leMardiSoir.setSequenceId("PM");
 		leLundiMatinPeriods = new Vector<APeriod>();
-		leLundiSoirPeriods= new Vector<APeriod>();
-		leMardiMatinPeriods= new Vector<APeriod>();
-		leMardiSoirPeriods= new Vector<APeriod>();
+		leLundiSoirPeriods = new Vector<APeriod>();
+		leMardiMatinPeriods = new Vector<APeriod>();
+		leMardiSoirPeriods = new Vector<APeriod>();
 		leLundiMatinPeriodsUn = new APeriod();
 		leLundiSoirPeriodsDeux = new APeriod();
 		leLundiSoirPeriodsTrois = new APeriod();
@@ -115,31 +118,31 @@ public class ACycleTest extends TestCase{
 		leLundiSoirPeriodsTrois.setBeginTime(17, 20);
 		leMardiMatinPeriodsUn.setBeginTime(8, 30);
 		leMardiSoirPeriodsDeux.setBeginTime(13, 30);
-		
+
 		leLundiMatinPeriodsUn.setEndTime(11, 30);
 		leLundiSoirPeriodsDeux.setEndTime(15, 30);
 		leLundiSoirPeriodsTrois.setEndTime(20, 30);
 		leMardiMatinPeriodsUn.setEndTime(11, 30);
 		leMardiSoirPeriodsDeux.setEndTime(15, 30);
-		
+
 		leLundiMatinPeriodsUn.setPeriodId(1);
 		leLundiSoirPeriodsDeux.setPeriodId(2);
 		leLundiSoirPeriodsTrois.setPeriodId(3);
 		leMardiMatinPeriodsUn.setPeriodId(1);
 		leMardiSoirPeriodsDeux.setPeriodId(2);
-		
+
 		leLundiMatinPeriodsUn.setPriority(1);
 		leLundiSoirPeriodsDeux.setPriority(1);
 		leLundiSoirPeriodsTrois.setPriority(1);
 		leMardiMatinPeriodsUn.setPriority(1);
 		leMardiSoirPeriodsDeux.setPriority(1);
-		
+
 		leLundiMatinPeriods.add(leLundiMatinPeriodsUn);
 		leLundiSoirPeriods.add(leLundiSoirPeriodsDeux);
 		leLundiSoirPeriods.add(leLundiSoirPeriodsTrois);
 		leMardiMatinPeriods.add(leMardiMatinPeriodsUn);
 		leMardiSoirPeriods.add(leMardiSoirPeriodsDeux);
-			
+
 		leLundiMatin.setTTperiods(leLundiMatinPeriods);
 		leLundiSoir.setTTperiods(leLundiSoirPeriods);
 		leMardiMatin.setTTperiods(leMardiMatinPeriods);
@@ -150,7 +153,7 @@ public class ACycleTest extends TestCase{
 		lesSequencesMa.add(leMardiSoir);
 		leLundi.setTTsequences(lesSequencesLu);
 		leMardi.setTTsequences(lesSequencesMa);
-		
+
 		lesDays.add(leLundi);
 		lesDays.add(leMardi);
 		cycleUn.setTTdays(lesDays);
@@ -158,11 +161,13 @@ public class ACycleTest extends TestCase{
 		assertTrue(cycleDeux.isEquals(cycleUn));
 		System.out.println(cycleDeux.isEquals(cycleUn));
 		System.out.println(cycleDeux.getTTdays().toString());
-		System.out.println("-- Creation et comparaison de deux cycles identiques ----");
+		System.out
+				.println("-- Creation et comparaison de deux cycles identiques ----");
 		cycleDeux.setCycleID(5);
-		System.out.println("-- changer la propriete d'un cycle et retester ----");
+		System.out
+				.println("-- changer la propriete d'un cycle et retester ----");
 		assertFalse(cycleDeux.isEquals(cycleUn));
 		System.out.println("-- End Test ACycle ----");
-		
+
 	}
 }

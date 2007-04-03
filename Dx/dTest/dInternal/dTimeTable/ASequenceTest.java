@@ -37,19 +37,17 @@ import dInternal.dTimeTable.ASequence;
  * 
  */
 public class ASequenceTest extends TestCase {
-	
-	
+
 	public ASequenceTest(String name) {
 		super(name);
-		}
-	
+	}
+
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
 		return new TestSuite(ASequenceTest.class);
 	} // end suite
-	
-	
+
 	public void testSequenceEqual() {
 		System.out.println("-- Begin Test ASequence ----");
 		ASequence sequenceUn = new ASequence();
@@ -57,9 +55,9 @@ public class ASequenceTest extends TestCase {
 		assertTrue(sequenceDeux.isEquals(sequenceUn));
 		System.out.println(sequenceDeux.isEquals(sequenceUn));
 		System.out.println("-- Deux seuqnces equales ----");
-		
+
 	}
-	
+
 	public void testSequenceEcrit() {
 		System.out.println("Test creer deux sequence et les comparer");
 		ASequence leLundiMatin = new ASequence();
@@ -74,9 +72,7 @@ public class ASequenceTest extends TestCase {
 		leLundiMatinPeriods.add(leLundiMatinPeriodsUn);
 		leLundiMatin.setTTperiods(leLundiMatinPeriods);
 		System.out.println(leLundiMatin.getTTperiods().toString());
-		
-		
-		
+
 		ASequence leMardiMatin = new ASequence();
 		leMardiMatin.setSequenceId("AM");
 		System.out.println(leMardiMatin.getSequenceId());
@@ -89,12 +85,11 @@ public class ASequenceTest extends TestCase {
 		leMardiMatinPeriods.add(leMardiMatinPeriodsUn);
 		leMardiMatin.setTTperiods(leMardiMatinPeriods);
 		System.out.println(leMardiMatin.getTTperiods().toString());
-		
+
 		assertTrue(leLundiMatin.isEquals(leMardiMatin));
 		System.out.println(leLundiMatin.isEquals(leMardiMatin));
-	   	System.out.println("-- End Test ASequence ----");
-		
+		System.out.println("-- End Test ASequence ----");
+
 	}
-	
 
 }

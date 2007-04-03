@@ -18,22 +18,27 @@
  */
 package dInternal.dTimeTable;
 
-
 import java.io.PrintStream;
 import java.util.Vector;
+
 public class ACycle extends Object {
-	
+
 	public final static int zero = 0;
+
 	private int _currentDayIndex = 0;
+
 	private int _cycleID;
+
 	private int _pLength;
-	private Vector <ADay> _ttDays;
-	
-	public ACycle(){
+
+	private Vector<ADay> _ttDays;
+
+	public ACycle() {
 		_cycleID = zero;
 		_pLength = zero;
-		_ttDays = new Vector<ADay>(1,1);
+		_ttDays = new Vector<ADay>(1, 1);
 	}
+
 	/**
 	 * get the set of days
 	 * 
@@ -90,21 +95,23 @@ public class ACycle extends Object {
 	/**
 	 * set the ID of cycle
 	 * 
-	 * @param int the ID of cycle
+	 * @param int
+	 *            the ID of cycle
 	 */
 	public void setCycleID(int cycleId) {
 		_cycleID = cycleId;
 	}
-	
+
 	/**
 	 * set the period Lengt of cycle
 	 * 
-	 * @param int  the Length  of period in yhe Cycle
+	 * @param int
+	 *            the Length of period in yhe Cycle
 	 */
 	public void setpLength(int pLength) {
 		_pLength = pLength;
 	}
-	
+
 	/**
 	 * set the set of days
 	 * 
@@ -114,8 +121,7 @@ public class ACycle extends Object {
 	public void setTTdays(Vector<ADay> setOfDays) {
 		_ttDays = setOfDays;
 	}
-	
-	
+
 	/**
 	 * return the next day and increment _currentDayIndex
 	 * 
@@ -144,7 +150,6 @@ public class ACycle extends Object {
 		return day;
 	}
 
-	
 	/**
 	 * return the sequence and increment _currentDayIndex
 	 * 
@@ -185,10 +190,10 @@ public class ACycle extends Object {
 	 * 
 	 */
 	public String toString() {
-		String str = _cycleID + "--" + _pLength ;
+		String str = _cycleID + "--" + _pLength;
 		for (int i = 0; i < _ttDays.size(); i++) {
 			ADay dayD = _ttDays.elementAt(i);
-			str += ( dayD.toString() + "--");
+			str += (dayD.toString() + "--");
 		}
 		return str;
 	}
@@ -207,23 +212,27 @@ public class ACycle extends Object {
 	public boolean isEquals(ACycle cycle) {
 		boolean cycleEqual = true;
 		int i = 0;
-		if(_cycleID == cycle.getCycleID() && _pLength == cycle.getpLength()){
-		while (i < _ttDays.size()&& cycleEqual) {
-			ADay dayR = new ADay();
-			ADay dayCloneR = new ADay();
-			dayR = _ttDays.elementAt(i);
-			dayCloneR = cycle.getTTdays().elementAt(i);
-			if (!dayR.isEquals(dayCloneR))
-				cycleEqual =  false;
-			i++;
+		if (_cycleID == cycle.getCycleID() && _pLength == cycle.getpLength()) {
+			while (i < _ttDays.size() && cycleEqual) {
+				ADay dayR = new ADay();
+				ADay dayCloneR = new ADay();
+				dayR = _ttDays.elementAt(i);
+				dayCloneR = cycle.getTTdays().elementAt(i);
+				if (!dayR.isEquals(dayCloneR))
+					cycleEqual = false;
+				i++;
+			}
+
+		} else {
+			cycleEqual = false;
 		}
-		
-	} else {cycleEqual = false;}
-	
-	return cycleEqual;
+
+		return cycleEqual;
 	}
+
 	/**
 	 * Day To xml
+	 * 
 	 * @param out
 	 */
 	public void CycleToXml(PrintStream out) {
@@ -232,9 +241,9 @@ public class ACycle extends Object {
 		out.println("<cycleID>" + _cycleID + "</cycleID>");
 		out.println("<pLength>" + _pLength + "</pLength>");
 		out.println("<TTdays>");
-		for(int i = 0 ; i < _ttDays.size(); i++){
+		for (int i = 0; i < _ttDays.size(); i++) {
 			_ttDays.elementAt(i).DayToXml(out);
-			}
+		}
 		out.println("</TTdays>");
 		out.println("</TTcycle>");
 		out.println("</DXTimeTable>");

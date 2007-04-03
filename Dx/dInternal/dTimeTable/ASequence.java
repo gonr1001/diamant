@@ -17,10 +17,11 @@
  *
  */
 package dInternal.dTimeTable;
+
 import java.io.PrintStream;
 import java.util.Vector;
 
-public class ASequence  extends Object {
+public class ASequence extends Object {
 
 	public final static String CR_LF = "\r\n";
 
@@ -47,7 +48,7 @@ public class ASequence  extends Object {
 	public String getSequenceId() {
 		return _sequenceID;
 	}
-	
+
 	/**
 	 * set the ID of sequence
 	 */
@@ -153,22 +154,23 @@ public class ASequence  extends Object {
 		boolean sequenceEqual = true;
 		int i = 0;
 		if (_sequenceID == seq.getSequenceId()) {
-			while ( i < _ttPeriods.size()&& sequenceEqual ==true) {
+			while (i < _ttPeriods.size() && sequenceEqual == true) {
 				APeriod perR = new APeriod();
 				APeriod perCloneR = new APeriod();
 				perR = _ttPeriods.elementAt(i);
 				perCloneR = seq.getTTperiods().elementAt(i);
 				if (!perR.isEquals(perCloneR))
-					sequenceEqual =  false;
+					sequenceEqual = false;
 				i++;
 			}
-			
-		} else {sequenceEqual = false;}
-		
+
+		} else {
+			sequenceEqual = false;
+		}
+
 		return sequenceEqual;
 	}
 
-	
 	/**
 	 * Sequence To xml
 	 * @param out
@@ -177,11 +179,11 @@ public class ASequence  extends Object {
 		out.println("<TTsequence>");
 		out.println("<sequenceID>" + _sequenceID + "</sequenceID>");
 		out.println("<TTperiods>");
-		for(int i = 0 ; i < _ttPeriods.size(); i++){
+		for (int i = 0; i < _ttPeriods.size(); i++) {
 			_ttPeriods.elementAt(i).PeriodToXml(out);
-			}
+		}
 		out.println("</TTperiods>");
 		out.println("</TTsequence>");
-		
+
 	}
 }

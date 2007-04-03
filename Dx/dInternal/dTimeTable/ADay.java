@@ -18,7 +18,6 @@
  */
 package dInternal.dTimeTable;
 
-
 import java.io.PrintStream;
 import java.util.Vector;
 
@@ -96,21 +95,23 @@ public class ADay extends Object {
 	/**
 	 * set the reference of day
 	 * 
-	 * @param int the reference of day
+	 * @param int
+	 *            the reference of day
 	 */
 	public void setDayRef(int dayRef) {
 		_dayRef = dayRef;
 	}
-	
+
 	/**
 	 * set the identifier of day
 	 * 
-	 * @param String  the identifier of day
+	 * @param String
+	 *            the identifier of day
 	 */
 	public void setDayId(String dayId) {
 		_dayId = dayId;
 	}
-	
+
 	/**
 	 * set the set of sequences
 	 * 
@@ -149,7 +150,6 @@ public class ADay extends Object {
 		return sequence;
 	}
 
-	
 	/**
 	 * return the period and increment _currentSequenceIndex
 	 * 
@@ -190,10 +190,10 @@ public class ADay extends Object {
 	 * 
 	 */
 	public String toString() {
-		String str = _dayRef + "--" + _dayId ;
+		String str = _dayRef + "--" + _dayId;
 		for (int i = 0; i < _ttSequences.size(); i++) {
 			ASequence seqD = _ttSequences.elementAt(i);
-			str += ( seqD.toString() + "--");
+			str += (seqD.toString() + "--");
 		}
 		return str;
 	}
@@ -212,32 +212,35 @@ public class ADay extends Object {
 	public boolean isEquals(ADay day) {
 		boolean dayEqual = true;
 		int i = 0;
-		if(_dayRef == day.getDayRef() && _dayId == day.getDayId()){
-		while (i < _ttSequences.size()&&  dayEqual) {
-			ASequence seqR = new ASequence();
-			ASequence seqCloneR = new ASequence();
-			seqR = _ttSequences.elementAt(i);
-			seqCloneR = day.getTTsequences().elementAt(i);
-			if (!seqR.isEquals(seqCloneR))
-				dayEqual =  false;
-			i++;
+		if (_dayRef == day.getDayRef() && _dayId == day.getDayId()) {
+			while (i < _ttSequences.size() && dayEqual) {
+				ASequence seqR = new ASequence();
+				ASequence seqCloneR = new ASequence();
+				seqR = _ttSequences.elementAt(i);
+				seqCloneR = day.getTTsequences().elementAt(i);
+				if (!seqR.isEquals(seqCloneR))
+					dayEqual = false;
+				i++;
+			}
+
+		} else {
+			dayEqual = false;
 		}
-		
-	} else {dayEqual = false;}
-	
-	return dayEqual;
+
+		return dayEqual;
 	}
-	
+
 	/**
 	 * Day To xml
+	 * 
 	 * @param out
 	 */
 	public void DayToXml(PrintStream out) {
 		out.println("<TTday>");
 		out.println("<TTsequences>");
-		for(int i = 0 ; i < _ttSequences.size(); i++){
+		for (int i = 0; i < _ttSequences.size(); i++) {
 			_ttSequences.elementAt(i).SequenceToXml(out);
-			}
+		}
 		out.println("</TTsequences>");
 		out.println("<dayRef>" + _dayRef + "</dayRef>");
 		out.println("<dayID>" + _dayId + "</dayID>");

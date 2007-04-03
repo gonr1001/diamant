@@ -34,17 +34,17 @@ import dInternal.dTimeTable.APeriod;
  * 
  */
 public class APeriodTest extends TestCase {
-	
+
 	public APeriodTest(String name) {
 		super(name);
-		}
-	
+	}
+
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
 		return new TestSuite(APeriodTest.class);
 	} // end suite
-	
+
 	public void testPeriodEqual() {
 		System.out.println("-- Begin Test APeriod ----");
 		APeriod periodUn = new APeriod();
@@ -52,7 +52,7 @@ public class APeriodTest extends TestCase {
 		assertTrue(periodDeux.isEquals(periodUn));
 		System.out.println(periodDeux.isEquals(periodDeux));
 		System.out.println("-- Deux Periods equales ----");
-		
+
 	}
 
 	public void testPeriodNotEqual() {
@@ -68,7 +68,7 @@ public class APeriodTest extends TestCase {
 		System.out.println(periodDeux.toString());
 		System.out.println("-- End Test testPeriodNotEqual ----");
 	}
-	
+
 	public void CreerAfficherPeriod() {
 		APeriod unePeriode = new APeriod();
 		unePeriode.setPeriodId(1);
@@ -78,5 +78,5 @@ public class APeriodTest extends TestCase {
 		System.out.println(unePeriode.toString());
 		System.out.println("-- End Test APeriod ----");
 	}
-	
+
 }

@@ -25,9 +25,9 @@ package dInternal.dTimeTable;
  * Description: ATTSAXErrorHandler is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public class ATTSAXErrorHandler {
-	//TODO NON necessaire pour ce travail
+	// TODO NON necessaire pour ce travail
 }

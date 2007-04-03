@@ -29,6 +29,7 @@ public class APeriod extends Object {
 
 	/** The default value of variables * */
 	public final static int zero = 0;
+
 	/** if begin time is 13:05 we must find 13:05 in file out Xml not 13:5 * */
 	public final static int dix = 10;
 
@@ -147,7 +148,6 @@ public class APeriod extends Object {
 		return str;
 	}
 
-	
 	/**
 	 * isEquals checks if this Period is equals to the Period gives in arg
 	 * 
@@ -182,20 +182,20 @@ public class APeriod extends Object {
 	 * 
 	 * @param out
 	 */
-	
+
 	public void PeriodToXml(PrintStream out) {
 		out.println("<TTperiod>");
 		out.println("<periodID>" + _periodID + "</periodID>");
-		out.print("<BeginTime>" + _beginTime[0] + ":" );
-		if (_beginTime[1] < dix) out.print(zero);
+		out.print("<BeginTime>" + _beginTime[0] + ":");
+		if (_beginTime[1] < dix)
+			out.print(zero);
 		out.println(_beginTime[1] + "</BeginTime>");
-		out.print("<EndTime>" + _endTime[0] + ":" );
-		if(_endTime[1] < dix) out.print(zero);
+		out.print("<EndTime>" + _endTime[0] + ":");
+		if (_endTime[1] < dix)
+			out.print(zero);
 		out.println(_endTime[1] + "</EndTime>");
 		out.println("<priority>" + _priority + "</priority>");
 		out.println("</TTperiod>");
 	}
-	
 
-	
 }

@@ -1,4 +1,5 @@
 package dInternal.dTimeTable;
+
 /** Created on 6 mar. 07 par M-A.A
  *
  * To change the template for this generated file go to
@@ -28,26 +29,44 @@ import org.xml.sax.helpers.LocatorImpl;
  */
 public class ATTSAXContentHandler implements ContentHandler {
 
-	public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
-	static String _path = "." + File.separator + "dataTest" + File.separator + "ASAXTTxmlFiles" + File.separator;
+	public final static NumberFormat HourFormat = NumberFormat
+			.getIntegerInstance();
+
+	static String _path = "." + File.separator + "dataTest" + File.separator
+			+ "ASAXTTxmlFiles" + File.separator;
+
 	FileWriter fw;
+
 	private String grilleTree = "";
+
 	private StringBuffer currentText;
+
 	private int i = 0;
-	//private int j = 0;
+
 	private ACycle cycle = new ACycle();
+
 	private ADay day = new ADay();
+
 	private ASequence sequence = new ASequence();
+
 	private APeriod period = new APeriod();
+
 	private StringTokenizer stBeginTime;
+
 	private StringTokenizer stEndTime;
-	private String hourBegin ;
-	private String minuteBegin ;
-	private String hourEnd ;
-	private String minuteEnd ;
-	//private Vector<ACycle> ttCycles;
+
+	private String hourBegin;
+
+	private String minuteBegin;
+
+	private String hourEnd;
+
+	private String minuteEnd;
+
 	private Vector<ADay> ttDays;
+
 	private Vector<ASequence> ttSequences;
+
 	private Vector<APeriod> ttPeriods;
 
 	/**
@@ -82,10 +101,10 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 *             dans l'analyse du document.
 	 * @see org.xml.sax.ContentHandler#startDocument()
 	 */
-	public void startDocument() throws SAXException {
+	public void startDocument() {
 		// Traitement pour la console
 		System.out.println("Debut de l'analyse du document");
-				
+
 		// Traitement pour un fichier de test
 		try {
 			fw = new FileWriter(_path + "unFichier.txt");
@@ -104,9 +123,8 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 *             considerer l'analyse du document comme etant complete.
 	 * @see org.xml.sax.ContentHandler#endDocument()
 	 */
-	public void endDocument() throws SAXException {
-		// System.out.println("Fin de l'analyse du document" );
-
+	public void endDocument() {
+		System.out.println("Fin de l'analyse du document");
 		try {
 			fw.write("fin du document");
 			fw.close();
@@ -127,8 +145,7 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 * @see org.xml.sax.ContentHandler#startPrefixMapping(java.lang.String,
 	 *      java.lang.String)
 	 */
-	public void startPrefixMapping(String prefix, String URI)
-			throws SAXException {
+	public void startPrefixMapping(String prefix, String URI) {
 		System.out.println("Traitement de l'espace de nommage : " + URI
 				+ ", prefixe choisi : " + prefix);
 	}
@@ -141,7 +158,7 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 *            nommage.
 	 * @see org.xml.sax.ContentHandler#endPrefixMapping(java.lang.String)
 	 */
-	public void endPrefixMapping(String prefix) throws SAXException {
+	public void endPrefixMapping(String prefix) {
 		System.out.println("Fin de traitement de l'espace de nommage : "
 				+ prefix);
 	}
@@ -164,10 +181,11 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
 	 */
 	public void startElement(String nameSpaceURI, String localName,
-			String rawName, Attributes attributs) throws SAXException {
+			String rawName, Attributes attributs) {
 		System.out.println("Ouverture de la balise : " + localName);
 		try {
 			fw.write(localName);
+			fw.write("  " + rawName + " = ");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -186,23 +204,24 @@ public class ATTSAXContentHandler implements ContentHandler {
 
 		// Traitement pour création des objets Début
 		grilleTree += "." + localName;
-		System.out.println("ICI ON OBSERVE LES DÉBUT DE GRILLE TREE  "+ i + "  ICI" + grilleTree);
+		System.out.println("ICI ON OBSERVE LES DÉBUT DE GRILLE TREE  " + i
+				+ "  ICI" + grilleTree);
 		i++;
-		if(localName == "TTcycle"){
+		if (localName == "TTcycle") {
 			cycle = new ACycle();
-		}else if (localName == "TTdays"){
-			 ttDays = new Vector<ADay>();
-		}else if (localName == "TTday"){
-			 day = new ADay();
-		 }else if (localName == "TTsequences"){
-			 ttSequences = new Vector<ASequence>();
-		 }else if (localName == "TTsequence"){
-			 sequence = new ASequence();
-		 }else if (localName == "TTperiods"){
-			 ttPeriods = new Vector<APeriod>();
-		 }else if (localName == "TTperiod"){
-			 period = new APeriod();
-		 }
+		} else if (localName == "TTdays") {
+			ttDays = new Vector<ADay>();
+		} else if (localName == "TTday") {
+			day = new ADay();
+		} else if (localName == "TTsequences") {
+			ttSequences = new Vector<ASequence>();
+		} else if (localName == "TTsequence") {
+			sequence = new ASequence();
+		} else if (localName == "TTperiods") {
+			ttPeriods = new Vector<APeriod>();
+		} else if (localName == "TTperiod") {
+			period = new APeriod();
+		}
 		currentText = new StringBuffer();
 		//		
 
@@ -214,11 +233,11 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public void endElement(String nameSpaceURI, String localName, String rawName)
-			throws SAXException {
+	public void endElement(String nameSpaceURI, String localName, String rawName) {
 		System.out.print("Fermeture de la balise : " + localName);
 		try {
 			fw.write(localName);
+			fw.write("  " + rawName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -229,7 +248,6 @@ public class ATTSAXContentHandler implements ContentHandler {
 		}
 
 		System.out.println();
-		
 
 		if (grilleTree.startsWith(".DXTimeTable.TTcycle.cycleID")) {
 			this.cycle.setCycleID(Integer.parseInt(currentText.toString()));
@@ -241,50 +259,51 @@ public class ATTSAXContentHandler implements ContentHandler {
 		} else if (grilleTree
 				.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.dayID")) {
 			this.day.setDayId(currentText.toString());
-		} else if(grilleTree
+		} else if (grilleTree
 				.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.sequenceID")) {
 			this.sequence.setSequenceId(currentText.toString());
 		} else if (grilleTree
 				.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.periodID")) {
 			period.setPeriodId(Integer.parseInt(currentText.toString()));
-		} else if (grilleTree.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.BeginTime")) {
-			 String hourMinuteBegin = currentText.toString();
-			 stBeginTime = new StringTokenizer(hourMinuteBegin,":");
+		} else if (grilleTree
+				.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.BeginTime")) {
+			String hourMinuteBegin = currentText.toString();
+			stBeginTime = new StringTokenizer(hourMinuteBegin, ":");
 			hourBegin = stBeginTime.nextToken();
 			minuteBegin = stBeginTime.nextToken();
-			period.setBeginTime(Integer.parseInt(hourBegin),Integer.parseInt(minuteBegin));// (hour,minute)(Integer.parseInt(currentText.toString()));
-		} else if (grilleTree.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.EndTime")) {
+			period.setBeginTime(Integer.parseInt(hourBegin), Integer
+					.parseInt(minuteBegin));// (hour,minute)(Integer.parseInt(currentText.toString()));
+		} else if (grilleTree
+				.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.EndTime")) {
 			String hourMinuteEnd = currentText.toString();
-			 stEndTime = new StringTokenizer(hourMinuteEnd,":");
+			stEndTime = new StringTokenizer(hourMinuteEnd, ":");
 			hourEnd = stEndTime.nextToken();
 			minuteEnd = stEndTime.nextToken();
-			period.setEndTime(Integer.parseInt(hourEnd),Integer.parseInt(minuteEnd));
-		} else if (grilleTree.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.priority")) {
+			period.setEndTime(Integer.parseInt(hourEnd), Integer
+					.parseInt(minuteEnd));
+		} else if (grilleTree
+				.startsWith(".DXTimeTable.TTcycle.TTdays.TTday.TTsequences.TTsequence.TTperiods.TTperiod.priority")) {
 			period.setPriority(Integer.parseInt(currentText.toString()));
 		}
-		
-		if(localName == "TTperiod"){
+
+		if (localName == "TTperiod") {
 			ttPeriods.add(period);
-		}else if (localName == "TTperiods"){
-			 sequence.setTTperiods(ttPeriods);
-		}else if (localName == "TTsequence"){
-			 ttSequences.add(sequence);
-		 }else if (localName == "TTsequences"){
-			 day.setTTsequences(ttSequences);
-		 }else if (localName == "TTday"){
-			 ttDays.add(day);
-		 }else if (localName == "TTdays"){
-			 cycle.setTTdays(ttDays);
-		 }
+		} else if (localName == "TTperiods") {
+			sequence.setTTperiods(ttPeriods);
+		} else if (localName == "TTsequence") {
+			ttSequences.add(sequence);
+		} else if (localName == "TTsequences") {
+			day.setTTsequences(ttSequences);
+		} else if (localName == "TTday") {
+			ttDays.add(day);
+		} else if (localName == "TTdays") {
+			cycle.setTTdays(ttDays);
+		}
 
 		grilleTree = grilleTree.substring(0, grilleTree.length()
 				- localName.length() - 1); // delete element name from element
-		
-		currentText.setLength(0); // clean currentText StringBuffer
-		
 
-		
-		
+		currentText.setLength(0); // clean currentText StringBuffer
 
 	}
 
@@ -300,7 +319,7 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 *            le rang du dernier caractere a traiter effectivement
 	 * @see org.xml.sax.ContentHandler#characters(char[], int, int)
 	 */
-	public void characters(char[] ch, int start, int end) throws SAXException {
+	public void characters(char[] ch, int start, int end) {
 		System.out.println("#PCDATA : " + new String(ch, start, end));
 		try {
 			fw.write("   ");
@@ -309,8 +328,7 @@ public class ATTSAXContentHandler implements ContentHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		// Traitement pour creation des objets
+
 		currentText.append(ch, start, end);
 	}
 
@@ -328,8 +346,7 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 *            le rang du dernier caractere a traiter effectivement
 	 * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)
 	 */
-	public void ignorableWhitespace(char[] ch, int start, int end)
-			throws SAXException {
+	public void ignorableWhitespace(char[] ch, int start, int end) {
 		System.out.println("espaces inutiles rencontres : ..."
 				+ new String(ch, start, end) + "...");
 	}
@@ -345,8 +362,7 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 * @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String,
 	 *      java.lang.String)
 	 */
-	public void processingInstruction(String target, String data)
-			throws SAXException {
+	public void processingInstruction(String target, String data) {
 		System.out.println("Instruction de fonctionnement : " + target);
 		System.out.println("  dont les arguments sont : " + data);
 	}
@@ -358,14 +374,22 @@ public class ATTSAXContentHandler implements ContentHandler {
 	 * 
 	 * @see org.xml.sax.ContentHandler#skippedEntity(java.lang.String)
 	 */
-	public void skippedEntity(String arg0) throws SAXException {
-		// TODO aucun code necessaire pour ce cas
+	public void skippedEntity(String arg0) {
+		try {
+			fw = new FileWriter(_path + "argFichier.txt");
+			fw.write("Les balises evitées par le parseurs sont : ");
+			fw.write(arg0);
+			fw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
-	 public ACycle getCycleLu(){
-	 return this.cycle;
-	 }
+	public ACycle getCycleLu() {
+		return this.cycle;
+	}
 
-	private Locator locator;
+	public Locator locator;
 
 }
