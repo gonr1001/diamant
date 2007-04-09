@@ -305,6 +305,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 			{ "RoomPlaced", "Placé" },
 			{ "RoomNotPlaced", "Non placé" },
 
+
 			{ "ConflictsOfAnEventDlgTitle", "Conflits d'un événement" },
 			{ "ManImpDlgTitle", "Affectation manuelle" },
 

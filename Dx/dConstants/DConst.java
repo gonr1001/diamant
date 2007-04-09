@@ -654,6 +654,8 @@ public static final String INVALID_NAME_OF_THE_INSTRUCTOR = "Name of instructor 
 
 public static final String WRONG_TIME_TABLE_STRUCTURE = "Wrong time table structure!";
 
+public static final String ACT_CB_SITE = "actionJCBSite";
+
 
   
 }

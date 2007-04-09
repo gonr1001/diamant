@@ -284,8 +284,8 @@ public class SetOfEvents extends DSetOfResources {
 //						.getRoomKey()));
 				assignment.setRoomName(_dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
 						.getRoomKey()));
-				System.out.println("room Name "+ _dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
-						.getRoomKey()));
+//				System.out.println("room Name "+ _dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
+//						.getRoomKey()));
 			} else {
 				assignment.setRoomName(getRoomName(_dm.getSetOfRooms(), event
 						.getRoomKey()));
