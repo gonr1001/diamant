@@ -127,11 +127,11 @@ public class ACycle extends Object {
 	 * 
 	 * @return
 	 */
-	public ADay getNextDay(int seqVal) {
+	public ADay getNextDay(){//int seqVal) {
 		ADay day = _ttDays.elementAt(_currentDayIndex++);
 		if (_currentDayIndex >= _ttDays.size()) {
 			_currentDayIndex = 0;
-			seqVal++;
+//			seqVal++;
 		}
 		return day;
 	}
@@ -141,11 +141,11 @@ public class ACycle extends Object {
 	 * 
 	 * @return
 	 */
-	public ADay getPreviousDay(int seqVal) {
+	public ADay getPreviousDay(){//int seqVal) {
 		ADay day = _ttDays.elementAt(_currentDayIndex--);
 		if (_currentDayIndex <= -1) {
 			_currentDayIndex = _ttDays.size() - 1;
-			seqVal--;
+//			seqVal--;
 		}
 		return day;
 	}
@@ -155,12 +155,12 @@ public class ACycle extends Object {
 	 * 
 	 * @return
 	 */
-	public ASequence getNextSequence(int dayValue) {
+	public ASequence getNextSequence(){//int dayValue) {
 		ASequence sequence = (_ttDays.elementAt(_currentDayIndex))
-				.getNextSequence(dayValue);
+				.getNextSequence();//dayValue);
 		if (_currentDayIndex >= _ttDays.size()) {
 			_currentDayIndex = 0;
-			dayValue++;
+//			dayValue++;
 		}
 		return sequence;
 	}
@@ -170,13 +170,13 @@ public class ACycle extends Object {
 	 * 
 	 * @return
 	 */
-	public ASequence getPreviousSequence(int dayValue) {
+	public ASequence getPreviousSequence(){//int dayValue) {
 		int seqValue = _currentDayIndex;
 		ASequence sequence = (_ttDays.elementAt(_currentDayIndex))
-				.getPreviousSequence(dayValue);
+				.getPreviousSequence();//dayValue);
 		if (_currentDayIndex <= -1) {
 			_currentDayIndex = _ttDays.size() - 1;
-			dayValue--;
+//			dayValue--;
 		}
 		if (_currentDayIndex != seqValue) {
 			_currentDayIndex = seqValue;

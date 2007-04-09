@@ -106,11 +106,11 @@ public class ASequence extends Object {
 	 * 
 	 * @return
 	 */
-	public APeriod getNextPeriod(int seqVal) {
+	public APeriod getNextPeriod(){//int seqVal) {
 		APeriod period = _ttPeriods.elementAt(_currentPeriodIndex++);
 		if (_currentPeriodIndex >= _ttPeriods.size()) {
 			_currentPeriodIndex = 0;
-			seqVal++;
+//			seqVal++;
 		}
 		return period;
 	}
@@ -120,11 +120,11 @@ public class ASequence extends Object {
 	 * 
 	 * @return
 	 */
-	public APeriod getPreviousPeriod(int seqVal) {
+	public APeriod getPreviousPeriod(){//int seqVal) {
 		APeriod period = _ttPeriods.elementAt(_currentPeriodIndex--);
 		if (_currentPeriodIndex <= -1) {
 			_currentPeriodIndex = _ttPeriods.size() - 1;
-			seqVal--;
+//			seqVal--;
 		}
 		return period;
 	}

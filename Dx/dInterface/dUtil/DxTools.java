@@ -13,18 +13,15 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
@@ -320,29 +317,29 @@ public static int STIConvertGroupToInt(String STIGroupID){
   }
  */
  
- public static JPanel listPanel(JPanel panel, JList[] lists,  int panelWidth, int panelHeight){
- 	panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
- 	Container hBox = Box.createHorizontalBox(); 
- 	int nameListPosition = 1;
- 	if(lists.length>0){
- 		hBox.add(lists[0]);
- 		for(int i=1; i< lists.length; i++){
- 			hBox.add(Box.createHorizontalStrut(2));
- 			hBox.add(lists[i]);
- 			if(i == nameListPosition){
- 				Dimension dim=new Dimension(45,80);
- 				lists[i].setPreferredSize(dim);
- 			}
- 				
- 		}// end for(int i=1; i< lists.length; i++)
- 	}// end if(lists.length>0)
- 	JScrollPane scrollPane = new JScrollPane();
- 	scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
- 	scrollPane.getViewport().add(hBox);
- 	//scrollPane.getViewport().add(aList);
- 	panel.add(scrollPane);
- 	return panel;
-  }
+// public static JPanel listPanel(JPanel panel, JList[] lists,  int panelWidth, int panelHeight){
+// 	panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+// 	Container hBox = Box.createHorizontalBox(); 
+// 	int nameListPosition = 1;
+// 	if(lists.length>0){
+// 		hBox.add(lists[0]);
+// 		for(int i=1; i< lists.length; i++){
+// 			hBox.add(Box.createHorizontalStrut(2));
+// 			hBox.add(lists[i]);
+// 			if(i == nameListPosition){
+// 				Dimension dim=new Dimension(45,80);
+// 				lists[i].setPreferredSize(dim);
+// 			}
+// 				
+// 		}// end for(int i=1; i< lists.length; i++)
+// 	}// end if(lists.length>0)
+// 	JScrollPane scrollPane = new JScrollPane();
+// 	scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
+// 	scrollPane.getViewport().add(hBox);
+// 	//scrollPane.getViewport().add(aList);
+// 	panel.add(scrollPane);
+// 	return panel;
+//  }
  /**
   * Builds a JPanel containing just a JList
   * @param theList
@@ -360,78 +357,78 @@ public static int STIConvertGroupToInt(String STIGroupID){
    return panel;
  }
 
- /**
-  * Creates a Panel containing a valued title plus a listPanel
-  * @param panelDim The panel dimension
-  * @param list the list
-  * @param vec the vector source for the list
-  * @param labelsInfo The array containing the Strings to be displayed
-  * @param ml the Mouselistener for the list
-  * @return
-  */
-
- public static JPanel setListPanel(Dimension panelDim, JList list, Vector vec, String [] labelsInfo, MouseListener ml){
-   Dimension infoPanelDim = new Dimension((int)panelDim.getWidth(), 20);
-   Dimension listPanelDim = new Dimension((int)panelDim.getWidth(), (int)(panelDim.getHeight() - infoPanelDim.getHeight()));
-   list.setListData(vec);
-   list.addMouseListener(ml);
-   JPanel listPanel = listPanel(list, (int)listPanelDim.getWidth(), (int)listPanelDim.getHeight());
-   //the panel
-   JPanel panel = new JPanel();
-   panel.setPreferredSize(panelDim);
-   panel.add(setInfoPanel(infoPanelDim, labelsInfo));
-   panel.add(listPanel);
-   //panel.setBorder(BorderFactory.createLineBorder(Color.black));
-   return panel;
- }
-
-
-  /**
-   * Builds a JPanel containig several labels arranged by couples.
-   * The first label of the couple represents the name of a quantity, the second
-   * label of the couple represents the value of that quantity. If there is
-   * only the names, the labels represents the titles
-   * @param parentDim The dimension of the panel containing this infoPanel
-   * @param items the items to be displayed
-   * @return the infoPanel
-   */
-  public static JPanel setInfoPanel(Dimension panelDim, String [] items){
-    JPanel infoPanel = new JPanel();
-    JLabel [] labels = new JLabel[items.length];
-    infoPanel.setPreferredSize(panelDim);
-    for (int i = 0; i < items.length; i++){
-      labels[i] = new JLabel(items[i]+ " ");
-      if (i%2 != 0){
-        labels[i].setForeground(DConst.COLOR_QUANTITY_DLGS);
-      }
-      infoPanel.add(labels[i]);
-    }
-    return infoPanel;
-  }
+// /**
+//  * Creates a Panel containing a valued title plus a listPanel
+//  * @param panelDim The panel dimension
+//  * @param list the list
+//  * @param vec the vector source for the list
+//  * @param labelsInfo The array containing the Strings to be displayed
+//  * @param ml the Mouselistener for the list
+//  * @return
+//  */
+//
+// public static JPanel setListPanel(Dimension panelDim, JList list, Vector vec, String [] labelsInfo, MouseListener ml){
+//   Dimension infoPanelDim = new Dimension((int)panelDim.getWidth(), 20);
+//   Dimension listPanelDim = new Dimension((int)panelDim.getWidth(), (int)(panelDim.getHeight() - infoPanelDim.getHeight()));
+//   list.setListData(vec);
+//   list.addMouseListener(ml);
+//   JPanel listPanel = listPanel(list, (int)listPanelDim.getWidth(), (int)listPanelDim.getHeight());
+//   //the panel
+//   JPanel panel = new JPanel();
+//   panel.setPreferredSize(panelDim);
+//   panel.add(setInfoPanel(infoPanelDim, labelsInfo));
+//   panel.add(listPanel);
+//   //panel.setBorder(BorderFactory.createLineBorder(Color.black));
+//   return panel;
+// }
 
 
+//  /**
+//   * Builds a JPanel containig several labels arranged by couples.
+//   * The first label of the couple represents the name of a quantity, the second
+//   * label of the couple represents the value of that quantity. If there is
+//   * only the names, the labels represents the titles
+//   * @param parentDim The dimension of the panel containing this infoPanel
+//   * @param items the items to be displayed
+//   * @return the infoPanel
+//   */
+//  public static JPanel setInfoPanel(Dimension panelDim, String [] items){
+//    JPanel infoPanel = new JPanel();
+//    JLabel [] labels = new JLabel[items.length];
+//    infoPanel.setPreferredSize(panelDim);
+//    for (int i = 0; i < items.length; i++){
+//      labels[i] = new JLabel(items[i]+ " ");
+//      if (i%2 != 0){
+//        labels[i].setForeground(DConst.COLOR_QUANTITY_DLGS);
+//      }
+//      infoPanel.add(labels[i]);
+//    }
+//    return infoPanel;
+//  }
 
- /**
-  * Builds a panel containing a Jlist
-  * @param list
-  * @param panelWidth
-  * @param panelHeight
-  * @return
-  */
-/*
- public static JPanel infoPanel(String[][] list, int panelWidth, int panelHeight){
-   JPanel panel = new JPanel();
-   JLabel lNumber;
-   panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
-   for (int i = 0; i < list.length; i++){
-     panel.add(new JLabel((String)list[i][0]));
-     lNumber = new JLabel((String)list[i][1]);
-     lNumber.setForeground(Color.blue);
-     panel.add(lNumber);
-   }
-   return panel;
- }
- */
+
+
+// /**
+//  * Builds a panel containing a Jlist
+//  * @param list
+//  * @param panelWidth
+//  * @param panelHeight
+//  * @return
+//  */
+///*
+// public static JPanel infoPanel(String[][] list, int panelWidth, int panelHeight){
+//   JPanel panel = new JPanel();
+//   JLabel lNumber;
+//   panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
+//   for (int i = 0; i < list.length; i++){
+//     panel.add(new JLabel((String)list[i][0]));
+//     lNumber = new JLabel((String)list[i][1]);
+//     lNumber.setForeground(Color.blue);
+//     panel.add(lNumber);
+//   }
+//   return panel;
+// }
+// */
 
  /**
   * Sorts the elements of a vector

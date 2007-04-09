@@ -37,7 +37,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
@@ -274,7 +274,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_capacity = new JLabel[_events.size()];
 		for (int i = 0; i < _events.size(); i++) {
 			if (_events.get(i) != null) {
-				//_currentEventIndex = i;
 				jtp.addTab(((DResource) _events.get(i)).getID(),
 						buildEventPanel(i, canBeModified));
 			}
@@ -312,8 +311,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JPanel hourPanel = buildHourPanel(i);
 
 		String max = "limite: ";
-//		EventAttach event = (EventAttach) ((DResource) _events.get(_tabbedPane.getSelectedIndex()))
-//				.getAttach();
 		EventAttach event = (EventAttach) ((DResource) _events.get(i))
 		.getAttach();
 
@@ -607,17 +604,39 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private JPanel buildDayPanel(int i) {
 		JPanel dayPanel = new JPanel();
-		Vector[] vect = buildDayList(i);
-		JComboBox dayCB = new JComboBox(vect[1]);
+		Vector<String> vect = buildDayList();
+		JComboBox dayCB = new JComboBox(vect);
 
 		dayPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_DAY_NAME));
 		dayPanel.add(dayCB);
-		dayCB.setSelectedItem(vect[0].get(0).toString());
+		EventAttach event = (EventAttach) ((DResource) _events
+				.get(i)).getAttach();
+		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
+		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+				.getPeriodKey(), ".", 0));
+		DResource day = cycle.getSetOfDays().getResource(dayKey);
+//		list[0].add(day.getKey() + "." + day.getID());
+		
+		dayCB.setSelectedItem(day.getKey() + "." + day.getID());
 		dayCB.addActionListener(this);
 
 		return dayPanel;
 	} // end buildDayPanel
+	
+//	private JPanel oldBuildDayPanel(int i) {
+//		JPanel dayPanel = new JPanel();
+//		Vector[] vect = oldBuildDayList(i);
+//		JComboBox dayCB = new JComboBox(vect[1]);
+//
+//		dayPanel.setBorder(new TitledBorder(new EtchedBorder(),
+//				DConst.R_DAY_NAME));
+//		dayPanel.add(dayCB);
+//		dayCB.setSelectedItem(vect[0].get(0).toString());
+//		dayCB.addActionListener(this);
+//
+//		return dayPanel;
+//	} // end buildDayPanel
 
 	private String getSelectedDay(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(0);
@@ -627,17 +646,42 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private JPanel buildHourPanel(int i) {
 		JPanel hourPanel = new JPanel();
-		Vector[] vect = buildHourList(i);
-		JComboBox hourCB = new JComboBox(vect[1]);
+		Vector<String> vect = buildHourList(i);
+		JComboBox hourCB = new JComboBox(vect);
 
 		hourPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_ACTIVITY_BEGIN_HOUR));
 		hourPanel.add(hourCB);
-		hourCB.setSelectedItem(vect[0].get(0).toString());
+		EventAttach event = (EventAttach) ((DResource) _events
+				.get(i)).getAttach();
+		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
+		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+				.getPeriodKey(), ".", 0));
+		long seqKey = Long.parseLong(DXToolsMethods.getToken(event
+				.getPeriodKey(), ".", 1));
+		long perKey = Long.parseLong(DXToolsMethods.getToken(event
+				.getPeriodKey(), ".", 2));
+		Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
+//		list[0].add(period.getBeginHour()[0] + ":" + period.getBeginHour()[1]);
+		hourCB.setSelectedItem(period.getBeginHour()[0] + ":" + period.getBeginHour());
 		hourCB.addActionListener(this);
 
 		return hourPanel;
 	} // end buildHourPanel
+	
+//	private JPanel oldBuildHourPanel(int i) {
+//		JPanel hourPanel = new JPanel();
+//		Vector[] vect = oldBuildHourList(i);
+//		JComboBox hourCB = new JComboBox(vect[1]);
+//
+//		hourPanel.setBorder(new TitledBorder(new EtchedBorder(),
+//				DConst.R_ACTIVITY_BEGIN_HOUR));
+//		hourPanel.add(hourCB);
+//		hourCB.setSelectedItem(vect[0].get(0).toString());
+//		hourCB.addActionListener(this);
+//
+//		return hourPanel;
+//	} // end buildHourPanel
 
 	private String getSelectedHour(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(0);
@@ -787,7 +831,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				/ _dModel.getTTStructure().getPeriodLenght();
 		return String.valueOf(duration);
 	}
-
 	/**
 	 * build the hour list
 	 * 
@@ -795,10 +838,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * 
 	 * the second contains
 	 */
-	private Vector[] buildHourList(int ii) {
-		Vector list[] = { new Vector(), new Vector() };
-//		EventAttach event = (EventAttach) ((DResource) _events
-//				.get(_tabbedPane.getSelectedIndex())).getAttach();
+	private Vector<String> buildHourList(int ii) {
+		Vector <String>list =  new Vector<String>();
 		EventAttach event = (EventAttach) ((DResource) _events
 				.get(ii)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
@@ -809,7 +850,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		long perKey = Long.parseLong(DXToolsMethods.getToken(event
 				.getPeriodKey(), ".", 2));
 		Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
-		list[0].add(period.getBeginHour()[0] + ":" + period.getBeginHour()[1]);
+//		list[0].add(period.getBeginHour()[0] + ":" + period.getBeginHour()[1]);
 		Day day = (Day) cycle.getSetOfDays().getResource(dayKey).getAttach();
 		int[] avoidPriority = {};
 		int duration = event.getDuration()
@@ -824,7 +865,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 						.getResourceAt(i).getKey(), seq.getSetOfPeriods()
 						.getResourceAt(j).getKey(), duration, avoidPriority,
 						true)) {
-					list[1].add(period.getBeginHour()[0] + ":"
+					list.add(period.getBeginHour()[0] + ":"
 							+ period.getBeginHour()[1]);
 				}// end if (cycle.isPeriodContiguous(p
 			}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
@@ -832,24 +873,81 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return list;
 	}
 
-	/**
-	 * build the day list
-	 * 
-	 * @return
-	 */
-	private Vector[] buildDayList(int ii) {
-		Vector list[] = { new Vector(), new Vector() };
+	
+//	/**
+//	 * build the hour list
+//	 * 
+//	 * @return Vector[] of two elements the first is a Vector containing
+//	 * 
+//	 * the second contains
+//	 */
+//	private Vector[] oldBuildHourList(int ii) {
+//		Vector list[] = { new Vector(), new Vector() };
 //		EventAttach event = (EventAttach) ((DResource) _events
-//				.get(_tabbedPane.getSelectedIndex())).getAttach();
-		EventAttach event = (EventAttach) ((DResource) _events
-				.get(ii)).getAttach();
+//				.get(ii)).getAttach();
+//		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
+//		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+//				.getPeriodKey(), ".", 0));
+//		long seqKey = Long.parseLong(DXToolsMethods.getToken(event
+//				.getPeriodKey(), ".", 1));
+//		long perKey = Long.parseLong(DXToolsMethods.getToken(event
+//				.getPeriodKey(), ".", 2));
+//		Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
+//		list[0].add(period.getBeginHour()[0] + ":" + period.getBeginHour()[1]);
+//		Day day = (Day) cycle.getSetOfDays().getResource(dayKey).getAttach();
+//		int[] avoidPriority = {};
+//		int duration = event.getDuration()
+//				/ _dModel.getTTStructure().getPeriodLenght();
+//		for (int i = 0; i < day.getSetOfSequences().size(); i++) {
+//			Sequence seq = (Sequence) day.getSetOfSequences().getResourceAt(i)
+//					.getAttach();
+//			for (int j = 0; j < seq.getSetOfPeriods().size(); j++) {
+//				period = (Period) seq.getSetOfPeriods().getResourceAt(j)
+//						.getAttach();
+//				if (cycle.isPeriodContiguous(dayKey, day.getSetOfSequences()
+//						.getResourceAt(i).getKey(), seq.getSetOfPeriods()
+//						.getResourceAt(j).getKey(), duration, avoidPriority,
+//						true)) {
+//					list[1].add(period.getBeginHour()[0] + ":"
+//							+ period.getBeginHour()[1]);
+//				}// end if (cycle.isPeriodContiguous(p
+//			}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
+//		}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+//		return list;
+//	}
+
+//	/**
+//	 * build the day list
+//	 * 
+//	 * @return
+//	 */
+//	private Vector[] oldBuildDayList(int ii) {
+//		Vector list[] = { new Vector(), new Vector() };
+//		EventAttach event = (EventAttach) ((DResource) _events
+//				.get(ii)).getAttach();
+//		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
+//		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+//				.getPeriodKey(), ".", 0));
+//		DResource day = cycle.getSetOfDays().getResource(dayKey);
+//		list[0].add(day.getKey() + "." + day.getID());
+//		for (int i = 0; i < cycle.getSetOfDays().size(); i++)
+//			list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey() + "."
+//					+ cycle.getSetOfDays().getResourceAt(i).getID());
+//		return list;
+//	}
+	
+	
+	private Vector<String> buildDayList() {
+		Vector <String> list = new Vector<String>() ;
+//		EventAttach event = (EventAttach) ((DResource) _events
+//				.get(ii)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
-		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 0));
-		DResource day = cycle.getSetOfDays().getResource(dayKey);
-		list[0].add(day.getKey() + "." + day.getID());
+//		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+//				.getPeriodKey(), ".", 0));
+//		DResource day = cycle.getSetOfDays().getResource(dayKey);
+//		list[0].add(day.getKey() + "." + day.getID());
 		for (int i = 0; i < cycle.getSetOfDays().size(); i++)
-			list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey() + "."
+			list.add(cycle.getSetOfDays().getResourceAt(i).getKey() + "."
 					+ cycle.getSetOfDays().getResourceAt(i).getID());
 		return list;
 	}
@@ -1074,6 +1172,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return -1;
 	}
 
+	// dans ttable
 	private Vector buildThePeriods(int size) {
 		Vector<String> v = new Vector<String>();
 		for (int i = 0; i <= size; i++) {

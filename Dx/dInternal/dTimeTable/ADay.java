@@ -127,11 +127,11 @@ public class ADay extends Object {
 	 * 
 	 * @return
 	 */
-	public ASequence getNextSequence(int seqVal) {
+	public ASequence getNextSequence(){//int seqVal) {
 		ASequence sequence = _ttSequences.elementAt(_currentSequenceIndex++);
 		if (_currentSequenceIndex >= _ttSequences.size()) {
 			_currentSequenceIndex = 0;
-			seqVal++;
+//			seqVal++;
 		}
 		return sequence;
 	}
@@ -141,11 +141,11 @@ public class ADay extends Object {
 	 * 
 	 * @return
 	 */
-	public ASequence getPreviousSequence(int seqVal) {
+	public ASequence getPreviousSequence(){//int seqVal) {
 		ASequence sequence = _ttSequences.elementAt(_currentSequenceIndex--);
 		if (_currentSequenceIndex <= -1) {
 			_currentSequenceIndex = _ttSequences.size() - 1;
-			seqVal--;
+//			seqVal--;
 		}
 		return sequence;
 	}
@@ -155,12 +155,12 @@ public class ADay extends Object {
 	 * 
 	 * @return
 	 */
-	public APeriod getNextPeriod(int dayValue) {
+	public APeriod getNextPeriod(){//int dayValue) {
 		APeriod period = (_ttSequences.elementAt(_currentSequenceIndex))
-				.getNextPeriod(dayValue);
+				.getNextPeriod();//dayValue);
 		if (_currentSequenceIndex >= _ttSequences.size()) {
 			_currentSequenceIndex = 0;
-			dayValue++;
+//			dayValue++;
 		}
 		return period;
 	}
@@ -170,13 +170,13 @@ public class ADay extends Object {
 	 * 
 	 * @return
 	 */
-	public APeriod getPreviousPeriod(int dayValue) {
+	public APeriod getPreviousPeriod(){//int dayValue) {
 		int seqValue = _currentSequenceIndex;
 		APeriod period = (_ttSequences.elementAt(_currentSequenceIndex))
-				.getPreviousPeriod(dayValue);
+				.getPreviousPeriod();//dayValue);
 		if (_currentSequenceIndex <= -1) {
 			_currentSequenceIndex = _ttSequences.size() - 1;
-			dayValue--;
+//			dayValue--;
 		}
 		if (_currentSequenceIndex != seqValue) {
 			_currentSequenceIndex = seqValue;
