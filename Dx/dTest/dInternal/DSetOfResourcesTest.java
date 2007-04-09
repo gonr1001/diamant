@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2007-04-01 13:30:08 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2007-04-09 20:38:06 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -26,7 +26,6 @@ import java.util.Vector;
 
 import dInternal.DResource;
 import dInternal.DValue;
-import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.dStudents.SetOfStudents;
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -18,7 +18,6 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Period;
@@ -56,12 +55,12 @@ public class SetOfEvents extends DSetOfResources {
 		if (activity.isActivityVisibility()) {
 			for (int j = 0; j < activity.getSetOfTypes().size(); j++) {
 				DResource type = activity.getSetOfTypes().getResourceAt(j);
-				forEachType(soie, activityResource, type, activity);
+				forEachType(soie, activityResource, type);//, activity);
 			}
 		}
 	}
 
-	private void forEachType(DSetOfResources soie, DResource activityResource, DResource type, Activity activity) {
+	private void forEachType(DSetOfResources soie, DResource activityResource, DResource type){//, Activity activity) {
 		String unityKey;
 		long roomKey;
 		for (int k = 0; k < ((Type) type.getAttach())
@@ -370,19 +369,19 @@ public class SetOfEvents extends DSetOfResources {
 //		}
 //		return DConst.NO_ROOM_INTERNAL;
 //	}
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-	private String getDxRoomName(DxSetOfSites sos, long eltkey) {
-		if (eltkey != -1) {
-			return sos.getResourceName(eltkey);
-		}
-		return DConst.NO_ROOM_INTERNAL;
-	}
+//	/**
+//	 * get a resource key
+//	 * 
+//	 * @param soresc
+//	 * @param elt
+//	 * @return the resource key or -1 if key does not found
+//	 */
+//	private String getDxRoomName(DxSetOfSites sos, long eltkey) {
+//		if (eltkey != -1) {
+//			return sos.getResourceName(eltkey);
+//		}
+//		return DConst.NO_ROOM_INTERNAL;
+//	}
 
 	/**
 	 * for two event in conflict

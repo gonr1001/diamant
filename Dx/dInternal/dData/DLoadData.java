@@ -575,7 +575,8 @@ public class DLoadData {
 			currentSetOfResc.sortSetOfResourcesByID();
 		}// Ici sans le else on passe même s’il y a une erreur !!!!
 		else {
-			throw new DxException(newSetOfResc.getError());
+			if(newSetOfResc != null)
+				throw new DxException(newSetOfResc.getError());
 		}
 		return currentSetOfResc;
 	}
