@@ -34,9 +34,13 @@ public class Assignment extends DObject {
 	//long  _instructorKey = -1;
 	/** room valid only for initialization*/
 	private String _roomName;
-
+	
+	private String _typeName;
+	
+	private boolean _isRoom ;
+	private boolean _isType;
 	/** room key */
-	long _roomKey = -1;
+//	long _roomKey = -1;
 
 	/** room is fixed*/
 	private boolean _roomFixed = false;
@@ -48,6 +52,9 @@ public class Assignment extends DObject {
 		_dateAndTime = new int [] { 1, 8, 30 };
 		_periodKey = "0.0.0";
 		_roomName = "";
+		_isRoom = false;
+		_isType = false;
+		 _typeName ="";
 		_setInstructorNames = new StandardCollection();
 		_setInstructorKeys = new StandardCollection();
 	}
@@ -107,16 +114,43 @@ public class Assignment extends DObject {
 	 * */
 	public void setRoomName(String room) {
 		_roomName = room;
+		_isRoom = true;
+		_isType = false;
+	}
+	
+	/**
+	 * set the room name
+	 * @param String the room name
+	 * */
+	public void setTypeName(String room) {
+		_typeName = room;
+		_isRoom = false;
+		_isType = true;
+	}
+	
+	/**
+	 * set the room name
+	 * @param String the room name
+	 * */
+	public boolean isRoom() {
+		return _isRoom;
+	}
+	/**
+	 * set the room name
+	 * @param String the room name
+	 * */
+	public boolean isType() {
+		return _isType;
 	}
 
-	/**
-	 * set the room key
-	 * @param long the room key
-	 * */
-	public void setRoomKey(long room) {
-		_roomKey = room;
-		_roomName = null;
-	}
+//	/**
+//	 * set the room key
+//	 * @param long the room key
+//	 * */
+//	public void setRoomKey(long room) {
+//		_roomKey = room;
+//		_roomOrTypeName = null;
+//	}
 
 	/**
 	 * set the room state
@@ -191,12 +225,19 @@ public class Assignment extends DObject {
 	}
 
 	/**
-	 * get room key of the unit
-	 * @return long the room key
+	 * get room name of the bloc in this week
+	 * @return String the room name
 	 * */
-	public long getRoomKey() {
-		return _roomKey;
+	public String getTypeName() {
+		return _typeName;
 	}
+//	/**
+//	 * get room key of the unit
+//	 * @return long the room key
+//	 * */
+//	public long getRoomKey() {
+//		return _roomKey;
+//	}
 
 	/**
 	 * get room state of the bloc in this week
@@ -219,8 +260,8 @@ public class Assignment extends DObject {
 					.getInstructorKeys()[i])
 				return false;
 		}
-		if (this._roomKey != assmt._roomKey)
-			return false;
+//		if (this._roomKey != assmt._roomKey)
+//			return false;
 		if (!this._roomName.trim().equalsIgnoreCase(assmt._roomName.trim()))
 			return false;
 		if (this._roomFixed != assmt._roomFixed)

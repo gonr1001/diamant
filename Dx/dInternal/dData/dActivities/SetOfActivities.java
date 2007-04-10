@@ -26,9 +26,11 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dDeveloper.DxFlags;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
+import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
@@ -247,8 +249,18 @@ public class SetOfActivities extends DSetOfResources {
 					if (instLine.hasMoreElements())
 						inst = instLine.nextToken().trim();
 					for (int i = 1; i <= _NUMBEROFCYCLES; i++) {
-						((Assignment) bloc.getAssignment(Integer.toString(i))
-								.getAttach()).setRoomName(room);
+//						if (DxFlags.newRooms) {
+//						if (){
+//							((Assignment) bloc.getAssignment(Integer.toString(i))
+//									.getAttach()).setTypeName(room);
+//						} else {
+//						((Assignment) bloc.getAssignment(Integer.toString(i))
+//								.getAttach()).setRoomName(room);
+//						}
+//						} else {
+							((Assignment) bloc.getAssignment(Integer.toString(i))
+									.getAttach()).setRoomName(room);
+//						}
 						((Assignment) bloc.getAssignment(Integer.toString(i))
 								.getAttach()).addInstructorName(inst);
 					}
@@ -696,6 +708,15 @@ public class SetOfActivities extends DSetOfResources {
 	public String toWrite() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public void fixTypeOrRoom(SetOfSites sites) {
+		// change room assign to room or type 
+		for (int i = 0; i < this.size(); i++) {
+			System.out.println("act " + i);
+			DResource r =  this.getResourceAt(i);
+			Activity a = (Activity) r.getAttach();
+			a.getActivitySession();
+		}
 	}
 
 }

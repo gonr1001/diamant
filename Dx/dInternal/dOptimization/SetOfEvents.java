@@ -160,14 +160,7 @@ public class SetOfEvents extends DSetOfResources {
 	private long assignDxRooms(DSetOfResources soie, Assignment assignment,
 			String unityID) {
 		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
-				assignment.getRoomName());
-//		long roomKey = _dm.getDxSetOfSites().getAllDxRooms().getRoomKeyByName(
-//				assignment.getRoomName());
-		//System.out.println("rkey"+ roomKey);
-		
-//		long roomKey = _dm.getDxSetOfSites().getResourceKey(
-//			assignment.getRoomName());
-		
+				assignment.getRoomName());		
 		if (roomKey == -1) {
 			DValue error = new DValue();
 			String str = assignment.getRoomName();
@@ -279,12 +272,8 @@ public class SetOfEvents extends DSetOfResources {
 			}// end for
 
 			if (DxFlags.newRooms) {
-//				assignment.setRoomName(getDxRoomName(_dm.getDxSetOfSites(), event
-//						.getRoomKey()));
 				assignment.setRoomName(_dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
 						.getRoomKey()));
-//				System.out.println("room Name "+ _dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
-//						.getRoomKey()));
 			} else {
 				assignment.setRoomName(getRoomName(_dm.getSetOfRooms(), event
 						.getRoomKey()));

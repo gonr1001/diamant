@@ -28,6 +28,7 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
+import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dUtil.DXToolsMethods;
 
 public class SetOfActivitiesSites extends DSetOfResources {
@@ -1090,5 +1091,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 }

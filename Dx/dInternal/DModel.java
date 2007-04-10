@@ -403,7 +403,11 @@ public class DModel extends Observable {
 					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadData
 							.getDxActivitiesSitesReader();
 				} else {
-					_setOfActivitiesSites = loadData.getSetOfActivitiesSites();
+//					if (DxFlags.newRooms) {
+//						_setOfActivitiesSites = loadData.getSetOfActivitiesSites(_dxSetOfSites);
+//					} else {
+						_setOfActivitiesSites = loadData.getSetOfActivitiesSites();
+//					}	
 				}
 				_setOfStuSites = loadData.getSetofStuSites();
 				if (!DxFlags.newRooms) {
@@ -417,6 +421,7 @@ public class DModel extends Observable {
 				if (_setOfStuSites.getError().length() != 0) {
 					return _setOfStuSites.getError();
 				}
+		
 				buildSetOfEvents();
 				_conditionsToTest = new DxConditionsToTest(this);
 				this.getConditionsTest().initAllConditions();
@@ -1047,6 +1052,8 @@ public class DModel extends Observable {
 	public void buildSetOfEvents() {
 		_setOfEvents.getSetOfResources().removeAllElements();
 		if (getSetOfActivities() != null) {
+			SetOfActivities soa = getSetOfActivities();
+			soa.fixTypeOrRoom(_setOfSites);
 			_setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
 			if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
 				getSetOfActivities().buildStudentRegisteredList(

@@ -107,9 +107,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private ButtonsPanel _applyPanel;
 
-	private DxSite _dxsCurrentSite;
+//	private DxSite _dxsCurrentSite;
 
-	private DxRoom _dxrCurrentRoom;
+//	private DxRoom _dxrCurrentRoom;
 
 	private JLabel[] _capacity;
 
@@ -372,27 +372,33 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbSites = new JComboBox(dcbmSites);
 		cbSites.setActionCommand(ACTION_CB_SITE);
 		cbSites.addActionListener(this);
-
-		_dxsCurrentSite = (DxSite) cbSites.getSelectedItem();
-
-		DefaultComboBoxModel _dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
+		_dModel.getCurrentSite();
+		cbSites.setSelectedItem(_dModel.getCurrentSite());
+		DxSite dxsCurrentSite = (DxSite) cbSites.getSelectedItem();
+		EventAttach event = (EventAttach) ((DResource) _events
+				.get(index)).getAttach();
+		DefaultComboBoxModel dcbmCategories = new DefaultComboBoxModel(dxsCurrentSite
 				.getSetOfCat().getCatsSortedByName());
-		JComboBox _cbCategories = new JComboBox(_dcbmCategories);
-		_cbCategories.setMaximumSize(new Dimension(10, 10));
-		_cbCategories.setActionCommand(ACTION_CB_TYPE);
-		_cbCategories.addActionListener(this);
+		JComboBox cbCategories = new JComboBox(dcbmCategories);
+		cbCategories.setMaximumSize(new Dimension(10, 10));
+		cbCategories.setActionCommand(ACTION_CB_TYPE);
+		cbCategories.addActionListener(this);
+//		DxCategory dxcat = dxsCurrentSite
+//		.getSetOfCat().getCat(event.getRoomKey());
+////		String cat =_dModel.getDxSetOfSites().getCat(_dModel.getCurrentSite(), (String) dxcat.getName());
+//		cbCategories.setSelectedItem();
+		
+		DxCategory _dxcCurrentCat = (DxCategory) cbCategories.getSelectedItem();
 
-		DxCategory _dxcCurrentCat = (DxCategory) _cbCategories.getSelectedItem();
-
-		DefaultComboBoxModel _dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat.getSetOfDxRooms()
+		DefaultComboBoxModel dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat.getSetOfDxRooms()
 				.getRoomsSortedByName());
-		JComboBox _cbRooms = new JComboBox(_dcbmRooms);
+		JComboBox _cbRooms = new JComboBox(dcbmRooms);
 		_cbRooms.setActionCommand(ACTION_CB_ROOM);
 		_cbRooms.addActionListener(this);
-		_dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
+		DxRoom dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
 		// Construction du label contenant la capacité du local
 		// String capacity = getCapacity(vectR[0].get(0).toString());
-		int capacity = _dxrCurrentRoom.getCapacity();
+		int capacity = dxrCurrentRoom.getCapacity();
 		_capacity[index] = new JLabel(new Integer(capacity).toString());
 
 
@@ -416,7 +422,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		// construction du contour de la combobox de fonction de locaux
 		JPanel functionRoom = new JPanel();
 		functionRoom.setBorder(new TitledBorder(new EtchedBorder(), "Types: "));
-		functionRoom.add(_cbCategories);
+		functionRoom.add(cbCategories);
 
 		// construction du panel complet
 		roomPanel.add(roomState);
