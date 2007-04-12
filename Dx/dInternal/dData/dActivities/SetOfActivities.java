@@ -715,8 +715,30 @@ public class SetOfActivities extends DSetOfResources {
 			System.out.println("act " + i);
 			DResource r =  this.getResourceAt(i);
 			Activity a = (Activity) r.getAttach();
-			a.getActivitySession();
+			DSetOfResources sot =  a.getSetOfTypes();
+			for(int j = 0; j < sot.size(); j++) {
+				DResource rr = sot.getResourceAt(j);
+				Type t = (Type) rr.getAttach();
+				DSetOfResources sos = t.getSetOfSections();
+				for (int k = 0; k < sos.size(); k++) {
+					DResource rrr = sos.getResourceAt(k);
+					Section ss = (Section) rrr.getAttach();
+					DSetOfResources b = ss.getSetOfUnities();
+					for (int m =0; m < b.size(); m++) {
+						DResource rrrr = b.getResourceAt(m);
+						Unity  s = (Unity) rrrr.getAttach();
+						DSetOfResources aa = s.getSetOfAssignments();
+						for (int n =0; n < aa.size(); n++) {
+							DResource rrrrr = aa.getResourceAt(n);
+							Assignment  ass = (Assignment) rrrrr.getAttach();
+							String str = ass.getRoomName();
+						System.out.println("room Name "+ str );
+					}
+					
+				}
+					
+			}
 		}
 	}
-
+	}
 }
