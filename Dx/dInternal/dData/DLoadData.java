@@ -1275,9 +1275,9 @@ public class DLoadData {
 		return _studentsList;
 	}
 
-	public SetOfActivitiesSites getSetOfActivitiesSites(DxSetOfSites setOfSites) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public SetOfActivitiesSites getSetOfActivitiesSites(DxSetOfSites setOfSites) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 } // end DLoadData

@@ -1053,7 +1053,9 @@ public class DModel extends Observable {
 		_setOfEvents.getSetOfResources().removeAllElements();
 		if (getSetOfActivities() != null) {
 			SetOfActivities soa = getSetOfActivities();
-			soa.fixTypeOrRoom(_setOfSites);
+			if(DxFlags.newRooms) {
+				soa.fixTypeOrRoom(_dxSetOfSites);
+			}			
 			_setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
 			if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
 				getSetOfActivities().buildStudentRegisteredList(

@@ -383,10 +383,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		cbCategories.setMaximumSize(new Dimension(10, 10));
 		cbCategories.setActionCommand(ACTION_CB_TYPE);
 		cbCategories.addActionListener(this);
-//		DxCategory dxcat = dxsCurrentSite
-//		.getSetOfCat().getCat(event.getRoomKey());
-////		String cat =_dModel.getDxSetOfSites().getCat(_dModel.getCurrentSite(), (String) dxcat.getName());
-//		cbCategories.setSelectedItem();
+		/*
+		 * TODO: select the categorie
+		 * */
+		DxCategory dxcat = dxsCurrentSite
+		.getSetOfCat().getCat(event.getRoomKey());
+//		String cat =_dModel.getDxSetOfSites().getCat(_dModel.getCurrentSite(), (String) dxcat.getName());
+		cbCategories.setSelectedItem(0);
 		
 		DxCategory _dxcCurrentCat = (DxCategory) cbCategories.getSelectedItem();
 

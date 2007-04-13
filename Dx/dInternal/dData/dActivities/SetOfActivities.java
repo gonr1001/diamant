@@ -26,11 +26,10 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
-import dInternal.dData.dRooms.SetOfSites;
+import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
@@ -709,7 +708,7 @@ public class SetOfActivities extends DSetOfResources {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public void fixTypeOrRoom(SetOfSites sites) {
+	public void fixTypeOrRoom(DxSetOfSites sites) {
 		// change room assign to room or type 
 		for (int i = 0; i < this.size(); i++) {
 			System.out.println("act " + i);
@@ -732,6 +731,9 @@ public class SetOfActivities extends DSetOfResources {
 							DResource rrrrr = aa.getResourceAt(n);
 							Assignment  ass = (Assignment) rrrrr.getAttach();
 							String str = ass.getRoomName();
+							Vector <String> v = sites.getNamesVector();
+							if (v.indexOf(str)!= -1)
+								System.out.println("room Name "+ str );
 						System.out.println("room Name "+ str );
 					}
 					
