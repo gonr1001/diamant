@@ -26,7 +26,7 @@ import junit.framework.TestSuite;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DResource;
-import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
 
@@ -109,8 +109,8 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm5j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm5j.getConditionsTest().getEventConflictsInTTs(
 				_dm5j.getTTStructure(), event, true);
 		assertEquals("test1_getConflictsEventInTTs5j : assertEquals 1", 0,
@@ -133,8 +133,8 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm5j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm5j.getConditionsTest().addEventInTTs(
 				_dm5j.getTTStructure(), event, true);
 		assertEquals("test1_addEventInTTs_1_5j : assertEquals 1", 0, nbConf[0]);
@@ -154,13 +154,13 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm5j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm5j.getConditionsTest().addEventInTTs(
 				_dm5j.getTTStructure(), event, true);
 		event = _dm5j.getSetOfEvents().getResourceAt(0);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		nbConf = _dm5j.getConditionsTest().addEventInTTs(
 				_dm5j.getTTStructure(), event, true);
 		assertEquals("test1_removeEventInTTs_3_5j : assertEquals 1", 12,
@@ -175,8 +175,8 @@ public class ConditionsTest extends TestCase {
 				.getEventsInPeriod().size());
 
 		event = _dm5j.getSetOfEvents().getResourceAt(0);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		nbConf = _dm5j.getConditionsTest().removeEventInTTs(
 				_dm5j.getTTStructure(), event, true);
 		assertEquals("test5_removeEventInTTs_3_5j : assertEquals 1", 12,
@@ -244,7 +244,7 @@ public class ConditionsTest extends TestCase {
 				true, isEquals);
 
 		DResource event = _dmh.getSetOfEvents().getResource("PED200.1.21.1.");
-		EventAttach eventClone = ((EventAttach) event.getAttach()).cloneEvent();
+		DxEvent eventClone = ((DxEvent) event.getAttach()).cloneEvent();
 		eventClone.setAssigned(true);
 		// String
 		// periodKey=daytime[0]+System.getProperty("user.dir")+daytime[1]+System.getProperty("user.dir")+daytime[2];
@@ -261,7 +261,7 @@ public class ConditionsTest extends TestCase {
 				0, per.getNbRoomConflict());
 
 		// set event key tuesday at 8h30
-		eventClone = ((EventAttach) event.getAttach()).cloneEvent();
+		eventClone = ((DxEvent) event.getAttach()).cloneEvent();
 		eventClone.setAssigned(true);
 		eventClone.setKey(4, "2.1.2");
 		_dmh.getConditionsTest().addEventInTTs(cloneTTS,
@@ -306,8 +306,8 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm7j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm7j.getConditionsTest().getEventConflictsInTTs(
 				_dm7j.getTTStructure(), event, true);
 		assertEquals("test1_getConflictsEventInTTs7j : assertEquals 1", 0,
@@ -330,8 +330,8 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm7j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm7j.getConditionsTest().addEventInTTs(
 				_dm7j.getTTStructure(), event, true);
 		assertEquals("test1_addEventInTTs_1_7j : assertEquals 1", 0, nbConf[0]);
@@ -351,13 +351,13 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm7j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm7j.getConditionsTest().addEventInTTs(
 				_dm7j.getTTStructure(), event, true);
 		event = _dm7j.getSetOfEvents().getResourceAt(0);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		nbConf = _dm7j.getConditionsTest().addEventInTTs(
 				_dm7j.getTTStructure(), event, true);
 		assertEquals("test1_addEventInTTs_2_7j : assertEquals 1", 12, nbConf[0]);
@@ -379,13 +379,13 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm7j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		int[] nbConf = _dm7j.getConditionsTest().addEventInTTs(
 				_dm7j.getTTStructure(), event, true);
 		event = _dm7j.getSetOfEvents().getResourceAt(0);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		nbConf = _dm7j.getConditionsTest().addEventInTTs(
 				_dm7j.getTTStructure(), event, true);
 		assertEquals("test1_removeEventInTTs_3_5j : assertEquals 1", 12,
@@ -400,8 +400,8 @@ public class ConditionsTest extends TestCase {
 				.getEventsInPeriod().size());
 
 		event = _dm7j.getSetOfEvents().getResourceAt(0);
-		((EventAttach) event.getAttach()).setKey(4, periodKey);
-		((EventAttach) event.getAttach()).setAssigned(true);
+		((DxEvent) event.getAttach()).setKey(4, periodKey);
+		((DxEvent) event.getAttach()).setAssigned(true);
 		nbConf = _dm7j.getConditionsTest().removeEventInTTs(
 				_dm7j.getTTStructure(), event, true);
 		assertEquals("test5_removeEventInTTs_3_5j : assertEquals 1", 12,

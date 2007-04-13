@@ -77,7 +77,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				for (int k = 0; k < setOfAvailableRooms.size(); k++) {
 					Room room = (Room) setOfAvailableRooms.getResourceAt(k);
 					if (isAddPossible(room, eventsToAssign)) {
-						((EventAttach) eventsToAssign.getAttach())
+						((DxEvent) eventsToAssign.getAttach())
 								.setRoomKey((int) room.getKey());
 						setOfAvailableRooms.removeResource(room.getKey());
 						break;
@@ -116,10 +116,10 @@ public class RoomAssignmentAlgo implements Algorithm {
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
-			EventAttach eventAttach = (EventAttach) soe.getResource(
+			DxEvent dxEvent = (DxEvent) soe.getResource(
 					eventInPeriodName).getAttach();
-			if (eventAttach.getRoomKey() != NO_ROOM_ASSIGNED) {
-				setOfAvailRooms.removeResource(eventAttach.getRoomKey());
+			if (dxEvent.getRoomKey() != NO_ROOM_ASSIGNED) {
+				setOfAvailRooms.removeResource(dxEvent.getRoomKey());
 			}// end if(eventAttach.getRoomKey() != NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfAvailRooms;
@@ -136,15 +136,15 @@ public class RoomAssignmentAlgo implements Algorithm {
 	private void setNoRoomToEventsWithRoomsNotFixed() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
-			EventAttach eventAttach = (EventAttach) soe.getResourceAt(i)
+			DxEvent dxEvent = (DxEvent) soe.getResourceAt(i)
 					.getAttach();
-			if (eventAttach.isAssigned() && !eventAttach.isRoomFixed()) {
-				eventAttach.setRoomKey(NO_ROOM_ASSIGNED);
+			if (dxEvent.isAssigned() && !dxEvent.isRoomFixed()) {
+				dxEvent.setRoomKey(NO_ROOM_ASSIGNED);
 			}// end if
-			else if (eventAttach.isAssigned() && eventAttach.isRoomFixed()
-					&& eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-				eventAttach.setRoomKey(NO_ROOM_ASSIGNED);
-				eventAttach.setRoomFixed(false);
+			else if (dxEvent.isAssigned() && dxEvent.isRoomFixed()
+					&& dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				dxEvent.setRoomKey(NO_ROOM_ASSIGNED);
+				dxEvent.setRoomFixed(false);
 			}// end else if
 		}// end for 
 	}
@@ -173,7 +173,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 		String actID = "";
 		String typeID = "";
 		String secID = "";
-		EventAttach eventAttach = null;
+		DxEvent dxEvent = null;
 		int section = 0;
 		Vector v = null;
 		DResource resc = null;
@@ -182,9 +182,9 @@ public class RoomAssignmentAlgo implements Algorithm {
 			// get the name of an event in the period
 			eventInPeriodName = ((DResource) eventsInPeriod.get(i)).getID();
 			// get the attach of the event
-			eventAttach = (EventAttach) soe.getResource(eventInPeriodName)
+			dxEvent = (DxEvent) soe.getResource(eventInPeriodName)
 					.getAttach();
-			if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
 				actID = DXToolsMethods.getToken(eventInPeriodName,
 						DConst.TOKENSEPARATOR, TOKEN_RANGE);
 				typeID = DXToolsMethods.getToken(eventInPeriodName,
@@ -195,7 +195,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				section = DxTools.STIConvertGroupToInt(secID);
 
 				v = students.getStudentsByGroup(actID, typeID, section, 0);
-				resc = new DResource(Integer.toString(v.size()), eventAttach);
+				resc = new DResource(Integer.toString(v.size()), dxEvent);
 
 				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 				//				newSetOfEvents.addResourceUsingID(resc);
@@ -229,11 +229,11 @@ public class RoomAssignmentAlgo implements Algorithm {
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
 		if (_allRscFunct != null) {
-			if (((EventAttach) event.getAttach()).getRoomFunction() == _allRscFunct
+			if (((DxEvent) event.getAttach()).getRoomFunction() == _allRscFunct
 					.getKey()) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;
-			} else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
+			} else if ((((DxEvent) event.getAttach()).getRoomFunction() == room
 					.getRoomFunction())) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;

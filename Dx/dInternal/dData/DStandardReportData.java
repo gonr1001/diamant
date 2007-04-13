@@ -36,7 +36,7 @@ import dConstants.DConst;
 import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
@@ -401,7 +401,7 @@ public class DStandardReportData {
 							}
 							if (confValue.getStringValue().equalsIgnoreCase(
 									DConst.R_ROOM_NAME)) {
-								long roomKey = ((EventAttach) _dm
+								long roomKey = ((DxEvent) _dm
 										.getSetOfEvents().getResource(
 												confEvents.getID()).getAttach())
 										.getRoomKey();

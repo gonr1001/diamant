@@ -114,7 +114,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
      * @return
      */
     private int roomAvailibilityConflicts(Period period, String eventKey) {
-        EventAttach event = (EventAttach) _dm.getSetOfEvents().getResource(
+        DxEvent event = (DxEvent) _dm.getSetOfEvents().getResource(
                 eventKey).getAttach();
         long roomKey = event.getRoomKey();
         if ((roomKey != -1) && (event.getPeriodKey().length() != 0)) {
@@ -160,7 +160,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
      * @return
      */
     private int roomCapacityConflicts(Period period, String eventKey) {
-        EventAttach event = (EventAttach) _dm.getSetOfEvents().getResource(
+        DxEvent event = (DxEvent) _dm.getSetOfEvents().getResource(
                 eventKey).getAttach();
         StringTokenizer event1 = new StringTokenizer(eventKey,
                 DConst.TOKENSEPARATOR);
@@ -198,14 +198,14 @@ public class DxRoomsConditionsToTest implements DxCondition {
      */
     private int roomEventsConflicts(Period period, String eventKey,
             ConflictsAttach confV) {
-        EventAttach event1 = (EventAttach) _dm.getSetOfEvents().getResource(
+        DxEvent event1 = (DxEvent) _dm.getSetOfEvents().getResource(
                 eventKey).getAttach();
-        EventAttach event2;
+        DxEvent event2;
         int nbConf = 0;
         for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
             String event2ID = period.getEventsInPeriod().getResourceAt(i)
                     .getID();
-            event2 = (EventAttach) _dm.getSetOfEvents().getResource(event2ID)
+            event2 = (DxEvent) _dm.getSetOfEvents().getResource(event2ID)
                     .getAttach();
             if (!event1.getPrincipalRescKey().equalsIgnoreCase(
                     event2.getPrincipalRescKey())) {

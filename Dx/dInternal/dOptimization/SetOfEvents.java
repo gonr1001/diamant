@@ -112,7 +112,7 @@ public class SetOfEvents extends DSetOfResources {
 //					String fullName  = activity.getSelectedField(0);
 					int cLimit = ((Section) section.getAttach())
 							.getCapacityLimit();
-					EventAttach event = new EventAttach(unityKey,
+					DxEvent event = new DxEvent(unityKey,
 							assignment.getSetInstructorKeys(),
 							roomKey, ((Unity) unity.getAttach())
 									.getDuration(), assignment
@@ -225,7 +225,7 @@ public class SetOfEvents extends DSetOfResources {
 	public int getNumberOfEventAssign() {
 		int count = 0;
 		for (int i = 0; i < this.size(); i++) {
-			if (((EventAttach) getResourceAt(i).getAttach()).isPlaceInAPeriod())
+			if (((DxEvent) getResourceAt(i).getAttach()).isPlaceInAPeriod())
 				count++;
 		}// end for (int i=0; i< this.size(); i++)
 		return count;
@@ -243,10 +243,10 @@ public class SetOfEvents extends DSetOfResources {
 	 *            A vector containing all changed events
 	 */
 	public void updateActivities(SetOfActivities soa, Vector eventsToUpdate) {
-		EventAttach event;
+		DxEvent event;
 
 		for (int i = 0; i < eventsToUpdate.size(); i++) {
-			event = (EventAttach) ((DResource) eventsToUpdate.get(i))
+			event = (DxEvent) ((DResource) eventsToUpdate.get(i))
 					.getAttach();
 
 			long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
@@ -383,9 +383,9 @@ public class SetOfEvents extends DSetOfResources {
 			String eventIDTwo) {
 		String res = "";
 		String str;
-		long[] instKeyOne = ((EventAttach) getResource(eventIDOne).getAttach())
+		long[] instKeyOne = ((DxEvent) getResource(eventIDOne).getAttach())
 				.getInstructorKey();
-		long[] instKeyTwo = ((EventAttach) getResource(eventIDTwo).getAttach())
+		long[] instKeyTwo = ((DxEvent) getResource(eventIDTwo).getAttach())
 				.getInstructorKey();
 		for (int i = 0; i < instKeyOne.length; i++) {
 			for (int j = 0; j < instKeyTwo.length; j++) {
@@ -516,12 +516,12 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param newValue
 	 */
 	public void setAssignedInstAvail() {
-		EventAttach event;
+		DxEvent event;
 		long instKey[];
 		String currentSite = _dm.getCurrentSite();
 		_dm.getDxSetOfInstructors().remAllAssignedToASite(currentSite);
 		for (int i = 0; i < this.size(); i++) {
-			event = (EventAttach) this.getResourceAt(i).getAttach();
+			event = (DxEvent) this.getResourceAt(i).getAttach();
 			int[] perKey = event.getPeriodKeyTable();
 			int duration = event.getDuration()
 					/ _dm.getTTStructure().getPeriodLenght();

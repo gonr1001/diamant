@@ -711,7 +711,7 @@ public class SetOfActivities extends DSetOfResources {
 	public void fixTypeOrRoom(DxSetOfSites sites) {
 		// change room assign to room or type 
 		for (int i = 0; i < this.size(); i++) {
-			System.out.println("act " + i);
+//			System.out.println("act " + i);
 			DResource r =  this.getResourceAt(i);
 			Activity a = (Activity) r.getAttach();
 			DSetOfResources sot =  a.getSetOfTypes();
@@ -732,9 +732,11 @@ public class SetOfActivities extends DSetOfResources {
 							Assignment  ass = (Assignment) rrrrr.getAttach();
 							String str = ass.getRoomName();
 							Vector <String> v = sites.getNamesVector();
-							if (v.indexOf(str)!= -1)
-								System.out.println("room Name "+ str );
-						System.out.println("room Name "+ str );
+							if (v.indexOf(str)!= -1) 
+								;
+							
+//								System.out.println("room Name "+ str );
+//						System.out.println("room Name "+ str );
 					}
 					
 				}

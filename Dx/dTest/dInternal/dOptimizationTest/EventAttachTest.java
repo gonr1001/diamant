@@ -6,17 +6,17 @@ import junit.framework.TestSuite;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
-import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.DxEvent;
 
 public class EventAttachTest extends TestCase {
 
-	EventAttach _eventAttach;
+	DxEvent _eventAttach;
 
 	public EventAttachTest(String name) {
 		super(name);
 		DSetOfResources sor = new StandardCollection();
 		sor.addResource(new DResource("", null), 1);
-		_eventAttach = new EventAttach("1.1.2.1", sor, 52, 60, "1.1.1", 10);
+		_eventAttach = new DxEvent("1.1.2.1", sor, 52, 60, "1.1.1", 10);
 	}
 
 	public static Test suite() {

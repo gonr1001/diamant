@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2006-12-31 18:09:54 $
+ * Title: DSaveDataTest $Revision $  $Date: 2007-04-13 22:47:38 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -40,10 +40,10 @@ public class DSaveDataTest extends TestCase {
 
 	DModel _dm2;
 
-//	DDocument _dDocument1;
 	DxDocument _dxDocument1;
-//	DDocument _dDocument2;
+
 	DxDocument _dxDocument2;
+	
 	String _fileName1; // to read
 
 	String _fileName2; // to write and read
@@ -76,37 +76,25 @@ public class DSaveDataTest extends TestCase {
 				+ "downDataTTS.dia";
 		_type = 1;
 		try {
-//			_dm1 = new DModel(_dDocument1, _fileName1, _type);
-//			if(DxFlags.newDoc){
 				_dm1 = new DModel(_dxDocument1, _fileName1);
-//			} else {
-//				_dm1 = new DModel(_dDocument1, _fileName1, _type);
-//			}
 		} catch (Exception e) {
-			// Should not fail in controled conditions
+			System.out.println("Abnormal Exception: Should not fail in normal conditions");
 		}
 		if (DxFlags.newRooms) {
 			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
 					.getDxSetOfInstructors(), _dm1.getDxSetOfSites(), _dm1
 					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
 					_fileName2);
-
 		} else {
 			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
 					.getDxSetOfInstructors(), _dm1.getSetOfSites(), _dm1
 					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
 					_fileName2);
 		}
-
 		try {
-//			_dm2 = new DModel(_dDocument2, _fileName2, _type);
-//			if(DxFlags.newDoc){
 				_dm2 = new DModel(_dxDocument2, _fileName2);
-//			} else {
-//				_dm2 = new DModel(_dDocument2, _fileName2, _type);
-//			}
 		} catch (Exception e) {
-			// Should not fail in controled conditions
+			System.out.println("Abnormal Exception: Should not fail in normal conditions");
 		}
 	}
 
@@ -119,7 +107,6 @@ public class DSaveDataTest extends TestCase {
 	 */
 	public void test1_saveTimeTable() {
 		assertEquals("test_saveTimeTable: assertEquals", 0, _error.length());
-
 	}
 
 	/**

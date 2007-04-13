@@ -107,7 +107,7 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 	 */
 	private int InstructorAvailibilityConflicts(Period period, int[] perK,
 			String eventKey, ConflictsAttach confV) {
-		EventAttach event = (EventAttach) _dm.getSetOfEvents().getResource(
+		DxEvent event = (DxEvent) _dm.getSetOfEvents().getResource(
 				eventKey).getAttach();
 		long instKey[] = event.getInstructorKey();
 		int nbConf = 0;
@@ -155,15 +155,15 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 	 */
 	private int InstructorEventsConflicts(Period period, String eventKey,
 			ConflictsAttach confV) {
-		EventAttach event1 = (EventAttach) _dm.getSetOfEvents().getResource(
+		DxEvent event1 = (DxEvent) _dm.getSetOfEvents().getResource(
 				eventKey).getAttach();
 		long keys1[] = event1.getInstructorKey();
-		EventAttach event2;
+		DxEvent event2;
 		int nbConf = 0;
 		for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
 			String event2ID = period.getEventsInPeriod().getResourceAt(i)
 					.getID();
-			event2 = (EventAttach) _dm.getSetOfEvents().getResource(event2ID)
+			event2 = (DxEvent) _dm.getSetOfEvents().getResource(event2ID)
 					.getAttach();
 			long keys2[] = event2.getInstructorKey();
 			for (int j = 0; j < keys1.length; j++) {

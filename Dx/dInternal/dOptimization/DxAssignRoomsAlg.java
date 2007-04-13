@@ -106,7 +106,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 						DxRoom room = (DxRoom) setOfAvailableDxRooms
 								.getResource(k);
 						if (isAddPossible(room, eventsToAssign)) {
-							((EventAttach) eventsToAssign.getAttach())
+							((DxEvent) eventsToAssign.getAttach())
 									.setRoomKey((int) room.getKey());
 							setOfAvailableDxRooms.removeResource(room.getKey());
 							break;
@@ -201,10 +201,10 @@ public class DxAssignRoomsAlg implements Algorithm {
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
-			EventAttach eventAttach = (EventAttach) soe.getResource(
+			DxEvent dxEvent = (DxEvent) soe.getResource(
 					eventInPeriodName).getAttach();
-			if (eventAttach.getRoomKey() != NO_ROOM_ASSIGNED) {
-				setOfAvailRooms.removeResource(eventAttach.getRoomKey());
+			if (dxEvent.getRoomKey() != NO_ROOM_ASSIGNED) {
+				setOfAvailRooms.removeResource(dxEvent.getRoomKey());
 			}// end if(eventAttach.getRoomKey() != NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfAvailRooms;
@@ -221,15 +221,15 @@ public class DxAssignRoomsAlg implements Algorithm {
 	private void setNoRoomToEventsWithRoomsNotFixed() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
-			EventAttach eventAttach = (EventAttach) soe.getResourceAt(i)
+			DxEvent dxEvent = (DxEvent) soe.getResourceAt(i)
 					.getAttach();
-			if (eventAttach.isAssigned() && !eventAttach.isRoomFixed()) {
-				eventAttach.setRoomKey(NO_ROOM_ASSIGNED);
+			if (dxEvent.isAssigned() && !dxEvent.isRoomFixed()) {
+				dxEvent.setRoomKey(NO_ROOM_ASSIGNED);
 			}// end if
-			else if (eventAttach.isAssigned() && eventAttach.isRoomFixed()
-					&& eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
-				eventAttach.setRoomKey(NO_ROOM_ASSIGNED);
-				eventAttach.setRoomFixed(false);
+			else if (dxEvent.isAssigned() && dxEvent.isRoomFixed()
+					&& dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				dxEvent.setRoomKey(NO_ROOM_ASSIGNED);
+				dxEvent.setRoomFixed(false);
 			}// end else if
 		}// end for
 	}
@@ -261,16 +261,16 @@ public class DxAssignRoomsAlg implements Algorithm {
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
 			// get the attach of the event
-			EventAttach eventAttach = (EventAttach) soe.getResource(
+			DxEvent dxEvent = (DxEvent) soe.getResource(
 					eventInPeriodName).getAttach();
-			if (eventAttach.getRoomKey() == NO_ROOM_ASSIGNED) {
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
 				String actID = DXToolsMethods.getToken(eventInPeriodName,
 						DConst.TOKENSEPARATOR, TOKEN_RANGE);
 				Activity activity = (Activity) _dm.getSetOfActivities()
 						.getResource(actID).getAttach();
 				numberOfStudents = activity.getStudentRegistered().size();
 				DResource resc = new DResource(Integer
-						.toString(numberOfStudents), eventAttach);
+						.toString(numberOfStudents), dxEvent);
 				newSetOfEvents.addResource(resc, ADD_RESOURCE_BY_ID);
 			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)

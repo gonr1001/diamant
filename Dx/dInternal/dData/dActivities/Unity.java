@@ -11,7 +11,7 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.dData.StandardCollection;
-import dInternal.dOptimization.EventAttach;
+import dInternal.dOptimization.DxEvent;
 
 public class Unity extends DObject {
 
@@ -124,15 +124,15 @@ public class Unity extends DObject {
 		_preferSequence = prefer;
 	}
 
-	/**
-	 * add a cycle for period assignment
-	 * @param String the cycle ID
-	 * @return boolean the operation result
-	 * */
-	public boolean addAssignment(String cycle) {
-		return _setOfAssignments.addResource(
-				new DResource(cycle, new DValue()), 1);
-	}
+//	/**
+//	 * add a cycle for period assignment
+//	 * @param String the cycle ID
+//	 * @return boolean the operation result
+//	 * */
+//	public boolean addAssignment(String cycle) {
+//		return _setOfAssignments.addResource(
+//				new DResource(cycle, new DValue()), 1);
+//	}
 
 	/**
 	 * get a cycle for period assignment
@@ -325,10 +325,10 @@ public class Unity extends DObject {
 			boolValue = Boolean.valueOf(value).booleanValue();
 			setPermanent(boolValue);
 			break;
-		case 4:
-			boolValue = Boolean.valueOf(value).booleanValue();
-			setCyclic(boolValue);
-			break;
+//		case 4:
+//			boolValue = Boolean.valueOf(value).booleanValue();
+//			setCyclic(boolValue);
+//			break;
 		}
 	}
 
@@ -380,7 +380,7 @@ public class Unity extends DObject {
 		return 0;
 	}
 
-	public void updateWith(EventAttach event) {
+	public void updateWith(DxEvent event) {
 		this.setAssign(event.isAssigned());
 		this.setPermanent(event.getPermanentState());
 		this.setDuration(event.getDuration());
