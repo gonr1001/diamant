@@ -64,15 +64,15 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("rgrTest");
-//		suite.addTest(DxSiteReaderTest.suite());
-//		suite.addTest(DxSetOfSitesTest.suite());
-//		suite.addTest(DxAssignAllAlgTest.suite());
-//		suite.addTest(DxAssignRoomsAlgTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
-//		suite.addTest(RoomsConditionsTest.suite());
+		suite.addTest(DxSiteReaderTest.suite());
+		suite.addTest(DxSetOfSitesTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(DxAssignRoomsAlgTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DSaveDataTest.suite());
 //		suite.addTest(InstructorsConditionsTest.suite());
-//	    suite.addTest(DxSiteReaderTest.suite());
+	    suite.addTest(DxSiteReaderTest.suite());
 //		suite.addTest(StudentsConditionsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		System.out.println("Bye I was in rgrTest");

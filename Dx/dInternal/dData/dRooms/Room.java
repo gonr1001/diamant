@@ -43,8 +43,8 @@ public class Room extends DResource {
 	 * @param ex
 	 * @param position
 	 */
-	public void build(DataExchange ex, int position) {
-		position += 0;
+	public void build(DataExchange ex){//, int position) {
+//		position += 0;
 		RoomAttach roomAt = (RoomAttach) getAttach();
 		String line = ex.getContents();
 		String str = DXToolsMethods.getToken(line, ";",
