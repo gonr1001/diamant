@@ -22,6 +22,9 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dInternal.DObject;
+import dInternal.DResource;
+import dInternal.DSetOfResources;
+import dInternal.DValue;
 
 //import dInternal.DSetOfResources;
 
@@ -36,7 +39,7 @@ public class RoomAttach extends AvailabilityAttach {
 
 	private int _function;
 
-//	private DSetOfResources _setOfCaracteristics;
+	private DSetOfResources _setOfCaracteristics;
 
 	/**
 	 * @associates String
@@ -46,7 +49,7 @@ public class RoomAttach extends AvailabilityAttach {
 		_description = "";
 		_function = -1;
 		_ressourceAvailability = new Vector<String>();
-//		_setOfCaracteristics = new SetOfCaracteristics();
+		_setOfCaracteristics = new SetOfCaracteristics();
 	}
 
 	/**
@@ -77,20 +80,20 @@ public class RoomAttach extends AvailabilityAttach {
 		_description = desc;
 	}
 
-//	/***************************************************************************
-//	 * add caracteristics
-//	 * 
-//	 * @param int
-//	 *            the caracrteristic to add in the room
-//	 */
-//	public boolean addCaracteristics(int carac) {
-//		if (carac != -1) {
-//			_setOfCaracteristics.setCurrentKey(carac);
-//			return _setOfCaracteristics.addResource(new DResource("",
-//					new DValue()), 0);
-//		}
-//		return false;
-//	}
+	/***************************************************************************
+	 * add caracteristics
+	 * 
+	 * @param int
+	 *            the caracrteristic to add in the room
+	 */
+	public boolean addCaracteristics(int carac) {
+		if (carac != -1) {
+			_setOfCaracteristics.setCurrentKey(carac);
+			return _setOfCaracteristics.addResource(new DResource("",
+					new DValue()), 0);
+		}
+		return false;
+	}
 
 	/**
 	 * Remove an availibility day INPUT: day number. day =1 equals roomDisp
@@ -140,9 +143,9 @@ public class RoomAttach extends AvailabilityAttach {
 
 	/**
 	 * */
-//	public DSetOfResources getSetOfCaracteristics() {
-//		return _setOfCaracteristics;
-//	}
+	public DSetOfResources getSetOfCaracteristics() {
+		return _setOfCaracteristics;
+	}
 
 	public int[][] getMatrixAvailability() {
 		String jour = _ressourceAvailability.get(0);
@@ -199,21 +202,20 @@ public class RoomAttach extends AvailabilityAttach {
 	 * Print local information OUTPUT: String of roomID and room availability
 	 */
 	public String toWrite() {
-//		String _caracteristics = "";
-//		for (int i = 0; i < _setOfCaracteristics.size(); i++) {
-//			_caracteristics += _setOfCaracteristics.getResourceAt(i).getKey();
-//			if (i < _setOfCaracteristics.size() - 1)
-//				_caracteristics += ",";
-//		}
+		String caracteristics = "";
+		for (int i = 0; i < _setOfCaracteristics.size(); i++) {
+			caracteristics += _setOfCaracteristics.getResourceAt(i).getKey();
+			if (i < _setOfCaracteristics.size() - 1)
+				caracteristics += ",";
+		}
 
 		String avail = "";
-		for (int i = 0; i < _ressourceAvailability.size() - 1; i++)
+		for (int i = 0; i < _ressourceAvailability.size() - 1; i++){
 			avail += _ressourceAvailability.get(i) + ",";
-		// System.out.println("Room: "+_capacity+" --
-		// "+_caracteristics+_ressourceAvailability.size());//debug
+		}		
 		avail += _ressourceAvailability.get(_ressourceAvailability
 				.size() - 1);
-		String roomInfo = _capacity + ";" + _function + ";" /*+ _caracteristics */
+		String roomInfo = _capacity + ";" + _function + ";" + caracteristics 
 				+ ";" + _description + ";" + avail + ";";
 		return roomInfo;
 	}
@@ -246,9 +248,9 @@ public class RoomAttach extends AvailabilityAttach {
 		else if (!_ressourceAvailability
 				.equals(roomAttach._ressourceAvailability))
 			return false;
-//		else if (!_setOfCaracteristics
-//				.isEquals(roomAttach._setOfCaracteristics))
-//			return false;
+		else if (!_setOfCaracteristics
+				.isEquals(roomAttach._setOfCaracteristics))
+			return false;
 		return true;
 	}
 

@@ -57,7 +57,7 @@ public class Room extends DResource {
 		roomAt.setFunction(new Integer(str).intValue());
 		str = DXToolsMethods.getToken(line, ";",
 				DConst.ROOM_CARACTERICTICS_TOKEN).trim();
-//		buildSetOfCaracteristics(str);
+		buildSetOfCaracteristics(str);
 		str = DXToolsMethods.getToken(line, ";", DConst.ROOM_DESCRIPTION_TOKEN)
 				.trim();
 		roomAt.setDescription(str);
@@ -74,17 +74,17 @@ public class Room extends DResource {
 		}
 	}
 
-//	/**
-//	 * 
-//	 * @param str
-//	 */
-//	private void buildSetOfCaracteristics(String str) {
-//		StringTokenizer caract = new StringTokenizer(str.trim(), ",");
-//		while (caract.hasMoreTokens()) {
-//			((RoomAttach) getAttach()).addCaracteristics(Integer
-//					.parseInt(caract.nextToken().trim()));
-//		}
-//	}
+	/**
+	 * 
+	 * @param str
+	 */
+	private void buildSetOfCaracteristics(String str) {
+		StringTokenizer caract = new StringTokenizer(str.trim(), ",");
+		while (caract.hasMoreTokens()) {
+			((RoomAttach) getAttach()).addCaracteristics(Integer
+					.parseInt(caract.nextToken().trim()));
+		}
+	}
 
 	/**
 	 * 

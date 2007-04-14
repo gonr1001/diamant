@@ -67,9 +67,9 @@ public class RgrTest {
 //		suite.addTest(DxSiteReaderTest.suite());
 //		suite.addTest(DxSetOfSitesTest.suite());
 //		suite.addTest(DxAssignAllAlgTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DSaveDataTest.suite());
 //		suite.addTest(InstructorsConditionsTest.suite());
 //	    suite.addTest(DxSiteReaderTest.suite());
