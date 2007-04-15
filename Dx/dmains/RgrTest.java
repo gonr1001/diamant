@@ -66,7 +66,7 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("rgrTest");
-		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(DxStateBarModelTest.suite());

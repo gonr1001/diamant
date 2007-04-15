@@ -31,41 +31,31 @@ public class DxEvent extends DObject {
 
 	private int _eventDuration; //in periods lingth
 
-	// private long _instructorRescKey; // the instructor key
-	/** instructor key */
 	private DSetOfResources _setInstructorKeys;
-	
+
 	private DResource _unity;
-	
+
 	private Assignment _assignment;
 
 	private long _roomRescKey; // the room key
 
 	private boolean _roomFixed;/*
-								 * the state of the event in the room true if
-								 * event is fixed in the room and false
-								 * otherwise
-								 */
+	 * the state of the event in the room true if
+	 * event is fixed in the room and false
+	 * otherwise
+	 */
 
 	private int _roomFunction; // the prefered function for the event
 
-	private boolean _isAssigned = false;// tell if this event is placed in the
+	private boolean _isAssigned;// tell if this event is placed in the
 
-	// timetable
+	private boolean _isPermanent;// tell if this event is permanent in
 
-	private boolean isPermanent = false;// tell if this event is permanent in
+	private String _ttsKey;// give the key of the period where event is
 
-	// the timetable
-
-	private String _ttsKey = "";// give the key of the period where event is
-
-	// place
 	private int _cLimit;// give the key of the period where event is
 
-	// place
-
-	// is in a.b.c format where a = day, b= sequence, c = period
-	private boolean _isPlaceInAPeriod = false;
+	private boolean _isPlaceInAPeriod;
 
 	/**
 	 * Constructor
@@ -74,25 +64,28 @@ public class DxEvent extends DObject {
 	 * @param key1
 	 * @param key2
 	 */
-	public DxEvent(String princKey, DSetOfResources inst, long key, DResource unity,
-			Assignment assignment, int cLimit) {
+	public DxEvent(String princKey, DSetOfResources inst, long key,
+			DResource unity, Assignment assignment, int cLimit) {
 		_fullName = "name";
+		_ttsKey = "";
+		_isPlaceInAPeriod = false;
+		_isAssigned = false;
+		_isPermanent = false;
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
 		_roomRescKey = key;
 		_unity = unity;
-		_eventDuration = ((Unity)_unity.getAttach()).getDuration();
-		((Unity) _unity.getAttach()).isAssign();
-		((Unity) _unity.getAttach()).isPermanent();
+		_eventDuration = ((Unity) _unity.getAttach()).getDuration();
+		setAssigned(((Unity) _unity.getAttach()).isAssign());
+		setPermanentState(((Unity) _unity.getAttach()).isPermanent());
 		setRoomFixed(assignment.getRoomState());
-		setRoomFunction(((Unity) _unity
-				.getAttach())
+		setRoomFunction(((Unity) _unity.getAttach())
 				.getFirstPreferFunctionRoom());
 		_assignment = assignment;
 		_ttsKey = assignment.getPeriodKey();
 		_cLimit = cLimit;
 	}
-	
+
 	public String getPrincipalRescKey() {
 		return _principalRescKey;
 	}
@@ -238,11 +231,11 @@ public class DxEvent extends DObject {
 	}
 
 	public void setPermanentState(boolean state) {
-		isPermanent = state;
+		_isPermanent = state;
 	}
 
 	public boolean getPermanentState() {
-		return isPermanent;
+		return _isPermanent;
 	}
 
 	/**
@@ -281,8 +274,8 @@ public class DxEvent extends DObject {
 	}
 
 	public DxEvent cloneEvent() {
-		DxEvent eA = new DxEvent(_principalRescKey, _setInstructorKeys, _roomRescKey,
-				_unity, _assignment, _cLimit);
+		DxEvent eA = new DxEvent(_principalRescKey, _setInstructorKeys,
+				_roomRescKey, _unity, _assignment, _cLimit);
 		return eA;
 	}
 

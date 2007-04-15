@@ -23,9 +23,11 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import dDeveloper.DxFlags;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DResource;
+import dInternal.dOptimization.DxEvent;
 import dInternal.dOptimization.EventDx;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
@@ -133,8 +135,14 @@ public class ConditionsTest extends TestCase {
 		int[] dayTime = { 5, 8, 15 };
 		String periodKey = _dm5j.getTTStructure().getCurrentCycle().getPeriod(
 				dayTime);
-		((EventDx) event.getAttach()).setKey(4, periodKey);
-		((EventDx) event.getAttach()).setAssigned(true);
+		if(DxFlags.newEvent) {
+			((DxEvent) event.getAttach()).setKey(4, periodKey);
+			((DxEvent) event.getAttach()).setAssigned(true);
+		} else {
+			((EventDx) event.getAttach()).setKey(4, periodKey);
+			((EventDx) event.getAttach()).setAssigned(true);
+		}
+
 		int[] nbConf = _dm5j.getConditionsTest().addEventInTTs(
 				_dm5j.getTTStructure(), event, true);
 		assertEquals("test1_addEventInTTs_1_5j : assertEquals 1", 0, nbConf[0]);

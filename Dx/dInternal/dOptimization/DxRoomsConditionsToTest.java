@@ -114,41 +114,81 @@ public class DxRoomsConditionsToTest implements DxCondition {
      * @return
      */
     private int roomAvailibilityConflicts(Period period, String eventKey) {
-        EventDx event = (EventDx) _dm.getSetOfEvents().getResource(
-                eventKey).getAttach();
-        long roomKey = event.getRoomKey();
-        if ((roomKey != -1) && (event.getPeriodKey().length() != 0)) {
-            long dayKey = Integer.parseInt(DXToolsMethods.getToken(event
-                    .getPeriodKey(), ".", 0));
-            int[] dayTime = { (int) dayKey, period.getBeginHour()[0],
-                    period.getBeginHour()[1] };
-            String thePeriod = _dm.getTTStructure().getCurrentCycle()
-                    .getPeriod(dayTime);
-            long seqKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,
-                    ".", 1));
-            long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,
-                    ".", 2));
-            int dayIndexAvail = _dm.getTTStructure().findIndexInWeekTable(
-                    dayKey);
-            int perPosition = _dm.getTTStructure().getCurrentCycle()
-                    .getPeriodPositionInDay(dayKey, seqKey, perKey);
-            if (perPosition > 0) {
-                int[][] matrix = null;
-                if (DxFlags.newRooms) {
-                    matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
-                            .getAvailability().getMatrixAvailability();
-                } else {
-                    matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                    .getAttach()).getMatrixAvailability();
-                }
-                if ((dayIndexAvail < matrix.length)) {
-                    if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
+        if(DxFlags.newEvent) {
+        	DxEvent event = (DxEvent) _dm.getSetOfEvents().getResource(
+                    eventKey).getAttach();
+            long roomKey = event.getRoomKey();
+            if ((roomKey != -1) && (event.getPeriodKey().length() != 0)) {
+                long dayKey = Integer.parseInt(DXToolsMethods.getToken(event
+                        .getPeriodKey(), ".", 0));
+                int[] dayTime = { (int) dayKey, period.getBeginHour()[0],
+                        period.getBeginHour()[1] };
+                String thePeriod = _dm.getTTStructure().getCurrentCycle()
+                        .getPeriod(dayTime);
+                long seqKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,
+                        ".", 1));
+                long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,
+                        ".", 2));
+                int dayIndexAvail = _dm.getTTStructure().findIndexInWeekTable(
+                        dayKey);
+                int perPosition = _dm.getTTStructure().getCurrentCycle()
+                        .getPeriodPositionInDay(dayKey, seqKey, perKey);
+                if (perPosition > 0) {
+                    int[][] matrix = null;
+                    if (DxFlags.newRooms) {
+                        matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
+                                .getAvailability().getMatrixAvailability();
+                    } else {
+                        matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+                        .getAttach()).getMatrixAvailability();
+                    }
+                    if ((dayIndexAvail < matrix.length)) {
+                        if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
+                            return 1;
+                    } else {// else if ((dayIndexAvail < matrix.length))
                         return 1;
-                } else {// else if ((dayIndexAvail < matrix.length))
-                    return 1;
-                }// end else if ((dayIndexAvail < matrix.length))
-            }// end if(perPosition>0)
+                    }// end else if ((dayIndexAvail < matrix.length))
+                }// end if(perPosition>0)
+            }
+        } else {
+        	EventDx event = (EventDx) _dm.getSetOfEvents().getResource(
+                    eventKey).getAttach();
+            long roomKey = event.getRoomKey();
+            if ((roomKey != -1) && (event.getPeriodKey().length() != 0)) {
+                long dayKey = Integer.parseInt(DXToolsMethods.getToken(event
+                        .getPeriodKey(), ".", 0));
+                int[] dayTime = { (int) dayKey, period.getBeginHour()[0],
+                        period.getBeginHour()[1] };
+                String thePeriod = _dm.getTTStructure().getCurrentCycle()
+                        .getPeriod(dayTime);
+                long seqKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,
+                        ".", 1));
+                long perKey = Integer.parseInt(DXToolsMethods.getToken(thePeriod,
+                        ".", 2));
+                int dayIndexAvail = _dm.getTTStructure().findIndexInWeekTable(
+                        dayKey);
+                int perPosition = _dm.getTTStructure().getCurrentCycle()
+                        .getPeriodPositionInDay(dayKey, seqKey, perKey);
+                if (perPosition > 0) {
+                    int[][] matrix = null;
+                    if (DxFlags.newRooms) {
+                        matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
+                                .getAvailability().getMatrixAvailability();
+                    } else {
+                        matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+                        .getAttach()).getMatrixAvailability();
+                    }
+                    if ((dayIndexAvail < matrix.length)) {
+                        if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
+                            return 1;
+                    } else {// else if ((dayIndexAvail < matrix.length))
+                        return 1;
+                    }// end else if ((dayIndexAvail < matrix.length))
+                }// end if(perPosition>0)
+            }
         }
+    	
+
         return 0;
     }
 
@@ -160,32 +200,63 @@ public class DxRoomsConditionsToTest implements DxCondition {
      * @return
      */
     private int roomCapacityConflicts(Period period, String eventKey) {
-        EventDx event = (EventDx) _dm.getSetOfEvents().getResource(
-                eventKey).getAttach();
-        StringTokenizer event1 = new StringTokenizer(eventKey,
-                DConst.TOKENSEPARATOR);
-        DResource activity = _dm.getSetOfActivities().getResource(
-                event1.nextToken());
-        DResource type = ((Activity) activity.getAttach()).getSetOfTypes()
-                .getResource(event1.nextToken());
-        DResource section = ((Type) type.getAttach()).getSetOfSections()
-                .getResource(event1.nextToken());
-        int nbOfStudents = _dm.getSetOfStudents().getStudentsByGroup(
-                activity.getID(), type.getID(),
-                DxTools.STIConvertGroupToInt(section.getID())).size();
-        long roomKey = event.getRoomKey();
-        if (roomKey != -1) {
-            int nCapa = 0;
-            if (DxFlags.newRooms) {
-                nCapa = _dm.getDxSetOfRooms().getRoomCapacity(roomKey);
-            } else {
-                nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                        .getAttach()).getCapacity();
-            }
+        if (DxFlags.newEvent) {
+           	
+            DxEvent event = (DxEvent) _dm.getSetOfEvents().getResource(
+                    eventKey).getAttach();
+            StringTokenizer event1 = new StringTokenizer(eventKey,
+                    DConst.TOKENSEPARATOR);
+            DResource activity = _dm.getSetOfActivities().getResource(
+                    event1.nextToken());
+            DResource type = ((Activity) activity.getAttach()).getSetOfTypes()
+                    .getResource(event1.nextToken());
+            DResource section = ((Type) type.getAttach()).getSetOfSections()
+                    .getResource(event1.nextToken());
+            int nbOfStudents = _dm.getSetOfStudents().getStudentsByGroup(
+                    activity.getID(), type.getID(),
+                    DxTools.STIConvertGroupToInt(section.getID())).size();
+            long roomKey = event.getRoomKey();
+            if (roomKey != -1) {
+                int nCapa = 0;
+                if (DxFlags.newRooms) {
+                    nCapa = _dm.getDxSetOfRooms().getRoomCapacity(roomKey);
+                } else {
+                    nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+                            .getAttach()).getCapacity();
+                }
 
-            if (nCapa < nbOfStudents)
-                return 1;
+                if (nCapa < nbOfStudents)
+                    return 1;
+            }
+        } else {
+            EventDx event = (EventDx) _dm.getSetOfEvents().getResource(
+                    eventKey).getAttach();
+            StringTokenizer event1 = new StringTokenizer(eventKey,
+                    DConst.TOKENSEPARATOR);
+            DResource activity = _dm.getSetOfActivities().getResource(
+                    event1.nextToken());
+            DResource type = ((Activity) activity.getAttach()).getSetOfTypes()
+                    .getResource(event1.nextToken());
+            DResource section = ((Type) type.getAttach()).getSetOfSections()
+                    .getResource(event1.nextToken());
+            int nbOfStudents = _dm.getSetOfStudents().getStudentsByGroup(
+                    activity.getID(), type.getID(),
+                    DxTools.STIConvertGroupToInt(section.getID())).size();
+            long roomKey = event.getRoomKey();
+            if (roomKey != -1) {
+                int nCapa = 0;
+                if (DxFlags.newRooms) {
+                    nCapa = _dm.getDxSetOfRooms().getRoomCapacity(roomKey);
+                } else {
+                    nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+                            .getAttach()).getCapacity();
+                }
+
+                if (nCapa < nbOfStudents)
+                    return 1;
+            }
         }
+ 
         return 0;
     }
 
@@ -198,25 +269,48 @@ public class DxRoomsConditionsToTest implements DxCondition {
      */
     private int roomEventsConflicts(Period period, String eventKey,
             ConflictsAttach confV) {
-        EventDx event1 = (EventDx) _dm.getSetOfEvents().getResource(
-                eventKey).getAttach();
-        EventDx event2;
-        int nbConf = 0;
-        for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
-            String event2ID = period.getEventsInPeriod().getResourceAt(i)
-                    .getID();
-            event2 = (EventDx) _dm.getSetOfEvents().getResource(event2ID)
-                    .getAttach();
-            if (!event1.getPrincipalRescKey().equalsIgnoreCase(
-                    event2.getPrincipalRescKey())) {
-                if ((event1.getRoomKey() == event2.getRoomKey())
-                        && (event1.getRoomKey() != -1)) {
-                    confV.addConflict(period.getEventsInPeriod().getResourceAt(
-                            i).getID(), 1, DConst.R_ROOM_NAME, new Vector());
-                    nbConf++;
+    	int nbConf = 0;
+        if (DxFlags.newEvent) {
+            DxEvent event1 = (DxEvent) _dm.getSetOfEvents().getResource(
+                    eventKey).getAttach();
+            DxEvent event2;
+            
+            for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
+                String event2ID = period.getEventsInPeriod().getResourceAt(i)
+                        .getID();
+                event2 = (DxEvent) _dm.getSetOfEvents().getResource(event2ID)
+                        .getAttach();
+                if (!event1.getPrincipalRescKey().equalsIgnoreCase(
+                        event2.getPrincipalRescKey())) {
+                    if ((event1.getRoomKey() == event2.getRoomKey())
+                            && (event1.getRoomKey() != -1)) {
+                        confV.addConflict(period.getEventsInPeriod().getResourceAt(
+                                i).getID(), 1, DConst.R_ROOM_NAME, new Vector());
+                        nbConf++;
+                    }
+                }
+            }
+        } else {
+            EventDx event1 = (EventDx) _dm.getSetOfEvents().getResource(
+                    eventKey).getAttach();
+            EventDx event2;
+            for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
+                String event2ID = period.getEventsInPeriod().getResourceAt(i)
+                        .getID();
+                event2 = (EventDx) _dm.getSetOfEvents().getResource(event2ID)
+                        .getAttach();
+                if (!event1.getPrincipalRescKey().equalsIgnoreCase(
+                        event2.getPrincipalRescKey())) {
+                    if ((event1.getRoomKey() == event2.getRoomKey())
+                            && (event1.getRoomKey() != -1)) {
+                        confV.addConflict(period.getEventsInPeriod().getResourceAt(
+                                i).getID(), 1, DConst.R_ROOM_NAME, new Vector());
+                        nbConf++;
+                    }
                 }
             }
         }
+
         return nbConf;
     }
 

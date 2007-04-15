@@ -18,6 +18,7 @@ import dInternal.dData.StandardCollection;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dStudents.SetOfStudents;
+import dInternal.dOptimization.DxEvent;
 import dInternal.dOptimization.EventDx;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.Cycle;
@@ -66,24 +67,37 @@ public class SetOfEventsTest extends TestCase {
 	/**
 	 * test the principal key of the first event of the setofevents
 	 */
-	public void test_firstEvent() {
-		String pincKey = ((EventDx) _soe.getResourceAt(0).getAttach())
-				.getPrincipalRescKey();
+	public void testFirstEvent() {
+		String pincKey;
+		if (DxFlags.newEvent) {
+			pincKey = ((DxEvent) _soe.getResourceAt(0).getAttach())
+					.getPrincipalRescKey();
+		} else {
+			pincKey = ((EventDx) _soe.getResourceAt(0).getAttach())
+					.getPrincipalRescKey();
+		}
+
 		StringTokenizer keys = new StringTokenizer(pincKey, ".");
-		String firstEvent = _dmData5j.getSetOfActivities().getUnityCompleteName(
-				Long.parseLong(keys.nextToken()),
-				Long.parseLong(keys.nextToken()),
-				Long.parseLong(keys.nextToken()),
-				Long.parseLong(keys.nextToken()));
-		assertEquals("test_firstEvent : ", "AMC640.1.01.1.", firstEvent);
+		String firstEvent = _dmData5j.getSetOfActivities()
+				.getUnityCompleteName(Long.parseLong(keys.nextToken()),
+						Long.parseLong(keys.nextToken()),
+						Long.parseLong(keys.nextToken()),
+						Long.parseLong(keys.nextToken()));
+		assertEquals("testFirstEvent : ", "AMC640.1.01.1.", firstEvent);
 	}
 
 	/**
 	 * test the instructor key of the first event of the setofevents
 	 */
 	public void test_InstructorInEvent() {
-		long insKey[] = ((EventDx) _soe.getResourceAt(0).getAttach())
-				.getInstructorKey();
+		long insKey[];
+		if (DxFlags.newEvent) {
+			insKey = ((DxEvent) _soe.getResourceAt(0).getAttach())
+					.getInstructorKey();
+		} else {
+			insKey = ((EventDx) _soe.getResourceAt(0).getAttach())
+					.getInstructorKey();
+		}
 		assertEquals("test_InstructorInEvent : ", "THÉRIEN, NORMAND", _dmData5j
 				.getDxSetOfInstructors().getInstructorName(insKey[0]));
 
@@ -93,18 +107,28 @@ public class SetOfEventsTest extends TestCase {
 	 * test the rooms key of the first event of the setofevents
 	 */
 	public void test_RoomInEvent() {
-		long roomKey = ((EventDx) _soe.getResourceAt(0).getAttach())
-				.getRoomKey();
+		long roomKey;
+		if (DxFlags.newEvent) {
+			roomKey = ((DxEvent) _soe.getResourceAt(0).getAttach())
+					.getRoomKey();
+		} else {
+			roomKey = ((EventDx) _soe.getResourceAt(0).getAttach())
+					.getRoomKey();
+		}
+
 		if (DxFlags.newRooms) {
 			DxSetOfSites sos = _dmData5j.getDxSetOfSites();
 			DxSetOfRooms sor = sos.getAllDxRooms();
-			assertEquals("test_RoomInEvent : siteCount1  ", 1, sos.getSiteCount());
-			assertEquals("test_RoomInEvent : catCount 1", 1, sos.getCatCount(sos.getSiteKey(DConst.ROOM_DEFAULT_SITE)));
-			assertEquals("test_RoomInEvent : ", true, sor.getNamesVector().contains("D73020"));
+			assertEquals("test_RoomInEvent : siteCount1  ", 1, sos
+					.getSiteCount());
+			assertEquals("test_RoomInEvent : catCount 1", 1, sos
+					.getCatCount(sos.getSiteKey(DConst.ROOM_DEFAULT_SITE)));
+			assertEquals("test_RoomInEvent : ", true, sor.getNamesVector()
+					.contains("D73020"));
 
 		} else {
-			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j.getSetOfRooms()
-					.getResource(roomKey).getID());
+			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j
+					.getSetOfRooms().getResource(roomKey).getID());
 		}
 	}
 
@@ -127,223 +151,635 @@ public class SetOfEventsTest extends TestCase {
 		// this is the : AMC600 Event
 		String eventInPeriodName = ((DResource) eventsInPeriod.get(0)).getID();
 		// get the attach of the event
-		EventDx eventDx = (EventDx) _soe1.getResource(
-				eventInPeriodName).getAttach();
+		if (DxFlags.newEvent) {
+			DxEvent dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName)
+					.getAttach();
+			String actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			String typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			String secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 
-		String actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		String typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		String secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			int section = DxTools.STIConvertGroupToInt(secID);
+			SetOfStudents students = _dmData7j.getSetOfStudents();
+			Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
+			DResource resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents AMC600 Event i : ", 0, index);
+			assertEquals("test_addEvents AMC600 Event nS : ", 20, v.size());
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 
-		int section = DxTools.STIConvertGroupToInt(secID);
-		SetOfStudents students = _dmData7j.getSetOfStudents();
-		Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
-		DResource resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents AMC600 Event i : ", 0, index);
-		assertEquals("test_addEvents AMC600 Event nS : ", 20, v.size());
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the AMC640 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents AMC640 Event i :", 1, index);
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the AMC640 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents AMC640 Event i :", 1, index);
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GCH109 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents GCH109 Event i :", 1, index);
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GCH109 Event size :", 3, newSetOfEvents
+					.size());
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the GCH109 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents GCH109 Event i :", 1, index);
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents GCH109 Event size :", 3, newSetOfEvents
-				.size());
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GCH321 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents GCH321 Event i :", 1, index);
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GCH321 Event size :", 4, newSetOfEvents
+					.size());
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the GCH321 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents GCH321 Event i :", 1, index);
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents GCH321 Event size :", 4, newSetOfEvents
-				.size());
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GEI460 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GEI460 Event size :", 5, newSetOfEvents
+					.size());
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the GEI460 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents GEI460 Event size :", 5, newSetOfEvents
-				.size());
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GEL440 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents GEL440 Event i :", 3, index);
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GEL440 Event size :", 6, newSetOfEvents
+					.size());
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the GEL440 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents GEL440 Event i :", 3, index);
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents GEL440 Event size :", 6, newSetOfEvents
-				.size());
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the IMC111 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents IMC111 Event i :", 5, index);
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents IMC111 Event size :", 6, newSetOfEvents
+					.size());
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the IMC111 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents IMC111 Event i :", 5, index);
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents IMC111 Event size :", 6, newSetOfEvents
-				.size());
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the IMC455 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents IMC455 Event i : ", 0, index);
+			assertEquals("test_addEvents IMC455 Event nS : ", 10, v.size());
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the IMC455 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents IMC455 Event i : ", 0, index);
-		assertEquals("test_addEvents IMC455 Event nS : ", 10, v.size());
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			assertEquals("test_addEvents IMC455 Event size : ", 7, newSetOfEvents
+					.size());
 
-		assertEquals("test_addEvents IMC455 Event size : ", 7, newSetOfEvents
-				.size());
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the IMC500 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
+			// get the attach of the event
+			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), dxEvent);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents IMC500 Event i : ", 6, index);
+			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents IMC500 Event size : ", 7, newSetOfEvents
+					.size());
 
-		// for each event in period do some tests
-		// get next, get the name of an event in the period
-		// this is the IMC500 Event
-		eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
-		// get the attach of the event
-		eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
-				.getAttach();
-		actID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE);
-		typeID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
-		secID = DXToolsMethods.getToken(eventInPeriodName,
-				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
-		section = DxTools.STIConvertGroupToInt(secID);
-		v = students.getStudentsByGroup(actID, typeID, section, 0);
-		resc = new DResource(Integer.toString(v.size()), eventDx);
-		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
-		assertEquals("test_addEvents IMC500 Event i : ", 6, index);
-		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
-		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-		newSetOfEvents.sortSetOfResourcesByID();
-		assertEquals("test_addEvents IMC500 Event size : ", 7, newSetOfEvents
-				.size());
+			
+		} else {
+			EventDx eventDx = (EventDx) _soe1.getResource(eventInPeriodName)
+					.getAttach();
+			String actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			String typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			String secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+
+			int section = DxTools.STIConvertGroupToInt(secID);
+			SetOfStudents students = _dmData7j.getSetOfStudents();
+			Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
+			DResource resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents AMC600 Event i : ", 0, index);
+			assertEquals("test_addEvents AMC600 Event nS : ", 20, v.size());
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the AMC640 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents AMC640 Event i :", 1, index);
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GCH109 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents GCH109 Event i :", 1, index);
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GCH109 Event size :", 3, newSetOfEvents
+					.size());
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GCH321 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents GCH321 Event i :", 1, index);
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GCH321 Event size :", 4, newSetOfEvents
+					.size());
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GEI460 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GEI460 Event size :", 5, newSetOfEvents
+					.size());
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the GEL440 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents GEL440 Event i :", 3, index);
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents GEL440 Event size :", 6, newSetOfEvents
+					.size());
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the IMC111 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents IMC111 Event i :", 5, index);
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents IMC111 Event size :", 6, newSetOfEvents
+					.size());
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the IMC455 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents IMC455 Event i : ", 0, index);
+			assertEquals("test_addEvents IMC455 Event nS : ", 10, v.size());
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+
+			assertEquals("test_addEvents IMC455 Event size : ", 7, newSetOfEvents
+					.size());
+
+			// for each event in period do some tests
+			// get next, get the name of an event in the period
+			// this is the IMC500 Event
+			eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
+			// get the attach of the event
+			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+			actID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), eventDx);
+			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+			assertEquals("test_addEvents IMC500 Event i : ", 6, index);
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+			newSetOfEvents.sortSetOfResourcesByID();
+			assertEquals("test_addEvents IMC500 Event size : ", 7, newSetOfEvents
+					.size());
+
+		}
+//
+//		String actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		String typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		String secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//
+//		int section = DxTools.STIConvertGroupToInt(secID);
+//		SetOfStudents students = _dmData7j.getSetOfStudents();
+//		Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		DResource resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents AMC600 Event i : ", 0, index);
+//		assertEquals("test_addEvents AMC600 Event nS : ", 20, v.size());
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the AMC640 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents AMC640 Event i :", 1, index);
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the GCH109 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents GCH109 Event i :", 1, index);
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//		newSetOfEvents.sortSetOfResourcesByID();
+//		assertEquals("test_addEvents GCH109 Event size :", 3, newSetOfEvents
+//				.size());
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the GCH321 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents GCH321 Event i :", 1, index);
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//		newSetOfEvents.sortSetOfResourcesByID();
+//		assertEquals("test_addEvents GCH321 Event size :", 4, newSetOfEvents
+//				.size());
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the GEI460 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//		newSetOfEvents.sortSetOfResourcesByID();
+//		assertEquals("test_addEvents GEI460 Event size :", 5, newSetOfEvents
+//				.size());
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the GEL440 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents GEL440 Event i :", 3, index);
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//		newSetOfEvents.sortSetOfResourcesByID();
+//		assertEquals("test_addEvents GEL440 Event size :", 6, newSetOfEvents
+//				.size());
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the IMC111 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents IMC111 Event i :", 5, index);
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//		newSetOfEvents.sortSetOfResourcesByID();
+//		assertEquals("test_addEvents IMC111 Event size :", 6, newSetOfEvents
+//				.size());
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the IMC455 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents IMC455 Event i : ", 0, index);
+//		assertEquals("test_addEvents IMC455 Event nS : ", 10, v.size());
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//
+//		assertEquals("test_addEvents IMC455 Event size : ", 7, newSetOfEvents
+//				.size());
+//
+//		// for each event in period do some tests
+//		// get next, get the name of an event in the period
+//		// this is the IMC500 Event
+//		eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
+//		// get the attach of the event
+//		eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
+//		actID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE);
+//		typeID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+//		secID = DXToolsMethods.getToken(eventInPeriodName,
+//				DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+//		section = DxTools.STIConvertGroupToInt(secID);
+//		v = students.getStudentsByGroup(actID, typeID, section, 0);
+//		resc = new DResource(Integer.toString(v.size()), eventDx);
+//		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
+//		assertEquals("test_addEvents IMC500 Event i : ", 6, index);
+//		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
+//		newSetOfEvents.sortSetOfResourcesByID();
+//		assertEquals("test_addEvents IMC500 Event size : ", 7, newSetOfEvents
+//				.size());
 
 	}
 
@@ -351,15 +787,36 @@ public class SetOfEventsTest extends TestCase {
 	 * test the rooms key of the first event of the setofevents
 	 */
 	public void test_capacityOfAnEvent() {
-		EventDx event = (EventDx) _dmData5j.getSetOfEvents().getResourceAt(0)
-				.getAttach();
-		assertEquals("test_capacityOfAnEvent 0 : ", 17, event
-				.getCapacityLimit());
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) _dmData5j.getSetOfEvents().getResourceAt(
+					0).getAttach();
+			assertEquals("test_capacityOfAnEvent 0 : ", 17, event
+					.getCapacityLimit());
 
-		event = (EventDx) _dmData5j.getSetOfEvents().getResourceAt(1).getAttach();
-		assertEquals("test_capacityOfAnEvent 1: ", 52, event.getCapacityLimit());
-		event = (EventDx) _dmData5j.getSetOfEvents().getResourceAt(2).getAttach();
-		assertEquals("test_capacityOfAnEvent 2: ", 33, event.getCapacityLimit());
+			event = (DxEvent) _dmData5j.getSetOfEvents().getResourceAt(1)
+					.getAttach();
+			assertEquals("test_capacityOfAnEvent 1: ", 52, event
+					.getCapacityLimit());
+			event = (DxEvent) _dmData5j.getSetOfEvents().getResourceAt(2)
+					.getAttach();
+			assertEquals("test_capacityOfAnEvent 2: ", 33, event
+					.getCapacityLimit());
+		} else {
+			EventDx event = (EventDx) _dmData5j.getSetOfEvents().getResourceAt(
+					0).getAttach();
+			assertEquals("test_capacityOfAnEvent 0 : ", 17, event
+					.getCapacityLimit());
+
+			event = (EventDx) _dmData5j.getSetOfEvents().getResourceAt(1)
+					.getAttach();
+			assertEquals("test_capacityOfAnEvent 1: ", 52, event
+					.getCapacityLimit());
+			event = (EventDx) _dmData5j.getSetOfEvents().getResourceAt(2)
+					.getAttach();
+			assertEquals("test_capacityOfAnEvent 2: ", 33, event
+					.getCapacityLimit());
+		}
+
 	}
 
 } // end SetOfEventsTest
