@@ -235,8 +235,14 @@ public class SetOfEvents extends DSetOfResources {
 	public int getNumberOfEventAssign() {
 		int count = 0;
 		for (int i = 0; i < this.size(); i++) {
-			if (((EventDx) getResourceAt(i).getAttach()).isPlaceInAPeriod())
-				count++;
+			if(DxFlags.newEvent) {
+				if (((DxEvent) getResourceAt(i).getAttach()).isPlaceInAPeriod())
+					count++;
+			} else {
+				if (((EventDx) getResourceAt(i).getAttach()).isPlaceInAPeriod())
+					count++;
+			}
+
 		}// end for (int i=0; i< this.size(); i++)
 		return count;
 	}

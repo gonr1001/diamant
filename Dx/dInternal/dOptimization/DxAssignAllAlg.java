@@ -84,40 +84,79 @@ public class DxAssignAllAlg implements Algorithm {
 			 * while(((EventAttach)currentEvent.getAttach()).getAssignState())
 			 * currentEvent= (Resource)vectorOfEvents.remove(0);
 			 */
-			if (!((EventDx) currentEvent.getAttach()).isAssigned()) {
-				currentDuration = ((EventDx) currentEvent.getAttach())
-						.getDuration()
-						/ _dm.getTTStructure().getPeriodLenght();
-				vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
-						.getConditionsTest().getAvoidPriorityTable());
-				while (!vPeriods.isEmpty()) {
-					DValue value = (DValue) ((DResource) vPeriods.remove(0))
-							.getAttach();
-					currentPeriod = (Period) value.getObjectValue();
-					int[] dayTime = { value.getIntValue(),
-							currentPeriod.getBeginHour()[0],
-							currentPeriod.getBeginHour()[1] };
-					((EventDx) currentEvent.getAttach()).setKey(4, _dm
-							.getTTStructure().getCurrentCycle().getPeriod(
-									dayTime));
-					((EventDx) currentEvent.getAttach()).setAssigned(true);
-					nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
-							_dm.getTTStructure(), currentEvent, true);
-					isNumberOfConflictsAcceptable = isConflictsAcceptable(nbConf);
-					((EventDx) currentEvent.getAttach()).setAssigned(false);
-					if ((isNumberOfConflictsAcceptable)
-							&& ((EventDx) currentEvent.getAttach())
-									.getDuration() != 0) {
-						((EventDx) currentEvent.getAttach())
-								.setAssigned(true);
-						_dm.getConditionsTest().addEventInTTs(
+			if(DxFlags.newEvent) {
+				if (!((DxEvent) currentEvent.getAttach()).isAssigned()) {
+					currentDuration = ((DxEvent) currentEvent.getAttach())
+							.getDuration()
+							/ _dm.getTTStructure().getPeriodLenght();
+					vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
+							.getConditionsTest().getAvoidPriorityTable());
+					while (!vPeriods.isEmpty()) {
+						DValue value = (DValue) ((DResource) vPeriods.remove(0))
+								.getAttach();
+						currentPeriod = (Period) value.getObjectValue();
+						int[] dayTime = { value.getIntValue(),
+								currentPeriod.getBeginHour()[0],
+								currentPeriod.getBeginHour()[1] };
+						((DxEvent) currentEvent.getAttach()).setKey(4, _dm
+								.getTTStructure().getCurrentCycle().getPeriod(
+										dayTime));
+						((DxEvent) currentEvent.getAttach()).setAssigned(true);
+						nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
 								_dm.getTTStructure(), currentEvent, true);
-						_placedEvents.add(currentEvent);
-						vPeriods.removeAllElements();
-					}// else{// end if if(numberOfConflicts==0)
-				}// end while(!periodList.isEmpty())
-			}// end
-			// if(!((EventAttach)currentEvent.getAttach()).getAssignState())
+						isNumberOfConflictsAcceptable = isConflictsAcceptable(nbConf);
+						((DxEvent) currentEvent.getAttach()).setAssigned(false);
+						if ((isNumberOfConflictsAcceptable)
+								&& ((DxEvent) currentEvent.getAttach())
+										.getDuration() != 0) {
+							((DxEvent) currentEvent.getAttach())
+									.setAssigned(true);
+							_dm.getConditionsTest().addEventInTTs(
+									_dm.getTTStructure(), currentEvent, true);
+							_placedEvents.add(currentEvent);
+							vPeriods.removeAllElements();
+						}// else{// end if if(numberOfConflicts==0)
+					}// end while(!periodList.isEmpty())
+				}// end
+				// if(!((EventAttach)currentEvent.getAttach()).getAssignState())
+				
+			} else {
+				if (!((EventDx) currentEvent.getAttach()).isAssigned()) {
+					currentDuration = ((EventDx) currentEvent.getAttach())
+							.getDuration()
+							/ _dm.getTTStructure().getPeriodLenght();
+					vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
+							.getConditionsTest().getAvoidPriorityTable());
+					while (!vPeriods.isEmpty()) {
+						DValue value = (DValue) ((DResource) vPeriods.remove(0))
+								.getAttach();
+						currentPeriod = (Period) value.getObjectValue();
+						int[] dayTime = { value.getIntValue(),
+								currentPeriod.getBeginHour()[0],
+								currentPeriod.getBeginHour()[1] };
+						((EventDx) currentEvent.getAttach()).setKey(4, _dm
+								.getTTStructure().getCurrentCycle().getPeriod(
+										dayTime));
+						((EventDx) currentEvent.getAttach()).setAssigned(true);
+						nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
+								_dm.getTTStructure(), currentEvent, true);
+						isNumberOfConflictsAcceptable = isConflictsAcceptable(nbConf);
+						((EventDx) currentEvent.getAttach()).setAssigned(false);
+						if ((isNumberOfConflictsAcceptable)
+								&& ((EventDx) currentEvent.getAttach())
+										.getDuration() != 0) {
+							((EventDx) currentEvent.getAttach())
+									.setAssigned(true);
+							_dm.getConditionsTest().addEventInTTs(
+									_dm.getTTStructure(), currentEvent, true);
+							_placedEvents.add(currentEvent);
+							vPeriods.removeAllElements();
+						}// else{// end if if(numberOfConflicts==0)
+					}// end while(!periodList.isEmpty())
+				}// end
+				// if(!((EventAttach)currentEvent.getAttach()).getAssignState())
+			}
+
 		}// end for(int i=0; i< vect.size(); i++)
 		// _dm.getConditionsTest().emptyAvoidPriorityTable();
 		_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
