@@ -59,7 +59,7 @@ import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
-import dInternal.dOptimization.DxEvent;
+import dInternal.dOptimization.EventDx;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -235,7 +235,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 		} else if (command.equals(DConst.BUT_CHANGE)) {// change instrcutors
 			if (DxFlags.newEditEventDlg) {
-				new SelectInstructors(_dApplic, this,
+				new SelectInstructors(_dApplic,/* this,*/
 						makeVector(_instructorsLists[_currentActivityIndex]),
 						buildInstructorList());
 			}
@@ -482,7 +482,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	} // end getSelectedCategory
 
 	private JPanel buildFixingPanel(int index) {
-		DxEvent event = (DxEvent) ((DResource) _unities.get(index))
+		EventDx event = (EventDx) ((DResource) _unities.get(index))
 				.getAttach();
 		JPanel myPanel = new JPanel();
 		JPanel fixingPanel = new JPanel();
@@ -736,7 +736,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 * @return
 	 */
 	private String buildDuration() {
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		int duration = event.getDuration()
 				/ _dApplic.getCurrentDModel().getTTStructure()
@@ -753,7 +753,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildHourList() {
 		Vector list[] = { new Vector(), new Vector() };
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
 				.getCurrentCycle();
@@ -795,7 +795,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildDayList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
 				.getCurrentCycle();
@@ -817,7 +817,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	private Vector buildCurrentInstructorList(int index) {
 		Vector<String> v = new Vector<String>();
 
-		DxEvent event = (DxEvent) ((DResource) _unities.get(index))
+		EventDx event = (EventDx) ((DResource) _unities.get(index))
 				.getAttach();
 		DxSetOfInstructors soi = _dApplic.getCurrentDModel()
 				.getDxSetOfInstructors();
@@ -850,7 +850,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	private Vector[] buildRoomList(String selectedFunction) {// String
 		// category){
 		Vector list[] = { new Vector(1), new Vector(1) };
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		if (DxFlags.newRooms) {
 			DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
@@ -945,7 +945,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildRoomStateList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		// SetOfCategories soc= _dm.getSetOfCategories();
 		// long dayKey=
@@ -978,7 +978,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildRoomFunctionList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
 				.getSetOfRoomsFunctions();
@@ -1000,7 +1000,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	private boolean applyChanges() {
 		Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
 				.getCurrentCycle();
-		DxEvent event = (DxEvent) ((DResource) _unities
+		EventDx event = (EventDx) ((DResource) _unities
 				.get(_currentActivityIndex)).getAttach();
 		// remove event
 		_dApplic.getCurrentDModel().getConditionsTest().removeEventInTTs(

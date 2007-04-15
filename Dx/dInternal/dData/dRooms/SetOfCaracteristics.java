@@ -20,14 +20,14 @@ public class SetOfCaracteristics extends DSetOfResources {
 		super();
 	}
 	
-	public boolean analyseTokens(byte[]  dataloaded, int beginPosition){
-		dataloaded[0]+=0;
-		return false;
-	}
+//	public boolean analyseTokens(byte[]  dataloaded, int beginPosition){
+//		dataloaded[0]+=0;
+//		return false;
+//	}
 	
-	public  void buildSetOfResources(byte[]  dataloaded, int beginPosition){
-		dataloaded[0]+=0;
-	}
+//	public  void buildSetOfResources(byte[]  dataloaded, int beginPosition){
+//		dataloaded[0]+=0;
+//	}
 	
 	public  String getError(){
 		return "";

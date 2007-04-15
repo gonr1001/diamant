@@ -6,7 +6,7 @@ package dInterface.selectiveSchedule.relationTesters;
 
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
-import dInternal.dOptimization.DxEvent;
+import dInternal.dOptimization.EventDx;
 
 /**
  * Une implémentation de RelationTester.  Permet de vérifier si
@@ -37,11 +37,11 @@ public class RelationTester_ActivityEvent extends RelationTesterTemplate {
         
         /* Vérification des types */
         if ((el1.getAttach().getClass() == Activity.class)
-                && (el2.getAttach().getClass() == DxEvent.class)) {
+                && (el2.getAttach().getClass() == EventDx.class)) {
             activity = el1;
             eventAttach = el2;
         } else if ((el2.getAttach().getClass() == Activity.class)
-                && (el1.getAttach().getClass() == DxEvent.class)) {
+                && (el1.getAttach().getClass() == EventDx.class)) {
             activity = el2;
             eventAttach = el1;
         } else {

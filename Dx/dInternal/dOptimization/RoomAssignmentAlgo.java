@@ -77,7 +77,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				for (int k = 0; k < setOfAvailableRooms.size(); k++) {
 					Room room = (Room) setOfAvailableRooms.getResourceAt(k);
 					if (isAddPossible(room, eventsToAssign)) {
-						((DxEvent) eventsToAssign.getAttach())
+						((EventDx) eventsToAssign.getAttach())
 								.setRoomKey((int) room.getKey());
 						setOfAvailableRooms.removeResource(room.getKey());
 						break;
@@ -116,10 +116,10 @@ public class RoomAssignmentAlgo implements Algorithm {
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
-			DxEvent dxEvent = (DxEvent) soe.getResource(
+			EventDx eventDx = (EventDx) soe.getResource(
 					eventInPeriodName).getAttach();
-			if (dxEvent.getRoomKey() != NO_ROOM_ASSIGNED) {
-				setOfAvailRooms.removeResource(dxEvent.getRoomKey());
+			if (eventDx.getRoomKey() != NO_ROOM_ASSIGNED) {
+				setOfAvailRooms.removeResource(eventDx.getRoomKey());
 			}// end if(eventAttach.getRoomKey() != NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfAvailRooms;
@@ -136,15 +136,15 @@ public class RoomAssignmentAlgo implements Algorithm {
 	private void setNoRoomToEventsWithRoomsNotFixed() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
-			DxEvent dxEvent = (DxEvent) soe.getResourceAt(i)
+			EventDx eventDx = (EventDx) soe.getResourceAt(i)
 					.getAttach();
-			if (dxEvent.isAssigned() && !dxEvent.isRoomFixed()) {
-				dxEvent.setRoomKey(NO_ROOM_ASSIGNED);
+			if (eventDx.isAssigned() && !eventDx.isRoomFixed()) {
+				eventDx.setRoomKey(NO_ROOM_ASSIGNED);
 			}// end if
-			else if (dxEvent.isAssigned() && dxEvent.isRoomFixed()
-					&& dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
-				dxEvent.setRoomKey(NO_ROOM_ASSIGNED);
-				dxEvent.setRoomFixed(false);
+			else if (eventDx.isAssigned() && eventDx.isRoomFixed()
+					&& eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+				eventDx.setRoomKey(NO_ROOM_ASSIGNED);
+				eventDx.setRoomFixed(false);
 			}// end else if
 		}// end for 
 	}
@@ -173,7 +173,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 		String actID = "";
 		String typeID = "";
 		String secID = "";
-		DxEvent dxEvent = null;
+		EventDx eventDx = null;
 		int section = 0;
 		Vector v = null;
 		DResource resc = null;
@@ -182,9 +182,9 @@ public class RoomAssignmentAlgo implements Algorithm {
 			// get the name of an event in the period
 			eventInPeriodName = ((DResource) eventsInPeriod.get(i)).getID();
 			// get the attach of the event
-			dxEvent = (DxEvent) soe.getResource(eventInPeriodName)
+			eventDx = (EventDx) soe.getResource(eventInPeriodName)
 					.getAttach();
-			if (dxEvent.getRoomKey() == NO_ROOM_ASSIGNED) {
+			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
 				actID = DXToolsMethods.getToken(eventInPeriodName,
 						DConst.TOKENSEPARATOR, TOKEN_RANGE);
 				typeID = DXToolsMethods.getToken(eventInPeriodName,
@@ -195,7 +195,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 				section = DxTools.STIConvertGroupToInt(secID);
 
 				v = students.getStudentsByGroup(actID, typeID, section, 0);
-				resc = new DResource(Integer.toString(v.size()), dxEvent);
+				resc = new DResource(Integer.toString(v.size()), eventDx);
 
 				newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
 				//				newSetOfEvents.addResourceUsingID(resc);
@@ -229,11 +229,11 @@ public class RoomAssignmentAlgo implements Algorithm {
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
 		if (_allRscFunct != null) {
-			if (((DxEvent) event.getAttach()).getRoomFunction() == _allRscFunct
+			if (((EventDx) event.getAttach()).getRoomFunction() == _allRscFunct
 					.getKey()) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;
-			} else if ((((DxEvent) event.getAttach()).getRoomFunction() == room
+			} else if ((((EventDx) event.getAttach()).getRoomFunction() == room
 					.getRoomFunction())) {
 				if (needed_room_size <= room.getRoomCapacity())
 					return true;

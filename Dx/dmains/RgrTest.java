@@ -24,7 +24,9 @@ import junit.framework.TestSuite;
 
 
 
+import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.dData.DSaveDataTest;
+import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
@@ -64,17 +66,17 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am in tests");
 		TestSuite suite = new TestSuite("rgrTest");
-		suite.addTest(DxSiteReaderTest.suite());
-		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(ConditionsTest.suite());
+		suite.addTest(DxStateBarModelTest.suite());
+		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DSaveDataTest.suite());
 //		suite.addTest(InstructorsConditionsTest.suite());
 	    suite.addTest(DxSiteReaderTest.suite());
 //		suite.addTest(StudentsConditionsTest.suite());
-		suite.addTest(ConditionsTest.suite());
+
 		System.out.println("Bye I was in rgrTest");
 		return suite;
 	}

@@ -175,7 +175,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
 //	 * @param Vector leftVec est le vecteur contenant les enseignants de la liste gauche
 //	 * @param Vector rightVec est le vecteur contenant les enseignants de la liste droite
 //	 */
-	public SelectInstructors(DApplication dApplic, EditEventDlg eEventd,
+	public SelectInstructors(DApplication dApplic,/* EditEventDlg eEventd,*/
 			Vector leftVec, Vector rightVec) {
 		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); //true gives a modal Dlg
 		//_dApplic = dApplic;

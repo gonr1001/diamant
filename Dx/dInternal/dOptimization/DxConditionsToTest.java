@@ -169,7 +169,7 @@ public class DxConditionsToTest {
 			for (int i = 0; i < _dm.getSetOfEvents().size(); i++) {
 				DResource event = _dm.getSetOfEvents().getResourceAt(i);
 				addEventInTTs(tts, event, false);
-			}// end for (int i=0; i< _dm.getSetOfEvents().size(); i++)
+			}// end for 
 			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 					_dm.getSetOfEvents().getSetOfResources());
 		}
@@ -181,10 +181,10 @@ public class DxConditionsToTest {
 		// usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
 
-		if (((DxEvent) event.getAttach()).isAssigned()) {
-			int[] perKey = ((DxEvent) event.getAttach())
+		if (((EventDx) event.getAttach()).isAssigned()) {
+			int[] perKey = ((EventDx) event.getAttach())
 					.getPeriodKeyTable();
-			int duration = ((DxEvent) event.getAttach()).getDuration()
+			int duration = ((EventDx) event.getAttach()).getDuration()
 					/ tts.getPeriodLenght();
 
 			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
@@ -201,15 +201,15 @@ public class DxConditionsToTest {
 						numberOfConflicts[k] += cond.addTest(newPerKey, per,
 								event.getID());
 					}// end for (int j=0; j< _testToRun.size(); j++)
-					((DxEvent) event.getAttach())
+					((EventDx) event.getAttach())
 							.setInAPeriod(getBooleanValue(1));
-					((DxEvent) event.getAttach())
+					((EventDx) event.getAttach())
 							.setAssigned(getBooleanValue(1));
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
-				((DxEvent) event.getAttach()).setInAPeriod(false);
-				((DxEvent) event.getAttach()).setAssigned(false);
-				((DxEvent) event.getAttach()).setPermanentState(false);
+				((EventDx) event.getAttach()).setInAPeriod(false);
+				((EventDx) event.getAttach()).setAssigned(false);
+				((EventDx) event.getAttach()).setPermanentState(false);
 			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
 		}
 		return numberOfConflicts;
@@ -221,10 +221,10 @@ public class DxConditionsToTest {
 		// usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
 
-		if (((DxEvent) event.getAttach()).isAssigned()) {
-			int[] perKey = ((DxEvent) event.getAttach())
+		if (((EventDx) event.getAttach()).isAssigned()) {
+			int[] perKey = ((EventDx) event.getAttach())
 					.getPeriodKeyTable();
-			int duration = ((DxEvent) event.getAttach()).getDuration()
+			int duration = ((EventDx) event.getAttach()).getDuration()
 					/ tts.getPeriodLenght();
 
 			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
@@ -242,16 +242,16 @@ public class DxConditionsToTest {
 								event.getID());
 					}// end for (int j=0; j< _testToRun.size(); j++)
 
-					((DxEvent) event.getAttach())
+					((EventDx) event.getAttach())
 							.setInAPeriod(getBooleanValue(-1));
-					((DxEvent) event.getAttach())
+					((EventDx) event.getAttach())
 							.setAssigned(getBooleanValue(-1));
 
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
-				((DxEvent) event.getAttach()).setInAPeriod(false);
-				((DxEvent) event.getAttach()).setAssigned(false);
-				((DxEvent) event.getAttach()).setPermanentState(false);
+				((EventDx) event.getAttach()).setInAPeriod(false);
+				((EventDx) event.getAttach()).setAssigned(false);
+				((EventDx) event.getAttach()).setPermanentState(false);
 			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
 		}
 		return numberOfConflicts;
@@ -263,10 +263,10 @@ public class DxConditionsToTest {
 		// usePriority);
 		int[] numberOfConflicts = { 0, 0, 0 };
 
-		if (((DxEvent) event.getAttach()).isAssigned()) {
-			int[] perKey = ((DxEvent) event.getAttach())
+		if (((EventDx) event.getAttach()).isAssigned()) {
+			int[] perKey = ((EventDx) event.getAttach())
 					.getPeriodKeyTable();
-			int duration = ((DxEvent) event.getAttach()).getDuration()
+			int duration = ((EventDx) event.getAttach()).getDuration()
 					/ tts.getPeriodLenght();
 
 			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
@@ -285,9 +285,9 @@ public class DxConditionsToTest {
 					}// end for
 				}// end for
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
-				((DxEvent) event.getAttach()).setInAPeriod(false);
-				((DxEvent) event.getAttach()).setAssigned(false);
-				((DxEvent) event.getAttach()).setPermanentState(false);
+				((EventDx) event.getAttach()).setInAPeriod(false);
+				((EventDx) event.getAttach()).setAssigned(false);
+				((EventDx) event.getAttach()).setPermanentState(false);
 			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
 		}
 		return numberOfConflicts;
@@ -460,11 +460,11 @@ public class DxConditionsToTest {
 	 */
 	public void addEventInAllPeriods(TTStructure improveTTStruct,
 			DResource event) {
-		DxEvent dxEvent = ((DxEvent) event.getAttach())
+		EventDx eventDx = ((EventDx) event.getAttach())
 				.cloneEvent();
-		dxEvent.setAssigned(true);
-		DResource res = new DResource(event.getID(), dxEvent);
-		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
+		eventDx.setAssigned(true);
+		DResource res = new DResource(event.getID(), eventDx);
+		eventDx.setDuration(improveTTStruct.getPeriodLenght());
 		for (int i = 0; i < improveTTStruct.getCurrentCycle().getSetOfDays()
 				.size(); i++) {
 			DResource day = improveTTStruct.getCurrentCycle().getSetOfDays()
@@ -482,7 +482,7 @@ public class DxConditionsToTest {
 
 					String periodKey = daytime[0] + "." + daytime[1] + "."
 							+ daytime[2];
-					dxEvent.setKey(4, periodKey);
+					eventDx.setKey(4, periodKey);
 					System.out.println(i + " " + j + " " + k);
 					addEventInTTs(improveTTStruct, res, false);
 

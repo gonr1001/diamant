@@ -25,7 +25,7 @@ import dInternal.DResource;
 
 import dInternal.dData.dActivities.Activity;
 
-import dInternal.dOptimization.DxEvent;
+import dInternal.dOptimization.EventDx;
 
 import org.apache.log4j.Logger;
 
@@ -260,7 +260,7 @@ public class SelectiveScheduleManager {
 	private void initializeRelationTesters() {
 		_tupleToRelationTester = new HashMap();
 
-		_tupleToRelationTester.put(new Tuple(new Class[] { DxEvent.class,
+		_tupleToRelationTester.put(new Tuple(new Class[] { EventDx.class,
 				Activity.class }), RelationTester_ActivityEvent.getInstance());
 	}
 

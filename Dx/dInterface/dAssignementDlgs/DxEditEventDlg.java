@@ -79,7 +79,7 @@ import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
-import dInternal.dOptimization.DxEvent;
+import dInternal.dOptimization.EventDx;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -311,7 +311,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JPanel hourPanel = buildHourPanel(i);
 
 		String max = "limite: ";
-		DxEvent event = (DxEvent) ((DResource) _events.get(i))
+		EventDx event = (EventDx) ((DResource) _events.get(i))
 		.getAttach();
 
 		JLabel jlb = new JLabel(max + event.getCapacityLimit());
@@ -375,7 +375,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_dModel.getCurrentSite();
 		cbSites.setSelectedItem(_dModel.getCurrentSite());
 		DxSite dxsCurrentSite = (DxSite) cbSites.getSelectedItem();
-		DxEvent event = (DxEvent) ((DResource) _events
+		EventDx event = (EventDx) ((DResource) _events
 				.get(index)).getAttach();
 		DefaultComboBoxModel dcbmCategories = new DefaultComboBoxModel(dxsCurrentSite
 				.getSetOfCat().getCatsSortedByName());
@@ -547,7 +547,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 //	} // end getSelectedCategory
 
 	private JPanel buildFixingPanel(int index) {
-		DxEvent event = (DxEvent) ((DResource) _events.get(index))
+		EventDx event = (EventDx) ((DResource) _events.get(index))
 				.getAttach();
 		JPanel myPanel = new JPanel();
 		JPanel fixingPanel = new JPanel();
@@ -619,7 +619,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		dayPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_DAY_NAME));
 		dayPanel.add(dayCB);
-		DxEvent event = (DxEvent) ((DResource) _events
+		EventDx event = (EventDx) ((DResource) _events
 				.get(i)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
@@ -661,7 +661,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		hourPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.R_ACTIVITY_BEGIN_HOUR));
 		hourPanel.add(hourCB);
-		DxEvent event = (DxEvent) ((DResource) _events
+		EventDx event = (EventDx) ((DResource) _events
 				.get(i)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
@@ -834,7 +834,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private String buildDuration(int i) {
 //		EventAttach event = (EventAttach) ((DResource) _events
 //				.get(_tabbedPane.getSelectedIndex())).getAttach();
-		DxEvent event = (DxEvent) ((DResource) _events
+		EventDx event = (EventDx) ((DResource) _events
 				.get(i)).getAttach();
 		int duration = event.getDuration()
 				/ _dModel.getTTStructure().getPeriodLenght();
@@ -849,7 +849,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector<String> buildHourList(int ii) {
 		Vector <String>list =  new Vector<String>();
-		DxEvent event = (DxEvent) ((DResource) _events
+		EventDx event = (EventDx) ((DResource) _events
 				.get(ii)).getAttach();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
@@ -969,7 +969,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private Vector buildCurrentInstructorList(int index) {
 		Vector<String> v = new Vector<String>();
 
-		DxEvent event = (DxEvent) ((DResource) _events.get(index))
+		EventDx event = (EventDx) ((DResource) _events.get(index))
 				.getAttach();
 		DxSetOfInstructors soi = _dModel.getDxSetOfInstructors();
 		long keys[] = event.getInstructorKey();
@@ -1096,7 +1096,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private boolean applyChanges() {
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
-		DxEvent event = (DxEvent) ((DResource) _events
+		EventDx event = (EventDx) ((DResource) _events
 				.get(_tabbedPane.getSelectedIndex())).getAttach();
 		_dModel.getConditionsTest().removeEventInTTs(_dModel.getTTStructure(),
 				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);

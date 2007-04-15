@@ -733,7 +733,7 @@ public class SetOfActivities extends DSetOfResources {
 							String str = ass.getRoomName();
 							Vector <String> v = sites.getNamesVector();
 							if (v.indexOf(str)!= -1) 
-								;
+								str +="";
 							
 //								System.out.println("room Name "+ str );
 //						System.out.println("room Name "+ str );

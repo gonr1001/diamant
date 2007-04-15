@@ -1,6 +1,6 @@
 /**
  *
- * Title: FirstAffectAlgorithm $Revision: 1.27 $  $Date: 2007-04-13 22:47:38 $
+ * Title: FirstAffectAlgorithm $Revision: 1.28 $  $Date: 2007-04-15 19:04:38 $
  * Description: FirstAffectAlgorithm is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -78,8 +78,8 @@ public class FirstAffectAlgorithm implements Algorithm {
 			 * while(((EventAttach)currentEvent.getAttach()).getAssignState())
 			 * currentEvent= (Resource)vectorOfEvents.remove(0);
 			 */
-			if (!((DxEvent) currentEvent.getAttach()).isAssigned()) {
-				currentDuration = ((DxEvent) currentEvent.getAttach())
+			if (!((EventDx) currentEvent.getAttach()).isAssigned()) {
+				currentDuration = ((EventDx) currentEvent.getAttach())
 						.getDuration()
 						/ _dm.getTTStructure().getPeriodLenght();
 				periodList = buildSortContiguousPeriodVector(currentDuration,
@@ -91,18 +91,18 @@ public class FirstAffectAlgorithm implements Algorithm {
 					int[] dayTime = { value.getIntValue(),
 							currentPeriod.getBeginHour()[0],
 							currentPeriod.getBeginHour()[1] };
-					((DxEvent) currentEvent.getAttach()).setKey(4, _dm
+					((EventDx) currentEvent.getAttach()).setKey(4, _dm
 							.getTTStructure().getCurrentCycle().getPeriod(
 									dayTime));
-					((DxEvent) currentEvent.getAttach()).setAssigned(true);
+					((EventDx) currentEvent.getAttach()).setAssigned(true);
 					nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
 							_dm.getTTStructure(), currentEvent, true);
 					isNumberOfConflictsAccept = isConflictsAcceptable(nbConf);
-					((DxEvent) currentEvent.getAttach()).setAssigned(false);
+					((EventDx) currentEvent.getAttach()).setAssigned(false);
 					if ((isNumberOfConflictsAccept)
-							&& ((DxEvent) currentEvent.getAttach())
+							&& ((EventDx) currentEvent.getAttach())
 									.getDuration() != 0) {
-						((DxEvent) currentEvent.getAttach())
+						((EventDx) currentEvent.getAttach())
 								.setAssigned(true);
 						_dm.getConditionsTest().addEventInTTs(
 								_dm.getTTStructure(), currentEvent, true);

@@ -91,15 +91,7 @@ public class DxAssignement extends DxResource {
         DxAssignement dxaOther = null;
         try {
             dxaOther = (DxAssignement) dxrOther;
-        } catch (ClassCastException e) {
-            // Message intended for programmers, application
-            // can't continue after this error
-            System.out
-                    .println("isEqual in DxAssignement was called with a Resource "
-                            + "that could not be converted into an Assignement:");
-            e.printStackTrace();
-            System.exit(-1);
-        }
+ 
 
         if (!this._dxsoiInstructors.isEqual(dxaOther._dxsoiInstructors)) {
             return false;
@@ -113,7 +105,15 @@ public class DxAssignement extends DxResource {
         if (!this._sPeriodKey.equalsIgnoreCase(dxaOther._sPeriodKey)) {
             return false;
         }
-
+        } catch (ClassCastException e) {
+            // Message intended for programmers, application
+            // can't continue after this error
+            System.out
+                    .println("isEqual in DxAssignement was called with a Resource "
+                            + "that could not be converted into an Assignement:");
+            e.printStackTrace();
+            System.exit(-1);
+        }
         return true;
     }
 

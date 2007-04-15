@@ -15,11 +15,9 @@ import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DObject;
-import dInternal.dData.dActivities.Assignment;
-import dInternal.dData.dActivities.Unity;
 import dInternal.dUtil.DXToolsMethods;
 
-public class DxEvent extends DObject {
+public class EventDx extends DObject {
 
 	/**
 	 * _principalRescKey is the composition of activity, type, section and unity
@@ -29,15 +27,11 @@ public class DxEvent extends DObject {
 
 	private String _fullName;
 
-	private int _eventDuration; //in periods lingth
+	private int _eventDuration;
 
 	// private long _instructorRescKey; // the instructor key
 	/** instructor key */
 	private DSetOfResources _setInstructorKeys;
-	
-	private DResource _unity;
-	
-	private Assignment _assignment;
 
 	private long _roomRescKey; // the room key
 
@@ -49,6 +43,12 @@ public class DxEvent extends DObject {
 
 	private int _roomFunction; // the prefered function for the event
 
+	// the student reference will be found in the conflicts matrix
+
+	/**
+	 * @associates String
+	 */
+	// private Vector <String> _tabuList; //
 	private boolean _isAssigned = false;// tell if this event is placed in the
 
 	// timetable
@@ -67,6 +67,7 @@ public class DxEvent extends DObject {
 	// is in a.b.c format where a = day, b= sequence, c = period
 	private boolean _isPlaceInAPeriod = false;
 
+
 	/**
 	 * Constructor
 	 * 
@@ -74,25 +75,19 @@ public class DxEvent extends DObject {
 	 * @param key1
 	 * @param key2
 	 */
-	public DxEvent(String princKey, DSetOfResources inst, long key, DResource unity,
-			Assignment assignment, int cLimit) {
+	public EventDx(String princKey, DSetOfResources inst, long key,
+			int eventDuration, String eventPeriod, int cLimit) {
 		_fullName = "name";
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
 		_roomRescKey = key;
-		_unity = unity;
-		_eventDuration = ((Unity)_unity.getAttach()).getDuration();
-		((Unity) _unity.getAttach()).isAssign();
-		((Unity) _unity.getAttach()).isPermanent();
-		setRoomFixed(assignment.getRoomState());
-		setRoomFunction(((Unity) _unity
-				.getAttach())
-				.getFirstPreferFunctionRoom());
-		_assignment = assignment;
-		_ttsKey = assignment.getPeriodKey();
+		_eventDuration = eventDuration;
+		_ttsKey = eventPeriod;
 		_cLimit = cLimit;
 	}
 	
+
+
 	public String getPrincipalRescKey() {
 		return _principalRescKey;
 	}
@@ -280,9 +275,9 @@ public class DxEvent extends DObject {
 		}
 	}
 
-	public DxEvent cloneEvent() {
-		DxEvent eA = new DxEvent(_principalRescKey, _setInstructorKeys, _roomRescKey,
-				_unity, _assignment, _cLimit);
+	public EventDx cloneEvent() {
+		EventDx eA = new EventDx(_principalRescKey, _setInstructorKeys,
+				_roomRescKey, _eventDuration, _ttsKey, _cLimit);
 		return eA;
 	}
 
@@ -310,5 +305,4 @@ public class DxEvent extends DObject {
 	public long getCapacityLimit() {
 		return _cLimit;
 	}
-
 }

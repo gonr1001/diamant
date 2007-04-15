@@ -84,8 +84,8 @@ public class DxAssignAllAlg implements Algorithm {
 			 * while(((EventAttach)currentEvent.getAttach()).getAssignState())
 			 * currentEvent= (Resource)vectorOfEvents.remove(0);
 			 */
-			if (!((DxEvent) currentEvent.getAttach()).isAssigned()) {
-				currentDuration = ((DxEvent) currentEvent.getAttach())
+			if (!((EventDx) currentEvent.getAttach()).isAssigned()) {
+				currentDuration = ((EventDx) currentEvent.getAttach())
 						.getDuration()
 						/ _dm.getTTStructure().getPeriodLenght();
 				vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
@@ -97,18 +97,18 @@ public class DxAssignAllAlg implements Algorithm {
 					int[] dayTime = { value.getIntValue(),
 							currentPeriod.getBeginHour()[0],
 							currentPeriod.getBeginHour()[1] };
-					((DxEvent) currentEvent.getAttach()).setKey(4, _dm
+					((EventDx) currentEvent.getAttach()).setKey(4, _dm
 							.getTTStructure().getCurrentCycle().getPeriod(
 									dayTime));
-					((DxEvent) currentEvent.getAttach()).setAssigned(true);
+					((EventDx) currentEvent.getAttach()).setAssigned(true);
 					nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
 							_dm.getTTStructure(), currentEvent, true);
 					isNumberOfConflictsAcceptable = isConflictsAcceptable(nbConf);
-					((DxEvent) currentEvent.getAttach()).setAssigned(false);
+					((EventDx) currentEvent.getAttach()).setAssigned(false);
 					if ((isNumberOfConflictsAcceptable)
-							&& ((DxEvent) currentEvent.getAttach())
+							&& ((EventDx) currentEvent.getAttach())
 									.getDuration() != 0) {
-						((DxEvent) currentEvent.getAttach())
+						((EventDx) currentEvent.getAttach())
 								.setAssigned(true);
 						_dm.getConditionsTest().addEventInTTs(
 								_dm.getTTStructure(), currentEvent, true);
