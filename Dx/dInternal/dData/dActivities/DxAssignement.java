@@ -191,8 +191,7 @@ public class DxAssignement extends DxResource {
     }
 
 	public void setSetOfInstructors(DxSetOfInstructors dxsoiInstructors) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("TODO " + dxsoiInstructors.toWrite()); // TODO 		
 	}
 
 	public String getRoomName() {

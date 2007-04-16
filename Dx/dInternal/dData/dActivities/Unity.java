@@ -43,12 +43,6 @@ public class Unity extends DObject {
 	/**prefer function rooms of this bloc*/
 	private DSetOfResources _preferFunctionSetOfRooms;
 
-//	/**activities that must be placed before this bloc*/
-//	private DSetOfResources _activitiesBefore;
-//
-//	/**activities that must be placed after this bloc*/
-//	private DSetOfResources _activitiesAfter;
-
 	/**all cycles where bloc is assigned*/
 	private DSetOfResources _setOfAssignments;
 
@@ -59,8 +53,6 @@ public class Unity extends DObject {
 	 * */
 	public Unity() {
 		_preferFunctionSetOfRooms = new StandardCollection();
-//		_activitiesBefore = new StandardCollection();
-//		_activitiesAfter = new StandardCollection();
 		_setOfAssignments = new StandardCollection();
 	}
 
@@ -116,24 +108,6 @@ public class Unity extends DObject {
 		_permanent = permanent;
 	}
 
-//	/**
-//	 * set prefer sequence
-//	 * *-1= no prefer sequence; 0= AM; 1=PM; 2= evening
-//	 * @param int the prefer sequence
-//	 * */
-//	public void setPreferSequence(int prefer) {
-//		_preferSequence = prefer;
-//	}
-
-//	/**
-//	 * add a cycle for period assignment
-//	 * @param String the cycle ID
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean addAssignment(String cycle) {
-//		return _setOfAssignments.addResource(
-//				new DResource(cycle, new DValue()), 1);
-//	}
 
 	/**
 	 * get a cycle for period assignment
@@ -161,25 +135,6 @@ public class Unity extends DObject {
 		return _setOfAssignments.addResource(cycleAss, 1);
 	}
 
-//	/**
-//	 * add activity in activity before list
-//	 * @param String the activity name
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean addActivityBefore(String activityName) {
-//		return _activitiesBefore.addResource(new DResource(activityName,
-//				new DValue()), 1);
-//	}
-
-//	/**
-//	 * add activity in activity after list
-//	 * @param String the activity name
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean addActivityAfter(String activityName) {
-//		return _activitiesAfter.addResource(new DResource(activityName,
-//				new DValue()), 1);
-//	}
 
 	/**
 	 * add activity prefer function room
@@ -234,32 +189,6 @@ public class Unity extends DObject {
 		_preferFunctionSetOfRooms = preferFuncList;
 	}
 
-//	/**
-//	 * remove activity in activity before list
-//	 * @param String the activity name
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean removeActivityBefore(String activityName) {
-//		return _activitiesBefore.removeResource(activityName);
-//	}
-//
-//	/**
-//	 * remove activity in activity after list
-//	 * @param String the activity name
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean removeActivityAfter(String activityName) {
-//		return _activitiesAfter.removeResource(activityName);
-//	}
-
-//	/**
-//	 * remove activity prefer function room
-//	 * @param String the room function
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean removePreferFunctionRoom(String activityName) {
-//		return _preferFunctionSetOfRooms.removeResource(activityName);
-//	}
 
 	/**
 	 * remove a cycle from a bloc
@@ -387,6 +316,7 @@ public class Unity extends DObject {
 		this.setDuration(event.getDuration());
 		this.setFirstPreferFunctionRoom(event.getRoomFunction());
 	}
+	
 	public void updateWith(DxEvent event) {
 		this.setAssign(event.isAssigned());
 		this.setPermanent(event.getPermanentState());

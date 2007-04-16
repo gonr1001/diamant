@@ -125,7 +125,7 @@ public class SetOfEvents extends DSetOfResources {
 								roomKey, ((Unity) unity.getAttach())
 										.getDuration(), assignment
 										.getPeriodKey(), cLimit);
-								// event.update()
+
 								event.setAssigned(((Unity) unity.getAttach())
 										.isAssign());
 								event.setPermanentState(((Unity) unity
@@ -296,10 +296,6 @@ public class SetOfEvents extends DSetOfResources {
 				assignment.setPeriodKey(event.getPeriodKey());
 
 				unit.updateWith(event);
-				// unit.setAssign(event.isAssigned());
-				// unit.setPermanent(event.getPermanentState());
-				// unit.setDuration(event.getDuration());
-				// unit.setFirstPreferFunctionRoom(event.getRoomFunction());
 				assignment.setRoomState(event.isRoomFixed());
 
 			}// end for (int i=0; i< eventsToUpdate.size(); i++)
@@ -341,59 +337,11 @@ public class SetOfEvents extends DSetOfResources {
 				assignment.setPeriodKey(event.getPeriodKey());
 
 				unit.updateWith(event);
-				// unit.setAssign(event.isAssigned());
-				// unit.setPermanent(event.getPermanentState());
-				// unit.setDuration(event.getDuration());
-				// unit.setFirstPreferFunctionRoom(event.getRoomFunction());
 				assignment.setRoomState(event.isRoomFixed());
 
 			}// end for (int i=0; i< eventsToUpdate.size(); i++)
 		}
 		
-//		EventDx event;
-//		for (int i = 0; i < eventsToUpdate.size(); i++) {
-//			event = (EventDx) ((DResource) eventsToUpdate.get(i))
-//					.getAttach();
-//
-//			long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
-//					event.getPrincipalRescKey(), ".", 0));
-//			long typeKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
-//					event.getPrincipalRescKey(), ".", 1));
-//			long sectKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
-//					event.getPrincipalRescKey(), ".", 2));
-//			long unitKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
-//					event.getPrincipalRescKey(), ".", 3));
-//
-//			Unity unit = soa.getUnity(actKey, typeKey, sectKey, unitKey);
-//			Assignment assignment = (Assignment) unit.getSetOfAssignments()
-//					.getResourceAt(_dm.getTTStructure().getCurrentCycleIndex())
-//					.getAttach();
-//			long[] keys = event.getInstructorKey();
-//
-//			assignment.emptyInstructorNames();
-//
-//			for (int j = 0; j < keys.length; j++) {
-//				assignment.addInstructorName(getDxInstName(_dm
-//						.getDxSetOfInstructors(), keys[j]));
-//			}// end for
-//
-//			if (DxFlags.newRooms) {
-//				assignment.setRoomName(_dm.getDxSetOfSites().getAllDxRooms().getRoomName(event
-//						.getRoomKey()));
-//			} else {
-//				assignment.setRoomName(getRoomName(_dm.getSetOfRooms(), event
-//						.getRoomKey()));
-//			}
-//			assignment.setPeriodKey(event.getPeriodKey());
-//
-//			unit.updateWith(event);
-//			// unit.setAssign(event.isAssigned());
-//			// unit.setPermanent(event.getPermanentState());
-//			// unit.setDuration(event.getDuration());
-//			// unit.setFirstPreferFunctionRoom(event.getRoomFunction());
-//			assignment.setRoomState(event.isRoomFixed());
-//
-//		}// end for (int i=0; i< eventsToUpdate.size(); i++)
 
 	}
 
@@ -404,45 +352,8 @@ public class SetOfEvents extends DSetOfResources {
 		return DConst.NO_ROOM_INTERNAL;
 	}
 
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-	/*
-	 * private String getRescName(DSetOfResources sor, long eltkey){ if
-	 * (eltkey!=-1){ return sor.getResource(eltkey).getID(); } return
-	 * DConst.NO_ROOM_INTERNAL; }
-	 */
 
-	// /**
-	// * get a resource key
-	// *
-	// * @param soresc
-	// * @param elt
-	// * @return the resource key or -1 if key does not found
-	// */
-	// private long getNewInstName(DxSetOfInstructors sor, int eltkey) {
-	// if (eltkey != -1) {
-	// return sor.getInstructorKey(eltkey);
-	// }
-	// return 0;
-	// }
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-//	private String getRoomName(SetOfRooms sor, long eltkey) {
-//		if (eltkey != -1) {
-//			return sor.getResource(eltkey).getID();
-//		}
-//		return DConst.NO_ROOM_INTERNAL;
-//	}
+
 	private String getRoomName(SetOfRooms sor, long eltkey) {
 		if (eltkey != -1) {
 			return sor.getResource(eltkey).getID();
@@ -451,33 +362,6 @@ public class SetOfEvents extends DSetOfResources {
 	}
 
 	
-//	/**
-//	 * get a resource key
-//	 * 
-//	 * @param soresc
-//	 * @param elt
-//	 * @return the resource key or -1 if key does not found
-//	 */
-//	private String getDxRoomName(DxSetOfRooms sor, long eltkey) {
-//		if (eltkey != -1) {
-//			return sor.getResourceName(eltkey);
-//		}
-//		return DConst.NO_ROOM_INTERNAL;
-//	}
-//	/**
-//	 * get a resource key
-//	 * 
-//	 * @param soresc
-//	 * @param elt
-//	 * @return the resource key or -1 if key does not found
-//	 */
-//	private String getDxRoomName(DxSetOfSites sos, long eltkey) {
-//		if (eltkey != -1) {
-//			return sos.getResourceName(eltkey);
-//		}
-//		return DConst.NO_ROOM_INTERNAL;
-//	}
-
 	/**
 	 * for two event in conflict
 	 * 

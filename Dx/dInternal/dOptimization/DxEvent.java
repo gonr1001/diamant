@@ -29,8 +29,6 @@ public class DxEvent extends DObject {
 
 	private String _fullName;
 
-	private int _eventDuration; //in periods lingth
-
 	private DSetOfResources _setInstructorKeys;
 
 	private DResource _unity;
@@ -39,17 +37,14 @@ public class DxEvent extends DObject {
 
 	private long _roomRescKey; // the room key
 
-	private boolean _roomFixed;/*
+//	private boolean _roomFixed;
+	/*
 	 * the state of the event in the room true if
 	 * event is fixed in the room and false
 	 * otherwise
 	 */
 
 	private int _roomFunction; // the prefered function for the event
-
-	private boolean _isAssigned;// tell if this event is placed in the
-
-	private boolean _isPermanent;// tell if this event is permanent in
 
 	private String _ttsKey;// give the key of the period where event is
 
@@ -69,18 +64,14 @@ public class DxEvent extends DObject {
 		_fullName = "name";
 		_ttsKey = "";
 		_isPlaceInAPeriod = false;
-		_isAssigned = false;
-		_isPermanent = false;
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
 		_roomRescKey = key;
 		_unity = unity;
-		_eventDuration = ((Unity) _unity.getAttach()).getDuration();
-		setAssigned(((Unity) _unity.getAttach()).isAssign());
-		setPermanentState(((Unity) _unity.getAttach()).isPermanent());
-		setRoomFixed(assignment.getRoomState());
+
 		setRoomFunction(((Unity) _unity.getAttach())
 				.getFirstPreferFunctionRoom());
+		
 		_assignment = assignment;
 		_ttsKey = assignment.getPeriodKey();
 		_cLimit = cLimit;
@@ -140,7 +131,7 @@ public class DxEvent extends DObject {
 	 * @return
 	 */
 	public int getDuration() {
-		return _eventDuration;
+		return ((Unity) _unity.getAttach()).getDuration();
 	}
 
 	/**
@@ -148,56 +139,24 @@ public class DxEvent extends DObject {
 	 * @return
 	 */
 	public void setDuration(int duration) {
-		_eventDuration = duration;
+		((Unity) _unity.getAttach()).setDuration(duration);
 	}
 
-	// /**
-	// * Tests if the specified string is a component in the tabulist vector.
-	// * @param princKey
-	// * @return
-	// */
-	// public boolean isInTabuList(String princKey) {
-	// return _tabuList.contains(princKey);
-	// }
-
-	// /**
-	// * Removes the first occurrence of the specified element in the tabulist
-	// vector If
-	// * it does not contain the element, it is unchanged.
-	// * @param princKey
-	// * @return
-	// */
-	// public boolean removeFromTabuList(String princKey) {
-	// return _tabuList.remove(princKey);
-	// }
-
-	// /**
-	// * Adds the specified element to the end of the tabulist vector or let it
-	// unchanged
-	// * if the element already exist in the vector
-	// * @param princKey
-	// * @return
-	// */
-	// public boolean addToTabuList(String princKey) {
-	// if (_tabuList.contains(princKey))
-	// return _tabuList.add(princKey);
-	// return false;
-	// }
 
 	public void setAssigned(boolean state) {
-		_isAssigned = state;
+		((Unity) _unity.getAttach()).setAssign(state);
 	}
 
 	public boolean isAssigned() {
-		return _isAssigned;
+		return (((Unity) _unity.getAttach()).isAssign());
 	}
 
 	public void setRoomFixed(boolean state) {
-		_roomFixed = state;
+		_assignment.setRoomState(state);
 	}
 
 	public boolean isRoomFixed() {
-		return _roomFixed;
+		return _assignment.getRoomState();
 	}
 
 	public void setRoomFunction(int function) {
@@ -231,11 +190,11 @@ public class DxEvent extends DObject {
 	}
 
 	public void setPermanentState(boolean state) {
-		_isPermanent = state;
+		((Unity) _unity.getAttach()).setPermanent(state);
 	}
 
 	public boolean getPermanentState() {
-		return _isPermanent;
+		return ((Unity) _unity.getAttach()).isPermanent();
 	}
 
 	/**
@@ -265,7 +224,7 @@ public class DxEvent extends DObject {
 			_roomRescKey = Long.parseLong(value);
 			break;
 		case 3:
-			_eventDuration = Integer.parseInt(value);
+			setDuration(Integer.parseInt(value));
 			break;
 		case 4:
 			_ttsKey = value;
@@ -294,9 +253,9 @@ public class DxEvent extends DObject {
 	 */
 	public void setState(String state) {
 		if (state.equalsIgnoreCase(DConst.FIXED_ROOM_STATE))
-			_roomFixed = true;
+			_assignment.setRoomState(true);
 		else
-			_roomFixed = false;
+			_assignment.setRoomState(false);
 
 	}
 
