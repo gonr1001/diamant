@@ -37,13 +37,6 @@ public class DxEvent extends DObject {
 
 	private long _roomRescKey; // the room key
 
-//	private boolean _roomFixed;
-	/*
-	 * the state of the event in the room true if
-	 * event is fixed in the room and false
-	 * otherwise
-	 */
-
 	private int _roomFunction; // the prefered function for the event
 
 	private String _ttsKey;// give the key of the period where event is
@@ -93,17 +86,10 @@ public class DxEvent extends DObject {
 		return keys;
 	}
 
-	/*
-	 * public void setInstructorKey(long key){ _instructorRescKey= key; }
-	 */
-
 	public long getRoomKey() {
 		return _roomRescKey;
 	}
 
-	/*
-	 * public void setRoomKey(long key){ _roomRescKey= key; }
-	 */
 
 	/**
 	 * 
@@ -151,9 +137,6 @@ public class DxEvent extends DObject {
 		return (((Unity) _unity.getAttach()).isAssign());
 	}
 
-	public void setRoomFixed(boolean state) {
-		_assignment.setRoomState(state);
-	}
 
 	public boolean isRoomFixed() {
 		return _assignment.getRoomState();
@@ -163,9 +146,6 @@ public class DxEvent extends DObject {
 		_roomFunction = function;
 	}
 
-	public void setRoomKey(int roomKey) {
-		_roomRescKey = roomKey;
-	}
 
 	public int getRoomFunction() {
 		return _roomFunction;

@@ -33,7 +33,6 @@ public class Assignment extends DObject {
 	/** instructor key */
 	private DSetOfResources _setInstructorKeys;
 
-	// long _instructorKey = -1;
 	/** room valid only for initialization */
 	private String _roomName;
 
@@ -110,16 +109,6 @@ public class Assignment extends DObject {
 		_setInstructorKeys.setCurrentKey(instructor);
 		_setInstructorKeys.addResource(new DResource(Long.toString(instructor),
 				null), 0);
-	}
-
-	/**
-	 * set the instructor key
-	 * 
-	 * @param long
-	 *            the instructor key
-	 */
-	public void removeInstructorKeys(long instructor) {
-		_setInstructorKeys.removeResource(instructor);
 	}
 
 	/**
@@ -255,14 +244,14 @@ public class Assignment extends DObject {
 		return _roomName;
 	}
 
-	/**
-	 * get room name of the bloc in this week
-	 * 
-	 * @return String the room name
-	 */
-	public String getTypeName() {
-		return _typeName;
-	}
+//	/**
+//	 * get room name of the bloc in this week
+//	 * 
+//	 * @return String the room name
+//	 */
+//	public String getTypeName() {
+//		return _typeName;
+//	}
 
 	// /**
 	// * get room key of the unit

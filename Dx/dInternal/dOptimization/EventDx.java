@@ -22,49 +22,29 @@ public class EventDx extends DObject {
 	/**
 	 * _principalRescKey is the composition of activity, type, section and unity
 	 * keys of an activity wich is represent in the following format a.b.c.d
-	 */
+	 */	// is in a.b.c format where a = day, b= sequence, c = period
 	private String _principalRescKey;
 
 	private String _fullName;
 
 	private int _eventDuration;
 
-	// private long _instructorRescKey; // the instructor key
-	/** instructor key */
 	private DSetOfResources _setInstructorKeys;
 
 	private long _roomRescKey; // the room key
 
-	private boolean _roomFixed;/*
-								 * the state of the event in the room true if
-								 * event is fixed in the room and false
-								 * otherwise
-								 */
+	private boolean _roomFixed;
 
 	private int _roomFunction; // the prefered function for the event
 
-	// the student reference will be found in the conflicts matrix
-
-	/**
-	 * @associates String
-	 */
-	// private Vector <String> _tabuList; //
 	private boolean _isAssigned = false;// tell if this event is placed in the
-
-	// timetable
 
 	private boolean isPermanent = false;// tell if this event is permanent in
 
-	// the timetable
-
 	private String _ttsKey = "";// give the key of the period where event is
 
-	// place
 	private int _cLimit;// give the key of the period where event is
 
-	// place
-
-	// is in a.b.c format where a = day, b= sequence, c = period
 	private boolean _isPlaceInAPeriod = false;
 
 
@@ -104,17 +84,10 @@ public class EventDx extends DObject {
 		return keys;
 	}
 
-	/*
-	 * public void setInstructorKey(long key){ _instructorRescKey= key; }
-	 */
-
 	public long getRoomKey() {
 		return _roomRescKey;
 	}
 
-	/*
-	 * public void setRoomKey(long key){ _roomRescKey= key; }
-	 */
 
 	/**
 	 * 
@@ -153,38 +126,6 @@ public class EventDx extends DObject {
 		_eventDuration = duration;
 	}
 
-	// /**
-	// * Tests if the specified string is a component in the tabulist vector.
-	// * @param princKey
-	// * @return
-	// */
-	// public boolean isInTabuList(String princKey) {
-	// return _tabuList.contains(princKey);
-	// }
-
-	// /**
-	// * Removes the first occurrence of the specified element in the tabulist
-	// vector If
-	// * it does not contain the element, it is unchanged.
-	// * @param princKey
-	// * @return
-	// */
-	// public boolean removeFromTabuList(String princKey) {
-	// return _tabuList.remove(princKey);
-	// }
-
-	// /**
-	// * Adds the specified element to the end of the tabulist vector or let it
-	// unchanged
-	// * if the element already exist in the vector
-	// * @param princKey
-	// * @return
-	// */
-	// public boolean addToTabuList(String princKey) {
-	// if (_tabuList.contains(princKey))
-	// return _tabuList.add(princKey);
-	// return false;
-	// }
 
 	public void setAssigned(boolean state) {
 		_isAssigned = state;

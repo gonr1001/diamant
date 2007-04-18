@@ -27,12 +27,12 @@ public class Unity extends DObject {
 	 */
 
 	/** duration of the bloc (in minutes)*/
-	private int _duration = 1;
+	private int _duration;
 
 	/** prefere sequence in a day
 	 *-1= no prefer sequence; 0= AM; 1=PM; 2= evening
 	 */
-	private int _preferSequence = -1;
+	private int _preferSequence;
 
 	/**if bloc is assigned in a period*/
 	private boolean _assign;
@@ -46,7 +46,7 @@ public class Unity extends DObject {
 	/**all cycles where bloc is assigned*/
 	private DSetOfResources _setOfAssignments;
 
-	private boolean _isCyclic = true;
+	private boolean _isCyclic;
 
 	/**
 	 * Constructor
@@ -54,6 +54,9 @@ public class Unity extends DObject {
 	public Unity() {
 		_preferFunctionSetOfRooms = new StandardCollection();
 		_setOfAssignments = new StandardCollection();
+		_duration = 1;// ???
+		_preferSequence = -1; // ???
+		_isCyclic = true; // ???
 	}
 
 	/**
@@ -80,9 +83,9 @@ public class Unity extends DObject {
 		_assign = assign;
 	}
 
-	public void setCyclic(boolean cyclic) {
-		_isCyclic = cyclic;
-	}
+//	public void setCyclic(boolean cyclic) {
+//		_isCyclic = cyclic;
+//	}
 
 	/**
 	 * get fixed state of the bloc
@@ -180,24 +183,24 @@ public class Unity extends DObject {
 			this.addPreferFunctionRoom(func);
 	}
 
-	/**
-	 * set activity prefer function room
-	 * @param String the room function
-	 * @return boolean the operation result
-	 * */
-	public void setPreferFunctionRoom(DSetOfResources preferFuncList) {
-		_preferFunctionSetOfRooms = preferFuncList;
-	}
+//	/**
+//	 * set activity prefer function room
+//	 * @param String the room function
+//	 * @return boolean the operation result
+//	 * */
+//	public void setPreferFunctionRoom(DSetOfResources preferFuncList) {
+//		_preferFunctionSetOfRooms = preferFuncList;
+//	}
 
 
-	/**
-	 * remove a cycle from a bloc
-	 * @param String the cycle ID
-	 * @return boolean the operation result
-	 * */
-	public boolean removeCycleAssignment(String cycle) {
-		return _setOfAssignments.removeResource(cycle);
-	}
+//	/**
+//	 * remove a cycle from a bloc
+//	 * @param String the cycle ID
+//	 * @return boolean the operation result
+//	 * */
+//	public boolean removeCycleAssignment(String cycle) {
+//		return _setOfAssignments.removeResource(cycle);
+//	}
 
 	/**
 	 *This object (which is already a string!) is itself returned.
