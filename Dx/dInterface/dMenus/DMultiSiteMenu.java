@@ -76,7 +76,7 @@ public class DMultiSiteMenu extends JMenu implements MenuStates {
 			for (int i = 0; i < v.size(); i++) {
 				JCheckBoxMenuItem rbMenuItem = new JCheckBoxMenuItem((String) v
 						.get(i));
-				if (_dApplication.getCurrentDModel().getCurrentSite()
+				if (_dApplication.getCurrentDModel().getCurrentSiteName()
 						.equalsIgnoreCase((String) v.get(i)))
 					rbMenuItem.setSelected(true);
 				else

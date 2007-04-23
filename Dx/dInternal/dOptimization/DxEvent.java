@@ -90,7 +90,16 @@ public class DxEvent extends DObject {
 		return _roomRescKey;
 	}
 
+	public String getRoomName() {
+		return _assignment.getRoomName();
+	}
 
+	public String getCatName() {
+		if (false) {//_assignment.getRoomName()isInNames()){
+			;//lookForCat();// return cat
+		}
+		return "Classe";
+	}
 	/**
 	 * 
 	 * @return

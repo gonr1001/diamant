@@ -20,6 +20,7 @@
 package dInternal.dData.dRooms;
 
 import java.util.Iterator;
+import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
@@ -154,4 +155,15 @@ public class DxSetOfRooms extends DxSetOfResources {
         }
         return sbReturn.toString();
     }
+
+	public Vector<String> getRoomsNameSorted() {
+		Vector <DxResource> vr = getNameSortedRessources();
+		Vector<String> v = new Vector<String>();
+		
+		for (int i = 0; i < vr.size(); i++) {
+			DxResource r = vr.get(i);
+			v.add(r.getName());
+		}
+		return v; 
+	}
 }

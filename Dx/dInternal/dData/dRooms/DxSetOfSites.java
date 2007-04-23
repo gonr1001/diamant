@@ -17,6 +17,7 @@
 package dInternal.dData.dRooms;
 
 import java.util.Iterator;
+import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.dData.DxAvailability;
@@ -349,6 +350,17 @@ public class DxSetOfSites extends DxSetOfResources {
 		return this.getNameSortedRessources().toArray(new DxSite[this.size()]);
 	}
 
+	public Vector<String> getSitesNamesSorted() {
+		Vector <DxResource> vr = getNameSortedRessources();
+		Vector<String> v = new Vector<String>();
+		
+		for (int i = 0; i < vr.size(); i++) {
+			DxResource r = vr.get(i);
+			v.add(this.getSiteName(r.getKey()));
+		}
+		return v; 
+	}
+
 	//    public boolean isEquals(DxSetOfSites dxsosSetOfSites) {
 	//        if (!super.isEqual(dxsosSetOfSites)) {
 	//            return false;
@@ -440,10 +452,9 @@ public class DxSetOfSites extends DxSetOfResources {
 					dxsorAllRooms.addRoom((DxRoom) itRooms.next());
 				}
 			}
-			
+
 		}
 		return dxsorAllRooms;
 	} //end getAllDxRooms
-	
-	
+
 }

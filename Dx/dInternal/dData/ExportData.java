@@ -74,7 +74,7 @@ public class ExportData {
   private StringBuffer getStandardRepStr(int [] table, int type){
   	StringBuffer strBuf= new StringBuffer("");
  	if(_dm.isMultiSite()){
- 		String currentS = _dm.getCurrentSite();
+ 		String currentS = _dm.getCurrentSiteName();
  		Vector sites =  _dm.getSites();
  		for(int i = 0; i < sites.size(); i++){
  			if(!DConst.ALL_SITES.equalsIgnoreCase(sites.get(i).toString())){

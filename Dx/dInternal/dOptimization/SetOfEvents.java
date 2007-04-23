@@ -528,7 +528,7 @@ public class SetOfEvents extends DSetOfResources {
 	public void setAssignedInstAvail() {
 		EventDx event;
 		long instKey[];
-		String currentSite = _dm.getCurrentSite();
+		String currentSite = _dm.getCurrentSiteName();
 		_dm.getDxSetOfInstructors().remAllAssignedToASite(currentSite);
 		for (int i = 0; i < this.size(); i++) {
 			event = (EventDx) this.getResourceAt(i).getAttach();

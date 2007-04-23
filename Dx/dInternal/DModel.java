@@ -986,7 +986,7 @@ public class DModel extends Observable {
 		DApplication.getInstance().setCursorDefault();
 	}
 
-	public String getCurrentSite() {
+	public String getCurrentSiteName() {
 		return _currentSite;
 	}
 

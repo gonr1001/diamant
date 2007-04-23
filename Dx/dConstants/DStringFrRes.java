@@ -292,6 +292,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 			{ "SortByMatricul", "Par matricule" },
 			{ "SortByName", "Par nom" },
 			{ "SortByProgram", "Par programme" },
+			{ "limit", "Limite :" },
 			{ "InfoDlgName", "Operation interdite" },
 			{ "InfoDlgMes", "Appliquer ou fermer pour continuer" },
 

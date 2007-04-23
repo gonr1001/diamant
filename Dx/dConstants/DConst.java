@@ -538,7 +538,7 @@ public class DConst {
 
   public final static String SAVE_SEPARATOR = res.getString("saveSeparator"); //"=================================";
   public final static String SAVE_SEPARATOR_VIS = "!!!!!!!!!!"; //"!!!!!!!!!!";
-
+  public static final String LIMIT = res.getString("limit"); // "limite :";;
   public final static String ERROR_XML =res.getString("errorXML"); // "XML file is corrupted";
   
   public static final int BEGIN_STUDENT_MATRICULE=0;
@@ -655,6 +655,8 @@ public static final String INVALID_NAME_OF_THE_INSTRUCTOR = "Name of instructor 
 public static final String WRONG_TIME_TABLE_STRUCTURE = "Wrong time table structure!";
 
 public static final String ACT_CB_SITE = "actionJCBSite";
+
+
 
 
   
