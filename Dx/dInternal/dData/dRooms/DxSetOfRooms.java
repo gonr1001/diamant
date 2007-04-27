@@ -166,4 +166,14 @@ public class DxSetOfRooms extends DxSetOfResources {
 		}
 		return v; 
 	}
+
+	public boolean contains(String roomName) {
+		Vector <String> v = this.getRoomsNameSorted();
+			for (int i = 0; i < v.size(); i++) {
+				if (v.get(i).equalsIgnoreCase(roomName)){
+					return true;
+				}
+			}
+		return false;
+	}
 }

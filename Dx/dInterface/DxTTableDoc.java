@@ -177,15 +177,6 @@ public class DxTTableDoc extends DxDocument {
 		return _dm.getModified();
 	} // end getDModel
 
-//	@Override
-//	public void saveTTStrucure(String str) {
-//		// TODO Auto-generated method stub
-//
-//	}
-
-//	public String getTTtype() {
-//		return _type;
-//	}
 
 	@Override
 	public void displaySimple() {

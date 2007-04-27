@@ -17,6 +17,7 @@ import dInternal.DSetOfResources;
 import dInternal.DObject;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Unity;
+import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
 
 public class DxEvent extends DObject {
@@ -94,12 +95,19 @@ public class DxEvent extends DObject {
 		return _assignment.getRoomName();
 	}
 
-	public String getCatName() {
-		if (false) {//_assignment.getRoomName()isInNames()){
-			;//lookForCat();// return cat
+	public String getCatName(DxSite dxsCurrentSite) {
+		if (dxsCurrentSite.isInCatName(_assignment.getRoomName())) {
+			_assignment.getRoomName(); // is a category
 		}
-		return "Classe";
+		return dxsCurrentSite.getCatNameOf(_assignment.getRoomName());
 	}
+	
+//	public String getCatName() {
+//		if (false) {
+//			_assignment.getRoomName(); // is a category
+//		}
+//		return "Classe";
+//	}
 	/**
 	 * 
 	 * @return

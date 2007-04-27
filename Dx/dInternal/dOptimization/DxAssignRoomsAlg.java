@@ -47,13 +47,11 @@ import dInternal.dUtil.DXToolsMethods;
  */
 public class DxAssignRoomsAlg implements Algorithm {
 
+	private final int NO_ROOM_ASSIGNED = -1;
+	
 	private DModel _dm;
 
-	private final int NO_ROOM_ASSIGNED = -1;
-
-//	DResource _allRscFunct;
-
-	DxConflictLimits _dxCL;
+	private DxConflictLimits _dxCL;
 
 	/**
 	 * 

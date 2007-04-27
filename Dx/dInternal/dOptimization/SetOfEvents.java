@@ -176,6 +176,11 @@ public class SetOfEvents extends DSetOfResources {
 
 	private long assignDxRooms(Assignment assignment,
 			String unityID, DSetOfResources soImportErrors) {
+		
+		/////////////////////////////
+		/////////////////////////////
+		//here
+		////////////////////////////
 		long roomKey = _dm.getDxSetOfRooms().getRoomKeyByName(
 				assignment.getRoomName());
 		if (roomKey == -1) {

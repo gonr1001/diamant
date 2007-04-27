@@ -183,8 +183,8 @@ public class DModel extends Observable {
 			_isOnlyATimeTable = true;
 		}
 		_type = type;
-		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-		_setOfRoomsFunctions.functionReader();
+//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+//		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
 
 	}
@@ -230,8 +230,8 @@ public class DModel extends Observable {
 		// _isOnlyATimeTable = true;
 		// }
 		// _type = type;
-		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-		_setOfRoomsFunctions.functionReader();
+//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+//		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
 
 	}

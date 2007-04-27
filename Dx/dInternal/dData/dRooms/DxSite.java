@@ -17,6 +17,7 @@
 package dInternal.dData.dRooms;
 
 import java.util.Iterator;
+import java.util.Vector;
 
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
@@ -200,4 +201,30 @@ public class DxSite extends DxResource {
 		}
 		return dxsorAllRooms;
 	}
+
+	public boolean isInCatName(String roomName) {
+		DxCategory []  a = _dxsocCat.getCatsSortedByName();
+		for(int i = 0; i < a.length; i ++)
+			if (a[i].getName().compareToIgnoreCase(roomName)==0){
+				return true;
+			}
+		return false;
+	}
+
+	public String getCatNameOf(String roomName) {
+		DxSetOfRooms dxsorAllRooms = null;
+		DxCategory dxcCurrentCat;
+		Iterator itCategories = _dxsocCat.iterator();
+		while(itCategories.hasNext()){
+			dxcCurrentCat = (DxCategory)itCategories.next();
+//			if(dxsorAllRooms == null){
+				dxsorAllRooms = dxcCurrentCat.getSetOfRooms();
+				if (dxsorAllRooms.contains(roomName)){
+					return dxcCurrentCat.getName();
+				}		
+//			}
+		}
+		return "*";
+	}
+
 }

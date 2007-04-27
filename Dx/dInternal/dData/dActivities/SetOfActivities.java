@@ -241,25 +241,18 @@ public class SetOfActivities extends DSetOfResources {
 					unityResource = section.getUnity(Integer.toString(counter));
 					Unity bloc = (Unity) unityResource.getAttach();
 					String room = stLine.nextToken().trim();
-					if(room.contains(";")) 
-							room = room.substring(0, room.indexOf(';'));
-
-
-					if (instLine.hasMoreElements())
+					if(room.contains(";")) {
+						room = room.substring(0, room.indexOf(';'));
+					}
+							
+					if (instLine.hasMoreElements()) {
 						inst = instLine.nextToken().trim();
+					}
+						
 					for (int i = 1; i <= _NUMBEROFCYCLES; i++) {
-//						if (DxFlags.newRooms) {
-//						if (){
-//							((Assignment) bloc.getAssignment(Integer.toString(i))
-//									.getAttach()).setTypeName(room);
-//						} else {
-//						((Assignment) bloc.getAssignment(Integer.toString(i))
-//								.getAttach()).setRoomName(room);
-//						}
-//						} else {
 							((Assignment) bloc.getAssignment(Integer.toString(i))
 									.getAttach()).setRoomName(room);
-//						}
+
 						((Assignment) bloc.getAssignment(Integer.toString(i))
 								.getAttach()).addInstructorName(inst);
 					}

@@ -53,7 +53,6 @@ public class Section extends DObject {
 	 */
 	public boolean addUnity(String id) {
 		Unity bloc = new Unity();
-		// Resource actBloc = new Resource(id,bloc);
 		return _blocList.addResource(new DResource(id, bloc), 1);
 	}
 
