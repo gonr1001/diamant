@@ -17,6 +17,7 @@ import dInternal.DSetOfResources;
 import dInternal.DObject;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Unity;
+import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -33,10 +34,12 @@ public class DxEvent extends DObject {
 	private DSetOfResources _setInstructorKeys;
 
 	private DResource _unity;
+	
+	private long _roomKey; // the room key
 
 	private Assignment _assignment;
 
-	private long _roomRescKey; // the room key
+	private String _roomName; // the room key
 
 	private int _roomFunction; // the prefered function for the event
 
@@ -53,14 +56,15 @@ public class DxEvent extends DObject {
 	 * @param key1
 	 * @param key2
 	 */
-	public DxEvent(String princKey, DSetOfResources inst, long key,
+	public DxEvent(String princKey, DSetOfResources inst, String roomName, long key,
 			DResource unity, Assignment assignment, int cLimit) {
 		_fullName = "name";
 		_ttsKey = "";
 		_isPlaceInAPeriod = false;
 		_principalRescKey = princKey;
 		_setInstructorKeys = inst;
-		_roomRescKey = key;
+		_roomName = roomName;
+		 _roomKey = key; // the room key
 		_unity = unity;
 
 		setRoomFunction(((Unity) _unity.getAttach())
@@ -88,18 +92,21 @@ public class DxEvent extends DObject {
 	}
 
 	public long getRoomKey() {
-		return _roomRescKey;
+		return _roomKey;
 	}
+//	public String getRoomName() {
+//		return _roomName;
+//	}
 
 	public String getRoomName() {
 		return _assignment.getRoomName();
 	}
 
 	public String getCatName(DxSite dxsCurrentSite) {
-		if (dxsCurrentSite.isInCatName(_assignment.getRoomName())) {
-			_assignment.getRoomName(); // is a category
-		}
-		return dxsCurrentSite.getCatNameOf(_assignment.getRoomName());
+//		if (dxsCurrentSite.isInCatName(_assignment.getRoomName())) {
+//			_assignment.getRoomName(); // is a category
+//		}
+		return dxsCurrentSite.getCatNameOfRoom(_assignment.getRoomName());
 	}
 	
 //	public String getCatName() {
@@ -217,9 +224,9 @@ public class DxEvent extends DObject {
 			}
 			// /_instructorRescKey = Long.parseLong(value);
 			break;
-		case 2:
-			_roomRescKey = Long.parseLong(value);
-			break;
+//		case 2:
+//			_roomRescKey = Long.parseLong(value);
+//			break;
 		case 3:
 			setDuration(Integer.parseInt(value));
 			break;
@@ -231,7 +238,7 @@ public class DxEvent extends DObject {
 
 	public DxEvent cloneEvent() {
 		DxEvent eA = new DxEvent(_principalRescKey, _setInstructorKeys,
-				_roomRescKey, _unity, _assignment, _cLimit);
+				_roomName, _roomKey, _unity, _assignment, _cLimit);
 		return eA;
 	}
 

@@ -18,6 +18,7 @@ package dInternal.dData.dRooms;
 
 import java.util.Iterator;
 import java.util.Vector;
+//import java.util.Vector;
 
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
@@ -37,29 +38,29 @@ public class DxSite extends DxResource {
     private DxSetOfCategories _dxsocCat;
 
     /**
-     * Constructor, sName is the ressource name, ressource key is -1.
-     * 
-     * @param SName
-     *            Specifies Ressource name
-     */
+	 * Constructor, sName is the ressource name, ressource key is -1.
+	 * 
+	 * @param SName
+	 *            Specifies Ressource name
+	 */
     public DxSite(String sName) {
         super(_lUniqueKey++, sName);
         _dxsocCat = new DxSetOfCategories();
     }
     
     /**
-     * Add a category to the current site
-     * 
-     * @param sName
-     *            Name of the category that should be added to the site
-     */
+	 * Add a category to the current site
+	 * 
+	 * @param sName
+	 *            Name of the category that should be added to the site
+	 */
     public void addCategory(String sName) {
         _dxsocCat.addCategory(sName);
     }
 
-    public void addRoom(long lCatKey, DxRoom dxrRoom) {
-        _dxsocCat.addRoom(lCatKey, dxrRoom);
-    }
+//    public void addRoom(long lCatKey, DxRoom dxrRoom) {
+//        _dxsocCat.addRoom(lCatKey, dxrRoom);
+//    }
 
     public void addRoom(String sCatName, DxRoom dxrRoom) {
         _dxsocCat.addRoom(sCatName, dxrRoom);
@@ -187,7 +188,7 @@ public class DxSite extends DxResource {
 	}
 	
 	public DxSetOfRooms getAllDxRooms() {
-		DxSetOfRooms dxsorAllRooms = null;
+		DxSetOfRooms dxsorAllRooms = new DxSetOfRooms();
 		DxCategory dxcCurrentCat;
 		Iterator itCategories = _dxsocCat.iterator();
 		while(itCategories.hasNext()){
@@ -201,6 +202,11 @@ public class DxSite extends DxResource {
 		}
 		return dxsorAllRooms;
 	}
+	
+	public Vector<String> getAllRoomsNameSorted() {
+		DxSetOfRooms sr = this.getAllDxRooms();
+		return sr.getNamesVector();
+	}
 
 	public boolean isInCatName(String roomName) {
 		DxCategory []  a = _dxsocCat.getCatsSortedByName();
@@ -211,20 +217,42 @@ public class DxSite extends DxResource {
 		return false;
 	}
 
-	public String getCatNameOf(String roomName) {
+	public String getCatNameOfRoom(String roomName) {
 		DxSetOfRooms dxsorAllRooms = null;
 		DxCategory dxcCurrentCat;
+//		if (this.getSetOfCat().contains(roomName)) {
+//			return roomName;
+//		}
 		Iterator itCategories = _dxsocCat.iterator();
 		while(itCategories.hasNext()){
 			dxcCurrentCat = (DxCategory)itCategories.next();
-//			if(dxsorAllRooms == null){
 				dxsorAllRooms = dxcCurrentCat.getSetOfRooms();
 				if (dxsorAllRooms.contains(roomName)){
 					return dxcCurrentCat.getName();
 				}		
-//			}
 		}
-		return "*";
+		return "------";
 	}
 
+	public boolean contains(String name) {
+		if (this.getSetOfCat().contains(name)) {
+			return true;
+		}
+		DxCategory dxcCurrentCat;
+		Iterator itCategories = _dxsocCat.iterator();
+		while(itCategories.hasNext()){
+			dxcCurrentCat = (DxCategory)itCategories.next();
+			if (dxcCurrentCat.getSetOfDxRooms().contains(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean isType(String roomName) {
+		return this.getSetOfCat().contains(roomName);
+	}
+
+	
+	
 }

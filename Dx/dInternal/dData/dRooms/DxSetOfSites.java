@@ -48,22 +48,22 @@ public class DxSetOfSites extends DxSetOfResources {
 
 	}
 
-	/**
-	 * Adds a category to the site given by lSiteKey
-	 * 
-	 * @param lSiteKey
-	 *            Key of the site to which the category should be added
-	 * @param sCatName
-	 *            Name of the new category to be added
-	 */
-	public void addCategory(long lSiteKey, String sCatName) {
-		try {
-			((DxSite) this.getResource(lSiteKey)).addCategory(sCatName);
-		} catch (Exception e) {
-			// Could produce a null pointer exception if get returns null
-		}
-
-	}
+//	/**
+//	 * Adds a category to the site given by lSiteKey
+//	 * 
+//	 * @param lSiteKey
+//	 *            Key of the site to which the category should be added
+//	 * @param sCatName
+//	 *            Name of the new category to be added
+//	 */
+//	public void addCategory(long lSiteKey, String sCatName) {
+//		try {
+//			((DxSite) this.getResource(lSiteKey)).addCategory(sCatName);
+//		} catch (Exception e) {
+//			// Could produce a null pointer exception if get returns null
+//		}
+//
+//	}
 
 	/**
 	 * Adds a category to the site given by sCatName. If two or more categories
@@ -83,31 +83,31 @@ public class DxSetOfSites extends DxSetOfResources {
 		}
 	}
 
-	/**
-	 * Adds a category to the site given by lSiteKey
-	 * 
-	 * @param lSiteKey
-	 *            Key of the site to which the category should be added
-	 * @param lCatKey
-	 *            Key of the category to which the room should be added
-	 * @param sRoomName
-	 *            Name of the room to be added
-	 * @param nCapacity
-	 *            Capacity of the room to be added
-	 * @param nFunction
-	 *            Function of the room to be added
-	 * @param vChar
-	 *            Vector of characteristics of the room to be added
-	 * @param sNote
-	 *            Comment on the room to be added
-	 */
-	public void addRoom(long lSiteKey, long lCatKey, DxRoom dxrRoom) {
-		try {
-			((DxSite) this.getResource(lSiteKey)).addRoom(lCatKey, dxrRoom);
-		} catch (Exception e) {
-			// Could produce a null pointer exception if get returns null
-		}
-	}
+//	/**
+//	 * Adds a category to the site given by lSiteKey
+//	 * 
+//	 * @param lSiteKey
+//	 *            Key of the site to which the category should be added
+//	 * @param lCatKey
+//	 *            Key of the category to which the room should be added
+//	 * @param sRoomName
+//	 *            Name of the room to be added
+//	 * @param nCapacity
+//	 *            Capacity of the room to be added
+//	 * @param nFunction
+//	 *            Function of the room to be added
+//	 * @param vChar
+//	 *            Vector of characteristics of the room to be added
+//	 * @param sNote
+//	 *            Comment on the room to be added
+//	 */
+//	public void addRoom(long lSiteKey, long lCatKey, DxRoom dxrRoom) {
+//		try {
+//			((DxSite) this.getResource(lSiteKey)).addRoom(lCatKey, dxrRoom);
+//		} catch (Exception e) {
+//			// Could produce a null pointer exception if get returns null
+//		}
+//	}
 
 	/**
 	 * Adds a room to the site given by lSiteKey
@@ -446,7 +446,6 @@ public class DxSetOfSites extends DxSetOfResources {
 			while (itCategories.hasNext()) {
 				dxcCurrentCat = (DxCategory) itCategories.next();
 				DxSetOfRooms sor = dxcCurrentCat.getSetOfDxRooms();
-				//DxRoom dxcCurrentRoom;
 				Iterator itRooms = sor.iterator();
 				while (itRooms.hasNext()) {
 					dxsorAllRooms.addRoom((DxRoom) itRooms.next());
@@ -457,4 +456,20 @@ public class DxSetOfSites extends DxSetOfResources {
 		return dxsorAllRooms;
 	} //end getAllDxRooms
 
+	public void addRoomInAllCat(String roomSite, DxRoom dxrTempRoom) {
+		DxSetOfCategories dxSofC = this.getSetOfCat(roomSite);
+		DxCategory dxcCurrentCat;
+		Iterator itCategories = dxSofC.iterator();
+		while (itCategories.hasNext()) {
+			dxcCurrentCat = (DxCategory) itCategories.next();
+			try {
+				((DxSite) this.getResource(roomSite)).addRoom(dxcCurrentCat.getName(), dxrTempRoom);
+			} catch (Exception e) {
+				// Could produce a null pointer exception if get returns null
+			}
+		}
+	}
+
 }
+	
+

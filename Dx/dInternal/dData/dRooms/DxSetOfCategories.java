@@ -231,7 +231,16 @@ public class DxSetOfCategories extends DxSetOfResources {
         }
         return sbReturn.toString();
     }
- 		
+ 	
+	public boolean contains(String roomName) {
+		Vector <String> v = this.getCatsNamesSorted();
+			for (int i = 0; i < v.size(); i++) {
+				if (v.get(i).equalsIgnoreCase(roomName)){
+					return true;
+				}
+			}
+		return false;
+	}
     
     public Vector<String> getCatsNamesSorted() {
 			Vector <DxResource> vr = getNameSortedRessources();

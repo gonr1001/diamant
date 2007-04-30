@@ -18,6 +18,8 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Period;
@@ -100,22 +102,26 @@ public class SetOfEvents extends DSetOfResources {
 
 					assignDxInstructors(soImportErrors, assignment, unityID);
 
-					if (DxFlags.newRooms)
-						roomKey = assignDxRooms(assignment,
-								unityID, soImportErrors);
-					else
-						roomKey = assignRooms(assignment,
-								unityID, soImportErrors);
-
 					int cLimit = ((Section) sectionResource.getAttach())
-							.getCapacityLimit();
+					.getCapacityLimit();
+					
+//					if (DxFlags.newRooms)
+////						roomKey = assignDxRooms(assignment,
+////								unityID, soImportErrors);
+//					else
 
-					if (DxFlags.newEvent) {
+					if (DxFlags.newRooms && DxFlags.newEvent) {
+						String roomName = assignDxRooms(assignment,
+							unityID, soImportErrors);
+						roomKey = oldAssignDxRooms(assignment,
+								unityID, soImportErrors);
 						DxEvent dxevent = new DxEvent(unityKey, assignment
-								.getSetInstructorKeys(), roomKey,
+								.getSetInstructorKeys(), roomName, roomKey,
 								unityResource, assignment, cLimit);
 						this.addResource(new DResource(unityID, dxevent), 0);
 					} else {
+						roomKey = assignRooms(assignment,
+								unityID, soImportErrors);
 						EventDx event = new EventDx(unityKey, assignment
 								.getSetInstructorKeys(), roomKey,
 								((Unity) unityResource.getAttach())
@@ -174,7 +180,7 @@ public class SetOfEvents extends DSetOfResources {
 		return roomKey;
 	}
 
-	private long assignDxRooms(Assignment assignment,
+	private long oldAssignDxRooms(Assignment assignment,
 			String unityID, DSetOfResources soImportErrors) {
 		
 		/////////////////////////////
@@ -193,6 +199,39 @@ public class SetOfEvents extends DSetOfResources {
 			soImportErrors.addResource(new DResource("3", error), 0);
 		}
 		return roomKey;
+	}
+	
+	
+	private String assignDxRooms(Assignment assignment,
+			String unityID, DSetOfResources soImportErrors) {
+	
+		DxSetOfSites sos = _dm.getDxSetOfSites();
+			
+		DxSite currentSite = sos.getSite(_dm.getCurrentSiteName());
+		String name = assignment.getRoomName();
+		
+		if (!currentSite.contains(name)) {
+			DValue error = new DValue();
+			String str = assignment.getRoomName();
+			if (str.equals(DConst.NO_ROOM_INTERNAL))
+				str = DConst.NO_ROOM_EXTERNAL;
+			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
+					+ DConst.NOT_ROOM + "« " + str + " »");
+			soImportErrors.addResource(new DResource("3", error), 0);
+			return DConst.NO_ROOM_EXTERNAL;
+		}
+		
+		
+//		if (roomKey == -1) {;
+//			DValue error = new DValue();
+//			String str = assignment.getRoomName();
+//			if (str.equals(DConst.NO_ROOM_INTERNAL))
+//				str = DConst.NO_ROOM_EXTERNAL;
+//			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
+//					+ DConst.NOT_ROOM + "« " + str + " »");
+//			soImportErrors.addResource(new DResource("3", error), 0);
+//		}
+		return name;
 	}
 
 	private void assignDxInstructors(DSetOfResources soie,
@@ -301,13 +340,12 @@ public class SetOfEvents extends DSetOfResources {
 							.getDxSetOfInstructors(), keys[j]));
 				}// end for
 
-				if (DxFlags.newRooms) {
-					assignment.setRoomName(_dm.getDxSetOfSites()
-							.getAllDxRooms().getRoomName(event.getRoomKey()));
-				} else {
-					assignment.setRoomName(getRoomName(_dm.getSetOfRooms(),
-							event.getRoomKey()));
-				}
+//				if (DxFlags.newRooms) {
+					assignment.setRoomName(event.getRoomName());
+//				} else {
+//					assignment.setRoomName(getRoomName(_dm.getSetOfRooms(),
+//							event.getRoomKey()));
+//				}
 				assignment.setPeriodKey(event.getPeriodKey());
 
 				unit.updateWith(event);
