@@ -67,11 +67,8 @@ public class SelectInstructors extends JDialog implements ActionListener {
 
 	private ButtonsPanel _validatePanel;
 
-//	private DxEditActivityDlg _dxEad;
-
 	private DxEditEventDlg _dxEEventDlg;
 
-//	private EditActivityDlg _ead;
 
 //	private EditEventDlg _eEventDlg;
 
@@ -264,7 +261,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		if (command.equals(DConst.BUT_VALIDATE)) {
 //			if (_dxEad != null)
 //				_dxEad.updateInstructorList(_leftVec);
-//			
+			
 			
 //			else 
 				if (_dxEEventDlg != null)

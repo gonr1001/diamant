@@ -314,6 +314,8 @@ public class SetOfEvents extends DSetOfResources {
 			for (int i = 0; i < eventsToUpdate.size(); i++) {
 				event = (DxEvent) ((DResource) eventsToUpdate.get(i))
 						.getAttach();
+				System.out.println("SetofE updateActivities event room name: "+ event.getRoomName());
+
 				long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
 						event.getPrincipalRescKey(), ".", 0));
 				long typeKey = Long

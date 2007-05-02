@@ -144,72 +144,115 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 
-//		 if (command.equals(DConst.NAME_AC)) {
-//		 JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-//		 String roomName = getSelectedRoom(tpane);
-//		 int capacity = dxrCurrentRoom.getCapacity();
-//		 JLabel jl = getCapacityLabel(tpane);
-//		 jl.setText(new Integer(
-//		 capacity).toString());
-//		 if (roomName.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
-//		 this.setRoomState(tpane, DConst.NOT_PLACED_ROOM_STATE);
-//		 else
-//		 this.setRoomState(tpane, DConst.PLACED_ROOM_STATE);
-//		 _applyPanel.setFirstEnable();
-//		 }
+		// if (command.equals(DConst.NAME_AC)) {
+		// JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
+		// String roomName = getSelectedRoom(tpane);
+		// int capacity = dxrCurrentRoom.getCapacity();
+		// JLabel jl = getCapacityLabel(tpane);
+		// jl.setText(new Integer(
+		// capacity).toString());
+		// if (roomName.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
+		// this.setRoomState(tpane, DConst.NOT_PLACED_ROOM_STATE);
+		// else
+		// this.setRoomState(tpane, DConst.PLACED_ROOM_STATE);
+		// _applyPanel.setFirstEnable();
+		// }
 		if (command.equals(ACTION_CB_SITE)) {
-			 _applyPanel.setFirstDisable();
-			 JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-			 String siteName = getSelectedSite(tpane);
-			 System.out.println(siteName);
-			 _applyPanel.setFirstEnable();
+			_applyPanel.setFirstDisable();
+			JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
+			String siteName = getSelectedSite(tpane);
+			System.out.println(siteName);
+			_applyPanel.setFirstEnable();
 		}
 
 		if (command.equals(ACTION_CB_TYPE)) {
-			 _applyPanel.setFirstDisable();
-			 JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-			
-			 String sSiteName = getSelectedSite(tpane);
-			 String sTypeName = getSelectedType(tpane);
-			 DxSite dxSite = _dModel.getDxSetOfSites().getSite(sSiteName);
-			 System.out.println(sTypeName);
-			 DxCategory _dxcCurrentCat = _dModel.getDxSetOfSites().getCat(
-			 sSiteName, sTypeName);
-			 DefaultComboBoxModel dcbmRooms;
-			 if (sTypeName.equalsIgnoreCase("------")) {
-			 dcbmRooms = new DefaultComboBoxModel(dxSite
-			 .getAllRoomsNameSorted());
-			 } else {
-			
-			 dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat
-			 .getSetOfDxRooms().getRoomsNameSorted());
-			 }
-			 // DefaultComboBoxModel dcbmRooms = new DefaultComboBoxModel(
-			 // _dxcCurrentCat.getSetOfDxRooms().getRoomsSortedByName());
-			 JComboBox cbRooms = getRoomJCB(tpane);
-			 cbRooms.setModel(dcbmRooms);
-			 DxRoom dxrCurrentRoom = (DxRoom) cbRooms.getSelectedItem();
-			 int capacity = dxrCurrentRoom.getCapacity();
-			 JLabel jl = getCapacityLabel(tpane);
-			 jl.setText(new Integer(capacity).toString());
-			 this.repaint();
-			 _applyPanel.setFirstEnable();
-		}
+			_applyPanel.setFirstDisable();
+			JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
+			String sSiteName = getSelectedSite(tpane);
+			String sTypeName = getSelectedType(tpane);
+			DxSite currentSite = _dModel.getDxSetOfSites().getSite(sSiteName);
+			System.out.println(sTypeName);
 
+			JComboBox cbTypes = getTypesJCB(tpane);
+			cbTypes.removeActionListener(this);
+			cbTypes.setSelectedItem(sTypeName);
+			DefaultComboBoxModel dcbmRooms;
+
+			if (sTypeName.equalsIgnoreCase("------")) {
+				dcbmRooms = new DefaultComboBoxModel(currentSite
+						.getAllRoomsNameSorted());
+			} else {
+				DxCategory currentCat = _dModel.getDxSetOfSites().getCat(
+						sSiteName, sTypeName);
+				dcbmRooms = new DefaultComboBoxModel(currentCat
+						.getSetOfDxRooms().getRoomsNameSorted());
+			}
+
+			JComboBox cbRooms = getRoomsJCB(tpane);
+			cbRooms.removeActionListener(this);
+			cbRooms.setModel(dcbmRooms);
+			cbRooms.setSelectedItem("------");
+			int capacity = 0;
+			JLabel jl = getCapacityLabel(tpane);
+			jl.setText(new Integer(capacity).toString());
+			cbRooms.addActionListener(this);
+			cbTypes.addActionListener(this);
+			this.repaint();
+			_applyPanel.setFirstEnable();
+		}
+		DefaultComboBoxModel dcbmRooms;
 		if (command.equals(ACTION_CB_ROOM)) {
-			 _applyPanel.setFirstDisable();
-			 JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-			 String roomName = getSelectedRoom(tpane);
-			 System.out.println(roomName);
-			 DxRoom dxrCurrentRoom = (DxRoom) _dModel.getDxSetOfRooms()
-			 .getResource(roomName);
-			 int capacity = dxrCurrentRoom.getCapacity();
-			 JLabel jl = getCapacityLabel(tpane);
-			 jl.setText(new Integer(capacity).toString());
-			 this.repaint();
-			 _applyPanel.setFirstEnable();
-		}
+			_applyPanel.setFirstDisable();
+			JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
+			String sSiteName = getSelectedSite(tpane);
+			String roomName = getSelectedRoom(tpane);
+			DxSite currentSite = _dModel.getDxSetOfSites().getSite(sSiteName);
 
+			if (roomName.equalsIgnoreCase("------")) {
+
+				dcbmRooms = new DefaultComboBoxModel(currentSite
+						.getAllRoomsNameSorted());
+				
+				JComboBox cbRooms = getRoomsJCB(tpane);
+				cbRooms.removeActionListener(this);
+				cbRooms.setModel(dcbmRooms);
+				cbRooms.setSelectedItem("------");
+				JComboBox cbTypes = getTypesJCB(tpane);
+				cbTypes.removeActionListener(this);
+				cbTypes.setSelectedItem("------");
+				int capacity = 0;
+				JLabel jl = getCapacityLabel(tpane);
+				jl.setText(new Integer(capacity).toString());
+				cbRooms.addActionListener(this);
+				cbTypes.addActionListener(this);
+				
+			} else {
+				String currentCatName = currentSite.getCatNameOfRoom(roomName);
+				DxCategory currentCat = currentSite.getSetOfCat().getCat(
+						currentCatName);
+				DxRoom currentRoom = currentSite.getRoom(currentCat.getName(),
+						roomName);
+				dcbmRooms = new DefaultComboBoxModel(currentCat
+						.getSetOfDxRooms().getRoomsNameSorted());
+				JComboBox cbRooms = getRoomsJCB(tpane);
+				cbRooms.removeActionListener(this);
+				cbRooms.setModel(dcbmRooms);
+				cbRooms.setSelectedItem(roomName);
+
+				JComboBox cbTypes = getTypesJCB(tpane);
+				cbTypes.removeActionListener(this);
+				cbTypes.setSelectedItem(currentCatName);
+
+				int capacity = currentRoom.getCapacity();
+				JLabel jl = getCapacityLabel(tpane);
+				jl.setText(new Integer(capacity).toString());
+			
+				cbRooms.addActionListener(this);
+				cbTypes.addActionListener(this);				
+			}
+			this.repaint();
+			_applyPanel.setFirstEnable();
+		}
 		if (command.equals(DConst.STATE_AC)) {
 			_applyPanel.setFirstEnable();
 		}
@@ -218,12 +261,12 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			dispose();
 		} else if (command.equals(DConst.BUT_APPLY)) {
 			boolean apply = false;
-			for (int i = 0; i < this._events.size(); i++) {
+//			for (int i = 0; i < this._events.size(); i++) {
 				apply = applyChanges();
 				if (!apply) {
 					new DxExceptionDlg(this, "Valeur erronée");
-					break;
-				}
+//					break;
+//				}
 				_applyPanel.setFirstDisable();
 			} // end for
 			if (apply) {
@@ -268,6 +311,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String intructorKeys = getInstructorKeys(lm);
 
 		String room = getSelectedRoom(tpane);
+		System.out.println("DxE event1 room name: "+ room);
 
 		boolean assignBut = isAssignedButtonSelected(tpane);
 
@@ -280,26 +324,30 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String periodKey = cycle.getPeriod(daytime);
 		event.setDuration(Integer.parseInt(duration)
 				* _dModel.getTTStructure().getPeriodLenght());
-		event.setKey(4, periodKey);
-		event.setKey(1, intructorKeys);
+		event.setPeriodKey(periodKey);
+		event.setInstructorKey(intructorKeys);
 		if (DxFlags.newRooms) {
-			event.setKey(2, Long.toString(_dModel.getDxSetOfRooms()
+			event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
 					.getRoomKeyByName(room)));
+			event.setRoomName(room);
+			System.out.println("DxE event1.1 room name: "+ event.getRoomName());
 		} else {
 			event.setKey(2, Long.toString(getResourceKey(_dModel
 					.getSetOfRooms(), room)));
 		}
-
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
+		
+		System.out.println("DxE event2 room name: "+ event.getRoomName());
 
 		Vector<Object> vect = new Vector<Object>();
 		vect.add(_events.get(_tabbedPane.getSelectedIndex()));
-		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
-				vect);
-		// add event
+
+		_dModel.getSetOfEvents().updateActivities(
+				_dModel.getSetOfActivities(), vect);
 		_dModel.getConditionsTest().addEventInTTs(_dModel.getTTStructure(),
 				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);
+
 		return true;
 	}
 
@@ -323,7 +371,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private Vector<String> buildDayList() {
 		Vector<String> list = new Vector<String>();
-
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		for (int i = 0; i < cycle.getSetOfDays().size(); i++)
 			list.add(cycle.getSetOfDays().getResourceAt(i).getKey() + "."
@@ -375,7 +422,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @return
 	 */
 	private String buildDuration(DxEvent event) {
-
 		int duration = event.getDuration()
 				/ _dModel.getTTStructure().getPeriodLenght();
 		return String.valueOf(duration);
@@ -398,7 +444,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		} else {
 			periodsCB.setEnabled(false);
 		}
-
 		return durationPanel;
 	} // end buildDurationPanel
 
@@ -407,12 +452,12 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * 
 	 * @return the JPanel to be placed in a tab of the tabbedPane
 	 */
-	private JPanel buildEventPanel(DxEvent event, /* JTabbedPane jtp, */
+	private JPanel buildEventPanel(DxEvent event, int index,
 	boolean canBeModified) {
 		JPanel localPanel = new JPanel();
 		localPanel.setLayout(new BorderLayout());
 		JPanel timePanel = buildTimePanel(event, canBeModified);
-		JPanel instructorPanel = buildInstructorPanel(event);
+		JPanel instructorPanel = buildInstructorPanel(event, index);
 		JPanel roomPanel = buildRoomPanel(event);// , jtp);
 		JPanel fixingPanel = buildFixingPanel(event);
 
@@ -516,15 +561,14 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return v;
 	}
 
-	private JPanel buildInstructorPanel(DxEvent event) {
+	private JPanel buildInstructorPanel(DxEvent event, int index) {
 		int WIDTH_INSTRUCTOR_PANEL = 170;
 		int HEIGTH_INSTRUCTOR_PANEL = 120;
 		JPanel localPanel = new JPanel();
 		JPanel instructorsPanel = new JPanel();
 		Vector vect = buildCurrentInstructorList(event);
-		JList instructorsLists = new JList(vect.toArray());
-
-		_jScrollPane = new JScrollPane(instructorsLists);
+		_instructorsLists[index] = new JList(vect.toArray());
+		_jScrollPane = new JScrollPane(_instructorsLists[index]);
 		_jScrollPane.setPreferredSize(new Dimension(WIDTH_INSTRUCTOR_PANEL,
 				HEIGTH_INSTRUCTOR_PANEL));
 
@@ -661,30 +705,15 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return myPanel;
 	} // end buildRoomPanel
 
-	// /**
-	// * Sélectionne un état dans la liste d'état des locaux dans le panel
-	// d'état
-	// *
-	// * @param jpanel
-	// * @param state
-	// */
-	// private void setRoomState(JPanel jPanel, String state) {
-	// JPanel externalPanel = (JPanel) jPanel.getComponent(2);
-	// JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
-	// JPanel stateJPanel = (JPanel) myJPanel.getComponent(3);
-	// ((JComboBox) stateJPanel.getComponent(0)).setSelectedItem(state);
-	// }
-
 	private JTabbedPane buildTabbedPane(boolean canBeModified) {
 		JTabbedPane jtp = new JTabbedPane();
 		_instructorsLists = new JList[_events.size()];
-		// _capacity = new JLabel[_events.size()];
 		for (int i = 0; i < _events.size(); i++) {
 			if (_events.get(i) != null) {
 				DxEvent event = (DxEvent) ((DResource) _events.get(i))
 						.getAttach();
-				jtp.addTab(((DResource) _events.get(i)).getID(),
-						buildEventPanel(event, /* jtp, */canBeModified));
+				jtp.addTab(((DResource) _events.get(i)).getID(), 
+						buildEventPanel(event, i, canBeModified));
 			}
 		}// end for
 		return jtp;
@@ -741,7 +770,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	} // end getSelectedRoom
 
 	/**
-	 * Return vector of resources. each resource represent an event
+	 * Return vector of resources, each resource represent an event
 	 */
 	private Vector getEventsVector(String activityName) {
 
@@ -758,7 +787,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				if (unitID.length() != 0) {
 					events.add(_dModel.getSetOfEvents().getResource(
 							activityName));
-
 				} else {// else unitID.length()!=0
 					Section sect = _dModel.getSetOfActivities().getSection(
 							actID, typID, secID);
@@ -860,12 +888,24 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @param jPanel
 	 * @return
 	 */
-	private JComboBox getRoomJCB(JPanel jPanel) {
+	private JComboBox getRoomsJCB(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(2);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
 		JPanel roomJPanel = (JPanel) myJPanel.getComponent(2);
 		return ((JComboBox) roomJPanel.getComponent(0));
-	} // end getSelectedRoom
+	} // end getRoomJCB
+
+	/**
+	 * 
+	 * @param jPanel
+	 * @return
+	 */
+	private JComboBox getTypesJCB(JPanel jPanel) {
+		JPanel externalPanel = (JPanel) jPanel.getComponent(2);
+		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
+		JPanel roomJPanel = (JPanel) myJPanel.getComponent(1);
+		return ((JComboBox) roomJPanel.getComponent(0));
+	} // end getTypeJCB
 
 	private String getSelectedDay(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(0);
@@ -973,101 +1013,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return v;
 	}
 
-	private JPanel oldBbuildRoomPanel(DxEvent event) {// , JTabbedPane jtp) {
-		JPanel myPanel = new JPanel(new BorderLayout());
-		JPanel roomPanel = new JPanel();
-		roomPanel.setBorder(new TitledBorder(new EtchedBorder(),
-				DConst.R_ROOM_NAME));
-		roomPanel.setLayout(new GridLayout(2, 2));
-
-		// This is for the Sites
-		DxSetOfSites dxsosSites = _dModel.getDxSetOfSites();
-		DefaultComboBoxModel dcbmSites = new DefaultComboBoxModel(dxsosSites
-				.getSitesNamesSorted());
-		JComboBox cbSites = new JComboBox(dcbmSites);
-		cbSites.setSelectedItem(_dModel.getCurrentSiteName());
-
-		if (dxsosSites.size() == 1) { // if 1 only one site
-			cbSites.setEnabled(false);
-		} else {
-			cbSites.setActionCommand(ACTION_CB_SITE);
-			cbSites.addActionListener(this);
-			cbSites.setEnabled(true);
-		}
-		// End is for the Sites
-
-		DxSite dxsCurrentSite = dxsosSites
-				.getSite(_dModel.getCurrentSiteName());
-
-		DefaultComboBoxModel dcbmCategories = new DefaultComboBoxModel(
-				dxsCurrentSite.getSetOfCat().getCatsNamesSorted());
-		JComboBox cbCategories = new JComboBox(dcbmCategories);
-		cbCategories.setSelectedItem(event.getCatName(dxsCurrentSite));
-		System.out.println("Cat type " + event.getCatName(dxsCurrentSite));
-		cbCategories.setActionCommand(ACTION_CB_TYPE);
-		cbCategories.addActionListener(this);
-
-		DxCategory dxCurrentCat = dxsCurrentSite.getSetOfCat().getCat(
-				event.getCatName(dxsCurrentSite));
-
-		String name;
-		DefaultComboBoxModel dcbmRooms;
-		System.out.println("room " + event.getRoomName());
-		if (dxsCurrentSite.isType(event.getRoomName())) {
-			name = "------";
-			dcbmRooms = new DefaultComboBoxModel(dxsCurrentSite
-					.getAllRoomsNameSorted());
-		} else {
-			name = event.getRoomName();
-			dcbmRooms = new DefaultComboBoxModel(dxCurrentCat.getSetOfDxRooms()
-					.getRoomsNameSorted());
-		}
-
-		JComboBox cbRooms = new JComboBox(dcbmRooms);
-		cbRooms.setSelectedItem(name);
-		cbRooms.setActionCommand(ACTION_CB_ROOM);
-		cbRooms.addActionListener(this);
-
-		DxRoom dxrCurrentRoom = dxsCurrentSite.getRoom(event
-				.getCatName(dxsCurrentSite), name);
-		int capacity = 0;
-		if (name.equalsIgnoreCase("------")) {
-			capacity = 0;
-		} else {
-			capacity = dxrCurrentRoom.getCapacity();
-		}
-		JLabel jl = new JLabel(new Integer(capacity).toString());
-		JPanel roomState = new JPanel();
-		roomState.setBorder(new TitledBorder(new EtchedBorder(), "Sites: "));
-		roomState.add(cbSites);
-
-		// construction du contour de la combobox de locaux
-		JPanel roomName = new JPanel();
-		roomName.setBorder(new TitledBorder(new EtchedBorder(),
-				DConst.NAME_LABEL));
-		roomName.add(cbRooms);
-
-		// construction du contour du label de capacité
-		JPanel roomCapacity = new JPanel();
-		roomCapacity.setBorder(new TitledBorder(new EtchedBorder(),
-				DConst.CAPACITY_LABEL));
-		// roomCapacity.add(_capacity[jtp.getTabCount()]);
-		roomCapacity.add(jl);
-
-		// construction du contour de la combobox de fonction de locaux
-		JPanel functionRoom = new JPanel();
-		functionRoom.setBorder(new TitledBorder(new EtchedBorder(), "Types: "));
-		functionRoom.add(cbCategories);
-
-		// construction du panel complet
-		roomPanel.add(roomState);
-		roomPanel.add(functionRoom);
-		roomPanel.add(roomName);
-		roomPanel.add(roomCapacity);
-
-		myPanel.add(roomPanel);
-		return myPanel;
-	} // end buildRoomPanel
 
 	/**
 	 * item state changed
@@ -1095,7 +1040,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	public void updateInstructorList(Vector v) {
 		_instructorsLists[_tabbedPane.getSelectedIndex()].setListData(v);
-		_jScrollPane.repaint();
+		_tabbedPane.repaint();
 		_applyPanel.setFirstEnable();
 	}
 

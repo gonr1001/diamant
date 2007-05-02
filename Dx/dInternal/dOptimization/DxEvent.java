@@ -101,6 +101,10 @@ public class DxEvent extends DObject {
 	public String getRoomName() {
 		return _assignment.getRoomName();
 	}
+	
+	public void setRoomName(String str) {
+		_assignment.setRoomName(str);
+	}
 
 	public String getCatName(DxSite dxsCurrentSite) {
 //		if (dxsCurrentSite.isInCatName(_assignment.getRoomName())) {
@@ -224,9 +228,9 @@ public class DxEvent extends DObject {
 			}
 			// /_instructorRescKey = Long.parseLong(value);
 			break;
-//		case 2:
-//			_roomRescKey = Long.parseLong(value);
-//			break;
+		case 2:
+			_roomKey = Long.parseLong(value);
+			break;
 		case 3:
 			setDuration(Integer.parseInt(value));
 			break;
@@ -266,5 +270,24 @@ public class DxEvent extends DObject {
 	public long getCapacityLimit() {
 		return _cLimit;
 	}
+
+	public void setPeriodKey(String str) {
+		_ttsKey = str;
+	}
+
+	public void setInstructorKey(String str) {
+		_setInstructorKeys.getSetOfResources().removeAllElements();
+		int n = DXToolsMethods.countTokens(str, ":");
+		for (int i = 0; i < n; i++) {
+			_setInstructorKeys.setCurrentKey(Long.parseLong(DXToolsMethods
+					.getToken(str, ":", i)));
+			_setInstructorKeys.addResource(new DResource("", null), 0);
+		}
+	}
+
+	public void setRoomKey(String str) {
+		_roomKey = Long.parseLong(str);
+	}
+	
 
 }
