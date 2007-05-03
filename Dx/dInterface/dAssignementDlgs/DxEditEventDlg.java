@@ -144,19 +144,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 
-		// if (command.equals(DConst.NAME_AC)) {
-		// JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-		// String roomName = getSelectedRoom(tpane);
-		// int capacity = dxrCurrentRoom.getCapacity();
-		// JLabel jl = getCapacityLabel(tpane);
-		// jl.setText(new Integer(
-		// capacity).toString());
-		// if (roomName.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
-		// this.setRoomState(tpane, DConst.NOT_PLACED_ROOM_STATE);
-		// else
-		// this.setRoomState(tpane, DConst.PLACED_ROOM_STATE);
-		// _applyPanel.setFirstEnable();
-		// }
 		if (command.equals(ACTION_CB_SITE)) {
 			_applyPanel.setFirstDisable();
 			JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
@@ -212,7 +199,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 				dcbmRooms = new DefaultComboBoxModel(currentSite
 						.getAllRoomsNameSorted());
-				
+
 				JComboBox cbRooms = getRoomsJCB(tpane);
 				cbRooms.removeActionListener(this);
 				cbRooms.setModel(dcbmRooms);
@@ -225,7 +212,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				jl.setText(new Integer(capacity).toString());
 				cbRooms.addActionListener(this);
 				cbTypes.addActionListener(this);
-				
+
 			} else {
 				String currentCatName = currentSite.getCatNameOfRoom(roomName);
 				DxCategory currentCat = currentSite.getSetOfCat().getCat(
@@ -246,9 +233,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				int capacity = currentRoom.getCapacity();
 				JLabel jl = getCapacityLabel(tpane);
 				jl.setText(new Integer(capacity).toString());
-			
+
 				cbRooms.addActionListener(this);
-				cbTypes.addActionListener(this);				
+				cbTypes.addActionListener(this);
 			}
 			this.repaint();
 			_applyPanel.setFirstEnable();
@@ -261,12 +248,12 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			dispose();
 		} else if (command.equals(DConst.BUT_APPLY)) {
 			boolean apply = false;
-//			for (int i = 0; i < this._events.size(); i++) {
-				apply = applyChanges();
-				if (!apply) {
-					new DxExceptionDlg(this, "Valeur erronée");
-//					break;
-//				}
+			//			for (int i = 0; i < this._events.size(); i++) {
+			apply = applyChanges();
+			if (!apply) {
+				new DxExceptionDlg(this, "Valeur erronée");
+				//					break;
+				//				}
 				_applyPanel.setFirstDisable();
 			} // end for
 			if (apply) {
@@ -311,7 +298,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String intructorKeys = getInstructorKeys(lm);
 
 		String room = getSelectedRoom(tpane);
-		System.out.println("DxE event1 room name: "+ room);
+		System.out.println("DxE event1 room name: " + room);
 
 		boolean assignBut = isAssignedButtonSelected(tpane);
 
@@ -330,21 +317,22 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
 					.getRoomKeyByName(room)));
 			event.setRoomName(room);
-			System.out.println("DxE event1.1 room name: "+ event.getRoomName());
+			System.out
+					.println("DxE event1.1 room name: " + event.getRoomName());
 		} else {
 			event.setKey(2, Long.toString(getResourceKey(_dModel
 					.getSetOfRooms(), room)));
 		}
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
-		
-		System.out.println("DxE event2 room name: "+ event.getRoomName());
+
+		System.out.println("DxE event2 room name: " + event.getRoomName());
 
 		Vector<Object> vect = new Vector<Object>();
 		vect.add(_events.get(_tabbedPane.getSelectedIndex()));
 
-		_dModel.getSetOfEvents().updateActivities(
-				_dModel.getSetOfActivities(), vect);
+		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
+				vect);
 		_dModel.getConditionsTest().addEventInTTs(_dModel.getTTStructure(),
 				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);
 
@@ -453,7 +441,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @return the JPanel to be placed in a tab of the tabbedPane
 	 */
 	private JPanel buildEventPanel(DxEvent event, int index,
-	boolean canBeModified) {
+			boolean canBeModified) {
 		JPanel localPanel = new JPanel();
 		localPanel.setLayout(new BorderLayout());
 		JPanel timePanel = buildTimePanel(event, canBeModified);
@@ -712,7 +700,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			if (_events.get(i) != null) {
 				DxEvent event = (DxEvent) ((DResource) _events.get(i))
 						.getAttach();
-				jtp.addTab(((DResource) _events.get(i)).getID(), 
+				jtp.addTab(((DResource) _events.get(i)).getID(),
 						buildEventPanel(event, i, canBeModified));
 			}
 		}// end for
@@ -976,26 +964,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	} // end isAssignedButtonSelected
 
-	// private String getCapacity(String str) {
-	// if (DxFlags.newRooms) {
-	// DxSetOfRooms dxsor = _dModel.getDxSetOfRooms();
-	// DxRoom dxr = dxsor.getRoom(str);
-	// if (dxr == null) {
-	// return "000";
-	// }
-	// return " " + String.valueOf(dxr.getCapacity()) + " "
-	// + DConst.ROOM_CAPACITY_DESC;
-	// }
-	// // Old Rooms
-	// SetOfRooms sor = _dModel.getSetOfRooms();
-	// DResource res = sor.getResource(str);
-	// if (res == null) {
-	// return "000";
-	// }
-	// RoomAttach ra = (RoomAttach) res.getAttach();
-	// return " " + String.valueOf(ra.getCapacity()) + " "
-	// + DConst.ROOM_CAPACITY_DESC;
-	// }
 
 	private boolean isFixedButtonSelected(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(3);
@@ -1012,31 +980,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		}
 		return v;
 	}
-
-
-	/**
-	 * item state changed
-	 * 
-	 * @param e
-	 */
-	public void stateChanged(ChangeEvent ce) {
-		// pane changed (detected by isFirstEnable)
-		// it it is necessary to apply or close
-		if (_applyPanel.isFirstEnable()) {
-			_tabbedPane.removeChangeListener(this);
-			int i = _tabbedPane.getSelectedIndex();
-			_tabbedPane.setSelectedIndex(i);
-			new InformationDlg(this, "Appliquer ou fermer pour continuer",
-					"Operation interdite");
-			_tabbedPane.addChangeListener(this);
-		} else {
-			_tabbedPane.setSelectedIndex(((JTabbedPane) ce.getSource())
-					.getSelectedIndex());
-			int j = ((JTabbedPane) ce.getSource()).getSelectedIndex();
-			_tabbedPane.setSelectedIndex(j);
-
-		}
-	}// end state change
 
 	public void updateInstructorList(Vector v) {
 		_instructorsLists[_tabbedPane.getSelectedIndex()].setListData(v);

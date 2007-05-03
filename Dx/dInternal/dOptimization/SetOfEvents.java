@@ -105,20 +105,33 @@ public class SetOfEvents extends DSetOfResources {
 					int cLimit = ((Section) sectionResource.getAttach())
 					.getCapacityLimit();
 					
-//					if (DxFlags.newRooms)
-////						roomKey = assignDxRooms(assignment,
-////								unityID, soImportErrors);
-//					else
-
-					if (DxFlags.newRooms && DxFlags.newEvent) {
+					if (DxFlags.newRooms) {
 						String roomName = assignDxRooms(assignment,
 							unityID, soImportErrors);
 						roomKey = oldAssignDxRooms(assignment,
 								unityID, soImportErrors);
-						DxEvent dxevent = new DxEvent(unityKey, assignment
-								.getSetInstructorKeys(), roomName, roomKey,
-								unityResource, assignment, cLimit);
-						this.addResource(new DResource(unityID, dxevent), 0);
+						if(DxFlags.newEvent) {
+							DxEvent dxevent = new DxEvent(unityKey, assignment
+									.getSetInstructorKeys(), roomName, roomKey,
+									unityResource, assignment, cLimit);
+							this.addResource(new DResource(unityID, dxevent), 0);
+						} else {
+							EventDx event = new EventDx(unityKey, assignment
+									.getSetInstructorKeys(), roomKey,
+									((Unity) unityResource.getAttach())
+											.getDuration(), assignment
+											.getPeriodKey(), cLimit);
+
+							event.setAssigned(((Unity) unityResource.getAttach())
+									.isAssign());
+							event.setPermanentState(((Unity) unityResource
+									.getAttach()).isPermanent());
+							event.setRoomFixed(assignment.getRoomState());
+							event.setRoomFunction(((Unity) unityResource
+									.getAttach()).getFirstPreferFunctionRoom());
+							this.addResource(new DResource(unityID, event), 0);
+						}
+			
 					} else {
 						roomKey = assignRooms(assignment,
 								unityID, soImportErrors);

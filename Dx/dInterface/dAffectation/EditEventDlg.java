@@ -60,6 +60,7 @@ import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dOptimization.EventDx;
+import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -235,8 +236,8 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 		} else if (command.equals(DConst.BUT_CHANGE)) {// change instrcutors
 			if (DxFlags.newEditEventDlg) {
-				new SelectInstructors(_dApplic,/* this,*/
-						makeVector(_instructorsLists[_currentActivityIndex]),
+				new SelectInstructors(_dApplic,/* this, */
+				makeVector(_instructorsLists[_currentActivityIndex]),
 						buildInstructorList());
 			}
 		}
@@ -482,24 +483,45 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	} // end getSelectedCategory
 
 	private JPanel buildFixingPanel(int index) {
-		EventDx event = (EventDx) ((DResource) _unities.get(index))
-				.getAttach();
-		JPanel myPanel = new JPanel();
-		JPanel fixingPanel = new JPanel();
-		fixingPanel.setBorder(new TitledBorder(new EtchedBorder(),
-				DConst.R_ASSIGN));
-		JToggleButton assigned = new JToggleButton(DConst.BUT_PLACE);
-		assigned.setSelected(event.isAssigned());
-		assigned.addActionListener(this);
-		JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities.get(index))
+					.getAttach();
+			JPanel myPanel = new JPanel();
+			JPanel fixingPanel = new JPanel();
+			fixingPanel.setBorder(new TitledBorder(new EtchedBorder(),
+					DConst.R_ASSIGN));
+			JToggleButton assigned = new JToggleButton(DConst.BUT_PLACE);
+			assigned.setSelected(event.isAssigned());
+			assigned.addActionListener(this);
+			JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
 
-		fixed.setSelected(event.getPermanentState());
-		fixed.addActionListener(this);
+			fixed.setSelected(event.getPermanentState());
+			fixed.addActionListener(this);
 
-		fixingPanel.add(assigned);
-		fixingPanel.add(fixed);
-		myPanel.add(fixingPanel);
-		return myPanel;
+			fixingPanel.add(assigned);
+			fixingPanel.add(fixed);
+			myPanel.add(fixingPanel);
+			return myPanel;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities.get(index))
+					.getAttach();
+			JPanel myPanel = new JPanel();
+			JPanel fixingPanel = new JPanel();
+			fixingPanel.setBorder(new TitledBorder(new EtchedBorder(),
+					DConst.R_ASSIGN));
+			JToggleButton assigned = new JToggleButton(DConst.BUT_PLACE);
+			assigned.setSelected(event.isAssigned());
+			assigned.addActionListener(this);
+			JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
+
+			fixed.setSelected(event.getPermanentState());
+			fixed.addActionListener(this);
+
+			fixingPanel.add(assigned);
+			fixingPanel.add(fixed);
+			myPanel.add(fixingPanel);
+			return myPanel;
+		}
 
 	} // end buildFixingPanel
 
@@ -736,12 +758,21 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 * @return
 	 */
 	private String buildDuration() {
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		int duration = event.getDuration()
-				/ _dApplic.getCurrentDModel().getTTStructure()
-						.getPeriodLenght();
-		return String.valueOf(duration);
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			int duration = event.getDuration()
+					/ _dApplic.getCurrentDModel().getTTStructure()
+							.getPeriodLenght();
+			return String.valueOf(duration);
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			int duration = event.getDuration()
+					/ _dApplic.getCurrentDModel().getTTStructure()
+							.getPeriodLenght();
+			return String.valueOf(duration);
+		}
 	}
 
 	/**
@@ -753,39 +784,80 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildHourList() {
 		Vector list[] = { new Vector(), new Vector() };
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
-				.getCurrentCycle();
-		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 0));
-		long seqKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 1));
-		long perKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 2));
-		Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
-		list[0].add(period.getBeginHour()[0] + ":" + period.getBeginHour()[1]);
-		Day day = (Day) cycle.getSetOfDays().getResource(dayKey).getAttach();
-		int[] avoidPriority = {};
-		int duration = event.getDuration()
-				/ _dApplic.getCurrentDModel().getTTStructure()
-						.getPeriodLenght();
-		for (int i = 0; i < day.getSetOfSequences().size(); i++) {
-			Sequence seq = (Sequence) day.getSetOfSequences().getResourceAt(i)
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
+					.getCurrentCycle();
+			long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 0));
+			long seqKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 1));
+			long perKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 2));
+			Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
+			list[0].add(period.getBeginHour()[0] + ":"
+					+ period.getBeginHour()[1]);
+			Day day = (Day) cycle.getSetOfDays().getResource(dayKey)
 					.getAttach();
-			for (int j = 0; j < seq.getSetOfPeriods().size(); j++) {
-				period = (Period) seq.getSetOfPeriods().getResourceAt(j)
-						.getAttach();
-				if (cycle.isPeriodContiguous(dayKey, day.getSetOfSequences()
-						.getResourceAt(i).getKey(), seq.getSetOfPeriods()
-						.getResourceAt(j).getKey(), duration, avoidPriority,
-						true)) {
-					list[1].add(period.getBeginHour()[0] + ":"
-							+ period.getBeginHour()[1]);
-				}// end if (cycle.isPeriodContiguous(p
-			}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
-		}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
-		return list;
+			int[] avoidPriority = {};
+			int duration = event.getDuration()
+					/ _dApplic.getCurrentDModel().getTTStructure()
+							.getPeriodLenght();
+			for (int i = 0; i < day.getSetOfSequences().size(); i++) {
+				Sequence seq = (Sequence) day.getSetOfSequences()
+						.getResourceAt(i).getAttach();
+				for (int j = 0; j < seq.getSetOfPeriods().size(); j++) {
+					period = (Period) seq.getSetOfPeriods().getResourceAt(j)
+							.getAttach();
+					if (cycle.isPeriodContiguous(dayKey, day
+							.getSetOfSequences().getResourceAt(i).getKey(), seq
+							.getSetOfPeriods().getResourceAt(j).getKey(),
+							duration, avoidPriority, true)) {
+						list[1].add(period.getBeginHour()[0] + ":"
+								+ period.getBeginHour()[1]);
+					}// end if (cycle.isPeriodContiguous(p
+				}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
+			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+			return list;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
+					.getCurrentCycle();
+			long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 0));
+			long seqKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 1));
+			long perKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 2));
+			Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
+			list[0].add(period.getBeginHour()[0] + ":"
+					+ period.getBeginHour()[1]);
+			Day day = (Day) cycle.getSetOfDays().getResource(dayKey)
+					.getAttach();
+			int[] avoidPriority = {};
+			int duration = event.getDuration()
+					/ _dApplic.getCurrentDModel().getTTStructure()
+							.getPeriodLenght();
+			for (int i = 0; i < day.getSetOfSequences().size(); i++) {
+				Sequence seq = (Sequence) day.getSetOfSequences()
+						.getResourceAt(i).getAttach();
+				for (int j = 0; j < seq.getSetOfPeriods().size(); j++) {
+					period = (Period) seq.getSetOfPeriods().getResourceAt(j)
+							.getAttach();
+					if (cycle.isPeriodContiguous(dayKey, day
+							.getSetOfSequences().getResourceAt(i).getKey(), seq
+							.getSetOfPeriods().getResourceAt(j).getKey(),
+							duration, avoidPriority, true)) {
+						list[1].add(period.getBeginHour()[0] + ":"
+								+ period.getBeginHour()[1]);
+					}// end if (cycle.isPeriodContiguous(p
+				}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
+			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+			return list;
+		}
+
 	}
 
 	/**
@@ -795,18 +867,34 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildDayList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
-				.getCurrentCycle();
-		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 0));
-		DResource day = cycle.getSetOfDays().getResource(dayKey);
-		list[0].add(day.getKey() + "." + day.getID());
-		for (int i = 0; i < cycle.getSetOfDays().size(); i++)
-			list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey() + "."
-					+ cycle.getSetOfDays().getResourceAt(i).getID());
-		return list;
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
+					.getCurrentCycle();
+			long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 0));
+			DResource day = cycle.getSetOfDays().getResource(dayKey);
+			list[0].add(day.getKey() + "." + day.getID());
+			for (int i = 0; i < cycle.getSetOfDays().size(); i++)
+				list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey()
+						+ "." + cycle.getSetOfDays().getResourceAt(i).getID());
+			return list;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
+					.getCurrentCycle();
+			long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+					.getPeriodKey(), ".", 0));
+			DResource day = cycle.getSetOfDays().getResource(dayKey);
+			list[0].add(day.getKey() + "." + day.getID());
+			for (int i = 0; i < cycle.getSetOfDays().size(); i++)
+				list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey()
+						+ "." + cycle.getSetOfDays().getResourceAt(i).getID());
+			return list;
+		}
+
 	}
 
 	/**
@@ -817,18 +905,34 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	private Vector buildCurrentInstructorList(int index) {
 		Vector<String> v = new Vector<String>();
 
-		EventDx event = (EventDx) ((DResource) _unities.get(index))
-				.getAttach();
-		DxSetOfInstructors soi = _dApplic.getCurrentDModel()
-				.getDxSetOfInstructors();
-		long keys[] = event.getInstructorKey();
-		for (int i = 0; i < keys.length; i++) {
-			String sName = soi.getInstructorName(keys[i]);
-			if (sName != null)
-				v.add(sName);
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities.get(index))
+					.getAttach();
+			DxSetOfInstructors soi = _dApplic.getCurrentDModel()
+					.getDxSetOfInstructors();
+			long keys[] = event.getInstructorKey();
+			for (int i = 0; i < keys.length; i++) {
+				String sName = soi.getInstructorName(keys[i]);
+				if (sName != null)
+					v.add(sName);
+			}
+
+			return v;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities.get(index))
+					.getAttach();
+			DxSetOfInstructors soi = _dApplic.getCurrentDModel()
+					.getDxSetOfInstructors();
+			long keys[] = event.getInstructorKey();
+			for (int i = 0; i < keys.length; i++) {
+				String sName = soi.getInstructorName(keys[i]);
+				if (sName != null)
+					v.add(sName);
+			}
+
+			return v;
 		}
 
-		return v;
 	}
 
 	private Vector buildInstructorList() {// int index){
@@ -850,65 +954,136 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	private Vector[] buildRoomList(String selectedFunction) {// String
 		// category){
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		if (DxFlags.newRooms) {
-			DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
-			DxRoom dxr = dxsor.getRoom(event.getRoomKey());
-			if (dxr != null)
-				list[0].add(dxr.getName());
-			else
-				list[0].add(DConst.NO_ROOM_INTERNAL);
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			if (DxFlags.newRooms) {
+				DxSetOfRooms dxsor = _dApplic.getCurrentDModel()
+						.getDxSetOfRooms();
+				DxRoom dxr = dxsor.getRoom(event.getRoomKey());
+				if (dxr != null)
+					list[0].add(dxr.getName());
+				else
+					list[0].add(DConst.NO_ROOM_INTERNAL);
 
-			if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
-				Iterator itDxSor = dxsor.iterator();
-				while (itDxSor.hasNext()) {
-					list[1].add(((DxRoom) itDxSor.next()).getName());
-				}
-			} else {
-				SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-						.getSetOfRoomsFunctions();
-				long functionKey = sorf.getResource(selectedFunction).getKey();
+				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
+					Iterator itDxSor = dxsor.iterator();
+					while (itDxSor.hasNext()) {
+						list[1].add(((DxRoom) itDxSor.next()).getName());
+					}
+				} else {
+					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+							.getSetOfRoomsFunctions();
+					long functionKey = sorf.getResource(selectedFunction)
+							.getKey();
 
-				Iterator itDxSor = dxsor.iterator();
-				while (itDxSor.hasNext()) {
-					dxr = (DxRoom) itDxSor.next();
-					// With new sites, functions are irrelevant. Room key and
-					// SetOfRoomsFunctions key wont match
-					if (dxr.getFunction() == functionKey) {
-						list[1].add(dxr.getName());
+					Iterator itDxSor = dxsor.iterator();
+					while (itDxSor.hasNext()) {
+						dxr = (DxRoom) itDxSor.next();
+						// With new sites, functions are irrelevant. Room key
+						// and
+						// SetOfRoomsFunctions key wont match
+						if (dxr.getFunction() == functionKey) {
+							list[1].add(dxr.getName());
+						}
 					}
 				}
-			}
-			list[1].add(DConst.NO_ROOM_INTERNAL);
-		} else {
-			SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
-			DResource room = sor.getResource(event.getRoomKey());
-
-			if (room != null)
-				list[0].add(room.getID());
-			else
-				list[0].add(DConst.NO_ROOM_INTERNAL);
-
-			if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
-				for (int i = 0; i < sor.size(); i++) {
-					list[1].add(sor.getResourceAt(i).getID());
-				}
+				list[1].add(DConst.NO_ROOM_INTERNAL);
 			} else {
-				SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-						.getSetOfRoomsFunctions();
-				long functionKey = sorf.getResource(selectedFunction).getKey();
-				for (int i = 0; i < sor.size(); i++) {
-					RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(i)
-							.getAttach();
-					if (roomAttach.getFunction() == functionKey)
+				SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
+				DResource room = sor.getResource(event.getRoomKey());
+
+				if (room != null)
+					list[0].add(room.getID());
+				else
+					list[0].add(DConst.NO_ROOM_INTERNAL);
+
+				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
+					for (int i = 0; i < sor.size(); i++) {
 						list[1].add(sor.getResourceAt(i).getID());
+					}
+				} else {
+					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+							.getSetOfRoomsFunctions();
+					long functionKey = sorf.getResource(selectedFunction)
+							.getKey();
+					for (int i = 0; i < sor.size(); i++) {
+						RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(
+								i).getAttach();
+						if (roomAttach.getFunction() == functionKey)
+							list[1].add(sor.getResourceAt(i).getID());
+					}
 				}
+				list[1].add(DConst.NO_ROOM_INTERNAL);
 			}
-			list[1].add(DConst.NO_ROOM_INTERNAL);
+
+			return list;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			if (DxFlags.newRooms) {
+				DxSetOfRooms dxsor = _dApplic.getCurrentDModel()
+						.getDxSetOfRooms();
+				DxRoom dxr = dxsor.getRoom(event.getRoomKey());
+				if (dxr != null)
+					list[0].add(dxr.getName());
+				else
+					list[0].add(DConst.NO_ROOM_INTERNAL);
+
+				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
+					Iterator itDxSor = dxsor.iterator();
+					while (itDxSor.hasNext()) {
+						list[1].add(((DxRoom) itDxSor.next()).getName());
+					}
+				} else {
+					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+							.getSetOfRoomsFunctions();
+					long functionKey = sorf.getResource(selectedFunction)
+							.getKey();
+
+					Iterator itDxSor = dxsor.iterator();
+					while (itDxSor.hasNext()) {
+						dxr = (DxRoom) itDxSor.next();
+						// With new sites, functions are irrelevant. Room key
+						// and
+						// SetOfRoomsFunctions key wont match
+						if (dxr.getFunction() == functionKey) {
+							list[1].add(dxr.getName());
+						}
+					}
+				}
+				list[1].add(DConst.NO_ROOM_INTERNAL);
+			} else {
+				SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
+				DResource room = sor.getResource(event.getRoomKey());
+
+				if (room != null)
+					list[0].add(room.getID());
+				else
+					list[0].add(DConst.NO_ROOM_INTERNAL);
+
+				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
+					for (int i = 0; i < sor.size(); i++) {
+						list[1].add(sor.getResourceAt(i).getID());
+					}
+				} else {
+					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+							.getSetOfRoomsFunctions();
+					long functionKey = sorf.getResource(selectedFunction)
+							.getKey();
+					for (int i = 0; i < sor.size(); i++) {
+						RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(
+								i).getAttach();
+						if (roomAttach.getFunction() == functionKey)
+							list[1].add(sor.getResourceAt(i).getID());
+					}
+				}
+				list[1].add(DConst.NO_ROOM_INTERNAL);
+			}
+
+			return list;
 		}
 
-		return list;
 	}
 
 	private String getCapacity(String str) {
@@ -945,26 +1120,50 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildRoomStateList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		// SetOfCategories soc= _dm.getSetOfCategories();
-		// long dayKey=
-		// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
-		// DResource room = sor.getResource(event.getRoomKey());
-		if (event.getRoomKey() == -1)
-			list[0].add(DConst.NOT_PLACED_ROOM_STATE);
-		else {
-			if (event.isRoomFixed())
-				list[0].add(DConst.FIXED_ROOM_STATE);
-			else
-				list[0].add(DConst.PLACED_ROOM_STATE);
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			// SetOfCategories soc= _dm.getSetOfCategories();
+			// long dayKey=
+			// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+			// DResource room = sor.getResource(event.getRoomKey());
+			if (event.getRoomKey() == -1)
+				list[0].add(DConst.NOT_PLACED_ROOM_STATE);
+			else {
+				if (event.isRoomFixed())
+					list[0].add(DConst.FIXED_ROOM_STATE);
+				else
+					list[0].add(DConst.PLACED_ROOM_STATE);
+			}
+			// for(int i=0; i< soc.size(); i++)
+			// list[1].add(soc.getResourceAt(i).getID());
+			list[1].add(DConst.NOT_PLACED_ROOM_STATE);
+			list[1].add(DConst.PLACED_ROOM_STATE);
+			list[1].add(DConst.FIXED_ROOM_STATE);
+			return list;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			// SetOfCategories soc= _dm.getSetOfCategories();
+			// long dayKey=
+			// Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));
+			// DResource room = sor.getResource(event.getRoomKey());
+			if (event.getRoomKey() == -1)
+				list[0].add(DConst.NOT_PLACED_ROOM_STATE);
+			else {
+				if (event.isRoomFixed())
+					list[0].add(DConst.FIXED_ROOM_STATE);
+				else
+					list[0].add(DConst.PLACED_ROOM_STATE);
+			}
+			// for(int i=0; i< soc.size(); i++)
+			// list[1].add(soc.getResourceAt(i).getID());
+			list[1].add(DConst.NOT_PLACED_ROOM_STATE);
+			list[1].add(DConst.PLACED_ROOM_STATE);
+			list[1].add(DConst.FIXED_ROOM_STATE);
+			return list;
 		}
-		// for(int i=0; i< soc.size(); i++)
-		// list[1].add(soc.getResourceAt(i).getID());
-		list[1].add(DConst.NOT_PLACED_ROOM_STATE);
-		list[1].add(DConst.PLACED_ROOM_STATE);
-		list[1].add(DConst.FIXED_ROOM_STATE);
-		return list;
+
 	}
 
 	/**
@@ -978,20 +1177,38 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	 */
 	private Vector[] buildRoomFunctionList() {
 		Vector list[] = { new Vector(1), new Vector(1) };
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-				.getSetOfRoomsFunctions();
-		DResource roomFunction = sorf.getResource(event.getRoomFunction());
-		if (roomFunction != null && event.getRoomKey() != -1)
-			list[0].add(roomFunction.getID());
-		else
-			list[0].add(DConst.ALL);
-		sorf.sortSetOfResourcesByID();
-		for (int i = 0; i < sorf.size(); i++)
-			list[1].add(sorf.getResourceAt(i).getID());
-		// list[1].add(DConst.ALL);
-		return list;
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+					.getSetOfRoomsFunctions();
+			DResource roomFunction = sorf.getResource(event.getRoomFunction());
+			if (roomFunction != null && event.getRoomKey() != -1)
+				list[0].add(roomFunction.getID());
+			else
+				list[0].add(DConst.ALL);
+			sorf.sortSetOfResourcesByID();
+			for (int i = 0; i < sorf.size(); i++)
+				list[1].add(sorf.getResourceAt(i).getID());
+			// list[1].add(DConst.ALL);
+			return list;
+		} else {
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+					.getSetOfRoomsFunctions();
+			DResource roomFunction = sorf.getResource(event.getRoomFunction());
+			if (roomFunction != null && event.getRoomKey() != -1)
+				list[0].add(roomFunction.getID());
+			else
+				list[0].add(DConst.ALL);
+			sorf.sortSetOfResourcesByID();
+			for (int i = 0; i < sorf.size(); i++)
+				list[1].add(sorf.getResourceAt(i).getID());
+			// list[1].add(DConst.ALL);
+			return list;
+		}
+
 	}
 
 	/**
@@ -1000,69 +1217,136 @@ public class EditEventDlg extends JDialog implements ActionListener,
 	private boolean applyChanges() {
 		Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
 				.getCurrentCycle();
-		EventDx event = (EventDx) ((DResource) _unities
-				.get(_currentActivityIndex)).getAttach();
-		// remove event
-		_dApplic.getCurrentDModel().getConditionsTest().removeEventInTTs(
-				_dApplic.getCurrentDModel().getTTStructure(),
-				(DResource) _unities.get(_currentActivityIndex), false);
+		if (DxFlags.newEvent) {
+			DxEvent event = (DxEvent) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			// remove event
+			_dApplic.getCurrentDModel().getConditionsTest().removeEventInTTs(
+					_dApplic.getCurrentDModel().getTTStructure(),
+					(DResource) _unities.get(_currentActivityIndex), false);
 
-		JPanel tpane = ((JPanel) _tabbedPane
-				.getComponentAt(_currentActivityIndex));
-		String duration = getSelectedDuration(tpane);
-		if ((!DXToolsMethods.isIntValue(duration))
-				|| (Integer.parseInt(duration) < 0))
-			return false;
-		String day = getSelectedDay(tpane);
-		String hour = getSelectedHour(tpane);
+			JPanel tpane = ((JPanel) _tabbedPane
+					.getComponentAt(_currentActivityIndex));
+			String duration = getSelectedDuration(tpane);
+			if ((!DXToolsMethods.isIntValue(duration))
+					|| (Integer.parseInt(duration) < 0))
+				return false;
+			String day = getSelectedDay(tpane);
+			String hour = getSelectedHour(tpane);
 
-		JList instructor = getInstructorsList(tpane);
-		ListModel lm = instructor.getModel();
-		String intructorKeys = getInstructorKeys(lm);
+			JList instructor = getInstructorsList(tpane);
+			ListModel lm = instructor.getModel();
+			String intructorKeys = getInstructorKeys(lm);
 
-		String room = getSelectedRoom(tpane);
-		String state = this.getSelectedState(tpane);
-		String function = getSelectedFunction(tpane);
-		SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-				.getSetOfRoomsFunctions();
-		DResource roomFunction = sorf.getResource(function);
+			String room = getSelectedRoom(tpane);
+			String state = this.getSelectedState(tpane);
+			String function = getSelectedFunction(tpane);
+			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+					.getSetOfRoomsFunctions();
+			DResource roomFunction = sorf.getResource(function);
 
-		boolean assignBut = isAssignedButtonSelected(tpane);
+			boolean assignBut = isAssignedButtonSelected(tpane);
 
-		boolean fixedBut = isFixedButtonSelected(tpane); // =
-		// ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
-		int[] daytime = {
-				Integer.parseInt(DXToolsMethods.getToken(day, ".", 0)),
-				Integer.parseInt(DXToolsMethods.getToken(hour, ":", 0)),
-				Integer.parseInt(DXToolsMethods.getToken(hour, ":", 1)) };
-		String periodKey = cycle.getPeriod(daytime);
-		event.setDuration(Integer.parseInt(duration)
-				* _dApplic.getCurrentDModel().getTTStructure()
-						.getPeriodLenght());
-		event.setKey(4, periodKey);
-		event.setKey(1, intructorKeys);
-		if (DxFlags.newRooms) {
-			event.setKey(2, Long.toString(_dApplic.getCurrentDModel()
-					.getDxSetOfRooms().getRoomKeyByName(room)));
+			boolean fixedBut = isFixedButtonSelected(tpane); // =
+			// ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
+			int[] daytime = {
+					Integer.parseInt(DXToolsMethods.getToken(day, ".", 0)),
+					Integer.parseInt(DXToolsMethods.getToken(hour, ":", 0)),
+					Integer.parseInt(DXToolsMethods.getToken(hour, ":", 1)) };
+			String periodKey = cycle.getPeriod(daytime);
+			event.setDuration(Integer.parseInt(duration)
+					* _dApplic.getCurrentDModel().getTTStructure()
+							.getPeriodLenght());
+			event.setKey(4, periodKey);
+			event.setKey(1, intructorKeys);
+			if (DxFlags.newRooms) {
+				event.setKey(2, Long.toString(_dApplic.getCurrentDModel()
+						.getDxSetOfRooms().getRoomKeyByName(room)));
+			} else {
+				event.setKey(2, Long.toString(getResourceKey(_dApplic
+						.getCurrentDModel().getSetOfRooms(), room)));
+			}
+
+			event.setAssigned(assignBut);
+			event.setPermanentState(fixedBut);
+			event.setState(state);
+			event.setRoomFunction((int) roomFunction.getKey());
+
+			Vector vect = new Vector();
+			vect.add(_unities.get(_currentActivityIndex));
+			_dApplic.getCurrentDModel().getSetOfEvents().updateActivities(
+					_dApplic.getCurrentDModel().getSetOfActivities(), vect);
+			// add event
+			_dApplic.getCurrentDModel().getConditionsTest().addEventInTTs(
+					_dApplic.getCurrentDModel().getTTStructure(),
+					(DResource) _unities.get(_currentActivityIndex), false);
+			return true;
 		} else {
-			event.setKey(2, Long.toString(getResourceKey(_dApplic
-					.getCurrentDModel().getSetOfRooms(), room)));
+			EventDx event = (EventDx) ((DResource) _unities
+					.get(_currentActivityIndex)).getAttach();
+			// remove event
+			_dApplic.getCurrentDModel().getConditionsTest().removeEventInTTs(
+					_dApplic.getCurrentDModel().getTTStructure(),
+					(DResource) _unities.get(_currentActivityIndex), false);
+
+			JPanel tpane = ((JPanel) _tabbedPane
+					.getComponentAt(_currentActivityIndex));
+			String duration = getSelectedDuration(tpane);
+			if ((!DXToolsMethods.isIntValue(duration))
+					|| (Integer.parseInt(duration) < 0))
+				return false;
+			String day = getSelectedDay(tpane);
+			String hour = getSelectedHour(tpane);
+
+			JList instructor = getInstructorsList(tpane);
+			ListModel lm = instructor.getModel();
+			String intructorKeys = getInstructorKeys(lm);
+
+			String room = getSelectedRoom(tpane);
+			String state = this.getSelectedState(tpane);
+			String function = getSelectedFunction(tpane);
+			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+					.getSetOfRoomsFunctions();
+			DResource roomFunction = sorf.getResource(function);
+
+			boolean assignBut = isAssignedButtonSelected(tpane);
+
+			boolean fixedBut = isFixedButtonSelected(tpane); // =
+			// ((JToggleButton)((JPanel)tpane.getComponent(3)).getComponent(1)).isSelected();
+			int[] daytime = {
+					Integer.parseInt(DXToolsMethods.getToken(day, ".", 0)),
+					Integer.parseInt(DXToolsMethods.getToken(hour, ":", 0)),
+					Integer.parseInt(DXToolsMethods.getToken(hour, ":", 1)) };
+			String periodKey = cycle.getPeriod(daytime);
+			event.setDuration(Integer.parseInt(duration)
+					* _dApplic.getCurrentDModel().getTTStructure()
+							.getPeriodLenght());
+			event.setKey(4, periodKey);
+			event.setKey(1, intructorKeys);
+			if (DxFlags.newRooms) {
+				event.setKey(2, Long.toString(_dApplic.getCurrentDModel()
+						.getDxSetOfRooms().getRoomKeyByName(room)));
+			} else {
+				event.setKey(2, Long.toString(getResourceKey(_dApplic
+						.getCurrentDModel().getSetOfRooms(), room)));
+			}
+
+			event.setAssigned(assignBut);
+			event.setPermanentState(fixedBut);
+			event.setState(state);
+			event.setRoomFunction((int) roomFunction.getKey());
+
+			Vector vect = new Vector();
+			vect.add(_unities.get(_currentActivityIndex));
+			_dApplic.getCurrentDModel().getSetOfEvents().updateActivities(
+					_dApplic.getCurrentDModel().getSetOfActivities(), vect);
+			// add event
+			_dApplic.getCurrentDModel().getConditionsTest().addEventInTTs(
+					_dApplic.getCurrentDModel().getTTStructure(),
+					(DResource) _unities.get(_currentActivityIndex), false);
+			return true;
 		}
 
-		event.setAssigned(assignBut);
-		event.setPermanentState(fixedBut);
-		event.setState(state);
-		event.setRoomFunction((int) roomFunction.getKey());
-
-		Vector vect = new Vector();
-		vect.add(_unities.get(_currentActivityIndex));
-		_dApplic.getCurrentDModel().getSetOfEvents().updateActivities(
-				_dApplic.getCurrentDModel().getSetOfActivities(), vect);
-		// add event
-		_dApplic.getCurrentDModel().getConditionsTest().addEventInTTs(
-				_dApplic.getCurrentDModel().getTTStructure(),
-				(DResource) _unities.get(_currentActivityIndex), false);
-		return true;
 	}
 
 	private String getInstructorKeys(ListModel lm) {
