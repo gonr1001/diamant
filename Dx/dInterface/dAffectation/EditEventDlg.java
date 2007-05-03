@@ -154,7 +154,6 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		int FACTOR = 50;
 
 		_tabbedPane = buildTabbedPane();
-		// myJPanel.add(_tabbedPane, BorderLayout.CENTER);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(_tabbedPane, BorderLayout.NORTH);
 		_tabbedPane.addChangeListener(this);
@@ -168,7 +167,6 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		// XXXX Pascal: magic numbers sans commentaire
 		this.setBounds(screenSize.width / 6, screenSize.height / 4,
 				screenSize.width / 3, screenSize.height / 2 + FACTOR);
 		this.pack();

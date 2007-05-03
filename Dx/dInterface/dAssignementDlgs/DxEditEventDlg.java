@@ -248,12 +248,12 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			dispose();
 		} else if (command.equals(DConst.BUT_APPLY)) {
 			boolean apply = false;
-			//			for (int i = 0; i < this._events.size(); i++) {
+			// for (int i = 0; i < this._events.size(); i++) {
 			apply = applyChanges();
 			if (!apply) {
 				new DxExceptionDlg(this, "Valeur erronée");
-				//					break;
-				//				}
+				// break;
+				// }
 				_applyPanel.setFirstDisable();
 			} // end for
 			if (apply) {
@@ -477,16 +477,23 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	} // end buildFixingPanel
 
-	/**
-	 * build the hour list
-	 * 
-	 * @return Vector[] of two elements the first is a Vector containing
-	 * 
-	 * the second contains
-	 */
-	private Vector<String> buildHourList(DxEvent event) {
-		Vector<String> list = new Vector<String>();
+	private JPanel buildHourPanel(DxEvent event) {
+		JPanel hourPanel = new JPanel();
+		Vector<String> vect = buildHourList(event);
+		JComboBox hourCB = new JComboBox(vect);
 
+		hourPanel.setBorder(new TitledBorder(new EtchedBorder(),
+				DConst.R_ACTIVITY_BEGIN_HOUR));
+		hourPanel.add(hourCB);
+		Period period = findPeriod(event);
+		hourCB.setSelectedItem(period.getBeginHour()[0] + ":"
+				+ period.getBeginHour()[1]);
+		hourCB.addActionListener(this);
+
+		return hourPanel;
+	} // end buildHourPanel
+
+	private Period findPeriod(DxEvent event) {
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
 				.getPeriodKey(), ".", 0));
@@ -495,6 +502,16 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		long perKey = Long.parseLong(DXToolsMethods.getToken(event
 				.getPeriodKey(), ".", 2));
 		Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
+		return period;
+	}
+
+
+	private Vector<String> buildHourList(DxEvent event) {
+		Vector<String> list = new Vector<String>();
+		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
+		Period period = findPeriod(event);
+		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
+				.getPeriodKey(), ".", 0));
 		Day day = (Day) cycle.getSetOfDays().getResource(dayKey).getAttach();
 		int[] avoidPriority = {};
 		int duration = event.getDuration()
@@ -516,30 +533,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
 		return list;
 	}
-
-	private JPanel buildHourPanel(DxEvent event) {
-		JPanel hourPanel = new JPanel();
-		Vector<String> vect = buildHourList(event);
-		JComboBox hourCB = new JComboBox(vect);
-
-		hourPanel.setBorder(new TitledBorder(new EtchedBorder(),
-				DConst.R_ACTIVITY_BEGIN_HOUR));
-		hourPanel.add(hourCB);
-
-		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
-		long dayKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 0));
-		long seqKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 1));
-		long perKey = Long.parseLong(DXToolsMethods.getToken(event
-				.getPeriodKey(), ".", 2));
-		Period period = cycle.getPeriodByKey(dayKey, seqKey, perKey);
-		hourCB.setSelectedItem(period.getBeginHour()[0] + ":"
-				+ period.getBeginHour());
-		hourCB.addActionListener(this);
-
-		return hourPanel;
-	} // end buildHourPanel
 
 	private Vector buildInstructorList() {
 		Vector<String> v = new Vector<String>();
@@ -964,7 +957,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	} // end isAssignedButtonSelected
 
-
 	private boolean isFixedButtonSelected(JPanel jPanel) {
 		JPanel externalPanel = (JPanel) jPanel.getComponent(3);
 		JPanel myJPanel = (JPanel) externalPanel.getComponent(0);
@@ -987,4 +979,27 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_applyPanel.setFirstEnable();
 	}
 
+	/**
+	 * item state changed
+	 * 
+	 * @param e
+	 */
+	public void stateChanged(ChangeEvent ce) {
+		// pane changed (detected by isFirstEnable)
+		// it it is necessary to apply or close
+		if (_applyPanel.isFirstEnable()) {
+			_tabbedPane.removeChangeListener(this);
+			int i = _tabbedPane.getSelectedIndex();
+			_tabbedPane.setSelectedIndex(i);
+			new InformationDlg(this, "Appliquer ou fermer pour continuer",
+					"Operation interdite");
+			_tabbedPane.addChangeListener(this);
+		} else {
+			_tabbedPane.setSelectedIndex(((JTabbedPane) ce.getSource())
+					.getSelectedIndex());
+			int j = ((JTabbedPane) ce.getSource()).getSelectedIndex();
+			_tabbedPane.setSelectedIndex(j);
+
+		}
+	}// end state change
 }// end class
