@@ -68,7 +68,7 @@ public class SetOfEvents extends DSetOfResources {
 
 	private void forEachType(DResource activityResource,
 			DResource typeResource, DSetOfResources soImportErrors) {
-		String unityKey;
+		String compositeKey;
 		long roomKey;
 		for (int k = 0; k < ((Type) typeResource.getAttach())
 				.getSetOfSections().size(); k++) {
@@ -83,7 +83,7 @@ public class SetOfEvents extends DSetOfResources {
 						_dm.getTTStructure().getCurrentCycleResource().getID())
 						.getAttach();
 				if (assignment != null) {
-					unityKey = buildUnitKey(activityResource, typeResource,
+					compositeKey = buildCompositeKey(activityResource, typeResource,
 							sectionResource, unityResource);
 					String unityID = buildUnityID(activityResource,
 							typeResource, sectionResource, unityResource);
@@ -111,12 +111,12 @@ public class SetOfEvents extends DSetOfResources {
 						roomKey = oldAssignDxRooms(assignment,
 								unityID, soImportErrors);
 						if(DxFlags.newEvent) {
-							DxEvent dxevent = new DxEvent(unityKey, assignment
+							DxEvent dxEvent = new DxEvent(compositeKey, assignment
 									.getSetInstructorKeys(), roomName, roomKey,
 									unityResource, assignment, cLimit);
-							this.addResource(new DResource(unityID, dxevent), 0);
+							this.addResource(new DResource(unityID, dxEvent), 0);
 						} else {
-							EventDx event = new EventDx(unityKey, assignment
+							EventDx event = new EventDx(compositeKey, assignment
 									.getSetInstructorKeys(), roomKey,
 									((Unity) unityResource.getAttach())
 											.getDuration(), assignment
@@ -135,7 +135,7 @@ public class SetOfEvents extends DSetOfResources {
 					} else {
 						roomKey = assignRooms(assignment,
 								unityID, soImportErrors);
-						EventDx event = new EventDx(unityKey, assignment
+						EventDx event = new EventDx(compositeKey, assignment
 								.getSetInstructorKeys(), roomKey,
 								((Unity) unityResource.getAttach())
 										.getDuration(), assignment
@@ -165,7 +165,7 @@ public class SetOfEvents extends DSetOfResources {
 				+ sectionResource.getID() + "." + unityResource.getID() + ".";
 	}
 
-	private String buildUnitKey(DResource activityResource,
+	private String buildCompositeKey(DResource activityResource,
 			DResource typeResource, DResource sectionResource,
 			DResource unityResource) {
 		return activityResource.getKey() + "." + typeResource.getKey() + "."
@@ -614,4 +614,8 @@ public class SetOfEvents extends DSetOfResources {
 			}// end if(event.isPlaceInAPeriod())
 		}// end for (int i = 0; i < this.size();
 	}
+	
+//	public String toString() {		
+//		return "";
+//	}
 }// end class

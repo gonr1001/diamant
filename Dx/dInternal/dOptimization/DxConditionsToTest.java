@@ -510,7 +510,7 @@ public class DxConditionsToTest {
 			DxConflictLimits conflictsPreference = _dm.getDxDocument()
 					.getDMediator().getDApplication().getPreferences()
 					.getDxConflictLimits();
-			// for (int i = 0; i < _acceptableConflictsTable.length; i++)
+			
 			_acceptableConflictsTable[0] = conflictsPreference
 					.getMStudConfBetweenTwoEvents();
 			_acceptableConflictsTable[1] = conflictsPreference

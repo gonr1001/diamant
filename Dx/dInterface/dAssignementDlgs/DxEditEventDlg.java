@@ -146,9 +146,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		if (command.equals(ACTION_CB_SITE)) {
 			_applyPanel.setFirstDisable();
-			JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-			String siteName = getSelectedSite(tpane);
-			System.out.println(siteName);
+			//JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
+			//String siteName = getSelectedSite(tpane);
 			_applyPanel.setFirstEnable();
 		}
 
@@ -158,7 +157,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			String sSiteName = getSelectedSite(tpane);
 			String sTypeName = getSelectedType(tpane);
 			DxSite currentSite = _dModel.getDxSetOfSites().getSite(sSiteName);
-			System.out.println(sTypeName);
 
 			JComboBox cbTypes = getTypesJCB(tpane);
 			cbTypes.removeActionListener(this);
@@ -298,8 +296,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String intructorKeys = getInstructorKeys(lm);
 
 		String room = getSelectedRoom(tpane);
-		System.out.println("DxE event1 room name: " + room);
-
+	
 		boolean assignBut = isAssignedButtonSelected(tpane);
 
 		boolean fixedBut = isFixedButtonSelected(tpane); // =
@@ -325,8 +322,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		}
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
-
-		System.out.println("DxE event2 room name: " + event.getRoomName());
 
 		Vector<Object> vect = new Vector<Object>();
 		vect.add(_events.get(_tabbedPane.getSelectedIndex()));
@@ -394,7 +389,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(_tabbedPane, BorderLayout.NORTH);
 		_tabbedPane.addChangeListener(this);
-		// first tabbedPane = 0;
 		_tabbedPane.setSelectedIndex(0);
 
 		String[] a = { DConst.BUT_APPLY, DConst.BUT_CLOSE };
@@ -600,7 +594,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbCategories = new JComboBox(dcbmCategories);
 		DefaultComboBoxModel dcbmRooms;
 		JComboBox cbRooms = new JComboBox();
-		System.out.println("room " + name);
+		//System.out.println("room " + name);
 
 		if (name.equalsIgnoreCase("------")) {
 			System.out.println("------" + name);
@@ -620,8 +614,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				String currentCatName = currentSite.getCatNameOfRoom(name);
 				currentCat = currentSite.getSetOfCat().getCat(currentCatName);
 				currentRoom = currentSite.getRoom(currentCat.getName(), name);
-				System.out.println("cat" + currentCat.getName() + " name "
-						+ name);
+//				System.out.println("cat" + currentCat.getName() + " name "
+//						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				cbRooms.setModel(dcbmRooms);
@@ -633,8 +627,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			} else { // it is a cat.
 				currentCat = currentSite.getSetOfCat().getCat(name);
 				currentRoom = null;
-				System.out.println("cat" + currentCat.getName() + " noroom "
-						+ name);
+//				System.out.println("cat" + currentCat.getName() + " noroom "
+//						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				cbRooms.setModel(dcbmRooms);
@@ -647,7 +641,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		}
 
-		System.out.println("Cat type " + event.getCatName(currentSite));
+//		System.out.println("Cat type " + event.getCatName(currentSite));
 		cbCategories.setActionCommand(ACTION_CB_TYPE);
 		cbCategories.addActionListener(this);
 

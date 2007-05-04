@@ -48,7 +48,9 @@ import dInternal.dUtil.DXToolsMethods;
 public class DxAssignRoomsAlg implements Algorithm {
 
 	private final int NO_ROOM_ASSIGNED = -1;
-	
+
+	private final String STR_NO_ROOM_ASSIGNED = "-1";
+
 	private DModel _dm;
 
 	private DxConflictLimits _dxCL;
@@ -62,7 +64,8 @@ public class DxAssignRoomsAlg implements Algorithm {
 		super();
 		_dm = dm;
 		// TODO find out an equivalence for next line
-//		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
+		// _allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
+		//next line can be suppres i think rgr
 		_dm.getConditionsTest().extractDxPreference();
 		_dxCL = limits;
 		setNoRoomToEventsWithRoomsNotFixed();
@@ -82,7 +85,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		DSetOfResources setOfEventsToAssign = new StandardCollection();
 		// DSetOfResources setOfAvailableRooms;
 		DxSetOfResources setOfAvailableDxRooms;
-		
+
 		// for each period try to assign the free rooms
 		for (int i = 0; i < numberOfPeriods; i++) {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
@@ -199,10 +202,10 @@ public class DxAssignRoomsAlg implements Algorithm {
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
-			EventDx eventDx = (EventDx) soe.getResource(
-					eventInPeriodName).getAttach();
-			if (eventDx.getRoomKey() != NO_ROOM_ASSIGNED) {
-				setOfAvailRooms.removeResource(eventDx.getRoomKey());
+			DxEvent event = (DxEvent) soe.getResource(eventInPeriodName)
+					.getAttach();
+			if (event.getRoomKey() != NO_ROOM_ASSIGNED) {
+				setOfAvailRooms.removeResource(event.getRoomKey());
 			}// end if(eventAttach.getRoomKey() != NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfAvailRooms;
@@ -219,15 +222,19 @@ public class DxAssignRoomsAlg implements Algorithm {
 	private void setNoRoomToEventsWithRoomsNotFixed() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
-			EventDx eventDx = (EventDx) soe.getResourceAt(i)
-					.getAttach();
-			if (eventDx.isAssigned() && !eventDx.isRoomFixed()) {
-				eventDx.setRoomKey(NO_ROOM_ASSIGNED);
+			DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
+
+			if (event.isAssigned() && !event.isRoomFixed()) {
+				if (event.getRoomKey()== NO_ROOM_ASSIGNED)
+					System.out.println("room key !event.isRoomFixed()" + event.getRoomKey());				
+				event.setRoomKey(STR_NO_ROOM_ASSIGNED);
 			}// end if
-			else if (eventDx.isAssigned() && eventDx.isRoomFixed()
-					&& eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-				eventDx.setRoomKey(NO_ROOM_ASSIGNED);
-				eventDx.setRoomFixed(false);
+			else if (event.isAssigned() && event.isRoomFixed()
+					&& event.getRoomKey() == NO_ROOM_ASSIGNED) {
+				if (event.getRoomKey()== NO_ROOM_ASSIGNED)
+					System.out.println("room key event.isRoomFixed()" + event.getRoomKey());
+				event.setRoomKey(STR_NO_ROOM_ASSIGNED);
+				event.setRoomFixed(false);
 			}// end else if
 		}// end for
 	}
@@ -244,31 +251,31 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 * @return l'ensemble des événements
 	 */
 	private DSetOfResources buildSetOfEvents(Period currentPeriod) {
-//		 The container for the result
+		// The container for the result
 		DSetOfResources newSetOfEvents = new StandardCollection();
-//		 Vector contains the events (Ressources) in the currentPeriod
+		// Vector contains the events (Ressources) in the currentPeriod
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
-//		 Get all events
+		// Get all events
 		SetOfEvents soe = _dm.getSetOfEvents();
 		int TOKEN_RANGE = 0;
 		int ADD_RESOURCE_BY_ID = 1;
 		int numberOfStudents;
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
-//			 get the name of an event in the period
+			// get the name of an event in the period
 			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
 			// get the attach of the event
-			EventDx eventDx = (EventDx) soe.getResource(
-					eventInPeriodName).getAttach();
-			if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
+			DxEvent event = (DxEvent) soe.getResource(eventInPeriodName)
+					.getAttach();
+			if (event.getRoomKey() == NO_ROOM_ASSIGNED) {
 				String actID = DXToolsMethods.getToken(eventInPeriodName,
 						DConst.TOKENSEPARATOR, TOKEN_RANGE);
 				Activity activity = (Activity) _dm.getSetOfActivities()
 						.getResource(actID).getAttach();
 				numberOfStudents = activity.getStudentRegistered().size();
 				DResource resc = new DResource(Integer
-						.toString(numberOfStudents), eventDx);
+						.toString(numberOfStudents), event);
 				newSetOfEvents.addResource(resc, ADD_RESOURCE_BY_ID);
 			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
@@ -302,18 +309,19 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
-//		if (_allRscFunct != null) {
-//			if (((EventAttach) event.getAttach()).getRoomFunction() == _allRscFunct
-//					.getKey()) {
-//				if (needed_room_size <= room.getCapacity())
-//					return true;
-//			}// end if
-//			else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
-//					.getFunction())) {
-//				if (needed_room_size <= room.getCapacity())
-//					return true;
-//			}// end else
-//		}// end if(allRscFunct!= null)
+		// if (_allRscFunct != null) {
+		// if (((EventAttach) event.getAttach()).getRoomFunction() ==
+		// _allRscFunct
+		// .getKey()) {
+		// if (needed_room_size <= room.getCapacity())
+		// return true;
+		// }// end if
+		// else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
+		// .getFunction())) {
+		// if (needed_room_size <= room.getCapacity())
+		// return true;
+		// }// end else
+		// }// end if(allRscFunct!= null)
 		return false;
 	}
 
@@ -339,9 +347,9 @@ public class DxAssignRoomsAlg implements Algorithm {
 	// else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
 	// .getRoomFunction())) {
 	// if (needed_room_size <= room.getRoomCapacity())
-	//					return true;
-	//			}// end else
-	//		}// end if(allRscFunct!= null)
-	//		return false;
-	//	}
+	// return true;
+	// }// end else
+	// }// end if(allRscFunct!= null)
+	// return false;
+	// }
 }// end class

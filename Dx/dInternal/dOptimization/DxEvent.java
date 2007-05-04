@@ -23,10 +23,10 @@ import dInternal.dUtil.DXToolsMethods;
 public class DxEvent extends DObject {
 
 	/**
-	 * _principalRescKey is the composition of activity, type, section and unity
+	 * _compositeKey is the composition of activity, type, section and unity
 	 * keys of an activity wich is represent in the following format a.b.c.d
 	 */
-	private String _principalRescKey;
+	private String _compositeKey;
 
 	private String _fullName;
 
@@ -62,7 +62,7 @@ public class DxEvent extends DObject {
 		_fullName = "name";
 		_ttsKey = "";
 		_isPlaceInAPeriod = false;
-		_principalRescKey = princKey;
+		_compositeKey = princKey;
 		_setInstructorKeys = inst;
 		_roomName = roomName;
 		 _roomKey = key; // the room key
@@ -77,7 +77,7 @@ public class DxEvent extends DObject {
 	}
 
 	public String getPrincipalRescKey() {
-		return _principalRescKey;
+		return _compositeKey;
 	}
 
 	public String getfullName() {
@@ -217,7 +217,7 @@ public class DxEvent extends DObject {
 	public void setKey(int field, String value) {
 		switch (field) {
 		case 0:
-			_principalRescKey = value;
+			_compositeKey = value;
 			break;
 		case 1:
 			_setInstructorKeys.getSetOfResources().removeAllElements();
@@ -242,7 +242,7 @@ public class DxEvent extends DObject {
 	}
 
 	public DxEvent cloneEvent() {
-		DxEvent eA = new DxEvent(_principalRescKey, _setInstructorKeys,
+		DxEvent eA = new DxEvent(_compositeKey, _setInstructorKeys,
 				_roomName, _roomKey, _unity, _assignment, _cLimit);
 		return eA;
 	}
