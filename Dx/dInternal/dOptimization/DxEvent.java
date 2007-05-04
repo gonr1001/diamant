@@ -17,7 +17,6 @@ import dInternal.DSetOfResources;
 import dInternal.DObject;
 import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Unity;
-import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -38,6 +37,8 @@ public class DxEvent extends DObject {
 	private long _roomKey; // the room key
 
 	private Assignment _assignment;
+	
+	private boolean _roomFixed;
 
 	private String _roomName; // the room key
 
@@ -287,6 +288,10 @@ public class DxEvent extends DObject {
 
 	public void setRoomKey(String str) {
 		_roomKey = Long.parseLong(str);
+	}
+	
+	public void setRoomFixed(boolean state) {
+		_roomFixed = state;
 	}
 	
 
