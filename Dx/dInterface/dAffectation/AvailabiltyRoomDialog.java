@@ -3,8 +3,8 @@
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
- */
-/**
+ 
+*//**
  * This software is the confidential and proprietary information
  * of rgr. ("Confidential Information").  You
  * shall not disclose such Confidential Information and shall use
@@ -13,7 +13,7 @@
  *
  * @author hara2602
  * @since JDK1.3
- */
+ *//*
 package dInterface.dAffectation;
 
 import java.awt.BorderLayout;
@@ -62,9 +62,9 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 
 	private JComboBox _chooser;
 
-	/**
+	*//**
 	 * @associates JToggleButton 
-	 */
+	 *//*
 	private Vector<JToggleButton> _posVect;
 
 	protected DModel _dmodel;
@@ -75,14 +75,14 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 
 	private int[][] _currentAvailbility;
 
-	/**
+	*//**
 	 * Default constructor.
 	 * @param setOfResources TODO
 	 * @param owner
 	 *            The component on which the dialog will be displayed.
 	 * @param doc
 	 *            The active document. Used to access the dictionnaries.
-	 */
+	 *//*
 	public AvailabiltyRoomDialog(DApplication dApplic,
 			DSetOfResources setOfResources, String str) {
 		super(dApplic.getJFrame(), str, false);
@@ -104,10 +104,10 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 		//        _days = new String[_nbOfDays];
 		//          for (int i = 0; i < _days.length; i++)
 		//            _days[i] = _dmodel.getTTStructure().getWeekTable()[i];
-		/**
+		*//**
 		 * TODO à revoir , Car rien ne dit qu'on utilise Lu-Ma-Me-Je-Ve.
 		 *  La weektable n'est pas un cas generale.Utiliser plutot les dates des "TTXML Days".
-		 */
+		 *//*
 
 		try {
 			initialize();
@@ -119,9 +119,9 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 		}
 	} // end AvailabiltyDialog
 
-	/**
+	*//**
 	 * Component's initialisation and placement.
-	 */
+	 *//*
 	private void initialize() throws Exception {
 		_chooserPanel = new JPanel();
 		// creates the JComboBox with the list of all instructors
@@ -170,9 +170,9 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 		}
 	}
 
-	/**
+	*//**
 	 * combobox item selected
-	 */
+	 *//*
 	public void itemStateChanged(ItemEvent event) {
 		_applyPanel.setFirstDisable();
 		if (event.getStateChange() == ItemEvent.SELECTED) {
@@ -189,13 +189,13 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 		}
 	}// end itemStateChangeed
 
-	/**
+	*//**
 	 * Creates the grid of button. The button is pressed if the instructor is
 	 * free at that period, depressed if not.
 	 * 
 	 * @param instr
 	 *            the instructor for which the grid is constructed.
-	 */
+	 *//*
 	private JPanel makeGridPanel() {
 		JPanel gridPanel = new JPanel();
 		gridPanel.setLayout(new GridLayout(_nbOfPeriods + 1, _nbOfDays + 1));
@@ -257,4 +257,4 @@ public class AvailabiltyRoomDialog extends JDialog implements ActionListener,
 		return "roomDlg";
 	}
 
-} /* end AvailabiltyRoomDialog */
+}  end AvailabiltyRoomDialog */

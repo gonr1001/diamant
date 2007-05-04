@@ -56,7 +56,6 @@ import dInternal.dData.dActivities.Type;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
-import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dOptimization.EventDx;
@@ -955,7 +954,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		if (DxFlags.newEvent) {
 			DxEvent event = (DxEvent) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
-			if (DxFlags.newRooms) {
+//			if (DxFlags.newRooms) {
 				DxSetOfRooms dxsor = _dApplic.getCurrentDModel()
 						.getDxSetOfRooms();
 				DxRoom dxr = dxsor.getRoom(event.getRoomKey());
@@ -987,39 +986,39 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					}
 				}
 				list[1].add(DConst.NO_ROOM_INTERNAL);
-			} else {
-				SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
-				DResource room = sor.getResource(event.getRoomKey());
-
-				if (room != null)
-					list[0].add(room.getID());
-				else
-					list[0].add(DConst.NO_ROOM_INTERNAL);
-
-				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
-					for (int i = 0; i < sor.size(); i++) {
-						list[1].add(sor.getResourceAt(i).getID());
-					}
-				} else {
-					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-							.getSetOfRoomsFunctions();
-					long functionKey = sorf.getResource(selectedFunction)
-							.getKey();
-					for (int i = 0; i < sor.size(); i++) {
-						RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(
-								i).getAttach();
-						if (roomAttach.getFunction() == functionKey)
-							list[1].add(sor.getResourceAt(i).getID());
-					}
-				}
-				list[1].add(DConst.NO_ROOM_INTERNAL);
-			}
+//			} else {
+//				SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
+//				DResource room = sor.getResource(event.getRoomKey());
+//
+//				if (room != null)
+//					list[0].add(room.getID());
+//				else
+//					list[0].add(DConst.NO_ROOM_INTERNAL);
+//
+//				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
+//					for (int i = 0; i < sor.size(); i++) {
+//						list[1].add(sor.getResourceAt(i).getID());
+//					}
+//				} else {
+//					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+//							.getSetOfRoomsFunctions();
+//					long functionKey = sorf.getResource(selectedFunction)
+//							.getKey();
+//					for (int i = 0; i < sor.size(); i++) {
+//						RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(
+//								i).getAttach();
+//						if (roomAttach.getFunction() == functionKey)
+//							list[1].add(sor.getResourceAt(i).getID());
+//					}
+//				}
+//				list[1].add(DConst.NO_ROOM_INTERNAL);
+//			}
 
 			return list;
 		} else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
-			if (DxFlags.newRooms) {
+//			if (DxFlags.newRooms) {
 				DxSetOfRooms dxsor = _dApplic.getCurrentDModel()
 						.getDxSetOfRooms();
 				DxRoom dxr = dxsor.getRoom(event.getRoomKey());
@@ -1051,33 +1050,33 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					}
 				}
 				list[1].add(DConst.NO_ROOM_INTERNAL);
-			} else {
-				SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
-				DResource room = sor.getResource(event.getRoomKey());
-
-				if (room != null)
-					list[0].add(room.getID());
-				else
-					list[0].add(DConst.NO_ROOM_INTERNAL);
-
-				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
-					for (int i = 0; i < sor.size(); i++) {
-						list[1].add(sor.getResourceAt(i).getID());
-					}
-				} else {
-					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-							.getSetOfRoomsFunctions();
-					long functionKey = sorf.getResource(selectedFunction)
-							.getKey();
-					for (int i = 0; i < sor.size(); i++) {
-						RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(
-								i).getAttach();
-						if (roomAttach.getFunction() == functionKey)
-							list[1].add(sor.getResourceAt(i).getID());
-					}
-				}
-				list[1].add(DConst.NO_ROOM_INTERNAL);
-			}
+////			} else {
+//				SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
+//				DResource room = sor.getResource(event.getRoomKey());
+//
+//				if (room != null)
+//					list[0].add(room.getID());
+//				else
+//					list[0].add(DConst.NO_ROOM_INTERNAL);
+//
+//				if (selectedFunction.equalsIgnoreCase(DConst.ALL)) {
+//					for (int i = 0; i < sor.size(); i++) {
+//						list[1].add(sor.getResourceAt(i).getID());
+//					}
+//				} else {
+//					SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+//							.getSetOfRoomsFunctions();
+//					long functionKey = sorf.getResource(selectedFunction)
+//							.getKey();
+//					for (int i = 0; i < sor.size(); i++) {
+//						RoomAttach roomAttach = (RoomAttach) sor.getResourceAt(
+//								i).getAttach();
+//						if (roomAttach.getFunction() == functionKey)
+//							list[1].add(sor.getResourceAt(i).getID());
+//					}
+//				}
+//				list[1].add(DConst.NO_ROOM_INTERNAL);
+//			}
 
 			return list;
 		}
@@ -1086,7 +1085,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 	private String getCapacity(String str) {
 
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			DxSetOfRooms dxsor = _dApplic.getCurrentDModel().getDxSetOfRooms();
 			DxRoom dxr = dxsor.getRoom(str);
 			if (dxr == null) {
@@ -1094,17 +1093,17 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			}
 			return "    " + String.valueOf(dxr.getCapacity()) + " "
 					+ DConst.ROOM_CAPACITY_DESC;
-		}
+//		}
 
 		// Old Rooms
-		SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
-		DResource res = sor.getResource(str);
-		if (res == null) {
-			return "000";
-		}
-		RoomAttach ra = (RoomAttach) res.getAttach();
-		return "    " + String.valueOf(ra.getCapacity()) + " "
-				+ DConst.ROOM_CAPACITY_DESC;
+//		SetOfRooms sor = _dApplic.getCurrentDModel().getSetOfRooms();
+//		DResource res = sor.getResource(str);
+//		if (res == null) {
+//			return "000";
+//		}
+//		RoomAttach ra = (RoomAttach) res.getAttach();
+//		return "    " + String.valueOf(ra.getCapacity()) + " "
+//				+ DConst.ROOM_CAPACITY_DESC;
 	}
 
 	/**
@@ -1257,13 +1256,13 @@ public class EditEventDlg extends JDialog implements ActionListener,
 							.getPeriodLenght());
 			event.setKey(4, periodKey);
 			event.setKey(1, intructorKeys);
-			if (DxFlags.newRooms) {
+//			if (DxFlags.newRooms) {
 				event.setKey(2, Long.toString(_dApplic.getCurrentDModel()
 						.getDxSetOfRooms().getRoomKeyByName(room)));
-			} else {
-				event.setKey(2, Long.toString(getResourceKey(_dApplic
-						.getCurrentDModel().getSetOfRooms(), room)));
-			}
+//			} else {
+//				event.setKey(2, Long.toString(getResourceKey(_dApplic
+//						.getCurrentDModel().getSetOfRooms(), room)));
+//			}
 
 			event.setAssigned(assignBut);
 			event.setPermanentState(fixedBut);
@@ -1321,13 +1320,13 @@ public class EditEventDlg extends JDialog implements ActionListener,
 							.getPeriodLenght());
 			event.setKey(4, periodKey);
 			event.setKey(1, intructorKeys);
-			if (DxFlags.newRooms) {
+//			if (DxFlags.newRooms) {
 				event.setKey(2, Long.toString(_dApplic.getCurrentDModel()
 						.getDxSetOfRooms().getRoomKeyByName(room)));
-			} else {
-				event.setKey(2, Long.toString(getResourceKey(_dApplic
-						.getCurrentDModel().getSetOfRooms(), room)));
-			}
+//			} else {
+//				event.setKey(2, Long.toString(getResourceKey(_dApplic
+//						.getCurrentDModel().getSetOfRooms(), room)));
+//			}
 
 			event.setAssigned(assignBut);
 			event.setPermanentState(fixedBut);

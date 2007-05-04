@@ -20,7 +20,6 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
-import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
@@ -105,7 +104,7 @@ public class SetOfEvents extends DSetOfResources {
 					int cLimit = ((Section) sectionResource.getAttach())
 					.getCapacityLimit();
 					
-					if (DxFlags.newRooms) {
+//					if (DxFlags.newRooms) {
 						String roomName = assignDxRooms(assignment,
 							unityID, soImportErrors);
 						roomKey = oldAssignDxRooms(assignment,
@@ -132,24 +131,24 @@ public class SetOfEvents extends DSetOfResources {
 							this.addResource(new DResource(unityID, event), 0);
 						}
 			
-					} else {
-						roomKey = assignRooms(assignment,
-								unityID, soImportErrors);
-						EventDx event = new EventDx(compositeKey, assignment
-								.getSetInstructorKeys(), roomKey,
-								((Unity) unityResource.getAttach())
-										.getDuration(), assignment
-										.getPeriodKey(), cLimit);
-
-						event.setAssigned(((Unity) unityResource.getAttach())
-								.isAssign());
-						event.setPermanentState(((Unity) unityResource
-								.getAttach()).isPermanent());
-						event.setRoomFixed(assignment.getRoomState());
-						event.setRoomFunction(((Unity) unityResource
-								.getAttach()).getFirstPreferFunctionRoom());
-						this.addResource(new DResource(unityID, event), 0);
-					}
+//					} else {
+//						roomKey = assignRooms(assignment,
+//								unityID, soImportErrors);
+//						EventDx event = new EventDx(compositeKey, assignment
+//								.getSetInstructorKeys(), roomKey,
+//								((Unity) unityResource.getAttach())
+//										.getDuration(), assignment
+//										.getPeriodKey(), cLimit);
+//
+//						event.setAssigned(((Unity) unityResource.getAttach())
+//								.isAssign());
+//						event.setPermanentState(((Unity) unityResource
+//								.getAttach()).isPermanent());
+//						event.setRoomFixed(assignment.getRoomState());
+//						event.setRoomFunction(((Unity) unityResource
+//								.getAttach()).getFirstPreferFunctionRoom());
+//						this.addResource(new DResource(unityID, event), 0);
+//					}
 
 				}// end if(assignement!=null)
 			}// end for(int l=0; l<
@@ -172,26 +171,26 @@ public class SetOfEvents extends DSetOfResources {
 				+ sectionResource.getKey() + "." + unityResource.getKey() + ".";
 	}
 
-	private long assignRooms( Assignment assignment,
-			String unityID, DSetOfResources soImportErrors) {
-		long roomKey;
-		int roomIndex = _dm.getSetOfRooms().getIndexOfResource(
-				assignment.getRoomName());
-
-		if (roomIndex != -1) {
-			roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
-		} else {
-			roomKey = -1;
-			DValue error = new DValue();
-			String str = assignment.getRoomName();
-			if (str.equals(DConst.NO_ROOM_INTERNAL))
-				str = DConst.NO_ROOM_EXTERNAL;
-			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
-					+ DConst.NOT_ROOM + "« " + str + " »");
-			soImportErrors.addResource(new DResource("3", error), 0);
-		}
-		return roomKey;
-	}
+//	private long assignRooms( Assignment assignment,
+//			String unityID, DSetOfResources soImportErrors) {
+//		long roomKey;
+//		int roomIndex = _dm.getSetOfRooms().getIndexOfResource(
+//				assignment.getRoomName());
+//
+//		if (roomIndex != -1) {
+//			roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
+//		} else {
+//			roomKey = -1;
+//			DValue error = new DValue();
+//			String str = assignment.getRoomName();
+//			if (str.equals(DConst.NO_ROOM_INTERNAL))
+//				str = DConst.NO_ROOM_EXTERNAL;
+//			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
+//					+ DConst.NOT_ROOM + "« " + str + " »");
+//			soImportErrors.addResource(new DResource("3", error), 0);
+//		}
+//		return roomKey;
+//	}
 
 	private long oldAssignDxRooms(Assignment assignment,
 			String unityID, DSetOfResources soImportErrors) {
@@ -220,7 +219,8 @@ public class SetOfEvents extends DSetOfResources {
 	
 		DxSetOfSites sos = _dm.getDxSetOfSites();
 			
-		DxSite currentSite = sos.getSite(_dm.getCurrentSiteName());
+//		DxSite currentSite = sos.getSite(_dm.getCurrentSiteName());
+		DxSite currentSite = sos.getSite("SHE");//_dm.getCurrentSiteName());
 		String name = assignment.getRoomName();
 		
 		if (!currentSite.contains(name)) {
@@ -399,13 +399,13 @@ public class SetOfEvents extends DSetOfResources {
 							.getDxSetOfInstructors(), keys[j]));
 				}// end for
 
-				if (DxFlags.newRooms) {
+//				if (DxFlags.newRooms) {
 					assignment.setRoomName(_dm.getDxSetOfSites()
 							.getAllDxRooms().getRoomName(event.getRoomKey()));
-				} else {
-					assignment.setRoomName(getRoomName(_dm.getSetOfRooms(),
-							event.getRoomKey()));
-				}
+//				} else {
+//					assignment.setRoomName(getRoomName(_dm.getSetOfRooms(),
+//							event.getRoomKey()));
+//				}
 				assignment.setPeriodKey(event.getPeriodKey());
 
 				unit.updateWith(event);
@@ -423,12 +423,12 @@ public class SetOfEvents extends DSetOfResources {
 		return DConst.NO_ROOM_INTERNAL;
 	}
 
-	private String getRoomName(SetOfRooms sor, long eltkey) {
-		if (eltkey != -1) {
-			return sor.getResource(eltkey).getID();
-		}
-		return DConst.NO_ROOM_INTERNAL;
-	}
+//	private String getRoomName(SetOfRooms sor, long eltkey) {
+//		if (eltkey != -1) {
+//			return sor.getResource(eltkey).getID();
+//		}
+//		return DConst.NO_ROOM_INTERNAL;
+//	}
 
 	/**
 	 * for two event in conflict

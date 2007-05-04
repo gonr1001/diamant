@@ -57,7 +57,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAffectation.SelectInstructors;
@@ -73,7 +72,6 @@ import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
-import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
@@ -310,16 +308,16 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				* _dModel.getTTStructure().getPeriodLenght());
 		event.setPeriodKey(periodKey);
 		event.setInstructorKey(intructorKeys);
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
 					.getRoomKeyByName(room)));
 			event.setRoomName(room);
 			System.out
 					.println("DxE event1.1 room name: " + event.getRoomName());
-		} else {
-			event.setKey(2, Long.toString(getResourceKey(_dModel
-					.getSetOfRooms(), room)));
-		}
+//		} else {
+//			event.setKey(2, Long.toString(getResourceKey(_dModel
+//					.getSetOfRooms(), room)));
+//		}
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
 
@@ -844,19 +842,19 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return (JList) (jsp.getViewport()).getComponent(0);
 	} // getInstructorsList
 
-	/**
-	 * get a resource key
-	 * 
-	 * @param soresc
-	 * @param elt
-	 * @return the resource key or -1 if key does not found
-	 */
-	private long getResourceKey(SetOfRooms sor, String elt) {
-		if (!elt.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL)) {
-			return sor.getResource(elt).getKey();
-		}
-		return -1;
-	}
+//	/**
+//	 * get a resource key
+//	 * 
+//	 * @param soresc
+//	 * @param elt
+//	 * @return the resource key or -1 if key does not found
+//	 */
+//	private long getResourceKey(SetOfRooms sor, String elt) {
+//		if (!elt.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL)) {
+//			return sor.getResource(elt).getKey();
+//		}
+//		return -1;
+//	}
 
 	/**
 	 * 

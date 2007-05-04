@@ -29,7 +29,6 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.Type;
-import dInternal.dData.dRooms.RoomAttach;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -135,13 +134,13 @@ public class DxRoomsConditionsToTest implements DxCondition {
                         .getPeriodPositionInDay(dayKey, seqKey, perKey);
                 if (perPosition > 0) {
                     int[][] matrix = null;
-                    if (DxFlags.newRooms) {
+//                    if (DxFlags.newRooms) {
                         matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
                                 .getAvailability().getMatrixAvailability();
-                    } else {
-                        matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                        .getAttach()).getMatrixAvailability();
-                    }
+//                    } else {
+//                        matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+//                        .getAttach()).getMatrixAvailability();
+//                    }
                     if ((dayIndexAvail < matrix.length)) {
                         if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
                             return 1;
@@ -171,13 +170,13 @@ public class DxRoomsConditionsToTest implements DxCondition {
                         .getPeriodPositionInDay(dayKey, seqKey, perKey);
                 if (perPosition > 0) {
                     int[][] matrix = null;
-                    if (DxFlags.newRooms) {
+//                    if (DxFlags.newRooms) {
                         matrix = _dm.getDxSetOfRooms().getRoom(roomKey)
                                 .getAvailability().getMatrixAvailability();
-                    } else {
-                        matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                        .getAttach()).getMatrixAvailability();
-                    }
+//                    } else {
+//                        matrix = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+//                        .getAttach()).getMatrixAvailability();
+//                    }
                     if ((dayIndexAvail < matrix.length)) {
                         if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL)
                             return 1;
@@ -218,12 +217,12 @@ public class DxRoomsConditionsToTest implements DxCondition {
             long roomKey = event.getRoomKey();
             if (roomKey != -1) {
                 int nCapa = 0;
-                if (DxFlags.newRooms) {
+//                if (DxFlags.newRooms) {
                     nCapa = _dm.getDxSetOfRooms().getRoomCapacity(roomKey);
-                } else {
-                    nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                            .getAttach()).getCapacity();
-                }
+//                } else {
+//                    nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+//                            .getAttach()).getCapacity();
+//                }
 
                 if (nCapa < nbOfStudents)
                     return 1;
@@ -245,12 +244,12 @@ public class DxRoomsConditionsToTest implements DxCondition {
             long roomKey = event.getRoomKey();
             if (roomKey != -1) {
                 int nCapa = 0;
-                if (DxFlags.newRooms) {
+//                if (DxFlags.newRooms) {
                     nCapa = _dm.getDxSetOfRooms().getRoomCapacity(roomKey);
-                } else {
-                    nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
-                            .getAttach()).getCapacity();
-                }
+//                } else {
+//                    nCapa = ((RoomAttach) _dm.getSetOfRooms().getResource(roomKey)
+//                            .getAttach()).getCapacity();
+//                }
 
                 if (nCapa < nbOfStudents)
                     return 1;

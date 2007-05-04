@@ -241,17 +241,17 @@ public class SetOfActivities extends DSetOfResources {
 					unityResource = section.getUnity(Integer.toString(counter));
 					Unity bloc = (Unity) unityResource.getAttach();
 					String room = stLine.nextToken().trim();
-					if(room.contains(";")) {
+					if (room.contains(";")) {
 						room = room.substring(0, room.indexOf(';'));
 					}
-							
+
 					if (instLine.hasMoreElements()) {
 						inst = instLine.nextToken().trim();
 					}
-						
+
 					for (int i = 1; i <= _NUMBEROFCYCLES; i++) {
-							((Assignment) bloc.getAssignment(Integer.toString(i))
-									.getAttach()).setRoomName(room);
+						((Assignment) bloc.getAssignment(Integer.toString(i))
+								.getAttach()).setRoomName(room);
 
 						((Assignment) bloc.getAssignment(Integer.toString(i))
 								.getAttach()).addInstructorName(inst);
@@ -701,41 +701,42 @@ public class SetOfActivities extends DSetOfResources {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public void fixTypeOrRoom(DxSetOfSites sites) {
-		// change room assign to room or type 
-		for (int i = 0; i < this.size(); i++) {
-//			System.out.println("act " + i);
-			DResource r =  this.getResourceAt(i);
-			Activity a = (Activity) r.getAttach();
-			DSetOfResources sot =  a.getSetOfTypes();
-			for(int j = 0; j < sot.size(); j++) {
-				DResource rr = sot.getResourceAt(j);
-				Type t = (Type) rr.getAttach();
-				DSetOfResources sos = t.getSetOfSections();
-				for (int k = 0; k < sos.size(); k++) {
-					DResource rrr = sos.getResourceAt(k);
-					Section ss = (Section) rrr.getAttach();
-					DSetOfResources b = ss.getSetOfUnities();
-					for (int m =0; m < b.size(); m++) {
-						DResource rrrr = b.getResourceAt(m);
-						Unity  s = (Unity) rrrr.getAttach();
-						DSetOfResources aa = s.getSetOfAssignments();
-						for (int n =0; n < aa.size(); n++) {
-							DResource rrrrr = aa.getResourceAt(n);
-							Assignment  ass = (Assignment) rrrrr.getAttach();
-							String str = ass.getRoomName();
-							Vector <String> v = sites.getNamesVector();
-							if (v.indexOf(str)!= -1) 
-								str +="";
-							
-//								System.out.println("room Name "+ str );
-//						System.out.println("room Name "+ str );
-					}
-					
-				}
-					
-			}
-		}
-	}
-	}
+
+//	public void fixTypeOrRoom(DxSetOfSites sites) {
+//		// change room assign to room or type 
+//		for (int i = 0; i < this.size(); i++) {
+//			//			System.out.println("act " + i);
+//			DResource r = this.getResourceAt(i);
+//			Activity a = (Activity) r.getAttach();
+//			DSetOfResources sot = a.getSetOfTypes();
+//			for (int j = 0; j < sot.size(); j++) {
+//				DResource rr = sot.getResourceAt(j);
+//				Type t = (Type) rr.getAttach();
+//				DSetOfResources sos = t.getSetOfSections();
+//				for (int k = 0; k < sos.size(); k++) {
+//					DResource rrr = sos.getResourceAt(k);
+//					Section ss = (Section) rrr.getAttach();
+//					DSetOfResources b = ss.getSetOfUnities();
+//					for (int m = 0; m < b.size(); m++) {
+//						DResource rrrr = b.getResourceAt(m);
+//						Unity s = (Unity) rrrr.getAttach();
+//						DSetOfResources aa = s.getSetOfAssignments();
+//						for (int n = 0; n < aa.size(); n++) {
+//							DResource rrrrr = aa.getResourceAt(n);
+//							Assignment ass = (Assignment) rrrrr.getAttach();
+//							String str = ass.getRoomName();
+//							Vector<String> v = sites.getNamesVector();
+//							if (v.indexOf(str) != -1)
+//								str += "";
+//
+//							//								System.out.println("room Name "+ str );
+//							//						System.out.println("room Name "+ str );
+//						}
+//
+//					}
+//
+//				}
+//			}
+//		}
+//	}
 }

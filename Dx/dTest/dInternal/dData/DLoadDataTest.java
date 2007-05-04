@@ -34,9 +34,6 @@ import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
-import dInternal.dData.dRooms.SetOfCategories;
-import dInternal.dData.dRooms.SetOfRooms;
-import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
@@ -161,7 +158,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofrooms
 	 */
 	public void test5_loadTimeTable5j() {
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			DxSetOfSites dxsosSetSites = _loadData5j.getDxSetOfSitesRooms();
 			DxSite dxsSite = dxsosSetSites.getSite("SHE");
 			assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
@@ -169,19 +166,19 @@ public class DLoadDataTest extends TestCase {
 			assertNotNull("test5_1_loadTimeTable5j : assertNotNull: ", dxcCat1);
 			DxRoom dxrRoom = dxcCat1.getRoom("D13016");
 			assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
-		} else {
-			SetOfSites setSite =  _loadData5j.getSetOfSitesRooms();
-			assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
-					.getResourceAt(0).getID());
-			SetOfCategories setCat = ((SetOfCategories) setSite
-					.getResourceAt(0).getAttach());
-			assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
-					setCat.getResourceAt(0).getID());
-			SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
-					.getAttach());
-			assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
-					setRooms.getResourceAt(4).getID());
-		}
+//		} else {
+//			SetOfSites setSite =  _loadData5j.getSetOfSitesRooms();
+//			assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
+//					.getResourceAt(0).getID());
+//			SetOfCategories setCat = ((SetOfCategories) setSite
+//					.getResourceAt(0).getAttach());
+//			assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
+//					setCat.getResourceAt(0).getID());
+//			SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
+//					.getAttach());
+//			assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
+//					setRooms.getResourceAt(4).getID());
+//		}
 	}
 
 	/**
@@ -301,7 +298,7 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofrooms
 	 */
 	public void test5_loadTimeTable7j() {
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			DxSetOfSites dxsosSetSites = _loadData7j.getDxSetOfSitesRooms();
 			DxSite dxsSite = dxsosSetSites.getSite("SHE");
 			assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
@@ -309,19 +306,19 @@ public class DLoadDataTest extends TestCase {
 			assertNotNull("test5_1_loadTimeTable5j : assertNotNull: ", dxcCat1);
 			DxRoom dxrRoom = dxcCat1.getRoom("D13016");
 			assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
-		} else {
-			SetOfSites setSite = _loadData7j.getSetOfSitesRooms();
-			assertEquals("test5_loadTimeTable7j : assertEquals: ", "SHE",
-					setSite.getResourceAt(0).getID());
-			SetOfCategories setCat = ((SetOfCategories) setSite
-					.getResourceAt(0).getAttach());
-			assertEquals("test5_1_loadTimeTable7j : assertEquals: ", "CAT 1",
-					setCat.getResourceAt(0).getID());
-			SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
-					.getAttach());
-			assertEquals("test5_2_loadTimeTable7j : assertEquals: ", "D13016",
-					setRooms.getResourceAt(4).getID());
-		}
+//		} else {
+//			SetOfSites setSite = _loadData7j.getSetOfSitesRooms();
+//			assertEquals("test5_loadTimeTable7j : assertEquals: ", "SHE",
+//					setSite.getResourceAt(0).getID());
+//			SetOfCategories setCat = ((SetOfCategories) setSite
+//					.getResourceAt(0).getAttach());
+//			assertEquals("test5_1_loadTimeTable7j : assertEquals: ", "CAT 1",
+//					setCat.getResourceAt(0).getID());
+//			SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
+//					.getAttach());
+//			assertEquals("test5_2_loadTimeTable7j : assertEquals: ", "D13016",
+//					setRooms.getResourceAt(4).getID());
+//		}
 	}
 
 	/**

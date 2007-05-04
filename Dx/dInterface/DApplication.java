@@ -52,7 +52,6 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
-import dInterface.dAffectation.AvailabiltyRoomDialog;
 import dInterface.dAffectation.EventsDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
 import dInterface.dAssignementDlgs.DxEventsDlg;
@@ -624,17 +623,17 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void roomAvailability() {
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			new DxRoomAvailabilityDlg(this);
 			// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
 			// .getDxSetOfRooms(), DConst.ROOMASSIGN);
 			// !!!NIC!!! How do we verify if it's multisite?
 			// new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
 			// .getDxSetOfSites());
-		} else {
-			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
-					.getSetOfRooms(), DConst.ROOMASSIGN);
-		}
+//		} else {
+//			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+//					.getSetOfRooms(), DConst.ROOMASSIGN);
+//		}
 	}
 
 	/**

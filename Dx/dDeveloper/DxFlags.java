@@ -32,8 +32,8 @@ public class DxFlags {
 
 	
 	public final static boolean MASTER = true;
-	//public final static boolean newRooms = false;
-	public final static boolean newRooms = MASTER;
+//	//public final static boolean newRooms = false;
+//	public final static boolean newRooms = MASTER;
 
 	public final static boolean newAlg = MASTER;
 	//public final static boolean newAlg = true;

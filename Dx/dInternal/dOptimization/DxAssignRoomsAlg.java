@@ -22,7 +22,6 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -91,7 +90,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
 			setOfEventsToAssign = this.buildSetOfEvents(currentPeriod);
 
-			if (DxFlags.newRooms) {
+//			if (DxFlags.newRooms) {
 				// to be changed
 				setOfAvailableDxRooms = this
 						.buildSetOfAvailableDxRooms(currentPeriod);
@@ -114,7 +113,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 						}
 					}// end for(int k= 0; k < sor.size();k++)
 				}// end while
-			}
+//			}
 			// } else {
 			// setOfAvailableRooms = this
 			// .buildSetOfAvailableRooms(currentPeriod);

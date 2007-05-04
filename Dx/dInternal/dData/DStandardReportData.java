@@ -415,15 +415,15 @@ public class DStandardReportData {
 											.getRoomKey();
 								}
 								
-								if (DxFlags.newRooms) {
+//								if (DxFlags.newRooms) {
 									strBuf = new StringBuffer(_dm
 											.getDxSetOfRooms().getRoomName(
 													roomKey));
-								} else {
-									strBuf = new StringBuffer(_dm
-											.getSetOfRooms().getResource(
-													roomKey).getID());
-								}
+//								} else {
+//									strBuf = new StringBuffer(_dm
+//											.getSetOfRooms().getResource(
+//													roomKey).getID());
+//								}
 
 							}
 

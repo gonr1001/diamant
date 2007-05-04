@@ -336,17 +336,17 @@ public class DLoadData {
 			// extract SetOfSites
 			inDiaFileRooms = dataTokens.nextToken().trim();
 			de = buildDataExchange(inDiaFileRooms.getBytes());
-			if (DxFlags.newRooms) {
+//			if (DxFlags.newRooms) {
 				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay(), linePosition);
 				_dxSoSRooms = dxrr.readSetOfSites();
-			} else {
-				_roomsList = new SetOfSites();
-				if (_roomsList.analyseTokens(de, 3)) {
-					_roomsList.buildSetOfResources(de, 3);
-				}
-			}
+//			} else {
+//				_roomsList = new SetOfSites();
+//				if (_roomsList.analyseTokens(de, 3)) {
+//					_roomsList.buildSetOfResources(de, 3);
+//				}
+//			}
 			linePosition += ByteInputFile.count(inDiaFileRooms);
 			linePosition++; // for separator =========================
 			// extract SetOfActivities
@@ -412,20 +412,20 @@ public class DLoadData {
 			}// end if(tts.getError().length()==0)
 
 			// extract SetOfSites
-			if (!DxFlags.newRooms) {
-				_roomsList = new SetOfSites();
-				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
-				if (_roomsList.analyseTokens(de, 3)) {
-					_roomsList.buildSetOfResources(de, 3);
-				}
-			} else {
+////			if (!DxFlags.newRooms) {
+//				_roomsList = new SetOfSites();
+//				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+//				if (_roomsList.analyseTokens(de, 3)) {
+//					_roomsList.buildSetOfResources(de, 3);
+//				}
+////			} else {
 				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
 
 				_dxSoSRooms = dxrr.readSetOfSites();
-			}
+//			}
 
 			// extract SetOfActivities
 			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());

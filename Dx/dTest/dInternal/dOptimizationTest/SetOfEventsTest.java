@@ -107,16 +107,16 @@ public class SetOfEventsTest extends TestCase {
 	 * test the rooms key of the first event of the setofevents
 	 */
 	public void test_RoomInEvent() {
-		long roomKey;
-		if (DxFlags.newEvent) {
-			roomKey = ((DxEvent) _soe.getResourceAt(0).getAttach())
-					.getRoomKey();
-		} else {
-			roomKey = ((EventDx) _soe.getResourceAt(0).getAttach())
-					.getRoomKey();
-		}
+//		long roomKey;
+//		if (DxFlags.newEvent) {
+//			roomKey = ((DxEvent) _soe.getResourceAt(0).getAttach())
+//					.getRoomKey();
+//		} else {
+//			roomKey = ((EventDx) _soe.getResourceAt(0).getAttach())
+//					.getRoomKey();
+//		}
 
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			DxSetOfSites sos = _dmData5j.getDxSetOfSites();
 			DxSetOfRooms sor = sos.getAllDxRooms();
 			assertEquals("test_RoomInEvent : siteCount1  ", 1, sos
@@ -126,10 +126,10 @@ public class SetOfEventsTest extends TestCase {
 			assertEquals("test_RoomInEvent : ", true, sor.getNamesVector()
 					.contains("D73020"));
 
-		} else {
-			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j
-					.getSetOfRooms().getResource(roomKey).getID());
-		}
+//		} else {
+//			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j
+//					.getSetOfRooms().getResource(roomKey).getID());
+//		}
 	}
 
 	/**

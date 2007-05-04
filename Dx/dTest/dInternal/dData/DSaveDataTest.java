@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2007-04-13 22:47:38 $
+ * Title: DSaveDataTest $Revision $  $Date: 2007-05-04 19:12:34 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -24,7 +24,6 @@ package dTest.dInternal.dData;
 
 import java.io.File;
 
-import dDeveloper.DxFlags;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -80,17 +79,17 @@ public class DSaveDataTest extends TestCase {
 		} catch (Exception e) {
 			System.out.println("Abnormal Exception: Should not fail in normal conditions");
 		}
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
 					.getDxSetOfInstructors(), _dm1.getDxSetOfSites(), _dm1
 					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
 					_fileName2);
-		} else {
-			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
-					.getDxSetOfInstructors(), _dm1.getSetOfSites(), _dm1
-					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
-					_fileName2);
-		}
+//		} else {
+//			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
+//					.getDxSetOfInstructors(), _dm1.getSetOfSites(), _dm1
+//					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
+//					_fileName2);
+//		}
 		try {
 				_dm2 = new DModel(_dxDocument2, _fileName2);
 		} catch (Exception e) {
@@ -131,13 +130,13 @@ public class DSaveDataTest extends TestCase {
 	 * test that check that the saved file is the same as the loaded file
 	 */
 	public void test_loadRooms() {
-		if (DxFlags.newRooms) {
+//		if (DxFlags.newRooms) {
 			assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
 					.getDxSetOfSites().isEqual(_dm2.getDxSetOfSites()));
-		} else {
-			assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
-					.getSetOfSites().isEquals(_dm2.getSetOfSites()));
-		}
+//		} else {
+//			assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
+//					.getSetOfSites().isEquals(_dm2.getSetOfSites()));
+//		}
 	}
 
 	/**
