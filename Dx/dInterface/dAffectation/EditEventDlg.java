@@ -499,7 +499,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			fixingPanel.add(fixed);
 			myPanel.add(fixingPanel);
 			return myPanel;
-		} else {
+		}  // else 
 			EventDx event = (EventDx) ((DResource) _unities.get(index))
 					.getAttach();
 			JPanel myPanel = new JPanel();
@@ -518,7 +518,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			fixingPanel.add(fixed);
 			myPanel.add(fixingPanel);
 			return myPanel;
-		}
+
 
 	} // end buildFixingPanel
 
@@ -762,14 +762,14 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					/ _dApplic.getCurrentDModel().getTTStructure()
 							.getPeriodLenght();
 			return String.valueOf(duration);
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 			int duration = event.getDuration()
 					/ _dApplic.getCurrentDModel().getTTStructure()
 							.getPeriodLenght();
 			return String.valueOf(duration);
-		}
+		//}
 	}
 
 	/**
@@ -817,7 +817,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
 			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
 			return list;
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 			Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
@@ -853,7 +853,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				}// end for (int j=0; j< seq.getSetOfPeriods().size(); j++)
 			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
 			return list;
-		}
+		//}
 
 	}
 
@@ -877,7 +877,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey()
 						+ "." + cycle.getSetOfDays().getResourceAt(i).getID());
 			return list;
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 			Cycle cycle = _dApplic.getCurrentDModel().getTTStructure()
@@ -890,7 +890,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				list[1].add(cycle.getSetOfDays().getResourceAt(i).getKey()
 						+ "." + cycle.getSetOfDays().getResourceAt(i).getID());
 			return list;
-		}
+	//	}
 
 	}
 
@@ -915,7 +915,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			}
 
 			return v;
-		} else {
+		}// else {
 			EventDx event = (EventDx) ((DResource) _unities.get(index))
 					.getAttach();
 			DxSetOfInstructors soi = _dApplic.getCurrentDModel()
@@ -928,7 +928,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			}
 
 			return v;
-		}
+	//	}
 
 	}
 
@@ -1015,7 +1015,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 //			}
 
 			return list;
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 //			if (DxFlags.newRooms) {
@@ -1079,7 +1079,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 //			}
 
 			return list;
-		}
+	//	}
 
 	}
 
@@ -1138,7 +1138,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			list[1].add(DConst.PLACED_ROOM_STATE);
 			list[1].add(DConst.FIXED_ROOM_STATE);
 			return list;
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 			// SetOfCategories soc= _dm.getSetOfCategories();
@@ -1159,7 +1159,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			list[1].add(DConst.PLACED_ROOM_STATE);
 			list[1].add(DConst.FIXED_ROOM_STATE);
 			return list;
-		}
+//		}
 
 	}
 
@@ -1189,7 +1189,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				list[1].add(sorf.getResourceAt(i).getID());
 			// list[1].add(DConst.ALL);
 			return list;
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
@@ -1204,7 +1204,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 				list[1].add(sorf.getResourceAt(i).getID());
 			// list[1].add(DConst.ALL);
 			return list;
-		}
+//		}
 
 	}
 
@@ -1278,7 +1278,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					_dApplic.getCurrentDModel().getTTStructure(),
 					(DResource) _unities.get(_currentActivityIndex), false);
 			return true;
-		} else {
+		} //else {
 			EventDx event = (EventDx) ((DResource) _unities
 					.get(_currentActivityIndex)).getAttach();
 			// remove event
@@ -1342,7 +1342,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					_dApplic.getCurrentDModel().getTTStructure(),
 					(DResource) _unities.get(_currentActivityIndex), false);
 			return true;
-		}
+//		}
 
 	}
 
