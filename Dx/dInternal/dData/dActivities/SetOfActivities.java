@@ -29,12 +29,9 @@ import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DataExchange;
-import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dUtil.DXToolsMethods;
-
-// import d
 
 public class SetOfActivities extends DSetOfResources {
 

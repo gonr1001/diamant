@@ -27,13 +27,13 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 2.1 19 jui 07";//res.getString("vDate");
+  	public final static String V_DATE = "v 2.1 07 mai 07";//res.getString("vDate");
   	/** The number format for Hours **/
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
 
    
 //	public final static String JVM = "1.5.0_01"; //will be 1.5.XXXX
-	public final static String JVM = "1.4.2_04"; //XXXX Pascal: Retour a 1.4.2
+	public final static String JVM = "1.5.0_01"; //XXXX Pascal: Retour a 1.4.2
 	
 	public final static String FILE_VER_NAME1_5 = res.getString("fileVerName1_5"); // "Diamant1.5" 
 	public final static String FILE_VER_NAME1_6 = res.getString("fileVerName1_6"); // "Diamant1.6" 

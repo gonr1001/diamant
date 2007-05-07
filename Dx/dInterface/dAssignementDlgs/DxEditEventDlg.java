@@ -121,7 +121,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	public DxEditEventDlg(JDialog dialog, DApplication dApplic,
 			String currentActivity, boolean canBeModified) {
 		// One activity or n events
-		super(dialog, DConst.T_AFFEC_DLG + "DxDXDX!!!!!!!!");
+		super(dialog, DConst.T_AFFEC_DLG /*+ "DxDXDX!!!!!!!!"*/);
 		setLocationRelativeTo(dialog);
 		_dModel = dApplic.getCurrentDModel();
 		_events = getEventsVector(currentActivity);

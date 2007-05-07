@@ -1,7 +1,7 @@
 <project name="DiamantBuild" basedir="." default="all">
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
 		<tstamp />
-		<property name="distDirZip" value="./Diamant1.6" />
+		<property name="distDirZip" value="./Diamant2.1" />
 		<property name="srcDir" value="." />
 		<property name="localJars" value="${srcDir}/jars" />
 		<property name="build" value="${srcDir}/classes" />

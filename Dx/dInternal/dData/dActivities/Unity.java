@@ -32,7 +32,7 @@ public class Unity extends DObject {
 	/** prefere sequence in a day
 	 *-1= no prefer sequence; 0= AM; 1=PM; 2= evening
 	 */
-	private int _preferSequence;
+//	private int _preferSequence;
 
 	/**if bloc is assigned in a period*/
 	private boolean _assign;
@@ -55,7 +55,7 @@ public class Unity extends DObject {
 		_preferFunctionSetOfRooms = new StandardCollection();
 		_setOfAssignments = new StandardCollection();
 		_duration = 1;// ???
-		_preferSequence = -1; // ???
+//		_preferSequence = -1; // ???
 		_isCyclic = true; // ???
 	}
 
@@ -226,8 +226,8 @@ public class Unity extends DObject {
 			return false;
 		/*if(this._permanent!= unity._permanent)
 		 return false;*/
-		if (this._preferSequence != unity._preferSequence)
-			return false;
+//		if (this._preferSequence != unity._preferSequence)
+//			return false;
 		if (!this._setOfAssignments.isEquals(unity._setOfAssignments))
 			return false;
 		return true;
@@ -281,11 +281,11 @@ public class Unity extends DObject {
 			if (_duration == intValue)
 				return true;
 			break;
-		case 1:
-			intValue = Integer.parseInt(value);
-			if (_preferSequence == intValue)
-				return true;
-			break;
+//		case 1:
+//			intValue = Integer.parseInt(value);
+//			if (_preferSequence == intValue)
+//				return true;
+//			break;
 		case 2:
 			boolValue = Boolean.valueOf(value).booleanValue();
 			if (_assign == boolValue)
@@ -317,13 +317,13 @@ public class Unity extends DObject {
 		this.setAssign(event.isAssigned());
 		this.setPermanent(event.getPermanentState());
 		this.setDuration(event.getDuration());
-		this.setFirstPreferFunctionRoom(event.getRoomFunction());
+//		this.setFirstPreferFunctionRoom(event.getRoomFunction());
 	}
 	
 	public void updateWith(DxEvent event) {
 		this.setAssign(event.isAssigned());
 		this.setPermanent(event.getPermanentState());
 		this.setDuration(event.getDuration());
-		this.setFirstPreferFunctionRoom(event.getRoomFunction());
+//		this.setFirstPreferFunctionRoom(event.getRoomFunction());
 	}
 }

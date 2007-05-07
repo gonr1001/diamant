@@ -395,8 +395,7 @@ public class DLoadData {
 			// !!!!!!!!!!!!!!
 			// extract version
 			_inDiaFileVersion = dataTokens.nextToken().trim();
-			//			diaData.add(project.nextToken().trim());
-			// extract ttStructure
+
 			_tts = new TTStructure();
 
 			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());

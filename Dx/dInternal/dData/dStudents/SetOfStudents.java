@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.18 $  $Date: 2007-04-01 13:30:08 $
+ * Title: SetOfStudents $Revision: 1.19 $  $Date: 2007-05-07 13:04:58 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -393,7 +393,6 @@ public class SetOfStudents extends DSetOfResources {
 			for (int i = 0; i < getSetOfResources().size() - 1; i++) {
 				stu = ((Student) getSetOfResources().get(i));
 				stuCourses = (SetOfStuCourses) stu.getAttach();
-				//reslist+= externalKey(stu)+DConst.CR_LF;
 				save.append(externalKey(stu) + DConst.CR_LF);
 				//reslist+= stuCourses.toWrite(site)+DConst.CR_LF;
 				save.append(stuCourses.toWrite(site) + DConst.CR_LF);
@@ -401,7 +400,6 @@ public class SetOfStudents extends DSetOfResources {
 			stu = ((Student) getSetOfResources().get(
 					getSetOfResources().size() - 1));
 			stuCourses = (SetOfStuCourses) stu.getAttach();
-			//reslist+= externalKey(stu)+DConst.CR_LF;
 			save.append(externalKey(stu) + DConst.CR_LF);
 			//reslist+= stuCourses.toWrite(site);
 			save.append(stuCourses.toWrite(site));

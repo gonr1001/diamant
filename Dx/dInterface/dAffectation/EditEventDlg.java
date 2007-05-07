@@ -1179,11 +1179,11 @@ public class EditEventDlg extends JDialog implements ActionListener,
 					.get(_currentActivityIndex)).getAttach();
 			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
 					.getSetOfRoomsFunctions();
-			DResource roomFunction = sorf.getResource(event.getRoomFunction());
-			if (roomFunction != null && event.getRoomKey() != -1)
-				list[0].add(roomFunction.getID());
-			else
-				list[0].add(DConst.ALL);
+//			DResource roomFunction = sorf.getResource(event.getRoomFunction());
+//			if (roomFunction != null && event.getRoomKey() != -1)
+//				list[0].add(roomFunction.getID());
+//			else
+//				list[0].add(DConst.ALL);
 			sorf.sortSetOfResourcesByID();
 			for (int i = 0; i < sorf.size(); i++)
 				list[1].add(sorf.getResourceAt(i).getID());
@@ -1237,10 +1237,10 @@ public class EditEventDlg extends JDialog implements ActionListener,
 
 			String room = getSelectedRoom(tpane);
 			String state = this.getSelectedState(tpane);
-			String function = getSelectedFunction(tpane);
-			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
-					.getSetOfRoomsFunctions();
-			DResource roomFunction = sorf.getResource(function);
+//			String function = getSelectedFunction(tpane);
+//			SetOfRoomsFunctions sorf = _dApplic.getCurrentDModel()
+//					.getSetOfRoomsFunctions();
+//			DResource roomFunction = sorf.getResource(function);
 
 			boolean assignBut = isAssignedButtonSelected(tpane);
 
@@ -1267,7 +1267,7 @@ public class EditEventDlg extends JDialog implements ActionListener,
 			event.setAssigned(assignBut);
 			event.setPermanentState(fixedBut);
 			event.setState(state);
-			event.setRoomFunction((int) roomFunction.getKey());
+//			event.setRoomFunction((int) roomFunction.getKey());
 
 			Vector vect = new Vector();
 			vect.add(_unities.get(_currentActivityIndex));

@@ -18,25 +18,24 @@ import dInternal.dData.StandardCollection;
 
 public class Assignment extends DObject {
 
-	/** contains the key of the day, the begin hour and the begin minute */
-	private int[] _dateAndTime;
-
-	/**
-	 * String the period complete key a.b.c where a= day key, b= sequence key c=
-	 * period key
-	 */
-	private String _periodKey;
-
+	
 	/** instructor name valid only for initialization */
 	private DSetOfResources _setInstructorNames;
 
 	/** instructor key */
 	private DSetOfResources _setInstructorKeys;
+	
+	/** contains the key of the day, the begin hour and the begin minute */
+	private int[] _dateAndHour;
+
+	/**
+	 * String the period composite key a.b.c where a= day key, b= sequence key c=
+	 * period key
+	 */
+	private String _periodKey;
 
 	/** room valid only for initialization */
 	private String _roomName;
-
-	private String _typeName;
 
 	private boolean _isRoom;
 
@@ -48,13 +47,12 @@ public class Assignment extends DObject {
 	 * Constructor
 	 */
 	public Assignment() {
-		_dateAndTime = new int[] { 1, 8, 30 };
+		_dateAndHour = new int[] { 1, 8, 30 };
 		_periodKey = "0.0.0";
 		_roomName = "";
 		_roomFixed = false;
 		_isRoom = false;
 		_isType = false;
-		_typeName = "";
 		_setInstructorNames = new StandardCollection();
 		_setInstructorKeys = new StandardCollection();
 	}
@@ -70,9 +68,9 @@ public class Assignment extends DObject {
 	 *            the begin minute
 	 */
 	public void setDateAndTime(int day, int hour, int minute) {
-		_dateAndTime[0] = day;
-		_dateAndTime[1] = hour;
-		_dateAndTime[2] = minute;
+		_dateAndHour[0] = day;
+		_dateAndHour[1] = hour;
+		_dateAndHour[2] = minute;
 	}
 
 	/**
@@ -123,17 +121,17 @@ public class Assignment extends DObject {
 		_isType = false;
 	}
 
-	/**
-	 * set the room name
-	 * 
-	 * @param String
-	 *            the room name
-	 */
-	public void setTypeName(String room) {
-		_typeName = room;
-		_isRoom = false;
-		_isType = true;
-	}
+//	/**
+//	 * set the room name
+//	 * 
+//	 * @param String
+//	 *            the room name
+//	 */
+//	public void setTypeName(String room) {
+//		//_typeName = room;
+//		_isRoom = false;
+//		_isType = true;
+//	}
 
 	/**
 	 * set the room name
@@ -180,7 +178,7 @@ public class Assignment extends DObject {
 	 * @return int[]
 	 */
 	public int[] getDateAndTime() {
-		return _dateAndTime;
+		return _dateAndHour;
 	}
 
 	/**

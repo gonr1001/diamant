@@ -187,7 +187,7 @@ public class DModel extends Observable {
 		this.notifyObservers(this);
 
 	}
-
+// this constructor is used only for tests 
 	public DModel(DxDocument dxDocument, String fileName) throws DxException {
 		_error = "";
 		_modified = false;
@@ -1071,7 +1071,7 @@ public class DModel extends Observable {
 	public void buildSetOfEvents() {
 		_setOfEvents.getSetOfResources().removeAllElements();
 		if (getSetOfActivities() != null) {
-			SetOfActivities soa = getSetOfActivities();
+//			SetOfActivities soa = getSetOfActivities();
 ////			if (DxFlags.newRooms) {
 //				soa.fixTypeOrRoom(_dxSetOfSites);
 //	//		}
