@@ -187,7 +187,8 @@ public class DModel extends Observable {
 		this.notifyObservers(this);
 
 	}
-// this constructor is used only for tests 
+
+	// this constructor is used only for tests
 	public DModel(DxDocument dxDocument, String fileName) throws DxException {
 		_error = "";
 		_modified = false;
@@ -345,14 +346,14 @@ public class DModel extends Observable {
 		_dxSetOfInstructors.alwaysAvailable();
 
 		// TODO a revoir
-//		if (DxFlags.newRooms) {
-			_dxSetOfSites.alwaysAvailable();
-//		} else {
-//			for (int i = 0; i < this.getSetOfRooms().size(); i++) {
-//				((RoomAttach) this.getSetOfRooms().getResourceAt(i).getAttach())
-//						.setFullAvailability();
-//			}
-//		}
+		// if (DxFlags.newRooms) {
+		_dxSetOfSites.alwaysAvailable();
+		// } else {
+		// for (int i = 0; i < this.getSetOfRooms().size(); i++) {
+		// ((RoomAttach) this.getSetOfRooms().getResourceAt(i).getAttach())
+		// .setFullAvailability();
+		// }
+		// }
 
 		_isExamPrepared = true;
 	}
@@ -392,12 +393,12 @@ public class DModel extends Observable {
 					return _ttStruct.getError();
 				_dxSetOfInstructors = loadData.getDxSetOfInstructors();
 
-//				if (DxFlags.newRooms) {
-					_dxSetOfSites = loadData.getDxSetOfSitesRooms();
-//				} else {
-//					_setOfSites = loadData.getSetOfSitesRooms();
-//					resizeSiteAvailability(_setOfSites);
-//				}
+				// if (DxFlags.newRooms) {
+				_dxSetOfSites = loadData.getDxSetOfSitesRooms();
+				// } else {
+				// _setOfSites = loadData.getSetOfSitesRooms();
+				// resizeSiteAvailability(_setOfSites);
+				// }
 				if (DxFlags.newActivity) {
 					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadData
 							.getDxActivitiesSitesReader();
@@ -410,11 +411,11 @@ public class DModel extends Observable {
 					// }
 				}
 				_setOfStuSites = loadData.getSetofStuSites();
-//			if (!DxFlags.newRooms) {
-//					if (_setOfSites.getError().length() != 0) {
-//						return _setOfSites.getError();
-//					}
-//				}
+				// if (!DxFlags.newRooms) {
+				// if (_setOfSites.getError().length() != 0) {
+				// return _setOfSites.getError();
+				// }
+				// }
 				if (_setOfActivitiesSites.getError().length() != 0) {
 					return _setOfActivitiesSites.getError();
 				}
@@ -458,32 +459,32 @@ public class DModel extends Observable {
 		resizeInstructorsResource(_dxSetOfInstructors);
 
 		// import set of sites
-//		if (DxFlags.newRooms) {
-			_dxSetOfSites = loadData.extractDxRooms();
-			resizeSiteAvailability();// _dxSetOfSites);
+		// if (DxFlags.newRooms) {
+		_dxSetOfSites = loadData.extractDxRooms();
+		resizeSiteAvailability();// _dxSetOfSites);
 
-//		} else {
-//			_setOfSites = loadData.extractRooms(null, false);
-//			resizeSiteAvailability(_setOfSites);//
-//			if (_setOfSites.getError().length() != 0) {
-//				return _setOfSites.getError();
-//			}
-//		}
+		// } else {
+		// _setOfSites = loadData.extractRooms(null, false);
+		// resizeSiteAvailability(_setOfSites);//
+		// if (_setOfSites.getError().length() != 0) {
+		// return _setOfSites.getError();
+		// }
+		// }
 
 		// import set of activities
 		if (DxFlags.newActivity) {
-//			if (!DxFlags.newRooms) {
-				System.out
-						.println("DModel.importData cannot be completed with new Activites and old Rooms");
-			}
-			_dxsoasSetOfAct = loadData.extractDxActivity(_dxSetOfInstructors,
-					_dxSetOfSites.getAllRooms(), _ttStruct.getPeriodLenght());
-//		} else {
-//			_setOfActivitiesSites = loadData.extractActivities(null, false);
-//			if (_setOfActivitiesSites.getError().length() != 0) {
-//				return _setOfActivitiesSites.getError();
-//			}
-//		}
+			// if (!DxFlags.newRooms) {
+			System.out
+					.println("DModel.importData cannot be completed with new Activites and old Rooms");
+		}
+		_dxsoasSetOfAct = loadData.extractDxActivity(_dxSetOfInstructors,
+				_dxSetOfSites.getAllRooms(), _ttStruct.getPeriodLenght());
+		// } else {
+		// _setOfActivitiesSites = loadData.extractActivities(null, false);
+		// if (_setOfActivitiesSites.getError().length() != 0) {
+		// return _setOfActivitiesSites.getError();
+		// }
+		// }
 
 		// import set of students
 		_setOfStuSites = loadData.extractStudents(null, false);
@@ -820,38 +821,42 @@ public class DModel extends Observable {
 				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 						_dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites,
 						filename);
-//			} else if (DxFlags.newRooms) {
-//				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//						_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
-//						filename);
-			} 
-//			else 
-				if (DxFlags.newActivity) {
+			} else
+				// if (DxFlags.newRooms) {
 				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-						_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
-			} else {
-				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-						_setOfSites, _setOfActivitiesSites, _setOfStuSites,
+						_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
 						filename);
-			}
-//			if (DxFlags.newRooms && DxFlags.newActivity) {
-//				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//						_dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites,
-//						filename);
-//			} else if (DxFlags.newRooms) {
-//				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//						_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
-//						filename);
-//			} else if (DxFlags.newActivity) {
-//				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//						_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
-//			} else {
-//				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//						_setOfSites, _setOfActivitiesSites, _setOfStuSites,
-//						filename);
-//			}
-			if (error.length() != 0)
-				return error;
+		}
+		// else
+		if (DxFlags.newActivity) {
+			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+					_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
+		} else {
+			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+					_setOfSites, _setOfActivitiesSites, _setOfStuSites,
+					filename);
+		}
+//		// if (DxFlags.newRooms && DxFlags.newActivity) {
+//		if (DxFlags.newActivity) {// if (DxFlags.newRooms &&
+//									// DxFlags.newActivity) {
+//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+//					_dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
+//			// } else if (DxFlags.newRooms) {
+//		} else {
+//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+//					_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
+//					filename);
+//		}
+//		if (DxFlags.newActivity) {
+//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+//					_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
+//		} else {
+//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+//					_setOfSites, _setOfActivitiesSites, _setOfStuSites,
+//					filename);
+//		}
+		if (error.length() != 0) {
+			return error;
 		} else {
 			saveD.saveTTStructure(_ttStruct, filename);
 		}
@@ -1004,7 +1009,7 @@ public class DModel extends Observable {
 	}
 
 	public String getCurrentSiteName() {
-		return _currentSite; 
+		return _currentSite;
 	}
 
 	public Vector getOtherSites() {
@@ -1071,10 +1076,10 @@ public class DModel extends Observable {
 	public void buildSetOfEvents() {
 		_setOfEvents.getSetOfResources().removeAllElements();
 		if (getSetOfActivities() != null) {
-//			SetOfActivities soa = getSetOfActivities();
-////			if (DxFlags.newRooms) {
-//				soa.fixTypeOrRoom(_dxSetOfSites);
-//	//		}
+			// SetOfActivities soa = getSetOfActivities();
+			// // if (DxFlags.newRooms) {
+			// soa.fixTypeOrRoom(_dxSetOfSites);
+			// // }
 			_setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
 			if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
 				getSetOfActivities().buildStudentRegisteredList(
