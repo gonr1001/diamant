@@ -121,10 +121,11 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 			if (DxFlags.newEditEventDlg) {
 				new DxEditEventDlg(_jDialog, _dApplic,
 						(String) selectedItems[0], false);
-			} else {
-				new EditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
-						this, false);
 			}
+//			} else {
+//				new EditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
+//						this, false);
+//			}
 			
 			// else
 			// new EditActivityDlg(_jDialog,_dApplic, (String)selectedItems[0],

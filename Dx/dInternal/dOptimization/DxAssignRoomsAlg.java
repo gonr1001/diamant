@@ -75,14 +75,12 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 */
 	public void doWork() {
 		int periodStep = 1;
-		// int sortRoomsByCapacity = 0;
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 		int numberOfPeriods = cycle.getNumberOfDays()
 				* cycle.getMaxNumberOfPeriodsADay();
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
 		DSetOfResources setOfEventsToAssign = new StandardCollection();
-		// DSetOfResources setOfAvailableRooms;
 		DxSetOfResources setOfAvailableDxRooms;
 
 		// for each period try to assign the free rooms
@@ -225,13 +223,13 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 			if (event.isAssigned() && !event.isRoomFixed()) {
 				if (event.getRoomKey()== NO_ROOM_ASSIGNED)
-					System.out.println("room key !event.isRoomFixed()" + event.getRoomKey());				
+					System.out.println("room key !event.isRoomFixed()" + event.getRoomKey() +" "+event.getRoomName());				
 				event.setRoomKey(STR_NO_ROOM_ASSIGNED);
 			}// end if
 			else if (event.isAssigned() && event.isRoomFixed()
 					&& event.getRoomKey() == NO_ROOM_ASSIGNED) {
 				if (event.getRoomKey()== NO_ROOM_ASSIGNED)
-					System.out.println("room key event.isRoomFixed()" + event.getRoomKey());
+					System.out.println("room key event.isRoomFixed()" + event.getRoomKey()+" "+event.getRoomName());
 				event.setRoomKey(STR_NO_ROOM_ASSIGNED);
 				event.setRoomFixed(false);
 			}// end else if
@@ -308,19 +306,19 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
-		// if (_allRscFunct != null) {
-		// if (((EventAttach) event.getAttach()).getRoomFunction() ==
-		// _allRscFunct
-		// .getKey()) {
-		// if (needed_room_size <= room.getCapacity())
-		// return true;
-		// }// end if
-		// else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
-		// .getFunction())) {
-		// if (needed_room_size <= room.getCapacity())
-		// return true;
-		// }// end else
-		// }// end if(allRscFunct!= null)
+//		 if (_allRscFunct != null) {
+//		 if (((EventAttach) event.getAttach()).getRoomFunction() ==
+//		 _allRscFunct
+//		 .getKey()) {
+//		 if (needed_room_size <= room.getCapacity())
+//		 return true;
+//		 }// end if
+//		 else if ((((EventAttach) event.getAttach()).getRoomFunction() == room
+//		 .getFunction())) {
+//		 if (needed_room_size <= room.getCapacity())
+//		 return true;
+//		 }// end else
+//		 }// end if(allRscFunct!= null)
 		return false;
 	}
 

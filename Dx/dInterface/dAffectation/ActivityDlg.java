@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.59 $ $Date: 2007-02-24 19:14:36 $
+ * Title: ActivityDlg $Revision: 1.60 $ $Date: 2007-05-11 22:01:01 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.59 $
+ * @version $Revision: 1.60 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -185,10 +185,11 @@ public class ActivityDlg extends JDialog implements ActionListener,
 				if (DxFlags.newEditEventDlg) {
 					new DxEditEventDlg(_jd, _dApplic,
 							(String) _currentActivities[0], false);
-				} else {
-					new EditEventDlg(_jd, _dApplic,
-							(String) _currentActivities[0], false);
-				}
+				} 
+//				else {
+//					new EditEventDlg(_jd, _dApplic,
+//							(String) _currentActivities[0], false);
+//				}
 				
 			}// end if
 		}// end public void mouseClicked
