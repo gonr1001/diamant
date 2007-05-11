@@ -857,9 +857,9 @@ public class DModel extends Observable {
 //		}
 		if (error.length() != 0) {
 			return error;
-		} else {
+		} // else {
 			saveD.saveTTStructure(_ttStruct, filename);
-		}
+//		}
 		_mergeDone = false;
 
 		_modified = false;
