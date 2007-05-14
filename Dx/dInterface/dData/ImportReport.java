@@ -138,8 +138,8 @@ public class ImportReport extends ViewReport implements ActionListener {
      *            Save the options
      */
     public void doSave(Vector rigth) {
-        _dApplic.getPreferences().setSelectedOptionsInFullReport(rigth);
-        _dApplic.getPreferences().save();
+        _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
+        _dApplic.getDxPreferences().save();
         _rightVec = rigth;
     }
 

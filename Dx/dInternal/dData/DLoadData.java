@@ -129,7 +129,7 @@ public class DLoadData {
 	public DLoadData(DModel dm, String args) {
 		_dm = dm;
 		if (_dm != null) // XXXX Pascal: else ?
-			_chars = _dm.getPreferences()._acceptedChars;
+			_chars = _dm.getDxPreferences()._acceptedChars;
 		try {
 			verifyImportDataFile(args);
 		} catch (DxException e) {

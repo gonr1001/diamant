@@ -67,14 +67,15 @@ public class DxAssignRoomsAlg implements Algorithm {
 		//next line can be suppres i think rgr
 		_dm.getConditionsTest().extractDxPreference();
 		_dxCL = limits;
-		setNoRoomToEventsWithRoomsNotFixed();
 	}
 
 	/*
 	 * this method executes the algorithm
 	 */
 	public void doWork() {
+		
 		int periodStep = 1;
+		setNoRoomToEventsWithRoomsNotFixed();
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 		int numberOfPeriods = cycle.getNumberOfDays()
@@ -87,7 +88,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		for (int i = 0; i < numberOfPeriods; i++) {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
 			setOfEventsToAssign = this.buildSetOfEvents(currentPeriod);
-
+			System.out.println("in for "+ setOfEventsToAssign.size());
 //			if (DxFlags.newRooms) {
 				// to be changed
 				setOfAvailableDxRooms = this
@@ -96,20 +97,25 @@ public class DxAssignRoomsAlg implements Algorithm {
 				// setOfAvailableDxRooms.
 				// .sortSetOfResourcesBySelectedAttachField(sortRoomsByCapacity);
 				while (setOfEventsToAssign.size() > 0) {
+					System.out.println("while "+ setOfEventsToAssign.size() + ">0");
 					DResource eventsToAssign = setOfEventsToAssign
 							.getResourceAt(0);
 					eventsToUpdate.add(eventsToAssign);
 					setOfEventsToAssign.removeResourceAt(0);
-					for (int k = 0; k < setOfAvailableDxRooms.size(); k++) {
-						DxRoom room = (DxRoom) setOfAvailableDxRooms
-								.getResource(k);
-						if (isAddPossible(room, eventsToAssign)) {
-							((EventDx) eventsToAssign.getAttach())
-									.setRoomKey((int) room.getKey());
-							setOfAvailableDxRooms.removeResource(room.getKey());
+//					for (int k = 0; k < setOfAvailableDxRooms.size(); k++) {
+//						DxRoom room = (DxRoom) setOfAvailableDxRooms
+//								.getResource(k);
+//						if (isAddPossible(room, eventsToAssign)) {
+// this does nothing
+//					((DxEvent) eventsToAssign.getAttach())
+//									.setRoomKey("11");//(int) room.getKey());
+// This if the effective way to affect the room							
+							((DxEvent) eventsToAssign.getAttach())
+							.setRoomName("A4-265");
+							//setOfAvailableDxRooms.removeResource(room.getKey());
 							break;
-						}
-					}// end for(int k= 0; k < sor.size();k++)
+//						}
+//					}// end for(int k= 0; k < sor.size();k++)
 				}// end while
 //			}
 			// } else {
@@ -136,6 +142,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		}// end for
 		_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 				eventsToUpdate);
+		_dm.changeInDModel("hello");
 	}
 
 	/**
@@ -220,7 +227,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
 			DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
-
+			System.out.println("event " + i + DConst.CR_LF + event.toString());				
 			if (event.isAssigned() && !event.isRoomFixed()) {
 				if (event.getRoomKey()== NO_ROOM_ASSIGNED)
 					System.out.println("room key !event.isRoomFixed()" + event.getRoomKey() +" "+event.getRoomName());				

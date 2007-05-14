@@ -126,8 +126,8 @@ public class SetOfEvents extends DSetOfResources {
 							event.setPermanentState(((Unity) unityResource
 									.getAttach()).isPermanent());
 							event.setRoomFixed(assignment.getRoomState());
-							event.setRoomFunction(((Unity) unityResource
-									.getAttach()).getFirstPreferFunctionRoom());
+//							event.setRoomFunction(((Unity) unityResource
+//									.getAttach()).getFirstPreferFunctionRoom());
 							this.addResource(new DResource(unityID, event), 0);
 						}
 			
@@ -171,26 +171,6 @@ public class SetOfEvents extends DSetOfResources {
 				+ sectionResource.getKey() + "." + unityResource.getKey() + ".";
 	}
 
-//	private long assignRooms( Assignment assignment,
-//			String unityID, DSetOfResources soImportErrors) {
-//		long roomKey;
-//		int roomIndex = _dm.getSetOfRooms().getIndexOfResource(
-//				assignment.getRoomName());
-//
-//		if (roomIndex != -1) {
-//			roomKey = _dm.getSetOfRooms().getResourceAt(roomIndex).getKey();
-//		} else {
-//			roomKey = -1;
-//			DValue error = new DValue();
-//			String str = assignment.getRoomName();
-//			if (str.equals(DConst.NO_ROOM_INTERNAL))
-//				str = DConst.NO_ROOM_EXTERNAL;
-//			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
-//					+ DConst.NOT_ROOM + "« " + str + " »");
-//			soImportErrors.addResource(new DResource("3", error), 0);
-//		}
-//		return roomKey;
-//	}
 
 	private long oldAssignDxRooms(Assignment assignment,
 			String unityID, DSetOfResources soImportErrors) {
@@ -327,7 +307,7 @@ public class SetOfEvents extends DSetOfResources {
 			for (int i = 0; i < eventsToUpdate.size(); i++) {
 				event = (DxEvent) ((DResource) eventsToUpdate.get(i))
 						.getAttach();
-				System.out.println("SetofE updateActivities event room name: "+ event.getRoomName());
+//				System.out.println("SetofE updateActivities event room name: "+ event.getRoomName());
 
 				long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(
 						event.getPrincipalRescKey(), ".", 0));

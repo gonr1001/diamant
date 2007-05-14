@@ -251,7 +251,7 @@ public class DApplication { // implements ActionListener {
 		return _toolBar;
 	}
 
-	public DxPreferences getPreferences() {
+	public DxPreferences getDxPreferences() {
 		return _preferences;
 	} // end getPreferences
 
@@ -425,7 +425,7 @@ public class DApplication { // implements ActionListener {
 		this.setCursorWait();
 		try {
 			this._dMediator
-					.addDxTTStructureDoc(this.getPreferences()._standardTTC);
+					.addDxTTStructureDoc(this.getDxPreferences()._standardTTC);
 			_dxMenuBar.afterNewTTStruc();
 		} catch (Exception e) {
 			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
@@ -442,7 +442,7 @@ public class DApplication { // implements ActionListener {
 		this.setCursorWait();
 		try {
 			this._dMediator
-					.addDxTTStructureDoc(this.getPreferences()._standardTTE);
+					.addDxTTStructureDoc(this.getDxPreferences()._standardTTE);
 			_dxMenuBar.afterNewTTStruc();
 		} catch (Exception e) {
 			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
@@ -719,7 +719,7 @@ public class DApplication { // implements ActionListener {
 		this.setCursorWait();
 
 		if (DxFlags.newAlg) {
-			new DxAssignAllAlg(this.getCurrentDModel(), this.getPreferences()
+			new DxAssignAllAlg(this.getCurrentDModel(), this.getDxPreferences()
 					.getDxConflictLimits()).doWork();
 
 		} else {
@@ -846,7 +846,7 @@ public class DApplication { // implements ActionListener {
 	 */
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
-			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getPreferences()
+			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getDxPreferences()
 					.getDxConflictLimits()).doWork();
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());

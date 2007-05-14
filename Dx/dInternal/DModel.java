@@ -1211,9 +1211,9 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}
 
-	public DxPreferences getPreferences() {
+	public DxPreferences getDxPreferences() {
 		return this.getDxDocument().getDMediator().getDApplication()
-				.getPreferences();
+				.getDxPreferences();
 	}
 
 } /* end class DModel */

@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.18 $  $Date: 2006-06-12 20:35:31 $
+ * Title: FullReport $Revision: 1.19 $  $Date: 2007-05-14 11:18:57 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.18 $
+ * @version $Revision: 1.19 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -51,7 +51,7 @@ public class FullReport extends ViewReport implements ActionListener {
     super(parentDlg, dApplic, dim);
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
-    _rightVec = _dApplic.getPreferences().getSelectedOptionsInFullReport();
+    _rightVec = _dApplic.getDxPreferences().getSelectedOptionsInFullReport();
     showReport();
   } //FullReport
 
@@ -155,8 +155,8 @@ public class FullReport extends ViewReport implements ActionListener {
   }//end method
 
   public void doSave(Vector rigth) {
-    _dApplic.getPreferences().setSelectedOptionsInFullReport(rigth);
-    _dApplic.getPreferences().save();
+    _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
+    _dApplic.getDxPreferences().save();
     _rightVec = rigth;
   }
 }

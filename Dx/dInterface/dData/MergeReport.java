@@ -1,6 +1,6 @@
 /**
 *
-* Title: ImportReport $Revision: 1.7 $  $Date: 2006-03-08 16:50:31 $
+* Title: ImportReport $Revision: 1.8 $  $Date: 2007-05-14 11:18:57 $
 *
 *
 * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.7 $
+* @version $Revision: 1.8 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 *
@@ -134,8 +134,8 @@ public class MergeReport extends ViewReport implements ActionListener {
 
  }//end method
  public void doSave(Vector rigth) {
-    _dApplic.getPreferences().setSelectedOptionsInFullReport(rigth);
-    _dApplic.getPreferences().save();
+    _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
+    _dApplic.getDxPreferences().save();
     _rightVec = rigth;
   }
 

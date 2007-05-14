@@ -77,7 +77,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 		this.getContentPane().setLayout(new BorderLayout());
 		JPanel jPanel = new JPanel();
 		if(DxFlags.newAlg){
-			DxConflictLimits cl= _dApplic.getPreferences().getDxConflictLimits();
+			DxConflictLimits cl= _dApplic.getDxPreferences().getDxConflictLimits();
 			_textField0 = new JTextField("" + cl.getMStudConfBetweenTwoEvents());
 			_textField1 = new JTextField("" + cl.getMInstConfBetweenTwoEvents());
 			_textField2 = new JTextField("" + cl.getMRoomConfBetweenTwoEvents());
@@ -86,7 +86,7 @@ public class ConflictDlg extends JDialog implements ActionListener {
 			_textField5 = new JTextField("" + cl.getMinPeriodSpacing());
 			_textField6 = new JTextField("" + cl.getRoomBookingRate());
 		} else {
-				int[] a = _dApplic.getPreferences().getConflictLimits();
+				int[] a = _dApplic.getDxPreferences().getConflictLimits();
 				_textField0 = new JTextField("" + a[0]);
 				_textField1 = new JTextField("" + a[1]);
 				_textField2 = new JTextField("" + a[2]);
@@ -146,8 +146,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
 					strB.append(_textField4.getText()+ ";");
 					strB.append(_textField5.getText()+ ";");
 					strB.append(_textField6.getText()+ ";");
-					_dApplic.getPreferences().setDxConflictLimits(strB.toString());
-					_dApplic.getPreferences().save();
+					_dApplic.getDxPreferences().setDxConflictLimits(strB.toString());
+					_dApplic.getDxPreferences().save();
 					dispose();
 				} else {
 					v.add(_textField0.getText());
@@ -157,8 +157,8 @@ public class ConflictDlg extends JDialog implements ActionListener {
 					v.add(_textField4.getText());
 					v.add(_textField5.getText());
 					v.add(_textField6.getText());
-					_dApplic.getPreferences().setConflictLimits(v);
-					_dApplic.getPreferences().save();
+					_dApplic.getDxPreferences().setConflictLimits(v);
+					_dApplic.getDxPreferences().save();
 					dispose();
 				}
 			} else

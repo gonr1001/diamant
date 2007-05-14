@@ -201,9 +201,9 @@ public class DxConditionsToTest {
 									per, event.getID());
 						}// end for (int j=0; j< _testToRun.size(); j++)
 						((DxEvent) event.getAttach())
-								.setInAPeriod(getBooleanValue(1));
+								.setInAPeriod(true);
 						((DxEvent) event.getAttach())
-								.setAssigned(getBooleanValue(1));
+								.setAssigned(true);
 					}// end for (int j=0; j< ((EventAttach)event.getAttach())
 				} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 					((DxEvent) event.getAttach()).setInAPeriod(false);
@@ -233,9 +233,9 @@ public class DxConditionsToTest {
 								event.getID());
 					}// end for (int j=0; j< _testToRun.size(); j++)
 					((EventDx) event.getAttach())
-							.setInAPeriod(getBooleanValue(1));
+							.setInAPeriod(true);
 					((EventDx) event.getAttach())
-							.setAssigned(getBooleanValue(1));
+							.setAssigned(true);
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 				((EventDx) event.getAttach()).setInAPeriod(false);
@@ -275,9 +275,9 @@ public class DxConditionsToTest {
 						}// end for (int j=0; j< _testToRun.size(); j++)
 
 						((DxEvent) event.getAttach())
-								.setInAPeriod(getBooleanValue(-1));
+								.setInAPeriod(false);
 						((DxEvent) event.getAttach())
-								.setAssigned(getBooleanValue(-1));
+								.setAssigned(false);
 
 					}// end for (int j=0; j< ((EventAttach)event.getAttach())
 				} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
@@ -310,9 +310,9 @@ public class DxConditionsToTest {
 						}// end for (int j=0; j< _testToRun.size(); j++)
 
 						((EventDx) event.getAttach())
-								.setInAPeriod(getBooleanValue(-1));
+								.setInAPeriod(false);
 						((EventDx) event.getAttach())
-								.setAssigned(getBooleanValue(-1));
+								.setAssigned(false);
 
 					}// end for (int j=0; j< ((EventAttach)event.getAttach())
 				} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
@@ -468,17 +468,14 @@ public class DxConditionsToTest {
 	// }
 	// return numberOfConflicts;
 	// }
-	/**
-	 * 
-	 * @param oper
-	 * @return
-	 */
-	private boolean getBooleanValue(int oper) {
-		if (oper == 1)
-			return true;
-
-		return false;
-	}
+//	/**
+//	 * 
+//	 * @param oper
+//	 * @return
+//	 */
+//	private boolean getBooleanValue(int oper) {	
+//		return (oper == 1);
+//	}
 
 	/**
 	 * extract preference tables
@@ -487,7 +484,7 @@ public class DxConditionsToTest {
 
 		if (_dm.getDxDocument().getDMediator() != null) {
 			int[] conflictsPreference = _dm.getDxDocument().getDMediator()
-					.getDApplication().getPreferences().getConflictLimits();
+					.getDApplication().getDxPreferences().getConflictLimits();
 			for (int i = 0; i < _acceptableConflictsTable.length; i++)
 				_acceptableConflictsTable[i] = conflictsPreference[i];
 			_avoidPriority = new int[2 - conflictsPreference[3]];
@@ -507,15 +504,17 @@ public class DxConditionsToTest {
 	public void extractDxPreference() {
 
 		if (_dm.getDxDocument().getDMediator() != null) {
-			DxConflictLimits conflictsPreference = _dm.getDxDocument()
-					.getDMediator().getDApplication().getPreferences()
-					.getDxConflictLimits();
+//			DxConflictLimits conflictLimits = _dm.getDxDocument()
+//					.getDMediator().getDApplication().getDxPreferences()
+//					.getDxConflictLimits();
 			
-			_acceptableConflictsTable[0] = conflictsPreference
+			DxConflictLimits conflictLimits = _dm.getDxPreferences().getDxConflictLimits();
+			
+			_acceptableConflictsTable[0] = conflictLimits
 					.getMStudConfBetweenTwoEvents();
-			_acceptableConflictsTable[1] = conflictsPreference
+			_acceptableConflictsTable[1] = conflictLimits
 					.getMInstConfBetweenTwoEvents();
-			_acceptableConflictsTable[2] = conflictsPreference
+			_acceptableConflictsTable[2] = conflictLimits
 					.getMRoomConfBetweenTwoEvents();
 			// _acceptableConflictsTable[3] =
 			// conflictsPreference.getMAllowedPriority();
@@ -525,14 +524,14 @@ public class DxConditionsToTest {
 			// conflictsPreference.getMinPeriodSpacing();
 			// _acceptableConflictsTable[6] =
 			// conflictsPreference.getRoomBookingRate();
-			_avoidPriority = new int[2 - conflictsPreference
+			_avoidPriority = new int[2 - conflictLimits
 					.getMAllowedPriority()];
 			int inc = 0;
-			for (int i = conflictsPreference.getMAllowedPriority() + 1; i < 3; i++)
+			for (int i = conflictLimits.getMAllowedPriority() + 1; i < 3; i++)
 				_avoidPriority[inc++] = i;
-			_periodAcceptableSize = conflictsPreference
+			_periodAcceptableSize = conflictLimits
 					.getMNumOfEventsInPeriod();
-			_periodVariationEvents = conflictsPreference.getMinPeriodSpacing();
+			_periodVariationEvents = conflictLimits.getMinPeriodSpacing();
 			((DxStudentCondtionsToTest) _conditionsToTest.get(0))
 					.setPeriodVariationEvents(_periodVariationEvents);
 		}

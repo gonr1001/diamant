@@ -316,7 +316,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 					.nextToken()), Long.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
-			if (_currUnity.compareByField(2, "false")) {
+			if (_currUnity.compareToAssign(false)) {
 				_rightVector.add(_eventFullID);
 			} else {
 				if (_currUnity.compareByField(3, "true")) {

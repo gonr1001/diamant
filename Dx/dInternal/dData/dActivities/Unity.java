@@ -6,6 +6,7 @@
  */
 package dInternal.dData.dActivities;
 
+import dConstants.DConst;
 import dInternal.DObject;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -149,14 +150,14 @@ public class Unity extends DObject {
 				new DValue()), 1);
 	}
 
-	/**
-	 * get activity prefer function room
-	 * @param String the room function
-	 * @return boolean the operation result
-	 * */
-	public DSetOfResources getPreferFunctionRoom() {
-		return _preferFunctionSetOfRooms;
-	}
+//	/**
+//	 * get activity prefer function room
+//	 * @param String the room function
+//	 * @return boolean the operation result
+//	 * */
+//	public DSetOfResources getPreferFunctionRoom() {
+//		return _preferFunctionSetOfRooms;
+//	}
 
 	/**
 	 * get first index of the activity prefer function room
@@ -325,5 +326,42 @@ public class Unity extends DObject {
 		this.setPermanent(event.getPermanentState());
 		this.setDuration(event.getDuration());
 //		this.setFirstPreferFunctionRoom(event.getRoomFunction());
+	}
+	
+
+	public void setAssign(String value) {
+		boolean boolValue = Boolean.valueOf(value).booleanValue();
+		setAssign(boolValue);
+	}
+
+	public boolean  compareToAssign(boolean value) {
+//		boolean  boolValue = Boolean.valueOf(value).booleanValue();
+			return _assign == value;
+	}
+
+	
+	public String toString(){
+		StringBuffer strB = new StringBuffer(DConst.CR_LF);
+		strB.append("Unity ");
+		strB.append(DConst.CR_LF);
+		strB.append("duration ");
+		strB.append(this._duration);
+		strB.append("assign  ");
+		strB.append(this._assign);
+		strB.append("isCyclic ");
+		strB.append(this._isCyclic);
+		strB.append("isPermanent  ");
+		strB.append(this._permanent);
+		strB.append(" ");
+		strB.append(this._preferFunctionSetOfRooms.toString());
+		strB.append(" ");
+		strB.append(this._setOfAssignments.toString());
+//		strB.append(" ");
+//		strB.append(this._ttsKey);
+//		strB.append(" ");
+//		strB.append(_assignment.toString());
+//		strB.append(" ");
+//		strB.append(_unity.toString);
+		return strB.toString();
 	}
 }

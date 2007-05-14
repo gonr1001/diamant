@@ -314,6 +314,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			event.setRoomName(room);
 			System.out
 					.println("DxE event1.1 room name: " + event.getRoomName());
+			System.out
+			.println("DxE event1.1 room key: " + event.getRoomKey());
 //		} else {
 //			event.setKey(2, Long.toString(getResourceKey(_dModel
 //					.getSetOfRooms(), room)));

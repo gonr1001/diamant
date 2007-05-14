@@ -46,7 +46,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
 		_conflictsPreference = _dm.getDxDocument().getDMediator()
-				.getDApplication().getPreferences().getConflictLimits();
+				.getDApplication().getDxPreferences().getConflictLimits();
 		setNoRoomToEventsWithRoomsNotFixed();
 		doWork();
 	}

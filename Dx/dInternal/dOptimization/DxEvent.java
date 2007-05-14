@@ -289,5 +289,27 @@ public class DxEvent extends DObject {
 
 	}
 	
+	public String toString(){
+		StringBuffer strB = new StringBuffer("Event ");
+		strB.append(DConst.CR_LF);
+		strB.append(this._cLimit);
+		strB.append(" ");
+		strB.append(this._isPlaceInAPeriod);
+		strB.append(" ");
+		strB.append(this._roomKey);
+		strB.append(" ");
+		strB.append(this._roomName);
+		strB.append(" ");
+		strB.append(this._compositeKey);
+		strB.append(" ");
+		strB.append(this._fullName);
+		strB.append(" ");
+		strB.append(this._ttsKey);
+		strB.append(DConst.CR_LF);
+		strB.append("Assignment  ");
+		strB.append(_assignment.toString());
+		strB.append(_unity.getAttach().toString());
+		return strB.toString();
+	}
 
 }

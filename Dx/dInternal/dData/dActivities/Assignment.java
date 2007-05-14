@@ -305,4 +305,26 @@ public class Assignment extends DObject {
 		return 0;
 	}
 
+	
+	public String toString(){
+		StringBuffer strB = new StringBuffer("");
+		strB.append(this._isRoom);
+		strB.append(" ");
+		strB.append(this._isType);
+		strB.append(" ");
+		strB.append(this._roomFixed);
+		strB.append(" ");
+		strB.append(_periodKey);
+//		strB.append(" ");
+//		strB.append(this._compositeKey);
+//		strB.append(" ");
+//		strB.append(this._fullName);
+//		strB.append(" ");
+//		strB.append(this._ttsKey);
+//		strB.append(" ");
+//		strB.append(_assignment.toString);
+//		strB.append(" ");
+//		strB.append(_unity.toString);
+		return strB.toString();
+	}
 }

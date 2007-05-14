@@ -27,7 +27,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
     super(parentDlg, dApplic, dim);
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
-    _rightVec = _dApplic.getPreferences().getSelectedOptionsInConflictReport();
+    _rightVec = _dApplic.getDxPreferences().getSelectedOptionsInConflictReport();
 
     showReport();
 
@@ -137,8 +137,8 @@ public class ConflictReport extends ViewReport implements ActionListener {
   }//end method
 
   public void doSave(Vector rigth) {
-    _dApplic.getPreferences().setSelectedOptionsInConflictReport(rigth);
-    _dApplic.getPreferences().save();
+    _dApplic.getDxPreferences().setSelectedOptionsInConflictReport(rigth);
+    _dApplic.getDxPreferences().save();
     _rightVec = rigth;
   }
 }

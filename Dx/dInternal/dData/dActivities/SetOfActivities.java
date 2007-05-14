@@ -431,13 +431,13 @@ public class SetOfActivities extends DSetOfResources {
 							lineRoomFixed += "1 ";
 						else
 							lineRoomFixed += "0 ";
-						DSetOfResources pfunctionRoom = bloc
-								.getPreferFunctionRoom();
-						if (pfunctionRoom.size() > 0)
-							lineRoomType += pfunctionRoom.getResourceAt(0)
-									.getID()
-									+ " ";
-						else
+//						DSetOfResources pfunctionRoom = bloc
+//								.getPreferFunctionRoom();
+//						if (pfunctionRoom.size() > 0)
+//							lineRoomType += pfunctionRoom.getResourceAt(0)
+//									.getID()
+//									+ " ";
+//						else
 							lineRoomType += "0 ";
 
 						if (bloc.isPermanent()) {

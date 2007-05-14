@@ -1,6 +1,6 @@
 /**
  *
- * Title: PLAFDlg $Revision: 1.6 $  $Date: 2004-10-14 18:59:32 $
+ * Title: PLAFDlg $Revision: 1.7 $  $Date: 2007-05-14 11:18:57 $
  * Description: PLAFDlg is a class used to display preferences
  *              Dialogs.
  *              Look and Feel
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -92,8 +92,8 @@ public class PLAFDlg extends JDialog implements ActionListener {
 					}
 		} //end if
 		_dApplic.updateLAF(lnfName);
-		_dApplic.getPreferences().setLAFName(lnfName);
-		_dApplic.getPreferences().save();
+		_dApplic.getDxPreferences().setLAFName(lnfName);
+		_dApplic.getDxPreferences().save();
 	} // end actionPerformed
 
 
