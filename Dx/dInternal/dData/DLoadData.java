@@ -133,7 +133,6 @@ public class DLoadData {
 		try {
 			verifyImportDataFile(args);
 		} catch (DxException e) {
-
 			e.printStackTrace();
 		}
 	}
@@ -176,6 +175,23 @@ public class DLoadData {
 		}
 		return roomsList;
 	}// end extractRooms
+
+	
+	
+
+	public DxSetOfSites extractDxRooms() throws DxException {
+		DataExchange de = buildDataExchange(_roomsFileName);
+		DxSiteReader dxsrReader;
+		TTStructure tts = _dm.getTTStructure();
+		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+			dxsrReader = new DxReadSitedotDia(de, tts.getNumberOfActiveDays(),
+					tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
+		} else {
+			dxsrReader = new DxReadSite1dot5(de);
+		}
+
+		return dxsrReader.readSetOfSites();
+	}// end extractDxRooms
 
 	/**
 	 * 
@@ -281,7 +297,7 @@ public class DLoadData {
 	// thorws to function
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
-	public boolean loadTheTT(String fileName, String currentDir)
+	public boolean loadDataStructures(String fileName, String currentDir)
 			throws DxException {
 
 		String dataloaded = new String(filterBadChars(fileName));
@@ -293,7 +309,7 @@ public class DLoadData {
 				|| head.equalsIgnoreCase(DConst.FILE_HEADER_NAME1_6)) {
 			return loadData(fileName, currentDir);
 		} else if (head.equalsIgnoreCase(DConst.FILE_HEADER_NAME2_1)) {
-			return load2dot1(fileName);
+			return loadData2dot1(fileName);
 		} else {
 			throw new DxException("Invalid FILE_HEADER_NAME !");
 		}
@@ -382,7 +398,7 @@ public class DLoadData {
 		return true;
 	}
 
-	private boolean load2dot1(String fileName) throws DxException {
+	private boolean loadData2dot1(String fileName) throws DxException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -408,7 +424,7 @@ public class DLoadData {
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
 				_dxSoInst = dxir.readSetOfInstructors();
-			}// end if(tts.getError().length()==0)
+			}// end if
 
 			// extract SetOfSites
 ////			if (!DxFlags.newRooms) {
@@ -433,7 +449,8 @@ public class DLoadData {
 						_dxSoSRooms.getAllRooms(), _tts.getPeriodLenght(), true);
 
 			} else {
-				_activitiesList = new SetOfActivitiesSites(true, _tts
+				boolean isOpen = true;
+				_activitiesList = new SetOfActivitiesSites(isOpen, _tts
 						.getPeriodLenght());
 				if (_activitiesList.analyseTokens(de, 1)) {
 					_activitiesList.buildSetOfResources(de, 1);
@@ -1211,20 +1228,6 @@ public class DLoadData {
 		return dxir.readSetOfInstructors(); // 
 
 	}
-
-	public DxSetOfSites extractDxRooms() throws DxException {
-		DataExchange de = buildDataExchange(_roomsFileName);
-		DxSiteReader dxsrReader;
-		TTStructure tts = _dm.getTTStructure();
-		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-			dxsrReader = new DxReadSitedotDia(de, tts.getNumberOfActiveDays(),
-					tts.getCurrentCycle().getMaxNumberOfPeriodsADay());
-		} else {
-			dxsrReader = new DxReadSite1dot5(de);
-		}
-
-		return dxsrReader.readSetOfSites();
-	}// end extractDxRooms
 
 	public DxSetOfActivitiesSites extractDxActivity(
 			DxSetOfInstructors dxsoiInst, DxSetOfRooms dxsorRooms, int nPerLen)

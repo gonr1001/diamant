@@ -119,9 +119,9 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			// data
 //		if (!analyseSIGTokens(dataloaded, beginPosition)) {// analyse STI data
 			return false;
-		} else if (_open) {// else if(!analyseSIGTokens(beginPosition))
+		} else if (_open) {
 			return analyseDeltaTokens1_6(dataloaded, beginPosition);// analyse
-		}// end else if(!analyseSIGTokens(beginPosition))
+		}// end 
 
 		return true;
 	}
@@ -248,6 +248,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	private boolean analyseDeltaTokens1_6(byte[] dataloaded, int beginPosition) {
 		String token;
 
+		//here start the work with the  activities
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		StringTokenizer stLine = null;

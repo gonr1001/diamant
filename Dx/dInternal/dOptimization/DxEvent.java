@@ -1,13 +1,26 @@
-package dInternal.dOptimization;
-
 /**
- * <p>Title: Diamant</p>
- * <p>Description:  timetable construction</p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: UdeS</p>
- * @author ysyam
- * @version 1.0
+ *
+ * Title: DoNothingDlg 
+ * Description: DoNothingDlg is created by DoNotingCmd
+ *              The dialog is displayed nothing is done.
+ *              This class is used until
+ *              the corresponding command will be written.
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ *
+ *
  */
+
+package dInternal.dOptimization;
 
 import java.util.StringTokenizer;
 
@@ -19,6 +32,14 @@ import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
+
+
+/**
+ * 
+ * DxEevnt is a class used to keep all 
+ * informations conserning an Event.
+ * 
+ */
 
 public class DxEvent extends DObject {
 
@@ -292,23 +313,23 @@ public class DxEvent extends DObject {
 	public String toString(){
 		StringBuffer strB = new StringBuffer("Event ");
 		strB.append(DConst.CR_LF);
+		strB.append("Cours limit ");
 		strB.append(this._cLimit);
-		strB.append(" ");
+		strB.append(" isPlacedInAPeriod ");
 		strB.append(this._isPlaceInAPeriod);
-		strB.append(" ");
+		strB.append(" room key ");
 		strB.append(this._roomKey);
-		strB.append(" ");
+		strB.append(" roomName ");
 		strB.append(this._roomName);
-		strB.append(" ");
+		strB.append(" compositeKey ");
 		strB.append(this._compositeKey);
-		strB.append(" ");
+		strB.append(" fullName ");
 		strB.append(this._fullName);
-		strB.append(" ");
-		strB.append(this._ttsKey);
-		strB.append(DConst.CR_LF);
-		strB.append("Assignment  ");
-		strB.append(_assignment.toString());
-		strB.append(_unity.getAttach().toString());
+		strB.append(" ttsKey ");
+		strB.append(this._ttsKey);		
+		strB.append(this._assignment.toString());
+		strB.append(this._unity.getAttach().toString());
+		strB.append(this._setInstructorKeys.toString());
 		return strB.toString();
 	}
 

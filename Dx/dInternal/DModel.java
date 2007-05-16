@@ -385,7 +385,7 @@ public class DModel extends Observable {
 
 		DLoadData loadData = new DLoadData(this);
 		try {
-			boolean loadOk = loadData.loadTheTT(fileName, currentDir);
+			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
 			if (loadOk) {
 				setVersion(loadData.getVersion());
 				_ttStruct = loadData.getTTStructure();
@@ -458,34 +458,35 @@ public class DModel extends Observable {
 		_dxSetOfInstructors = loadData.extractInstructors();
 		resizeInstructorsResource(_dxSetOfInstructors);
 
-		// import set of sites
-		// if (DxFlags.newRooms) {
-		_dxSetOfSites = loadData.extractDxRooms();
-		resizeSiteAvailability();// _dxSetOfSites);
 
-		// } else {
-		// _setOfSites = loadData.extractRooms(null, false);
-		// resizeSiteAvailability(_setOfSites);//
-		// if (_setOfSites.getError().length() != 0) {
-		// return _setOfSites.getError();
-		// }
-		// }
+		// import set of sites
+//		if (DxFlags.newRooms) {
+			_dxSetOfSites = loadData.extractDxRooms();
+			resizeSiteAvailability();// _dxSetOfSites);
+
+//		} else {
+//			_setOfSites = loadData.extractRooms(null, false);
+//			resizeSiteAvailability(_setOfSites);//
+//			if (_setOfSites.getError().length() != 0) {
+//				return _setOfSites.getError();
+//			}
+//		}
 
 		// import set of activities
 		if (DxFlags.newActivity) {
-			// if (!DxFlags.newRooms) {
-			System.out
-					.println("DModel.importData cannot be completed with new Activites and old Rooms");
+			if (!DxFlags.newRooms) {
+				System.out
+						.println("DModel.importData cannot be completed with new Activites and old Rooms");
+			}
+			System.out.println("flag" + !DxFlags.newRooms);
+			_dxsoasSetOfAct = loadData.extractDxActivity(_dxSetOfInstructors,
+					_dxSetOfSites.getAllRooms(), _ttStruct.getPeriodLenght());
+		} else {
+			_setOfActivitiesSites = loadData.extractActivities(null, false);
+			if (_setOfActivitiesSites.getError().length() != 0) {
+				return _setOfActivitiesSites.getError();
+			}
 		}
-		_dxsoasSetOfAct = loadData.extractDxActivity(_dxSetOfInstructors,
-				_dxSetOfSites.getAllRooms(), _ttStruct.getPeriodLenght());
-		// } else {
-		// _setOfActivitiesSites = loadData.extractActivities(null, false);
-		// if (_setOfActivitiesSites.getError().length() != 0) {
-		// return _setOfActivitiesSites.getError();
-		// }
-		// }
-
 		// import set of students
 		_setOfStuSites = loadData.extractStudents(null, false);
 		if (_setOfStuSites.getError().length() != 0) {

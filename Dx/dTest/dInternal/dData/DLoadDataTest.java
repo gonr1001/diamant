@@ -55,7 +55,7 @@ public class DLoadDataTest extends TestCase {
 				+ "loadData5j.dia";
 		_loadData5j = new DLoadData();
 		try {
-			boolean timeTable5j = _loadData5j.loadTheTT(path5j, "." + File.separator
+			boolean timeTable5j = _loadData5j.loadDataStructures(path5j, "." + File.separator
 					+ "dataTest");
 			assertEquals("test_loadTimeTable5j : loadDataOk: ", true,
 					timeTable5j);
@@ -68,7 +68,7 @@ public class DLoadDataTest extends TestCase {
 		_loadData7j = new DLoadData();
 
 		try {
-			boolean timeTable7j = _loadData7j.loadTheTT(path7j, "." + File.separator
+			boolean timeTable7j = _loadData7j.loadDataStructures(path7j, "." + File.separator
 					+ "dataTest");
 			assertEquals("test_loadTimeTable7j : loadDataOk: ", true,
 					timeTable7j);

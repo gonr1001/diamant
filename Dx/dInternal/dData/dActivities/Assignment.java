@@ -72,6 +72,30 @@ public class Assignment extends DObject {
 		_dateAndHour[1] = hour;
 		_dateAndHour[2] = minute;
 	}
+	
+	/**
+	 * set date and time of the bloc in this week
+	 * 
+	 * @param int
+	 *            the key of the day
+	 * @param int
+	 *            the begin hour
+	 * @param int
+	 *            the begin minute
+	 */
+	public String stringDateAndTime() {
+		StringBuffer strB = new StringBuffer(DConst.CR_LF);
+		strB.append("DateAndTime ");
+		strB.append(DConst.CR_LF);
+		strB.append("day ");
+		strB.append(this._dateAndHour[0]);
+		strB.append(" hour ");
+		strB.append(this._dateAndHour[1]);
+		strB.append(" minute ");
+		strB.append(this._dateAndHour[2]);
+	
+		return strB.toString();
+	}
 
 	/**
 	 * set period key of the bloc in this week
@@ -307,24 +331,24 @@ public class Assignment extends DObject {
 
 	
 	public String toString(){
-		StringBuffer strB = new StringBuffer("");
+		StringBuffer strB = new StringBuffer(DConst.CR_LF);
+		strB.append("Assignment ");
+		strB.append(DConst.CR_LF);
+		strB.append("Is room ");
 		strB.append(this._isRoom);
-		strB.append(" ");
+		strB.append(" is Type ");
 		strB.append(this._isType);
-		strB.append(" ");
+		strB.append(" roomFixed ");
 		strB.append(this._roomFixed);
-		strB.append(" ");
+		strB.append(" period Key ");
 		strB.append(_periodKey);
-//		strB.append(" ");
-//		strB.append(this._compositeKey);
-//		strB.append(" ");
-//		strB.append(this._fullName);
-//		strB.append(" ");
-//		strB.append(this._ttsKey);
-//		strB.append(" ");
-//		strB.append(_assignment.toString);
-//		strB.append(" ");
-//		strB.append(_unity.toString);
+		strB.append(" ");
+		strB.append(this._setInstructorKeys.toString());
+		strB.append(" ");
+		strB.append(this._setInstructorNames.toString());
+		strB.append(" ");
+		strB.append(this.stringDateAndTime());
+
 		return strB.toString();
 	}
 }
