@@ -34,6 +34,9 @@ public class SetOfEvents extends DSetOfResources {
 	/***************************************************************************
 	 * Constructor
 	 */
+	public SetOfEvents() {
+		super();
+	}
 	public SetOfEvents(DModel dm) {
 		super();
 		_dm = dm;
@@ -110,7 +113,7 @@ public class SetOfEvents extends DSetOfResources {
 						roomKey = oldAssignDxRooms(assignment,
 								unityID, soImportErrors);
 						if(DxFlags.newEvent) {
-							DxEvent dxEvent = new DxEvent(compositeKey, assignment
+							DxEvent dxEvent = new DxEvent(activityResource.getID(),compositeKey, assignment
 									.getSetInstructorKeys(), roomName, roomKey,
 									unityResource, assignment, cLimit);
 							this.addResource(new DResource(unityID, dxEvent), 0);
@@ -594,6 +597,16 @@ public class SetOfEvents extends DSetOfResources {
 			}// end if(event.isPlaceInAPeriod())
 		}// end for (int i = 0; i < this.size();
 	}
+//	public void sortSetbyType() {
+//		
+//		for (int i = 0; (DSetOfResources)this.size(); i++){
+//			
+//		}
+//	}
+//	public void sortSetbyCapacity() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 //	public String toString() {		
 //		return "";

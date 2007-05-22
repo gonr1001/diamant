@@ -122,8 +122,6 @@ public abstract class DSetOfResources extends DObject {
 			_currentKey++;
 			return true;
 		}
-		//_resourceList.add(resource);
-
 		return false;
 	}
 

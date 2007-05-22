@@ -124,7 +124,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
                     nCurrentLineState++;
                 }
                 DxAvailability dxaAlways = getDummyAvailability();
-                dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
+                dxrTempRoom = new DxRoom(sRoomName,DConst.ROOM_STANDARD_CAT, nRoomCapacity,
                         nRoomFunction, viCharacteristics, sNote, dxaAlways);
                 dxsosBuild.addRoom(DConst.ROOM_DEFAULT_SITE,
                         DConst.ROOM_STANDARD_CAT, dxrTempRoom);

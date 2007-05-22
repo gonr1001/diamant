@@ -346,7 +346,6 @@ public class Assignment extends DObject {
 		strB.append(this._setInstructorKeys.toString());
 		strB.append(" ");
 		strB.append(this._setInstructorNames.toString());
-		strB.append(" ");
 		strB.append(this.stringDateAndTime());
 
 		return strB.toString();

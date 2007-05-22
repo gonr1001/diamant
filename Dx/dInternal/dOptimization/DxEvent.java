@@ -73,9 +73,9 @@ public class DxEvent extends DObject {
 	 * @param key1
 	 * @param key2
 	 */
-	public DxEvent(String princKey, DSetOfResources inst, String roomName, long key,
+	public DxEvent(String actId, String princKey, DSetOfResources inst, String roomName, long key,
 			DResource unity, Assignment assignment, int cLimit) {
-		_fullName = "name";
+		_fullName = actId;
 		_ttsKey = "";
 		_isPlaceInAPeriod = false;
 		_compositeKey = princKey;
@@ -93,7 +93,7 @@ public class DxEvent extends DObject {
 	}
 
 	public DxEvent cloneEvent() {
-		DxEvent eA = new DxEvent(_compositeKey, _setInstructorKeys,
+		DxEvent eA = new DxEvent(_fullName, _compositeKey, _setInstructorKeys,
 				_roomName, _roomKey, _unity, _assignment, _cLimit);
 		return eA;
 	}
@@ -313,7 +313,9 @@ public class DxEvent extends DObject {
 	public String toString(){
 		StringBuffer strB = new StringBuffer("Event ");
 		strB.append(DConst.CR_LF);
-		strB.append("Cours limit ");
+		strB.append("Full Name ");
+		strB.append(this._fullName);
+		strB.append(" Cours limit ");
 		strB.append(this._cLimit);
 		strB.append(" isPlacedInAPeriod ");
 		strB.append(this._isPlaceInAPeriod);
@@ -323,8 +325,6 @@ public class DxEvent extends DObject {
 		strB.append(this._roomName);
 		strB.append(" compositeKey ");
 		strB.append(this._compositeKey);
-		strB.append(" fullName ");
-		strB.append(this._fullName);
 		strB.append(" ttsKey ");
 		strB.append(this._ttsKey);		
 		strB.append(this._assignment.toString());

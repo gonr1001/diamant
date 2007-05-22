@@ -39,6 +39,8 @@ public class DxRoom extends DxResource implements AvailableResource {
     private static long _lUniqueKey = 1;
 
     private int _nCapacity;
+    
+    private String _type;
 
     // Next members are not required but are provided in legacy files
     // Kept in case it would be needed
@@ -59,9 +61,24 @@ public class DxRoom extends DxResource implements AvailableResource {
         _sComment = sNote;
         _dxaAva = dxaAva;
     }
+    
+    public DxRoom(String sRoomName, String type,int nCapacity, int nFunction,
+            Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {
+        super(_lUniqueKey++, sRoomName);
+        _type = type;
+        _nCapacity = nCapacity;
+        _nFunction = nFunction;
+        _viCharacteristics = viChar;
+        _sComment = sNote;
+        _dxaAva = dxaAva;
+    }
 
     public int getCapacity() {
         return _nCapacity;
+    }
+    
+    public String getType() {
+        return _type;
     }
 
     public int getFunction() {
@@ -148,6 +165,52 @@ public class DxRoom extends DxResource implements AvailableResource {
 
         return sReturn;
     }
+    
+    
+	public String toString(){
+		StringBuffer strB = new StringBuffer("Room ");
+		strB.append(DConst.CR_LF);
+		strB.append("Name ");
+		strB.append(this.getName());
+		strB.append(" Room capacity ");
+		strB.append(this._nCapacity);
+//		strB.append(" isPlacedInAPeriod ");
+//		strB.append(this._isPlaceInAPeriod);
+//		strB.append(" room key ");
+//		strB.append(this._roomKey);
+//		strB.append(" roomName ");
+//		strB.append(this._roomName);
+//		strB.append(" compositeKey ");
+//		strB.append(this._compositeKey);
+//		strB.append(" ttsKey ");
+//		strB.append(this._ttsKey);		
+//		strB.append(this._assignment.toString());
+//		strB.append(this._unity.getAttach().toString());
+//		strB.append(this._setInstructorKeys.toString());
+		return strB.toString();
+	}
+
+//        sReturn.append(this.getName());
+//        sReturn.append(this.getName());
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + _nCapacity
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + _nFunction
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + this.getCharString()
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + sSiteName
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + sCatName
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + _sComment
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN
+//                + _dxaAva.toWrite(DConst.AVAILABILITY_DAY_SEPARATOR_ROOM,
+//                        DConst.AVAILABILITY_PERIOD_SEPARATOR)
+//                + DConst.ROOM_FIELD_SEPARATOR_TOKEN;
+//
+//        return sReturn;
+//    }
 
     private String getCharString() {
         StringBuffer sbChars = new StringBuffer();

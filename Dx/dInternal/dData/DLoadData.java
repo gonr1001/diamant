@@ -370,7 +370,7 @@ public class DLoadData {
 			de = buildDataExchange(inDiaFileActivities.getBytes());
 			if (DxFlags.newActivity) {
 				DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
-						de, _dxSoInst, _dxSoSRooms.getAllRooms(), _tts
+						de, _dxSoInst, _dxSoSRooms.getAllDxRooms(), _tts
 								.getPeriodLenght(), true);
 			} else {
 				_activitiesList = new SetOfActivitiesSites(true, _tts
@@ -446,7 +446,7 @@ public class DLoadData {
 			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 			if (DxFlags.newActivity) {
 				_dxasr = new DxReadActivitiesSites1dot5(de, _dxSoInst,
-						_dxSoSRooms.getAllRooms(), _tts.getPeriodLenght(), true);
+						_dxSoSRooms.getAllDxRooms(), _tts.getPeriodLenght(), true);
 
 			} else {
 				boolean isOpen = true;

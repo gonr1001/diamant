@@ -115,7 +115,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 				throw new DxException(DConst.ROOM_TEXT7 + currentLine);
 			}
 
-			dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity, nRoomFunction,
+			dxrTempRoom = new DxRoom(sRoomName, sRoomCat, nRoomCapacity, nRoomFunction,
 					viCharacteristics, sNote, dxaAva);
 			dxsosBuild.addSite(sRoomSite); // If site exists, it's not added
 			dxsosBuild.addCategory(sRoomSite, sRoomCat);// If cat exits, it's

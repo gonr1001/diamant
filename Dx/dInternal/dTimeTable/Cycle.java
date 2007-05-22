@@ -119,6 +119,11 @@ public class Cycle extends DObject {
 	public int getNumberOfDays() {
 		return _setOfDays.size();
 	}
+	
+	public int getNumberOfPeriods() {
+		return  this.getNumberOfDays()
+		* this.getMaxNumberOfPeriodsADay();
+	}
 
 	/**
 	 * 

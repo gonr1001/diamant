@@ -176,4 +176,29 @@ public class DxSetOfRooms extends DxSetOfResources {
 			}
 		return false;
 	}
+	
+	public DxSetOfRooms clone() {
+		DxSetOfRooms r = new DxSetOfRooms();
+		Vector <DxResource> vr = getNameSortedRessources();
+				
+		for (int i = 0; i < vr.size(); i++) {
+			DxResource dxr = vr.get(i);
+			r.addRoom((DxRoom) dxr);
+		}
+		return r; 
+
+	}
+
+	public void sortSetByType() {
+//		DxRoom r..getRoomCapacity(sRoomName)
+//		
+		//this.s
+	}
+
+	public void sortSetByCapacity() {
+		// TODO Auto-generated method stub
+		//DxRoom r.getRoomCapacity(sRoomName)
+	}
+	
+
 }

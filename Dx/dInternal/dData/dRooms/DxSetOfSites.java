@@ -416,22 +416,22 @@ public class DxSetOfSites extends DxSetOfResources {
 		return sbReturn.toString();
 	}
 
-	public DxSetOfRooms getAllRooms() {
-		DxSite dxsCurrentSite;
-		DxSetOfRooms dxsorAllRooms = null;
-		Iterator itSites;
-		itSites = this.iterator();
-		while (itSites.hasNext()) {
-			dxsCurrentSite = (DxSite) itSites.next();
-			if (dxsorAllRooms == null) {
-				dxsorAllRooms = dxsCurrentSite.getAllRooms();
-			} else {
-				dxsorAllRooms.addSetOfRooms(dxsCurrentSite.getAllRooms());
-			}
-		}
-
-		return dxsorAllRooms;
-	}
+//	public DxSetOfRooms getAllRooms() {
+//		DxSite dxsCurrentSite;
+//		DxSetOfRooms dxsorAllRooms = null;
+//		Iterator itSites;
+//		itSites = this.iterator();
+//		while (itSites.hasNext()) {
+//			dxsCurrentSite = (DxSite) itSites.next();
+//			if (dxsorAllRooms == null) {
+//				dxsorAllRooms = dxsCurrentSite.getAllRooms();
+//			} else {
+//				dxsorAllRooms.addSetOfRooms(dxsCurrentSite.getAllRooms());
+//			}
+//		}
+//
+//		return dxsorAllRooms;
+//	}
 
 	public DxSetOfRooms getAllDxRooms() {
 		DxSite dxsCurrentSite;

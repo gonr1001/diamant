@@ -123,7 +123,7 @@ public class SetOfEventsTest extends TestCase {
 					.getSiteCount());
 			assertEquals("test_RoomInEvent : catCount 1", 1, sos
 					.getCatCount(sos.getSiteKey(DConst.ROOM_DEFAULT_SITE)));
-			assertEquals("test_RoomInEvent : ", true, sor.getNamesVector()
+			assertEquals("test_RoomInEvent : ", true, sor.getRoomsNameSorted()
 					.contains("D73020"));
 
 //		} else {

@@ -133,11 +133,11 @@ public class DxSetOfSitesTest extends TestCase {
 						DConst.ROOM_STANDARD_CAT, "D72007"));
 
 		assertNotNull("test_10_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosSingle.getAllRooms().getRoom("D13012"));
+				_dxsosSingle.getAllDxRooms().getRoom("D13012"));
 		assertNotNull("test_11_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosSingle.getAllRooms().getRoom("D40023"));
+				_dxsosSingle.getAllDxRooms().getRoom("D40023"));
 		assertNotNull("test_12_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosSingle.getAllRooms().getRoom("D13000"));
+				_dxsosSingle.getAllDxRooms().getRoom("D13000"));
 
 	}
 
@@ -187,15 +187,15 @@ public class DxSetOfSitesTest extends TestCase {
 				_dxsosMulti.getRoomCapacity("SHE", "CAT2", "FM-3207"));
 
 		assertNotNull("test_13_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosMulti.getAllRooms().getRoom("Z7-2001"));
+				_dxsosMulti.getAllDxRooms().getRoom("Z7-2001"));
 		assertNotNull("test_14_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosMulti.getAllRooms().getRoom("Z7-2003"));
+				_dxsosMulti.getAllDxRooms().getRoom("Z7-2003"));
 		assertNotNull("test_15_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosMulti.getAllRooms().getRoom("130-7"));
+				_dxsosMulti.getAllDxRooms().getRoom("130-7"));
 		assertNotNull("test_16_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosMulti.getAllRooms().getRoom("130-6"));
+				_dxsosMulti.getAllDxRooms().getRoom("130-6"));
 		assertNotNull("test_17_getSetOfSitesSingleSite: asserNotNull",
-				_dxsosMulti.getAllRooms().getRoom("101"));
+				_dxsosMulti.getAllDxRooms().getRoom("101"));
 
 	}
 

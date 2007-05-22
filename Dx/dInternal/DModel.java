@@ -480,7 +480,7 @@ public class DModel extends Observable {
 			}
 			System.out.println("flag" + !DxFlags.newRooms);
 			_dxsoasSetOfAct = loadData.extractDxActivity(_dxSetOfInstructors,
-					_dxSetOfSites.getAllRooms(), _ttStruct.getPeriodLenght());
+					_dxSetOfSites.getAllDxRooms(), _ttStruct.getPeriodLenght());
 		} else {
 			_setOfActivitiesSites = loadData.extractActivities(null, false);
 			if (_setOfActivitiesSites.getError().length() != 0) {
@@ -1143,7 +1143,7 @@ public class DModel extends Observable {
 	 */
 	public void resizeSiteAvailability() {// DxSetOfSites dxSetOfSites) {
 		// DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
-		DxSetOfRooms dxrAllRooms = _dxSetOfSites.getAllRooms();
+		DxSetOfRooms dxrAllRooms = _dxSetOfSites.getAllDxRooms();
 		Iterator itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();
