@@ -315,16 +315,6 @@ public class DApplication { // implements ActionListener {
 		SwingUtilities.updateComponentTreeUI(_jFrame);
 	}
 
-	// public void constructToolBar() {
-	// _tbar = new DToolBar(this); // constucts the tool bar
-	// _tbar.updateUI();
-	//
-	// //_jFrame.getContentPane().add(_tbar, BorderLayout.NORTH);
-	// // panel.add(_tbar,BorderLayout.NORTH);
-	// //_tbar.updateUI();
-	// updateLAF(_preferences._lookAndFeel);
-	//
-	// }
 
 	/**
 	 * Closes the document(s) and the application. Use this method for
@@ -834,12 +824,6 @@ public class DApplication { // implements ActionListener {
 		_dxMenuBar.showAllMenus();
 	}
 
-	// /**
-	// *
-	// */
-	// public void conflictsOfAnEvent() {
-	// new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
-	// }
 
 	/**
 	 * 

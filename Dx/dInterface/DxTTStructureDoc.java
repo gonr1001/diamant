@@ -110,6 +110,7 @@ public class DxTTStructureDoc extends DxDocument {
 		close();
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_ttStructure);
+		
 	}
 
 	// -------------------------------------------
@@ -117,12 +118,14 @@ public class DxTTStructureDoc extends DxDocument {
 		close();
 		buidDocument(false, false);
 		_ttPane.updateTTPane(_ttStructure);
+		
 	}
 
 	public void displayVericalSplit() {
 		close();
 		buidDocument(false, true);
 		_ttPane.updateTTPane(_ttStructure);
+		
 	}
 
 	// -------------------------------------------

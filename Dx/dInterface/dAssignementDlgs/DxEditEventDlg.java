@@ -583,7 +583,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		}
 		// End is for the Sites
 
-		DxSite currentSite = dxsosSites.getSite(_dModel.getCurrentSiteName());
+		DxSite currentSite = dxsosSites.getSite((String) cbSites.getSelectedItem());
 
 		int capacity = 0;
 		DxCategory currentCat;
@@ -594,7 +594,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbCategories = new JComboBox(dcbmCategories);
 		DefaultComboBoxModel dcbmRooms;
 		JComboBox cbRooms = new JComboBox();
-		//System.out.println("room " + name);
+		System.out.println("room " + name);
 
 		if (name.equalsIgnoreCase("------")) {
 			System.out.println("------" + name);
@@ -614,8 +614,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				String currentCatName = currentSite.getCatNameOfRoom(name);
 				currentCat = currentSite.getSetOfCat().getCat(currentCatName);
 				currentRoom = currentSite.getRoom(currentCat.getName(), name);
-//				System.out.println("cat" + currentCat.getName() + " name "
-//						+ name);
+				System.out.println("cat" + currentCat.getName() + " name "
+						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				cbRooms.setModel(dcbmRooms);
@@ -627,8 +627,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			} else { // it is a cat.
 				currentCat = currentSite.getSetOfCat().getCat(name);
 				currentRoom = null;
-//				System.out.println("cat" + currentCat.getName() + " noroom "
-//						+ name);
+				System.out.println("cat" + currentCat.getName() + " noroom "
+						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				cbRooms.setModel(dcbmRooms);

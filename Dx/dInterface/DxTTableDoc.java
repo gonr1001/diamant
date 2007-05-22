@@ -123,7 +123,6 @@ public class DxTTableDoc extends DxDocument {
 		_jif.pack();
 		// the 1 in Integer(1) could be any integer
 		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
-
 		_jif.setVisible(true);
 
 		// to comment if work with jifs
@@ -183,6 +182,7 @@ public class DxTTableDoc extends DxDocument {
 		close();
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_dm.getTTStructure());
+		_stateBar.upDate();
 	}
 
 	@Override
@@ -190,13 +190,15 @@ public class DxTTableDoc extends DxDocument {
 		 close();
 		 buidDocument(false, false);
 		 _ttPane.updateTTPane(_dm.getTTStructure());
+		 _stateBar.upDate();
 	}
 
 	@Override
 	public void displayHorizontalSplit() {
 		 close();
 		 buidDocument(false, true);
-		 _ttPane.updateTTPane(_dm.getTTStructure());		
+		 _ttPane.updateTTPane(_dm.getTTStructure());	
+		 _stateBar.upDate();
 	}
 
 	@Override

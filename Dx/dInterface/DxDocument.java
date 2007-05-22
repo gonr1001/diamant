@@ -91,6 +91,7 @@ public abstract class DxDocument implements Observer {
 
 	public void close() {
 		_jif.dispose();
+		//_dMediator.getDApplication().close();
 	}
 
 

@@ -167,28 +167,28 @@ public class DxRoom extends DxResource implements AvailableResource {
     }
     
     
-	public String toString(){
-		StringBuffer strB = new StringBuffer("Room ");
-		strB.append(DConst.CR_LF);
-		strB.append("Name ");
-		strB.append(this.getName());
-		strB.append(" Room capacity ");
-		strB.append(this._nCapacity);
-//		strB.append(" isPlacedInAPeriod ");
-//		strB.append(this._isPlaceInAPeriod);
-//		strB.append(" room key ");
-//		strB.append(this._roomKey);
-//		strB.append(" roomName ");
-//		strB.append(this._roomName);
-//		strB.append(" compositeKey ");
-//		strB.append(this._compositeKey);
-//		strB.append(" ttsKey ");
-//		strB.append(this._ttsKey);		
-//		strB.append(this._assignment.toString());
-//		strB.append(this._unity.getAttach().toString());
-//		strB.append(this._setInstructorKeys.toString());
-		return strB.toString();
-	}
+//	public String toString(){
+//		StringBuffer strB = new StringBuffer("Room ");
+//		strB.append(DConst.CR_LF);
+//		strB.append("Name ");
+//		strB.append(this.getName());
+//		strB.append(" Room capacity ");
+//		strB.append(this._nCapacity);
+////		strB.append(" isPlacedInAPeriod ");
+////		strB.append(this._isPlaceInAPeriod);
+////		strB.append(" room key ");
+////		strB.append(this._roomKey);
+////		strB.append(" roomName ");
+////		strB.append(this._roomName);
+////		strB.append(" compositeKey ");
+////		strB.append(this._compositeKey);
+////		strB.append(" ttsKey ");
+////		strB.append(this._ttsKey);		
+////		strB.append(this._assignment.toString());
+////		strB.append(this._unity.getAttach().toString());
+////		strB.append(this._setInstructorKeys.toString());
+//		return strB.toString();
+//	}
 
 //        sReturn.append(this.getName());
 //        sReturn.append(this.getName());
