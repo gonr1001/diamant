@@ -504,9 +504,6 @@ public class DxConditionsToTest {
 	public void extractDxPreference() {
 
 		if (_dm.getDxDocument().getDMediator() != null) {
-//			DxConflictLimits conflictLimits = _dm.getDxDocument()
-//					.getDMediator().getDApplication().getDxPreferences()
-//					.getDxConflictLimits();
 			
 			DxConflictLimits conflictLimits = _dm.getDxPreferences().getDxConflictLimits();
 			

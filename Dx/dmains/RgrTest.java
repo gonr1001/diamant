@@ -24,6 +24,7 @@ import junit.framework.TestSuite;
 
 
 
+import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
@@ -61,16 +62,16 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am rgr selected Tests");
 		TestSuite suite = new TestSuite("rgr selected Tests");
-//		suite.addTest(DxAssignRoomsAlgTest.suite());
+		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DxStateBarModelTest.suite());
-		suite.addTest(DStandardReportDataTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
-		suite.addTest(DSaveDataTest.suite());
-		suite.addTest(InstructorsConditionsTest.suite());
-	    suite.addTest(DxSiteReaderTest.suite());
-		suite.addTest(StudentsConditionsTest.suite());
+//		suite.addTest(DxStateBarModelTest.suite());
+//		suite.addTest(DStandardReportDataTest.suite());
+//		suite.addTest(RoomsConditionsTest.suite());
+//		suite.addTest(DSaveDataTest.suite());
+//		suite.addTest(InstructorsConditionsTest.suite());
+//	    suite.addTest(DxSiteReaderTest.suite());
+//		suite.addTest(StudentsConditionsTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;

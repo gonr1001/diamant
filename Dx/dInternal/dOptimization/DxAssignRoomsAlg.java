@@ -27,6 +27,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DxConflictLimits;
+import dInternal.dData.DxAvailability;
 import dInternal.dData.DxSetOfResources;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
@@ -66,11 +67,8 @@ public class DxAssignRoomsAlg implements Algorithm {
 	public DxAssignRoomsAlg(DModel dm, DxConflictLimits limits) {
 		super();
 		_dm = dm;
-		// TODO find out an equivalence for next line
-		// _allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
-		_dm.getConditionsTest().extractDxPreference();
 		_dxCL = limits;
-		_dxCL.getRoomBookingRate();
+		_dxCL.getRoomBookingRate(); //to be used as a parameter of filling the room
 	}
 
 	/*
@@ -78,76 +76,138 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 */
 	public void doWork() {
 
-		setFlagsToSelectEvents();
+		setFlagsToSelectEvents(); //maybe can be eliminate it do nothing
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
+		int days = cycle.getNumberOfDays();
+		int periodsInADay = cycle.getMaxNumberOfPeriodsADay();
 		int numberOfPeriods = cycle.getNumberOfPeriods();
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
-
+		int d =0;
+		int h =0;
 		int periodStep = 1;
 		int i = 0;
 		for (i = 0; i < numberOfPeriods; i++) {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
-			// working in one period setOfEventsToAssign and setOfAvailable
-			// rooms
-			// for that period are known
-			doWorkInPeriod(currentPeriod);
-
+			d = i / days;
+			h = i % days;
+			// working in one period  and get
+			// the events that change (the change is the room assignment
+//			while (setOfEventsToAssign.size() > 0) {
+//				DResource eventToAssign = setOfEventsToAssign.getResourceAt(0);
+//				eventsToUpdate.add(eventToAssign);
+//				setOfEventsToAssign.removeResourceAt(0);
+			eventsToUpdate = doWorkInPeriod(currentPeriod, d, h);
 		}// end for
 
 		_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 				eventsToUpdate);
 		// event.setRoomName("A4-265");
-		// setOfEventsToAssign = this.buildSetOfEventsToAssign(currentPeriod);
 	}
 
-	private void doWorkInPeriod(Period currentPeriod) {
+	protected Vector<DResource> doWorkInPeriod(Period currentPeriod, int d, int h) {
+		Vector<DResource> eventsToUpdate = new Vector<DResource>();
+//		while (setOfEventsToAssign.size() > 0) {
+//			DResource eventToAssign = setOfEventsToAssign.getResourceAt(0);
+//			eventsToUpdate.add(eventToAssign);
+//			setOfEventsToAssign.removeResourceAt(0);
+		DSetOfResources eventsInPeriod = new StandardCollection();
+		DSetOfResources eventsInCat = new StandardCollection();
+		DxSetOfResources listOfAvailableDxRooms = null;
 
-		DSetOfResources eventsWithStudentsInPeriod = new StandardCollection();
-		DSetOfResources setOfEventsToAssign = new StandardCollection();
-		DxSetOfResources setOfAvailableDxRooms = null;
-
-
-		setOfAvailableDxRooms = this
-				.buildSetOfAvailableDxRooms(eventsWithStudentsInPeriod);
-		auxPrintEvents(setOfEventsToAssign);
-		auxPrintRooms(setOfAvailableDxRooms);
+//		auxPrintEvents(setOfEventsToAssign);
+//		auxPrintRooms(setOfAvailableDxRooms);
+	
+		
+		
 		DxSetOfSites sos = _dm.getDxSetOfSites();
 		String currentSiteName = _dm.getCurrentSiteName();
 		DxSetOfCategories soc = sos.getSetOfCat(currentSiteName);
 		
-		eventsWithStudentsInPeriod = this.builEventsWithStudentsInPeriod(currentPeriod);		
-		DxCategory[] cArray = soc.getCatsSortedByName();		
-		for (int i = 1; i < soc.getCatCount(); i++){
+		eventsInPeriod = this.builEventsWithStudentsInPeriod(currentPeriod);
+		listOfAvailableDxRooms = this.buildListofAvailableDxRooms(eventsInPeriod);
+		
+		DxCategory[] cArray = soc.getCatsSortedByKey();		
+		for (int i = 0; i < cArray.length; i++){
 			DxCategory cat = cArray[i];
 			String sCatName = cat.getName();
-			DxSetOfRooms sor = (DxSetOfRooms) soc.getSetOfRooms(sCatName);
-			// events are new ordered by number of expected students  
-			// get only events that are in cat
+			DxSetOfRooms roomsInCat = this.getAvailableRoomsInCat(listOfAvailableDxRooms, sCatName, currentPeriod, d, h); 
+			eventsInCat = this.getEventsInCat(eventsInPeriod, sCatName);
+
 			
-			// so the set of events and the set of rooms  must be new to make remove as a
-			// room is taken corresponds to one cat
-			// take an event try in a room test capacity and availbility of room for the period
-			// if so then assign room and go for next
-			// at end 
-			// if not all events have a room events.size() give the conflic size
+			if (i < 1) {
+			auxPrintEvents(eventsInPeriod);
+			auxPrintRooms(roomsInCat);
+			}
+			//get an event with the greater num of students  
+			for(int j = 0; j < eventsInCat.size(); j++) {
+				DResource eventToAssign = eventsInCat.getResourceAt(0);
+				DxEvent e = (DxEvent) eventToAssign.getAttach();
+				e.setRoomName("A4-265");
+				eventsInCat.removeResourceAt(0);
+			}
+//			DResource eventToAssign = eventsInCat.getResourceAt(0);
+//			DxEvent e = (DxEvent) eventToAssign.getAttach();
+//			e.setRoomName("A4-265");
+//          
+			//room that are only available in the period 
+			//events that have a category last  cat is the joker
+//			
+//						
+//			
+//			// so the set of events and the set of rooms  must be new to make remove as a
+//			// room is taken corresponds to one cat
+//			// take an event try in a room test capacity and availbility of room for the period
+//			// if so then assign room and go for next
+//			// at end 
+//			// if not all events have a room events.size() give the conflic size
 
 		}
 
-
+		return eventsToUpdate;
 	}
 
-	private void auxPrintEvents(DSetOfResources setOfEventsToAssign) {
+	protected DSetOfResources getEventsInCat(DSetOfResources events, String catName) {
+		DSetOfResources eventsInCat = new StandardCollection();
+		for (int i = 0; i < events.size(); i ++){
+			
+			DxEvent event = (DxEvent) events.getResourceAt(i).getAttach();
+			if (0 == event.getRoomName().compareToIgnoreCase(catName)) {
+				eventsInCat.addResourceUsingIDWithDuplicates(events.getResourceAt(i));
+			}
+		}
+		return eventsInCat;
+	}
+
+	private DxSetOfRooms getAvailableRoomsInCat(DxSetOfResources dxRooms, String catName, Period currentPeriod,int  d, int h){
+		DxSetOfRooms roomsResult = new DxSetOfRooms();
+		Iterator it = dxRooms.iterator();
+		currentPeriod.getMatrixAvailability();
+		while (it.hasNext()){
+			DxRoom dr = (DxRoom) it.next();
+			if (0 == dr.getType().compareToIgnoreCase(catName)) {
+				DxAvailability a = dr.getAvailability();
+				//'a.getPeriodAvailability(nDayIndex, nPeriodIndex)
+				if (1 == a.getPeriodAvailability(d, h)){
+					roomsResult.addRoom(dr);
+				}			
+			}
+		}
+		return roomsResult;
+	}
+
+	protected void auxPrintEvents(DSetOfResources setOfEventsToAssign) {
 		System.out.println("begin events in period "
 				+ setOfEventsToAssign.size());
 		for (int i = 0; i < setOfEventsToAssign.size(); i++) {
 			DResource dr = setOfEventsToAssign.getResourceAt(i);
+			System.out.println("Students " + Integer.parseInt(dr.getID()));
 			System.out.println(((DxEvent) dr.getAttach()).toString());
 		}
 		System.out.println("end events in period ");
 	}
 
-	private void auxPrintRooms(DxSetOfResources setOfAvailableDxRooms) {
+	protected void auxPrintRooms(DxSetOfResources setOfAvailableDxRooms) {
 		System.out.println("begin rooms in period "
 				+ setOfAvailableDxRooms.size());
 		Iterator i = setOfAvailableDxRooms.iterator();
@@ -160,7 +220,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 
 
-	private DSetOfResources builEventsWithStudentsInPeriod(Period currentPeriod) {
+	protected DSetOfResources builEventsWithStudentsInPeriod(Period currentPeriod) {
 		// The container for the result
 		DSetOfResources setOfEventsInPeriod = new StandardCollection();
 		// Vector contains the events (Ressources) in the currentPeriod
@@ -185,7 +245,6 @@ public class DxAssignRoomsAlg implements Algorithm {
 			numberOfStudents = activity.getStudentRegistered().size();
 			DResource resc = new DResource(Integer.toString(numberOfStudents),
 					event);
-			//setOfEventsInPeriod.addResource(resc, 0);
 			setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfEventsInPeriod;
@@ -193,7 +252,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 
 
-	private void setFlagsToSelectEvents() {
+	protected void setFlagsToSelectEvents() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
 			DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
@@ -219,7 +278,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *            affecter les locaux aux événements
 	 * @return l'ensemble des locaux pouvant etre affectés
 	 */
-	private DxSetOfRooms buildSetOfAvailableDxRooms(
+	protected DxSetOfRooms buildListofAvailableDxRooms(
 			/* Period currentPeriod, */DSetOfResources eventsInPeriod) {
 
 		DxSetOfRooms setOfAvailableRooms = new DxSetOfRooms();
@@ -243,7 +302,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 * sont pas figés
 	 * 
 	 */
-	private void setNoRoomToEventsWithRoomsNotFixed() {
+	protected void setNoRoomToEventsWithRoomsNotFixed() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
 			DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
@@ -276,7 +335,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *            affecter les locaux aux événements
 	 * @return l'ensemble des événements
 	 */
-	private DSetOfResources buildSetOfEvents(Period currentPeriod) {
+	protected DSetOfResources buildSetOfEvents(Period currentPeriod) {
 		// The container for the result
 		DSetOfResources newSetOfEvents = new StandardCollection();
 		// Vector contains the events (Ressources) in the currentPeriod
@@ -307,5 +366,9 @@ public class DxAssignRoomsAlg implements Algorithm {
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return newSetOfEvents;
 	}
-
+	protected int getNumberOfPeriods(){
+		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
+		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
+		return cycle.getNumberOfPeriods();
+	}
 }// end class

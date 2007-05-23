@@ -71,13 +71,13 @@ public class RoomAssignmentAlgo implements Algorithm {
 			setOfAvailableRooms
 					.sortSetOfResourcesBySelectedAttachField(sortRoomsByCapacity);
 			while (setOfEventsToAssign.size() > 0) {
-				DResource eventsToAssign = setOfEventsToAssign.getResourceAt(0);
-				eventsToUpdate.add(eventsToAssign);
+				DResource eventToAssign = setOfEventsToAssign.getResourceAt(0);
+				eventsToUpdate.add(eventToAssign);
 				setOfEventsToAssign.removeResourceAt(0);
 				for (int k = 0; k < setOfAvailableRooms.size(); k++) {
 					Room room = (Room) setOfAvailableRooms.getResourceAt(k);
-					if (isAddPossible(room, eventsToAssign)) {
-						((EventDx) eventsToAssign.getAttach())
+					if (isAddPossible(room, eventToAssign)) {
+						((EventDx) eventToAssign.getAttach())
 								.setRoomKey((int) room.getKey());
 						setOfAvailableRooms.removeResource(room.getKey());
 						break;
