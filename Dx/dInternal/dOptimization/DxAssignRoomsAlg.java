@@ -80,7 +80,6 @@ public class DxAssignRoomsAlg implements Algorithm {
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 		int days = cycle.getNumberOfDays();
-		int periodsInADay = cycle.getMaxNumberOfPeriodsADay();
 		int numberOfPeriods = cycle.getNumberOfPeriods();
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
 		int d =0;
@@ -91,35 +90,20 @@ public class DxAssignRoomsAlg implements Algorithm {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
 			d = i / days;
 			h = i % days;
-			// working in one period  and get
-			// the events that change (the change is the room assignment
-//			while (setOfEventsToAssign.size() > 0) {
-//				DResource eventToAssign = setOfEventsToAssign.getResourceAt(0);
-//				eventsToUpdate.add(eventToAssign);
-//				setOfEventsToAssign.removeResourceAt(0);
+			// get the events to update in this period and update them
 			eventsToUpdate = doWorkInPeriod(currentPeriod, d, h);
+			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
+					eventsToUpdate);
 		}// end for
-
-		_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
-				eventsToUpdate);
-		// event.setRoomName("A4-265");
 	}
 
 	protected Vector<DResource> doWorkInPeriod(Period currentPeriod, int d, int h) {
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
-//		while (setOfEventsToAssign.size() > 0) {
-//			DResource eventToAssign = setOfEventsToAssign.getResourceAt(0);
-//			eventsToUpdate.add(eventToAssign);
-//			setOfEventsToAssign.removeResourceAt(0);
+
 		DSetOfResources eventsInPeriod = new StandardCollection();
 		DSetOfResources eventsInCat = new StandardCollection();
 		DxSetOfResources listOfAvailableDxRooms = null;
-
-//		auxPrintEvents(setOfEventsToAssign);
-//		auxPrintRooms(setOfAvailableDxRooms);
 	
-		
-		
 		DxSetOfSites sos = _dm.getDxSetOfSites();
 		String currentSiteName = _dm.getCurrentSiteName();
 		DxSetOfCategories soc = sos.getSetOfCat(currentSiteName);
@@ -134,11 +118,6 @@ public class DxAssignRoomsAlg implements Algorithm {
 			DxSetOfRooms roomsInCat = this.getAvailableRoomsInCat(listOfAvailableDxRooms, sCatName, currentPeriod, d, h); 
 			eventsInCat = this.getEventsInCat(eventsInPeriod, sCatName);
 
-			
-			if (i < 1) {
-			auxPrintEvents(eventsInPeriod);
-			auxPrintRooms(roomsInCat);
-			}
 			//get an event with the greater num of students  
 			for(int j = 0; j < eventsInCat.size(); j++) {
 				DResource eventToAssign = eventsInCat.getResourceAt(0);
@@ -179,7 +158,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return eventsInCat;
 	}
 
-	private DxSetOfRooms getAvailableRoomsInCat(DxSetOfResources dxRooms, String catName, Period currentPeriod,int  d, int h){
+	protected DxSetOfRooms getAvailableRoomsInCat(DxSetOfResources dxRooms, String catName, Period currentPeriod,int  d, int h){
 		DxSetOfRooms roomsResult = new DxSetOfRooms();
 		Iterator it = dxRooms.iterator();
 		currentPeriod.getMatrixAvailability();
@@ -196,27 +175,27 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return roomsResult;
 	}
 
-	protected void auxPrintEvents(DSetOfResources setOfEventsToAssign) {
-		System.out.println("begin events in period "
-				+ setOfEventsToAssign.size());
-		for (int i = 0; i < setOfEventsToAssign.size(); i++) {
-			DResource dr = setOfEventsToAssign.getResourceAt(i);
-			System.out.println("Students " + Integer.parseInt(dr.getID()));
-			System.out.println(((DxEvent) dr.getAttach()).toString());
-		}
-		System.out.println("end events in period ");
-	}
-
-	protected void auxPrintRooms(DxSetOfResources setOfAvailableDxRooms) {
-		System.out.println("begin rooms in period "
-				+ setOfAvailableDxRooms.size());
-		Iterator i = setOfAvailableDxRooms.iterator();
-		while (i.hasNext()) {
-			DxRoom dr = (DxRoom) i.next();
-			System.out.println(dr.toString());
-		}
-		System.out.println("end rooms in period ");
-	}
+//	private void auxPrintEvents(DSetOfResources setOfEventsToAssign) {
+//		System.out.println("begin events in period "
+//				+ setOfEventsToAssign.size());
+//		for (int i = 0; i < setOfEventsToAssign.size(); i++) {
+//			DResource dr = setOfEventsToAssign.getResourceAt(i);
+//			System.out.println("Students " + Integer.parseInt(dr.getID()));
+//			System.out.println(((DxEvent) dr.getAttach()).toString());
+//		}
+//		System.out.println("end events in period ");
+//	}
+//
+//	private void auxPrintRooms(DxSetOfResources setOfAvailableDxRooms) {
+//		System.out.println("begin rooms in period "
+//				+ setOfAvailableDxRooms.size());
+//		Iterator i = setOfAvailableDxRooms.iterator();
+//		while (i.hasNext()) {
+//			DxRoom dr = (DxRoom) i.next();
+//			System.out.println(dr.toString());
+//		}
+//		System.out.println("end rooms in period ");
+//	}
 
 
 

@@ -797,11 +797,22 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void myTestFile() {
+//		setCurrentDir(".\\dataTest\\");
+//		try {
+//			_dMediator.addDxTTableDoc("", ".\\devData\\hETE_flsh170min.dia");
+//			System.out
+//					.println("path: " + getCurrentDir() + "\\hETE_flsh170min.dia");
 		setCurrentDir(".\\dataTest\\");
 		try {
-			_dMediator.addDxTTableDoc("", ".\\devData\\hETE_flsh170min.dia");
+			String filepath = "." + File.separator;
+			filepath += "refFiles" + File.separator;
+			filepath += "facs" + File.separator;
+			filepath += "flsh2_1" + File.separator;
+			filepath += "RoomAffTestsFlsh170min.dia";
 			System.out
-					.println("path: " + getCurrentDir() + "\\hETE_flsh170min.dia");
+			.println("path: " + filepath);
+			_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
+
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 		}
