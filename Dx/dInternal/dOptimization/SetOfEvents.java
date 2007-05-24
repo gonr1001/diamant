@@ -202,13 +202,19 @@ public class SetOfEvents extends DSetOfResources {
 	
 		DxSetOfSites sos = _dm.getDxSetOfSites();
 			
-//		DxSite currentSite = sos.getSite(_dm.getCurrentSiteName());
-		DxSite currentSite = sos.getSite("SHE");//_dm.getCurrentSiteName());
+		DxSite currentSite = sos.getSite(_dm.getCurrentSiteName());
+//		DxSite currentSite = sos.getSite("SHE");//_dm.getCurrentSiteName());
 		String name = assignment.getRoomName();
 		
 		if (!currentSite.contains(name)) {
 			DValue error = new DValue();
 			String str = assignment.getRoomName();
+//			if (str.equals("------")) //DConst.NO_ROOM_INTERNAL))
+//				str = "------";// DConst.NO_ROOM_EXTERNAL;
+//			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
+//					+ DConst.NOT_ROOM + "« " + str + " »");
+//			soImportErrors.addResource(new DResource("3", error), 0);
+//			return "------"; //DConst.NO_ROOM_EXTERNAL;
 			if (str.equals(DConst.NO_ROOM_INTERNAL))
 				str = DConst.NO_ROOM_EXTERNAL;
 			error.setStringValue(DConst.ERROR_TAG + unityID + ": "

@@ -35,13 +35,13 @@ import dConstants.DConst;
 
 public class Period extends DObject {
 
-	private final int MINUTES = 60;
+	private static final int MINUTES = 60;
 
-	private int _nbStudConflict = 0;
+	private int _nbStudConflict;
 
-	private int _nbInstConflict = 0;
+	private int _nbInstConflict;
 
-	private int _nbRoomConflict = 0;
+	private int _nbRoomConflict;
 
 	private int[] _beginHour = { 8, 0 };// _beginHour[0]= hour; _beginHour[1]=
 										// minute
@@ -51,7 +51,7 @@ public class Period extends DObject {
 
 	private int _priority;// 0= normal; 1= low; 2= null
 
-	private String _error = "";
+	private String _error;
 
 	/**
 	 * contains a resource where ID is the event which is place in the period,

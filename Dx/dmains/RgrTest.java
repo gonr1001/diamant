@@ -28,10 +28,10 @@ import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
+import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
+import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
-import dTest.dInternal.dOptimizationTest.InstructorsConditionsTest;
-import dTest.dInternal.dOptimizationTest.StudentsConditionsTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 
@@ -63,15 +63,16 @@ public class RgrTest {
 		System.out.println("Hello I am rgr selected Tests");
 		TestSuite suite = new TestSuite("rgr selected Tests");
 		suite.addTest(DxAssignRoomsAlgTest.suite());
+		suite.addTest(DRoomTest.suite());
+		suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-//		suite.addTest(DxStateBarModelTest.suite());
-//		suite.addTest(DStandardReportDataTest.suite());
-//		suite.addTest(RoomsConditionsTest.suite());
-//		suite.addTest(DSaveDataTest.suite());
-//		suite.addTest(InstructorsConditionsTest.suite());
-//	    suite.addTest(DxSiteReaderTest.suite());
-//		suite.addTest(StudentsConditionsTest.suite());
+		suite.addTest(DxStateBarModelTest.suite());
+		suite.addTest(DStandardReportDataTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
+		suite.addTest(DSaveDataTest.suite());
+	    suite.addTest(DxSiteReaderTest.suite());
+
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;

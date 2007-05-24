@@ -60,7 +60,6 @@ import dTest.dInternal.dData.dStudents.StudentTest;
 import dTest.dInternal.dDataTxt.ActivityTest;
 import dTest.dInternal.dDataTxt.AssignmentTest;
 import dTest.dInternal.dDataTxt.ResourceTest;
-//import dTest.dInternal.dDataTxt.RoomAttachTest;
 import dTest.dInternal.dDataTxt.SectionTest;
 import dTest.dInternal.dDataTxt.TypeTest;
 import dTest.dInternal.dDataTxt.UnityTest;
@@ -110,7 +109,6 @@ public class DiamantTest {
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
-//		suite.addTest(RoomAttachTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
 		suite.addTest(SectionTest.suite());
