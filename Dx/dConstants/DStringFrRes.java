@@ -207,7 +207,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 			{ "xmlFile", "Fichier Grille Horaire (*.xml)" },
 			{ "txtFile", "Fichier Rapport (*.txt)" },
 			{ "all", "Tous..." },
-			{ "noRoomInternal", "------" },
+			{ "noRoomInternal", "-----!-" },
 			{ "noRoomExternal", "xxxxxx" },
 			{ "noRoomExport", "      " },
 			{ "problem", "À corriger" },

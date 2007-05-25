@@ -328,8 +328,7 @@ public class DxConditionsToTest {
 
 	public int[] getEventConflictsInTTs(TTStructure tts, DResource event,
 			boolean usePriority) {
-		// return addOrRemoveOrGetConflictsEventInTTs(tts, event, 0,
-		// usePriority);
+
 		int[] numberOfConflicts = { 0, 0, 0 };
 		if (DxFlags.newEvent) {
 			if (((DxEvent) event.getAttach()).isAssigned()) {

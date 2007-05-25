@@ -32,6 +32,7 @@ import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
+import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 
@@ -62,6 +63,8 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am rgr selected Tests");
 		TestSuite suite = new TestSuite("rgr selected Tests");
+		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(DRoomTest.suite());
 		suite.addTest(SetOfSitesTest.suite());
@@ -69,7 +72,6 @@ public class RgrTest {
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(DxStateBarModelTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DSaveDataTest.suite());
 	    suite.addTest(DxSiteReaderTest.suite());
 

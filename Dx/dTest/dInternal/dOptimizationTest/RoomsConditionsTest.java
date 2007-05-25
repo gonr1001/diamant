@@ -27,27 +27,24 @@ public class RoomsConditionsTest extends TestCase {
 	 * 
 	 *
 	 */
-	@SuppressWarnings("null")
-	public void test_AvailabilityData5j() {
-		DModel dmData5j = null;
+	public void test_RoomConfINnData5j() {
 		try {
-			dmData5j = new DModel(new DxTTableDoc(), "." + File.separator
+			DModel dmData5j = new DModel(new DxTTableDoc(), "." + File.separator
 					+ "dataTest" + File.separator + "loadData5j.dia");
-
+			dmData5j.getConditionsTest().buildStudentConflictMatrix();
+			dmData5j.getConditionsTest().buildAllConditions(
+					dmData5j.getTTStructure());
+			Period period = dmData5j.getTTStructure().getCurrentCycle()
+					.getFirstPeriod();
+			DxRoomsConditionsToTest testRoom = new DxRoomsConditionsToTest(dmData5j);
+			int[] perKey = { 1, 1, 1 };
+			int nbConf = testRoom.getInfo(perKey, period, "AMC640.1.01.1.");
+			assertEquals("test_RoomConfINnData5j : assertEquals 2", 1, nbConf);
 		} catch (Exception e) {
 			// Should not fail in tests
+			System.out.println("Exception in: test_AvailabilityData5j");
 			e.printStackTrace();
 		}
-		// dmData5j.buildSetOfEvents();
-		dmData5j.getConditionsTest().buildStudentConflictMatrix();
-		dmData5j.getConditionsTest().buildAllConditions(
-				dmData5j.getTTStructure());
-		Period period = dmData5j.getTTStructure().getCurrentCycle()
-				.getFirstPeriod();
-		DxRoomsConditionsToTest testRoom = new DxRoomsConditionsToTest(dmData5j);
-		int[] perKey = { 1, 1, 1 };
-		int nbConf = testRoom.getInfo(perKey, period, "AMC640.1.01.1.");
-		assertEquals("test2_Availability : assertEquals 2", 1, nbConf);
 	}
 	
 	

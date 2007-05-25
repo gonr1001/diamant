@@ -161,20 +161,22 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			cbTypes.setSelectedItem(sTypeName);
 			DefaultComboBoxModel dcbmRooms;
 
-			if (sTypeName.equalsIgnoreCase("------")) {
+			if (sTypeName.equalsIgnoreCase("......")) {
 				dcbmRooms = new DefaultComboBoxModel(currentSite
 						.getAllRoomsNameSorted());
+				dcbmRooms.insertElementAt("......", 0);
 			} else {
 				DxCategory currentCat = _dModel.getDxSetOfSites().getCat(
 						sSiteName, sTypeName);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
+				dcbmRooms.insertElementAt("......", 0);
 			}
 
 			JComboBox cbRooms = getRoomsJCB(tpane);
 			cbRooms.removeActionListener(this);
 			cbRooms.setModel(dcbmRooms);
-			cbRooms.setSelectedItem("------");
+			cbRooms.setSelectedItem("......");
 			int capacity = 0;
 			JLabel jl = getCapacityLabel(tpane);
 			jl.setText(new Integer(capacity).toString());
@@ -183,26 +185,28 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			this.repaint();
 			_applyPanel.setFirstEnable();
 		}
-		DefaultComboBoxModel dcbmRooms;
+		
+		
 		if (command.equals(ACTION_CB_ROOM)) {
+			DefaultComboBoxModel dcbmRooms;
 			_applyPanel.setFirstDisable();
 			JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 			String sSiteName = getSelectedSite(tpane);
 			String roomName = getSelectedRoom(tpane);
 			DxSite currentSite = _dModel.getDxSetOfSites().getSite(sSiteName);
 
-			if (roomName.equalsIgnoreCase("------")) {
+			if (roomName.equalsIgnoreCase("......")) {
 
 				dcbmRooms = new DefaultComboBoxModel(currentSite
 						.getAllRoomsNameSorted());
-
+				dcbmRooms.insertElementAt("......", 0);
 				JComboBox cbRooms = getRoomsJCB(tpane);
 				cbRooms.removeActionListener(this);
 				cbRooms.setModel(dcbmRooms);
-				cbRooms.setSelectedItem("------");
+				cbRooms.setSelectedItem("......");
 				JComboBox cbTypes = getTypesJCB(tpane);
 				cbTypes.removeActionListener(this);
-				cbTypes.setSelectedItem("------");
+				cbTypes.setSelectedItem("......");
 				int capacity = 0;
 				JLabel jl = getCapacityLabel(tpane);
 				jl.setText(new Integer(capacity).toString());
@@ -236,6 +240,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			this.repaint();
 			_applyPanel.setFirstEnable();
 		}
+		
 		if (command.equals(DConst.STATE_AC)) {
 			_applyPanel.setFirstEnable();
 		}
@@ -591,6 +596,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		DxRoom currentRoom;
 		DefaultComboBoxModel dcbmCategories = new DefaultComboBoxModel(
 				currentSite.getSetOfCat().getCatsNamesSorted());
+		dcbmCategories.insertElementAt("......", 0);
 		JComboBox cbCategories = new JComboBox(dcbmCategories);
 		DefaultComboBoxModel dcbmRooms;
 		JComboBox cbRooms = new JComboBox();
@@ -603,10 +609,11 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 			dcbmRooms = new DefaultComboBoxModel(currentSite
 					.getAllRoomsNameSorted());
+			dcbmRooms.insertElementAt("......", 0);
 			cbRooms.setModel(dcbmRooms);
 
-			cbRooms.setSelectedItem("------");
-			cbCategories.setSelectedItem("------");
+			cbRooms.setSelectedItem("......");
+			cbCategories.setSelectedItem("......");
 			capacity = 0;
 		} else {
 			// if it is a room?
@@ -618,6 +625,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
+				dcbmRooms.insertElementAt("......", 0);
 				cbRooms.setModel(dcbmRooms);
 
 				cbRooms.setSelectedItem(name);
@@ -631,9 +639,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
+				dcbmRooms.insertElementAt("......", 0);
 				cbRooms.setModel(dcbmRooms);
 
-				cbRooms.setSelectedItem("------");
+				cbRooms.setSelectedItem("......");
 				cbCategories.setSelectedItem(name);
 
 				capacity = 0;

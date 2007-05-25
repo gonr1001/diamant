@@ -80,77 +80,111 @@ public class DxAssignRoomsAlg implements Algorithm {
 		setFlagsToSelectEvents(); // maybe can be eliminate it do nothing
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
-		int days = cycle.getNumberOfDays();
+		// int days = cycle.getNumberOfDays();
+		int hours = cycle.getMaxNumberOfPeriodsADay();
 		int numberOfPeriods = cycle.getNumberOfPeriods();
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
-//		DSetOfResources eventsToUpdate = new StandardCollection();
 		int d = 0;
 		int h = 0;
 		int periodStep = 1;
 		int i = 0;
 		for (i = 0; i < numberOfPeriods; i++) {
 			Period currentPeriod = cycle.getNextPeriod(periodStep);
-			d = i / days;
-			h = i % days;
+			h = i % hours; // that is ok
+			d = i / hours;
 			// get the events to update in this period and update them
-			eventsToUpdate = doWorkInPeriod(currentPeriod, d, h);
-//			eventsToUpdateA = transform(eventsToUpdate);
+			System.out.println("Number of P " + i + " d: " + d + " h: " + h);
+			eventsToUpdate = doWorkInPeriodByCat(currentPeriod, d, h);
+			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
+					eventsToUpdate);
+			eventsToUpdate = doWorkInPeriodAll(currentPeriod, d, h);
 			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 					eventsToUpdate);
 		}// end for
+
 	}
 
-//	private Vector<DResource> transform(DSetOfResources eventsToUpdate) {
-//		Vector<DResource> eventsToUpdateA = new Vector<DResource>();
-//		for (int i = 1; i < eventsToUpdate.size(); i++) {
-//			DResource dr = eventsToUpdate.getResourceAt(i);
-//			eventsToUpdateA.add(dr);
-//		}
-//		return eventsToUpdateA;
-//	}
-
-	protected Vector<DResource> doWorkInPeriod(Period currentPeriod, int d, int h) {
-		// DSetOfResources eventsToUpdate = new StandardCollection();
+	protected Vector<DResource> doWorkInPeriodByCat(Period currentPeriod,
+			int d, int h) {
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
 		DSetOfResources eventsInPeriod = new StandardCollection();
 		DSetOfResources eventsInCat = new StandardCollection();
 		DxSetOfResources listOfAvailableDxRooms = null;
-	
+
 		DxSetOfSites sos = _dm.getDxSetOfSites();
 		String currentSiteName = _dm.getCurrentSiteName();
 		DxSetOfCategories soc = sos.getSetOfCat(currentSiteName);
-		
+
 		eventsInPeriod = this.builEventsWithStudentsInPeriod(currentPeriod);
-		listOfAvailableDxRooms = this.buildListofAvailableDxRooms(eventsInPeriod);
-		
-		DxCategory[] cArray = soc.getCatsSortedByKey();		
-		for (int i = 0; i < cArray.length; i++){
+		listOfAvailableDxRooms = this
+				.buildListofAvailableDxRooms(eventsInPeriod);
+
+		DxCategory[] cArray = soc.getCatsSortedByKey();
+		for (int i = 0; i < cArray.length; i++) {
 			DxCategory cat = cArray[i];
 			String sCatName = cat.getName();
-			DxSetOfRooms roomsInCat = this.getAvailableRoomsInCat(listOfAvailableDxRooms, sCatName, currentPeriod, d, h); 
+			DxSetOfRooms roomsInCat = this.getAvailableRoomsInCat(
+					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
 			eventsInCat = this.getEventsInCat(eventsInPeriod, sCatName);
 			// get an event with the greater num of students
 			while (eventsInCat.size() > 0) {
 				DResource eventToAssign = eventsInCat.getResourceAt(0);
 				eventsToUpdate.add(eventToAssign);
 				eventsInCat.removeResourceAt(0);
-					Iterator it = roomsInCat.iterator();
+				Iterator it = roomsInCat.iterator();
 				while (it.hasNext()) {
 					DxRoom room = (DxRoom) it.next();
 					if (isAddPossible(room, eventToAssign)) {
-						((DxEvent) eventToAssign.getAttach())
-								.setRoomName(room.getName());//setRoomKey((int) room.getKey());
+						((DxEvent) eventToAssign.getAttach()).setRoomName(room
+								.getName());
 						roomsInCat.removeResource(room.getKey());
 						break;
 					} // if
-				} //while
-// DxEvent e = (DxEvent) eventToAssign.getAttach();
-// e.setRoomName("A4-265");
-
+				} // while
 			} // while
 		}
-			return eventsToUpdate;
-		}
+		return eventsToUpdate;
+	}
+
+	protected Vector<DResource> doWorkInPeriodAll(Period currentPeriod, int d,
+			int h) {
+		Vector<DResource> eventsToUpdate = new Vector<DResource>();
+		DSetOfResources eventsInPeriod = new StandardCollection();
+		DSetOfResources eventsToPlace = new StandardCollection();
+		DxSetOfResources listOfAvailableDxRooms = null;
+
+		//		DxSetOfSites sos = _dm.getDxSetOfSites();
+		//		String currentSiteName = _dm.getCurrentSiteName();
+		//		DxSetOfCategories soc = sos.getSetOfCat(currentSiteName);
+
+		eventsInPeriod = this.builEventsWithStudentsInPeriod(currentPeriod);
+		listOfAvailableDxRooms = this
+				.buildListofAvailableDxRooms(eventsInPeriod);
+
+		DxSetOfRooms allRooms = this.getAvailableRooms(listOfAvailableDxRooms,
+				currentPeriod, d, h);
+		eventsToPlace = this.getEventsInCat(eventsInPeriod, "------");
+		// get an event with the greater num of students
+		while (eventsToPlace.size() > 0) {
+			DResource eventToAssign = eventsToPlace.getResourceAt(0);
+			eventsToUpdate.add(eventToAssign);
+			eventsToPlace.removeResourceAt(0);
+			Iterator it = allRooms.iterator();
+			while (it.hasNext()) {
+				DxRoom room = (DxRoom) it.next();
+				if (isAddPossible(room, eventToAssign)) {
+					((DxEvent) eventToAssign.getAttach()).setRoomName(room
+							.getName());
+					allRooms.removeResource(room.getKey());
+					break;
+				} // if
+			} // while
+		} // while
+		return eventsToUpdate;
+	}
+
+	// DxEvent e = (DxEvent) eventToAssign.getAttach();
+	// e.setRoomName("A4-265");
 
 	// DResource eventToAssign = eventsInCat.getResourceAt(0);
 	// DxEvent e = (DxEvent) eventToAssign.getAttach();
@@ -193,7 +227,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		for (int i = 0; i < events.size(); i++) {
 
 			DxEvent event = (DxEvent) events.getResourceAt(i).getAttach();
-			if (0 == event.getRoomName().compareToIgnoreCase(catName)) {
+			if (event.getRoomName().equalsIgnoreCase(catName)) {
 				eventsInCat.addResourceUsingIDWithDuplicates(events
 						.getResourceAt(i));
 			}
@@ -210,11 +244,27 @@ public class DxAssignRoomsAlg implements Algorithm {
 			DxRoom dr = (DxRoom) it.next();
 			if (0 == dr.getType().compareToIgnoreCase(catName)) {
 				DxAvailability a = dr.getAvailability();
-				// 'a.getPeriodAvailability(nDayIndex, nPeriodIndex)
 				if (1 == a.getPeriodAvailability(d, h)) {
 					roomsResult.addRoom(dr);
 				}
 			}
+		}
+		return roomsResult;
+	}
+
+	protected DxSetOfRooms getAvailableRooms(DxSetOfResources dxRooms,
+			Period currentPeriod, int d, int h) {
+		DxSetOfRooms roomsResult = new DxSetOfRooms();
+		Iterator it = dxRooms.iterator();
+		currentPeriod.getMatrixAvailability();
+		while (it.hasNext()) {
+			DxRoom dr = (DxRoom) it.next();
+			//			if (0 == dr.getType().compareToIgnoreCase(catName)) {
+			DxAvailability a = dr.getAvailability();
+			if (1 == a.getPeriodAvailability(d, h)) {
+				roomsResult.addRoom(dr);
+			}
+			//			}
 		}
 		return roomsResult;
 	}
@@ -405,29 +455,29 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *         et false sinon.
 	 */
 	private boolean isAddPossible(DxRoom room, DResource event) {
-		if (0 == room.getName().compareToIgnoreCase("------")) {
+		if (room.getName().equalsIgnoreCase("------")) {
 			return false;
 		}
-//		int FILLFULL_RATE_INDEX = 6;
-//		int PERCENT = 100;
+		// int FILLFULL_RATE_INDEX = 6;
+		// int PERCENT = 100;
 		int numberOfStudents = Integer.parseInt(event.getID());
-//		int needed_room_size = (numberOfStudents * PERCENT)
-//				/ _conflictsPreference[FILLFULL_RATE_INDEX];
-//		int needed_room_rest = (numberOfStudents * PERCENT)
-//				% _conflictsPreference[FILLFULL_RATE_INDEX];
-//		if (needed_room_rest > 0)
-//			needed_room_size += 1;
-//		if (_allRscFunct != null) {
-//			if (((EventDx) event.getAttach()).getRoomFunction() == _allRscFunct
-//					.getKey()) {
-//				if (needed_room_size <= room.getRoomCapacity())
-//					return true;
-//			} else if ((((EventDx) event.getAttach()).getRoomFunction() == room
-//					.getRoomFunction())) {
-//				if (needed_room_size <= room.getRoomCapacity())
-					return true;
-//			}// end else
-//		}// end if(allRscFunct!= null)
-	//	return false;
+		// int needed_room_size = (numberOfStudents * PERCENT)
+		// / _conflictsPreference[FILLFULL_RATE_INDEX];
+		// int needed_room_rest = (numberOfStudents * PERCENT)
+		// % _conflictsPreference[FILLFULL_RATE_INDEX];
+		// if (needed_room_rest > 0)
+		// needed_room_size += 1;
+		// if (_allRscFunct != null) {
+		// if (((EventDx) event.getAttach()).getRoomFunction() == _allRscFunct
+		// .getKey()) {
+		// if (needed_room_size <= room.getRoomCapacity())
+		// return true;
+		// } else if ((((EventDx) event.getAttach()).getRoomFunction() == room
+		// .getRoomFunction())) {
+		// if (needed_room_size <= room.getRoomCapacity())
+		return true;
+		// }// end else
+		// }// end if(allRscFunct!= null)
+		//	return false;
 	}
 }// end class

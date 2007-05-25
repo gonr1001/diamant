@@ -231,7 +231,7 @@ public class DxSite extends DxResource {
 					return dxcCurrentCat.getName();
 				}		
 		}
-		return "------";
+		return "!!----";
 	}
 
 	public boolean contains(String name) {

@@ -24,7 +24,7 @@ package dDeveloper;
  * 
  * Description: DxFlags is a class used to:
  * <p>
- * TODO:insert comments
+ * Offer some flags used when developping a new feature
  * <p>
  * 
  */
@@ -47,8 +47,8 @@ public class DxFlags {
 	//public final static boolean newEvent = false;
 	public final static boolean newEvent = MASTER;
 	
-	//public final static boolean newEditEventDlg = false;
 	public final static boolean newEditEventDlg = MASTER;
+	//public final static boolean newEditEventDlg = MASTER;
 
 	public static boolean unitTest = true;
 

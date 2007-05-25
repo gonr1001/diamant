@@ -121,9 +121,15 @@ public class DxReadSitedotDia implements DxSiteReader {
 			dxsosBuild.addCategory(sRoomSite, sRoomCat);// If cat exits, it's
 			// not added
 			
-			if(sRoomName.equalsIgnoreCase("------")) {
-				dxsosBuild.addRoomInAllCat(sRoomSite, dxrTempRoom);
-			} else {
+
+//			if(sRoomName.equalsIgnoreCase("!!-----")) {
+//				dxsosBuild.addRoomInAllCat(sRoomSite, dxrTempRoom);
+//			} else {
+//				dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
+//			}
+			if(!sRoomName.equalsIgnoreCase("------")) {
+				// nothing  dxsosBuild.addRoomInAllCat(sRoomSite, dxrTempRoom);
+//			} else {
 				dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
 			}
 		} // end while

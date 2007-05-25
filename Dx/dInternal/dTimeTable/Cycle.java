@@ -905,7 +905,7 @@ public class Cycle extends DObject {
 		Period period = getCurrentDay().getCurrentSequence().getCurrentPeriod();
 		for (int i = 0; i < steps; i++) {
 			dayValue.setIntValue(_currentDayIndex);
-			// System.out.println("------ Day: "+_currentDayIndex);//debug
+			// System.out.println("-> Day: "+_currentDayIndex);//debug
 			period = ((Day) _setOfDays.getResourceAt(_currentDayIndex)
 					.getAttach()).getNextPeriod(dayValue);
 			_currentDayIndex = dayValue.getIntValue();
@@ -929,7 +929,7 @@ public class Cycle extends DObject {
 		// for (int i=steps; i> 0; i--){
 		dayValue.setIntValue(_currentDayIndex);
 		// System.out.println("Day: "+_currentDayIndex);//debug
-		// System.out.println("------ Day: "+_currentDayIndex);//debug
+		// System.out.println("-> Day: "+_currentDayIndex);//debug
 		period = ((Day) _setOfDays.getResourceAt(_currentDayIndex).getAttach())
 				.getPreviousPeriod(dayValue);
 

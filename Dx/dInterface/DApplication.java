@@ -803,6 +803,10 @@ public class DApplication { // implements ActionListener {
 //			System.out
 //					.println("path: " + getCurrentDir() + "\\hETE_flsh170min.dia");
 		setCurrentDir(".\\dataTest\\");
+//		try {
+//			String filepath =  "Aut2006flsh170m.dia";
+		
+
 		try {
 			String filepath = "." + File.separator;
 			filepath += "refFiles" + File.separator;
@@ -811,7 +815,7 @@ public class DApplication { // implements ActionListener {
 			filepath += "RoomAffTestsFlsh170min.dia";
 			System.out
 			.println("path: " + filepath);
-			_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
+		_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 
 		} catch (DxException e) {
 			new DxExceptionDlg(e.getMessage(), e);

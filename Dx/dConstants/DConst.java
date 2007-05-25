@@ -80,7 +80,7 @@ public class DConst {
   public final static String XML_FILE = res.getString("xmlFile");//*.xml
   public final static String TXT_FILE = res.getString("txtFile");//*.txt
   public final static String ALL = res.getString("all");//all
-  public final static String NO_ROOM_INTERNAL = res.getString("noRoomInternal");//"------"
+  public final static String NO_ROOM_INTERNAL = res.getString("noRoomInternal");//"-----!-"
   public final static String NO_ROOM_EXTERNAL = res.getString("noRoomExternal");//"xxxxxx"
   public final static String NO_ROOM_EXPORT = res.getString("noRoomExport");//"      "
 
