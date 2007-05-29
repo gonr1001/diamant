@@ -602,8 +602,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbRooms = new JComboBox();
 		System.out.println("room " + name);
 
-		if (name.equalsIgnoreCase("......")) { ///rgr
-			System.out.println("......" + name);
+		if (name.equalsIgnoreCase("......")||name.equalsIgnoreCase("------")) { ///rgr
+			System.out.println("......" + " ou " + "------" + name);
 			currentRoom = null;
 			currentCat = null;
 
