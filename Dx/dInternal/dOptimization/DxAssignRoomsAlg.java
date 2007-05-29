@@ -455,29 +455,16 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *         et false sinon.
 	 */
 	private boolean isAddPossible(DxRoom room, DResource event) {
-		if (room.getName().equalsIgnoreCase("------")) {
+		if (room.getName().equalsIgnoreCase("......")) {
 			return false;
 		}
 		// int FILLFULL_RATE_INDEX = 6;
 		// int PERCENT = 100;
 		int numberOfStudents = Integer.parseInt(event.getID());
-		// int needed_room_size = (numberOfStudents * PERCENT)
-		// / _conflictsPreference[FILLFULL_RATE_INDEX];
-		// int needed_room_rest = (numberOfStudents * PERCENT)
-		// % _conflictsPreference[FILLFULL_RATE_INDEX];
-		// if (needed_room_rest > 0)
-		// needed_room_size += 1;
-		// if (_allRscFunct != null) {
-		// if (((EventDx) event.getAttach()).getRoomFunction() == _allRscFunct
-		// .getKey()) {
-		// if (needed_room_size <= room.getRoomCapacity())
-		// return true;
-		// } else if ((((EventDx) event.getAttach()).getRoomFunction() == room
-		// .getRoomFunction())) {
-		// if (needed_room_size <= room.getRoomCapacity())
-		return true;
-		// }// end else
-		// }// end if(allRscFunct!= null)
-		//	return false;
+		
+		if (numberOfStudents <= room.getCapacity())
+			return true;
+		
+		return false;
 	}
 }// end class

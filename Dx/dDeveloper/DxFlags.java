@@ -31,7 +31,7 @@ package dDeveloper;
 public class DxFlags {
 
 	
-	public final static boolean MASTER = false;
+	public final static boolean MASTER = true;
 //	public final static boolean newRooms = false;
 	public final static boolean newRooms = MASTER;
 
