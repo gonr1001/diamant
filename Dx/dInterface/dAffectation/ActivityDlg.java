@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.60 $ $Date: 2007-05-11 22:01:01 $
+ * Title: ActivityDlg $Revision: 1.61 $ $Date: 2007-05-30 13:35:50 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.60 $
+ * @version $Revision: 1.61 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -90,9 +90,9 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
 
-			if (dApplic.getCurrentDxDoc() == null)
-				return;
-			_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+		if (dApplic.getCurrentDxDoc() == null)
+			return;
+		_dmodel = dApplic.getCurrentDModel();
 
 		_activities = _dmodel.getSetOfActivities();
 
@@ -100,16 +100,13 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		int x = _dApplic.getJFrame().getX();
 		int y = _dApplic.getJFrame().getY();
 		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
-		// this.setMinimumSize(new Dimension(300, 300));
-		// this.setPreferredSize(new Dimension(400, 400)); //the real
-		// this.setMaximumSize(new Dimension(500, 500)); // XXXX Pascal: lien
-		// inutile avec JDK 1.5
+
 		this.pack();
 		this.setResizable(false);
 		this.setVisible(true);
 	}
 
-	// XXXX Pascal: Fix Java 1.5->1.4
+
 	public Dimension getMinimumSize() {
 		return new Dimension(300, 300);
 	}
@@ -185,12 +182,12 @@ public class ActivityDlg extends JDialog implements ActionListener,
 				if (DxFlags.newEditEventDlg) {
 					new DxEditEventDlg(_jd, _dApplic,
 							(String) _currentActivities[0], false);
-				} 
-//				else {
-//					new EditEventDlg(_jd, _dApplic,
-//							(String) _currentActivities[0], false);
-//				}
-				
+				}
+				// else {
+				// new EditEventDlg(_jd, _dApplic,
+				// (String) _currentActivities[0], false);
+				// }
+
 			}// end if
 		}// end public void mouseClicked
 	};// end definition of MouseListener mouseListener = new MouseAdapter(){
@@ -208,11 +205,11 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		// if button APPLY
 		if (command.equals(DConst.BUT_APPLY)) {
 			setActivitesVisibility();
-//			if (DxFlags.newDoc) {
-				_dmodel.changeInDModel(this.idDlgToString());
-//			} else {
-//				_dmodel.changeInDModelByActivity(this);
-//			}
+			// if (DxFlags.newDoc) {
+			//_dmodel.changeInDModel(this.idDlgToString());
+			// } else {
+			 _dmodel.changeInDModelByActivity(this.idDlgToString());
+			// }
 			_buttonsPanel.setFirstDisable();
 		}
 		// if arrows
@@ -228,7 +225,7 @@ public class ActivityDlg extends JDialog implements ActionListener,
 			_lVisible.setText(_leftVec.size() + " " + DConst.INCLUDED);
 			_buttonsPanel.setFirstEnable();
 		}// end if (command.equals(_arrowsNames[0]) ||
-			// command.equals(_arrowsNames[1]))
+		// command.equals(_arrowsNames[1]))
 	}// end method
 
 	/**

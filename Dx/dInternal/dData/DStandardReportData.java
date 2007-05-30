@@ -114,7 +114,7 @@ public class DStandardReportData {
 			// _dm.getProgressBarState().getIntValue());
 			Activity activity = (Activity) _dm.getSetOfActivities()
 					.getResourceAt(i).getAttach();
-			if (activity.isActivityVisibility()) {
+			if (activity.isActivityVisible()) {
 				for (int j = 0; j < activity.getSetOfTypes().size(); j++) {
 					Type nature = (Type) (activity.getSetOfTypes()
 							.getResourceAt(j)).getAttach();

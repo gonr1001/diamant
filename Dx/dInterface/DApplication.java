@@ -82,38 +82,36 @@ import eLib.exit.exception.DxException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-public class DApplication { // implements ActionListener {
+public class DApplication {
+
 	private static Logger _logger = Logger.getLogger(DApplication.class
 			.getName());
 
 	public static boolean _inDevelopment;
 
-	// Singleton
+	// DApplication is a singleton
 	private static DApplication _instance = null;
 
 	/* ZERO is needed to fix Frame Location (origin) */
-	private final static int ZERO = 0;
+	private final int ZERO = 0;
 
-	/*
-	 * ADJUST_HEIGHT is needed to ajdust the screenSize minus the barSize (the
-	 * value is a guess) at the bottom
-	 */
-	// private final static int ADJUST_HEIGHT = 92;
 	/*
 	 * ADJUST_WIDTH is needed to ajdust the screenSize minus border pixels (the
 	 * value is a guess) at each side of the screen
 	 */
-	private final static int ADJUST_WIDTH = 6;
+	private final int ADJUST_WIDTH = 6;
 
 	/*
 	 * MIN_HEIGHT is needed to ajdust the minimum height of the screenSize
 	 */
-	private final static int MIN_HEIGHT = 512;
+	private final int MIN_HEIGHT = 512;
 
 	/*
 	 * MIN_WIDTH is needed to ajdust the minimum width screenSize
 	 */
-	private final static int MIN_WIDTH = 512;
+	private final int MIN_WIDTH = 512;
+
+	private final String DEV = "-d";
 
 	private JFrame _jFrame;
 
@@ -127,11 +125,12 @@ public class DApplication { // implements ActionListener {
 
 	private String _fileToOpen;
 
+	private String _fileToOpenAtStart;
+
 	private DxMenuBar _dxMenuBar;
 
 	private DToolBar _toolBar;
 
-	// -------------------------------------------
 	/**
 	 * DApplication initialize the data members
 	 */
@@ -142,9 +141,10 @@ public class DApplication { // implements ActionListener {
 		_logger.warn("Hi from DApplication");
 		_instance = this;
 		_inDevelopment = false;
+		_fileToOpenAtStart = "";
 	}
 
-	// sigleton only one instance
+	// sigleton has only one instance
 	public static DApplication getInstance() {
 		if (_instance == null) {
 			_instance = new DApplication();
@@ -154,7 +154,7 @@ public class DApplication { // implements ActionListener {
 
 	public void doIt(String[] args) {
 		if (args.length > 0) {
-			lookUpforOption(args);
+			lookUpforOptions(args); // args came from the command line
 		}
 		String str = System.getProperty("user.home") + File.separator + "pref"
 				+ File.separator + "pref.txt";
@@ -164,15 +164,21 @@ public class DApplication { // implements ActionListener {
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
 		setLAF(_preferences._lookAndFeel);
+		tryOpenDevFile();
 		_logger.warn("bye_from DApplication"); // this must be the end of an
 		// execution
 	}
 
-	private void lookUpforOption(String[] args) {
-		if (args[0].compareTo("-d") == 0) {
+	private void lookUpforOptions(String[] args) {
+		if (args[0].compareTo(DEV) == 0) {
 			_inDevelopment = true;
 			System.out.println("Mode développement");
 		}
+		if (args.length == 2) {
+			// it contains a file name
+			_fileToOpenAtStart = args[1];
+		}
+		// all other arguments are ignored
 	}
 
 	// -------------------------------------------
@@ -181,7 +187,8 @@ public class DApplication { // implements ActionListener {
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		jFrame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(@SuppressWarnings("unused")
+			public void windowClosing(
+			@SuppressWarnings("unused")
 			WindowEvent e) {
 				closeApplic();
 			}
@@ -314,7 +321,6 @@ public class DApplication { // implements ActionListener {
 		setLAF(str);
 		SwingUtilities.updateComponentTreeUI(_jFrame);
 	}
-
 
 	/**
 	 * Closes the document(s) and the application. Use this method for
@@ -613,17 +619,17 @@ public class DApplication { // implements ActionListener {
 	 * 
 	 */
 	public void roomAvailability() {
-//		if (DxFlags.newRooms) {
-			new DxRoomAvailabilityDlg(this);
-			// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
-			// .getDxSetOfRooms(), DConst.ROOMASSIGN);
-			// !!!NIC!!! How do we verify if it's multisite?
-			// new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
-			// .getDxSetOfSites());
-//		} else {
-//			new AvailabiltyRoomDialog(this, this.getCurrentDModel()
-//					.getSetOfRooms(), DConst.ROOMASSIGN);
-//		}
+		// if (DxFlags.newRooms) {
+		new DxRoomAvailabilityDlg(this);
+		// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
+		// .getDxSetOfRooms(), DConst.ROOMASSIGN);
+		// !!!NIC!!! How do we verify if it's multisite?
+		// new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
+		// .getDxSetOfSites());
+		// } else {
+		// new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+		// .getSetOfRooms(), DConst.ROOMASSIGN);
+		// }
 	}
 
 	/**
@@ -796,33 +802,37 @@ public class DApplication { // implements ActionListener {
 	/**
 	 * 
 	 */
-	public void myTestFile() {
-//		setCurrentDir(".\\dataTest\\");
-//		try {
-//			_dMediator.addDxTTableDoc("", ".\\devData\\hETE_flsh170min.dia");
-//			System.out
-//					.println("path: " + getCurrentDir() + "\\hETE_flsh170min.dia");
-		setCurrentDir(".\\dataTest\\");
-//		try {
-//			String filepath =  "Aut2006flsh170m.dia";
-		
+	public void tryOpenDevFile() {
+		if (!_fileToOpenAtStart.equalsIgnoreCase("")) {
+			try {
+				_dMediator.addDxTTableDoc("", _fileToOpenAtStart);
+			} catch (DxException e) {
+				new DxExceptionDlg(e.getMessage(), e);
+			}
+			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
+			getCurrentDxDoc().getCurrentDModel().changeInDModel(
+					this.getJFrame());
+			_dxMenuBar.afterInitialAssignment();
 
-		try {
-			String filepath = "." + File.separator;
-			filepath += "refFiles" + File.separator;
-			filepath += "facs" + File.separator;
-			filepath += "flsh2_1" + File.separator;
-			filepath += "RoomAffTestsFlsh170min.dia";
-			System.out
-			.println("path: " + filepath);
-		_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
+		} else {			
+			setCurrentDir(".\\dataTest\\");
+			try {
+				String filepath = "." + File.separator;
+				filepath += "refFiles" + File.separator;
+				filepath += "facs" + File.separator;
+				filepath += "flsh2_1" + File.separator;
+				filepath += "RoomAffTestsFlsh170min.dia";
+				System.out.println("path: " + filepath);
+				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 
-		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(), e);
+			} catch (DxException e) {
+				new DxExceptionDlg(e.getMessage(), e);
+			}
+			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
+			getCurrentDxDoc().getCurrentDModel().changeInDModel(
+					this.getJFrame());
+			_dxMenuBar.afterInitialAssignment();
 		}
-		getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
-		getCurrentDxDoc().getCurrentDModel().changeInDModel(this.getJFrame());
-		_dxMenuBar.afterInitialAssignment();
 	}
 
 	/**
@@ -839,14 +849,13 @@ public class DApplication { // implements ActionListener {
 		_dxMenuBar.showAllMenus();
 	}
 
-
 	/**
 	 * 
 	 */
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
-			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getDxPreferences()
-					.getDxConflictLimits()).doWork();
+			new DxAssignRoomsAlg(this.getCurrentDModel(), this
+					.getDxPreferences().getDxConflictLimits()).doWork();
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
 		}

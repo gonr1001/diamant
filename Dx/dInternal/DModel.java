@@ -967,12 +967,12 @@ public class DModel extends Observable {
 		if (this.getTypeOfSchedule() == DConst.EXAM && !_isExamPrepared) {
 			this.prepareExamsData();
 		}
-		// this.buildSetOfEvents();
+		this.buildSetOfEvents();
 		if (isMultiSite())
 			this.getConditionsTest().setMatrixBuilded(true, false);
 		this.getConditionsTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
-		// _stateBarModel.update();
+		 //_stateBarModel.update();
 
 		// notify
 		_nbConflicts = this.getTTStructure().getCurrentCycle()

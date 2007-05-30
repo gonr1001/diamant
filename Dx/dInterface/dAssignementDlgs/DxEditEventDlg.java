@@ -185,8 +185,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			this.repaint();
 			_applyPanel.setFirstEnable();
 		}
-		
-		
+
 		if (command.equals(ACTION_CB_ROOM)) {
 			DefaultComboBoxModel dcbmRooms;
 			_applyPanel.setFirstDisable();
@@ -240,7 +239,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			this.repaint();
 			_applyPanel.setFirstEnable();
 		}
-		
+
 		if (command.equals(DConst.STATE_AC)) {
 			_applyPanel.setFirstEnable();
 		}
@@ -299,7 +298,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String intructorKeys = getInstructorKeys(lm);
 
 		String room = getSelectedRoom(tpane);
-	
+		if (room.equalsIgnoreCase("......"))
+			room = getSelectedType(tpane);
+
 		boolean assignBut = isAssignedButtonSelected(tpane);
 
 		boolean fixedBut = isFixedButtonSelected(tpane); // =
@@ -313,18 +314,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				* _dModel.getTTStructure().getPeriodLenght());
 		event.setPeriodKey(periodKey);
 		event.setInstructorKey(intructorKeys);
-//		if (DxFlags.newRooms) {
-			event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
-					.getRoomKeyByName(room)));
-			event.setRoomName(room);
-			System.out
-					.println("DxE event1.1 room name: " + event.getRoomName());
-			System.out
-			.println("DxE event1.1 room key: " + event.getRoomKey());
-//		} else {
-//			event.setKey(2, Long.toString(getResourceKey(_dModel
-//					.getSetOfRooms(), room)));
-//		}
+
+		event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
+				.getRoomKeyByName(room)));
+		event.setRoomName(room);
+		System.out.println("DxE event1.1 room name: " + event.getRoomName());
+		System.out.println("DxE event1.1 room key: " + event.getRoomKey());
+
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
 
@@ -504,7 +500,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return period;
 	}
 
-
 	private Vector<String> buildHourList(DxEvent event) {
 		Vector<String> list = new Vector<String>();
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
@@ -588,7 +583,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		}
 		// End is for the Sites
 
-		DxSite currentSite = dxsosSites.getSite((String) cbSites.getSelectedItem());
+		DxSite currentSite = dxsosSites.getSite((String) cbSites
+				.getSelectedItem());
 
 		int capacity = 0;
 		DxCategory currentCat;
@@ -602,7 +598,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbRooms = new JComboBox();
 		System.out.println("room " + name);
 
-		if (name.equalsIgnoreCase("......")||name.equalsIgnoreCase("------")) { ///rgr
+		if (name.equalsIgnoreCase("......") || name.equalsIgnoreCase("------")) { ///rgr
 			System.out.println("......" + " ou " + "------" + name);
 			currentRoom = null;
 			currentCat = null;
@@ -650,7 +646,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		}
 
-//		System.out.println("Cat type " + event.getCatName(currentSite));
+		//		System.out.println("Cat type " + event.getCatName(currentSite));
 		cbCategories.setActionCommand(ACTION_CB_TYPE);
 		cbCategories.addActionListener(this);
 
@@ -853,19 +849,19 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return (JList) (jsp.getViewport()).getComponent(0);
 	} // getInstructorsList
 
-//	/**
-//	 * get a resource key
-//	 * 
-//	 * @param soresc
-//	 * @param elt
-//	 * @return the resource key or -1 if key does not found
-//	 */
-//	private long getResourceKey(SetOfRooms sor, String elt) {
-//		if (!elt.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL)) {
-//			return sor.getResource(elt).getKey();
-//		}
-//		return -1;
-//	}
+	//	/**
+	//	 * get a resource key
+	//	 * 
+	//	 * @param soresc
+	//	 * @param elt
+	//	 * @return the resource key or -1 if key does not found
+	//	 */
+	//	private long getResourceKey(SetOfRooms sor, String elt) {
+	//		if (!elt.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL)) {
+	//			return sor.getResource(elt).getKey();
+	//		}
+	//		return -1;
+	//	}
 
 	/**
 	 * 

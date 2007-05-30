@@ -166,8 +166,8 @@ public class Activity extends DObject {
 	 * @param boolean
 	 *            the activity visibility
 	 */
-	public void setActivityVisibility(boolean visibility) {
-		_activityVisible = visibility;
+	public void setActivityVisible(boolean visibile) {
+		_activityVisible = visibile;
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class Activity extends DObject {
 	 * 
 	 * @return boolean the activity visibility
 	 */
-	public boolean isActivityVisibility() {
+	public boolean isActivityVisible() {
 		return _activityVisible;
 	}
 
@@ -307,7 +307,7 @@ public class Activity extends DObject {
 			break;
 		case 3:
 			boolValue = Boolean.valueOf(value).booleanValue();
-			setActivityVisibility(boolValue);
+			setActivityVisible(boolValue);
 			break;
 		}// end switch
 	}// end method

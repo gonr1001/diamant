@@ -132,9 +132,9 @@ public class SetOfActivities extends DSetOfResources {
 				activity = (Activity) activityResource.getAttach();
 				// Resource nature;
 				if (Integer.parseInt(token.trim()) == 1)
-					activity.setActivityVisibility(true);
+					activity.setActivityVisible(true);
 				else
-					activity.setActivityVisibility(false);
+					activity.setActivityVisible(false);
 				activity.addType(activityName.substring(_COURSENAMELENGTH,
 						_COURSENAMELENGTH + 1));
 				position = 3;
@@ -394,7 +394,7 @@ public class SetOfActivities extends DSetOfResources {
 							.getID();// write group and go to line
 					actlist += " " + site + " " + DConst.ACT_DEFAULT_CAPACITY
 							+ DConst.CR_LF;// write site and capacity of course
-					if (activity.isActivityVisibility())
+					if (activity.isActivityVisible())
 						actlist += 1 + DConst.CR_LF;
 					else
 						actlist += 0 + DConst.CR_LF;// write visibility of

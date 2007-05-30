@@ -165,13 +165,14 @@
 		</copy>
 	</target>
 
-	<target name="signjar" depends="completepackage" description="Signs the jar for WebStart deployment">
+	<target name="signjar" depends="zip" description="Signs the jar for WebStart deployment">
 		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
 
-	<target name="zip" depends="signjar" description="performs theZip">
+	<target name="zip" depends="completepackage" description="performs theZip">
 		<zip basedir="${distDirZip}" destfile="${srcDir}/Diamant.zip" />
 	</target>
-	<target name="all" depends="clean, package, signjar, zip" description="performs all targets">
+	<!--signjar,-->
+	<target name="all" depends="clean, package, zip" description="performs all targets">
 	</target>
 </project>

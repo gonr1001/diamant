@@ -78,7 +78,7 @@ public class DDevelopmentMenu extends JMenu implements MenuStates {
 		class MyFileListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); //to avoid warning;
-				_dApplication.myTestFile();
+				_dApplication.tryOpenDevFile();
 			}
 		}
 		ActionListener myFileListener = new MyFileListener();

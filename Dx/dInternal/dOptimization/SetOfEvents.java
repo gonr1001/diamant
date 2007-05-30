@@ -58,8 +58,7 @@ public class SetOfEvents extends DSetOfResources {
 
 	private void forEachActivity(DResource activityResource, Activity activity,
 			DSetOfResources soImportErrors) {
-		if (activity.isActivityVisibility()) { // // RGR RGR pas necessaire de
-												// tester Visi
+		if (activity.isActivityVisible()) { 
 			for (int j = 0; j < activity.getSetOfTypes().size(); j++) {
 				DResource typeResource = activity.getSetOfTypes()
 						.getResourceAt(j);
