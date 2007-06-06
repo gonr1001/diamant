@@ -22,9 +22,8 @@
 package dDeveloper;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import dInterface.DApplication;
 
 /**
  * 
@@ -42,8 +41,8 @@ public class DoNothingDlg extends JDialog {
 	 * @param str       the title of the window dialog
 	 * @since           JDK1.3
 	 */
-	public DoNothingDlg(DApplication dApplic, String str) {
-		JOptionPane.showMessageDialog(dApplic.getJFrame(), STR, str,
+	public DoNothingDlg(JFrame jFrame, String str) {
+		JOptionPane.showMessageDialog(jFrame, STR, str,
 				JOptionPane.INFORMATION_MESSAGE);
 	} // end constructor
 } /* end class DoNothingDlg */

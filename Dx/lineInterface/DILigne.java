@@ -8,7 +8,7 @@
  * @version 1.0
  */
 
-//XXXX Pascal: Huh ?!?
+
 
 
 package lineInterface;
