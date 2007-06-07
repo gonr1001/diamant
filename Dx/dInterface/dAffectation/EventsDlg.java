@@ -12,7 +12,7 @@ package dInterface.dAffectation;
 import java.awt.event.ActionEvent;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAssignementDlgs.DxEditEventDlg;

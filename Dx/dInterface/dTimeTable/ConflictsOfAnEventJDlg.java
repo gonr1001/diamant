@@ -1,6 +1,6 @@
 /**
 *
-* Title: ConflictsOfAnEventJDlg $Revision: 1.2 $  $Date: 2005-03-08 16:00:43 $
+* Title: ConflictsOfAnEventJDlg $Revision: 1.3 $  $Date: 2007-06-07 18:00:53 $
 * Description: ConflictsOfAnEventJDlg is a class used to
 *              display the so called Conflicts Of An Event which
 *              gives the conflicts between an event and the others events
@@ -17,8 +17,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.2 $
-* @author  $Author: syay1801 $
+* @version $Revision: 1.3 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -69,7 +69,7 @@ public class ConflictsOfAnEventJDlg extends JDialog {
   public void initDlg(DResource event, DModel dm){
   	TTStructure totalTTStruct = dm.getTTStructure();
   	_partialTTStruct = totalTTStruct.cloneCurrentTTS();
-  	dm.getConditionsTest().buildAllConditions(_partialTTStruct);
+  	dm.getConditionsToTest().buildAllConditions(_partialTTStruct);
   	_partialTTStruct.getCurrentCycle().resetAllNumberOfConflicts();
   	
   	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -77,7 +77,7 @@ public class ConflictsOfAnEventJDlg extends JDialog {
                                 screenSize.height - ADJUST_HEIGHT));
     //DResource event = dm.getSetOfEvents().getResource(eventName);
     _ttPane = new ConflictsOfAnEventTTPane(totalTTStruct,_partialTTStruct, _toolBar, true, event);
-    dm.getConditionsTest().addEventInAllPeriods(_partialTTStruct, event);
+    dm.getConditionsToTest().addEventInAllPeriods(_partialTTStruct, event);
     
     _ttPane.updateTTPane(_partialTTStruct);
     //setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());

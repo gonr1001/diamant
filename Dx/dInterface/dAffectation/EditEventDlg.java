@@ -44,7 +44,7 @@
 //import javax.swing.event.ChangeListener;
 //
 //import dConstants.DConst;
-//import dDeveloper.DxFlags;
+//import developer.DxFlags;
 //import dInterface.DApplication;
 //import dInterface.dUtil.ButtonsPanel;
 //import dInterface.dUtil.DxJComboBox;

@@ -1,7 +1,7 @@
 package dTest.dInternal.dData;
 /**
 *
-* Title: DStandardReportDataTest $Revision $  $Date: 2007-03-16 22:16:22 $
+* Title: DStandardReportDataTest $Revision $  $Date: 2007-06-07 18:00:53 $
 * Description: DStandardReportDataTest is a class used to test the class 
 *              DStandardReportData
 *
@@ -59,7 +59,7 @@ public class DStandardReportDataTest extends TestCase{
     } catch (Exception e) {
         //Shoudl not fail in controled conditions
     }
-  	_dm.getConditionsTest().initAllConditions(); //Affectation initialle
+  	_dm.getConditionsToTest().initAllConditions(); //Affectation initialle
 	_report = new DStandardReportData(_dm);
   }
   

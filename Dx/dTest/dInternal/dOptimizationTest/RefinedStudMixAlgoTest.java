@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgoTest $Revision: 1.9 $ $Date: 2007-03-16 22:16:22 $
+ * Title: RefinedStudMixAlgoTest $Revision: 1.10 $ $Date: 2007-06-07 18:00:53 $
  * Description: RefinedStudMixAlgoTest is a class used to test the class
  * 				RefinedStudMixAlgo 
  * 
@@ -61,7 +61,7 @@ public class RefinedStudMixAlgoTest extends TestCase {
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm1.getConditionsTest().initAllConditions(); // Affectation initialle
+		_dm1.getConditionsToTest().initAllConditions(); // Affectation initialle
 		_dxDocument2 = new DxTTableDoc();
 		try {
 			// if (DxFlags.newDoc) {

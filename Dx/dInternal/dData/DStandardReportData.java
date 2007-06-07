@@ -33,7 +33,7 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dStudents.Student;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.DxEvent;

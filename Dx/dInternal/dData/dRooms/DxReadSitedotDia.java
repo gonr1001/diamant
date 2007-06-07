@@ -127,11 +127,11 @@ public class DxReadSitedotDia implements DxSiteReader {
 //			} else {
 //				dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
 //			}
-			if(!sRoomName.equalsIgnoreCase("------")) {
+//			if(!sRoomName.equalsIgnoreCase("------")) {
 				// nothing  dxsosBuild.addRoomInAllCat(sRoomSite, dxrTempRoom);
 //			} else {
 				dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
-			}
+//			}
 		} // end while
 		return dxsosBuild;
 	}

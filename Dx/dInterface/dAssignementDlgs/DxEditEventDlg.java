@@ -121,7 +121,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	public DxEditEventDlg(JDialog dialog, DApplication dApplic,
 			String currentActivity, boolean canBeModified) {
 		// One activity or n events
-		super(dialog, DConst.T_AFFEC_DLG /*+ "DxDXDX!!!!!!!!"*/);
+		super(dialog, DConst.T_AFFEC_DLG);
 		setLocationRelativeTo(dialog);
 		_dModel = dApplic.getCurrentDModel();
 		_events = getEventsVector(currentActivity);
@@ -282,7 +282,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
 		DxEvent event = (DxEvent) ((DResource) _events.get(_tabbedPane
 				.getSelectedIndex())).getAttach();
-		_dModel.getConditionsTest().removeEventInTTs(_dModel.getTTStructure(),
+		_dModel.getConditionsToTest().removeEventInTTs(_dModel.getTTStructure(),
 				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);
 
 		JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
@@ -329,7 +329,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
 				vect);
-		_dModel.getConditionsTest().addEventInTTs(_dModel.getTTStructure(),
+		_dModel.getConditionsToTest().addEventInTTs(_dModel.getTTStructure(),
 				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);
 
 		return true;

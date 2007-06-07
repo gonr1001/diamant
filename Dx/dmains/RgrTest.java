@@ -21,14 +21,11 @@ package dmains;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
-
-
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
-import dTest.dInternal.DxStateBarModelTest;
+import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
-import dTest.dInternal.dData.dRooms.DRoomTest;
+import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
@@ -66,11 +63,11 @@ public class RgrTest {
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DRoomTest.suite());
+		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DxStateBarModelTest.suite());
+		suite.addTest(DLoadDataTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(DSaveDataTest.suite());
 	    suite.addTest(DxSiteReaderTest.suite());

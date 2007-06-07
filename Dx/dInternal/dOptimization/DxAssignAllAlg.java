@@ -21,7 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -71,9 +71,9 @@ public class DxAssignAllAlg implements Algorithm {
 
 	
 		if (DxFlags.newAlg) {
-			_dm.getConditionsTest().extractDxPreference();
+			_dm.getConditionsToTest().extractDxPreference();
 		} else {
-			_dm.getConditionsTest().extractPreference();
+			_dm.getConditionsToTest().extractPreference();
 		}
 		int[] nbConf;
 		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {
@@ -90,7 +90,7 @@ public class DxAssignAllAlg implements Algorithm {
 							.getDuration()
 							/ _dm.getTTStructure().getPeriodLenght();
 					vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
-							.getConditionsTest().getAvoidPriorityTable());
+							.getConditionsToTest().getAvoidPriorityTable());
 					while (!vPeriods.isEmpty()) {
 						DValue value = (DValue) ((DResource) vPeriods.remove(0))
 								.getAttach();
@@ -102,7 +102,7 @@ public class DxAssignAllAlg implements Algorithm {
 								.getTTStructure().getCurrentCycle().getPeriod(
 										dayTime));
 						((DxEvent) currentEvent.getAttach()).setAssigned(true);
-						nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
+						nbConf = _dm.getConditionsToTest().getEventConflictsInTTs(
 								_dm.getTTStructure(), currentEvent, true);
 						isNumberOfConflictsAcceptable = isConflictsAcceptable(nbConf);
 						((DxEvent) currentEvent.getAttach()).setAssigned(false);
@@ -111,7 +111,7 @@ public class DxAssignAllAlg implements Algorithm {
 										.getDuration() != 0) {
 							((DxEvent) currentEvent.getAttach())
 									.setAssigned(true);
-							_dm.getConditionsTest().addEventInTTs(
+							_dm.getConditionsToTest().addEventInTTs(
 									_dm.getTTStructure(), currentEvent, true);
 							_placedEvents.add(currentEvent);
 							vPeriods.removeAllElements();
@@ -126,7 +126,7 @@ public class DxAssignAllAlg implements Algorithm {
 							.getDuration()
 							/ _dm.getTTStructure().getPeriodLenght();
 					vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
-							.getConditionsTest().getAvoidPriorityTable());
+							.getConditionsToTest().getAvoidPriorityTable());
 					while (!vPeriods.isEmpty()) {
 						DValue value = (DValue) ((DResource) vPeriods.remove(0))
 								.getAttach();
@@ -138,7 +138,7 @@ public class DxAssignAllAlg implements Algorithm {
 								.getTTStructure().getCurrentCycle().getPeriod(
 										dayTime));
 						((EventDx) currentEvent.getAttach()).setAssigned(true);
-						nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
+						nbConf = _dm.getConditionsToTest().getEventConflictsInTTs(
 								_dm.getTTStructure(), currentEvent, true);
 						isNumberOfConflictsAcceptable = isConflictsAcceptable(nbConf);
 						((EventDx) currentEvent.getAttach()).setAssigned(false);
@@ -147,7 +147,7 @@ public class DxAssignAllAlg implements Algorithm {
 										.getDuration() != 0) {
 							((EventDx) currentEvent.getAttach())
 									.setAssigned(true);
-							_dm.getConditionsTest().addEventInTTs(
+							_dm.getConditionsToTest().addEventInTTs(
 									_dm.getTTStructure(), currentEvent, true);
 							_placedEvents.add(currentEvent);
 							vPeriods.removeAllElements();
@@ -181,7 +181,7 @@ public class DxAssignAllAlg implements Algorithm {
 	 */
 	private boolean isConflictsAcceptable(int[] conflicts) {
 		for (int i = 0; i < conflicts.length; i++) {
-			if (_dm.getConditionsTest().getAcceptableConflictsTable()[i] < conflicts[i])
+			if (_dm.getConditionsToTest().getAcceptableConflictsTable()[i] < conflicts[i])
 				return false;
 		}
 		return true;
@@ -210,7 +210,7 @@ public class DxAssignAllAlg implements Algorithm {
 							.getSetOfPeriods().getResourceAt(k);
 					Period per = (Period) period.getAttach();
 					if (per.getEventsInPeriod().size() < _dm
-							.getConditionsTest().getPeriodAcceptableSize()) {
+							.getConditionsToTest().getPeriodAcceptableSize()) {
 						if (_dm.getTTStructure().getCurrentCycle()
 								.isPeriodContiguous(day.getKey(), seq.getKey(),
 										period.getKey(), duration,

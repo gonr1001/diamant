@@ -41,7 +41,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;

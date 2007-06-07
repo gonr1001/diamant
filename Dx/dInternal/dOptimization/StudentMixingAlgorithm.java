@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.52 $ $Date: 2007-04-15 19:04:38 $
+ * Title: StudentMixingAlgorithm $Revision: 1.53 $ $Date: 2007-06-07 18:00:53 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -21,7 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.dData.StandardCollection;
@@ -130,7 +130,7 @@ public class StudentMixingAlgorithm implements Algorithm {
         setStudentsInGroup(actID,typeID,allConvexGroups); //old algo ysyam
       }
     }//end for(int i=0; i< _eventsRescList.size(); i++)
-    _dm.getConditionsTest().setMatrixBuilded(false,false);
+    _dm.getConditionsToTest().setMatrixBuilded(false,false);
     _dm.getTTStructure().getCurrentCycle().getAttributesToDisplay();//_dm.getTTStructure().getPeriodLenght());
     _dm.changeInDModel(null);
     //System.out.println("Mixing type: "+_mixingType);// debug

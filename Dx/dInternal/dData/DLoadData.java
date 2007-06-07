@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -69,7 +69,7 @@ public class DLoadData {
 
 	private DModel _dm;
 
-	private String _chars;
+	private String _acceptedChars;
 
 	private String _inDiaFileVersion;
 
@@ -98,40 +98,45 @@ public class DLoadData {
 	Vector<Object> _diaData;
 
 	/**
-	 * LoadData initiate the private fields
+	 * 
+	 * LoadData
+	 * This constructor is used only in test
+	 * where the _dm is not necessary
 	 * 
 	 */
 	public DLoadData() {
 		_dm = null;
-		doLoadData();
+		_acceptedChars = getAcceptedChars();
 	}
 
 	/**
-	 * LoadData initiate the private fields
+	 * LoadData 
+	 * This constructor is used when loading a TT 
 	 * 
-	 * @param model
-	 *            the current DModel is taken in account
+	 * @param dm which is the current DModel
+     *
+     *
 	 */
 	public DLoadData(DModel dm) {
 		_dm = dm;
-		doLoadData();
+		_acceptedChars = getAcceptedChars();
 	}
 
 	/**
-	 * LoadData initiate the private fields
+	 * LoadData 
+	 * This constructor is used when loading a TT 
 	 * 
-	 * @param dm
-	 *            the current DModel is taken in account
-	 * @param args
-	 *            contents of a .dim file
-	 * 
+	 * @param dm which is the current DModel
+     *
+     * @param str 
+     *
 	 */
-	public DLoadData(DModel dm, String args) {
+	public DLoadData(DModel dm, String str) {
 		_dm = dm;
 		if (_dm != null) // XXXX Pascal: else ?
-			_chars = _dm.getDxPreferences()._acceptedChars;
+			_acceptedChars = getAcceptedChars();
 		try {
-			verifyImportDataFile(args);
+			verifyImportDataFile(str);
 		} catch (DxException e) {
 			e.printStackTrace();
 		}
@@ -427,13 +432,6 @@ public class DLoadData {
 			}// end if
 
 			// extract SetOfSites
-////			if (!DxFlags.newRooms) {
-//				_roomsList = new SetOfSites();
-//				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
-//				if (_roomsList.analyseTokens(de, 3)) {
-//					_roomsList.buildSetOfResources(de, 3);
-//				}
-////			} else {
 				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
 				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
@@ -475,24 +473,23 @@ public class DLoadData {
 
 	}
 
-	private void doLoadData() {
-		// _roomsAttributesInterpretor = new RoomsAttributesInterpretor();
+	private String getAcceptedChars() {
 		DxPreferences preferences = new DxPreferences(System
 				.getProperty("user.home")
 				+ File.separator + "pref" + File.separator + "pref.txt");
-		_chars = preferences._acceptedChars;
+		return preferences._acceptedChars;
 	}
 
 	public byte[] filterBadChars(String str) throws DxException {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
-		filter.appendToCharKnown(_chars);
+		filter.appendToCharKnown(_acceptedChars);
 		filter.validFile(str);
 		return filter.getByteArray();
 	}
 
 	private void verifyImportDataFile(String str) throws DxException {
-		FilterFile filter = new FilterFile(_chars);
+		FilterFile filter = new FilterFile(_acceptedChars);
 		if (filter.validFile(str)) {
 			StringTokenizer st = new StringTokenizer(new String(filter
 					.getByteArray()), DConst.CR_LF);
@@ -604,8 +601,6 @@ public class DLoadData {
 	 * @return
 	 */
 	private void makeDiff(DSetOfResources newSites, DSetOfResources currentSites) {
-		// System.err.println("...........MAKEDIFF..................\n");
-		// find changed and unchanged element
 
 		findChangesInElements(newSites, currentSites);
 

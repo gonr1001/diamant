@@ -1,6 +1,6 @@
 /**
  *
- * Title: FirstAffectAlgorithm $Revision: 1.28 $  $Date: 2007-04-15 19:04:38 $
+ * Title: FirstAffectAlgorithm $Revision: 1.29 $  $Date: 2007-06-07 18:00:53 $
  * Description: FirstAffectAlgorithm is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.28 $
+ * @version $Revision: 1.29 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -23,7 +23,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -64,9 +64,9 @@ public class FirstAffectAlgorithm implements Algorithm {
 		// _dm.getConditionsTest().setAvoidPriorityTable(_avoidPriority);
 		// _dm.getConditionsTest().setacceptableConflictsTable(_acceptableConflictsTable);
 		if (DxFlags.newAlg) {
-			_dm.getConditionsTest().extractDxPreference();
+			_dm.getConditionsToTest().extractDxPreference();
 		} else {
-			_dm.getConditionsTest().extractPreference();
+			_dm.getConditionsToTest().extractPreference();
 		}
 		
 
@@ -83,7 +83,7 @@ public class FirstAffectAlgorithm implements Algorithm {
 						.getDuration()
 						/ _dm.getTTStructure().getPeriodLenght();
 				periodList = buildSortContiguousPeriodVector(currentDuration,
-						_dm.getConditionsTest().getAvoidPriorityTable());
+						_dm.getConditionsToTest().getAvoidPriorityTable());
 				while (!periodList.isEmpty()) {
 					DValue value = (DValue) ((DResource) periodList.remove(0))
 							.getAttach();
@@ -95,7 +95,7 @@ public class FirstAffectAlgorithm implements Algorithm {
 							.getTTStructure().getCurrentCycle().getPeriod(
 									dayTime));
 					((EventDx) currentEvent.getAttach()).setAssigned(true);
-					nbConf = _dm.getConditionsTest().getEventConflictsInTTs(
+					nbConf = _dm.getConditionsToTest().getEventConflictsInTTs(
 							_dm.getTTStructure(), currentEvent, true);
 					isNumberOfConflictsAccept = isConflictsAcceptable(nbConf);
 					((EventDx) currentEvent.getAttach()).setAssigned(false);
@@ -104,7 +104,7 @@ public class FirstAffectAlgorithm implements Algorithm {
 									.getDuration() != 0) {
 						((EventDx) currentEvent.getAttach())
 								.setAssigned(true);
-						_dm.getConditionsTest().addEventInTTs(
+						_dm.getConditionsToTest().addEventInTTs(
 								_dm.getTTStructure(), currentEvent, true);
 						_placeEvent.add(currentEvent);
 						periodList.removeAllElements();
@@ -136,7 +136,7 @@ public class FirstAffectAlgorithm implements Algorithm {
 	 */
 	private boolean isConflictsAcceptable(int[] conflicts) {
 		for (int i = 0; i < conflicts.length; i++) {
-			if (_dm.getConditionsTest().getAcceptableConflictsTable()[i] < conflicts[i])
+			if (_dm.getConditionsToTest().getAcceptableConflictsTable()[i] < conflicts[i])
 				return false;
 		}
 		return true;
@@ -165,7 +165,7 @@ public class FirstAffectAlgorithm implements Algorithm {
 							.getSetOfPeriods().getResourceAt(k);
 					Period per = (Period) period.getAttach();
 					if (per.getEventsInPeriod().size() < _dm
-							.getConditionsTest().getPeriodAcceptableSize()) {
+							.getConditionsToTest().getPeriodAcceptableSize()) {
 						if (_dm.getTTStructure().getCurrentCycle()
 								.isPeriodContiguous(day.getKey(), seq.getKey(),
 										period.getKey(), duration,

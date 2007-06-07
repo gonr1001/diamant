@@ -25,8 +25,8 @@ public class InstructorsConditionsTest extends TestCase {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
 //		_dm5j.buildSetOfEvents();
-		_dm5j.getConditionsTest().buildStudentConflictMatrix();
-		_dm5j.getConditionsTest().buildAllConditions(_dm5j.getTTStructure());
+		_dm5j.getConditionsToTest().buildStudentConflictMatrix();
+		_dm5j.getConditionsToTest().buildAllConditions(_dm5j.getTTStructure());
 
 		try {
 			_dm7j = new DModel(new DxTTableDoc(), "." + File.separator
@@ -35,8 +35,8 @@ public class InstructorsConditionsTest extends TestCase {
 			// !!!NIC!!! Has to be handled or causes errors
 		}
 //		_dm7j.buildSetOfEvents();
-		_dm7j.getConditionsTest().buildStudentConflictMatrix();
-		_dm7j.getConditionsTest().buildAllConditions(_dm7j.getTTStructure());
+		_dm7j.getConditionsToTest().buildStudentConflictMatrix();
+		_dm7j.getConditionsToTest().buildAllConditions(_dm7j.getTTStructure());
 	}
 
 	public static Test suite() {

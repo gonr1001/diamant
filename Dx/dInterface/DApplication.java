@@ -34,6 +34,7 @@ import java.util.StringTokenizer;
 import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -41,8 +42,26 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
+import dInterface.dAffectation.ActivityDlg;
+import dInterface.dAffectation.ActivityModifDlg;
+import dInterface.dAffectation.EventsDlg;
+import dInterface.dAffectation.SectionDlg;
+import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
+import dInterface.dAssignementDlgs.DxActivityDlg;
+import dInterface.dAssignementDlgs.DxEventsDlg;
+import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
+import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
+import dInterface.dData.DefFilesToImportDlg;
+import dInterface.dData.ImportDlg;
+import dInterface.dData.ImportSelectiveFileDlg;
+import dInterface.dData.ReportsDlg;
+import dInterface.dFileMenuDlgs.NewTimeTableDlg;
+import dInterface.dMenus.DxMenuBar;
 import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.OpenTTDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
@@ -50,25 +69,8 @@ import dInterface.dTimeTable.SaveAsTTDlg;
 import dInterface.dUtil.AboutDlg;
 import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
-import dInterface.dAffectation.ActivityDlg;
-import dInterface.dAffectation.ActivityModifDlg;
-import dInterface.dAffectation.EventsDlg;
-import dInterface.dAssignementDlgs.DxActivityDlg;
-import dInterface.dAssignementDlgs.DxEventsDlg;
-import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
-import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
-
-import dInterface.dAffectation.SectionDlg;
-import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
-import dInterface.dData.DefFilesToImportDlg;
-import dInterface.dData.ImportDlg;
-import dInterface.dData.ImportSelectiveFileDlg;
-import dInterface.dData.ReportsDlg;
-import dInterface.dFileMenuDlgs.NewTimeTableDlg;
-import dInterface.dMenus.DxMenuBar;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
-
 import dInternal.DxPreferences;
 import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
@@ -78,9 +80,6 @@ import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 public class DApplication {
 
@@ -907,6 +906,22 @@ public class DApplication {
 
 	public void setFileToOpen(String absolutePath) {
 		_fileToOpen = absolutePath;
+	}
+
+
+
+	public void doImport(JFileChooser fc, String str, String dlg) {
+		this.getCurrentDxDoc().setAutoImportDIMFilePath(
+				fc.getSelectedFile().getAbsolutePath().substring(
+						0,
+						fc.getSelectedFile().getAbsolutePath().lastIndexOf(
+								File.separatorChar) + 1));
+		this.setCurrentDir(str);
+		this.doImport(str);
+		this.getCurrentDModel().setIsATimeTable();
+		this.getCurrentDModel().changeInDModel(dlg);
+		this.setCurrentDir(fc.getSelectedFile().getPath());
+		this.afterImport();		
 	}
 
 } /* end class DApplication */

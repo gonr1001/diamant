@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.61 $ $Date: 2007-05-30 13:35:50 $
+ * Title: ActivityDlg $Revision: 1.62 $ $Date: 2007-06-07 18:00:53 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.61 $
+ * @version $Revision: 1.62 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -33,7 +33,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAssignementDlgs.DxEditEventDlg;

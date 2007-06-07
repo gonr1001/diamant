@@ -23,7 +23,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.DxActivitySite;
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;

@@ -24,7 +24,7 @@ import java.util.Observable;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxDocument;
 import dInternal.dData.DLoadData;
@@ -385,37 +385,26 @@ public class DModel extends Observable {
 
 		DLoadData loadData = new DLoadData(this);
 		try {
-			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
+			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);			
 			if (loadOk) {
 				setVersion(loadData.getVersion());
 				_ttStruct = loadData.getTTStructure();
 				if (_ttStruct.getError().length() != 0)
 					return _ttStruct.getError();
+				
 				_dxSetOfInstructors = loadData.getDxSetOfInstructors();
 
-				// if (DxFlags.newRooms) {
 				_dxSetOfSites = loadData.getDxSetOfSitesRooms();
-				// } else {
-				// _setOfSites = loadData.getSetOfSitesRooms();
-				// resizeSiteAvailability(_setOfSites);
-				// }
+
 				if (DxFlags.newActivity) {
 					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadData
 							.getDxActivitiesSitesReader();
 				} else {
-					// if (DxFlags.newRooms) {
-					// _setOfActivitiesSites =
-					// loadData.getSetOfActivitiesSites(_dxSetOfSites);
-					// } else {
 					_setOfActivitiesSites = loadData.getSetOfActivitiesSites();
-					// }
+
 				}
 				_setOfStuSites = loadData.getSetofStuSites();
-				// if (!DxFlags.newRooms) {
-				// if (_setOfSites.getError().length() != 0) {
-				// return _setOfSites.getError();
-				// }
-				// }
+
 				if (_setOfActivitiesSites.getError().length() != 0) {
 					return _setOfActivitiesSites.getError();
 				}
@@ -425,7 +414,7 @@ public class DModel extends Observable {
 
 				buildSetOfEvents();
 				_conditionsToTest = new DxConditionsToTest(this);
-				this.getConditionsTest().initAllConditions();
+				this._conditionsToTest.initAllConditions();
 			}
 			_constructionState = 1;
 			setImportDone(false);
@@ -458,19 +447,9 @@ public class DModel extends Observable {
 		_dxSetOfInstructors = loadData.extractInstructors();
 		resizeInstructorsResource(_dxSetOfInstructors);
 
-
-		// import set of sites
-//		if (DxFlags.newRooms) {
 			_dxSetOfSites = loadData.extractDxRooms();
 			resizeSiteAvailability();// _dxSetOfSites);
 
-//		} else {
-//			_setOfSites = loadData.extractRooms(null, false);
-//			resizeSiteAvailability(_setOfSites);//
-//			if (_setOfSites.getError().length() != 0) {
-//				return _setOfSites.getError();
-//			}
-//		}
 
 		// import set of activities
 		if (DxFlags.newActivity) {
@@ -728,7 +707,7 @@ public class DModel extends Observable {
 	 * 
 	 * @return
 	 */
-	public DxConditionsToTest getConditionsTest() {
+	public DxConditionsToTest getConditionsToTest() {
 		return _conditionsToTest;
 	}
 
@@ -872,23 +851,23 @@ public class DModel extends Observable {
 	 */
 
 	public void changeInDModelByModifyRemove(Object obj) {
-		this.getConditionsTest().setMatrixBuilded(false, false);
+		this.getConditionsToTest().setMatrixBuilded(false, false);
 		changeInDModel(obj);
 	}
 
 	public void changeInDModelBySectionModDlg(Object obj) {
-		this.getConditionsTest().setMatrixBuilded(false, false);
+		this.getConditionsToTest().setMatrixBuilded(false, false);
 		changeInDModel(obj);
 	}
 
 	public void changeInModelByUnityModifDlg(Object obj) {
-		this.getConditionsTest().setMatrixBuilded(false, false);
+		this.getConditionsToTest().setMatrixBuilded(false, false);
 		changeInDModel(obj);
 	}
 
 	public void changeInDModelByModifyAdd(Object obj, Vector students, String id) {
 		getSetOfStudents().addActivityToStudents(students, id);
-		getConditionsTest().setMatrixBuilded(false, false);
+		getConditionsToTest().setMatrixBuilded(false, false);
 		changeInDModel(obj);
 	}
 
@@ -909,7 +888,7 @@ public class DModel extends Observable {
 	}// end changeInDModelByEventsDlg
 
 	public void changeInDModelByActivity(Object obj) {
-		getConditionsTest().setMatrixBuilded(false, true);
+		getConditionsToTest().setMatrixBuilded(false, true);
 		changeInDModel(obj);
 	}// end changeInDModelByBuildMatrixConflicts
 
@@ -924,22 +903,22 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}// end changeInDModelByEditActivityDlg
 
-	public void changeInDModelByInstructorsDlg(Object obj) {
-		changeInDModel(obj);
-	}
+//	public void changeInDModelByInstructorsDlg(Object obj) {
+//		changeInDModel(obj);
+//	}
 
-	public void changeInDModelByImportDlg(Object obj) {
-
-		this.setChanged();
-		// change model
-		this.setModified();
-		// this.setStateBarComponent();
-		_nbConflicts = getTTStructure().getCurrentCycle()
-				.getTotalNumberOfConflicts();
-		// notify
-		this.notifyObservers(obj);
-		this.clearChanged();
-	}
+//	public void changeInDModelByImportDlg(Object obj) {
+//
+//		this.setChanged();
+//		// change model
+//		this.setModified();
+//		// this.setStateBarComponent();
+//		_nbConflicts = getTTStructure().getCurrentCycle()
+//				.getTotalNumberOfConflicts();
+//		// notify
+//		this.notifyObservers(obj);
+//		this.clearChanged();
+//	}
 
 	// public void changeInDModelByRoomsDlg(Object obj) {
 	// changeInDModel(obj);
@@ -948,7 +927,7 @@ public class DModel extends Observable {
 	public void changeInDModelByStudentsDlg(Object obj) {
 		this.setChanged();
 		this.setModified();
-		this.getConditionsTest().initAllConditions();
+		this.getConditionsToTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
 		// notify
 		_nbConflicts = getTTStructure().getCurrentCycle()
@@ -969,10 +948,9 @@ public class DModel extends Observable {
 		}
 		this.buildSetOfEvents();
 		if (isMultiSite())
-			this.getConditionsTest().setMatrixBuilded(true, false);
-		this.getConditionsTest().initAllConditions();
+			this.getConditionsToTest().setMatrixBuilded(true, false);
+		this.getConditionsToTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
-		 //_stateBarModel.update();
 
 		// notify
 		_nbConflicts = this.getTTStructure().getCurrentCycle()
@@ -990,8 +968,8 @@ public class DModel extends Observable {
 			this.prepareExamsData();
 		}
 		// this.buildSetOfEvents();
-		this.getConditionsTest().setMatrixBuilded(true, false);
-		this.getConditionsTest().initAllConditions();
+		this.getConditionsToTest().setMatrixBuilded(true, false);
+		this.getConditionsToTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
 		_nbConflicts = getTTStructure().getCurrentCycle()
 				.getTotalNumberOfConflicts();
@@ -1048,7 +1026,7 @@ public class DModel extends Observable {
 	 * 
 	 */
 	public void updateEventsInTTS() {
-		getConditionsTest().initAllConditions();
+		getConditionsToTest().initAllConditions();
 	}
 
 	/**
@@ -1062,7 +1040,7 @@ public class DModel extends Observable {
 				if (!DConst.ALL_SITES.equalsIgnoreCase(sites.get(i).toString())) {
 					this.setCurrentSite(sites.get(i).toString());
 					// this.buildSetOfEvents();
-					this.getConditionsTest().initAllConditions();
+					this.getConditionsToTest().initAllConditions();
 					this._setOfEvents.setAssignedInstAvail();
 				}
 			}
@@ -1201,7 +1179,7 @@ public class DModel extends Observable {
 			this.prepareExamsData();
 		}
 		// this.buildSetOfEvents();
-		this.getConditionsTest().initAllConditions();
+		this.getConditionsToTest().initAllConditions();
 		this.getSetOfActivities().sortSetOfResourcesByID();
 		// _stateBarModel.update();
 

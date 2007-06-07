@@ -8,7 +8,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DxTTableDoc;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;

@@ -45,7 +45,7 @@
 //    pointcut methodCall() : 
 //    	(
 //    		call(* dConstants..*(..)) || 
-//			call(* dDeveloper..*(..)) ||
+//			call(* developer..*(..)) ||
 //			call(* dInterface..*(..)) || 
 //			call(* dInternal..*(..))  ||
 //			call(* dmains..*(..))     ||
@@ -59,7 +59,7 @@
 //    pointcut methodExecution() : 
 //    	(
 //    		execution(* dConstants..*(..)) || 
-//			execution(* dDeveloper..*(..)) ||
+//			execution(* developer..*(..)) ||
 //			execution(* dInterface..*(..)) || 
 //			execution(* dInternal..*(..))  ||
 //			execution(* dmains..*(..))     ||
@@ -73,7 +73,7 @@
 //    pointcut publicMethodExecution() : 
 //    	(
 //    		execution(public * dConstants..*(..)) || 
-//			execution(public * dDeveloper..*(..)) ||
+//			execution(public * developer..*(..)) ||
 //			execution(public * dInterface..*(..)) || 
 //			execution(public * dInternal..*(..))  ||
 //			execution(public * dmains..*(..))     ||

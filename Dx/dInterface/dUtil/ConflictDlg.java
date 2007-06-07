@@ -30,7 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DApplication;
 import dInternal.DxConflictLimits;
 

@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;

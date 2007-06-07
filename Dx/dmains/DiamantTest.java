@@ -27,7 +27,7 @@ package dmains;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;

@@ -31,8 +31,8 @@ public class RoomsConditionsTest extends TestCase {
 		try {
 			DModel dmData5j = new DModel(new DxTTableDoc(), "." + File.separator
 					+ "dataTest" + File.separator + "loadData5j.dia");
-			dmData5j.getConditionsTest().buildStudentConflictMatrix();
-			dmData5j.getConditionsTest().buildAllConditions(
+			dmData5j.getConditionsToTest().buildStudentConflictMatrix();
+			dmData5j.getConditionsToTest().buildAllConditions(
 					dmData5j.getTTStructure());
 			Period period = dmData5j.getTTStructure().getCurrentCycle()
 					.getFirstPeriod();
@@ -65,8 +65,8 @@ public class RoomsConditionsTest extends TestCase {
 			e.printStackTrace();
 		}
 //		dmData5j.buildSetOfEvents();
-		dmData5j.getConditionsTest().buildStudentConflictMatrix();
-		dmData5j.getConditionsTest().buildAllConditions(
+		dmData5j.getConditionsToTest().buildStudentConflictMatrix();
+		dmData5j.getConditionsToTest().buildAllConditions(
 				dmData5j.getTTStructure());
 		dmData5j.getTTStructure().getCurrentCycle().getNextPeriod(1);
 		dmData5j.getTTStructure().getCurrentCycle().getNextPeriod(1);
@@ -95,8 +95,8 @@ public class RoomsConditionsTest extends TestCase {
 			e.printStackTrace();
 		}
 		// dmData7j.buildSetOfEvents();
-		dmData7j.getConditionsTest().buildStudentConflictMatrix();
-		dmData7j.getConditionsTest().buildAllConditions(
+		dmData7j.getConditionsToTest().buildStudentConflictMatrix();
+		dmData7j.getConditionsToTest().buildAllConditions(
 				dmData7j.getTTStructure());
 		Period period = dmData7j.getTTStructure().getCurrentCycle()
 				.getFirstPeriod();
@@ -124,8 +124,8 @@ public class RoomsConditionsTest extends TestCase {
 			e.printStackTrace();
 		}
 		// dmData7j.buildSetOfEvents();
-		dmData7j.getConditionsTest().buildStudentConflictMatrix();
-		dmData7j.getConditionsTest().buildAllConditions(
+		dmData7j.getConditionsToTest().buildStudentConflictMatrix();
+		dmData7j.getConditionsToTest().buildAllConditions(
 				dmData7j.getTTStructure());
 		dmData7j.getTTStructure().getCurrentCycle().getNextPeriod(1);
 		Period period = dmData7j.getTTStructure().getCurrentCycle()

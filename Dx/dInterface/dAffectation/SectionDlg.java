@@ -232,7 +232,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			_typeCombo.setEnabled(true);
 			_applyPanel.setFirstDisable();
 
-			_dmodel.getConditionsTest().setMatrixBuilded(false, false);
+			_dmodel.getConditionsToTest().setMatrixBuilded(false, false);
 			_dmodel.changeInDModel(this.idDlgToString());
 		}
 

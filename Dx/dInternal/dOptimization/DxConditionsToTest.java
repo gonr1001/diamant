@@ -21,7 +21,7 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DxConflictLimits;

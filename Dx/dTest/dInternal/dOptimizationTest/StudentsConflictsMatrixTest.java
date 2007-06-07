@@ -36,9 +36,9 @@ public class StudentsConflictsMatrixTest extends TestCase {
 			// Should not fail in controled conditions
 		}
 //		_dm1.buildSetOfEvents();
-		_dm1.getConditionsTest().buildStudentConflictMatrix();
-		_dm1.getConditionsTest().buildAllConditions(_dm1.getTTStructure());
-		_matrix1 = _dm1.getConditionsTest().getConflictsMatrix();
+		_dm1.getConditionsToTest().buildStudentConflictMatrix();
+		_dm1.getConditionsToTest().buildAllConditions(_dm1.getTTStructure());
+		_matrix1 = _dm1.getConditionsToTest().getConflictsMatrix();
 
 		try {
 			_dm2 = new DModel(new DxTTableDoc(), "." + File.separator
@@ -47,9 +47,9 @@ public class StudentsConflictsMatrixTest extends TestCase {
 			// Should not fail in controled conditions
 		}
 //		_dm2.buildSetOfEvents();
-		_dm2.getConditionsTest().buildStudentConflictMatrix();
-		_dm2.getConditionsTest().buildAllConditions(_dm2.getTTStructure());
-		_matrix2 = _dm2.getConditionsTest().getConflictsMatrix();
+		_dm2.getConditionsToTest().buildStudentConflictMatrix();
+		_dm2.getConditionsToTest().buildAllConditions(_dm2.getTTStructure());
+		_matrix2 = _dm2.getConditionsToTest().getConflictsMatrix();
 	}
 
 	public static Test suite() {

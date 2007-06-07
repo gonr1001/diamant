@@ -1,6 +1,6 @@
 /**
 *
-* Title: ConflictsOfAnEventDlg $Revision: 1.5 $  $Date: 2007-03-22 15:36:41 $
+* Title: ConflictsOfAnEventDlg $Revision: 1.6 $  $Date: 2007-06-07 18:00:53 $
 * Description: ConflictsOfAnEventDlg is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.5 $
+* @version $Revision: 1.6 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dDeveloper.DxFlags;
+import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DToolBar;
 //import dInterface.dAffectation.EditEventDlg;
