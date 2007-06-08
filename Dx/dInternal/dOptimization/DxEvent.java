@@ -33,21 +33,20 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
 
-
 /**
  * 
- * DxEevnt is a class used to keep all 
- * informations conserning an Event.
+ * DxEevnt is a class used to keep all informations conserning an Event.
  * 
  */
 
 public class DxEvent extends DObject {
 
 	private Assignment _assignment;
-	
+
 	private DResource _unity;
-	
+
 	private DSetOfResources _setInstructorKeys;
+
 	/**
 	 * _compositeKey is the composition of activity, type, section and unity
 	 * keys of an activity wich is represent in the following format a.b.c.d
@@ -55,11 +54,11 @@ public class DxEvent extends DObject {
 	private String _compositeKey;
 
 	private String _fullName;
-	
+
 	private String _roomName; // the room key
 
 	private String _ttsKey;// give the key of the period where event is
-		
+
 	private long _roomKey; // the room key
 
 	private int _cLimit;// capacity limit for the event
@@ -73,20 +72,21 @@ public class DxEvent extends DObject {
 	 * @param key1
 	 * @param key2
 	 */
-	public DxEvent(String actId, String princKey, DSetOfResources inst, String roomName, long key,
-			DResource unity, Assignment assignment, int cLimit) {
+	public DxEvent(String actId, String princKey, DSetOfResources inst,
+			String roomName, long key, DResource unity, Assignment assignment,
+			int cLimit) {
 		_fullName = actId;
 		_ttsKey = "";
 		_isPlaceInAPeriod = false;
 		_compositeKey = princKey;
 		_setInstructorKeys = inst;
 		_roomName = roomName;
-		 _roomKey = key; // the room key
+		_roomKey = key; // the room key
 		_unity = unity;
 
-//		setRoomFunction(((Unity) _unity.getAttach())
-//				.getFirstPreferFunctionRoom());
-		
+		// setRoomFunction(((Unity) _unity.getAttach())
+		// .getFirstPreferFunctionRoom());
+
 		_assignment = assignment;
 		_ttsKey = assignment.getPeriodKey();
 		_cLimit = cLimit;
@@ -103,9 +103,6 @@ public class DxEvent extends DObject {
 	}
 
 	public String getCatName(DxSite dxsCurrentSite) {
-//		if (dxsCurrentSite.isInCatName(_assignment.getRoomName())) {
-//			_assignment.getRoomName(); // is a category
-//		}
 		return dxsCurrentSite.getCatNameOfRoom(_assignment.getRoomName());
 	}
 
@@ -120,7 +117,7 @@ public class DxEvent extends DObject {
 	public String getfullName() {
 		return _fullName;
 	}
-	
+
 	public long[] getInstructorKey() {
 		long[] keys = new long[_setInstructorKeys.size()];
 		for (int i = 0; i < _setInstructorKeys.size(); i++) {
@@ -129,12 +126,7 @@ public class DxEvent extends DObject {
 		return keys;
 	}
 
-	//	public String getCatName() {
-//		if (false) {
-//			_assignment.getRoomName(); // is a category
-//		}
-//		return "Classe";
-//	}
+
 	/**
 	 * 
 	 * @return
@@ -142,8 +134,8 @@ public class DxEvent extends DObject {
 	public String getPeriodKey() {
 		return _ttsKey;
 	}
-	
-/**
+
+	/**
 	 * 
 	 * @return
 	 */
@@ -167,10 +159,10 @@ public class DxEvent extends DObject {
 	public long getRoomKey() {
 		return _roomKey;
 	}
-//	public String getRoomName() {
-//		return _roomName;
-//	}
 
+	// public String getRoomName() {
+	// return _roomName;
+	// }
 
 	public String getRoomName() {
 		return _assignment.getRoomName();
@@ -186,19 +178,17 @@ public class DxEvent extends DObject {
 		return 0;
 	}
 
-
 	public boolean isAssigned() {
 		return (((Unity) _unity.getAttach()).isAssign());
 	}
 
-//	public void setRoomFunction(int function) {
-//		_roomFunction = function;
-//	}
+	// public void setRoomFunction(int function) {
+	// _roomFunction = function;
+	// }
 
-
-//	public int getRoomFunction() {
-//		return _roomFunction;
-//	}
+	// public int getRoomFunction() {
+	// return _roomFunction;
+	// }
 
 	/**
 	 * check if event is already place in a period
@@ -298,7 +288,7 @@ public class DxEvent extends DObject {
 	public void setRoomName(String str) {
 		_assignment.setRoomName(str);
 	}
-	
+
 	/**
 	 * @param state
 	 */
@@ -309,13 +299,13 @@ public class DxEvent extends DObject {
 			_assignment.setRoomState(false);
 
 	}
-	
-	public String toString(){
-		StringBuffer strB = new StringBuffer("Event ");
-		strB.append(DConst.CR_LF);
+
+	public String toString() {
+		StringBuffer strB = new StringBuffer();
+		//strB.append(DConst.CR_LF);
 		strB.append("Full Name ");
 		strB.append(this._fullName);
-		strB.append(" Cours limit ");
+		strB.append(" Limit ");
 		strB.append(this._cLimit);
 		strB.append(" isPlacedInAPeriod ");
 		strB.append(this._isPlaceInAPeriod);
@@ -326,10 +316,11 @@ public class DxEvent extends DObject {
 		strB.append(" compositeKey ");
 		strB.append(this._compositeKey);
 		strB.append(" ttsKey ");
-		strB.append(this._ttsKey);		
+		strB.append(this._ttsKey);
 		strB.append(this._assignment.toString());
 		strB.append(this._unity.getAttach().toString());
-		strB.append(this._setInstructorKeys.toString());
+		strB.append(DConst.CR_LF);
+//		strB.append(this._setInstructorKeys.toString());
 		return strB.toString();
 	}
 

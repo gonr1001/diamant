@@ -63,14 +63,14 @@ public class RgrTest {
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DxInstructorsReaderTest.suite());
-		suite.addTest(SetOfSitesTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
-		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DLoadDataTest.suite());
-		suite.addTest(DStandardReportDataTest.suite());
-		suite.addTest(DSaveDataTest.suite());
-	    suite.addTest(DxSiteReaderTest.suite());
+//		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(SetOfSitesTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(ConditionsTest.suite());
+//		suite.addTest(DLoadDataTest.suite());
+//		suite.addTest(DStandardReportDataTest.suite());
+//		suite.addTest(DSaveDataTest.suite());
+//	    suite.addTest(DxSiteReaderTest.suite());
 
 
 		System.out.println("Bye I was in rgr selected Tests");

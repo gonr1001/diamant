@@ -1,5 +1,6 @@
 package dInternal.dOptimization;
 
+import java.io.FileOutputStream;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -105,6 +106,7 @@ public class SetOfEvents extends DSetOfResources {
 							soImportErrors);
 					roomKey = oldAssignDxRooms(assignment, unityID,
 							soImportErrors);
+					
 					if (DxFlags.newEvent) {
 						DxEvent dxEvent = new DxEvent(activityResource.getID(),
 								compositeKey,
@@ -551,4 +553,28 @@ public class SetOfEvents extends DSetOfResources {
 		}// end for (int i = 0; i < this.size();
 	}
 
+	
+	
+	public void auxPrintEvents(String oFileName) {
+		StringBuffer out = new StringBuffer();
+		try {
+			FileOutputStream outputFile = new FileOutputStream(oFileName);
+			out.append("begin events " + this.size() + DConst.CR_LF);
+			for (int i = 0; i < this.size(); i++) {
+				DResource dr = this.getResourceAt(i);
+				out.append("Event " + i + DConst.CR_LF);
+				out.append(((DxEvent) dr.getAttach()).toString());
+			}
+			out.append("end events " + DConst.CR_LF);
+
+			outputFile.write(out.toString().getBytes());
+
+			outputFile.close();
+
+			outputFile.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }// end class

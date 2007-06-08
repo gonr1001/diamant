@@ -19,6 +19,7 @@
  */
 package dInternal.dData.dRooms;
 
+import java.io.FileOutputStream;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -200,5 +201,28 @@ public class DxSetOfRooms extends DxSetOfResources {
 		//DxRoom r.getRoomCapacity(sRoomName)
 	}
 	
+	
+	public void auxPrintRooms(String oFileName) {
+		StringBuffer out = new StringBuffer();
+		try {
+			FileOutputStream outputFile = new FileOutputStream(oFileName);
+			out.append("begin rooms  " + this.size() + DConst.CR_LF);
+
+			Iterator i = this.iterator();
+			while (i.hasNext()) {
+				DxRoom dr = (DxRoom) i.next();
+				out.append(dr.toString() + DConst.CR_LF);
+			}
+			out.append("end rooms " + DConst.CR_LF);
+
+			outputFile.write(out.toString().getBytes());
+
+			outputFile.close();
+
+			outputFile.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

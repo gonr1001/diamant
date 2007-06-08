@@ -385,13 +385,13 @@ public class DModel extends Observable {
 
 		DLoadData loadData = new DLoadData(this);
 		try {
-			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);			
+			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
 			if (loadOk) {
 				setVersion(loadData.getVersion());
 				_ttStruct = loadData.getTTStructure();
 				if (_ttStruct.getError().length() != 0)
 					return _ttStruct.getError();
-				
+
 				_dxSetOfInstructors = loadData.getDxSetOfInstructors();
 
 				_dxSetOfSites = loadData.getDxSetOfSitesRooms();
@@ -435,6 +435,19 @@ public class DModel extends Observable {
 	}
 
 	/**
+	 * build set of events using currentcycle, setofactivities, setofinstructors
+	 * and setofrooms
+	 */
+	private void buildSetOfEvents() {
+		_setOfEvents.getSetOfResources().removeAllElements();
+		// test to be sure that there is no null pointer exception
+		if ((getSetOfActivities() != null) && (getSetOfStudents() != null)) {
+			_setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
+			getSetOfActivities().buildStudentRegisteredList(getSetOfStudents());
+		}// end
+	}
+
+	/**
 	 * 
 	 * @param str
 	 * @return
@@ -447,9 +460,8 @@ public class DModel extends Observable {
 		_dxSetOfInstructors = loadData.extractInstructors();
 		resizeInstructorsResource(_dxSetOfInstructors);
 
-			_dxSetOfSites = loadData.extractDxRooms();
-			resizeSiteAvailability();// _dxSetOfSites);
-
+		_dxSetOfSites = loadData.extractDxRooms();
+		resizeSiteAvailability();// _dxSetOfSites);
 
 		// import set of activities
 		if (DxFlags.newActivity) {
@@ -473,6 +485,9 @@ public class DModel extends Observable {
 		}
 		_constructionState = 1;
 		buildSetOfEvents();
+
+		_conditionsToTest = new DxConditionsToTest(this);
+		this._conditionsToTest.initAllConditions();
 
 		setImportDone(true);
 		_isOnlyATimeTable = false;
@@ -816,30 +831,30 @@ public class DModel extends Observable {
 					_setOfSites, _setOfActivitiesSites, _setOfStuSites,
 					filename);
 		}
-//		// if (DxFlags.newRooms && DxFlags.newActivity) {
-//		if (DxFlags.newActivity) {// if (DxFlags.newRooms &&
-//									// DxFlags.newActivity) {
-//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//					_dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
-//			// } else if (DxFlags.newRooms) {
-//		} else {
-//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//					_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
-//					filename);
-//		}
-//		if (DxFlags.newActivity) {
-//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//					_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
-//		} else {
-//			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
-//					_setOfSites, _setOfActivitiesSites, _setOfStuSites,
-//					filename);
-//		}
+		// // if (DxFlags.newRooms && DxFlags.newActivity) {
+		// if (DxFlags.newActivity) {// if (DxFlags.newRooms &&
+		// // DxFlags.newActivity) {
+		// error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+		// _dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
+		// // } else if (DxFlags.newRooms) {
+		// } else {
+		// error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+		// _dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
+		// filename);
+		// }
+		// if (DxFlags.newActivity) {
+		// error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+		// _setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
+		// } else {
+		// error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
+		// _setOfSites, _setOfActivitiesSites, _setOfStuSites,
+		// filename);
+		// }
 		if (error.length() != 0) {
 			return error;
 		} // else {
-			saveD.saveTTStructure(_ttStruct, filename);
-//		}
+		saveD.saveTTStructure(_ttStruct, filename);
+		// }
 		_mergeDone = false;
 
 		_modified = false;
@@ -903,22 +918,22 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}// end changeInDModelByEditActivityDlg
 
-//	public void changeInDModelByInstructorsDlg(Object obj) {
-//		changeInDModel(obj);
-//	}
+	// public void changeInDModelByInstructorsDlg(Object obj) {
+	// changeInDModel(obj);
+	// }
 
-//	public void changeInDModelByImportDlg(Object obj) {
-//
-//		this.setChanged();
-//		// change model
-//		this.setModified();
-//		// this.setStateBarComponent();
-//		_nbConflicts = getTTStructure().getCurrentCycle()
-//				.getTotalNumberOfConflicts();
-//		// notify
-//		this.notifyObservers(obj);
-//		this.clearChanged();
-//	}
+	// public void changeInDModelByImportDlg(Object obj) {
+	//
+	// this.setChanged();
+	// // change model
+	// this.setModified();
+	// // this.setStateBarComponent();
+	// _nbConflicts = getTTStructure().getCurrentCycle()
+	// .getTotalNumberOfConflicts();
+	// // notify
+	// this.notifyObservers(obj);
+	// this.clearChanged();
+	// }
 
 	// public void changeInDModelByRoomsDlg(Object obj) {
 	// changeInDModel(obj);
@@ -1046,26 +1061,6 @@ public class DModel extends Observable {
 			}
 		}
 		this.setCurrentSite(currentS);
-	}
-
-	/**
-	 * build set of events using currentcycle, setofactivities, setofinstructors
-	 * and setofrooms
-	 */
-	public void buildSetOfEvents() {
-		_setOfEvents.getSetOfResources().removeAllElements();
-		if (getSetOfActivities() != null) {
-			// SetOfActivities soa = getSetOfActivities();
-			// // if (DxFlags.newRooms) {
-			// soa.fixTypeOrRoom(_dxSetOfSites);
-			// // }
-			_setOfEvents.build(getSetOfActivities(), getSetOfImportErrors());
-			if ((getSetOfActivities() != null) && (getSetOfStudents() != null))
-				getSetOfActivities().buildStudentRegisteredList(
-						getSetOfStudents());
-			_conditionsToTest = new DxConditionsToTest(this);
-		}// end if (_setOfActivities!=null)
-
 	}
 
 	private void resizeResource(DSetOfResources soRes) {

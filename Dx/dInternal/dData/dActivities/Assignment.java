@@ -91,7 +91,7 @@ public class Assignment extends DObject {
 		strB.append(this._dateAndHour[0]);
 		strB.append(" hour ");
 		strB.append(this._dateAndHour[1]);
-		strB.append(" minute ");
+		strB.append(" minutes ");
 		strB.append(this._dateAndHour[2]);
 	
 		return strB.toString();
@@ -342,10 +342,10 @@ public class Assignment extends DObject {
 		strB.append(this._roomFixed);
 		strB.append(" period Key ");
 		strB.append(_periodKey);
-		strB.append(" ");
-		strB.append(this._setInstructorKeys.toString());
-		strB.append(" ");
-		strB.append(this._setInstructorNames.toString());
+//		strB.append(" ");
+//		strB.append(this._setInstructorKeys.toString());
+//		strB.append(" ");
+//		strB.append(this._setInstructorNames.toString());
 		strB.append(this.stringDateAndTime());
 
 		return strB.toString();

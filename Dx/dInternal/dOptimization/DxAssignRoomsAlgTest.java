@@ -24,6 +24,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import developer.DxFlags;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -60,79 +61,79 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		return new TestSuite(DxAssignRoomsAlgTest.class);
 	} // end suite
 
-//	public void test_build1() {
-//		DxConflictLimits dxCL = new DxConflictLimits();
-//		String str = "conflictLimits;0;0;0;0;30;0;100;";
-//		dxCL.readLimits(str);
-//		DModel dm1 = null;
-//
-//		DxDocument _dxDocument1 = new DxTTableDoc();
-//		String fileName = "." + File.separator;
-//		fileName += "dataTest" + File.separator;
-//		fileName += "refFiles" + File.separator;
-//		fileName += "facs" + File.separator;
-//		fileName += "flsh2_1" + File.separator;
-//		fileName += "RoomAffContTT.dia";
-//
-//		try {
-//
-//			dm1 = new DModel(_dxDocument1, fileName.toString());
-//			dm1.changeInDModel(new Object());
-//			assertEquals("test_build: assertEquals", 94, dm1
-//					.getSetOfActivities().size());
-//			assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
-//					.size());
-//
-//			if (DxFlags.newAlg) {
-//				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
-//				alg.doWork();
-//			} else {
-//				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
-//			}
-//			assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
-//					.getNumberOfEventAssign());
-//			dm1 = null;
-//		} catch (Exception e) {
-//			// Should not fail in controled conditions
-//		}
-//
-//	}
+	public void test_build1() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
+		DModel dm1 = null;
 
-//	public void test_build2() {
-//		DxConflictLimits dxCL = new DxConflictLimits();
-//		String str = "conflictLimits;0;0;0;0;30;0;100;";
-//		dxCL.readLimits(str);
-//		DModel dm1 = null;
-//		DxDocument _dxDocument1 = new DxTTableDoc();
-//		String fileName = "." + File.separator;
-//		fileName += "dataTest" + File.separator;
-//		fileName += "refFiles" + File.separator;
-//		fileName += "facs" + File.separator;
-//		fileName += "flsh2_1" + File.separator;
-//		fileName += "Aut2006flsh170m.dia";
-//
-//		try {
-//			dm1 = new DModel(_dxDocument1, fileName.toString());
-//			dm1.changeInDModel(new Object());
-//			assertEquals("test_build: assertEquals", 199, dm1
-//					.getSetOfActivities().size());
-//			assertEquals("test_build: assertEquals", 253, dm1.getSetOfEvents()
-//					.size());
-//
-//			if (DxFlags.newAlg) {
-//				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
-//				alg.doWork();
-//			} else {
-//				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
-//			}
-//
-//			assertEquals("test_build: assertEquals", 250, dm1.getSetOfEvents()
-//					.getNumberOfEventAssign());
-//			dm1 = null;
-//		} catch (Exception e) {
-//			// Should not fail in controled conditions
-//		}
-//	}
+		DxDocument _dxDocument1 = new DxTTableDoc();
+		String fileName = "." + File.separator;
+		fileName += "dataTest" + File.separator;
+		fileName += "refFiles" + File.separator;
+		fileName += "facs" + File.separator;
+		fileName += "flsh2_1" + File.separator;
+		fileName += "RoomAffContTT.dia";
+
+		try {
+
+			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1.changeInDModel(new Object());
+			assertEquals("test_build: assertEquals", 94, dm1
+					.getSetOfActivities().size());
+			assertEquals("test_build: assertEquals", 117, dm1.getSetOfEvents()
+					.size());
+
+			if (DxFlags.newAlg) {
+				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+				alg.doWork();
+			} else {
+				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
+			}
+			assertEquals("test_build: assertEquals", 116, dm1.getSetOfEvents()
+					.getNumberOfEventAssign());
+			dm1 = null;
+		} catch (Exception e) {
+			// Should not fail in controled conditions
+		}
+
+	}
+
+	public void test_build2() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
+		DModel dm1 = null;
+		DxDocument _dxDocument1 = new DxTTableDoc();
+		String fileName = "." + File.separator;
+		fileName += "dataTest" + File.separator;
+		fileName += "refFiles" + File.separator;
+		fileName += "facs" + File.separator;
+		fileName += "flsh2_1" + File.separator;
+		fileName += "Aut2006flsh170m.dia";
+
+		try {
+			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1.changeInDModel(new Object());
+			assertEquals("test_build: assertEquals", 199, dm1
+					.getSetOfActivities().size());
+			assertEquals("test_build: assertEquals", 253, dm1.getSetOfEvents()
+					.size());
+
+			if (DxFlags.newAlg) {
+				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+				alg.doWork();
+			} else {
+				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
+			}
+
+			assertEquals("test_build: assertEquals", 250, dm1.getSetOfEvents()
+					.getNumberOfEventAssign());
+			dm1 = null;
+		} catch (Exception e) {
+			// Should not fail in controled conditions
+		}
+	}
 
 	public void test_getNumberOfPeriods() {
 		DxConflictLimits dxCL = new DxConflictLimits();
@@ -162,7 +163,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		}
 	}
 
-	public void test_getEvents() {
+	public void test_events() {
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
@@ -193,25 +194,25 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			d = 0 / days;
 			h = 0 % days;
 
-			assertEquals("getEvents: number of events in period", 3,
+			assertEquals("events: number of events in period", 3,
 					currentPeriod.getNumberOfEvents());
 			DSetOfResources eventsInPeriod = alg
 					.builEventsWithStudentsInPeriod(currentPeriod);
 			// for(int j = 0; j < eventsInPeriod.size(); j++) {
 			DResource eventToAssign = eventsInPeriod.getResourceAt(0);
 			DxEvent e = (DxEvent) eventToAssign.getAttach();
-			assertEquals("getEvents: eventFullName ", "FRE060", e.getfullName());
-			assertEquals("getEvents: eventName ", "Classe", e.getRoomName());
+			assertEquals("events: eventFullName ", "FRE060", e.getfullName());
+			assertEquals("events: eventName ", "Classe", e.getRoomName());
 
 			eventToAssign = eventsInPeriod.getResourceAt(1);
 			e = (DxEvent) eventToAssign.getAttach();
-			assertEquals("getEvents: eventFullName ", "FLS060", e.getfullName());
-			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			assertEquals("events: eventFullName ", "FLS060", e.getfullName());
+			assertEquals("events: eventName ", "------", e.getRoomName());
 
 			eventToAssign = eventsInPeriod.getResourceAt(2);
 			e = (DxEvent) eventToAssign.getAttach();
-			assertEquals("getEvents: eventFullName ", "GEO550", e.getfullName());
-			assertEquals("getEvents: eventName ", "A4-262", e.getRoomName());
+			assertEquals("events: eventFullName ", "GEO550", e.getfullName());
+			assertEquals("events: eventName ", "A4-262", e.getRoomName());
 			// }
 			DxSetOfSites sos = dm1.getDxSetOfSites();
 			String currentSiteName = dm1.getCurrentSiteName();
@@ -220,23 +221,184 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			// for (int i = 0; i < cArray.length; i++){
 			DxCategory cat = cArray[0];
 			String sCatName = cat.getName();
-			assertEquals("getEvents: catName ", "Classe", cat.getName());
+			assertEquals("events: catName ", "Classe", cat.getName());
 
 			listOfAvailableDxRooms = alg
 					.buildListofAvailableDxRooms(eventsInPeriod);
-			assertEquals("getEvents: listOfAvailableDxRooms size ", 28,
+			assertEquals("events: listOfAvailableDxRooms size ", 28,
 					listOfAvailableDxRooms.size());
 
 			DxSetOfRooms roomsInCat = alg.getAvailableRoomsInCat(
 					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
-			assertEquals("getEvents: roomsInCat size ", 6, roomsInCat
+			assertEquals("events: roomsInCat size ", 6, roomsInCat
 					.size());
-			eventsInCat = alg.getEventsInCat(eventsInPeriod, sCatName);
-			assertEquals("getEvents: eventsInCat size ", 1, eventsInCat
+			eventsInCat = alg.getEventsWithRoomNamed(eventsInPeriod, sCatName);
+			assertEquals("events: eventsInCat size ", 1, eventsInCat
 					.size());
 			dm1 = null;
 		} catch (Exception e) {
 			// Should not fail in controled conditions
+			System.out.println(e.getStackTrace());
+		}
+
+	}
+	
+
+	
+	public void test_getEvents() {
+		DxConflictLimits dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		dxCL.readLimits(str);
+		DModel dm1 = null;
+
+		DxDocument _dxDocument1 = new DxTTableDoc();
+		String fileName = "." + File.separator;
+		fileName += "dataTest" + File.separator;
+		fileName += "refFiles" + File.separator;
+		fileName += "facs" + File.separator;
+		fileName += "flsh2_1" + File.separator;
+		fileName += "testRoomAlg.dia";
+
+		try {
+			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1.changeInDModel(new Object());
+
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
+			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
+			int periodStep = 1;
+			int days = cycle.getNumberOfDays();
+			DSetOfResources eventsInCat = new StandardCollection();
+			Period currentPeriod = cycle.getNextPeriod(periodStep);
+			DxSetOfResources listOfAvailableDxRooms = null;
+			int d = 0;
+			int h = 0;
+			d = 0 / days;
+			h = 0 % days;
+
+			assertEquals("getEvents: number of events in period", 10,
+					currentPeriod.getNumberOfEvents());
+			DSetOfResources eventsInPeriod = alg
+			.builEventsWithStudentsInPeriod(currentPeriod);
+			// for(int j = 0; j < eventsInPeriod.size(); j++) {
+			DResource eventToAssign = eventsInPeriod.getResourceAt(0);
+			DxEvent e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "GAE600", e.getfullName());
+			assertEquals("getEvents: roomName ", "------", e.getRoomName());
+			assertEquals("getEvents: students ", 0, Integer.parseInt(eventToAssign.getID()));
+
+			eventToAssign = eventsInPeriod.getResourceAt(1);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "GMQ403", e.getfullName());
+			assertEquals("getEvents: eventName ", "A6-2004", e.getRoomName());
+			assertEquals("getEvents: students ", 0, Integer.parseInt(eventToAssign.getID()));
+			
+			eventToAssign = eventsInPeriod.getResourceAt(2);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "PSY521", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			assertEquals("getEvents: students ", 0, Integer.parseInt(eventToAssign.getID()));
+			
+			eventToAssign = eventsInPeriod.getResourceAt(3);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "ELC107", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			eventToAssign = eventsInPeriod.getResourceAt(4);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "CRM103", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			eventToAssign = eventsInPeriod.getResourceAt(5);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "PSY336", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			eventToAssign = eventsInPeriod.getResourceAt(6);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "SES105", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			
+			eventToAssign = eventsInPeriod.getResourceAt(7);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "HST489", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			eventToAssign = eventsInPeriod.getResourceAt(8);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "REL104", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			eventToAssign = eventsInPeriod.getResourceAt(9);
+			e = (DxEvent) eventToAssign.getAttach();
+			assertEquals("getEvents: eventFullName ", "SES405", e.getfullName());
+			assertEquals("getEvents: eventName ", "------", e.getRoomName());
+			
+			
+			
+			listOfAvailableDxRooms = alg
+			.buildListofAvailableDxRooms(eventsInPeriod);
+			assertEquals("getEvents: availableRooms ", 28, listOfAvailableDxRooms.size());
+			
+			DxSetOfSites sos = dm1.getDxSetOfSites();
+			String currentSiteName = dm1.getCurrentSiteName();
+			DxSetOfCategories soc = sos.getSetOfCat(currentSiteName);
+			DxCategory[] cArray = soc.getCatsSortedByKey();
+			// for (int i = 0; i < cArray.length; i++){
+			DxCategory cat = cArray[0];
+			String sCatName = cat.getName();
+			assertEquals("getEvents: catName ", "Séminaire", cat.getName());
+
+			DxSetOfRooms roomsInCat = alg.getAvailableRoomsInCat(
+					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
+			assertEquals("getEvents: roomsInCat size ", 9, roomsInCat
+					.size());
+			eventsInCat = alg.getEventsWithRoomNamed(eventsInPeriod, sCatName);
+			assertEquals("getEvents: eventsInCat size ", 0, eventsInCat
+					.size());
+			
+			cat = cArray[1];
+			sCatName = cat.getName();
+			assertEquals("getEvents: catName ", "Multimédia", cat.getName());
+
+			roomsInCat = alg.getAvailableRoomsInCat(
+					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
+			assertEquals("getEvents: roomsInCat size ", 6, roomsInCat
+					.size());
+			eventsInCat = alg.getEventsWithRoomNamed(eventsInPeriod, sCatName);
+			assertEquals("getEvents: eventsInCat size ", 0, eventsInCat
+					.size());
+			
+			cat = cArray[2];
+			sCatName = cat.getName();
+			assertEquals("getEvents: catName ", "Classe", cat.getName());
+
+			roomsInCat = alg.getAvailableRoomsInCat(
+					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
+			assertEquals("getEvents: roomsInCat size ", 10, roomsInCat
+					.size());
+			eventsInCat = alg.getEventsWithRoomNamed(eventsInPeriod, sCatName);
+			assertEquals("getEvents: eventsInCat size ", 0, eventsInCat
+					.size());
+			
+			
+			cat = cArray[3];
+			sCatName = cat.getName();
+			assertEquals("getEvents: catName ", "Lab", cat.getName());
+
+			roomsInCat = alg.getAvailableRoomsInCat(
+					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
+			assertEquals("getEvents: roomsInCat size ", 4-1, roomsInCat
+					.size());
+			eventsInCat = alg.getEventsWithRoomNamed(eventsInPeriod, sCatName);
+			assertEquals("getEvents: eventsInCat size ", 0, eventsInCat
+					.size());
+			
+			dm1 = null;
+		} catch (Exception e) {
+			// Should not fail in controled conditions
+			e.printStackTrace();
 			System.out.println(e.getStackTrace());
 		}
 

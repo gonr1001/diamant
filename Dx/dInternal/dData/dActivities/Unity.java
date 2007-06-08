@@ -316,18 +316,18 @@ public class Unity extends DObject {
 		StringBuffer strB = new StringBuffer(DConst.CR_LF);
 		strB.append("Unity ");
 		strB.append(DConst.CR_LF);
-		strB.append(" duration ");
-		strB.append(this._duration);
+//		strB.append(" duration ");
+//		strB.append(this._duration);
 		strB.append(" assign  ");
 		strB.append(this._assign);
 		strB.append(" isCyclic ");
 		strB.append(this._isCyclic);
 		strB.append(" isPermanent  ");
 		strB.append(this._permanent);
-		strB.append(" functionSetOfRooms ");
-		strB.append(this._preferFunctionSetOfRooms.toString());
-		strB.append(" set of assignments ");
-		strB.append(this._setOfAssignments.toString());
+//		strB.append(" functionSetOfRooms ");
+//		strB.append(this._preferFunctionSetOfRooms.toString());
+//		strB.append(" set of assignments ");
+//		strB.append(this._setOfAssignments.toString());
 		return strB.toString();
 	}
 	
