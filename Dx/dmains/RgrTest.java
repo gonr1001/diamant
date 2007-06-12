@@ -22,16 +22,8 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
-import dTest.dInternal.dData.DLoadDataTest;
-import dTest.dInternal.dData.DSaveDataTest;
-import dTest.dInternal.dData.DStandardReportDataTest;
-import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
-import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
-import dTest.dInternal.dData.dRooms.SetOfSitesTest;
-import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
-import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 
 /**
  * Ruben Gonzalez-Rubio

@@ -190,18 +190,77 @@ public class DxSetOfRooms extends DxSetOfResources {
 
 	}
 
-	public void sortSetByType() {
-//		DxRoom r..getRoomCapacity(sRoomName)
-//		
-		//this.s
+//	public void sortSetByType() {
+////		DxRoom r..getRoomCapacity(sRoomName)
+////		
+//		//this.s
+//	}
+
+	public DxSetOfRooms sortSetByCapacityMm() {
+		DxSetOfRooms r = new DxSetOfRooms();
+		Vector <DxResource> vr = getNameSortedRessources();
+		
+		for(int i = 0; i < vr.size() - 1; i ++){
+			int maxPos = maximumPosition(vr, i);
+			swap(vr, maxPos, i);			
+		}	
+		
+		for (int i = 0; i < vr.size(); i++) {
+			DxResource dxr = vr.get(i);
+			r.addRoom((DxRoom) dxr);
+		}
+		return r;
+	}
+	
+	public Vector <DxResource>  sortSetByCapacitymM() {
+		//DxSetOfRooms r = new DxSetOfRooms();
+		Vector <DxResource> vr = getNameSortedRessources();
+		
+		for(int i = 0; i < vr.size() - 1; i ++){
+			int minPos = minimumPosition(vr, i);
+			swap(vr, minPos, i);			
+		}	
+		
+//		for (int i = 0; i < vr.size(); i++) {
+//			DxResource dxr = vr.get(i);
+//			r.addRoom((DxRoom) dxr);
+//		}
+		return vr;
 	}
 
-	public void sortSetByCapacity() {
-		// TODO Auto-generated method stub
-		//DxRoom r.getRoomCapacity(sRoomName)
+
+	private int maximumPosition(Vector <DxResource> vr, int from) {
+		int maxPos = from;
+			for(int i = from  + 1; i < vr.size(); i++) {
+				DxRoom r = (DxRoom) vr.elementAt(i);
+				DxRoom m = (DxRoom) vr.elementAt(maxPos);
+				if (r.getCapacity() > m.getCapacity()) {
+					maxPos = i;
+				}
+			}
+			return maxPos;
+	}
+	
+	private int minimumPosition(Vector <DxResource> vr, int from) {
+		int minPos = from;
+			for(int i = from  + 1; i < vr.size(); i++) {
+				DxRoom r = (DxRoom) vr.elementAt(i);
+				DxRoom m = (DxRoom) vr.elementAt(minPos);
+				if (r.getCapacity() < m.getCapacity()) {
+					minPos = i;
+				}
+			}
+			return minPos;
 	}
 	
 	
+	private void swap(Vector <DxResource> vr, int i, int j) {
+		DxRoom temp = (DxRoom) vr.elementAt(i);
+		vr.setElementAt(vr.elementAt(j), i);
+		vr.setElementAt(temp, j);
+	}
+
+
 	public void auxPrintRooms(String oFileName) {
 		StringBuffer out = new StringBuffer();
 		try {

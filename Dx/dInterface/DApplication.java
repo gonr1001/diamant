@@ -815,12 +815,18 @@ public class DApplication {
 
 		} else {			
 			setCurrentDir(".\\dataTest\\");
+//			String fileName = "." + File.separator;
+//			fileName += "dataTest" + File.separator;
+//			fileName += "refFiles" + File.separator;
+//			fileName += "facs" + File.separator;
+//			fileName += "flsh2_1" + File.separator;
+//			fileName += "RoomAffContTT.dia";
 			try {
 				String filepath = "." + File.separator;
 				filepath += "refFiles" + File.separator;
 				filepath += "facs" + File.separator;
 				filepath += "flsh2_1" + File.separator;
-				filepath += "RoomAffTestsFlsh170min.dia";
+				filepath += "testRoomAlg.dia";
 				System.out.println("path: " + filepath);
 				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 

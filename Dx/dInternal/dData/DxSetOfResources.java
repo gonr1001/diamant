@@ -65,7 +65,14 @@ public abstract class DxSetOfResources implements Iterable {
 			_bSorted = false;
 		}
 	}
-
+	
+//	protected final DxResource getElement(int i) {
+//		return _vResourceSortedByName.elementAt(i);
+//	}
+//
+//	protected final void setElementAt(DxResource dr, int i) {
+//		 _vResourceSortedByName.setElementAt(dr, i);
+//	}
 	/**
 	 * Merge a new set of ressources into the current one. Function is protected
 	 * to allow type control from child (avoid adding a SetOfInstructor to a

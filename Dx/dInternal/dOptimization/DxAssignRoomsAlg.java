@@ -19,24 +19,25 @@
  */
 package dInternal.dOptimization;
 
-import java.io.FileOutputStream;
+
 import java.util.Iterator;
 import java.util.Vector;
-
 import dConstants.DConst;
+import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DxConflictLimits;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 import dInternal.dData.StandardCollection;
-import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfCategories;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
+import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
@@ -52,10 +53,6 @@ import dInternal.dUtil.DXToolsMethods;
  */
 public class DxAssignRoomsAlg implements Algorithm {
 
-//	private final int NO_ROOM_ASSIGNED = -1;
-//
-//	private final String STR_NO_ROOM_ASSIGNED = "-1";
-
 	private DModel _dm;
 
 	private DxConflictLimits _dxCL;
@@ -70,7 +67,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		_dm = dm;
 		_dxCL = limits;
 		_dxCL.getRoomBookingRate(); // to be used as a parameter of filling the
-		// room
+									// room
 	}
 
 	/*
@@ -83,7 +80,6 @@ public class DxAssignRoomsAlg implements Algorithm {
 		setFlagsToSelectEvents(); // maybe can be eliminate it do nothing
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
-		// int days = cycle.getNumberOfDays();
 		int hours = cycle.getMaxNumberOfPeriodsADay();
 		int numberOfPeriods = cycle.getNumberOfPeriods();
 		Vector<DResource> eventsToUpdate = new Vector<DResource>();
@@ -127,9 +123,10 @@ public class DxAssignRoomsAlg implements Algorithm {
 		for (int i = 0; i < cArray.length; i++) {
 			DxCategory cat = cArray[i];
 			String sCatName = cat.getName();
-			DxSetOfRooms roomsInCat = this.getAvailableRoomsInCat(
+			Vector <DxResource> roomsInCat = this.getAvailableRoomsInCat(
 					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
-			roomsInCat.sortSetByCapacity();
+			//roomsInCat.sortSetByCapacitymM();
+			sortSetByCapacitymM(roomsInCat/*, listOfAvailableDxRooms*/);
 			eventsInCat = this.getEventsWithRoomNamed(eventsInPeriod, sCatName);
 			// get an event with the greater num of students
 			while (eventsInCat.size() > 0) {
@@ -142,7 +139,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 					if (isAddPossible(room, eventToAssign)) {
 						((DxEvent) eventToAssign.getAttach()).setRoomName(room
 								.getName());
-						roomsInCat.removeResource(room.getKey());
+						roomsInCat.remove(room);
 						break;
 					} // if
 				} // while
@@ -161,10 +158,10 @@ public class DxAssignRoomsAlg implements Algorithm {
 		eventsInPeriod = this.builEventsWithStudentsInPeriod(currentPeriod);
 		listOfAvailableDxRooms = this
 				.buildListofAvailableDxRooms(eventsInPeriod);
-
-		DxSetOfRooms allRooms = this.getAvailableRooms(listOfAvailableDxRooms,
+		
+		Vector <DxResource> allRooms = this.getAvailableRooms(listOfAvailableDxRooms,
 				currentPeriod, d, h);
-		allRooms.sortSetByCapacity();
+		sortSetByCapacitymM(allRooms/*, listOfAvailableDxRooms*/);
 		eventsToPlace = this.getEventsWithRoomNamed(eventsInPeriod, "------");
 		// get an event with the greater num of students
 		while (eventsToPlace.size() > 0) {
@@ -177,13 +174,15 @@ public class DxAssignRoomsAlg implements Algorithm {
 				if (isAddPossible(room, eventToAssign)) {
 					((DxEvent) eventToAssign.getAttach()).setRoomName(room
 							.getName());
-					allRooms.removeResource(room.getKey());
+					allRooms.remove(room);
 					break;
 				} // if
 			} // while
 		} // while
 		return eventsToUpdate;
 	}
+
+
 
 
 
@@ -201,9 +200,9 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return eventsInCat;
 	}
 
-	protected DxSetOfRooms getAvailableRoomsInCat(DxSetOfResources dxRooms,
+	protected Vector <DxResource> getAvailableRoomsInCat(DxSetOfResources dxRooms,
 			String catName, Period currentPeriod, int d, int h) {
-		DxSetOfRooms roomsResult = new DxSetOfRooms();
+		Vector <DxResource> roomsResult = new Vector <DxResource>();
 		Iterator it = dxRooms.iterator();
 		currentPeriod.getMatrixAvailability();
 		while (it.hasNext()) {
@@ -211,24 +210,23 @@ public class DxAssignRoomsAlg implements Algorithm {
 			if (0 == dr.getType().compareToIgnoreCase(catName)) {
 				DxAvailability a = dr.getAvailability();
 				if (1 == a.getPeriodAvailability(d, h)) {
-					roomsResult.addRoom(dr);
+					roomsResult.add(dr);
 				}
 			}
 		}
 		return roomsResult;
 	}
 
-	protected DxSetOfRooms getAvailableRooms(DxSetOfResources dxRooms,
+	protected Vector <DxResource> getAvailableRooms(DxSetOfResources dxRooms,
 			Period currentPeriod, int d, int h) {
-		DxSetOfRooms roomsResult = new DxSetOfRooms();
+		Vector <DxResource> roomsResult = new Vector <DxResource>();
 		Iterator it = dxRooms.iterator();
 		currentPeriod.getMatrixAvailability();
 		while (it.hasNext()) {
 			DxRoom dr = (DxRoom) it.next();
-			//			if (0 == dr.getType().compareToIgnoreCase(catName)) {
 			DxAvailability a = dr.getAvailability();
 			if (1 == a.getPeriodAvailability(d, h)) {
-				roomsResult.addRoom(dr);
+				roomsResult.add(dr);
 			}
 			//			}
 		}
@@ -237,6 +235,9 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 	protected DSetOfResources builEventsWithStudentsInPeriod(
 			Period currentPeriod) {
+		final int TOKEN_RANGE1 = 1;
+
+		final int TOKEN_RANGE2 = 2;
 		// The container for the result
 		DSetOfResources setOfEventsInPeriod = new StandardCollection();
 		// Vector contains the events (Ressources) in the currentPeriod
@@ -244,28 +245,49 @@ public class DxAssignRoomsAlg implements Algorithm {
 				.getSetOfResources();
 		// Get all events
 		SetOfEvents soe = _dm.getSetOfEvents();
+		SetOfStudents students = _dm.getSetOfStudents();
 		int TOKEN_RANGE = 0;
-		int numberOfStudents;
+		//int numberOfStudents;
+		String eventInPeriodName = "";
+		String actID = "";
+		String typeID = "";
+		String secID = "";
+		Vector v = new Vector();
+		DResource resc = null;
+		int section = 0;
+		DxEvent event = null;
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			// get the name of each event in the period
-			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
+			eventInPeriodName = ((DResource) eventsInPeriod.get(i))
 					.getID();
 			// get the attach of the event
-			DxEvent event = (DxEvent) soe.getResource(eventInPeriodName)
+			event = (DxEvent) soe.getResource(eventInPeriodName)
 					.getAttach();
-
-			String actID = DXToolsMethods.getToken(eventInPeriodName,
+			actID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE);
-			Activity activity = (Activity) _dm.getSetOfActivities()
-					.getResource(actID).getAttach();
-			numberOfStudents = activity.getStudentRegistered().size();
-			DResource resc = new DResource(Integer.toString(numberOfStudents),
-					event);
+			typeID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE1);
+			secID = DXToolsMethods.getToken(eventInPeriodName,
+					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
+			section = DxTools.STIConvertGroupToInt(secID);
+//			Activity activity = (Activity) _dm.getSetOfActivities()
+//					.getResource(actID).getAttach();
+//			numberOfStudents = activity.getStudentRegistered().size();
+//			DResource resc = new DResource(Integer.toString(numberOfStudents),
+//					event);
+			
+
+			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			resc = new DResource(Integer.toString(v.size()), event);
 			setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
 		return setOfEventsInPeriod;
 	}
 
+	
+
+	
+	
 	protected void setFlagsToSelectEvents() {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		for (int i = 0; i < soe.size(); i++) {
@@ -305,78 +327,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return setOfAvailableRooms;
 	}
 
-//	/**
-//	 * cette classe initialise l'ensemble des événements
-//	 * <p>
-//	 * en annulant les locaux affectés aux événements s'ils n'y
-//	 * <p>
-//	 * sont pas figés
-//	 * 
-//	 */
-//	protected void setNoRoomToEventsWithRoomsNotFixed() {
-//		SetOfEvents soe = _dm.getSetOfEvents();
-//		for (int i = 0; i < soe.size(); i++) {
-//			DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
-//			System.out.println("event " + i + DConst.CR_LF + event.toString());
-//			if (event.isAssigned() && !event.isRoomFixed()) {
-//				if (event.getRoomKey() == NO_ROOM_ASSIGNED)
-//					System.out.println("room key !event.isRoomFixed()"
-//							+ event.getRoomKey() + " " + event.getRoomName());
-//				event.setRoomKey(STR_NO_ROOM_ASSIGNED);
-//			}// end if
-//			else if (event.isAssigned() && event.isRoomFixed()
-//					&& event.getRoomKey() == NO_ROOM_ASSIGNED) {
-//				if (event.getRoomKey() == NO_ROOM_ASSIGNED)
-//					System.out.println("room key event.isRoomFixed()"
-//							+ event.getRoomKey() + " " + event.getRoomName());
-//				event.setRoomKey(STR_NO_ROOM_ASSIGNED);
-//				event.setRoomFixed(false);
-//			}// end else if
-//		}// end for
-//	}
 
-//	/**
-//	 * Construit l'ensemble fini des événements auxquels on
-//	 * <p>
-//	 * souhaite associer des locaux
-//	 * 
-//	 * @param currentPeriod
-//	 *            la période dans laquelle il faut
-//	 *            <p>
-//	 *            affecter les locaux aux événements
-//	 * @return l'ensemble des événements
-//	 */
-//	protected DSetOfResources buildSetOfEvents(Period currentPeriod) {
-//		// The container for the result
-//		DSetOfResources newSetOfEvents = new StandardCollection();
-//		// Vector contains the events (Ressources) in the currentPeriod
-//		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
-//				.getSetOfResources();
-//		// Get all events
-//		SetOfEvents soe = _dm.getSetOfEvents();
-//		int TOKEN_RANGE = 0;
-//		int ADD_RESOURCE_BY_ID = 1;
-//		int numberOfStudents;
-//		for (int i = 0; i < eventsInPeriod.size(); i++) {
-//			// get the name of an event in the period
-//			String eventInPeriodName = ((DResource) eventsInPeriod.get(i))
-//					.getID();
-//			// get the attach of the event
-//			DxEvent event = (DxEvent) soe.getResource(eventInPeriodName)
-//					.getAttach();
-//			if (event.getRoomKey() == NO_ROOM_ASSIGNED) {
-//				String actID = DXToolsMethods.getToken(eventInPeriodName,
-//						DConst.TOKENSEPARATOR, TOKEN_RANGE);
-//				Activity activity = (Activity) _dm.getSetOfActivities()
-//						.getResource(actID).getAttach();
-//				numberOfStudents = activity.getStudentRegistered().size();
-//				DResource resc = new DResource(Integer
-//						.toString(numberOfStudents), event);
-//				newSetOfEvents.addResource(resc, ADD_RESOURCE_BY_ID);
-//			}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
-//		}// for(int i = 0; i< eventsInPeriod.size(); i++)
-//		return newSetOfEvents;
-//	}
 
 	protected int getNumberOfPeriods() {
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
@@ -398,7 +349,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 *         <p>
 	 *         et false sinon.
 	 */
-	private boolean isAddPossible(DxRoom room, DResource event) {
+	protected boolean isAddPossible(DxRoom room, DResource event) {
 		if (room.getName().equalsIgnoreCase("......")) {
 			return false;
 		}
@@ -412,49 +363,73 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return false;
 	}
 
-//	private void auxPrintEvents(DSetOfResources setOfEvents, String oFileName) {
-//		StringBuffer out = new StringBuffer();
-//		try {
-//			FileOutputStream outputFile = new FileOutputStream(oFileName);
-//			out.append("begin events " + setOfEvents.size() + DConst.CR_LF);
-//			for (int i = 0; i < setOfEvents.size(); i++) {
-//				DResource dr = setOfEvents.getResourceAt(i);
-//				out.append("Event " + i + DConst.CR_LF);
-//				out.append(((DxEvent) dr.getAttach()).toString());
-//			}
-//			out.append("end events " + DConst.CR_LF);
-//
-//			outputFile.write(out.toString().getBytes());
-//
-//			outputFile.close();
-//
-//			outputFile.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
+
+	public Vector <DxResource> sortSetByCapacityMm(Vector<DxResource> rooms) {
+		//Vector <DxResource> vr = listOfAvailableDxRooms.getNameSortedRessources();
+		
+		for(int i = 0; i < rooms.size() - 1; i ++){
+			int maxPos = maximumPosition(rooms, i);
+			swap(rooms, maxPos, i);			
+		}	
+		
+//		for (int i = 0; i < vr.size(); i++) {
+//			DxResource dxr = vr.get(i);
+//			r.addRoom((DxRoom) dxr);
 //		}
+		return rooms;
+	}
+	
+	
+	protected Vector <DxResource> sortSetByCapacitymM(Vector<DxResource> allRooms/*, DxSetOfResources listOfAvailableDxRooms*/) {
+		//Vector <DxResource> vr = allRooms;
+//		vr = listOfAvailableDxRooms.getNameSortedRessources();
+		
+		for(int i = 0; i < allRooms.size() - 1; i ++){
+			int minPos = minimumPosition(allRooms, i);
+			swap(allRooms, minPos, i);			
+		}	
+		
+//		for (int i = 0; i < vr.size(); i++) {
+//			DxResource dxr = vr.get(i);
+//			r.addRoom((DxRoom) dxr);
+//		}
+		return allRooms;
+		
+	}
+//	public Vector <DxResource>  sortSetByCapacitymM(DxSetOfResources listOfAvailableDxRooms) {
+//		
 //	}
 
-//	private void auxPrintRooms(DxSetOfResources setOfDxRooms, String oFileName) {
-//		StringBuffer out = new StringBuffer();
-//		try {
-//			FileOutputStream outputFile = new FileOutputStream(oFileName);
-//			out.append("begin rooms  " + setOfDxRooms.size() + DConst.CR_LF);
-//
-//			Iterator i = setOfDxRooms.iterator();
-//			while (i.hasNext()) {
-//				DxRoom dr = (DxRoom) i.next();
-//				out.append(dr.toString() + DConst.CR_LF);
-//			}
-//			out.append("end rooms " + DConst.CR_LF);
-//
-//			outputFile.write(out.toString().getBytes());
-//
-//			outputFile.close();
-//
-//			outputFile.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+
+	private int maximumPosition(Vector <DxResource> vr, int from) {
+		int maxPos = from;
+			for(int i = from  + 1; i < vr.size(); i++) {
+				DxRoom r = (DxRoom) vr.elementAt(i);
+				DxRoom m = (DxRoom) vr.elementAt(maxPos);
+				if (r.getCapacity() > m.getCapacity()) {
+					maxPos = i;
+				}
+			}
+			return maxPos;
+	}
+	
+	private int minimumPosition(Vector <DxResource> vr, int from) {
+		int minPos = from;
+			for(int i = from  + 1; i < vr.size(); i++) {
+				DxRoom r = (DxRoom) vr.elementAt(i);
+				DxRoom m = (DxRoom) vr.elementAt(minPos);
+				if (r.getCapacity() < m.getCapacity()) {
+					minPos = i;
+				}
+			}
+			return minPos;
+	}
+	
+	
+	private void swap(Vector <DxResource> vr, int i, int j) {
+		DxRoom temp = (DxRoom) vr.elementAt(i);
+		vr.setElementAt(vr.elementAt(j), i);
+		vr.setElementAt(temp, j);
+	}
 
 }// end class

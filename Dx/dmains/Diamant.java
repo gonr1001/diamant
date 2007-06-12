@@ -22,7 +22,7 @@ package dmains;
 
 import java.io.File;
 
-import lineInterface.DILigne;
+import lineInterface.DILine;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -51,18 +51,17 @@ public class Diamant {
 	private static DApplication dApplic = new DApplication();
 
 	/**
-	 * Just creating an instance of the DApplication
-	 * or a textual interface
-	 * When working with a DApplication instance
-	 * doIt takes in chage the application
-	 *
-	 * When working with the textual interface
-	 * the own method doIt takes in charge
-	 * to run the application.
+	 *  main has a constant GUI used to decide
+	 *  if the application runs with windows or with
+	 *  a line interface
+	 *  <p>
+	 *  main creates an instance of the DApplication when GUI is true
+	 *  so the gui has windows
+	 *  else creates a DILine 
+	 *  so the gui is a command line
+	 *  <p>
 	 * 
-	 * XXXX Pascal: ecrit en anglais et grammaticalement incomprehensible.
 	 */
-
 	public static void main(String[] args) {
 		
 		// Check that all files required by Diamant exist
@@ -88,7 +87,7 @@ public class Diamant {
 			_logger.warn("hi_with_a_GUI");
 		} else {
 			System.out.println("hello");
-			DILigne dil = new DILigne();
+			DILine dil = new DILine();
 			dil.doIt(args);
 			System.out.println("bye");
 			System.exit(1);
