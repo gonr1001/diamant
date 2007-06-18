@@ -8,8 +8,6 @@ package dInternal.dDeployment;
 import java.io.File;
 import java.util.Vector;
 
-import dInternal.DxDeploymentManager;
-import dInternal.dDeployment.exception.AddChildException;
 
 public class DxConfigResource {
     private Vector<DxConfigResource> _children;

@@ -3,8 +3,8 @@ package dTest.dInternal;
 import java.util.Iterator;
 import java.util.Vector;
 
-import dInternal.DxDeploymentManager;
 import dInternal.dDeployment.DxConfigResource;
+import dInternal.dDeployment.DxDeploymentManager;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

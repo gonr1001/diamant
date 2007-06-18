@@ -79,8 +79,6 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 
 	private DModel _dmodel;
 
-	private DxSetOfSites _dxsosSites;
-
 	private DxSite _dxsCurrentSite;
 
 	private DxCategory _dxcCurrentCat;
@@ -90,15 +88,13 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 	private int[][] _dxaCurrentAvailbility;
 
 	public DxRoomAvailabilityDlg(DApplication dApplic) {
-		super(dApplic.getJFrame(), DConst.ROOMASSIGN + "rgr", false);
+		super(dApplic.getJFrame(), DConst.ROOMASSIGN, false);
 		
 		// this is done to aboid an exception when all menus are allowed
 		if (dApplic.getCurrentDxDoc() == null)
 			return;
 		
 		_dmodel = dApplic.getCurrentDModel();
-
-		_dxsosSites = _dmodel.getDxSetOfSites(); 			// get the attach of the event;
 
 		_time = _dmodel.getTTStructure().getCurrentCycle()
 				.getHourOfPeriodsADay();
@@ -128,7 +124,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 		// creates the JComboBox with the list of all sites and add an entry
 		// to
 		// display all sites
-		_dcbmSites = new DefaultComboBoxModel(_dxsosSites
+		_dcbmSites = new DefaultComboBoxModel(_dmodel.getDxSetOfSites()
 				.getSitesSortedByName());
 		_cbSites = new JComboBox(_dcbmSites);
 		_cbSites.addItemListener(this);
@@ -219,7 +215,6 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 			switch (nSwitch) {
 			case 1:
 				_dxsCurrentSite = (DxSite) _cbSites.getSelectedItem();
-
 				_dcbmCategories = new DefaultComboBoxModel(_dxsCurrentSite
 						.getSetOfCat().getCatsSortedByName());
 				_cbCategories.setModel(_dcbmCategories);
@@ -229,6 +224,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 				_dcbmRooms = new DefaultComboBoxModel(_dxcCurrentCat
 						.getSetOfRooms().getRoomsSortedByName());
 				_cbRooms.setModel(_dcbmRooms);
+				_dxrCurrentRoom = (DxRoom) _cbRooms.getSelectedItem();
 				break;
 
 			case 3:
@@ -243,6 +239,7 @@ public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 					.getMatrixAvailability();
 			_centerPanel = makeGridPanel();// _currentInstr);
 			getContentPane().add(_centerPanel, BorderLayout.CENTER);
+			this.repaint();
 			pack();
 		}
 	}// end itemStateChanged

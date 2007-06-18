@@ -96,9 +96,9 @@ public class DiamantTest {
 	 * @return
 	 */
 	public static Test suite() {
-		System.out.println("Hello I am in tests");
+		System.out.println("Hello I am in Diamant tests");
 		DxFlags.unitTest=true;
-		TestSuite suite = new TestSuite("Dimanant Tests");
+		TestSuite suite = new TestSuite("Diamant Tests");
 		
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
@@ -157,7 +157,7 @@ public class DiamantTest {
 		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
 		suite.addTest(DxDeploymentManagerTest.suite());
-		System.out.println("Bye I was in tests");
+		System.out.println("Bye I was in Diamant tests");
 		return suite;
 	}
 }

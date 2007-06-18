@@ -617,7 +617,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				String currentCatName = currentSite.getCatNameOfRoom(name);
 				currentCat = currentSite.getSetOfCat().getCat(currentCatName);
 				currentRoom = currentSite.getRoom(currentCat.getName(), name);
-				System.out.println("cat" + currentCat.getName() + " name "
+				System.out.println("Is room : cat " + currentCat.getName() + " name "
 						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
@@ -631,7 +631,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			} else { // it is a cat.
 				currentCat = currentSite.getSetOfCat().getCat(name);
 				currentRoom = null;
-				System.out.println("cat" + currentCat.getName() + " noroom "
+				System.out.println("Is cat : cat " + currentCat.getName() + " noroom "
 						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());

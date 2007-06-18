@@ -29,7 +29,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import dConstants.DConst;
 import dInterface.DApplication;
-import dInternal.DxDeploymentManager;
+import dInternal.dDeployment.DxDeploymentManager;
 
 /**
  *
