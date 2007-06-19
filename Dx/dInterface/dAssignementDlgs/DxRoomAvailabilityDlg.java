@@ -40,7 +40,6 @@ import dInternal.DModel;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
-import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSite;
 
 public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,

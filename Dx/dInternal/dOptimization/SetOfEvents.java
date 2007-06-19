@@ -304,7 +304,7 @@ public class SetOfEvents extends DSetOfResources {
 							.getDxSetOfInstructors(), keys[j]));
 				}// end for
 
-
+// Here was mm instead of the room
 				assignment.setRoomName(event.getRoomName());
 
 				assignment.setPeriodKey(event.getPeriodKey());

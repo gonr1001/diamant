@@ -97,9 +97,9 @@ public class DxAssignRoomsAlg implements Algorithm {
 			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 					eventsToUpdate);
 
-			eventsToUpdate = doWorkInPeriodAll(currentPeriod, d, h);
-			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
-					eventsToUpdate);
+//			eventsToUpdate = doWorkInPeriodAll(currentPeriod, d, h);
+//			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
+//					eventsToUpdate);
 		}// end for
 
 	}
@@ -125,8 +125,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			String sCatName = cat.getName();
 			Vector <DxResource> roomsInCat = this.getAvailableRoomsInCat(
 					listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
-			//roomsInCat.sortSetByCapacitymM();
-			sortSetByCapacitymM(roomsInCat/*, listOfAvailableDxRooms*/);
+			sortSetByCapacitymM(roomsInCat);
 			eventsInCat = this.getEventsWithRoomNamed(eventsInPeriod, sCatName);
 			// get an event with the greater num of students
 			while (eventsInCat.size() > 0) {
@@ -365,40 +364,23 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 
 	public Vector <DxResource> sortSetByCapacityMm(Vector<DxResource> rooms) {
-		//Vector <DxResource> vr = listOfAvailableDxRooms.getNameSortedRessources();
-		
+	
 		for(int i = 0; i < rooms.size() - 1; i ++){
 			int maxPos = maximumPosition(rooms, i);
 			swap(rooms, maxPos, i);			
-		}	
-		
-//		for (int i = 0; i < vr.size(); i++) {
-//			DxResource dxr = vr.get(i);
-//			r.addRoom((DxRoom) dxr);
-//		}
+		}			
 		return rooms;
 	}
 	
 	
-	protected Vector <DxResource> sortSetByCapacitymM(Vector<DxResource> allRooms/*, DxSetOfResources listOfAvailableDxRooms*/) {
-		//Vector <DxResource> vr = allRooms;
-//		vr = listOfAvailableDxRooms.getNameSortedRessources();
-		
+	protected Vector <DxResource> sortSetByCapacitymM(Vector<DxResource> allRooms) {	
 		for(int i = 0; i < allRooms.size() - 1; i ++){
 			int minPos = minimumPosition(allRooms, i);
 			swap(allRooms, minPos, i);			
 		}	
-		
-//		for (int i = 0; i < vr.size(); i++) {
-//			DxResource dxr = vr.get(i);
-//			r.addRoom((DxRoom) dxr);
-//		}
 		return allRooms;
 		
 	}
-//	public Vector <DxResource>  sortSetByCapacitymM(DxSetOfResources listOfAvailableDxRooms) {
-//		
-//	}
 
 
 	private int maximumPosition(Vector <DxResource> vr, int from) {
