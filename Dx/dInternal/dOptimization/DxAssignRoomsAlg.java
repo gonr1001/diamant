@@ -56,7 +56,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 	private DxConflictLimits _dxCL;
 
-	private boolean _increase;
+	protected boolean _increase;
 
 	/**
 	 * 
@@ -68,15 +68,15 @@ public class DxAssignRoomsAlg implements Algorithm {
 		_dm = dm;
 		_dxCL = limits;
 		_increase = increase;
-		_dxCL.getRoomBookingRate(); // the parameter how full is the room									
+		_dxCL.getRoomBookingRate(); // the parameter how full is the room
 	}
 
 	/*
 	 * this method executes the algorithm
 	 */
 	public void doWork() {
-		//		_dm.getSetOfEvents().auxPrintEvents("./aa.txt");
-		//		_dm.getDxSetOfRooms().auxPrintRooms("./bb.txt");
+		// _dm.getSetOfEvents().auxPrintEvents("./aa.txt");
+		// _dm.getDxSetOfRooms().auxPrintRooms("./bb.txt");
 
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
@@ -92,7 +92,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			h = i % hours;
 			d = i / hours;
 			// get the events to update in this period and update them
-			//			System.out.println("Number of P " + i + " d: " + d + " h: " + h);
+			// System.out.println("Number of P " + i + " d: " + d + " h: " + h);
 			eventsToUpdate = placeRoomsWithCat(currentPeriod, d, h);
 			_dm.getSetOfEvents().updateActivities(_dm.getSetOfActivities(),
 					eventsToUpdate);
@@ -247,7 +247,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			if (1 == a.getPeriodAvailability(d, h)) {
 				roomsResult.add(dr);
 			}
-			//			}
+			// }
 		}
 		return roomsResult;
 	}
@@ -259,6 +259,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		final int TOKEN_RANGE2 = 2;
 		// The container for the result
 		DSetOfResources setOfEventsInPeriod = new StandardCollection();
+		DSetOfResources eventsToReturn = new StandardCollection();
 		// Vector contains the events (Ressources) in the currentPeriod
 		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
@@ -266,7 +267,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		SetOfEvents soe = _dm.getSetOfEvents();
 		SetOfStudents students = _dm.getSetOfStudents();
 		int TOKEN_RANGE = 0;
-		//int numberOfStudents;
+		// int numberOfStudents;
 		String eventInPeriodName = "";
 		String actID = "";
 		String typeID = "";
@@ -287,56 +288,60 @@ public class DxAssignRoomsAlg implements Algorithm {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			//			Activity activity = (Activity) _dm.getSetOfActivities()
-			//					.getResource(actID).getAttach();
-			//			numberOfStudents = activity.getStudentRegistered().size();
-			//			DResource resc = new DResource(Integer.toString(numberOfStudents),
-			//					event);
 
 			v = students.getStudentsByGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), event);
 
-//			if (INCREASE) {
+//			if (_increase) {
 				setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
-//			return setOfEventsInPeriod;
-//			}
+//		} // else {
 //			setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
-//			DSetOfResources eventsToReturn = new StandardCollection();
+//			eventsToReturn = new StandardCollection();
 //			for (int j = setOfEventsInPeriod.size() - 1; j > -1; j--) {
 //				DResource r = setOfEventsInPeriod.getResourceAt(j);
 //				setOfEventsInPeriod.removeResourceAt(j);
 //				eventsToReturn.addResource(r);
 //			}
-//			return eventsToReturn;
-			//		}
-			//			if(INCREASE) {
-			//				setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
-			//			}
-			//			DSetOfResources eventsToReturn = new StandardCollection();
-			//			for(int j = eventsInCat.size()-1 ; j > -1; j--) {
-			//				DResource r = eventsInCat.getResourceAt(j);
-			//				eventsInCat.removeResourceAt(j);
-			//				eventsToReturn.addResource(r);
-			//			}	
-			//			return eventsToReturn;
+//			// return eventsToReturn;
+//			 }
+			// if(INCREASE) {
+			// setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
+			// }
+			// DSetOfResources eventsToReturn = new StandardCollection();
+			// for(int j = eventsInCat.size()-1 ; j > -1; j--) {
+			// DResource r = eventsInCat.getResourceAt(j);
+			// eventsInCat.removeResourceAt(j);
+			// eventsToReturn.addResource(r);
+			// }
+			// return eventsToReturn;
 		}// for(int i = 0; i< eventsInPeriod.size(); i++)
+		if (_increase) {
 			return setOfEventsInPeriod;
+		}
+		eventsToReturn = new StandardCollection();
+		for (int j = setOfEventsInPeriod.size() - 1; j > -1; j--) {
+			DResource r = setOfEventsInPeriod.getResourceAt(j);
+			setOfEventsInPeriod.removeResourceAt(j);
+			eventsToReturn.addResource(r);
+		}
+		return eventsToReturn;
+//		return eventsToReturn;
 	}
 
-	//	protected void setFlagsToSelectEvents() {
-	//		SetOfEvents soe = _dm.getSetOfEvents();
-	//		for (int i = 0; i < soe.size(); i++) {
-	//			DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
-	//			// System.out.println("event " + i + DConst.CR_LF +
-	//			// event.toString());
-	//			if (event.isAssigned() && !event.isRoomFixed()) {
-	//				// il faut assigner le local
-	//			}// end if
-	//			else {
-	//				// il ne faut pas assigner de local
-	//			}// end else if
-	//		}// end for
-	//	}
+	// protected void setFlagsToSelectEvents() {
+	// SetOfEvents soe = _dm.getSetOfEvents();
+	// for (int i = 0; i < soe.size(); i++) {
+	// DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
+	// // System.out.println("event " + i + DConst.CR_LF +
+	// // event.toString());
+	// if (event.isAssigned() && !event.isRoomFixed()) {
+	// // il faut assigner le local
+	// }// end if
+	// else {
+	// // il ne faut pas assigner de local
+	// }// end else if
+	// }// end for
+	// }
 
 	/**
 	 * Construit l'ensemble fini des locaux pouvant être affectés
