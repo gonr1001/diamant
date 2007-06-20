@@ -26,7 +26,6 @@ import java.util.Vector;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import developer.DxFlags;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
@@ -42,6 +41,7 @@ import dInternal.dData.dRooms.DxSetOfCategories;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
+import developer.DxFlags;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -88,7 +88,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.size());
 
 			if (DxFlags.newAlg) {
-				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, DxFlags.increase);
 				alg.doWork();
 			} else {
 				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
@@ -124,7 +124,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.size());
 
 			if (DxFlags.newAlg) {
-				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, DxFlags.increase);
 				alg.doWork();
 			} else {
 				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
@@ -156,7 +156,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1 = new DModel(_dxDocument1, fileName.toString());
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, DxFlags.increase);
 
 			assertEquals("test_getNumberOfPeriods: assertEquals", 28, alg
 					.getNumberOfPeriods());
@@ -184,7 +184,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1 = new DModel(_dxDocument1, fileName.toString());
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, DxFlags.increase);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
@@ -266,7 +266,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1 = new DModel(_dxDocument1, fileName.toString());
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, DxFlags.increase);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;

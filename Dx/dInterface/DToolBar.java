@@ -180,7 +180,6 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 					setToolBarOne();
 					setToolBarTwo();
 				}
-				// System.out.println("Number of days: "+nbDays);
 			}// end actionPerformed
 
 			public String idDlgToString() {
@@ -385,13 +384,9 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 			days[i] = Integer.toString((int) resc.getKey());
 			_daySelector.addItem(days[i]);
 		}
-		// System.out.println("Day selector size:
-		// "+daySelector.getItemCount());//debug
 		_daySelector.setSelectedIndex(0);
 		// rgr resc= _tts.getCurrentCycle().getSetOfDays().getResourceAt(0);
 		// _dayNameSelector.setSelectedItem(resc.getID()); //rgr
-		// System.out.println("Day selected index:
-		// "+daySelector.getSelectedIndex());//debug
 		_daySelector.enableActionListeners();
 		setEnabledToolbar(true);
 	}

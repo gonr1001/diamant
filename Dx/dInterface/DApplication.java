@@ -823,10 +823,10 @@ public class DApplication {
 //			fileName += "RoomAffContTT.dia";
 			try {
 				String filepath = "." + File.separator;
-				filepath += "refFiles" + File.separator;
-				filepath += "facs" + File.separator;
-				filepath += "flsh2_1" + File.separator;
-				filepath += "testRoomAlg.dia";
+//				filepath += "refFiles" + File.separator;
+//				filepath += "facs" + File.separator;
+//				filepath += "flsh2_1" + File.separator;
+				filepath += "test2.dia";
 				System.out.println("path: " + filepath);
 				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 
@@ -860,7 +860,7 @@ public class DApplication {
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
 			new DxAssignRoomsAlg(this.getCurrentDModel(), this
-					.getDxPreferences().getDxConflictLimits()).doWork();
+					.getDxPreferences().getDxConflictLimits(), DxFlags.increase).doWork();
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
 		}

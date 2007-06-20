@@ -285,9 +285,9 @@ public abstract class DxSetOfResources implements Iterable {
 		if (nIndexKey != -1 && nIndexName != -1) {
 			_vResourceSortedByKey.remove(nIndexKey);
 			_vResourceSortedByName.remove(nIndexName);
-		} else {
-			System.out
-					.println("dInternal.dData.DxSetOfResources: A ressource was found in a vector but not the other");
+//		} else {
+//			System.out
+//					.println("dInternal.dData.DxSetOfResources: A ressource was found in a vector but not the other");
 		}
 	}
 

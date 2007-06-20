@@ -78,6 +78,7 @@ public class DxResource {
 		return _lKey;
 	}
 
+
 	/**
 	 * @return Name of the resource, null if not attributed.
 	 */

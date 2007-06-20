@@ -22,8 +22,16 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
+import dTest.dInterface.dMenus.DFileMenuTest;
+import dTest.dInternal.dData.DSaveDataTest;
+import dTest.dInternal.dData.DStandardReportDataTest;
+import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
+import dTest.dInternal.dData.dRooms.DRoomTest;
+import dTest.dInternal.dData.dRooms.SetOfSitesTest;
+import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
+import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -55,16 +63,16 @@ public class RgrTest {
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
-//		suite.addTest(DxInstructorsReaderTest.suite());
-//		suite.addTest(SetOfSitesTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
-//		suite.addTest(ConditionsTest.suite());
-//		suite.addTest(DLoadDataTest.suite());
-//		suite.addTest(DStandardReportDataTest.suite());
-//		suite.addTest(DSaveDataTest.suite());
-//	    suite.addTest(DxSiteReaderTest.suite());
-
-
+		suite.addTest(DxInstructorsReaderTest.suite());
+		suite.addTest(SetOfSitesTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(ConditionsTest.suite());
+		suite.addTest(SetOfSitesTest.suite());
+		suite.addTest(DStandardReportDataTest.suite());
+		suite.addTest(DSaveDataTest.suite());
+	    suite.addTest(DRoomTest.suite());
+	    suite.addTest(DFileMenuTest.suite());
+	    
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
 	}

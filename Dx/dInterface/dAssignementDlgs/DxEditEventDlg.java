@@ -318,8 +318,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
 				.getRoomKeyByName(room)));
 		event.setRoomName(room);
-		System.out.println("DxE event1.1 room name: " + event.getRoomName());
-		System.out.println("DxE event1.1 room key: " + event.getRoomKey());
+		//System.out.println("DxE event1.1 room name: " + event.getRoomName());
+		//System.out.println("DxE event1.1 room key: " + event.getRoomKey());
 
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
@@ -596,10 +596,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbCategories = new JComboBox(dcbmCategories);
 		DefaultComboBoxModel dcbmRooms;
 		JComboBox cbRooms = new JComboBox();
-		System.out.println("room " + name);
+		//System.out.println("room " + name);
 
 		if (name.equalsIgnoreCase("......") || name.equalsIgnoreCase("------")) { ///rgr
-			System.out.println("......" + " ou " + "------" + name);
+			//System.out.println("......" + " ou " + "------" + name);
 			currentRoom = null;
 			currentCat = null;
 
@@ -617,8 +617,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				String currentCatName = currentSite.getCatNameOfRoom(name);
 				currentCat = currentSite.getSetOfCat().getCat(currentCatName);
 				currentRoom = currentSite.getRoom(currentCat.getName(), name);
-				System.out.println("Is room : cat " + currentCat.getName() + " name "
-						+ name);
+//				System.out.println("Is room : cat " + currentCat.getName() + " name "
+//						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				dcbmRooms.insertElementAt("......", 0);
@@ -631,8 +631,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			} else { // it is a cat.
 				currentCat = currentSite.getSetOfCat().getCat(name);
 				currentRoom = null;
-				System.out.println("Is cat : cat " + currentCat.getName() + " noroom "
-						+ name);
+//				System.out.println("Is cat : cat " + currentCat.getName() + " noroom "
+//						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				dcbmRooms.insertElementAt("......", 0);

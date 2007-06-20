@@ -162,11 +162,28 @@ public abstract class DSetOfResources extends DObject {
 		return false;
 	}
 	
+	public boolean addResource(DResource resource) {
+//		int index = 0;
+//		int add = -1;
+		_resourceList.add(resource);
+//		add = searchID(resource.getID());
+//		if (add == -1) {
+//			index = searchWhereToInsert(resource.getID());
+//			resource.setKey(_currentKey);
+//			if (index > (_resourceList.size() - 1))
+//				_resourceList.add(resource);
+//			else
+//				_resourceList.insertElementAt(resource, index);
+//			_currentKey++;
+			return true;
+//		}
+//		return false;
+	}
+	
 	public boolean addResourceUsingIDWithDuplicates(DResource resource) {
 		int index = 0;
 		int add = -1;
 
-		//add = searchID(resource.getID());
 		if (add == -1) {
 			index = searchWhereToInsert(resource.getID());
 			resource.setKey(_currentKey);
@@ -179,6 +196,24 @@ public abstract class DSetOfResources extends DObject {
 		}
 		return false;
 	}
+	
+	
+//	public boolean addResourceUsingIDWithDuplicatesMm(DResource resource) {
+//		int index = 0;
+//		int add = -1;
+//
+//		if (add == -1) {
+//			index = searchWhereToInsertMn(resource.getID());
+//			resource.setKey(_currentKey);
+//			if (index < (_resourceList.size() - 1))
+//				_resourceList.add(resource);
+//			else
+//				_resourceList.insertElementAt(resource, index);
+//			_currentKey++;
+//			return true;
+//		}
+//		return false;
+//	}
 
 	//}
 	public boolean addResourceMod(DResource resource, int insertType) {
@@ -399,6 +434,15 @@ public abstract class DSetOfResources extends DObject {
 		Collections.sort(_resourceList, DResource.IDComparator);
 		_stateSort = 1;
 	}
+	
+	/**
+	 * Sort the SetOfResources by DResource's ID from smallest to biggest
+	 * */
+	public void sortSetOfResourcesByIDMm() {
+		Collections.sort(_resourceList, DResource.IDComparatorMm);
+		_stateSort = 1;
+	}
+
 
 	/**
 	 * Sort the SetOfResources by DResource's Key from smallest to biggest
@@ -685,6 +729,31 @@ public abstract class DSetOfResources extends DObject {
 	 * @return int index of the DResource in SetOfResources
 	 * */
 	public int searchWhereToInsert(String id) {
+		if ((_stateSort != 1)) //|| (_resourceList.size()<=3))
+			sortSetOfResourcesByID();
+		int low = 0;
+		int high = _resourceList.size() - 1;
+		while (low <= high) {
+			int mid = (low + high) / 2;
+			int diff = (_resourceList.get(mid)).getID().compareTo(id);
+			if (diff == 0)
+				return mid;
+			//else{
+			if (diff < 0)
+				low = mid + 1;
+			else
+				high = mid - 1;
+			//}//end else if (diff == 0)
+		}//end while(low <= high)
+		return low;
+	}
+	
+	/**
+	 * finds a index in a sorted vector, using the binary search algorithm
+	 * @param String the DResource ID from wich to find index in SetOfResources
+	 * @return int index of the DResource in SetOfResources
+	 * */
+	public int searchWhereToInsertMn(String id) {
 		if ((_stateSort != 1)) //|| (_resourceList.size()<=3))
 			sortSetOfResourcesByID();
 		int low = 0;

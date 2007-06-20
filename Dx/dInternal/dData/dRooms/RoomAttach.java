@@ -49,7 +49,7 @@ public class RoomAttach extends AvailabilityAttach {
 		_description = "";
 		_function = -1;
 		_ressourceAvailability = new Vector<String>();
-		//_setOfCaracteristics = new SetOfCaracteristics();
+		_setOfCaracteristics = new SetOfCaracteristics();
 	}
 
 	/**

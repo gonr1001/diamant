@@ -589,7 +589,7 @@ public class SetOfEventsTest extends TestCase {
 //		assertEquals("test_addEvents AMC600 Event i : ", 0, index);
 //		assertEquals("test_addEvents AMC600 Event nS : ", 20, v.size());
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //
 //		// for each event in period do some tests
@@ -610,7 +610,7 @@ public class SetOfEventsTest extends TestCase {
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		assertEquals("test_addEvents AMC640 Event i :", 1, index);
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //
 //		// for each event in period do some tests
@@ -631,7 +631,7 @@ public class SetOfEventsTest extends TestCase {
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		assertEquals("test_addEvents GCH109 Event i :", 1, index);
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //		newSetOfEvents.sortSetOfResourcesByID();
 //		assertEquals("test_addEvents GCH109 Event size :", 3, newSetOfEvents
@@ -655,7 +655,7 @@ public class SetOfEventsTest extends TestCase {
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		assertEquals("test_addEvents GCH321 Event i :", 1, index);
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //		newSetOfEvents.sortSetOfResourcesByID();
 //		assertEquals("test_addEvents GCH321 Event size :", 4, newSetOfEvents
@@ -678,7 +678,7 @@ public class SetOfEventsTest extends TestCase {
 //		resc = new DResource(Integer.toString(v.size()), eventDx);
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //		newSetOfEvents.sortSetOfResourcesByID();
 //		assertEquals("test_addEvents GEI460 Event size :", 5, newSetOfEvents
@@ -702,7 +702,7 @@ public class SetOfEventsTest extends TestCase {
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		assertEquals("test_addEvents GEL440 Event i :", 3, index);
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //		newSetOfEvents.sortSetOfResourcesByID();
 //		assertEquals("test_addEvents GEL440 Event size :", 6, newSetOfEvents
@@ -726,7 +726,7 @@ public class SetOfEventsTest extends TestCase {
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		assertEquals("test_addEvents IMC111 Event i :", 5, index);
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //		newSetOfEvents.sortSetOfResourcesByID();
 //		assertEquals("test_addEvents IMC111 Event size :", 6, newSetOfEvents
@@ -751,7 +751,7 @@ public class SetOfEventsTest extends TestCase {
 //		assertEquals("test_addEvents IMC455 Event i : ", 0, index);
 //		assertEquals("test_addEvents IMC455 Event nS : ", 10, v.size());
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //
 //		assertEquals("test_addEvents IMC455 Event size : ", 7, newSetOfEvents
@@ -775,7 +775,7 @@ public class SetOfEventsTest extends TestCase {
 //		index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 //		assertEquals("test_addEvents IMC500 Event i : ", 6, index);
 //		if (eventDx.getRoomKey() == NO_ROOM_ASSIGNED) {
-//			newSetOfEvents.addResourceUsingIDWithDuplicates(resc);
+//			newSetOfEvents.addResourceUsingIDWithDuplicatesmM(resc);
 //		}// end if(eventAttach.getRoomKey() == NO_ROOM_ASSIGNED)
 //		newSetOfEvents.sortSetOfResourcesByID();
 //		assertEquals("test_addEvents IMC500 Event size : ", 7, newSetOfEvents

@@ -5,6 +5,6 @@ French
 .\pref\pref.txt
 C:\Documents and Settings\gonr1001\pref
 éÉèÈáÁàÀÇçëËïîÏÎÔôùÙüÜ-'()ÊêûÛâÂöÖ
-selectedOptionsInFullReport;JNum;Jour;Début;Acti;Nat;Grp;Blc;Nomb É;Enseignant;Local;
+selectedOptionsInFullReport;JNum;Jour;Début;Acti;Grp;Blc;Nomb É;Enseignant;Local;
 selectedOptionsInConflictReport;Jour;Type Conf;Début;Numb C;Événement 1;Événement 2;Conflits;PérJour;
 conflictLimits;0;0;0;1;30;0;100;

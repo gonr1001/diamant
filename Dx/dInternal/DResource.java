@@ -178,6 +178,12 @@ public class DResource {
 		}
 	};
 
+	public static Comparator<DResource> IDComparatorMm = new Comparator<DResource>() {
+		public int compare(DResource left, DResource right) {
+			return right._resourceID.compareTo(left._resourceID);
+		}
+	};
+	
 	public static Comparator<DResource> KeyComparator = new Comparator<DResource>() {
 		public int compare(DResource left, DResource right) {
 			long diff = left._resourceKey - right._resourceKey;
