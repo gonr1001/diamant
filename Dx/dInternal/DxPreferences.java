@@ -76,12 +76,12 @@ public class DxPreferences {
 			if (filter.adjustingFile(str)) {
 				StringTokenizer st = new StringTokenizer(new String(filter
 						.getByteArray()), DConst.CR_LF);
-				// System.out.println(st.toString());
 				_lookAndFeel = st.nextToken();
 				_language = st.nextToken();
 				_standardTTC = st.nextToken();
 				_standardTTE = st.nextToken();
 				_defaultDir = st.nextToken();
+				_defaultDir = str;
 				_originalFullFileName = st.nextToken();
 				_acceptedChars = st.nextToken();
 				_selectedOptionsInFullReport = st.nextToken();
@@ -130,7 +130,7 @@ public class DxPreferences {
 		} else {
 			str += _conflictLimits;
 		}
-		
+
 		return str;
 	}
 
@@ -140,13 +140,13 @@ public class DxPreferences {
 			bof.writeFileFromBytes(data.getBytes());
 			bof.close();
 		} catch (IOFileException iofe) {
-			new DxExceptionDlg(_dApplic.getJFrame(),iofe.getMessage(), iofe);
+			new DxExceptionDlg(_dApplic.getJFrame(), iofe.getMessage(), iofe);
 			iofe.printStackTrace();
 			System.exit(31);
 		} // end catch
 	}// end writeFile
 
-	public Vector getSelectedOptionsInFullReport() {
+	public Vector<String> getSelectedOptionsInFullReport() {
 		StringTokenizer st = new StringTokenizer(_selectedOptionsInFullReport,
 				";");
 		String s = "selectedOptionsInFullReport";
@@ -163,7 +163,7 @@ public class DxPreferences {
 		return res;
 	} // end getSelectedOptionsInFullReport()
 
-	public Vector getSelectedOptionsInConflictReport() {
+	public Vector<String> getSelectedOptionsInConflictReport() {
 		StringTokenizer st = new StringTokenizer(
 				_selectedOptionsInConflictReport, ";");
 		String s = "selectedOptionsInConflictReport";
@@ -198,32 +198,32 @@ public class DxPreferences {
 		return a;
 	} // end getConflictLimits
 
-	public void setSelectedOptionsInFullReport(Vector v) {
+	public void setSelectedOptionsInFullReport(Vector<String> v) {
 		_selectedOptionsInFullReport = "selectedOptionsInFullReport" + ";";
 		for (int i = 0; i < v.size(); i++) {
-			_selectedOptionsInFullReport += (String) v.elementAt(i) + ";";
+			_selectedOptionsInFullReport += v.elementAt(i) + ";";
 		}
 	} // end setSelectedOptionsInFullReport
 
-	public void setSelectedOptionsInConflictReport(Vector v) {
+	public void setSelectedOptionsInConflictReport(Vector<String> v) {
 		_selectedOptionsInConflictReport = "selectedOptionsInConflictReport"
 				+ ";";
 		for (int i = 0; i < v.size(); i++) {
-			_selectedOptionsInConflictReport += (String) v.elementAt(i) + ";";
+			_selectedOptionsInConflictReport += v.elementAt(i) + ";";
 		}
 	} // end setSelectedOptionsInConflictReport
 
-	public void setConflictLimits(Vector v) {
+	public void setConflictLimits(Vector<String> v) {
 		_conflictLimits = "conflictLimits" + ";";
 		for (int i = 0; i < v.size(); i++) {
-			_conflictLimits += (String) v.elementAt(i) + ";";
+			_conflictLimits += v.elementAt(i) + ";";
 		}
 	} // end setSelectedOptionsInFullReport
 
 	public void setDxConflictLimits(String str) {
 		_dxConflictLimits.readLimits(str);
 	} // end setDxConflictLimits
-	
+
 	public DxConflictLimits getDxConflictLimits() {
 		return _dxConflictLimits;
 	} // end setDxConflictLimits

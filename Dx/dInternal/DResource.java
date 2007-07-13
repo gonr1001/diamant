@@ -177,12 +177,23 @@ public class DResource {
 			return left._resourceID.compareTo(right._resourceID);
 		}
 	};
-
-	public static Comparator<DResource> IDComparatorMm = new Comparator<DResource>() {
+	
+	public static Comparator<DResource> IDComparatorInt = new Comparator<DResource>() {
 		public int compare(DResource left, DResource right) {
-			return right._resourceID.compareTo(left._resourceID);
+			int diff = Integer.parseInt(left._resourceID) - Integer.parseInt(right._resourceID);
+			if (diff > 0)
+				return 1;
+			if (diff < 0)
+				return -1;
+			return 0;
 		}
 	};
+
+//	public static Comparator<DResource> IDComparatorMm = new Comparator<DResource>() {
+//		public int compare(DResource left, DResource right) {
+//			return right._resourceID.compareTo(left._resourceID);
+//		}
+//	};
 	
 	public static Comparator<DResource> KeyComparator = new Comparator<DResource>() {
 		public int compare(DResource left, DResource right) {

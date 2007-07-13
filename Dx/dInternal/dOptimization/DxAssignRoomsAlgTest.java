@@ -32,6 +32,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DxConflictLimits;
+import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 import dInternal.dData.StandardCollection;
@@ -804,4 +805,55 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		}
 
 	}
+		
+		public void test_Sort() {
+			DxConflictLimits dxCL = new DxConflictLimits();
+			String str = "conflictLimits;0;0;0;0;30;0;100;";
+			dxCL.readLimits(str);
+			DModel dm1 = null;
+
+			DxDocument _dxDocument1 = new DxTTableDoc();
+			String fileName = "." + File.separator;
+			fileName += "dataTest" + File.separator;
+			fileName += "refFiles" + File.separator;
+			fileName += "facs" + File.separator;
+			fileName += "flsh2_1" + File.separator;
+			fileName += "RoomAffContTT.dia";
+//			DxAssignRoomsAlg(DModel dm, DxConflictLimits limits, boolean increase)
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null,null,true);
+			Vector <DxResource> v = new Vector<DxResource>();
+//			DxRoom(String sRoomName, int nCapacity, int nFunction,
+//		            Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {
+			DxRoom dr = new DxRoom("C1-310", 10, 0, null,"", null);
+			v.add(dr);
+			
+			alg.sortSetByCapacitymM(v);			
+			assertEquals("test_Sort size mM ", 1, v.size());
+			alg.sortSetByCapacityMm(v);			
+			assertEquals("test_Sort size Mn ", 1, v.size());
+			dr = new DxRoom("C1-311", 11, 0, null,"", null);
+			v.add(dr);
+			dr = new DxRoom("C1-3110", 110, 0, null,"", null);
+			v.add(dr);			
+			dr = new DxRoom("C1-3111", 111, 0, null,"", null);
+			v.add(dr);
+			dr = new DxRoom("C1-3136", 136, 0, null,"", null);
+			v.add(dr);
+			alg.sortSetByCapacitymM(v);			
+			assertEquals("test_Sort size mM 5 ", 5, v.size());
+			dr = (DxRoom) v.elementAt(0);
+			assertEquals("test_Sort element 0", 10, dr.getCapacity());
+			dr = (DxRoom) v.elementAt(4);
+			assertEquals("test_Sort element 4", 136, dr.getCapacity());
+			
+			alg.sortSetByCapacityMm(v);			
+			assertEquals("test_Sort size Mm 5 ", 5, v.size());
+			dr = (DxRoom) v.elementAt(0);
+			assertEquals("test_Sort element 0", 136, dr.getCapacity());
+			dr = (DxRoom) v.elementAt(4);
+			assertEquals("test_Sort ", 10, dr.getCapacity());
+			alg.sortSetByCapacityMm(v);			
+		}
+		
+	
 } // end DxAssignRoomsAlgTest

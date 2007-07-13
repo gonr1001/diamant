@@ -95,18 +95,18 @@ public class DApplication {
 	private final int ZERO = 0;
 
 	/*
-	 * ADJUST_WIDTH is needed to ajdust the screenSize minus border pixels (the
+	 * ADJUST_WIDTH is needed to adjust the screenSize minus border pixels (the
 	 * value is a guess) at each side of the screen
 	 */
 	private final int ADJUST_WIDTH = 6;
 
 	/*
-	 * MIN_HEIGHT is needed to ajdust the minimum height of the screenSize
+	 * MIN_HEIGHT is needed to adjust the minimum height of the screenSize
 	 */
 	private final int MIN_HEIGHT = 512;
 
 	/*
-	 * MIN_WIDTH is needed to ajdust the minimum width screenSize
+	 * MIN_WIDTH is needed to adjust the minimum width screenSize
 	 */
 	private final int MIN_WIDTH = 512;
 
@@ -143,7 +143,7 @@ public class DApplication {
 		_fileToOpenAtStart = "";
 	}
 
-	// sigleton has only one instance
+	// singleton: has only one instance
 	public static DApplication getInstance() {
 		if (_instance == null) {
 			_instance = new DApplication();
@@ -198,8 +198,9 @@ public class DApplication {
 		_dxMenuBar = new DxMenuBar(this); // constructs the menu bar
 		jFrame.setJMenuBar(_dxMenuBar);
 
-		_toolBar = new DToolBar(this); // constucts the tool bar
+		_toolBar = new DToolBar(this); // constructs the tool bar
 		jFrame.getContentPane().add(_toolBar, BorderLayout.NORTH);
+		_toolBar.updateUI();
 		hideToolBar();
 
 		_jDesktopPane = new JDesktopPane();

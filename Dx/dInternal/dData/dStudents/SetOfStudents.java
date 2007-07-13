@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.19 $  $Date: 2007-05-07 13:04:58 $
+ * Title: SetOfStudents $Revision: 1.20 $  $Date: 2007-07-13 15:36:21 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -168,7 +168,7 @@ public class SetOfStudents extends DSetOfResources {
 	 * @return
 	 */
 
-	public Vector getStudentsByGroup(String activityID, String typeID,
+	public Vector<String> getStudentsByGroup(String activityID, String typeID,
 			int group, int order) {
 		int iDLength = DConst.STUDENT_ID_LENGTH;
 		int keyLength = DConst.STUDENT_KEY_LENGTH;

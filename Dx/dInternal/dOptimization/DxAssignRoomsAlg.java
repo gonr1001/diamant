@@ -1,5 +1,5 @@
 /**
- * Created on Jun 16, 2006
+ * Created on June 16, 2006
  * 
  * 
  * Title: DxAssignRoomsAlg.java 
@@ -68,15 +68,15 @@ public class DxAssignRoomsAlg implements Algorithm {
 		_dm = dm;
 		_dxCL = limits;
 		_increase = increase;
-		_dxCL.getRoomBookingRate(); // the parameter how full is the room
+		if (limits != null) {
+			_dxCL.getRoomBookingRate();
+		}
 	}
 
 	/*
 	 * this method executes the algorithm
 	 */
 	public void doWork() {
-		// _dm.getSetOfEvents().auxPrintEvents("./aa.txt");
-		// _dm.getDxSetOfRooms().auxPrintRooms("./bb.txt");
 
 		Cycle cycle = _dm.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
@@ -138,7 +138,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 				DResource eventToAssign = eventsInCat.getResourceAt(0);
 				eventsToUpdate.add(eventToAssign);
 				eventsInCat.removeResourceAt(0);
-				Iterator it = roomsInCat.iterator();
+				Iterator<DxResource> it = roomsInCat.iterator();
 				while (it.hasNext()) {
 					DxRoom room = (DxRoom) it.next();
 					if (isAddPossible(room, eventToAssign)) {
@@ -181,7 +181,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			DResource eventToAssign = eventsToPlace.getResourceAt(0);
 			eventsToUpdate.add(eventToAssign);
 			eventsToPlace.removeResourceAt(0);
-			Iterator it = allRooms.iterator();
+			Iterator<DxResource> it = allRooms.iterator();
 			while (it.hasNext()) {
 				DxRoom room = (DxRoom) it.next();
 				if (isAddPossible(room, eventToAssign)) {
@@ -202,7 +202,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 			DxEvent event = (DxEvent) events.getResourceAt(i).getAttach();
 			if (event.getRoomName().equalsIgnoreCase(name)) {
-				eventsInCat.addResourceUsingIDWithDuplicates(events
+				eventsInCat.addResourceUsingIDWithDuplicatesrgr(events
 						.getResourceAt(i));
 			}
 		}
@@ -222,7 +222,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			DxSetOfResources dxRooms, String catName, Period currentPeriod,
 			int d, int h) {
 		Vector<DxResource> roomsResult = new Vector<DxResource>();
-		Iterator it = dxRooms.iterator();
+		Iterator<DxResource> it = dxRooms.iterator();
 		currentPeriod.getMatrixAvailability();
 		while (it.hasNext()) {
 			DxRoom dr = (DxRoom) it.next();
@@ -239,7 +239,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 	protected Vector<DxResource> getAvailableRooms(DxSetOfResources dxRooms,
 			Period currentPeriod, int d, int h) {
 		Vector<DxResource> roomsResult = new Vector<DxResource>();
-		Iterator it = dxRooms.iterator();
+		Iterator<DxResource> it = dxRooms.iterator();
 		currentPeriod.getMatrixAvailability();
 		while (it.hasNext()) {
 			DxRoom dr = (DxRoom) it.next();
@@ -260,25 +260,24 @@ public class DxAssignRoomsAlg implements Algorithm {
 		// The container for the result
 		DSetOfResources setOfEventsInPeriod = new StandardCollection();
 		DSetOfResources eventsToReturn = new StandardCollection();
-		// Vector contains the events (Ressources) in the currentPeriod
-		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
+		// Vector contains the events (Resources) in the currentPeriod
+		Vector<DResource> eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
 		// Get all events
 		SetOfEvents soe = _dm.getSetOfEvents();
 		SetOfStudents students = _dm.getSetOfStudents();
 		int TOKEN_RANGE = 0;
-		// int numberOfStudents;
 		String eventInPeriodName = "";
 		String actID = "";
 		String typeID = "";
 		String secID = "";
-		Vector v = new Vector();
+		Vector<String> v = new Vector<String>();
 		DResource resc = null;
 		int section = 0;
 		DxEvent event = null;
 		for (int i = 0; i < eventsInPeriod.size(); i++) {
 			// get the name of each event in the period
-			eventInPeriodName = ((DResource) eventsInPeriod.get(i)).getID();
+			eventInPeriodName = eventsInPeriod.get(i).getID();
 			// get the attach of the event
 			event = (DxEvent) soe.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -292,56 +291,23 @@ public class DxAssignRoomsAlg implements Algorithm {
 			v = students.getStudentsByGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), event);
 
-//			if (_increase) {
-				setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
-//		} // else {
-//			setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
-//			eventsToReturn = new StandardCollection();
-//			for (int j = setOfEventsInPeriod.size() - 1; j > -1; j--) {
-//				DResource r = setOfEventsInPeriod.getResourceAt(j);
-//				setOfEventsInPeriod.removeResourceAt(j);
-//				eventsToReturn.addResource(r);
-//			}
-//			// return eventsToReturn;
-//			 }
-			// if(INCREASE) {
-			// setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
-			// }
-			// DSetOfResources eventsToReturn = new StandardCollection();
-			// for(int j = eventsInCat.size()-1 ; j > -1; j--) {
-			// DResource r = eventsInCat.getResourceAt(j);
-			// eventsInCat.removeResourceAt(j);
-			// eventsToReturn.addResource(r);
-			// }
-			// return eventsToReturn;
-		}// for(int i = 0; i< eventsInPeriod.size(); i++)
+			setOfEventsInPeriod.addResourceUsingIDWithDuplicatesrgr(resc);
+
+		}// for
 		if (_increase) {
 			return setOfEventsInPeriod;
 		}
 		eventsToReturn = new StandardCollection();
+//		int size = setOfEventsInPeriod.size();
 		for (int j = setOfEventsInPeriod.size() - 1; j > -1; j--) {
 			DResource r = setOfEventsInPeriod.getResourceAt(j);
 			setOfEventsInPeriod.removeResourceAt(j);
 			eventsToReturn.addResource(r);
 		}
+//		if (size != eventsToReturn.size())
+//			System.out.println("Sacrilege!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return eventsToReturn;
-//		return eventsToReturn;
 	}
-
-	// protected void setFlagsToSelectEvents() {
-	// SetOfEvents soe = _dm.getSetOfEvents();
-	// for (int i = 0; i < soe.size(); i++) {
-	// DxEvent event = (DxEvent) soe.getResourceAt(i).getAttach();
-	// // System.out.println("event " + i + DConst.CR_LF +
-	// // event.toString());
-	// if (event.isAssigned() && !event.isRoomFixed()) {
-	// // il faut assigner le local
-	// }// end if
-	// else {
-	// // il ne faut pas assigner de local
-	// }// end else if
-	// }// end for
-	// }
 
 	/**
 	 * Construit l'ensemble fini des locaux pouvant être affectés
@@ -399,12 +365,12 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return false;
 	}
 
-	public Vector<DxResource> sortSetByCapacityMm(Vector<DxResource> rooms) {
-		for (int i = 0; i < rooms.size() - 1; i++) {
-			int maxPos = maximumPosition(rooms, i);
-			swap(rooms, maxPos, i);
+	protected Vector<DxResource> sortSetByCapacityMm(Vector<DxResource> allRooms) {
+		for (int i = 0; i < allRooms.size() - 1; i++) {
+			int maxPos = maximumPosition(allRooms, i);
+			swap(allRooms, maxPos, i);
 		}
-		return rooms;
+		return allRooms;
 	}
 
 	protected Vector<DxResource> sortSetByCapacitymM(Vector<DxResource> allRooms) {

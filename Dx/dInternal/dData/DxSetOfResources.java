@@ -248,7 +248,7 @@ public abstract class DxSetOfResources implements Iterable {
 	 * Return an iterator that will iterate on all resources. It iterates
 	 * thhrough resource in ascending key order.
 	 */
-	public Iterator iterator() {
+	public Iterator<DxResource> iterator() {
 		sort();
 		return _vResourceSortedByKey.iterator();
 	}
