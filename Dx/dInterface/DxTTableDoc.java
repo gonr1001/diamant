@@ -79,19 +79,19 @@ public class DxTTableDoc extends DxDocument {
 	// -------------------------------------------
 	private void buidDocument(boolean simple, boolean vertical) {
 		/*
-		 * MIN_HEIGHT is needed to ajdust the minimum height of the _jif
+		 * MIN_HEIGHT is needed to adjust the minimum height of the _jif
 		 */
 		final int MIN_HEIGHT = 512;
 		/*
-		 * MIN_WIDTH is needed to ajdust the minimum width of the _jif
+		 * MIN_WIDTH is needed to adjust the minimum width of the _jif
 		 */
 		final int MIN_WIDTH = 512;
 		/*
-		 * MIN_HEIGHT is needed to ajdust the minimum height of the _jif
+		 * MIN_HEIGHT is needed to adjust the minimum height of the _jif
 		 */
 		final int MAX_HEIGHT = 2048;
 		/*
-		 * MIN_WIDTH is needed to ajdust the minimum width of the _jif
+		 * MIN_WIDTH is needed to adjust the minimum width of the _jif
 		 */
 		final int MAX_WIDTH = 2048;
 

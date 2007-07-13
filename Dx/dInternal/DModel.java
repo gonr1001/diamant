@@ -1023,7 +1023,7 @@ public class DModel extends Observable {
 		return _setOfActivitiesSites.size() > 1;
 	}
 
-	public Vector getSites() {
+	public Vector<String> getSites() {
 		Vector<String> v = new Vector<String>();
 		for (int i = 0; i < _setOfActivitiesSites.size(); i++)
 			v.add(_setOfActivitiesSites.getResourceAt(i).getID());

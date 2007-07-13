@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2007-04-09 20:38:06 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2007-07-13 16:08:01 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -98,7 +98,7 @@ public class DSetOfResourcesTest extends TestCase{
 	}
 	
 	public void test_getSetOfResources(){
-		Vector tmp = _sos.getSetOfResources();
+		Vector<DResource> tmp = _sos.getSetOfResources();
 		assertEquals("test_getSetOfResources: assertEquals", 2,tmp.size());
 	}
 	
@@ -168,16 +168,16 @@ public class DSetOfResourcesTest extends TestCase{
 		assertEquals("test_sortSetOfResourcesBySelectedAttachField: assertEquals", "3", _sos.getResourceAt(2).getID());
 	}
 	public void test0_getNamesVector0(){
-		Vector vector=_sos.getNamesVector(0); // sortSetOfResourcesByKey();
+		Vector<String> vector=_sos.getNamesVector(0); // sortSetOfResourcesByKey();
 		assertEquals("test0_getNamesVector: assertEquals", "1", vector.get(0));
 	}
 	public void test1_getNamesVector(){
-		Vector vector=_sos.getNamesVector(1); // sortSetOfResourcesByID();
+		Vector<String> vector=_sos.getNamesVector(1); // sortSetOfResourcesByID();
 		assertEquals("test1_getNamesVector: assertEquals", "2", vector.get(1));	
 	}
 	
 	public void test_getNamesVector(){
-		Vector <String>vector= new Vector <String>();
+		Vector<String>vector= new Vector <String>();
 		//	lgd:it's the same function of getNamesVector(0) or getNamesVector(1)
 		_sos.getNamesVector(vector); 
 		assertEquals("test_getNamesVector: assertEquals", "2", vector.get(1)
@@ -185,8 +185,8 @@ public class DSetOfResourcesTest extends TestCase{
 	}
 	
 	public void test_selectIDValue(){
-		Vector vector = _sos.selectIDValue("2");
-		assertEquals("test_selectIDValue: assertEquals", 2,((DResource)vector.get(0)).getKey());
+		Vector<DResource> vector = _sos.selectIDValue("2");
+		assertEquals("test_selectIDValue: assertEquals", 2,(vector.get(0)).getKey());
 	}
 	public void test_getIDsByField(){ 
 		// Not here

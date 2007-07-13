@@ -62,7 +62,7 @@ public class DMultiSiteMenu extends JMenu implements MenuStates {
 	 */
 	private void buildMulti() {
 		if (_dApplication.isMultiSite()) {
-			Vector v = _dApplication.getCurrentDModel().getSites();
+			Vector<String> v = _dApplication.getCurrentDModel().getSites();
 			ButtonGroup group = new ButtonGroup();
 			class MultiListener implements ItemListener {
 				public void itemStateChanged(ItemEvent e) {
@@ -74,10 +74,10 @@ public class DMultiSiteMenu extends JMenu implements MenuStates {
 			}
 			ItemListener multiListener = new MultiListener();
 			for (int i = 0; i < v.size(); i++) {
-				JCheckBoxMenuItem rbMenuItem = new JCheckBoxMenuItem((String) v
+				JCheckBoxMenuItem rbMenuItem = new JCheckBoxMenuItem( v
 						.get(i));
 				if (_dApplication.getCurrentDModel().getCurrentSiteName()
-						.equalsIgnoreCase((String) v.get(i)))
+						.equalsIgnoreCase( v.get(i)))
 					rbMenuItem.setSelected(true);
 				else
 					rbMenuItem.setSelected(false);

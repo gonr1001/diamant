@@ -2,7 +2,7 @@ package eTest;
 
 /**
  *
- * Title: ClassName $Revision: 1.4 $  $Date: 2007-03-14 12:41:51 $
+ * Title: ClassName $Revision: 1.5 $  $Date: 2007-07-13 16:05:26 $
  * Description: ClassName is a class used to
  *
  *
@@ -16,7 +16,7 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -53,7 +53,7 @@ public class FilterFileTest extends TestCase {
 	}
 
 	public void testEmptyCollection() {
-		Collection collection = new ArrayList();
+		Collection<Object> collection = new ArrayList<Object>();
 		assertTrue(collection.isEmpty());
 	}
 

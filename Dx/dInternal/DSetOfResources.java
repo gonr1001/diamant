@@ -578,7 +578,7 @@ public abstract class DSetOfResources extends DObject {
 	 * 
 	 * @return
 	 */
-	public Vector selectIDValue(String idToSelect) {
+	public Vector<DResource> selectIDValue(String idToSelect) {
 		Vector<DResource> select = new Vector<DResource>();
 		if (_stateSort != 1)
 			sortSetOfResourcesByID();
