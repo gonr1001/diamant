@@ -861,7 +861,7 @@ public class DApplication {
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
 			new DxAssignRoomsAlg(this.getCurrentDModel(), this
-					.getDxPreferences().getDxConflictLimits(), DxFlags.increase).doWork();
+					.getDxPreferences().getDxConflictLimits(), DxFlags.increase, DxFlags.best).doWork();
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
 		}

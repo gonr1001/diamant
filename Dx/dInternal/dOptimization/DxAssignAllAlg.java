@@ -64,8 +64,8 @@ public class DxAssignAllAlg implements Algorithm {
 	public void doWork() {
 		DResource currentEvent = null;
 		Period currentPeriod = null;
-		Vector vPeriods;
-		Vector vNotYetAssignedEvents = getEvents();
+		Vector<DResource> vPeriods;
+		Vector<DResource> vNotYetAssignedEvents = getEvents();
 		int currentDuration = 0;
 		_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
 
@@ -77,7 +77,7 @@ public class DxAssignAllAlg implements Algorithm {
 		}
 		int[] nbConf;
 		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {
-			currentEvent = (DResource) vNotYetAssignedEvents.get(i);
+			currentEvent = vNotYetAssignedEvents.get(i);
 			boolean isNumberOfConflictsAcceptable = false;
 
 			/*
@@ -92,8 +92,7 @@ public class DxAssignAllAlg implements Algorithm {
 					vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
 							.getConditionsToTest().getAvoidPriorityTable());
 					while (!vPeriods.isEmpty()) {
-						DValue value = (DValue) ((DResource) vPeriods.remove(0))
-								.getAttach();
+						DValue value = (DValue) ( vPeriods.remove(0)).getAttach();
 						currentPeriod = (Period) value.getObjectValue();
 						int[] dayTime = { value.getIntValue(),
 								currentPeriod.getBeginHour()[0],
@@ -128,8 +127,7 @@ public class DxAssignAllAlg implements Algorithm {
 					vPeriods = buildSortContiguousPeriodVector(currentDuration, _dm
 							.getConditionsToTest().getAvoidPriorityTable());
 					while (!vPeriods.isEmpty()) {
-						DValue value = (DValue) ((DResource) vPeriods.remove(0))
-								.getAttach();
+						DValue value = (DValue)  vPeriods.remove(0).getAttach();
 						currentPeriod = (Period) value.getObjectValue();
 						int[] dayTime = { value.getIntValue(),
 								currentPeriod.getBeginHour()[0],
@@ -169,7 +167,7 @@ public class DxAssignAllAlg implements Algorithm {
 	 * 
 	 * @return
 	 */
-	private Vector getEvents() {
+	private Vector<DResource> getEvents() {
 		return _dm.getSetOfEvents().getSetOfResources();
 	}
 
@@ -192,7 +190,7 @@ public class DxAssignAllAlg implements Algorithm {
 	 * 
 	 * @return
 	 */
-	private Vector buildSortContiguousPeriodVector(int duration,
+	private Vector<DResource> buildSortContiguousPeriodVector(int duration,
 			int[] avoidPriority) {
 		DSetOfResources soresc = new StandardCollection();
 		int counter = 1;
@@ -236,7 +234,7 @@ public class DxAssignAllAlg implements Algorithm {
 			}// end for(int j=0; j< ((Day)day.getAttach()).getSetO
 		}// end for (int i=0; i< _dm.getTTStructure().getCurrentCycle()
 		soresc.sortSetOfResourcesByKey();
-		return (Vector) soresc.getSetOfResources().clone();
+		return  (Vector<DResource>) soresc.getSetOfResources().clone();
 	}
 
 }// end class

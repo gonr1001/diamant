@@ -107,16 +107,7 @@ public class SetOfEventsTest extends TestCase {
 	 * test the rooms key of the first event of the setofevents
 	 */
 	public void test_RoomInEvent() {
-//		long roomKey;
-//		if (DxFlags.newEvent) {
-//			roomKey = ((DxEvent) _soe.getResourceAt(0).getAttach())
-//					.getRoomKey();
-//		} else {
-//			roomKey = ((EventDx) _soe.getResourceAt(0).getAttach())
-//					.getRoomKey();
-//		}
 
-//		if (DxFlags.newRooms) {
 			DxSetOfSites sos = _dmData5j.getDxSetOfSites();
 			DxSetOfRooms sor = sos.getAllDxRooms();
 			assertEquals("test_RoomInEvent : siteCount1  ", 1, sos
@@ -126,22 +117,18 @@ public class SetOfEventsTest extends TestCase {
 			assertEquals("test_RoomInEvent : ", true, sor.getRoomsNameSorted()
 					.contains("D73020"));
 
-//		} else {
-//			assertEquals("test_RoomInEvent : ", "D73020", _dmData5j
-//					.getSetOfRooms().getResource(roomKey).getID());
-//		}
 	}
 
 	/**
-	 * test the principal key of the first event of the setofevents
+	 * test the principal key of the first event of the set of events
 	 */
 	public void test_addEvents() {
 		Cycle cycle = _dmData7j.getTTStructure().getCurrentCycle();
 		cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 		Period currentPeriod = cycle.getNextPeriod(1);
 		DSetOfResources newSetOfEvents = new StandardCollection();
-		// Vector contains the events (Ressources) in the currentPeriod
-		Vector eventsInPeriod = currentPeriod.getEventsInPeriod()
+		// Vector contains the events (Resources) in the currentPeriod
+		Vector<DResource> eventsInPeriod = currentPeriod.getEventsInPeriod()
 				.getSetOfResources();
 
 		int index;
@@ -149,7 +136,7 @@ public class SetOfEventsTest extends TestCase {
 		// for each event in period do some tests
 		// get the name of an event in the period
 		// this is the : AMC600 Event
-		String eventInPeriodName = ((DResource) eventsInPeriod.get(0)).getID();
+		String eventInPeriodName = eventsInPeriod.get(0).getID();
 		// get the attach of the event
 		if (DxFlags.newEvent) {
 			DxEvent dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName)
@@ -163,7 +150,7 @@ public class SetOfEventsTest extends TestCase {
 
 			int section = DxTools.STIConvertGroupToInt(secID);
 			SetOfStudents students = _dmData7j.getSetOfStudents();
-			Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
+			Vector<String> v = students.getStudentsByGroup(actID, typeID, section, 0);
 			DResource resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 			assertEquals("test_addEvents AMC600 Event i : ", 0, index);
@@ -175,7 +162,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the AMC640 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
+			eventInPeriodName = eventsInPeriod.get(1).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -196,7 +183,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GCH109 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
+			eventInPeriodName = eventsInPeriod.get(2).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -220,7 +207,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GCH321 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
+			eventInPeriodName = eventsInPeriod.get(3).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -244,7 +231,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GEI460 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
+			eventInPeriodName = eventsInPeriod.get(4).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -267,7 +254,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GEL440 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
+			eventInPeriodName = eventsInPeriod.get(5).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -291,7 +278,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the IMC111 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
+			eventInPeriodName = eventsInPeriod.get(6).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -315,7 +302,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the IMC455 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
+			eventInPeriodName = eventsInPeriod.get(7).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -340,7 +327,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the IMC500 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
+			eventInPeriodName = eventsInPeriod.get(8).getID();
 			// get the attach of the event
 			dxEvent = (DxEvent) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -374,7 +361,7 @@ public class SetOfEventsTest extends TestCase {
 
 			int section = DxTools.STIConvertGroupToInt(secID);
 			SetOfStudents students = _dmData7j.getSetOfStudents();
-			Vector v = students.getStudentsByGroup(actID, typeID, section, 0);
+			Vector<String> v= students.getStudentsByGroup(actID, typeID, section, 0);
 			DResource resc = new DResource(Integer.toString(v.size()), eventDx);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v.size()));
 			assertEquals("test_addEvents AMC600 Event i : ", 0, index);
@@ -386,7 +373,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the AMC640 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(1)).getID();
+			eventInPeriodName = eventsInPeriod.get(1).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -407,7 +394,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GCH109 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(2)).getID();
+			eventInPeriodName = eventsInPeriod.get(2).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -431,7 +418,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GCH321 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(3)).getID();
+			eventInPeriodName = eventsInPeriod.get(3).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -455,7 +442,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GEI460 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(4)).getID();
+			eventInPeriodName = eventsInPeriod.get(4).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -478,7 +465,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the GEL440 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(5)).getID();
+			eventInPeriodName = eventsInPeriod.get(5).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -502,7 +489,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the IMC111 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(6)).getID();
+			eventInPeriodName = eventsInPeriod.get(6).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -526,7 +513,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the IMC455 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(7)).getID();
+			eventInPeriodName = eventsInPeriod.get(7).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,
@@ -551,7 +538,7 @@ public class SetOfEventsTest extends TestCase {
 			// for each event in period do some tests
 			// get next, get the name of an event in the period
 			// this is the IMC500 Event
-			eventInPeriodName = ((DResource) eventsInPeriod.get(8)).getID();
+			eventInPeriodName = eventsInPeriod.get(8).getID();
 			// get the attach of the event
 			eventDx = (EventDx) _soe1.getResource(eventInPeriodName).getAttach();
 			actID = DXToolsMethods.getToken(eventInPeriodName,

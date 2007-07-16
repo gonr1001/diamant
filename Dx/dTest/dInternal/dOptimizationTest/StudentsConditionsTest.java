@@ -86,7 +86,7 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
 		assertEquals("test_periodVariationEventsPeriods_1 : assertEquals 2", 7,
 				perVec.size());
 	}
@@ -97,7 +97,7 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
 		assertEquals("test2_periodVariationEventsPeriods : assertEquals 2", 7,
 				perVec.size());
 	}
@@ -111,8 +111,8 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
-		Period per = (Period) perVec.get(3);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
+		Period per = perVec.get(3);
 		assertEquals(
 				"test3_1_periodVariationEventsPeriods  : assertEquals 1(Hour):",
 				9, per.getBeginHour()[0]);
@@ -130,8 +130,8 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
-		Period per = (Period) perVec.get(3);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
+		Period per = perVec.get(3);
 		assertEquals(
 				"test4_1_periodVariationEventsPeriods  : assertEquals 1(Hour):",
 				9, per.getBeginHour()[0]);
@@ -152,8 +152,8 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
-		Period per = (Period) perVec.get(6);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
+		Period per = perVec.get(6);
 		assertEquals(
 				"test5_1_periodVariationEventsPeriods  : assertEquals 1(Hour):",
 				13, per.getBeginHour()[0]);
@@ -171,8 +171,8 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
-		Period per = (Period) perVec.get(6);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
+		Period per = perVec.get(6);
 		assertEquals(
 				"test6_1_periodVariationEventsPeriods  : assertEquals 1(Hour):",
 				13, per.getBeginHour()[0]);
@@ -193,8 +193,8 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm1.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
-		Period per = (Period) perVec.get(0);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
+		Period per = perVec.get(0);
 		assertEquals(
 				"test7_1_periodVariationEventsPeriods  : assertEquals 1(Hour):",
 				20, per.getBeginHour()[0]);
@@ -212,8 +212,8 @@ public class StudentsConditionsTest extends TestCase {
 				.getSetOfActivities(), _dm2.getTTStructure().getCurrentCycle());
 		testStud.setPeriodVariationEvents(3);
 		int[] perKey = { 2, 1, 2 };
-		Vector perVec = testStud.periodVariationEventsPeriods(perKey);
-		Period per = (Period) perVec.get(0);
+		Vector<Period> perVec = testStud.periodVariationEventsPeriods(perKey);
+		Period per = perVec.get(0);
 		assertEquals(
 				"test8_1_periodVariationEventsPeriods  : assertEquals 1(Hour):",
 				20, per.getBeginHour()[0]);

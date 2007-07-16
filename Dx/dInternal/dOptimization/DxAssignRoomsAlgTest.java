@@ -32,7 +32,6 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DxConflictLimits;
-import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 import dInternal.dData.StandardCollection;
@@ -90,7 +89,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 			if (DxFlags.newAlg) {
 				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-						DxFlags.increase);
+						DxFlags.increase, DxFlags.best);
 				alg.doWork();
 			} else {
 				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
@@ -127,7 +126,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 			if (DxFlags.newAlg) {
 				DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-						DxFlags.increase);
+						DxFlags.increase, DxFlags.best);
 				alg.doWork();
 			} else {
 				RoomAssignmentAlgo alg = new RoomAssignmentAlgo(dm1);
@@ -160,7 +159,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase);
+					DxFlags.increase, DxFlags.best);
 
 			assertEquals("test_getNumberOfPeriods: assertEquals", 28, alg
 					.getNumberOfPeriods());
@@ -189,7 +188,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase);
+					DxFlags.increase, DxFlags.best);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
@@ -318,7 +317,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase);
+					DxFlags.increase, DxFlags.best);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
@@ -523,7 +522,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 				eventsToUpdate.add(eventToAssign);
 				eventsToPlace.removeResourceAt(0);
-				Iterator it = allRooms.iterator();
+				Iterator<DxResource> it = allRooms.iterator();
 				// while (it.hasNext()) {
 				DxRoom room = (DxRoom) it.next();
 				assertEquals("getEvents: roomsize ", 12, room.getCapacity());
@@ -783,7 +782,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 				eventsToUpdate.add(eventToAssign);
 				eventsToPlace.removeResourceAt(0);
-				Iterator it = allRooms.iterator();
+				Iterator<DxResource> it = allRooms.iterator();
 				// while (it.hasNext()) {
 				DxRoom room = (DxRoom) it.next();
 				assertEquals("getEvents: roomsize ", 12, room.getCapacity());
@@ -810,9 +809,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			DxConflictLimits dxCL = new DxConflictLimits();
 			String str = "conflictLimits;0;0;0;0;30;0;100;";
 			dxCL.readLimits(str);
-			DModel dm1 = null;
 
-			DxDocument _dxDocument1 = new DxTTableDoc();
 			String fileName = "." + File.separator;
 			fileName += "dataTest" + File.separator;
 			fileName += "refFiles" + File.separator;
@@ -820,7 +817,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			fileName += "flsh2_1" + File.separator;
 			fileName += "RoomAffContTT.dia";
 //			DxAssignRoomsAlg(DModel dm, DxConflictLimits limits, boolean increase)
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null,null,true);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null,null,true,true);
 			Vector <DxResource> v = new Vector<DxResource>();
 //			DxRoom(String sRoomName, int nCapacity, int nFunction,
 //		            Vector<Integer> viChar, String sNote, DxAvailability dxaAva) {

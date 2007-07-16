@@ -1,6 +1,6 @@
 /**
 *
-* Title: DSetOfResourcesTest $Revision $  $Date: 2007-07-13 16:08:01 $
+* Title: DSetOfResourcesTest $Revision $  $Date: 2007-07-16 21:56:15 $
 * Description: 	DSetOfResourcesTest is a class used to test the class 
 * 				DSetOfResources using SetOfStudents
 *
@@ -15,8 +15,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $ $
-* @author  $Author: gonzrubi $
+* 
+* @author gonzrubi $
 * @since JDK1.3
 */
 
