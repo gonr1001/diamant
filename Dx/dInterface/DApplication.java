@@ -129,6 +129,12 @@ public class DApplication {
 	private DxMenuBar _dxMenuBar;
 
 	private DToolBar _toolBar;
+	
+	private boolean _increase;
+	
+//	private boolean _decrease;
+	
+	private boolean _best;
 
 	/**
 	 * DApplication initialize the data members
@@ -140,6 +146,9 @@ public class DApplication {
 		_logger.warn("Hi from DApplication");
 		_instance = this;
 		_inDevelopment = false;
+		_best = true;
+		_increase = true;
+//		_decrease = false;
 		_fileToOpenAtStart = "";
 	}
 
@@ -861,7 +870,7 @@ public class DApplication {
 	public void roomAssignment() {
 		if (DxFlags.newAlg) {
 			new DxAssignRoomsAlg(this.getCurrentDModel(), this
-					.getDxPreferences().getDxConflictLimits(), DxFlags.increase, DxFlags.best).doWork();
+					.getDxPreferences().getDxConflictLimits(), _increase, _best).doWork();
 		} else {
 			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
 		}
@@ -929,6 +938,37 @@ public class DApplication {
 		this.getCurrentDModel().changeInDModel(dlg);
 		this.setCurrentDir(fc.getSelectedFile().getPath());
 		this.afterImport();		
+	}
+
+	/**
+	 * @param d 
+	 * @param c 
+	 * @param b 
+	 * 
+	 */
+	public void roomAssignOptions(boolean best, boolean inc, boolean dec) {
+		System.out.println("rAO" + best + " " + inc + " " +  dec);
+		if(best){
+			_best = true;
+			_increase = true;
+		} else {
+			if (inc){
+				_best = false;
+				_increase = true;
+			} else{
+				_best = false;
+				_increase = false;
+			}
+		}
+		
+		
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean getBest() {
+		return _best;
 	}
 
 } /* end class DApplication */

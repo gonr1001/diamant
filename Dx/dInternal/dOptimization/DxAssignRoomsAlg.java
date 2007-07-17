@@ -195,10 +195,11 @@ public class DxAssignRoomsAlg implements Algorithm {
 			eventsToUpdate.add(eventToAssign);
 			eventsToPlace.removeResourceAt(0);
 			Iterator<DxResource> it = allRooms.iterator();
-			while (it.hasNext()) {
+			
+			while (it.hasNext()) { // goes for all rooms
 				if (!_best) {
 					DxRoom room = (DxRoom) it.next();
-					if (isAddPossible(room, eventToAssign)) {
+					if (fitIn(eventToAssign, room)) {
 						((DxEvent) eventToAssign.getAttach()).setRoomName(room
 								.getName());
 						allRooms.remove(room);
@@ -206,19 +207,43 @@ public class DxAssignRoomsAlg implements Algorithm {
 					} // if
 				} else {
 					DxRoom room = (DxRoom) it.next();
-					if (isAddPossible(room, eventToAssign)) {
+					if (fitIn(eventToAssign, room)) {
 						myRooms.add(room);
-					} else {
-						if (myRooms.size() > 0) {
-							((DxEvent) eventToAssign.getAttach())
-									.setRoomName(myRooms
-											.get(myRooms.size() - 1).getName());
-							allRooms.remove(myRooms.get(myRooms.size() - 1));
-							break;
-						}
 					}
 				}
+//					} else {
+//						if (myRooms.size() > 0) {
+//							((DxEvent) eventToAssign.getAttach())
+//									.setRoomName(myRooms
+//											.get(myRooms.size() - 1).getName());
+//							allRooms.remove(myRooms.get(myRooms.size() - 1));
+//							myRooms = new Vector<DxResource>();
+//							break;
+//						if (myRooms.size() > 0) {
+//							((DxEvent) eventToAssign.getAttach())
+//									.setRoomName(myRooms
+//											.get(0).getName());
+//							allRooms.remove(myRooms.get(0));
+//							myRooms = new Vector<DxResource>();
+//							break;
+//						}
+//					}
+//				}
 			} // while
+//			if (myRooms.size() > 0) {
+//				((DxEvent) eventToAssign.getAttach())
+//						.setRoomName(myRooms
+//								.get(myRooms.size() - 1).getName());
+//				allRooms.remove(myRooms.get(myRooms.size() - 1));
+//				myRooms = new Vector<DxResource>();
+//			}
+			if (myRooms.size() > 0) {
+				((DxEvent) eventToAssign.getAttach())
+						.setRoomName(myRooms
+								.get(0).getName());
+				allRooms.remove(myRooms.get(0));
+				myRooms = new Vector<DxResource>();
+			}
 		} // while
 		return eventsToUpdate;
 	}
@@ -373,7 +398,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		return eventsToReturn;
 	}
 
-	protected boolean isAddPossible(DxRoom room, DResource event) {
+	protected boolean fitIn(DResource event, DxRoom room) {
 		if (room.getName().equalsIgnoreCase("......")) {
 			return false;
 		}

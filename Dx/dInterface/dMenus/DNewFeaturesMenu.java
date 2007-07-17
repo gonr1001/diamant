@@ -23,22 +23,24 @@ package dInterface.dMenus;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 
 import dConstants.DConst;
 import dInterface.DApplication;
 
 /**
  * Ruben Gonzalez-Rubio
- *
- * Description: DNewFeaturesMenu.java is a class used to: 
+ * 
+ * Description: DNewFeaturesMenu.java is a class used to:
  * <p>
- * Build the DNewFeatures Menu, for each menu Item there is a Listener to call the
- * activated action in DxApplication.
+ * Build the DNewFeatures Menu, for each menu Item there is a Listener to call
+ * the activated action in DxApplication.
  * 
  * This menu is used only with new features that are in test
- *
+ * 
  */
 public class DNewFeaturesMenu extends JMenu implements MenuStates {
 
@@ -54,9 +56,17 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 
 	private JMenuItem _test2_3;
 
+	private JMenu _test3;
+
+	private JRadioButtonMenuItem _rbMenuIncrease;
+
+	private JRadioButtonMenuItem _rbMenuDecrease;
+
+	private JRadioButtonMenuItem _rbMenuBestFit;
+
 	/**
-	 * @param application 
-	 * @param bar 
+	 * @param application
+	 * @param bar
 	 * 
 	 */
 	public DNewFeaturesMenu(DApplication application) {
@@ -70,6 +80,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		buildTest1();
 		this.addSeparator();
 		buildTest2();
+		buildTest3();
 	}
 
 	/**
@@ -80,7 +91,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test1.setFont(DxMenuBar.DxMB_FONT);
 		class Test1Listener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.conflictsOfAnEvent();
 			}
 		}
@@ -101,7 +112,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setFont(DxMenuBar.DxMB_FONT);
 		class Test2_1Listener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.roomAssignment();
 			}
 		}
@@ -114,7 +125,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_2.setFont(DxMenuBar.DxMB_FONT);
 		class Test2_2Listener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.eventAssignment();
 			}
 		}
@@ -127,7 +138,7 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setFont(DxMenuBar.DxMB_FONT);
 		class Test2_3Listener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
-				event.toString(); //to avoid warning;
+				event.toString(); // to avoid warning;
 				_dApplication.showConflictsDlg();
 			}
 		}
@@ -142,8 +153,101 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 	/**
 	 * 
 	 */
+	private void buildTest3() {
+		_test3 = new JMenu("Options pour affectation de locaux");
+		_test3.setFont(DxMenuBar.DxMB_FONT);
 
-	/* (non-Javadoc)
+		ButtonGroup group = new ButtonGroup();
+
+		_rbMenuBestFit = new JRadioButtonMenuItem("plus proche");
+		_rbMenuBestFit.setFont(DxMenuBar.DxMB_FONT);
+		_rbMenuBestFit.setSelected(_dApplication.getBest());
+		group.add(_rbMenuBestFit);
+		_test3.add(_rbMenuBestFit);
+		class Test3_BFListener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); // to avoid warning;
+				_dApplication.roomAssignOptions(true, false, false);
+			}
+		}
+		ActionListener test3_BFListener = new Test3_BFListener();
+		_rbMenuBestFit.addActionListener(test3_BFListener);
+
+		_rbMenuIncrease = new JRadioButtonMenuItem("plus petit au plus grand");
+		_rbMenuIncrease.setFont(DxMenuBar.DxMB_FONT);
+		group.add(_rbMenuIncrease);
+		_test3.add(_rbMenuIncrease);
+		class Test3_IncListener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); // to avoid warning;
+				_dApplication.roomAssignOptions(false, true, false);
+			}
+		}
+		ActionListener test3_IncListener = new Test3_IncListener();
+		_rbMenuIncrease.addActionListener(test3_IncListener);
+
+		_rbMenuDecrease = new JRadioButtonMenuItem("plus grand au plus petit");
+		_rbMenuDecrease.setFont(DxMenuBar.DxMB_FONT);
+		group.add(_rbMenuDecrease);
+		_test3.add(_rbMenuDecrease);
+		
+		class Test3_DecListener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); // to avoid warning;
+				_dApplication.roomAssignOptions(false, false, true);
+			}
+		}
+		ActionListener test3_DecListener = new Test3_DecListener();
+		_rbMenuDecrease.addActionListener(test3_DecListener);
+
+
+		// class Test2_1Listener implements ActionListener {
+		// public void actionPerformed(ActionEvent event) {
+		// event.toString(); //to avoid warning;
+		// _dApplication.roomAssignment();
+		// }
+		// }
+		// ActionListener test2_1Listener = new Test2_1Listener();
+		// _test2_1.addActionListener(test2_1Listener);
+		// _test2.add(_test2_1);
+		//
+		// // test2_2
+		// _test2_2 = new JMenuItem(DConst.EVENTASSIGN);
+		// _test2_2.setFont(DxMenuBar.DxMB_FONT);
+		// class Test2_2Listener implements ActionListener {
+		// public void actionPerformed(ActionEvent event) {
+		// event.toString(); //to avoid warning;
+		// _dApplication.eventAssignment();
+		// }
+		// }
+		// ActionListener test2_2Listener = new Test2_2Listener();
+		// _test2_2.addActionListener(test2_2Listener);
+		// _test2.add(_test2_2);
+		//
+		// // test2_3
+		// _test2_3 = new JMenuItem(DConst.CONFLICTEFFECT);
+		// _test2_3.setFont(DxMenuBar.DxMB_FONT);
+		// class Test2_3Listener implements ActionListener {
+		// public void actionPerformed(ActionEvent event) {
+		// event.toString(); //to avoid warning;
+		// _dApplication.showConflictsDlg();
+		// }
+		// }
+		// ActionListener test2_3Listener = new Test2_3Listener();
+		// _test2_3.addActionListener(test2_3Listener);
+		// _test2.add(_test2_3);
+
+		this.add(_test3);
+
+	} // end buildTest3
+
+	/**
+	 * 
+	 */
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#initialState()
 	 */
 	public void initialState() {
@@ -155,7 +259,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterNewTTable()
 	 */
 	public void afterNewTTable() {
@@ -167,7 +273,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterNewTTStruc()
 	 */
 	public void afterNewTTStruc() {
@@ -179,7 +287,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssign()
 	 */
 	public void afterInitialAssign() {
@@ -191,7 +301,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterOpenTTSruc()
 	 */
 	public void afterOpenTTSruc() {
@@ -203,7 +315,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterImport()
 	 */
 	public void afterImport() {
@@ -215,7 +329,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(false);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#afterInitialAssignment()
 	 */
 	public void afterInitialAssignment() {
@@ -227,7 +343,9 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_3.setEnabled(true);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see dInterface.dMenus.MenuStates#showAllMenus()
 	 */
 	public void showAllMenus() {

@@ -527,7 +527,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				DxRoom room = (DxRoom) it.next();
 				assertEquals("getEvents: roomsize ", 12, room.getCapacity());
 
-				if (alg.isAddPossible(room, eventToAssign)) {
+				if (alg.fitIn(eventToAssign, room)) {
 					((DxEvent) eventToAssign.getAttach()).setRoomName(room
 							.getName());
 					allRooms.remove(room);
@@ -787,7 +787,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				DxRoom room = (DxRoom) it.next();
 				assertEquals("getEvents: roomsize ", 12, room.getCapacity());
 
-				if (alg.isAddPossible(room, eventToAssign)) {
+				if (alg.fitIn(eventToAssign, room)) {
 					((DxEvent) eventToAssign.getAttach()).setRoomName(room
 							.getName());
 					allRooms.remove(room);
